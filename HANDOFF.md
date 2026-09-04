@@ -118,9 +118,17 @@ path, so invoking one from a sub-folder produces keys nothing can join on.
 - The index shrank from 29,995 to 25,220 rows because the Java `build-index` merges by
   unit-id where the C# one appends. The 4,775 removed rows were exact duplicate unit-ids
   from repeated C# runs; all 25,201 distinct unit-ids survive.
-- **The shared vocabulary is 12x over its 300-tag ceiling.** `compact-vocabulary` (dry run)
-  would prune 3,487 tags and strip 22 references in `tools/` alone. Applying it rewrites
-  tags across the C# repositories too, so it needs an explicit decision and was not run.
+- **`compact-vocabulary` was not run, and must not be run yet.** A reconciliation sweep
+  afterwards (`build-vocabulary` over all 31 `raw-tags.tsv` files on the machine, additive
+  and idempotent) grew the shared vocabulary from 3,787 to 6,522 tags, so the earlier
+  dry-run figures were computed against a schema that was missing 2,735 tags. Two reasons
+  it stays blocked, both recorded with the measured data in the skill's `tags-pipeline.md`:
+  usage is counted from `tags-index.tsv`, which covers only 3,559 of the 6,088 tags
+  actually assigned across the corpus, so a prune would delete ~2,960 used tags as unused
+  (rebuilding the index over the C# roots needs the C# tool); and the 300-tag default cuts
+  at "used 40+ times", which would leave over 5,500 documented units with no tag at all.
+  The lossless alternative is consolidating the 630 stem-duplicate tags through the
+  schema's `merged:` map, which is `consolidate-vocabulary` and is Milestone C.
 - Nine axis-B candidates were reported for review: Callable Abstraction, Concurrency, Error
   Handling, File Transfer, Interprocess Communication, Memento Pattern, Resource
   Coordination, Text Parsing, Transaction Semantics. Axis B stays a raw string in
@@ -160,5 +168,6 @@ built and proven on it. Two independent choices remain, for the user to make:
    at each folder boundary. `streamIO/` (674 files) is the largest and would itself need
    several sessions.
 
-Whether to run `compact-vocabulary --apply` on the shared vocabulary is a third, separate
-decision - see the Tags pipeline section above.
+Whether to prune the shared vocabulary at all is a third, separate decision - see the Tags
+pipeline section above. It is blocked on rebuilding `tags-index.tsv` over the C# roots
+(C# tool) and, for the lossless path, on `consolidate-vocabulary` from Milestone C.
