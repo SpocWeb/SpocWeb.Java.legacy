@@ -15,7 +15,7 @@ import streamIO.copy.ICopyAble;
  * @version
  * <!-- docstate
  * pass: 2
- * mtime: 2006-04-14T08:30:40Z
+ * mtime: 2026-09-04T16:35:47Z
  * digest: ef8fa9819a8b11f24e5bb6304a3ebee0f62e782b84d9c7d626a15495e8d3866e
  * stale: false
  * -->

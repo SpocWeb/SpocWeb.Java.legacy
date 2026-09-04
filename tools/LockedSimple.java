@@ -24,7 +24,7 @@ package tools;
   * @version	1.0
   * <!-- docstate
   * pass: 2
-  * mtime: 2026-09-04T16:32:18Z
+  * mtime: 2026-09-04T16:35:47Z
   * digest: b087577b23536c6a3e242fe9216dfe5576f91ea0437a27340287b6aa8e74d4d4
   * stale: false
   * -->
@@ -158,7 +158,7 @@ public class LockedSimple
  * Opened up in its own Thread to demonstrate concurrent Access.
  * <!-- docstate
  * pass: 2
- * mtime: 2003-04-10T20:36:28Z
+ * mtime: 2026-09-04T16:35:47Z
  * digest: 05b55d35d6baa1d7f03e96a7151c3cc608124f216be1a49c2e3d8f4ebc95f7d3
  * stale: false
  * -->

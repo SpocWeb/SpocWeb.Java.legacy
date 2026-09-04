@@ -19,7 +19,7 @@ import streamIO.exception.BaseException;
   * @version	1.0
   * <!-- docstate
   * pass: 2
-  * mtime: 2008-12-31T20:47:05Z
+  * mtime: 2026-09-04T16:35:47Z
   * digest: cdd8920622f80bd498f3d6b75356da24efc0ad3db860089b745d4d892fa01a68
   * stale: false
   * -->

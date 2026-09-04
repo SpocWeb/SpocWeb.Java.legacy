@@ -65,7 +65,7 @@ import java.util.Iterator;
  * @version	1.0
  * <!-- docstate
  * pass: 2
- * mtime: 2026-09-04T16:32:18Z
+ * mtime: 2026-09-04T16:35:47Z
  * digest: 315276aff7ef4bdf961874d499b22e694647fbd899358180a05ffefc40dc726c
  * stale: false
  * -->
@@ -437,7 +437,7 @@ public class ThreadLock {
  * Opened up in its own Thread to demonstrate concurrent Access.
  * <!-- docstate
  * pass: 2
- * mtime: 2026-09-04T16:32:18Z
+ * mtime: 2026-09-04T16:35:47Z
  * digest: 05b55d35d6baa1d7f03e96a7151c3cc608124f216be1a49c2e3d8f4ebc95f7d3
  * stale: false
  * -->
@@ -493,7 +493,7 @@ class ThreadLockTester
  * and Range Checking on Access is potentially slower than accessing count here.
  * <!-- docstate
  * pass: 2
- * mtime: 2008-06-29T19:04:51Z
+ * mtime: 2026-09-04T16:35:47Z
  * digest: baf135b4448d65fb02fbde8d2d307ac937af6f59162de3cc8447bd996d337047
  * stale: false
  * -->

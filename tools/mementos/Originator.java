@@ -23,7 +23,7 @@ package tools.mementos; //
   * @see Originator creating and consuming Mementos
   * <!-- docstate
   * pass: 2
-  * mtime: 2003-01-25T23:39:46Z
+  * mtime: 2026-09-04T16:35:47Z
   * digest: d18bb5a1d272994612655baadde55d7c3b3809fb8787c5c87bbfd38fff314c89
   * stale: false
   * -->

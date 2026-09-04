@@ -16,7 +16,7 @@ package tools; //always define a Package
   * @version 1.0
   * <!-- docstate
   * pass: 2
-  * mtime: 2006-03-11T01:05:12Z
+  * mtime: 2026-09-04T16:35:47Z
   * digest: c961b477dbfa4cb63fd91dc4800eee03084f8df2a06818e2382e1a0bcdedd7bd
   * stale: false
   * -->

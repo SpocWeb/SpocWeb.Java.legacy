@@ -7,7 +7,7 @@ package tools.threads;
  * or it is stopped by calling the stop() Method because it creates a new Thread.
  * <!-- docstate
  * pass: 2
- * mtime: 2005-07-25T11:45:12Z
+ * mtime: 2026-09-04T16:35:47Z
  * digest: b99f8625892167499680b0a8fb181e450a0b044c39708dd8d4abd783f8ad21e4
  * stale: false
  * -->
