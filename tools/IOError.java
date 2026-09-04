@@ -3,12 +3,23 @@ package tools; //
 import streamIO.exception.BaseException;
 
 /**
-  * Title: IOError.java<p>
-  * Description:
-  * Designed to wrap an IOException so that it needn't be declared.
+  * Unchecked Wrapper around an IOException, so I/O Failures need not be declared.
+  *
+  * <p>Designed to wrap an IOException so that it needn't be declared.
   * This makes the Interface cleaner, but the Contract less explicit.
   * It is used e.g. in StreamIn and StreamOut
   * because these are used for both Memory and I/O Structures.
+  *
+  * <h2>Collaborators</h2>
+  *
+  * <table>
+  * <caption>Types this Class works with</caption>
+  * <tr><th>Type</th><th>Relationship</th></tr>
+  * <tr><td>{@link streamIO.exception.BaseException}</td>
+  *     <td>Base Class supplying the Message and Cause Chaining this Class only forwards to.</td></tr>
+  * <tr><td>{@link java.io.IOException}</td>
+  *     <td>The checked Exception this Class exists to carry without declaring it.</td></tr>
+  * </table>
   *
   * Known SubClasses:
   *
@@ -20,7 +31,7 @@ import streamIO.exception.BaseException;
   * <!-- docstate
   * pass: 2
   * mtime: 2026-09-04T16:35:47Z
-  * digest: cdd8920622f80bd498f3d6b75356da24efc0ad3db860089b745d4d892fa01a68
+  * digest: f667d180315172ddfb147afacef7da21d36565d20b00d3b62f0546e48dd041d9
   * stale: false
   * -->
   */
@@ -32,7 +43,7 @@ extends BaseException {
 ////////////////////////////////////////////////////////////////////////////////
 
 /**
-	 * 
+	 * Serialization Version of this Exception Class, never varied since its Introduction.
 	 */
 	private static final long serialVersionUID = 1L;
 

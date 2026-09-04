@@ -3,11 +3,35 @@ package tools;
 import streamIO.copy.ICopyAble;
 
 /**
- * TransAction
- * Wraps a Callable Object with Transaction Methods
+ * Applies a {@link CallAble} to a copied Subject, keeping the Copy only if the Call succeeds.
+ *
+ * <p>Wraps a Callable Object with Transaction Methods
  * as well as Before and After Operations (e.g. for (un-)Locking).
  * The Subject is copied before the Call
  * and the Result either replaces it (Commit) or not (Rollback).
+ *
+ * <p>The Semantics of {@link #call(Object)} are reversed relative to {@link CallAble}: the
+ * Operation is the Argument and the Subject belongs to this Instance, which is what makes
+ * a single Instance reusable across different Operations on the same Subject.
+ *
+ * <h2>Invariants</h2>
+ *
+ * <p>At most one Transaction is open at a time: {@link #startTrans()} rejects a second one
+ * while a Substitute exists, and both {@link #commitTrans()} and {@link #rollBackTrans()}
+ * clear it again. A null Substitute therefore means no Transaction is in progress.
+ *
+ * <h2>Collaborators</h2>
+ *
+ * <table>
+ * <caption>Types this Class works with</caption>
+ * <tr><th>Type</th><th>Relationship</th></tr>
+ * <tr><td>{@link CallAble}</td>
+ *     <td>Implemented, and also the Type of the Operation passed in as the Argument.</td></tr>
+ * <tr><td>{@link streamIO.copy.ICopyAble}</td>
+ *     <td>Contract the Subject must satisfy so a Copy can be taken for the Transaction.</td></tr>
+ * <tr><td>{@link ErrorHandler}</td>
+ *     <td>Supplies the askAbort/askRetry/askIgnore Constants this Class reuses.</td></tr>
+ * </table>
  *
  * Created on 29. Januar 2001, 16:34
  *
@@ -16,17 +40,20 @@ import streamIO.copy.ICopyAble;
  * <!-- docstate
  * pass: 2
  * mtime: 2026-09-04T16:35:47Z
- * digest: ef8fa9819a8b11f24e5bb6304a3ebee0f62e782b84d9c7d626a15495e8d3866e
+ * digest: 40ed294b938ad0fa8b822f7f158d112a17acae3d1f35c8235823f726db5d228d
  * stale: false
  * -->
  */
 public class FilterCallTransAction
 implements CallAble {
 
-	/**Local Reference to the Delegate for the call() Method   */
+	/**Optional Operation run on the Subject before the Transaction, e.g. Mutex.acquire().   */
+	// TODO: LOGIC: never assigned - no Constructor Parameter and no Setter reaches this
+	// field or AfterOp, so the documented (un-)Locking Bracket is unreachable and both
+	// null Checks in call() are always false.
 	protected CallAble BeforeOp;
 
-	/**Local Reference to the Delegate for the call() Method   */
+	/**Optional Operation run on the Subject after the Transaction, e.g. Mutex.release().   */
 	protected CallAble AfterOp;
 
 	/** The Subject is subjected to the Calls handed over in call() */
@@ -38,40 +65,61 @@ implements CallAble {
 	/** The Substitute Copy on which the Operations are performed. */
 	protected ICopyAble Subst;
 
-	/**Starts a Transaction by creating a Copy */
+	/**Opens a Transaction by taking a Copy of the Subject to work on.
+	 *
+	 * @throws IllegalStateException when a Transaction is already open
+	 */
 	public void startTrans() {
 		if (Subst != null) throw new IllegalStateException();
 		Subst = Subject.copy (Depth);
 	}
 
-	/**Commits a Transaction by substituting the Original
+	/**Commits the open Transaction by promoting the Substitute Copy to be the Subject.
+	 *
+	 * <p>Commits a Transaction by substituting the Original
 	 * This is atomic even if it is not synchronized,
 	 * because only a single Object has to be swapped. */
+	// TODO: LOGIC: the atomicity claim above does not hold - two non-volatile fields are
+	// written unsynchronized, so a concurrent Reader can observe the new Subject while
+	// Subst still points at it, or either write out of order. Only safe single-threaded.
 	public void commitTrans() { Subject = Subst; Subst = null; }
 
-	/**Starts a Transaction by creating a Copy */
+	/**Abandons the open Transaction, discarding the Substitute Copy and leaving the
+	 * Subject untouched.
+	 *
+	 * @throws IllegalStateException when no Transaction is open
+	 */
 	public void rollBackTrans() {
 		if (Subst == null) throw new IllegalStateException();
 		Subst = null;
 	}
 
-	/**Creates new TransAction
-	 * The Subject is subjected to the Calls handed over in call()
-	 * The Depth determines to what Depth a Copy is performed.
+	/**Binds this Instance to the Subject it will copy, and to the Depth of that Copy.
+	 *
+	 * <p>The Subject is subjected to the Calls handed over in call().
+	 *
+	 * @param Subject the Object copied at the Start of every Transaction
+	 * @param Depth how deep a Copy {@link streamIO.copy.ICopyAble#copy(int)} should take
 	 */
 	public FilterCallTransAction(ICopyAble Subject, int Depth) {
 		this.Subject = Subject;
 		this.Depth = Depth;
 	}
 
-	/**Here the Semantics are reversed:
+	/**Runs the given Operation against a Copy of the Subject, committing it only on Success.
+	 *
+	 * <p>Here the Semantics are reversed:
 	 * The callAble Function is handed over and this Class provides the Subject.
 	 *
-	 * This is most generic, since any Number of Arguments and Return Values
+	 * <p>This is most generic, since any Number of Arguments and Return Values
 	 * can be encapsulated into a single (Container) Argument
 	 * and any type of Exception is derived from this Class.
-	 * Even 'Operation's that return no Value are defined
-	 * by this Method returning simply 'null'.
+	 *
+	 * @param Call the Operation to apply; must itself be a {@link CallAble}
+	 * @return whatever the Operation returned on the Substitute Copy, or {@code null} when
+	 *         it threw
+	 * @throws Throwable the Operation's own Exception, rethrown after the Rollback, or a
+	 *         {@link ClassCastException} when the Argument is not a CallAble
 	 */
 	public Object call (Object Call) throws Throwable {
 		Object ret = null;
