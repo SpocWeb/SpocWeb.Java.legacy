@@ -132,15 +132,30 @@ path, so invoking one from a sub-folder produces keys nothing can join on.
   The lossless alternative is consolidating the 990 stem-collapsible tags through the
   schema's `merged:` map, which is `consolidate-vocabulary`, and both tools now rewrite
   `raw-tags.tsv` on `--apply` so such a decision actually sticks.
-- **Three tag stores are unreachable and need a decision.** Their `unit-id` columns are
-  absolute paths from checkout locations that no longer exist, so no fresh scan can
-  reproduce their keys: `.../SpocWeb.ReadMeGenerator/ReadMeGenerator/raw-tags.tsv` (681
-  rows), `_SpocWeb.Root/_std/SpocWeb.ReadMeGenerator/ReadMeGenerator/raw-tags.tsv` (681,
-  byte-identical to the first) and `_org.structs/.readme-generator/raw-tags.tsv` (2,234).
-  Their tags are registered in the schema and permanently uncountable. The first two look
-  like stale copies of stores that already exist one directory up. Either migrate the
-  unit-id paths to the current relative form or delete the stores; leaving them inflates
-  every vocabulary measure with rows nothing can ever join on.
+- **Three tag stores need a unit-id path migration, and hold real data.** Their `unit-id`
+  and `file` columns are absolute paths from the machine's older layout, so a fresh scan
+  reproduces none of their keys and `build-index`/`apply-tags` skip them entirely. The
+  paths are **not** dead - they map onto the live roots (`C:\_\_\_AI\.claude\...` ->
+  `D:\_\_AI\...`, `c:\_\NET\...` -> `D:\_\_Matthias\Code\NET\...`), and once
+  mapped they resolve at 680/680, 680/680 and 2,220/2,234 (the 14 are 13 `TODO: LLM`
+  placeholders plus one genuinely deleted `StepRKQ.cs`):
+
+  | store | rows | class-level rows | distinct tags | tags not yet index-visible |
+  |---|--:|--:|--:|--:|
+  | `_org.structs/.readme-generator/raw-tags.tsv` | 2,234 | 1,041 | 462 | 115 |
+  | `.../SpocWeb.ReadMeGenerator/ReadMeGenerator/raw-tags.tsv` | 680 | 101 | 28 | 13 |
+  | `_SpocWeb.Root/_std/.../ReadMeGenerator/raw-tags.tsv` | 680 | 101 | 28 | 13 |
+
+  The two 680-row stores are byte-identical to each other and are member-level companions
+  (570 method rows each) to the 808-row class-level stores one directory up. The
+  `_org.structs` store is **not** a redundant copy of the live `org.structs` one: 1,471 of
+  its 2,154 unit keys do not appear there at all.
+
+  Migrating the columns to the working-directory-relative form the rest of the pipeline
+  uses would add roughly 1,140 class-level index rows and make up to 128 currently
+  invisible tags countable. Open questions before that: which root each store's paths
+  should be relative to, whether both identical member-level stores stay, and whether the
+  `_org.structs` tree is live code worth documenting or a stale fork of `org.structs`.
 - Nine axis-B candidates were reported for review: Callable Abstraction, Concurrency, Error
   Handling, File Transfer, Interprocess Communication, Memento Pattern, Resource
   Coordination, Text Parsing, Transaction Semantics. Axis B stays a raw string in
