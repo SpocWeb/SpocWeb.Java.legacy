@@ -1,0 +1,293 @@
+package idy6iec9fodqegc9fq5fgj;
+
+/**
+@version 2.0
+@physicalPackage
+@__modelType diagram 
+*/
+class diagram {
+/**
+@shapeType DependencyLink
+@__modelType link
+@__ref <oiref:design#Class#id13wyvc9fodqegc9fq5d7b.diagram:oiref><oihard>
+@automatic 
+*/
+class link {
+}/**
+@shapeType DependencyLink
+@__modelType link
+@__ref <oiref:design#Class#id457m4c9fodqegc9fq5a4l.diagram:oiref><oihard>
+@automatic 
+*/
+class link92 {
+}/**
+@__ref <oiref:java#Class#Stream.Float.Random.NoiseBrown:oiref><oihard>
+@__modelType reference 
+*/
+class reference2 {
+}/**
+@__ref <oiref:java#Class#Stream.Float.Random.RandomQuick:oiref><oihard>
+@__modelType reference 
+*/
+class reference3 {
+}/**
+@__ref <oiref:java#Class#Stream.Float.Random.RandomFisherZ:oiref><oihard>
+@__modelType reference 
+*/
+class reference4 {
+}/**
+@__ref <oiref:java#Class#Stream.Float.Random.RandomKvSv:oiref><oihard>
+@__modelType reference 
+*/
+class reference5 {
+}/**
+@__ref <oiref:java#Class#Stream.Float.Random.RandomChiSqr:oiref><oihard>
+@__modelType reference 
+*/
+class reference6 {
+}/**
+@__ref <oiref:java#Class#Stream.Float.Random.RandomFisherF:oiref><oihard>
+@__modelType reference 
+*/
+class reference7 {
+}/**
+@__ref <oiref:java#Class#Stream.Float.Random.RandomInt:oiref><oihard>
+@__modelType reference 
+*/
+class reference8 {
+}/**
+@__ref <oiref:java#Class#Stream.Float.Random.testRandom:oiref><oihard>
+@__modelType reference 
+*/
+class reference9 {
+}/**
+@__ref <oiref:java#Class#Stream.Float.Random.RandomExponential:oiref><oihard>
+@__modelType reference 
+*/
+class reference10 {
+}/**
+@__ref <oiref:java#Class#Stream.Float.Random.RandomPoisson:oiref><oihard>
+@__modelType reference 
+*/
+class reference11 {
+}/**
+@__ref <oiref:java#Class#Stream.Float.Random.NoiseLorentz:oiref><oihard>
+@__modelType reference 
+*/
+class reference12 {
+}/**
+@__ref <oiref:java#Class#Stream.Float.Random.RandomLinear:oiref><oihard>
+@__modelType reference 
+*/
+class reference17 {
+}/**
+@__ref <oiref:java#Class#Stream.Float.Random.RandomGamma:oiref><oihard>
+@__modelType reference 
+*/
+class reference21 {
+}/**
+@__ref <oiref:java#Class#Stream.Float.Random.RandomJava:oiref><oihard>
+@__modelType reference 
+*/
+class reference24 {
+}/**
+@__ref <oiref:java#Class#Stream.Float.Random.NoisePink:oiref><oihard>
+@__modelType reference 
+*/
+class reference29 {
+}/**
+@__ref <oiref:java#Class#Stream.Float.Random.RandomFast:oiref><oihard>
+@__modelType reference 
+*/
+class reference30 {
+}/**
+@__ref <oiref:java#Class#Stream.Float.Random.RandomBinomial:oiref><oihard>
+@__modelType reference 
+*/
+class reference32 {
+}/**
+@__ref <oiref:java#Class#Stream.Float.Random.RandomLorentz2:oiref><oihard>
+@__modelType reference 
+*/
+class reference33 {
+}/**
+@__ref <oiref:java#Class#Stream.Float.Random.RandomMix:oiref><oihard>
+@__modelType reference 
+*/
+class reference34 {
+}/**
+@__ref <oiref:java#Class#Stream.Float.Random.RandomBeta:oiref><oihard>
+@__modelType reference 
+*/
+class reference36 {
+}/**
+@__ref <oiref:java#Class#Stream.Float.Random.RandomStudent:oiref><oihard>
+@__modelType reference 
+*/
+class reference37 {
+}/**
+@__ref <oiref:java#Class#Stream.Float.Random.RandomGauss2:oiref><oihard>
+@__modelType reference 
+*/
+class reference39 {
+}/**
+@__ref <oiref:java#Class#Stream.Float.Random.RandomGauss:oiref><oihard>
+@__modelType reference 
+*/
+class reference40 {
+}/**
+@__ref <oiref:java#Class#Stream.Float.Random.RandomBit2:oiref><oihard>
+@__modelType reference 
+*/
+class reference41 {
+}/**
+@__ref <oiref:java#Class#Stream.Float.Random.SubRandom:oiref><oihard>
+@__modelType reference 
+*/
+class reference42 {
+}/**
+@__ref <oiref:java#Class#Stream.Float.Random.RandomBit:oiref><oihard>
+@__modelType reference 
+*/
+class reference43 {
+}/**
+@__ref <oiref:java#Class#Stream.Float.Random.RandomLorentz:oiref><oihard>
+@__modelType reference 
+*/
+class reference45 {
+}/**
+@__ref <oiref:java#Class#Stream.Float.Random.RandomDiscrete:oiref><oihard>
+@__modelType reference 
+*/
+class reference46 {
+}/**
+@__ref <oiref:java#Class#Stream.Float.Random.RandomBySubt:oiref><oihard>
+@__modelType reference 
+*/
+class reference47 {
+}/**
+@__ref <oiref:java#Class#Stream.Float.Random.RandomShuffle:oiref><oihard>
+@__modelType reference 
+*/
+class reference49 {
+}/**
+@__ref <oiref:java#Class#Stream.Float.Random.RandomLong:oiref><oihard>
+@__modelType reference 
+*/
+class reference51 {
+}/**
+@__ref <oiref:java#Class#Stream.Float.AStreamIn_Int:oiref><oihard>
+@__modelType reference
+@__imported 
+*/
+class reference92 {
+}/**
+@__ref <oiref:java#Class#Stream.Float.FilterFloatLin:oiref><oihard>
+@__modelType reference
+@__imported 
+*/
+class reference94 {
+}/**
+@__ref <oiref:java#Class#Stream.Float.FilterFloatMul:oiref><oihard>
+@__modelType reference
+@__imported 
+*/
+class reference95 {
+}/**
+@__ref <oiref:java#Class#Stream.Float.AStreamIn_Long:oiref><oihard>
+@__modelType reference
+@__imported 
+*/
+class reference96 {
+}/**
+@__ref <oiref:java#Class#Stream.Float.Random.ARandomFloat:oiref><oihard>
+@__modelType reference 
+*/
+class reference {
+}/**
+@__ref <oiref:java#Class#Stream.Float.Random.ARandomInt:oiref><oihard>
+@__modelType reference 
+*/
+class reference1 {
+}/**
+@__ref <oiref:java#Class#Stream.Float.Random.ARandomLong:oiref><oihard>
+@__modelType reference 
+*/
+class reference13 {
+}}/**
+@__tags
+@shapeType ClassDiagram 
+*/
+class __tags {
+}/**
+@__options 
+*/
+class __options {
+}/**
+@__positions <oigroup:<oiref:java#Class#Stream.Float.Random.RandomChiSqr:oiref>=1320,996,200,190,1:oigroup>
+<oigroup:<oiref:java#Class#Stream.Float.Random.RandomGamma:oiref>=1320,1216,200,238,1:oigroup>
+<oigroup:<oiref:java#Extends#Stream.Float.Random.RandomQuick#Stream.Float.AStreamIn_Long:oiref>=190,114,231,114:oigroup>
+<oigroup:MemberLink#<oiref:java#Member#Stream.Float.Random.RandomFisherZ#FisherF:oiref>=1180,1220,1180,1190:oigroup>
+<oigroup:<oiref:java#Class#Stream.Float.Random.RandomLorentz2:oiref>=1310,250,200,117,1:oigroup>
+<oigroup:<oiref:java#Extends#Stream.Float.Random.RandomLinear#Stream.Float.AStreamIn_Long:oiref>=460,121,431,121:oigroup>
+<oigroup:<oiref:java#Class#Stream.Float.Random.RandomFast:oiref>=221,350,165,206,1:oigroup>
+<oigroup:<oiref:java#Class#Stream.Float.Random.RandomBeta:oiref>=1320,1500,200,158,1:oigroup>
+<oigroup:<oiref:java#Class#Stream.Float.Random.NoiseLorentz:oiref>=810,450,200,174,1:oigroup>
+<oigroup:<oiref:java#Class#Stream.Float.Random.RandomKvSv:oiref>=1080,1380,200,222,1:oigroup>
+<oigroup:MemberLink#<oiref:java#Member#Stream.Float.Random.RandomFisherF#ChiSqr1:oiref>=1280,1124,1320,1124:oigroup>
+<oigroup:Composite#supplierCardinality#MemberLink#<oiref:java#Member#Stream.Float.Random.NoisePink#Lorentz:oiref>=1014,583,26,16,0:oigroup>
+<oigroup:<oiref:java#Class#Stream.Float.Random.RandomBit2:oiref>=700,820,141,174,1:oigroup>
+<oigroup:MemberLink#<oiref:java#Member#Stream.Float.Random.RandomBeta#bGamma:oiref>=1386,1500,1386,1454:oigroup>
+<oigroup:<oiref:java#Extends#Stream.Float.Random.RandomExponential#Stream.Float.FilterFloatMul:oiref>=1060,128,1080,128:oigroup>
+<oigroup:<oiref:java#Extends#Stream.Float.Random.RandomJava#Stream.Float.AStreamIn_Long:oiref>=190,274,231,274:oigroup>
+<oigroup:MemberLink#<oiref:java#Member#Stream.Float.Random.RandomFisherF#ChiSqr2:oiref>=1280,1062,1320,1062:oigroup>
+<oigroup:<oiref:java#Class#Stream.Float.Random.RandomInt:oiref>=500,610,200,190,1:oigroup>
+<oigroup:<oiref:java#Class#Stream.Float.Random.RandomBinomial:oiref>=660,1129,200,302,1:oigroup>
+<oigroup:<oiref:java#Class#Stream.Float.Random.RandomMix:oiref>=459,180,200,158,1:oigroup>
+<oigroup:<oiref:java#Extends#Stream.Float.Random.RandomInt#Stream.Float.AStreamIn_Int:oiref>=500,705,470,705:oigroup>
+<oigroup:<oiref:java#Class#Stream.Float.Random.RandomStudent:oiref>=1319,800,200,174,1:oigroup>
+<oigroup:<oiref:java#Extends#Stream.Float.Random.RandomLong#Stream.Float.Random.RandomLinear:oiref>=689,81,660,81:oigroup>
+<oigroup:MemberLink#<oiref:java#Member#Stream.Float.Random.NoisePink#Lorentz:oiref>=1080,603,1010,603:oigroup>
+<oigroup:<oiref:java#Extends#Stream.Float.Random.RandomFast#Stream.Float.AStreamIn_Long:oiref>=308,350,308,328:oigroup>
+<oigroup:<oiref:java#Class#Stream.Float.Random.RandomLorentz:oiref>=1310,60,200,117,1:oigroup>
+<oigroup:<oiref:java#Class#Stream.Float.Random.NoiseBrown:oiref>=1080,420,200,110,1:oigroup>
+<oigroup:<oiref:java#Class#Stream.Float.Random.RandomLong:oiref>=689,10,200,142,1:oigroup>
+<oigroup:<oiref:java#Class#Stream.Float.Random.RandomFisherZ:oiref>=1080,1220,200,142,1:oigroup>
+<oigroup:<oiref:java#Class#Stream.Float.Random.RandomDiscrete:oiref>=400,900,200,174,1:oigroup>
+<oigroup:<oiref:java#Class#Stream.Float.Random.RandomExponential:oiref>=860,70,200,117,1:oigroup>
+<oigroup:<oiref:java#Class#Stream.Float.Random.testRandom:oiref>=1310,410,200,325,1:oigroup>
+<oigroup:<oiref:java#Class#Stream.Float.Random.SubRandom:oiref>=184,904,200,414,1:oigroup>
+<oigroup:<oiref:java#Extends#Stream.Float.Random.RandomLorentz2#Stream.Float.FilterFloatLin:oiref>=1310,308,1281,308:oigroup>
+<oigroup:MemberLink#<oiref:java#Member#Stream.Float.Random.RandomBeta#aGamma:oiref>=1453,1500,1453,1454:oigroup>
+<oigroup:<oiref:java#Class#Stream.Float.Random.RandomPoisson:oiref>=420,1129,200,318,1:oigroup>
+<oigroup:<oiref:java#Class#Stream.Float.Random.RandomJava:oiref>=29,220,161,174,1:oigroup>
+<oigroup:<oiref:java#Extends#Stream.Float.Random.RandomBinomial#Stream.Float.Random.RandomPoisson:oiref>=660,1229,620,1229:oigroup>
+<oigroup:MemberLink#<oiref:java#Member#Stream.Float.Random.RandomBinomial#RanPoisson:oiref>=660,1330,620,1330:oigroup>
+<oigroup:<oiref:java#Extends#Stream.Float.Random.RandomDiscrete#Stream.Float.AStreamIn_Int:oiref>=423,900,423,864:oigroup>
+<oigroup:<oiref:java#Class#Stream.Float.Random.RandomGauss:oiref>=860,240,200,158,1:oigroup>
+<oigroup:<oiref:java#Extends#Stream.Float.Random.RandomBySubt#Stream.Float.AStreamIn_Int:oiref>=242,713,270,713:oigroup>
+<oigroup:<oiref:java#Class#Stream.Float.Random.RandomBySubt:oiref>=80,610,162,206,1:oigroup>
+<oigroup:<oiref:java#Extends#Stream.Float.Random.NoiseBrown#Stream.Float.FilterFloatLin:oiref>=1180,420,1180,391:oigroup>
+<oigroup:<oiref:java#Class#Stream.Float.Random.RandomBit:oiref>=860,820,200,270,1:oigroup>
+<oigroup:<oiref:java#Class#Stream.Float.FilterFloatLin:oiref>=1081,233,200,158,1:oigroup>
+<oigroup:<oiref:java#Class#Stream.Float.Random.RandomGauss2:oiref>=1080,790,200,190,1:oigroup>
+<oigroup:<oiref:java#Extends#Stream.Float.Random.RandomGauss#Stream.Float.FilterFloatLin:oiref>=1060,315,1081,315:oigroup>
+<oigroup:<oiref:java#Class#Stream.Float.AStreamIn_Long:oiref>=231,74,200,254,1:oigroup>
+<oigroup:<oiref:java#Class#Stream.Float.Random.NoisePink:oiref>=1080,550,200,174,1:oigroup>
+<oigroup:MemberLink#<oiref:java#Member#Stream.Float.Random.RandomStudent#ChiSqr:oiref>=1419,974,1419,996:oigroup>
+<oigroup:<oiref:java#Extends#Stream.Float.Random.NoiseLorentz#Stream.Float.FilterFloatLin:oiref>=910,450,1130,391:oigroup>
+<oigroup:<oiref:java#Extends#Stream.Float.Random.RandomMix#Stream.Float.AStreamIn_Long:oiref>=459,254,431,254:oigroup>
+<oigroup:<oiref:java#Class#Stream.Float.Random.RandomQuick:oiref>=21,21,169,158,1:oigroup>
+<oigroup:<oiref:java#Extends#Stream.Float.Random.RandomLorentz#Stream.Float.FilterFloatMul:oiref>=1310,118,1280,118:oigroup>
+<oigroup:<oiref:java#Extends#Stream.Float.Random.RandomShuffle#Stream.Float.AStreamIn_Long:oiref>=415,350,415,328:oigroup>
+<oigroup:<oiref:java#Extends#Stream.Float.Random.SubRandom#Stream.Float.AStreamIn_Int:oiref>=298,904,298,864:oigroup>
+<oigroup:MemberLink#<oiref:java#Member#Stream.Float.Random.RandomChiSqr#GammaRan:oiref>=1420,1186,1420,1216:oigroup>
+<oigroup:<oiref:java#Class#Stream.Float.Random.RandomFisherF:oiref>=1080,1000,200,190,1:oigroup>
+<oigroup:<oiref:java#Class#Stream.Float.FilterFloatMul:oiref>=1080,20,200,190,1:oigroup>
+<oigroup:<oiref:java#Class#Stream.Float.Random.RandomLinear:oiref>=460,10,200,158,1:oigroup>
+<oigroup:<oiref:java#Extends#Stream.Float.FilterFloatLin#Stream.Float.FilterFloatMul:oiref>=1180,233,1180,210:oigroup>
+<oigroup:<oiref:java#Class#Stream.Float.AStreamIn_Int:oiref>=270,610,200,254,1:oigroup>
+<oigroup:<oiref:java#Class#Stream.Float.Random.RandomShuffle:oiref>=400,350,200,158,1:oigroup>
+*/
+class __positions {
+}

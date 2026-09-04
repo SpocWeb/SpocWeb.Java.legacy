@@ -1,0 +1,218 @@
+package id4xoqwc9frybwec9fs2f02;
+
+/**
+@version 2.0
+@physicalPackage
+@__modelType diagram 
+*/
+class diagram {
+/**
+@shapeType DependencyLink
+@__modelType link
+@__ref <oiref:design#Class#id40fm3c9fodqegc9fq5dhv.diagram:oiref><oihard>
+@automatic 
+*/
+class link {
+}/**
+@shapeType DependencyLink
+@__modelType link
+@__ref <oiref:design#Class#idqb01c9fodqegc9fq5ddp.diagram:oiref><oihard>
+@automatic 
+*/
+class link290 {
+}/**
+@shapeType DependencyLink
+@__modelType link
+@__ref <oiref:design#Class#ideeszc9fodqegc9fq5f2m.diagram:oiref><oihard>
+@automatic 
+*/
+class link291 {
+}/**
+@shapeType DependencyLink
+@__modelType link
+@__ref <oiref:design#Class#id457m4c9fodqegc9fq5a4l.diagram:oiref><oihard>
+@automatic 
+*/
+class link292 {
+}/**
+@__ref <oiref:java#Class#graphs.MatrixGraph:oiref><oihard>
+@__modelType reference 
+*/
+class reference {
+}/**
+@__ref <oiref:java#Class#graphs.PairSym:oiref><oihard>
+@__modelType reference 
+*/
+class reference122 {
+}/**
+@__ref <oiref:java#Class#graphs.Edge:oiref><oihard>
+@__modelType reference 
+*/
+class reference123 {
+}/**
+@__ref <oiref:java#Class#graphs.PairKey:oiref><oihard>
+@__modelType reference 
+*/
+class reference124 {
+}/**
+@__ref <oiref:java#Class#graphs.Pair:oiref><oihard>
+@__modelType reference 
+*/
+class reference125 {
+}/**
+@__ref <oiref:java#Class#graphs.testGraph:oiref><oihard>
+@__modelType reference 
+*/
+class reference126 {
+}/**
+@__ref <oiref:java#Class#graphs.ACopy:oiref><oihard>
+@__modelType reference 
+*/
+class reference127 {
+}/**
+@__ref <oiref:java#Class#graphs.IEdgeStreamIn:oiref><oihard>
+@__modelType reference 
+*/
+class reference128 {
+}/**
+@__ref <oiref:java#Class#graphs.SparseGraph:oiref><oihard>
+@__modelType reference 
+*/
+class reference129 {
+}/**
+@__ref <oiref:java#Class#graphs.Value:oiref><oihard>
+@__modelType reference 
+*/
+class reference130 {
+}/**
+@__ref <oiref:java#Class#graphs.IValueSetter:oiref><oihard>
+@__modelType reference 
+*/
+class reference131 {
+}/**
+@__ref <oiref:java#Class#graphs.AdjMatrixEdgeStream:oiref><oihard>
+@__modelType reference 
+*/
+class reference132 {
+}/**
+@__ref <oiref:java#Class#graphs.AEdgeStreamIn:oiref><oihard>
+@__modelType reference 
+*/
+class reference133 {
+}/**
+@__ref <oiref:java#Class#graphs.HeapIndx:oiref><oihard>
+@__modelType reference 
+*/
+class reference134 {
+}/**
+@__ref <oiref:java#Class#graphs.EquivalenceByParent:oiref><oihard>
+@__modelType reference 
+*/
+class reference135 {
+}/**
+@__ref <oiref:java#Class#graphs.ILinked:oiref><oihard>
+@__modelType reference 
+*/
+class reference136 {
+}/**
+@__ref <oiref:java#Class#graphs.ListEdge:oiref><oihard>
+@__modelType reference 
+*/
+class reference137 {
+}/**
+@__ref <oiref:java#Class#graphs.DisJointSet:oiref><oihard>
+@__modelType reference 
+*/
+class reference138 {
+}/**
+@__ref <oiref:java#Class#graphs.Pairing:oiref><oihard>
+@__modelType reference 
+*/
+class reference139 {
+}/**
+@__ref <oiref:java#Class#graphs.IValue:oiref><oihard>
+@__modelType reference 
+*/
+class reference140 {
+}/**
+@__ref <oiref:java#Class#graphs.CValue:oiref><oihard>
+@__modelType reference 
+*/
+class reference141 {
+}/**
+@__ref <oiref:java#Class#graphs.Huffman:oiref><oihard>
+@__modelType reference 
+*/
+class reference142 {
+}/**
+@__ref <oiref:java#Class#graphs.SparseEdgeStream:oiref><oihard>
+@__modelType reference 
+*/
+class reference143 {
+}/**
+@__ref <oiref:java#Class#graphs.ICPair:oiref><oihard>
+@__modelType reference 
+*/
+class reference144 {
+}/**
+@__ref <oiref:java#Class#graphs.IPair:oiref><oihard>
+@__modelType reference 
+*/
+class reference145 {
+}/**
+@__ref <oiref:java#Class#graphs.ICopy:oiref><oihard>
+@__modelType reference 
+*/
+class reference146 {
+}/**
+@__ref <oiref:java#Class#graphs.ILinkAble:oiref><oihard>
+@__modelType reference 
+*/
+class reference147 {
+}/**
+@__ref <oiref:java#Class#graphs.ICValue:oiref><oihard>
+@__modelType reference 
+*/
+class reference148 {
+}/**
+@__ref <oiref:java#Class#graphs.TypedEdge:oiref><oihard>
+@__modelType reference 
+*/
+class reference149 {
+}/**
+@__ref <oiref:java#Class#graphs.SparseMatrix:oiref><oihard>
+@__modelType reference 
+*/
+class reference150 {
+}/**
+@__ref <oiref:java#Class#graphs.PairVal:oiref><oihard>
+@__modelType reference 
+*/
+class reference151 {
+}}/**
+@__tags
+@shapeType ClassDiagram 
+*/
+class __tags {
+}/**
+@__options 
+*/
+class __options {
+}/**
+@__positions <oigroup:<oiref:java#Implements#Graph.ACopy#Graph.ICopy:oiref>=61,330,61,287:oigroup>
+<oigroup:<oiref:java#Extends#Graph.PairVal#Graph.Pair1:oiref>=127,445,150,445:oigroup>
+<oigroup:<oiref:java#Implements#Graph.PairVal#Graph.ICopy:oiref>=140,422,140,333:oigroup>
+<oigroup:<oiref:java#Implements#Graph.PairVal#Graph.IPair:oiref>=71,422,71,362:oigroup>
+<oigroup:MemberLink#<oiref:java#Member#Graph.Edge#Next:oiref>=229,628,229,657,277,657,277,609,248,609:oigroup>
+<oigroup:<oiref:java#Extends#Graph.ILinkAble#Graph.ILinked:oiref>=529,216,529,156:oigroup>
+<oigroup:MemberLink#<oiref:java#Member#Graph.AdjListIterator#currEdge:oiref>=170,660,170,628:oigroup>
+<oigroup:MemberLink#<oiref:java#Member#Graph.AdjListIterator#AL:oiref>=191,779,279,779:oigroup>
+<oigroup:MemberLink#<oiref:java#Member#Graph.AdjListIterator#currItem:oiref>=75,660,75,579:oigroup>
+<oigroup:<oiref:java#Implements#Graph.Pair1#Graph.ICopy:oiref>=150,238,106,238:oigroup>
+<oigroup:MemberLink#<oiref:java#Member#Graph.AdjList#Nodes:oiref>=279,549,248,549:oigroup>
+<oigroup:<oiref:java#Extends#Graph.IPair#Graph.ICPair:oiref>=150,83,110,83:oigroup>
+<oigroup:<oiref:java#Implements#Graph.Pair1#Graph.IPair:oiref>=200,190,200,156:oigroup>
+<oigroup:Composite#supplierCardinality#MemberLink#<oiref:java#Member#Graph.AdjList#Nodes:oiref>=252,529,26,16,0:oigroup>
+*/
+class __positions {
+}

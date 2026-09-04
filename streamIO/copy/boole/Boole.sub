@@ -1,0 +1,283 @@
+
+(object Petal
+    version    	42
+    _written   	"Rose 4.5.8163.3"
+    charSet    	0)
+
+(object SubSystem "Boole"
+    is_unit    	TRUE
+    is_loaded  	TRUE
+    quid       	"36BB89C30326"
+    visible_modules 	(list dependency_list
+	(object Dependency_Relationship
+	    quid       	"36BB89C40129"
+	    supplier   	"Component View::BaseCopy"
+	    quidu      	"36BABF4B0011"
+	    supplier_is_subsystem 	TRUE))
+    physical_models 	(list unit_reference_list
+	(object module "intBoole" "NotAModuleType" "NotAModulePart"
+	    attributes 	(list Attribute_Set
+		(object Attribute
+		    tool       	"Java"
+		    name       	"FileName"
+		    value      	"D:\\Personal\\Code\\Java\\Boole\\intBoole.java"))
+	    quid       	"36BB89C30330"
+	    stereotype 	""
+	    realized_interfaces 	(list realize_rel_list
+		(object Realize_Relationship
+		    quid       	"37BF05B50108"
+		    supplier   	"Logical View::Boole::intBoole"
+		    quidu      	"36BB89C3033A"))
+	    language   	"Java")
+	(object module "Boole" "NotAModuleType" "NotAModulePart"
+	    attributes 	(list Attribute_Set
+		(object Attribute
+		    tool       	"Java"
+		    name       	"FileName"
+		    value      	"D:\\Personal\\Code\\Java\\Boole\\Boole.java"))
+	    quid       	"36BB89C40025"
+	    stereotype 	""
+	    visible_modules 	(list dependency_list
+		(object Dependency_Relationship
+		    quid       	"36BB89C4012A"
+		    supplier   	"Component View::BaseCopy"
+		    quidu      	"36BABF4B0011"
+		    supplier_is_subsystem 	TRUE)
+		(object Dependency_Relationship
+		    quid       	"36BB8A91034A"
+		    supplier   	"Component View::BaseCopy"
+		    quidu      	"36BABF4B0011"
+		    supplier_is_subsystem 	TRUE)
+		(object Dependency_Relationship
+		    quid       	"36BB8AD000D4"
+		    supplier   	"Component View::BaseCopy"
+		    quidu      	"36BABF4B0011"
+		    supplier_is_subsystem 	TRUE)
+		(object Dependency_Relationship
+		    quid       	"37BC8EBF0259"
+		    supplier   	"Component View::BaseCopy"
+		    quidu      	"36BABF4B0011"
+		    supplier_is_subsystem 	TRUE)
+		(object Dependency_Relationship
+		    quid       	"37BD1C1B01CA"
+		    supplier   	"Component View::BaseCopy"
+		    quidu      	"36BABF4B0011"
+		    supplier_is_subsystem 	TRUE)
+		(object Dependency_Relationship
+		    quid       	"37BD362402E6"
+		    supplier   	"Component View::BaseCopy"
+		    quidu      	"36BABF4B0011"
+		    supplier_is_subsystem 	TRUE))
+	    realized_interfaces 	(list realize_rel_list
+		(object Realize_Relationship
+		    quid       	"37BF05B30156"
+		    supplier   	"Logical View::Boole::Boole"
+		    quidu      	"36BB89C40026"))
+	    language   	"Java")
+	(object module "absBoole" "NotAModuleType" "NotAModulePart"
+	    attributes 	(list Attribute_Set
+		(object Attribute
+		    tool       	"Java"
+		    name       	"FileName"
+		    value      	"D:\\Personal\\Code\\Java\\Boole\\absBoole.java"))
+	    quid       	"36BB89C4025F"
+	    stereotype 	""
+	    visible_modules 	(list dependency_list
+		(object Dependency_Relationship
+		    quid       	"36BB8A9103D7"
+		    supplier   	"Component View::BaseCopy"
+		    quidu      	"36BABF4B0011"
+		    supplier_is_subsystem 	TRUE)
+		(object Dependency_Relationship
+		    quid       	"36BB8AD00305"
+		    supplier   	"Component View::BaseCopy"
+		    quidu      	"36BABF4B0011"
+		    supplier_is_subsystem 	TRUE)
+		(object Dependency_Relationship
+		    quid       	"37BC8EBE01AE"
+		    supplier   	"Component View::BaseCopy"
+		    quidu      	"36BABF4B0011"
+		    supplier_is_subsystem 	TRUE)
+		(object Dependency_Relationship
+		    quid       	"37BD1C1802CA"
+		    supplier   	"Component View::BaseCopy"
+		    quidu      	"36BABF4B0011"
+		    supplier_is_subsystem 	TRUE)
+		(object Dependency_Relationship
+		    quid       	"37BD362200B3"
+		    supplier   	"Component View::BaseCopy"
+		    quidu      	"36BABF4B0011"
+		    supplier_is_subsystem 	TRUE))
+	    language   	"Java")
+	(object module "Boolean" "NotAModuleType" "NotAModulePart"
+	    attributes 	(list Attribute_Set
+		(object Attribute
+		    tool       	"Java"
+		    name       	"FileName"
+		    value      	"D:\\Personal\\Code\\Java\\Boole\\Boolean.java"))
+	    quid       	"36BB89C40300"
+	    stereotype 	""
+	    visible_modules 	(list dependency_list
+		(object Dependency_Relationship
+		    quid       	"36BB89C4036E"
+		    supplier   	"Component View::BaseCopy"
+		    quidu      	"36BABF4B0011"
+		    supplier_is_subsystem 	TRUE)
+		(object Dependency_Relationship
+		    quid       	"36BB8A9201B1"
+		    supplier   	"Component View::BaseCopy"
+		    quidu      	"36BABF4B0011"
+		    supplier_is_subsystem 	TRUE)
+		(object Dependency_Relationship
+		    quid       	"36BB8AD10053"
+		    supplier   	"Component View::BaseCopy"
+		    quidu      	"36BABF4B0011"
+		    supplier_is_subsystem 	TRUE)
+		(object Dependency_Relationship
+		    quid       	"37BC8EBF03C2"
+		    supplier   	"Component View::BaseCopy"
+		    quidu      	"36BABF4B0011"
+		    supplier_is_subsystem 	TRUE)
+		(object Dependency_Relationship
+		    quid       	"37BD1C1C0348"
+		    supplier   	"Component View::BaseCopy"
+		    quidu      	"36BABF4B0011"
+		    supplier_is_subsystem 	TRUE)
+		(object Dependency_Relationship
+		    quid       	"37BD3626009A"
+		    supplier   	"Component View::BaseCopy"
+		    quidu      	"36BABF4B0011"
+		    supplier_is_subsystem 	TRUE))
+	    language   	"Java"))
+    physical_presentations 	(list unit_reference_list
+	(object Module_Diagram "Boole"
+	    quid       	"37BF05A8022C"
+	    title      	"Boole"
+	    zoom       	100
+	    max_height 	28350
+	    max_width  	21600
+	    origin_x   	0
+	    origin_y   	0
+	    items      	(list diagram_item_list
+		(object ModView "Component View::Boole::Boolean" "NotAModuleType" "NotAModulePart" @1
+		    location   	(186, 155)
+		    label      	(object ItemLabel
+			Parent_View 	@1
+			location   	(151, 130)
+			fill_color 	13434879
+			anchor_loc 	3
+			nlines     	2
+			max_width  	127
+			label      	"Boolean")
+		    icon_style 	"Icon"
+		    line_color 	3342489
+		    fill_color 	13434879
+		    quidu      	"36BB89C40300"
+		    width      	228
+		    autoResize 	TRUE
+		    width      	228
+		    height     	162)
+		(object ModView "Component View::Boole::absBoole" "NotAModuleType" "NotAModulePart" @2
+		    location   	(589, 155)
+		    label      	(object ItemLabel
+			Parent_View 	@2
+			location   	(554, 130)
+			fill_color 	13434879
+			anchor_loc 	3
+			nlines     	2
+			max_width  	127
+			label      	"absBoole")
+		    icon_style 	"Icon"
+		    line_color 	3342489
+		    fill_color 	13434879
+		    quidu      	"36BB89C4025F"
+		    width      	228
+		    autoResize 	TRUE
+		    width      	228
+		    height     	162)
+		(object ModView "Component View::Boole::Boole" "NotAModuleType" "NotAModulePart" @3
+		    location   	(186, 527)
+		    label      	(object ItemLabel
+			Parent_View 	@3
+			location   	(151, 502)
+			fill_color 	13434879
+			anchor_loc 	3
+			nlines     	2
+			max_width  	127
+			label      	"Boole")
+		    icon_style 	"Icon"
+		    line_color 	3342489
+		    fill_color 	13434879
+		    quidu      	"36BB89C40025"
+		    width      	228
+		    autoResize 	TRUE
+		    width      	228
+		    height     	162)
+		(object InterfaceView "Logical View::Boole::Boole" @4
+		    location   	(186, 930)
+		    label      	(object ItemLabel
+			Parent_View 	@4
+			location   	(185, 1038)
+			anchor_loc 	1
+			nlines     	2
+			max_width  	229
+			justify    	0
+			label      	"Boole")
+		    icon       	"Interface"
+		    icon_style 	"Icon"
+		    line_color 	3342489
+		    fill_color 	13434879
+		    quidu      	"36BB89C40026"
+		    width      	58
+		    height     	58
+		    autoResize 	TRUE)
+		(object RealizeView "" @5
+		    stereotype 	TRUE
+		    line_color 	3342489
+		    quidu      	"37BF05B30156"
+		    client     	@3
+		    supplier   	@4
+		    line_style 	0)
+		(object ModView "Component View::Boole::intBoole" "NotAModuleType" "NotAModulePart" @6
+		    location   	(496, 527)
+		    label      	(object ItemLabel
+			Parent_View 	@6
+			location   	(461, 502)
+			fill_color 	13434879
+			anchor_loc 	3
+			nlines     	2
+			max_width  	127
+			label      	"intBoole")
+		    icon_style 	"Icon"
+		    line_color 	3342489
+		    fill_color 	13434879
+		    quidu      	"36BB89C30330"
+		    width      	228
+		    autoResize 	TRUE
+		    width      	228
+		    height     	162)
+		(object InterfaceView "Logical View::Boole::intBoole" @7
+		    location   	(496, 930)
+		    label      	(object ItemLabel
+			Parent_View 	@7
+			location   	(495, 1038)
+			anchor_loc 	1
+			nlines     	2
+			max_width  	229
+			justify    	0
+			label      	"intBoole")
+		    icon       	"Interface"
+		    icon_style 	"Icon"
+		    line_color 	3342489
+		    fill_color 	13434879
+		    quidu      	"36BB89C3033A"
+		    width      	58
+		    height     	58
+		    autoResize 	TRUE)
+		(object RealizeView "" @8
+		    stereotype 	TRUE
+		    line_color 	3342489
+		    quidu      	"37BF05B50108"
+		    client     	@6
+		    supplier   	@7
+		    line_style 	0)))))

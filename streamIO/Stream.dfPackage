@@ -1,0 +1,480 @@
+package idqb01c9fodqegc9fq5ddp;
+
+/**
+@version 2.0
+@physicalPackage
+@__modelType diagram 
+*/
+class diagram {
+/**
+@__ref <oiref:design#Class#id2otl3c9fodqegc9fq5gp1.diagram:oiref><oihard>
+@__modelType reference
+@__fqn <oiref:#Package#Stream.Copy:oiref> 
+*/
+class reference90 {
+}/**
+@__ref <oiref:design#Class#id4f20zc9fodqegc9fq5grt.diagram:oiref><oihard>
+@__modelType reference
+@__fqn <oiref:#Package#Stream.Object:oiref> 
+*/
+class reference97 {
+}/**
+@shapeType DependencyLink
+@__modelType link
+@__ref <oiref:design#Class#idnsfcc9frybwec9fs1qlv.diagram:oiref><oihard>
+@automatic 
+*/
+class link {
+}/**
+@shapeType DependencyLink
+@__modelType link
+@__ref <oiref:design#Class#id4pqjqc9frybwec9fs29u9.diagram:oiref><oihard>
+@automatic 
+*/
+class link105 {
+}/**
+@shapeType DependencyLink
+@__modelType link
+@__ref <oiref:design#Class#id47mokc9fodqegc9fq5czi.diagram:oiref><oihard>
+@automatic 
+*/
+class link106 {
+}/**
+@shapeType DependencyLink
+@__modelType link
+@__ref <oiref:design#Class#id3845wc9frybwec9fs25nr.diagram:oiref><oihard>
+@automatic 
+*/
+class link107 {
+}/**
+@shapeType DependencyLink
+@__modelType link
+@__ref <oiref:design#Class#id8a6rc9frybwec9fs2biw.diagram:oiref><oihard>
+@automatic 
+*/
+class link108 {
+}/**
+@shapeType DependencyLink
+@__modelType link
+@__ref <oiref:design#Class#id4vy0zc9fodqegc9fqqr4o.diagram:oiref><oihard>
+@automatic 
+*/
+class link109 {
+}/**
+@shapeType DependencyLink
+@__modelType link
+@__ref <oiref:design#Class#id1ozrtc9frybwec9fs271u.diagram:oiref><oihard>
+@automatic 
+*/
+class link110 {
+}/**
+@shapeType DependencyLink
+@__modelType link
+@__ref <oiref:design#Class#id460ucc9frybwec9fs1s26.diagram:oiref><oihard>
+@automatic 
+*/
+class link111 {
+}/**
+@shapeType DependencyLink
+@__modelType link
+@__ref <oiref:design#Class#id3ai3cc9frybwec9fs1pgf.diagram:oiref><oihard>
+@automatic 
+*/
+class link112 {
+}/**
+@shapeType DependencyLink
+@__modelType link
+@__ref <oiref:design#Class#id7qibc9fodqegc9fqqngt.diagram:oiref><oihard>
+@automatic 
+*/
+class link113 {
+}/**
+@shapeType DependencyLink
+@__modelType link
+@__ref <oiref:design#Class#id62hhc9fodqegc9fq5d8p.diagram:oiref><oihard>
+@automatic 
+*/
+class link114 {
+}/**
+@shapeType DependencyLink
+@__modelType link
+@__ref <oiref:design#Class#id457m4c9fodqegc9fq5a4l.diagram:oiref><oihard>
+@automatic 
+*/
+class link115 {
+}/**
+@shapeType DependencyLink
+@__modelType link
+@__ref <oiref:design#Class#id9f8wc9frybwec9fs0pa9.diagram:oiref><oihard>
+@automatic 
+*/
+class link116 {
+}/**
+@shapeType DependencyLink
+@__modelType link
+@__ref <oiref:design#Class#id4z54zc9frybwec9fs2cug.diagram:oiref><oihard>
+@automatic 
+*/
+class link117 {
+}/**
+@shapeType DependencyLink
+@__modelType link
+@__ref <oiref:design#Class#id285ivc9frybwec9fs2ayb.diagram:oiref><oihard>
+@automatic 
+*/
+class link118 {
+}/**
+@shapeType DependencyLink
+@__modelType link
+@__ref <oiref:design#Class#id2c6swc9frybwec9fs20g9.diagram:oiref><oihard>
+@automatic 
+*/
+class link119 {
+}/**
+@shapeType DependencyLink
+@__modelType link
+@__ref <oiref:design#Class#id3ct9hc9frybwec9fs1u45.diagram:oiref><oihard>
+@automatic 
+*/
+class link120 {
+}/**
+@shapeType DependencyLink
+@__modelType link
+@__ref <oiref:design#Class#id3npiic9frybwec9fs1t40.diagram:oiref><oihard>
+@automatic 
+*/
+class link121 {
+}/**
+@shapeType DependencyLink
+@__modelType link
+@__ref <oiref:design#Class#id45u3xc9frybwec9fs1q4c.diagram:oiref><oihard>
+@automatic 
+*/
+class link122 {
+}/**
+@shapeType DependencyLink
+@__modelType link
+@__ref <oiref:design#Class#id25b1fc9fodqegc9fqqpu7.diagram:oiref><oihard>
+@automatic 
+*/
+class link123 {
+}/**
+@shapeType DependencyLink
+@__modelType link
+@__ref <oiref:design#Class#id1o3uyc9frybwec9fs1tko.diagram:oiref><oihard>
+@automatic 
+*/
+class link124 {
+}/**
+@shapeType DependencyLink
+@__modelType link
+@__ref <oiref:design#Class#id2otl3c9fodqegc9fq5gp1.diagram:oiref><oihard>
+@automatic 
+*/
+class link125 {
+}/**
+@shapeType DependencyLink
+@__modelType link
+@__ref <oiref:design#Class#id15cqcc9fodqegc9fqqu1j.diagram:oiref><oihard>
+@automatic 
+*/
+class link126 {
+}/**
+@shapeType DependencyLink
+@__modelType link
+@__ref <oiref:design#Class#id235w6c9fodqegc9fqqsdg.diagram:oiref><oihard>
+@automatic 
+*/
+class link127 {
+}/**
+@shapeType DependencyLink
+@__modelType link
+@__ref <oiref:design#Class#id1ygonc9fodqegc9fq5eog.diagram:oiref><oihard>
+@automatic 
+*/
+class link128 {
+}/**
+@shapeType DependencyLink
+@__modelType link
+@__ref <oiref:design#Class#id2z7bcc9fodqegc9fq5es2.diagram:oiref><oihard>
+@automatic 
+*/
+class link129 {
+}/**
+@shapeType DependencyLink
+@__modelType link
+@__ref <oiref:design#Class#id4f20zc9fodqegc9fq5grt.diagram:oiref><oihard>
+@automatic 
+*/
+class link130 {
+}/**
+@shapeType DependencyLink
+@__modelType link
+@__ref <oiref:design#Class#id40uamc9frybwec9fs17uq.diagram:oiref><oihard>
+@automatic 
+*/
+class link131 {
+}/**
+@__ref <oiref:java#Class#Stream.Object.Pipe:oiref><oihard>
+@__modelType reference
+@__imported
+@__hidden 
+*/
+class reference337 {
+}/**
+@__ref <oiref:java#Class#java.io.PrintStream:oiref><oihard>
+@__modelType reference
+@__imported 
+*/
+class reference7 {
+}/**
+@__ref <oiref:design#Class#id2t2fgcd1s8i26cd1sbjqd.diagram:oiref><oihard>
+@__modelType reference
+@__fqn <oiref:#Package#Stream.Float:oiref> 
+*/
+class reference13 {
+}/**
+@__ref <oiref:design#Class#id1gmczbojp9p8sbok762m2.diagram:oiref><oihard>
+@__modelType reference
+@__fqn <oiref:#Package#Stream.Byte:oiref> 
+*/
+class reference1 {
+}/**
+@__ref <oiref:java#Class#streamIO.ParserIn:oiref><oihard>
+@__modelType reference 
+*/
+class reference {
+}/**
+@__ref <oiref:java#Class#streamIO.IStreamIn:oiref><oihard>
+@__modelType reference 
+*/
+class reference63 {
+}/**
+@__ref <oiref:java#Class#streamIO.StringBufferOutputStream:oiref><oihard>
+@__modelType reference 
+*/
+class reference64 {
+}/**
+@__ref <oiref:java#Class#streamIO.FormatterOut:oiref><oihard>
+@__modelType reference 
+*/
+class reference65 {
+}/**
+@__ref <oiref:java#Class#streamIO.InstantiAble:oiref><oihard>
+@__modelType reference 
+*/
+class reference66 {
+}/**
+@__ref <oiref:java#Class#streamIO.Assert:oiref><oihard>
+@__modelType reference 
+*/
+class reference67 {
+}/**
+@__ref <oiref:java#Class#streamIO.AFormatterOut:oiref><oihard>
+@__modelType reference 
+*/
+class reference68 {
+}/**
+@__ref <oiref:java#Class#streamIO.RunnablePrinter:oiref><oihard>
+@__modelType reference 
+*/
+class reference69 {
+}/**
+@__ref <oiref:java#Class#streamIO.ReadOnlyException:oiref><oihard>
+@__modelType reference 
+*/
+class reference70 {
+}/**
+@__ref <oiref:java#Class#streamIO.StringBufferStreamOut:oiref><oihard>
+@__modelType reference 
+*/
+class reference71 {
+}/**
+@__ref <oiref:java#Class#streamIO.FailureException:oiref><oihard>
+@__modelType reference 
+*/
+class reference72 {
+}/**
+@__ref <oiref:java#Class#streamIO.PrintStreamOut:oiref><oihard>
+@__modelType reference 
+*/
+class reference73 {
+}/**
+@__ref <oiref:design#Class#id6zd1ybqh0rautbqh0sm4f.diagram:oiref><oihard>
+@__modelType reference
+@__fqn <oiref:#Package#streamIO.adapter:oiref> 
+*/
+class reference74 {
+}/**
+@__ref <oiref:java#Class#streamIO.FileBackupIterator:oiref><oihard>
+@__modelType reference 
+*/
+class reference75 {
+}/**
+@__ref <oiref:java#Class#streamIO.IAvailAble:oiref><oihard>
+@__modelType reference 
+*/
+class reference76 {
+}/**
+@__ref <oiref:java#Class#streamIO.StreamOut:oiref><oihard>
+@__modelType reference 
+*/
+class reference77 {
+}/**
+@__ref <oiref:design#Class#id9t9mibqh0rautbqh0sm5j.diagram:oiref><oihard>
+@__modelType reference
+@__fqn <oiref:#Package#streamIO.test:oiref> 
+*/
+class reference78 {
+}/**
+@__ref <oiref:java#Class#streamIO.StreamInRunner:oiref><oihard>
+@__modelType reference 
+*/
+class reference79 {
+}/**
+@__ref <oiref:java#Class#streamIO.IStreamOut:oiref><oihard>
+@__modelType reference 
+*/
+class reference80 {
+}/**
+@__ref <oiref:java#Class#streamIO.DevNullOut:oiref><oihard>
+@__modelType reference 
+*/
+class reference81 {
+}/**
+@__ref <oiref:java#Class#streamIO.IterAble:oiref><oihard>
+@__modelType reference 
+*/
+class reference82 {
+}/**
+@__ref <oiref:java#Class#streamIO.AStreamOut:oiref><oihard>
+@__modelType reference 
+*/
+class reference83 {
+}/**
+@__ref <oiref:java#Class#streamIO.OperationNotSupported:oiref><oihard>
+@__modelType reference 
+*/
+class reference84 {
+}/**
+@__ref <oiref:java#Class#streamIO.DirectoryFilter:oiref><oihard>
+@__modelType reference 
+*/
+class reference85 {
+}/**
+@__ref <oiref:java#Class#streamIO.FactoryByClass:oiref><oihard>
+@__modelType reference 
+*/
+class reference86 {
+}/**
+@__ref <oiref:java#Class#streamIO.FileIterator:oiref><oihard>
+@__modelType reference 
+*/
+class reference87 {
+}/**
+@__ref <oiref:java#Class#streamIO.IStreamIn_String:oiref><oihard>
+@__modelType reference 
+*/
+class reference88 {
+}/**
+@__ref <oiref:java#Class#streamIO.Log:oiref><oihard>
+@__modelType reference 
+*/
+class reference89 {
+}/**
+@__ref <oiref:java#Class#streamIO.IFactory:oiref><oihard>
+@__modelType reference 
+*/
+class reference91 {
+}/**
+@__ref <oiref:design#Class#idcl1qlbqh0rautbqh0sm4p.diagram:oiref><oihard>
+@__modelType reference
+@__fqn <oiref:#Package#streamIO.character:oiref> 
+*/
+class reference92 {
+}/**
+@__ref <oiref:java#Class#streamIO.SuffixFileNameFilter:oiref><oihard>
+@__modelType reference 
+*/
+class reference93 {
+}/**
+@__ref <oiref:java#Class#streamIO.BaseException:oiref><oihard>
+@__modelType reference 
+*/
+class reference94 {
+}/**
+@__ref <oiref:java#Class#streamIO.FilterOut:oiref><oihard>
+@__modelType reference 
+*/
+class reference95 {
+}/**
+@__ref <oiref:java#Class#streamIO.FactoryByPrototype:oiref><oihard>
+@__modelType reference 
+*/
+class reference96 {
+}}/**
+@__tags
+@shapeType ClassDiagram 
+*/
+class __tags {
+}/**
+@__options 
+*/
+class __options {
+}/**
+@__positions <oigroup:<oiref:java#Extends#Stream.FilterOut#Stream.AStreamOut:oiref>=380,450,380,439:oigroup>
+<oigroup:MemberLink#<oiref:java#Member#Stream.Log#Err:oiref>=230,1310,230,1400,400,1400,400,1230,310,1230:oigroup>
+<oigroup:MemberLink#<oiref:java#Member#Stream.FilterOut#Store:oiref>=449,450,449,184:oigroup>
+<oigroup:<oiref:design#Class#id40uamc9frybwec9fs17uq.diagram.link:oiref>=566,75,446,75:oigroup>
+<oigroup:<oiref:java#Extends#Stream.ParserIn#Stream.IStreamIn:oiref>=960,220,1151,176:oigroup>
+<oigroup:<oiref:java#Implements#Stream.PrintStreamOut#Stream.StreamOut:oiref>=220,470,1223,346,1223,204,548,152:oigroup>
+<oigroup:<oiref:java#Extends#Stream.Object.Pipe#Stream.StreamOut:oiref>=502,640,502,152:oigroup>
+<oigroup:<oiref:design#Class#id4f20zc9fodqegc9fq5grt.diagram.link243:oiref>=1049,573,1110,573:oigroup>
+<oigroup:<oiref:java#Extends#Stream.FormatterOut#Stream.StreamOut:oiref>=518,220,518,184:oigroup>
+<oigroup:<oiref:java#Class#Stream.Object.AStreamIn:oiref>=390,410,200,709,1:oigroup>
+<oigroup:MemberLink#<oiref:java#Member#Stream.StreamInRunner#mProcessor:oiref>=1010,88,1122,88:oigroup>
+<oigroup:<oiref:design#Class#id4f20zc9fodqegc9fq5grt.diagram.link239:oiref>=499,504,673,504:oigroup>
+<oigroup:<oiref:java#Extends#Stream.OperationNotSupported#Stream.BaseException:oiref>=76,308,76,280:oigroup>
+<oigroup:<oiref:java#Implements#Stream.PrintStreamOut#Stream.FormatterOut:oiref>=530,600,530,337:oigroup>
+<oigroup:<oiref:java#Extends#Stream.ReadOnlyException#Stream.BaseException:oiref>=1160,840,143,280:oigroup>
+<oigroup:MemberLink#<oiref:java#Member#Stream.PrintStreamOut#SysOut:oiref>=546,852,546,906,644,906,644,808,590,808:oigroup>
+<oigroup:<oiref:design#Class#id7qibc9fodqegc9fqqngt.diagram.link258:oiref>=326,337,629,206:oigroup>
+<oigroup:<oiref:java#Implements#Stream.AFormatterOut#Stream.FormatterOut:oiref>=650,380,650,337:oigroup>
+<oigroup:MemberLink#<oiref:java#Member#Stream.Log#L:oiref>=270,1310,270,1360,360,1360,360,1270,310,1270:oigroup>
+<oigroup:<oiref:java#Extends#Stream.PrintStreamOut#Stream.AStreamOut:oiref>=280,470,280,323:oigroup>
+<oigroup:<oiref:design#Class#id2t2fgcd1s8i26cd1sbjqd.diagram:oiref>=1230,1060,68,78,1:oigroup>
+<oigroup:MemberLink#<oiref:java#Member#Stream.Log#SBOS:oiref>=310,1005,360,1005:oigroup>
+<oigroup:<oiref:design#Class#id4z54zc9frybwec9fs2cug.diagram.link278:oiref>=673,607,499,607:oigroup>
+<oigroup:<oiref:java#Implements#Stream.FileBackupIterator#Stream.IStreamIn:oiref>=1180,220,1180,176:oigroup>
+<oigroup:MemberLink#<oiref:java#Member#Stream.PrintStreamOut#Out:oiref>=590,781,650,781:oigroup>
+<oigroup:MemberLink#<oiref:java#Member#Stream.Log#OS:oiref>=320,717,360,717:oigroup>
+<oigroup:MemberLink#<oiref:java#Member#Stream.Log#Filter:oiref>=310,846,650,846:oigroup>
+<oigroup:MemberLink#<oiref:java#Member#Stream.Log#Out:oiref>=190,1310,190,1440,440,1440,440,1190,310,1190:oigroup>
+<oigroup:<oiref:java#Extends#Stream.Object.StreamIn#Stream.IStreamIn:oiref>=426,230,727,152:oigroup>
+<oigroup:<oiref:java#Extends#Stream.AFormatterOut#Stream.AStreamOut:oiref>=570,401,430,401:oigroup>
+<oigroup:<oiref:design#Class#id4f20zc9fodqegc9fq5grt.diagram:oiref>=900,380,149,855,1:oigroup>
+<oigroup:<oiref:java#Extends#Stream.Log#Stream.PrintStreamOut:oiref>=310,720,370,720:oigroup>
+<oigroup:<oiref:design#Class#id2otl3c9fodqegc9fq5gp1.diagram:oiref>=1110,450,183,263,1:oigroup>
+<oigroup:MemberLink#<oiref:java#Member#Stream.Log#SysOut:oiref>=240,1364,240,1454,410,1454,410,1284,320,1284:oigroup>
+<oigroup:<oiref:java#Implements#Stream.ACopy#Stream.ICopy:oiref>=990,82,954,82:oigroup>
+<oigroup:<oiref:java#Class#java.io.PrintStream:oiref>=650,610,200,654,1:oigroup>
+<oigroup:<oiref:design#Class#id7qibc9fodqegc9fqqngt.diagram.link:oiref>=359,430,560,430:oigroup>
+<oigroup:<oiref:java#Class#Stream.Object.ArrayStreamIn:oiref>=1060,620,166,270,1:oigroup>
+<oigroup:<oiref:java#Extends#Stream.Object.StreamIn#Stream.IterAble:oiref>=493,230,903,141:oigroup>
+<oigroup:<oiref:java#Extends#Stream.PrintStreamOut#java.io.PrintStream:oiref>=600,725,650,725:oigroup>
+<oigroup:<oiref:java#Class#Stream.Object.StreamIn:oiref>=360,230,200,389,1:oigroup>
+<oigroup:<oiref:design#Class#id7qibc9fodqegc9fqqngt.diagram.link160:oiref>=294,337,390,257:oigroup>
+<oigroup:<oiref:java#Class#Stream.Object.Pipe:oiref>=480,640,122,114,1:oigroup>
+<oigroup:<oiref:design#Class#id25b1fc9fodqegc9fqqpu7.diagram.link172:oiref>=560,250,446,247:oigroup>
+<oigroup:<oiref:java#Implements#Stream.FileIterator#Stream.IStreamIn:oiref>=1400,220,1209,176:oigroup>
+<oigroup:<oiref:java#Implements#Stream.DevNull#Stream.StreamOut:oiref>=600,65,577,65:oigroup>
+<oigroup:<oiref:design#Class#id2otl3c9fodqegc9fq5gp1.diagram.link148:oiref>=446,140,566,140:oigroup>
+<oigroup:<oiref:design#Class#id25b1fc9fodqegc9fqqpu7.diagram.link168:oiref>=560,523,359,523:oigroup>
+<oigroup:<oiref:java#Implements#Stream.AStreamOut#Stream.StreamOut:oiref>=403,210,403,184:oigroup>
+<oigroup:<oiref:design#Class#idy6iec9fodqegc9fq5fgj.diagram:oiref>=1240,1090,133,708,1:oigroup>
+<oigroup:MemberLink#<oiref:java#Member#Stream.StreamOut#DevNull:oiref>=577,120,600,120:oigroup>
+<oigroup:MemberLink#<oiref:java#Member#Stream.AFormatterOut#PS:oiref>=710,538,710,610:oigroup>
+ 
+*/
+class __positions {
+}

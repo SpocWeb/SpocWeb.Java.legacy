@@ -1,0 +1,2293 @@
+
+(object Petal
+    version    	42
+    _written   	"Rose 4.5.8054.1"
+    charSet    	0)
+
+(object Class_Category "Shiftable"
+    is_unit    	TRUE
+    is_loaded  	TRUE
+    quid       	"36BB85D901C7"
+    visible_categories 	(list visibility_relationship_list
+	(object Visibility_Relationship
+	    quid       	"37BFD9EC0264"
+	    supplier   	"Logical View::BaseCopy"
+	    quidu      	"36BB22B90122")
+	(object Visibility_Relationship
+	    quid       	"37BFDA100180"
+	    supplier   	"Logical View::ByRef"
+	    quidu      	"36BB4AA503E4")
+	(object Visibility_Relationship
+	    quid       	"39FB65D2004C"
+	    supplier   	"Logical View::Stream"
+	    quidu      	"37BC93D30173"))
+    exportControl 	"Public"
+    logical_models 	(list unit_reference_list
+	(object Class "iterable"
+	    attributes 	(list Attribute_Set
+		(object Attribute
+		    tool       	"Java"
+		    name       	"GenerateFinalizer"
+		    value      	FALSE)
+		(object Attribute
+		    tool       	"Java"
+		    name       	"GenerateStaticInitializer"
+		    value      	FALSE)
+		(object Attribute
+		    tool       	"Java"
+		    name       	"GenerateInstanceInitializer"
+		    value      	FALSE)
+		(object Attribute
+		    tool       	"Java"
+		    name       	"GenerateDefaultConstructor"
+		    value      	FALSE))
+	    quid       	"36BB85D901FA"
+	    documentation 	"This is the Interface containing the Method to create an Iterator for a Container. "
+	    stereotype 	"Interface"
+	    operations 	(list Operations
+		(object Operation "Iterator"
+		    attributes 	(list Attribute_Set
+			(object Attribute
+			    tool       	"Java"
+			    name       	"Abstract"
+			    value      	TRUE))
+		    quid       	"37BD3A3B016F"
+		    documentation 	
+|Returns an Iterator of the components in this Container.
+|     *
+|     * @return  an Iterator of the components in this Container.
+|     * @see     Math.Iterator     
+		    
+		    result     	"Iterator"
+		    concurrency 	"Sequential"
+		    opExportControl 	"Public"
+		    uid        	0))
+	    module     	"Component View::Shiftable::iterable"
+	    quidu      	"36BB85D901F9"
+	    language   	"Java")
+	(object Class "intShiftable"
+	    attributes 	(list Attribute_Set
+		(object Attribute
+		    tool       	"Java"
+		    name       	"GenerateFinalizer"
+		    value      	FALSE)
+		(object Attribute
+		    tool       	"Java"
+		    name       	"GenerateStaticInitializer"
+		    value      	FALSE)
+		(object Attribute
+		    tool       	"Java"
+		    name       	"GenerateInstanceInitializer"
+		    value      	FALSE)
+		(object Attribute
+		    tool       	"Java"
+		    name       	"GenerateDefaultConstructor"
+		    value      	FALSE))
+	    quid       	"36BB85D902E9"
+	    documentation 	
+|Minimum Interface for Shifting Positions in a g-adic Number System.
+| * I.e. a way to represent Numbers by a polynomic System 
+| * of Character representations mod g in Positions of Value g^n.
+| * Shifting by one Position is equivalent to a Multiplication with / Division by g.
+| * 
+| * There is a difference between arithmetic and logical Shifting 
+| * when using signed integers. 
+| * The highest bit has to retain it's value with arithmetic Shifting.
+| * 
+| * Design Decisions: 
+| * since Carry has only meaning during an Operation, 
+| * and maintaining a Carry Relationship throughout the Lifetime of an Object
+| * is too fragile, it can be externalized by adding the Carry as In-Parameter
+| * and adding getCarry() for the Out-Parameter, since shifting returns itself.
+| * Rotation is not affected, higher Rotations are simulated using Shifting 
+| * and transferring the Carry.	 
+	    
+	    stereotype 	"Interface"
+	    operations 	(list Operations
+		(object Operation "getGrad"
+		    attributes 	(list Attribute_Set
+			(object Attribute
+			    tool       	"Java"
+			    name       	"Abstract"
+			    value      	TRUE))
+		    quid       	"37BD3A3A02E0"
+		    documentation 	
+|Returns the Number of Items for the shifting Operations.
+|	 * This is also the Period for Rotation and Reversion (for performance Reasons)
+		    
+		    result     	"int"
+		    concurrency 	"Sequential"
+		    opExportControl 	"Public"
+		    uid        	0)
+		(object Operation "letGrad"
+		    attributes 	(list Attribute_Set
+			(object Attribute
+			    tool       	"Java"
+			    name       	"Abstract"
+			    value      	TRUE))
+		    quid       	"37BD3A3A02EA"
+		    documentation 	
+|Sets    the Number of Items for the shifting Operations	 
+		    
+		    parameters 	(list Parameters
+			(object Parameter "Grad"
+			    type       	"int")
+			(object Parameter "preserve"
+			    type       	"boolean")
+			(object Parameter "initialize"
+			    type       	"boolean"))
+		    result     	"int"
+		    concurrency 	"Sequential"
+		    opExportControl 	"Public"
+		    uid        	0)
+		(object Operation "getCarry"
+		    attributes 	(list Attribute_Set
+			(object Attribute
+			    tool       	"Java"
+			    name       	"Abstract"
+			    value      	TRUE))
+		    quid       	"37BD3A3A02FF"
+		    documentation 	
+|Returns the Carry for a consecutive Shift, when not maintained in the Object.	 
+		    
+		    result     	"shiftable"
+		    concurrency 	"Sequential"
+		    opExportControl 	"Public"
+		    uid        	0)
+		(object Operation "setCarry"
+		    attributes 	(list Attribute_Set
+			(object Attribute
+			    tool       	"Java"
+			    name       	"Abstract"
+			    value      	TRUE))
+		    quid       	"37BD3A3A0309"
+		    documentation 	
+|Sets the Carry for a consecutive Shift, when not maintained in the Object.	 
+		    
+		    parameters 	(list Parameters
+			(object Parameter "Carry"
+			    type       	"shiftable"))
+		    result     	"shiftable"
+		    concurrency 	"Sequential"
+		    opExportControl 	"Public"
+		    uid        	0)
+		(object Operation "aslAt"
+		    attributes 	(list Attribute_Set
+			(object Attribute
+			    tool       	"Java"
+			    name       	"Abstract"
+			    value      	TRUE))
+		    quid       	"37BD3A3A0313"
+		    documentation 	
+|Arithmetic Shift left by one position in Place: x<<=1	 
+		    
+		    result     	"shiftable"
+		    concurrency 	"Sequential"
+		    opExportControl 	"Public"
+		    uid        	0)
+		(object Operation "asrAt"
+		    attributes 	(list Attribute_Set
+			(object Attribute
+			    tool       	"Java"
+			    name       	"Abstract"
+			    value      	TRUE))
+		    quid       	"37BD3A3A0314"
+		    documentation 	
+|Arithmetic Shift right by one position: x>>=1	 
+		    
+		    result     	"shiftable"
+		    concurrency 	"Sequential"
+		    opExportControl 	"Public"
+		    uid        	0)
+		(object Operation "rolAt"
+		    attributes 	(list Attribute_Set
+			(object Attribute
+			    tool       	"Java"
+			    name       	"Abstract"
+			    value      	TRUE))
+		    quid       	"37BD3A3A0315"
+		    documentation 	
+|Rotate left by one position in Place: x<<1	 
+		    
+		    result     	"shiftable"
+		    concurrency 	"Sequential"
+		    opExportControl 	"Public"
+		    uid        	0)
+		(object Operation "rorAt"
+		    attributes 	(list Attribute_Set
+			(object Attribute
+			    tool       	"Java"
+			    name       	"Abstract"
+			    value      	TRUE))
+		    quid       	"37BD3A3A031D"
+		    documentation 	
+|Rotate right by one position in Place: x>>1	 
+		    
+		    result     	"shiftable"
+		    concurrency 	"Sequential"
+		    opExportControl 	"Public"
+		    uid        	0)
+		(object Operation "lsrAt"
+		    attributes 	(list Attribute_Set
+			(object Attribute
+			    tool       	"Java"
+			    name       	"Abstract"
+			    value      	TRUE))
+		    quid       	"37BD3A3A031E"
+		    documentation 	
+|Logic Shift right by one position in Place: x>>>>=1	 
+		    
+		    result     	"shiftable"
+		    concurrency 	"Sequential"
+		    opExportControl 	"Public"
+		    uid        	0))
+	    module     	"Component View::Shiftable::intShiftable"
+	    quidu      	"36BB85D902DF"
+	    language   	"Java")
+	(object Class "shiftable"
+	    attributes 	(list Attribute_Set
+		(object Attribute
+		    tool       	"Java"
+		    name       	"GenerateFinalizer"
+		    value      	FALSE)
+		(object Attribute
+		    tool       	"Java"
+		    name       	"GenerateStaticInitializer"
+		    value      	FALSE)
+		(object Attribute
+		    tool       	"Java"
+		    name       	"GenerateInstanceInitializer"
+		    value      	FALSE)
+		(object Attribute
+		    tool       	"Java"
+		    name       	"GenerateDefaultConstructor"
+		    value      	FALSE))
+	    quid       	"36BB85D903B2"
+	    documentation 	
+|Interface defining (arithmetic) Shifts left and right
+| * as well as rotation left and right.
+| * 
+| * A Default Implementation is done in 'absShiftable'.
+| 
+	    
+	    stereotype 	"Interface"
+	    superclasses 	(list inheritance_relationship_list
+		(object Inheritance_Relationship
+		    attributes 	(list Attribute_Set)
+		    quid       	"37BD3A3E0110"
+		    supplier   	"Logical View::Shiftable::intShiftable"
+		    quidu      	"36BB85D902E9")
+		(object Inheritance_Relationship
+		    attributes 	(list Attribute_Set)
+		    quid       	"37BD3A3E032C"
+		    supplier   	"Logical View::BaseCopy::copyAble"
+		    quidu      	"36BB22B9021D"))
+	    operations 	(list Operations
+		(object Operation "reverse"
+		    attributes 	(list Attribute_Set
+			(object Attribute
+			    tool       	"Java"
+			    name       	"Abstract"
+			    value      	TRUE))
+		    quid       	"37BD3A3E032D"
+		    documentation 	
+|Reverting the Order of the Items:			
+		    
+		    result     	"shiftable"
+		    concurrency 	"Sequential"
+		    opExportControl 	"Public"
+		    uid        	0)
+		(object Operation "reverseAt"
+		    attributes 	(list Attribute_Set
+			(object Attribute
+			    tool       	"Java"
+			    name       	"Abstract"
+			    value      	TRUE))
+		    quid       	"37BD3A3E0336"
+		    documentation 	
+|Reverting the Order of the Items in Place:	
+		    
+		    result     	"shiftable"
+		    concurrency 	"Sequential"
+		    opExportControl 	"Public"
+		    uid        	0)
+		(object Operation "asl"
+		    attributes 	(list Attribute_Set
+			(object Attribute
+			    tool       	"Java"
+			    name       	"Abstract"
+			    value      	TRUE))
+		    quid       	"37BD3A3E0337"
+		    documentation 	"Shift left  by one Position: x<<1"
+		    result     	"shiftable"
+		    concurrency 	"Sequential"
+		    opExportControl 	"Public"
+		    uid        	0)
+		(object Operation "asr"
+		    attributes 	(list Attribute_Set
+			(object Attribute
+			    tool       	"Java"
+			    name       	"Abstract"
+			    value      	TRUE))
+		    quid       	"37BD3A3E0340"
+		    documentation 	"Shift right by one Position: x>>1"
+		    result     	"shiftable"
+		    concurrency 	"Sequential"
+		    opExportControl 	"Public"
+		    uid        	0)
+		(object Operation "lsr"
+		    attributes 	(list Attribute_Set
+			(object Attribute
+			    tool       	"Java"
+			    name       	"Abstract"
+			    value      	TRUE))
+		    quid       	"37BD3A3E0341"
+		    documentation 	
+|Arithmetic Shift right by one Position: x<<1	
+		    
+		    result     	"shiftable"
+		    concurrency 	"Sequential"
+		    opExportControl 	"Public"
+		    uid        	0)
+		(object Operation "rol"
+		    attributes 	(list Attribute_Set
+			(object Attribute
+			    tool       	"Java"
+			    name       	"Abstract"
+			    value      	TRUE))
+		    quid       	"37BD3A3E0342"
+		    documentation 	
+|Rotate left  by one Position: x<<1	
+		    
+		    result     	"shiftable"
+		    concurrency 	"Sequential"
+		    opExportControl 	"Public"
+		    uid        	0)
+		(object Operation "ror"
+		    attributes 	(list Attribute_Set
+			(object Attribute
+			    tool       	"Java"
+			    name       	"Abstract"
+			    value      	TRUE))
+		    quid       	"37BD3A3E034A"
+		    documentation 	
+|Rotate right by one Position: x>>1	
+		    
+		    result     	"shiftable"
+		    concurrency 	"Sequential"
+		    opExportControl 	"Public"
+		    uid        	0)
+		(object Operation "asl"
+		    attributes 	(list Attribute_Set
+			(object Attribute
+			    tool       	"Java"
+			    name       	"Abstract"
+			    value      	TRUE))
+		    quid       	"37BD3A3E034B"
+		    documentation 	
+|Arithmetic Shift left  by several Positions: x<<arg	
+		    
+		    parameters 	(list Parameters
+			(object Parameter "arg"
+			    type       	"int"))
+		    result     	"shiftable"
+		    concurrency 	"Sequential"
+		    opExportControl 	"Public"
+		    uid        	0)
+		(object Operation "asr"
+		    attributes 	(list Attribute_Set
+			(object Attribute
+			    tool       	"Java"
+			    name       	"Abstract"
+			    value      	TRUE))
+		    quid       	"37BD3A3E0354"
+		    documentation 	
+|Arithmetic Shift right by several Positions: x>>arg	
+		    
+		    parameters 	(list Parameters
+			(object Parameter "arg"
+			    type       	"int"))
+		    result     	"shiftable"
+		    concurrency 	"Sequential"
+		    opExportControl 	"Public"
+		    uid        	0)
+		(object Operation "lsr"
+		    attributes 	(list Attribute_Set
+			(object Attribute
+			    tool       	"Java"
+			    name       	"Abstract"
+			    value      	TRUE))
+		    quid       	"37BD3A3E035E"
+		    documentation 	
+|Logical    Shift right by several Positions: x>>1	
+		    
+		    parameters 	(list Parameters
+			(object Parameter "arg"
+			    type       	"int"))
+		    result     	"shiftable"
+		    concurrency 	"Sequential"
+		    opExportControl 	"Public"
+		    uid        	0)
+		(object Operation "aslAt"
+		    attributes 	(list Attribute_Set
+			(object Attribute
+			    tool       	"Java"
+			    name       	"Abstract"
+			    value      	TRUE))
+		    quid       	"37BD3A3E0360"
+		    documentation 	"Arithmetic Shift left  by several Positions in Place: x<<=arg"
+		    parameters 	(list Parameters
+			(object Parameter "arg"
+			    type       	"int"))
+		    result     	"shiftable"
+		    concurrency 	"Sequential"
+		    opExportControl 	"Public"
+		    uid        	0)
+		(object Operation "asrAt"
+		    attributes 	(list Attribute_Set
+			(object Attribute
+			    tool       	"Java"
+			    name       	"Abstract"
+			    value      	TRUE))
+		    quid       	"37BD3A3E0369"
+		    documentation 	"Arithmetic Shift right by several Positions in Place: x>>=arg"
+		    parameters 	(list Parameters
+			(object Parameter "arg"
+			    type       	"int"))
+		    result     	"shiftable"
+		    concurrency 	"Sequential"
+		    opExportControl 	"Public"
+		    uid        	0)
+		(object Operation "lsrAt"
+		    attributes 	(list Attribute_Set
+			(object Attribute
+			    tool       	"Java"
+			    name       	"Abstract"
+			    value      	TRUE))
+		    quid       	"37BD3A3E0373"
+		    documentation 	
+|Logical    Shift right by several Positions in Place: x<<1	
+		    
+		    parameters 	(list Parameters
+			(object Parameter "arg"
+			    type       	"int"))
+		    result     	"shiftable"
+		    concurrency 	"Sequential"
+		    opExportControl 	"Public"
+		    uid        	0)
+		(object Operation "rol"
+		    attributes 	(list Attribute_Set
+			(object Attribute
+			    tool       	"Java"
+			    name       	"Abstract"
+			    value      	TRUE))
+		    quid       	"37BD3A3E037C"
+		    documentation 	
+|Rotate left  by several Positions: x<<arg	
+		    
+		    parameters 	(list Parameters
+			(object Parameter "arg"
+			    type       	"int"))
+		    result     	"shiftable"
+		    concurrency 	"Sequential"
+		    opExportControl 	"Public"
+		    uid        	0)
+		(object Operation "ror"
+		    attributes 	(list Attribute_Set
+			(object Attribute
+			    tool       	"Java"
+			    name       	"Abstract"
+			    value      	TRUE))
+		    quid       	"37BD3A3E0386"
+		    documentation 	
+|Rotate right by several Positions: x>>arg	
+		    
+		    parameters 	(list Parameters
+			(object Parameter "arg"
+			    type       	"int"))
+		    result     	"shiftable"
+		    concurrency 	"Sequential"
+		    opExportControl 	"Public"
+		    uid        	0)
+		(object Operation "rolAt"
+		    attributes 	(list Attribute_Set
+			(object Attribute
+			    tool       	"Java"
+			    name       	"Abstract"
+			    value      	TRUE))
+		    quid       	"37BD3A3E0390"
+		    documentation 	
+|Rotate left  by several Positions in Place: x<<arg	
+		    
+		    parameters 	(list Parameters
+			(object Parameter "arg"
+			    type       	"int"))
+		    result     	"shiftable"
+		    concurrency 	"Sequential"
+		    opExportControl 	"Public"
+		    uid        	0)
+		(object Operation "rorAt"
+		    attributes 	(list Attribute_Set
+			(object Attribute
+			    tool       	"Java"
+			    name       	"Abstract"
+			    value      	TRUE))
+		    quid       	"37BD3A3E0392"
+		    documentation 	
+|Rotate right by several Positions in Place: x<<arg	
+		    
+		    parameters 	(list Parameters
+			(object Parameter "arg"
+			    type       	"int"))
+		    result     	"shiftable"
+		    concurrency 	"Sequential"
+		    opExportControl 	"Public"
+		    uid        	0))
+	    module     	"Component View::Shiftable::shiftable"
+	    quidu      	"36BB85D903A8"
+	    language   	"Java")
+	(object Class "ReverseIterator"
+	    attributes 	(list Attribute_Set
+		(object Attribute
+		    tool       	"Java"
+		    name       	"GenerateFinalizer"
+		    value      	FALSE)
+		(object Attribute
+		    tool       	"Java"
+		    name       	"GenerateStaticInitializer"
+		    value      	FALSE)
+		(object Attribute
+		    tool       	"Java"
+		    name       	"GenerateInstanceInitializer"
+		    value      	FALSE)
+		(object Attribute
+		    tool       	"Java"
+		    name       	"GenerateDefaultConstructor"
+		    value      	FALSE))
+	    quid       	"36BB85DA0132"
+	    documentation 	
+|Interface for an iterator through a Collection
+| * 
+| * Design Decisions:
+| * The Iterator Object is singled out from the Container Classes,
+| * because it is very probable, that you have several Iterators 
+| * running over the same Object at the same time!
+| * Therefore the Interface is renamed from 'iterable' to 'Iterator'.
+| 
+	    
+	    stereotype 	"Interface"
+	    superclasses 	(list inheritance_relationship_list
+		(object Inheritance_Relationship
+		    attributes 	(list Attribute_Set)
+		    quid       	"37BD3A3D00A0"
+		    supplier   	"Logical View::Shiftable::Iterator"
+		    quidu      	"36BB85DA01B4"))
+	    operations 	(list Operations
+		(object Operation "availableBefore"
+		    attributes 	(list Attribute_Set
+			(object Attribute
+			    tool       	"Java"
+			    name       	"Abstract"
+			    value      	TRUE))
+		    quid       	"37BD3A3D00AA"
+		    documentation 	
+|Returns true, when the Object has Constituents 
+|	 * that are to be reached by previousItem.
+|	 * 
+|	 * If you mark the End by returning 'null', 
+|	 * you can never have 'null' in the Collection!
+|	 * But in a linked List it is possible!
+|	 * Of course there is nothing you can do with a 'null' Object, 
+|	 * because any Operation raises a 'nullPointerObject' exception
+|	 * and it is of Type Object and has only Identity, nothing else.
+|	 * The only application is as a PlaceHolder to indicate NULL in Data.
+|	 * 
+|	 * Nearly equivalent is currentItem != null 
+|	 * (when the Container does not contain null Entries)	 
+		    
+		    result     	"long"
+		    concurrency 	"Sequential"
+		    opExportControl 	"Public"
+		    uid        	0)
+		(object Operation "previousItem"
+		    attributes 	(list Attribute_Set
+			(object Attribute
+			    tool       	"Java"
+			    name       	"Abstract"
+			    value      	TRUE))
+		    quid       	"37BD3A3D00AB"
+		    documentation 	
+|Returns the previous Object: --, postDecremental.	 
+		    
+		    parameters 	(list Parameters
+			(object Parameter "available"
+			    type       	"ByRefLong"))
+		    result     	"Object"
+		    concurrency 	"Sequential"
+		    opExportControl 	"Public"
+		    uid        	0)
+		(object Operation "reSet"
+		    attributes 	(list Attribute_Set
+			(object Attribute
+			    tool       	"Java"
+			    name       	"Abstract"
+			    value      	TRUE))
+		    quid       	"37BD3A3D00BE"
+		    documentation 	
+|ReSet the reverse Iterator.	 
+		    
+		    result     	"void"
+		    concurrency 	"Sequential"
+		    opExportControl 	"Public"
+		    uid        	0))
+	    module     	"Component View::Shiftable::ReverseIterator"
+	    quidu      	"36BB85DA0128"
+	    language   	"Java")
+	(object Class "Iterator"
+	    attributes 	(list Attribute_Set
+		(object Attribute
+		    tool       	"Java"
+		    name       	"GenerateFinalizer"
+		    value      	FALSE)
+		(object Attribute
+		    tool       	"Java"
+		    name       	"GenerateStaticInitializer"
+		    value      	FALSE)
+		(object Attribute
+		    tool       	"Java"
+		    name       	"GenerateInstanceInitializer"
+		    value      	FALSE)
+		(object Attribute
+		    tool       	"Java"
+		    name       	"GenerateDefaultConstructor"
+		    value      	FALSE))
+	    quid       	"36BB85DA01B4"
+	    documentation 	
+|Interface for an iterator through a Collection
+| * 
+| * Design Decisions:
+| * The Iterator Object is singled out from the Container Classes,
+| * because it is very probable, that you have several Iterators 
+| * running over the same Object at the same time!
+| * Therefore the Interface is renamed from 'iterable' to 'Iterator'.
+| * A Container is iterable, because it can create Iterators on itself.
+| * 
+| * Design Decisions:
+| * The Iterator has been designed to look more like the Stream. 
+| * This allows for Streams and Iterators to be treated the same. 
+| * Especially the following changes have been made:
+| * 'boolean hasMoreItems()' has been redefined to 'int available()'
+| * 'reStart()' has been redefined to 'reset()'
+| * 'close()', 'skip()', 'mark()' and 'markSupported()' are new.
+| * 
+| * Since some Containers can contain 'null's, 
+| * the End is not marked by returning 'null', but by available() <= 0.	 
+	    
+	    stereotype 	"Interface"
+	    operations 	(list Operations
+		(object Operation "available"
+		    attributes 	(list Attribute_Set
+			(object Attribute
+			    tool       	"Java"
+			    name       	"Abstract"
+			    value      	TRUE))
+		    quid       	"37BD3A3B03B4"
+		    documentation 	
+|Returns true, when the Object has more Constituents.
+|	 * If you mark the End by returning 'null', 
+|	 * you can never have 'null' in the Collection!
+|	 * But in a Bag it has to be possible!?!
+|	 * Of course there is not much you can do with a 'null' Object, 
+|	 * because any Operation raises a 'nullPointerObject' exception
+|	 * and it is of Type Object and has only Identity, nothing else.
+|	 * The only application is as a PlaceHolder to indicate NULL in Data.
+|	 * 
+|	 * Nearly equivalent is currentItem != null 
+|	 * (when the Container does not contain null Entries, like e.g. HashTables)
+|	 *
+|	 * TODO:It would be best, if currentItem, nextItem and previousItem 
+|	 * had another Boolean Parameter denoting whether there are more Items.
+|	 * That would be possible, since all these Routines 
+|	 * check exactly this condition. It is only hard to evaluate it, 
+|	 * because it is not the Function Result.	 
+		    
+		    result     	"long"
+		    concurrency 	"Sequential"
+		    opExportControl 	"Public"
+		    uid        	0)
+		(object Operation "close"
+		    attributes 	(list Attribute_Set
+			(object Attribute
+			    tool       	"Java"
+			    name       	"Abstract"
+			    value      	TRUE))
+		    quid       	"37BD3A3B03BE"
+		    documentation 	
+|Closes the Iterator to prevent further reading from it
+|	 * and to deallocate all ressources blocked by it (especially Files).
+|	 * Trying to read from a closed Iterator results in an IOException.	 
+		    
+		    result     	"void"
+		    concurrency 	"Sequential"
+		    opExportControl 	"Public"
+		    uid        	0)
+		(object Operation "mark"
+		    attributes 	(list Attribute_Set
+			(object Attribute
+			    tool       	"Java"
+			    name       	"Abstract"
+			    value      	TRUE))
+		    quid       	"37BD3A3B03BF"
+		    documentation 	
+|Marks the current position in this Iterator. 
+|	 * A subsequent call to the reset method repositions this Iterator 
+|	 * at the last marked position.	 
+		    
+		    result     	"void"
+		    concurrency 	"Sequential"
+		    opExportControl 	"Public"
+		    uid        	0)
+		(object Operation "skip"
+		    attributes 	(list Attribute_Set
+			(object Attribute
+			    tool       	"Java"
+			    name       	"Abstract"
+			    value      	TRUE))
+		    quid       	"37BD3A3B03C0"
+		    documentation 	
+|Skips over and discards n Items from this Iterator. 
+|	 * Returns the actual number of bytes skipped.	 
+		    
+		    parameters 	(list Parameters
+			(object Parameter "n"
+			    type       	"long"))
+		    result     	"long"
+		    concurrency 	"Sequential"
+		    opExportControl 	"Public"
+		    uid        	0)
+		(object Operation "mark"
+		    attributes 	(list Attribute_Set
+			(object Attribute
+			    tool       	"Java"
+			    name       	"Abstract"
+			    value      	TRUE))
+		    quid       	"37BD3A3B03D2"
+		    documentation 	
+|Marks the current position in this Iterator. 
+|	 * A subsequent call to the reset method repositions this Iterator 
+|	 * at the last marked position.
+|	 * The readlimit arguments tells this input stream to allow that many Items 
+|	 * to be read before the mark position gets invalidated.
+|	 * This is to limit the Blocking of System Ressources	 
+		    
+		    parameters 	(list Parameters
+			(object Parameter "ReadLimit"
+			    type       	"long"))
+		    result     	"void"
+		    concurrency 	"Sequential"
+		    opExportControl 	"Public"
+		    uid        	0)
+		(object Operation "markSupported"
+		    attributes 	(list Attribute_Set
+			(object Attribute
+			    tool       	"Java"
+			    name       	"Abstract"
+			    value      	TRUE))
+		    quid       	"37BD3A3B03DC"
+		    documentation 	
+|Tests if this input stream supports the mark and reset methods. 	 
+		    
+		    result     	"boolean"
+		    concurrency 	"Sequential"
+		    opExportControl 	"Public"
+		    uid        	0)
+		(object Operation "reset"
+		    attributes 	(list Attribute_Set
+			(object Attribute
+			    tool       	"Java"
+			    name       	"Abstract"
+			    value      	TRUE))
+		    quid       	"37BD3A3B03DD"
+		    documentation 	
+|Resets the Iterator to the last marked Position, 
+|	 * done automatically on Instantiation	 
+		    
+		    result     	"void"
+		    concurrency 	"Sequential"
+		    opExportControl 	"Public"
+		    uid        	0)
+		(object Operation "reset"
+		    attributes 	(list Attribute_Set
+			(object Attribute
+			    tool       	"Java"
+			    name       	"Abstract"
+			    value      	TRUE))
+		    quid       	"37BD3A3B03DE"
+		    documentation 	
+|Resets the Iterator to the given Position 
+|	 * counted from the last marked Position.	 
+		    
+		    parameters 	(list Parameters
+			(object Parameter "Position"
+			    type       	"long"))
+		    result     	"void"
+		    concurrency 	"Sequential"
+		    opExportControl 	"Public"
+		    uid        	0)
+		(object Operation "nextItem"
+		    attributes 	(list Attribute_Set
+			(object Attribute
+			    tool       	"Java"
+			    name       	"Abstract"
+			    value      	TRUE))
+		    quid       	"37BD3A3C0008"
+		    documentation 	
+|Returns the next Object: ++, postIncremental.	 
+		    
+		    result     	"Object"
+		    concurrency 	"Sequential"
+		    opExportControl 	"Public"
+		    uid        	0)
+		(object Operation "nextItem"
+		    attributes 	(list Attribute_Set
+			(object Attribute
+			    tool       	"Java"
+			    name       	"Abstract"
+			    value      	TRUE))
+		    quid       	"37BD3A3C0009"
+		    documentation 	
+|Returns the next Object: ++, postIncremental, 
+|	 * also indicates whether there are more items to come...	 
+		    
+		    parameters 	(list Parameters
+			(object Parameter "available"
+			    type       	"ByRefLong"))
+		    result     	"Object"
+		    concurrency 	"Sequential"
+		    opExportControl 	"Public"
+		    uid        	0)
+		(object Operation "currentItem"
+		    attributes 	(list Attribute_Set
+			(object Attribute
+			    tool       	"Java"
+			    name       	"Abstract"
+			    value      	TRUE))
+		    quid       	"37BD3A3C0012"
+		    documentation 	
+|Returns the current Object.
+|	 * also indicates whether there are more items to come...	 
+		    
+		    parameters 	(list Parameters
+			(object Parameter "available"
+			    type       	"ByRefLong"))
+		    result     	"Object"
+		    concurrency 	"Sequential"
+		    opExportControl 	"Public"
+		    uid        	0)
+		(object Operation "currentItem"
+		    attributes 	(list Attribute_Set
+			(object Attribute
+			    tool       	"Java"
+			    name       	"Abstract"
+			    value      	TRUE))
+		    quid       	"37BD3A3C001C"
+		    documentation 	
+|Returns the current Object.	 
+		    
+		    result     	"Object"
+		    concurrency 	"Sequential"
+		    opExportControl 	"Public"
+		    uid        	0)
+		(object Operation "removeCurrent"
+		    attributes 	(list Attribute_Set
+			(object Attribute
+			    tool       	"Java"
+			    name       	"Abstract"
+			    value      	TRUE))
+		    quid       	"37BD3A3C0026"
+		    documentation 	
+|Removes the current Object from the Container with this Iterator knowing it.	
+|	 * The remaining Problem is other Iterators that concurrently work through this. 
+		    
+		    parameters 	(list Parameters
+			(object Parameter "available"
+			    type       	"ByRefLong"))
+		    result     	"void"
+		    concurrency 	"Sequential"
+		    opExportControl 	"Public"
+		    uid        	0))
+	    module     	"Component View::Shiftable::Iterator"
+	    quidu      	"36BB85DA01AA"
+	    language   	"Java")
+	(object Class "absIterator"
+	    attributes 	(list Attribute_Set
+		(object Attribute
+		    tool       	"Java"
+		    name       	"GenerateFinalizer"
+		    value      	FALSE)
+		(object Attribute
+		    tool       	"Java"
+		    name       	"GenerateStaticInitializer"
+		    value      	FALSE)
+		(object Attribute
+		    tool       	"Java"
+		    name       	"GenerateInstanceInitializer"
+		    value      	FALSE)
+		(object Attribute
+		    tool       	"Java"
+		    name       	"GenerateDefaultConstructor"
+		    value      	FALSE))
+	    quid       	"36BB85DA0260"
+	    realized_interfaces 	(list realize_rel_list
+		(object Realize_Relationship
+		    attributes 	(list Attribute_Set)
+		    quid       	"37BD3A360317"
+		    supplier   	"Logical View::Shiftable::Iterator"
+		    quidu      	"36BB85DA01B4"))
+	    operations 	(list Operations
+		(object Operation "available"
+		    attributes 	(list Attribute_Set
+			(object Attribute
+			    tool       	"Java"
+			    name       	"Abstract"
+			    value      	TRUE))
+		    quid       	"37BD3A360321"
+		    documentation 	
+|Returns true, when the Object has more Constituents.
+|	 * If you mark the End by returning 'null', 
+|	 * you can never have 'null' in the Collection!
+|	 * But in a Bag it has to be possible!?!
+|	 * Of course there is not much you can do with a 'null' Object, 
+|	 * because any Operation raises a 'nullPointerObject' exception
+|	 * and it is of Type Object and has only Identity, nothing else.
+|	 * The only application is as a PlaceHolder to indicate NULL in Data.
+|	 * 
+|	 * Nearly equivalent is currentItem != null 
+|	 * (when the Container does not contain null Entries, like e.g. HashTables)
+|	 *
+|	 * TODO:It would be best, if currentItem, nextItem and previousItem 
+|	 * had another Boolean Parameter denoting whether there are more Items.
+|	 * That would be possible, since all these Routines 
+|	 * check exactly this condition. It is only hard to evaluate it, 
+|	 * because it is not the Function Result.	 
+		    
+		    result     	"long"
+		    concurrency 	"Sequential"
+		    opExportControl 	"Public"
+		    uid        	0)
+		(object Operation "reset"
+		    attributes 	(list Attribute_Set)
+		    quid       	"37BD3A360322"
+		    documentation 	
+|Resets the Iterator to the given Position 
+|	 * counted from the last marked Position.	 
+		    
+		    parameters 	(list Parameters
+			(object Parameter "Position"
+			    type       	"long"))
+		    result     	"void"
+		    concurrency 	"Sequential"
+		    opExportControl 	"Public"
+		    uid        	0)
+		(object Operation "nextItem"
+		    attributes 	(list Attribute_Set)
+		    quid       	"37BD3A36033F"
+		    documentation 	
+|Returns the next Object: ++, postIncremental.	 
+		    
+		    result     	"Object"
+		    concurrency 	"Sequential"
+		    opExportControl 	"Public"
+		    uid        	0)
+		(object Operation "currentItem"
+		    attributes 	(list Attribute_Set)
+		    quid       	"37BD3A360340"
+		    documentation 	
+|Returns the current Object.	 
+		    
+		    result     	"Object"
+		    concurrency 	"Sequential"
+		    opExportControl 	"Public"
+		    uid        	0)
+		(object Operation "skip"
+		    attributes 	(list Attribute_Set)
+		    quid       	"37BD3A360341"
+		    documentation 	
+|Skips over and discards n Items from this Iterator. 
+|	 * Returns the actual number of bytes skipped.
+|	 * This dumb Implementation just reads all Elements and discards them.	 
+		    
+		    parameters 	(list Parameters
+			(object Parameter "Position"
+			    type       	"long"))
+		    result     	"long"
+		    concurrency 	"Sequential"
+		    opExportControl 	"Public"
+		    uid        	0)
+		(object Operation "mark"
+		    attributes 	(list Attribute_Set)
+		    quid       	"37BD3A360353"
+		    documentation 	
+|Marks the current position in this Iterator. 
+|	 * A subsequent call to the reset method repositions this Iterator 
+|	 * at the last marked position.	 
+		    
+		    result     	"void"
+		    concurrency 	"Sequential"
+		    opExportControl 	"Public"
+		    uid        	0)
+		(object Operation "mark"
+		    attributes 	(list Attribute_Set)
+		    quid       	"37BD3A36035D"
+		    documentation 	
+|Marks the current position in this Iterator. 
+|	 * A subsequent call to the reset method repositions this Iterator 
+|	 * at the last marked position.
+|	 * The readlimit arguments tells this input stream to allow that many Items 
+|	 * to be read before the mark position gets invalidated.
+|	 * This is to limit the Blocking of System Ressources	 
+		    
+		    parameters 	(list Parameters
+			(object Parameter "ReadLimit"
+			    type       	"long"))
+		    result     	"void"
+		    concurrency 	"Sequential"
+		    opExportControl 	"Public"
+		    uid        	0)
+		(object Operation "markSupported"
+		    attributes 	(list Attribute_Set)
+		    quid       	"37BD3A360371"
+		    documentation 	
+|Tests if this input stream supports the mark and reset methods. 	 
+		    
+		    result     	"boolean"
+		    concurrency 	"Sequential"
+		    opExportControl 	"Public"
+		    uid        	0)
+		(object Operation "reset"
+		    attributes 	(list Attribute_Set)
+		    quid       	"37BD3A360372"
+		    documentation 	
+|Resets the Iterator to the last marked Position, 
+|	 * done automatically on Instantiation	 
+		    
+		    result     	"void"
+		    concurrency 	"Sequential"
+		    opExportControl 	"Public"
+		    uid        	0)
+		(object Operation "close"
+		    attributes 	(list Attribute_Set)
+		    quid       	"37BD3A36037B"
+		    documentation 	
+|Closes the Iterator to prevent further reading from it
+|	 * and to deallocate all ressources blocked by it (especially Files).
+|	 * Trying to read from a closed Iterator results in an IOException.	 
+		    
+		    result     	"void"
+		    concurrency 	"Sequential"
+		    opExportControl 	"Public"
+		    uid        	0)
+		(object Operation "nextItem"
+		    attributes 	(list Attribute_Set
+			(object Attribute
+			    tool       	"Java"
+			    name       	"Abstract"
+			    value      	TRUE))
+		    quid       	"37BD3A36037C"
+		    documentation 	
+|Returns the next Object: ++, postIncremental, 
+|	 * also indicates whether there are more items to come...	 
+		    
+		    parameters 	(list Parameters
+			(object Parameter "available"
+			    type       	"ByRefLong"))
+		    result     	"Object"
+		    concurrency 	"Sequential"
+		    opExportControl 	"Public"
+		    uid        	0)
+		(object Operation "currentItem"
+		    attributes 	(list Attribute_Set
+			(object Attribute
+			    tool       	"Java"
+			    name       	"Abstract"
+			    value      	TRUE))
+		    quid       	"37BD3A36038F"
+		    documentation 	
+|Returns the current Object.
+|	 * also indicates whether there are more items to come...	 
+		    
+		    parameters 	(list Parameters
+			(object Parameter "available"
+			    type       	"ByRefLong"))
+		    result     	"Object"
+		    concurrency 	"Sequential"
+		    opExportControl 	"Public"
+		    uid        	0)
+		(object Operation "removeCurrent"
+		    attributes 	(list Attribute_Set
+			(object Attribute
+			    tool       	"Java"
+			    name       	"Abstract"
+			    value      	TRUE))
+		    quid       	"37BD3A3603A3"
+		    documentation 	
+|Removes the current Object from the Container with this Iterator knowing it.	
+|	 * The remaining Problem is other Iterators that concurrently work through this. 
+		    
+		    parameters 	(list Parameters
+			(object Parameter "available"
+			    type       	"ByRefLong"))
+		    result     	"void"
+		    concurrency 	"Sequential"
+		    opExportControl 	"Public"
+		    uid        	0))
+	    module     	"Component View::Shiftable::absIterator"
+	    quidu      	"36BB85DA025F"
+	    language   	"Java"
+	    abstract   	TRUE)
+	(object Class "swapAble"
+	    attributes 	(list Attribute_Set
+		(object Attribute
+		    tool       	"Java"
+		    name       	"GenerateFinalizer"
+		    value      	FALSE)
+		(object Attribute
+		    tool       	"Java"
+		    name       	"GenerateStaticInitializer"
+		    value      	FALSE)
+		(object Attribute
+		    tool       	"Java"
+		    name       	"GenerateInstanceInitializer"
+		    value      	FALSE)
+		(object Attribute
+		    tool       	"Java"
+		    name       	"GenerateDefaultConstructor"
+		    value      	FALSE))
+	    quid       	"36BB85DB0011"
+	    documentation 	"This Interface can be implemented by all random Access Iterators "
+	    stereotype 	"Interface"
+	    superclasses 	(list inheritance_relationship_list
+		(object Inheritance_Relationship
+		    attributes 	(list Attribute_Set)
+		    quid       	"37BD3A400036"
+		    supplier   	"Logical View::BaseCopy::copyAble"
+		    quidu      	"36BB22B9021D"))
+	    operations 	(list Operations
+		(object Operation "swapAt"
+		    attributes 	(list Attribute_Set
+			(object Attribute
+			    tool       	"Java"
+			    name       	"Abstract"
+			    value      	TRUE))
+		    quid       	"37BD3A400037"
+		    documentation 	
+|Swaps the i-th and j-th Item in Place	 
+		    
+		    parameters 	(list Parameters
+			(object Parameter "i"
+			    type       	"int")
+			(object Parameter "j"
+			    type       	"int"))
+		    result     	"swapAble"
+		    concurrency 	"Sequential"
+		    opExportControl 	"Public"
+		    uid        	0)
+		(object Operation "swap"
+		    attributes 	(list Attribute_Set
+			(object Attribute
+			    tool       	"Java"
+			    name       	"Abstract"
+			    value      	TRUE))
+		    quid       	"37BD3A400042"
+		    documentation 	
+|Swaps the i-th and j-th Item 	 
+		    
+		    parameters 	(list Parameters
+			(object Parameter "i"
+			    type       	"int")
+			(object Parameter "j"
+			    type       	"int"))
+		    result     	"swapAble"
+		    concurrency 	"Sequential"
+		    opExportControl 	"Public"
+		    uid        	0)
+		(object Operation "getGrad"
+		    attributes 	(list Attribute_Set
+			(object Attribute
+			    tool       	"Java"
+			    name       	"Abstract"
+			    value      	TRUE))
+		    quid       	"37BD3A400054"
+		    documentation 	
+|Returns the maximum Index in the Container == Number of Items -1	 
+		    
+		    result     	"int"
+		    concurrency 	"Sequential"
+		    opExportControl 	"Public"
+		    uid        	0)
+		(object Operation "ordered"
+		    attributes 	(list Attribute_Set
+			(object Attribute
+			    tool       	"Java"
+			    name       	"Abstract"
+			    value      	TRUE))
+		    quid       	"37BD3A400055"
+		    documentation 	
+|Returns true, when the Items in the Container are ordered 
+|	 * from the i-th Item on	 
+		    
+		    parameters 	(list Parameters
+			(object Parameter "i"
+			    type       	"int"))
+		    result     	"boolean"
+		    concurrency 	"Sequential"
+		    opExportControl 	"Public"
+		    uid        	0))
+	    module     	"Component View::Shiftable::swapAble"
+	    quidu      	"36BB85DB0007"
+	    language   	"Java")
+	(object Class "IndexIterator"
+	    attributes 	(list Attribute_Set
+		(object Attribute
+		    tool       	"Java"
+		    name       	"GenerateFinalizer"
+		    value      	FALSE)
+		(object Attribute
+		    tool       	"Java"
+		    name       	"GenerateStaticInitializer"
+		    value      	FALSE)
+		(object Attribute
+		    tool       	"Java"
+		    name       	"GenerateInstanceInitializer"
+		    value      	FALSE)
+		(object Attribute
+		    tool       	"Java"
+		    name       	"GenerateDefaultConstructor"
+		    value      	FALSE)
+		(object Attribute
+		    tool       	"Java"
+		    name       	"?_Touched_?"
+		    value      	"?_Touched_?"))
+	    quid       	"36BB85DB00B1"
+	    documentation 	
+|Abstract Class for an indexed Access. 
+| * This extends the abstract (Reverse-) Iterator
+| * Only CurrentItem not implemented yet! 
+	    
+	    superclasses 	(list inheritance_relationship_list
+		(object Inheritance_Relationship
+		    attributes 	(list Attribute_Set)
+		    quid       	"37BE6A6F02F0"
+		    supplier   	"Logical View::Shiftable::absReverseIterator"
+		    quidu      	"37BE6A6C0255"))
+	    operations 	(list Operations
+		(object Operation "reStart"
+		    attributes 	(list Attribute_Set)
+		    quid       	"37BE6A70012E"
+		    documentation 	
+|Restart the iterable	 
+		    
+		    result     	"void"
+		    concurrency 	"Sequential"
+		    opExportControl 	"Public"
+		    uid        	0)
+		(object Operation "nextItem"
+		    attributes 	(list Attribute_Set)
+		    quid       	"37BE6A700188"
+		    documentation 	
+|Returns the next Object: ++, postIncremental.	 
+		    
+		    parameters 	(list Parameters
+			(object Parameter "available"
+			    type       	"ByRefLong"))
+		    result     	"Object"
+		    concurrency 	"Sequential"
+		    opExportControl 	"Public"
+		    uid        	0))
+	    class_attributes 	(list class_attribute_list
+		(object ClassAttribute "current"
+		    attributes 	(list Attribute_Set)
+		    quid       	"36BB8759029B"
+		    documentation 	
+|Counter for the current Position	 
+		    
+		    type       	"int"
+		    exportControl 	"Protected"))
+	    module     	"Component View::Shiftable::IndexIterator"
+	    quidu      	"36BB85DB00A7"
+	    language   	"Java"
+	    abstract   	TRUE)
+	(object Class "absShiftable"
+	    attributes 	(list Attribute_Set
+		(object Attribute
+		    tool       	"Java"
+		    name       	"GenerateFinalizer"
+		    value      	FALSE)
+		(object Attribute
+		    tool       	"Java"
+		    name       	"GenerateStaticInitializer"
+		    value      	FALSE)
+		(object Attribute
+		    tool       	"Java"
+		    name       	"GenerateInstanceInitializer"
+		    value      	FALSE)
+		(object Attribute
+		    tool       	"Java"
+		    name       	"GenerateDefaultConstructor"
+		    value      	FALSE))
+	    quid       	"37BE553902F2"
+	    documentation 	
+|Default Implementation of Shifting Positions in a g-adic Number System.
+| * I.e. a way to represent Numbers by a polynomic System 
+| * of Character representations mod g in Positions of Value g^n.
+| * Shifting by one Position is equivalent to a Multiplication with / Division by g.
+| * 
+| * There is a difference between arithmetic and logical Shifting 
+| * when using signed integers. 
+| * The highest bit has to retain it's value with arithmetic Shifting. 
+	    
+	    stereotype 	"Delegator"
+	    superclasses 	(list inheritance_relationship_list
+		(object Inheritance_Relationship
+		    attributes 	(list Attribute_Set)
+		    quid       	"37BE564D01FE"
+		    supplier   	"Logical View::BaseCopy::absCopyAble"
+		    quidu      	"36BB22B9029F"))
+	    realized_interfaces 	(list realize_rel_list
+		(object Realize_Relationship
+		    attributes 	(list Attribute_Set)
+		    quid       	"37BE564E0001"
+		    supplier   	"Logical View::Shiftable::shiftable"
+		    quidu      	"36BB85D903B2"))
+	    operations 	(list Operations
+		(object Operation "getCarry"
+		    attributes 	(list Attribute_Set)
+		    quid       	"37BE564E020A"
+		    documentation 	
+|Returns the Carry for a consecutive Shift, when not maintained in the Object.	 
+		    
+		    result     	"shiftable"
+		    concurrency 	"Sequential"
+		    opExportControl 	"Public"
+		    uid        	0)
+		(object Operation "setCarry"
+		    attributes 	(list Attribute_Set)
+		    quid       	"37BE564E020B"
+		    documentation 	
+|Sets the Carry for a consecutive Shift, when not maintained in the Object.	 
+		    
+		    parameters 	(list Parameters
+			(object Parameter "Carry"
+			    type       	"shiftable"))
+		    result     	"shiftable"
+		    concurrency 	"Sequential"
+		    opExportControl 	"Public"
+		    uid        	0)
+		(object Operation "absShiftable"
+		    attributes 	(list Attribute_Set)
+		    quid       	"37BE564E0215"
+		    documentation 	
+|This Constructor is only used in Initialize and Terminate of abstract Classes
+|	 * and should normally be marked as 'protected' or 'friend',
+|	 * but all these Routines are not within one Package.
+|	 * It is needed for the Child Classes to call
+|	 * and replace Self by the Child Object with it's overloaded Methods.	 
+		    
+		    parameters 	(list Parameters
+			(object Parameter "self_"
+			    type       	"shiftable"))
+		    concurrency 	"Sequential"
+		    opExportControl 	"Public"
+		    uid        	0)
+		(object Operation "reverseAt"
+		    attributes 	(list Attribute_Set)
+		    quid       	"37BE564E021F"
+		    documentation 	
+|Reverting the Order of the first 'num' Items in Place:	 
+		    
+		    result     	"shiftable"
+		    concurrency 	"Sequential"
+		    opExportControl 	"Public"
+		    uid        	0)
+		(object Operation "reverse"
+		    attributes 	(list Attribute_Set)
+		    quid       	"37BE564E0228"
+		    documentation 	
+|Reverting the Order of the first 'num' Items:	 
+		    
+		    result     	"shiftable"
+		    concurrency 	"Sequential"
+		    opExportControl 	"Public"
+		    uid        	0)
+		(object Operation "asl"
+		    attributes 	(list Attribute_Set)
+		    quid       	"37BE564E0229"
+		    documentation 	
+|Arithmetic Shift left by one Position: x<<1	 
+		    
+		    result     	"shiftable"
+		    concurrency 	"Sequential"
+		    opExportControl 	"Public"
+		    uid        	0)
+		(object Operation "asr"
+		    attributes 	(list Attribute_Set)
+		    quid       	"37BE564E0232"
+		    documentation 	
+|Arithmetic Shift right by one Position: x>>1	 
+		    
+		    result     	"shiftable"
+		    concurrency 	"Sequential"
+		    opExportControl 	"Public"
+		    uid        	0)
+		(object Operation "lsr"
+		    attributes 	(list Attribute_Set)
+		    quid       	"37BE564E0233"
+		    documentation 	
+|Logic Shift right by one Position: x>>1	 
+		    
+		    result     	"shiftable"
+		    concurrency 	"Sequential"
+		    opExportControl 	"Public"
+		    uid        	0)
+		(object Operation "rol"
+		    attributes 	(list Attribute_Set)
+		    quid       	"37BE564E023C"
+		    documentation 	
+|Rotate left by one Position: x<<1	 
+		    
+		    result     	"shiftable"
+		    concurrency 	"Sequential"
+		    opExportControl 	"Public"
+		    uid        	0)
+		(object Operation "ror"
+		    attributes 	(list Attribute_Set)
+		    quid       	"37BE564E023D"
+		    documentation 	
+|Rotate right by one Position: x>>1	 
+		    
+		    result     	"shiftable"
+		    concurrency 	"Sequential"
+		    opExportControl 	"Public"
+		    uid        	0)
+		(object Operation "asl"
+		    attributes 	(list Attribute_Set)
+		    quid       	"37BE564E0246"
+		    documentation 	
+|Arithmetic Shift left by several Positions: x<<arg	 
+		    
+		    parameters 	(list Parameters
+			(object Parameter "arg"
+			    type       	"int"))
+		    result     	"shiftable"
+		    concurrency 	"Sequential"
+		    opExportControl 	"Public"
+		    uid        	0)
+		(object Operation "asr"
+		    attributes 	(list Attribute_Set)
+		    quid       	"37BE564E0250"
+		    documentation 	
+|Arithmetic Shift right by several Positions: x>>arg	 
+		    
+		    parameters 	(list Parameters
+			(object Parameter "arg"
+			    type       	"int"))
+		    result     	"shiftable"
+		    concurrency 	"Sequential"
+		    opExportControl 	"Public"
+		    uid        	0)
+		(object Operation "lsr"
+		    attributes 	(list Attribute_Set)
+		    quid       	"37BE564E025B"
+		    documentation 	
+|Logic Shift right by several Positions: x>>arg	 
+		    
+		    parameters 	(list Parameters
+			(object Parameter "arg"
+			    type       	"int"))
+		    result     	"shiftable"
+		    concurrency 	"Sequential"
+		    opExportControl 	"Public"
+		    uid        	0)
+		(object Operation "aslAt"
+		    attributes 	(list Attribute_Set)
+		    quid       	"37BE564E0265"
+		    documentation 	
+|Arithmetic Shift left by several Positions in Place: x<<=arg	 
+		    
+		    parameters 	(list Parameters
+			(object Parameter "arg"
+			    type       	"int"))
+		    result     	"shiftable"
+		    concurrency 	"Sequential"
+		    opExportControl 	"Public"
+		    uid        	0)
+		(object Operation "asrAt"
+		    attributes 	(list Attribute_Set)
+		    quid       	"37BE564E0278"
+		    documentation 	
+|Arithmetic Shift right by several Positions: x>>=arg	 
+		    
+		    parameters 	(list Parameters
+			(object Parameter "arg"
+			    type       	"int"))
+		    result     	"shiftable"
+		    concurrency 	"Sequential"
+		    opExportControl 	"Public"
+		    uid        	0)
+		(object Operation "lsrAt"
+		    attributes 	(list Attribute_Set)
+		    quid       	"37BE564E0282"
+		    documentation 	
+|Logic Shift right by several Positions: x>>=arg	 
+		    
+		    parameters 	(list Parameters
+			(object Parameter "arg"
+			    type       	"int"))
+		    result     	"shiftable"
+		    concurrency 	"Sequential"
+		    opExportControl 	"Public"
+		    uid        	0)
+		(object Operation "rol"
+		    attributes 	(list Attribute_Set)
+		    quid       	"37BE564E028C"
+		    documentation 	
+|Rotate left by several Positions: x<<arg	 
+		    
+		    parameters 	(list Parameters
+			(object Parameter "arg"
+			    type       	"int"))
+		    result     	"shiftable"
+		    concurrency 	"Sequential"
+		    opExportControl 	"Public"
+		    uid        	0)
+		(object Operation "ror"
+		    attributes 	(list Attribute_Set)
+		    quid       	"37BE564E0297"
+		    documentation 	
+|Rotate right by several Positions: x>>arg	 
+		    
+		    parameters 	(list Parameters
+			(object Parameter "arg"
+			    type       	"int"))
+		    result     	"shiftable"
+		    concurrency 	"Sequential"
+		    opExportControl 	"Public"
+		    uid        	0)
+		(object Operation "rolAt"
+		    attributes 	(list Attribute_Set)
+		    quid       	"37BE564E02AA"
+		    documentation 	
+|Rotate left by several Positions in Place and Period p: x<<arg	 
+		    
+		    parameters 	(list Parameters
+			(object Parameter "arg"
+			    type       	"int"))
+		    result     	"shiftable"
+		    concurrency 	"Sequential"
+		    opExportControl 	"Public"
+		    uid        	0)
+		(object Operation "rorAt"
+		    attributes 	(list Attribute_Set)
+		    quid       	"37BE564E02B4"
+		    documentation 	
+|Rotate right by several Positions in Place and Period p: x>>arg	 
+		    
+		    parameters 	(list Parameters
+			(object Parameter "arg"
+			    type       	"int"))
+		    result     	"shiftable"
+		    concurrency 	"Sequential"
+		    opExportControl 	"Public"
+		    uid        	0)
+		(object Operation "getGrad"
+		    attributes 	(list Attribute_Set)
+		    quid       	"37BE564E02BE"
+		    documentation 	
+|Returns the Number of Items for the shifting Operations.
+|	 * This is also Period for Rotation and Reversion (for performance Reasons)
+		    
+		    result     	"int"
+		    concurrency 	"Sequential"
+		    opExportControl 	"Public"
+		    uid        	0)
+		(object Operation "letGrad"
+		    attributes 	(list Attribute_Set)
+		    quid       	"37BE564E02BF"
+		    documentation 	
+|Sets    the Number of Items for the shifting Operations	 
+		    
+		    parameters 	(list Parameters
+			(object Parameter "Grad"
+			    type       	"int")
+			(object Parameter "preserve"
+			    type       	"boolean")
+			(object Parameter "initialize"
+			    type       	"boolean"))
+		    result     	"int"
+		    concurrency 	"Sequential"
+		    opExportControl 	"Public"
+		    uid        	0)
+		(object Operation "aslAt"
+		    attributes 	(list Attribute_Set)
+		    quid       	"37BE564E02DC"
+		    documentation 	"Arithmetic Shift left by one position in Place: x<<=1"
+		    result     	"shiftable"
+		    concurrency 	"Sequential"
+		    opExportControl 	"Public"
+		    uid        	0)
+		(object Operation "asrAt"
+		    attributes 	(list Attribute_Set)
+		    quid       	"37BE564E02DD"
+		    documentation 	
+|Arithmetic Shift right by one position: x>>=1		
+		    
+		    result     	"shiftable"
+		    concurrency 	"Sequential"
+		    opExportControl 	"Public"
+		    uid        	0)
+		(object Operation "lsrAt"
+		    attributes 	(list Attribute_Set)
+		    quid       	"37BE564E02E6"
+		    documentation 	
+|Logic Shift right by one position in Place: x>>>>=1	
+		    
+		    result     	"shiftable"
+		    concurrency 	"Sequential"
+		    opExportControl 	"Public"
+		    uid        	0)
+		(object Operation "rolAt"
+		    attributes 	(list Attribute_Set)
+		    quid       	"37BE564E02E7"
+		    documentation 	
+|Rotate left  by one position in Place: x<<1			
+		    
+		    result     	"shiftable"
+		    concurrency 	"Sequential"
+		    opExportControl 	"Public"
+		    uid        	0)
+		(object Operation "rorAt"
+		    attributes 	(list Attribute_Set)
+		    quid       	"37BE564E02F0"
+		    documentation 	
+|Rotate right by one position in Place: x>>1			
+		    
+		    result     	"shiftable"
+		    concurrency 	"Sequential"
+		    opExportControl 	"Public"
+		    uid        	0)
+		(object Operation "copyAt"
+		    attributes 	(list Attribute_Set)
+		    quid       	"37BE564E02FA"
+		    documentation 	
+|Complement to Copy.
+|	 * Does a 'deepCopy', i.e. also inner Components are copied.
+|	 * Copies the Value of arg into it's own Value
+|	 * and returns itself for further use.
+|	 * When overriding, use copyAt on all Components.	 
+		    
+		    parameters 	(list Parameters
+			(object Parameter "arg"
+			    type       	"Object")
+			(object Parameter "Depth"
+			    type       	"int"))
+		    result     	"copyAble"
+		    concurrency 	"Sequential"
+		    opExportControl 	"Public"
+		    uid        	0)
+		(object Operation "newInstance"
+		    attributes 	(list Attribute_Set)
+		    quid       	"37BE564E030E"
+		    documentation 	
+|Creates an uninitalized new Instance of it's class.
+|	 * This can in VB also be achieved by 'CreateObjectFromInstance',
+|	 * which may be slower.
+|	 * When overriding, use newInstance on all Components.	 
+		    
+		    result     	"copyAble"
+		    concurrency 	"Sequential"
+		    opExportControl 	"Public"
+		    uid        	0)
+		(object Operation "fromStreamAt"
+		    attributes 	(list Attribute_Set)
+		    quid       	"37BE564E030F"
+		    documentation 	
+|Fills this Instance with the Contents read from the Stream.
+|	 * 
+|	 * Design Decisions:
+|	 * This could probably be implemented in an abstract way 
+|	 * by shifting through the Carry Element, but I leave it here!	 
+		    
+		    parameters 	(list Parameters
+			(object Parameter "arg"
+			    type       	"java.io.StreamTokenizer"))
+		    result     	"copyAble"
+		    concurrency 	"Sequential"
+		    opExportControl 	"Public"
+		    uid        	0))
+	    module     	"Component View::Shiftable::absShiftable"
+	    quidu      	"36BB85DA0363"
+	    language   	"Java")
+	(object Class "absReverseIterator"
+	    attributes 	(list Attribute_Set
+		(object Attribute
+		    tool       	"Java"
+		    name       	"GenerateFinalizer"
+		    value      	FALSE)
+		(object Attribute
+		    tool       	"Java"
+		    name       	"GenerateStaticInitializer"
+		    value      	FALSE)
+		(object Attribute
+		    tool       	"Java"
+		    name       	"GenerateInstanceInitializer"
+		    value      	FALSE)
+		(object Attribute
+		    tool       	"Java"
+		    name       	"GenerateDefaultConstructor"
+		    value      	FALSE))
+	    quid       	"37BE6A6C0255"
+	    documentation 	
+|TODO: Implements the abstract reverse Operations 
+| 
+	    
+	    superclasses 	(list inheritance_relationship_list
+		(object Inheritance_Relationship
+		    attributes 	(list Attribute_Set)
+		    quid       	"37BE6B130129"
+		    supplier   	"Logical View::Shiftable::absIterator"
+		    quidu      	"36BB85DA0260"))
+	    realized_interfaces 	(list realize_rel_list
+		(object Realize_Relationship
+		    attributes 	(list Attribute_Set)
+		    quid       	"37BE6B130331"
+		    supplier   	"Logical View::Shiftable::ReverseIterator"
+		    quidu      	"36BB85DA0132"))
+	    module     	"Component View::Shiftable::absReverseIterator"
+	    quidu      	"37BE6A6C007E"
+	    language   	"Java"
+	    abstract   	TRUE)
+	(object Association "$UNNAMED$0"
+	    attributes 	(list Attribute_Set)
+	    quid       	"37BE564E0200"
+	    roles      	(list role_list
+		(object Role "$UNNAMED$1"
+		    quid       	"37BE564E0201"
+		    supplier   	"Logical View::Shiftable::absShiftable"
+		    quidu      	"37BE553902F2")
+		(object Role "self"
+		    attributes 	(list Attribute_Set
+			(object Attribute
+			    tool       	"Java"
+			    name       	"InitialValue"
+			    value      	""))
+		    quid       	"37BE564E0202"
+		    documentation 	
+|Local Reference to the Self, initialized by concrete classes.
+|	 * Used for the Simulation of (multiple) Inheritance with Delegation.
+|	 * Must be a virtual Interface Type to be able to take any Implementation.	 
+		    
+		    label      	"self"
+		    supplier   	"Logical View::Shiftable::shiftable"
+		    quidu      	"36BB85D903B2"
+		    exportControl 	"Private"
+		    is_navigable 	TRUE))))
+    logical_presentations 	(list unit_reference_list
+	(object ClassDiagram "Shiftable"
+	    quid       	"36BB87C403CC"
+	    title      	"Shiftable"
+	    zoom       	100
+	    max_height 	28350
+	    max_width  	21600
+	    origin_x   	0
+	    origin_y   	70
+	    items      	(list diagram_item_list
+		(object ClassView "Class" "Logical View::BaseCopy::absCopyAble" @1
+		    ShowCompartmentStereotypes 	TRUE
+		    location   	(620, 713)
+		    font       	(object Font
+			italics    	TRUE)
+		    label      	(object ItemLabel
+			Parent_View 	@1
+			location   	(484, 638)
+			fill_color 	13434879
+			nlines     	1
+			max_width  	272
+			justify    	0
+			label      	"absCopyAble")
+		    icon_style 	"Icon"
+		    line_color 	3342489
+		    fill_color 	13434879
+		    quidu      	"36BB22B9029F"
+		    width      	290
+		    height     	174
+		    annotation 	8
+		    autoResize 	TRUE)
+		(object ClassView "Class" "Logical View::BaseCopy::copyAble" @2
+		    ShowCompartmentStereotypes 	TRUE
+		    IncludeAttribute 	TRUE
+		    location   	(620, 434)
+		    label      	(object ItemLabel
+			Parent_View 	@2
+			location   	(492, 381)
+			fill_color 	13434879
+			nlines     	1
+			max_width  	256
+			justify    	0
+			label      	"copyAble")
+		    stereotype 	(object ItemLabel
+			Parent_View 	@2
+			location   	(492, 331)
+			fill_color 	13434879
+			anchor     	10
+			nlines     	1
+			max_width  	256
+			justify    	0
+			label      	"<<Interface>>")
+		    icon       	"Interface"
+		    icon_style 	"Label"
+		    line_color 	3342489
+		    fill_color 	13434879
+		    quidu      	"36BB22B9021D"
+		    width      	274
+		    height     	230
+		    annotation 	8
+		    autoResize 	TRUE)
+		(object RealizeView "" @3
+		    stereotype 	TRUE
+		    line_color 	3342489
+		    quidu      	"37BD1B64006A"
+		    client     	@1
+		    supplier   	@2
+		    line_style 	0)
+		(object ClassView "Class" "Logical View::Shiftable::iterable" @4
+		    ShowCompartmentStereotypes 	TRUE
+		    IncludeAttribute 	TRUE
+		    IncludeOperation 	TRUE
+		    location   	(1333, 682)
+		    label      	(object ItemLabel
+			Parent_View 	@4
+			location   	(1205, 623)
+			fill_color 	13434879
+			nlines     	1
+			max_width  	256
+			justify    	0
+			label      	"iterable")
+		    stereotype 	(object ItemLabel
+			Parent_View 	@4
+			location   	(1205, 573)
+			fill_color 	13434879
+			anchor     	10
+			nlines     	1
+			max_width  	256
+			justify    	0
+			label      	"<<Interface>>")
+		    icon       	"Interface"
+		    icon_style 	"Label"
+		    line_color 	3342489
+		    fill_color 	13434879
+		    quidu      	"36BB85D901FA"
+		    width      	274
+		    height     	242
+		    annotation 	8
+		    autoResize 	TRUE)
+		(object ClassView "Class" "Logical View::Shiftable::Iterator" @5
+		    ShowCompartmentStereotypes 	TRUE
+		    IncludeAttribute 	TRUE
+		    location   	(1302, 124)
+		    label      	(object ItemLabel
+			Parent_View 	@5
+			location   	(1174, 95)
+			fill_color 	13434879
+			nlines     	1
+			max_width  	256
+			justify    	0
+			label      	"Iterator")
+		    stereotype 	(object ItemLabel
+			Parent_View 	@5
+			location   	(1174, 45)
+			fill_color 	13434879
+			anchor     	10
+			nlines     	1
+			max_width  	256
+			justify    	0
+			label      	"<<Interface>>")
+		    icon       	"Interface"
+		    icon_style 	"Label"
+		    line_color 	3342489
+		    fill_color 	13434879
+		    quidu      	"36BB85DA01B4"
+		    width      	274
+		    height     	182
+		    annotation 	8
+		    autoResize 	TRUE)
+		(object ClassView "Class" "Logical View::Shiftable::intShiftable" @6
+		    ShowCompartmentStereotypes 	TRUE
+		    IncludeAttribute 	TRUE
+		    location   	(248, 124)
+		    label      	(object ItemLabel
+			Parent_View 	@6
+			location   	(120, 95)
+			fill_color 	13434879
+			nlines     	1
+			max_width  	256
+			justify    	0
+			label      	"intShiftable")
+		    stereotype 	(object ItemLabel
+			Parent_View 	@6
+			location   	(120, 45)
+			fill_color 	13434879
+			anchor     	10
+			nlines     	1
+			max_width  	256
+			justify    	0
+			label      	"<<Interface>>")
+		    icon       	"Interface"
+		    icon_style 	"Label"
+		    line_color 	3342489
+		    fill_color 	13434879
+		    quidu      	"36BB85D902E9"
+		    width      	274
+		    height     	182
+		    annotation 	8
+		    autoResize 	TRUE)
+		(object ClassView "Class" "Logical View::Shiftable::absIterator" @7
+		    ShowCompartmentStereotypes 	TRUE
+		    IncludeAttribute 	TRUE
+		    location   	(1302, 403)
+		    font       	(object Font
+			italics    	TRUE)
+		    label      	(object ItemLabel
+			Parent_View 	@7
+			location   	(1186, 352)
+			fill_color 	13434879
+			nlines     	1
+			max_width  	232
+			justify    	0
+			label      	"absIterator")
+		    icon_style 	"Icon"
+		    line_color 	3342489
+		    fill_color 	13434879
+		    quidu      	"36BB85DA0260"
+		    width      	250
+		    height     	126
+		    annotation 	8
+		    autoResize 	TRUE)
+		(object RealizeView "" @8
+		    stereotype 	TRUE
+		    line_color 	3342489
+		    quidu      	"37BD3A360317"
+		    client     	@7
+		    supplier   	@5
+		    line_style 	0)
+		(object ClassView "Class" "Logical View::Shiftable::ReverseIterator" @9
+		    ShowCompartmentStereotypes 	TRUE
+		    IncludeAttribute 	TRUE
+		    location   	(1705, 124)
+		    label      	(object ItemLabel
+			Parent_View 	@9
+			location   	(1556, 95)
+			fill_color 	13434879
+			nlines     	1
+			max_width  	298
+			justify    	0
+			label      	"ReverseIterator")
+		    stereotype 	(object ItemLabel
+			Parent_View 	@9
+			location   	(1556, 45)
+			fill_color 	13434879
+			anchor     	10
+			nlines     	1
+			max_width  	298
+			justify    	0
+			label      	"<<Interface>>")
+		    icon       	"Interface"
+		    icon_style 	"Label"
+		    line_color 	3342489
+		    fill_color 	13434879
+		    quidu      	"36BB85DA0132"
+		    width      	316
+		    height     	182
+		    annotation 	8
+		    autoResize 	TRUE)
+		(object InheritView "" @10
+		    stereotype 	TRUE
+		    line_color 	3342489
+		    quidu      	"37BD3A3D00A0"
+		    client     	@9
+		    supplier   	@5
+		    line_style 	0)
+		(object ClassView "Class" "Logical View::Shiftable::swapAble" @11
+		    ShowCompartmentStereotypes 	TRUE
+		    IncludeAttribute 	TRUE
+		    location   	(992, 434)
+		    label      	(object ItemLabel
+			Parent_View 	@11
+			location   	(864, 405)
+			fill_color 	13434879
+			nlines     	1
+			max_width  	256
+			justify    	0
+			label      	"swapAble")
+		    stereotype 	(object ItemLabel
+			Parent_View 	@11
+			location   	(864, 355)
+			fill_color 	13434879
+			anchor     	10
+			nlines     	1
+			max_width  	256
+			justify    	0
+			label      	"<<Interface>>")
+		    icon       	"Interface"
+		    icon_style 	"Label"
+		    line_color 	3342489
+		    fill_color 	13434879
+		    quidu      	"36BB85DB0011"
+		    width      	274
+		    height     	182
+		    annotation 	8
+		    autoResize 	TRUE)
+		(object InheritView "" @12
+		    stereotype 	TRUE
+		    line_color 	3342489
+		    quidu      	"37BD3A400036"
+		    client     	@11
+		    supplier   	@2
+		    line_style 	0)
+		(object ClassView "Class" "Logical View::BaseCopy::intCopyAble" @13
+		    ShowCompartmentStereotypes 	TRUE
+		    IncludeAttribute 	TRUE
+		    location   	(620, 124)
+		    label      	(object ItemLabel
+			Parent_View 	@13
+			location   	(492, 71)
+			fill_color 	13434879
+			nlines     	1
+			max_width  	256
+			justify    	0
+			label      	"intCopyAble")
+		    stereotype 	(object ItemLabel
+			Parent_View 	@13
+			location   	(492, 21)
+			fill_color 	13434879
+			anchor     	10
+			nlines     	1
+			max_width  	256
+			justify    	0
+			label      	"<<Interface>>")
+		    icon       	"Interface"
+		    icon_style 	"Label"
+		    line_color 	3342489
+		    fill_color 	13434879
+		    quidu      	"36BB22B90136"
+		    width      	274
+		    height     	230
+		    annotation 	8
+		    autoResize 	TRUE)
+		(object InheritView "" @14
+		    stereotype 	TRUE
+		    line_color 	3342489
+		    quidu      	"37BD1BE003E2"
+		    client     	@2
+		    supplier   	@13
+		    line_style 	0)
+		(object ClassView "Class" "Logical View::Shiftable::shiftable" @15
+		    ShowCompartmentStereotypes 	TRUE
+		    IncludeAttribute 	TRUE
+		    location   	(248, 434)
+		    label      	(object ItemLabel
+			Parent_View 	@15
+			location   	(120, 405)
+			fill_color 	13434879
+			nlines     	1
+			max_width  	256
+			justify    	0
+			label      	"shiftable")
+		    stereotype 	(object ItemLabel
+			Parent_View 	@15
+			location   	(120, 355)
+			fill_color 	13434879
+			anchor     	10
+			nlines     	1
+			max_width  	256
+			justify    	0
+			label      	"<<Interface>>")
+		    icon       	"Interface"
+		    icon_style 	"Label"
+		    line_color 	3342489
+		    fill_color 	13434879
+		    quidu      	"36BB85D903B2"
+		    width      	274
+		    height     	182
+		    annotation 	8
+		    autoResize 	TRUE)
+		(object InheritView "" @16
+		    stereotype 	TRUE
+		    line_color 	3342489
+		    quidu      	"37BD3A3E0110"
+		    client     	@15
+		    supplier   	@6
+		    line_style 	0)
+		(object InheritView "" @17
+		    stereotype 	TRUE
+		    line_color 	3342489
+		    quidu      	"37BD3A3E032C"
+		    client     	@15
+		    supplier   	@2
+		    line_style 	0)
+		(object ClassView "Class" "Logical View::Shiftable::absShiftable" @18
+		    ShowCompartmentStereotypes 	TRUE
+		    IncludeAttribute 	TRUE
+		    location   	(248, 713)
+		    label      	(object ItemLabel
+			Parent_View 	@18
+			location   	(111, 684)
+			fill_color 	13434879
+			nlines     	1
+			max_width  	274
+			justify    	0
+			label      	"absShiftable")
+		    stereotype 	(object ItemLabel
+			Parent_View 	@18
+			location   	(111, 634)
+			fill_color 	13434879
+			anchor     	10
+			nlines     	1
+			max_width  	274
+			justify    	0
+			label      	"<<Delegator>>")
+		    icon_style 	"Icon"
+		    line_color 	3342489
+		    fill_color 	13434879
+		    quidu      	"37BE553902F2"
+		    width      	292
+		    height     	182
+		    annotation 	8
+		    autoResize 	TRUE)
+		(object AssociationViewNew "$UNNAMED$0" @19
+		    location   	(69, 533)
+		    stereotype 	TRUE
+		    line_color 	3342489
+		    quidu      	"37BE564E0200"
+		    roleview_list 	(list RoleViews
+			(object RoleView "self" @20
+			    Parent_View 	@19
+			    location   	(-179, -149)
+			    label      	(object SegLabel @21
+				Parent_View 	@20
+				location   	(146, 570)
+				anchor     	1
+				anchor_loc 	1
+				nlines     	1
+				max_width  	72
+				justify    	0
+				label      	"-self"
+				pctDist    	1.004072
+				height     	71
+				orientation 	1)
+			    stereotype 	TRUE
+			    line_color 	3342489
+			    quidu      	"37BE564E0202"
+			    client     	@19
+			    supplier   	@15
+			    line_style 	0)
+			(object RoleView "$UNNAMED$1" @22
+			    Parent_View 	@19
+			    location   	(-179, -149)
+			    label      	(object SegLabel @23
+				Parent_View 	@22
+				location   	(110, 633)
+				hidden     	TRUE
+				anchor     	1
+				anchor_loc 	1
+				nlines     	1
+				max_width  	450
+				justify    	0
+				label      	""
+				pctDist    	0.800000
+				height     	42
+				orientation 	1)
+			    stereotype 	TRUE
+			    line_color 	3342489
+			    quidu      	"37BE564E0201"
+			    client     	@19
+			    supplier   	@18
+			    line_style 	0)))
+		(object InheritView "" @24
+		    stereotype 	TRUE
+		    line_color 	3342489
+		    quidu      	"37BE564D01FE"
+		    client     	@18
+		    supplier   	@1
+		    line_style 	0)
+		(object RealizeView "" @25
+		    stereotype 	TRUE
+		    line_color 	3342489
+		    quidu      	"37BE564E0001"
+		    client     	@18
+		    supplier   	@15
+		    line_style 	0)
+		(object ClassView "Class" "Logical View::Shiftable::IndexIterator" @26
+		    ShowCompartmentStereotypes 	TRUE
+		    IncludeAttribute 	TRUE
+		    location   	(2108, 403)
+		    font       	(object Font
+			italics    	TRUE)
+		    label      	(object ItemLabel
+			Parent_View 	@26
+			location   	(1979, 322)
+			fill_color 	13434879
+			nlines     	1
+			max_width  	258
+			justify    	0
+			label      	"IndexIterator")
+		    icon_style 	"Icon"
+		    line_color 	3342489
+		    fill_color 	13434879
+		    quidu      	"36BB85DB00B1"
+		    width      	276
+		    height     	186
+		    annotation 	8
+		    autoResize 	TRUE)
+		(object ClassView "Class" "Logical View::Shiftable::absReverseIterator" @27
+		    ShowCompartmentStereotypes 	TRUE
+		    IncludeAttribute 	TRUE
+		    location   	(1705, 403)
+		    font       	(object Font
+			italics    	TRUE)
+		    label      	(object ItemLabel
+			Parent_View 	@27
+			location   	(1519, 352)
+			fill_color 	13434879
+			nlines     	1
+			max_width  	372
+			justify    	0
+			label      	"absReverseIterator")
+		    icon_style 	"Icon"
+		    line_color 	3342489
+		    fill_color 	13434879
+		    quidu      	"37BE6A6C0255"
+		    width      	390
+		    height     	126
+		    annotation 	8
+		    autoResize 	TRUE)
+		(object InheritView "" @28
+		    stereotype 	TRUE
+		    line_color 	3342489
+		    quidu      	"37BE6B130129"
+		    client     	@27
+		    supplier   	@7
+		    line_style 	0)
+		(object RealizeView "" @29
+		    stereotype 	TRUE
+		    line_color 	3342489
+		    quidu      	"37BE6B130331"
+		    client     	@27
+		    supplier   	@9
+		    line_style 	0)
+		(object InheritView "" @30
+		    stereotype 	TRUE
+		    line_color 	3342489
+		    quidu      	"37BE6A6F02F0"
+		    client     	@26
+		    supplier   	@27
+		    line_style 	0)))))

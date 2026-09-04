@@ -1,0 +1,1422 @@
+
+(object Petal
+    version    	42
+    _written   	"Rose 4.5.8163.3"
+    charSet    	0)
+
+(object Class_Category "Order"
+    is_unit    	TRUE
+    is_loaded  	TRUE
+    quid       	"36BB46B601F1"
+    visible_categories 	(list visibility_relationship_list
+	(object Visibility_Relationship
+	    quid       	"376307C00355"
+	    supplier   	"Logical View::BaseCopy"
+	    quidu      	"36BB22B90122"))
+    exportControl 	"Public"
+    logical_models 	(list unit_reference_list
+	(object Class "intOrderable"
+	    attributes 	(list Attribute_Set
+		(object Attribute
+		    tool       	"Java"
+		    name       	"GenerateFinalizer"
+		    value      	FALSE)
+		(object Attribute
+		    tool       	"Java"
+		    name       	"GenerateStaticInitializer"
+		    value      	FALSE)
+		(object Attribute
+		    tool       	"Java"
+		    name       	"GenerateInstanceInitializer"
+		    value      	FALSE)
+		(object Attribute
+		    tool       	"Java"
+		    name       	"GenerateDefaultConstructor"
+		    value      	FALSE))
+	    quid       	"36BB46B601FB"
+	    documentation 	
+|intOrderable:
+| * Interface for a Class whose Objects have a strict Order Relation ">" resp. "<"
+| * If a Set is not ordered completely, these Relations are not defined
+| * for any two Elements. In this Case, both >= and <= give False.
+| * When the Element is the same or equivalent, both >= and <= give True.
+| * When the Element is comparable, only one gives True.
+| * 
+| * Absolute Value is only important because of the Metric defined by "<".
+| 
+	    
+	    stereotype 	"Interface"
+	    operations 	(list Operations
+		(object Operation "less"
+		    attributes 	(list Attribute_Set
+			(object Attribute
+			    tool       	"Java"
+			    name       	"Abstract"
+			    value      	TRUE))
+		    quid       	"37BD3959035F"
+		    documentation 	
+|less: '<' Returns True, when 'Self' < arg
+|	 
+		    
+		    parameters 	(list Parameters
+			(object Parameter "arg"
+			    type       	"Object"))
+		    result     	"boolean"
+		    concurrency 	"Sequential"
+		    opExportControl 	"Public"
+		    uid        	0))
+	    module     	"Component View::Order::intOrderable"
+	    quidu      	"36BB46B601F2"
+	    language   	"Java")
+	(object Class "orderable"
+	    attributes 	(list Attribute_Set
+		(object Attribute
+		    tool       	"Java"
+		    name       	"GenerateFinalizer"
+		    value      	FALSE)
+		(object Attribute
+		    tool       	"Java"
+		    name       	"GenerateStaticInitializer"
+		    value      	FALSE)
+		(object Attribute
+		    tool       	"Java"
+		    name       	"GenerateInstanceInitializer"
+		    value      	FALSE)
+		(object Attribute
+		    tool       	"Java"
+		    name       	"GenerateDefaultConstructor"
+		    value      	FALSE))
+	    quid       	"36BB46B602CE"
+	    documentation 	
+|orderAble:
+| * Interface for a Class whose Objects have a strict Order Relation ">" resp. "<".
+| * Complements the pure virtual Interface 'intOrderable'.
+| * If a Set is not ordered completely, these Relations are not defined
+| * for any two Elements. In this Case, both >= and <= give False.
+| * When the Element is the same or equivalent, both >= and <= give True.
+| * When the Element is comparable, only one gives True.
+| * 
+| * Absolute Value is only important because of the Metric defined by "<".
+| * A Default Implementation is done in 'absOrderable'.
+| 
+	    
+	    stereotype 	"Interface"
+	    superclasses 	(list inheritance_relationship_list
+		(object Inheritance_Relationship
+		    attributes 	(list Attribute_Set)
+		    quid       	"37BD395A0375"
+		    supplier   	"Logical View::Order::intOrderable"
+		    quidu      	"36BB46B601FB")
+		(object Inheritance_Relationship
+		    attributes 	(list Attribute_Set)
+		    quid       	"37BD395B018B"
+		    supplier   	"Logical View::BaseCopy::copyAble"
+		    quidu      	"36BB22B9021D"))
+	    operations 	(list Operations
+		(object Operation "between"
+		    attributes 	(list Attribute_Set
+			(object Attribute
+			    tool       	"Java"
+			    name       	"Abstract"
+			    value      	TRUE))
+		    quid       	"37BD395B018C"
+		    documentation 	
+|between: returns True, when 'Self' is between arg1 and arg2	 
+		    
+		    parameters 	(list Parameters
+			(object Parameter "arg1"
+			    type       	"Object")
+			(object Parameter "arg2"
+			    type       	"Object"))
+		    result     	"boolean"
+		    concurrency 	"Sequential"
+		    opExportControl 	"Public"
+		    uid        	0)
+		(object Operation "grtr"
+		    attributes 	(list Attribute_Set
+			(object Attribute
+			    tool       	"Java"
+			    name       	"Abstract"
+			    value      	TRUE))
+		    quid       	"37BD395B0197"
+		    documentation 	
+|greater: '>' Returns True, when 'Self' > arg	 
+		    
+		    parameters 	(list Parameters
+			(object Parameter "arg"
+			    type       	"Object"))
+		    result     	"boolean"
+		    concurrency 	"Sequential"
+		    opExportControl 	"Public"
+		    uid        	0)
+		(object Operation "grtrEq"
+		    attributes 	(list Attribute_Set
+			(object Attribute
+			    tool       	"Java"
+			    name       	"Abstract"
+			    value      	TRUE))
+		    quid       	"37BD395B01A0"
+		    documentation 	
+|greater or equal: '>=' Returns True, when 'Self' >= arg	 
+		    
+		    parameters 	(list Parameters
+			(object Parameter "arg"
+			    type       	"Object"))
+		    result     	"boolean"
+		    concurrency 	"Sequential"
+		    opExportControl 	"Public"
+		    uid        	0)
+		(object Operation "lessEq"
+		    attributes 	(list Attribute_Set
+			(object Attribute
+			    tool       	"Java"
+			    name       	"Abstract"
+			    value      	TRUE))
+		    quid       	"37BD395B01AA"
+		    documentation 	
+|less or equal: '<=' Returns True, when 'Self' <= arg	 
+		    
+		    parameters 	(list Parameters
+			(object Parameter "arg"
+			    type       	"Object"))
+		    result     	"boolean"
+		    concurrency 	"Sequential"
+		    opExportControl 	"Public"
+		    uid        	0)
+		(object Operation "Max"
+		    attributes 	(list Attribute_Set
+			(object Attribute
+			    tool       	"Java"
+			    name       	"Abstract"
+			    value      	TRUE))
+		    quid       	"37BD395B01B3"
+		    documentation 	
+|Returns the Maximum of both Operands	 
+		    
+		    parameters 	(list Parameters
+			(object Parameter "arg"
+			    type       	"Object"))
+		    result     	"orderable"
+		    concurrency 	"Sequential"
+		    opExportControl 	"Public"
+		    uid        	0)
+		(object Operation "Min"
+		    attributes 	(list Attribute_Set
+			(object Attribute
+			    tool       	"Java"
+			    name       	"Abstract"
+			    value      	TRUE))
+		    quid       	"37BD395B01BD"
+		    documentation 	
+|Returns the Minimum of both Operands	 
+		    
+		    parameters 	(list Parameters
+			(object Parameter "arg"
+			    type       	"Object"))
+		    result     	"orderable"
+		    concurrency 	"Sequential"
+		    opExportControl 	"Public"
+		    uid        	0)
+		(object Operation "MaxAt"
+		    attributes 	(list Attribute_Set
+			(object Attribute
+			    tool       	"Java"
+			    name       	"Abstract"
+			    value      	TRUE))
+		    quid       	"37BD395B01C7"
+		    documentation 	
+|Returns the Maximum of both Operands in Place	 
+		    
+		    parameters 	(list Parameters
+			(object Parameter "arg"
+			    type       	"Object"))
+		    result     	"orderable"
+		    concurrency 	"Sequential"
+		    opExportControl 	"Public"
+		    uid        	0)
+		(object Operation "MinAt"
+		    attributes 	(list Attribute_Set
+			(object Attribute
+			    tool       	"Java"
+			    name       	"Abstract"
+			    value      	TRUE))
+		    quid       	"37BD395B01C9"
+		    documentation 	
+|Returns the Minimum of both Operands in Place	 
+		    
+		    parameters 	(list Parameters
+			(object Parameter "arg"
+			    type       	"Object"))
+		    result     	"orderable"
+		    concurrency 	"Sequential"
+		    opExportControl 	"Public"
+		    uid        	0)
+		(object Operation "Position"
+		    attributes 	(list Attribute_Set
+			(object Attribute
+			    tool       	"Java"
+			    name       	"Abstract"
+			    value      	TRUE))
+		    quid       	"37BD395B01D2"
+		    documentation 	
+|Returns the Position of this Object relative to arg: 
+|	 * -1 for smaller, otherwise +1	 
+		    
+		    parameters 	(list Parameters
+			(object Parameter "arg"
+			    type       	"Object"))
+		    result     	"int"
+		    concurrency 	"Sequential"
+		    opExportControl 	"Public"
+		    uid        	0)
+		(object Operation "xPosition"
+		    attributes 	(list Attribute_Set
+			(object Attribute
+			    tool       	"Java"
+			    name       	"Abstract"
+			    value      	TRUE))
+		    quid       	"37BD395B01DC"
+		    documentation 	
+|Returns the exact Position of this Object relative to arg: 
+|	 * -1 for smaller, 0 for equal, otherwise +1	 
+		    
+		    parameters 	(list Parameters
+			(object Parameter "arg"
+			    type       	"Object"))
+		    result     	"int"
+		    concurrency 	"Sequential"
+		    opExportControl 	"Public"
+		    uid        	0))
+	    module     	"Component View::Order::orderable"
+	    quidu      	"36BB46B602C3"
+	    language   	"Java")
+	(object Class "absOrderable"
+	    attributes 	(list Attribute_Set
+		(object Attribute
+		    tool       	"Java"
+		    name       	"GenerateFinalizer"
+		    value      	FALSE)
+		(object Attribute
+		    tool       	"Java"
+		    name       	"GenerateStaticInitializer"
+		    value      	FALSE)
+		(object Attribute
+		    tool       	"Java"
+		    name       	"GenerateInstanceInitializer"
+		    value      	FALSE)
+		(object Attribute
+		    tool       	"Java"
+		    name       	"GenerateDefaultConstructor"
+		    value      	FALSE))
+	    quid       	"36BB46B70030"
+	    documentation 	
+|Default Implementation of an order Relation. 
+| * Every Function is derived from the 'less' Function, 
+| * which itself is kept abstract.
+| * 
+| * Abstract Methods:
+| * less
+| 
+	    
+	    stereotype 	"Delegator"
+	    superclasses 	(list inheritance_relationship_list
+		(object Inheritance_Relationship
+		    attributes 	(list Attribute_Set)
+		    quid       	"36BB475900DD"
+		    supplier   	"Logical View::BaseCopy::absCopyAble"
+		    quidu      	"36BB22B9029F")
+		(object Inheritance_Relationship
+		    attributes 	(list Attribute_Set)
+		    quid       	"37BD395403E4"
+		    supplier   	"Logical View::BaseCopy::absCopyAble"
+		    quidu      	"36BB22B9029F"))
+	    realized_interfaces 	(list realize_rel_list
+		(object Realize_Relationship
+		    attributes 	(list Attribute_Set)
+		    quid       	"37BD395501E7"
+		    supplier   	"Logical View::Order::orderable"
+		    quidu      	"36BB46B602CE"))
+	    operations 	(list Operations
+		(object Operation "absOrderable"
+		    attributes 	(list Attribute_Set)
+		    quid       	"37BD395503D2"
+		    documentation 	
+|This Constructor is only used in Initialize and Terminate of abstract Classes
+|	 * and should normally be marked as 'protected' or 'friend',
+|	 * but all these Routines are not within one Package.
+|	 * It is needed for the Child Classes to call
+|	 * and replace Self by the Child Object with it's overloaded Methods.	 
+		    
+		    parameters 	(list Parameters
+			(object Parameter "self_"
+			    type       	"orderable"))
+		    concurrency 	"Sequential"
+		    opExportControl 	"Protected"
+		    uid        	0)
+		(object Operation "Position"
+		    attributes 	(list Attribute_Set)
+		    quid       	"37BD395503DC"
+		    documentation 	
+|Returns the Position of this Number relative to arg: 
+|	 * -1 for smaller, otherwise +1	 
+		    
+		    parameters 	(list Parameters
+			(object Parameter "arg"
+			    type       	"Object"))
+		    result     	"int"
+		    concurrency 	"Sequential"
+		    opExportControl 	"Public"
+		    uid        	0)
+		(object Operation "xPosition"
+		    attributes 	(list Attribute_Set)
+		    quid       	"37BD395503E6"
+		    documentation 	
+|Returns the exact Position of this Number relative to arg: 
+|	 * -1 for smaller, 0 for equal, otherwise +1	 
+		    
+		    parameters 	(list Parameters
+			(object Parameter "arg"
+			    type       	"Object"))
+		    result     	"int"
+		    concurrency 	"Sequential"
+		    opExportControl 	"Public"
+		    uid        	0)
+		(object Operation "Max"
+		    attributes 	(list Attribute_Set)
+		    quid       	"37BD395503E8"
+		    documentation 	
+|Returns the Maximum of this and the Operand, but not as a Copy!	 
+		    
+		    parameters 	(list Parameters
+			(object Parameter "arg"
+			    type       	"Object"))
+		    result     	"orderable"
+		    concurrency 	"Sequential"
+		    opExportControl 	"Public"
+		    uid        	0)
+		(object Operation "Min"
+		    attributes 	(list Attribute_Set)
+		    quid       	"37BD39560009"
+		    documentation 	
+|Returns the Minimum of this and the Operand, but not as a Copy!	 
+		    
+		    parameters 	(list Parameters
+			(object Parameter "arg"
+			    type       	"Object"))
+		    result     	"orderable"
+		    concurrency 	"Sequential"
+		    opExportControl 	"Public"
+		    uid        	0)
+		(object Operation "MaxAt"
+		    attributes 	(list Attribute_Set)
+		    quid       	"37BD39560013"
+		    documentation 	
+|Returns the Maximum of this and the Operand in Place	 
+		    
+		    parameters 	(list Parameters
+			(object Parameter "arg"
+			    type       	"Object"))
+		    result     	"orderable"
+		    concurrency 	"Sequential"
+		    opExportControl 	"Public"
+		    uid        	0)
+		(object Operation "MinAt"
+		    attributes 	(list Attribute_Set)
+		    quid       	"37BD3956001C"
+		    documentation 	
+|Returns the Minimum of this and the Operand in Place	 
+		    
+		    parameters 	(list Parameters
+			(object Parameter "arg"
+			    type       	"Object"))
+		    result     	"orderable"
+		    concurrency 	"Sequential"
+		    opExportControl 	"Public"
+		    uid        	0)
+		(object Operation "between"
+		    attributes 	(list Attribute_Set)
+		    quid       	"37BD39560026"
+		    documentation 	
+|between: returns True, when 'Self' is between arg1 and arg2	 
+		    
+		    parameters 	(list Parameters
+			(object Parameter "arg1"
+			    type       	"Object")
+			(object Parameter "arg2"
+			    type       	"Object"))
+		    result     	"boolean"
+		    concurrency 	"Sequential"
+		    opExportControl 	"Public"
+		    uid        	0)
+		(object Operation "grtr"
+		    attributes 	(list Attribute_Set)
+		    quid       	"37BD39560030"
+		    documentation 	
+|greater: '>' Returns True, when 'Self' > arg	 
+		    
+		    parameters 	(list Parameters
+			(object Parameter "arg"
+			    type       	"Object"))
+		    result     	"boolean"
+		    concurrency 	"Sequential"
+		    opExportControl 	"Public"
+		    uid        	0)
+		(object Operation "grtrEq"
+		    attributes 	(list Attribute_Set)
+		    quid       	"37BD3956003A"
+		    documentation 	
+|greater or equal: '>=' Returns True, when 'Self' >= arg	 
+		    
+		    parameters 	(list Parameters
+			(object Parameter "arg"
+			    type       	"Object"))
+		    result     	"boolean"
+		    concurrency 	"Sequential"
+		    opExportControl 	"Public"
+		    uid        	0)
+		(object Operation "lessEq"
+		    attributes 	(list Attribute_Set)
+		    quid       	"37BD39560044"
+		    documentation 	
+|less or equal: '<=' Returns True, when 'Self' <= arg	 
+		    
+		    parameters 	(list Parameters
+			(object Parameter "arg"
+			    type       	"Object"))
+		    result     	"boolean"
+		    concurrency 	"Sequential"
+		    opExportControl 	"Public"
+		    uid        	0)
+		(object Operation "less"
+		    attributes 	(list Attribute_Set)
+		    quid       	"37BD39560046"
+		    documentation 	
+|Virtual Method!
+|	 * less: '<' Returns True, when 'Self' < arg
+|	 * Implemented only to make this class concrete for delegation.
+|	 * Should be overwritten!
+|	 
+		    
+		    parameters 	(list Parameters
+			(object Parameter "arg"
+			    type       	"Object"))
+		    result     	"boolean"
+		    concurrency 	"Sequential"
+		    opExportControl 	"Public"
+		    uid        	0)
+		(object Operation "copyAt"
+		    attributes 	(list Attribute_Set)
+		    quid       	"37BD3956004F"
+		    documentation 	
+|Complement to Copy.
+|	 * Does a 'deepCopy', i.e. also inner Components are copied.
+|	 * Copies the Value of arg into it's own Value
+|	 * and returns itself for further use.
+|	 * When overriding, use copyAt on all Components.	 
+		    
+		    parameters 	(list Parameters
+			(object Parameter "arg"
+			    type       	"Object")
+			(object Parameter "Depth"
+			    type       	"int"))
+		    result     	"copyAble"
+		    concurrency 	"Sequential"
+		    opExportControl 	"Public"
+		    uid        	0)
+		(object Operation "newInstance"
+		    attributes 	(list Attribute_Set)
+		    quid       	"37BD39560062"
+		    documentation 	
+|Creates an uninitalized new Instance of it's class.
+|	 * This can in VB also be achieved by 'CreateObjectFromInstance',
+|	 * which may be slower.
+|	 * When overriding, use newInstance on all Components.	 
+		    
+		    result     	"copyAble"
+		    concurrency 	"Sequential"
+		    opExportControl 	"Public"
+		    uid        	0)
+		(object Operation "fromStreamAt"
+		    attributes 	(list Attribute_Set)
+		    quid       	"37BD39560063"
+		    documentation 	
+|Fills this Instance with the Contents read from the String.	 
+		    
+		    parameters 	(list Parameters
+			(object Parameter "arg"
+			    type       	"java.io.StreamTokenizer"))
+		    result     	"copyAble"
+		    concurrency 	"Sequential"
+		    opExportControl 	"Public"
+		    uid        	0)
+		(object Operation "testIt"
+		    attributes 	(list Attribute_Set
+			(object Attribute
+			    tool       	"Java"
+			    name       	"Static"
+			    value      	TRUE))
+		    quid       	"37BD3956006C"
+		    documentation 	
+|Method to test all Implementations in this class.	 
+		    
+		    result     	"void"
+		    exceptions 	"java.io.IOException"
+		    concurrency 	"Sequential"
+		    opExportControl 	"Public"
+		    uid        	0)
+		(object Operation "tMaxMin"
+		    attributes 	(list Attribute_Set
+			(object Attribute
+			    tool       	"Java"
+			    name       	"Static"
+			    value      	TRUE))
+		    quid       	"37BD3956006D"
+		    documentation 	
+|Tests Max() and Min()	 
+		    
+		    result     	"void"
+		    exceptions 	"java.io.IOException"
+		    concurrency 	"Sequential"
+		    opExportControl 	"Private"
+		    uid        	0)
+		(object Operation "tMaxiMini"
+		    attributes 	(list Attribute_Set
+			(object Attribute
+			    tool       	"Java"
+			    name       	"Static"
+			    value      	TRUE))
+		    quid       	"37BD39560076"
+		    documentation 	
+|Tests MaxAt() and MinAt()	 
+		    
+		    result     	"void"
+		    exceptions 	"java.io.IOException"
+		    concurrency 	"Sequential"
+		    opExportControl 	"Private"
+		    uid        	0))
+	    module     	"Component View::Order::absOrderable"
+	    quidu      	"36BB46B70026"
+	    language   	"Java")
+	(object Class "Interval"
+	    attributes 	(list Attribute_Set
+		(object Attribute
+		    tool       	"Java"
+		    name       	"GenerateFinalizer"
+		    value      	FALSE)
+		(object Attribute
+		    tool       	"Java"
+		    name       	"GenerateStaticInitializer"
+		    value      	FALSE)
+		(object Attribute
+		    tool       	"Java"
+		    name       	"GenerateInstanceInitializer"
+		    value      	FALSE)
+		(object Attribute
+		    tool       	"Java"
+		    name       	"GenerateDefaultConstructor"
+		    value      	FALSE))
+	    quid       	"36BB46B700C7"
+	    documentation 	
+|This Class defines a Set of Objects by an Interval. 
+| * Intervals form a Set, by defining AND and OR.
+| * The only prerequisite is an order Relation.
+| * 
+| * The Interval can be extended by numerical Operations, 
+| * because it is a Manifold. 
+| * Because of this, you have to redefine the mathematical Operations.
+| 
+	    
+	    superclasses 	(list inheritance_relationship_list
+		(object Inheritance_Relationship
+		    attributes 	(list Attribute_Set)
+		    quid       	"37BD395700C7"
+		    supplier   	"Logical View::BaseCopy::absCopyAble"
+		    quidu      	"36BB22B9029F"))
+	    operations 	(list Operations
+		(object Operation "Interval"
+		    attributes 	(list Attribute_Set)
+		    quid       	"37BD395800AB"
+		    documentation 	
+|Empty Constructor, only for Subclasses.	 
+		    
+		    concurrency 	"Sequential"
+		    opExportControl 	"Public"
+		    uid        	0)
+		(object Operation "Interval"
+		    attributes 	(list Attribute_Set)
+		    quid       	"37BD395800B5"
+		    documentation 	
+|Defining Constructor.	 
+		    
+		    parameters 	(list Parameters
+			(object Parameter "left"
+			    type       	"orderable")
+			(object Parameter "right"
+			    type       	"orderable"))
+		    concurrency 	"Sequential"
+		    opExportControl 	"Public"
+		    uid        	0)
+		(object Operation "less"
+		    attributes 	(list Attribute_Set)
+		    quid       	"37BD395800C9"
+		    documentation 	
+|less: '<' Returns True, when 'Self' < arg	 
+		    
+		    parameters 	(list Parameters
+			(object Parameter "arg"
+			    type       	"Object"))
+		    result     	"boolean"
+		    concurrency 	"Sequential"
+		    opExportControl 	"Public"
+		    uid        	0)
+		(object Operation "grtr"
+		    attributes 	(list Attribute_Set)
+		    quid       	"37BD395800D3"
+		    documentation 	
+|grtr: '>' Returns True, when 'Self' > arg	 
+		    
+		    parameters 	(list Parameters
+			(object Parameter "arg"
+			    type       	"Object"))
+		    result     	"boolean"
+		    concurrency 	"Sequential"
+		    opExportControl 	"Public"
+		    uid        	0)
+		(object Operation "equals"
+		    attributes 	(list Attribute_Set)
+		    quid       	"37BD395800DD"
+		    documentation 	
+|equals: '=' Returns True, when 'Self' = arg	 
+|	 * has two Meanings: 
+|	 * for Intervals it tests, whether the borders are the same. 
+|	 * for Scalars   it tests, whether the Scalar is contained in the Interval. 
+		    
+		    parameters 	(list Parameters
+			(object Parameter "arg"
+			    type       	"Object"))
+		    result     	"boolean"
+		    concurrency 	"Sequential"
+		    opExportControl 	"Public"
+		    uid        	0)
+		(object Operation "xPosition"
+		    attributes 	(list Attribute_Set)
+		    quid       	"37BD395800E7"
+		    documentation 	
+|Returns the Position of arg relative to the Interval.
+|	 * -2 for x		< a[0]	< a[1]
+|	 * -1 for x		= a[0]	< a[1]
+|	 *  0 for a[0]	< x		< a[1]
+|	 * +1 for a[0]	< a[1]	= x
+|	 * +2 for a[0]	< a[1]	< x
+|	 
+		    
+		    parameters 	(list Parameters
+			(object Parameter "arg"
+			    type       	"Object"))
+		    result     	"int"
+		    concurrency 	"Sequential"
+		    opExportControl 	"Public"
+		    uid        	0)
+		(object Operation "Position"
+		    attributes 	(list Attribute_Set)
+		    quid       	"37BD395800F1"
+		    documentation 	
+|Returns the Position of arg relative to the Interval.
+|	 * -2 for x		< a[0]	< a[1]
+|	 *  0 for a[0]	<= x	< a[1]
+|	 * +2 for a[0]	< a[1]	<= x
+|	 
+		    
+		    parameters 	(list Parameters
+			(object Parameter "arg"
+			    type       	"Object"))
+		    result     	"int"
+		    concurrency 	"Sequential"
+		    opExportControl 	"Public"
+		    uid        	0)
+		(object Operation "copyAt"
+		    attributes 	(list Attribute_Set)
+		    quid       	"37BD395800FB"
+		    documentation 	
+|Complement to Copy.
+|	 * Does a 'deepCopy', i.e. also inner Components are copied.
+|	 * Copies the Value of arg into it's own Value
+|	 * and returns itself for further use.
+|	 * When overriding, use copyAt on all Components.	 
+		    
+		    parameters 	(list Parameters
+			(object Parameter "arg"
+			    type       	"Object")
+			(object Parameter "Depth"
+			    type       	"int"))
+		    result     	"copyAble"
+		    concurrency 	"Sequential"
+		    opExportControl 	"Public"
+		    uid        	0)
+		(object Operation "newInstance"
+		    attributes 	(list Attribute_Set)
+		    quid       	"37BD3958010F"
+		    documentation 	
+|Creates an uninitalized new Instance of it's class.
+|	 * When overriding, use newInstance on all Components.
+|	 
+		    
+		    result     	"copyAble"
+		    concurrency 	"Sequential"
+		    opExportControl 	"Public"
+		    uid        	0)
+		(object Operation "toString"
+		    attributes 	(list Attribute_Set)
+		    quid       	"37BD39580110"
+		    documentation 	
+|Returns a string representation of the object. In general, the 
+|	 * <code>toString</code> method returns a string that 
+|	 * "textually represents" this object. The result should 
+|	 * be a concise but informative representation that is easy for a 
+|	 * person to read.
+|	 * It is recommendedthat all subclasses override this method.
+|	 * <p>
+|	 * The <code>toString</code> method for class <code>Object</code> 
+|	 * returns a string consisting of the name of the class of which the 
+|	 * object is an instance, the at-sign character `<code>@</code>', and 
+|	 * the unsigned hexadecimal representation of the hash code of the 
+|	 * object. 
+|	 * 
+|	 * @return  a string representation of the object.
+|	 * @since   JDK1.0
+|	 
+		    
+		    result     	"String"
+		    concurrency 	"Sequential"
+		    opExportControl 	"Public"
+		    uid        	0)
+		(object Operation "fromStreamAt"
+		    attributes 	(list Attribute_Set)
+		    quid       	"37BD39580119"
+		    documentation 	
+|Fills this Instance with the Contents read from the String.	 
+		    
+		    parameters 	(list Parameters
+			(object Parameter "arg"
+			    type       	"java.io.StreamTokenizer"))
+		    result     	"copyAble"
+		    exceptions 	"java.io.IOException"
+		    concurrency 	"Sequential"
+		    opExportControl 	"Public"
+		    uid        	0))
+	    module     	"Component View::Order::Interval"
+	    quidu      	"36BB46B700C6"
+	    language   	"Java")
+	(object Class "IntervalOrd"
+	    attributes 	(list Attribute_Set
+		(object Attribute
+		    tool       	"Java"
+		    name       	"GenerateFinalizer"
+		    value      	FALSE)
+		(object Attribute
+		    tool       	"Java"
+		    name       	"GenerateStaticInitializer"
+		    value      	FALSE)
+		(object Attribute
+		    tool       	"Java"
+		    name       	"GenerateInstanceInitializer"
+		    value      	FALSE)
+		(object Attribute
+		    tool       	"Java"
+		    name       	"GenerateDefaultConstructor"
+		    value      	FALSE))
+	    quid       	"36BB46B70153"
+	    documentation 	
+|An ordered Set of left and right Coordinates allows for a faster
+| * test for the Position of an Item relative to the Interval.
+| 
+	    
+	    superclasses 	(list inheritance_relationship_list
+		(object Inheritance_Relationship
+		    attributes 	(list Attribute_Set)
+		    quid       	"37BD39590138"
+		    supplier   	"Logical View::Order::Interval"
+		    quidu      	"36BB46B700C7"))
+	    operations 	(list Operations
+		(object Operation "IntervalOrd"
+		    attributes 	(list Attribute_Set)
+		    quid       	"37BD39590142"
+		    documentation 	
+|Defining Constructor.	 
+		    
+		    parameters 	(list Parameters
+			(object Parameter "left"
+			    type       	"orderable")
+			(object Parameter "right"
+			    type       	"orderable"))
+		    concurrency 	"Sequential"
+		    opExportControl 	"Public"
+		    uid        	0)
+		(object Operation "less"
+		    attributes 	(list Attribute_Set)
+		    quid       	"37BD3959014C"
+		    documentation 	
+|less: '<' Returns True, when 'Self' < arg	 
+		    
+		    parameters 	(list Parameters
+			(object Parameter "arg"
+			    type       	"Object"))
+		    result     	"boolean"
+		    concurrency 	"Sequential"
+		    opExportControl 	"Public"
+		    uid        	0)
+		(object Operation "grtr"
+		    attributes 	(list Attribute_Set)
+		    quid       	"37BD39590156"
+		    documentation 	
+|grtr: '>' Returns True, when 'Self' > arg	 
+		    
+		    parameters 	(list Parameters
+			(object Parameter "arg"
+			    type       	"Object"))
+		    result     	"boolean"
+		    concurrency 	"Sequential"
+		    opExportControl 	"Public"
+		    uid        	0)
+		(object Operation "addPoint"
+		    attributes 	(list Attribute_Set)
+		    quid       	"37BD39590158"
+		    parameters 	(list Parameters
+			(object Parameter "arg"
+			    type       	"Object"))
+		    result     	"Interval"
+		    concurrency 	"Sequential"
+		    opExportControl 	"Public"
+		    uid        	0))
+	    module     	"Component View::Order::IntervalOrd"
+	    quidu      	"36BB46B70152"
+	    language   	"Java")
+	(object Class "testOrder"
+	    attributes 	(list Attribute_Set
+		(object Attribute
+		    tool       	"Java"
+		    name       	"GenerateFinalizer"
+		    value      	FALSE)
+		(object Attribute
+		    tool       	"Java"
+		    name       	"GenerateStaticInitializer"
+		    value      	FALSE)
+		(object Attribute
+		    tool       	"Java"
+		    name       	"GenerateInstanceInitializer"
+		    value      	FALSE)
+		(object Attribute
+		    tool       	"Java"
+		    name       	"GenerateDefaultConstructor"
+		    value      	FALSE))
+	    quid       	"37BC91B4015D"
+	    operations 	(list Operations
+		(object Operation "main"
+		    attributes 	(list Attribute_Set
+			(object Attribute
+			    tool       	"Java"
+			    name       	"Static"
+			    value      	TRUE))
+		    quid       	"37BD395C0010"
+		    documentation 	
+|The main entry point for the application. 
+|	 * @param args Array of command line parameters passed to the application
+|	 * After testing this Package, calling the Parent Packages.	 
+		    
+		    parameters 	(list Parameters
+			(object Parameter "args"
+			    type       	"String[]"))
+		    result     	"void"
+		    exceptions 	"java.io.IOException"
+		    concurrency 	"Sequential"
+		    opExportControl 	"Public"
+		    uid        	0))
+	    module     	"Component View::Order::testOrder"
+	    quidu      	"37BC91B40153"
+	    language   	"Java")
+	(object Association "$UNNAMED$0"
+	    attributes 	(list Attribute_Set)
+	    quid       	"36BB47AE0342"
+	    roles      	(list role_list
+		(object Role "$UNNAMED$1"
+		    quid       	"36BB47AE0343"
+		    supplier   	"Logical View::Order::absOrderable"
+		    quidu      	"36BB46B70030")
+		(object Role "self"
+		    attributes 	(list Attribute_Set
+			(object Attribute
+			    tool       	"Java"
+			    name       	"InitialValue"
+			    value      	""))
+		    quid       	"36BB47AE0344"
+		    documentation 	
+|Local Reference to the Self, initialized by concrete classes.
+|	 * Used for the Simulation of (multiple) Inheritance with Delegation.
+|	 * Must be a virtual Interface Type to be able to take any Implementation.	 
+		    
+		    label      	"self"
+		    supplier   	"Logical View::Order::orderable"
+		    quidu      	"36BB46B602CE"
+		    exportControl 	"Protected"
+		    is_navigable 	TRUE)))
+	(object Association "$UNNAMED$2"
+	    attributes 	(list Attribute_Set)
+	    quid       	"36BB47AF005F"
+	    roles      	(list role_list
+		(object Role "$UNNAMED$3"
+		    quid       	"36BB47AF0060"
+		    supplier   	"Logical View::Order::Interval"
+		    quidu      	"36BB46B700C7")
+		(object Role "Left"
+		    attributes 	(list Attribute_Set
+			(object Attribute
+			    tool       	"Java"
+			    name       	"InitialValue"
+			    value      	""))
+		    quid       	"36BB47AF0061"
+		    documentation 	
+|Left Border of the Interval	 
+		    
+		    label      	"Left"
+		    supplier   	"Logical View::Order::orderable"
+		    quidu      	"36BB46B602CE"
+		    is_navigable 	TRUE)))
+	(object Association "$UNNAMED$4"
+	    attributes 	(list Attribute_Set)
+	    quid       	"36BB47AF0073"
+	    roles      	(list role_list
+		(object Role "$UNNAMED$5"
+		    quid       	"36BB47AF0074"
+		    supplier   	"Logical View::Order::Interval"
+		    quidu      	"36BB46B700C7")
+		(object Role "Right"
+		    attributes 	(list Attribute_Set
+			(object Attribute
+			    tool       	"Java"
+			    name       	"InitialValue"
+			    value      	""))
+		    quid       	"36BB47AF0075"
+		    documentation 	
+|Right Border of the Interval	 
+		    
+		    label      	"Right"
+		    supplier   	"Logical View::Order::orderable"
+		    quidu      	"36BB46B602CE"
+		    is_navigable 	TRUE))))
+    logical_presentations 	(list unit_reference_list
+	(object ClassDiagram "Order"
+	    quid       	"36BB47CD0116"
+	    title      	"Order"
+	    zoom       	100
+	    max_height 	28350
+	    max_width  	21600
+	    origin_x   	0
+	    origin_y   	0
+	    items      	(list diagram_item_list
+		(object ClassView "Class" "Logical View::Order::intOrderable" @1
+		    ShowCompartmentStereotypes 	TRUE
+		    IncludeAttribute 	TRUE
+		    location   	(155, 155)
+		    label      	(object ItemLabel
+			Parent_View 	@1
+			location   	(27, 126)
+			fill_color 	13434879
+			nlines     	1
+			max_width  	256
+			justify    	0
+			label      	"intOrderable")
+		    stereotype 	(object ItemLabel
+			Parent_View 	@1
+			location   	(27, 76)
+			fill_color 	13434879
+			anchor     	10
+			nlines     	1
+			max_width  	256
+			justify    	0
+			label      	"<<Interface>>")
+		    icon       	"Interface"
+		    icon_style 	"Label"
+		    line_color 	3342489
+		    fill_color 	13434879
+		    quidu      	"36BB46B601FB"
+		    width      	274
+		    height     	182
+		    annotation 	8
+		    autoResize 	TRUE)
+		(object ClassView "Class" "Logical View::BaseCopy::absCopyAble" @2
+		    ShowCompartmentStereotypes 	TRUE
+		    location   	(651, 744)
+		    font       	(object Font
+			italics    	TRUE)
+		    label      	(object ItemLabel
+			Parent_View 	@2
+			location   	(515, 669)
+			fill_color 	13434879
+			nlines     	1
+			max_width  	272
+			justify    	0
+			label      	"absCopyAble")
+		    icon_style 	"Icon"
+		    line_color 	3342489
+		    fill_color 	13434879
+		    quidu      	"36BB22B9029F"
+		    width      	290
+		    height     	174
+		    annotation 	8
+		    autoResize 	TRUE)
+		(object ClassView "Class" "Logical View::BaseCopy::intCopyAble" @3
+		    ShowCompartmentStereotypes 	TRUE
+		    IncludeAttribute 	TRUE
+		    location   	(651, 124)
+		    label      	(object ItemLabel
+			Parent_View 	@3
+			location   	(523, 71)
+			fill_color 	13434879
+			nlines     	1
+			max_width  	256
+			justify    	0
+			label      	"intCopyAble")
+		    stereotype 	(object ItemLabel
+			Parent_View 	@3
+			location   	(523, 21)
+			fill_color 	13434879
+			anchor     	10
+			nlines     	1
+			max_width  	256
+			justify    	0
+			label      	"<<Interface>>")
+		    icon       	"Interface"
+		    icon_style 	"Label"
+		    line_color 	3342489
+		    fill_color 	13434879
+		    quidu      	"36BB22B90136"
+		    width      	274
+		    height     	230
+		    annotation 	8
+		    autoResize 	TRUE)
+		(object ClassView "Class" "Logical View::BaseCopy::copyAble" @4
+		    ShowCompartmentStereotypes 	TRUE
+		    location   	(651, 434)
+		    label      	(object ItemLabel
+			Parent_View 	@4
+			location   	(523, 381)
+			fill_color 	13434879
+			nlines     	1
+			max_width  	256
+			justify    	0
+			label      	"copyAble")
+		    stereotype 	(object ItemLabel
+			Parent_View 	@4
+			location   	(523, 331)
+			fill_color 	13434879
+			anchor     	10
+			nlines     	1
+			max_width  	256
+			justify    	0
+			label      	"<<Interface>>")
+		    icon       	"Interface"
+		    icon_style 	"Label"
+		    line_color 	3342489
+		    fill_color 	13434879
+		    quidu      	"36BB22B9021D"
+		    width      	274
+		    height     	230
+		    annotation 	8
+		    autoResize 	TRUE)
+		(object RealizeView "" @5
+		    stereotype 	TRUE
+		    line_color 	3342489
+		    quidu      	"37BD1B64006A"
+		    client     	@2
+		    supplier   	@4
+		    line_style 	0)
+		(object InheritView "" @6
+		    stereotype 	TRUE
+		    line_color 	3342489
+		    quidu      	"37BD1BE003E2"
+		    client     	@4
+		    supplier   	@3
+		    line_style 	0)
+		(object ClassView "Class" "Logical View::Order::IntervalOrd" @7
+		    ShowCompartmentStereotypes 	TRUE
+		    location   	(651, 1209)
+		    label      	(object ItemLabel
+			Parent_View 	@7
+			location   	(540, 1158)
+			fill_color 	13434879
+			nlines     	1
+			max_width  	222
+			justify    	0
+			label      	"IntervalOrd")
+		    icon_style 	"Icon"
+		    line_color 	3342489
+		    fill_color 	13434879
+		    quidu      	"36BB46B70153"
+		    width      	240
+		    height     	126
+		    annotation 	8
+		    autoResize 	TRUE)
+		(object ClassView "Class" "Logical View::Order::Interval" @8
+		    ShowCompartmentStereotypes 	TRUE
+		    location   	(651, 992)
+		    label      	(object ItemLabel
+			Parent_View 	@8
+			location   	(570, 941)
+			fill_color 	13434879
+			nlines     	1
+			max_width  	162
+			justify    	0
+			label      	"Interval")
+		    icon_style 	"Icon"
+		    line_color 	3342489
+		    fill_color 	13434879
+		    quidu      	"36BB46B700C7"
+		    height     	126
+		    annotation 	8
+		    autoResize 	TRUE)
+		(object InheritView "" @9
+		    stereotype 	TRUE
+		    line_color 	3342489
+		    quidu      	"37BD395700C7"
+		    client     	@8
+		    supplier   	@2
+		    line_style 	0)
+		(object InheritView "" @10
+		    stereotype 	TRUE
+		    line_color 	3342489
+		    quidu      	"37BD39590138"
+		    client     	@7
+		    supplier   	@8
+		    line_style 	0)
+		(object ClassView "Class" "Logical View::Order::orderable" @11
+		    ShowCompartmentStereotypes 	TRUE
+		    location   	(155, 434)
+		    label      	(object ItemLabel
+			Parent_View 	@11
+			location   	(27, 405)
+			fill_color 	13434879
+			nlines     	1
+			max_width  	256
+			justify    	0
+			label      	"orderable")
+		    stereotype 	(object ItemLabel
+			Parent_View 	@11
+			location   	(27, 355)
+			fill_color 	13434879
+			anchor     	10
+			nlines     	1
+			max_width  	256
+			justify    	0
+			label      	"<<Interface>>")
+		    icon       	"Interface"
+		    icon_style 	"Label"
+		    line_color 	3342489
+		    fill_color 	13434879
+		    quidu      	"36BB46B602CE"
+		    width      	274
+		    height     	182
+		    annotation 	8
+		    autoResize 	TRUE)
+		(object InheritView "" @12
+		    stereotype 	TRUE
+		    line_color 	3342489
+		    quidu      	"37BD395A0375"
+		    client     	@11
+		    supplier   	@1
+		    line_style 	0)
+		(object InheritView "" @13
+		    stereotype 	TRUE
+		    line_color 	3342489
+		    quidu      	"37BD395B018B"
+		    client     	@11
+		    supplier   	@4
+		    line_style 	0)
+		(object AssociationViewNew "$UNNAMED$2" @14
+		    location   	(415, 726)
+		    stereotype 	TRUE
+		    line_color 	3342489
+		    quidu      	"36BB47AF005F"
+		    roleview_list 	(list RoleViews
+			(object RoleView "Left" @15
+			    Parent_View 	@14
+			    location   	(-112, -18)
+			    label      	(object SegLabel @16
+				Parent_View 	@15
+				location   	(491, 966)
+				anchor     	1
+				anchor_loc 	1
+				nlines     	1
+				max_width  	96
+				justify    	0
+				label      	"+Left"
+				pctDist    	-0.851620
+				height     	103
+				orientation 	0)
+			    stereotype 	TRUE
+			    line_color 	3342489
+			    quidu      	"36BB47AF0061"
+			    client     	@14
+			    supplier   	@11
+			    line_style 	0)
+			(object RoleView "$UNNAMED$3" @17
+			    Parent_View 	@14
+			    location   	(-112, -18)
+			    label      	(object SegLabel @18
+				Parent_View 	@17
+				location   	(589, 861)
+				hidden     	TRUE
+				anchor     	1
+				anchor_loc 	1
+				nlines     	1
+				max_width  	450
+				justify    	0
+				label      	""
+				pctDist    	0.800000
+				height     	42
+				orientation 	0)
+			    stereotype 	TRUE
+			    line_color 	3342489
+			    quidu      	"36BB47AF0060"
+			    client     	@14
+			    supplier   	@8
+			    line_style 	0)))
+		(object AssociationViewNew "$UNNAMED$4" @19
+		    location   	(415, 726)
+		    stereotype 	TRUE
+		    line_color 	3342489
+		    quidu      	"36BB47AF0073"
+		    roleview_list 	(list RoleViews
+			(object RoleView "Right" @20
+			    Parent_View 	@19
+			    location   	(-112, -18)
+			    label      	(object SegLabel @21
+				Parent_View 	@20
+				location   	(489, 902)
+				anchor     	1
+				anchor_loc 	1
+				nlines     	1
+				max_width  	120
+				justify    	0
+				label      	"+Right"
+				pctDist    	-0.671332
+				height     	63
+				orientation 	0)
+			    stereotype 	TRUE
+			    line_color 	3342489
+			    quidu      	"36BB47AF0075"
+			    client     	@19
+			    supplier   	@11
+			    line_style 	0)
+			(object RoleView "$UNNAMED$5" @22
+			    Parent_View 	@19
+			    location   	(-112, -18)
+			    label      	(object SegLabel @23
+				Parent_View 	@22
+				location   	(589, 861)
+				hidden     	TRUE
+				anchor     	1
+				anchor_loc 	1
+				nlines     	1
+				max_width  	450
+				justify    	0
+				label      	""
+				pctDist    	0.800000
+				height     	42
+				orientation 	0)
+			    stereotype 	TRUE
+			    line_color 	3342489
+			    quidu      	"36BB47AF0074"
+			    client     	@19
+			    supplier   	@8
+			    line_style 	0)))
+		(object ClassView "Class" "Logical View::Order::absOrderable" @24
+		    ShowCompartmentStereotypes 	TRUE
+		    location   	(155, 744)
+		    label      	(object ItemLabel
+			Parent_View 	@24
+			location   	(17, 715)
+			fill_color 	13434879
+			nlines     	1
+			max_width  	276
+			justify    	0
+			label      	"absOrderable")
+		    stereotype 	(object ItemLabel
+			Parent_View 	@24
+			location   	(17, 665)
+			fill_color 	13434879
+			anchor     	10
+			nlines     	1
+			max_width  	276
+			justify    	0
+			label      	"<<Delegator>>")
+		    icon_style 	"Icon"
+		    line_color 	3342489
+		    fill_color 	13434879
+		    quidu      	"36BB46B70030"
+		    width      	294
+		    height     	182
+		    annotation 	8
+		    autoResize 	TRUE)
+		(object AssociationViewNew "$UNNAMED$0" @25
+		    location   	(275, 619)
+		    stereotype 	TRUE
+		    line_color 	3342489
+		    quidu      	"36BB47AE0342"
+		    roleview_list 	(list RoleViews
+			(object RoleView "self" @26
+			    Parent_View 	@25
+			    location   	(-35, -373)
+			    label      	(object SegLabel @27
+				Parent_View 	@26
+				location   	(177, 575)
+				anchor     	1
+				anchor_loc 	1
+				nlines     	1
+				max_width  	84
+				justify    	0
+				label      	"#self"
+				pctDist    	0.813506
+				height     	58
+				orientation 	0)
+			    stereotype 	TRUE
+			    line_color 	3342489
+			    quidu      	"36BB47AE0344"
+			    client     	@25
+			    supplier   	@11
+			    line_style 	0)
+			(object RoleView "$UNNAMED$1" @28
+			    Parent_View 	@25
+			    location   	(-35, -373)
+			    label      	(object SegLabel @29
+				Parent_View 	@28
+				location   	(219, 617)
+				hidden     	TRUE
+				anchor     	1
+				anchor_loc 	1
+				nlines     	1
+				max_width  	450
+				justify    	0
+				label      	""
+				pctDist    	0.800000
+				height     	42
+				orientation 	1)
+			    stereotype 	TRUE
+			    line_color 	3342489
+			    quidu      	"36BB47AE0343"
+			    client     	@25
+			    supplier   	@24
+			    line_style 	0)))
+		(object InheritView "" @30
+		    stereotype 	TRUE
+		    line_color 	3342489
+		    quidu      	"37BD395403E4"
+		    client     	@24
+		    supplier   	@2
+		    line_style 	0)
+		(object RealizeView "" @31
+		    stereotype 	TRUE
+		    line_color 	3342489
+		    quidu      	"37BD395501E7"
+		    client     	@24
+		    supplier   	@11
+		    line_style 	0)))))

@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!-- edited with XMLSpy v2005 sp1 U (http://www.xmlspy.com) by André Kipper (LPA Lucht Probst Associates GmbH) -->
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified">
+	<xs:element name="chain">
+		<xs:annotation>
+			<xs:documentation>Root Element for the Sequence of Steps</xs:documentation>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="load" type="loadType" minOccurs="0" maxOccurs="unbounded"/>
+				<xs:choice minOccurs="0" maxOccurs="unbounded">
+					<xs:element name="union" type="unionType"/>
+					<xs:element name="debug" type="debugType"/>
+					<xs:element name="trafo" type="trafoType"/>
+				</xs:choice>
+				<xs:element name="store" type="storeType" minOccurs="0" maxOccurs="unbounded"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:complexType name="loadType">
+		<xs:annotation>
+			<xs:documentation>Loads a Document from a URI into a Variable</xs:documentation>
+		</xs:annotation>
+		<xs:attribute name="source" type="xs:string" use="required"/>
+		<xs:attribute name="root" type="xs:string" use="required"/>
+		<xs:attribute name="separators" type="xs:string"/>
+		<xs:attribute name="fieldNames" type="xs:boolean" default="false"/>
+		<xs:attribute name="fieldDefaults" type="xs:boolean" default="false"/>
+	</xs:complexType>
+	<xs:complexType name="storeType">
+		<xs:annotation>
+			<xs:documentation>stores the Variable into a Document at the given URI</xs:documentation>
+		</xs:annotation>
+		<xs:attribute name="source" type="xs:string" use="required"/>
+		<xs:attribute name="dest" type="xs:string" use="required"/>
+	</xs:complexType>
+	<xs:complexType name="trafoType">
+		<xs:annotation>
+			<xs:documentation>Transforms the Input Variable using the Trafo denoted by source and/or name</xs:documentation>
+		</xs:annotation>
+		<xs:attribute name="input" type="xs:string" use="required"/>
+		<xs:attribute name="source" type="xs:string" use="optional"/>
+		<xs:attribute name="name" type="xs:string" use="optional"/>
+	</xs:complexType>
+	<xs:complexType name="debugType">
+		<xs:annotation>
+			<xs:documentation>prints the given Document to System.out </xs:documentation>
+		</xs:annotation>
+		<xs:attribute name="source" type="xs:string" use="required"/>
+	</xs:complexType>
+	<xs:complexType name="unionType">
+		<xs:annotation>
+			<xs:documentation>unions the given Documents into a single one with the given root Name</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="node" type="nodeType" minOccurs="0" maxOccurs="unbounded"/>
+		</xs:sequence>
+		<xs:attribute name="root" type="xs:string" use="required"/>
+	</xs:complexType>
+	<xs:complexType name="nodeType">
+		<xs:annotation>
+			<xs:documentation>single Document Node of a union</xs:documentation>
+		</xs:annotation>
+		<xs:attribute name="urn" type="xs:string" use="required"/>
+	</xs:complexType>
+</xs:schema>

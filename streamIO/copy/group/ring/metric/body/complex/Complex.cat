@@ -1,0 +1,2328 @@
+
+(object Petal
+    version    	42
+    _written   	"Rose 4.5.8163.3"
+    charSet    	0)
+
+(object Class_Category "Complex"
+    is_unit    	TRUE
+    is_loaded  	TRUE
+    quid       	"37BC8EC90255"
+    documentation 	
+|Defines two Representations of Complex Numbers: 
+|Polar (r, ang) and Complex (real, imag)
+|Uses MetricIRing Objects for both Coordinates. 
+    
+    visible_categories 	(list visibility_relationship_list
+	(object Visibility_Relationship
+	    quid       	"37BFECD50157"
+	    supplier   	"Logical View::Body"
+	    quidu      	"36BB514B039B")
+	(object Visibility_Relationship
+	    quid       	"37BFECEB02B7"
+	    supplier   	"Logical View::ByRef"
+	    quidu      	"36BB4AA503E4")
+	(object Visibility_Relationship
+	    quid       	"37BFECF701E2"
+	    supplier   	"Logical View::Metric"
+	    quidu      	"36BB45940015"))
+    exportControl 	"Public"
+    logical_models 	(list unit_reference_list
+	(object Class "Complex"
+	    attributes 	(list Attribute_Set
+		(object Attribute
+		    tool       	"Java"
+		    name       	"GenerateFinalizer"
+		    value      	FALSE)
+		(object Attribute
+		    tool       	"Java"
+		    name       	"GenerateStaticInitializer"
+		    value      	FALSE)
+		(object Attribute
+		    tool       	"Java"
+		    name       	"GenerateInstanceInitializer"
+		    value      	FALSE)
+		(object Attribute
+		    tool       	"Java"
+		    name       	"GenerateDefaultConstructor"
+		    value      	FALSE)
+		(object Attribute
+		    tool       	"Java"
+		    name       	"Final"
+		    value      	TRUE))
+	    quid       	"37BC8EC90257"
+	    documentation 	
+|Concrete final Class to define Complex Numbers of arbitrary Types.
+| * Complex Numbers from a Metric Body form a non-metric algebraic complete Body.
+| * 
+| * Design Decisions:
+| * Chose MetricIRing instead of absMetricBody as the Constituents,
+| * because all basic operations are allowed on them,
+| * but they can also contain basic Integer Types, and so allow for Optimizations.
+| * 
+| * The Behavior of Complex Numbers can be controlled by boolean static Variables:
+| * -A Complex will always be checked for zero imaginary Part after any Operation.
+| * 
+| * The Methods cjg(), cjgAt() and isComplex() are al
+| 
+	    
+	    superclasses 	(list inheritance_relationship_list
+		(object Inheritance_Relationship
+		    attributes 	(list Attribute_Set)
+		    quid       	"37BD3651022D"
+		    supplier   	"Logical View::Body::absMetricBody"
+		    quidu      	"36BB514B03C3"))
+	    realized_interfaces 	(list realize_rel_list
+		(object Realize_Relationship
+		    attributes 	(list Attribute_Set)
+		    quid       	"37BD3652003A"
+		    supplier   	"Logical View::ByRef::intMeasurable"
+		    quidu      	"36BB4E3E02BC"))
+	    operations 	(list Operations
+		(object Operation "cjgAt"
+		    attributes 	(list Attribute_Set)
+		    quid       	"37BD3653004F"
+		    documentation 	
+|Returns the conjugate Complex Number in Place:
+|	 * i.e. the imaginary Part flips it's sign.	 
+		    
+		    result     	"IntegrityRing"
+		    concurrency 	"Sequential"
+		    opExportControl 	"Public"
+		    uid        	0)
+		(object Operation "isComplex"
+		    attributes 	(list Attribute_Set)
+		    quid       	"37BD36530050"
+		    documentation 	
+|Overrides the false Value from the Implementation in absComplex	 
+		    
+		    result     	"boolean"
+		    concurrency 	"Sequential"
+		    opExportControl 	"Public"
+		    uid        	0)
+		(object Operation "Complex"
+		    attributes 	(list Attribute_Set)
+		    quid       	"37BD36530051"
+		    documentation 	
+|Constructor that takes an Object of the same Class as Input(Copy Constructor).
+|	 * Uses the Copy Constructors of the Constituents.
+|	 
+		    
+		    parameters 	(list Parameters
+			(object Parameter "arg"
+			    type       	"Complex"))
+		    concurrency 	"Sequential"
+		    opExportControl 	"Public"
+		    uid        	0)
+		(object Operation "Complex"
+		    attributes 	(list Attribute_Set)
+		    quid       	"37BD36530053"
+		    documentation 	
+|Constructor that takes any Object as Input for real and imaginary Part.
+|	 * Those Objects should be of the same Type to speed up calculation
+|	 * or even enabling it (when e.g. one is not countable).	 
+		    
+		    parameters 	(list Parameters
+			(object Parameter "Real_"
+			    type       	"Object")
+			(object Parameter "Imag_"
+			    type       	"Object"))
+		    concurrency 	"Sequential"
+		    opExportControl 	"Public"
+		    uid        	0)
+		(object Operation "Complex"
+		    attributes 	(list Attribute_Set)
+		    quid       	"37BD36530059"
+		    documentation 	
+|Converts to rectangular Coordinates, 
+|	 * in which Addition and Subtraction are easier to calculate.	 
+		    
+		    parameters 	(list Parameters
+			(object Parameter "arg"
+			    type       	"Polar"))
+		    concurrency 	"Sequential"
+		    opExportControl 	"Public"
+		    uid        	0)
+		(object Operation "Complex"
+		    attributes 	(list Attribute_Set)
+		    quid       	"37BD3653005B"
+		    documentation 	
+|Constructor that takes any Object as Input for the real Part.
+|	 * The imaginary Part is set to 0.	 
+		    
+		    parameters 	(list Parameters
+			(object Parameter "arg"
+			    type       	"Object"))
+		    concurrency 	"Sequential"
+		    opExportControl 	"Public"
+		    uid        	0)
+		(object Operation "Complex"
+		    attributes 	(list Attribute_Set)
+		    quid       	"37BD3653005D"
+		    documentation 	
+|Constructor that takes a double as Input for the real Part.
+|	 * The imaginary Part is set to 0. 
+|	 * The Types are defaulted to BodyDouble.	 
+		    
+		    parameters 	(list Parameters
+			(object Parameter "Real_"
+			    type       	"double"))
+		    concurrency 	"Sequential"
+		    opExportControl 	"Public"
+		    uid        	0)
+		(object Operation "Complex"
+		    attributes 	(list Attribute_Set)
+		    quid       	"37BD3653005F"
+		    documentation 	
+|Constructor that takes a double as Input for the real Part.
+|	 * The imaginary Part is set to 0. 
+|	 * The Types are defaulted to BodyDouble.	 
+		    
+		    parameters 	(list Parameters
+			(object Parameter "Real_"
+			    type       	"double")
+			(object Parameter "Imag_"
+			    type       	"double"))
+		    concurrency 	"Sequential"
+		    opExportControl 	"Public"
+		    uid        	0)
+		(object Operation "Complex"
+		    attributes 	(list Attribute_Set)
+		    quid       	"37BD36530062"
+		    documentation 	
+|Empty Constructor (for newInstance Method).
+|	 * Does not create Dummy Objects for it's Constituents.
+|	 * So those Objects are not well-defined, but contain Null Pointers.
+|	 * This Constructor must not be public, 
+|	 * because the Type of it's Parts must be defined!
+|	 
+		    
+		    concurrency 	"Sequential"
+		    opExportControl 	"Protected"
+		    uid        	0)
+		(object Operation "zeroAt"
+		    attributes 	(list Attribute_Set)
+		    quid       	"37BD36530063"
+		    documentation 	
+|Setting to 0 in Place:	 
+		    
+		    result     	"Group"
+		    concurrency 	"Sequential"
+		    opExportControl 	"Public"
+		    uid        	0)
+		(object Operation "oneAt"
+		    attributes 	(list Attribute_Set)
+		    quid       	"37BD36530064"
+		    documentation 	
+|Setting to 1 in Place:	 
+		    
+		    result     	"GroupM"
+		    concurrency 	"Sequential"
+		    opExportControl 	"Public"
+		    uid        	0)
+		(object Operation "piAt"
+		    attributes 	(list Attribute_Set)
+		    quid       	"37BD36530065"
+		    documentation 	
+|Returns the Constant Pi = 3.14159265359... in Place
+|	 * This is half the Quotient of Circumference and Radius of any circle.	 
+		    
+		    result     	"MetricBody"
+		    concurrency 	"Sequential"
+		    opExportControl 	"Public"
+		    uid        	0)
+		(object Operation "isZero"
+		    attributes 	(list Attribute_Set)
+		    quid       	"37BD36530066"
+		    documentation 	
+|Testing for 0:	 
+		    
+		    result     	"boolean"
+		    concurrency 	"Sequential"
+		    opExportControl 	"Public"
+		    uid        	0)
+		(object Operation "i"
+		    attributes 	(list Attribute_Set)
+		    quid       	"37BD36530067"
+		    documentation 	
+|Setting to i:	 
+		    
+		    result     	"Complex"
+		    concurrency 	"Sequential"
+		    opExportControl 	"Public"
+		    uid        	0)
+		(object Operation "iAt"
+		    attributes 	(list Attribute_Set)
+		    quid       	"37BD36530068"
+		    documentation 	
+|Setting to i in Place:	 
+		    
+		    result     	"Complex"
+		    concurrency 	"Sequential"
+		    opExportControl 	"Public"
+		    uid        	0)
+		(object Operation "iDiv"
+		    attributes 	(list Attribute_Set)
+		    quid       	"37BD3653006D"
+		    documentation 	
+|Multiplies the Complex Number by i:
+|	 * i.e. Im = Re and Re = -Im, which is a Rotation by +90°	 
+		    
+		    result     	"Complex"
+		    concurrency 	"Sequential"
+		    opExportControl 	"Public"
+		    uid        	0)
+		(object Operation "iDivAt"
+		    attributes 	(list Attribute_Set)
+		    quid       	"37BD3653006E"
+		    documentation 	
+|Multiplies the Complex Number by i in Place:
+|	 * i.e. Im <= Re and Re <= -Im, which is a Rotation by +90°	 
+		    
+		    result     	"Complex"
+		    concurrency 	"Sequential"
+		    opExportControl 	"Public"
+		    uid        	0)
+		(object Operation "iMul"
+		    attributes 	(list Attribute_Set)
+		    quid       	"37BD3653006F"
+		    documentation 	
+|Divides the Complex Number by i:
+|	 * i.e. Im <= -Re and Re <= Im, which is a Rotation by -90°	 
+		    
+		    result     	"Complex"
+		    concurrency 	"Sequential"
+		    opExportControl 	"Public"
+		    uid        	0)
+		(object Operation "iMulAt"
+		    attributes 	(list Attribute_Set)
+		    quid       	"37BD36530070"
+		    documentation 	
+|Divides the Complex Number by i in Place:
+|	 * i.e. Im <= -Re and Re <= Im, which is a Rotation by -90°	 
+		    
+		    result     	"Complex"
+		    concurrency 	"Sequential"
+		    opExportControl 	"Public"
+		    uid        	0)
+		(object Operation "arg"
+		    attributes 	(list Attribute_Set)
+		    quid       	"37BD36530071"
+		    documentation 	
+|Returns the 'arg',
+|	 * i.e. the angle of the corresponding Polar Representation	 
+		    
+		    result     	"MetricIRing"
+		    concurrency 	"Sequential"
+		    opExportControl 	"Public"
+		    uid        	0)
+		(object Operation "floorAt"
+		    attributes 	(list Attribute_Set)
+		    quid       	"37BD36530077"
+		    documentation 	
+|Returns an Integer, not a Complex, this also saves time in further Calculations!	 
+		    
+		    result     	"MetricIRing"
+		    concurrency 	"Sequential"
+		    opExportControl 	"Public"
+		    uid        	0)
+		(object Operation "less"
+		    attributes 	(list Attribute_Set)
+		    quid       	"37BD36530078"
+		    documentation 	
+|less: '<' Returns True, when 'Self' < arg
+|	 * By now: (a.re < b.re) && (a.im < b.im)
+|	 * Better: MaxMetric: max(a.re,a.im) < max(b.re,b.im)	 
+		    
+		    parameters 	(list Parameters
+			(object Parameter "arg"
+			    type       	"Object"))
+		    result     	"boolean"
+		    concurrency 	"Sequential"
+		    opExportControl 	"Public"
+		    uid        	0)
+		(object Operation "maxValueAt"
+		    attributes 	(list Attribute_Set)
+		    quid       	"37BD3653007A"
+		    documentation 	
+|Returns +Infinity = 1/0	 
+		    
+		    result     	"wellOrder"
+		    concurrency 	"Sequential"
+		    opExportControl 	"Public"
+		    uid        	0)
+		(object Operation "convertArg"
+		    attributes 	(list Attribute_Set
+			(object Attribute
+			    tool       	"Java"
+			    name       	"Final"
+			    value      	TRUE))
+		    quid       	"37BD3653007B"
+		    documentation 	
+|Helper Routine to convert to Complex from any other numeric Type:
+|	 * RingLong, Number or countable.
+|	 * Uses absHalfGroup.longValue to do that.
+|	 * Using this Helper Routine generates Overhead, 
+|	 * because the special optimizations for integer Values are not considered.
+|	 
+		    
+		    parameters 	(list Parameters
+			(object Parameter "arg"
+			    type       	"Object"))
+		    result     	"Complex"
+		    concurrency 	"Sequential"
+		    opExportControl 	"Private"
+		    uid        	0)
+		(object Operation "addAt"
+		    attributes 	(list Attribute_Set)
+		    quid       	"37BD3653007D"
+		    documentation 	
+|Addition in Place: +=	 
+		    
+		    parameters 	(list Parameters
+			(object Parameter "arg"
+			    type       	"Object"))
+		    result     	"HalfGroup"
+		    concurrency 	"Sequential"
+		    opExportControl 	"Public"
+		    uid        	0)
+		(object Operation "subtAt"
+		    attributes 	(list Attribute_Set)
+		    quid       	"37BD36530082"
+		    documentation 	
+|Subtraction in Place: -=	 
+		    
+		    parameters 	(list Parameters
+			(object Parameter "arg"
+			    type       	"Object"))
+		    result     	"Group"
+		    concurrency 	"Sequential"
+		    opExportControl 	"Public"
+		    uid        	0)
+		(object Operation "mulAt"
+		    attributes 	(list Attribute_Set)
+		    quid       	"37BD36530084"
+		    documentation 	
+|Multiplication in Place: *=	 
+		    
+		    parameters 	(list Parameters
+			(object Parameter "arg"
+			    type       	"Object"))
+		    result     	"HalfGroupM"
+		    concurrency 	"Sequential"
+		    opExportControl 	"Public"
+		    uid        	0)
+		(object Operation "divAt"
+		    attributes 	(list Attribute_Set)
+		    quid       	"37BD36530086"
+		    documentation 	
+|Division in Place: /=
+|	 * obige Implementation vermeidet Genauigkeitsverlust und einen Überlauf durch die Quadrierung
+|	 * und spart außerdem effektiv 2 Sqr und wendet nur 1 Vergleich mehr an als andere.	 
+		    
+		    parameters 	(list Parameters
+			(object Parameter "arg"
+			    type       	"Object"))
+		    result     	"GroupM"
+		    concurrency 	"Sequential"
+		    opExportControl 	"Public"
+		    uid        	0)
+		(object Operation "mulAtCjg"
+		    attributes 	(list Attribute_Set)
+		    quid       	"37BD36530088"
+		    documentation 	
+|Multiplication by the conjugate complex argument in Place: *=	 
+		    
+		    parameters 	(list Parameters
+			(object Parameter "arg"
+			    type       	"Object"))
+		    result     	"HalfGroupM"
+		    concurrency 	"Sequential"
+		    opExportControl 	"Public"
+		    uid        	0)
+		(object Operation "divAtCjg"
+		    attributes 	(list Attribute_Set)
+		    quid       	"37BD3653008B"
+		    documentation 	
+|Division by the conjugate complex argument in Place: /=
+|	 * obige Implementation vermeidet Genauigkeitsverlust und einen Überlauf durch die Quadrierung
+|	 * und spart außerdem effektiv 2 Sqr und wendet nur 1 Vergleich mehr an als andere.	 
+		    
+		    parameters 	(list Parameters
+			(object Parameter "arg"
+			    type       	"Object"))
+		    result     	"GroupM"
+		    concurrency 	"Sequential"
+		    opExportControl 	"Public"
+		    uid        	0)
+		(object Operation "invAt"
+		    attributes 	(list Attribute_Set)
+		    quid       	"37BD3653008D"
+		    documentation 	
+|Inversion in Place: 1/x
+|	 * obige Implementation ist genauer und verhindert einen Überlauf, ersetzt aber effektiv
+|	 * 1 Division durch eine Inversion und 1 Vergleich	 
+		    
+		    result     	"GroupM"
+		    concurrency 	"Sequential"
+		    opExportControl 	"Public"
+		    uid        	0)
+		(object Operation "newInstance"
+		    attributes 	(list Attribute_Set)
+		    quid       	"37BD3653008E"
+		    documentation 	
+|Creates an uninitalized new Instance of it's class.
+|	 * This can in VB also be achieved by 'CreateObjectFromInstance',
+|	 * which may be slower.
+|	 * NewInstance also clones the Types, but does not initialize them!
+|	 * When overriding, use newInstance on all Components.	 
+		    
+		    result     	"copyAble"
+		    concurrency 	"Sequential"
+		    opExportControl 	"Public"
+		    uid        	0)
+		(object Operation "copyAt"
+		    attributes 	(list Attribute_Set)
+		    quid       	"37BD3653008F"
+		    documentation 	
+|Complement to Copy.
+|	 * Does a 'deepCopy', i.e. also inner Components are copied.
+|	 * Copies the Value of arg into it's own Value
+|	 * and returns itself for further use.
+|	 * When overriding, use copyAt on all Constituents.
+|	 * It keeps the current reference, so any Argument has to be converted to Complex!	 
+		    
+		    parameters 	(list Parameters
+			(object Parameter "arg"
+			    type       	"Object")
+			(object Parameter "Depth"
+			    type       	"int"))
+		    result     	"copyAble"
+		    concurrency 	"Sequential"
+		    opExportControl 	"Public"
+		    uid        	0)
+		(object Operation "shallowCopyAt"
+		    attributes 	(list Attribute_Set)
+		    quid       	"37BD36530092"
+		    documentation 	
+|Does a shallow Copy of the Argument.
+|	 * I.e. both Instances will share their inner Components.
+|	 
+		    
+		    parameters 	(list Parameters
+			(object Parameter "arg"
+			    type       	"Object"))
+		    result     	"copyAble"
+		    concurrency 	"Sequential"
+		    opExportControl 	"Public"
+		    uid        	0)
+		(object Operation "hashCode"
+		    attributes 	(list Attribute_Set)
+		    quid       	"37BD36530096"
+		    documentation 	
+|Returns a hash code value for the object. This method is 
+|	 * supported for the benefit of hashtables such as those provided by 
+|	 * <code>java.util.Hashtable</code>. 
+|	 * <p>
+|	 * The general contract of <code>hashCode</code> is: 
+|	 * <ul>
+|	 * <li>Whenever it is invoked on the same object more than once during 
+|	 * an execution of a Java application, the <code>hashCode</code> method 
+|	 * must consistently return the same integer. This integer need not 
+|	 * remain consistent from one execution of an application to another 
+|	 * execution of the same application. 
+|	 * <li>If two objects are equal according to the <code>equals</code> 
+|	 * method, then calling the <code>hashCode</code> method on each of the 
+|	 * two objects must produce the same integer result. 
+|	 * </ul>
+|	 * 
+|	 * @return  a hash code value for this object.
+|	 * @see     java.lang.Object#equals(java.lang.Object)
+|	 * @see     java.util.Hashtable
+|	 * @since   JDK1.0
+|	 
+		    
+		    result     	"int"
+		    concurrency 	"Sequential"
+		    opExportControl 	"Public"
+		    uid        	0)
+		(object Operation "toString"
+		    attributes 	(list Attribute_Set)
+		    quid       	"37BD36530097"
+		    documentation 	
+|Returns a string representation of the object. In general, the 
+|	 * <code>toString</code> method returns a string that 
+|	 * "textually represents" this object. The result should 
+|	 * be a concise but informative representation that is easy for a 
+|	 * person to read.
+|	 * It is recommendedthat all subclasses override this method.
+|	 * <p>
+|	 * The <code>toString</code> method for class <code>Object</code> 
+|	 * returns a string consisting of the name of the class of which the 
+|	 * object is an instance, the at-sign character `<code>@</code>', and 
+|	 * the unsigned hexadecimal representation of the hash code of the 
+|	 * object. 
+|	 * 
+|	 * @return  a string representation of the object.
+|	 * @since   JDK1.0	 
+		    
+		    result     	"String"
+		    concurrency 	"Sequential"
+		    opExportControl 	"Public"
+		    uid        	0)
+		(object Operation "fromStreamAt"
+		    attributes 	(list Attribute_Set)
+		    quid       	"37BD36530098"
+		    documentation 	
+|Parses the String with the full Description to a Complex Number. 
+|	 * of two Object as Input for Denominator and Numerator.
+|	 * Those Objects should be of the same Type to speed up calculation. 
+		    
+		    parameters 	(list Parameters
+			(object Parameter "arg"
+			    type       	"java.io.StreamTokenizer"))
+		    result     	"copyAble"
+		    exceptions 	"java.io.IOException"
+		    concurrency 	"Sequential"
+		    opExportControl 	"Public"
+		    uid        	0)
+		(object Operation "negAt"
+		    attributes 	(list Attribute_Set)
+		    quid       	"37BD3653009F"
+		    documentation 	
+|Negation in Place: -	 
+		    
+		    result     	"Group"
+		    concurrency 	"Sequential"
+		    opExportControl 	"Public"
+		    uid        	0)
+		(object Operation "dblAt"
+		    attributes 	(list Attribute_Set)
+		    quid       	"37BD365300A0"
+		    documentation 	
+|Double in Place: x+=x == x*=2	
+		    
+		    result     	"HalfGroup"
+		    concurrency 	"Sequential"
+		    opExportControl 	"Public"
+		    uid        	0)
+		(object Operation "trplAt"
+		    attributes 	(list Attribute_Set)
+		    quid       	"37BD365300A1"
+		    documentation 	
+|Triple in Place: x+=x+x == x*=3	
+		    
+		    result     	"HalfGroup"
+		    concurrency 	"Sequential"
+		    opExportControl 	"Public"
+		    uid        	0)
+		(object Operation "dec"
+		    attributes 	(list Attribute_Set)
+		    quid       	"37BD365300A2"
+		    documentation 	
+|Decrements the Value by 1	 
+		    
+		    result     	"integer"
+		    concurrency 	"Sequential"
+		    opExportControl 	"Public"
+		    uid        	0)
+		(object Operation "inc"
+		    attributes 	(list Attribute_Set)
+		    quid       	"37BD365300A3"
+		    documentation 	
+|Inrements the Value by 1	 
+		    
+		    result     	"integer"
+		    concurrency 	"Sequential"
+		    opExportControl 	"Public"
+		    uid        	0)
+		(object Operation "ResidAt"
+		    attributes 	(list Attribute_Set)
+		    quid       	"37BD365300A9"
+		    documentation 	
+|Residual in Place: 1-x	 
+		    
+		    result     	"integer"
+		    concurrency 	"Sequential"
+		    opExportControl 	"Public"
+		    uid        	0)
+		(object Operation "negative"
+		    attributes 	(list Attribute_Set)
+		    quid       	"37BD365300AA"
+		    result     	"boolean"
+		    concurrency 	"Sequential"
+		    opExportControl 	"Public"
+		    uid        	0)
+		(object Operation "positive"
+		    attributes 	(list Attribute_Set)
+		    quid       	"37BD365300AB"
+		    result     	"boolean"
+		    concurrency 	"Sequential"
+		    opExportControl 	"Public"
+		    uid        	0)
+		(object Operation "twoAt"
+		    attributes 	(list Attribute_Set)
+		    quid       	"37BD365300AC"
+		    result     	"IntegrityRing"
+		    concurrency 	"Sequential"
+		    opExportControl 	"Public"
+		    uid        	0)
+		(object Operation "threeAt"
+		    attributes 	(list Attribute_Set)
+		    quid       	"37BD365300AD"
+		    result     	"IntegrityRing"
+		    concurrency 	"Sequential"
+		    opExportControl 	"Public"
+		    uid        	0)
+		(object Operation "halfAt"
+		    attributes 	(list Attribute_Set)
+		    quid       	"37BD365300B3"
+		    documentation 	
+|Half in Place: x/=2	
+		    
+		    result     	"IntegrityRing"
+		    concurrency 	"Sequential"
+		    opExportControl 	"Public"
+		    uid        	0)
+		(object Operation "thirdAt"
+		    attributes 	(list Attribute_Set)
+		    quid       	"37BD365300B4"
+		    documentation 	
+|Third in Place: x/=3	
+		    
+		    result     	"IntegrityRing"
+		    concurrency 	"Sequential"
+		    opExportControl 	"Public"
+		    uid        	0)
+		(object Operation "sqrAt"
+		    attributes 	(list Attribute_Set)
+		    quid       	"37BD365300BD"
+		    documentation 	
+|Square in Place: x^2 == x*=x
+|	 * (a+ib)^2 == a^2 + 2i ab - b^2 == (a+b)(a-b) + 2i(ab)	 
+		    
+		    result     	"HalfGroupM"
+		    concurrency 	"Sequential"
+		    opExportControl 	"Public"
+		    uid        	0)
+		(object Operation "cbcAt"
+		    attributes 	(list Attribute_Set)
+		    quid       	"37BD365300BE"
+		    documentation 	
+|Cubic in Place: x*=x^3
+|	 * (a+ib)^3 == a(a^2-3b^2)+ib(3a^2-b^2)	 
+		    
+		    result     	"HalfGroupM"
+		    concurrency 	"Sequential"
+		    opExportControl 	"Public"
+		    uid        	0)
+		(object Operation "equals"
+		    attributes 	(list Attribute_Set)
+		    quid       	"37BD365300BF"
+		    documentation 	
+|Standard Implementation: a+ib-c+id == 0
+|	 * Faster: a == c && b == d
+|	 * but less correct when it comes to rounding!	 
+		    
+		    parameters 	(list Parameters
+			(object Parameter "arg"
+			    type       	"Object"))
+		    result     	"boolean"
+		    concurrency 	"Sequential"
+		    opExportControl 	"Public"
+		    uid        	0)
+		(object Operation "even"
+		    attributes 	(list Attribute_Set)
+		    quid       	"37BD365300C1"
+		    documentation 	
+|Checks if the Complex Number is even. 
+|	 * i.e. both real and imaginary part are even	 
+		    
+		    result     	"boolean"
+		    concurrency 	"Sequential"
+		    opExportControl 	"Public"
+		    uid        	0)
+		(object Operation "odd"
+		    attributes 	(list Attribute_Set)
+		    quid       	"37BD365300C7"
+		    documentation 	
+|Checks if the Complex Number is odd. 
+|	 * i.e. both real and imaginary part are odd	 
+		    
+		    result     	"boolean"
+		    concurrency 	"Sequential"
+		    opExportControl 	"Public"
+		    uid        	0)
+		(object Operation "SqRt"
+		    attributes 	(list Attribute_Set)
+		    quid       	"37BD365300C8"
+		    documentation 	
+|Returns the Square Root of this: x^=.5	
+		    
+		    result     	"MetricIRing"
+		    concurrency 	"Sequential"
+		    opExportControl 	"Public"
+		    uid        	0)
+		(object Operation "SqRtAt"
+		    attributes 	(list Attribute_Set)
+		    quid       	"37BD365300C9"
+		    documentation 	
+|Returns the Square Root of this in Place: x^=.5	
+		    
+		    result     	"MetricIRing"
+		    concurrency 	"Sequential"
+		    opExportControl 	"Public"
+		    uid        	0)
+		(object Operation "p_Norm"
+		    attributes 	(list Attribute_Set)
+		    quid       	"37BD365300CA"
+		    documentation 	
+|p-Norm: Defined as Sum(|x|^p)^1/p
+|	 * Generic Norm: the other Norms are Special Cases:
+|	 * In 1-dimensional Spaces all Norms fall together.
+|	 
+		    
+		    parameters 	(list Parameters
+			(object Parameter "p"
+			    type       	"double"))
+		    result     	"MetricIRing"
+		    concurrency 	"Sequential"
+		    opExportControl 	"Public"
+		    uid        	0)
+		(object Operation "Max_Norm"
+		    attributes 	(list Attribute_Set)
+		    quid       	"37BD365300D2"
+		    documentation 	
+|Maximums-Norm
+|	 * Special Case of the p-Norm for p -> Infinity
+|	 
+		    
+		    result     	"MetricIRing"
+		    concurrency 	"Sequential"
+		    opExportControl 	"Public"
+		    uid        	0)
+		(object Operation "SqrNorm"
+		    attributes 	(list Attribute_Set)
+		    quid       	"37BD365300D3"
+		    documentation 	
+|(Euklidische Norm)^2
+|	 * Special Case of the p-Norm for p = 2
+|	 * Rotation Invariant for cartesian Systems.
+|	 
+		    
+		    result     	"MetricIRing"
+		    concurrency 	"Sequential"
+		    opExportControl 	"Public"
+		    uid        	0)
+		(object Operation "AbsVAt"
+		    attributes 	(list Attribute_Set)
+		    quid       	"37BD365300D4"
+		    documentation 	
+|absolute Value in Place:				 |x|	
+|	 * Returns the fastest Norm, which is the AbsV_Norm
+|	 
+		    
+		    result     	"ScalarMetric"
+		    concurrency 	"Sequential"
+		    opExportControl 	"Public"
+		    uid        	0)
+		(object Operation "AbsV"
+		    attributes 	(list Attribute_Set)
+		    quid       	"37BD365300D5"
+		    documentation 	
+|absolute Value: |x|
+|	 * Returns the fastest Norm, which is the AbsV_Norm	 
+		    
+		    result     	"ScalarMetric"
+		    concurrency 	"Sequential"
+		    opExportControl 	"Public"
+		    uid        	0)
+		(object Operation "addCarry"
+		    attributes 	(list Attribute_Set)
+		    quid       	"37BD365300DB"
+		    documentation 	
+|Carry the Overflow through the g-adic Representation.	 
+		    
+		    result     	"void"
+		    concurrency 	"Sequential"
+		    opExportControl 	"Public"
+		    uid        	0)
+		(object Operation "CmplAt"
+		    attributes 	(list Attribute_Set)
+		    quid       	"37BD365300DC"
+		    documentation 	
+|Complement in Place: ~=	
+		    
+		    result     	"Group"
+		    concurrency 	"Sequential"
+		    opExportControl 	"Public"
+		    uid        	0)
+		(object Operation "toUpperAt"
+		    attributes 	(list Attribute_Set)
+		    quid       	"37BD365300DD"
+		    documentation 	
+|Returns the Value raised by one g-Adic Position	 
+		    
+		    result     	"IntegrityRing"
+		    concurrency 	"Sequential"
+		    opExportControl 	"Public"
+		    uid        	0)
+		(object Operation "chordal"
+		    attributes 	(list Attribute_Set)
+		    quid       	"37BD365300DE"
+		    documentation 	
+|Chordaler Betrag: 0 < x < 1 streng monoton steigend.
+|	 * Der Chordale Betrag gibt die Höhe des Punktes 
+|	 * auf der Riemannschen Zahlenkugel an.
+|	 
+		    
+		    result     	"absIntegrityRing"
+		    concurrency 	"Sequential"
+		    opExportControl 	"Public"
+		    uid        	0)
+		(object Operation "exp"
+		    attributes 	(list Attribute_Set)
+		    quid       	"37BD365300E5"
+		    documentation 	
+|Returns the exponential Function: e^x	 
+|	 * This is the Inverse to the natural Logarithm ln().	 
+		    
+		    result     	"MetricBody"
+		    concurrency 	"Sequential"
+		    opExportControl 	"Public"
+		    uid        	0)
+		(object Operation "ln"
+		    attributes 	(list Attribute_Set)
+		    quid       	"37BD365300E6"
+		    documentation 	
+|Returns the natural Logarithm of x: ln(x)
+|	 * This is the Inverse to the exponential Function exp(x).
+|	 * For Arguments x near 1 use lnXP1(x) to gain Accuracy.	 
+		    
+		    result     	"MetricBody"
+		    concurrency 	"Sequential"
+		    opExportControl 	"Public"
+		    uid        	0)
+		(object Operation "sin"
+		    attributes 	(list Attribute_Set)
+		    quid       	"37BD365300E7"
+		    documentation 	
+|Returns the Sinus of the angle x: sin(x)	 
+		    
+		    result     	"MetricBody"
+		    concurrency 	"Sequential"
+		    opExportControl 	"Public"
+		    uid        	0)
+		(object Operation "cos"
+		    attributes 	(list Attribute_Set)
+		    quid       	"37BD365300E8"
+		    documentation 	
+|Returns the Cosinus of the angle x: cos(x)	 
+		    
+		    result     	"MetricBody"
+		    concurrency 	"Sequential"
+		    opExportControl 	"Public"
+		    uid        	0)
+		(object Operation "SinH"
+		    attributes 	(list Attribute_Set)
+		    quid       	"37BD365300EF"
+		    documentation 	
+|Returns the Sinus Hyperbolicus of this number: SinH(x)	 
+		    
+		    result     	"MetricBody"
+		    concurrency 	"Sequential"
+		    opExportControl 	"Public"
+		    uid        	0)
+		(object Operation "CosH"
+		    attributes 	(list Attribute_Set)
+		    quid       	"37BD365300F0"
+		    documentation 	
+|Returns the Cosinus Hyperbolicus of this number: CosH(x)	 
+		    
+		    result     	"MetricBody"
+		    concurrency 	"Sequential"
+		    opExportControl 	"Public"
+		    uid        	0)
+		(object Operation "tan"
+		    attributes 	(list Attribute_Set)
+		    quid       	"37BD365300F1"
+		    documentation 	
+|Returns the Tangens of the angle x: tan == sin / cos == sin/(1-sin^2)^1/2	
+		    
+		    result     	"MetricBody"
+		    concurrency 	"Sequential"
+		    opExportControl 	"Public"
+		    uid        	0)
+		(object Operation "TanH"
+		    attributes 	(list Attribute_Set)
+		    quid       	"37BD365300F2"
+		    documentation 	
+|Returns the Tangens Hyperbolicus of this Number: TanH	
+		    
+		    result     	"MetricBody"
+		    concurrency 	"Sequential"
+		    opExportControl 	"Public"
+		    uid        	0)
+		(object Operation "ArcTan"
+		    attributes 	(list Attribute_Set)
+		    quid       	"37BD365300F9"
+		    documentation 	
+|Returns the Arcus Tangens of the Angle x: ArcTan(x)	 
+|	 * = -i/2*Ln ((1+i*c1)/(1-i*c1))
+		    
+		    result     	"MetricBody"
+		    concurrency 	"Sequential"
+		    opExportControl 	"Public"
+		    uid        	0)
+		(object Operation "ArcSin"
+		    attributes 	(list Attribute_Set)
+		    quid       	"37BD365300FA"
+		    documentation 	
+|Returns the Arcus Sinus of the Angle x: ArcSin(x)	 
+		    
+		    result     	"MetricBody"
+		    concurrency 	"Sequential"
+		    opExportControl 	"Public"
+		    uid        	0)
+		(object Operation "Cos_Sin"
+		    attributes 	(list Attribute_Set)
+		    quid       	"37BD365300FB"
+		    documentation 	
+|Returns both the Sinus and Cosinus: Cos, Sin
+|	 * This is more efficient, because cos^2+sin^2 = 1	 
+		    
+		    parameters 	(list Parameters
+			(object Parameter "Sin"
+			    type       	"MetricBody"))
+		    result     	"MetricBody"
+		    concurrency 	"Sequential"
+		    opExportControl 	"Public"
+		    uid        	0)
+		(object Operation "CosH_SinH"
+		    attributes 	(list Attribute_Set)
+		    quid       	"37BD365300FD"
+		    documentation 	
+|Returns both the Sinus and Cosinus Hyperbolicus: CosH, SinH
+|	 * This is more efficient, because cosH^2-sinH^2=1	 
+		    
+		    parameters 	(list Parameters
+			(object Parameter "SinH"
+			    type       	"Object"))
+		    result     	"MetricBody"
+		    concurrency 	"Sequential"
+		    opExportControl 	"Public"
+		    uid        	0)
+		(object Operation "doubleValue"
+		    attributes 	(list Attribute_Set)
+		    quid       	"37BD36530103"
+		    documentation 	
+|Returns the Object Value represented by a scalar Variable of Type double.
+|	 * It consists of an IEEE Number with 64 Bit (8 Byte):
+|	 * 52 Bit Mantissa, 11 Bit Exponent, 1 Bit Sign	 
+		    
+		    result     	"double"
+		    concurrency 	"Sequential"
+		    opExportControl 	"Public"
+		    uid        	0)
+		(object Operation "floatValue"
+		    attributes 	(list Attribute_Set)
+		    quid       	"37BD36530104"
+		    documentation 	
+|Returns the Object Value represented by a scalar Variable of Type float.
+|	 * It consists of an IEEE Number with 32 Bit (4 Byte): 
+|	 * 23 Bit Mantissa, 8 Bit Exponent, 1 Bit Sign	 
+		    
+		    result     	"float"
+		    concurrency 	"Sequential"
+		    opExportControl 	"Public"
+		    uid        	0)
+		(object Operation "testIt"
+		    attributes 	(list Attribute_Set
+			(object Attribute
+			    tool       	"Java"
+			    name       	"Static"
+			    value      	TRUE))
+		    quid       	"37BD36530105"
+		    documentation 	
+|Tests the Methods of this Class	 
+		    
+		    result     	"void"
+		    exceptions 	"java.io.IOException"
+		    concurrency 	"Sequential"
+		    opExportControl 	"Public"
+		    uid        	0)
+		(object Operation "testComplex"
+		    attributes 	(list Attribute_Set
+			(object Attribute
+			    tool       	"Java"
+			    name       	"Static"
+			    value      	TRUE))
+		    quid       	"37BD36530106"
+		    documentation 	
+|Tests the basic complex Methods	 
+		    
+		    result     	"void"
+		    exceptions 	"java.io.IOException"
+		    concurrency 	"Sequential"
+		    opExportControl 	"Private"
+		    uid        	0)
+		(object Operation "tExp"
+		    attributes 	(list Attribute_Set
+			(object Attribute
+			    tool       	"Java"
+			    name       	"Static"
+			    value      	TRUE))
+		    quid       	"37BD3653010D"
+		    documentation 	
+|Tests the complex Exponential Function	 
+		    
+		    result     	"void"
+		    exceptions 	"java.io.IOException"
+		    concurrency 	"Sequential"
+		    opExportControl 	"Private"
+		    uid        	0)
+		(object Operation "tLn"
+		    attributes 	(list Attribute_Set
+			(object Attribute
+			    tool       	"Java"
+			    name       	"Static"
+			    value      	TRUE))
+		    quid       	"37BD3653010E"
+		    documentation 	
+|Tests the complex Logarithm Function	 
+		    
+		    result     	"void"
+		    exceptions 	"java.io.IOException"
+		    concurrency 	"Sequential"
+		    opExportControl 	"Private"
+		    uid        	0)
+		(object Operation "tSinCos"
+		    attributes 	(list Attribute_Set
+			(object Attribute
+			    tool       	"Java"
+			    name       	"Static"
+			    value      	TRUE))
+		    quid       	"37BD3653010F"
+		    documentation 	
+|Tests the complex Sine and Cosine Function	 
+		    
+		    result     	"void"
+		    exceptions 	"java.io.IOException"
+		    concurrency 	"Sequential"
+		    opExportControl 	"Private"
+		    uid        	0)
+		(object Operation "tRcFunc"
+		    attributes 	(list Attribute_Set
+			(object Attribute
+			    tool       	"Java"
+			    name       	"Static"
+			    value      	TRUE))
+		    quid       	"37BD36530117"
+		    documentation 	
+|Tests the Complex Methods with real Arguments	 
+		    
+		    result     	"void"
+		    concurrency 	"Sequential"
+		    opExportControl 	"Private"
+		    uid        	0))
+	    module     	"Component View::Complex::Complex"
+	    quidu      	"37BC8EC90256"
+	    language   	"Java")
+	(object Class "FourierFuncs"
+	    attributes 	(list Attribute_Set
+		(object Attribute
+		    tool       	"Java"
+		    name       	"GenerateFinalizer"
+		    value      	FALSE)
+		(object Attribute
+		    tool       	"Java"
+		    name       	"GenerateStaticInitializer"
+		    value      	FALSE)
+		(object Attribute
+		    tool       	"Java"
+		    name       	"GenerateInstanceInitializer"
+		    value      	FALSE)
+		(object Attribute
+		    tool       	"Java"
+		    name       	"GenerateDefaultConstructor"
+		    value      	FALSE))
+	    quid       	"37BC8ECA0039"
+	    documentation 	"This Class contains some Functions that appear in Fourier Transformations: "
+	    operations 	(list Operations
+		(object Operation "Fresnel"
+		    attributes 	(list Attribute_Set
+			(object Attribute
+			    tool       	"Java"
+			    name       	"Static"
+			    value      	TRUE))
+		    quid       	"37BD36540169"
+		    documentation 	
+|The complex Fresnel Function is defined by: 	
+|	 * F (x)= C (x)+i*S (x):=Int[0,x] (e^it)/SqRt(t) 
+|	 *		= Int[0,x] Cos(t)/SqRt(t) + i Sin(t)/SqRt(t)	 
+		    
+		    parameters 	(list Parameters
+			(object Parameter "arg"
+			    type       	"MetricBody"))
+		    result     	"Complex"
+		    concurrency 	"Sequential"
+		    opExportControl 	"Public"
+		    uid        	0)
+		(object Operation "FresnelPR"
+		    attributes 	(list Attribute_Set
+			(object Attribute
+			    tool       	"Java"
+			    name       	"Static"
+			    value      	TRUE))
+		    quid       	"37BD3654016B"
+		    documentation 	
+|The complex Fresnel Function is calculated by a Potency Sequence.
+|	 * The Argument must be positive.	 
+		    
+		    parameters 	(list Parameters
+			(object Parameter "x"
+			    type       	"MetricBody"))
+		    result     	"Complex"
+		    concurrency 	"Sequential"
+		    opExportControl 	"Private"
+		    uid        	0)
+		(object Operation "FresnelKB"
+		    attributes 	(list Attribute_Set
+			(object Attribute
+			    tool       	"Java"
+			    name       	"Static"
+			    value      	TRUE))
+		    quid       	"37BD3654016D"
+		    documentation 	
+|The complex Fresnel Function is calculated by a continued Fraction	 
+		    
+		    parameters 	(list Parameters
+			(object Parameter "x"
+			    type       	"MetricBody"))
+		    result     	"Complex"
+		    concurrency 	"Sequential"
+		    opExportControl 	"Private"
+		    uid        	0)
+		(object Operation "testFresnel"
+		    attributes 	(list Attribute_Set
+			(object Attribute
+			    tool       	"Java"
+			    name       	"Static"
+			    value      	TRUE))
+		    quid       	"37BD3654016F"
+		    documentation 	
+|Tests the Fresnel Function	 
+		    
+		    result     	"void"
+		    concurrency 	"Sequential"
+		    opExportControl 	"Public"
+		    uid        	0)
+		(object Operation "Ci_Si_PR"
+		    attributes 	(list Attribute_Set
+			(object Attribute
+			    tool       	"Java"
+			    name       	"Static"
+			    value      	TRUE))
+		    quid       	"37BD36540170"
+		    documentation 	
+|The complex CI_SI Function is calculated by a Potency Sequence	 
+		    
+		    parameters 	(list Parameters
+			(object Parameter "arg"
+			    type       	"MetricBody"))
+		    result     	"Complex"
+		    concurrency 	"Sequential"
+		    opExportControl 	"Private"
+		    uid        	0)
+		(object Operation "Ci_Si_KB"
+		    attributes 	(list Attribute_Set
+			(object Attribute
+			    tool       	"Java"
+			    name       	"Static"
+			    value      	TRUE))
+		    quid       	"37BD36540172"
+		    documentation 	
+|The complex Ci_Si Function is calculated by a continued Fraction	 
+		    
+		    parameters 	(list Parameters
+			(object Parameter "arg"
+			    type       	"MetricBody"))
+		    result     	"Complex"
+		    concurrency 	"Sequential"
+		    opExportControl 	"Private"
+		    uid        	0)
+		(object Operation "Ci_Si"
+		    attributes 	(list Attribute_Set
+			(object Attribute
+			    tool       	"Java"
+			    name       	"Static"
+			    value      	TRUE))
+		    quid       	"37BD36540174"
+		    documentation 	
+|The complex Ci and Si Functions are defined by:	 
+|	 * F (x) =Co (x)+i*Si (x):=Int[0,x] (e^it)/t = Int[0,x] Cos(t)/t + i Sin(t)/t	 
+		    
+		    parameters 	(list Parameters
+			(object Parameter "arg"
+			    type       	"MetricBody"))
+		    result     	"Complex"
+		    concurrency 	"Sequential"
+		    opExportControl 	"Public"
+		    uid        	0)
+		(object Operation "testCi_Si"
+		    attributes 	(list Attribute_Set
+			(object Attribute
+			    tool       	"Java"
+			    name       	"Static"
+			    value      	TRUE))
+		    quid       	"37BD36540176"
+		    documentation 	
+|Tests the Fresnel Function	 
+		    
+		    result     	"void"
+		    concurrency 	"Sequential"
+		    opExportControl 	"Public"
+		    uid        	0)
+		(object Operation "testIt"
+		    attributes 	(list Attribute_Set
+			(object Attribute
+			    tool       	"Java"
+			    name       	"Static"
+			    value      	TRUE))
+		    quid       	"37BD36540177"
+		    documentation 	
+|Tests the Methods of this Class	 
+		    
+		    result     	"void"
+		    concurrency 	"Sequential"
+		    opExportControl 	"Public"
+		    uid        	0))
+	    module     	"Component View::Complex::FourierFuncs"
+	    quidu      	"37BC8ECA0038"
+	    language   	"Java")
+	(object Class "Polar"
+	    attributes 	(list Attribute_Set
+		(object Attribute
+		    tool       	"Java"
+		    name       	"GenerateFinalizer"
+		    value      	FALSE)
+		(object Attribute
+		    tool       	"Java"
+		    name       	"GenerateStaticInitializer"
+		    value      	FALSE)
+		(object Attribute
+		    tool       	"Java"
+		    name       	"GenerateInstanceInitializer"
+		    value      	FALSE)
+		(object Attribute
+		    tool       	"Java"
+		    name       	"GenerateDefaultConstructor"
+		    value      	FALSE)
+		(object Attribute
+		    tool       	"Java"
+		    name       	"Final"
+		    value      	TRUE))
+	    quid       	"37BC8ECA0179"
+	    documentation 	
+|Concrete final Class to define Complex Numbers of arbitrary Types 
+| * in Polar Representation.
+| * Complex Numbers from a Metric Body form a non-metric algebraic complete Body.
+| * 
+| * Design Decisions:
+| * Chose absMetricIRing instead of absMetricBody as the Constituents,
+| * because all basic operations are allowed on them,
+| * but they can also contain basic Integer Types, and so allow for Optimizations.
+| * 
+| * The Behavior of Complex Numbers can be controlled by boolean static Variables:
+| * -A Complex will always be checked for zero imaginary Part after any Operation.
+| 
+	    
+	    superclasses 	(list inheritance_relationship_list
+		(object Inheritance_Relationship
+		    attributes 	(list Attribute_Set)
+		    quid       	"37BD365502B5"
+		    supplier   	"Logical View::Body::absMetricBody"
+		    quidu      	"36BB514B03C3"))
+	    operations 	(list Operations
+		(object Operation "cjgAt"
+		    attributes 	(list Attribute_Set)
+		    quid       	"37BD365602B6"
+		    documentation 	
+|Returns the conjugate Complex Number in Place:
+|	 * i.e. the imaginary Part flips it's sign.	 
+		    
+		    result     	"IntegrityRing"
+		    concurrency 	"Sequential"
+		    opExportControl 	"Public"
+		    uid        	0)
+		(object Operation "isComplex"
+		    attributes 	(list Attribute_Set)
+		    quid       	"37BD365602B7"
+		    documentation 	
+|Overrides the false Value from the Implementation in absComplex	 
+		    
+		    result     	"boolean"
+		    concurrency 	"Sequential"
+		    opExportControl 	"Public"
+		    uid        	0)
+		(object Operation "copyAtPol"
+		    attributes 	(list Attribute_Set)
+		    quid       	"37BD365602B8"
+		    documentation 	
+|Used, because the constructor can only be called as the very first command.	 
+		    
+		    parameters 	(list Parameters
+			(object Parameter "arg"
+			    type       	"Polar"))
+		    result     	"void"
+		    concurrency 	"Sequential"
+		    opExportControl 	"Private"
+		    uid        	0)
+		(object Operation "copyAtCmp"
+		    attributes 	(list Attribute_Set)
+		    quid       	"37BD365602BA"
+		    documentation 	
+|Used, because the constructor can only be called as the very first command.	 
+		    
+		    parameters 	(list Parameters
+			(object Parameter "arg"
+			    type       	"Complex"))
+		    result     	"void"
+		    concurrency 	"Sequential"
+		    opExportControl 	"Private"
+		    uid        	0)
+		(object Operation "copyAtReal"
+		    attributes 	(list Attribute_Set)
+		    quid       	"37BD365602BC"
+		    documentation 	
+|Used, because the constructor can only be called as the very first command.	 
+		    
+		    parameters 	(list Parameters
+			(object Parameter "arg"
+			    type       	"Object"))
+		    result     	"void"
+		    concurrency 	"Sequential"
+		    opExportControl 	"Private"
+		    uid        	0)
+		(object Operation "Polar"
+		    attributes 	(list Attribute_Set)
+		    quid       	"37BD365602C0"
+		    documentation 	
+|Empty Constructor (for newInstance Method).
+|	 * Does not create Dummy Objects for it's Constituents.
+|	 * So those Objects are not well-defined, but contain Null Pointers.	 
+		    
+		    concurrency 	"Sequential"
+		    opExportControl 	"Protected"
+		    uid        	0)
+		(object Operation "Polar"
+		    attributes 	(list Attribute_Set)
+		    quid       	"37BD365602C1"
+		    documentation 	
+|Constructor that takes an Object of the same Class as Input(Copy Constructor).
+|	 * Uses the Copy Constructors of the Constituents.	 
+		    
+		    parameters 	(list Parameters
+			(object Parameter "arg"
+			    type       	"Polar"))
+		    concurrency 	"Sequential"
+		    opExportControl 	"Public"
+		    uid        	0)
+		(object Operation "Polar"
+		    attributes 	(list Attribute_Set)
+		    quid       	"37BD365602C3"
+		    documentation 	
+|Constructor that takes an Object of the same Class as Input(Copy Constructor).
+|	 * Uses the Copy Constructors of the Constituents.	 
+		    
+		    parameters 	(list Parameters
+			(object Parameter "r_"
+			    type       	"MetricIRing")
+			(object Parameter "ang_"
+			    type       	"MetricIRing"))
+		    concurrency 	"Sequential"
+		    opExportControl 	"Public"
+		    uid        	0)
+		(object Operation "Polar"
+		    attributes 	(list Attribute_Set)
+		    quid       	"37BD365602C6"
+		    documentation 	
+|Constructor that takes a complex Argument and converts it to Polar Coordinates,
+|	 * in which Multiplication and Exponential Functions are easier to calculate.	 
+		    
+		    parameters 	(list Parameters
+			(object Parameter "arg"
+			    type       	"Complex"))
+		    concurrency 	"Sequential"
+		    opExportControl 	"Public"
+		    uid        	0)
+		(object Operation "Polar"
+		    attributes 	(list Attribute_Set)
+		    quid       	"37BD365602C8"
+		    documentation 	
+|Constructor that takes any Argument and converts it to Polar Coordinates.
+|	 * When the argument is real, the angle is set to 0.	 
+		    
+		    parameters 	(list Parameters
+			(object Parameter "arg"
+			    type       	"Object"))
+		    concurrency 	"Sequential"
+		    opExportControl 	"Public"
+		    uid        	0)
+		(object Operation "floorAt"
+		    attributes 	(list Attribute_Set)
+		    quid       	"37BD365602CA"
+		    documentation 	
+|Returns the largest (closest to positive infinity) value in Place,
+|	 * that is not greater than the argument 
+|	 * and is equal to a mathematical integer. 	 
+		    
+		    result     	"MetricIRing"
+		    concurrency 	"Sequential"
+		    opExportControl 	"Public"
+		    uid        	0)
+		(object Operation "less"
+		    attributes 	(list Attribute_Set)
+		    quid       	"37BD365602CB"
+		    documentation 	
+|less: '<' Returns True, when 'Self' < arg	
+		    
+		    parameters 	(list Parameters
+			(object Parameter "arg"
+			    type       	"Object"))
+		    result     	"boolean"
+		    concurrency 	"Sequential"
+		    opExportControl 	"Public"
+		    uid        	0)
+		(object Operation "maxValueAt"
+		    attributes 	(list Attribute_Set)
+		    quid       	"37BD365602CD"
+		    documentation 	
+|Sets and returns the maximum Value for this Class in Place.	 
+		    
+		    result     	"wellOrder"
+		    concurrency 	"Sequential"
+		    opExportControl 	"Public"
+		    uid        	0)
+		(object Operation "addCarry"
+		    attributes 	(list Attribute_Set)
+		    quid       	"37BD365602CE"
+		    documentation 	
+|Carry the Overflow through the g-adic Representation.	 
+		    
+		    result     	"void"
+		    concurrency 	"Sequential"
+		    opExportControl 	"Public"
+		    uid        	0)
+		(object Operation "toUpperAt"
+		    attributes 	(list Attribute_Set)
+		    quid       	"37BD365602CF"
+		    documentation 	
+|Returns the Value raised by one g-Adic Position	 
+		    
+		    result     	"IntegrityRing"
+		    concurrency 	"Sequential"
+		    opExportControl 	"Public"
+		    uid        	0)
+		(object Operation "CmplAt"
+		    attributes 	(list Attribute_Set)
+		    quid       	"37BD365602D0"
+		    documentation 	
+|Complement in Place: ~=	
+		    
+		    result     	"Group"
+		    concurrency 	"Sequential"
+		    opExportControl 	"Public"
+		    uid        	0)
+		(object Operation "MulDivAt"
+		    attributes 	(list Attribute_Set)
+		    quid       	"37BD365602D1"
+		    documentation 	
+|Multiplication or Division in Place: *= , /=	 
+		    
+		    parameters 	(list Parameters
+			(object Parameter "arg"
+			    type       	"Object")
+			(object Parameter "mul"
+			    type       	"boolean"))
+		    result     	"GroupM"
+		    concurrency 	"Sequential"
+		    opExportControl 	"Public"
+		    uid        	0)
+		(object Operation "divAt"
+		    attributes 	(list Attribute_Set)
+		    quid       	"37BD365602D4"
+		    documentation 	
+|Division in Place: /=	 
+		    
+		    parameters 	(list Parameters
+			(object Parameter "arg"
+			    type       	"Object"))
+		    result     	"GroupM"
+		    concurrency 	"Sequential"
+		    opExportControl 	"Public"
+		    uid        	0)
+		(object Operation "mulAt"
+		    attributes 	(list Attribute_Set)
+		    quid       	"37BD365602D6"
+		    documentation 	
+|Multiplication in Place: *=	 
+		    
+		    parameters 	(list Parameters
+			(object Parameter "arg"
+			    type       	"Object"))
+		    result     	"HalfGroupM"
+		    concurrency 	"Sequential"
+		    opExportControl 	"Public"
+		    uid        	0)
+		(object Operation "convertArg"
+		    attributes 	(list Attribute_Set
+			(object Attribute
+			    tool       	"Java"
+			    name       	"Final"
+			    value      	TRUE))
+		    quid       	"37BD365602D8"
+		    documentation 	
+|Helper Routine to convert to Complex from any other numeric Type:
+|	 * RingLong, Number or countable.
+|	 * Uses absHalfGroup.longValue to do that.
+|	 * Using this Helper Routine generates Overhead, 
+|	 * because the special optimizations for integer Values are not considered.
+|	 
+		    
+		    parameters 	(list Parameters
+			(object Parameter "arg"
+			    type       	"Object"))
+		    result     	"Polar"
+		    concurrency 	"Sequential"
+		    opExportControl 	"Private"
+		    uid        	0)
+		(object Operation "copyAt"
+		    attributes 	(list Attribute_Set)
+		    quid       	"37BD365602DA"
+		    documentation 	
+|Complement to Copy.
+|	 * Does a 'deepCopy', i.e. also inner Components are copied.
+|	 * Copies the Value of arg into it's own Value
+|	 * and returns itself for further use.	 
+		    
+		    parameters 	(list Parameters
+			(object Parameter "arg"
+			    type       	"Object")
+			(object Parameter "Depth"
+			    type       	"int"))
+		    result     	"copyAble"
+		    concurrency 	"Sequential"
+		    opExportControl 	"Public"
+		    uid        	0)
+		(object Operation "newInstance"
+		    attributes 	(list Attribute_Set)
+		    quid       	"37BD365602DD"
+		    documentation 	
+|Creates an uninitalized new Instance of it's class.
+|	 * This can in VB also be achieved by 'CreateObjectFromInstance',
+|	 * which may be slower.	 
+		    
+		    result     	"copyAble"
+		    concurrency 	"Sequential"
+		    opExportControl 	"Public"
+		    uid        	0)
+		(object Operation "shallowCopyAt"
+		    attributes 	(list Attribute_Set)
+		    quid       	"37BD365602DE"
+		    documentation 	
+|Does a shallow Copy of the Argument.
+|	 * I.e. both Instances will share their inner Components.	 
+		    
+		    parameters 	(list Parameters
+			(object Parameter "arg"
+			    type       	"Object"))
+		    result     	"copyAble"
+		    concurrency 	"Sequential"
+		    opExportControl 	"Public"
+		    uid        	0)
+		(object Operation "hashCode"
+		    attributes 	(list Attribute_Set)
+		    quid       	"37BD365602E0"
+		    documentation 	
+|Returns a hash code value for the object. This method is 
+|	 * supported for the benefit of hashtables such as those provided by 
+|	 * <code>java.util.Hashtable</code>. 
+|	 * <p>
+|	 * The general contract of <code>hashCode</code> is: 
+|	 * <ul>
+|	 * <li>Whenever it is invoked on the same object more than once during 
+|	 * an execution of a Java application, the <code>hashCode</code> method 
+|	 * must consistently return the same integer. This integer need not 
+|	 * remain consistent from one execution of an application to another 
+|	 * execution of the same application. 
+|	 * <li>If two objects are equal according to the <code>equals</code> 
+|	 * method, then calling the <code>hashCode</code> method on each of the 
+|	 * two objects must produce the same integer result. 
+|	 * </ul>
+|	 * 
+|	 * @return  a hash code value for this object.
+|	 * @see     java.lang.Object#equals(java.lang.Object)
+|	 * @see     java.util.Hashtable
+|	 * @since   JDK1.0	 
+		    
+		    result     	"int"
+		    concurrency 	"Sequential"
+		    opExportControl 	"Public"
+		    uid        	0)
+		(object Operation "toString"
+		    attributes 	(list Attribute_Set)
+		    quid       	"37BD365602E1"
+		    documentation 	
+|Returns a string representation of the object. In general, the 
+|	 * <code>toString</code> method returns a string that 
+|	 * "textually represents" this object. The result should 
+|	 * be a concise but informative representation that is easy for a 
+|	 * person to read.
+|	 * It is recommendedthat all subclasses override this method.
+|	 * <p>
+|	 * The <code>toString</code> method for class <code>Object</code> 
+|	 * returns a string consisting of the name of the class of which the 
+|	 * object is an instance, the at-sign character `<code>@</code>', and 
+|	 * the unsigned hexadecimal representation of the hash code of the 
+|	 * object. 
+|	 * 
+|	 * @return  a string representation of the object.
+|	 * @since   JDK1.0	 
+		    
+		    result     	"String"
+		    concurrency 	"Sequential"
+		    opExportControl 	"Public"
+		    uid        	0)
+		(object Operation "fromStreamAt"
+		    attributes 	(list Attribute_Set)
+		    quid       	"37BD365602E2"
+		    documentation 	
+|Fills this Instance with the Contents read from the String.	 
+		    
+		    parameters 	(list Parameters
+			(object Parameter "arg"
+			    type       	"java.io.StreamTokenizer"))
+		    result     	"copyAble"
+		    exceptions 	"java.io.IOException"
+		    concurrency 	"Sequential"
+		    opExportControl 	"Public"
+		    uid        	0)
+		(object Operation "add"
+		    attributes 	(list Attribute_Set)
+		    quid       	"37BD365602E4"
+		    documentation 	
+|Addition: +
+|	 * There is an easy way to calculate the r of the Result, 
+|	 * but none to calculate the angle of the Result, 
+|	 * so the operation is performed in Complex Types.	 
+		    
+		    parameters 	(list Parameters
+			(object Parameter "arg"
+			    type       	"Object"))
+		    result     	"HalfGroup"
+		    concurrency 	"Sequential"
+		    opExportControl 	"Public"
+		    uid        	0)
+		(object Operation "subt"
+		    attributes 	(list Attribute_Set)
+		    quid       	"37BD365602E6"
+		    documentation 	
+|Subtraction: -
+|	 * There is an easy way to calculate the r of the Result, 
+|	 * but none to calculate the angle of the Result, 
+|	 * so the operation is performed in Complex Types.	 
+		    
+		    parameters 	(list Parameters
+			(object Parameter "arg"
+			    type       	"Object"))
+		    result     	"Group"
+		    concurrency 	"Sequential"
+		    opExportControl 	"Public"
+		    uid        	0)
+		(object Operation "addAt"
+		    attributes 	(list Attribute_Set)
+		    quid       	"37BD365602E8"
+		    documentation 	
+|Addition in Place: +=
+|	 * There is an easy way to calculate the r of the Result, 
+|	 * but none to calculate the angle of the Result, 
+|	 * so the operation is performed in Complex Types 
+|	 * and then transformed back.
+|	 * r^2 = r1^2 + r2^2 + 2 r1*r2*cos(a1-a2)	 
+		    
+		    parameters 	(list Parameters
+			(object Parameter "arg"
+			    type       	"Object"))
+		    result     	"HalfGroup"
+		    concurrency 	"Sequential"
+		    opExportControl 	"Public"
+		    uid        	0)
+		(object Operation "subtAt"
+		    attributes 	(list Attribute_Set)
+		    quid       	"37BD365602EA"
+		    documentation 	
+|Subtraction in Place: -=
+|	 * There is an easy way to calculate the r of the Result, 
+|	 * but none to calculate the angle of the Result, 
+|	 * so the operation is performed in Complex Types 
+|	 * and then transformed back.
+|	 * r^2 = r1^2 + r2^2 - 2 r1*r2*cos(a1-a2)	 
+		    
+		    parameters 	(list Parameters
+			(object Parameter "arg"
+			    type       	"Object"))
+		    result     	"Group"
+		    concurrency 	"Sequential"
+		    opExportControl 	"Public"
+		    uid        	0)
+		(object Operation "AbsV"
+		    attributes 	(list Attribute_Set)
+		    quid       	"37BD365602EC"
+		    documentation 	
+|absolute Value: |x|
+|	 * Returns the fastest Norm, which is the AbsV_Norm	 
+		    
+		    result     	"ScalarMetric"
+		    concurrency 	"Sequential"
+		    opExportControl 	"Public"
+		    uid        	0)
+		(object Operation "AbsVAt"
+		    attributes 	(list Attribute_Set)
+		    quid       	"37BD365602ED"
+		    documentation 	
+|absolute Value in Place: |x|
+|	 * Returns the fastest Norm, which is the AbsV_Norm	 
+		    
+		    result     	"ScalarMetric"
+		    concurrency 	"Sequential"
+		    opExportControl 	"Public"
+		    uid        	0)
+		(object Operation "SqrNorm"
+		    attributes 	(list Attribute_Set)
+		    quid       	"37BD365602EE"
+		    documentation 	
+|(Euklidische Norm)^2
+|	 * Special Case of the p-Norm for p = 2
+|	 * Rotation Invariant for cartesian Systems.	 
+		    
+		    result     	"MetricIRing"
+		    concurrency 	"Sequential"
+		    opExportControl 	"Public"
+		    uid        	0)
+		(object Operation "dblAt"
+		    attributes 	(list Attribute_Set)
+		    quid       	"37BD365602EF"
+		    documentation 	
+|Double in Place: x+=x	
+|	 * The angle stays the same!	 
+		    
+		    result     	"HalfGroup"
+		    concurrency 	"Sequential"
+		    opExportControl 	"Public"
+		    uid        	0)
+		(object Operation "trplAt"
+		    attributes 	(list Attribute_Set)
+		    quid       	"37BD365602F0"
+		    documentation 	
+|Triple in Place: x+=2x	
+		    
+		    result     	"HalfGroup"
+		    concurrency 	"Sequential"
+		    opExportControl 	"Public"
+		    uid        	0)
+		(object Operation "piAt"
+		    attributes 	(list Attribute_Set)
+		    quid       	"37BD365602F1"
+		    documentation 	
+|Returns the Constant Pi = 3.14159265359... in Place
+|	 * This is half the Quotient of Circumference and Radius of any circle.	 
+		    
+		    result     	"MetricBody"
+		    concurrency 	"Sequential"
+		    opExportControl 	"Public"
+		    uid        	0))
+	    module     	"Component View::Complex::Polar"
+	    quidu      	"37BC8ECA016F"
+	    language   	"Java")
+	(object Class "testComplex"
+	    attributes 	(list Attribute_Set
+		(object Attribute
+		    tool       	"Java"
+		    name       	"GenerateFinalizer"
+		    value      	FALSE)
+		(object Attribute
+		    tool       	"Java"
+		    name       	"GenerateStaticInitializer"
+		    value      	FALSE)
+		(object Attribute
+		    tool       	"Java"
+		    name       	"GenerateInstanceInitializer"
+		    value      	FALSE)
+		(object Attribute
+		    tool       	"Java"
+		    name       	"GenerateDefaultConstructor"
+		    value      	FALSE))
+	    quid       	"37BC8ECA01E8"
+	    operations 	(list Operations
+		(object Operation "main"
+		    attributes 	(list Attribute_Set
+			(object Attribute
+			    tool       	"Java"
+			    name       	"Static"
+			    value      	TRUE))
+		    quid       	"37BD36570181"
+		    documentation 	
+|The main entry point for the application. 
+|	 * @param args Array of command line parameters passed to the application
+|	 * After testing this Package, calling the Parent Packages.	 
+		    
+		    parameters 	(list Parameters
+			(object Parameter "args"
+			    type       	"String[]"))
+		    result     	"void"
+		    exceptions 	"java.io.IOException"
+		    concurrency 	"Sequential"
+		    opExportControl 	"Public"
+		    uid        	0))
+	    module     	"Component View::Complex::testComplex"
+	    quidu      	"37BC8ECA01E7"
+	    language   	"Java")
+	(object Association "$UNNAMED$0"
+	    attributes 	(list Attribute_Set)
+	    quid       	"37BC8EC90268"
+	    roles      	(list role_list
+		(object Role "$UNNAMED$1"
+		    quid       	"37BC8EC90269"
+		    supplier   	"Logical View::Complex::Complex"
+		    quidu      	"37BC8EC90257")
+		(object Role "Real"
+		    attributes 	(list Attribute_Set
+			(object Attribute
+			    tool       	"Java"
+			    name       	"InitialValue"
+			    value      	""))
+		    quid       	"37BC8EC9026A"
+		    documentation 	
+|The real Part of the Complex Number.	 
+		    
+		    label      	"Real"
+		    supplier   	"Logical View::Metric::MetricIRing"
+		    quidu      	"36BB4595017D"
+		    is_navigable 	TRUE)))
+	(object Association "$UNNAMED$2"
+	    attributes 	(list Attribute_Set)
+	    quid       	"37BC8EC9026B"
+	    roles      	(list role_list
+		(object Role "$UNNAMED$3"
+		    quid       	"37BC8EC9026C"
+		    supplier   	"Logical View::Complex::Complex"
+		    quidu      	"37BC8EC90257")
+		(object Role "Imag"
+		    attributes 	(list Attribute_Set
+			(object Attribute
+			    tool       	"Java"
+			    name       	"InitialValue"
+			    value      	""))
+		    quid       	"37BC8EC9026D"
+		    documentation 	
+|The imaginary Part of the Complex Number.	 
+		    
+		    label      	"Imag"
+		    supplier   	"Logical View::Metric::MetricIRing"
+		    quidu      	"36BB4595017D"
+		    is_navigable 	TRUE)))
+	(object Association "$UNNAMED$4"
+	    attributes 	(list Attribute_Set)
+	    quid       	"37BC8ECA0183"
+	    roles      	(list role_list
+		(object Role "$UNNAMED$5"
+		    quid       	"37BC8ECA0184"
+		    supplier   	"Logical View::Complex::Polar"
+		    quidu      	"37BC8ECA0179")
+		(object Role "r"
+		    attributes 	(list Attribute_Set
+			(object Attribute
+			    tool       	"Java"
+			    name       	"InitialValue"
+			    value      	""))
+		    quid       	"37BC8ECA0185"
+		    documentation 	
+|absolute Value: |x| == r
+|	 * Returns/Sets the Radius r,
+|	 * i.e. the length of the Polar Representation	 
+		    
+		    label      	"r"
+		    supplier   	"Logical View::Metric::MetricIRing"
+		    quidu      	"36BB4595017D"
+		    is_navigable 	TRUE)))
+	(object Association "$UNNAMED$6"
+	    attributes 	(list Attribute_Set)
+	    quid       	"37BC8ECA0186"
+	    roles      	(list role_list
+		(object Role "$UNNAMED$7"
+		    quid       	"37BC8ECA0187"
+		    supplier   	"Logical View::Complex::Polar"
+		    quidu      	"37BC8ECA0179")
+		(object Role "ang"
+		    attributes 	(list Attribute_Set
+			(object Attribute
+			    tool       	"Java"
+			    name       	"InitialValue"
+			    value      	""))
+		    quid       	"37BC8ECA0188"
+		    documentation 	
+|Returns/Sets the 'arg' (Argument),
+|	 * i.e. the angle of the corresponding Polar Representation	 
+		    
+		    label      	"ang"
+		    supplier   	"Logical View::Metric::MetricIRing"
+		    quidu      	"36BB4595017D"
+		    is_navigable 	TRUE))))
+    logical_presentations 	(list unit_reference_list
+	(object ClassDiagram "Complex"
+	    quid       	"37BE705000EB"
+	    title      	"Complex"
+	    zoom       	100
+	    max_height 	28350
+	    max_width  	21600
+	    origin_x   	0
+	    origin_y   	0
+	    items      	(list diagram_item_list
+		(object ClassView "Class" "Logical View::Body::absMetricBody" @1
+		    ShowCompartmentStereotypes 	TRUE
+		    IncludeAttribute 	TRUE
+		    location   	(465, 248)
+		    font       	(object Font
+			italics    	TRUE)
+		    label      	(object ItemLabel
+			Parent_View 	@1
+			location   	(273, 144)
+			fill_color 	13434879
+			nlines     	1
+			max_width  	384
+			justify    	0
+			label      	"absMetricBody")
+		    icon_style 	"Icon"
+		    line_color 	3342489
+		    fill_color 	13434879
+		    quidu      	"36BB514B03C3"
+		    width      	402
+		    height     	232
+		    annotation 	8
+		    autoResize 	TRUE)
+		(object ClassView "Class" "Logical View::Metric::absMetricIRing" @2
+		    ShowCompartmentStereotypes 	TRUE
+		    IncludeAttribute 	TRUE
+		    location   	(1085, 248)
+		    font       	(object Font
+			italics    	TRUE)
+		    label      	(object ItemLabel
+			Parent_View 	@2
+			location   	(751, 69)
+			fill_color 	13434879
+			nlines     	1
+			max_width  	668
+			justify    	0
+			label      	"absMetricIRing")
+		    icon_style 	"Icon"
+		    line_color 	3342489
+		    fill_color 	13434879
+		    quidu      	"36BB45950386"
+		    width      	686
+		    height     	382
+		    annotation 	8
+		    autoResize 	TRUE)
+		(object InheritView "" @3
+		    stereotype 	TRUE
+		    line_color 	3342489
+		    quidu      	"37BD35F70061"
+		    client     	@1
+		    supplier   	@2
+		    line_style 	0)
+		(object ClassView "Class" "Logical View::Complex::Complex" @4
+		    ShowCompartmentStereotypes 	TRUE
+		    IncludeAttribute 	TRUE
+		    location   	(558, 589)
+		    label      	(object ItemLabel
+			Parent_View 	@4
+			location   	(461, 538)
+			fill_color 	13434879
+			nlines     	1
+			max_width  	194
+			justify    	0
+			label      	"Complex")
+		    icon_style 	"Icon"
+		    line_color 	3342489
+		    fill_color 	13434879
+		    quidu      	"37BC8EC90257"
+		    width      	212
+		    height     	126
+		    annotation 	8
+		    autoResize 	TRUE)
+		(object InheritView "" @5
+		    stereotype 	TRUE
+		    line_color 	3342489
+		    quidu      	"37BD3651022D"
+		    client     	@4
+		    supplier   	@1
+		    line_style 	0)
+		(object ClassView "Class" "Logical View::Metric::MetricIRing" @6
+		    ShowCompartmentStereotypes 	TRUE
+		    IncludeAttribute 	TRUE
+		    location   	(465, 961)
+		    label      	(object ItemLabel
+			Parent_View 	@6
+			location   	(337, 908)
+			fill_color 	13434879
+			nlines     	1
+			max_width  	256
+			justify    	0
+			label      	"MetricIRing")
+		    stereotype 	(object ItemLabel
+			Parent_View 	@6
+			location   	(337, 858)
+			fill_color 	13434879
+			anchor     	10
+			nlines     	1
+			max_width  	256
+			justify    	0
+			label      	"<<Interface>>")
+		    icon       	"Interface"
+		    icon_style 	"Label"
+		    line_color 	3342489
+		    fill_color 	13434879
+		    quidu      	"36BB4595017D"
+		    width      	274
+		    height     	230
+		    annotation 	8
+		    autoResize 	TRUE)
+		(object RealizeView "" @7
+		    stereotype 	TRUE
+		    line_color 	3342489
+		    quidu      	"37BD38AA0050"
+		    client     	@2
+		    supplier   	@6
+		    line_style 	0)
+		(object AssociationViewNew "$UNNAMED$0" @8
+		    location   	(516, 748)
+		    stereotype 	TRUE
+		    line_color 	3342489
+		    quidu      	"37BC8EC90268"
+		    roleview_list 	(list RoleViews
+			(object RoleView "Real" @9
+			    Parent_View 	@8
+			    location   	(-11, 159)
+			    label      	(object SegLabel @10
+				Parent_View 	@9
+				location   	(613, 697)
+				anchor     	1
+				anchor_loc 	1
+				nlines     	1
+				max_width  	108
+				justify    	0
+				label      	"+Real"
+				pctDist    	-0.730996
+				height     	82
+				orientation 	0)
+			    stereotype 	TRUE
+			    line_color 	3342489
+			    quidu      	"37BC8EC9026A"
+			    client     	@8
+			    supplier   	@6
+			    line_style 	0)
+			(object RoleView "$UNNAMED$1" @11
+			    Parent_View 	@8
+			    location   	(-11, 159)
+			    label      	(object SegLabel @12
+				Parent_View 	@11
+				location   	(495, 663)
+				hidden     	TRUE
+				anchor     	1
+				anchor_loc 	1
+				nlines     	1
+				max_width  	450
+				justify    	0
+				label      	""
+				pctDist    	0.800000
+				height     	42
+				orientation 	0)
+			    stereotype 	TRUE
+			    line_color 	3342489
+			    quidu      	"37BC8EC90269"
+			    client     	@8
+			    supplier   	@4
+			    line_style 	0)))
+		(object AssociationViewNew "$UNNAMED$2" @13
+		    location   	(516, 748)
+		    stereotype 	TRUE
+		    line_color 	3342489
+		    quidu      	"37BC8EC9026B"
+		    roleview_list 	(list RoleViews
+			(object RoleView "Imag" @14
+			    Parent_View 	@13
+			    location   	(-11, 159)
+			    label      	(object SegLabel @15
+				Parent_View 	@14
+				location   	(491, 698)
+				anchor     	1
+				anchor_loc 	1
+				nlines     	1
+				max_width  	120
+				justify    	0
+				label      	"+Imag"
+				pctDist    	-0.430546
+				height     	38
+				orientation 	1)
+			    stereotype 	TRUE
+			    line_color 	3342489
+			    quidu      	"37BC8EC9026D"
+			    client     	@13
+			    supplier   	@6
+			    line_style 	0)
+			(object RoleView "$UNNAMED$3" @16
+			    Parent_View 	@13
+			    location   	(-11, 159)
+			    label      	(object SegLabel @17
+				Parent_View 	@16
+				location   	(495, 663)
+				hidden     	TRUE
+				anchor     	1
+				anchor_loc 	1
+				nlines     	1
+				max_width  	450
+				justify    	0
+				label      	""
+				pctDist    	0.800000
+				height     	42
+				orientation 	0)
+			    stereotype 	TRUE
+			    line_color 	3342489
+			    quidu      	"37BC8EC9026C"
+			    client     	@13
+			    supplier   	@4
+			    line_style 	0)))
+		(object ClassView "Class" "Logical View::Complex::Polar" @18
+		    ShowCompartmentStereotypes 	TRUE
+		    IncludeAttribute 	TRUE
+		    location   	(341, 589)
+		    label      	(object ItemLabel
+			Parent_View 	@18
+			location   	(260, 538)
+			fill_color 	13434879
+			nlines     	1
+			max_width  	162
+			justify    	0
+			label      	"Polar")
+		    icon_style 	"Icon"
+		    line_color 	3342489
+		    fill_color 	13434879
+		    quidu      	"37BC8ECA0179"
+		    height     	126
+		    annotation 	8
+		    autoResize 	TRUE)
+		(object InheritView "" @19
+		    stereotype 	TRUE
+		    line_color 	3342489
+		    quidu      	"37BD365502B5"
+		    client     	@18
+		    supplier   	@1
+		    line_style 	0)
+		(object AssociationViewNew "$UNNAMED$4" @20
+		    location   	(394, 748)
+		    stereotype 	TRUE
+		    line_color 	3342489
+		    quidu      	"37BC8ECA0183"
+		    roleview_list 	(list RoleViews
+			(object RoleView "r" @21
+			    Parent_View 	@20
+			    location   	(208, 159)
+			    label      	(object SegLabel @22
+				Parent_View 	@21
+				location   	(307, 756)
+				anchor     	1
+				anchor_loc 	1
+				nlines     	1
+				max_width  	60
+				justify    	0
+				label      	"+r"
+				pctDist    	-0.195533
+				height     	86
+				orientation 	1)
+			    stereotype 	TRUE
+			    line_color 	3342489
+			    quidu      	"37BC8ECA0185"
+			    client     	@20
+			    supplier   	@6
+			    line_style 	0)
+			(object RoleView "$UNNAMED$5" @23
+			    Parent_View 	@20
+			    location   	(208, 159)
+			    label      	(object SegLabel @24
+				Parent_View 	@23
+				location   	(407, 658)
+				hidden     	TRUE
+				anchor     	1
+				anchor_loc 	1
+				nlines     	1
+				max_width  	450
+				justify    	0
+				label      	""
+				pctDist    	0.800000
+				height     	42
+				orientation 	1)
+			    stereotype 	TRUE
+			    line_color 	3342489
+			    quidu      	"37BC8ECA0184"
+			    client     	@20
+			    supplier   	@18
+			    line_style 	0)))
+		(object AssociationViewNew "$UNNAMED$6" @25
+		    location   	(394, 748)
+		    stereotype 	TRUE
+		    line_color 	3342489
+		    quidu      	"37BC8ECA0186"
+		    roleview_list 	(list RoleViews
+			(object RoleView "ang" @26
+			    Parent_View 	@25
+			    location   	(208, 159)
+			    label      	(object SegLabel @27
+				Parent_View 	@26
+				location   	(309, 693)
+				anchor     	1
+				anchor_loc 	1
+				nlines     	1
+				max_width  	96
+				justify    	0
+				label      	"+ang"
+				pctDist    	-0.778204
+				height     	65
+				orientation 	1)
+			    stereotype 	TRUE
+			    line_color 	3342489
+			    quidu      	"37BC8ECA0188"
+			    client     	@25
+			    supplier   	@6
+			    line_style 	0)
+			(object RoleView "$UNNAMED$7" @28
+			    Parent_View 	@25
+			    location   	(208, 159)
+			    label      	(object SegLabel @29
+				Parent_View 	@28
+				location   	(407, 658)
+				hidden     	TRUE
+				anchor     	1
+				anchor_loc 	1
+				nlines     	1
+				max_width  	450
+				justify    	0
+				label      	""
+				pctDist    	0.800000
+				height     	42
+				orientation 	1)
+			    stereotype 	TRUE
+			    line_color 	3342489
+			    quidu      	"37BC8ECA0187"
+			    client     	@25
+			    supplier   	@18
+			    line_style 	0)))))))

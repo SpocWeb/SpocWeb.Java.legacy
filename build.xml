@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!-- <!DOCTYPE ErrorList SYSTEM "ant-zkdb.dtd"> -->
+<!--
+ version:         $Revision: 1.45 $
+ author:          $Author: mheuer $
+ last modified:   $Date: 2002/10/07 15:26:51 $
+  /\/\
+ / /_ \
+ \  / /
+  \/\/  Cambridge Technology Partners
+-->
+<!-- this is the MAIN (highest level) build file for the Daily BUILDs -->
+<!-- ***USAGE: "ant -buildfile buildmain.xml" -->
+<project basedir="." default="all" name="MainBuild">
+	<target name="all" description="Builds all Elements">
+	</target>
+</project>

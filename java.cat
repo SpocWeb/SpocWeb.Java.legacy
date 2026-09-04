@@ -1,0 +1,142 @@
+
+(object Petal
+    version    	42
+    _written   	"Rose 4.5.8163.3"
+    charSet    	0)
+
+(object Class_Category "java"
+    is_unit    	TRUE
+    is_loaded  	TRUE
+    quid       	"37BEF6DA0060"
+    exportControl 	"Public"
+    logical_models 	(list unit_reference_list
+	(object Class_Category "lang"
+	    quid       	"37BEF6E1027C"
+	    exportControl 	"Public"
+	    global     	TRUE
+	    logical_models 	(list unit_reference_list
+		(object Class "Double"
+		    quid       	"37BEF6EB00D2"
+		    language   	"Visual Basic")
+		(object Class "String"
+		    quid       	"37BEF7040010"
+		    language   	"Visual Basic")
+		(object Class "StringBuffer"
+		    quid       	"37BEF70D015D"
+		    language   	"Visual Basic")
+		(object Class "Object"
+		    quid       	"37BEF72D01C8"
+		    language   	"Visual Basic"))
+	    logical_presentations 	(list unit_reference_list
+		(object ClassDiagram "lang"
+		    quid       	"37BEF97E01AC"
+		    title      	"lang"
+		    zoom       	100
+		    max_height 	28350
+		    max_width  	21600
+		    origin_x   	0
+		    origin_y   	0
+		    items      	(list diagram_item_list
+			(object ClassView "Class" "Logical View::java::lang::Object" @1
+			    ShowCompartmentStereotypes 	TRUE
+			    IncludeAttribute 	TRUE
+			    location   	(279, 124)
+			    label      	(object ItemLabel
+				Parent_View 	@1
+				location   	(198, 73)
+				fill_color 	13434879
+				nlines     	1
+				max_width  	162
+				justify    	0
+				label      	"Object")
+			    icon_style 	"Icon"
+			    line_color 	3342489
+			    fill_color 	13434879
+			    quidu      	"37BEF72D01C8"
+			    height     	126
+			    annotation 	8
+			    autoResize 	TRUE)
+			(object ClassView "Class" "Logical View::java::lang::StringBuffer" @2
+			    ShowCompartmentStereotypes 	TRUE
+			    IncludeAttribute 	TRUE
+			    location   	(713, 124)
+			    label      	(object ItemLabel
+				Parent_View 	@2
+				location   	(594, 73)
+				fill_color 	13434879
+				nlines     	1
+				max_width  	238
+				justify    	0
+				label      	"StringBuffer")
+			    icon_style 	"Icon"
+			    line_color 	3342489
+			    fill_color 	13434879
+			    quidu      	"37BEF70D015D"
+			    width      	256
+			    height     	126
+			    annotation 	8
+			    autoResize 	TRUE)
+			(object ClassView "Class" "Logical View::java::lang::String" @3
+			    ShowCompartmentStereotypes 	TRUE
+			    IncludeAttribute 	TRUE
+			    location   	(279, 465)
+			    label      	(object ItemLabel
+				Parent_View 	@3
+				location   	(198, 414)
+				fill_color 	13434879
+				nlines     	1
+				max_width  	162
+				justify    	0
+				label      	"String")
+			    icon_style 	"Icon"
+			    line_color 	3342489
+			    fill_color 	13434879
+			    quidu      	"37BEF7040010"
+			    height     	126
+			    annotation 	8
+			    autoResize 	TRUE)
+			(object ClassView "Class" "Logical View::java::lang::Double" @4
+			    ShowCompartmentStereotypes 	TRUE
+			    IncludeAttribute 	TRUE
+			    location   	(713, 465)
+			    label      	(object ItemLabel
+				Parent_View 	@4
+				location   	(632, 414)
+				fill_color 	13434879
+				nlines     	1
+				max_width  	162
+				justify    	0
+				label      	"Double")
+			    icon_style 	"Icon"
+			    line_color 	3342489
+			    fill_color 	13434879
+			    quidu      	"37BEF6EB00D2"
+			    height     	126
+			    annotation 	8
+			    autoResize 	TRUE))))))
+    logical_presentations 	(list unit_reference_list
+	(object ClassDiagram "java"
+	    quid       	"37BEF95C00B3"
+	    title      	"java"
+	    zoom       	100
+	    max_height 	28350
+	    max_width  	21600
+	    origin_x   	0
+	    origin_y   	0
+	    items      	(list diagram_item_list
+		(object CategoryView "Logical View::java::lang" @5
+		    location   	(341, 248)
+		    label      	(object ItemLabel
+			Parent_View 	@5
+			location   	(197, 164)
+			fill_color 	13434879
+			nlines     	2
+			max_width  	288
+			justify    	0
+			label      	"lang")
+		    icon_style 	"Icon"
+		    line_color 	3342489
+		    fill_color 	13434879
+		    quidu      	"37BEF6E1027C"
+		    width      	300
+		    height     	180)))))

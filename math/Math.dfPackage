@@ -1,0 +1,251 @@
+package id13wyvc9fodqegc9fq5d7b;
+
+/**
+@version 2.0
+@physicalPackage
+@__modelType diagram 
+*/
+class diagram {
+/**
+@__ref <oiref:design#Class#id1zswpc9fodqegc9fq5fb9.diagram:oiref><oihard>
+@__modelType reference
+@__fqn <oiref:#Package#Math.Algorithm:oiref> 
+*/
+class reference78 {
+}/**
+@shapeType DependencyLink
+@__modelType link
+@__ref <oiref:design#Class#id3zsldc9fodqegc9fq5fkp.diagram:oiref><oihard>
+@automatic 
+*/
+class link {
+}/**
+@shapeType DependencyLink
+@__modelType link
+@__ref <oiref:design#Class#id9t4ec9fodqegc9fq5fdr.diagram:oiref><oihard>
+@automatic 
+*/
+class link88 {
+}/**
+@shapeType DependencyLink
+@__modelType link
+@__ref <oiref:design#Class#idy6iec9fodqegc9fq5fgj.diagram:oiref><oihard>
+@automatic 
+*/
+class link89 {
+}/**
+@shapeType DependencyLink
+@__modelType link
+@__ref <oiref:design#Class#id457m4c9fodqegc9fq5a4l.diagram:oiref><oihard>
+@automatic 
+*/
+class link90 {
+}/**
+@__ref <oiref:java#Class#math.AVector:oiref><oihard>
+@__modelType reference 
+*/
+class reference {
+}/**
+@__ref <oiref:java#Class#math.Char2String:oiref><oihard>
+@__modelType reference 
+*/
+class reference263 {
+}/**
+@__ref <oiref:java#Class#math.Daubechies4:oiref><oihard>
+@__modelType reference 
+*/
+class reference264 {
+}/**
+@__ref <oiref:java#Class#math.MatrixDoubleStreamIn:oiref><oihard>
+@__modelType reference 
+*/
+class reference265 {
+}/**
+@__ref <oiref:java#Class#math.VectorString:oiref><oihard>
+@__modelType reference 
+*/
+class reference266 {
+}/**
+@__ref <oiref:java#Class#math.VectorChar:oiref><oihard>
+@__modelType reference 
+*/
+class reference267 {
+}/**
+@__ref <oiref:java#Class#math.WaveletStep:oiref><oihard>
+@__modelType reference 
+*/
+class reference268 {
+}/**
+@__ref <oiref:java#Class#math.wavefilt:oiref><oihard>
+@__modelType reference 
+*/
+class reference269 {
+}/**
+@__ref <oiref:java#Class#math.VectorInt:oiref><oihard>
+@__modelType reference 
+*/
+class reference270 {
+}/**
+@__ref <oiref:java#Class#math.NumberFormatter:oiref><oihard>
+@__modelType reference 
+*/
+class reference271 {
+}/**
+@__ref <oiref:java#Class#math.Test1:oiref><oihard>
+@__modelType reference 
+*/
+class reference272 {
+}/**
+@__ref <oiref:java#Class#math.LinearOptics2D:oiref><oihard>
+@__modelType reference 
+*/
+class reference273 {
+}/**
+@__ref <oiref:java#Class#math.VectorFloatStreamIn:oiref><oihard>
+@__modelType reference 
+*/
+class reference274 {
+}/**
+@__ref <oiref:java#Class#math.VectorFloat:oiref><oihard>
+@__modelType reference 
+*/
+class reference275 {
+}/**
+@__ref <oiref:java#Class#math.IWaveletStep:oiref><oihard>
+@__modelType reference 
+*/
+class reference276 {
+}/**
+@__ref <oiref:java#Class#math.Vector3D:oiref><oihard>
+@__modelType reference 
+*/
+class reference277 {
+}/**
+@__ref <oiref:java#Class#math.Eigenvalues:oiref><oihard>
+@__modelType reference 
+*/
+class reference278 {
+}/**
+@__ref <oiref:java#Class#math.VectorDouble:oiref><oihard>
+@__modelType reference 
+*/
+class reference279 {
+}/**
+@__ref <oiref:java#Class#math.IFormatter:oiref><oihard>
+@__modelType reference 
+*/
+class reference280 {
+}/**
+@__ref <oiref:java#Class#math.IStringFunction:oiref><oihard>
+@__modelType reference 
+*/
+class reference281 {
+}/**
+@__ref <oiref:java#Class#math.Test:oiref><oihard>
+@__modelType reference 
+*/
+class reference282 {
+}/**
+@__ref <oiref:java#Class#math.StringFunction:oiref><oihard>
+@__modelType reference 
+*/
+class reference283 {
+}/**
+@__ref <oiref:java#Class#math.Line2D:oiref><oihard>
+@__modelType reference 
+*/
+class reference284 {
+}/**
+@__ref <oiref:java#Class#math.TestSelect:oiref><oihard>
+@__modelType reference 
+*/
+class reference285 {
+}/**
+@__ref <oiref:java#Class#math.MatrixBand:oiref><oihard>
+@__modelType reference 
+*/
+class reference286 {
+}/**
+@__ref <oiref:java#Class#math.MatrixTriDiag:oiref><oihard>
+@__modelType reference 
+*/
+class reference287 {
+}/**
+@__ref <oiref:java#Class#math.fSin:oiref><oihard>
+@__modelType reference 
+*/
+class reference288 {
+}/**
+@__ref <oiref:java#Class#math.Wavelet:oiref><oihard>
+@__modelType reference 
+*/
+class reference289 {
+}/**
+@__ref <oiref:java#Class#math.MatrixDouble:oiref><oihard>
+@__modelType reference 
+*/
+class reference290 {
+}/**
+@__ref <oiref:java#Class#math.MatrixFloatStreamIn:oiref><oihard>
+@__modelType reference 
+*/
+class reference291 {
+}/**
+@__ref <oiref:java#Class#math.VectorDoubleStreamIn:oiref><oihard>
+@__modelType reference 
+*/
+class reference292 {
+}/**
+@__ref <oiref:java#Class#math.MatrixSVD:oiref><oihard>
+@__modelType reference 
+*/
+class reference293 {
+}/**
+@__ref <oiref:java#Class#math.MatrixQR:oiref><oihard>
+@__modelType reference 
+*/
+class reference294 {
+}/**
+@__ref <oiref:java#Class#math.Vector2D:oiref><oihard>
+@__modelType reference 
+*/
+class reference295 {
+}/**
+@__ref <oiref:java#Class#math.Simplex:oiref><oihard>
+@__modelType reference 
+*/
+class reference296 {
+}/**
+@__ref <oiref:java#Class#math.VectorIntStreamIn:oiref><oihard>
+@__modelType reference 
+*/
+class reference297 {
+}/**
+@__ref <oiref:java#Class#math.MatrixFloat:oiref><oihard>
+@__modelType reference 
+*/
+class reference298 {
+}/**
+@__ref <oiref:java#Class#math.MatrixSymmetric:oiref><oihard>
+@__modelType reference 
+*/
+class reference299 {
+}/**
+@__ref <oiref:java#Class#math.AMatrix:oiref><oihard>
+@__modelType reference 
+*/
+class reference300 {
+}}/**
+@__tags
+@shapeType ClassDiagram 
+*/
+class __tags {
+}/**
+@__options 
+*/
+class __options {
+}/**
+@__positions 
+*/
+class __positions {
+}

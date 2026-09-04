@@ -1,0 +1,456 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<!-- saved from url=(0053)http://www.opengroup.org/onlinepubs/9629399/apdxa.htm -->
+<!-- Copyright 1997 The Open Group, All rights reserved --><HTML><HEAD><TITLE>DCE 1.1: Remote Procedure Call - Universal Unique Identifier</TITLE>
+<META http-equiv=Content-Type content="text/html; charset=windows-1252">
+<META content="MSHTML 6.00.2900.2912" name=GENERATOR></HEAD>
+<BODY bgColor=#ffffff>
+<CENTER><A 
+href="http://www.opengroup.org/onlinepubs/9629399/chap14.htm">Previous 
+section.</A></CENTER>
+<P><BASEFONT><!-- CDE 1.1: Remote Procedure Call --><BASEFONT>
+<CENTER><FONT size=2>CDE 1.1: Remote Procedure Call <BR>Copyright © 1997 The 
+Open Group </CENTER></FONT>
+<HR noShade SIZE=2>
+
+<H2><A name=tagcjh_20></A>Universal Unique Identifier</H2><XREF name="apdxa" 
+type="1"></XREF><INDEX term="UUIDs"></INDEX>This appendix specifies the syntax 
+and semantics of the DCE variant of Universal Unique Identifiers (UUIDs). 
+<P>A UUID is an identifier that is unique across both space and time<A 
+href="http://www.opengroup.org/onlinepubs/9629399/apdxa.htm#tag_foot_1"><SUP><SMALL>1</SMALL></SUP></A>, 
+with respect to the space of all UUIDs. A UUID can be used for multiple 
+purposes, from tagging objects with an extremely short lifetime, to reliably 
+identifying very persistent objects across a network. 
+<P>The generation of UUIDs does not require a registration authority for each 
+single identifier. Instead, it requires a unique value over space for each UUID 
+generator. This spatially unique value is specified as an IEEE 802 address, 
+which is usually already applied to network-connected systems. This 48-bit 
+address can be assigned based on an address block obtained through the IEEE 
+registration authority. This UUID specification assumes the availability of an 
+IEEE 802 address. 
+<H3><A name=tagcjh_20_01></A>Format</H3><XREF name="format" 
+type="2"></XREF><INDEX term="UUIDs, format"></INDEX>
+<P><XREF href="tblA-1"><A 
+href="http://www.opengroup.org/onlinepubs/9629399/apdxa.htm#tagtcjh_34">UUID 
+Format </A></XREF>shows the format of a UUID. <BASEFONT size=2>
+<P>
+<CENTER>
+<P>
+<TABLE borderColor=#000000 cellPadding=3 align=center border=1>
+  <TBODY>
+  <TR vAlign=top>
+    <TH align=middle><B>Field</B> 
+    <TH align=middle><B>NDR Data Type</B> 
+    <TH align=middle><B>Octet #</B> 
+    <TH align=middle><B>Note</B> 
+  <TR vAlign=top>
+    <TH align=left><B>time_low</B> 
+    <TH align=left><B>unsigned long</B> 
+    <TH align=left>0-3 
+    <TH align=left>The low field of the timestamp. 
+  <TR vAlign=top>
+    <TD align=left><B>time_mid</B> 
+    <TD align=left><B>unsigned short</B> 
+    <TD align=left>4-5 
+    <TD align=left>The middle field of the timestamp. 
+  <TR vAlign=top>
+    <TD align=left><B>time_hi_and_version</B> 
+    <TD align=left><B>unsigned short</B> 
+    <TD align=left>6-7 
+    <TD align=left>The high field of the timestamp multiplexed with the 
+      version number. 
+  <TR vAlign=top>
+    <TD align=left><B>clock_seq_hi_and_reserved</B> 
+    <TD align=left><B>unsigned small</B> 
+    <TD align=left>8 
+    <TD align=left>The high field of the clock sequence multiplexed with the 
+      variant. 
+  <TR vAlign=top>
+    <TD align=left><B>clock_seq_low</B> 
+    <TD align=left><B>unsigned small</B> 
+    <TD align=left>9 
+    <TD align=left>The low field of the clock sequence. 
+  <TR vAlign=top>
+    <TD align=left><B>node</B> 
+    <TD align=left><B>character</B> 
+    <TD align=left>10-15 
+    <TD align=left>The spatially unique node identifier. 
+</TR></TBODY></TABLE></CENTER><BASEFONT><B>
+<CENTER><XREF table="UUID Format"><A name=tagtcjh_34></A></XREF>Table: UUID 
+Format</CENTER></B><XREF name="tblA-1" type="7"></XREF>
+<P>The UUID consists of a record of 16 octets and must not contain padding 
+between fields. The total size is 128 bits. 
+<P>To minimise confusion about bit assignments within octets, the UUID record 
+definition is defined only in terms of fields that are integral numbers of 
+octets. The version number is multiplexed with the time stamp 
+(<B>time_high</B>), and the variant field is multiplexed with the clock sequence 
+(<B>clock_seq_high</B>). 
+<P>The timestamp is a 60 bit value. For UUID version 1, this is represented by 
+Coordinated Universal Time (UTC) as a count of 100-nanosecond intervals since 
+00:00:00.00, 15 October 1582 (the date of Gregorian reform to the Christian 
+calendar). 
+<P>The version number is multiplexed in the 4 most significant bits of the 
+<B>time_hi_and_version</B> field. <XREF href="tblA-2"><A 
+href="http://www.opengroup.org/onlinepubs/9629399/apdxa.htm#tagtcjh_35">UUID 
+version Field </A></XREF>lists currently defined versions of the UUID. <PRE><BASEFONT size=2>
+</PRE>
+<P>
+<CENTER>
+<P>
+<TABLE borderColor=#000000 cellPadding=3 align=center border=1>
+  <TBODY>
+  <TR vAlign=top>
+    <TH align=middle><B>msb1</B> 
+    <TH align=middle><B>msb2</B> 
+    <TH align=middle><B>msb3</B> 
+    <TH align=middle><B>msb4</B> 
+    <TH align=middle><B>Version</B> 
+    <TH align=middle><B>Description</B> 
+  <TR vAlign=top>
+    <TH align=middle>0 
+    <TH align=middle>0 
+    <TH align=middle>0 
+    <TH align=middle>1 
+    <TH align=middle>1 
+    <TH align=left>DCE version, as specified herein. 
+  <TR vAlign=top>
+    <TD align=middle>0 
+    <TD align=middle>0 
+    <TD align=middle>1 
+    <TD align=middle>0 
+    <TD align=middle>2 
+    <TD align=left>DCE Security version, with embedded POSIX UIDs. 
+</TR></TBODY></TABLE></CENTER><PRE><BASEFONT>
+</PRE><B>
+<CENTER><XREF table="UUID version Field"><A name=tagtcjh_35></A></XREF>Table: 
+UUID version Field</CENTER></B><XREF name="tblA-2" type="7"></XREF>
+<P>The variant field determines the layout of the UUID. The structure of DCE 
+UUIDs is fixed across different versions. Other UUID variants may not 
+interoperate with DCE UUIDs. Interoperability of UUIDs is defined as the 
+applicability of operations such as string conversion, comparison, and lexical 
+ordering across different systems. The <B>variant</B> field consists of a 
+variable number of the msbs of the <B>clock_seq_hi_and_reserved</B> field. <XREF 
+href="tblA-3"><A 
+href="http://www.opengroup.org/onlinepubs/9629399/apdxa.htm#tagtcjh_36">UUID 
+variant Field </A></XREF>lists the contents of the DCE variant field. <PRE><BASEFONT size=2>
+</PRE>
+<P>
+<CENTER>
+<P>
+<TABLE borderColor=#000000 cellPadding=3 align=center border=1>
+  <TBODY>
+  <TR vAlign=top>
+    <TH align=middle><B>msb1</B> 
+    <TH align=middle><B>msb2</B> 
+    <TH align=middle><B>msb3</B> 
+    <TH align=middle><B>Description</B> 
+  <TR vAlign=top>
+    <TH align=middle>0 
+    <TH align=middle>- 
+    <TH align=middle>- 
+    <TH align=left>Reserved, NCS backward compatibility. 
+  <TR vAlign=top>
+    <TD align=middle>1 
+    <TD align=middle>0 
+    <TD align=middle>- 
+    <TD align=left>DCE variant. 
+  <TR vAlign=top>
+    <TD align=middle>1 
+    <TD align=middle>1 
+    <TD align=middle>0 
+    <TD align=left>Reserved, Microsoft Corporation GUID. 
+  <TR vAlign=top>
+    <TD align=middle>1 
+    <TD align=middle>1 
+    <TD align=middle>1 
+    <TD align=left>Reserved for future definition. </TR></TBODY></TABLE></CENTER><PRE><BASEFONT>
+</PRE><B>
+<CENTER><XREF table="UUID variant Field"><A name=tagtcjh_36></A></XREF>Table: 
+UUID variant Field</CENTER></B><XREF name="tblA-3" type="7"></XREF>
+<P>The clock sequence is required to detect potential losses of monotonicity of 
+the clock. Thus, this value marks discontinuities and prevents duplicates. An 
+algorithm for generating this value is outlined in <XREF href="clock_seq"><A 
+href="http://www.opengroup.org/onlinepubs/9629399/apdxa.htm#tagcjh_20_02_01">Clock 
+Sequence </A></XREF>. The clock sequence is encoded in the 6 least significant 
+bits of the <B>clock_seq_hi_and_reserved</B> field and in the 
+<B>clock_seq_low</B> field. 
+<P>The <B>node</B> field consists of the IEEE address, usually the host address. 
+For systems with multiple IEEE 802 nodes, any available node address can be 
+used. The lowest addressed octet (octet number 10) contains the global/local bit 
+and the unicast/multicast bit, and is the first octet of the address transmitted 
+on an 802.3 LAN. 
+<P>Depending on the network data representation, the multi-octet unsigned 
+integer fields are subject to byte swapping when communicated between different 
+endian machines. 
+<P>The nil UUID is special form of UUID that is specified to have all 128 bits 
+set to 0 (zero). 
+<H3><A name=tagcjh_20_02></A>Algorithms for Creating a UUID</H3><INDEX 
+term="UUIDs, algorithms for creating"></INDEX>
+<P>Various aspects of the algorithm for creating a UUID are discussed in the 
+following sections. UUID generation requires a guarantee of uniqueness within 
+the node ID for a given variant and version. Interoperability is provided by 
+complying with the specified data structure. To prevent possible UUID 
+collisions, which could be caused by different implementations on the same node, 
+compliance with the algorithms specified here is required. 
+<H4><A name=tagcjh_20_02_01></A>Clock Sequence</H4><XREF name="clock_seq" 
+type="3"></XREF>
+<P>The clock sequence value must be changed whenever: 
+<UL>
+  <P>
+  <LI>The UUID generator detects that the local value of UTC has gone backward; 
+  this may be due to normal functioning of the DCE Time Service. 
+  <P></P>
+  <LI>The UUID generator has lost its state of the last value of UTC used, 
+  indicating that time <I>may</I> have gone backward; this is typically the case 
+  on reboot. 
+  <P></P></LI></UL>
+<P>While a node is operational, the UUID service always saves the last UTC used 
+to create a UUID. Each time a new UUID is created, the current <B>UTC</B> is 
+compared to the saved value and if either the current value is less (the 
+non-monotonic clock case) or the saved value was lost, then the <B>clock 
+sequence</B> is incremented modulo 16,384, thus avoiding production of duplicate 
+UUIDs. 
+<P>The <B>clock sequence</B> must be initialised to a random number to minimise 
+the correlation across systems. This provides maximum protection against 
+<B>node</B> identifiers that may move or switch from system to system rapidly. 
+The initial value <I>shall not</I> be correlated to the node identifier. 
+<P>The rule of initialising the <B>clock sequence</B> to a random value is 
+waived if, and only if all of the following are true: 
+<OL>
+  <P>
+  <LI>The <B>clock sequence</B> value is stored in a form of non-volatile 
+  storage. 
+  <P></P>
+  <LI>The system is manufactured such that the IEEE address ROM is designed to 
+  be inseparable from the system by either the user or field service, so that it 
+  cannot be moved to another system. 
+  <P></P>
+  <LI>The manufacturing process guarantees that only new IEEE address ROMs are 
+  used. 
+  <P></P>
+  <LI>Any field service, remanufacturing or rebuilding process that could change 
+  the value of the clock sequence must reinitialise it to a random value. 
+  <P></P></LI></OL>
+<P>In other words, the system constraints prevent duplicates caused by possible 
+migration of the IEEE address, while the operational system itself can protect 
+against non-monotonic clocks, except in the case of field service intervention. 
+At manufacturing time, such a system may initialise the clock sequence to any 
+convenient value. 
+<H4><A name=tagcjh_20_02_02></A>System Reboot</H4>
+<P>There are two possibilities when rebooting a system: 
+<OL>
+  <P>
+  <LI>The UUID generator state-the last UTC, adjustment, and clock sequence-of 
+  the UUID service has been restored from non-volatile store. 
+  <P></P>
+  <LI>The state of the last UTC or adjustment has been lost. 
+  <P></P></LI></OL>
+<P>If the state variables have been restored, the UUID generator just continues 
+as normal. Alternatively, if the state variables cannot be restored, they are 
+reinitialised, and the clock sequence is changed. If the clock sequence is 
+stored in non-volatile store, it is incremented; otherwise, it is reinitialised 
+to a new random value. 
+<H4><A name=tagcjh_20_02_03></A>Clock Adjustment</H4>
+<P>UUIDs may be created at a rate greater than the system clock resolution. 
+Therefore, the system must also maintain an adjustment value to be added to the 
+lower-order bits of the time. Logically, each time the system clock ticks, the 
+adjustment value is cleared. Every time a UUID is generated, the current 
+adjustment value is read and incremented atomically, then added to the UTC time 
+field of the UUID. 
+<H4><A name=tagcjh_20_02_04></A>Clock Overrun</H4>
+<P>The 100 nanosecond granularity of time should prove sufficient even for 
+bursts of UUID creation in the next generation of high-performance 
+multiprocessors. If a system overruns the clock adjustment by requesting too 
+many UUIDs within a single system clock tick, the UUID service may raise an 
+exception, handled in a system or process-dependent manner either by: 
+<UL>
+  <P>
+  <LI>terminating the requester 
+  <P></P>
+  <LI>reissuing the request until it succeeds 
+  <P></P>
+  <LI>stalling the UUID generator until the system clock catches up. 
+  <P></P></LI></UL>
+<P>If the processors overrun the UUID generation frequently, additional node 
+identifiers and clocks may need to be added. 
+<H4><A name=tagcjh_20_02_05></A>UUID Generation</H4>
+<P>UUIDs are generated according to the following algorithm: 
+<OL>
+  <P>
+  <LI>Determine the values for the UTC-based timestamp and clock sequence to be 
+  used in the UUID. <XREF href="format"><A 
+  href="http://www.opengroup.org/onlinepubs/9629399/apdxa.htm#tagcjh_20_01">Format 
+  </A></XREF>and <XREF href="clock_seq"><A 
+  href="http://www.opengroup.org/onlinepubs/9629399/apdxa.htm#tagcjh_20_02_01">Clock 
+  Sequence </A></XREF>define how to determine these values. For the purposes of 
+  this algorithm, consider the timestamp to be a 60-bit unsigned integer and the 
+  clock sequence to be a 14-bit unsigned integer. Sequentially number the bits 
+  in a field, starting from 0 (zero) for the least significant bit. 
+  <P></P>
+  <LI>Set the <B>time_low</B> field equal to the least significant 32-bits (bits 
+  numbered 0 to 31 inclusive) of the time stamp in the same order of 
+  significance. If a DCE Security version UUID is being created, then replace 
+  the <B>time_low</B> field with the local user security attribute as defined by 
+  the <B>DCE: Security Services</B> specification. 
+  <P></P>
+  <LI>Set the <B>time_mid</B> field equal to the bits numbered 32 to 47 
+  inclusive of the time stamp in the same order of significance. 
+  <P></P>
+  <LI>Set the 12 least significant bits (bits numbered 0 to 11 inclusive) of the 
+  <B>time_hi_and_version</B> field equal to the bits numbered 48 to 59 inclusive 
+  of the time stamp in the same order of significance. 
+  <P></P>
+  <LI>Set the 4 most significant bits (bits numbered 12 to 15 inclusive) of the 
+  <B>time_hi_and_version</B> field to the 4-bit version number corresponding to 
+  the UUID version being created, as shown in <XREF href="tblA-2"><A 
+  href="http://www.opengroup.org/onlinepubs/9629399/apdxa.htm#tagtcjh_35">UUID 
+  version Field </A></XREF>. 
+  <P></P>
+  <LI>Set the <B>clock_seq_low</B> field to the 8 least significant bits (bits 
+  numbered 0 to 7 inclusive) of the <B>clock sequence</B> in the same order of 
+  significance. 
+  <P></P>
+  <LI>Set the 6 least significant bits (bits numbered 0 to 5 inclusive) of the 
+  <B>clock_seq_hi_and_reserved</B> field to the 6 most significant bits (bits 
+  numbered 8 to 13 inclusive) of the <B>clock sequence</B> in the same order of 
+  significance. <BR>
+  <P></P>
+  <LI>Set the 2 most significant bits (bits numbered 6 and 7) of the 
+  <B>clock_seq_hi_and_reserved</B> field as shown in <XREF href="tblA-4"><A 
+  href="http://www.opengroup.org/onlinepubs/9629399/apdxa.htm#tagtcjh_37">The 2 
+  msb of clock_seq_hi_and_reserved </A></XREF>. <PRE><BASEFONT size=2>
+</PRE>
+  <P>
+  <CENTER>
+  <P>
+  <TABLE borderColor=#000000 cellPadding=3 align=center border=1>
+    <TBODY>
+    <TR vAlign=top>
+      <TH align=middle><B>Bit 7</B> 
+      <TH align=middle><B>Bit 6</B> 
+    <TR vAlign=top>
+      <TH align=middle>1 
+      <TH align=middle>0 </TR></TBODY></TABLE></CENTER><PRE><BASEFONT>
+</PRE><B>
+  <CENTER><XREF table="The 2 msb of clock_seq_hi_and_reserved"><A 
+  name=tagtcjh_37></A></XREF>Table: The 2 msb of 
+  clock_seq_hi_and_reserved</CENTER></B><XREF name="tblA-4" type="7"></XREF>
+  <P></P>
+  <LI>Set the <B>node</B> field to the 48-bit IEEE address in the same order of 
+  significance as the address. 
+  <P></P></LI></OL><INDEX term="UUIDs, algorithms for creating"></INDEX>
+<H3><A name=tagcjh_20_03></A>String Representation of UUIDs</H3><INDEX 
+term="UUIDs, string representation"></INDEX>
+<P>For use in human readable text, a UUID string representation is specified as 
+a sequence of fields, some of which are separated by single dashes. 
+<P>Each field is treated as an integer and has its value printed as a 
+zero-filled hexadecimal digit string with the most significant digit first. The 
+hexadecimal values a to f inclusive are output as lower case characters, and are 
+case insensitive on input. The sequence is the same as the UUID constructed 
+type. 
+<P>The formal definition of the UUID string representation is provided by the 
+following extended BNF: <CODE><PRE><TT>UUID                   = &lt;time_low&gt; &lt;hyphen&gt; &lt;time_mid&gt; &lt;hyphen&gt;
+                         &lt;time_high_and_version&gt; &lt;hyphen&gt; 
+                         &lt;clock_seq_and_reserved&gt;
+                         &lt;clock_seq_low&gt; &lt;hyphen&gt; &lt;node&gt;
+time_low               = &lt;hexOctet&gt; &lt;hexOctet&gt; &lt;hexOctet&gt; &lt;hexOctet&gt;
+time_mid               = &lt;hexOctet&gt; &lt;hexOctet&gt;
+time_high_and_version  = &lt;hexOctet&gt; &lt;hexOctet&gt;
+clock_seq_and_reserved = &lt;hexOctet&gt;
+clock_seq_low          = &lt;hexOctet&gt;
+node                   = &lt;hexOctet&gt;&lt;hexOctet&gt;&lt;hexOctet&gt;
+                         &lt;hexOctet&gt;&lt;hexOctet&gt;&lt;hexOctet&gt;
+hexOctet               = &lt;hexDigit&gt; &lt;hexDigit&gt;
+hexDigit               = &lt;digit&gt; | &lt;a&gt; | &lt;b&gt; | &lt;c&gt; | &lt;d&gt; | &lt;e&gt; | &lt;f&gt;
+digit                  = "0" | "1" | "2" | "3" | "4" | "5" | "6" | "7" |
+                         "8" | "9"
+hyphen                 = "-"
+a                      = "a" | "A"
+b                      = "b" | "B"
+c                      = "c" | "C"
+d                      = "d" | "D"
+e                      = "e" | "E"
+f                      = "f" | "F"
+</CODE>
+</PRE></TT>
+<P>The following is an example of the string representation of a UUID: <CODE><PRE><TT>2fac1234-31f8-11b4-a222-08002b34c003
+</CODE>
+</PRE></TT>
+<H3><A name=tagcjh_20_04></A>Comparing UUIDs</H3><INDEX 
+term="UUIDs, comparing"></INDEX>
+<P><XREF href="tblA-5"><A 
+href="http://www.opengroup.org/onlinepubs/9629399/apdxa.htm#tagtcjh_38">Field 
+Order and Type </A></XREF>lists the UUID fields in order of significance, from 
+most significant to least significant, for purposes of UUID comparison. The 
+table also shows the data types applicable to the fields. <PRE><BASEFONT size=2>
+</PRE>
+<P>
+<CENTER>
+<P>
+<TABLE borderColor=#000000 cellPadding=3 align=center border=1>
+  <TBODY>
+  <TR vAlign=top>
+    <TH align=middle><B>Field</B> 
+    <TH align=middle><B>Type</B> 
+  <TR vAlign=top>
+    <TH align=left><B>time_low</B> 
+    <TH align=left>Unsigned 32-bit integer 
+  <TR vAlign=top>
+    <TD align=left><B>time_mid</B> 
+    <TD align=left>Unsigned 16-bit integer 
+  <TR vAlign=top>
+    <TD align=left><B>time_hi_and_version</B> 
+    <TD align=left>Unsigned 16-bit integer 
+  <TR vAlign=top>
+    <TD align=left><B>clock_seq_hi_and_reserved</B> 
+    <TD align=left>Unsigned 8-bit integer 
+  <TR vAlign=top>
+    <TD align=left><B>clock_seq_low</B> 
+    <TD align=left>Unsigned 8-bit integer 
+  <TR vAlign=top>
+    <TD align=left><B>node</B> 
+    <TD align=left>Unsigned 48-bit integer </TR></TBODY></TABLE></CENTER><PRE><BASEFONT>
+</PRE><B>
+<CENTER><XREF table="Field Order and Type"><A name=tagtcjh_38></A></XREF>Table: 
+Field Order and Type</CENTER></B><XREF name="tblA-5" type="7"></XREF>
+<P>Consider each field to be an unsigned integer as shown in <XREF 
+href="tblA-5"><A 
+href="http://www.opengroup.org/onlinepubs/9629399/apdxa.htm#tagtcjh_38">Field 
+Order and Type </A></XREF>. To compare a pair of UUIDs, arithmetically compare 
+the corresponding fields from each UUID in order of significance and according 
+to their data type. Two UUIDs are equal if and only if all the corresponding 
+fields are equal. The first of two UUIDs follows the second if the most 
+significant field in which the UUIDs differ is greater for the first UUID. The 
+first of a pair of UUIDs precedes the second if the most significant field in 
+which the UUIDs differ is greater for the second UUID. <INDEX 
+term="UUIDs"></INDEX>
+<P>
+<HR>
+
+<P>
+<H4><A name=tagcjh_20_04_01></A>Footnotes</H4>
+<P>
+<DL compact>
+  <P>
+  <DT><A name=tag_foot_1>1.</A>
+  <DD>To be precise, the UUID consists of a finite bit space. Thus the time 
+  value used for constructing a UUID is limited and will roll over in the future 
+  (approximately at A.D. 3400, based on the specified algorithm). </DD></DL>
+<P>
+<HR>
+<BASEFONT size=2>
+<BLOCKQUOTE>Please note that the html version of this specification may 
+  contain formatting aberrations. The definitive version is available as an 
+  <I>electronic publication</I> on CD-ROM from The Open Group. </BLOCKQUOTE><FONT 
+size=3>
+<P>
+<CENTER>
+<TABLE cellSpacing=12 border=0>
+  <TBODY>
+  <TR>
+    <TD align=left><A 
+      href="http://www.opengroup.org/onlinepubs/9629399/toc.htm">Contents</A> 
+    <TD align=middle><A 
+      href="http://www.opengroup.org/onlinepubs/9629399/apdxb.htm">Next&nbsp;section</A> 
+
+    <TD align=right><A 
+      href="http://www.opengroup.org/onlinepubs/9629399/docix.htm">Index</A></TD></TR></TBODY></TABLE></CENTER></FONT></BASEFONT></BODY></HTML>

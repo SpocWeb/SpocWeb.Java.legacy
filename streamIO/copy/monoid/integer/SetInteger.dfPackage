@@ -1,0 +1,42 @@
+package id2qttfbzwabzizbzwjeehe;
+
+/**
+@version 2.0
+@physicalPackage
+@__modelType diagram 
+*/
+class diagram {
+/**
+@__ref <oiref:java#Class#Stream.Copy.Monoid.SetInteger.Permutation:oiref><oihard>
+@__modelType reference 
+*/
+class reference {
+}/**
+@__ref <oiref:java#Class#Stream.Copy.Monoid.SetInteger.ASetInteger:oiref><oihard>
+@__modelType reference 
+*/
+class reference17 {
+}/**
+@__ref <oiref:java#Class#Stream.Copy.Monoid.SetInteger.SetInteger:oiref><oihard>
+@__modelType reference 
+*/
+class reference18 {
+}/**
+@__ref <oiref:java#Class#Stream.Copy.Monoid.SetInteger.PermutationIterator:oiref><oihard>
+@__modelType reference 
+*/
+class reference1 {
+}}/**
+@__tags
+@shapeType ClassDiagram 
+*/
+class __tags {
+}/**
+@__options 
+*/
+class __options {
+}/**
+@__positions 
+*/
+class __positions {
+}

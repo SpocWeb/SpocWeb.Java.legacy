@@ -1,0 +1,4396 @@
+
+(object Petal
+    version    	42
+    _written   	"Rose 4.5.8054.1"
+    charSet    	0)
+
+(object Class_Category "ByRef"
+    is_unit    	TRUE
+    is_loaded  	TRUE
+    quid       	"36BB4AA503E4"
+    visible_categories 	(list visibility_relationship_list
+	(object Visibility_Relationship
+	    quid       	"36BB50A50021"
+	    supplier   	"Logical View::Order"
+	    quidu      	"36BB46B601F1")
+	(object Visibility_Relationship
+	    quid       	"37BFD9450369"
+	    supplier   	"Logical View::BaseCopy"
+	    quidu      	"36BB22B90122"))
+    exportControl 	"Public"
+    logical_models 	(list unit_reference_list
+	(object Class "ByRefLong"
+	    attributes 	(list Attribute_Set
+		(object Attribute
+		    tool       	"Java"
+		    name       	"GenerateFinalizer"
+		    value      	FALSE)
+		(object Attribute
+		    tool       	"Java"
+		    name       	"GenerateStaticInitializer"
+		    value      	FALSE)
+		(object Attribute
+		    tool       	"Java"
+		    name       	"GenerateInstanceInitializer"
+		    value      	FALSE)
+		(object Attribute
+		    tool       	"Java"
+		    name       	"GenerateDefaultConstructor"
+		    value      	FALSE)
+		(object Attribute
+		    tool       	"Java"
+		    name       	"Final"
+		    value      	TRUE))
+	    quid       	"36BB4E3D0120"
+	    documentation 	"This class is solely for transporting an Integer back from a method call. "
+	    realized_interfaces 	(list realize_rel_list
+		(object Realize_Relationship
+		    attributes 	(list Attribute_Set)
+		    quid       	"37BD36340221"
+		    supplier   	"Logical View::BaseCopy::intCountable"
+		    quidu      	"37BC8EAE00EC")
+		(object Realize_Relationship
+		    attributes 	(list Attribute_Set)
+		    quid       	"37BD3635001A"
+		    supplier   	"Logical View::ByRef::intMeasurable"
+		    quidu      	"36BB4E3E02BC")
+		(object Realize_Relationship
+		    attributes 	(list Attribute_Set)
+		    quid       	"37BD36350205"
+		    supplier   	"Logical View::Order::intOrderable"
+		    quidu      	"36BB46B601FB"))
+	    operations 	(list Operations
+		(object Operation "ByRefLong"
+		    attributes 	(list Attribute_Set)
+		    quid       	"37BD36350206"
+		    documentation 	"Empty Constructor "
+		    concurrency 	"Sequential"
+		    opExportControl 	"Public"
+		    uid        	0)
+		(object Operation "ByRefLong"
+		    attributes 	(list Attribute_Set)
+		    quid       	"37BD3635020F"
+		    documentation 	
+|Initializing Constructor, just comfortable	 
+		    
+		    parameters 	(list Parameters
+			(object Parameter "Value_"
+			    type       	"long"))
+		    concurrency 	"Sequential"
+		    opExportControl 	"Public"
+		    uid        	0)
+		(object Operation "xp2"
+		    attributes 	(list Attribute_Set
+			(object Attribute
+			    tool       	"Java"
+			    name       	"Static"
+			    value      	TRUE)
+			(object Attribute
+			    tool       	"Java"
+			    name       	"Final"
+			    value      	TRUE))
+		    quid       	"37BD36350219"
+		    documentation 	
+|Returns the integer binary exponential function: 2^n = 1 << n	 
+		    
+		    parameters 	(list Parameters
+			(object Parameter "n"
+			    type       	"byte"))
+		    result     	"long"
+		    concurrency 	"Sequential"
+		    opExportControl 	"Public"
+		    uid        	0)
+		(object Operation "lg2"
+		    attributes 	(list Attribute_Set
+			(object Attribute
+			    tool       	"Java"
+			    name       	"Static"
+			    value      	TRUE)
+			(object Attribute
+			    tool       	"Java"
+			    name       	"Final"
+			    value      	TRUE))
+		    quid       	"37BD36350223"
+		    documentation 	
+|Returns the integer binary logarithmic function: (int) log(2)n
+|	 * To receive the bounding binary Power, use xp2(lg2(n  )+1)
+|	 * If you expect binary Powers for n, use    xp2(lg2(n-1)+1)   
+		    
+		    parameters 	(list Parameters
+			(object Parameter "n"
+			    type       	"long"))
+		    result     	"short"
+		    concurrency 	"Sequential"
+		    opExportControl 	"Public"
+		    uid        	0)
+		(object Operation "byteValue"
+		    attributes 	(list Attribute_Set)
+		    quid       	"37BD3635022E"
+		    documentation 	
+| Returns the Object Value represented by an 8 Bit Integer	 
+		    
+		    result     	"byte"
+		    concurrency 	"Sequential"
+		    opExportControl 	"Public"
+		    uid        	0)
+		(object Operation "shortValue"
+		    attributes 	(list Attribute_Set)
+		    quid       	"37BD36350237"
+		    documentation 	
+|Returns the Object Value represented by a 16 Bit Integer	 
+		    
+		    result     	"short"
+		    concurrency 	"Sequential"
+		    opExportControl 	"Public"
+		    uid        	0)
+		(object Operation "intValue"
+		    attributes 	(list Attribute_Set)
+		    quid       	"37BD36350238"
+		    documentation 	
+|Returns the Object Value represented by a 32 Bit Integer	 
+		    
+		    result     	"int"
+		    concurrency 	"Sequential"
+		    opExportControl 	"Public"
+		    uid        	0)
+		(object Operation "longValue"
+		    attributes 	(list Attribute_Set)
+		    quid       	"37BD36350241"
+		    documentation 	
+|Returns the Object Value represented by a 64 Bit Integer	 
+		    
+		    result     	"long"
+		    concurrency 	"Sequential"
+		    opExportControl 	"Public"
+		    uid        	0)
+		(object Operation "doubleValue"
+		    attributes 	(list Attribute_Set)
+		    quid       	"37BD36350242"
+		    documentation 	
+|Returns the Object Value represented by a scalar Variable of Type double.
+|	 * It consists of an IEEE Number with 64 Bit (8 Byte):
+|	 * 52 Bit Mantissa, 11 Bit Exponent, 1 Bit Sign 
+		    
+		    result     	"double"
+		    concurrency 	"Sequential"
+		    opExportControl 	"Public"
+		    uid        	0)
+		(object Operation "floatValue"
+		    attributes 	(list Attribute_Set)
+		    quid       	"37BD3635024B"
+		    documentation 	
+|Returns the Object Value represented by a scalar Variable of Type float.
+|	 * It consists of an IEEE Number with 32 Bit (4 Byte): 
+|	 * 23 Bit Mantissa, 8 Bit Exponent, 1 Bit Sign	 
+		    
+		    result     	"float"
+		    concurrency 	"Sequential"
+		    opExportControl 	"Public"
+		    uid        	0)
+		(object Operation "toString"
+		    attributes 	(list Attribute_Set)
+		    quid       	"37BD3635024C"
+		    documentation 	
+|Returns a string representation of the object. In general, the 
+|     * <code>toString</code> method returns a string that 
+|     * "textually represents" this object. The result should 
+|     * be a concise but informative representation that is easy for a 
+|     * person to read.
+|     * It is recommendedthat all subclasses override this method.
+|     * <p>
+|     * The <code>toString</code> method for class <code>Object</code> 
+|     * returns a string consisting of the name of the class of which the 
+|     * object is an instance, the at-sign character `<code>@</code>', and 
+|     * the unsigned hexadecimal representation of the hash code of the 
+|     * object. 
+|     *
+|     * @return  a string representation of the object.
+|     * @since   JDK1.0
+|     
+		    
+		    result     	"String"
+		    concurrency 	"Sequential"
+		    opExportControl 	"Public"
+		    uid        	0)
+		(object Operation "Variation"
+		    attributes 	(list Attribute_Set
+			(object Attribute
+			    tool       	"Java"
+			    name       	"Static"
+			    value      	TRUE))
+		    quid       	"37BD3635024D"
+		    documentation 	
+|Calculates the Variation(n,k) = n!/(n-k)!
+|	 * This is the number of Samples with Size k from a Set of n Elements,
+|	 * with considering Sequence.
+|	 
+		    
+		    parameters 	(list Parameters
+			(object Parameter "n"
+			    type       	"long")
+			(object Parameter "k"
+			    type       	"long"))
+		    result     	"long"
+		    concurrency 	"Sequential"
+		    opExportControl 	"Public"
+		    uid        	0)
+		(object Operation "VariCombi"
+		    attributes 	(list Attribute_Set
+			(object Attribute
+			    tool       	"Java"
+			    name       	"Static"
+			    value      	TRUE))
+		    quid       	"37BD36350260"
+		    documentation 	
+|Recursive Calculation of the Combination kills the Stack.
+|	 * Iterative Solution, gives 0! = 0, 1! = 1 for the Faculty 
+|	 * and calculates the Variation and the Faculty of k.
+|	 * The Combination can be calculated by dividing the Variation 
+|	 * by the Faculty of k.
+|	 
+		    
+		    parameters 	(list Parameters
+			(object Parameter "n"
+			    type       	"long")
+			(object Parameter "k"
+			    type       	"long")
+			(object Parameter "fact"
+			    type       	"ByRefLong"))
+		    result     	"long"
+		    concurrency 	"Sequential"
+		    opExportControl 	"Public"
+		    uid        	0)
+		(object Operation "Combination"
+		    attributes 	(list Attribute_Set
+			(object Attribute
+			    tool       	"Java"
+			    name       	"Static"
+			    value      	TRUE))
+		    quid       	"37BD3635027D"
+		    documentation 	
+|Calculates the Combination(n,k) = n!/(k!*(n-k)!)
+|	 * This is the number of Samples with Size k from a Set of n Elements,
+|	 * without considering the Sequence.
+|	 * 
+|	 * This Calculation is optimized, because Comb(n, k) == Comb (n, n-k).
+|	 
+		    
+		    parameters 	(list Parameters
+			(object Parameter "n"
+			    type       	"long")
+			(object Parameter "k"
+			    type       	"long"))
+		    result     	"long"
+		    concurrency 	"Sequential"
+		    opExportControl 	"Public"
+		    uid        	0)
+		(object Operation "fact"
+		    attributes 	(list Attribute_Set
+			(object Attribute
+			    tool       	"Java"
+			    name       	"Static"
+			    value      	TRUE))
+		    quid       	"37BD36350291"
+		    documentation 	
+|Recursive Calculation of Faculty kills the Stack.
+|	 * Iterative Solution, gives 0! = 0, 1! = 1
+|	 
+		    
+		    parameters 	(list Parameters
+			(object Parameter "n"
+			    type       	"long"))
+		    result     	"long"
+		    concurrency 	"Sequential"
+		    opExportControl 	"Public"
+		    uid        	0)
+		(object Operation "dblFact"
+		    attributes 	(list Attribute_Set
+			(object Attribute
+			    tool       	"Java"
+			    name       	"Static"
+			    value      	TRUE))
+		    quid       	"37BD3635029B"
+		    documentation 	
+|Recursive Calculation of Double Faculty kills the Stack.
+|	 * Iterative Solution, gives 0!! = 0, 1!! = 1
+|	 
+		    
+		    parameters 	(list Parameters
+			(object Parameter "n"
+			    type       	"long"))
+		    result     	"long"
+		    concurrency 	"Sequential"
+		    opExportControl 	"Public"
+		    uid        	0)
+		(object Operation "less"
+		    attributes 	(list Attribute_Set)
+		    quid       	"37BD363502A5"
+		    documentation 	
+|less: '<' Returns True, when 'Self' < arg	 
+		    
+		    parameters 	(list Parameters
+			(object Parameter "arg"
+			    type       	"Object"))
+		    result     	"boolean"
+		    concurrency 	"Sequential"
+		    opExportControl 	"Public"
+		    uid        	0)
+		(object Operation "hashCode"
+		    attributes 	(list Attribute_Set)
+		    quid       	"37BD363502AF"
+		    documentation 	"Returns a hashcode for this Byte.     "
+		    result     	"int"
+		    concurrency 	"Sequential"
+		    opExportControl 	"Public"
+		    uid        	0)
+		(object Operation "equals"
+		    attributes 	(list Attribute_Set)
+		    quid       	"37BD363502B0"
+		    documentation 	
+|Compares this object to the specified object.
+|     *
+|     * @param obj	the object to compare with
+|     * @return 		true if the objects are equivalent; false otherwise.
+|     * @since   JDK1.1
+|     
+		    
+		    parameters 	(list Parameters
+			(object Parameter "obj"
+			    type       	"Object"))
+		    result     	"boolean"
+		    concurrency 	"Sequential"
+		    opExportControl 	"Public"
+		    uid        	0))
+	    class_attributes 	(list class_attribute_list
+		(object ClassAttribute "Value"
+		    attributes 	(list Attribute_Set)
+		    quid       	"36BB4FB30087"
+		    documentation 	
+|This is the Value of the Object	 
+		    
+		    type       	"long"
+		    exportControl 	"Public"))
+	    module     	"Component View::ByRef::ByRefLong"
+	    quidu      	"36BB4E3D0116"
+	    language   	"Java")
+	(object Class "ByRefDouble"
+	    attributes 	(list Attribute_Set
+		(object Attribute
+		    tool       	"Java"
+		    name       	"GenerateFinalizer"
+		    value      	FALSE)
+		(object Attribute
+		    tool       	"Java"
+		    name       	"GenerateStaticInitializer"
+		    value      	FALSE)
+		(object Attribute
+		    tool       	"Java"
+		    name       	"GenerateInstanceInitializer"
+		    value      	FALSE)
+		(object Attribute
+		    tool       	"Java"
+		    name       	"GenerateDefaultConstructor"
+		    value      	FALSE)
+		(object Attribute
+		    tool       	"Java"
+		    name       	"Final"
+		    value      	TRUE))
+	    quid       	"36BB4E3D0274"
+	    documentation 	"This class is solely for transporting a double back from a method call. "
+	    realized_interfaces 	(list realize_rel_list
+		(object Realize_Relationship
+		    attributes 	(list Attribute_Set)
+		    quid       	"37BD362E0010"
+		    supplier   	"Logical View::BaseCopy::intCountable"
+		    quidu      	"37BC8EAE00EC")
+		(object Realize_Relationship
+		    attributes 	(list Attribute_Set)
+		    quid       	"37BD362E020E"
+		    supplier   	"Logical View::ByRef::intMeasurable"
+		    quidu      	"36BB4E3E02BC")
+		(object Realize_Relationship
+		    attributes 	(list Attribute_Set)
+		    quid       	"37BD362F0025"
+		    supplier   	"Logical View::Order::intOrderable"
+		    quidu      	"36BB46B601FB"))
+	    operations 	(list Operations
+		(object Operation "ByRefDouble"
+		    attributes 	(list Attribute_Set)
+		    quid       	"37BD362F0026"
+		    documentation 	"Empty Constructor "
+		    concurrency 	"Sequential"
+		    opExportControl 	"Public"
+		    uid        	0)
+		(object Operation "ByRefDouble"
+		    attributes 	(list Attribute_Set)
+		    quid       	"37BD362F002F"
+		    documentation 	
+|Initializing Constructor, just comfortable	 
+		    
+		    parameters 	(list Parameters
+			(object Parameter "Value_"
+			    type       	"double"))
+		    concurrency 	"Sequential"
+		    opExportControl 	"Public"
+		    uid        	0)
+		(object Operation "byteValue"
+		    attributes 	(list Attribute_Set)
+		    quid       	"37BD362F0039"
+		    documentation 	
+| Returns the Object Value represented by an 8 Bit Integer	 
+		    
+		    result     	"byte"
+		    concurrency 	"Sequential"
+		    opExportControl 	"Public"
+		    uid        	0)
+		(object Operation "shortValue"
+		    attributes 	(list Attribute_Set)
+		    quid       	"37BD362F003A"
+		    documentation 	
+|Returns the Object Value represented by a 16 Bit Integer	 
+		    
+		    result     	"short"
+		    concurrency 	"Sequential"
+		    opExportControl 	"Public"
+		    uid        	0)
+		(object Operation "intValue"
+		    attributes 	(list Attribute_Set)
+		    quid       	"37BD362F0043"
+		    documentation 	
+|Returns the Object Value represented by a 32 Bit Integer	 
+		    
+		    result     	"int"
+		    concurrency 	"Sequential"
+		    opExportControl 	"Public"
+		    uid        	0)
+		(object Operation "longValue"
+		    attributes 	(list Attribute_Set)
+		    quid       	"37BD362F0044"
+		    documentation 	
+|Returns the Object Value represented by a 64 Bit Integer	 
+		    
+		    result     	"long"
+		    concurrency 	"Sequential"
+		    opExportControl 	"Public"
+		    uid        	0)
+		(object Operation "doubleValue"
+		    attributes 	(list Attribute_Set)
+		    quid       	"37BD362F004D"
+		    documentation 	
+|Returns the Object Value represented by a scalar Variable of Type double.
+|	 * It consists of an IEEE Number with 64 Bit (8 Byte):
+|	 * 52 Bit Mantissa, 11 Bit Exponent, 1 Bit Sign 
+		    
+		    result     	"double"
+		    concurrency 	"Sequential"
+		    opExportControl 	"Public"
+		    uid        	0)
+		(object Operation "floatValue"
+		    attributes 	(list Attribute_Set)
+		    quid       	"37BD362F004E"
+		    documentation 	
+|Returns the Object Value represented by a scalar Variable of Type float.
+|	 * It consists of an IEEE Number with 32 Bit (4 Byte): 
+|	 * 23 Bit Mantissa, 8 Bit Exponent, 1 Bit Sign	 
+		    
+		    result     	"float"
+		    concurrency 	"Sequential"
+		    opExportControl 	"Public"
+		    uid        	0)
+		(object Operation "toString"
+		    attributes 	(list Attribute_Set)
+		    quid       	"37BD362F0057"
+		    documentation 	
+|Returns a string representation of the object. In general, the 
+|     * <code>toString</code> method returns a string that 
+|     * "textually represents" this object. The result should 
+|     * be a concise but informative representation that is easy for a 
+|     * person to read.
+|     * It is recommendedthat all subclasses override this method.
+|     * <p>
+|     * The <code>toString</code> method for class <code>Object</code> 
+|     * returns a string consisting of the name of the class of which the 
+|     * object is an instance, the at-sign character `<code>@</code>', and 
+|     * the unsigned hexadecimal representation of the hash code of the 
+|     * object. 
+|     *
+|     * @return  a string representation of the object.
+|     * @since   JDK1.0
+|     
+		    
+		    result     	"String"
+		    concurrency 	"Sequential"
+		    opExportControl 	"Public"
+		    uid        	0)
+		(object Operation "less"
+		    attributes 	(list Attribute_Set)
+		    quid       	"37BD362F0058"
+		    documentation 	
+|less: '<' Returns True, when 'Self' < arg	 
+		    
+		    parameters 	(list Parameters
+			(object Parameter "arg"
+			    type       	"Object"))
+		    result     	"boolean"
+		    concurrency 	"Sequential"
+		    opExportControl 	"Public"
+		    uid        	0)
+		(object Operation "hashCode"
+		    attributes 	(list Attribute_Set)
+		    quid       	"37BD362F0062"
+		    documentation 	"Returns a hashcode for this Byte.     "
+		    result     	"int"
+		    concurrency 	"Sequential"
+		    opExportControl 	"Public"
+		    uid        	0)
+		(object Operation "equals"
+		    attributes 	(list Attribute_Set)
+		    quid       	"37BD362F006B"
+		    documentation 	
+|Compares this object to the specified object.
+|     *
+|     * @param obj	the object to compare with
+|     * @return 		true if the objects are equivalent; false otherwise.
+|     * @since   JDK1.1
+|     
+		    
+		    parameters 	(list Parameters
+			(object Parameter "obj"
+			    type       	"Object"))
+		    result     	"boolean"
+		    concurrency 	"Sequential"
+		    opExportControl 	"Public"
+		    uid        	0))
+	    class_attributes 	(list class_attribute_list
+		(object ClassAttribute "Value"
+		    attributes 	(list Attribute_Set)
+		    quid       	"36BB4FB301FB"
+		    documentation 	
+|This is the Value of the Object	 
+		    
+		    type       	"double"
+		    exportControl 	"Public"))
+	    module     	"Component View::ByRef::ByRefDouble"
+	    quidu      	"36BB4E3D026A"
+	    language   	"Java")
+	(object Class "measurable"
+	    attributes 	(list Attribute_Set
+		(object Attribute
+		    tool       	"Java"
+		    name       	"GenerateFinalizer"
+		    value      	FALSE)
+		(object Attribute
+		    tool       	"Java"
+		    name       	"GenerateStaticInitializer"
+		    value      	FALSE)
+		(object Attribute
+		    tool       	"Java"
+		    name       	"GenerateInstanceInitializer"
+		    value      	FALSE)
+		(object Attribute
+		    tool       	"Java"
+		    name       	"GenerateDefaultConstructor"
+		    value      	FALSE)
+		(object Attribute
+		    tool       	"Java"
+		    name       	"Final"
+		    value      	TRUE))
+	    quid       	"36BB4E3D030A"
+	    documentation 	
+|Interface for Number Classes:
+| * All measurable Classes can be converted to these Float Types,
+| * and also (with Rounding Errors) to the Integer Types in 'countable'.
+| * 
+| * The extended Type (from Delphi) is not supported. 
+| * It allows saving intermediate Result with full accuracy.
+| * It consists of an IEEE Number with 64 Bit (10 Byte):
+| * 64 Bit Mantissa, 15 Bit Exponent, 1 Bit Sign 
+	    
+	    operations 	(list Operations
+		(object Operation "equals"
+		    attributes 	(list Attribute_Set
+			(object Attribute
+			    tool       	"Java"
+			    name       	"Static"
+			    value      	TRUE))
+		    quid       	"37BD363A0356"
+		    documentation 	"Compares this object to the specified byte Value.     "
+		    parameters 	(list Parameters
+			(object Parameter "arg"
+			    type       	"Object")
+			(object Parameter "Value"
+			    type       	"double"))
+		    result     	"boolean"
+		    concurrency 	"Sequential"
+		    opExportControl 	"Public"
+		    uid        	0)
+		(object Operation "floatValue"
+		    attributes 	(list Attribute_Set
+			(object Attribute
+			    tool       	"Java"
+			    name       	"Static"
+			    value      	TRUE))
+		    quid       	"37BD363A0361"
+		    documentation 	
+|This class does not extend Number, because not every Group maps to numeric Values.
+|	 * Instead it presents the conversion Routine to convert from Number Types.	 
+		    
+		    parameters 	(list Parameters
+			(object Parameter "arg"
+			    type       	"Object"))
+		    result     	"float"
+		    concurrency 	"Sequential"
+		    opExportControl 	"Public"
+		    uid        	0)
+		(object Operation "floatValues"
+		    attributes 	(list Attribute_Set
+			(object Attribute
+			    tool       	"Java"
+			    name       	"Static"
+			    value      	TRUE))
+		    quid       	"37BD363A036B"
+		    documentation 	
+|This class does not extend Number, because not every Group maps to numeric Values.
+|	 * Instead it presents the conversion Routine to convert from Number Types.	 
+		    
+		    parameters 	(list Parameters
+			(object Parameter "arg"
+			    type       	"Object[]"))
+		    result     	"float[]"
+		    concurrency 	"Sequential"
+		    opExportControl 	"Public"
+		    uid        	0)
+		(object Operation "floatValues"
+		    attributes 	(list Attribute_Set
+			(object Attribute
+			    tool       	"Java"
+			    name       	"Static"
+			    value      	TRUE))
+		    quid       	"37BD363A0374"
+		    documentation 	
+|This class does not extend Number, because not every Group maps to numeric Values.
+|	 * Instead it presents the conversion Routine to convert from Number Types.	 
+		    
+		    parameters 	(list Parameters
+			(object Parameter "arg"
+			    type       	"intMeasurable[]"))
+		    result     	"float[]"
+		    concurrency 	"Sequential"
+		    opExportControl 	"Public"
+		    uid        	0)
+		(object Operation "doubleValue"
+		    attributes 	(list Attribute_Set
+			(object Attribute
+			    tool       	"Java"
+			    name       	"Static"
+			    value      	TRUE))
+		    quid       	"37BD363A037E"
+		    documentation 	
+|This class does not extend Number, because not every Group maps to numeric Values.
+|	 * Instead it presents the conversion Routine to convert from Number Types.	 
+		    
+		    parameters 	(list Parameters
+			(object Parameter "arg"
+			    type       	"Object"))
+		    result     	"double"
+		    concurrency 	"Sequential"
+		    opExportControl 	"Public"
+		    uid        	0)
+		(object Operation "doubleValues"
+		    attributes 	(list Attribute_Set
+			(object Attribute
+			    tool       	"Java"
+			    name       	"Static"
+			    value      	TRUE))
+		    quid       	"37BD363A0380"
+		    documentation 	
+|This class does not extend Number, because not every Group maps to numeric Values.
+|	 * Instead it presents the conversion Routine to convert from Number Types.	 
+		    
+		    parameters 	(list Parameters
+			(object Parameter "arg"
+			    type       	"Object[]"))
+		    result     	"double[]"
+		    concurrency 	"Sequential"
+		    opExportControl 	"Public"
+		    uid        	0)
+		(object Operation "doubleValues"
+		    attributes 	(list Attribute_Set
+			(object Attribute
+			    tool       	"Java"
+			    name       	"Static"
+			    value      	TRUE))
+		    quid       	"37BD363A0389"
+		    documentation 	
+|This class does not extend Number, because not every Group maps to numeric Values.
+|	 * Instead it presents the conversion Routine to convert from Number Types.	 
+		    
+		    parameters 	(list Parameters
+			(object Parameter "arg"
+			    type       	"intMeasurable[]"))
+		    result     	"double[]"
+		    concurrency 	"Sequential"
+		    opExportControl 	"Public"
+		    uid        	0))
+	    module     	"Component View::ByRef::measurable"
+	    quidu      	"36BB4E3D0300"
+	    language   	"Java")
+	(object Class "ByRefChar"
+	    attributes 	(list Attribute_Set
+		(object Attribute
+		    tool       	"Java"
+		    name       	"GenerateFinalizer"
+		    value      	FALSE)
+		(object Attribute
+		    tool       	"Java"
+		    name       	"GenerateStaticInitializer"
+		    value      	FALSE)
+		(object Attribute
+		    tool       	"Java"
+		    name       	"GenerateInstanceInitializer"
+		    value      	FALSE)
+		(object Attribute
+		    tool       	"Java"
+		    name       	"GenerateDefaultConstructor"
+		    value      	FALSE)
+		(object Attribute
+		    tool       	"Java"
+		    name       	"Final"
+		    value      	TRUE))
+	    quid       	"36BB4E3E0013"
+	    documentation 	"This class is solely for transporting an Integer back from a method call. "
+	    realized_interfaces 	(list realize_rel_list
+		(object Realize_Relationship
+		    attributes 	(list Attribute_Set)
+		    quid       	"37BD362B0305"
+		    supplier   	"Logical View::BaseCopy::intCountable"
+		    quidu      	"37BC8EAE00EC")
+		(object Realize_Relationship
+		    attributes 	(list Attribute_Set)
+		    quid       	"37BD362C0111"
+		    supplier   	"Logical View::ByRef::intMeasurable"
+		    quidu      	"36BB4E3E02BC")
+		(object Realize_Relationship
+		    attributes 	(list Attribute_Set)
+		    quid       	"37BD362C02FC"
+		    supplier   	"Logical View::Order::intOrderable"
+		    quidu      	"36BB46B601FB"))
+	    operations 	(list Operations
+		(object Operation "ByRefChar"
+		    attributes 	(list Attribute_Set)
+		    quid       	"37BD362C0306"
+		    documentation 	"Empty Constructor "
+		    concurrency 	"Sequential"
+		    opExportControl 	"Public"
+		    uid        	0)
+		(object Operation "ByRefChar"
+		    attributes 	(list Attribute_Set)
+		    quid       	"37BD362C0307"
+		    documentation 	
+|Initializing Constructor, just comfortable	 
+		    
+		    parameters 	(list Parameters
+			(object Parameter "Value_"
+			    type       	"char"))
+		    concurrency 	"Sequential"
+		    opExportControl 	"Public"
+		    uid        	0)
+		(object Operation "byteValue"
+		    attributes 	(list Attribute_Set)
+		    quid       	"37BD362C0311"
+		    documentation 	
+| Returns the Object Value represented by an 8 Bit Integer	 
+		    
+		    result     	"byte"
+		    concurrency 	"Sequential"
+		    opExportControl 	"Public"
+		    uid        	0)
+		(object Operation "shortValue"
+		    attributes 	(list Attribute_Set)
+		    quid       	"37BD362C031A"
+		    documentation 	
+|Returns the Object Value represented by a 16 Bit Integer	 
+		    
+		    result     	"short"
+		    concurrency 	"Sequential"
+		    opExportControl 	"Public"
+		    uid        	0)
+		(object Operation "intValue"
+		    attributes 	(list Attribute_Set)
+		    quid       	"37BD362C031B"
+		    documentation 	
+|Returns the Object Value represented by a 32 Bit Integer	 
+		    
+		    result     	"int"
+		    concurrency 	"Sequential"
+		    opExportControl 	"Public"
+		    uid        	0)
+		(object Operation "longValue"
+		    attributes 	(list Attribute_Set)
+		    quid       	"37BD362C0324"
+		    documentation 	
+|Returns the Object Value represented by a 64 Bit Integer	 
+		    
+		    result     	"long"
+		    concurrency 	"Sequential"
+		    opExportControl 	"Public"
+		    uid        	0)
+		(object Operation "doubleValue"
+		    attributes 	(list Attribute_Set)
+		    quid       	"37BD362C0325"
+		    documentation 	
+|Returns the Object Value represented by a scalar Variable of Type double.
+|	 * It consists of an IEEE Number with 64 Bit (8 Byte):
+|	 * 52 Bit Mantissa, 11 Bit Exponent, 1 Bit Sign 
+		    
+		    result     	"double"
+		    concurrency 	"Sequential"
+		    opExportControl 	"Public"
+		    uid        	0)
+		(object Operation "floatValue"
+		    attributes 	(list Attribute_Set)
+		    quid       	"37BD362C032E"
+		    documentation 	
+|Returns the Object Value represented by a scalar Variable of Type float.
+|	 * It consists of an IEEE Number with 32 Bit (4 Byte): 
+|	 * 23 Bit Mantissa, 8 Bit Exponent, 1 Bit Sign	 
+		    
+		    result     	"float"
+		    concurrency 	"Sequential"
+		    opExportControl 	"Public"
+		    uid        	0)
+		(object Operation "toString"
+		    attributes 	(list Attribute_Set)
+		    quid       	"37BD362C032F"
+		    documentation 	
+|Returns a string representation of the object. In general, the 
+|     * <code>toString</code> method returns a string that 
+|     * "textually represents" this object. The result should 
+|     * be a concise but informative representation that is easy for a 
+|     * person to read.
+|     * It is recommendedthat all subclasses override this method.
+|     * <p>
+|     * The <code>toString</code> method for class <code>Object</code> 
+|     * returns a string consisting of the name of the class of which the 
+|     * object is an instance, the at-sign character `<code>@</code>', and 
+|     * the unsigned hexadecimal representation of the hash code of the 
+|     * object. 
+|     *
+|     * @return  a string representation of the object.
+|     * @since   JDK1.0
+|     
+		    
+		    result     	"String"
+		    concurrency 	"Sequential"
+		    opExportControl 	"Public"
+		    uid        	0)
+		(object Operation "less"
+		    attributes 	(list Attribute_Set)
+		    quid       	"37BD362C0338"
+		    documentation 	
+|less: '<' Returns True, when 'Self' < arg	 
+		    
+		    parameters 	(list Parameters
+			(object Parameter "arg"
+			    type       	"Object"))
+		    result     	"boolean"
+		    concurrency 	"Sequential"
+		    opExportControl 	"Public"
+		    uid        	0)
+		(object Operation "hashCode"
+		    attributes 	(list Attribute_Set)
+		    quid       	"37BD362C0342"
+		    documentation 	"Returns a hashcode for this Byte.     "
+		    result     	"int"
+		    concurrency 	"Sequential"
+		    opExportControl 	"Public"
+		    uid        	0)
+		(object Operation "equals"
+		    attributes 	(list Attribute_Set)
+		    quid       	"37BD362C0343"
+		    documentation 	
+|Compares this object to the specified object.
+|     *
+|     * @param obj	the object to compare with
+|     * @return 		true if the objects are equivalent; false otherwise.
+|     * @since   JDK1.1
+|     
+		    
+		    parameters 	(list Parameters
+			(object Parameter "obj"
+			    type       	"Object"))
+		    result     	"boolean"
+		    concurrency 	"Sequential"
+		    opExportControl 	"Public"
+		    uid        	0))
+	    class_attributes 	(list class_attribute_list
+		(object ClassAttribute "Value"
+		    attributes 	(list Attribute_Set)
+		    quid       	"36BB4FB303E6"
+		    documentation 	
+|This is the Value of the Object	 
+		    
+		    type       	"char"
+		    exportControl 	"Public"))
+	    module     	"Component View::ByRef::ByRefChar"
+	    quidu      	"36BB4E3E0009"
+	    language   	"Java")
+	(object Class "TDouble"
+	    attributes 	(list Attribute_Set
+		(object Attribute
+		    tool       	"Java"
+		    name       	"GenerateFinalizer"
+		    value      	FALSE)
+		(object Attribute
+		    tool       	"Java"
+		    name       	"GenerateStaticInitializer"
+		    value      	FALSE)
+		(object Attribute
+		    tool       	"Java"
+		    name       	"GenerateInstanceInitializer"
+		    value      	FALSE)
+		(object Attribute
+		    tool       	"Java"
+		    name       	"GenerateDefaultConstructor"
+		    value      	FALSE)
+		(object Attribute
+		    tool       	"Java"
+		    name       	"Final"
+		    value      	TRUE))
+	    quid       	"36BB4E3E00BD"
+	    documentation 	
+|Contains only Constants in Double Precision:
+| * Double   2.2*10^- 308...1.8*10^ 308 (.5*2^-1023...2^1023)  8-Byte  15-16
+| 
+	    
+	    class_attributes 	(list class_attribute_list
+		(object ClassAttribute "ZERO"
+		    attributes 	(list Attribute_Set
+			(object Attribute
+			    tool       	"Java"
+			    name       	"Final"
+			    value      	TRUE))
+		    quid       	"36BB4E3E00DB"
+		    documentation 	
+|0	 
+		    
+		    type       	"double"
+		    initv      	"0"
+		    exportControl 	"Public"
+		    static     	TRUE)
+		(object ClassAttribute "ONE"
+		    attributes 	(list Attribute_Set
+			(object Attribute
+			    tool       	"Java"
+			    name       	"Final"
+			    value      	TRUE))
+		    quid       	"36BB4E3E00DC"
+		    type       	"double"
+		    initv      	"1"
+		    exportControl 	"Public"
+		    static     	TRUE)
+		(object ClassAttribute "TWO"
+		    attributes 	(list Attribute_Set
+			(object Attribute
+			    tool       	"Java"
+			    name       	"Final"
+			    value      	TRUE))
+		    quid       	"36BB4E3E00E5"
+		    type       	"double"
+		    initv      	"2"
+		    exportControl 	"Public"
+		    static     	TRUE)
+		(object ClassAttribute "THREE"
+		    attributes 	(list Attribute_Set
+			(object Attribute
+			    tool       	"Java"
+			    name       	"Final"
+			    value      	TRUE))
+		    quid       	"36BB4E3E00E6"
+		    type       	"double"
+		    initv      	"3"
+		    exportControl 	"Public"
+		    static     	TRUE)
+		(object ClassAttribute "FOUR"
+		    attributes 	(list Attribute_Set
+			(object Attribute
+			    tool       	"Java"
+			    name       	"Final"
+			    value      	TRUE))
+		    quid       	"36BB4E3E00EF"
+		    type       	"double"
+		    initv      	"4"
+		    exportControl 	"Public"
+		    static     	TRUE)
+		(object ClassAttribute "FIVE"
+		    attributes 	(list Attribute_Set
+			(object Attribute
+			    tool       	"Java"
+			    name       	"Final"
+			    value      	TRUE))
+		    quid       	"36BB4E3E00F0"
+		    type       	"double"
+		    initv      	"5"
+		    exportControl 	"Public"
+		    static     	TRUE)
+		(object ClassAttribute "HALF"
+		    attributes 	(list Attribute_Set
+			(object Attribute
+			    tool       	"Java"
+			    name       	"Final"
+			    value      	TRUE))
+		    quid       	"36BB4E3E00F1"
+		    type       	"double"
+		    initv      	"ONE / TWO"
+		    exportControl 	"Public"
+		    static     	TRUE)
+		(object ClassAttribute "THIRD"
+		    attributes 	(list Attribute_Set
+			(object Attribute
+			    tool       	"Java"
+			    name       	"Final"
+			    value      	TRUE))
+		    quid       	"36BB4E3E00F9"
+		    type       	"double"
+		    initv      	"ONE / THREE"
+		    exportControl 	"Public"
+		    static     	TRUE)
+		(object ClassAttribute "QUARTER"
+		    attributes 	(list Attribute_Set
+			(object Attribute
+			    tool       	"Java"
+			    name       	"Final"
+			    value      	TRUE))
+		    quid       	"36BB4E3E00FA"
+		    type       	"double"
+		    initv      	"ONE / FOUR"
+		    exportControl 	"Public"
+		    static     	TRUE)
+		(object ClassAttribute "PI"
+		    attributes 	(list Attribute_Set
+			(object Attribute
+			    tool       	"Java"
+			    name       	"Final"
+			    value      	TRUE))
+		    quid       	"36BB4E3E0136"
+		    documentation 	"Kreiszahl Pi = 3,1415926535897932384626433832795"
+		    type       	"double"
+		    initv      	"Math.PI"
+		    exportControl 	"Public"
+		    static     	TRUE)
+		(object ClassAttribute "E"
+		    attributes 	(list Attribute_Set
+			(object Attribute
+			    tool       	"Java"
+			    name       	"Final"
+			    value      	TRUE))
+		    quid       	"36BB4E3E013F"
+		    documentation 	
+|Eulersche Zahl e = 2,7182818284590452353602874713527	 
+		    
+		    type       	"double"
+		    initv      	"Math.E"
+		    exportControl 	"Public"
+		    static     	TRUE)
+		(object ClassAttribute "C"
+		    attributes 	(list Attribute_Set
+			(object Attribute
+			    tool       	"Java"
+			    name       	"Final"
+			    value      	TRUE))
+		    quid       	"36BB4E3E0140"
+		    documentation 	
+|Eulersche-Mascheroni-Konstante	 
+		    
+		    type       	"double"
+		    initv      	"0.57721566490152870"
+		    exportControl 	"Public"
+		    static     	TRUE)
+		(object ClassAttribute "HUNDRED"
+		    attributes 	(list Attribute_Set
+			(object Attribute
+			    tool       	"Java"
+			    name       	"Final"
+			    value      	TRUE))
+		    quid       	"37BC8EC200B9"
+		    type       	"double"
+		    initv      	"100"
+		    exportControl 	"Public"
+		    static     	TRUE)
+		(object ClassAttribute "THOUSAND"
+		    attributes 	(list Attribute_Set
+			(object Attribute
+			    tool       	"Java"
+			    name       	"Final"
+			    value      	TRUE))
+		    quid       	"37BC8EC20145"
+		    type       	"double"
+		    initv      	"1000"
+		    exportControl 	"Public"
+		    static     	TRUE)
+		(object ClassAttribute "PERCENT"
+		    attributes 	(list Attribute_Set
+			(object Attribute
+			    tool       	"Java"
+			    name       	"Final"
+			    value      	TRUE))
+		    quid       	"37BC8EC201DB"
+		    type       	"double"
+		    initv      	"ONE / HUNDRED"
+		    exportControl 	"Public"
+		    static     	TRUE)
+		(object ClassAttribute "PERMILLE"
+		    attributes 	(list Attribute_Set
+			(object Attribute
+			    tool       	"Java"
+			    name       	"Final"
+			    value      	TRUE))
+		    quid       	"37BC8EC3002E"
+		    type       	"double"
+		    initv      	"ONE / THOUSAND"
+		    exportControl 	"Public"
+		    static     	TRUE)
+		(object ClassAttribute "EINSK1"
+		    attributes 	(list Attribute_Set
+			(object Attribute
+			    tool       	"Java"
+			    name       	"Final"
+			    value      	TRUE))
+		    quid       	"37BC8EC300C4"
+		    type       	"double"
+		    initv      	"1.1"
+		    exportControl 	"Public"
+		    static     	TRUE)
+		(object ClassAttribute "NULLK9"
+		    attributes 	(list Attribute_Set
+			(object Attribute
+			    tool       	"Java"
+			    name       	"Final"
+			    value      	TRUE))
+		    quid       	"37BC8EC30165"
+		    type       	"double"
+		    initv      	"0.9"
+		    exportControl 	"Public"
+		    static     	TRUE)
+		(object ClassAttribute "NULLK1"
+		    attributes 	(list Attribute_Set
+			(object Attribute
+			    tool       	"Java"
+			    name       	"Final"
+			    value      	TRUE))
+		    quid       	"37BC8EC30205"
+		    type       	"double"
+		    initv      	"0.1"
+		    exportControl 	"Public"
+		    static     	TRUE)
+		(object ClassAttribute "INFIN"
+		    attributes 	(list Attribute_Set
+			(object Attribute
+			    tool       	"Java"
+			    name       	"Final"
+			    value      	TRUE))
+		    quid       	"37BC8EC302A5"
+		    type       	"double"
+		    initv      	"1.0 / 0.0"
+		    exportControl 	"Public"
+		    static     	TRUE)
+		(object ClassAttribute "LN2"
+		    attributes 	(list Attribute_Set
+			(object Attribute
+			    tool       	"Java"
+			    name       	"Final"
+			    value      	TRUE))
+		    quid       	"37BC8EC3034F"
+		    type       	"double"
+		    initv      	"Math.log(TWO)"
+		    exportControl 	"Public"
+		    static     	TRUE)
+		(object ClassAttribute "LBE"
+		    attributes 	(list Attribute_Set
+			(object Attribute
+			    tool       	"Java"
+			    name       	"Final"
+			    value      	TRUE))
+		    quid       	"37BC8EC4001C"
+		    type       	"double"
+		    initv      	"ONE / LN2"
+		    exportControl 	"Public"
+		    static     	TRUE)
+		(object ClassAttribute "LN10"
+		    attributes 	(list Attribute_Set
+			(object Attribute
+			    tool       	"Java"
+			    name       	"Final"
+			    value      	TRUE))
+		    quid       	"37BC8EC400C6"
+		    type       	"double"
+		    initv      	"Math.log(10)"
+		    exportControl 	"Public"
+		    static     	TRUE)
+		(object ClassAttribute "LB10"
+		    attributes 	(list Attribute_Set
+			(object Attribute
+			    tool       	"Java"
+			    name       	"Final"
+			    value      	TRUE))
+		    quid       	"37BC8EC4017A"
+		    type       	"double"
+		    initv      	"LN10 / LN2"
+		    exportControl 	"Public"
+		    static     	TRUE)
+		(object ClassAttribute "LG2"
+		    attributes 	(list Attribute_Set
+			(object Attribute
+			    tool       	"Java"
+			    name       	"Final"
+			    value      	TRUE))
+		    quid       	"37BC8EC4022E"
+		    documentation 	
+|Decadic Logarithm of two LG2	= 0,30102999566398119521373889472449	 
+		    
+		    type       	"double"
+		    initv      	"ONE / LB10"
+		    exportControl 	"Public"
+		    static     	TRUE)
+		(object ClassAttribute "FEIGEN"
+		    attributes 	(list Attribute_Set
+			(object Attribute
+			    tool       	"Java"
+			    name       	"Final"
+			    value      	TRUE))
+		    quid       	"37BC8EC402ED"
+		    documentation 	
+|Feigenbaum-Delta :
+|	 * Grenzwert der Verhaeltnisse der Abstaende
+|	 * von quadratischen Bifurkationen*.	 
+		    
+		    type       	"double"
+		    initv      	"4.669201660910299097"
+		    exportControl 	"Public"
+		    static     	TRUE)
+		(object ClassAttribute "PIHALF"
+		    attributes 	(list Attribute_Set
+			(object Attribute
+			    tool       	"Java"
+			    name       	"Final"
+			    value      	TRUE))
+		    quid       	"37BC8EC403AB"
+		    type       	"double"
+		    initv      	"Math.PI * HALF"
+		    exportControl 	"Public"
+		    static     	TRUE)
+		(object ClassAttribute "PIQUARTER"
+		    attributes 	(list Attribute_Set
+			(object Attribute
+			    tool       	"Java"
+			    name       	"Final"
+			    value      	TRUE))
+		    quid       	"37BC8EC50081"
+		    type       	"double"
+		    initv      	"Math.PI * QUARTER"
+		    exportControl 	"Public"
+		    static     	TRUE)
+		(object ClassAttribute "TWOPI"
+		    attributes 	(list Attribute_Set
+			(object Attribute
+			    tool       	"Java"
+			    name       	"Final"
+			    value      	TRUE))
+		    quid       	"37BC8EC50140"
+		    type       	"double"
+		    initv      	"Math.PI * TWO"
+		    exportControl 	"Public"
+		    static     	TRUE)
+		(object ClassAttribute "FULLGON"
+		    attributes 	(list Attribute_Set
+			(object Attribute
+			    tool       	"Java"
+			    name       	"Final"
+			    value      	TRUE))
+		    quid       	"37BC8EC50208"
+		    type       	"double"
+		    initv      	"400"
+		    exportControl 	"Public"
+		    static     	TRUE)
+		(object ClassAttribute "FULLDEG"
+		    attributes 	(list Attribute_Set
+			(object Attribute
+			    tool       	"Java"
+			    name       	"Final"
+			    value      	TRUE))
+		    quid       	"37BC8EC502D0"
+		    type       	"double"
+		    initv      	"360"
+		    exportControl 	"Public"
+		    static     	TRUE)
+		(object ClassAttribute "GRAD"
+		    attributes 	(list Attribute_Set
+			(object Attribute
+			    tool       	"Java"
+			    name       	"Final"
+			    value      	TRUE))
+		    quid       	"37BC8EC503A2"
+		    type       	"double"
+		    initv      	"TWOPI / FULLDEG"
+		    exportControl 	"Public"
+		    static     	TRUE)
+		(object ClassAttribute "GON"
+		    attributes 	(list Attribute_Set
+			(object Attribute
+			    tool       	"Java"
+			    name       	"Final"
+			    value      	TRUE))
+		    quid       	"37BC8EC6008D"
+		    type       	"double"
+		    initv      	"TWOPI / FULLGON"
+		    exportControl 	"Public"
+		    static     	TRUE)
+		(object ClassAttribute "SQRT2"
+		    attributes 	(list Attribute_Set
+			(object Attribute
+			    tool       	"Java"
+			    name       	"Final"
+			    value      	TRUE))
+		    quid       	"37BC8EC6015F"
+		    type       	"double"
+		    initv      	"Math.sqrt(TWO)"
+		    exportControl 	"Public"
+		    static     	TRUE)
+		(object ClassAttribute "CBCRT2"
+		    attributes 	(list Attribute_Set
+			(object Attribute
+			    tool       	"Java"
+			    name       	"Final"
+			    value      	TRUE))
+		    quid       	"37BC8EC6023B"
+		    type       	"double"
+		    initv      	"1.259921049895"
+		    exportControl 	"Public"
+		    static     	TRUE)
+		(object ClassAttribute "SQRT3"
+		    attributes 	(list Attribute_Set
+			(object Attribute
+			    tool       	"Java"
+			    name       	"Final"
+			    value      	TRUE))
+		    quid       	"37BC8EC60318"
+		    type       	"double"
+		    initv      	"Math.sqrt(THREE)"
+		    exportControl 	"Public"
+		    static     	TRUE)
+		(object ClassAttribute "SQRTPI"
+		    attributes 	(list Attribute_Set
+			(object Attribute
+			    tool       	"Java"
+			    name       	"Final"
+			    value      	TRUE))
+		    quid       	"37BC8EC70016"
+		    type       	"double"
+		    initv      	"Math.sqrt(Math.PI)"
+		    exportControl 	"Public"
+		    static     	TRUE)
+		(object ClassAttribute "SQRT5"
+		    attributes 	(list Attribute_Set
+			(object Attribute
+			    tool       	"Java"
+			    name       	"Final"
+			    value      	TRUE))
+		    quid       	"37BC8EC700FC"
+		    type       	"double"
+		    initv      	"Math.sqrt(FIVE)"
+		    exportControl 	"Public"
+		    static     	TRUE)
+		(object ClassAttribute "GOLDEN"
+		    attributes 	(list Attribute_Set
+			(object Attribute
+			    tool       	"Java"
+			    name       	"Final"
+			    value      	TRUE))
+		    quid       	"37BC8EC701F7"
+		    type       	"double"
+		    initv      	"(SQRT5 - ONE) * HALF"
+		    exportControl 	"Public"
+		    static     	TRUE)
+		(object ClassAttribute "CGOLDEN"
+		    attributes 	(list Attribute_Set
+			(object Attribute
+			    tool       	"Java"
+			    name       	"Final"
+			    value      	TRUE))
+		    quid       	"37BC8EC702E7"
+		    type       	"double"
+		    initv      	"ONE - GOLDEN"
+		    exportControl 	"Public"
+		    static     	TRUE)
+		(object ClassAttribute "ONEGOLDEN"
+		    attributes 	(list Attribute_Set
+			(object Attribute
+			    tool       	"Java"
+			    name       	"Final"
+			    value      	TRUE))
+		    quid       	"37BC8EC703E1"
+		    type       	"double"
+		    initv      	"ONE + GOLDEN"
+		    exportControl 	"Public"
+		    static     	TRUE)
+		(object ClassAttribute "LNONEGOLDEN"
+		    attributes 	(list Attribute_Set
+			(object Attribute
+			    tool       	"Java"
+			    name       	"Final"
+			    value      	TRUE))
+		    quid       	"37BC8EC800F4"
+		    type       	"double"
+		    initv      	"Math.log(ONEGOLDEN)"
+		    exportControl 	"Public"
+		    static     	TRUE)
+		(object ClassAttribute "SQRCBCRT2"
+		    attributes 	(list Attribute_Set
+			(object Attribute
+			    tool       	"Java"
+			    name       	"Final"
+			    value      	TRUE))
+		    quid       	"37BC8EC801EE"
+		    type       	"double"
+		    initv      	"CBCRT2 * CBCRT2"
+		    exportControl 	"Public"
+		    static     	TRUE)
+		(object ClassAttribute "EPSILON"
+		    attributes 	(list Attribute_Set
+			(object Attribute
+			    tool       	"Java"
+			    name       	"Final"
+			    value      	TRUE))
+		    quid       	"37BC8EC802E8"
+		    type       	"double"
+		    initv      	"2e-16"
+		    exportControl 	"Public"
+		    static     	TRUE))
+	    module     	"Component View::ByRef::TDouble"
+	    quidu      	"36BB4E3E00B3"
+	    language   	"Java")
+	(object Class "countable"
+	    attributes 	(list Attribute_Set
+		(object Attribute
+		    tool       	"Java"
+		    name       	"GenerateFinalizer"
+		    value      	FALSE)
+		(object Attribute
+		    tool       	"Java"
+		    name       	"GenerateStaticInitializer"
+		    value      	FALSE)
+		(object Attribute
+		    tool       	"Java"
+		    name       	"GenerateInstanceInitializer"
+		    value      	FALSE)
+		(object Attribute
+		    tool       	"Java"
+		    name       	"GenerateDefaultConstructor"
+		    value      	FALSE)
+		(object Attribute
+		    tool       	"Java"
+		    name       	"Final"
+		    value      	TRUE))
+	    quid       	"36BB4E3E0230"
+	    documentation 	
+|Interface for integer Classes:
+| * All countable Classes can be converted to these Integer Types.
+| * usually implemented together with the Integer Interface. 
+	    
+	    operations 	(list Operations
+		(object Operation "equals"
+		    attributes 	(list Attribute_Set
+			(object Attribute
+			    tool       	"Java"
+			    name       	"Static"
+			    value      	TRUE))
+		    quid       	"37BD363902C9"
+		    documentation 	"Compares this object to the specified byte Value.     "
+		    parameters 	(list Parameters
+			(object Parameter "arg"
+			    type       	"Object")
+			(object Parameter "Value"
+			    type       	"long"))
+		    result     	"boolean"
+		    concurrency 	"Sequential"
+		    opExportControl 	"Public"
+		    uid        	0)
+		(object Operation "byteValue"
+		    attributes 	(list Attribute_Set
+			(object Attribute
+			    tool       	"Java"
+			    name       	"Static"
+			    value      	TRUE))
+		    quid       	"37BD363902D3"
+		    documentation 	
+|This class does not extend Number, because not every Group maps to numeric Values.
+|	 * Instead it presents the conversion Routine to convert from Number Types.
+|	 
+		    
+		    parameters 	(list Parameters
+			(object Parameter "arg"
+			    type       	"Object"))
+		    result     	"byte"
+		    concurrency 	"Sequential"
+		    opExportControl 	"Public"
+		    uid        	0)
+		(object Operation "shortValue"
+		    attributes 	(list Attribute_Set
+			(object Attribute
+			    tool       	"Java"
+			    name       	"Static"
+			    value      	TRUE))
+		    quid       	"37BD363902DD"
+		    documentation 	
+|This class does not extend Number, because not every Group maps to numeric Values.
+|	 * Instead it presents the conversion Routine to convert from Number Types.
+|	 
+		    
+		    parameters 	(list Parameters
+			(object Parameter "arg"
+			    type       	"Object"))
+		    result     	"short"
+		    concurrency 	"Sequential"
+		    opExportControl 	"Public"
+		    uid        	0)
+		(object Operation "intValue"
+		    attributes 	(list Attribute_Set
+			(object Attribute
+			    tool       	"Java"
+			    name       	"Static"
+			    value      	TRUE))
+		    quid       	"37BD363902E7"
+		    documentation 	
+|This class does not extend Number, because not every Group maps to numeric Values.
+|	 * Instead it presents the conversion Routine to convert from Number Types.
+|	 
+		    
+		    parameters 	(list Parameters
+			(object Parameter "arg"
+			    type       	"Object"))
+		    result     	"int"
+		    concurrency 	"Sequential"
+		    opExportControl 	"Public"
+		    uid        	0)
+		(object Operation "longValue"
+		    attributes 	(list Attribute_Set
+			(object Attribute
+			    tool       	"Java"
+			    name       	"Static"
+			    value      	TRUE))
+		    quid       	"37BD363902E9"
+		    documentation 	
+|This class does not extend Number, because not every Group maps to numeric Values.
+|	 * Instead it presents the conversion Routine to convert from Number Types.
+|	 
+		    
+		    parameters 	(list Parameters
+			(object Parameter "arg"
+			    type       	"Object"))
+		    result     	"long"
+		    concurrency 	"Sequential"
+		    opExportControl 	"Public"
+		    uid        	0)
+		(object Operation "intValues"
+		    attributes 	(list Attribute_Set
+			(object Attribute
+			    tool       	"Java"
+			    name       	"Static"
+			    value      	TRUE))
+		    quid       	"37BD363902F2"
+		    documentation 	
+|This class does not extend Number, because not every Group maps to numeric Values.
+|	 * Instead it presents the conversion Routine to convert from Number Types.
+|	 
+		    
+		    parameters 	(list Parameters
+			(object Parameter "arg"
+			    type       	"Object[]"))
+		    result     	"int[]"
+		    concurrency 	"Sequential"
+		    opExportControl 	"Public"
+		    uid        	0)
+		(object Operation "intValues"
+		    attributes 	(list Attribute_Set
+			(object Attribute
+			    tool       	"Java"
+			    name       	"Static"
+			    value      	TRUE))
+		    quid       	"37BD363902FC"
+		    documentation 	
+|This class does not extend Number, because not every Group maps to numeric Values.
+|	 * Instead it presents the conversion Routine to convert from Number Types.
+|	 
+		    
+		    parameters 	(list Parameters
+			(object Parameter "arg"
+			    type       	"intCountable[]"))
+		    result     	"int[]"
+		    concurrency 	"Sequential"
+		    opExportControl 	"Public"
+		    uid        	0))
+	    module     	"Component View::ByRef::countable"
+	    quidu      	"36BB4E3E0226"
+	    language   	"Java")
+	(object Class "intMeasurable"
+	    attributes 	(list Attribute_Set
+		(object Attribute
+		    tool       	"Java"
+		    name       	"GenerateFinalizer"
+		    value      	FALSE)
+		(object Attribute
+		    tool       	"Java"
+		    name       	"GenerateStaticInitializer"
+		    value      	FALSE)
+		(object Attribute
+		    tool       	"Java"
+		    name       	"GenerateInstanceInitializer"
+		    value      	FALSE)
+		(object Attribute
+		    tool       	"Java"
+		    name       	"GenerateDefaultConstructor"
+		    value      	FALSE))
+	    quid       	"36BB4E3E02BC"
+	    documentation 	
+|This class does not extend Number, because not every Group maps to numeric Values.
+| * Instead it presents the conversion Routine to convert from Number Types.
+| * This is unfortunately necessary, because Number does not implement an Interface.
+| 
+	    
+	    stereotype 	"Interface"
+	    operations 	(list Operations
+		(object Operation "doubleValue"
+		    attributes 	(list Attribute_Set
+			(object Attribute
+			    tool       	"Java"
+			    name       	"Abstract"
+			    value      	TRUE))
+		    quid       	"37BD363A014D"
+		    documentation 	
+|Returns the Object Value represented by a scalar Variable of Type double.
+|	 * It consists of an IEEE Number with 64 Bit (8 Byte):
+|	 * 52 Bit Mantissa, 11 Bit Exponent, 1 Bit Sign	 
+		    
+		    result     	"double"
+		    concurrency 	"Sequential"
+		    opExportControl 	"Public"
+		    uid        	0)
+		(object Operation "floatValue"
+		    attributes 	(list Attribute_Set
+			(object Attribute
+			    tool       	"Java"
+			    name       	"Abstract"
+			    value      	TRUE))
+		    quid       	"37BD363A014E"
+		    documentation 	
+|Returns the Object Value represented by a scalar Variable of Type float.
+|	 * It consists of an IEEE Number with 32 Bit (4 Byte): 
+|	 * 23 Bit Mantissa, 8 Bit Exponent, 1 Bit Sign	 
+		    
+		    result     	"float"
+		    concurrency 	"Sequential"
+		    opExportControl 	"Public"
+		    uid        	0))
+	    module     	"Component View::ByRef::intMeasurable"
+	    quidu      	"36BB4E3E02B2"
+	    language   	"Java")
+	(object Class "intCountable"
+	    attributes 	(list Attribute_Set
+		(object Attribute
+		    tool       	"Java"
+		    name       	"GenerateFinalizer"
+		    value      	FALSE)
+		(object Attribute
+		    tool       	"Java"
+		    name       	"GenerateStaticInitializer"
+		    value      	FALSE)
+		(object Attribute
+		    tool       	"Java"
+		    name       	"GenerateInstanceInitializer"
+		    value      	FALSE)
+		(object Attribute
+		    tool       	"Java"
+		    name       	"GenerateDefaultConstructor"
+		    value      	FALSE))
+	    quid       	"36BB4E3E0348"
+	    documentation 	
+|This class does not extend Number, because not every Group maps to numeric Values.
+| * Instead it presents the conversion Routine to convert from Number Types.
+| * This is unfortunately necessary, because Number does not implement an Interface.
+| 
+	    
+	    stereotype 	"Interface"
+	    operations 	(list Operations
+		(object Operation "byteValue"
+		    attributes 	(list Attribute_Set
+			(object Attribute
+			    tool       	"Java"
+			    name       	"Abstract"
+			    value      	TRUE))
+		    quid       	"36BB4FB40332"
+		    documentation 	
+| Returns the Object Value represented by an 8 Bit Integer
+|	 
+		    
+		    result     	"byte"
+		    concurrency 	"Sequential"
+		    opExportControl 	"Public"
+		    uid        	0)
+		(object Operation "shortValue"
+		    attributes 	(list Attribute_Set
+			(object Attribute
+			    tool       	"Java"
+			    name       	"Abstract"
+			    value      	TRUE))
+		    quid       	"36BB4FB4033C"
+		    documentation 	
+|Returns the Object Value represented by a 16 Bit Integer
+|	 
+		    
+		    result     	"short"
+		    concurrency 	"Sequential"
+		    opExportControl 	"Public"
+		    uid        	0)
+		(object Operation "intValue"
+		    attributes 	(list Attribute_Set
+			(object Attribute
+			    tool       	"Java"
+			    name       	"Abstract"
+			    value      	TRUE))
+		    quid       	"36BB4FB4033D"
+		    documentation 	
+|Returns the Object Value represented by a 32 Bit Integer
+|	 
+		    
+		    result     	"int"
+		    concurrency 	"Sequential"
+		    opExportControl 	"Public"
+		    uid        	0)
+		(object Operation "longValue"
+		    attributes 	(list Attribute_Set
+			(object Attribute
+			    tool       	"Java"
+			    name       	"Abstract"
+			    value      	TRUE))
+		    quid       	"36BB4FB40346"
+		    documentation 	
+|Returns the Object Value represented by a 64 Bit Integer
+|	 
+		    
+		    result     	"long"
+		    concurrency 	"Sequential"
+		    opExportControl 	"Public"
+		    uid        	0))
+	    module     	"Component View::ByRef::intCountable"
+	    quidu      	"36BB4E3E033E"
+	    language   	"Java")
+	(object Class "ByRefByte"
+	    attributes 	(list Attribute_Set
+		(object Attribute
+		    tool       	"Java"
+		    name       	"GenerateFinalizer"
+		    value      	FALSE)
+		(object Attribute
+		    tool       	"Java"
+		    name       	"GenerateStaticInitializer"
+		    value      	FALSE)
+		(object Attribute
+		    tool       	"Java"
+		    name       	"GenerateInstanceInitializer"
+		    value      	FALSE)
+		(object Attribute
+		    tool       	"Java"
+		    name       	"GenerateDefaultConstructor"
+		    value      	FALSE)
+		(object Attribute
+		    tool       	"Java"
+		    name       	"Final"
+		    value      	TRUE))
+	    quid       	"36BB4E3F00F1"
+	    documentation 	"This class is solely for transporting an Integer back from a method call. "
+	    realized_interfaces 	(list realize_rel_list
+		(object Realize_Relationship
+		    attributes 	(list Attribute_Set)
+		    quid       	"37BD3629015D"
+		    supplier   	"Logical View::BaseCopy::intCountable"
+		    quidu      	"37BC8EAE00EC")
+		(object Realize_Relationship
+		    attributes 	(list Attribute_Set)
+		    quid       	"37BD3629033E"
+		    supplier   	"Logical View::ByRef::intMeasurable"
+		    quidu      	"36BB4E3E02BC")
+		(object Realize_Relationship
+		    attributes 	(list Attribute_Set)
+		    quid       	"37BD362A0154"
+		    supplier   	"Logical View::Order::intOrderable"
+		    quidu      	"36BB46B601FB"))
+	    operations 	(list Operations
+		(object Operation "ByRefByte"
+		    attributes 	(list Attribute_Set)
+		    quid       	"37BD362A015E"
+		    documentation 	"Empty Constructor "
+		    concurrency 	"Sequential"
+		    opExportControl 	"Public"
+		    uid        	0)
+		(object Operation "ByRefByte"
+		    attributes 	(list Attribute_Set)
+		    quid       	"37BD362A0168"
+		    documentation 	
+|Initializing Constructor, just comfortable	 
+		    
+		    parameters 	(list Parameters
+			(object Parameter "Value_"
+			    type       	"byte"))
+		    concurrency 	"Sequential"
+		    opExportControl 	"Public"
+		    uid        	0)
+		(object Operation "ByRefByte"
+		    attributes 	(list Attribute_Set)
+		    quid       	"37BD362A017D"
+		    documentation 	
+|Constructs a Byte object initialized to the Value specified by the
+|     * String parameter.  The radix is assumed to be 10.
+|     *
+|     * @param s		the String to be converted to a Byte
+|     * @exception	NumberFormatException If the String does not
+|     *			contain a parsable byte.
+|     * @since   JDK1.1
+|     
+		    
+		    parameters 	(list Parameters
+			(object Parameter "s"
+			    type       	"String"))
+		    exceptions 	"NumberFormatException"
+		    concurrency 	"Sequential"
+		    opExportControl 	"Public"
+		    uid        	0)
+		(object Operation "byteValue"
+		    attributes 	(list Attribute_Set)
+		    quid       	"37BD362A0191"
+		    documentation 	
+| Returns the Object Value represented by an 8 Bit Integer	 
+		    
+		    result     	"byte"
+		    concurrency 	"Sequential"
+		    opExportControl 	"Public"
+		    uid        	0)
+		(object Operation "shortValue"
+		    attributes 	(list Attribute_Set)
+		    quid       	"37BD362A0192"
+		    documentation 	
+|Returns the Object Value represented by a 16 Bit Integer	 
+		    
+		    result     	"short"
+		    concurrency 	"Sequential"
+		    opExportControl 	"Public"
+		    uid        	0)
+		(object Operation "intValue"
+		    attributes 	(list Attribute_Set)
+		    quid       	"37BD362A019B"
+		    documentation 	
+|Returns the Object Value represented by a 32 Bit Integer	 
+		    
+		    result     	"int"
+		    concurrency 	"Sequential"
+		    opExportControl 	"Public"
+		    uid        	0)
+		(object Operation "longValue"
+		    attributes 	(list Attribute_Set)
+		    quid       	"37BD362A01A5"
+		    documentation 	
+|Returns the Object Value represented by a 64 Bit Integer	 
+		    
+		    result     	"long"
+		    concurrency 	"Sequential"
+		    opExportControl 	"Public"
+		    uid        	0)
+		(object Operation "doubleValue"
+		    attributes 	(list Attribute_Set)
+		    quid       	"37BD362A01AF"
+		    documentation 	
+|Returns the Object Value represented by a scalar Variable of Type double.
+|	 * It consists of an IEEE Number with 64 Bit (8 Byte):
+|	 * 52 Bit Mantissa, 11 Bit Exponent, 1 Bit Sign 
+		    
+		    result     	"double"
+		    concurrency 	"Sequential"
+		    opExportControl 	"Public"
+		    uid        	0)
+		(object Operation "floatValue"
+		    attributes 	(list Attribute_Set)
+		    quid       	"37BD362A01B0"
+		    documentation 	
+|Returns the Object Value represented by a scalar Variable of Type float.
+|	 * It consists of an IEEE Number with 32 Bit (4 Byte): 
+|	 * 23 Bit Mantissa, 8 Bit Exponent, 1 Bit Sign	 
+		    
+		    result     	"float"
+		    concurrency 	"Sequential"
+		    opExportControl 	"Public"
+		    uid        	0)
+		(object Operation "toString"
+		    attributes 	(list Attribute_Set)
+		    quid       	"37BD362A01B9"
+		    documentation 	
+|Returns a string representation of the object. In general, the 
+|     * <code>toString</code> method returns a string that 
+|     * "textually represents" this object. The result should 
+|     * be a concise but informative representation that is easy for a 
+|     * person to read.
+|     * It is recommendedthat all subclasses override this method.
+|     * <p>
+|     * The <code>toString</code> method for class <code>Object</code> 
+|     * returns a string consisting of the name of the class of which the 
+|     * object is an instance, the at-sign character `<code>@</code>', and 
+|     * the unsigned hexadecimal representation of the hash code of the 
+|     * object. 
+|     *
+|     * @return  a string representation of the object.
+|     * @since   JDK1.0
+|     
+		    
+		    result     	"String"
+		    concurrency 	"Sequential"
+		    opExportControl 	"Public"
+		    uid        	0)
+		(object Operation "less"
+		    attributes 	(list Attribute_Set)
+		    quid       	"37BD362A01C3"
+		    documentation 	
+|less: '<' Returns True, when 'Self' < arg	 
+		    
+		    parameters 	(list Parameters
+			(object Parameter "arg"
+			    type       	"Object"))
+		    result     	"boolean"
+		    concurrency 	"Sequential"
+		    opExportControl 	"Public"
+		    uid        	0)
+		(object Operation "toString"
+		    attributes 	(list Attribute_Set
+			(object Attribute
+			    tool       	"Java"
+			    name       	"Static"
+			    value      	TRUE))
+		    quid       	"37BD362A01D7"
+		    documentation 	
+|Returns a new String object representing the specified Byte. The radix
+|     * is assumed to be 10.
+|     *
+|     * @param b	the byte to be converted
+|     
+		    
+		    parameters 	(list Parameters
+			(object Parameter "b"
+			    type       	"byte"))
+		    result     	"String"
+		    concurrency 	"Sequential"
+		    opExportControl 	"Public"
+		    uid        	0)
+		(object Operation "parseByte"
+		    attributes 	(list Attribute_Set
+			(object Attribute
+			    tool       	"Java"
+			    name       	"Static"
+			    value      	TRUE))
+		    quid       	"37BD362A01EB"
+		    documentation 	
+|Assuming the specified String represents a byte, returns
+|     * that byte's Value. Throws an exception if the String cannot
+|     * be parsed as a byte.  The radix is assumed to be 10.
+|     *
+|     * @param s		the String containing the byte
+|     * @exception	NumberFormatException If the string does not
+|     *			contain a parsable byte.
+|     
+		    
+		    parameters 	(list Parameters
+			(object Parameter "s"
+			    type       	"String"))
+		    result     	"byte"
+		    exceptions 	"NumberFormatException"
+		    concurrency 	"Sequential"
+		    opExportControl 	"Public"
+		    uid        	0)
+		(object Operation "parseByte"
+		    attributes 	(list Attribute_Set
+			(object Attribute
+			    tool       	"Java"
+			    name       	"Static"
+			    value      	TRUE))
+		    quid       	"37BD362A01FF"
+		    documentation 	
+|Assuming the specified String represents a byte, returns
+|     * that byte's Value. Throws an exception if the String cannot
+|     * be parsed as a byte.
+|     *
+|     * @param s		the String containing the byte
+|     * @param radix	the radix to be used
+|     * @exception	NumberFormatException If the String does not
+|     *			contain a parsable byte.
+|     * @since   JDK1.1
+|     
+		    
+		    parameters 	(list Parameters
+			(object Parameter "s"
+			    type       	"String")
+			(object Parameter "radix"
+			    type       	"int"))
+		    result     	"byte"
+		    exceptions 	"NumberFormatException"
+		    concurrency 	"Sequential"
+		    opExportControl 	"Public"
+		    uid        	0)
+		(object Operation "valueOf"
+		    attributes 	(list Attribute_Set
+			(object Attribute
+			    tool       	"Java"
+			    name       	"Static"
+			    value      	TRUE))
+		    quid       	"37BD362A021D"
+		    documentation 	
+|Assuming the specified String represents a byte, returns a
+|     * new Byte object initialized to that Value.  Throws an
+|     * exception if the String cannot be parsed as a byte.
+|     *
+|     * @param s		the String containing the integer
+|     * @param radix 	the radix to be used
+|     * @exception	NumberFormatException If the String does not
+|     *			contain a parsable byte.
+|     * @since   JDK1.1
+|     
+		    
+		    parameters 	(list Parameters
+			(object Parameter "s"
+			    type       	"String")
+			(object Parameter "radix"
+			    type       	"int"))
+		    result     	"Byte"
+		    exceptions 	"NumberFormatException"
+		    concurrency 	"Sequential"
+		    opExportControl 	"Public"
+		    uid        	0)
+		(object Operation "valueOf"
+		    attributes 	(list Attribute_Set
+			(object Attribute
+			    tool       	"Java"
+			    name       	"Static"
+			    value      	TRUE))
+		    quid       	"37BD362A023B"
+		    documentation 	
+|Assuming the specified String represents a byte, returns a
+|     * new Byte object initialized to that Value.  Throws an
+|     * exception if the String cannot be parsed as a byte.
+|     * The radix is assumed to be 10.
+|     *
+|     * @param s		the String containing the integer
+|     * @exception	NumberFormatException If the String does not
+|     *			contain a parsable byte.
+|     * @since   JDK1.1
+|     
+		    
+		    parameters 	(list Parameters
+			(object Parameter "s"
+			    type       	"String"))
+		    result     	"Byte"
+		    exceptions 	"NumberFormatException"
+		    concurrency 	"Sequential"
+		    opExportControl 	"Public"
+		    uid        	0)
+		(object Operation "decode"
+		    attributes 	(list Attribute_Set
+			(object Attribute
+			    tool       	"Java"
+			    name       	"Static"
+			    value      	TRUE))
+		    quid       	"37BD362A024F"
+		    documentation 	
+|Decodes a String into a Byte.  The String may represent
+|     * decimal, hexadecimal, and octal numbers.
+|     *
+|     * @param nm the string to decode
+|     * @since   JDK1.1
+|     
+		    
+		    parameters 	(list Parameters
+			(object Parameter "nm"
+			    type       	"String"))
+		    result     	"Byte"
+		    exceptions 	"NumberFormatException"
+		    concurrency 	"Sequential"
+		    opExportControl 	"Public"
+		    uid        	0)
+		(object Operation "hashCode"
+		    attributes 	(list Attribute_Set)
+		    quid       	"37BD362A0263"
+		    documentation 	"Returns a hashcode for this Byte.     "
+		    result     	"int"
+		    concurrency 	"Sequential"
+		    opExportControl 	"Public"
+		    uid        	0)
+		(object Operation "equals"
+		    attributes 	(list Attribute_Set)
+		    quid       	"37BD362A026D"
+		    documentation 	
+|Compares this object to the specified object.
+|     *
+|     * @param obj	the object to compare with
+|     * @return 		true if the objects are equivalent; false otherwise.
+|     * @since   JDK1.1     
+		    
+		    parameters 	(list Parameters
+			(object Parameter "obj"
+			    type       	"Object"))
+		    result     	"boolean"
+		    concurrency 	"Sequential"
+		    opExportControl 	"Public"
+		    uid        	0))
+	    class_attributes 	(list class_attribute_list
+		(object ClassAttribute "Value"
+		    attributes 	(list Attribute_Set)
+		    quid       	"36BB4FB50080"
+		    documentation 	
+|This is the Value of the Object	 
+		    
+		    type       	"byte"
+		    exportControl 	"Public")
+		(object ClassAttribute "MIN_VALUE"
+		    attributes 	(list Attribute_Set
+			(object Attribute
+			    tool       	"Java"
+			    name       	"Final"
+			    value      	TRUE))
+		    quid       	"36BB4FB50081"
+		    documentation 	"The minimum Value a Byte can have.     "
+		    type       	"byte"
+		    initv      	"- 128"
+		    exportControl 	"Public"
+		    static     	TRUE)
+		(object ClassAttribute "MAX_VALUE"
+		    attributes 	(list Attribute_Set
+			(object Attribute
+			    tool       	"Java"
+			    name       	"Final"
+			    value      	TRUE))
+		    quid       	"36BB4FB5008A"
+		    documentation 	"The maximum Value a Byte can have.     "
+		    type       	"byte"
+		    initv      	"127"
+		    exportControl 	"Public"
+		    static     	TRUE))
+	    module     	"Component View::ByRef::ByRefByte"
+	    quidu      	"36BB4E3F00E7"
+	    language   	"Java")
+	(object Class "ByRefObject"
+	    attributes 	(list Attribute_Set
+		(object Attribute
+		    tool       	"Java"
+		    name       	"GenerateFinalizer"
+		    value      	FALSE)
+		(object Attribute
+		    tool       	"Java"
+		    name       	"GenerateStaticInitializer"
+		    value      	FALSE)
+		(object Attribute
+		    tool       	"Java"
+		    name       	"GenerateInstanceInitializer"
+		    value      	FALSE)
+		(object Attribute
+		    tool       	"Java"
+		    name       	"GenerateDefaultConstructor"
+		    value      	FALSE)
+		(object Attribute
+		    tool       	"Java"
+		    name       	"Final"
+		    value      	TRUE))
+	    quid       	"36BB4E3F0169"
+	    documentation 	"This class is solely for transporting an Object back from a method call. "
+	    operations 	(list Operations
+		(object Operation "ByRefObject"
+		    attributes 	(list Attribute_Set)
+		    quid       	"37BD36360328"
+		    documentation 	"Empty Constructor "
+		    concurrency 	"Sequential"
+		    opExportControl 	"Public"
+		    uid        	0)
+		(object Operation "ByRefObject"
+		    attributes 	(list Attribute_Set)
+		    quid       	"37BD36360329"
+		    documentation 	
+|Initializing Constructor, just comfortable	 
+		    
+		    parameters 	(list Parameters
+			(object Parameter "Value_"
+			    type       	"java.lang.Object"))
+		    concurrency 	"Sequential"
+		    opExportControl 	"Public"
+		    uid        	0)
+		(object Operation "toString"
+		    attributes 	(list Attribute_Set)
+		    quid       	"37BD36360333"
+		    documentation 	
+|Returns a string representation of the object. In general, the 
+|     * <code>toString</code> method returns a string that 
+|     * "textually represents" this object. The result should 
+|     * be a concise but informative representation that is easy for a 
+|     * person to read.
+|     * It is recommendedthat all subclasses override this method.
+|     * <p>
+|     * The <code>toString</code> method for class <code>Object</code> 
+|     * returns a string consisting of the name of the class of which the 
+|     * object is an instance, the at-sign character `<code>@</code>', and 
+|     * the unsigned hexadecimal representation of the hash code of the 
+|     * object. 
+|     *
+|     * @return  a string representation of the object.
+|     * @since   JDK1.0
+|     
+		    
+		    result     	"String"
+		    concurrency 	"Sequential"
+		    opExportControl 	"Public"
+		    uid        	0)
+		(object Operation "hashCode"
+		    attributes 	(list Attribute_Set)
+		    quid       	"37BD3636033C"
+		    documentation 	"Returns a hashcode for this Byte.     "
+		    result     	"int"
+		    concurrency 	"Sequential"
+		    opExportControl 	"Public"
+		    uid        	0)
+		(object Operation "equals"
+		    attributes 	(list Attribute_Set)
+		    quid       	"37BD3636033D"
+		    documentation 	
+|Compares this object to the specified object.
+|     *
+|     * @param obj	the object to compare with
+|     * @return 		true if the objects are equivalent; false otherwise.
+|     * @since   JDK1.1
+|     
+		    
+		    parameters 	(list Parameters
+			(object Parameter "obj"
+			    type       	"Object"))
+		    result     	"boolean"
+		    concurrency 	"Sequential"
+		    opExportControl 	"Public"
+		    uid        	0))
+	    module     	"Component View::ByRef::ByRefObject"
+	    quidu      	"36BB4E3F015F"
+	    language   	"Java")
+	(object Class "ByRefShort"
+	    attributes 	(list Attribute_Set
+		(object Attribute
+		    tool       	"Java"
+		    name       	"GenerateFinalizer"
+		    value      	FALSE)
+		(object Attribute
+		    tool       	"Java"
+		    name       	"GenerateStaticInitializer"
+		    value      	FALSE)
+		(object Attribute
+		    tool       	"Java"
+		    name       	"GenerateInstanceInitializer"
+		    value      	FALSE)
+		(object Attribute
+		    tool       	"Java"
+		    name       	"GenerateDefaultConstructor"
+		    value      	FALSE)
+		(object Attribute
+		    tool       	"Java"
+		    name       	"Final"
+		    value      	TRUE))
+	    quid       	"36BB4E3F024F"
+	    documentation 	"This class is solely for transporting a short back from a method call. "
+	    realized_interfaces 	(list realize_rel_list
+		(object Realize_Relationship
+		    attributes 	(list Attribute_Set)
+		    quid       	"37BD36380032"
+		    supplier   	"Logical View::BaseCopy::intCountable"
+		    quidu      	"37BC8EAE00EC")
+		(object Realize_Relationship
+		    attributes 	(list Attribute_Set)
+		    quid       	"37BD3638021D"
+		    supplier   	"Logical View::ByRef::intMeasurable"
+		    quidu      	"36BB4E3E02BC")
+		(object Realize_Relationship
+		    attributes 	(list Attribute_Set)
+		    quid       	"37BD36390034"
+		    supplier   	"Logical View::Order::intOrderable"
+		    quidu      	"36BB46B601FB"))
+	    operations 	(list Operations
+		(object Operation "ByRefShort"
+		    attributes 	(list Attribute_Set)
+		    quid       	"37BD3639003E"
+		    documentation 	"Empty Constructor "
+		    concurrency 	"Sequential"
+		    opExportControl 	"Public"
+		    uid        	0)
+		(object Operation "ByRefShort"
+		    attributes 	(list Attribute_Set)
+		    quid       	"37BD3639003F"
+		    documentation 	
+|Initializing Constructor, just comfortable	 
+		    
+		    parameters 	(list Parameters
+			(object Parameter "Value_"
+			    type       	"short"))
+		    concurrency 	"Sequential"
+		    opExportControl 	"Public"
+		    uid        	0)
+		(object Operation "byteValue"
+		    attributes 	(list Attribute_Set)
+		    quid       	"37BD36390048"
+		    documentation 	
+| Returns the Object Value represented by an 8 Bit Integer	 
+		    
+		    result     	"byte"
+		    concurrency 	"Sequential"
+		    opExportControl 	"Public"
+		    uid        	0)
+		(object Operation "shortValue"
+		    attributes 	(list Attribute_Set)
+		    quid       	"37BD36390052"
+		    documentation 	
+|Returns the Object Value represented by a 16 Bit Integer	 
+		    
+		    result     	"short"
+		    concurrency 	"Sequential"
+		    opExportControl 	"Public"
+		    uid        	0)
+		(object Operation "intValue"
+		    attributes 	(list Attribute_Set)
+		    quid       	"37BD36390053"
+		    documentation 	
+|Returns the Object Value represented by a 32 Bit Integer	 
+		    
+		    result     	"int"
+		    concurrency 	"Sequential"
+		    opExportControl 	"Public"
+		    uid        	0)
+		(object Operation "longValue"
+		    attributes 	(list Attribute_Set)
+		    quid       	"37BD36390054"
+		    documentation 	
+|Returns the Object Value represented by a 64 Bit Integer	 
+		    
+		    result     	"long"
+		    concurrency 	"Sequential"
+		    opExportControl 	"Public"
+		    uid        	0)
+		(object Operation "doubleValue"
+		    attributes 	(list Attribute_Set)
+		    quid       	"37BD3639005C"
+		    documentation 	
+|Returns the Object Value represented by a scalar Variable of Type double.
+|	 * It consists of an IEEE Number with 64 Bit (8 Byte):
+|	 * 52 Bit Mantissa, 11 Bit Exponent, 1 Bit Sign 
+		    
+		    result     	"double"
+		    concurrency 	"Sequential"
+		    opExportControl 	"Public"
+		    uid        	0)
+		(object Operation "floatValue"
+		    attributes 	(list Attribute_Set)
+		    quid       	"37BD3639005D"
+		    documentation 	
+|Returns the Object Value represented by a scalar Variable of Type float.
+|	 * It consists of an IEEE Number with 32 Bit (4 Byte): 
+|	 * 23 Bit Mantissa, 8 Bit Exponent, 1 Bit Sign	 
+		    
+		    result     	"float"
+		    concurrency 	"Sequential"
+		    opExportControl 	"Public"
+		    uid        	0)
+		(object Operation "toString"
+		    attributes 	(list Attribute_Set)
+		    quid       	"37BD36390066"
+		    documentation 	
+|Returns a string representation of the object. In general, the 
+|     * <code>toString</code> method returns a string that 
+|     * "textually represents" this object. The result should 
+|     * be a concise but informative representation that is easy for a 
+|     * person to read.
+|     * It is recommendedthat all subclasses override this method.
+|     * <p>
+|     * The <code>toString</code> method for class <code>Object</code> 
+|     * returns a string consisting of the name of the class of which the 
+|     * object is an instance, the at-sign character `<code>@</code>', and 
+|     * the unsigned hexadecimal representation of the hash code of the 
+|     * object. 
+|     *
+|     * @return  a string representation of the object.
+|     * @since   JDK1.0
+|     
+		    
+		    result     	"String"
+		    concurrency 	"Sequential"
+		    opExportControl 	"Public"
+		    uid        	0)
+		(object Operation "less"
+		    attributes 	(list Attribute_Set)
+		    quid       	"37BD36390067"
+		    documentation 	
+|less: '<' Returns True, when 'Self' < arg	 
+		    
+		    parameters 	(list Parameters
+			(object Parameter "arg"
+			    type       	"Object"))
+		    result     	"boolean"
+		    concurrency 	"Sequential"
+		    opExportControl 	"Public"
+		    uid        	0)
+		(object Operation "hashCode"
+		    attributes 	(list Attribute_Set)
+		    quid       	"37BD36390071"
+		    documentation 	"Returns a hashcode for this Byte.     "
+		    result     	"int"
+		    concurrency 	"Sequential"
+		    opExportControl 	"Public"
+		    uid        	0)
+		(object Operation "equals"
+		    attributes 	(list Attribute_Set)
+		    quid       	"37BD3639007A"
+		    documentation 	
+|Compares this object to the specified object.
+|     *
+|     * @param obj	the object to compare with
+|     * @return 		true if the objects are equivalent; false otherwise.
+|     * @since   JDK1.1
+|     
+		    
+		    parameters 	(list Parameters
+			(object Parameter "obj"
+			    type       	"Object"))
+		    result     	"boolean"
+		    concurrency 	"Sequential"
+		    opExportControl 	"Public"
+		    uid        	0))
+	    class_attributes 	(list class_attribute_list
+		(object ClassAttribute "Value"
+		    attributes 	(list Attribute_Set)
+		    quid       	"36BB4FB5029E"
+		    documentation 	
+|This is the Value of the Object	 
+		    
+		    type       	"short"
+		    exportControl 	"Public"))
+	    module     	"Component View::ByRef::ByRefShort"
+	    quidu      	"36BB4E3F0245"
+	    language   	"Java")
+	(object Class "ByRefInt"
+	    attributes 	(list Attribute_Set
+		(object Attribute
+		    tool       	"Java"
+		    name       	"GenerateFinalizer"
+		    value      	FALSE)
+		(object Attribute
+		    tool       	"Java"
+		    name       	"GenerateStaticInitializer"
+		    value      	FALSE)
+		(object Attribute
+		    tool       	"Java"
+		    name       	"GenerateInstanceInitializer"
+		    value      	FALSE)
+		(object Attribute
+		    tool       	"Java"
+		    name       	"GenerateDefaultConstructor"
+		    value      	FALSE)
+		(object Attribute
+		    tool       	"Java"
+		    name       	"Final"
+		    value      	TRUE))
+	    quid       	"36BB4E3F02D1"
+	    documentation 	"This class is solely for transporting an Integer back from a method call. "
+	    realized_interfaces 	(list realize_rel_list
+		(object Realize_Relationship
+		    attributes 	(list Attribute_Set)
+		    quid       	"37BD36320174"
+		    supplier   	"Logical View::BaseCopy::intCountable"
+		    quidu      	"37BC8EAE00EC")
+		(object Realize_Relationship
+		    attributes 	(list Attribute_Set)
+		    quid       	"37BD36320355"
+		    supplier   	"Logical View::ByRef::intMeasurable"
+		    quidu      	"36BB4E3E02BC")
+		(object Realize_Relationship
+		    attributes 	(list Attribute_Set)
+		    quid       	"37BD36330157"
+		    supplier   	"Logical View::Order::intOrderable"
+		    quidu      	"36BB46B601FB"))
+	    operations 	(list Operations
+		(object Operation "ByRefInt"
+		    attributes 	(list Attribute_Set)
+		    quid       	"37BD36330161"
+		    documentation 	"Empty Constructor "
+		    concurrency 	"Sequential"
+		    opExportControl 	"Public"
+		    uid        	0)
+		(object Operation "ByRefInt"
+		    attributes 	(list Attribute_Set)
+		    quid       	"37BD36330162"
+		    documentation 	
+|Initializing Constructor, just comfortable	 
+		    
+		    parameters 	(list Parameters
+			(object Parameter "Value_"
+			    type       	"int"))
+		    concurrency 	"Sequential"
+		    opExportControl 	"Public"
+		    uid        	0)
+		(object Operation "byteValue"
+		    attributes 	(list Attribute_Set)
+		    quid       	"37BD3633016C"
+		    documentation 	
+| Returns the Object Value represented by an 8 Bit Integer	 
+		    
+		    result     	"byte"
+		    concurrency 	"Sequential"
+		    opExportControl 	"Public"
+		    uid        	0)
+		(object Operation "shortValue"
+		    attributes 	(list Attribute_Set)
+		    quid       	"37BD36330175"
+		    documentation 	
+|Returns the Object Value represented by a 16 Bit Integer	 
+		    
+		    result     	"short"
+		    concurrency 	"Sequential"
+		    opExportControl 	"Public"
+		    uid        	0)
+		(object Operation "intValue"
+		    attributes 	(list Attribute_Set)
+		    quid       	"37BD36330176"
+		    documentation 	
+|Returns the Object Value represented by a 32 Bit Integer	 
+		    
+		    result     	"int"
+		    concurrency 	"Sequential"
+		    opExportControl 	"Public"
+		    uid        	0)
+		(object Operation "longValue"
+		    attributes 	(list Attribute_Set)
+		    quid       	"37BD3633017F"
+		    documentation 	
+|Returns the Object Value represented by a 64 Bit Integer	 
+		    
+		    result     	"long"
+		    concurrency 	"Sequential"
+		    opExportControl 	"Public"
+		    uid        	0)
+		(object Operation "doubleValue"
+		    attributes 	(list Attribute_Set)
+		    quid       	"37BD36330180"
+		    documentation 	
+|Returns the Object Value represented by a scalar Variable of Type double.
+|	 * It consists of an IEEE Number with 64 Bit (8 Byte):
+|	 * 52 Bit Mantissa, 11 Bit Exponent, 1 Bit Sign 
+		    
+		    result     	"double"
+		    concurrency 	"Sequential"
+		    opExportControl 	"Public"
+		    uid        	0)
+		(object Operation "floatValue"
+		    attributes 	(list Attribute_Set)
+		    quid       	"37BD36330189"
+		    documentation 	
+|Returns the Object Value represented by a scalar Variable of Type float.
+|	 * It consists of an IEEE Number with 32 Bit (4 Byte): 
+|	 * 23 Bit Mantissa, 8 Bit Exponent, 1 Bit Sign	 
+		    
+		    result     	"float"
+		    concurrency 	"Sequential"
+		    opExportControl 	"Public"
+		    uid        	0)
+		(object Operation "toString"
+		    attributes 	(list Attribute_Set)
+		    quid       	"37BD3633018A"
+		    documentation 	
+|Returns a string representation of the object. In general, the 
+|     * <code>toString</code> method returns a string that 
+|     * "textually represents" this object. The result should 
+|     * be a concise but informative representation that is easy for a 
+|     * person to read.
+|     * It is recommendedthat all subclasses override this method.
+|     * <p>
+|     * The <code>toString</code> method for class <code>Object</code> 
+|     * returns a string consisting of the name of the class of which the 
+|     * object is an instance, the at-sign character `<code>@</code>', and 
+|     * the unsigned hexadecimal representation of the hash code of the 
+|     * object. 
+|     *
+|     * @return  a string representation of the object.
+|     * @since   JDK1.0
+|     
+		    
+		    result     	"String"
+		    concurrency 	"Sequential"
+		    opExportControl 	"Public"
+		    uid        	0)
+		(object Operation "less"
+		    attributes 	(list Attribute_Set)
+		    quid       	"37BD3633018B"
+		    documentation 	
+|less: '<' Returns True, when 'Self' < arg	 
+		    
+		    parameters 	(list Parameters
+			(object Parameter "arg"
+			    type       	"Object"))
+		    result     	"boolean"
+		    concurrency 	"Sequential"
+		    opExportControl 	"Public"
+		    uid        	0)
+		(object Operation "hashCode"
+		    attributes 	(list Attribute_Set)
+		    quid       	"37BD3633019D"
+		    documentation 	"Returns a hashcode for this Byte.     "
+		    result     	"int"
+		    concurrency 	"Sequential"
+		    opExportControl 	"Public"
+		    uid        	0)
+		(object Operation "equals"
+		    attributes 	(list Attribute_Set)
+		    quid       	"37BD3633019E"
+		    documentation 	
+|Compares this object to the specified object.
+|     *
+|     * @param obj	the object to compare with
+|     * @return 		true if the objects are equivalent; false otherwise.
+|     * @since   JDK1.1
+|     
+		    
+		    parameters 	(list Parameters
+			(object Parameter "obj"
+			    type       	"Object"))
+		    result     	"boolean"
+		    concurrency 	"Sequential"
+		    opExportControl 	"Public"
+		    uid        	0))
+	    class_attributes 	(list class_attribute_list
+		(object ClassAttribute "Value"
+		    attributes 	(list Attribute_Set)
+		    quid       	"36BB4FB5037A"
+		    documentation 	
+|This is the Value of the Object	 
+		    
+		    type       	"int"
+		    exportControl 	"Public"))
+	    module     	"Component View::ByRef::ByRefInt"
+	    quidu      	"36BB4E3F02C7"
+	    language   	"Java")
+	(object Class "ByRefFloat"
+	    attributes 	(list Attribute_Set
+		(object Attribute
+		    tool       	"Java"
+		    name       	"GenerateFinalizer"
+		    value      	FALSE)
+		(object Attribute
+		    tool       	"Java"
+		    name       	"GenerateStaticInitializer"
+		    value      	FALSE)
+		(object Attribute
+		    tool       	"Java"
+		    name       	"GenerateInstanceInitializer"
+		    value      	FALSE)
+		(object Attribute
+		    tool       	"Java"
+		    name       	"GenerateDefaultConstructor"
+		    value      	FALSE)
+		(object Attribute
+		    tool       	"Java"
+		    name       	"Final"
+		    value      	TRUE))
+	    quid       	"36BB4E3F037C"
+	    documentation 	"This class is solely for transporting an Integer back from a method call. "
+	    realized_interfaces 	(list realize_rel_list
+		(object Realize_Relationship
+		    attributes 	(list Attribute_Set)
+		    quid       	"37BD363000C7"
+		    supplier   	"Logical View::BaseCopy::intCountable"
+		    quidu      	"37BC8EAE00EC")
+		(object Realize_Relationship
+		    attributes 	(list Attribute_Set)
+		    quid       	"37BD363002A8"
+		    supplier   	"Logical View::ByRef::intMeasurable"
+		    quidu      	"36BB4E3E02BC")
+		(object Realize_Relationship
+		    attributes 	(list Attribute_Set)
+		    quid       	"37BD363100BE"
+		    supplier   	"Logical View::Order::intOrderable"
+		    quidu      	"36BB46B601FB"))
+	    operations 	(list Operations
+		(object Operation "ByRefFloat"
+		    attributes 	(list Attribute_Set)
+		    quid       	"37BD363100C8"
+		    documentation 	"Empty Constructor "
+		    concurrency 	"Sequential"
+		    opExportControl 	"Public"
+		    uid        	0)
+		(object Operation "ByRefFloat"
+		    attributes 	(list Attribute_Set)
+		    quid       	"37BD363100C9"
+		    documentation 	
+|Initializing Constructor, just comfortable	 
+		    
+		    parameters 	(list Parameters
+			(object Parameter "Value_"
+			    type       	"float"))
+		    concurrency 	"Sequential"
+		    opExportControl 	"Public"
+		    uid        	0)
+		(object Operation "byteValue"
+		    attributes 	(list Attribute_Set)
+		    quid       	"37BD363100D3"
+		    documentation 	
+| Returns the Object Value represented by an 8 Bit Integer	 
+		    
+		    result     	"byte"
+		    concurrency 	"Sequential"
+		    opExportControl 	"Public"
+		    uid        	0)
+		(object Operation "shortValue"
+		    attributes 	(list Attribute_Set)
+		    quid       	"37BD363100DC"
+		    documentation 	
+|Returns the Object Value represented by a 16 Bit Integer	 
+		    
+		    result     	"short"
+		    concurrency 	"Sequential"
+		    opExportControl 	"Public"
+		    uid        	0)
+		(object Operation "intValue"
+		    attributes 	(list Attribute_Set)
+		    quid       	"37BD363100DD"
+		    documentation 	
+|Returns the Object Value represented by a 32 Bit Integer	 
+		    
+		    result     	"int"
+		    concurrency 	"Sequential"
+		    opExportControl 	"Public"
+		    uid        	0)
+		(object Operation "longValue"
+		    attributes 	(list Attribute_Set)
+		    quid       	"37BD363100E6"
+		    documentation 	
+|Returns the Object Value represented by a 64 Bit Integer	 
+		    
+		    result     	"long"
+		    concurrency 	"Sequential"
+		    opExportControl 	"Public"
+		    uid        	0)
+		(object Operation "doubleValue"
+		    attributes 	(list Attribute_Set)
+		    quid       	"37BD363100E7"
+		    documentation 	
+|Returns the Object Value represented by a scalar Variable of Type double.
+|	 * It consists of an IEEE Number with 64 Bit (8 Byte):
+|	 * 52 Bit Mantissa, 11 Bit Exponent, 1 Bit Sign 
+		    
+		    result     	"double"
+		    concurrency 	"Sequential"
+		    opExportControl 	"Public"
+		    uid        	0)
+		(object Operation "floatValue"
+		    attributes 	(list Attribute_Set)
+		    quid       	"37BD363100F0"
+		    documentation 	
+|Returns the Object Value represented by a scalar Variable of Type float.
+|	 * It consists of an IEEE Number with 32 Bit (4 Byte): 
+|	 * 23 Bit Mantissa, 8 Bit Exponent, 1 Bit Sign	 
+		    
+		    result     	"float"
+		    concurrency 	"Sequential"
+		    opExportControl 	"Public"
+		    uid        	0)
+		(object Operation "toString"
+		    attributes 	(list Attribute_Set)
+		    quid       	"37BD363100FA"
+		    documentation 	
+|Returns a string representation of the object. In general, the 
+|     * <code>toString</code> method returns a string that 
+|     * "textually represents" this object. The result should 
+|     * be a concise but informative representation that is easy for a 
+|     * person to read.
+|     * It is recommendedthat all subclasses override this method.
+|     * <p>
+|     * The <code>toString</code> method for class <code>Object</code> 
+|     * returns a string consisting of the name of the class of which the 
+|     * object is an instance, the at-sign character `<code>@</code>', and 
+|     * the unsigned hexadecimal representation of the hash code of the 
+|     * object. 
+|     *
+|     * @return  a string representation of the object.
+|     * @since   JDK1.0
+|     
+		    
+		    result     	"String"
+		    concurrency 	"Sequential"
+		    opExportControl 	"Public"
+		    uid        	0)
+		(object Operation "less"
+		    attributes 	(list Attribute_Set)
+		    quid       	"37BD363100FB"
+		    documentation 	
+|less: '<' Returns True, when 'Self' < arg	 
+		    
+		    parameters 	(list Parameters
+			(object Parameter "arg"
+			    type       	"Object"))
+		    result     	"boolean"
+		    concurrency 	"Sequential"
+		    opExportControl 	"Public"
+		    uid        	0)
+		(object Operation "hashCode"
+		    attributes 	(list Attribute_Set)
+		    quid       	"37BD36310104"
+		    documentation 	"Returns a hashcode for this Byte.     "
+		    result     	"int"
+		    concurrency 	"Sequential"
+		    opExportControl 	"Public"
+		    uid        	0)
+		(object Operation "equals"
+		    attributes 	(list Attribute_Set)
+		    quid       	"37BD3631010E"
+		    documentation 	
+|Compares this object to the specified object.
+|     *
+|     * @param obj	the object to compare with
+|     * @return 		true if the objects are equivalent; false otherwise.
+|     * @since   JDK1.1
+|     
+		    
+		    parameters 	(list Parameters
+			(object Parameter "obj"
+			    type       	"Object"))
+		    result     	"boolean"
+		    concurrency 	"Sequential"
+		    opExportControl 	"Public"
+		    uid        	0))
+	    class_attributes 	(list class_attribute_list
+		(object ClassAttribute "Value"
+		    attributes 	(list Attribute_Set)
+		    quid       	"36BB4FB60079"
+		    documentation 	
+|This is the Value of the Object	 
+		    
+		    type       	"float"
+		    exportControl 	"Public"))
+	    module     	"Component View::ByRef::ByRefFloat"
+	    quidu      	"36BB4E3F0372"
+	    language   	"Java")
+	(object Class "ByRefBoolean"
+	    attributes 	(list Attribute_Set
+		(object Attribute
+		    tool       	"Java"
+		    name       	"GenerateFinalizer"
+		    value      	FALSE)
+		(object Attribute
+		    tool       	"Java"
+		    name       	"GenerateStaticInitializer"
+		    value      	FALSE)
+		(object Attribute
+		    tool       	"Java"
+		    name       	"GenerateInstanceInitializer"
+		    value      	FALSE)
+		(object Attribute
+		    tool       	"Java"
+		    name       	"GenerateDefaultConstructor"
+		    value      	FALSE)
+		(object Attribute
+		    tool       	"Java"
+		    name       	"Final"
+		    value      	TRUE))
+	    quid       	"37BC8EC000A3"
+	    documentation 	"This class is solely for transporting a Boolean back from a method call. "
+	    operations 	(list Operations
+		(object Operation "ByRefBoolean"
+		    attributes 	(list Attribute_Set)
+		    quid       	"37BD36280101"
+		    documentation 	"Empty Constructor "
+		    concurrency 	"Sequential"
+		    opExportControl 	"Public"
+		    uid        	0)
+		(object Operation "ByRefBoolean"
+		    attributes 	(list Attribute_Set)
+		    quid       	"37BD36280102"
+		    documentation 	
+|Initializing Constructor, just comfortable	 
+		    
+		    parameters 	(list Parameters
+			(object Parameter "Value_"
+			    type       	"boolean"))
+		    concurrency 	"Sequential"
+		    opExportControl 	"Public"
+		    uid        	0)
+		(object Operation "toString"
+		    attributes 	(list Attribute_Set)
+		    quid       	"37BD36280104"
+		    documentation 	
+|Returns a string representation of the object. In general, the 
+|     * <code>toString</code> method returns a string that 
+|     * "textually represents" this object. The result should 
+|     * be a concise but informative representation that is easy for a 
+|     * person to read.
+|     * It is recommendedthat all subclasses override this method.
+|     * <p>
+|     * The <code>toString</code> method for class <code>Object</code> 
+|     * returns a string consisting of the name of the class of which the 
+|     * object is an instance, the at-sign character `<code>@</code>', and 
+|     * the unsigned hexadecimal representation of the hash code of the 
+|     * object. 
+|     *
+|     * @return  a string representation of the object.
+|     * @since   JDK1.0
+|     
+		    
+		    result     	"java.lang.String"
+		    concurrency 	"Sequential"
+		    opExportControl 	"Public"
+		    uid        	0))
+	    class_attributes 	(list class_attribute_list
+		(object ClassAttribute "Value"
+		    attributes 	(list Attribute_Set)
+		    quid       	"37BC8EC000B6"
+		    documentation 	
+|This is the Value of the Object	 
+		    
+		    type       	"boolean"
+		    exportControl 	"Public"))
+	    module     	"Component View::ByRef::ByRefBoolean"
+	    quidu      	"37BC8EC000A2"
+	    language   	"Java")
+	(object Association "$UNNAMED$0"
+	    attributes 	(list Attribute_Set)
+	    quid       	"36BB4E3F01B0"
+	    roles      	(list role_list
+		(object Role "$UNNAMED$1"
+		    quid       	"36BB4E3F01B1"
+		    supplier   	"Logical View::ByRef::ByRefObject"
+		    quidu      	"36BB4E3F0169")
+		(object Role "Value"
+		    attributes 	(list Attribute_Set
+			(object Attribute
+			    tool       	"Java"
+			    name       	"InitialValue"
+			    value      	""))
+		    quid       	"36BB4E3F01B2"
+		    documentation 	
+|This is the Value of the Object	 
+		    
+		    label      	"Value"
+		    supplier   	"Logical View::java::lang::Object"
+		    quidu      	"34B0F6CF01C6"
+		    is_navigable 	TRUE)))
+	(object Association "$UNNAMED$2"
+	    attributes 	(list Attribute_Set)
+	    quid       	"37BC8EC000AC"
+	    roles      	(list role_list
+		(object Role "$UNNAMED$3"
+		    quid       	"37BC8EC000AD"
+		    supplier   	"Logical View::ByRef::ByRefBoolean"
+		    quidu      	"37BC8EC000A3")
+		(object Role "trueString"
+		    attributes 	(list Attribute_Set
+			(object Attribute
+			    tool       	"Java"
+			    name       	"InitialValue"
+			    value      	(value Text 
+|"True"
+			    )))
+		    quid       	"37BC8EC000AE"
+		    documentation 	
+|String Representation of true Value	 
+		    
+		    label      	"trueString"
+		    supplier   	"Logical View::java::lang::String"
+		    quidu      	"34B0F6CF01B8"
+		    is_navigable 	TRUE
+		    static     	TRUE)))
+	(object Association "$UNNAMED$4"
+	    attributes 	(list Attribute_Set)
+	    quid       	"37BC8EC000AF"
+	    roles      	(list role_list
+		(object Role "$UNNAMED$5"
+		    quid       	"37BC8EC000B0"
+		    supplier   	"Logical View::ByRef::ByRefBoolean"
+		    quidu      	"37BC8EC000A3")
+		(object Role "falseString"
+		    attributes 	(list Attribute_Set
+			(object Attribute
+			    tool       	"Java"
+			    name       	"InitialValue"
+			    value      	(value Text 
+|"False"
+			    )))
+		    quid       	"37BC8EC000B1"
+		    documentation 	
+|String Representation of false Value	 
+		    
+		    label      	"falseString"
+		    supplier   	"Logical View::java::lang::String"
+		    quidu      	"34B0F6CF01B8"
+		    is_navigable 	TRUE
+		    static     	TRUE)))
+	(object Association "$UNNAMED$6"
+	    attributes 	(list Attribute_Set)
+	    quid       	"37BD1C330002"
+	    roles      	(list role_list
+		(object Role "$UNNAMED$7"
+		    quid       	"37BD1C330003"
+		    supplier   	"Logical View::ByRef::TDouble"
+		    quidu      	"36BB4E3E00BD")
+		(object Role "Zero"
+		    attributes 	(list Attribute_Set
+			(object Attribute
+			    tool       	"Java"
+			    name       	"InitialValue"
+			    value      	"new Integer ((int ) ZERO)")
+			(object Attribute
+			    tool       	"Java"
+			    name       	"Final"
+			    value      	TRUE))
+		    quid       	"37BD1C330034"
+		    label      	"Zero"
+		    supplier   	"Logical View::java::lang::Integer"
+		    quidu      	"34B0F6CF0223"
+		    is_navigable 	TRUE
+		    static     	TRUE)))
+	(object Association "$UNNAMED$8"
+	    attributes 	(list Attribute_Set)
+	    quid       	"37BD1C33021F"
+	    roles      	(list role_list
+		(object Role "$UNNAMED$9"
+		    quid       	"37BD1C330220"
+		    supplier   	"Logical View::ByRef::TDouble"
+		    quidu      	"36BB4E3E00BD")
+		(object Role "One"
+		    attributes 	(list Attribute_Set
+			(object Attribute
+			    tool       	"Java"
+			    name       	"InitialValue"
+			    value      	"new Integer ((int ) ONE)")
+			(object Attribute
+			    tool       	"Java"
+			    name       	"Final"
+			    value      	TRUE))
+		    quid       	"37BD1C330251"
+		    label      	"One"
+		    supplier   	"Logical View::java::lang::Integer"
+		    quidu      	"34B0F6CF0223"
+		    is_navigable 	TRUE
+		    static     	TRUE)))
+	(object Association "$UNNAMED$10"
+	    attributes 	(list Attribute_Set)
+	    quid       	"37BD1C3400B8"
+	    roles      	(list role_list
+		(object Role "$UNNAMED$11"
+		    quid       	"37BD1C3400B9"
+		    supplier   	"Logical View::ByRef::TDouble"
+		    quidu      	"36BB4E3E00BD")
+		(object Role "Two"
+		    attributes 	(list Attribute_Set
+			(object Attribute
+			    tool       	"Java"
+			    name       	"InitialValue"
+			    value      	"new Integer ((int ) TWO)")
+			(object Attribute
+			    tool       	"Java"
+			    name       	"Final"
+			    value      	TRUE))
+		    quid       	"37BD1C3400EA"
+		    label      	"Two"
+		    supplier   	"Logical View::java::lang::Integer"
+		    quidu      	"34B0F6CF0223"
+		    is_navigable 	TRUE
+		    static     	TRUE)))
+	(object Association "$UNNAMED$12"
+	    attributes 	(list Attribute_Set)
+	    quid       	"37BD1C34031B"
+	    roles      	(list role_list
+		(object Role "$UNNAMED$13"
+		    quid       	"37BD1C34031C"
+		    supplier   	"Logical View::ByRef::TDouble"
+		    quidu      	"36BB4E3E00BD")
+		(object Role "Three"
+		    attributes 	(list Attribute_Set
+			(object Attribute
+			    tool       	"Java"
+			    name       	"InitialValue"
+			    value      	"new Integer ((int ) THREE)")
+			(object Attribute
+			    tool       	"Java"
+			    name       	"Final"
+			    value      	TRUE))
+		    quid       	"37BD1C34034D"
+		    label      	"Three"
+		    supplier   	"Logical View::java::lang::Integer"
+		    quidu      	"34B0F6CF0223"
+		    is_navigable 	TRUE
+		    static     	TRUE)))
+	(object Association "$UNNAMED$14"
+	    attributes 	(list Attribute_Set)
+	    quid       	"37BD1C350163"
+	    roles      	(list role_list
+		(object Role "$UNNAMED$15"
+		    quid       	"37BD1C350164"
+		    supplier   	"Logical View::ByRef::TDouble"
+		    quidu      	"36BB4E3E00BD")
+		(object Role "Four"
+		    attributes 	(list Attribute_Set
+			(object Attribute
+			    tool       	"Java"
+			    name       	"InitialValue"
+			    value      	"new Integer ((int ) FOUR)")
+			(object Attribute
+			    tool       	"Java"
+			    name       	"Final"
+			    value      	TRUE))
+		    quid       	"37BD1C350196"
+		    label      	"Four"
+		    supplier   	"Logical View::java::lang::Integer"
+		    quidu      	"34B0F6CF0223"
+		    is_navigable 	TRUE
+		    static     	TRUE)))
+	(object Association "$UNNAMED$16"
+	    attributes 	(list Attribute_Set)
+	    quid       	"37BD1C3503C6"
+	    roles      	(list role_list
+		(object Role "$UNNAMED$17"
+		    quid       	"37BD1C3503C7"
+		    supplier   	"Logical View::ByRef::TDouble"
+		    quidu      	"36BB4E3E00BD")
+		(object Role "Five"
+		    attributes 	(list Attribute_Set
+			(object Attribute
+			    tool       	"Java"
+			    name       	"InitialValue"
+			    value      	"new Integer ((int ) FIVE)")
+			(object Attribute
+			    tool       	"Java"
+			    name       	"Final"
+			    value      	TRUE))
+		    quid       	"37BD1C360010"
+		    label      	"Five"
+		    supplier   	"Logical View::java::lang::Integer"
+		    quidu      	"34B0F6CF0223"
+		    is_navigable 	TRUE
+		    static     	TRUE)))
+	(object Association "$UNNAMED$18"
+	    attributes 	(list Attribute_Set)
+	    quid       	"37BD1C360205"
+	    roles      	(list role_list
+		(object Role "$UNNAMED$19"
+		    quid       	"37BD1C360206"
+		    supplier   	"Logical View::ByRef::TDouble"
+		    quidu      	"36BB4E3E00BD")
+		(object Role "Half"
+		    attributes 	(list Attribute_Set
+			(object Attribute
+			    tool       	"Java"
+			    name       	"InitialValue"
+			    value      	"new Double (HALF)")
+			(object Attribute
+			    tool       	"Java"
+			    name       	"Final"
+			    value      	TRUE))
+		    quid       	"37BD1C360237"
+		    label      	"Half"
+		    supplier   	"Logical View::java::lang::Double"
+		    quidu      	"34B0F6CF02C0"
+		    is_navigable 	TRUE
+		    static     	TRUE)))
+	(object Association "$UNNAMED$20"
+	    attributes 	(list Attribute_Set)
+	    quid       	"37BD1C370030"
+	    roles      	(list role_list
+		(object Role "$UNNAMED$21"
+		    quid       	"37BD1C370031"
+		    supplier   	"Logical View::ByRef::TDouble"
+		    quidu      	"36BB4E3E00BD")
+		(object Role "Third"
+		    attributes 	(list Attribute_Set
+			(object Attribute
+			    tool       	"Java"
+			    name       	"InitialValue"
+			    value      	"new Double (THIRD)")
+			(object Attribute
+			    tool       	"Java"
+			    name       	"Final"
+			    value      	TRUE))
+		    quid       	"37BD1C370058"
+		    label      	"Third"
+		    supplier   	"Logical View::java::lang::Double"
+		    quidu      	"34B0F6CF02C0"
+		    is_navigable 	TRUE
+		    static     	TRUE)))
+	(object Association "$UNNAMED$22"
+	    attributes 	(list Attribute_Set)
+	    quid       	"37BD1C37024D"
+	    roles      	(list role_list
+		(object Role "$UNNAMED$23"
+		    quid       	"37BD1C37024E"
+		    supplier   	"Logical View::ByRef::TDouble"
+		    quidu      	"36BB4E3E00BD")
+		(object Role "Quarter"
+		    attributes 	(list Attribute_Set
+			(object Attribute
+			    tool       	"Java"
+			    name       	"InitialValue"
+			    value      	"new Double (QUARTER)")
+			(object Attribute
+			    tool       	"Java"
+			    name       	"Final"
+			    value      	TRUE))
+		    quid       	"37BD1C37027F"
+		    label      	"Quarter"
+		    supplier   	"Logical View::java::lang::Double"
+		    quidu      	"34B0F6CF02C0"
+		    is_navigable 	TRUE
+		    static     	TRUE)))
+	(object Association "$UNNAMED$24"
+	    attributes 	(list Attribute_Set)
+	    quid       	"37BD1C380081"
+	    roles      	(list role_list
+		(object Role "$UNNAMED$25"
+		    quid       	"37BD1C380082"
+		    supplier   	"Logical View::ByRef::TDouble"
+		    quidu      	"36BB4E3E00BD")
+		(object Role "Percent"
+		    attributes 	(list Attribute_Set
+			(object Attribute
+			    tool       	"Java"
+			    name       	"InitialValue"
+			    value      	"new Double (PERCENT)")
+			(object Attribute
+			    tool       	"Java"
+			    name       	"Final"
+			    value      	TRUE))
+		    quid       	"37BD1C3800B3"
+		    label      	"Percent"
+		    supplier   	"Logical View::java::lang::Double"
+		    quidu      	"34B0F6CF02C0"
+		    is_navigable 	TRUE
+		    static     	TRUE)))
+	(object Association "$UNNAMED$26"
+	    attributes 	(list Attribute_Set)
+	    quid       	"37BD1C38029E"
+	    roles      	(list role_list
+		(object Role "$UNNAMED$27"
+		    quid       	"37BD1C38029F"
+		    supplier   	"Logical View::ByRef::TDouble"
+		    quidu      	"36BB4E3E00BD")
+		(object Role "Permille"
+		    attributes 	(list Attribute_Set
+			(object Attribute
+			    tool       	"Java"
+			    name       	"InitialValue"
+			    value      	"new Double (PERMILLE)")
+			(object Attribute
+			    tool       	"Java"
+			    name       	"Final"
+			    value      	TRUE))
+		    quid       	"37BD1C3802D0"
+		    label      	"Permille"
+		    supplier   	"Logical View::java::lang::Double"
+		    quidu      	"34B0F6CF02C0"
+		    is_navigable 	TRUE
+		    static     	TRUE)))
+	(object Association "$UNNAMED$28"
+	    attributes 	(list Attribute_Set)
+	    quid       	"37BD1C39010F"
+	    roles      	(list role_list
+		(object Role "$UNNAMED$29"
+		    quid       	"37BD1C390110"
+		    supplier   	"Logical View::ByRef::TDouble"
+		    quidu      	"36BB4E3E00BD")
+		(object Role "EinsK1"
+		    attributes 	(list Attribute_Set
+			(object Attribute
+			    tool       	"Java"
+			    name       	"InitialValue"
+			    value      	"new Double (EINSK1)")
+			(object Attribute
+			    tool       	"Java"
+			    name       	"Final"
+			    value      	TRUE))
+		    quid       	"37BD1C390141"
+		    label      	"EinsK1"
+		    supplier   	"Logical View::java::lang::Double"
+		    quidu      	"34B0F6CF02C0"
+		    is_navigable 	TRUE
+		    static     	TRUE)))
+	(object Association "$UNNAMED$30"
+	    attributes 	(list Attribute_Set)
+	    quid       	"37BD1C390322"
+	    roles      	(list role_list
+		(object Role "$UNNAMED$31"
+		    quid       	"37BD1C390323"
+		    supplier   	"Logical View::ByRef::TDouble"
+		    quidu      	"36BB4E3E00BD")
+		(object Role "NullK9"
+		    attributes 	(list Attribute_Set
+			(object Attribute
+			    tool       	"Java"
+			    name       	"InitialValue"
+			    value      	"new Double (NULLK9)")
+			(object Attribute
+			    tool       	"Java"
+			    name       	"Final"
+			    value      	TRUE))
+		    quid       	"37BD1C39034A"
+		    label      	"NullK9"
+		    supplier   	"Logical View::java::lang::Double"
+		    quidu      	"34B0F6CF02C0"
+		    is_navigable 	TRUE
+		    static     	TRUE)))
+	(object Association "$UNNAMED$32"
+	    attributes 	(list Attribute_Set)
+	    quid       	"37BD1C3A017F"
+	    roles      	(list role_list
+		(object Role "$UNNAMED$33"
+		    quid       	"37BD1C3A0180"
+		    supplier   	"Logical View::ByRef::TDouble"
+		    quidu      	"36BB4E3E00BD")
+		(object Role "NullK1"
+		    attributes 	(list Attribute_Set
+			(object Attribute
+			    tool       	"Java"
+			    name       	"InitialValue"
+			    value      	"new Double (NULLK1)")
+			(object Attribute
+			    tool       	"Java"
+			    name       	"Final"
+			    value      	TRUE))
+		    quid       	"37BD1C3A01B1"
+		    label      	"NullK1"
+		    supplier   	"Logical View::java::lang::Double"
+		    quidu      	"34B0F6CF02C0"
+		    is_navigable 	TRUE
+		    static     	TRUE)))
+	(object Association "$UNNAMED$34"
+	    attributes 	(list Attribute_Set)
+	    quid       	"37BD1C3A03A5"
+	    roles      	(list role_list
+		(object Role "$UNNAMED$35"
+		    quid       	"37BD1C3A03A6"
+		    supplier   	"Logical View::ByRef::TDouble"
+		    quidu      	"36BB4E3E00BD")
+		(object Role "Infin"
+		    attributes 	(list Attribute_Set
+			(object Attribute
+			    tool       	"Java"
+			    name       	"InitialValue"
+			    value      	"new Double (INFIN)")
+			(object Attribute
+			    tool       	"Java"
+			    name       	"Final"
+			    value      	TRUE))
+		    quid       	"37BD1C3A03D8"
+		    label      	"Infin"
+		    supplier   	"Logical View::java::lang::Double"
+		    quidu      	"34B0F6CF02C0"
+		    is_navigable 	TRUE
+		    static     	TRUE)))
+	(object Association "$UNNAMED$36"
+	    attributes 	(list Attribute_Set)
+	    quid       	"37BD1C3B01F8"
+	    roles      	(list role_list
+		(object Role "$UNNAMED$37"
+		    quid       	"37BD1C3B01F9"
+		    supplier   	"Logical View::ByRef::TDouble"
+		    quidu      	"36BB4E3E00BD")
+		(object Role "Ln2"
+		    attributes 	(list Attribute_Set
+			(object Attribute
+			    tool       	"Java"
+			    name       	"InitialValue"
+			    value      	"new Double (LN2)")
+			(object Attribute
+			    tool       	"Java"
+			    name       	"Final"
+			    value      	TRUE))
+		    quid       	"37BD1C3B022A"
+		    label      	"Ln2"
+		    supplier   	"Logical View::java::lang::Double"
+		    quidu      	"34B0F6CF02C0"
+		    is_navigable 	TRUE
+		    static     	TRUE)))
+	(object Association "$UNNAMED$38"
+	    attributes 	(list Attribute_Set)
+	    quid       	"37BD1C3C0037"
+	    roles      	(list role_list
+		(object Role "$UNNAMED$39"
+		    quid       	"37BD1C3C0038"
+		    supplier   	"Logical View::ByRef::TDouble"
+		    quidu      	"36BB4E3E00BD")
+		(object Role "Lbe"
+		    attributes 	(list Attribute_Set
+			(object Attribute
+			    tool       	"Java"
+			    name       	"InitialValue"
+			    value      	"new Double (LBE)")
+			(object Attribute
+			    tool       	"Java"
+			    name       	"Final"
+			    value      	TRUE))
+		    quid       	"37BD1C3C0069"
+		    label      	"Lbe"
+		    supplier   	"Logical View::java::lang::Double"
+		    quidu      	"34B0F6CF02C0"
+		    is_navigable 	TRUE
+		    static     	TRUE)))
+	(object Association "$UNNAMED$40"
+	    attributes 	(list Attribute_Set)
+	    quid       	"37BD1C3C0268"
+	    roles      	(list role_list
+		(object Role "$UNNAMED$41"
+		    quid       	"37BD1C3C0269"
+		    supplier   	"Logical View::ByRef::TDouble"
+		    quidu      	"36BB4E3E00BD")
+		(object Role "Ln10"
+		    attributes 	(list Attribute_Set
+			(object Attribute
+			    tool       	"Java"
+			    name       	"InitialValue"
+			    value      	"new Double (LN10)")
+			(object Attribute
+			    tool       	"Java"
+			    name       	"Final"
+			    value      	TRUE))
+		    quid       	"37BD1C3C0290"
+		    label      	"Ln10"
+		    supplier   	"Logical View::java::lang::Double"
+		    quidu      	"34B0F6CF02C0"
+		    is_navigable 	TRUE
+		    static     	TRUE)))
+	(object Association "$UNNAMED$42"
+	    attributes 	(list Attribute_Set)
+	    quid       	"37BD1C3D00A7"
+	    roles      	(list role_list
+		(object Role "$UNNAMED$43"
+		    quid       	"37BD1C3D00A8"
+		    supplier   	"Logical View::ByRef::TDouble"
+		    quidu      	"36BB4E3E00BD")
+		(object Role "Lb10"
+		    attributes 	(list Attribute_Set
+			(object Attribute
+			    tool       	"Java"
+			    name       	"InitialValue"
+			    value      	"new Double (LB10)")
+			(object Attribute
+			    tool       	"Java"
+			    name       	"Final"
+			    value      	TRUE))
+		    quid       	"37BD1C3D00D9"
+		    label      	"Lb10"
+		    supplier   	"Logical View::java::lang::Double"
+		    quidu      	"34B0F6CF02C0"
+		    is_navigable 	TRUE
+		    static     	TRUE)))
+	(object Association "$UNNAMED$44"
+	    attributes 	(list Attribute_Set)
+	    quid       	"37BD1C3D02C3"
+	    roles      	(list role_list
+		(object Role "$UNNAMED$45"
+		    quid       	"37BD1C3D02C4"
+		    supplier   	"Logical View::ByRef::TDouble"
+		    quidu      	"36BB4E3E00BD")
+		(object Role "Lg2"
+		    attributes 	(list Attribute_Set
+			(object Attribute
+			    tool       	"Java"
+			    name       	"InitialValue"
+			    value      	"new Double (LG2)")
+			(object Attribute
+			    tool       	"Java"
+			    name       	"Final"
+			    value      	TRUE))
+		    quid       	"37BD1C3D02F6"
+		    documentation 	
+|
+|	 
+		    
+		    label      	"Lg2"
+		    supplier   	"Logical View::java::lang::Double"
+		    quidu      	"34B0F6CF02C0"
+		    is_navigable 	TRUE
+		    static     	TRUE)))
+	(object Association "$UNNAMED$46"
+	    attributes 	(list Attribute_Set)
+	    quid       	"37BD1C3E010C"
+	    roles      	(list role_list
+		(object Role "$UNNAMED$47"
+		    quid       	"37BD1C3E010D"
+		    supplier   	"Logical View::ByRef::TDouble"
+		    quidu      	"36BB4E3E00BD")
+		(object Role "pi"
+		    attributes 	(list Attribute_Set
+			(object Attribute
+			    tool       	"Java"
+			    name       	"InitialValue"
+			    value      	"new Double (PI)")
+			(object Attribute
+			    tool       	"Java"
+			    name       	"Final"
+			    value      	TRUE))
+		    quid       	"37BD1C3E013E"
+		    documentation 	
+|Kreiszahl Pi = 3.1415926535897932386	 
+		    
+		    label      	"pi"
+		    supplier   	"Logical View::java::lang::Double"
+		    quidu      	"34B0F6CF02C0"
+		    is_navigable 	TRUE
+		    static     	TRUE)))
+	(object Association "$UNNAMED$48"
+	    attributes 	(list Attribute_Set)
+	    quid       	"37BD1C3E0333"
+	    roles      	(list role_list
+		(object Role "$UNNAMED$49"
+		    quid       	"37BD1C3E0334"
+		    supplier   	"Logical View::ByRef::TDouble"
+		    quidu      	"36BB4E3E00BD")
+		(object Role "e"
+		    attributes 	(list Attribute_Set
+			(object Attribute
+			    tool       	"Java"
+			    name       	"InitialValue"
+			    value      	"new Double (E)")
+			(object Attribute
+			    tool       	"Java"
+			    name       	"Final"
+			    value      	TRUE))
+		    quid       	"37BD1C3E0365"
+		    documentation 	
+|Eulersche Zahl e = 2.71828182845904523536	 
+		    
+		    label      	"e"
+		    supplier   	"Logical View::java::lang::Double"
+		    quidu      	"34B0F6CF02C0"
+		    is_navigable 	TRUE
+		    static     	TRUE)))
+	(object Association "$UNNAMED$50"
+	    attributes 	(list Attribute_Set)
+	    quid       	"37BD1C3F017C"
+	    roles      	(list role_list
+		(object Role "$UNNAMED$51"
+		    quid       	"37BD1C3F017D"
+		    supplier   	"Logical View::ByRef::TDouble"
+		    quidu      	"36BB4E3E00BD")
+		(object Role "c"
+		    attributes 	(list Attribute_Set
+			(object Attribute
+			    tool       	"Java"
+			    name       	"InitialValue"
+			    value      	"new Double (C)")
+			(object Attribute
+			    tool       	"Java"
+			    name       	"Final"
+			    value      	TRUE))
+		    quid       	"37BD1C3F01AE"
+		    documentation 	
+|Eulersche-Mascheroni-Konstante	 
+		    
+		    label      	"c"
+		    supplier   	"Logical View::java::lang::Double"
+		    quidu      	"34B0F6CF02C0"
+		    is_navigable 	TRUE
+		    static     	TRUE)))
+	(object Association "$UNNAMED$52"
+	    attributes 	(list Attribute_Set)
+	    quid       	"37BD1C3F0399"
+	    roles      	(list role_list
+		(object Role "$UNNAMED$53"
+		    quid       	"37BD1C3F039A"
+		    supplier   	"Logical View::ByRef::TDouble"
+		    quidu      	"36BB4E3E00BD")
+		(object Role "Feigen"
+		    attributes 	(list Attribute_Set
+			(object Attribute
+			    tool       	"Java"
+			    name       	"InitialValue"
+			    value      	"new Double (FEIGEN)")
+			(object Attribute
+			    tool       	"Java"
+			    name       	"Final"
+			    value      	TRUE))
+		    quid       	"37BD1C3F03CB"
+		    documentation 	
+|Feigenbaum-Delta :
+|	 * Grenzwert der Verhaeltnisse der Abstaende
+|	 * von quadratischen Bifurkationen*.
+|	 
+		    
+		    label      	"Feigen"
+		    supplier   	"Logical View::java::lang::Double"
+		    quidu      	"34B0F6CF02C0"
+		    is_navigable 	TRUE
+		    static     	TRUE)))
+	(object Association "$UNNAMED$54"
+	    attributes 	(list Attribute_Set)
+	    quid       	"37BD1C4001D7"
+	    roles      	(list role_list
+		(object Role "$UNNAMED$55"
+		    quid       	"37BD1C4001D8"
+		    supplier   	"Logical View::ByRef::TDouble"
+		    quidu      	"36BB4E3E00BD")
+		(object Role "PiHalf"
+		    attributes 	(list Attribute_Set
+			(object Attribute
+			    tool       	"Java"
+			    name       	"InitialValue"
+			    value      	"new Double (PIHALF)")
+			(object Attribute
+			    tool       	"Java"
+			    name       	"Final"
+			    value      	TRUE))
+		    quid       	"37BD1C400209"
+		    label      	"PiHalf"
+		    supplier   	"Logical View::java::lang::Double"
+		    quidu      	"34B0F6CF02C0"
+		    is_navigable 	TRUE
+		    static     	TRUE)))
+	(object Association "$UNNAMED$56"
+	    attributes 	(list Attribute_Set)
+	    quid       	"37BD1C410016"
+	    roles      	(list role_list
+		(object Role "$UNNAMED$57"
+		    quid       	"37BD1C410017"
+		    supplier   	"Logical View::ByRef::TDouble"
+		    quidu      	"36BB4E3E00BD")
+		(object Role "TwoPi"
+		    attributes 	(list Attribute_Set
+			(object Attribute
+			    tool       	"Java"
+			    name       	"InitialValue"
+			    value      	"new Double (TWOPI)")
+			(object Attribute
+			    tool       	"Java"
+			    name       	"Final"
+			    value      	TRUE))
+		    quid       	"37BD1C410048"
+		    label      	"TwoPi"
+		    supplier   	"Logical View::java::lang::Double"
+		    quidu      	"34B0F6CF02C0"
+		    is_navigable 	TRUE
+		    static     	TRUE)))
+	(object Association "$UNNAMED$58"
+	    attributes 	(list Attribute_Set)
+	    quid       	"37BD1C41023D"
+	    roles      	(list role_list
+		(object Role "$UNNAMED$59"
+		    quid       	"37BD1C41023E"
+		    supplier   	"Logical View::ByRef::TDouble"
+		    quidu      	"36BB4E3E00BD")
+		(object Role "FullGon"
+		    attributes 	(list Attribute_Set
+			(object Attribute
+			    tool       	"Java"
+			    name       	"InitialValue"
+			    value      	"new Double (FULLGON)")
+			(object Attribute
+			    tool       	"Java"
+			    name       	"Final"
+			    value      	TRUE))
+		    quid       	"37BD1C41026F"
+		    label      	"FullGon"
+		    supplier   	"Logical View::java::lang::Double"
+		    quidu      	"34B0F6CF02C0"
+		    is_navigable 	TRUE
+		    static     	TRUE)))
+	(object Association "$UNNAMED$60"
+	    attributes 	(list Attribute_Set)
+	    quid       	"37BD1C42007C"
+	    roles      	(list role_list
+		(object Role "$UNNAMED$61"
+		    quid       	"37BD1C42007D"
+		    supplier   	"Logical View::ByRef::TDouble"
+		    quidu      	"36BB4E3E00BD")
+		(object Role "FullDeg"
+		    attributes 	(list Attribute_Set
+			(object Attribute
+			    tool       	"Java"
+			    name       	"InitialValue"
+			    value      	"new Double (FULLDEG)")
+			(object Attribute
+			    tool       	"Java"
+			    name       	"Final"
+			    value      	TRUE))
+		    quid       	"37BD1C4200AE"
+		    label      	"FullDeg"
+		    supplier   	"Logical View::java::lang::Double"
+		    quidu      	"34B0F6CF02C0"
+		    is_navigable 	TRUE
+		    static     	TRUE)))
+	(object Association "$UNNAMED$62"
+	    attributes 	(list Attribute_Set)
+	    quid       	"37BD1C4202A3"
+	    roles      	(list role_list
+		(object Role "$UNNAMED$63"
+		    quid       	"37BD1C4202A4"
+		    supplier   	"Logical View::ByRef::TDouble"
+		    quidu      	"36BB4E3E00BD")
+		(object Role "Grad"
+		    attributes 	(list Attribute_Set
+			(object Attribute
+			    tool       	"Java"
+			    name       	"InitialValue"
+			    value      	"new Double (GRAD)")
+			(object Attribute
+			    tool       	"Java"
+			    name       	"Final"
+			    value      	TRUE))
+		    quid       	"37BD1C4202D5"
+		    label      	"Grad"
+		    supplier   	"Logical View::java::lang::Double"
+		    quidu      	"34B0F6CF02C0"
+		    is_navigable 	TRUE
+		    static     	TRUE)))
+	(object Association "$UNNAMED$64"
+	    attributes 	(list Attribute_Set)
+	    quid       	"37BD1C430113"
+	    roles      	(list role_list
+		(object Role "$UNNAMED$65"
+		    quid       	"37BD1C430114"
+		    supplier   	"Logical View::ByRef::TDouble"
+		    quidu      	"36BB4E3E00BD")
+		(object Role "Gon"
+		    attributes 	(list Attribute_Set
+			(object Attribute
+			    tool       	"Java"
+			    name       	"InitialValue"
+			    value      	"new Double (GON)")
+			(object Attribute
+			    tool       	"Java"
+			    name       	"Final"
+			    value      	TRUE))
+		    quid       	"37BD1C43013C"
+		    label      	"Gon"
+		    supplier   	"Logical View::java::lang::Double"
+		    quidu      	"34B0F6CF02C0"
+		    is_navigable 	TRUE
+		    static     	TRUE)))
+	(object Association "$UNNAMED$66"
+	    attributes 	(list Attribute_Set)
+	    quid       	"37BD1C430326"
+	    roles      	(list role_list
+		(object Role "$UNNAMED$67"
+		    quid       	"37BD1C430327"
+		    supplier   	"Logical View::ByRef::TDouble"
+		    quidu      	"36BB4E3E00BD")
+		(object Role "SqRt2"
+		    attributes 	(list Attribute_Set
+			(object Attribute
+			    tool       	"Java"
+			    name       	"InitialValue"
+			    value      	"new Double (SQRT2)")
+			(object Attribute
+			    tool       	"Java"
+			    name       	"Final"
+			    value      	TRUE))
+		    quid       	"37BD1C430358"
+		    label      	"SqRt2"
+		    supplier   	"Logical View::java::lang::Double"
+		    quidu      	"34B0F6CF02C0"
+		    is_navigable 	TRUE
+		    static     	TRUE)))
+	(object Association "$UNNAMED$68"
+	    attributes 	(list Attribute_Set)
+	    quid       	"37BD1C440179"
+	    roles      	(list role_list
+		(object Role "$UNNAMED$69"
+		    quid       	"37BD1C44017A"
+		    supplier   	"Logical View::ByRef::TDouble"
+		    quidu      	"36BB4E3E00BD")
+		(object Role "CbcRt2"
+		    attributes 	(list Attribute_Set
+			(object Attribute
+			    tool       	"Java"
+			    name       	"InitialValue"
+			    value      	"new Double (CBCRT2)")
+			(object Attribute
+			    tool       	"Java"
+			    name       	"Final"
+			    value      	TRUE))
+		    quid       	"37BD1C4401AB"
+		    label      	"CbcRt2"
+		    supplier   	"Logical View::java::lang::Double"
+		    quidu      	"34B0F6CF02C0"
+		    is_navigable 	TRUE
+		    static     	TRUE)))
+	(object Association "$UNNAMED$70"
+	    attributes 	(list Attribute_Set)
+	    quid       	"37BD1C440396"
+	    roles      	(list role_list
+		(object Role "$UNNAMED$71"
+		    quid       	"37BD1C440397"
+		    supplier   	"Logical View::ByRef::TDouble"
+		    quidu      	"36BB4E3E00BD")
+		(object Role "SqRt3"
+		    attributes 	(list Attribute_Set
+			(object Attribute
+			    tool       	"Java"
+			    name       	"InitialValue"
+			    value      	"new Double (SQRT3)")
+			(object Attribute
+			    tool       	"Java"
+			    name       	"Final"
+			    value      	TRUE))
+		    quid       	"37BD1C4403C8"
+		    label      	"SqRt3"
+		    supplier   	"Logical View::java::lang::Double"
+		    quidu      	"34B0F6CF02C0"
+		    is_navigable 	TRUE
+		    static     	TRUE)))
+	(object Association "$UNNAMED$72"
+	    attributes 	(list Attribute_Set)
+	    quid       	"37BD1C4501D5"
+	    roles      	(list role_list
+		(object Role "$UNNAMED$73"
+		    quid       	"37BD1C4501D6"
+		    supplier   	"Logical View::ByRef::TDouble"
+		    quidu      	"36BB4E3E00BD")
+		(object Role "SqRtPi"
+		    attributes 	(list Attribute_Set
+			(object Attribute
+			    tool       	"Java"
+			    name       	"InitialValue"
+			    value      	"new Double (SQRTPI)")
+			(object Attribute
+			    tool       	"Java"
+			    name       	"Final"
+			    value      	TRUE))
+		    quid       	"37BD1C450207"
+		    label      	"SqRtPi"
+		    supplier   	"Logical View::java::lang::Double"
+		    quidu      	"34B0F6CF02C0"
+		    is_navigable 	TRUE
+		    static     	TRUE)))
+	(object Association "$UNNAMED$74"
+	    attributes 	(list Attribute_Set)
+	    quid       	"37BD1C460009"
+	    roles      	(list role_list
+		(object Role "$UNNAMED$75"
+		    quid       	"37BD1C46000A"
+		    supplier   	"Logical View::ByRef::TDouble"
+		    quidu      	"36BB4E3E00BD")
+		(object Role "SqRt5"
+		    attributes 	(list Attribute_Set
+			(object Attribute
+			    tool       	"Java"
+			    name       	"InitialValue"
+			    value      	"new Double (SQRT5)")
+			(object Attribute
+			    tool       	"Java"
+			    name       	"Final"
+			    value      	TRUE))
+		    quid       	"37BD1C46003B"
+		    label      	"SqRt5"
+		    supplier   	"Logical View::java::lang::Double"
+		    quidu      	"34B0F6CF02C0"
+		    is_navigable 	TRUE
+		    static     	TRUE)))
+	(object Association "$UNNAMED$76"
+	    attributes 	(list Attribute_Set)
+	    quid       	"37BD1C460244"
+	    roles      	(list role_list
+		(object Role "$UNNAMED$77"
+		    quid       	"37BD1C460245"
+		    supplier   	"Logical View::ByRef::TDouble"
+		    quidu      	"36BB4E3E00BD")
+		(object Role "Golden"
+		    attributes 	(list Attribute_Set
+			(object Attribute
+			    tool       	"Java"
+			    name       	"InitialValue"
+			    value      	"new Double (GOLDEN)")
+			(object Attribute
+			    tool       	"Java"
+			    name       	"Final"
+			    value      	TRUE))
+		    quid       	"37BD1C460276"
+		    label      	"Golden"
+		    supplier   	"Logical View::java::lang::Double"
+		    quidu      	"34B0F6CF02C0"
+		    is_navigable 	TRUE
+		    static     	TRUE)))
+	(object Association "$UNNAMED$78"
+	    attributes 	(list Attribute_Set)
+	    quid       	"37BD1C470083"
+	    roles      	(list role_list
+		(object Role "$UNNAMED$79"
+		    quid       	"37BD1C470084"
+		    supplier   	"Logical View::ByRef::TDouble"
+		    quidu      	"36BB4E3E00BD")
+		(object Role "cGolden"
+		    attributes 	(list Attribute_Set
+			(object Attribute
+			    tool       	"Java"
+			    name       	"InitialValue"
+			    value      	"new Double (CGOLDEN)")
+			(object Attribute
+			    tool       	"Java"
+			    name       	"Final"
+			    value      	TRUE))
+		    quid       	"37BD1C4700BF"
+		    label      	"cGolden"
+		    supplier   	"Logical View::java::lang::Double"
+		    quidu      	"34B0F6CF02C0"
+		    is_navigable 	TRUE
+		    static     	TRUE)))
+	(object Association "$UNNAMED$80"
+	    attributes 	(list Attribute_Set)
+	    quid       	"37BD1C4702BE"
+	    roles      	(list role_list
+		(object Role "$UNNAMED$81"
+		    quid       	"37BD1C4702BF"
+		    supplier   	"Logical View::ByRef::TDouble"
+		    quidu      	"36BB4E3E00BD")
+		(object Role "OneGolden"
+		    attributes 	(list Attribute_Set
+			(object Attribute
+			    tool       	"Java"
+			    name       	"InitialValue"
+			    value      	"new Double (ONEGOLDEN)")
+			(object Attribute
+			    tool       	"Java"
+			    name       	"Final"
+			    value      	TRUE))
+		    quid       	"37BD1C4702F0"
+		    label      	"OneGolden"
+		    supplier   	"Logical View::java::lang::Double"
+		    quidu      	"34B0F6CF02C0"
+		    is_navigable 	TRUE
+		    static     	TRUE)))
+	(object Association "$UNNAMED$82"
+	    attributes 	(list Attribute_Set)
+	    quid       	"37BD1C480107"
+	    roles      	(list role_list
+		(object Role "$UNNAMED$83"
+		    quid       	"37BD1C480108"
+		    supplier   	"Logical View::ByRef::TDouble"
+		    quidu      	"36BB4E3E00BD")
+		(object Role "LnOneGolden"
+		    attributes 	(list Attribute_Set
+			(object Attribute
+			    tool       	"Java"
+			    name       	"InitialValue"
+			    value      	"new Double (LNONEGOLDEN)")
+			(object Attribute
+			    tool       	"Java"
+			    name       	"Final"
+			    value      	TRUE))
+		    quid       	"37BD1C480139"
+		    label      	"LnOneGolden"
+		    supplier   	"Logical View::java::lang::Double"
+		    quidu      	"34B0F6CF02C0"
+		    is_navigable 	TRUE
+		    static     	TRUE)))
+	(object Association "$UNNAMED$84"
+	    attributes 	(list Attribute_Set)
+	    quid       	"37BD1C480337"
+	    roles      	(list role_list
+		(object Role "$UNNAMED$85"
+		    quid       	"37BD1C480338"
+		    supplier   	"Logical View::ByRef::TDouble"
+		    quidu      	"36BB4E3E00BD")
+		(object Role "SqrCbcRt2"
+		    attributes 	(list Attribute_Set
+			(object Attribute
+			    tool       	"Java"
+			    name       	"InitialValue"
+			    value      	"new Double (SQRCBCRT2)")
+			(object Attribute
+			    tool       	"Java"
+			    name       	"Final"
+			    value      	TRUE))
+		    quid       	"37BD1C480369"
+		    label      	"SqrCbcRt2"
+		    supplier   	"Logical View::java::lang::Double"
+		    quidu      	"34B0F6CF02C0"
+		    is_navigable 	TRUE
+		    static     	TRUE)))
+	(object Association "$UNNAMED$86"
+	    attributes 	(list Attribute_Set)
+	    quid       	"37BD1C490176"
+	    roles      	(list role_list
+		(object Role "$UNNAMED$87"
+		    quid       	"37BD1C490177"
+		    supplier   	"Logical View::ByRef::TDouble"
+		    quidu      	"36BB4E3E00BD")
+		(object Role "Epsilon"
+		    attributes 	(list Attribute_Set
+			(object Attribute
+			    tool       	"Java"
+			    name       	"InitialValue"
+			    value      	"new Double (EPSILON)")
+			(object Attribute
+			    tool       	"Java"
+			    name       	"Final"
+			    value      	TRUE))
+		    quid       	"37BD1C4901B2"
+		    label      	"Epsilon"
+		    supplier   	"Logical View::java::lang::Double"
+		    quidu      	"34B0F6CF02C0"
+		    is_navigable 	TRUE
+		    static     	TRUE))))
+    logical_presentations 	(list unit_reference_list
+	(object ClassDiagram "ByRef"
+	    quid       	"36BB4FCD0324"
+	    title      	"ByRef"
+	    zoom       	100
+	    max_height 	28350
+	    max_width  	21600
+	    origin_x   	0
+	    origin_y   	0
+	    items      	(list diagram_item_list
+		(object ClassView "Class" "Logical View::ByRef::intMeasurable" @1
+		    ShowCompartmentStereotypes 	TRUE
+		    IncludeAttribute 	TRUE
+		    location   	(775, 93)
+		    label      	(object ItemLabel
+			Parent_View 	@1
+			location   	(630, 64)
+			fill_color 	13434879
+			nlines     	1
+			max_width  	290
+			justify    	0
+			label      	"intMeasurable")
+		    stereotype 	(object ItemLabel
+			Parent_View 	@1
+			location   	(630, 14)
+			fill_color 	13434879
+			anchor     	10
+			nlines     	1
+			max_width  	290
+			justify    	0
+			label      	"<<Interface>>")
+		    icon       	"Interface"
+		    icon_style 	"Label"
+		    line_color 	3342489
+		    fill_color 	13434879
+		    quidu      	"36BB4E3E02BC"
+		    width      	308
+		    height     	182
+		    annotation 	8
+		    autoResize 	TRUE)
+		(object ClassView "Class" "Logical View::ByRef::TDouble" @2
+		    ShowCompartmentStereotypes 	TRUE
+		    IncludeAttribute 	TRUE
+		    location   	(1612, 1581)
+		    label      	(object ItemLabel
+			Parent_View 	@2
+			location   	(1137, 500)
+			fill_color 	13434879
+			nlines     	1
+			max_width  	950
+			justify    	0
+			label      	"TDouble")
+		    icon_style 	"Icon"
+		    line_color 	3342489
+		    fill_color 	13434879
+		    quidu      	"36BB4E3E00BD"
+		    width      	968
+		    height     	2186
+		    annotation 	8
+		    autoResize 	TRUE)
+		(object ClassView "Class" "Logical View::ByRef::ByRefLong" @3
+		    ShowCompartmentStereotypes 	TRUE
+		    IncludeAttribute 	TRUE
+		    location   	(155, 372)
+		    label      	(object ItemLabel
+			Parent_View 	@3
+			location   	(21, 291)
+			fill_color 	13434879
+			nlines     	1
+			max_width  	268
+			justify    	0
+			label      	"ByRefLong")
+		    icon_style 	"Icon"
+		    line_color 	3342489
+		    fill_color 	13434879
+		    quidu      	"36BB4E3D0120"
+		    width      	286
+		    height     	186
+		    annotation 	8
+		    autoResize 	TRUE)
+		(object RealizeView "" @4
+		    stereotype 	TRUE
+		    line_color 	3342489
+		    quidu      	"37BD3635001A"
+		    client     	@3
+		    supplier   	@1
+		    line_style 	0)
+		(object ClassView "Class" "Logical View::ByRef::ByRefDouble" @5
+		    ShowCompartmentStereotypes 	TRUE
+		    IncludeAttribute 	TRUE
+		    location   	(527, 372)
+		    label      	(object ItemLabel
+			Parent_View 	@5
+			location   	(371, 291)
+			fill_color 	13434879
+			nlines     	1
+			max_width  	312
+			justify    	0
+			label      	"ByRefDouble")
+		    icon_style 	"Icon"
+		    line_color 	3342489
+		    fill_color 	13434879
+		    quidu      	"36BB4E3D0274"
+		    width      	330
+		    height     	186
+		    annotation 	8
+		    autoResize 	TRUE)
+		(object RealizeView "" @6
+		    stereotype 	TRUE
+		    line_color 	3342489
+		    quidu      	"37BD362E020E"
+		    client     	@5
+		    supplier   	@1
+		    line_style 	0)
+		(object ClassView "Class" "Logical View::ByRef::ByRefChar" @7
+		    ShowCompartmentStereotypes 	TRUE
+		    IncludeAttribute 	TRUE
+		    location   	(899, 372)
+		    label      	(object ItemLabel
+			Parent_View 	@7
+			location   	(763, 291)
+			fill_color 	13434879
+			nlines     	1
+			max_width  	272
+			justify    	0
+			label      	"ByRefChar")
+		    icon_style 	"Icon"
+		    line_color 	3342489
+		    fill_color 	13434879
+		    quidu      	"36BB4E3E0013"
+		    width      	290
+		    height     	186
+		    annotation 	8
+		    autoResize 	TRUE)
+		(object RealizeView "" @8
+		    stereotype 	TRUE
+		    line_color 	3342489
+		    quidu      	"37BD362C0111"
+		    client     	@7
+		    supplier   	@1
+		    line_style 	0)
+		(object ClassView "Class" "Logical View::ByRef::ByRefShort" @9
+		    ShowCompartmentStereotypes 	TRUE
+		    IncludeAttribute 	TRUE
+		    location   	(1240, 372)
+		    label      	(object ItemLabel
+			Parent_View 	@9
+			location   	(1098, 291)
+			fill_color 	13434879
+			nlines     	1
+			max_width  	284
+			justify    	0
+			label      	"ByRefShort")
+		    icon_style 	"Icon"
+		    line_color 	3342489
+		    fill_color 	13434879
+		    quidu      	"36BB4E3F024F"
+		    width      	302
+		    height     	186
+		    annotation 	8
+		    autoResize 	TRUE)
+		(object RealizeView "" @10
+		    stereotype 	TRUE
+		    line_color 	3342489
+		    quidu      	"37BD3638021D"
+		    client     	@9
+		    supplier   	@1
+		    line_style 	0)
+		(object ClassView "Class" "Logical View::ByRef::ByRefFloat" @11
+		    ShowCompartmentStereotypes 	TRUE
+		    IncludeAttribute 	TRUE
+		    location   	(1581, 372)
+		    label      	(object ItemLabel
+			Parent_View 	@11
+			location   	(1447, 291)
+			fill_color 	13434879
+			nlines     	1
+			max_width  	268
+			justify    	0
+			label      	"ByRefFloat")
+		    icon_style 	"Icon"
+		    line_color 	3342489
+		    fill_color 	13434879
+		    quidu      	"36BB4E3F037C"
+		    width      	286
+		    height     	186
+		    annotation 	8
+		    autoResize 	TRUE)
+		(object RealizeView "" @12
+		    stereotype 	TRUE
+		    line_color 	3342489
+		    quidu      	"37BD363002A8"
+		    client     	@11
+		    supplier   	@1
+		    line_style 	0)
+		(object ClassView "Class" "Logical View::ByRef::measurable" @13
+		    ShowCompartmentStereotypes 	TRUE
+		    IncludeAttribute 	TRUE
+		    location   	(186, 93)
+		    label      	(object ItemLabel
+			Parent_View 	@13
+			location   	(67, 42)
+			fill_color 	13434879
+			nlines     	1
+			max_width  	238
+			justify    	0
+			label      	"measurable")
+		    icon_style 	"Icon"
+		    line_color 	3342489
+		    fill_color 	13434879
+		    quidu      	"36BB4E3D030A"
+		    width      	256
+		    height     	126
+		    annotation 	8
+		    autoResize 	TRUE)
+		(object ClassView "Class" "Logical View::ByRef::countable" @14
+		    ShowCompartmentStereotypes 	TRUE
+		    IncludeAttribute 	TRUE
+		    location   	(1705, 93)
+		    label      	(object ItemLabel
+			Parent_View 	@14
+			location   	(1599, 42)
+			fill_color 	13434879
+			nlines     	1
+			max_width  	212
+			justify    	0
+			label      	"countable")
+		    icon_style 	"Icon"
+		    line_color 	3342489
+		    fill_color 	13434879
+		    quidu      	"36BB4E3E0230"
+		    width      	230
+		    height     	126
+		    annotation 	8
+		    autoResize 	TRUE)
+		(object ClassView "Class" "Logical View::ByRef::intCountable" @15
+		    ShowCompartmentStereotypes 	TRUE
+		    IncludeAttribute 	TRUE
+		    location   	(1302, 93)
+		    label      	(object ItemLabel
+			Parent_View 	@15
+			location   	(1174, 64)
+			fill_color 	13434879
+			nlines     	1
+			max_width  	256
+			justify    	0
+			label      	"intCountable")
+		    stereotype 	(object ItemLabel
+			Parent_View 	@15
+			location   	(1174, 14)
+			fill_color 	13434879
+			anchor     	10
+			nlines     	1
+			max_width  	256
+			justify    	0
+			label      	"<<Interface>>")
+		    icon       	"Interface"
+		    icon_style 	"Label"
+		    line_color 	3342489
+		    fill_color 	13434879
+		    quidu      	"36BB4E3E0348"
+		    width      	274
+		    height     	182
+		    annotation 	8
+		    autoResize 	TRUE)
+		(object ClassView "Class" "Logical View::ByRef::ByRefObject" @16
+		    ShowCompartmentStereotypes 	TRUE
+		    IncludeAttribute 	TRUE
+		    location   	(279, 1116)
+		    label      	(object ItemLabel
+			Parent_View 	@16
+			location   	(152, 1065)
+			fill_color 	13434879
+			nlines     	1
+			max_width  	254
+			justify    	0
+			label      	"ByRefObject")
+		    icon_style 	"Icon"
+		    line_color 	3342489
+		    fill_color 	13434879
+		    quidu      	"36BB4E3F0169"
+		    width      	272
+		    height     	126
+		    annotation 	8
+		    autoResize 	TRUE)
+		(object ClassView "Class" "Logical View::ByRef::ByRefByte" @17
+		    ShowCompartmentStereotypes 	TRUE
+		    IncludeAttribute 	TRUE
+		    location   	(682, 744)
+		    label      	(object ItemLabel
+			Parent_View 	@17
+			location   	(396, 613)
+			fill_color 	13434879
+			nlines     	1
+			max_width  	572
+			justify    	0
+			label      	"ByRefByte")
+		    icon_style 	"Icon"
+		    line_color 	3342489
+		    fill_color 	13434879
+		    quidu      	"36BB4E3F00F1"
+		    width      	590
+		    height     	286
+		    annotation 	8
+		    autoResize 	TRUE)
+		(object RealizeView "" @18
+		    stereotype 	TRUE
+		    line_color 	3342489
+		    quidu      	"37BD3629033E"
+		    client     	@17
+		    supplier   	@1
+		    line_style 	0)
+		(object ClassView "Class" "Logical View::ByRef::ByRefBoolean" @19
+		    ShowCompartmentStereotypes 	TRUE
+		    IncludeAttribute 	TRUE
+		    location   	(186, 744)
+		    label      	(object ItemLabel
+			Parent_View 	@19
+			location   	(19, 663)
+			fill_color 	13434879
+			nlines     	1
+			max_width  	334
+			justify    	0
+			label      	"ByRefBoolean")
+		    icon_style 	"Icon"
+		    line_color 	3342489
+		    fill_color 	13434879
+		    quidu      	"37BC8EC000A3"
+		    width      	352
+		    height     	186
+		    annotation 	8
+		    autoResize 	TRUE)
+		(object ClassView "Class" "Logical View::ByRef::ByRefInt" @20
+		    ShowCompartmentStereotypes 	TRUE
+		    IncludeAttribute 	TRUE
+		    location   	(1922, 372)
+		    label      	(object ItemLabel
+			Parent_View 	@20
+			location   	(1804, 291)
+			fill_color 	13434879
+			nlines     	1
+			max_width  	236
+			justify    	0
+			label      	"ByRefInt")
+		    icon_style 	"Icon"
+		    line_color 	3342489
+		    fill_color 	13434879
+		    quidu      	"36BB4E3F02D1"
+		    width      	254
+		    height     	186
+		    annotation 	8
+		    autoResize 	TRUE)
+		(object RealizeView "" @21
+		    stereotype 	TRUE
+		    line_color 	3342489
+		    quidu      	"37BD36320355"
+		    client     	@20
+		    supplier   	@1
+		    line_style 	0)))))

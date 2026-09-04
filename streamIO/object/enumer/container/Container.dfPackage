@@ -1,0 +1,332 @@
+package id41lmmc9g0327jc9gp1ax2;
+
+/**
+@version 2.0
+@physicalPackage
+@__modelType diagram 
+*/
+class diagram {
+/**
+@__ref <oiref:java#Class#Stream.Object.Enumerator.Container.Container:oiref><oihard>
+@__modelType reference 
+*/
+class reference {
+}/**
+@__ref <oiref:java#Class#Stream.Object.Enumerator.Container.ListContainer:oiref><oihard>
+@__modelType reference 
+*/
+class reference425 {
+}/**
+@__ref <oiref:java#Class#Stream.Object.Enumerator.Container.AContainer:oiref><oihard>
+@__modelType reference 
+@hideOperations*/
+class reference1 {
+}/**
+@__ref <oiref:java#Class#Stream.Object.Enumerator.Container.HashContainer:oiref><oihard>
+@__modelType reference 
+@hideOperations
+*/
+class reference5 {
+}/**
+@__ref <oiref:java#Class#Stream.Object.Enumerator.Container.HashIterator:oiref><oihard>
+@__modelType reference 
+*/
+class reference8 {
+}/**
+@__ref <oiref:java#Class#Stream.Object.Enumerator.Container.HashEntry:oiref><oihard>
+@__modelType reference 
+@hideOperations
+*/
+class reference2 {
+}/**
+@__ref <oiref:java#Class#Stream.Object.Enumerator.Container.Relation:oiref><oihard>
+@__modelType reference 
+@hideOperations
+*/
+class reference3 {
+}/**
+@__ref <oiref:java#Class#Stream.Object.Enumerator.Container.DeQueueArr:oiref><oihard>
+@__modelType reference 
+@hideOperations
+*/
+class reference7 {
+}/**
+@__ref <oiref:java#Class#Stream.Object.Enumerator.Container.Heap:oiref><oihard>
+@__modelType reference 
+*/
+class reference4 {
+}/**
+@__ref <oiref:java#Class#Stream.Object.Enumerator.Container.Join:oiref><oihard>
+@__modelType reference 
+*/
+class reference10 {
+}/**
+@__ref <oiref:java#Class#Stream.Object.Enumerator.Container.PQueueArr:oiref><oihard>
+@__modelType reference 
+*/
+class reference11 {
+}/**
+@__ref <oiref:java#Class#Stream.Object.Enumerator.Container.ArrayIterator:oiref><oihard>
+@__modelType reference 
+*/
+class reference6 {
+}/**
+@__ref <oiref:java#Class#Stream.Object.Enumerator.Container.Array:oiref><oihard>
+@__modelType reference 
+@hideOperations
+*/
+class reference9 {
+}/**
+@__ref <oiref:java#Class#Stream.Object.Enumerator.Container.RAContainer:oiref><oihard>
+@__modelType reference */
+class reference14 {
+}/**
+@__ref <oiref:java#Class#Stream.Object.Enumerator.Container.ARAContainer:oiref><oihard>
+@__modelType reference 
+*/
+class reference16 {
+}/**
+@__ref <oiref:java#Class#Stream.Object.Enumerator.Container.ArraySorted:oiref><oihard>
+@__modelType reference 
+*/
+class reference19 {
+}/**
+@__ref <oiref:java#Class#Stream.Object.Enumerator.Container.CharColl:oiref><oihard>
+@__modelType reference 
+*/
+class reference18 {
+}/**
+@__ref <oiref:java#Class#Stream.Object.Enumerator.Container.CharIterator:oiref><oihard>
+@__modelType reference 
+*/
+class reference20 {
+}/**
+@__ref <oiref:java#Class#Stream.Object.Enumerator.Container.Hunter:oiref><oihard>
+@__modelType reference 
+*/
+class reference21 {
+}/**
+@__ref <oiref:java#Class#Stream.Object.Enumerator.Container.Index:oiref><oihard>
+@__modelType reference 
+*/
+class reference22 {
+}/**
+@__ref <oiref:java#Class#Stream.Object.Enumerator.Container.ChangeObserver:oiref><oihard>
+@__modelType reference 
+*/
+class reference23 {
+}/**
+@__ref <oiref:java#Class#Stream.Object.Enumerator.Container.ChangeMultiCaster:oiref><oihard>
+@__modelType reference 
+*/
+class reference26 {
+}/**
+@__ref <oiref:java#Class#Stream.Object.Enumerator.Container.ChangeEventSource:oiref><oihard>
+@__modelType reference 
+*/
+class reference27 {
+}/**
+@__ref <oiref:java#Class#Stream.Object.Enumerator.Container.RecordSet:oiref><oihard>
+@__modelType reference 
+@hideOperations
+*/
+class reference12 {
+}/**
+@__ref <oiref:java#Class#Stream.Object.Enumerator.Container.JoinStreamByEquivalence:oiref><oihard>
+@__modelType reference 
+*/
+class reference15 {
+}/**
+@__ref <oiref:java#Class#Stream.Object.Enumerator.Container.JoinStreamByFields:oiref><oihard>
+@__modelType reference 
+*/
+class reference24 {
+}/**
+@__ref <oiref:java#Class#Stream.Object.Enumerator.Container.FlattenStream:oiref><oihard>
+@__modelType reference 
+*/
+class reference28 {
+}/**
+@__ref <oiref:java#Class#Stream.Object.Enumerator.Container.KeyEquivalence:oiref><oihard>
+@__modelType reference 
+*/
+class reference29 {
+}/**
+@__ref <oiref:java#Class#Stream.Object.Enumerator.Container.KeysEquivalence:oiref><oihard>
+@__modelType reference 
+*/
+class reference17 {
+}/**
+@__ref <oiref:java#Class#Stream.Object.Enumerator.Container.JoinStreamByKeyIndex:oiref><oihard>
+@__modelType reference 
+*/
+class reference25 {
+}/**
+@__ref <oiref:java#Class#Stream.Object.Enumerator.Container.JoinStreamByKeysIndex:oiref><oihard>
+@__modelType reference 
+*/
+class reference33 {
+}/**
+@__ref <oiref:java#Class#Stream.Object.Enumerator.Container.DebitContainer:oiref><oihard>
+@__modelType reference 
+*/
+class reference31 {
+}/**
+@__ref <oiref:java#Class#Stream.Object.Enumerator.Container.EquivalenceByRelation:oiref><oihard>
+@__modelType reference 
+*/
+class reference13 {
+}/**
+@__ref <oiref:java#Class#Stream.Object.Enumerator.Container.MapIterator:oiref><oihard>
+@__modelType reference 
+*/
+class reference30 {
+}/**
+@__ref <oiref:java#Class#Stream.Object.Enumerator.Container.Edge:oiref><oihard>
+@__modelType reference 
+*/
+class reference41 {
+}/**
+@__ref <oiref:java#Class#Stream.Object.Enumerator.Container.findValueTester:oiref><oihard>
+@__modelType reference 
+*/
+class reference44 {
+}/**
+@__ref <oiref:design#Class#id3m9tpcfybntnncfycnzd7.diagram:oiref><oihard>
+@__modelType reference
+@__fqn <oiref:#Package#Stream.Object.Enumerator.Container.Util:oiref> 
+*/
+class reference34 {
+}/**
+@__ref <oiref:java#Class#Stream.Object.Enumerator.Container.AContainer:oiref><oihard>
+@__modelType reference 
+*/
+class reference35 {
+}/**
+@__ref <oiref:java#Class#Stream.Object.Enumerator.Container.Function:oiref><oihard>
+@__modelType reference 
+*/
+class reference32 {
+}/**
+@__ref <oiref:java#Class#Stream.Object.Enumerator.Container.Set:oiref><oihard>
+@__modelType reference 
+*/
+class reference36 {
+}/**
+@__ref <oiref:java#Class#Stream.Object.Enumerator.Container.Bag:oiref><oihard>
+@__modelType reference 
+*/
+class reference39 {
+}/**
+@__ref <oiref:java#Class#Stream.Object.Enumerator.Container.BagIterator:oiref><oihard>
+@__modelType reference 
+*/
+class reference40 {
+}/**
+@__ref <oiref:java#Class#Stream.Object.Enumerator.Container.IContainer:oiref><oihard>
+@__modelType reference 
+*/
+class reference42 {
+}}/**
+@__tags
+@shapeType ClassDiagram 
+*/
+class __tags {
+}/**
+@__options 
+*/
+class __options {
+}/**
+@__positions 
+<oigroup:<oiref:java#Class#Stream.Object.Enumerator.Container.DeQueueArr:oiref>=770,730,200,251,1:oigroup>
+<oigroup:MemberLink#<oiref:java#Member#Array.ArrayIterator#array:oiref>=850,256,560,852:oigroup>
+<oigroup:<oiref:java#Implements#Stream.Object.Enumerator.Container.ChangeMultiCaster#Stream.Object.Enumerator.Container.ChangeObserver:oiref>=460,680,440,680:oigroup>
+<oigroup:<oiref:java#Class#Stream.Object.Enumerator.Container.HashEntry:oiref>=750,360,132,219,1:oigroup>
+<oigroup:<oiref:java#Class#Stream.Object.Enumerator.Container.CharIterator:oiref>=1670,920,200,254,1:oigroup>
+<oigroup:<oiref:java#Class#Stream.Object.Enumerator.Container.JoinStreamByKeyIndex:oiref>=680,590,200,158,1:oigroup>
+<oigroup:MemberLink#<oiref:java#Member#Stream.Object.Enumerator.Container.DQArrayIterator#DQ:oiref>=540,176,1110,742:oigroup>
+<oigroup:<oiref:java#Class#Stream.Object.Enumerator.Container.ArrayIterator:oiref>=1439,609,200,302,1:oigroup>
+<oigroup:<oiref:java#Extends#Stream.Object.Enumerator.Container.ListContainer#Stream.Object.Enumerator.Container.Container:oiref>=250,154,210,154:oigroup>
+<oigroup:MemberLink#<oiref:java#Member#Stream.Object.Enumerator.Container.HashIterator#next:oiref>=1000,504,882,504:oigroup>
+<oigroup:<oiref:java#Class#Stream.Object.Enumerator.Container.Container:oiref>=10,10,200,766,1:oigroup>
+<oigroup:MemberLink#<oiref:java#Member#Stream.Object.Enumerator.Container.RecordSet#rs:oiref>=637,316,637,357,709,357,709,285,668,285:oigroup>
+<oigroup:MemberLink#<oiref:java#Member#Stream.Object.Enumerator.Container.RecordSet#currItem:oiref>=103,1340,103,1279:oigroup>
+<oigroup:<oiref:java#Implements#Stream.Object.Enumerator.Container.ARAContainer#Stream.Object.Enumerator.Container.RAContainer:oiref>=1345,1039,899,270:oigroup>
+<oigroup:<oiref:java#Extends#Stream.Object.Enumerator.Container.Container#Stream.Object.Enumerator.Container.ChangeEventSource:oiref>=210,756,240,756:oigroup>
+<oigroup:MemberLink#<oiref:java#Member#Stream.Object.Enumerator.Container.DebitContainer#mCredit:oiref>=1219,269,210,269:oigroup>
+<oigroup:<oiref:java#Class#Stream.Object.Enumerator.Container.RecordSet:oiref>=40,1340,200,235,1:oigroup>
+<oigroup:<oiref:java#Class#Stream.Object.Enumerator.Container.FlattenStream:oiref>=449,8,200,222,1:oigroup>
+<oigroup:<oiref:java#Implements#Stream.Object.Enumerator.Container.AContainer#Stream.Object.Enumerator.Container.Container:oiref>=249,281,210,281:oigroup>
+<oigroup:<oiref:java#Class#Stream.Object.Enumerator.Container.ArraySorted:oiref>=1210,1280,200,670,1:oigroup>
+<oigroup:<oiref:java#Class#Stream.Object.Enumerator.Container.Array:oiref>=479,869,177,203,1:oigroup>
+<oigroup:<oiref:java#Class#Stream.Object.Enumerator.Container.Join:oiref>=1250,40,157,142,1:oigroup>
+<oigroup:MemberLink#<oiref:java#Member#Stream.Object.Enumerator.Container.RecordSet#mRS:oiref>=640,300,640,338,706,338,706,272,668,272:oigroup>
+<oigroup:MemberLink#<oiref:java#Member#Stream.Object.Enumerator.Container.JoinStreamByKeysIndex#mRel:oiref>=200,1013,166,1013:oigroup>
+<oigroup:<oiref:java#Class#Stream.Object.Enumerator.Container.ChangeMultiCaster:oiref>=460,650,200,110,1:oigroup>
+<oigroup:<oiref:java#Extends#Stream.Object.Enumerator.Container.HashContainer#Stream.Object.Enumerator.Container.AContainer:oiref>=490,381,423,381:oigroup>
+<oigroup:<oiref:java#Class#Stream.Object.Enumerator.Container.Edge:oiref>=500,1210,200,126,1:oigroup>
+<oigroup:<oiref:java#Class#Stream.Object.Enumerator.Container.JoinStreamByKeysIndex:oiref>=200,910,200,206,1:oigroup>
+<oigroup:MemberLink#<oiref:java#Member#Stream.Object.Enumerator.Container.RecordSet#mCnt:oiref>=468,213,210,213:oigroup>
+<oigroup:<oiref:java#Class#Stream.Object.Enumerator.Container.JoinStreamByEquivalence:oiref>=962,3,200,222,1:oigroup>
+<oigroup:<oiref:java#Extends#Stream.Object.Enumerator.Container.RAContainer#Stream.Object.Enumerator.Container.Container:oiref>=749,58,210,58:oigroup>
+<oigroup:MemberLink#<oiref:java#Member#Stream.Object.Enumerator.Container.Index#ref:oiref>=1550,1460,849,270:oigroup>
+<oigroup:<oiref:java#Extends#Stream.Object.Enumerator.Container.Index#Stream.Object.Enumerator.Container.ArraySorted:oiref>=1450,1579,1410,1579:oigroup>
+<oigroup:<oiref:java#Class#Stream.Object.Enumerator.Container.Heap:oiref>=770,1030,200,574,1:oigroup>
+<oigroup:MemberLink#<oiref:java#Member#Stream.Object.Enumerator.Container.EquivalenceByRelation#mRelEq:oiref>=200,1209,166,1209:oigroup>
+<oigroup:<oiref:java#Class#Stream.Object.Enumerator.Container.EquivalenceByRelation:oiref>=200,1140,200,142,1:oigroup>
+<oigroup:MemberLink#<oiref:java#Member#Stream.Object.Enumerator.Container.AContainer#mEnum:oiref>=449,480,1000,480:oigroup>
+<oigroup:MemberLink#<oiref:java#Member#Stream.Object.Enumerator.Container.HashContainer#mTable:oiref>=690,468,750,468:oigroup>
+<oigroup:<oiref:java#Class#Stream.Object.Enumerator.Container.MapIterator:oiref>=989,1348,200,270,1:oigroup>
+<oigroup:MemberLink#<oiref:java#Member#Stream.Object.Enumerator.Container.HashIterator#table:oiref>=1000,334,690,334:oigroup>
+<oigroup:MemberLink#<oiref:java#Member#Container.DQArrayIterator#DQ:oiref>=540,176,1110,742:oigroup>
+<oigroup:<oiref:java#Extends#Stream.Object.Enumerator.Container.Array#Stream.Object.Enumerator.Container.ARAContainer:oiref>=656,1055,1229,1055:oigroup>
+<oigroup:<oiref:java#Class#Stream.Object.Enumerator.Container.ChangeObserver:oiref>=240,610,200,101,1:oigroup>
+<oigroup:<oiref:java#Class#Stream.Object.Enumerator.Container.ListContainer:oiref>=250,80,180,133,1:oigroup>
+<oigroup:MemberLink#<oiref:java#Member#Stream.Object.Enumerator.Container.HashtableEntry#mNext:oiref>=601,450,601,500,691,500,691,410,641,410:oigroup>
+<oigroup:<oiref:java#Class#Stream.Object.Enumerator.Container.HashContainer:oiref>=490,260,200,219,1:oigroup>
+<oigroup:MemberLink#<oiref:java#Member#Stream.Object.Enumerator.Container.HashEntry#mNext:oiref>=856,579,856,615,918,615,918,553,882,553:oigroup>
+<oigroup:<oiref:java#Class#Stream.Object.Enumerator.Container.RAContainer:oiref>=749,9,200,261,1:oigroup>
+<oigroup:<oiref:java#Extends#Stream.Object.Enumerator.Container.Array#Stream.Object.Enumerator.Container.AContainer:oiref>=512,869,323,449:oigroup>
+<oigroup:MemberLink#<oiref:java#Member#Stream.Object.Enumerator.Container.Relation#mValues:oiref>=56,900,56,776:oigroup>
+<oigroup:<oiref:java#Class#Stream.Object.Enumerator.Container.AContainer:oiref>=249,246,174,203,1:oigroup>
+<oigroup:<oiref:java#Implements#Stream.Object.Enumerator.Container.ChangeMultiCaster#Stream.Object.Enumerator.Container.ChangeEventSource:oiref>=460,740,440,740:oigroup>
+<oigroup:<oiref:java#Class#Stream.Object.Enumerator.Container.KeysEquivalence:oiref>=1229,658,200,142,1:oigroup>
+<oigroup:<oiref:java#Class#Stream.Object.Enumerator.Container.CharColl:oiref>=1450,920,200,350,1:oigroup>
+<oigroup:<oiref:java#Class#Stream.Object.Enumerator.Container.Index:oiref>=1450,1460,200,238,1:oigroup>
+<oigroup:MemberLink#<oiref:java#Member#Stream.Object.Enumerator.Container.Hunter#mArray:oiref>=1450,1369,1410,1369:oigroup>
+<oigroup:MemberLink#<oiref:java#Member#Stream.Object.Enumerator.Container.HashIterator#curr:oiref>=1000,448,882,448:oigroup>
+<oigroup:<oiref:java#Class#Stream.Object.Enumerator.Container.Hunter:oiref>=1450,1290,200,158,1:oigroup>
+<oigroup:<oiref:java#Class#Stream.Object.Enumerator.Container.DebitContainer:oiref>=1219,198,200,286,1:oigroup>
+<oigroup:<oiref:java#Extends#Stream.Object.Enumerator.Container.DeQueueArr#Stream.Object.Enumerator.Container.AContainer:oiref>=870,730,398,449:oigroup>
+<oigroup:MemberLink#<oiref:java#Member#Stream.Object.Enumerator.Container.DebitContainer#mDebit:oiref>=1219,340,210,340:oigroup>
+<oigroup:MemberLink#<oiref:java#Member#Stream.Object.Enumerator.Container.MapIterator#relIter:oiref>=1094,1348,1094,776:oigroup>
+<oigroup:<oiref:java#Class#Stream.Object.Enumerator.Container.HashIterator:oiref>=1000,250,200,526,1:oigroup>
+<oigroup:MemberLink#<oiref:java#Member#Stream.Object.Enumerator.Container.HashContainer#iter:oiref>=690,458,1000,458:oigroup>
+<oigroup:<oiref:java#Class#Stream.Object.Enumerator.Container.findValueTester:oiref>=1423,2,142,158,1:oigroup>
+<oigroup:<oiref:java#Class#Stream.Object.Enumerator.Container.ChangeEventSource:oiref>=240,720,200,101,1:oigroup>
+<oigroup:<oiref:java#Class#Stream.Object.Enumerator.Container.Relation:oiref>=20,900,146,379,1:oigroup>
+<oigroup:<oiref:java#Extends#Stream.Object.Enumerator.Container.PQueueArr#Stream.Object.Enumerator.Container.AContainer:oiref>=273,490,273,449:oigroup>
+<oigroup:MemberLink#<oiref:java#Member#Stream.Object.Enumerator.Container.AContainer#mListener:oiref>=298,449,298,610:oigroup>
+<oigroup:MemberLink#<oiref:java#Member#Stream.Object.Enumerator.Container.ArrayIterator#array:oiref>=1439,890,656,890:oigroup>
+<oigroup:<oiref:java#Class#Stream.Object.Enumerator.Container.PQueueArr:oiref>=230,490,115,94,1:oigroup>
+<oigroup:MemberLink#<oiref:java#Member#Stream.Object.Enumerator.Container.ChangeMultiCaster#Listeners:oiref>=575,650,575,479:oigroup>
+<oigroup:<oiref:java#Extends#Stream.Object.Enumerator.Container.DebitContainer#Stream.Object.Enumerator.Container.AContainer:oiref>=1219,313,423,313:oigroup>
+<oigroup:MemberLink#<oiref:java#Member#Stream.Object.Enumerator.Container.HashIterator#prev:oiref>=1000,408,882,408:oigroup>
+<oigroup:<oiref:java#Extends#Stream.Object.Enumerator.Container.ArraySorted#Stream.Object.Enumerator.Container.Array:oiref>=1310,1280,567,1072:oigroup>
+<oigroup:MemberLink#<oiref:java#Member#Stream.Object.Enumerator.Container.Relation#mKeys:oiref>=92,900,92,776:oigroup>
+<oigroup:MemberLink#<oiref:java#Member#Stream.Object.Enumerator.Container.JoinStreamByKeyIndex#mIndex:oiref>=780,590,632,479:oigroup>
+<oigroup:MemberLink#<oiref:java#Member#Stream.Object.Enumerator.Container.Relation#mCnt:oiref>=129,900,129,776:oigroup>
+<oigroup:<oiref:java#Extends#Stream.Object.Enumerator.Container.CharColl#Stream.Object.Enumerator.Container.ARAContainer:oiref>=1450,1153,1429,1153:oigroup>
+<oigroup:<oiref:java#Class#Stream.Object.Enumerator.Container.JoinStreamByFields:oiref>=1229,818,200,206,1:oigroup>
+<oigroup:Composite#supplierCardinality#MemberLink#<oiref:java#Member#Stream.Object.Enumerator.Container.HashContainer#mTable:oiref>=720,448,26,16,0:oigroup>
+<oigroup:MemberLink#<oiref:java#Member#Stream.Object.Enumerator.Container.AContainer#True:oiref>=249,316,210,316:oigroup>
+<oigroup:<oiref:java#Class#Stream.Object.Enumerator.Container.ARAContainer:oiref>=1229,1039,200,421,1:oigroup>
+<oigroup:<oiref:java#Implements#Stream.Object.Enumerator.Container.Array#Stream.Object.Enumerator.Container.RAContainer:oiref>=584,869,799,270:oigroup>
+<oigroup:<oiref:java#Class#Stream.Object.Enumerator.Container.KeyEquivalence:oiref>=1219,498,200,142,1:oigroup>
+<oigroup:<oiref:java#Extends#Stream.Object.Enumerator.Container.Heap#Stream.Object.Enumerator.Container.AContainer:oiref>=870,1030,348,449:oigroup>
+<oigroup:MemberLink#<oiref:java#Member#Stream.Object.Enumerator.Container.JoinStreamByKeysIndex#mIndex:oiref>=300,910,551,479:oigroup>
+<oigroup:<oiref:java#Extends#Stream.Object.Enumerator.Container.ARAContainer#Stream.Object.Enumerator.Container.AContainer:oiref>=1262,1039,373,449:oigroup>
+<oigroup:MemberLink#<oiref:java#Member#Stream.Object.Enumerator.Container.CharIterator#string:oiref>=1670,1039,1650,1039:oigroup>
+*/
+class __positions {
+}

@@ -1,0 +1,98 @@
+package id1o3uyc9frybwec9fs1tko;
+
+/**
+@version 2.0
+@physicalPackage
+@__modelType diagram 
+*/
+class diagram {
+/**
+@shapeType DependencyLink
+@__modelType link
+@__ref <oiref:design#Class#idqb01c9fodqegc9fq5ddp.diagram:oiref><oihard>
+@automatic 
+*/
+class link {
+}/**
+@shapeType DependencyLink
+@__modelType link
+@__ref <oiref:design#Class#id2otl3c9fodqegc9fq5gp1.diagram:oiref><oihard>
+@automatic 
+*/
+class link225 {
+}/**
+@shapeType DependencyLink
+@__modelType link
+@__ref <oiref:design#Class#id457m4c9fodqegc9fq5a4l.diagram:oiref><oihard>
+@automatic 
+*/
+class link226 {
+}/**
+@shapeType DependencyLink
+@__modelType link
+@__ref <oiref:design#Class#id47mokc9fodqegc9fq5czi.diagram:oiref><oihard>
+@automatic 
+*/
+class link227 {
+}/**
+@__ref <oiref:java#Class#Stream.Copy.PrimitiveOp.OpLong:oiref><oihard>
+@__modelType reference 
+*/
+class reference {
+}/**
+@__ref <oiref:java#Class#Stream.Copy.PrimitiveOp.AOpLong:oiref><oihard>
+@__modelType reference 
+*/
+class reference206 {
+}/**
+@__ref <oiref:java#Class#Stream.Copy.PrimitiveOp.IOpLong:oiref><oihard>
+@__modelType reference 
+*/
+class reference207 {
+}/**
+@__ref <oiref:java#Class#Stream.Copy.PrimitiveOp.AOpDouble:oiref><oihard>
+@__modelType reference 
+*/
+class reference208 {
+}/**
+@__ref <oiref:java#Class#Stream.Copy.PrimitiveOp.IOpDouble:oiref><oihard>
+@__modelType reference 
+*/
+class reference209 {
+}/**
+@__ref <oiref:java#Class#Stream.Copy.PrimitiveOp.OpDouble:oiref><oihard>
+@__modelType reference 
+*/
+class reference210 {
+}/**
+@__ref <oiref:java#Class#Stream.Copy.PrimitiveOp.AOpMeasurAble:oiref><oihard>
+@__modelType reference 
+*/
+class reference211 {
+}}/**
+@__tags
+@shapeType ClassDiagram 
+*/
+class __tags {
+}/**
+@__options 
+*/
+class __options {
+}/**
+@__positions <oigroup:<oiref:java#Class#Stream.Copy.PrimitiveOp.IOpDouble:oiref>=265,283,186,245,1:oigroup>
+<oigroup:<oiref:java#Extends#Stream.Copy.PrimitiveOp.OpDouble#Stream.Copy.PrimitiveOp.IOpDouble:oiref>=328,1100,328,528:oigroup>
+<oigroup:<oiref:java#Class#Stream.Copy.PrimitiveOp.OpDouble:oiref>=192,1100,200,213,1:oigroup>
+<oigroup:<oiref:java#Extends#Stream.Copy.PrimitiveOp.AOpDouble#Stream.Copy.PrimitiveOp.AOpLong:oiref>=131,1725,131,1665:oigroup>
+<oigroup:<oiref:java#Class#Stream.Copy.PrimitiveOp.AOpDouble:oiref>=91,1725,200,389,1:oigroup>
+<oigroup:<oiref:java#Class#Stream.Copy.PrimitiveOp.IOpLong:oiref>=78,10,160,213,1:oigroup>
+<oigroup:<oiref:java#Implements#Stream.Copy.PrimitiveOp.AOpLong#Stream.Copy.PrimitiveOp.OpLong:oiref>=104,1100,104,1040:oigroup>
+<oigroup:<oiref:java#Class#Stream.Copy.PrimitiveOp.OpLong:oiref>=71,283,174,757,1:oigroup>
+<oigroup:<oiref:java#Class#Stream.Copy.PrimitiveOp.AOpLong:oiref>=10,1100,162,565,1:oigroup>
+<oigroup:<oiref:java#Class#Stream.Copy.PrimitiveOp.AOpMeasurAble:oiref>=93,2174,196,293,1:oigroup>
+<oigroup:<oiref:java#Extends#Stream.Copy.PrimitiveOp.OpDouble#Stream.Copy.PrimitiveOp.OpLong:oiref>=218,1100,218,1040:oigroup>
+<oigroup:<oiref:java#Extends#Stream.Copy.PrimitiveOp.AOpMeasurAble#Stream.Copy.PrimitiveOp.AOpDouble:oiref>=191,2174,191,2114:oigroup>
+<oigroup:<oiref:java#Implements#Stream.Copy.PrimitiveOp.AOpDouble#Stream.Copy.PrimitiveOp.OpDouble:oiref>=241,1725,241,1313:oigroup>
+<oigroup:<oiref:java#Extends#Stream.Copy.PrimitiveOp.OpLong#Stream.Copy.PrimitiveOp.IOpLong:oiref>=158,283,158,223:oigroup> 
+*/
+class __positions {
+}

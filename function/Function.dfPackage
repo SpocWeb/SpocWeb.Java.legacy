@@ -1,0 +1,241 @@
+package id47mokc9fodqegc9fq5czi;
+
+/**
+@version 2.0
+@physicalPackage
+@__modelType diagram 
+*/
+class diagram {
+/**
+@__ref <oiref:design#Class#id2z7bcc9fodqegc9fq5es2.diagram:oiref><oihard>
+@__modelType reference
+@__fqn <oiref:#Package#Function.Derive:oiref> 
+*/
+class reference64 {
+}/**
+@__ref <oiref:design#Class#id1ygonc9fodqegc9fq5eog.diagram:oiref><oihard>
+@__modelType reference
+@__fqn <oiref:#Package#Function.ByRef:oiref> 
+*/
+class reference65 {
+}/**
+@shapeType DependencyLink
+@__modelType link
+@__ref <oiref:design#Class#id2x7f1c9frybwec9fs0rie.diagram:oiref><oihard>
+@automatic 
+*/
+class link {
+}/**
+@shapeType DependencyLink
+@__modelType link
+@__ref <oiref:design#Class#id9f8wc9frybwec9fs0pa9.diagram:oiref><oihard>
+@automatic 
+*/
+class link51 {
+}/**
+@shapeType DependencyLink
+@__modelType link
+@__ref <oiref:design#Class#id2z7bcc9fodqegc9fq5es2.diagram:oiref><oihard>
+@automatic 
+*/
+class link52 {
+}/**
+@shapeType DependencyLink
+@__modelType link
+@__ref <oiref:design#Class#id45algc9frybwec9fs0mi4.diagram:oiref><oihard>
+@automatic 
+*/
+class link53 {
+}/**
+@shapeType DependencyLink
+@__modelType link
+@__ref <oiref:design#Class#id457m4c9fodqegc9fq5a4l.diagram:oiref><oihard>
+@automatic 
+*/
+class link54 {
+}/**
+@shapeType DependencyLink
+@__modelType link
+@__ref <oiref:design#Class#id1ygonc9fodqegc9fq5eog.diagram:oiref><oihard>
+@automatic 
+*/
+class link55 {
+}/**
+@shapeType DependencyLink
+@__modelType link
+@__ref <oiref:design#Class#id3u1uqc9frybwec9fs0r6p.diagram:oiref><oihard>
+@automatic 
+*/
+class link56 {
+}/**
+@__ref <oiref:design#Class#id1zn61c9fodqegc9fq5eua.diagram:oiref><oihard>
+@__modelType reference
+@__fqn <oiref:#Package#Functions.VectorFuncs:oiref> 
+*/
+class reference17 {
+}/**
+@__ref <oiref:java#Class#function.FactoryRegistry:oiref><oihard>
+@__modelType reference 
+*/
+class reference {
+}/**
+@__ref <oiref:java#Class#function.IDynamicFunction:oiref><oihard>
+@__modelType reference 
+*/
+class reference33 {
+}/**
+@__ref <oiref:java#Class#function.AInvertAble:oiref><oihard>
+@__modelType reference 
+*/
+class reference34 {
+}/**
+@__ref <oiref:java#Class#function.IMeasurAble:oiref><oihard>
+@__modelType reference 
+*/
+class reference35 {
+}/**
+@__ref <oiref:java#Class#function.FactoryByType:oiref><oihard>
+@__modelType reference 
+*/
+class reference36 {
+}/**
+@__ref <oiref:java#Class#function.IFloatFunction:oiref><oihard>
+@__modelType reference 
+*/
+class reference37 {
+}/**
+@__ref <oiref:java#Class#function.IOrderAble:oiref><oihard>
+@__modelType reference 
+*/
+class reference38 {
+}/**
+@__ref <oiref:java#Class#function.PrintOp:oiref><oihard>
+@__modelType reference 
+*/
+class reference39 {
+}/**
+@__ref <oiref:java#Class#function.ByRefFunc:oiref><oihard>
+@__modelType reference 
+*/
+class reference40 {
+}/**
+@__ref <oiref:java#Class#function.FunctionByHash:oiref><oihard>
+@__modelType reference 
+*/
+class reference41 {
+}/**
+@__ref <oiref:java#Class#function.ACountAble:oiref><oihard>
+@__modelType reference 
+*/
+class reference42 {
+}/**
+@__ref <oiref:java#Class#function.IFunction:oiref><oihard>
+@__modelType reference 
+*/
+class reference43 {
+}/**
+@__ref <oiref:java#Class#function.AOrderAble:oiref><oihard>
+@__modelType reference 
+*/
+class reference44 {
+}/**
+@__ref <oiref:java#Class#function.AFunction:oiref><oihard>
+@__modelType reference 
+*/
+class reference45 {
+}/**
+@__ref <oiref:java#Class#function.OrderAble:oiref><oihard>
+@__modelType reference 
+*/
+class reference46 {
+}/**
+@__ref <oiref:java#Class#function.Projections:oiref><oihard>
+@__modelType reference 
+*/
+class reference47 {
+}/**
+@__ref <oiref:java#Class#function.Processor:oiref><oihard>
+@__modelType reference 
+*/
+class reference48 {
+}/**
+@__ref <oiref:java#Class#function.IIntFunction:oiref><oihard>
+@__modelType reference 
+*/
+class reference49 {
+}/**
+@__ref <oiref:java#Class#function.InvertAble:oiref><oihard>
+@__modelType reference 
+*/
+class reference50 {
+}/**
+@__ref <oiref:java#Class#function.ICountAble:oiref><oihard>
+@__modelType reference 
+*/
+class reference51 {
+}/**
+@__ref <oiref:java#Class#function.FunctionAble:oiref><oihard>
+@__modelType reference 
+*/
+class reference52 {
+}/**
+@__ref <oiref:java#Class#function.CatProcessor:oiref><oihard>
+@__modelType reference 
+*/
+class reference53 {
+}/**
+@__ref <oiref:design#Class#idb2bqebqh0rautbqh0sl7l.diagram:oiref><oihard>
+@__modelType reference
+@__fqn <oiref:#Package#function.real:oiref> 
+*/
+class reference54 {
+}}/**
+@__tags
+@shapeType ClassDiagram 
+*/
+class __tags {
+}/**
+@__options option.showPackageContents.showShortcuts = true 
+*/
+class __options {
+}/**
+@__positions <oigroup:<oiref:java#Extends#Functions.CountAble#Functions.MeasurAble:oiref>=291,640,616,640:oigroup>
+<oigroup:MemberLink#<oiref:java#Member#Function.AInvertAble#Inverse:oiref>=828,428,828,368:oigroup>
+<oigroup:<oiref:java#Extends#Functions.Function#Functions.Processor:oiref>=411,208,411,245:oigroup>
+<oigroup:MemberLink#<oiref:java#Member#Functions.CatProcessor#outer:oiref>=430,411,430,346:oigroup>
+<oigroup:<oiref:java#Extends#Functions.AInvertAble#Functions.AFunction:oiref>=197,164,197,245:oigroup>
+<oigroup:<oiref:java#Implements#Functions.AOrderAble#Functions.OrderAble:oiref>=171,441,268,382:oigroup>
+<oigroup:<oiref:java#Class#Stream.Log:oiref>=40,30,198,174,1:oigroup>
+<oigroup:<oiref:java#Extends#Function.FunctionByHash#Function.AFunction:oiref>=443,428,551,368:oigroup>
+<oigroup:<oiref:java#Extends#Function.AInvertAble#Function.AFunction:oiref>=698,428,698,368:oigroup>
+<oigroup:<oiref:java#Extends#Function.OrderAble#Function.IOrderAble:oiref>=175,170,175,111:oigroup>
+<oigroup:<oiref:java#Extends#Function.IDynamicFunction#Function.Function:oiref>=369,219,513,159:oigroup>
+<oigroup:<oiref:design#Class#id1ygonc9fodqegc9fq5eog.diagram:oiref>=950,200,99,247,1:oigroup>
+<oigroup:<oiref:java#Extends#Functions.MeasurAble#Functions.OrderAble:oiref>=616,442,385,382:oigroup>
+<oigroup:<oiref:java#Extends#Functions.IDynamicFunction#Functions.Function:oiref>=124,90,289,90:oigroup>
+<oigroup:MemberLink#<oiref:java#Member#Function.AOrderAble#self:oiref>=249,410,249,111:oigroup>
+<oigroup:<oiref:java#Extends#Function.MeasurAble#Function.OrderAble:oiref>=86,412,86,351:oigroup>
+<oigroup:<oiref:java#Implements#Function.AInvertAble#Function.InvertAble:oiref>=778,428,778,368:oigroup>
+<oigroup:MemberLink#<oiref:java#Member#Functions.AOrderAble#self:oiref>=171,475,510,379:oigroup>
+<oigroup:<oiref:java#Extends#Functions.ByRefFunc#Functions.AFunction:oiref>=505,255,254,255:oigroup>
+<oigroup:<oiref:java#Extends#Functions.InvertAble#Functions.Function:oiref>=552,119,423,119:oigroup>
+<oigroup:<oiref:java#Implements#Functions.AInvertAble#Functions.InvertAble:oiref>=273,45,552,45:oigroup>
+<oigroup:MemberLink#<oiref:java#Member#Functions.CatProcessor#inner:oiref>=461,411,461,346:oigroup>
+<oigroup:<oiref:design#Class#id2z7bcc9fodqegc9fq5es2.diagram:oiref>=1090,220,118,359,1:oigroup>
+<oigroup:MemberLink#<oiref:java#Member#Functions.AInvertAble#Inverse:oiref>=273,82,552,82:oigroup>
+<oigroup:<oiref:java#Extends#Functions.FunctionByHash#Functions.AFunction:oiref>=486,127,235,245:oigroup>
+<oigroup:<oiref:java#Extends#Functions.OrderAble#Functions.IOrderAble:oiref>=385,337,510,337:oigroup>
+<oigroup:<oiref:java#Implements#Function.FunctionByHash#Function.IDynamicFunction:oiref>=385,428,385,320:oigroup>
+<oigroup:<oiref:java#Implements#Function.AOrderAble#Function.OrderAble:oiref>=205,410,205,351:oigroup>
+<oigroup:<oiref:design#Class#id2z7bcc9fodqegc9fq5es2.diagram.link62:oiref>=1090,343,1049,343:oigroup>
+<oigroup:<oiref:java#Extends#Function.InvertAble#Function.Function:oiref>=828,219,632,159:oigroup>
+<oigroup:<oiref:java#Implements#Functions.FunctionByHash#Functions.IDynamicFunction:oiref>=435,55,124,55:oigroup>
+<oigroup:<oiref:java#Extends#Function.ByRefFunc#Function.AFunction:oiref>=594,428,594,368:oigroup>
+<oigroup:MemberLink#<oiref:java#Member#Function.ByRefFunc#Value:oiref>=558,428,489,371,489,217,552,159:oigroup>
+<oigroup:MemberLink#<oiref:java#Member#Functions.ByRefFunc#Value:oiref>=505,189,423,189:oigroup>
+<oigroup:<oiref:java#Implements#Functions.AFunction#Functions.Function:oiref>=216,245,350,208:oigroup>
+<oigroup:<oiref:java#Extends#Function.CountAble#Function.MeasurAble:oiref>=81,579,81,519:oigroup>
+<oigroup:<oiref:java#Implements#Function.AFunction#Function.Function:oiref>=591,219,591,159:oigroup>
+*/
+class __positions {
+}

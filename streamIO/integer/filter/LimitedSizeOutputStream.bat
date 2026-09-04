@@ -1,0 +1,1 @@
+java streamIO.integer.filter.LimitedSizeOutputStream %1 %2 4096

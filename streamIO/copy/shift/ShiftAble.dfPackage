@@ -1,0 +1,79 @@
+package id3ct9hc9frybwec9fs1u45;
+
+/**
+@version 2.0
+@physicalPackage
+@__modelType diagram 
+*/
+class diagram {
+/**
+@shapeType DependencyLink
+@__modelType link
+@__ref <oiref:design#Class#idqb01c9fodqegc9fq5ddp.diagram:oiref><oihard>
+@automatic 
+*/
+class link {
+}/**
+@shapeType DependencyLink
+@__modelType link
+@__ref <oiref:design#Class#id2otl3c9fodqegc9fq5gp1.diagram:oiref><oihard>
+@automatic 
+*/
+class link228 {
+}/**
+@shapeType DependencyLink
+@__modelType link
+@__ref <oiref:design#Class#id457m4c9fodqegc9fq5a4l.diagram:oiref><oihard>
+@automatic 
+*/
+class link229 {
+}/**
+@__ref <oiref:java#Class#Stream.Copy.ShiftAble.ShiftAble:oiref><oihard>
+@__modelType reference 
+*/
+class reference {
+}/**
+@__ref <oiref:java#Class#Stream.Copy.ShiftAble.IShiftAble:oiref><oihard>
+@__modelType reference 
+*/
+class reference203 {
+}/**
+@__ref <oiref:java#Class#Stream.Copy.ShiftAble.SwapAble:oiref><oihard>
+@__modelType reference 
+*/
+class reference204 {
+}/**
+@__ref <oiref:java#Class#Stream.Copy.ShiftAble.AShiftAble:oiref><oihard>
+@__modelType reference 
+*/
+class reference205 {
+}/**
+@__ref <oiref:java#Class#SwapAble:oiref><oihard>
+@__modelType reference 
+*/
+class reference50 {
+}/**
+@__ref <oiref:java#Class#IShiftAble:oiref><oihard>
+@__modelType reference 
+*/
+class reference194 {
+}}/**
+@__tags
+@shapeType ClassDiagram 
+*/
+class __tags {
+}/**
+@__options 
+*/
+class __options {
+}/**
+@__positions <oigroup:<oiref:java#Class#Stream.Copy.ShiftAble.SwapAble:oiref>=230,10,168,165,1:oigroup>
+<oigroup:MemberLink#<oiref:java#Member#Stream.Copy.ShiftAble.AShiftAble#self:oiref>=143,1068,143,1008:oigroup>
+<oigroup:<oiref:java#Class#Stream.Copy.ShiftAble.IShiftAble:oiref>=10,10,200,309,1:oigroup>
+<oigroup:<oiref:java#Extends#Stream.Copy.ShiftAble.ShiftAble#Stream.Copy.ShiftAble.IShiftAble:oiref>=110,379,110,319:oigroup>
+<oigroup:<oiref:java#Class#Stream.Copy.ShiftAble.AShiftAble:oiref>=10,1068,200,926,1:oigroup>
+<oigroup:<oiref:java#Class#Stream.Copy.ShiftAble.ShiftAble:oiref>=10,379,200,629,1:oigroup>
+<oigroup:<oiref:java#Implements#Stream.Copy.ShiftAble.AShiftAble#Stream.Copy.ShiftAble.ShiftAble:oiref>=76,1068,76,1008:oigroup> 
+*/
+class __positions {
+}

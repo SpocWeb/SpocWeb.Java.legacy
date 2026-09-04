@@ -1,0 +1,111 @@
+package id15cqcc9fodqegc9fqqu1j;
+
+/**
+@version 2.0
+@physicalPackage
+@__modelType diagram 
+*/
+class diagram {
+/**
+@shapeType DependencyLink
+@__modelType link
+@__ref <oiref:design#Class#id2otl3c9fodqegc9fq5gp1.diagram:oiref><oihard>
+@automatic 
+*/
+class link {
+}/**
+@shapeType DependencyLink
+@__modelType link
+@__ref <oiref:design#Class#id235w6c9fodqegc9fqqsdg.diagram:oiref><oihard>
+@automatic 
+*/
+class link197 {
+}/**
+@shapeType DependencyLink
+@__modelType link
+@__ref <oiref:design#Class#id7qibc9fodqegc9fqqngt.diagram:oiref><oihard>
+@automatic 
+*/
+class link198 {
+}/**
+@shapeType DependencyLink
+@__modelType link
+@__ref <oiref:design#Class#id25b1fc9fodqegc9fqqpu7.diagram:oiref><oihard>
+@automatic 
+*/
+class link199 {
+}/**
+@shapeType DependencyLink
+@__modelType link
+@__ref <oiref:design#Class#idqb01c9fodqegc9fq5ddp.diagram:oiref><oihard>
+@automatic 
+*/
+class link200 {
+}/**
+@shapeType DependencyLink
+@__modelType link
+@__ref <oiref:design#Class#id457m4c9fodqegc9fq5a4l.diagram:oiref><oihard>
+@automatic 
+*/
+class link201 {
+}/**
+@shapeType DependencyLink
+@__modelType link
+@__ref <oiref:design#Class#id4vy0zc9fodqegc9fqqr4o.diagram:oiref><oihard>
+@automatic 
+*/
+class link202 {
+}/**
+@__ref <oiref:java#Class#Stream.Copy.Group.Ring.Metric.Body.Complex.TestComplex:oiref><oihard>
+@__modelType reference 
+*/
+class reference {
+}/**
+@__ref <oiref:java#Class#Stream.Copy.Group.Ring.Metric.Body.Complex.PolarDbl:oiref><oihard>
+@__modelType reference 
+*/
+class reference78 {
+}/**
+@__ref <oiref:java#Class#Stream.Copy.Group.Ring.Metric.Body.Complex.CComplex:oiref><oihard>
+@__modelType reference 
+*/
+class reference82 {
+}/**
+@__ref <oiref:java#Class#Stream.Copy.Group.Ring.Metric.Body.Complex.Polar:oiref><oihard>
+@__modelType reference 
+*/
+class reference89 {
+}/**
+@__ref <oiref:java#Class#Stream.Copy.Group.Ring.Metric.Body.Complex.FourierFuncs:oiref><oihard>
+@__modelType reference 
+*/
+class reference90 {
+}/**
+@__ref <oiref:java#Class#Stream.Copy.Group.Ring.Metric.Body.Complex.ComplexDbl:oiref><oihard>
+@__modelType reference 
+*/
+class reference95 {
+}/**
+@__ref <oiref:java#Class#Stream.Copy.Group.Ring.Metric.Body.Complex.Fourier:oiref><oihard>
+@__modelType reference 
+*/
+class reference96 {
+}/**
+@__ref <oiref:java#Class#Stream.Copy.Group.Ring.Metric.Body.Complex.Complex:oiref><oihard>
+@__modelType reference 
+*/
+class reference106 {
+}}/**
+@__tags
+@shapeType ClassDiagram 
+*/
+class __tags {
+}/**
+@__options 
+*/
+class __options {
+}/**
+@__positions 
+*/
+class __positions {
+}

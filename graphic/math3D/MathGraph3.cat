@@ -1,0 +1,5258 @@
+
+(object Petal
+    version    	42
+    _written   	"Rose 4.5.8163.3"
+    charSet    	0)
+
+(object Class_Category "MathGraph3"
+    is_unit    	TRUE
+    is_loaded  	TRUE
+    quid       	"37BC91A600C8"
+    visible_categories 	(list visibility_relationship_list
+	(object Visibility_Relationship
+	    quid       	"37BFDDFF012E"
+	    supplier   	"Logical View::java::awt"
+	    quidu      	"34B0F6CD00CE")
+	(object Visibility_Relationship
+	    quid       	"37BFE3590156"
+	    supplier   	"Logical View::Ring"
+	    quidu      	"36BB392A02D2")
+	(object Visibility_Relationship
+	    quid       	"37BFE3710132"
+	    supplier   	"Logical View::Graphics2D"
+	    quidu      	"37BC8ED5008F")
+	(object Visibility_Relationship
+	    quid       	"37BFE37D02AC"
+	    supplier   	"Logical View::intFunction"
+	    quidu      	"36BB39470389")
+	(object Visibility_Relationship
+	    quid       	"37BFE83902D7"
+	    supplier   	"Logical View::Vector"
+	    quidu      	"36BB858402B5")
+	(object Visibility_Relationship
+	    quid       	"37BFEE40025D"
+	    supplier   	"Logical View::MathGraph2"
+	    quidu      	"37BC8ED70088")
+	(object Visibility_Relationship
+	    quid       	"37BFEE5A023D"
+	    supplier   	"Logical View::BodyTensor"
+	    quidu      	"36BC22BF01C3"))
+    exportControl 	"Public"
+    logical_models 	(list unit_reference_list
+	(object Class "absDraw"
+	    attributes 	(list Attribute_Set
+		(object Attribute
+		    tool       	"Java"
+		    name       	"GenerateFinalizer"
+		    value      	FALSE)
+		(object Attribute
+		    tool       	"Java"
+		    name       	"GenerateStaticInitializer"
+		    value      	FALSE)
+		(object Attribute
+		    tool       	"Java"
+		    name       	"GenerateInstanceInitializer"
+		    value      	FALSE)
+		(object Attribute
+		    tool       	"Java"
+		    name       	"GenerateDefaultConstructor"
+		    value      	FALSE))
+	    quid       	"37BC91A600D1"
+	    documentation 	
+|Mostly needed Simplifications for the intDraw3D Interface.
+| * With known Index, the Parameters Start and even the Tensor V 
+| * can be determined (with Index = 0 or max and the Raster R).  
+	    
+	    realized_interfaces 	(list realize_rel_list
+		(object Realize_Relationship
+		    attributes 	(list Attribute_Set)
+		    quid       	"37BD385D0321"
+		    supplier   	"Logical View::MathGraph3::intDraw"
+		    quidu      	"37BC91A600DB"))
+	    operations 	(list Operations
+		(object Operation "draw"
+		    attributes 	(list Attribute_Set)
+		    quid       	"37BD385D0322"
+		    documentation 	"Draws the given Value S (Scalar or Tensor) at the given Vector V.  "
+		    parameters 	(list Parameters
+			(object Parameter "V"
+			    type       	"Tensor")
+			(object Parameter "S"
+			    type       	"IntegrityRing")
+			(object Parameter "Start"
+			    type       	"boolean[]"))
+		    result     	"void"
+		    concurrency 	"Sequential"
+		    opExportControl 	"Public"
+		    uid        	0)
+		(object Operation "draw"
+		    attributes 	(list Attribute_Set)
+		    quid       	"37BD385D0326"
+		    documentation 	"Draws the given Value S (Scalar or Tensor) at the given Vector V.  "
+		    parameters 	(list Parameters
+			(object Parameter "V"
+			    type       	"Tensor")
+			(object Parameter "S"
+			    type       	"IntegrityRing")
+			(object Parameter "Index"
+			    type       	"int[]"))
+		    result     	"void"
+		    concurrency 	"Sequential"
+		    opExportControl 	"Public"
+		    uid        	0)
+		(object Operation "reSet"
+		    attributes 	(list Attribute_Set)
+		    quid       	"37BD385D032A"
+		    documentation 	
+|Resets the given Coordinate of the Algorithm.
+|	 * Corresponds to Start[dim] = true	 
+		    
+		    parameters 	(list Parameters
+			(object Parameter "dim"
+			    type       	"int"))
+		    result     	"void"
+		    concurrency 	"Sequential"
+		    opExportControl 	"Public"
+		    uid        	0))
+	    module     	"Component View::MathGraph3::absDraw"
+	    quidu      	"37BC91A600C9"
+	    language   	"Java"
+	    abstract   	TRUE)
+	(object Class "intDraw"
+	    attributes 	(list Attribute_Set
+		(object Attribute
+		    tool       	"Java"
+		    name       	"GenerateFinalizer"
+		    value      	FALSE)
+		(object Attribute
+		    tool       	"Java"
+		    name       	"GenerateStaticInitializer"
+		    value      	FALSE)
+		(object Attribute
+		    tool       	"Java"
+		    name       	"GenerateInstanceInitializer"
+		    value      	FALSE)
+		(object Attribute
+		    tool       	"Java"
+		    name       	"GenerateDefaultConstructor"
+		    value      	FALSE))
+	    quid       	"37BC91A600DB"
+	    stereotype 	"Interface"
+	    operations 	(list Operations
+		(object Operation "draw"
+		    attributes 	(list Attribute_Set
+			(object Attribute
+			    tool       	"Java"
+			    name       	"Abstract"
+			    value      	TRUE))
+		    quid       	"37BD3872024F"
+		    documentation 	"Draws the given Value S (may even be a Tensor) at the given Vector V.  "
+		    parameters 	(list Parameters
+			(object Parameter "V"
+			    type       	"Tensor")
+			(object Parameter "S"
+			    type       	"IntegrityRing"))
+		    result     	"void"
+		    concurrency 	"Sequential"
+		    opExportControl 	"Public"
+		    uid        	0)
+		(object Operation "draw"
+		    attributes 	(list Attribute_Set
+			(object Attribute
+			    tool       	"Java"
+			    name       	"Abstract"
+			    value      	TRUE))
+		    quid       	"37BD38720252"
+		    documentation 	"Draws the given Value S (may even be a Tensor) at the given Vector V.  "
+		    parameters 	(list Parameters
+			(object Parameter "V"
+			    type       	"Tensor")
+			(object Parameter "S"
+			    type       	"IntegrityRing")
+			(object Parameter "Start"
+			    type       	"boolean[]"))
+		    result     	"void"
+		    concurrency 	"Sequential"
+		    opExportControl 	"Public"
+		    uid        	0)
+		(object Operation "draw"
+		    attributes 	(list Attribute_Set
+			(object Attribute
+			    tool       	"Java"
+			    name       	"Abstract"
+			    value      	TRUE))
+		    quid       	"37BD38720256"
+		    documentation 	"Draws the given Value S (may even be a Tensor) at the given Vector V.  "
+		    parameters 	(list Parameters
+			(object Parameter "V"
+			    type       	"Tensor")
+			(object Parameter "S"
+			    type       	"IntegrityRing")
+			(object Parameter "Index"
+			    type       	"int[]"))
+		    result     	"void"
+		    concurrency 	"Sequential"
+		    opExportControl 	"Public"
+		    uid        	0)
+		(object Operation "reSet"
+		    attributes 	(list Attribute_Set
+			(object Attribute
+			    tool       	"Java"
+			    name       	"Abstract"
+			    value      	TRUE))
+		    quid       	"37BD3872025A"
+		    documentation 	
+|Resets the given Coordinate of the Algorithm.
+|	 * Corresponds to Start[dim] = true	 
+		    
+		    parameters 	(list Parameters
+			(object Parameter "dim"
+			    type       	"int"))
+		    result     	"void"
+		    concurrency 	"Sequential"
+		    opExportControl 	"Public"
+		    uid        	0))
+	    module     	"Component View::MathGraph3::intDraw"
+	    quidu      	"37BC91A600D2"
+	    module     	"Component View::MathGraph3::intDraw3D"
+	    quidu      	"37BC91A801CE"
+	    language   	"Java")
+	(object Class "Column3D"
+	    attributes 	(list Attribute_Set
+		(object Attribute
+		    tool       	"Java"
+		    name       	"GenerateFinalizer"
+		    value      	FALSE)
+		(object Attribute
+		    tool       	"Java"
+		    name       	"GenerateStaticInitializer"
+		    value      	FALSE)
+		(object Attribute
+		    tool       	"Java"
+		    name       	"GenerateInstanceInitializer"
+		    value      	FALSE)
+		(object Attribute
+		    tool       	"Java"
+		    name       	"GenerateDefaultConstructor"
+		    value      	FALSE))
+	    quid       	"37BC91A60276"
+	    operations 	(list Operations
+		(object Operation "Column3D"
+		    attributes 	(list Attribute_Set)
+		    quid       	"37BD38620089"
+		    documentation 	
+|Constructor, taking the Color Range and the Radius Factor, 
+|	 * that control the coloring as well as the Sizing. 	 
+		    
+		    parameters 	(list Parameters
+			(object Parameter "g2D"
+			    type       	"absGraphics2D")
+			(object Parameter "C3D_"
+			    type       	"Coordinates3D"))
+		    concurrency 	"Sequential"
+		    opExportControl 	"Public"
+		    uid        	0)
+		(object Operation "drawPoint"
+		    attributes 	(list Attribute_Set)
+		    quid       	"37BD38620093"
+		    documentation 	
+|Draws the Projection Lines of the Normals for this Point on the Column Surface. 	 
+		    
+		    parameters 	(list Parameters
+			(object Parameter "V1"
+			    type       	"Tensor")
+			(object Parameter "V2"
+			    type       	"Tensor")
+			(object Parameter "P"
+			    type       	"Tensor")
+			(object Parameter "project"
+			    type       	"int[]"))
+		    result     	"void"
+		    concurrency 	"Sequential"
+		    opExportControl 	"Public"
+		    uid        	0)
+		(object Operation "drawColumn3D"
+		    attributes 	(list Attribute_Set)
+		    quid       	"37BD38620098"
+		    documentation 	
+|Draws a 3dimensional Wire-Rectangle with the current color. 	 
+		    
+		    parameters 	(list Parameters
+			(object Parameter "V1"
+			    type       	"Tensor")
+			(object Parameter "V2"
+			    type       	"Tensor"))
+		    result     	"void"
+		    concurrency 	"Sequential"
+		    opExportControl 	"Public"
+		    uid        	0)
+		(object Operation "fillColumn3D"
+		    attributes 	(list Attribute_Set)
+		    quid       	"37BD3862009B"
+		    documentation 	
+|Fills a 3dimensional Rectangle (hidden Planes) with the current color. 
+|	 * The shading effect is created by using the standard darker / brighter Methods
+|	 * of the Color Class.
+|	 
+		    
+		    parameters 	(list Parameters
+			(object Parameter "V1"
+			    type       	"Tensor")
+			(object Parameter "V2"
+			    type       	"Tensor"))
+		    result     	"void"
+		    concurrency 	"Sequential"
+		    opExportControl 	"Public"
+		    uid        	0))
+	    module     	"Component View::MathGraph3::Column3D"
+	    quidu      	"37BFFD130040"
+	    language   	"Java")
+	(object Class "Coordinates3D"
+	    attributes 	(list Attribute_Set
+		(object Attribute
+		    tool       	"Java"
+		    name       	"GenerateFinalizer"
+		    value      	FALSE)
+		(object Attribute
+		    tool       	"Java"
+		    name       	"GenerateStaticInitializer"
+		    value      	FALSE)
+		(object Attribute
+		    tool       	"Java"
+		    name       	"GenerateInstanceInitializer"
+		    value      	FALSE)
+		(object Attribute
+		    tool       	"Java"
+		    name       	"GenerateDefaultConstructor"
+		    value      	FALSE)
+		(object Attribute
+		    tool       	"Java"
+		    name       	"?_Touched_?"
+		    value      	"?_Touched_?"))
+	    quid       	"37BC91A60281"
+	    documentation 	
+|This Class encapsulates 3 dimensional Mapping to 2 Dimensions. 
+| * This Implementation is targeted for simple Vectors, 
+| * but it uses the Methods from Tensor. 
+| 
+	    
+	    realized_interfaces 	(list realize_rel_list
+		(object Realize_Relationship
+		    attributes 	(list Attribute_Set)
+		    quid       	"37BD38660139"
+		    supplier   	"Logical View::MathGraph3::Coordinates"
+		    quidu      	"37BC91A60321"))
+	    operations 	(list Operations
+		(object Operation "zCoordInv"
+		    attributes 	(list Attribute_Set)
+		    quid       	"37BD3867013E"
+		    documentation 	
+|Contains the Inverse of last Mapping's z Coordinate, if project = true.	 
+		    
+		    result     	"IntegrityRing"
+		    concurrency 	"Sequential"
+		    opExportControl 	"Public"
+		    uid        	0)
+		(object Operation "getProjection"
+		    attributes 	(list Attribute_Set)
+		    quid       	"37BD38670144"
+		    documentation 	"Get Procedure, still dangerous, because you could modify P "
+		    result     	"Projection"
+		    concurrency 	"Sequential"
+		    opExportControl 	"Public"
+		    uid        	0)
+		(object Operation "Coordinates3D"
+		    attributes 	(list Attribute_Set)
+		    quid       	"37BD38670145"
+		    documentation 	
+|Constructor that takes the StandPoint, the ViewPoint and the Ranges. 
+|	 * Projective Geometry is switched off, since the Scaling Factor is given 
+|	 * by the Ratio of the Target RectAngle Diagonal 
+|	 * and the maximum Extent of Objects within the Box given by the Line.	 
+		    
+		    parameters 	(list Parameters
+			(object Parameter "StandPoint"
+			    type       	"BodyTensor")
+			(object Parameter "Target"
+			    type       	"Rectangle")
+			(object Parameter "Origin"
+			    type       	"Vector.Line")
+			(object Parameter "ViewPoint"
+			    type       	"BodyTensor"))
+		    concurrency 	"Sequential"
+		    opExportControl 	"Public"
+		    uid        	0)
+		(object Operation "Coordinates3D"
+		    attributes 	(list Attribute_Set)
+		    quid       	"37BD3867014A"
+		    documentation 	
+|Constructor that takes the current StandPoint, the Direction and the Ranges. 
+|	 * Projective Geometry is switched on, since no original Length is specified.	 
+		    
+		    parameters 	(list Parameters
+			(object Parameter "StandPoint"
+			    type       	"BodyTensor")
+			(object Parameter "ViewDirection"
+			    type       	"BodyTensor")
+			(object Parameter "Origin"
+			    type       	"Vector.Line")
+			(object Parameter "Target"
+			    type       	"Rectangle"))
+		    concurrency 	"Sequential"
+		    opExportControl 	"Public"
+		    uid        	0)
+		(object Operation "Coordinates3D"
+		    attributes 	(list Attribute_Set)
+		    quid       	"37BD3867014F"
+		    documentation 	
+|Constructor that takes the StandPoint, the ViewPoint and the Ranges. 
+|	 * Projective Geometry is switched on, since no original Length is specified. 
+|	 * Scaling fits the Diagonal of the Target RectAngle to the Distance to the ViewPoint.	 
+		    
+		    parameters 	(list Parameters
+			(object Parameter "StandPoint"
+			    type       	"BodyTensor")
+			(object Parameter "Target"
+			    type       	"Rectangle")
+			(object Parameter "ViewPoint"
+			    type       	"BodyTensor"))
+		    concurrency 	"Sequential"
+		    opExportControl 	"Public"
+		    uid        	0)
+		(object Operation "Coordinates3D"
+		    attributes 	(list Attribute_Set)
+		    quid       	"37BD38670153"
+		    documentation 	
+|Constructor that takes the current StandPoint, the Direction and the Ranges. 
+|	 * Projective Geometry is switched on, since no original Length is specified.
+|	 * Scaling fits the Diagonal of the Target RectAngle to the Distance to the ViewPoint.	 
+		    
+		    parameters 	(list Parameters
+			(object Parameter "StandPoint"
+			    type       	"BodyTensor")
+			(object Parameter "ViewDirection"
+			    type       	"BodyTensor")
+			(object Parameter "Target"
+			    type       	"Rectangle"))
+		    concurrency 	"Sequential"
+		    opExportControl 	"Public"
+		    uid        	0)
+		(object Operation "map"
+		    attributes 	(list Attribute_Set)
+		    quid       	"37BD38670157"
+		    documentation 	
+|Maps the Coordinates to the Target Range.	 
+		    
+		    parameters 	(list Parameters
+			(object Parameter "x"
+			    type       	"double")
+			(object Parameter "y"
+			    type       	"double")
+			(object Parameter "z"
+			    type       	"double"))
+		    result     	"Point2D"
+		    concurrency 	"Sequential"
+		    opExportControl 	"Public"
+		    uid        	0)
+		(object Operation "map"
+		    attributes 	(list Attribute_Set)
+		    quid       	"37BD3867015B"
+		    documentation 	
+|Maps the Coordinates to the Target Range.	 
+		    
+		    parameters 	(list Parameters
+			(object Parameter "v"
+			    type       	"double[]"))
+		    result     	"Point2D"
+		    concurrency 	"Sequential"
+		    opExportControl 	"Public"
+		    uid        	0)
+		(object Operation "map"
+		    attributes 	(list Attribute_Set)
+		    quid       	"37BD3867015D"
+		    documentation 	
+|Maps the Arrow (Start, Start+delta) 
+|	 * to the 2-dimensional Points (StartPt, map())	 
+		    
+		    parameters 	(list Parameters
+			(object Parameter "Start"
+			    type       	"Tensor")
+			(object Parameter "delta"
+			    type       	"Tensor")
+			(object Parameter "StartPt"
+			    type       	"Point2D"))
+		    result     	"Point2D"
+		    concurrency 	"Sequential"
+		    opExportControl 	"Public"
+		    uid        	0)
+		(object Operation "map"
+		    attributes 	(list Attribute_Set)
+		    quid       	"37BD38670161"
+		    documentation 	
+|Maps the Coordinates of the transformed Vector to the Target Range.
+|	 * All other mapping Methods are delegated to this one!
+|	 * The z Coordinate is mapped into Integer Range also!	 
+		    
+		    parameters 	(list Parameters
+			(object Parameter "V"
+			    type       	"Tensor"))
+		    result     	"Point2D"
+		    concurrency 	"Sequential"
+		    opExportControl 	"Public"
+		    uid        	0)
+		(object Operation "map"
+		    attributes 	(list Attribute_Set)
+		    quid       	"37BD38670163"
+		    documentation 	
+|Maps the Coordinates to the Target Range, 
+|	 * the alternative to map the coordinates independently, is no longer valid.
+|	 * There is little optimization possible by integrating the Coordinates 
+|	 * into a single Tensor.
+|	 * The Sequence is determined by the z-Distances to the ViewPoint.
+|	 * You could as well use the overall Distance, 
+|	 * but the z-Distance is calculated anyway (on projective Mapping)	 
+		    
+		    parameters 	(list Parameters
+			(object Parameter "V"
+			    type       	"Tensor[]"))
+		    result     	"Point2D[]"
+		    concurrency 	"Sequential"
+		    opExportControl 	"Public"
+		    uid        	0)
+		(object Operation "map"
+		    attributes 	(list Attribute_Set)
+		    quid       	"37BD38670165"
+		    documentation 	
+|Maps the Coordinates to the Target Range, 
+|	 * the alternative to map the coordinates independently, is no longer valid.
+|	 * There is little optimization possible by integrating the Coordinates 
+|	 * into a single Tensor. 
+		    
+		    parameters 	(list Parameters
+			(object Parameter "x"
+			    type       	"double[]")
+			(object Parameter "y"
+			    type       	"double[]")
+			(object Parameter "z"
+			    type       	"double[]"))
+		    result     	"Point2D[]"
+		    concurrency 	"Sequential"
+		    opExportControl 	"Public"
+		    uid        	0)
+		(object Operation "Map"
+		    attributes 	(list Attribute_Set)
+		    quid       	"37BD38670169"
+		    documentation 	
+|Maps the Coordinates of the transformed Vectors to the Target Range.
+|	 * The Rows of this Matrix are mapped in one call.	 
+		    
+		    parameters 	(list Parameters
+			(object Parameter "V"
+			    type       	"Tensor"))
+		    result     	"Point2D[]"
+		    concurrency 	"Sequential"
+		    opExportControl 	"Public"
+		    uid        	0)
+		(object Operation "RMitten"
+		    attributes 	(list Attribute_Set
+			(object Attribute
+			    tool       	"Java"
+			    name       	"Static"
+			    value      	TRUE))
+		    quid       	"37BD3867016B"
+		    documentation 	
+|Calculates the Index of the Standpoint within this Raster	
+|	 * Using a linear Search here instead of Bisection. 
+|	 * If the Order is reversed, the Return Value is negative. 
+		    
+		    parameters 	(list Parameters
+			(object Parameter "x"
+			    type       	"Manifold")
+			(object Parameter "SP"
+			    type       	"MetricIRing"))
+		    result     	"int"
+		    concurrency 	"Sequential"
+		    opExportControl 	"Public"
+		    uid        	0)
+		(object Operation "PlotRecursion"
+		    attributes 	(list Attribute_Set
+			(object Attribute
+			    tool       	"Java"
+			    name       	"Static"
+			    value      	TRUE))
+		    quid       	"37BD3867016E"
+		    documentation 	
+|Helper Method to paint rastered Data with a Sequence in Direction to the ViewPoint	
+|	 * The Algorithm is the same as in 'Tensor.Tensor(intFunction)'  
+		    
+		    parameters 	(list Parameters
+			(object Parameter "Figure"
+			    type       	"intDraw")
+			(object Parameter "V"
+			    type       	"Tensor")
+			(object Parameter "R"
+			    type       	"Manifold[]")
+			(object Parameter "S"
+			    type       	"Tensor")
+			(object Parameter "Start"
+			    type       	"boolean[]")
+			(object Parameter "ab"
+			    type       	"boolean[]")
+			(object Parameter "Middle"
+			    type       	"int[]")
+			(object Parameter "Index"
+			    type       	"int[]")
+			(object Parameter "dim"
+			    type       	"int"))
+		    result     	"void"
+		    concurrency 	"Sequential"
+		    opExportControl 	"Protected"
+		    uid        	0)
+		(object Operation "PlotOrdered"
+		    attributes 	(list Attribute_Set
+			(object Attribute
+			    tool       	"Java"
+			    name       	"Static"
+			    value      	TRUE))
+		    quid       	"37BD38670178"
+		    documentation 	
+|Paints a Raster of Points on the Raster contained in the Vectors of R; 
+|	 * 
+|	 * The Difference to the Plot Routine is 
+|	 * paints in the Direction to the ViewPoint, 
+|	 * so the nearer Points hide the ones far out.
+|	 * 
+|	 * Only the Preprocessing is done here, the real Plotting is done in 'PlotRecursion'
+|	 * The Algorithm is the same as in 'Tensor.Tensor(intFunction)'  
+		    
+		    parameters 	(list Parameters
+			(object Parameter "ViewPoint"
+			    type       	"Tensor")
+			(object Parameter "Figure"
+			    type       	"intDraw")
+			(object Parameter "R"
+			    type       	"Manifold[]")
+			(object Parameter "S"
+			    type       	"Tensor"))
+		    result     	"void"
+		    concurrency 	"Sequential"
+		    opExportControl 	"Public"
+		    uid        	0)
+		(object Operation "PlotOrdered"
+		    attributes 	(list Attribute_Set)
+		    quid       	"37BD3867017D"
+		    documentation 	
+|Paints a Raster of Point on the Raster contained in the Vectors of R; 
+|	 * 
+|	 * The Difference to the Plot Routine is 
+|	 * that it paints in the Direction to the ViewPoint, 
+|	 * so the nearer Points hide the ones far out.
+|	 
+		    
+		    parameters 	(list Parameters
+			(object Parameter "Figure"
+			    type       	"intDraw")
+			(object Parameter "R"
+			    type       	"Manifold[]")
+			(object Parameter "S"
+			    type       	"Tensor"))
+		    result     	"void"
+		    concurrency 	"Sequential"
+		    opExportControl 	"Public"
+		    uid        	0)
+		(object Operation "Plot"
+		    attributes 	(list Attribute_Set
+			(object Attribute
+			    tool       	"Java"
+			    name       	"Static"
+			    value      	TRUE))
+		    quid       	"37BD38670181"
+		    documentation 	
+|Paints a Raster of Points on the Raster contained in the Vectors of R; 
+|	 * The Algorithm is the same as in 'Tensor.Tensor(intFunction)'  
+		    
+		    parameters 	(list Parameters
+			(object Parameter "Figure"
+			    type       	"intDraw")
+			(object Parameter "Raster"
+			    type       	"Manifold[]")
+			(object Parameter "S"
+			    type       	"Tensor"))
+		    result     	"void"
+		    concurrency 	"Sequential"
+		    opExportControl 	"Public"
+		    uid        	0)
+		(object Operation "processRaster"
+		    attributes 	(list Attribute_Set
+			(object Attribute
+			    tool       	"Java"
+			    name       	"Static"
+			    value      	TRUE))
+		    quid       	"37BD38670185"
+		    documentation 	
+|Recursive Helper Method to process rastered Data in arbitrary Dimensions.	 
+		    
+		    parameters 	(list Parameters
+			(object Parameter "Figure"
+			    type       	"intDraw")
+			(object Parameter "V"
+			    type       	"Tensor")
+			(object Parameter "Raster"
+			    type       	"Manifold[]")
+			(object Parameter "S"
+			    type       	"Tensor")
+			(object Parameter "Start"
+			    type       	"boolean[]")
+			(object Parameter "Index"
+			    type       	"int[]")
+			(object Parameter "dim"
+			    type       	"int"))
+		    result     	"void"
+		    concurrency 	"Sequential"
+		    opExportControl 	"Public"
+		    uid        	0))
+	    class_attributes 	(list class_attribute_list
+		(object ClassAttribute "project"
+		    attributes 	(list Attribute_Set)
+		    quid       	"37BD3867013D"
+		    documentation 	
+|Boolean Switch for Indication of Projection	 
+		    
+		    type       	"boolean"
+		    exportControl 	"Public"))
+	    module     	"Component View::MathGraph3::Coordinates3D"
+	    quidu      	"37BFFC2A0225"
+	    language   	"Java")
+	(object Class "Coordinates"
+	    attributes 	(list Attribute_Set
+		(object Attribute
+		    tool       	"Java"
+		    name       	"GenerateFinalizer"
+		    value      	FALSE)
+		(object Attribute
+		    tool       	"Java"
+		    name       	"GenerateStaticInitializer"
+		    value      	FALSE)
+		(object Attribute
+		    tool       	"Java"
+		    name       	"GenerateInstanceInitializer"
+		    value      	FALSE)
+		(object Attribute
+		    tool       	"Java"
+		    name       	"GenerateDefaultConstructor"
+		    value      	FALSE))
+	    quid       	"37BC91A60321"
+	    documentation 	
+|Interface that defines a Mapping Method from a Tensor to 2D Coordinates. 
+| * Also calculating the Distance has to happen here!  
+	    
+	    stereotype 	"Interface"
+	    operations 	(list Operations
+		(object Operation "map"
+		    attributes 	(list Attribute_Set
+			(object Attribute
+			    tool       	"Java"
+			    name       	"Abstract"
+			    value      	TRUE))
+		    quid       	"37BD3862035A"
+		    documentation 	
+|Maps the Tensor to a 2-dimensional Point	 
+		    
+		    parameters 	(list Parameters
+			(object Parameter "V"
+			    type       	"Tensor"))
+		    result     	"Point2D"
+		    concurrency 	"Sequential"
+		    opExportControl 	"Public"
+		    uid        	0)
+		(object Operation "map"
+		    attributes 	(list Attribute_Set
+			(object Attribute
+			    tool       	"Java"
+			    name       	"Abstract"
+			    value      	TRUE))
+		    quid       	"37BD38620365"
+		    documentation 	
+|Maps the Tensors to 2-dimensional Points.
+|	 * Should also calculate the Sequence of Points.	 
+		    
+		    parameters 	(list Parameters
+			(object Parameter "V"
+			    type       	"Tensor[]"))
+		    result     	"Point2D[]"
+		    concurrency 	"Sequential"
+		    opExportControl 	"Public"
+		    uid        	0)
+		(object Operation "map"
+		    attributes 	(list Attribute_Set
+			(object Attribute
+			    tool       	"Java"
+			    name       	"Abstract"
+			    value      	TRUE))
+		    quid       	"37BD38620367"
+		    documentation 	
+|Maps the Arrow (Start, Start+delta) 
+|	 * to the 2-dimensional Points (StartPt, map())	
+|	 * There is some Optimization in doing this both in 2D and 3D (planar) 
+		    
+		    parameters 	(list Parameters
+			(object Parameter "Start"
+			    type       	"Tensor")
+			(object Parameter "delta"
+			    type       	"Tensor")
+			(object Parameter "StartPt"
+			    type       	"Point2D"))
+		    result     	"Point2D"
+		    concurrency 	"Sequential"
+		    opExportControl 	"Public"
+		    uid        	0))
+	    module     	"Component View::MathGraph3::Coordinates"
+	    quidu      	"37BC91A60320"
+	    language   	"Java")
+	(object Class "Coordinates2D_"
+	    attributes 	(list Attribute_Set
+		(object Attribute
+		    tool       	"Java"
+		    name       	"GenerateFinalizer"
+		    value      	FALSE)
+		(object Attribute
+		    tool       	"Java"
+		    name       	"GenerateStaticInitializer"
+		    value      	FALSE)
+		(object Attribute
+		    tool       	"Java"
+		    name       	"GenerateInstanceInitializer"
+		    value      	FALSE)
+		(object Attribute
+		    tool       	"Java"
+		    name       	"GenerateDefaultConstructor"
+		    value      	FALSE))
+	    quid       	"37BC91A70001"
+	    documentation 	
+|Extends the 'Coordinates2D' Class with Routines 
+| * that accept Tensors as Arguments 
+	    
+	    superclasses 	(list inheritance_relationship_list
+		(object Inheritance_Relationship
+		    attributes 	(list Attribute_Set)
+		    quid       	"37BD3864014A"
+		    supplier   	"Logical View::MathGraph2::Coordinates2D"
+		    quidu      	"37BC91A502F7"))
+	    realized_interfaces 	(list realize_rel_list
+		(object Realize_Relationship
+		    attributes 	(list Attribute_Set)
+		    quid       	"37BD3864033F"
+		    supplier   	"Logical View::MathGraph3::Coordinates"
+		    quidu      	"37BC91A60321"))
+	    operations 	(list Operations
+		(object Operation "Coordinates2D_"
+		    attributes 	(list Attribute_Set)
+		    quid       	"37BD38640340"
+		    documentation 	
+|Initializing Constructor	 
+		    
+		    parameters 	(list Parameters
+			(object Parameter "xMin"
+			    type       	"float")
+			(object Parameter "xMax"
+			    type       	"float")
+			(object Parameter "yMin"
+			    type       	"float")
+			(object Parameter "yMax"
+			    type       	"float")
+			(object Parameter "Target"
+			    type       	"Rectangle"))
+		    concurrency 	"Sequential"
+		    opExportControl 	"Public"
+		    uid        	0)
+		(object Operation "map"
+		    attributes 	(list Attribute_Set)
+		    quid       	"37BD38640346"
+		    documentation 	
+|Extension to allow for 2D Tensors to be handed over	 
+		    
+		    parameters 	(list Parameters
+			(object Parameter "V"
+			    type       	"Tensor"))
+		    result     	"Point2D"
+		    concurrency 	"Sequential"
+		    opExportControl 	"Public"
+		    uid        	0)
+		(object Operation "map"
+		    attributes 	(list Attribute_Set)
+		    quid       	"37BD38640348"
+		    documentation 	
+|Extension to allow for Arrays of 2D Tensors to be handed over	 
+		    
+		    parameters 	(list Parameters
+			(object Parameter "V"
+			    type       	"Tensor[]"))
+		    result     	"Point2D[]"
+		    concurrency 	"Sequential"
+		    opExportControl 	"Public"
+		    uid        	0)
+		(object Operation "map"
+		    attributes 	(list Attribute_Set)
+		    quid       	"37BD3864034A"
+		    documentation 	
+|Maps the Arrow (Start, Start+delta) 
+|	 * to the 2-dimensional Points (StartPt, map())	 
+		    
+		    parameters 	(list Parameters
+			(object Parameter "Start"
+			    type       	"Tensor")
+			(object Parameter "delta"
+			    type       	"Tensor")
+			(object Parameter "StartPt"
+			    type       	"Point2D"))
+		    result     	"Point2D"
+		    concurrency 	"Sequential"
+		    opExportControl 	"Public"
+		    uid        	0))
+	    module     	"Component View::MathGraph3::Coordinates2D_"
+	    quidu      	"37BC91A70000"
+	    language   	"Java")
+	(object Class "Figures2D"
+	    attributes 	(list Attribute_Set
+		(object Attribute
+		    tool       	"Java"
+		    name       	"GenerateFinalizer"
+		    value      	FALSE)
+		(object Attribute
+		    tool       	"Java"
+		    name       	"GenerateStaticInitializer"
+		    value      	FALSE)
+		(object Attribute
+		    tool       	"Java"
+		    name       	"GenerateInstanceInitializer"
+		    value      	FALSE)
+		(object Attribute
+		    tool       	"Java"
+		    name       	"GenerateDefaultConstructor"
+		    value      	FALSE))
+	    quid       	"37BC91A70137"
+	    operations 	(list Operations
+		(object Operation "Figures2D"
+		    attributes 	(list Attribute_Set)
+		    quid       	"37BD386902A6"
+		    documentation 	
+|Constructor, taking the Color Range and the Radius Factor, 
+|	 * that control the coloring as well as the Sizing. 
+|	 
+		    
+		    parameters 	(list Parameters
+			(object Parameter "g2D"
+			    type       	"absGraphics2D")
+			(object Parameter "C2D_"
+			    type       	"Coordinates2D_"))
+		    concurrency 	"Sequential"
+		    opExportControl 	"Public"
+		    uid        	0)
+		(object Operation "drawArrow"
+		    attributes 	(list Attribute_Set)
+		    quid       	"37BD386902B2"
+		    documentation 	
+|Draws the Vector dV at the Position V in the current Color	 
+		    
+		    parameters 	(list Parameters
+			(object Parameter "V"
+			    type       	"Tensor")
+			(object Parameter "dV"
+			    type       	"IntegrityRing"))
+		    result     	"Point2D"
+		    concurrency 	"Sequential"
+		    opExportControl 	"Public"
+		    uid        	0))
+	    module     	"Component View::MathGraph3::Figures2D"
+	    quidu      	"37BC91A7012D"
+	    language   	"Java")
+	(object Class "Figures3D"
+	    attributes 	(list Attribute_Set
+		(object Attribute
+		    tool       	"Java"
+		    name       	"GenerateFinalizer"
+		    value      	FALSE)
+		(object Attribute
+		    tool       	"Java"
+		    name       	"GenerateStaticInitializer"
+		    value      	FALSE)
+		(object Attribute
+		    tool       	"Java"
+		    name       	"GenerateInstanceInitializer"
+		    value      	FALSE)
+		(object Attribute
+		    tool       	"Java"
+		    name       	"GenerateDefaultConstructor"
+		    value      	FALSE))
+	    quid       	"37BC91A702D2"
+	    documentation 	"loose Collection of 3dimensional Figures. "
+	    operations 	(list Operations
+		(object Operation "Figures3D"
+		    attributes 	(list Attribute_Set)
+		    quid       	"37BD386C02E6"
+		    documentation 	
+|Constructor, taking the Color Range and the Radius Factor, 
+|	 * that control the coloring as well as the Sizing. 
+|	 
+		    
+		    parameters 	(list Parameters
+			(object Parameter "g2D"
+			    type       	"absGraphics2D")
+			(object Parameter "C3D_"
+			    type       	"Coordinates3D"))
+		    concurrency 	"Sequential"
+		    opExportControl 	"Public"
+		    uid        	0)
+		(object Operation "drawPoint"
+		    attributes 	(list Attribute_Set)
+		    quid       	"37BD386C02F0"
+		    documentation 	
+|Draws a Point and all the Projection Normals to the (n-1)dim. Hyperplanes 	 
+		    
+		    parameters 	(list Parameters
+			(object Parameter "V"
+			    type       	"Tensor")
+			(object Parameter "P"
+			    type       	"Tensor"))
+		    result     	"Point2D"
+		    concurrency 	"Sequential"
+		    opExportControl 	"Public"
+		    uid        	0)
+		(object Operation "drawPoint"
+		    attributes 	(list Attribute_Set)
+		    quid       	"37BD386C02F3"
+		    documentation 	
+|Draws a Point as well as the Projections to the (n-1)dim. Hyperplanes
+|	 * If wanted, the Normals are painted by connecting the Point to it's Projections. 	 
+		    
+		    parameters 	(list Parameters
+			(object Parameter "V"
+			    type       	"Tensor")
+			(object Parameter "P"
+			    type       	"Tensor")
+			(object Parameter "drawMode"
+			    type       	"int[]"))
+		    result     	"Point2D"
+		    concurrency 	"Sequential"
+		    opExportControl 	"Public"
+		    uid        	0)
+		(object Operation "drawPoint"
+		    attributes 	(list Attribute_Set)
+		    quid       	"37BD386C02F7"
+		    documentation 	
+|Draws a Cross through the Point as well as all the Projections wanted. 
+|	 * This is more economical than using the upper Routine two times,
+|	 * once with V1 and	once with V2. 
+		    
+		    parameters 	(list Parameters
+			(object Parameter "V1"
+			    type       	"Tensor")
+			(object Parameter "V2"
+			    type       	"Tensor")
+			(object Parameter "P"
+			    type       	"Tensor"))
+		    result     	"void"
+		    concurrency 	"Sequential"
+		    opExportControl 	"Public"
+		    uid        	0)
+		(object Operation "drawPoint"
+		    attributes 	(list Attribute_Set)
+		    quid       	"37BD386C02FB"
+		    documentation 	
+|Draws a Cross through the Point as well as all the Projections wanted. 
+|	 * This is more economical than using the upper Routine two times,
+|	 * once with V1 and	once with V2. 
+		    
+		    parameters 	(list Parameters
+			(object Parameter "V1"
+			    type       	"Tensor")
+			(object Parameter "V2"
+			    type       	"Tensor")
+			(object Parameter "P"
+			    type       	"Tensor")
+			(object Parameter "drawMode"
+			    type       	"int[]"))
+		    result     	"void"
+		    concurrency 	"Sequential"
+		    opExportControl 	"Public"
+		    uid        	0)
+		(object Operation "drawArrow"
+		    attributes 	(list Attribute_Set)
+		    quid       	"37BD386C0300"
+		    documentation 	
+|Draws the Vectors dV at the Positions V in the current Color	 
+		    
+		    parameters 	(list Parameters
+			(object Parameter "V"
+			    type       	"Tensor[]")
+			(object Parameter "dV"
+			    type       	"IntegrityRing[]"))
+		    result     	"Point2D[]"
+		    concurrency 	"Sequential"
+		    opExportControl 	"Public"
+		    uid        	0)
+		(object Operation "drawArrow"
+		    attributes 	(list Attribute_Set)
+		    quid       	"37BD386C0303"
+		    documentation 	
+|Draws the Vector dV at the Position V in the current Color	 
+		    
+		    parameters 	(list Parameters
+			(object Parameter "V"
+			    type       	"Tensor")
+			(object Parameter "dV"
+			    type       	"IntegrityRing"))
+		    result     	"Point2D"
+		    concurrency 	"Sequential"
+		    opExportControl 	"Public"
+		    uid        	0)
+		(object Operation "drawScalar"
+		    attributes 	(list Attribute_Set)
+		    quid       	"37BD386C0306"
+		    documentation 	
+|draws the Scalar Value S at the Position V with the Parameters given in the Constructor	 
+		    
+		    parameters 	(list Parameters
+			(object Parameter "V"
+			    type       	"Tensor")
+			(object Parameter "S"
+			    type       	"IntegrityRing"))
+		    result     	"Point2D"
+		    concurrency 	"Sequential"
+		    opExportControl 	"Public"
+		    uid        	0))
+	    class_attributes 	(list class_attribute_list
+		(object ClassAttribute "SizeMode"
+		    attributes 	(list Attribute_Set)
+		    quid       	"37BC91A702D3"
+		    documentation 	
+|Switches the Sizing of the Scalar Balls on	 
+		    
+		    type       	"boolean"
+		    exportControl 	"Public")
+		(object ClassAttribute "ColorMode"
+		    attributes 	(list Attribute_Set)
+		    quid       	"37BC91A702DB"
+		    documentation 	
+|Switches the Coloring of the Scalar Balls on	 
+		    
+		    type       	"boolean"
+		    exportControl 	"Public"))
+	    module     	"Component View::MathGraph3::Figures3D"
+	    quidu      	"37BFFD3D00B8"
+	    language   	"Java")
+	(object Class "HistoPlot"
+	    attributes 	(list Attribute_Set
+		(object Attribute
+		    tool       	"Java"
+		    name       	"GenerateFinalizer"
+		    value      	FALSE)
+		(object Attribute
+		    tool       	"Java"
+		    name       	"GenerateStaticInitializer"
+		    value      	FALSE)
+		(object Attribute
+		    tool       	"Java"
+		    name       	"GenerateInstanceInitializer"
+		    value      	FALSE)
+		(object Attribute
+		    tool       	"Java"
+		    name       	"GenerateDefaultConstructor"
+		    value      	FALSE))
+	    quid       	"37BC91A80085"
+	    documentation 	"Helper Class that encapsulates Drawing a Vector Value in 3 Dimensions "
+	    superclasses 	(list inheritance_relationship_list
+		(object Inheritance_Relationship
+		    attributes 	(list Attribute_Set)
+		    quid       	"37BC91A8008E"
+		    supplier   	"Logical View::MathGraph3::absDraw"
+		    quidu      	"37BC91A600D1")
+		(object Inheritance_Relationship
+		    attributes 	(list Attribute_Set)
+		    quid       	"37BD2095024A"
+		    supplier   	"Logical View::MathGraph3::absDraw"
+		    quidu      	"37BC91A600D1")
+		(object Inheritance_Relationship
+		    attributes 	(list Attribute_Set)
+		    quid       	"37BD386E00A4"
+		    supplier   	"Logical View::MathGraph3::absDraw"
+		    quidu      	"37BC91A600D1"))
+	    operations 	(list Operations
+		(object Operation "HistoPlot"
+		    attributes 	(list Attribute_Set)
+		    quid       	"37BD387100B3"
+		    documentation 	
+|Constructor, taking the Graphics- and the Coordinate System.
+|	 * The Tensor dV contains the extents of the Histograms in x,y Direction
+|	 * and the Footing of the Histogram (if 0 is not wanted).
+|	 
+		    
+		    parameters 	(list Parameters
+			(object Parameter "g2D"
+			    type       	"absGraphics2D")
+			(object Parameter "C3D_"
+			    type       	"Coordinates3D")
+			(object Parameter "dV_"
+			    type       	"Tensor"))
+		    concurrency 	"Sequential"
+		    opExportControl 	"Public"
+		    uid        	0)
+		(object Operation "draw"
+		    attributes 	(list Attribute_Set)
+		    quid       	"37BD387100B7"
+		    documentation 	
+|Draws a Histogram at Position V with the Extents from dV.	 
+		    
+		    parameters 	(list Parameters
+			(object Parameter "V"
+			    type       	"Tensor")
+			(object Parameter "S"
+			    type       	"IntegrityRing"))
+		    result     	"void"
+		    concurrency 	"Sequential"
+		    opExportControl 	"Public"
+		    uid        	0)
+		(object Operation "reSet"
+		    attributes 	(list Attribute_Set)
+		    quid       	"37BD387100BD"
+		    documentation 	
+|Resets the given Coordinate of the Algorithm	 
+		    
+		    parameters 	(list Parameters
+			(object Parameter "dim"
+			    type       	"int"))
+		    result     	"void"
+		    concurrency 	"Sequential"
+		    opExportControl 	"Public"
+		    uid        	0))
+	    class_attributes 	(list class_attribute_list
+		(object ClassAttribute "ColorMode"
+		    attributes 	(list Attribute_Set)
+		    quid       	"37BC91A8008F"
+		    documentation 	
+|Switches the Coloring of the Scalar Balls on	 
+		    
+		    type       	"boolean"
+		    exportControl 	"Public")
+		(object ClassAttribute "ColorOffset"
+		    attributes 	(list Attribute_Set)
+		    quid       	"37BD386F009F"
+		    documentation 	
+|Offset for the Colors of this Palette. 
+|	 * This Offset is being added to each Ordinate giving the Index of the Color.	 
+		    
+		    type       	"int"
+		    exportControl 	"Public"))
+	    module     	"Component View::MathGraph3::HistoPlot"
+	    quidu      	"37BFFD7F010D"
+	    language   	"Java")
+	(object Class "PlanePlot"
+	    attributes 	(list Attribute_Set
+		(object Attribute
+		    tool       	"Java"
+		    name       	"GenerateFinalizer"
+		    value      	FALSE)
+		(object Attribute
+		    tool       	"Java"
+		    name       	"GenerateStaticInitializer"
+		    value      	FALSE)
+		(object Attribute
+		    tool       	"Java"
+		    name       	"GenerateInstanceInitializer"
+		    value      	FALSE)
+		(object Attribute
+		    tool       	"Java"
+		    name       	"GenerateDefaultConstructor"
+		    value      	FALSE))
+	    quid       	"37BC91A8034C"
+	    documentation 	"Helper Class that encapsulates Drawing a Vector Value in 3 Dimensions "
+	    superclasses 	(list inheritance_relationship_list
+		(object Inheritance_Relationship
+		    attributes 	(list Attribute_Set)
+		    quid       	"37BC91A80355"
+		    supplier   	"Logical View::MathGraph3::absDraw"
+		    quidu      	"37BC91A600D1")
+		(object Inheritance_Relationship
+		    attributes 	(list Attribute_Set)
+		    quid       	"37BD2098038F"
+		    supplier   	"Logical View::MathGraph3::absDraw"
+		    quidu      	"37BC91A600D1")
+		(object Inheritance_Relationship
+		    attributes 	(list Attribute_Set)
+		    quid       	"37BD387303C3"
+		    supplier   	"Logical View::MathGraph3::absDraw"
+		    quidu      	"37BC91A600D1"))
+	    operations 	(list Operations
+		(object Operation "PlanePlot"
+		    attributes 	(list Attribute_Set)
+		    quid       	"37BD38770094"
+		    documentation 	
+|Constructor, taking the Color Range and the Radius Factor, 
+|	 * that control the coloring as well as the Sizing. 
+|	 
+		    
+		    parameters 	(list Parameters
+			(object Parameter "g2D"
+			    type       	"absGraphics2D")
+			(object Parameter "C3D_"
+			    type       	"Coordinates3D")
+			(object Parameter "NumXItems"
+			    type       	"int"))
+		    concurrency 	"Sequential"
+		    opExportControl 	"Public"
+		    uid        	0)
+		(object Operation "reSet"
+		    attributes 	(list Attribute_Set)
+		    quid       	"37BD38770098"
+		    documentation 	
+|Resets the given Coordinate of the Algorithm	 
+		    
+		    parameters 	(list Parameters
+			(object Parameter "dim"
+			    type       	"int"))
+		    result     	"void"
+		    concurrency 	"Sequential"
+		    opExportControl 	"Public"
+		    uid        	0)
+		(object Operation "draw"
+		    attributes 	(list Attribute_Set)
+		    quid       	"37BD3877009E"
+		    documentation 	
+|draws the Vector dV at the Position V with the Parameters given in the Constructor	 
+		    
+		    parameters 	(list Parameters
+			(object Parameter "V"
+			    type       	"Tensor")
+			(object Parameter "S"
+			    type       	"IntegrityRing"))
+		    result     	"void"
+		    concurrency 	"Sequential"
+		    opExportControl 	"Public"
+		    uid        	0))
+	    class_attributes 	(list class_attribute_list
+		(object ClassAttribute "ColorMode"
+		    attributes 	(list Attribute_Set)
+		    quid       	"37BC91A80356"
+		    documentation 	
+|Switches the Coloring of the Planes on	 
+		    
+		    type       	"boolean"
+		    exportControl 	"Public")
+		(object ClassAttribute "fillMode"
+		    attributes 	(list Attribute_Set)
+		    quid       	"37BC91A80357"
+		    documentation 	
+|Switches filling of the Planes on	 
+		    
+		    type       	"boolean"
+		    initv      	"true"
+		    exportControl 	"Public")
+		(object ClassAttribute "ColorOffset"
+		    attributes 	(list Attribute_Set)
+		    quid       	"37BD387403DB"
+		    documentation 	
+|Offset for the Colors of this Palette. 
+|	 * This Offset is being added to each Ordinate giving the Index of the Color.	 
+		    
+		    type       	"int"
+		    exportControl 	"Public")
+		(object ClassAttribute "xIndex"
+		    attributes 	(list Attribute_Set)
+		    quid       	"37BD3877008C"
+		    documentation 	
+|Index of the current x Position	 
+		    
+		    type       	"int"
+		    exportControl 	"Protected")
+		(object ClassAttribute "yIndex"
+		    attributes 	(list Attribute_Set)
+		    quid       	"37BD3877008D"
+		    documentation 	
+|Index of the current y Position	 
+		    
+		    type       	"int"
+		    exportControl 	"Protected")
+		(object ClassAttribute "connect"
+		    attributes 	(list Attribute_Set)
+		    quid       	"37BD38770093"
+		    documentation 	
+|Indicator for connecting the next Point	 
+		    
+		    type       	"boolean"
+		    exportControl 	"Protected"))
+	    module     	"Component View::MathGraph3::PlanePlot"
+	    quidu      	"37BFFDAE0382"
+	    language   	"Java")
+	(object Class "Platonic"
+	    attributes 	(list Attribute_Set
+		(object Attribute
+		    tool       	"Java"
+		    name       	"GenerateFinalizer"
+		    value      	FALSE)
+		(object Attribute
+		    tool       	"Java"
+		    name       	"GenerateStaticInitializer"
+		    value      	FALSE)
+		(object Attribute
+		    tool       	"Java"
+		    name       	"GenerateInstanceInitializer"
+		    value      	FALSE)
+		(object Attribute
+		    tool       	"Java"
+		    name       	"GenerateDefaultConstructor"
+		    value      	FALSE))
+	    quid       	"37BC91A90040"
+	    class_attributes 	(list class_attribute_list
+		(object ClassAttribute "PointsTetraeder[][]"
+		    attributes 	(list Attribute_Set
+			(object Attribute
+			    tool       	"Java"
+			    name       	"Final"
+			    value      	TRUE))
+		    quid       	"37BC91A90041"
+		    documentation 	
+|The Points of a Tetrahedron	 
+		    
+		    type       	"int"
+		    initv      	"{{1,1,1},{- 1,1,- 1},{- 1,- 1,1},{1,- 1,- 1}}"
+		    exportControl 	"Public"
+		    static     	TRUE)
+		(object ClassAttribute "PlanesTetraeder[][]"
+		    attributes 	(list Attribute_Set
+			(object Attribute
+			    tool       	"Java"
+			    name       	"Final"
+			    value      	TRUE))
+		    quid       	"37BC91A90049"
+		    documentation 	
+|The Planes of a Tetrahedron	 
+		    
+		    type       	"int"
+		    initv      	"{{1,2,3},{1,3,4},{1,4,2},{4,3,2}}"
+		    exportControl 	"Public"
+		    static     	TRUE)
+		(object ClassAttribute "PointsCube[][]"
+		    attributes 	(list Attribute_Set
+			(object Attribute
+			    tool       	"Java"
+			    name       	"Final"
+			    value      	TRUE))
+		    quid       	"37BC91A9004A"
+		    documentation 	
+|The Points of a Cube	 
+		    
+		    type       	"int"
+		    initv      	"{{1,1,1},{1,- 1,1},{1,- 1,- 1},{1,1,- 1},{- 1,1,1},{- 1,- 1,1},{- 1,- 1,- 1},{- 1,1,- 1}}"
+		    exportControl 	"Public"
+		    static     	TRUE)
+		(object ClassAttribute "PlanesCube[][]"
+		    attributes 	(list Attribute_Set
+			(object Attribute
+			    tool       	"Java"
+			    name       	"Final"
+			    value      	TRUE))
+		    quid       	"37BC91A9004B"
+		    documentation 	
+|The Planes of a Cube	 
+		    
+		    type       	"int"
+		    initv      	"{{1,2,3,4},{1,4,8,5},{1,5,6,2},{3,7,8,4},{2,6,7,3},{5,8,7,6}}"
+		    exportControl 	"Public"
+		    static     	TRUE)
+		(object ClassAttribute "Sqrt2"
+		    attributes 	(list Attribute_Set
+			(object Attribute
+			    tool       	"Java"
+			    name       	"Final"
+			    value      	TRUE))
+		    quid       	"37BC91A9004C"
+		    type       	"double"
+		    initv      	"Math.sqrt(2)"
+		    exportControl 	"Public"
+		    static     	TRUE)
+		(object ClassAttribute "PointsOktaeder[][]"
+		    attributes 	(list Attribute_Set)
+		    quid       	"37BC91A9004D"
+		    documentation 	
+|The Points of an Octahedron	 
+		    
+		    type       	"double"
+		    initv      	"{{1,1,0},{- 1,1,0},{- 1,- 1,0},{1,- 1,0},{0,0,Sqrt2},{1,1,- Sqrt2}}"
+		    exportControl 	"Implementation")
+		(object ClassAttribute "PlanesOktaeder[][]"
+		    attributes 	(list Attribute_Set
+			(object Attribute
+			    tool       	"Java"
+			    name       	"Final"
+			    value      	TRUE))
+		    quid       	"37BC91A9004E"
+		    documentation 	
+|The Planes of an Octahedron	 
+		    
+		    type       	"int"
+		    initv      	"{{1,2,5},{1,6,2},{2,3,5},{2,6,3},{3,4,5},{3,6,4},{4,1,5},{4,6,1}}"
+		    exportControl 	"Public"
+		    static     	TRUE)
+		(object ClassAttribute "golden"
+		    attributes 	(list Attribute_Set
+			(object Attribute
+			    tool       	"Java"
+			    name       	"Final"
+			    value      	TRUE))
+		    quid       	"37BC91A9004F"
+		    type       	"double"
+		    initv      	"TDouble.GOLDEN"
+		    exportControl 	"Public"
+		    static     	TRUE)
+		(object ClassAttribute "golden1"
+		    attributes 	(list Attribute_Set
+			(object Attribute
+			    tool       	"Java"
+			    name       	"Final"
+			    value      	TRUE))
+		    quid       	"37BC91A90050"
+		    type       	"double"
+		    initv      	"TDouble.ONEGOLDEN"
+		    exportControl 	"Public"
+		    static     	TRUE)
+		(object ClassAttribute "PointsDodekaeder[][]"
+		    attributes 	(list Attribute_Set
+			(object Attribute
+			    tool       	"Java"
+			    name       	"Final"
+			    value      	TRUE))
+		    quid       	"37BC91A90051"
+		    documentation 	
+|The Points of an Dodekahedron	 
+		    
+		    type       	"double"
+		    initv      	"{{1,1,- 1},{golden,0,- golden1},{- golden,0,- golden1},{- 1,1,- 1},{0,golden1,- golden},{golden1,golden,0},{1,- 1,- 1},{- 1,- 1,- 1},{- golden1,golden,0},{0,golden1,golden},{golden1,- golden,0},{0,- golden1,- golden},{- golden1,- golden,0},{- 1,1,1},{1,1,1},{1,- 1,1},{0,- golden1,golden},{- 1,- 1,1},{- golden,0,golden1},{golden,0,golden1}}"
+		    exportControl 	"Public"
+		    static     	TRUE)
+		(object ClassAttribute "PlanesDodekaeder[][]"
+		    attributes 	(list Attribute_Set
+			(object Attribute
+			    tool       	"Java"
+			    name       	"Final"
+			    value      	TRUE))
+		    quid       	"37BC91A90052"
+		    documentation 	
+|The Planes of a Dodekahedron	 
+		    
+		    type       	"int"
+		    initv      	"{{3,8,13,9,4},{19,14,9,13,18},{2,1,6,11,7},{20,16,11,6,15},{19,20,15,10,14},{20,19,18,17,16},{3,2,7,12,8},{2,3,4,5,1},{13,8,12,17,18},{11,16,17,12,7},{6,1,5,10,15},{9,14,10,5,4}}"
+		    exportControl 	"Public"
+		    static     	TRUE)
+		(object ClassAttribute "PointsIkosaeder[][]"
+		    attributes 	(list Attribute_Set
+			(object Attribute
+			    tool       	"Java"
+			    name       	"Final"
+			    value      	TRUE))
+		    quid       	"37BC91A90053"
+		    documentation 	
+|The Points of an Ikosahedron	 
+		    
+		    type       	"double"
+		    initv      	"{{0,+ 1,- golden1},{+ golden1,+ 0,- 1},{+ 1,+ golden1,- 0},{+ 0,- 1,- golden1},{+ golden1,- 0,+ 1},{- 1,+ golden1,+ 0},{- 0,+ 1,+ golden1},{- golden1,+ 0,- 1},{+ 1,- golden1,+ 0},{+ 0,- 1,+ golden1},{- golden1,+ 0,+ 1},{- 1,- golden1,- 0}}"
+		    exportControl 	"Public"
+		    static     	TRUE)
+		(object ClassAttribute "PlanesIkosaeder[][]"
+		    attributes 	(list Attribute_Set
+			(object Attribute
+			    tool       	"Java"
+			    name       	"Final"
+			    value      	TRUE))
+		    quid       	"37BC91A90054"
+		    documentation 	
+|The Planes of an Ikosahedron	 
+		    
+		    type       	"int"
+		    initv      	"{{1,3,2},{1,2,4},{1,4,8},{1,8,6},{1,6,3},{2,3,5},{2,9,4},{4,12,8},{8,11,6},{3,6,7},{2,5,9},{4,9,12},{8,12,11},{6,11,7},{3,7,5},{5,10,9},{9,10,12},{12,10,11},{11,10,7},{7,10,5}}"
+		    exportControl 	"Public"
+		    static     	TRUE)
+		(object ClassAttribute "PointsRauteder[][]"
+		    attributes 	(list Attribute_Set
+			(object Attribute
+			    tool       	"Java"
+			    name       	"Final"
+			    value      	TRUE))
+		    quid       	"37BC91A90055"
+		    documentation 	
+|The Points of a Rauteder	 
+		    
+		    type       	"int"
+		    initv      	"{{+ 0,+ 0,+ 2},{+ 1,+ 1,+ 1},{- 1,+ 1,+ 1},{- 1,- 1,+ 1},{+ 1,- 1,+ 1},{+ 2,+ 0,+ 0},{+ 0,+ 2,+ 0},{- 2,- 0,+ 0},{- 0,- 2,+ 0},{+ 1,+ 1,- 1},{- 1,+ 1,- 1},{- 1,- 1,- 1},{+ 1,- 1,- 1},{- 0,+ 0,- 2}}"
+		    exportControl 	"Public"
+		    static     	TRUE)
+		(object ClassAttribute "PlanesRauteder[][]"
+		    attributes 	(list Attribute_Set
+			(object Attribute
+			    tool       	"Java"
+			    name       	"Final"
+			    value      	TRUE))
+		    quid       	"37BC91A90056"
+		    type       	"int"
+		    initv      	"{{1,2,7,3},{1,3,8,4},{1,4,9,5},{1,5,6,2},{6,10,7,2},{7,11,8,3},{8,12,9,4},{9,13,6,5},{14,11,7,10},{14,12,8,11},{14,13,9,12},{14,10,6,13}}"
+		    exportControl 	"Public"
+		    static     	TRUE))
+	    module     	"Component View::MathGraph3::Platonic"
+	    quidu      	"37BC91A9003F"
+	    language   	"Java")
+	(object Class "PlotHyperPlane"
+	    attributes 	(list Attribute_Set
+		(object Attribute
+		    tool       	"Java"
+		    name       	"GenerateFinalizer"
+		    value      	FALSE)
+		(object Attribute
+		    tool       	"Java"
+		    name       	"GenerateStaticInitializer"
+		    value      	FALSE)
+		(object Attribute
+		    tool       	"Java"
+		    name       	"GenerateInstanceInitializer"
+		    value      	FALSE)
+		(object Attribute
+		    tool       	"Java"
+		    name       	"GenerateDefaultConstructor"
+		    value      	FALSE))
+	    quid       	"37BC91A901D1"
+	    documentation 	
+|Draws the HyperPlane with constant Potential recursively
+| * 
+| * TODO: eliminate the hardcoded Stepper Routine StepRKQ
+| *		 and the hardcoded ODE Height  
+	    
+	    superclasses 	(list inheritance_relationship_list
+		(object Inheritance_Relationship
+		    attributes 	(list Attribute_Set)
+		    quid       	"37BD387B0201"
+		    supplier   	"Logical View::MathGraph3::absDraw"
+		    quidu      	"37BC91A600D1"))
+	    operations 	(list Operations
+		(object Operation "PlotHyperPlane"
+		    attributes 	(list Attribute_Set)
+		    quid       	"37BD38800263"
+		    documentation 	
+|Constructor, taking a Force Field in Form of a (time dependant) ODE	 
+		    
+		    parameters 	(list Parameters
+			(object Parameter "g2D"
+			    type       	"absGraphics2D")
+			(object Parameter "CD"
+			    type       	"Coordinates")
+			(object Parameter "Force"
+			    type       	"intDGL")
+			(object Parameter "Step"
+			    type       	"IntegrityRing"))
+		    concurrency 	"Sequential"
+		    opExportControl 	"Public"
+		    uid        	0)
+		(object Operation "PlotHyperPlane"
+		    attributes 	(list Attribute_Set)
+		    quid       	"37BD38800268"
+		    documentation 	
+|Constructor, taking a Force Field in Form of a (time independant) Field	 
+		    
+		    parameters 	(list Parameters
+			(object Parameter "g2D"
+			    type       	"absGraphics2D")
+			(object Parameter "CD"
+			    type       	"Coordinates")
+			(object Parameter "Field"
+			    type       	"intFunction")
+			(object Parameter "Step"
+			    type       	"IntegrityRing"))
+		    concurrency 	"Sequential"
+		    opExportControl 	"Public"
+		    uid        	0)
+		(object Operation "draw"
+		    attributes 	(list Attribute_Set)
+		    quid       	"37BD38800271"
+		    documentation 	
+|Draw Routine of intDraw	 
+		    
+		    parameters 	(list Parameters
+			(object Parameter "V"
+			    type       	"Tensor")
+			(object Parameter "S"
+			    type       	"IntegrityRing"))
+		    result     	"void"
+		    concurrency 	"Sequential"
+		    opExportControl 	"Public"
+		    uid        	0)
+		(object Operation "processDim"
+		    attributes 	(list Attribute_Set)
+		    quid       	"37BD38800274"
+		    documentation 	
+|Recursive Hyper Line Drawer	 
+		    
+		    parameters 	(list Parameters
+			(object Parameter "V"
+			    type       	"Tensor")
+			(object Parameter "k"
+			    type       	"int"))
+		    result     	"void"
+		    concurrency 	"Sequential"
+		    opExportControl 	"Public"
+		    uid        	0))
+	    class_attributes 	(list class_attribute_list
+		(object ClassAttribute "MaxSteps"
+		    attributes 	(list Attribute_Set)
+		    quid       	"37BC91A901F1"
+		    documentation 	
+|Maximum Number of Steps in each Dimension	 
+		    
+		    type       	"int"
+		    initv      	"24"
+		    exportControl 	"Public"))
+	    module     	"Component View::MathGraph3::PlotHyperPlane"
+	    quidu      	"37BC91A901D0"
+	    language   	"Java")
+	(object Class "PlotODE"
+	    attributes 	(list Attribute_Set
+		(object Attribute
+		    tool       	"Java"
+		    name       	"GenerateFinalizer"
+		    value      	FALSE)
+		(object Attribute
+		    tool       	"Java"
+		    name       	"GenerateStaticInitializer"
+		    value      	FALSE)
+		(object Attribute
+		    tool       	"Java"
+		    name       	"GenerateInstanceInitializer"
+		    value      	FALSE)
+		(object Attribute
+		    tool       	"Java"
+		    name       	"GenerateDefaultConstructor"
+		    value      	FALSE))
+	    quid       	"37BC91A902F3"
+	    documentation 	
+|Integrates the ODE from the given Starting Points on.
+| * Works for arbitrary Dimensions.
+| * Implements intDraw to be called from Rastering Routines.
+| * 
+| * Design Decisions: 
+| * Most Variables kept in package, so they can be accessed by PlotOde2 and PlotOdeRect 
+	    
+	    superclasses 	(list inheritance_relationship_list
+		(object Inheritance_Relationship
+		    attributes 	(list Attribute_Set)
+		    quid       	"37BC91A902FC"
+		    supplier   	"Logical View::MathGraph3::absDraw"
+		    quidu      	"37BC91A600D1")
+		(object Inheritance_Relationship
+		    attributes 	(list Attribute_Set)
+		    quid       	"37BD209F023B"
+		    supplier   	"Logical View::MathGraph3::absDraw"
+		    quidu      	"37BC91A600D1")
+		(object Inheritance_Relationship
+		    attributes 	(list Attribute_Set)
+		    quid       	"37BD3883037F"
+		    supplier   	"Logical View::MathGraph3::absDraw"
+		    quidu      	"37BC91A600D1"))
+	    operations 	(list Operations
+		(object Operation "PlotODE"
+		    attributes 	(list Attribute_Set)
+		    quid       	"37BD388700CB"
+		    documentation 	
+|Initializing Constructor, works for both 2D and 3D Vectors, 
+|	 * because it uses a generic Coordinate Mapping Routine
+|	 * The Rectangle can be null, it won't be checked then.	 
+		    
+		    parameters 	(list Parameters
+			(object Parameter "g2D"
+			    type       	"absGraphics2D")
+			(object Parameter "CD"
+			    type       	"Coordinates")
+			(object Parameter "Stepper"
+			    type       	"absStepper")
+			(object Parameter "Rect"
+			    type       	"Rectangle"))
+		    concurrency 	"Sequential"
+		    opExportControl 	"Public"
+		    uid        	0)
+		(object Operation "draw"
+		    attributes 	(list Attribute_Set)
+		    quid       	"37BD388700D0"
+		    documentation 	
+|Starts integrating the ODE from V as the Starting Point. 
+|	 * S is ignored and can be null	 
+		    
+		    parameters 	(list Parameters
+			(object Parameter "V"
+			    type       	"Tensor")
+			(object Parameter "S"
+			    type       	"IntegrityRing"))
+		    result     	"void"
+		    concurrency 	"Sequential"
+		    opExportControl 	"Public"
+		    uid        	0)
+		(object Operation "drawPrep"
+		    attributes 	(list Attribute_Set)
+		    quid       	"37BD388700D4"
+		    documentation 	
+|(Re-)Sets the Coordinates	 
+		    
+		    parameters 	(list Parameters
+			(object Parameter "StepSize"
+			    type       	"IntegrityRing")
+			(object Parameter "V"
+			    type       	"Tensor"))
+		    result     	"void"
+		    concurrency 	"Sequential"
+		    opExportControl 	"Public"
+		    uid        	0)
+		(object Operation "drawLoop"
+		    attributes 	(list Attribute_Set)
+		    quid       	"37BD388700D7"
+		    documentation 	
+|Actual Loop for plotting the ODE
+|	 * Separating the Loop from the draw(V,S) Routine 
+|	 * saves the Step of Mapping V again 
+|	 * (when starting in opposite Direction from the same Point)	 
+		    
+		    result     	"void"
+		    concurrency 	"Sequential"
+		    opExportControl 	"Public"
+		    uid        	0))
+	    class_attributes 	(list class_attribute_list
+		(object ClassAttribute "stop"
+		    attributes 	(list Attribute_Set)
+		    quid       	"37BC91A902FD"
+		    documentation 	
+|External Flag to stop Integrating	 
+		    
+		    type       	"boolean"
+		    exportControl 	"Public")
+		(object ClassAttribute "bothWays"
+		    attributes 	(list Attribute_Set)
+		    quid       	"37BC91A90309"
+		    type       	"boolean"
+		    initv      	"true"
+		    exportControl 	"Public")
+		(object ClassAttribute "MaxSteps"
+		    attributes 	(list Attribute_Set)
+		    quid       	"37BD388602B4"
+		    documentation 	
+|Maximum number of Integration Steps to prevent infinite Loops 	 
+		    
+		    type       	"int"
+		    initv      	"20"
+		    exportControl 	"Public"))
+	    module     	"Component View::MathGraph3::PlotODE"
+	    quidu      	"37BC91A902F2"
+	    language   	"Java")
+	(object Class "PlotVector"
+	    attributes 	(list Attribute_Set
+		(object Attribute
+		    tool       	"Java"
+		    name       	"GenerateFinalizer"
+		    value      	FALSE)
+		(object Attribute
+		    tool       	"Java"
+		    name       	"GenerateStaticInitializer"
+		    value      	FALSE)
+		(object Attribute
+		    tool       	"Java"
+		    name       	"GenerateInstanceInitializer"
+		    value      	FALSE)
+		(object Attribute
+		    tool       	"Java"
+		    name       	"GenerateDefaultConstructor"
+		    value      	FALSE))
+	    quid       	"37BC91AA00A6"
+	    documentation 	"Helper Class that encapsulates Drawing a Vector (Tensor) Value in 2 or 3 Dimensions "
+	    superclasses 	(list inheritance_relationship_list
+		(object Inheritance_Relationship
+		    attributes 	(list Attribute_Set)
+		    quid       	"37BC91AA00AF"
+		    supplier   	"Logical View::MathGraph3::absDraw"
+		    quidu      	"37BC91A600D1")
+		(object Inheritance_Relationship
+		    attributes 	(list Attribute_Set)
+		    quid       	"37BD20A50257"
+		    supplier   	"Logical View::MathGraph3::absDraw"
+		    quidu      	"37BC91A600D1")
+		(object Inheritance_Relationship
+		    attributes 	(list Attribute_Set)
+		    quid       	"37BD38880278"
+		    supplier   	"Logical View::MathGraph3::absDraw"
+		    quidu      	"37BC91A600D1"))
+	    operations 	(list Operations
+		(object Operation "PlotVector"
+		    attributes 	(list Attribute_Set)
+		    quid       	"37BD388B00A9"
+		    documentation 	
+|Constructor, taking the Color Range and the Radius Factor, 
+|	 * that control the coloring as well as the Sizing.  
+		    
+		    parameters 	(list Parameters
+			(object Parameter "g2D"
+			    type       	"absGraphics2D")
+			(object Parameter "CD"
+			    type       	"Coordinates"))
+		    concurrency 	"Sequential"
+		    opExportControl 	"Public"
+		    uid        	0)
+		(object Operation "draw"
+		    attributes 	(list Attribute_Set)
+		    quid       	"37BD388B00AC"
+		    documentation 	
+|Draws the (assumed) Vector dV at the Position V 
+|	 * with the Parameters given in the Constructor	 
+		    
+		    parameters 	(list Parameters
+			(object Parameter "V"
+			    type       	"Tensor")
+			(object Parameter "dV"
+			    type       	"IntegrityRing"))
+		    result     	"void"
+		    concurrency 	"Sequential"
+		    opExportControl 	"Public"
+		    uid        	0))
+	    class_attributes 	(list class_attribute_list
+		(object ClassAttribute "ColorMode"
+		    attributes 	(list Attribute_Set)
+		    quid       	"37BC91AA00B0"
+		    documentation 	
+|Switches the Coloring of the Scalar Balls on	 
+		    
+		    type       	"boolean"
+		    exportControl 	"Public")
+		(object ClassAttribute "ColorOffset"
+		    attributes 	(list Attribute_Set)
+		    quid       	"37BD3889027D"
+		    documentation 	
+|Offset for the Colors of this Palette. 
+|	 * This Offset is being added to each Ordinate giving the Index of the Color.	 
+		    
+		    type       	"int"
+		    exportControl 	"Public"))
+	    module     	"Component View::MathGraph3::PlotVector"
+	    quidu      	"37BFFDE40361"
+	    language   	"Java")
+	(object Class "Polygon3DGraph"
+	    attributes 	(list Attribute_Set
+		(object Attribute
+		    tool       	"Java"
+		    name       	"GenerateFinalizer"
+		    value      	FALSE)
+		(object Attribute
+		    tool       	"Java"
+		    name       	"GenerateStaticInitializer"
+		    value      	FALSE)
+		(object Attribute
+		    tool       	"Java"
+		    name       	"GenerateInstanceInitializer"
+		    value      	FALSE)
+		(object Attribute
+		    tool       	"Java"
+		    name       	"GenerateDefaultConstructor"
+		    value      	FALSE))
+	    quid       	"37BC91AA0195"
+	    superclasses 	(list inheritance_relationship_list
+		(object Inheritance_Relationship
+		    attributes 	(list Attribute_Set)
+		    quid       	"37BD388C01AC"
+		    supplier   	"Logical View::Vector::Polygon3D"
+		    quidu      	"37BC91AA019F"))
+	    operations 	(list Operations
+		(object Operation "Polygon3DGraph"
+		    attributes 	(list Attribute_Set)
+		    quid       	"37BD388C01AD"
+		    documentation 	
+|Constructor that takes a Matrix with the Points as Rows.	 
+		    
+		    parameters 	(list Parameters
+			(object Parameter "Points"
+			    type       	"Tensor"))
+		    concurrency 	"Sequential"
+		    opExportControl 	"Public"
+		    uid        	0)
+		(object Operation "Polygon3DGraph"
+		    attributes 	(list Attribute_Set)
+		    quid       	"37BD388C01AF"
+		    documentation 	
+|Constructor, that takes an Array of Points	 
+		    
+		    parameters 	(list Parameters
+			(object Parameter "Points"
+			    type       	"Tensor[]")
+			(object Parameter "Extent"
+			    type       	"Line"))
+		    concurrency 	"Sequential"
+		    opExportControl 	"Public"
+		    uid        	0)
+		(object Operation "Polygon3DGraph"
+		    attributes 	(list Attribute_Set)
+		    quid       	"37BD388C01B2"
+		    documentation 	
+|Copy Operation that takes a String Description of Points and Planes
+|	 * within a Stream, like the one in the *.Pol Files.	 
+		    
+		    parameters 	(list Parameters
+			(object Parameter "ST"
+			    type       	"java.io.StreamTokenizer")
+			(object Parameter "Element"
+			    type       	"absIntegrityRing"))
+		    exceptions 	"java.io.IOException"
+		    concurrency 	"Sequential"
+		    opExportControl 	"Public"
+		    uid        	0)
+		(object Operation "getPolygon2D"
+		    attributes 	(list Attribute_Set)
+		    quid       	"37BD388C01B5"
+		    documentation 	
+|Calculates the 2D Body, using the given Coordinate System	 
+		    
+		    parameters 	(list Parameters
+			(object Parameter "CD"
+			    type       	"Coordinates"))
+		    result     	"Polygon2D"
+		    concurrency 	"Sequential"
+		    opExportControl 	"Public"
+		    uid        	0))
+	    module     	"Component View::MathGraph3::Polygon3DGraph"
+	    quidu      	"37BC91AA018B"
+	    language   	"Java")
+	(object Class "PolygonPlot"
+	    attributes 	(list Attribute_Set
+		(object Attribute
+		    tool       	"Java"
+		    name       	"GenerateFinalizer"
+		    value      	FALSE)
+		(object Attribute
+		    tool       	"Java"
+		    name       	"GenerateStaticInitializer"
+		    value      	FALSE)
+		(object Attribute
+		    tool       	"Java"
+		    name       	"GenerateInstanceInitializer"
+		    value      	FALSE)
+		(object Attribute
+		    tool       	"Java"
+		    name       	"GenerateDefaultConstructor"
+		    value      	FALSE))
+	    quid       	"37BC91AA031D"
+	    documentation 	
+|Helper Class that encapsulates Drawing a Polygon in 3 Dimensions.
+| * Caches the Points for a faster Redraw.  
+	    
+	    operations 	(list Operations
+		(object Operation "PolygonPlot"
+		    attributes 	(list Attribute_Set)
+		    quid       	"37BD388F0163"
+		    documentation 	
+|Constructor, taking the Graphics- and the Coordinate System.
+|	 * The Tensor dV contains the extents of the Histograms in x,y Direction
+|	 * and the Footing of the Histogram (if 0 is not wanted).
+|	 
+		    
+		    parameters 	(list Parameters
+			(object Parameter "g2D"
+			    type       	"absGraphics2D")
+			(object Parameter "C3D_"
+			    type       	"Coordinates3D")
+			(object Parameter "Pts_"
+			    type       	"Tensor[]"))
+		    concurrency 	"Sequential"
+		    opExportControl 	"Public"
+		    uid        	0))
+	    class_attributes 	(list class_attribute_list
+		(object ClassAttribute "ColorOffset"
+		    attributes 	(list Attribute_Set)
+		    quid       	"37BD388D033E"
+		    documentation 	
+|Offset for the Colors of this Palette. 
+|	 * This Offset is being added to each Ordinate giving the Index of the Color.	 
+		    
+		    type       	"int"
+		    exportControl 	"Public"))
+	    module     	"Component View::MathGraph3::PolygonPlot"
+	    quidu      	"37BFFE0E0022"
+	    language   	"Java")
+	(object Class "ProjectPlot"
+	    attributes 	(list Attribute_Set
+		(object Attribute
+		    tool       	"Java"
+		    name       	"GenerateFinalizer"
+		    value      	FALSE)
+		(object Attribute
+		    tool       	"Java"
+		    name       	"GenerateStaticInitializer"
+		    value      	FALSE)
+		(object Attribute
+		    tool       	"Java"
+		    name       	"GenerateInstanceInitializer"
+		    value      	FALSE)
+		(object Attribute
+		    tool       	"Java"
+		    name       	"GenerateDefaultConstructor"
+		    value      	FALSE))
+	    quid       	"37BC91AB0024"
+	    documentation 	
+|Used for drawing Points as well as their Projections to the Coordinate System. 
+| * The Points are buffered, so the Projections can be interconnected. 
+| * This class can be used to draw a 1 dimensioonal Parameter Plot. 
+| 
+	    
+	    operations 	(list Operations
+		(object Operation "ProjectPlot"
+		    attributes 	(list Attribute_Set)
+		    quid       	"37BD38920273"
+		    documentation 	
+|Constructor, taking the Color Range and the Radius Factor, 
+|	 * that control the coloring as well as the Sizing. 
+|	 
+		    
+		    parameters 	(list Parameters
+			(object Parameter "g2D"
+			    type       	"absGraphics2D")
+			(object Parameter "C3D_"
+			    type       	"Coordinates3D")
+			(object Parameter "Origin"
+			    type       	"Tensor"))
+		    concurrency 	"Sequential"
+		    opExportControl 	"Public"
+		    uid        	0)
+		(object Operation "drawPoint"
+		    attributes 	(list Attribute_Set)
+		    quid       	"37BD38920277"
+		    parameters 	(list Parameters
+			(object Parameter "V"
+			    type       	"Tensor")
+			(object Parameter "connect"
+			    type       	"boolean"))
+		    result     	"Point2D"
+		    concurrency 	"Sequential"
+		    opExportControl 	"Public"
+		    uid        	0))
+	    class_attributes 	(list class_attribute_list
+		(object ClassAttribute "project[]"
+		    attributes 	(list Attribute_Set)
+		    quid       	"37BC91AB0045"
+		    documentation 	
+|Switches the projection to each Dimension on	 
+		    
+		    type       	"boolean"
+		    exportControl 	"Public")
+		(object ClassAttribute "connect[]"
+		    attributes 	(list Attribute_Set)
+		    quid       	"37BC91AB0046"
+		    documentation 	
+|Switches the Connection in each Dimension on	 
+		    
+		    type       	"boolean"
+		    exportControl 	"Public"))
+	    module     	"Component View::MathGraph3::ProjectPlot"
+	    quidu      	"37BC91AB001A"
+	    language   	"Java")
+	(object Class "ScalarPlanePlot"
+	    attributes 	(list Attribute_Set
+		(object Attribute
+		    tool       	"Java"
+		    name       	"GenerateFinalizer"
+		    value      	FALSE)
+		(object Attribute
+		    tool       	"Java"
+		    name       	"GenerateStaticInitializer"
+		    value      	FALSE)
+		(object Attribute
+		    tool       	"Java"
+		    name       	"GenerateInstanceInitializer"
+		    value      	FALSE)
+		(object Attribute
+		    tool       	"Java"
+		    name       	"GenerateDefaultConstructor"
+		    value      	FALSE))
+	    quid       	"37BC91AB01CA"
+	    superclasses 	(list inheritance_relationship_list
+		(object Inheritance_Relationship
+		    attributes 	(list Attribute_Set)
+		    quid       	"37BD38940031"
+		    supplier   	"Logical View::MathGraph3::PlanePlot"
+		    quidu      	"37BC91A8034C"))
+	    operations 	(list Operations
+		(object Operation "ScalarPlanePlot"
+		    attributes 	(list Attribute_Set)
+		    quid       	"37BD3894022F"
+		    documentation 	
+|Constructor, the Palette can be null.	 
+		    
+		    parameters 	(list Parameters
+			(object Parameter "g2D"
+			    type       	"absGraphics2D")
+			(object Parameter "C3D_"
+			    type       	"Coordinates3D")
+			(object Parameter "NumXItems"
+			    type       	"int")
+			(object Parameter "Palette"
+			    type       	"Color[]"))
+		    concurrency 	"Sequential"
+		    opExportControl 	"Public"
+		    uid        	0)
+		(object Operation "draw"
+		    attributes 	(list Attribute_Set)
+		    quid       	"37BD38940234"
+		    documentation 	
+|draws the Vector dV at the Position V with the Parameters given in the Constructor	 
+		    
+		    parameters 	(list Parameters
+			(object Parameter "V"
+			    type       	"Tensor")
+			(object Parameter "S"
+			    type       	"IntegrityRing"))
+		    result     	"void"
+		    concurrency 	"Sequential"
+		    opExportControl 	"Public"
+		    uid        	0))
+	    class_attributes 	(list class_attribute_list
+		(object ClassAttribute "x[]"
+		    attributes 	(list Attribute_Set)
+		    quid       	"37BC91AB01D4"
+		    documentation 	
+|x Coordinates to hand over to the ScalarPlot Methods	 
+		    
+		    type       	"int"
+		    initv      	"new int [4]")
+		(object ClassAttribute "y[]"
+		    attributes 	(list Attribute_Set)
+		    quid       	"37BC91AB01D5"
+		    documentation 	
+|y Coordinates to hand over to the ScalarPlot Methods	 
+		    
+		    type       	"int"
+		    initv      	"new int [4]")
+		(object ClassAttribute "z[]"
+		    attributes 	(list Attribute_Set)
+		    quid       	"37BC91AB01D6"
+		    documentation 	
+|z Coordinates to hand over to the ScalarPlot Methods	 
+		    
+		    type       	"int"
+		    initv      	"new int [4]")
+		(object ClassAttribute "zP[]"
+		    attributes 	(list Attribute_Set)
+		    quid       	"37BC91AB01E0"
+		    documentation 	"Cache for the z Value "
+		    type       	"int"))
+	    module     	"Component View::MathGraph3::ScalarPlanePlot"
+	    quidu      	"37BFFE6F037F"
+	    language   	"Java")
+	(object Class "ScalarPointPlot"
+	    attributes 	(list Attribute_Set
+		(object Attribute
+		    tool       	"Java"
+		    name       	"GenerateFinalizer"
+		    value      	FALSE)
+		(object Attribute
+		    tool       	"Java"
+		    name       	"GenerateStaticInitializer"
+		    value      	FALSE)
+		(object Attribute
+		    tool       	"Java"
+		    name       	"GenerateInstanceInitializer"
+		    value      	FALSE)
+		(object Attribute
+		    tool       	"Java"
+		    name       	"GenerateDefaultConstructor"
+		    value      	FALSE))
+	    quid       	"37BC91AB034F"
+	    documentation 	"Helper Class that encapsulates Drawing a scalar Value in 3 Dimensions "
+	    superclasses 	(list inheritance_relationship_list
+		(object Inheritance_Relationship
+		    attributes 	(list Attribute_Set)
+		    quid       	"37BC91AB0350"
+		    supplier   	"Logical View::MathGraph3::absDraw"
+		    quidu      	"37BC91A600D1")
+		(object Inheritance_Relationship
+		    attributes 	(list Attribute_Set)
+		    quid       	"37BD20B30013"
+		    supplier   	"Logical View::MathGraph3::absDraw"
+		    quidu      	"37BC91A600D1")
+		(object Inheritance_Relationship
+		    attributes 	(list Attribute_Set)
+		    quid       	"37BD389503CB"
+		    supplier   	"Logical View::MathGraph3::absDraw"
+		    quidu      	"37BC91A600D1"))
+	    operations 	(list Operations
+		(object Operation "ScalarPointPlot"
+		    attributes 	(list Attribute_Set)
+		    quid       	"37BD389801DE"
+		    documentation 	
+|Constructor, taking the Color Range and the Radius Factor, 
+|	 * that control the coloring as well as the Sizing. 
+|	 
+		    
+		    parameters 	(list Parameters
+			(object Parameter "g2D"
+			    type       	"absGraphics2D")
+			(object Parameter "C3D_"
+			    type       	"Coordinates3D"))
+		    concurrency 	"Sequential"
+		    opExportControl 	"Public"
+		    uid        	0)
+		(object Operation "reSet"
+		    attributes 	(list Attribute_Set)
+		    quid       	"37BD389801E1"
+		    documentation 	
+|Resets the given Coordinate of the Algorithm	 
+		    
+		    parameters 	(list Parameters
+			(object Parameter "dim"
+			    type       	"int"))
+		    result     	"void"
+		    concurrency 	"Sequential"
+		    opExportControl 	"Public"
+		    uid        	0)
+		(object Operation "draw"
+		    attributes 	(list Attribute_Set)
+		    quid       	"37BD389801E3"
+		    documentation 	
+|draws the Scalar Value S at the Position V with the Parameters given in the Constructor	 
+		    
+		    parameters 	(list Parameters
+			(object Parameter "V"
+			    type       	"Tensor")
+			(object Parameter "S"
+			    type       	"IntegrityRing"))
+		    result     	"void"
+		    concurrency 	"Sequential"
+		    opExportControl 	"Public"
+		    uid        	0))
+	    class_attributes 	(list class_attribute_list
+		(object ClassAttribute "SizeMode"
+		    attributes 	(list Attribute_Set)
+		    quid       	"37BC91AB0359"
+		    documentation 	
+|Switches the Sizing of the Scalar Balls on	 
+		    
+		    type       	"boolean"
+		    exportControl 	"Public")
+		(object ClassAttribute "ColorMode"
+		    attributes 	(list Attribute_Set)
+		    quid       	"37BC91AB035A"
+		    documentation 	
+|Switches the Coloring of the Scalar Balls on	 
+		    
+		    type       	"boolean"
+		    exportControl 	"Public")
+		(object ClassAttribute "ColorOffset"
+		    attributes 	(list Attribute_Set)
+		    quid       	"37BD389701D3"
+		    documentation 	
+|Offset for the Colors of this Palette. 
+|	 * This Offset is being added to each Ordinate giving the Index of the Color.	 
+		    
+		    type       	"int"
+		    exportControl 	"Public"))
+	    module     	"Component View::MathGraph3::ScalarPointPlot"
+	    quidu      	"37BFFE99039E"
+	    language   	"Java")
+	(object Class "VoxelPlot"
+	    attributes 	(list Attribute_Set
+		(object Attribute
+		    tool       	"Java"
+		    name       	"GenerateFinalizer"
+		    value      	FALSE)
+		(object Attribute
+		    tool       	"Java"
+		    name       	"GenerateStaticInitializer"
+		    value      	FALSE)
+		(object Attribute
+		    tool       	"Java"
+		    name       	"GenerateInstanceInitializer"
+		    value      	FALSE)
+		(object Attribute
+		    tool       	"Java"
+		    name       	"GenerateDefaultConstructor"
+		    value      	FALSE))
+	    quid       	"37BC91AC0103"
+	    documentation 	
+|Helper Class that encapsulates Drawing a scalar Value in 3 Dimensions.
+| * In this Example the Value is calculated. 
+	    
+	    superclasses 	(list inheritance_relationship_list
+		(object Inheritance_Relationship
+		    attributes 	(list Attribute_Set)
+		    quid       	"37BC91AC010C"
+		    supplier   	"Logical View::MathGraph3::absDraw"
+		    quidu      	"37BC91A600D1")
+		(object Inheritance_Relationship
+		    attributes 	(list Attribute_Set)
+		    quid       	"37BD20B501E2"
+		    supplier   	"Logical View::MathGraph3::absDraw"
+		    quidu      	"37BC91A600D1")
+		(object Inheritance_Relationship
+		    attributes 	(list Attribute_Set)
+		    quid       	"37BD389A03AB"
+		    supplier   	"Logical View::MathGraph3::absDraw"
+		    quidu      	"37BC91A600D1"))
+	    operations 	(list Operations
+		(object Operation "VoxelPlot"
+		    attributes 	(list Attribute_Set)
+		    quid       	"37BD38A3032C"
+		    documentation 	
+|Constructor, taking the Maximum Indices to size the buffers. 	 
+		    
+		    parameters 	(list Parameters
+			(object Parameter "g2D"
+			    type       	"absGraphics2D")
+			(object Parameter "C3D_"
+			    type       	"Coordinates3D")
+			(object Parameter "MaxIndex_"
+			    type       	"int[]"))
+		    concurrency 	"Sequential"
+		    opExportControl 	"Public"
+		    uid        	0)
+		(object Operation "reSet"
+		    attributes 	(list Attribute_Set)
+		    quid       	"37BD38A30335"
+		    documentation 	
+|Resets the given Coordinate of the Algorithm	 
+		    
+		    parameters 	(list Parameters
+			(object Parameter "dim"
+			    type       	"int"))
+		    result     	"void"
+		    concurrency 	"Sequential"
+		    opExportControl 	"Public"
+		    uid        	0)
+		(object Operation "Plot"
+		    attributes 	(list Attribute_Set)
+		    quid       	"37BD38A30337"
+		    documentation 	
+|This Function determines the color in which the Square has to be painted	
+|	 * Here the Value of S is completely ignored, but the Index is used 
+|	 * to create a Menger Schwamm. 
+|	 * For transparent Voxel Pictures just use the Value of S! 
+		    
+		    parameters 	(list Parameters
+			(object Parameter "S"
+			    type       	"IntegrityRing")
+			(object Parameter "Index"
+			    type       	"int[]"))
+		    result     	"int"
+		    concurrency 	"Sequential"
+		    opExportControl 	"Private"
+		    uid        	0)
+		(object Operation "draw"
+		    attributes 	(list Attribute_Set)
+		    quid       	"37BD38A3033A"
+		    documentation 	
+|This drawing Routine fills the whole R^3 and can also be used 
+|	 * to paint transparent Pictures in a Volume. 
+|	 
+		    
+		    parameters 	(list Parameters
+			(object Parameter "V"
+			    type       	"Tensor")
+			(object Parameter "S"
+			    type       	"IntegrityRing")
+			(object Parameter "Index"
+			    type       	"int[]"))
+		    result     	"void"
+		    concurrency 	"Sequential"
+		    opExportControl 	"Public"
+		    uid        	0)
+		(object Operation "draw"
+		    attributes 	(list Attribute_Set)
+		    quid       	"37BD38A30342"
+		    documentation 	
+|draws the Scalar Value S at the Position V with the Parameters given in the Constructor	 
+		    
+		    parameters 	(list Parameters
+			(object Parameter "V"
+			    type       	"Tensor")
+			(object Parameter "S"
+			    type       	"IntegrityRing"))
+		    result     	"void"
+		    concurrency 	"Sequential"
+		    opExportControl 	"Public"
+		    uid        	0))
+	    class_attributes 	(list class_attribute_list
+		(object ClassAttribute "ColorOffset"
+		    attributes 	(list Attribute_Set)
+		    quid       	"37BD389D03B2"
+		    documentation 	
+|Offset for the Colors of this Palette. 
+|	 * This Offset is being added to each Ordinate giving the Index of the Color.	 
+		    
+		    type       	"int"
+		    exportControl 	"Public")
+		(object ClassAttribute "MaxIndex[]"
+		    attributes 	(list Attribute_Set)
+		    quid       	"37BD389F038D"
+		    documentation 	
+|Maximum Index for each dimension	 
+		    
+		    type       	"int")
+		(object ClassAttribute "Incr[]"
+		    attributes 	(list Attribute_Set)
+		    quid       	"37BD38A3032B"
+		    documentation 	
+|Increment for painting	 
+		    
+		    type       	"int"
+		    initv      	"{1,1,1}"
+		    exportControl 	"Implementation"))
+	    module     	"Component View::MathGraph3::VoxelPlot"
+	    quidu      	"37BFFEC40291"
+	    language   	"Java")
+	(object Class "HeightOde"
+	    attributes 	(list Attribute_Set
+		(object Attribute
+		    tool       	"Java"
+		    name       	"GenerateFinalizer"
+		    value      	FALSE)
+		(object Attribute
+		    tool       	"Java"
+		    name       	"GenerateStaticInitializer"
+		    value      	FALSE)
+		(object Attribute
+		    tool       	"Java"
+		    name       	"GenerateInstanceInitializer"
+		    value      	FALSE)
+		(object Attribute
+		    tool       	"Java"
+		    name       	"GenerateDefaultConstructor"
+		    value      	FALSE))
+	    quid       	"37BC91B203D7"
+	    documentation 	
+|Helper ODE that converts a time independent Force Field into an ODE 
+| * that can be integrated by a 1-dim. Stepper Routine, which is very effective.  
+	    
+	    realized_interfaces 	(list realize_rel_list
+		(object Realize_Relationship
+		    attributes 	(list Attribute_Set)
+		    quid       	"37BD394B020A"
+		    supplier   	"Logical View::Ring::intDGL"
+		    quidu      	"37BC91A901E4"))
+	    exportControl 	"Implementation"
+	    operations 	(list Operations
+		(object Operation "HeightOde"
+		    attributes 	(list Attribute_Set)
+		    quid       	"37BD394E0205"
+		    documentation 	
+|Initializing Constructor: takes the Force Field ODE
+|	 * (usually not Time dependant)	 
+		    
+		    parameters 	(list Parameters
+			(object Parameter "Fktn"
+			    type       	"intFunction"))
+		    concurrency 	"Sequential"
+		    opExportControl 	"Public"
+		    uid        	0)
+		(object Operation "Funktion"
+		    attributes 	(list Attribute_Set)
+		    quid       	"37BD394E0207"
+		    documentation 	
+|Changes the Force Field ODE into a Height ODE by creating a Vector as Derivative, 
+|	 * that is orthogonal to the Force Field Vector. 
+|	 * All coordinates except for the 0 and 1 are kept exactly the same.
+|	 * Thus you would have to swap Coordinates before and after Calculation.	 
+		    
+		    parameters 	(list Parameters
+			(object Parameter "x"
+			    type       	"IntegrityRing")
+			(object Parameter "y"
+			    type       	"IntegrityRing")
+			(object Parameter "dydx"
+			    type       	"IntegrityRing"))
+		    result     	"void"
+		    concurrency 	"Sequential"
+		    opExportControl 	"Public"
+		    uid        	0))
+	    class_attributes 	(list class_attribute_list
+		(object ClassAttribute "dimX"
+		    attributes 	(list Attribute_Set)
+		    quid       	"37BC91B203D9"
+		    documentation 	
+|X-Dimension along which the ODE is integrated along	 
+		    
+		    type       	"int"
+		    exportControl 	"Public")
+		(object ClassAttribute "dimY"
+		    attributes 	(list Attribute_Set)
+		    quid       	"37BC91B203DB"
+		    documentation 	
+|Y-Dimension which the ODE is integrated in.	 
+		    
+		    type       	"int"
+		    exportControl 	"Public"))
+	    module     	"Component View::MathGraph3::PlotEquiPot"
+	    quidu      	"37BC91B203A9"
+	    language   	"Java")
+	(object Class "PlotODE2"
+	    attributes 	(list Attribute_Set
+		(object Attribute
+		    tool       	"Java"
+		    name       	"GenerateFinalizer"
+		    value      	FALSE)
+		(object Attribute
+		    tool       	"Java"
+		    name       	"GenerateStaticInitializer"
+		    value      	FALSE)
+		(object Attribute
+		    tool       	"Java"
+		    name       	"GenerateInstanceInitializer"
+		    value      	FALSE)
+		(object Attribute
+		    tool       	"Java"
+		    name       	"GenerateDefaultConstructor"
+		    value      	FALSE))
+	    quid       	"37BC91B300EE"
+	    documentation 	
+|Integrates the ODE from the given Starting Points on.
+| * Works for arbitrary Dimensions.
+| * Implements intDraw to be called from Rastering Routines.  
+	    
+	    superclasses 	(list inheritance_relationship_list
+		(object Inheritance_Relationship
+		    attributes 	(list Attribute_Set)
+		    quid       	"37BD395003DE"
+		    supplier   	"Logical View::MathGraph3::absDraw"
+		    quidu      	"37BC91A600D1"))
+	    operations 	(list Operations
+		(object Operation "PlotODE2"
+		    attributes 	(list Attribute_Set)
+		    quid       	"37BD395101E1"
+		    documentation 	
+|Initializing Constructor, works for both 2D and 3D Vectors, 
+|	 * because it uses a generic Coordinate Mapping Routine	 
+		    
+		    parameters 	(list Parameters
+			(object Parameter "Plotter"
+			    type       	"PlotODE"))
+		    concurrency 	"Sequential"
+		    opExportControl 	"Public"
+		    uid        	0)
+		(object Operation "draw"
+		    attributes 	(list Attribute_Set)
+		    quid       	"37BD395101E3"
+		    documentation 	
+|Integrates the ODE from V as the Starting Point in both Directions.
+|	 * S is ignored and can be null	 
+		    
+		    parameters 	(list Parameters
+			(object Parameter "V"
+			    type       	"Tensor")
+			(object Parameter "S"
+			    type       	"IntegrityRing"))
+		    result     	"void"
+		    concurrency 	"Sequential"
+		    opExportControl 	"Public"
+		    uid        	0))
+	    module     	"Component View::MathGraph3::PlotODE2"
+	    quidu      	"37BC91B300E4"
+	    language   	"Java")
+	(object Class "PlotOdeRect"
+	    attributes 	(list Attribute_Set
+		(object Attribute
+		    tool       	"Java"
+		    name       	"GenerateFinalizer"
+		    value      	FALSE)
+		(object Attribute
+		    tool       	"Java"
+		    name       	"GenerateStaticInitializer"
+		    value      	FALSE)
+		(object Attribute
+		    tool       	"Java"
+		    name       	"GenerateInstanceInitializer"
+		    value      	FALSE)
+		(object Attribute
+		    tool       	"Java"
+		    name       	"GenerateDefaultConstructor"
+		    value      	FALSE))
+	    quid       	"37BC91B301D5"
+	    documentation 	
+|Integrates the ODE from the given Starting Points on.
+| * Works for arbitrary Dimensions.
+| * Implements intDraw to be called from Rastering Routines.  
+	    
+	    superclasses 	(list inheritance_relationship_list
+		(object Inheritance_Relationship
+		    attributes 	(list Attribute_Set)
+		    quid       	"37BC91B301DE"
+		    supplier   	"Logical View::MathGraph3::PlotODE"
+		    quidu      	"37BC91A902F3")
+		(object Inheritance_Relationship
+		    attributes 	(list Attribute_Set)
+		    quid       	"37BD215900B1"
+		    supplier   	"Logical View::MathGraph3::PlotODE"
+		    quidu      	"37BC91A902F3")
+		(object Inheritance_Relationship
+		    attributes 	(list Attribute_Set)
+		    quid       	"37BD39520391"
+		    supplier   	"Logical View::MathGraph3::PlotODE"
+		    quidu      	"37BC91A902F3"))
+	    operations 	(list Operations
+		(object Operation "PlotOdeRect"
+		    attributes 	(list Attribute_Set)
+		    quid       	"37BD39530382"
+		    documentation 	
+|Initializing Constructor, works for both 2D and 3D Vectors, 
+|	 * because it uses a generic Coordinate Mapping Routine	 
+		    
+		    parameters 	(list Parameters
+			(object Parameter "Rect"
+			    type       	"Rectangle")
+			(object Parameter "Plotter"
+			    type       	"PlotODE"))
+		    concurrency 	"Sequential"
+		    opExportControl 	"Public"
+		    uid        	0)
+		(object Operation "draw"
+		    attributes 	(list Attribute_Set)
+		    quid       	"37BD39530385"
+		    documentation 	
+|Integrates the ODE from V as the Starting Point in both Directions.
+|	 * S is ignored and can be null	 
+		    
+		    parameters 	(list Parameters
+			(object Parameter "V"
+			    type       	"Tensor")
+			(object Parameter "S"
+			    type       	"IntegrityRing"))
+		    result     	"void"
+		    concurrency 	"Sequential"
+		    opExportControl 	"Public"
+		    uid        	0)
+		(object Operation "drawPrep"
+		    attributes 	(list Attribute_Set)
+		    quid       	"37BD39530388"
+		    parameters 	(list Parameters
+			(object Parameter "V"
+			    type       	"Tensor"))
+		    result     	"void"
+		    concurrency 	"Sequential"
+		    opExportControl 	"Public"
+		    uid        	0)
+		(object Operation "drawLoop"
+		    attributes 	(list Attribute_Set)
+		    quid       	"37BD3953038A"
+		    result     	"void"
+		    concurrency 	"Sequential"
+		    opExportControl 	"Public"
+		    uid        	0))
+	    module     	"Component View::MathGraph3::PlotOdeRect"
+	    quidu      	"37BC91B301D4"
+	    language   	"Java")
+	(object Class "Body3DGraph"
+	    attributes 	(list Attribute_Set
+		(object Attribute
+		    tool       	"Java"
+		    name       	"GenerateFinalizer"
+		    value      	FALSE)
+		(object Attribute
+		    tool       	"Java"
+		    name       	"GenerateStaticInitializer"
+		    value      	FALSE)
+		(object Attribute
+		    tool       	"Java"
+		    name       	"GenerateInstanceInitializer"
+		    value      	FALSE)
+		(object Attribute
+		    tool       	"Java"
+		    name       	"GenerateDefaultConstructor"
+		    value      	FALSE))
+	    quid       	"37BD385E02BE"
+	    documentation 	
+|www.
+| 
+	    
+	    superclasses 	(list inheritance_relationship_list
+		(object Inheritance_Relationship
+		    attributes 	(list Attribute_Set)
+		    quid       	"37BD386000B8"
+		    supplier   	"Logical View::Vector::Body3D"
+		    quidu      	"37BC93EF008D"))
+	    operations 	(list Operations
+		(object Operation "Body3DGraph"
+		    attributes 	(list Attribute_Set)
+		    quid       	"37BD386000B9"
+		    documentation 	
+|Constructor that takes a Matrix with the Points as Rows.	 
+		    
+		    parameters 	(list Parameters
+			(object Parameter "Points"
+			    type       	"Tensor")
+			(object Parameter "Planes"
+			    type       	"int[][]")
+			(object Parameter "decreasePointIndex"
+			    type       	"boolean"))
+		    concurrency 	"Sequential"
+		    opExportControl 	"Public"
+		    uid        	0)
+		(object Operation "Body3DGraph"
+		    attributes 	(list Attribute_Set)
+		    quid       	"37BD386000BD"
+		    documentation 	
+|Constructor that takes a Matrix with the Points as Rows.	 
+		    
+		    parameters 	(list Parameters
+			(object Parameter "Body"
+			    type       	"Body3D"))
+		    concurrency 	"Sequential"
+		    opExportControl 	"Public"
+		    uid        	0)
+		(object Operation "Body3DGraph"
+		    attributes 	(list Attribute_Set)
+		    quid       	"37BD386000BF"
+		    documentation 	
+|Constructor, that takes an Array of Points	 
+		    
+		    parameters 	(list Parameters
+			(object Parameter "Points"
+			    type       	"Tensor[]")
+			(object Parameter "Extent"
+			    type       	"Line")
+			(object Parameter "Planes"
+			    type       	"int[][]")
+			(object Parameter "MaxPointsPerPlane"
+			    type       	"int")
+			(object Parameter "decreasePointIndex"
+			    type       	"boolean"))
+		    concurrency 	"Sequential"
+		    opExportControl 	"Public"
+		    uid        	0)
+		(object Operation "Body3DGraph"
+		    attributes 	(list Attribute_Set)
+		    quid       	"37BD386000C5"
+		    documentation 	
+|Copy Operation that takes a String Description of Points and Planes
+|	 * within a Stream, like the one in the *.Pol Files.	 
+		    
+		    parameters 	(list Parameters
+			(object Parameter "ST"
+			    type       	"java.io.StreamTokenizer")
+			(object Parameter "Element"
+			    type       	"absIntegrityRing")
+			(object Parameter "givenPlanes"
+			    type       	"boolean")
+			(object Parameter "decreasePointIndex"
+			    type       	"boolean"))
+		    exceptions 	"java.io.IOException"
+		    concurrency 	"Sequential"
+		    opExportControl 	"Public"
+		    uid        	0)
+		(object Operation "getBody2D"
+		    attributes 	(list Attribute_Set)
+		    quid       	"37BD386000CA"
+		    documentation 	
+|Calculates the 2D Body, using the given Coordinate System. 
+|	 * Also calculates the Sequence of Planes by the Distance to the Viewer. 	 
+		    
+		    parameters 	(list Parameters
+			(object Parameter "CD"
+			    type       	"Coordinates"))
+		    result     	"Body2D"
+		    concurrency 	"Sequential"
+		    opExportControl 	"Public"
+		    uid        	0)
+		(object Operation "getMids"
+		    attributes 	(list Attribute_Set)
+		    quid       	"37BD386000CC"
+		    documentation 	
+|Returns the mapped Mids of this Body's Planes	 
+		    
+		    parameters 	(list Parameters
+			(object Parameter "CD"
+			    type       	"Coordinates"))
+		    result     	"Point2D[]"
+		    concurrency 	"Sequential"
+		    opExportControl 	"Public"
+		    uid        	0))
+	    module     	"Component View::MathGraph3::Body3DGraph"
+	    quidu      	"37BC91A6010D"
+	    language   	"Java")
+	(object Association "$UNNAMED$0"
+	    attributes 	(list Attribute_Set)
+	    quid       	"37BC91A60277"
+	    roles      	(list role_list
+		(object Role "$UNNAMED$1"
+		    quid       	"37BC91A60278"
+		    supplier   	"Logical View::MathGraph3::Column3D"
+		    quidu      	"37BC91A60276")
+		(object Role "g"
+		    attributes 	(list Attribute_Set
+			(object Attribute
+			    tool       	"Java"
+			    name       	"InitialValue"
+			    value      	""))
+		    quid       	"37BC91A60279"
+		    documentation 	
+|Graphics Context to point to	 
+		    
+		    label      	"g"
+		    supplier   	"Logical View::Graphics2D::absGraphics2D"
+		    quidu      	"37BC8ED50091"
+		    exportControl 	"Private"
+		    is_navigable 	TRUE)))
+	(object Association "$UNNAMED$2"
+	    attributes 	(list Attribute_Set)
+	    quid       	"37BC91A60282"
+	    roles      	(list role_list
+		(object Role "$UNNAMED$3"
+		    quid       	"37BC91A60283"
+		    supplier   	"Logical View::MathGraph3::Column3D"
+		    quidu      	"37BC91A60276")
+		(object Role "C3D"
+		    attributes 	(list Attribute_Set
+			(object Attribute
+			    tool       	"Java"
+			    name       	"InitialValue"
+			    value      	""))
+		    quid       	"37BC91A60284"
+		    documentation 	
+|Reference to the Coordinate System for Conversion	 
+		    
+		    label      	"C3D"
+		    supplier   	"Logical View::MathGraph3::Coordinates3D"
+		    quidu      	"37BC91A60281"
+		    exportControl 	"Private"
+		    is_navigable 	TRUE)))
+	(object Association "$UNNAMED$4"
+	    attributes 	(list Attribute_Set)
+	    quid       	"37BC91A70141"
+	    roles      	(list role_list
+		(object Role "$UNNAMED$5"
+		    quid       	"37BC91A70142"
+		    supplier   	"Logical View::MathGraph3::Figures2D"
+		    quidu      	"37BC91A70137")
+		(object Role "C2D"
+		    attributes 	(list Attribute_Set
+			(object Attribute
+			    tool       	"Java"
+			    name       	"InitialValue"
+			    value      	""))
+		    quid       	"37BC91A70143"
+		    documentation 	
+|Reference to the Coordinate System for Conversion	 
+		    
+		    label      	"C2D"
+		    supplier   	"Logical View::MathGraph3::Coordinates2D_"
+		    quidu      	"37BC91A70001"
+		    exportControl 	"Private"
+		    is_navigable 	TRUE)))
+	(object Association "$UNNAMED$6"
+	    attributes 	(list Attribute_Set)
+	    quid       	"37BC91A70144"
+	    roles      	(list role_list
+		(object Role "$UNNAMED$7"
+		    quid       	"37BC91A70145"
+		    supplier   	"Logical View::MathGraph3::Figures2D"
+		    quidu      	"37BC91A70137")
+		(object Role "g"
+		    attributes 	(list Attribute_Set
+			(object Attribute
+			    tool       	"Java"
+			    name       	"InitialValue"
+			    value      	""))
+		    quid       	"37BC91A70146"
+		    documentation 	
+|Graphics Context to point to	 
+		    
+		    label      	"g"
+		    supplier   	"Logical View::Graphics2D::absGraphics2D"
+		    quidu      	"37BC8ED50091"
+		    exportControl 	"Private"
+		    is_navigable 	TRUE)))
+	(object Association "$UNNAMED$8"
+	    attributes 	(list Attribute_Set)
+	    quid       	"37BC91A7014B"
+	    roles      	(list role_list
+		(object Role "$UNNAMED$9"
+		    quid       	"37BC91A7014C"
+		    supplier   	"Logical View::MathGraph3::Figures2D"
+		    quidu      	"37BC91A70137")
+		(object Role "Arrows"
+		    attributes 	(list Attribute_Set
+			(object Attribute
+			    tool       	"Java"
+			    name       	"InitialValue"
+			    value      	""))
+		    quid       	"37BC91A7014D"
+		    documentation 	
+|Object to hand over the Draw Routine of an Arrow	 
+		    
+		    label      	"Arrows"
+		    supplier   	"Logical View::Graphics2D::Figures"
+		    quidu      	"37BC8ED60091"
+		    exportControl 	"Private"
+		    is_navigable 	TRUE)))
+	(object Association "$UNNAMED$10"
+	    attributes 	(list Attribute_Set)
+	    quid       	"37BC91A702DC"
+	    roles      	(list role_list
+		(object Role "$UNNAMED$11"
+		    quid       	"37BC91A702DD"
+		    supplier   	"Logical View::MathGraph3::Figures3D"
+		    quidu      	"37BC91A702D2")
+		(object Role "Radius"
+		    attributes 	(list Attribute_Set
+			(object Attribute
+			    tool       	"Java"
+			    name       	"InitialValue"
+			    value      	"new BodyDouble (5)"))
+		    quid       	"37BC91A702DE"
+		    documentation 	
+|Radius of the Points drawn, when using fixed Size,
+|	 * resp. Factor for Scaling	the Size when SizeMode = true.  
+		    
+		    label      	"Radius"
+		    supplier   	"Logical View::Ring::IntegrityRing"
+		    quidu      	"36BB39470157"
+		    is_navigable 	TRUE)))
+	(object Association "$UNNAMED$12"
+	    attributes 	(list Attribute_Set)
+	    quid       	"37BC91A702E5"
+	    roles      	(list role_list
+		(object Role "$UNNAMED$13"
+		    quid       	"37BC91A702E6"
+		    supplier   	"Logical View::MathGraph3::Figures3D"
+		    quidu      	"37BC91A702D2")
+		(object Role "C3D"
+		    attributes 	(list Attribute_Set
+			(object Attribute
+			    tool       	"Java"
+			    name       	"InitialValue"
+			    value      	""))
+		    quid       	"37BC91A702E7"
+		    documentation 	
+|Reference to the Coordinate System for Conversion	 
+		    
+		    label      	"C3D"
+		    supplier   	"Logical View::MathGraph3::Coordinates3D"
+		    quidu      	"37BC91A60281"
+		    exportControl 	"Private"
+		    is_navigable 	TRUE)))
+	(object Association "$UNNAMED$14"
+	    attributes 	(list Attribute_Set)
+	    quid       	"37BC91A702E8"
+	    roles      	(list role_list
+		(object Role "$UNNAMED$15"
+		    quid       	"37BC91A702E9"
+		    supplier   	"Logical View::MathGraph3::Figures3D"
+		    quidu      	"37BC91A702D2")
+		(object Role "g"
+		    attributes 	(list Attribute_Set
+			(object Attribute
+			    tool       	"Java"
+			    name       	"InitialValue"
+			    value      	""))
+		    quid       	"37BC91A702EA"
+		    documentation 	
+|Graphics Context to point to	 
+		    
+		    label      	"g"
+		    supplier   	"Logical View::Graphics2D::absGraphics2D"
+		    quidu      	"37BC8ED50091"
+		    exportControl 	"Private"
+		    is_navigable 	TRUE)))
+	(object Association "$UNNAMED$16"
+	    attributes 	(list Attribute_Set)
+	    quid       	"37BC91A702EF"
+	    roles      	(list role_list
+		(object Role "$UNNAMED$17"
+		    quid       	"37BC91A702F0"
+		    supplier   	"Logical View::MathGraph3::Figures3D"
+		    quidu      	"37BC91A702D2")
+		(object Role "Arrows"
+		    attributes 	(list Attribute_Set
+			(object Attribute
+			    tool       	"Java"
+			    name       	"InitialValue"
+			    value      	""))
+		    quid       	"37BC91A702F1"
+		    documentation 	
+|Object to hand over the Draw Routine of an Arrow	 
+		    
+		    label      	"Arrows"
+		    supplier   	"Logical View::Graphics2D::Figures"
+		    quidu      	"37BC8ED60091"
+		    exportControl 	"Private"
+		    is_navigable 	TRUE)))
+	(object Association "$UNNAMED$18"
+	    attributes 	(list Attribute_Set)
+	    quid       	"37BC91A80098"
+	    roles      	(list role_list
+		(object Role "$UNNAMED$19"
+		    quid       	"37BC91A80099"
+		    supplier   	"Logical View::MathGraph3::HistoPlot"
+		    quidu      	"37BC91A80085")
+		(object Role "ColorFactor"
+		    attributes 	(list Attribute_Set
+			(object Attribute
+			    tool       	"Java"
+			    name       	"InitialValue"
+			    value      	"new BodyDouble (1)"))
+		    quid       	"37BC91A8009A"
+		    documentation 	"Scaling for the Color the Arrows are drawn, using ColorMode = true. "
+		    label      	"ColorFactor"
+		    supplier   	"Logical View::Ring::IntegrityRing"
+		    quidu      	"36BB39470157"
+		    is_navigable 	TRUE)))
+	(object Association "$UNNAMED$20"
+	    attributes 	(list Attribute_Set)
+	    quid       	"37BC91A8035F"
+	    roles      	(list role_list
+		(object Role "$UNNAMED$21"
+		    quid       	"37BC91A80360"
+		    supplier   	"Logical View::MathGraph3::PlanePlot"
+		    quidu      	"37BC91A8034C")
+		(object Role "ColorFactor"
+		    attributes 	(list Attribute_Set
+			(object Attribute
+			    tool       	"Java"
+			    name       	"InitialValue"
+			    value      	"new BodyDouble (1)"))
+		    quid       	"37BC91A80361"
+		    documentation 	"Scaling for the Color the Arrows are drawn, using ColorMode = true. "
+		    label      	"ColorFactor"
+		    supplier   	"Logical View::Ring::IntegrityRing"
+		    quidu      	"36BB39470157"
+		    is_navigable 	TRUE)))
+	(object Association "$UNNAMED$22"
+	    attributes 	(list Attribute_Set)
+	    quid       	"37BC91A901E5"
+	    roles      	(list role_list
+		(object Role "$UNNAMED$23"
+		    quid       	"37BC91A901E6"
+		    supplier   	"Logical View::MathGraph3::PlotHyperPlane"
+		    quidu      	"37BC91A901D1")
+		(object Role "Force"
+		    attributes 	(list Attribute_Set
+			(object Attribute
+			    tool       	"Java"
+			    name       	"InitialValue"
+			    value      	""))
+		    quid       	"37BC91A901E7"
+		    documentation 	
+|Local Reference to the Force Field in Form of an ODE	 
+		    
+		    label      	"Force"
+		    supplier   	"Logical View::Ring::intDGL"
+		    quidu      	"37BC91A901E4"
+		    exportControl 	"Protected"
+		    is_navigable 	TRUE)))
+	(object Association "$UNNAMED$24"
+	    attributes 	(list Attribute_Set)
+	    quid       	"37BC91A901E8"
+	    roles      	(list role_list
+		(object Role "$UNNAMED$25"
+		    quid       	"37BC91A901E9"
+		    supplier   	"Logical View::MathGraph3::PlotHyperPlane"
+		    quidu      	"37BC91A901D1")
+		(object Role "Field"
+		    attributes 	(list Attribute_Set
+			(object Attribute
+			    tool       	"Java"
+			    name       	"InitialValue"
+			    value      	""))
+		    quid       	"37BC91A901EA"
+		    documentation 	
+|Local Reference to the Force Field (time independent	 
+		    
+		    label      	"Field"
+		    supplier   	"Logical View::intFunction::intFunction"
+		    quidu      	"36BB39BA00B2"
+		    exportControl 	"Protected"
+		    is_navigable 	TRUE)))
+	(object Association "$UNNAMED$26"
+	    attributes 	(list Attribute_Set)
+	    quid       	"37BC91A901EE"
+	    roles      	(list role_list
+		(object Role "$UNNAMED$27"
+		    quid       	"37BC91A901EF"
+		    supplier   	"Logical View::MathGraph3::PlotHyperPlane"
+		    quidu      	"37BC91A901D1")
+		(object Role "Step"
+		    attributes 	(list Attribute_Set
+			(object Attribute
+			    tool       	"Java"
+			    name       	"InitialValue"
+			    value      	""))
+		    quid       	"37BC91A901F0"
+		    documentation 	
+|Initial Step Size for the ODE Stepper	 
+		    
+		    label      	"Step"
+		    supplier   	"Logical View::Ring::IntegrityRing"
+		    quidu      	"36BB39470157"
+		    exportControl 	"Protected"
+		    is_navigable 	TRUE)))
+	(object Association "$UNNAMED$28"
+	    attributes 	(list Attribute_Set)
+	    quid       	"37BC91A901F8"
+	    roles      	(list role_list
+		(object Role "$UNNAMED$29"
+		    quid       	"37BC91A901F9"
+		    supplier   	"Logical View::MathGraph3::PlotHyperPlane"
+		    quidu      	"37BC91A901D1")
+		(object Role "g2D"
+		    attributes 	(list Attribute_Set
+			(object Attribute
+			    tool       	"Java"
+			    name       	"InitialValue"
+			    value      	""))
+		    quid       	"37BC91A901FA"
+		    documentation 	
+|Graphics Context to paint to	 
+		    
+		    label      	"g2D"
+		    supplier   	"Logical View::Graphics2D::absGraphics2D"
+		    quidu      	"37BC8ED50091"
+		    exportControl 	"Protected"
+		    is_navigable 	TRUE)))
+	(object Association "$UNNAMED$30"
+	    attributes 	(list Attribute_Set)
+	    quid       	"37BC91A901FB"
+	    roles      	(list role_list
+		(object Role "$UNNAMED$31"
+		    quid       	"37BC91A901FC"
+		    supplier   	"Logical View::MathGraph3::PlotHyperPlane"
+		    quidu      	"37BC91A901D1")
+		(object Role "CD"
+		    attributes 	(list Attribute_Set
+			(object Attribute
+			    tool       	"Java"
+			    name       	"InitialValue"
+			    value      	""))
+		    quid       	"37BC91A901FD"
+		    documentation 	
+|Reference to the Coordinate System for Conversion	 
+		    
+		    label      	"CD"
+		    supplier   	"Logical View::MathGraph3::Coordinates"
+		    quidu      	"37BC91A60321"
+		    exportControl 	"Protected"
+		    is_navigable 	TRUE)))
+	(object Association "$UNNAMED$32"
+	    attributes 	(list Attribute_Set)
+	    quid       	"37BC91A90306"
+	    roles      	(list role_list
+		(object Role "$UNNAMED$33"
+		    quid       	"37BC91A90307"
+		    supplier   	"Logical View::MathGraph3::PlotODE"
+		    quidu      	"37BC91A902F3")
+		(object Role "g2D"
+		    attributes 	(list Attribute_Set
+			(object Attribute
+			    tool       	"Java"
+			    name       	"InitialValue"
+			    value      	""))
+		    quid       	"37BC91A90308"
+		    documentation 	
+|Graphics Context to paint to	 
+		    
+		    label      	"g2D"
+		    supplier   	"Logical View::Graphics2D::absGraphics2D"
+		    quidu      	"37BC8ED50091"
+		    exportControl 	"Implementation"
+		    is_navigable 	TRUE)))
+	(object Association "$UNNAMED$34"
+	    attributes 	(list Attribute_Set)
+	    quid       	"37BC91A9030A"
+	    roles      	(list role_list
+		(object Role "$UNNAMED$35"
+		    quid       	"37BC91A9030B"
+		    supplier   	"Logical View::MathGraph3::PlotODE"
+		    quidu      	"37BC91A902F3")
+		(object Role "CD"
+		    attributes 	(list Attribute_Set
+			(object Attribute
+			    tool       	"Java"
+			    name       	"InitialValue"
+			    value      	""))
+		    quid       	"37BC91A9030C"
+		    documentation 	
+|Reference to the Coordinate System for Conversion	 
+		    
+		    label      	"CD"
+		    supplier   	"Logical View::MathGraph3::Coordinates"
+		    quidu      	"37BC91A60321"
+		    exportControl 	"Implementation"
+		    is_navigable 	TRUE)))
+	(object Association "$UNNAMED$36"
+	    attributes 	(list Attribute_Set)
+	    quid       	"37BC91A90311"
+	    roles      	(list role_list
+		(object Role "$UNNAMED$37"
+		    quid       	"37BC91A90312"
+		    supplier   	"Logical View::MathGraph3::PlotODE"
+		    quidu      	"37BC91A902F3")
+		(object Role "Stepper"
+		    attributes 	(list Attribute_Set
+			(object Attribute
+			    tool       	"Java"
+			    name       	"InitialValue"
+			    value      	""))
+		    quid       	"37BC91A90313"
+		    documentation 	
+|Local Reference to the ODE Stepper 	 
+		    
+		    label      	"Stepper"
+		    supplier   	"Logical View::Ring::absStepper"
+		    quidu      	"37BC91A90310"
+		    exportControl 	"Implementation"
+		    is_navigable 	TRUE)))
+	(object Association "$UNNAMED$38"
+	    attributes 	(list Attribute_Set)
+	    quid       	"37BC91AA00B1"
+	    roles      	(list role_list
+		(object Role "$UNNAMED$39"
+		    quid       	"37BC91AA00B2"
+		    supplier   	"Logical View::MathGraph3::PlotVector"
+		    quidu      	"37BC91AA00A6")
+		(object Role "ColorFactor"
+		    attributes 	(list Attribute_Set
+			(object Attribute
+			    tool       	"Java"
+			    name       	"InitialValue"
+			    value      	"new BodyDouble (1)"))
+		    quid       	"37BC91AA00B3"
+		    documentation 	"Scaling for the Color the Arrows are drawn, using ColorMode = true. "
+		    label      	"ColorFactor"
+		    supplier   	"Logical View::Ring::IntegrityRing"
+		    quidu      	"36BB39470157"
+		    is_navigable 	TRUE)))
+	(object Association "$UNNAMED$40"
+	    attributes 	(list Attribute_Set)
+	    quid       	"37BC91AB002E"
+	    roles      	(list role_list
+		(object Role "$UNNAMED$41"
+		    quid       	"37BC91AB002F"
+		    supplier   	"Logical View::MathGraph3::ProjectPlot"
+		    quidu      	"37BC91AB0024")
+		(object Role "P[]"
+		    attributes 	(list Attribute_Set
+			(object Attribute
+			    tool       	"Java"
+			    name       	"InitialValue"
+			    value      	""))
+		    quid       	"37BC91AB0030"
+		    label      	"P[]"
+		    supplier   	"Logical View::Graphics2D::Point2D"
+		    quidu      	"37BC8ED500A2"
+		    exportControl 	"Private"
+		    is_navigable 	TRUE)))
+	(object Association "$UNNAMED$42"
+	    attributes 	(list Attribute_Set)
+	    quid       	"37BC91AB0031"
+	    roles      	(list role_list
+		(object Role "$UNNAMED$43"
+		    quid       	"37BC91AB0032"
+		    supplier   	"Logical View::MathGraph3::ProjectPlot"
+		    quidu      	"37BC91AB0024")
+		(object Role "P0"
+		    attributes 	(list Attribute_Set
+			(object Attribute
+			    tool       	"Java"
+			    name       	"InitialValue"
+			    value      	""))
+		    quid       	"37BC91AB0033"
+		    label      	"P0"
+		    supplier   	"Logical View::Graphics2D::Point2D"
+		    quidu      	"37BC8ED500A2"
+		    exportControl 	"Private"
+		    is_navigable 	TRUE)))
+	(object Association "$UNNAMED$44"
+	    attributes 	(list Attribute_Set)
+	    quid       	"37BC91AB0038"
+	    roles      	(list role_list
+		(object Role "$UNNAMED$45"
+		    quid       	"37BC91AB0039"
+		    supplier   	"Logical View::MathGraph3::ProjectPlot"
+		    quidu      	"37BC91AB0024")
+		(object Role "C3D"
+		    attributes 	(list Attribute_Set
+			(object Attribute
+			    tool       	"Java"
+			    name       	"InitialValue"
+			    value      	""))
+		    quid       	"37BC91AB003A"
+		    documentation 	
+|Reference to the Coordinate System for Conversion	 
+		    
+		    label      	"C3D"
+		    supplier   	"Logical View::MathGraph3::Coordinates3D"
+		    quidu      	"37BC91A60281"
+		    exportControl 	"Private"
+		    is_navigable 	TRUE)))
+	(object Association "$UNNAMED$46"
+	    attributes 	(list Attribute_Set)
+	    quid       	"37BC91AB003B"
+	    roles      	(list role_list
+		(object Role "$UNNAMED$47"
+		    quid       	"37BC91AB003C"
+		    supplier   	"Logical View::MathGraph3::ProjectPlot"
+		    quidu      	"37BC91AB0024")
+		(object Role "g"
+		    attributes 	(list Attribute_Set
+			(object Attribute
+			    tool       	"Java"
+			    name       	"InitialValue"
+			    value      	""))
+		    quid       	"37BC91AB003D"
+		    documentation 	
+|Graphics Context to point to	 
+		    
+		    label      	"g"
+		    supplier   	"Logical View::Graphics2D::absGraphics2D"
+		    quidu      	"37BC8ED50091"
+		    exportControl 	"Private"
+		    is_navigable 	TRUE)))
+	(object Association "$UNNAMED$48"
+	    attributes 	(list Attribute_Set)
+	    quid       	"37BC91AB0042"
+	    roles      	(list role_list
+		(object Role "$UNNAMED$49"
+		    quid       	"37BC91AB0043"
+		    supplier   	"Logical View::MathGraph3::ProjectPlot"
+		    quidu      	"37BC91AB0024")
+		(object Role "O"
+		    attributes 	(list Attribute_Set
+			(object Attribute
+			    tool       	"Java"
+			    name       	"InitialValue"
+			    value      	""))
+		    quid       	"37BC91AB0044"
+		    documentation 	
+|The Origin defining the Projection Planes	 
+		    
+		    label      	"O"
+		    supplier   	"Logical View::Vector::Tensor"
+		    quidu      	"36BB858A000B"
+		    exportControl 	"Private"
+		    is_navigable 	TRUE)))
+	(object Association "$UNNAMED$50"
+	    attributes 	(list Attribute_Set)
+	    quid       	"37BC91AB01DD"
+	    roles      	(list role_list
+		(object Role "$UNNAMED$51"
+		    quid       	"37BC91AB01DE"
+		    supplier   	"Logical View::MathGraph3::ScalarPlanePlot"
+		    quidu      	"37BC91AB01CA")
+		(object Role "SP"
+		    attributes 	(list Attribute_Set
+			(object Attribute
+			    tool       	"Java"
+			    name       	"InitialValue"
+			    value      	""))
+		    quid       	"37BC91AB01DF"
+		    documentation 	
+|Helper Class implementing the Scalar Plot.	 
+		    
+		    label      	"SP"
+		    supplier   	"Logical View::Graphics2D::ScalarPlot"
+		    quidu      	"37BC8ED702E1"
+		    exportControl 	"Private"
+		    is_navigable 	TRUE)))
+	(object Association "$UNNAMED$52"
+	    attributes 	(list Attribute_Set)
+	    quid       	"37BC91AB035B"
+	    roles      	(list role_list
+		(object Role "$UNNAMED$53"
+		    quid       	"37BC91AB035C"
+		    supplier   	"Logical View::MathGraph3::ScalarPointPlot"
+		    quidu      	"37BC91AB034F")
+		(object Role "ColorFactor"
+		    attributes 	(list Attribute_Set
+			(object Attribute
+			    tool       	"Java"
+			    name       	"InitialValue"
+			    value      	"new BodyDouble (255)"))
+		    quid       	"37BC91AB035D"
+		    documentation 	"Scaling for the Color the Arrows are drawn, using ColorMode = true. "
+		    label      	"ColorFactor"
+		    supplier   	"Logical View::Ring::IntegrityRing"
+		    quidu      	"36BB39470157"
+		    is_navigable 	TRUE)))
+	(object Association "$UNNAMED$54"
+	    attributes 	(list Attribute_Set)
+	    quid       	"37BC91AB0363"
+	    roles      	(list role_list
+		(object Role "$UNNAMED$55"
+		    quid       	"37BC91AB0364"
+		    supplier   	"Logical View::MathGraph3::ScalarPointPlot"
+		    quidu      	"37BC91AB034F")
+		(object Role "Radius"
+		    attributes 	(list Attribute_Set
+			(object Attribute
+			    tool       	"Java"
+			    name       	"InitialValue"
+			    value      	"new BodyDouble (5)"))
+		    quid       	"37BC91AB0365"
+		    documentation 	
+|Radius of the Points drawn, when using fixed Size,
+|	 * resp. Factor for Scaling	the Size when SizeMode = true.  
+		    
+		    label      	"Radius"
+		    supplier   	"Logical View::Ring::IntegrityRing"
+		    quidu      	"36BB39470157"
+		    is_navigable 	TRUE)))
+	(object Association "$UNNAMED$56"
+	    attributes 	(list Attribute_Set)
+	    quid       	"37BC91AC010D"
+	    roles      	(list role_list
+		(object Role "$UNNAMED$57"
+		    quid       	"37BC91AC010E"
+		    supplier   	"Logical View::MathGraph3::VoxelPlot"
+		    quidu      	"37BC91AC0103")
+		(object Role "ColorFactor"
+		    attributes 	(list Attribute_Set
+			(object Attribute
+			    tool       	"Java"
+			    name       	"InitialValue"
+			    value      	"new BodyDouble (255)"))
+		    quid       	"37BC91AC010F"
+		    documentation 	"Scaling for the Color the Arrows are drawn, using ColorMode = true. "
+		    label      	"ColorFactor"
+		    supplier   	"Logical View::Ring::IntegrityRing"
+		    quidu      	"36BB39470157"
+		    is_navigable 	TRUE)))
+	(object Association "$UNNAMED$58"
+	    attributes 	(list Attribute_Set)
+	    quid       	"37BC91AC0116"
+	    roles      	(list role_list
+		(object Role "$UNNAMED$59"
+		    quid       	"37BC91AC0117"
+		    supplier   	"Logical View::MathGraph3::VoxelPlot"
+		    quidu      	"37BC91AC0103")
+		(object Role "Radius"
+		    attributes 	(list Attribute_Set
+			(object Attribute
+			    tool       	"Java"
+			    name       	"InitialValue"
+			    value      	"new BodyDouble (5)"))
+		    quid       	"37BC91AC0118"
+		    documentation 	
+|Radius of the Points drawn, when using fixed Size,
+|	 * resp. Factor for Scaling	the Size when SizeMode = true.  
+|	 * If the Radius is negative, only a Pixel is set. 
+|	 * That makes drawing faster! 
+		    
+		    label      	"Radius"
+		    supplier   	"Logical View::Ring::IntegrityRing"
+		    quidu      	"36BB39470157"
+		    is_navigable 	TRUE)))
+	(object Association "$UNNAMED$60"
+	    attributes 	(list Attribute_Set)
+	    quid       	"37BC91B203DC"
+	    roles      	(list role_list
+		(object Role "$UNNAMED$61"
+		    quid       	"37BC91B203DD"
+		    supplier   	"Logical View::MathGraph3::HeightOde"
+		    quidu      	"37BC91B203D7")
+		(object Role "Fktn"
+		    attributes 	(list Attribute_Set
+			(object Attribute
+			    tool       	"Java"
+			    name       	"InitialValue"
+			    value      	""))
+		    quid       	"37BC91B203DE"
+		    documentation 	
+|Local Reference to the static Vector Function	 
+		    
+		    label      	"Fktn"
+		    supplier   	"Logical View::intFunction::intFunction"
+		    quidu      	"36BB39BA00B2"
+		    exportControl 	"Protected"
+		    is_navigable 	TRUE)))
+	(object Association "$UNNAMED$62"
+	    attributes 	(list Attribute_Set)
+	    quid       	"37BC91B203E6"
+	    roles      	(list role_list
+		(object Role "$UNNAMED$63"
+		    quid       	"37BC91B203E7"
+		    supplier   	"Logical View::MathGraph3::HeightOde"
+		    quidu      	"37BC91B203D7")
+		(object Role "lastDerivative"
+		    attributes 	(list Attribute_Set
+			(object Attribute
+			    tool       	"Java"
+			    name       	"InitialValue"
+			    value      	""))
+		    quid       	"37BC91B203E8"
+		    documentation 	
+|Contains the absolute Value of the last Derivative. 
+|	 * This is used by the Plotter(or a WIP Stepper) above to swap Dimensions, 
+|	 * when the Derivative becomes larger than 1 
+|	 * (or 2 to smoothen swapping between Dimensions) 
+|	 
+		    
+		    label      	"lastDerivative"
+		    supplier   	"Logical View::Ring::IntegrityRing"
+		    quidu      	"36BB39470157"
+		    is_navigable 	TRUE)))
+	(object Association "$UNNAMED$64"
+	    attributes 	(list Attribute_Set)
+	    quid       	"37BC91B203E9"
+	    roles      	(list role_list
+		(object Role "$UNNAMED$65"
+		    quid       	"37BC91B203EA"
+		    supplier   	"Logical View::MathGraph3::HeightOde"
+		    quidu      	"37BC91B203D7")
+		(object Role "Y"
+		    attributes 	(list Attribute_Set
+			(object Attribute
+			    tool       	"Java"
+			    name       	"InitialValue"
+			    value      	""))
+		    quid       	"37BC91B203EB"
+		    documentation 	
+|This Tensor contains all the Coordinates necessary for the Original ODE. 
+|	 * The Selected Dimensions are exchanged to process actual Values. 
+|	 * The Tensor is public, because it is updated externally. 	 
+		    
+		    label      	"Y"
+		    supplier   	"Logical View::Vector::Tensor"
+		    quidu      	"36BB858A000B"
+		    is_navigable 	TRUE)))
+	(object Association "$UNNAMED$66"
+	    attributes 	(list Attribute_Set)
+	    quid       	"37BC91B300F9"
+	    roles      	(list role_list
+		(object Role "$UNNAMED$67"
+		    quid       	"37BC91B300FA"
+		    supplier   	"Logical View::MathGraph3::PlotODE2"
+		    quidu      	"37BC91B300EE")
+		(object Role "Plotter"
+		    attributes 	(list Attribute_Set
+			(object Attribute
+			    tool       	"Java"
+			    name       	"InitialValue"
+			    value      	""))
+		    quid       	"37BC91B300FB"
+		    documentation 	
+|Local Reference to the plotter Routine	 
+		    
+		    label      	"Plotter"
+		    supplier   	"Logical View::MathGraph3::PlotODE"
+		    quidu      	"37BC91A902F3"
+		    exportControl 	"Implementation"
+		    is_navigable 	TRUE)))
+	(object Association "$UNNAMED$68"
+	    attributes 	(list Attribute_Set)
+	    quid       	"37BC91B301E8"
+	    roles      	(list role_list
+		(object Role "$UNNAMED$69"
+		    quid       	"37BC91B301E9"
+		    supplier   	"Logical View::MathGraph3::PlotOdeRect"
+		    quidu      	"37BC91B301D5")
+		(object Role "Plotter"
+		    attributes 	(list Attribute_Set
+			(object Attribute
+			    tool       	"Java"
+			    name       	"InitialValue"
+			    value      	""))
+		    quid       	"37BC91B301EA"
+		    documentation 	
+|Local Reference to the plotter Routine	 
+		    
+		    label      	"Plotter"
+		    supplier   	"Logical View::MathGraph3::PlotODE"
+		    quidu      	"37BC91A902F3"
+		    exportControl 	"Implementation"
+		    is_navigable 	TRUE)))
+	(object Association "$UNNAMED$70"
+	    attributes 	(list Attribute_Set)
+	    quid       	"37BD3866032E"
+	    roles      	(list role_list
+		(object Role "$UNNAMED$71"
+		    quid       	"37BD3866032F"
+		    supplier   	"Logical View::MathGraph3::Coordinates3D"
+		    quidu      	"37BC91A60281")
+		(object Role "P"
+		    attributes 	(list Attribute_Set
+			(object Attribute
+			    tool       	"Java"
+			    name       	"InitialValue"
+			    value      	""))
+		    quid       	"37BD38660330"
+		    documentation 	"Projection Object, calculated from the Rotation Vector "
+		    label      	"P"
+		    supplier   	"Logical View::BodyTensor::Projection"
+		    quidu      	"36BC22BF028B"
+		    exportControl 	"Private"
+		    is_navigable 	TRUE)))
+	(object Association "$UNNAMED$72"
+	    attributes 	(list Attribute_Set)
+	    quid       	"37BD3867013A"
+	    roles      	(list role_list
+		(object Role "$UNNAMED$73"
+		    quid       	"37BD3867013B"
+		    supplier   	"Logical View::MathGraph3::Coordinates3D"
+		    quidu      	"37BC91A60281")
+		(object Role "Origin"
+		    attributes 	(list Attribute_Set
+			(object Attribute
+			    tool       	"Java"
+			    name       	"InitialValue"
+			    value      	""))
+		    quid       	"37BD3867013C"
+		    documentation 	
+|Location the ViewDirection points to on the Screen	 
+		    
+		    label      	"Origin"
+		    supplier   	"Logical View::Graphics2D::Point2D"
+		    quidu      	"37BC8ED500A2"
+		    exportControl 	"Private"
+		    is_navigable 	TRUE)))
+	(object Association "$UNNAMED$74"
+	    attributes 	(list Attribute_Set)
+	    quid       	"37BD386F009C"
+	    roles      	(list role_list
+		(object Role "$UNNAMED$75"
+		    quid       	"37BD386F009D"
+		    supplier   	"Logical View::MathGraph3::HistoPlot"
+		    quidu      	"37BC91A80085")
+		(object Role "Palette[]"
+		    attributes 	(list Attribute_Set
+			(object Attribute
+			    tool       	"Java"
+			    name       	"InitialValue"
+			    value      	""))
+		    quid       	"37BD386F009E"
+		    documentation 	
+|Palette for Scalar Plots. If the Palette is empty (like at the Start),
+|	 * the Colors are generated from the Integer Ordinates directly.	 
+		    
+		    label      	"Palette[]"
+		    supplier   	"Logical View::java::awt::Color"
+		    quidu      	"34B0F6CD0275"
+		    is_navigable 	TRUE)))
+	(object Association "$UNNAMED$76"
+	    attributes 	(list Attribute_Set)
+	    quid       	"37BD386F0290"
+	    roles      	(list role_list
+		(object Role "$UNNAMED$77"
+		    quid       	"37BD386F0291"
+		    supplier   	"Logical View::MathGraph3::HistoPlot"
+		    quidu      	"37BC91A80085")
+		(object Role "g"
+		    attributes 	(list Attribute_Set
+			(object Attribute
+			    tool       	"Java"
+			    name       	"InitialValue"
+			    value      	""))
+		    quid       	"37BD386F0292"
+		    documentation 	
+|Graphics Context to point to	 
+		    
+		    label      	"g"
+		    supplier   	"Logical View::Graphics2D::absGraphics2D"
+		    quidu      	"37BC8ED50091"
+		    exportControl 	"Private"
+		    is_navigable 	TRUE)))
+	(object Association "$UNNAMED$78"
+	    attributes 	(list Attribute_Set)
+	    quid       	"37BD38700093"
+	    roles      	(list role_list
+		(object Role "$UNNAMED$79"
+		    quid       	"37BD38700094"
+		    supplier   	"Logical View::MathGraph3::HistoPlot"
+		    quidu      	"37BC91A80085")
+		(object Role "C3D"
+		    attributes 	(list Attribute_Set
+			(object Attribute
+			    tool       	"Java"
+			    name       	"InitialValue"
+			    value      	""))
+		    quid       	"37BD38700095"
+		    documentation 	
+|Reference to the Coordinate System for Conversion	 
+		    
+		    label      	"C3D"
+		    supplier   	"Logical View::MathGraph3::Coordinates3D"
+		    quidu      	"37BC91A60281"
+		    exportControl 	"Private"
+		    is_navigable 	TRUE)))
+	(object Association "$UNNAMED$80"
+	    attributes 	(list Attribute_Set)
+	    quid       	"37BD387002A6"
+	    roles      	(list role_list
+		(object Role "$UNNAMED$81"
+		    quid       	"37BD387002A7"
+		    supplier   	"Logical View::MathGraph3::HistoPlot"
+		    quidu      	"37BC91A80085")
+		(object Role "Col"
+		    attributes 	(list Attribute_Set
+			(object Attribute
+			    tool       	"Java"
+			    name       	"InitialValue"
+			    value      	""))
+		    quid       	"37BD387002A8"
+		    documentation 	
+|Drawing Routine for the Columns	 
+		    
+		    label      	"Col"
+		    supplier   	"Logical View::MathGraph3::Column3D"
+		    quidu      	"37BC91A60276"
+		    exportControl 	"Private"
+		    is_navigable 	TRUE)))
+	(object Association "$UNNAMED$82"
+	    attributes 	(list Attribute_Set)
+	    quid       	"37BD3871009E"
+	    roles      	(list role_list
+		(object Role "$UNNAMED$83"
+		    quid       	"37BD3871009F"
+		    supplier   	"Logical View::MathGraph3::HistoPlot"
+		    quidu      	"37BC91A80085")
+		(object Role "dV"
+		    attributes 	(list Attribute_Set
+			(object Attribute
+			    tool       	"Java"
+			    name       	"InitialValue"
+			    value      	""))
+		    quid       	"37BD387100A0"
+		    documentation 	
+|Extent of the Columns, must not be null!	 
+		    
+		    label      	"dV"
+		    supplier   	"Logical View::Vector::Tensor"
+		    quidu      	"36BB858A000B"
+		    is_navigable 	TRUE)))
+	(object Association "$UNNAMED$84"
+	    attributes 	(list Attribute_Set)
+	    quid       	"37BD387403D8"
+	    roles      	(list role_list
+		(object Role "$UNNAMED$85"
+		    quid       	"37BD387403D9"
+		    supplier   	"Logical View::MathGraph3::PlanePlot"
+		    quidu      	"37BC91A8034C")
+		(object Role "Palette[]"
+		    attributes 	(list Attribute_Set
+			(object Attribute
+			    tool       	"Java"
+			    name       	"InitialValue"
+			    value      	""))
+		    quid       	"37BD387403DA"
+		    documentation 	
+|Palette for Scalar Plots. If the Palette is empty (like at the Start),
+|	 * the Colors are generated from the Integer Ordinates directly.	 
+		    
+		    label      	"Palette[]"
+		    supplier   	"Logical View::java::awt::Color"
+		    quidu      	"34B0F6CD0275"
+		    is_navigable 	TRUE)))
+	(object Association "$UNNAMED$86"
+	    attributes 	(list Attribute_Set)
+	    quid       	"37BD387501EF"
+	    roles      	(list role_list
+		(object Role "$UNNAMED$87"
+		    quid       	"37BD387501F0"
+		    supplier   	"Logical View::MathGraph3::PlanePlot"
+		    quidu      	"37BC91A8034C")
+		(object Role "g"
+		    attributes 	(list Attribute_Set
+			(object Attribute
+			    tool       	"Java"
+			    name       	"InitialValue"
+			    value      	""))
+		    quid       	"37BD387501F1"
+		    documentation 	
+|Graphics Context to point to	 
+		    
+		    label      	"g"
+		    supplier   	"Logical View::Graphics2D::absGraphics2D"
+		    quidu      	"37BC8ED50091"
+		    exportControl 	"Protected"
+		    is_navigable 	TRUE)))
+	(object Association "$UNNAMED$88"
+	    attributes 	(list Attribute_Set)
+	    quid       	"37BD38760005"
+	    roles      	(list role_list
+		(object Role "$UNNAMED$89"
+		    quid       	"37BD38760006"
+		    supplier   	"Logical View::MathGraph3::PlanePlot"
+		    quidu      	"37BC91A8034C")
+		(object Role "C3D"
+		    attributes 	(list Attribute_Set
+			(object Attribute
+			    tool       	"Java"
+			    name       	"InitialValue"
+			    value      	""))
+		    quid       	"37BD38760007"
+		    documentation 	
+|Reference to the Coordinate System for Conversion	 
+		    
+		    label      	"C3D"
+		    supplier   	"Logical View::MathGraph3::Coordinates3D"
+		    quidu      	"37BC91A60281"
+		    exportControl 	"Protected"
+		    is_navigable 	TRUE)))
+	(object Association "$UNNAMED$90"
+	    attributes 	(list Attribute_Set)
+	    quid       	"37BD38760204"
+	    roles      	(list role_list
+		(object Role "$UNNAMED$91"
+		    quid       	"37BD38760205"
+		    supplier   	"Logical View::MathGraph3::PlanePlot"
+		    quidu      	"37BC91A8034C")
+		(object Role "P[]"
+		    attributes 	(list Attribute_Set
+			(object Attribute
+			    tool       	"Java"
+			    name       	"InitialValue"
+			    value      	""))
+		    quid       	"37BD38760206"
+		    documentation 	
+|Cache for the old Points	 
+		    
+		    label      	"P[]"
+		    supplier   	"Logical View::Graphics2D::Point2D"
+		    quidu      	"37BC8ED500A2"
+		    exportControl 	"Protected"
+		    is_navigable 	TRUE)))
+	(object Association "$UNNAMED$92"
+	    attributes 	(list Attribute_Set)
+	    quid       	"37BD38770089"
+	    roles      	(list role_list
+		(object Role "$UNNAMED$93"
+		    quid       	"37BD3877008A"
+		    supplier   	"Logical View::MathGraph3::PlanePlot"
+		    quidu      	"37BC91A8034C")
+		(object Role "Plane[]"
+		    attributes 	(list Attribute_Set
+			(object Attribute
+			    tool       	"Java"
+			    name       	"InitialValue"
+			    value      	"new Point2D [4]"))
+		    quid       	"37BD3877008B"
+		    documentation 	
+|Four Point Polygon for painting the Plane directly	 
+		    
+		    label      	"Plane[]"
+		    supplier   	"Logical View::Graphics2D::Point2D"
+		    quidu      	"37BC8ED500A2"
+		    exportControl 	"Protected"
+		    is_navigable 	TRUE)))
+	(object Association "$UNNAMED$94"
+	    attributes 	(list Attribute_Set)
+	    quid       	"37BD388602B1"
+	    roles      	(list role_list
+		(object Role "$UNNAMED$95"
+		    quid       	"37BD388602B2"
+		    supplier   	"Logical View::MathGraph3::PlotODE"
+		    quidu      	"37BC91A902F3")
+		(object Role "Rect"
+		    attributes 	(list Attribute_Set
+			(object Attribute
+			    tool       	"Java"
+			    name       	"InitialValue"
+			    value      	""))
+		    quid       	"37BD388602B3"
+		    documentation 	
+|Local Reference to the Rectangle, can be null	 
+		    
+		    label      	"Rect"
+		    supplier   	"Logical View::java::awt::Rectangle"
+		    quidu      	"34B0F6CD02E3"
+		    exportControl 	"Implementation"
+		    is_navigable 	TRUE)))
+	(object Association "$UNNAMED$96"
+	    attributes 	(list Attribute_Set)
+	    quid       	"37BD388700C8"
+	    roles      	(list role_list
+		(object Role "$UNNAMED$97"
+		    quid       	"37BD388700C9"
+		    supplier   	"Logical View::MathGraph3::PlotODE"
+		    quidu      	"37BC91A902F3")
+		(object Role "yP"
+		    attributes 	(list Attribute_Set
+			(object Attribute
+			    tool       	"Java"
+			    name       	"InitialValue"
+			    value      	""))
+		    quid       	"37BD388700CA"
+		    documentation 	
+|Starting Point	 
+		    
+		    label      	"yP"
+		    supplier   	"Logical View::Graphics2D::Point2D"
+		    quidu      	"37BC8ED500A2"
+		    exportControl 	"Protected"
+		    is_navigable 	TRUE)))
+	(object Association "$UNNAMED$98"
+	    attributes 	(list Attribute_Set)
+	    quid       	"37BD3889027A"
+	    roles      	(list role_list
+		(object Role "$UNNAMED$99"
+		    quid       	"37BD3889027B"
+		    supplier   	"Logical View::MathGraph3::PlotVector"
+		    quidu      	"37BC91AA00A6")
+		(object Role "Palette[]"
+		    attributes 	(list Attribute_Set
+			(object Attribute
+			    tool       	"Java"
+			    name       	"InitialValue"
+			    value      	""))
+		    quid       	"37BD3889027C"
+		    documentation 	
+|Palette for Scalar Plots. If the Palette is empty (like at the Start),
+|	 * the Colors are generated from the Integer Ordinates directly.	 
+		    
+		    label      	"Palette[]"
+		    supplier   	"Logical View::java::awt::Color"
+		    quidu      	"34B0F6CD0275"
+		    is_navigable 	TRUE)))
+	(object Association "$UNNAMED$100"
+	    attributes 	(list Attribute_Set)
+	    quid       	"37BD388A009A"
+	    roles      	(list role_list
+		(object Role "$UNNAMED$101"
+		    quid       	"37BD388A009B"
+		    supplier   	"Logical View::MathGraph3::PlotVector"
+		    quidu      	"37BC91AA00A6")
+		(object Role "Arrows"
+		    attributes 	(list Attribute_Set
+			(object Attribute
+			    tool       	"Java"
+			    name       	"InitialValue"
+			    value      	""))
+		    quid       	"37BD388A009C"
+		    label      	"Arrows"
+		    supplier   	"Logical View::Graphics2D::Figures"
+		    quidu      	"37BC8ED60091"
+		    exportControl 	"Private"
+		    is_navigable 	TRUE)))
+	(object Association "$UNNAMED$102"
+	    attributes 	(list Attribute_Set)
+	    quid       	"37BD388A028F"
+	    roles      	(list role_list
+		(object Role "$UNNAMED$103"
+		    quid       	"37BD388A0290"
+		    supplier   	"Logical View::MathGraph3::PlotVector"
+		    quidu      	"37BC91AA00A6")
+		(object Role "g"
+		    attributes 	(list Attribute_Set
+			(object Attribute
+			    tool       	"Java"
+			    name       	"InitialValue"
+			    value      	""))
+		    quid       	"37BD388A0291"
+		    documentation 	
+|Graphics Context to point to	 
+		    
+		    label      	"g"
+		    supplier   	"Logical View::Graphics2D::absGraphics2D"
+		    quidu      	"37BC8ED50091"
+		    exportControl 	"Protected"
+		    is_navigable 	TRUE)))
+	(object Association "$UNNAMED$104"
+	    attributes 	(list Attribute_Set)
+	    quid       	"37BD388B00A6"
+	    roles      	(list role_list
+		(object Role "$UNNAMED$105"
+		    quid       	"37BD388B00A7"
+		    supplier   	"Logical View::MathGraph3::PlotVector"
+		    quidu      	"37BC91AA00A6")
+		(object Role "CD"
+		    attributes 	(list Attribute_Set
+			(object Attribute
+			    tool       	"Java"
+			    name       	"InitialValue"
+			    value      	""))
+		    quid       	"37BD388B00A8"
+		    documentation 	
+|Reference to the Coordinate System for Conversion	 
+		    
+		    label      	"CD"
+		    supplier   	"Logical View::MathGraph3::Coordinates"
+		    quidu      	"37BC91A60321"
+		    exportControl 	"Protected"
+		    is_navigable 	TRUE)))
+	(object Association "$UNNAMED$106"
+	    attributes 	(list Attribute_Set)
+	    quid       	"37BD388D0334"
+	    roles      	(list role_list
+		(object Role "$UNNAMED$107"
+		    quid       	"37BD388D0335"
+		    supplier   	"Logical View::MathGraph3::PolygonPlot"
+		    quidu      	"37BC91AA031D")
+		(object Role "Palette[]"
+		    attributes 	(list Attribute_Set
+			(object Attribute
+			    tool       	"Java"
+			    name       	"InitialValue"
+			    value      	""))
+		    quid       	"37BD388D0336"
+		    documentation 	
+|Palette for Scalar Plots. If the Palette is empty (like at the Start),
+|	 * the Colors are generated from the Integer Ordinates directly.	 
+		    
+		    label      	"Palette[]"
+		    supplier   	"Logical View::java::awt::Color"
+		    quidu      	"34B0F6CD0275"
+		    is_navigable 	TRUE)))
+	(object Association "$UNNAMED$108"
+	    attributes 	(list Attribute_Set)
+	    quid       	"37BD388E0154"
+	    roles      	(list role_list
+		(object Role "$UNNAMED$109"
+		    quid       	"37BD388E0155"
+		    supplier   	"Logical View::MathGraph3::PolygonPlot"
+		    quidu      	"37BC91AA031D")
+		(object Role "g"
+		    attributes 	(list Attribute_Set
+			(object Attribute
+			    tool       	"Java"
+			    name       	"InitialValue"
+			    value      	""))
+		    quid       	"37BD388E0156"
+		    documentation 	
+|Graphics Context to point to	 
+		    
+		    label      	"g"
+		    supplier   	"Logical View::Graphics2D::absGraphics2D"
+		    quidu      	"37BC8ED50091"
+		    exportControl 	"Private"
+		    is_navigable 	TRUE)))
+	(object Association "$UNNAMED$110"
+	    attributes 	(list Attribute_Set)
+	    quid       	"37BD388E0353"
+	    roles      	(list role_list
+		(object Role "$UNNAMED$111"
+		    quid       	"37BD388E0354"
+		    supplier   	"Logical View::MathGraph3::PolygonPlot"
+		    quidu      	"37BC91AA031D")
+		(object Role "C3D"
+		    attributes 	(list Attribute_Set
+			(object Attribute
+			    tool       	"Java"
+			    name       	"InitialValue"
+			    value      	""))
+		    quid       	"37BD388E0355"
+		    documentation 	
+|Reference to the Coordinate System for Conversion	 
+		    
+		    label      	"C3D"
+		    supplier   	"Logical View::MathGraph3::Coordinates3D"
+		    quidu      	"37BC91A60281"
+		    exportControl 	"Private"
+		    is_navigable 	TRUE)))
+	(object Association "$UNNAMED$112"
+	    attributes 	(list Attribute_Set)
+	    quid       	"37BD388F0160"
+	    roles      	(list role_list
+		(object Role "$UNNAMED$113"
+		    quid       	"37BD388F0161"
+		    supplier   	"Logical View::MathGraph3::PolygonPlot"
+		    quidu      	"37BC91AA031D")
+		(object Role "Pts[]"
+		    attributes 	(list Attribute_Set
+			(object Attribute
+			    tool       	"Java"
+			    name       	"InitialValue"
+			    value      	""))
+		    quid       	"37BD388F0162"
+		    documentation 	
+|Storage for the Points	 
+		    
+		    label      	"Pts[]"
+		    supplier   	"Logical View::Vector::Tensor"
+		    quidu      	"36BB858A000B"
+		    is_navigable 	TRUE)))
+	(object Association "$UNNAMED$114"
+	    attributes 	(list Attribute_Set)
+	    quid       	"37BD389701D0"
+	    roles      	(list role_list
+		(object Role "$UNNAMED$115"
+		    quid       	"37BD389701D1"
+		    supplier   	"Logical View::MathGraph3::ScalarPointPlot"
+		    quidu      	"37BC91AB034F")
+		(object Role "Palette[]"
+		    attributes 	(list Attribute_Set
+			(object Attribute
+			    tool       	"Java"
+			    name       	"InitialValue"
+			    value      	""))
+		    quid       	"37BD389701D2"
+		    documentation 	
+|Palette for Scalar Plots. If the Palette is empty (like at the Start),
+|	 * the Colors are generated from the Integer Ordinates directly.	 
+		    
+		    label      	"Palette[]"
+		    supplier   	"Logical View::java::awt::Color"
+		    quidu      	"34B0F6CD0275"
+		    is_navigable 	TRUE)))
+	(object Association "$UNNAMED$116"
+	    attributes 	(list Attribute_Set)
+	    quid       	"37BD389703C4"
+	    roles      	(list role_list
+		(object Role "$UNNAMED$117"
+		    quid       	"37BD389703C5"
+		    supplier   	"Logical View::MathGraph3::ScalarPointPlot"
+		    quidu      	"37BC91AB034F")
+		(object Role "g"
+		    attributes 	(list Attribute_Set
+			(object Attribute
+			    tool       	"Java"
+			    name       	"InitialValue"
+			    value      	""))
+		    quid       	"37BD389703CE"
+		    documentation 	
+|Graphics Context to point to	 
+		    
+		    label      	"g"
+		    supplier   	"Logical View::Graphics2D::absGraphics2D"
+		    quidu      	"37BC8ED50091"
+		    exportControl 	"Private"
+		    is_navigable 	TRUE)))
+	(object Association "$UNNAMED$118"
+	    attributes 	(list Attribute_Set)
+	    quid       	"37BD389801DB"
+	    roles      	(list role_list
+		(object Role "$UNNAMED$119"
+		    quid       	"37BD389801DC"
+		    supplier   	"Logical View::MathGraph3::ScalarPointPlot"
+		    quidu      	"37BC91AB034F")
+		(object Role "C3D"
+		    attributes 	(list Attribute_Set
+			(object Attribute
+			    tool       	"Java"
+			    name       	"InitialValue"
+			    value      	""))
+		    quid       	"37BD389801DD"
+		    documentation 	
+|Reference to the Coordinate System for Conversion	 
+		    
+		    label      	"C3D"
+		    supplier   	"Logical View::MathGraph3::Coordinates3D"
+		    quidu      	"37BC91A60281"
+		    exportControl 	"Private"
+		    is_navigable 	TRUE)))
+	(object Association "$UNNAMED$120"
+	    attributes 	(list Attribute_Set)
+	    quid       	"37BD389D03AF"
+	    roles      	(list role_list
+		(object Role "$UNNAMED$121"
+		    quid       	"37BD389D03B0"
+		    supplier   	"Logical View::MathGraph3::VoxelPlot"
+		    quidu      	"37BC91AC0103")
+		(object Role "Palette[][]"
+		    attributes 	(list Attribute_Set
+			(object Attribute
+			    tool       	"Java"
+			    name       	"InitialValue"
+			    value      	""))
+		    quid       	"37BD389D03B1"
+		    documentation 	
+|Palette for Scalar Voxel Plots. If the Palette is empty (like at the Start),
+|	 * the Colors are generated from the Integer Ordinates directly.	
+|	 * Determines the coloring of the Square's sides. 
+|	 * Must contain three arrays of Colors for the three visible Sides.	 
+		    
+		    label      	"Palette[][]"
+		    supplier   	"Logical View::java::awt::Color"
+		    quidu      	"34B0F6CD0275"
+		    is_navigable 	TRUE)))
+	(object Association "$UNNAMED$122"
+	    attributes 	(list Attribute_Set)
+	    quid       	"37BD389E039C"
+	    roles      	(list role_list
+		(object Role "$UNNAMED$123"
+		    quid       	"37BD389E039D"
+		    supplier   	"Logical View::MathGraph3::VoxelPlot"
+		    quidu      	"37BC91AC0103")
+		(object Role "g"
+		    attributes 	(list Attribute_Set
+			(object Attribute
+			    tool       	"Java"
+			    name       	"InitialValue"
+			    value      	""))
+		    quid       	"37BD389E039E"
+		    documentation 	
+|Graphics Context to point to	 
+		    
+		    label      	"g"
+		    supplier   	"Logical View::Graphics2D::absGraphics2D"
+		    quidu      	"37BC8ED50091"
+		    exportControl 	"Private"
+		    is_navigable 	TRUE)))
+	(object Association "$UNNAMED$124"
+	    attributes 	(list Attribute_Set)
+	    quid       	"37BD389F038A"
+	    roles      	(list role_list
+		(object Role "$UNNAMED$125"
+		    quid       	"37BD389F038B"
+		    supplier   	"Logical View::MathGraph3::VoxelPlot"
+		    quidu      	"37BC91AC0103")
+		(object Role "C3D"
+		    attributes 	(list Attribute_Set
+			(object Attribute
+			    tool       	"Java"
+			    name       	"InitialValue"
+			    value      	""))
+		    quid       	"37BD389F038C"
+		    documentation 	
+|Reference to the Coordinate System for Conversion	 
+		    
+		    label      	"C3D"
+		    supplier   	"Logical View::MathGraph3::Coordinates3D"
+		    quidu      	"37BC91A60281"
+		    exportControl 	"Private"
+		    is_navigable 	TRUE)))
+	(object Association "$UNNAMED$126"
+	    attributes 	(list Attribute_Set)
+	    quid       	"37BD38A0038B"
+	    roles      	(list role_list
+		(object Role "$UNNAMED$127"
+		    quid       	"37BD38A0038C"
+		    supplier   	"Logical View::MathGraph3::VoxelPlot"
+		    quidu      	"37BC91AC0103")
+		(object Role "POld[][]"
+		    attributes 	(list Attribute_Set
+			(object Attribute
+			    tool       	"Java"
+			    name       	"InitialValue"
+			    value      	""))
+		    quid       	"37BD38A0038D"
+		    documentation 	
+|Cache for the old Points	 
+		    
+		    label      	"POld[][]"
+		    supplier   	"Logical View::Graphics2D::Point2D"
+		    quidu      	"37BC8ED500A2"
+		    exportControl 	"Private"
+		    is_navigable 	TRUE)))
+	(object Association "$UNNAMED$128"
+	    attributes 	(list Attribute_Set)
+	    quid       	"37BD38A10379"
+	    roles      	(list role_list
+		(object Role "$UNNAMED$129"
+		    quid       	"37BD38A1037A"
+		    supplier   	"Logical View::MathGraph3::VoxelPlot"
+		    quidu      	"37BC91AC0103")
+		(object Role "PNew[][]"
+		    attributes 	(list Attribute_Set
+			(object Attribute
+			    tool       	"Java"
+			    name       	"InitialValue"
+			    value      	""))
+		    quid       	"37BD38A1037B"
+		    documentation 	
+|Cache for the new Points	 
+		    
+		    label      	"PNew[][]"
+		    supplier   	"Logical View::Graphics2D::Point2D"
+		    quidu      	"37BC8ED500A2"
+		    exportControl 	"Private"
+		    is_navigable 	TRUE)))
+	(object Association "$UNNAMED$130"
+	    attributes 	(list Attribute_Set)
+	    quid       	"37BD38A20352"
+	    roles      	(list role_list
+		(object Role "$UNNAMED$131"
+		    quid       	"37BD38A20353"
+		    supplier   	"Logical View::MathGraph3::VoxelPlot"
+		    quidu      	"37BC91AC0103")
+		(object Role "tmp[][]"
+		    attributes 	(list Attribute_Set
+			(object Attribute
+			    tool       	"Java"
+			    name       	"InitialValue"
+			    value      	""))
+		    quid       	"37BD38A20354"
+		    documentation 	
+|Cache for the old Points	 
+		    
+		    label      	"tmp[][]"
+		    supplier   	"Logical View::Graphics2D::Point2D"
+		    quidu      	"37BC8ED500A2"
+		    exportControl 	"Private"
+		    is_navigable 	TRUE)))
+	(object Association "$UNNAMED$132"
+	    attributes 	(list Attribute_Set)
+	    quid       	"37BD38A30321"
+	    roles      	(list role_list
+		(object Role "$UNNAMED$133"
+		    quid       	"37BD38A30322"
+		    supplier   	"Logical View::MathGraph3::VoxelPlot"
+		    quidu      	"37BC91AC0103")
+		(object Role "Plane[]"
+		    attributes 	(list Attribute_Set
+			(object Attribute
+			    tool       	"Java"
+			    name       	"InitialValue"
+			    value      	"new Point2D [4]"))
+		    quid       	"37BD38A30323"
+		    documentation 	
+|Four Point Polygon for painting the Planes directly	 
+		    
+		    label      	"Plane[]"
+		    supplier   	"Logical View::Graphics2D::Point2D"
+		    quidu      	"37BC8ED500A2"
+		    exportControl 	"Private"
+		    is_navigable 	TRUE)))
+	(object Association "$UNNAMED$134"
+	    attributes 	(list Attribute_Set)
+	    quid       	"37BD3953037F"
+	    roles      	(list role_list
+		(object Role "$UNNAMED$135"
+		    quid       	"37BD39530380"
+		    supplier   	"Logical View::MathGraph3::PlotOdeRect"
+		    quidu      	"37BC91B301D5")
+		(object Role "Rect"
+		    attributes 	(list Attribute_Set
+			(object Attribute
+			    tool       	"Java"
+			    name       	"InitialValue"
+			    value      	""))
+		    quid       	"37BD39530381"
+		    documentation 	
+|Local Reference to the Rectangle	 
+		    
+		    label      	"Rect"
+		    supplier   	"Logical View::java::awt::Rectangle"
+		    quidu      	"34B0F6CD02E3"
+		    exportControl 	"Implementation"
+		    is_navigable 	TRUE))))
+    logical_presentations 	(list unit_reference_list
+	(object ClassDiagram "MathGraph3"
+	    quid       	"37BE7750023C"
+	    title      	"MathGraph3"
+	    zoom       	100
+	    max_height 	28350
+	    max_width  	21600
+	    origin_x   	0
+	    origin_y   	0
+	    items      	(list diagram_item_list
+		(object ClassView "Class" "Logical View::MathGraph3::absDraw" @1
+		    ShowCompartmentStereotypes 	TRUE
+		    IncludeAttribute 	TRUE
+		    location   	(1147, 651)
+		    font       	(object Font
+			italics    	TRUE)
+		    label      	(object ItemLabel
+			Parent_View 	@1
+			location   	(1050, 599)
+			fill_color 	13434879
+			nlines     	1
+			max_width  	194
+			justify    	0
+			label      	"absDraw")
+		    icon_style 	"Icon"
+		    line_color 	3342489
+		    fill_color 	13434879
+		    quidu      	"37BC91A600D1"
+		    width      	212
+		    height     	128
+		    annotation 	8
+		    autoResize 	TRUE)
+		(object ClassView "Class" "Logical View::MathGraph3::intDraw" @2
+		    ShowCompartmentStereotypes 	TRUE
+		    IncludeAttribute 	TRUE
+		    IncludeOperation 	TRUE
+		    location   	(1147, 310)
+		    label      	(object ItemLabel
+			Parent_View 	@2
+			location   	(1019, 176)
+			fill_color 	13434879
+			nlines     	1
+			max_width  	256
+			justify    	0
+			label      	"intDraw")
+		    stereotype 	(object ItemLabel
+			Parent_View 	@2
+			location   	(1019, 126)
+			fill_color 	13434879
+			anchor     	10
+			nlines     	1
+			max_width  	256
+			justify    	0
+			label      	"<<Interface>>")
+		    icon       	"Interface"
+		    icon_style 	"Label"
+		    line_color 	3342489
+		    fill_color 	13434879
+		    quidu      	"37BC91A600DB"
+		    width      	274
+		    height     	392
+		    annotation 	8
+		    autoResize 	TRUE)
+		(object RealizeView "" @3
+		    stereotype 	TRUE
+		    line_color 	3342489
+		    quidu      	"37BD385D0321"
+		    client     	@1
+		    supplier   	@2
+		    line_style 	0)
+		(object ClassView "Class" "Logical View::MathGraph3::Column3D" @4
+		    ShowCompartmentStereotypes 	TRUE
+		    IncludeAttribute 	TRUE
+		    location   	(279, 651)
+		    label      	(object ItemLabel
+			Parent_View 	@4
+			location   	(171, 600)
+			fill_color 	13434879
+			nlines     	1
+			max_width  	216
+			justify    	0
+			label      	"Column3D")
+		    icon_style 	"Icon"
+		    line_color 	3342489
+		    fill_color 	13434879
+		    quidu      	"37BC91A60276"
+		    width      	234
+		    height     	126
+		    annotation 	8
+		    autoResize 	TRUE)
+		(object ClassView "Class" "Logical View::MathGraph3::HistoPlot" @5
+		    ShowCompartmentStereotypes 	TRUE
+		    IncludeAttribute 	TRUE
+		    location   	(744, 651)
+		    label      	(object ItemLabel
+			Parent_View 	@5
+			location   	(532, 545)
+			fill_color 	13434879
+			nlines     	1
+			max_width  	424
+			justify    	0
+			label      	"HistoPlot")
+		    icon_style 	"Icon"
+		    line_color 	3342489
+		    fill_color 	13434879
+		    quidu      	"37BC91A80085"
+		    width      	442
+		    height     	236
+		    annotation 	8
+		    autoResize 	TRUE)
+		(object AssociationViewNew "$UNNAMED$80" @6
+		    location   	(459, 651)
+		    stereotype 	TRUE
+		    line_color 	3342489
+		    quidu      	"37BD387002A6"
+		    roleview_list 	(list RoleViews
+			(object RoleView "Col" @7
+			    Parent_View 	@6
+			    location   	(180, -713)
+			    label      	(object SegLabel @8
+				Parent_View 	@7
+				location   	(470, 693)
+				anchor     	1
+				anchor_loc 	1
+				nlines     	1
+				max_width  	72
+				justify    	0
+				label      	"-Col"
+				pctDist    	-0.190476
+				height     	42
+				orientation 	0)
+			    stereotype 	TRUE
+			    line_color 	3342489
+			    quidu      	"37BD387002A8"
+			    client     	@6
+			    supplier   	@4
+			    line_style 	0)
+			(object RoleView "$UNNAMED$81" @9
+			    Parent_View 	@6
+			    location   	(180, -713)
+			    label      	(object SegLabel @10
+				Parent_View 	@9
+				location   	(509, 693)
+				hidden     	TRUE
+				anchor     	1
+				anchor_loc 	1
+				nlines     	1
+				max_width  	450
+				justify    	0
+				label      	""
+				pctDist    	0.800000
+				height     	42
+				orientation 	1)
+			    stereotype 	TRUE
+			    line_color 	3342489
+			    quidu      	"37BD387002A7"
+			    client     	@6
+			    supplier   	@5
+			    line_style 	0)))
+		(object InheritView "" @11
+		    stereotype 	TRUE
+		    line_color 	3342489
+		    quidu      	"37BD386E00A4"
+		    client     	@5
+		    supplier   	@1
+		    line_style 	0)
+		(object ClassView "Class" "Logical View::MathGraph3::PlanePlot" @12
+		    ShowCompartmentStereotypes 	TRUE
+		    IncludeAttribute 	TRUE
+		    location   	(372, 1054)
+		    label      	(object ItemLabel
+			Parent_View 	@12
+			location   	(129, 848)
+			fill_color 	13434879
+			nlines     	1
+			max_width  	486
+			justify    	0
+			label      	"PlanePlot")
+		    icon_style 	"Icon"
+		    line_color 	3342489
+		    fill_color 	13434879
+		    quidu      	"37BC91A8034C"
+		    width      	504
+		    height     	436
+		    annotation 	8
+		    autoResize 	TRUE)
+		(object InheritView "" @13
+		    stereotype 	TRUE
+		    line_color 	3342489
+		    quidu      	"37BD387303C3"
+		    client     	@12
+		    supplier   	@1
+		    line_style 	0)
+		(object ClassView "Class" "Logical View::MathGraph3::PlotHyperPlane" @14
+		    ShowCompartmentStereotypes 	TRUE
+		    IncludeAttribute 	TRUE
+		    location   	(868, 1333)
+		    label      	(object ItemLabel
+			Parent_View 	@14
+			location   	(662, 1252)
+			fill_color 	13434879
+			nlines     	1
+			max_width  	412
+			justify    	0
+			label      	"PlotHyperPlane")
+		    icon_style 	"Icon"
+		    line_color 	3342489
+		    fill_color 	13434879
+		    quidu      	"37BC91A901D1"
+		    width      	430
+		    height     	186
+		    annotation 	8
+		    autoResize 	TRUE)
+		(object InheritView "" @15
+		    stereotype 	TRUE
+		    line_color 	3342489
+		    quidu      	"37BD387B0201"
+		    client     	@14
+		    supplier   	@1
+		    line_style 	0)
+		(object ClassView "Class" "Logical View::MathGraph3::PlotVector" @16
+		    ShowCompartmentStereotypes 	TRUE
+		    IncludeAttribute 	TRUE
+		    location   	(1147, 1581)
+		    label      	(object ItemLabel
+			Parent_View 	@16
+			location   	(935, 1475)
+			fill_color 	13434879
+			nlines     	1
+			max_width  	424
+			justify    	0
+			label      	"PlotVector")
+		    icon_style 	"Icon"
+		    line_color 	3342489
+		    fill_color 	13434879
+		    quidu      	"37BC91AA00A6"
+		    width      	442
+		    height     	236
+		    annotation 	8
+		    autoResize 	TRUE)
+		(object InheritView "" @17
+		    stereotype 	TRUE
+		    line_color 	3342489
+		    quidu      	"37BD38880278"
+		    client     	@16
+		    supplier   	@1
+		    line_style 	0)
+		(object ClassView "Class" "Logical View::MathGraph3::Polygon3DGraph" @18
+		    ShowCompartmentStereotypes 	TRUE
+		    IncludeAttribute 	TRUE
+		    location   	(682, 310)
+		    label      	(object ItemLabel
+			Parent_View 	@18
+			location   	(510, 259)
+			fill_color 	13434879
+			nlines     	1
+			max_width  	344
+			justify    	0
+			label      	"Polygon3DGraph")
+		    icon_style 	"Icon"
+		    line_color 	3342489
+		    fill_color 	13434879
+		    quidu      	"37BC91AA0195"
+		    width      	362
+		    height     	126
+		    annotation 	8
+		    autoResize 	TRUE)
+		(object ClassView "Class" "Logical View::MathGraph3::PolygonPlot" @19
+		    ShowCompartmentStereotypes 	TRUE
+		    IncludeAttribute 	TRUE
+		    location   	(1736, 310)
+		    label      	(object ItemLabel
+			Parent_View 	@19
+			location   	(1569, 229)
+			fill_color 	13434879
+			nlines     	1
+			max_width  	334
+			justify    	0
+			label      	"PolygonPlot")
+		    icon_style 	"Icon"
+		    line_color 	3342489
+		    fill_color 	13434879
+		    quidu      	"37BC91AA031D"
+		    width      	352
+		    height     	186
+		    annotation 	8
+		    autoResize 	TRUE)
+		(object ClassView "Class" "Logical View::MathGraph3::ProjectPlot" @20
+		    ShowCompartmentStereotypes 	TRUE
+		    IncludeAttribute 	TRUE
+		    location   	(2139, 310)
+		    label      	(object ItemLabel
+			Parent_View 	@20
+			location   	(1939, 204)
+			fill_color 	13434879
+			nlines     	1
+			max_width  	400
+			justify    	0
+			label      	"ProjectPlot")
+		    icon_style 	"Icon"
+		    line_color 	3342489
+		    fill_color 	13434879
+		    quidu      	"37BC91AB0024"
+		    width      	418
+		    height     	236
+		    annotation 	8
+		    autoResize 	TRUE)
+		(object ClassView "Class" "Logical View::MathGraph3::ScalarPlanePlot" @21
+		    ShowCompartmentStereotypes 	TRUE
+		    IncludeAttribute 	TRUE
+		    location   	(372, 1519)
+		    label      	(object ItemLabel
+			Parent_View 	@21
+			location   	(163, 1363)
+			fill_color 	13434879
+			nlines     	1
+			max_width  	418
+			justify    	0
+			label      	"ScalarPlanePlot")
+		    icon_style 	"Icon"
+		    line_color 	3342489
+		    fill_color 	13434879
+		    quidu      	"37BC91AB01CA"
+		    width      	436
+		    height     	336
+		    annotation 	8
+		    autoResize 	TRUE)
+		(object InheritView "" @22
+		    stereotype 	TRUE
+		    line_color 	3342489
+		    quidu      	"37BD38940031"
+		    client     	@21
+		    supplier   	@12
+		    line_style 	0)
+		(object ClassView "Class" "Logical View::MathGraph3::ScalarPointPlot" @23
+		    ShowCompartmentStereotypes 	TRUE
+		    IncludeAttribute 	TRUE
+		    location   	(868, 1085)
+		    label      	(object ItemLabel
+			Parent_View 	@23
+			location   	(656, 954)
+			fill_color 	13434879
+			nlines     	1
+			max_width  	424
+			justify    	0
+			label      	"ScalarPointPlot")
+		    icon_style 	"Icon"
+		    line_color 	3342489
+		    fill_color 	13434879
+		    quidu      	"37BC91AB034F"
+		    width      	442
+		    height     	286
+		    annotation 	8
+		    autoResize 	TRUE)
+		(object InheritView "" @24
+		    stereotype 	TRUE
+		    line_color 	3342489
+		    quidu      	"37BD389503CB"
+		    client     	@23
+		    supplier   	@1
+		    line_style 	0)
+		(object ClassView "Class" "Logical View::MathGraph3::VoxelPlot" @25
+		    ShowCompartmentStereotypes 	TRUE
+		    IncludeAttribute 	TRUE
+		    location   	(1426, 1271)
+		    label      	(object ItemLabel
+			Parent_View 	@25
+			location   	(1231, 1140)
+			fill_color 	13434879
+			nlines     	1
+			max_width  	390
+			justify    	0
+			label      	"VoxelPlot")
+		    icon_style 	"Icon"
+		    line_color 	3342489
+		    fill_color 	13434879
+		    quidu      	"37BC91AC0103"
+		    width      	408
+		    height     	286
+		    annotation 	8
+		    autoResize 	TRUE)
+		(object InheritView "" @26
+		    stereotype 	TRUE
+		    line_color 	3342489
+		    quidu      	"37BD389A03AB"
+		    client     	@25
+		    supplier   	@1
+		    line_style 	0)
+		(object ClassView "Class" "Logical View::MathGraph3::HeightOde" @27
+		    ShowCompartmentStereotypes 	TRUE
+		    IncludeAttribute 	TRUE
+		    location   	(1426, 310)
+		    label      	(object ItemLabel
+			Parent_View 	@27
+			location   	(1312, 204)
+			fill_color 	13434879
+			nlines     	1
+			max_width  	228
+			justify    	0
+			label      	"HeightOde")
+		    icon_style 	"Icon"
+		    line_color 	3342489
+		    fill_color 	13434879
+		    quidu      	"37BC91B203D7"
+		    width      	246
+		    height     	236
+		    annotation 	8
+		    autoResize 	TRUE)
+		(object ClassView "Class" "Logical View::MathGraph3::PlotODE2" @28
+		    ShowCompartmentStereotypes 	TRUE
+		    IncludeAttribute 	TRUE
+		    location   	(1426, 961)
+		    label      	(object ItemLabel
+			Parent_View 	@28
+			location   	(1320, 910)
+			fill_color 	13434879
+			nlines     	1
+			max_width  	212
+			justify    	0
+			label      	"PlotODE2")
+		    icon_style 	"Icon"
+		    line_color 	3342489
+		    fill_color 	13434879
+		    quidu      	"37BC91B300EE"
+		    width      	230
+		    height     	126
+		    annotation 	8
+		    autoResize 	TRUE)
+		(object InheritView "" @29
+		    stereotype 	TRUE
+		    line_color 	3342489
+		    quidu      	"37BD395003DE"
+		    client     	@28
+		    supplier   	@1
+		    line_style 	0)
+		(object ClassView "Class" "Logical View::MathGraph3::PlotODE" @30
+		    ShowCompartmentStereotypes 	TRUE
+		    IncludeAttribute 	TRUE
+		    location   	(1705, 651)
+		    label      	(object ItemLabel
+			Parent_View 	@30
+			location   	(1438, 520)
+			fill_color 	13434879
+			nlines     	1
+			max_width  	534
+			justify    	0
+			label      	"PlotODE")
+		    icon_style 	"Icon"
+		    line_color 	3342489
+		    fill_color 	13434879
+		    quidu      	"37BC91A902F3"
+		    width      	552
+		    height     	286
+		    annotation 	8
+		    autoResize 	TRUE)
+		(object InheritView "" @31
+		    stereotype 	TRUE
+		    line_color 	3342489
+		    quidu      	"37BD3883037F"
+		    client     	@30
+		    supplier   	@1
+		    line_style 	0)
+		(object AssociationViewNew "$UNNAMED$66" @32
+		    location   	(1527, 845)
+		    stereotype 	TRUE
+		    line_color 	3342489
+		    quidu      	"37BC91B300F9"
+		    roleview_list 	(list RoleViews
+			(object RoleView "Plotter" @33
+			    Parent_View 	@32
+			    location   	(-612, -395)
+			    label      	(object SegLabel @34
+				Parent_View 	@33
+				location   	(1461, 817)
+				anchor     	1
+				anchor_loc 	1
+				nlines     	1
+				max_width  	120
+				justify    	0
+				label      	"Plotter"
+				pctDist    	-0.341881
+				height     	70
+				orientation 	0)
+			    stereotype 	TRUE
+			    line_color 	3342489
+			    quidu      	"37BC91B300FB"
+			    client     	@32
+			    supplier   	@30
+			    line_style 	0)
+			(object RoleView "$UNNAMED$67" @35
+			    Parent_View 	@32
+			    location   	(-612, -395)
+			    label      	(object SegLabel @36
+				Parent_View 	@35
+				location   	(1520, 915)
+				hidden     	TRUE
+				anchor     	1
+				anchor_loc 	1
+				nlines     	1
+				max_width  	450
+				justify    	0
+				label      	""
+				pctDist    	0.800000
+				height     	42
+				orientation 	0)
+			    stereotype 	TRUE
+			    line_color 	3342489
+			    quidu      	"37BC91B300FA"
+			    client     	@32
+			    supplier   	@28
+			    line_style 	0)))
+		(object ClassView "Class" "Logical View::MathGraph3::PlotOdeRect" @37
+		    ShowCompartmentStereotypes 	TRUE
+		    IncludeAttribute 	TRUE
+		    location   	(1705, 1023)
+		    label      	(object ItemLabel
+			Parent_View 	@37
+			location   	(1572, 972)
+			fill_color 	13434879
+			nlines     	1
+			max_width  	266
+			justify    	0
+			label      	"PlotOdeRect")
+		    icon_style 	"Icon"
+		    line_color 	3342489
+		    fill_color 	13434879
+		    quidu      	"37BC91B301D5"
+		    width      	284
+		    height     	126
+		    annotation 	8
+		    autoResize 	TRUE)
+		(object AssociationViewNew "$UNNAMED$68" @38
+		    location   	(1603, 845)
+		    stereotype 	TRUE
+		    line_color 	3342489
+		    quidu      	"37BC91B301E8"
+		    roleview_list 	(list RoleViews
+			(object RoleView "Plotter" @39
+			    Parent_View 	@38
+			    location   	(-474, -209)
+			    label      	(object SegLabel @40
+				Parent_View 	@39
+				location   	(1662, 884)
+				anchor     	1
+				anchor_loc 	1
+				nlines     	1
+				max_width  	120
+				justify    	0
+				label      	"Plotter"
+				pctDist    	-0.162344
+				height     	70
+				orientation 	1)
+			    stereotype 	TRUE
+			    line_color 	3342489
+			    quidu      	"37BC91B301EA"
+			    client     	@38
+			    supplier   	@30
+			    line_style 	0)
+			(object RoleView "$UNNAMED$69" @41
+			    Parent_View 	@38
+			    location   	(-474, -209)
+			    label      	(object SegLabel @42
+				Parent_View 	@41
+				location   	(1650, 909)
+				hidden     	TRUE
+				anchor     	1
+				anchor_loc 	1
+				nlines     	1
+				max_width  	450
+				justify    	0
+				label      	""
+				pctDist    	0.800000
+				height     	42
+				orientation 	0)
+			    stereotype 	TRUE
+			    line_color 	3342489
+			    quidu      	"37BC91B301E9"
+			    client     	@38
+			    supplier   	@37
+			    vertices   	(list Points
+				(1603, 845)
+				(1578, 896)
+				(1641, 959))
+			    line_style 	0)))
+		(object ClassView "Class" "Logical View::MathGraph3::Body3DGraph" @43
+		    ShowCompartmentStereotypes 	TRUE
+		    IncludeAttribute 	TRUE
+		    location   	(341, 310)
+		    label      	(object ItemLabel
+			Parent_View 	@43
+			location   	(197, 259)
+			fill_color 	13434879
+			nlines     	1
+			max_width  	288
+			justify    	0
+			label      	"Body3DGraph")
+		    icon_style 	"Icon"
+		    line_color 	3342489
+		    fill_color 	13434879
+		    quidu      	"37BD385E02BE"
+		    width      	306
+		    height     	126
+		    annotation 	8
+		    autoResize 	TRUE)
+		(object InheritView "" @44
+		    stereotype 	TRUE
+		    line_color 	3342489
+		    quidu      	"37BD39520391"
+		    client     	@37
+		    supplier   	@30
+		    line_style 	0)))
+	(object ClassDiagram "Coordinates"
+	    quid       	"37BE78600139"
+	    title      	"Coordinates"
+	    zoom       	100
+	    max_height 	28350
+	    max_width  	21600
+	    origin_x   	0
+	    origin_y   	0
+	    items      	(list diagram_item_list
+		(object ClassView "Class" "Logical View::MathGraph3::Coordinates" @45
+		    ShowCompartmentStereotypes 	TRUE
+		    IncludeAttribute 	TRUE
+		    IncludeOperation 	TRUE
+		    location   	(527, 186)
+		    label      	(object ItemLabel
+			Parent_View 	@45
+			location   	(399, 77)
+			fill_color 	13434879
+			nlines     	1
+			max_width  	256
+			justify    	0
+			label      	"Coordinates")
+		    stereotype 	(object ItemLabel
+			Parent_View 	@45
+			location   	(399, 27)
+			fill_color 	13434879
+			anchor     	10
+			nlines     	1
+			max_width  	256
+			justify    	0
+			label      	"<<Interface>>")
+		    icon       	"Interface"
+		    icon_style 	"Label"
+		    line_color 	3342489
+		    fill_color 	13434879
+		    quidu      	"37BC91A60321"
+		    width      	274
+		    height     	342
+		    annotation 	8
+		    autoResize 	TRUE)
+		(object ClassView "Class" "Logical View::MathGraph3::Coordinates2D_" @46
+		    ShowCompartmentStereotypes 	TRUE
+		    IncludeAttribute 	TRUE
+		    location   	(713, 496)
+		    label      	(object ItemLabel
+			Parent_View 	@46
+			location   	(550, 444)
+			fill_color 	13434879
+			nlines     	1
+			max_width  	326
+			justify    	0
+			label      	"Coordinates2D_")
+		    icon_style 	"Icon"
+		    line_color 	3342489
+		    fill_color 	13434879
+		    quidu      	"37BC91A70001"
+		    width      	344
+		    height     	128
+		    annotation 	8
+		    autoResize 	TRUE)
+		(object RealizeView "" @47
+		    stereotype 	TRUE
+		    line_color 	3342489
+		    quidu      	"37BD3864033F"
+		    client     	@46
+		    supplier   	@45
+		    line_style 	0)
+		(object ClassView "Class" "Logical View::MathGraph3::Figures2D" @48
+		    ShowCompartmentStereotypes 	TRUE
+		    IncludeAttribute 	TRUE
+		    location   	(713, 775)
+		    label      	(object ItemLabel
+			Parent_View 	@48
+			location   	(605, 724)
+			fill_color 	13434879
+			nlines     	1
+			max_width  	216
+			justify    	0
+			label      	"Figures2D")
+		    icon_style 	"Icon"
+		    line_color 	3342489
+		    fill_color 	13434879
+		    quidu      	"37BC91A70137"
+		    width      	234
+		    height     	126
+		    annotation 	8
+		    autoResize 	TRUE)
+		(object AssociationViewNew "$UNNAMED$4" @49
+		    location   	(713, 635)
+		    stereotype 	TRUE
+		    line_color 	3342489
+		    quidu      	"37BC91A70141"
+		    roleview_list 	(list RoleViews
+			(object RoleView "C2D" @50
+			    Parent_View 	@49
+			    location   	(-403, 294)
+			    label      	(object SegLabel @51
+				Parent_View 	@50
+				location   	(782, 667)
+				anchor     	1
+				anchor_loc 	1
+				nlines     	1
+				max_width  	96
+				justify    	0
+				label      	"-C2D"
+				pctDist    	-0.440000
+				height     	69
+				orientation 	1)
+			    stereotype 	TRUE
+			    line_color 	3342489
+			    quidu      	"37BC91A70143"
+			    client     	@49
+			    supplier   	@46
+			    line_style 	0)
+			(object RoleView "$UNNAMED$5" @52
+			    Parent_View 	@49
+			    location   	(-403, 294)
+			    label      	(object SegLabel @53
+				Parent_View 	@52
+				location   	(755, 695)
+				hidden     	TRUE
+				anchor     	1
+				anchor_loc 	1
+				nlines     	1
+				max_width  	450
+				justify    	0
+				label      	""
+				pctDist    	0.800000
+				height     	42
+				orientation 	0)
+			    stereotype 	TRUE
+			    line_color 	3342489
+			    quidu      	"37BC91A70142"
+			    client     	@49
+			    supplier   	@48
+			    line_style 	0)))
+		(object ClassView "Class" "Logical View::MathGraph3::Coordinates3D" @54
+		    ShowCompartmentStereotypes 	TRUE
+		    IncludeAttribute 	TRUE
+		    location   	(341, 527)
+		    label      	(object ItemLabel
+			Parent_View 	@54
+			location   	(165, 446)
+			fill_color 	13434879
+			nlines     	1
+			max_width  	352
+			justify    	0
+			label      	"Coordinates3D")
+		    icon_style 	"Icon"
+		    line_color 	3342489
+		    fill_color 	13434879
+		    quidu      	"37BC91A60281"
+		    width      	370
+		    height     	186
+		    annotation 	8
+		    autoResize 	TRUE)
+		(object RealizeView "" @55
+		    stereotype 	TRUE
+		    line_color 	3342489
+		    quidu      	"37BD38660139"
+		    client     	@54
+		    supplier   	@45
+		    line_style 	0)
+		(object ClassView "Class" "Logical View::MathGraph3::Figures3D" @56
+		    ShowCompartmentStereotypes 	TRUE
+		    IncludeAttribute 	TRUE
+		    location   	(341, 837)
+		    label      	(object ItemLabel
+			Parent_View 	@56
+			location   	(129, 731)
+			fill_color 	13434879
+			nlines     	1
+			max_width  	424
+			justify    	0
+			label      	"Figures3D")
+		    icon_style 	"Icon"
+		    line_color 	3342489
+		    fill_color 	13434879
+		    quidu      	"37BC91A702D2"
+		    width      	442
+		    height     	236
+		    annotation 	8
+		    autoResize 	TRUE)
+		(object AssociationViewNew "$UNNAMED$12" @57
+		    location   	(341, 669)
+		    stereotype 	TRUE
+		    line_color 	3342489
+		    quidu      	"37BC91A702E5"
+		    roleview_list 	(list RoleViews
+			(object RoleView "C3D" @58
+			    Parent_View 	@57
+			    location   	(-62, -416)
+			    label      	(object SegLabel @59
+				Parent_View 	@58
+				location   	(270, 693)
+				anchor     	1
+				anchor_loc 	1
+				nlines     	1
+				max_width  	96
+				justify    	0
+				label      	"-C3D"
+				pctDist    	-0.489796
+				height     	72
+				orientation 	0)
+			    stereotype 	TRUE
+			    line_color 	3342489
+			    quidu      	"37BC91A702E7"
+			    client     	@57
+			    supplier   	@54
+			    line_style 	0)
+			(object RoleView "$UNNAMED$13" @60
+			    Parent_View 	@57
+			    location   	(-62, -416)
+			    label      	(object SegLabel @61
+				Parent_View 	@60
+				location   	(300, 707)
+				hidden     	TRUE
+				anchor     	1
+				anchor_loc 	1
+				nlines     	1
+				max_width  	450
+				justify    	0
+				label      	""
+				pctDist    	0.800000
+				height     	42
+				orientation 	1)
+			    stereotype 	TRUE
+			    line_color 	3342489
+			    quidu      	"37BC91A702E6"
+			    client     	@57
+			    supplier   	@56
+			    line_style 	0)))))))

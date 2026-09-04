@@ -1,0 +1,1438 @@
+
+(object Petal
+    version    	42
+    _written   	"Rose 4.5.8163.3"
+    charSet    	0)
+
+(object SubSystem "Ring"
+    is_unit    	TRUE
+    is_loaded  	TRUE
+    quid       	"36BB392A02D1"
+    visible_modules 	(list dependency_list
+	(object Dependency_Relationship
+	    quid       	"36BB392A02E6"
+	    supplier   	"Component View::Group"
+	    quidu      	"36BB25E0024F"
+	    supplier_is_subsystem 	TRUE)
+	(object Dependency_Relationship
+	    quid       	"36BB392A02EF"
+	    supplier   	"Component View::GroupM"
+	    quidu      	"36BB2CD10088"
+	    supplier_is_subsystem 	TRUE)
+	(object Dependency_Relationship
+	    quid       	"36BB3947037D"
+	    supplier   	"Component View::BaseCopy"
+	    quidu      	"36BABF4B0011"
+	    supplier_is_subsystem 	TRUE)
+	(object Dependency_Relationship
+	    quid       	"36BB3947038A"
+	    supplier   	"Component View::intFunction"
+	    quidu      	"36BB39470388"
+	    supplier_is_subsystem 	TRUE)
+	(object Dependency_Relationship
+	    quid       	"37BC91B5001F"
+	    supplier   	"Component View::java::io"
+	    quidu      	"34B0F6CE0290"
+	    supplier_is_subsystem 	TRUE))
+    physical_models 	(list unit_reference_list
+	(object module "Ring" "NotAModuleType" "NotAModulePart"
+	    attributes 	(list Attribute_Set
+		(object Attribute
+		    tool       	"Java"
+		    name       	"FileName"
+		    value      	"D:\\Personal\\Code\\Java\\Ring\\Ring.java"))
+	    quid       	"36BB392A02E5"
+	    stereotype 	""
+	    visible_modules 	(list dependency_list
+		(object Dependency_Relationship
+		    quid       	"36BB392A02E7"
+		    supplier   	"Component View::Group"
+		    quidu      	"36BB25E0024F"
+		    supplier_is_subsystem 	TRUE)
+		(object Dependency_Relationship
+		    quid       	"36BB392A02F0"
+		    supplier   	"Component View::GroupM::HalfGroupM"
+		    quidu      	"36BB2CD101AA"
+		    supplier_is_spec 	TRUE)
+		(object Dependency_Relationship
+		    quid       	"36BB3BBA03BB"
+		    supplier   	"Component View::Group"
+		    quidu      	"36BB25E0024F"
+		    supplier_is_subsystem 	TRUE)
+		(object Dependency_Relationship
+		    quid       	"36BB400B0341"
+		    supplier   	"Component View::Group"
+		    quidu      	"36BB25E0024F"
+		    supplier_is_subsystem 	TRUE)
+		(object Dependency_Relationship
+		    quid       	"36BB41A703C6"
+		    supplier   	"Component View::Group"
+		    quidu      	"36BB25E0024F"
+		    supplier_is_subsystem 	TRUE)
+		(object Dependency_Relationship
+		    quid       	"37BC93CE0017"
+		    supplier   	"Component View::Group"
+		    quidu      	"36BB25E0024F"
+		    supplier_is_subsystem 	TRUE)
+		(object Dependency_Relationship
+		    quid       	"37BD232201BD"
+		    supplier   	"Component View::Group"
+		    quidu      	"36BB25E0024F"
+		    supplier_is_subsystem 	TRUE)
+		(object Dependency_Relationship
+		    quid       	"37BD39FB0204"
+		    supplier   	"Component View::Group"
+		    quidu      	"36BB25E0024F"
+		    supplier_is_subsystem 	TRUE))
+	    realized_interfaces 	(list realize_rel_list
+		(object Realize_Relationship
+		    quid       	"37BF03320172"
+		    supplier   	"Logical View::Ring::Ring"
+		    quidu      	"36BB3BD6036B"))
+	    language   	"Java")
+	(object module "Prime" "NotAModuleType" "NotAModulePart"
+	    attributes 	(list Attribute_Set
+		(object Attribute
+		    tool       	"Java"
+		    name       	"FileName"
+		    value      	"D:\\Personal\\Code\\Java\\Ring\\Prime.java"))
+	    quid       	"36BB39460335"
+	    stereotype 	""
+	    language   	"Java")
+	(object module "intInteger" "NotAModuleType" "NotAModulePart"
+	    attributes 	(list Attribute_Set
+		(object Attribute
+		    tool       	"Java"
+		    name       	"FileName"
+		    value      	"D:\\Personal\\Code\\Java\\Ring\\intInteger.java"))
+	    quid       	"36BB39470098"
+	    stereotype 	""
+	    realized_interfaces 	(list realize_rel_list
+		(object Realize_Relationship
+		    quid       	"37BF032A013E"
+		    supplier   	"Logical View::Ring::intInteger"
+		    quidu      	"36BB39470099"))
+	    language   	"Java")
+	(object module "Interpolator" "NotAModuleType" "NotAModulePart"
+	    attributes 	(list Attribute_Set
+		(object Attribute
+		    tool       	"Java"
+		    name       	"FileName"
+		    value      	"D:\\Personal\\Code\\Java\\Ring\\Interpolator.java"))
+	    quid       	"36BB39470106"
+	    stereotype 	""
+	    visible_modules 	(list dependency_list
+		(object Dependency_Relationship
+		    quid       	"36BB437200CD"
+		    supplier   	"Component View::Group"
+		    quidu      	"36BB25E0024F"
+		    supplier_is_subsystem 	TRUE)
+		(object Dependency_Relationship
+		    quid       	"36BB437200D7"
+		    supplier   	"Component View::GroupM"
+		    quidu      	"36BB2CD10088"
+		    supplier_is_subsystem 	TRUE)
+		(object Dependency_Relationship
+		    quid       	"36BB437200E1"
+		    supplier   	"Component View::intFunction"
+		    quidu      	"36BB39470388"
+		    supplier_is_subsystem 	TRUE)
+		(object Dependency_Relationship
+		    quid       	"37BC93C3006B"
+		    supplier   	"Component View::Group"
+		    quidu      	"36BB25E0024F"
+		    supplier_is_subsystem 	TRUE)
+		(object Dependency_Relationship
+		    quid       	"37BC93C3006C"
+		    supplier   	"Component View::GroupM"
+		    quidu      	"36BB2CD10088"
+		    supplier_is_subsystem 	TRUE)
+		(object Dependency_Relationship
+		    quid       	"37BD2308031E"
+		    supplier   	"Component View::Group"
+		    quidu      	"36BB25E0024F"
+		    supplier_is_subsystem 	TRUE)
+		(object Dependency_Relationship
+		    quid       	"37BD2308031F"
+		    supplier   	"Component View::GroupM"
+		    quidu      	"36BB2CD10088"
+		    supplier_is_subsystem 	TRUE)
+		(object Dependency_Relationship
+		    quid       	"37BD39EA00E7"
+		    supplier   	"Component View::Group"
+		    quidu      	"36BB25E0024F"
+		    supplier_is_subsystem 	TRUE)
+		(object Dependency_Relationship
+		    quid       	"37BD39EA00E8"
+		    supplier   	"Component View::GroupM"
+		    quidu      	"36BB2CD10088"
+		    supplier_is_subsystem 	TRUE))
+	    language   	"Java")
+	(object module "IntegrityRing" "NotAModuleType" "NotAModulePart"
+	    attributes 	(list Attribute_Set
+		(object Attribute
+		    tool       	"Java"
+		    name       	"FileName"
+		    value      	"D:\\Personal\\Code\\Java\\Ring\\IntegrityRing.java"))
+	    quid       	"36BB39470156"
+	    stereotype 	""
+	    visible_modules 	(list dependency_list
+		(object Dependency_Relationship
+		    quid       	"36BB41DD01ED"
+		    supplier   	"Component View::Group"
+		    quidu      	"36BB25E0024F"
+		    supplier_is_subsystem 	TRUE)
+		(object Dependency_Relationship
+		    quid       	"36BB41DD01F7"
+		    supplier   	"Component View::GroupM"
+		    quidu      	"36BB2CD10088"
+		    supplier_is_subsystem 	TRUE)
+		(object Dependency_Relationship
+		    quid       	"36BB42C900AC"
+		    supplier   	"Component View::Group"
+		    quidu      	"36BB25E0024F"
+		    supplier_is_subsystem 	TRUE)
+		(object Dependency_Relationship
+		    quid       	"36BB42C900B6"
+		    supplier   	"Component View::GroupM"
+		    quidu      	"36BB2CD10088"
+		    supplier_is_subsystem 	TRUE)
+		(object Dependency_Relationship
+		    quid       	"36BB43730074"
+		    supplier   	"Component View::Group"
+		    quidu      	"36BB25E0024F"
+		    supplier_is_subsystem 	TRUE)
+		(object Dependency_Relationship
+		    quid       	"36BB4373007E"
+		    supplier   	"Component View::GroupM"
+		    quidu      	"36BB2CD10088"
+		    supplier_is_subsystem 	TRUE)
+		(object Dependency_Relationship
+		    quid       	"37BC93C2034F"
+		    supplier   	"Component View::Group"
+		    quidu      	"36BB25E0024F"
+		    supplier_is_subsystem 	TRUE)
+		(object Dependency_Relationship
+		    quid       	"37BC93C20350"
+		    supplier   	"Component View::GroupM"
+		    quidu      	"36BB2CD10088"
+		    supplier_is_subsystem 	TRUE)
+		(object Dependency_Relationship
+		    quid       	"37BD23060018"
+		    supplier   	"Component View::Group"
+		    quidu      	"36BB25E0024F"
+		    supplier_is_subsystem 	TRUE)
+		(object Dependency_Relationship
+		    quid       	"37BD23060019"
+		    supplier   	"Component View::GroupM"
+		    quidu      	"36BB2CD10088"
+		    supplier_is_subsystem 	TRUE)
+		(object Dependency_Relationship
+		    quid       	"37BD39E501B2"
+		    supplier   	"Component View::Group"
+		    quidu      	"36BB25E0024F"
+		    supplier_is_subsystem 	TRUE)
+		(object Dependency_Relationship
+		    quid       	"37BD39E501B3"
+		    supplier   	"Component View::GroupM"
+		    quidu      	"36BB2CD10088"
+		    supplier_is_subsystem 	TRUE))
+	    realized_interfaces 	(list realize_rel_list
+		(object Realize_Relationship
+		    quid       	"37BF032301A2"
+		    supplier   	"Logical View::Ring::IntegrityRing"
+		    quidu      	"36BB39470157"))
+	    language   	"Java")
+	(object module "integer" "NotAModuleType" "NotAModulePart"
+	    attributes 	(list Attribute_Set
+		(object Attribute
+		    tool       	"Java"
+		    name       	"FileName"
+		    value      	"D:\\Personal\\Code\\Java\\Ring\\integer.java"))
+	    quid       	"36BB39470192"
+	    stereotype 	""
+	    visible_modules 	(list dependency_list
+		(object Dependency_Relationship
+		    quid       	"36BB41DD0279"
+		    supplier   	"Component View::BaseCopy::copyAble"
+		    quidu      	"36BABF500108"
+		    supplier_is_spec 	TRUE))
+	    realized_interfaces 	(list realize_rel_list
+		(object Realize_Relationship
+		    quid       	"37BF03200216"
+		    supplier   	"Logical View::Ring::integer"
+		    quidu      	"36BB39470193"))
+	    language   	"Java")
+	(object module "absRing" "NotAModuleType" "NotAModulePart"
+	    attributes 	(list Attribute_Set
+		(object Attribute
+		    tool       	"Java"
+		    name       	"FileName"
+		    value      	"D:\\Personal\\Code\\Java\\Ring\\absRing.java"))
+	    quid       	"36BB3947020A"
+	    stereotype 	""
+	    visible_modules 	(list dependency_list
+		(object Dependency_Relationship
+		    quid       	"36BB39470214"
+		    supplier   	"Component View::Group"
+		    quidu      	"36BB25E0024F"
+		    supplier_is_subsystem 	TRUE)
+		(object Dependency_Relationship
+		    quid       	"36BB39470215"
+		    supplier   	"Component View::GroupM"
+		    quidu      	"36BB2CD10088"
+		    supplier_is_subsystem 	TRUE)
+		(object Dependency_Relationship
+		    quid       	"36BB42C90319"
+		    supplier   	"Component View::GroupM"
+		    quidu      	"36BB2CD10088"
+		    supplier_is_subsystem 	TRUE)
+		(object Dependency_Relationship
+		    quid       	"36BB43730345"
+		    supplier   	"Component View::GroupM"
+		    quidu      	"36BB2CD10088"
+		    supplier_is_subsystem 	TRUE)
+		(object Dependency_Relationship
+		    quid       	"37BC93C10040"
+		    supplier   	"Component View::Group"
+		    quidu      	"36BB25E0024F"
+		    supplier_is_subsystem 	TRUE)
+		(object Dependency_Relationship
+		    quid       	"37BC93C1004A"
+		    supplier   	"Component View::GroupM"
+		    quidu      	"36BB2CD10088"
+		    supplier_is_subsystem 	TRUE)
+		(object Dependency_Relationship
+		    quid       	"37BD22F5021C"
+		    supplier   	"Component View::Group"
+		    quidu      	"36BB25E0024F"
+		    supplier_is_subsystem 	TRUE)
+		(object Dependency_Relationship
+		    quid       	"37BD22F5021D"
+		    supplier   	"Component View::GroupM"
+		    quidu      	"36BB2CD10088"
+		    supplier_is_subsystem 	TRUE)
+		(object Dependency_Relationship
+		    quid       	"37BD39D0032E"
+		    supplier   	"Component View::Group"
+		    quidu      	"36BB25E0024F"
+		    supplier_is_subsystem 	TRUE)
+		(object Dependency_Relationship
+		    quid       	"37BD39D00338"
+		    supplier   	"Component View::GroupM"
+		    quidu      	"36BB2CD10088"
+		    supplier_is_subsystem 	TRUE))
+	    language   	"Java")
+	(object module "absIntegrityRing" "NotAModuleType" "NotAModulePart"
+	    attributes 	(list Attribute_Set
+		(object Attribute
+		    tool       	"Java"
+		    name       	"FileName"
+		    value      	"D:\\Personal\\Code\\Java\\Ring\\absIntegrityRing.java"))
+	    quid       	"36BB394702BF"
+	    stereotype 	""
+	    visible_modules 	(list dependency_list
+		(object Dependency_Relationship
+		    quid       	"37BC91F802F6"
+		    supplier   	"Component View::BaseCopy"
+		    quidu      	"36BABF4B0011"
+		    supplier_is_subsystem 	TRUE)
+		(object Dependency_Relationship
+		    quid       	"37BC91F802F7"
+		    supplier   	"Component View::Group"
+		    quidu      	"36BB25E0024F"
+		    supplier_is_subsystem 	TRUE)
+		(object Dependency_Relationship
+		    quid       	"37BC91F802F8"
+		    supplier   	"Component View::GroupM"
+		    quidu      	"36BB2CD10088"
+		    supplier_is_subsystem 	TRUE)
+		(object Dependency_Relationship
+		    quid       	"37BD220603DB"
+		    supplier   	"Component View::BaseCopy"
+		    quidu      	"36BABF4B0011"
+		    supplier_is_subsystem 	TRUE)
+		(object Dependency_Relationship
+		    quid       	"37BD220603DC"
+		    supplier   	"Component View::Group"
+		    quidu      	"36BB25E0024F"
+		    supplier_is_subsystem 	TRUE)
+		(object Dependency_Relationship
+		    quid       	"37BD220603DD"
+		    supplier   	"Component View::GroupM"
+		    quidu      	"36BB2CD10088"
+		    supplier_is_subsystem 	TRUE)
+		(object Dependency_Relationship
+		    quid       	"37BD399F026F"
+		    supplier   	"Component View::BaseCopy"
+		    quidu      	"36BABF4B0011"
+		    supplier_is_subsystem 	TRUE)
+		(object Dependency_Relationship
+		    quid       	"37BD399F0279"
+		    supplier   	"Component View::Group"
+		    quidu      	"36BB25E0024F"
+		    supplier_is_subsystem 	TRUE)
+		(object Dependency_Relationship
+		    quid       	"37BD399F027A"
+		    supplier   	"Component View::GroupM"
+		    quidu      	"36BB2CD10088"
+		    supplier_is_subsystem 	TRUE))
+	    language   	"Java")
+	(object module "Extrapolator" "NotAModuleType" "NotAModulePart"
+	    attributes 	(list Attribute_Set
+		(object Attribute
+		    tool       	"Java"
+		    name       	"FileName"
+		    value      	"D:\\Personal\\Code\\Java\\Ring\\Extrapolator.java"))
+	    quid       	"36BB39470373"
+	    stereotype 	""
+	    visible_modules 	(list dependency_list
+		(object Dependency_Relationship
+		    quid       	"36BB3947037E"
+		    supplier   	"Component View::BaseCopy"
+		    quidu      	"36BABF4B0011"
+		    supplier_is_subsystem 	TRUE)
+		(object Dependency_Relationship
+		    quid       	"36BB3947037F"
+		    supplier   	"Component View::Group"
+		    quidu      	"36BB25E0024F"
+		    supplier_is_subsystem 	TRUE)
+		(object Dependency_Relationship
+		    quid       	"36BB39470387"
+		    supplier   	"Component View::GroupM"
+		    quidu      	"36BB2CD10088"
+		    supplier_is_subsystem 	TRUE)
+		(object Dependency_Relationship
+		    quid       	"36BB39470391"
+		    supplier   	"Component View::intFunction"
+		    quidu      	"36BB39470388"
+		    supplier_is_subsystem 	TRUE)
+		(object Dependency_Relationship
+		    quid       	"37BC93C2004B"
+		    supplier   	"Component View::BaseCopy"
+		    quidu      	"36BABF4B0011"
+		    supplier_is_subsystem 	TRUE)
+		(object Dependency_Relationship
+		    quid       	"37BC93C2004C"
+		    supplier   	"Component View::Group"
+		    quidu      	"36BB25E0024F"
+		    supplier_is_subsystem 	TRUE)
+		(object Dependency_Relationship
+		    quid       	"37BC93C2004D"
+		    supplier   	"Component View::GroupM"
+		    quidu      	"36BB2CD10088"
+		    supplier_is_subsystem 	TRUE)
+		(object Dependency_Relationship
+		    quid       	"37BC93C20055"
+		    supplier   	"Component View::intFunction"
+		    quidu      	"36BB39470388"
+		    supplier_is_subsystem 	TRUE)
+		(object Dependency_Relationship
+		    quid       	"37BD22FC01EA"
+		    supplier   	"Component View::BaseCopy"
+		    quidu      	"36BABF4B0011"
+		    supplier_is_subsystem 	TRUE)
+		(object Dependency_Relationship
+		    quid       	"37BD22FC01EB"
+		    supplier   	"Component View::Group"
+		    quidu      	"36BB25E0024F"
+		    supplier_is_subsystem 	TRUE)
+		(object Dependency_Relationship
+		    quid       	"37BD22FC01EC"
+		    supplier   	"Component View::GroupM"
+		    quidu      	"36BB2CD10088"
+		    supplier_is_subsystem 	TRUE)
+		(object Dependency_Relationship
+		    quid       	"37BD22FC01ED"
+		    supplier   	"Component View::intFunction"
+		    quidu      	"36BB39470388"
+		    supplier_is_subsystem 	TRUE)
+		(object Dependency_Relationship
+		    quid       	"37BD39D7018A"
+		    supplier   	"Component View::BaseCopy"
+		    quidu      	"36BABF4B0011"
+		    supplier_is_subsystem 	TRUE)
+		(object Dependency_Relationship
+		    quid       	"37BD39D70194"
+		    supplier   	"Component View::Group"
+		    quidu      	"36BB25E0024F"
+		    supplier_is_subsystem 	TRUE)
+		(object Dependency_Relationship
+		    quid       	"37BD39D70195"
+		    supplier   	"Component View::GroupM"
+		    quidu      	"36BB2CD10088"
+		    supplier_is_subsystem 	TRUE)
+		(object Dependency_Relationship
+		    quid       	"37BD39D70196"
+		    supplier   	"Component View::intFunction"
+		    quidu      	"36BB39470388"
+		    supplier_is_subsystem 	TRUE))
+	    language   	"Java")
+	(object module "intDGL" "NotAModuleType" "NotAModulePart"
+	    attributes 	(list Attribute_Set
+		(object Attribute
+		    tool       	"Java"
+		    name       	"FileName"
+		    value      	"D:\\Personal\\Code\\Java\\Ring\\intDGL.java"))
+	    quid       	"37BC91A901DB"
+	    stereotype 	""
+	    realized_interfaces 	(list realize_rel_list
+		(object Realize_Relationship
+		    quid       	"37BF03110124"
+		    supplier   	"Logical View::Ring::intDGL"
+		    quidu      	"37BC91A901E4"))
+	    language   	"Java")
+	(object module "absStepper" "NotAModuleType" "NotAModulePart"
+	    attributes 	(list Attribute_Set
+		(object Attribute
+		    tool       	"Java"
+		    name       	"FileName"
+		    value      	"D:\\Personal\\Code\\Java\\Ring\\absStepper.java"))
+	    quid       	"37BC91A9030D"
+	    stereotype 	""
+	    language   	"Java")
+	(object module "FalsiStep" "NotAModuleType" "NotAModulePart"
+	    attributes 	(list Attribute_Set
+		(object Attribute
+		    tool       	"Java"
+		    name       	"FileName"
+		    value      	"D:\\Personal\\Code\\Java\\Ring\\FalsiStep.java"))
+	    quid       	"37BC91AD02A8"
+	    stereotype 	""
+	    visible_modules 	(list dependency_list
+		(object Dependency_Relationship
+		    quid       	"37BC93C200CB"
+		    supplier   	"Component View::Group"
+		    quidu      	"36BB25E0024F"
+		    supplier_is_subsystem 	TRUE)
+		(object Dependency_Relationship
+		    quid       	"37BC93C200CC"
+		    supplier   	"Component View::intFunction"
+		    quidu      	"36BB39470388"
+		    supplier_is_subsystem 	TRUE)
+		(object Dependency_Relationship
+		    quid       	"37BD22FF00C2"
+		    supplier   	"Component View::Group"
+		    quidu      	"36BB25E0024F"
+		    supplier_is_subsystem 	TRUE)
+		(object Dependency_Relationship
+		    quid       	"37BD22FF00C3"
+		    supplier   	"Component View::intFunction"
+		    quidu      	"36BB39470388"
+		    supplier_is_subsystem 	TRUE)
+		(object Dependency_Relationship
+		    quid       	"37BD39D9038B"
+		    supplier   	"Component View::Group"
+		    quidu      	"36BB25E0024F"
+		    supplier_is_subsystem 	TRUE)
+		(object Dependency_Relationship
+		    quid       	"37BD39D9038C"
+		    supplier   	"Component View::intFunction"
+		    quidu      	"36BB39470388"
+		    supplier_is_subsystem 	TRUE))
+	    language   	"Java")
+	(object module "intRefiner" "NotAModuleType" "NotAModulePart"
+	    attributes 	(list Attribute_Set
+		(object Attribute
+		    tool       	"Java"
+		    name       	"FileName"
+		    value      	"D:\\Personal\\Code\\Java\\Ring\\intRefiner.java"))
+	    quid       	"37BC91B00054"
+	    stereotype 	""
+	    realized_interfaces 	(list realize_rel_list
+		(object Realize_Relationship
+		    quid       	"37BF02C60072"
+		    supplier   	"Logical View::Ring::intRefiner"
+		    quidu      	"37BC91B0005D"))
+	    language   	"Java")
+	(object module "absRefiner" "NotAModuleType" "NotAModulePart"
+	    attributes 	(list Attribute_Set
+		(object Attribute
+		    tool       	"Java"
+		    name       	"FileName"
+		    value      	"D:\\Personal\\Code\\Java\\Ring\\absRefiner.java"))
+	    quid       	"37BC91B0005F"
+	    stereotype 	""
+	    visible_modules 	(list dependency_list
+		(object Dependency_Relationship
+		    quid       	"37BC91F80365"
+		    supplier   	"Component View::intFunction"
+		    quidu      	"36BB39470388"
+		    supplier_is_subsystem 	TRUE)
+		(object Dependency_Relationship
+		    quid       	"37BD220B008F"
+		    supplier   	"Component View::intFunction"
+		    quidu      	"36BB39470388"
+		    supplier_is_subsystem 	TRUE)
+		(object Dependency_Relationship
+		    quid       	"37BD39A6031A"
+		    supplier   	"Component View::intFunction"
+		    quidu      	"36BB39470388"
+		    supplier_is_subsystem 	TRUE))
+	    language   	"Java")
+	(object module "StepMP" "NotAModuleType" "NotAModulePart"
+	    attributes 	(list Attribute_Set
+		(object Attribute
+		    tool       	"Java"
+		    name       	"FileName"
+		    value      	"D:\\Personal\\Code\\Java\\Ring\\StepMP.java"))
+	    quid       	"37BC91B100FF"
+	    stereotype 	""
+	    visible_modules 	(list dependency_list
+		(object Dependency_Relationship
+		    quid       	"37BC93CE0077"
+		    supplier   	"Component View::Group"
+		    quidu      	"36BB25E0024F"
+		    supplier_is_subsystem 	TRUE)
+		(object Dependency_Relationship
+		    quid       	"37BD232501CE"
+		    supplier   	"Component View::Group"
+		    quidu      	"36BB25E0024F"
+		    supplier_is_subsystem 	TRUE)
+		(object Dependency_Relationship
+		    quid       	"37BD3A000279"
+		    supplier   	"Component View::Group"
+		    quidu      	"36BB25E0024F"
+		    supplier_is_subsystem 	TRUE)
+		(object Dependency_Relationship
+		    quid       	"37BDCF47018E"
+		    supplier   	"Component View::Group"
+		    quidu      	"36BB25E0024F"
+		    supplier_is_subsystem 	TRUE))
+	    language   	"Java")
+	(object module "StepRK" "NotAModuleType" "NotAModulePart"
+	    attributes 	(list Attribute_Set
+		(object Attribute
+		    tool       	"Java"
+		    name       	"FileName"
+		    value      	"D:\\Personal\\Code\\Java\\Ring\\StepRK.java"))
+	    quid       	"37BC91B1031C"
+	    stereotype 	""
+	    visible_modules 	(list dependency_list
+		(object Dependency_Relationship
+		    quid       	"37BC93CE00D7"
+		    supplier   	"Component View::Group"
+		    quidu      	"36BB25E0024F"
+		    supplier_is_subsystem 	TRUE)
+		(object Dependency_Relationship
+		    quid       	"37BD2329022E"
+		    supplier   	"Component View::Group"
+		    quidu      	"36BB25E0024F"
+		    supplier_is_subsystem 	TRUE)
+		(object Dependency_Relationship
+		    quid       	"37BD3A08032F"
+		    supplier   	"Component View::Group"
+		    quidu      	"36BB25E0024F"
+		    supplier_is_subsystem 	TRUE)
+		(object Dependency_Relationship
+		    quid       	"37BDCF4D015A"
+		    supplier   	"Component View::Group"
+		    quidu      	"36BB25E0024F"
+		    supplier_is_subsystem 	TRUE))
+	    language   	"Java")
+	(object module "StepTrapez" "NotAModuleType" "NotAModulePart"
+	    attributes 	(list Attribute_Set
+		(object Attribute
+		    tool       	"Java"
+		    name       	"FileName"
+		    value      	"D:\\Personal\\Code\\Java\\Ring\\StepTrapez.java"))
+	    quid       	"37BC91B20011"
+	    stereotype 	""
+	    visible_modules 	(list dependency_list
+		(object Dependency_Relationship
+		    quid       	"37BC93CE0154"
+		    supplier   	"Component View::Group"
+		    quidu      	"36BB25E0024F"
+		    supplier_is_subsystem 	TRUE)
+		(object Dependency_Relationship
+		    quid       	"37BC93CE0155"
+		    supplier   	"Component View::intFunction"
+		    quidu      	"36BB39470388"
+		    supplier_is_subsystem 	TRUE)
+		(object Dependency_Relationship
+		    quid       	"37BD232E015A"
+		    supplier   	"Component View::Group"
+		    quidu      	"36BB25E0024F"
+		    supplier_is_subsystem 	TRUE)
+		(object Dependency_Relationship
+		    quid       	"37BD232E015B"
+		    supplier   	"Component View::intFunction"
+		    quidu      	"36BB39470388"
+		    supplier_is_subsystem 	TRUE)
+		(object Dependency_Relationship
+		    quid       	"37BD3A0E02B5"
+		    supplier   	"Component View::Group"
+		    quidu      	"36BB25E0024F"
+		    supplier_is_subsystem 	TRUE)
+		(object Dependency_Relationship
+		    quid       	"37BD3A0E02B6"
+		    supplier   	"Component View::intFunction"
+		    quidu      	"36BB39470388"
+		    supplier_is_subsystem 	TRUE)
+		(object Dependency_Relationship
+		    quid       	"37BDCF5200CB"
+		    supplier   	"Component View::Group"
+		    quidu      	"36BB25E0024F"
+		    supplier_is_subsystem 	TRUE)
+		(object Dependency_Relationship
+		    quid       	"37BDCF5200CC"
+		    supplier   	"Component View::intFunction"
+		    quidu      	"36BB39470388"
+		    supplier_is_subsystem 	TRUE))
+	    language   	"Java")
+	(object module "intStepper" "NotAModuleType" "NotAModulePart"
+	    attributes 	(list Attribute_Set
+		(object Attribute
+		    tool       	"Java"
+		    name       	"FileName"
+		    value      	"D:\\Personal\\Code\\Java\\Ring\\intStepper.java"))
+	    quid       	"37BC93C100E0"
+	    stereotype 	""
+	    realized_interfaces 	(list realize_rel_list
+		(object Realize_Relationship
+		    quid       	"37BF02B80054"
+		    supplier   	"Logical View::Ring::intStepper"
+		    quidu      	"37BC93C100EA"))
+	    language   	"Java")
+	(object module "FixPtStep" "NotAModuleType" "NotAModulePart"
+	    attributes 	(list Attribute_Set
+		(object Attribute
+		    tool       	"Java"
+		    name       	"FileName"
+		    value      	"D:\\Personal\\Code\\Java\\Ring\\FixPtStep.java"))
+	    quid       	"37BC93C200D8"
+	    stereotype 	""
+	    visible_modules 	(list dependency_list
+		(object Dependency_Relationship
+		    quid       	"37BC93C200F2"
+		    supplier   	"Component View::intFunction"
+		    quidu      	"36BB39470388"
+		    supplier_is_subsystem 	TRUE)
+		(object Dependency_Relationship
+		    quid       	"37BD230000F9"
+		    supplier   	"Component View::intFunction"
+		    quidu      	"36BB39470388"
+		    supplier_is_subsystem 	TRUE)
+		(object Dependency_Relationship
+		    quid       	"37BD39DA0383"
+		    supplier   	"Component View::intFunction"
+		    quidu      	"36BB39470388"
+		    supplier_is_subsystem 	TRUE))
+	    language   	"Java")
+	(object module "intComplex" "NotAModuleType" "NotAModulePart"
+	    attributes 	(list Attribute_Set
+		(object Attribute
+		    tool       	"Java"
+		    name       	"FileName"
+		    value      	"D:\\Personal\\Code\\Java\\Ring\\intComplex.java"))
+	    quid       	"37BC93C200F6"
+	    stereotype 	""
+	    realized_interfaces 	(list realize_rel_list
+		(object Realize_Relationship
+		    quid       	"37BF02B00310"
+		    supplier   	"Logical View::Ring::intComplex"
+		    quidu      	"37BC93C200F7"))
+	    language   	"Java")
+	(object module "NewtonStep" "NotAModuleType" "NotAModulePart"
+	    attributes 	(list Attribute_Set
+		(object Attribute
+		    tool       	"Java"
+		    name       	"FileName"
+		    value      	"D:\\Personal\\Code\\Java\\Ring\\NewtonStep.java"))
+	    quid       	"37BC93C300BB"
+	    stereotype 	""
+	    visible_modules 	(list dependency_list
+		(object Dependency_Relationship
+		    quid       	"37BC93C300E4"
+		    supplier   	"Component View::intFunction"
+		    quidu      	"36BB39470388"
+		    supplier_is_subsystem 	TRUE)
+		(object Dependency_Relationship
+		    quid       	"37BD230B03A5"
+		    supplier   	"Component View::intFunction"
+		    quidu      	"36BB39470388"
+		    supplier_is_subsystem 	TRUE)
+		(object Dependency_Relationship
+		    quid       	"37BD39ED0100"
+		    supplier   	"Component View::intFunction"
+		    quidu      	"36BB39470388"
+		    supplier_is_subsystem 	TRUE))
+	    language   	"Java")
+	(object module "NewtonStep2" "NotAModuleType" "NotAModulePart"
+	    attributes 	(list Attribute_Set
+		(object Attribute
+		    tool       	"Java"
+		    name       	"FileName"
+		    value      	"D:\\Personal\\Code\\Java\\Ring\\NewtonStep2.java"))
+	    quid       	"37BC93C300F7"
+	    stereotype 	""
+	    visible_modules 	(list dependency_list
+		(object Dependency_Relationship
+		    quid       	"37BC93C30126"
+		    supplier   	"Component View::intFunction"
+		    quidu      	"36BB39470388"
+		    supplier_is_subsystem 	TRUE)
+		(object Dependency_Relationship
+		    quid       	"37BD230E0240"
+		    supplier   	"Component View::intFunction"
+		    quidu      	"36BB39470388"
+		    supplier_is_subsystem 	TRUE)
+		(object Dependency_Relationship
+		    quid       	"37BD39EF02E9"
+		    supplier   	"Component View::intFunction"
+		    quidu      	"36BB39470388"
+		    supplier_is_subsystem 	TRUE))
+	    language   	"Java")
+	(object module "testRing" "NotAModuleType" "NotAModulePart"
+	    attributes 	(list Attribute_Set
+		(object Attribute
+		    tool       	"Java"
+		    name       	"FileName"
+		    value      	"D:\\Personal\\Code\\Java\\Ring\\testRing.java"))
+	    quid       	"37BC93CE0161"
+	    stereotype 	""
+	    visible_modules 	(list dependency_list
+		(object Dependency_Relationship
+		    quid       	"37BC93CE0176"
+		    supplier   	"Component View::BaseCopy"
+		    quidu      	"36BABF4B0011"
+		    supplier_is_subsystem 	TRUE)
+		(object Dependency_Relationship
+		    quid       	"37BD232E0375"
+		    supplier   	"Component View::BaseCopy"
+		    quidu      	"36BABF4B0011"
+		    supplier_is_subsystem 	TRUE)
+		(object Dependency_Relationship
+		    quid       	"37BD3A0F00F4"
+		    supplier   	"Component View::BaseCopy"
+		    quidu      	"36BABF4B0011"
+		    supplier_is_subsystem 	TRUE))
+	    language   	"Java")
+	(object module "absInteger" "NotAModuleType" "NotAModulePart"
+	    quid       	"37BFC1280131"
+	    stereotype 	""
+	    language   	"Java"))
+    physical_presentations 	(list unit_reference_list
+	(object Module_Diagram "Ring"
+	    quid       	"37BF02A202AB"
+	    title      	"Ring"
+	    zoom       	100
+	    max_height 	28350
+	    max_width  	21600
+	    origin_x   	0
+	    origin_y   	0
+	    items      	(list diagram_item_list
+		(object ModView "Component View::Ring::testRing" "NotAModuleType" "NotAModulePart" @1
+		    location   	(186, 155)
+		    label      	(object ItemLabel
+			Parent_View 	@1
+			location   	(151, 130)
+			fill_color 	13434879
+			anchor_loc 	3
+			nlines     	2
+			max_width  	127
+			label      	"testRing")
+		    icon_style 	"Icon"
+		    line_color 	3342489
+		    fill_color 	13434879
+		    quidu      	"37BC93CE0161"
+		    width      	228
+		    autoResize 	TRUE
+		    width      	228
+		    height     	162)
+		(object ModView "Component View::Ring::NewtonStep2" "NotAModuleType" "NotAModulePart" @2
+		    location   	(589, 155)
+		    label      	(object ItemLabel
+			Parent_View 	@2
+			location   	(551, 130)
+			fill_color 	13434879
+			anchor_loc 	3
+			nlines     	2
+			max_width  	139
+			label      	"NewtonStep2")
+		    icon_style 	"Icon"
+		    line_color 	3342489
+		    fill_color 	13434879
+		    quidu      	"37BC93C300F7"
+		    width      	250
+		    autoResize 	TRUE
+		    width      	250
+		    height     	162)
+		(object ModView "Component View::Ring::NewtonStep" "NotAModuleType" "NotAModulePart" @3
+		    location   	(992, 155)
+		    label      	(object ItemLabel
+			Parent_View 	@3
+			location   	(957, 130)
+			fill_color 	13434879
+			anchor_loc 	3
+			nlines     	2
+			max_width  	127
+			label      	"NewtonStep")
+		    icon_style 	"Icon"
+		    line_color 	3342489
+		    fill_color 	13434879
+		    quidu      	"37BC93C300BB"
+		    width      	228
+		    autoResize 	TRUE
+		    width      	228
+		    height     	162)
+		(object ModView "Component View::Ring::intComplex" "NotAModuleType" "NotAModulePart" @4
+		    location   	(992, 1116)
+		    label      	(object ItemLabel
+			Parent_View 	@4
+			location   	(948, 1091)
+			fill_color 	13434879
+			anchor_loc 	3
+			nlines     	2
+			max_width  	162
+			label      	"intComplex")
+		    icon_style 	"Icon"
+		    line_color 	3342489
+		    fill_color 	13434879
+		    quidu      	"37BC93C200F6"
+		    width      	292
+		    autoResize 	TRUE
+		    width      	292
+		    height     	162)
+		(object InterfaceView "Logical View::Ring::intComplex" @5
+		    location   	(806, 1519)
+		    label      	(object ItemLabel
+			Parent_View 	@5
+			location   	(805, 1627)
+			anchor_loc 	1
+			nlines     	2
+			max_width  	229
+			justify    	0
+			label      	"intComplex")
+		    icon       	"Interface"
+		    icon_style 	"Icon"
+		    line_color 	3342489
+		    fill_color 	13434879
+		    quidu      	"37BC93C200F7"
+		    width      	58
+		    height     	58
+		    autoResize 	TRUE)
+		(object RealizeView "" @6
+		    stereotype 	TRUE
+		    line_color 	3342489
+		    quidu      	"37BF02B00310"
+		    client     	@4
+		    supplier   	@5
+		    line_style 	0)
+		(object ModView "Component View::Ring::FixPtStep" "NotAModuleType" "NotAModulePart" @7
+		    location   	(1364, 155)
+		    label      	(object ItemLabel
+			Parent_View 	@7
+			location   	(1329, 130)
+			fill_color 	13434879
+			anchor_loc 	3
+			nlines     	2
+			max_width  	127
+			label      	"FixPtStep")
+		    icon_style 	"Icon"
+		    line_color 	3342489
+		    fill_color 	13434879
+		    quidu      	"37BC93C200D8"
+		    width      	228
+		    autoResize 	TRUE
+		    width      	228
+		    height     	162)
+		(object ModView "Component View::Ring::intStepper" "NotAModuleType" "NotAModulePart" @8
+		    location   	(2604, 1116)
+		    label      	(object ItemLabel
+			Parent_View 	@8
+			location   	(2563, 1091)
+			fill_color 	13434879
+			anchor_loc 	3
+			nlines     	2
+			max_width  	150
+			label      	"intStepper")
+		    icon_style 	"Icon"
+		    line_color 	3342489
+		    fill_color 	13434879
+		    quidu      	"37BC93C100E0"
+		    width      	270
+		    autoResize 	TRUE
+		    width      	270
+		    height     	162)
+		(object InterfaceView "Logical View::Ring::intStepper" @9
+		    location   	(2604, 1519)
+		    label      	(object ItemLabel
+			Parent_View 	@9
+			location   	(2603, 1627)
+			anchor_loc 	1
+			nlines     	2
+			max_width  	229
+			justify    	0
+			label      	"intStepper")
+		    icon       	"Interface"
+		    icon_style 	"Icon"
+		    line_color 	3342489
+		    fill_color 	13434879
+		    quidu      	"37BC93C100EA"
+		    width      	58
+		    height     	58
+		    autoResize 	TRUE)
+		(object RealizeView "" @10
+		    stereotype 	TRUE
+		    line_color 	3342489
+		    quidu      	"37BF02B80054"
+		    client     	@8
+		    supplier   	@9
+		    line_style 	0)
+		(object ModView "Component View::Ring::StepTrapez" "NotAModuleType" "NotAModulePart" @11
+		    location   	(1767, 155)
+		    label      	(object ItemLabel
+			Parent_View 	@11
+			location   	(1732, 130)
+			fill_color 	13434879
+			anchor_loc 	3
+			nlines     	2
+			max_width  	127
+			label      	"StepTrapez")
+		    icon_style 	"Icon"
+		    line_color 	3342489
+		    fill_color 	13434879
+		    quidu      	"37BC91B20011"
+		    width      	228
+		    autoResize 	TRUE
+		    width      	228
+		    height     	162)
+		(object ModView "Component View::Ring::StepRK" "NotAModuleType" "NotAModulePart" @12
+		    location   	(2139, 155)
+		    label      	(object ItemLabel
+			Parent_View 	@12
+			location   	(2104, 130)
+			fill_color 	13434879
+			anchor_loc 	3
+			nlines     	2
+			max_width  	127
+			label      	"StepRK")
+		    icon_style 	"Icon"
+		    line_color 	3342489
+		    fill_color 	13434879
+		    quidu      	"37BC91B1031C"
+		    width      	228
+		    autoResize 	TRUE
+		    width      	228
+		    height     	162)
+		(object ModView "Component View::Ring::StepMP" "NotAModuleType" "NotAModulePart" @13
+		    location   	(2542, 155)
+		    label      	(object ItemLabel
+			Parent_View 	@13
+			location   	(2507, 130)
+			fill_color 	13434879
+			anchor_loc 	3
+			nlines     	2
+			max_width  	127
+			label      	"StepMP")
+		    icon_style 	"Icon"
+		    line_color 	3342489
+		    fill_color 	13434879
+		    quidu      	"37BC91B100FF"
+		    width      	228
+		    autoResize 	TRUE
+		    width      	228
+		    height     	162)
+		(object ModView "Component View::Ring::absRefiner" "NotAModuleType" "NotAModulePart" @14
+		    location   	(2914, 155)
+		    label      	(object ItemLabel
+			Parent_View 	@14
+			location   	(2879, 130)
+			fill_color 	13434879
+			anchor_loc 	3
+			nlines     	2
+			max_width  	127
+			label      	"absRefiner")
+		    icon_style 	"Icon"
+		    line_color 	3342489
+		    fill_color 	13434879
+		    quidu      	"37BC91B0005F"
+		    width      	228
+		    autoResize 	TRUE
+		    width      	228
+		    height     	162)
+		(object ModView "Component View::Ring::intRefiner" "NotAModuleType" "NotAModulePart" @15
+		    location   	(2201, 1116)
+		    label      	(object ItemLabel
+			Parent_View 	@15
+			location   	(2166, 1091)
+			fill_color 	13434879
+			anchor_loc 	3
+			nlines     	2
+			max_width  	127
+			label      	"intRefiner")
+		    icon_style 	"Icon"
+		    line_color 	3342489
+		    fill_color 	13434879
+		    quidu      	"37BC91B00054"
+		    width      	228
+		    autoResize 	TRUE
+		    width      	228
+		    height     	162)
+		(object InterfaceView "Logical View::Ring::intRefiner" @16
+		    location   	(2201, 1519)
+		    label      	(object ItemLabel
+			Parent_View 	@16
+			location   	(2200, 1627)
+			anchor_loc 	1
+			nlines     	2
+			max_width  	229
+			justify    	0
+			label      	"intRefiner")
+		    icon       	"Interface"
+		    icon_style 	"Icon"
+		    line_color 	3342489
+		    fill_color 	13434879
+		    quidu      	"37BC91B0005D"
+		    width      	58
+		    height     	58
+		    autoResize 	TRUE)
+		(object RealizeView "" @17
+		    stereotype 	TRUE
+		    line_color 	3342489
+		    quidu      	"37BF02C60072"
+		    client     	@15
+		    supplier   	@16
+		    line_style 	0)
+		(object ModView "Component View::Ring::FalsiStep" "NotAModuleType" "NotAModulePart" @18
+		    location   	(186, 465)
+		    label      	(object ItemLabel
+			Parent_View 	@18
+			location   	(151, 440)
+			fill_color 	13434879
+			anchor_loc 	3
+			nlines     	2
+			max_width  	127
+			label      	"FalsiStep")
+		    icon_style 	"Icon"
+		    line_color 	3342489
+		    fill_color 	13434879
+		    quidu      	"37BC91AD02A8"
+		    width      	228
+		    autoResize 	TRUE
+		    width      	228
+		    height     	162)
+		(object ModView "Component View::Ring::absStepper" "NotAModuleType" "NotAModulePart" @19
+		    location   	(589, 465)
+		    label      	(object ItemLabel
+			Parent_View 	@19
+			location   	(548, 440)
+			fill_color 	13434879
+			anchor_loc 	3
+			nlines     	2
+			max_width  	150
+			label      	"absStepper")
+		    icon_style 	"Icon"
+		    line_color 	3342489
+		    fill_color 	13434879
+		    quidu      	"37BC91A9030D"
+		    width      	270
+		    autoResize 	TRUE
+		    width      	270
+		    height     	162)
+		(object ModView "Component View::Ring::intDGL" "NotAModuleType" "NotAModulePart" @20
+		    location   	(1426, 1116)
+		    label      	(object ItemLabel
+			Parent_View 	@20
+			location   	(1391, 1091)
+			fill_color 	13434879
+			anchor_loc 	3
+			nlines     	2
+			max_width  	127
+			label      	"intDGL")
+		    icon_style 	"Icon"
+		    line_color 	3342489
+		    fill_color 	13434879
+		    quidu      	"37BC91A901DB"
+		    width      	228
+		    autoResize 	TRUE
+		    width      	228
+		    height     	162)
+		(object InterfaceView "Logical View::Ring::intDGL" @21
+		    location   	(1147, 1519)
+		    label      	(object ItemLabel
+			Parent_View 	@21
+			location   	(1146, 1627)
+			anchor_loc 	1
+			nlines     	2
+			max_width  	229
+			justify    	0
+			label      	"intDGL")
+		    icon       	"Interface"
+		    icon_style 	"Icon"
+		    line_color 	3342489
+		    fill_color 	13434879
+		    quidu      	"37BC91A901E4"
+		    width      	58
+		    height     	58
+		    autoResize 	TRUE)
+		(object RealizeView "" @22
+		    stereotype 	TRUE
+		    line_color 	3342489
+		    quidu      	"37BF03110124"
+		    client     	@20
+		    supplier   	@21
+		    line_style 	0)
+		(object ModView "Component View::Ring::Extrapolator" "NotAModuleType" "NotAModulePart" @23
+		    location   	(992, 465)
+		    label      	(object ItemLabel
+			Parent_View 	@23
+			location   	(957, 440)
+			fill_color 	13434879
+			anchor_loc 	3
+			nlines     	2
+			max_width  	127
+			label      	"Extrapolator")
+		    icon_style 	"Icon"
+		    line_color 	3342489
+		    fill_color 	13434879
+		    quidu      	"36BB39470373"
+		    width      	228
+		    autoResize 	TRUE
+		    width      	228
+		    height     	162)
+		(object ModView "Component View::Ring::absIntegrityRing" "NotAModuleType" "NotAModulePart" @24
+		    location   	(1891, 465)
+		    label      	(object ItemLabel
+			Parent_View 	@24
+			location   	(1829, 440)
+			fill_color 	13434879
+			anchor_loc 	3
+			nlines     	2
+			max_width  	234
+			label      	"absIntegrityRing")
+		    icon_style 	"Icon"
+		    line_color 	3342489
+		    fill_color 	13434879
+		    quidu      	"36BB394702BF"
+		    width      	422
+		    autoResize 	TRUE
+		    width      	422
+		    height     	162)
+		(object ModView "Component View::Ring::absRing" "NotAModuleType" "NotAModulePart" @25
+		    location   	(2356, 465)
+		    label      	(object ItemLabel
+			Parent_View 	@25
+			location   	(2321, 440)
+			fill_color 	13434879
+			anchor_loc 	3
+			nlines     	2
+			max_width  	127
+			label      	"absRing")
+		    icon_style 	"Icon"
+		    line_color 	3342489
+		    fill_color 	13434879
+		    quidu      	"36BB3947020A"
+		    width      	228
+		    autoResize 	TRUE
+		    width      	228
+		    height     	162)
+		(object ModView "Component View::Ring::integer" "NotAModuleType" "NotAModulePart" @26
+		    location   	(3007, 1116)
+		    label      	(object ItemLabel
+			Parent_View 	@26
+			location   	(2972, 1091)
+			fill_color 	13434879
+			anchor_loc 	3
+			nlines     	2
+			max_width  	127
+			label      	"integer")
+		    icon_style 	"Icon"
+		    line_color 	3342489
+		    fill_color 	13434879
+		    quidu      	"36BB39470192"
+		    width      	228
+		    autoResize 	TRUE
+		    width      	228
+		    height     	162)
+		(object InterfaceView "Logical View::Ring::integer" @27
+		    location   	(3007, 1519)
+		    label      	(object ItemLabel
+			Parent_View 	@27
+			location   	(3006, 1627)
+			anchor_loc 	1
+			nlines     	2
+			max_width  	229
+			justify    	0
+			label      	"integer")
+		    icon       	"Interface"
+		    icon_style 	"Icon"
+		    line_color 	3342489
+		    fill_color 	13434879
+		    quidu      	"36BB39470193"
+		    width      	58
+		    height     	58
+		    autoResize 	TRUE)
+		(object RealizeView "" @28
+		    stereotype 	TRUE
+		    line_color 	3342489
+		    quidu      	"37BF03200216"
+		    client     	@26
+		    supplier   	@27
+		    line_style 	0)
+		(object ModView "Component View::Ring::IntegrityRing" "NotAModuleType" "NotAModulePart" @29
+		    location   	(186, 1116)
+		    label      	(object ItemLabel
+			Parent_View 	@29
+			location   	(151, 1091)
+			fill_color 	13434879
+			anchor_loc 	3
+			nlines     	2
+			max_width  	127
+			label      	"IntegrityRing")
+		    icon_style 	"Icon"
+		    line_color 	3342489
+		    fill_color 	13434879
+		    quidu      	"36BB39470156"
+		    width      	228
+		    autoResize 	TRUE
+		    width      	228
+		    height     	162)
+		(object InterfaceView "Logical View::Ring::IntegrityRing" @30
+		    location   	(186, 1519)
+		    label      	(object ItemLabel
+			Parent_View 	@30
+			location   	(185, 1627)
+			anchor_loc 	1
+			nlines     	2
+			max_width  	229
+			justify    	0
+			label      	"IntegrityRing")
+		    icon       	"Interface"
+		    icon_style 	"Icon"
+		    line_color 	3342489
+		    fill_color 	13434879
+		    quidu      	"36BB39470157"
+		    width      	58
+		    height     	58
+		    autoResize 	TRUE)
+		(object RealizeView "" @31
+		    stereotype 	TRUE
+		    line_color 	3342489
+		    quidu      	"37BF032301A2"
+		    client     	@29
+		    supplier   	@30
+		    line_style 	0)
+		(object ModView "Component View::Ring::Interpolator" "NotAModuleType" "NotAModulePart" @32
+		    location   	(2759, 465)
+		    label      	(object ItemLabel
+			Parent_View 	@32
+			location   	(2724, 440)
+			fill_color 	13434879
+			anchor_loc 	3
+			nlines     	2
+			max_width  	127
+			label      	"Interpolator")
+		    icon_style 	"Icon"
+		    line_color 	3342489
+		    fill_color 	13434879
+		    quidu      	"36BB39470106"
+		    width      	228
+		    autoResize 	TRUE
+		    width      	228
+		    height     	162)
+		(object ModView "Component View::Ring::intInteger" "NotAModuleType" "NotAModulePart" @33
+		    location   	(1798, 1116)
+		    label      	(object ItemLabel
+			Parent_View 	@33
+			location   	(1763, 1091)
+			fill_color 	13434879
+			anchor_loc 	3
+			nlines     	2
+			max_width  	127
+			label      	"intInteger")
+		    icon_style 	"Icon"
+		    line_color 	3342489
+		    fill_color 	13434879
+		    quidu      	"36BB39470098"
+		    width      	228
+		    autoResize 	TRUE
+		    width      	228
+		    height     	162)
+		(object InterfaceView "Logical View::Ring::intInteger" @34
+		    location   	(1457, 1519)
+		    label      	(object ItemLabel
+			Parent_View 	@34
+			location   	(1456, 1627)
+			anchor_loc 	1
+			nlines     	2
+			max_width  	229
+			justify    	0
+			label      	"intInteger")
+		    icon       	"Interface"
+		    icon_style 	"Icon"
+		    line_color 	3342489
+		    fill_color 	13434879
+		    quidu      	"36BB39470099"
+		    width      	58
+		    height     	58
+		    autoResize 	TRUE)
+		(object RealizeView "" @35
+		    stereotype 	TRUE
+		    line_color 	3342489
+		    quidu      	"37BF032A013E"
+		    client     	@33
+		    supplier   	@34
+		    line_style 	0)
+		(object ModView "Component View::Ring::Prime" "NotAModuleType" "NotAModulePart" @36
+		    location   	(186, 744)
+		    label      	(object ItemLabel
+			Parent_View 	@36
+			location   	(151, 719)
+			fill_color 	13434879
+			anchor_loc 	3
+			nlines     	2
+			max_width  	127
+			label      	"Prime")
+		    icon_style 	"Icon"
+		    line_color 	3342489
+		    fill_color 	13434879
+		    quidu      	"36BB39460335"
+		    width      	228
+		    autoResize 	TRUE
+		    width      	228
+		    height     	162)
+		(object ModView "Component View::Ring::Ring" "NotAModuleType" "NotAModulePart" @37
+		    location   	(589, 1116)
+		    label      	(object ItemLabel
+			Parent_View 	@37
+			location   	(554, 1091)
+			fill_color 	13434879
+			anchor_loc 	3
+			nlines     	2
+			max_width  	127
+			label      	"Ring")
+		    icon_style 	"Icon"
+		    line_color 	3342489
+		    fill_color 	13434879
+		    quidu      	"36BB392A02E5"
+		    width      	228
+		    autoResize 	TRUE
+		    width      	228
+		    height     	162)
+		(object InterfaceView "Logical View::Ring::Ring" @38
+		    location   	(496, 1519)
+		    label      	(object ItemLabel
+			Parent_View 	@38
+			location   	(495, 1627)
+			anchor_loc 	1
+			nlines     	2
+			max_width  	229
+			justify    	0
+			label      	"Ring")
+		    icon       	"Interface"
+		    icon_style 	"Icon"
+		    line_color 	3342489
+		    fill_color 	13434879
+		    quidu      	"36BB3BD6036B"
+		    width      	58
+		    height     	58
+		    autoResize 	TRUE)
+		(object RealizeView "" @39
+		    stereotype 	TRUE
+		    line_color 	3342489
+		    quidu      	"37BF03320172"
+		    client     	@37
+		    supplier   	@38
+		    line_style 	0)))))

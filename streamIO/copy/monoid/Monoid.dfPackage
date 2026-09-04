@@ -1,0 +1,223 @@
+package id460ucc9frybwec9fs1s26;
+
+/**
+@version 2.0
+@physicalPackage
+@__modelType diagram 
+*/
+class diagram {
+/**
+@shapeType DependencyLink
+@__modelType link
+@__ref <oiref:design#Class#id2otl3c9fodqegc9fq5gp1.diagram:oiref><oihard>
+@automatic 
+*/
+class link {
+}/**
+@shapeType DependencyLink
+@__modelType link
+@__ref <oiref:design#Class#id47mokc9fodqegc9fq5czi.diagram:oiref><oihard>
+@automatic 
+*/
+class link219 {
+}/**
+@shapeType DependencyLink
+@__modelType link
+@__ref <oiref:design#Class#idqb01c9fodqegc9fq5ddp.diagram:oiref><oihard>
+@automatic 
+*/
+class link220 {
+}/**
+@shapeType DependencyLink
+@__modelType link
+@__ref <oiref:design#Class#id457m4c9fodqegc9fq5a4l.diagram:oiref><oihard>
+@automatic 
+*/
+class link221 {
+}/**
+@__ref <oiref:java#Class#Stream.Copy.Monoid.StringMonoid:oiref><oihard>
+@__modelType reference 
+*/
+class reference {
+}/**
+@__ref <oiref:java#Class#Stream.Copy.Monoid.AMonoid:oiref><oihard>
+@__modelType reference 
+*/
+class reference193 {
+}/**
+@__ref <oiref:java#Class#Stream.Copy.Monoid.testMonoid:oiref><oihard>
+@__modelType reference 
+*/
+class reference194 {
+}/**
+@__ref <oiref:java#Class#Stream.Copy.Monoid.Monoid:oiref><oihard>
+@__modelType reference 
+*/
+class reference195 {
+}/**
+@__ref <oiref:java#Class#Stream.Copy.Monoid.HalfMonoid:oiref><oihard>
+@__modelType reference 
+*/
+class reference196 {
+}/**
+@__ref <oiref:java#Class#Stream.Copy.Monoid.Pair:oiref><oihard>
+@__modelType reference 
+*/
+class reference197 {
+}/**
+@__ref <oiref:java#Class#Stream.Copy.Monoid.ArrayMonoid:oiref><oihard>
+@__modelType reference 
+*/
+class reference198 {
+}/**
+@__ref <oiref:java#Class#Stream.Copy.Monoid.IHalfMonoid:oiref><oihard>
+@__modelType reference 
+*/
+class reference199 {
+}/**
+@__ref <oiref:java#Class#Stream.Copy.Monoid.Association:oiref><oihard>
+@__modelType reference 
+*/
+class reference200 {
+}/**
+@__ref <oiref:java#Class#Stream.Copy.Monoid.AHalfMonoid:oiref><oihard>
+@__modelType reference 
+*/
+class reference201 {
+}/**
+@__ref <oiref:java#Class#Stream.Copy.Monoid.IMonoid:oiref><oihard>
+@__modelType reference 
+*/
+class reference202 {
+}/**
+@__ref <oiref:java#Class#Function.InvertAble:oiref><oihard>
+@__modelType reference
+@__imported 
+*/
+class reference2 {
+}/**
+@__ref <oiref:java#Class#Function.AInvertAble:oiref><oihard>
+@__modelType reference
+@__imported 
+*/
+class reference3 {
+}/**
+@__ref <oiref:java#Class#Function.Function:oiref><oihard>
+@__modelType reference
+@__imported 
+*/
+class reference4 {
+}/**
+@__ref <oiref:java#Class#Stream.Copy.Monoid.AMonoidMap:oiref><oihard>
+@__modelType reference 
+*/
+class reference1 {
+}/**
+@__ref <oiref:java#Class#Stream.Copy.Monoid.AssociationEquivalence:oiref><oihard>
+@__modelType reference 
+*/
+class reference5 {
+}/**
+@__ref <oiref:java#Class#Stream.Copy.Monoid.AMapper:oiref><oihard>
+@__modelType reference 
+*/
+class reference31 {
+}/**
+@__ref <oiref:java#Class#AMapper:oiref><oihard>
+@__modelType reference 
+*/
+class reference53 {
+}/**
+@__ref <oiref:java#Class#IHalfMonoid:oiref><oihard>
+@__modelType reference 
+*/
+class reference62 {
+}/**
+@__ref <oiref:java#Class#IMonoid:oiref><oihard>
+@__modelType reference 
+*/
+class reference64 {
+}/**
+@__ref <oiref:java#Class#HalfMonoid:oiref><oihard>
+@__modelType reference 
+*/
+class reference84 {
+}/**
+@__ref <oiref:java#Class#AHalfMonoid:oiref><oihard>
+@__modelType reference 
+*/
+class reference93 {
+}/**
+@__ref <oiref:java#Class#Monoid:oiref><oihard>
+@__modelType reference 
+*/
+class reference119 {
+}/**
+@__ref <oiref:java#Class#Pair:oiref><oihard>
+@__modelType reference 
+*/
+class reference120 {
+}/**
+@__ref <oiref:java#Class#AMonoid:oiref><oihard>
+@__modelType reference 
+*/
+class reference121 {
+}/**
+@__ref <oiref:java#Class#StringMonoid:oiref><oihard>
+@__modelType reference 
+*/
+class reference171 {
+}/**
+@__ref <oiref:java#Class#testMonoid:oiref><oihard>
+@__modelType reference 
+*/
+class reference180 {
+}}/**
+@__tags
+@shapeType ClassDiagram 
+*/
+class __tags {
+}/**
+@__options 
+*/
+class __options {
+}/**
+@__positions <oigroup:<oiref:java#Extends#Stream.Copy.Monoid.AMonoidMap#Stream.Copy.Monoid.AMonoid:oiref>=403,88,403,1110:oigroup>
+<oigroup:<oiref:java#Class#Stream.Copy.Monoid.IHalfMonoid:oiref>=186,10,187,101,1:oigroup>
+<oigroup:<oiref:java#Extends#Stream.Copy.Monoid.Monoid#Stream.Copy.Monoid.IMonoid:oiref>=449,572,449,461:oigroup>
+<oigroup:<oiref:java#Implements#Function.AInvertAble#Function.InvertAble:oiref>=780,640,780,459:oigroup>
+<oigroup:<oiref:java#Class#Stream.Copy.Monoid.Association:oiref>=10,1559,200,638,1:oigroup>
+<oigroup:<oiref:java#Extends#Stream.Copy.Monoid.StringMonoid#Stream.Copy.Monoid.AMonoid:oiref>=550,1559,380,1483:oigroup>
+<oigroup:<oiref:java#Extends#Stream.Copy.Monoid.Monoid#Function.InvertAble:oiref>=492,572,645,459:oigroup>
+<oigroup:<oiref:java#Class#Stream.Copy.Monoid.testMonoid:oiref>=400,240,148,85,1:oigroup>
+<oigroup:<oiref:java#Extends#Stream.Copy.Monoid.HalfMonoid#Function.Function:oiref>=373,220,670,220:oigroup>
+<oigroup:MemberLink#<oiref:java#Member#Stream.Copy.Monoid.StringMonoid#Inverse:oiref>=600,1559,715,459:oigroup>
+<oigroup:MemberLink#<oiref:java#Member#Function.AInvertAble#Inverse:oiref>=750,640,750,459:oigroup>
+<oigroup:MemberLink#<oiref:java#Member#Stream.Copy.Monoid.ArrayMonoid#Inverse:oiref>=380,1559,680,459:oigroup>
+<oigroup:<oiref:java#Implements#Stream.Copy.Monoid.AHalfMonoid#Stream.Copy.Monoid.HalfMonoid:oiref>=231,572,231,496:oigroup>
+<oigroup:<oiref:java#Extends#Stream.Copy.Monoid.ArrayMonoid#Stream.Copy.Monoid.AMonoid:oiref>=330,1559,330,1483:oigroup>
+<oigroup:MemberLink#<oiref:java#Member#Stream.Copy.Monoid.AHalfMonoid#self:oiref>=276,572,276,496:oigroup>
+<oigroup:<oiref:java#Extends#Stream.Copy.Monoid.HalfMonoid#Stream.Copy.Monoid.IHalfMonoid:oiref>=279,171,279,111:oigroup>
+<oigroup:<oiref:java#Class#Stream.Copy.Monoid.HalfMonoid:oiref>=186,171,187,325,1:oigroup>
+<oigroup:<oiref:java#Extends#Stream.Copy.Monoid.Association#Stream.Copy.Monoid.AMonoid:oiref>=110,1559,280,1483:oigroup>
+<oigroup:<oiref:java#Class#Stream.Copy.Monoid.Monoid:oiref>=342,572,193,245,1:oigroup>
+<oigroup:<oiref:java#Class#Stream.Copy.Monoid.AMonoidMap:oiref>=390,3,102,85,1:oigroup>
+<oigroup:<oiref:java#Class#Stream.Copy.Monoid.Pair:oiref>=22,2359,183,165,1:oigroup>
+<oigroup:<oiref:java#Class#Stream.Copy.Monoid.StringMonoid:oiref>=450,1559,200,558,1:oigroup>
+<oigroup:<oiref:java#Extends#Stream.Copy.Monoid.Pair#Stream.Copy.Monoid.Association:oiref>=113,2359,113,2197:oigroup>
+<oigroup:<oiref:java#Class#Function.InvertAble:oiref>=610,310,200,149,1:oigroup>
+<oigroup:<oiref:java#Class#Function.AInvertAble:oiref>=720,640,190,174,1:oigroup>
+<oigroup:<oiref:java#Class#Stream.Copy.Monoid.ArrayMonoid:oiref>=230,1559,200,734,1:oigroup>
+<oigroup:<oiref:java#Extends#Function.InvertAble#Function.Function:oiref>=740,310,740,269:oigroup>
+<oigroup:<oiref:java#Class#Stream.Copy.Monoid.AHalfMonoid:oiref>=122,572,200,478,1:oigroup>
+<oigroup:<oiref:java#Implements#Stream.Copy.Monoid.AMonoidMap#Function.InvertAble:oiref>=447,88,675,310:oigroup>
+<oigroup:<oiref:java#Implements#Stream.Copy.Monoid.AMonoid#Stream.Copy.Monoid.Monoid:oiref>=416,1110,416,817:oigroup>
+<oigroup:<oiref:java#Class#Stream.Copy.Monoid.AMonoid:oiref>=230,1110,200,373,1:oigroup>
+<oigroup:<oiref:java#Class#Stream.Copy.Monoid.IMonoid:oiref>=400,360,177,101,1:oigroup>
+<oigroup:<oiref:java#Class#Function.Function:oiref>=670,120,199,149,1:oigroup>
+<oigroup:<oiref:java#Extends#Stream.Copy.Monoid.AMonoid#Stream.Copy.Monoid.AHalfMonoid:oiref>=260,1110,260,1050:oigroup>
+<oigroup:<oiref:java#Extends#Stream.Copy.Monoid.Monoid#Stream.Copy.Monoid.HalfMonoid:oiref>=357,572,357,496:oigroup>
+
+*/
+class __positions {
+}

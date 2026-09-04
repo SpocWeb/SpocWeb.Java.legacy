@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!ELEMENT chain (load*, (union | debug | trafo)*, store*)>
+<!ELEMENT node EMPTY>
+<!ATTLIST node
+	urn CDATA #REQUIRED
+>
+<!ELEMENT union (node*)>
+<!ATTLIST union
+	root CDATA #REQUIRED
+>
+<!ELEMENT debug EMPTY>
+<!ATTLIST debug
+	source CDATA #REQUIRED
+>
+<!ELEMENT load EMPTY>
+<!ATTLIST load
+	source CDATA #REQUIRED
+	root CDATA #IMPLIED
+	separators CDATA #IMPLIED
+	fieldNames (true | false) "false"
+	fieldDefaults (true | false) "false"
+>
+<!ELEMENT store EMPTY>
+<!ATTLIST store
+	source CDATA #REQUIRED
+	dest CDATA #REQUIRED
+>
+<!ELEMENT trafo EMPTY>
+<!ATTLIST trafo
+	input CDATA #REQUIRED
+	source CDATA #IMPLIED
+	name CDATA #IMPLIED
+>

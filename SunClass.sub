@@ -1,0 +1,77 @@
+
+(object Petal
+    version    	42
+    _written   	"Rose 4.5.8163.3"
+    charSet    	0)
+
+(object SubSystem "sun"
+    is_unit    	TRUE
+    is_loaded  	TRUE
+    quid       	"34B0F7EB03C8"
+    physical_models 	(list unit_reference_list
+	(object SubSystem "misc"
+	    quid       	"34B0F7EB03C9"
+	    physical_models 	(list unit_reference_list
+		(object module "Ref" "SubType" "Specification"
+		    quid       	"34B0F7EB03CA"
+		    stereotype 	"Subprogram Specification"
+		    language   	"Java")
+		(object module "VM" "SubType" "Specification"
+		    quid       	"34B0F8140224"
+		    stereotype 	"Subprogram Specification"
+		    language   	"Java"))
+	    physical_presentations 	(list unit_reference_list))
+	(object SubSystem "io"
+	    quid       	"34B0F811029F"
+	    physical_models 	(list unit_reference_list
+		(object module "ByteToCharConverter" "SubType" "Specification"
+		    quid       	"34B0F81102A0"
+		    stereotype 	"Subprogram Specification"
+		    language   	"Java")
+		(object module "CharToByteConverter" "SubType" "Specification"
+		    quid       	"34B0F81102A1"
+		    stereotype 	"Subprogram Specification"
+		    language   	"Java"))
+	    physical_presentations 	(list unit_reference_list)))
+    physical_presentations 	(list unit_reference_list
+	(object Module_Diagram "sun"
+	    quid       	"37BFC40F014E"
+	    title      	"sun"
+	    zoom       	100
+	    max_height 	28350
+	    max_width  	21600
+	    origin_x   	0
+	    origin_y   	0
+	    items      	(list diagram_item_list
+		(object SubSysView "Component View::sun::misc" @1
+		    location   	(217, 217)
+		    label      	(object ItemLabel
+			Parent_View 	@1
+			location   	(73, 148)
+			fill_color 	13434879
+			nlines     	2
+			max_width  	288
+			justify    	0
+			label      	"misc")
+		    icon_style 	"Icon"
+		    line_color 	3342489
+		    fill_color 	13434879
+		    quidu      	"34B0F7EB03C9"
+		    width      	300
+		    height     	150)
+		(object SubSysView "Component View::sun::io" @2
+		    location   	(682, 217)
+		    label      	(object ItemLabel
+			Parent_View 	@2
+			location   	(538, 148)
+			fill_color 	13434879
+			nlines     	2
+			max_width  	288
+			justify    	0
+			label      	"io")
+		    icon_style 	"Icon"
+		    line_color 	3342489
+		    fill_color 	13434879
+		    quidu      	"34B0F811029F"
+		    width      	300
+		    height     	150)))))

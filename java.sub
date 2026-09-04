@@ -1,0 +1,511 @@
+
+(object Petal
+    version    	42
+    _written   	"Rose 4.5.8163.3"
+    charSet    	0)
+
+(object SubSystem "java"
+    is_unit    	TRUE
+    is_loaded  	TRUE
+    quid       	"36BB37B20155"
+    physical_models 	(list unit_reference_list
+	(object SubSystem "lang"
+	    quid       	"36BB37B20156"
+	    physical_models 	(list unit_reference_list
+		(object module "Object" "NotAModuleType" "NotAModulePart"
+		    quid       	"36BB37B20157"
+		    stereotype 	""
+		    language   	"Java")
+		(object module "String" "NotAModuleType" "NotAModulePart"
+		    quid       	"36BB85DA0056"
+		    stereotype 	""
+		    language   	"Java")
+		(object module "StringBuffer" "NotAModuleType" "NotAModulePart"
+		    quid       	"36BC7CEB014D"
+		    stereotype 	""
+		    language   	"Java")
+		(object module "Cloneable" "NotAModuleType" "NotAModulePart"
+		    quid       	"37BC8EAA0119"
+		    stereotype 	""
+		    language   	"Java")
+		(object module "Long" "NotAModuleType" "NotAModulePart"
+		    quid       	"37BD1BFE038B"
+		    stereotype 	""
+		    language   	"Java")
+		(object module "Double" "NotAModuleType" "NotAModulePart"
+		    quid       	"37BD1C0E01B7"
+		    stereotype 	""
+		    language   	"Java")
+		(object module "Integer" "NotAModuleType" "NotAModulePart"
+		    quid       	"37BD1C3201F5"
+		    stereotype 	""
+		    language   	"Java"))
+	    physical_presentations 	(list unit_reference_list
+		(object Module_Diagram "lang"
+		    quid       	"37BF0224026E"
+		    title      	"lang"
+		    zoom       	100
+		    max_height 	28350
+		    max_width  	21600
+		    origin_x   	0
+		    origin_y   	0
+		    items      	(list diagram_item_list
+			(object ModView "Component View::java::lang::Object" "NotAModuleType" "NotAModulePart" @1
+			    location   	(186, 155)
+			    label      	(object ItemLabel
+				Parent_View 	@1
+				location   	(151, 130)
+				fill_color 	13434879
+				anchor_loc 	3
+				nlines     	2
+				max_width  	127
+				label      	"Object")
+			    icon_style 	"Icon"
+			    line_color 	3342489
+			    fill_color 	13434879
+			    quidu      	"36BB37B20157"
+			    width      	228
+			    autoResize 	TRUE
+			    width      	228
+			    height     	162)
+			(object ModView "Component View::java::lang::String" "NotAModuleType" "NotAModulePart" @2
+			    location   	(589, 155)
+			    label      	(object ItemLabel
+				Parent_View 	@2
+				location   	(554, 130)
+				fill_color 	13434879
+				anchor_loc 	3
+				nlines     	2
+				max_width  	127
+				label      	"String")
+			    icon_style 	"Icon"
+			    line_color 	3342489
+			    fill_color 	13434879
+			    quidu      	"36BB85DA0056"
+			    width      	228
+			    autoResize 	TRUE
+			    width      	228
+			    height     	162)
+			(object ModView "Component View::java::lang::StringBuffer" "NotAModuleType" "NotAModulePart" @3
+			    location   	(961, 155)
+			    label      	(object ItemLabel
+				Parent_View 	@3
+				location   	(926, 130)
+				fill_color 	13434879
+				anchor_loc 	3
+				nlines     	2
+				max_width  	127
+				label      	"StringBuffer")
+			    icon_style 	"Icon"
+			    line_color 	3342489
+			    fill_color 	13434879
+			    quidu      	"36BC7CEB014D"
+			    width      	228
+			    autoResize 	TRUE
+			    width      	228
+			    height     	162)
+			(object ModView "Component View::java::lang::Cloneable" "NotAModuleType" "NotAModulePart" @4
+			    location   	(1364, 155)
+			    label      	(object ItemLabel
+				Parent_View 	@4
+				location   	(1329, 130)
+				fill_color 	13434879
+				anchor_loc 	3
+				nlines     	2
+				max_width  	127
+				label      	"Cloneable")
+			    icon_style 	"Icon"
+			    line_color 	3342489
+			    fill_color 	13434879
+			    quidu      	"37BC8EAA0119"
+			    width      	228
+			    autoResize 	TRUE
+			    width      	228
+			    height     	162)
+			(object ModView "Component View::java::lang::Long" "NotAModuleType" "NotAModulePart" @5
+			    location   	(1736, 155)
+			    label      	(object ItemLabel
+				Parent_View 	@5
+				location   	(1701, 130)
+				fill_color 	13434879
+				anchor_loc 	3
+				nlines     	2
+				max_width  	127
+				label      	"Long")
+			    icon_style 	"Icon"
+			    line_color 	3342489
+			    fill_color 	13434879
+			    quidu      	"37BD1BFE038B"
+			    width      	228
+			    autoResize 	TRUE
+			    width      	228
+			    height     	162)
+			(object ModView "Component View::java::lang::Double" "NotAModuleType" "NotAModulePart" @6
+			    location   	(2108, 155)
+			    label      	(object ItemLabel
+				Parent_View 	@6
+				location   	(2073, 130)
+				fill_color 	13434879
+				anchor_loc 	3
+				nlines     	2
+				max_width  	127
+				label      	"Double")
+			    icon_style 	"Icon"
+			    line_color 	3342489
+			    fill_color 	13434879
+			    quidu      	"37BD1C0E01B7"
+			    width      	228
+			    autoResize 	TRUE
+			    width      	228
+			    height     	162)
+			(object ModView "Component View::java::lang::Integer" "NotAModuleType" "NotAModulePart" @7
+			    location   	(2511, 155)
+			    label      	(object ItemLabel
+				Parent_View 	@7
+				location   	(2476, 130)
+				fill_color 	13434879
+				anchor_loc 	3
+				nlines     	2
+				max_width  	127
+				label      	"Integer")
+			    icon_style 	"Icon"
+			    line_color 	3342489
+			    fill_color 	13434879
+			    quidu      	"37BD1C3201F5"
+			    width      	228
+			    autoResize 	TRUE
+			    width      	228
+			    height     	162)))))
+	(object SubSystem "io"
+	    quid       	"36BC84960395"
+	    physical_models 	(list unit_reference_list
+		(object module "Serializable" "NotAModuleType" "NotAModulePart"
+		    quid       	"37BC8EAA0191"
+		    stereotype 	""
+		    language   	"Java")
+		(object module "StreamTokenizer" "NotAModuleType" "NotAModulePart"
+		    quid       	"37BC91B50015"
+		    stereotype 	""
+		    language   	"Java")
+		(object module "FilterInputStream" "NotAModuleType" "NotAModulePart"
+		    quid       	"37BD3A400393"
+		    stereotype 	""
+		    language   	"Java")
+		(object module "FilterOutputStream" "NotAModuleType" "NotAModulePart"
+		    quid       	"37BD3A4301CB"
+		    stereotype 	""
+		    language   	"Java")
+		(object module "InputStream" "NotAModuleType" "NotAModulePart"
+		    quid       	"37BD3A56007E"
+		    stereotype 	""
+		    language   	"Java"))
+	    physical_presentations 	(list unit_reference_list
+		(object Module_Diagram "io"
+		    quid       	"37BF02420325"
+		    title      	"io"
+		    zoom       	100
+		    max_height 	28350
+		    max_width  	21600
+		    origin_x   	0
+		    origin_y   	0
+		    items      	(list diagram_item_list
+			(object ModView "Component View::java::io::InputStream" "NotAModuleType" "NotAModulePart" @8
+			    location   	(217, 155)
+			    label      	(object ItemLabel
+				Parent_View 	@8
+				location   	(179, 130)
+				fill_color 	13434879
+				anchor_loc 	3
+				nlines     	2
+				max_width  	139
+				label      	"InputStream")
+			    icon_style 	"Icon"
+			    line_color 	3342489
+			    fill_color 	13434879
+			    quidu      	"37BD3A56007E"
+			    width      	250
+			    autoResize 	TRUE
+			    width      	250
+			    height     	162)
+			(object ModView "Component View::java::io::FilterOutputStream" "NotAModuleType" "NotAModulePart" @9
+			    location   	(713, 155)
+			    label      	(object ItemLabel
+				Parent_View 	@9
+				location   	(647, 130)
+				fill_color 	13434879
+				anchor_loc 	3
+				nlines     	2
+				max_width  	247
+				label      	"FilterOutputStream")
+			    icon_style 	"Icon"
+			    line_color 	3342489
+			    fill_color 	13434879
+			    quidu      	"37BD3A4301CB"
+			    width      	444
+			    autoResize 	TRUE
+			    width      	444
+			    height     	162)
+			(object ModView "Component View::java::io::FilterInputStream" "NotAModuleType" "NotAModulePart" @10
+			    location   	(1271, 155)
+			    label      	(object ItemLabel
+				Parent_View 	@10
+				location   	(1215, 130)
+				fill_color 	13434879
+				anchor_loc 	3
+				nlines     	2
+				max_width  	211
+				label      	"FilterInputStream")
+			    icon_style 	"Icon"
+			    line_color 	3342489
+			    fill_color 	13434879
+			    quidu      	"37BD3A400393"
+			    width      	380
+			    autoResize 	TRUE
+			    width      	380
+			    height     	162)
+			(object ModView "Component View::java::io::StreamTokenizer" "NotAModuleType" "NotAModulePart" @11
+			    location   	(1798, 155)
+			    label      	(object ItemLabel
+				Parent_View 	@11
+				location   	(1748, 130)
+				fill_color 	13434879
+				anchor_loc 	3
+				nlines     	2
+				max_width  	187
+				label      	"StreamTokenizer")
+			    icon_style 	"Icon"
+			    line_color 	3342489
+			    fill_color 	13434879
+			    quidu      	"37BC91B50015"
+			    width      	336
+			    autoResize 	TRUE
+			    width      	336
+			    height     	162)
+			(object ModView "Component View::java::io::Serializable" "NotAModuleType" "NotAModulePart" @12
+			    location   	(2232, 155)
+			    label      	(object ItemLabel
+				Parent_View 	@12
+				location   	(2197, 130)
+				fill_color 	13434879
+				anchor_loc 	3
+				nlines     	2
+				max_width  	127
+				label      	"Serializable")
+			    icon_style 	"Icon"
+			    line_color 	3342489
+			    fill_color 	13434879
+			    quidu      	"37BC8EAA0191"
+			    width      	228
+			    autoResize 	TRUE
+			    width      	228
+			    height     	162)))))
+	(object SubSystem "awt"
+	    quid       	"37BC8ED5020C"
+	    physical_models 	(list unit_reference_list
+		(object module "Color" "NotAModuleType" "NotAModulePart"
+		    quid       	"37BC8ED50357"
+		    stereotype 	""
+		    language   	"Java")
+		(object module "Rectangle" "NotAModuleType" "NotAModulePart"
+		    quid       	"37BC8ED50358"
+		    stereotype 	""
+		    language   	"Java")
+		(object module "Graphics" "NotAModuleType" "NotAModulePart"
+		    quid       	"37BC8ED6023E"
+		    stereotype 	""
+		    language   	"Java")
+		(object module "Image" "NotAModuleType" "NotAModulePart"
+		    quid       	"37BD3695016C"
+		    stereotype 	""
+		    language   	"Java")
+		(object SubSystem "image"
+		    quid       	"37BC8ED70150"
+		    physical_models 	(list unit_reference_list
+			(object module "MemoryImageSource" "NotAModuleType" "NotAModulePart"
+			    quid       	"37BD369201F4"
+			    stereotype 	""
+			    language   	"Java"))
+		    physical_presentations 	(list unit_reference_list
+			(object Module_Diagram "image"
+			    quid       	"37BF02810380"
+			    title      	"image"
+			    zoom       	100
+			    max_height 	28350
+			    max_width  	21600
+			    origin_x   	0
+			    origin_y   	0
+			    items      	(list diagram_item_list
+				(object ModView "Component View::java::awt::image::MemoryImageSource" "NotAModuleType" "NotAModulePart" @13
+				    location   	(310, 186)
+				    label      	(object ItemLabel
+					Parent_View 	@13
+					location   	(244, 161)
+					fill_color 	13434879
+					anchor_loc 	3
+					nlines     	2
+					max_width  	247
+					label      	"MemoryImageSource")
+				    icon_style 	"Icon"
+				    line_color 	3342489
+				    fill_color 	13434879
+				    quidu      	"37BD369201F4"
+				    width      	444
+				    autoResize 	TRUE
+				    width      	444
+				    height     	162))))))
+	    physical_presentations 	(list unit_reference_list
+		(object Module_Diagram "awt"
+		    quid       	"37BF026A008E"
+		    title      	"awt"
+		    zoom       	100
+		    max_height 	28350
+		    max_width  	21600
+		    origin_x   	0
+		    origin_y   	0
+		    items      	(list diagram_item_list
+			(object ModView "Component View::java::awt::Image" "NotAModuleType" "NotAModulePart" @14
+			    location   	(310, 186)
+			    label      	(object ItemLabel
+				Parent_View 	@14
+				location   	(275, 161)
+				fill_color 	13434879
+				anchor_loc 	3
+				nlines     	2
+				max_width  	127
+				label      	"Image")
+			    icon_style 	"Icon"
+			    line_color 	3342489
+			    fill_color 	13434879
+			    quidu      	"37BD3695016C"
+			    width      	228
+			    autoResize 	TRUE
+			    width      	228
+			    height     	162)
+			(object ModView "Component View::java::awt::Graphics" "NotAModuleType" "NotAModulePart" @15
+			    location   	(744, 186)
+			    label      	(object ItemLabel
+				Parent_View 	@15
+				location   	(709, 161)
+				fill_color 	13434879
+				anchor_loc 	3
+				nlines     	2
+				max_width  	127
+				label      	"Graphics")
+			    icon_style 	"Icon"
+			    line_color 	3342489
+			    fill_color 	13434879
+			    quidu      	"37BC8ED6023E"
+			    width      	228
+			    autoResize 	TRUE
+			    width      	228
+			    height     	162)
+			(object ModView "Component View::java::awt::Rectangle" "NotAModuleType" "NotAModulePart" @16
+			    location   	(310, 620)
+			    label      	(object ItemLabel
+				Parent_View 	@16
+				location   	(275, 595)
+				fill_color 	13434879
+				anchor_loc 	3
+				nlines     	2
+				max_width  	127
+				label      	"Rectangle")
+			    icon_style 	"Icon"
+			    line_color 	3342489
+			    fill_color 	13434879
+			    quidu      	"37BC8ED50358"
+			    width      	228
+			    autoResize 	TRUE
+			    width      	228
+			    height     	162)
+			(object ModView "Component View::java::awt::Color" "NotAModuleType" "NotAModulePart" @17
+			    location   	(744, 620)
+			    label      	(object ItemLabel
+				Parent_View 	@17
+				location   	(709, 595)
+				fill_color 	13434879
+				anchor_loc 	3
+				nlines     	2
+				max_width  	127
+				label      	"Color")
+			    icon_style 	"Icon"
+			    line_color 	3342489
+			    fill_color 	13434879
+			    quidu      	"37BC8ED50357"
+			    width      	228
+			    autoResize 	TRUE
+			    width      	228
+			    height     	162)
+			(object SubSysView "Component View::java::awt::image" @18
+			    location   	(1240, 217)
+			    label      	(object ItemLabel
+				Parent_View 	@18
+				location   	(1096, 148)
+				fill_color 	13434879
+				nlines     	2
+				max_width  	288
+				justify    	0
+				label      	"image")
+			    icon_style 	"Icon"
+			    line_color 	3342489
+			    fill_color 	13434879
+			    quidu      	"37BC8ED70150"
+			    width      	300
+			    height     	150))))))
+    physical_presentations 	(list unit_reference_list
+	(object Module_Diagram "java"
+	    quid       	"37BF0210005D"
+	    title      	"java"
+	    zoom       	100
+	    max_height 	28350
+	    max_width  	21600
+	    origin_x   	0
+	    origin_y   	0
+	    items      	(list diagram_item_list
+		(object SubSysView "Component View::java::lang" @19
+		    location   	(217, 217)
+		    label      	(object ItemLabel
+			Parent_View 	@19
+			location   	(73, 148)
+			fill_color 	13434879
+			nlines     	2
+			max_width  	288
+			justify    	0
+			label      	"lang")
+		    icon_style 	"Icon"
+		    line_color 	3342489
+		    fill_color 	13434879
+		    quidu      	"36BB37B20156"
+		    width      	300
+		    height     	150)
+		(object SubSysView "Component View::java::io" @20
+		    location   	(682, 217)
+		    label      	(object ItemLabel
+			Parent_View 	@20
+			location   	(538, 148)
+			fill_color 	13434879
+			nlines     	2
+			max_width  	288
+			justify    	0
+			label      	"io")
+		    icon_style 	"Icon"
+		    line_color 	3342489
+		    fill_color 	13434879
+		    quidu      	"36BC84960395"
+		    width      	300
+		    height     	150)
+		(object SubSysView "Component View::java::awt" @21
+		    location   	(1116, 217)
+		    label      	(object ItemLabel
+			Parent_View 	@21
+			location   	(972, 148)
+			fill_color 	13434879
+			nlines     	2
+			max_width  	288
+			justify    	0
+			label      	"awt")
+		    icon_style 	"Icon"
+		    line_color 	3342489
+		    fill_color 	13434879
+		    quidu      	"37BC8ED5020C"
+		    width      	300
+		    height     	150)))))

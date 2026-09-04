@@ -1,0 +1,197 @@
+package id7qibc9fodqegc9fqqngt;
+
+/**
+@version 2.0
+@physicalPackage
+@__modelType diagram 
+*/
+class diagram {
+/**
+@shapeType DependencyLink
+@__modelType link
+@__ref <oiref:design#Class#id2otl3c9fodqegc9fq5gp1.diagram:oiref><oihard>
+@automatic 
+*/
+class link160 {
+}/**
+@__ref <oiref:java#Class#Stream.Copy.Group.testGroup:oiref><oihard>
+@__modelType reference 
+*/
+class reference {
+}/**
+@__ref <oiref:java#Class#Stream.Copy.Group.IGroup:oiref><oihard>
+@__modelType reference 
+*/
+class reference168 {
+}/**
+@__ref <oiref:design#Class#id25b1fc9fodqegc9fqqpu7.diagram:oiref><oihard>
+@__modelType reference
+@__fqn <oiref:#Package#Stream.Copy.Group.Ring:oiref> 
+*/
+class reference169 {
+}/**
+@__ref <oiref:java#Class#Stream.Copy.Group.LngGroup:oiref><oihard>
+@__modelType reference 
+*/
+class reference170 {
+}/**
+@__ref <oiref:java#Class#Stream.Copy.Group.IHalfGroup:oiref><oihard>
+@__modelType reference 
+*/
+class reference171 {
+}/**
+@__ref <oiref:java#Class#Stream.Copy.Group.AHalfGroup:oiref><oihard>
+@__modelType reference 
+*/
+class reference172 {
+}/**
+@__ref <oiref:java#Class#Stream.Copy.Group.CGroup:oiref><oihard>
+@__modelType reference 
+*/
+class reference173 {
+}/**
+@__ref <oiref:java#Class#Stream.Copy.Group.DblGroup:oiref><oihard>
+@__modelType reference 
+*/
+class reference174 {
+}/**
+@__ref <oiref:java#Class#Stream.Copy.Group.Group:oiref><oihard>
+@__modelType reference 
+*/
+class reference175 {
+}/**
+@__ref <oiref:java#Class#Stream.Copy.Group.CHalfGroup:oiref><oihard>
+@__modelType reference 
+*/
+class reference176 {
+}/**
+@__ref <oiref:java#Class#Stream.Copy.Group.HalfGroup:oiref><oihard>
+@__modelType reference 
+*/
+class reference177 {
+}/**
+@__ref <oiref:java#Class#Stream.Copy.Group.AGroupLng:oiref><oihard>
+@__modelType reference 
+*/
+class reference178 {
+}/**
+@__ref <oiref:java#Class#Stream.Copy.Group.AGroup:oiref><oihard>
+@__modelType reference 
+*/
+class reference179 {
+}/**
+@__ref <oiref:java#Class#Stream.Copy.Group.AGroupDbl:oiref><oihard>
+@__modelType reference 
+*/
+class reference180 {
+}/**
+@shapeType DependencyLink
+@__modelType link
+@__ref <oiref:design#Class#id40uamc9frybwec9fs17uq.diagram:oiref><oihard>
+@automatic 
+*/
+class link258 {
+}/**
+@shapeType DependencyLink
+@__modelType link
+@__ref <oiref:design#Class#id25b1fc9fodqegc9fqqpu7.diagram:oiref><oihard>
+@automatic 
+*/
+class link {
+}/**
+@__ref <oiref:java#Class#IHalfGroup:oiref><oihard>
+@__modelType reference 
+*/
+class reference36 {
+}/**
+@__ref <oiref:java#Class#Stream.Copy.Group.TestGroup:oiref><oihard>
+@__modelType reference 
+*/
+class reference6 {
+}/**
+@__ref <oiref:java#Class#AGroupLng:oiref><oihard>
+@__modelType reference 
+*/
+class reference77 {
+}/**
+@__ref <oiref:java#Class#AGroupDbl:oiref><oihard>
+@__modelType reference 
+*/
+class reference95 {
+}/**
+@__ref <oiref:java#Class#IGroup:oiref><oihard>
+@__modelType reference 
+*/
+class reference99 {
+}/**
+@__ref <oiref:java#Class#DblGroup:oiref><oihard>
+@__modelType reference 
+*/
+class reference123 {
+}/**
+@__ref <oiref:java#Class#LngGroup:oiref><oihard>
+@__modelType reference 
+*/
+class reference126 {
+}/**
+@__ref <oiref:java#Class#Group:oiref><oihard>
+@__modelType reference 
+*/
+class reference141 {
+}/**
+@__ref <oiref:java#Class#HalfGroup:oiref><oihard>
+@__modelType reference 
+*/
+class reference182 {
+}/**
+@__ref <oiref:java#Class#AHalfGroup:oiref><oihard>
+@__modelType reference 
+*/
+class reference195 {
+}/**
+@__ref <oiref:java#Class#Stream.Copy.Group.NewDateTime:oiref><oihard>
+@__modelType reference 
+*/
+class reference3 {
+}}/**
+@__tags
+@shapeType ClassDiagram 
+*/
+class __tags {
+}/**
+@__options 
+*/
+class __options {
+}/**
+@__positions <oigroup:<oiref:java#Extends#Stream.Copy.Group.DblGroup#Stream.Copy.Group.LngGroup:oiref>=69,1198,69,1026:oigroup>
+<oigroup:<oiref:java#Extends#Stream.Copy.Group.Group#Stream.Copy.Group.HalfGroup:oiref>=267,508,373,448:oigroup>
+<oigroup:<oiref:java#Class#Stream.Copy.Group.AHalfGroup:oiref>=520,508,177,309,1:oigroup>
+<oigroup:<oiref:java#Implements#Stream.Copy.Group.AGroup#Stream.Copy.Group.Group:oiref>=489,877,268,795,268,689:oigroup>
+<oigroup:<oiref:design#Class#id25b1fc9fodqegc9fqqpu7.diagram:oiref>=717,10,95,484,1:oigroup>
+<oigroup:<oiref:java#Extends#Stream.Copy.Group.AGroupDbl#Stream.Copy.Group.AGroupLng:oiref>=251,1407,251,1299:oigroup>
+<oigroup:<oiref:java#Class#Stream.Copy.Group.testGroup:oiref>=526,10,148,85,1:oigroup>
+<oigroup:<oiref:java#Extends#Stream.Copy.Group.Group#Stream.Copy.Group.IGroup:oiref>=230,508,230,272:oigroup>
+<oigroup:<oiref:java#Class#Stream.Copy.Group.AGroupLng:oiref>=217,1198,156,101,1:oigroup>
+<oigroup:<oiref:java#Extends#Stream.Copy.Group.AGroup#Stream.Copy.Group.AHalfGroup:oiref>=562,877,562,817:oigroup>
+<oigroup:<oiref:java#Class#Stream.Copy.Group.IGroup:oiref>=152,171,158,101,1:oigroup>
+<oigroup:<oiref:java#Class#Stream.Copy.Group.IHalfGroup:oiref>=329,10,177,101,1:oigroup>
+<oigroup:<oiref:java#Implements#Stream.Copy.Group.CGroup#Stream.Copy.Group.Group:oiref>=232,877,232,689:oigroup>
+<oigroup:<oiref:java#Class#Stream.Copy.Group.Group:oiref>=157,508,147,181,1:oigroup>
+<oigroup:<oiref:java#Implements#Stream.Copy.Group.CHalfGroup#Stream.Copy.Group.HalfGroup:oiref>=415,508,415,448:oigroup>
+<oigroup:<oiref:java#Class#Stream.Copy.Group.AGroup:oiref>=417,877,187,261,1:oigroup>
+<oigroup:<oiref:java#Extends#Stream.Copy.Group.CGroup#Stream.Copy.Group.CHalfGroup:oiref>=360,877,360,801:oigroup>
+<oigroup:<oiref:java#Implements#Stream.Copy.Group.AGroupDbl#Stream.Copy.Group.DblGroup:oiref>=157,1407,157,1347:oigroup>
+<oigroup:<oiref:java#Class#Stream.Copy.Group.DblGroup:oiref>=16,1198,181,149,1:oigroup>
+<oigroup:<oiref:java#Extends#Stream.Copy.Group.HalfGroup#Stream.Copy.Group.IHalfGroup:oiref>=417,171,417,111:oigroup>
+<oigroup:<oiref:java#Extends#Stream.Copy.Group.LngGroup#Stream.Copy.Group.Group:oiref>=167,877,167,689:oigroup>
+<oigroup:<oiref:java#Implements#Stream.Copy.Group.AHalfGroup#Stream.Copy.Group.HalfGroup:oiref>=608,508,459,448:oigroup>
+<oigroup:<oiref:java#Class#Stream.Copy.Group.CHalfGroup:oiref>=324,508,176,293,1:oigroup>
+<oigroup:<oiref:java#Implements#Stream.Copy.Group.AGroupLng#Stream.Copy.Group.LngGroup:oiref>=269,1198,123,1041,123,1026:oigroup>
+<oigroup:<oiref:java#Extends#Stream.Copy.Group.AGroupLng#Stream.Copy.Group.AGroup:oiref>=321,1198,510,1138:oigroup>
+<oigroup:<oiref:java#Class#Stream.Copy.Group.LngGroup:oiref>=10,877,167,149,1:oigroup>
+<oigroup:<oiref:java#Class#Stream.Copy.Group.HalfGroup:oiref>=331,171,173,277,1:oigroup>
+<oigroup:<oiref:java#Class#Stream.Copy.Group.CGroup:oiref>=197,877,200,222,1:oigroup>
+<oigroup:<oiref:java#Class#Stream.Copy.Group.AGroupDbl:oiref>=117,1407,168,101,1:oigroup>
+*/
+class __positions {
+}

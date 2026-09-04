@@ -1,0 +1,327 @@
+package id3u1uqc9frybwec9fs0r6p;
+
+/**
+@version 2.0
+@physicalPackage
+@__modelType diagram 
+*/
+class diagram {
+/**
+@shapeType DependencyLink
+@__modelType link
+@__ref <oiref:design#Class#id47mokc9fodqegc9fq5czi.diagram:oiref><oihard>
+@automatic 
+*/
+class link {
+}/**
+@shapeType DependencyLink
+@__modelType link
+@__ref <oiref:design#Class#id2x7f1c9frybwec9fs0rie.diagram:oiref><oihard>
+@automatic 
+*/
+class link71 {
+}/**
+@shapeType DependencyLink
+@__modelType link
+@__ref <oiref:design#Class#id2z7bcc9fodqegc9fq5es2.diagram:oiref><oihard>
+@automatic 
+*/
+class link72 {
+}/**
+@shapeType DependencyLink
+@__modelType link
+@__ref <oiref:design#Class#id9f8wc9frybwec9fs0pa9.diagram:oiref><oihard>
+@automatic 
+*/
+class link73 {
+}/**
+@shapeType DependencyLink
+@__modelType link
+@__ref <oiref:design#Class#id457m4c9fodqegc9fq5a4l.diagram:oiref><oihard>
+@automatic 
+*/
+class link74 {
+}/**
+@__ref <oiref:java#Class#Function.Derive.RingFuncs.BodyFuncs.DawsonInt:oiref><oihard>
+@__modelType reference 
+*/
+class reference {
+}/**
+@__ref <oiref:java#Class#Function.Derive.RingFuncs.BodyFuncs.ArcSin:oiref><oihard>
+@__modelType reference 
+*/
+class reference39 {
+}/**
+@__ref <oiref:java#Class#Function.Derive.RingFuncs.BodyFuncs.ArcCos:oiref><oihard>
+@__modelType reference 
+*/
+class reference41 {
+}/**
+@__ref <oiref:java#Class#Function.Derive.RingFuncs.BodyFuncs.ArcTan:oiref><oihard>
+@__modelType reference 
+*/
+class reference42 {
+}/**
+@__ref <oiref:java#Class#Function.Derive.RingFuncs.BodyFuncs.ArTanH:oiref><oihard>
+@__modelType reference 
+*/
+class reference44 {
+}/**
+@__ref <oiref:java#Class#Function.Derive.RingFuncs.BodyFuncs.ArCosH:oiref><oihard>
+@__modelType reference 
+*/
+class reference49 {
+}/**
+@__ref <oiref:java#Class#Function.Derive.RingFuncs.BodyFuncs.ArSinH:oiref><oihard>
+@__modelType reference 
+*/
+class reference50 {
+}/**
+@__ref <oiref:java#Class#Function.Derive.RingFuncs.BodyFuncs.GammaP:oiref><oihard>
+@__modelType reference 
+*/
+class reference51 {
+}/**
+@__ref <oiref:java#Class#Function.Derive.RingFuncs.BodyFuncs.Cosinus:oiref><oihard>
+@__modelType reference 
+*/
+class reference52 {
+}/**
+@__ref <oiref:java#Class#Function.Derive.RingFuncs.BodyFuncs.Brillouin:oiref><oihard>
+@__modelType reference 
+*/
+class reference53 {
+}/**
+@__ref <oiref:java#Class#Function.Derive.RingFuncs.BodyFuncs.Exponential:oiref><oihard>
+@__modelType reference 
+*/
+class reference54 {
+}/**
+@__ref <oiref:java#Class#Function.Derive.RingFuncs.BodyFuncs.GammaLn:oiref><oihard>
+@__modelType reference 
+*/
+class reference55 {
+}/**
+@__ref <oiref:java#Class#Function.Derive.RingFuncs.BodyFuncs.EI:oiref><oihard>
+@__modelType reference 
+*/
+class reference56 {
+}/**
+@__ref <oiref:java#Class#Function.Derive.RingFuncs.BodyFuncs.CI:oiref><oihard>
+@__modelType reference 
+*/
+class reference57 {
+}/**
+@__ref <oiref:java#Class#Function.Derive.RingFuncs.BodyFuncs.CosH:oiref><oihard>
+@__modelType reference 
+*/
+class reference58 {
+}/**
+@__ref <oiref:java#Class#Function.Derive.RingFuncs.BodyFuncs.ElliptInt:oiref><oihard>
+@__modelType reference 
+*/
+class reference59 {
+}/**
+@__ref <oiref:java#Class#Function.Derive.RingFuncs.BodyFuncs.BetaI:oiref><oihard>
+@__modelType reference 
+*/
+class reference60 {
+}/**
+@__ref <oiref:java#Class#Function.Derive.RingFuncs.BodyFuncs.CoTangens:oiref><oihard>
+@__modelType reference 
+*/
+class reference61 {
+}/**
+@__ref <oiref:java#Class#Function.Derive.RingFuncs.BodyFuncs.Power:oiref><oihard>
+@__modelType reference 
+*/
+class reference62 {
+}/**
+@__ref <oiref:java#Class#Function.Derive.RingFuncs.BodyFuncs.Langevin:oiref><oihard>
+@__modelType reference 
+*/
+class reference63 {
+}/**
+@__ref <oiref:java#Class#Function.Derive.RingFuncs.BodyFuncs.SinH:oiref><oihard>
+@__modelType reference 
+*/
+class reference72 {
+}/**
+@__ref <oiref:java#Class#Function.Derive.RingFuncs.BodyFuncs.TestBodyFuncs:oiref><oihard>
+@__modelType reference 
+*/
+class reference74 {
+}/**
+@__ref <oiref:java#Class#Function.Derive.RingFuncs.BodyFuncs.Sinus:oiref><oihard>
+@__modelType reference 
+*/
+class reference91 {
+}/**
+@__ref <oiref:java#Class#Function.Derive.RingFuncs.BodyFuncs.TanH:oiref><oihard>
+@__modelType reference 
+*/
+class reference92 {
+}/**
+@__ref <oiref:java#Class#Function.Derive.RingFuncs.BodyFuncs.SI:oiref><oihard>
+@__modelType reference 
+*/
+class reference99 {
+}/**
+@__ref <oiref:java#Class#Function.Derive.RingFuncs.BodyFuncs.Tangens:oiref><oihard>
+@__modelType reference 
+*/
+class reference112 {
+}/**
+@__ref <oiref:java#Class#Function.Derive.RingFuncs.BodyFuncs.Logarithm:oiref><oihard>
+@__modelType reference 
+*/
+class reference114 {
+}/**
+@__ref <oiref:java#Class#Functions.Derive.RingFuncs.BodyFuncs.CosH:oiref><oihard>
+@__modelType reference 
+*/
+class reference12 {
+}/**
+@__ref <oiref:java#Class#Functions.Derive.RingFuncs.BodyFuncs.ElliptInt:oiref><oihard>
+@__modelType reference 
+*/
+class reference25 {
+}/**
+@__ref <oiref:java#Class#Functions.Derive.RingFuncs.BodyFuncs.Langevin:oiref><oihard>
+@__modelType reference 
+*/
+class reference36 {
+}/**
+@__ref <oiref:java#Class#Functions.Derive.RingFuncs.BodyFuncs.Brillouin:oiref><oihard>
+@__modelType reference 
+*/
+class reference46 {
+}/**
+@__ref <oiref:java#Class#Functions.Derive.RingFuncs.BodyFuncs.Power:oiref><oihard>
+@__modelType reference 
+*/
+class reference113 {
+}/**
+@__ref <oiref:java#Class#Functions.Derive.RingFuncs.BodyFuncs.Cosinus:oiref><oihard>
+@__modelType reference 
+*/
+class reference267 {
+}/**
+@__ref <oiref:java#Class#Functions.Derive.RingFuncs.BodyFuncs.ArSinH:oiref><oihard>
+@__modelType reference 
+*/
+class reference279 {
+}/**
+@__ref <oiref:java#Class#Functions.Derive.RingFuncs.BodyFuncs.Tangens:oiref><oihard>
+@__modelType reference 
+*/
+class reference280 {
+}/**
+@__ref <oiref:java#Class#Functions.Derive.RingFuncs.BodyFuncs.GammaP:oiref><oihard>
+@__modelType reference 
+*/
+class reference284 {
+}/**
+@__ref <oiref:java#Class#Functions.Derive.RingFuncs.BodyFuncs.TestBodyFuncs:oiref><oihard>
+@__modelType reference 
+*/
+class reference287 {
+}/**
+@__ref <oiref:java#Class#Functions.Derive.RingFuncs.BodyFuncs.ArcTan:oiref><oihard>
+@__modelType reference 
+*/
+class reference291 {
+}/**
+@__ref <oiref:java#Class#Functions.Derive.RingFuncs.BodyFuncs.ArCosH:oiref><oihard>
+@__modelType reference 
+*/
+class reference293 {
+}/**
+@__ref <oiref:java#Class#Functions.Derive.RingFuncs.BodyFuncs.ArcCos:oiref><oihard>
+@__modelType reference 
+*/
+class reference296 {
+}/**
+@__ref <oiref:java#Class#Functions.Derive.RingFuncs.BodyFuncs.DawsonInt:oiref><oihard>
+@__modelType reference 
+*/
+class reference297 {
+}/**
+@__ref <oiref:java#Class#Functions.Derive.RingFuncs.BodyFuncs.CoTangens:oiref><oihard>
+@__modelType reference 
+*/
+class reference298 {
+}/**
+@__ref <oiref:java#Class#Functions.Derive.RingFuncs.BodyFuncs.EI:oiref><oihard>
+@__modelType reference 
+*/
+class reference300 {
+}/**
+@__ref <oiref:java#Class#Functions.Derive.RingFuncs.BodyFuncs.CI:oiref><oihard>
+@__modelType reference 
+*/
+class reference301 {
+}/**
+@__ref <oiref:java#Class#Functions.Derive.RingFuncs.BodyFuncs.Sinus:oiref><oihard>
+@__modelType reference 
+*/
+class reference309 {
+}/**
+@__ref <oiref:java#Class#Functions.Derive.RingFuncs.BodyFuncs.ArcSin:oiref><oihard>
+@__modelType reference 
+*/
+class reference311 {
+}/**
+@__ref <oiref:java#Class#Functions.Derive.RingFuncs.BodyFuncs.Logarithm:oiref><oihard>
+@__modelType reference 
+*/
+class reference315 {
+}/**
+@__ref <oiref:java#Class#Functions.Derive.RingFuncs.BodyFuncs.BetaI:oiref><oihard>
+@__modelType reference 
+*/
+class reference316 {
+}/**
+@__ref <oiref:java#Class#Functions.Derive.RingFuncs.BodyFuncs.TanH:oiref><oihard>
+@__modelType reference 
+*/
+class reference317 {
+}/**
+@__ref <oiref:java#Class#Functions.Derive.RingFuncs.BodyFuncs.SI:oiref><oihard>
+@__modelType reference 
+*/
+class reference318 {
+}/**
+@__ref <oiref:java#Class#Functions.Derive.RingFuncs.BodyFuncs.GammaLn:oiref><oihard>
+@__modelType reference 
+*/
+class reference320 {
+}/**
+@__ref <oiref:java#Class#Functions.Derive.RingFuncs.BodyFuncs.ArTanH:oiref><oihard>
+@__modelType reference 
+*/
+class reference321 {
+}/**
+@__ref <oiref:java#Class#Functions.Derive.RingFuncs.BodyFuncs.Exponential:oiref><oihard>
+@__modelType reference 
+*/
+class reference325 {
+}/**
+@__ref <oiref:java#Class#Functions.Derive.RingFuncs.BodyFuncs.SinH:oiref><oihard>
+@__modelType reference 
+*/
+class reference329 {
+}}/**
+@__tags
+@shapeType ClassDiagram 
+*/
+class __tags {
+}/**
+@__options 
+*/
+class __options {
+}/**
+@__positions 
+*/
+class __positions {
+}

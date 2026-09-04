@@ -1,0 +1,13 @@
+#Test File for defining Relations
+
+Apfel=Obst
+Obst=Pflanze#These Relations can be applied to themselves,
+Orange=Obst#because they cover several Levels...
+Kabeljau=Fisch
+
+Wal=Säugetier
+Säugetier=Tier
+Fisch=Tier
+Kartoffel=Gemüse
+Gemüse=Pflanze
+

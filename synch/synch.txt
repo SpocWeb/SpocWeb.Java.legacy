@@ -1,0 +1,8 @@
+Defines:
+a declared InvalidException and a not declared InvalidError to wrap it.
+IPublisher , an Interface to register with
+ISubscriber, a Callback Interface
+IValidation, which is never used
+IValidationRule, an Interface for generic Validation of an Object
+IValidator, an Interface for extensive Validation of an Object, also handing over the old Value and the Object being changed (for Callbacks).
+

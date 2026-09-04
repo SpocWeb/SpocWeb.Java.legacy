@@ -1,0 +1,174 @@
+BODY {
+	COLOR: #000000; FONT-FAMILY: sans-serif; BACKGROUND-COLOR: #ffffff
+}
+DIV.abstract P.title {
+	COLOR: #005a9c
+}
+DIV.toc P {
+	COLOR: #005a9c
+}
+P.releaseinfo EM {
+	COLOR: #005a9c
+}
+DIV.figure P.title {
+	COLOR: #005a9c
+}
+DIV.example P.title {
+	COLOR: #005a9c
+}
+SPAN.term {
+	COLOR: #005a9c
+}
+H1 {
+	COLOR: #005a9c
+}
+H2 {
+	COLOR: #005a9c
+}
+H3 {
+	COLOR: #005a9c
+}
+H4 {
+	COLOR: #005a9c
+}
+H5 {
+	COLOR: #005a9c
+}
+H6 {
+	COLOR: #005a9c
+}
+H1 {
+	FONT-WEIGHT: normal; FONT-SIZE: 170%; FONT-STYLE: normal
+}
+DIV.abstract P.title {
+	FONT-WEIGHT: normal; FONT-SIZE: 140%; FONT-STYLE: normal
+}
+DIV.toc P {
+	FONT-WEIGHT: normal; FONT-SIZE: 140%; FONT-STYLE: normal
+}
+H2 {
+	FONT-WEIGHT: normal; FONT-SIZE: 140%; FONT-STYLE: normal
+}
+H3 {
+	FONT-WEIGHT: normal; FONT-SIZE: 120%; FONT-STYLE: normal
+}
+P.releaseinfo EM {
+	FONT-WEIGHT: bold; FONT-SIZE: 100%; FONT-STYLE: normal
+}
+H4 {
+	FONT-WEIGHT: bold; FONT-SIZE: 100%; FONT-STYLE: normal
+}
+DIV.figure P.title {
+	FONT-WEIGHT: bold; FONT-SIZE: 80%; FONT-STYLE: normal
+}
+DIV.example P.title {
+	FONT-WEIGHT: bold; FONT-SIZE: 80%; FONT-STYLE: normal
+}
+SPAN.term {
+	FONT-WEIGHT: bold; FONT-SIZE: 80%; FONT-STYLE: normal
+}
+H5 {
+	FONT-WEIGHT: bold; FONT-SIZE: 80%; FONT-STYLE: normal
+}
+SPAN.term TT {
+	FONT-SIZE: 120%; FONT-STYLE: normal
+}
+H6 {
+	FONT-WEIGHT: bold; FONT-SIZE: 60%; FONT-STYLE: normal
+}
+DIV.toc P B {
+	FONT-WEIGHT: normal
+}
+DIV.abstract P.title B {
+	FONT-WEIGHT: normal
+}
+DIV.author H3 {
+	FONT-WEIGHT: bold; FONT-SIZE: 100%; MARGIN-BOTTOM: 0px; COLOR: #000000; FONT-STYLE: normal
+}
+DIV.toc SPAN.appendix {
+	FONT-WEIGHT: bold
+}
+DIV.toc SPAN.chapter {
+	FONT-WEIGHT: bold
+}
+DIV.sect1 TABLE.simplelist {
+	WIDTH: 100%
+}
+DIV.sect1 TABLE.simplelist TD {
+	VERTICAL-ALIGN: top; WIDTH: 50%
+}
+DIV.figure DIV.informaltable TABLE {
+	WIDTH: auto
+}
+DIV.figure TABLE.simplelist {
+	WIDTH: auto
+}
+DIV.figure TABLE.simplelist TD {
+	WIDTH: auto
+}
+DIV.figure DIV.informaltable TABLE TD {
+	BORDER-TOP-STYLE: none; BORDER-RIGHT-STYLE: none; BORDER-LEFT-STYLE: none; BORDER-BOTTOM-STYLE: none
+}
+DIV.figure DIV.informaltable TABLE {
+	BORDER-LEFT-COLOR: #000000; BORDER-BOTTOM-COLOR: #000000; BORDER-TOP-COLOR: #000000; BORDER-RIGHT-COLOR: #000000
+}
+DIV.example PRE.programlisting {
+	PADDING-RIGHT: 0.25em; PADDING-LEFT: 0.25em; PADDING-BOTTOM: 0.25em; WIDTH: 90%; BORDER-TOP-STYLE: ridge; PADDING-TOP: 0.25em; BORDER-RIGHT-STYLE: ridge; BORDER-LEFT-STYLE: ridge; BACKGROUND-COLOR: #e0f8e0; BORDER-BOTTOM-STYLE: ridge
+}
+DIV.example PRE.synopsis {
+	LINE-HEIGHT: 150%
+}
+DIV.example PRE.screen {
+	PADDING-RIGHT: 0.25em; PADDING-LEFT: 0.25em; PADDING-BOTTOM: 0.25em; WIDTH: 90%; BORDER-TOP-STYLE: ridge; PADDING-TOP: 0.25em; BORDER-RIGHT-STYLE: ridge; BORDER-LEFT-STYLE: ridge; BACKGROUND-COLOR: #f8e0e0; BORDER-BOTTOM-STYLE: ridge
+}
+TABLE.productionset {
+	WIDTH: 90%; BORDER-TOP-STYLE: ridge; BORDER-RIGHT-STYLE: ridge; BORDER-LEFT-STYLE: ridge; BACKGROUND-COLOR: #e0f8f8; BORDER-BOTTOM-STYLE: ridge
+}
+TABLE.productionset TABLE.productionset {
+	WIDTH: 90%; BORDER-TOP-STYLE: none; BORDER-RIGHT-STYLE: none; BORDER-LEFT-STYLE: none; BORDER-BOTTOM-STYLE: none
+}
+TD.productioncounter {
+	PADDING-RIGHT: 0.5em; FONT-SIZE: 12px; FONT-FAMILY: monospace
+}
+TD.productionlhs {
+	FONT-SIZE: 12px; FONT-FAMILY: monospace; WHITE-SPACE: nowrap
+}
+TD.productionseperator {
+	PADDING-RIGHT: 0.5em; PADDING-LEFT: 0.5em; FONT-SIZE: 12px; FONT-FAMILY: monospace
+}
+TD.productionrhs {
+	FONT-SIZE: 12px; WIDTH: 100%; FONT-FAMILY: monospace; WHITE-SPACE: nowrap
+}
+DIV.variablelist DT {
+	MARGIN-TOP: 1em
+}
+DD P {
+	MARGIN-TOP: 0px
+}
+TT.filename {
+	BORDER-RIGHT: #000000 1px solid; PADDING-RIGHT: 0px; BORDER-TOP: #000000 1px solid; PADDING-LEFT: 0px; PADDING-BOTTOM: 0px; BORDER-LEFT: #000000 1px solid; PADDING-TOP: 0px; BORDER-BOTTOM: #000000 1px solid; FONT-FAMILY: monospace; BACKGROUND-COLOR: #f8f8e0
+}
+TT.literal {
+	BORDER-RIGHT: #000000 1px solid; PADDING-RIGHT: 0px; BORDER-TOP: #000000 1px solid; PADDING-LEFT: 0px; PADDING-BOTTOM: 0px; BORDER-LEFT: #000000 1px solid; PADDING-TOP: 0px; BORDER-BOTTOM: #000000 1px solid; FONT-FAMILY: monospace; BACKGROUND-COLOR: #e0e0f8
+}
+SPAN.property {
+	BORDER-RIGHT: #000000 1px solid; PADDING-RIGHT: 0px; BORDER-TOP: #000000 1px solid; PADDING-LEFT: 0px; PADDING-BOTTOM: 0px; BORDER-LEFT: #000000 1px solid; PADDING-TOP: 0px; BORDER-BOTTOM: #000000 1px solid; FONT-FAMILY: monospace; BACKGROUND-COLOR: #f8e0f8
+}
+TT.constant {
+	BORDER-RIGHT: #000000 1px solid; PADDING-RIGHT: 0px; BORDER-TOP: #000000 1px solid; PADDING-LEFT: 0px; PADDING-BOTTOM: 0px; BORDER-LEFT: #000000 1px solid; PADDING-TOP: 0px; BORDER-BOTTOM: #000000 1px solid; FONT-FAMILY: monospace; BACKGROUND-COLOR: #e0f8f8
+}
+UNKNOWN {
+	PADDING-RIGHT: 1px; PADDING-LEFT: 1px; PADDING-BOTTOM: 4px; LINE-HEIGHT: 175%; PADDING-TOP: 4px
+}
+UNKNOWN {
+	PADDING-RIGHT: 1px; PADDING-LEFT: 1px; PADDING-BOTTOM: 4px; LINE-HEIGHT: 175%; PADDING-TOP: 4px
+}
+UNKNOWN {
+	PADDING-RIGHT: 1px; PADDING-LEFT: 1px; PADDING-BOTTOM: 4px; LINE-HEIGHT: 175%; PADDING-TOP: 4px
+}
+UNKNOWN {
+	PADDING-RIGHT: 1px; PADDING-LEFT: 1px; PADDING-BOTTOM: 4px; LINE-HEIGHT: 175%; PADDING-TOP: 4px
+}
+A.preferred {
+	FONT-STYLE: italic
+}

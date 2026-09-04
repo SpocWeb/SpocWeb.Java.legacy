@@ -1,0 +1,89 @@
+1. Programmer
+nur eine Multiple Choice Prüfung
+knifflige Fragen für mich waren:
+a) beendet System.exit(0) sofort? Ja! selbst finally Blöcke werden nicht mehr ausgeführt
+b) Wie empfängt man Tastendrücke? KeyEvent Klasse bzw. KeyTyped oder KeyPressed Event Handler
+c) (long) a*b/c ? Worauf wirkt der Cast? Nur auf den ersten Teil des Ausdrucks
+d) compiliert / läuft eine Klasse mit nicht statische main() Methode? Ja / Nein!
+e) Welchen Layout Manager hat Panel? Flow!
+f) Unterschiede zwischen MouseListener und MouseMotionListener? Bewegungen der Maus innerhalb einer Component
+g) löscht new OutputFile("..."); die Datei schon? Ja!
+h) Wie erhält man den Directory Namen einer Datei? getParent() getParentFile() liefert das File Objekt
+
+Login bei https://www.galton.com/~sun_s
+Sylvan Testing ID == Candidate ID: sp2498152
+Registration Number : H13DUS0224
+Site Number: GRL
+
+http://suned.sun.com/index.html
+http://www.sun.de/Schulung/
+
+2. Developer
+eine Programmierübung und anschließend Verteidigung
+Beide Prüfungen müssen zusammen bestellt werden (250 + 150 = 400 Euro).
+
+Obtaining the Distribution
+At the bottom of this page you will see a link for downloading a jar archive file. Inside the archive you will find detailed instructions for the assignment in the instructions.html file.
+It is recommended that you read the instructions carefully and fully, and ensure you understand them, before you begin working on your solution.
+
+Submitting Your Work
+When you have completed your solution, you should build a jar archive. You must build an archive; do not send individual files. When you have prepared your submission archive, log back into this Sun Java Certification facility and click on the "Upload Assignment" button. Further instructions will be given at that time.
+
+Help
+If you have difficulties, you can submit questions by sending email to who2contact@central.sun.com.
+Click on the hot link to download your assignment.
+
+
+Task:
+DB System for Flight Information w. Route & Carriers started
+extend into usable Application
+Functions:
+	search Flights
+	book   Flights
+	search Flights
+
+What you must do
+The following are the "top level" features that must be implemented:
+* a graphical user interface for viewing flight information and booking a flight
+* extensions to the database code to support a more flexible search and record locking
+* network server functionality for the database system
+* communications functionality to connect the user interface with the database code
+
+* remove deprecated Features:
+suncertify/db/Data.java:288: warning: String(byte[],int,int,int) in java.lang.String has been deprecated
+                rv[i] = new String(buffer, 0, offset, description[i].getLength());                        ^
+suncertify/db/Data.java:319: warning: getBytes(int,int,byte[],int) in java.lang.String has been deprecated
+            newData[i].getBytes(0, toCopy, buffer, offset);
+
+Architectural Guidelines:
+the program must be able to work in a non-networked mode.
+In this mode, the database and user interface run in the same VM and no networking is performed,
+no sockets should be created.
+The user must be able to select the operating mode,
+it is acceptable that the program stay in one mode once it has started up.
+
+You may use either serialized objects over a simple socket connection, or you may use RMI.
+Your submission will fail automatically if you do not use one of these approaches.
+
+Fixed Rules: (failure will be fatal)
+You may not modify the file "db.db".
+The remote client code that you write must provide all the public methods of the suncertify.db.Data class.
+Target Platform is the "Production Version of the Java 2 Platform"
+
+Run it using a java command line.
+You should document clear, simple command lines that allow your programs to be run on any Java 2 platform.
+These command lines may only take configuration parameters selected from this list:
+
+* DNS name of the server
+* Port number used by the server
+* Data file name(s)
+* java.rmi.server.codebase
+* security manager policy file
+
+
+
+3. Web Developer
+
+4. Architect
+
+

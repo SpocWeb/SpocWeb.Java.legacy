@@ -1,0 +1,129 @@
+
+(object Petal
+    version    	42
+    _written   	"Rose 4.5.8163.3"
+    charSet    	0)
+
+(object SubSystem "Order"
+    is_unit    	TRUE
+    is_loaded  	TRUE
+    quid       	"36BB46B601E7"
+    visible_modules 	(list dependency_list
+	(object Dependency_Relationship
+	    quid       	"36BB47590033"
+	    supplier   	"Component View::BaseCopy"
+	    quidu      	"36BABF4B0011"
+	    supplier_is_subsystem 	TRUE))
+    physical_models 	(list unit_reference_list
+	(object module "intOrderable" "NotAModuleType" "NotAModulePart"
+	    attributes 	(list Attribute_Set
+		(object Attribute
+		    tool       	"Java"
+		    name       	"FileName"
+		    value      	"D:\\Personal\\Code\\Java\\Order\\intOrderable.java"))
+	    quid       	"36BB46B601F2"
+	    stereotype 	""
+	    language   	"Java")
+	(object module "orderable" "NotAModuleType" "NotAModulePart"
+	    attributes 	(list Attribute_Set
+		(object Attribute
+		    tool       	"Java"
+		    name       	"FileName"
+		    value      	"D:\\Personal\\Code\\Java\\Order\\orderable.java"))
+	    quid       	"36BB46B602C3"
+	    stereotype 	""
+	    visible_modules 	(list dependency_list
+		(object Dependency_Relationship
+		    quid       	"36BB4759003D"
+		    supplier   	"Component View::BaseCopy::copyAble"
+		    quidu      	"36BABF500108"
+		    supplier_is_spec 	TRUE))
+	    language   	"Java")
+	(object module "absOrderable" "NotAModuleType" "NotAModulePart"
+	    attributes 	(list Attribute_Set
+		(object Attribute
+		    tool       	"Java"
+		    name       	"FileName"
+		    value      	"D:\\Personal\\Code\\Java\\Order\\absOrderable.java"))
+	    quid       	"36BB46B70026"
+	    stereotype 	""
+	    visible_modules 	(list dependency_list
+		(object Dependency_Relationship
+		    quid       	"36BB47AE03BA"
+		    supplier   	"Component View::BaseCopy"
+		    quidu      	"36BABF4B0011"
+		    supplier_is_subsystem 	TRUE)
+		(object Dependency_Relationship
+		    quid       	"37BC91B3031F"
+		    supplier   	"Component View::BaseCopy"
+		    quidu      	"36BABF4B0011"
+		    supplier_is_subsystem 	TRUE)
+		(object Dependency_Relationship
+		    quid       	"37BD215C0034"
+		    supplier   	"Component View::BaseCopy"
+		    quidu      	"36BABF4B0011"
+		    supplier_is_subsystem 	TRUE)
+		(object Dependency_Relationship
+		    quid       	"37BD395600A8"
+		    supplier   	"Component View::BaseCopy"
+		    quidu      	"36BABF4B0011"
+		    supplier_is_subsystem 	TRUE))
+	    language   	"Java")
+	(object module "Interval" "NotAModuleType" "NotAModulePart"
+	    attributes 	(list Attribute_Set
+		(object Attribute
+		    tool       	"Java"
+		    name       	"FileName"
+		    value      	"D:\\Personal\\Code\\Java\\Order\\Interval.java"))
+	    quid       	"36BB46B700C6"
+	    stereotype 	""
+	    visible_modules 	(list dependency_list
+		(object Dependency_Relationship
+		    quid       	"36BB47AF00C3"
+		    supplier   	"Component View::BaseCopy"
+		    quidu      	"36BABF4B0011"
+		    supplier_is_subsystem 	TRUE)
+		(object Dependency_Relationship
+		    quid       	"37BC91B4003B"
+		    supplier   	"Component View::BaseCopy"
+		    quidu      	"36BABF4B0011"
+		    supplier_is_subsystem 	TRUE)
+		(object Dependency_Relationship
+		    quid       	"37BD215E014F"
+		    supplier   	"Component View::BaseCopy"
+		    quidu      	"36BABF4B0011"
+		    supplier_is_subsystem 	TRUE)
+		(object Dependency_Relationship
+		    quid       	"37BD3958014B"
+		    supplier   	"Component View::BaseCopy"
+		    quidu      	"36BABF4B0011"
+		    supplier_is_subsystem 	TRUE))
+	    language   	"Java")
+	(object module "IntervalOrd" "NotAModuleType" "NotAModulePart"
+	    attributes 	(list Attribute_Set
+		(object Attribute
+		    tool       	"Java"
+		    name       	"FileName"
+		    value      	"D:\\Personal\\Code\\Java\\Order\\IntervalOrd.java"))
+	    quid       	"36BB46B70152"
+	    stereotype 	""
+	    language   	"Java")
+	(object module "testOrder" "NotAModuleType" "NotAModulePart"
+	    attributes 	(list Attribute_Set
+		(object Attribute
+		    tool       	"Java"
+		    name       	"FileName"
+		    value      	"D:\\Personal\\Code\\Java\\Order\\testOrder.java"))
+	    quid       	"37BC91B40153"
+	    stereotype 	""
+	    language   	"Java"))
+    physical_presentations 	(list unit_reference_list
+	(object Module_Diagram "Order"
+	    quid       	"37BF04B401EF"
+	    title      	"Order"
+	    zoom       	100
+	    max_height 	28350
+	    max_width  	21600
+	    origin_x   	0
+	    origin_y   	0
+	    items      	(list diagram_item_list))))

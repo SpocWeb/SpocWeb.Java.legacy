@@ -1,0 +1,223 @@
+package id2t2fgcd1s8i26cd1sbjqd;
+
+/**
+@version 2.0
+@physicalPackage
+@__modelType diagram 
+*/
+class diagram {
+/**
+@__ref <oiref:design#Class#idy6iec9fodqegc9fq5fgj.diagram:oiref><oihard>
+@__modelType reference
+@__fqn <oiref:#Package#Stream.Float.Random:oiref> 
+*/
+class reference {
+}/**
+@__ref <oiref:java#Class#Stream.Float.IStreamIn_Float:oiref><oihard>
+@__modelType reference 
+*/
+class reference83 {
+}/**
+@__ref <oiref:java#Class#Stream.Float.IStreamIn_Int:oiref><oihard>
+@__modelType reference 
+*/
+class reference84 {
+}/**
+@__ref <oiref:java#Class#Stream.Float.IStreamIn_Number:oiref><oihard>
+@__modelType reference 
+*/
+class reference85 {
+}/**
+@__ref <oiref:java#Class#Stream.Float.IStreamIn_Bound:oiref><oihard>
+@__modelType reference 
+*/
+class reference86 {
+}/**
+@__ref <oiref:java#Class#Stream.Float.AStreamIn_Long:oiref><oihard>
+@__modelType reference 
+*/
+class reference87 {
+}/**
+@__ref <oiref:java#Class#Stream.Float.AStreamIn_Float:oiref><oihard>
+@__modelType reference 
+*/
+class reference88 {
+}/**
+@__ref <oiref:java#Class#Stream.Float.AStreamIn_Int:oiref><oihard>
+@__modelType reference 
+*/
+class reference89 {
+}/**
+@__ref <oiref:java#Class#Stream.Float.FilterFloatLin:oiref><oihard>
+@__modelType reference 
+*/
+class reference90 {
+}/**
+@__ref <oiref:java#Class#Stream.Float.FilterFloatMul:oiref><oihard>
+@__modelType reference 
+*/
+class reference91 {
+}/**
+@__ref <oiref:java#Class#Stream.Float.IStreamOutFloat:oiref><oihard>
+@__modelType reference 
+*/
+class reference97 {
+}/**
+@__ref <oiref:java#Class#Stream.Float.FilterFloat:oiref><oihard>
+@__modelType reference 
+*/
+class reference3 {
+}/**
+@__ref <oiref:java#Class#Stream.Float.FilterIn_NumberLin:oiref><oihard>
+@__modelType reference 
+*/
+class reference6 {
+}/**
+@__ref <oiref:java#Class#Stream.Float.FilterIn_NumberMul:oiref><oihard>
+@__modelType reference 
+*/
+class reference7 {
+}/**
+@__ref <oiref:java#Class#Stream.Float.FilterProd:oiref><oihard>
+@__modelType reference 
+*/
+class reference9 {
+}/**
+@__ref <oiref:java#Class#Stream.Float.FilterMin:oiref><oihard>
+@__modelType reference 
+*/
+class reference10 {
+}/**
+@__ref <oiref:java#Class#Stream.Float.FilterSqrSum:oiref><oihard>
+@__modelType reference 
+*/
+class reference11 {
+}/**
+@__ref <oiref:java#Class#Stream.Float.FilterMax:oiref><oihard>
+@__modelType reference 
+*/
+class reference15 {
+}/**
+@__ref <oiref:java#Class#Stream.Float.FilterSum:oiref><oihard>
+@__modelType reference 
+*/
+class reference16 {
+}/**
+@__ref <oiref:java#Class#Stream.primitive.IStreamInBound:oiref><oihard>
+@__modelType reference 
+*/
+class reference35 {
+}/**
+@__ref <oiref:java#Class#Stream.primitive.IStreamInNumber:oiref><oihard>
+@__modelType reference 
+*/
+class reference36 {
+}/**
+@__ref <oiref:java#Class#Stream.primitive.AStreamInFloat:oiref><oihard>
+@__modelType reference 
+*/
+class reference37 {
+}/**
+@__ref <oiref:java#Class#Stream.primitive.IStreamInInt:oiref><oihard>
+@__modelType reference 
+*/
+class reference38 {
+}/**
+@__ref <oiref:java#Class#Stream.primitive.AStreamInInt:oiref><oihard>
+@__modelType reference 
+*/
+class reference39 {
+}/**
+@__ref <oiref:java#Class#Stream.primitive.FilterInNumberMul:oiref><oihard>
+@__modelType reference 
+*/
+class reference40 {
+}/**
+@__ref <oiref:java#Class#Stream.primitive.AStreamInLong:oiref><oihard>
+@__modelType reference 
+*/
+class reference41 {
+}/**
+@__ref <oiref:java#Class#Stream.primitive.IStreamInFloat:oiref><oihard>
+@__modelType reference 
+*/
+class reference42 {
+}/**
+@__ref <oiref:java#Class#Stream.Float.FilterInNumberLin:oiref><oihard>
+@__modelType reference 
+*/
+class reference80 {
+}/**
+@__ref <oiref:java#Class#Stream.Float.FilterIn_Float2Object:oiref><oihard>
+@__modelType reference 
+*/
+class reference1 {
+}/**
+@__ref <oiref:java#Class#Stream.Float.FilterIn_Int2Object:oiref><oihard>
+@__modelType reference 
+*/
+class reference2 {
+}/**
+@__ref <oiref:java#Class#Stream.Float.FilterIn_Char2Object:oiref><oihard>
+@__modelType reference 
+*/
+class reference17 {
+}}/**
+@__tags
+@shapeType ClassDiagram 
+*/
+class __tags {
+}/**
+@__options 
+*/
+class __options {
+}/**
+@__positions <oigroup:<oiref:java#Class#Stream.Float.FilterIn_NumberMul:oiref>=670,200,188,190,1:oigroup>
+<oigroup:<oiref:java#Implements#Stream.Float.FilterFloat#Stream.Float.IStreamOutFloat:oiref>=55,540,55,137:oigroup>
+<oigroup:<oiref:java#Implements#Stream.Float.AStreamIn_Long#Stream.Float.IStreamIn_Number:oiref>=460,200,724,169:oigroup>
+<oigroup:<oiref:java#Class#Stream.Float.FilterMin:oiref>=510,540,174,165,1:oigroup>
+<oigroup:<oiref:java#Implements#Stream.Float.AStreamIn_Float#Stream.Float.IStreamIn_Number:oiref>=320,200,722,169:oigroup>
+<oigroup:<oiref:java#Extends#Stream.Float.FilterMin#Stream.Float.FilterFloat:oiref>=510,622,210,622:oigroup>
+<oigroup:<oiref:java#Implements#Stream.Float.FilterFloatMul#Stream.Float.IStreamOutFloat:oiref>=71,220,71,137:oigroup>
+<oigroup:<oiref:java#Class#Stream.Float.FilterFloatLin:oiref>=250,460,190,254,1:oigroup>
+<oigroup:<oiref:java#Extends#Stream.Float.FilterFloatMul#Stream.Float.AStreamIn_Float:oiref>=220,314,250,314:oigroup>
+<oigroup:<oiref:java#Class#Stream.Float.IStreamOutFloat:oiref>=20,20,176,117,1:oigroup>
+<oigroup:<oiref:java#Class#Stream.Float.AStreamIn_Float:oiref>=250,200,140,229,1:oigroup>
+<oigroup:<oiref:java#Extends#Stream.Float.FilterSum#Stream.Float.FilterFloat:oiref>=440,775,210,775:oigroup>
+<oigroup:<oiref:java#Class#Stream.Float.FilterProd:oiref>=240,730,190,197,1:oigroup>
+<oigroup:<oiref:java#Class#Stream.Float.IStreamIn_Bound:oiref>=560,20,128,146,1:oigroup>
+<oigroup:<oiref:java#Extends#Stream.Float.IStreamIn_Bound#Stream.Float.IStreamIn_Int:oiref>=560,49,499,49:oigroup>
+<oigroup:<oiref:java#Class#Stream.Float.AStreamIn_Int:oiref>=530,200,140,254,1:oigroup>
+<oigroup:<oiref:java#Extends#Stream.Float.IStreamIn_Number#Stream.Float.IStreamIn_Bound:oiref>=720,93,688,93:oigroup>
+<oigroup:<oiref:java#Implements#Stream.Float.FilterFloatMul#Stream.Float.IStreamIn_Number:oiref>=590,260,564,260:oigroup>
+<oigroup:<oiref:java#Class#Stream.Float.FilterFloatMul:oiref>=30,220,190,302,1:oigroup>
+<oigroup:<oiref:java#Class#Stream.Float.IStreamIn_Number:oiref>=720,20,127,149,1:oigroup>
+<oigroup:<oiref:java#Extends#Stream.Float.FilterFloatLin#Stream.Float.FilterFloatMul:oiref>=250,491,220,491:oigroup>
+<oigroup:<oiref:java#Class#Stream.Float.FilterSum:oiref>=440,730,190,197,1:oigroup>
+<oigroup:<oiref:java#Class#Stream.Float.FilterSqrSum:oiref>=630,730,190,197,1:oigroup>
+<oigroup:<oiref:java#Implements#Stream.Float.FilterFloatMul#Stream.Float.IStreamIn_Float:oiref>=606,180,387,147:oigroup>
+<oigroup:<oiref:java#Extends#Stream.Float.FilterIn_NumberLin#Stream.Float.FilterIn_NumberMul:oiref>=772,410,772,390:oigroup>
+<oigroup:<oiref:java#Class#Stream.Float.FilterMax:oiref>=830,730,174,165,1:oigroup>
+<oigroup:MemberLink#<oiref:java#Member#Stream.Float.FilterFloatMul#Generator:oiref>=623,180,623,141:oigroup>
+<oigroup:<oiref:java#Extends#Stream.Float.FilterProd#Stream.Float.FilterFloat:oiref>=240,768,210,768:oigroup>
+<oigroup:<oiref:java#Extends#Stream.Float.FilterSqrSum#Stream.Float.FilterFloat:oiref>=630,778,210,778:oigroup>
+<oigroup:<oiref:java#Implements#Stream.Float.FilterFloat#Stream.Float.IStreamIn_Float:oiref>=130,540,284,137:oigroup>
+<oigroup:<oiref:java#Class#Stream.Float.IStreamIn_Float:oiref>=220,20,127,117,1:oigroup>
+<oigroup:MemberLink#<oiref:java#Member#Stream.Float.FilterFloat#InStream:oiref>=170,540,308,137:oigroup>
+<oigroup:<oiref:java#Extends#Stream.Float.IStreamIn_Number#Stream.Float.IStreamIn_Float:oiref>=379,182,379,147:oigroup>
+<oigroup:<oiref:java#Class#Stream.Float.FilterFloat:oiref>=20,540,190,286,1:oigroup>
+<oigroup:<oiref:java#Implements#Stream.Float.FilterIn_NumberMul#Stream.Float.IStreamIn_Float:oiref>=729,200,332,137:oigroup>
+<oigroup:MemberLink#<oiref:java#Member#Stream.Float.FilterIn_NumberMul#InStream:oiref>=789,200,789,169:oigroup>
+<oigroup:MemberLink#<oiref:java#Member#Stream.Float.FilterFloat#OutStream:oiref>=90,540,90,137:oigroup>
+<oigroup:<oiref:java#Extends#Stream.Float.FilterMax#Stream.Float.FilterFloat:oiref>=830,773,210,773:oigroup>
+<oigroup:<oiref:java#Implements#Stream.Float.AStreamIn_Int#Stream.Float.IStreamIn_Number:oiref>=600,200,747,169:oigroup>
+<oigroup:MemberLink#<oiref:java#Member#Stream.Float.FilterFloatMul#InStream:oiref>=166,220,252,137:oigroup>
+<oigroup:MemberLink#<oiref:java#Member#Stream.Float.FilterFloatMul#OutStream:oiref>=112,220,112,137:oigroup>
+<oigroup:<oiref:java#Class#Stream.Float.FilterIn_NumberLin:oiref>=710,410,124,174,1:oigroup>
+<oigroup:<oiref:java#Class#Stream.Float.AStreamIn_Long:oiref>=390,200,140,254,1:oigroup>
+<oigroup:<oiref:java#Extends#Stream.Float.IStreamIn_Bound#Stream.Float.IStreamIn_Float:oiref>=560,78,347,78:oigroup>
+<oigroup:<oiref:design#Class#idy6iec9fodqegc9fq5fgj.diagram:oiref>=870,10,133,548,1:oigroup>
+<oigroup:<oiref:java#Class#Stream.Float.IStreamIn_Int:oiref>=400,20,99,117,1:oigroup>
+*/
+class __positions {
+}

@@ -1,0 +1,402 @@
+package id2z7bcc9fodqegc9fq5es2;
+
+/**
+@version 2.0
+@physicalPackage
+@__modelType diagram 
+*/
+class diagram {
+/**
+@shapeType DependencyLink
+@__modelType link
+@__ref <oiref:design#Class#id47mokc9fodqegc9fq5czi.diagram:oiref><oihard>
+@automatic 
+*/
+class link {
+}/**
+@shapeType DependencyLink
+@__modelType link
+@__ref <oiref:design#Class#id2x7f1c9frybwec9fs0rie.diagram:oiref><oihard>
+@automatic 
+*/
+class link58 {
+}/**
+@shapeType DependencyLink
+@__modelType link
+@__ref <oiref:design#Class#id9f8wc9frybwec9fs0pa9.diagram:oiref><oihard>
+@automatic 
+*/
+class link59 {
+}/**
+@shapeType DependencyLink
+@__modelType link
+@__ref <oiref:design#Class#id45algc9frybwec9fs0mi4.diagram:oiref><oihard>
+@automatic 
+*/
+class link60 {
+}/**
+@shapeType DependencyLink
+@__modelType link
+@__ref <oiref:design#Class#id457m4c9fodqegc9fq5a4l.diagram:oiref><oihard>
+@automatic 
+*/
+class link61 {
+}/**
+@shapeType DependencyLink
+@__modelType link
+@__ref <oiref:design#Class#id1ygonc9fodqegc9fq5eog.diagram:oiref><oihard>
+@automatic 
+*/
+class link62 {
+}/**
+@shapeType DependencyLink
+@__modelType link
+@__ref <oiref:design#Class#id3u1uqc9frybwec9fs0r6p.diagram:oiref><oihard>
+@automatic 
+*/
+class link63 {
+}/**
+@__ref <oiref:design#Class#id9f8wc9frybwec9fs0pa9.diagram:oiref><oihard>
+@__modelType reference
+@__fqn <oiref:#Package#Function.Derive.RingFuncs:oiref> 
+*/
+class reference11 {
+}/**
+@__ref <oiref:design#Class#id47mokc9fodqegc9fq5czi.diagram:oiref><oihard>
+@__modelType reference
+@__fqn <oiref:#Package#Function:oiref>
+@__imported 
+*/
+class reference2 {
+}/**
+@__ref <oiref:java#Class#Function.AInvertAble:oiref><oihard>
+@__modelType reference
+@__imported 
+*/
+class reference3 {
+}/**
+@__ref <oiref:java#Class#Function.AFunction:oiref><oihard>
+@__modelType reference
+@__imported 
+*/
+class reference4 {
+}/**
+@__ref <oiref:java#Class#Function.Function:oiref><oihard>
+@__modelType reference
+@__imported 
+*/
+class reference8 {
+}/**
+@__ref <oiref:java#Class#Function.InvertAble:oiref><oihard>
+@__modelType reference
+@__imported 
+*/
+class reference13 {
+}/**
+@__ref <oiref:java#Class#Functions.Derive.DeriveAble:oiref><oihard>
+@__modelType reference 
+*/
+class reference99 {
+}/**
+@__ref <oiref:java#Class#Functions.Derive.AFuncRel:oiref><oihard>
+@__modelType reference 
+*/
+class reference130 {
+}/**
+@__ref <oiref:java#Class#Functions.Derive.ADeriveAble:oiref><oihard>
+@__modelType reference 
+*/
+class reference147 {
+}/**
+@__ref <oiref:java#Class#Functions.Derive.AStatic:oiref><oihard>
+@__modelType reference 
+*/
+class reference155 {
+}/**
+@__ref <oiref:java#Class#Functions.Derive.CCountAble:oiref><oihard>
+@__modelType reference 
+@hideAttributes
+*/
+class reference277 {
+}/**
+@__ref <oiref:java#Class#Functions.Derive.ARealDeriveAble:oiref><oihard>
+@__modelType reference 
+*/
+class reference282 {
+}/**
+@__ref <oiref:java#Class#Functions.Derive.CMeasurAble:oiref><oihard>
+@__modelType reference 
+@hideAttributes
+*/
+class reference289 {
+}/**
+@__ref <oiref:java#Class#Functions.Derive.Const:oiref><oihard>
+@__modelType reference 
+*/
+class reference292 {
+}/**
+@__ref <oiref:java#Class#Functions.Derive.RealDeriveAble:oiref><oihard>
+@__modelType reference 
+*/
+class reference299 {
+}/**
+@__ref <oiref:java#Class#Functions.Derive.Cat:oiref><oihard>
+@__modelType reference 
+*/
+class reference303 {
+}/**
+@__ref <oiref:java#Class#Functions.Derive.Comparison:oiref><oihard>
+@__modelType reference 
+*/
+class reference304 {
+}/**
+@__ref <oiref:java#Class#Functions.Derive.AConst:oiref><oihard>
+@__modelType reference 
+*/
+class reference305 {
+}/**
+@__ref <oiref:java#Class#Functions.Derive.Identity:oiref><oihard>
+@__modelType reference 
+*/
+class reference312 {
+}/**
+@__ref <oiref:java#Class#Functions.Derive.ByRefComparison:oiref><oihard>
+@__modelType reference 
+*/
+class reference313 {
+}/**
+@__ref <oiref:java#Class#Functions.Derive.ByRefTernary:oiref><oihard>
+@__modelType reference 
+*/
+class reference327 {
+}/**
+@__ref <oiref:java#Class#Functions.Derive.Ternary:oiref><oihard>
+@__modelType reference 
+*/
+class reference {
+}/**
+@__ref <oiref:design#Class#id9t4ec9fodqegc9fq5fdr.diagram:oiref><oihard>
+@__modelType reference
+@__fqn <oiref:#Package#Functions.Derive.NeuronNet:oiref> 
+*/
+class reference1 {
+}}/**
+@__tags
+@shapeType ClassDiagram 
+*/
+class __tags {
+}/**
+@__options 
+*/
+class __options {
+}/**
+@__positions <oigroup:MemberLink#<oiref:java#Member#Function.Derive.CMeasurAble#Nan:oiref>=373,1387,373,1712,709,1712,709,1072,536,1072:oigroup>
+<oigroup:MemberLink#<oiref:java#Member#Functions.Derive.CMeasurAble#FullGon:oiref>=149,1145,149,1299,319,1299,319,1001,229,1001:oigroup>
+<oigroup:MemberLink#<oiref:java#Member#Functions.Derive.CMeasurAble#SqRt2Pi:oiref>=194,1145,194,1218,274,1218,274,1082,229,1082:oigroup>
+<oigroup:<oiref:design#Class#id45algc9frybwec9fs0mi4.diagram.link66:oiref>=1196,1237,1246,1237:oigroup>
+<oigroup:<oiref:java#Extends#Function.Derive.ADeriveAble#Function.AInvertAble:oiref>=568,430,568,370:oigroup>
+<oigroup:MemberLink#<oiref:java#Member#Function.Derive.CMeasurAble#OneGolden:oiref>=521,1387,521,1424,561,1424,561,1360,536,1360:oigroup>
+<oigroup:MemberLink#<oiref:java#Member#Function.Derive.ADeriveAble#Derivative:oiref>=460,506,426,506:oigroup>
+<oigroup:MemberLink#<oiref:java#Member#Function.Derive.CMeasurAble#LnOneGolden:oiref>=526,1387,526,1415,556,1415,556,1369,536,1369:oigroup>
+<oigroup:MemberLink#<oiref:java#Member#Functions.Derive.CMeasurAble#Lb10:oiref>=90,1145,90,1416,378,1416,378,884,229,884:oigroup>
+<oigroup:MemberLink#<oiref:java#Member#Functions.Derive.CMeasurAble#Nan:oiref>=66,1145,66,1467,402,1467,402,833,229,833:oigroup>
+<oigroup:MemberLink#<oiref:java#Member#Function.Derive.CMeasurAble#SqRt2:oiref>=481,1387,481,1496,601,1496,601,1288,536,1288:oigroup>
+<oigroup:MemberLink#<oiref:java#Member#Function.Derive.CMeasurAble#Ln2:oiref>=385,1387,385,1685,697,1685,697,1099,536,1099:oigroup>
+<oigroup:<oiref:java#Extends#Functions.Derive.Ternary#Functions.Derive.CCountAble:oiref>=530,546,290,546:oigroup>
+<oigroup:MemberLink#<oiref:java#Member#Function.Derive.CMeasurAble#e2:oiref>=413,1387,413,1622,669,1622,669,1162,536,1162:oigroup>
+<oigroup:MemberLink#<oiref:java#Member#Function.Derive.CMeasurAble#Golden:oiref>=511,1387,511,1442,571,1442,571,1342,536,1342:oigroup>
+<oigroup:<oiref:design#Class#id47mokc9fodqegc9fq5czi.diagram.link53:oiref>=1246,1214,1196,1214:oigroup>
+<oigroup:MemberLink#<oiref:java#Member#Functions.Derive.CMeasurAble#e:oiref>=102,1145,102,1389,366,1389,366,911,229,911:oigroup>
+<oigroup:MemberLink#<oiref:java#Member#Functions.Derive.CMeasurAble#Half:oiref>=33,1145,33,1532,435,1532,435,768,229,768:oigroup>
+<oigroup:MemberLink#<oiref:java#Member#Functions.Derive.CMeasurAble#SqRtPi:oiref>=189,1145,189,1227,279,1227,279,1073,229,1073:oigroup>
+<oigroup:<oiref:java#Extends#Function.Derive.ARealDeriveAble#Function.Derive.ADeriveAble:oiref>=730,585,660,585:oigroup>
+<oigroup:<oiref:java#Extends#Functions.Derive.CMeasurAble#Functions.Derive.AConst:oiref>=70,750,70,248:oigroup>
+<oigroup:<oiref:java#Class#Functions.Derive.Cat:oiref>=850,780,200,270,1:oigroup>
+<oigroup:MemberLink#<oiref:java#Member#Functions.Derive.CMeasurAble#OneGolden:oiref>=214,1145,214,1182,254,1182,254,1118,229,1118:oigroup>
+<oigroup:MemberLink#<oiref:java#Member#Function.Derive.ADeriveAble#Identity:oiref>=804,264,1229,310:oigroup>
+<oigroup:MemberLink#<oiref:java#Member#Function.Derive.ARealDeriveAble#Derivative:oiref>=940,265,420,143:oigroup>
+<oigroup:<oiref:java#Implements#Function.AFunction#Function.Function:oiref>=476,95,439,95:oigroup>
+<oigroup:<oiref:java#Extends#Function.InvertAble#Function.Function:oiref>=339,210,339,169:oigroup>
+<oigroup:MemberLink#<oiref:java#Member#Function.Derive.CCountAble#Three:oiref>=161,1387,161,1637,281,1637,281,1147,216,1147:oigroup>
+<oigroup:Composite#supplierCardinality#MemberLink#<oiref:java#Member#Functions.Derive.CCountAble#Ternary:oiref>=500,550,26,16,0:oigroup>
+<oigroup:<oiref:java#Extends#Function.Derive.AFuncRel#Function.Derive.AStatic:oiref>=563,860,563,834:oigroup>
+<oigroup:<oiref:java#Class#Functions.Derive.Ternary:oiref>=530,530,129,101,1:oigroup>
+<oigroup:MemberLink#<oiref:java#Member#Function.Derive.ADeriveAble#Integral:oiref>=460,543,426,543:oigroup>
+<oigroup:MemberLink#<oiref:java#Member#Functions.Derive.CCountAble#InCmp:oiref>=290,470,340,470:oigroup>
+<oigroup:<oiref:java#Extends#Functions.Derive.AStatic#Functions.Derive.ADeriveAble:oiref>=980,270,980,235:oigroup>
+<oigroup:MemberLink#<oiref:java#Member#Function.Derive.CMeasurAble#PiHalf:oiref>=436,1387,436,1577,646,1577,646,1207,536,1207:oigroup>
+<oigroup:MemberLink#<oiref:java#Member#Function.Derive.CCountAble#Thousand:oiref>=206,1387,206,1437,236,1437,236,1347,216,1347:oigroup>
+<oigroup:MemberLink#<oiref:java#Member#Function.Derive.CMeasurAble#_Infinity:oiref>=381,1387,381,1694,701,1694,701,1090,536,1090:oigroup>
+<oigroup:MemberLink#<oiref:java#Member#Function.Derive.CCountAble#Four:oiref>=170,1387,170,1597,272,1597,272,1187,216,1187:oigroup>
+<oigroup:MemberLink#<oiref:java#Member#Functions.Derive.CMeasurAble#LnOneGolden:oiref>=219,1145,219,1173,249,1173,249,1127,229,1127:oigroup>
+<oigroup:<oiref:java#Class#Function.AFunction:oiref>=476,22,199,149,1:oigroup>
+<oigroup:<oiref:java#Extends#Functions.Derive.AFuncRel#Functions.Derive.AStatic:oiref>=1046,481,1046,444:oigroup>
+<oigroup:<oiref:java#Class#Function.Function:oiref>=240,20,199,149,1:oigroup>
+<oigroup:MemberLink#<oiref:java#Member#Function.AInvertAble#Inverse:oiref>=476,275,440,275:oigroup>
+<oigroup:MemberLink#<oiref:java#Member#Functions.Derive.CCountAble#Four:oiref>=150,715,150,765,440,765,440,675,290,675:oigroup>
+<oigroup:MemberLink#<oiref:java#Member#Function.Derive.CCountAble#Grtr:oiref>=76,1387,76,1812:oigroup>
+<oigroup:MemberLink#<oiref:java#Member#Function.Derive.CMeasurAble#EulerC:oiref>=421,1387,421,1604,661,1604,661,1180,536,1180:oigroup>
+<oigroup:MemberLink#<oiref:java#Member#Functions.Derive.CCountAble#One:oiref>=110,715,110,797,480,797,480,643,290,643:oigroup>
+<oigroup:<oiref:design#Class#id9f8wc9frybwec9fs0pa9.diagram:oiref>=526,742,105,679,1:oigroup>
+<oigroup:MemberLink#<oiref:java#Member#Functions.Derive.CMeasurAble#SqRt3:oiref>=179,1145,179,1245,289,1245,289,1055,229,1055:oigroup>
+<oigroup:MemberLink#<oiref:java#Member#Functions.Derive.CMeasurAble#Feigen:oiref>=119,1145,119,1353,349,1353,349,947,229,947:oigroup>
+<oigroup:MemberLink#<oiref:java#Member#Functions.Derive.CCountAble#Grtr:oiref>=290,482,340,482:oigroup>
+<oigroup:MemberLink#<oiref:java#Member#Functions.Derive.CMeasurAble#Ln10:oiref>=86,1145,86,1425,382,1425,382,875,229,875:oigroup>
+<oigroup:<oiref:java#Implements#Function.Derive.ADeriveAble#Function.Derive.DeriveAble:oiref>=460,469,426,469:oigroup>
+<oigroup:MemberLink#<oiref:java#Member#Functions.Derive.CMeasurAble#Epsilon:oiref>=224,1145,224,1164,244,1164,244,1136,229,1136:oigroup>
+<oigroup:<oiref:java#Class#Function.InvertAble:oiref>=240,210,200,149,1:oigroup>
+<oigroup:<oiref:java#Implements#Functions.Derive.AConst#Functions.Derive.DeriveAble:oiref>=230,75,510,75:oigroup>
+<oigroup:MemberLink#<oiref:java#Member#Functions.Derive.CMeasurAble#cGolden:oiref>=209,1145,209,1191,259,1191,259,1109,229,1109:oigroup>
+<oigroup:MemberLink#<oiref:java#Member#Functions.Derive.CCountAble#Less:oiref>=290,508,340,508:oigroup>
+<oigroup:MemberLink#<oiref:java#Member#Function.Derive.CMeasurAble#Lb10:oiref>=397,1387,397,1658,685,1658,685,1126,536,1126:oigroup>
+<oigroup:Composite#supplierCardinality#MemberLink#<oiref:java#Member#Functions.Derive.CCountAble#Comparison:oiref>=310,438,26,16,0:oigroup>
+<oigroup:MemberLink#<oiref:java#Member#Functions.Derive.CMeasurAble#Third:oiref>=38,1145,38,1523,430,1523,430,777,229,777:oigroup>
+<oigroup:MemberLink#<oiref:java#Member#Functions.Derive.CMeasurAble#Quarter:oiref>=42,1145,42,1515,426,1515,426,785,229,785:oigroup>
+<oigroup:MemberLink#<oiref:java#Member#Function.Derive.CMeasurAble#SqrCbcRt2:oiref>=506,1387,506,1451,576,1451,576,1333,536,1333:oigroup>
+<oigroup:MemberLink#<oiref:java#Member#Functions.Derive.CMeasurAble#NullK9:oiref>=58,1145,58,1483,410,1483,410,817,229,817:oigroup>
+<oigroup:MemberLink#<oiref:java#Member#Functions.Derive.CMeasurAble#EinsK1:oiref>=54,1145,54,1491,414,1491,414,809,229,809:oigroup>
+<oigroup:MemberLink#<oiref:java#Member#Functions.Derive.CMeasurAble#_Infinity:oiref>=74,1145,74,1451,394,1451,394,849,229,849:oigroup>
+<oigroup:<oiref:java#Extends#Function.Derive.Cat#Function.AInvertAble:oiref>=720,266,666,266:oigroup>
+<oigroup:<oiref:java#Extends#Functions.Derive.ARealDeriveAble#Functions.Derive.ADeriveAble:oiref>=875,270,875,235:oigroup>
+<oigroup:MemberLink#<oiref:java#Member#Function.Derive.CCountAble#Less:oiref>=98,1387,98,1812:oigroup>
+<oigroup:<oiref:java#Extends#Function.Derive.AConst#Function.AFunction:oiref>=361,642,552,171:oigroup>
+<oigroup:<oiref:java#Implements#Functions.Derive.ARealDeriveAble#Functions.Derive.RealDeriveAble:oiref>=740,312,710,312:oigroup>
+<oigroup:MemberLink#<oiref:java#Member#Function.Derive.CMeasurAble#SqRt3:oiref>=486,1387,486,1487,596,1487,596,1297,536,1297:oigroup>
+<oigroup:<oiref:java#Extends#Function.Derive.Comparison#Function.Derive.CCountAble:oiref>=109,1812,109,1387:oigroup>
+<oigroup:<oiref:java#Extends#Functions.Derive.Identity#Functions.Derive.ARealDeriveAble:oiref>=840,470,840,435:oigroup>
+<oigroup:MemberLink#<oiref:java#Member#Functions.Derive.CMeasurAble#FullDeg:oiref>=154,1145,154,1290,314,1290,314,1010,229,1010:oigroup>
+<oigroup:<oiref:java#Class#Functions.Derive.Comparison:oiref>=340,420,157,101,1:oigroup>
+<oigroup:MemberLink#<oiref:java#Member#Functions.Derive.CCountAble#Hundred:oiref>=210,715,210,741,380,741,380,699,290,699:oigroup>
+<oigroup:MemberLink#<oiref:java#Member#Function.Derive.CCountAble#One:oiref>=134,1387,134,1757,308,1757,308,1027,216,1027:oigroup>
+<oigroup:MemberLink#<oiref:java#Member#Function.Derive.CMeasurAble#Half:oiref>=340,1387,340,1784,742,1784,742,1000,536,1000:oigroup>
+<oigroup:<oiref:java#Class#Functions.Derive.ARealDeriveAble:oiref>=740,270,200,165,1:oigroup>
+<oigroup:MemberLink#<oiref:java#Member#Function.Derive.CCountAble#Comparison:oiref>=54,1387,54,1812:oigroup>
+<oigroup:MemberLink#<oiref:java#Member#Functions.Derive.CMeasurAble#CbcRt2:oiref>=169,1145,169,1263,299,1263,299,1037,229,1037:oigroup>
+<oigroup:MemberLink#<oiref:java#Member#Functions.Derive.CCountAble#UnDef:oiref>=290,600,530,600:oigroup>
+<oigroup:MemberLink#<oiref:java#Member#Function.Derive.CMeasurAble#Third:oiref>=345,1387,345,1775,737,1775,737,1009,536,1009:oigroup>
+<oigroup:MemberLink#<oiref:java#Member#Function.Derive.Cat#outer:oiref>=720,73,439,73:oigroup>
+<oigroup:<oiref:design#Class#id9f8wc9frybwec9fs0pa9.diagram.link:oiref>=631,968,680,968:oigroup>
+<oigroup:<oiref:java#Extends#Functions.Derive.Comparison#Functions.Derive.CCountAble:oiref>=340,434,290,434:oigroup>
+<oigroup:MemberLink#<oiref:java#Member#Functions.Derive.CMeasurAble#e2Pi:oiref>=110,1145,110,1371,358,1371,358,929,229,929:oigroup>
+<oigroup:MemberLink#<oiref:java#Member#Functions.Derive.CMeasurAble#SqrCbcRt2:oiref>=199,1145,199,1209,269,1209,269,1091,229,1091:oigroup>
+<oigroup:<oiref:java#Extends#Function.Derive.CMeasurAble#Function.Derive.AConst:oiref>=359,992,359,928:oigroup>
+<oigroup:MemberLink#<oiref:java#Member#Function.Derive.CMeasurAble#FullGon:oiref>=456,1387,456,1541,626,1541,626,1243,536,1243:oigroup>
+<oigroup:MemberLink#<oiref:java#Member#Function.Derive.CCountAble#InCmp:oiref>=65,1387,65,1812:oigroup>
+<oigroup:MemberLink#<oiref:java#Member#Function.Derive.CMeasurAble#SqRt2Pi:oiref>=501,1387,501,1460,581,1460,581,1324,536,1324:oigroup>
+<oigroup:MemberLink#<oiref:java#Member#Function.Derive.CMeasurAble#Lbe:oiref>=389,1387,389,1676,693,1676,693,1108,536,1108:oigroup>
+<oigroup:MemberLink#<oiref:java#Member#Functions.Derive.CMeasurAble#Golden:oiref>=204,1145,204,1200,264,1200,264,1100,229,1100:oigroup>
+<oigroup:MemberLink#<oiref:java#Member#Functions.Derive.CMeasurAble#Lbe:oiref>=82,1145,82,1434,386,1434,386,866,229,866:oigroup>
+<oigroup:MemberLink#<oiref:java#Member#Functions.Derive.ADeriveAble#Integral:oiref>=810,146,710,146:oigroup>
+<oigroup:MemberLink#<oiref:java#Member#Functions.Derive.CMeasurAble#Grad:oiref>=159,1145,159,1281,309,1281,309,1019,229,1019:oigroup>
+<oigroup:<oiref:java#Extends#Function.Derive.ByRefTernary#Function.Derive.Ternary:oiref>=267,1973,267,1913:oigroup>
+<oigroup:<oiref:design#Class#id47mokc9fodqegc9fq5czi.diagram.link51:oiref>=680,859,631,859:oigroup>
+<oigroup:MemberLink#<oiref:java#Member#Function.Derive.CCountAble#Ternary:oiref>=214,1387,306,1812:oigroup>
+<oigroup:MemberLink#<oiref:java#Member#Function.Derive.CMeasurAble#ThreePiQuarter:oiref>=446,1387,446,1559,636,1559,636,1225,536,1225:oigroup>
+<oigroup:MemberLink#<oiref:java#Member#Functions.Derive.CCountAble#Ten:oiref>=170,715,170,749,420,749,420,691,290,691:oigroup>
+<oigroup:MemberLink#<oiref:java#Member#Functions.Derive.CMeasurAble#TwoPi:oiref>=144,1145,144,1308,324,1308,324,992,229,992:oigroup>
+<oigroup:MemberLink#<oiref:java#Member#Functions.Derive.CCountAble#Comparison:oiref>=290,458,340,458:oigroup>
+<oigroup:<oiref:java#Class#Functions.Derive.RealDeriveAble:oiref>=510,190,200,165,1:oigroup>
+<oigroup:MemberLink#<oiref:java#Member#Function.Derive.CMeasurAble#Ln10:oiref>=393,1387,393,1667,689,1667,689,1117,536,1117:oigroup>
+<oigroup:<oiref:java#Extends#Function.Derive.CCountAble#Function.Derive.AConst:oiref>=201,992,201,928:oigroup>
+<oigroup:MemberLink#<oiref:java#Member#Functions.Derive.CMeasurAble#PiHalf:oiref>=129,1145,129,1335,339,1335,339,965,229,965:oigroup>
+<oigroup:MemberLink#<oiref:java#Member#Function.Derive.CMeasurAble#NullK1:oiref>=369,1387,369,1721,713,1721,713,1063,536,1063:oigroup>
+<oigroup:MemberLink#<oiref:java#Member#Function.Derive.CMeasurAble#TwoPi:oiref>=451,1387,451,1550,631,1550,631,1234,536,1234:oigroup>
+<oigroup:MemberLink#<oiref:java#Member#Function.Derive.CMeasurAble#Infinity:oiref>=377,1387,377,1703,705,1703,705,1081,536,1081:oigroup>
+<oigroup:MemberLink#<oiref:java#Member#Function.Derive.CMeasurAble#e:oiref>=409,1387,409,1631,673,1631,673,1153,536,1153:oigroup>
+<oigroup:<oiref:java#Extends#Function.Derive.Const#Function.Derive.AConst:oiref>=171,785,186,785:oigroup>
+<oigroup:<oiref:java#Class#Functions.Derive.ByRefComparison:oiref>=520,420,189,101,1:oigroup>
+<oigroup:MemberLink#<oiref:java#Member#Functions.Derive.CMeasurAble#Percent:oiref>=46,1145,46,1507,422,1507,422,793,229,793:oigroup>
+<oigroup:MemberLink#<oiref:java#Member#Function.Derive.CMeasurAble#Permille:oiref>=357,1387,357,1748,725,1748,725,1036,536,1036:oigroup>
+<oigroup:<oiref:java#Class#Functions.Derive.AStatic:oiref>=950,270,199,174,1:oigroup>
+<oigroup:<oiref:java#Extends#Functions.Derive.CCountAble#Functions.Derive.AConst:oiref>=160,320,160,248:oigroup>
+<oigroup:MemberLink#<oiref:java#Member#Functions.Derive.CMeasurAble#EulerC:oiref>=114,1145,114,1362,354,1362,354,938,229,938:oigroup>
+<oigroup:MemberLink#<oiref:java#Member#Function.Derive.CCountAble#True:oiref>=208,1387,208,1812:oigroup>
+<oigroup:MemberLink#<oiref:java#Member#Function.Derive.CCountAble#Ten:oiref>=188,1387,188,1517,254,1517,254,1267,216,1267:oigroup>
+<oigroup:<oiref:java#Implements#Function.AInvertAble#Function.InvertAble:oiref>=476,317,440,317:oigroup>
+<oigroup:MemberLink#<oiref:java#Member#Functions.Derive.CMeasurAble#Pi:oiref>=98,1145,98,1398,370,1398,370,902,229,902:oigroup>
+<oigroup:MemberLink#<oiref:java#Member#Functions.Derive.CCountAble#True:oiref>=290,585,530,585:oigroup>
+<oigroup:<oiref:java#Extends#Functions.Derive.ByRefTernary#Functions.Derive.Ternary:oiref>=594,650,594,631:oigroup>
+<oigroup:MemberLink#<oiref:java#Member#Function.Derive.AFuncRel#Value:oiref>=526,860,396,169:oigroup>
+<oigroup:MemberLink#<oiref:java#Member#Functions.Derive.CCountAble#Two:oiref>=130,715,130,781,460,781,460,659,290,659:oigroup>
+<oigroup:<oiref:java#Class#Functions.Derive.AFuncRel:oiref>=960,481,173,126,1:oigroup>
+<oigroup:MemberLink#<oiref:java#Member#Functions.Derive.CMeasurAble#_Pi:oiref>=124,1145,124,1344,344,1344,344,956,229,956:oigroup>
+<oigroup:MemberLink#<oiref:java#Member#Functions.Derive.CCountAble#Equal:oiref>=290,495,340,495:oigroup>
+<oigroup:<oiref:java#Class#Functions.Derive.CCountAble:oiref>=90,320,200,395,1:oigroup>
+<oigroup:<oiref:design#Class#id47mokc9fodqegc9fq5czi.diagram:oiref>=680,750,121,327,1:oigroup>
+<oigroup:MemberLink#<oiref:java#Member#Function.Derive.CMeasurAble#SqRtPi:oiref>=496,1387,496,1469,586,1469,586,1315,536,1315:oigroup>
+<oigroup:MemberLink#<oiref:java#Member#Functions.Derive.ADeriveAble#Derivative:oiref>=810,107,710,107:oigroup>
+<oigroup:MemberLink#<oiref:java#Member#Function.Derive.CMeasurAble#Pi:oiref>=405,1387,405,1640,677,1640,677,1144,536,1144:oigroup>
+<oigroup:MemberLink#<oiref:java#Member#Function.Derive.CMeasurAble#Quarter:oiref>=349,1387,349,1766,733,1766,733,1018,536,1018:oigroup>
+<oigroup:MemberLink#<oiref:java#Member#Functions.Derive.CCountAble#_One:oiref>=120,715,120,789,470,789,470,651,290,651:oigroup>
+<oigroup:MemberLink#<oiref:java#Member#Function.Derive.CCountAble#UnDef:oiref>=209,1387,229,1812:oigroup>
+<oigroup:<oiref:java#Class#Functions.Derive.Identity:oiref>=740,470,200,222,1:oigroup>
+<oigroup:MemberLink#<oiref:java#Member#Function.Derive.CMeasurAble#_Pi:oiref>=431,1387,431,1586,651,1586,651,1198,536,1198:oigroup>
+<oigroup:<oiref:java#Extends#Function.Derive.ByRefComparison#Function.Derive.Comparison:oiref>=93,1973,93,1913:oigroup>
+<oigroup:MemberLink#<oiref:java#Member#Functions.Derive.CCountAble#False:oiref>=290,615,530,615:oigroup>
+<oigroup:MemberLink#<oiref:java#Member#Function.Derive.CMeasurAble#e2Pi:oiref>=417,1387,417,1613,665,1613,665,1171,536,1171:oigroup>
+<oigroup:MemberLink#<oiref:java#Member#Functions.Derive.CCountAble#Thousand:oiref>=250,715,250,733,340,733,340,707,290,707:oigroup>
+<oigroup:MemberLink#<oiref:java#Member#Function.Derive.CMeasurAble#Epsilon:oiref>=531,1387,531,1406,551,1406,551,1378,536,1378:oigroup>
+<oigroup:MemberLink#<oiref:java#Member#Function.Derive.CMeasurAble#Lg2:oiref>=401,1387,401,1649,681,1649,681,1135,536,1135:oigroup>
+<oigroup:<oiref:java#Class#Functions.Derive.DeriveAble:oiref>=510,20,200,165,1:oigroup>
+<oigroup:MemberLink#<oiref:java#Member#Function.Derive.CCountAble#_One:oiref>=143,1387,143,1717,299,1717,299,1067,216,1067:oigroup>
+<oigroup:MemberLink#<oiref:java#Member#Function.Derive.CMeasurAble#cGolden:oiref>=516,1387,516,1433,566,1433,566,1351,536,1351:oigroup>
+<oigroup:MemberLink#<oiref:java#Member#Function.Derive.AStatic#simple:oiref>=509,660,417,169:oigroup>
+<oigroup:MemberLink#<oiref:java#Member#Function.Derive.CMeasurAble#FullDeg:oiref>=461,1387,461,1532,621,1532,621,1252,536,1252:oigroup>
+<oigroup:MemberLink#<oiref:java#Member#Function.Derive.Cat#_Inverse:oiref>=720,233,440,233:oigroup>
+<oigroup:MemberLink#<oiref:java#Member#Functions.Derive.CMeasurAble#ThreePiQuarter:oiref>=139,1145,139,1317,329,1317,329,983,229,983:oigroup>
+<oigroup:MemberLink#<oiref:java#Member#Functions.Derive.CMeasurAble#SqRt5:oiref>=184,1145,184,1236,284,1236,284,1064,229,1064:oigroup>
+<oigroup:MemberLink#<oiref:java#Member#Functions.Derive.CMeasurAble#Lg2:oiref>=94,1145,94,1407,374,1407,374,893,229,893:oigroup>
+<oigroup:MemberLink#<oiref:java#Member#Function.Derive.CMeasurAble#Grad:oiref>=466,1387,466,1523,616,1523,616,1261,536,1261:oigroup>
+<oigroup:MemberLink#<oiref:java#Member#Functions.Derive.CCountAble#Three:oiref>=140,715,140,773,450,773,450,667,290,667:oigroup>
+<oigroup:<oiref:java#Class#Functions.Derive.ByRefTernary:oiref>=520,650,162,101,1:oigroup>
+<oigroup:MemberLink#<oiref:java#Member#Functions.Derive.CCountAble#Zero:oiref>=100,715,100,806,490,806,490,634,290,634:oigroup>
+<oigroup:MemberLink#<oiref:java#Member#Function.Derive.CCountAble#Two:oiref>=152,1387,152,1677,290,1677,290,1107,216,1107:oigroup>
+<oigroup:<oiref:java#Extends#Function.Derive.Identity#Function.Derive.ADeriveAble:oiref>=1268,310,829,264:oigroup>
+<oigroup:MemberLink#<oiref:java#Member#Function.Derive.CMeasurAble#EinsK1:oiref>=361,1387,361,1739,721,1739,721,1045,536,1045:oigroup>
+<oigroup:MemberLink#<oiref:java#Member#Function.Derive.CMeasurAble#PiQuarter:oiref>=441,1387,441,1568,641,1568,641,1216,536,1216:oigroup>
+<oigroup:<oiref:java#Extends#Function.Derive.Ternary#Function.Derive.CCountAble:oiref>=268,1812,212,1387:oigroup>
+<oigroup:MemberLink#<oiref:java#Member#Function.Derive.CMeasurAble#Feigen:oiref>=426,1387,426,1595,656,1595,656,1189,536,1189:oigroup>
+<oigroup:<oiref:java#Class#Functions.Derive.ADeriveAble:oiref>=810,29,200,206,1:oigroup>
+<oigroup:<oiref:java#Extends#Function.AInvertAble#Function.AFunction:oiref>=628,212,628,171:oigroup>
+<oigroup:MemberLink#<oiref:java#Member#Function.Derive.CCountAble#Zero:oiref>=125,1387,125,1782,317,1782,317,1002,216,1002:oigroup>
+<oigroup:<oiref:java#Extends#Function.Derive.Identity#Function.Derive.ARealDeriveAble:oiref>=970,608,930,608:oigroup>
+<oigroup:MemberLink#<oiref:java#Member#Function.Derive.ARealDeriveAble#Identity:oiref>=930,666,970,666:oigroup>
+<oigroup:MemberLink#<oiref:java#Member#Functions.Derive.Identity#Identity:oiref>=900,692,900,742,990,742,990,652,940,652:oigroup>
+<oigroup:MemberLink#<oiref:java#Member#Functions.Derive.AConst#Integral:oiref>=230,130,510,130:oigroup>
+<oigroup:MemberLink#<oiref:java#Member#Functions.Derive.CCountAble#Ternary:oiref>=290,570,530,570:oigroup>
+<oigroup:MemberLink#<oiref:java#Member#Functions.Derive.CMeasurAble#e2:oiref>=106,1145,106,1380,362,1380,362,920,229,920:oigroup>
+<oigroup:<oiref:java#Implements#Function.Derive.AConst#Function.Derive.DeriveAble:oiref>=271,642,271,581:oigroup>
+<oigroup:<oiref:java#Extends#Function.Derive.AStatic#Function.Derive.ADeriveAble:oiref>=559,660,559,620:oigroup>
+<oigroup:MemberLink#<oiref:java#Member#Function.Derive.Cat#inner:oiref>=720,105,439,105:oigroup>
+<oigroup:<oiref:java#Class#Functions.Derive.CMeasurAble:oiref>=29,750,200,395,1:oigroup>
+<oigroup:MemberLink#<oiref:java#Member#Functions.Derive.CMeasurAble#Gon:oiref>=164,1145,164,1272,304,1272,304,1028,229,1028:oigroup>
+<oigroup:MemberLink#<oiref:java#Member#Function.Derive.CMeasurAble#SqRt5:oiref>=491,1387,491,1478,591,1478,591,1306,536,1306:oigroup>
+<oigroup:MemberLink#<oiref:java#Member#Function.Derive.CMeasurAble#NullK9:oiref>=365,1387,365,1730,717,1730,717,1054,536,1054:oigroup>
+<oigroup:MemberLink#<oiref:java#Member#Function.Derive.ARealDeriveAble#Integral:oiref>=940,305,420,153:oigroup>
+<oigroup:MemberLink#<oiref:java#Member#Functions.Derive.CMeasurAble#Infinity:oiref>=70,1145,70,1459,398,1459,398,841,229,841:oigroup>
+<oigroup:MemberLink#<oiref:java#Member#Functions.Derive.CMeasurAble#SqRt2:oiref>=174,1145,174,1254,294,1254,294,1046,229,1046:oigroup>
+<oigroup:MemberLink#<oiref:java#Member#Functions.Derive.CMeasurAble#NullK1:oiref>=62,1145,62,1475,406,1475,406,825,229,825:oigroup>
+<oigroup:MemberLink#<oiref:java#Member#Functions.Derive.CMeasurAble#Permille:oiref>=50,1145,50,1499,418,1499,418,801,229,801:oigroup>
+<oigroup:<oiref:java#Class#Functions.Derive.Const:oiref>=300,141,171,270,1:oigroup>
+<oigroup:MemberLink#<oiref:java#Member#Function.Derive.AConst#Integral:oiref>=316,642,316,581:oigroup>
+<oigroup:MemberLink#<oiref:java#Member#Functions.Derive.CCountAble#Five:oiref>=160,715,160,757,430,757,430,683,290,683:oigroup>
+<oigroup:<oiref:java#Implements#Function.Derive.ARealDeriveAble#Function.Derive.RealDeriveAble:oiref>=830,550,830,525:oigroup>
+<oigroup:<oiref:java#Extends#Functions.Derive.ByRefComparison#Functions.Derive.Comparison:oiref>=520,470,497,470:oigroup>
+<oigroup:MemberLink#<oiref:java#Member#Function.Derive.CCountAble#False:oiref>=210,1387,250,1812:oigroup>
+<oigroup:MemberLink#<oiref:java#Member#Function.Derive.CMeasurAble#Gon:oiref>=471,1387,471,1514,611,1514,611,1270,536,1270:oigroup>
+<oigroup:MemberLink#<oiref:java#Member#Functions.Derive.CMeasurAble#PiQuarter:oiref>=134,1145,134,1326,334,1326,334,974,229,974:oigroup>
+<oigroup:<oiref:java#Extends#Function.Derive.DeriveAble#Function.InvertAble:oiref>=333,432,333,359:oigroup>
+<oigroup:<oiref:java#Implements#Functions.Derive.ADeriveAble#Functions.Derive.DeriveAble:oiref>=810,68,710,68:oigroup>
+<oigroup:MemberLink#<oiref:java#Member#Function.Derive.CCountAble#Equal:oiref>=87,1387,87,1812:oigroup>
+<oigroup:<oiref:java#Class#Function.AInvertAble:oiref>=476,212,190,158,1:oigroup>
+<oigroup:MemberLink#<oiref:java#Member#Function.Derive.CCountAble#Hundred:oiref>=197,1387,197,1477,245,1477,245,1307,216,1307:oigroup>
+<oigroup:MemberLink#<oiref:java#Member#Function.Derive.CMeasurAble#Percent:oiref>=353,1387,353,1757,729,1757,729,1027,536,1027:oigroup>
+<oigroup:MemberLink#<oiref:java#Member#Function.Derive.Identity#Identity:oiref>=1130,762,1130,812,1220,812,1220,722,1170,722:oigroup>
+<oigroup:MemberLink#<oiref:java#Member#Functions.Derive.CMeasurAble#Ln2:oiref>=78,1145,78,1443,390,1443,390,857,229,857:oigroup>
+<oigroup:MemberLink#<oiref:java#Member#Function.Derive.CCountAble#Five:oiref>=179,1387,179,1557,263,1557,263,1227,216,1227:oigroup>
+<oigroup:MemberLink#<oiref:java#Member#Function.Derive.CMeasurAble#CbcRt2:oiref>=476,1387,476,1505,606,1505,606,1279,536,1279:oigroup>
+<oigroup:<oiref:java#Extends#Functions.Derive.Const#Functions.Derive.AConst:oiref>=300,194,230,194:oigroup>
+<oigroup:<oiref:java#Class#Functions.Derive.AConst:oiref>=30,10,200,238,1:oigroup>
+*/
+class __positions {
+}

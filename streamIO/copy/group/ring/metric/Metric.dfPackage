@@ -1,0 +1,391 @@
+package id4vy0zc9fodqegc9fqqr4o;
+
+/**
+@version 2.0
+@physicalPackage
+@__modelType diagram 
+*/
+class diagram {
+/**
+@shapeType DependencyLink
+@__modelType link
+@__ref <oiref:design#Class#id2otl3c9fodqegc9fq5gp1.diagram:oiref><oihard>
+@automatic 
+*/
+class link {
+}/**
+@shapeType DependencyLink
+@__modelType link
+@__ref <oiref:design#Class#id235w6c9fodqegc9fqqsdg.diagram:oiref><oihard>
+@automatic 
+*/
+class link177 {
+}/**
+@shapeType DependencyLink
+@__modelType link
+@__ref <oiref:design#Class#id15cqcc9fodqegc9fqqu1j.diagram:oiref><oihard>
+@automatic 
+*/
+class link178 {
+}/**
+@shapeType DependencyLink
+@__modelType link
+@__ref <oiref:design#Class#id3ai3cc9frybwec9fs1pgf.diagram:oiref><oihard>
+@automatic 
+*/
+class link179 {
+}/**
+@shapeType DependencyLink
+@__modelType link
+@__ref <oiref:design#Class#id47mokc9fodqegc9fq5czi.diagram:oiref><oihard>
+@automatic 
+*/
+class link180 {
+}/**
+@shapeType DependencyLink
+@__modelType link
+@__ref <oiref:design#Class#id7qibc9fodqegc9fqqngt.diagram:oiref><oihard>
+@automatic 
+*/
+class link181 {
+}/**
+@shapeType DependencyLink
+@__modelType link
+@__ref <oiref:design#Class#id2z7bcc9fodqegc9fq5es2.diagram:oiref><oihard>
+@automatic 
+*/
+class link182 {
+}/**
+@shapeType DependencyLink
+@__modelType link
+@__ref <oiref:design#Class#id9f8wc9frybwec9fs0pa9.diagram:oiref><oihard>
+@automatic 
+*/
+class link183 {
+}/**
+@shapeType DependencyLink
+@__modelType link
+@__ref <oiref:design#Class#id45u3xc9frybwec9fs1q4c.diagram:oiref><oihard>
+@automatic 
+*/
+class link184 {
+}/**
+@shapeType DependencyLink
+@__modelType link
+@__ref <oiref:design#Class#id25b1fc9fodqegc9fqqpu7.diagram:oiref><oihard>
+@automatic 
+*/
+class link185 {
+}/**
+@shapeType DependencyLink
+@__modelType link
+@__ref <oiref:design#Class#idqb01c9fodqegc9fq5ddp.diagram:oiref><oihard>
+@automatic 
+*/
+class link186 {
+}/**
+@shapeType DependencyLink
+@__modelType link
+@__ref <oiref:design#Class#id457m4c9fodqegc9fq5a4l.diagram:oiref><oihard>
+@automatic 
+*/
+class link187 {
+}/**
+@__ref <oiref:java#Class#Stream.Copy.Group.Ring.Metric.AMetricIRing:oiref><oihard>
+@__modelType reference 
+*/
+class reference {
+}/**
+@__ref <oiref:java#Class#Stream.Copy.Group.Ring.Metric.MultiStepY:oiref><oihard>
+@__modelType reference 
+*/
+class reference64 {
+}/**
+@__ref <oiref:java#Class#Stream.Copy.Group.Ring.Metric.ANorm:oiref><oihard>
+@__modelType reference 
+*/
+class reference65 {
+}/**
+@__ref <oiref:java#Class#Stream.Copy.Group.Ring.Metric.StepTrapezQ:oiref><oihard>
+@__modelType reference 
+*/
+class reference66 {
+}/**
+@__ref <oiref:java#Class#Stream.Copy.Group.Ring.Metric.NewtonStep2Q:oiref><oihard>
+@__modelType reference 
+*/
+class reference68 {
+}/**
+@__ref <oiref:java#Class#Stream.Copy.Group.Ring.Metric.AStepperQ:oiref><oihard>
+@__modelType reference 
+*/
+class reference69 {
+}/**
+@__ref <oiref:java#Class#Stream.Copy.Group.Ring.Metric.CScalarMetric:oiref><oihard>
+@__modelType reference 
+*/
+class reference70 {
+}/**
+@__ref <oiref:java#Class#Stream.Copy.Group.Ring.Metric.PegasusStep:oiref><oihard>
+@__modelType reference 
+*/
+class reference71 {
+}/**
+@__ref <oiref:java#Class#Stream.Copy.Group.Ring.Metric.MultiStep:oiref><oihard>
+@__modelType reference 
+*/
+class reference73 {
+}/**
+@__ref <oiref:java#Class#Stream.Copy.Group.Ring.Metric.NewtonStepQ:oiref><oihard>
+@__modelType reference 
+*/
+class reference75 {
+}/**
+@__ref <oiref:java#Class#Stream.Copy.Group.Ring.Metric.AScalarMetric:oiref><oihard>
+@__modelType reference 
+*/
+class reference77 {
+}/**
+@__ref <oiref:java#Class#Stream.Copy.Group.Ring.Metric.BiSectStepQ:oiref><oihard>
+@__modelType reference 
+*/
+class reference79 {
+}/**
+@__ref <oiref:java#Class#Stream.Copy.Group.Ring.Metric.FuzzyNumber:oiref><oihard>
+@__modelType reference 
+*/
+class reference80 {
+}/**
+@__ref <oiref:java#Class#Stream.Copy.Group.Ring.Metric.CMetricIRing:oiref><oihard>
+@__modelType reference 
+*/
+class reference81 {
+}/**
+@__ref <oiref:java#Class#Stream.Copy.Group.Ring.Metric.CMetric:oiref><oihard>
+@__modelType reference 
+*/
+class reference88 {
+}/**
+@__ref <oiref:java#Class#Stream.Copy.Group.Ring.Metric.Fuzzifier:oiref><oihard>
+@__modelType reference 
+*/
+class reference93 {
+}/**
+@__ref <oiref:java#Class#Stream.Copy.Group.Ring.Metric.AWellOrder:oiref><oihard>
+@__modelType reference 
+*/
+class reference94 {
+}/**
+@__ref <oiref:java#Class#Stream.Copy.Group.Ring.Metric.FalsiStepQ:oiref><oihard>
+@__modelType reference 
+*/
+class reference97 {
+}/**
+@__ref <oiref:java#Class#Stream.Copy.Group.Ring.Metric.CWellOrder:oiref><oihard>
+@__modelType reference 
+*/
+class reference98 {
+}/**
+@__ref <oiref:java#Class#Stream.Copy.Group.Ring.Metric.MaxPlus:oiref><oihard>
+@__modelType reference 
+*/
+class reference101 {
+}/**
+@__ref <oiref:java#Class#Stream.Copy.Group.Ring.Metric.MultiStepYQ:oiref><oihard>
+@__modelType reference 
+*/
+class reference103 {
+}/**
+@__ref <oiref:java#Class#Stream.Copy.Group.Ring.Metric.CNorm:oiref><oihard>
+@__modelType reference 
+*/
+class reference104 {
+}/**
+@__ref <oiref:java#Class#Stream.Copy.Group.Ring.Metric.ARefinerQ:oiref><oihard>
+@__modelType reference 
+*/
+class reference105 {
+}/**
+@__ref <oiref:java#Class#Stream.Copy.Group.Ring.Metric.StepRKF:oiref><oihard>
+@__modelType reference 
+*/
+class reference107 {
+}/**
+@__ref <oiref:java#Class#Stream.Copy.Group.Ring.Metric.GoldenStep:oiref><oihard>
+@__modelType reference 
+*/
+class reference108 {
+}/**
+@__ref <oiref:java#Class#Stream.Copy.Group.Ring.Metric.AMetric:oiref><oihard>
+@__modelType reference 
+*/
+class reference109 {
+}/**
+@__ref <oiref:java#Class#Stream.Copy.Group.Ring.Metric.SMIntRing:oiref><oihard>
+@__modelType reference 
+*/
+class reference113 {
+}/**
+@__ref <oiref:java#Class#Stream.Copy.Group.Ring.Metric.TestMetric:oiref><oihard>
+@__modelType reference 
+*/
+class reference115 {
+}/**
+@__ref <oiref:java#Class#Stream.Copy.Group.Ring.Metric.StepRKQ:oiref><oihard>
+@__modelType reference 
+*/
+class reference117 {
+}/**
+@__ref <oiref:java#Class#Stream.Copy.Group.Ring.Metric.StepMPQ:oiref><oihard>
+@__modelType reference 
+*/
+class reference119 {
+}/**
+@__ref <oiref:java#Class#Stream.Copy.Group.Ring.Metric.StepRKFQ:oiref><oihard>
+@__modelType reference 
+*/
+class reference120 {
+}/**
+@__ref <oiref:java#Class#Stream.Copy.Group.Ring.Metric.ExtraPolValue:oiref><oihard>
+@__modelType reference 
+*/
+class reference121 {
+}/**
+@__ref <oiref:java#Class#Stream.Copy.Group.Ring.Metric.Norm:oiref><oihard>
+@__modelType reference 
+*/
+class reference1 {
+}/**
+@__ref <oiref:java#Class#Stream.Copy.Group.Ring.Metric.INorm:oiref><oihard>
+@__modelType reference 
+*/
+class reference2 {
+}/**
+@__ref <oiref:java#Class#Stream.Copy.Group.Ring.Metric.MetricIRing:oiref><oihard>
+@__modelType reference 
+*/
+class reference3 {
+}/**
+@__ref <oiref:java#Class#Stream.Copy.Group.Ring.Metric.ScalarMetric:oiref><oihard>
+@__modelType reference 
+*/
+class reference4 {
+}/**
+@__ref <oiref:java#Class#Stream.Copy.Group.Ring.Metric.IWellOrder:oiref><oihard>
+@__modelType reference 
+*/
+class reference5 {
+}/**
+@__ref <oiref:java#Class#Stream.Copy.Group.Ring.Metric.IMetric:oiref><oihard>
+@__modelType reference 
+*/
+class reference11 {
+}/**
+@__ref <oiref:java#Class#Stream.Copy.Group.Ring.Metric.WellOrder:oiref><oihard>
+@__modelType reference 
+*/
+class reference12 {
+}/**
+@__ref <oiref:java#Class#Stream.Copy.Group.Ring.Metric.Metric:oiref><oihard>
+@__modelType reference 
+*/
+class reference13 {
+}/**
+@__ref <oiref:java#Class#AMetricIRing:oiref><oihard>
+@__modelType reference 
+*/
+class reference14 {
+}/**
+@__ref <oiref:java#Class#StepRKFQ:oiref><oihard>
+@__modelType reference 
+*/
+class reference36 {
+}/**
+@__ref <oiref:java#Class#NewtonStepQ:oiref><oihard>
+@__modelType reference 
+*/
+class reference37 {
+}/**
+@__ref <oiref:java#Class#ExtraPolValue:oiref><oihard>
+@__modelType reference 
+*/
+class reference49 {
+}/**
+@__ref <oiref:java#Class#PegasusStep:oiref><oihard>
+@__modelType reference 
+*/
+class reference55 {
+}/**
+@__ref <oiref:java#Class#GoldenStep:oiref><oihard>
+@__modelType reference 
+*/
+class reference67 {
+}/**
+@__ref <oiref:java#Class#StepTrapezQ:oiref><oihard>
+@__modelType reference 
+*/
+class reference72 {
+}/**
+@__ref <oiref:java#Class#StepRKF:oiref><oihard>
+@__modelType reference 
+*/
+class reference74 {
+}/**
+@__ref <oiref:java#Class#AStepperQ:oiref><oihard>
+@__modelType reference 
+*/
+class reference82 {
+}/**
+@__ref <oiref:java#Class#StepRKQ:oiref><oihard>
+@__modelType reference 
+*/
+class reference92 {
+}/**
+@__ref <oiref:java#Class#StepMPQ:oiref><oihard>
+@__modelType reference 
+*/
+class reference118 {
+}/**
+@__ref <oiref:java#Class#MaxPlus:oiref><oihard>
+@__modelType reference 
+*/
+class reference142 {
+}/**
+@__ref <oiref:java#Class#FalsiStepQ:oiref><oihard>
+@__modelType reference 
+*/
+class reference147 {
+}/**
+@__ref <oiref:java#Class#BiSectStepQ:oiref><oihard>
+@__modelType reference 
+*/
+class reference155 {
+}/**
+@__ref <oiref:java#Class#MultiStepY:oiref><oihard>
+@__modelType reference 
+*/
+class reference158 {
+}/**
+@__ref <oiref:java#Class#ScalarMetric:oiref><oihard>
+@__modelType reference 
+*/
+class reference162 {
+}/**
+@__ref <oiref:java#Class#MultiStep:oiref><oihard>
+@__modelType reference 
+*/
+class reference176 {
+}}/**
+@__tags
+@shapeType ClassDiagram 
+*/
+class __tags {
+}/**
+@__options 
+*/
+class __options {
+}/**
+@__positions 
+*/
+class __positions {
+}

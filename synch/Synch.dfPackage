@@ -1,0 +1,188 @@
+package id1fbpmcpiqd7rpcpiqepmm;
+
+/**
+@version 2.0
+@physicalPackage
+@__modelType diagram 
+*/
+class diagram {
+/**
+@__ref <oiref:design#Class#id4f55cpf5y2npcpfv7klv.diagram:oiref><oihard>
+@__modelType reference
+@__fqn <oiref:#Package#Synch.Aspects:oiref> 
+*/
+class reference151 {
+}/**
+@__ref <oiref:design#Class#id33462cpiqd7rpcpiqj1ik.diagram:oiref><oihard>
+@__modelType reference
+@__fqn <oiref:#Package#Synch.Property:oiref> 
+*/
+class reference152 {
+}/**
+@__ref <oiref:java#Class#synch.IPublisher:oiref><oihard>
+@__modelType reference 
+*/
+class reference {
+}/**
+@__ref <oiref:java#Class#synch.TooManySubscribersException:oiref><oihard>
+@__modelType reference 
+*/
+class reference301 {
+}/**
+@__ref <oiref:java#Class#synch.PropDouble:oiref><oihard>
+@__modelType reference 
+*/
+class reference302 {
+}/**
+@__ref <oiref:java#Class#synch.InvalidError:oiref><oihard>
+@__modelType reference 
+*/
+class reference303 {
+}/**
+@__ref <oiref:java#Class#synch.UniCaster:oiref><oihard>
+@__modelType reference 
+*/
+class reference304 {
+}/**
+@__ref <oiref:java#Class#synch.PathValidationRule:oiref><oihard>
+@__modelType reference 
+*/
+class reference305 {
+}/**
+@__ref <oiref:java#Class#synch.ValidationRule:oiref><oihard>
+@__modelType reference 
+*/
+class reference306 {
+}/**
+@__ref <oiref:java#Class#synch.UniCastConstrained:oiref><oihard>
+@__modelType reference 
+*/
+class reference307 {
+}/**
+@__ref <oiref:java#Class#synch.IConstrained:oiref><oihard>
+@__modelType reference 
+*/
+class reference308 {
+}/**
+@__ref <oiref:java#Class#synch.MultiCaster:oiref><oihard>
+@__modelType reference 
+*/
+class reference309 {
+}/**
+@__ref <oiref:java#Class#synch.AConstrained:oiref><oihard>
+@__modelType reference 
+*/
+class reference310 {
+}/**
+@__ref <oiref:java#Class#synch.InvalidException:oiref><oihard>
+@__modelType reference 
+*/
+class reference311 {
+}/**
+@__ref <oiref:java#Class#synch.IValidation:oiref><oihard>
+@__modelType reference 
+*/
+class reference312 {
+}/**
+@__ref <oiref:java#Class#synch.SubCaster:oiref><oihard>
+@__modelType reference 
+*/
+class reference313 {
+}/**
+@__ref <oiref:java#Class#synch.MultiValidator:oiref><oihard>
+@__modelType reference 
+*/
+class reference314 {
+}/**
+@__ref <oiref:java#Class#synch.APubUniLinkSub:oiref><oihard>
+@__modelType reference 
+*/
+class reference315 {
+}/**
+@__ref <oiref:java#Class#synch.ValidationRuleList:oiref><oihard>
+@__modelType reference 
+*/
+class reference316 {
+}/**
+@__ref <oiref:java#Class#synch.ACachedProperty:oiref><oihard>
+@__modelType reference 
+*/
+class reference317 {
+}/**
+@__ref <oiref:java#Class#synch.StateMachine:oiref><oihard>
+@__modelType reference 
+*/
+class reference318 {
+}/**
+@__ref <oiref:java#Class#synch.IValidationRule:oiref><oihard>
+@__modelType reference 
+*/
+class reference319 {
+}/**
+@__ref <oiref:java#Class#synch.writeOnceProperty:oiref><oihard>
+@__modelType reference 
+*/
+class reference320 {
+}/**
+@__ref <oiref:java#Class#synch.IValidator:oiref><oihard>
+@__modelType reference 
+*/
+class reference321 {
+}/**
+@__ref <oiref:java#Class#synch.ISubscriber:oiref><oihard>
+@__modelType reference 
+*/
+class reference322 {
+}}/**
+@__tags
+@shapeType ClassDiagram 
+*/
+class __tags {
+}/**
+@__options 
+*/
+class __options {
+}/**
+@__positions <oigroup:<oiref:java#Implements#Synch.APubUniLinkSub#Synch.IPublisher:oiref>=917,436,734,159:oigroup>
+<oigroup:<oiref:java#Member#Synch.Property.AAttribProperty#Max:oiref>=1052,342,121,16,1:oigroup>
+<oigroup:<oiref:java#Extends#Synch.UniCastConstrained#Synch.UniCaster:oiref>=373,784,373,578:oigroup>
+<oigroup:<oiref:java#Member#Synch.Property.UIProperty#Width:oiref>=1074,541,77,16,1:oigroup>
+<oigroup:<oiref:java#Implements#Synch.UniCastConstrained#Synch.IConstrained:oiref>=292,784,292,585:oigroup>
+<oigroup:<oiref:java#Member#Synch.Property.AAttribProperty#mandatory:oiref>=1052,246,121,16,1:oigroup>
+<oigroup:<oiref:java#Member#Synch.Property.AAttribProperty#MaxLength:oiref>=1052,278,121,16,1:oigroup>
+<oigroup:<oiref:java#Implements#Synch.UniCaster#Synch.IPublisher:oiref>=515,436,638,159:oigroup>
+<oigroup:<oiref:java#Member#Synch.Property.UIProperty#Height:oiref>=1074,525,77,16,1:oigroup>
+<oigroup:<oiref:java#Member#Synch.Property.AAttribProperty#enabled:oiref>=1052,198,121,16,1:oigroup>
+<oigroup:<oiref:java#Class#Synch.Property.testProperty:oiref>=1072,650,83,85,1:oigroup>
+<oigroup:<oiref:java#Class#Synch.Property.AAttribProperty:oiref>=1050,150,127,251,1:oigroup>
+<oigroup:MemberLink#<oiref:java#Member#Synch.APubUniLinkSub#subscriber:oiref>=944,674,944,724,1034,724,1034,634,984,634:oigroup>
+<oigroup:<oiref:java#Member#Synch.Property.AAttribProperty#ToolTipText:oiref>=1052,310,121,16,1:oigroup>
+<oigroup:<oiref:java#Member#Synch.Property.UIProperty#Top:oiref>=1074,493,77,16,1:oigroup>
+<oigroup:<oiref:design#Class#id4f55cpf5y2npcpfv7klv.diagram:oiref>=888,1010,112,132,1:oigroup>
+<oigroup:<oiref:java#Extends#Synch.SubCaster#Synch.UniCaster:oiref>=483,784,483,578:oigroup>
+<oigroup:<oiref:java#Implements#Synch.MultiCaster#Synch.IPublisher:oiref>=701,436,701,159:oigroup>
+<oigroup:<oiref:java#Extends#Synch.Property.UIProperty#Synch.Property.AAttribProperty:oiref>=1113,461,1113,401:oigroup>
+<oigroup:<oiref:java#Member#Synch.Property.UIProperty#Left:oiref>=1074,509,77,16,1:oigroup>
+<oigroup:<oiref:design#Class#id33462cpiqd7rpcpiqj1ik.diagram:oiref>=1097,750,104,116,1:oigroup>
+<oigroup:<oiref:java#Implements#Synch.AConstrained#Synch.IValidator:oiref>=119,1040,30,996,30,847,72,537:oigroup>
+<oigroup:<oiref:java#Member#Synch.Property.AAttribProperty#locked:oiref>=1052,230,121,16,1:oigroup>
+<oigroup:<oiref:java#Class#Synch.Property.UIProperty:oiref>=1072,461,83,139,1:oigroup>
+<oigroup:<oiref:java#Implements#Synch.APubUniLinkSub#Synch.ISubscriber:oiref>=850,436,540,146,540,111:oigroup>
+<oigroup:<oiref:java#Implements#Synch.MultiValidator#Synch.IConstrained:oiref>=187,784,187,585:oigroup>
+<oigroup:<oiref:java#Member#Synch.Property.AAttribProperty#Min:oiref>=1052,326,121,16,1:oigroup>
+<oigroup:<oiref:java#Implements#Synch.AConstrained#Synch.ISubscriber:oiref>=96,1040,10,1003,30,426,483,379,483,111:oigroup>
+<oigroup:<oiref:java#Implements#Synch.MultiCaster#Synch.ISubscriber:oiref>=638,436,525,145,525,111:oigroup>
+<oigroup:<oiref:java#Implements#Synch.MultiValidator#Synch.IValidator:oiref>=94,784,94,537:oigroup>
+<oigroup:MemberLink#<oiref:java#Member#Synch.UniCastConstrained#validator:oiref>=263,784,117,547,117,537:oigroup>
+<oigroup:MemberLink#<oiref:java#Member#Synch.UniCaster#subscriber:oiref>=495,436,495,111:oigroup>
+<oigroup:<oiref:java#Member#Synch.Property.AAttribProperty#MinLength:oiref>=1052,262,121,16,1:oigroup>
+<oigroup:<oiref:java#Member#Synch.Property.testProperty#main#(#java.lang.String[]#)#:oiref>=1074,705,77,16,1:oigroup>
+<oigroup:<oiref:java#Member#Synch.Property.AAttribProperty#HelpContextID:oiref>=1052,294,121,16,1:oigroup>
+<oigroup:<oiref:java#Member#Synch.Property.AAttribProperty#visible:oiref>=1052,214,121,16,1:oigroup>
+<oigroup:<oiref:java#Class#Synch.Property.PropString:oiref>=1072,770,83,82,1:oigroup>
+<oigroup:<oiref:java#Extends#Synch.AConstrained#Synch.UniCastConstrained:oiref>=142,1040,316,974:oigroup>
+<oigroup:<oiref:java#Implements#Synch.SubCaster#Synch.ISubscriber:oiref>=512,784,556,555,556,512,510,111:oigroup>
+<oigroup:MemberLink#<oiref:java#Member#Synch.PropDouble#subscriber:oiref>=391,60,471,60:oigroup>
+*/
+class __positions {
+}

@@ -1,0 +1,182 @@
+package id3npiic9frybwec9fs1t40;
+
+/**
+@version 2.0
+@physicalPackage
+@__modelType diagram 
+*/
+class diagram {
+/**
+@shapeType DependencyLink
+@__modelType link
+@__ref <oiref:design#Class#idqb01c9fodqegc9fq5ddp.diagram:oiref><oihard>
+@automatic 
+*/
+class link {
+}/**
+@shapeType DependencyLink
+@__modelType link
+@__ref <oiref:design#Class#id2otl3c9fodqegc9fq5gp1.diagram:oiref><oihard>
+@automatic 
+*/
+class link222 {
+}/**
+@shapeType DependencyLink
+@__modelType link
+@__ref <oiref:design#Class#id457m4c9fodqegc9fq5a4l.diagram:oiref><oihard>
+@automatic 
+*/
+class link223 {
+}/**
+@shapeType DependencyLink
+@__modelType link
+@__ref <oiref:design#Class#id47mokc9fodqegc9fq5czi.diagram:oiref><oihard>
+@automatic 
+*/
+class link224 {
+}/**
+@__ref <oiref:java#Class#Stream.Copy.Order.AIndexed:oiref><oihard>
+@__modelType reference 
+*/
+class reference {
+}/**
+@__ref <oiref:java#Class#Stream.Copy.Order.IntervalOrd:oiref><oihard>
+@__modelType reference 
+*/
+class reference212 {
+}/**
+@__ref <oiref:java#Class#Stream.Copy.Order.Interval:oiref><oihard>
+@__modelType reference 
+*/
+class reference213 {
+}/**
+@__ref <oiref:java#Class#Stream.Copy.Order.DblOrder:oiref><oihard>
+@__modelType reference 
+*/
+class reference214 {
+}/**
+@__ref <oiref:java#Class#Stream.Copy.Order.Order:oiref><oihard>
+@__modelType reference 
+*/
+class reference215 {
+}/**
+@__ref <oiref:java#Class#Stream.Copy.Order.AFixIndexed:oiref><oihard>
+@__modelType reference 
+*/
+class reference216 {
+}/**
+@__ref <oiref:java#Class#Stream.Copy.Order.Indexed:oiref><oihard>
+@__modelType reference 
+*/
+class reference217 {
+}/**
+@__ref <oiref:java#Class#Stream.Copy.Order.COrder:oiref><oihard>
+@__modelType reference 
+*/
+class reference218 {
+}/**
+@__ref <oiref:java#Class#Stream.Copy.Order.LngOrder:oiref><oihard>
+@__modelType reference 
+*/
+class reference219 {
+}/**
+@__ref <oiref:java#Class#Stream.Copy.Order.IInterval:oiref><oihard>
+@__modelType reference 
+*/
+class reference220 {
+}/**
+@__ref <oiref:java#Class#Stream.Copy.Order.AOrder:oiref><oihard>
+@__modelType reference 
+*/
+class reference221 {
+}/**
+@__ref <oiref:java#Class#Stream.Copy.Order.testOrder:oiref><oihard>
+@__modelType reference 
+*/
+class reference222 {
+}/**
+@__ref <oiref:java#Class#Stream.Copy.Order.FixIndexed:oiref><oihard>
+@__modelType reference 
+*/
+class reference223 {
+}/**
+@__ref <oiref:java#Class#Order:oiref><oihard>
+@__modelType reference 
+*/
+class reference100 {
+}/**
+@__ref <oiref:java#Class#IInterval:oiref><oihard>
+@__modelType reference 
+*/
+class reference102 {
+}/**
+@__ref <oiref:java#Class#Interval:oiref><oihard>
+@__modelType reference 
+*/
+class reference127 {
+}/**
+@__ref <oiref:java#Class#testOrder:oiref><oihard>
+@__modelType reference 
+*/
+class reference130 {
+}/**
+@__ref <oiref:java#Class#AOrder:oiref><oihard>
+@__modelType reference 
+*/
+class reference133 {
+}/**
+@__ref <oiref:java#Class#DblOrder:oiref><oihard>
+@__modelType reference 
+*/
+class reference134 {
+}/**
+@__ref <oiref:java#Class#IntervalOrd:oiref><oihard>
+@__modelType reference 
+*/
+class reference157 {
+}/**
+@__ref <oiref:java#Class#LngOrder:oiref><oihard>
+@__modelType reference 
+*/
+class reference197 {
+}}/**
+@__tags
+@shapeType ClassDiagram 
+*/
+class __tags {
+}/**
+@__options 
+*/
+class __options {
+}/**
+@__positions <oigroup:<oiref:java#Class#Stream.Copy.Order.Indexed:oiref>=230,171,149,101,1:oigroup>
+<oigroup:<oiref:java#Class#Stream.Copy.Order.IntervalOrd:oiref>=730,1167,200,229,1:oigroup>
+<oigroup:<oiref:java#Class#Stream.Copy.Order.DblOrder:oiref>=874,283,176,213,1:oigroup>
+<oigroup:<oiref:java#Implements#Stream.Copy.Order.FixIndexd#Stream.Copy.Order.FixIndexed:oiref>=499,171,327,111:oigroup>
+<oigroup:<oiref:java#Class#Stream.Copy.Order.AOrder:oiref>=619,251,200,414,1:oigroup>
+<oigroup:<oiref:java#Class#Stream.Copy.Order.testOrder:oiref>=1063,10,148,85,1:oigroup>
+<oigroup:<oiref:java#Class#Stream.Copy.Order.AFixIndexed:oiref>=10,171,200,334,1:oigroup>
+<oigroup:<oiref:java#Implements#Stream.Copy.Order.AIndexed#Stream.Copy.Order.Indexed:oiref>=309,320,309,272:oigroup>
+<oigroup:<oiref:java#Extends#Stream.Copy.Order.DblOrder#Stream.Copy.Order.LngOrder:oiref>=962,283,962,223:oigroup>
+<oigroup:MemberLink#<oiref:java#Member#Stream.Copy.Order.AOrder#self:oiref>=751,251,751,191:oigroup>
+<oigroup:<oiref:java#Implements#Stream.Copy.Order.Indexd#Stream.Copy.Order.Indexed:oiref>=342,565,342,272:oigroup>
+<oigroup:<oiref:java#Class#Stream.Copy.Order.Interval:oiref>=730,725,200,382,1:oigroup>
+<oigroup:<oiref:java#Class#Stream.Copy.Order.COrder:oiref>=584,725,126,85,1:oigroup>
+<oigroup:<oiref:java#Class#Stream.Copy.Order.AIndexed:oiref>=240,320,200,165,1:oigroup>
+<oigroup:<oiref:java#Extends#Stream.Copy.Order.COrder#Stream.Copy.Order.AOrder:oiref>=664,725,664,665:oigroup>
+<oigroup:<oiref:java#Class#Stream.Copy.Order.Order:oiref>=707,10,153,181,1:oigroup>
+<oigroup:<oiref:java#Class#Stream.Copy.Order.LngOrder:oiref>=881,10,162,213,1:oigroup>
+<oigroup:<oiref:java#Extends#Stream.Copy.Order.Indexed#Stream.Copy.Order.FixIndexed:oiref>=246,171,246,111:oigroup>
+<oigroup:<oiref:java#Class#Stream.Copy.Order.IInterval:oiref>=876,530,83,82,1:oigroup>
+<oigroup:MemberLink#<oiref:java#Member#Stream.Copy.Order.Interval#Right:oiref>=839,725,839,191:oigroup>
+<oigroup:<oiref:java#Extends#Stream.Copy.Order.IntervalOrd#Stream.Copy.Order.Interval:oiref>=830,1167,830,1107:oigroup>
+<oigroup:<oiref:java#Class#Stream.Copy.Order.FixIndexed:oiref>=170,10,93,101,1:oigroup>
+<oigroup:<oiref:java#Implements#Stream.Copy.Order.AOrder#Stream.Copy.Order.Order:oiref>=729,251,729,191:oigroup>
+<oigroup:<oiref:java#Implements#Stream.Copy.Order.AFixIndexed#Stream.Copy.Order.FixIndexed:oiref>=190,171,190,111:oigroup>
+<oigroup:<oiref:java#Extends#Stream.Copy.Order.Indexd#Stream.Copy.Order.FixIndexd:oiref>=452,565,452,409:oigroup>
+<oigroup:MemberLink#<oiref:java#Member#Stream.Copy.Order.Interval#Left:oiref>=859,725,849,191:oigroup>
+<oigroup:<oiref:java#Extends#Stream.Copy.Order.AIndexed#Stream.Copy.Order.AFixIndexed:oiref>=240,394,210,394:oigroup>
+<oigroup:<oiref:java#Extends#Stream.Copy.Order.Interval#Stream.Copy.Order.AOrder:oiref>=752,725,752,665:oigroup> 
+*/
+class __positions {
+}

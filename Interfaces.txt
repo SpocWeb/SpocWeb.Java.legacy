@@ -1,0 +1,161 @@
+Use Templates for: 
+
+(Deep)Copying: Value, Vector, Matrix
+Swapping: 
+Permuting: 
+Streaming: IStream_In<T>
+Formatting: IFormatter<T> 
+Testing for Equality: IEquivalence<T>
+
+fundamental Naming:
+_ Prefix for Member Variables
+no Prefix for Parameters 
+small   Start Character for Packages, Members and local Variables
+Capital Start Character for Classes
+is/do/not Prefix for boolean Flags/Switches
+
+Create separate Packages to collect: 
+Interface Classes starting with I	those must be shared as Base for Interop 
+Abstract Classes starting with A	those are possibly shared, since small 
+Test Classes starting with T	those are not delivered 
+Implementation Classes 		these are only half worth without Testing Code
+
+Make the Read only Interfaces the Base Interfaces
+e.g. IBoole (for finite Enum Boolean Logic) or IProcessor Map instead of MapAt etc.
+
+Refactorings: 
+* All Methods taking Arrays with Start and End Index should have the End Index optional and 
+THEN the Start Index. 
+* All CopyAble Methods should have Methods like add(a, b, c) to perform c = a + b 
+	addAt(a, b) could then be implemented as add(a, b, a) and 
+	add(a, b, c) could be implemented as c.copyAt(a); c.addAt(b); 
+	
+* no static Methods should have an _AT Suffix, because they receive all Parameters anyway. 
+
+fundamental Interfaces:
+IInstantiAble newInstance()		Interface to create new, empty Objects of the same Type. 
+void  run()				Runnable, Standard Java Thread Interface!
+
+int   nextInt()			Number Input (Reader) Streams or
+float nextFloat()		Random Number Generators
+Obj   nextItem()		Stream.IFactory and Stream.IStreamIn
+						should this extend Runnable? no! Instead assemble!
+float  getFloat()		function.IMeasurAble 
+double getDouble()		
+						
+void  setInt(int)		function.IIndexAble 
+int   getInt()			function.ICountAble 
+short getShort()		
+long  getLong()			
+byte  getByte()			
+						
+String getString(Object)IStringValue used with Patricia Tries to implement different unique Indices. See Testers.Equivalence 
+String getString()		IDbStringValue
+String setString(String)
+						
+float getValue(Obj)		IFuzzyPredicate; could also be called IFuzzifier
+						see also function.IFloatFunction for real-valued fuzzy Sets. 
+						
+void  execute(Runnable)	IExecutor Interface for synch / asynch / Thread Pool Execution
+void execute(
+	IValueSetter 		The CallBack being called after Execution
+	IStreamIn)
+IFuture execute(		Returns the Result from IStreamIn.nextItem in the Future returned.
+	IStreamIn)
+Obj   execute()			compute.Task from the java Tutorial RMI: replaced by IStreamIn
+						The Task implicitly brings along it's Parameters!
+						This is not so good!
+						Better use the following Interface to execute Tasks remotely:
+						Obj execute(Function f, Object arg)
+						because it separates the Function from it's Arguments.
+
+void  Operation(Obj)	IOperation is not used anymore,...
+IStreamOut addItem(Obj)	...use Stream.IStreamOut instead, also for Logging!
+						Or use Functions.Processor or
+						Tester.test and ignore the Return Value!
+Arg   mapAt(Arg)		Functions.Processor for Mapping (and for Events)
+Obj   map  (Obj)		function.IFunction, could be renamed to "Mapper"
+Obj   getAt(Obj)		which is only defined in Structure.IRegistry
+void  setAt(Obj Key, Obj) Functions.IDynamicFunction
+float  map(float)		function.IFloatFunction; generic Scalar Functions 
+double map(double)		or Fuzzifier (compact Carrier, Range[0,1], not normed) 
+
+bool  test (Obj)		Testers.Tester used for Testing and for Events
+Obj   Operation(a1,a2)	Testers.Process.Operator
+int   compareTo(Obj)	java.lang.Comparable
+int   HashCode (Obj)	Testers.Equivalence
+bool  equals(a1,a2)		Testers.Equivalence
+int   cmp(Obj1,Obj2)	Testers.Orderator
+						that is derived from Equivalence and java.util.Comparator
+float cmp(Obj1,Obj2)	Testers.FloatMetric
+
+Value Interfaces:
+IReadyFlag  : boolean get()   a  boolean Flag
+IDirtyFlag  : boolean get/set a  boolean Flag
+IValue      : Object  get/set an Object Value
+ICValue     : Object  get()   an Object Value
+IValueSetter: Object      set an Object Value, nearly equivalent to IStreamOut.addItem()
+ICPair      : Object  get     an Object Val AND Key (Association)
+IPair       : Object  get/set an Object Val AND Key (Association)
+IFuture     : Object  get/set an Object Val AND automatically set a Flag
+			used together with asynchronous Executors
+
+An Adapter from the IValue and the IStreamIn IStreamOut Interfaces:
+ addItem <=> setVal
+nextItem <=> getVal
+
+Object   getAt(int)			IDirectRead
+void     setAt(int, Object)	IDirectAccess
+
+
+Regeln für einfache Typen:
+
+<Type>   get<Type>()
+void     set<Type> (<Type>)
+
+Regeln für Array-Typen:
+
+<Type>[] get<Type>()
+void     set<Type>(<Type>[])
+
+<Type>   getAt(int)
+void     setAt(int, <Type>)
+
+void     addItem  (     <Type>)
+void     addItemAt(int, <Type>)
+boolean  del      (     <Type>)
+
+Enum     enmVal
+void     clrVal
+
+double  map(double x, double[] a, double[] dyda)		IFloatFitFunction returns the Derivatives to the Parameters a
+void    map(double x, double[] ret)			IFloatVectorFunction
+float[] Map(float[] v, float[] ret)			IFloatVectorField 
+float   Map(float [] v)						IFloatScalarField 
+double  Map(double[] v)						IFloatScalarField 
+void    Funktion(double x, double[] y, double[] dydx)	IBinaryOpFloat 
+float   Funktion(float  x, float  y)					IBinaryOpFloat returns dydx
+double  Funktion(double x, double y)					IBinaryOpFloat returns dydx
+void    Funktion(IIntRing x, IIntRing y, IIntRing derivative1) 	IODE
+
+Stepper & Refiner: 
+float step(float)	IFloatStepper returns new proposed Step Size 
+float run (float)	IFloatStepper runs to the given Target 
+double refine() 	IFloatRefiner returns the refined Value for a Root or Extremum
+
+
+Wenn alle Relationen bidirektional navigierbar sind
+(und nicht nur von N => 1),
+dann erhält sich jeder Baum im Speicher,
+egal ob Ref-Counting oder Garbage Collection!
+Zu verhindern ist dies durch
+-ungültige Referenzen
+-weak References! (werden ggf. bei GC gelöscht)
+
+Neben expliziten Relationen (über Member Variable)
+müssen auch implizite Relationen möglich sein,
+die in einer WeakHashMap gespeichert werden.
+
+Offen ist die Frage, ob 1:N und N:M Relationen
+in derselben Weise gespeichert werden.
+

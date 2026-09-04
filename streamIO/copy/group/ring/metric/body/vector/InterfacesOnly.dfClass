@@ -1,0 +1,593 @@
+package id2ixjrcd7icx4dcd8hrj6r;
+
+/**
+@version 2.0
+@__modelType diagram 
+*/
+class diagram {
+/**
+@__ref <oiref:java#Class#Stream.Copy.Group.Ring.Metric.Body.Vector.IManifold:oiref><oihard>
+@__modelType reference
+@__imported
+@hideOperations 
+*/
+class reference {
+}/**
+@__ref <oiref:java#Class#Stream.Copy.Group.Ring.Metric.Body.Vector.IMatrix:oiref><oihard>
+@__modelType reference
+@__imported 
+*/
+class reference40 {
+}/**
+@__ref <oiref:java#Class#Stream.Copy.Group.Ring.Metric.Body.Vector.ITensor:oiref><oihard>
+@__modelType reference
+@__imported 
+*/
+class reference41 {
+}/**
+@__ref <oiref:java#Class#Stream.Copy.Group.Ring.Metric.Body.MetricBody:oiref><oihard>
+@__modelType reference
+@__imported
+@hideOperations 
+*/
+class reference42 {
+}/**
+@__ref <oiref:java#Class#Stream.Copy.Group.Ring.Metric.Body.IBody:oiref><oihard>
+@__modelType reference
+@__imported 
+*/
+class reference43 {
+}/**
+@__ref <oiref:java#Class#Stream.Copy.Group.Ring.Metric.Body.Body:oiref><oihard>
+@__modelType reference
+@__imported 
+*/
+class reference44 {
+}/**
+@__ref <oiref:java#Class#Stream.Copy.Group.Ring.Metric.IMetric:oiref><oihard>
+@__modelType reference
+@__imported 
+*/
+class reference45 {
+}/**
+@__ref <oiref:java#Class#Stream.Copy.Group.Ring.Metric.INorm:oiref><oihard>
+@__modelType reference
+@__imported 
+*/
+class reference46 {
+}/**
+@__ref <oiref:java#Class#Stream.Copy.Group.Ring.Metric.IWellOrder:oiref><oihard>
+@__modelType reference
+@__imported 
+*/
+class reference47 {
+}/**
+@__ref <oiref:java#Class#Stream.Copy.Group.Ring.Metric.Metric:oiref><oihard>
+@__modelType reference
+@__imported
+@hideOperations 
+*/
+class reference48 {
+}/**
+@__ref <oiref:java#Class#Stream.Copy.Group.Ring.Metric.MetricIRing:oiref><oihard>
+@__modelType reference
+@__imported
+@hideOperations 
+*/
+class reference49 {
+}/**
+@__ref <oiref:java#Class#Stream.Copy.Group.Ring.Metric.Norm:oiref><oihard>
+@__modelType reference
+@__imported 
+*/
+class reference50 {
+}/**
+@__ref <oiref:java#Class#Stream.Copy.Group.Ring.Metric.ScalarMetric:oiref><oihard>
+@__modelType reference
+@__imported
+@hideOperations 
+*/
+class reference51 {
+}/**
+@__ref <oiref:java#Class#Stream.Copy.Group.Ring.Metric.SMIntRing:oiref><oihard>
+@__modelType reference
+@__imported 
+*/
+class reference52 {
+}/**
+@__ref <oiref:java#Class#Stream.Copy.Group.Ring.Metric.WellOrder:oiref><oihard>
+@__modelType reference
+@__imported
+@hideOperations 
+*/
+class reference53 {
+}/**
+@__ref <oiref:java#Class#Stream.Copy.Group.Ring.BoolRing:oiref><oihard>
+@__modelType reference
+@__imported 
+*/
+class reference54 {
+}/**
+@__ref <oiref:java#Class#Stream.Copy.Group.Ring.IComplex:oiref><oihard>
+@__modelType reference
+@__imported
+@hideOperations 
+*/
+class reference55 {
+}/**
+@__ref <oiref:java#Class#Stream.Copy.Group.Ring.IInteger:oiref><oihard>
+@__modelType reference
+@__imported 
+*/
+class reference57 {
+}/**
+@__ref <oiref:java#Class#Stream.Copy.Group.Ring.integer:oiref><oihard>
+@__modelType reference
+@__imported
+@hideOperations 
+*/
+class reference58 {
+}/**
+@__ref <oiref:java#Class#Stream.Copy.Group.Ring.IntRing:oiref><oihard>
+@__modelType reference
+@__imported
+@hideOperations 
+*/
+class reference59 {
+}/**
+@__ref <oiref:java#Class#Stream.Copy.Group.Ring.Ring:oiref><oihard>
+@__modelType reference
+@__imported
+@hideOperations 
+*/
+class reference62 {
+}/**
+@__ref <oiref:java#Class#Stream.Copy.Group.DblGroup:oiref><oihard>
+@__modelType reference
+@__imported 
+*/
+class reference63 {
+}/**
+@__ref <oiref:java#Class#Stream.Copy.Group.Group:oiref><oihard>
+@__modelType reference
+@__imported
+@hideOperations 
+*/
+class reference64 {
+}/**
+@__ref <oiref:java#Class#Stream.Copy.Group.HalfGroup:oiref><oihard>
+@__modelType reference
+@__imported
+@hideOperations 
+*/
+class reference65 {
+}/**
+@__ref <oiref:java#Class#Stream.Copy.Group.IGroup:oiref><oihard>
+@__modelType reference
+@__imported 
+*/
+class reference66 {
+}/**
+@__ref <oiref:java#Class#Stream.Copy.Group.IHalfGroup:oiref><oihard>
+@__modelType reference
+@__imported 
+*/
+class reference67 {
+}/**
+@__ref <oiref:java#Class#Stream.Copy.Group.LngGroup:oiref><oihard>
+@__modelType reference
+@__imported 
+*/
+class reference68 {
+}/**
+@__ref <oiref:java#Class#Stream.Copy.GroupM.DblGroupM:oiref><oihard>
+@__modelType reference
+@__imported
+@hideOperations 
+*/
+class reference69 {
+}/**
+@__ref <oiref:java#Class#Stream.Copy.GroupM.GroupM:oiref><oihard>
+@__modelType reference
+@__imported 
+*/
+class reference70 {
+}/**
+@__ref <oiref:java#Class#Stream.Copy.GroupM.HalfGroupM:oiref><oihard>
+@__modelType reference
+@__imported
+@hideOperations 
+*/
+class reference71 {
+}/**
+@__ref <oiref:java#Class#Stream.Copy.GroupM.IGroupM:oiref><oihard>
+@__modelType reference
+@__imported 
+*/
+class reference72 {
+}/**
+@__ref <oiref:java#Class#Stream.Copy.GroupM.IHalfGroupM:oiref><oihard>
+@__modelType reference
+@__imported 
+*/
+class reference73 {
+}/**
+@__ref <oiref:java#Class#Stream.Copy.GroupM.LngGroupM:oiref><oihard>
+@__modelType reference
+@__imported
+@hideOperations 
+*/
+class reference74 {
+}/**
+@__ref <oiref:java#Class#Stream.Copy.Boole.Bond:oiref><oihard>
+@__modelType reference
+@__imported
+@hideOperations 
+*/
+class reference75 {
+}/**
+@__ref <oiref:java#Class#Stream.Copy.Boole.Boole:oiref><oihard>
+@__modelType reference
+@__imported
+@hideOperations 
+*/
+class reference76 {
+}/**
+@__ref <oiref:java#Class#Stream.Copy.Boole.IBond:oiref><oihard>
+@__modelType reference
+@__imported
+@hideOperations 
+*/
+class reference77 {
+}/**
+@__ref <oiref:java#Class#Stream.Copy.Boole.IBoole:oiref><oihard>
+@__modelType reference
+@__imported 
+*/
+class reference78 {
+}/**
+@__ref <oiref:java#Class#Stream.Copy.Monoid.HalfMonoid:oiref><oihard>
+@__modelType reference
+@__imported
+@hideOperations 
+*/
+class reference79 {
+}/**
+@__ref <oiref:java#Class#Stream.Copy.Monoid.IHalfMonoid:oiref><oihard>
+@__modelType reference
+@__imported 
+*/
+class reference80 {
+}/**
+@__ref <oiref:java#Class#Stream.Copy.Monoid.IMonoid:oiref><oihard>
+@__modelType reference
+@__imported 
+*/
+class reference81 {
+}/**
+@__ref <oiref:java#Class#Stream.Copy.Monoid.Monoid:oiref><oihard>
+@__modelType reference
+@__imported
+@hideOperations 
+*/
+class reference82 {
+}/**
+@__ref <oiref:java#Class#Stream.Copy.Monoid.SetInteger.SetInteger:oiref><oihard>
+@__modelType reference
+@__imported 
+*/
+class reference83 {
+}/**
+@__ref <oiref:java#Class#Stream.Copy.Order.DblOrder:oiref><oihard>
+@__modelType reference
+@__imported
+@hideOperations 
+*/
+class reference84 {
+}/**
+@__ref <oiref:java#Class#Stream.Copy.Order.Order:oiref><oihard>
+@__modelType reference
+@__imported 
+*/
+class reference85 {
+}/**
+@__ref <oiref:java#Class#Stream.Copy.Order.LngOrder:oiref><oihard>
+@__modelType reference
+@__imported
+@hideOperations 
+*/
+class reference86 {
+}/**
+@__ref <oiref:java#Class#Stream.Copy.CopyAble:oiref><oihard>
+@__modelType reference
+@__imported
+@hideOperations 
+*/
+class reference89 {
+}/**
+@__ref <oiref:java#Class#Stream.Copy.ICopyAble:oiref><oihard>
+@__modelType reference
+@__imported
+@hideOperations 
+*/
+class reference90 {
+}/**
+@__ref <oiref:java#Class#Stream.Object.IStreamSet:oiref><oihard>
+@__modelType reference
+@__imported 
+*/
+class reference91 {
+}/**
+@__ref <oiref:java#Class#Stream.Object.Pipe:oiref><oihard>
+@__modelType reference
+@__imported
+@hideAttributes 
+*/
+class reference92 {
+}/**
+@__ref <oiref:java#Class#Stream.Object.StreamIn:oiref><oihard>
+@__modelType reference
+@__imported
+@hideOperations 
+*/
+class reference93 {
+}/**
+@__ref <oiref:java#Class#Stream.StreamOut:oiref><oihard>
+@__modelType reference
+@__imported
+@hideOperations 
+*/
+class reference94 {
+}/**
+@__ref <oiref:java#Class#Stream.ParserIn:oiref><oihard>
+@__modelType reference
+@__imported 
+*/
+class reference95 {
+}/**
+@__ref <oiref:java#Class#Stream.IterAble:oiref><oihard>
+@__modelType reference
+@__imported 
+*/
+class reference96 {
+}/**
+@__ref <oiref:java#Class#Stream.IStreamIn:oiref><oihard>
+@__modelType reference
+@__imported 
+*/
+class reference97 {
+}/**
+@__ref <oiref:java#Class#Stream.FormatterOut:oiref><oihard>
+@__modelType reference
+@__imported 
+*/
+class reference98 {
+}/**
+@__ref <oiref:java#Class#Stream.Object.Enumerator.AlterAble:oiref><oihard>
+@__modelType reference
+@__imported 
+*/
+class reference99 {
+}/**
+@__ref <oiref:java#Class#Stream.Object.Enumerator.ChangeAble:oiref><oihard>
+@__modelType reference
+@__imported
+@hideOperations 
+*/
+class reference100 {
+}/**
+@__ref <oiref:java#Class#Stream.Object.Enumerator.ChangeIterator:oiref><oihard>
+@__modelType reference
+@__imported 
+*/
+class reference101 {
+}/**
+@__ref <oiref:java#Class#Stream.Object.Enumerator.Enumerator:oiref><oihard>
+@__modelType reference
+@__imported
+@hideOperations 
+*/
+class reference102 {
+}/**
+@__ref <oiref:java#Class#Stream.Object.Enumerator.ReverseEnumerator:oiref><oihard>
+@__modelType reference
+@__imported
+@hideOperations 
+*/
+class reference103 {
+}/**
+@__ref <oiref:java#Class#Stream.Object.Enumerator.IndexEnumerator:oiref><oihard>
+@__modelType reference
+@__imported
+@hideOperations 
+*/
+class reference104 {
+}/**
+@__ref <oiref:java#Class#Stream.Object.Enumerator.Container.Container:oiref><oihard>
+@__modelType reference
+@__imported
+@hideOperations
+@hideAttributes 
+*/
+class reference105 {
+}/**
+@__ref <oiref:java#Class#Stream.Object.Enumerator.Container.ChangeEventSource:oiref><oihard>
+@__modelType reference
+@__imported 
+*/
+class reference107 {
+}/**
+@__ref <oiref:java#Class#Stream.Object.Enumerator.Container.RAContainer:oiref><oihard>
+@__modelType reference
+@__imported
+@hideOperations 
+*/
+class reference108 {
+}/**
+@__ref <oiref:java#Class#Stream.Object.Enumerator.Container.ListContainer:oiref><oihard>
+@__modelType reference
+@__imported 
+*/
+class reference109 {
+}}/**
+
+@__tags
+@shapeType ClassDiagram 
+*/
+class __tags {
+}/**
+@__options option.orientation = Landscape
+option.papersize = A4 
+*/
+class __options {
+}/**
+@__positions <oigroup:<oiref:java#Extends#Stream.Object.StreamIn#Stream.IStreamIn:oiref>=1441,268,1804,168:oigroup>
+<oigroup:<oiref:java#Class#Stream.Copy.Group.Group:oiref>=2211,451,163,82,1:oigroup>
+<oigroup:<oiref:java#Class#Stream.Copy.Group.Ring.Metric.SMIntRing:oiref>=1492,1261,200,98,1:oigroup>
+<oigroup:<oiref:java#Extends#Stream.Copy.Group.Ring.Metric.Body.Vector.IMatrix#Stream.Copy.Group.Ring.Metric.Body.Vector.ITensor:oiref>=1592,1425,1592,1415,1227,1362:oigroup>
+<oigroup:<oiref:java#Extends#Stream.Object.Enumerator.Enumerator#Stream.Object.Pipe:oiref>=1107,692,1107,558:oigroup>
+<oigroup:<oiref:java#Extends#Stream.Object.Enumerator.ChangeAble#Stream.IterAble:oiref>=765,268,1328,119:oigroup>
+<oigroup:<oiref:java#Class#Stream.Copy.Group.Ring.Metric.Body.Vector.IManifold:oiref>=1169,1425,83,82,1:oigroup>
+<oigroup:<oiref:java#Extends#Stream.Copy.Group.Ring.Metric.SMIntRing#Stream.Copy.Group.Ring.Metric.ScalarMetric:oiref>=1671,1261,1671,1100,1566,983:oigroup>
+<oigroup:<oiref:java#Class#Stream.Copy.ICopyAble:oiref>=1428,18,149,82,1:oigroup>
+<oigroup:<oiref:java#Class#Stream.Copy.Monoid.HalfMonoid:oiref>=2768,268,200,98,1:oigroup>
+<oigroup:<oiref:java#Class#Stream.IterAble:oiref>=1288,18,126,101,1:oigroup>
+<oigroup:<oiref:java#Extends#Stream.Copy.Boole.Boole#Stream.Copy.Boole.Bond:oiref>=2644,451,2644,350:oigroup>
+<oigroup:<oiref:java#Class#Stream.Object.Enumerator.Container.ListContainer:oiref>=1712,1425,200,133,1:oigroup>
+<oigroup:<oiref:java#Extends#Stream.Copy.Boole.Boole#Stream.Copy.Boole.IBoole:oiref>=2669,451,3068,385:oigroup>
+<oigroup:<oiref:java#Class#Stream.Copy.Monoid.SetInteger.SetInteger:oiref>=2102,692,200,133,1:oigroup>
+<oigroup:<oiref:java#Extends#Stream.Object.Enumerator.Container.Container#Stream.Object.Enumerator.Enumerator:oiref>=1762,1261,1762,1251,1431,1208,1431,1094,1196,990,1196,901,1100,790:oigroup>
+<oigroup:<oiref:java#Extends#Stream.Copy.GroupM.HalfGroupM#Stream.Copy.GroupM.IHalfGroupM:oiref>=1922,268,1922,111:oigroup>
+<oigroup:<oiref:java#Extends#Stream.Object.IStreamSet#Stream.Object.StreamIn:oiref>=2093,1100,2093,895,1879,780,1877,441,1456,376,1456,366:oigroup>
+<oigroup:<oiref:java#Extends#Stream.Copy.Group.Ring.IntRing#Stream.Copy.Group.Ring.Ring:oiref>=1383,901,1383,891,1960,774:oigroup>
+<oigroup:<oiref:java#Extends#Stream.Copy.Monoid.SetInteger.SetInteger#Stream.IterAble:oiref>=2168,692,1962,401,1962,257,1420,239,1391,119:oigroup>
+<oigroup:<oiref:java#Class#Stream.Copy.Boole.IBond:oiref>=2725,10,157,82,1:oigroup>
+<oigroup:<oiref:java#Extends#Stream.Copy.Group.Ring.Metric.Body.Body#Stream.Copy.Group.Ring.Metric.Body.IBody:oiref>=1584,1100,1753,999:oigroup>
+<oigroup:<oiref:java#Class#Stream.Object.Enumerator.Container.RAContainer:oiref>=1345,1425,200,82,1:oigroup>
+<oigroup:<oiref:java#Extends#Stream.Copy.Group.Group#Stream.Copy.Group.IGroup:oiref>=2289,451,2289,369:oigroup>
+<oigroup:<oiref:java#Class#Stream.Copy.Order.Order:oiref>=1698,451,159,165,1:oigroup>
+<oigroup:<oiref:java#Class#Stream.Copy.Group.Ring.Metric.Norm:oiref>=1273,451,200,165,1:oigroup>
+<oigroup:<oiref:java#Class#Stream.Copy.Group.Ring.Metric.IMetric:oiref>=1068,18,200,101,1:oigroup>
+<oigroup:<oiref:java#Extends#Stream.Copy.CopyAble#Stream.Copy.ICopyAble:oiref>=1600,59,1577,59:oigroup>
+<oigroup:<oiref:java#Class#Stream.Object.StreamIn:oiref>=1345,268,149,98,1:oigroup>
+<oigroup:<oiref:java#Extends#Stream.Object.Enumerator.Container.Container#Stream.Object.Enumerator.Container.ChangeEventSource:oiref>=1812,1261,1812,1201:oigroup>
+<oigroup:<oiref:java#Class#Stream.Copy.Group.Ring.IntRing:oiref>=1216,901,197,82,1:oigroup>
+<oigroup:<oiref:java#Extends#Stream.Copy.Monoid.Monoid#Stream.Copy.Monoid.IMonoid:oiref>=2980,451,3258,369:oigroup>
+<oigroup:<oiref:java#Extends#Stream.Copy.Group.Ring.Metric.Metric#Stream.Copy.Group.Ring.Metric.IMetric:oiref>=1196,268,1196,119:oigroup>
+<oigroup:<oiref:java#Extends#Stream.Object.Pipe#Stream.StreamOut:oiref>=1132,451,885,377,885,264,663,101:oigroup>
+<oigroup:<oiref:java#Extends#Stream.Object.Enumerator.Container.ListContainer#Stream.Object.Enumerator.Container.Container:oiref>=1812,1425,1812,1365:oigroup>
+<oigroup:<oiref:java#Class#Stream.Object.Enumerator.Container.Container:oiref>=1712,1261,200,104,1:oigroup>
+<oigroup:<oiref:java#Extends#Stream.Copy.Group.Ring.Metric.WellOrder#Stream.Copy.CopyAble:oiref>=344,268,344,258,1616,140:oigroup>
+<oigroup:<oiref:java#Class#Stream.Copy.GroupM.DblGroupM:oiref>=1873,901,200,82,1:oigroup>
+<oigroup:<oiref:java#Class#Stream.IStreamIn:oiref>=1766,10,116,158,1:oigroup>
+<oigroup:<oiref:java#Class#Stream.Object.Enumerator.IndexEnumerator:oiref>=991,1100,200,82,1:oigroup>
+<oigroup:<oiref:java#Extends#Stream.Copy.Group.Ring.IntRing#Stream.Copy.Group.Ring.IComplex:oiref>=1354,901,1354,774:oigroup>
+<oigroup:<oiref:java#Extends#Stream.Copy.Group.LngGroup#Stream.Copy.Group.Group:oiref>=2348,692,2348,533:oigroup>
+<oigroup:<oiref:java#Class#Stream.Copy.Monoid.IMonoid:oiref>=3168,268,180,101,1:oigroup>
+<oigroup:<oiref:java#Extends#Stream.Copy.GroupM.HalfGroupM#Stream.Copy.CopyAble:oiref>=1832,268,1680,228,1680,140:oigroup>
+<oigroup:<oiref:java#Extends#Stream.Copy.GroupM.DblGroupM#Stream.Copy.GroupM.LngGroupM:oiref>=1973,901,1759,774:oigroup>
+<oigroup:<oiref:java#Extends#Stream.Object.StreamIn#Stream.IterAble:oiref>=1368,268,1368,119:oigroup>
+<oigroup:<oiref:java#Class#Stream.Copy.Group.Ring.Metric.ScalarMetric:oiref>=1433,901,200,82,1:oigroup>
+<oigroup:<oiref:java#Extends#Stream.Copy.Group.Ring.Metric.MetricIRing#Stream.Copy.Group.Ring.IntRing:oiref>=1311,1100,1311,983:oigroup>
+<oigroup:<oiref:java#Extends#Stream.Copy.Group.Ring.Metric.WellOrder#Stream.Copy.Group.Ring.Metric.IWellOrder:oiref>=261,268,261,111:oigroup>
+<oigroup:<oiref:java#Extends#Stream.Object.Pipe#Stream.Object.StreamIn:oiref>=1192,451,1419,366:oigroup>
+<oigroup:<oiref:java#Class#Stream.Copy.Group.Ring.Metric.Body.Vector.IMatrix:oiref>=1565,1425,83,98,1:oigroup>
+<oigroup:<oiref:java#Class#Stream.ParserIn:oiref>=1982,268,200,133,1:oigroup>
+<oigroup:<oiref:java#Class#Stream.Object.Enumerator.AlterAble:oiref>=632,451,200,133,1:oigroup>
+<oigroup:<oiref:java#Class#Stream.Object.Enumerator.Container.ChangeEventSource:oiref>=1712,1100,200,101,1:oigroup>
+<oigroup:<oiref:java#Class#Stream.Copy.Group.HalfGroup:oiref>=2388,268,186,82,1:oigroup>
+<oigroup:<oiref:java#Extends#Stream.Copy.Group.HalfGroup#Stream.Copy.CopyAble:oiref>=2434,268,2434,258,1696,218,1696,140:oigroup>
+<oigroup:<oiref:java#Class#Stream.StreamOut:oiref>=534,10,194,91,1:oigroup>
+<oigroup:<oiref:java#Class#Stream.Copy.Boole.Bond:oiref>=2594,268,154,82,1:oigroup>
+<oigroup:<oiref:java#Class#Stream.Copy.Group.Ring.Metric.IWellOrder:oiref>=94,10,200,101,1:oigroup>
+<oigroup:<oiref:java#Extends#Stream.Copy.Group.Ring.Ring#Stream.Copy.Group.Group:oiref>=1999,692,2279,533:oigroup>
+<oigroup:<oiref:java#Extends#Stream.Copy.Monoid.Monoid#Stream.Copy.Monoid.HalfMonoid:oiref>=2917,451,2917,366:oigroup>
+<oigroup:<oiref:java#Class#Stream.Object.Enumerator.ChangeIterator:oiref>=852,451,200,117,1:oigroup>
+<oigroup:<oiref:java#Extends#Stream.Copy.Order.Indexed#Stream.Copy.Order.FixIndexed:oiref>=3209,171,3209,111:oigroup>
+<oigroup:<oiref:java#Class#Stream.Copy.Group.Ring.Metric.MetricIRing:oiref>=1211,1100,200,82,1:oigroup>
+<oigroup:<oiref:java#Extends#Stream.Copy.Group.Ring.Metric.Metric#Stream.Copy.CopyAble:oiref>=1270,268,1648,140:oigroup>
+<oigroup:<oiref:java#Class#Stream.Copy.Group.IGroup:oiref>=2202,268,166,101,1:oigroup>
+<oigroup:<oiref:java#Class#Stream.Copy.Group.Ring.Metric.Metric:oiref>=1125,268,200,82,1:oigroup>
+<oigroup:<oiref:java#Extends#Stream.Copy.Group.Ring.Metric.Body.Vector.ITensor#Stream.Copy.Group.Ring.Metric.MetricIRing:oiref>=1231,1261,1231,1182:oigroup>
+<oigroup:<oiref:java#Class#Stream.Copy.Group.IHalfGroup:oiref>=2387,10,189,101,1:oigroup>
+<oigroup:<oiref:java#Extends#Stream.Copy.Group.Ring.Metric.Body.Body#Stream.Copy.Group.Ring.IntRing:oiref>=1517,1100,1362,983:oigroup>
+<oigroup:<oiref:java#Class#Stream.Copy.Group.Ring.IInteger:oiref>=314,10,200,133,1:oigroup>
+<oigroup:<oiref:java#Class#Stream.Copy.Boole.Boole:oiref>=2538,451,157,82,1:oigroup>
+<oigroup:<oiref:java#Extends#Stream.Copy.Group.Ring.BoolRing#Stream.Copy.Boole.Boole:oiref>=2246,901,2526,851,2642,533:oigroup>
+<oigroup:<oiref:java#Extends#Stream.Copy.GroupM.LngGroupM#Stream.Copy.GroupM.GroupM:oiref>=1759,692,1616,632:oigroup>
+<oigroup:<oiref:java#Class#Stream.Copy.GroupM.GroupM:oiref>=1493,451,185,181,1:oigroup>
+<oigroup:<oiref:java#Class#Stream.Copy.Group.Ring.Ring:oiref>=1899,692,183,82,1:oigroup>
+<oigroup:<oiref:java#Extends#Stream.Copy.Group.Ring.Metric.Norm#Stream.Copy.Group.Ring.Metric.INorm:oiref>=1286,451,1286,441,1005,369:oigroup>
+<oigroup:<oiref:java#Extends#Stream.Copy.Group.HalfGroup#Stream.Copy.Group.IHalfGroup:oiref>=2481,268,2481,111:oigroup>
+<oigroup:<oiref:java#Extends#Stream.Copy.Group.Ring.Metric.Body.MetricBody#Stream.Copy.Group.Ring.Metric.MetricIRing:oiref>=1341,1261,1341,1182:oigroup>
+<oigroup:<oiref:java#Extends#Stream.Object.Enumerator.Container.RAContainer#Stream.Object.Enumerator.IndexEnumerator:oiref>=1411,1425,1149,1368,1149,1182:oigroup>
+<oigroup:<oiref:java#Class#Stream.Object.IStreamSet:oiref>=1958,1100,161,98,1:oigroup>
+<oigroup:<oiref:java#Extends#Stream.Copy.Group.Ring.Metric.ScalarMetric#Stream.Copy.Group.Ring.Metric.Norm:oiref>=1545,901,1545,685,1373,616:oigroup>
+<oigroup:<oiref:java#Class#Stream.Copy.Group.Ring.integer:oiref>=448,268,197,82,1:oigroup>
+<oigroup:<oiref:java#Class#Stream.Copy.Group.Ring.IComplex:oiref>=1325,692,200,82,1:oigroup>
+<oigroup:<oiref:java#Extends#Stream.Copy.Boole.IBoole#Stream.Copy.Boole.IBond:oiref>=3068,268,2809,92:oigroup>
+<oigroup:<oiref:java#Extends#Stream.Copy.Group.Ring.IntRing#Stream.Copy.GroupM.GroupM:oiref>=1305,901,1305,683,1554,632:oigroup>
+<oigroup:<oiref:java#Extends#Stream.Object.Enumerator.ChangeIterator#Stream.Object.StreamIn:oiref>=985,451,1382,366:oigroup>
+<oigroup:<oiref:java#Class#Stream.Copy.GroupM.LngGroupM:oiref>=1659,692,200,82,1:oigroup>
+<oigroup:<oiref:java#Class#Stream.Copy.Group.DblGroup:oiref>=2333,901,182,149,1:oigroup>
+<oigroup:<oiref:java#Extends#Stream.Object.Enumerator.IndexEnumerator#Stream.Object.Enumerator.ReverseEnumerator:oiref>=1083,1100,1083,983:oigroup>
+<oigroup:<oiref:java#Extends#Stream.Copy.Boole.Bond#Stream.Copy.Boole.IBond:oiref>=2736,268,2736,92:oigroup>
+<oigroup:<oiref:java#Extends#Stream.ParserIn#Stream.IStreamIn:oiref>=2082,268,1843,168:oigroup>
+<oigroup:<oiref:java#Extends#Stream.Copy.Group.Ring.Metric.Body.MetricBody#Stream.Copy.Group.Ring.Metric.Body.Body:oiref>=1461,1261,1461,1198:oigroup>
+<oigroup:<oiref:java#Class#Stream.Copy.Group.Ring.Metric.INorm:oiref>=905,268,200,101,1:oigroup>
+<oigroup:<oiref:java#Class#Stream.Copy.Order.DblOrder:oiref>=289,690,178,82,1:oigroup>
+<oigroup:<oiref:java#Class#Stream.Copy.GroupM.IHalfGroupM:oiref>=1902,10,200,101,1:oigroup>
+<oigroup:<oiref:java#Extends#Stream.Object.Enumerator.ChangeIterator#Stream.Object.Enumerator.ChangeAble:oiref>=918,451,806,350:oigroup>
+<oigroup:<oiref:java#Extends#Stream.Object.IStreamSet#Stream.Copy.Group.Ring.BoolRing:oiref>=2106,1100,2213,999:oigroup>
+<oigroup:<oiref:java#Class#Stream.Object.Enumerator.ReverseEnumerator:oiref>=976,901,200,82,1:oigroup>
+<oigroup:<oiref:java#Class#Stream.FormatterOut:oiref>=8,268,200,117,1:oigroup>
+<oigroup:<oiref:java#Extends#Stream.Object.Enumerator.Container.Container#Stream.Object.IStreamSet:oiref>=1862,1261,2038,1198:oigroup>
+<oigroup:<oiref:java#Extends#Stream.Copy.Group.Ring.Metric.Body.Vector.IManifold#Stream.Copy.Group.Ring.Metric.Body.Vector.ITensor:oiref>=1196,1425,1196,1362:oigroup>
+<oigroup:<oiref:java#Extends#Stream.Object.Enumerator.Enumerator#Stream.Object.Enumerator.AlterAble:oiref>=969,692,732,584:oigroup>
+<oigroup:<oiref:java#Extends#Stream.Copy.Order.Order#Stream.Copy.CopyAble:oiref>=1722,451,1722,261,1664,236,1664,140:oigroup>
+<oigroup:<oiref:java#Extends#Stream.Copy.Order.DblOrder#Stream.Copy.Order.LngOrder:oiref>=378,690,378,630:oigroup>
+<oigroup:<oiref:java#Class#Stream.Copy.Monoid.IHalfMonoid:oiref>=2902,10,200,101,1:oigroup>
+<oigroup:<oiref:java#Extends#Stream.FormatterOut#Stream.StreamOut:oiref>=108,268,598,134,598,101:oigroup>
+<oigroup:<oiref:java#Extends#Stream.Copy.Monoid.HalfMonoid#Stream.Copy.CopyAble:oiref>=2851,268,2851,258,1729,177,1729,140:oigroup>
+<oigroup:<oiref:java#Extends#Stream.Copy.Group.Ring.integer#Stream.Copy.Group.Ring.IInteger:oiref>=481,268,481,143:oigroup>
+<oigroup:<oiref:java#Class#Stream.Copy.GroupM.IGroupM:oiref>=1514,268,188,101,1:oigroup>
+<oigroup:<oiref:java#Extends#Stream.Object.Enumerator.Enumerator#Stream.Object.Enumerator.ChangeIterator:oiref>=997,692,997,568:oigroup>
+<oigroup:<oiref:java#Extends#Stream.Copy.Monoid.SetInteger.SetInteger#Stream.Copy.Boole.Boole:oiref>=2235,692,2590,533:oigroup>
+<oigroup:<oiref:java#Extends#Stream.Copy.Group.Ring.Metric.Norm#Stream.Copy.Group.Ring.Metric.Metric:oiref>=1299,451,1299,350:oigroup>
+<oigroup:<oiref:java#Class#Stream.Copy.GroupM.HalfGroupM:oiref>=1742,268,200,82,1:oigroup>
+<oigroup:<oiref:java#Class#Stream.Copy.Group.Ring.Metric.Body.Vector.ITensor:oiref>=1169,1261,89,101,1:oigroup>
+<oigroup:<oiref:java#Extends#Stream.Copy.Group.Ring.Metric.MetricIRing#Stream.Copy.Group.Ring.Metric.WellOrder:oiref>=1261,1100,956,991,328,350:oigroup>
+<oigroup:<oiref:java#Class#Stream.Object.Enumerator.ChangeAble:oiref>=665,268,200,82,1:oigroup>
+<oigroup:<oiref:java#Extends#Stream.Copy.Group.Ring.Metric.Body.Vector.IMatrix#Stream.Copy.Monoid.Monoid:oiref>=1620,1425,1932,1375,2535,1058,2954,549:oigroup>
+<oigroup:<oiref:java#Extends#Stream.Copy.Monoid.HalfMonoid#Stream.Copy.Monoid.IHalfMonoid:oiref>=2935,268,2935,111:oigroup>
+<oigroup:<oiref:java#Extends#Stream.Copy.Group.Group#Stream.Copy.Group.HalfGroup:oiref>=2331,451,2481,350:oigroup>
+<oigroup:<oiref:java#Class#Stream.Object.Pipe:oiref>=1072,451,181,107,1:oigroup>
+<oigroup:<oiref:java#Extends#Stream.Copy.Group.Ring.Metric.Body.Vector.ITensor#Stream.Object.Enumerator.IndexEnumerator:oiref>=1179,1261,1179,1182:oigroup>
+<oigroup:<oiref:java#Extends#Stream.Copy.GroupM.GroupM#Stream.Copy.GroupM.IGroupM:oiref>=1568,451,1568,369:oigroup>
+<oigroup:<oiref:java#Extends#Stream.Copy.Group.Ring.Metric.SMIntRing#Stream.Copy.Group.Ring.Metric.MetricIRing:oiref>=1581,1261,1376,1207,1376,1182:oigroup>
+<oigroup:<oiref:java#Class#Stream.Copy.Group.Ring.Metric.Body.MetricBody:oiref>=1272,1261,200,82,1:oigroup>
+<oigroup:<oiref:java#Class#Stream.Copy.Group.Ring.Metric.Body.Body:oiref>=1451,1100,200,98,1:oigroup>
+<oigroup:<oiref:java#Class#Stream.Copy.Boole.IBoole:oiref>=2988,268,160,117,1:oigroup>
+<oigroup:<oiref:java#Extends#Stream.Object.Enumerator.AlterAble#Stream.Object.Enumerator.ChangeAble:oiref>=748,451,748,350:oigroup>
+<oigroup:<oiref:java#Class#Stream.Copy.Group.Ring.BoolRing:oiref>=2113,901,200,98,1:oigroup>
+<oigroup:<oiref:java#Class#Stream.Copy.Order.LngOrder:oiref>=288,548,180,82,1:oigroup>
+<oigroup:<oiref:java#Extends#Stream.Object.Enumerator.ReverseEnumerator#Stream.Object.Enumerator.Enumerator:oiref>=1059,901,1059,790:oigroup>
+<oigroup:<oiref:java#Class#Stream.Copy.Group.Ring.Metric.WellOrder:oiref>=228,268,200,82,1:oigroup>
+<oigroup:<oiref:java#Extends#Stream.Copy.Group.DblGroup#Stream.Copy.Group.LngGroup:oiref>=2419,901,2419,841:oigroup>
+<oigroup:<oiref:java#Extends#Stream.Copy.Group.Ring.BoolRing#Stream.Copy.Group.Ring.Ring:oiref>=2179,901,2021,784,2021,774:oigroup>
+<oigroup:<oiref:java#Class#Stream.Copy.Group.Ring.Metric.Body.IBody:oiref>=1653,901,200,98,1:oigroup>
+<oigroup:<oiref:java#Class#Stream.Copy.Monoid.Monoid:oiref>=2866,451,177,98,1:oigroup>
+<oigroup:<oiref:java#Class#Stream.Copy.CopyAble:oiref>=1600,10,146,130,1:oigroup>
+<oigroup:<oiref:java#Extends#Stream.Copy.Group.Ring.integer#Stream.Copy.CopyAble:oiref>=563,268,1632,140:oigroup>
+<oigroup:<oiref:java#Class#Stream.Copy.Group.LngGroup:oiref>=2322,692,184,149,1:oigroup>
+<oigroup:<oiref:java#Extends#Stream.Copy.Group.Ring.Metric.MetricIRing#Stream.Copy.Group.Ring.Metric.ScalarMetric:oiref>=1361,1100,1499,983:oigroup>
+<oigroup:<oiref:java#Extends#Stream.Copy.GroupM.GroupM#Stream.Copy.GroupM.HalfGroupM:oiref>=1623,451,1829,350:oigroup>
+<oigroup:<oiref:java#Class#Stream.Object.Enumerator.Enumerator:oiref>=942,692,200,98,1:oigroup>
+<oigroup:<oiref:java#Extends#Stream.Copy.Group.Ring.Ring#Stream.Copy.GroupM.HalfGroupM:oiref>=1916,692,1916,350:oigroup>
+<oigroup:<oiref:java#Extends#Stream.Copy.Group.Ring.Metric.ScalarMetric#Stream.Copy.Order.Order:oiref>=1589,901,1639,686,1777,616:oigroup>
+<oigroup:<oiref:java#Extends#Stream.Copy.Boole.Bond#Stream.Copy.CopyAble:oiref>=2665,268,2665,258,1712,207,1712,140:oigroup>
+<oigroup:<oiref:java#Extends#Stream.Copy.Group.Ring.IntRing#Stream.Copy.Group.Ring.integer:oiref>=1260,901,922,798,612,590,612,350:oigroup>
+<oigroup:<oiref:java#Extends#Stream.Object.Enumerator.Container.RAContainer#Stream.Object.Enumerator.Container.Container:oiref>=1478,1425,1762,1365:oigroup>
+*/
+class __positions {
+}

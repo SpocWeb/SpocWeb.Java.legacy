@@ -1,0 +1,1942 @@
+
+(object Petal
+    version    	42
+    _written   	"Rose 4.5.8163.3"
+    charSet    	0)
+
+(object Class_Category "BaseCopy"
+    is_unit    	TRUE
+    is_loaded  	TRUE
+    quid       	"36BB22B90122"
+    documentation 	
+|Basic Package. 
+|Extends the Class 'Object' by Methods to distinguish between shallow and deep Copy() as well as CopyAt() Methods to change the Contents of an Object.
+    
+    exportControl 	"Public"
+    logical_models 	(list unit_reference_list
+	(object Class "intCopyAble"
+	    attributes 	(list Attribute_Set
+		(object Attribute
+		    tool       	"Java"
+		    name       	"GenerateFinalizer"
+		    value      	FALSE)
+		(object Attribute
+		    tool       	"Java"
+		    name       	"GenerateStaticInitializer"
+		    value      	FALSE)
+		(object Attribute
+		    tool       	"Java"
+		    name       	"GenerateInstanceInitializer"
+		    value      	FALSE)
+		(object Attribute
+		    tool       	"Java"
+		    name       	"GenerateDefaultConstructor"
+		    value      	FALSE))
+	    quid       	"36BB22B90136"
+	    documentation 	
+|Basic Interface for classes with an empty constructor
+| * and copying of Values in a later state.
+| * This is somewhat against the Paradigm of a stable Object,
+| * because also the HashValue etc. are no longer constant
+| * so the Location in a Container could be falsified!
+| * The Advantage with numerical Calculations is 
+| * that not with every operation a new Object has to be instantiated.
+| * Additionally optimizations are possible to save creation and termination.
+| * 
+| * It also creates the opportunity to define Methods that
+| * 1. don't have an overhead to create a new instance
+| * 2. can replace the inner contents of an object.
+| * 
+| * Because in Java any Field Variable is automatically initialized, 
+| * this doesn't really save time for simple Classes, but for Containers.
+| * 
+| * Design Decisions: 
+| * toString and fromString could use the Class name 
+| * to automatically determine the Class to be created. 
+| * 
+| 
+	    
+	    stereotype 	"Interface"
+	    operations 	(list Operations
+		(object Operation "copyAt"
+		    attributes 	(list Attribute_Set
+			(object Attribute
+			    tool       	"Java"
+			    name       	"Abstract"
+			    value      	TRUE))
+		    quid       	"37BD1BE901C8"
+		    documentation 	
+|Complement to copyAt() and shallopCopyAt().
+|	 * Does a 'deepCopy', to a certain Level
+|	 * i.e. also inner Components are copied up to the Depth.
+|	 * Returns the itself for further use. 
+		    
+		    parameters 	(list Parameters
+			(object Parameter "arg"
+			    type       	"Object")
+			(object Parameter "Depth"
+			    type       	"int"))
+		    result     	"copyAble"
+		    concurrency 	"Sequential"
+		    opExportControl 	"Public"
+		    uid        	0)
+		(object Operation "newInstance"
+		    attributes 	(list Attribute_Set
+			(object Attribute
+			    tool       	"Java"
+			    name       	"Abstract"
+			    value      	TRUE))
+		    quid       	"37BD1BE90240"
+		    documentation 	
+|Creates an uninitalized new Instance of it's class.
+|	 * When overriding, use newInstance on all Components.	 
+		    
+		    result     	"copyAble"
+		    concurrency 	"Sequential"
+		    opExportControl 	"Public"
+		    uid        	0)
+		(object Operation "fromStreamAt"
+		    attributes 	(list Attribute_Set
+			(object Attribute
+			    tool       	"Java"
+			    name       	"Abstract"
+			    value      	TRUE))
+		    quid       	"37BD1BE9027D"
+		    documentation 	
+|Fills this Instance with the Contents read from the String.	 
+		    
+		    parameters 	(list Parameters
+			(object Parameter "ST"
+			    type       	"StreamTokenizer"))
+		    result     	"copyAble"
+		    exceptions 	"IOException"
+		    concurrency 	"Sequential"
+		    opExportControl 	"Public"
+		    uid        	0))
+	    module     	"Component View::BaseCopy::intCopyAble"
+	    quidu      	"36BABF4B006B"
+	    language   	"Java")
+	(object Class "copyAble"
+	    attributes 	(list Attribute_Set
+		(object Attribute
+		    tool       	"Java"
+		    name       	"GenerateFinalizer"
+		    value      	FALSE)
+		(object Attribute
+		    tool       	"Java"
+		    name       	"GenerateStaticInitializer"
+		    value      	FALSE)
+		(object Attribute
+		    tool       	"Java"
+		    name       	"GenerateInstanceInitializer"
+		    value      	FALSE)
+		(object Attribute
+		    tool       	"Java"
+		    name       	"GenerateDefaultConstructor"
+		    value      	FALSE))
+	    quid       	"36BB22B9021D"
+	    documentation 	
+|Full Interface for classes with an empty constructor
+| * and copying of Values in a later state.
+| * This is somewhat against the Paradigm of a stable Object,
+| * because also the HashValue etc. are no longer constant
+| * so the Location in a Container could be falsified!
+| * The Advantage with numerical Calculations is 
+| * that not with every operation a new Object has to be instantiated.
+| * Additionally optimizations are possible to save creation and termination.
+| * 
+| * It also creates the opportunity to define Methods that
+| * 1. don't have an overhead to create a new instance
+| * 2. can replace the inner contents of an object.
+| * 
+| * Because in Java any local Variable must be initialized, 
+| * this doesn't really save time for simple Classes, but for Containers.
+| 
+	    
+	    stereotype 	"Interface"
+	    superclasses 	(list inheritance_relationship_list
+		(object Inheritance_Relationship
+		    attributes 	(list Attribute_Set)
+		    quid       	"37BD1BE003E2"
+		    supplier   	"Logical View::BaseCopy::intCopyAble"
+		    quidu      	"36BB22B90136")
+		(object Inheritance_Relationship
+		    attributes 	(list Attribute_Set)
+		    quid       	"37BD1BE10249"
+		    supplier   	"Logical View::java::lang::Cloneable"
+		    quidu      	"34B0F6CF01E5")
+		(object Inheritance_Relationship
+		    attributes 	(list Attribute_Set)
+		    quid       	"37BD1BE200BA"
+		    supplier   	"Logical View::java::io::Serializable"
+		    quidu      	"34B0F6CE0293"))
+	    operations 	(list Operations
+		(object Operation "copy"
+		    attributes 	(list Attribute_Set
+			(object Attribute
+			    tool       	"Java"
+			    name       	"Abstract"
+			    value      	TRUE))
+		    quid       	"37BD1BE20128"
+		    documentation 	
+|Creates a new object of the same class as this object. It then 
+|	 * initializes each of the new object's fields by assigning it the 
+|	 * same value as the corresponding field in this object. No 
+|	 * constructor is called. 
+|	 * <p>
+|	 * The <code>copy</code> method of class <code>Object</code> will 
+|	 * only copy an object whose class indicates that it is willing for 
+|	 * its instances to be cloned. A class indicates that its instances 
+|	 * can be cloned by declaring that it implements the 
+|	 * <code>Cloneable</code> interface. 
+|	 * 
+|	 * @return     a copy of this instance.
+|	 * @exception  CloneNotSupportedException  if the object's class does not
+|	 * support the <code>Cloneable</code> interface. Subclasses
+|	 * that override the <code>copy</code> method can also
+|	 * throw this exception to indicate that an instance cannot
+|	 * be cloned.
+|	 * @exception  OutOfMemoryError            if there is not enough memory.
+|	 * @see        java.lang.Cloneable
+|	 * @since      JDK1.0	 
+		    
+		    result     	"copyAble"
+		    concurrency 	"Sequential"
+		    opExportControl 	"Public"
+		    uid        	0)
+		(object Operation "copyAt"
+		    attributes 	(list Attribute_Set
+			(object Attribute
+			    tool       	"Java"
+			    name       	"Abstract"
+			    value      	TRUE))
+		    quid       	"37BD1BE20146"
+		    documentation 	
+|Complement to Copy.
+|	 * Does a 'deepCopy', i.e. also inner Components are copied.
+|	 * Copies the Value of arg into it's own Value
+|	 * and returns itself for further use.
+|	 * When overriding, use copyAt on all Components.	 
+		    
+		    parameters 	(list Parameters
+			(object Parameter "arg"
+			    type       	"Object"))
+		    result     	"copyAble"
+		    concurrency 	"Sequential"
+		    opExportControl 	"Public"
+		    uid        	0)
+		(object Operation "copy"
+		    attributes 	(list Attribute_Set
+			(object Attribute
+			    tool       	"Java"
+			    name       	"Abstract"
+			    value      	TRUE))
+		    quid       	"37BD1BE202CD"
+		    documentation 	
+|Complement to copy() and shallopCopy().
+|	 * Does a 'deepCopy', to a certain Level
+|	 * i.e. also inner Components are copied up to the Depth.
+|	 * Returns the Copy for further use. 
+		    
+		    parameters 	(list Parameters
+			(object Parameter "Depth"
+			    type       	"int"))
+		    result     	"copyAble"
+		    concurrency 	"Sequential"
+		    opExportControl 	"Public"
+		    uid        	0)
+		(object Operation "shallowCopyAt"
+		    attributes 	(list Attribute_Set
+			(object Attribute
+			    tool       	"Java"
+			    name       	"Abstract"
+			    value      	TRUE))
+		    quid       	"37BD1BE30043"
+		    documentation 	
+|Does a shallow Copy of the Argument.
+|	 * I.e. both Instances will share their inner Components.	 
+		    
+		    parameters 	(list Parameters
+			(object Parameter "arg"
+			    type       	"Object"))
+		    result     	"copyAble"
+		    concurrency 	"Sequential"
+		    opExportControl 	"Public"
+		    uid        	0)
+		(object Operation "shallowCopy"
+		    attributes 	(list Attribute_Set
+			(object Attribute
+			    tool       	"Java"
+			    name       	"Abstract"
+			    value      	TRUE))
+		    quid       	"37BD1BE3018E"
+		    documentation 	
+|Creates a new shallow Copy of this Instance.
+|	 * I.e. both Instances will share their inner Components.	 
+		    
+		    result     	"copyAble"
+		    concurrency 	"Sequential"
+		    opExportControl 	"Public"
+		    uid        	0)
+		(object Operation "swap"
+		    attributes 	(list Attribute_Set
+			(object Attribute
+			    tool       	"Java"
+			    name       	"Abstract"
+			    value      	TRUE))
+		    quid       	"37BD1BE301AC"
+		    documentation 	
+|Swap Algorithm: this <-> arg
+|	 * swaps the internal Components by using copyAt()	 
+		    
+		    parameters 	(list Parameters
+			(object Parameter "arg"
+			    type       	"Object"))
+		    result     	"copyAble"
+		    concurrency 	"Sequential"
+		    opExportControl 	"Public"
+		    uid        	0)
+		(object Operation "fromStream"
+		    attributes 	(list Attribute_Set
+			(object Attribute
+			    tool       	"Java"
+			    name       	"Abstract"
+			    value      	TRUE))
+		    quid       	"37BD1BE3031E"
+		    documentation 	
+|Creates an uninitalized new Instance of it's class
+|	 * and fills it with the Contents read from the String.	 
+		    
+		    parameters 	(list Parameters
+			(object Parameter "ST"
+			    type       	"StreamTokenizer"))
+		    result     	"copyAble"
+		    exceptions 	"IOException"
+		    concurrency 	"Sequential"
+		    opExportControl 	"Public"
+		    uid        	0)
+		(object Operation "fromStream"
+		    attributes 	(list Attribute_Set
+			(object Attribute
+			    tool       	"Java"
+			    name       	"Abstract"
+			    value      	TRUE))
+		    quid       	"37BD1BE40095"
+		    documentation 	
+|Creates an uninitalized new Instance of it's class
+|	 * and fills it with the Contents read from the String.	 
+		    
+		    parameters 	(list Parameters
+			(object Parameter "ST"
+			    type       	"InputStream"))
+		    result     	"copyAble"
+		    exceptions 	"IOException"
+		    concurrency 	"Sequential"
+		    opExportControl 	"Public"
+		    uid        	0)
+		(object Operation "fromStream"
+		    attributes 	(list Attribute_Set
+			(object Attribute
+			    tool       	"Java"
+			    name       	"Abstract"
+			    value      	TRUE))
+		    quid       	"37BD1BE401E9"
+		    documentation 	
+|Creates an uninitalized new Instance of it's class
+|	 * and fills it with the Contents read from the String.	 
+		    
+		    parameters 	(list Parameters
+			(object Parameter "ST"
+			    type       	"Reader"))
+		    result     	"copyAble"
+		    exceptions 	"IOException"
+		    concurrency 	"Sequential"
+		    opExportControl 	"Public"
+		    uid        	0)
+		(object Operation "fromStreamAt"
+		    attributes 	(list Attribute_Set
+			(object Attribute
+			    tool       	"Java"
+			    name       	"Abstract"
+			    value      	TRUE))
+		    quid       	"37BD1BE40352"
+		    documentation 	
+|Creates an uninitalized new Instance of it's class
+|	 * and fills it with the Contents read from the String.	 
+		    
+		    parameters 	(list Parameters
+			(object Parameter "ST"
+			    type       	"InputStream"))
+		    result     	"copyAble"
+		    exceptions 	"IOException"
+		    concurrency 	"Sequential"
+		    opExportControl 	"Public"
+		    uid        	0)
+		(object Operation "fromStreamAt"
+		    attributes 	(list Attribute_Set
+			(object Attribute
+			    tool       	"Java"
+			    name       	"Abstract"
+			    value      	TRUE))
+		    quid       	"37BD1BE500C8"
+		    documentation 	
+|Creates an uninitalized new Instance of it's class
+|	 * and fills it with the Contents read from the String.	 
+		    
+		    parameters 	(list Parameters
+			(object Parameter "ST"
+			    type       	"Reader"))
+		    result     	"copyAble"
+		    exceptions 	"IOException"
+		    concurrency 	"Sequential"
+		    opExportControl 	"Public"
+		    uid        	0)
+		(object Operation "toText"
+		    attributes 	(list Attribute_Set
+			(object Attribute
+			    tool       	"Java"
+			    name       	"Abstract"
+			    value      	TRUE))
+		    quid       	"37BD1BE50213"
+		    documentation 	
+|Returns the textual Representation of this Object. 	 
+		    
+		    result     	"String"
+		    concurrency 	"Sequential"
+		    opExportControl 	"Public"
+		    uid        	0)
+		(object Operation "toText"
+		    attributes 	(list Attribute_Set
+			(object Attribute
+			    tool       	"Java"
+			    name       	"Abstract"
+			    value      	TRUE))
+		    quid       	"37BD1BE50231"
+		    documentation 	
+|Writes the textual Representation of this Object. 	 
+		    
+		    parameters 	(list Parameters
+			(object Parameter "OS"
+			    type       	"OutputStream"))
+		    result     	"void"
+		    exceptions 	"IOException"
+		    concurrency 	"Sequential"
+		    opExportControl 	"Public"
+		    uid        	0)
+		(object Operation "toString"
+		    attributes 	(list Attribute_Set
+			(object Attribute
+			    tool       	"Java"
+			    name       	"Abstract"
+			    value      	TRUE))
+		    quid       	"37BD1BE503AD"
+		    documentation 	
+|Writes the textual Representation of this Object. 	 
+		    
+		    parameters 	(list Parameters
+			(object Parameter "OS"
+			    type       	"OutputStream"))
+		    result     	"void"
+		    exceptions 	"IOException"
+		    concurrency 	"Sequential"
+		    opExportControl 	"Public"
+		    uid        	0)
+		(object Operation "toText"
+		    attributes 	(list Attribute_Set
+			(object Attribute
+			    tool       	"Java"
+			    name       	"Abstract"
+			    value      	TRUE))
+		    quid       	"37BD1BE6011A"
+		    documentation 	
+|Writes the textual Representation of this Object. 	 
+		    
+		    parameters 	(list Parameters
+			(object Parameter "OS"
+			    type       	"Writer"))
+		    result     	"void"
+		    exceptions 	"IOException"
+		    concurrency 	"Sequential"
+		    opExportControl 	"Public"
+		    uid        	0)
+		(object Operation "toString"
+		    attributes 	(list Attribute_Set
+			(object Attribute
+			    tool       	"Java"
+			    name       	"Abstract"
+			    value      	TRUE))
+		    quid       	"37BD1BE60296"
+		    documentation 	
+|Writes the textual Representation of this Object. 	 
+		    
+		    parameters 	(list Parameters
+			(object Parameter "OS"
+			    type       	"Writer"))
+		    result     	"void"
+		    exceptions 	"IOException"
+		    concurrency 	"Sequential"
+		    opExportControl 	"Public"
+		    uid        	0))
+	    module     	"Component View::BaseCopy::copyAble"
+	    quidu      	"36BABF500108"
+	    language   	"Java")
+	(object Class "absCopyAble"
+	    attributes 	(list Attribute_Set
+		(object Attribute
+		    tool       	"Java"
+		    name       	"GenerateFinalizer"
+		    value      	FALSE)
+		(object Attribute
+		    tool       	"Java"
+		    name       	"GenerateStaticInitializer"
+		    value      	FALSE)
+		(object Attribute
+		    tool       	"Java"
+		    name       	"GenerateInstanceInitializer"
+		    value      	FALSE)
+		(object Attribute
+		    tool       	"Java"
+		    name       	"GenerateDefaultConstructor"
+		    value      	FALSE))
+	    quid       	"36BB22B9029F"
+	    documentation 	
+|Defines the Interface for a public 'copy' Method.
+| * This Method performs a DeepCopy and complements the 'copyAt' Method.
+| * It replaces the 'clone' Method (for Object it is only protected).
+| * 
+| * Since this is the basic Group for all Objects here, 
+| * it is never used for Delegation, so the Delegation Stuff is not necessary.
+| * 
+| * Design Decisions:
+| * (De-) Serialization can happen by using the toText and fromText Methods 
+| * in a generic way!
+| * I have chosen to have the Output sent out to Strings, instead of Streams, 
+| * because Strings can simple be written into Output Streams. 
+| * That cannot be done on Reading a String, because the Length may vary!
+| * 
+| * Checking for EOF AND EOL, because it can be switched in the StreamTokenizer,
+| * whether EOL is significant or not!
+| * 
+| * self is not used for Delegation since absCopyAble is mostly the Base Class.
+| * 
+| * TODO: copyAt(InputStream) and fromStreamAt() do the same, can be delegated! 
+	    
+	    realized_interfaces 	(list realize_rel_list
+		(object Realize_Relationship
+		    attributes 	(list Attribute_Set)
+		    quid       	"37BD1B64006A"
+		    supplier   	"Logical View::BaseCopy::copyAble"
+		    quidu      	"36BB22B9021D"))
+	    operations 	(list Operations
+		(object Operation "copy"
+		    attributes 	(list Attribute_Set)
+		    quid       	"37BD1B6400BC"
+		    documentation 	
+|Creates a new object of the same class as this object. It then 
+|	 * initializes each of the new object's fields by assigning it the 
+|	 * same value as the corresponding field in this object. No 
+|	 * constructor is called. 
+|	 * <p>
+|	 * The <code>copy</code> method of class <code>Object</code> will 
+|	 * only copy an object whose class indicates that it is willing for 
+|	 * its instances to be cloned. A class indicates that its instances 
+|	 * can be cloned by declaring that it implements the 
+|	 * <code>Cloneable</code> interface. 
+|	 * 
+|	 * @return     a copy of this instance.
+|	 * @exception  CloneNotSupportedException  if the object's class does not
+|	 * support the <code>Cloneable</code> interface. Subclasses
+|	 * that override the <code>copy</code> method can also
+|	 * throw this exception to indicate that an instance cannot
+|	 * be cloned.
+|	 * @exception  OutOfMemoryError            if there is not enough memory.
+|	 * @see        java.lang.Cloneable
+|	 * @since      JDK1.0	 
+		    
+		    result     	"copyAble"
+		    concurrency 	"Sequential"
+		    opExportControl 	"Public"
+		    uid        	0)
+		(object Operation "shallowCopy"
+		    attributes 	(list Attribute_Set)
+		    quid       	"37BD1B6400C3"
+		    documentation 	
+|Creates a new shallow Copy of this Instance.
+|	 * I.e. both Instances will share their inner Components.
+|	 * shallowCopy also clones the Types, but does not initialize them!
+|	 * rarely used.
+|	 * This is the Default Implementation and should always work, 
+|	 * although a direct Implementation could be faster.	 
+		    
+		    result     	"copyAble"
+		    concurrency 	"Sequential"
+		    opExportControl 	"Public"
+		    uid        	0)
+		(object Operation "copy"
+		    attributes 	(list Attribute_Set)
+		    quid       	"37BD1B6400C4"
+		    documentation 	
+|Complement to copy() and shallopCopy().
+|	 * Does a 'deepCopy', to a certain Level
+|	 * i.e. also inner Components are copied up to the Depth.
+|	 * Returns the Copy for further use. 
+		    
+		    parameters 	(list Parameters
+			(object Parameter "Depth"
+			    type       	"int"))
+		    result     	"copyAble"
+		    concurrency 	"Sequential"
+		    opExportControl 	"Public"
+		    uid        	0)
+		(object Operation "shallowCopyAt"
+		    attributes 	(list Attribute_Set)
+		    quid       	"37BD1B6400D7"
+		    documentation 	
+|Does a shallow Copy of the Argument.
+|	 * I.e. both Instances will share their inner Components.	 
+		    
+		    parameters 	(list Parameters
+			(object Parameter "arg"
+			    type       	"Object"))
+		    result     	"copyAble"
+		    concurrency 	"Sequential"
+		    opExportControl 	"Public"
+		    uid        	0)
+		(object Operation "copyAt"
+		    attributes 	(list Attribute_Set)
+		    quid       	"37BD1B6400E1"
+		    documentation 	
+|Complement to Copy.
+|	 * Does a 'deepCopy', i.e. also inner Components are copied.
+|	 * Copies the Value of arg into it's own Value
+|	 * and returns itself for further use.
+|	 * When overriding, use copyAt on all Components.	 
+		    
+		    parameters 	(list Parameters
+			(object Parameter "arg"
+			    type       	"Object"))
+		    result     	"copyAble"
+		    concurrency 	"Sequential"
+		    opExportControl 	"Public"
+		    uid        	0)
+		(object Operation "swap"
+		    attributes 	(list Attribute_Set)
+		    quid       	"37BD1B6400EB"
+		    documentation 	
+|Swap Algorithm: this <-> arg
+|	 * swaps the internal Components by using shallowCopyAt(), not copyAt()
+|	 * For Swapping Objects it is more effective to swap the Pointers directly!	 
+		    
+		    parameters 	(list Parameters
+			(object Parameter "arg"
+			    type       	"Object"))
+		    result     	"copyAble"
+		    concurrency 	"Sequential"
+		    opExportControl 	"Public"
+		    uid        	0)
+		(object Operation "toText"
+		    attributes 	(list Attribute_Set
+			(object Attribute
+			    tool       	"Java"
+			    name       	"Final"
+			    value      	TRUE))
+		    quid       	"37BD1B6400F5"
+		    documentation 	
+|Returns the textual Representation of this Object. 	 
+		    
+		    result     	"String"
+		    concurrency 	"Sequential"
+		    opExportControl 	"Public"
+		    uid        	0)
+		(object Operation "toText"
+		    attributes 	(list Attribute_Set
+			(object Attribute
+			    tool       	"Java"
+			    name       	"Final"
+			    value      	TRUE))
+		    quid       	"37BD1B6400FF"
+		    documentation 	
+|Writes the textual Representation of this Object. 	 
+		    
+		    parameters 	(list Parameters
+			(object Parameter "OS"
+			    type       	"OutputStream"))
+		    result     	"void"
+		    exceptions 	"IOException"
+		    concurrency 	"Sequential"
+		    opExportControl 	"Public"
+		    uid        	0)
+		(object Operation "toString"
+		    attributes 	(list Attribute_Set
+			(object Attribute
+			    tool       	"Java"
+			    name       	"Final"
+			    value      	TRUE))
+		    quid       	"37BD1B640109"
+		    documentation 	
+|Writes the textual Representation of this Object. 	 
+		    
+		    parameters 	(list Parameters
+			(object Parameter "OS"
+			    type       	"OutputStream"))
+		    result     	"void"
+		    exceptions 	"IOException"
+		    concurrency 	"Sequential"
+		    opExportControl 	"Public"
+		    uid        	0)
+		(object Operation "toText"
+		    attributes 	(list Attribute_Set
+			(object Attribute
+			    tool       	"Java"
+			    name       	"Final"
+			    value      	TRUE))
+		    quid       	"37BD1B640113"
+		    documentation 	
+|Writes the textual Representation of this Object. 	 
+		    
+		    parameters 	(list Parameters
+			(object Parameter "OS"
+			    type       	"Writer"))
+		    result     	"void"
+		    exceptions 	"IOException"
+		    concurrency 	"Sequential"
+		    opExportControl 	"Public"
+		    uid        	0)
+		(object Operation "toString"
+		    attributes 	(list Attribute_Set
+			(object Attribute
+			    tool       	"Java"
+			    name       	"Final"
+			    value      	TRUE))
+		    quid       	"37BD1B64011D"
+		    documentation 	
+|Writes the textual Representation of this Object. 	 
+		    
+		    parameters 	(list Parameters
+			(object Parameter "OS"
+			    type       	"Writer"))
+		    result     	"void"
+		    exceptions 	"IOException"
+		    concurrency 	"Sequential"
+		    opExportControl 	"Public"
+		    uid        	0)
+		(object Operation "toText"
+		    attributes 	(list Attribute_Set
+			(object Attribute
+			    tool       	"Java"
+			    name       	"Static"
+			    value      	TRUE)
+			(object Attribute
+			    tool       	"Java"
+			    name       	"Final"
+			    value      	TRUE))
+		    quid       	"37BD1B640128"
+		    documentation 	
+|Returns the textual Representation of the given Object. 	 
+		    
+		    parameters 	(list Parameters
+			(object Parameter "arg"
+			    type       	"Object"))
+		    result     	"String"
+		    concurrency 	"Sequential"
+		    opExportControl 	"Public"
+		    uid        	0)
+		(object Operation "fromText"
+		    attributes 	(list Attribute_Set
+			(object Attribute
+			    tool       	"Java"
+			    name       	"Static"
+			    value      	TRUE)
+			(object Attribute
+			    tool       	"Java"
+			    name       	"Final"
+			    value      	TRUE))
+		    quid       	"37BD1B64013B"
+		    documentation 	
+|Returns the given Object from it's textual Representation
+|	 * Determines the Class from the first  Part
+|	 * Determines the Value from the second Part
+|	 * Usually both are separated by a WhiteSpace, 
+|	 * since the Class Name is a single String	 
+		    
+		    parameters 	(list Parameters
+			(object Parameter "IS"
+			    type       	"InputStream"))
+		    result     	"copyAble"
+		    exceptions 	"ClassNotFoundException,InstantiationException,IllegalAccessException,IOException"
+		    concurrency 	"Sequential"
+		    opExportControl 	"Public"
+		    uid        	0)
+		(object Operation "fromText"
+		    attributes 	(list Attribute_Set
+			(object Attribute
+			    tool       	"Java"
+			    name       	"Static"
+			    value      	TRUE)
+			(object Attribute
+			    tool       	"Java"
+			    name       	"Final"
+			    value      	TRUE))
+		    quid       	"37BD1B640145"
+		    documentation 	
+|Returns the given Object from it's textual Representation
+|	 * Determines the Class from the first  Part
+|	 * Determines the Value from the second Part
+|	 * Usually both are separated by a WhiteSpace, 
+|	 * since the Class Name is a single String	 
+		    
+		    parameters 	(list Parameters
+			(object Parameter "Text"
+			    type       	"String"))
+		    result     	"copyAble"
+		    exceptions 	"ClassNotFoundException,InstantiationException,IllegalAccessException,IOException"
+		    concurrency 	"Sequential"
+		    opExportControl 	"Public"
+		    uid        	0)
+		(object Operation "fromText"
+		    attributes 	(list Attribute_Set
+			(object Attribute
+			    tool       	"Java"
+			    name       	"Static"
+			    value      	TRUE)
+			(object Attribute
+			    tool       	"Java"
+			    name       	"Final"
+			    value      	TRUE))
+		    quid       	"37BD1B64014F"
+		    documentation 	
+|Returns the given Object from it's textual Representation
+|	 * Determines the Class from the first  Part
+|	 * Determines the Value from the second Part
+|	 * Usually both are separated by a WhiteSpace, 
+|	 * since the Class Name is a single String	 
+		    
+		    parameters 	(list Parameters
+			(object Parameter "IS"
+			    type       	"Reader"))
+		    result     	"copyAble"
+		    exceptions 	"ClassNotFoundException,InstantiationException,IllegalAccessException,IOException"
+		    concurrency 	"Sequential"
+		    opExportControl 	"Public"
+		    uid        	0)
+		(object Operation "fromText"
+		    attributes 	(list Attribute_Set
+			(object Attribute
+			    tool       	"Java"
+			    name       	"Static"
+			    value      	TRUE)
+			(object Attribute
+			    tool       	"Java"
+			    name       	"Final"
+			    value      	TRUE))
+		    quid       	"37BD1B64015A"
+		    documentation 	
+|Returns the given Object from it's textual Representation
+|	 * Determines the Class from the first  Part
+|	 * Determines the Value from the second Part
+|	 * Usually both are separated by a WhiteSpace, 
+|	 * since the Class Name is a single String	 
+		    
+		    parameters 	(list Parameters
+			(object Parameter "ST"
+			    type       	"StreamTokenizer"))
+		    result     	"copyAble"
+		    exceptions 	"ClassNotFoundException,InstantiationException,IllegalAccessException,IOException"
+		    concurrency 	"Sequential"
+		    opExportControl 	"Public"
+		    uid        	0)
+		(object Operation "fromStream"
+		    attributes 	(list Attribute_Set)
+		    quid       	"37BD1B64016D"
+		    documentation 	
+|Creates an uninitalized new Instance of it's class
+|	 * and fills it with the Contents read from the String.	 
+		    
+		    parameters 	(list Parameters
+			(object Parameter "ST"
+			    type       	"StreamTokenizer"))
+		    result     	"copyAble"
+		    exceptions 	"IOException"
+		    concurrency 	"Sequential"
+		    opExportControl 	"Public"
+		    uid        	0)
+		(object Operation "fromStream"
+		    attributes 	(list Attribute_Set)
+		    quid       	"37BD1B640177"
+		    documentation 	
+|Creates an uninitalized new Instance of it's class
+|	 * and fills it with the Contents read from the String.	 
+		    
+		    parameters 	(list Parameters
+			(object Parameter "IS"
+			    type       	"InputStream"))
+		    result     	"copyAble"
+		    exceptions 	"IOException"
+		    concurrency 	"Sequential"
+		    opExportControl 	"Public"
+		    uid        	0)
+		(object Operation "fromStreamAt"
+		    attributes 	(list Attribute_Set)
+		    quid       	"37BD1B640181"
+		    documentation 	
+|Creates an uninitalized new Instance of it's class
+|	 * and fills it with the Contents read from the String.	 
+		    
+		    parameters 	(list Parameters
+			(object Parameter "IS"
+			    type       	"InputStream"))
+		    result     	"copyAble"
+		    exceptions 	"IOException"
+		    concurrency 	"Sequential"
+		    opExportControl 	"Public"
+		    uid        	0)
+		(object Operation "fromStream"
+		    attributes 	(list Attribute_Set)
+		    quid       	"37BD1B64018C"
+		    documentation 	
+|Creates an uninitalized new Instance of it's class
+|	 * and fills it with the Contents read from the String.	 
+		    
+		    parameters 	(list Parameters
+			(object Parameter "IS"
+			    type       	"Reader"))
+		    result     	"copyAble"
+		    exceptions 	"IOException"
+		    concurrency 	"Sequential"
+		    opExportControl 	"Public"
+		    uid        	0)
+		(object Operation "fromStreamAt"
+		    attributes 	(list Attribute_Set)
+		    quid       	"37BD1B64019F"
+		    documentation 	
+|Creates an uninitalized new Instance of it's class
+|	 * and fills it with the Contents read from the String.	 
+		    
+		    parameters 	(list Parameters
+			(object Parameter "IS"
+			    type       	"Reader"))
+		    result     	"copyAble"
+		    exceptions 	"IOException"
+		    concurrency 	"Sequential"
+		    opExportControl 	"Public"
+		    uid        	0)
+		(object Operation "nextToken"
+		    attributes 	(list Attribute_Set
+			(object Attribute
+			    tool       	"Java"
+			    name       	"Static"
+			    value      	TRUE))
+		    quid       	"37BD1B6401A9"
+		    documentation 	
+|Reads until the next Token of this Kind is encountered	 
+		    
+		    parameters 	(list Parameters
+			(object Parameter "ST"
+			    type       	"StreamTokenizer")
+			(object Parameter "Token"
+			    type       	"int"))
+		    result     	"void"
+		    exceptions 	"IOException"
+		    concurrency 	"Sequential"
+		    opExportControl 	"Public"
+		    uid        	0)
+		(object Operation "nextToken"
+		    attributes 	(list Attribute_Set
+			(object Attribute
+			    tool       	"Java"
+			    name       	"Static"
+			    value      	TRUE))
+		    quid       	"37BD1B6401BD"
+		    documentation 	
+|Skips the next Tokens of this Kind 	 
+		    
+		    parameters 	(list Parameters
+			(object Parameter "ST"
+			    type       	"StreamTokenizer")
+			(object Parameter "SkipToken"
+			    type       	"int")
+			(object Parameter "numItems"
+			    type       	"int"))
+		    result     	"void"
+		    exceptions 	"IOException"
+		    concurrency 	"Sequential"
+		    opExportControl 	"Public"
+		    uid        	0)
+		(object Operation "nextToken"
+		    attributes 	(list Attribute_Set
+			(object Attribute
+			    tool       	"Java"
+			    name       	"Static"
+			    value      	TRUE))
+		    quid       	"37BD1B6401D2"
+		    documentation 	
+|Skips the next Tokens of SkipToken Kind. 
+|	 * Then searches for the first Token of FindToken Type 	 
+		    
+		    parameters 	(list Parameters
+			(object Parameter "ST"
+			    type       	"StreamTokenizer")
+			(object Parameter "SkipToken"
+			    type       	"int")
+			(object Parameter "numItems"
+			    type       	"int")
+			(object Parameter "FindToken"
+			    type       	"int"))
+		    result     	"void"
+		    exceptions 	"IOException"
+		    concurrency 	"Sequential"
+		    opExportControl 	"Public"
+		    uid        	0)
+		(object Operation "nextNumber"
+		    attributes 	(list Attribute_Set
+			(object Attribute
+			    tool       	"Java"
+			    name       	"Static"
+			    value      	TRUE))
+		    quid       	"37BD1B6401F9"
+		    documentation 	
+|Skips until the next Number, ignoring Lines	 
+		    
+		    parameters 	(list Parameters
+			(object Parameter "ST"
+			    type       	"StreamTokenizer"))
+		    result     	"void"
+		    exceptions 	"IOException"
+		    concurrency 	"Sequential"
+		    opExportControl 	"Public"
+		    uid        	0)
+		(object Operation "nextNumber"
+		    attributes 	(list Attribute_Set
+			(object Attribute
+			    tool       	"Java"
+			    name       	"Static"
+			    value      	TRUE))
+		    quid       	"37BD1B640203"
+		    documentation 	
+|Searches for the first Number in this Stream 	 
+		    
+		    parameters 	(list Parameters
+			(object Parameter "ST"
+			    type       	"StreamTokenizer")
+			(object Parameter "EOL"
+			    type       	"boolean"))
+		    result     	"double"
+		    exceptions 	"IOException"
+		    concurrency 	"Sequential"
+		    opExportControl 	"Public"
+		    uid        	0)
+		(object Operation "nextNumber"
+		    attributes 	(list Attribute_Set
+			(object Attribute
+			    tool       	"Java"
+			    name       	"Static"
+			    value      	TRUE))
+		    quid       	"37BD1B640217"
+		    documentation 	
+|Skips the next Tokens of SkipToken Kins
+|	 * Then searches for the first Number in this Stream 	 
+		    
+		    parameters 	(list Parameters
+			(object Parameter "ST"
+			    type       	"StreamTokenizer")
+			(object Parameter "SkipToken"
+			    type       	"int")
+			(object Parameter "numItems"
+			    type       	"int")
+			(object Parameter "EOL"
+			    type       	"boolean"))
+		    result     	"double"
+		    exceptions 	"IOException"
+		    concurrency 	"Sequential"
+		    opExportControl 	"Public"
+		    uid        	0)
+		(object Operation "parseList2double"
+		    attributes 	(list Attribute_Set
+			(object Attribute
+			    tool       	"Java"
+			    name       	"Static"
+			    value      	TRUE)
+			(object Attribute
+			    tool       	"Java"
+			    name       	"Final"
+			    value      	TRUE))
+		    quid       	"37BD1B640236"
+		    documentation 	
+|Parses the simple (non-recursive) List in a String into an Array of double.
+|	 * Skips all other Characters. 
+|	 * For recursive Parsing use the Parser in the Hashtable. 	 
+		    
+		    parameters 	(list Parameters
+			(object Parameter "ST"
+			    type       	"StreamTokenizer")
+			(object Parameter "Length"
+			    type       	"int")
+			(object Parameter "EOL"
+			    type       	"boolean"))
+		    result     	"double[]"
+		    exceptions 	"IOException"
+		    concurrency 	"Sequential"
+		    opExportControl 	"Public"
+		    uid        	0)
+		(object Operation "parseList2int"
+		    attributes 	(list Attribute_Set
+			(object Attribute
+			    tool       	"Java"
+			    name       	"Static"
+			    value      	TRUE)
+			(object Attribute
+			    tool       	"Java"
+			    name       	"Final"
+			    value      	TRUE))
+		    quid       	"37BD1B640253"
+		    documentation 	
+|Parses the simple (non-recursive) List in a String into an Array of int.
+|	 * Skips all other Characters. Length is the maximum Length of the List. 
+|	 * For recursive Parsing use the Parser in the Hashtable. 	 
+		    
+		    parameters 	(list Parameters
+			(object Parameter "ST"
+			    type       	"StreamTokenizer")
+			(object Parameter "Length"
+			    type       	"int")
+			(object Parameter "EOL"
+			    type       	"boolean"))
+		    result     	"int[]"
+		    exceptions 	"IOException"
+		    concurrency 	"Sequential"
+		    opExportControl 	"Public"
+		    uid        	0)
+		(object Operation "toString"
+		    attributes 	(list Attribute_Set
+			(object Attribute
+			    tool       	"Java"
+			    name       	"Static"
+			    value      	TRUE)
+			(object Attribute
+			    tool       	"Java"
+			    name       	"Final"
+			    value      	TRUE))
+		    quid       	"37BD1B640271"
+		    documentation 	
+|Prints out ANY Object(as opposed to the standard toString() Method)!
+|	 * Arrays of primitive Type or Object Type
+|	 * for simple Objects simply toString() is used.
+|	 * Similar to the copyAt() Routines in Polnom. 
+|	 * Should be used in the toString() Routines of Array Types
+|	 * and Polygons.	 
+		    
+		    parameters 	(list Parameters
+			(object Parameter "arg"
+			    type       	"Object"))
+		    result     	"String"
+		    concurrency 	"Sequential"
+		    opExportControl 	"Public"
+		    uid        	0)
+		(object Operation "parseInt"
+		    attributes 	(list Attribute_Set
+			(object Attribute
+			    tool       	"Java"
+			    name       	"Static"
+			    value      	TRUE)
+			(object Attribute
+			    tool       	"Java"
+			    name       	"Final"
+			    value      	TRUE))
+		    quid       	"37BD1B64027B"
+		    documentation 	
+|tolerant Searching for the first numerical expression	 
+		    
+		    parameters 	(list Parameters
+			(object Parameter "arg"
+			    type       	"String"))
+		    result     	"int"
+		    concurrency 	"Sequential"
+		    opExportControl 	"Public"
+		    uid        	0)
+		(object Operation "parseDouble"
+		    attributes 	(list Attribute_Set
+			(object Attribute
+			    tool       	"Java"
+			    name       	"Static"
+			    value      	TRUE)
+			(object Attribute
+			    tool       	"Java"
+			    name       	"Final"
+			    value      	TRUE))
+		    quid       	"37BD1B640286"
+		    documentation 	
+|tolerant Searching for the first numerical expression	 
+		    
+		    parameters 	(list Parameters
+			(object Parameter "arg"
+			    type       	"String"))
+		    result     	"double"
+		    concurrency 	"Sequential"
+		    opExportControl 	"Public"
+		    uid        	0)
+		(object Operation "testIt"
+		    attributes 	(list Attribute_Set
+			(object Attribute
+			    tool       	"Java"
+			    name       	"Static"
+			    value      	TRUE))
+		    quid       	"37BD1B640299"
+		    documentation 	
+|Method to test all Implementations in this class.
+|	 * Must call testIt of the super Class.	 
+		    
+		    result     	"void"
+		    exceptions 	"java.io.IOException"
+		    concurrency 	"Sequential"
+		    opExportControl 	"Public"
+		    uid        	0))
+	    module     	"Component View::BaseCopy::absCopyAble"
+	    quidu      	"36BABF55012E"
+	    language   	"Java"
+	    abstract   	TRUE)
+	(object Class "cachedProperty"
+	    attributes 	(list Attribute_Set
+		(object Attribute
+		    tool       	"Java"
+		    name       	"GenerateFinalizer"
+		    value      	FALSE)
+		(object Attribute
+		    tool       	"Java"
+		    name       	"GenerateStaticInitializer"
+		    value      	FALSE)
+		(object Attribute
+		    tool       	"Java"
+		    name       	"GenerateInstanceInitializer"
+		    value      	FALSE)
+		(object Attribute
+		    tool       	"Java"
+		    name       	"GenerateDefaultConstructor"
+		    value      	FALSE))
+	    quid       	"37BC8EAA0096"
+	    documentation 	
+|A class that represents a cached Property. 
+| * It is typically used for derived Properties 
+| * that are complicated to calculate, 
+| * so their Value is rather cached than recalculated every time
+| * The Object with this kind of Property has to provide a Calculation Routine 
+| * recalc() as a Callback for this Property. 
+| * Since Java doesn't have Function Pointers, 
+| * this allows for only a single cached Property per Class
+| * 
+| * This is much easier and safer to handle in Visual Basic, 
+| * because you can implement the cached Values in their Property Get Routines directly
+| * without having to create this artificial Class. 
+| * The VB Implementation is easier to read, maintain and safer, 
+| * because it uses static local Variables in the Property Get Routines 
+| * for the boolean Flag and the actual Value!
+| * You can usually get along without the boolean Flag 
+| * by just using 'null' as an Indicator for an invalid Value. 
+	    
+	    operations 	(list Operations
+		(object Operation "getCacheAt"
+		    attributes 	(list Attribute_Set)
+		    quid       	"37BD1BDF03E1"
+		    documentation 	
+|Returns the Cache directly, 
+|	 * dangerous, because it might be modified!
+|	 * Should only be used by the Classes having this Property.	 
+		    
+		    result     	"Object"
+		    concurrency 	"Sequential"
+		    opExportControl 	"Protected"
+		    uid        	0)
+		(object Operation "getCache"
+		    attributes 	(list Attribute_Set)
+		    quid       	"37BD1BDF03E2"
+		    documentation 	
+|Returns a safe Copy of the Cache	 
+		    
+		    result     	"Object"
+		    concurrency 	"Sequential"
+		    opExportControl 	"Public"
+		    uid        	0))
+	    class_attributes 	(list class_attribute_list
+		(object ClassAttribute "validCache"
+		    attributes 	(list Attribute_Set)
+		    quid       	"37BC8EAA00A0"
+		    documentation 	
+|Determines, whether the Cache is valid	 
+		    
+		    type       	"boolean"
+		    exportControl 	"Public"))
+	    module     	"Component View::BaseCopy::cachedProperty"
+	    quidu      	"37BC8EAA0082"
+	    language   	"Java")
+	(object Class "intCountable"
+	    attributes 	(list Attribute_Set
+		(object Attribute
+		    tool       	"Java"
+		    name       	"GenerateFinalizer"
+		    value      	FALSE)
+		(object Attribute
+		    tool       	"Java"
+		    name       	"GenerateStaticInitializer"
+		    value      	FALSE)
+		(object Attribute
+		    tool       	"Java"
+		    name       	"GenerateInstanceInitializer"
+		    value      	FALSE)
+		(object Attribute
+		    tool       	"Java"
+		    name       	"GenerateDefaultConstructor"
+		    value      	FALSE))
+	    quid       	"37BC8EAE00EC"
+	    documentation 	
+|This class does not extend Number, because not every Group maps to numeric Values.
+| * Instead it presents the conversion Routine to convert from Number Types.
+| * This is unfortunately necessary, because Number does not implement an Interface. 
+	    
+	    stereotype 	"Interface"
+	    operations 	(list Operations
+		(object Operation "byteValue"
+		    attributes 	(list Attribute_Set
+			(object Attribute
+			    tool       	"Java"
+			    name       	"Abstract"
+			    value      	TRUE))
+		    quid       	"37BD1BEA0101"
+		    documentation 	
+| Returns the Object Value represented by an 8 Bit Integer	 
+		    
+		    result     	"byte"
+		    concurrency 	"Sequential"
+		    opExportControl 	"Public"
+		    uid        	0)
+		(object Operation "shortValue"
+		    attributes 	(list Attribute_Set
+			(object Attribute
+			    tool       	"Java"
+			    name       	"Abstract"
+			    value      	TRUE))
+		    quid       	"37BD1BEA010B"
+		    documentation 	
+|Returns the Object Value represented by a 16 Bit Integer	 
+		    
+		    result     	"short"
+		    concurrency 	"Sequential"
+		    opExportControl 	"Public"
+		    uid        	0)
+		(object Operation "intValue"
+		    attributes 	(list Attribute_Set
+			(object Attribute
+			    tool       	"Java"
+			    name       	"Abstract"
+			    value      	TRUE))
+		    quid       	"37BD1BEA010C"
+		    documentation 	
+|Returns the Object Value represented by a 32 Bit Integer	 
+		    
+		    result     	"int"
+		    concurrency 	"Sequential"
+		    opExportControl 	"Public"
+		    uid        	0)
+		(object Operation "longValue"
+		    attributes 	(list Attribute_Set
+			(object Attribute
+			    tool       	"Java"
+			    name       	"Abstract"
+			    value      	TRUE))
+		    quid       	"37BD1BEA010D"
+		    documentation 	
+|Returns the Object Value represented by a 64 Bit Integer	 
+		    
+		    result     	"long"
+		    concurrency 	"Sequential"
+		    opExportControl 	"Public"
+		    uid        	0))
+	    module     	"Component View::BaseCopy::intCountable"
+	    quidu      	"37BC8EAE00E2"
+	    language   	"Java")
+	(object Class "testBaseCopy"
+	    attributes 	(list Attribute_Set
+		(object Attribute
+		    tool       	"Java"
+		    name       	"GenerateFinalizer"
+		    value      	FALSE)
+		(object Attribute
+		    tool       	"Java"
+		    name       	"GenerateStaticInitializer"
+		    value      	FALSE)
+		(object Attribute
+		    tool       	"Java"
+		    name       	"GenerateInstanceInitializer"
+		    value      	FALSE)
+		(object Attribute
+		    tool       	"Java"
+		    name       	"GenerateDefaultConstructor"
+		    value      	FALSE))
+	    quid       	"37BC8EAE0100"
+	    operations 	(list Operations
+		(object Operation "main"
+		    attributes 	(list Attribute_Set
+			(object Attribute
+			    tool       	"Java"
+			    name       	"Static"
+			    value      	TRUE))
+		    quid       	"37BD1BEA031E"
+		    documentation 	
+|The main entry point for the application. 
+|	 * @param args Array of command line parameters passed to the application.
+|	 * Here I can test the static Methods of the Classes 
+|	 * and call the testIt() Methods.	 
+		    
+		    parameters 	(list Parameters
+			(object Parameter "args"
+			    type       	"String[]"))
+		    result     	"void"
+		    exceptions 	"java.io.IOException"
+		    concurrency 	"Sequential"
+		    opExportControl 	"Public"
+		    uid        	0))
+	    module     	"Component View::BaseCopy::testBaseCopy"
+	    quidu      	"37BC8EAE00F6"
+	    language   	"Java")
+	(object Association "$UNNAMED$0"
+	    attributes 	(list Attribute_Set)
+	    quid       	"37BC8EAA00A1"
+	    roles      	(list role_list
+		(object Role "$UNNAMED$1"
+		    quid       	"37BC8EAA00A2"
+		    supplier   	"Logical View::BaseCopy::cachedProperty"
+		    quidu      	"37BC8EAA0096")
+		(object Role "Cache"
+		    attributes 	(list Attribute_Set
+			(object Attribute
+			    tool       	"Java"
+			    name       	"InitialValue"
+			    value      	""))
+		    quid       	"37BC8EAA00A3"
+		    documentation 	
+|The actual cached Value	 
+		    
+		    label      	"Cache"
+		    supplier   	"Logical View::BaseCopy::absCopyAble"
+		    quidu      	"36BB22B9029F"
+		    exportControl 	"Protected"
+		    is_navigable 	TRUE)))
+	(object Association "$UNNAMED$2"
+	    attributes 	(list Attribute_Set)
+	    quid       	"37BD1B640080"
+	    roles      	(list role_list
+		(object Role "$UNNAMED$3"
+		    quid       	"37BD1B640081"
+		    supplier   	"Logical View::BaseCopy::absCopyAble"
+		    quidu      	"36BB22B9029F")
+		(object Role "SeparatorLength"
+		    attributes 	(list Attribute_Set
+			(object Attribute
+			    tool       	"Java"
+			    name       	"InitialValue"
+			    value      	(value Text 
+|":"
+			    )))
+		    quid       	"37BD1B640082"
+		    documentation 	
+|Determines, whether the Length of an Array is given out (!= "")
+|	 * and how it is separated from the Rest of the List	 
+		    
+		    label      	"SeparatorLength"
+		    supplier   	"Logical View::java::lang::String"
+		    quidu      	"34B0F6CF01B8"
+		    is_navigable 	TRUE
+		    static     	TRUE)))
+	(object Association "$UNNAMED$4"
+	    attributes 	(list Attribute_Set)
+	    quid       	"37BD1B640083"
+	    roles      	(list role_list
+		(object Role "$UNNAMED$5"
+		    quid       	"37BD1B640084"
+		    supplier   	"Logical View::BaseCopy::absCopyAble"
+		    quidu      	"36BB22B9029F")
+		(object Role "ClassSep"
+		    attributes 	(list Attribute_Set
+			(object Attribute
+			    tool       	"Java"
+			    name       	"InitialValue"
+			    value      	(value Text 
+|" "
+			    )))
+		    quid       	"37BD1B640087"
+		    documentation 	
+|Separator for the Class Description. 
+|	 * A WhiteSpace is enough, because the Class Name is a single Word.	 
+		    
+		    label      	"ClassSep"
+		    supplier   	"Logical View::java::lang::String"
+		    quidu      	"34B0F6CF01B8"
+		    is_navigable 	TRUE
+		    static     	TRUE)))
+	(object Association "$UNNAMED$6"
+	    attributes 	(list Attribute_Set)
+	    quid       	"37BD1B640088"
+	    roles      	(list role_list
+		(object Role "$UNNAMED$7"
+		    quid       	"37BD1B640089"
+		    supplier   	"Logical View::BaseCopy::absCopyAble"
+		    quidu      	"36BB22B9029F")
+		(object Role "Separator"
+		    attributes 	(list Attribute_Set
+			(object Attribute
+			    tool       	"Java"
+			    name       	"InitialValue"
+			    value      	(value Text 
+|","
+			    )))
+		    quid       	"37BD1B64008A"
+		    documentation 	
+|Separator String	 
+		    
+		    label      	"Separator"
+		    supplier   	"Logical View::java::lang::String"
+		    quidu      	"34B0F6CF01B8"
+		    is_navigable 	TRUE
+		    static     	TRUE)))
+	(object Association "$UNNAMED$8"
+	    attributes 	(list Attribute_Set)
+	    quid       	"37BD1B640091"
+	    roles      	(list role_list
+		(object Role "$UNNAMED$9"
+		    quid       	"37BD1B640092"
+		    supplier   	"Logical View::BaseCopy::absCopyAble"
+		    quidu      	"36BB22B9029F")
+		(object Role "Starter"
+		    attributes 	(list Attribute_Set
+			(object Attribute
+			    tool       	"Java"
+			    name       	"InitialValue"
+			    value      	(value Text 
+|"{"
+			    )))
+		    quid       	"37BD1B640093"
+		    documentation 	
+|Starter String	 
+		    
+		    label      	"Starter"
+		    supplier   	"Logical View::java::lang::String"
+		    quidu      	"34B0F6CF01B8"
+		    is_navigable 	TRUE
+		    static     	TRUE)))
+	(object Association "$UNNAMED$10"
+	    attributes 	(list Attribute_Set)
+	    quid       	"37BD1B640094"
+	    roles      	(list role_list
+		(object Role "$UNNAMED$11"
+		    quid       	"37BD1B640095"
+		    supplier   	"Logical View::BaseCopy::absCopyAble"
+		    quidu      	"36BB22B9029F")
+		(object Role "Stopper"
+		    attributes 	(list Attribute_Set
+			(object Attribute
+			    tool       	"Java"
+			    name       	"InitialValue"
+			    value      	(value Text 
+|"}"
+			    )))
+		    quid       	"37BD1B640096"
+		    documentation 	
+|Stopper String	 
+		    
+		    label      	"Stopper"
+		    supplier   	"Logical View::java::lang::String"
+		    quidu      	"34B0F6CF01B8"
+		    is_navigable 	TRUE
+		    static     	TRUE)))
+	(object Association "$UNNAMED$12"
+	    attributes 	(list Attribute_Set)
+	    quid       	"37BD1B64009B"
+	    roles      	(list role_list
+		(object Role "$UNNAMED$13"
+		    quid       	"37BD1B64009C"
+		    supplier   	"Logical View::BaseCopy::absCopyAble"
+		    quidu      	"36BB22B9029F")
+		(object Role "Attribute"
+		    attributes 	(list Attribute_Set
+			(object Attribute
+			    tool       	"Java"
+			    name       	"InitialValue"
+			    value      	(value Text 
+|":"
+			    )))
+		    quid       	"37BD1B64009D"
+		    documentation 	
+|Attribute String, separates Attributes in Attribute Grammar	 
+		    
+		    label      	"Attribute"
+		    supplier   	"Logical View::java::lang::String"
+		    quidu      	"34B0F6CF01B8"
+		    is_navigable 	TRUE
+		    static     	TRUE)))
+	(object Association "$UNNAMED$14"
+	    attributes 	(list Attribute_Set)
+	    quid       	"37BD1B64009E"
+	    roles      	(list role_list
+		(object Role "$UNNAMED$15"
+		    quid       	"37BD1B64009F"
+		    supplier   	"Logical View::BaseCopy::absCopyAble"
+		    quidu      	"36BB22B9029F")
+		(object Role "Signs"
+		    attributes 	(list Attribute_Set
+			(object Attribute
+			    tool       	"Java"
+			    name       	"InitialValue"
+			    value      	(value Text 
+|"+-"
+			    ))
+			(object Attribute
+			    tool       	"Java"
+			    name       	"Final"
+			    value      	TRUE))
+		    quid       	"37BD1B6400A5"
+		    documentation 	
+|String containing the Characters for Signs	 
+		    
+		    label      	"Signs"
+		    supplier   	"Logical View::java::lang::String"
+		    quidu      	"34B0F6CF01B8"
+		    is_navigable 	TRUE
+		    static     	TRUE)))
+	(object Association "$UNNAMED$16"
+	    attributes 	(list Attribute_Set)
+	    quid       	"37BD1B6400A6"
+	    roles      	(list role_list
+		(object Role "$UNNAMED$17"
+		    quid       	"37BD1B6400A7"
+		    supplier   	"Logical View::BaseCopy::absCopyAble"
+		    quidu      	"36BB22B9029F")
+		(object Role "strNumbers"
+		    attributes 	(list Attribute_Set
+			(object Attribute
+			    tool       	"Java"
+			    name       	"InitialValue"
+			    value      	(value Text 
+|"0123456789"
+			    ))
+			(object Attribute
+			    tool       	"Java"
+			    name       	"Final"
+			    value      	TRUE))
+		    quid       	"37BD1B6400A8"
+		    documentation 	
+|String containing the Characters for Numbers	 
+		    
+		    label      	"strNumbers"
+		    supplier   	"Logical View::java::lang::String"
+		    quidu      	"34B0F6CF01B8"
+		    is_navigable 	TRUE
+		    static     	TRUE)))
+	(object Association "$UNNAMED$18"
+	    attributes 	(list Attribute_Set)
+	    quid       	"37BD1B6400AF"
+	    roles      	(list role_list
+		(object Role "$UNNAMED$19"
+		    quid       	"37BD1B6400B0"
+		    supplier   	"Logical View::BaseCopy::absCopyAble"
+		    quidu      	"36BB22B9029F")
+		(object Role "strIntFigures"
+		    attributes 	(list Attribute_Set
+			(object Attribute
+			    tool       	"Java"
+			    name       	"InitialValue"
+			    value      	"strNumbers + Signs")
+			(object Attribute
+			    tool       	"Java"
+			    name       	"Final"
+			    value      	TRUE))
+		    quid       	"37BD1B6400B1"
+		    documentation 	
+|String containing the Characters for integer Numbers	 
+		    
+		    label      	"strIntFigures"
+		    supplier   	"Logical View::java::lang::String"
+		    quidu      	"34B0F6CF01B8"
+		    is_navigable 	TRUE
+		    static     	TRUE)))
+	(object Association "$UNNAMED$20"
+	    attributes 	(list Attribute_Set)
+	    quid       	"37BD1B6400B2"
+	    roles      	(list role_list
+		(object Role "$UNNAMED$21"
+		    quid       	"37BD1B6400B3"
+		    supplier   	"Logical View::BaseCopy::absCopyAble"
+		    quidu      	"36BB22B9029F")
+		(object Role "strDblFigures"
+		    attributes 	(list Attribute_Set
+			(object Attribute
+			    tool       	"Java"
+			    name       	"InitialValue"
+			    value      	(value Text 
+|strNumbers + ".e"
+			    ))
+			(object Attribute
+			    tool       	"Java"
+			    name       	"Final"
+			    value      	TRUE))
+		    quid       	"37BD1B6400B4"
+		    documentation 	
+|String containing the Characters for integer Numbers	 
+		    
+		    label      	"strDblFigures"
+		    supplier   	"Logical View::java::lang::String"
+		    quidu      	"34B0F6CF01B8"
+		    is_navigable 	TRUE
+		    static     	TRUE)))
+	(object Association "$UNNAMED$22"
+	    attributes 	(list Attribute_Set)
+	    quid       	"37BD1B6400B9"
+	    roles      	(list role_list
+		(object Role "$UNNAMED$23"
+		    quid       	"37BD1B6400BA"
+		    supplier   	"Logical View::BaseCopy::absCopyAble"
+		    quidu      	"36BB22B9029F")
+		(object Role "testInstance"
+		    attributes 	(list Attribute_Set
+			(object Attribute
+			    tool       	"Java"
+			    name       	"InitialValue"
+			    value      	""))
+		    quid       	"37BD1B6400BB"
+		    documentation 	
+|Parses the simple (non-recursive) List in a Stream into an Array of Strings.
+|	 * Using the default Separators given by this Class. 
+|	 * For recursive Parsing use the Parser in the Hashtable. 	 
+		    
+		    label      	"testInstance"
+		    supplier   	"Logical View::BaseCopy::absCopyAble"
+		    quidu      	"36BB22B9029F"
+		    is_navigable 	TRUE
+		    static     	TRUE))))
+    logical_presentations 	(list unit_reference_list
+	(object ClassDiagram "BaseCopy"
+	    quid       	"36BB225E0063"
+	    title      	"BaseCopy"
+	    zoom       	100
+	    max_height 	28350
+	    max_width  	21600
+	    origin_x   	0
+	    origin_y   	0
+	    items      	(list diagram_item_list
+		(object ClassView "Class" "Logical View::BaseCopy::intCopyAble" @1
+		    ShowCompartmentStereotypes 	TRUE
+		    IncludeAttribute 	TRUE
+		    location   	(868, 279)
+		    label      	(object ItemLabel
+			Parent_View 	@1
+			location   	(740, 226)
+			fill_color 	13434879
+			nlines     	1
+			max_width  	256
+			justify    	0
+			label      	"intCopyAble")
+		    stereotype 	(object ItemLabel
+			Parent_View 	@1
+			location   	(740, 176)
+			fill_color 	13434879
+			anchor     	10
+			nlines     	1
+			max_width  	256
+			justify    	0
+			label      	"<<Interface>>")
+		    icon       	"Interface"
+		    icon_style 	"Label"
+		    line_color 	3342489
+		    fill_color 	13434879
+		    quidu      	"36BB22B90136"
+		    width      	274
+		    height     	230
+		    annotation 	8
+		    autoResize 	TRUE)
+		(object ClassView "Class" "Logical View::BaseCopy::copyAble" @2
+		    ShowCompartmentStereotypes 	TRUE
+		    location   	(868, 589)
+		    label      	(object ItemLabel
+			Parent_View 	@2
+			location   	(740, 560)
+			fill_color 	13434879
+			nlines     	1
+			max_width  	256
+			justify    	0
+			label      	"copyAble")
+		    stereotype 	(object ItemLabel
+			Parent_View 	@2
+			location   	(740, 510)
+			fill_color 	13434879
+			anchor     	10
+			nlines     	1
+			max_width  	256
+			justify    	0
+			label      	"<<Interface>>")
+		    icon       	"Interface"
+		    icon_style 	"Label"
+		    line_color 	3342489
+		    fill_color 	13434879
+		    quidu      	"36BB22B9021D"
+		    width      	274
+		    height     	182
+		    annotation 	8
+		    autoResize 	TRUE)
+		(object InheritView "" @3
+		    stereotype 	TRUE
+		    line_color 	3342489
+		    quidu      	"37BD1BE003E2"
+		    client     	@2
+		    supplier   	@1
+		    line_style 	0)
+		(object ClassView "Class" "Logical View::BaseCopy::absCopyAble" @4
+		    ShowCompartmentStereotypes 	TRUE
+		    location   	(868, 899)
+		    font       	(object Font
+			italics    	TRUE)
+		    label      	(object ItemLabel
+			Parent_View 	@4
+			location   	(732, 848)
+			fill_color 	13434879
+			nlines     	1
+			max_width  	272
+			justify    	0
+			label      	"absCopyAble")
+		    icon_style 	"Icon"
+		    line_color 	3342489
+		    fill_color 	13434879
+		    quidu      	"36BB22B9029F"
+		    width      	290
+		    height     	126
+		    annotation 	8
+		    autoResize 	TRUE)
+		(object AssociationViewNew "$UNNAMED$22" @5
+		    location   	(1033, 1124)
+		    stereotype 	TRUE
+		    line_color 	3342489
+		    quidu      	"37BD1B6400B9"
+		    roleview_list 	(list RoleViews
+			(object RoleView "$UNNAMED$23" @6
+			    Parent_View 	@5
+			    location   	(444, 225)
+			    label      	(object SegLabel @7
+				Parent_View 	@6
+				location   	(827, 1027)
+				hidden     	TRUE
+				anchor     	1
+				anchor_loc 	1
+				nlines     	1
+				max_width  	450
+				justify    	0
+				label      	""
+				pctDist    	0.800000
+				height     	42
+				orientation 	0)
+			    stereotype 	TRUE
+			    line_color 	3342489
+			    quidu      	"37BD1B6400BA"
+			    client     	@5
+			    supplier   	@4
+			    vertices   	(list Points
+				(1033, 1124)
+				(868, 1124)
+				(868, 962))
+			    line_style 	0)
+			(object RoleView "testInstance" @8
+			    Parent_View 	@5
+			    location   	(444, 225)
+			    label      	(object SegLabel @9
+				Parent_View 	@8
+				location   	(948, 922)
+				anchor     	1
+				anchor_loc 	1
+				nlines     	1
+				max_width  	276
+				justify    	0
+				label      	"+$testInstance"
+				pctDist    	0.720548
+				height     	146
+				orientation 	0)
+			    stereotype 	TRUE
+			    line_color 	3342489
+			    quidu      	"37BD1B6400BB"
+			    client     	@5
+			    supplier   	@4
+			    vertices   	(list Points
+				(1033, 1124)
+				(1093, 1124)
+				(1093, 899)
+				(1013, 899))
+			    line_style 	0)))
+		(object RealizeView "" @10
+		    stereotype 	TRUE
+		    line_color 	3342489
+		    quidu      	"37BD1B64006A"
+		    client     	@4
+		    supplier   	@2
+		    line_style 	0)
+		(object ClassView "Class" "Logical View::BaseCopy::cachedProperty" @11
+		    ShowCompartmentStereotypes 	TRUE
+		    location   	(372, 899)
+		    label      	(object ItemLabel
+			Parent_View 	@11
+			location   	(211, 848)
+			fill_color 	13434879
+			nlines     	1
+			max_width  	322
+			justify    	0
+			label      	"cachedProperty")
+		    icon_style 	"Icon"
+		    line_color 	3342489
+		    fill_color 	13434879
+		    quidu      	"37BC8EAA0096"
+		    width      	340
+		    height     	126
+		    annotation 	8
+		    autoResize 	TRUE)
+		(object AssociationViewNew "$UNNAMED$0" @12
+		    location   	(632, 899)
+		    stereotype 	TRUE
+		    line_color 	3342489
+		    quidu      	"37BC8EAA00A1"
+		    roleview_list 	(list RoleViews
+			(object RoleView "Cache" @13
+			    Parent_View 	@12
+			    location   	(291, 310)
+			    label      	(object SegLabel @14
+				Parent_View 	@13
+				location   	(642, 860)
+				anchor     	1
+				anchor_loc 	1
+				nlines     	1
+				max_width  	144
+				justify    	0
+				label      	"#Cache"
+				pctDist    	0.111111
+				height     	40
+				orientation 	0)
+			    stereotype 	TRUE
+			    line_color 	3342489
+			    quidu      	"37BC8EAA00A3"
+			    client     	@12
+			    supplier   	@4
+			    line_style 	0)
+			(object RoleView "$UNNAMED$1" @15
+			    Parent_View 	@12
+			    location   	(291, 310)
+			    label      	(object SegLabel @16
+				Parent_View 	@15
+				location   	(560, 858)
+				hidden     	TRUE
+				anchor     	1
+				anchor_loc 	1
+				nlines     	1
+				max_width  	450
+				justify    	0
+				label      	""
+				pctDist    	0.800000
+				height     	42
+				orientation 	1)
+			    stereotype 	TRUE
+			    line_color 	3342489
+			    quidu      	"37BC8EAA00A2"
+			    client     	@12
+			    supplier   	@11
+			    line_style 	0)))))))

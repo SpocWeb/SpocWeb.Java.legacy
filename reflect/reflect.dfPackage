@@ -1,0 +1,77 @@
+package id4wahmbqh0rautbqh0sk2z;
+
+/**
+@version 2.0
+@physicalPackage
+@__modelType diagram 
+*/
+class diagram {
+/**
+@__ref <oiref:java#Class#reflect.Type:oiref><oihard>
+@__modelType reference 
+*/
+class reference {
+}/**
+@__ref <oiref:java#Class#reflect.Person:oiref><oihard>
+@__modelType reference 
+*/
+class reference356 {
+}/**
+@__ref <oiref:java#Class#reflect.IType:oiref><oihard>
+@__modelType reference 
+*/
+class reference357 {
+}/**
+@__ref <oiref:java#Class#reflect.IThing:oiref><oihard>
+@__modelType reference 
+*/
+class reference358 {
+}/**
+@__ref <oiref:java#Class#reflect.Address:oiref><oihard>
+@__modelType reference 
+*/
+class reference359 {
+}/**
+@__ref <oiref:java#Class#reflect.IIndividual:oiref><oihard>
+@__modelType reference 
+*/
+class reference360 {
+}/**
+@__ref <oiref:java#Class#reflect.ReflectAble:oiref><oihard>
+@__modelType reference 
+*/
+class reference361 {
+}/**
+@__ref <oiref:java#Class#reflect.IMathThing:oiref><oihard>
+@__modelType reference 
+*/
+class reference362 {
+}/**
+@__ref <oiref:java#Class#reflect.IIntangible:oiref><oihard>
+@__modelType reference 
+*/
+class reference363 {
+}/**
+@__ref <oiref:java#Class#reflect.Thing:oiref><oihard>
+@__modelType reference 
+*/
+class reference364 {
+}/**
+@__ref <oiref:java#Class#reflect.IReflectAble:oiref><oihard>
+@__modelType reference 
+*/
+class reference365 {
+}}/**
+@__tags
+@shapeType ClassDiagram 
+*/
+class __tags {
+}/**
+@__options 
+*/
+class __options {
+}/**
+@__positions 
+*/
+class __positions {
+}

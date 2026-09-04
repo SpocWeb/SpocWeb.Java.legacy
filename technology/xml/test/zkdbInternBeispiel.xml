@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!-- $Id: zkdbInternBeispiel.xml,v 1.29 2003/09/30 09:20:38 mheuer Exp $ !-->
+<Nachricht xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation=".\zkdbIntern.xsd">
+	<Transaktion>
+		<Steuerung>
+			<ZKDBID>123456789</ZKDBID>
+			<TxID>5555</TxID>
+			<!-- Gewuenschte Operation (C,S,D,E)-->
+			<Operation>C</Operation>
+			<ErstelltAm>2001-10-11T18:53:44</ErstelltAm>
+			<System>TestZKDB</System>
+			<BenutzerName>Der Aufrufer von dem Operation</BenutzerName>
+			<!-- Eine Charakterisierung des Nachrichtentyps -->
+			<StatusNummer>1</StatusNummer>
+			<!-- Inhalt der Bemerkung ist optional -->
+			<Bemerkung/>
+		</Steuerung>
+		<Daten>
+			<Kunde>
+				<ZKDBID>123456789</ZKDBID>
+				<Orgflag>P</Orgflag>
+				<Kundenname>Müller</Kundenname>
+				<Vorname>John</Vorname>
+				<Mittelname/>
+				<Namenzusatz>senior</Namenzusatz>
+				<Titel>Prof.</Titel>
+				<Anrede status="deleted">Herr</Anrede>
+				<Bes_anrede>Master</Bes_anrede>
+				<Geburtsdatum>1978-06-17</Geburtsdatum>
+				<Geschlecht>m</Geschlecht>
+				<Familienstand>ledig</Familienstand>
+				<Nationalitaet_iso_code status="changed">ITA</Nationalitaet_iso_code>
+				<Anzahl_kinder>10</Anzahl_kinder>
+				<Gehaltsklasse/>
+				<Ausbildung/>
+				<Raucher>0</Raucher>
+				<Wagenklasse>2</Wagenklasse>
+				<Rechtsform>GmbH</Rechtsform>
+				<Registernr>??</Registernr>
+				<Registerort>Como</Registerort>
+				<Kundensperre>0</Kundensperre>
+				<Werbungssperre>0</Werbungssperre>
+				<Zahlungsart>Bar</Zahlungsart>
+			</Kunde>
+			<KundeInSystem>
+				<Typ>NVS</Typ>
+				<Sperre>0</Sperre>
+				<SystemStatus/>
+			</KundeInSystem>
+			<KundeInSystem>
+				<Typ>MSN</Typ>
+				<Sperre>0</Sperre>
+				<SystemStatus/>
+			</KundeInSystem>
+			<Adresse>
+				<Typ>Wohn</Typ>
+				<Postfachflag/>
+				<Valid_flag>1</Valid_flag>
+				<Kundenname>Heuer</Kundenname>
+				<Vorname>Matthias</Vorname>
+				<Mittelname>Maria</Mittelname>
+				<Strasse_postfach>Via Independenza 1</Strasse_postfach>
+				<!--Adresszusatz/-->
+				<Plz>55555</Plz>
+				<Ort>Como</Ort>
+				<Ergaenzung_ort>Lipomo</Ergaenzung_ort>
+				<Region>Lombardia</Region>
+				<Briefanrede>Herr</Briefanrede>
+				<Land_iso_code>ITA</Land_iso_code>
+			</Adresse>
+			<Bankverbindung status="deleted">
+				<Typ>BahnCard</Typ>
+				<Kto_inhaber>John Doe</Kto_inhaber>
+				<Kto_nr>1111111111</Kto_nr>
+				<Kreditinstitut>MLP Bank AG</Kreditinstitut>
+				<BLZ>67230000</BLZ>
+				<Bevorzugt>0</Bevorzugt>
+				<Lastschrift_sperre>0</Lastschrift_sperre>
+			</Bankverbindung>
+			<Benutzererkennung>
+				<Typ>?</Typ>
+				<Benutzername>John33</Benutzername>
+				<Pin>4444</Pin>
+			</Benutzererkennung>
+			<Kommunikation>
+				<Typ>EMAIL_GESCHAEFT</Typ>
+				<Bevorzugt>0</Bevorzugt>
+				<Verb_info>henrik.sternberg@ctp.com</Verb_info>
+			</Kommunikation>
+			<Kreditkarte>
+				<Typ>AMEX</Typ>
+				<Inhaber>John Doe Gmbh</Inhaber>
+				<Nummer>333333333333</Nummer>
+				<Kreditinstitut>AMEX</Kreditinstitut>
+				<Bevorzugt>0</Bevorzugt>
+				<Gueltig_bis>03/01</Gueltig_bis>
+			</Kreditkarte>
+			<Kundenkarte status="changed">
+				<Typ>A</Typ>
+				<Nummer status="changed">1234567890</Nummer>
+				<Befoerderungsklasse>??</Befoerderungsklasse>
+				<Gueltigkeitsdauer>1</Gueltigkeitsdauer>
+				<Gueltig_von>2001-03-01</Gueltig_von>
+				<Gueltig_bis>2003-03-01</Gueltig_bis>
+				<Bezeichnung>??</Bezeichnung>
+			</Kundenkarte>
+			<Kundenmerkmal>
+				<Typ>Ausgabestelle</Typ>
+				<Sys_extern>NVS</Sys_extern>
+				<Merkmal>42</Merkmal>
+			</Kundenmerkmal>
+			<Rolle>
+				<Typ>Statuskunde</Typ>
+			</Rolle>
+			<Kundenbeziehung>
+				<Typ>Hauptkarteninhaber</Typ>
+				<ZKDBID>34536</ZKDBID>
+			</Kundenbeziehung>
+		</Daten>
+	</Transaktion>
+</Nachricht>

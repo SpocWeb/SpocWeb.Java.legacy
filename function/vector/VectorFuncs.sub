@@ -1,0 +1,442 @@
+
+(object Petal
+    version    	42
+    _written   	"Rose 4.5.8163.3"
+    charSet    	0)
+
+(object SubSystem "VectorFuncs"
+    is_unit    	TRUE
+    is_loaded  	TRUE
+    quid       	"37BC91A9020E"
+    visible_modules 	(list dependency_list
+	(object Dependency_Relationship
+	    quid       	"37BC942E014B"
+	    supplier   	"Component View::Ring"
+	    quidu      	"36BB392A02D1"
+	    supplier_is_subsystem 	TRUE)
+	(object Dependency_Relationship
+	    quid       	"37BC942E014D"
+	    supplier   	"Component View::Metric"
+	    quidu      	"36BB45940014"
+	    supplier_is_subsystem 	TRUE)
+	(object Dependency_Relationship
+	    quid       	"37BC942E014F"
+	    supplier   	"Component View::Vector"
+	    quidu      	"36BB514D0055"
+	    supplier_is_subsystem 	TRUE)
+	(object Dependency_Relationship
+	    quid       	"37BC942E0151"
+	    supplier   	"Component View::intFunction"
+	    quidu      	"36BB39470388"
+	    supplier_is_subsystem 	TRUE)
+	(object Dependency_Relationship
+	    quid       	"37BC942E026E"
+	    supplier   	"Component View::GroupM"
+	    quidu      	"36BB2CD10088"
+	    supplier_is_subsystem 	TRUE)
+	(object Dependency_Relationship
+	    quid       	"37BC942E0369"
+	    supplier   	"Component View::Group"
+	    quidu      	"36BB25E0024F"
+	    supplier_is_subsystem 	TRUE)
+	(object Dependency_Relationship
+	    quid       	"37BD23ED03BA"
+	    supplier   	"Component View::ByRef"
+	    quidu      	"36BB4AA503DA"
+	    supplier_is_subsystem 	TRUE))
+    physical_models 	(list unit_reference_list
+	(object module "OdeHeight" "NotAModuleType" "NotAModulePart"
+	    attributes 	(list Attribute_Set
+		(object Attribute
+		    tool       	"Java"
+		    name       	"FileName"
+		    value      	"D:\\Personal\\Code\\Java\\VectorFuncs\\OdeHeight.java"))
+	    quid       	"37BC91A9020F"
+	    stereotype 	""
+	    visible_modules 	(list dependency_list
+		(object Dependency_Relationship
+		    quid       	"37BC942F0139"
+		    supplier   	"Component View::Ring"
+		    quidu      	"36BB392A02D1"
+		    supplier_is_subsystem 	TRUE)
+		(object Dependency_Relationship
+		    quid       	"37BC942F013A"
+		    supplier   	"Component View::Vector"
+		    quidu      	"36BB514D0055"
+		    supplier_is_subsystem 	TRUE)
+		(object Dependency_Relationship
+		    quid       	"37BC942F013B"
+		    supplier   	"Component View::intFunction"
+		    quidu      	"36BB39470388"
+		    supplier_is_subsystem 	TRUE)
+		(object Dependency_Relationship
+		    quid       	"37BD23EB0041"
+		    supplier   	"Component View::Ring"
+		    quidu      	"36BB392A02D1"
+		    supplier_is_subsystem 	TRUE)
+		(object Dependency_Relationship
+		    quid       	"37BD23EB0042"
+		    supplier   	"Component View::Vector"
+		    quidu      	"36BB514D0055"
+		    supplier_is_subsystem 	TRUE)
+		(object Dependency_Relationship
+		    quid       	"37BD23EB0043"
+		    supplier   	"Component View::intFunction"
+		    quidu      	"36BB39470388"
+		    supplier_is_subsystem 	TRUE)
+		(object Dependency_Relationship
+		    quid       	"37BD3AD8019F"
+		    supplier   	"Component View::Ring"
+		    quidu      	"36BB392A02D1"
+		    supplier_is_subsystem 	TRUE)
+		(object Dependency_Relationship
+		    quid       	"37BD3AD801A0"
+		    supplier   	"Component View::Vector"
+		    quidu      	"36BB514D0055"
+		    supplier_is_subsystem 	TRUE)
+		(object Dependency_Relationship
+		    quid       	"37BD3AD801A1"
+		    supplier   	"Component View::intFunction"
+		    quidu      	"36BB39470388"
+		    supplier_is_subsystem 	TRUE))
+	    language   	"Java")
+	(object module "fChargeField" "NotAModuleType" "NotAModulePart"
+	    attributes 	(list Attribute_Set
+		(object Attribute
+		    tool       	"Java"
+		    name       	"FileName"
+		    value      	"D:\\Personal\\Code\\Java\\VectorFuncs\\fChargeField.java"))
+	    quid       	"37BC942E00C9"
+	    stereotype 	""
+	    visible_modules 	(list dependency_list
+		(object Dependency_Relationship
+		    quid       	"37BC942E014C"
+		    supplier   	"Component View::Ring"
+		    quidu      	"36BB392A02D1"
+		    supplier_is_subsystem 	TRUE)
+		(object Dependency_Relationship
+		    quid       	"37BC942E014E"
+		    supplier   	"Component View::Metric"
+		    quidu      	"36BB45940014"
+		    supplier_is_subsystem 	TRUE)
+		(object Dependency_Relationship
+		    quid       	"37BC942E0150"
+		    supplier   	"Component View::Vector"
+		    quidu      	"36BB514D0055"
+		    supplier_is_subsystem 	TRUE)
+		(object Dependency_Relationship
+		    quid       	"37BC942E0152"
+		    supplier   	"Component View::intFunction"
+		    quidu      	"36BB39470388"
+		    supplier_is_subsystem 	TRUE)
+		(object Dependency_Relationship
+		    quid       	"37BD23E60197"
+		    supplier   	"Component View::Ring"
+		    quidu      	"36BB392A02D1"
+		    supplier_is_subsystem 	TRUE)
+		(object Dependency_Relationship
+		    quid       	"37BD23E60198"
+		    supplier   	"Component View::Metric"
+		    quidu      	"36BB45940014"
+		    supplier_is_subsystem 	TRUE)
+		(object Dependency_Relationship
+		    quid       	"37BD23E60199"
+		    supplier   	"Component View::Vector"
+		    quidu      	"36BB514D0055"
+		    supplier_is_subsystem 	TRUE)
+		(object Dependency_Relationship
+		    quid       	"37BD23E6019A"
+		    supplier   	"Component View::intFunction"
+		    quidu      	"36BB39470388"
+		    supplier_is_subsystem 	TRUE)
+		(object Dependency_Relationship
+		    quid       	"37BD3AD0020A"
+		    supplier   	"Component View::Ring"
+		    quidu      	"36BB392A02D1"
+		    supplier_is_subsystem 	TRUE)
+		(object Dependency_Relationship
+		    quid       	"37BD3AD0021E"
+		    supplier   	"Component View::Metric"
+		    quidu      	"36BB45940014"
+		    supplier_is_subsystem 	TRUE)
+		(object Dependency_Relationship
+		    quid       	"37BD3AD00228"
+		    supplier   	"Component View::Vector"
+		    quidu      	"36BB514D0055"
+		    supplier_is_subsystem 	TRUE)
+		(object Dependency_Relationship
+		    quid       	"37BD3AD00229"
+		    supplier   	"Component View::intFunction"
+		    quidu      	"36BB39470388"
+		    supplier_is_subsystem 	TRUE))
+	    language   	"Java")
+	(object module "fProduct" "NotAModuleType" "NotAModulePart"
+	    attributes 	(list Attribute_Set
+		(object Attribute
+		    tool       	"Java"
+		    name       	"FileName"
+		    value      	"D:\\Personal\\Code\\Java\\VectorFuncs\\fProduct.java"))
+	    quid       	"37BC942E0245"
+	    stereotype 	""
+	    visible_modules 	(list dependency_list
+		(object Dependency_Relationship
+		    quid       	"37BC942E026D"
+		    supplier   	"Component View::intFunction"
+		    quidu      	"36BB39470388"
+		    supplier_is_subsystem 	TRUE)
+		(object Dependency_Relationship
+		    quid       	"37BC942E026F"
+		    supplier   	"Component View::GroupM"
+		    quidu      	"36BB2CD10088"
+		    supplier_is_subsystem 	TRUE)
+		(object Dependency_Relationship
+		    quid       	"37BC942E0270"
+		    supplier   	"Component View::Vector"
+		    quidu      	"36BB514D0055"
+		    supplier_is_subsystem 	TRUE)
+		(object Dependency_Relationship
+		    quid       	"37BD23E70261"
+		    supplier   	"Component View::intFunction"
+		    quidu      	"36BB39470388"
+		    supplier_is_subsystem 	TRUE)
+		(object Dependency_Relationship
+		    quid       	"37BD23E70262"
+		    supplier   	"Component View::GroupM"
+		    quidu      	"36BB2CD10088"
+		    supplier_is_subsystem 	TRUE)
+		(object Dependency_Relationship
+		    quid       	"37BD23E70263"
+		    supplier   	"Component View::Vector"
+		    quidu      	"36BB514D0055"
+		    supplier_is_subsystem 	TRUE)
+		(object Dependency_Relationship
+		    quid       	"37BD3AD203B1"
+		    supplier   	"Component View::intFunction"
+		    quidu      	"36BB39470388"
+		    supplier_is_subsystem 	TRUE)
+		(object Dependency_Relationship
+		    quid       	"37BD3AD203B2"
+		    supplier   	"Component View::GroupM"
+		    quidu      	"36BB2CD10088"
+		    supplier_is_subsystem 	TRUE)
+		(object Dependency_Relationship
+		    quid       	"37BD3AD203BB"
+		    supplier   	"Component View::Vector"
+		    quidu      	"36BB514D0055"
+		    supplier_is_subsystem 	TRUE))
+	    language   	"Java")
+	(object module "fSum" "NotAModuleType" "NotAModulePart"
+	    attributes 	(list Attribute_Set
+		(object Attribute
+		    tool       	"Java"
+		    name       	"FileName"
+		    value      	"D:\\Personal\\Code\\Java\\VectorFuncs\\fSum.java"))
+	    quid       	"37BC942E0340"
+	    stereotype 	""
+	    visible_modules 	(list dependency_list
+		(object Dependency_Relationship
+		    quid       	"37BC942E0368"
+		    supplier   	"Component View::intFunction"
+		    quidu      	"36BB39470388"
+		    supplier_is_subsystem 	TRUE)
+		(object Dependency_Relationship
+		    quid       	"37BC942E036A"
+		    supplier   	"Component View::Group"
+		    quidu      	"36BB25E0024F"
+		    supplier_is_subsystem 	TRUE)
+		(object Dependency_Relationship
+		    quid       	"37BC942E036B"
+		    supplier   	"Component View::Vector"
+		    quidu      	"36BB514D0055"
+		    supplier_is_subsystem 	TRUE)
+		(object Dependency_Relationship
+		    quid       	"37BD23E80302"
+		    supplier   	"Component View::intFunction"
+		    quidu      	"36BB39470388"
+		    supplier_is_subsystem 	TRUE)
+		(object Dependency_Relationship
+		    quid       	"37BD23E80303"
+		    supplier   	"Component View::Group"
+		    quidu      	"36BB25E0024F"
+		    supplier_is_subsystem 	TRUE)
+		(object Dependency_Relationship
+		    quid       	"37BD23E80304"
+		    supplier   	"Component View::Vector"
+		    quidu      	"36BB514D0055"
+		    supplier_is_subsystem 	TRUE)
+		(object Dependency_Relationship
+		    quid       	"37BD3AD50135"
+		    supplier   	"Component View::intFunction"
+		    quidu      	"36BB39470388"
+		    supplier_is_subsystem 	TRUE)
+		(object Dependency_Relationship
+		    quid       	"37BD3AD50136"
+		    supplier   	"Component View::Group"
+		    quidu      	"36BB25E0024F"
+		    supplier_is_subsystem 	TRUE)
+		(object Dependency_Relationship
+		    quid       	"37BD3AD5013F"
+		    supplier   	"Component View::Vector"
+		    quidu      	"36BB514D0055"
+		    supplier_is_subsystem 	TRUE))
+	    language   	"Java")
+	(object module "OdeLorentz" "NotAModuleType" "NotAModulePart"
+	    attributes 	(list Attribute_Set
+		(object Attribute
+		    tool       	"Java"
+		    name       	"FileName"
+		    value      	"D:\\Personal\\Code\\Java\\VectorFuncs\\OdeLorentz.java"))
+	    quid       	"37BC942F02E7"
+	    stereotype 	""
+	    visible_modules 	(list dependency_list
+		(object Dependency_Relationship
+		    quid       	"37BD23ED03B6"
+		    supplier   	"Component View::Group"
+		    quidu      	"36BB25E0024F"
+		    supplier_is_subsystem 	TRUE)
+		(object Dependency_Relationship
+		    quid       	"37BD23ED03B7"
+		    supplier   	"Component View::GroupM"
+		    quidu      	"36BB2CD10088"
+		    supplier_is_subsystem 	TRUE)
+		(object Dependency_Relationship
+		    quid       	"37BD23ED03B8"
+		    supplier   	"Component View::Ring"
+		    quidu      	"36BB392A02D1"
+		    supplier_is_subsystem 	TRUE)
+		(object Dependency_Relationship
+		    quid       	"37BD23ED03B9"
+		    supplier   	"Component View::Vector"
+		    quidu      	"36BB514D0055"
+		    supplier_is_subsystem 	TRUE)
+		(object Dependency_Relationship
+		    quid       	"37BD23ED03BB"
+		    supplier   	"Component View::ByRef"
+		    quidu      	"36BB4AA503DA"
+		    supplier_is_subsystem 	TRUE)
+		(object Dependency_Relationship
+		    quid       	"37BD3ADB0101"
+		    supplier   	"Component View::Group"
+		    quidu      	"36BB25E0024F"
+		    supplier_is_subsystem 	TRUE)
+		(object Dependency_Relationship
+		    quid       	"37BD3ADB0102"
+		    supplier   	"Component View::GroupM"
+		    quidu      	"36BB2CD10088"
+		    supplier_is_subsystem 	TRUE)
+		(object Dependency_Relationship
+		    quid       	"37BD3ADB0103"
+		    supplier   	"Component View::Ring"
+		    quidu      	"36BB392A02D1"
+		    supplier_is_subsystem 	TRUE)
+		(object Dependency_Relationship
+		    quid       	"37BD3ADB0104"
+		    supplier   	"Component View::Vector"
+		    quidu      	"36BB514D0055"
+		    supplier_is_subsystem 	TRUE)
+		(object Dependency_Relationship
+		    quid       	"37BD3ADB0105"
+		    supplier   	"Component View::ByRef"
+		    quidu      	"36BB4AA503DA"
+		    supplier_is_subsystem 	TRUE))
+	    language   	"Java"))
+    physical_presentations 	(list unit_reference_list
+	(object Module_Diagram "VectorFuncs"
+	    quid       	"37BF0B3800AD"
+	    title      	"VectorFuncs"
+	    zoom       	100
+	    max_height 	28350
+	    max_width  	21600
+	    origin_x   	0
+	    origin_y   	0
+	    items      	(list diagram_item_list
+		(object ModView "Component View::VectorFuncs::OdeLorentz" "NotAModuleType" "NotAModulePart" @1
+		    location   	(217, 155)
+		    label      	(object ItemLabel
+			Parent_View 	@1
+			location   	(179, 130)
+			fill_color 	13434879
+			anchor_loc 	3
+			nlines     	2
+			max_width  	139
+			label      	"OdeLorentz")
+		    icon_style 	"Icon"
+		    line_color 	3342489
+		    fill_color 	13434879
+		    quidu      	"37BC942F02E7"
+		    width      	250
+		    autoResize 	TRUE
+		    width      	250
+		    height     	162)
+		(object ModView "Component View::VectorFuncs::fSum" "NotAModuleType" "NotAModulePart" @2
+		    location   	(589, 155)
+		    label      	(object ItemLabel
+			Parent_View 	@2
+			location   	(554, 130)
+			fill_color 	13434879
+			anchor_loc 	3
+			nlines     	2
+			max_width  	127
+			label      	"fSum")
+		    icon_style 	"Icon"
+		    line_color 	3342489
+		    fill_color 	13434879
+		    quidu      	"37BC942E0340"
+		    width      	228
+		    autoResize 	TRUE
+		    width      	228
+		    height     	162)
+		(object ModView "Component View::VectorFuncs::fProduct" "NotAModuleType" "NotAModulePart" @3
+		    location   	(992, 155)
+		    label      	(object ItemLabel
+			Parent_View 	@3
+			location   	(957, 130)
+			fill_color 	13434879
+			anchor_loc 	3
+			nlines     	2
+			max_width  	127
+			label      	"fProduct")
+		    icon_style 	"Icon"
+		    line_color 	3342489
+		    fill_color 	13434879
+		    quidu      	"37BC942E0245"
+		    width      	228
+		    autoResize 	TRUE
+		    width      	228
+		    height     	162)
+		(object ModView "Component View::VectorFuncs::fChargeField" "NotAModuleType" "NotAModulePart" @4
+		    location   	(1364, 155)
+		    label      	(object ItemLabel
+			Parent_View 	@4
+			location   	(1329, 130)
+			fill_color 	13434879
+			anchor_loc 	3
+			nlines     	2
+			max_width  	127
+			label      	"fChargeField")
+		    icon_style 	"Icon"
+		    line_color 	3342489
+		    fill_color 	13434879
+		    quidu      	"37BC942E00C9"
+		    width      	228
+		    autoResize 	TRUE
+		    width      	228
+		    height     	162)
+		(object ModView "Component View::VectorFuncs::OdeHeight" "NotAModuleType" "NotAModulePart" @5
+		    location   	(1767, 155)
+		    label      	(object ItemLabel
+			Parent_View 	@5
+			location   	(1732, 130)
+			fill_color 	13434879
+			anchor_loc 	3
+			nlines     	2
+			max_width  	127
+			label      	"OdeHeight")
+		    icon_style 	"Icon"
+		    line_color 	3342489
+		    fill_color 	13434879
+		    quidu      	"37BC91A9020F"
+		    width      	228
+		    autoResize 	TRUE
+		    width      	228
+		    height     	162)))))

@@ -1,0 +1,170 @@
+package id62hhc9fodqegc9fq5d8p;
+
+/**
+@version 2.0
+@physicalPackage
+@__modelType diagram 
+*/
+class diagram {
+/**
+@__ref <oiref:design#Class#id4uw84c9fodqegc9fq5dxg.diagram:oiref><oihard>
+@__modelType reference
+@__fqn <oiref:#Package#Testers.Process:oiref> 
+*/
+class reference47 {
+}/**
+@__ref <oiref:design#Class#id445fmc9fodqegc9fq5dvi.diagram:oiref><oihard>
+@__modelType reference
+@__fqn <oiref:#Package#Testers.Logic:oiref> 
+*/
+class reference49 {
+}/**
+@shapeType DependencyLink
+@__modelType link
+@__ref <oiref:design#Class#id47mokc9fodqegc9fq5czi.diagram:oiref><oihard>
+@automatic 
+*/
+class link {
+}/**
+@shapeType DependencyLink
+@__modelType link
+@__ref <oiref:design#Class#idqb01c9fodqegc9fq5ddp.diagram:oiref><oihard>
+@automatic 
+*/
+class link120 {
+}/**
+@shapeType DependencyLink
+@__modelType link
+@__ref <oiref:design#Class#id4f20zc9fodqegc9fq5grt.diagram:oiref><oihard>
+@automatic 
+*/
+class link94 {
+}/**
+@shapeType DependencyLink
+@__modelType link
+@__ref <oiref:design#Class#id445fmc9fodqegc9fq5dvi.diagram:oiref><oihard>
+@automatic 
+*/
+class link95 {
+}/**
+@shapeType DependencyLink
+@__modelType link
+@__ref <oiref:design#Class#id457m4c9fodqegc9fq5a4l.diagram:oiref><oihard>
+@automatic 
+*/
+class link96 {
+}/**
+@shapeType DependencyLink
+@__modelType link
+@__ref <oiref:design#Class#id4uw84c9fodqegc9fq5dxg.diagram:oiref><oihard>
+@automatic 
+*/
+class link97 {
+}/**
+@__ref <oiref:java#Class#tester.Equivalence:oiref><oihard>
+@__modelType reference 
+*/
+class reference {
+}/**
+@__ref <oiref:java#Class#tester.TestConst:oiref><oihard>
+@__modelType reference 
+*/
+class reference16 {
+}/**
+@__ref <oiref:java#Class#tester.Orderator:oiref><oihard>
+@__modelType reference 
+*/
+class reference17 {
+}/**
+@__ref <oiref:java#Class#tester.TestNumber:oiref><oihard>
+@__modelType reference 
+*/
+class reference18 {
+}/**
+@__ref <oiref:java#Class#tester.Discrete:oiref><oihard>
+@__modelType reference 
+*/
+class reference19 {
+}/**
+@__ref <oiref:java#Class#tester.TesterAND:oiref><oihard>
+@__modelType reference 
+*/
+class reference20 {
+}/**
+@__ref <oiref:java#Class#tester.ITester:oiref><oihard>
+@__modelType reference 
+*/
+class reference21 {
+}/**
+@__ref <oiref:java#Class#tester.TestAble:oiref><oihard>
+@__modelType reference 
+*/
+class reference22 {
+}/**
+@__ref <oiref:java#Class#tester.TestObject:oiref><oihard>
+@__modelType reference 
+*/
+class reference23 {
+}/**
+@__ref <oiref:java#Class#tester.TestEquivalence:oiref><oihard>
+@__modelType reference 
+*/
+class reference24 {
+}/**
+@__ref <oiref:java#Class#tester.FilterTestWaiter:oiref><oihard>
+@__modelType reference 
+*/
+class reference25 {
+}/**
+@__ref <oiref:java#Class#tester.TesterOR:oiref><oihard>
+@__modelType reference 
+*/
+class reference26 {
+}/**
+@__ref <oiref:java#Class#tester.FloatMetric:oiref><oihard>
+@__modelType reference 
+*/
+class reference27 {
+}/**
+@__ref <oiref:java#Class#tester.TesterXOR:oiref><oihard>
+@__modelType reference 
+*/
+class reference28 {
+}/**
+@__ref <oiref:java#Class#tester.TesterNOT:oiref><oihard>
+@__modelType reference 
+*/
+class reference29 {
+}/**
+@__ref <oiref:java#Class#tester.IdentityEquivalence:oiref><oihard>
+@__modelType reference 
+*/
+class reference30 {
+}/**
+@__ref <oiref:java#Class#tester.Flipper:oiref><oihard>
+@__modelType reference 
+*/
+class reference31 {
+}/**
+@__ref <oiref:java#Class#tester.DoubleMetric:oiref><oihard>
+@__modelType reference 
+*/
+class reference32 {
+}}/**
+@__tags
+@shapeType ClassDiagram 
+*/
+class __tags {
+}/**
+@__options 
+*/
+class __options {
+}/**
+@__positions <oigroup:<oiref:java#Implements#Testers.TestObject#Testers.Tester:oiref>=326,170,326,110:oigroup>
+<oigroup:<oiref:java#Implements#Testers.TestConst#Testers.Tester:oiref>=523,170,365,110:oigroup>
+<oigroup:<oiref:design#Class#id4uw84c9fodqegc9fq5dxg.diagram:oiref>=620,10,136,340,1:oigroup>
+<oigroup:<oiref:design#Class#id445fmc9fodqegc9fq5dvi.diagram:oiref>=411,329,105,116,1:oigroup>
+<oigroup:<oiref:java#Implements#Testers.TestNumber#Testers.Tester:oiref>=130,170,286,110:oigroup>
+*/
+class __positions {
+}

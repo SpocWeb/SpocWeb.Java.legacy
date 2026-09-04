@@ -1,0 +1,126 @@
+package id3zumoc9g0327jc9g1fu07;
+
+/**
+@version 2.0
+@__modelType diagram 
+*/
+class diagram {
+/**
+@__ref <oiref:java#Class#Stream.Object.Pair:oiref><oihard>
+@__modelType reference
+@__imported 
+*/
+class reference157 {
+}/**
+@__ref <oiref:java#Class#Stream.Object.FilterInByFunction:oiref><oihard>
+@__modelType reference
+@__imported 
+*/
+class reference158 {
+}/**
+@__ref <oiref:java#Class#Stream.Object.NullFilterIn:oiref><oihard>
+@__modelType reference
+@__imported 
+*/
+class reference159 {
+}/**
+@__ref <oiref:java#Class#Stream.Object.DIFF:oiref><oihard>
+@__modelType reference
+@__imported 
+*/
+class reference164 {
+}/**
+@__ref <oiref:java#Class#Stream.Object.AND:oiref><oihard>
+@__modelType reference
+@__imported 
+*/
+class reference172 {
+}/**
+@__ref <oiref:java#Class#Stream.Object.Product:oiref><oihard>
+@__modelType reference
+@__imported 
+*/
+class reference173 {
+}/**
+@__ref <oiref:java#Class#Stream.Object.Enumerator.CachePipe:oiref><oihard>
+@__modelType reference
+@__imported 
+*/
+class reference174 {
+}/**
+@__ref <oiref:java#Class#Stream.Object.FilterIn:oiref><oihard>
+@__modelType reference
+@__imported 
+*/
+class reference182 {
+}/**
+@__ref <oiref:java#Class#Stream.Object.Union:oiref><oihard>
+@__modelType reference
+@__imported 
+*/
+class reference183 {
+}/**
+@__ref <oiref:java#Class#Stream.Object.ConstructorStreamIn:oiref><oihard>
+@__modelType reference
+@__imported 
+*/
+class reference186 {
+}}/**
+
+@__tags
+@shapeType ClassDiagram 
+*/
+class __tags {
+}/**
+@__options 
+*/
+class __options {
+}/**
+@__positions <oigroup:<oiref:java#Extends#Stream.Object.Enumerator.AlterAble#Stream.Object.Enumerator.ChangeAble:oiref>=1971,219,1971,159:oigroup>
+<oigroup:<oiref:java#Implements#Stream.Object.FilterIn#Stream.Object.StreamIn:oiref>=881,1244,1088,431:oigroup>
+<oigroup:<oiref:java#Extends#Stream.Object.StreamIterator#Stream.Object.AStreamIn:oiref>=2901,1244,2901,1234,1937,1184:oigroup>
+<oigroup:<oiref:java#Implements#Stream.Object.Enumerator.APipe#Stream.Object.Pipe:oiref>=549,1244,914,605:oigroup>
+<oigroup:<oiref:java#Extends#Stream.Object.FilterIn#Stream.Object.AStreamIn:oiref>=948,1244,948,1234,1773,1184:oigroup>
+<oigroup:<oiref:java#Extends#Stream.Object.DIFF#Stream.Object.FilterIn:oiref>=1307,531,1015,392:oigroup>
+<oigroup:<oiref:java#Extends#Stream.Object.AND#Stream.Object.FilterIn:oiref>=143,500,143,490,815,392:oigroup>
+<oigroup:<oiref:java#Class#Stream.Object.Product:oiref>=1527,500,200,174,1:oigroup>
+<oigroup:<oiref:java#Class#Stream.Object.Enumerator.CachePipe:oiref>=320,10,200,302,1:oigroup>
+<oigroup:<oiref:java#Class#Stream.Object.Pair:oiref>=1780,500,187,174,1:oigroup>
+<oigroup:MemberLink#<oiref:java#Member#Stream.Object.Product#Enum2:oiref>=1660,1718,1495,1451,1495,1253,1179,431:oigroup>
+<oigroup:<oiref:java#Class#Stream.Object.FilterInByFunction:oiref>=1087,500,200,158,1:oigroup>
+<oigroup:<oiref:java#Extends#Stream.Object.MultiplexerIn#Stream.Object.AStreamIn:oiref>=1615,1244,1827,1184:oigroup>
+<oigroup:<oiref:java#Extends#Stream.Object.ConstructorStreamIn#Stream.Object.FilterIn:oiref>=842,500,842,472:oigroup>
+<oigroup:<oiref:java#Extends#Stream.Object.AParserIn#Stream.Object.AStreamIn:oiref>=1845,1244,1845,1184:oigroup>
+<oigroup:<oiref:java#Extends#Stream.Object.NullFilterIn#Stream.Object.FilterIn:oiref>=952,500,952,472:oigroup>
+<oigroup:<oiref:java#Extends#Stream.Object.Product#Stream.Object.FilterIn:oiref>=1593,500,1015,352:oigroup>
+<oigroup:<oiref:java#Extends#Stream.Object.NumberStream#Stream.Object.AStreamIn:oiref>=1190,1244,1190,1234,1791,1184:oigroup>
+<oigroup:<oiref:java#Implements#Stream.Object.Enumerator.CachePipe#Stream.Object.Pipe:oiref>=363,1718,666,1451,942,605:oigroup>
+<oigroup:<oiref:java#Implements#Stream.Object.NumberStream#Stream.Object.StreamIn:oiref>=1125,1244,1125,431:oigroup>
+<oigroup:<oiref:java#Class#Stream.Object.FilterIn:oiref>=815,26,200,446,1:oigroup>
+<oigroup:<oiref:java#Extends#Stream.Object.CharacterStream#Stream.Object.AStreamIn:oiref>=1425,1244,1809,1184:oigroup>
+<oigroup:<oiref:java#Implements#Stream.Object.CharacterStream#Stream.Object.StreamIn:oiref>=1375,1244,1161,431:oigroup>
+<oigroup:<oiref:java#Extends#Stream.Object.Enumeration2StreamIn#Stream.Object.AStreamIn:oiref>=2275,1244,1881,1184:oigroup>
+<oigroup:<oiref:java#Extends#Stream.Object.FilterInByFunction#Stream.Object.FilterIn:oiref>=1087,531,1015,432:oigroup>
+<oigroup:<oiref:java#Extends#Stream.Object.Pipe#Stream.Object.StreamIn:oiref>=928,491,1070,431:oigroup>
+<oigroup:<oiref:java#Class#Stream.Object.Union:oiref>=450,500,200,222,1:oigroup>
+<oigroup:<oiref:java#Extends#Stream.Object.Union#Stream.Object.FilterIn:oiref>=650,540,815,432:oigroup>
+<oigroup:<oiref:java#Extends#Stream.Object.Enumerator.ChangeIterator#Stream.Object.StreamIn:oiref>=768,491,1052,431:oigroup>
+<oigroup:<oiref:java#Class#Stream.Object.DIFF:oiref>=1307,500,200,158,1:oigroup>
+<oigroup:<oiref:java#Implements#Stream.Object.Enumerator.AChangeAble#Stream.Object.Enumerator.ChangeAble:oiref>=2065,219,2065,159:oigroup>
+<oigroup:<oiref:java#Extends#Stream.Object.Enumerator.CachePipe#Stream.Object.Enumerator.APipe:oiref>=296,1718,549,1434:oigroup>
+<oigroup:<oiref:java#Class#Stream.Object.ConstructorStreamIn:oiref>=670,500,200,126,1:oigroup>
+<oigroup:MemberLink#<oiref:java#Member#Stream.Object.Product#curr:oiref>=1727,571,1780,571:oigroup>
+<oigroup:<oiref:java#Extends#Stream.Object.ArrayStreamIn#Stream.Object.AStreamIn:oiref>=2698,1244,2698,1234,1918,1184:oigroup>
+<oigroup:<oiref:java#Class#Stream.Object.AND:oiref>=10,500,200,158,1:oigroup>
+<oigroup:MemberLink#<oiref:java#Member#Stream.Object.AND#Enum2:oiref>=76,1718,649,481,1034,431:oigroup>
+<oigroup:<oiref:java#Extends#Stream.Object.Enumerator.AAlterAble#Stream.Object.Enumerator.AChangeAble:oiref>=2050,437,2050,377:oigroup>
+<oigroup:MemberLink#<oiref:java#Member#Stream.Object.DIFF#Enum2:oiref>=1440,1718,1035,1570,1035,1431,1065,837,1106,431:oigroup>
+<oigroup:<oiref:java#Implements#Stream.Object.Enumerator.AAlterAble#Stream.Object.Enumerator.AlterAble:oiref>=1986,437,1986,352:oigroup>
+<oigroup:<oiref:java#Class#Stream.Object.NullFilterIn:oiref>=890,500,180,133,1:oigroup>
+<oigroup:MemberLink#<oiref:java#Member#Stream.Object.CharacterStream#VowelStream:oiref>=1325,1244,1143,431:oigroup>
+<oigroup:<oiref:java#Extends#Stream.Object.StreamParser#Stream.Object.AStreamIn:oiref>=2055,1244,1863,1184:oigroup>
+<oigroup:<oiref:java#Implements#Stream.Object.AStreamIn#Stream.Object.StreamIn:oiref>=1856,491,1197,431:oigroup>
+<oigroup:<oiref:java#Extends#Stream.Object.Iterator2StreamIn#Stream.Object.AStreamIn:oiref>=2495,1244,1899,1184:oigroup>
+*/
+class __positions {
+}

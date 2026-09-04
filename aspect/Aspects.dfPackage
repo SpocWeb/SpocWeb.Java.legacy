@@ -1,0 +1,99 @@
+package id47q3ycpiqd7rpcpiqfevz;
+
+/**
+@version 2.0
+@physicalPackage
+@__modelType diagram 
+*/
+class diagram {
+/**
+@__ref <oiref:java#Class#aspect.SimpleAspect:oiref><oihard>
+@__modelType reference 
+*/
+class reference {
+}/**
+@__ref <oiref:java#Class#aspect.AHierarchyAspect:oiref><oihard>
+@__modelType reference 
+*/
+class reference156 {
+}/**
+@__ref <oiref:java#Class#aspect.ListAspect:oiref><oihard>
+@__modelType reference 
+*/
+class reference157 {
+}/**
+@__ref <oiref:java#Class#aspect.AddressAspect:oiref><oihard>
+@__modelType reference 
+*/
+class reference158 {
+}/**
+@__ref <oiref:java#Class#aspect.IAspect:oiref><oihard>
+@__modelType reference 
+*/
+class reference159 {
+}/**
+@__ref <oiref:design#Class#idirwa4bqh0rautbqh0sojr.diagram:oiref><oihard>
+@__modelType reference
+@__fqn <oiref:#Package#aspect.dialog:oiref> 
+*/
+class reference160 {
+}/**
+@__ref <oiref:java#Class#aspect.StringAspect:oiref><oihard>
+@__modelType reference 
+*/
+class reference161 {
+}/**
+@__ref <oiref:java#Class#aspect.AAspect:oiref><oihard>
+@__modelType reference 
+*/
+class reference162 {
+}/**
+@__ref <oiref:java#Class#aspect.IHierarchyAspect:oiref><oihard>
+@__modelType reference 
+*/
+class reference163 {
+}/**
+@__ref <oiref:java#Class#aspect.DoubleAspect:oiref><oihard>
+@__modelType reference 
+*/
+class reference164 {
+}/**
+@__ref <oiref:java#Class#aspect.PersonAspect:oiref><oihard>
+@__modelType reference 
+*/
+class reference165 {
+}}/**
+@__tags
+@shapeType ClassDiagram 
+*/
+class __tags {
+}/**
+@__options 
+*/
+class __options {
+}/**
+@__positions <oigroup:MemberLink#<oiref:java#Member#Aspects.AddressAspect#City:oiref>=288,1743,288,1533:oigroup>
+<oigroup:<oiref:java#Extends#Aspects.ListAspect#Aspects.AHierarchyAspect:oiref>=543,1199,412,1139:oigroup>
+<oigroup:<oiref:java#Extends#Aspects.Address#Aspects.ReflectAble:oiref>=800,1182,800,1122:oigroup>
+<oigroup:MemberLink#<oiref:java#Member#Aspects.Person#Address:oiref>=901,1285,821,1285:oigroup>
+<oigroup:<oiref:java#Implements#Aspects.AHierarchyAspect#Aspects.IHierarchyAspect:oiref>=381,837,381,544:oigroup>
+<oigroup:<oiref:java#Extends#Aspects.AddressAspect#Aspects.SimpleAspect:oiref>=254,1743,117,1389,117,1332:oigroup>
+<oigroup:MemberLink#<oiref:java#Member#Aspects.AHierarchyAspect#Parent:oiref>=411,837,411,544:oigroup>
+<oigroup:MemberLink#<oiref:java#Member#Aspects.ListAspect#Value:oiref>=566,1199,534,326,446,271:oigroup>
+<oigroup:<oiref:java#Implements#Aspects.ReflectAble#Aspects.IReflectAble:oiref>=868,292,868,232:oigroup>
+<oigroup:<oiref:java#Extends#Aspects.AHierarchyAspect#Aspects.AAspect:oiref>=301,837,301,777:oigroup>
+<oigroup:<oiref:java#Extends#Aspects.IHierarchyAspect#Aspects.IAspect:oiref>=414,331,414,271:oigroup>
+<oigroup:MemberLink#<oiref:java#Member#Aspects.AddressAspect#StreetNr:oiref>=265,1743,265,1533:oigroup>
+<oigroup:MemberLink#<oiref:java#Member#Aspects.PersonAspect#Address:oiref>=163,1854,243,1854:oigroup>
+<oigroup:<oiref:java#Extends#Aspects.SimpleAspect#Aspects.AHierarchyAspect:oiref>=101,1199,293,1139:oigroup>
+<oigroup:MemberLink#<oiref:java#Member#Aspects.PersonAspect#LastName:oiref>=99,1743,213,1533:oigroup>
+<oigroup:<oiref:java#Implements#Aspects.AAspect#Aspects.IAspect:oiref>=243,331,371,271:oigroup>
+<oigroup:MemberLink#<oiref:java#Member#Aspects.AddressAspect#Zip:oiref>=311,1743,311,1533:oigroup>
+<oigroup:<oiref:java#Extends#Aspects.DoubleAspect#Aspects.AHierarchyAspect:oiref>=383,1199,383,1139:oigroup>
+<oigroup:<oiref:java#Extends#Aspects.Person#Aspects.ReflectAble:oiref>=929,1182,929,1122:oigroup>
+<oigroup:MemberLink#<oiref:java#Member#Aspects.PersonAspect#FirstName:oiref>=131,1743,239,1533:oigroup>
+<oigroup:<oiref:java#Extends#Aspects.StringAspect#Aspects.AHierarchyAspect:oiref>=315,1199,315,1139:oigroup>
+<oigroup:<oiref:java#Extends#Aspects.PersonAspect#Aspects.SimpleAspect:oiref>=67,1743,67,1332:oigroup>
+*/
+class __positions {
+}

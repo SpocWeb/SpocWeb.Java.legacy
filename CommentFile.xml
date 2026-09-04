@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates><template context="java" description="file comment used by the class and interface wizards" enabled="true" name="filecomment">/**
+ * Created on ${date}
+ *
+ */</template></templates>

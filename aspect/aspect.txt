@@ -1,0 +1,3 @@
+package aspect
+Concentrates on the Data Aspects of Aspects, not the concurrent Updates etc.
+should be moved into Synch.Aspects which defines Observers and Validators!

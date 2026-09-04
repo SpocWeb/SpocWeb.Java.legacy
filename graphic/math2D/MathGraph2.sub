@@ -1,0 +1,160 @@
+
+(object Petal
+    version    	42
+    _written   	"Rose 4.5.8163.3"
+    charSet    	0)
+
+(object SubSystem "MathGraph2"
+    is_unit    	TRUE
+    is_loaded  	TRUE
+    quid       	"37BC8ED70087"
+    visible_modules 	(list dependency_list
+	(object Dependency_Relationship
+	    quid       	"37BC91A50313"
+	    supplier   	"Component View::Graphics2D"
+	    quidu      	"37BC8ED5008E"
+	    supplier_is_subsystem 	TRUE)
+	(object Dependency_Relationship
+	    quid       	"37BC91A50315"
+	    supplier   	"Component View::java::awt"
+	    quidu      	"37BC8ED5020C"
+	    supplier_is_subsystem 	TRUE))
+    physical_models 	(list unit_reference_list
+	(object module "MathGraph2" "NotAModuleType" "NotAModulePart"
+	    attributes 	(list Attribute_Set
+		(object Attribute
+		    tool       	"Java"
+		    name       	"FileName"
+		    value      	"D:\\Personal\\Code\\Java\\MathGraph2\\MathGraph2.java"))
+	    quid       	"37BC8ED70089"
+	    stereotype 	""
+	    visible_modules 	(list dependency_list
+		(object Dependency_Relationship
+		    quid       	"37BC91A5038D"
+		    supplier   	"Component View::Graphics2D"
+		    quidu      	"37BC8ED5008E"
+		    supplier_is_subsystem 	TRUE)
+		(object Dependency_Relationship
+		    quid       	"37BD208600FE"
+		    supplier   	"Component View::Graphics2D"
+		    quidu      	"37BC8ED5008E"
+		    supplier_is_subsystem 	TRUE)
+		(object Dependency_Relationship
+		    quid       	"37BD385C00B8"
+		    supplier   	"Component View::Graphics2D"
+		    quidu      	"37BC8ED5008E"
+		    supplier_is_subsystem 	TRUE))
+	    language   	"Java")
+	(object module "Coordinates2D" "NotAModuleType" "NotAModulePart"
+	    attributes 	(list Attribute_Set
+		(object Attribute
+		    tool       	"Java"
+		    name       	"FileName"
+		    value      	"D:\\Personal\\Code\\Java\\MathGraph2\\Coordinates2D.java"))
+	    quid       	"37BC91A502F6"
+	    stereotype 	""
+	    visible_modules 	(list dependency_list
+		(object Dependency_Relationship
+		    quid       	"37BC91A50314"
+		    supplier   	"Component View::Graphics2D"
+		    quidu      	"37BC8ED5008E"
+		    supplier_is_subsystem 	TRUE)
+		(object Dependency_Relationship
+		    quid       	"37BC91A50316"
+		    supplier   	"Component View::java::awt"
+		    quidu      	"37BC8ED5020C"
+		    supplier_is_subsystem 	TRUE)
+		(object Dependency_Relationship
+		    quid       	"37BD20830371"
+		    supplier   	"Component View::Graphics2D"
+		    quidu      	"37BC8ED5008E"
+		    supplier_is_subsystem 	TRUE)
+		(object Dependency_Relationship
+		    quid       	"37BD20830372"
+		    supplier   	"Component View::java::awt"
+		    quidu      	"37BC8ED5020C"
+		    supplier_is_subsystem 	TRUE)
+		(object Dependency_Relationship
+		    quid       	"37BD385B002E"
+		    supplier   	"Component View::Graphics2D"
+		    quidu      	"37BC8ED5008E"
+		    supplier_is_subsystem 	TRUE)
+		(object Dependency_Relationship
+		    quid       	"37BD385B002F"
+		    supplier   	"Component View::java::awt"
+		    quidu      	"37BC8ED5020C"
+		    supplier_is_subsystem 	TRUE))
+	    language   	"Java")
+	(object module "LinCoordMap" "NotAModuleType" "NotAModulePart"
+	    attributes 	(list Attribute_Set
+		(object Attribute
+		    tool       	"Java"
+		    name       	"FileName"
+		    value      	"D:\\Personal\\Code\\Java\\MathGraph2\\LinCoordMap.java"))
+	    quid       	"37BC91A502F8"
+	    stereotype 	""
+	    language   	"Java"))
+    physical_presentations 	(list unit_reference_list
+	(object Module_Diagram "MathGraph2"
+	    quid       	"37BF0AC30023"
+	    title      	"MathGraph2"
+	    zoom       	100
+	    max_height 	28350
+	    max_width  	21600
+	    origin_x   	0
+	    origin_y   	0
+	    items      	(list diagram_item_list
+		(object ModView "Component View::MathGraph2::LinCoordMap" "NotAModuleType" "NotAModulePart" @1
+		    location   	(248, 155)
+		    label      	(object ItemLabel
+			Parent_View 	@1
+			location   	(198, 130)
+			fill_color 	13434879
+			anchor_loc 	3
+			nlines     	2
+			max_width  	187
+			label      	"LinCoordMap")
+		    icon_style 	"Icon"
+		    line_color 	3342489
+		    fill_color 	13434879
+		    quidu      	"37BC91A502F8"
+		    width      	336
+		    autoResize 	TRUE
+		    width      	336
+		    height     	162)
+		(object ModView "Component View::MathGraph2::Coordinates2D" "NotAModuleType" "NotAModulePart" @2
+		    location   	(713, 155)
+		    label      	(object ItemLabel
+			Parent_View 	@2
+			location   	(675, 130)
+			fill_color 	13434879
+			anchor_loc 	3
+			nlines     	2
+			max_width  	139
+			label      	"Coordinates2D")
+		    icon_style 	"Icon"
+		    line_color 	3342489
+		    fill_color 	13434879
+		    quidu      	"37BC91A502F6"
+		    width      	250
+		    autoResize 	TRUE
+		    width      	250
+		    height     	162)
+		(object ModView "Component View::MathGraph2::MathGraph2" "NotAModuleType" "NotAModulePart" @3
+		    location   	(1116, 155)
+		    label      	(object ItemLabel
+			Parent_View 	@3
+			location   	(1078, 130)
+			fill_color 	13434879
+			anchor_loc 	3
+			nlines     	2
+			max_width  	139
+			label      	"MathGraph2")
+		    icon_style 	"Icon"
+		    line_color 	3342489
+		    fill_color 	13434879
+		    quidu      	"37BC8ED70089"
+		    width      	250
+		    autoResize 	TRUE
+		    width      	250
+		    height     	162)))))

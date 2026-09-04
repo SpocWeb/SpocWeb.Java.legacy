@@ -1,0 +1,103 @@
+package id1639ccd65oc3ycd6684p8;
+
+/**
+@version 2.0
+@physicalPackage
+@__modelType diagram 
+*/
+class diagram {
+/**
+@__ref <oiref:java#Class#Stream.Copy.Group.Ring.Metric.Body.Vector.IManifold:oiref><oihard>
+@__modelType reference 
+*/
+class reference {
+}/**
+@__ref <oiref:java#Class#Stream.Copy.Group.Ring.Metric.Body.Vector.ITensor:oiref><oihard>
+@__modelType reference 
+*/
+class reference14 {
+}/**
+@__ref <oiref:java#Class#Stream.Copy.Group.Ring.Metric.Body.Vector.ATensor:oiref><oihard>
+@__modelType reference
+@hideOperations 
+*/
+class reference15 {
+}/**
+@__ref <oiref:java#Class#Stream.Copy.Group.Ring.Metric.Body.Vector.AManifold:oiref><oihard>
+@__modelType reference 
+*/
+class reference16 {
+}/**
+@__ref <oiref:java#Class#Stream.Copy.Group.Ring.Metric.Body.Vector.VectorDbl:oiref><oihard>
+@__modelType reference
+@hideOperations 
+*/
+class reference17 {
+}/**
+@__ref <oiref:java#Class#Stream.Copy.Group.Ring.Metric.Body.Vector.Matrix:oiref><oihard>
+@__modelType reference 
+*/
+class reference21 {
+}/**
+@__ref <oiref:java#Class#Stream.Copy.Group.Ring.Metric.Body.Vector.IMatrix:oiref><oihard>
+@__modelType reference 
+*/
+class reference22 {
+}/**
+@__ref <oiref:java#Class#Stream.Copy.Group.Ring.Metric.Body.Vector.Tensor:oiref><oihard>
+@__modelType reference 
+*/
+class reference23 {
+}/**
+@__ref <oiref:java#Class#Stream.Copy.Group.Ring.Metric.Body.Vector.Manifold:oiref><oihard>
+@__modelType reference 
+*/
+class reference24 {
+}/**
+@__ref <oiref:java#Class#Stream.Copy.Group.Ring.Metric.Body.Vector.AMatrix:oiref><oihard>
+@__modelType reference 
+*/
+class reference25 {
+}/**
+@__ref <oiref:java#Class#Stream.Copy.Group.Ring.Metric.Body.Vector.MatrixDbl:oiref><oihard>
+@__modelType reference 
+*/
+class reference1 {
+}}/**
+@__tags
+@shapeType ClassDiagram 
+*/
+class __tags {
+}/**
+@__options 
+*/
+class __options {
+}/**
+@__positions 
+<oigroup:<oiref:java#Implements#Stream.Copy.Group.Ring.Metric.Body.Vector.ATensor#Stream.Copy.Group.Ring.Metric.Body.Vector.ITensor:oiref>=63,350,63,140:oigroup>
+<oigroup:<oiref:java#Class#Stream.Copy.Group.Ring.Metric.Body.Vector.AMatrix:oiref>=378,237,83,82,1:oigroup>
+<oigroup:<oiref:java#Class#Stream.Copy.Group.Ring.Metric.Body.Vector.IMatrix:oiref>=378,77,83,114,1:oigroup>
+<oigroup:<oiref:java#Extends#Stream.Copy.Group.Ring.Metric.Body.Vector.IMatrix#Stream.Copy.Group.Ring.Metric.Body.Vector.ITensor:oiref>=378,108,116,108:oigroup>
+<oigroup:<oiref:java#Class#Stream.Copy.Group.Ring.Metric.Body.Vector.AManifold:oiref>=210,330,200,510,1:oigroup>
+<oigroup:<oiref:java#Class#Stream.Copy.Group.Ring.Metric.Body.Vector.ATensor:oiref>=10,350,200,315,1:oigroup>
+<oigroup:<oiref:java#Class#Stream.Copy.Group.Ring.Metric.Body.Vector.ITensor:oiref>=10,10,106,130,1:oigroup>
+<oigroup:<oiref:java#Extends#Stream.Copy.Group.Ring.Metric.Body.Vector.Matrix#Stream.Copy.Group.Ring.Metric.Body.Vector.Tensor:oiref>=629,993,659,993:oigroup>
+
+<oigroup:<oiref:java#Implements#Stream.Copy.Group.Ring.Metric.Body.Vector.AManifold#Stream.Copy.Group.Ring.Metric.Body.Vector.IManifold:oiref>=260,330,260,287:oigroup>
+<oigroup:<oiref:java#Extends#Stream.Copy.Group.Ring.Metric.Body.Vector.AMatrix#Stream.Copy.Group.Ring.Metric.Body.Vector.ATensor:oiref>=419,319,161,350:oigroup>
+<oigroup:<oiref:java#Class#Stream.Copy.Group.Ring.Metric.Body.Vector.Matrix:oiref>=429,558,200,910,1:oigroup>
+<oigroup:<oiref:java#Extends#Stream.Copy.Group.Ring.Metric.Body.Vector.IManifold#Stream.Copy.Group.Ring.Metric.Body.Vector.ITensor:oiref>=160,75,116,75:oigroup>
+<oigroup:<oiref:java#Extends#Stream.Copy.Group.Ring.Metric.Body.Vector.Tensor#Stream.Copy.Group.Ring.Metric.Body.Vector.ATensor:oiref>=659,1003,210,625:oigroup>
+<oigroup:<oiref:java#Class#Stream.Copy.Group.Ring.Metric.Body.Vector.Manifold:oiref>=709,8,200,350,1:oigroup>
+<oigroup:<oiref:java#Implements#Stream.Copy.Group.Ring.Metric.Body.Vector.AMatrix#Stream.Copy.Group.Ring.Metric.Body.Vector.IMatrix:oiref>=419,237,419,191:oigroup>
+<oigroup:MemberLink#<oiref:java#Member#Stream.Copy.Group.Ring.Metric.Body.Vector.Matrix#Inverse:oiref>=589,1468,589,1518,679,1518,679,1428,629,1428:oigroup>
+<oigroup:<oiref:java#Class#Stream.Copy.Group.Ring.Metric.Body.Vector.Tensor:oiref>=659,558,200,1454,1:oigroup>
+<oigroup:<oiref:java#Extends#Stream.Copy.Group.Ring.Metric.Body.Vector.Manifold#Stream.Copy.Group.Ring.Metric.Body.Vector.Tensor:oiref>=784,358,784,558:oigroup>
+<oigroup:<oiref:java#Class#Stream.Copy.Group.Ring.Metric.Body.Vector.IManifold:oiref>=160,10,200,277,1:oigroup>
+<oigroup:<oiref:java#Extends#Stream.Copy.Group.Ring.Metric.Body.Vector.AManifold#Stream.Copy.Group.Ring.Metric.Body.Vector.ATensor:oiref>=210,585,112,350:oigroup>
+<oigroup:<oiref:java#Extends#Stream.Copy.Group.Ring.Metric.Body.Vector.VectorDbl#Stream.Copy.Group.Ring.Metric.Body.Vector.AManifold:oiref>=490,453,410,453:oigroup>
+<oigroup:<oiref:java#Implements#Stream.Copy.Group.Ring.Metric.Body.Vector.Matrix#Stream.Copy.Group.Ring.Metric.Body.Vector.IMatrix:oiref>=445,558,445,191:oigroup>
+<oigroup:<oiref:java#Class#Stream.Copy.Group.Ring.Metric.Body.Vector.VectorDbl:oiref>=490,360,200,187,1:oigroup>
+*/
+class __positions {
+}

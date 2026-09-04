@@ -1,0 +1,2261 @@
+
+(object Petal
+    version    	42
+    _written   	"Rose 4.5.8163.3"
+    charSet    	0)
+
+(object SubSystem "Metric"
+    is_unit    	TRUE
+    is_loaded  	TRUE
+    quid       	"36BB45940014"
+    visible_modules 	(list dependency_list
+	(object Dependency_Relationship
+	    quid       	"36BB4A0B03E2"
+	    supplier   	"Component View::BaseCopy"
+	    quidu      	"36BABF4B0011"
+	    supplier_is_subsystem 	TRUE)
+	(object Dependency_Relationship
+	    quid       	"36BB4A11037D"
+	    supplier   	"Component View::Group"
+	    quidu      	"36BB25E0024F"
+	    supplier_is_subsystem 	TRUE)
+	(object Dependency_Relationship
+	    quid       	"36BB4A110387"
+	    supplier   	"Component View::Order"
+	    quidu      	"36BB46B601E7"
+	    supplier_is_subsystem 	TRUE)
+	(object Dependency_Relationship
+	    quid       	"36BB4A120085"
+	    supplier   	"Component View::Ring"
+	    quidu      	"36BB392A02D1"
+	    supplier_is_subsystem 	TRUE)
+	(object Dependency_Relationship
+	    quid       	"36BB4AA60006"
+	    supplier   	"Component View::ByRef"
+	    quidu      	"36BB4AA503DA"
+	    supplier_is_subsystem 	TRUE)
+	(object Dependency_Relationship
+	    quid       	"36BB4AA6001A"
+	    supplier   	"Component View::intFunction"
+	    quidu      	"36BB39470388"
+	    supplier_is_subsystem 	TRUE)
+	(object Dependency_Relationship
+	    quid       	"36BB4AE202F1"
+	    supplier   	"Component View::GroupM"
+	    quidu      	"36BB2CD10088"
+	    supplier_is_subsystem 	TRUE))
+    physical_models 	(list unit_reference_list
+	(object module "absMetric" "NotAModuleType" "NotAModulePart"
+	    attributes 	(list Attribute_Set
+		(object Attribute
+		    tool       	"Java"
+		    name       	"FileName"
+		    value      	"D:\\Personal\\Code\\Java\\Metric\\absMetric.java"))
+	    quid       	"36BB4594001E"
+	    stereotype 	""
+	    visible_modules 	(list dependency_list
+		(object Dependency_Relationship
+		    quid       	"36BB4A0B03E3"
+		    supplier   	"Component View::BaseCopy"
+		    quidu      	"36BABF4B0011"
+		    supplier_is_subsystem 	TRUE)
+		(object Dependency_Relationship
+		    quid       	"36BB4A9A03D4"
+		    supplier   	"Component View::BaseCopy"
+		    quidu      	"36BABF4B0011"
+		    supplier_is_subsystem 	TRUE)
+		(object Dependency_Relationship
+		    quid       	"36BB4ADC0054"
+		    supplier   	"Component View::BaseCopy"
+		    quidu      	"36BABF4B0011"
+		    supplier_is_subsystem 	TRUE)
+		(object Dependency_Relationship
+		    quid       	"37BC91AC027E"
+		    supplier   	"Component View::BaseCopy"
+		    quidu      	"36BABF4B0011"
+		    supplier_is_subsystem 	TRUE)
+		(object Dependency_Relationship
+		    quid       	"37BD20B80359"
+		    supplier   	"Component View::BaseCopy"
+		    quidu      	"36BABF4B0011"
+		    supplier_is_subsystem 	TRUE)
+		(object Dependency_Relationship
+		    quid       	"37BD38A80043"
+		    supplier   	"Component View::BaseCopy"
+		    quidu      	"36BABF4B0011"
+		    supplier_is_subsystem 	TRUE))
+	    language   	"Java")
+	(object module "absNorm" "NotAModuleType" "NotAModulePart"
+	    attributes 	(list Attribute_Set
+		(object Attribute
+		    tool       	"Java"
+		    name       	"FileName"
+		    value      	"D:\\Personal\\Code\\Java\\Metric\\absNorm.java"))
+	    quid       	"36BB459400BE"
+	    stereotype 	""
+	    language   	"Java")
+	(object module "intNorm" "NotAModuleType" "NotAModulePart"
+	    attributes 	(list Attribute_Set
+		(object Attribute
+		    tool       	"Java"
+		    name       	"FileName"
+		    value      	"D:\\Personal\\Code\\Java\\Metric\\intNorm.java"))
+	    quid       	"36BB45940118"
+	    stereotype 	""
+	    realized_interfaces 	(list realize_rel_list
+		(object Realize_Relationship
+		    quid       	"37BF0498014F"
+		    supplier   	"Logical View::Metric::intNorm"
+		    quidu      	"36BB45940119"))
+	    language   	"Java")
+	(object module "intWellOrder" "NotAModuleType" "NotAModulePart"
+	    attributes 	(list Attribute_Set
+		(object Attribute
+		    tool       	"Java"
+		    name       	"FileName"
+		    value      	"D:\\Personal\\Code\\Java\\Metric\\intWellOrder.java"))
+	    quid       	"36BB45940172"
+	    stereotype 	""
+	    realized_interfaces 	(list realize_rel_list
+		(object Realize_Relationship
+		    quid       	"37BF049500FA"
+		    supplier   	"Logical View::Metric::intWellOrder"
+		    quidu      	"36BB45940173"))
+	    language   	"Java")
+	(object module "Metric" "NotAModuleType" "NotAModulePart"
+	    attributes 	(list Attribute_Set
+		(object Attribute
+		    tool       	"Java"
+		    name       	"FileName"
+		    value      	"D:\\Personal\\Code\\Java\\Metric\\Metric.java"))
+	    quid       	"36BB459401D6"
+	    stereotype 	""
+	    visible_modules 	(list dependency_list
+		(object Dependency_Relationship
+		    quid       	"36BB4A1100B6"
+		    supplier   	"Component View::BaseCopy"
+		    quidu      	"36BABF4B0011"
+		    supplier_is_subsystem 	TRUE)
+		(object Dependency_Relationship
+		    quid       	"36BB4AA000D0"
+		    supplier   	"Component View::BaseCopy"
+		    quidu      	"36BABF4B0011"
+		    supplier_is_subsystem 	TRUE)
+		(object Dependency_Relationship
+		    quid       	"36BB4AE10155"
+		    supplier   	"Component View::BaseCopy"
+		    quidu      	"36BABF4B0011"
+		    supplier_is_subsystem 	TRUE)
+		(object Dependency_Relationship
+		    quid       	"37BC91AF02E7"
+		    supplier   	"Component View::BaseCopy"
+		    quidu      	"36BABF4B0011"
+		    supplier_is_subsystem 	TRUE)
+		(object Dependency_Relationship
+		    quid       	"37BD21040178"
+		    supplier   	"Component View::BaseCopy"
+		    quidu      	"36BABF4B0011"
+		    supplier_is_subsystem 	TRUE)
+		(object Dependency_Relationship
+		    quid       	"37BD38F70264"
+		    supplier   	"Component View::BaseCopy"
+		    quidu      	"36BABF4B0011"
+		    supplier_is_subsystem 	TRUE))
+	    realized_interfaces 	(list realize_rel_list
+		(object Realize_Relationship
+		    quid       	"37BF04920204"
+		    supplier   	"Logical View::Metric::Metric"
+		    quidu      	"36BB459401E0"))
+	    language   	"Java")
+	(object module "absScalarMetric" "NotAModuleType" "NotAModulePart"
+	    attributes 	(list Attribute_Set
+		(object Attribute
+		    tool       	"Java"
+		    name       	"FileName"
+		    value      	"D:\\Personal\\Code\\Java\\Metric\\absScalarMetric.java"))
+	    quid       	"36BB45940317"
+	    stereotype 	""
+	    visible_modules 	(list dependency_list
+		(object Dependency_Relationship
+		    quid       	"36BB4AA00328"
+		    supplier   	"Component View::Group"
+		    quidu      	"36BB25E0024F"
+		    supplier_is_subsystem 	TRUE)
+		(object Dependency_Relationship
+		    quid       	"36BB4AA00332"
+		    supplier   	"Component View::Order"
+		    quidu      	"36BB46B601E7"
+		    supplier_is_subsystem 	TRUE)
+		(object Dependency_Relationship
+		    quid       	"36BB4AE20139"
+		    supplier   	"Component View::Group"
+		    quidu      	"36BB25E0024F"
+		    supplier_is_subsystem 	TRUE)
+		(object Dependency_Relationship
+		    quid       	"36BB4AE20143"
+		    supplier   	"Component View::Order"
+		    quidu      	"36BB46B601E7"
+		    supplier_is_subsystem 	TRUE)
+		(object Dependency_Relationship
+		    quid       	"37BC91AE0097"
+		    supplier   	"Component View::Group"
+		    quidu      	"36BB25E0024F"
+		    supplier_is_subsystem 	TRUE)
+		(object Dependency_Relationship
+		    quid       	"37BC91AE0098"
+		    supplier   	"Component View::Order"
+		    quidu      	"36BB46B601E7"
+		    supplier_is_subsystem 	TRUE)
+		(object Dependency_Relationship
+		    quid       	"37BD20EC01E1"
+		    supplier   	"Component View::Group"
+		    quidu      	"36BB25E0024F"
+		    supplier_is_subsystem 	TRUE)
+		(object Dependency_Relationship
+		    quid       	"37BD20EC01E2"
+		    supplier   	"Component View::Order"
+		    quidu      	"36BB46B601E7"
+		    supplier_is_subsystem 	TRUE)
+		(object Dependency_Relationship
+		    quid       	"37BD38E203A4"
+		    supplier   	"Component View::Group"
+		    quidu      	"36BB25E0024F"
+		    supplier_is_subsystem 	TRUE)
+		(object Dependency_Relationship
+		    quid       	"37BD38E203A5"
+		    supplier   	"Component View::Order"
+		    quidu      	"36BB46B601E7"
+		    supplier_is_subsystem 	TRUE))
+	    language   	"Java")
+	(object module "absWellOrder" "NotAModuleType" "NotAModulePart"
+	    attributes 	(list Attribute_Set
+		(object Attribute
+		    tool       	"Java"
+		    name       	"FileName"
+		    value      	"D:\\Personal\\Code\\Java\\Metric\\absWellOrder.java"))
+	    quid       	"36BB459403CB"
+	    stereotype 	""
+	    visible_modules 	(list dependency_list
+		(object Dependency_Relationship
+		    quid       	"36BB4AE202E7"
+		    supplier   	"Component View::BaseCopy"
+		    quidu      	"36BABF4B0011"
+		    supplier_is_subsystem 	TRUE)
+		(object Dependency_Relationship
+		    quid       	"36BB4AE202F2"
+		    supplier   	"Component View::GroupM"
+		    quidu      	"36BB2CD10088"
+		    supplier_is_subsystem 	TRUE)
+		(object Dependency_Relationship
+		    quid       	"36BB4AE202FB"
+		    supplier   	"Component View::Group"
+		    quidu      	"36BB25E0024F"
+		    supplier_is_subsystem 	TRUE)
+		(object Dependency_Relationship
+		    quid       	"37BC91AE0209"
+		    supplier   	"Component View::BaseCopy"
+		    quidu      	"36BABF4B0011"
+		    supplier_is_subsystem 	TRUE)
+		(object Dependency_Relationship
+		    quid       	"37BC91AE020A"
+		    supplier   	"Component View::GroupM"
+		    quidu      	"36BB2CD10088"
+		    supplier_is_subsystem 	TRUE)
+		(object Dependency_Relationship
+		    quid       	"37BC91AE0213"
+		    supplier   	"Component View::Group"
+		    quidu      	"36BB25E0024F"
+		    supplier_is_subsystem 	TRUE)
+		(object Dependency_Relationship
+		    quid       	"37BD20EF036C"
+		    supplier   	"Component View::BaseCopy"
+		    quidu      	"36BABF4B0011"
+		    supplier_is_subsystem 	TRUE)
+		(object Dependency_Relationship
+		    quid       	"37BD20EF036D"
+		    supplier   	"Component View::GroupM"
+		    quidu      	"36BB2CD10088"
+		    supplier_is_subsystem 	TRUE)
+		(object Dependency_Relationship
+		    quid       	"37BD20EF036E"
+		    supplier   	"Component View::Group"
+		    quidu      	"36BB25E0024F"
+		    supplier_is_subsystem 	TRUE)
+		(object Dependency_Relationship
+		    quid       	"37BD38E902F0"
+		    supplier   	"Component View::BaseCopy"
+		    quidu      	"36BABF4B0011"
+		    supplier_is_subsystem 	TRUE)
+		(object Dependency_Relationship
+		    quid       	"37BD38E902F1"
+		    supplier   	"Component View::GroupM"
+		    quidu      	"36BB2CD10088"
+		    supplier_is_subsystem 	TRUE)
+		(object Dependency_Relationship
+		    quid       	"37BD38E902F2"
+		    supplier   	"Component View::Group"
+		    quidu      	"36BB25E0024F"
+		    supplier_is_subsystem 	TRUE))
+	    language   	"Java")
+	(object module "ScalarMetric" "NotAModuleType" "NotAModulePart"
+	    attributes 	(list Attribute_Set
+		(object Attribute
+		    tool       	"Java"
+		    name       	"FileName"
+		    value      	"D:\\Personal\\Code\\Java\\Metric\\ScalarMetric.java"))
+	    quid       	"36BB4595005B"
+	    stereotype 	""
+	    visible_modules 	(list dependency_list
+		(object Dependency_Relationship
+		    quid       	"36BB4A11037E"
+		    supplier   	"Component View::Group"
+		    quidu      	"36BB25E0024F"
+		    supplier_is_subsystem 	TRUE)
+		(object Dependency_Relationship
+		    quid       	"36BB4A110388"
+		    supplier   	"Component View::Order"
+		    quidu      	"36BB46B601E7"
+		    supplier_is_subsystem 	TRUE)
+		(object Dependency_Relationship
+		    quid       	"36BB4AA101C1"
+		    supplier   	"Component View::Group"
+		    quidu      	"36BB25E0024F"
+		    supplier_is_subsystem 	TRUE)
+		(object Dependency_Relationship
+		    quid       	"36BB4AA101CB"
+		    supplier   	"Component View::Order"
+		    quidu      	"36BB46B601E7"
+		    supplier_is_subsystem 	TRUE)
+		(object Dependency_Relationship
+		    quid       	"36BB4AE300EA"
+		    supplier   	"Component View::Group"
+		    quidu      	"36BB25E0024F"
+		    supplier_is_subsystem 	TRUE)
+		(object Dependency_Relationship
+		    quid       	"36BB4AE300EB"
+		    supplier   	"Component View::Order"
+		    quidu      	"36BB46B601E7"
+		    supplier_is_subsystem 	TRUE)
+		(object Dependency_Relationship
+		    quid       	"37BC91B10087"
+		    supplier   	"Component View::Group"
+		    quidu      	"36BB25E0024F"
+		    supplier_is_subsystem 	TRUE)
+		(object Dependency_Relationship
+		    quid       	"37BC91B10091"
+		    supplier   	"Component View::Order"
+		    quidu      	"36BB46B601E7"
+		    supplier_is_subsystem 	TRUE)
+		(object Dependency_Relationship
+		    quid       	"37BD211601D8"
+		    supplier   	"Component View::Group"
+		    quidu      	"36BB25E0024F"
+		    supplier_is_subsystem 	TRUE)
+		(object Dependency_Relationship
+		    quid       	"37BD211601E2"
+		    supplier   	"Component View::Order"
+		    quidu      	"36BB46B601E7"
+		    supplier_is_subsystem 	TRUE)
+		(object Dependency_Relationship
+		    quid       	"37BD391001E8"
+		    supplier   	"Component View::Group"
+		    quidu      	"36BB25E0024F"
+		    supplier_is_subsystem 	TRUE)
+		(object Dependency_Relationship
+		    quid       	"37BD391001F2"
+		    supplier   	"Component View::Order"
+		    quidu      	"36BB46B601E7"
+		    supplier_is_subsystem 	TRUE))
+	    realized_interfaces 	(list realize_rel_list
+		(object Realize_Relationship
+		    quid       	"37BF04850007"
+		    supplier   	"Logical View::Metric::ScalarMetric"
+		    quidu      	"36BB45950065"))
+	    language   	"Java")
+	(object module "MetricIRing" "NotAModuleType" "NotAModulePart"
+	    attributes 	(list Attribute_Set
+		(object Attribute
+		    tool       	"Java"
+		    name       	"FileName"
+		    value      	"D:\\Personal\\Code\\Java\\Metric\\MetricIRing.java"))
+	    quid       	"36BB45950173"
+	    stereotype 	""
+	    visible_modules 	(list dependency_list
+		(object Dependency_Relationship
+		    quid       	"36BB4A120086"
+		    supplier   	"Component View::Ring"
+		    quidu      	"36BB392A02D1"
+		    supplier_is_subsystem 	TRUE)
+		(object Dependency_Relationship
+		    quid       	"36BB4AA1037A"
+		    supplier   	"Component View::Ring"
+		    quidu      	"36BB392A02D1"
+		    supplier_is_subsystem 	TRUE)
+		(object Dependency_Relationship
+		    quid       	"36BB4AE302A3"
+		    supplier   	"Component View::Ring"
+		    quidu      	"36BB392A02D1"
+		    supplier_is_subsystem 	TRUE)
+		(object Dependency_Relationship
+		    quid       	"37BC91AF03D7"
+		    supplier   	"Component View::Ring"
+		    quidu      	"36BB392A02D1"
+		    supplier_is_subsystem 	TRUE)
+		(object Dependency_Relationship
+		    quid       	"37BD21060289"
+		    supplier   	"Component View::Ring"
+		    quidu      	"36BB392A02D1"
+		    supplier_is_subsystem 	TRUE)
+		(object Dependency_Relationship
+		    quid       	"37BD38F90357"
+		    supplier   	"Component View::Ring"
+		    quidu      	"36BB392A02D1"
+		    supplier_is_subsystem 	TRUE))
+	    realized_interfaces 	(list realize_rel_list
+		(object Realize_Relationship
+		    quid       	"37BF048102B4"
+		    supplier   	"Logical View::Metric::MetricIRing"
+		    quidu      	"36BB4595017D"))
+	    language   	"Java")
+	(object module "absMetricIRing" "NotAModuleType" "NotAModulePart"
+	    attributes 	(list Attribute_Set
+		(object Attribute
+		    tool       	"Java"
+		    name       	"FileName"
+		    value      	"D:\\Personal\\Code\\Java\\Metric\\absMetricIRing.java"))
+	    quid       	"36BB4595037C"
+	    stereotype 	""
+	    visible_modules 	(list dependency_list
+		(object Dependency_Relationship
+		    quid       	"37BD20E702C0"
+		    supplier   	"Component View::Order"
+		    quidu      	"36BB46B601E7"
+		    supplier_is_subsystem 	TRUE)
+		(object Dependency_Relationship
+		    quid       	"37BD20E702C1"
+		    supplier   	"Component View::Group"
+		    quidu      	"36BB25E0024F"
+		    supplier_is_subsystem 	TRUE)
+		(object Dependency_Relationship
+		    quid       	"37BD20E702C2"
+		    supplier   	"Component View::Ring"
+		    quidu      	"36BB392A02D1"
+		    supplier_is_subsystem 	TRUE)
+		(object Dependency_Relationship
+		    quid       	"37BD20E702CA"
+		    supplier   	"Component View::ByRef"
+		    quidu      	"36BB4AA503DA"
+		    supplier_is_subsystem 	TRUE)
+		(object Dependency_Relationship
+		    quid       	"37BD38DB00E7"
+		    supplier   	"Component View::Order"
+		    quidu      	"36BB46B601E7"
+		    supplier_is_subsystem 	TRUE)
+		(object Dependency_Relationship
+		    quid       	"37BD38DB00E8"
+		    supplier   	"Component View::Group"
+		    quidu      	"36BB25E0024F"
+		    supplier_is_subsystem 	TRUE)
+		(object Dependency_Relationship
+		    quid       	"37BD38DB00E9"
+		    supplier   	"Component View::Ring"
+		    quidu      	"36BB392A02D1"
+		    supplier_is_subsystem 	TRUE)
+		(object Dependency_Relationship
+		    quid       	"37BD38DB00EA"
+		    supplier   	"Component View::ByRef"
+		    quidu      	"36BB4AA503DA"
+		    supplier_is_subsystem 	TRUE))
+	    language   	"Java")
+	(object module "Norm" "NotAModuleType" "NotAModulePart"
+	    attributes 	(list Attribute_Set
+		(object Attribute
+		    tool       	"Java"
+		    name       	"FileName"
+		    value      	"D:\\Personal\\Code\\Java\\Metric\\Norm.java"))
+	    quid       	"36BB459503E0"
+	    stereotype 	""
+	    realized_interfaces 	(list realize_rel_list
+		(object Realize_Relationship
+		    quid       	"37BF047A0318"
+		    supplier   	"Logical View::Metric::Norm"
+		    quidu      	"36BB45960002"))
+	    language   	"Java")
+	(object module "intMetric" "NotAModuleType" "NotAModulePart"
+	    attributes 	(list Attribute_Set
+		(object Attribute
+		    tool       	"Java"
+		    name       	"FileName"
+		    value      	"D:\\Personal\\Code\\Java\\Metric\\intMetric.java"))
+	    quid       	"36BB45960052"
+	    stereotype 	""
+	    realized_interfaces 	(list realize_rel_list
+		(object Realize_Relationship
+		    quid       	"37BF04770260"
+		    supplier   	"Logical View::Metric::intMetric"
+		    quidu      	"36BB4596005C"))
+	    language   	"Java")
+	(object module "wellOrder" "NotAModuleType" "NotAModulePart"
+	    attributes 	(list Attribute_Set
+		(object Attribute
+		    tool       	"Java"
+		    name       	"FileName"
+		    value      	"D:\\Personal\\Code\\Java\\Metric\\wellOrder.java"))
+	    quid       	"36BB459600C1"
+	    stereotype 	""
+	    visible_modules 	(list dependency_list
+		(object Dependency_Relationship
+		    quid       	"36BB4A14001A"
+		    supplier   	"Component View::BaseCopy::copyAble"
+		    quidu      	"36BABF500108"
+		    supplier_is_spec 	TRUE))
+	    realized_interfaces 	(list realize_rel_list
+		(object Realize_Relationship
+		    quid       	"37BF047401D9"
+		    supplier   	"Logical View::Metric::wellOrder"
+		    quidu      	"36BB459600CB"))
+	    language   	"Java")
+	(object module "ExtraPolValue" "NotAModuleType" "NotAModulePart"
+	    attributes 	(list Attribute_Set
+		(object Attribute
+		    tool       	"Java"
+		    name       	"FileName"
+		    value      	"D:\\Personal\\Code\\Java\\Metric\\ExtraPolValue.java"))
+	    quid       	"36BB459601B1"
+	    stereotype 	""
+	    visible_modules 	(list dependency_list
+		(object Dependency_Relationship
+		    quid       	"36BB4AA60010"
+		    supplier   	"Component View::ByRef"
+		    quidu      	"36BB4AA503DA"
+		    supplier_is_subsystem 	TRUE)
+		(object Dependency_Relationship
+		    quid       	"36BB4AA60011"
+		    supplier   	"Component View::Ring"
+		    quidu      	"36BB392A02D1"
+		    supplier_is_subsystem 	TRUE)
+		(object Dependency_Relationship
+		    quid       	"36BB4AA60024"
+		    supplier   	"Component View::intFunction"
+		    quidu      	"36BB39470388"
+		    supplier_is_subsystem 	TRUE)
+		(object Dependency_Relationship
+		    quid       	"36BB4AA60025"
+		    supplier   	"Component View::Order"
+		    quidu      	"36BB46B601E7"
+		    supplier_is_subsystem 	TRUE)
+		(object Dependency_Relationship
+		    quid       	"36BB4AE80200"
+		    supplier   	"Component View::ByRef"
+		    quidu      	"36BB4AA503DA"
+		    supplier_is_subsystem 	TRUE)
+		(object Dependency_Relationship
+		    quid       	"36BB4AE8020A"
+		    supplier   	"Component View::Ring"
+		    quidu      	"36BB392A02D1"
+		    supplier_is_subsystem 	TRUE)
+		(object Dependency_Relationship
+		    quid       	"36BB4AE80214"
+		    supplier   	"Component View::intFunction"
+		    quidu      	"36BB39470388"
+		    supplier_is_subsystem 	TRUE)
+		(object Dependency_Relationship
+		    quid       	"36BB4AE8021E"
+		    supplier   	"Component View::Order"
+		    quidu      	"36BB46B601E7"
+		    supplier_is_subsystem 	TRUE)
+		(object Dependency_Relationship
+		    quid       	"37BC91AE03A4"
+		    supplier   	"Component View::ByRef"
+		    quidu      	"36BB4AA503DA"
+		    supplier_is_subsystem 	TRUE)
+		(object Dependency_Relationship
+		    quid       	"37BC91AE03A5"
+		    supplier   	"Component View::BaseCopy"
+		    quidu      	"36BABF4B0011"
+		    supplier_is_subsystem 	TRUE)
+		(object Dependency_Relationship
+		    quid       	"37BC91AE03A6"
+		    supplier   	"Component View::Ring"
+		    quidu      	"36BB392A02D1"
+		    supplier_is_subsystem 	TRUE)
+		(object Dependency_Relationship
+		    quid       	"37BC91AE03A7"
+		    supplier   	"Component View::intFunction"
+		    quidu      	"36BB39470388"
+		    supplier_is_subsystem 	TRUE)
+		(object Dependency_Relationship
+		    quid       	"37BC91AE03A8"
+		    supplier   	"Component View::Order"
+		    quidu      	"36BB46B601E7"
+		    supplier_is_subsystem 	TRUE)
+		(object Dependency_Relationship
+		    quid       	"37BD20F401BB"
+		    supplier   	"Component View::ByRef"
+		    quidu      	"36BB4AA503DA"
+		    supplier_is_subsystem 	TRUE)
+		(object Dependency_Relationship
+		    quid       	"37BD20F401BC"
+		    supplier   	"Component View::BaseCopy"
+		    quidu      	"36BABF4B0011"
+		    supplier_is_subsystem 	TRUE)
+		(object Dependency_Relationship
+		    quid       	"37BD20F401BD"
+		    supplier   	"Component View::Ring"
+		    quidu      	"36BB392A02D1"
+		    supplier_is_subsystem 	TRUE)
+		(object Dependency_Relationship
+		    quid       	"37BD20F401C5"
+		    supplier   	"Component View::intFunction"
+		    quidu      	"36BB39470388"
+		    supplier_is_subsystem 	TRUE)
+		(object Dependency_Relationship
+		    quid       	"37BD20F401C6"
+		    supplier   	"Component View::Order"
+		    quidu      	"36BB46B601E7"
+		    supplier_is_subsystem 	TRUE)
+		(object Dependency_Relationship
+		    quid       	"37BD38EE0379"
+		    supplier   	"Component View::ByRef"
+		    quidu      	"36BB4AA503DA"
+		    supplier_is_subsystem 	TRUE)
+		(object Dependency_Relationship
+		    quid       	"37BD38EE037A"
+		    supplier   	"Component View::BaseCopy"
+		    quidu      	"36BABF4B0011"
+		    supplier_is_subsystem 	TRUE)
+		(object Dependency_Relationship
+		    quid       	"37BD38EE037B"
+		    supplier   	"Component View::Ring"
+		    quidu      	"36BB392A02D1"
+		    supplier_is_subsystem 	TRUE)
+		(object Dependency_Relationship
+		    quid       	"37BD38EE037C"
+		    supplier   	"Component View::intFunction"
+		    quidu      	"36BB39470388"
+		    supplier_is_subsystem 	TRUE)
+		(object Dependency_Relationship
+		    quid       	"37BD38EE0383"
+		    supplier   	"Component View::Order"
+		    quidu      	"36BB46B601E7"
+		    supplier_is_subsystem 	TRUE))
+	    language   	"Java")
+	(object module "MetricBody" "NotAModuleType" "NotAModulePart"
+	    quid       	"36BB52A40080"
+	    stereotype 	""
+	    language   	"Java")
+	(object module "absMetricBody" "NotAModuleType" "NotAModulePart"
+	    quid       	"36BB52A900EB"
+	    stereotype 	""
+	    language   	"Java")
+	(object module "absRefinerQ" "NotAModuleType" "NotAModulePart"
+	    attributes 	(list Attribute_Set
+		(object Attribute
+		    tool       	"Java"
+		    name       	"FileName"
+		    value      	"D:\\Personal\\Code\\Java\\Metric\\absRefinerQ.java"))
+	    quid       	"37BC91AD029E"
+	    stereotype 	""
+	    visible_modules 	(list dependency_list
+		(object Dependency_Relationship
+		    quid       	"37BC91AD02BB"
+		    supplier   	"Component View::Ring"
+		    quidu      	"36BB392A02D1"
+		    supplier_is_subsystem 	TRUE)
+		(object Dependency_Relationship
+		    quid       	"37BC91AD02BC"
+		    supplier   	"Component View::intFunction"
+		    quidu      	"36BB39470388"
+		    supplier_is_subsystem 	TRUE)
+		(object Dependency_Relationship
+		    quid       	"37BD20EA0214"
+		    supplier   	"Component View::Ring"
+		    quidu      	"36BB392A02D1"
+		    supplier_is_subsystem 	TRUE)
+		(object Dependency_Relationship
+		    quid       	"37BD20EA0215"
+		    supplier   	"Component View::intFunction"
+		    quidu      	"36BB39470388"
+		    supplier_is_subsystem 	TRUE)
+		(object Dependency_Relationship
+		    quid       	"37BD38DE039E"
+		    supplier   	"Component View::Ring"
+		    quidu      	"36BB392A02D1"
+		    supplier_is_subsystem 	TRUE)
+		(object Dependency_Relationship
+		    quid       	"37BD38DE03A8"
+		    supplier   	"Component View::intFunction"
+		    quidu      	"36BB39470388"
+		    supplier_is_subsystem 	TRUE))
+	    language   	"Java")
+	(object module "absStepperQ" "NotAModuleType" "NotAModulePart"
+	    attributes 	(list Attribute_Set
+		(object Attribute
+		    tool       	"Java"
+		    name       	"FileName"
+		    value      	"D:\\Personal\\Code\\Java\\Metric\\absStepperQ.java"))
+	    quid       	"37BC91AE0119"
+	    stereotype 	""
+	    visible_modules 	(list dependency_list
+		(object Dependency_Relationship
+		    quid       	"37BC91AE012A"
+		    supplier   	"Component View::Ring"
+		    quidu      	"36BB392A02D1"
+		    supplier_is_subsystem 	TRUE)
+		(object Dependency_Relationship
+		    quid       	"37BC91AE012B"
+		    supplier   	"Component View::Order"
+		    quidu      	"36BB46B601E7"
+		    supplier_is_subsystem 	TRUE)
+		(object Dependency_Relationship
+		    quid       	"37BD20ED0283"
+		    supplier   	"Component View::Ring"
+		    quidu      	"36BB392A02D1"
+		    supplier_is_subsystem 	TRUE)
+		(object Dependency_Relationship
+		    quid       	"37BD20ED0284"
+		    supplier   	"Component View::Order"
+		    quidu      	"36BB46B601E7"
+		    supplier_is_subsystem 	TRUE)
+		(object Dependency_Relationship
+		    quid       	"37BD38E500B1"
+		    supplier   	"Component View::Ring"
+		    quidu      	"36BB392A02D1"
+		    supplier_is_subsystem 	TRUE)
+		(object Dependency_Relationship
+		    quid       	"37BD38E500B9"
+		    supplier   	"Component View::Order"
+		    quidu      	"36BB46B601E7"
+		    supplier_is_subsystem 	TRUE))
+	    language   	"Java")
+	(object module "BiSectStepQ" "NotAModuleType" "NotAModulePart"
+	    attributes 	(list Attribute_Set
+		(object Attribute
+		    tool       	"Java"
+		    name       	"FileName"
+		    value      	"D:\\Personal\\Code\\Java\\Metric\\BiSectStepQ.java"))
+	    quid       	"37BC91AE0281"
+	    stereotype 	""
+	    visible_modules 	(list dependency_list
+		(object Dependency_Relationship
+		    quid       	"37BC91AE02A8"
+		    supplier   	"Component View::Ring"
+		    quidu      	"36BB392A02D1"
+		    supplier_is_subsystem 	TRUE)
+		(object Dependency_Relationship
+		    quid       	"37BC91AE02A9"
+		    supplier   	"Component View::intFunction"
+		    quidu      	"36BB39470388"
+		    supplier_is_subsystem 	TRUE)
+		(object Dependency_Relationship
+		    quid       	"37BD20F20050"
+		    supplier   	"Component View::Ring"
+		    quidu      	"36BB392A02D1"
+		    supplier_is_subsystem 	TRUE)
+		(object Dependency_Relationship
+		    quid       	"37BD20F20051"
+		    supplier   	"Component View::intFunction"
+		    quidu      	"36BB39470388"
+		    supplier_is_subsystem 	TRUE)
+		(object Dependency_Relationship
+		    quid       	"37BD38EC0254"
+		    supplier   	"Component View::Ring"
+		    quidu      	"36BB392A02D1"
+		    supplier_is_subsystem 	TRUE)
+		(object Dependency_Relationship
+		    quid       	"37BD38EC0255"
+		    supplier   	"Component View::intFunction"
+		    quidu      	"36BB39470388"
+		    supplier_is_subsystem 	TRUE))
+	    language   	"Java")
+	(object module "FalsiStepQ" "NotAModuleType" "NotAModulePart"
+	    attributes 	(list Attribute_Set
+		(object Attribute
+		    tool       	"Java"
+		    name       	"FileName"
+		    value      	"D:\\Personal\\Code\\Java\\Metric\\FalsiStepQ.java"))
+	    quid       	"37BC91AF002A"
+	    stereotype 	""
+	    visible_modules 	(list dependency_list
+		(object Dependency_Relationship
+		    quid       	"37BC91AF005A"
+		    supplier   	"Component View::intFunction"
+		    quidu      	"36BB39470388"
+		    supplier_is_subsystem 	TRUE)
+		(object Dependency_Relationship
+		    quid       	"37BC91AF005C"
+		    supplier   	"Component View::Ring"
+		    quidu      	"36BB392A02D1"
+		    supplier_is_subsystem 	TRUE)
+		(object Dependency_Relationship
+		    quid       	"37BD20F80397"
+		    supplier   	"Component View::intFunction"
+		    quidu      	"36BB39470388"
+		    supplier_is_subsystem 	TRUE)
+		(object Dependency_Relationship
+		    quid       	"37BD20F803A1"
+		    supplier   	"Component View::Ring"
+		    quidu      	"36BB392A02D1"
+		    supplier_is_subsystem 	TRUE)
+		(object Dependency_Relationship
+		    quid       	"37BD38F003D7"
+		    supplier   	"Component View::intFunction"
+		    quidu      	"36BB39470388"
+		    supplier_is_subsystem 	TRUE)
+		(object Dependency_Relationship
+		    quid       	"37BD38F003D8"
+		    supplier   	"Component View::Ring"
+		    quidu      	"36BB392A02D1"
+		    supplier_is_subsystem 	TRUE))
+	    language   	"Java")
+	(object module "GoldenStep" "NotAModuleType" "NotAModulePart"
+	    attributes 	(list Attribute_Set
+		(object Attribute
+		    tool       	"Java"
+		    name       	"FileName"
+		    value      	"D:\\Personal\\Code\\Java\\Metric\\GoldenStep.java"))
+	    quid       	"37BC91AF0156"
+	    stereotype 	""
+	    visible_modules 	(list dependency_list
+		(object Dependency_Relationship
+		    quid       	"37BC91AF019B"
+		    supplier   	"Component View::Group"
+		    quidu      	"36BB25E0024F"
+		    supplier_is_subsystem 	TRUE)
+		(object Dependency_Relationship
+		    quid       	"37BC91AF019C"
+		    supplier   	"Component View::GroupM"
+		    quidu      	"36BB2CD10088"
+		    supplier_is_subsystem 	TRUE)
+		(object Dependency_Relationship
+		    quid       	"37BC91AF019D"
+		    supplier   	"Component View::Ring"
+		    quidu      	"36BB392A02D1"
+		    supplier_is_subsystem 	TRUE)
+		(object Dependency_Relationship
+		    quid       	"37BC91AF019E"
+		    supplier   	"Component View::ByRef"
+		    quidu      	"36BB4AA503DA"
+		    supplier_is_subsystem 	TRUE)
+		(object Dependency_Relationship
+		    quid       	"37BC91AF019F"
+		    supplier   	"Component View::intFunction"
+		    quidu      	"36BB39470388"
+		    supplier_is_subsystem 	TRUE)
+		(object Dependency_Relationship
+		    quid       	"37BD20FF0275"
+		    supplier   	"Component View::Group"
+		    quidu      	"36BB25E0024F"
+		    supplier_is_subsystem 	TRUE)
+		(object Dependency_Relationship
+		    quid       	"37BD20FF0276"
+		    supplier   	"Component View::GroupM"
+		    quidu      	"36BB2CD10088"
+		    supplier_is_subsystem 	TRUE)
+		(object Dependency_Relationship
+		    quid       	"37BD20FF027F"
+		    supplier   	"Component View::Ring"
+		    quidu      	"36BB392A02D1"
+		    supplier_is_subsystem 	TRUE)
+		(object Dependency_Relationship
+		    quid       	"37BD20FF0280"
+		    supplier   	"Component View::ByRef"
+		    quidu      	"36BB4AA503DA"
+		    supplier_is_subsystem 	TRUE)
+		(object Dependency_Relationship
+		    quid       	"37BD20FF0281"
+		    supplier   	"Component View::intFunction"
+		    quidu      	"36BB39470388"
+		    supplier_is_subsystem 	TRUE)
+		(object Dependency_Relationship
+		    quid       	"37BD38F400E5"
+		    supplier   	"Component View::Group"
+		    quidu      	"36BB25E0024F"
+		    supplier_is_subsystem 	TRUE)
+		(object Dependency_Relationship
+		    quid       	"37BD38F400E6"
+		    supplier   	"Component View::GroupM"
+		    quidu      	"36BB2CD10088"
+		    supplier_is_subsystem 	TRUE)
+		(object Dependency_Relationship
+		    quid       	"37BD38F400E7"
+		    supplier   	"Component View::Ring"
+		    quidu      	"36BB392A02D1"
+		    supplier_is_subsystem 	TRUE)
+		(object Dependency_Relationship
+		    quid       	"37BD38F400E8"
+		    supplier   	"Component View::ByRef"
+		    quidu      	"36BB4AA503DA"
+		    supplier_is_subsystem 	TRUE)
+		(object Dependency_Relationship
+		    quid       	"37BD38F400ED"
+		    supplier   	"Component View::intFunction"
+		    quidu      	"36BB39470388"
+		    supplier_is_subsystem 	TRUE))
+	    language   	"Java")
+	(object module "MultiStepY" "NotAModuleType" "NotAModulePart"
+	    attributes 	(list Attribute_Set
+		(object Attribute
+		    tool       	"Java"
+		    name       	"FileName"
+		    value      	"D:\\Personal\\Code\\Java\\Metric\\MultiStepY.java"))
+	    quid       	"37BC91B000CB"
+	    stereotype 	""
+	    visible_modules 	(list dependency_list
+		(object Dependency_Relationship
+		    quid       	"37BC91B000F1"
+		    supplier   	"Component View::intFunction"
+		    quidu      	"36BB39470388"
+		    supplier_is_subsystem 	TRUE)
+		(object Dependency_Relationship
+		    quid       	"37BC91B000F2"
+		    supplier   	"Component View::Ring"
+		    quidu      	"36BB392A02D1"
+		    supplier_is_subsystem 	TRUE)
+		(object Dependency_Relationship
+		    quid       	"37BD210B01E8"
+		    supplier   	"Component View::intFunction"
+		    quidu      	"36BB39470388"
+		    supplier_is_subsystem 	TRUE)
+		(object Dependency_Relationship
+		    quid       	"37BD210B01F0"
+		    supplier   	"Component View::Ring"
+		    quidu      	"36BB392A02D1"
+		    supplier_is_subsystem 	TRUE)
+		(object Dependency_Relationship
+		    quid       	"37BD38FF0085"
+		    supplier   	"Component View::intFunction"
+		    quidu      	"36BB39470388"
+		    supplier_is_subsystem 	TRUE)
+		(object Dependency_Relationship
+		    quid       	"37BD38FF0086"
+		    supplier   	"Component View::Ring"
+		    quidu      	"36BB392A02D1"
+		    supplier_is_subsystem 	TRUE))
+	    language   	"Java")
+	(object module "MultiStepYQ" "NotAModuleType" "NotAModulePart"
+	    attributes 	(list Attribute_Set
+		(object Attribute
+		    tool       	"Java"
+		    name       	"FileName"
+		    value      	"D:\\Personal\\Code\\Java\\Metric\\MultiStepYQ.java"))
+	    quid       	"37BC91B0013A"
+	    stereotype 	""
+	    visible_modules 	(list dependency_list
+		(object Dependency_Relationship
+		    quid       	"37BC91B00150"
+		    supplier   	"Component View::Ring"
+		    quidu      	"36BB392A02D1"
+		    supplier_is_subsystem 	TRUE)
+		(object Dependency_Relationship
+		    quid       	"37BD210C0269"
+		    supplier   	"Component View::Ring"
+		    quidu      	"36BB392A02D1"
+		    supplier_is_subsystem 	TRUE)
+		(object Dependency_Relationship
+		    quid       	"37BD390101A0"
+		    supplier   	"Component View::Ring"
+		    quidu      	"36BB392A02D1"
+		    supplier_is_subsystem 	TRUE))
+	    language   	"Java")
+	(object module "NewtonStep2Q" "NotAModuleType" "NotAModulePart"
+	    attributes 	(list Attribute_Set
+		(object Attribute
+		    tool       	"Java"
+		    name       	"FileName"
+		    value      	"D:\\Personal\\Code\\Java\\Metric\\NewtonStep2Q.java"))
+	    quid       	"37BC91B00162"
+	    stereotype 	""
+	    language   	"Java")
+	(object module "NewtonStepQ" "NotAModuleType" "NotAModulePart"
+	    attributes 	(list Attribute_Set
+		(object Attribute
+		    tool       	"Java"
+		    name       	"FileName"
+		    value      	"D:\\Personal\\Code\\Java\\Metric\\NewtonStepQ.java"))
+	    quid       	"37BC91B001C6"
+	    stereotype 	""
+	    visible_modules 	(list dependency_list
+		(object Dependency_Relationship
+		    quid       	"37BC91B00212"
+		    supplier   	"Component View::intFunction"
+		    quidu      	"36BB39470388"
+		    supplier_is_subsystem 	TRUE)
+		(object Dependency_Relationship
+		    quid       	"37BC91B00213"
+		    supplier   	"Component View::Ring"
+		    quidu      	"36BB392A02D1"
+		    supplier_is_subsystem 	TRUE)
+		(object Dependency_Relationship
+		    quid       	"37BD21100157"
+		    supplier   	"Component View::intFunction"
+		    quidu      	"36BB39470388"
+		    supplier_is_subsystem 	TRUE)
+		(object Dependency_Relationship
+		    quid       	"37BD21100158"
+		    supplier   	"Component View::Ring"
+		    quidu      	"36BB392A02D1"
+		    supplier_is_subsystem 	TRUE)
+		(object Dependency_Relationship
+		    quid       	"37BD39080359"
+		    supplier   	"Component View::intFunction"
+		    quidu      	"36BB39470388"
+		    supplier_is_subsystem 	TRUE)
+		(object Dependency_Relationship
+		    quid       	"37BD39080363"
+		    supplier   	"Component View::Ring"
+		    quidu      	"36BB392A02D1"
+		    supplier_is_subsystem 	TRUE))
+	    language   	"Java")
+	(object module "PegasusStep" "NotAModuleType" "NotAModulePart"
+	    attributes 	(list Attribute_Set
+		(object Attribute
+		    tool       	"Java"
+		    name       	"FileName"
+		    value      	"D:\\Personal\\Code\\Java\\Metric\\PegasusStep.java"))
+	    quid       	"37BC91B0031A"
+	    stereotype 	""
+	    visible_modules 	(list dependency_list
+		(object Dependency_Relationship
+		    quid       	"37BC91B00342"
+		    supplier   	"Component View::Order"
+		    quidu      	"36BB46B601E7"
+		    supplier_is_subsystem 	TRUE)
+		(object Dependency_Relationship
+		    quid       	"37BC91B00343"
+		    supplier   	"Component View::Group"
+		    quidu      	"36BB25E0024F"
+		    supplier_is_subsystem 	TRUE)
+		(object Dependency_Relationship
+		    quid       	"37BC91B00344"
+		    supplier   	"Component View::GroupM"
+		    quidu      	"36BB2CD10088"
+		    supplier_is_subsystem 	TRUE)
+		(object Dependency_Relationship
+		    quid       	"37BC91B00345"
+		    supplier   	"Component View::Ring"
+		    quidu      	"36BB392A02D1"
+		    supplier_is_subsystem 	TRUE)
+		(object Dependency_Relationship
+		    quid       	"37BC91B00346"
+		    supplier   	"Component View::intFunction"
+		    quidu      	"36BB39470388"
+		    supplier_is_subsystem 	TRUE)
+		(object Dependency_Relationship
+		    quid       	"37BD21140094"
+		    supplier   	"Component View::Order"
+		    quidu      	"36BB46B601E7"
+		    supplier_is_subsystem 	TRUE)
+		(object Dependency_Relationship
+		    quid       	"37BD21140095"
+		    supplier   	"Component View::Group"
+		    quidu      	"36BB25E0024F"
+		    supplier_is_subsystem 	TRUE)
+		(object Dependency_Relationship
+		    quid       	"37BD21140096"
+		    supplier   	"Component View::GroupM"
+		    quidu      	"36BB2CD10088"
+		    supplier_is_subsystem 	TRUE)
+		(object Dependency_Relationship
+		    quid       	"37BD2114009E"
+		    supplier   	"Component View::Ring"
+		    quidu      	"36BB392A02D1"
+		    supplier_is_subsystem 	TRUE)
+		(object Dependency_Relationship
+		    quid       	"37BD2114009F"
+		    supplier   	"Component View::intFunction"
+		    quidu      	"36BB39470388"
+		    supplier_is_subsystem 	TRUE)
+		(object Dependency_Relationship
+		    quid       	"37BD390E02AD"
+		    supplier   	"Component View::Order"
+		    quidu      	"36BB46B601E7"
+		    supplier_is_subsystem 	TRUE)
+		(object Dependency_Relationship
+		    quid       	"37BD390E02AE"
+		    supplier   	"Component View::Group"
+		    quidu      	"36BB25E0024F"
+		    supplier_is_subsystem 	TRUE)
+		(object Dependency_Relationship
+		    quid       	"37BD390E02AF"
+		    supplier   	"Component View::GroupM"
+		    quidu      	"36BB2CD10088"
+		    supplier_is_subsystem 	TRUE)
+		(object Dependency_Relationship
+		    quid       	"37BD390E02B0"
+		    supplier   	"Component View::Ring"
+		    quidu      	"36BB392A02D1"
+		    supplier_is_subsystem 	TRUE)
+		(object Dependency_Relationship
+		    quid       	"37BD390E02B1"
+		    supplier   	"Component View::intFunction"
+		    quidu      	"36BB39470388"
+		    supplier_is_subsystem 	TRUE))
+	    language   	"Java")
+	(object module "StepMPQ" "NotAModuleType" "NotAModulePart"
+	    attributes 	(list Attribute_Set
+		(object Attribute
+		    tool       	"Java"
+		    name       	"FileName"
+		    value      	"D:\\Personal\\Code\\Java\\Metric\\StepMPQ.java"))
+	    quid       	"37BC91B100F5"
+	    stereotype 	""
+	    visible_modules 	(list dependency_list
+		(object Dependency_Relationship
+		    quid       	"37BC91B10128"
+		    supplier   	"Component View::Group"
+		    quidu      	"36BB25E0024F"
+		    supplier_is_subsystem 	TRUE)
+		(object Dependency_Relationship
+		    quid       	"37BC91B10129"
+		    supplier   	"Component View::Ring"
+		    quidu      	"36BB392A02D1"
+		    supplier_is_subsystem 	TRUE)
+		(object Dependency_Relationship
+		    quid       	"37BC91B1012A"
+		    supplier   	"Component View::ByRef::ByRefInt"
+		    quidu      	"36BB4E3F02C7"
+		    supplier_is_spec 	TRUE)
+		(object Dependency_Relationship
+		    quid       	"37BD211D0015"
+		    supplier   	"Component View::Group"
+		    quidu      	"36BB25E0024F"
+		    supplier_is_subsystem 	TRUE)
+		(object Dependency_Relationship
+		    quid       	"37BD211D001F"
+		    supplier   	"Component View::Ring"
+		    quidu      	"36BB392A02D1"
+		    supplier_is_subsystem 	TRUE)
+		(object Dependency_Relationship
+		    quid       	"37BD3913024E"
+		    supplier   	"Component View::Group"
+		    quidu      	"36BB25E0024F"
+		    supplier_is_subsystem 	TRUE)
+		(object Dependency_Relationship
+		    quid       	"37BD39130250"
+		    supplier   	"Component View::Ring"
+		    quidu      	"36BB392A02D1"
+		    supplier_is_subsystem 	TRUE))
+	    language   	"Java")
+	(object module "StepRKF" "NotAModuleType" "NotAModulePart"
+	    attributes 	(list Attribute_Set
+		(object Attribute
+		    tool       	"Java"
+		    name       	"FileName"
+		    value      	"D:\\Personal\\Code\\Java\\Metric\\StepRKF.java"))
+	    quid       	"37BC91B101B3"
+	    stereotype 	""
+	    visible_modules 	(list dependency_list
+		(object Dependency_Relationship
+		    quid       	"37BD2129004B"
+		    supplier   	"Component View::Group"
+		    quidu      	"36BB25E0024F"
+		    supplier_is_subsystem 	TRUE)
+		(object Dependency_Relationship
+		    quid       	"37BD2129004C"
+		    supplier   	"Component View::ByRef"
+		    quidu      	"36BB4AA503DA"
+		    supplier_is_subsystem 	TRUE)
+		(object Dependency_Relationship
+		    quid       	"37BD2129004D"
+		    supplier   	"Component View::Ring"
+		    quidu      	"36BB392A02D1"
+		    supplier_is_subsystem 	TRUE)
+		(object Dependency_Relationship
+		    quid       	"37BD391B0310"
+		    supplier   	"Component View::Group"
+		    quidu      	"36BB25E0024F"
+		    supplier_is_subsystem 	TRUE)
+		(object Dependency_Relationship
+		    quid       	"37BD391B0311"
+		    supplier   	"Component View::ByRef"
+		    quidu      	"36BB4AA503DA"
+		    supplier_is_subsystem 	TRUE)
+		(object Dependency_Relationship
+		    quid       	"37BD391B0312"
+		    supplier   	"Component View::Ring"
+		    quidu      	"36BB392A02D1"
+		    supplier_is_subsystem 	TRUE))
+	    language   	"Java")
+	(object module "StepRKQ" "NotAModuleType" "NotAModulePart"
+	    attributes 	(list Attribute_Set
+		(object Attribute
+		    tool       	"Java"
+		    name       	"FileName"
+		    value      	"D:\\Personal\\Code\\Java\\Metric\\StepRKQ.java"))
+	    quid       	"37BC91B101BE"
+	    stereotype 	""
+	    visible_modules 	(list dependency_list
+		(object Dependency_Relationship
+		    quid       	"37BC91B10365"
+		    supplier   	"Component View::Group"
+		    quidu      	"36BB25E0024F"
+		    supplier_is_subsystem 	TRUE)
+		(object Dependency_Relationship
+		    quid       	"37BC91B10366"
+		    supplier   	"Component View::Ring"
+		    quidu      	"36BB392A02D1"
+		    supplier_is_subsystem 	TRUE)
+		(object Dependency_Relationship
+		    quid       	"37BC91B10367"
+		    supplier   	"Component View::ByRef"
+		    quidu      	"36BB4AA503DA"
+		    supplier_is_subsystem 	TRUE)
+		(object Dependency_Relationship
+		    quid       	"37BD21400336"
+		    supplier   	"Component View::Group"
+		    quidu      	"36BB25E0024F"
+		    supplier_is_subsystem 	TRUE)
+		(object Dependency_Relationship
+		    quid       	"37BD21400337"
+		    supplier   	"Component View::Ring"
+		    quidu      	"36BB392A02D1"
+		    supplier_is_subsystem 	TRUE)
+		(object Dependency_Relationship
+		    quid       	"37BD21400338"
+		    supplier   	"Component View::ByRef"
+		    quidu      	"36BB4AA503DA"
+		    supplier_is_subsystem 	TRUE)
+		(object Dependency_Relationship
+		    quid       	"37BD393A029E"
+		    supplier   	"Component View::Group"
+		    quidu      	"36BB25E0024F"
+		    supplier_is_subsystem 	TRUE)
+		(object Dependency_Relationship
+		    quid       	"37BD393A029F"
+		    supplier   	"Component View::Ring"
+		    quidu      	"36BB392A02D1"
+		    supplier_is_subsystem 	TRUE)
+		(object Dependency_Relationship
+		    quid       	"37BD393A02A6"
+		    supplier   	"Component View::ByRef"
+		    quidu      	"36BB4AA503DA"
+		    supplier_is_subsystem 	TRUE))
+	    language   	"Java")
+	(object module "StepRKFQ" "NotAModuleType" "NotAModulePart"
+	    attributes 	(list Attribute_Set
+		(object Attribute
+		    tool       	"Java"
+		    name       	"FileName"
+		    value      	"D:\\Personal\\Code\\Java\\Metric\\StepRKFQ.java"))
+	    quid       	"37BC91B1027C"
+	    stereotype 	""
+	    visible_modules 	(list dependency_list
+		(object Dependency_Relationship
+		    quid       	"37BD213C0060"
+		    supplier   	"Component View::Ring"
+		    quidu      	"36BB392A02D1"
+		    supplier_is_subsystem 	TRUE)
+		(object Dependency_Relationship
+		    quid       	"37BD213C0061"
+		    supplier   	"Component View::ByRef"
+		    quidu      	"36BB4AA503DA"
+		    supplier_is_subsystem 	TRUE)
+		(object Dependency_Relationship
+		    quid       	"37BD39350371"
+		    supplier   	"Component View::Ring"
+		    quidu      	"36BB392A02D1"
+		    supplier_is_subsystem 	TRUE)
+		(object Dependency_Relationship
+		    quid       	"37BD39350372"
+		    supplier   	"Component View::ByRef"
+		    quidu      	"36BB4AA503DA"
+		    supplier_is_subsystem 	TRUE))
+	    language   	"Java")
+	(object module "StepTrapezQ" "NotAModuleType" "NotAModulePart"
+	    attributes 	(list Attribute_Set
+		(object Attribute
+		    tool       	"Java"
+		    name       	"FileName"
+		    value      	"D:\\Personal\\Code\\Java\\Metric\\StepTrapezQ.java"))
+	    quid       	"37BC91B20006"
+	    stereotype 	""
+	    visible_modules 	(list dependency_list
+		(object Dependency_Relationship
+		    quid       	"37BC91B20053"
+		    supplier   	"Component View::intFunction"
+		    quidu      	"36BB39470388"
+		    supplier_is_subsystem 	TRUE)
+		(object Dependency_Relationship
+		    quid       	"37BC91B20054"
+		    supplier   	"Component View::Group"
+		    quidu      	"36BB25E0024F"
+		    supplier_is_subsystem 	TRUE)
+		(object Dependency_Relationship
+		    quid       	"37BC91B20055"
+		    supplier   	"Component View::Ring"
+		    quidu      	"36BB392A02D1"
+		    supplier_is_subsystem 	TRUE)
+		(object Dependency_Relationship
+		    quid       	"37BC91B20056"
+		    supplier   	"Component View::ByRef"
+		    quidu      	"36BB4AA503DA"
+		    supplier_is_subsystem 	TRUE)
+		(object Dependency_Relationship
+		    quid       	"37BD2145003B"
+		    supplier   	"Component View::intFunction"
+		    quidu      	"36BB39470388"
+		    supplier_is_subsystem 	TRUE)
+		(object Dependency_Relationship
+		    quid       	"37BD2145003C"
+		    supplier   	"Component View::Group"
+		    quidu      	"36BB25E0024F"
+		    supplier_is_subsystem 	TRUE)
+		(object Dependency_Relationship
+		    quid       	"37BD2145003D"
+		    supplier   	"Component View::Ring"
+		    quidu      	"36BB392A02D1"
+		    supplier_is_subsystem 	TRUE)
+		(object Dependency_Relationship
+		    quid       	"37BD2145003E"
+		    supplier   	"Component View::ByRef"
+		    quidu      	"36BB4AA503DA"
+		    supplier_is_subsystem 	TRUE)
+		(object Dependency_Relationship
+		    quid       	"37BD393E034C"
+		    supplier   	"Component View::intFunction"
+		    quidu      	"36BB39470388"
+		    supplier_is_subsystem 	TRUE)
+		(object Dependency_Relationship
+		    quid       	"37BD393E034D"
+		    supplier   	"Component View::Group"
+		    quidu      	"36BB25E0024F"
+		    supplier_is_subsystem 	TRUE)
+		(object Dependency_Relationship
+		    quid       	"37BD393E034E"
+		    supplier   	"Component View::Ring"
+		    quidu      	"36BB392A02D1"
+		    supplier_is_subsystem 	TRUE)
+		(object Dependency_Relationship
+		    quid       	"37BD393E034F"
+		    supplier   	"Component View::ByRef"
+		    quidu      	"36BB4AA503DA"
+		    supplier_is_subsystem 	TRUE))
+	    language   	"Java")
+	(object module "testMetric" "NotAModuleType" "NotAModulePart"
+	    attributes 	(list Attribute_Set
+		(object Attribute
+		    tool       	"Java"
+		    name       	"FileName"
+		    value      	"D:\\Personal\\Code\\Java\\Metric\\testMetric.java"))
+	    quid       	"37BC91B20057"
+	    stereotype 	""
+	    language   	"Java")
+	(object module "IntervalStep" "NotAModuleType" "NotAModulePart"
+	    attributes 	(list Attribute_Set
+		(object Attribute
+		    tool       	"Java"
+		    name       	"FileName"
+		    value      	"D:\\Personal\\Code\\Java\\OldStuff\\IntervalStep.java"))
+	    quid       	"37BC91B201BF"
+	    stereotype 	""
+	    language   	"Java")
+	(object module "MetricInterval" "NotAModuleType" "NotAModulePart"
+	    attributes 	(list Attribute_Set
+		(object Attribute
+		    tool       	"Java"
+		    name       	"FileName"
+		    value      	"D:\\Personal\\Code\\Java\\OldStuff\\MetricInterval.java"))
+	    quid       	"37BC91B201E7"
+	    stereotype 	""
+	    visible_modules 	(list dependency_list
+		(object Dependency_Relationship
+		    quid       	"37BC91B2020E"
+		    supplier   	"Component View::Order"
+		    quidu      	"36BB46B601E7"
+		    supplier_is_subsystem 	TRUE)
+		(object Dependency_Relationship
+		    quid       	"37BD214B01F2"
+		    supplier   	"Component View::Order"
+		    quidu      	"36BB46B601E7"
+		    supplier_is_subsystem 	TRUE)
+		(object Dependency_Relationship
+		    quid       	"37BD394501A8"
+		    supplier   	"Component View::Order"
+		    quidu      	"36BB46B601E7"
+		    supplier_is_subsystem 	TRUE))
+	    language   	"Java")
+	(object module "MultiStep" "NotAModuleType" "NotAModulePart"
+	    attributes 	(list Attribute_Set
+		(object Attribute
+		    tool       	"Java"
+		    name       	"FileName"
+		    value      	"D:\\Personal\\Code\\Java\\Metric\\MultiStep.java"))
+	    quid       	"37BC91B00049"
+	    stereotype 	""
+	    visible_modules 	(list dependency_list
+		(object Dependency_Relationship
+		    quid       	"37BC91B0007C"
+		    supplier   	"Component View::intFunction"
+		    quidu      	"36BB39470388"
+		    supplier_is_subsystem 	TRUE)
+		(object Dependency_Relationship
+		    quid       	"37BC91B0007D"
+		    supplier   	"Component View::Ring"
+		    quidu      	"36BB392A02D1"
+		    supplier_is_subsystem 	TRUE)
+		(object Dependency_Relationship
+		    quid       	"37BD21090143"
+		    supplier   	"Component View::intFunction"
+		    quidu      	"36BB39470388"
+		    supplier_is_subsystem 	TRUE)
+		(object Dependency_Relationship
+		    quid       	"37BD21090144"
+		    supplier   	"Component View::Ring"
+		    quidu      	"36BB392A02D1"
+		    supplier_is_subsystem 	TRUE)
+		(object Dependency_Relationship
+		    quid       	"37BD38FC0207"
+		    supplier   	"Component View::intFunction"
+		    quidu      	"36BB39470388"
+		    supplier_is_subsystem 	TRUE)
+		(object Dependency_Relationship
+		    quid       	"37BD38FC0211"
+		    supplier   	"Component View::Ring"
+		    quidu      	"36BB392A02D1"
+		    supplier_is_subsystem 	TRUE))
+	    language   	"Java")
+	(object module "NewSubprogBody" "SubType" "Body"
+	    quid       	"37BF04CB018E"
+	    stereotype 	"Subprogram Body"
+	    language   	"Visual Basic"))
+    physical_presentations 	(list unit_reference_list
+	(object Module_Diagram "Metric"
+	    quid       	"37BF038502D0"
+	    title      	"Metric"
+	    zoom       	100
+	    max_height 	28350
+	    max_width  	21600
+	    origin_x   	0
+	    origin_y   	82
+	    items      	(list diagram_item_list
+		(object ModView "Component View::Metric::MetricInterval" "NotAModuleType" "NotAModulePart" @1
+		    location   	(186, 155)
+		    label      	(object ItemLabel
+			Parent_View 	@1
+			location   	(151, 130)
+			fill_color 	13434879
+			anchor_loc 	3
+			nlines     	2
+			max_width  	127
+			label      	"MetricInterval")
+		    icon_style 	"Icon"
+		    line_color 	3342489
+		    fill_color 	13434879
+		    quidu      	"37BC91B201E7"
+		    width      	228
+		    autoResize 	TRUE
+		    width      	228
+		    height     	162)
+		(object ModView "Component View::Metric::IntervalStep" "NotAModuleType" "NotAModulePart" @2
+		    location   	(589, 155)
+		    label      	(object ItemLabel
+			Parent_View 	@2
+			location   	(554, 130)
+			fill_color 	13434879
+			anchor_loc 	3
+			nlines     	2
+			max_width  	127
+			label      	"IntervalStep")
+		    icon_style 	"Icon"
+		    line_color 	3342489
+		    fill_color 	13434879
+		    quidu      	"37BC91B201BF"
+		    width      	228
+		    autoResize 	TRUE
+		    width      	228
+		    height     	162)
+		(object ModView "Component View::Metric::testMetric" "NotAModuleType" "NotAModulePart" @3
+		    location   	(961, 155)
+		    label      	(object ItemLabel
+			Parent_View 	@3
+			location   	(926, 130)
+			fill_color 	13434879
+			anchor_loc 	3
+			nlines     	2
+			max_width  	127
+			label      	"testMetric")
+		    icon_style 	"Icon"
+		    line_color 	3342489
+		    fill_color 	13434879
+		    quidu      	"37BC91B20057"
+		    width      	228
+		    autoResize 	TRUE
+		    width      	228
+		    height     	162)
+		(object ModView "Component View::Metric::StepTrapezQ" "NotAModuleType" "NotAModulePart" @4
+		    location   	(1395, 155)
+		    label      	(object ItemLabel
+			Parent_View 	@4
+			location   	(1351, 130)
+			fill_color 	13434879
+			anchor_loc 	3
+			nlines     	2
+			max_width  	162
+			label      	"StepTrapezQ")
+		    icon_style 	"Icon"
+		    line_color 	3342489
+		    fill_color 	13434879
+		    quidu      	"37BC91B20006"
+		    width      	292
+		    autoResize 	TRUE
+		    width      	292
+		    height     	162)
+		(object ModView "Component View::Metric::StepRKFQ" "NotAModuleType" "NotAModulePart" @5
+		    location   	(1798, 155)
+		    label      	(object ItemLabel
+			Parent_View 	@5
+			location   	(1763, 130)
+			fill_color 	13434879
+			anchor_loc 	3
+			nlines     	2
+			max_width  	127
+			label      	"StepRKFQ")
+		    icon_style 	"Icon"
+		    line_color 	3342489
+		    fill_color 	13434879
+		    quidu      	"37BC91B1027C"
+		    width      	228
+		    autoResize 	TRUE
+		    width      	228
+		    height     	162)
+		(object ModView "Component View::Metric::StepRKQ" "NotAModuleType" "NotAModulePart" @6
+		    location   	(2201, 155)
+		    label      	(object ItemLabel
+			Parent_View 	@6
+			location   	(2166, 130)
+			fill_color 	13434879
+			anchor_loc 	3
+			nlines     	2
+			max_width  	127
+			label      	"StepRKQ")
+		    icon_style 	"Icon"
+		    line_color 	3342489
+		    fill_color 	13434879
+		    quidu      	"37BC91B101BE"
+		    width      	228
+		    autoResize 	TRUE
+		    width      	228
+		    height     	162)
+		(object ModView "Component View::Metric::StepRKF" "NotAModuleType" "NotAModulePart" @7
+		    location   	(2573, 155)
+		    label      	(object ItemLabel
+			Parent_View 	@7
+			location   	(2538, 130)
+			fill_color 	13434879
+			anchor_loc 	3
+			nlines     	2
+			max_width  	127
+			label      	"StepRKF")
+		    icon_style 	"Icon"
+		    line_color 	3342489
+		    fill_color 	13434879
+		    quidu      	"37BC91B101B3"
+		    width      	228
+		    autoResize 	TRUE
+		    width      	228
+		    height     	162)
+		(object ModView "Component View::Metric::StepMPQ" "NotAModuleType" "NotAModulePart" @8
+		    location   	(2945, 155)
+		    label      	(object ItemLabel
+			Parent_View 	@8
+			location   	(2910, 130)
+			fill_color 	13434879
+			anchor_loc 	3
+			nlines     	2
+			max_width  	127
+			label      	"StepMPQ")
+		    icon_style 	"Icon"
+		    line_color 	3342489
+		    fill_color 	13434879
+		    quidu      	"37BC91B100F5"
+		    width      	228
+		    autoResize 	TRUE
+		    width      	228
+		    height     	162)
+		(object ModView "Component View::Metric::PegasusStep" "NotAModuleType" "NotAModulePart" @9
+		    location   	(217, 465)
+		    label      	(object ItemLabel
+			Parent_View 	@9
+			location   	(179, 440)
+			fill_color 	13434879
+			anchor_loc 	3
+			nlines     	2
+			max_width  	139
+			label      	"PegasusStep")
+		    icon_style 	"Icon"
+		    line_color 	3342489
+		    fill_color 	13434879
+		    quidu      	"37BC91B0031A"
+		    width      	250
+		    autoResize 	TRUE
+		    width      	250
+		    height     	162)
+		(object ModView "Component View::Metric::NewtonStepQ" "NotAModuleType" "NotAModulePart" @10
+		    location   	(620, 465)
+		    label      	(object ItemLabel
+			Parent_View 	@10
+			location   	(582, 440)
+			fill_color 	13434879
+			anchor_loc 	3
+			nlines     	2
+			max_width  	139
+			label      	"NewtonStepQ")
+		    icon_style 	"Icon"
+		    line_color 	3342489
+		    fill_color 	13434879
+		    quidu      	"37BC91B001C6"
+		    width      	250
+		    autoResize 	TRUE
+		    width      	250
+		    height     	162)
+		(object ModView "Component View::Metric::NewtonStep2Q" "NotAModuleType" "NotAModulePart" @11
+		    location   	(1023, 465)
+		    label      	(object ItemLabel
+			Parent_View 	@11
+			location   	(985, 440)
+			fill_color 	13434879
+			anchor_loc 	3
+			nlines     	2
+			max_width  	139
+			label      	"NewtonStep2Q")
+		    icon_style 	"Icon"
+		    line_color 	3342489
+		    fill_color 	13434879
+		    quidu      	"37BC91B00162"
+		    width      	250
+		    autoResize 	TRUE
+		    width      	250
+		    height     	162)
+		(object ModView "Component View::Metric::MultiStepYQ" "NotAModuleType" "NotAModulePart" @12
+		    location   	(1426, 465)
+		    label      	(object ItemLabel
+			Parent_View 	@12
+			location   	(1385, 440)
+			fill_color 	13434879
+			anchor_loc 	3
+			nlines     	2
+			max_width  	150
+			label      	"MultiStepYQ")
+		    icon_style 	"Icon"
+		    line_color 	3342489
+		    fill_color 	13434879
+		    quidu      	"37BC91B0013A"
+		    width      	270
+		    autoResize 	TRUE
+		    width      	270
+		    height     	162)
+		(object ModView "Component View::Metric::MultiStepY" "NotAModuleType" "NotAModulePart" @13
+		    location   	(1860, 465)
+		    label      	(object ItemLabel
+			Parent_View 	@13
+			location   	(1825, 440)
+			fill_color 	13434879
+			anchor_loc 	3
+			nlines     	2
+			max_width  	127
+			label      	"MultiStepY")
+		    icon_style 	"Icon"
+		    line_color 	3342489
+		    fill_color 	13434879
+		    quidu      	"37BC91B000CB"
+		    width      	228
+		    autoResize 	TRUE
+		    width      	228
+		    height     	162)
+		(object ModView "Component View::Metric::MultiStep" "NotAModuleType" "NotAModulePart" @14
+		    location   	(2232, 465)
+		    label      	(object ItemLabel
+			Parent_View 	@14
+			location   	(2197, 440)
+			fill_color 	13434879
+			anchor_loc 	3
+			nlines     	2
+			max_width  	127
+			label      	"MultiStep")
+		    icon_style 	"Icon"
+		    line_color 	3342489
+		    fill_color 	13434879
+		    quidu      	"37BC91B00049"
+		    width      	228
+		    autoResize 	TRUE
+		    width      	228
+		    height     	162)
+		(object ModView "Component View::Metric::GoldenStep" "NotAModuleType" "NotAModulePart" @15
+		    location   	(2604, 465)
+		    label      	(object ItemLabel
+			Parent_View 	@15
+			location   	(2569, 440)
+			fill_color 	13434879
+			anchor_loc 	3
+			nlines     	2
+			max_width  	127
+			label      	"GoldenStep")
+		    icon_style 	"Icon"
+		    line_color 	3342489
+		    fill_color 	13434879
+		    quidu      	"37BC91AF0156"
+		    width      	228
+		    autoResize 	TRUE
+		    width      	228
+		    height     	162)
+		(object ModView "Component View::Metric::FalsiStepQ" "NotAModuleType" "NotAModulePart" @16
+		    location   	(186, 744)
+		    label      	(object ItemLabel
+			Parent_View 	@16
+			location   	(151, 719)
+			fill_color 	13434879
+			anchor_loc 	3
+			nlines     	2
+			max_width  	127
+			label      	"FalsiStepQ")
+		    icon_style 	"Icon"
+		    line_color 	3342489
+		    fill_color 	13434879
+		    quidu      	"37BC91AF002A"
+		    width      	228
+		    autoResize 	TRUE
+		    width      	228
+		    height     	162)
+		(object ModView "Component View::Metric::BiSectStepQ" "NotAModuleType" "NotAModulePart" @17
+		    location   	(589, 744)
+		    label      	(object ItemLabel
+			Parent_View 	@17
+			location   	(548, 719)
+			fill_color 	13434879
+			anchor_loc 	3
+			nlines     	2
+			max_width  	150
+			label      	"BiSectStepQ")
+		    icon_style 	"Icon"
+		    line_color 	3342489
+		    fill_color 	13434879
+		    quidu      	"37BC91AE0281"
+		    width      	270
+		    autoResize 	TRUE
+		    width      	270
+		    height     	162)
+		(object ModView "Component View::Metric::absStepperQ" "NotAModuleType" "NotAModulePart" @18
+		    location   	(1054, 744)
+		    label      	(object ItemLabel
+			Parent_View 	@18
+			location   	(1007, 719)
+			fill_color 	13434879
+			anchor_loc 	3
+			nlines     	2
+			max_width  	174
+			label      	"absStepperQ")
+		    icon_style 	"Icon"
+		    line_color 	3342489
+		    fill_color 	13434879
+		    quidu      	"37BC91AE0119"
+		    width      	314
+		    autoResize 	TRUE
+		    width      	314
+		    height     	162)
+		(object ModView "Component View::Metric::absRefinerQ" "NotAModuleType" "NotAModulePart" @19
+		    location   	(1519, 744)
+		    label      	(object ItemLabel
+			Parent_View 	@19
+			location   	(1475, 719)
+			fill_color 	13434879
+			anchor_loc 	3
+			nlines     	2
+			max_width  	162
+			label      	"absRefinerQ")
+		    icon_style 	"Icon"
+		    line_color 	3342489
+		    fill_color 	13434879
+		    quidu      	"37BC91AD029E"
+		    width      	292
+		    autoResize 	TRUE
+		    width      	292
+		    height     	162)
+		(object ModView "Component View::Metric::absMetricBody" "NotAModuleType" "NotAModulePart" @20
+		    location   	(2015, 744)
+		    label      	(object ItemLabel
+			Parent_View 	@20
+			location   	(1959, 719)
+			fill_color 	13434879
+			anchor_loc 	3
+			nlines     	2
+			max_width  	211
+			label      	"absMetricBody")
+		    icon_style 	"Icon"
+		    line_color 	3342489
+		    fill_color 	13434879
+		    quidu      	"36BB52A900EB"
+		    width      	380
+		    autoResize 	TRUE
+		    width      	380
+		    height     	162)
+		(object ModView "Component View::Metric::MetricBody" "NotAModuleType" "NotAModulePart" @21
+		    location   	(2480, 744)
+		    label      	(object ItemLabel
+			Parent_View 	@21
+			location   	(2445, 719)
+			fill_color 	13434879
+			anchor_loc 	3
+			nlines     	2
+			max_width  	127
+			label      	"MetricBody")
+		    icon_style 	"Icon"
+		    line_color 	3342489
+		    fill_color 	13434879
+		    quidu      	"36BB52A40080"
+		    width      	228
+		    autoResize 	TRUE
+		    width      	228
+		    height     	162)
+		(object ModView "Component View::Metric::ExtraPolValue" "NotAModuleType" "NotAModulePart" @22
+		    location   	(2883, 744)
+		    label      	(object ItemLabel
+			Parent_View 	@22
+			location   	(2836, 719)
+			fill_color 	13434879
+			anchor_loc 	3
+			nlines     	2
+			max_width  	174
+			label      	"ExtraPolValue")
+		    icon_style 	"Icon"
+		    line_color 	3342489
+		    fill_color 	13434879
+		    quidu      	"36BB459601B1"
+		    width      	314
+		    autoResize 	TRUE
+		    width      	314
+		    height     	162)
+		(object ModView "Component View::Metric::wellOrder" "NotAModuleType" "NotAModulePart" @23
+		    location   	(2945, 1395)
+		    label      	(object ItemLabel
+			Parent_View 	@23
+			location   	(2910, 1370)
+			fill_color 	13434879
+			anchor_loc 	3
+			nlines     	2
+			max_width  	127
+			label      	"wellOrder")
+		    icon_style 	"Icon"
+		    line_color 	3342489
+		    fill_color 	13434879
+		    quidu      	"36BB459600C1"
+		    width      	228
+		    autoResize 	TRUE
+		    width      	228
+		    height     	162)
+		(object InterfaceView "Logical View::Metric::wellOrder" @24
+		    location   	(2945, 1798)
+		    label      	(object ItemLabel
+			Parent_View 	@24
+			location   	(2944, 1906)
+			anchor_loc 	1
+			nlines     	2
+			max_width  	232
+			justify    	0
+			label      	"wellOrder")
+		    icon       	"Interface"
+		    icon_style 	"Icon"
+		    line_color 	3342489
+		    fill_color 	13434879
+		    quidu      	"36BB459600CB"
+		    width      	58
+		    height     	58
+		    autoResize 	TRUE)
+		(object RealizeView "" @25
+		    stereotype 	TRUE
+		    line_color 	3342489
+		    quidu      	"37BF047401D9"
+		    client     	@23
+		    supplier   	@24
+		    line_style 	0)
+		(object ModView "Component View::Metric::intMetric" "NotAModuleType" "NotAModulePart" @26
+		    location   	(1798, 1395)
+		    label      	(object ItemLabel
+			Parent_View 	@26
+			location   	(1763, 1370)
+			fill_color 	13434879
+			anchor_loc 	3
+			nlines     	2
+			max_width  	127
+			label      	"intMetric")
+		    icon_style 	"Icon"
+		    line_color 	3342489
+		    fill_color 	13434879
+		    quidu      	"36BB45960052"
+		    width      	228
+		    autoResize 	TRUE
+		    width      	228
+		    height     	162)
+		(object InterfaceView "Logical View::Metric::intMetric" @27
+		    location   	(1457, 1798)
+		    label      	(object ItemLabel
+			Parent_View 	@27
+			location   	(1456, 1906)
+			anchor_loc 	1
+			nlines     	2
+			max_width  	232
+			justify    	0
+			label      	"intMetric")
+		    icon       	"Interface"
+		    icon_style 	"Icon"
+		    line_color 	3342489
+		    fill_color 	13434879
+		    quidu      	"36BB4596005C"
+		    width      	58
+		    height     	58
+		    autoResize 	TRUE)
+		(object RealizeView "" @28
+		    stereotype 	TRUE
+		    line_color 	3342489
+		    quidu      	"37BF04770260"
+		    client     	@26
+		    supplier   	@27
+		    line_style 	0)
+		(object ModView "Component View::Metric::Norm" "NotAModuleType" "NotAModulePart" @29
+		    location   	(1054, 1395)
+		    label      	(object ItemLabel
+			Parent_View 	@29
+			location   	(1019, 1370)
+			fill_color 	13434879
+			anchor_loc 	3
+			nlines     	2
+			max_width  	127
+			label      	"Norm")
+		    icon_style 	"Icon"
+		    line_color 	3342489
+		    fill_color 	13434879
+		    quidu      	"36BB459503E0"
+		    width      	228
+		    autoResize 	TRUE
+		    width      	228
+		    height     	162)
+		(object InterfaceView "Logical View::Metric::Norm" @30
+		    location   	(775, 1798)
+		    label      	(object ItemLabel
+			Parent_View 	@30
+			location   	(774, 1906)
+			anchor_loc 	1
+			nlines     	2
+			max_width  	232
+			justify    	0
+			label      	"Norm")
+		    icon       	"Interface"
+		    icon_style 	"Icon"
+		    line_color 	3342489
+		    fill_color 	13434879
+		    quidu      	"36BB45960002"
+		    width      	58
+		    height     	58
+		    autoResize 	TRUE)
+		(object RealizeView "" @31
+		    stereotype 	TRUE
+		    line_color 	3342489
+		    quidu      	"37BF047A0318"
+		    client     	@29
+		    supplier   	@30
+		    line_style 	0)
+		(object ModView "Component View::Metric::absMetricIRing" "NotAModuleType" "NotAModulePart" @32
+		    location   	(248, 1023)
+		    label      	(object ItemLabel
+			Parent_View 	@32
+			location   	(195, 998)
+			fill_color 	13434879
+			anchor_loc 	3
+			nlines     	2
+			max_width  	199
+			label      	"absMetricIRing")
+		    icon_style 	"Icon"
+		    line_color 	3342489
+		    fill_color 	13434879
+		    quidu      	"36BB4595037C"
+		    width      	358
+		    autoResize 	TRUE
+		    width      	358
+		    height     	162)
+		(object ModView "Component View::Metric::MetricIRing" "NotAModuleType" "NotAModulePart" @33
+		    location   	(651, 1395)
+		    label      	(object ItemLabel
+			Parent_View 	@33
+			location   	(616, 1370)
+			fill_color 	13434879
+			anchor_loc 	3
+			nlines     	2
+			max_width  	127
+			label      	"MetricIRing")
+		    icon_style 	"Icon"
+		    line_color 	3342489
+		    fill_color 	13434879
+		    quidu      	"36BB45950173"
+		    width      	228
+		    autoResize 	TRUE
+		    width      	228
+		    height     	162)
+		(object InterfaceView "Logical View::Metric::MetricIRing" @34
+		    location   	(465, 1798)
+		    label      	(object ItemLabel
+			Parent_View 	@34
+			location   	(464, 1906)
+			anchor_loc 	1
+			nlines     	2
+			max_width  	232
+			justify    	0
+			label      	"MetricIRing")
+		    icon       	"Interface"
+		    icon_style 	"Icon"
+		    line_color 	3342489
+		    fill_color 	13434879
+		    quidu      	"36BB4595017D"
+		    width      	58
+		    height     	58
+		    autoResize 	TRUE)
+		(object RealizeView "" @35
+		    stereotype 	TRUE
+		    line_color 	3342489
+		    quidu      	"37BF048102B4"
+		    client     	@33
+		    supplier   	@34
+		    line_style 	0)
+		(object ModView "Component View::Metric::ScalarMetric" "NotAModuleType" "NotAModulePart" @36
+		    location   	(1426, 1395)
+		    label      	(object ItemLabel
+			Parent_View 	@36
+			location   	(1391, 1370)
+			fill_color 	13434879
+			anchor_loc 	3
+			nlines     	2
+			max_width  	127
+			label      	"ScalarMetric")
+		    icon_style 	"Icon"
+		    line_color 	3342489
+		    fill_color 	13434879
+		    quidu      	"36BB4595005B"
+		    width      	228
+		    autoResize 	TRUE
+		    width      	228
+		    height     	162)
+		(object InterfaceView "Logical View::Metric::ScalarMetric" @37
+		    location   	(1085, 1798)
+		    label      	(object ItemLabel
+			Parent_View 	@37
+			location   	(1084, 1906)
+			anchor_loc 	1
+			nlines     	2
+			max_width  	232
+			justify    	0
+			label      	"ScalarMetric")
+		    icon       	"Interface"
+		    icon_style 	"Icon"
+		    line_color 	3342489
+		    fill_color 	13434879
+		    quidu      	"36BB45950065"
+		    width      	58
+		    height     	58
+		    autoResize 	TRUE)
+		(object RealizeView "" @38
+		    stereotype 	TRUE
+		    line_color 	3342489
+		    quidu      	"37BF04850007"
+		    client     	@36
+		    supplier   	@37
+		    line_style 	0)
+		(object ModView "Component View::Metric::absWellOrder" "NotAModuleType" "NotAModulePart" @39
+		    location   	(775, 1023)
+		    label      	(object ItemLabel
+			Parent_View 	@39
+			location   	(725, 998)
+			fill_color 	13434879
+			anchor_loc 	3
+			nlines     	2
+			max_width  	187
+			label      	"absWellOrder")
+		    icon_style 	"Icon"
+		    line_color 	3342489
+		    fill_color 	13434879
+		    quidu      	"36BB459403CB"
+		    width      	336
+		    autoResize 	TRUE
+		    width      	336
+		    height     	162)
+		(object ModView "Component View::Metric::absScalarMetric" "NotAModuleType" "NotAModulePart" @40
+		    location   	(1302, 1023)
+		    label      	(object ItemLabel
+			Parent_View 	@40
+			location   	(1243, 998)
+			fill_color 	13434879
+			anchor_loc 	3
+			nlines     	2
+			max_width  	222
+			label      	"absScalarMetric")
+		    icon_style 	"Icon"
+		    line_color 	3342489
+		    fill_color 	13434879
+		    quidu      	"36BB45940317"
+		    width      	400
+		    autoResize 	TRUE
+		    width      	400
+		    height     	162)
+		(object ModView "Component View::Metric::Metric" "NotAModuleType" "NotAModulePart" @41
+		    location   	(279, 1395)
+		    label      	(object ItemLabel
+			Parent_View 	@41
+			location   	(244, 1370)
+			fill_color 	13434879
+			anchor_loc 	3
+			nlines     	2
+			max_width  	127
+			label      	"Metric")
+		    icon_style 	"Icon"
+		    line_color 	3342489
+		    fill_color 	13434879
+		    quidu      	"36BB459401D6"
+		    width      	228
+		    autoResize 	TRUE
+		    width      	228
+		    height     	162)
+		(object InterfaceView "Logical View::Metric::Metric" @42
+		    location   	(124, 1798)
+		    label      	(object ItemLabel
+			Parent_View 	@42
+			location   	(123, 1906)
+			anchor_loc 	1
+			nlines     	2
+			max_width  	232
+			justify    	0
+			label      	"Metric")
+		    icon       	"Interface"
+		    icon_style 	"Icon"
+		    line_color 	3342489
+		    fill_color 	13434879
+		    quidu      	"36BB459401E0"
+		    width      	58
+		    height     	58
+		    autoResize 	TRUE)
+		(object RealizeView "" @43
+		    stereotype 	TRUE
+		    line_color 	3342489
+		    quidu      	"37BF04920204"
+		    client     	@41
+		    supplier   	@42
+		    line_style 	0)
+		(object ModView "Component View::Metric::intWellOrder" "NotAModuleType" "NotAModulePart" @44
+		    location   	(2604, 1395)
+		    label      	(object ItemLabel
+			Parent_View 	@44
+			location   	(2560, 1370)
+			fill_color 	13434879
+			anchor_loc 	3
+			nlines     	2
+			max_width  	162
+			label      	"intWellOrder")
+		    icon_style 	"Icon"
+		    line_color 	3342489
+		    fill_color 	13434879
+		    quidu      	"36BB45940172"
+		    width      	292
+		    autoResize 	TRUE
+		    width      	292
+		    height     	162)
+		(object InterfaceView "Logical View::Metric::intWellOrder" @45
+		    location   	(2604, 1798)
+		    label      	(object ItemLabel
+			Parent_View 	@45
+			location   	(2603, 1906)
+			anchor_loc 	1
+			nlines     	2
+			max_width  	232
+			justify    	0
+			label      	"intWellOrder")
+		    icon       	"Interface"
+		    icon_style 	"Icon"
+		    line_color 	3342489
+		    fill_color 	13434879
+		    quidu      	"36BB45940173"
+		    width      	58
+		    height     	58
+		    autoResize 	TRUE)
+		(object RealizeView "" @46
+		    stereotype 	TRUE
+		    line_color 	3342489
+		    quidu      	"37BF049500FA"
+		    client     	@44
+		    supplier   	@45
+		    line_style 	0)
+		(object ModView "Component View::Metric::intNorm" "NotAModuleType" "NotAModulePart" @47
+		    location   	(2201, 1395)
+		    label      	(object ItemLabel
+			Parent_View 	@47
+			location   	(2166, 1370)
+			fill_color 	13434879
+			anchor_loc 	3
+			nlines     	2
+			max_width  	127
+			label      	"intNorm")
+		    icon_style 	"Icon"
+		    line_color 	3342489
+		    fill_color 	13434879
+		    quidu      	"36BB45940118"
+		    width      	228
+		    autoResize 	TRUE
+		    width      	228
+		    height     	162)
+		(object InterfaceView "Logical View::Metric::intNorm" @48
+		    location   	(2201, 1798)
+		    label      	(object ItemLabel
+			Parent_View 	@48
+			location   	(2200, 1906)
+			anchor_loc 	1
+			nlines     	2
+			max_width  	232
+			justify    	0
+			label      	"intNorm")
+		    icon       	"Interface"
+		    icon_style 	"Icon"
+		    line_color 	3342489
+		    fill_color 	13434879
+		    quidu      	"36BB45940119"
+		    width      	58
+		    height     	58
+		    autoResize 	TRUE)
+		(object RealizeView "" @49
+		    stereotype 	TRUE
+		    line_color 	3342489
+		    quidu      	"37BF0498014F"
+		    client     	@47
+		    supplier   	@48
+		    line_style 	0)
+		(object ModView "Component View::Metric::absNorm" "NotAModuleType" "NotAModulePart" @50
+		    location   	(1767, 1023)
+		    label      	(object ItemLabel
+			Parent_View 	@50
+			location   	(1732, 998)
+			fill_color 	13434879
+			anchor_loc 	3
+			nlines     	2
+			max_width  	127
+			label      	"absNorm")
+		    icon_style 	"Icon"
+		    line_color 	3342489
+		    fill_color 	13434879
+		    quidu      	"36BB459400BE"
+		    width      	228
+		    autoResize 	TRUE
+		    width      	228
+		    height     	162)
+		(object ModView "Component View::Metric::absMetric" "NotAModuleType" "NotAModulePart" @51
+		    location   	(2139, 1023)
+		    label      	(object ItemLabel
+			Parent_View 	@51
+			location   	(2104, 998)
+			fill_color 	13434879
+			anchor_loc 	3
+			nlines     	2
+			max_width  	127
+			label      	"absMetric")
+		    icon_style 	"Icon"
+		    line_color 	3342489
+		    fill_color 	13434879
+		    quidu      	"36BB4594001E"
+		    width      	228
+		    autoResize 	TRUE
+		    width      	228
+		    height     	162)))))

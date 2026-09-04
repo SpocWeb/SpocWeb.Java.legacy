@@ -1,0 +1,726 @@
+
+(object Petal
+    version    	42
+    _written   	"Rose 4.5.8054.1"
+    charSet    	0)
+
+(object Class_Category "intTest"
+    is_unit    	TRUE
+    is_loaded  	TRUE
+    quid       	"36BC688202C7"
+    documentation 	"Defines Interfaces and (abstract) Classes for Order Relation, Counting Measure Operators and Testers. "
+    exportControl 	"Public"
+    logical_models 	(list unit_reference_list
+	(object Class "testAble"
+	    attributes 	(list Attribute_Set
+		(object Attribute
+		    tool       	"Java"
+		    name       	"GenerateFinalizer"
+		    value      	FALSE)
+		(object Attribute
+		    tool       	"Java"
+		    name       	"GenerateStaticInitializer"
+		    value      	FALSE)
+		(object Attribute
+		    tool       	"Java"
+		    name       	"GenerateInstanceInitializer"
+		    value      	FALSE)
+		(object Attribute
+		    tool       	"Java"
+		    name       	"GenerateDefaultConstructor"
+		    value      	FALSE))
+	    quid       	"36BC688202D1"
+	    documentation 	
+|Example Interface for a unary Test Function with 'this' as the only argument.
+| * This interface is quite unusable, because the Operation Name
+| * carries no Semantics so it is hard to read.
+| * Rather use specific Operations and define a new Interface for them,
+| * modeled after this one.
+| * 
+| * Design Decisions:
+| * The Parameters for 'Test' are left out, to keep the Interface clean.
+| * They have to be set globally with the concrete Class.
+| 
+	    
+	    stereotype 	"Interface"
+	    operations 	(list Operations
+		(object Operation "Test"
+		    attributes 	(list Attribute_Set
+			(object Attribute
+			    tool       	"Java"
+			    name       	"Abstract"
+			    value      	TRUE))
+		    quid       	"37BD38310327"
+		    documentation 	
+|This is the Template for a Test working on an Object.
+|	 * The Class brings along the Meaning for this Operation.
+|	 
+		    
+		    result     	"boolean"
+		    concurrency 	"Sequential"
+		    opExportControl 	"Public"
+		    uid        	0))
+	    module     	"Component View::intTest::testAble"
+	    quidu      	"36BC688202C8"
+	    language   	"Java")
+	(object Class "intTester"
+	    attributes 	(list Attribute_Set
+		(object Attribute
+		    tool       	"Java"
+		    name       	"GenerateFinalizer"
+		    value      	FALSE)
+		(object Attribute
+		    tool       	"Java"
+		    name       	"GenerateStaticInitializer"
+		    value      	FALSE)
+		(object Attribute
+		    tool       	"Java"
+		    name       	"GenerateInstanceInitializer"
+		    value      	FALSE)
+		(object Attribute
+		    tool       	"Java"
+		    name       	"GenerateDefaultConstructor"
+		    value      	FALSE))
+	    quid       	"36BC68820335"
+	    documentation 	
+|Interface for an unary Test Function (without Arguments) working on arg.
+| * 
+| * Used e.g. in Loops through a Container
+| * 
+| * Design Decisions:
+| * The Parameters for 'Test' are left out, to keep the Interface clean.
+| * They have to be set globally with the concrete Class.
+| 
+	    
+	    stereotype 	"Interface"
+	    operations 	(list Operations
+		(object Operation "Test"
+		    attributes 	(list Attribute_Set
+			(object Attribute
+			    tool       	"Java"
+			    name       	"Abstract"
+			    value      	TRUE))
+		    quid       	"37BD383002E0"
+		    documentation 	
+|This is the Test working on 'arg' defined by the implementing Class.
+|	 * The Class implementing this Method is the means of exchanging this Operation.
+|	 
+		    
+		    parameters 	(list Parameters
+			(object Parameter "arg"
+			    type       	"Object"))
+		    result     	"boolean"
+		    concurrency 	"Sequential"
+		    opExportControl 	"Public"
+		    uid        	0))
+	    module     	"Component View::intTest::intTester"
+	    quidu      	"36BC6882032B"
+	    language   	"Java")
+	(object Class "operable"
+	    attributes 	(list Attribute_Set
+		(object Attribute
+		    tool       	"Java"
+		    name       	"GenerateFinalizer"
+		    value      	FALSE)
+		(object Attribute
+		    tool       	"Java"
+		    name       	"GenerateStaticInitializer"
+		    value      	FALSE)
+		(object Attribute
+		    tool       	"Java"
+		    name       	"GenerateInstanceInitializer"
+		    value      	FALSE)
+		(object Attribute
+		    tool       	"Java"
+		    name       	"GenerateDefaultConstructor"
+		    value      	FALSE))
+	    quid       	"36BC68820372"
+	    documentation 	
+|Example Interface for an unary operation with 'this' as the only Argument.
+| * This interface is not very usable, because the Operation Name 'Operation' 
+| * carries no Semantics so it is hard to read and understand.
+| * Rather use specific Operations, give them an understandable Name 
+| * and define a new Interface for them, modeled after this one. 
+| * 
+| * Design Decisions:
+| 
+	    
+	    stereotype 	"Interface"
+	    operations 	(list Operations
+		(object Operation "Operation"
+		    attributes 	(list Attribute_Set
+			(object Attribute
+			    tool       	"Java"
+			    name       	"Abstract"
+			    value      	TRUE))
+		    quid       	"37BD38310101"
+		    documentation 	
+|This is the Template for a reserved Operation working on an Object.
+|	 * The Class brings along the Meaning for this Operation.
+|	 
+		    
+		    result     	"void"
+		    concurrency 	"Sequential"
+		    opExportControl 	"Public"
+		    uid        	0))
+	    module     	"Component View::intTest::operable"
+	    quidu      	"36BC68820371"
+	    language   	"Java")
+	(object Class "intOperator"
+	    attributes 	(list Attribute_Set
+		(object Attribute
+		    tool       	"Java"
+		    name       	"GenerateFinalizer"
+		    value      	FALSE)
+		(object Attribute
+		    tool       	"Java"
+		    name       	"GenerateStaticInitializer"
+		    value      	FALSE)
+		(object Attribute
+		    tool       	"Java"
+		    name       	"GenerateInstanceInitializer"
+		    value      	FALSE)
+		(object Attribute
+		    tool       	"Java"
+		    name       	"GenerateDefaultConstructor"
+		    value      	FALSE))
+	    quid       	"36BC688203B7"
+	    documentation 	
+|Interface for an unary operation (without Arguments) working on arg.
+| * 
+| * Design Decisions:
+| * The Parameters for 'Operation' are left out, to keep the Interface clean.
+| * They have to be set globally with the concrete Class.
+| 
+	    
+	    stereotype 	"Interface"
+	    operations 	(list Operations
+		(object Operation "Operation"
+		    attributes 	(list Attribute_Set
+			(object Attribute
+			    tool       	"Java"
+			    name       	"Abstract"
+			    value      	TRUE))
+		    quid       	"37BD383000A5"
+		    documentation 	
+|This is the Operation working on 'arg' defined by the implementing Class.
+|	 * The Class implementing this Method is the means of exchanging this Operation.
+|	 
+		    
+		    parameters 	(list Parameters
+			(object Parameter "arg"
+			    type       	"Object"))
+		    result     	"void"
+		    concurrency 	"Sequential"
+		    opExportControl 	"Public"
+		    uid        	0))
+	    module     	"Component View::intTest::intOperator"
+	    quidu      	"36BC688203AD"
+	    language   	"Java")
+	(object Class "TestConst"
+	    attributes 	(list Attribute_Set
+		(object Attribute
+		    tool       	"Java"
+		    name       	"GenerateFinalizer"
+		    value      	FALSE)
+		(object Attribute
+		    tool       	"Java"
+		    name       	"GenerateStaticInitializer"
+		    value      	FALSE)
+		(object Attribute
+		    tool       	"Java"
+		    name       	"GenerateInstanceInitializer"
+		    value      	FALSE)
+		(object Attribute
+		    tool       	"Java"
+		    name       	"GenerateDefaultConstructor"
+		    value      	FALSE))
+	    quid       	"36BC68830015"
+	    documentation 	
+|This is a Helper intTester Class that always returns the same Result, 
+| * given in the Constructor
+| * It is used e.g. in Container	
+	    
+	    realized_interfaces 	(list realize_rel_list
+		(object Realize_Relationship
+		    attributes 	(list Attribute_Set)
+		    quid       	"37BD38320347"
+		    supplier   	"Logical View::intTest::intTester"
+		    quidu      	"36BC68820335"))
+	    operations 	(list Operations
+		(object Operation "TestConst"
+		    attributes 	(list Attribute_Set)
+		    quid       	"37BD38320348"
+		    documentation 	
+|Constructor, takes the Item that will be searched for.	 
+		    
+		    parameters 	(list Parameters
+			(object Parameter "Result"
+			    type       	"boolean"))
+		    concurrency 	"Sequential"
+		    opExportControl 	"Public"
+		    uid        	0)
+		(object Operation "Test"
+		    attributes 	(list Attribute_Set)
+		    quid       	"37BD38320352"
+		    documentation 	
+|Test Method to determine, whether the item is found	 
+		    
+		    parameters 	(list Parameters
+			(object Parameter "arg"
+			    type       	"Object"))
+		    result     	"boolean"
+		    concurrency 	"Sequential"
+		    opExportControl 	"Public"
+		    uid        	0))
+	    class_attributes 	(list class_attribute_list
+		(object ClassAttribute "Result_"
+		    attributes 	(list Attribute_Set)
+		    quid       	"36BC68E002EA"
+		    documentation 	
+|Local Copy of the Result.	 
+		    
+		    type       	"boolean"))
+	    module     	"Component View::intTest::TestConst"
+	    quidu      	"36BC6883000B"
+	    language   	"Java")
+	(object Class "TestObject"
+	    attributes 	(list Attribute_Set
+		(object Attribute
+		    tool       	"Java"
+		    name       	"GenerateFinalizer"
+		    value      	FALSE)
+		(object Attribute
+		    tool       	"Java"
+		    name       	"GenerateStaticInitializer"
+		    value      	FALSE)
+		(object Attribute
+		    tool       	"Java"
+		    name       	"GenerateInstanceInitializer"
+		    value      	FALSE)
+		(object Attribute
+		    tool       	"Java"
+		    name       	"GenerateDefaultConstructor"
+		    value      	FALSE)
+		(object Attribute
+		    tool       	"Java"
+		    name       	"Final"
+		    value      	TRUE))
+	    quid       	"36BC68830070"
+	    documentation 	
+|This is a Helper intTester Class to find an Object that equals a given one. 
+| * Later also order Relations will be used.
+| * It is used e.g. in Container	
+	    
+	    realized_interfaces 	(list realize_rel_list
+		(object Realize_Relationship
+		    attributes 	(list Attribute_Set)
+		    quid       	"37BD38340390"
+		    supplier   	"Logical View::intTest::intTester"
+		    quidu      	"36BC68820335"))
+	    operations 	(list Operations
+		(object Operation "TestObject"
+		    attributes 	(list Attribute_Set)
+		    quid       	"37BD3835019D"
+		    documentation 	
+|Constructor, takes the Item that will be searched for.	 
+		    
+		    parameters 	(list Parameters
+			(object Parameter "ItemToFind"
+			    type       	"java.lang.Object"))
+		    concurrency 	"Sequential"
+		    opExportControl 	"Public"
+		    uid        	0)
+		(object Operation "Test"
+		    attributes 	(list Attribute_Set)
+		    quid       	"37BD383501A7"
+		    documentation 	
+|Test Method to determine, whether the item is found	 
+		    
+		    parameters 	(list Parameters
+			(object Parameter "arg"
+			    type       	"java.lang.Object"))
+		    result     	"boolean"
+		    concurrency 	"Sequential"
+		    opExportControl 	"Public"
+		    uid        	0))
+	    module     	"Component View::intTest::TestObject"
+	    quidu      	"36BC6883006F"
+	    language   	"Java")
+	(object Class "TestNumber"
+	    attributes 	(list Attribute_Set
+		(object Attribute
+		    tool       	"Java"
+		    name       	"GenerateFinalizer"
+		    value      	FALSE)
+		(object Attribute
+		    tool       	"Java"
+		    name       	"GenerateStaticInitializer"
+		    value      	FALSE)
+		(object Attribute
+		    tool       	"Java"
+		    name       	"GenerateInstanceInitializer"
+		    value      	FALSE)
+		(object Attribute
+		    tool       	"Java"
+		    name       	"GenerateDefaultConstructor"
+		    value      	FALSE)
+		(object Attribute
+		    tool       	"Java"
+		    name       	"Final"
+		    value      	TRUE))
+	    quid       	"36BC688300B6"
+	    documentation 	
+|This is a Helper intTester Class to find an Object at a given Position, starting at 0.
+| * It returns true #Position times, as determined in the Constructor.
+| * It is used e.g. in Container	
+	    
+	    realized_interfaces 	(list realize_rel_list
+		(object Realize_Relationship
+		    attributes 	(list Attribute_Set)
+		    quid       	"37BD3833037A"
+		    supplier   	"Logical View::intTest::intTester"
+		    quidu      	"36BC68820335"))
+	    operations 	(list Operations
+		(object Operation "TestNumber"
+		    attributes 	(list Attribute_Set)
+		    quid       	"37BD38330384"
+		    documentation 	
+|Constructor, takes the Item that will be searched for.	 
+		    
+		    parameters 	(list Parameters
+			(object Parameter "Position"
+			    type       	"int"))
+		    concurrency 	"Sequential"
+		    opExportControl 	"Public"
+		    uid        	0)
+		(object Operation "Test"
+		    attributes 	(list Attribute_Set)
+		    quid       	"37BD3833038E"
+		    documentation 	
+|Test Method to determine, whether the item is found	 
+		    
+		    parameters 	(list Parameters
+			(object Parameter "arg"
+			    type       	"Object"))
+		    result     	"boolean"
+		    concurrency 	"Sequential"
+		    opExportControl 	"Public"
+		    uid        	0))
+	    class_attributes 	(list class_attribute_list
+		(object ClassAttribute "Position_"
+		    attributes 	(list Attribute_Set)
+		    quid       	"36BC68E00363"
+		    documentation 	
+|Local Copy of Item to find.	 
+		    
+		    type       	"int"))
+	    module     	"Component View::intTest::TestNumber"
+	    quidu      	"36BC688300B5"
+	    language   	"Java")
+	(object Association "$UNNAMED$0"
+	    attributes 	(list Attribute_Set)
+	    quid       	"36BC68E00326"
+	    roles      	(list role_list
+		(object Role "$UNNAMED$1"
+		    quid       	"36BC68E00327"
+		    supplier   	"Logical View::intTest::TestObject"
+		    quidu      	"36BC68830070")
+		(object Role "SearchItem"
+		    attributes 	(list Attribute_Set
+			(object Attribute
+			    tool       	"Java"
+			    name       	"InitialValue"
+			    value      	""))
+		    quid       	"36BC68E00328"
+		    documentation 	
+|Local Copy of Item to find.	 
+		    
+		    label      	"SearchItem"
+		    supplier   	"Logical View::java::lang::Object"
+		    quidu      	"34B0F6CF01C6"
+		    exportControl 	"Private"
+		    is_navigable 	TRUE))))
+    logical_presentations 	(list unit_reference_list
+	(object ClassDiagram "intTest"
+	    quid       	"36BC69150051"
+	    title      	"intTest"
+	    zoom       	100
+	    max_height 	28350
+	    max_width  	21600
+	    origin_x   	0
+	    origin_y   	0
+	    items      	(list diagram_item_list
+		(object ClassView "Class" "Logical View::intTest::testAble" @1
+		    ShowCompartmentStereotypes 	TRUE
+		    IncludeAttribute 	TRUE
+		    IncludeOperation 	TRUE
+		    location   	(1643, 155)
+		    label      	(object ItemLabel
+			Parent_View 	@1
+			location   	(1505, 125)
+			fill_color 	13434879
+			nlines     	1
+			max_width  	276
+			justify    	0
+			label      	"testAble")
+		    stereotype 	(object ItemLabel
+			Parent_View 	@1
+			location   	(1505, 75)
+			fill_color 	13434879
+			anchor     	10
+			nlines     	1
+			max_width  	276
+			justify    	0
+			label      	"<<Interface>>")
+		    icon       	"Interface"
+		    icon_style 	"Label"
+		    line_color 	3342489
+		    fill_color 	13434879
+		    quidu      	"36BC688202D1"
+		    width      	294
+		    height     	184
+		    annotation 	8
+		    autoResize 	TRUE)
+		(object ClassView "Class" "Logical View::intTest::intTester" @2
+		    ShowCompartmentStereotypes 	TRUE
+		    IncludeAttribute 	TRUE
+		    IncludeOperation 	TRUE
+		    location   	(1302, 155)
+		    label      	(object ItemLabel
+			Parent_View 	@2
+			location   	(1164, 125)
+			fill_color 	13434879
+			nlines     	1
+			max_width  	276
+			justify    	0
+			label      	"intTester")
+		    stereotype 	(object ItemLabel
+			Parent_View 	@2
+			location   	(1164, 75)
+			fill_color 	13434879
+			anchor     	10
+			nlines     	1
+			max_width  	276
+			justify    	0
+			label      	"<<Interface>>")
+		    icon       	"Interface"
+		    icon_style 	"Label"
+		    line_color 	3342489
+		    fill_color 	13434879
+		    quidu      	"36BC68820335"
+		    width      	294
+		    height     	184
+		    annotation 	8
+		    autoResize 	TRUE)
+		(object ClassView "Class" "Logical View::intTest::operable" @3
+		    ShowCompartmentStereotypes 	TRUE
+		    IncludeAttribute 	TRUE
+		    IncludeOperation 	TRUE
+		    location   	(465, 155)
+		    label      	(object ItemLabel
+			Parent_View 	@3
+			location   	(327, 125)
+			fill_color 	13434879
+			nlines     	1
+			max_width  	276
+			justify    	0
+			label      	"operable")
+		    stereotype 	(object ItemLabel
+			Parent_View 	@3
+			location   	(327, 75)
+			fill_color 	13434879
+			anchor     	10
+			nlines     	1
+			max_width  	276
+			justify    	0
+			label      	"<<Interface>>")
+		    icon       	"Interface"
+		    icon_style 	"Label"
+		    line_color 	3342489
+		    fill_color 	13434879
+		    quidu      	"36BC68820372"
+		    width      	294
+		    height     	184
+		    annotation 	8
+		    autoResize 	TRUE)
+		(object ClassView "Class" "Logical View::intTest::intOperator" @4
+		    ShowCompartmentStereotypes 	TRUE
+		    IncludeAttribute 	TRUE
+		    IncludeOperation 	TRUE
+		    location   	(930, 155)
+		    label      	(object ItemLabel
+			Parent_View 	@4
+			location   	(792, 125)
+			fill_color 	13434879
+			nlines     	1
+			max_width  	276
+			justify    	0
+			label      	"intOperator")
+		    stereotype 	(object ItemLabel
+			Parent_View 	@4
+			location   	(792, 75)
+			fill_color 	13434879
+			anchor     	10
+			nlines     	1
+			max_width  	276
+			justify    	0
+			label      	"<<Interface>>")
+		    icon       	"Interface"
+		    icon_style 	"Label"
+		    line_color 	3342489
+		    fill_color 	13434879
+		    quidu      	"36BC688203B7"
+		    width      	294
+		    height     	184
+		    annotation 	8
+		    autoResize 	TRUE)
+		(object ClassView "Class" "Logical View::java::lang::Object" @5
+		    ShowCompartmentStereotypes 	TRUE
+		    IncludeAttribute 	TRUE
+		    location   	(1302, 744)
+		    label      	(object ItemLabel
+			Parent_View 	@5
+			location   	(1221, 669)
+			fill_color 	13434879
+			nlines     	1
+			max_width  	162
+			justify    	0
+			label      	"Object")
+		    icon_style 	"Icon"
+		    line_color 	3342489
+		    fill_color 	13434879
+		    quidu      	"34B0F6CF01C6"
+		    height     	174
+		    annotation 	8
+		    autoResize 	TRUE)
+		(object ClassView "Class" "Logical View::intTest::TestObject" @6
+		    ShowCompartmentStereotypes 	TRUE
+		    IncludeAttribute 	TRUE
+		    location   	(1302, 465)
+		    label      	(object ItemLabel
+			Parent_View 	@6
+			location   	(1187, 414)
+			fill_color 	13434879
+			nlines     	1
+			max_width  	230
+			justify    	0
+			label      	"TestObject")
+		    icon_style 	"Icon"
+		    line_color 	3342489
+		    fill_color 	13434879
+		    quidu      	"36BC68830070"
+		    width      	248
+		    height     	126
+		    annotation 	8
+		    autoResize 	TRUE)
+		(object AssociationViewNew "$UNNAMED$0" @7
+		    location   	(1302, 592)
+		    stereotype 	TRUE
+		    line_color 	3342489
+		    quidu      	"36BC68E00326"
+		    roleview_list 	(list RoleViews
+			(object RoleView "SearchItem" @8
+			    Parent_View 	@7
+			    location   	(31, 127)
+			    label      	(object SegLabel @9
+				Parent_View 	@8
+				location   	(1448, 612)
+				anchor     	1
+				anchor_loc 	1
+				nlines     	1
+				max_width  	216
+				justify    	0
+				label      	"-SearchItem"
+				pctDist    	0.312500
+				height     	146
+				orientation 	0)
+			    stereotype 	TRUE
+			    line_color 	3342489
+			    quidu      	"36BC68E00328"
+			    client     	@7
+			    supplier   	@5
+			    line_style 	0)
+			(object RoleView "$UNNAMED$1" @10
+			    Parent_View 	@7
+			    location   	(31, 127)
+			    label      	(object SegLabel @11
+				Parent_View 	@10
+				location   	(1261, 541)
+				hidden     	TRUE
+				anchor     	1
+				anchor_loc 	1
+				nlines     	1
+				max_width  	450
+				justify    	0
+				label      	""
+				pctDist    	0.800000
+				height     	42
+				orientation 	0)
+			    stereotype 	TRUE
+			    line_color 	3342489
+			    quidu      	"36BC68E00327"
+			    client     	@7
+			    supplier   	@6
+			    line_style 	0)))
+		(object RealizeView "" @12
+		    stereotype 	TRUE
+		    line_color 	3342489
+		    quidu      	"37BD38340390"
+		    client     	@6
+		    supplier   	@2
+		    line_style 	0)
+		(object ClassView "Class" "Logical View::intTest::TestConst" @13
+		    ShowCompartmentStereotypes 	TRUE
+		    IncludeAttribute 	TRUE
+		    location   	(930, 465)
+		    label      	(object ItemLabel
+			Parent_View 	@13
+			location   	(746, 384)
+			fill_color 	13434879
+			nlines     	1
+			max_width  	368
+			justify    	0
+			label      	"TestConst")
+		    icon_style 	"Icon"
+		    line_color 	3342489
+		    fill_color 	13434879
+		    quidu      	"36BC68830015"
+		    width      	386
+		    height     	186
+		    annotation 	8
+		    autoResize 	TRUE)
+		(object RealizeView "" @14
+		    stereotype 	TRUE
+		    line_color 	3342489
+		    quidu      	"37BD38320347"
+		    client     	@13
+		    supplier   	@2
+		    line_style 	0)
+		(object ClassView "Class" "Logical View::intTest::TestNumber" @15
+		    ShowCompartmentStereotypes 	TRUE
+		    IncludeAttribute 	TRUE
+		    location   	(1643, 465)
+		    label      	(object ItemLabel
+			Parent_View 	@15
+			location   	(1492, 384)
+			fill_color 	13434879
+			nlines     	1
+			max_width  	302
+			justify    	0
+			label      	"TestNumber")
+		    icon_style 	"Icon"
+		    line_color 	3342489
+		    fill_color 	13434879
+		    quidu      	"36BC688300B6"
+		    width      	320
+		    height     	186
+		    annotation 	8
+		    autoResize 	TRUE)
+		(object RealizeView "" @16
+		    stereotype 	TRUE
+		    line_color 	3342489
+		    quidu      	"37BD3833037A"
+		    client     	@15
+		    supplier   	@2
+		    line_style 	0)))))

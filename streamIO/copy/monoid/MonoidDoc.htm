@@ -1,0 +1,1040 @@
+<html xmlns:o="urn:schemas-microsoft-com:office:office"
+xmlns:w="urn:schemas-microsoft-com:office:word"
+xmlns="http://www.w3.org/TR/REC-html40">
+
+<head>
+<meta http-equiv=Content-Type content="text/html; charset=windows-1252">
+<meta name=ProgId content=Word.Document>
+<meta name=Generator content="Microsoft Word 9">
+<meta name=Originator content="Microsoft Word 9">
+<link rel=File-List href="./MonoidDoc_files/filelist.xml">
+<title>Definition</title>
+<!--[if gte mso 9]><xml>
+ <o:DocumentProperties>
+  <o:Author>Matthias Heuer</o:Author>
+  <o:LastAuthor>Matthias Heuer</o:LastAuthor>
+  <o:Revision>67</o:Revision>
+  <o:TotalTime>526343</o:TotalTime>
+  <o:Created>2000-09-17T16:18:00Z</o:Created>
+  <o:LastSaved>2000-09-20T22:45:00Z</o:LastSaved>
+  <o:Pages>1</o:Pages>
+  <o:Words>961</o:Words>
+  <o:Characters>5480</o:Characters>
+  <o:Company>Cambridge Technology Partners</o:Company>
+  <o:Lines>45</o:Lines>
+  <o:Paragraphs>10</o:Paragraphs>
+  <o:CharactersWithSpaces>6729</o:CharactersWithSpaces>
+  <o:Version>9.3821</o:Version>
+ </o:DocumentProperties>
+</xml><![endif]--><!--[if gte mso 9]><xml>
+ <w:WordDocument>
+  <w:View>Normal</w:View>
+ </w:WordDocument>
+</xml><![endif]-->
+<style>
+<!--
+ /* Font Definitions */
+@font-face
+	{font-family:Wingdings;
+	panose-1:5 0 0 0 0 0 0 0 0 0;
+	mso-font-charset:2;
+	mso-generic-font-family:auto;
+	mso-font-pitch:variable;
+	mso-font-signature:0 268435456 0 0 -2147483648 0;}
+ /* Style Definitions */
+p.MsoNormal, li.MsoNormal, div.MsoNormal
+	{mso-style-parent:"";
+	margin:0cm;
+	margin-bottom:.0001pt;
+	mso-pagination:widow-orphan;
+	font-size:12.0pt;
+	font-family:"Times New Roman";
+	mso-fareast-font-family:"Times New Roman";}
+@page Section1
+	{size:841.9pt 595.3pt;
+	mso-page-orientation:landscape;
+	margin:70.9pt 70.9pt 70.9pt 2.0cm;
+	mso-header-margin:35.45pt;
+	mso-footer-margin:35.45pt;
+	mso-paper-source:0;}
+div.Section1
+	{page:Section1;}
+ /* List Definitions */
+@list l0
+	{mso-list-id:1344934929;
+	mso-list-type:hybrid;
+	mso-list-template-ids:-113891262 67698689 67698691 67698693 67698689 67698691 67698693 67698689 67698691 67698693;}
+@list l0:level1
+	{mso-level-number-format:bullet;
+	mso-level-text:\F0B7;
+	mso-level-tab-stop:36.0pt;
+	mso-level-number-position:left;
+	text-indent:-18.0pt;
+	font-family:Symbol;}
+ol
+	{margin-bottom:0cm;}
+ul
+	{margin-bottom:0cm;}
+-->
+</style>
+</head>
+
+<body lang=EN-GB style='tab-interval:36.0pt'>
+
+<div class=Section1>
+
+<table border=1 cellspacing=0 cellpadding=0 style='border-collapse:collapse;
+ mso-table-layout-alt:fixed;border:none;mso-border-alt:solid windowtext .5pt;
+ mso-padding-alt:0cm 5.4pt 0cm 5.4pt'>
+ <thead>
+  <tr>
+   <td width=199 valign=top style='width:149.4pt;border:solid windowtext .5pt;
+   padding:0cm 5.4pt 0cm 5.4pt'>
+   <p class=MsoNormal><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+   </td>
+   <td width=158 valign=top style='width:118.65pt;border:solid windowtext .5pt;
+   border-left:none;mso-border-left-alt:solid windowtext .5pt;padding:0cm 5.4pt 0cm 5.4pt'>
+   <p class=MsoNormal>Definition</p>
+   </td>
+   <td width=72 valign=top style='width:54.0pt;border:solid windowtext .5pt;
+   border-left:none;mso-border-left-alt:solid windowtext .5pt;padding:0cm 5.4pt 0cm 5.4pt'>
+   <p class=MsoNormal>Notation</p>
+   </td>
+   <td width=132 valign=top style='width:99.0pt;border:solid windowtext .5pt;
+   border-left:none;mso-border-left-alt:solid windowtext .5pt;padding:0cm 5.4pt 0cm 5.4pt'>
+   <p class=MsoNormal>Permutation</p>
+   </td>
+   <td width=204 valign=top style='width:153.0pt;border:solid windowtext .5pt;
+   border-left:none;mso-border-left-alt:solid windowtext .5pt;padding:0cm 5.4pt 0cm 5.4pt'>
+   <p class=MsoNormal>Function</p>
+   </td>
+   <td width=180 valign=top style='width:135.0pt;border:solid windowtext .5pt;
+   border-left:none;mso-border-left-alt:solid windowtext .5pt;padding:0cm 5.4pt 0cm 5.4pt'>
+   <p class=MsoNormal>Matrix</p>
+   </td>
+  </tr>
+ </thead>
+ <tr>
+  <td width=199 valign=top style='width:149.4pt;border:solid windowtext .5pt;
+  border-top:none;mso-border-top-alt:solid windowtext .5pt;padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal>HMonoid mapAt(HMonoid)</p>
+  </td>
+  <td width=158 valign=top style='width:118.65pt;border-top:none;border-left:
+  none;border-bottom:solid windowtext .5pt;border-right:solid windowtext .5pt;
+  mso-border-top-alt:solid windowtext .5pt;mso-border-left-alt:solid windowtext .5pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal>possible in Place!!!</p>
+  </td>
+  <td width=72 valign=top style='width:54.0pt;border-top:none;border-left:none;
+  border-bottom:solid windowtext .5pt;border-right:solid windowtext .5pt;
+  mso-border-top-alt:solid windowtext .5pt;mso-border-left-alt:solid windowtext .5pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal>A =° B </p>
+  </td>
+  <td width=132 valign=top style='width:99.0pt;border-top:none;border-left:
+  none;border-bottom:solid windowtext .5pt;border-right:solid windowtext .5pt;
+  mso-border-top-alt:solid windowtext .5pt;mso-border-left-alt:solid windowtext .5pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal>arg[i]:=this[arg[i]]</p>
+  </td>
+  <td width=204 valign=top style='width:153.0pt;border-top:none;border-left:
+  none;border-bottom:solid windowtext .5pt;border-right:solid windowtext .5pt;
+  mso-border-top-alt:solid windowtext .5pt;mso-border-left-alt:solid windowtext .5pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal>(arg.Key, MapAt(arg.Value))</p>
+  </td>
+  <td width=180 valign=top style='width:135.0pt;border-top:none;border-left:
+  none;border-bottom:solid windowtext .5pt;border-right:solid windowtext .5pt;
+  mso-border-top-alt:solid windowtext .5pt;mso-border-left-alt:solid windowtext .5pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+  </td>
+ </tr>
+ <tr>
+  <td width=199 valign=top style='width:149.4pt;border:solid windowtext .5pt;
+  border-top:none;mso-border-top-alt:solid windowtext .5pt;padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal>HMonoid map<span style="mso-spacerun: yes">   
+  </span>(HMonoid)</p>
+  </td>
+  <td width=158 valign=top style='width:118.65pt;border-top:none;border-left:
+  none;border-bottom:solid windowtext .5pt;border-right:solid windowtext .5pt;
+  mso-border-top-alt:solid windowtext .5pt;mso-border-left-alt:solid windowtext .5pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+  </td>
+  <td width=72 valign=top style='width:54.0pt;border-top:none;border-left:none;
+  border-bottom:solid windowtext .5pt;border-right:solid windowtext .5pt;
+  mso-border-top-alt:solid windowtext .5pt;mso-border-left-alt:solid windowtext .5pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal>A ° B </p>
+  </td>
+  <td width=132 valign=top style='width:99.0pt;border-top:none;border-left:
+  none;border-bottom:solid windowtext .5pt;border-right:solid windowtext .5pt;
+  mso-border-top-alt:solid windowtext .5pt;mso-border-left-alt:solid windowtext .5pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+  </td>
+  <td width=204 valign=top style='width:153.0pt;border-top:none;border-left:
+  none;border-bottom:solid windowtext .5pt;border-right:solid windowtext .5pt;
+  mso-border-top-alt:solid windowtext .5pt;mso-border-left-alt:solid windowtext .5pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+  </td>
+  <td width=180 valign=top style='width:135.0pt;border-top:none;border-left:
+  none;border-bottom:solid windowtext .5pt;border-right:solid windowtext .5pt;
+  mso-border-top-alt:solid windowtext .5pt;mso-border-left-alt:solid windowtext .5pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+  </td>
+ </tr>
+ <tr>
+  <td width=199 valign=top style='width:149.4pt;border:solid windowtext .5pt;
+  border-top:none;mso-border-top-alt:solid windowtext .5pt;padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal>HMonoid catAt<span style="mso-spacerun: yes">  </span>(HMonoid)</p>
+  </td>
+  <td width=158 valign=top style='width:118.65pt;border-top:none;border-left:
+  none;border-bottom:solid windowtext .5pt;border-right:solid windowtext .5pt;
+  mso-border-top-alt:solid windowtext .5pt;mso-border-left-alt:solid windowtext .5pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal>A.mapAt(B) == B.catAt(A) returns B</p>
+  </td>
+  <td width=72 valign=top style='width:54.0pt;border-top:none;border-left:none;
+  border-bottom:solid windowtext .5pt;border-right:solid windowtext .5pt;
+  mso-border-top-alt:solid windowtext .5pt;mso-border-left-alt:solid windowtext .5pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal>B °= A</p>
+  </td>
+  <td width=132 valign=top style='width:99.0pt;border-top:none;border-left:
+  none;border-bottom:solid windowtext .5pt;border-right:solid windowtext .5pt;
+  mso-border-top-alt:solid windowtext .5pt;mso-border-left-alt:solid windowtext .5pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal>this[i]:=arg[this[i]] not in Place!</p>
+  </td>
+  <td width=204 valign=top style='width:153.0pt;border-top:none;border-left:
+  none;border-bottom:solid windowtext .5pt;border-right:solid windowtext .5pt;
+  mso-border-top-alt:solid windowtext .5pt;mso-border-left-alt:solid windowtext .5pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+  </td>
+  <td width=180 valign=top style='width:135.0pt;border-top:none;border-left:
+  none;border-bottom:solid windowtext .5pt;border-right:solid windowtext .5pt;
+  mso-border-top-alt:solid windowtext .5pt;mso-border-left-alt:solid windowtext .5pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal>a[i,j,l,m] := Sum(k, a[i,j,k]*b[k,l,m] ) in Place</p>
+  </td>
+ </tr>
+ <tr>
+  <td width=199 valign=top style='width:149.4pt;border:solid windowtext .5pt;
+  border-top:none;mso-border-top-alt:solid windowtext .5pt;padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal>HMonoid cat<span style="mso-spacerun: yes">     
+  </span>(HMonoid)</p>
+  </td>
+  <td width=158 valign=top style='width:118.65pt;border-top:none;border-left:
+  none;border-bottom:solid windowtext .5pt;border-right:solid windowtext .5pt;
+  mso-border-top-alt:solid windowtext .5pt;mso-border-left-alt:solid windowtext .5pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+  </td>
+  <td width=72 valign=top style='width:54.0pt;border-top:none;border-left:none;
+  border-bottom:solid windowtext .5pt;border-right:solid windowtext .5pt;
+  mso-border-top-alt:solid windowtext .5pt;mso-border-left-alt:solid windowtext .5pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal>A ° B</p>
+  </td>
+  <td width=132 valign=top style='width:99.0pt;border-top:none;border-left:
+  none;border-bottom:solid windowtext .5pt;border-right:solid windowtext .5pt;
+  mso-border-top-alt:solid windowtext .5pt;mso-border-left-alt:solid windowtext .5pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+  </td>
+  <td width=204 valign=top style='width:153.0pt;border-top:none;border-left:
+  none;border-bottom:solid windowtext .5pt;border-right:solid windowtext .5pt;
+  mso-border-top-alt:solid windowtext .5pt;mso-border-left-alt:solid windowtext .5pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+  </td>
+  <td width=180 valign=top style='width:135.0pt;border-top:none;border-left:
+  none;border-bottom:solid windowtext .5pt;border-right:solid windowtext .5pt;
+  mso-border-top-alt:solid windowtext .5pt;mso-border-left-alt:solid windowtext .5pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+  </td>
+ </tr>
+ <tr>
+  <td width=199 valign=top style='width:149.4pt;border:solid windowtext .5pt;
+  border-top:none;mso-border-top-alt:solid windowtext .5pt;padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal>Object MapAt(Object)</p>
+  </td>
+  <td width=158 valign=top style='width:118.65pt;border-top:none;border-left:
+  none;border-bottom:solid windowtext .5pt;border-right:solid windowtext .5pt;
+  mso-border-top-alt:solid windowtext .5pt;mso-border-left-alt:solid windowtext .5pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal>modifies and returns x</p>
+  </td>
+  <td width=72 valign=top style='width:54.0pt;border-top:none;border-left:none;
+  border-bottom:solid windowtext .5pt;border-right:solid windowtext .5pt;
+  mso-border-top-alt:solid windowtext .5pt;mso-border-left-alt:solid windowtext .5pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal>A =° x</p>
+  </td>
+  <td width=132 valign=top style='width:99.0pt;border-top:none;border-left:
+  none;border-bottom:solid windowtext .5pt;border-right:solid windowtext .5pt;
+  mso-border-top-alt:solid windowtext .5pt;mso-border-left-alt:solid windowtext .5pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal>arg = this[arg]</p>
+  </td>
+  <td width=204 valign=top style='width:153.0pt;border-top:none;border-left:
+  none;border-bottom:solid windowtext .5pt;border-right:solid windowtext .5pt;
+  mso-border-top-alt:solid windowtext .5pt;mso-border-left-alt:solid windowtext .5pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+  </td>
+  <td width=180 valign=top style='width:135.0pt;border-top:none;border-left:
+  none;border-bottom:solid windowtext .5pt;border-right:solid windowtext .5pt;
+  mso-border-top-alt:solid windowtext .5pt;mso-border-left-alt:solid windowtext .5pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+  </td>
+ </tr>
+ <tr>
+  <td width=199 valign=top style='width:149.4pt;border:solid windowtext .5pt;
+  border-top:none;mso-border-top-alt:solid windowtext .5pt;padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal>Object Map<span style="mso-spacerun: yes">   
+  </span>(Object)</p>
+  </td>
+  <td width=158 valign=top style='width:118.65pt;border-top:none;border-left:
+  none;border-bottom:solid windowtext .5pt;border-right:solid windowtext .5pt;
+  mso-border-top-alt:solid windowtext .5pt;mso-border-left-alt:solid windowtext .5pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+  </td>
+  <td width=72 valign=top style='width:54.0pt;border-top:none;border-left:none;
+  border-bottom:solid windowtext .5pt;border-right:solid windowtext .5pt;
+  mso-border-top-alt:solid windowtext .5pt;mso-border-left-alt:solid windowtext .5pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal>y = A ° x</p>
+  </td>
+  <td width=132 valign=top style='width:99.0pt;border-top:none;border-left:
+  none;border-bottom:solid windowtext .5pt;border-right:solid windowtext .5pt;
+  mso-border-top-alt:solid windowtext .5pt;mso-border-left-alt:solid windowtext .5pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal>this[arg]</p>
+  </td>
+  <td width=204 valign=top style='width:153.0pt;border-top:none;border-left:
+  none;border-bottom:solid windowtext .5pt;border-right:solid windowtext .5pt;
+  mso-border-top-alt:solid windowtext .5pt;mso-border-left-alt:solid windowtext .5pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+  </td>
+  <td width=180 valign=top style='width:135.0pt;border-top:none;border-left:
+  none;border-bottom:solid windowtext .5pt;border-right:solid windowtext .5pt;
+  mso-border-top-alt:solid windowtext .5pt;mso-border-left-alt:solid windowtext .5pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+  </td>
+ </tr>
+ <tr>
+  <td width=199 valign=top style='width:149.4pt;border:solid windowtext .5pt;
+  border-top:none;mso-border-top-alt:solid windowtext .5pt;padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal>Monoid Inverse()</p>
+  </td>
+  <td width=158 valign=top style='width:118.65pt;border-top:none;border-left:
+  none;border-bottom:solid windowtext .5pt;border-right:solid windowtext .5pt;
+  mso-border-top-alt:solid windowtext .5pt;mso-border-left-alt:solid windowtext .5pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+  </td>
+  <td width=72 valign=top style='width:54.0pt;border-top:none;border-left:none;
+  border-bottom:solid windowtext .5pt;border-right:solid windowtext .5pt;
+  mso-border-top-alt:solid windowtext .5pt;mso-border-left-alt:solid windowtext .5pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+  </td>
+  <td width=132 valign=top style='width:99.0pt;border-top:none;border-left:
+  none;border-bottom:solid windowtext .5pt;border-right:solid windowtext .5pt;
+  mso-border-top-alt:solid windowtext .5pt;mso-border-left-alt:solid windowtext .5pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal>a[a’[j]] = j</p>
+  </td>
+  <td width=204 valign=top style='width:153.0pt;border-top:none;border-left:
+  none;border-bottom:solid windowtext .5pt;border-right:solid windowtext .5pt;
+  mso-border-top-alt:solid windowtext .5pt;mso-border-left-alt:solid windowtext .5pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal>(arg.Value, arg.Key)</p>
+  </td>
+  <td width=180 valign=top style='width:135.0pt;border-top:none;border-left:
+  none;border-bottom:solid windowtext .5pt;border-right:solid windowtext .5pt;
+  mso-border-top-alt:solid windowtext .5pt;mso-border-left-alt:solid windowtext .5pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal>Complicated… </p>
+  </td>
+ </tr>
+ <tr>
+  <td width=199 valign=top style='width:149.4pt;border:solid windowtext .5pt;
+  border-top:none;mso-border-top-alt:solid windowtext .5pt;padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal>HMonoid unMap<span style="mso-spacerun: yes"> 
+  </span>(HMonoid)</p>
+  </td>
+  <td width=158 valign=top style='width:118.65pt;border-top:none;border-left:
+  none;border-bottom:solid windowtext .5pt;border-right:solid windowtext .5pt;
+  mso-border-top-alt:solid windowtext .5pt;mso-border-left-alt:solid windowtext .5pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+  </td>
+  <td width=72 valign=top style='width:54.0pt;border-top:none;border-left:none;
+  border-bottom:solid windowtext .5pt;border-right:solid windowtext .5pt;
+  mso-border-top-alt:solid windowtext .5pt;mso-border-left-alt:solid windowtext .5pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal>A ° B </p>
+  </td>
+  <td width=132 valign=top style='width:99.0pt;border-top:none;border-left:
+  none;border-bottom:solid windowtext .5pt;border-right:solid windowtext .5pt;
+  mso-border-top-alt:solid windowtext .5pt;mso-border-left-alt:solid windowtext .5pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+  </td>
+  <td width=204 valign=top style='width:153.0pt;border-top:none;border-left:
+  none;border-bottom:solid windowtext .5pt;border-right:solid windowtext .5pt;
+  mso-border-top-alt:solid windowtext .5pt;mso-border-left-alt:solid windowtext .5pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+  </td>
+  <td width=180 valign=top style='width:135.0pt;border-top:none;border-left:
+  none;border-bottom:solid windowtext .5pt;border-right:solid windowtext .5pt;
+  mso-border-top-alt:solid windowtext .5pt;mso-border-left-alt:solid windowtext .5pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+  </td>
+ </tr>
+ <tr>
+  <td width=199 valign=top style='width:149.4pt;border:solid windowtext .5pt;
+  border-top:none;mso-border-top-alt:solid windowtext .5pt;padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal>HMonoid unCatAt(HMonoid)</p>
+  </td>
+  <td width=158 valign=top style='width:118.65pt;border-top:none;border-left:
+  none;border-bottom:solid windowtext .5pt;border-right:solid windowtext .5pt;
+  mso-border-top-alt:solid windowtext .5pt;mso-border-left-alt:solid windowtext .5pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+  </td>
+  <td width=72 valign=top style='width:54.0pt;border-top:none;border-left:none;
+  border-bottom:solid windowtext .5pt;border-right:solid windowtext .5pt;
+  mso-border-top-alt:solid windowtext .5pt;mso-border-left-alt:solid windowtext .5pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+  </td>
+  <td width=132 valign=top style='width:99.0pt;border-top:none;border-left:
+  none;border-bottom:solid windowtext .5pt;border-right:solid windowtext .5pt;
+  mso-border-top-alt:solid windowtext .5pt;mso-border-left-alt:solid windowtext .5pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+  </td>
+  <td width=204 valign=top style='width:153.0pt;border-top:none;border-left:
+  none;border-bottom:solid windowtext .5pt;border-right:solid windowtext .5pt;
+  mso-border-top-alt:solid windowtext .5pt;mso-border-left-alt:solid windowtext .5pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+  </td>
+  <td width=180 valign=top style='width:135.0pt;border-top:none;border-left:
+  none;border-bottom:solid windowtext .5pt;border-right:solid windowtext .5pt;
+  mso-border-top-alt:solid windowtext .5pt;mso-border-left-alt:solid windowtext .5pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+  </td>
+ </tr>
+ <tr>
+  <td width=199 valign=top style='width:149.4pt;border:solid windowtext .5pt;
+  border-top:none;mso-border-top-alt:solid windowtext .5pt;padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal>HMonoid unCat<span style="mso-spacerun: yes">   </span>(HMonoid)</p>
+  </td>
+  <td width=158 valign=top style='width:118.65pt;border-top:none;border-left:
+  none;border-bottom:solid windowtext .5pt;border-right:solid windowtext .5pt;
+  mso-border-top-alt:solid windowtext .5pt;mso-border-left-alt:solid windowtext .5pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+  </td>
+  <td width=72 valign=top style='width:54.0pt;border-top:none;border-left:none;
+  border-bottom:solid windowtext .5pt;border-right:solid windowtext .5pt;
+  mso-border-top-alt:solid windowtext .5pt;mso-border-left-alt:solid windowtext .5pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal>A ° B</p>
+  </td>
+  <td width=132 valign=top style='width:99.0pt;border-top:none;border-left:
+  none;border-bottom:solid windowtext .5pt;border-right:solid windowtext .5pt;
+  mso-border-top-alt:solid windowtext .5pt;mso-border-left-alt:solid windowtext .5pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+  </td>
+  <td width=204 valign=top style='width:153.0pt;border-top:none;border-left:
+  none;border-bottom:solid windowtext .5pt;border-right:solid windowtext .5pt;
+  mso-border-top-alt:solid windowtext .5pt;mso-border-left-alt:solid windowtext .5pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+  </td>
+  <td width=180 valign=top style='width:135.0pt;border-top:none;border-left:
+  none;border-bottom:solid windowtext .5pt;border-right:solid windowtext .5pt;
+  mso-border-top-alt:solid windowtext .5pt;mso-border-left-alt:solid windowtext .5pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+  </td>
+ </tr>
+ <tr>
+  <td width=199 valign=top style='width:149.4pt;border:solid windowtext .5pt;
+  border-top:none;mso-border-top-alt:solid windowtext .5pt;padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal>Object UnMapAt(Object)</p>
+  </td>
+  <td width=158 valign=top style='width:118.65pt;border-top:none;border-left:
+  none;border-bottom:solid windowtext .5pt;border-right:solid windowtext .5pt;
+  mso-border-top-alt:solid windowtext .5pt;mso-border-left-alt:solid windowtext .5pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal>modifies and returns x</p>
+  </td>
+  <td width=72 valign=top style='width:54.0pt;border-top:none;border-left:none;
+  border-bottom:solid windowtext .5pt;border-right:solid windowtext .5pt;
+  mso-border-top-alt:solid windowtext .5pt;mso-border-left-alt:solid windowtext .5pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+  </td>
+  <td width=132 valign=top style='width:99.0pt;border-top:none;border-left:
+  none;border-bottom:solid windowtext .5pt;border-right:solid windowtext .5pt;
+  mso-border-top-alt:solid windowtext .5pt;mso-border-left-alt:solid windowtext .5pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+  </td>
+  <td width=204 valign=top style='width:153.0pt;border-top:none;border-left:
+  none;border-bottom:solid windowtext .5pt;border-right:solid windowtext .5pt;
+  mso-border-top-alt:solid windowtext .5pt;mso-border-left-alt:solid windowtext .5pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+  </td>
+  <td width=180 valign=top style='width:135.0pt;border-top:none;border-left:
+  none;border-bottom:solid windowtext .5pt;border-right:solid windowtext .5pt;
+  mso-border-top-alt:solid windowtext .5pt;mso-border-left-alt:solid windowtext .5pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+  </td>
+ </tr>
+ <tr>
+  <td width=199 valign=top style='width:149.4pt;border:solid windowtext .5pt;
+  border-top:none;mso-border-top-alt:solid windowtext .5pt;padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal>Object UnMap<span style="mso-spacerun: yes">   
+  </span>(Object)</p>
+  </td>
+  <td width=158 valign=top style='width:118.65pt;border-top:none;border-left:
+  none;border-bottom:solid windowtext .5pt;border-right:solid windowtext .5pt;
+  mso-border-top-alt:solid windowtext .5pt;mso-border-left-alt:solid windowtext .5pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+  </td>
+  <td width=72 valign=top style='width:54.0pt;border-top:none;border-left:none;
+  border-bottom:solid windowtext .5pt;border-right:solid windowtext .5pt;
+  mso-border-top-alt:solid windowtext .5pt;mso-border-left-alt:solid windowtext .5pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+  </td>
+  <td width=132 valign=top style='width:99.0pt;border-top:none;border-left:
+  none;border-bottom:solid windowtext .5pt;border-right:solid windowtext .5pt;
+  mso-border-top-alt:solid windowtext .5pt;mso-border-left-alt:solid windowtext .5pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+  </td>
+  <td width=204 valign=top style='width:153.0pt;border-top:none;border-left:
+  none;border-bottom:solid windowtext .5pt;border-right:solid windowtext .5pt;
+  mso-border-top-alt:solid windowtext .5pt;mso-border-left-alt:solid windowtext .5pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+  </td>
+  <td width=180 valign=top style='width:135.0pt;border-top:none;border-left:
+  none;border-bottom:solid windowtext .5pt;border-right:solid windowtext .5pt;
+  mso-border-top-alt:solid windowtext .5pt;mso-border-left-alt:solid windowtext .5pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+  </td>
+ </tr>
+ <tr>
+  <td width=199 valign=top style='width:149.4pt;border:solid windowtext .5pt;
+  border-top:none;mso-border-top-alt:solid windowtext .5pt;padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+  </td>
+  <td width=158 valign=top style='width:118.65pt;border-top:none;border-left:
+  none;border-bottom:solid windowtext .5pt;border-right:solid windowtext .5pt;
+  mso-border-top-alt:solid windowtext .5pt;mso-border-left-alt:solid windowtext .5pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+  </td>
+  <td width=72 valign=top style='width:54.0pt;border-top:none;border-left:none;
+  border-bottom:solid windowtext .5pt;border-right:solid windowtext .5pt;
+  mso-border-top-alt:solid windowtext .5pt;mso-border-left-alt:solid windowtext .5pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+  </td>
+  <td width=132 valign=top style='width:99.0pt;border-top:none;border-left:
+  none;border-bottom:solid windowtext .5pt;border-right:solid windowtext .5pt;
+  mso-border-top-alt:solid windowtext .5pt;mso-border-left-alt:solid windowtext .5pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+  </td>
+  <td width=204 valign=top style='width:153.0pt;border-top:none;border-left:
+  none;border-bottom:solid windowtext .5pt;border-right:solid windowtext .5pt;
+  mso-border-top-alt:solid windowtext .5pt;mso-border-left-alt:solid windowtext .5pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+  </td>
+  <td width=180 valign=top style='width:135.0pt;border-top:none;border-left:
+  none;border-bottom:solid windowtext .5pt;border-right:solid windowtext .5pt;
+  mso-border-top-alt:solid windowtext .5pt;mso-border-left-alt:solid windowtext .5pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+  </td>
+ </tr>
+ <tr>
+  <td width=199 valign=top style='width:149.4pt;border:solid windowtext .5pt;
+  border-top:none;mso-border-top-alt:solid windowtext .5pt;padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal>Ideas:</p>
+  </td>
+  <td width=158 valign=top style='width:118.65pt;border-top:none;border-left:
+  none;border-bottom:solid windowtext .5pt;border-right:solid windowtext .5pt;
+  mso-border-top-alt:solid windowtext .5pt;mso-border-left-alt:solid windowtext .5pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal>not possible in Place</p>
+  </td>
+  <td width=72 valign=top style='width:54.0pt;border-top:none;border-left:none;
+  border-bottom:solid windowtext .5pt;border-right:solid windowtext .5pt;
+  mso-border-top-alt:solid windowtext .5pt;mso-border-left-alt:solid windowtext .5pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+  </td>
+  <td width=132 valign=top style='width:99.0pt;border-top:none;border-left:
+  none;border-bottom:solid windowtext .5pt;border-right:solid windowtext .5pt;
+  mso-border-top-alt:solid windowtext .5pt;mso-border-left-alt:solid windowtext .5pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal>this[i]:= this [arg[i]]</p>
+  </td>
+  <td width=204 valign=top style='width:153.0pt;border-top:none;border-left:
+  none;border-bottom:solid windowtext .5pt;border-right:solid windowtext .5pt;
+  mso-border-top-alt:solid windowtext .5pt;mso-border-left-alt:solid windowtext .5pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+  </td>
+  <td width=180 valign=top style='width:135.0pt;border-top:none;border-left:
+  none;border-bottom:solid windowtext .5pt;border-right:solid windowtext .5pt;
+  mso-border-top-alt:solid windowtext .5pt;mso-border-left-alt:solid windowtext .5pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+  </td>
+ </tr>
+ <tr>
+  <td width=199 valign=top style='width:149.4pt;border:solid windowtext .5pt;
+  border-top:none;mso-border-top-alt:solid windowtext .5pt;padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+  </td>
+  <td width=158 valign=top style='width:118.65pt;border-top:none;border-left:
+  none;border-bottom:solid windowtext .5pt;border-right:solid windowtext .5pt;
+  mso-border-top-alt:solid windowtext .5pt;mso-border-left-alt:solid windowtext .5pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+  </td>
+  <td width=72 valign=top style='width:54.0pt;border-top:none;border-left:none;
+  border-bottom:solid windowtext .5pt;border-right:solid windowtext .5pt;
+  mso-border-top-alt:solid windowtext .5pt;mso-border-left-alt:solid windowtext .5pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+  </td>
+  <td width=132 valign=top style='width:99.0pt;border-top:none;border-left:
+  none;border-bottom:solid windowtext .5pt;border-right:solid windowtext .5pt;
+  mso-border-top-alt:solid windowtext .5pt;mso-border-left-alt:solid windowtext .5pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+  </td>
+  <td width=204 valign=top style='width:153.0pt;border-top:none;border-left:
+  none;border-bottom:solid windowtext .5pt;border-right:solid windowtext .5pt;
+  mso-border-top-alt:solid windowtext .5pt;mso-border-left-alt:solid windowtext .5pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+  </td>
+  <td width=180 valign=top style='width:135.0pt;border-top:none;border-left:
+  none;border-bottom:solid windowtext .5pt;border-right:solid windowtext .5pt;
+  mso-border-top-alt:solid windowtext .5pt;mso-border-left-alt:solid windowtext .5pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+  </td>
+ </tr>
+</table>
+
+<p class=MsoNormal><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=MsoNormal><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=MsoNormal><span lang=DE style='mso-ansi-language:DE'>Das bedeutet
+effektiv: <o:p></o:p></span></p>
+
+<p class=MsoNormal><span lang=DE style='mso-ansi-language:DE'>Zeilenvektoren
+von links für cat() bzw. <o:p></o:p></span></p>
+
+<p class=MsoNormal><span lang=DE style='mso-ansi-language:DE'>Spaltenvektoren
+von rechts für map()<o:p></o:p></span></p>
+
+<p class=MsoNormal><span lang=DE style='mso-ansi-language:DE'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=MsoNormal><span lang=DE style='mso-ansi-language:DE'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=MsoNormal>Tensor Multiplication is a complicated linear
+Transformation. </p>
+
+<p class=MsoNormal>What happens on generically multiplying Sum(j,
+a[i,j,k]*b[l,j,m]) ?= a[i,k,l,j,m]<span style="mso-spacerun: yes">  </span>?=
+a[i,j,k,l,m]<span style="mso-spacerun: yes">  </span>???</p>
+
+<p class=MsoNormal><span style='mso-tab-count:1'>            </span>The
+Structure of A cannot be reused for storing the Result </p>
+
+<p class=MsoNormal><span style='mso-tab-count:1'>            </span>The outer
+Structure of B cannot be reused for comfortably calculating the Values. </p>
+
+<p class=MsoNormal>Instead you have to create a new Structure recursively and
+fill it up with the Product recursively using a MultiIndex. </p>
+
+<p class=MsoNormal><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=MsoNormal>The Tensor Products can be of different Type:<o:p></o:p></p>
+
+<ul style='margin-top:0cm' type=disc>
+ <li class=MsoNormal style='mso-list:l0 level1 lfo1;tab-stops:list 36.0pt'>dyad()
+     c[i,j] = a[i]*b[j] being of (possibly) different Dimension
+     Grad(a.dyad(b))==Grad(a) + Grad(b)</li>
+ <li class=MsoNormal style='mso-list:l0 level1 lfo1;tab-stops:list 36.0pt'>mul<span
+     style="mso-spacerun: yes">  </span>() c[i<span style="mso-spacerun: yes"> 
+     </span>] = a[i]*b[i]<span style="mso-spacerun: yes">  </span>being in the
+     same Dimension Space Grad(a.mul(b))==Grad(a)==Grad(b)</li>
+ <li class=MsoNormal style='mso-list:l0 level1 lfo1;tab-stops:list 36.0pt'>cat ()
+     c<span style="mso-spacerun: yes">      </span>= Sum(i, a[i]*b[i] = Sum(i,
+     a.mul(b)) , the Scalar Product, also being in the same Dimension Space Grad(a.cat(b))==Grad(a)
+     + Grad(b) - 2</li>
+</ul>
+
+<p class=MsoNormal><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=MsoNormal>The generic Tensor Products can also be of different Type:<o:p></o:p></p>
+
+<ul style='margin-top:0cm' type=disc>
+ <li class=MsoNormal style='mso-list:l0 level1 lfo1;tab-stops:list 36.0pt'>dyad
+     () c[i,j,k,l,m,n] = a[i,j,k]*b[l,m,n] being of (possibly) different
+     Dimension</li>
+ <li class=MsoNormal style='mso-list:l0 level1 lfo1;tab-stops:list 36.0pt'>mul<span
+     style="mso-spacerun: yes">  </span>() c[i,j,k] = a[i,j,k]*b[i,j,k]<span
+     style="mso-spacerun: yes">  </span>being in the same Dimension Space and same
+     Tensor Degree</li>
+ <li class=MsoNormal style='mso-list:l0 level1 lfo1;tab-stops:list 36.0pt'>short()
+     c[i,k,l,n]<span style="mso-spacerun: yes">      </span>= Sum(j, a[i][j,k]*b[l,j,n]
+     = Sum(j, a.mul(b)) , the Scalar Product, also being in the same Dimension
+     Space</li>
+</ul>
+
+<p class=MsoNormal><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=MsoNormal><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=MsoNormal><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=MsoNormal>The regular case is multiplying a Tensor by a Matrix. </p>
+
+<p class=MsoNormal>Transforming a Tensor into a different Coordinate Space
+requires transforming each Degree by the same Matrix: </p>
+
+<p class=MsoNormal>y[i] = a[i][j] * x[j] <span style='font-family:Wingdings;
+mso-ascii-font-family:"Times New Roman";mso-hansi-font-family:"Times New Roman";
+mso-char-type:symbol;mso-symbol-font-family:Wingdings'><span style='mso-char-type:
+symbol;mso-symbol-font-family:Wingdings'>è</span></span> Y[i1,i2,i3] =
+a[i1][j1] * a[i2][j2] * a[i3][j3] * X[j1,j2,j3] </p>
+
+<p class=MsoNormal>Since the Degree of the Tensor stays the same, it can be
+manipulated in Place. </p>
+
+<p class=MsoNormal><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=MsoNormal>The outer Structure stays the same and is reused to store
+the result. </p>
+
+<p class=MsoNormal>The inner Structure is accumulated from the Product. </p>
+
+<p class=MsoNormal><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=MsoNormal>A.mapAt(B) == B.catAt(A) returns B in Place. </p>
+
+<p class=MsoNormal>a[i,j,k]*b[k,l,m] = a[i,j,k,l,m] can be directly stored in
+the structure of A using Element Copies of b. </p>
+
+<p class=MsoNormal><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=MsoNormal>The unshortened Product fits into the Structure of a and
+replaces it completely: a[i,j,k]*b[k,l,m] = a[i,j,k,l,m]<span
+style="mso-spacerun: yes">  </span>== A.catAt(B) == </p>
+
+<p class=MsoNormal>The shortened Product also fits into the Structure of a,
+except for the lowest Level, which is thrown away! a[i,j,k,l,m] <span
+style='font-family:Wingdings;mso-ascii-font-family:"Times New Roman";
+mso-hansi-font-family:"Times New Roman";mso-char-type:symbol;mso-symbol-font-family:
+Wingdings'><span style='mso-char-type:symbol;mso-symbol-font-family:Wingdings'>è</span></span>
+a[i,j,l,m]</p>
+
+<p class=MsoNormal>It would be identical to the Manifold Product, but only at
+the innermost Level: A.catAt(B) = A.mulAt(B).SumAt(), but mulAt() does not
+retain the Structure! Instead of a Scalar it becomes a Tensor, which does not
+lend itself to any Optimization!</p>
+
+<p class=MsoNormal><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=MsoNormal>A correct Description would be a[i][j][k] =
+B.mul(a[i][j][k]) , where you cannot use B.mulAt(), because you need the
+original B for any Element a[i,j,k] and then summing it up: a[i][j] := Sum(k,
+a[i][j][k])</p>
+
+<p class=MsoNormal><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=MsoNormal>a[i,j,k]*b[k,l,m] == a[i[j[k]]]*b[k[l[m]]] == a[i,j,k,l,m]
+== a[i[j[k[l[m]]]]] == a[i,j][k,l,m]<span style="mso-spacerun: yes">  </span></p>
+
+<p class=MsoNormal><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=MsoNormal><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=MsoNormal>When multiplying by a Matrix (special Case) , the Degree stays
+the same, but the Dimension may change (e.g. increase from 2 to 3 because of a
+Rotation in Space!). Thus the Structure cannot be directly reused!</p>
+
+<p class=MsoNormal><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=MsoNormal>Ring tmp = (Ring) arg_.a[0].mul(a[0]);<span
+style='mso-tab-count:1'>     </span>//Don't initialize to 0, Single out the
+first Operation:</p>
+
+<p class=MsoNormal>for (int i = 0; ++i &lt;= mGrad;)<span style='mso-tab-count:
+1'>            </span>//saves Initialization and one Addition!</p>
+
+<p class=MsoNormal><span style='mso-tab-count:1'>            </span>tmp.addProdAt(a[i],
+arg.a[i]);<span style='mso-tab-count:1'>            </span>//* Skalar!</p>
+
+<p class=MsoNormal>return tmp;</p>
+
+<p class=MsoNormal><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=MsoNormal><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=MsoNormal><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=MsoNormal>y[i] == A[i,j] * x[j] == A[i][j] * x[j] recursively! </p>
+
+<p class=MsoNormal><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=MsoNormal>y[i] += A[i,j] * x[j] == A[i][j] * x[j] </p>
+
+<p class=MsoNormal><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=MsoNormal>y[i].Map(x[i]) =&gt; Scalar Product </p>
+
+<p class=MsoNormal>MapAt(x[i])</p>
+
+<p class=MsoNormal><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=MsoNormal>A[i,j] * B[j,k] = C[i,k] </p>
+
+<p class=MsoNormal><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=MsoNormal>A[i,j] *= B[j,k] = C[i,k] </p>
+
+<p class=MsoNormal>Reuse the Array, but not the Elements! </p>
+
+<p class=MsoNormal>Cannot be done in Place! </p>
+
+<p class=MsoNormal><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=MsoNormal><span lang=DE style='mso-ansi-language:DE'>Vielleicht sogar
+als Stream? Klar! <o:p></o:p></span></p>
+
+<p class=MsoNormal><span lang=DE style='mso-ansi-language:DE'>Ein Element x[j]
+wird aufgebläht in einen Strom (dyadisches Produkt) <o:p></o:p></span></p>
+
+<p class=MsoNormal><span lang=DE style='mso-ansi-language:DE'>Dieser Strom wird
+dann verkürzt <o:p></o:p></span></p>
+
+<p class=MsoNormal>y[i,j] = A[i,j] * x[j]</p>
+
+<p class=MsoNormal><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=MsoNormal>y[i] += y[i,j]</p>
+
+<p class=MsoNormal><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=MsoNormal>x[i] * y[i] </p>
+
+<p class=MsoNormal><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=MsoNormal><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=MsoNormal>Set of Objects with Operation ° called 'map()' on any two
+Objects.</p>
+
+<p class=MsoNormal>I.e. in a HalfMonoid any two Objects can be
+&quot;concatenated&quot; or &quot;mapped&quot;.</p>
+
+<p class=MsoNormal>Example is e.g. String Concatenation or Function
+Concatenation / Mapping.</p>
+
+<p class=MsoNormal>This Concatenation is associative i.e. (a°b)°c==a°(b°c) but
+not commutative!</p>
+
+<p class=MsoNormal>Therefore pairs of Operations can be defined:</p>
+
+<p class=MsoNormal>map()/unMap() with the Operand coming from the left and</p>
+
+<p class=MsoNormal>cat()/unCat() with the Operand coming from the right</p>
+
+<p class=MsoNormal><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=MsoNormal>It can be proven that:</p>
+
+<p class=MsoNormal><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=MsoNormal>!(A°B)== !B°!A</p>
+
+<p class=MsoNormal>[A,A] == [A,!A] == [A,Id] == 0</p>
+
+<p class=MsoNormal>A°!A == !A°A == Id == A.unMap(A) == A.unCat(A) == A.solve(A)
+== A.reSolve(A)</p>
+
+<p class=MsoNormal><span style="mso-spacerun: yes"> </span></p>
+
+<p class=MsoNormal><span style="mso-spacerun: yes">  </span>A.map(A
+.unMap(w))==<span style="mso-spacerun: yes">  </span>A°!A°w == w == A.unMap(A
+.map(w))== !A° A°w</p>
+
+<p class=MsoNormal><span style="mso-spacerun: yes">  </span>with w being a
+simple Object, a Map or a Monoid.</p>
+
+<p class=MsoNormal><span style="mso-spacerun: yes">  </span>Therefore an
+extended and a reduced Syntax have been defined.</p>
+
+<p class=MsoNormal><span style="mso-spacerun: yes"> </span></p>
+
+<p class=MsoNormal><span style="mso-spacerun: yes">   </span>W =<span
+style="mso-spacerun: yes">  </span>B<span style="mso-spacerun: yes"> 
+</span>°<span style="mso-spacerun: yes">  </span>A<span style="mso-spacerun:
+yes">  </span>° D ==<span style="mso-spacerun: yes">  </span>C<span
+style="mso-spacerun: yes">  </span>° D<span style="mso-spacerun: yes">    
+</span>with<span style="mso-spacerun: yes">  </span>B<span style="mso-spacerun:
+yes">  </span>°<span style="mso-spacerun: yes">  </span>A<span
+style="mso-spacerun: yes">  </span>==<span style="mso-spacerun: yes">  </span>C</p>
+
+<p class=MsoNormal><span style="mso-spacerun: yes"> 
+</span>{c}={c@b}°{b@a}°{a}=={a-c}°{a}<span style="mso-spacerun: yes">       
+</span>{c@b}°{b@a}=={c@a}</p>
+
+<p class=MsoNormal><span style="mso-spacerun: yes"> </span></p>
+
+<p class=MsoNormal>b == A°a == A.map(a)<span style="mso-spacerun: yes"> 
+</span>and<span style="mso-spacerun: yes">  </span>a == !A°b == A.unMap(b)</p>
+
+<p class=MsoNormal>c == B°b == B.map(b)<span style="mso-spacerun: yes"> 
+</span>and<span style="mso-spacerun: yes">  </span>b == !B°c == B.unMap(c)</p>
+
+<p class=MsoNormal><span style="mso-spacerun: yes"> </span></p>
+
+<p class=MsoNormal><span style="mso-spacerun: yes">  </span>A.map(B) = A°B =
+C<span style="mso-spacerun: yes">                            </span>can be
+resolved for A:</p>
+
+<p class=MsoNormal><span style="mso-spacerun: yes">  </span>A == C.solve(B)
+==<span style="mso-spacerun: yes">  </span>C°!B ==<span style="mso-spacerun:
+yes">  </span>A°B°!B<span style="mso-spacerun: yes">    </span>and it can be
+resolved for B:</p>
+
+<p class=MsoNormal><span style="mso-spacerun: yes">  </span>B == A.unMap(C) ==
+!A° C == !A°A° B</p>
+
+<p class=MsoNormal><span style="mso-spacerun: yes"> </span></p>
+
+<p class=MsoNormal><span style="mso-spacerun: yes">  </span>Because of the
+extended Syntax with Object, reSolve() has been defined,</p>
+
+<p class=MsoNormal><span style="mso-spacerun: yes">  </span>which has the same
+Effect, but reversed Arguments:</p>
+
+<p class=MsoNormal><span style="mso-spacerun: yes">  </span>A°!B == A.solve(B)
+== B.reSolve(A)</p>
+
+<p class=MsoNormal><span style="mso-spacerun: yes"> </span></p>
+
+<p class=MsoNormal><span style="mso-spacerun: yes"> </span></p>
+
+<p class=MsoNormal><span style="mso-spacerun: yes"> </span></p>
+
+<p class=MsoNormal><span style="mso-spacerun: yes">  </span>Deprecated:</p>
+
+<p class=MsoNormal><span style="mso-spacerun: yes">  </span>A.cat(B).<span
+style="mso-spacerun: yes">  </span>unCat(B) ==<span style="mso-spacerun: yes"> 
+</span>A° B°!B == A == A.unCat(B).cat(B) == A°!B° B</p>
+
+<p class=MsoNormal><span style="mso-spacerun: yes">  </span>A.cat(B).reSolve(A)
+==<span style="mso-spacerun: yes">  </span>A.solve(A.cat(B)) ==
+A.cat(A.solve(B))</p>
+
+<p class=MsoNormal><span style="mso-spacerun: yes">  </span>B.map(A).reSolve(A)
+== !A° A° B == B == B.reSolve(A).map(A)</p>
+
+<p class=MsoNormal><span style="mso-spacerun:
+yes">                                       </span>== A.<span
+style="mso-spacerun: yes">  </span>unCat(A).cat(B) == A°!A° B</p>
+
+<p class=MsoNormal><span style="mso-spacerun: yes"> </span></p>
+
+<p class=MsoNormal>C ==<span style="mso-spacerun: yes">  </span>A° B == A. <span
+style="mso-spacerun: yes">   </span>cat(B) == B.<span style="mso-spacerun:
+yes">  </span>map(A)<span style="mso-spacerun: yes">   </span>and</p>
+
+<p class=MsoNormal>A ==<span style="mso-spacerun: yes">  </span>C°!B == C.<span
+style="mso-spacerun: yes">  </span>unCat(B) == B.unMap(C)<span
+style="mso-spacerun: yes">   </span>and</p>
+
+<p class=MsoNormal>B == !A° C == C.reSolve(A) == A.solve(C)</p>
+
+<p class=MsoNormal><span style="mso-spacerun: yes"> </span></p>
+
+<p class=MsoNormal>catAt() and unCatAt() can be defined so that the Structure
+of A is unchanged</p>
+
+<p class=MsoNormal>mapAt() and unMapAt() return the Argument Type in Place</p>
+
+<p class=MsoNormal>solve() and reSolve() can not be calculcated in Place!</p>
+
+<p class=MsoNormal><span style="mso-spacerun: yes"> </span></p>
+
+<p class=MsoNormal>A<span style="mso-spacerun: yes">  </span>°<span
+style="mso-spacerun: yes">  </span>B<span style="mso-spacerun: yes">  
+</span>°<span style="mso-spacerun: yes">  </span>c<span style="mso-spacerun:
+yes">  </span>= (A<span style="mso-spacerun: yes">  </span>°<span
+style="mso-spacerun: yes">  </span>B )<span style="mso-spacerun: yes"> 
+</span>°<span style="mso-spacerun: yes">  </span>c<span style="mso-spacerun:
+yes">  </span>= A<span style="mso-spacerun: yes">  </span>° (B<span
+style="mso-spacerun: yes">  </span>°<span style="mso-spacerun: yes">  </span>c
+) =</p>
+
+<p class=MsoNormal>A.map(B).map(c) = (A.map(B)).map(c) = A.map(B.map(c))</p>
+
+<p class=MsoNormal><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=MsoNormal><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=MsoNormal>This is one of the Problems, because A should not be
+modified! Thus </p>
+
+<p class=MsoNormal>A.mapAt(B) == B.copyAt(A.map(B)) </p>
+
+<p class=MsoNormal><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=MsoNormal><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+</div>
+
+</body>
+
+</html>

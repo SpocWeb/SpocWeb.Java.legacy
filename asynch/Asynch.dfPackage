@@ -1,0 +1,167 @@
+package idb73ucrhex9kxcrhezok3;
+
+/**
+@version 2.0
+@physicalPackage
+@__modelType diagram 
+*/
+class diagram {
+/**
+@__ref <oiref:java#Class#asynch.AExecutor:oiref><oihard>
+@__modelType reference 
+*/
+class reference {
+}/**
+@__ref <oiref:java#Class#asynch.AReadyToRun:oiref><oihard>
+@__modelType reference 
+*/
+class reference323 {
+}/**
+@__ref <oiref:java#Class#asynch.ThreadPoolExecutor:oiref><oihard>
+@__modelType reference 
+*/
+class reference324 {
+}/**
+@__ref <oiref:java#Class#asynch.ISynch:oiref><oihard>
+@__modelType reference 
+*/
+class reference325 {
+}/**
+@__ref <oiref:java#Class#asynch.ActiveObject:oiref><oihard>
+@__modelType reference 
+*/
+class reference326 {
+}/**
+@__ref <oiref:java#Class#asynch.FutureHandler:oiref><oihard>
+@__modelType reference 
+*/
+class reference327 {
+}/**
+@__ref <oiref:java#Class#asynch.IFuture:oiref><oihard>
+@__modelType reference 
+*/
+class reference328 {
+}/**
+@__ref <oiref:java#Class#asynch.Barrier:oiref><oihard>
+@__modelType reference 
+*/
+class reference329 {
+}/**
+@__ref <oiref:java#Class#asynch.QueuedSemaphore:oiref><oihard>
+@__modelType reference 
+*/
+class reference330 {
+}/**
+@__ref <oiref:java#Class#asynch.WaitNode:oiref><oihard>
+@__modelType reference 
+*/
+class reference331 {
+}/**
+@__ref <oiref:java#Class#asynch.RequestObject:oiref><oihard>
+@__modelType reference 
+*/
+class reference332 {
+}/**
+@__ref <oiref:java#Class#asynch.SynchExecutor:oiref><oihard>
+@__modelType reference 
+*/
+class reference333 {
+}/**
+@__ref <oiref:java#Class#asynch.ReadyToRun:oiref><oihard>
+@__modelType reference 
+*/
+class reference334 {
+}/**
+@__ref <oiref:java#Class#asynch.Semaphore:oiref><oihard>
+@__modelType reference 
+*/
+class reference335 {
+}/**
+@__ref <oiref:java#Class#asynch.Future:oiref><oihard>
+@__modelType reference 
+*/
+class reference336 {
+}/**
+@__ref <oiref:java#Class#asynch.IExecutor:oiref><oihard>
+@__modelType reference 
+*/
+class reference337 {
+}/**
+@__ref <oiref:java#Class#asynch.ForkJoinTask:oiref><oihard>
+@__modelType reference 
+*/
+class reference338 {
+}/**
+@__ref <oiref:java#Class#asynch.ThreadExecutor:oiref><oihard>
+@__modelType reference 
+*/
+class reference339 {
+}/**
+@__ref <oiref:java#Class#asynch.ABarrierClient:oiref><oihard>
+@__modelType reference 
+*/
+class reference340 {
+}/**
+@__ref <oiref:java#Class#asynch.ValueSetterRef:oiref><oihard>
+@__modelType reference 
+*/
+class reference341 {
+}/**
+@__ref <oiref:java#Class#asynch.ProcessorRef:oiref><oihard>
+@__modelType reference 
+*/
+class reference342 {
+}/**
+@__ref <oiref:java#Class#asynch.BlockedThreadExecutor:oiref><oihard>
+@__modelType reference 
+*/
+class reference343 {
+}/**
+@__ref <oiref:java#Class#asynch.Scheduler:oiref><oihard>
+@__modelType reference 
+*/
+class reference344 {
+}/**
+@__ref <oiref:java#Class#asynch.SimpleThreadExecutor:oiref><oihard>
+@__modelType reference 
+*/
+class reference345 {
+}/**
+@__ref <oiref:java#Class#asynch.CallbackFuture:oiref><oihard>
+@__modelType reference 
+*/
+class reference346 {
+}/**
+@__ref <oiref:java#Class#asynch.ResponseObject:oiref><oihard>
+@__modelType reference 
+*/
+class reference347 {
+}/**
+@__ref <oiref:java#Class#asynch.SimpleTimedThreadExecutor:oiref><oihard>
+@__modelType reference 
+*/
+class reference348 {
+}/**
+@__ref <oiref:java#Class#asynch.SimpleThreadPoolExecutor:oiref><oihard>
+@__modelType reference 
+*/
+class reference349 {
+}/**
+@__ref <oiref:java#Class#asynch.ResidiumDispatcher:oiref><oihard>
+@__modelType reference 
+*/
+class reference350 {
+}}/**
+@__tags
+@shapeType ClassDiagram 
+*/
+class __tags {
+}/**
+@__options 
+*/
+class __options {
+}/**
+@__positions 
+*/
+class __positions {
+}

@@ -1,0 +1,255 @@
+package id2otl3c9fodqegc9fq5gp1;
+
+/**
+@version 2.0
+@physicalPackage
+@__modelType diagram 
+*/
+class diagram {
+/**
+@shapeType DependencyLink
+@__modelType link
+@__ref <oiref:design#Class#idnsfcc9frybwec9fs1qlv.diagram:oiref><oihard>
+@automatic 
+*/
+class link {
+}/**
+@shapeType DependencyLink
+@__modelType link
+@__ref <oiref:design#Class#id47mokc9fodqegc9fq5czi.diagram:oiref><oihard>
+@automatic 
+*/
+class link132 {
+}/**
+@shapeType DependencyLink
+@__modelType link
+@__ref <oiref:design#Class#id4vy0zc9fodqegc9fqqr4o.diagram:oiref><oihard>
+@automatic 
+*/
+class link133 {
+}/**
+@shapeType DependencyLink
+@__modelType link
+@__ref <oiref:design#Class#id460ucc9frybwec9fs1s26.diagram:oiref><oihard>
+@automatic 
+*/
+class link134 {
+}/**
+@shapeType DependencyLink
+@__modelType link
+@__ref <oiref:design#Class#id3ai3cc9frybwec9fs1pgf.diagram:oiref><oihard>
+@automatic 
+*/
+class link135 {
+}/**
+@shapeType DependencyLink
+@__modelType link
+@__ref <oiref:design#Class#id7qibc9fodqegc9fqqngt.diagram:oiref><oihard>
+@automatic 
+*/
+class link136 {
+}/**
+@shapeType DependencyLink
+@__modelType link
+@__ref <oiref:design#Class#id457m4c9fodqegc9fq5a4l.diagram:oiref><oihard>
+@automatic 
+*/
+class link137 {
+}/**
+@shapeType DependencyLink
+@__modelType link
+@__ref <oiref:design#Class#id9f8wc9frybwec9fs0pa9.diagram:oiref><oihard>
+@automatic 
+*/
+class link138 {
+}/**
+@shapeType DependencyLink
+@__modelType link
+@__ref <oiref:design#Class#id3ct9hc9frybwec9fs1u45.diagram:oiref><oihard>
+@automatic 
+*/
+class link139 {
+}/**
+@shapeType DependencyLink
+@__modelType link
+@__ref <oiref:design#Class#id3npiic9frybwec9fs1t40.diagram:oiref><oihard>
+@automatic 
+*/
+class link140 {
+}/**
+@shapeType DependencyLink
+@__modelType link
+@__ref <oiref:design#Class#id45u3xc9frybwec9fs1q4c.diagram:oiref><oihard>
+@automatic 
+*/
+class link141 {
+}/**
+@shapeType DependencyLink
+@__modelType link
+@__ref <oiref:design#Class#id25b1fc9fodqegc9fqqpu7.diagram:oiref><oihard>
+@automatic 
+*/
+class link142 {
+}/**
+@shapeType DependencyLink
+@__modelType link
+@__ref <oiref:design#Class#id1o3uyc9frybwec9fs1tko.diagram:oiref><oihard>
+@automatic 
+*/
+class link143 {
+}/**
+@shapeType DependencyLink
+@__modelType link
+@__ref <oiref:design#Class#idqb01c9fodqegc9fq5ddp.diagram:oiref><oihard>
+@automatic 
+*/
+class link144 {
+}/**
+@shapeType DependencyLink
+@__modelType link
+@__ref <oiref:design#Class#id15cqcc9fodqegc9fqqu1j.diagram:oiref><oihard>
+@automatic 
+*/
+class link145 {
+}/**
+@shapeType DependencyLink
+@__modelType link
+@__ref <oiref:design#Class#id235w6c9fodqegc9fqqsdg.diagram:oiref><oihard>
+@automatic 
+*/
+class link146 {
+}/**
+@shapeType DependencyLink
+@__modelType link
+@__ref <oiref:design#Class#id2z7bcc9fodqegc9fq5es2.diagram:oiref><oihard>
+@automatic 
+*/
+class link147 {
+}/**
+@shapeType DependencyLink
+@__modelType link
+@__ref <oiref:design#Class#id40uamc9frybwec9fs17uq.diagram:oiref><oihard>
+@automatic 
+*/
+class link148 {
+}/**
+@__ref <oiref:design#Class#id7qibc9fodqegc9fqqngt.diagram:oiref><oihard>
+@__modelType reference
+@__fqn <oiref:#Package#Stream.Copy.Group:oiref> 
+*/
+class reference {
+}/**
+@__ref <oiref:design#Class#id40uamc9frybwec9fs17uq.diagram:oiref><oihard>
+@__modelType reference
+@__fqn <oiref:#Package#Stream.Copy.Boole:oiref> 
+*/
+class reference38 {
+}/**
+@__ref <oiref:java#Class#Stream.Copy.CopyAble:oiref><oihard>
+@__modelType reference 
+*/
+class reference39 {
+}/**
+@__ref <oiref:design#Class#idnsfcc9frybwec9fs1qlv.diagram:oiref><oihard>
+@__modelType reference
+@__fqn <oiref:#Package#Stream.Copy.GroupM:oiref> 
+*/
+class reference40 {
+}/**
+@__ref <oiref:design#Class#id460ucc9frybwec9fs1s26.diagram:oiref><oihard>
+@__modelType reference
+@__fqn <oiref:#Package#Stream.Copy.Monoid:oiref> 
+*/
+class reference41 {
+}/**
+@__ref <oiref:design#Class#id3ct9hc9frybwec9fs1u45.diagram:oiref><oihard>
+@__modelType reference
+@__fqn <oiref:#Package#Stream.Copy.ShiftAble:oiref> 
+*/
+class reference42 {
+}/**
+@__ref <oiref:java#Class#Stream.Copy.ACopyAble:oiref><oihard>
+@__modelType reference 
+*/
+class reference43 {
+}/**
+@__ref <oiref:java#Class#Stream.Copy.ICopyAble:oiref><oihard>
+@__modelType reference 
+*/
+class reference44 {
+}/**
+@__ref <oiref:design#Class#id1o3uyc9frybwec9fs1tko.diagram:oiref><oihard>
+@__modelType reference
+@__fqn <oiref:#Package#Stream.Copy.PrimitiveOp:oiref> 
+*/
+class reference45 {
+}/**
+@__ref <oiref:java#Class#Stream.Copy.CCopyAble:oiref><oihard>
+@__modelType reference 
+*/
+class reference46 {
+}/**
+@__ref <oiref:design#Class#id3npiic9frybwec9fs1t40.diagram:oiref><oihard>
+@__modelType reference
+@__fqn <oiref:#Package#Stream.Copy.Order:oiref> 
+*/
+class reference47 {
+}/**
+@__ref <oiref:java#Class#Stream.Copy.TestCopy:oiref><oihard>
+@__modelType reference 
+*/
+class reference14 {
+}/**
+@__ref <oiref:java#Class#Stream.Object.CopyStreamIn:oiref><oihard>
+@__modelType reference
+@__imported 
+*/
+class reference10 {
+}/**
+@__ref <oiref:java#Class#ACopyAble:oiref><oihard>
+@__modelType reference 
+*/
+class reference48 {
+}/**
+@__ref <oiref:java#Class#CopyAble:oiref><oihard>
+@__modelType reference 
+*/
+class reference66 {
+}/**
+@__ref <oiref:java#Class#ICopyAble:oiref><oihard>
+@__modelType reference 
+*/
+class reference76 {
+}}/**
+@__tags
+@shapeType ClassDiagram 
+*/
+class __tags {
+}/**
+@__options 
+*/
+class __options {
+}/**
+@__positions <oigroup:<oiref:java#Extends#Stream.Copy.CopyAble#Stream.Copy.ICopyAble:oiref>=110,220,110,160:oigroup>
+<oigroup:<oiref:java#Class#Stream.Copy.ICopyAble:oiref>=10,11,200,149,1:oigroup>
+<oigroup:<oiref:design#Class#id1o3uyc9frybwec9fs1tko.diagram:oiref>=630,600,111,164,1:oigroup>
+<oigroup:<oiref:design#Class#id40uamc9frybwec9fs17uq.diagram:oiref>=500,300,78,196,1:oigroup>
+<oigroup:MemberLink#<oiref:java#Member#Stream.Copy.CCopyAble#testInstance:oiref>=156,660,156,513:oigroup>
+<oigroup:<oiref:design#Class#id3ct9hc9frybwec9fs1u45.diagram:oiref>=760,600,77,116,1:oigroup>
+<oigroup:<oiref:java#Class#Stream.Copy.CCopyAble:oiref>=120,660,200,334,1:oigroup>
+<oigroup:<oiref:design#Class#id3npiic9frybwec9fs1t40.diagram:oiref>=660,300,86,260,1:oigroup>
+<oigroup:<oiref:design#Class#id460ucc9frybwec9fs1s26.diagram:oiref>=517,600,93,228,1:oigroup>
+<oigroup:<oiref:design#Class#id7qibc9fodqegc9fqqngt.diagram:oiref>=492,10,86,279,1:oigroup>
+<oigroup:<oiref:design#Class#id40uamc9frybwec9fs17uq.diagram.link150:oiref>=578,398,660,398:oigroup>
+<oigroup:<oiref:design#Class#id7qibc9fodqegc9fqqngt.diagram.link258:oiref>=539,289,539,300:oigroup>
+<oigroup:<oiref:design#Class#idnsfcc9frybwec9fs1qlv.diagram:oiref>=658,10,95,260,1:oigroup>
+<oigroup:<oiref:java#Implements#Stream.Copy.ACopyAble#Stream.Copy.CopyAble:oiref>=250,366,210,366:oigroup>
+<oigroup:<oiref:java#Class#Stream.Copy.ACopyAble:oiref>=250,10,200,622,1:oigroup>
+<oigroup:<oiref:java#Extends#Stream.Copy.CCopyAble#Stream.Copy.ACopyAble:oiref>=285,660,285,632:oigroup>
+<oigroup:MemberLink#<oiref:java#Member#Stream.Copy.CCopyAble#inner:oiref>=174,660,174,513:oigroup>
+<oigroup:MemberLink#<oiref:java#Member#Stream.Copy.ACopyAble#testInstance:oiref>=427,632,427,682,483,682,483,592,450,592:oigroup>
+<oigroup:<oiref:java#Implements#Stream.Copy.CCopyAble#Stream.Copy.CopyAble:oiref>=138,660,138,513:oigroup>
+<oigroup:<oiref:java#Class#Stream.Copy.CopyAble:oiref>=10,220,200,293,1:oigroup>
+*/
+class __positions {
+}

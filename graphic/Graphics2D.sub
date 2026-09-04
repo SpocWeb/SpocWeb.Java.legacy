@@ -1,0 +1,922 @@
+
+(object Petal
+    version    	42
+    _written   	"Rose 4.5.8163.3"
+    charSet    	0)
+
+(object SubSystem "Graphics2D"
+    is_unit    	TRUE
+    is_loaded  	TRUE
+    quid       	"37BC8ED5008E"
+    visible_modules 	(list dependency_list
+	(object Dependency_Relationship
+	    quid       	"37BC8ED5020E"
+	    supplier   	"Component View::java::awt"
+	    quidu      	"34B0F6CD00CD"
+	    supplier_is_subsystem 	TRUE)
+	(object Dependency_Relationship
+	    quid       	"37BC8ED70152"
+	    supplier   	"Component View::java::awt::image"
+	    quidu      	"34B0F6CD00CF"
+	    supplier_is_subsystem 	TRUE))
+    physical_models 	(list unit_reference_list
+	(object module "absGraphics2D" "NotAModuleType" "NotAModulePart"
+	    attributes 	(list Attribute_Set
+		(object Attribute
+		    tool       	"Java"
+		    name       	"FileName"
+		    value      	"D:\\Personal\\Code\\Java\\Graphics2D\\absGraphics2D.java"))
+	    quid       	"37BC8ED50090"
+	    stereotype 	""
+	    visible_modules 	(list dependency_list
+		(object Dependency_Relationship
+		    quid       	"37BC8ED5020F"
+		    supplier   	"Component View::java::awt"
+		    quidu      	"34B0F6CD00CD"
+		    supplier_is_subsystem 	TRUE)
+		(object Dependency_Relationship
+		    quid       	"37BD1C720067"
+		    supplier   	"Component View::java::awt"
+		    quidu      	"34B0F6CD00CD"
+		    supplier_is_subsystem 	TRUE)
+		(object Dependency_Relationship
+		    quid       	"37BD367401BF"
+		    supplier   	"Component View::java::awt"
+		    quidu      	"34B0F6CD00CD"
+		    supplier_is_subsystem 	TRUE))
+	    language   	"Java")
+	(object module "intGraphics2DOut" "NotAModuleType" "NotAModulePart"
+	    attributes 	(list Attribute_Set
+		(object Attribute
+		    tool       	"Java"
+		    name       	"FileName"
+		    value      	"D:\\Personal\\Code\\Java\\Graphics2D\\intGraphics2DOut.java"))
+	    quid       	"37BC8ED50098"
+	    stereotype 	""
+	    visible_modules 	(list dependency_list
+		(object Dependency_Relationship
+		    quid       	"37BC8ED60293"
+		    supplier   	"Component View::java::awt"
+		    quidu      	"34B0F6CD00CD"
+		    supplier_is_subsystem 	TRUE)
+		(object Dependency_Relationship
+		    quid       	"37BD1C810346"
+		    supplier   	"Component View::java::awt"
+		    quidu      	"34B0F6CD00CD"
+		    supplier_is_subsystem 	TRUE)
+		(object Dependency_Relationship
+		    quid       	"37BD36890233"
+		    supplier   	"Component View::java::awt"
+		    quidu      	"34B0F6CD00CD"
+		    supplier_is_subsystem 	TRUE))
+	    realized_interfaces 	(list realize_rel_list
+		(object Realize_Relationship
+		    quid       	"37BF0AAC012E"
+		    supplier   	"Logical View::Graphics2D::intGraphics2DOut"
+		    quidu      	"37BC8ED50099"))
+	    language   	"Java")
+	(object module "Point2D" "NotAModuleType" "NotAModulePart"
+	    attributes 	(list Attribute_Set
+		(object Attribute
+		    tool       	"Java"
+		    name       	"FileName"
+		    value      	"D:\\Personal\\Code\\Java\\Graphics2D\\Point2D.java"))
+	    quid       	"37BC8ED5009B"
+	    stereotype 	""
+	    language   	"Java")
+	(object module "absGraphicsRead" "NotAModuleType" "NotAModulePart"
+	    attributes 	(list Attribute_Set
+		(object Attribute
+		    tool       	"Java"
+		    name       	"FileName"
+		    value      	"D:\\Personal\\Code\\Java\\Graphics2D\\absGraphicsRead.java"))
+	    quid       	"37BC8ED50210"
+	    stereotype 	""
+	    visible_modules 	(list dependency_list
+		(object Dependency_Relationship
+		    quid       	"37BC8ED5022D"
+		    supplier   	"Component View::java::awt"
+		    quidu      	"34B0F6CD00CD"
+		    supplier_is_subsystem 	TRUE)
+		(object Dependency_Relationship
+		    quid       	"37BD1C73012D"
+		    supplier   	"Component View::java::awt"
+		    quidu      	"34B0F6CD00CD"
+		    supplier_is_subsystem 	TRUE)
+		(object Dependency_Relationship
+		    quid       	"37BD367502DE"
+		    supplier   	"Component View::java::awt"
+		    quidu      	"34B0F6CD00CD"
+		    supplier_is_subsystem 	TRUE))
+	    language   	"Java")
+	(object module "absGraphicsText" "NotAModuleType" "NotAModulePart"
+	    attributes 	(list Attribute_Set
+		(object Attribute
+		    tool       	"Java"
+		    name       	"FileName"
+		    value      	"D:\\Personal\\Code\\Java\\Graphics2D\\absGraphicsText.java"))
+	    quid       	"37BC8ED50212"
+	    stereotype 	""
+	    language   	"Java")
+	(object module "Body2D" "NotAModuleType" "NotAModulePart"
+	    attributes 	(list Attribute_Set
+		(object Attribute
+		    tool       	"Java"
+		    name       	"FileName"
+		    value      	"D:\\Personal\\Code\\Java\\Graphics2D\\Body2D.java"))
+	    quid       	"37BC8ED50373"
+	    stereotype 	""
+	    visible_modules 	(list dependency_list
+		(object Dependency_Relationship
+		    quid       	"37BD367B038E"
+		    supplier   	"Component View::java::awt"
+		    quidu      	"34B0F6CD00CD"
+		    supplier_is_subsystem 	TRUE))
+	    language   	"Java")
+	(object module "Polygon2D" "NotAModuleType" "NotAModulePart"
+	    attributes 	(list Attribute_Set
+		(object Attribute
+		    tool       	"Java"
+		    name       	"FileName"
+		    value      	"D:\\Personal\\Code\\Java\\Graphics2D\\Polygon2D.java"))
+	    quid       	"37BC8ED5037D"
+	    stereotype 	""
+	    language   	"Java")
+	(object module "drawAble" "NotAModuleType" "NotAModulePart"
+	    attributes 	(list Attribute_Set
+		(object Attribute
+		    tool       	"Java"
+		    name       	"FileName"
+		    value      	"D:\\Personal\\Code\\Java\\Graphics2D\\drawAble.java"))
+	    quid       	"37BC8ED60022"
+	    stereotype 	""
+	    visible_modules 	(list dependency_list
+		(object Dependency_Relationship
+		    quid       	"37BC8ED60030"
+		    supplier   	"Component View::java::awt"
+		    quidu      	"34B0F6CD00CD"
+		    supplier_is_subsystem 	TRUE)
+		(object Dependency_Relationship
+		    quid       	"37BD1C79029C"
+		    supplier   	"Component View::java::awt"
+		    quidu      	"34B0F6CD00CD"
+		    supplier_is_subsystem 	TRUE)
+		(object Dependency_Relationship
+		    quid       	"37BD367D0349"
+		    supplier   	"Component View::java::awt"
+		    quidu      	"34B0F6CD00CD"
+		    supplier_is_subsystem 	TRUE))
+	    realized_interfaces 	(list realize_rel_list
+		(object Realize_Relationship
+		    quid       	"37BF0A9D0118"
+		    supplier   	"Logical View::Graphics2D::drawAble"
+		    quidu      	"37BC8ED60023"))
+	    language   	"Java")
+	(object module "Fractal" "NotAModuleType" "NotAModulePart"
+	    attributes 	(list Attribute_Set
+		(object Attribute
+		    tool       	"Java"
+		    name       	"FileName"
+		    value      	"D:\\Personal\\Code\\Java\\Graphics2D\\Fractal.java"))
+	    quid       	"37BC8ED60108"
+	    stereotype 	""
+	    language   	"Java")
+	(object module "GraphicPattern" "NotAModuleType" "NotAModulePart"
+	    attributes 	(list Attribute_Set
+		(object Attribute
+		    tool       	"Java"
+		    name       	"FileName"
+		    value      	"D:\\Personal\\Code\\Java\\Graphics2D\\GraphicPattern.java"))
+	    quid       	"37BC8ED6014E"
+	    stereotype 	""
+	    language   	"Java")
+	(object module "Graphics2D" "NotAModuleType" "NotAModulePart"
+	    attributes 	(list Attribute_Set
+		(object Attribute
+		    tool       	"Java"
+		    name       	"FileName"
+		    value      	"D:\\Personal\\Code\\Java\\Graphics2D\\Graphics2D.java"))
+	    quid       	"37BC8ED6018A"
+	    stereotype 	""
+	    visible_modules 	(list dependency_list
+		(object Dependency_Relationship
+		    quid       	"37BC8ED6018B"
+		    supplier   	"Component View::java::awt"
+		    quidu      	"34B0F6CD00CD"
+		    supplier_is_subsystem 	TRUE)
+		(object Dependency_Relationship
+		    quid       	"37BD1C7C0300"
+		    supplier   	"Component View::java::awt"
+		    quidu      	"34B0F6CD00CD"
+		    supplier_is_subsystem 	TRUE)
+		(object Dependency_Relationship
+		    quid       	"37BD36830188"
+		    supplier   	"Component View::java::awt"
+		    quidu      	"34B0F6CD00CD"
+		    supplier_is_subsystem 	TRUE))
+	    language   	"Java")
+	(object module "GraphicsClip" "NotAModuleType" "NotAModulePart"
+	    attributes 	(list Attribute_Set
+		(object Attribute
+		    tool       	"Java"
+		    name       	"FileName"
+		    value      	"D:\\Personal\\Code\\Java\\Graphics2D\\GraphicsClip.java"))
+	    quid       	"37BC8ED60194"
+	    stereotype 	""
+	    visible_modules 	(list dependency_list
+		(object Dependency_Relationship
+		    quid       	"37BC8ED601AF"
+		    supplier   	"Component View::java::awt"
+		    quidu      	"34B0F6CD00CD"
+		    supplier_is_subsystem 	TRUE)
+		(object Dependency_Relationship
+		    quid       	"37BD1C7D033E"
+		    supplier   	"Component View::java::awt"
+		    quidu      	"34B0F6CD00CD"
+		    supplier_is_subsystem 	TRUE)
+		(object Dependency_Relationship
+		    quid       	"37BD368402BC"
+		    supplier   	"Component View::java::awt"
+		    quidu      	"34B0F6CD00CD"
+		    supplier_is_subsystem 	TRUE))
+	    language   	"Java")
+	(object module "Hidden" "NotAModuleType" "NotAModulePart"
+	    attributes 	(list Attribute_Set
+		(object Attribute
+		    tool       	"Java"
+		    name       	"FileName"
+		    value      	"D:\\Personal\\Code\\Java\\Graphics2D\\Hidden.java"))
+	    quid       	"37BC8ED6025C"
+	    stereotype 	""
+	    language   	"Java")
+	(object module "intGraphics2DIn" "NotAModuleType" "NotAModulePart"
+	    attributes 	(list Attribute_Set
+		(object Attribute
+		    tool       	"Java"
+		    name       	"FileName"
+		    value      	"D:\\Personal\\Code\\Java\\Graphics2D\\intGraphics2DIn.java"))
+	    quid       	"37BC8ED60272"
+	    stereotype 	""
+	    visible_modules 	(list dependency_list
+		(object Dependency_Relationship
+		    quid       	"37BC8ED6027D"
+		    supplier   	"Component View::java::awt"
+		    quidu      	"34B0F6CD00CD"
+		    supplier_is_subsystem 	TRUE)
+		(object Dependency_Relationship
+		    quid       	"37BD1C81014F"
+		    supplier   	"Component View::java::awt"
+		    quidu      	"34B0F6CD00CD"
+		    supplier_is_subsystem 	TRUE)
+		(object Dependency_Relationship
+		    quid       	"37BD36880315"
+		    supplier   	"Component View::java::awt"
+		    quidu      	"34B0F6CD00CD"
+		    supplier_is_subsystem 	TRUE))
+	    realized_interfaces 	(list realize_rel_list
+		(object Realize_Relationship
+		    quid       	"37BF0A8D0061"
+		    supplier   	"Logical View::Graphics2D::intGraphics2DIn"
+		    quidu      	"37BC8ED60273"))
+	    language   	"Java")
+	(object module "JavaGraphic" "NotAModuleType" "NotAModulePart"
+	    attributes 	(list Attribute_Set
+		(object Attribute
+		    tool       	"Java"
+		    name       	"FileName"
+		    value      	"D:\\Personal\\Code\\Java\\Graphics2D\\JavaGraphic.java"))
+	    quid       	"37BC8ED602E9"
+	    stereotype 	""
+	    visible_modules 	(list dependency_list
+		(object Dependency_Relationship
+		    quid       	"37BC8ED60370"
+		    supplier   	"Component View::java::awt"
+		    quidu      	"34B0F6CD00CD"
+		    supplier_is_subsystem 	TRUE)
+		(object Dependency_Relationship
+		    quid       	"37BD1C830039"
+		    supplier   	"Component View::java::awt"
+		    quidu      	"34B0F6CD00CD"
+		    supplier_is_subsystem 	TRUE)
+		(object Dependency_Relationship
+		    quid       	"37BD368A03EC"
+		    supplier   	"Component View::java::awt"
+		    quidu      	"34B0F6CD00CD"
+		    supplier_is_subsystem 	TRUE))
+	    language   	"Java")
+	(object module "Line2D" "NotAModuleType" "NotAModulePart"
+	    attributes 	(list Attribute_Set
+		(object Attribute
+		    tool       	"Java"
+		    name       	"FileName"
+		    value      	"D:\\Personal\\Code\\Java\\Graphics2D\\Line2D.java"))
+	    quid       	"37BC8ED60371"
+	    stereotype 	""
+	    language   	"Java")
+	(object module "Marker" "NotAModuleType" "NotAModulePart"
+	    attributes 	(list Attribute_Set
+		(object Attribute
+		    tool       	"Java"
+		    name       	"FileName"
+		    value      	"D:\\Personal\\Code\\Java\\Graphics2D\\Marker.java"))
+	    quid       	"37BC8ED603BB"
+	    stereotype 	""
+	    language   	"Java")
+	(object module "MemoryImage" "NotAModuleType" "NotAModulePart"
+	    attributes 	(list Attribute_Set
+		(object Attribute
+		    tool       	"Java"
+		    name       	"FileName"
+		    value      	"D:\\Personal\\Code\\Java\\Graphics2D\\MemoryImage.java"))
+	    quid       	"37BC8ED700FF"
+	    stereotype 	""
+	    visible_modules 	(list dependency_list
+		(object Dependency_Relationship
+		    quid       	"37BD3693003D"
+		    supplier   	"Component View::java::awt"
+		    quidu      	"34B0F6CD00CD"
+		    supplier_is_subsystem 	TRUE)
+		(object Dependency_Relationship
+		    quid       	"37BD3693003E"
+		    supplier   	"Component View::java::awt::image"
+		    quidu      	"34B0F6CD00CF"
+		    supplier_is_subsystem 	TRUE))
+	    language   	"Java")
+	(object module "PatternGraphics" "NotAModuleType" "NotAModulePart"
+	    attributes 	(list Attribute_Set
+		(object Attribute
+		    tool       	"Java"
+		    name       	"FileName"
+		    value      	"D:\\Personal\\Code\\Java\\Graphics2D\\PatternGraphics.java"))
+	    quid       	"37BC8ED70145"
+	    stereotype 	""
+	    visible_modules 	(list dependency_list
+		(object Dependency_Relationship
+		    quid       	"37BC8ED7014F"
+		    supplier   	"Component View::java::awt"
+		    quidu      	"34B0F6CD00CD"
+		    supplier_is_subsystem 	TRUE)
+		(object Dependency_Relationship
+		    quid       	"37BC8ED70153"
+		    supplier   	"Component View::java::awt::image"
+		    quidu      	"34B0F6CD00CF"
+		    supplier_is_subsystem 	TRUE)
+		(object Dependency_Relationship
+		    quid       	"37BD1C8601CE"
+		    supplier   	"Component View::java::awt"
+		    quidu      	"34B0F6CD00CD"
+		    supplier_is_subsystem 	TRUE)
+		(object Dependency_Relationship
+		    quid       	"37BD1C8601CF"
+		    supplier   	"Component View::java::awt::image"
+		    quidu      	"34B0F6CD00CF"
+		    supplier_is_subsystem 	TRUE)
+		(object Dependency_Relationship
+		    quid       	"37BD36950361"
+		    supplier   	"Component View::java::awt"
+		    quidu      	"34B0F6CD00CD"
+		    supplier_is_subsystem 	TRUE)
+		(object Dependency_Relationship
+		    quid       	"37BD36950362"
+		    supplier   	"Component View::java::awt::image"
+		    quidu      	"34B0F6CD00CF"
+		    supplier_is_subsystem 	TRUE))
+	    language   	"Java")
+	(object module "PolyTrigon" "NotAModuleType" "NotAModulePart"
+	    attributes 	(list Attribute_Set
+		(object Attribute
+		    tool       	"Java"
+		    name       	"FileName"
+		    value      	"D:\\Personal\\Code\\Java\\Graphics2D\\PolyTrigon.java"))
+	    quid       	"37BC8ED70204"
+	    stereotype 	""
+	    language   	"Java")
+	(object module "ScalarPlot" "NotAModuleType" "NotAModulePart"
+	    attributes 	(list Attribute_Set
+		(object Attribute
+		    tool       	"Java"
+		    name       	"FileName"
+		    value      	"D:\\Personal\\Code\\Java\\Graphics2D\\ScalarPlot.java"))
+	    quid       	"37BC8ED702E0"
+	    stereotype 	""
+	    visible_modules 	(list dependency_list
+		(object Dependency_Relationship
+		    quid       	"37BD369C026C"
+		    supplier   	"Component View::java::awt"
+		    quidu      	"34B0F6CD00CD"
+		    supplier_is_subsystem 	TRUE))
+	    language   	"Java")
+	(object module "ZBuffer" "NotAModuleType" "NotAModulePart"
+	    attributes 	(list Attribute_Set
+		(object Attribute
+		    tool       	"Java"
+		    name       	"FileName"
+		    value      	"D:\\Personal\\Code\\Java\\Graphics2D\\ZBuffer.java"))
+	    quid       	"37BC8ED702FE"
+	    stereotype 	""
+	    language   	"Java")
+	(object module "Bar3D" "NotAModuleType" "NotAModulePart"
+	    quid       	"37BFFA720042"
+	    stereotype 	""
+	    language   	"Java")
+	(object module "ColorRGB" "NotAModuleType" "NotAModulePart"
+	    quid       	"37BFFACC00F5"
+	    stereotype 	""
+	    language   	"Java")
+	(object module "Figures" "NotAModuleType" "NotAModulePart"
+	    quid       	"37BFFB0200CB"
+	    stereotype 	""
+	    language   	"Java")
+	(object module "GrayColor" "NotAModuleType" "NotAModulePart"
+	    quid       	"37BFFB3900AC"
+	    stereotype 	""
+	    language   	"Java")
+	(object module "GreyColor" "NotAModuleType" "NotAModulePart"
+	    quid       	"37BFFBA70096"
+	    stereotype 	""
+	    language   	"Java")
+	(object module "RandomColor" "NotAModuleType" "NotAModulePart"
+	    quid       	"37BFFBDF00DD"
+	    stereotype 	""
+	    language   	"Java"))
+    physical_presentations 	(list unit_reference_list
+	(object Module_Diagram "Graphics2D"
+	    quid       	"37BF0A650082"
+	    title      	"Graphics2D"
+	    zoom       	100
+	    max_height 	28350
+	    max_width  	21600
+	    origin_x   	0
+	    origin_y   	0
+	    items      	(list diagram_item_list
+		(object ModView "Component View::Graphics2D::ZBuffer" "NotAModuleType" "NotAModulePart" @1
+		    location   	(186, 155)
+		    label      	(object ItemLabel
+			Parent_View 	@1
+			location   	(151, 130)
+			fill_color 	13434879
+			anchor_loc 	3
+			nlines     	2
+			max_width  	127
+			label      	"ZBuffer")
+		    icon_style 	"Icon"
+		    line_color 	3342489
+		    fill_color 	13434879
+		    quidu      	"37BC8ED702FE"
+		    width      	228
+		    autoResize 	TRUE
+		    width      	228
+		    height     	162)
+		(object ModView "Component View::Graphics2D::ScalarPlot" "NotAModuleType" "NotAModulePart" @2
+		    location   	(589, 155)
+		    label      	(object ItemLabel
+			Parent_View 	@2
+			location   	(554, 130)
+			fill_color 	13434879
+			anchor_loc 	3
+			nlines     	2
+			max_width  	127
+			label      	"ScalarPlot")
+		    icon_style 	"Icon"
+		    line_color 	3342489
+		    fill_color 	13434879
+		    quidu      	"37BC8ED702E0"
+		    width      	228
+		    autoResize 	TRUE
+		    width      	228
+		    height     	162)
+		(object ModView "Component View::Graphics2D::PolyTrigon" "NotAModuleType" "NotAModulePart" @3
+		    location   	(1364, 155)
+		    label      	(object ItemLabel
+			Parent_View 	@3
+			location   	(1329, 130)
+			fill_color 	13434879
+			anchor_loc 	3
+			nlines     	2
+			max_width  	127
+			label      	"PolyTrigon")
+		    icon_style 	"Icon"
+		    line_color 	3342489
+		    fill_color 	13434879
+		    quidu      	"37BC8ED70204"
+		    width      	228
+		    autoResize 	TRUE
+		    width      	228
+		    height     	162)
+		(object ModView "Component View::Graphics2D::PatternGraphics" "NotAModuleType" "NotAModulePart" @4
+		    location   	(1798, 155)
+		    label      	(object ItemLabel
+			Parent_View 	@4
+			location   	(1751, 130)
+			fill_color 	13434879
+			anchor_loc 	3
+			nlines     	2
+			max_width  	174
+			label      	"PatternGraphics")
+		    icon_style 	"Icon"
+		    line_color 	3342489
+		    fill_color 	13434879
+		    quidu      	"37BC8ED70145"
+		    width      	314
+		    autoResize 	TRUE
+		    width      	314
+		    height     	162)
+		(object ModView "Component View::Graphics2D::MemoryImage" "NotAModuleType" "NotAModulePart" @5
+		    location   	(2232, 155)
+		    label      	(object ItemLabel
+			Parent_View 	@5
+			location   	(2194, 130)
+			fill_color 	13434879
+			anchor_loc 	3
+			nlines     	2
+			max_width  	139
+			label      	"MemoryImage")
+		    icon_style 	"Icon"
+		    line_color 	3342489
+		    fill_color 	13434879
+		    quidu      	"37BC8ED700FF"
+		    width      	250
+		    autoResize 	TRUE
+		    width      	250
+		    height     	162)
+		(object ModView "Component View::Graphics2D::Marker" "NotAModuleType" "NotAModulePart" @6
+		    location   	(2635, 155)
+		    label      	(object ItemLabel
+			Parent_View 	@6
+			location   	(2600, 130)
+			fill_color 	13434879
+			anchor_loc 	3
+			nlines     	2
+			max_width  	127
+			label      	"Marker")
+		    icon_style 	"Icon"
+		    line_color 	3342489
+		    fill_color 	13434879
+		    quidu      	"37BC8ED603BB"
+		    width      	228
+		    autoResize 	TRUE
+		    width      	228
+		    height     	162)
+		(object ModView "Component View::Graphics2D::Line2D" "NotAModuleType" "NotAModulePart" @7
+		    location   	(186, 465)
+		    label      	(object ItemLabel
+			Parent_View 	@7
+			location   	(151, 440)
+			fill_color 	13434879
+			anchor_loc 	3
+			nlines     	2
+			max_width  	127
+			label      	"Line2D")
+		    icon_style 	"Icon"
+		    line_color 	3342489
+		    fill_color 	13434879
+		    quidu      	"37BC8ED60371"
+		    width      	228
+		    autoResize 	TRUE
+		    width      	228
+		    height     	162)
+		(object ModView "Component View::Graphics2D::JavaGraphic" "NotAModuleType" "NotAModulePart" @8
+		    location   	(589, 465)
+		    label      	(object ItemLabel
+			Parent_View 	@8
+			location   	(548, 440)
+			fill_color 	13434879
+			anchor_loc 	3
+			nlines     	2
+			max_width  	150
+			label      	"JavaGraphic")
+		    icon_style 	"Icon"
+		    line_color 	3342489
+		    fill_color 	13434879
+		    quidu      	"37BC8ED602E9"
+		    width      	270
+		    autoResize 	TRUE
+		    width      	270
+		    height     	162)
+		(object ModView "Component View::Graphics2D::intGraphics2DIn" "NotAModuleType" "NotAModulePart" @9
+		    location   	(682, 1395)
+		    label      	(object ItemLabel
+			Parent_View 	@9
+			location   	(616, 1370)
+			fill_color 	13434879
+			anchor_loc 	3
+			nlines     	2
+			max_width  	247
+			label      	"intGraphics2DIn")
+		    icon_style 	"Icon"
+		    line_color 	3342489
+		    fill_color 	13434879
+		    quidu      	"37BC8ED60272"
+		    width      	444
+		    autoResize 	TRUE
+		    width      	444
+		    height     	162)
+		(object InterfaceView "Logical View::Graphics2D::intGraphics2DIn" @10
+		    location   	(682, 1798)
+		    label      	(object ItemLabel
+			Parent_View 	@10
+			location   	(681, 1906)
+			anchor_loc 	1
+			nlines     	2
+			max_width  	229
+			justify    	0
+			label      	"intGraphics2DIn")
+		    icon       	"Interface"
+		    icon_style 	"Icon"
+		    line_color 	3342489
+		    fill_color 	13434879
+		    quidu      	"37BC8ED60273"
+		    width      	58
+		    height     	58
+		    autoResize 	TRUE)
+		(object RealizeView "" @11
+		    stereotype 	TRUE
+		    line_color 	3342489
+		    quidu      	"37BF0A8D0061"
+		    client     	@9
+		    supplier   	@10
+		    line_style 	0)
+		(object ModView "Component View::Graphics2D::Hidden" "NotAModuleType" "NotAModulePart" @12
+		    location   	(992, 465)
+		    label      	(object ItemLabel
+			Parent_View 	@12
+			location   	(957, 440)
+			fill_color 	13434879
+			anchor_loc 	3
+			nlines     	2
+			max_width  	127
+			label      	"Hidden")
+		    icon_style 	"Icon"
+		    line_color 	3342489
+		    fill_color 	13434879
+		    quidu      	"37BC8ED6025C"
+		    width      	228
+		    autoResize 	TRUE
+		    width      	228
+		    height     	162)
+		(object ModView "Component View::Graphics2D::GraphicsClip" "NotAModuleType" "NotAModulePart" @13
+		    location   	(2170, 465)
+		    label      	(object ItemLabel
+			Parent_View 	@13
+			location   	(2135, 440)
+			fill_color 	13434879
+			anchor_loc 	3
+			nlines     	2
+			max_width  	127
+			label      	"GraphicsClip")
+		    icon_style 	"Icon"
+		    line_color 	3342489
+		    fill_color 	13434879
+		    quidu      	"37BC8ED60194"
+		    width      	228
+		    autoResize 	TRUE
+		    width      	228
+		    height     	162)
+		(object ModView "Component View::Graphics2D::Graphics2D" "NotAModuleType" "NotAModulePart" @14
+		    location   	(2542, 465)
+		    label      	(object ItemLabel
+			Parent_View 	@14
+			location   	(2507, 440)
+			fill_color 	13434879
+			anchor_loc 	3
+			nlines     	2
+			max_width  	127
+			label      	"Graphics2D")
+		    icon_style 	"Icon"
+		    line_color 	3342489
+		    fill_color 	13434879
+		    quidu      	"37BC8ED6018A"
+		    width      	228
+		    autoResize 	TRUE
+		    width      	228
+		    height     	162)
+		(object ModView "Component View::Graphics2D::GraphicPattern" "NotAModuleType" "NotAModulePart" @15
+		    location   	(217, 744)
+		    label      	(object ItemLabel
+			Parent_View 	@15
+			location   	(176, 719)
+			fill_color 	13434879
+			anchor_loc 	3
+			nlines     	2
+			max_width  	150
+			label      	"GraphicPattern")
+		    icon_style 	"Icon"
+		    line_color 	3342489
+		    fill_color 	13434879
+		    quidu      	"37BC8ED6014E"
+		    width      	270
+		    autoResize 	TRUE
+		    width      	270
+		    height     	162)
+		(object ModView "Component View::Graphics2D::Fractal" "NotAModuleType" "NotAModulePart" @16
+		    location   	(620, 744)
+		    label      	(object ItemLabel
+			Parent_View 	@16
+			location   	(585, 719)
+			fill_color 	13434879
+			anchor_loc 	3
+			nlines     	2
+			max_width  	127
+			label      	"Fractal")
+		    icon_style 	"Icon"
+		    line_color 	3342489
+		    fill_color 	13434879
+		    quidu      	"37BC8ED60108"
+		    width      	228
+		    autoResize 	TRUE
+		    width      	228
+		    height     	162)
+		(object ModView "Component View::Graphics2D::drawAble" "NotAModuleType" "NotAModulePart" @17
+		    location   	(186, 1395)
+		    label      	(object ItemLabel
+			Parent_View 	@17
+			location   	(151, 1370)
+			fill_color 	13434879
+			anchor_loc 	3
+			nlines     	2
+			max_width  	127
+			label      	"drawAble")
+		    icon_style 	"Icon"
+		    line_color 	3342489
+		    fill_color 	13434879
+		    quidu      	"37BC8ED60022"
+		    width      	228
+		    autoResize 	TRUE
+		    width      	228
+		    height     	162)
+		(object InterfaceView "Logical View::Graphics2D::drawAble" @18
+		    location   	(186, 1798)
+		    label      	(object ItemLabel
+			Parent_View 	@18
+			location   	(185, 1906)
+			anchor_loc 	1
+			nlines     	2
+			max_width  	229
+			justify    	0
+			label      	"drawAble")
+		    icon       	"Interface"
+		    icon_style 	"Icon"
+		    line_color 	3342489
+		    fill_color 	13434879
+		    quidu      	"37BC8ED60023"
+		    width      	58
+		    height     	58
+		    autoResize 	TRUE)
+		(object RealizeView "" @19
+		    stereotype 	TRUE
+		    line_color 	3342489
+		    quidu      	"37BF0A9D0118"
+		    client     	@17
+		    supplier   	@18
+		    line_style 	0)
+		(object ModView "Component View::Graphics2D::Polygon2D" "NotAModuleType" "NotAModulePart" @20
+		    location   	(1767, 744)
+		    label      	(object ItemLabel
+			Parent_View 	@20
+			location   	(1732, 719)
+			fill_color 	13434879
+			anchor_loc 	3
+			nlines     	2
+			max_width  	127
+			label      	"Polygon2D")
+		    icon_style 	"Icon"
+		    line_color 	3342489
+		    fill_color 	13434879
+		    quidu      	"37BC8ED5037D"
+		    width      	228
+		    autoResize 	TRUE
+		    width      	228
+		    height     	162)
+		(object ModView "Component View::Graphics2D::Body2D" "NotAModuleType" "NotAModulePart" @21
+		    location   	(2170, 744)
+		    label      	(object ItemLabel
+			Parent_View 	@21
+			location   	(2135, 719)
+			fill_color 	13434879
+			anchor_loc 	3
+			nlines     	2
+			max_width  	127
+			label      	"Body2D")
+		    icon_style 	"Icon"
+		    line_color 	3342489
+		    fill_color 	13434879
+		    quidu      	"37BC8ED50373"
+		    width      	228
+		    autoResize 	TRUE
+		    width      	228
+		    height     	162)
+		(object ModView "Component View::Graphics2D::absGraphicsText" "NotAModuleType" "NotAModulePart" @22
+		    location   	(310, 1023)
+		    label      	(object ItemLabel
+			Parent_View 	@22
+			location   	(244, 998)
+			fill_color 	13434879
+			anchor_loc 	3
+			nlines     	2
+			max_width  	247
+			label      	"absGraphicsText")
+		    icon_style 	"Icon"
+		    line_color 	3342489
+		    fill_color 	13434879
+		    quidu      	"37BC8ED50212"
+		    width      	444
+		    autoResize 	TRUE
+		    width      	444
+		    height     	162)
+		(object ModView "Component View::Graphics2D::absGraphicsRead" "NotAModuleType" "NotAModulePart" @23
+		    location   	(899, 1023)
+		    label      	(object ItemLabel
+			Parent_View 	@23
+			location   	(830, 998)
+			fill_color 	13434879
+			anchor_loc 	3
+			nlines     	2
+			max_width  	259
+			label      	"absGraphicsRead")
+		    icon_style 	"Icon"
+		    line_color 	3342489
+		    fill_color 	13434879
+		    quidu      	"37BC8ED50210"
+		    width      	466
+		    autoResize 	TRUE
+		    width      	466
+		    height     	162)
+		(object ModView "Component View::Graphics2D::Point2D" "NotAModuleType" "NotAModulePart" @24
+		    location   	(1426, 1023)
+		    label      	(object ItemLabel
+			Parent_View 	@24
+			location   	(1391, 998)
+			fill_color 	13434879
+			anchor_loc 	3
+			nlines     	2
+			max_width  	127
+			label      	"Point2D")
+		    icon_style 	"Icon"
+		    line_color 	3342489
+		    fill_color 	13434879
+		    quidu      	"37BC8ED5009B"
+		    width      	228
+		    autoResize 	TRUE
+		    width      	228
+		    height     	162)
+		(object ModView "Component View::Graphics2D::intGraphics2DOut" "NotAModuleType" "NotAModulePart" @25
+		    location   	(1240, 1395)
+		    label      	(object ItemLabel
+			Parent_View 	@25
+			location   	(1165, 1370)
+			fill_color 	13434879
+			anchor_loc 	3
+			nlines     	2
+			max_width  	282
+			label      	"intGraphics2DOut")
+		    icon_style 	"Icon"
+		    line_color 	3342489
+		    fill_color 	13434879
+		    quidu      	"37BC8ED50098"
+		    width      	508
+		    autoResize 	TRUE
+		    width      	508
+		    height     	162)
+		(object InterfaceView "Logical View::Graphics2D::intGraphics2DOut" @26
+		    location   	(1240, 1798)
+		    label      	(object ItemLabel
+			Parent_View 	@26
+			location   	(1239, 1906)
+			anchor_loc 	1
+			nlines     	2
+			max_width  	229
+			justify    	0
+			label      	"intGraphics2DOut")
+		    icon       	"Interface"
+		    icon_style 	"Icon"
+		    line_color 	3342489
+		    fill_color 	13434879
+		    quidu      	"37BC8ED50099"
+		    width      	58
+		    height     	58
+		    autoResize 	TRUE)
+		(object RealizeView "" @27
+		    stereotype 	TRUE
+		    line_color 	3342489
+		    quidu      	"37BF0AAC012E"
+		    client     	@25
+		    supplier   	@26
+		    line_style 	0)
+		(object ModView "Component View::Graphics2D::absGraphics2D" "NotAModuleType" "NotAModulePart" @28
+		    location   	(1891, 1023)
+		    label      	(object ItemLabel
+			Parent_View 	@28
+			location   	(1832, 998)
+			fill_color 	13434879
+			anchor_loc 	3
+			nlines     	2
+			max_width  	222
+			label      	"absGraphics2D")
+		    icon_style 	"Icon"
+		    line_color 	3342489
+		    fill_color 	13434879
+		    quidu      	"37BC8ED50090"
+		    width      	400
+		    autoResize 	TRUE
+		    width      	400
+		    height     	162)))))

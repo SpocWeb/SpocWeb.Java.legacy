@@ -1,0 +1,91 @@
+package id9t4ec9fodqegc9fq5fdr;
+
+/**
+@version 2.0
+@physicalPackage
+@__modelType diagram 
+*/
+class diagram {
+/**
+@shapeType DependencyLink
+@__modelType link
+@__ref <oiref:design#Class#id13wyvc9fodqegc9fq5d7b.diagram:oiref><oihard>
+@automatic 
+*/
+class link {
+}/**
+@shapeType DependencyLink
+@__modelType link
+@__ref <oiref:design#Class#id457m4c9fodqegc9fq5a4l.diagram:oiref><oihard>
+@automatic 
+*/
+class link91 {
+}/**
+@__ref <oiref:java#Class#Math.NeuronNet.ASlab:oiref><oihard>
+@__modelType reference 
+*/
+class reference1 {
+}/**
+@__ref <oiref:java#Class#Math.NeuronNet.ISlab:oiref><oihard>
+@__modelType reference 
+*/
+class reference2 {
+}/**
+@__ref <oiref:java#Class#Functions.Derive.NeuronNet.Sigmoid:oiref><oihard>
+@__modelType reference 
+*/
+class reference {
+}/**
+@__ref <oiref:java#Class#Functions.Derive.NeuronNet.testNeuronNet:oiref><oihard>
+@__modelType reference 
+*/
+class reference28 {
+}/**
+@__ref <oiref:java#Class#Functions.Derive.NeuronNet.KohonenGraph:oiref><oihard>
+@__modelType reference 
+*/
+class reference38 {
+}/**
+@__ref <oiref:java#Class#Functions.Derive.NeuronNet.Network:oiref><oihard>
+@__modelType reference 
+*/
+class reference52 {
+}/**
+@__ref <oiref:java#Class#Functions.Derive.NeuronNet.Layer:oiref><oihard>
+@__modelType reference 
+*/
+class reference53 {
+}/**
+@__ref <oiref:java#Class#Functions.Derive.NeuronNet.ASlab:oiref><oihard>
+@__modelType reference 
+*/
+class reference54 {
+}/**
+@__ref <oiref:java#Class#Functions.Derive.NeuronNet.Slab:oiref><oihard>
+@__modelType reference 
+*/
+class reference55 {
+}/**
+@__ref <oiref:java#Class#Functions.Derive.NeuronNet.Kohonen:oiref><oihard>
+@__modelType reference 
+*/
+class reference56 {
+}/**
+@__ref <oiref:java#Class#Functions.Derive.NeuronNet.ISlab:oiref><oihard>
+@__modelType reference 
+*/
+class reference57 {
+}}/**
+@__tags
+@shapeType ClassDiagram 
+*/
+class __tags {
+}/**
+@__options 
+*/
+class __options {
+}/**
+@__positions 
+*/
+class __positions {
+}

@@ -1,0 +1,408 @@
+
+(object Petal
+    version    	42
+    _written   	"Rose 4.5.8163.3"
+    charSet    	0)
+
+(object Class_Category "BodyFuncs"
+    is_unit    	TRUE
+    is_loaded  	TRUE
+    quid       	"37BC8EB702D1"
+    visible_categories 	(list visibility_relationship_list
+	(object Visibility_Relationship
+	    quid       	"37BFE6AA00B6"
+	    supplier   	"Logical View::intFunction"
+	    quidu      	"36BB39470389"))
+    exportControl 	"Public"
+    logical_models 	(list unit_reference_list
+	(object Class "CosHMinus1"
+	    attributes 	(list Attribute_Set
+		(object Attribute
+		    tool       	"Java"
+		    name       	"GenerateFinalizer"
+		    value      	FALSE)
+		(object Attribute
+		    tool       	"Java"
+		    name       	"GenerateStaticInitializer"
+		    value      	FALSE)
+		(object Attribute
+		    tool       	"Java"
+		    name       	"GenerateInstanceInitializer"
+		    value      	FALSE)
+		(object Attribute
+		    tool       	"Java"
+		    name       	"GenerateDefaultConstructor"
+		    value      	FALSE))
+	    quid       	"37BC8EB702D3"
+	    documentation 	"This Class encapsulates the Sinus Function.  "
+	    realized_interfaces 	(list realize_rel_list
+		(object Realize_Relationship
+		    attributes 	(list Attribute_Set)
+		    quid       	"37BD360D02E3"
+		    supplier   	"Logical View::intFunction::intFunction"
+		    quidu      	"36BB39BA00B2"))
+	    operations 	(list Operations
+		(object Operation "Function"
+		    attributes 	(list Attribute_Set)
+		    quid       	"37BD360D02E4"
+		    documentation 	
+|This Function represents the Sinus Function.
+|	 * It always returns the Argument.  
+		    
+		    parameters 	(list Parameters
+			(object Parameter "arg"
+			    type       	"Object"))
+		    result     	"Object"
+		    concurrency 	"Sequential"
+		    opExportControl 	"Public"
+		    uid        	0))
+	    module     	"Component View::BodyFuncs::CosHMinus1"
+	    quidu      	"37BC8EB702D2"
+	    language   	"Java")
+	(object Class "Cosinus"
+	    attributes 	(list Attribute_Set
+		(object Attribute
+		    tool       	"Java"
+		    name       	"GenerateFinalizer"
+		    value      	FALSE)
+		(object Attribute
+		    tool       	"Java"
+		    name       	"GenerateStaticInitializer"
+		    value      	FALSE)
+		(object Attribute
+		    tool       	"Java"
+		    name       	"GenerateInstanceInitializer"
+		    value      	FALSE)
+		(object Attribute
+		    tool       	"Java"
+		    name       	"GenerateDefaultConstructor"
+		    value      	FALSE))
+	    quid       	"37BC8EB7030D"
+	    documentation 	"This Class encapsulates the Sinus Function.  "
+	    realized_interfaces 	(list realize_rel_list
+		(object Realize_Relationship
+		    attributes 	(list Attribute_Set)
+		    quid       	"37BD360E033F"
+		    supplier   	"Logical View::intFunction::intFunction"
+		    quidu      	"36BB39BA00B2"))
+	    operations 	(list Operations
+		(object Operation "Function"
+		    attributes 	(list Attribute_Set)
+		    quid       	"37BD360E0349"
+		    documentation 	
+|This Function represents the Sinus Function.
+|	 * It always returns the Argument.  
+		    
+		    parameters 	(list Parameters
+			(object Parameter "arg"
+			    type       	"Object"))
+		    result     	"Object"
+		    concurrency 	"Sequential"
+		    opExportControl 	"Public"
+		    uid        	0))
+	    module     	"Component View::BodyFuncs::Cosinus"
+	    quidu      	"37BC8EB7030C"
+	    language   	"Java")
+	(object Class "CosinusMinus1"
+	    attributes 	(list Attribute_Set
+		(object Attribute
+		    tool       	"Java"
+		    name       	"GenerateFinalizer"
+		    value      	FALSE)
+		(object Attribute
+		    tool       	"Java"
+		    name       	"GenerateStaticInitializer"
+		    value      	FALSE)
+		(object Attribute
+		    tool       	"Java"
+		    name       	"GenerateInstanceInitializer"
+		    value      	FALSE)
+		(object Attribute
+		    tool       	"Java"
+		    name       	"GenerateDefaultConstructor"
+		    value      	FALSE))
+	    quid       	"37BC8EB70352"
+	    documentation 	"This Class encapsulates the Sinus Function.  "
+	    realized_interfaces 	(list realize_rel_list
+		(object Realize_Relationship
+		    attributes 	(list Attribute_Set)
+		    quid       	"37BD360F037C"
+		    supplier   	"Logical View::intFunction::intFunction"
+		    quidu      	"36BB39BA00B2"))
+	    operations 	(list Operations
+		(object Operation "Function"
+		    attributes 	(list Attribute_Set)
+		    quid       	"37BD360F037D"
+		    documentation 	
+|This Function represents the Sinus Function.
+|	 * It always returns the Argument.  
+		    
+		    parameters 	(list Parameters
+			(object Parameter "arg"
+			    type       	"Object"))
+		    result     	"Object"
+		    concurrency 	"Sequential"
+		    opExportControl 	"Public"
+		    uid        	0))
+	    module     	"Component View::BodyFuncs::CosinusMinus1"
+	    quidu      	"37BC8EB70348"
+	    language   	"Java")
+	(object Class "Exponential"
+	    attributes 	(list Attribute_Set
+		(object Attribute
+		    tool       	"Java"
+		    name       	"GenerateFinalizer"
+		    value      	FALSE)
+		(object Attribute
+		    tool       	"Java"
+		    name       	"GenerateStaticInitializer"
+		    value      	FALSE)
+		(object Attribute
+		    tool       	"Java"
+		    name       	"GenerateInstanceInitializer"
+		    value      	FALSE)
+		(object Attribute
+		    tool       	"Java"
+		    name       	"GenerateDefaultConstructor"
+		    value      	FALSE))
+	    quid       	"37BC8EB7038E"
+	    documentation 	"This Class encapsulates the Sinus Function.  "
+	    realized_interfaces 	(list realize_rel_list
+		(object Realize_Relationship
+		    attributes 	(list Attribute_Set)
+		    quid       	"37BD361003BA"
+		    supplier   	"Logical View::intFunction::intFunction"
+		    quidu      	"36BB39BA00B2"))
+	    operations 	(list Operations
+		(object Operation "Function"
+		    attributes 	(list Attribute_Set)
+		    quid       	"37BD361003BB"
+		    documentation 	
+|This Function represents the Sinus Function.
+|	 * It always returns the Argument.  
+		    
+		    parameters 	(list Parameters
+			(object Parameter "arg"
+			    type       	"Object"))
+		    result     	"Object"
+		    concurrency 	"Sequential"
+		    opExportControl 	"Public"
+		    uid        	0))
+	    module     	"Component View::BodyFuncs::Exponential"
+	    quidu      	"37BC8EB70384"
+	    language   	"Java")
+	(object Class "Sinus"
+	    attributes 	(list Attribute_Set
+		(object Attribute
+		    tool       	"Java"
+		    name       	"GenerateFinalizer"
+		    value      	FALSE)
+		(object Attribute
+		    tool       	"Java"
+		    name       	"GenerateStaticInitializer"
+		    value      	FALSE)
+		(object Attribute
+		    tool       	"Java"
+		    name       	"GenerateInstanceInitializer"
+		    value      	FALSE)
+		(object Attribute
+		    tool       	"Java"
+		    name       	"GenerateDefaultConstructor"
+		    value      	FALSE))
+	    quid       	"37BC8EB703CB"
+	    documentation 	"This Class encapsulates the Sinus Function.  "
+	    realized_interfaces 	(list realize_rel_list
+		(object Realize_Relationship
+		    attributes 	(list Attribute_Set)
+		    quid       	"37BD36120019"
+		    supplier   	"Logical View::intFunction::intFunction"
+		    quidu      	"36BB39BA00B2"))
+	    operations 	(list Operations
+		(object Operation "Function"
+		    attributes 	(list Attribute_Set)
+		    quid       	"37BD3612001A"
+		    documentation 	"This Function represents the Sinus Function.  "
+		    parameters 	(list Parameters
+			(object Parameter "arg"
+			    type       	"Object"))
+		    result     	"Object"
+		    concurrency 	"Sequential"
+		    opExportControl 	"Public"
+		    uid        	0))
+	    module     	"Component View::BodyFuncs::Sinus"
+	    quidu      	"37BC8EB703CA"
+	    language   	"Java"))
+    logical_presentations 	(list unit_reference_list
+	(object ClassDiagram "BodyFuncs"
+	    quid       	"37BE6FCD00CE"
+	    title      	"BodyFuncs"
+	    zoom       	100
+	    max_height 	28350
+	    max_width  	21600
+	    origin_x   	0
+	    origin_y   	0
+	    items      	(list diagram_item_list
+		(object ClassView "Class" "Logical View::BodyFuncs::CosHMinus1" @1
+		    ShowCompartmentStereotypes 	TRUE
+		    IncludeAttribute 	TRUE
+		    location   	(372, 155)
+		    label      	(object ItemLabel
+			Parent_View 	@1
+			location   	(238, 104)
+			fill_color 	13434879
+			nlines     	1
+			max_width  	268
+			justify    	0
+			label      	"CosHMinus1")
+		    icon_style 	"Icon"
+		    line_color 	3342489
+		    fill_color 	13434879
+		    quidu      	"37BC8EB702D3"
+		    width      	286
+		    height     	126
+		    annotation 	8
+		    autoResize 	TRUE)
+		(object ClassView "Class" "Logical View::BodyFuncs::Cosinus" @2
+		    ShowCompartmentStereotypes 	TRUE
+		    IncludeAttribute 	TRUE
+		    location   	(1085, 155)
+		    label      	(object ItemLabel
+			Parent_View 	@2
+			location   	(996, 104)
+			fill_color 	13434879
+			nlines     	1
+			max_width  	178
+			justify    	0
+			label      	"Cosinus")
+		    icon_style 	"Icon"
+		    line_color 	3342489
+		    fill_color 	13434879
+		    quidu      	"37BC8EB7030D"
+		    width      	196
+		    height     	126
+		    annotation 	8
+		    autoResize 	TRUE)
+		(object ClassView "Class" "Logical View::BodyFuncs::CosinusMinus1" @3
+		    ShowCompartmentStereotypes 	TRUE
+		    IncludeAttribute 	TRUE
+		    location   	(372, 341)
+		    label      	(object ItemLabel
+			Parent_View 	@3
+			location   	(217, 290)
+			fill_color 	13434879
+			nlines     	1
+			max_width  	310
+			justify    	0
+			label      	"CosinusMinus1")
+		    icon_style 	"Icon"
+		    line_color 	3342489
+		    fill_color 	13434879
+		    quidu      	"37BC8EB70352"
+		    width      	328
+		    height     	126
+		    annotation 	8
+		    autoResize 	TRUE)
+		(object ClassView "Class" "Logical View::BodyFuncs::Exponential" @4
+		    ShowCompartmentStereotypes 	TRUE
+		    IncludeAttribute 	TRUE
+		    location   	(744, 403)
+		    label      	(object ItemLabel
+			Parent_View 	@4
+			location   	(619, 352)
+			fill_color 	13434879
+			nlines     	1
+			max_width  	250
+			justify    	0
+			label      	"Exponential")
+		    icon_style 	"Icon"
+		    line_color 	3342489
+		    fill_color 	13434879
+		    quidu      	"37BC8EB7038E"
+		    width      	268
+		    height     	126
+		    annotation 	8
+		    autoResize 	TRUE)
+		(object ClassView "Class" "Logical View::BodyFuncs::Sinus" @5
+		    ShowCompartmentStereotypes 	TRUE
+		    IncludeAttribute 	TRUE
+		    location   	(1085, 341)
+		    label      	(object ItemLabel
+			Parent_View 	@5
+			location   	(1004, 290)
+			fill_color 	13434879
+			nlines     	1
+			max_width  	162
+			justify    	0
+			label      	"Sinus")
+		    icon_style 	"Icon"
+		    line_color 	3342489
+		    fill_color 	13434879
+		    quidu      	"37BC8EB703CB"
+		    height     	126
+		    annotation 	8
+		    autoResize 	TRUE)
+		(object ClassView "Class" "Logical View::intFunction::intFunction" @6
+		    ShowCompartmentStereotypes 	TRUE
+		    IncludeAttribute 	TRUE
+		    location   	(744, 155)
+		    label      	(object ItemLabel
+			Parent_View 	@6
+			location   	(613, 102)
+			fill_color 	13434879
+			nlines     	1
+			max_width  	262
+			justify    	0
+			label      	"intFunction")
+		    stereotype 	(object ItemLabel
+			Parent_View 	@6
+			location   	(613, 52)
+			fill_color 	13434879
+			anchor     	10
+			nlines     	1
+			max_width  	262
+			justify    	0
+			label      	"<<Interface>>")
+		    icon       	"Interface"
+		    icon_style 	"Label"
+		    line_color 	3342489
+		    fill_color 	13434879
+		    quidu      	"36BB39BA00B2"
+		    width      	280
+		    height     	230
+		    annotation 	8
+		    autoResize 	TRUE)
+		(object RealizeView "" @7
+		    stereotype 	TRUE
+		    line_color 	3342489
+		    quidu      	"37BD360D02E3"
+		    client     	@1
+		    supplier   	@6
+		    line_style 	0)
+		(object RealizeView "" @8
+		    stereotype 	TRUE
+		    line_color 	3342489
+		    quidu      	"37BD360E033F"
+		    client     	@2
+		    supplier   	@6
+		    line_style 	0)
+		(object RealizeView "" @9
+		    stereotype 	TRUE
+		    line_color 	3342489
+		    quidu      	"37BD360F037C"
+		    client     	@3
+		    supplier   	@6
+		    line_style 	0)
+		(object RealizeView "" @10
+		    stereotype 	TRUE
+		    line_color 	3342489
+		    quidu      	"37BD361003BA"
+		    client     	@4
+		    supplier   	@6
+		    line_style 	0)
+		(object RealizeView "" @11
+		    stereotype 	TRUE
+		    line_color 	3342489
+		    quidu      	"37BD36120019"
+		    client     	@5
+		    supplier   	@6
+		    line_style 	0)))))

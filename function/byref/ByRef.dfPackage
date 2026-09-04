@@ -1,0 +1,97 @@
+package id1ygonc9fodqegc9fq5eog;
+
+/**
+@version 2.0
+@physicalPackage
+@__modelType diagram 
+*/
+class diagram {
+/**
+@shapeType DependencyLink
+@__modelType link
+@__ref <oiref:design#Class#id457m4c9fodqegc9fq5a4l.diagram:oiref><oihard>
+@automatic 
+*/
+class link {
+}/**
+@shapeType DependencyLink
+@__modelType link
+@__ref <oiref:design#Class#id47mokc9fodqegc9fq5czi.diagram:oiref><oihard>
+@automatic 
+*/
+class link57 {
+}/**
+@__ref <oiref:design#Class#id3w7dqc9fodqegc9fq5fcn.diagram:oiref><oihard>
+@__modelType reference
+@__fqn <oiref:#Package#Function.ByRef.Combinatoric:oiref> 
+*/
+class reference15 {
+}/**
+@__ref <oiref:java#Class#Functions.ByRef.ByRefDouble:oiref><oihard>
+@__modelType reference 
+*/
+class reference1 {
+}/**
+@__ref <oiref:java#Class#Functions.ByRef.ByRefLong:oiref><oihard>
+@__modelType reference 
+*/
+class reference10 {
+}/**
+@__ref <oiref:java#Class#Functions.ByRef.ByRefShort:oiref><oihard>
+@__modelType reference 
+*/
+class reference39 {
+}/**
+@__ref <oiref:java#Class#Functions.ByRef.ByRefChar:oiref><oihard>
+@__modelType reference 
+*/
+class reference159 {
+}/**
+@__ref <oiref:java#Class#Functions.ByRef.ByRefByte:oiref><oihard>
+@__modelType reference 
+*/
+class reference275 {
+}/**
+@__ref <oiref:java#Class#Functions.ByRef.ByRefObject:oiref><oihard>
+@__modelType reference 
+*/
+class reference281 {
+}/**
+@__ref <oiref:java#Class#Functions.ByRef.TestByRef:oiref><oihard>
+@__modelType reference 
+*/
+class reference283 {
+}/**
+@__ref <oiref:java#Class#Functions.ByRef.ByRefFloat:oiref><oihard>
+@__modelType reference 
+*/
+class reference290 {
+}/**
+@__ref <oiref:java#Class#Functions.ByRef.ByRefInt:oiref><oihard>
+@__modelType reference 
+*/
+class reference314 {
+}/**
+@__ref <oiref:java#Class#Functions.ByRef.ByRefString:oiref><oihard>
+@__modelType reference 
+*/
+class reference322 {
+}/**
+@__ref <oiref:java#Class#Functions.ByRef.ByRefBoolean:oiref><oihard>
+@__modelType reference 
+*/
+class reference324 {
+}}/**
+@__tags
+@shapeType ClassDiagram 
+*/
+class __tags {
+}/**
+@__options 
+*/
+class __options {
+}/**
+@__positions 
+*/
+class __positions {
+}

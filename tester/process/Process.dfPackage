@@ -1,0 +1,209 @@
+package id4uw84c9fodqegc9fq5dxg;
+
+/**
+@version 2.0
+@physicalPackage
+@__modelType diagram 
+*/
+class diagram {
+/**
+@shapeType DependencyLink
+@__modelType link
+@__ref <oiref:design#Class#id4f20zc9fodqegc9fq5grt.diagram:oiref><oihard>
+@automatic 
+*/
+class link {
+}/**
+@shapeType DependencyLink
+@__modelType link
+@__ref <oiref:design#Class#id47mokc9fodqegc9fq5czi.diagram:oiref><oihard>
+@automatic 
+*/
+class link101 {
+}/**
+@shapeType DependencyLink
+@__modelType link
+@__ref <oiref:design#Class#id62hhc9fodqegc9fq5d8p.diagram:oiref><oihard>
+@automatic 
+*/
+class link102 {
+}/**
+@shapeType DependencyLink
+@__modelType link
+@__ref <oiref:design#Class#idqb01c9fodqegc9fq5ddp.diagram:oiref><oihard>
+@automatic 
+*/
+class link103 {
+}/**
+@shapeType DependencyLink
+@__modelType link
+@__ref <oiref:design#Class#id457m4c9fodqegc9fq5a4l.diagram:oiref><oihard>
+@automatic 
+*/
+class link104 {
+}/**
+@__ref <oiref:java#Class#Testers.Process.DynTransByFunction:oiref><oihard>
+@__modelType reference 
+*/
+class reference {
+}/**
+@__ref <oiref:java#Class#Testers.Process.TransitionByFunction:oiref><oihard>
+@__modelType reference 
+*/
+class reference18 {
+}/**
+@__ref <oiref:java#Class#Testers.Process.PatternSearcher:oiref><oihard>
+@__modelType reference 
+*/
+class reference19 {
+}/**
+@__ref <oiref:java#Class#Testers.Process.StreamProcessor:oiref><oihard>
+@__modelType reference 
+*/
+class reference20 {
+}/**
+@__ref <oiref:java#Class#Testers.Process.testProcess:oiref><oihard>
+@__modelType reference 
+*/
+class reference21 {
+}/**
+@__ref <oiref:java#Class#Testers.Process.AutomatonM:oiref><oihard>
+@__modelType reference 
+*/
+class reference22 {
+}/**
+@__ref <oiref:java#Class#Testers.Process.IDiscreteTransition:oiref><oihard>
+@__modelType reference 
+*/
+class reference23 {
+}/**
+@__ref <oiref:java#Class#Testers.Process.IDynamicTransition:oiref><oihard>
+@__modelType reference 
+*/
+class reference24 {
+}/**
+@__ref <oiref:java#Class#Testers.Process.IOEProcess:oiref><oihard>
+@__modelType reference 
+*/
+class reference25 {
+}/**
+@__ref <oiref:java#Class#Testers.Process.DiscreteAutomaton:oiref><oihard>
+@__modelType reference 
+*/
+class reference26 {
+}/**
+@__ref <oiref:java#Class#Testers.Process.DiscreteFnByHash:oiref><oihard>
+@__modelType reference 
+*/
+class reference27 {
+}/**
+@__ref <oiref:java#Class#Testers.Process.MulInt:oiref><oihard>
+@__modelType reference 
+*/
+class reference28 {
+}/**
+@__ref <oiref:java#Class#Testers.Process.DivInt:oiref><oihard>
+@__modelType reference 
+*/
+class reference29 {
+}/**
+@__ref <oiref:java#Class#Testers.Process.ITransition:oiref><oihard>
+@__modelType reference 
+*/
+class reference30 {
+}/**
+@__ref <oiref:java#Class#Testers.Process.Automaton:oiref><oihard>
+@__modelType reference 
+*/
+class reference31 {
+}/**
+@__ref <oiref:java#Class#Testers.Process.IDynTransition:oiref><oihard>
+@__modelType reference 
+*/
+class reference32 {
+}/**
+@__ref <oiref:java#Class#Testers.Process.SubtInt:oiref><oihard>
+@__modelType reference 
+*/
+class reference33 {
+}/**
+@__ref <oiref:java#Class#Testers.Process.AddInt:oiref><oihard>
+@__modelType reference 
+*/
+class reference34 {
+}/**
+@__ref <oiref:java#Class#Testers.Process.Operation:oiref><oihard>
+@__modelType reference 
+*/
+class reference11 {
+}/**
+@__ref <oiref:java#Class#Testers.Process.Operator:oiref><oihard>
+@__modelType reference 
+*/
+class reference13 {
+}/**
+@__ref <oiref:java#Class#Testers.Process.ProcessorRunner:oiref><oihard>
+@__modelType reference 
+*/
+class reference14 {
+}/**
+@__ref <oiref:java#Class#Testers.Process.ProcessorStreamer:oiref><oihard>
+@__modelType reference 
+*/
+class reference15 {
+}/**
+@__ref <oiref:java#Class#Testers.Process.AOperation:oiref><oihard>
+@__modelType reference 
+*/
+class reference1 {
+}}/**
+@__tags
+@shapeType ClassDiagram 
+*/
+class __tags {
+}/**
+@__options 
+*/
+class __options {
+}/**
+@__positions <oigroup:<oiref:java#Class#Testers.Process.MulInt:oiref>=1516,358,183,85,1:oigroup>
+<oigroup:<oiref:java#Class#Testers.Process.AutomatonM:oiref>=1579,10,200,190,1:oigroup>
+<oigroup:<oiref:java#Class#Testers.Process.testProcess:oiref>=1404,10,148,101,1:oigroup>
+<oigroup:<oiref:java#Class#Testers.Process.IOEProcess:oiref>=1550,490,148,117,1:oigroup>
+<oigroup:<oiref:java#Class#Testers.Process.IDynTransition:oiref>=450,264,200,101,1:oigroup>
+<oigroup:<oiref:java#Class#Testers.Process.Automaton:oiref>=10,10,200,174,1:oigroup>
+<oigroup:<oiref:java#Class#Testers.Process.TransitionByFunction:oiref>=230,264,200,142,1:oigroup>
+<oigroup:<oiref:java#Implements#Testers.Process.AddInt#Testers.Process.IDiscreteTransition:oiref>=1810,358,1362,111:oigroup>
+<oigroup:MemberLink#<oiref:java#Member#Testers.Process.DiscreteAutomaton#Lambda:oiref>=870,26,1199,26:oigroup>
+<oigroup:<oiref:java#Implements#Testers.Process.DivInt#Testers.Process.IDiscreteTransition:oiref>=1261,358,1261,111:oigroup>
+<oigroup:<oiref:java#Extends#Testers.Process.IDynamicTransition#Testers.Process.IDiscreteTransition:oiref>=1318,358,1318,111:oigroup>
+<oigroup:MemberLink#<oiref:java#Member#Testers.Process.Automaton#Output:oiref>=210,43,340,43:oigroup>
+<oigroup:<oiref:java#Class#Testers.Process.DiscreteFnByHash:oiref>=1300,500,200,142,1:oigroup>
+<oigroup:<oiref:java#Class#Testers.Process.DynTransByFunction:oiref>=340,488,200,117,1:oigroup>
+<oigroup:<oiref:java#Extends#Testers.Process.DynTransByFunction#Testers.Process.TransitionByFunction:oiref>=370,488,370,406:oigroup>
+<oigroup:MemberLink#<oiref:java#Member#Testers.Process.DiscreteAutomaton#DivInt:oiref>=870,60,1199,60:oigroup>
+<oigroup:<oiref:java#Class#Testers.Process.DiscreteAutomaton:oiref>=670,10,200,238,1:oigroup>
+<oigroup:<oiref:java#Extends#Testers.Process.StreamProcessor#Testers.Process.Automaton:oiref>=110,264,110,184:oigroup>
+<oigroup:<oiref:java#Extends#Testers.Process.IDynTransition#Testers.Process.ITransition:oiref>=495,264,495,111:oigroup>
+<oigroup:<oiref:java#Implements#Testers.Process.TransitionByFunction#Testers.Process.ITransition:oiref>=385,264,385,111:oigroup>
+<oigroup:<oiref:java#Class#Testers.Process.DivInt:oiref>=1093,358,183,85,1:oigroup>
+<oigroup:<oiref:java#Implements#Testers.Process.PatternSearcher#Testers.Process.IDiscreteTransition:oiref>=803,358,1219,111:oigroup>
+<oigroup:MemberLink#<oiref:java#Member#Testers.Process.PatternSearcher#A:oiref>=736,358,736,248:oigroup>
+<oigroup:<oiref:java#Class#Testers.Process.IDynamicTransition:oiref>=1296,358,200,101,1:oigroup>
+<oigroup:MemberLink#<oiref:java#Member#Testers.Process.Automaton#Lambda:oiref>=210,77,340,77:oigroup>
+<oigroup:<oiref:java#Class#Testers.Process.StreamProcessor:oiref>=10,264,200,174,1:oigroup>
+<oigroup:<oiref:java#Class#Testers.Process.SubtInt:oiref>=890,358,183,85,1:oigroup>
+<oigroup:MemberLink#<oiref:java#Member#Testers.Process.DiscreteAutomaton#AddInt:oiref>=870,94,1199,94:oigroup>
+<oigroup:<oiref:java#Implements#Testers.Process.MulInt#Testers.Process.IDiscreteTransition:oiref>=1607,358,1340,111:oigroup>
+<oigroup:<oiref:java#Class#Testers.Process.ITransition:oiref>=340,10,200,101,1:oigroup>
+<oigroup:<oiref:java#Class#Testers.Process.PatternSearcher:oiref>=670,358,200,206,1:oigroup>
+<oigroup:MemberLink#<oiref:java#Member#Testers.Process.DiscreteAutomaton#MulInt:oiref>=870,77,1199,77:oigroup>
+<oigroup:<oiref:java#Implements#Testers.Process.SubtInt#Testers.Process.IDiscreteTransition:oiref>=981,358,1240,111:oigroup>
+<oigroup:<oiref:java#Implements#Testers.Process.DynTransByFunction#Testers.Process.IDynTransition:oiref>=495,488,495,365:oigroup>
+<oigroup:<oiref:java#Implements#Testers.Process.DiscreteFnByHash#Testers.Process.IDynamicTransition:oiref>=1398,500,1398,459:oigroup>
+<oigroup:<oiref:java#Class#Testers.Process.AddInt:oiref>=1719,358,183,85,1:oigroup>
+<oigroup:MemberLink#<oiref:java#Member#Testers.Process.DiscreteAutomaton#SubtInt:oiref>=870,43,1199,43:oigroup>
+<oigroup:<oiref:java#Class#Testers.Process.IDiscreteTransition:oiref>=1199,10,185,101,1:oigroup> 
+*/
+class __positions {
+}

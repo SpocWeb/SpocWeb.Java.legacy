@@ -1,0 +1,2 @@
+java DirToXml D:\>R:\root\MHeuer\DirLists\dirList%1.xml
+REM java DirToXml .exe .doc .dot .htm .html .zip .jar .pdf .xml .arj .arc .mp3 .mov .asf .asx .au .avi .bmp .cab .db .dib .jpg .jpeg .divx .txt .gif .lha .mdb .mid .midi .mp1 .mp2 .mpe .mpeg .mpg .msi .pcd .pcx .png .ppt .qt .ra .ram .rar .rtf .shtml .shtm .sis .snd .stm .tar .tgz .theme .wav .wax .wm .wmf .wri .xhtml .xls .xsl .xslt .xsd .dtd .zoo > D:\ R:\root\MHeuer\DirLists\dirList%1.xml 

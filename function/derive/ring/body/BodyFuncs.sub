@@ -1,0 +1,322 @@
+
+(object Petal
+    version    	42
+    _written   	"Rose 4.5.8163.3"
+    charSet    	0)
+
+(object SubSystem "BodyFuncs"
+    is_unit    	TRUE
+    is_loaded  	TRUE
+    quid       	"37BC8EB702D0"
+    visible_modules 	(list dependency_list
+	(object Dependency_Relationship
+	    quid       	"37BC8EB702DD"
+	    supplier   	"Component View::Body"
+	    quidu      	"36BB514B0391"
+	    supplier_is_subsystem 	TRUE)
+	(object Dependency_Relationship
+	    quid       	"37BC8EB702DF"
+	    supplier   	"Component View::intFunction"
+	    quidu      	"36BB39470388"
+	    supplier_is_subsystem 	TRUE))
+    physical_models 	(list unit_reference_list
+	(object module "CosHMinus1" "NotAModuleType" "NotAModulePart"
+	    attributes 	(list Attribute_Set
+		(object Attribute
+		    tool       	"Java"
+		    name       	"FileName"
+		    value      	"D:\\Personal\\Code\\Java\\BodyFuncs\\CosHMinus1.java"))
+	    quid       	"37BC8EB702D2"
+	    stereotype 	""
+	    visible_modules 	(list dependency_list
+		(object Dependency_Relationship
+		    quid       	"37BC8EB702DE"
+		    supplier   	"Component View::Body"
+		    quidu      	"36BB514B0391"
+		    supplier_is_subsystem 	TRUE)
+		(object Dependency_Relationship
+		    quid       	"37BC8EB702E0"
+		    supplier   	"Component View::intFunction"
+		    quidu      	"36BB39470388"
+		    supplier_is_subsystem 	TRUE)
+		(object Dependency_Relationship
+		    quid       	"37BD1C05004F"
+		    supplier   	"Component View::Body"
+		    quidu      	"36BB514B0391"
+		    supplier_is_subsystem 	TRUE)
+		(object Dependency_Relationship
+		    quid       	"37BD1C050050"
+		    supplier   	"Component View::intFunction"
+		    quidu      	"36BB39470388"
+		    supplier_is_subsystem 	TRUE)
+		(object Dependency_Relationship
+		    quid       	"37BD360D02E6"
+		    supplier   	"Component View::Body"
+		    quidu      	"36BB514B0391"
+		    supplier_is_subsystem 	TRUE)
+		(object Dependency_Relationship
+		    quid       	"37BD360D02E7"
+		    supplier   	"Component View::intFunction"
+		    quidu      	"36BB39470388"
+		    supplier_is_subsystem 	TRUE))
+	    language   	"Java")
+	(object module "Cosinus" "NotAModuleType" "NotAModulePart"
+	    attributes 	(list Attribute_Set
+		(object Attribute
+		    tool       	"Java"
+		    name       	"FileName"
+		    value      	"D:\\Personal\\Code\\Java\\BodyFuncs\\Cosinus.java"))
+	    quid       	"37BC8EB7030C"
+	    stereotype 	""
+	    visible_modules 	(list dependency_list
+		(object Dependency_Relationship
+		    quid       	"37BC8EB70319"
+		    supplier   	"Component View::Body"
+		    quidu      	"36BB514B0391"
+		    supplier_is_subsystem 	TRUE)
+		(object Dependency_Relationship
+		    quid       	"37BC8EB7031A"
+		    supplier   	"Component View::intFunction"
+		    quidu      	"36BB39470388"
+		    supplier_is_subsystem 	TRUE)
+		(object Dependency_Relationship
+		    quid       	"37BD1C06008C"
+		    supplier   	"Component View::Body"
+		    quidu      	"36BB514B0391"
+		    supplier_is_subsystem 	TRUE)
+		(object Dependency_Relationship
+		    quid       	"37BD1C06008D"
+		    supplier   	"Component View::intFunction"
+		    quidu      	"36BB39470388"
+		    supplier_is_subsystem 	TRUE)
+		(object Dependency_Relationship
+		    quid       	"37BD360E034B"
+		    supplier   	"Component View::Body"
+		    quidu      	"36BB514B0391"
+		    supplier_is_subsystem 	TRUE)
+		(object Dependency_Relationship
+		    quid       	"37BD360E034C"
+		    supplier   	"Component View::intFunction"
+		    quidu      	"36BB39470388"
+		    supplier_is_subsystem 	TRUE))
+	    language   	"Java")
+	(object module "CosinusMinus1" "NotAModuleType" "NotAModulePart"
+	    attributes 	(list Attribute_Set
+		(object Attribute
+		    tool       	"Java"
+		    name       	"FileName"
+		    value      	"D:\\Personal\\Code\\Java\\BodyFuncs\\CosinusMinus1.java"))
+	    quid       	"37BC8EB70348"
+	    stereotype 	""
+	    visible_modules 	(list dependency_list
+		(object Dependency_Relationship
+		    quid       	"37BC8EB7035C"
+		    supplier   	"Component View::Body"
+		    quidu      	"36BB514B0391"
+		    supplier_is_subsystem 	TRUE)
+		(object Dependency_Relationship
+		    quid       	"37BC8EB7035D"
+		    supplier   	"Component View::intFunction"
+		    quidu      	"36BB39470388"
+		    supplier_is_subsystem 	TRUE)
+		(object Dependency_Relationship
+		    quid       	"37BD1C0700D4"
+		    supplier   	"Component View::Body"
+		    quidu      	"36BB514B0391"
+		    supplier_is_subsystem 	TRUE)
+		(object Dependency_Relationship
+		    quid       	"37BD1C0700DB"
+		    supplier   	"Component View::intFunction"
+		    quidu      	"36BB39470388"
+		    supplier_is_subsystem 	TRUE)
+		(object Dependency_Relationship
+		    quid       	"37BD360F037F"
+		    supplier   	"Component View::Body"
+		    quidu      	"36BB514B0391"
+		    supplier_is_subsystem 	TRUE)
+		(object Dependency_Relationship
+		    quid       	"37BD360F0386"
+		    supplier   	"Component View::intFunction"
+		    quidu      	"36BB39470388"
+		    supplier_is_subsystem 	TRUE))
+	    language   	"Java")
+	(object module "Exponential" "NotAModuleType" "NotAModulePart"
+	    attributes 	(list Attribute_Set
+		(object Attribute
+		    tool       	"Java"
+		    name       	"FileName"
+		    value      	"D:\\Personal\\Code\\Java\\BodyFuncs\\Exponential.java"))
+	    quid       	"37BC8EB70384"
+	    stereotype 	""
+	    visible_modules 	(list dependency_list
+		(object Dependency_Relationship
+		    quid       	"37BC8EB70399"
+		    supplier   	"Component View::Body"
+		    quidu      	"36BB514B0391"
+		    supplier_is_subsystem 	TRUE)
+		(object Dependency_Relationship
+		    quid       	"37BC8EB7039A"
+		    supplier   	"Component View::intFunction"
+		    quidu      	"36BB39470388"
+		    supplier_is_subsystem 	TRUE)
+		(object Dependency_Relationship
+		    quid       	"37BD1C080111"
+		    supplier   	"Component View::Body"
+		    quidu      	"36BB514B0391"
+		    supplier_is_subsystem 	TRUE)
+		(object Dependency_Relationship
+		    quid       	"37BD1C080112"
+		    supplier   	"Component View::intFunction"
+		    quidu      	"36BB39470388"
+		    supplier_is_subsystem 	TRUE)
+		(object Dependency_Relationship
+		    quid       	"37BD361003BD"
+		    supplier   	"Component View::Body"
+		    quidu      	"36BB514B0391"
+		    supplier_is_subsystem 	TRUE)
+		(object Dependency_Relationship
+		    quid       	"37BD361003BE"
+		    supplier   	"Component View::intFunction"
+		    quidu      	"36BB39470388"
+		    supplier_is_subsystem 	TRUE))
+	    language   	"Java")
+	(object module "Sinus" "NotAModuleType" "NotAModulePart"
+	    attributes 	(list Attribute_Set
+		(object Attribute
+		    tool       	"Java"
+		    name       	"FileName"
+		    value      	"D:\\Personal\\Code\\Java\\BodyFuncs\\Sinus.java"))
+	    quid       	"37BC8EB703CA"
+	    stereotype 	""
+	    visible_modules 	(list dependency_list
+		(object Dependency_Relationship
+		    quid       	"37BC8EB703D7"
+		    supplier   	"Component View::Body"
+		    quidu      	"36BB514B0391"
+		    supplier_is_subsystem 	TRUE)
+		(object Dependency_Relationship
+		    quid       	"37BC8EB703D8"
+		    supplier   	"Component View::intFunction"
+		    quidu      	"36BB39470388"
+		    supplier_is_subsystem 	TRUE)
+		(object Dependency_Relationship
+		    quid       	"37BD1C090145"
+		    supplier   	"Component View::Body"
+		    quidu      	"36BB514B0391"
+		    supplier_is_subsystem 	TRUE)
+		(object Dependency_Relationship
+		    quid       	"37BD1C090146"
+		    supplier   	"Component View::intFunction"
+		    quidu      	"36BB39470388"
+		    supplier_is_subsystem 	TRUE)
+		(object Dependency_Relationship
+		    quid       	"37BD3612001C"
+		    supplier   	"Component View::Body"
+		    quidu      	"36BB514B0391"
+		    supplier_is_subsystem 	TRUE)
+		(object Dependency_Relationship
+		    quid       	"37BD3612001D"
+		    supplier   	"Component View::intFunction"
+		    quidu      	"36BB39470388"
+		    supplier_is_subsystem 	TRUE))
+	    language   	"Java"))
+    physical_presentations 	(list unit_reference_list
+	(object Module_Diagram "BodyFuncs"
+	    quid       	"37BF09EF0213"
+	    title      	"BodyFuncs"
+	    zoom       	100
+	    max_height 	28350
+	    max_width  	21600
+	    origin_x   	0
+	    origin_y   	0
+	    items      	(list diagram_item_list
+		(object ModView "Component View::BodyFuncs::Sinus" "NotAModuleType" "NotAModulePart" @1
+		    location   	(186, 155)
+		    label      	(object ItemLabel
+			Parent_View 	@1
+			location   	(151, 130)
+			fill_color 	13434879
+			anchor_loc 	3
+			nlines     	2
+			max_width  	127
+			label      	"Sinus")
+		    icon_style 	"Icon"
+		    line_color 	3342489
+		    fill_color 	13434879
+		    quidu      	"37BC8EB703CA"
+		    width      	228
+		    autoResize 	TRUE
+		    width      	228
+		    height     	162)
+		(object ModView "Component View::BodyFuncs::Exponential" "NotAModuleType" "NotAModulePart" @2
+		    location   	(589, 155)
+		    label      	(object ItemLabel
+			Parent_View 	@2
+			location   	(554, 130)
+			fill_color 	13434879
+			anchor_loc 	3
+			nlines     	2
+			max_width  	127
+			label      	"Exponential")
+		    icon_style 	"Icon"
+		    line_color 	3342489
+		    fill_color 	13434879
+		    quidu      	"37BC8EB70384"
+		    width      	228
+		    autoResize 	TRUE
+		    width      	228
+		    height     	162)
+		(object ModView "Component View::BodyFuncs::CosinusMinus1" "NotAModuleType" "NotAModulePart" @3
+		    location   	(992, 155)
+		    label      	(object ItemLabel
+			Parent_View 	@3
+			location   	(951, 130)
+			fill_color 	13434879
+			anchor_loc 	3
+			nlines     	2
+			max_width  	150
+			label      	"CosinusMinus1")
+		    icon_style 	"Icon"
+		    line_color 	3342489
+		    fill_color 	13434879
+		    quidu      	"37BC8EB70348"
+		    width      	270
+		    autoResize 	TRUE
+		    width      	270
+		    height     	162)
+		(object ModView "Component View::BodyFuncs::Cosinus" "NotAModuleType" "NotAModulePart" @4
+		    location   	(1395, 155)
+		    label      	(object ItemLabel
+			Parent_View 	@4
+			location   	(1360, 130)
+			fill_color 	13434879
+			anchor_loc 	3
+			nlines     	2
+			max_width  	127
+			label      	"Cosinus")
+		    icon_style 	"Icon"
+		    line_color 	3342489
+		    fill_color 	13434879
+		    quidu      	"37BC8EB7030C"
+		    width      	228
+		    autoResize 	TRUE
+		    width      	228
+		    height     	162)
+		(object ModView "Component View::BodyFuncs::CosHMinus1" "NotAModuleType" "NotAModulePart" @5
+		    location   	(1798, 155)
+		    label      	(object ItemLabel
+			Parent_View 	@5
+			location   	(1754, 130)
+			fill_color 	13434879
+			anchor_loc 	3
+			nlines     	2
+			max_width  	162
+			label      	"CosHMinus1")
+		    icon_style 	"Icon"
+		    line_color 	3342489
+		    fill_color 	13434879
+		    quidu      	"37BC8EB702D2"
+		    width      	292
+		    autoResize 	TRUE
+		    width      	292
+		    height     	162)))))

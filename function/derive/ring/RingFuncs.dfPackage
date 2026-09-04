@@ -1,0 +1,253 @@
+package id9f8wc9frybwec9fs0pa9;
+
+/**
+@version 2.0
+@physicalPackage
+@__modelType diagram 
+*/
+class diagram {
+/**
+@shapeType DependencyLink
+@__modelType link
+@__ref <oiref:design#Class#id47mokc9fodqegc9fq5czi.diagram:oiref><oihard>
+@automatic 
+*/
+class link {
+}/**
+@shapeType DependencyLink
+@__modelType link
+@__ref <oiref:design#Class#id2x7f1c9frybwec9fs0rie.diagram:oiref><oihard>
+@automatic 
+*/
+class link67 {
+}/**
+@shapeType DependencyLink
+@__modelType link
+@__ref <oiref:design#Class#id2z7bcc9fodqegc9fq5es2.diagram:oiref><oihard>
+@automatic 
+*/
+class link68 {
+}/**
+@shapeType DependencyLink
+@__modelType link
+@__ref <oiref:design#Class#id457m4c9fodqegc9fq5a4l.diagram:oiref><oihard>
+@automatic 
+*/
+class link69 {
+}/**
+@shapeType DependencyLink
+@__modelType link
+@__ref <oiref:design#Class#id3u1uqc9frybwec9fs0r6p.diagram:oiref><oihard>
+@automatic 
+*/
+class link70 {
+}/**
+@__ref <oiref:design#Class#id3u1uqc9frybwec9fs0r6p.diagram:oiref><oihard>
+@__modelType reference
+@__fqn <oiref:#Package#Function.Derive.RingFuncs.BodyFuncs:oiref> 
+*/
+class reference24 {
+}/**
+@__ref <oiref:java#Class#Functions.Derive.RingFuncs.Quot:oiref><oihard>
+@__modelType reference 
+*/
+class reference20 {
+}/**
+@__ref <oiref:java#Class#Functions.Derive.RingFuncs.Pred:oiref><oihard>
+@__modelType reference 
+*/
+class reference22 {
+}/**
+@__ref <oiref:java#Class#Functions.Derive.RingFuncs.OdeConst:oiref><oihard>
+@__modelType reference 
+*/
+class reference42 {
+}/**
+@__ref <oiref:java#Class#Functions.Derive.RingFuncs.Square:oiref><oihard>
+@__modelType reference 
+*/
+class reference51 {
+}/**
+@__ref <oiref:java#Class#Functions.Derive.RingFuncs.OdeHeight2D:oiref><oihard>
+@__modelType reference 
+*/
+class reference88 {
+}/**
+@__ref <oiref:java#Class#Functions.Derive.RingFuncs.OdeExp:oiref><oihard>
+@__modelType reference 
+*/
+class reference94 {
+}/**
+@__ref <oiref:java#Class#Functions.Derive.RingFuncs.Sign:oiref><oihard>
+@__modelType reference 
+*/
+class reference96 {
+}/**
+@__ref <oiref:java#Class#Functions.Derive.RingFuncs.ACAlgebra:oiref><oihard>
+@__modelType reference 
+*/
+class reference98 {
+}/**
+@__ref <oiref:java#Class#Functions.Derive.RingFuncs.LinAt:oiref><oihard>
+@__modelType reference 
+*/
+class reference100 {
+}/**
+@__ref <oiref:java#Class#Functions.Derive.RingFuncs.Sum:oiref><oihard>
+@__modelType reference 
+*/
+class reference114 {
+}/**
+@__ref <oiref:java#Class#Functions.Derive.RingFuncs.OdeSquare:oiref><oihard>
+@__modelType reference 
+*/
+class reference115 {
+}/**
+@__ref <oiref:java#Class#Functions.Derive.RingFuncs.AbsV:oiref><oihard>
+@__modelType reference 
+*/
+class reference128 {
+}/**
+@__ref <oiref:java#Class#Functions.Derive.RingFuncs.HalfAt:oiref><oihard>
+@__modelType reference 
+*/
+class reference141 {
+}/**
+@__ref <oiref:java#Class#Functions.Derive.RingFuncs.Neg:oiref><oihard>
+@__modelType reference 
+*/
+class reference148 {
+}/**
+@__ref <oiref:java#Class#Functions.Derive.RingFuncs.SawToothAt:oiref><oihard>
+@__modelType reference 
+*/
+class reference151 {
+}/**
+@__ref <oiref:java#Class#Functions.Derive.RingFuncs.OdeLinear:oiref><oihard>
+@__modelType reference 
+*/
+class reference170 {
+}/**
+@__ref <oiref:java#Class#Functions.Derive.RingFuncs.Succ:oiref><oihard>
+@__modelType reference 
+*/
+class reference172 {
+}/**
+@__ref <oiref:java#Class#Functions.Derive.RingFuncs.MulAt:oiref><oihard>
+@__modelType reference 
+*/
+class reference185 {
+}/**
+@__ref <oiref:java#Class#Functions.Derive.RingFuncs.Prod:oiref><oihard>
+@__modelType reference 
+*/
+class reference196 {
+}/**
+@__ref <oiref:java#Class#Functions.Derive.RingFuncs.ThirdAt:oiref><oihard>
+@__modelType reference 
+*/
+class reference200 {
+}/**
+@__ref <oiref:java#Class#Functions.Derive.RingFuncs.TripleAt:oiref><oihard>
+@__modelType reference 
+*/
+class reference206 {
+}/**
+@__ref <oiref:java#Class#Functions.Derive.RingFuncs.TestRingFuncs:oiref><oihard>
+@__modelType reference 
+*/
+class reference207 {
+}/**
+@__ref <oiref:java#Class#Functions.Derive.RingFuncs.Step1:oiref><oihard>
+@__modelType reference 
+*/
+class reference229 {
+}/**
+@__ref <oiref:java#Class#Functions.Derive.RingFuncs.Resid:oiref><oihard>
+@__modelType reference 
+*/
+class reference233 {
+}/**
+@__ref <oiref:java#Class#Functions.Derive.RingFuncs.fEulerSum:oiref><oihard>
+@__modelType reference 
+*/
+class reference252 {
+}/**
+@__ref <oiref:java#Class#Functions.Derive.RingFuncs.Function2ODE:oiref><oihard>
+@__modelType reference 
+*/
+class reference254 {
+}/**
+@__ref <oiref:java#Class#Functions.Derive.RingFuncs.SqRt:oiref><oihard>
+@__modelType reference 
+*/
+class reference255 {
+}/**
+@__ref <oiref:java#Class#Functions.Derive.RingFuncs.FuncParser:oiref><oihard>
+@__modelType reference 
+*/
+class reference270 {
+}/**
+@__ref <oiref:java#Class#Functions.Derive.RingFuncs.Inv:oiref><oihard>
+@__modelType reference 
+*/
+class reference271 {
+}/**
+@__ref <oiref:java#Class#Functions.Derive.RingFuncs.fGeoSum:oiref><oihard>
+@__modelType reference 
+*/
+class reference276 {
+}/**
+@__ref <oiref:java#Class#Functions.Derive.RingFuncs.AAlgebra:oiref><oihard>
+@__modelType reference 
+*/
+class reference285 {
+}/**
+@__ref <oiref:java#Class#Functions.Derive.RingFuncs.CatDerive:oiref><oihard>
+@__modelType reference 
+*/
+class reference286 {
+}/**
+@__ref <oiref:java#Class#Functions.Derive.RingFuncs.Algebra:oiref><oihard>
+@__modelType reference 
+*/
+class reference302 {
+}/**
+@__ref <oiref:java#Class#Functions.Derive.RingFuncs.AddAt:oiref><oihard>
+@__modelType reference 
+*/
+class reference307 {
+}/**
+@__ref <oiref:java#Class#Functions.Derive.RingFuncs.Delta1:oiref><oihard>
+@__modelType reference 
+*/
+class reference308 {
+}/**
+@__ref <oiref:java#Class#Functions.Derive.RingFuncs.fEulerFktn:oiref><oihard>
+@__modelType reference 
+*/
+class reference323 {
+}/**
+@__ref <oiref:java#Class#Functions.Derive.RingFuncs.DoubleAt:oiref><oihard>
+@__modelType reference 
+*/
+class reference326 {
+}/**
+@__ref <oiref:java#Class#Functions.Derive.RingFuncs.Diff:oiref><oihard>
+@__modelType reference 
+*/
+class reference328 {
+}}/**
+@__tags
+@shapeType ClassDiagram 
+*/
+class __tags {
+}/**
+@__options 
+*/
+class __options {
+}/**
+@__positions 
+*/
+class __positions {
+}

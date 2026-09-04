@@ -1,0 +1,102 @@
+package id3w7dqc9fodqegc9fq5fcn;
+
+/**
+@version 2.0
+@physicalPackage
+@__modelType diagram 
+*/
+class diagram {
+/**
+@__ref <oiref:java#Class#Function.ByRef.Combinatoric.Prime:oiref><oihard>
+@__modelType reference 
+*/
+class reference {
+}/**
+@__ref <oiref:java#Class#Function.ByRef.Combinatoric.DblFaculty:oiref><oihard>
+@__modelType reference 
+*/
+class reference5 {
+}/**
+@__ref <oiref:java#Class#Function.ByRef.Combinatoric.Bernoulli:oiref><oihard>
+@__modelType reference 
+*/
+class reference40 {
+}/**
+@__ref <oiref:java#Class#Function.ByRef.Combinatoric.CombiFuncs:oiref><oihard>
+@__modelType reference 
+*/
+class reference43 {
+}/**
+@__ref <oiref:java#Class#Function.ByRef.Combinatoric.Faculty:oiref><oihard>
+@__modelType reference 
+*/
+class reference45 {
+}/**
+@__ref <oiref:java#Class#Function.ByRef.Combinatoric.TestCombinatoric:oiref><oihard>
+@__modelType reference 
+*/
+class reference46 {
+}/**
+@__ref <oiref:java#Class#Function.ByRef.Combinatoric.BesselFuncs:oiref><oihard>
+@__modelType reference 
+*/
+class reference47 {
+}/**
+@__ref <oiref:java#Class#Function.ByRef.Combinatoric.ProbFuncs:oiref><oihard>
+@__modelType reference 
+*/
+class reference48 {
+}/**
+@__ref <oiref:java#Class#Functions.ByRef.Combinatoric.CombiFuncs:oiref><oihard>
+@__modelType reference 
+*/
+class reference2 {
+}/**
+@__ref <oiref:java#Class#Functions.ByRef.Combinatoric.Faculty:oiref><oihard>
+@__modelType reference 
+*/
+class reference278 {
+}/**
+@__ref <oiref:java#Class#Functions.ByRef.Combinatoric.Bernoulli:oiref><oihard>
+@__modelType reference 
+*/
+class reference288 {
+}/**
+@__ref <oiref:java#Class#Functions.ByRef.Combinatoric.ProbFuncs:oiref><oihard>
+@__modelType reference 
+*/
+class reference294 {
+}/**
+@__ref <oiref:java#Class#Functions.ByRef.Combinatoric.Prime:oiref><oihard>
+@__modelType reference 
+*/
+class reference295 {
+}/**
+@__ref <oiref:java#Class#Functions.ByRef.Combinatoric.BesselFuncs:oiref><oihard>
+@__modelType reference 
+*/
+class reference306 {
+}/**
+@__ref <oiref:java#Class#Functions.ByRef.Combinatoric.TestCombinatoric:oiref><oihard>
+@__modelType reference 
+*/
+class reference310 {
+}/**
+@__ref <oiref:java#Class#Functions.ByRef.Combinatoric.DblFaculty:oiref><oihard>
+@__modelType reference 
+*/
+class reference319 {
+}}/**
+@__tags
+@shapeType ClassDiagram 
+*/
+class __tags {
+}/**
+@__options 
+*/
+class __options {
+}/**
+@__positions 
+*/
+class __positions {
+}

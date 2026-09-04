@@ -1,0 +1,338 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!-- edited with XMLSPY v5 U (http://www.xmlspy.com) by ZKDB (DB Systems GmbH) -->
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" attributeFormDefault="unqualified" id="$Id: zkdbIntern.xsd,v 1.40 2003/09/26 08:37:21 mheuer Exp $">
+	<xs:element name="Nachricht" type="NachrichtType"/>
+	<!-- COMPLEX TYPES, base types -->
+	<xs:complexType name="ZKDBBaseType" mixed="true">
+		<xs:annotation>
+			<xs:documentation>
+=============  ZKDBBASE TYPE ==================
+Der BasisTyp fuer saemtliche Elemente mit einer Delta-Attribute
+			</xs:documentation>
+		</xs:annotation>
+		<xs:attribute name="status" type="StatusValueType" use="optional"/>
+		<xs:attribute name="mtime" type="xs:dateTime" use="optional"/>
+	</xs:complexType>
+	<!-- Final types (COMPLEX TYPES) -->
+	<xs:complexType name="NachrichtType">
+		<xs:annotation>
+			<xs:documentation> 
+ =============  NACHRICHT TYPE ==================	
+				Das Root Element, kann mehrere Transaktionen beinhalten
+			</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="Transaktion" type="TransaktionType" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="TransaktionType">
+		<xs:annotation>
+			<xs:documentation>    
+=============  TRANSAKTION TYPE ================= 
+			</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="Steuerung" type="SteuerungType"/>
+			<xs:element name="Daten" type="DatenType"/>
+		</xs:sequence>
+	</xs:complexType>
+	<!--  -->
+	<xs:complexType name="SteuerungType">
+		<xs:annotation>
+			<xs:documentation>  
+=============  STEURERUNG TYPE ==================	
+		***** Beinhaltet die Steurungsdaten vom Trafolayer, wird nicht von dem BusinessLayer validiert. Alle Felder sind Pflicht und dienen zur Steuerung des Protokolls ******Alle Felder sind Pflicht und dienen zur Steuerung des Protokolls					
+			</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="ZKDBID" type="xs:string"/>
+			<xs:element name="TxID" type="xs:string"/>
+			<xs:element name="Operation" type="OperationType"/>
+			<xs:element name="ErstelltAm" type="xs:string"/>
+			<xs:element name="GueltigAb" type="xs:string" minOccurs="0"/>
+			<xs:element name="System" type="xs:string"/>
+			<xs:element name="BenutzerName" type="xs:string"/>
+			<xs:element name="StatusNummer" type="xs:string"/>
+			<xs:element name="Bemerkung" type="xs:string"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="DatenType">
+		<xs:annotation>
+			<xs:documentation>
+============= DATEN TYPE ==================	
+				Das Datenfeld beinhaltet alle Business Relevante Daten für die Transaktion
+				</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="Kunde" type="KundeType" minOccurs="0"/>
+			<xs:element name="KundeInSystem" type="KundeInSystemType" minOccurs="0" maxOccurs="unbounded"/>
+			<xs:element name="Adresse" type="AdresseType" minOccurs="0" maxOccurs="unbounded"/>
+			<xs:element name="Bankverbindung" type="BankverbindungType" minOccurs="0" maxOccurs="unbounded"/>
+			<xs:element name="Benutzererkennung" type="BenutzererkennungType" minOccurs="0" maxOccurs="unbounded"/>
+			<xs:element name="Kommunikation" type="KommunikationType" minOccurs="0" maxOccurs="unbounded"/>
+			<xs:element name="Kreditkarte" type="KreditkarteType" minOccurs="0" maxOccurs="unbounded"/>
+			<xs:element name="Kundenkarte" type="KundenkarteType" minOccurs="0" maxOccurs="unbounded"/>
+			<xs:element name="Kundenmerkmal" type="KundenmerkmalType" minOccurs="0" maxOccurs="unbounded"/>
+			<xs:element name="Rolle" type="RolleType" minOccurs="0" maxOccurs="unbounded"/>
+			<xs:element name="Kundenbeziehung" type="KundenbeziehungTyp" minOccurs="0" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+	<!-- Final types im Datenelement (COMPLEX TYPES)-->
+	<xs:complexType name="RolleType">
+		<xs:annotation>
+			<xs:documentation>
+=============  ROLLE TYPE ==================	
+			</xs:documentation>
+		</xs:annotation>
+		<xs:complexContent>
+			<xs:extension base="ZKDBBaseType">
+				<xs:sequence>
+					<xs:element name="Typ" type="ZKDBBaseType"/>
+				</xs:sequence>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="KundenkarteType">
+		<xs:annotation>
+			<xs:documentation>
+=============  KUNDENKARTE TYPE ==================	
+				</xs:documentation>
+		</xs:annotation>
+		<xs:complexContent>
+			<xs:extension base="ZKDBBaseType">
+				<xs:sequence>
+					<xs:element name="Typ" type="ZKDBBaseType"/>
+					<xs:element name="Nummer" type="ZKDBBaseType" minOccurs="0"/>
+					<xs:element name="Befoerderungsklasse" type="ZKDBBaseType" minOccurs="0"/>
+					<xs:element name="Gueltigkeitsdauer" type="ZKDBBaseType" minOccurs="0"/>
+					<xs:element name="Gueltig_von" type="ZKDBBaseType" minOccurs="0"/>
+					<xs:element name="Gueltig_bis" type="ZKDBBaseType" minOccurs="0"/>
+					<xs:element name="Bezeichnung" type="ZKDBBaseType" minOccurs="0"/>
+				</xs:sequence>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="KommunikationType">
+		<xs:annotation>
+			<xs:documentation>
+=============  KOMMUNIKATION TYPE ==================	
+				</xs:documentation>
+		</xs:annotation>
+		<xs:complexContent>
+			<xs:extension base="ZKDBBaseType">
+				<xs:sequence>
+					<xs:element name="Typ" type="ZKDBBaseType"/>
+					<xs:element name="Bevorzugt" type="ZKDBBaseType" minOccurs="0"/>
+					<xs:element name="Verb_info" type="ZKDBBaseType" minOccurs="0"/>
+				</xs:sequence>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="KundenmerkmalType">
+		<xs:annotation>
+			<xs:documentation>
+=============  KUNDENMERKMAL TYPE ==================	
+			</xs:documentation>
+		</xs:annotation>
+		<xs:complexContent>
+			<xs:extension base="ZKDBBaseType">
+				<xs:sequence>
+					<xs:element name="Typ" type="ZKDBBaseType"/>
+					<xs:element name="Sys_extern" type="ZKDBBaseType" minOccurs="0">
+						<xs:annotation>
+							<xs:documentation>Im Trafo defaulted auf 'NVS', sollte aus DB und XML entfallen. Kann nicht Pflichtfeld sein, obwohl DB darauf achtet; dies sollte entfernt werden.</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="Merkmal" type="ZKDBBaseType" minOccurs="0"/>
+				</xs:sequence>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="KundeInSystemType">
+		<xs:annotation>
+			<xs:documentation>
+============  KUNDEINSYSTEM TYPE ==================	
+			</xs:documentation>
+		</xs:annotation>
+		<xs:complexContent>
+			<xs:extension base="ZKDBBaseType">
+				<xs:sequence>
+					<xs:element name="Typ" type="ZKDBBaseType"/>
+					<xs:element name="Sperre" type="ZKDBBaseType"/>
+					<xs:element name="SystemStatus" type="ZKDBBaseType"/>
+					<!-- hier steht das System drin !-->
+				</xs:sequence>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="KundeType">
+		<xs:annotation>
+			<xs:documentation>
+=============  KUNDE TYPE ==================	
+				</xs:documentation>
+		</xs:annotation>
+		<xs:complexContent>
+			<xs:extension base="ZKDBBaseType">
+				<xs:sequence>
+					<xs:element name="ZKDBID" type="ZKDBBaseType" minOccurs="0"/>
+					<xs:element name="Orgflag" type="ZKDBBaseType" minOccurs="0"/>
+					<xs:element name="Kundenname" type="ZKDBBaseType" minOccurs="0"/>
+					<xs:element name="Vorname" type="ZKDBBaseType" minOccurs="0"/>
+					<xs:element name="Mittelname" type="ZKDBBaseType" minOccurs="0"/>
+					<xs:element name="Namenzusatz" type="ZKDBBaseType" minOccurs="0"/>
+					<xs:element name="Titel" type="ZKDBBaseType" minOccurs="0"/>
+					<xs:element name="Anrede" type="ZKDBBaseType" minOccurs="0"/>
+					<xs:element name="Bes_anrede" type="ZKDBBaseType" minOccurs="0"/>
+					<xs:element name="Geburtsdatum" type="ZKDBBaseType" minOccurs="0"/>
+					<xs:element name="Geschlecht" type="ZKDBBaseType" minOccurs="0"/>
+					<xs:element name="Familienstand" type="ZKDBBaseType" minOccurs="0"/>
+					<xs:element name="Nationalitaet_iso_code" type="ZKDBBaseType" minOccurs="0"/>
+					<xs:element name="Anzahl_kinder" type="ZKDBBaseType" minOccurs="0"/>
+					<xs:element name="Gehaltsklasse" type="ZKDBBaseType" minOccurs="0"/>
+					<xs:element name="Ausbildung" type="ZKDBBaseType" minOccurs="0"/>
+					<xs:element name="Raucher" type="ZKDBBaseType" minOccurs="0"/>
+					<xs:element name="Wagenklasse" type="ZKDBBaseType" minOccurs="0"/>
+					<xs:element name="Rechtsform" type="ZKDBBaseType" minOccurs="0"/>
+					<xs:element name="Registernr" type="ZKDBBaseType" minOccurs="0"/>
+					<xs:element name="Registerort" type="ZKDBBaseType" minOccurs="0"/>
+					<xs:element name="Kundensperre" type="ZKDBBaseType" minOccurs="0"/>
+					<xs:element name="Werbungssperre" type="ZKDBBaseType" minOccurs="0"/>
+					<xs:element name="Zahlungsart" type="ZKDBBaseType" minOccurs="0"/>
+					<xs:element name="Lastschrift_status" type="ZKDBBaseType" minOccurs="0"/>
+					<xs:element name="Lastschrift_sperre" type="ZKDBBaseType" minOccurs="0"/>
+					<xs:element name="Vertriebsweg" type="ZKDBBaseType" minOccurs="0"/>
+				</xs:sequence>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="KundenbeziehungTyp">
+		<xs:annotation>
+			<xs:documentation>
+=============  KUNDENBEZIEHUNG TYPE ==================	
+				</xs:documentation>
+		</xs:annotation>
+		<xs:complexContent>
+			<xs:extension base="ZKDBBaseType">
+				<xs:sequence>
+					<xs:element name="Typ" type="ZKDBBaseType"/>
+					<xs:element name="ZKDBID" type="ZKDBBaseType" minOccurs="0"/>
+				</xs:sequence>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="BankverbindungType">
+		<xs:annotation>
+			<xs:documentation>
+=============  BANKVERBINDUNG TYPE ==================	
+				</xs:documentation>
+		</xs:annotation>
+		<xs:complexContent>
+			<xs:extension base="ZKDBBaseType">
+				<xs:sequence>
+					<xs:element name="Typ" type="ZKDBBaseType"/>
+					<xs:element name="Kto_inhaber" type="ZKDBBaseType" minOccurs="0"/>
+					<xs:element name="Kto_nr" type="ZKDBBaseType" minOccurs="0"/>
+					<xs:element name="Kreditinstitut" type="ZKDBBaseType" minOccurs="0"/>
+					<xs:element name="BLZ" type="ZKDBBaseType" minOccurs="0"/>
+					<xs:element name="Bevorzugt" type="ZKDBBaseType" minOccurs="0"/>
+					<xs:element name="Lastschrift_sperre" type="ZKDBBaseType" minOccurs="0"/>
+				</xs:sequence>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="KreditkarteType">
+		<xs:annotation>
+			<xs:documentation>
+=============  KREDITKARTE TYPE ==================	
+			</xs:documentation>
+		</xs:annotation>
+		<xs:complexContent>
+			<xs:extension base="ZKDBBaseType">
+				<xs:sequence>
+					<xs:element name="Typ" type="ZKDBBaseType"/>
+					<xs:element name="Inhaber" type="ZKDBBaseType" minOccurs="0"/>
+					<xs:element name="Nummer" type="ZKDBBaseType" minOccurs="0"/>
+					<xs:element name="Kreditinstitut" type="ZKDBBaseType" minOccurs="0"/>
+					<xs:element name="Bevorzugt" type="ZKDBBaseType" minOccurs="0"/>
+					<xs:element name="Gueltig_bis" type="ZKDBBaseType" minOccurs="0"/>
+				</xs:sequence>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="BenutzererkennungType">
+		<xs:annotation>
+			<xs:documentation>
+=============  BENUTZERERKENNUNG TYPE ==================	
+			</xs:documentation>
+		</xs:annotation>
+		<xs:complexContent>
+			<xs:extension base="ZKDBBaseType">
+				<xs:sequence>
+					<xs:element name="Typ" type="ZKDBBaseType"/>
+					<xs:element name="Benutzername" type="ZKDBBaseType" minOccurs="0"/>
+					<xs:element name="Pin" type="ZKDBBaseType" minOccurs="0"/>
+				</xs:sequence>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="AdresseType">
+		<xs:annotation>
+			<xs:documentation>
+=============  ADRESSE TYPE ==================	
+			</xs:documentation>
+		</xs:annotation>
+		<xs:complexContent>
+			<xs:extension base="ZKDBBaseType">
+				<xs:sequence>
+					<xs:element name="Typ" type="ZKDBBaseType"/>
+					<xs:element name="Postfachflag" type="ZKDBBaseType" minOccurs="0"/>
+					<xs:element name="Valid_flag" type="ZKDBBaseType" minOccurs="0"/>
+					<xs:element name="Kundenname" type="ZKDBBaseType" minOccurs="0"/>
+					<xs:element name="Vorname" type="ZKDBBaseType" minOccurs="0"/>
+					<xs:element name="Mittelname" type="ZKDBBaseType" minOccurs="0"/>
+					<xs:element name="Strasse_postfach" type="ZKDBBaseType" minOccurs="0"/>
+					<xs:element name="Adresszusatz" type="ZKDBBaseType" minOccurs="0"/>
+					<xs:element name="Plz" type="ZKDBBaseType" minOccurs="0"/>
+					<xs:element name="Ort" type="ZKDBBaseType" minOccurs="0"/>
+					<xs:element name="Ergaenzung_ort" type="ZKDBBaseType" minOccurs="0"/>
+					<xs:element name="Region" type="ZKDBBaseType" minOccurs="0"/>
+					<xs:element name="Briefanrede" type="ZKDBBaseType" minOccurs="0"/>
+					<xs:element name="Land_iso_code" type="ZKDBBaseType" minOccurs="0"/>
+					<!--xs:element name="Adressename" type="ZKDBBaseType" minOccurs="0"/-->
+				</xs:sequence>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<!-- SIMPLE TYPES -->
+	<xs:simpleType name="StatusValueType">
+		<xs:annotation>
+			<xs:documentation>
+=============  STATUSVALUE TYPE ==================	
+StatusValue ist der BasisTyp fuer die oefters vorkommende Status-Attribute
+</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="changed"/>
+			<xs:enumeration value="deleted"/>
+			<xs:enumeration value="unchanged"/>
+			<xs:enumeration value="error"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="OperationType">
+		<xs:annotation>
+			<xs:documentation>
+=============  OPERATION TYPE ==================	
+Kennzeichnung der Operation: C,D,S,E oder X
+X Kennzeichnet eine nicht initialisierte Nachricht (Castor/Java)
+</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:length value="1"/>
+			<xs:enumeration value="C"/>
+			<xs:enumeration value="D"/>
+			<xs:enumeration value="E"/>
+			<xs:enumeration value="S"/>
+			<xs:enumeration value="X"/>
+		</xs:restriction>
+	</xs:simpleType>
+</xs:schema>

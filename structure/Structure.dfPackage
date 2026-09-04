@@ -1,0 +1,234 @@
+package id3huq3bd1qwg8dbd1qy5t6;
+
+/**
+@version 2.0
+@physicalPackage
+@__modelType diagram 
+*/
+class diagram {
+/**
+@__ref <oiref:design#Class#id1084scop0zl0dcop1mfv8.diagram:oiref><oihard>
+@__modelType reference
+@__fqn <oiref:#Package#Structure.Aspects:oiref> 
+*/
+class reference56 {
+}/**
+@__ref <oiref:java#Class#structure.HistoryList:oiref><oihard>
+@__modelType reference 
+*/
+class reference {
+}/**
+@__ref <oiref:java#Class#structure.State:oiref><oihard>
+@__modelType reference 
+*/
+class reference166 {
+}/**
+@__ref <oiref:java#Class#structure.Bridge:oiref><oihard>
+@__modelType reference 
+*/
+class reference167 {
+}/**
+@__ref <oiref:java#Class#structure.Decorator:oiref><oihard>
+@__modelType reference 
+*/
+class reference168 {
+}/**
+@__ref <oiref:java#Class#structure.Ellipse:oiref><oihard>
+@__modelType reference 
+*/
+class reference169 {
+}/**
+@__ref <oiref:java#Class#structure.TemplateMethod:oiref><oihard>
+@__modelType reference 
+*/
+class reference170 {
+}/**
+@__ref <oiref:java#Class#structure.Circle:oiref><oihard>
+@__modelType reference 
+*/
+class reference171 {
+}/**
+@__ref <oiref:java#Class#structure.Publisher:oiref><oihard>
+@__modelType reference 
+*/
+class reference172 {
+}/**
+@__ref <oiref:java#Class#structure.Enum:oiref><oihard>
+@__modelType reference 
+*/
+class reference173 {
+}/**
+@__ref <oiref:java#Class#structure.Figure2D:oiref><oihard>
+@__modelType reference 
+*/
+class reference174 {
+}/**
+@__ref <oiref:java#Class#structure.DBridge:oiref><oihard>
+@__modelType reference 
+*/
+class reference175 {
+}/**
+@__ref <oiref:java#Class#structure.BiRef:oiref><oihard>
+@__modelType reference 
+*/
+class reference176 {
+}/**
+@__ref <oiref:java#Class#structure.Transaction:oiref><oihard>
+@__modelType reference 
+*/
+class reference177 {
+}/**
+@__ref <oiref:java#Class#structure.Command:oiref><oihard>
+@__modelType reference 
+*/
+class reference178 {
+}/**
+@__ref <oiref:java#Class#structure.Delegator:oiref><oihard>
+@__modelType reference 
+*/
+class reference179 {
+}/**
+@__ref <oiref:java#Class#structure.IInterface:oiref><oihard>
+@__modelType reference 
+*/
+class reference180 {
+}/**
+@__ref <oiref:java#Class#structure.Abstraction:oiref><oihard>
+@__modelType reference 
+*/
+class reference181 {
+}/**
+@__ref <oiref:design#Class#idnw4bqh0rautbqh0sork.diagram:oiref><oihard>
+@__modelType reference
+@__fqn <oiref:#Package#structure.blackBoard:oiref> 
+*/
+class reference182 {
+}/**
+@__ref <oiref:java#Class#structure.Delegate:oiref><oihard>
+@__modelType reference 
+*/
+class reference183 {
+}/**
+@__ref <oiref:java#Class#structure.DFullBridge:oiref><oihard>
+@__modelType reference 
+*/
+class reference184 {
+}/**
+@__ref <oiref:java#Class#structure.FullBridge:oiref><oihard>
+@__modelType reference 
+*/
+class reference185 {
+}/**
+@__ref <oiref:java#Class#structure.Registry:oiref><oihard>
+@__modelType reference 
+*/
+class reference186 {
+}/**
+@__ref <oiref:java#Class#structure.Visitor1:oiref><oihard>
+@__modelType reference 
+*/
+class reference187 {
+}/**
+@__ref <oiref:java#Class#structure.MacroCommand:oiref><oihard>
+@__modelType reference 
+*/
+class reference188 {
+}/**
+@__ref <oiref:java#Class#structure.VarEnum:oiref><oihard>
+@__modelType reference 
+*/
+class reference189 {
+}/**
+@__ref <oiref:java#Class#structure.PointAble:oiref><oihard>
+@__modelType reference 
+*/
+class reference190 {
+}/**
+@__ref <oiref:java#Class#structure.ElementA:oiref><oihard>
+@__modelType reference 
+*/
+class reference191 {
+}/**
+@__ref <oiref:java#Class#structure.Subscriber:oiref><oihard>
+@__modelType reference 
+*/
+class reference192 {
+}/**
+@__ref <oiref:java#Class#structure.Interface:oiref><oihard>
+@__modelType reference 
+*/
+class reference193 {
+}/**
+@__ref <oiref:java#Class#structure.UndoAble:oiref><oihard>
+@__modelType reference 
+*/
+class reference194 {
+}/**
+@__ref <oiref:java#Class#structure.Context:oiref><oihard>
+@__modelType reference 
+*/
+class reference195 {
+}/**
+@__ref <oiref:java#Class#structure.Ternary:oiref><oihard>
+@__modelType reference 
+*/
+class reference196 {
+}/**
+@__ref <oiref:java#Class#structure.Element:oiref><oihard>
+@__modelType reference 
+*/
+class reference197 {
+}/**
+@__ref <oiref:java#Class#structure.ElementB:oiref><oihard>
+@__modelType reference 
+*/
+class reference198 {
+}/**
+@__ref <oiref:java#Class#structure.Singleton:oiref><oihard>
+@__modelType reference 
+*/
+class reference199 {
+}/**
+@__ref <oiref:java#Class#structure.DAbstraction:oiref><oihard>
+@__modelType reference 
+*/
+class reference200 {
+}/**
+@__ref <oiref:java#Class#structure.ITransaction:oiref><oihard>
+@__modelType reference 
+*/
+class reference201 {
+}/**
+@__ref <oiref:java#Class#structure.BiPointer:oiref><oihard>
+@__modelType reference 
+*/
+class reference202 {
+}/**
+@__ref <oiref:java#Class#structure.Visitor2:oiref><oihard>
+@__modelType reference 
+*/
+class reference203 {
+}/**
+@__ref <oiref:java#Class#structure.RefCounter:oiref><oihard>
+@__modelType reference 
+*/
+class reference204 {
+}/**
+@__ref <oiref:java#Class#structure.Visitor:oiref><oihard>
+@__modelType reference 
+*/
+class reference205 {
+}}/**
+@__tags
+@shapeType ClassDiagram 
+*/
+class __tags {
+}/**
+@__options 
+*/
+class __options {
+}/**
+@__positions 
+*/
+class __positions {
+}

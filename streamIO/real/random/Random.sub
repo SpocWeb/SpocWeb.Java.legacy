@@ -1,0 +1,513 @@
+
+(object Petal
+    version    	42
+    _written   	"Rose 4.5.8163.3"
+    charSet    	0)
+
+(object SubSystem "Random"
+    is_unit    	TRUE
+    is_loaded  	TRUE
+    quid       	"37BC91B40190"
+    physical_models 	(list unit_reference_list
+	(object module "absRandom" "NotAModuleType" "NotAModulePart"
+	    attributes 	(list Attribute_Set
+		(object Attribute
+		    tool       	"Java"
+		    name       	"FileName"
+		    value      	"D:\\Personal\\Code\\Java\\Random\\absRandom.java"))
+	    quid       	"37BC91B40192"
+	    stereotype 	""
+	    language   	"Java")
+	(object module "intRandom" "NotAModuleType" "NotAModulePart"
+	    attributes 	(list Attribute_Set
+		(object Attribute
+		    tool       	"Java"
+		    name       	"FileName"
+		    value      	"D:\\Personal\\Code\\Java\\Random\\intRandom.java"))
+	    quid       	"37BC91B401A4"
+	    stereotype 	""
+	    realized_interfaces 	(list realize_rel_list
+		(object Realize_Relationship
+		    quid       	"37BF0B700144"
+		    supplier   	"Logical View::Random::intRandom"
+		    quidu      	"37BC91B401A5"))
+	    language   	"Java")
+	(object module "intRandomFloat" "NotAModuleType" "NotAModulePart"
+	    attributes 	(list Attribute_Set
+		(object Attribute
+		    tool       	"Java"
+		    name       	"FileName"
+		    value      	"D:\\Personal\\Code\\Java\\Random\\intRandomFloat.java"))
+	    quid       	"37BC91B401CC"
+	    stereotype 	""
+	    realized_interfaces 	(list realize_rel_list
+		(object Realize_Relationship
+		    quid       	"37BF0B6E0295"
+		    supplier   	"Logical View::Random::intRandomFloat"
+		    quidu      	"37BC91B401CD"))
+	    language   	"Java")
+	(object module "RandomBySubt" "NotAModuleType" "NotAModulePart"
+	    attributes 	(list Attribute_Set
+		(object Attribute
+		    tool       	"Java"
+		    name       	"FileName"
+		    value      	"D:\\Personal\\Code\\Java\\Random\\RandomBySubt.java"))
+	    quid       	"37BC91B401EA"
+	    stereotype 	""
+	    language   	"Java")
+	(object module "RandomChar" "NotAModuleType" "NotAModulePart"
+	    attributes 	(list Attribute_Set
+		(object Attribute
+		    tool       	"Java"
+		    name       	"FileName"
+		    value      	"D:\\Personal\\Code\\Java\\Random\\RandomChar.java"))
+	    quid       	"37BC91B40208"
+	    stereotype 	""
+	    language   	"Java")
+	(object module "RandomExp" "NotAModuleType" "NotAModulePart"
+	    attributes 	(list Attribute_Set
+		(object Attribute
+		    tool       	"Java"
+		    name       	"FileName"
+		    value      	"D:\\Personal\\Code\\Java\\Random\\RandomExp.java"))
+	    quid       	"37BC91B4021C"
+	    stereotype 	""
+	    language   	"Java")
+	(object module "RandomGauss" "NotAModuleType" "NotAModulePart"
+	    attributes 	(list Attribute_Set
+		(object Attribute
+		    tool       	"Java"
+		    name       	"FileName"
+		    value      	"D:\\Personal\\Code\\Java\\Random\\RandomGauss.java"))
+	    quid       	"37BC91B4023A"
+	    stereotype 	""
+	    language   	"Java")
+	(object module "RandomGeometric" "NotAModuleType" "NotAModulePart"
+	    attributes 	(list Attribute_Set
+		(object Attribute
+		    tool       	"Java"
+		    name       	"FileName"
+		    value      	"D:\\Personal\\Code\\Java\\Random\\RandomGeometric.java"))
+	    quid       	"37BC91B4024E"
+	    stereotype 	""
+	    language   	"Java")
+	(object module "RandomInt" "NotAModuleType" "NotAModulePart"
+	    attributes 	(list Attribute_Set
+		(object Attribute
+		    tool       	"Java"
+		    name       	"FileName"
+		    value      	"D:\\Personal\\Code\\Java\\Random\\RandomInt.java"))
+	    quid       	"37BC91B40276"
+	    stereotype 	""
+	    language   	"Java")
+	(object module "RandomJava" "NotAModuleType" "NotAModulePart"
+	    attributes 	(list Attribute_Set
+		(object Attribute
+		    tool       	"Java"
+		    name       	"FileName"
+		    value      	"D:\\Personal\\Code\\Java\\Random\\RandomJava.java"))
+	    quid       	"37BC91B4028A"
+	    stereotype 	""
+	    language   	"Java")
+	(object module "RandomLinear" "NotAModuleType" "NotAModulePart"
+	    attributes 	(list Attribute_Set
+		(object Attribute
+		    tool       	"Java"
+		    name       	"FileName"
+		    value      	"D:\\Personal\\Code\\Java\\Random\\RandomLinear.java"))
+	    quid       	"37BC91B4029E"
+	    stereotype 	""
+	    language   	"Java")
+	(object module "RandomLong" "NotAModuleType" "NotAModulePart"
+	    attributes 	(list Attribute_Set
+		(object Attribute
+		    tool       	"Java"
+		    name       	"FileName"
+		    value      	"D:\\Personal\\Code\\Java\\Random\\RandomLong.java"))
+	    quid       	"37BC91B402BC"
+	    stereotype 	""
+	    language   	"Java")
+	(object module "RandomLorentz" "NotAModuleType" "NotAModulePart"
+	    attributes 	(list Attribute_Set
+		(object Attribute
+		    tool       	"Java"
+		    name       	"FileName"
+		    value      	"D:\\Personal\\Code\\Java\\Random\\RandomLorentz.java"))
+	    quid       	"37BC91B402D0"
+	    stereotype 	""
+	    language   	"Java")
+	(object module "RandomMix" "NotAModuleType" "NotAModulePart"
+	    attributes 	(list Attribute_Set
+		(object Attribute
+		    tool       	"Java"
+		    name       	"FileName"
+		    value      	"D:\\Personal\\Code\\Java\\Random\\RandomMix.java"))
+	    quid       	"37BC91B402E4"
+	    stereotype 	""
+	    language   	"Java")
+	(object module "RandomQuick" "NotAModuleType" "NotAModulePart"
+	    attributes 	(list Attribute_Set
+		(object Attribute
+		    tool       	"Java"
+		    name       	"FileName"
+		    value      	"D:\\Personal\\Code\\Java\\Random\\RandomQuick.java"))
+	    quid       	"37BC91B402F8"
+	    stereotype 	""
+	    language   	"Java")
+	(object module "RandomShuffle" "NotAModuleType" "NotAModulePart"
+	    attributes 	(list Attribute_Set
+		(object Attribute
+		    tool       	"Java"
+		    name       	"FileName"
+		    value      	"D:\\Personal\\Code\\Java\\Random\\RandomShuffle.java"))
+	    quid       	"37BC91B40316"
+	    stereotype 	""
+	    language   	"Java"))
+    physical_presentations 	(list unit_reference_list
+	(object Module_Diagram "Random"
+	    quid       	"37BF0B51006D"
+	    title      	"Random"
+	    zoom       	100
+	    max_height 	28350
+	    max_width  	21600
+	    origin_x   	0
+	    origin_y   	0
+	    items      	(list diagram_item_list
+		(object ModView "Component View::Random::RandomShuffle" "NotAModuleType" "NotAModulePart" @1
+		    location   	(217, 155)
+		    label      	(object ItemLabel
+			Parent_View 	@1
+			location   	(176, 130)
+			fill_color 	13434879
+			anchor_loc 	3
+			nlines     	2
+			max_width  	150
+			label      	"RandomShuffle")
+		    icon_style 	"Icon"
+		    line_color 	3342489
+		    fill_color 	13434879
+		    quidu      	"37BC91B40316"
+		    width      	270
+		    autoResize 	TRUE
+		    width      	270
+		    height     	162)
+		(object ModView "Component View::Random::RandomQuick" "NotAModuleType" "NotAModulePart" @2
+		    location   	(651, 155)
+		    label      	(object ItemLabel
+			Parent_View 	@2
+			location   	(610, 130)
+			fill_color 	13434879
+			anchor_loc 	3
+			nlines     	2
+			max_width  	150
+			label      	"RandomQuick")
+		    icon_style 	"Icon"
+		    line_color 	3342489
+		    fill_color 	13434879
+		    quidu      	"37BC91B402F8"
+		    width      	270
+		    autoResize 	TRUE
+		    width      	270
+		    height     	162)
+		(object ModView "Component View::Random::RandomMix" "NotAModuleType" "NotAModulePart" @3
+		    location   	(1054, 155)
+		    label      	(object ItemLabel
+			Parent_View 	@3
+			location   	(1019, 130)
+			fill_color 	13434879
+			anchor_loc 	3
+			nlines     	2
+			max_width  	127
+			label      	"RandomMix")
+		    icon_style 	"Icon"
+		    line_color 	3342489
+		    fill_color 	13434879
+		    quidu      	"37BC91B402E4"
+		    width      	228
+		    autoResize 	TRUE
+		    width      	228
+		    height     	162)
+		(object ModView "Component View::Random::RandomLorentz" "NotAModuleType" "NotAModulePart" @4
+		    location   	(1457, 155)
+		    label      	(object ItemLabel
+			Parent_View 	@4
+			location   	(1416, 130)
+			fill_color 	13434879
+			anchor_loc 	3
+			nlines     	2
+			max_width  	150
+			label      	"RandomLorentz")
+		    icon_style 	"Icon"
+		    line_color 	3342489
+		    fill_color 	13434879
+		    quidu      	"37BC91B402D0"
+		    width      	270
+		    autoResize 	TRUE
+		    width      	270
+		    height     	162)
+		(object ModView "Component View::Random::RandomLong" "NotAModuleType" "NotAModulePart" @5
+		    location   	(1860, 155)
+		    label      	(object ItemLabel
+			Parent_View 	@5
+			location   	(1825, 130)
+			fill_color 	13434879
+			anchor_loc 	3
+			nlines     	2
+			max_width  	127
+			label      	"RandomLong")
+		    icon_style 	"Icon"
+		    line_color 	3342489
+		    fill_color 	13434879
+		    quidu      	"37BC91B402BC"
+		    width      	228
+		    autoResize 	TRUE
+		    width      	228
+		    height     	162)
+		(object ModView "Component View::Random::RandomLinear" "NotAModuleType" "NotAModulePart" @6
+		    location   	(2263, 155)
+		    label      	(object ItemLabel
+			Parent_View 	@6
+			location   	(2222, 130)
+			fill_color 	13434879
+			anchor_loc 	3
+			nlines     	2
+			max_width  	150
+			label      	"RandomLinear")
+		    icon_style 	"Icon"
+		    line_color 	3342489
+		    fill_color 	13434879
+		    quidu      	"37BC91B4029E"
+		    width      	270
+		    autoResize 	TRUE
+		    width      	270
+		    height     	162)
+		(object ModView "Component View::Random::RandomJava" "NotAModuleType" "NotAModulePart" @7
+		    location   	(2666, 155)
+		    label      	(object ItemLabel
+			Parent_View 	@7
+			location   	(2631, 130)
+			fill_color 	13434879
+			anchor_loc 	3
+			nlines     	2
+			max_width  	127
+			label      	"RandomJava")
+		    icon_style 	"Icon"
+		    line_color 	3342489
+		    fill_color 	13434879
+		    quidu      	"37BC91B4028A"
+		    width      	228
+		    autoResize 	TRUE
+		    width      	228
+		    height     	162)
+		(object ModView "Component View::Random::RandomInt" "NotAModuleType" "NotAModulePart" @8
+		    location   	(186, 465)
+		    label      	(object ItemLabel
+			Parent_View 	@8
+			location   	(151, 440)
+			fill_color 	13434879
+			anchor_loc 	3
+			nlines     	2
+			max_width  	127
+			label      	"RandomInt")
+		    icon_style 	"Icon"
+		    line_color 	3342489
+		    fill_color 	13434879
+		    quidu      	"37BC91B40276"
+		    width      	228
+		    autoResize 	TRUE
+		    width      	228
+		    height     	162)
+		(object ModView "Component View::Random::RandomGeometric" "NotAModuleType" "NotAModulePart" @9
+		    location   	(651, 465)
+		    label      	(object ItemLabel
+			Parent_View 	@9
+			location   	(598, 440)
+			fill_color 	13434879
+			anchor_loc 	3
+			nlines     	2
+			max_width  	199
+			label      	"RandomGeometric")
+		    icon_style 	"Icon"
+		    line_color 	3342489
+		    fill_color 	13434879
+		    quidu      	"37BC91B4024E"
+		    width      	358
+		    autoResize 	TRUE
+		    width      	358
+		    height     	162)
+		(object ModView "Component View::Random::RandomGauss" "NotAModuleType" "NotAModulePart" @10
+		    location   	(1116, 465)
+		    label      	(object ItemLabel
+			Parent_View 	@10
+			location   	(1075, 440)
+			fill_color 	13434879
+			anchor_loc 	3
+			nlines     	2
+			max_width  	150
+			label      	"RandomGauss")
+		    icon_style 	"Icon"
+		    line_color 	3342489
+		    fill_color 	13434879
+		    quidu      	"37BC91B4023A"
+		    width      	270
+		    autoResize 	TRUE
+		    width      	270
+		    height     	162)
+		(object ModView "Component View::Random::RandomExp" "NotAModuleType" "NotAModulePart" @11
+		    location   	(1519, 465)
+		    label      	(object ItemLabel
+			Parent_View 	@11
+			location   	(1484, 440)
+			fill_color 	13434879
+			anchor_loc 	3
+			nlines     	2
+			max_width  	127
+			label      	"RandomExp")
+		    icon_style 	"Icon"
+		    line_color 	3342489
+		    fill_color 	13434879
+		    quidu      	"37BC91B4021C"
+		    width      	228
+		    autoResize 	TRUE
+		    width      	228
+		    height     	162)
+		(object ModView "Component View::Random::RandomChar" "NotAModuleType" "NotAModulePart" @12
+		    location   	(1922, 465)
+		    label      	(object ItemLabel
+			Parent_View 	@12
+			location   	(1887, 440)
+			fill_color 	13434879
+			anchor_loc 	3
+			nlines     	2
+			max_width  	127
+			label      	"RandomChar")
+		    icon_style 	"Icon"
+		    line_color 	3342489
+		    fill_color 	13434879
+		    quidu      	"37BC91B40208"
+		    width      	228
+		    autoResize 	TRUE
+		    width      	228
+		    height     	162)
+		(object ModView "Component View::Random::RandomBySubt" "NotAModuleType" "NotAModulePart" @13
+		    location   	(2325, 465)
+		    label      	(object ItemLabel
+			Parent_View 	@13
+			location   	(2284, 440)
+			fill_color 	13434879
+			anchor_loc 	3
+			nlines     	2
+			max_width  	150
+			label      	"RandomBySubt")
+		    icon_style 	"Icon"
+		    line_color 	3342489
+		    fill_color 	13434879
+		    quidu      	"37BC91B401EA"
+		    width      	270
+		    autoResize 	TRUE
+		    width      	270
+		    height     	162)
+		(object ModView "Component View::Random::intRandomFloat" "NotAModuleType" "NotAModulePart" @14
+		    location   	(620, 806)
+		    label      	(object ItemLabel
+			Parent_View 	@14
+			location   	(561, 781)
+			fill_color 	13434879
+			anchor_loc 	3
+			nlines     	2
+			max_width  	222
+			label      	"intRandomFloat")
+		    icon_style 	"Icon"
+		    line_color 	3342489
+		    fill_color 	13434879
+		    quidu      	"37BC91B401CC"
+		    width      	400
+		    autoResize 	TRUE
+		    width      	400
+		    height     	162)
+		(object InterfaceView "Logical View::Random::intRandomFloat" @15
+		    location   	(620, 1240)
+		    label      	(object ItemLabel
+			Parent_View 	@15
+			location   	(619, 1348)
+			anchor_loc 	1
+			nlines     	2
+			max_width  	232
+			justify    	0
+			label      	"intRandomFloat")
+		    icon       	"Interface"
+		    icon_style 	"Icon"
+		    line_color 	3342489
+		    fill_color 	13434879
+		    quidu      	"37BC91B401CD"
+		    width      	58
+		    height     	58
+		    autoResize 	TRUE)
+		(object RealizeView "" @16
+		    stereotype 	TRUE
+		    line_color 	3342489
+		    quidu      	"37BF0B6E0295"
+		    client     	@14
+		    supplier   	@15
+		    line_style 	0)
+		(object ModView "Component View::Random::intRandom" "NotAModuleType" "NotAModulePart" @17
+		    location   	(217, 806)
+		    label      	(object ItemLabel
+			Parent_View 	@17
+			location   	(176, 781)
+			fill_color 	13434879
+			anchor_loc 	3
+			nlines     	2
+			max_width  	150
+			label      	"intRandom")
+		    icon_style 	"Icon"
+		    line_color 	3342489
+		    fill_color 	13434879
+		    quidu      	"37BC91B401A4"
+		    width      	270
+		    autoResize 	TRUE
+		    width      	270
+		    height     	162)
+		(object InterfaceView "Logical View::Random::intRandom" @18
+		    location   	(217, 1240)
+		    label      	(object ItemLabel
+			Parent_View 	@18
+			location   	(216, 1348)
+			anchor_loc 	1
+			nlines     	2
+			max_width  	232
+			justify    	0
+			label      	"intRandom")
+		    icon       	"Interface"
+		    icon_style 	"Icon"
+		    line_color 	3342489
+		    fill_color 	13434879
+		    quidu      	"37BC91B401A5"
+		    width      	58
+		    height     	58
+		    autoResize 	TRUE)
+		(object RealizeView "" @19
+		    stereotype 	TRUE
+		    line_color 	3342489
+		    quidu      	"37BF0B700144"
+		    client     	@17
+		    supplier   	@18
+		    line_style 	0)
+		(object ModView "Component View::Random::absRandom" "NotAModuleType" "NotAModulePart" @20
+		    location   	(2759, 465)
+		    label      	(object ItemLabel
+			Parent_View 	@20
+			location   	(2718, 440)
+			fill_color 	13434879
+			anchor_loc 	3
+			nlines     	2
+			max_width  	150
+			label      	"absRandom")
+		    icon_style 	"Icon"
+		    line_color 	3342489
+		    fill_color 	13434879
+		    quidu      	"37BC91B40192"
+		    width      	270
+		    autoResize 	TRUE
+		    width      	270
+		    height     	162)))))

@@ -1,0 +1,567 @@
+
+(object Petal
+    version    	42
+    _written   	"Rose 4.5.8054.1"
+    charSet    	0)
+
+(object Class_Category "intFunction"
+    is_unit    	TRUE
+    is_loaded  	TRUE
+    quid       	"36BB39470389"
+    documentation 	"Defines Interfaces and (abstract) Classes for (InvertAble) mapping Objects to Objects as well as Real Numbers to Real Numbers. "
+    exportControl 	"Public"
+    logical_models 	(list unit_reference_list
+	(object Class "Identity"
+	    attributes 	(list Attribute_Set
+		(object Attribute
+		    tool       	"Java"
+		    name       	"GenerateFinalizer"
+		    value      	FALSE)
+		(object Attribute
+		    tool       	"Java"
+		    name       	"GenerateStaticInitializer"
+		    value      	FALSE)
+		(object Attribute
+		    tool       	"Java"
+		    name       	"GenerateInstanceInitializer"
+		    value      	FALSE)
+		(object Attribute
+		    tool       	"Java"
+		    name       	"GenerateDefaultConstructor"
+		    value      	FALSE))
+	    quid       	"36BB39BA002F"
+	    documentation 	
+|This Class encapsulates the Identity Function. 
+| * It always returns the Argument. 
+| * It is dangerous to use it, because the Original is returned!!!
+| * So you cannot do any great calculations with it.
+| 
+	    
+	    realized_interfaces 	(list realize_rel_list
+		(object Realize_Relationship
+		    attributes 	(list Attribute_Set)
+		    quid       	"37BD382F009A"
+		    supplier   	"Logical View::intFunction::intFunction"
+		    quidu      	"36BB39BA00B2"))
+	    operations 	(list Operations
+		(object Operation "Function"
+		    attributes 	(list Attribute_Set)
+		    quid       	"37BD382F009B"
+		    documentation 	
+|This Function represents the Identity Function.
+|	 * It always returns the Argument.  
+		    
+		    parameters 	(list Parameters
+			(object Parameter "arg"
+			    type       	"Object"))
+		    result     	"Object"
+		    concurrency 	"Sequential"
+		    opExportControl 	"Public"
+		    uid        	0))
+	    module     	"Component View::intFunction::Identity"
+	    quidu      	"36BB39BA0025"
+	    language   	"Java")
+	(object Class "functionAble"
+	    attributes 	(list Attribute_Set
+		(object Attribute
+		    tool       	"Java"
+		    name       	"GenerateFinalizer"
+		    value      	FALSE)
+		(object Attribute
+		    tool       	"Java"
+		    name       	"GenerateStaticInitializer"
+		    value      	FALSE)
+		(object Attribute
+		    tool       	"Java"
+		    name       	"GenerateInstanceInitializer"
+		    value      	FALSE)
+		(object Attribute
+		    tool       	"Java"
+		    name       	"GenerateDefaultConstructor"
+		    value      	FALSE))
+	    quid       	"36BB39BA0076"
+	    documentation 	
+|Example Interface for an unary Function with 'this' as the only argument.
+| * This interface is not very usable, because the Operation Name 'Function'
+| * carries no Semantics so it is hard to read and understand.
+| * Rather use specific Operations, give them an understandable Name 
+| * and define a new Interface for them, modeled after this one. 
+| * 
+| * Design Decisions:
+| * Functions are more expensive, but also more elegant than Operations,
+| * because they allow for chaning the result into the next Function, 
+| * similar to Pipes and Filters, but they have to transport the Result back,
+| * so they are more expensive, especially on WANs.
+| 
+	    
+	    stereotype 	"Interface"
+	    operations 	(list Operations
+		(object Operation "Function"
+		    attributes 	(list Attribute_Set
+			(object Attribute
+			    tool       	"Java"
+			    name       	"Abstract"
+			    value      	TRUE))
+		    quid       	"37BD382E00AC"
+		    documentation 	
+|This is the Template for an undefined Function working on an Object.
+|	 * The Object implementing this Method is the means of exchanging this Operation.
+|	 
+		    
+		    result     	"Object"
+		    concurrency 	"Sequential"
+		    opExportControl 	"Public"
+		    uid        	0))
+	    module     	"Component View::intFunction::functionAble"
+	    quidu      	"36BB39BA0075"
+	    language   	"Java")
+	(object Class "intFunction"
+	    attributes 	(list Attribute_Set
+		(object Attribute
+		    tool       	"Java"
+		    name       	"GenerateFinalizer"
+		    value      	FALSE)
+		(object Attribute
+		    tool       	"Java"
+		    name       	"GenerateStaticInitializer"
+		    value      	FALSE)
+		(object Attribute
+		    tool       	"Java"
+		    name       	"GenerateInstanceInitializer"
+		    value      	FALSE)
+		(object Attribute
+		    tool       	"Java"
+		    name       	"GenerateDefaultConstructor"
+		    value      	FALSE))
+	    quid       	"36BB39BA00B2"
+	    documentation 	
+|Interface for an unary Function (without Arguments) working on arg.
+| * 
+| * Design Decisions:
+| * The additional Parameters for 'Funktion' are left out, to keep the Interface clean.
+| * They have to be set globally with the concrete Class.
+| * 
+| * Since most Functions don't have a State, they also don't have local Variables 
+| * and could as well be implemented using static Methods. 
+| * Even those static Methods could be parameterized using static Variables, 
+| * but unfortunately you cannot declare Interface Methods to be static, 
+| * native, syncronized or final!
+| * 
+| * Functions are more expensive, but also more elegant than Operations,
+| * because they allow for chaning the result into the next Function, 
+| * similar to Pipes and Filters, but have to transport the Result back.
+| 
+	    
+	    stereotype 	"Interface"
+	    operations 	(list Operations
+		(object Operation "Function"
+		    attributes 	(list Attribute_Set
+			(object Attribute
+			    tool       	"Java"
+			    name       	"Abstract"
+			    value      	TRUE))
+		    quid       	"37BD382F028E"
+		    documentation 	
+|This is the Function working on 'arg' defined by the implementing Class.
+|	 * The Class implementing this Method is the means of exchanging this Operation.	 
+		    
+		    parameters 	(list Parameters
+			(object Parameter "arg"
+			    type       	"Object"))
+		    result     	"Object"
+		    concurrency 	"Sequential"
+		    opExportControl 	"Public"
+		    uid        	0))
+	    module     	"Component View::intFunction::intFunction"
+	    quidu      	"36BB39BA00B1"
+	    language   	"Java")
+	(object Class "absFunction"
+	    attributes 	(list Attribute_Set
+		(object Attribute
+		    tool       	"Java"
+		    name       	"GenerateFinalizer"
+		    value      	FALSE)
+		(object Attribute
+		    tool       	"Java"
+		    name       	"GenerateStaticInitializer"
+		    value      	FALSE)
+		(object Attribute
+		    tool       	"Java"
+		    name       	"GenerateInstanceInitializer"
+		    value      	FALSE)
+		(object Attribute
+		    tool       	"Java"
+		    name       	"GenerateDefaultConstructor"
+		    value      	FALSE))
+	    quid       	"37BC8EB901F7"
+	    documentation 	
+|Implementation of an unary Function (without Arguments) working on arg.
+| * This abstract Function can be concatenated with other absFunctions 
+| * by giving these in the Constructor. 
+| * The Function Method recursively calls the Funktion Methods of the Parents!
+| * For this to happen the super.Function has to be called each time!
+| * 
+| * This Class makes it very clear, how to concatenate Mappings by 
+| * implementing the Mapping and singling out the specific Function,
+| * for the cost of one additional Call to myFunction().
+| * This corresponds to Filters and other recursively calling Objects.  
+	    
+	    realized_interfaces 	(list realize_rel_list
+		(object Realize_Relationship
+		    attributes 	(list Attribute_Set)
+		    quid       	"37BD382C00D1"
+		    supplier   	"Logical View::intFunction::Function"
+		    quidu      	"37BC919D03E5"))
+	    operations 	(list Operations
+		(object Operation "absFunction"
+		    attributes 	(list Attribute_Set)
+		    quid       	"37BD382C02B2"
+		    documentation 	
+|Constructor for a concatenated Function	 
+		    
+		    parameters 	(list Parameters
+			(object Parameter "inner"
+			    type       	"intFunction"))
+		    concurrency 	"Sequential"
+		    opExportControl 	"Public"
+		    uid        	0)
+		(object Operation "absFunction"
+		    attributes 	(list Attribute_Set)
+		    quid       	"37BD382C02B4"
+		    documentation 	
+|Empty Constructor	 
+		    
+		    concurrency 	"Sequential"
+		    opExportControl 	"Public"
+		    uid        	0)
+		(object Operation "Function"
+		    attributes 	(list Attribute_Set
+			(object Attribute
+			    tool       	"Java"
+			    name       	"Final"
+			    value      	TRUE))
+		    quid       	"37BD382C02B5"
+		    documentation 	
+|This is the Function working on 'arg' defined by the implementing Class.
+|	 * The Class implementing this Method is the means of exchanging this Operation.	 
+		    
+		    parameters 	(list Parameters
+			(object Parameter "arg"
+			    type       	"Object"))
+		    result     	"Object"
+		    concurrency 	"Sequential"
+		    opExportControl 	"Public"
+		    uid        	0)
+		(object Operation "Function"
+		    attributes 	(list Attribute_Set)
+		    quid       	"37BD382C02BC"
+		    documentation 	
+|This applies the Function to each Item of an Array of Objects	 
+		    
+		    parameters 	(list Parameters
+			(object Parameter "arg"
+			    type       	"Object[]"))
+		    result     	"Object[]"
+		    concurrency 	"Sequential"
+		    opExportControl 	"Public"
+		    uid        	0))
+	    module     	"Component View::intFunction::absFunction"
+	    quidu      	"37BC8EB901EF"
+	    language   	"Java"
+	    abstract   	TRUE)
+	(object Class "Function"
+	    attributes 	(list Attribute_Set
+		(object Attribute
+		    tool       	"Java"
+		    name       	"GenerateFinalizer"
+		    value      	FALSE)
+		(object Attribute
+		    tool       	"Java"
+		    name       	"GenerateStaticInitializer"
+		    value      	FALSE)
+		(object Attribute
+		    tool       	"Java"
+		    name       	"GenerateInstanceInitializer"
+		    value      	FALSE)
+		(object Attribute
+		    tool       	"Java"
+		    name       	"GenerateDefaultConstructor"
+		    value      	FALSE))
+	    quid       	"37BC919D03E5"
+	    stereotype 	"Interface"
+	    superclasses 	(list inheritance_relationship_list
+		(object Inheritance_Relationship
+		    attributes 	(list Attribute_Set)
+		    quid       	"37BD382D02A9"
+		    supplier   	"Logical View::intFunction::intFunction"
+		    quidu      	"36BB39BA00B2"))
+	    operations 	(list Operations
+		(object Operation "myFunction"
+		    attributes 	(list Attribute_Set
+			(object Attribute
+			    tool       	"Java"
+			    name       	"Abstract"
+			    value      	TRUE))
+		    quid       	"37BD382D02AA"
+		    documentation 	
+|This is the Delegation Function for a Function that can be concatenated.
+|	 * absFunction implements this kind of Function.	 
+		    
+		    parameters 	(list Parameters
+			(object Parameter "arg"
+			    type       	"Object"))
+		    result     	"Object"
+		    concurrency 	"Sequential"
+		    opExportControl 	"Public"
+		    uid        	0)
+		(object Operation "Function"
+		    attributes 	(list Attribute_Set
+			(object Attribute
+			    tool       	"Java"
+			    name       	"Abstract"
+			    value      	TRUE))
+		    quid       	"37BD382D02AC"
+		    documentation 	
+|This applies the Function to each Item of an Array of Objects	 
+		    
+		    parameters 	(list Parameters
+			(object Parameter "arg"
+			    type       	"Object[]"))
+		    result     	"Object[]"
+		    concurrency 	"Sequential"
+		    opExportControl 	"Public"
+		    uid        	0))
+	    module     	"Component View::intFunction::Function"
+	    quidu      	"37BC919D03DB"
+	    language   	"Java")
+	(object Association "$UNNAMED$0"
+	    attributes 	(list Attribute_Set)
+	    quid       	"37BC919D03E7"
+	    roles      	(list role_list
+		(object Role "$UNNAMED$1"
+		    quid       	"37BC919D03E8"
+		    supplier   	"Logical View::intFunction::absFunction"
+		    quidu      	"37BC8EB901F7")
+		(object Role "inner"
+		    attributes 	(list Attribute_Set
+			(object Attribute
+			    tool       	"Java"
+			    name       	"InitialValue"
+			    value      	""))
+		    quid       	"37BC919D03E9"
+		    documentation 	
+|Local Reference to a concatenated Function	 
+		    
+		    label      	"inner"
+		    supplier   	"Logical View::intFunction::intFunction"
+		    quidu      	"36BB39BA00B2"
+		    exportControl 	"Implementation"
+		    is_navigable 	TRUE))))
+    logical_presentations 	(list unit_reference_list
+	(object ClassDiagram "intFunction"
+	    quid       	"36BB3A1502ED"
+	    title      	"intFunction"
+	    zoom       	100
+	    max_height 	28350
+	    max_width  	21600
+	    origin_x   	0
+	    origin_y   	0
+	    items      	(list diagram_item_list
+		(object ClassView "Class" "Logical View::intFunction::functionAble" @1
+		    ShowCompartmentStereotypes 	TRUE
+		    IncludeAttribute 	TRUE
+		    location   	(1085, 124)
+		    label      	(object ItemLabel
+			Parent_View 	@1
+			location   	(957, 95)
+			fill_color 	13434879
+			nlines     	1
+			max_width  	256
+			justify    	0
+			label      	"functionAble")
+		    stereotype 	(object ItemLabel
+			Parent_View 	@1
+			location   	(957, 45)
+			fill_color 	13434879
+			anchor     	10
+			nlines     	1
+			max_width  	256
+			justify    	0
+			label      	"<<Interface>>")
+		    icon       	"Interface"
+		    icon_style 	"Label"
+		    line_color 	3342489
+		    fill_color 	13434879
+		    quidu      	"36BB39BA0076"
+		    width      	274
+		    height     	182
+		    annotation 	8
+		    autoResize 	TRUE)
+		(object ClassView "Class" "Logical View::intFunction::Identity" @2
+		    ShowCompartmentStereotypes 	TRUE
+		    location   	(341, 124)
+		    label      	(object ItemLabel
+			Parent_View 	@2
+			location   	(260, 73)
+			fill_color 	13434879
+			nlines     	1
+			max_width  	162
+			justify    	0
+			label      	"Identity")
+		    icon_style 	"Icon"
+		    line_color 	3342489
+		    fill_color 	13434879
+		    quidu      	"36BB39BA002F"
+		    height     	126
+		    annotation 	8
+		    autoResize 	TRUE)
+		(object ClassView "Class" "Logical View::intFunction::Function" @3
+		    ShowCompartmentStereotypes 	TRUE
+		    location   	(744, 434)
+		    label      	(object ItemLabel
+			Parent_View 	@3
+			location   	(616, 405)
+			fill_color 	13434879
+			nlines     	1
+			max_width  	256
+			justify    	0
+			label      	"Function")
+		    stereotype 	(object ItemLabel
+			Parent_View 	@3
+			location   	(616, 355)
+			fill_color 	13434879
+			anchor     	10
+			nlines     	1
+			max_width  	256
+			justify    	0
+			label      	"<<Interface>>")
+		    icon       	"Interface"
+		    icon_style 	"Label"
+		    line_color 	3342489
+		    fill_color 	13434879
+		    quidu      	"37BC919D03E5"
+		    width      	274
+		    height     	182
+		    annotation 	8
+		    autoResize 	TRUE)
+		(object ClassView "Class" "Logical View::intFunction::intFunction" @4
+		    ShowCompartmentStereotypes 	TRUE
+		    IncludeAttribute 	TRUE
+		    location   	(744, 124)
+		    label      	(object ItemLabel
+			Parent_View 	@4
+			location   	(616, 95)
+			fill_color 	13434879
+			nlines     	1
+			max_width  	256
+			justify    	0
+			label      	"intFunction")
+		    stereotype 	(object ItemLabel
+			Parent_View 	@4
+			location   	(616, 45)
+			fill_color 	13434879
+			anchor     	10
+			nlines     	1
+			max_width  	256
+			justify    	0
+			label      	"<<Interface>>")
+		    icon       	"Interface"
+		    icon_style 	"Label"
+		    line_color 	3342489
+		    fill_color 	13434879
+		    quidu      	"36BB39BA00B2"
+		    width      	274
+		    height     	182
+		    annotation 	8
+		    autoResize 	TRUE)
+		(object RealizeView "" @5
+		    stereotype 	TRUE
+		    line_color 	3342489
+		    quidu      	"37BD382F009A"
+		    client     	@2
+		    supplier   	@4
+		    line_style 	0)
+		(object InheritView "" @6
+		    stereotype 	TRUE
+		    line_color 	3342489
+		    quidu      	"37BD382D02A9"
+		    client     	@3
+		    supplier   	@4
+		    line_style 	0)
+		(object ClassView "Class" "Logical View::intFunction::absFunction" @7
+		    ShowCompartmentStereotypes 	TRUE
+		    location   	(372, 434)
+		    font       	(object Font
+			italics    	TRUE)
+		    label      	(object ItemLabel
+			Parent_View 	@7
+			location   	(246, 383)
+			fill_color 	13434879
+			nlines     	1
+			max_width  	252
+			justify    	0
+			label      	"absFunction")
+		    icon_style 	"Icon"
+		    line_color 	3342489
+		    fill_color 	13434879
+		    quidu      	"37BC8EB901F7"
+		    width      	270
+		    height     	126
+		    annotation 	8
+		    autoResize 	TRUE)
+		(object AssociationViewNew "$UNNAMED$0" @8
+		    location   	(539, 292)
+		    stereotype 	TRUE
+		    line_color 	3342489
+		    quidu      	"37BC919D03E7"
+		    roleview_list 	(list RoleViews
+			(object RoleView "inner" @9
+			    Parent_View 	@8
+			    location   	(167, -297)
+			    label      	(object SegLabel @10
+				Parent_View 	@9
+				location   	(464, 263)
+				anchor     	1
+				anchor_loc 	1
+				nlines     	1
+				max_width  	96
+				justify    	0
+				label      	"inner"
+				pctDist    	-0.325297
+				height     	72
+				orientation 	0)
+			    stereotype 	TRUE
+			    line_color 	3342489
+			    quidu      	"37BC919D03E9"
+			    client     	@8
+			    supplier   	@4
+			    line_style 	0)
+			(object RoleView "$UNNAMED$1" @11
+			    Parent_View 	@8
+			    location   	(167, -297)
+			    label      	(object SegLabel @12
+				Parent_View 	@11
+				location   	(438, 323)
+				hidden     	TRUE
+				anchor     	1
+				anchor_loc 	1
+				nlines     	1
+				max_width  	450
+				justify    	0
+				label      	""
+				pctDist    	0.800000
+				height     	42
+				orientation 	1)
+			    stereotype 	TRUE
+			    line_color 	3342489
+			    quidu      	"37BC919D03E8"
+			    client     	@8
+			    supplier   	@7
+			    line_style 	0)))
+		(object RealizeView "" @13
+		    stereotype 	TRUE
+		    line_color 	3342489
+		    quidu      	"37BD382C00D1"
+		    client     	@7
+		    supplier   	@3
+		    line_style 	0)))))

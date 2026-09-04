@@ -1,0 +1,163 @@
+package idnsfcc9frybwec9fs1qlv;
+
+/**
+@version 2.0
+@physicalPackage
+@__modelType diagram 
+*/
+class diagram {
+/**
+@shapeType DependencyLink
+@__modelType link
+@__ref <oiref:design#Class#idqb01c9fodqegc9fq5ddp.diagram:oiref><oihard>
+@automatic 
+*/
+class link {
+}/**
+@shapeType DependencyLink
+@__modelType link
+@__ref <oiref:design#Class#id2otl3c9fodqegc9fq5gp1.diagram:oiref><oihard>
+@automatic 
+*/
+class link217 {
+}/**
+@shapeType DependencyLink
+@__modelType link
+@__ref <oiref:design#Class#id457m4c9fodqegc9fq5a4l.diagram:oiref><oihard>
+@automatic 
+*/
+class link218 {
+}/**
+@__ref <oiref:java#Class#Stream.Copy.GroupM.CGroupM:oiref><oihard>
+@__modelType reference 
+*/
+class reference {
+}/**
+@__ref <oiref:java#Class#Stream.Copy.GroupM.CHalfGroupM:oiref><oihard>
+@__modelType reference 
+*/
+class reference181 {
+}/**
+@__ref <oiref:java#Class#Stream.Copy.GroupM.HalfGroupM:oiref><oihard>
+@__modelType reference 
+*/
+class reference182 {
+}/**
+@__ref <oiref:java#Class#Stream.Copy.GroupM.AGroupM:oiref><oihard>
+@__modelType reference 
+*/
+class reference183 {
+}/**
+@__ref <oiref:java#Class#Stream.Copy.GroupM.DblGroupM:oiref><oihard>
+@__modelType reference 
+*/
+class reference184 {
+}/**
+@__ref <oiref:java#Class#Stream.Copy.GroupM.IHalfGroupM:oiref><oihard>
+@__modelType reference 
+*/
+class reference185 {
+}/**
+@__ref <oiref:java#Class#Stream.Copy.GroupM.AGroupMDbl:oiref><oihard>
+@__modelType reference 
+*/
+class reference186 {
+}/**
+@__ref <oiref:java#Class#Stream.Copy.GroupM.AGroupMLng:oiref><oihard>
+@__modelType reference 
+*/
+class reference187 {
+}/**
+@__ref <oiref:java#Class#Stream.Copy.GroupM.testGroupM:oiref><oihard>
+@__modelType reference 
+*/
+class reference188 {
+}/**
+@__ref <oiref:java#Class#Stream.Copy.GroupM.IGroupM:oiref><oihard>
+@__modelType reference 
+*/
+class reference189 {
+}/**
+@__ref <oiref:java#Class#Stream.Copy.GroupM.LngGroupM:oiref><oihard>
+@__modelType reference 
+*/
+class reference190 {
+}/**
+@__ref <oiref:java#Class#Stream.Copy.GroupM.AHalfGroupM:oiref><oihard>
+@__modelType reference 
+*/
+class reference191 {
+}/**
+@__ref <oiref:java#Class#Stream.Copy.GroupM.GroupM:oiref><oihard>
+@__modelType reference 
+*/
+class reference192 {
+}/**
+@__ref <oiref:java#Class#Stream.Copy.GroupM.TestGroupM:oiref><oihard>
+@__modelType reference 
+*/
+class reference10 {
+}/**
+@__ref <oiref:java#Class#DblGroupM:oiref><oihard>
+@__modelType reference 
+*/
+class reference33 {
+}/**
+@__ref <oiref:java#Class#GroupM:oiref><oihard>
+@__modelType reference 
+*/
+class reference35 {
+}/**
+@__ref <oiref:java#Class#CGroupM:oiref><oihard>
+@__modelType reference 
+*/
+class reference57 {
+}/**
+@__ref <oiref:java#Class#AGroupMDbl:oiref><oihard>
+@__modelType reference 
+*/
+class reference79 {
+}/**
+@__ref <oiref:java#Class#CHalfGroupM:oiref><oihard>
+@__modelType reference 
+*/
+class reference90 {
+}/**
+@__ref <oiref:java#Class#LngGroupM:oiref><oihard>
+@__modelType reference 
+*/
+class reference101 {
+}/**
+@__ref <oiref:java#Class#IHalfGroupM:oiref><oihard>
+@__modelType reference 
+*/
+class reference117 {
+}/**
+@__ref <oiref:java#Class#IGroupM:oiref><oihard>
+@__modelType reference 
+*/
+class reference143 {
+}/**
+@__ref <oiref:java#Class#HalfGroupM:oiref><oihard>
+@__modelType reference 
+*/
+class reference146 {
+}/**
+@__ref <oiref:java#Class#AGroupMLng:oiref><oihard>
+@__modelType reference 
+*/
+class reference193 {
+}}/**
+@__tags
+@shapeType ClassDiagram 
+*/
+class __tags {
+}/**
+@__options 
+*/
+class __options {
+}/**
+@__positions 
+*/
+class __positions {
+}

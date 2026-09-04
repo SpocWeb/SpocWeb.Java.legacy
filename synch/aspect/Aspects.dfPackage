@@ -1,0 +1,64 @@
+package id4f55cpf5y2npcpfv7klv;
+
+/**
+@version 2.0
+@physicalPackage
+@__modelType diagram 
+*/
+class diagram {
+/**
+@__ref <oiref:java#Class#Synch.Aspects.PersonAspect:oiref><oihard>
+@__modelType reference 
+*/
+class reference {
+}/**
+@__ref <oiref:java#Class#Synch.Aspects.StringAspect:oiref><oihard>
+@__modelType reference 
+*/
+class reference1 {
+}/**
+@__ref <oiref:java#Class#Synch.Aspects.Aspect:oiref><oihard>
+@__modelType reference 
+*/
+class reference2 {
+}/**
+@__ref <oiref:java#Class#Synch.Aspects.AddressAspect:oiref><oihard>
+@__modelType reference 
+*/
+class reference3 {
+}/**
+@__ref <oiref:java#Class#Synch.Aspects.ContainerAspect:oiref><oihard>
+@__modelType reference 
+*/
+class reference4 {
+}}/**
+@__tags
+@shapeType ClassDiagram 
+*/
+class __tags {
+}/**
+@__options 
+*/
+class __options {
+}/**
+@__positions <oigroup:<oiref:java#Class#Synch.Aspects.PersonAspect:oiref>=10,777,153,206,1:oigroup>
+<oigroup:<oiref:java#Extends#Synch.Aspects.ContainerAspect#Synch.Aspects.Aspect:oiref>=459,256,322,256:oigroup>
+<oigroup:MemberLink#<oiref:java#Member#Synch.Aspects.AddressAspect#City:oiref>=374,230,374,777:oigroup>
+<oigroup:MemberLink#<oiref:java#Member#Synch.Aspects.PersonAspect#FirstName:oiref>=163,914,297,914:oigroup>
+<oigroup:MemberLink#<oiref:java#Member#Synch.Aspects.AddressAspect#StreetNr:oiref>=398,230,398,777:oigroup>
+<oigroup:<oiref:java#Extends#Synch.Aspects.PersonAspect#Synch.Aspects.ContainerAspect:oiref>=107,777,524,339:oigroup>
+<oigroup:MemberLink#<oiref:java#Member#Synch.Aspects.PersonAspect#Address:oiref>=51,777,341,230:oigroup>
+<oigroup:<oiref:java#Class#Synch.Aspects.AddressAspect:oiref>=309,24,138,206,1:oigroup>
+<oigroup:<oiref:java#Class#Synch.Aspects.StringAspect:oiref>=297,777,131,334,1:oigroup>
+<oigroup:<oiref:java#Extends#Synch.Aspects.AddressAspect#Synch.Aspects.ContainerAspect:oiref>=447,202,459,202:oigroup>
+<oigroup:<oiref:java#Extends#Synch.Aspects.AddressAspect#Synch.Aspects.Aspect:oiref>=309,65,296,65:oigroup>
+<oigroup:MemberLink#<oiref:java#Member#Synch.Aspects.Aspect#Parent:oiref>=295,728,295,765,359,765,359,701,322,701:oigroup>
+<oigroup:<oiref:java#Extends#Synch.Aspects.PersonAspect#Synch.Aspects.Aspect:oiref>=107,777,195,712:oigroup>
+<oigroup:<oiref:java#Class#Synch.Aspects.ContainerAspect:oiref>=459,174,131,165,1:oigroup>
+<oigroup:<oiref:java#Class#Synch.Aspects.Aspect:oiref>=159,10,163,718,1:oigroup>
+<oigroup:MemberLink#<oiref:java#Member#Synch.Aspects.AddressAspect#Zip:oiref>=386,230,386,777:oigroup>
+<oigroup:<oiref:java#Extends#Synch.Aspects.StringAspect#Synch.Aspects.Aspect:oiref>=335,777,224,728:oigroup>
+<oigroup:MemberLink#<oiref:java#Member#Synch.Aspects.PersonAspect#LastName:oiref>=163,845,297,845:oigroup>
+*/
+class __positions {
+}

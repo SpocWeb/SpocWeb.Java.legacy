@@ -1,0 +1,265 @@
+package id235w6c9fodqegc9fqqsdg;
+
+/**
+@version 2.0
+@physicalPackage
+@__modelType diagram 
+*/
+class diagram {
+/**
+@shapeType DependencyLink
+@__modelType link
+@__ref <oiref:design#Class#id2otl3c9fodqegc9fq5gp1.diagram:oiref><oihard>
+@automatic 
+*/
+class link {
+}/**
+@shapeType DependencyLink
+@__modelType link
+@__ref <oiref:design#Class#id15cqcc9fodqegc9fqqu1j.diagram:oiref><oihard>
+@automatic 
+*/
+class link188 {
+}/**
+@shapeType DependencyLink
+@__modelType link
+@__ref <oiref:design#Class#id47mokc9fodqegc9fq5czi.diagram:oiref><oihard>
+@automatic 
+*/
+class link189 {
+}/**
+@shapeType DependencyLink
+@__modelType link
+@__ref <oiref:design#Class#id7qibc9fodqegc9fqqngt.diagram:oiref><oihard>
+@automatic 
+*/
+class link190 {
+}/**
+@shapeType DependencyLink
+@__modelType link
+@__ref <oiref:design#Class#id2z7bcc9fodqegc9fq5es2.diagram:oiref><oihard>
+@automatic 
+*/
+class link191 {
+}/**
+@shapeType DependencyLink
+@__modelType link
+@__ref <oiref:design#Class#id9f8wc9frybwec9fs0pa9.diagram:oiref><oihard>
+@automatic 
+*/
+class link192 {
+}/**
+@shapeType DependencyLink
+@__modelType link
+@__ref <oiref:design#Class#id25b1fc9fodqegc9fqqpu7.diagram:oiref><oihard>
+@automatic 
+*/
+class link193 {
+}/**
+@shapeType DependencyLink
+@__modelType link
+@__ref <oiref:design#Class#idqb01c9fodqegc9fq5ddp.diagram:oiref><oihard>
+@automatic 
+*/
+class link194 {
+}/**
+@shapeType DependencyLink
+@__modelType link
+@__ref <oiref:design#Class#id457m4c9fodqegc9fq5a4l.diagram:oiref><oihard>
+@automatic 
+*/
+class link195 {
+}/**
+@shapeType DependencyLink
+@__modelType link
+@__ref <oiref:design#Class#id4vy0zc9fodqegc9fqqr4o.diagram:oiref><oihard>
+@automatic 
+*/
+class link196 {
+}/**
+@__ref <oiref:java#Class#Stream.Copy.Group.Ring.Metric.Body.BodyDouble:oiref><oihard>
+@__modelType reference 
+*/
+class reference {
+}/**
+@__ref <oiref:java#Class#Stream.Copy.Group.Ring.Metric.Body.IBody:oiref><oihard>
+@__modelType reference 
+*/
+class reference7 {
+}/**
+@__ref <oiref:java#Class#Stream.Copy.Group.Ring.Metric.Body.AMetricBody:oiref><oihard>
+@__modelType reference 
+@hideOperations
+*/
+class reference8 {
+}/**
+@__ref <oiref:java#Class#Stream.Copy.Group.Ring.Metric.Body.Body:oiref><oihard>
+@__modelType reference 
+*/
+class reference9 {
+}/**
+@__ref <oiref:java#Class#Stream.Copy.Group.Ring.Metric.Body.MetricBody:oiref><oihard>
+@__modelType reference 
+*/
+class reference10 {
+}/**
+@__ref <oiref:java#Class#Stream.Copy.Group.Ring.Metric.Body.ABody:oiref><oihard>
+@__modelType reference 
+*/
+class reference14 {
+}/**
+@__ref <oiref:java#Class#Stream.Copy.Group.Ring.Metric.Body.IntervalDbl:oiref><oihard>
+@__modelType reference 
+@hideOperations
+*/
+class reference15 {
+}/**
+@__ref <oiref:java#Class#Stream.Copy.Group.Ring.Metric.Body.Triangle:oiref><oihard>
+@__modelType reference 
+*/
+class reference16 {
+}/**
+@__ref <oiref:java#Class#Stream.Copy.Group.Ring.Metric.Body.CBody:oiref><oihard>
+@__modelType reference 
+@hideOperations
+*/
+class reference17 {
+}/**
+@__ref <oiref:java#Class#Stream.Copy.Group.Ring.Metric.Body.IntervalDblA:oiref><oihard>
+@__modelType reference 
+@hideOperations
+*/
+class reference18 {
+}/**
+@__ref <oiref:java#Class#Stream.Copy.Group.Ring.Metric.Body.IntervalP:oiref><oihard>
+@__modelType reference 
+*/
+class reference19 {
+}/**
+@__ref <oiref:java#Class#Stream.Copy.Group.Ring.Metric.Body.Fraction:oiref><oihard>
+@__modelType reference 
+@hideOperations
+*/
+class reference20 {
+}/**
+@__ref <oiref:java#Class#Stream.Copy.Group.Ring.Metric.Body.IntervalA:oiref><oihard>
+@__modelType reference 
+@hideOperations
+*/
+class reference21 {
+}/**
+@__ref <oiref:java#Class#Stream.Copy.Group.Ring.Metric.Body.TestBody:oiref><oihard>
+@__modelType reference 
+*/
+class reference22 {
+}/**
+@__ref <oiref:java#Class#Stream.Copy.Group.Ring.Metric.Body.FractionLong:oiref><oihard>
+@__modelType reference 
+@hideOperations
+*/
+class reference26 {
+}/**
+@__ref <oiref:java#Class#Stream.Copy.Group.Ring.Metric.Body.ABodyDouble:oiref><oihard>
+@__modelType reference 
+@hideOperations
+*/
+class reference48 {
+}/**
+@__ref <oiref:design#Class#id15cqcc9fodqegc9fqqu1j.diagram:oiref><oihard>
+@__modelType reference
+@__fqn <oiref:#Package#Stream.Copy.Group.Ring.Metric.Body.Complex:oiref> 
+*/
+class reference6 {
+}/**
+@__ref <oiref:design#Class#id3xk7wcef79llccef8lsnd.diagram:oiref><oihard>
+@__modelType reference
+@__fqn <oiref:#Package#Stream.Copy.Group.Ring.Metric.Body.Units:oiref> 
+*/
+class reference11 {
+}/**
+@__ref <oiref:design#Class#id1639ccd65oc3ycd6684p8.diagram:oiref><oihard>
+@__modelType reference
+@__fqn <oiref:#Package#Stream.Copy.Group.Ring.Metric.Body.Vector:oiref> 
+*/
+class reference13 {
+}}/**
+@__tags
+@shapeType ClassDiagram 
+*/
+class __tags {
+}/**
+@__options 
+*/
+class __options {
+}/**
+@__positions <oigroup:<oiref:java#Class#Stream.Copy.Group.Ring.Metric.Body.IntervalA:oiref>=800,960,198,299,1:oigroup>
+<oigroup:<oiref:java#Extends#Stream.Copy.Group.Ring.Metric.Body.VectorDbl#Stream.Copy.Group.Ring.Metric.Body.ATensor:oiref>=960,201,1170,550:oigroup>
+<oigroup:<oiref:design#Class#id1639ccd65oc3ycd6684p8.diagram:oiref>=60,310,75,132,1:oigroup>
+<oigroup:<oiref:java#Extends#Stream.Copy.Group.Ring.Metric.Body.VectorDbl#Stream.Copy.Group.Ring.Metric.Body.AManifold:oiref>=1345,1177,1345,1100:oigroup>
+<oigroup:<oiref:java#Class#Stream.Copy.Group.Ring.Metric.Body.Body:oiref>=215,18,83,114,1:oigroup>
+<oigroup:<oiref:java#Implements#Stream.Copy.Group.Ring.Metric.Body.ATensor#Stream.Copy.Group.Ring.Metric.Body.ITensor:oiref>=1260,550,136,550:oigroup>
+<oigroup:MemberLink#<oiref:java#Member#Stream.Copy.Group.Ring.Metric.Body.Triangle#F:oiref>=600,284,553,284:oigroup>
+<oigroup:<oiref:java#Class#Stream.Copy.Group.Ring.Metric.Body.IManifold:oiref>=0,440,200,277,1:oigroup>
+<oigroup:<oiref:design#Class#id15cqcc9fodqegc9fqqu1j.diagram:oiref>=110,500,94,180,1:oigroup>
+<oigroup:<oiref:java#Extends#Stream.Copy.Group.Ring.Metric.Body.AManifold#Stream.Copy.Group.Ring.Metric.Body.ATensor:oiref>=1460,747,1305,747:oigroup>
+<oigroup:<oiref:java#Implements#Stream.Copy.Group.Ring.Metric.Body.ABody#Stream.Copy.Group.Ring.Metric.Body.Body:oiref>=257,180,257,132:oigroup>
+<oigroup:MemberLink#<oiref:java#Member#Stream.Copy.Group.Ring.Metric.Body.Triangle#rU:oiref>=600,64,553,64:oigroup>
+<oigroup:<oiref:java#Class#Stream.Copy.Group.Ring.Metric.Body.IBody:oiref>=80,20,83,98,1:oigroup>
+<oigroup:MemberLink#<oiref:java#Member#Stream.Copy.Group.Ring.Metric.Body.Triangle#Ha:oiref>=600,262,553,262:oigroup>
+<oigroup:<oiref:java#Class#Stream.Copy.Group.Ring.Metric.Body.IntervalP:oiref>=846,1330,114,142,1:oigroup>
+<oigroup:MemberLink#<oiref:java#Member#Stream.Copy.Group.Ring.Metric.Body.Triangle#rI:oiref>=600,42,553,42:oigroup>
+<oigroup:MemberLink#<oiref:java#Member#Stream.Copy.Group.Ring.Metric.Body.Triangle#a:oiref>=600,443,553,443:oigroup>
+<oigroup:<oiref:java#Class#Stream.Copy.Group.Ring.Metric.Body.FractionLong:oiref>=1050,740,199,283,1:oigroup>
+<oigroup:MemberLink#<oiref:java#Member#Stream.Copy.Group.Ring.Metric.Body.Triangle#Hb:oiref>=600,240,553,240:oigroup>
+<oigroup:<oiref:java#Implements#Stream.Copy.Group.Ring.Metric.Body.AManifold#Stream.Copy.Group.Ring.Metric.Body.IManifold:oiref>=1460,663,200,663:oigroup>
+<oigroup:MemberLink#<oiref:java#Member#Stream.Copy.Group.Ring.Metric.Body.Triangle#U:oiref>=600,306,553,306:oigroup>
+<oigroup:<oiref:java#Class#Stream.Copy.Group.Ring.Metric.Body.MetricBody:oiref>=353,12,200,1797,1:oigroup>
+<oigroup:<oiref:java#Extends#Stream.Copy.Group.Ring.Metric.Body.IManifold#Stream.Copy.Group.Ring.Metric.Body.ITensor:oiref>=43,440,43,261:oigroup>
+<oigroup:MemberLink#<oiref:java#Member#Stream.Copy.Group.Ring.Metric.Body.Triangle#b:oiref>=600,420,553,420:oigroup>
+<oigroup:MemberLink#<oiref:java#Member#Stream.Copy.Group.Ring.Metric.Body.IntervalDblA#arg_:oiref>=1250,1389,1250,1439,1340,1439,1340,1349,1290,1349:oigroup>
+<oigroup:<oiref:java#Class#Stream.Copy.Group.Ring.Metric.Body.AMetricBody:oiref>=650,680,100,91,1:oigroup>
+<oigroup:MemberLink#<oiref:java#Member#Stream.Copy.Group.Ring.Metric.Body.Triangle#Hc:oiref>=600,218,553,218:oigroup>
+<oigroup:MemberLink#<oiref:java#Member#Stream.Copy.Group.Ring.Metric.Body.Triangle#c:oiref>=600,397,553,397:oigroup>
+<oigroup:<oiref:java#Class#Stream.Copy.Group.Ring.Metric.Body.Fraction:oiref>=594,1220,200,283,1:oigroup>
+<oigroup:<oiref:java#Class#Stream.Copy.Group.Ring.Metric.Body.AManifold:oiref>=1170,590,200,510,1:oigroup>
+<oigroup:<oiref:java#Extends#Stream.Copy.Group.Ring.Metric.Body.ABodyDouble#Stream.Copy.Group.Ring.Metric.Body.AMetricBody:oiref>=830,705,750,705:oigroup>
+<oigroup:<oiref:java#Extends#Stream.Copy.Group.Ring.Metric.Body.BodyDouble#Stream.Copy.Group.Ring.Metric.Body.ABodyDouble:oiref>=935,780,935,731:oigroup>
+<oigroup:<oiref:java#Class#Stream.Copy.Group.Ring.Metric.Body.IntervalDblA:oiref>=1090,1090,200,299,1:oigroup>
+<oigroup:<oiref:java#Class#Stream.Copy.Group.Ring.Metric.Body.BodyDouble:oiref>=840,780,200,181,1:oigroup>
+<oigroup:<oiref:java#Class#Stream.Copy.Group.Ring.Metric.Body.Triangle:oiref>=600,20,200,446,1:oigroup>
+<oigroup:<oiref:java#Extends#Stream.Copy.Group.Ring.Metric.Body.IntervalDbl#Stream.Copy.Group.Ring.Metric.Body.AMetricBody:oiref>=670,950,670,771:oigroup>
+<oigroup:<oiref:java#Class#Stream.Copy.Group.Ring.Metric.Body.ABodyDouble:oiref>=830,400,200,331,1:oigroup>
+<oigroup:MemberLink#<oiref:java#Member#Stream.Copy.Group.Ring.Metric.Body.Triangle#WHa:oiref>=600,130,553,130:oigroup>
+<oigroup:MemberLink#<oiref:java#Member#Stream.Copy.Group.Ring.Metric.Body.ABodyDouble#One:oiref>=830,558,733,558:oigroup>
+<oigroup:<oiref:java#Class#Stream.Copy.Group.Ring.Metric.Body.ITensor:oiref>=30,450,106,130,1:oigroup>
+<oigroup:<oiref:java#Extends#Stream.Copy.Group.Ring.Metric.Body.Body#Stream.Copy.Group.Ring.Metric.Body.IBody:oiref>=215,69,163,69:oigroup>
+<oigroup:MemberLink#<oiref:java#Member#Stream.Copy.Group.Ring.Metric.Body.Triangle#Wa:oiref>=600,374,553,374:oigroup>
+<oigroup:<oiref:java#Implements#Stream.Copy.Group.Ring.Metric.Body.CBody#Stream.Copy.Group.Ring.Metric.Body.MetricBody:oiref>=650,549,553,549:oigroup>
+<oigroup:<oiref:java#Extends#Stream.Copy.Group.Ring.Metric.Body.IntervalP#Stream.Copy.Group.Ring.Metric.Body.IntervalA:oiref>=903,1330,903,1259:oigroup>
+<oigroup:MemberLink#<oiref:java#Member#Stream.Copy.Group.Ring.Metric.Body.Triangle#WHb:oiref>=600,108,553,108:oigroup>
+<oigroup:<oiref:java#Implements#Stream.Copy.Group.Ring.Metric.Body.AMetricBody#Stream.Copy.Group.Ring.Metric.Body.MetricBody:oiref>=650,725,553,725:oigroup>
+<oigroup:<oiref:java#Class#Stream.Copy.Group.Ring.Metric.Body.IntervalDbl:oiref>=604,950,163,251,1:oigroup>
+<oigroup:MemberLink#<oiref:java#Member#Stream.Copy.Group.Ring.Metric.Body.Triangle#Wb:oiref>=600,351,553,351:oigroup>
+<oigroup:MemberLink#<oiref:java#Member#Stream.Copy.Group.Ring.Metric.Body.Triangle#SHa:oiref>=600,196,553,196:oigroup>
+<oigroup:MemberLink#<oiref:java#Member#Stream.Copy.Group.Ring.Metric.Body.Triangle#WHc:oiref>=600,86,553,86:oigroup>
+<oigroup:MemberLink#<oiref:java#Member#Stream.Copy.Group.Ring.Metric.Body.Triangle#Wc:oiref>=600,328,553,328:oigroup>
+<oigroup:<oiref:java#Class#Stream.Copy.Group.Ring.Metric.Body.ATensor:oiref>=1140,570,165,315,1:oigroup>
+<oigroup:MemberLink#<oiref:java#Member#Stream.Copy.Group.Ring.Metric.Body.Triangle#SHb:oiref>=600,174,553,174:oigroup>
+<oigroup:<oiref:java#Class#Stream.Copy.Group.Ring.Metric.Body.TestBody:oiref>=170,550,148,85,1:oigroup>
+<oigroup:<oiref:java#Class#Stream.Copy.Group.Ring.Metric.Body.ABody:oiref>=216,180,83,98,1:oigroup>
+<oigroup:<oiref:java#Extends#Stream.Copy.Group.Ring.Metric.Body.Fraction#Stream.Copy.Group.Ring.Metric.Body.AMetricBody:oiref>=690,1220,690,771:oigroup>
+<oigroup:MemberLink#<oiref:java#Member#Stream.Copy.Group.Ring.Metric.Body.ABodyDouble#Zero:oiref>=830,519,733,519:oigroup>
+<oigroup:MemberLink#<oiref:java#Member#Stream.Copy.Group.Ring.Metric.Body.VectorDbl#Value:oiref>=1140,740,1040,816:oigroup>
+<oigroup:<oiref:java#Class#Stream.Copy.Group.Ring.Metric.Body.VectorDbl:oiref>=1140,590,200,187,1:oigroup>
+<oigroup:<oiref:java#Extends#Stream.Copy.Group.Ring.Metric.Body.MetricBody#Stream.Copy.Group.Ring.Metric.Body.Body:oiref>=353,75,298,75:oigroup>
+<oigroup:MemberLink#<oiref:java#Member#Stream.Copy.Group.Ring.Metric.Body.Triangle#SHc:oiref>=600,152,553,152:oigroup>
+<oigroup:<oiref:design#Class#id3xk7wcef79llccef8lsnd.diagram:oiref>=210,320,105,164,1:oigroup>
+<oigroup:MemberLink#<oiref:java#Member#Stream.Copy.Group.Ring.Metric.Body.IntervalA#arg_:oiref>=959,1259,959,1308,1047,1308,1047,1220,998,1220:oigroup>
+<oigroup:<oiref:java#Class#Stream.Copy.Group.Ring.Metric.Body.CBody:oiref>=650,500,83,98,1:oigroup>
+<oigroup:<oiref:java#Extends#Stream.Copy.Group.Ring.Metric.Body.IntervalA#Stream.Copy.Group.Ring.Metric.Body.AMetricBody:oiref>=899,960,715,771:oigroup>
+<oigroup:MemberLink#<oiref:java#Member#Stream.Copy.Group.Ring.Metric.Body.ABodyDouble#_One:oiref>=830,538,733,538:oigroup>
+<oigroup:<oiref:java#Extends#Stream.Copy.Group.Ring.Metric.Body.FractionLong#Stream.Copy.Group.Ring.Metric.Body.AMetricBody:oiref>=1050,755,750,755:oigroup>
+<oigroup:<oiref:java#Extends#Stream.Copy.Group.Ring.Metric.Body.IntervalDblA#Stream.Copy.Group.Ring.Metric.Body.AMetricBody:oiref>=1190,1090,740,771:oigroup>
+*/
+class __positions {
+}

@@ -1,0 +1,36 @@
+package idehk8c9g0327jc9g10o10;
+
+/**
+@version 2.0
+@__modelType diagram 
+*/
+class diagram {
+/**
+@__ref <oiref:java#Class#Stream.BaseException:oiref><oihard>
+@__modelType reference
+@__imported 
+*/
+class reference {
+}/**
+@__ref <oiref:java#Class#Stream.OperationNotSupported:oiref><oihard>
+@__modelType reference
+@__imported 
+*/
+class reference8 {
+}}/**
+Shows the Exception Hierarchy
+@__tags
+@shapeType ClassDiagram 
+*/
+class __tags {
+}/**
+@__options 
+*/
+class __options {
+}/**
+@__positions <oigroup:<oiref:java#Class#Stream.OperationNotSupported:oiref>=10,308,200,133,1:oigroup>
+<oigroup:<oiref:java#Extends#Stream.OperationNotSupported#Stream.BaseException:oiref>=110,308,110,248:oigroup>
+<oigroup:<oiref:java#Class#Stream.BaseException:oiref>=10,10,200,238,1:oigroup>  
+*/
+class __positions {
+}

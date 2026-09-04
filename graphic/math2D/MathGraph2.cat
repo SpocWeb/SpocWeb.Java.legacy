@@ -1,0 +1,581 @@
+
+(object Petal
+    version    	42
+    _written   	"Rose 4.5.8163.3"
+    charSet    	0)
+
+(object Class_Category "MathGraph2"
+    is_unit    	TRUE
+    is_loaded  	TRUE
+    quid       	"37BC8ED70088"
+    documentation 	
+|Very independent Package for affine Coordinate Translations in 2 Dimensions. 
+|It uses standard Primitive Types (float, int) to reach maximum speed and flexibility. 
+|Only dependent on 
+|java.awt 
+|Graphics2D
+    
+    visible_categories 	(list visibility_relationship_list
+	(object Visibility_Relationship
+	    quid       	"37DB8BB7033B"
+	    supplier   	"Logical View::Graphics2D"
+	    quidu      	"37BC8ED5008F")
+	(object Visibility_Relationship
+	    quid       	"37DB8BC001FD"
+	    supplier   	"Logical View::java::awt"
+	    quidu      	"34B0F6CD00CE"))
+    exportControl 	"Public"
+    logical_models 	(list unit_reference_list
+	(object Class "MathGraph2"
+	    attributes 	(list Attribute_Set
+		(object Attribute
+		    tool       	"Java"
+		    name       	"GenerateFinalizer"
+		    value      	FALSE)
+		(object Attribute
+		    tool       	"Java"
+		    name       	"GenerateStaticInitializer"
+		    value      	FALSE)
+		(object Attribute
+		    tool       	"Java"
+		    name       	"GenerateInstanceInitializer"
+		    value      	FALSE)
+		(object Attribute
+		    tool       	"Java"
+		    name       	"GenerateDefaultConstructor"
+		    value      	FALSE))
+	    quid       	"37BC8ED7008A"
+	    documentation 	
+|This Class defines Routines that display the Results of numerical Calculations
+| * by Graphics. It therefore needs to reference both Packages Math and Graphics2D.
+| * 
+| * It calculates real Vectors into Polygons or Pairs of x and y Vectors. 
+| * These Vectors can then be used in the actual Display Routines, 
+| * so the conversion is saved. 
+| * 
+| * The Mapping takes place between the Clipping Area of the Graphics2D Object 
+| * and the Data Area.
+| 
+	    
+	    operations 	(list Operations
+		(object Operation "proposeRaster"
+		    attributes 	(list Attribute_Set
+			(object Attribute
+			    tool       	"Java"
+			    name       	"Static"
+			    value      	TRUE))
+		    quid       	"37BD385C00AB"
+		    documentation 	
+|Proposes a Raster together with the starting Point. 
+|	 * Criterion is the number of Raster Items that should be around NormRasterItems 
+		    
+		    parameters 	(list Parameters
+			(object Parameter "Min"
+			    type       	"float")
+			(object Parameter "Max"
+			    type       	"float"))
+		    result     	"float[]"
+		    concurrency 	"Sequential"
+		    opExportControl 	"Public"
+		    uid        	0)
+		(object Operation "proposeOrigin"
+		    attributes 	(list Attribute_Set
+			(object Attribute
+			    tool       	"Java"
+			    name       	"Static"
+			    value      	TRUE))
+		    quid       	"37BD385C00AE"
+		    documentation 	
+|Proposes the Position of the Origin as 0 if possible, otherwise near 0	 
+		    
+		    parameters 	(list Parameters
+			(object Parameter "Min"
+			    type       	"float")
+			(object Parameter "Max"
+			    type       	"float"))
+		    result     	"float"
+		    concurrency 	"Sequential"
+		    opExportControl 	"Public"
+		    uid        	0)
+		(object Operation "createRaster"
+		    attributes 	(list Attribute_Set
+			(object Attribute
+			    tool       	"Java"
+			    name       	"Static"
+			    value      	TRUE))
+		    quid       	"37BD385C00B4"
+		    documentation 	
+|Creates the Array with the Points of the Raster by the Origin and the Width	 
+		    
+		    parameters 	(list Parameters
+			(object Parameter "start"
+			    type       	"float")
+			(object Parameter "Raster"
+			    type       	"float")
+			(object Parameter "Num"
+			    type       	"int"))
+		    result     	"float[]"
+		    concurrency 	"Sequential"
+		    opExportControl 	"Public"
+		    uid        	0))
+	    class_attributes 	(list class_attribute_list
+		(object ClassAttribute "NormRasterItems"
+		    attributes 	(list Attribute_Set)
+		    quid       	"37BD385C00A8"
+		    documentation 	
+|Criterion for the proposed Raster to have around 10 Items	 
+		    
+		    type       	"int"
+		    initv      	"10"
+		    exportControl 	"Public"
+		    static     	TRUE)
+		(object ClassAttribute "Ln10"
+		    attributes 	(list Attribute_Set
+			(object Attribute
+			    tool       	"Java"
+			    name       	"Final"
+			    value      	TRUE))
+		    quid       	"37BD385C00A9"
+		    documentation 	
+|Natural Logarithm of 10, useful to calculate an Integer Multiple of 10	 
+		    
+		    type       	"double"
+		    initv      	"Math.log(10.0)"
+		    exportControl 	"Public"
+		    static     	TRUE)
+		(object ClassAttribute "Raster[]"
+		    attributes 	(list Attribute_Set
+			(object Attribute
+			    tool       	"Java"
+			    name       	"Final"
+			    value      	TRUE))
+		    quid       	"37BD385C00AA"
+		    documentation 	
+|Selection of Rasters.	 
+		    
+		    type       	"double"
+		    initv      	"{0.1,0.2,0.25,0.333333333333333,0.5}"
+		    exportControl 	"Public"
+		    static     	TRUE))
+	    module     	"Component View::MathGraph2::MathGraph2"
+	    quidu      	"37BC8ED70089"
+	    language   	"Java")
+	(object Class "Coordinates2D"
+	    attributes 	(list Attribute_Set
+		(object Attribute
+		    tool       	"Java"
+		    name       	"GenerateFinalizer"
+		    value      	FALSE)
+		(object Attribute
+		    tool       	"Java"
+		    name       	"GenerateStaticInitializer"
+		    value      	FALSE)
+		(object Attribute
+		    tool       	"Java"
+		    name       	"GenerateInstanceInitializer"
+		    value      	FALSE)
+		(object Attribute
+		    tool       	"Java"
+		    name       	"GenerateDefaultConstructor"
+		    value      	FALSE))
+	    quid       	"37BC91A502F7"
+	    documentation 	
+|This Class encapsulates 2 dimensional Mapping in each Dimension separately. 
+| * It has Functions to comfortly create a Raster, an Origin, draw both with Axes.  
+	    
+	    operations 	(list Operations
+		(object Operation "Coordinates2D"
+		    attributes 	(list Attribute_Set)
+		    quid       	"37BD385B001B"
+		    documentation 	
+|Constructor that takes the x and y Ranges	 
+		    
+		    parameters 	(list Parameters
+			(object Parameter "xMin"
+			    type       	"float")
+			(object Parameter "xMax"
+			    type       	"float")
+			(object Parameter "yMin"
+			    type       	"float")
+			(object Parameter "yMax"
+			    type       	"float")
+			(object Parameter "Target"
+			    type       	"Rectangle"))
+		    concurrency 	"Sequential"
+		    opExportControl 	"Public"
+		    uid        	0)
+		(object Operation "map"
+		    attributes 	(list Attribute_Set)
+		    quid       	"37BD385B0028"
+		    documentation 	
+|Maps the Coordinates to the Target Range	 
+		    
+		    parameters 	(list Parameters
+			(object Parameter "x"
+			    type       	"float")
+			(object Parameter "y"
+			    type       	"float"))
+		    result     	"Point2D"
+		    concurrency 	"Sequential"
+		    opExportControl 	"Public"
+		    uid        	0)
+		(object Operation "map"
+		    attributes 	(list Attribute_Set)
+		    quid       	"37BD385B002B"
+		    documentation 	
+|Maps the Point Coordinates to the Target Range	 
+		    
+		    parameters 	(list Parameters
+			(object Parameter "x"
+			    type       	"float[]")
+			(object Parameter "y"
+			    type       	"float[]"))
+		    result     	"Point2D[]"
+		    concurrency 	"Sequential"
+		    opExportControl 	"Public"
+		    uid        	0))
+	    module     	"Component View::MathGraph2::Coordinates2D"
+	    quidu      	"37BC91A502F6"
+	    language   	"Java")
+	(object Class "LinCoordMap"
+	    attributes 	(list Attribute_Set
+		(object Attribute
+		    tool       	"Java"
+		    name       	"GenerateFinalizer"
+		    value      	FALSE)
+		(object Attribute
+		    tool       	"Java"
+		    name       	"GenerateStaticInitializer"
+		    value      	FALSE)
+		(object Attribute
+		    tool       	"Java"
+		    name       	"GenerateInstanceInitializer"
+		    value      	FALSE)
+		(object Attribute
+		    tool       	"Java"
+		    name       	"GenerateDefaultConstructor"
+		    value      	FALSE))
+	    quid       	"37BC91A50300"
+	    documentation 	
+|This Class encapsulates Conversions between two 1D Coordinate Systems
+| * (affine Mapping). This is used separately for the x and y Axis of 2D Systems.
+| * Here only scalar Types are used for Performance Reasons 
+| * The affine Mapping is also defined coordinate-wise in 'Vector.Line'   
+	    
+	    operations 	(list Operations
+		(object Operation "LinCoordMap"
+		    attributes 	(list Attribute_Set)
+		    quid       	"37BD385B024B"
+		    documentation 	
+|Constructor that takes the Original Range and the Target Range	 
+		    
+		    parameters 	(list Parameters
+			(object Parameter "Min"
+			    type       	"float")
+			(object Parameter "Max"
+			    type       	"float")
+			(object Parameter "iMin"
+			    type       	"int")
+			(object Parameter "iMax"
+			    type       	"int"))
+		    concurrency 	"Sequential"
+		    opExportControl 	"Public"
+		    uid        	0)
+		(object Operation "map"
+		    attributes 	(list Attribute_Set)
+		    quid       	"37BD385B0250"
+		    documentation 	
+|Calculates the Map to the Target Range	 
+		    
+		    parameters 	(list Parameters
+			(object Parameter "x"
+			    type       	"float"))
+		    result     	"int"
+		    concurrency 	"Sequential"
+		    opExportControl 	"Public"
+		    uid        	0)
+		(object Operation "map"
+		    attributes 	(list Attribute_Set)
+		    quid       	"37BD385B0252"
+		    documentation 	
+|Maps the x-Coordinates to the X Target Range	 
+		    
+		    parameters 	(list Parameters
+			(object Parameter "x"
+			    type       	"float[]"))
+		    result     	"int[]"
+		    concurrency 	"Sequential"
+		    opExportControl 	"Public"
+		    uid        	0)
+		(object Operation "invMap"
+		    attributes 	(list Attribute_Set)
+		    quid       	"37BD385B0256"
+		    documentation 	
+|Calculates the Map to the Original Range	 
+		    
+		    parameters 	(list Parameters
+			(object Parameter "x"
+			    type       	"float"))
+		    result     	"float"
+		    concurrency 	"Sequential"
+		    opExportControl 	"Public"
+		    uid        	0)
+		(object Operation "getStep"
+		    attributes 	(list Attribute_Set)
+		    quid       	"37BD385B0258"
+		    documentation 	"Returns the Step Size necessary to progress one Digit.  "
+		    result     	"float"
+		    concurrency 	"Sequential"
+		    opExportControl 	"Public"
+		    uid        	0)
+		(object Operation "getScale"
+		    attributes 	(list Attribute_Set)
+		    quid       	"37BD385B0259"
+		    documentation 	
+|Returns the Scale Factor: Scale == 1/Step
+|	 * Useful for relative Calculations, e.g with Vectors.  
+		    
+		    result     	"float"
+		    concurrency 	"Sequential"
+		    opExportControl 	"Public"
+		    uid        	0))
+	    class_attributes 	(list class_attribute_list
+		(object ClassAttribute "Scale"
+		    attributes 	(list Attribute_Set)
+		    quid       	"37BC91A5031F"
+		    documentation 	
+|Scale Factor	 
+		    
+		    type       	"float")
+		(object ClassAttribute "Offset"
+		    attributes 	(list Attribute_Set)
+		    quid       	"37BC91A50320"
+		    documentation 	
+|Translation Offset	 
+		    
+		    type       	"float")
+		(object ClassAttribute "Step"
+		    attributes 	(list Attribute_Set)
+		    quid       	"37BC91A50321"
+		    documentation 	
+|Translation Offset	 
+		    
+		    type       	"float"))
+	    module     	"Component View::MathGraph2::LinCoordMap"
+	    quidu      	"37BC91A502F8"
+	    language   	"Java")
+	(object Association "$UNNAMED$0"
+	    attributes 	(list Attribute_Set)
+	    quid       	"37BC91A50301"
+	    roles      	(list role_list
+		(object Role "$UNNAMED$1"
+		    quid       	"37BC91A50302"
+		    supplier   	"Logical View::MathGraph2::Coordinates2D"
+		    quidu      	"37BC91A502F7")
+		(object Role "MapX"
+		    attributes 	(list Attribute_Set
+			(object Attribute
+			    tool       	"Java"
+			    name       	"InitialValue"
+			    value      	""))
+		    quid       	"37BC91A50303"
+		    documentation 	
+|Mapping of the x-Range	 
+		    
+		    label      	"MapX"
+		    supplier   	"Logical View::MathGraph2::LinCoordMap"
+		    quidu      	"37BC91A50300"
+		    is_navigable 	TRUE)))
+	(object Association "$UNNAMED$2"
+	    attributes 	(list Attribute_Set)
+	    quid       	"37BC91A50304"
+	    roles      	(list role_list
+		(object Role "$UNNAMED$3"
+		    quid       	"37BC91A50305"
+		    supplier   	"Logical View::MathGraph2::Coordinates2D"
+		    quidu      	"37BC91A502F7")
+		(object Role "MapY"
+		    attributes 	(list Attribute_Set
+			(object Attribute
+			    tool       	"Java"
+			    name       	"InitialValue"
+			    value      	""))
+		    quid       	"37BC91A50306"
+		    documentation 	
+|Mapping of the y-Range	 
+		    
+		    label      	"MapY"
+		    supplier   	"Logical View::MathGraph2::LinCoordMap"
+		    quidu      	"37BC91A50300"
+		    is_navigable 	TRUE))))
+    logical_presentations 	(list unit_reference_list
+	(object ClassDiagram "MathGraph"
+	    quid       	"37BE76B702D2"
+	    title      	"MathGraph"
+	    zoom       	100
+	    max_height 	28350
+	    max_width  	21600
+	    origin_x   	0
+	    origin_y   	0
+	    items      	(list diagram_item_list
+		(object ClassView "Class" "Logical View::MathGraph2::MathGraph2" @1
+		    ShowCompartmentStereotypes 	TRUE
+		    IncludeAttribute 	TRUE
+		    IncludeOperation 	TRUE
+		    location   	(682, 279)
+		    label      	(object ItemLabel
+			Parent_View 	@1
+			location   	(121, 73)
+			fill_color 	13434879
+			nlines     	1
+			max_width  	1122
+			justify    	0
+			label      	"MathGraph2")
+		    icon_style 	"Icon"
+		    line_color 	3342489
+		    fill_color 	13434879
+		    quidu      	"37BC8ED7008A"
+		    width      	1140
+		    height     	436
+		    annotation 	8
+		    autoResize 	TRUE)
+		(object ClassView "Class" "Logical View::MathGraph2::LinCoordMap" @2
+		    ShowCompartmentStereotypes 	TRUE
+		    IncludeAttribute 	TRUE
+		    IncludeOperation 	TRUE
+		    location   	(868, 930)
+		    label      	(object ItemLabel
+			Parent_View 	@2
+			location   	(711, 649)
+			fill_color 	13434879
+			nlines     	1
+			max_width  	314
+			justify    	0
+			label      	"LinCoordMap")
+		    icon_style 	"Icon"
+		    line_color 	3342489
+		    fill_color 	13434879
+		    quidu      	"37BC91A50300"
+		    width      	332
+		    height     	586
+		    annotation 	8
+		    autoResize 	TRUE)
+		(object ClassView "Class" "Logical View::MathGraph2::Coordinates2D" @3
+		    ShowCompartmentStereotypes 	TRUE
+		    IncludeAttribute 	TRUE
+		    IncludeOperation 	TRUE
+		    location   	(372, 930)
+		    label      	(object ItemLabel
+			Parent_View 	@3
+			location   	(200, 799)
+			fill_color 	13434879
+			nlines     	1
+			max_width  	344
+			justify    	0
+			label      	"Coordinates2D")
+		    icon_style 	"Icon"
+		    line_color 	3342489
+		    fill_color 	13434879
+		    quidu      	"37BC91A502F7"
+		    width      	362
+		    height     	286
+		    annotation 	8
+		    autoResize 	TRUE)
+		(object AssociationViewNew "$UNNAMED$0" @4
+		    location   	(627, 930)
+		    stereotype 	TRUE
+		    line_color 	3342489
+		    quidu      	"37BC91A50301"
+		    roleview_list 	(list RoleViews
+			(object RoleView "MapX" @5
+			    Parent_View 	@4
+			    location   	(255, 0)
+			    label      	(object SegLabel @6
+				Parent_View 	@5
+				location   	(622, 891)
+				anchor     	1
+				anchor_loc 	1
+				nlines     	1
+				max_width  	132
+				justify    	0
+				label      	"+MapX"
+				pctDist    	-0.069444
+				height     	40
+				orientation 	0)
+			    stereotype 	TRUE
+			    line_color 	3342489
+			    quidu      	"37BC91A50303"
+			    client     	@4
+			    supplier   	@2
+			    line_style 	0)
+			(object RoleView "$UNNAMED$1" @7
+			    Parent_View 	@4
+			    location   	(255, 0)
+			    label      	(object SegLabel @8
+				Parent_View 	@7
+				location   	(568, 889)
+				hidden     	TRUE
+				anchor     	1
+				anchor_loc 	1
+				nlines     	1
+				max_width  	450
+				justify    	0
+				label      	""
+				pctDist    	0.800000
+				height     	42
+				orientation 	1)
+			    stereotype 	TRUE
+			    line_color 	3342489
+			    quidu      	"37BC91A50302"
+			    client     	@4
+			    supplier   	@3
+			    line_style 	0)))
+		(object AssociationViewNew "$UNNAMED$2" @9
+		    location   	(627, 930)
+		    stereotype 	TRUE
+		    line_color 	3342489
+		    quidu      	"37BC91A50304"
+		    roleview_list 	(list RoleViews
+			(object RoleView "MapY" @10
+			    Parent_View 	@9
+			    location   	(255, 0)
+			    label      	(object SegLabel @11
+				Parent_View 	@10
+				location   	(622, 984)
+				anchor     	1
+				anchor_loc 	1
+				nlines     	1
+				max_width  	132
+				justify    	0
+				label      	"+MapY"
+				pctDist    	-0.069444
+				height     	54
+				orientation 	1)
+			    stereotype 	TRUE
+			    line_color 	3342489
+			    quidu      	"37BC91A50306"
+			    client     	@9
+			    supplier   	@2
+			    line_style 	0)
+			(object RoleView "$UNNAMED$3" @12
+			    Parent_View 	@9
+			    location   	(255, 0)
+			    label      	(object SegLabel @13
+				Parent_View 	@12
+				location   	(568, 889)
+				hidden     	TRUE
+				anchor     	1
+				anchor_loc 	1
+				nlines     	1
+				max_width  	450
+				justify    	0
+				label      	""
+				pctDist    	0.800000
+				height     	42
+				orientation 	1)
+			    stereotype 	TRUE
+			    line_color 	3342489
+			    quidu      	"37BC91A50305"
+			    client     	@9
+			    supplier   	@3
+			    line_style 	0)))))))

@@ -1,0 +1,377 @@
+package id25b1fc9fodqegc9fqqpu7;
+
+/**
+@version 2.0
+@physicalPackage
+@__modelType diagram 
+*/
+class diagram {
+/**
+@shapeType DependencyLink
+@__modelType link
+@__ref <oiref:design#Class#idnsfcc9frybwec9fs1qlv.diagram:oiref><oihard>
+@automatic 
+*/
+class link {
+}/**
+@shapeType DependencyLink
+@__modelType link
+@__ref <oiref:design#Class#id47mokc9fodqegc9fq5czi.diagram:oiref><oihard>
+@automatic 
+*/
+class link165 {
+}/**
+@shapeType DependencyLink
+@__modelType link
+@__ref <oiref:design#Class#id4vy0zc9fodqegc9fqqr4o.diagram:oiref><oihard>
+@automatic 
+*/
+class link166 {
+}/**
+@shapeType DependencyLink
+@__modelType link
+@__ref <oiref:design#Class#id3ai3cc9frybwec9fs1pgf.diagram:oiref><oihard>
+@automatic 
+*/
+class link167 {
+}/**
+@shapeType DependencyLink
+@__modelType link
+@__ref <oiref:design#Class#id7qibc9fodqegc9fqqngt.diagram:oiref><oihard>
+@automatic 
+*/
+class link168 {
+}/**
+@shapeType DependencyLink
+@__modelType link
+@__ref <oiref:design#Class#id457m4c9fodqegc9fq5a4l.diagram:oiref><oihard>
+@automatic 
+*/
+class link169 {
+}/**
+@shapeType DependencyLink
+@__modelType link
+@__ref <oiref:design#Class#id9f8wc9frybwec9fs0pa9.diagram:oiref><oihard>
+@automatic 
+*/
+class link170 {
+}/**
+@shapeType DependencyLink
+@__modelType link
+@__ref <oiref:design#Class#id45u3xc9frybwec9fs1q4c.diagram:oiref><oihard>
+@automatic 
+*/
+class link171 {
+}/**
+@shapeType DependencyLink
+@__modelType link
+@__ref <oiref:design#Class#id2otl3c9fodqegc9fq5gp1.diagram:oiref><oihard>
+@automatic 
+*/
+class link172 {
+}/**
+@shapeType DependencyLink
+@__modelType link
+@__ref <oiref:design#Class#idqb01c9fodqegc9fq5ddp.diagram:oiref><oihard>
+@automatic 
+*/
+class link173 {
+}/**
+@shapeType DependencyLink
+@__modelType link
+@__ref <oiref:design#Class#id15cqcc9fodqegc9fqqu1j.diagram:oiref><oihard>
+@automatic 
+*/
+class link174 {
+}/**
+@shapeType DependencyLink
+@__modelType link
+@__ref <oiref:design#Class#id235w6c9fodqegc9fqqsdg.diagram:oiref><oihard>
+@automatic 
+*/
+class link175 {
+}/**
+@shapeType DependencyLink
+@__modelType link
+@__ref <oiref:design#Class#id2z7bcc9fodqegc9fq5es2.diagram:oiref><oihard>
+@automatic 
+*/
+class link176 {
+}/**
+@__ref <oiref:java#Class#Stream.Copy.Group.Ring.testRing:oiref><oihard>
+@__modelType reference 
+*/
+class reference {
+}/**
+@__ref <oiref:java#Class#Stream.Copy.Group.Ring.IRefiner:oiref><oihard>
+@__modelType reference 
+*/
+class reference225 {
+}/**
+@__ref <oiref:java#Class#Stream.Copy.Group.Ring.StepMP:oiref><oihard>
+@__modelType reference 
+*/
+class reference226 {
+}/**
+@__ref <oiref:java#Class#Stream.Copy.Group.Ring.ARing:oiref><oihard>
+@__modelType reference 
+*/
+class reference227 {
+}/**
+@__ref <oiref:java#Class#Stream.Copy.Group.Ring.AIntRing:oiref><oihard>
+@__modelType reference 
+*/
+class reference228 {
+}/**
+@__ref <oiref:java#Class#Stream.Copy.Group.Ring.StepRK:oiref><oihard>
+@__modelType reference 
+*/
+class reference229 {
+}/**
+@__ref <oiref:java#Class#Stream.Copy.Group.Ring.NewtonStep:oiref><oihard>
+@__modelType reference 
+*/
+class reference230 {
+}/**
+@__ref <oiref:java#Class#Stream.Copy.Group.Ring.CIntRing:oiref><oihard>
+@__modelType reference 
+*/
+class reference231 {
+}/**
+@__ref <oiref:java#Class#Stream.Copy.Group.Ring.ARefiner:oiref><oihard>
+@__modelType reference 
+*/
+class reference232 {
+}/**
+@__ref <oiref:java#Class#Stream.Copy.Group.Ring.Interpolator:oiref><oihard>
+@__modelType reference 
+*/
+class reference233 {
+}/**
+@__ref <oiref:java#Class#Stream.Copy.Group.Ring.NewtonStep2:oiref><oihard>
+@__modelType reference 
+*/
+class reference234 {
+}/**
+@__ref <oiref:java#Class#Stream.Copy.Group.Ring.IDGL:oiref><oihard>
+@__modelType reference 
+*/
+class reference235 {
+}/**
+@__ref <oiref:java#Class#Stream.Copy.Group.Ring.IInteger:oiref><oihard>
+@__modelType reference 
+*/
+class reference236 {
+}/**
+@__ref <oiref:java#Class#Stream.Copy.Group.Ring.FixPtStep:oiref><oihard>
+@__modelType reference 
+*/
+class reference237 {
+}/**
+@__ref <oiref:java#Class#Stream.Copy.Group.Ring.IComplex:oiref><oihard>
+@__modelType reference 
+*/
+class reference238 {
+}/**
+@__ref <oiref:java#Class#Stream.Copy.Group.Ring.Ring:oiref><oihard>
+@__modelType reference 
+*/
+class reference239 {
+}/**
+@__ref <oiref:java#Class#Stream.Copy.Group.Ring.CRing:oiref><oihard>
+@__modelType reference 
+*/
+class reference240 {
+}/**
+@__ref <oiref:java#Class#Stream.Copy.Group.Ring.AStepper:oiref><oihard>
+@__modelType reference 
+*/
+class reference241 {
+}/**
+@__ref <oiref:java#Class#Stream.Copy.Group.Ring.FalsiStep:oiref><oihard>
+@__modelType reference 
+*/
+class reference242 {
+}/**
+@__ref <oiref:java#Class#Stream.Copy.Group.Ring.Extrapolator:oiref><oihard>
+@__modelType reference 
+*/
+class reference243 {
+}/**
+@__ref <oiref:java#Class#Ring.Prime:oiref><oihard>
+@__modelType reference 
+*/
+class reference244 {
+}/**
+@__ref <oiref:java#Class#Stream.Copy.Group.Ring.StepTrapez:oiref><oihard>
+@__modelType reference 
+*/
+class reference245 {
+}/**
+@__ref <oiref:java#Class#Stream.Copy.Group.Ring.AInteger:oiref><oihard>
+@__modelType reference 
+*/
+class reference246 {
+}/**
+@__ref <oiref:java#Class#Stream.Copy.Group.Ring.integer:oiref><oihard>
+@__modelType reference 
+*/
+class reference247 {
+}/**
+@__ref <oiref:java#Class#Stream.Copy.Group.Ring.IStepper:oiref><oihard>
+@__modelType reference 
+*/
+class reference248 {
+}/**
+@__ref <oiref:java#Class#Stream.Copy.Group.Ring.IntRing:oiref><oihard>
+@__modelType reference 
+*/
+class reference250 {
+}/**
+@__ref <oiref:java#Class#Stream.Copy.Group.Ring.ABoolRing:oiref><oihard>
+@__modelType reference 
+*/
+class reference260 {
+}/**
+@__ref <oiref:java#Class#Stream.Copy.Group.Ring.TestRing:oiref><oihard>
+@__modelType reference 
+*/
+class reference9 {
+}/**
+@__ref <oiref:java#Class#Stream.Copy.Group.Ring.BoolRing:oiref><oihard>
+@__modelType reference 
+*/
+class reference5 {
+}/**
+@__ref <oiref:java#Class#AStepper:oiref><oihard>
+@__modelType reference 
+*/
+class reference91 {
+}/**
+@__ref <oiref:java#Class#integer:oiref><oihard>
+@__modelType reference 
+*/
+class reference105 {
+}/**
+@__ref <oiref:java#Class#FixPtStep:oiref><oihard>
+@__modelType reference 
+*/
+class reference106 {
+}/**
+@__ref <oiref:java#Class#FalsiStep:oiref><oihard>
+@__modelType reference 
+*/
+class reference129 {
+}/**
+@__ref <oiref:java#Class#StepTrapez:oiref><oihard>
+@__modelType reference 
+*/
+class reference136 {
+}/**
+@__ref <oiref:java#Class#Interpolator:oiref><oihard>
+@__modelType reference 
+*/
+class reference148 {
+}/**
+@__ref <oiref:java#Class#NewtonStep:oiref><oihard>
+@__modelType reference 
+*/
+class reference169 {
+}/**
+@__ref <oiref:java#Class#Stream.Copy.Group.Ring.IFloatStepper:oiref><oihard>
+@__modelType reference 
+*/
+class reference51 {
+}}/**
+@__tags
+@shapeType ClassDiagram 
+*/
+class __tags {
+}/**
+@__options 
+*/
+class __options {
+}/**
+@__positions <oigroup:<oiref:java#Extends#Stream.Copy.Group.Ring.IntRing#Stream.Copy.Group.Ring.IComplex:oiref>=996,1068,996,998:oigroup>
+<oigroup:<oiref:java#Extends#Stream.Copy.Group.Ring.IntRing#Stream.Copy.Group.Ring.integer:oiref>=888,1068,184,923,184,854:oigroup>
+<oigroup:Composite#supplierCardinality#MemberLink#<oiref:java#Member#Stream.Copy.Group.Ring.Extrapolator#yDat:oiref>=908,1969,26,16,0:oigroup>
+<oigroup:MemberLink#<oiref:java#Member#Stream.Copy.Group.Ring.AStepper#y:oiref>=816,553,663,666,663,889,942,1068:oigroup>
+<oigroup:<oiref:java#Class#Stream.Copy.Group.Ring.Extrapolator:oiref>=845,2072,200,446,1:oigroup>
+<oigroup:<oiref:java#Class#Stream.Copy.Group.Ring.ARing:oiref>=230,1068,200,430,1:oigroup>
+<oigroup:<oiref:java#Extends#Stream.Copy.Group.Ring.StepMP#Stream.Copy.Group.Ring.AStepper:oiref>=543,673,802,553:oigroup>
+<oigroup:<oiref:java#Implements#Stream.Copy.Group.Ring.AInteger#Stream.Copy.Group.Ring.integer:oiref>=127,1068,127,854:oigroup>
+<oigroup:<oiref:java#Class#Stream.Copy.Group.Ring.NewtonStep:oiref>=1680,1068,200,158,1:oigroup>
+<oigroup:MemberLink#<oiref:java#Member#Stream.Copy.Group.Ring.Extrapolator#xDat:oiref>=966,2072,966,1969:oigroup>
+<oigroup:<oiref:java#Class#Stream.Copy.Group.Ring.FalsiStep:oiref>=1230,1068,200,222,1:oigroup>
+<oigroup:<oiref:java#Class#Stream.Copy.Group.Ring.AStepper:oiref>=788,203,200,350,1:oigroup>
+<oigroup:<oiref:java#Class#Stream.Copy.Group.Ring.StepTrapez:oiref>=1126,673,200,254,1:oigroup>
+<oigroup:Composite#supplierCardinality#MemberLink#<oiref:java#Member#Stream.Copy.Group.Ring.Interpolator#x:oiref>=1020,1969,26,16,0:oigroup>
+<oigroup:<oiref:java#Class#Stream.Copy.Group.Ring.IStepper:oiref>=793,10,190,133,1:oigroup>
+<oigroup:MemberLink#<oiref:java#Member#Stream.Copy.Group.Ring.Interpolator#x:oiref>=1215,2072,1050,1969:oigroup>
+<oigroup:<oiref:java#Class#Ring.Prime:oiref>=1171,10,200,94,1:oigroup>
+<oigroup:MemberLink#<oiref:java#Member#Stream.Copy.Group.Ring.ARefiner#xl:oiref>=1487,911,1487,1009,1048,1068:oigroup>
+<oigroup:MemberLink#<oiref:java#Member#Stream.Copy.Group.Ring.FalsiStep#dy:oiref>=1230,1123,1070,1123:oigroup>
+<oigroup:<oiref:java#Class#Stream.Copy.Group.Ring.FixPtStep:oiref>=1450,1068,190,133,1:oigroup>
+<oigroup:Composite#supplierCardinality#MemberLink#<oiref:java#Member#Stream.Copy.Group.Ring.Interpolator#t:oiref>=992,1969,26,16,0:oigroup>
+<oigroup:<oiref:java#Extends#Stream.Copy.Group.Ring.IntRing#Stream.Copy.Group.Ring.Ring:oiref>=906,1068,390,918:oigroup>
+<oigroup:<oiref:java#Class#Stream.Copy.Group.Ring.StepRK:oiref>=703,673,200,206,1:oigroup>
+<oigroup:<oiref:java#Class#Stream.Copy.Group.Ring.StepMP:oiref>=443,673,200,190,1:oigroup>
+<oigroup:MemberLink#<oiref:java#Member#Stream.Copy.Group.Ring.Interpolator#t:oiref>=1165,2072,1022,1969:oigroup>
+<oigroup:<oiref:java#Implements#Stream.Copy.Group.Ring.ARefiner#Stream.Copy.Group.Ring.IRefiner:oiref>=1532,673,1532,304:oigroup>
+<oigroup:MemberLink#<oiref:java#Member#Stream.Copy.Group.Ring.AStepper#F:oiref>=988,253,1128,253:oigroup>
+<oigroup:<oiref:java#Class#Stream.Copy.Group.Ring.Interpolator:oiref>=1065,2072,200,286,1:oigroup>
+<oigroup:MemberLink#<oiref:java#Member#Stream.Copy.Group.Ring.Extrapolator#Hilf:oiref>=900,2072,900,1969:oigroup>
+<oigroup:MemberLink#<oiref:java#Member#Stream.Copy.Group.Ring.AStepper#testStepper:oiref>=948,553,948,603,1038,603,1038,513,988,513:oigroup>
+<oigroup:MemberLink#<oiref:java#Member#Stream.Copy.Group.Ring.Interpolator#a:oiref>=1115,2072,994,1969:oigroup>
+<oigroup:MemberLink#<oiref:java#Member#Stream.Copy.Group.Ring.ARefiner#dx:oiref>=1504,911,1504,1020,1059,1068:oigroup>
+<oigroup:MemberLink#<oiref:java#Member#Stream.Copy.Group.Ring.FalsiStep#xr:oiref>=1230,1178,1070,1178:oigroup>
+<oigroup:<oiref:java#Class#Stream.Copy.Group.Ring.ARefiner:oiref>=1436,673,193,238,1:oigroup>
+<oigroup:<oiref:java#Class#Stream.Copy.Group.Ring.AIntRing:oiref>=335,2072,200,1438,1:oigroup>
+<oigroup:Composite#supplierCardinality#MemberLink#<oiref:java#Member#Stream.Copy.Group.Ring.Interpolator#a:oiref>=964,1969,26,16,0:oigroup>
+<oigroup:<oiref:java#Class#Stream.Copy.Group.Ring.NewtonStep2:oiref>=1285,2072,200,158,1:oigroup>
+<oigroup:MemberLink#<oiref:java#Member#Stream.Copy.Group.Ring.StepMP#W:oiref>=543,863,924,1068:oigroup>
+<oigroup:<oiref:java#Class#Stream.Copy.Group.Ring.ABoolRing:oiref>=115,2072,200,597,1:oigroup>
+<oigroup:MemberLink#<oiref:java#Member#Stream.Copy.Group.Ring.Extrapolator#yDat:oiref>=938,2072,938,1969:oigroup>
+<oigroup:<oiref:java#Extends#Stream.Copy.Group.Ring.CIntRing#Stream.Copy.Group.Ring.CRing:oiref>=635,2072,635,1489:oigroup>
+<oigroup:<oiref:java#Class#Stream.Copy.Group.Ring.CIntRing:oiref>=625,2072,200,1438,1:oigroup>
+<oigroup:<oiref:java#Extends#Stream.Copy.Group.Ring.integer#Stream.Copy.Group.Ring.IInteger:oiref>=146,673,146,336:oigroup>
+<oigroup:<oiref:java#Class#Stream.Copy.Group.Ring.IComplex:oiref>=923,673,183,325,1:oigroup>
+<oigroup:<oiref:java#Class#Stream.Copy.Group.Ring.CRing:oiref>=450,1068,200,421,1:oigroup>
+<oigroup:<oiref:java#Class#Stream.Copy.Group.Ring.integer:oiref>=90,673,113,181,1:oigroup>
+<oigroup:MemberLink#<oiref:java#Member#Stream.Copy.Group.Ring.AStepper#x:oiref>=830,553,683,670,683,884,960,1068:oigroup>
+<oigroup:<oiref:java#Class#Stream.Copy.Group.Ring.IRefiner:oiref>=1481,203,103,101,1:oigroup>
+<oigroup:Composite#supplierCardinality#MemberLink#<oiref:java#Member#Stream.Copy.Group.Ring.Extrapolator#xDat:oiref>=936,1969,26,16,0:oigroup>
+<oigroup:<oiref:java#Implements#Stream.Copy.Group.Ring.AIntRing#Stream.Copy.Group.Ring.IntRing:oiref>=458,2072,880,1969:oigroup>
+<oigroup:<oiref:java#Extends#Stream.Copy.Group.Ring.AIntRing#Stream.Copy.Group.Ring.ARing:oiref>=382,2072,382,1498:oigroup>
+<oigroup:MemberLink#<oiref:java#Member#Stream.Copy.Group.Ring.ARefiner#Multiplicity:oiref>=1453,911,1453,988,1026,1068:oigroup>
+<oigroup:<oiref:java#Extends#Stream.Copy.Group.Ring.FixPtStep#Stream.Copy.Group.Ring.ARefiner:oiref>=1538,1068,1538,911:oigroup>
+<oigroup:MemberLink#<oiref:java#Member#Stream.Copy.Group.Ring.AStepper#StepSize:oiref>=913,553,913,611,1416,671,1416,982,1016,1068:oigroup>
+<oigroup:<oiref:java#Implements#Stream.Copy.Group.Ring.ARing#Stream.Copy.Group.Ring.Ring:oiref>=326,1068,326,918:oigroup>
+<oigroup:<oiref:java#Extends#Stream.Copy.Group.Ring.NewtonStep2#Stream.Copy.Group.Ring.ARefiner:oiref>=1418,2072,1660,1518,1660,1066,1555,971,1555,911:oigroup>
+<oigroup:MemberLink#<oiref:java#Member#Stream.Copy.Group.Ring.StepTrapez#y2:oiref>=1206,927,1206,960,1006,1068:oigroup>
+<oigroup:<oiref:java#Implements#Stream.Copy.Group.Ring.AStepper#Stream.Copy.Group.Ring.IStepper:oiref>=888,203,888,143:oigroup>
+<oigroup:<oiref:java#Class#Stream.Copy.Group.Ring.testRing:oiref>=1003,10,148,85,1:oigroup>
+<oigroup:<oiref:java#Class#Stream.Copy.Group.Ring.IDGL:oiref>=1128,203,200,101,1:oigroup>
+<oigroup:MemberLink#<oiref:java#Member#Stream.Copy.Group.Ring.ARefiner#yl:oiref>=1470,911,1470,998,1037,1068:oigroup>
+<oigroup:MemberLink#<oiref:java#Member#Stream.Copy.Group.Ring.Extrapolator#alt:oiref>=910,2072,910,1969:oigroup>
+<oigroup:<oiref:java#Class#Stream.Copy.Group.Ring.Ring:oiref>=223,673,200,245,1:oigroup>
+<oigroup:<oiref:java#Extends#Stream.Copy.Group.Ring.StepTrapez#Stream.Copy.Group.Ring.AStepper:oiref>=1226,673,879,619,879,553:oigroup>
+<oigroup:MemberLink#<oiref:java#Member#Stream.Copy.Group.Ring.NewtonStep2#y1l:oiref>=1351,2072,1060,1969:oigroup>
+<oigroup:MemberLink#<oiref:java#Member#Stream.Copy.Group.Ring.FalsiStep#yr:oiref>=1230,1234,1070,1234:oigroup>
+<oigroup:<oiref:java#Extends#Stream.Copy.Group.Ring.StepRK#Stream.Copy.Group.Ring.AStepper:oiref>=845,673,845,553:oigroup>
+<oigroup:<oiref:java#Class#Stream.Copy.Group.Ring.AInteger:oiref>=10,1068,200,302,1:oigroup>
+<oigroup:<oiref:java#Extends#Stream.Copy.Group.Ring.FalsiStep#Stream.Copy.Group.Ring.ARefiner:oiref>=1330,1068,1521,1030,1521,911:oigroup>
+<oigroup:<oiref:java#Implements#Stream.Copy.Group.Ring.CRing#Stream.Copy.Group.Ring.Ring:oiref>=550,1068,358,918:oigroup>
+<oigroup:MemberLink#<oiref:java#Member#Stream.Copy.Group.Ring.StepRK#W:oiref>=803,879,803,908,978,1068:oigroup>
+<oigroup:MemberLink#<oiref:java#Member#Stream.Copy.Group.Ring.AInteger#self:oiref>=165,1068,165,854:oigroup>
+<oigroup:MemberLink#<oiref:java#Member#Stream.Copy.Group.Ring.ARefiner#R:oiref>=1591,911,1591,959,1677,959,1677,873,1629,873:oigroup>
+<oigroup:<oiref:java#Extends#Stream.Copy.Group.Ring.NewtonStep#Stream.Copy.Group.Ring.ARefiner:oiref>=1780,1068,1573,967,1573,911:oigroup>
+<oigroup:<oiref:java#Implements#Stream.Copy.Group.Ring.CIntRing#Stream.Copy.Group.Ring.IntRing:oiref>=730,2072,890,1969:oigroup>
+<oigroup:MemberLink#<oiref:java#Member#Stream.Copy.Group.Ring.AIntRing#Carry:oiref>=495,3510,495,3560,585,3560,585,3470,535,3470:oigroup>
+<oigroup:<oiref:java#Extends#Stream.Copy.Group.Ring.ABoolRing#Stream.Copy.Group.Ring.ARing:oiref>=258,2072,258,1498:oigroup>
+<oigroup:MemberLink#<oiref:java#Member#Stream.Copy.Group.Ring.StepTrapez#TZ:oiref>=1286,927,1286,977,1376,977,1376,887,1326,887:oigroup>
+<oigroup:<oiref:java#Class#Stream.Copy.Group.Ring.IInteger:oiref>=93,203,106,133,1:oigroup>
+<oigroup:<oiref:java#Class#Stream.Copy.Group.Ring.IntRing:oiref>=870,1068,200,901,1:oigroup>
+*/
+class __positions {
+}

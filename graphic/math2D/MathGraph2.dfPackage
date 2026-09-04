@@ -1,0 +1,58 @@
+package id13l6c9fodqegc9fq5gfb;
+
+/**
+@version 2.0
+@physicalPackage
+@__modelType diagram 
+*/
+class diagram {
+/**
+@shapeType DependencyLink
+@__modelType link
+@__ref <oiref:design#Class#id3hbopc9fodqegc9fq5d3f.diagram:oiref><oihard>
+@automatic 
+*/
+class link {
+}/**
+@shapeType DependencyLink
+@__modelType link
+@__ref <oiref:design#Class#id457m4c9fodqegc9fq5a4l.diagram:oiref><oihard>
+@automatic 
+*/
+class link83 {
+}/**
+@shapeType DependencyLink
+@__modelType link
+@__ref <oiref:design#Class#id17j1lc9fodqegc9fq5gal.diagram:oiref><oihard>
+@automatic 
+*/
+class link84 {
+}/**
+@__ref <oiref:java#Class#Graphics.MathGraph2.Coordinates2D:oiref><oihard>
+@__modelType reference 
+*/
+class reference {
+}/**
+@__ref <oiref:java#Class#Graphics.MathGraph2.testMathGraph2:oiref><oihard>
+@__modelType reference 
+*/
+class reference1 {
+}/**
+@__ref <oiref:java#Class#Graphics.MathGraph2.LinCoordMap:oiref><oihard>
+@__modelType reference 
+*/
+class reference2 {
+}}/**
+@__tags
+@shapeType ClassDiagram 
+*/
+class __tags {
+}/**
+@__options 
+*/
+class __options {
+}/**
+@__positions 
+*/
+class __positions {
+}

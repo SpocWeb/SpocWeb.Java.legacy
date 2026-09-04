@@ -1,0 +1,122 @@
+package id2c6swc9frybwec9fs20g9;
+
+/**
+@version 2.0
+@physicalPackage
+@__modelType diagram 
+*/
+class diagram {
+/**
+@shapeType DependencyLink
+@__modelType link
+@__ref <oiref:design#Class#id4f20zc9fodqegc9fq5grt.diagram:oiref><oihard>
+@automatic 
+*/
+class link {
+}/**
+@shapeType DependencyLink
+@__modelType link
+@__ref <oiref:design#Class#idqb01c9fodqegc9fq5ddp.diagram:oiref><oihard>
+@automatic 
+*/
+class link246 {
+}/**
+@shapeType DependencyLink
+@__modelType link
+@__ref <oiref:design#Class#id457m4c9fodqegc9fq5a4l.diagram:oiref><oihard>
+@automatic 
+*/
+class link247 {
+}/**
+@__ref <oiref:java#Class#Stream.Object.Byte.HTMLElement:oiref><oihard>
+@__modelType reference 
+*/
+class reference {
+}/**
+@__ref <oiref:java#Class#Stream.Object.Byte.XMLElement:oiref><oihard>
+@__modelType reference 
+*/
+class reference158 {
+}/**
+@__ref <oiref:java#Class#Stream.Object.Byte.XMLInputStream:oiref><oihard>
+@__modelType reference 
+*/
+class reference159 {
+}/**
+@__ref <oiref:java#Class#Stream.Object.Byte.DomElement:oiref><oihard>
+@__modelType reference 
+*/
+class reference160 {
+}/**
+@__ref <oiref:java#Class#Stream.Object.Byte.XMLScanner:oiref><oihard>
+@__modelType reference 
+@hideAttributes
+*/
+class reference162 {
+}/**
+@__ref <oiref:java#Class#Stream.Object.Byte.LimitedSizeOutputStream:oiref><oihard>
+@__modelType reference 
+*/
+class reference163 {
+}/**
+@__ref <oiref:java#Class#Stream.Object.Byte.Scanner:oiref><oihard>
+@__modelType reference 
+@hideAttributes
+*/
+class reference164 {
+}/**
+@__ref <oiref:java#Class#Stream.Object.Byte.LimitedSizeInputStream:oiref><oihard>
+@__modelType reference 
+*/
+class reference165 {
+}/**
+@__ref <oiref:java#Class#Stream.Object.Byte.XMLParser:oiref><oihard>
+@__modelType reference 
+*/
+class reference166 {
+}/**
+@__ref <oiref:java#Class#Stream.Object.Byte.HTMLScanner:oiref><oihard>
+@__modelType reference 
+@hideAttributes
+*/
+class reference167 {
+}/**
+@__ref <oiref:java#Class#Stream.Object.Byte.StreamInScanner:oiref><oihard>
+@__modelType reference 
+*/
+class reference29 {
+}}/**
+@__tags
+@shapeType ClassDiagram 
+*/
+class __tags {
+}/**
+@__options 
+*/
+class __options {
+}/**
+@__positions <oigroup:MemberLink#<oiref:java#Member#Stream.Object.Byte.XMLInputStream#scan:oiref>=740,71,682,71:oigroup>
+<oigroup:<oiref:java#Class#Stream.Object.Byte.XMLFormatter:oiref>=1100,10,200,462,1:oigroup>
+<oigroup:<oiref:java#Class#Stream.Object.Byte.XMLInputStream:oiref>=740,10,200,510,1:oigroup>
+<oigroup:<oiref:java#Class#Stream.Object.Byte.StreamInScanner:oiref>=20,678,200,174,1:oigroup>
+<oigroup:<oiref:java#Class#Stream.Object.Byte.LimitedSizeInputStream:oiref>=280,810,200,270,1:oigroup>
+<oigroup:<oiref:java#Class#Stream.Object.Byte.LimitedSizeOutputStream:oiref>=810,611,200,334,1:oigroup>
+<oigroup:MemberLink#<oiref:java#Member#Stream.Object.Byte.XMLParser#Root:oiref>=270,137,210,137:oigroup>
+<oigroup:MemberLink#<oiref:java#Member#Stream.Object.Byte.XMLScanner#scn:oiref>=631,133,631,601:oigroup>
+<oigroup:<oiref:java#Class#Stream.Object.Byte.HTMLElement:oiref>=21,489,200,174,1:oigroup>
+<oigroup:MemberLink#<oiref:java#Member#Stream.Object.Byte.XMLFormatter#XW:oiref>=1200,472,1200,510:oigroup>
+<oigroup:<oiref:java#Class#Stream.Object.Byte.DomElement:oiref>=960,10,116,123,1:oigroup>
+<oigroup:MemberLink#<oiref:java#Member#Stream.Object.Byte.XMLParser#scan:oiref>=470,71,500,71:oigroup>
+<oigroup:<oiref:java#Class#Stream.Object.Byte.XMLElement:oiref>=10,10,200,414,1:oigroup>
+<oigroup:<oiref:java#Class#Stream.Object.Byte.HTMLScanner:oiref>=461,321,200,139,1:oigroup>
+<oigroup:<oiref:java#Class#Stream.Object.Byte.XMLParser:oiref>=270,10,200,286,1:oigroup>
+<oigroup:<oiref:java#Class#Stream.Object.Byte.Scanner:oiref>=549,601,200,603,1:oigroup>
+<oigroup:<oiref:java#Extends#Stream.Object.Byte.HTMLElement#Stream.Object.Byte.XMLElement:oiref>=115,489,115,424:oigroup>
+<oigroup:<oiref:java#Class#Stream.Object.Byte.XMLScanner:oiref>=500,10,182,123,1:oigroup>
+<oigroup:MemberLink#<oiref:java#Member#Stream.Object.Byte.HTMLScanner#scan:oiref>=580,321,580,133:oigroup>
+<oigroup:MemberLink#<oiref:java#Member#Stream.Object.Byte.XMLElement#Parent:oiref>=170,424,170,474,260,474,260,384,210,384:oigroup>
+<oigroup:<oiref:java#Class#Stream.Object.Byte.EscapeStreamIn:oiref>=20,868,200,270,1:oigroup>
+<oigroup:<oiref:java#Class#Stream.Object.Byte.XMLWriter:oiref>=1100,510,200,347,1:oigroup>
+*/
+class __positions {
+}

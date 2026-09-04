@@ -1,0 +1,52 @@
+package idh8zv8bqh0rautbqh0sizr;
+
+/**
+@version 2.0
+@physicalPackage
+@__modelType diagram 
+*/
+class diagram {
+/**
+@__ref <oiref:java#Class#analysis.PartyType:oiref><oihard>
+@__modelType reference 
+*/
+class reference {
+}/**
+@__ref <oiref:java#Class#analysis.PartyTypeAssociation:oiref><oihard>
+@__modelType reference 
+*/
+class reference351 {
+}/**
+@__ref <oiref:java#Class#analysis.Party:oiref><oihard>
+@__modelType reference 
+*/
+class reference352 {
+}/**
+@__ref <oiref:java#Class#analysis.PartyAssociation:oiref><oihard>
+@__modelType reference 
+*/
+class reference353 {
+}/**
+@__ref <oiref:java#Class#analysis.ResponsibilityType:oiref><oihard>
+@__modelType reference 
+*/
+class reference354 {
+}/**
+@__ref <oiref:java#Class#analysis.Responsibility:oiref><oihard>
+@__modelType reference 
+*/
+class reference355 {
+}}/**
+@__tags
+@shapeType ClassDiagram 
+*/
+class __tags {
+}/**
+@__options 
+*/
+class __options {
+}/**
+@__positions 
+*/
+class __positions {
+}

@@ -1,0 +1,1339 @@
+
+(object Petal
+    version    	42
+    _written   	"Rose 4.5.8163.3"
+    charSet    	0)
+
+(object SubSystem "MathGraph3"
+    is_unit    	TRUE
+    is_loaded  	TRUE
+    quid       	"37BC91A600C7"
+    visible_modules 	(list dependency_list
+	(object Dependency_Relationship
+	    quid       	"37BC91A600E7"
+	    supplier   	"Component View::Ring"
+	    quidu      	"36BB392A02D1"
+	    supplier_is_subsystem 	TRUE)
+	(object Dependency_Relationship
+	    quid       	"37BC91A600E9"
+	    supplier   	"Component View::Vector"
+	    quidu      	"36BB514D0055"
+	    supplier_is_subsystem 	TRUE)
+	(object Dependency_Relationship
+	    quid       	"37BC91A6010E"
+	    supplier   	"Component View::Graphics2D"
+	    quidu      	"37BC8ED5008E"
+	    supplier_is_subsystem 	TRUE)
+	(object Dependency_Relationship
+	    quid       	"37BC91A60119"
+	    supplier   	"Component View::Metric"
+	    quidu      	"36BB45940014"
+	    supplier_is_subsystem 	TRUE)
+	(object Dependency_Relationship
+	    quid       	"37BC91A60297"
+	    supplier   	"Component View::java::awt"
+	    quidu      	"34B0F6CD00CD"
+	    supplier_is_subsystem 	TRUE)
+	(object Dependency_Relationship
+	    quid       	"37BC91A70024"
+	    supplier   	"Component View::MathGraph2"
+	    quidu      	"37BC8ED70087"
+	    supplier_is_subsystem 	TRUE)
+	(object Dependency_Relationship
+	    quid       	"37BC91A70027"
+	    supplier   	"Component View::ByRef"
+	    quidu      	"36BB4AA503DA"
+	    supplier_is_subsystem 	TRUE)
+	(object Dependency_Relationship
+	    quid       	"37BC91A70032"
+	    supplier   	"Component View::BaseCopy"
+	    quidu      	"36BABF4B0011"
+	    supplier_is_subsystem 	TRUE)
+	(object Dependency_Relationship
+	    quid       	"37BC91A7003C"
+	    supplier   	"Component View::Body"
+	    quidu      	"36BB514B0391"
+	    supplier_is_subsystem 	TRUE)
+	(object Dependency_Relationship
+	    quid       	"37BC91A7003E"
+	    supplier   	"Component View::BodyTensor"
+	    quidu      	"36BC22BF01C2"
+	    supplier_is_subsystem 	TRUE)
+	(object Dependency_Relationship
+	    quid       	"37BC91A7030F"
+	    supplier   	"Component View::GroupM"
+	    quidu      	"36BB2CD10088"
+	    supplier_is_subsystem 	TRUE)
+	(object Dependency_Relationship
+	    quid       	"37BC91A90214"
+	    supplier   	"Component View::VectorFuncs"
+	    quidu      	"37BC91A9020E"
+	    supplier_is_subsystem 	TRUE)
+	(object Dependency_Relationship
+	    quid       	"37BC91A90216"
+	    supplier   	"Component View::intFunction"
+	    quidu      	"36BB39470388"
+	    supplier_is_subsystem 	TRUE))
+    physical_models 	(list unit_reference_list
+	(object module "absDraw" "NotAModuleType" "NotAModulePart"
+	    attributes 	(list Attribute_Set
+		(object Attribute
+		    tool       	"Java"
+		    name       	"FileName"
+		    value      	"D:\\Personal\\Code\\Java\\MathGraph3\\absDraw.java"))
+	    quid       	"37BC91A600C9"
+	    stereotype 	""
+	    visible_modules 	(list dependency_list
+		(object Dependency_Relationship
+		    quid       	"37BC91A600E8"
+		    supplier   	"Component View::Ring"
+		    quidu      	"36BB392A02D1"
+		    supplier_is_subsystem 	TRUE)
+		(object Dependency_Relationship
+		    quid       	"37BC91A600EA"
+		    supplier   	"Component View::Vector"
+		    quidu      	"36BB514D0055"
+		    supplier_is_subsystem 	TRUE)
+		(object Dependency_Relationship
+		    quid       	"37BD208803AA"
+		    supplier   	"Component View::Ring"
+		    quidu      	"36BB392A02D1"
+		    supplier_is_subsystem 	TRUE)
+		(object Dependency_Relationship
+		    quid       	"37BD208803AB"
+		    supplier   	"Component View::Vector"
+		    quidu      	"36BB514D0055"
+		    supplier_is_subsystem 	TRUE)
+		(object Dependency_Relationship
+		    quid       	"37BD385D032C"
+		    supplier   	"Component View::Ring"
+		    quidu      	"36BB392A02D1"
+		    supplier_is_subsystem 	TRUE)
+		(object Dependency_Relationship
+		    quid       	"37BD385D032D"
+		    supplier   	"Component View::Vector"
+		    quidu      	"36BB514D0055"
+		    supplier_is_subsystem 	TRUE))
+	    language   	"Java")
+	(object module "intDraw" "NotAModuleType" "NotAModulePart"
+	    attributes 	(list Attribute_Set
+		(object Attribute
+		    tool       	"Java"
+		    name       	"FileName"
+		    value      	"D:\\Personal\\Code\\Java\\MathGraph3\\intDraw.java"))
+	    quid       	"37BC91A600D2"
+	    stereotype 	""
+	    visible_modules 	(list dependency_list
+		(object Dependency_Relationship
+		    quid       	"37BC91A80145"
+		    supplier   	"Component View::Ring"
+		    quidu      	"36BB392A02D1"
+		    supplier_is_subsystem 	TRUE)
+		(object Dependency_Relationship
+		    quid       	"37BC91A80146"
+		    supplier   	"Component View::Vector"
+		    quidu      	"36BB514D0055"
+		    supplier_is_subsystem 	TRUE)
+		(object Dependency_Relationship
+		    quid       	"37BD2096034C"
+		    supplier   	"Component View::Ring"
+		    quidu      	"36BB392A02D1"
+		    supplier_is_subsystem 	TRUE)
+		(object Dependency_Relationship
+		    quid       	"37BD2096034D"
+		    supplier   	"Component View::Vector"
+		    quidu      	"36BB514D0055"
+		    supplier_is_subsystem 	TRUE)
+		(object Dependency_Relationship
+		    quid       	"37BD387103A2"
+		    supplier   	"Component View::Ring"
+		    quidu      	"36BB392A02D1"
+		    supplier_is_subsystem 	TRUE)
+		(object Dependency_Relationship
+		    quid       	"37BD387103A3"
+		    supplier   	"Component View::Vector"
+		    quidu      	"36BB514D0055"
+		    supplier_is_subsystem 	TRUE))
+	    realized_interfaces 	(list realize_rel_list
+		(object Realize_Relationship
+		    quid       	"37BF0B1C0175"
+		    supplier   	"Logical View::MathGraph3::intDraw"
+		    quidu      	"37BC91A600DB"))
+	    language   	"Java")
+	(object module "Body3DGraph" "NotAModuleType" "NotAModulePart"
+	    attributes 	(list Attribute_Set
+		(object Attribute
+		    tool       	"Java"
+		    name       	"FileName"
+		    value      	"D:\\Personal\\Code\\Java\\MathGraph3\\Body3DGraph.java"))
+	    quid       	"37BC91A6010D"
+	    stereotype 	""
+	    visible_modules 	(list dependency_list
+		(object Dependency_Relationship
+		    quid       	"37BC91A60117"
+		    supplier   	"Component View::Graphics2D"
+		    quidu      	"37BC8ED5008E"
+		    supplier_is_subsystem 	TRUE)
+		(object Dependency_Relationship
+		    quid       	"37BC91A60118"
+		    supplier   	"Component View::Ring"
+		    quidu      	"36BB392A02D1"
+		    supplier_is_subsystem 	TRUE)
+		(object Dependency_Relationship
+		    quid       	"37BC91A6011A"
+		    supplier   	"Component View::Metric"
+		    quidu      	"36BB45940014"
+		    supplier_is_subsystem 	TRUE)
+		(object Dependency_Relationship
+		    quid       	"37BC91A6011B"
+		    supplier   	"Component View::Vector"
+		    quidu      	"36BB514D0055"
+		    supplier_is_subsystem 	TRUE)
+		(object Dependency_Relationship
+		    quid       	"37BD2089004E"
+		    supplier   	"Component View::Graphics2D"
+		    quidu      	"37BC8ED5008E"
+		    supplier_is_subsystem 	TRUE)
+		(object Dependency_Relationship
+		    quid       	"37BD2089004F"
+		    supplier   	"Component View::Ring"
+		    quidu      	"36BB392A02D1"
+		    supplier_is_subsystem 	TRUE)
+		(object Dependency_Relationship
+		    quid       	"37BD20890058"
+		    supplier   	"Component View::Metric"
+		    quidu      	"36BB45940014"
+		    supplier_is_subsystem 	TRUE)
+		(object Dependency_Relationship
+		    quid       	"37BD20890059"
+		    supplier   	"Component View::Vector"
+		    quidu      	"36BB514D0055"
+		    supplier_is_subsystem 	TRUE)
+		(object Dependency_Relationship
+		    quid       	"37BD386000CE"
+		    supplier   	"Component View::Graphics2D"
+		    quidu      	"37BC8ED5008E"
+		    supplier_is_subsystem 	TRUE)
+		(object Dependency_Relationship
+		    quid       	"37BD386000CF"
+		    supplier   	"Component View::Ring"
+		    quidu      	"36BB392A02D1"
+		    supplier_is_subsystem 	TRUE)
+		(object Dependency_Relationship
+		    quid       	"37BD386000D0"
+		    supplier   	"Component View::Metric"
+		    quidu      	"36BB45940014"
+		    supplier_is_subsystem 	TRUE)
+		(object Dependency_Relationship
+		    quid       	"37BD386000D1"
+		    supplier   	"Component View::Vector"
+		    quidu      	"36BB514D0055"
+		    supplier_is_subsystem 	TRUE))
+	    language   	"Java")
+	(object module "Coordinates" "NotAModuleType" "NotAModulePart"
+	    attributes 	(list Attribute_Set
+		(object Attribute
+		    tool       	"Java"
+		    name       	"FileName"
+		    value      	"D:\\Personal\\Code\\Java\\MathGraph3\\Coordinates.java"))
+	    quid       	"37BC91A60320"
+	    stereotype 	""
+	    visible_modules 	(list dependency_list
+		(object Dependency_Relationship
+		    quid       	"37BC91A60332"
+		    supplier   	"Component View::Graphics2D"
+		    quidu      	"37BC8ED5008E"
+		    supplier_is_subsystem 	TRUE)
+		(object Dependency_Relationship
+		    quid       	"37BC91A60333"
+		    supplier   	"Component View::Vector"
+		    quidu      	"36BB514D0055"
+		    supplier_is_subsystem 	TRUE)
+		(object Dependency_Relationship
+		    quid       	"37BD208D000B"
+		    supplier   	"Component View::Graphics2D"
+		    quidu      	"37BC8ED5008E"
+		    supplier_is_subsystem 	TRUE)
+		(object Dependency_Relationship
+		    quid       	"37BD208D000C"
+		    supplier   	"Component View::Vector"
+		    quidu      	"36BB514D0055"
+		    supplier_is_subsystem 	TRUE)
+		(object Dependency_Relationship
+		    quid       	"37BD3862036B"
+		    supplier   	"Component View::Graphics2D"
+		    quidu      	"37BC8ED5008E"
+		    supplier_is_subsystem 	TRUE)
+		(object Dependency_Relationship
+		    quid       	"37BD3862036C"
+		    supplier   	"Component View::Vector"
+		    quidu      	"36BB514D0055"
+		    supplier_is_subsystem 	TRUE))
+	    realized_interfaces 	(list realize_rel_list
+		(object Realize_Relationship
+		    quid       	"37BF0B150265"
+		    supplier   	"Logical View::MathGraph3::Coordinates"
+		    quidu      	"37BC91A60321"))
+	    language   	"Java")
+	(object module "Coordinates2D_" "NotAModuleType" "NotAModulePart"
+	    attributes 	(list Attribute_Set
+		(object Attribute
+		    tool       	"Java"
+		    name       	"FileName"
+		    value      	"D:\\Personal\\Code\\Java\\MathGraph3\\Coordinates2D_.java"))
+	    quid       	"37BC91A70000"
+	    stereotype 	""
+	    visible_modules 	(list dependency_list
+		(object Dependency_Relationship
+		    quid       	"37BC91A70022"
+		    supplier   	"Component View::java::awt"
+		    quidu      	"34B0F6CD00CD"
+		    supplier_is_subsystem 	TRUE)
+		(object Dependency_Relationship
+		    quid       	"37BC91A70023"
+		    supplier   	"Component View::Graphics2D"
+		    quidu      	"37BC8ED5008E"
+		    supplier_is_subsystem 	TRUE)
+		(object Dependency_Relationship
+		    quid       	"37BC91A70025"
+		    supplier   	"Component View::MathGraph2"
+		    quidu      	"37BC8ED70087"
+		    supplier_is_subsystem 	TRUE)
+		(object Dependency_Relationship
+		    quid       	"37BC91A70026"
+		    supplier   	"Component View::Vector"
+		    quidu      	"36BB514D0055"
+		    supplier_is_subsystem 	TRUE)
+		(object Dependency_Relationship
+		    quid       	"37BC91A70028"
+		    supplier   	"Component View::ByRef"
+		    quidu      	"36BB4AA503DA"
+		    supplier_is_subsystem 	TRUE)
+		(object Dependency_Relationship
+		    quid       	"37BD208E02F0"
+		    supplier   	"Component View::java::awt"
+		    quidu      	"34B0F6CD00CD"
+		    supplier_is_subsystem 	TRUE)
+		(object Dependency_Relationship
+		    quid       	"37BD208E02F4"
+		    supplier   	"Component View::Graphics2D"
+		    quidu      	"37BC8ED5008E"
+		    supplier_is_subsystem 	TRUE)
+		(object Dependency_Relationship
+		    quid       	"37BD208E02F5"
+		    supplier   	"Component View::MathGraph2"
+		    quidu      	"37BC8ED70087"
+		    supplier_is_subsystem 	TRUE)
+		(object Dependency_Relationship
+		    quid       	"37BD208E02F6"
+		    supplier   	"Component View::Vector"
+		    quidu      	"36BB514D0055"
+		    supplier_is_subsystem 	TRUE)
+		(object Dependency_Relationship
+		    quid       	"37BD208E02F7"
+		    supplier   	"Component View::ByRef"
+		    quidu      	"36BB4AA503DA"
+		    supplier_is_subsystem 	TRUE)
+		(object Dependency_Relationship
+		    quid       	"37BD3864034E"
+		    supplier   	"Component View::java::awt"
+		    quidu      	"34B0F6CD00CD"
+		    supplier_is_subsystem 	TRUE)
+		(object Dependency_Relationship
+		    quid       	"37BD3864034F"
+		    supplier   	"Component View::Graphics2D"
+		    quidu      	"37BC8ED5008E"
+		    supplier_is_subsystem 	TRUE)
+		(object Dependency_Relationship
+		    quid       	"37BD38640353"
+		    supplier   	"Component View::MathGraph2"
+		    quidu      	"37BC8ED70087"
+		    supplier_is_subsystem 	TRUE)
+		(object Dependency_Relationship
+		    quid       	"37BD38640354"
+		    supplier   	"Component View::Vector"
+		    quidu      	"36BB514D0055"
+		    supplier_is_subsystem 	TRUE)
+		(object Dependency_Relationship
+		    quid       	"37BD38640355"
+		    supplier   	"Component View::ByRef"
+		    quidu      	"36BB4AA503DA"
+		    supplier_is_subsystem 	TRUE))
+	    language   	"Java")
+	(object module "Figures2D" "NotAModuleType" "NotAModulePart"
+	    attributes 	(list Attribute_Set
+		(object Attribute
+		    tool       	"Java"
+		    name       	"FileName"
+		    value      	"D:\\Personal\\Code\\Java\\MathGraph3\\Figures2D.java"))
+	    quid       	"37BC91A7012D"
+	    stereotype 	""
+	    visible_modules 	(list dependency_list
+		(object Dependency_Relationship
+		    quid       	"37BC91A70154"
+		    supplier   	"Component View::Graphics2D"
+		    quidu      	"37BC8ED5008E"
+		    supplier_is_subsystem 	TRUE)
+		(object Dependency_Relationship
+		    quid       	"37BC91A70155"
+		    supplier   	"Component View::Ring"
+		    quidu      	"36BB392A02D1"
+		    supplier_is_subsystem 	TRUE)
+		(object Dependency_Relationship
+		    quid       	"37BC91A70156"
+		    supplier   	"Component View::Vector"
+		    quidu      	"36BB514D0055"
+		    supplier_is_subsystem 	TRUE)
+		(object Dependency_Relationship
+		    quid       	"37BC91A70157"
+		    supplier   	"Component View::ByRef"
+		    quidu      	"36BB4AA503DA"
+		    supplier_is_subsystem 	TRUE)
+		(object Dependency_Relationship
+		    quid       	"37BD20910092"
+		    supplier   	"Component View::Graphics2D"
+		    quidu      	"37BC8ED5008E"
+		    supplier_is_subsystem 	TRUE)
+		(object Dependency_Relationship
+		    quid       	"37BD20910093"
+		    supplier   	"Component View::Ring"
+		    quidu      	"36BB392A02D1"
+		    supplier_is_subsystem 	TRUE)
+		(object Dependency_Relationship
+		    quid       	"37BD20910094"
+		    supplier   	"Component View::Vector"
+		    quidu      	"36BB514D0055"
+		    supplier_is_subsystem 	TRUE)
+		(object Dependency_Relationship
+		    quid       	"37BD20910096"
+		    supplier   	"Component View::ByRef"
+		    quidu      	"36BB4AA503DA"
+		    supplier_is_subsystem 	TRUE)
+		(object Dependency_Relationship
+		    quid       	"37BD386902B5"
+		    supplier   	"Component View::Graphics2D"
+		    quidu      	"37BC8ED5008E"
+		    supplier_is_subsystem 	TRUE)
+		(object Dependency_Relationship
+		    quid       	"37BD386902B6"
+		    supplier   	"Component View::Ring"
+		    quidu      	"36BB392A02D1"
+		    supplier_is_subsystem 	TRUE)
+		(object Dependency_Relationship
+		    quid       	"37BD386902B7"
+		    supplier   	"Component View::Vector"
+		    quidu      	"36BB514D0055"
+		    supplier_is_subsystem 	TRUE)
+		(object Dependency_Relationship
+		    quid       	"37BD386902BA"
+		    supplier   	"Component View::ByRef"
+		    quidu      	"36BB4AA503DA"
+		    supplier_is_subsystem 	TRUE))
+	    language   	"Java")
+	(object module "intDraw3D" "NotAModuleType" "NotAModulePart"
+	    attributes 	(list Attribute_Set
+		(object Attribute
+		    tool       	"Java"
+		    name       	"FileName"
+		    value      	"D:\\Personal\\Code\\Java\\MathGraph3\\intDraw3D.java"))
+	    quid       	"37BC91A801CE"
+	    stereotype 	""
+	    visible_modules 	(list dependency_list
+		(object Dependency_Relationship
+		    quid       	"37BC91A801E5"
+		    supplier   	"Component View::Ring"
+		    quidu      	"36BB392A02D1"
+		    supplier_is_subsystem 	TRUE)
+		(object Dependency_Relationship
+		    quid       	"37BC91A801E6"
+		    supplier   	"Component View::Vector"
+		    quidu      	"36BB514D0055"
+		    supplier_is_subsystem 	TRUE)
+		(object Dependency_Relationship
+		    quid       	"37BD2097020A"
+		    supplier   	"Component View::Ring"
+		    quidu      	"36BB392A02D1"
+		    supplier_is_subsystem 	TRUE)
+		(object Dependency_Relationship
+		    quid       	"37BD2097020B"
+		    supplier   	"Component View::Vector"
+		    quidu      	"36BB514D0055"
+		    supplier_is_subsystem 	TRUE)
+		(object Dependency_Relationship
+		    quid       	"37BD3872025C"
+		    supplier   	"Component View::Ring"
+		    quidu      	"36BB392A02D1"
+		    supplier_is_subsystem 	TRUE)
+		(object Dependency_Relationship
+		    quid       	"37BD3872025D"
+		    supplier   	"Component View::Vector"
+		    quidu      	"36BB514D0055"
+		    supplier_is_subsystem 	TRUE))
+	    realized_interfaces 	(list realize_rel_list
+		(object Realize_Relationship
+		    quid       	"37BC91A801D0"
+		    supplier   	"Logical View::MathGraph3::intDraw"
+		    quidu      	"37BC91A600DB"))
+	    language   	"Java")
+	(object module "Platonic" "NotAModuleType" "NotAModulePart"
+	    attributes 	(list Attribute_Set
+		(object Attribute
+		    tool       	"Java"
+		    name       	"FileName"
+		    value      	"D:\\Personal\\Code\\Java\\MathGraph3\\Platonic.java"))
+	    quid       	"37BC91A9003F"
+	    stereotype 	""
+	    visible_modules 	(list dependency_list
+		(object Dependency_Relationship
+		    quid       	"37BC91A90057"
+		    supplier   	"Component View::ByRef"
+		    quidu      	"36BB4AA503DA"
+		    supplier_is_subsystem 	TRUE)
+		(object Dependency_Relationship
+		    quid       	"37BC91A90058"
+		    supplier   	"Component View::Vector"
+		    quidu      	"36BB514D0055"
+		    supplier_is_subsystem 	TRUE)
+		(object Dependency_Relationship
+		    quid       	"37BC91A90059"
+		    supplier   	"Component View::BodyTensor"
+		    quidu      	"36BC22BF01C2"
+		    supplier_is_subsystem 	TRUE)
+		(object Dependency_Relationship
+		    quid       	"37BD209A0085"
+		    supplier   	"Component View::ByRef"
+		    quidu      	"36BB4AA503DA"
+		    supplier_is_subsystem 	TRUE)
+		(object Dependency_Relationship
+		    quid       	"37BD209A008F"
+		    supplier   	"Component View::Vector"
+		    quidu      	"36BB514D0055"
+		    supplier_is_subsystem 	TRUE)
+		(object Dependency_Relationship
+		    quid       	"37BD209A0090"
+		    supplier   	"Component View::BodyTensor"
+		    quidu      	"36BC22BF01C2"
+		    supplier_is_subsystem 	TRUE)
+		(object Dependency_Relationship
+		    quid       	"37BD387802BB"
+		    supplier   	"Component View::ByRef"
+		    quidu      	"36BB4AA503DA"
+		    supplier_is_subsystem 	TRUE)
+		(object Dependency_Relationship
+		    quid       	"37BD387802BC"
+		    supplier   	"Component View::Vector"
+		    quidu      	"36BB514D0055"
+		    supplier_is_subsystem 	TRUE)
+		(object Dependency_Relationship
+		    quid       	"37BD387802C5"
+		    supplier   	"Component View::BodyTensor"
+		    quidu      	"36BC22BF01C2"
+		    supplier_is_subsystem 	TRUE))
+	    language   	"Java")
+	(object module "PlotHyperPlane" "NotAModuleType" "NotAModulePart"
+	    attributes 	(list Attribute_Set
+		(object Attribute
+		    tool       	"Java"
+		    name       	"FileName"
+		    value      	"D:\\Personal\\Code\\Java\\MathGraph3\\PlotHyperPlane.java"))
+	    quid       	"37BC91A901D0"
+	    stereotype 	""
+	    visible_modules 	(list dependency_list
+		(object Dependency_Relationship
+		    quid       	"37BC91A90210"
+		    supplier   	"Component View::Graphics2D"
+		    quidu      	"37BC8ED5008E"
+		    supplier_is_subsystem 	TRUE)
+		(object Dependency_Relationship
+		    quid       	"37BC91A90211"
+		    supplier   	"Component View::Ring"
+		    quidu      	"36BB392A02D1"
+		    supplier_is_subsystem 	TRUE)
+		(object Dependency_Relationship
+		    quid       	"37BC91A90212"
+		    supplier   	"Component View::Metric"
+		    quidu      	"36BB45940014"
+		    supplier_is_subsystem 	TRUE)
+		(object Dependency_Relationship
+		    quid       	"37BC91A90213"
+		    supplier   	"Component View::Vector"
+		    quidu      	"36BB514D0055"
+		    supplier_is_subsystem 	TRUE)
+		(object Dependency_Relationship
+		    quid       	"37BC91A90215"
+		    supplier   	"Component View::VectorFuncs::OdeHeight"
+		    quidu      	"37BC91A9020F"
+		    supplier_is_spec 	TRUE)
+		(object Dependency_Relationship
+		    quid       	"37BC91A90217"
+		    supplier   	"Component View::intFunction"
+		    quidu      	"36BB39470388"
+		    supplier_is_subsystem 	TRUE)
+		(object Dependency_Relationship
+		    quid       	"37BD209E0087"
+		    supplier   	"Component View::Graphics2D"
+		    quidu      	"37BC8ED5008E"
+		    supplier_is_subsystem 	TRUE)
+		(object Dependency_Relationship
+		    quid       	"37BD209E0088"
+		    supplier   	"Component View::Ring"
+		    quidu      	"36BB392A02D1"
+		    supplier_is_subsystem 	TRUE)
+		(object Dependency_Relationship
+		    quid       	"37BD209E0089"
+		    supplier   	"Component View::Metric"
+		    quidu      	"36BB45940014"
+		    supplier_is_subsystem 	TRUE)
+		(object Dependency_Relationship
+		    quid       	"37BD209E008B"
+		    supplier   	"Component View::Vector"
+		    quidu      	"36BB514D0055"
+		    supplier_is_subsystem 	TRUE)
+		(object Dependency_Relationship
+		    quid       	"37BD209E0095"
+		    supplier   	"Component View::intFunction"
+		    quidu      	"36BB39470388"
+		    supplier_is_subsystem 	TRUE)
+		(object Dependency_Relationship
+		    quid       	"37BD3880028B"
+		    supplier   	"Component View::Graphics2D"
+		    quidu      	"37BC8ED5008E"
+		    supplier_is_subsystem 	TRUE)
+		(object Dependency_Relationship
+		    quid       	"37BD38800295"
+		    supplier   	"Component View::Ring"
+		    quidu      	"36BB392A02D1"
+		    supplier_is_subsystem 	TRUE)
+		(object Dependency_Relationship
+		    quid       	"37BD38800296"
+		    supplier   	"Component View::Metric"
+		    quidu      	"36BB45940014"
+		    supplier_is_subsystem 	TRUE)
+		(object Dependency_Relationship
+		    quid       	"37BD3880029F"
+		    supplier   	"Component View::Vector"
+		    quidu      	"36BB514D0055"
+		    supplier_is_subsystem 	TRUE)
+		(object Dependency_Relationship
+		    quid       	"37BD388002B3"
+		    supplier   	"Component View::intFunction"
+		    quidu      	"36BB39470388"
+		    supplier_is_subsystem 	TRUE))
+	    language   	"Java")
+	(object module "PlotODE" "NotAModuleType" "NotAModulePart"
+	    attributes 	(list Attribute_Set
+		(object Attribute
+		    tool       	"Java"
+		    name       	"FileName"
+		    value      	"D:\\Personal\\Code\\Java\\MathGraph3\\PlotODE.java"))
+	    quid       	"37BC91A902F2"
+	    stereotype 	""
+	    visible_modules 	(list dependency_list
+		(object Dependency_Relationship
+		    quid       	"37BD388700D8"
+		    supplier   	"Component View::Ring"
+		    quidu      	"36BB392A02D1"
+		    supplier_is_subsystem 	TRUE)
+		(object Dependency_Relationship
+		    quid       	"37BD388700D9"
+		    supplier   	"Component View::Vector"
+		    quidu      	"36BB514D0055"
+		    supplier_is_subsystem 	TRUE)
+		(object Dependency_Relationship
+		    quid       	"37BD388700DA"
+		    supplier   	"Component View::Graphics2D"
+		    quidu      	"37BC8ED5008E"
+		    supplier_is_subsystem 	TRUE)
+		(object Dependency_Relationship
+		    quid       	"37BD388700DC"
+		    supplier   	"Component View::java::awt"
+		    quidu      	"34B0F6CD00CD"
+		    supplier_is_subsystem 	TRUE))
+	    language   	"Java")
+	(object module "Polygon3DGraph" "NotAModuleType" "NotAModulePart"
+	    attributes 	(list Attribute_Set
+		(object Attribute
+		    tool       	"Java"
+		    name       	"FileName"
+		    value      	"D:\\Personal\\Code\\Java\\MathGraph3\\Polygon3DGraph.java"))
+	    quid       	"37BC91AA018B"
+	    stereotype 	""
+	    visible_modules 	(list dependency_list
+		(object Dependency_Relationship
+		    quid       	"37BC91AA01AB"
+		    supplier   	"Component View::Ring"
+		    quidu      	"36BB392A02D1"
+		    supplier_is_subsystem 	TRUE)
+		(object Dependency_Relationship
+		    quid       	"37BC91AA01AC"
+		    supplier   	"Component View::Vector"
+		    quidu      	"36BB514D0055"
+		    supplier_is_subsystem 	TRUE)
+		(object Dependency_Relationship
+		    quid       	"37BC91AA01AD"
+		    supplier   	"Component View::Graphics2D"
+		    quidu      	"37BC8ED5008E"
+		    supplier_is_subsystem 	TRUE)
+		(object Dependency_Relationship
+		    quid       	"37BD20A9011D"
+		    supplier   	"Component View::Ring"
+		    quidu      	"36BB392A02D1"
+		    supplier_is_subsystem 	TRUE)
+		(object Dependency_Relationship
+		    quid       	"37BD20A9011E"
+		    supplier   	"Component View::Vector"
+		    quidu      	"36BB514D0055"
+		    supplier_is_subsystem 	TRUE)
+		(object Dependency_Relationship
+		    quid       	"37BD20A9011F"
+		    supplier   	"Component View::Graphics2D"
+		    quidu      	"37BC8ED5008E"
+		    supplier_is_subsystem 	TRUE)
+		(object Dependency_Relationship
+		    quid       	"37BD388C01B7"
+		    supplier   	"Component View::Ring"
+		    quidu      	"36BB392A02D1"
+		    supplier_is_subsystem 	TRUE)
+		(object Dependency_Relationship
+		    quid       	"37BD388C01B8"
+		    supplier   	"Component View::Vector"
+		    quidu      	"36BB514D0055"
+		    supplier_is_subsystem 	TRUE)
+		(object Dependency_Relationship
+		    quid       	"37BD388C01B9"
+		    supplier   	"Component View::Graphics2D"
+		    quidu      	"37BC8ED5008E"
+		    supplier_is_subsystem 	TRUE))
+	    language   	"Java")
+	(object module "ProjectPlot" "NotAModuleType" "NotAModulePart"
+	    attributes 	(list Attribute_Set
+		(object Attribute
+		    tool       	"Java"
+		    name       	"FileName"
+		    value      	"D:\\Personal\\Code\\Java\\MathGraph3\\ProjectPlot.java"))
+	    quid       	"37BC91AB001A"
+	    stereotype 	""
+	    visible_modules 	(list dependency_list
+		(object Dependency_Relationship
+		    quid       	"37BC91AB0053"
+		    supplier   	"Component View::Ring"
+		    quidu      	"36BB392A02D1"
+		    supplier_is_subsystem 	TRUE)
+		(object Dependency_Relationship
+		    quid       	"37BC91AB0054"
+		    supplier   	"Component View::Graphics2D"
+		    quidu      	"37BC8ED5008E"
+		    supplier_is_subsystem 	TRUE)
+		(object Dependency_Relationship
+		    quid       	"37BC91AB0055"
+		    supplier   	"Component View::Vector"
+		    quidu      	"36BB514D0055"
+		    supplier_is_subsystem 	TRUE)
+		(object Dependency_Relationship
+		    quid       	"37BD20AF0295"
+		    supplier   	"Component View::Ring"
+		    quidu      	"36BB392A02D1"
+		    supplier_is_subsystem 	TRUE)
+		(object Dependency_Relationship
+		    quid       	"37BD20AF0298"
+		    supplier   	"Component View::Graphics2D"
+		    quidu      	"37BC8ED5008E"
+		    supplier_is_subsystem 	TRUE)
+		(object Dependency_Relationship
+		    quid       	"37BD20AF0299"
+		    supplier   	"Component View::Vector"
+		    quidu      	"36BB514D0055"
+		    supplier_is_subsystem 	TRUE)
+		(object Dependency_Relationship
+		    quid       	"37BD3892027A"
+		    supplier   	"Component View::Ring"
+		    quidu      	"36BB392A02D1"
+		    supplier_is_subsystem 	TRUE)
+		(object Dependency_Relationship
+		    quid       	"37BD3892027B"
+		    supplier   	"Component View::Graphics2D"
+		    quidu      	"37BC8ED5008E"
+		    supplier_is_subsystem 	TRUE)
+		(object Dependency_Relationship
+		    quid       	"37BD3892027C"
+		    supplier   	"Component View::Vector"
+		    quidu      	"36BB514D0055"
+		    supplier_is_subsystem 	TRUE))
+	    language   	"Java")
+	(object module "PlotEquiPot" "NotAModuleType" "NotAModulePart"
+	    attributes 	(list Attribute_Set
+		(object Attribute
+		    tool       	"Java"
+		    name       	"FileName"
+		    value      	"D:\\Personal\\Code\\Java\\OldStuff\\PlotEquiPot.java"))
+	    quid       	"37BC91B203A9"
+	    stereotype 	""
+	    visible_modules 	(list dependency_list
+		(object Dependency_Relationship
+		    quid       	"37BC91B30012"
+		    supplier   	"Component View::intFunction"
+		    quidu      	"36BB39470388"
+		    supplier_is_subsystem 	TRUE)
+		(object Dependency_Relationship
+		    quid       	"37BC91B30013"
+		    supplier   	"Component View::GroupM"
+		    quidu      	"36BB2CD10088"
+		    supplier_is_subsystem 	TRUE)
+		(object Dependency_Relationship
+		    quid       	"37BC91B30014"
+		    supplier   	"Component View::Ring"
+		    quidu      	"36BB392A02D1"
+		    supplier_is_subsystem 	TRUE)
+		(object Dependency_Relationship
+		    quid       	"37BC91B30015"
+		    supplier   	"Component View::Metric"
+		    quidu      	"36BB45940014"
+		    supplier_is_subsystem 	TRUE)
+		(object Dependency_Relationship
+		    quid       	"37BC91B30016"
+		    supplier   	"Component View::ByRef"
+		    quidu      	"36BB4AA503DA"
+		    supplier_is_subsystem 	TRUE)
+		(object Dependency_Relationship
+		    quid       	"37BC91B30017"
+		    supplier   	"Component View::Vector"
+		    quidu      	"36BB514D0055"
+		    supplier_is_subsystem 	TRUE)
+		(object Dependency_Relationship
+		    quid       	"37BC91B3001C"
+		    supplier   	"Component View::Graphics2D"
+		    quidu      	"37BC8ED5008E"
+		    supplier_is_subsystem 	TRUE)
+		(object Dependency_Relationship
+		    quid       	"37BD21540385"
+		    supplier   	"Component View::intFunction"
+		    quidu      	"36BB39470388"
+		    supplier_is_subsystem 	TRUE)
+		(object Dependency_Relationship
+		    quid       	"37BD2154038F"
+		    supplier   	"Component View::GroupM"
+		    quidu      	"36BB2CD10088"
+		    supplier_is_subsystem 	TRUE)
+		(object Dependency_Relationship
+		    quid       	"37BD21540390"
+		    supplier   	"Component View::Ring"
+		    quidu      	"36BB392A02D1"
+		    supplier_is_subsystem 	TRUE)
+		(object Dependency_Relationship
+		    quid       	"37BD21540391"
+		    supplier   	"Component View::Metric"
+		    quidu      	"36BB45940014"
+		    supplier_is_subsystem 	TRUE)
+		(object Dependency_Relationship
+		    quid       	"37BD21540399"
+		    supplier   	"Component View::ByRef"
+		    quidu      	"36BB4AA503DA"
+		    supplier_is_subsystem 	TRUE)
+		(object Dependency_Relationship
+		    quid       	"37BD2154039A"
+		    supplier   	"Component View::Vector"
+		    quidu      	"36BB514D0055"
+		    supplier_is_subsystem 	TRUE)
+		(object Dependency_Relationship
+		    quid       	"37BD215403A3"
+		    supplier   	"Component View::Graphics2D"
+		    quidu      	"37BC8ED5008E"
+		    supplier_is_subsystem 	TRUE)
+		(object Dependency_Relationship
+		    quid       	"37BD394E0237"
+		    supplier   	"Component View::intFunction"
+		    quidu      	"36BB39470388"
+		    supplier_is_subsystem 	TRUE)
+		(object Dependency_Relationship
+		    quid       	"37BD394E0238"
+		    supplier   	"Component View::GroupM"
+		    quidu      	"36BB2CD10088"
+		    supplier_is_subsystem 	TRUE)
+		(object Dependency_Relationship
+		    quid       	"37BD394E0241"
+		    supplier   	"Component View::Ring"
+		    quidu      	"36BB392A02D1"
+		    supplier_is_subsystem 	TRUE)
+		(object Dependency_Relationship
+		    quid       	"37BD394E0242"
+		    supplier   	"Component View::Metric"
+		    quidu      	"36BB45940014"
+		    supplier_is_subsystem 	TRUE)
+		(object Dependency_Relationship
+		    quid       	"37BD394E024B"
+		    supplier   	"Component View::ByRef"
+		    quidu      	"36BB4AA503DA"
+		    supplier_is_subsystem 	TRUE)
+		(object Dependency_Relationship
+		    quid       	"37BD394E024C"
+		    supplier   	"Component View::Vector"
+		    quidu      	"36BB514D0055"
+		    supplier_is_subsystem 	TRUE)
+		(object Dependency_Relationship
+		    quid       	"37BD394E0255"
+		    supplier   	"Component View::Graphics2D"
+		    quidu      	"37BC8ED5008E"
+		    supplier_is_subsystem 	TRUE))
+	    language   	"Java")
+	(object module "PlotODE2" "NotAModuleType" "NotAModulePart"
+	    attributes 	(list Attribute_Set
+		(object Attribute
+		    tool       	"Java"
+		    name       	"FileName"
+		    value      	"D:\\Personal\\Code\\Java\\OldStuff\\PlotODE2.java"))
+	    quid       	"37BC91B300E4"
+	    stereotype 	""
+	    visible_modules 	(list dependency_list
+		(object Dependency_Relationship
+		    quid       	"37BC91B30102"
+		    supplier   	"Component View::Ring"
+		    quidu      	"36BB392A02D1"
+		    supplier_is_subsystem 	TRUE)
+		(object Dependency_Relationship
+		    quid       	"37BC91B30103"
+		    supplier   	"Component View::Vector"
+		    quidu      	"36BB514D0055"
+		    supplier_is_subsystem 	TRUE)
+		(object Dependency_Relationship
+		    quid       	"37BC91B30104"
+		    supplier   	"Component View::Graphics2D"
+		    quidu      	"37BC8ED5008E"
+		    supplier_is_subsystem 	TRUE)
+		(object Dependency_Relationship
+		    quid       	"37BD215703A3"
+		    supplier   	"Component View::Ring"
+		    quidu      	"36BB392A02D1"
+		    supplier_is_subsystem 	TRUE)
+		(object Dependency_Relationship
+		    quid       	"37BD215703A4"
+		    supplier   	"Component View::Vector"
+		    quidu      	"36BB514D0055"
+		    supplier_is_subsystem 	TRUE)
+		(object Dependency_Relationship
+		    quid       	"37BD215703A8"
+		    supplier   	"Component View::Graphics2D"
+		    quidu      	"37BC8ED5008E"
+		    supplier_is_subsystem 	TRUE)
+		(object Dependency_Relationship
+		    quid       	"37BD395101E6"
+		    supplier   	"Component View::Ring"
+		    quidu      	"36BB392A02D1"
+		    supplier_is_subsystem 	TRUE)
+		(object Dependency_Relationship
+		    quid       	"37BD395101EB"
+		    supplier   	"Component View::Vector"
+		    quidu      	"36BB514D0055"
+		    supplier_is_subsystem 	TRUE)
+		(object Dependency_Relationship
+		    quid       	"37BD395101EC"
+		    supplier   	"Component View::Graphics2D"
+		    quidu      	"37BC8ED5008E"
+		    supplier_is_subsystem 	TRUE))
+	    language   	"Java")
+	(object module "PlotOdeRect" "NotAModuleType" "NotAModulePart"
+	    attributes 	(list Attribute_Set
+		(object Attribute
+		    tool       	"Java"
+		    name       	"FileName"
+		    value      	"D:\\Personal\\Code\\Java\\OldStuff\\PlotOdeRect.java"))
+	    quid       	"37BC91B301D4"
+	    stereotype 	""
+	    visible_modules 	(list dependency_list
+		(object Dependency_Relationship
+		    quid       	"37BD3953038B"
+		    supplier   	"Component View::Ring"
+		    quidu      	"36BB392A02D1"
+		    supplier_is_subsystem 	TRUE)
+		(object Dependency_Relationship
+		    quid       	"37BD3953038C"
+		    supplier   	"Component View::Vector"
+		    quidu      	"36BB514D0055"
+		    supplier_is_subsystem 	TRUE)
+		(object Dependency_Relationship
+		    quid       	"37BD3953038D"
+		    supplier   	"Component View::Graphics2D"
+		    quidu      	"37BC8ED5008E"
+		    supplier_is_subsystem 	TRUE)
+		(object Dependency_Relationship
+		    quid       	"37BD3953038E"
+		    supplier   	"Component View::java::awt"
+		    quidu      	"34B0F6CD00CD"
+		    supplier_is_subsystem 	TRUE))
+	    language   	"Java")
+	(object module "Coordinates3D" "NotAModuleType" "NotAModulePart"
+	    quid       	"37BFFC2A0225"
+	    stereotype 	""
+	    language   	"Java")
+	(object module "Column3D" "NotAModuleType" "NotAModulePart"
+	    quid       	"37BFFD130040"
+	    stereotype 	""
+	    language   	"Java")
+	(object module "Figures3D" "NotAModuleType" "NotAModulePart"
+	    quid       	"37BFFD3D00B8"
+	    stereotype 	""
+	    language   	"Java")
+	(object module "HistoPlot" "NotAModuleType" "NotAModulePart"
+	    quid       	"37BFFD7F010D"
+	    stereotype 	""
+	    language   	"Java")
+	(object module "PlanePlot" "NotAModuleType" "NotAModulePart"
+	    quid       	"37BFFDAE0382"
+	    stereotype 	""
+	    language   	"Java")
+	(object module "PlotVector" "NotAModuleType" "NotAModulePart"
+	    quid       	"37BFFDE40361"
+	    stereotype 	""
+	    language   	"Java")
+	(object module "PolygonPlot" "NotAModuleType" "NotAModulePart"
+	    quid       	"37BFFE0E0022"
+	    stereotype 	""
+	    language   	"Java")
+	(object module "ScalarPlanePlot" "NotAModuleType" "NotAModulePart"
+	    quid       	"37BFFE6F037F"
+	    stereotype 	""
+	    language   	"Java")
+	(object module "ScalarPointPlot" "NotAModuleType" "NotAModulePart"
+	    quid       	"37BFFE99039E"
+	    stereotype 	""
+	    language   	"Java")
+	(object module "VoxelPlot" "NotAModuleType" "NotAModulePart"
+	    quid       	"37BFFEC40291"
+	    stereotype 	""
+	    language   	"Java"))
+    physical_presentations 	(list unit_reference_list
+	(object Module_Diagram "MathGraph3"
+	    quid       	"37BF0AED0358"
+	    title      	"MathGraph3"
+	    zoom       	100
+	    max_height 	28350
+	    max_width  	21600
+	    origin_x   	0
+	    origin_y   	0
+	    items      	(list diagram_item_list
+		(object ModView "Component View::MathGraph3::PlotOdeRect" "NotAModuleType" "NotAModulePart" @1
+		    location   	(217, 155)
+		    label      	(object ItemLabel
+			Parent_View 	@1
+			location   	(173, 130)
+			fill_color 	13434879
+			anchor_loc 	3
+			nlines     	2
+			max_width  	162
+			label      	"PlotOdeRect")
+		    icon_style 	"Icon"
+		    line_color 	3342489
+		    fill_color 	13434879
+		    quidu      	"37BC91B301D4"
+		    width      	292
+		    autoResize 	TRUE
+		    width      	292
+		    height     	162)
+		(object ModView "Component View::MathGraph3::PlotODE2" "NotAModuleType" "NotAModulePart" @2
+		    location   	(651, 155)
+		    label      	(object ItemLabel
+			Parent_View 	@2
+			location   	(616, 130)
+			fill_color 	13434879
+			anchor_loc 	3
+			nlines     	2
+			max_width  	127
+			label      	"PlotODE2")
+		    icon_style 	"Icon"
+		    line_color 	3342489
+		    fill_color 	13434879
+		    quidu      	"37BC91B300E4"
+		    width      	228
+		    autoResize 	TRUE
+		    width      	228
+		    height     	162)
+		(object ModView "Component View::MathGraph3::PlotEquiPot" "NotAModuleType" "NotAModulePart" @3
+		    location   	(1054, 155)
+		    label      	(object ItemLabel
+			Parent_View 	@3
+			location   	(1013, 130)
+			fill_color 	13434879
+			anchor_loc 	3
+			nlines     	2
+			max_width  	150
+			label      	"PlotEquiPot")
+		    icon_style 	"Icon"
+		    line_color 	3342489
+		    fill_color 	13434879
+		    quidu      	"37BC91B203A9"
+		    width      	270
+		    autoResize 	TRUE
+		    width      	270
+		    height     	162)
+		(object ModView "Component View::MathGraph3::ProjectPlot" "NotAModuleType" "NotAModulePart" @4
+		    location   	(2821, 155)
+		    label      	(object ItemLabel
+			Parent_View 	@4
+			location   	(2786, 130)
+			fill_color 	13434879
+			anchor_loc 	3
+			nlines     	2
+			max_width  	127
+			label      	"ProjectPlot")
+		    icon_style 	"Icon"
+		    line_color 	3342489
+		    fill_color 	13434879
+		    quidu      	"37BC91AB001A"
+		    width      	228
+		    autoResize 	TRUE
+		    width      	228
+		    height     	162)
+		(object ModView "Component View::MathGraph3::Polygon3DGraph" "NotAModuleType" "NotAModulePart" @5
+		    location   	(620, 465)
+		    label      	(object ItemLabel
+			Parent_View 	@5
+			location   	(576, 440)
+			fill_color 	13434879
+			anchor_loc 	3
+			nlines     	2
+			max_width  	162
+			label      	"Polygon3DGraph")
+		    icon_style 	"Icon"
+		    line_color 	3342489
+		    fill_color 	13434879
+		    quidu      	"37BC91AA018B"
+		    width      	292
+		    autoResize 	TRUE
+		    width      	292
+		    height     	162)
+		(object ModView "Component View::MathGraph3::PlotODE" "NotAModuleType" "NotAModulePart" @6
+		    location   	(1426, 465)
+		    label      	(object ItemLabel
+			Parent_View 	@6
+			location   	(1391, 440)
+			fill_color 	13434879
+			anchor_loc 	3
+			nlines     	2
+			max_width  	127
+			label      	"PlotODE")
+		    icon_style 	"Icon"
+		    line_color 	3342489
+		    fill_color 	13434879
+		    quidu      	"37BC91A902F2"
+		    width      	228
+		    autoResize 	TRUE
+		    width      	228
+		    height     	162)
+		(object ModView "Component View::MathGraph3::PlotHyperPlane" "NotAModuleType" "NotAModulePart" @7
+		    location   	(1891, 465)
+		    label      	(object ItemLabel
+			Parent_View 	@7
+			location   	(1835, 440)
+			fill_color 	13434879
+			anchor_loc 	3
+			nlines     	2
+			max_width  	211
+			label      	"PlotHyperPlane")
+		    icon_style 	"Icon"
+		    line_color 	3342489
+		    fill_color 	13434879
+		    quidu      	"37BC91A901D0"
+		    width      	380
+		    autoResize 	TRUE
+		    width      	380
+		    height     	162)
+		(object ModView "Component View::MathGraph3::Platonic" "NotAModuleType" "NotAModulePart" @8
+		    location   	(2325, 465)
+		    label      	(object ItemLabel
+			Parent_View 	@8
+			location   	(2290, 440)
+			fill_color 	13434879
+			anchor_loc 	3
+			nlines     	2
+			max_width  	127
+			label      	"Platonic")
+		    icon_style 	"Icon"
+		    line_color 	3342489
+		    fill_color 	13434879
+		    quidu      	"37BC91A9003F"
+		    width      	228
+		    autoResize 	TRUE
+		    width      	228
+		    height     	162)
+		(object ModView "Component View::MathGraph3::intDraw3D" "NotAModuleType" "NotAModulePart" @9
+		    location   	(899, 1395)
+		    label      	(object ItemLabel
+			Parent_View 	@9
+			location   	(858, 1370)
+			fill_color 	13434879
+			anchor_loc 	3
+			nlines     	2
+			max_width  	150
+			label      	"intDraw3D")
+		    icon_style 	"Icon"
+		    line_color 	3342489
+		    fill_color 	13434879
+		    quidu      	"37BC91A801CE"
+		    width      	270
+		    autoResize 	TRUE
+		    width      	270
+		    height     	162)
+		(object InterfaceView "Logical View::MathGraph3::intDraw" @10
+		    location   	(713, 1798)
+		    label      	(object ItemLabel
+			Parent_View 	@10
+			location   	(712, 1906)
+			anchor_loc 	1
+			nlines     	2
+			max_width  	229
+			justify    	0
+			label      	"intDraw")
+		    icon       	"Interface"
+		    icon_style 	"Icon"
+		    line_color 	3342489
+		    fill_color 	13434879
+		    quidu      	"37BC91A600DB"
+		    width      	58
+		    height     	58
+		    autoResize 	TRUE)
+		(object RealizeView "" @11
+		    stereotype 	TRUE
+		    line_color 	3342489
+		    quidu      	"37BC91A801D0"
+		    client     	@9
+		    supplier   	@10
+		    line_style 	0)
+		(object ModView "Component View::MathGraph3::Figures2D" "NotAModuleType" "NotAModulePart" @12
+		    location   	(961, 744)
+		    label      	(object ItemLabel
+			Parent_View 	@12
+			location   	(926, 719)
+			fill_color 	13434879
+			anchor_loc 	3
+			nlines     	2
+			max_width  	127
+			label      	"Figures2D")
+		    icon_style 	"Icon"
+		    line_color 	3342489
+		    fill_color 	13434879
+		    quidu      	"37BC91A7012D"
+		    width      	228
+		    autoResize 	TRUE
+		    width      	228
+		    height     	162)
+		(object ModView "Component View::MathGraph3::Coordinates2D_" "NotAModuleType" "NotAModulePart" @13
+		    location   	(1364, 744)
+		    label      	(object ItemLabel
+			Parent_View 	@13
+			location   	(1323, 719)
+			fill_color 	13434879
+			anchor_loc 	3
+			nlines     	2
+			max_width  	150
+			label      	"Coordinates2D_")
+		    icon_style 	"Icon"
+		    line_color 	3342489
+		    fill_color 	13434879
+		    quidu      	"37BC91A70000"
+		    width      	270
+		    autoResize 	TRUE
+		    width      	270
+		    height     	162)
+		(object ModView "Component View::MathGraph3::Coordinates" "NotAModuleType" "NotAModulePart" @14
+		    location   	(186, 1395)
+		    label      	(object ItemLabel
+			Parent_View 	@14
+			location   	(151, 1370)
+			fill_color 	13434879
+			anchor_loc 	3
+			nlines     	2
+			max_width  	127
+			label      	"Coordinates")
+		    icon_style 	"Icon"
+		    line_color 	3342489
+		    fill_color 	13434879
+		    quidu      	"37BC91A60320"
+		    width      	228
+		    autoResize 	TRUE
+		    width      	228
+		    height     	162)
+		(object InterfaceView "Logical View::MathGraph3::Coordinates" @15
+		    location   	(186, 1798)
+		    label      	(object ItemLabel
+			Parent_View 	@15
+			location   	(185, 1906)
+			anchor_loc 	1
+			nlines     	2
+			max_width  	229
+			justify    	0
+			label      	"Coordinates")
+		    icon       	"Interface"
+		    icon_style 	"Icon"
+		    line_color 	3342489
+		    fill_color 	13434879
+		    quidu      	"37BC91A60321"
+		    width      	58
+		    height     	58
+		    autoResize 	TRUE)
+		(object RealizeView "" @16
+		    stereotype 	TRUE
+		    line_color 	3342489
+		    quidu      	"37BF0B150265"
+		    client     	@14
+		    supplier   	@15
+		    line_style 	0)
+		(object ModView "Component View::MathGraph3::Body3DGraph" "NotAModuleType" "NotAModulePart" @17
+		    location   	(2573, 744)
+		    label      	(object ItemLabel
+			Parent_View 	@17
+			location   	(2535, 719)
+			fill_color 	13434879
+			anchor_loc 	3
+			nlines     	2
+			max_width  	139
+			label      	"Body3DGraph")
+		    icon_style 	"Icon"
+		    line_color 	3342489
+		    fill_color 	13434879
+		    quidu      	"37BC91A6010D"
+		    width      	250
+		    autoResize 	TRUE
+		    width      	250
+		    height     	162)
+		(object ModView "Component View::MathGraph3::intDraw" "NotAModuleType" "NotAModulePart" @18
+		    location   	(496, 1395)
+		    label      	(object ItemLabel
+			Parent_View 	@18
+			location   	(461, 1370)
+			fill_color 	13434879
+			anchor_loc 	3
+			nlines     	2
+			max_width  	127
+			label      	"intDraw")
+		    icon_style 	"Icon"
+		    line_color 	3342489
+		    fill_color 	13434879
+		    quidu      	"37BC91A600D2"
+		    width      	228
+		    autoResize 	TRUE
+		    width      	228
+		    height     	162)
+		(object RealizeView "" @19
+		    stereotype 	TRUE
+		    line_color 	3342489
+		    quidu      	"37BF0B1C0175"
+		    client     	@18
+		    supplier   	@10
+		    line_style 	0)
+		(object ModView "Component View::MathGraph3::absDraw" "NotAModuleType" "NotAModulePart" @20
+		    location   	(186, 1023)
+		    label      	(object ItemLabel
+			Parent_View 	@20
+			location   	(151, 998)
+			fill_color 	13434879
+			anchor_loc 	3
+			nlines     	2
+			max_width  	127
+			label      	"absDraw")
+		    icon_style 	"Icon"
+		    line_color 	3342489
+		    fill_color 	13434879
+		    quidu      	"37BC91A600C9"
+		    width      	228
+		    autoResize 	TRUE
+		    width      	228
+		    height     	162)))))

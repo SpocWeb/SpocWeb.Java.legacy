@@ -1,0 +1,106 @@
+package streamIO.copy.group.ring.metric.body.units;
+
+import java.io.IOException;
+/**
+  * Title: UnitAffine<p>
+  * Description:
+  *
+  * Defines the Interface for a Unit with linear Ratio to the Base Unit.
+  * A Unit defines the Metric and Norm for a Parameter Space
+  * by defining the Equivalent of 0 and 1
+  * thus allowing for Ring Operations.
+  *
+  * A Dimension is the Equivalence Class of all convertable Units.
+  * Whether two Units are convertable is determined by the Equivalence
+  * of their Base Units.
+  *
+  * A primitive Dimension/Unit is a Dimension/Unit
+  * that cannot be expressed indirectly using other Units.
+  * Examples are:
+  * 	Length in Meter
+  * 	Time   in Second
+  * 	Mass   in KiloGram
+  * 	Charge in Coulomb
+  *
+  * Base Units are modeled by Prime Numbers.
+  * Derived Dimensions are expressed by non Prime Numbers and Fractions.
+  * This allows for incorporating Dimension/Unit into the Calculation.
+  *
+  * Units of the same Base Unit / Dimension can be converted
+  * (usually by an affine Transformation) using the following Methods:
+  * getBaseQuantity
+  * getBaseValue
+  * getBaseUnit
+  *
+  * The Combination of Unit and Dimension allows for typesafe Conversions and Aggregations.
+  * Scalar Types typically have a continuous Range, so the Type float is used here.
+  * The Conversion between monetary Values can vary over Time,
+  * so the Conversion may be time dependant!
+  *
+  * Unit-Systems:
+  * SI  (System International)
+  * MKS (Meter/KiloGram/Second)
+  * CGS (CentiMeter/Gram/Second)
+  *
+  * Known SubClasses:
+  *
+  * Copyright:	Copyright (c) Matthias Heuer<p>
+  * Company:	personal<p>
+  * Created on	2000-08-13, 02;34;24<p>
+  * @author 	Matthias Heuer
+  * @version	1.0
+  */
+public class UnitAffine
+extends UnitLinear {
+
+////////////////////////////////////////////////////////////////////////////////
+//  Variables
+////////////////////////////////////////////////////////////////////////////////
+
+/** The Ratio to the Base Unit */
+protected double mShift;
+
+////////////////////////////////////////////////////////////////////////////////
+//  Constructors, calling each other using this()/super()
+////////////////////////////////////////////////////////////////////////////////
+
+/** Empty Constructor	 */
+public UnitAffine(final double ratio_, final double shift_) {
+	super(ratio_);
+	mShift = shift_; }
+
+////////////////////////////////////////////////////////////////////////////////
+//  public Methods, then private Methods
+////////////////////////////////////////////////////////////////////////////////
+
+////////////////////////////////////////////////////////////////////////////////
+//  Interface ILinked: Implementation
+////////////////////////////////////////////////////////////////////////////////
+
+/**Returns the Function Value (mapping) of the Argument arg */
+public double Map(double arg) {
+	if (mBaseUnit == this) return arg;
+	return mBaseUnit.Map(arg*mRatio + mShift); }
+
+/**Returns the Function Value (mapping) of the Argument arg */
+public float Map(float arg) {
+	if (mBaseUnit == this) return arg;
+	return mBaseUnit.Map((float) (arg*mRatio + mShift)); }
+
+////////////////////////////////////////////////////////////////////////////////
+//  static Testing and main() Methods
+////////////////////////////////////////////////////////////////////////////////
+
+/** Tests all Methods of this Class	 */
+public static void testIt(String[] args) throws IOException {
+	System.out.println("Testing " + UnitAffine.class.getName());
+}
+
+/**The main entry point for the application.
+ *
+ * @param args Array of parameters passed to the application
+ * via the command line.	 */
+public static void main (String[] args) throws IOException {
+	testIt(args); }
+
+}

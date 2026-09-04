@@ -1,0 +1,295 @@
+package Stream.Byte.Encoding;
+
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.OutputStream;
+import Stream.Byte.AFilterByte;
+import Stream.Byte.StreamOutByte;
+import Stream.Byte.StreamIn_Byte;
+import Maths.VectorChar;
+
+/**
+  * Title: FilterChar2String<p>
+  * Description:
+  * Recodes the Bytes coming through this Input Stream
+  * by looking up their Values in a String[] Array.
+  * This is NOT a Size-preserving Transformation!
+  *
+  * Example Byte Arrays are given for XML Entities.
+  * Only '<' and '&' (plus " and ' in Attributes) Markup needs to be escaped in XML!
+  * Three other Markup Characters are defined that can, but must not be escaped:
+  * '>', "'" and '"' need only be escaped, when in Danger of being recognized as Markup.
+  *
+  * Other XML Markup can encode all printable Latin-1 (ISO-8859-1) Characters up to 255,
+  * so they can be written in UTF-8 with single Byte Unicode Characters!
+  * Other Alternatives for german Umlaut Characters is their standard Replacement:
+  * ss for ß
+  * ae for ä
+  * oe for ö
+  * ue for ü
+  *
+  * Known SubClasses:
+  *
+  * Copyright:	Copyright (c) Matthias Heuer<p>
+  * Company:	personal<p>
+  * Created on	2002-02-17, 12;08;22<p>
+  * @author 	Matthias Heuer
+  * @version	1.0
+  */
+public class FilterChar2String
+extends AFilterByte {
+
+////////////////////////////////////////////////////////////////////////////////
+//  static Constants and Variables
+////////////////////////////////////////////////////////////////////////////////
+
+/** Character starting an XML String Encoding
+ * Starting with the same Character considerably speeds up Parsing!
+ */
+public static final char XML_ENTITY_START = '&';
+
+/** Character ending an XML String Encoding
+ * Ending with the same Character considerably speeds up Parsing!
+ */
+public static final char XML_ENTITY_STOP  = ';';
+
+//¥¤£¢÷×¾½¼³²¹°¯­¬ºª¸¨·±¦µ¶§ßþÞÿýÝüÜûÛúÚùÙøØöÖõÕôÔóÓòÒñÑïÏîÎíÍìÌëËêÊéÉèÈðÐçÇæÆåÅäÄãÃâÂáÁàÀ¿¡»«´©><&"
+
+/** Characters that are to be encoded by Strings
+ * This Array contains most of the printable ANSI (Latin-1) Characters.
+ */
+private static final char[] XML_ARR_LATIN1_ENTITY_CHARS = { //' ',
+'<', '&', '>', '"', '\'', //basic XML Entities
+'©', '´', '«', '»', '¡', '¿',
+'À', 'à', 'Á', 'á', 'Â', 'â', 'Ã', 'ã', 'Ä', 'ä', 'Å', 'å', 'Æ', 'æ', //all 'A' Variations
+'Ç', 'ç', 'Ð', 'ð',
+'È', 'è', 'É', 'é', 'Ê', 'ê', 'Ë', 'ë', //all 'E' Variations
+'Ì', 'ì', 'Í', 'í', 'Î', 'î', 'Ï', 'ï', //all 'I' Variations
+'Ñ', 'ñ',
+'Ò', 'ò', 'Ó', 'ó', 'Ô', 'ô', 'Õ', 'õ', 'Ö', 'ö', 'Ø', 'ø',  //all 'O' Variations
+'Ù', 'ù', 'Ú', 'ú', 'Û', 'û', 'Ü', 'ü',  //all 'U' Variations
+'Ý', 'ý', 'ÿ', 'Þ', 'þ', 'ß',
+'§', '¶', 'µ', '¦', '±', '·', '¨', '¸', 'ª', 'º', '¬', '­', '¯', '°',
+'¹', '²', '³', '¼', '½', '¾', '×', '÷', '¢', '£', '¤', '¥', '€' };
+
+/** Strings encoding Characters
+ * This Array contains Entities for most of the printable ANSI (Latin-1) Characters
+ * without the leading and trailing Characters "&...;".
+ */
+private static final String[] XML_ARR_LATIN1_ENTITY_STRINGS = { //"nbsp",
+"lt", "amp", "gt", "quot", "apos",
+"copy", "acute", "laquo", "raquo", "iexcl", "iquest",
+"Agrave", "agrave", "Aacute", "aacute", "Acirc", "acirc", "Atilde", "atilde", "Auml", "auml", "Aring", "aring", "AElig", "aelig",
+"Ccedil", "ccedil", "ETH", "eth",
+"Egrave", "egrave", "Eacute", "eacute", "Ecirc", "ecirc", "Euml", "euml",
+"Igrave", "igrave", "Iacute", "iacute", "Icirc", "icirc", "Iuml", "iuml",
+"Ntilde", "ntilde",
+"Ograve", "ograve", "Oacute", "oacute", "Ocirc", "ocirc", "Otilde", "otilde", "Ouml", "ouml", "Oslash", "oslash",
+"Ugrave", "ugrave", "Uacute", "uacute", "Ucirc", "ucirc", "Uuml", "uuml",
+"Yacute", "yacute", "yuml", "THORN", "thorn", "szlig",
+"sect", "para", "micro", "brvbar", "plusmn", "middot", "uml", "cedil", "ordf", "ordm", "not", "shy", "macr", "deg",
+"sup1", "sup2", "sup3", "frac14", "frac12", "frac34", "times", "divide", "cent", "pound", "curren", "yen", "euro" };
+
+////////////////////////////////////////////////////////////////////////////////
+//  static Methods
+////////////////////////////////////////////////////////////////////////////////
+
+	/**
+	 * This Function could be sped up by inverting the Mapping,
+	 * creating a large String[] Array with null mostly anywhere.
+	 * Possibly even faster would be to skip the Test for null
+	 * and fill the Array completely with the correct 1-char Strings.
+	 * @return the String if chr is contained in chars_, null otherwise
+	 */
+	public static String lookup(char[] chars_, String[] strings_, int chr) {
+		for (int i = chars_.length; --i >= 0;) {
+			if (chr == chars_[i]) {
+				return strings_[i]; }
+		}
+		return null; }
+
+	/** Inverts the Mapping chars_ => strings_
+	  * @return an Array with ret[chars_[i]] == strings_[i]
+	  */
+	public static String[] Inverse(char[] chars_, String[] strings_) {
+		return Inverse(chars_, strings_, VectorChar.Max(chars_)); }
+
+	/** Inverts the Mapping chars_ => strings_
+	  * @return an Array with ret[chars_[i]] == strings_[i]
+	  */
+	public static String[] Inverse(char[] chars_, String[] strings_, int MaxChar) {
+		String[] ret = new String[MaxChar+1];
+//		for(i=MaxChar; --i >= 0;) {
+//			ret[i] = Character.toString(MaxChar); }
+		for(int i = chars_.length; --i >= 0;) {
+			ret[chars_[i]] = strings_[i]; }
+		return ret; }
+
+////////////////////////////////////////////////////////////////////////////////
+//  Variables
+////////////////////////////////////////////////////////////////////////////////
+
+	/** The Encoding Array used for encoding the incoming Bytes	 */
+	protected char[] chars;
+
+	/** The Encoding Array used for encoding the incoming Bytes	 */
+	protected String[] strings;
+
+	/** The inverse Encoding Array used for encoding the incoming Bytes	 */
+	protected String[] inverse;
+
+	/** The current Position on acting as an Input Stream	 */
+	protected int currPos = -1;
+
+	/** The current String on acting as an Input Stream	 */
+	protected String currString;
+
+	/** Start Character for a String encoded Section */
+	protected char start;
+
+	/** Stop Character for a String encoded Section */
+	protected char stop;
+
+////////////////////////////////////////////////////////////////////////////////
+//  Constructors, calling each other using this()/super()
+////////////////////////////////////////////////////////////////////////////////
+
+	/** Constructor
+	 * @param chars_ The Characters to be encoded
+	 * @param strings_ The Strings to encode the Characters
+	 */
+	protected FilterChar2String(StreamIn_Byte streamIn_, char[] chars_, String[] strings_, char start_, char stop_) {
+		super(streamIn_);
+		this.strings = strings_;
+		this.chars = chars_;
+		this.inverse = Inverse(chars_, strings_);
+		start = start_;
+		stop = stop_;
+	}
+
+	/** Constructor	 */
+	protected FilterChar2String(InputStream streamIn_, char[] chars_, String[] strings_, char start_, char stop_) {
+		super(streamIn_);
+		this.strings = strings_;
+		this.chars = chars_;
+		this.inverse = Inverse(chars_, strings_);
+		start = start_;
+		stop = stop_;
+	}
+
+	/** Constructor
+	 */
+	protected FilterChar2String(StreamOutByte streamOut_, char[] chars_, String[] strings_, char start_, char stop_) {
+		super(streamOut_);
+		this.strings = strings_;
+		this.chars = chars_;
+		start = start_;
+		stop = stop_;
+	}
+
+	/** Constructor	 */
+	protected FilterChar2String(OutputStream streamOut_, char[] chars_, String[] strings_, char start_, char stop_) {
+		super(streamOut_);
+		this.strings = strings_;
+		this.chars = chars_;
+		start = start_;
+		stop = stop_;
+	}
+
+////////////////////////////////////////////////////////////////////////////////
+//  public Methods, then private Methods
+////////////////////////////////////////////////////////////////////////////////
+
+////////////////////////////////////////////////////////////////////////////////
+//  Interface StreamIn_Byte: abstract Methods
+////////////////////////////////////////////////////////////////////////////////
+
+	/**
+	  * Writes the specified byte to this output stream.
+	  * The general contract for write is that one byte is written to the output stream.
+	  * The byte to be written is the eight low-order bits of the argument b.
+	  * The 24 high-order bits of b are ignored.
+	  *
+		  * Subclasses of InputStream must provide an implementation for this method.
+	  *
+	  * @param b - the byte.
+	  * @throws IOException - if an I/O error occurs.
+	  * 	In particular, an IOException may be thrown if the output stream has been closed.
+	  */
+	public int read() throws IOException {
+		if (currString != null) {
+			if (++currPos < currString.length()) {
+				return currString.charAt(currPos); }
+			currString = null;
+			currPos = -1;
+			return(stop); //simply comment this out when String is included completely!
+		}
+		int chr;
+		chr = (streamIn != null) ? streamIn.read() : inStream.read();
+		if (null == (currString = inverse[chr])) {
+			return chr; }
+		return start; //read(); //simply comment this out when String is included completely!
+	}
+
+	/**
+	  * Writes the specified byte to this output stream.
+	  * The general contract for write is that one byte is written to the output stream.
+	  *
+	  * @param b - the byte.
+	  * @throws IOException - if an I/O error occurs.
+	  * 	In particular, an IOException may be thrown if the output stream has been closed.
+	  */
+	public void write(int chr) throws IOException {
+		String str;
+		if (null == (str = inverse[chr])) {
+			if (streamOut != null) {
+				streamOut.write(chr); }
+				outStream.write(chr);
+		}
+		streamOut.write(start); //simply comment this out when String is included completely!
+		int len = str.length();
+		if (streamOut != null) {
+			for (int i = -1; ++i < len;) {
+				streamOut.write(str.charAt(i)); }
+		} else {
+			for (int i = -1; ++i < len;) {
+				outStream.write(str.charAt(i)); }
+		}
+		streamOut.write(stop); //simply comment this out when String is included completely!
+	}
+
+////////////////////////////////////////////////////////////////////////////////
+//  static Testing and main() Methods
+////////////////////////////////////////////////////////////////////////////////
+
+	/** Tests all Methods of this Class	 */
+	public static void testIt(String[] args) throws java.io.IOException {
+		System.out.println("Testing " + FilterChar2String.class.getName());
+		System.out.println("Careful: DOS (OEM) Output differs significantly from Windows (ANSI = Latin-1)");
+		System.out.println("á=" + 'á' + "=" + (int) 'á');
+		java.io.FileOutputStream stream = new java.io.FileOutputStream("C:/test.txt");
+		for(int i = XML_ARR_LATIN1_ENTITY_CHARS.length; --i >= 0;) {
+			stream.write(XML_ARR_LATIN1_ENTITY_CHARS[i]);
+			if (XML_ARR_LATIN1_ENTITY_CHARS[i] > 255) {
+				throw new java.io.IOException("Larger than 255!"); }
+			System.out.println(i + ":" + (int)XML_ARR_LATIN1_ENTITY_CHARS[i] + "='"+XML_ARR_LATIN1_ENTITY_CHARS[i]+"'"); }
+		String[] inverse = Inverse(XML_ARR_LATIN1_ENTITY_CHARS, XML_ARR_LATIN1_ENTITY_STRINGS);
+		stream.write(13);
+		stream.write(10);
+		for(int i=127; ++i < 256;) {
+			stream.write((byte) i);
+			if (inverse[i] == null) {
+				System.out.println(i + ": has no Encoding! '" + (char) i + "'"); }
+		}
+		stream.close();
+	}
+
+	/**The main entry point for the application.
+	 *
+	 * @param args Array of parameters passed to the application
+	 * via the command line.	 */
+	public static void main (String[] args) throws java.io.IOException {
+		testIt(args); }
+
+}
+

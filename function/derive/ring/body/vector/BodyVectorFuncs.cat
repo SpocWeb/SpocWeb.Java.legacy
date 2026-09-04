@@ -1,0 +1,159 @@
+
+(object Petal
+    version    	42
+    _written   	"Rose 4.5.8163.3"
+    charSet    	0)
+
+(object Class_Category "BodyVectorFuncs"
+    is_unit    	TRUE
+    is_loaded  	TRUE
+    quid       	"37BC8EB90306"
+    visible_categories 	(list visibility_relationship_list
+	(object Visibility_Relationship
+	    quid       	"37BFEC9300D0"
+	    supplier   	"Logical View::intFunction"
+	    quidu      	"36BB39470389")
+	(object Visibility_Relationship
+	    quid       	"37BFEC9F02C2"
+	    supplier   	"Logical View::ByRef"
+	    quidu      	"36BB4AA503E4"))
+    exportControl 	"Public"
+    logical_models 	(list unit_reference_list
+	(object Class "fSinProd"
+	    attributes 	(list Attribute_Set
+		(object Attribute
+		    tool       	"Java"
+		    name       	"GenerateFinalizer"
+		    value      	FALSE)
+		(object Attribute
+		    tool       	"Java"
+		    name       	"GenerateStaticInitializer"
+		    value      	FALSE)
+		(object Attribute
+		    tool       	"Java"
+		    name       	"GenerateInstanceInitializer"
+		    value      	FALSE)
+		(object Attribute
+		    tool       	"Java"
+		    name       	"GenerateDefaultConstructor"
+		    value      	FALSE))
+	    quid       	"37BC8EB90308"
+	    documentation 	
+|Returns the Product of the Sinusses of all Coordinates times Pi, 
+| * i.e. the full Period fits into the unit Circle. (Example Function)  
+	    
+	    realized_interfaces 	(list realize_rel_list
+		(object Realize_Relationship
+		    attributes 	(list Attribute_Set)
+		    quid       	"37BD361C0096"
+		    supplier   	"Logical View::intFunction::intFunction"
+		    quidu      	"36BB39BA00B2"))
+	    operations 	(list Operations
+		(object Operation "Function"
+		    attributes 	(list Attribute_Set)
+		    quid       	"37BD361C028B"
+		    parameters 	(list Parameters
+			(object Parameter "arg"
+			    type       	"Object"))
+		    result     	"Object"
+		    concurrency 	"Sequential"
+		    opExportControl 	"Public"
+		    uid        	0))
+	    module     	"Component View::BodyVectorFuncs::fSinProd"
+	    quidu      	"37BC8EB90307"
+	    language   	"Java")
+	(object Association "$UNNAMED$0"
+	    attributes 	(list Attribute_Set)
+	    quid       	"37BC8EB90310"
+	    roles      	(list role_list
+		(object Role "$UNNAMED$1"
+		    quid       	"37BC8EB90311"
+		    supplier   	"Logical View::BodyVectorFuncs::fSinProd"
+		    quidu      	"37BC8EB90308")
+		(object Role "pi"
+		    attributes 	(list Attribute_Set
+			(object Attribute
+			    tool       	"Java"
+			    name       	"InitialValue"
+			    value      	"new ByRefDouble (Math.PI)")
+			(object Attribute
+			    tool       	"Java"
+			    name       	"Final"
+			    value      	TRUE))
+		    quid       	"37BC8EB90312"
+		    documentation 	
+|Pi as a Constant	 
+		    
+		    label      	"pi"
+		    supplier   	"Logical View::ByRef::ByRefDouble"
+		    quidu      	"36BB4E3D0274"
+		    exportControl 	"Protected"
+		    is_navigable 	TRUE
+		    static     	TRUE))))
+    logical_presentations 	(list unit_reference_list
+	(object ClassDiagram "BodyVectorFuncs"
+	    quid       	"37BE702D02F3"
+	    title      	"BodyVectorFuncs"
+	    zoom       	100
+	    max_height 	28350
+	    max_width  	21600
+	    origin_x   	0
+	    origin_y   	0
+	    items      	(list diagram_item_list
+		(object ClassView "Class" "Logical View::BodyVectorFuncs::fSinProd" @1
+		    ShowCompartmentStereotypes 	TRUE
+		    IncludeAttribute 	TRUE
+		    location   	(589, 558)
+		    label      	(object ItemLabel
+			Parent_View 	@1
+			location   	(499, 507)
+			fill_color 	13434879
+			nlines     	1
+			max_width  	180
+			justify    	0
+			label      	"fSinProd")
+		    icon_style 	"Icon"
+		    line_color 	3342489
+		    fill_color 	13434879
+		    quidu      	"37BC8EB90308"
+		    width      	198
+		    height     	126
+		    annotation 	8
+		    autoResize 	TRUE)
+		(object ClassView "Class" "Logical View::intFunction::intFunction" @2
+		    ShowCompartmentStereotypes 	TRUE
+		    IncludeAttribute 	TRUE
+		    location   	(589, 310)
+		    label      	(object ItemLabel
+			Parent_View 	@2
+			location   	(458, 257)
+			fill_color 	13434879
+			nlines     	1
+			max_width  	262
+			justify    	0
+			label      	"intFunction")
+		    stereotype 	(object ItemLabel
+			Parent_View 	@2
+			location   	(458, 207)
+			fill_color 	13434879
+			anchor     	10
+			nlines     	1
+			max_width  	262
+			justify    	0
+			label      	"<<Interface>>")
+		    icon       	"Interface"
+		    icon_style 	"Label"
+		    line_color 	3342489
+		    fill_color 	13434879
+		    quidu      	"36BB39BA00B2"
+		    width      	280
+		    height     	230
+		    annotation 	8
+		    autoResize 	TRUE)
+		(object RealizeView "" @3
+		    stereotype 	TRUE
+		    line_color 	3342489
+		    quidu      	"37BD361C0096"
+		    client     	@1
+		    supplier   	@2
+		    line_style 	0)))))

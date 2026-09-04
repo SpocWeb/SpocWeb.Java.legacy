@@ -1,0 +1,52 @@
+package id2vrz5c9g0327jc9g16ik8;
+
+/**
+@version 2.0
+@__modelType diagram 
+*/
+class diagram {
+/**
+@__ref <oiref:java#Class#Stream.FileBackupIterator:oiref><oihard>
+@__modelType reference
+@__imported 
+*/
+class reference {
+}/**
+@__ref <oiref:java#Class#Stream.FileIterator:oiref><oihard>
+@__modelType reference
+@__imported 
+*/
+class reference9 {
+}/**
+@__ref <oiref:java#Class#Stream.IStreamIn:oiref><oihard>
+@__modelType reference
+@__imported 
+*/
+class reference10 {
+}/**
+@__ref <oiref:java#Class#Stream.ParserIn:oiref><oihard>
+@__modelType reference
+@__imported 
+*/
+class reference11 {
+}}/**
+
+@__tags
+@shapeType ClassDiagram 
+*/
+class __tags {
+}/**
+@__options 
+*/
+class __options {
+}/**
+@__positions <oigroup:<oiref:java#Implements#Stream.FileBackupIterator#Stream.IStreamIn:oiref>=330,212,330,168:oigroup>
+<oigroup:<oiref:java#Class#Stream.FileBackupIterator:oiref>=230,212,200,190,1:oigroup>
+<oigroup:<oiref:java#Class#Stream.IStreamIn:oiref>=272,10,116,158,1:oigroup>
+<oigroup:<oiref:java#Implements#Stream.FileIterator#Stream.IStreamIn:oiref>=110,212,301,168:oigroup>
+<oigroup:<oiref:java#Extends#Stream.ParserIn#Stream.IStreamIn:oiref>=550,212,359,168:oigroup>
+<oigroup:<oiref:java#Class#Stream.ParserIn:oiref>=450,212,200,133,1:oigroup>
+<oigroup:<oiref:java#Class#Stream.FileIterator:oiref>=10,212,200,238,1:oigroup>
+*/
+class __positions {
+}

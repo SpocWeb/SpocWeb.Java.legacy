@@ -1,0 +1,1389 @@
+
+(object Petal
+    version    	42
+    _written   	"Rose 4.5.8163.3"
+    charSet    	0)
+
+(object Class_Category "GroupM"
+    is_unit    	TRUE
+    is_loaded  	TRUE
+    quid       	"36BB2CD10092"
+    documentation 	
+|Defines multiplicative (Half-) Group Methods like mul(), divt() and one(). 
+|The Classes are derived from absCopyAble and designed for delegation.
+    
+    visible_categories 	(list visibility_relationship_list
+	(object Visibility_Relationship
+	    quid       	"36BB38E0025C"
+	    supplier   	"Logical View::BaseCopy"
+	    quidu      	"36BB22B90122"))
+    exportControl 	"Public"
+    logical_models 	(list unit_reference_list
+	(object Class "intHalfGroupM"
+	    attributes 	(list Attribute_Set
+		(object Attribute
+		    tool       	"Java"
+		    name       	"GenerateFinalizer"
+		    value      	FALSE)
+		(object Attribute
+		    tool       	"Java"
+		    name       	"GenerateStaticInitializer"
+		    value      	FALSE)
+		(object Attribute
+		    tool       	"Java"
+		    name       	"GenerateInstanceInitializer"
+		    value      	FALSE)
+		(object Attribute
+		    tool       	"Java"
+		    name       	"GenerateDefaultConstructor"
+		    value      	FALSE))
+	    quid       	"36BB2CD100BA"
+	    documentation 	
+|HalfGroupM (M,*):
+| * Defines the most basic Interface necessary for a multiplicative HalfGroup:'*='
+| * All other operations are only Shortcuts and can be defined using '*='.
+| * Could also be called 'multiplicable'
+| 
+	    
+	    stereotype 	"Interface"
+	    operations 	(list Operations
+		(object Operation "mulAt"
+		    attributes 	(list Attribute_Set
+			(object Attribute
+			    tool       	"Java"
+			    name       	"Abstract"
+			    value      	TRUE))
+		    quid       	"37BF4D430130"
+		    documentation 	
+|Multiplication in Place: *=
+|	 * This virtual Operation has to be implemented by each subclass.	 
+		    
+		    parameters 	(list Parameters
+			(object Parameter "arg"
+			    type       	"Object"))
+		    result     	"HalfGroupM"
+		    concurrency 	"Sequential"
+		    opExportControl 	"Public"
+		    uid        	0))
+	    module     	"Component View::GroupM::intHalfGroupM"
+	    quidu      	"37BF53870046"
+	    language   	"Java")
+	(object Class "intGroupM"
+	    attributes 	(list Attribute_Set
+		(object Attribute
+		    tool       	"Java"
+		    name       	"GenerateFinalizer"
+		    value      	FALSE)
+		(object Attribute
+		    tool       	"Java"
+		    name       	"GenerateStaticInitializer"
+		    value      	FALSE)
+		(object Attribute
+		    tool       	"Java"
+		    name       	"GenerateInstanceInitializer"
+		    value      	FALSE)
+		(object Attribute
+		    tool       	"Java"
+		    name       	"GenerateDefaultConstructor"
+		    value      	FALSE))
+	    quid       	"36BB2CD10146"
+	    documentation 	
+|HalfGroup (M,*,/,0):
+| * Defines the most basic Interface necessary for an additive Group: '/='.
+| * All other operations are only Shortcuts and can be defined using '/='.
+| * 
+| * Design Decisions:
+| * Normally Inversion is sufficient to define anything else as an operation
+| * Only for ONE you need any number (except 0) to define it.
+| * 
+| * You can use either Inversion or Division to define the operations.
+| * In any Case you better redefine both for Performance.
+| * Could also be called 'divisible'
+| 
+	    
+	    stereotype 	"Interface"
+	    operations 	(list Operations
+		(object Operation "divAt"
+		    attributes 	(list Attribute_Set
+			(object Attribute
+			    tool       	"Java"
+			    name       	"Abstract"
+			    value      	TRUE))
+		    quid       	"37BF4D43004A"
+		    documentation 	
+|Division in Place: /=
+|	 * This virtual Operation has to be implemented by each concrete Subclass.		 
+		    
+		    parameters 	(list Parameters
+			(object Parameter "arg"
+			    type       	"Object"))
+		    result     	"GroupM"
+		    concurrency 	"Sequential"
+		    opExportControl 	"Public"
+		    uid        	0))
+	    module     	"Component View::GroupM::intGroupM"
+	    quidu      	"37BF536E0069"
+	    language   	"Java")
+	(object Class "HalfGroupM"
+	    attributes 	(list Attribute_Set
+		(object Attribute
+		    tool       	"Java"
+		    name       	"GenerateFinalizer"
+		    value      	FALSE)
+		(object Attribute
+		    tool       	"Java"
+		    name       	"GenerateStaticInitializer"
+		    value      	FALSE)
+		(object Attribute
+		    tool       	"Java"
+		    name       	"GenerateInstanceInitializer"
+		    value      	FALSE)
+		(object Attribute
+		    tool       	"Java"
+		    name       	"GenerateDefaultConstructor"
+		    value      	FALSE))
+	    quid       	"36BB2CD101B4"
+	    documentation 	
+|Algebraic HalfGroup (M,*):
+| * Set of Objects with inner Operation "*" on any two Objects.
+| * I.e. in a HalfGroup any two Objects can be "multiplied".
+| * This Multiplication is associative i.e. (a*b)*c==a*(b*c)
+| *
+| * Commutative HalfGroups are HalfGroups where the Operator Matrix is symmetric,
+| * i.e. a*b=b*a.
+| * C++ can implement non-commutative HalfGroups,
+| * because * is evaluated in strict order.
+| * 
+| * Defines the additional Operations which should be redefined
+| * to exploit the final Definition of the Operands.
+| * A Default Implementation is done in 'absHalfGroupM'.
+| * There are more effective ways to implement these functions,
+| * depending on the implementing class. This is only the generic Solution.
+| * 
+| * Design Decisions:
+| * This HalfGroupM must always be synchronous to HalfGroup!
+| * Unfortunately you cannot use Operators as Variables in Templates,
+| * in C++ you would use Macros for that.
+| * 
+| * The Interface has been separated from the Implementation in Java, 
+| * because it is used for multiple Inheritance.
+| * Could also be called 'fullMultiplicable'
+| 
+	    
+	    stereotype 	"Interface"
+	    superclasses 	(list inheritance_relationship_list
+		(object Inheritance_Relationship
+		    attributes 	(list Attribute_Set)
+		    quid       	"37BD380B0319"
+		    supplier   	"Logical View::GroupM::intHalfGroupM"
+		    quidu      	"36BB2CD100BA")
+		(object Inheritance_Relationship
+		    attributes 	(list Attribute_Set)
+		    quid       	"37BD380C011B"
+		    supplier   	"Logical View::BaseCopy::copyAble"
+		    quidu      	"36BB22B9021D"))
+	    operations 	(list Operations
+		(object Operation "mul"
+		    attributes 	(list Attribute_Set
+			(object Attribute
+			    tool       	"Java"
+			    name       	"Abstract"
+			    value      	TRUE))
+		    quid       	"37BD380C012F"
+		    documentation 	
+|Multiplication: *		
+		    
+		    parameters 	(list Parameters
+			(object Parameter "arg"
+			    type       	"Object"))
+		    result     	"HalfGroupM"
+		    concurrency 	"Sequential"
+		    opExportControl 	"Public"
+		    uid        	0)
+		(object Operation "sqr"
+		    attributes 	(list Attribute_Set
+			(object Attribute
+			    tool       	"Java"
+			    name       	"Abstract"
+			    value      	TRUE))
+		    quid       	"37BD380C0158"
+		    documentation 	
+|Square: x^2 == x*x		
+		    
+		    result     	"HalfGroupM"
+		    concurrency 	"Sequential"
+		    opExportControl 	"Public"
+		    uid        	0)
+		(object Operation "sqrAt"
+		    attributes 	(list Attribute_Set
+			(object Attribute
+			    tool       	"Java"
+			    name       	"Abstract"
+			    value      	TRUE))
+		    quid       	"37BD380C0162"
+		    documentation 	
+|Square in Place: x*=x	
+		    
+		    result     	"HalfGroupM"
+		    concurrency 	"Sequential"
+		    opExportControl 	"Public"
+		    uid        	0)
+		(object Operation "cbc"
+		    attributes 	(list Attribute_Set
+			(object Attribute
+			    tool       	"Java"
+			    name       	"Abstract"
+			    value      	TRUE))
+		    quid       	"37BD380C0176"
+		    documentation 	
+|Cubic: x^3 == (x^2)*=x	
+		    
+		    result     	"HalfGroupM"
+		    concurrency 	"Sequential"
+		    opExportControl 	"Public"
+		    uid        	0)
+		(object Operation "cbcAt"
+		    attributes 	(list Attribute_Set
+			(object Attribute
+			    tool       	"Java"
+			    name       	"Abstract"
+			    value      	TRUE))
+		    quid       	"37BD380C0180"
+		    documentation 	
+|Cubic in Place: x*=x^2	
+		    
+		    result     	"HalfGroupM"
+		    concurrency 	"Sequential"
+		    opExportControl 	"Public"
+		    uid        	0)
+		(object Operation "Pow"
+		    attributes 	(list Attribute_Set
+			(object Attribute
+			    tool       	"Java"
+			    name       	"Abstract"
+			    value      	TRUE))
+		    quid       	"37BD380C018A"
+		    documentation 	
+|Integer Power: x^n	 
+		    
+		    parameters 	(list Parameters
+			(object Parameter "n"
+			    type       	"int"))
+		    result     	"HalfGroupM"
+		    concurrency 	"Sequential"
+		    opExportControl 	"Public"
+		    uid        	0)
+		(object Operation "PowAt"
+		    attributes 	(list Attribute_Set
+			(object Attribute
+			    tool       	"Java"
+			    name       	"Abstract"
+			    value      	TRUE))
+		    quid       	"37BD380C01B2"
+		    documentation 	
+|Integer Power: x^n	 
+		    
+		    parameters 	(list Parameters
+			(object Parameter "n"
+			    type       	"int"))
+		    result     	"HalfGroupM"
+		    concurrency 	"Sequential"
+		    opExportControl 	"Public"
+		    uid        	0)
+		(object Operation "Pow2PowAt"
+		    attributes 	(list Attribute_Set
+			(object Attribute
+			    tool       	"Java"
+			    name       	"Abstract"
+			    value      	TRUE))
+		    quid       	"37BD380C01DA"
+		    documentation 	
+|Raised by an Integer Power of 2 in Place: x^=(2^n)	 
+		    
+		    parameters 	(list Parameters
+			(object Parameter "n"
+			    type       	"int"))
+		    result     	"HalfGroupM"
+		    concurrency 	"Sequential"
+		    opExportControl 	"Public"
+		    uid        	0)
+		(object Operation "Pow2Pow"
+		    attributes 	(list Attribute_Set
+			(object Attribute
+			    tool       	"Java"
+			    name       	"Abstract"
+			    value      	TRUE))
+		    quid       	"37BD380C020C"
+		    documentation 	
+|Raised by an Integer Power of 2: x^(2^n)	 
+		    
+		    parameters 	(list Parameters
+			(object Parameter "n"
+			    type       	"int"))
+		    result     	"HalfGroupM"
+		    concurrency 	"Sequential"
+		    opExportControl 	"Public"
+		    uid        	0))
+	    module     	"Component View::GroupM::HalfGroupM"
+	    quidu      	"36BB2CD101AA"
+	    language   	"Java")
+	(object Class "absHalfGroupM"
+	    attributes 	(list Attribute_Set
+		(object Attribute
+		    tool       	"Java"
+		    name       	"GenerateFinalizer"
+		    value      	FALSE)
+		(object Attribute
+		    tool       	"Java"
+		    name       	"GenerateStaticInitializer"
+		    value      	FALSE)
+		(object Attribute
+		    tool       	"Java"
+		    name       	"GenerateInstanceInitializer"
+		    value      	FALSE)
+		(object Attribute
+		    tool       	"Java"
+		    name       	"GenerateDefaultConstructor"
+		    value      	FALSE))
+	    quid       	"36BB2CD10255"
+	    documentation 	
+|Default Implementation of a multiplicative HalfGroup (G,*).
+| * The Interface is separated out, 
+| * because it is used to simulate multiple Inheritance by Delegation. 
+| * 
+| * Design Decisions:
+| * This class does not extend Number, because not every Realization of a Group 
+| * maps to numeric Values. (e.g. Functions, Matrices etc.)
+| * Instead it presents the conversion Routines xxxxValue(Object arg)
+| * to convert from Number Types.
+| * 
+| * Not all Methods are implemented as Defaults although that would be possible:
+| * mulAt (*=) is not missing, but raises an Error when being called. 
+| * This is for one thing to keep this Class abstract 
+| * and for another to indicate the Methods that have in any case to be redefined.
+| * 
+| * This HalfGroup must be concrete, because it is used for delegation, 
+| * instead of being used for inheritance!
+| * 
+| * Abstract Methods:
+| * mulAt (*=)
+| 
+	    
+	    stereotype 	"Delegator"
+	    superclasses 	(list inheritance_relationship_list
+		(object Inheritance_Relationship
+		    attributes 	(list Attribute_Set)
+		    quid       	"37BD38070377"
+		    supplier   	"Logical View::BaseCopy::absCopyAble"
+		    quidu      	"36BB22B9029F"))
+	    realized_interfaces 	(list realize_rel_list
+		(object Realize_Relationship
+		    attributes 	(list Attribute_Set)
+		    quid       	"37BD3808017A"
+		    supplier   	"Logical View::GroupM::HalfGroupM"
+		    quidu      	"36BB2CD101B4"))
+	    operations 	(list Operations
+		(object Operation "absHalfGroupM"
+		    attributes 	(list Attribute_Set)
+		    quid       	"37BD38080365"
+		    documentation 	
+|This Constructor is only used in Initialize and Terminate of abstract Classes
+|	 * and should normally be marked as 'protected' or 'friend',
+|	 * but all these Routines are not within one Package.
+|	 * It is needed for the Child Classes to call
+|	 * and replace Self by the Child Object with it's overloaded Methods.	 
+		    
+		    parameters 	(list Parameters
+			(object Parameter "self_"
+			    type       	"HalfGroupM"))
+		    concurrency 	"Sequential"
+		    opExportControl 	"Public"
+		    uid        	0)
+		(object Operation "mulAt"
+		    attributes 	(list Attribute_Set)
+		    quid       	"37BD38080379"
+		    documentation 	
+|Abstract Method, only implemented to make this Class concrete 
+|	 * to be able to delegate to this. Throws the #AbstractMethodError'	 
+		    
+		    parameters 	(list Parameters
+			(object Parameter "arg"
+			    type       	"Object"))
+		    result     	"HalfGroupM"
+		    concurrency 	"Sequential"
+		    opExportControl 	"Public"
+		    uid        	0)
+		(object Operation "mul"
+		    attributes 	(list Attribute_Set)
+		    quid       	"37BD38080397"
+		    documentation 	
+|Multiplication: *
+|	 * A Standard Implementation. Can be overwritten by faster Implementations.	 
+		    
+		    parameters 	(list Parameters
+			(object Parameter "arg"
+			    type       	"Object"))
+		    result     	"HalfGroupM"
+		    concurrency 	"Sequential"
+		    opExportControl 	"Public"
+		    uid        	0)
+		(object Operation "sqr"
+		    attributes 	(list Attribute_Set)
+		    quid       	"37BD380803AB"
+		    documentation 	
+|Square: x^2 == x*x
+|	 * A Standard Implementation. Can be overwritten by faster Implementations.	 
+		    
+		    result     	"HalfGroupM"
+		    concurrency 	"Sequential"
+		    opExportControl 	"Public"
+		    uid        	0)
+		(object Operation "sqrAt"
+		    attributes 	(list Attribute_Set)
+		    quid       	"37BD380803B5"
+		    documentation 	
+|Square in Place: x*=x
+|	 * A Standard Implementation. Can be overwritten by faster Implementations.	 
+		    
+		    result     	"HalfGroupM"
+		    concurrency 	"Sequential"
+		    opExportControl 	"Public"
+		    uid        	0)
+		(object Operation "cbc"
+		    attributes 	(list Attribute_Set)
+		    quid       	"37BD380803B6"
+		    documentation 	
+|Cubic: x^3 == (x^2)*=x
+|	 * A Standard Implementation. Can be overwritten by faster Implementations.	 
+		    
+		    result     	"HalfGroupM"
+		    concurrency 	"Sequential"
+		    opExportControl 	"Public"
+		    uid        	0)
+		(object Operation "cbcAt"
+		    attributes 	(list Attribute_Set)
+		    quid       	"37BD380803BF"
+		    documentation 	
+|Cubic in Place: x*=x^2
+|	 * A Standard Implementation. Can be overwritten by faster Implementations.	 
+		    
+		    result     	"HalfGroupM"
+		    concurrency 	"Sequential"
+		    opExportControl 	"Public"
+		    uid        	0)
+		(object Operation "Pow2PowAt"
+		    attributes 	(list Attribute_Set)
+		    quid       	"37BD380803C9"
+		    documentation 	
+|Raised by an Integer Power of 2 in Place: x^=(2^n)
+|	 * Here implemented as a concatenated doubling.	 
+		    
+		    parameters 	(list Parameters
+			(object Parameter "n"
+			    type       	"int"))
+		    result     	"HalfGroupM"
+		    concurrency 	"Sequential"
+		    opExportControl 	"Public"
+		    uid        	0)
+		(object Operation "Pow2Pow"
+		    attributes 	(list Attribute_Set)
+		    quid       	"37BD380803DD"
+		    documentation 	
+|Raised by an Integer Power of 2: x^(2^n)
+|	 * Here implemented as a concatenated doubling.	 
+		    
+		    parameters 	(list Parameters
+			(object Parameter "n"
+			    type       	"int"))
+		    result     	"HalfGroupM"
+		    concurrency 	"Sequential"
+		    opExportControl 	"Public"
+		    uid        	0)
+		(object Operation "Pow"
+		    attributes 	(list Attribute_Set)
+		    quid       	"37BD38090009"
+		    documentation 	
+|Integer Power: x^n	 
+		    
+		    parameters 	(list Parameters
+			(object Parameter "n"
+			    type       	"int"))
+		    result     	"HalfGroupM"
+		    concurrency 	"Sequential"
+		    opExportControl 	"Public"
+		    uid        	0)
+		(object Operation "PowAt"
+		    attributes 	(list Attribute_Set)
+		    quid       	"37BD3809001D"
+		    documentation 	
+|Integer Power: x^=n
+|	 * This Implementation is only valid for positive n > 0 !
+|	 * You can implement a similar Algorithm for Multiplication.
+|	 * This Algorithm uses the binary Representation of the integer n.
+|	 * You could also write this with Prime Factors, but the Algorithm would be less
+|	 * elegant and also slower, because this one uses only 2*lb n Multiplications.	 
+		    
+		    parameters 	(list Parameters
+			(object Parameter "n"
+			    type       	"int"))
+		    result     	"HalfGroupM"
+		    concurrency 	"Sequential"
+		    opExportControl 	"Public"
+		    uid        	0)
+		(object Operation "copyAt"
+		    attributes 	(list Attribute_Set)
+		    quid       	"37BD38090031"
+		    documentation 	
+|Complement to copyAt() and shallopCopyAt().
+|	 * Does a 'deepCopy', to a certain Level
+|	 * i.e. also inner Components are copied up to the Depth.
+|	 * Returns the itself for further use. 
+		    
+		    parameters 	(list Parameters
+			(object Parameter "arg"
+			    type       	"Object")
+			(object Parameter "Depth"
+			    type       	"int"))
+		    result     	"copyAble"
+		    concurrency 	"Sequential"
+		    opExportControl 	"Public"
+		    uid        	0)
+		(object Operation "newInstance"
+		    attributes 	(list Attribute_Set)
+		    quid       	"37BD3809004F"
+		    documentation 	
+|Creates an uninitalized new Instance of it's class.
+|	 * This can in VB also be achieved by 'CreateObjectFromInstance',
+|	 * which may be slower.
+|	 * When overriding, use newInstance on all Components.	 
+		    
+		    result     	"copyAble"
+		    concurrency 	"Sequential"
+		    opExportControl 	"Public"
+		    uid        	0)
+		(object Operation "fromStreamAt"
+		    attributes 	(list Attribute_Set)
+		    quid       	"37BD38090059"
+		    documentation 	
+|Fills this Instance with the Contents read from the String.	 
+		    
+		    parameters 	(list Parameters
+			(object Parameter "arg"
+			    type       	"java.io.StreamTokenizer"))
+		    result     	"copyAble"
+		    concurrency 	"Sequential"
+		    opExportControl 	"Public"
+		    uid        	0)
+		(object Operation "testIt"
+		    attributes 	(list Attribute_Set
+			(object Attribute
+			    tool       	"Java"
+			    name       	"Static"
+			    value      	TRUE))
+		    quid       	"37BD38090077"
+		    documentation 	
+|Method to test all Implementations in this class.
+|	 * Must call testIt of the super Class.	 
+		    
+		    result     	"void"
+		    concurrency 	"Sequential"
+		    opExportControl 	"Public"
+		    uid        	0))
+	    module     	"Component View::GroupM::absHalfGroupM"
+	    quidu      	"36BB2CD10254"
+	    language   	"Java")
+	(object Class "GroupM"
+	    attributes 	(list Attribute_Set
+		(object Attribute
+		    tool       	"Java"
+		    name       	"GenerateFinalizer"
+		    value      	FALSE)
+		(object Attribute
+		    tool       	"Java"
+		    name       	"GenerateStaticInitializer"
+		    value      	FALSE)
+		(object Attribute
+		    tool       	"Java"
+		    name       	"GenerateInstanceInitializer"
+		    value      	FALSE)
+		(object Attribute
+		    tool       	"Java"
+		    name       	"GenerateDefaultConstructor"
+		    value      	FALSE))
+	    quid       	"36BB2CD102B9"
+	    documentation 	
+|Algebraic Group (M,*,/,1):
+| * Set of Objects with inner Operations "*,/" on any two Objects
+| * In a HalfGroup any two Objects can be "multiplied" or "divided".
+| * These Operations are associative, i.e. (a*b)/c == a*(b/c)
+| * 
+| * Commutative Groups are Groups where the Operator Matrix for '*' is symmetric,
+| * i.e. a*b=b*a.
+| * C++ can implement non-commutative Groups,
+| * because * is evaluated in strict order.
+| * 
+| * Defines the additional Operations which should be redefined
+| * to exploit the final Definition of the Operands.
+| * A Default Implementation is done in 'absGroupM'.
+| * There are more effective ways to implement these functions,
+| * depending on the implementing class. This is only the generic Solution.
+| * 
+| * Design Decisions:
+| * This HalfGroupM must always be synchronous to HalfGroup!
+| * Unfortunately you cannot use Operators as Variables in Templates,
+| * in C++ you would use Macros for that.
+| * 
+| * The Interface has been separated from the Implementation in Java,
+| * because it is used for multiple Inheritance.
+| * 
+| * It can be Proved, that :
+| * ...there is only a single ONE Element.
+| * This Element is neutral for both left and right * Operations.
+| * ...there is only a single inverse Element for each Element.
+| * This is the same Element for both left and right * Operations.
+| 
+	    
+	    stereotype 	"Interface"
+	    superclasses 	(list inheritance_relationship_list
+		(object Inheritance_Relationship
+		    attributes 	(list Attribute_Set)
+		    quid       	"37BD380A00D2"
+		    supplier   	"Logical View::GroupM::HalfGroupM"
+		    quidu      	"36BB2CD101B4")
+		(object Inheritance_Relationship
+		    attributes 	(list Attribute_Set)
+		    quid       	"37BD380A02BD"
+		    supplier   	"Logical View::GroupM::intGroupM"
+		    quidu      	"36BB2CD10146"))
+	    operations 	(list Operations
+		(object Operation "invAt"
+		    attributes 	(list Attribute_Set
+			(object Attribute
+			    tool       	"Java"
+			    name       	"Abstract"
+			    value      	TRUE))
+		    quid       	"37BD380A02C7"
+		    documentation 	
+|Inversion in Place: 1/x	 
+		    
+		    result     	"GroupM"
+		    concurrency 	"Sequential"
+		    opExportControl 	"Public"
+		    uid        	0)
+		(object Operation "inv"
+		    attributes 	(list Attribute_Set
+			(object Attribute
+			    tool       	"Java"
+			    name       	"Abstract"
+			    value      	TRUE))
+		    quid       	"37BD380A02D1"
+		    documentation 	
+|Inversion: 1/x	 
+		    
+		    result     	"GroupM"
+		    concurrency 	"Sequential"
+		    opExportControl 	"Public"
+		    uid        	0)
+		(object Operation "div"
+		    attributes 	(list Attribute_Set
+			(object Attribute
+			    tool       	"Java"
+			    name       	"Abstract"
+			    value      	TRUE))
+		    quid       	"37BD380A02DB"
+		    documentation 	
+|Division: /	 
+		    
+		    parameters 	(list Parameters
+			(object Parameter "arg"
+			    type       	"Object"))
+		    result     	"GroupM"
+		    concurrency 	"Sequential"
+		    opExportControl 	"Public"
+		    uid        	0)
+		(object Operation "oneAt"
+		    attributes 	(list Attribute_Set
+			(object Attribute
+			    tool       	"Java"
+			    name       	"Abstract"
+			    value      	TRUE))
+		    quid       	"37BD380A02EF"
+		    documentation 	
+|Setting to 1 in Place:	 
+		    
+		    result     	"GroupM"
+		    concurrency 	"Sequential"
+		    opExportControl 	"Public"
+		    uid        	0)
+		(object Operation "one"
+		    attributes 	(list Attribute_Set
+			(object Attribute
+			    tool       	"Java"
+			    name       	"Abstract"
+			    value      	TRUE))
+		    quid       	"37BD380A02F9"
+		    documentation 	
+|Setting to 1:	 
+		    
+		    result     	"GroupM"
+		    concurrency 	"Sequential"
+		    opExportControl 	"Public"
+		    uid        	0)
+		(object Operation "isOne"
+		    attributes 	(list Attribute_Set
+			(object Attribute
+			    tool       	"Java"
+			    name       	"Abstract"
+			    value      	TRUE))
+		    quid       	"37BD380A0303"
+		    documentation 	
+|Testing for 1:	 
+		    
+		    result     	"boolean"
+		    concurrency 	"Sequential"
+		    opExportControl 	"Public"
+		    uid        	0))
+	    module     	"Component View::GroupM::GroupM"
+	    quidu      	"36BB2CD102AF"
+	    language   	"Java")
+	(object Class "absGroupM"
+	    attributes 	(list Attribute_Set
+		(object Attribute
+		    tool       	"Java"
+		    name       	"GenerateFinalizer"
+		    value      	FALSE)
+		(object Attribute
+		    tool       	"Java"
+		    name       	"GenerateStaticInitializer"
+		    value      	FALSE)
+		(object Attribute
+		    tool       	"Java"
+		    name       	"GenerateInstanceInitializer"
+		    value      	FALSE)
+		(object Attribute
+		    tool       	"Java"
+		    name       	"GenerateDefaultConstructor"
+		    value      	FALSE))
+	    quid       	"36BB2CD2002F"
+	    documentation 	
+|Default Implementation of a multiplicative Group (G,*,/,1).
+| * The Interface is separated out, 
+| * because it is used to simulate multiple Inheritance by Delegation. 
+| * 
+| * Design Decisions:
+| * Not all Methods are implemented as Defaults although that would be possible:
+| * /= is not missing, but raises an Error when being called. 
+| * This is for one thing to keep this Class abstract 
+| * and for another to indicate the Methods that have in any case to be redefined.
+| * 
+| * This HalfGroup must be concrete, because it is used for delegation, 
+| * instead of being used for inheritance!
+| * 
+| * Abstract Methods:
+| * mulAt (*=)
+| * divAt (/=)
+| 
+	    
+	    stereotype 	"Delegator"
+	    superclasses 	(list inheritance_relationship_list
+		(object Inheritance_Relationship
+		    attributes 	(list Attribute_Set)
+		    quid       	"37BD38060087"
+		    supplier   	"Logical View::GroupM::absHalfGroupM"
+		    quidu      	"36BB2CD10255"))
+	    realized_interfaces 	(list realize_rel_list
+		(object Realize_Relationship
+		    attributes 	(list Attribute_Set)
+		    quid       	"37BD38060271"
+		    supplier   	"Logical View::GroupM::GroupM"
+		    quidu      	"36BB2CD102B9"))
+	    operations 	(list Operations
+		(object Operation "absGroupM"
+		    attributes 	(list Attribute_Set)
+		    quid       	"37BD3806027B"
+		    documentation 	
+|Sets the 'self' Reference for Delegation.
+|	 * This Constructor is only used in 'Initialize' and 'Terminate' of abstract Classes
+|	 * and should normally be marked as 'protected' or 'friend',
+|	 * but all these Routines are not within one Package.
+|	 * It is needed for the Child Classes to call
+|	 * and replace Self by the Child Object with it's overloaded Methods.	 
+		    
+		    parameters 	(list Parameters
+			(object Parameter "self_"
+			    type       	"GroupM"))
+		    concurrency 	"Sequential"
+		    opExportControl 	"Public"
+		    uid        	0)
+		(object Operation "oneAt"
+		    attributes 	(list Attribute_Set)
+		    quid       	"37BD38060299"
+		    documentation 	
+|Setting to 1 in Place:
+|	 * Can be implemented by dividing any number by itself. (except for 0!)
+|	 * A Standard Implementation. Should be overwritten by faster Implementations.	 
+		    
+		    result     	"GroupM"
+		    concurrency 	"Sequential"
+		    opExportControl 	"Public"
+		    uid        	0)
+		(object Operation "one"
+		    attributes 	(list Attribute_Set)
+		    quid       	"37BD3806029A"
+		    documentation 	
+|Setting to 1:
+|	 * A Standard Implementation. Can be overwritten by faster Implementations.	 
+		    
+		    result     	"GroupM"
+		    concurrency 	"Sequential"
+		    opExportControl 	"Public"
+		    uid        	0)
+		(object Operation "isOne"
+		    attributes 	(list Attribute_Set)
+		    quid       	"37BD380602A3"
+		    documentation 	
+|Testing for 1:
+|	 * A Standard Implementation. Can be overwritten by faster Implementations.	 
+		    
+		    result     	"boolean"
+		    concurrency 	"Sequential"
+		    opExportControl 	"Public"
+		    uid        	0)
+		(object Operation "divAt"
+		    attributes 	(list Attribute_Set)
+		    quid       	"37BD380602AD"
+		    documentation 	
+|Virtual Method!
+|	 * Division in Place: /=
+|	 * A Standard Implementation. Can be overwritten by faster Implementations.	 
+		    
+		    parameters 	(list Parameters
+			(object Parameter "arg"
+			    type       	"Object"))
+		    result     	"GroupM"
+		    concurrency 	"Sequential"
+		    opExportControl 	"Public"
+		    uid        	0)
+		(object Operation "invAt"
+		    attributes 	(list Attribute_Set)
+		    quid       	"37BD380602CB"
+		    documentation 	
+|Inversion in Place: 1/x
+|	 * A Standard Implementation. Can be overwritten by faster Implementations.	 
+		    
+		    result     	"GroupM"
+		    concurrency 	"Sequential"
+		    opExportControl 	"Public"
+		    uid        	0)
+		(object Operation "inv"
+		    attributes 	(list Attribute_Set)
+		    quid       	"37BD380602D5"
+		    documentation 	
+|Inversion: 1/x
+|	 * A Standard Implementation. Can be overwritten by faster Implementations.	 
+		    
+		    result     	"GroupM"
+		    concurrency 	"Sequential"
+		    opExportControl 	"Public"
+		    uid        	0)
+		(object Operation "div"
+		    attributes 	(list Attribute_Set)
+		    quid       	"37BD380602D6"
+		    documentation 	
+|Division: /
+|	 * A Standard Implementation. Can be overwritten by faster Implementations.	 
+		    
+		    parameters 	(list Parameters
+			(object Parameter "arg"
+			    type       	"Object"))
+		    result     	"GroupM"
+		    concurrency 	"Sequential"
+		    opExportControl 	"Public"
+		    uid        	0)
+		(object Operation "PowAt"
+		    attributes 	(list Attribute_Set)
+		    quid       	"37BD380602F3"
+		    documentation 	
+|Integer Power: x^=n
+|	 * You can implement a similar Algorithm for Multiplication.
+|	 * This Algorithm uses the binary Representation of the integer n.
+|	 * You could also write this with Prime Factors, but the Algorithm would be less
+|	 * elegant and also slower, because this one uses only 2*lb n Multiplications.	 
+		    
+		    parameters 	(list Parameters
+			(object Parameter "n"
+			    type       	"int"))
+		    result     	"HalfGroupM"
+		    concurrency 	"Sequential"
+		    opExportControl 	"Public"
+		    uid        	0)
+		(object Operation "testIt"
+		    attributes 	(list Attribute_Set
+			(object Attribute
+			    tool       	"Java"
+			    name       	"Static"
+			    value      	TRUE))
+		    quid       	"37BD38060312"
+		    documentation 	
+|Method to test all Implementations in this class.
+|	 * Must call testIt of the super Class.	 
+		    
+		    result     	"void"
+		    concurrency 	"Sequential"
+		    opExportControl 	"Public"
+		    uid        	0))
+	    module     	"Component View::GroupM::absGroupM"
+	    quidu      	"36BB2CD20011"
+	    language   	"Java")
+	(object Class "testGroupM"
+	    attributes 	(list Attribute_Set
+		(object Attribute
+		    tool       	"Java"
+		    name       	"GenerateFinalizer"
+		    value      	FALSE)
+		(object Attribute
+		    tool       	"Java"
+		    name       	"GenerateStaticInitializer"
+		    value      	FALSE)
+		(object Attribute
+		    tool       	"Java"
+		    name       	"GenerateInstanceInitializer"
+		    value      	FALSE)
+		(object Attribute
+		    tool       	"Java"
+		    name       	"GenerateDefaultConstructor"
+		    value      	FALSE))
+	    quid       	"37BC919700EF"
+	    operations 	(list Operations
+		(object Operation "main"
+		    attributes 	(list Attribute_Set
+			(object Attribute
+			    tool       	"Java"
+			    name       	"Static"
+			    value      	TRUE))
+		    quid       	"37BD380E00A6"
+		    documentation 	
+|The main entry point for the application. 
+|	 * @param args Array of command line parameters passed to the application.
+|	 * Here I can test the static Methods of the Classes 
+|	 * and call the testIt() Methods.	 
+		    
+		    parameters 	(list Parameters
+			(object Parameter "args"
+			    type       	"String[]"))
+		    result     	"void"
+		    exceptions 	"java.io.IOException"
+		    concurrency 	"Sequential"
+		    opExportControl 	"Public"
+		    uid        	0))
+	    module     	"Component View::GroupM::testGroupM"
+	    quidu      	"37BC919700EE"
+	    language   	"Java")
+	(object Association "$UNNAMED$0"
+	    attributes 	(list Attribute_Set)
+	    quid       	"37BBFB70031D"
+	    roles      	(list role_list
+		(object Role "$UNNAMED$1"
+		    quid       	"37BBFB70031E"
+		    supplier   	"Logical View::GroupM::absHalfGroupM"
+		    quidu      	"36BB2CD10255")
+		(object Role "self"
+		    attributes 	(list Attribute_Set
+			(object Attribute
+			    tool       	"Java"
+			    name       	"InitialValue"
+			    value      	""))
+		    quid       	"37BBFB700327"
+		    documentation 	
+|Local Reference to the Self, initialized by concrete classes.
+|	 * Used for the Simulation of (multiple) Inheritance with Delegation.
+|	 * Must be a virtual Interface Type to be able to take any Implementation.	 
+		    
+		    label      	"self"
+		    supplier   	"Logical View::GroupM::HalfGroupM"
+		    quidu      	"36BB2CD101B4"
+		    exportControl 	"Protected"
+		    is_navigable 	TRUE))))
+    logical_presentations 	(list unit_reference_list
+	(object ClassDiagram "GroupM"
+	    quid       	"36BB2D2A02B6"
+	    title      	"GroupM"
+	    zoom       	100
+	    max_height 	28350
+	    max_width  	21600
+	    origin_x   	0
+	    origin_y   	0
+	    items      	(list diagram_item_list
+		(object ClassView "Class" "Logical View::GroupM::intHalfGroupM" @1
+		    ShowCompartmentStereotypes 	TRUE
+		    IncludeAttribute 	TRUE
+		    location   	(651, 186)
+		    label      	(object ItemLabel
+			Parent_View 	@1
+			location   	(505, 157)
+			fill_color 	13434879
+			nlines     	1
+			max_width  	292
+			justify    	0
+			label      	"intHalfGroupM")
+		    stereotype 	(object ItemLabel
+			Parent_View 	@1
+			location   	(505, 107)
+			fill_color 	13434879
+			anchor     	10
+			nlines     	1
+			max_width  	292
+			justify    	0
+			label      	"<<Interface>>")
+		    icon       	"Interface"
+		    icon_style 	"Label"
+		    line_color 	3342489
+		    fill_color 	13434879
+		    quidu      	"36BB2CD100BA"
+		    width      	310
+		    height     	182
+		    annotation 	8
+		    autoResize 	TRUE)
+		(object ClassView "Class" "Logical View::GroupM::intGroupM" @2
+		    ShowCompartmentStereotypes 	TRUE
+		    IncludeAttribute 	TRUE
+		    location   	(1054, 186)
+		    label      	(object ItemLabel
+			Parent_View 	@2
+			location   	(926, 157)
+			fill_color 	13434879
+			nlines     	1
+			max_width  	256
+			justify    	0
+			label      	"intGroupM")
+		    stereotype 	(object ItemLabel
+			Parent_View 	@2
+			location   	(926, 107)
+			fill_color 	13434879
+			anchor     	10
+			nlines     	1
+			max_width  	256
+			justify    	0
+			label      	"<<Interface>>")
+		    icon       	"Interface"
+		    icon_style 	"Label"
+		    line_color 	3342489
+		    fill_color 	13434879
+		    quidu      	"36BB2CD10146"
+		    width      	274
+		    height     	182
+		    annotation 	8
+		    autoResize 	TRUE)
+		(object ClassView "Class" "Logical View::BaseCopy::absCopyAble" @3
+		    ShowCompartmentStereotypes 	TRUE
+		    location   	(248, 806)
+		    font       	(object Font
+			italics    	TRUE)
+		    label      	(object ItemLabel
+			Parent_View 	@3
+			location   	(112, 731)
+			fill_color 	13434879
+			nlines     	1
+			max_width  	272
+			justify    	0
+			label      	"absCopyAble")
+		    icon_style 	"Icon"
+		    line_color 	3342489
+		    fill_color 	13434879
+		    quidu      	"36BB22B9029F"
+		    width      	290
+		    height     	174
+		    annotation 	8
+		    autoResize 	TRUE)
+		(object ClassView "Class" "Logical View::BaseCopy::intCopyAble" @4
+		    ShowCompartmentStereotypes 	TRUE
+		    IncludeAttribute 	TRUE
+		    location   	(248, 186)
+		    label      	(object ItemLabel
+			Parent_View 	@4
+			location   	(120, 133)
+			fill_color 	13434879
+			nlines     	1
+			max_width  	256
+			justify    	0
+			label      	"intCopyAble")
+		    stereotype 	(object ItemLabel
+			Parent_View 	@4
+			location   	(120, 83)
+			fill_color 	13434879
+			anchor     	10
+			nlines     	1
+			max_width  	256
+			justify    	0
+			label      	"<<Interface>>")
+		    icon       	"Interface"
+		    icon_style 	"Label"
+		    line_color 	3342489
+		    fill_color 	13434879
+		    quidu      	"36BB22B90136"
+		    width      	274
+		    height     	230
+		    annotation 	8
+		    autoResize 	TRUE)
+		(object ClassView "Class" "Logical View::BaseCopy::copyAble" @5
+		    ShowCompartmentStereotypes 	TRUE
+		    location   	(248, 496)
+		    label      	(object ItemLabel
+			Parent_View 	@5
+			location   	(120, 443)
+			fill_color 	13434879
+			nlines     	1
+			max_width  	256
+			justify    	0
+			label      	"copyAble")
+		    stereotype 	(object ItemLabel
+			Parent_View 	@5
+			location   	(120, 393)
+			fill_color 	13434879
+			anchor     	10
+			nlines     	1
+			max_width  	256
+			justify    	0
+			label      	"<<Interface>>")
+		    icon       	"Interface"
+		    icon_style 	"Label"
+		    line_color 	3342489
+		    fill_color 	13434879
+		    quidu      	"36BB22B9021D"
+		    width      	274
+		    height     	230
+		    annotation 	8
+		    autoResize 	TRUE)
+		(object RealizeView "" @6
+		    stereotype 	TRUE
+		    line_color 	3342489
+		    quidu      	"37BD1B64006A"
+		    client     	@3
+		    supplier   	@5
+		    line_style 	0)
+		(object InheritView "" @7
+		    stereotype 	TRUE
+		    line_color 	3342489
+		    quidu      	"37BD1BE003E2"
+		    client     	@5
+		    supplier   	@4
+		    line_style 	0)
+		(object ClassView "Class" "Logical View::GroupM::GroupM" @8
+		    ShowCompartmentStereotypes 	TRUE
+		    location   	(1054, 496)
+		    label      	(object ItemLabel
+			Parent_View 	@8
+			location   	(926, 467)
+			fill_color 	13434879
+			nlines     	1
+			max_width  	256
+			justify    	0
+			label      	"GroupM")
+		    stereotype 	(object ItemLabel
+			Parent_View 	@8
+			location   	(926, 417)
+			fill_color 	13434879
+			anchor     	10
+			nlines     	1
+			max_width  	256
+			justify    	0
+			label      	"<<Interface>>")
+		    icon       	"Interface"
+		    icon_style 	"Label"
+		    line_color 	3342489
+		    fill_color 	13434879
+		    quidu      	"36BB2CD102B9"
+		    width      	274
+		    height     	182
+		    annotation 	8
+		    autoResize 	TRUE)
+		(object InheritView "" @9
+		    stereotype 	TRUE
+		    line_color 	3342489
+		    quidu      	"37BD380A02BD"
+		    client     	@8
+		    supplier   	@2
+		    line_style 	0)
+		(object ClassView "Class" "Logical View::GroupM::absGroupM" @10
+		    ShowCompartmentStereotypes 	TRUE
+		    location   	(1054, 806)
+		    label      	(object ItemLabel
+			Parent_View 	@10
+			location   	(920, 787)
+			fill_color 	13434879
+			nlines     	1
+			max_width  	269
+			justify    	0
+			label      	"absGroupM")
+		    stereotype 	(object ItemLabel
+			Parent_View 	@10
+			location   	(920, 737)
+			fill_color 	13434879
+			anchor     	10
+			nlines     	1
+			max_width  	269
+			justify    	0
+			label      	"<<Delegator>>")
+		    icon_style 	"Icon"
+		    line_color 	3342489
+		    fill_color 	13434879
+		    quidu      	"36BB2CD2002F"
+		    width      	287
+		    height     	162
+		    annotation 	8
+		    autoResize 	TRUE)
+		(object RealizeView "" @11
+		    stereotype 	TRUE
+		    line_color 	3342489
+		    quidu      	"37BD38060271"
+		    client     	@10
+		    supplier   	@8
+		    line_style 	0)
+		(object ClassView "Class" "Logical View::GroupM::HalfGroupM" @12
+		    ShowCompartmentStereotypes 	TRUE
+		    location   	(651, 496)
+		    label      	(object ItemLabel
+			Parent_View 	@12
+			location   	(523, 467)
+			fill_color 	13434879
+			nlines     	1
+			max_width  	256
+			justify    	0
+			label      	"HalfGroupM")
+		    stereotype 	(object ItemLabel
+			Parent_View 	@12
+			location   	(523, 417)
+			fill_color 	13434879
+			anchor     	10
+			nlines     	1
+			max_width  	256
+			justify    	0
+			label      	"<<Interface>>")
+		    icon       	"Interface"
+		    icon_style 	"Label"
+		    line_color 	3342489
+		    fill_color 	13434879
+		    quidu      	"36BB2CD101B4"
+		    width      	274
+		    height     	182
+		    annotation 	8
+		    autoResize 	TRUE)
+		(object InheritView "" @13
+		    stereotype 	TRUE
+		    line_color 	3342489
+		    quidu      	"37BD380B0319"
+		    client     	@12
+		    supplier   	@1
+		    line_style 	0)
+		(object InheritView "" @14
+		    stereotype 	TRUE
+		    line_color 	3342489
+		    quidu      	"37BD380C011B"
+		    client     	@12
+		    supplier   	@5
+		    line_style 	0)
+		(object InheritView "" @15
+		    stereotype 	TRUE
+		    line_color 	3342489
+		    quidu      	"37BD380A00D2"
+		    client     	@8
+		    supplier   	@12
+		    line_style 	0)
+		(object ClassView "Class" "Logical View::GroupM::absHalfGroupM" @16
+		    ShowCompartmentStereotypes 	TRUE
+		    location   	(651, 806)
+		    label      	(object ItemLabel
+			Parent_View 	@16
+			location   	(489, 777)
+			fill_color 	13434879
+			nlines     	1
+			max_width  	325
+			justify    	0
+			label      	"absHalfGroupM")
+		    stereotype 	(object ItemLabel
+			Parent_View 	@16
+			location   	(489, 727)
+			fill_color 	13434879
+			anchor     	10
+			nlines     	1
+			max_width  	325
+			justify    	0
+			label      	"<<Delegator>>")
+		    icon_style 	"Icon"
+		    line_color 	3342489
+		    fill_color 	13434879
+		    quidu      	"36BB2CD10255"
+		    width      	343
+		    height     	182
+		    annotation 	8
+		    autoResize 	TRUE)
+		(object AssociationViewNew "$UNNAMED$0" @17
+		    location   	(796, 618)
+		    stereotype 	TRUE
+		    line_color 	3342489
+		    quidu      	"37BBFB70031D"
+		    roleview_list 	(list RoleViews
+			(object RoleView "self" @18
+			    Parent_View 	@17
+			    location   	(114, -188)
+			    label      	(object SegLabel @19
+				Parent_View 	@18
+				location   	(732, 641)
+				anchor     	1
+				anchor_loc 	1
+				nlines     	1
+				max_width  	84
+				justify    	0
+				label      	"#self"
+				pctDist    	0.739485
+				height     	59
+				orientation 	0)
+			    stereotype 	TRUE
+			    line_color 	3342489
+			    quidu      	"37BBFB700327"
+			    client     	@17
+			    supplier   	@12
+			    line_style 	0)
+			(object RoleView "$UNNAMED$1" @20
+			    Parent_View 	@17
+			    location   	(114, -188)
+			    label      	(object SegLabel @21
+				Parent_View 	@20
+				location   	(704, 669)
+				hidden     	TRUE
+				anchor     	1
+				anchor_loc 	1
+				nlines     	1
+				max_width  	450
+				justify    	0
+				label      	""
+				pctDist    	0.800000
+				height     	42
+				orientation 	1)
+			    stereotype 	TRUE
+			    line_color 	3342489
+			    quidu      	"37BBFB70031E"
+			    client     	@17
+			    supplier   	@16
+			    line_style 	0)))
+		(object InheritView "" @22
+		    stereotype 	TRUE
+		    line_color 	3342489
+		    quidu      	"37BD38060087"
+		    client     	@10
+		    supplier   	@16
+		    line_style 	0)
+		(object InheritView "" @23
+		    stereotype 	TRUE
+		    line_color 	3342489
+		    quidu      	"37BD38070377"
+		    client     	@16
+		    supplier   	@3
+		    line_style 	0)
+		(object RealizeView "" @24
+		    stereotype 	TRUE
+		    line_color 	3342489
+		    quidu      	"37BD3808017A"
+		    client     	@16
+		    supplier   	@12
+		    line_style 	0)))))

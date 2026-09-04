@@ -1,0 +1,1270 @@
+PWDs: 
+Metric.99
+Scalar.00
+Matrix.99
+Metric104
+
+Best Practices in Docs: 
+Header with Version & Path\Name
+
+
+Best Practices: 
+* für jede unabhängige Dimension in einem Zieldokument 
+  ein eigenes Teildokument erzeugen, damit die n*m Explosion vermieden wird. 
+  Der Mechanismus zur endgültigen Formatierung kann eine Serie (!) von XSLTs sein
+  Ein XSLT pro Dimension! 
+* Man braucht typischerweise in einer Enterprise Application 
+  nur eine einzige Stelle, wo Pooling angewendet wird. 
+  Nur dort wo die Kardinalitäten von Clients & Servern drastisch variieren 
+  oder sehr verschieden sind (obwohl man hier ein festes Multiplexing einführen könnte) 
+  oder Ressourcen besonders knapp sind! 
+  
+* Verwendung von Flag Files zur Transaktionskontrolle: (z.B. für FTP) 
+  statt einfach nur eine .DONE oder .LOCK Datei zu erzeugen, 
+  ist es besser, in die .LOCK Datei einen Timestamp zu schreiben 
+  damit dieser gelesen und nach einem Timeout ignoriert werden kann! 
+* the Possibility to add an Exception to a Log entry should in any Means be used, 
+  even if this means to frighten Operations by Stack Traces.
+  But the Information in this Stack Trace is invaluable. 
+  In GUIs the System Reactions are typically brief 
+  and Logging is only necessary to retrace the Course of Action. 
+  In Server Applications Logging is absolutely indispensible! 
+* when throwing Exceptions in local Routines you may have little Context
+  and when these Exceptions propagate into very high Level Routines, 
+  the Context is lost even more, because the Context stems from other Components! 
+  Whenever an Exception leaves Component Boundaries, 
+  the Component needs to add it's Configuration and State Debug Info! 
+  You need to catch the Exception and add Debugging Information 
+  at an appropriate medium Level 
+  (unfortunately Frameworks with only Interfaces need to add Methods to collect Debug Information!)
+  and separate setting up a Context / constructing an Object Tree
+  from performing Checks and throwing Exceptions 
+  ("throwing Exceptions in Constructors is not good" - Pattern)! 
+  A possible Solution could be the Lazy Initialization Pattern, 
+  which allows to delay Tests, but late Tests lead to lost Context, 
+  so the Origin of false Data cannot be detected! 
+  Better first perform all Construction and then call the isHealthy() Method. 
+  When any Exceptions fly, you have the full Context to debug 
+  and draw Conclusions from! 
+  Passt das zusammen mit funktionaler Programmierung? 
+  Variablen sind final & immutable, nur Parameter können wechseln. 
+  Das sagt aber nichts darüber aus, wann Prüfungen gemacht werden. 
+  
+  Fazit: 
+  Parameter zur Erzeugung von Objekten sollten sofort geprüft werden. 
+  Exceptions, die hier fliegen, MÜSSEN abgefangen und die Exception angereichert werden, 
+  um die Ursachen analysieren und loggen zu können. 
+  Ein Logging beim Funktionseinsprung ist viel zu teuer, 
+  deshalb muß sichergestellt werden, daß die Stack-Informationen (Parameter) 
+  bei der Propagation den Stack hoch zur Exception hinzugefügt werden! 
+  Beim Rethrow der Exception geht leider deren StackTrace verloren, 
+  außer man verwendet Exception-Chaining 
+* Use Prefixes for Grouping Classes & Interfaces, rather than Suffixes, 
+  because IDE Support is based on first Characters 
+  Similarly most Naming Contexts are based on the first Characters, 
+  except for the Domain Naming, which is reversed! 
+* Verwendung von Java System Properties:
+  file.encoding 
+  line.separator 
+  user.???
+* nur in kleinsten Schritten arbeiten, immer Nachvollziehbarkeit und Testbarkeit erhalten
+  so schnell wie möglich Ergebnisse erzielen und diese sichern. 
+  danach kann man anfangen, diese zu verbessern, zu refactoren 
+  und für weitere Schritte vorzubereiten. 
+* ebenso in der Projektplanung: stets die Kontrolle behalten,
+  nur kleine Schritte machen
+  nicht das schon erreichte wieder verlieren. 
+  
+* weniger direkt editieren, sondern alles nur vernetzen, durch eindeutige IDs und Auswahllisten. 
+* Modellierung: 
+	UML ist gut für... 
+	die Darstellung von Beziehungen und Abhängigkeiten von Klassen und Paketen 
+	nebenläufige Prozesse 
+	UML ist schlecht für... 
+	Use Cases, weil ein Großteil der Information doch wieder nur 
+	mehr oder weniger in Dokumenten steht. 
+	Sequenz-Diagramme: hier besser Call Graphen verwenden! 
+	
+* Extreme / Pairwise Programming vorschlagen
+	Code zentrierte Entwicklung vorschlagen,
+	d.h. Doku und Hilfe wird aus dem Code erzeugt,
+	und Test Methoden werden im Code hinterlegt.
+	Dazu müssen Kommentare strukturiert
+	(und diese Struktur möglichst durch einen Compiler verifiziert) werden.
+* komplexe Return Values (z.B. float[]) von statischen Methoden 
+  immer als ByRef Parameter übergeben lassen 
+  (Wiederverwendung) aber auch 'null' erlauben und dann selbst allozieren! 
+  Daneben auch immer eine Methode geben, die diesen Parameter auf null defaulted, 
+  dann hat man alles beisammen und trotzdem eine gut lesbare Syntax. 
+  Diesen Return Parameter immer als ersten mitgeben, 
+  damit Konsistenz in der Reihenfolge zu den xxxAt() Methoden gegeben ist. 
+* get Methoden in C# und VB dürfen nie Berechnungen triggern (Werden im Debug angezeigt!)
+* WHILE Schleifen durch ebenso schnelle (schnellere) FOR Schleifen ersetzen
+  und Schleifenvariable lokal machen!!! => keine versehentliche Wiederverwendung!
+* lokale Variablen und Parameter als final deklarieren! => schneller & sicherer
+  nicht überschreibbare Methoden final deklarieren (schneller) 
+* Declare immutable Member Variables as final and initialize them in the Constructor! 
+  Java Compiler can enforce this! 
+* Don't create immutable Interfaces for immutable Objects
+  and don't derive the immutable Methods directly from mutable Methods!
+  but the Distinction would proliferate the Classes.
+  add(arg) = copy().addAt(arg) //makes it automatically mutable 
+  addAt() = copyAt(add(arg)) //creates an unnecessary copy 
+  add(arg) is primarily immutable 
+  a later Implementation using addAt() and copy() can be added later! 
+  To reduce Casts the Return Types are always the Subtypes! 
+  To reduce Proliferation all ...At() Routines throw ReadOnlyExceptions! 
+  To increase Performance perform all Updates in Bulk Mode 
+  and switch to Read Only Representations afterwards. 
+*In Java the following is allowed for Implementations of Interface Methods :
+-Exceptions declared in the Interface needn't be throw or declared in the Implementation
+-The Return Type may be a Subclass of the Interface Return Type
+-The Parameters may be Parent Types of the Interface Parameters
+Optimizations are only realized when Polymorphism is NOT used, but explicit Classes!
+* 
+
+/////////////////////////////////////////////////////////////////////////////////////////
+TODOs: 
+* (Default-) Iterator Interface aus Container entfernen, ist sowieso schon überladen. 
+* Red-Black Tree bauen und Rotation als kommutativität implementieren. 
+* Transitive Reduction instead of Transitive Closure: 
+  Heuristic Algorithm: 
+  replace each strongly connected Component by a Cycle 
+  and each Reference to an Element of the Cycle by a Reference to the Cycle Representor 
+  (choose the Representor as the one which minimizes the Path length to the actual Target within the Cycle) 
+* Reducing a DAG: 
+  replace each direct Connection with an indirect one. 
+* 1 Table Functions: Sort, Reorder Cols, Filter, Group By
+* Separator-Parser, der Escaping erkennt und Filter, der tolerant mit CR/LF umgeht, 
+  d.h. \n\ wird korrekt als NewLine aber nicht als Trennung angesehen!
+* toleranten XML Parser schreiben und damit SAX Events erzeugen 
+* einen SAX Filter schreiben, der tolerant fehlende closing Tags erzeugt. 
+* mit Hilfe eines SAX Writers ein korrekt formatiertes XML Dokument erzeugen. (XML Tidy) 
+	dann mit Hilfe von Office o.ä. HTML Dokumente schreiben 
+	und als Tree oder MindMap oder Projektplan anzeigen. 
+	ebenso ist es möglich, diese als einfache ASCII Dateien mit Indenting zu verwenden (ohne CRLFs)! 
+	Problem hier: die Hx Elemente sind NICHT genested!!! 
+	Alternativ kann das HTML Dokument gefiltert gespeichert und mit HTML-Tidy bearbeitet werden. 
+	Anschließend genügt ein XSLT für die Umwandlung in XML, TXT und SVG! 
+* Stream von Chars => Stream von Tokens mit Strings => Stream von Objekten & Graphen (mit Nulls)
+* So etwas wie Brain, aber mit Nachverfolgung der Häufigkeit der Navigation 
+  => neue Assoziationen! 
+  Vielleicht neue Version vom Brain? 
+* Serialisierung eines Objektbaumes durch Schreiben von Java Code: 
+  return new Obj1(2, "Hello", new Obj2("World")); 
+  Alternativ: 
+  Obj1 obj1 = new Obj1; 
+  Obj1 obj2 = new Obj2; 
+  obj1.setInt(2); 
+  obj1.setStr("Hello"); 
+  obj1.setObj(obj2); 
+  obj2.setStr("World); 
+  Dieser Code wird in eine Dummy Java Klasse gespeichert, 
+  compiliert und ausgeführt. 
+* Die Äquivalenz folgender Konstrukte ist evident, aber programmatisch nicht: 
+  Strings mit nur Leerzeichen ('trim' anwenden)
+  Strings der Länge 0 
+  'null' in DB und Objektmodell (toString sollte "" ergeben) 
+  fehlender Record (null mit outer Join, bzw. Ergänzung mit leeren Feldern gleicher Länge
+  	null sollte bei Update automatisch neu erzeugt werden!
+  	Zum Löschen sollte eine Garbage Collection oder Historisierung einsetzen
+  	physische Löschung ist nicht mehr zeitgemäß, 
+  	das Problem ist nur die Reaktivierung.) 
+* Use the Copy on Write Pattern for Constant Objects! 
+  The Immutable Proxy allows the Copy to happen transparently!!! 
+  The Client doesn't have to, but can replace the original Object 
+  (which improves Performance again by avoiding the Delegation)!!!
+  So a Combination of Proxy, Immutable and Copy on Write can allow 
+  for optimum Performance of Client Use! 
+* Da Tokenizer oft so verwendet werden, 
+  daß sie eine Grammatik mit festen Kardinalitäten parsen, 
+  ist eine Methode nextToken(tokenTyp) praktisch, 
+  die alle anderen Tokens überliest (und damit auch diese Zeichen unescaped erlaubt). 
+* Fix ConjuGrad1Minimizer 
+* Ausgliederung der Line Minimization aus ConjuGradMinimizer und ConjuGrad1Minimizer, 
+  damit diese in Kombination verwendet werden können. 
+* Füllen einer Klassenhierarchie (aus konkreten Klassen oder über eine Factory)
+  aus einem XML SAX Stream. 
+* Sintflut- Algorithmus verwenden: 
+  * feste Anzahl von (aktiven) Agenten werden bei niedrigem Pegelstand verteilt. 
+  * Der Wasserpegel steigt auf die Höhe des niedrigsten Agenten. 
+  * alle bewegen sich zufällig (oder gemäß der maximum Descent Methode aufwärts). 
+    Leute in oder unter Wasser müssen sich aufwärts bewegen oder 'schwimmen' 
+    und sich ein neues Terrain oberhalb des Wassers suchen 
+    (im Def.Bereich oder auch expandierend vom Schwerpunkt nach außen) 
+  * da die Anzahl der Agenten konstant bleibt, ist die Rechenleistung begrenzt
+    und bestimmt die Größenordnung der Neu-Versuche. 
+    Durch den globalen Wasserstand werden unabhängige Maximierungs-Versuche 
+    miteinander koordiniert. Die Koordination könnte erhöht werden, 
+    indem man vermeidet, daß zwei Agenten dieselbe Landmasse erkunden, 
+    aber das ist 
+    1. zu aufwendig und 
+    2. zerfällt eine Landmasse mit steigendem Wasser typischerweise in mehrere
+* NetzGraphen ("Radar-Chart")
+  Diese Graphen sind am Besten bei absoluten Skalen verwendbar, 
+  da die Fläche (bei gleich vielen Achsen) im Grenzfall vieler Dimensionen 
+  proportional zum Anteil der jeweiligen Dimension ist: 
+  dA = dAlpha*(r1²+r2²)/2
+  Im 4-dim. Fall ist der Unterschied recht groß: 
+  A = x*y + y*u + u*v + v*x = (x+u)*(y+v) 
+  Weiterhin kann ein lokales Radar Chart Feld 
+  sogar als Ersatz für ein Vektorfeld verwendet werden, 
+  wenn die Anzahl der Dimensionen stark steigt! 
+* Greedy Algorithm which filters that (present or past) Outlier 
+  that mostly reduces Overall Variance at any given Time
+* Copy on Write bei allen Cxxx Klassen einführen, 
+  statt bei copyAt, addAt etc. Exceptions zu werfen! 
+  z.B. CGroup, CGroupM, CRing etc. 
+* Bei alle Array Methoden die Reihenfolge von start und stop umkehren. 
+  Idee dahinter: 
+  start defaultet auf 0 und ist am unwichtigsten 
+  stop defaultet auf arr.length und ist ggf. ebenfalls unnötig 
+* Intervallrechnung mit fuzzy Zahlen 
+  keine Objekte wenn nicht notwendig, besser auf reelle Zahlen beschränken, 
+  z.B. ComplexDbl statt Complex, was viel zu aufwendig ist
+  oder FuzzyNumber statt IntervallA oder IntervallB! 
+* 3D Grafik hat den zusätzlichen Freiheitsgrad der Rotation um die Sicht-(z-)Achse. 
+  Diese kann zur besseren Orientierung immer so gehalten werden, 
+  dass die z-Achse des Urbilds senkrecht bleibt! 
+* Particle Engine mit variabler Geometrie bauen...
+* Texturen auf (relativ) flache, planparallele Ebene mappen (einfach & schnell) 
+  für Landschaften 
+* Multipass Mapping mit alpha Faktor 
+* Nebel mit Abstandsfunktion 
+* verdeckte Flächen mit Hilfe von z-Werten zu den Lichtquellen; 
+  Eine (ganze, zur Einfachheit) Fläche ist im Schatten, 
+  wenn der Lichtstrahl von der Lichtquelle zur Flächenmitte 
+  einen Schnittpunkt mit einer anderen Fläche näher zur Lichtquelle hat. 
+  Dies ist ein O(N²) Algorithmus! 
+  Problem: diese sind nicht "dicht" genug, so dass ein Diskretisierungsfehler entsteht! 
+* ANT Tasks ausprobieren zur Generierung von Metriken & Dependency Analysen! 
+* bei allen binären Operationen mit unbekanntem Operand einfach die Operation umkehren: 
+	a.add(b) = b.add(a) (kommutativ)
+	a.grtr(b) = b.lessEq(a) (nicht kommut.)
+	etc. 
+* Call Graphen mit Hilfe von Logging: 
+	Einrücken oder Call Tiefe mitloggen, 
+	ggf. sogar analog zu Sequenz-Diagrammen Pfeile 
+	oder Collaboration Diagramme erzeugen. 
+	Sequenzen kollabieren (dazu DB erzeugen!)
+	Ggf. auch aus Stack Traces an tiefsten Stellen 
+	solche Call Graphen erzeugen!
+* alle Point2D Verweise ändern auf short[]; 
+ die spart Platz und erlaubt viele Interpretationen für ein Polygon: 
+ a) direkt die Punkte, welche zu zeichnen sind: 
+ b) Indizes zu den Punkten, 
+ c) mit Information über den Abstand (z-Komponente) z.B. für Nebel 
+ d) mit Farbinfo 1-dim oder 
+ e) mit Farbinfo 3-dim und ggf. Transparenz 
+ f) mit relativen Koordinaten (u, v) für eine Textur 
+ g) mit den Cosinussen der Punkt-Normalen und der/den Lichtquelle(n) (Gouraud Shading)
+ g) mit den Punkt-Normalen (Phong Shading)
+ 
+ die Polygone können gleich ausgewertet werden: 
+ - berücksichtigen der Orientierung 
+ - Interpolation der Farbe und Callback eines Farbalgorithmus (Textur, Phong-Shading) 
+ - z-Ordnung der Polygone für Nebel, Ambience und Reihenfolge
+ - Schattierung 
+ 
+ andererseits hätte man auch Point2D erweitern können um diese Elemente 
+ (z-Koord, Farbe, rel. Koord. etc.) einzuführen, 
+ aber dann würde man sich nicht mehr auf der Basis von Standard Typen bewegen
+ und jede Erweiterung macht eine Klassenerweiterung notwendig. 
+ 
+* Flächen und Punktnormalen wie in testMathGraph3.drawBody3D 
+* Punkte, Linien und Flächen als Stream von int[][] einheitlich zeichnen
+* 2D Bitmap Grafiken als Stream von 2D Punkten mit Farbe(1 Punkt = 2 int Koords + 1 int Color) 
+* 2D Punkt Grafiken als Stream von 2D Punkten (1 Punkt = 2 int Koords)
+* 2D Vector Grafiken als Stream von 2D Vektoren (2 Punkte = 2 * 2 int Koords)
+* 2D Flächen Grafiken als geordneter Stream von 2D Dreiecken (3 Punkte = 3 * 2 int Koords)
+* 
+* Gemalt wird auf eine passive Canvas, die ein Repaint erlaubt. 
+* 
+* Interpolation erfolgt automatisch wenn die Farben gegeben und unterschiedlich sind. 
+* 
+* 3D Grafiken werden erst auf 2D transformiert und dann gestreamed. 
+* Der Trafo ist ebenfalls ein Filter mit Koordinaten. 
+* Der Fluss wird durch das High Level Programm gesteuert. 
+* Koordinaten werden ByVal, d.h. als Primitives übergeben; das ist zwar langsamer, 
+* aber unabhängig von der Darstellung (Array etc.), so dass mehr Darstellungen möglich sind. 
+* Zur Optimierung können hier auch pluggable Filter verwendet werden. 
+* Die Koordinaten werden vom steuernden Programm ermittelt und übergeben, 
+* so dass dieses seine eigene Verwaltung haben kann. 
+* 
+* Rationale Funktionen weitgehend wie Brüche behandeln! 
+* Funktionen und einfache Zahlen ebenfalls addierbar machen per Kommutativgesetz! 
+* Ist cjgAt immer noch zweckmäßig in IBody oder besser erst in IComplex? 
+  Muss man das und Zeilen bzw. Spaltenvektoren durch Flags kennzeichnen 
+  oder kann das automatisch entschieden werden? 
+  
+* Iteratoren für AdjList und HashSet sind tatsächlich verkettete Iteratoren, 
+  die abgeflacht (flatten) werden. 
+* ...At() Operationen neu definieren: KÖNNEN das alte Element zurückliefern
+ => stets am Anfang der Zeile ein Assignment! 
+ => Lösung für Problem von Operationen mit gemischten Körpern: Kommutativität ausnutzen! 
+  copy().addAt() == add()
+* Shift und CarryOver Operation nachträglich 
+  zur eigentlichen Addition oder Mult. durchführen => weniger Stellen brauchbar, 
+  aber Parameter nur während des Aufrufes relevant (nicht verpointert!) 
+  und Modulus nur am Polynom und konst. 
+* Beschreibung eines Netzes (XML, Tabelle, etc) in SVG mit std. Icons => automatische Berechnung und SVG 
+(oder einfacher als dyn. Graphik?)
+* Properties Files als ResultSets, ResultSets in HashMaps
+* HashMaps in Properties und SAX Attributes
+* recode some Test Cases for math Functions as Unit Tests 
+	with relational Data
+* DB Joins with Containers and with Streams
+  Use of Index Files with ResultSetFix 
+  (with ResultSetSep index absolute Positions!)
+  Reading Header-(File-)s for ResultSetFix (integrated or not?)
+  Create a small Routine to quickly check the Consistency of a Fix File e.g. after Editing.
+* Dokument-Typ-Hierarchien: 
+	Texte & Dokumentationen
+	Einfache Listen (ToDos und Termine) 
+	strukturierte Tabellen 
+	relational verknüpfte Tabellen
+* Einführung von Formatierungs- und anderen Sprachen
+  erfordert stets auch einen entsprechenden Parser,
+  was sich erst lohnt, wenn eine kritische Masse überschritten wird.
+  Zwischenstufen sind:
+  * Daten-Dateien (nur für die einfachsten Formate nicht XML)
+  * Inline Daten und Konstanten im Code (generiert oder handgeschrieben), schnell 
+  * XML Sprachen (kann UNICODE, XSL, und spart den Parser, 
+    da ein SAX Parser insbes. für lineare Abläufe extrem einfach ist!!!)
+  * interpretierte Sprachen, die dann auch dynamisch generierten Code ausführen können. 
+    Python ist hier sehr stark, aber auch VisualBasic. 
+* Logging sollte auf verschiedenen Dimensionen erfolgen
+	basierend auf Schweregrad
+	basierend auf Funktion 
+	(hier könnten verschiedene abschaltbare Destinations verwendet werden. 
+	 Problem hier ist nur das Mergen getrennter Dateien, das komplexer ist!)
+	grep, sort und merge bieten schon auf Unix Script Ebene 
+	elementare DB-Ops auf strukturierten Textdateien 
+* Umstellung der Polyeder auf ResultSets
+* Apache Projekte ansehen 
+* in Linux einarbeiten 
+* Regular Expressions: (\S*) is a single Word
+* Volumenfunktion durch (parallel projizierte) Voxel 
+	und halbtransparente Farben darstellen (zuerst vielleicht Menger Schwamm?)
+	Als Hilfsmittel sollten Schnittebenen (boolesche Funktionen, damit verknüpfbar) 
+	durch das Bildfeld gelegt werden können
+* ArrayIterator erweitern um int BeginIndex und int EndIndex, 
+	analog zu java.text.CharacterIterator, macht ihn flexibler! 
+* Statt Mehrfachvererbung im FactWeb besser Rollen-Objekte, 
+	welche sowohl das Interface implementieren
+	als auch Slots für die Daten enthalten! 
+	(Komposition statt Vererbung, 
+	dieses Problem gibt es also sogar in der reinen Datenhaltung!) 
+	Dies ist ein bischen so wie bei COM das Extension Interface Design Pattern: 
+	Beim Wechsel des Interfaces muss die Instanz neu abgerufen werden (Cast => neue Variable). 
+* add helper Tables to any relational System: 
+	-reflective Descriptions of Relationships 
+	-free Form Relations to any Entity 
+	(what about IDs? prepend Table or Schema Names?)
+* add painting Edges with Edge Names and possibly different Colors. 
+* variable Länge Attribute und Texte könnten auch in extra Dateien oder 
+ in einer CRLF separierten Datei gespeichert werden, 
+ sogar mit der ID als Primary Key und entsprechenden Dateinamen
+* Datenmodell für explizite Relationen in einer Ontologie 
+  und schneller und auch generischer Qualifizierung (mit Access?)! 
+* Auch das WordNet ist nicht redundanzfrei! (AntoNym etc.)
+
+Meine Anforderungen an ein Knowledge Management:
+* Prog Sprachunabhängig
+* Plattformunabhängig (unicode)
+* DB unabhängig (auch FlatFile)
+* XML (de-)serialisierbar.
+* für Menschen lesbar 
+* selbst entwickelt
+* Mit AppServer verwendbar (Persistenz, Entity Beans aus AppServer)
+*
+* XSLT verwenden, um RDF zu queryen? ist ja rekursiv! 
+  aber es ist nicht effektiv bei der Breitensuche (branch & bound) 
+  und stirbt wahrscheinlich bei Rekursionen (Zyklen)!!! 
+  Statt dessen J2EE mit EJB 2.0 für CMR 
+  wegen der großen Menge an Lightweight Objects, 
+  die aber im RAM gecached werden müssten. 
+  Branch & Bound kann auch die Wege addieren 
+  (= Wahrscheinlichkeiten multiplizieren bei log. Darstellung)
+  und bei zu langen (i.e. unwahrscheinlichen) Wegen abbrechen (Priority Queue) 
+* Layer um explizite Relationen in DBs auf RDF zu mappen. 
+	auch umgekehrt, um RDF auf explizite Relationen in DBs zu mappen. 
+	(viele Felder müssen dazu (temporär) null enthalten dürfen. 
+* Graphen per Reflection (nur RAM) erzeugen 
+  bzw. anhand der Relationen in einer persistenten DB oder einem XML Dokument. 
+* Am besten die Graphen auf ein Array mappen und per HashTable zurückmappen. 
+* Problem: a (closed) Polygon has more Information 
+  than a Wire Model, because of the (directed) Planes it defines. 
+  So a Set of Polygons can be translated into an AdjList 
+  but not vice versa! 
+* To save Painting WireFrame Edges from Polygons twice, 
+  only Edges from smaller to higher Points are painted. 
+  The same can be applied to the Translation from Planes to AdjList. 
+* Analogous to Frame2DMap build a Frame3DMap that allows to edit 3D Wire Models. 
+
+* Use the Assert Class for all Test Methods to speed up skipping Testing at Runtime.
+
+* verschiedene Parsing Protokolle: 
+	nextItem() liefert nur den Level, currItem() den Inhalt 
+	nextItem() liefert abwechselnd Level und Inhalt, currItem() dasselbe, nicht so schnell!!! 
+	nextItem(String sep) nimmt den nächsten Separator als Parameter 
+
+* Streams should better always return Objects in Place (...At)
+  and reusing Container Objects between nextItem() Calls
+  instead of creating new Objects each time.
+  When Copies are necessary (and you cannot free or hand them back directly (or delayed) to the Beginning of the Stream)
+  a CopyFilter should be inserted into the Stream.
+* Still open is the Question, when Input Streams should be reset()
+  and when it is valid (and possible) to reset them.
+  Not resetting results in stateful Work.
+  Clearly reset() is always valid, if the Stream has never been used,
+  i.e. nextItem() was never called or if it was just reset().
+  This could be achieved by testing in AStreamIn.reset() whether it is already/still reset().
+  The desired Behavior can be determined by the Client:
+  if the Server should go on from the current Position, call mark(),
+  if the Server should start from the Beginning, don't and the Server will call reset().
+  This also could enforce the Introduction of a Counter for the Position
+  which would allow for (at least forward) positioning using reset(Position).
+  In this Case, reset() could nearly always be called, ensuring a consistent use
+  (apart from Multiuse, especially in concurrent Threads)
+
+
+* Validation, Tests, 1Field Plausis, Testing Framework & Assertions
+	Date Validations? Module? year, month, day etc.
+* Dialoge mit Variablen und ggf. Validierungen
+* Code Metriken durch Parser
+  Scanner vorschalten für Sprachen, die keine einzelnen Keywords { oder } haben.
+  Scanner wandeln Befehlsworte in Tokens um! Tokentypen können zahlreich werden.
+  Metrics are not affected by spurious Misinterpretations!
+  C, C++, C# and Java are easy to destructure because their Blocks are clear!
+  Interesting are:
+  # SubPackages per Package
+  # Packages
+  # Modules per Package
+  # File
+  # Classes per File
+  # Methods per Class
+  # Control Structures per Method
+  # maximum Nestings (per Method )
+  # Commands / Rows per Control Structure
+  Amount of Comment per Code
+  Redundancy of Comments.
+  Complexity of Methods
+* Lexikalische Analyse von Code z.B. für Statistiken: 
+	noch kein Parser (keine Grammatikprüfung oder LL(1) Umsetzung in Syntaxbaum) 
+	ein (nicht hierarchischer) Scanner (trennt Tokens voneinander) 
+	ein Tokenizer (1 Zeichen pro syntaktischem Element)
+	ein hierarchischer Analyzer 
+	ein Parser (Grammatik in Baum)
+	=> 	Hierarchie von Code Block Größen
+		Tiefe und Größe der Blöcke 
+		Hash-Codes für Code-Zeilen => lexikalischer Vergleich 
+
+* J2EE definiert Collections zur Navigation zwischen Objekten
+* Iteratoren über spezielle Attribute von Records definieren,
+  die über einen Iterator geliefert werden
+  (z.B. eine addAt() Methode für eine Spalte eines ResultSets)
+* XML Elemente für Aspekte sollten die Metadaten als Attribute enthalten:
+	<Vorname Type="String" Mandatory="true" Mode="readOnly" MinLength="20" RegExp="">Matthias</Vorname>
+	Dies ist konform zur Tatsache, primitive Werte durch Attribute zu ersetzen.
+* Zusammenführen der Ideen:
+	Aspekte mit Properties nach Namen, 
+	Entity Beans mit dynamischem Laden und Speichern, sowie Navigation nach Relationen
+	Knowledge-Basierten Systemen mit
+
+* Equivalences of null:
+  0 as Summand and Factor, empty Container, DevNull,
+* All arithmetic Classes should treat 'null' uniformly as 0 resp. the empty Set.
+  This could speed up some Calculations considerably.
+
+* Graphen nach zusammenhängenden Teilgraphen reduzieren!
+* Add Support for automatic Transactions on Write Operations
+  in HierarchyAspect and ReflectAble, including...
+  - automatically creating a Copy on the first write,
+  - validating all Changes on closing the Transaction,
+  - rolling back on Failure and
+  - updating all Subscribers (and destroying the Backup Copy) on Success
+* Callback und Event Loops sollten ALLE Exceptions abfangen
+und statt dessen Message Boxen anzeigen!
+* Framework Methoden erst dann auslagern, wenn sie ausreichend getestet wurden.
+  das ständige Schließen aller Projekte und Neucompilierung kosten viel Zeit!
+  Frameworks müssen innerhalb eines Projektes entwickelt werden,
+  nicht vorher und nicht nachher, da sie sonst nicht brauchbar sind.
+  Dies deckt sich auch mit der Anforderung erst nach der 3. Wiederverwendung
+  eine Vereinheitlichung zu entwickeln.
+  Refactoring ist eine explizite Tätigkeit!
+*
+
+* Rename all Methods that change and returns this Object to ...At()
+* All the Interfaces and Classes required for a GUI are already in the Java Bean Framework:
+  UniCaster and MultiCaster Interfaces (add-/remove-Listener) also for Vetos
+  Interfaces for Listeners also for Vetos (any Listener can veto?)
+  set/get Methods for Arrays and individual Values (also of Arrays)
+  In Forte all these Features can be used!
+* return the old Value in all set... Methods!
+  Unfortunately Forte IDE doesn't recognize them as Bean Methods anymore
+* Read-Only Objekte ebenfalls unterstützen, zumindest für integer und Bond
+  (für diskrete Enums) (zunächst KEINE ...At Routinen)
+* asynchrone Aufrufe und Futures... zusammen mit Locks
+* move Assert, Log and BaseException to Tools Package...
+* Funktionen und Ausdrücke umstellen auf das Beispiel in .NET,
+  wo auch nach Funktionen abgeleitet werden kann!
+* IFloatFunction auch in Ausdrücken (Sum, Prod, Quot, Diff, Cat etc.) implementieren
+* Methoden in VectorFloat und VectorDouble toleranter machen gegen Dimension Mismatch.
+  Dann kann man auch die Dimensionen mit 0 Werten weglassen!
+  Das 0 Element hat den Vorteil, sowohl bei Addition neutral
+  als auch bei Multiplikation ein definiertes Ergebnis zu erzeugen.
+* Fourier Trafo und Wavelet Trafo sind rekursiv anwendbar.
+* 'contains' und 'between' zusammenlegen.
+
+* Fuzzy Logic: 
+  linguistic Variables: enumerated Values defined on a certain Range (of a Scalar) 
+  like cool, warm, hot on Temperature
+  fuzzy Sets with Operations like join (Minimum), union (Maximum)
+
+* Normalization results in uniform Operations 
+  and the Possibility of the equals() Operation. 
+  For complex Operations it doesn't pay off, to normalize the Format.
+  Instead the Operations can be left unnormalized 
+  and evaluated only when needed, just like with Functions. 
+
+* Interpreter Pattern:
+Use Classes for each Expression Type, give it the first() Tester Function
+and delegate Parsing to them. Do that in C# first.
+See the PPT for that.
+works on a recursive Expression Tree Structure for a formal Language.
+can have Operations for evaluating or transforming the Structure.
+Examples are:
+NormalForm : normalizing the Form, so Comparisons are possible, e.g. for algebraic Expressions.
+	for boolean Expressions: alternative or conjunctive Normal Form
+	for algebraic Expressions: additive Normal Form with ordered Terms!
+		all commutative Expressions have to be ordered so their Order is defined and direct Comparison is possible!
+evaluate: calculate the Value
+derivative: create the Derivative
+inverse: create the Inverse
+
+Der Aufbau des Ausdrucksbaumes kann generell
+vom Parsen des Ausdrucks getrennt werden
+durch das Builder Pattern.
+Er kann weiterhin direkt durch Erzeugung generiert werden.
+Alternativ kann er direkt zur Run-Time im Ram erzeugt werden 
+durch Overloading von Operatoren in C++ und C#
+
+(R, +, *) sind die bekannten algebraischen Operationen
+(R, +, Max) und (R, +, Min) erfüllen die Distributivgesetze
+({0,1}, AND, OR, NOT) erfüllen die Booleschen Gesetze (Idempotenz, Distributive),
+ebenso wie ([0,1], Min, Max, 1-x)
+und wie ({-1, 0, +1}, Min, Max, -)
+
+This is an essential Part of my work:
+to tear apart the implicit Coupling of Algorithms and Data Types / Format. 
+Templates help...
+
+With functional rich Objects (like real Numbers), 
+a Break Even Point between functional (Operate on Objects)
+and OO Programming (have the Object operate) has to be found
+to avoid too rich Objects (too many Methods) on one Hand
+and too loosely tied Function Libraries on the other Hand
+and still allow for Optimizations / Polymorphism.
+The Break Even Point is reached,
+when all abstract Methods are implemented
+and the generic Methods can not likely be optimized.
+A good Example are mathematical Functions,
+which are stateless, usually cannot be optimized (except for built in Functions)
+and have a Structure of their own (Derivative etc,)
+* One Task of OO-D is to build intuitive Objects 
+  to reduce Time to Understanding and Programming 
+
+* Objects with too many Methods are not good (they are hard to understand and to use)
+* Objects with too few  Methods are not good (these tend to be Data Containers
+	or lead to Class Proliferation due to too fine Granularity)
+* Objects with inconsistent Methods are the worst
+	meaning Methods that are totally unrelated
+	Methods that break each other's Functionality
+		like e.g. adding Container Methods to Relation by deriving Relation from HashContainer
+		synchronizing two Objects working on the same Data is a dangerous Alternative
+
+
+
+* IDEs have moved to offer the Code in a List View of Methods
+or even a hierarchical View of Classes and Methods.
+Visual Studio .NET adds the Possibility of handling this Hierarchy
+directly in the Editor without an additional Window.
+Another good Feature is the Possibility to define #region <Name> #endregion
+in the Code (as a Preprocessor Directive) and to (un-)fold this Section.
+
+Another nice Feature would be to list all the Method Calls within one Class
+(or to external Classes, i.e. grouped by Class (or Instance?))
+to make the static Call Structure visible.
+
+* consider the Circle and Ellipse Inheritance Problem
+2) Circle is a special Case of Ellipse: rx = ry = r
+1) Ellipse has more Data: rx and ry or r, eccentricity and Angle
+
+
+* consider orthogonal linear Systems:
+2D Vectors: dual discrete Systems:
+	Separation of Center of Mass and relative Coordinates
+	Sum and Diff (Symmetric and Antisymmetric)
+	Bosons and Fermions 
+3D Vectors: ternary Systems:
+	RGB, CMY and HSC
+4D Vectors: quaternary Systems ???
+nD Vectors: infinite Systems:
+	Polynoms, FFT and Wavelet Transforms
+	Polynoms are a bad Function base,
+		because they are not limited and numerically unstable.
+		They are only easy to handle for Addition, Multiplication, Differentiation and Integration!
+
+Addition, Subtraction, Differentiation and Integration are easy to handle in Sum Form
+Multiplication, Division and Evaluation is numerically more stable in Product Form (x-x0)(x-x1)()...
+
+
+Many n-dim. Structures can be factored into Component Dimensions, 
+and it is unclear which Factor to choose first:
+Matrices are Vectors of Vectors
+* Ternary Sets can be modeled as Sets of boolean Values
+  or as two Sets: a True Set and a False Set.
+* The first Solution is faster in Queries,
+  because Elements need to be searched only once.
+* But if you don't want the full Information and only the Verification
+  or Falsification of a single Fact, the second is faster.
+
+* Represent Matrices  and higher Tensors  with an Interface  wrapped around 1Dim Arrays.
+  This is possible due  to the large and unfragmented Memory Models 
+  available on modern Computers. An Advantage is to be able to quickly change  the
+Addressing Scheme on the Array to transpose it for e.g. multidimensional Fourier
+Transformation or  Matrix Multiplication.  Additionally this  Indirection can be
+sped up by creating Vectors of Indices for reuse and by inlining the Calculation
+Schema for different fixed Dimensions. This is still more ordered than in Memory
+addressing via Pointers, because the Position of the Elements can be calculated.
+Additional  Benefit  is  to  enable  standard  Algorithms  on  special,  Storage
+efficient Structures for symmetric, antisymmetric, sparse and Diagonal Matrices.
+
+
+Relations and Functions:
+The Container already implements the Set Interface, but it open to misuse!
+The Set Class is a Container without Set Operations.
+It must implement the Boole Interface.
+
+TODO: the Storage Mechanism in 'Relation' is not implemented at all yet!
+It just compiles!
+A HashMap can be used to implement both Functions and Relations.
+A Function is a special Case of Relation that
+-either throws an Exception when adding a second Value for the same Key
+-or overwrites the fist Value with the second Value.
+However when
+-many Values are added to each Key (Length of the linked List)
+ the Load Factor can compensate for this, but this results in
+ large Hash Tables with many empty Buckets and some pretty full Buckets.
+-the HashFunction is not good (Keys tend to have the same Hash)
+-and very often you want the whole Result Set returned for a Key
+it is ineffective to
+-store all Values for the same Key
+-and to assemble the Result Set for the Key over and over again
+
+Thus it is more appropriate to define a separate Mechanism
+for storing Relations!
+The same holds true for a Bag, which only counts the Items in a Container.
+
+Bei den C# Expressions kann simplify() noch wesentlich verbessert werden,
+um übliche Vereinfachungen (a - a == 0 etc.) zu realisieren.
+
+Boolesche Operationen (Mengenoperationen) können definiert werden auf:
+Bits
+Mengen (endliche und unendliche, also Streams)
+Mengen von Bits (BitVektoren)
+Intervallen
+
+Normalformen sind wichtig z.B. für Intervalle
+Bei Intervallen kann man die Ordnungsrelation und sogar Metriken einsetzen,
+um Überschneidungen zu finden und zu testen.
+
+Interessant:
+Statt die Verkettung über eine ConCat Funktion darzustellen,
+könnte man sie auch implizit über den Konstruktor einer (sonst konstanten)
+Funktion darstellen, was die Syntax ähnlicher machen würde.
+Dazu müßte aber jede Funktion grundsätzlich von Cat abgeleitet sein.:
+new Sin(new x() * new y());
+
+Variablen können as spezielle Funktionen ohne Argument dargestellt werden
+(z.B. auch Zufallsfunktionen).
+Dies erlaubt auch die Darstellung von partiellen und sogar Funktional-Ableitungen!
+Allerdings wird dadurch die Auswertung der Funktion umgekehrt,
+indem zunächst alle Variablen mit Werten belegt
+und dann die Auswertung ohne Argument durchgeführt wird,
+was aber durch eine generische Funktion durchgeführt werden kann,
+die einen Term und einen Wert bekommt.
+
+Die Darstellung von Variablen als Objekten in einem Ausdruck
+ist aber generell sehr mächtig!
+
+What to do?
+
+* Parser für boolesche und mathematische Ausdrücke direkt aus Compiler verwenden
+und so Syntax Bäume aufbauen (nur in C++ und C# möglich):
+A+B : + Operation überladen, so daß sie einen Teilbaum mit den beiden Operanden zurückliefert.
+(A+B)*B: + und * überladen
+A|B und A&B überladen.
+Genau das habe ich ja schon mit den Operationsklassen in Java gemacht,
+nur daß sich die Operatoren nicht überladen ließen.
+Und in C++ war das Debugging zu schwierig!
+
+So können zur Laufzeit neue Bäume angehängt werden,
+indem man sie durch einen Compiler jagt
+und die entstehenden Klassen dynamisch hinzulädt.
+Damit spart man sich den Parser.
+Aber ein LL(1) Parser ist auch nicht so schwer!
+
+Das Trennzeichen für 1Dim. Daten kann variabel sein,
+wenn man vereinbart, daß es das allererste Zeichen im Stream ist!
+
+Senseless acts of arbitrary Violence ("I felt like destroying something beautiful")
+
+verschiedene Constructor Strategien:
+1) newInstance() + Reader übergeben (
+	Top Down,
+	Problem: programmiert, public empty Constructor)
+2) Reflection: Konstruktor und Objekt[] (
+	umgekehrte Reihenfolge: Bottom-up, aber sicher!
+	Problem: Serialisierung
+	)
+3) Reflection: generisch, aber unsicher (Feldzugriff!)
+
+ToDo:
+Prädikatenlogik als Erweiterung der Booleschen Logik:
+Prädikate sind boolesche Funktionen mit n Parametern
+Allquantor und Existenzquantor sind definiert.
+
+	Adaptoren / Treiber für JDBC über Dateien
+	Adaptoren für Collection
+	Adapter zwischen JDBC java.sql.ResultSet und Container
+
+* Consistently use the Assert Methods for writing the Test Routines!
+
+* Singularities are not physical and can/must be treated as Errors!
+	thus the projective Model is appropriate
+	and if Singularities / Degenerate Eigenvalues happen,
+	introducing a slight Mismatch or Noise may resolve the Problem!
+
+* Standard java.util.Container Klassen mit Adaptern an mein Modell anpassen.
+
+* Replace all Vectors used by ArrayList, because that is not synchronized and thus faster.
+
+* The Control on the Depth of addItem(), addItems() and addAt() is not clear yet.
+  A consistent Concept together with copyAt() and a variable Depth has to be defined,
+  that is also used in the Constructor.
+  First implement this in Stream.Object.Enumerator.Container.Array
+  or use it when porting it to .NET.
+
+* Containers or Iterators should all implement the Method addItemAtCurrPos()
+  to speed up replacing or adding Objects after searching them,
+  but currently it is supported only by HashContainer.
+
+* Z-Buffering für Zeichnen UND für Schattenbildung (jede einzelne Lichtquelle)
+  Z-Buffer dynamisch reskalieren (0..255) bei Bereichsüberschreitung
+  Logarithmisch ist genau richtig! 0 sollte nie vorkommen
+  und nach hinten macht die Reihenfolge immer weniger Unterschiede!
+  Z1-Buffer minimale Entfernung zum Sichtpunkt
+  Z2-Buffer minimale Entfernung zum Lichtpunkt
+  4 Fälle:
+  z1 < Z1, z2 < Z2   sichtbar,   beleuchtet
+  z1 < Z1, z2 > Z2   sichtbar, unbeleuchtet
+  z1 > Z1, z2 < Z2 unsichtbar,   beleuchtet, aber von hinten, nur möglich wenn Objekt zwischen LichPunkt und SichtPunkt => Schatten durch sich selbst!
+  z1 > Z1, z2 > Z2 unsichtbar, unbeleuchtet, irrelevant
+
+  Sichtfläche ist durch Standpunkt und Blickrichtung definiert.
+  Lichtquelle ist nur durch ihren Standpunkt definiert!
+  Daher ist die
+
+*	N-Dim Graphs (with only positive Axes) by mapping them into 2D Intervals.
+	(Scale is not necessarily important, Summing up is undefined.
+	Instead the total Area is important and the Scaling to desired Ranges.
+
+*	Ein Parser muss an eine finite State Maschine angekoppelt werden,
+	um eine Grammatik zu parsen.
+	Die finite State Maschine wiederum prüft nur die Syntax.
+	Die Semantik kann implementiert werden,
+	indem an die Zustandsübergänge oder das spätere Traversing
+	Event Prozeduren gebunden werden.
+
+* Import aus Datei Trees
+	gemischte Speicherung:
+		sowohl in der DB (für unstrukturierte Einzeldaten und für die Relationen)
+		als auch im normalen (hierarchischen Dateisystem (mit URL: localhost "file://localhost/c:/BOOTLOG.TXT")
+			hierbei sollten virtuelle Roots möglich sein, weil Dateien ihren Ort ändern!
+			zunächst gemapped auf einen freien Netzwerk Drive (z.B. X:),
+			damit es einfach für eine Anwendung enumerierbar ist (z.B. VB).
+		als auch im Internet
+		dabei sollte die URL auch noch rechnerunabhängig sein.
+		file://mheuer1/Personal/Adressbooks.txt !!!
+		(benötigt vielleicht nicht einmal das Mapping eines Netzwerk Drives! )
+* muss iterativ sein deshalb:
+	Identifikation anhand eines einzigartigen Dateinamens
+	bei Dubletten muss eine Meldung ausgegeben werden
+	Die Umbenennnung muss manuell erfolgen
+	Die Verschiebung entsteht durch zwei Läufe (Hin- und Rück- Richtung):
+		umgekehrte Verifizierung des DB Inhaltes (Markierung als gelöscht)
+		wiederholter Import
+	Import:
+		rekursiver Loop über alle Directories
+		Import und dabei kategorisierung der Dateien
+		Vergabe von Schlüsselwörtern, Auswertung von Attributen (Autor oder Owner)
+		Metadaten (z.B. Office (Word) Files)
+
+		URL als Standard Attribut von Object oder als normales String Attribut???
+		damit ist es auch bei Attribute und Relation vorhanden.
+		Das macht die Typen File und Folder überflüssig oder man hält es redundant
+		Der Vorteil ist, dass Joins verringert werden und damit die Performance steigt.
+		Neben der Freitext Beschreibung, die eine Kurzfassung erlaubt,
+		wäre dann noch ein Bezug auf eine URL möglich,
+		die aber nicht mehr einfach angeschaut werden kann,
+		weil das Format nicht mehr einheitlich Text ist.
+
+		Vereinigung von Typen und Objekten (d.h. rekursive Beschreibung der DB)
+		rekursive Beschreibung des Typensystems (Reflection).
+		MetaType:
+		Type:
+		Object:
+		neu sind:
+			MetaTypeID
+			Type2ID (für Object unnötig, das Typensystem wird sonst etwas überflüssig, da nicht immer die Einführung eines Typs notwendig ist)
+			symmetric
+			Image (wiederverwendbar für die URL)
+
+
+	Verifikation:
+
+	Aufbau einer Verwendungshistorie (Integration in Explorer etc. notwendig,
+	oder ausschliessliche Verwendung meines Tools, aber dann nur ohne Icons! )
+		zur schnelleren Navigation (recent List)
+
+
+
+
+Order:
+FIFO
+LIFO
+Time Order ?= (Sort Order)
+Priority Order
+
+* use 4 different kinds of Brackets to make finding the Borders easier:
+([{<
+)]}>
+
+* Create custom Input Forms for common Data in the Access DB
+	People, Companies with Addresses and Phone Numbers as well as Relations between them
+	Import Interfaces to Outlook etc.
+
+* Read and re-use more than to implement myself!
+
+* Search for all "TODO:" and "WIP:" Strings in the Code and clean it up!
+
+* Statistical concurrent Functions on finite Streams! 
+ (Median, Mean, Minimum, Maximum, isMonotonous(), sliding Window etc.
+  make sense on Streams of IOrderAble Elements
+  % uniqueness,
+  % monotonousness
+  Verteilung (Binning with Frequency == Inverse of Distance;
+   Problem: first/last Elements)
+   compare to Derivative!
+* Statistical Comparison of Streams (Correlation etc.)
+* Clustering in a Metric Space:
+	adding individual Items to the nearest Object is a simple, 
+		but too greedy Strategy, because sensitive to Sequence 
+		and the Number of Items cannot be defined, 
+		but it is similar to later 
+	instead a homogeneous Raster has to be defined
+	and the Items have to be accumulated to the closest Raster Item
+	then a Cutoff Function must be defined !!! Decision !!! like in Neurons !!!
+	(80/20 Rule)
+	and nearly empty Rasterelements removed and their Items either ignored
+	or added to the closest non-empty Rasterelement.
+	Neighboring, equally strong Rasterelements are joined into a single Element.
+	The Size of the Raster has to be chosen
+	so that having two or more Items in an Element is not uncommon.
+	The Variance of Items in Elements should be
+	so that Human Factors are taken into Consideration (7, 3*3 etc.)
+	finally the Center of Gravity (CoG) can be calculated.
+* Zyklen durch Äquivalenzrelation wegdefinieren und Supergraphen ermitteln.
+  diskrete transitive und Äquivalenz- Operationen durch Graphen definieren.
+  Verbindungen zwischen Supergraphen sind durch die Hülle definiert:
+  Die gesamte Länge zwischen zwei Punkten errechnet sich allerdings als Summe aus
+  * Abstand der Hüllen und 
+  * Längen innerhalb der Hüllen, wozu man den äußeren (Hüllen) Knoten festlegen müßte,
+  was man wieder nur mit dem Gesamtwissen über die inneren und äußeren Teile ALLER Knoten machen kann! 
+  
+  Die Annahme, daß innere Verbindungen (local Memory) wesentlich schneller / fester sind, als äußere
+  stützt das Vorgehen, daß zunächst globale Lösungen gesucht werden, welche dann verfeinert werden.
+  (ähnlich der Störungsrechnung in der Physik)
+  Dies wird durch ein Clustering unterstützt wie es z.B. das SOM erzeugt. 
+  Zunächst werden Cluster ermittelt, 
+  dann die kürzesten Verbindungen zwischen den Clustern (globale Lösung). 
+  Anschliessend können die Verbindungen 
+  innerhalb der Cluster gesucht werden (lokale Lösung) 
+
+* Write Adapters for existing Java Containers
+	Write static standard Methods for Conversion to Array as built in Type
+	already done in StreamIn and StreamOut, but not for AContainer!
+
+* Write a List Container with Sentinels, usable as a LIFO or FIFO Container,
+	depending on the Insertion Point (the Iterator stays the same).
+	and a Double Ended List Container
+
+* Inhaltsveränderung ohne Strukturänderung gut für Abbildung I->X
+ 	replaceCurr() (dann auch next() und prev()
+ 	Arrays, Listen (einfach, doppelt)
+ nicht für Trees, HashTables (replace == add+remove)
+
+* Create a Stream of Prime Numbers as well as Streams of Number Series etc.
+
+* Work on Sets:
+	realize that ...
+		calculating the optimal (easiest / smallest Equivalence Relation) Number of SubSets
+		and the corresponding Equivalence Relation is a non trivial Task!
+
+* Work on Relations and Graphs (Representations of binary Relations)
+
+* re-implement RingLong and decide about Shifting and Rotating,
+  whether to include it or not
+
+* ReWrite (done) and Test the XML Parser for the new Streaming Model Scanner
+
+* (De-) Serialize Object Trees into the TypedKnowledge Database Model
+
+* Keep Array and Index up to Date by sending out Events on Changes
+
+* finite Elemente 
+
+* Use Backtracking to implement Grammar Expansion and Parsing instead of Stream.Grammar.
+* Use a Parser to implement Grammar Parsing Tree Generation (by feeding the Builder Pattern)
+* Write an Input- and Output- Stream that takes RegExp and processes it,
+	just like sed and perl do it.
+	For parsing Regular Expressions a Grammar has to be defined
+	For searching Regular Expressions discrete hard coded Automatons can be used and concatenated
+	instead of building up a brand new Automaton.
+	This is explained in one of the Books I read, I just don't remember which one...
+
+
+The Difficulty is in how to decide whether to unify Methods of Interfaces or not.
+They should only be unified, if they are semantically AND syntactically the same.
+Syntactic Identity means the same Interface,
+	and by unifying Interfaces, new Application Areas may be discovered.
+	on the other hand Understanding becomes hard and possible Conflicts can arise
+		just like with Vectors that can be seen as both Containers and Manifolds and Polynoms
+		or Matrices that can be seen as Manifolds and Mappings (Monoid)
+		or Polynoms that can be seen as Manifolds and commutative Mappings (Monoid)
+			[P*Q](x) = P(x)*Q(X) Faltung, kein Skalares Produkt, kein Skalarprodukt
+
+* One Problem with Polymorphism is that when you have a large Number of Functions,
+	you have to create a very lightweight Class for each single Delegation
+	Reflection is an Alternative here! 
+
+*Graphen graphisch darstellen. Dabei sollte Drag&Drop unterstützt werden.
+ Verbindungen sollten durch Linien ziehen erzeugt werden können, wie bei JavaBeans
+ Weiterhin könnte der Typ der Relation gröber oder feiner bestimmt werden.
+ 
+ Alternativ können Trees verwendet werden, auch mit Diamanten! 
+*Dies kann man dann verwenden, um die Abhängigkeiten zwischen Klassen zu analysieren
+ Dazu können die "Import" Anweisungen verwendet werden, die einen Teil der
+ Abhängigkeiten darstellen. Leider werden bei der Einführung von Packages
+ die Abhängigkeiten innerhalb des Packages verdeckt,
+ ebenso wie bei der Verwendung von import .* Anweisungen.
+ Ziel einer guten Pakettierung ist:
+ -Vermeidung von Zyklen (wie auch bei Klassen)
+ -semantische Bündelung
+ -Minimierung der import Statements durch mögliche Bündelung durch .*
+ -Minimierung der Paketgröße UND Minimierung der Paketanzahl (d.h. Minimierung der Klassen)
+ -Minimierung der Paket- Abhängigkeiten (z.B. keine Package Abhängigkeit wegen nur einer Klasse)
+ -Minimierung der impliziten und unnötigen Abhängigkeiten durch zu große Packages.
+
+* Use Hierarchical Controls and Network Controls (hyperbolic Net / Java Control of Definiens)
+	and simple Icon Graphics serialized in the XML Standard Graphics Language.
+
+* Discrete and Clustered Topologies with ==, != and equals
+  What to do with Topologies? Topology is defined by an infinite Filter of Neighbor Sets.
+  It defines Continuousness without relying on metric Spaces.
+* Graphen ohne Zyklen definieren strenge (nicht konnexe) Ordnungs Relationen
+* Order Relation defined by the Position in a Topological Sorting
+  a < b <=> dist(a,b) < 0
+
+
+
+
+
+************************************************************************************
+******* last done:
+************************************************************************************
+
+* Exponential Moving Average Filter 
+* Differential Filter (1., 2. oder höhere Ableitungen) 
+  diese sind schon durch die linearen Savatzky-Golay-Filter gegeben. 
+* Graphen graphisch darstellen. Dabei sollte Drag&Drop unterstützt werden.
+  Verbindungen sollten durch Linien ziehen erzeugt werden können, wie bei JavaBeans
+  Weiterhin könnte der Typ der Relation gröber oder feiner bestimmt werden (Filter).
+* XML Datenbanken und Tabellen (Read Only...):
+	Elemente als Zeilen und Attribute als Spalten 
+	Elemente als Zeilen und Spalten 
+	Tabellen als Elemente 
+* Einen Logger, der direkt die Funktionsaufrufe der JVM logged! 
+  Hat nicht richtig funktioniert (lokale Variablen fehlten), siehe tools.trace.Trace
+* SQL und JDBC mit Dateien in einem Verzeichnis
+* ResultSetSep
+	Typen Kennzeichen in Tabellenspalten (1 oder mehr Zeichen)
+	R/W Spalten 
+	Nullable Spalten? 
+	Bemerkungen in Spalten 
+* ResultSetFix 
+	v.a. auf ResultSetFix konzentrieren! (auch einfacher zu editieren!)
+	Typen Kennzeichen in Tabellenspalten (1 Zeichen)
+	R/W Spalten? 
+	Nullable Spalten? 
+	Bemerkungen in Spalten? (wenig Platz!)
+* Fixed Size und Delimited lassen sich vereinbaren,
+	aber nur entweder durch Einführung von Spaces und Trennung durch diese (Platzaufwendig)
+	oder durch Einführung von Tabs, was aber nur linksbündige Formatierung erlaubt (für Zahlen ungeeignet!)
+	Zahlen müssen (rechtsbündig) mit FixPunkt Notation gespeichert werden,
+	um lexikalisch sortiert werden zu können (was wesentlich schneller ist, da lokal!).
+	Dasselbe gilt für graphische Darstellungen oder andere Verfahren.
+	Fixe Notationen sind lokal bearbeitbar, kosten aber ca. 4* soviel Platz!
+	
+	Um die Dateien in Access bearbeiten zu können,
+	dürfen sie nur im SEP Format Headings enthalten.
+	Für separierte Dateien sind wenigstens noch die Spaltennamen möglich,
+	für fixe Dateien ist selbst das auch möglich, obwohl diese in der 0. Spalte stehen könnten.
+	
+	Das spricht für eine weitere Aufspaltung der Dateien in einen Header
+	und in eine eigentliche DatenDatei.
+	Das ist aber noch schlimmer, denn eigentlich ist eine Datei pro Tabelle eine klasse Abstraktion.
+	Erschwerend kommt hinzu, daß die Dateilinks in Access harte Pfade haben.
+
+	
+* XML als Programmiersprache (analog zu SVG?)
+	SVG Parsing und Darstellung war extrem einfach! 
+		keine Schleifen etc. (jedenfalls für statische Seiten)
+	XML Programme können keinen einfachen SAX Parser verwenden, 
+		weil sie Schleifen haben und Prozeduren aufrufen! 
+		Ein DOM Modell ist da notwendig! 
+	Beispiele: (ziemlich ähnlich zu XSLT, aber leider hat dies keine Typ-Info! siehe. )
+		<for init="" test="" op=""></for>
+		<while test=""></while>
+		<if condition=""></if>
+		aber if then else ist ein Problem! 
+		<switch>
+			<case cond1=""></case>
+			<otherwise></otherwise>
+		</switch>
+		<call function="">
+			<param name="" value=""></param>
+			<param name="" value=""></param>
+			...
+		</call>
+	Ergebnis: 
+		* XML als Programmiersprache ist ziemlich mühsam, 
+		(sieht man ja schon an den Aufrufen in XSLT) 
+		Insbesondere (mathematische) Ausdrücke mit Operatoren 
+		werden ziemlich aufgebläht, da sie durch Funktionen ersetzt werden müssen! 
+		* man braucht einen "Variant" Typ, 
+		  der sich automatisch in double oder String umwandelt, 
+		  je nach angewendeter Funktion oder Operator. 
+* Normalisierung von Input für einfaches Parsing: 
+	analog zur XML Normalisierung: 
+	alle WhiteSpaces durch ein einzelnes Space ersetzen
+	Siehe VectorString.NORMALIZE
+* Hyperbolische Graphen zeichnen, (Depth Search für ausgehende Graphen) 
+* gerichtete Graphen umwandeln in ungerichtete 
+  mit vorzeichenbehafteten Gewichten und zurück, 
+  um den Aufwand nur einmal zu haben, aber die Information beizubehalten! 
+  Entspricht der Asymmetrisierung! 
+* comparing two Graphs or Linked Lists with the same Nodes 
+	would require some canonical Order in the Nodes
+	e.g. by Bubble Sort (can also be done dynamically on Construction). 
+* Word Template nur mit wichtigsten Buttons aufbauen
+* Datenbanken auf XML Basis (XSL statt SQL)
+* Verkettung von XSLTs zur Beschleunigung mit temporären DOMs als Variablen! 
+* Fix and Separated Parser auf SAX Interface heben 
+  oder besser gleich einen Adapter für das Parser Interface nach SAX
+* FIX Format durch SEP Format in erster Zeile eruieren. 1.Zeichen = Sep
+* SAX in DOM Konverter org.apache.xml.utils.DOMBuilder 
+* SAX Parser für separierte Formate 
+* replace usage of availAble() by isEmpty()
+* ebene Topologien (2D Triangle Inequation) entwerfen.
+  ein weiterer Dimensionsbegriff folgt aus der Dreiecksungleichung:
+  for each Triple of Edges (a = [A,B], b = [B,C], c = [C,A])
+  it must be 0 <= |a| <= |b| + |c|
+  Thus to find Coordinates (modulo Translation and Rotation in N Dims)
+  fulfilling this you need at least d Dimensions if you have .
+* Inheritance Problem:
+Circle  isA (Special Case of) Ellipse
+	thus some Operations are faster (drawing) or don't make sense (angle)
+Ellipse isA (deformed) Circle
+	has more Parameters (Eccentricity, angle)
+
+* 1-dim zelluläre Automaten mit 1 Nachbarn Regeln prüfen:
+  2^(2^3) Möglichkeiten für Regeln, denn
+  2^3 = 8 Kombinationen als Eingang und 2 mögliche Werte als Ausgang
+  => 2^(2^3) Möglichkeiten, numeriert von 0 bis 255
+* Trees aus Containern, Collections und Arrays durch hierarchische Controls darstellen
+* relationale Dateien:
+	ggf. als ganzer Block gelesen und geschrieben
+	(für separierte Formate, mit Löschen durch Kennzeichnen, sowie Update durch Löschen und Anhängen.)
+	als einzelne Records gelesen und geschrieben (für feste Formate)
+	nur Text Formate, für Bearbeitung auch in Text Editoren
+	Insert (nur am Ende)
+	Update (einfach)
+	Delete (als gelöscht kennzeichnen! Auch bei separierten Dateien! )
+	bereinigen = kopieren und gelöschte Records dabei überspringen.
+	DB als (Row-) Collection von (Column-) Collections
+	vergleiche auch die "Fields" Collection von JDBC und ADO
+
+* Die Cycorp Struktur ist nicht Redundanzfrei (s. Präsentation).
+* Merge Array and SortedArray, if the latter is too small
+  No! SortedArray has too many alternative Sorting Methods and Constructors.
+* Define Vectors like before,
+	but add a Method to generate a Container Interface
+* Merge of ordered Streams to a new ordered Stream
+* Joins etc. on ResultSet Streams
+* test Joins etc. on Containers of Containers
+* Use FindFirst/Next for speeding up Joins using Indices and sorted Containers.
+* Cantor Product on infinite Streams using a custom Array Stack
+* use the Comparator Interface to define ArraySorted
+* Integrate the ICopy Interface into the Framework
+* generate Events and single / multiCaster Senders
+	for Data Changes, esp. in Containers
+	for Structure Changes  in Containers
+*Iterable <- ChangeAble <- AlterAble
+	Contains = Sub
+	ContainsAll = SubEq
+*Enumerator and Container (CountAble, CopyAble)
+	how to integrate them?
+	lastItem() and Forests?
+*clean up Iterators and Containers
+	harmonize
+	put, add, addAt, addItem, addNext, addPrev, addCurr,
+	get, subt, subtAt, removeNext, removePrev, removeCurr
+	peekItem, nextItem, currItem, prevItem, ItemAt(), map(), Index
+	readItem, writeItem
+* The Difference between an IStream and a Container is
+	that the Container has a limited Contents/Size
+	and has an OutputStream Interface.
+* List = ordered Access (Order matters => next, prev has order Meaning)
+		the Order can also be intrinsic (sorted Array),
+		then getNext, getPrev is also valid, but setNext, setPrev cannot be defined. !
+*unterscheiden zwischen strukturändernden Operationen wie add, delete und
+ nur Inhalt verändernden wie "replace" => Major, Minor
+* Pointered objects and Associations can be used for lists, bottom up trees and N:1 Mappings (Functions).
+	Containers of Associations can to be used for top down Trees and N:M Mappings
+*Ich muß meine eigenen Container und Iteratoren schreiben,
+ weil das Collection FrameWork NoSuchEementExceptions wirft,
+ wenn sie am Ende der Liste angekommen sind, was gerade bei kurzen Listen teuer wird.
+ Die Prüfung über einen extra Funktionsaufruf hasNext() ist nicht Thread safe, 
+ ohne eine teure Synchronisierung und ausserdem teurer. 
+*nicht jede Iterator / Container Operation macht bei jedem Container Sinn:
+ *prevItem() bei einfach verketteten Listen
+ *nextItem() und prevItem() bei HashTables (keine def. Reihenfolge)
+ *removePrev(), next() etc.
+ IStreamIn <- StreamIn 			<- Enumerator (modifiziert/fügt hinzu == Pipe, mit fester Reihenfolge!)
+			 StreamOut<- Pipe (read/write)
+*then: define Mappers based on these
+* distinguish between Container and Relation ("Mapper", mapping Container)
+  create a Class that makes a Mapper from any Container.
+* Harmonize Interfaces of Containers and Stores and Iterators and Streams:
+	InputStream = passive Iterator (generates / returns Items ) also the identical Device returning the same Object.
+	OutputStream = passive (destroys / takes Items) also the null Device, which destroys Objects.
+	FilterIn / FilterOut = passive Component, (nearly) no State
+	IOStream = Cache, Pipe, Store (passive Component, full State, no Input)
+	Processor = active Component, State, Input = e.g. driven Automaton
+		  = Function mapping the Input to an OutPut.
+*Interfaces Monoid und mapping Container harmonisieren (cat()/unCat() für Verkettung)
+	Bulk Operationen in Containern wie für Streams: andere Container,
+		insbesondere Arrays lesen und schreiben!
+
+
+
+
+* fixed Contents Container without add or remove
+* Container without Iterator() Method (or Iterator returning only the same Object)
+  for unsynchronized Containers that don't support multiple Iterators.
+*rename IDynamicFunction into IDiscreteFunction and harmonize add() with the HashTable put().
+
+
+
+********************************************************************************
+*********unknown...
+********************************************************************************
+
+
+
+*OutOfStack Fehler bei Rekursionen abfangen
+ und tolerant mit Begrenzung der Suchtiefe reagieren (auch bei out of Memory).
+
+*Use named Pipes for interprocess Communication
+
+* use java.util.Timer to schedule Tasks
+
+*Functions of several Variablse: F(x,y) == HashTables of HashTables == [u(x)](y) = jagged Array
+ The Problem with an Association is that it's HashCode is only determined by the Key!
+ So a nested Hashing is necessary for mapping to a two dimensional Argument.
+ Any Number of Arguments can be treated by nesting 2 Argument Functions / Relations.
+ A g-adic Relation can be represented by g-1 binary Relations.
+
+*List.FixLinked und Linked erweitern auf doppelt verkettete Listen.
+Container Klassen ableiten, (konnexe) Ordnungsrelation definieren.
+
+*BodyFuncs sind noch nicht alle auch in double implementiert.
+*Many Functions like Gamma Gauss etc. are defined in package 'Combinatoric'
+and additionally in BodyFuncs. This should be cleaned up and tested.
+
+*Test whether BodyDouble really is an Algebra, i.e. use it as a Function,
+concatenate and simplify,
+use Functions on BodyDouble etc.
+
+*Defining Relations and Graphs with a HashTable and their Mapping is very generic.
+Most Problems are solved by mapping them to the Integer Space,
+where the Objects lose their Properties and must be accessed using their Index.
+
+*Define Manifolds as a MetricIRing with even grtr and less defined elementwise
+Thus you have simple powerful (but not optimizing!) Vector Arithmetics for Bulk Calculation
+as well as the Equivalent for most Relations within Function Space
+This can be extended to "Complex" and Interval
+
+*Define Manifolds and Polynoms cleanly, because Polynoms and Matrices can be viewed
+as Vectors, which would result in a Constant Mapping and Manifold Operations
+or as a Polynom, which would result in Polynom Multiplication (Convolution)
+and non-trivial Concatenation.
+Two Manifolds with equal Number of Elements can define a Function or Relation
+This is similar to the Function Declaration with the HashTable,
+but stored in a (dynamic) Array.
+Differencing, Integration etc. can be done in Place
+
+* Matrices and Tensors must be cleanly defined, especially their "Multiplication"
+	which in Fact is a non-communtative linear Mapping
+	and thus non commutable and should be called map().
+
+* Polynom Multiplication is a real Multiplication instead,
+	but differs from Vector Multiplication, which is a linear Mapping.
+
+* All Linear Operations like Fourier and Wavelet Transformation can be defined recursively
+	maybe even up to the single Element which would be it's own Transform.
+
+* Examine whether PartialDerive and 'Dimension' work correctly
+and can be used to derive Vectors of Functions and thus create Jacobi Matrices.
+There are still very simple and wrong Implementations in ProdPartial etc.
+
+* Test whether Graphics still works and Examine the Java2D Interface
+
+* Mathematica works with Expressions. I could extend the "simplify" Method
+	to include many Rules, but then I would also have to define a Metric
+	to determine the "optimum" Expression
+
+* Interval Calculations are still unclear,
+	because both the affine and the projective Model are complicated.
+
+* Clean up ShiftAble (although this Interface is nearly never being used)
+
+* Find out whether ArrStruct and gAdic really need the Carry Object
+	or if the Carry can be supplied externally with the Operation.
+	which would decouple the Elements of a gAdic Number
+
+
+

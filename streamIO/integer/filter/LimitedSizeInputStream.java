@@ -1,0 +1,137 @@
+package streamIO.integer.filter;
+
+import java.io.FileOutputStream;
+import java.io.FilterInputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.SequenceInputStream;
+
+import streamIO.fileSystem.FileIterator;
+import streamIO.integer.pipe.ByteStreamerThread;
+import streamIO.object.StreamIn2Enumeration;
+
+/**
+ * LimitedSizeInputStream
+ * limits the Number of Bytes to be read from a streamIO.
+ * not used yet...
+ * Exploits the Fact that FilterInputStream delegates to the inner streamIO.
+ *
+ * Created on 31. März 2001, 20:51
+ *
+ * @author  Matthias Heuer
+ * @version
+ */
+public class LimitedSizeInputStream
+extends FilterInputStream {
+
+	////////////////////////////////////////////////////////////////////////////////
+	//	Static Members 	//
+	////////////////////////////////////////////////////////////////////////////////
+
+	/** Describes the Syntax for the splice Method  */
+	final static public String strSpliceSyntax = "splice [Prefix, Suffix,] Original[, ChunkSize]";
+
+	////////////////////////////////////////////////////////////////////////////////
+	//  Static Methods from LimitedSizeOutputStream moved here!
+	//  Splices a Stream of Files into a single very long Stream.
+	////////////////////////////////////////////////////////////////////////////////
+
+	/** Splices the split up Files byte-wise into one File.  */
+	public static void splice(String Prefix, String Suffix, String Original) throws IOException {
+		ByteStreamerThread.STREAM(
+			new SequenceInputStream(
+			new StreamIn2Enumeration(
+			new FileIterator(Prefix, Suffix, true, false))),
+			new FileOutputStream(Original)); }
+
+	/** Splices the split up Files byte-wise into one File,
+	 *  using Blocks of the given Chunk Size.  */
+	public static void splice(String Prefix, String Suffix, String Original, int ChunkSize) throws IOException {
+		ByteStreamerThread.STREAM(
+			new SequenceInputStream(
+			new StreamIn2Enumeration(
+			new FileIterator(Prefix, Suffix, true, false))),
+			new FileOutputStream(Original), ChunkSize); }
+
+	/**
+	 * The main entry point for the application.
+	 *
+	 * @param args Array of parameters passed to the application
+	 *		String Merged Path and FileName
+	 *		[String Prefix String Suffix]
+	 *		[int ChunkSize]
+	 *
+	 * TODO: A faster Alternative is to just append to and rename the first File!
+	 * When a command line is used, the User can be queried synchronously
+	 * for missing Files.
+	 *
+	 * Alternatively use the Command Line for appending:
+	 * type "File2" >> "File1" */
+	public static void splice(String[] args)	throws IOException {
+/*		args = new String[] {"C:/Gladiator", ".avi", "D:/Gladiator.avi"};
+		args = new String[] {"D:/Gladiator", ".avi", "\\\\Cenb0026\\D\\Gladiator.avi"};
+		args = new String[] {"C:/Code", ".doc", "C:/Code.doc"};
+		args = new String[] {"C:/Marillion", ".mp3", "C:/Marillion.mp3", "100000"};
+		args = new String[] {"C:/Marillion.mp3", "100000"};
+		*/
+		if (args.length == 0) { System.out.println (LimitedSizeOutputStream.strSyntax + strSpliceSyntax); return; }
+		if (args.length <= 2) { //less than 3 Args: parse the File Name
+			int Pos = args[0].lastIndexOf (".");
+			if (args.length == 2) //ChunkSize
+				 args = new String[] { args[0].substring (0, Pos), args[0].substring (Pos), args[0], args[1] };
+			else args = new String[] { args[0].substring (0, Pos), args[0].substring (Pos), args[0] }; }
+		if (args.length == 3)
+			 splice(args[0], args[1], args[2]);
+		else splice(args[0], args[1], args[2], Integer.parseInt(args[3]));
+//		return 0;
+	}
+
+	/**
+	 * The main entry point for the application.
+	 *
+	 * @param args Array of parameters passed to the application
+	 * via the command line.	 */
+	public static void main (String[] args)	throws IOException {
+		splice(args); }
+
+	////////////////////////////////////////////////////////////////////////////////
+	//	Member Variables
+	////////////////////////////////////////////////////////////////////////////////
+
+	/**Counter for the Bytes written  */
+	protected long Counter;
+
+	/**Maximum Size of this streamIO */
+	protected long MaxSize;
+
+    /** Creates new LimitedSizeStream */
+    public LimitedSizeInputStream (InputStream IS, long MaxSize) {
+		super(IS); this.MaxSize = MaxSize; reStart(); }
+
+	/**ReStarts the streamIO by resetting the internal Counter */
+	public void reStart() {
+		Counter = 0; if (in.markSupported ()) in.mark(Integer.MAX_VALUE); }
+
+    /**
+	 * Returns the number of bytes that can be read (or skipped over) from this input stream
+	 * without blocking by the next caller of a method for this input stream.
+	 */
+	public int available() throws IOException {
+		return (int) Math.min(in.available(), MaxSize-Counter); }
+
+    /**
+	 * Skips over and discards n bytes of data from this input stream.
+	 */
+	public long skip(long n) throws IOException {
+		return skip(Counter += Math.min(n, MaxSize-Counter)); }
+
+    /**
+	 * Reads the next byte of data from the input stream.
+	 */
+	public int read() throws IOException {
+		if (++Counter < MaxSize) {
+			return in.read(); }
+		return LimitedSizeOutputStream.EOF; }
+
+
+}

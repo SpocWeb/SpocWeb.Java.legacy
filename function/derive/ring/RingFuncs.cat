@@ -1,0 +1,1644 @@
+
+(object Petal
+    version    	42
+    _written   	"Rose 4.5.8163.3"
+    charSet    	0)
+
+(object Class_Category "RingFuncs"
+    is_unit    	TRUE
+    is_loaded  	TRUE
+    quid       	"37BC93CE025C"
+    visible_categories 	(list visibility_relationship_list
+	(object Visibility_Relationship
+	    quid       	"37BFDD85001A"
+	    supplier   	"Logical View::Ring"
+	    quidu      	"36BB392A02D2")
+	(object Visibility_Relationship
+	    quid       	"37BFDD9801F8"
+	    supplier   	"Logical View::intFunction"
+	    quidu      	"36BB39470389")
+	(object Visibility_Relationship
+	    quid       	"37BFDDBE009E"
+	    supplier   	"Logical View::Metric"
+	    quidu      	"36BB45940015"))
+    exportControl 	"Public"
+    logical_models 	(list unit_reference_list
+	(object Class "f1_xx"
+	    attributes 	(list Attribute_Set
+		(object Attribute
+		    tool       	"Java"
+		    name       	"GenerateFinalizer"
+		    value      	FALSE)
+		(object Attribute
+		    tool       	"Java"
+		    name       	"GenerateStaticInitializer"
+		    value      	FALSE)
+		(object Attribute
+		    tool       	"Java"
+		    name       	"GenerateInstanceInitializer"
+		    value      	FALSE)
+		(object Attribute
+		    tool       	"Java"
+		    name       	"GenerateDefaultConstructor"
+		    value      	FALSE)
+		(object Attribute
+		    tool       	"Java"
+		    name       	"Final"
+		    value      	TRUE))
+	    quid       	"37BC93CE025E"
+	    documentation 	"This Class encapsulates the Function y = 1-x^2/2.  "
+	    realized_interfaces 	(list realize_rel_list
+		(object Realize_Relationship
+		    attributes 	(list Attribute_Set)
+		    quid       	"37BD3A1001AA"
+		    supplier   	"Logical View::intFunction::intFunction"
+		    quidu      	"36BB39BA00B2"))
+	    operations 	(list Operations
+		(object Operation "Function"
+		    attributes 	(list Attribute_Set)
+		    quid       	"37BD3A1001AB"
+		    documentation 	"This Function represents the Function y = 1-x^2/2.  "
+		    parameters 	(list Parameters
+			(object Parameter "arg"
+			    type       	"Object"))
+		    result     	"Object"
+		    concurrency 	"Sequential"
+		    opExportControl 	"Public"
+		    uid        	0)
+		(object Operation "f1_xx"
+		    attributes 	(list Attribute_Set
+			(object Attribute
+			    tool       	"Java"
+			    name       	"Static"
+			    value      	TRUE))
+		    quid       	"37BD3A1001B4"
+		    documentation 	"This Function returns the Function y = 1-x^2/2.  "
+		    parameters 	(list Parameters
+			(object Parameter "arg"
+			    type       	"Object"))
+		    result     	"IntegrityRing"
+		    concurrency 	"Sequential"
+		    opExportControl 	"Public"
+		    uid        	0))
+	    module     	"Component View::RingFuncs::f1_xx"
+	    quidu      	"37BC93CE025D"
+	    language   	"Java")
+	(object Class "fDouble"
+	    attributes 	(list Attribute_Set
+		(object Attribute
+		    tool       	"Java"
+		    name       	"GenerateFinalizer"
+		    value      	FALSE)
+		(object Attribute
+		    tool       	"Java"
+		    name       	"GenerateStaticInitializer"
+		    value      	FALSE)
+		(object Attribute
+		    tool       	"Java"
+		    name       	"GenerateInstanceInitializer"
+		    value      	FALSE)
+		(object Attribute
+		    tool       	"Java"
+		    name       	"GenerateDefaultConstructor"
+		    value      	FALSE)
+		(object Attribute
+		    tool       	"Java"
+		    name       	"Final"
+		    value      	TRUE))
+	    quid       	"37BC93CE02A2"
+	    documentation 	"This Class encapsulates the Double Function.  "
+	    realized_interfaces 	(list realize_rel_list
+		(object Realize_Relationship
+		    attributes 	(list Attribute_Set)
+		    quid       	"37BD3A11022D"
+		    supplier   	"Logical View::intFunction::intFunction"
+		    quidu      	"36BB39BA00B2"))
+	    operations 	(list Operations
+		(object Operation "Function"
+		    attributes 	(list Attribute_Set)
+		    quid       	"37BD3A11022E"
+		    documentation 	"This Function represents the Double Function.  "
+		    parameters 	(list Parameters
+			(object Parameter "arg"
+			    type       	"Object"))
+		    result     	"Object"
+		    concurrency 	"Sequential"
+		    opExportControl 	"Public"
+		    uid        	0)
+		(object Operation "dbl"
+		    attributes 	(list Attribute_Set
+			(object Attribute
+			    tool       	"Java"
+			    name       	"Static"
+			    value      	TRUE))
+		    quid       	"37BD3A110230"
+		    documentation 	"This Function returns the Double Function.  "
+		    parameters 	(list Parameters
+			(object Parameter "arg"
+			    type       	"Object"))
+		    result     	"HalfGroup"
+		    concurrency 	"Sequential"
+		    opExportControl 	"Public"
+		    uid        	0))
+	    module     	"Component View::RingFuncs::fDouble"
+	    quidu      	"37BC93CE0298"
+	    language   	"Java")
+	(object Class "fEulerFktn"
+	    attributes 	(list Attribute_Set
+		(object Attribute
+		    tool       	"Java"
+		    name       	"GenerateFinalizer"
+		    value      	FALSE)
+		(object Attribute
+		    tool       	"Java"
+		    name       	"GenerateStaticInitializer"
+		    value      	FALSE)
+		(object Attribute
+		    tool       	"Java"
+		    name       	"GenerateInstanceInitializer"
+		    value      	FALSE)
+		(object Attribute
+		    tool       	"Java"
+		    name       	"GenerateDefaultConstructor"
+		    value      	FALSE))
+	    quid       	"37BC93CE0339"
+	    documentation 	
+|Series with a Limes, that converges to e	 
+	    
+	    realized_interfaces 	(list realize_rel_list
+		(object Realize_Relationship
+		    attributes 	(list Attribute_Set)
+		    quid       	"37BD3A120315"
+		    supplier   	"Logical View::intFunction::intFunction"
+		    quidu      	"36BB39BA00B2"))
+	    operations 	(list Operations
+		(object Operation "Function"
+		    attributes 	(list Attribute_Set)
+		    quid       	"37BD3A130118"
+		    parameters 	(list Parameters
+			(object Parameter "arg"
+			    type       	"Object"))
+		    result     	"Object"
+		    concurrency 	"Sequential"
+		    opExportControl 	"Public"
+		    uid        	0))
+	    module     	"Component View::RingFuncs::fEulerFktn"
+	    quidu      	"37BC93CE0338"
+	    language   	"Java")
+	(object Class "fEulerSum"
+	    attributes 	(list Attribute_Set
+		(object Attribute
+		    tool       	"Java"
+		    name       	"GenerateFinalizer"
+		    value      	FALSE)
+		(object Attribute
+		    tool       	"Java"
+		    name       	"GenerateStaticInitializer"
+		    value      	FALSE)
+		(object Attribute
+		    tool       	"Java"
+		    name       	"GenerateInstanceInitializer"
+		    value      	FALSE)
+		(object Attribute
+		    tool       	"Java"
+		    name       	"GenerateDefaultConstructor"
+		    value      	FALSE))
+	    quid       	"37BC93CF002D"
+	    documentation 	
+|Series with a Sum, that converges to e.
+| * e = Sum (n, 1/n!) 	 
+	    
+	    realized_interfaces 	(list realize_rel_list
+		(object Realize_Relationship
+		    attributes 	(list Attribute_Set)
+		    quid       	"37BD3A140232"
+		    supplier   	"Logical View::intFunction::intFunction"
+		    quidu      	"36BB39BA00B2"))
+	    operations 	(list Operations
+		(object Operation "Function"
+		    attributes 	(list Attribute_Set)
+		    quid       	"37BD3A150052"
+		    documentation 	
+|Returns the Elements of a Series whose Sum converges to e	 
+		    
+		    parameters 	(list Parameters
+			(object Parameter "arg"
+			    type       	"Object"))
+		    result     	"Object"
+		    concurrency 	"Sequential"
+		    opExportControl 	"Public"
+		    uid        	0))
+	    module     	"Component View::RingFuncs::fEulerSum"
+	    quidu      	"37BC93CF002C"
+	    language   	"Java")
+	(object Class "fGeoSum"
+	    attributes 	(list Attribute_Set
+		(object Attribute
+		    tool       	"Java"
+		    name       	"GenerateFinalizer"
+		    value      	FALSE)
+		(object Attribute
+		    tool       	"Java"
+		    name       	"GenerateStaticInitializer"
+		    value      	FALSE)
+		(object Attribute
+		    tool       	"Java"
+		    name       	"GenerateInstanceInitializer"
+		    value      	FALSE)
+		(object Attribute
+		    tool       	"Java"
+		    name       	"GenerateDefaultConstructor"
+		    value      	FALSE))
+	    quid       	"37BC93CF00B9"
+	    documentation 	
+|Series with a Sum, that converges to 1/(1-Radix) (starting from 0) 
+| * resp. to Radix/(1-Radix) (starting from 1) for Radix < 1	 
+	    
+	    realized_interfaces 	(list realize_rel_list
+		(object Realize_Relationship
+		    attributes 	(list Attribute_Set)
+		    quid       	"37BD3A1600E0"
+		    supplier   	"Logical View::intFunction::intFunction"
+		    quidu      	"36BB39BA00B2"))
+	    operations 	(list Operations
+		(object Operation "fGeoSum"
+		    attributes 	(list Attribute_Set)
+		    quid       	"37BD3A1602DF"
+		    documentation 	
+|Initializing Constructor	 
+		    
+		    parameters 	(list Parameters
+			(object Parameter "Radix"
+			    type       	"IntegrityRing"))
+		    concurrency 	"Sequential"
+		    opExportControl 	"Public"
+		    uid        	0)
+		(object Operation "Function"
+		    attributes 	(list Attribute_Set)
+		    quid       	"37BD3A1602E1"
+		    documentation 	
+|Returns the Elements of the geometric Series.	 
+		    
+		    parameters 	(list Parameters
+			(object Parameter "arg"
+			    type       	"Object"))
+		    result     	"Object"
+		    concurrency 	"Sequential"
+		    opExportControl 	"Public"
+		    uid        	0))
+	    module     	"Component View::RingFuncs::fGeoSum"
+	    quidu      	"37BC93CF00B8"
+	    language   	"Java")
+	(object Class "fInverse"
+	    attributes 	(list Attribute_Set
+		(object Attribute
+		    tool       	"Java"
+		    name       	"GenerateFinalizer"
+		    value      	FALSE)
+		(object Attribute
+		    tool       	"Java"
+		    name       	"GenerateStaticInitializer"
+		    value      	FALSE)
+		(object Attribute
+		    tool       	"Java"
+		    name       	"GenerateInstanceInitializer"
+		    value      	FALSE)
+		(object Attribute
+		    tool       	"Java"
+		    name       	"GenerateDefaultConstructor"
+		    value      	FALSE)
+		(object Attribute
+		    tool       	"Java"
+		    name       	"Final"
+		    value      	TRUE))
+	    quid       	"37BC93CF00F4"
+	    documentation 	"This Class encapsulates the Double Function.  "
+	    realized_interfaces 	(list realize_rel_list
+		(object Realize_Relationship
+		    attributes 	(list Attribute_Set)
+		    quid       	"37BD3A170312"
+		    supplier   	"Logical View::intFunction::intFunction"
+		    quidu      	"36BB39BA00B2"))
+	    operations 	(list Operations
+		(object Operation "Function"
+		    attributes 	(list Attribute_Set)
+		    quid       	"37BD3A170313"
+		    documentation 	"This Function represents the Double Function.  "
+		    parameters 	(list Parameters
+			(object Parameter "arg"
+			    type       	"Object"))
+		    result     	"Object"
+		    concurrency 	"Sequential"
+		    opExportControl 	"Public"
+		    uid        	0)
+		(object Operation "inv"
+		    attributes 	(list Attribute_Set
+			(object Attribute
+			    tool       	"Java"
+			    name       	"Static"
+			    value      	TRUE))
+		    quid       	"37BD3A170315"
+		    documentation 	"This Function returns the Double Function.  "
+		    parameters 	(list Parameters
+			(object Parameter "arg"
+			    type       	"Object"))
+		    result     	"GroupM"
+		    concurrency 	"Sequential"
+		    opExportControl 	"Public"
+		    uid        	0))
+	    module     	"Component View::RingFuncs::fInverse"
+	    quidu      	"37BC93CF00EA"
+	    language   	"Java")
+	(object Class "fNegative"
+	    attributes 	(list Attribute_Set
+		(object Attribute
+		    tool       	"Java"
+		    name       	"GenerateFinalizer"
+		    value      	FALSE)
+		(object Attribute
+		    tool       	"Java"
+		    name       	"GenerateStaticInitializer"
+		    value      	FALSE)
+		(object Attribute
+		    tool       	"Java"
+		    name       	"GenerateInstanceInitializer"
+		    value      	FALSE)
+		(object Attribute
+		    tool       	"Java"
+		    name       	"GenerateDefaultConstructor"
+		    value      	FALSE)
+		(object Attribute
+		    tool       	"Java"
+		    name       	"Final"
+		    value      	TRUE))
+	    quid       	"37BC93CF0127"
+	    documentation 	"This Class encapsulates the Negative Function.  "
+	    realized_interfaces 	(list realize_rel_list
+		(object Realize_Relationship
+		    attributes 	(list Attribute_Set)
+		    quid       	"37BD3A180350"
+		    supplier   	"Logical View::intFunction::intFunction"
+		    quidu      	"36BB39BA00B2"))
+	    operations 	(list Operations
+		(object Operation "Function"
+		    attributes 	(list Attribute_Set)
+		    quid       	"37BD3A180351"
+		    documentation 	"This Function represents the Double Function.  "
+		    parameters 	(list Parameters
+			(object Parameter "arg"
+			    type       	"Object"))
+		    result     	"Object"
+		    concurrency 	"Sequential"
+		    opExportControl 	"Public"
+		    uid        	0)
+		(object Operation "neg"
+		    attributes 	(list Attribute_Set
+			(object Attribute
+			    tool       	"Java"
+			    name       	"Static"
+			    value      	TRUE))
+		    quid       	"37BD3A180353"
+		    documentation 	"This Function returns the Double Function.  "
+		    parameters 	(list Parameters
+			(object Parameter "arg"
+			    type       	"Object"))
+		    result     	"HalfGroup"
+		    concurrency 	"Sequential"
+		    opExportControl 	"Public"
+		    uid        	0))
+	    module     	"Component View::RingFuncs::fNegative"
+	    quidu      	"37BC93CF0126"
+	    language   	"Java")
+	(object Class "fSquare"
+	    attributes 	(list Attribute_Set
+		(object Attribute
+		    tool       	"Java"
+		    name       	"GenerateFinalizer"
+		    value      	FALSE)
+		(object Attribute
+		    tool       	"Java"
+		    name       	"GenerateStaticInitializer"
+		    value      	FALSE)
+		(object Attribute
+		    tool       	"Java"
+		    name       	"GenerateInstanceInitializer"
+		    value      	FALSE)
+		(object Attribute
+		    tool       	"Java"
+		    name       	"GenerateDefaultConstructor"
+		    value      	FALSE)
+		(object Attribute
+		    tool       	"Java"
+		    name       	"Final"
+		    value      	TRUE))
+	    quid       	"37BC93CF0159"
+	    documentation 	"This Class encapsulates the Square Function.  "
+	    realized_interfaces 	(list realize_rel_list
+		(object Realize_Relationship
+		    attributes 	(list Attribute_Set)
+		    quid       	"37BD3A19038D"
+		    supplier   	"Logical View::intFunction::intFunction"
+		    quidu      	"36BB39BA00B2"))
+	    operations 	(list Operations
+		(object Operation "Function"
+		    attributes 	(list Attribute_Set)
+		    quid       	"37BD3A19038E"
+		    documentation 	"This Function represents the Square Function.  "
+		    parameters 	(list Parameters
+			(object Parameter "arg"
+			    type       	"Object"))
+		    result     	"Object"
+		    concurrency 	"Sequential"
+		    opExportControl 	"Public"
+		    uid        	0)
+		(object Operation "sqr"
+		    attributes 	(list Attribute_Set
+			(object Attribute
+			    tool       	"Java"
+			    name       	"Static"
+			    value      	TRUE))
+		    quid       	"37BD3A190390"
+		    documentation 	"This Function returns the Square Function.  "
+		    parameters 	(list Parameters
+			(object Parameter "arg"
+			    type       	"Object"))
+		    result     	"HalfGroupM"
+		    concurrency 	"Sequential"
+		    opExportControl 	"Public"
+		    uid        	0))
+	    module     	"Component View::RingFuncs::fSquare"
+	    quidu      	"37BC93CF0158"
+	    language   	"Java")
+	(object Class "fTwo"
+	    attributes 	(list Attribute_Set
+		(object Attribute
+		    tool       	"Java"
+		    name       	"GenerateFinalizer"
+		    value      	FALSE)
+		(object Attribute
+		    tool       	"Java"
+		    name       	"GenerateStaticInitializer"
+		    value      	FALSE)
+		(object Attribute
+		    tool       	"Java"
+		    name       	"GenerateInstanceInitializer"
+		    value      	FALSE)
+		(object Attribute
+		    tool       	"Java"
+		    name       	"GenerateDefaultConstructor"
+		    value      	FALSE)
+		(object Attribute
+		    tool       	"Java"
+		    name       	"Final"
+		    value      	TRUE))
+	    quid       	"37BC93CF01BE"
+	    documentation 	"This Class encapsulates the constant Function returning 2.  "
+	    realized_interfaces 	(list realize_rel_list
+		(object Realize_Relationship
+		    attributes 	(list Attribute_Set)
+		    quid       	"37BD3A1B000B"
+		    supplier   	"Logical View::intFunction::intFunction"
+		    quidu      	"36BB39BA00B2"))
+	    operations 	(list Operations
+		(object Operation "Function"
+		    attributes 	(list Attribute_Set)
+		    quid       	"37BD3A1B000C"
+		    documentation 	"This Function represents the constant Function 2.  "
+		    parameters 	(list Parameters
+			(object Parameter "arg"
+			    type       	"Object"))
+		    result     	"Object"
+		    concurrency 	"Sequential"
+		    opExportControl 	"Public"
+		    uid        	0)
+		(object Operation "two"
+		    attributes 	(list Attribute_Set
+			(object Attribute
+			    tool       	"Java"
+			    name       	"Static"
+			    value      	TRUE))
+		    quid       	"37BD3A1B0016"
+		    documentation 	"This Function returns the constant Function 2.  "
+		    parameters 	(list Parameters
+			(object Parameter "arg"
+			    type       	"Object"))
+		    result     	"IntegrityRing"
+		    concurrency 	"Sequential"
+		    opExportControl 	"Public"
+		    uid        	0))
+	    module     	"Component View::RingFuncs::fTwo"
+	    quidu      	"37BC93CF01BD"
+	    language   	"Java")
+	(object Class "Function2ODE"
+	    attributes 	(list Attribute_Set
+		(object Attribute
+		    tool       	"Java"
+		    name       	"GenerateFinalizer"
+		    value      	FALSE)
+		(object Attribute
+		    tool       	"Java"
+		    name       	"GenerateStaticInitializer"
+		    value      	FALSE)
+		(object Attribute
+		    tool       	"Java"
+		    name       	"GenerateInstanceInitializer"
+		    value      	FALSE)
+		(object Attribute
+		    tool       	"Java"
+		    name       	"GenerateDefaultConstructor"
+		    value      	FALSE)
+		(object Attribute
+		    tool       	"Java"
+		    name       	"Final"
+		    value      	TRUE))
+	    quid       	"37BC93CF0236"
+	    documentation 	
+|ODE Definition for a Function y' = f(x,y) = f(y), 
+| * The Derivative is not time(x)-dependent and described as a Vector Function 
+	    
+	    realized_interfaces 	(list realize_rel_list
+		(object Realize_Relationship
+		    attributes 	(list Attribute_Set)
+		    quid       	"37BD3A1C0098"
+		    supplier   	"Logical View::Ring::intDGL"
+		    quidu      	"37BC91A901E4"))
+	    operations 	(list Operations
+		(object Operation "Function2ODE"
+		    attributes 	(list Attribute_Set)
+		    quid       	"37BD3A1C0297"
+		    documentation 	
+|Constructor with the Function as Parameter	 
+		    
+		    parameters 	(list Parameters
+			(object Parameter "Fktn"
+			    type       	"intFunction"))
+		    concurrency 	"Sequential"
+		    opExportControl 	"Public"
+		    uid        	0)
+		(object Operation "Funktion"
+		    attributes 	(list Attribute_Set)
+		    quid       	"37BD3A1C0299"
+		    documentation 	
+|Implementation of the Function returning the Derivative	 
+		    
+		    parameters 	(list Parameters
+			(object Parameter "x"
+			    type       	"IntegrityRing")
+			(object Parameter "y"
+			    type       	"IntegrityRing")
+			(object Parameter "dydx"
+			    type       	"IntegrityRing"))
+		    result     	"void"
+		    concurrency 	"Sequential"
+		    opExportControl 	"Public"
+		    uid        	0))
+	    module     	"Component View::RingFuncs::Function2ODE"
+	    quidu      	"37BC93CF0235"
+	    language   	"Java")
+	(object Class "IdentityCopy"
+	    attributes 	(list Attribute_Set
+		(object Attribute
+		    tool       	"Java"
+		    name       	"GenerateFinalizer"
+		    value      	FALSE)
+		(object Attribute
+		    tool       	"Java"
+		    name       	"GenerateStaticInitializer"
+		    value      	FALSE)
+		(object Attribute
+		    tool       	"Java"
+		    name       	"GenerateInstanceInitializer"
+		    value      	FALSE)
+		(object Attribute
+		    tool       	"Java"
+		    name       	"GenerateDefaultConstructor"
+		    value      	FALSE)
+		(object Attribute
+		    tool       	"Java"
+		    name       	"Final"
+		    value      	TRUE))
+	    quid       	"37BC93CF0286"
+	    documentation 	
+|This Class encapsulates the Identity Function. 
+| * It always returns the Argument.  
+	    
+	    realized_interfaces 	(list realize_rel_list
+		(object Realize_Relationship
+		    attributes 	(list Attribute_Set)
+		    quid       	"37BD3A1D02DF"
+		    supplier   	"Logical View::intFunction::intFunction"
+		    quidu      	"36BB39BA00B2"))
+	    operations 	(list Operations
+		(object Operation "Function"
+		    attributes 	(list Attribute_Set)
+		    quid       	"37BD3A1D02E9"
+		    documentation 	
+|This Function represents the Identity Function.
+|	 * It always returns the Argument.  
+		    
+		    parameters 	(list Parameters
+			(object Parameter "arg"
+			    type       	"Object"))
+		    result     	"Object"
+		    concurrency 	"Sequential"
+		    opExportControl 	"Public"
+		    uid        	0))
+	    module     	"Component View::RingFuncs::IdentityCopy"
+	    quidu      	"37BC93CF0285"
+	    language   	"Java")
+	(object Class "OdeConst"
+	    attributes 	(list Attribute_Set
+		(object Attribute
+		    tool       	"Java"
+		    name       	"GenerateFinalizer"
+		    value      	FALSE)
+		(object Attribute
+		    tool       	"Java"
+		    name       	"GenerateStaticInitializer"
+		    value      	FALSE)
+		(object Attribute
+		    tool       	"Java"
+		    name       	"GenerateInstanceInitializer"
+		    value      	FALSE)
+		(object Attribute
+		    tool       	"Java"
+		    name       	"GenerateDefaultConstructor"
+		    value      	FALSE)
+		(object Attribute
+		    tool       	"Java"
+		    name       	"Final"
+		    value      	TRUE))
+	    quid       	"37BC93CF02E0"
+	    documentation 	
+|ODE Definition for the Constant Functions y = c, 
+| * The Derivative is always 0 and neither x- nor y- dependent! 
+	    
+	    realized_interfaces 	(list realize_rel_list
+		(object Realize_Relationship
+		    attributes 	(list Attribute_Set)
+		    quid       	"37BD3A1F0039"
+		    supplier   	"Logical View::Ring::intDGL"
+		    quidu      	"37BC91A901E4"))
+	    operations 	(list Operations
+		(object Operation "Funktion"
+		    attributes 	(list Attribute_Set)
+		    quid       	"37BD3A1F003A"
+		    documentation 	
+|Implementation of the Function returning the Derivative	 
+		    
+		    parameters 	(list Parameters
+			(object Parameter "x"
+			    type       	"IntegrityRing")
+			(object Parameter "y"
+			    type       	"IntegrityRing")
+			(object Parameter "dydx"
+			    type       	"IntegrityRing"))
+		    result     	"void"
+		    concurrency 	"Sequential"
+		    opExportControl 	"Public"
+		    uid        	0))
+	    module     	"Component View::RingFuncs::OdeConst"
+	    quidu      	"37BC93CF02DF"
+	    language   	"Java")
+	(object Class "OdeExp"
+	    attributes 	(list Attribute_Set
+		(object Attribute
+		    tool       	"Java"
+		    name       	"GenerateFinalizer"
+		    value      	FALSE)
+		(object Attribute
+		    tool       	"Java"
+		    name       	"GenerateStaticInitializer"
+		    value      	FALSE)
+		(object Attribute
+		    tool       	"Java"
+		    name       	"GenerateInstanceInitializer"
+		    value      	FALSE)
+		(object Attribute
+		    tool       	"Java"
+		    name       	"GenerateDefaultConstructor"
+		    value      	FALSE)
+		(object Attribute
+		    tool       	"Java"
+		    name       	"Final"
+		    value      	TRUE))
+	    quid       	"37BC93CF033A"
+	    documentation 	
+|ODE Definition for the Exponential Functions, 
+| * The Derivative is a Copy of the current y Value and not x- dependent! 
+	    
+	    realized_interfaces 	(list realize_rel_list
+		(object Realize_Relationship
+		    attributes 	(list Attribute_Set)
+		    quid       	"37BD3A21014A"
+		    supplier   	"Logical View::Ring::intDGL"
+		    quidu      	"37BC91A901E4"))
+	    operations 	(list Operations
+		(object Operation "Funktion"
+		    attributes 	(list Attribute_Set)
+		    quid       	"37BD3A21014B"
+		    parameters 	(list Parameters
+			(object Parameter "x"
+			    type       	"IntegrityRing")
+			(object Parameter "y"
+			    type       	"IntegrityRing")
+			(object Parameter "dydx"
+			    type       	"IntegrityRing"))
+		    result     	"void"
+		    concurrency 	"Sequential"
+		    opExportControl 	"Public"
+		    uid        	0))
+	    module     	"Component View::RingFuncs::OdeExp"
+	    quidu      	"37BC93CF0339"
+	    language   	"Java")
+	(object Class "OdeLinear"
+	    attributes 	(list Attribute_Set
+		(object Attribute
+		    tool       	"Java"
+		    name       	"GenerateFinalizer"
+		    value      	FALSE)
+		(object Attribute
+		    tool       	"Java"
+		    name       	"GenerateStaticInitializer"
+		    value      	FALSE)
+		(object Attribute
+		    tool       	"Java"
+		    name       	"GenerateInstanceInitializer"
+		    value      	FALSE)
+		(object Attribute
+		    tool       	"Java"
+		    name       	"GenerateDefaultConstructor"
+		    value      	FALSE)
+		(object Attribute
+		    tool       	"Java"
+		    name       	"Final"
+		    value      	TRUE))
+	    quid       	"37BC93CF03A7"
+	    documentation 	
+|ODE Definition for the linear Functions y = x+c, 
+| * The Derivative is always 1 and neither x- nor y- dependent! 
+	    
+	    realized_interfaces 	(list realize_rel_list
+		(object Realize_Relationship
+		    attributes 	(list Attribute_Set)
+		    quid       	"37BD3A290047"
+		    supplier   	"Logical View::Ring::intDGL"
+		    quidu      	"37BC91A901E4"))
+	    operations 	(list Operations
+		(object Operation "Funktion"
+		    attributes 	(list Attribute_Set)
+		    quid       	"37BD3A290051"
+		    documentation 	
+|Implementation of the Function returning the Derivative	 
+		    
+		    parameters 	(list Parameters
+			(object Parameter "x"
+			    type       	"IntegrityRing")
+			(object Parameter "y"
+			    type       	"IntegrityRing")
+			(object Parameter "dydx"
+			    type       	"IntegrityRing"))
+		    result     	"void"
+		    concurrency 	"Sequential"
+		    opExportControl 	"Public"
+		    uid        	0))
+	    module     	"Component View::RingFuncs::OdeLinear"
+	    quidu      	"37BC93CF039D"
+	    language   	"Java")
+	(object Class "OdeSquare"
+	    attributes 	(list Attribute_Set
+		(object Attribute
+		    tool       	"Java"
+		    name       	"GenerateFinalizer"
+		    value      	FALSE)
+		(object Attribute
+		    tool       	"Java"
+		    name       	"GenerateStaticInitializer"
+		    value      	FALSE)
+		(object Attribute
+		    tool       	"Java"
+		    name       	"GenerateInstanceInitializer"
+		    value      	FALSE)
+		(object Attribute
+		    tool       	"Java"
+		    name       	"GenerateDefaultConstructor"
+		    value      	FALSE)
+		(object Attribute
+		    tool       	"Java"
+		    name       	"Final"
+		    value      	TRUE))
+	    quid       	"37BC93D00019"
+	    documentation 	
+|ODE Definition for the Square Functions x^2+c, 
+| * The Derivative is a Copy of the current x Value and not y- dependent! 
+	    
+	    realized_interfaces 	(list realize_rel_list
+		(object Realize_Relationship
+		    attributes 	(list Attribute_Set)
+		    quid       	"37BD3A2B0130"
+		    supplier   	"Logical View::Ring::intDGL"
+		    quidu      	"37BC91A901E4"))
+	    operations 	(list Operations
+		(object Operation "Funktion"
+		    attributes 	(list Attribute_Set)
+		    quid       	"37BD3A2B013A"
+		    documentation 	
+|Implementation of the Function returning the Derivative	 
+		    
+		    parameters 	(list Parameters
+			(object Parameter "x"
+			    type       	"IntegrityRing")
+			(object Parameter "y"
+			    type       	"IntegrityRing")
+			(object Parameter "dydx"
+			    type       	"IntegrityRing"))
+		    result     	"void"
+		    concurrency 	"Sequential"
+		    opExportControl 	"Public"
+		    uid        	0))
+	    module     	"Component View::RingFuncs::OdeSquare"
+	    quidu      	"37BC93D0000F"
+	    language   	"Java")
+	(object Class "OdeHeight2D"
+	    attributes 	(list Attribute_Set
+		(object Attribute
+		    tool       	"Java"
+		    name       	"GenerateFinalizer"
+		    value      	FALSE)
+		(object Attribute
+		    tool       	"Java"
+		    name       	"GenerateStaticInitializer"
+		    value      	FALSE)
+		(object Attribute
+		    tool       	"Java"
+		    name       	"GenerateInstanceInitializer"
+		    value      	FALSE)
+		(object Attribute
+		    tool       	"Java"
+		    name       	"GenerateDefaultConstructor"
+		    value      	FALSE))
+	    quid       	"37BD3A220250"
+	    documentation 	
+|Conversion of a Height Function to an ODE for constant Height Trajectories. 
+| * This is a special case for a time independent ODE in two Dimensions only.  
+	    
+	    realized_interfaces 	(list realize_rel_list
+		(object Realize_Relationship
+		    attributes 	(list Attribute_Set)
+		    quid       	"37BD3A2502D6"
+		    supplier   	"Logical View::Ring::intDGL"
+		    quidu      	"37BC91A901E4"))
+	    operations 	(list Operations
+		(object Operation "OdeHeight2D"
+		    attributes 	(list Attribute_Set)
+		    quid       	"37BD3A2602EF"
+		    documentation 	
+|Initializing Constructor: takes the Force Field ODE
+|	 * (not Time dependant)	 
+		    
+		    parameters 	(list Parameters
+			(object Parameter "ODE"
+			    type       	"intDGL"))
+		    concurrency 	"Sequential"
+		    opExportControl 	"Public"
+		    uid        	0)
+		(object Operation "Funktion"
+		    attributes 	(list Attribute_Set)
+		    quid       	"37BD3A2602F1"
+		    documentation 	
+|Changes the Force Field ODE into a Height ODE by creating a Vector as Derivative, 
+|	 * that is orthogonal to the Force Field Vector. 
+|	 * All coordinates except for the 0 and 1 are kept exactly the same.
+|	 * Thus you would have to swap Coordinates before and after Calculation.	 
+		    
+		    parameters 	(list Parameters
+			(object Parameter "x"
+			    type       	"IntegrityRing")
+			(object Parameter "y"
+			    type       	"IntegrityRing")
+			(object Parameter "dydx"
+			    type       	"IntegrityRing"))
+		    result     	"void"
+		    concurrency 	"Sequential"
+		    opExportControl 	"Public"
+		    uid        	0))
+	    module     	"Component View::RingFuncs::OdeHeight2D"
+	    quidu      	"37BD3A210230"
+	    language   	"Java")
+	(object Association "$UNNAMED$0"
+	    attributes 	(list Attribute_Set)
+	    quid       	"37BC93CE0356"
+	    roles      	(list role_list
+		(object Role "$UNNAMED$1"
+		    quid       	"37BC93CE0357"
+		    supplier   	"Logical View::RingFuncs::fEulerFktn"
+		    quidu      	"37BC93CE0339")
+		(object Role "Helper"
+		    attributes 	(list Attribute_Set
+			(object Attribute
+			    tool       	"Java"
+			    name       	"InitialValue"
+			    value      	""))
+		    quid       	"37BC93CE0358"
+		    documentation 	
+|Helper Variable, needed to work, when arg is not of Type IntegrityRing.	 
+		    
+		    label      	"Helper"
+		    supplier   	"Logical View::Ring::IntegrityRing"
+		    quidu      	"36BB39470157"
+		    is_navigable 	TRUE)))
+	(object Association "$UNNAMED$2"
+	    attributes 	(list Attribute_Set)
+	    quid       	"37BC93CF0037"
+	    roles      	(list role_list
+		(object Role "$UNNAMED$3"
+		    quid       	"37BC93CF0038"
+		    supplier   	"Logical View::RingFuncs::fEulerSum"
+		    quidu      	"37BC93CF002D")
+		(object Role "Helper"
+		    attributes 	(list Attribute_Set
+			(object Attribute
+			    tool       	"Java"
+			    name       	"InitialValue"
+			    value      	""))
+		    quid       	"37BC93CF0039"
+		    documentation 	
+|Helper Variable, needed to work, when arg is not of Type IntegrityRing.	 
+		    
+		    label      	"Helper"
+		    supplier   	"Logical View::Metric::MetricIRing"
+		    quidu      	"36BB4595017D"
+		    is_navigable 	TRUE)))
+	(object Association "$UNNAMED$4"
+	    attributes 	(list Attribute_Set)
+	    quid       	"37BC93CF00CC"
+	    roles      	(list role_list
+		(object Role "$UNNAMED$5"
+		    quid       	"37BC93CF00CD"
+		    supplier   	"Logical View::RingFuncs::fGeoSum"
+		    quidu      	"37BC93CF00B9")
+		(object Role "Radix"
+		    attributes 	(list Attribute_Set
+			(object Attribute
+			    tool       	"Java"
+			    name       	"InitialValue"
+			    value      	""))
+		    quid       	"37BC93CF00CE"
+		    documentation 	
+|Radix for the Series.
+|	 * Must be |Radix| < 1	 
+		    
+		    label      	"Radix"
+		    supplier   	"Logical View::Ring::IntegrityRing"
+		    quidu      	"36BB39470157"
+		    is_navigable 	TRUE)))
+	(object Association "$UNNAMED$6"
+	    attributes 	(list Attribute_Set)
+	    quid       	"37BC93CF0249"
+	    roles      	(list role_list
+		(object Role "$UNNAMED$7"
+		    quid       	"37BC93CF024A"
+		    supplier   	"Logical View::RingFuncs::Function2ODE"
+		    quidu      	"37BC93CF0236")
+		(object Role "Fktn"
+		    attributes 	(list Attribute_Set
+			(object Attribute
+			    tool       	"Java"
+			    name       	"InitialValue"
+			    value      	""))
+		    quid       	"37BC93CF024B"
+		    documentation 	
+|Local Reference to the static Vector Function	 
+		    
+		    label      	"Fktn"
+		    supplier   	"Logical View::intFunction::intFunction"
+		    quidu      	"36BB39BA00B2"
+		    exportControl 	"Protected"
+		    is_navigable 	TRUE)))
+	(object Association "$UNNAMED$8"
+	    attributes 	(list Attribute_Set)
+	    quid       	"37BD3A2602EC"
+	    roles      	(list role_list
+		(object Role "$UNNAMED$9"
+		    quid       	"37BD3A2602ED"
+		    supplier   	"Logical View::RingFuncs::OdeHeight2D"
+		    quidu      	"37BD3A220250")
+		(object Role "ODE"
+		    attributes 	(list Attribute_Set
+			(object Attribute
+			    tool       	"Java"
+			    name       	"InitialValue"
+			    value      	""))
+		    quid       	"37BD3A2602EE"
+		    documentation 	
+|Local Reference to the Force Field ODE	 
+		    
+		    label      	"ODE"
+		    supplier   	"Logical View::Ring::intDGL"
+		    quidu      	"37BC91A901E4"
+		    exportControl 	"Protected"
+		    is_navigable 	TRUE))))
+    logical_presentations 	(list unit_reference_list
+	(object ClassDiagram "RingFuncs"
+	    quid       	"37BE7A11002D"
+	    title      	"RingFuncs"
+	    zoom       	100
+	    max_height 	28350
+	    max_width  	21600
+	    origin_x   	0
+	    origin_y   	0
+	    items      	(list diagram_item_list
+		(object ClassView "Class" "Logical View::RingFuncs::f1_xx" @1
+		    ShowCompartmentStereotypes 	TRUE
+		    IncludeAttribute 	TRUE
+		    location   	(775, 899)
+		    label      	(object ItemLabel
+			Parent_View 	@1
+			location   	(694, 848)
+			fill_color 	13434879
+			nlines     	1
+			max_width  	162
+			justify    	0
+			label      	"f1_xx")
+		    icon_style 	"Icon"
+		    line_color 	3342489
+		    fill_color 	13434879
+		    quidu      	"37BC93CE025E"
+		    height     	126
+		    annotation 	8
+		    autoResize 	TRUE)
+		(object ClassView "Class" "Logical View::RingFuncs::fDouble" @2
+		    ShowCompartmentStereotypes 	TRUE
+		    IncludeAttribute 	TRUE
+		    location   	(930, 713)
+		    label      	(object ItemLabel
+			Parent_View 	@2
+			location   	(848, 662)
+			fill_color 	13434879
+			nlines     	1
+			max_width  	164
+			justify    	0
+			label      	"fDouble")
+		    icon_style 	"Icon"
+		    line_color 	3342489
+		    fill_color 	13434879
+		    quidu      	"37BC93CE02A2"
+		    width      	182
+		    height     	126
+		    annotation 	8
+		    autoResize 	TRUE)
+		(object ClassView "Class" "Logical View::RingFuncs::fEulerFktn" @3
+		    ShowCompartmentStereotypes 	TRUE
+		    IncludeAttribute 	TRUE
+		    location   	(186, 589)
+		    label      	(object ItemLabel
+			Parent_View 	@3
+			location   	(79, 538)
+			fill_color 	13434879
+			nlines     	1
+			max_width  	214
+			justify    	0
+			label      	"fEulerFktn")
+		    icon_style 	"Icon"
+		    line_color 	3342489
+		    fill_color 	13434879
+		    quidu      	"37BC93CE0339"
+		    width      	232
+		    height     	126
+		    annotation 	8
+		    autoResize 	TRUE)
+		(object ClassView "Class" "Logical View::RingFuncs::fEulerSum" @4
+		    ShowCompartmentStereotypes 	TRUE
+		    IncludeAttribute 	TRUE
+		    location   	(186, 744)
+		    label      	(object ItemLabel
+			Parent_View 	@4
+			location   	(78, 693)
+			fill_color 	13434879
+			nlines     	1
+			max_width  	216
+			justify    	0
+			label      	"fEulerSum")
+		    icon_style 	"Icon"
+		    line_color 	3342489
+		    fill_color 	13434879
+		    quidu      	"37BC93CF002D"
+		    width      	234
+		    height     	126
+		    annotation 	8
+		    autoResize 	TRUE)
+		(object ClassView "Class" "Logical View::RingFuncs::fGeoSum" @5
+		    ShowCompartmentStereotypes 	TRUE
+		    IncludeAttribute 	TRUE
+		    location   	(310, 899)
+		    label      	(object ItemLabel
+			Parent_View 	@5
+			location   	(212, 848)
+			fill_color 	13434879
+			nlines     	1
+			max_width  	196
+			justify    	0
+			label      	"fGeoSum")
+		    icon_style 	"Icon"
+		    line_color 	3342489
+		    fill_color 	13434879
+		    quidu      	"37BC93CF00B9"
+		    width      	214
+		    height     	126
+		    annotation 	8
+		    autoResize 	TRUE)
+		(object ClassView "Class" "Logical View::RingFuncs::fInverse" @6
+		    ShowCompartmentStereotypes 	TRUE
+		    IncludeAttribute 	TRUE
+		    location   	(930, 496)
+		    label      	(object ItemLabel
+			Parent_View 	@6
+			location   	(847, 445)
+			fill_color 	13434879
+			nlines     	1
+			max_width  	166
+			justify    	0
+			label      	"fInverse")
+		    icon_style 	"Icon"
+		    line_color 	3342489
+		    fill_color 	13434879
+		    quidu      	"37BC93CF00F4"
+		    width      	184
+		    height     	126
+		    annotation 	8
+		    autoResize 	TRUE)
+		(object ClassView "Class" "Logical View::RingFuncs::fNegative" @7
+		    ShowCompartmentStereotypes 	TRUE
+		    IncludeAttribute 	TRUE
+		    location   	(1147, 496)
+		    label      	(object ItemLabel
+			Parent_View 	@7
+			location   	(1047, 445)
+			fill_color 	13434879
+			nlines     	1
+			max_width  	200
+			justify    	0
+			label      	"fNegative")
+		    icon_style 	"Icon"
+		    line_color 	3342489
+		    fill_color 	13434879
+		    quidu      	"37BC93CF0127"
+		    width      	218
+		    height     	126
+		    annotation 	8
+		    autoResize 	TRUE)
+		(object ClassView "Class" "Logical View::RingFuncs::fSquare" @8
+		    ShowCompartmentStereotypes 	TRUE
+		    IncludeAttribute 	TRUE
+		    location   	(1147, 713)
+		    label      	(object ItemLabel
+			Parent_View 	@8
+			location   	(1059, 662)
+			fill_color 	13434879
+			nlines     	1
+			max_width  	176
+			justify    	0
+			label      	"fSquare")
+		    icon_style 	"Icon"
+		    line_color 	3342489
+		    fill_color 	13434879
+		    quidu      	"37BC93CF0159"
+		    width      	194
+		    height     	126
+		    annotation 	8
+		    autoResize 	TRUE)
+		(object ClassView "Class" "Logical View::RingFuncs::fTwo" @9
+		    ShowCompartmentStereotypes 	TRUE
+		    IncludeAttribute 	TRUE
+		    location   	(558, 899)
+		    label      	(object ItemLabel
+			Parent_View 	@9
+			location   	(477, 848)
+			fill_color 	13434879
+			nlines     	1
+			max_width  	162
+			justify    	0
+			label      	"fTwo")
+		    icon_style 	"Icon"
+		    line_color 	3342489
+		    fill_color 	13434879
+		    quidu      	"37BC93CF01BE"
+		    height     	126
+		    annotation 	8
+		    autoResize 	TRUE)
+		(object ClassView "Class" "Logical View::RingFuncs::IdentityCopy" @10
+		    ShowCompartmentStereotypes 	TRUE
+		    IncludeAttribute 	TRUE
+		    location   	(186, 217)
+		    label      	(object ItemLabel
+			Parent_View 	@10
+			location   	(59, 166)
+			fill_color 	13434879
+			nlines     	1
+			max_width  	254
+			justify    	0
+			label      	"IdentityCopy")
+		    icon_style 	"Icon"
+		    line_color 	3342489
+		    fill_color 	13434879
+		    quidu      	"37BC93CF0286"
+		    width      	272
+		    height     	126
+		    annotation 	8
+		    autoResize 	TRUE)
+		(object ClassView "Class" "Logical View::RingFuncs::OdeConst" @11
+		    ShowCompartmentStereotypes 	TRUE
+		    IncludeAttribute 	TRUE
+		    location   	(1519, 496)
+		    label      	(object ItemLabel
+			Parent_View 	@11
+			location   	(1413, 445)
+			fill_color 	13434879
+			nlines     	1
+			max_width  	212
+			justify    	0
+			label      	"OdeConst")
+		    icon_style 	"Icon"
+		    line_color 	3342489
+		    fill_color 	13434879
+		    quidu      	"37BC93CF02E0"
+		    width      	230
+		    height     	126
+		    annotation 	8
+		    autoResize 	TRUE)
+		(object ClassView "Class" "Logical View::RingFuncs::OdeExp" @12
+		    ShowCompartmentStereotypes 	TRUE
+		    IncludeAttribute 	TRUE
+		    location   	(2077, 558)
+		    label      	(object ItemLabel
+			Parent_View 	@12
+			location   	(1989, 507)
+			fill_color 	13434879
+			nlines     	1
+			max_width  	176
+			justify    	0
+			label      	"OdeExp")
+		    icon_style 	"Icon"
+		    line_color 	3342489
+		    fill_color 	13434879
+		    quidu      	"37BC93CF033A"
+		    width      	194
+		    height     	126
+		    annotation 	8
+		    autoResize 	TRUE)
+		(object ClassView "Class" "Logical View::RingFuncs::OdeLinear" @13
+		    ShowCompartmentStereotypes 	TRUE
+		    IncludeAttribute 	TRUE
+		    location   	(1519, 651)
+		    label      	(object ItemLabel
+			Parent_View 	@13
+			location   	(1411, 600)
+			fill_color 	13434879
+			nlines     	1
+			max_width  	216
+			justify    	0
+			label      	"OdeLinear")
+		    icon_style 	"Icon"
+		    line_color 	3342489
+		    fill_color 	13434879
+		    quidu      	"37BC93CF03A7"
+		    width      	234
+		    height     	126
+		    annotation 	8
+		    autoResize 	TRUE)
+		(object ClassView "Class" "Logical View::RingFuncs::OdeSquare" @14
+		    ShowCompartmentStereotypes 	TRUE
+		    IncludeAttribute 	TRUE
+		    location   	(1519, 806)
+		    label      	(object ItemLabel
+			Parent_View 	@14
+			location   	(1402, 755)
+			fill_color 	13434879
+			nlines     	1
+			max_width  	234
+			justify    	0
+			label      	"OdeSquare")
+		    icon_style 	"Icon"
+		    line_color 	3342489
+		    fill_color 	13434879
+		    quidu      	"37BC93D00019"
+		    width      	252
+		    height     	126
+		    annotation 	8
+		    autoResize 	TRUE)
+		(object ClassView "Class" "Logical View::intFunction::intFunction" @15
+		    ShowCompartmentStereotypes 	TRUE
+		    IncludeAttribute 	TRUE
+		    IncludeOperation 	TRUE
+		    location   	(527, 217)
+		    label      	(object ItemLabel
+			Parent_View 	@15
+			location   	(396, 135)
+			fill_color 	13434879
+			nlines     	1
+			max_width  	262
+			justify    	0
+			label      	"intFunction")
+		    stereotype 	(object ItemLabel
+			Parent_View 	@15
+			location   	(396, 85)
+			fill_color 	13434879
+			anchor     	10
+			nlines     	1
+			max_width  	262
+			justify    	0
+			label      	"<<Interface>>")
+		    icon       	"Interface"
+		    icon_style 	"Label"
+		    line_color 	3342489
+		    fill_color 	13434879
+		    quidu      	"36BB39BA00B2"
+		    width      	280
+		    height     	288
+		    annotation 	8
+		    autoResize 	TRUE)
+		(object RealizeView "" @16
+		    stereotype 	TRUE
+		    line_color 	3342489
+		    quidu      	"37BD3A1001AA"
+		    client     	@1
+		    supplier   	@15
+		    line_style 	0)
+		(object RealizeView "" @17
+		    stereotype 	TRUE
+		    line_color 	3342489
+		    quidu      	"37BD3A11022D"
+		    client     	@2
+		    supplier   	@15
+		    line_style 	0)
+		(object RealizeView "" @18
+		    stereotype 	TRUE
+		    line_color 	3342489
+		    quidu      	"37BD3A120315"
+		    client     	@3
+		    supplier   	@15
+		    line_style 	0)
+		(object RealizeView "" @19
+		    stereotype 	TRUE
+		    line_color 	3342489
+		    quidu      	"37BD3A140232"
+		    client     	@4
+		    supplier   	@15
+		    line_style 	0)
+		(object RealizeView "" @20
+		    stereotype 	TRUE
+		    line_color 	3342489
+		    quidu      	"37BD3A1600E0"
+		    client     	@5
+		    supplier   	@15
+		    line_style 	0)
+		(object RealizeView "" @21
+		    stereotype 	TRUE
+		    line_color 	3342489
+		    quidu      	"37BD3A170312"
+		    client     	@6
+		    supplier   	@15
+		    line_style 	0)
+		(object RealizeView "" @22
+		    stereotype 	TRUE
+		    line_color 	3342489
+		    quidu      	"37BD3A180350"
+		    client     	@7
+		    supplier   	@15
+		    line_style 	0)
+		(object RealizeView "" @23
+		    stereotype 	TRUE
+		    line_color 	3342489
+		    quidu      	"37BD3A19038D"
+		    client     	@8
+		    supplier   	@15
+		    line_style 	0)
+		(object RealizeView "" @24
+		    stereotype 	TRUE
+		    line_color 	3342489
+		    quidu      	"37BD3A1B000B"
+		    client     	@9
+		    supplier   	@15
+		    line_style 	0)
+		(object RealizeView "" @25
+		    stereotype 	TRUE
+		    line_color 	3342489
+		    quidu      	"37BD3A1D02DF"
+		    client     	@10
+		    supplier   	@15
+		    line_style 	0)
+		(object ClassView "Class" "Logical View::RingFuncs::Function2ODE" @26
+		    ShowCompartmentStereotypes 	TRUE
+		    IncludeAttribute 	TRUE
+		    location   	(1147, 217)
+		    label      	(object ItemLabel
+			Parent_View 	@26
+			location   	(996, 166)
+			fill_color 	13434879
+			nlines     	1
+			max_width  	302
+			justify    	0
+			label      	"Function2ODE")
+		    icon_style 	"Icon"
+		    line_color 	3342489
+		    fill_color 	13434879
+		    quidu      	"37BC93CF0236"
+		    width      	320
+		    height     	126
+		    annotation 	8
+		    autoResize 	TRUE)
+		(object AssociationViewNew "$UNNAMED$6" @27
+		    location   	(826, 217)
+		    stereotype 	TRUE
+		    line_color 	3342489
+		    quidu      	"37BC93CF0249"
+		    roleview_list 	(list RoleViews
+			(object RoleView "Fktn" @28
+			    Parent_View 	@27
+			    location   	(-104, -1302)
+			    label      	(object SegLabel @29
+				Parent_View 	@28
+				location   	(763, 259)
+				anchor     	1
+				anchor_loc 	1
+				nlines     	1
+				max_width  	108
+				justify    	0
+				label      	"#Fktn"
+				pctDist    	0.402516
+				height     	42
+				orientation 	0)
+			    stereotype 	TRUE
+			    line_color 	3342489
+			    quidu      	"37BC93CF024B"
+			    client     	@27
+			    supplier   	@15
+			    line_style 	0)
+			(object RoleView "$UNNAMED$7" @30
+			    Parent_View 	@27
+			    location   	(-104, -1302)
+			    label      	(object SegLabel @31
+				Parent_View 	@30
+				location   	(954, 259)
+				hidden     	TRUE
+				anchor     	1
+				anchor_loc 	1
+				nlines     	1
+				max_width  	450
+				justify    	0
+				label      	""
+				pctDist    	0.800000
+				height     	42
+				orientation 	1)
+			    stereotype 	TRUE
+			    line_color 	3342489
+			    quidu      	"37BC93CF024A"
+			    client     	@27
+			    supplier   	@26
+			    line_style 	0)))
+		(object ClassView "Class" "Logical View::Ring::intDGL" @32
+		    ShowCompartmentStereotypes 	TRUE
+		    IncludeAttribute 	TRUE
+		    IncludeOperation 	TRUE
+		    location   	(1829, 217)
+		    label      	(object ItemLabel
+			Parent_View 	@32
+			location   	(1701, 135)
+			fill_color 	13434879
+			nlines     	1
+			max_width  	256
+			justify    	0
+			label      	"intDGL")
+		    stereotype 	(object ItemLabel
+			Parent_View 	@32
+			location   	(1701, 85)
+			fill_color 	13434879
+			anchor     	10
+			nlines     	1
+			max_width  	256
+			justify    	0
+			label      	"<<Interface>>")
+		    icon       	"Interface"
+		    icon_style 	"Label"
+		    line_color 	3342489
+		    fill_color 	13434879
+		    quidu      	"37BC91A901E4"
+		    width      	274
+		    height     	288
+		    annotation 	8
+		    autoResize 	TRUE)
+		(object RealizeView "" @33
+		    stereotype 	TRUE
+		    line_color 	3342489
+		    quidu      	"37BD3A1C0098"
+		    client     	@26
+		    supplier   	@32
+		    line_style 	0)
+		(object RealizeView "" @34
+		    stereotype 	TRUE
+		    line_color 	3342489
+		    quidu      	"37BD3A1F0039"
+		    client     	@11
+		    supplier   	@32
+		    line_style 	0)
+		(object RealizeView "" @35
+		    stereotype 	TRUE
+		    line_color 	3342489
+		    quidu      	"37BD3A21014A"
+		    client     	@12
+		    supplier   	@32
+		    line_style 	0)
+		(object RealizeView "" @36
+		    stereotype 	TRUE
+		    line_color 	3342489
+		    quidu      	"37BD3A290047"
+		    client     	@13
+		    supplier   	@32
+		    line_style 	0)
+		(object RealizeView "" @37
+		    stereotype 	TRUE
+		    line_color 	3342489
+		    quidu      	"37BD3A2B0130"
+		    client     	@14
+		    supplier   	@32
+		    line_style 	0)
+		(object ClassView "Class" "Logical View::RingFuncs::OdeHeight2D" @38
+		    ShowCompartmentStereotypes 	TRUE
+		    IncludeAttribute 	TRUE
+		    location   	(1829, 806)
+		    label      	(object ItemLabel
+			Parent_View 	@38
+			location   	(1693, 755)
+			fill_color 	13434879
+			nlines     	1
+			max_width  	272
+			justify    	0
+			label      	"OdeHeight2D")
+		    icon_style 	"Icon"
+		    line_color 	3342489
+		    fill_color 	13434879
+		    quidu      	"37BD3A220250"
+		    width      	290
+		    height     	126
+		    annotation 	8
+		    autoResize 	TRUE)
+		(object RealizeView "" @39
+		    stereotype 	TRUE
+		    line_color 	3342489
+		    quidu      	"37BD3A2502D6"
+		    client     	@38
+		    supplier   	@32
+		    line_style 	0)
+		(object AssociationViewNew "$UNNAMED$8" @40
+		    location   	(1722, 530)
+		    stereotype 	TRUE
+		    line_color 	3342489
+		    quidu      	"37BD3A2602EC"
+		    roleview_list 	(list RoleViews
+			(object RoleView "ODE" @41
+			    Parent_View 	@40
+			    location   	(172, -1330)
+			    label      	(object SegLabel @42
+				Parent_View 	@41
+				location   	(1759, 568)
+				anchor     	1
+				anchor_loc 	1
+				nlines     	1
+				max_width  	108
+				justify    	0
+				label      	"#ODE"
+				pctDist    	-0.137237
+				height     	47
+				orientation 	1)
+			    stereotype 	TRUE
+			    line_color 	3342489
+			    quidu      	"37BD3A2602EE"
+			    client     	@40
+			    supplier   	@32
+			    line_style 	0)
+			(object RoleView "$UNNAMED$9" @43
+			    Parent_View 	@40
+			    location   	(172, -1330)
+			    label      	(object SegLabel @44
+				Parent_View 	@43
+				location   	(1733, 722)
+				hidden     	TRUE
+				anchor     	1
+				anchor_loc 	1
+				nlines     	1
+				max_width  	450
+				justify    	0
+				label      	""
+				pctDist    	0.800000
+				height     	42
+				orientation 	1)
+			    stereotype 	TRUE
+			    line_color 	3342489
+			    quidu      	"37BD3A2602ED"
+			    client     	@40
+			    supplier   	@38
+			    vertices   	(list Points
+				(1722, 530)
+				(1703, 587)
+				(1792, 742))
+			    line_style 	0)))))))

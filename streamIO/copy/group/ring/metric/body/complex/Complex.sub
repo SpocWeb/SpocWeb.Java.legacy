@@ -1,0 +1,376 @@
+
+(object Petal
+    version    	42
+    _written   	"Rose 4.5.8163.3"
+    charSet    	0)
+
+(object SubSystem "Complex"
+    is_unit    	TRUE
+    is_loaded  	TRUE
+    quid       	"37BC8EC90254"
+    visible_modules 	(list dependency_list
+	(object Dependency_Relationship
+	    quid       	"37BC8EC902DD"
+	    supplier   	"Component View::BaseCopy"
+	    quidu      	"36BABF4B0011"
+	    supplier_is_subsystem 	TRUE)
+	(object Dependency_Relationship
+	    quid       	"37BC8EC902DF"
+	    supplier   	"Component View::Group"
+	    quidu      	"36BB25E0024F"
+	    supplier_is_subsystem 	TRUE)
+	(object Dependency_Relationship
+	    quid       	"37BC8EC902E1"
+	    supplier   	"Component View::GroupM"
+	    quidu      	"36BB2CD10088"
+	    supplier_is_subsystem 	TRUE)
+	(object Dependency_Relationship
+	    quid       	"37BC8EC902E3"
+	    supplier   	"Component View::Ring"
+	    quidu      	"36BB392A02D1"
+	    supplier_is_subsystem 	TRUE)
+	(object Dependency_Relationship
+	    quid       	"37BC8EC902E5"
+	    supplier   	"Component View::Metric"
+	    quidu      	"36BB45940014"
+	    supplier_is_subsystem 	TRUE)
+	(object Dependency_Relationship
+	    quid       	"37BC8EC902E7"
+	    supplier   	"Component View::Body"
+	    quidu      	"36BB514B0391"
+	    supplier_is_subsystem 	TRUE)
+	(object Dependency_Relationship
+	    quid       	"37BC8EC902E9"
+	    supplier   	"Component View::ByRef"
+	    quidu      	"36BB4AA503DA"
+	    supplier_is_subsystem 	TRUE))
+    physical_models 	(list unit_reference_list
+	(object module "Complex" "NotAModuleType" "NotAModulePart"
+	    attributes 	(list Attribute_Set
+		(object Attribute
+		    tool       	"Java"
+		    name       	"FileName"
+		    value      	"D:\\Personal\\Code\\Java\\Complex\\Complex.java"))
+	    quid       	"37BC8EC90256"
+	    stereotype 	""
+	    visible_modules 	(list dependency_list
+		(object Dependency_Relationship
+		    quid       	"37BC8EC902DE"
+		    supplier   	"Component View::BaseCopy"
+		    quidu      	"36BABF4B0011"
+		    supplier_is_subsystem 	TRUE)
+		(object Dependency_Relationship
+		    quid       	"37BC8EC902E0"
+		    supplier   	"Component View::Group"
+		    quidu      	"36BB25E0024F"
+		    supplier_is_subsystem 	TRUE)
+		(object Dependency_Relationship
+		    quid       	"37BC8EC902E2"
+		    supplier   	"Component View::GroupM"
+		    quidu      	"36BB2CD10088"
+		    supplier_is_subsystem 	TRUE)
+		(object Dependency_Relationship
+		    quid       	"37BC8EC902E4"
+		    supplier   	"Component View::Ring"
+		    quidu      	"36BB392A02D1"
+		    supplier_is_subsystem 	TRUE)
+		(object Dependency_Relationship
+		    quid       	"37BC8EC902E6"
+		    supplier   	"Component View::Metric"
+		    quidu      	"36BB45940014"
+		    supplier_is_subsystem 	TRUE)
+		(object Dependency_Relationship
+		    quid       	"37BC8EC902E8"
+		    supplier   	"Component View::Body"
+		    quidu      	"36BB514B0391"
+		    supplier_is_subsystem 	TRUE)
+		(object Dependency_Relationship
+		    quid       	"37BC8EC902EA"
+		    supplier   	"Component View::ByRef::intMeasurable"
+		    quidu      	"36BB4E3E02B2"
+		    supplier_is_spec 	TRUE)
+		(object Dependency_Relationship
+		    quid       	"37BC8EC902EB"
+		    supplier   	"Component View::ByRef::measurable"
+		    quidu      	"36BB4E3D0300"
+		    supplier_is_spec 	TRUE)
+		(object Dependency_Relationship
+		    quid       	"37BD1C4E00FB"
+		    supplier   	"Component View::BaseCopy"
+		    quidu      	"36BABF4B0011"
+		    supplier_is_subsystem 	TRUE)
+		(object Dependency_Relationship
+		    quid       	"37BD1C4E00FC"
+		    supplier   	"Component View::Group"
+		    quidu      	"36BB25E0024F"
+		    supplier_is_subsystem 	TRUE)
+		(object Dependency_Relationship
+		    quid       	"37BD1C4E00FD"
+		    supplier   	"Component View::GroupM"
+		    quidu      	"36BB2CD10088"
+		    supplier_is_subsystem 	TRUE)
+		(object Dependency_Relationship
+		    quid       	"37BD1C4E00FE"
+		    supplier   	"Component View::Ring"
+		    quidu      	"36BB392A02D1"
+		    supplier_is_subsystem 	TRUE)
+		(object Dependency_Relationship
+		    quid       	"37BD1C4E0105"
+		    supplier   	"Component View::Metric"
+		    quidu      	"36BB45940014"
+		    supplier_is_subsystem 	TRUE)
+		(object Dependency_Relationship
+		    quid       	"37BD1C4E0106"
+		    supplier   	"Component View::Body"
+		    quidu      	"36BB514B0391"
+		    supplier_is_subsystem 	TRUE)
+		(object Dependency_Relationship
+		    quid       	"37BD365301CC"
+		    supplier   	"Component View::BaseCopy"
+		    quidu      	"36BABF4B0011"
+		    supplier_is_subsystem 	TRUE)
+		(object Dependency_Relationship
+		    quid       	"37BD365301CD"
+		    supplier   	"Component View::Group"
+		    quidu      	"36BB25E0024F"
+		    supplier_is_subsystem 	TRUE)
+		(object Dependency_Relationship
+		    quid       	"37BD365301CE"
+		    supplier   	"Component View::GroupM"
+		    quidu      	"36BB2CD10088"
+		    supplier_is_subsystem 	TRUE)
+		(object Dependency_Relationship
+		    quid       	"37BD365301D6"
+		    supplier   	"Component View::Ring"
+		    quidu      	"36BB392A02D1"
+		    supplier_is_subsystem 	TRUE)
+		(object Dependency_Relationship
+		    quid       	"37BD365301D7"
+		    supplier   	"Component View::Metric"
+		    quidu      	"36BB45940014"
+		    supplier_is_subsystem 	TRUE)
+		(object Dependency_Relationship
+		    quid       	"37BD365301D8"
+		    supplier   	"Component View::Body"
+		    quidu      	"36BB514B0391"
+		    supplier_is_subsystem 	TRUE))
+	    language   	"Java")
+	(object module "FourierFuncs" "NotAModuleType" "NotAModulePart"
+	    attributes 	(list Attribute_Set
+		(object Attribute
+		    tool       	"Java"
+		    name       	"FileName"
+		    value      	"D:\\Personal\\Code\\Java\\Complex\\FourierFuncs.java"))
+	    quid       	"37BC8ECA0038"
+	    stereotype 	""
+	    visible_modules 	(list dependency_list
+		(object Dependency_Relationship
+		    quid       	"37BC8ECA0051"
+		    supplier   	"Component View::Group"
+		    quidu      	"36BB25E0024F"
+		    supplier_is_subsystem 	TRUE)
+		(object Dependency_Relationship
+		    quid       	"37BC8ECA0052"
+		    supplier   	"Component View::GroupM"
+		    quidu      	"36BB2CD10088"
+		    supplier_is_subsystem 	TRUE)
+		(object Dependency_Relationship
+		    quid       	"37BC8ECA0053"
+		    supplier   	"Component View::Ring"
+		    quidu      	"36BB392A02D1"
+		    supplier_is_subsystem 	TRUE)
+		(object Dependency_Relationship
+		    quid       	"37BC8ECA0054"
+		    supplier   	"Component View::Metric"
+		    quidu      	"36BB45940014"
+		    supplier_is_subsystem 	TRUE)
+		(object Dependency_Relationship
+		    quid       	"37BC8ECA0055"
+		    supplier   	"Component View::Body"
+		    quidu      	"36BB514B0391"
+		    supplier_is_subsystem 	TRUE)
+		(object Dependency_Relationship
+		    quid       	"37BC8ECA0056"
+		    supplier   	"Component View::ByRef"
+		    quidu      	"36BB4AA503DA"
+		    supplier_is_subsystem 	TRUE)
+		(object Dependency_Relationship
+		    quid       	"37BD1C4F02AB"
+		    supplier   	"Component View::Group"
+		    quidu      	"36BB25E0024F"
+		    supplier_is_subsystem 	TRUE)
+		(object Dependency_Relationship
+		    quid       	"37BD1C4F02AC"
+		    supplier   	"Component View::GroupM"
+		    quidu      	"36BB2CD10088"
+		    supplier_is_subsystem 	TRUE)
+		(object Dependency_Relationship
+		    quid       	"37BD1C4F02B5"
+		    supplier   	"Component View::Ring"
+		    quidu      	"36BB392A02D1"
+		    supplier_is_subsystem 	TRUE)
+		(object Dependency_Relationship
+		    quid       	"37BD1C4F02B6"
+		    supplier   	"Component View::Metric"
+		    quidu      	"36BB45940014"
+		    supplier_is_subsystem 	TRUE)
+		(object Dependency_Relationship
+		    quid       	"37BD1C4F02B7"
+		    supplier   	"Component View::Body"
+		    quidu      	"36BB514B0391"
+		    supplier_is_subsystem 	TRUE)
+		(object Dependency_Relationship
+		    quid       	"37BD1C4F02B8"
+		    supplier   	"Component View::ByRef"
+		    quidu      	"36BB4AA503DA"
+		    supplier_is_subsystem 	TRUE)
+		(object Dependency_Relationship
+		    quid       	"37BD3654017D"
+		    supplier   	"Component View::Group"
+		    quidu      	"36BB25E0024F"
+		    supplier_is_subsystem 	TRUE)
+		(object Dependency_Relationship
+		    quid       	"37BD3654017E"
+		    supplier   	"Component View::GroupM"
+		    quidu      	"36BB2CD10088"
+		    supplier_is_subsystem 	TRUE)
+		(object Dependency_Relationship
+		    quid       	"37BD3654017F"
+		    supplier   	"Component View::Ring"
+		    quidu      	"36BB392A02D1"
+		    supplier_is_subsystem 	TRUE)
+		(object Dependency_Relationship
+		    quid       	"37BD36540180"
+		    supplier   	"Component View::Metric"
+		    quidu      	"36BB45940014"
+		    supplier_is_subsystem 	TRUE)
+		(object Dependency_Relationship
+		    quid       	"37BD36540187"
+		    supplier   	"Component View::Body"
+		    quidu      	"36BB514B0391"
+		    supplier_is_subsystem 	TRUE)
+		(object Dependency_Relationship
+		    quid       	"37BD36540188"
+		    supplier   	"Component View::ByRef"
+		    quidu      	"36BB4AA503DA"
+		    supplier_is_subsystem 	TRUE))
+	    language   	"Java")
+	(object module "Polar" "NotAModuleType" "NotAModulePart"
+	    attributes 	(list Attribute_Set
+		(object Attribute
+		    tool       	"Java"
+		    name       	"FileName"
+		    value      	"D:\\Personal\\Code\\Java\\Complex\\Polar.java"))
+	    quid       	"37BC8ECA016F"
+	    stereotype 	""
+	    visible_modules 	(list dependency_list
+		(object Dependency_Relationship
+		    quid       	"37BC8ECA01C7"
+		    supplier   	"Component View::BaseCopy"
+		    quidu      	"36BABF4B0011"
+		    supplier_is_subsystem 	TRUE)
+		(object Dependency_Relationship
+		    quid       	"37BC8ECA01C8"
+		    supplier   	"Component View::Group"
+		    quidu      	"36BB25E0024F"
+		    supplier_is_subsystem 	TRUE)
+		(object Dependency_Relationship
+		    quid       	"37BC8ECA01C9"
+		    supplier   	"Component View::GroupM"
+		    quidu      	"36BB2CD10088"
+		    supplier_is_subsystem 	TRUE)
+		(object Dependency_Relationship
+		    quid       	"37BC8ECA01CA"
+		    supplier   	"Component View::Ring"
+		    quidu      	"36BB392A02D1"
+		    supplier_is_subsystem 	TRUE)
+		(object Dependency_Relationship
+		    quid       	"37BC8ECA01CB"
+		    supplier   	"Component View::Metric"
+		    quidu      	"36BB45940014"
+		    supplier_is_subsystem 	TRUE)
+		(object Dependency_Relationship
+		    quid       	"37BC8ECA01CC"
+		    supplier   	"Component View::Body"
+		    quidu      	"36BB514B0391"
+		    supplier_is_subsystem 	TRUE)
+		(object Dependency_Relationship
+		    quid       	"37BD1C5201A1"
+		    supplier   	"Component View::BaseCopy"
+		    quidu      	"36BABF4B0011"
+		    supplier_is_subsystem 	TRUE)
+		(object Dependency_Relationship
+		    quid       	"37BD1C5201A2"
+		    supplier   	"Component View::Group"
+		    quidu      	"36BB25E0024F"
+		    supplier_is_subsystem 	TRUE)
+		(object Dependency_Relationship
+		    quid       	"37BD1C5201A3"
+		    supplier   	"Component View::GroupM"
+		    quidu      	"36BB2CD10088"
+		    supplier_is_subsystem 	TRUE)
+		(object Dependency_Relationship
+		    quid       	"37BD1C5201AB"
+		    supplier   	"Component View::Ring"
+		    quidu      	"36BB392A02D1"
+		    supplier_is_subsystem 	TRUE)
+		(object Dependency_Relationship
+		    quid       	"37BD1C5201AC"
+		    supplier   	"Component View::Metric"
+		    quidu      	"36BB45940014"
+		    supplier_is_subsystem 	TRUE)
+		(object Dependency_Relationship
+		    quid       	"37BD1C5201AD"
+		    supplier   	"Component View::Body"
+		    quidu      	"36BB514B0391"
+		    supplier_is_subsystem 	TRUE)
+		(object Dependency_Relationship
+		    quid       	"37BD36560324"
+		    supplier   	"Component View::BaseCopy"
+		    quidu      	"36BABF4B0011"
+		    supplier_is_subsystem 	TRUE)
+		(object Dependency_Relationship
+		    quid       	"37BD36560325"
+		    supplier   	"Component View::Group"
+		    quidu      	"36BB25E0024F"
+		    supplier_is_subsystem 	TRUE)
+		(object Dependency_Relationship
+		    quid       	"37BD36560326"
+		    supplier   	"Component View::GroupM"
+		    quidu      	"36BB2CD10088"
+		    supplier_is_subsystem 	TRUE)
+		(object Dependency_Relationship
+		    quid       	"37BD3656032E"
+		    supplier   	"Component View::Ring"
+		    quidu      	"36BB392A02D1"
+		    supplier_is_subsystem 	TRUE)
+		(object Dependency_Relationship
+		    quid       	"37BD3656032F"
+		    supplier   	"Component View::Metric"
+		    quidu      	"36BB45940014"
+		    supplier_is_subsystem 	TRUE)
+		(object Dependency_Relationship
+		    quid       	"37BD36560330"
+		    supplier   	"Component View::Body"
+		    quidu      	"36BB514B0391"
+		    supplier_is_subsystem 	TRUE))
+	    language   	"Java")
+	(object module "testComplex" "NotAModuleType" "NotAModulePart"
+	    attributes 	(list Attribute_Set
+		(object Attribute
+		    tool       	"Java"
+		    name       	"FileName"
+		    value      	"D:\\Personal\\Code\\Java\\Complex\\testComplex.java"))
+	    quid       	"37BC8ECA01E7"
+	    stereotype 	""
+	    language   	"Java"))
+    physical_presentations 	(list unit_reference_list
+	(object Module_Diagram "Complex"
+	    quid       	"37BF0A1801CB"
+	    title      	"Complex"
+	    zoom       	100
+	    max_height 	28350
+	    max_width  	21600
+	    origin_x   	0
+	    origin_y   	0
+	    items      	(list diagram_item_list))))

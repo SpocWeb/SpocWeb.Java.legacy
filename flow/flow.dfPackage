@@ -1,0 +1,45 @@
+package iddzxy8bqh0rautbqh0sk11;
+
+/**
+@version 2.0
+@physicalPackage
+@__modelType diagram 
+*/
+class diagram {
+/**
+@__ref <oiref:design#Class#idfglbvbqh0rautbqh0sr26.diagram:oiref><oihard>
+@__modelType reference
+@__fqn <oiref:#Package#flow.additive:oiref> 
+*/
+class reference {
+}/**
+@__ref <oiref:design#Class#idaubtybqh0rautbqh0sr2g.diagram:oiref><oihard>
+@__modelType reference
+@__fqn <oiref:#Package#flow.push:oiref> 
+*/
+class reference366 {
+}/**
+@__ref <oiref:design#Class#idogrvbqh0rautbqh0sr2g.diagram:oiref><oihard>
+@__modelType reference
+@__fqn <oiref:#Package#flow.pull:oiref> 
+*/
+class reference367 {
+}/**
+@__ref <oiref:java#Class#flow.ScalarFlowConnection:oiref><oihard>
+@__modelType reference 
+*/
+class reference368 {
+}}/**
+@__tags
+@shapeType ClassDiagram 
+*/
+class __tags {
+}/**
+@__options 
+*/
+class __options {
+}/**
+@__positions 
+*/
+class __positions {
+}

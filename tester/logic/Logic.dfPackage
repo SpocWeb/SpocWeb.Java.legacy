@@ -1,0 +1,62 @@
+package id445fmc9fodqegc9fq5dvi;
+
+/**
+@version 2.0
+@physicalPackage
+@__modelType diagram 
+*/
+class diagram {
+/**
+@shapeType DependencyLink
+@__modelType link
+@__ref <oiref:design#Class#id457m4c9fodqegc9fq5a4l.diagram:oiref><oihard>
+@automatic 
+*/
+class link {
+}/**
+@shapeType DependencyLink
+@__modelType link
+@__ref <oiref:design#Class#id62hhc9fodqegc9fq5d8p.diagram:oiref><oihard>
+@automatic 
+*/
+class link100 {
+}/**
+@__ref <oiref:java#Class#Testers.Logic.DecisionTool:oiref><oihard>
+@__modelType reference 
+*/
+class reference {
+}/**
+@__ref <oiref:java#Class#Testers.Logic.DecisionMaker:oiref><oihard>
+@__modelType reference 
+*/
+class reference35 {
+}/**
+@__ref <oiref:java#Class#Testers.Logic.ConditionTable:oiref><oihard>
+@__modelType reference 
+*/
+class reference36 {
+}/**
+@__ref <oiref:java#Class#Testers.Logic.DecisionTable:oiref><oihard>
+@__modelType reference 
+*/
+class reference37 {
+}}/**
+@__tags
+@shapeType ClassDiagram 
+*/
+class __tags {
+}/**
+@__options 
+*/
+class __options {
+}/**
+@__positions <oigroup:<oiref:java#Extends#Testers.Logic.DecisionTable#Testers.Logic.ConditionTable:oiref>=110,228,110,168:oigroup>
+<oigroup:<oiref:java#Class#Testers.Logic.ConditionTable:oiref>=10,10,200,158,1:oigroup>
+<oigroup:<oiref:java#Extends#Testers.Logic.DecisionTool#Testers.Logic.DecisionTable:oiref>=110,462,110,338:oigroup>
+<oigroup:<oiref:java#Class#Testers.Logic.DecisionTool:oiref>=10,462,200,126,1:oigroup>
+<oigroup:<oiref:java#Extends#Testers.Logic.DecisionMaker#Testers.Logic.DecisionTool:oiref>=110,648,110,588:oigroup>
+<oigroup:<oiref:java#Class#Testers.Logic.DecisionMaker:oiref>=10,648,200,158,1:oigroup>
+<oigroup:<oiref:java#Class#Testers.Logic.DecisionTable:oiref>=10,228,200,110,1:oigroup>
+*/
+class __positions {
+}

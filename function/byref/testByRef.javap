@@ -1,0 +1,7387 @@
+Compiled from testByRef.java
+public class ByRef.testByRef extends java.lang.Object {
+    public static final float ValuesGammaP[][];
+    public static final float ValuesGamma[][];
+    public static final float ValuesBesselJ0[][];
+    public static final float ValuesBesselY0[][];
+    public static final float ValuesBesselJ1[][];
+    public static final float ValuesBesselY1[][];
+    public static final float ValuesBesselJn[][];
+    public static final float ValuesBesselYn[][];
+    public static final float ValuesBesselI0[][];
+    public static final float ValuesBesselK0[][];
+    public static final float ValuesBesselI1[][];
+    public static final float ValuesBesselK1[][];
+    public static final float ValuesBesselKn[][];
+    public static final float ValuesBesselIn[][];
+    public static final float ValuesErrFc[][];
+    public static final float ValuesCISIEI[][];
+    public static final float ValuesGauss[][];
+    public static final float ValuesBetaI[][];
+    static {};
+    public ByRef.testByRef();
+    public static void main(java.lang.String[]) throws java.lang.InstantiationException, java.lang.ClassNotFoundException, java.io.IOException, java.lang.IllegalAccessException, java.lang.NoSuchFieldException;
+    public static void testCopyAt() throws java.io.IOException, java.lang.IllegalAccessException, java.lang.InstantiationException, java.lang.ClassNotFoundException, java.lang.NoSuchFieldException;
+    public static void testDirectAccess() throws java.io.IOException;
+    public static void testSerial() throws java.io.IOException, java.lang.IllegalAccessException, java.lang.InstantiationException, java.lang.ClassNotFoundException, java.lang.NoSuchFieldException;
+}
+
+Method static {}
+   0 bipush 21
+   2 anewarray class #514 <Class [F>
+   5 dup
+   6 iconst_0
+   7 iconst_3
+   8 newarray float
+  10 dup
+  11 iconst_0
+  12 ldc #1 <Real 0.1>
+  14 fastore
+  15 dup
+  16 iconst_1
+  17 ldc_w #375 <Real 0.03162278>
+  20 fastore
+  21 dup
+  22 iconst_2
+  23 ldc #243 <Real 0.7420263>
+  25 fastore
+  26 aastore
+  27 dup
+  28 iconst_1
+  29 iconst_3
+  30 newarray float
+  32 dup
+  33 iconst_0
+  34 ldc #1 <Real 0.1>
+  36 fastore
+  37 dup
+  38 iconst_1
+  39 ldc_w #403 <Real 0.31622776>
+  42 fastore
+  43 dup
+  44 iconst_2
+  45 ldc_w #256 <Real 0.9119753>
+  48 fastore
+  49 aastore
+  50 dup
+  51 iconst_2
+  52 iconst_3
+  53 newarray float
+  55 dup
+  56 iconst_0
+  57 ldc #1 <Real 0.1>
+  59 fastore
+  60 dup
+  61 iconst_1
+  62 ldc_w #291 <Real 1.5811388>
+  65 fastore
+  66 dup
+  67 iconst_2
+  68 ldc_w #271 <Real 0.9898955>
+  71 fastore
+  72 aastore
+  73 dup
+  74 iconst_3
+  75 iconst_3
+  76 newarray float
+  78 dup
+  79 iconst_0
+  80 ldc #5 <Real 0.5>
+  82 fastore
+  83 dup
+  84 iconst_1
+  85 ldc_w #380 <Real 0.07071068>
+  88 fastore
+  89 dup
+  90 iconst_2
+  91 ldc #196 <Real 0.2931279>
+  93 fastore
+  94 aastore
+  95 dup
+  96 iconst_4
+  97 iconst_3
+  98 newarray float
+ 100 dup
+ 101 iconst_0
+ 102 ldc #5 <Real 0.5>
+ 104 fastore
+ 105 dup
+ 106 iconst_1
+ 107 ldc_w #410 <Real 0.70710677>
+ 110 fastore
+ 111 dup
+ 112 iconst_2
+ 113 ldc #247 <Real 0.7656418>
+ 115 fastore
+ 116 aastore
+ 117 dup
+ 118 iconst_5
+ 119 iconst_3
+ 120 newarray float
+ 122 dup
+ 123 iconst_0
+ 124 ldc #5 <Real 0.5>
+ 126 fastore
+ 127 dup
+ 128 iconst_1
+ 129 ldc #125 <Real 3.535534>
+ 131 fastore
+ 132 dup
+ 133 iconst_2
+ 134 ldc_w #272 <Real 0.9921661>
+ 137 fastore
+ 138 aastore
+ 139 dup
+ 140 bipush 6
+ 142 iconst_3
+ 143 newarray float
+ 145 dup
+ 146 iconst_0
+ 147 fconst_1
+ 148 fastore
+ 149 dup
+ 150 iconst_1
+ 151 ldc #1 <Real 0.1>
+ 153 fastore
+ 154 dup
+ 155 iconst_2
+ 156 ldc #163 <Real 0.0951626>
+ 158 fastore
+ 159 aastore
+ 160 dup
+ 161 bipush 7
+ 163 iconst_3
+ 164 newarray float
+ 166 dup
+ 167 iconst_0
+ 168 fconst_1
+ 169 fastore
+ 170 dup
+ 171 iconst_1
+ 172 fconst_1
+ 173 fastore
+ 174 dup
+ 175 iconst_2
+ 176 ldc #234 <Real 0.6321206>
+ 178 fastore
+ 179 aastore
+ 180 dup
+ 181 bipush 8
+ 183 iconst_3
+ 184 newarray float
+ 186 dup
+ 187 iconst_0
+ 188 fconst_1
+ 189 fastore
+ 190 dup
+ 191 iconst_1
+ 192 ldc #27 <Real 5.0>
+ 194 fastore
+ 195 dup
+ 196 iconst_2
+ 197 ldc_w #274 <Real 0.9932621>
+ 200 fastore
+ 201 aastore
+ 202 dup
+ 203 bipush 9
+ 205 iconst_3
+ 206 newarray float
+ 208 dup
+ 209 iconst_0
+ 210 ldc #10 <Real 1.1>
+ 212 fastore
+ 213 dup
+ 214 iconst_1
+ 215 ldc_w #384 <Real 0.10488088>
+ 218 fastore
+ 219 dup
+ 220 iconst_2
+ 221 ldc #160 <Real 0.0757471>
+ 223 fastore
+ 224 aastore
+ 225 dup
+ 226 bipush 10
+ 228 iconst_3
+ 229 newarray float
+ 231 dup
+ 232 iconst_0
+ 233 ldc #10 <Real 1.1>
+ 235 fastore
+ 236 dup
+ 237 iconst_1
+ 238 ldc_w #278 <Real 1.0488088>
+ 241 fastore
+ 242 dup
+ 243 iconst_2
+ 244 ldc #233 <Real 0.6076457>
+ 246 fastore
+ 247 aastore
+ 248 dup
+ 249 bipush 11
+ 251 iconst_3
+ 252 newarray float
+ 254 dup
+ 255 iconst_0
+ 256 ldc #10 <Real 1.1>
+ 258 fastore
+ 259 dup
+ 260 iconst_1
+ 261 ldc_w #327 <Real 5.2440443>
+ 264 fastore
+ 265 dup
+ 266 iconst_2
+ 267 ldc_w #275 <Real 0.9933425>
+ 270 fastore
+ 271 aastore
+ 272 dup
+ 273 bipush 12
+ 275 iconst_3
+ 276 newarray float
+ 278 dup
+ 279 iconst_0
+ 280 fconst_2
+ 281 fastore
+ 282 dup
+ 283 iconst_1
+ 284 ldc_w #391 <Real 0.14142136>
+ 287 fastore
+ 288 dup
+ 289 iconst_2
+ 290 ldc #148 <Real 0.0091054>
+ 292 fastore
+ 293 aastore
+ 294 dup
+ 295 bipush 13
+ 297 iconst_3
+ 298 newarray float
+ 300 dup
+ 301 iconst_0
+ 302 fconst_2
+ 303 fastore
+ 304 dup
+ 305 iconst_1
+ 306 ldc_w #288 <Real 1.4142137>
+ 309 fastore
+ 310 dup
+ 311 iconst_2
+ 312 ldc #213 <Real 0.4130643>
+ 314 fastore
+ 315 aastore
+ 316 dup
+ 317 bipush 14
+ 319 iconst_3
+ 320 newarray float
+ 322 dup
+ 323 iconst_0
+ 324 fconst_2
+ 325 fastore
+ 326 dup
+ 327 iconst_1
+ 328 ldc #133 <Real 7.071068>
+ 330 fastore
+ 331 dup
+ 332 iconst_2
+ 333 ldc #101 <Real 0.993145>
+ 335 fastore
+ 336 aastore
+ 337 dup
+ 338 bipush 15
+ 340 iconst_3
+ 341 newarray float
+ 343 dup
+ 344 iconst_0
+ 345 ldc #28 <Real 6.0>
+ 347 fastore
+ 348 dup
+ 349 iconst_1
+ 350 ldc_w #310 <Real 2.4494896>
+ 353 fastore
+ 354 dup
+ 355 iconst_2
+ 356 ldc #152 <Real 0.0387318>
+ 358 fastore
+ 359 aastore
+ 360 dup
+ 361 bipush 16
+ 363 iconst_3
+ 364 newarray float
+ 366 dup
+ 367 iconst_0
+ 368 ldc #28 <Real 6.0>
+ 370 fastore
+ 371 dup
+ 372 iconst_1
+ 373 ldc_w #297 <Real 12.247449>
+ 376 fastore
+ 377 dup
+ 378 iconst_2
+ 379 ldc_w #268 <Real 0.9825937>
+ 382 fastore
+ 383 aastore
+ 384 dup
+ 385 bipush 17
+ 387 iconst_3
+ 388 newarray float
+ 390 dup
+ 391 iconst_0
+ 392 ldc #51 <Real 11.0>
+ 394 fastore
+ 395 dup
+ 396 iconst_1
+ 397 ldc_w #299 <Real 16.583124>
+ 400 fastore
+ 401 dup
+ 402 iconst_2
+ 403 ldc_w #260 <Real 0.9404267>
+ 406 fastore
+ 407 aastore
+ 408 dup
+ 409 bipush 18
+ 411 iconst_3
+ 412 newarray float
+ 414 dup
+ 415 iconst_0
+ 416 ldc #58 <Real 26.0>
+ 418 fastore
+ 419 dup
+ 420 iconst_1
+ 421 ldc_w #317 <Real 25.495098>
+ 424 fastore
+ 425 dup
+ 426 iconst_2
+ 427 ldc #224 <Real 0.4863866>
+ 429 fastore
+ 430 aastore
+ 431 dup
+ 432 bipush 19
+ 434 iconst_3
+ 435 newarray float
+ 437 dup
+ 438 iconst_0
+ 439 ldc #62 <Real 41.0>
+ 441 fastore
+ 442 dup
+ 443 iconst_1
+ 444 ldc #129 <Real 44.82187>
+ 446 fastore
+ 447 dup
+ 448 iconst_2
+ 449 ldc #242 <Real 0.7359709>
+ 451 fastore
+ 452 aastore
+ 453 dup
+ 454 bipush 20
+ 456 iconst_3
+ 457 newarray float
+ 459 dup
+ 460 iconst_0
+ 461 fconst_1
+ 462 fastore
+ 463 dup
+ 464 iconst_1
+ 465 ldc #1 <Real 0.1>
+ 467 fastore
+ 468 dup
+ 469 iconst_2
+ 470 ldc #163 <Real 0.0951626>
+ 472 fastore
+ 473 aastore
+ 474 putstatic #562 <Field float ValuesGammaP[][]>
+ 477 bipush 22
+ 479 anewarray class #514 <Class [F>
+ 482 dup
+ 483 iconst_0
+ 484 iconst_2
+ 485 newarray float
+ 487 dup
+ 488 iconst_0
+ 489 fconst_1
+ 490 fastore
+ 491 dup
+ 492 iconst_1
+ 493 fconst_1
+ 494 fastore
+ 495 aastore
+ 496 dup
+ 497 iconst_1
+ 498 iconst_2
+ 499 newarray float
+ 501 dup
+ 502 iconst_0
+ 503 ldc #11 <Real 1.2>
+ 505 fastore
+ 506 dup
+ 507 iconst_1
+ 508 ldc #99 <Real 0.918169>
+ 510 fastore
+ 511 aastore
+ 512 dup
+ 513 iconst_2
+ 514 iconst_2
+ 515 newarray float
+ 517 dup
+ 518 iconst_0
+ 519 ldc #13 <Real 1.4>
+ 521 fastore
+ 522 dup
+ 523 iconst_1
+ 524 ldc #96 <Real 0.887264>
+ 526 fastore
+ 527 aastore
+ 528 dup
+ 529 iconst_3
+ 530 iconst_2
+ 531 newarray float
+ 533 dup
+ 534 iconst_0
+ 535 ldc #14 <Real 1.5>
+ 537 fastore
+ 538 dup
+ 539 iconst_1
+ 540 ldc #95 <Real 0.886227>
+ 542 fastore
+ 543 aastore
+ 544 dup
+ 545 iconst_4
+ 546 iconst_2
+ 547 newarray float
+ 549 dup
+ 550 iconst_0
+ 551 ldc #15 <Real 1.6>
+ 553 fastore
+ 554 dup
+ 555 iconst_1
+ 556 ldc #97 <Real 0.893515>
+ 558 fastore
+ 559 aastore
+ 560 dup
+ 561 iconst_5
+ 562 iconst_2
+ 563 newarray float
+ 565 dup
+ 566 iconst_0
+ 567 ldc #17 <Real 1.8>
+ 569 fastore
+ 570 dup
+ 571 iconst_1
+ 572 ldc #100 <Real 0.931384>
+ 574 fastore
+ 575 aastore
+ 576 dup
+ 577 bipush 6
+ 579 iconst_2
+ 580 newarray float
+ 582 dup
+ 583 iconst_0
+ 584 fconst_2
+ 585 fastore
+ 586 dup
+ 587 iconst_1
+ 588 fconst_1
+ 589 fastore
+ 590 aastore
+ 591 dup
+ 592 bipush 7
+ 594 iconst_2
+ 595 newarray float
+ 597 dup
+ 598 iconst_0
+ 599 ldc #2 <Real 0.2>
+ 601 fastore
+ 602 dup
+ 603 iconst_1
+ 604 ldc #128 <Real 4.590845>
+ 606 fastore
+ 607 aastore
+ 608 dup
+ 609 bipush 8
+ 611 iconst_2
+ 612 newarray float
+ 614 dup
+ 615 iconst_0
+ 616 ldc #4 <Real 0.4>
+ 618 fastore
+ 619 dup
+ 620 iconst_1
+ 621 ldc #86 <Real 2.21816>
+ 623 fastore
+ 624 aastore
+ 625 dup
+ 626 bipush 9
+ 628 iconst_2
+ 629 newarray float
+ 631 dup
+ 632 iconst_0
+ 633 ldc #5 <Real 0.5>
+ 635 fastore
+ 636 dup
+ 637 iconst_1
+ 638 ldc #117 <Real 1.772454>
+ 640 fastore
+ 641 aastore
+ 642 dup
+ 643 bipush 10
+ 645 iconst_2
+ 646 newarray float
+ 648 dup
+ 649 iconst_0
+ 650 ldc #6 <Real 0.6>
+ 652 fastore
+ 653 dup
+ 654 iconst_1
+ 655 ldc #107 <Real 1.489192>
+ 657 fastore
+ 658 aastore
+ 659 dup
+ 660 bipush 11
+ 662 iconst_2
+ 663 newarray float
+ 665 dup
+ 666 iconst_0
+ 667 ldc #8 <Real 0.8>
+ 669 fastore
+ 670 dup
+ 671 iconst_1
+ 672 ldc #81 <Real 1.16423>
+ 674 fastore
+ 675 aastore
+ 676 dup
+ 677 bipush 12
+ 679 iconst_2
+ 680 newarray float
+ 682 dup
+ 683 iconst_0
+ 684 ldc #36 <Real -0.2>
+ 686 fastore
+ 687 dup
+ 688 iconst_1
+ 689 ldc_w #328 <Real 5.8211484>
+ 692 fastore
+ 693 aastore
+ 694 dup
+ 695 bipush 13
+ 697 iconst_2
+ 698 newarray float
+ 700 dup
+ 701 iconst_0
+ 702 ldc #37 <Real -0.4>
+ 704 fastore
+ 705 dup
+ 706 iconst_1
+ 707 ldc_w #322 <Real 3.7229805>
+ 710 fastore
+ 711 aastore
+ 712 dup
+ 713 bipush 14
+ 715 iconst_2
+ 716 newarray float
+ 718 dup
+ 719 iconst_0
+ 720 ldc #38 <Real -0.5>
+ 722 fastore
+ 723 dup
+ 724 iconst_1
+ 725 ldc_w #320 <Real 3.5449078>
+ 728 fastore
+ 729 aastore
+ 730 dup
+ 731 bipush 15
+ 733 iconst_2
+ 734 newarray float
+ 736 dup
+ 737 iconst_0
+ 738 ldc #39 <Real -0.6>
+ 740 fastore
+ 741 dup
+ 742 iconst_1
+ 743 ldc_w #321 <Real 3.6969328>
+ 746 fastore
+ 747 aastore
+ 748 dup
+ 749 bipush 16
+ 751 iconst_2
+ 752 newarray float
+ 754 dup
+ 755 iconst_0
+ 756 ldc #40 <Real -0.8>
+ 758 fastore
+ 759 dup
+ 760 iconst_1
+ 761 ldc #131 <Real 5.738555>
+ 763 fastore
+ 764 aastore
+ 765 dup
+ 766 bipush 17
+ 768 iconst_2
+ 769 newarray float
+ 771 dup
+ 772 iconst_0
+ 773 ldc #42 <Real -1.5>
+ 775 fastore
+ 776 dup
+ 777 iconst_1
+ 778 ldc_w #309 <Real 2.3632717>
+ 781 fastore
+ 782 aastore
+ 783 dup
+ 784 bipush 18
+ 786 iconst_2
+ 787 newarray float
+ 789 dup
+ 790 iconst_0
+ 791 ldc #50 <Real 10.0>
+ 793 fastore
+ 794 dup
+ 795 iconst_1
+ 796 ldc #127 <Real 362880.0>
+ 798 fastore
+ 799 aastore
+ 800 dup
+ 801 bipush 19
+ 803 iconst_2
+ 804 newarray float
+ 806 dup
+ 807 iconst_0
+ 808 ldc #57 <Real 20.0>
+ 810 fastore
+ 811 dup
+ 812 iconst_1
+ 813 ldc_w #482 <Real 1.21645096E17>
+ 816 fastore
+ 817 aastore
+ 818 dup
+ 819 bipush 20
+ 821 iconst_2
+ 822 newarray float
+ 824 dup
+ 825 iconst_0
+ 826 ldc #59 <Real 30.0>
+ 828 fastore
+ 829 dup
+ 830 iconst_1
+ 831 ldc_w #445 <Real 8.841762E30>
+ 834 fastore
+ 835 aastore
+ 836 dup
+ 837 bipush 21
+ 839 iconst_2
+ 840 newarray float
+ 842 dup
+ 843 iconst_0
+ 844 fconst_1
+ 845 fastore
+ 846 dup
+ 847 iconst_1
+ 848 fconst_1
+ 849 fastore
+ 850 aastore
+ 851 putstatic #561 <Field float ValuesGamma[][]>
+ 854 bipush 21
+ 856 anewarray class #514 <Class [F>
+ 859 dup
+ 860 iconst_0
+ 861 iconst_2
+ 862 newarray float
+ 864 dup
+ 865 iconst_0
+ 866 ldc #46 <Real -5.0>
+ 868 fastore
+ 869 dup
+ 870 iconst_1
+ 871 ldc_w #350 <Real -0.1775968>
+ 874 fastore
+ 875 aastore
+ 876 dup
+ 877 iconst_1
+ 878 iconst_2
+ 879 newarray float
+ 881 dup
+ 882 iconst_0
+ 883 ldc #45 <Real -4.0>
+ 885 fastore
+ 886 dup
+ 887 iconst_1
+ 888 ldc_w #360 <Real -0.3971498>
+ 891 fastore
+ 892 aastore
+ 893 dup
+ 894 iconst_2
+ 895 iconst_2
+ 896 newarray float
+ 898 dup
+ 899 iconst_0
+ 900 ldc #44 <Real -3.0>
+ 902 fastore
+ 903 dup
+ 904 iconst_1
+ 905 ldc #140 <Real -0.260052>
+ 907 fastore
+ 908 aastore
+ 909 dup
+ 910 iconst_3
+ 911 iconst_2
+ 912 newarray float
+ 914 dup
+ 915 iconst_0
+ 916 ldc #43 <Real -2.0>
+ 918 fastore
+ 919 dup
+ 920 iconst_1
+ 921 ldc #187 <Real 0.2238908>
+ 923 fastore
+ 924 aastore
+ 925 dup
+ 926 iconst_4
+ 927 iconst_2
+ 928 newarray float
+ 930 dup
+ 931 iconst_0
+ 932 ldc #41 <Real -1.0>
+ 934 fastore
+ 935 dup
+ 936 iconst_1
+ 937 ldc #245 <Real 0.7651976>
+ 939 fastore
+ 940 aastore
+ 941 dup
+ 942 iconst_5
+ 943 iconst_2
+ 944 newarray float
+ 946 dup
+ 947 iconst_1
+ 948 fconst_1
+ 949 fastore
+ 950 aastore
+ 951 dup
+ 952 bipush 6
+ 954 iconst_2
+ 955 newarray float
+ 957 dup
+ 958 iconst_0
+ 959 fconst_1
+ 960 fastore
+ 961 dup
+ 962 iconst_1
+ 963 ldc #246 <Real 0.7651977>
+ 965 fastore
+ 966 aastore
+ 967 dup
+ 968 bipush 7
+ 970 iconst_2
+ 971 newarray float
+ 973 dup
+ 974 iconst_0
+ 975 fconst_2
+ 976 fastore
+ 977 dup
+ 978 iconst_1
+ 979 ldc #187 <Real 0.2238908>
+ 981 fastore
+ 982 aastore
+ 983 dup
+ 984 bipush 8
+ 986 iconst_2
+ 987 newarray float
+ 989 dup
+ 990 iconst_0
+ 991 ldc #22 <Real 3.0>
+ 993 fastore
+ 994 dup
+ 995 iconst_1
+ 996 ldc #140 <Real -0.260052>
+ 998 fastore
+ 999 aastore
+1000 dup
+1001 bipush 9
+1003 iconst_2
+1004 newarray float
+1006 dup
+1007 iconst_0
+1008 ldc #25 <Real 4.0>
+1010 fastore
+1011 dup
+1012 iconst_1
+1013 ldc_w #360 <Real -0.3971498>
+1016 fastore
+1017 aastore
+1018 dup
+1019 bipush 10
+1021 iconst_2
+1022 newarray float
+1024 dup
+1025 iconst_0
+1026 ldc #27 <Real 5.0>
+1028 fastore
+1029 dup
+1030 iconst_1
+1031 ldc_w #350 <Real -0.1775968>
+1034 fastore
+1035 aastore
+1036 dup
+1037 bipush 11
+1039 iconst_2
+1040 newarray float
+1042 dup
+1043 iconst_0
+1044 ldc #28 <Real 6.0>
+1046 fastore
+1047 dup
+1048 iconst_1
+1049 ldc #174 <Real 0.1506453>
+1051 fastore
+1052 aastore
+1053 dup
+1054 bipush 12
+1056 iconst_2
+1057 newarray float
+1059 dup
+1060 iconst_0
+1061 ldc #33 <Real 7.0>
+1063 fastore
+1064 dup
+1065 iconst_1
+1066 ldc #197 <Real 0.3000793>
+1068 fastore
+1069 aastore
+1070 dup
+1071 bipush 13
+1073 iconst_2
+1074 newarray float
+1076 dup
+1077 iconst_0
+1078 ldc #34 <Real 8.0>
+1080 fastore
+1081 dup
+1082 iconst_1
+1083 ldc #178 <Real 0.1716508>
+1085 fastore
+1086 aastore
+1087 dup
+1088 bipush 14
+1090 iconst_2
+1091 newarray float
+1093 dup
+1094 iconst_0
+1095 ldc #35 <Real 9.0>
+1097 fastore
+1098 dup
+1099 iconst_1
+1100 ldc_w #342 <Real -0.0903336>
+1103 fastore
+1104 aastore
+1105 dup
+1106 bipush 15
+1108 iconst_2
+1109 newarray float
+1111 dup
+1112 iconst_0
+1113 ldc #50 <Real 10.0>
+1115 fastore
+1116 dup
+1117 iconst_1
+1118 ldc_w #354 <Real -0.2459358>
+1121 fastore
+1122 aastore
+1123 dup
+1124 bipush 16
+1126 iconst_2
+1127 newarray float
+1129 dup
+1130 iconst_0
+1131 ldc #51 <Real 11.0>
+1133 fastore
+1134 dup
+1135 iconst_1
+1136 ldc_w #347 <Real -0.1711903>
+1139 fastore
+1140 aastore
+1141 dup
+1142 bipush 17
+1144 iconst_2
+1145 newarray float
+1147 dup
+1148 iconst_0
+1149 ldc #52 <Real 12.0>
+1151 fastore
+1152 dup
+1153 iconst_1
+1154 ldc #154 <Real 0.0476893>
+1156 fastore
+1157 aastore
+1158 dup
+1159 bipush 18
+1161 iconst_2
+1162 newarray float
+1164 dup
+1165 iconst_0
+1166 ldc #54 <Real 13.0>
+1168 fastore
+1169 dup
+1170 iconst_1
+1171 ldc #182 <Real 0.2069261>
+1173 fastore
+1174 aastore
+1175 dup
+1176 bipush 19
+1178 iconst_2
+1179 newarray float
+1181 dup
+1182 iconst_0
+1183 ldc #55 <Real 14.0>
+1185 fastore
+1186 dup
+1187 iconst_1
+1188 ldc #177 <Real 0.1710735>
+1190 fastore
+1191 aastore
+1192 dup
+1193 bipush 20
+1195 iconst_2
+1196 newarray float
+1198 dup
+1199 iconst_0
+1200 ldc #56 <Real 15.0>
+1202 fastore
+1203 dup
+1204 iconst_1
+1205 ldc_w #334 <Real -0.0142245>
+1208 fastore
+1209 aastore
+1210 putstatic #549 <Field float ValuesBesselJ0[][]>
+1213 bipush 16
+1215 anewarray class #514 <Class [F>
+1218 dup
+1219 iconst_0
+1220 iconst_2
+1221 newarray float
+1223 dup
+1224 iconst_0
+1225 ldc #1 <Real 0.1>
+1227 fastore
+1228 dup
+1229 iconst_1
+1230 ldc_w #365 <Real -1.5342387>
+1233 fastore
+1234 aastore
+1235 dup
+1236 iconst_1
+1237 iconst_2
+1238 newarray float
+1240 dup
+1241 iconst_0
+1242 fconst_1
+1243 fastore
+1244 dup
+1245 iconst_1
+1246 ldc #89 <Real 0.088257>
+1248 fastore
+1249 aastore
+1250 dup
+1251 iconst_2
+1252 iconst_2
+1253 newarray float
+1255 dup
+1256 iconst_0
+1257 fconst_2
+1258 fastore
+1259 dup
+1260 iconst_1
+1261 ldc #226 <Real 0.5103757>
+1263 fastore
+1264 aastore
+1265 dup
+1266 iconst_3
+1267 iconst_2
+1268 newarray float
+1270 dup
+1271 iconst_0
+1272 ldc #22 <Real 3.0>
+1274 fastore
+1275 dup
+1276 iconst_1
+1277 ldc #80 <Real 0.37685>
+1279 fastore
+1280 aastore
+1281 dup
+1282 iconst_4
+1283 iconst_2
+1284 newarray float
+1286 dup
+1287 iconst_0
+1288 ldc #25 <Real 4.0>
+1290 fastore
+1291 dup
+1292 iconst_1
+1293 ldc_w #335 <Real -0.0169407>
+1296 fastore
+1297 aastore
+1298 dup
+1299 iconst_5
+1300 iconst_2
+1301 newarray float
+1303 dup
+1304 iconst_0
+1305 ldc #27 <Real 5.0>
+1307 fastore
+1308 dup
+1309 iconst_1
+1310 ldc_w #358 <Real -0.3085176>
+1313 fastore
+1314 aastore
+1315 dup
+1316 bipush 6
+1318 iconst_2
+1319 newarray float
+1321 dup
+1322 iconst_0
+1323 ldc #28 <Real 6.0>
+1325 fastore
+1326 dup
+1327 iconst_1
+1328 ldc_w #356 <Real -0.2881947>
+1331 fastore
+1332 aastore
+1333 dup
+1334 bipush 7
+1336 iconst_2
+1337 newarray float
+1339 dup
+1340 iconst_0
+1341 ldc #33 <Real 7.0>
+1343 fastore
+1344 dup
+1345 iconst_1
+1346 ldc_w #336 <Real -0.0259497>
+1349 fastore
+1350 aastore
+1351 dup
+1352 bipush 8
+1354 iconst_2
+1355 newarray float
+1357 dup
+1358 iconst_0
+1359 ldc #34 <Real 8.0>
+1361 fastore
+1362 dup
+1363 iconst_1
+1364 ldc #186 <Real 0.2235215>
+1366 fastore
+1367 aastore
+1368 dup
+1369 bipush 9
+1371 iconst_2
+1372 newarray float
+1374 dup
+1375 iconst_0
+1376 ldc #35 <Real 9.0>
+1378 fastore
+1379 dup
+1380 iconst_1
+1381 ldc #193 <Real 0.2499367>
+1383 fastore
+1384 aastore
+1385 dup
+1386 bipush 10
+1388 iconst_2
+1389 newarray float
+1391 dup
+1392 iconst_0
+1393 ldc #50 <Real 10.0>
+1395 fastore
+1396 dup
+1397 iconst_1
+1398 ldc #156 <Real 0.0556712>
+1400 fastore
+1401 aastore
+1402 dup
+1403 bipush 11
+1405 iconst_2
+1406 newarray float
+1408 dup
+1409 iconst_0
+1410 ldc #51 <Real 11.0>
+1412 fastore
+1413 dup
+1414 iconst_1
+1415 ldc_w #346 <Real -0.1688473>
+1418 fastore
+1419 aastore
+1420 dup
+1421 bipush 12
+1423 iconst_2
+1424 newarray float
+1426 dup
+1427 iconst_0
+1428 ldc #52 <Real 12.0>
+1430 fastore
+1431 dup
+1432 iconst_1
+1433 ldc_w #353 <Real -0.2252373>
+1436 fastore
+1437 aastore
+1438 dup
+1439 bipush 13
+1441 iconst_2
+1442 newarray float
+1444 dup
+1445 iconst_0
+1446 ldc #54 <Real 13.0>
+1448 fastore
+1449 dup
+1450 iconst_1
+1451 ldc_w #341 <Real -0.0782079>
+1454 fastore
+1455 aastore
+1456 dup
+1457 bipush 14
+1459 iconst_2
+1460 newarray float
+1462 dup
+1463 iconst_0
+1464 ldc #55 <Real 14.0>
+1466 fastore
+1467 dup
+1468 iconst_1
+1469 ldc #168 <Real 0.1271926>
+1471 fastore
+1472 aastore
+1473 dup
+1474 bipush 15
+1476 iconst_2
+1477 newarray float
+1479 dup
+1480 iconst_0
+1481 ldc #56 <Real 15.0>
+1483 fastore
+1484 dup
+1485 iconst_1
+1486 ldc #181 <Real 0.2054743>
+1488 fastore
+1489 aastore
+1490 putstatic #555 <Field float ValuesBesselY0[][]>
+1493 bipush 21
+1495 anewarray class #514 <Class [F>
+1498 dup
+1499 iconst_0
+1500 iconst_2
+1501 newarray float
+1503 dup
+1504 iconst_0
+1505 ldc #46 <Real -5.0>
+1507 fastore
+1508 dup
+1509 iconst_1
+1510 ldc #202 <Real 0.3275791>
+1512 fastore
+1513 aastore
+1514 dup
+1515 iconst_1
+1516 iconst_2
+1517 newarray float
+1519 dup
+1520 iconst_0
+1521 ldc #45 <Real -4.0>
+1523 fastore
+1524 dup
+1525 iconst_1
+1526 ldc #158 <Real 0.0660433>
+1528 fastore
+1529 aastore
+1530 dup
+1531 iconst_2
+1532 iconst_2
+1533 newarray float
+1535 dup
+1536 iconst_0
+1537 ldc #44 <Real -3.0>
+1539 fastore
+1540 dup
+1541 iconst_1
+1542 ldc #141 <Real -0.339059>
+1544 fastore
+1545 aastore
+1546 dup
+1547 iconst_3
+1548 iconst_2
+1549 newarray float
+1551 dup
+1552 iconst_0
+1553 ldc #43 <Real -2.0>
+1555 fastore
+1556 dup
+1557 iconst_1
+1558 ldc_w #362 <Real -0.5767248>
+1561 fastore
+1562 aastore
+1563 dup
+1564 iconst_4
+1565 iconst_2
+1566 newarray float
+1568 dup
+1569 iconst_0
+1570 ldc #41 <Real -1.0>
+1572 fastore
+1573 dup
+1574 iconst_1
+1575 ldc_w #361 <Real -0.4400506>
+1578 fastore
+1579 aastore
+1580 dup
+1581 iconst_5
+1582 iconst_2
+1583 newarray float
+1585 aastore
+1586 dup
+1587 bipush 6
+1589 iconst_2
+1590 newarray float
+1592 dup
+1593 iconst_0
+1594 fconst_1
+1595 fastore
+1596 dup
+1597 iconst_1
+1598 ldc #219 <Real 0.4400506>
+1600 fastore
+1601 aastore
+1602 dup
+1603 bipush 7
+1605 iconst_2
+1606 newarray float
+1608 dup
+1609 iconst_0
+1610 fconst_2
+1611 fastore
+1612 dup
+1613 iconst_1
+1614 ldc #229 <Real 0.5767248>
+1616 fastore
+1617 aastore
+1618 dup
+1619 bipush 8
+1621 iconst_2
+1622 newarray float
+1624 dup
+1625 iconst_0
+1626 ldc #22 <Real 3.0>
+1628 fastore
+1629 dup
+1630 iconst_1
+1631 ldc #92 <Real 0.339059>
+1633 fastore
+1634 aastore
+1635 dup
+1636 bipush 9
+1638 iconst_2
+1639 newarray float
+1641 dup
+1642 iconst_0
+1643 ldc #25 <Real 4.0>
+1645 fastore
+1646 dup
+1647 iconst_1
+1648 ldc_w #339 <Real -0.0660433>
+1651 fastore
+1652 aastore
+1653 dup
+1654 bipush 10
+1656 iconst_2
+1657 newarray float
+1659 dup
+1660 iconst_0
+1661 ldc #27 <Real 5.0>
+1663 fastore
+1664 dup
+1665 iconst_1
+1666 ldc_w #359 <Real -0.3275791>
+1669 fastore
+1670 aastore
+1671 dup
+1672 bipush 11
+1674 iconst_2
+1675 newarray float
+1677 dup
+1678 iconst_0
+1679 ldc #28 <Real 6.0>
+1681 fastore
+1682 dup
+1683 iconst_1
+1684 ldc_w #355 <Real -0.2766839>
+1687 fastore
+1688 aastore
+1689 dup
+1690 bipush 12
+1692 iconst_2
+1693 newarray float
+1695 dup
+1696 iconst_0
+1697 ldc #33 <Real 7.0>
+1699 fastore
+1700 dup
+1701 iconst_1
+1702 ldc_w #333 <Real -0.0046828>
+1705 fastore
+1706 aastore
+1707 dup
+1708 bipush 13
+1710 iconst_2
+1711 newarray float
+1713 dup
+1714 iconst_0
+1715 ldc #34 <Real 8.0>
+1717 fastore
+1718 dup
+1719 iconst_1
+1720 ldc #189 <Real 0.2346364>
+1722 fastore
+1723 aastore
+1724 dup
+1725 bipush 14
+1727 iconst_2
+1728 newarray float
+1730 dup
+1731 iconst_0
+1732 ldc #35 <Real 9.0>
+1734 fastore
+1735 dup
+1736 iconst_1
+1737 ldc #191 <Real 0.2453118>
+1739 fastore
+1740 aastore
+1741 dup
+1742 bipush 15
+1744 iconst_2
+1745 newarray float
+1747 dup
+1748 iconst_0
+1749 ldc #50 <Real 10.0>
+1751 fastore
+1752 dup
+1753 iconst_1
+1754 ldc #153 <Real 0.0434728>
+1756 fastore
+1757 aastore
+1758 dup
+1759 bipush 16
+1761 iconst_2
+1762 newarray float
+1764 dup
+1765 iconst_0
+1766 ldc #51 <Real 11.0>
+1768 fastore
+1769 dup
+1770 iconst_1
+1771 ldc_w #349 <Real -0.1767853>
+1774 fastore
+1775 aastore
+1776 dup
+1777 bipush 17
+1779 iconst_2
+1780 newarray float
+1782 dup
+1783 iconst_0
+1784 ldc #52 <Real 12.0>
+1786 fastore
+1787 dup
+1788 iconst_1
+1789 ldc_w #352 <Real -0.2234471>
+1792 fastore
+1793 aastore
+1794 dup
+1795 bipush 18
+1797 iconst_2
+1798 newarray float
+1800 dup
+1801 iconst_0
+1802 ldc #54 <Real 13.0>
+1804 fastore
+1805 dup
+1806 iconst_1
+1807 ldc_w #340 <Real -0.0703181>
+1810 fastore
+1811 aastore
+1812 dup
+1813 bipush 19
+1815 iconst_2
+1816 newarray float
+1818 dup
+1819 iconst_0
+1820 ldc #55 <Real 14.0>
+1822 fastore
+1823 dup
+1824 iconst_1
+1825 ldc #170 <Real 0.1333752>
+1827 fastore
+1828 aastore
+1829 dup
+1830 bipush 20
+1832 iconst_2
+1833 newarray float
+1835 dup
+1836 iconst_0
+1837 ldc #56 <Real 15.0>
+1839 fastore
+1840 dup
+1841 iconst_1
+1842 ldc #91 <Real 0.205104>
+1844 fastore
+1845 aastore
+1846 putstatic #550 <Field float ValuesBesselJ1[][]>
+1849 bipush 16
+1851 anewarray class #514 <Class [F>
+1854 dup
+1855 iconst_0
+1856 iconst_2
+1857 newarray float
+1859 dup
+1860 iconst_0
+1861 ldc #1 <Real 0.1>
+1863 fastore
+1864 dup
+1865 iconst_1
+1866 ldc #145 <Real -6.458951>
+1868 fastore
+1869 aastore
+1870 dup
+1871 iconst_1
+1872 iconst_2
+1873 newarray float
+1875 dup
+1876 iconst_0
+1877 fconst_1
+1878 fastore
+1879 dup
+1880 iconst_1
+1881 ldc_w #364 <Real -0.7812128>
+1884 fastore
+1885 aastore
+1886 dup
+1887 iconst_2
+1888 iconst_2
+1889 newarray float
+1891 dup
+1892 iconst_0
+1893 fconst_2
+1894 fastore
+1895 dup
+1896 iconst_1
+1897 ldc_w #343 <Real -0.1070324>
+1900 fastore
+1901 aastore
+1902 dup
+1903 iconst_3
+1904 iconst_2
+1905 newarray float
+1907 dup
+1908 iconst_0
+1909 ldc #22 <Real 3.0>
+1911 fastore
+1912 dup
+1913 iconst_1
+1914 ldc #201 <Real 0.3246744>
+1916 fastore
+1917 aastore
+1918 dup
+1919 iconst_4
+1920 iconst_2
+1921 newarray float
+1923 dup
+1924 iconst_0
+1925 ldc #25 <Real 4.0>
+1927 fastore
+1928 dup
+1929 iconst_1
+1930 ldc #211 <Real 0.3979257>
+1932 fastore
+1933 aastore
+1934 dup
+1935 iconst_5
+1936 iconst_2
+1937 newarray float
+1939 dup
+1940 iconst_0
+1941 ldc #27 <Real 5.0>
+1943 fastore
+1944 dup
+1945 iconst_1
+1946 ldc #172 <Real 0.1478631>
+1948 fastore
+1949 aastore
+1950 dup
+1951 bipush 6
+1953 iconst_2
+1954 newarray float
+1956 dup
+1957 iconst_0
+1958 ldc #28 <Real 6.0>
+1960 fastore
+1961 dup
+1962 iconst_1
+1963 ldc_w #348 <Real -0.1750103>
+1966 fastore
+1967 aastore
+1968 dup
+1969 bipush 7
+1971 iconst_2
+1972 newarray float
+1974 dup
+1975 iconst_0
+1976 ldc #33 <Real 7.0>
+1978 fastore
+1979 dup
+1980 iconst_1
+1981 ldc_w #357 <Real -0.3026672>
+1984 fastore
+1985 aastore
+1986 dup
+1987 bipush 8
+1989 iconst_2
+1990 newarray float
+1992 dup
+1993 iconst_0
+1994 ldc #34 <Real 8.0>
+1996 fastore
+1997 dup
+1998 iconst_1
+1999 ldc_w #344 <Real -0.1580605>
+2002 fastore
+2003 aastore
+2004 dup
+2005 bipush 9
+2007 iconst_2
+2008 newarray float
+2010 dup
+2011 iconst_0
+2012 ldc #35 <Real 9.0>
+2014 fastore
+2015 dup
+2016 iconst_1
+2017 ldc #165 <Real 0.1043146>
+2019 fastore
+2020 aastore
+2021 dup
+2022 bipush 10
+2024 iconst_2
+2025 newarray float
+2027 dup
+2028 iconst_0
+2029 ldc #50 <Real 10.0>
+2031 fastore
+2032 dup
+2033 iconst_1
+2034 ldc #192 <Real 0.2490154>
+2036 fastore
+2037 aastore
+2038 dup
+2039 bipush 11
+2041 iconst_2
+2042 newarray float
+2044 dup
+2045 iconst_0
+2046 ldc #51 <Real 11.0>
+2048 fastore
+2049 dup
+2050 iconst_1
+2051 ldc #176 <Real 0.1637055>
+2053 fastore
+2054 aastore
+2055 dup
+2056 bipush 12
+2058 iconst_2
+2059 newarray float
+2061 dup
+2062 iconst_0
+2063 ldc #52 <Real 12.0>
+2065 fastore
+2066 dup
+2067 iconst_1
+2068 ldc_w #337 <Real -0.0570992>
+2071 fastore
+2072 aastore
+2073 dup
+2074 bipush 13
+2076 iconst_2
+2077 newarray float
+2079 dup
+2080 iconst_0
+2081 ldc #54 <Real 13.0>
+2083 fastore
+2084 dup
+2085 iconst_1
+2086 ldc_w #351 <Real -0.2100814>
+2089 fastore
+2090 aastore
+2091 dup
+2092 bipush 14
+2094 iconst_2
+2095 newarray float
+2097 dup
+2098 iconst_0
+2099 ldc #55 <Real 14.0>
+2101 fastore
+2102 dup
+2103 iconst_1
+2104 ldc_w #345 <Real -0.1666448>
+2107 fastore
+2108 aastore
+2109 dup
+2110 bipush 15
+2112 iconst_2
+2113 newarray float
+2115 dup
+2116 iconst_0
+2117 ldc #56 <Real 15.0>
+2119 fastore
+2120 dup
+2121 iconst_1
+2122 ldc #149 <Real 0.0210736>
+2124 fastore
+2125 aastore
+2126 putstatic #556 <Field float ValuesBesselY1[][]>
+2129 bipush 20
+2131 anewarray class #514 <Class [F>
+2134 dup
+2135 iconst_0
+2136 iconst_3
+2137 newarray float
+2139 dup
+2140 iconst_0
+2141 fconst_2
+2142 fastore
+2143 dup
+2144 iconst_1
+2145 fconst_1
+2146 fastore
+2147 dup
+2148 iconst_2
+2149 ldc_w #386 <Real 0.11490349>
+2152 fastore
+2153 aastore
+2154 dup
+2155 iconst_1
+2156 iconst_3
+2157 newarray float
+2159 dup
+2160 iconst_0
+2161 fconst_2
+2162 fastore
+2163 dup
+2164 iconst_1
+2165 fconst_2
+2166 fastore
+2167 dup
+2168 iconst_2
+2169 ldc_w #404 <Real 0.35283402>
+2172 fastore
+2173 aastore
+2174 dup
+2175 iconst_2
+2176 iconst_3
+2177 newarray float
+2179 dup
+2180 iconst_0
+2181 fconst_2
+2182 fastore
+2183 dup
+2184 iconst_1
+2185 ldc #27 <Real 5.0>
+2187 fastore
+2188 dup
+2189 iconst_2
+2190 ldc_w #438 <Real 0.046565115>
+2193 fastore
+2194 aastore
+2195 dup
+2196 iconst_3
+2197 iconst_3
+2198 newarray float
+2200 dup
+2201 iconst_0
+2202 fconst_2
+2203 fastore
+2204 dup
+2205 iconst_1
+2206 ldc #50 <Real 10.0>
+2208 fastore
+2209 dup
+2210 iconst_2
+2211 ldc_w #400 <Real 0.25463033>
+2214 fastore
+2215 aastore
+2216 dup
+2217 iconst_4
+2218 iconst_3
+2219 newarray float
+2221 dup
+2222 iconst_0
+2223 fconst_2
+2224 fastore
+2225 dup
+2226 iconst_1
+2227 ldc #63 <Real 50.0>
+2229 fastore
+2230 dup
+2231 iconst_2
+2232 ldc_w #338 <Real -0.0597128>
+2235 fastore
+2236 aastore
+2237 dup
+2238 iconst_5
+2239 iconst_3
+2240 newarray float
+2242 dup
+2243 iconst_0
+2244 ldc #27 <Real 5.0>
+2246 fastore
+2247 dup
+2248 iconst_1
+2249 fconst_1
+2250 fastore
+2251 dup
+2252 iconst_2
+2253 ldc_w #468 <Real 2.4975772E-4>
+2256 fastore
+2257 aastore
+2258 dup
+2259 bipush 6
+2261 iconst_3
+2262 newarray float
+2264 dup
+2265 iconst_0
+2266 ldc #27 <Real 5.0>
+2268 fastore
+2269 dup
+2270 iconst_1
+2271 fconst_2
+2272 fastore
+2273 dup
+2274 iconst_2
+2275 ldc_w #371 <Real 0.00703963>
+2278 fastore
+2279 aastore
+2280 dup
+2281 bipush 7
+2283 iconst_3
+2284 newarray float
+2286 dup
+2287 iconst_0
+2288 ldc #27 <Real 5.0>
+2290 fastore
+2291 dup
+2292 iconst_1
+2293 ldc #27 <Real 5.0>
+2295 fastore
+2296 dup
+2297 iconst_2
+2298 ldc_w #401 <Real 0.26114056>
+2301 fastore
+2302 aastore
+2303 dup
+2304 bipush 8
+2306 iconst_3
+2307 newarray float
+2309 dup
+2310 iconst_0
+2311 ldc #27 <Real 5.0>
+2313 fastore
+2314 dup
+2315 iconst_1
+2316 ldc #50 <Real 10.0>
+2318 fastore
+2319 dup
+2320 iconst_2
+2321 ldc_w #424 <Real -0.23406152>
+2324 fastore
+2325 aastore
+2326 dup
+2327 bipush 9
+2329 iconst_3
+2330 newarray float
+2332 dup
+2333 iconst_0
+2334 ldc #27 <Real 5.0>
+2336 fastore
+2337 dup
+2338 iconst_1
+2339 ldc #63 <Real 50.0>
+2341 fastore
+2342 dup
+2343 iconst_2
+2344 ldc_w #447 <Real -0.081400245>
+2347 fastore
+2348 aastore
+2349 dup
+2350 bipush 10
+2352 iconst_3
+2353 newarray float
+2355 dup
+2356 iconst_0
+2357 ldc #50 <Real 10.0>
+2359 fastore
+2360 dup
+2361 iconst_1
+2362 fconst_1
+2363 fastore
+2364 dup
+2365 iconst_2
+2366 ldc_w #484 <Real 2.6306152E-10>
+2369 fastore
+2370 aastore
+2371 dup
+2372 bipush 11
+2374 iconst_3
+2375 newarray float
+2377 dup
+2378 iconst_0
+2379 ldc #50 <Real 10.0>
+2381 fastore
+2382 dup
+2383 iconst_1
+2384 fconst_2
+2385 fastore
+2386 dup
+2387 iconst_2
+2388 ldc_w #469 <Real 2.5153864E-7>
+2391 fastore
+2392 aastore
+2393 dup
+2394 bipush 12
+2396 iconst_3
+2397 newarray float
+2399 dup
+2400 iconst_0
+2401 ldc #50 <Real 10.0>
+2403 fastore
+2404 dup
+2405 iconst_1
+2406 ldc #27 <Real 5.0>
+2408 fastore
+2409 dup
+2410 iconst_2
+2411 ldc_w #451 <Real 0.0014678027>
+2414 fastore
+2415 aastore
+2416 dup
+2417 bipush 13
+2419 iconst_3
+2420 newarray float
+2422 dup
+2423 iconst_0
+2424 ldc #50 <Real 10.0>
+2426 fastore
+2427 dup
+2428 iconst_1
+2429 ldc #50 <Real 10.0>
+2431 fastore
+2432 dup
+2433 iconst_2
+2434 ldc_w #395 <Real 0.20748611>
+2437 fastore
+2438 aastore
+2439 dup
+2440 bipush 14
+2442 iconst_3
+2443 newarray float
+2445 dup
+2446 iconst_0
+2447 ldc #50 <Real 10.0>
+2449 fastore
+2450 dup
+2451 iconst_1
+2452 ldc #63 <Real 50.0>
+2454 fastore
+2455 dup
+2456 iconst_2
+2457 ldc_w #421 <Real -0.11384785>
+2460 fastore
+2461 aastore
+2462 dup
+2463 bipush 15
+2465 iconst_3
+2466 newarray float
+2468 dup
+2469 iconst_0
+2470 ldc #57 <Real 20.0>
+2472 fastore
+2473 dup
+2474 iconst_1
+2475 fconst_1
+2476 fastore
+2477 dup
+2478 iconst_2
+2479 ldc_w #472 <Real 3.873503E-25>
+2482 fastore
+2483 aastore
+2484 dup
+2485 bipush 16
+2487 iconst_3
+2488 newarray float
+2490 dup
+2491 iconst_0
+2492 ldc #57 <Real 20.0>
+2494 fastore
+2495 dup
+2496 iconst_1
+2497 fconst_2
+2498 fastore
+2499 dup
+2500 iconst_2
+2501 ldc_w #473 <Real 3.918973E-19>
+2504 fastore
+2505 aastore
+2506 dup
+2507 bipush 17
+2509 iconst_3
+2510 newarray float
+2512 dup
+2513 iconst_0
+2514 ldc #57 <Real 20.0>
+2516 fastore
+2517 dup
+2518 iconst_1
+2519 ldc #27 <Real 5.0>
+2521 fastore
+2522 dup
+2523 iconst_2
+2524 ldc_w #441 <Real 2.77033E-11>
+2527 fastore
+2528 aastore
+2529 dup
+2530 bipush 18
+2532 iconst_3
+2533 newarray float
+2535 dup
+2536 iconst_0
+2537 ldc #57 <Real 20.0>
+2539 fastore
+2540 dup
+2541 iconst_1
+2542 ldc #50 <Real 10.0>
+2544 fastore
+2545 dup
+2546 iconst_2
+2547 ldc_w #459 <Real 1.1513369E-5>
+2550 fastore
+2551 aastore
+2552 dup
+2553 bipush 19
+2555 iconst_3
+2556 newarray float
+2558 dup
+2559 iconst_0
+2560 ldc #57 <Real 20.0>
+2562 fastore
+2563 dup
+2564 iconst_1
+2565 ldc #63 <Real 50.0>
+2567 fastore
+2568 dup
+2569 iconst_2
+2570 ldc_w #422 <Real -0.11670435>
+2573 fastore
+2574 aastore
+2575 putstatic #551 <Field float ValuesBesselJn[][]>
+2578 bipush 20
+2580 anewarray class #514 <Class [F>
+2583 dup
+2584 iconst_0
+2585 iconst_3
+2586 newarray float
+2588 dup
+2589 iconst_0
+2590 fconst_2
+2591 fastore
+2592 dup
+2593 iconst_1
+2594 fconst_1
+2595 fastore
+2596 dup
+2597 iconst_2
+2598 ldc_w #367 <Real -1.6506826>
+2601 fastore
+2602 aastore
+2603 dup
+2604 iconst_1
+2605 iconst_3
+2606 newarray float
+2608 dup
+2609 iconst_0
+2610 fconst_2
+2611 fastore
+2612 dup
+2613 iconst_1
+2614 fconst_2
+2615 fastore
+2616 dup
+2617 iconst_2
+2618 ldc_w #363 <Real -0.6174081>
+2621 fastore
+2622 aastore
+2623 dup
+2624 iconst_2
+2625 iconst_3
+2626 newarray float
+2628 dup
+2629 iconst_0
+2630 fconst_2
+2631 fastore
+2632 dup
+2633 iconst_1
+2634 ldc #27 <Real 5.0>
+2636 fastore
+2637 dup
+2638 iconst_2
+2639 ldc_w #405 <Real 0.36766288>
+2642 fastore
+2643 aastore
+2644 dup
+2645 iconst_3
+2646 iconst_3
+2647 newarray float
+2649 dup
+2650 iconst_0
+2651 fconst_2
+2652 fastore
+2653 dup
+2654 iconst_1
+2655 ldc #50 <Real 10.0>
+2657 fastore
+2658 dup
+2659 iconst_2
+2660 ldc_w #478 <Real -0.0058680824>
+2663 fastore
+2664 aastore
+2665 dup
+2666 iconst_4
+2667 iconst_3
+2668 newarray float
+2670 dup
+2671 iconst_0
+2672 fconst_2
+2673 fastore
+2674 dup
+2675 iconst_1
+2676 ldc #63 <Real 50.0>
+2678 fastore
+2679 dup
+2680 iconst_2
+2681 ldc_w #440 <Real 0.095793165>
+2684 fastore
+2685 aastore
+2686 dup
+2687 iconst_5
+2688 iconst_3
+2689 newarray float
+2691 dup
+2692 iconst_0
+2693 ldc #27 <Real 5.0>
+2695 fastore
+2696 dup
+2697 iconst_1
+2698 fconst_1
+2699 fastore
+2700 dup
+2701 iconst_2
+2702 ldc_w #370 <Real -260.40585>
+2705 fastore
+2706 aastore
+2707 dup
+2708 bipush 6
+2710 iconst_3
+2711 newarray float
+2713 dup
+2714 iconst_0
+2715 ldc #27 <Real 5.0>
+2717 fastore
+2718 dup
+2719 iconst_1
+2720 fconst_2
+2721 fastore
+2722 dup
+2723 iconst_2
+2724 ldc #146 <Real -9.935989>
+2726 fastore
+2727 aastore
+2728 dup
+2729 bipush 7
+2731 iconst_3
+2732 newarray float
+2734 dup
+2735 iconst_0
+2736 ldc #27 <Real 5.0>
+2738 fastore
+2739 dup
+2740 iconst_1
+2741 ldc #27 <Real 5.0>
+2743 fastore
+2744 dup
+2745 iconst_2
+2746 ldc_w #426 <Real -0.45369482>
+2749 fastore
+2750 aastore
+2751 dup
+2752 bipush 8
+2754 iconst_3
+2755 newarray float
+2757 dup
+2758 iconst_0
+2759 ldc #27 <Real 5.0>
+2761 fastore
+2762 dup
+2763 iconst_1
+2764 ldc #50 <Real 10.0>
+2766 fastore
+2767 dup
+2768 iconst_2
+2769 ldc_w #388 <Real 0.13540305>
+2772 fastore
+2773 aastore
+2774 dup
+2775 bipush 9
+2777 iconst_3
+2778 newarray float
+2780 dup
+2781 iconst_0
+2782 ldc #27 <Real 5.0>
+2784 fastore
+2785 dup
+2786 iconst_1
+2787 ldc #63 <Real 50.0>
+2789 fastore
+2790 dup
+2791 iconst_2
+2792 ldc_w #419 <Real -0.07854842>
+2795 fastore
+2796 aastore
+2797 dup
+2798 bipush 10
+2800 iconst_3
+2801 newarray float
+2803 dup
+2804 iconst_0
+2805 ldc #50 <Real 10.0>
+2807 fastore
+2808 dup
+2809 iconst_1
+2810 fconst_1
+2811 fastore
+2812 dup
+2813 iconst_2
+2814 ldc_w #479 <Real -1.21618016E8>
+2817 fastore
+2818 aastore
+2819 dup
+2820 bipush 11
+2822 iconst_3
+2823 newarray float
+2825 dup
+2826 iconst_0
+2827 ldc #50 <Real 10.0>
+2829 fastore
+2830 dup
+2831 iconst_1
+2832 fconst_2
+2833 fastore
+2834 dup
+2835 iconst_2
+2836 ldc_w #368 <Real -129184.54>
+2839 fastore
+2840 aastore
+2841 dup
+2842 bipush 12
+2844 iconst_3
+2845 newarray float
+2847 dup
+2848 iconst_0
+2849 ldc #50 <Real 10.0>
+2851 fastore
+2852 dup
+2853 iconst_1
+2854 ldc #27 <Real 5.0>
+2856 fastore
+2857 dup
+2858 iconst_2
+2859 ldc #144 <Real -25.12911>
+2861 fastore
+2862 aastore
+2863 dup
+2864 bipush 13
+2866 iconst_3
+2867 newarray float
+2869 dup
+2870 iconst_0
+2871 ldc #50 <Real 10.0>
+2873 fastore
+2874 dup
+2875 iconst_1
+2876 ldc #50 <Real 10.0>
+2878 fastore
+2879 dup
+2880 iconst_2
+2881 ldc_w #425 <Real -0.35981417>
+2884 fastore
+2885 aastore
+2886 dup
+2887 bipush 14
+2889 iconst_3
+2890 newarray float
+2892 dup
+2893 iconst_0
+2894 ldc #50 <Real 10.0>
+2896 fastore
+2897 dup
+2898 iconst_1
+2899 ldc #63 <Real 50.0>
+2901 fastore
+2902 dup
+2903 iconst_2
+2904 ldc_w #455 <Real 0.0057238974>
+2907 fastore
+2908 aastore
+2909 dup
+2910 bipush 15
+2912 iconst_3
+2913 newarray float
+2915 dup
+2916 iconst_0
+2917 ldc #57 <Real 20.0>
+2919 fastore
+2920 dup
+2921 iconst_1
+2922 fconst_1
+2923 fastore
+2924 dup
+2925 iconst_2
+2926 ldc_w #481 <Real -4.1139703E22>
+2929 fastore
+2930 aastore
+2931 dup
+2932 bipush 16
+2934 iconst_3
+2935 newarray float
+2937 dup
+2938 iconst_0
+2939 ldc #57 <Real 20.0>
+2941 fastore
+2942 dup
+2943 iconst_1
+2944 fconst_2
+2945 fastore
+2946 dup
+2947 iconst_2
+2948 ldc_w #480 <Real -4.0816513E16>
+2951 fastore
+2952 aastore
+2953 dup
+2954 bipush 17
+2956 iconst_3
+2957 newarray float
+2959 dup
+2960 iconst_0
+2961 ldc #57 <Real 20.0>
+2963 fastore
+2964 dup
+2965 iconst_1
+2966 ldc #27 <Real 5.0>
+2968 fastore
+2969 dup
+2970 iconst_2
+2971 ldc_w #448 <Real -5.9339654E8>
+2974 fastore
+2975 aastore
+2976 dup
+2977 bipush 18
+2979 iconst_3
+2980 newarray float
+2982 dup
+2983 iconst_0
+2984 ldc #57 <Real 20.0>
+2986 fastore
+2987 dup
+2988 iconst_1
+2989 ldc #50 <Real 10.0>
+2991 fastore
+2992 dup
+2993 iconst_2
+2994 ldc_w #369 <Real -1597.4839>
+2997 fastore
+2998 aastore
+2999 dup
+3000 bipush 19
+3002 iconst_3
+3003 newarray float
+3005 dup
+3006 iconst_0
+3007 ldc #57 <Real 20.0>
+3009 fastore
+3010 dup
+3011 iconst_1
+3012 ldc #63 <Real 50.0>
+3014 fastore
+3015 dup
+3016 iconst_2
+3017 ldc_w #434 <Real 0.016442634>
+3020 fastore
+3021 aastore
+3022 putstatic #557 <Field float ValuesBesselYn[][]>
+3025 bipush 20
+3027 anewarray class #514 <Class [F>
+3030 dup
+3031 iconst_0
+3032 iconst_2
+3033 newarray float
+3035 dup
+3036 iconst_1
+3037 fconst_1
+3038 fastore
+3039 aastore
+3040 dup
+3041 iconst_1
+3042 iconst_2
+3043 newarray float
+3045 dup
+3046 iconst_0
+3047 ldc #2 <Real 0.2>
+3049 fastore
+3050 dup
+3051 iconst_1
+3052 ldc #102 <Real 1.010025>
+3054 fastore
+3055 aastore
+3056 dup
+3057 iconst_2
+3058 iconst_2
+3059 newarray float
+3061 dup
+3062 iconst_0
+3063 ldc #4 <Real 0.4>
+3065 fastore
+3066 dup
+3067 iconst_1
+3068 ldc_w #277 <Real 1.0404018>
+3071 fastore
+3072 aastore
+3073 dup
+3074 iconst_3
+3075 iconst_2
+3076 newarray float
+3078 dup
+3079 iconst_0
+3080 ldc #6 <Real 0.6>
+3082 fastore
+3083 dup
+3084 iconst_1
+3085 ldc_w #280 <Real 1.0920453>
+3088 fastore
+3089 aastore
+3090 dup
+3091 iconst_4
+3092 iconst_2
+3093 newarray float
+3095 dup
+3096 iconst_0
+3097 ldc #8 <Real 0.8>
+3099 fastore
+3100 dup
+3101 iconst_1
+3102 ldc_w #282 <Real 1.1665149>
+3105 fastore
+3106 aastore
+3107 dup
+3108 iconst_5
+3109 iconst_2
+3110 newarray float
+3112 dup
+3113 iconst_0
+3114 fconst_1
+3115 fastore
+3116 dup
+3117 iconst_1
+3118 ldc_w #283 <Real 1.2660658>
+3121 fastore
+3122 aastore
+3123 dup
+3124 bipush 6
+3126 iconst_2
+3127 newarray float
+3129 dup
+3130 iconst_0
+3131 ldc #11 <Real 1.2>
+3133 fastore
+3134 dup
+3135 iconst_1
+3136 ldc_w #287 <Real 1.3937256>
+3139 fastore
+3140 aastore
+3141 dup
+3142 bipush 7
+3144 iconst_2
+3145 newarray float
+3147 dup
+3148 iconst_0
+3149 ldc #13 <Real 1.4>
+3151 fastore
+3152 dup
+3153 iconst_1
+3154 ldc_w #289 <Real 1.5533952>
+3157 fastore
+3158 aastore
+3159 dup
+3160 bipush 8
+3162 iconst_2
+3163 newarray float
+3165 dup
+3166 iconst_0
+3167 ldc #15 <Real 1.6>
+3169 fastore
+3170 dup
+3171 iconst_1
+3172 ldc_w #293 <Real 1.7499807>
+3175 fastore
+3176 aastore
+3177 dup
+3178 bipush 9
+3180 iconst_2
+3181 newarray float
+3183 dup
+3184 iconst_0
+3185 ldc #17 <Real 1.8>
+3187 fastore
+3188 dup
+3189 iconst_1
+3190 ldc_w #295 <Real 1.9895593>
+3193 fastore
+3194 aastore
+3195 dup
+3196 bipush 10
+3198 iconst_2
+3199 newarray float
+3201 dup
+3202 iconst_0
+3203 fconst_2
+3204 fastore
+3205 dup
+3206 iconst_1
+3207 ldc_w #308 <Real 2.2795851>
+3210 fastore
+3211 aastore
+3212 dup
+3213 bipush 11
+3215 iconst_2
+3216 newarray float
+3218 dup
+3219 iconst_0
+3220 ldc #21 <Real 2.5>
+3222 fastore
+3223 dup
+3224 iconst_1
+3225 ldc #124 <Real 3.289839>
+3227 fastore
+3228 aastore
+3229 dup
+3230 bipush 12
+3232 iconst_2
+3233 newarray float
+3235 dup
+3236 iconst_0
+3237 ldc #22 <Real 3.0>
+3239 fastore
+3240 dup
+3241 iconst_1
+3242 ldc_w #325 <Real 4.8807926>
+3245 fastore
+3246 aastore
+3247 dup
+3248 bipush 13
+3250 iconst_2
+3251 newarray float
+3253 dup
+3254 iconst_0
+3255 ldc #24 <Real 3.5>
+3257 fastore
+3258 dup
+3259 iconst_1
+3260 ldc_w #332 <Real 7.3782034>
+3263 fastore
+3264 aastore
+3265 dup
+3266 bipush 14
+3268 iconst_2
+3269 newarray float
+3271 dup
+3272 iconst_0
+3273 ldc #25 <Real 4.0>
+3275 fastore
+3276 dup
+3277 iconst_1
+3278 ldc_w #296 <Real 11.301922>
+3281 fastore
+3282 aastore
+3283 dup
+3284 bipush 15
+3286 iconst_2
+3287 newarray float
+3289 dup
+3290 iconst_0
+3291 ldc #26 <Real 4.5>
+3293 fastore
+3294 dup
+3295 iconst_1
+3296 ldc_w #300 <Real 17.481173>
+3299 fastore
+3300 aastore
+3301 dup
+3302 bipush 16
+3304 iconst_2
+3305 newarray float
+3307 dup
+3308 iconst_0
+3309 ldc #27 <Real 5.0>
+3311 fastore
+3312 dup
+3313 iconst_1
+3314 ldc #123 <Real 27.23987>
+3316 fastore
+3317 aastore
+3318 dup
+3319 bipush 17
+3321 iconst_2
+3322 newarray float
+3324 dup
+3325 iconst_0
+3326 ldc #28 <Real 6.0>
+3328 fastore
+3329 dup
+3330 iconst_1
+3331 ldc_w #331 <Real 67.234406>
+3334 fastore
+3335 aastore
+3336 dup
+3337 bipush 18
+3339 iconst_2
+3340 newarray float
+3342 dup
+3343 iconst_0
+3344 ldc #34 <Real 8.0>
+3346 fastore
+3347 dup
+3348 iconst_1
+3349 ldc_w #326 <Real 427.56412>
+3352 fastore
+3353 aastore
+3354 dup
+3355 bipush 19
+3357 iconst_2
+3358 newarray float
+3360 dup
+3361 iconst_0
+3362 ldc #50 <Real 10.0>
+3364 fastore
+3365 dup
+3366 iconst_1
+3367 ldc_w #319 <Real 2815.7168>
+3370 fastore
+3371 aastore
+3372 putstatic #546 <Field float ValuesBesselI0[][]>
+3375 bipush 20
+3377 anewarray class #514 <Class [F>
+3380 dup
+3381 iconst_0
+3382 iconst_2
+3383 newarray float
+3385 dup
+3386 iconst_0
+3387 ldc #1 <Real 0.1>
+3389 fastore
+3390 dup
+3391 iconst_1
+3392 ldc #121 <Real 2.427069>
+3394 fastore
+3395 aastore
+3396 dup
+3397 iconst_1
+3398 iconst_2
+3399 newarray float
+3401 dup
+3402 iconst_0
+3403 ldc #2 <Real 0.2>
+3405 fastore
+3406 dup
+3407 iconst_1
+3408 ldc_w #294 <Real 1.7527038>
+3411 fastore
+3412 aastore
+3413 dup
+3414 iconst_2
+3415 iconst_2
+3416 newarray float
+3418 dup
+3419 iconst_0
+3420 ldc #4 <Real 0.4>
+3422 fastore
+3423 dup
+3424 iconst_1
+3425 ldc_w #281 <Real 1.1145291>
+3428 fastore
+3429 aastore
+3430 dup
+3431 iconst_3
+3432 iconst_2
+3433 newarray float
+3435 dup
+3436 iconst_0
+3437 ldc #6 <Real 0.6>
+3439 fastore
+3440 dup
+3441 iconst_1
+3442 ldc #248 <Real 0.7775221>
+3444 fastore
+3445 aastore
+3446 dup
+3447 iconst_4
+3448 iconst_2
+3449 newarray float
+3451 dup
+3452 iconst_0
+3453 ldc #8 <Real 0.8>
+3455 fastore
+3456 dup
+3457 iconst_1
+3458 ldc #228 <Real 0.5653471>
+3460 fastore
+3461 aastore
+3462 dup
+3463 iconst_5
+3464 iconst_2
+3465 newarray float
+3467 dup
+3468 iconst_0
+3469 fconst_1
+3470 fastore
+3471 dup
+3472 iconst_1
+3473 ldc_w #406 <Real 0.42102444>
+3476 fastore
+3477 aastore
+3478 dup
+3479 bipush 6
+3481 iconst_2
+3482 newarray float
+3484 dup
+3485 iconst_0
+3486 ldc #11 <Real 1.2>
+3488 fastore
+3489 dup
+3490 iconst_1
+3491 ldc #199 <Real 0.3185082>
+3493 fastore
+3494 aastore
+3495 dup
+3496 bipush 7
+3498 iconst_2
+3499 newarray float
+3501 dup
+3502 iconst_0
+3503 ldc #13 <Real 1.4>
+3505 fastore
+3506 dup
+3507 iconst_1
+3508 ldc_w #398 <Real 0.24365506>
+3511 fastore
+3512 aastore
+3513 dup
+3514 bipush 8
+3516 iconst_2
+3517 newarray float
+3519 dup
+3520 iconst_0
+3521 ldc #15 <Real 1.6>
+3523 fastore
+3524 dup
+3525 iconst_1
+3526 ldc_w #393 <Real 0.18795475>
+3529 fastore
+3530 aastore
+3531 dup
+3532 bipush 9
+3534 iconst_2
+3535 newarray float
+3537 dup
+3538 iconst_0
+3539 ldc #17 <Real 1.8>
+3541 fastore
+3542 dup
+3543 iconst_1
+3544 ldc #171 <Real 0.1459314>
+3546 fastore
+3547 aastore
+3548 dup
+3549 bipush 10
+3551 iconst_2
+3552 newarray float
+3554 dup
+3555 iconst_0
+3556 fconst_2
+3557 fastore
+3558 dup
+3559 iconst_1
+3560 ldc_w #385 <Real 0.11389387>
+3563 fastore
+3564 aastore
+3565 dup
+3566 bipush 11
+3568 iconst_2
+3569 newarray float
+3571 dup
+3572 iconst_0
+3573 ldc #21 <Real 2.5>
+3575 fastore
+3576 dup
+3577 iconst_1
+3578 ldc_w #439 <Real 0.062347554>
+3581 fastore
+3582 aastore
+3583 dup
+3584 bipush 12
+3586 iconst_2
+3587 newarray float
+3589 dup
+3590 iconst_0
+3591 ldc #22 <Real 3.0>
+3593 fastore
+3594 dup
+3595 iconst_1
+3596 ldc #151 <Real 0.0347395>
+3598 fastore
+3599 aastore
+3600 dup
+3601 bipush 13
+3603 iconst_2
+3604 newarray float
+3606 dup
+3607 iconst_0
+3608 ldc #24 <Real 3.5>
+3610 fastore
+3611 dup
+3612 iconst_1
+3613 ldc_w #435 <Real 0.019598898>
+3616 fastore
+3617 aastore
+3618 dup
+3619 bipush 14
+3621 iconst_2
+3622 newarray float
+3624 dup
+3625 iconst_0
+3626 ldc #25 <Real 4.0>
+3628 fastore
+3629 dup
+3630 iconst_1
+3631 ldc_w #432 <Real 0.011159676>
+3634 fastore
+3635 aastore
+3636 dup
+3637 bipush 15
+3639 iconst_2
+3640 newarray float
+3642 dup
+3643 iconst_0
+3644 ldc #26 <Real 4.5>
+3646 fastore
+3647 dup
+3648 iconst_1
+3649 ldc_w #456 <Real 0.0063998573>
+3652 fastore
+3653 aastore
+3654 dup
+3655 bipush 16
+3657 iconst_2
+3658 newarray float
+3660 dup
+3661 iconst_0
+3662 ldc #27 <Real 5.0>
+3664 fastore
+3665 dup
+3666 iconst_1
+3667 ldc_w #453 <Real 0.0036910982>
+3670 fastore
+3671 aastore
+3672 dup
+3673 bipush 17
+3675 iconst_2
+3676 newarray float
+3678 dup
+3679 iconst_0
+3680 ldc #28 <Real 6.0>
+3682 fastore
+3683 dup
+3684 iconst_1
+3685 ldc_w #449 <Real 0.0012439943>
+3688 fastore
+3689 aastore
+3690 dup
+3691 bipush 18
+3693 iconst_2
+3694 newarray float
+3696 dup
+3697 iconst_0
+3698 ldc #34 <Real 8.0>
+3700 fastore
+3701 dup
+3702 iconst_1
+3703 ldc_w #461 <Real 1.4647072E-4>
+3706 fastore
+3707 aastore
+3708 dup
+3709 bipush 19
+3711 iconst_2
+3712 newarray float
+3714 dup
+3715 iconst_0
+3716 ldc #50 <Real 10.0>
+3718 fastore
+3719 dup
+3720 iconst_1
+3721 ldc_w #463 <Real 1.7780061E-5>
+3724 fastore
+3725 aastore
+3726 putstatic #552 <Field float ValuesBesselK0[][]>
+3729 bipush 20
+3731 anewarray class #514 <Class [F>
+3734 dup
+3735 iconst_0
+3736 iconst_2
+3737 newarray float
+3739 aastore
+3740 dup
+3741 iconst_1
+3742 iconst_2
+3743 newarray float
+3745 dup
+3746 iconst_0
+3747 ldc #2 <Real 0.2>
+3749 fastore
+3750 dup
+3751 iconst_1
+3752 ldc_w #383 <Real 0.10050083>
+3755 fastore
+3756 aastore
+3757 dup
+3758 iconst_2
+3759 iconst_2
+3760 newarray float
+3762 dup
+3763 iconst_0
+3764 ldc #4 <Real 0.4>
+3766 fastore
+3767 dup
+3768 iconst_1
+3769 ldc_w #394 <Real 0.20402674>
+3772 fastore
+3773 aastore
+3774 dup
+3775 iconst_3
+3776 iconst_2
+3777 newarray float
+3779 dup
+3780 iconst_0
+3781 ldc #6 <Real 0.6>
+3783 fastore
+3784 dup
+3785 iconst_1
+3786 ldc_w #402 <Real 0.31370404>
+3789 fastore
+3790 aastore
+3791 dup
+3792 iconst_4
+3793 iconst_2
+3794 newarray float
+3796 dup
+3797 iconst_0
+3798 ldc #8 <Real 0.8>
+3800 fastore
+3801 dup
+3802 iconst_1
+3803 ldc #217 <Real 0.4328648>
+3805 fastore
+3806 aastore
+3807 dup
+3808 iconst_5
+3809 iconst_2
+3810 newarray float
+3812 dup
+3813 iconst_0
+3814 fconst_1
+3815 fastore
+3816 dup
+3817 iconst_1
+3818 ldc_w #407 <Real 0.56515914>
+3821 fastore
+3822 aastore
+3823 dup
+3824 bipush 6
+3826 iconst_2
+3827 newarray float
+3829 dup
+3830 iconst_0
+3831 ldc #11 <Real 1.2>
+3833 fastore
+3834 dup
+3835 iconst_1
+3836 ldc_w #411 <Real 0.71467793>
+3839 fastore
+3840 aastore
+3841 dup
+3842 bipush 7
+3844 iconst_2
+3845 newarray float
+3847 dup
+3848 iconst_0
+3849 ldc #13 <Real 1.4>
+3851 fastore
+3852 dup
+3853 iconst_1
+3854 ldc_w #413 <Real 0.88609195>
+3857 fastore
+3858 aastore
+3859 dup
+3860 bipush 8
+3862 iconst_2
+3863 newarray float
+3865 dup
+3866 iconst_0
+3867 ldc #15 <Real 1.6>
+3869 fastore
+3870 dup
+3871 iconst_1
+3872 ldc_w #279 <Real 1.0848107>
+3875 fastore
+3876 aastore
+3877 dup
+3878 bipush 9
+3880 iconst_2
+3881 newarray float
+3883 dup
+3884 iconst_0
+3885 ldc #17 <Real 1.8>
+3887 fastore
+3888 dup
+3889 iconst_1
+3890 ldc_w #286 <Real 1.3171674>
+3893 fastore
+3894 aastore
+3895 dup
+3896 bipush 10
+3898 iconst_2
+3899 newarray float
+3901 dup
+3902 iconst_0
+3903 fconst_2
+3904 fastore
+3905 dup
+3906 iconst_1
+3907 ldc_w #292 <Real 1.5906368>
+3910 fastore
+3911 aastore
+3912 dup
+3913 bipush 11
+3915 iconst_2
+3916 newarray float
+3918 dup
+3919 iconst_0
+3920 ldc #21 <Real 2.5>
+3922 fastore
+3923 dup
+3924 iconst_1
+3925 ldc_w #311 <Real 2.5167162>
+3928 fastore
+3929 aastore
+3930 dup
+3931 bipush 12
+3933 iconst_2
+3934 newarray float
+3936 dup
+3937 iconst_0
+3938 ldc #22 <Real 3.0>
+3940 fastore
+3941 dup
+3942 iconst_1
+3943 ldc #87 <Real 3.95337>
+3945 fastore
+3946 aastore
+3947 dup
+3948 bipush 13
+3950 iconst_2
+3951 newarray float
+3953 dup
+3954 iconst_0
+3955 ldc #24 <Real 3.5>
+3957 fastore
+3958 dup
+3959 iconst_1
+3960 ldc #132 <Real 6.205835>
+3962 fastore
+3963 aastore
+3964 dup
+3965 bipush 14
+3967 iconst_2
+3968 newarray float
+3970 dup
+3971 iconst_0
+3972 ldc #25 <Real 4.0>
+3974 fastore
+3975 dup
+3976 iconst_1
+3977 ldc #138 <Real 9.759465>
+3979 fastore
+3980 aastore
+3981 dup
+3982 bipush 15
+3984 iconst_2
+3985 newarray float
+3987 dup
+3988 iconst_0
+3989 ldc #26 <Real 4.5>
+3991 fastore
+3992 dup
+3993 iconst_1
+3994 ldc_w #298 <Real 15.389221>
+3997 fastore
+3998 aastore
+3999 dup
+4000 bipush 16
+4002 iconst_2
+4003 newarray float
+4005 dup
+4006 iconst_0
+4007 ldc #27 <Real 5.0>
+4009 fastore
+4010 dup
+4011 iconst_1
+4012 ldc_w #316 <Real 24.335644>
+4015 fastore
+4016 aastore
+4017 dup
+4018 bipush 17
+4020 iconst_2
+4021 newarray float
+4023 dup
+4024 iconst_0
+4025 ldc #28 <Real 6.0>
+4027 fastore
+4028 dup
+4029 iconst_1
+4030 ldc_w #330 <Real 61.341938>
+4033 fastore
+4034 aastore
+4035 dup
+4036 bipush 18
+4038 iconst_2
+4039 newarray float
+4041 dup
+4042 iconst_0
+4043 ldc #34 <Real 8.0>
+4045 fastore
+4046 dup
+4047 iconst_1
+4048 ldc_w #323 <Real 399.87314>
+4051 fastore
+4052 aastore
+4053 dup
+4054 bipush 19
+4056 iconst_2
+4057 newarray float
+4059 dup
+4060 iconst_0
+4061 ldc #50 <Real 10.0>
+4063 fastore
+4064 dup
+4065 iconst_1
+4066 ldc_w #318 <Real 2670.9883>
+4069 fastore
+4070 aastore
+4071 putstatic #547 <Field float ValuesBesselI1[][]>
+4074 bipush 20
+4076 anewarray class #514 <Class [F>
+4079 dup
+4080 iconst_0
+4081 iconst_2
+4082 newarray float
+4084 dup
+4085 iconst_0
+4086 ldc #1 <Real 0.1>
+4088 fastore
+4089 dup
+4090 iconst_1
+4091 ldc #139 <Real 9.853845>
+4093 fastore
+4094 aastore
+4095 dup
+4096 iconst_1
+4097 iconst_2
+4098 newarray float
+4100 dup
+4101 iconst_0
+4102 ldc #2 <Real 0.2>
+4104 fastore
+4105 dup
+4106 iconst_1
+4107 ldc_w #324 <Real 4.7759724>
+4110 fastore
+4111 aastore
+4112 dup
+4113 iconst_2
+4114 iconst_2
+4115 newarray float
+4117 dup
+4118 iconst_0
+4119 ldc #4 <Real 0.4>
+4121 fastore
+4122 dup
+4123 iconst_1
+4124 ldc_w #306 <Real 2.1843543>
+4127 fastore
+4128 aastore
+4129 dup
+4130 iconst_3
+4131 iconst_2
+4132 newarray float
+4134 dup
+4135 iconst_0
+4136 ldc #6 <Real 0.6>
+4138 fastore
+4139 dup
+4140 iconst_1
+4141 ldc_w #285 <Real 1.3028349>
+4144 fastore
+4145 aastore
+4146 dup
+4147 iconst_4
+4148 iconst_2
+4149 newarray float
+4151 dup
+4152 iconst_0
+4153 ldc #8 <Real 0.8>
+4155 fastore
+4156 dup
+4157 iconst_1
+4158 ldc_w #412 <Real 0.86178166>
+4161 fastore
+4162 aastore
+4163 dup
+4164 iconst_5
+4165 iconst_2
+4166 newarray float
+4168 dup
+4169 iconst_0
+4170 fconst_1
+4171 fastore
+4172 dup
+4173 iconst_1
+4174 ldc_w #408 <Real 0.60190725>
+4177 fastore
+4178 aastore
+4179 dup
+4180 bipush 6
+4182 iconst_2
+4183 newarray float
+4185 dup
+4186 iconst_0
+4187 ldc #11 <Real 1.2>
+4189 fastore
+4190 dup
+4191 iconst_1
+4192 ldc #218 <Real 0.4345924>
+4194 fastore
+4195 aastore
+4196 dup
+4197 bipush 7
+4199 iconst_2
+4200 newarray float
+4202 dup
+4203 iconst_0
+4204 ldc #13 <Real 1.4>
+4206 fastore
+4207 dup
+4208 iconst_1
+4209 ldc #200 <Real 0.3208359>
+4211 fastore
+4212 aastore
+4213 dup
+4214 bipush 8
+4216 iconst_2
+4217 newarray float
+4219 dup
+4220 iconst_0
+4221 ldc #15 <Real 1.6>
+4223 fastore
+4224 dup
+4225 iconst_1
+4226 ldc_w #397 <Real 0.24063392>
+4229 fastore
+4230 aastore
+4231 dup
+4232 bipush 9
+4234 iconst_2
+4235 newarray float
+4237 dup
+4238 iconst_0
+4239 ldc #17 <Real 1.8>
+4241 fastore
+4242 dup
+4243 iconst_1
+4244 ldc_w #392 <Real 0.18262309>
+4247 fastore
+4248 aastore
+4249 dup
+4250 bipush 10
+4252 iconst_2
+4253 newarray float
+4255 dup
+4256 iconst_0
+4257 fconst_2
+4258 fastore
+4259 dup
+4260 iconst_1
+4261 ldc_w #390 <Real 0.13986588>
+4264 fastore
+4265 aastore
+4266 dup
+4267 bipush 11
+4269 iconst_2
+4270 newarray float
+4272 dup
+4273 iconst_0
+4274 ldc #21 <Real 2.5>
+4276 fastore
+4277 dup
+4278 iconst_1
+4279 ldc_w #381 <Real 0.07389081>
+4282 fastore
+4283 aastore
+4284 dup
+4285 bipush 12
+4287 iconst_2
+4288 newarray float
+4290 dup
+4291 iconst_0
+4292 ldc #22 <Real 3.0>
+4294 fastore
+4295 dup
+4296 iconst_1
+4297 ldc_w #377 <Real 0.04015643>
+4300 fastore
+4301 aastore
+4302 dup
+4303 bipush 13
+4305 iconst_2
+4306 newarray float
+4308 dup
+4309 iconst_0
+4310 ldc #24 <Real 3.5>
+4312 fastore
+4313 dup
+4314 iconst_1
+4315 ldc_w #437 <Real 0.022239393>
+4318 fastore
+4319 aastore
+4320 dup
+4321 bipush 14
+4323 iconst_2
+4324 newarray float
+4326 dup
+4327 iconst_0
+4328 ldc #25 <Real 4.0>
+4330 fastore
+4331 dup
+4332 iconst_1
+4333 ldc_w #433 <Real 0.012483499>
+4336 fastore
+4337 aastore
+4338 dup
+4339 bipush 15
+4341 iconst_2
+4342 newarray float
+4344 dup
+4345 iconst_0
+4346 ldc #26 <Real 4.5>
+4348 fastore
+4349 dup
+4350 iconst_1
+4351 ldc_w #430 <Real 0.007078095>
+4354 fastore
+4355 aastore
+4356 dup
+4357 bipush 16
+4359 iconst_2
+4360 newarray float
+4362 dup
+4363 iconst_0
+4364 ldc #27 <Real 5.0>
+4366 fastore
+4367 dup
+4368 iconst_1
+4369 ldc_w #454 <Real 0.0040446133>
+4372 fastore
+4373 aastore
+4374 dup
+4375 bipush 17
+4377 iconst_2
+4378 newarray float
+4380 dup
+4381 iconst_0
+4382 ldc #28 <Real 6.0>
+4384 fastore
+4385 dup
+4386 iconst_1
+4387 ldc_w #450 <Real 0.0013439197>
+4390 fastore
+4391 aastore
+4392 dup
+4393 bipush 18
+4395 iconst_2
+4396 newarray float
+4398 dup
+4399 iconst_0
+4400 ldc #34 <Real 8.0>
+4402 fastore
+4403 dup
+4404 iconst_1
+4405 ldc_w #462 <Real 1.5536921E-4>
+4408 fastore
+4409 aastore
+4410 dup
+4411 bipush 19
+4413 iconst_2
+4414 newarray float
+4416 dup
+4417 iconst_0
+4418 ldc #50 <Real 10.0>
+4420 fastore
+4421 dup
+4422 iconst_1
+4423 ldc_w #465 <Real 1.8648772E-5>
+4426 fastore
+4427 aastore
+4428 putstatic #553 <Field float ValuesBesselK1[][]>
+4431 bipush 28
+4433 anewarray class #514 <Class [F>
+4436 dup
+4437 iconst_0
+4438 iconst_3
+4439 newarray float
+4441 dup
+4442 iconst_0
+4443 fconst_2
+4444 fastore
+4445 dup
+4446 iconst_1
+4447 ldc #2 <Real 0.2>
+4449 fastore
+4450 dup
+4451 iconst_2
+4452 ldc #130 <Real 49.51243>
+4454 fastore
+4455 aastore
+4456 dup
+4457 iconst_1
+4458 iconst_3
+4459 newarray float
+4461 dup
+4462 iconst_0
+4463 fconst_2
+4464 fastore
+4465 dup
+4466 iconst_1
+4467 fconst_1
+4468 fastore
+4469 dup
+4470 iconst_2
+4471 ldc #113 <Real 1.624839>
+4473 fastore
+4474 aastore
+4475 dup
+4476 iconst_2
+4477 iconst_3
+4478 newarray float
+4480 dup
+4481 iconst_0
+4482 fconst_2
+4483 fastore
+4484 dup
+4485 iconst_1
+4486 fconst_2
+4487 fastore
+4488 dup
+4489 iconst_2
+4490 ldc_w #399 <Real 0.25375974>
+4493 fastore
+4494 aastore
+4495 dup
+4496 iconst_3
+4497 iconst_3
+4498 newarray float
+4500 dup
+4501 iconst_0
+4502 fconst_2
+4503 fastore
+4504 dup
+4505 iconst_1
+4506 ldc #21 <Real 2.5>
+4508 fastore
+4509 dup
+4510 iconst_2
+4511 ldc_w #387 <Real 0.12146021>
+4514 fastore
+4515 aastore
+4516 dup
+4517 iconst_4
+4518 iconst_3
+4519 newarray float
+4521 dup
+4522 iconst_0
+4523 fconst_2
+4524 fastore
+4525 dup
+4526 iconst_1
+4527 ldc #22 <Real 3.0>
+4529 fastore
+4530 dup
+4531 iconst_2
+4532 ldc_w #379 <Real 0.06151046>
+4535 fastore
+4536 aastore
+4537 dup
+4538 iconst_5
+4539 iconst_3
+4540 newarray float
+4542 dup
+4543 iconst_0
+4544 fconst_2
+4545 fastore
+4546 dup
+4547 iconst_1
+4548 ldc #27 <Real 5.0>
+4550 fastore
+4551 dup
+4552 iconst_2
+4553 ldc_w #429 <Real 0.005308944>
+4556 fastore
+4557 aastore
+4558 dup
+4559 bipush 6
+4561 iconst_3
+4562 newarray float
+4564 dup
+4565 iconst_0
+4566 fconst_2
+4567 fastore
+4568 dup
+4569 iconst_1
+4570 ldc #50 <Real 10.0>
+4572 fastore
+4573 dup
+4574 iconst_2
+4575 ldc_w #466 <Real 2.1509817E-5>
+4578 fastore
+4579 aastore
+4580 dup
+4581 bipush 7
+4583 iconst_3
+4584 newarray float
+4586 dup
+4587 iconst_0
+4588 fconst_2
+4589 fastore
+4590 dup
+4591 iconst_1
+4592 ldc #57 <Real 20.0>
+4594 fastore
+4595 dup
+4596 iconst_2
+4597 ldc_w #491 <Real 6.3295436E-10>
+4600 fastore
+4601 aastore
+4602 dup
+4603 bipush 8
+4605 iconst_3
+4606 newarray float
+4608 dup
+4609 iconst_0
+4610 ldc #22 <Real 3.0>
+4612 fastore
+4613 dup
+4614 iconst_1
+4615 fconst_1
+4616 fastore
+4617 dup
+4618 iconst_2
+4619 ldc #134 <Real 7.101263>
+4621 fastore
+4622 aastore
+4623 dup
+4624 bipush 9
+4626 iconst_3
+4627 newarray float
+4629 dup
+4630 iconst_0
+4631 ldc #22 <Real 3.0>
+4633 fastore
+4634 dup
+4635 iconst_1
+4636 fconst_2
+4637 fastore
+4638 dup
+4639 iconst_2
+4640 ldc #235 <Real 0.6473854>
+4642 fastore
+4643 aastore
+4644 dup
+4645 bipush 10
+4647 iconst_3
+4648 newarray float
+4650 dup
+4651 iconst_0
+4652 ldc #22 <Real 3.0>
+4654 fastore
+4655 dup
+4656 iconst_1
+4657 ldc #27 <Real 5.0>
+4659 fastore
+4660 dup
+4661 iconst_2
+4662 ldc_w #431 <Real 0.008291769>
+4665 fastore
+4666 aastore
+4667 dup
+4668 bipush 11
+4670 iconst_3
+4671 newarray float
+4673 dup
+4674 iconst_0
+4675 ldc #22 <Real 3.0>
+4677 fastore
+4678 dup
+4679 iconst_1
+4680 ldc #50 <Real 10.0>
+4682 fastore
+4683 dup
+4684 iconst_2
+4685 ldc_w #414 <Real 2.72527E-5>
+4688 fastore
+4689 aastore
+4690 dup
+4691 bipush 12
+4693 iconst_3
+4694 newarray float
+4696 dup
+4697 iconst_0
+4698 ldc #22 <Real 3.0>
+4700 fastore
+4701 dup
+4702 iconst_1
+4703 ldc #63 <Real 50.0>
+4705 fastore
+4706 dup
+4707 iconst_2
+4708 ldc_w #486 <Real 3.7279367E-23>
+4711 fastore
+4712 aastore
+4713 dup
+4714 bipush 13
+4716 iconst_3
+4717 newarray float
+4719 dup
+4720 iconst_0
+4721 ldc #27 <Real 5.0>
+4723 fastore
+4724 dup
+4725 iconst_1
+4726 fconst_1
+4727 fastore
+4728 dup
+4729 iconst_2
+4730 ldc #126 <Real 360.9606>
+4732 fastore
+4733 aastore
+4734 dup
+4735 bipush 14
+4737 iconst_3
+4738 newarray float
+4740 dup
+4741 iconst_0
+4742 ldc #27 <Real 5.0>
+4744 fastore
+4745 dup
+4746 iconst_1
+4747 fconst_2
+4748 fastore
+4749 dup
+4750 iconst_2
+4751 ldc #136 <Real 9.431049>
+4753 fastore
+4754 aastore
+4755 dup
+4756 bipush 15
+4758 iconst_3
+4759 newarray float
+4761 dup
+4762 iconst_0
+4763 ldc #27 <Real 5.0>
+4765 fastore
+4766 dup
+4767 iconst_1
+4768 ldc #27 <Real 5.0>
+4770 fastore
+4771 dup
+4772 iconst_2
+4773 ldc_w #376 <Real 0.03270627>
+4776 fastore
+4777 aastore
+4778 dup
+4779 bipush 16
+4781 iconst_3
+4782 newarray float
+4784 dup
+4785 iconst_0
+4786 ldc #27 <Real 5.0>
+4788 fastore
+4789 dup
+4790 iconst_1
+4791 ldc #50 <Real 10.0>
+4793 fastore
+4794 dup
+4795 iconst_2
+4796 ldc_w #444 <Real 5.754185E-5>
+4799 fastore
+4800 aastore
+4801 dup
+4802 bipush 17
+4804 iconst_3
+4805 newarray float
+4807 dup
+4808 iconst_0
+4809 ldc #27 <Real 5.0>
+4811 fastore
+4812 dup
+4813 iconst_1
+4814 ldc #63 <Real 50.0>
+4816 fastore
+4817 dup
+4818 iconst_2
+4819 ldc_w #489 <Real 4.3671822E-23>
+4822 fastore
+4823 aastore
+4824 dup
+4825 bipush 18
+4827 iconst_3
+4828 newarray float
+4830 dup
+4831 iconst_0
+4832 ldc #50 <Real 10.0>
+4834 fastore
+4835 dup
+4836 iconst_1
+4837 fconst_1
+4838 fastore
+4839 dup
+4840 iconst_2
+4841 ldc_w #464 <Real 1.80713296E8>
+4844 fastore
+4845 aastore
+4846 dup
+4847 bipush 19
+4849 iconst_3
+4850 newarray float
+4852 dup
+4853 iconst_0
+4854 ldc #50 <Real 10.0>
+4856 fastore
+4857 dup
+4858 iconst_1
+4859 fconst_2
+4860 fastore
+4861 dup
+4862 iconst_2
+4863 ldc #120 <Real 162482.4>
+4865 fastore
+4866 aastore
+4867 dup
+4868 bipush 20
+4870 iconst_3
+4871 newarray float
+4873 dup
+4874 iconst_0
+4875 ldc #50 <Real 10.0>
+4877 fastore
+4878 dup
+4879 iconst_1
+4880 ldc #27 <Real 5.0>
+4882 fastore
+4883 dup
+4884 iconst_2
+4885 ldc #137 <Real 9.758563>
+4887 fastore
+4888 aastore
+4889 dup
+4890 bipush 21
+4892 iconst_3
+4893 newarray float
+4895 dup
+4896 iconst_0
+4897 ldc #50 <Real 10.0>
+4899 fastore
+4900 dup
+4901 iconst_1
+4902 ldc #50 <Real 10.0>
+4904 fastore
+4905 dup
+4906 iconst_2
+4907 ldc_w #452 <Real 0.0016142552>
+4910 fastore
+4911 aastore
+4912 dup
+4913 bipush 22
+4915 iconst_3
+4916 newarray float
+4918 dup
+4919 iconst_0
+4920 ldc #50 <Real 10.0>
+4922 fastore
+4923 dup
+4924 iconst_1
+4925 ldc #63 <Real 50.0>
+4927 fastore
+4928 dup
+4929 iconst_2
+4930 ldc_w #492 <Real 9.1509884E-23>
+4933 fastore
+4934 aastore
+4935 dup
+4936 bipush 23
+4938 iconst_3
+4939 newarray float
+4941 dup
+4942 iconst_0
+4943 ldc #57 <Real 20.0>
+4945 fastore
+4946 dup
+4947 iconst_1
+4948 fconst_1
+4949 fastore
+4950 dup
+4951 iconst_2
+4952 ldc_w #477 <Real 6.2943696E22>
+4955 fastore
+4956 aastore
+4957 dup
+4958 bipush 24
+4960 iconst_3
+4961 newarray float
+4963 dup
+4964 iconst_0
+4965 ldc #57 <Real 20.0>
+4967 fastore
+4968 dup
+4969 iconst_1
+4970 fconst_2
+4971 fastore
+4972 dup
+4973 iconst_2
+4974 ldc_w #476 <Real 5.7708568E16>
+4977 fastore
+4978 aastore
+4979 dup
+4980 bipush 25
+4982 iconst_3
+4983 newarray float
+4985 dup
+4986 iconst_0
+4987 ldc #57 <Real 20.0>
+4989 fastore
+4990 dup
+4991 iconst_1
+4992 ldc #27 <Real 5.0>
+4994 fastore
+4995 dup
+4996 iconst_2
+4997 ldc_w #474 <Real 4.82700064E8>
+5000 fastore
+5001 aastore
+5002 dup
+5003 bipush 26
+5005 iconst_3
+5006 newarray float
+5008 dup
+5009 iconst_0
+5010 ldc #57 <Real 20.0>
+5012 fastore
+5013 dup
+5014 iconst_1
+5015 ldc #50 <Real 10.0>
+5017 fastore
+5018 dup
+5019 iconst_2
+5020 ldc_w #303 <Real 178.74428>
+5023 fastore
+5024 aastore
+5025 dup
+5026 bipush 27
+5028 iconst_3
+5029 newarray float
+5031 dup
+5032 iconst_0
+5033 ldc #57 <Real 20.0>
+5035 fastore
+5036 dup
+5037 iconst_1
+5038 ldc #63 <Real 50.0>
+5040 fastore
+5041 dup
+5042 iconst_2
+5043 ldc_w #483 <Real 1.7061485E-21>
+5046 fastore
+5047 aastore
+5048 putstatic #554 <Field float ValuesBesselKn[][]>
+5051 bipush 28
+5053 anewarray class #514 <Class [F>
+5056 dup
+5057 iconst_0
+5058 iconst_3
+5059 newarray float
+5061 dup
+5062 iconst_0
+5063 fconst_2
+5064 fastore
+5065 dup
+5066 iconst_1
+5067 ldc #2 <Real 0.2>
+5069 fastore
+5070 dup
+5071 iconst_2
+5072 ldc_w #428 <Real 0.005016688>
+5075 fastore
+5076 aastore
+5077 dup
+5078 iconst_1
+5079 iconst_3
+5080 newarray float
+5082 dup
+5083 iconst_0
+5084 fconst_2
+5085 fastore
+5086 dup
+5087 iconst_1
+5088 fconst_1
+5089 fastore
+5090 dup
+5091 iconst_2
+5092 ldc_w #389 <Real 0.13574767>
+5095 fastore
+5096 aastore
+5097 dup
+5098 iconst_2
+5099 iconst_3
+5100 newarray float
+5102 dup
+5103 iconst_0
+5104 fconst_2
+5105 fastore
+5106 dup
+5107 iconst_1
+5108 fconst_2
+5109 fastore
+5110 dup
+5111 iconst_2
+5112 ldc_w #409 <Real 0.68894845>
+5115 fastore
+5116 aastore
+5117 dup
+5118 iconst_3
+5119 iconst_3
+5120 newarray float
+5122 dup
+5123 iconst_0
+5124 fconst_2
+5125 fastore
+5126 dup
+5127 iconst_1
+5128 ldc #21 <Real 2.5>
+5130 fastore
+5131 dup
+5132 iconst_2
+5133 ldc_w #284 <Real 1.2764661>
+5136 fastore
+5137 aastore
+5138 dup
+5139 iconst_4
+5140 iconst_3
+5141 newarray float
+5143 dup
+5144 iconst_0
+5145 fconst_2
+5146 fastore
+5147 dup
+5148 iconst_1
+5149 ldc #22 <Real 3.0>
+5151 fastore
+5152 dup
+5153 iconst_2
+5154 ldc_w #307 <Real 2.2452126>
+5157 fastore
+5158 aastore
+5159 dup
+5160 iconst_5
+5161 iconst_3
+5162 newarray float
+5164 dup
+5165 iconst_0
+5166 fconst_2
+5167 fastore
+5168 dup
+5169 iconst_1
+5170 ldc #27 <Real 5.0>
+5172 fastore
+5173 dup
+5174 iconst_2
+5175 ldc_w #301 <Real 17.505615>
+5178 fastore
+5179 aastore
+5180 dup
+5181 bipush 6
+5183 iconst_3
+5184 newarray float
+5186 dup
+5187 iconst_0
+5188 fconst_2
+5189 fastore
+5190 dup
+5191 iconst_1
+5192 ldc #50 <Real 10.0>
+5194 fastore
+5195 dup
+5196 iconst_2
+5197 ldc_w #313 <Real 2281.5188>
+5200 fastore
+5201 aastore
+5202 dup
+5203 bipush 7
+5205 iconst_3
+5206 newarray float
+5208 dup
+5209 iconst_0
+5210 fconst_2
+5211 fastore
+5212 dup
+5213 iconst_1
+5214 ldc #57 <Real 20.0>
+5216 fastore
+5217 dup
+5218 iconst_2
+5219 ldc_w #443 <Real 3.9312784E7>
+5222 fastore
+5223 aastore
+5224 dup
+5225 bipush 8
+5227 iconst_3
+5228 newarray float
+5230 dup
+5231 iconst_0
+5232 ldc #22 <Real 3.0>
+5234 fastore
+5235 dup
+5236 iconst_1
+5237 fconst_1
+5238 fastore
+5239 dup
+5240 iconst_2
+5241 ldc_w #436 <Real 0.022168426>
+5244 fastore
+5245 aastore
+5246 dup
+5247 bipush 9
+5249 iconst_3
+5250 newarray float
+5252 dup
+5253 iconst_0
+5254 ldc #22 <Real 3.0>
+5256 fastore
+5257 dup
+5258 iconst_1
+5259 fconst_2
+5260 fastore
+5261 dup
+5262 iconst_2
+5263 ldc_w #396 <Real 0.21273996>
+5266 fastore
+5267 aastore
+5268 dup
+5269 bipush 10
+5271 iconst_3
+5272 newarray float
+5274 dup
+5275 iconst_0
+5276 ldc #22 <Real 3.0>
+5278 fastore
+5279 dup
+5280 iconst_1
+5281 ldc #27 <Real 5.0>
+5283 fastore
+5284 dup
+5285 iconst_2
+5286 ldc #119 <Real 10.33115>
+5288 fastore
+5289 aastore
+5290 dup
+5291 bipush 11
+5293 iconst_3
+5294 newarray float
+5296 dup
+5297 iconst_0
+5298 ldc #22 <Real 3.0>
+5300 fastore
+5301 dup
+5302 iconst_1
+5303 ldc #50 <Real 10.0>
+5305 fastore
+5306 dup
+5307 iconst_2
+5308 ldc_w #302 <Real 17.583807>
+5311 fastore
+5312 aastore
+5313 dup
+5314 bipush 12
+5316 iconst_3
+5317 newarray float
+5319 dup
+5320 iconst_0
+5321 ldc #22 <Real 3.0>
+5323 fastore
+5324 dup
+5325 iconst_1
+5326 ldc #63 <Real 50.0>
+5328 fastore
+5329 dup
+5330 iconst_2
+5331 ldc_w #470 <Real 2.6777642E20>
+5334 fastore
+5335 aastore
+5336 dup
+5337 bipush 13
+5339 iconst_3
+5340 newarray float
+5342 dup
+5343 iconst_0
+5344 ldc #27 <Real 5.0>
+5346 fastore
+5347 dup
+5348 iconst_1
+5349 fconst_1
+5350 fastore
+5351 dup
+5352 iconst_2
+5353 ldc_w #471 <Real 2.7146316E-4>
+5356 fastore
+5357 aastore
+5358 dup
+5359 bipush 14
+5361 iconst_3
+5362 newarray float
+5364 dup
+5365 iconst_0
+5366 ldc #27 <Real 5.0>
+5368 fastore
+5369 dup
+5370 iconst_1
+5371 fconst_2
+5372 fastore
+5373 dup
+5374 iconst_2
+5375 ldc_w #457 <Real 0.0098256795>
+5378 fastore
+5379 aastore
+5380 dup
+5381 bipush 15
+5383 iconst_3
+5384 newarray float
+5386 dup
+5387 iconst_0
+5388 ldc #27 <Real 5.0>
+5390 fastore
+5391 dup
+5392 iconst_1
+5393 ldc #27 <Real 5.0>
+5395 fastore
+5396 dup
+5397 iconst_2
+5398 ldc_w #304 <Real 2.1579745>
+5401 fastore
+5402 aastore
+5403 dup
+5404 bipush 16
+5406 iconst_3
+5407 newarray float
+5409 dup
+5410 iconst_0
+5411 ldc #27 <Real 5.0>
+5413 fastore
+5414 dup
+5415 iconst_1
+5416 ldc #50 <Real 10.0>
+5418 fastore
+5419 dup
+5420 iconst_2
+5421 ldc #135 <Real 777.1883>
+5423 fastore
+5424 aastore
+5425 dup
+5426 bipush 17
+5428 iconst_3
+5429 newarray float
+5431 dup
+5432 iconst_0
+5433 ldc #27 <Real 5.0>
+5435 fastore
+5436 dup
+5437 iconst_1
+5438 ldc #63 <Real 50.0>
+5440 fastore
+5441 dup
+5442 iconst_2
+5443 ldc_w #467 <Real 2.2785484E20>
+5446 fastore
+5447 aastore
+5448 dup
+5449 bipush 18
+5451 iconst_3
+5452 newarray float
+5454 dup
+5455 iconst_0
+5456 ldc #50 <Real 10.0>
+5458 fastore
+5459 dup
+5460 iconst_1
+5461 fconst_1
+5462 fastore
+5463 dup
+5464 iconst_2
+5465 ldc_w #485 <Real 2.7529481E-10>
+5468 fastore
+5469 aastore
+5470 dup
+5471 bipush 19
+5473 iconst_3
+5474 newarray float
+5476 dup
+5477 iconst_0
+5478 ldc #50 <Real 10.0>
+5480 fastore
+5481 dup
+5482 iconst_1
+5483 fconst_2
+5484 fastore
+5485 dup
+5486 iconst_2
+5487 ldc_w #442 <Real 3.016964E-7>
+5490 fastore
+5491 aastore
+5492 dup
+5493 bipush 20
+5495 iconst_3
+5496 newarray float
+5498 dup
+5499 iconst_0
+5500 ldc #50 <Real 10.0>
+5502 fastore
+5503 dup
+5504 iconst_1
+5505 ldc #27 <Real 5.0>
+5507 fastore
+5508 dup
+5509 iconst_2
+5510 ldc_w #427 <Real 0.004580044>
+5513 fastore
+5514 aastore
+5515 dup
+5516 bipush 21
+5518 iconst_3
+5519 newarray float
+5521 dup
+5522 iconst_0
+5523 ldc #50 <Real 10.0>
+5525 fastore
+5526 dup
+5527 iconst_1
+5528 ldc #50 <Real 10.0>
+5530 fastore
+5531 dup
+5532 iconst_2
+5533 ldc_w #312 <Real 21.891706>
+5536 fastore
+5537 aastore
+5538 dup
+5539 bipush 22
+5541 iconst_3
+5542 newarray float
+5544 dup
+5545 iconst_0
+5546 ldc #50 <Real 10.0>
+5548 fastore
+5549 dup
+5550 iconst_1
+5551 ldc #63 <Real 50.0>
+5553 fastore
+5554 dup
+5555 iconst_2
+5556 ldc_w #458 <Real 1.0715971E20>
+5559 fastore
+5560 aastore
+5561 dup
+5562 bipush 23
+5564 iconst_3
+5565 newarray float
+5567 dup
+5568 iconst_0
+5569 ldc #57 <Real 20.0>
+5571 fastore
+5572 dup
+5573 iconst_1
+5574 fconst_1
+5575 fastore
+5576 dup
+5577 iconst_2
+5578 ldc_w #487 <Real 3.9668359E-25>
+5581 fastore
+5582 aastore
+5583 dup
+5584 bipush 24
+5586 iconst_3
+5587 newarray float
+5589 dup
+5590 iconst_0
+5591 ldc #57 <Real 20.0>
+5593 fastore
+5594 dup
+5595 iconst_1
+5596 fconst_2
+5597 fastore
+5598 dup
+5599 iconst_2
+5600 ldc_w #488 <Real 4.3105607E-19>
+5603 fastore
+5604 aastore
+5605 dup
+5606 bipush 25
+5608 iconst_3
+5609 newarray float
+5611 dup
+5612 iconst_0
+5613 ldc #57 <Real 20.0>
+5615 fastore
+5616 dup
+5617 iconst_1
+5618 ldc #27 <Real 5.0>
+5620 fastore
+5621 dup
+5622 iconst_2
+5623 ldc_w #490 <Real 5.0242394E-11>
+5626 fastore
+5627 aastore
+5628 dup
+5629 bipush 26
+5631 iconst_3
+5632 newarray float
+5634 dup
+5635 iconst_0
+5636 ldc #57 <Real 20.0>
+5638 fastore
+5639 dup
+5640 iconst_1
+5641 ldc #50 <Real 10.0>
+5643 fastore
+5644 dup
+5645 iconst_2
+5646 ldc_w #460 <Real 1.2507997E-4>
+5649 fastore
+5650 aastore
+5651 dup
+5652 bipush 27
+5654 iconst_3
+5655 newarray float
+5657 dup
+5658 iconst_0
+5659 ldc #57 <Real 20.0>
+5661 fastore
+5662 dup
+5663 iconst_1
+5664 ldc #63 <Real 50.0>
+5666 fastore
+5667 dup
+5668 iconst_2
+5669 ldc_w #475 <Real 5.4420086E18>
+5672 fastore
+5673 aastore
+5674 putstatic #548 <Field float ValuesBesselIn[][]>
+5677 bipush 20
+5679 anewarray class #514 <Class [F>
+5682 dup
+5683 iconst_0
+5684 iconst_2
+5685 newarray float
+5687 aastore
+5688 dup
+5689 iconst_1
+5690 iconst_2
+5691 newarray float
+5693 dup
+5694 iconst_0
+5695 ldc #1 <Real 0.1>
+5697 fastore
+5698 dup
+5699 iconst_1
+5700 ldc #167 <Real 0.1124629>
+5702 fastore
+5703 aastore
+5704 dup
+5705 iconst_2
+5706 iconst_2
+5707 newarray float
+5709 dup
+5710 iconst_0
+5711 ldc #2 <Real 0.2>
+5713 fastore
+5714 dup
+5715 iconst_1
+5716 ldc #185 <Real 0.2227026>
+5718 fastore
+5719 aastore
+5720 dup
+5721 iconst_3
+5722 iconst_2
+5723 newarray float
+5725 dup
+5726 iconst_0
+5727 ldc #3 <Real 0.3>
+5729 fastore
+5730 dup
+5731 iconst_1
+5732 ldc #203 <Real 0.3286268>
+5734 fastore
+5735 aastore
+5736 dup
+5737 iconst_4
+5738 iconst_2
+5739 newarray float
+5741 dup
+5742 iconst_0
+5743 ldc #4 <Real 0.4>
+5745 fastore
+5746 dup
+5747 iconst_1
+5748 ldc #216 <Real 0.4283924>
+5750 fastore
+5751 aastore
+5752 dup
+5753 iconst_5
+5754 iconst_2
+5755 newarray float
+5757 dup
+5758 iconst_0
+5759 ldc #5 <Real 0.5>
+5761 fastore
+5762 dup
+5763 iconst_1
+5764 ldc #227 <Real 0.5204999>
+5766 fastore
+5767 aastore
+5768 dup
+5769 bipush 6
+5771 iconst_2
+5772 newarray float
+5774 dup
+5775 iconst_0
+5776 ldc #6 <Real 0.6>
+5778 fastore
+5779 dup
+5780 iconst_1
+5781 ldc #232 <Real 0.6038561>
+5783 fastore
+5784 aastore
+5785 dup
+5786 bipush 7
+5788 iconst_2
+5789 newarray float
+5791 dup
+5792 iconst_0
+5793 ldc #7 <Real 0.7>
+5795 fastore
+5796 dup
+5797 iconst_1
+5798 ldc #237 <Real 0.6778012>
+5800 fastore
+5801 aastore
+5802 dup
+5803 bipush 8
+5805 iconst_2
+5806 newarray float
+5808 dup
+5809 iconst_0
+5810 ldc #8 <Real 0.8>
+5812 fastore
+5813 dup
+5814 iconst_1
+5815 ldc #94 <Real 0.742101>
+5817 fastore
+5818 aastore
+5819 dup
+5820 bipush 9
+5822 iconst_2
+5823 newarray float
+5825 dup
+5826 iconst_0
+5827 ldc #9 <Real 0.9>
+5829 fastore
+5830 dup
+5831 iconst_1
+5832 ldc #250 <Real 0.7969082>
+5834 fastore
+5835 aastore
+5836 dup
+5837 bipush 10
+5839 iconst_2
+5840 newarray float
+5842 dup
+5843 iconst_0
+5844 fconst_1
+5845 fastore
+5846 dup
+5847 iconst_1
+5848 ldc #252 <Real 0.8427008>
+5850 fastore
+5851 aastore
+5852 dup
+5853 bipush 11
+5855 iconst_2
+5856 newarray float
+5858 dup
+5859 iconst_0
+5860 ldc #10 <Real 1.1>
+5862 fastore
+5863 dup
+5864 iconst_1
+5865 ldc #253 <Real 0.8802051>
+5867 fastore
+5868 aastore
+5869 dup
+5870 bipush 12
+5872 iconst_2
+5873 newarray float
+5875 dup
+5876 iconst_0
+5877 ldc #11 <Real 1.2>
+5879 fastore
+5880 dup
+5881 iconst_1
+5882 ldc #98 <Real 0.910314>
+5884 fastore
+5885 aastore
+5886 dup
+5887 bipush 13
+5889 iconst_2
+5890 newarray float
+5892 dup
+5893 iconst_0
+5894 ldc #12 <Real 1.3>
+5896 fastore
+5897 dup
+5898 iconst_1
+5899 ldc_w #259 <Real 0.9340079>
+5902 fastore
+5903 aastore
+5904 dup
+5905 bipush 14
+5907 iconst_2
+5908 newarray float
+5910 dup
+5911 iconst_0
+5912 ldc #13 <Real 1.4>
+5914 fastore
+5915 dup
+5916 iconst_1
+5917 ldc_w #263 <Real 0.9522851>
+5920 fastore
+5921 aastore
+5922 dup
+5923 bipush 15
+5925 iconst_2
+5926 newarray float
+5928 dup
+5929 iconst_0
+5930 ldc #14 <Real 1.5>
+5932 fastore
+5933 dup
+5934 iconst_1
+5935 ldc_w #265 <Real 0.9661051>
+5938 fastore
+5939 aastore
+5940 dup
+5941 bipush 16
+5943 iconst_2
+5944 newarray float
+5946 dup
+5947 iconst_0
+5948 ldc #15 <Real 1.6>
+5950 fastore
+5951 dup
+5952 iconst_1
+5953 ldc_w #266 <Real 0.9763484>
+5956 fastore
+5957 aastore
+5958 dup
+5959 bipush 17
+5961 iconst_2
+5962 newarray float
+5964 dup
+5965 iconst_0
+5966 ldc #16 <Real 1.7>
+5968 fastore
+5969 dup
+5970 iconst_1
+5971 ldc_w #269 <Real 0.9837905>
+5974 fastore
+5975 aastore
+5976 dup
+5977 bipush 18
+5979 iconst_2
+5980 newarray float
+5982 dup
+5983 iconst_0
+5984 ldc #17 <Real 1.8>
+5986 fastore
+5987 dup
+5988 iconst_1
+5989 ldc_w #270 <Real 0.9890905>
+5992 fastore
+5993 aastore
+5994 dup
+5995 bipush 19
+5997 iconst_2
+5998 newarray float
+6000 dup
+6001 iconst_0
+6002 ldc #18 <Real 1.9>
+6004 fastore
+6005 dup
+6006 iconst_1
+6007 ldc_w #273 <Real 0.9927904>
+6010 fastore
+6011 aastore
+6012 putstatic #560 <Field float ValuesErrFc[][]>
+6015 bipush 23
+6017 anewarray class #514 <Class [F>
+6020 dup
+6021 iconst_0
+6022 iconst_4
+6023 newarray float
+6025 dup
+6026 iconst_0
+6027 ldc #1 <Real 0.1>
+6029 fastore
+6030 dup
+6031 iconst_1
+6032 ldc #143 <Real -1.727868>
+6034 fastore
+6035 dup
+6036 iconst_2
+6037 ldc_w #382 <Real 0.09994446>
+6040 fastore
+6041 dup
+6042 iconst_3
+6043 ldc_w #366 <Real -1.6228129>
+6046 fastore
+6047 aastore
+6048 dup
+6049 iconst_1
+6050 iconst_4
+6051 newarray float
+6053 dup
+6054 iconst_0
+6055 ldc #2 <Real 0.2>
+6057 fastore
+6058 dup
+6059 iconst_1
+6060 ldc #142 <Real -1.042206>
+6062 fastore
+6063 dup
+6064 iconst_2
+6065 ldc #179 <Real 0.1995561>
+6067 fastore
+6068 dup
+6069 iconst_3
+6070 ldc #76 <Real -0.822>
+6072 fastore
+6073 aastore
+6074 dup
+6075 iconst_2
+6076 iconst_4
+6077 newarray float
+6079 dup
+6080 iconst_0
+6081 ldc #5 <Real 0.5>
+6083 fastore
+6084 dup
+6085 iconst_1
+6086 ldc_w #423 <Real -0.17778409>
+6089 fastore
+6090 dup
+6091 iconst_2
+6092 ldc #225 <Real 0.4931074>
+6094 fastore
+6095 dup
+6096 iconst_3
+6097 ldc #221 <Real 0.4542199>
+6099 fastore
+6100 aastore
+6101 dup
+6102 iconst_3
+6103 iconst_4
+6104 newarray float
+6106 dup
+6107 iconst_0
+6108 ldc #6 <Real 0.6>
+6110 fastore
+6111 dup
+6112 iconst_1
+6113 ldc_w #417 <Real -0.02227071>
+6116 fastore
+6117 dup
+6118 iconst_2
+6119 ldc #231 <Real 0.5881288>
+6121 fastore
+6122 dup
+6123 iconst_3
+6124 ldc #48 <Real 0.77>
+6126 fastore
+6127 aastore
+6128 dup
+6129 iconst_4
+6130 iconst_4
+6131 newarray float
+6133 dup
+6134 iconst_0
+6135 ldc #7 <Real 0.7>
+6137 fastore
+6138 dup
+6139 iconst_1
+6140 ldc #164 <Real 0.1005147>
+6142 fastore
+6143 dup
+6144 iconst_2
+6145 ldc #238 <Real 0.6812222>
+6147 fastore
+6148 dup
+6149 iconst_3
+6150 ldc #65 <Real 1.065>
+6152 fastore
+6153 aastore
+6154 dup
+6155 iconst_5
+6156 iconst_4
+6157 newarray float
+6159 dup
+6160 iconst_0
+6161 ldc #10 <Real 1.1>
+6163 fastore
+6164 dup
+6165 iconst_1
+6166 ldc #209 <Real 0.3848734>
+6168 fastore
+6169 dup
+6170 iconst_2
+6171 ldc_w #276 <Real 1.0286852>
+6174 fastore
+6175 dup
+6176 iconst_3
+6177 ldc_w #305 <Real 2.1673782>
+6180 fastore
+6181 aastore
+6182 dup
+6183 bipush 6
+6185 iconst_4
+6186 newarray float
+6188 dup
+6189 iconst_0
+6190 ldc #17 <Real 1.8>
+6192 fastore
+6193 dup
+6194 iconst_1
+6195 ldc #222 <Real 0.4568111>
+6197 fastore
+6198 dup
+6199 iconst_2
+6200 ldc #109 <Real 1.505817>
+6202 fastore
+6203 dup
+6204 iconst_3
+6205 ldc #60 <Real 4.25>
+6207 fastore
+6208 aastore
+6209 dup
+6210 bipush 7
+6212 iconst_4
+6213 newarray float
+6215 dup
+6216 iconst_0
+6217 ldc #18 <Real 1.9>
+6219 fastore
+6220 dup
+6221 iconst_1
+6222 ldc #220 <Real 0.4419403>
+6224 fastore
+6225 dup
+6226 iconst_2
+6227 ldc #110 <Real 1.557775>
+6229 fastore
+6230 dup
+6231 iconst_3
+6232 ldc #69 <Real 4.594>
+6234 fastore
+6235 aastore
+6236 dup
+6237 bipush 8
+6239 iconst_4
+6240 newarray float
+6242 dup
+6243 iconst_0
+6244 fconst_2
+6245 fastore
+6246 dup
+6247 iconst_1
+6248 ldc #215 <Real 0.4229808>
+6250 fastore
+6251 dup
+6252 iconst_2
+6253 ldc #111 <Real 1.605413>
+6255 fastore
+6256 dup
+6257 iconst_3
+6258 ldc #70 <Real 4.954>
+6260 fastore
+6261 aastore
+6262 dup
+6263 bipush 9
+6265 iconst_4
+6266 newarray float
+6268 dup
+6269 iconst_0
+6270 ldc #19 <Real 2.1>
+6272 fastore
+6273 dup
+6274 iconst_1
+6275 ldc #93 <Real 0.400512>
+6277 fastore
+6278 dup
+6279 iconst_2
+6280 ldc #114 <Real 1.648699>
+6282 fastore
+6283 dup
+6284 iconst_3
+6285 ldc #71 <Real 5.333>
+6287 fastore
+6288 aastore
+6289 dup
+6290 bipush 10
+6292 iconst_4
+6293 newarray float
+6295 dup
+6296 iconst_0
+6297 ldc #20 <Real 2.2>
+6299 fastore
+6300 dup
+6301 iconst_1
+6302 ldc #208 <Real 0.3750746>
+6304 fastore
+6305 dup
+6306 iconst_2
+6307 ldc #116 <Real 1.687625>
+6309 fastore
+6310 dup
+6311 iconst_3
+6312 ldc #72 <Real 5.733>
+6314 fastore
+6315 aastore
+6316 dup
+6317 bipush 11
+6319 iconst_4
+6320 newarray float
+6322 dup
+6323 iconst_0
+6324 ldc #23 <Real 3.3>
+6326 fastore
+6327 dup
+6328 iconst_1
+6329 ldc_w #373 <Real 0.02467829>
+6332 fastore
+6333 dup
+6334 iconst_2
+6335 ldc #118 <Real 1.848081>
+6337 fastore
+6338 dup
+6339 iconst_3
+6340 ldc #77 <Real 12.161>
+6342 fastore
+6343 aastore
+6344 dup
+6345 bipush 12
+6347 iconst_4
+6348 newarray float
+6350 dup
+6351 iconst_0
+6352 ldc #25 <Real 4.0>
+6354 fastore
+6355 dup
+6356 iconst_1
+6357 ldc #75 <Real -0.141>
+6359 fastore
+6360 dup
+6361 iconst_2
+6362 ldc #67 <Real 1.758>
+6364 fastore
+6365 dup
+6366 iconst_3
+6367 ldc #78 <Real 19.631>
+6369 fastore
+6370 aastore
+6371 dup
+6372 bipush 13
+6374 iconst_4
+6375 newarray float
+6377 dup
+6378 iconst_0
+6379 ldc #27 <Real 5.0>
+6381 fastore
+6382 dup
+6383 iconst_1
+6384 ldc #64 <Real -0.19>
+6386 fastore
+6387 dup
+6388 iconst_2
+6389 ldc #49 <Real 1.55>
+6391 fastore
+6392 dup
+6393 iconst_3
+6394 ldc #79 <Real 40.185>
+6396 fastore
+6397 aastore
+6398 dup
+6399 bipush 14
+6401 iconst_4
+6402 newarray float
+6404 dup
+6405 iconst_0
+6406 ldc #28 <Real 6.0>
+6408 fastore
+6409 dup
+6410 iconst_1
+6411 ldc #74 <Real -0.068>
+6413 fastore
+6414 dup
+6415 iconst_2
+6416 ldc #66 <Real 1.425>
+6418 fastore
+6419 dup
+6420 iconst_3
+6421 ldc #73 <Real 85.99>
+6423 fastore
+6424 aastore
+6425 dup
+6426 bipush 15
+6428 iconst_4
+6429 newarray float
+6431 dup
+6432 iconst_0
+6433 ldc #29 <Real 6.3>
+6435 fastore
+6436 dup
+6437 iconst_1
+6438 ldc_w #416 <Real -0.01988822>
+6441 fastore
+6442 dup
+6443 iconst_2
+6444 ldc #103 <Real 1.418174>
+6446 fastore
+6447 dup
+6448 iconst_3
+6449 ldc #82 <Real 108.916>
+6451 fastore
+6452 aastore
+6453 dup
+6454 bipush 16
+6456 iconst_4
+6457 newarray float
+6459 dup
+6460 iconst_0
+6461 ldc #30 <Real 6.4>
+6463 fastore
+6464 dup
+6465 iconst_1
+6466 ldc_w #446 <Real -0.004181411>
+6469 fastore
+6470 dup
+6471 iconst_2
+6472 ldc #104 <Real 1.419223>
+6474 fastore
+6475 dup
+6476 iconst_3
+6477 ldc #83 <Real 117.935>
+6479 fastore
+6480 aastore
+6481 dup
+6482 bipush 17
+6484 iconst_4
+6485 newarray float
+6487 dup
+6488 iconst_0
+6489 ldc #31 <Real 6.5>
+6491 fastore
+6492 dup
+6493 iconst_1
+6494 ldc_w #372 <Real 0.01110152>
+6497 fastore
+6498 dup
+6499 iconst_2
+6500 ldc #105 <Real 1.421794>
+6502 fastore
+6503 dup
+6504 iconst_3
+6505 ldc #84 <Real 127.747>
+6507 fastore
+6508 aastore
+6509 dup
+6510 bipush 18
+6512 iconst_4
+6513 newarray float
+6515 dup
+6516 iconst_0
+6517 ldc #32 <Real 6.6>
+6519 fastore
+6520 dup
+6521 iconst_1
+6522 ldc_w #374 <Real 0.02582314>
+6525 fastore
+6526 dup
+6527 iconst_2
+6528 ldc #106 <Real 1.425816>
+6530 fastore
+6531 dup
+6532 iconst_3
+6533 ldc #85 <Real 138.426>
+6535 fastore
+6536 aastore
+6537 dup
+6538 bipush 19
+6540 iconst_4
+6541 newarray float
+6543 dup
+6544 iconst_0
+6545 ldc #50 <Real 10.0>
+6547 fastore
+6548 dup
+6549 iconst_1
+6550 ldc_w #418 <Real -0.04545644>
+6553 fastore
+6554 dup
+6555 iconst_2
+6556 ldc #115 <Real 1.658348>
+6558 fastore
+6559 dup
+6560 iconst_3
+6561 ldc #122 <Real 2492.229>
+6563 fastore
+6564 aastore
+6565 dup
+6566 bipush 20
+6568 iconst_4
+6569 newarray float
+6571 dup
+6572 iconst_0
+6573 ldc #51 <Real 11.0>
+6575 fastore
+6576 dup
+6577 iconst_1
+6578 ldc_w #420 <Real -0.08956314>
+6581 fastore
+6582 dup
+6583 iconst_2
+6584 ldc_w #290 <Real 1.5783068>
+6587 fastore
+6588 dup
+6589 iconst_3
+6590 ldc_w #329 <Real 6071.4062>
+6593 fastore
+6594 aastore
+6595 dup
+6596 bipush 21
+6598 iconst_4
+6599 newarray float
+6601 dup
+6602 iconst_0
+6603 ldc #53 <Real 12.5>
+6605 fastore
+6606 dup
+6607 iconst_1
+6608 ldc_w #415 <Real -0.01140835>
+6611 fastore
+6612 dup
+6613 iconst_2
+6614 ldc #108 <Real 1.492337>
+6616 fastore
+6617 dup
+6618 iconst_3
+6619 ldc_w #315 <Real 23565.117>
+6622 fastore
+6623 aastore
+6624 dup
+6625 bipush 22
+6627 iconst_4
+6628 newarray float
+6630 dup
+6631 iconst_0
+6632 ldc #56 <Real 15.0>
+6634 fastore
+6635 dup
+6636 iconst_1
+6637 ldc_w #378 <Real 0.04627868>
+6640 fastore
+6641 dup
+6642 iconst_2
+6643 ldc #112 <Real 1.618194>
+6645 fastore
+6646 dup
+6647 iconst_3
+6648 ldc_w #314 <Real 234955.86>
+6651 fastore
+6652 aastore
+6653 putstatic #559 <Field float ValuesCISIEI[][]>
+6656 bipush 20
+6658 anewarray class #514 <Class [F>
+6661 dup
+6662 iconst_0
+6663 iconst_3
+6664 newarray float
+6666 dup
+6667 iconst_0
+6668 fconst_2
+6669 fastore
+6670 dup
+6671 iconst_1
+6672 ldc #88 <Real 0.053991>
+6674 fastore
+6675 dup
+6676 iconst_2
+6677 ldc_w #267 <Real 0.9772499>
+6680 fastore
+6681 aastore
+6682 dup
+6683 iconst_1
+6684 iconst_3
+6685 newarray float
+6687 dup
+6688 iconst_0
+6689 ldc #17 <Real 1.8>
+6691 fastore
+6692 dup
+6693 iconst_1
+6694 ldc #161 <Real 0.0789502>
+6696 fastore
+6697 dup
+6698 iconst_2
+6699 ldc_w #264 <Real 0.9640697>
+6702 fastore
+6703 aastore
+6704 dup
+6705 iconst_2
+6706 iconst_3
+6707 newarray float
+6709 dup
+6710 iconst_0
+6711 ldc #15 <Real 1.6>
+6713 fastore
+6714 dup
+6715 iconst_1
+6716 ldc #166 <Real 0.1109208>
+6718 fastore
+6719 dup
+6720 iconst_2
+6721 ldc_w #261 <Real 0.9452007>
+6724 fastore
+6725 aastore
+6726 dup
+6727 iconst_3
+6728 iconst_3
+6729 newarray float
+6731 dup
+6732 iconst_0
+6733 ldc #14 <Real 1.5>
+6735 fastore
+6736 dup
+6737 iconst_1
+6738 ldc #169 <Real 0.1295176>
+6740 fastore
+6741 dup
+6742 iconst_2
+6743 ldc_w #258 <Real 0.9331928>
+6746 fastore
+6747 aastore
+6748 dup
+6749 iconst_4
+6750 iconst_3
+6751 newarray float
+6753 dup
+6754 iconst_0
+6755 ldc #13 <Real 1.4>
+6757 fastore
+6758 dup
+6759 iconst_1
+6760 ldc #173 <Real 0.1497275>
+6762 fastore
+6763 dup
+6764 iconst_2
+6765 ldc_w #257 <Real 0.9192433>
+6768 fastore
+6769 aastore
+6770 dup
+6771 iconst_5
+6772 iconst_3
+6773 newarray float
+6775 dup
+6776 iconst_0
+6777 ldc #11 <Real 1.2>
+6779 fastore
+6780 dup
+6781 iconst_1
+6782 ldc #90 <Real 0.194186>
+6784 fastore
+6785 dup
+6786 iconst_2
+6787 ldc #254 <Real 0.8849303>
+6789 fastore
+6790 aastore
+6791 dup
+6792 bipush 6
+6794 iconst_3
+6795 newarray float
+6797 dup
+6798 iconst_0
+6799 fconst_1
+6800 fastore
+6801 dup
+6802 iconst_1
+6803 ldc #190 <Real 0.2419707>
+6805 fastore
+6806 dup
+6807 iconst_2
+6808 ldc #251 <Real 0.8413447>
+6810 fastore
+6811 aastore
+6812 dup
+6813 bipush 7
+6815 iconst_3
+6816 newarray float
+6818 dup
+6819 iconst_0
+6820 ldc #8 <Real 0.8>
+6822 fastore
+6823 dup
+6824 iconst_1
+6825 ldc #195 <Real 0.2896915>
+6827 fastore
+6828 dup
+6829 iconst_2
+6830 ldc #249 <Real 0.7881446>
+6832 fastore
+6833 aastore
+6834 dup
+6835 bipush 8
+6837 iconst_3
+6838 newarray float
+6840 dup
+6841 iconst_0
+6842 ldc #6 <Real 0.6>
+6844 fastore
+6845 dup
+6846 iconst_1
+6847 ldc #204 <Real 0.3332246>
+6849 fastore
+6850 dup
+6851 iconst_2
+6852 ldc #241 <Real 0.7257469>
+6854 fastore
+6855 aastore
+6856 dup
+6857 bipush 9
+6859 iconst_3
+6860 newarray float
+6862 dup
+6863 iconst_0
+6864 ldc #5 <Real 0.5>
+6866 fastore
+6867 dup
+6868 iconst_1
+6869 ldc #206 <Real 0.3520653>
+6871 fastore
+6872 dup
+6873 iconst_2
+6874 ldc #239 <Real 0.6914625>
+6876 fastore
+6877 aastore
+6878 dup
+6879 bipush 10
+6881 iconst_3
+6882 newarray float
+6884 dup
+6885 iconst_0
+6886 ldc #4 <Real 0.4>
+6888 fastore
+6889 dup
+6890 iconst_1
+6891 ldc #207 <Real 0.3682701>
+6893 fastore
+6894 dup
+6895 iconst_2
+6896 ldc #236 <Real 0.6554217>
+6898 fastore
+6899 aastore
+6900 dup
+6901 bipush 11
+6903 iconst_3
+6904 newarray float
+6906 dup
+6907 iconst_0
+6908 ldc #2 <Real 0.2>
+6910 fastore
+6911 dup
+6912 iconst_1
+6913 ldc #210 <Real 0.3910427>
+6915 fastore
+6916 dup
+6917 iconst_2
+6918 ldc #230 <Real 0.5792597>
+6920 fastore
+6921 aastore
+6922 dup
+6923 bipush 12
+6925 iconst_3
+6926 newarray float
+6928 dup
+6929 iconst_1
+6930 ldc #212 <Real 0.3989423>
+6932 fastore
+6933 dup
+6934 iconst_2
+6935 ldc #5 <Real 0.5>
+6937 fastore
+6938 aastore
+6939 dup
+6940 bipush 13
+6942 iconst_3
+6943 newarray float
+6945 dup
+6946 iconst_0
+6947 ldc #36 <Real -0.2>
+6949 fastore
+6950 dup
+6951 iconst_1
+6952 ldc #210 <Real 0.3910427>
+6954 fastore
+6955 dup
+6956 iconst_2
+6957 ldc #214 <Real 0.4207403>
+6959 fastore
+6960 aastore
+6961 dup
+6962 bipush 14
+6964 iconst_3
+6965 newarray float
+6967 dup
+6968 iconst_0
+6969 ldc #37 <Real -0.4>
+6971 fastore
+6972 dup
+6973 iconst_1
+6974 ldc #207 <Real 0.3682701>
+6976 fastore
+6977 dup
+6978 iconst_2
+6979 ldc #205 <Real 0.3445783>
+6981 fastore
+6982 aastore
+6983 dup
+6984 bipush 15
+6986 iconst_3
+6987 newarray float
+6989 dup
+6990 iconst_0
+6991 ldc #38 <Real -0.5>
+6993 fastore
+6994 dup
+6995 iconst_1
+6996 ldc #206 <Real 0.3520653>
+6998 fastore
+6999 dup
+7000 iconst_2
+7001 ldc #198 <Real 0.3085375>
+7003 fastore
+7004 aastore
+7005 dup
+7006 bipush 16
+7008 iconst_3
+7009 newarray float
+7011 dup
+7012 iconst_0
+7013 ldc #39 <Real -0.6>
+7015 fastore
+7016 dup
+7017 iconst_1
+7018 ldc #204 <Real 0.3332246>
+7020 fastore
+7021 dup
+7022 iconst_2
+7023 ldc #194 <Real 0.2742531>
+7025 fastore
+7026 aastore
+7027 dup
+7028 bipush 17
+7030 iconst_3
+7031 newarray float
+7033 dup
+7034 iconst_0
+7035 ldc #40 <Real -0.8>
+7037 fastore
+7038 dup
+7039 iconst_1
+7040 ldc #195 <Real 0.2896915>
+7042 fastore
+7043 dup
+7044 iconst_2
+7045 ldc #183 <Real 0.2118554>
+7047 fastore
+7048 aastore
+7049 dup
+7050 bipush 18
+7052 iconst_3
+7053 newarray float
+7055 dup
+7056 iconst_0
+7057 ldc #42 <Real -1.5>
+7059 fastore
+7060 dup
+7061 iconst_1
+7062 ldc #169 <Real 0.1295176>
+7064 fastore
+7065 dup
+7066 iconst_2
+7067 ldc #159 <Real 0.0668072>
+7069 fastore
+7070 aastore
+7071 dup
+7072 bipush 19
+7074 iconst_3
+7075 newarray float
+7077 dup
+7078 iconst_0
+7079 ldc #43 <Real -2.0>
+7081 fastore
+7082 dup
+7083 iconst_1
+7084 ldc #88 <Real 0.053991>
+7086 fastore
+7087 dup
+7088 iconst_2
+7089 ldc #150 <Real 0.0227501>
+7091 fastore
+7092 aastore
+7093 putstatic #563 <Field float ValuesGauss[][]>
+7096 bipush 20
+7098 anewarray class #514 <Class [F>
+7101 dup
+7102 iconst_0
+7103 iconst_4
+7104 newarray float
+7106 dup
+7107 iconst_0
+7108 ldc #5 <Real 0.5>
+7110 fastore
+7111 dup
+7112 iconst_1
+7113 ldc #5 <Real 0.5>
+7115 fastore
+7116 dup
+7117 iconst_2
+7118 ldc #47 <Real 0.01>
+7120 fastore
+7121 dup
+7122 iconst_3
+7123 ldc #157 <Real 0.0637686>
+7125 fastore
+7126 aastore
+7127 dup
+7128 iconst_1
+7129 iconst_4
+7130 newarray float
+7132 dup
+7133 iconst_0
+7134 ldc #5 <Real 0.5>
+7136 fastore
+7137 dup
+7138 iconst_1
+7139 ldc #5 <Real 0.5>
+7141 fastore
+7142 dup
+7143 iconst_2
+7144 ldc #1 <Real 0.1>
+7146 fastore
+7147 dup
+7148 iconst_3
+7149 ldc #180 <Real 0.2048328>
+7151 fastore
+7152 aastore
+7153 dup
+7154 iconst_2
+7155 iconst_4
+7156 newarray float
+7158 dup
+7159 iconst_0
+7160 ldc #5 <Real 0.5>
+7162 fastore
+7163 dup
+7164 iconst_1
+7165 ldc #5 <Real 0.5>
+7167 fastore
+7168 dup
+7169 iconst_2
+7170 fconst_1
+7171 fastore
+7172 dup
+7173 iconst_3
+7174 fconst_1
+7175 fastore
+7176 aastore
+7177 dup
+7178 iconst_3
+7179 iconst_4
+7180 newarray float
+7182 dup
+7183 iconst_0
+7184 fconst_1
+7185 fastore
+7186 dup
+7187 iconst_1
+7188 ldc #5 <Real 0.5>
+7190 fastore
+7191 dup
+7192 iconst_2
+7193 ldc #47 <Real 0.01>
+7195 fastore
+7196 dup
+7197 iconst_3
+7198 ldc #147 <Real 0.0050126>
+7200 fastore
+7201 aastore
+7202 dup
+7203 iconst_4
+7204 iconst_4
+7205 newarray float
+7207 dup
+7208 iconst_0
+7209 fconst_1
+7210 fastore
+7211 dup
+7212 iconst_1
+7213 ldc #5 <Real 0.5>
+7215 fastore
+7216 dup
+7217 iconst_2
+7218 ldc #1 <Real 0.1>
+7220 fastore
+7221 dup
+7222 iconst_3
+7223 ldc #155 <Real 0.0513167>
+7225 fastore
+7226 aastore
+7227 dup
+7228 iconst_5
+7229 iconst_4
+7230 newarray float
+7232 dup
+7233 iconst_0
+7234 fconst_1
+7235 fastore
+7236 dup
+7237 iconst_1
+7238 ldc #5 <Real 0.5>
+7240 fastore
+7241 dup
+7242 iconst_2
+7243 fconst_1
+7244 fastore
+7245 dup
+7246 iconst_3
+7247 fconst_1
+7248 fastore
+7249 aastore
+7250 dup
+7251 bipush 6
+7253 iconst_4
+7254 newarray float
+7256 dup
+7257 iconst_0
+7258 fconst_1
+7259 fastore
+7260 dup
+7261 iconst_1
+7262 fconst_1
+7263 fastore
+7264 dup
+7265 iconst_2
+7266 ldc #5 <Real 0.5>
+7268 fastore
+7269 dup
+7270 iconst_3
+7271 ldc #5 <Real 0.5>
+7273 fastore
+7274 aastore
+7275 dup
+7276 bipush 7
+7278 iconst_4
+7279 newarray float
+7281 dup
+7282 iconst_0
+7283 ldc #27 <Real 5.0>
+7285 fastore
+7286 dup
+7287 iconst_1
+7288 ldc #27 <Real 5.0>
+7290 fastore
+7291 dup
+7292 iconst_2
+7293 ldc #5 <Real 0.5>
+7295 fastore
+7296 dup
+7297 iconst_3
+7298 ldc #5 <Real 0.5>
+7300 fastore
+7301 aastore
+7302 dup
+7303 bipush 8
+7305 iconst_4
+7306 newarray float
+7308 dup
+7309 iconst_0
+7310 ldc #50 <Real 10.0>
+7312 fastore
+7313 dup
+7314 iconst_1
+7315 ldc #5 <Real 0.5>
+7317 fastore
+7318 dup
+7319 iconst_2
+7320 ldc #9 <Real 0.9>
+7322 fastore
+7323 dup
+7324 iconst_3
+7325 ldc #175 <Real 0.1516409>
+7327 fastore
+7328 aastore
+7329 dup
+7330 bipush 9
+7332 iconst_4
+7333 newarray float
+7335 dup
+7336 iconst_0
+7337 ldc #50 <Real 10.0>
+7339 fastore
+7340 dup
+7341 iconst_1
+7342 ldc #27 <Real 5.0>
+7344 fastore
+7345 dup
+7346 iconst_2
+7347 ldc #5 <Real 0.5>
+7349 fastore
+7350 dup
+7351 iconst_3
+7352 ldc #162 <Real 0.0897827>
+7354 fastore
+7355 aastore
+7356 dup
+7357 bipush 10
+7359 iconst_4
+7360 newarray float
+7362 dup
+7363 iconst_0
+7364 ldc #50 <Real 10.0>
+7366 fastore
+7367 dup
+7368 iconst_1
+7369 ldc #27 <Real 5.0>
+7371 fastore
+7372 dup
+7373 iconst_2
+7374 fconst_1
+7375 fastore
+7376 dup
+7377 iconst_3
+7378 fconst_1
+7379 fastore
+7380 aastore
+7381 dup
+7382 bipush 11
+7384 iconst_4
+7385 newarray float
+7387 dup
+7388 iconst_0
+7389 ldc #50 <Real 10.0>
+7391 fastore
+7392 dup
+7393 iconst_1
+7394 ldc #50 <Real 10.0>
+7396 fastore
+7397 dup
+7398 iconst_2
+7399 ldc #5 <Real 0.5>
+7401 fastore
+7402 dup
+7403 iconst_3
+7404 ldc #5 <Real 0.5>
+7406 fastore
+7407 aastore
+7408 dup
+7409 bipush 12
+7411 iconst_4
+7412 newarray float
+7414 dup
+7415 iconst_0
+7416 ldc #57 <Real 20.0>
+7418 fastore
+7419 dup
+7420 iconst_1
+7421 ldc #27 <Real 5.0>
+7423 fastore
+7424 dup
+7425 iconst_2
+7426 ldc #8 <Real 0.8>
+7428 fastore
+7429 dup
+7430 iconst_3
+7431 ldc #223 <Real 0.4598773>
+7433 fastore
+7434 aastore
+7435 dup
+7436 bipush 13
+7438 iconst_4
+7439 newarray float
+7441 dup
+7442 iconst_0
+7443 ldc #57 <Real 20.0>
+7445 fastore
+7446 dup
+7447 iconst_1
+7448 ldc #50 <Real 10.0>
+7450 fastore
+7451 dup
+7452 iconst_2
+7453 ldc #6 <Real 0.6>
+7455 fastore
+7456 dup
+7457 iconst_3
+7458 ldc #184 <Real 0.2146816>
+7460 fastore
+7461 aastore
+7462 dup
+7463 bipush 14
+7465 iconst_4
+7466 newarray float
+7468 dup
+7469 iconst_0
+7470 ldc #57 <Real 20.0>
+7472 fastore
+7473 dup
+7474 iconst_1
+7475 ldc #50 <Real 10.0>
+7477 fastore
+7478 dup
+7479 iconst_2
+7480 ldc #8 <Real 0.8>
+7482 fastore
+7483 dup
+7484 iconst_3
+7485 ldc_w #262 <Real 0.9507365>
+7488 fastore
+7489 aastore
+7490 dup
+7491 bipush 15
+7493 iconst_4
+7494 newarray float
+7496 dup
+7497 iconst_0
+7498 ldc #57 <Real 20.0>
+7500 fastore
+7501 dup
+7502 iconst_1
+7503 ldc #57 <Real 20.0>
+7505 fastore
+7506 dup
+7507 iconst_2
+7508 ldc #5 <Real 0.5>
+7510 fastore
+7511 dup
+7512 iconst_3
+7513 ldc #5 <Real 0.5>
+7515 fastore
+7516 aastore
+7517 dup
+7518 bipush 16
+7520 iconst_4
+7521 newarray float
+7523 dup
+7524 iconst_0
+7525 ldc #57 <Real 20.0>
+7527 fastore
+7528 dup
+7529 iconst_1
+7530 ldc #57 <Real 20.0>
+7532 fastore
+7533 dup
+7534 iconst_2
+7535 ldc #6 <Real 0.6>
+7537 fastore
+7538 dup
+7539 iconst_3
+7540 ldc #255 <Real 0.8979414>
+7542 fastore
+7543 aastore
+7544 dup
+7545 bipush 17
+7547 iconst_4
+7548 newarray float
+7550 dup
+7551 iconst_0
+7552 ldc #59 <Real 30.0>
+7554 fastore
+7555 dup
+7556 iconst_1
+7557 ldc #50 <Real 10.0>
+7559 fastore
+7560 dup
+7561 iconst_2
+7562 ldc #7 <Real 0.7>
+7564 fastore
+7565 dup
+7566 iconst_3
+7567 ldc #188 <Real 0.2241297>
+7569 fastore
+7570 aastore
+7571 dup
+7572 bipush 18
+7574 iconst_4
+7575 newarray float
+7577 dup
+7578 iconst_0
+7579 ldc #59 <Real 30.0>
+7581 fastore
+7582 dup
+7583 iconst_1
+7584 ldc #50 <Real 10.0>
+7586 fastore
+7587 dup
+7588 iconst_2
+7589 ldc #8 <Real 0.8>
+7591 fastore
+7592 dup
+7593 iconst_3
+7594 ldc #244 <Real 0.7586405>
+7596 fastore
+7597 aastore
+7598 dup
+7599 bipush 19
+7601 iconst_4
+7602 newarray float
+7604 dup
+7605 iconst_0
+7606 ldc #61 <Real 40.0>
+7608 fastore
+7609 dup
+7610 iconst_1
+7611 ldc #57 <Real 20.0>
+7613 fastore
+7614 dup
+7615 iconst_2
+7616 ldc #7 <Real 0.7>
+7618 fastore
+7619 dup
+7620 iconst_3
+7621 ldc #240 <Real 0.7001783>
+7623 fastore
+7624 aastore
+7625 putstatic #558 <Field float ValuesBetaI[][]>
+7628 return
+
+Line numbers for method static {}
+   line 14: 0
+   line 15: 29
+   line 14: 49
+   line 16: 52
+   line 14: 72
+   line 17: 75
+   line 14: 94
+   line 18: 97
+   line 14: 116
+   line 19: 119
+   line 14: 138
+   line 20: 142
+   line 14: 159
+   line 21: 163
+   line 14: 179
+   line 22: 183
+   line 14: 201
+   line 23: 205
+   line 14: 224
+   line 24: 228
+   line 14: 247
+   line 25: 251
+   line 14: 271
+   line 26: 275
+   line 14: 293
+   line 27: 297
+   line 14: 315
+   line 28: 319
+   line 14: 336
+   line 29: 340
+   line 14: 359
+   line 30: 363
+   line 14: 383
+   line 31: 387
+   line 14: 407
+   line 32: 411
+   line 14: 430
+   line 33: 434
+   line 14: 452
+   line 34: 456
+   line 14: 473
+   line 39: 477
+   line 40: 484
+   line 39: 495
+   line 41: 498
+   line 39: 511
+   line 42: 514
+   line 39: 527
+   line 43: 530
+   line 39: 543
+   line 44: 546
+   line 39: 559
+   line 45: 562
+   line 39: 575
+   line 46: 579
+   line 39: 590
+   line 47: 594
+   line 39: 607
+   line 48: 611
+   line 39: 624
+   line 49: 628
+   line 39: 641
+   line 50: 645
+   line 39: 658
+   line 51: 662
+   line 39: 675
+   line 52: 679
+   line 39: 693
+   line 53: 697
+   line 39: 711
+   line 54: 715
+   line 39: 729
+   line 55: 733
+   line 39: 747
+   line 56: 751
+   line 39: 764
+   line 57: 768
+   line 39: 782
+   line 58: 786
+   line 39: 799
+   line 59: 803
+   line 39: 817
+   line 60: 821
+   line 39: 835
+   line 61: 839
+   line 39: 850
+   line 66: 854
+   line 67: 861
+   line 66: 875
+   line 68: 878
+   line 66: 892
+   line 69: 895
+   line 66: 908
+   line 70: 911
+   line 66: 924
+   line 71: 927
+   line 66: 940
+   line 72: 943
+   line 66: 950
+   line 73: 954
+   line 66: 966
+   line 74: 970
+   line 66: 982
+   line 75: 986
+   line 66: 999
+   line 76: 1003
+   line 66: 1017
+   line 77: 1021
+   line 66: 1035
+   line 78: 1039
+   line 66: 1052
+   line 79: 1056
+   line 66: 1069
+   line 80: 1073
+   line 66: 1086
+   line 81: 1090
+   line 66: 1104
+   line 82: 1108
+   line 66: 1122
+   line 83: 1126
+   line 66: 1140
+   line 84: 1144
+   line 66: 1157
+   line 85: 1161
+   line 66: 1174
+   line 86: 1178
+   line 66: 1191
+   line 87: 1195
+   line 66: 1209
+   line 90: 1213
+   line 91: 1220
+   line 90: 1234
+   line 92: 1237
+   line 90: 1249
+   line 93: 1252
+   line 90: 1264
+   line 94: 1267
+   line 90: 1280
+   line 95: 1283
+   line 90: 1297
+   line 96: 1300
+   line 90: 1314
+   line 97: 1318
+   line 90: 1332
+   line 98: 1336
+   line 90: 1350
+   line 99: 1354
+   line 90: 1367
+   line 100: 1371
+   line 90: 1384
+   line 101: 1388
+   line 90: 1401
+   line 102: 1405
+   line 90: 1419
+   line 103: 1423
+   line 90: 1437
+   line 104: 1441
+   line 90: 1455
+   line 105: 1459
+   line 90: 1472
+   line 106: 1476
+   line 90: 1489
+   line 109: 1493
+   line 110: 1500
+   line 109: 1513
+   line 111: 1516
+   line 109: 1529
+   line 112: 1532
+   line 109: 1545
+   line 113: 1548
+   line 109: 1562
+   line 114: 1565
+   line 109: 1579
+   line 115: 1582
+   line 109: 1585
+   line 116: 1589
+   line 109: 1601
+   line 117: 1605
+   line 109: 1617
+   line 118: 1621
+   line 109: 1634
+   line 119: 1638
+   line 109: 1652
+   line 120: 1656
+   line 109: 1670
+   line 121: 1674
+   line 109: 1688
+   line 122: 1692
+   line 109: 1706
+   line 123: 1710
+   line 109: 1723
+   line 124: 1727
+   line 109: 1740
+   line 125: 1744
+   line 109: 1757
+   line 126: 1761
+   line 109: 1775
+   line 127: 1779
+   line 109: 1793
+   line 128: 1797
+   line 109: 1811
+   line 129: 1815
+   line 109: 1828
+   line 130: 1832
+   line 109: 1845
+   line 133: 1849
+   line 134: 1856
+   line 133: 1869
+   line 135: 1872
+   line 133: 1885
+   line 136: 1888
+   line 133: 1901
+   line 137: 1904
+   line 133: 1917
+   line 138: 1920
+   line 133: 1933
+   line 139: 1936
+   line 133: 1949
+   line 140: 1953
+   line 133: 1967
+   line 141: 1971
+   line 133: 1985
+   line 142: 1989
+   line 133: 2003
+   line 143: 2007
+   line 133: 2020
+   line 144: 2024
+   line 133: 2037
+   line 145: 2041
+   line 133: 2054
+   line 146: 2058
+   line 133: 2072
+   line 147: 2076
+   line 133: 2090
+   line 148: 2094
+   line 133: 2108
+   line 149: 2112
+   line 133: 2125
+   line 152: 2129
+   line 153: 2136
+   line 152: 2153
+   line 154: 2156
+   line 152: 2173
+   line 155: 2176
+   line 152: 2194
+   line 156: 2197
+   line 152: 2215
+   line 157: 2218
+   line 152: 2236
+   line 158: 2239
+   line 152: 2257
+   line 159: 2261
+   line 152: 2279
+   line 160: 2283
+   line 152: 2302
+   line 161: 2306
+   line 152: 2325
+   line 162: 2329
+   line 152: 2348
+   line 163: 2352
+   line 152: 2370
+   line 164: 2374
+   line 152: 2392
+   line 165: 2396
+   line 152: 2415
+   line 166: 2419
+   line 152: 2438
+   line 167: 2442
+   line 152: 2461
+   line 168: 2465
+   line 152: 2483
+   line 169: 2487
+   line 152: 2505
+   line 170: 2509
+   line 152: 2528
+   line 171: 2532
+   line 152: 2551
+   line 172: 2555
+   line 152: 2574
+   line 175: 2578
+   line 176: 2585
+   line 175: 2602
+   line 177: 2605
+   line 175: 2622
+   line 178: 2625
+   line 175: 2643
+   line 179: 2646
+   line 175: 2664
+   line 180: 2667
+   line 175: 2685
+   line 181: 2688
+   line 175: 2706
+   line 182: 2710
+   line 175: 2727
+   line 183: 2731
+   line 175: 2750
+   line 184: 2754
+   line 175: 2773
+   line 185: 2777
+   line 175: 2796
+   line 186: 2800
+   line 175: 2818
+   line 187: 2822
+   line 175: 2840
+   line 188: 2844
+   line 175: 2862
+   line 189: 2866
+   line 175: 2885
+   line 190: 2889
+   line 175: 2908
+   line 191: 2912
+   line 175: 2930
+   line 192: 2934
+   line 175: 2952
+   line 193: 2956
+   line 175: 2975
+   line 194: 2979
+   line 175: 2998
+   line 195: 3002
+   line 175: 3021
+   line 198: 3025
+   line 199: 3032
+   line 198: 3039
+   line 200: 3042
+   line 198: 3055
+   line 201: 3058
+   line 198: 3072
+   line 202: 3075
+   line 198: 3089
+   line 203: 3092
+   line 198: 3106
+   line 204: 3109
+   line 198: 3122
+   line 205: 3126
+   line 198: 3140
+   line 206: 3144
+   line 198: 3158
+   line 207: 3162
+   line 198: 3176
+   line 208: 3180
+   line 198: 3194
+   line 209: 3198
+   line 198: 3211
+   line 210: 3215
+   line 198: 3228
+   line 211: 3232
+   line 198: 3246
+   line 212: 3250
+   line 198: 3264
+   line 213: 3268
+   line 198: 3282
+   line 214: 3286
+   line 198: 3300
+   line 215: 3304
+   line 198: 3317
+   line 216: 3321
+   line 198: 3335
+   line 217: 3339
+   line 198: 3353
+   line 218: 3357
+   line 198: 3371
+   line 221: 3375
+   line 222: 3382
+   line 221: 3395
+   line 223: 3398
+   line 221: 3412
+   line 224: 3415
+   line 221: 3429
+   line 225: 3432
+   line 221: 3445
+   line 226: 3448
+   line 221: 3461
+   line 227: 3464
+   line 221: 3477
+   line 228: 3481
+   line 221: 3494
+   line 229: 3498
+   line 221: 3512
+   line 230: 3516
+   line 221: 3530
+   line 231: 3534
+   line 221: 3547
+   line 232: 3551
+   line 221: 3564
+   line 233: 3568
+   line 221: 3582
+   line 234: 3586
+   line 221: 3599
+   line 235: 3603
+   line 221: 3617
+   line 236: 3621
+   line 221: 3635
+   line 237: 3639
+   line 221: 3653
+   line 238: 3657
+   line 221: 3671
+   line 239: 3675
+   line 221: 3689
+   line 240: 3693
+   line 221: 3707
+   line 241: 3711
+   line 221: 3725
+   line 244: 3729
+   line 245: 3736
+   line 244: 3739
+   line 246: 3742
+   line 244: 3756
+   line 247: 3759
+   line 244: 3773
+   line 248: 3776
+   line 244: 3790
+   line 249: 3793
+   line 244: 3806
+   line 250: 3809
+   line 244: 3822
+   line 251: 3826
+   line 244: 3840
+   line 252: 3844
+   line 244: 3858
+   line 253: 3862
+   line 244: 3876
+   line 254: 3880
+   line 244: 3894
+   line 255: 3898
+   line 244: 3911
+   line 256: 3915
+   line 244: 3929
+   line 257: 3933
+   line 244: 3946
+   line 258: 3950
+   line 244: 3963
+   line 259: 3967
+   line 244: 3980
+   line 260: 3984
+   line 244: 3998
+   line 261: 4002
+   line 244: 4016
+   line 262: 4020
+   line 244: 4034
+   line 263: 4038
+   line 244: 4052
+   line 264: 4056
+   line 244: 4070
+   line 267: 4074
+   line 268: 4081
+   line 267: 4094
+   line 269: 4097
+   line 267: 4111
+   line 270: 4114
+   line 267: 4128
+   line 271: 4131
+   line 267: 4145
+   line 272: 4148
+   line 267: 4162
+   line 273: 4165
+   line 267: 4178
+   line 274: 4182
+   line 267: 4195
+   line 275: 4199
+   line 267: 4212
+   line 276: 4216
+   line 267: 4230
+   line 277: 4234
+   line 267: 4248
+   line 278: 4252
+   line 267: 4265
+   line 279: 4269
+   line 267: 4283
+   line 280: 4287
+   line 267: 4301
+   line 281: 4305
+   line 267: 4319
+   line 282: 4323
+   line 267: 4337
+   line 283: 4341
+   line 267: 4355
+   line 284: 4359
+   line 267: 4373
+   line 285: 4377
+   line 267: 4391
+   line 286: 4395
+   line 267: 4409
+   line 287: 4413
+   line 267: 4427
+   line 290: 4431
+   line 291: 4438
+   line 290: 4455
+   line 292: 4458
+   line 290: 4474
+   line 293: 4477
+   line 290: 4494
+   line 294: 4497
+   line 290: 4515
+   line 295: 4518
+   line 290: 4536
+   line 296: 4539
+   line 290: 4557
+   line 297: 4561
+   line 290: 4579
+   line 298: 4583
+   line 290: 4601
+   line 299: 4605
+   line 290: 4622
+   line 300: 4626
+   line 290: 4643
+   line 301: 4647
+   line 290: 4666
+   line 302: 4670
+   line 290: 4689
+   line 303: 4693
+   line 290: 4712
+   line 304: 4716
+   line 290: 4733
+   line 305: 4737
+   line 290: 4754
+   line 306: 4758
+   line 290: 4777
+   line 307: 4781
+   line 290: 4800
+   line 308: 4804
+   line 290: 4823
+   line 309: 4827
+   line 290: 4845
+   line 310: 4849
+   line 290: 4866
+   line 311: 4870
+   line 290: 4888
+   line 312: 4892
+   line 290: 4911
+   line 313: 4915
+   line 290: 4934
+   line 314: 4938
+   line 290: 4956
+   line 315: 4960
+   line 290: 4978
+   line 316: 4982
+   line 290: 5001
+   line 317: 5005
+   line 290: 5024
+   line 318: 5028
+   line 290: 5047
+   line 321: 5051
+   line 322: 5058
+   line 321: 5076
+   line 323: 5079
+   line 321: 5096
+   line 324: 5099
+   line 321: 5116
+   line 325: 5119
+   line 321: 5137
+   line 326: 5140
+   line 321: 5158
+   line 327: 5161
+   line 321: 5179
+   line 328: 5183
+   line 321: 5201
+   line 329: 5205
+   line 321: 5223
+   line 330: 5227
+   line 321: 5245
+   line 331: 5249
+   line 321: 5267
+   line 332: 5271
+   line 321: 5289
+   line 333: 5293
+   line 321: 5312
+   line 334: 5316
+   line 321: 5335
+   line 335: 5339
+   line 321: 5357
+   line 336: 5361
+   line 321: 5379
+   line 337: 5383
+   line 321: 5402
+   line 338: 5406
+   line 321: 5424
+   line 339: 5428
+   line 321: 5447
+   line 340: 5451
+   line 321: 5469
+   line 341: 5473
+   line 321: 5491
+   line 342: 5495
+   line 321: 5514
+   line 343: 5518
+   line 321: 5537
+   line 344: 5541
+   line 321: 5560
+   line 345: 5564
+   line 321: 5582
+   line 346: 5586
+   line 321: 5604
+   line 347: 5608
+   line 321: 5627
+   line 348: 5631
+   line 321: 5650
+   line 349: 5654
+   line 321: 5673
+   line 353: 5677
+   line 354: 5690
+   line 353: 5703
+   line 355: 5706
+   line 353: 5719
+   line 356: 5722
+   line 353: 5735
+   line 357: 5738
+   line 353: 5751
+   line 358: 5754
+   line 353: 5767
+   line 359: 5771
+   line 353: 5784
+   line 360: 5788
+   line 353: 5801
+   line 361: 5805
+   line 353: 5818
+   line 362: 5822
+   line 353: 5835
+   line 363: 5839
+   line 353: 5851
+   line 364: 5855
+   line 353: 5868
+   line 365: 5872
+   line 353: 5885
+   line 366: 5889
+   line 353: 5903
+   line 367: 5907
+   line 353: 5921
+   line 368: 5925
+   line 353: 5939
+   line 369: 5943
+   line 353: 5957
+   line 370: 5961
+   line 353: 5975
+   line 371: 5979
+   line 353: 5993
+   line 372: 5997
+   line 353: 6011
+   line 376: 6015
+   line 377: 6022
+   line 376: 6047
+   line 378: 6050
+   line 376: 6073
+   line 379: 6076
+   line 376: 6100
+   line 380: 6103
+   line 376: 6127
+   line 381: 6130
+   line 376: 6153
+   line 382: 6156
+   line 376: 6181
+   line 383: 6185
+   line 376: 6208
+   line 384: 6212
+   line 376: 6235
+   line 385: 6239
+   line 376: 6261
+   line 386: 6265
+   line 376: 6288
+   line 387: 6292
+   line 376: 6315
+   line 389: 6319
+   line 376: 6343
+   line 390: 6347
+   line 376: 6370
+   line 391: 6374
+   line 376: 6397
+   line 392: 6401
+   line 376: 6424
+   line 393: 6428
+   line 376: 6452
+   line 394: 6456
+   line 376: 6480
+   line 395: 6484
+   line 376: 6508
+   line 396: 6512
+   line 376: 6536
+   line 397: 6540
+   line 376: 6564
+   line 398: 6568
+   line 376: 6594
+   line 399: 6598
+   line 376: 6623
+   line 400: 6627
+   line 376: 6652
+   line 404: 6656
+   line 405: 6663
+   line 404: 6681
+   line 406: 6684
+   line 404: 6703
+   line 407: 6706
+   line 404: 6725
+   line 408: 6728
+   line 404: 6747
+   line 409: 6750
+   line 404: 6769
+   line 410: 6772
+   line 404: 6790
+   line 411: 6794
+   line 404: 6811
+   line 412: 6815
+   line 404: 6833
+   line 413: 6837
+   line 404: 6855
+   line 414: 6859
+   line 404: 6877
+   line 415: 6881
+   line 404: 6899
+   line 416: 6903
+   line 404: 6921
+   line 417: 6925
+   line 404: 6938
+   line 418: 6942
+   line 404: 6960
+   line 419: 6964
+   line 404: 6982
+   line 420: 6986
+   line 404: 7004
+   line 421: 7008
+   line 404: 7026
+   line 422: 7030
+   line 404: 7048
+   line 423: 7052
+   line 404: 7070
+   line 424: 7074
+   line 404: 7092
+   line 429: 7096
+   line 430: 7129
+   line 429: 7152
+   line 431: 7155
+   line 429: 7176
+   line 432: 7179
+   line 429: 7201
+   line 433: 7204
+   line 429: 7226
+   line 434: 7229
+   line 429: 7249
+   line 435: 7253
+   line 429: 7274
+   line 436: 7278
+   line 429: 7301
+   line 437: 7305
+   line 429: 7328
+   line 438: 7332
+   line 429: 7355
+   line 439: 7359
+   line 429: 7380
+   line 440: 7384
+   line 429: 7407
+   line 441: 7411
+   line 429: 7434
+   line 442: 7438
+   line 429: 7461
+   line 443: 7465
+   line 429: 7489
+   line 444: 7493
+   line 429: 7516
+   line 445: 7520
+   line 429: 7543
+   line 446: 7547
+   line 429: 7570
+   line 447: 7574
+   line 429: 7597
+   line 448: 7601
+   line 429: 7624
+   line 10: 7628
+
+Method ByRef.testByRef()
+   0 aload_0
+   1 invokespecial #535 <Method java.lang.Object()>
+   4 return
+
+Line numbers for method ByRef.testByRef()
+   line 10: 0
+
+Local variables for method ByRef.testByRef()
+   ByRef.testByRef this  pc=0, length=5, slot=0
+
+Method void main(java.lang.String[])
+   0 invokestatic #583 <Method void testDirectAccess()>
+   3 invokestatic #582 <Method void testCopyAt()>
+   6 invokestatic #588 <Method void testSerial()>
+   9 new #503 <Class ByRef.ByRefLong>
+  12 dup
+  13 ldc2_w #592 <Long 5>
+  16 invokespecial #539 <Method ByRef.ByRefLong(long)>
+  19 astore_1
+  20 new #515 <Class java.io.ByteArrayOutputStream>
+  23 dup
+  24 invokespecial #534 <Method java.io.ByteArrayOutputStream()>
+  27 astore_2
+  28 new #509 <Class ByRef.test3>
+  31 dup
+  32 invokespecial #533 <Method ByRef.test3()>
+  35 astore_3
+  36 invokestatic #584 <Method void testFormat()>
+  39 invokestatic #586 <Method void testIt()>
+  42 invokestatic #587 <Method void testIt()>
+  45 invokestatic #585 <Method void testIt()>
+  48 return
+
+Line numbers for method void main(java.lang.String[])
+   line 611: 0
+   line 612: 3
+   line 613: 6
+   line 614: 9
+   line 615: 20
+   line 616: 28
+   line 620: 36
+   line 624: 39
+   line 625: 42
+   line 626: 45
+   line 609: 48
+
+Local variables for method void main(java.lang.String[])
+   java.lang.String[] args  pc=0, length=49, slot=0
+   ByRef.ByRefLong tmp  pc=20, length=29, slot=1
+   java.io.ByteArrayOutputStream BS  pc=28, length=21, slot=2
+   ByRef.test1 tst  pc=36, length=13, slot=3
+
+Method void testCopyAt()
+   0 new #507 <Class ByRef.test1>
+   3 dup
+   4 invokespecial #531 <Method ByRef.test1()>
+   7 astore_0
+   8 new #508 <Class ByRef.test2>
+  11 dup
+  12 invokespecial #532 <Method ByRef.test2()>
+  15 astore_1
+  16 new #509 <Class ByRef.test3>
+  19 dup
+  20 invokespecial #533 <Method ByRef.test3()>
+  23 astore_2
+  24 aload_0
+  25 aload_1
+  26 bipush 10
+  28 invokestatic #566 <Method void copyAt(java.lang.Object, java.lang.Object, int)>
+  31 new #524 <Class java.lang.Integer>
+  34 dup
+  35 iconst_4
+  36 invokespecial #538 <Method java.lang.Integer(int)>
+  39 astore 4
+  41 aload 4
+  43 invokevirtual #570 <Method java.lang.Class getClass()>
+  46 invokevirtual #571 <Method java.lang.String getName()>
+  49 astore_3
+  50 aload_3
+  51 invokestatic #567 <Method java.lang.Class forName(java.lang.String)>
+  54 astore 5
+  56 getstatic #574 <Field java.io.PrintStream out>
+  59 aload_1
+  60 ldc_w #498 <String "XXX">
+  63 iconst_0
+  64 invokestatic #590 <Method java.lang.String toString(java.lang.Object, java.lang.String, boolean)>
+  67 dup
+  68 astore_3
+  69 invokevirtual #580 <Method void println(java.lang.String)>
+  72 aload_0
+  73 aload_3
+  74 invokestatic #568 <Method java.lang.Object fromStringAt(java.lang.Object, java.lang.String)>
+  77 pop
+  78 getstatic #574 <Field java.io.PrintStream out>
+  81 aload_0
+  82 ldc_w #498 <String "XXX">
+  85 iconst_0
+  86 invokestatic #590 <Method java.lang.String toString(java.lang.Object, java.lang.String, boolean)>
+  89 dup
+  90 astore_3
+  91 invokevirtual #580 <Method void println(java.lang.String)>
+  94 aload_1
+  95 aload_3
+  96 invokestatic #568 <Method java.lang.Object fromStringAt(java.lang.Object, java.lang.String)>
+  99 pop
+ 100 goto 160
+ 103 astore_0
+ 104 getstatic #574 <Field java.io.PrintStream out>
+ 107 aload_0
+ 108 invokevirtual #575 <Method void print(java.lang.Object)>
+ 111 aload_0
+ 112 invokevirtual #577 <Method void printStackTrace()>
+ 115 goto 160
+ 118 astore_0
+ 119 getstatic #574 <Field java.io.PrintStream out>
+ 122 aload_0
+ 123 invokevirtual #575 <Method void print(java.lang.Object)>
+ 126 aload_0
+ 127 invokevirtual #577 <Method void printStackTrace()>
+ 130 goto 160
+ 133 astore_0
+ 134 getstatic #574 <Field java.io.PrintStream out>
+ 137 aload_0
+ 138 invokevirtual #575 <Method void print(java.lang.Object)>
+ 141 aload_0
+ 142 invokevirtual #576 <Method void printStackTrace()>
+ 145 goto 160
+ 148 astore_0
+ 149 getstatic #574 <Field java.io.PrintStream out>
+ 152 aload_0
+ 153 invokevirtual #575 <Method void print(java.lang.Object)>
+ 156 aload_0
+ 157 invokevirtual #577 <Method void printStackTrace()>
+ 160 return
+Exception table:
+   from   to  target type
+     0   100   103   <Class java.lang.IllegalAccessException>
+     0   100   118   <Class java.lang.NoSuchFieldException>
+     0   100   133   <Class java.lang.ClassNotFoundException>
+     0   100   148   <Class java.lang.InstantiationException>
+
+Line numbers for method void testCopyAt()
+   line 463: 0
+   line 464: 0
+   line 465: 8
+   line 466: 16
+   line 467: 24
+   line 470: 31
+   line 471: 41
+   line 472: 50
+   line 473: 56
+   line 474: 72
+   line 475: 78
+   line 476: 94
+   line 463: 100
+   line 478: 103
+   line 463: 115
+   line 479: 118
+   line 463: 130
+   line 480: 133
+   line 463: 145
+   line 481: 148
+   line 461: 160
+
+Local variables for method void testCopyAt()
+   java.lang.String Result  pc=50, length=53, slot=3
+   ByRef.test1 T1  pc=8, length=95, slot=0
+   ByRef.test2 T2  pc=16, length=87, slot=1
+   ByRef.test3 T3  pc=24, length=79, slot=2
+   java.lang.Integer i  pc=41, length=62, slot=4
+   java.lang.Class tmp  pc=56, length=47, slot=5
+   java.lang.IllegalAccessException e  pc=104, length=14, slot=0
+   java.lang.NoSuchFieldException e  pc=119, length=14, slot=0
+   java.lang.ClassNotFoundException e  pc=134, length=14, slot=0
+   java.lang.InstantiationException e  pc=149, length=11, slot=0
+
+Method void testDirectAccess()
+   0 iconst_0
+   1 istore_0
+   2 new #502 <Class ByRef.ByRefInt>
+   5 dup
+   6 iconst_3
+   7 invokespecial #537 <Method ByRef.ByRefInt(int)>
+  10 astore_1
+  11 new #502 <Class ByRef.ByRefInt>
+  14 dup
+  15 iconst_2
+  16 invokespecial #537 <Method ByRef.ByRefInt(int)>
+  19 astore_2
+  20 getstatic #572 <Field java.io.InputStream in>
+  23 invokevirtual #581 <Method int read()>
+  26 pop
+  27 getstatic #574 <Field java.io.PrintStream out>
+  30 new #527 <Class java.lang.StringBuffer>
+  33 dup
+  34 ldc_w #497 <String "Starting first Loop">
+  37 invokespecial #544 <Method java.lang.StringBuffer(java.lang.String)>
+  40 new #530 <Class java.util.Date>
+  43 dup
+  44 invokespecial #536 <Method java.util.Date()>
+  47 invokevirtual #565 <Method java.lang.StringBuffer append(java.lang.Object)>
+  50 invokevirtual #589 <Method java.lang.String toString()>
+  53 invokevirtual #580 <Method void println(java.lang.String)>
+  56 sipush 10000
+  59 istore_3
+  60 goto 330
+  63 ldc #68 <Integer 100000>
+  65 istore 4
+  67 goto 322
+  70 iload_0
+  71 aload_1
+  72 getfield #545 <Field int Value>
+  75 iand
+  76 istore_0
+  77 iload_0
+  78 aload_2
+  79 getfield #545 <Field int Value>
+  82 iand
+  83 istore_0
+  84 iload_0
+  85 aload_1
+  86 getfield #545 <Field int Value>
+  89 iand
+  90 istore_0
+  91 iload_0
+  92 aload_2
+  93 getfield #545 <Field int Value>
+  96 iand
+  97 istore_0
+  98 iload_0
+  99 aload_1
+ 100 getfield #545 <Field int Value>
+ 103 iand
+ 104 istore_0
+ 105 iload_0
+ 106 aload_2
+ 107 getfield #545 <Field int Value>
+ 110 iand
+ 111 istore_0
+ 112 iload_0
+ 113 aload_1
+ 114 getfield #545 <Field int Value>
+ 117 iand
+ 118 istore_0
+ 119 iload_0
+ 120 aload_2
+ 121 getfield #545 <Field int Value>
+ 124 iand
+ 125 istore_0
+ 126 iload_0
+ 127 aload_1
+ 128 getfield #545 <Field int Value>
+ 131 iand
+ 132 istore_0
+ 133 iload_0
+ 134 aload_2
+ 135 getfield #545 <Field int Value>
+ 138 iand
+ 139 istore_0
+ 140 iload_0
+ 141 aload_1
+ 142 getfield #545 <Field int Value>
+ 145 iand
+ 146 istore_0
+ 147 iload_0
+ 148 aload_2
+ 149 getfield #545 <Field int Value>
+ 152 iand
+ 153 istore_0
+ 154 iload_0
+ 155 aload_1
+ 156 getfield #545 <Field int Value>
+ 159 iand
+ 160 istore_0
+ 161 iload_0
+ 162 aload_2
+ 163 getfield #545 <Field int Value>
+ 166 iand
+ 167 istore_0
+ 168 iload_0
+ 169 aload_1
+ 170 getfield #545 <Field int Value>
+ 173 iand
+ 174 istore_0
+ 175 iload_0
+ 176 aload_2
+ 177 getfield #545 <Field int Value>
+ 180 iand
+ 181 istore_0
+ 182 iload_0
+ 183 aload_1
+ 184 getfield #545 <Field int Value>
+ 187 iand
+ 188 istore_0
+ 189 iload_0
+ 190 aload_2
+ 191 getfield #545 <Field int Value>
+ 194 iand
+ 195 istore_0
+ 196 iload_0
+ 197 aload_1
+ 198 getfield #545 <Field int Value>
+ 201 iand
+ 202 istore_0
+ 203 iload_0
+ 204 aload_2
+ 205 getfield #545 <Field int Value>
+ 208 iand
+ 209 istore_0
+ 210 iload_0
+ 211 aload_1
+ 212 getfield #545 <Field int Value>
+ 215 iand
+ 216 istore_0
+ 217 iload_0
+ 218 aload_2
+ 219 getfield #545 <Field int Value>
+ 222 iand
+ 223 istore_0
+ 224 iload_0
+ 225 aload_1
+ 226 getfield #545 <Field int Value>
+ 229 iand
+ 230 istore_0
+ 231 iload_0
+ 232 aload_2
+ 233 getfield #545 <Field int Value>
+ 236 iand
+ 237 istore_0
+ 238 iload_0
+ 239 aload_1
+ 240 getfield #545 <Field int Value>
+ 243 iand
+ 244 istore_0
+ 245 iload_0
+ 246 aload_2
+ 247 getfield #545 <Field int Value>
+ 250 iand
+ 251 istore_0
+ 252 iload_0
+ 253 aload_1
+ 254 getfield #545 <Field int Value>
+ 257 iand
+ 258 istore_0
+ 259 iload_0
+ 260 aload_2
+ 261 getfield #545 <Field int Value>
+ 264 iand
+ 265 istore_0
+ 266 iload_0
+ 267 aload_1
+ 268 getfield #545 <Field int Value>
+ 271 iand
+ 272 istore_0
+ 273 iload_0
+ 274 aload_2
+ 275 getfield #545 <Field int Value>
+ 278 iand
+ 279 istore_0
+ 280 iload_0
+ 281 aload_1
+ 282 getfield #545 <Field int Value>
+ 285 iand
+ 286 istore_0
+ 287 iload_0
+ 288 aload_2
+ 289 getfield #545 <Field int Value>
+ 292 iand
+ 293 istore_0
+ 294 iload_0
+ 295 aload_1
+ 296 getfield #545 <Field int Value>
+ 299 iand
+ 300 istore_0
+ 301 iload_0
+ 302 aload_2
+ 303 getfield #545 <Field int Value>
+ 306 iand
+ 307 istore_0
+ 308 iload_0
+ 309 aload_1
+ 310 getfield #545 <Field int Value>
+ 313 iand
+ 314 istore_0
+ 315 iload_0
+ 316 aload_2
+ 317 getfield #545 <Field int Value>
+ 320 iand
+ 321 istore_0
+ 322 iinc 4 -1
+ 325 iload 4
+ 327 ifge 70
+ 330 iinc 3 -1
+ 333 iload_3
+ 334 ifge 63
+ 337 aload_1
+ 338 astore 4
+ 340 aload_2
+ 341 astore 5
+ 343 getstatic #574 <Field java.io.PrintStream out>
+ 346 new #527 <Class java.lang.StringBuffer>
+ 349 dup
+ 350 ldc_w #495 <String "Finished first Loop ">
+ 353 invokespecial #544 <Method java.lang.StringBuffer(java.lang.String)>
+ 356 iload_0
+ 357 invokevirtual #564 <Method java.lang.StringBuffer append(int)>
+ 360 new #530 <Class java.util.Date>
+ 363 dup
+ 364 invokespecial #536 <Method java.util.Date()>
+ 367 invokevirtual #565 <Method java.lang.StringBuffer append(java.lang.Object)>
+ 370 invokevirtual #589 <Method java.lang.String toString()>
+ 373 invokevirtual #580 <Method void println(java.lang.String)>
+ 376 sipush 10000
+ 379 istore_3
+ 380 goto 758
+ 383 ldc #68 <Integer 100000>
+ 385 istore 6
+ 387 goto 750
+ 390 iload_0
+ 391 aload 4
+ 393 invokeinterface (args 1) #573 <InterfaceMethod int intValue()>
+ 398 iand
+ 399 istore_0
+ 400 iload_0
+ 401 aload 5
+ 403 invokeinterface (args 1) #573 <InterfaceMethod int intValue()>
+ 408 iand
+ 409 istore_0
+ 410 iload_0
+ 411 aload 4
+ 413 invokeinterface (args 1) #573 <InterfaceMethod int intValue()>
+ 418 iand
+ 419 istore_0
+ 420 iload_0
+ 421 aload 5
+ 423 invokeinterface (args 1) #573 <InterfaceMethod int intValue()>
+ 428 iand
+ 429 istore_0
+ 430 iload_0
+ 431 aload 4
+ 433 invokeinterface (args 1) #573 <InterfaceMethod int intValue()>
+ 438 iand
+ 439 istore_0
+ 440 iload_0
+ 441 aload 5
+ 443 invokeinterface (args 1) #573 <InterfaceMethod int intValue()>
+ 448 iand
+ 449 istore_0
+ 450 iload_0
+ 451 aload 4
+ 453 invokeinterface (args 1) #573 <InterfaceMethod int intValue()>
+ 458 iand
+ 459 istore_0
+ 460 iload_0
+ 461 aload 5
+ 463 invokeinterface (args 1) #573 <InterfaceMethod int intValue()>
+ 468 iand
+ 469 istore_0
+ 470 iload_0
+ 471 aload 4
+ 473 invokeinterface (args 1) #573 <InterfaceMethod int intValue()>
+ 478 iand
+ 479 istore_0
+ 480 iload_0
+ 481 aload 5
+ 483 invokeinterface (args 1) #573 <InterfaceMethod int intValue()>
+ 488 iand
+ 489 istore_0
+ 490 iload_0
+ 491 aload 4
+ 493 invokeinterface (args 1) #573 <InterfaceMethod int intValue()>
+ 498 iand
+ 499 istore_0
+ 500 iload_0
+ 501 aload 5
+ 503 invokeinterface (args 1) #573 <InterfaceMethod int intValue()>
+ 508 iand
+ 509 istore_0
+ 510 iload_0
+ 511 aload 4
+ 513 invokeinterface (args 1) #573 <InterfaceMethod int intValue()>
+ 518 iand
+ 519 istore_0
+ 520 iload_0
+ 521 aload 5
+ 523 invokeinterface (args 1) #573 <InterfaceMethod int intValue()>
+ 528 iand
+ 529 istore_0
+ 530 iload_0
+ 531 aload 4
+ 533 invokeinterface (args 1) #573 <InterfaceMethod int intValue()>
+ 538 iand
+ 539 istore_0
+ 540 iload_0
+ 541 aload 5
+ 543 invokeinterface (args 1) #573 <InterfaceMethod int intValue()>
+ 548 iand
+ 549 istore_0
+ 550 iload_0
+ 551 aload 4
+ 553 invokeinterface (args 1) #573 <InterfaceMethod int intValue()>
+ 558 iand
+ 559 istore_0
+ 560 iload_0
+ 561 aload 5
+ 563 invokeinterface (args 1) #573 <InterfaceMethod int intValue()>
+ 568 iand
+ 569 istore_0
+ 570 iload_0
+ 571 aload 4
+ 573 invokeinterface (args 1) #573 <InterfaceMethod int intValue()>
+ 578 iand
+ 579 istore_0
+ 580 iload_0
+ 581 aload 5
+ 583 invokeinterface (args 1) #573 <InterfaceMethod int intValue()>
+ 588 iand
+ 589 istore_0
+ 590 iload_0
+ 591 aload 4
+ 593 invokeinterface (args 1) #573 <InterfaceMethod int intValue()>
+ 598 iand
+ 599 istore_0
+ 600 iload_0
+ 601 aload 5
+ 603 invokeinterface (args 1) #573 <InterfaceMethod int intValue()>
+ 608 iand
+ 609 istore_0
+ 610 iload_0
+ 611 aload 4
+ 613 invokeinterface (args 1) #573 <InterfaceMethod int intValue()>
+ 618 iand
+ 619 istore_0
+ 620 iload_0
+ 621 aload 5
+ 623 invokeinterface (args 1) #573 <InterfaceMethod int intValue()>
+ 628 iand
+ 629 istore_0
+ 630 iload_0
+ 631 aload 4
+ 633 invokeinterface (args 1) #573 <InterfaceMethod int intValue()>
+ 638 iand
+ 639 istore_0
+ 640 iload_0
+ 641 aload 5
+ 643 invokeinterface (args 1) #573 <InterfaceMethod int intValue()>
+ 648 iand
+ 649 istore_0
+ 650 iload_0
+ 651 aload 4
+ 653 invokeinterface (args 1) #573 <InterfaceMethod int intValue()>
+ 658 iand
+ 659 istore_0
+ 660 iload_0
+ 661 aload 5
+ 663 invokeinterface (args 1) #573 <InterfaceMethod int intValue()>
+ 668 iand
+ 669 istore_0
+ 670 iload_0
+ 671 aload 4
+ 673 invokeinterface (args 1) #573 <InterfaceMethod int intValue()>
+ 678 iand
+ 679 istore_0
+ 680 iload_0
+ 681 aload 5
+ 683 invokeinterface (args 1) #573 <InterfaceMethod int intValue()>
+ 688 iand
+ 689 istore_0
+ 690 iload_0
+ 691 aload 4
+ 693 invokeinterface (args 1) #573 <InterfaceMethod int intValue()>
+ 698 iand
+ 699 istore_0
+ 700 iload_0
+ 701 aload 5
+ 703 invokeinterface (args 1) #573 <InterfaceMethod int intValue()>
+ 708 iand
+ 709 istore_0
+ 710 iload_0
+ 711 aload 4
+ 713 invokeinterface (args 1) #573 <InterfaceMethod int intValue()>
+ 718 iand
+ 719 istore_0
+ 720 iload_0
+ 721 aload 5
+ 723 invokeinterface (args 1) #573 <InterfaceMethod int intValue()>
+ 728 iand
+ 729 istore_0
+ 730 iload_0
+ 731 aload 4
+ 733 invokeinterface (args 1) #573 <InterfaceMethod int intValue()>
+ 738 iand
+ 739 istore_0
+ 740 iload_0
+ 741 aload 5
+ 743 invokeinterface (args 1) #573 <InterfaceMethod int intValue()>
+ 748 iand
+ 749 istore_0
+ 750 iinc 6 -1
+ 753 iload 6
+ 755 ifge 390
+ 758 iinc 3 -1
+ 761 iload_3
+ 762 ifge 383
+ 765 getstatic #574 <Field java.io.PrintStream out>
+ 768 new #527 <Class java.lang.StringBuffer>
+ 771 dup
+ 772 ldc_w #496 <String "Finished second Loop ">
+ 775 invokespecial #544 <Method java.lang.StringBuffer(java.lang.String)>
+ 778 iload_0
+ 779 invokevirtual #564 <Method java.lang.StringBuffer append(int)>
+ 782 new #530 <Class java.util.Date>
+ 785 dup
+ 786 invokespecial #536 <Method java.util.Date()>
+ 789 invokevirtual #565 <Method java.lang.StringBuffer append(java.lang.Object)>
+ 792 invokevirtual #589 <Method java.lang.String toString()>
+ 795 invokevirtual #580 <Method void println(java.lang.String)>
+ 798 getstatic #572 <Field java.io.InputStream in>
+ 801 invokevirtual #581 <Method int read()>
+ 804 pop
+ 805 return
+
+Line numbers for method void testDirectAccess()
+   line 518: 0
+   line 519: 2
+   line 520: 11
+   line 521: 20
+   line 522: 27
+   line 523: 56
+   line 524: 63
+   line 525: 70
+   line 526: 77
+   line 527: 84
+   line 528: 91
+   line 529: 98
+   line 530: 105
+   line 531: 112
+   line 532: 119
+   line 533: 126
+   line 534: 133
+   line 535: 140
+   line 536: 147
+   line 537: 154
+   line 538: 161
+   line 539: 168
+   line 540: 175
+   line 541: 182
+   line 542: 189
+   line 543: 196
+   line 544: 203
+   line 545: 210
+   line 546: 217
+   line 547: 224
+   line 548: 231
+   line 549: 238
+   line 550: 245
+   line 551: 252
+   line 552: 259
+   line 553: 266
+   line 554: 273
+   line 555: 280
+   line 556: 287
+   line 557: 294
+   line 558: 301
+   line 559: 308
+   line 560: 315
+   line 524: 322
+   line 523: 330
+   line 562: 337
+   line 563: 340
+   line 564: 343
+   line 565: 376
+   line 566: 383
+   line 567: 390
+   line 568: 400
+   line 569: 410
+   line 570: 420
+   line 571: 430
+   line 572: 440
+   line 573: 450
+   line 574: 460
+   line 575: 470
+   line 576: 480
+   line 577: 490
+   line 578: 500
+   line 579: 510
+   line 580: 520
+   line 581: 530
+   line 582: 540
+   line 583: 550
+   line 584: 560
+   line 585: 570
+   line 586: 580
+   line 587: 590
+   line 588: 600
+   line 589: 610
+   line 590: 620
+   line 591: 630
+   line 592: 640
+   line 593: 650
+   line 594: 660
+   line 595: 670
+   line 596: 680
+   line 597: 690
+   line 598: 700
+   line 599: 710
+   line 600: 720
+   line 601: 730
+   line 602: 740
+   line 566: 750
+   line 565: 758
+   line 604: 765
+   line 605: 798
+   line 517: 805
+
+Local variables for method void testDirectAccess()
+   int res  pc=2, length=804, slot=0
+   ByRef.ByRefInt A  pc=11, length=795, slot=1
+   ByRef.ByRefInt B  pc=20, length=786, slot=2
+   int i  pc=60, length=746, slot=3
+   int j  pc=67, length=263, slot=4
+   BaseCopy.countAble C  pc=340, length=466, slot=4
+   BaseCopy.countAble D  pc=343, length=463, slot=5
+   int j  pc=387, length=371, slot=6
+
+Method void testSerial()
+   0 new #503 <Class ByRef.ByRefLong>
+   3 dup
+   4 ldc2_w #594 <Long 42>
+   7 invokespecial #539 <Method ByRef.ByRefLong(long)>
+  10 astore_0
+  11 new #511 <Class Stream.Association>
+  14 dup
+  15 aload_0
+  16 aload_0
+  17 invokespecial #542 <Method Stream.Association(java.lang.Object,java.lang.Object)>
+  20 astore_1
+  21 new #513 <Class Stream.XMLOutputStream>
+  24 dup
+  25 getstatic #574 <Field java.io.PrintStream out>
+  28 iconst_1
+  29 invokespecial #541 <Method Stream.XMLOutputStream(java.io.PrintStream,boolean)>
+  32 astore_2
+  33 aload_2
+  34 aload_1
+  35 ldc_w #498 <String "XXX">
+  38 invokevirtual #591 <Method void toXML(java.lang.Object, java.lang.String)>
+  41 getstatic #574 <Field java.io.PrintStream out>
+  44 invokevirtual #578 <Method void println()>
+  47 ldc_w #494 <String "<xxx Type='ByRef.ByRefLong'><Value Type='long'>12354</Value><SuperClass Type='Order.absOrderable'><SuperClass Type='BaseCopy.absCopyAble'></SuperClass></SuperClass></xxx>">
+  50 astore_3
+  51 ldc_w #493 <String "<XXX Type='Stream.Association' ID='0'><Value Type='ByRef.ByRefLong' ID='1'><Value Type='long'>42</Value><SuperClass Type='Order.absOrderable'><SuperClass Type='BaseCopy.absCopyAble'></SuperClass></SuperClass></Value><Key Type='ByRef.ByRefLong' ID='1'></Key></XXX>">
+  54 astore_3
+  55 new #512 <Class Stream.XMLInputStream>
+  58 dup
+  59 new #519 <Class java.io.StringBufferInputStream>
+  62 dup
+  63 aload_3
+  64 invokespecial #543 <Method java.io.StringBufferInputStream(java.lang.String)>
+  67 invokespecial #540 <Method Stream.XMLInputStream(java.io.InputStream)>
+  70 astore 4
+  72 aload 4
+  74 invokevirtual #569 <Method java.lang.Object fromXML()>
+  77 astore 5
+  79 getstatic #574 <Field java.io.PrintStream out>
+  82 aload 5
+  84 invokevirtual #579 <Method void println(java.lang.Object)>
+  87 return
+
+Line numbers for method void testSerial()
+   line 488: 0
+   line 489: 11
+   line 490: 21
+   line 491: 33
+   line 498: 47
+   line 493: 50
+   line 508: 51
+   line 500: 54
+   line 510: 55
+   line 511: 72
+   line 512: 79
+   line 486: 87
+
+Local variables for method void testSerial()
+   java.lang.String Result  pc=51, length=37, slot=3
+   ByRef.ByRefLong BRL  pc=11, length=77, slot=0
+   Stream.Association ass  pc=21, length=67, slot=1
+   Stream.XMLOutputStream XOS  pc=33, length=55, slot=2
+   Stream.XMLInputStream XIS  pc=72, length=16, slot=4
+   java.lang.Object obj  pc=79, length=9, slot=5

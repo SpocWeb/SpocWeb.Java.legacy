@@ -1,0 +1,261 @@
+package id17j1lc9fodqegc9fq5gal;
+
+/**
+@version 2.0
+@physicalPackage
+@__modelType diagram 
+*/
+class diagram {
+/**
+@shapeType DependencyLink
+@__modelType link
+@__ref <oiref:design#Class#id457m4c9fodqegc9fq5a4l.diagram:oiref><oihard>
+@automatic 
+*/
+class link {
+}/**
+@shapeType DependencyLink
+@__modelType link
+@__ref <oiref:design#Class#id3hbopc9fodqegc9fq5d3f.diagram:oiref><oihard>
+@automatic 
+*/
+class link82 {
+}/**
+@__ref <oiref:design#Class#id13l6c9fodqegc9fq5gfb.diagram:oiref><oihard>
+@__modelType reference
+@__fqn <oiref:#Package#Graphics.MathGraph2:oiref> 
+*/
+class reference96 {
+}/**
+@__ref <oiref:design#Class#id2k6nwc9fodqegc9fq5ggf.diagram:oiref><oihard>
+@__modelType reference
+@__fqn <oiref:#Package#Graphics.MathGraph3:oiref> 
+*/
+class reference101 {
+}/**
+@__ref <oiref:java#Class#graphic.AGraph2DOut:oiref><oihard>
+@__modelType reference 
+*/
+class reference {
+}/**
+@__ref <oiref:java#Class#graphic.Wire2D:oiref><oihard>
+@__modelType reference 
+*/
+class reference206 {
+}/**
+@__ref <oiref:java#Class#graphic.Figures:oiref><oihard>
+@__modelType reference 
+*/
+class reference207 {
+}/**
+@__ref <oiref:design#Class#idckbalbqh0rautbqh0sp4m.diagram:oiref><oihard>
+@__modelType reference
+@__fqn <oiref:#Package#graphic.implement:oiref> 
+*/
+class reference208 {
+}/**
+@__ref <oiref:java#Class#graphic.IDrawAble:oiref><oihard>
+@__modelType reference 
+*/
+class reference209 {
+}/**
+@__ref <oiref:java#Class#graphic.AGraphRead:oiref><oihard>
+@__modelType reference 
+*/
+class reference210 {
+}/**
+@__ref <oiref:java#Class#graphic.IGraphShape:oiref><oihard>
+@__modelType reference 
+*/
+class reference211 {
+}/**
+@__ref <oiref:java#Class#graphic.IGraph2DOut:oiref><oihard>
+@__modelType reference 
+*/
+class reference212 {
+}/**
+@__ref <oiref:java#Class#graphic.HyperGraphApplet:oiref><oihard>
+@__modelType reference 
+*/
+class reference213 {
+}/**
+@__ref <oiref:java#Class#graphic.IGraphText:oiref><oihard>
+@__modelType reference 
+*/
+class reference214 {
+}/**
+@__ref <oiref:java#Class#graphic.GraphicsAdapter:oiref><oihard>
+@__modelType reference 
+*/
+class reference215 {
+}/**
+@__ref <oiref:java#Class#graphic.PolyTrigon:oiref><oihard>
+@__modelType reference 
+*/
+class reference216 {
+}/**
+@__ref <oiref:design#Class#id5smn9bqh0rautbqh0sp4w.diagram:oiref><oihard>
+@__modelType reference
+@__fqn <oiref:#Package#graphic.svg:oiref> 
+*/
+class reference217 {
+}/**
+@__ref <oiref:java#Class#graphic.IGraphImage:oiref><oihard>
+@__modelType reference 
+*/
+class reference218 {
+}/**
+@__ref <oiref:java#Class#graphic.Line2D:oiref><oihard>
+@__modelType reference 
+*/
+class reference219 {
+}/**
+@__ref <oiref:java#Class#graphic.Hidden:oiref><oihard>
+@__modelType reference 
+*/
+class reference220 {
+}/**
+@__ref <oiref:java#Class#graphic.Polygon2D:oiref><oihard>
+@__modelType reference 
+*/
+class reference221 {
+}/**
+@__ref <oiref:java#Class#graphic.JavaGraphic:oiref><oihard>
+@__modelType reference 
+*/
+class reference222 {
+}/**
+@__ref <oiref:java#Class#graphic.IPoint2DFunction:oiref><oihard>
+@__modelType reference 
+*/
+class reference223 {
+}/**
+@__ref <oiref:java#Class#graphic.Body2D:oiref><oihard>
+@__modelType reference 
+*/
+class reference224 {
+}/**
+@__ref <oiref:java#Class#graphic.AGraphText:oiref><oihard>
+@__modelType reference 
+*/
+class reference225 {
+}/**
+@__ref <oiref:java#Class#graphic.AGraph2D:oiref><oihard>
+@__modelType reference 
+*/
+class reference226 {
+}/**
+@__ref <oiref:java#Class#graphic.Bar3D:oiref><oihard>
+@__modelType reference 
+*/
+class reference227 {
+}/**
+@__ref <oiref:java#Class#graphic.VectorPoint2D:oiref><oihard>
+@__modelType reference 
+*/
+class reference228 {
+}/**
+@__ref <oiref:java#Class#graphic.ScalarPlot:oiref><oihard>
+@__modelType reference 
+*/
+class reference229 {
+}/**
+@__ref <oiref:java#Class#graphic.IRaster:oiref><oihard>
+@__modelType reference 
+*/
+class reference230 {
+}/**
+@__ref <oiref:java#Class#graphic.AGraphTurtle:oiref><oihard>
+@__modelType reference 
+*/
+class reference231 {
+}/**
+@__ref <oiref:java#Class#graphic.Point2D:oiref><oihard>
+@__modelType reference 
+*/
+class reference232 {
+}/**
+@__ref <oiref:java#Class#graphic.Point2DApplet:oiref><oihard>
+@__modelType reference 
+*/
+class reference233 {
+}/**
+@__ref <oiref:java#Class#graphic.GraphicPattern:oiref><oihard>
+@__modelType reference 
+*/
+class reference234 {
+}/**
+@__ref <oiref:java#Class#graphic.IGraphAddtl:oiref><oihard>
+@__modelType reference 
+*/
+class reference235 {
+}/**
+@__ref <oiref:java#Class#graphic.GraphTextMetrics:oiref><oihard>
+@__modelType reference 
+*/
+class reference236 {
+}/**
+@__ref <oiref:java#Class#graphic.IGraph2DIn:oiref><oihard>
+@__modelType reference 
+*/
+class reference237 {
+}/**
+@__ref <oiref:java#Class#graphic.AGraphImage:oiref><oihard>
+@__modelType reference 
+*/
+class reference238 {
+}/**
+@__ref <oiref:java#Class#graphic.Graph2DApplet:oiref><oihard>
+@__modelType reference 
+*/
+class reference239 {
+}/**
+@__ref <oiref:design#Class#idjnsdvbqh0rautbqh0sp4m.diagram:oiref><oihard>
+@__modelType reference
+@__fqn <oiref:#Package#graphic.example:oiref> 
+*/
+class reference240 {
+}/**
+@__ref <oiref:java#Class#graphic.ColorRGB:oiref><oihard>
+@__modelType reference 
+*/
+class reference241 {
+}/**
+@__ref <oiref:java#Class#graphic.MemoryImage:oiref><oihard>
+@__modelType reference 
+*/
+class reference242 {
+}/**
+@__ref <oiref:java#Class#graphic.ITurtle:oiref><oihard>
+@__modelType reference 
+*/
+class reference243 {
+}/**
+@__ref <oiref:java#Class#graphic.Marker:oiref><oihard>
+@__modelType reference 
+*/
+class reference244 {
+}/**
+@__ref <oiref:java#Class#graphic.ZBuffer:oiref><oihard>
+@__modelType reference 
+*/
+class reference245 {
+}/**
+@__ref <oiref:java#Class#graphic.Graph2D:oiref><oihard>
+@__modelType reference 
+*/
+class reference246 {
+}}/**
+@__tags
+@shapeType ClassDiagram 
+*/
+class __tags {
+}/**
+@__options 
+*/
+class __options {
+}/**
+@__positions 
+*/
+class __positions {
+}

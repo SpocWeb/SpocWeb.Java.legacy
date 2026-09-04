@@ -1,0 +1,58 @@
+package id4eq9zcfds6j5pcfdui7he;
+
+/**
+@version 2.0
+@physicalPackage
+@__modelType diagram 
+*/
+class diagram {
+/**
+@__ref <oiref:design#Class#id1e4jkcftcjsx4cfte3x83.diagram:oiref><oihard>
+@__modelType reference
+@__fqn <oiref:#Package#Technology.JDBC:oiref> 
+*/
+class reference {
+}/**
+@__ref <oiref:design#Class#id2osn9cftcjsx4cfte3x9r.diagram:oiref><oihard>
+@__modelType reference
+@__fqn <oiref:#Package#Technology.XML:oiref> 
+*/
+class reference169 {
+}/**
+@__ref <oiref:design#Class#id3n47ycftcjsx4cfte3x8d.diagram:oiref><oihard>
+@__modelType reference
+@__fqn <oiref:#Package#Technology.JMS:oiref> 
+*/
+class reference170 {
+}/**
+@__ref <oiref:design#Class#id3s20cftcjsx4cfte3x9h.diagram:oiref><oihard>
+@__modelType reference
+@__fqn <oiref:#Package#Technology.RMI:oiref> 
+*/
+class reference171 {
+}/**
+@__ref <oiref:design#Class#id14gcucfe536eccfe565xg.diagram:oiref><oihard>
+@__modelType reference
+@__fqn <oiref:#Package#Technology.JNDI:oiref> 
+*/
+class reference172 {
+}/**
+@__ref <oiref:design#Class#idbi2klbqh0rautbqh0soeh.diagram:oiref><oihard>
+@__modelType reference
+@__fqn <oiref:#Package#technology.sound:oiref> 
+*/
+class reference152 {
+}}/**
+@__tags
+@shapeType ClassDiagram 
+*/
+class __tags {
+}/**
+@__options 
+*/
+class __options {
+}/**
+@__positions 
+*/
+class __positions {
+}

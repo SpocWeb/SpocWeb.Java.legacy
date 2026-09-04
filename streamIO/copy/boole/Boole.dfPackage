@@ -1,0 +1,136 @@
+package id40uamc9frybwec9fs17uq;
+
+/**
+@version 2.0
+@physicalPackage
+@__modelType diagram 
+*/
+class diagram {
+/**
+@shapeType DependencyLink
+@__modelType link
+@__ref <oiref:design#Class#id2otl3c9fodqegc9fq5gp1.diagram:oiref><oihard>
+@automatic 
+*/
+class link {
+}/**
+@shapeType DependencyLink
+@__modelType link
+@__ref <oiref:design#Class#id47mokc9fodqegc9fq5czi.diagram:oiref><oihard>
+@automatic 
+*/
+class link149 {
+}/**
+@shapeType DependencyLink
+@__modelType link
+@__ref <oiref:design#Class#id3npiic9frybwec9fs1t40.diagram:oiref><oihard>
+@automatic 
+*/
+class link150 {
+}/**
+@shapeType DependencyLink
+@__modelType link
+@__ref <oiref:design#Class#idqb01c9fodqegc9fq5ddp.diagram:oiref><oihard>
+@automatic 
+*/
+class link151 {
+}/**
+@shapeType DependencyLink
+@__modelType link
+@__ref <oiref:design#Class#id457m4c9fodqegc9fq5a4l.diagram:oiref><oihard>
+@automatic 
+*/
+class link152 {
+}/**
+@__ref <oiref:java#Class#Stream.Copy.Boole.IBoole:oiref><oihard>
+@__modelType reference 
+*/
+class reference100 {
+}/**
+@__ref <oiref:java#Class#Stream.Copy.Boole.Boolean:oiref><oihard>
+@__modelType reference 
+*/
+class reference101 {
+}/**
+@__ref <oiref:java#Class#Stream.Copy.Boole.IBond:oiref><oihard>
+@__modelType reference 
+*/
+class reference103 {
+}/**
+@__ref <oiref:java#Class#Stream.Copy.Boole.ABond:oiref><oihard>
+@__modelType reference*/
+class reference104 {
+}/**
+@__ref <oiref:java#Class#Stream.Copy.Boole.MinBond:oiref><oihard>
+@__modelType reference 
+*/
+class reference105 {
+}/**
+@__ref <oiref:java#Class#Stream.Copy.Boole.Boole:oiref><oihard>
+@__modelType reference 
+*/
+class reference106 {
+}/**
+@__ref <oiref:java#Class#Stream.Copy.Boole.ABoole:oiref><oihard>
+@__modelType reference 
+*/
+class reference108 {
+}/**
+@__ref <oiref:java#Class#Stream.Copy.Boole.Probability:oiref><oihard>
+@__modelType reference 
+*/
+class reference109 {
+}/**
+@__ref <oiref:java#Class#Stream.Copy.Boole.Bond:oiref><oihard>
+@__modelType reference 
+*/
+class reference {
+}/**
+@__ref <oiref:java#Class#Stream.Copy.Boole.TesterBond:oiref><oihard>
+@__modelType reference 
+*/
+class reference1 {
+}/**
+@__ref <oiref:java#Class#Stream.Copy.Boole.FuzzySmooth:oiref><oihard>
+@__modelType reference 
+*/
+class reference2 {
+}}/**
+@__tags
+@shapeType ClassDiagram 
+*/
+class __tags {
+}/**
+@__options 
+*/
+class __options {
+}/**
+@__positions <oigroup:<oiref:java#Extends#Stream.Copy.Boole.Probability#Stream.Copy.Boole.ABoole:oiref>=427,1351,353,1291:oigroup>
+<oigroup:<oiref:java#Class#Stream.Copy.Boole.ABoole:oiref>=232,934,170,357,1:oigroup>
+<oigroup:<oiref:java#Implements#Stream.Copy.Boole.MinBond#Stream.Copy.Boole.Bond:oiref>=86,934,86,254:oigroup>
+<oigroup:<oiref:java#Extends#Stream.Copy.Boole.MinBond#Stream.Copy.Boole.ABond:oiref>=164,934,164,890:oigroup>
+<oigroup:<oiref:java#Extends#Stream.Copy.Boole.Boolean#Stream.Copy.Boole.ABoole:oiref>=110,1351,268,1291:oigroup>
+<oigroup:<oiref:java#Implements#Stream.Copy.Boole.MinBond#Stream.Copy.Boole.BoolRing:oiref>=97,934,97,503,183,448:oigroup>
+<oigroup:<oiref:java#Implements#Stream.Copy.Boole.Probability#Stream.Copy.Boole.Boole:oiref>=457,1351,457,753:oigroup>
+<oigroup:<oiref:java#Extends#Stream.Copy.Boole.IBoole#Stream.Copy.Boole.IBond:oiref>=376,203,376,143:oigroup>
+<oigroup:<oiref:java#Implements#Stream.Copy.Boole.ABond#Stream.Copy.Boole.Bond:oiref>=135,508,135,254:oigroup>
+<oigroup:<oiref:java#Class#Stream.Copy.Boole.IBond:oiref>=245,10,155,133,1:oigroup>
+<oigroup:<oiref:java#Implements#Stream.Copy.Boole.ABoole#Stream.Copy.Boole.Boole:oiref>=358,934,358,753:oigroup>
+<oigroup:<oiref:java#Class#Stream.Copy.Boole.Boole:oiref>=337,508,156,245,1:oigroup>
+<oigroup:<oiref:java#Class#Stream.Copy.Boole.MinBond:oiref>=60,934,152,158,1:oigroup>
+<oigroup:<oiref:java#Class#Stream.Copy.Boole.Boolean:oiref>=10,1351,200,270,1:oigroup>
+<oigroup:MemberLink#<oiref:java#Member#Stream.Copy.Boole.ABond#self:oiref>=154,508,154,254:oigroup>
+<oigroup:<oiref:java#Extends#Stream.Copy.Boole.Bond#Stream.Copy.Boole.IBond:oiref>=192,76,245,76:oigroup>
+<oigroup:<oiref:java#Class#Stream.Copy.Boole.Probability:oiref>=398,1351,200,350,1:oigroup>
+<oigroup:<oiref:java#Extends#Stream.Copy.Boole.ABoole#Stream.Copy.Boole.ABond:oiref>=274,934,274,890:oigroup>
+<oigroup:<oiref:java#Extends#Stream.Copy.Boole.Boole#Stream.Copy.Boole.Bond:oiref>=370,508,173,254:oigroup>
+<oigroup:<oiref:java#Implements#Stream.Copy.Boole.ABond#Stream.Copy.Boole.BoolRing:oiref>=144,508,219,448:oigroup>
+<oigroup:<oiref:java#Class#Stream.Copy.Boole.Bond:oiref>=9,9,183,245,1:oigroup>
+<oigroup:<oiref:java#Extends#Stream.Copy.Boole.Boole#Stream.Copy.Boole.BoolRing:oiref>=370,508,291,448:oigroup>
+<oigroup:<oiref:java#Class#Stream.Copy.Boole.ABond:oiref>=117,508,200,382,1:oigroup>
+<oigroup:<oiref:java#Class#Stream.Copy.Boole.IBoole:oiref>=352,203,105,117,1:oigroup>
+<oigroup:<oiref:java#Extends#Stream.Copy.Boole.CmpBoole#Stream.Copy.Boole.ABoole:oiref>=305,1351,305,1291:oigroup>
+<oigroup:<oiref:java#Extends#Stream.Copy.Boole.Boole#Stream.Copy.Boole.IBoole:oiref>=404,508,404,320:oigroup>
+*/
+class __positions {
+}

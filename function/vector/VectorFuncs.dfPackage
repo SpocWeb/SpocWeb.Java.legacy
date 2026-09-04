@@ -1,0 +1,56 @@
+package id1zn61c9fodqegc9fq5eua;
+
+/**
+@version 2.0
+@physicalPackage
+@__modelType diagram 
+*/
+class diagram {
+/**
+@__ref <oiref:java#Class#VectorFuncs.OdeHeight:oiref><oihard>
+@__modelType reference 
+*/
+class reference {
+}/**
+@__ref <oiref:java#Class#VectorFuncs.fChargeField:oiref><oihard>
+@__modelType reference 
+*/
+class reference1 {
+}/**
+@__ref <oiref:java#Class#VectorFuncs.fSum:oiref><oihard>
+@__modelType reference 
+*/
+class reference2 {
+}/**
+@__ref <oiref:java#Class#VectorFuncs.fProduct:oiref><oihard>
+@__modelType reference 
+*/
+class reference3 {
+}/**
+@__ref <oiref:java#Class#VectorFuncs.OdeLorentz:oiref><oihard>
+@__modelType reference 
+*/
+class reference4 {
+}/**
+@__ref <oiref:java#Class#Functions.VectorFuncs.IOdeFloat:oiref><oihard>
+@__modelType reference 
+*/
+class reference53 {
+}}/**
+@__tags
+@shapeType ClassDiagram 
+*/
+class __tags {
+}/**
+@__options 
+*/
+class __options {
+}/**
+@__positions <oigroup:<oiref:java#Class#VectorFuncs.fChargeField:oiref>=230,10,200,382,1:oigroup>
+<oigroup:<oiref:java#Class#VectorFuncs.fSum:oiref>=10,430,148,101,1:oigroup>
+<oigroup:<oiref:java#Class#VectorFuncs.OdeHeight:oiref>=10,10,200,190,1:oigroup>
+<oigroup:<oiref:java#Class#VectorFuncs.fProduct:oiref>=178,430,148,101,1:oigroup>
+<oigroup:<oiref:java#Class#VectorFuncs.OdeLorentz:oiref>=450,10,200,222,1:oigroup> 
+*/
+class __positions {
+}

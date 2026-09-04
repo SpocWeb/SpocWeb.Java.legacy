@@ -1,0 +1,58 @@
+	/** Returns the Derivative of this Constant Function	  */
+	public DeriveAble Derivative () { return CCountAble.Zero; }
+
+	/** Sets the Integral from outside
+	 * This can be done only once, after that an IllegalStateException is thrown.      */
+	public void setDerivative (DeriveAble Derivative) {
+		if (Derivative != CCountAble.Zero) throw new AbstractMethodError(); }
+
+	/** Returns the Integral of this Constant Function	  */
+	public DeriveAble Integral () { return new MulAt(this);	}
+
+	/** Sets the Integral from outside
+	 * This can be done only once, after that an IllegalStateException is thrown.      */
+	public void setIntegral (DeriveAble Integral) {
+		if (! Integral.equals(Integral())) throw new AbstractMethodError(); }
+
+	/** The Inverse Function to this Constant does not exist!	  */
+	public InvertAble Inverse () { throw new AbstractMethodError(); }
+
+	/** Sets the Integral from outside
+	 * This can be done only once, after that an IllegalStateException is thrown.      */
+	public void setInverse (InvertAble Inverse) { throw new AbstractMethodError(); }
+
+	/** Returns arg Mapped by the Inverse of this Object: !this°arg
+	 * This is the Function working on 'arg' defined by the implementing Class.
+	 * The Class implementing this Method is the means of exchanging this Operation.	  */
+	public Object UnMap (Object arg) { throw new AbstractMethodError(); }
+
+	/** Returns arg Mapped in Place by the Inverse of this Object: !this=°arg
+	 * This is the Function working on 'arg' defined by the implementing Class.
+	 * The Class implementing this Method is the means of exchanging this Operation.	  */
+	public Object UnMapAt (Object arg) { throw new AbstractMethodError(); }
+
+	/** Returns arg Mapped by this Object: this.Map(arg) == this°arg
+	 * This is the Function working on 'arg' defined by the implementing Class.
+	 * The Class implementing this Method is the means of exchanging this Operation.	  */
+	public Object Map (Object arg) { return this; }
+
+	/** Returns arg Mapped in Place by this Object: this.MapAt(arg) this=°arg
+	 * This is the Function working on 'arg' defined by the implementing Class.
+	 * The Class implementing this Method is the means of exchanging this Operation.	  */
+	public Object MapAt (Object arg) { ((CopyAble) arg).copyAt(this); return arg; }
+
+	/** Returns arg Mapped in Place by this Object: this.MapAt(arg) this=°arg
+	 * This is the Function working on 'arg' defined by the implementing Class.
+	 * The Class implementing this Method is the means of exchanging this Operation.	  */
+	public HalfMonoid MapAt (HalfMonoid arg) { arg.copyAt(this); return arg; }
+
+	/** Returns true, when this Class can operate on Arguments of this Type
+	 * This Function makes sense at this Level,
+	 * because here there is always the Alternative for the Algebra
+	 * to delegate the Operation to the inner Function,
+	 * but to operate on the Functions and operate the Results on evaluation.	  */
+	public boolean canProcess (Object arg) { return true; }
+
+	/** Returns an alternative Representation that is 'simplified'	  */
+	public Function simplify () { return this; }
+

@@ -1,0 +1,1752 @@
+
+(object Petal
+    version    	42
+    _written   	"Rose 4.5.8163.3"
+    charSet    	0)
+
+(object Class_Category "Group"
+    is_unit    	TRUE
+    is_loaded  	TRUE
+    quid       	"36BB25E0028B"
+    documentation 	
+|Defines additive (Half-) Group Methods like add(), subt() and zero(). 
+|The Classes are derived from absCopyAble and not designed for delegation.
+    
+    visible_categories 	(list visibility_relationship_list
+	(object Visibility_Relationship
+	    quid       	"36BB385D0128"
+	    supplier   	"Logical View::BaseCopy"
+	    quidu      	"36BB22B90122"))
+    exportControl 	"Public"
+    logical_models 	(list unit_reference_list
+	(object Class "intHalfGroup"
+	    attributes 	(list Attribute_Set
+		(object Attribute
+		    tool       	"Java"
+		    name       	"GenerateFinalizer"
+		    value      	FALSE)
+		(object Attribute
+		    tool       	"Java"
+		    name       	"GenerateStaticInitializer"
+		    value      	FALSE)
+		(object Attribute
+		    tool       	"Java"
+		    name       	"GenerateInstanceInitializer"
+		    value      	FALSE)
+		(object Attribute
+		    tool       	"Java"
+		    name       	"GenerateDefaultConstructor"
+		    value      	FALSE))
+	    quid       	"36BB25E30376"
+	    documentation 	
+|HalfGroup (M,+):
+| * Defines the most basic Interface necessary for an additive HalfGroup: '+='.
+| * All other operations are only Shortcuts and can be defined using '+='.
+| * Could also be called 'addable' 
+	    
+	    stereotype 	"Interface"
+	    operations 	(list Operations
+		(object Operation "addAt"
+		    attributes 	(list Attribute_Set
+			(object Attribute
+			    tool       	"Java"
+			    name       	"Abstract"
+			    value      	TRUE))
+		    quid       	"37BD3804025A"
+		    documentation 	
+|Addition in Place: +=
+|	 * This virtual Operation has to be implemented by each subclass.	 
+		    
+		    parameters 	(list Parameters
+			(object Parameter "arg"
+			    type       	"Object"))
+		    result     	"HalfGroup"
+		    concurrency 	"Sequential"
+		    opExportControl 	"Public"
+		    uid        	0))
+	    module     	"Component View::Group::intHalfGroup"
+	    quidu      	"36BB25E002A9"
+	    language   	"Java")
+	(object Class "intGroup"
+	    attributes 	(list Attribute_Set
+		(object Attribute
+		    tool       	"Java"
+		    name       	"GenerateFinalizer"
+		    value      	FALSE)
+		(object Attribute
+		    tool       	"Java"
+		    name       	"GenerateStaticInitializer"
+		    value      	FALSE)
+		(object Attribute
+		    tool       	"Java"
+		    name       	"GenerateInstanceInitializer"
+		    value      	FALSE)
+		(object Attribute
+		    tool       	"Java"
+		    name       	"GenerateDefaultConstructor"
+		    value      	FALSE))
+	    quid       	"36BB25ED037A"
+	    documentation 	
+|Group (M,+,-,0):
+| * Defines the most basic Interface necessary for an additive Group: '-='.
+| * All other operations are only Shortcuts and can be defined using '-='.
+| * 
+| * Design Decisions:
+| * Normally Negation is sufficient to define anything else as an operation
+| * Only for ZERO you need any number to define it.
+| * 
+| * You can use either Negation of Subtraction to define the operations.
+| * In any Case you better redefine both for Performance.
+| * Could also be called 'subtractable'
+| 
+	    
+	    stereotype 	"Interface"
+	    operations 	(list Operations
+		(object Operation "subtAt"
+		    attributes 	(list Attribute_Set
+			(object Attribute
+			    tool       	"Java"
+			    name       	"Abstract"
+			    value      	TRUE))
+		    quid       	"37BD38040066"
+		    documentation 	
+|Subtraction in Place: -=
+|	 * This virtual Operation has to be implemented by each concrete Subclass.
+|	 
+		    
+		    parameters 	(list Parameters
+			(object Parameter "arg"
+			    type       	"Object"))
+		    result     	"Group"
+		    concurrency 	"Sequential"
+		    opExportControl 	"Public"
+		    uid        	0))
+	    module     	"Component View::Group::intGroup"
+	    quidu      	"36BB25EA02B8"
+	    language   	"Java")
+	(object Class "Group"
+	    attributes 	(list Attribute_Set
+		(object Attribute
+		    tool       	"Java"
+		    name       	"GenerateFinalizer"
+		    value      	FALSE)
+		(object Attribute
+		    tool       	"Java"
+		    name       	"GenerateStaticInitializer"
+		    value      	FALSE)
+		(object Attribute
+		    tool       	"Java"
+		    name       	"GenerateInstanceInitializer"
+		    value      	FALSE)
+		(object Attribute
+		    tool       	"Java"
+		    name       	"GenerateDefaultConstructor"
+		    value      	FALSE))
+	    quid       	"36BB25F702B6"
+	    documentation 	
+|Algebraic Group (M,+,-,0):
+| * Set of Objects with inner Operations "+,-" on any two Objects
+| * In a HalfGroup any two Objects can be "added" or "subtracted".
+| * These Operations are associative, i.e. (a+b)-c==a+(b-c)
+| * This is not quite true for floats, because of rounding Errors,
+| * but it is true for all integer Types.
+| * 
+| * Commutative Groups are Groups where the Operator Matrix is symmetric,
+| * i.e. a+b=b+a.
+| * C++ can implement non-commutative Groups,
+| * because + is evaluated in strict order.
+| * 
+| * Defines the additional Operations which should be redefined
+| * to exploit the final Definition of the Operands.
+| * A Default Implementation is done in 'absGroup'.
+| * There are more effective ways to implement these functions,
+| * depending on the implementing class. This is only the generic Solution.
+| * 
+| * Design Decisions:
+| * This HalfGroupM must always be synchronous to HalfGroup!
+| * Unfortunately you cannot use Operators as Variables in Templates,
+| * in C++ you would use Macros for that.
+| * 
+| * The Interface has been separated from the Implementation in Java,
+| * because it is used for multiple Inheritance.
+| * 
+| * It can be Proved, that:
+| * ...there is only a single ZERO Element.
+| * This Element is neutral for both left and right + Operations.
+| * ...there is only a single negative Element for each Element.
+| * This is the same Element for both left and right + Operations.
+| 
+	    
+	    stereotype 	"Interface"
+	    superclasses 	(list inheritance_relationship_list
+		(object Inheritance_Relationship
+		    attributes 	(list Attribute_Set)
+		    quid       	"36BB282A0161"
+		    supplier   	"Logical View::Group::HalfGroup"
+		    quidu      	"36BB260C00B8")
+		(object Inheritance_Relationship
+		    attributes 	(list Attribute_Set)
+		    quid       	"37BD3801013E"
+		    supplier   	"Logical View::Group::HalfGroup"
+		    quidu      	"36BB260C00B8")
+		(object Inheritance_Relationship
+		    attributes 	(list Attribute_Set)
+		    quid       	"37BD3801033C"
+		    supplier   	"Logical View::Group::intGroup"
+		    quidu      	"36BB25ED037A"))
+	    operations 	(list Operations
+		(object Operation "zeroAt"
+		    attributes 	(list Attribute_Set
+			(object Attribute
+			    tool       	"Java"
+			    name       	"Abstract"
+			    value      	TRUE))
+		    quid       	"37BD3801033D"
+		    documentation 	
+|Setting to 0 in Place:	
+		    
+		    result     	"Group"
+		    concurrency 	"Sequential"
+		    opExportControl 	"Public"
+		    uid        	0)
+		(object Operation "zero"
+		    attributes 	(list Attribute_Set
+			(object Attribute
+			    tool       	"Java"
+			    name       	"Abstract"
+			    value      	TRUE))
+		    quid       	"37BD38010346"
+		    documentation 	
+|Setting to 0:			
+		    
+		    result     	"Group"
+		    concurrency 	"Sequential"
+		    opExportControl 	"Public"
+		    uid        	0)
+		(object Operation "isZero"
+		    attributes 	(list Attribute_Set
+			(object Attribute
+			    tool       	"Java"
+			    name       	"Abstract"
+			    value      	TRUE))
+		    quid       	"37BD38010347"
+		    documentation 	
+|Testing for 0:			
+		    
+		    result     	"boolean"
+		    concurrency 	"Sequential"
+		    opExportControl 	"Public"
+		    uid        	0)
+		(object Operation "negAt"
+		    attributes 	(list Attribute_Set
+			(object Attribute
+			    tool       	"Java"
+			    name       	"Abstract"
+			    value      	TRUE))
+		    quid       	"37BD38010348"
+		    documentation 	
+|Negation in Place: -=	
+		    
+		    result     	"Group"
+		    concurrency 	"Sequential"
+		    opExportControl 	"Public"
+		    uid        	0)
+		(object Operation "neg"
+		    attributes 	(list Attribute_Set
+			(object Attribute
+			    tool       	"Java"
+			    name       	"Abstract"
+			    value      	TRUE))
+		    quid       	"37BD38010350"
+		    documentation 	
+|Negation: -				
+		    
+		    result     	"Group"
+		    concurrency 	"Sequential"
+		    opExportControl 	"Public"
+		    uid        	0)
+		(object Operation "subt"
+		    attributes 	(list Attribute_Set
+			(object Attribute
+			    tool       	"Java"
+			    name       	"Abstract"
+			    value      	TRUE))
+		    quid       	"37BD38010351"
+		    documentation 	
+|Subtraction: -			
+		    
+		    parameters 	(list Parameters
+			(object Parameter "arg"
+			    type       	"Object"))
+		    result     	"Group"
+		    concurrency 	"Sequential"
+		    opExportControl 	"Public"
+		    uid        	0))
+	    module     	"Component View::Group::Group"
+	    quidu      	"36BB25F401E0"
+	    language   	"Java")
+	(object Class "absGroup"
+	    attributes 	(list Attribute_Set
+		(object Attribute
+		    tool       	"Java"
+		    name       	"GenerateFinalizer"
+		    value      	FALSE)
+		(object Attribute
+		    tool       	"Java"
+		    name       	"GenerateStaticInitializer"
+		    value      	FALSE)
+		(object Attribute
+		    tool       	"Java"
+		    name       	"GenerateInstanceInitializer"
+		    value      	FALSE)
+		(object Attribute
+		    tool       	"Java"
+		    name       	"GenerateDefaultConstructor"
+		    value      	FALSE))
+	    quid       	"36BB26020059"
+	    documentation 	
+|Default Implementation of an additive Group (G,+,-,0).
+| * The Interface is separated out, because of Symmetry 
+| * to the multiplicative GroupM,
+| * which  is used to simulate multiple Inheritance by Delegation. 
+| * 
+| * Design Decisions:
+| * Not all Methods are implemented as Defaults although that would be possible:
+| * -= is missing. 
+| * This is for one thing to keep this Class abstract 
+| * and for another to indicate the Methods that have in any case to be redefined.
+| * 
+| * Abstract Methods:
+| * addAt (+=)
+| * subtAt(-=)
+| 
+	    
+	    superclasses 	(list inheritance_relationship_list
+		(object Inheritance_Relationship
+		    attributes 	(list Attribute_Set)
+		    quid       	"36BB276602B4"
+		    supplier   	"Logical View::Group::absHalfGroup"
+		    quidu      	"36BB26160012")
+		(object Inheritance_Relationship
+		    attributes 	(list Attribute_Set)
+		    quid       	"37BD369E00CF"
+		    supplier   	"Logical View::Group::absHalfGroup"
+		    quidu      	"36BB26160012"))
+	    realized_interfaces 	(list realize_rel_list
+		(object Realize_Relationship
+		    attributes 	(list Attribute_Set)
+		    quid       	"37BD36A302F3"
+		    supplier   	"Logical View::Group::Group"
+		    quidu      	"36BB25F702B6"))
+	    operations 	(list Operations
+		(object Operation "zeroAt"
+		    attributes 	(list Attribute_Set)
+		    quid       	"37BD36A8030E"
+		    documentation 	
+|Setting to 0 in Place:
+|	 * Can be implemented by subtracting any number from itself.
+|	 * A Standard Implementation. Should be overwritten by faster Implementations.	 
+		    
+		    result     	"Group"
+		    concurrency 	"Sequential"
+		    opExportControl 	"Public"
+		    uid        	0)
+		(object Operation "zero"
+		    attributes 	(list Attribute_Set)
+		    quid       	"37BD36A80318"
+		    documentation 	
+|Setting to 0:
+|	 * A Standard Implementation. Can be overwritten by faster Implementations.	 
+		    
+		    result     	"Group"
+		    concurrency 	"Sequential"
+		    opExportControl 	"Public"
+		    uid        	0)
+		(object Operation "isZero"
+		    attributes 	(list Attribute_Set)
+		    quid       	"37BD36A80322"
+		    documentation 	
+|Testing for 0:
+|	 * A Standard Implementation. Can be overwritten by faster Implementations.	 
+		    
+		    result     	"boolean"
+		    concurrency 	"Sequential"
+		    opExportControl 	"Public"
+		    uid        	0)
+		(object Operation "negAt"
+		    attributes 	(list Attribute_Set)
+		    quid       	"37BD36A8032C"
+		    documentation 	
+|Negation in Place: -=
+|	 * Redefined to enable Definition by either INVat or DIVat!
+|	 * A Standard Implementation. Can be overwritten by faster Implementations.	 
+		    
+		    result     	"Group"
+		    concurrency 	"Sequential"
+		    opExportControl 	"Public"
+		    uid        	0)
+		(object Operation "neg"
+		    attributes 	(list Attribute_Set)
+		    quid       	"37BD36A80336"
+		    documentation 	
+|Negation: -
+|	 * A Standard Implementation. Can be overwritten by faster Implementations.	 
+		    
+		    result     	"Group"
+		    concurrency 	"Sequential"
+		    opExportControl 	"Public"
+		    uid        	0)
+		(object Operation "subt"
+		    attributes 	(list Attribute_Set)
+		    quid       	"37BD36A80340"
+		    documentation 	
+|Subtraction: -
+|	 * A Standard Implementation. Can be overwritten by faster Implementations.	 
+		    
+		    parameters 	(list Parameters
+			(object Parameter "arg"
+			    type       	"Object"))
+		    result     	"Group"
+		    concurrency 	"Sequential"
+		    opExportControl 	"Public"
+		    uid        	0)
+		(object Operation "subtAt"
+		    attributes 	(list Attribute_Set)
+		    quid       	"37BD36BF01DB"
+		    documentation 	
+|Subtraction in Place: -=
+|	 * Redefined to enable Definition by either INVat or DIVat!
+|	 * A Standard Implementation. Can be overwritten by faster Implementations.	 
+		    
+		    parameters 	(list Parameters
+			(object Parameter "arg"
+			    type       	"Object"))
+		    result     	"Group"
+		    concurrency 	"Sequential"
+		    opExportControl 	"Public"
+		    uid        	0)
+		(object Operation "equals"
+		    attributes 	(list Attribute_Set)
+		    quid       	"37BD36CE0327"
+		    documentation 	
+|Compares two Objects for equality.
+|	 * <p>
+|	 * The <code>equals</code> method implements an equivalence relation: 
+|	 * <ul>
+|	 * <li>It is <i>reflexive</i>: for any reference value <code>x</code>, 
+|	 * <code>x.equals(x)</code> should return <code>true</code>. 
+|	 * <li>It is <i>symmetric</i>: for any reference values <code>x</code> and 
+|	 * <code>y</code>, <code>x.equals(y)</code> should return 
+|	 * <code>true</code> if and only if <code>y.equals(x)</code> returns 
+|	 * <code>true</code>. 
+|	 * <li>It is <i>transitive</i>: for any reference values <code>x</code>, 
+|	 * <code>y</code>, and <code>z</code>, if <code>x.equals(y)</code>
+|	 * returns  <code>true</code> and <code>y.equals(z)</code> returns 
+|	 * <code>true</code>, then <code>x.equals(z)</code> should return 
+|	 * <code>true</code>. 
+|	 * <li>It is <i>consistent</i>: for any reference values <code>x</code> 
+|	 * and <code>y</code>, multiple invocations of <code>x.equals(y)</code> 
+|	 * consistently return <code>true</code> or consistently return 
+|	 * <code>false</code>. 
+|	 * <li>For any reference value <code>x</code>, <code>x.equals(null)</code> 
+|	 * should return <code>false</code>.
+|	 * </ul>
+|	 * <p>
+|	 * The equals method for class <code>Object</code> implements the most 
+|	 * discriminating possible equivalence relation on objects; that is, 
+|	 * for any reference values <code>x</code> and <code>y</code>, this 
+|	 * method returns <code>true</code> if and only if <code>x</code> and 
+|	 * <code>y</code> refer to the same object (<code>x==y</code> has the 
+|	 * value <code>true</code>). 
+|	 * 
+|	 * @param   obj   the reference object with which to compare.
+|	 * @return  <code>true</code> if this object is the same as the obj
+|	 * argument; <code>false</code> otherwise.
+|	 * @see     java.lang.Boolean#hashCode()
+|	 * @see     java.util.Hashtable
+|	 * @since   JDK1.0 
+|	 
+		    
+		    parameters 	(list Parameters
+			(object Parameter "arg"
+			    type       	"Object"))
+		    result     	"boolean"
+		    concurrency 	"Sequential"
+		    opExportControl 	"Public"
+		    uid        	0)
+		(object Operation "mulAt"
+		    attributes 	(list Attribute_Set)
+		    quid       	"37BD36DD038D"
+		    documentation 	
+|Integer Multiplication: x*=n	 
+		    
+		    parameters 	(list Parameters
+			(object Parameter "n"
+			    type       	"int"))
+		    result     	"HalfGroup"
+		    concurrency 	"Sequential"
+		    opExportControl 	"Public"
+		    uid        	0)
+		(object Operation "testIt"
+		    attributes 	(list Attribute_Set
+			(object Attribute
+			    tool       	"Java"
+			    name       	"Static"
+			    value      	TRUE))
+		    quid       	"37BD36F40304"
+		    documentation 	
+|Method to test all Implementations in this class.	 
+		    
+		    result     	"void"
+		    exceptions 	"java.io.IOException"
+		    concurrency 	"Sequential"
+		    opExportControl 	"Public"
+		    uid        	0))
+	    module     	"Component View::Group::absGroup"
+	    quidu      	"36BB25FE01EE"
+	    language   	"Java"
+	    abstract   	TRUE)
+	(object Class "HalfGroup"
+	    attributes 	(list Attribute_Set
+		(object Attribute
+		    tool       	"Java"
+		    name       	"GenerateFinalizer"
+		    value      	FALSE)
+		(object Attribute
+		    tool       	"Java"
+		    name       	"GenerateStaticInitializer"
+		    value      	FALSE)
+		(object Attribute
+		    tool       	"Java"
+		    name       	"GenerateInstanceInitializer"
+		    value      	FALSE)
+		(object Attribute
+		    tool       	"Java"
+		    name       	"GenerateDefaultConstructor"
+		    value      	FALSE))
+	    quid       	"36BB260C00B8"
+	    documentation 	
+|Algebraic HalfGroup (M,+):
+| * Set of Objects with inner Operation "+" on any two Objects.
+| * I.e. in a HalfGroup any two Objects can be "added".
+| * This addition is associative i.e. (a+b)+c==a+(b+c)
+| * Example is e.g. String Concatenation
+| * 
+| * Commutative HalfGroups are HalfGroups where the Operator Matrix is symmetric,
+| * i.e. a+b=b+a.
+| * C++ can implement non-commutative HalfGroups,
+| * because + is evaluated in strict order.
+| * 
+| * Defines the additional Operations which should be redefined
+| * to exploit the final Definition of the Operands.
+| * A Default Implementation is done in 'absHalfGroup'.
+| * There are more effective ways to implement these functions 
+| * depending on the implementing class. This is only the generic Solution.
+| * 
+| * Design Decisions:
+| * The Interface has been separated from the Implementation in Java, 
+| * because of the Symmetry with HalfGroupM which is used 
+| * for multiple Inheritance.
+| * This Interface could also be called 'addable'
+| * 
+| * The corresponding abstract Class is not intended for Delegation. 
+| * This leads to the following Design Decisions:
+| * The Return Type is chosen to be absHalfGroup instead of HalfGroup,
+| * because this saves a cast from other Interface Types on returning the Result.
+| * The Execution is not delegated to a Self_ Variable.
+| 
+	    
+	    stereotype 	"Interface"
+	    superclasses 	(list inheritance_relationship_list
+		(object Inheritance_Relationship
+		    attributes 	(list Attribute_Set)
+		    quid       	"37BD3802037A"
+		    supplier   	"Logical View::Group::intHalfGroup"
+		    quidu      	"36BB25E30376")
+		(object Inheritance_Relationship
+		    attributes 	(list Attribute_Set)
+		    quid       	"37BD38030187"
+		    supplier   	"Logical View::BaseCopy::copyAble"
+		    quidu      	"36BB22B9021D"))
+	    operations 	(list Operations
+		(object Operation "add"
+		    attributes 	(list Attribute_Set
+			(object Attribute
+			    tool       	"Java"
+			    name       	"Abstract"
+			    value      	TRUE))
+		    quid       	"37BD38030191"
+		    documentation 	
+|Addition: +					
+		    
+		    parameters 	(list Parameters
+			(object Parameter "arg"
+			    type       	"Object"))
+		    result     	"HalfGroup"
+		    concurrency 	"Sequential"
+		    opExportControl 	"Public"
+		    uid        	0)
+		(object Operation "dbl"
+		    attributes 	(list Attribute_Set
+			(object Attribute
+			    tool       	"Java"
+			    name       	"Abstract"
+			    value      	TRUE))
+		    quid       	"37BD380301A5"
+		    documentation 	
+|Double:   2x == x+x			
+		    
+		    result     	"HalfGroup"
+		    concurrency 	"Sequential"
+		    opExportControl 	"Public"
+		    uid        	0)
+		(object Operation "dblAt"
+		    attributes 	(list Attribute_Set
+			(object Attribute
+			    tool       	"Java"
+			    name       	"Abstract"
+			    value      	TRUE))
+		    quid       	"37BD380301A6"
+		    documentation 	
+|Double in Place: x+=x		
+		    
+		    result     	"HalfGroup"
+		    concurrency 	"Sequential"
+		    opExportControl 	"Public"
+		    uid        	0)
+		(object Operation "trpl"
+		    attributes 	(list Attribute_Set
+			(object Attribute
+			    tool       	"Java"
+			    name       	"Abstract"
+			    value      	TRUE))
+		    quid       	"37BD380301A7"
+		    documentation 	
+|Triple: 3x == (2x)+=x		
+		    
+		    result     	"HalfGroup"
+		    concurrency 	"Sequential"
+		    opExportControl 	"Public"
+		    uid        	0)
+		(object Operation "trplAt"
+		    attributes 	(list Attribute_Set
+			(object Attribute
+			    tool       	"Java"
+			    name       	"Abstract"
+			    value      	TRUE))
+		    quid       	"37BD380301AF"
+		    documentation 	
+|Triple in Place: x+=2x		
+		    
+		    result     	"HalfGroup"
+		    concurrency 	"Sequential"
+		    opExportControl 	"Public"
+		    uid        	0)
+		(object Operation "quad"
+		    attributes 	(list Attribute_Set
+			(object Attribute
+			    tool       	"Java"
+			    name       	"Abstract"
+			    value      	TRUE))
+		    quid       	"37BD380301B0"
+		    documentation 	
+|Quadruple: 4x == 2(2x)		
+		    
+		    result     	"HalfGroup"
+		    concurrency 	"Sequential"
+		    opExportControl 	"Public"
+		    uid        	0)
+		(object Operation "quadAt"
+		    attributes 	(list Attribute_Set
+			(object Attribute
+			    tool       	"Java"
+			    name       	"Abstract"
+			    value      	TRUE))
+		    quid       	"37BD380301B1"
+		    documentation 	
+|Quadruple in Place: 2(2x)	
+		    
+		    result     	"HalfGroup"
+		    concurrency 	"Sequential"
+		    opExportControl 	"Public"
+		    uid        	0)
+		(object Operation "mul"
+		    attributes 	(list Attribute_Set
+			(object Attribute
+			    tool       	"Java"
+			    name       	"Abstract"
+			    value      	TRUE))
+		    quid       	"37BD380301B9"
+		    documentation 	
+|Integer Multiplication: x* n	 
+		    
+		    parameters 	(list Parameters
+			(object Parameter "n"
+			    type       	"int"))
+		    result     	"HalfGroup"
+		    concurrency 	"Sequential"
+		    opExportControl 	"Public"
+		    uid        	0)
+		(object Operation "mulAt"
+		    attributes 	(list Attribute_Set
+			(object Attribute
+			    tool       	"Java"
+			    name       	"Abstract"
+			    value      	TRUE))
+		    quid       	"37BD380301CD"
+		    documentation 	
+|Integer Multiplication: x*=n	 
+		    
+		    parameters 	(list Parameters
+			(object Parameter "n"
+			    type       	"int"))
+		    result     	"HalfGroup"
+		    concurrency 	"Sequential"
+		    opExportControl 	"Public"
+		    uid        	0)
+		(object Operation "mul2PowAt"
+		    attributes 	(list Attribute_Set
+			(object Attribute
+			    tool       	"Java"
+			    name       	"Abstract"
+			    value      	TRUE))
+		    quid       	"37BD380301E1"
+		    documentation 	
+|Multiplication with an Integer Power of 2 in Place:	 
+		    
+		    parameters 	(list Parameters
+			(object Parameter "n"
+			    type       	"int"))
+		    result     	"HalfGroup"
+		    concurrency 	"Sequential"
+		    opExportControl 	"Public"
+		    uid        	0)
+		(object Operation "mul2Pow"
+		    attributes 	(list Attribute_Set
+			(object Attribute
+			    tool       	"Java"
+			    name       	"Abstract"
+			    value      	TRUE))
+		    quid       	"37BD380301F5"
+		    documentation 	
+|Multiplication with an Integer Power of 2:	 
+		    
+		    parameters 	(list Parameters
+			(object Parameter "n"
+			    type       	"int"))
+		    result     	"HalfGroup"
+		    concurrency 	"Sequential"
+		    opExportControl 	"Public"
+		    uid        	0))
+	    module     	"Component View::Group::HalfGroup"
+	    quidu      	"36BB260803DD"
+	    language   	"Java")
+	(object Class "absHalfGroup"
+	    attributes 	(list Attribute_Set
+		(object Attribute
+		    tool       	"Java"
+		    name       	"GenerateFinalizer"
+		    value      	FALSE)
+		(object Attribute
+		    tool       	"Java"
+		    name       	"GenerateStaticInitializer"
+		    value      	FALSE)
+		(object Attribute
+		    tool       	"Java"
+		    name       	"GenerateInstanceInitializer"
+		    value      	FALSE)
+		(object Attribute
+		    tool       	"Java"
+		    name       	"GenerateDefaultConstructor"
+		    value      	FALSE))
+	    quid       	"36BB26160012"
+	    documentation 	
+|Default Implementation of an additive HalfGroup (G,+).
+| * The Interface is separated out, because of Symmetry 
+| * to the multiplicative HalfGroupM,
+| * which  is used to simulate multiple Inheritance by Delegation. 
+| * 
+| * Design Decisions:
+| * This class does not extend Number, because not every Realization of a Group 
+| * maps to numeric Values. (e.g. Functions, Matrices etc.)
+| * Also any other Argument Type than Object requires explicit casting on 
+| * every Operation which is a hassle.
+| * You can also not derive any of the helper Classes from Number, 
+| * because you cannot cast between the branches, but you would have to
+| * just to convert the results. So it is not possible!
+| * 
+| * It would have been much better, if the Java Group 
+| * would have made 'Number' an Interface.
+| * 
+| * The Conflict culminates in Fraction which can contain
+| * Numbers as well as any other Metric Integrity Ring. 
+| * 
+| * Instead it presents the conversion Routines xxxxValue(Object arg)
+| * to convert from Number Types.
+| * The conversion Routines are moved to countable and measurable.
+| * 
+| * Not all Methods are implemented as Defaults although that would be possible:
+| * This is for one thing to keep this Class abstract 
+| * and for another to indicate the Methods that have in any case to be redefined.
+| * 
+| * This abstract Class is not intended for Delegation. 
+| * This leads to the following Design Decisions:
+| * The Return Type is chosen to be absHalfGroup instead of HalfGroup,
+| * because this saves a cast from other Interface Types on returning the Result.
+| * The Execution is not delegated to a Self_ Variable.
+| * 
+| * Abstract Methods:
+| * addAt (+=)
+| 
+	    
+	    superclasses 	(list inheritance_relationship_list
+		(object Inheritance_Relationship
+		    attributes 	(list Attribute_Set)
+		    quid       	"37BD373B00A3"
+		    supplier   	"Logical View::BaseCopy::absCopyAble"
+		    quidu      	"36BB22B9029F"))
+	    realized_interfaces 	(list realize_rel_list
+		(object Realize_Relationship
+		    attributes 	(list Attribute_Set)
+		    quid       	"37BD374002D1"
+		    supplier   	"Logical View::Group::HalfGroup"
+		    quidu      	"36BB260C00B8"))
+	    operations 	(list Operations
+		(object Operation "add"
+		    attributes 	(list Attribute_Set)
+		    quid       	"37BD3746013F"
+		    documentation 	
+|Addition: +				
+|	 * A Standard Implementation. Can be overwritten by faster Implementations.	 
+		    
+		    parameters 	(list Parameters
+			(object Parameter "arg"
+			    type       	"Object"))
+		    result     	"HalfGroup"
+		    concurrency 	"Sequential"
+		    opExportControl 	"Public"
+		    uid        	0)
+		(object Operation "dbl"
+		    attributes 	(list Attribute_Set)
+		    quid       	"37BD375C0385"
+		    documentation 	
+|Double:   2x == x+x		
+|	 * A Standard Implementation. Can be overwritten by faster Implementations.	 
+		    
+		    result     	"HalfGroup"
+		    concurrency 	"Sequential"
+		    opExportControl 	"Public"
+		    uid        	0)
+		(object Operation "dblAt"
+		    attributes 	(list Attribute_Set)
+		    quid       	"37BD375C0386"
+		    documentation 	
+|Double in Place: x+=x	
+|	 * A Standard Implementation. Can be overwritten by faster Implementations.	 
+		    
+		    result     	"HalfGroup"
+		    concurrency 	"Sequential"
+		    opExportControl 	"Public"
+		    uid        	0)
+		(object Operation "trpl"
+		    attributes 	(list Attribute_Set)
+		    quid       	"37BD375C0387"
+		    documentation 	
+|Triple: 3x == (2x)+=x	
+|	 * A Standard Implementation. Can be overwritten by faster Implementations.	 
+		    
+		    result     	"HalfGroup"
+		    concurrency 	"Sequential"
+		    opExportControl 	"Public"
+		    uid        	0)
+		(object Operation "trplAt"
+		    attributes 	(list Attribute_Set)
+		    quid       	"37BD375C038F"
+		    documentation 	
+|Triple in Place: x+=2x	
+|	 * A Standard Implementation. Can be overwritten by faster Implementations.	 
+		    
+		    result     	"HalfGroup"
+		    concurrency 	"Sequential"
+		    opExportControl 	"Public"
+		    uid        	0)
+		(object Operation "quad"
+		    attributes 	(list Attribute_Set)
+		    quid       	"37BD375C0390"
+		    documentation 	
+|Quadruple: 4x == 2(2x)	
+		    
+		    result     	"HalfGroup"
+		    concurrency 	"Sequential"
+		    opExportControl 	"Public"
+		    uid        	0)
+		(object Operation "quadAt"
+		    attributes 	(list Attribute_Set)
+		    quid       	"37BD375C0391"
+		    documentation 	
+|Quadruple in Place: 2(2x)	
+		    
+		    result     	"HalfGroup"
+		    concurrency 	"Sequential"
+		    opExportControl 	"Public"
+		    uid        	0)
+		(object Operation "mul2PowAt"
+		    attributes 	(list Attribute_Set)
+		    quid       	"37BD375C0399"
+		    documentation 	
+|Multiplication with an Integer Power of 2 in Place:
+|	 * Here implemented as a concatenated doubling.	 
+		    
+		    parameters 	(list Parameters
+			(object Parameter "n"
+			    type       	"int"))
+		    result     	"HalfGroup"
+		    concurrency 	"Sequential"
+		    opExportControl 	"Public"
+		    uid        	0)
+		(object Operation "mul2Pow"
+		    attributes 	(list Attribute_Set)
+		    quid       	"37BD376C016B"
+		    documentation 	
+|Multiplication with an Integer Power of 2:
+|	 * Here implemented as a concatenated doubling.	 
+		    
+		    parameters 	(list Parameters
+			(object Parameter "n"
+			    type       	"int"))
+		    result     	"HalfGroup"
+		    concurrency 	"Sequential"
+		    opExportControl 	"Public"
+		    uid        	0)
+		(object Operation "mul"
+		    attributes 	(list Attribute_Set)
+		    quid       	"37BD377F037C"
+		    documentation 	
+|Integer Multiplication: x*n	 
+		    
+		    parameters 	(list Parameters
+			(object Parameter "n"
+			    type       	"int"))
+		    result     	"HalfGroup"
+		    concurrency 	"Sequential"
+		    opExportControl 	"Public"
+		    uid        	0)
+		(object Operation "mulAt"
+		    attributes 	(list Attribute_Set)
+		    quid       	"37BD379203BF"
+		    documentation 	
+|Integer Multiplication: x*=n
+|	 * This Implementation is only valid for positive n > 0 !
+|	 * You can implement a similar Algorithm for Multiplication.
+|	 * This Algorithm uses the binary Representation of the integer n.
+|	 * You could also write this with Prime Factors, but the Algorithm would be less
+|	 * elegant and also slower, because this one uses only 2*lb n Multiplications.	 
+		    
+		    parameters 	(list Parameters
+			(object Parameter "n"
+			    type       	"int"))
+		    result     	"HalfGroup"
+		    concurrency 	"Sequential"
+		    opExportControl 	"Public"
+		    uid        	0)
+		(object Operation "testIt"
+		    attributes 	(list Attribute_Set
+			(object Attribute
+			    tool       	"Java"
+			    name       	"Static"
+			    value      	TRUE))
+		    quid       	"37BD37A90386"
+		    documentation 	
+|Method to test all Implementations in this class.
+|	 * Must call testIt of the super Class.	 
+		    
+		    result     	"void"
+		    exceptions 	"java.io.IOException"
+		    concurrency 	"Sequential"
+		    opExportControl 	"Public"
+		    uid        	0))
+	    module     	"Component View::Group::absHalfGroup"
+	    quidu      	"36BB261202FB"
+	    language   	"Java"
+	    abstract   	TRUE)
+	(object Class "testGroup"
+	    attributes 	(list Attribute_Set
+		(object Attribute
+		    tool       	"Java"
+		    name       	"GenerateFinalizer"
+		    value      	FALSE)
+		(object Attribute
+		    tool       	"Java"
+		    name       	"GenerateStaticInitializer"
+		    value      	FALSE)
+		(object Attribute
+		    tool       	"Java"
+		    name       	"GenerateInstanceInitializer"
+		    value      	FALSE)
+		(object Attribute
+		    tool       	"Java"
+		    name       	"GenerateDefaultConstructor"
+		    value      	FALSE))
+	    quid       	"37BC919401DA"
+	    operations 	(list Operations
+		(object Operation "main"
+		    attributes 	(list Attribute_Set
+			(object Attribute
+			    tool       	"Java"
+			    name       	"Static"
+			    value      	TRUE))
+		    quid       	"37BD38050067"
+		    documentation 	
+|The main entry point for the application. 
+|	 * @param args Array of command line parameters passed to the application.
+|	 * Here I can test the static Methods of the Classes 
+|	 * and call the testIt() Methods.
+|	 * The main() Methods of the Super Packages are also called.
+|	 * As an alternative to having the Classes call the static methods 
+|	 * of their super classes.	 
+		    
+		    parameters 	(list Parameters
+			(object Parameter "args"
+			    type       	"String[]"))
+		    result     	"void"
+		    exceptions 	"java.io.IOException"
+		    concurrency 	"Sequential"
+		    opExportControl 	"Public"
+		    uid        	0))
+	    module     	"Component View::Group::testGroup"
+	    quidu      	"37BC919401D0"
+	    language   	"Java"))
+    logical_presentations 	(list unit_reference_list
+	(object ClassDiagram "Group"
+	    quid       	"36BB28C102BD"
+	    title      	"Group"
+	    zoom       	100
+	    max_height 	28350
+	    max_width  	21600
+	    origin_x   	0
+	    origin_y   	0
+	    items      	(list diagram_item_list
+		(object ClassView "Class" "Logical View::Group::intGroup" @1
+		    ShowCompartmentStereotypes 	TRUE
+		    IncludeAttribute 	TRUE
+		    IncludeOperation 	TRUE
+		    location   	(155, 124)
+		    label      	(object ItemLabel
+			Parent_View 	@1
+			location   	(27, 65)
+			fill_color 	13434879
+			nlines     	1
+			max_width  	256
+			justify    	0
+			label      	"intGroup")
+		    stereotype 	(object ItemLabel
+			Parent_View 	@1
+			location   	(27, 15)
+			fill_color 	13434879
+			anchor     	10
+			nlines     	1
+			max_width  	253
+			justify    	0
+			label      	"<<Interface>>")
+		    icon       	"Interface"
+		    icon_style 	"Label"
+		    line_color 	3342489
+		    fill_color 	13434879
+		    quidu      	"36BB25ED037A"
+		    compartment 	(object Compartment
+			Parent_View 	@1
+			location   	(27, 125)
+			icon_style 	"Icon"
+			fill_color 	16777215
+			anchor     	2
+			nlines     	2
+			max_width  	194)
+		    width      	274
+		    height     	242
+		    annotation 	8
+		    autoResize 	TRUE)
+		(object ClassView "Class" "Logical View::BaseCopy::absCopyAble" @2
+		    ShowCompartmentStereotypes 	TRUE
+		    location   	(899, 713)
+		    font       	(object Font
+			italics    	TRUE)
+		    label      	(object ItemLabel
+			Parent_View 	@2
+			location   	(763, 638)
+			fill_color 	13434879
+			nlines     	1
+			max_width  	272
+			justify    	0
+			label      	"absCopyAble")
+		    icon_style 	"Icon"
+		    line_color 	3342489
+		    fill_color 	13434879
+		    quidu      	"36BB22B9029F"
+		    width      	290
+		    height     	174
+		    annotation 	8
+		    autoResize 	TRUE)
+		(object ClassView "Class" "Logical View::BaseCopy::intCopyAble" @3
+		    ShowCompartmentStereotypes 	TRUE
+		    IncludeAttribute 	TRUE
+		    location   	(899, 124)
+		    label      	(object ItemLabel
+			Parent_View 	@3
+			location   	(771, 71)
+			fill_color 	13434879
+			nlines     	1
+			max_width  	256
+			justify    	0
+			label      	"intCopyAble")
+		    stereotype 	(object ItemLabel
+			Parent_View 	@3
+			location   	(771, 21)
+			fill_color 	13434879
+			anchor     	10
+			nlines     	1
+			max_width  	256
+			justify    	0
+			label      	"<<Interface>>")
+		    icon       	"Interface"
+		    icon_style 	"Label"
+		    line_color 	3342489
+		    fill_color 	13434879
+		    quidu      	"36BB22B90136"
+		    width      	274
+		    height     	230
+		    annotation 	8
+		    autoResize 	TRUE)
+		(object ClassView "Class" "Logical View::BaseCopy::copyAble" @4
+		    ShowCompartmentStereotypes 	TRUE
+		    location   	(899, 434)
+		    label      	(object ItemLabel
+			Parent_View 	@4
+			location   	(771, 381)
+			fill_color 	13434879
+			nlines     	1
+			max_width  	256
+			justify    	0
+			label      	"copyAble")
+		    stereotype 	(object ItemLabel
+			Parent_View 	@4
+			location   	(771, 331)
+			fill_color 	13434879
+			anchor     	10
+			nlines     	1
+			max_width  	256
+			justify    	0
+			label      	"<<Interface>>")
+		    icon       	"Interface"
+		    icon_style 	"Label"
+		    line_color 	3342489
+		    fill_color 	13434879
+		    quidu      	"36BB22B9021D"
+		    width      	274
+		    height     	230
+		    annotation 	8
+		    autoResize 	TRUE)
+		(object RealizeView "" @5
+		    stereotype 	TRUE
+		    line_color 	3342489
+		    quidu      	"37BD1B64006A"
+		    client     	@2
+		    supplier   	@4
+		    line_style 	0)
+		(object InheritView "" @6
+		    stereotype 	TRUE
+		    line_color 	3342489
+		    quidu      	"37BD1BE003E2"
+		    client     	@4
+		    supplier   	@3
+		    line_style 	0)
+		(object ClassView "Class" "Logical View::Group::intHalfGroup" @7
+		    ShowCompartmentStereotypes 	TRUE
+		    IncludeOperation 	TRUE
+		    location   	(527, 124)
+		    label      	(object ItemLabel
+			Parent_View 	@7
+			location   	(398, 65)
+			fill_color 	13434879
+			nlines     	1
+			max_width  	258
+			justify    	0
+			label      	"intHalfGroup")
+		    stereotype 	(object ItemLabel
+			Parent_View 	@7
+			location   	(398, 15)
+			fill_color 	13434879
+			anchor     	10
+			nlines     	1
+			max_width  	258
+			justify    	0
+			label      	"<<Interface>>")
+		    icon       	"Interface"
+		    icon_style 	"Label"
+		    line_color 	3342489
+		    fill_color 	13434879
+		    quidu      	"36BB25E30376"
+		    compartment 	(object Compartment
+			Parent_View 	@7
+			location   	(398, 125)
+			icon_style 	"Icon"
+			fill_color 	16777215
+			anchor     	2
+			nlines     	2
+			max_width  	181)
+		    width      	276
+		    height     	242
+		    annotation 	8
+		    autoResize 	TRUE)
+		(object ClassView "Class" "Logical View::Group::HalfGroup" @8
+		    ShowCompartmentStereotypes 	TRUE
+		    location   	(527, 434)
+		    label      	(object ItemLabel
+			Parent_View 	@8
+			location   	(399, 405)
+			fill_color 	13434879
+			nlines     	1
+			max_width  	256
+			justify    	0
+			label      	"HalfGroup")
+		    stereotype 	(object ItemLabel
+			Parent_View 	@8
+			location   	(399, 355)
+			fill_color 	13434879
+			anchor     	10
+			nlines     	1
+			max_width  	256
+			justify    	0
+			label      	"<<Interface>>")
+		    icon       	"Interface"
+		    icon_style 	"Label"
+		    line_color 	3342489
+		    fill_color 	13434879
+		    quidu      	"36BB260C00B8"
+		    width      	274
+		    height     	182
+		    annotation 	8
+		    autoResize 	TRUE)
+		(object InheritView "" @9
+		    stereotype 	TRUE
+		    line_color 	3342489
+		    quidu      	"37BD3802037A"
+		    client     	@8
+		    supplier   	@7
+		    line_style 	0)
+		(object InheritView "" @10
+		    stereotype 	TRUE
+		    line_color 	3342489
+		    quidu      	"37BD38030187"
+		    client     	@8
+		    supplier   	@4
+		    line_style 	0)
+		(object ClassView "Class" "Logical View::Group::Group" @11
+		    ShowCompartmentStereotypes 	TRUE
+		    location   	(155, 434)
+		    label      	(object ItemLabel
+			Parent_View 	@11
+			location   	(27, 405)
+			fill_color 	13434879
+			nlines     	1
+			max_width  	256
+			justify    	0
+			label      	"Group")
+		    stereotype 	(object ItemLabel
+			Parent_View 	@11
+			location   	(27, 355)
+			fill_color 	13434879
+			anchor     	10
+			nlines     	1
+			max_width  	256
+			justify    	0
+			label      	"<<Interface>>")
+		    icon       	"Interface"
+		    icon_style 	"Label"
+		    line_color 	3342489
+		    fill_color 	13434879
+		    quidu      	"36BB25F702B6"
+		    width      	274
+		    height     	182
+		    annotation 	8
+		    autoResize 	TRUE)
+		(object InheritView "" @12
+		    stereotype 	TRUE
+		    line_color 	3342489
+		    quidu      	"37BD3801013E"
+		    client     	@11
+		    supplier   	@8
+		    line_style 	0)
+		(object InheritView "" @13
+		    stereotype 	TRUE
+		    line_color 	3342489
+		    quidu      	"37BD3801033C"
+		    client     	@11
+		    supplier   	@1
+		    line_style 	0)
+		(object ClassView "Class" "Logical View::Group::absHalfGroup" @14
+		    ShowCompartmentStereotypes 	TRUE
+		    location   	(527, 713)
+		    font       	(object Font
+			italics    	TRUE)
+		    label      	(object ItemLabel
+			Parent_View 	@14
+			location   	(384, 662)
+			fill_color 	13434879
+			nlines     	1
+			max_width  	286
+			justify    	0
+			label      	"absHalfGroup")
+		    icon_style 	"Icon"
+		    line_color 	3342489
+		    fill_color 	13434879
+		    quidu      	"36BB26160012"
+		    width      	304
+		    height     	126
+		    annotation 	8
+		    autoResize 	TRUE)
+		(object InheritView "" @15
+		    stereotype 	TRUE
+		    line_color 	3342489
+		    quidu      	"37BD373B00A3"
+		    client     	@14
+		    supplier   	@2
+		    line_style 	0)
+		(object RealizeView "" @16
+		    stereotype 	TRUE
+		    line_color 	3342489
+		    quidu      	"37BD374002D1"
+		    client     	@14
+		    supplier   	@8
+		    line_style 	0)
+		(object ClassView "Class" "Logical View::Group::absGroup" @17
+		    ShowCompartmentStereotypes 	TRUE
+		    location   	(155, 713)
+		    font       	(object Font
+			italics    	TRUE)
+		    label      	(object ItemLabel
+			Parent_View 	@17
+			location   	(49, 662)
+			fill_color 	13434879
+			nlines     	1
+			max_width  	212
+			justify    	0
+			label      	"absGroup")
+		    icon_style 	"Icon"
+		    line_color 	3342489
+		    fill_color 	13434879
+		    quidu      	"36BB26020059"
+		    width      	230
+		    height     	126
+		    annotation 	8
+		    autoResize 	TRUE)
+		(object InheritView "" @18
+		    stereotype 	TRUE
+		    line_color 	3342489
+		    quidu      	"37BD369E00CF"
+		    client     	@17
+		    supplier   	@14
+		    line_style 	0)
+		(object RealizeView "" @19
+		    stereotype 	TRUE
+		    line_color 	3342489
+		    quidu      	"37BD36A302F3"
+		    client     	@17
+		    supplier   	@11
+		    line_style 	0)))
+	(object ClassDiagram "AutoLayout"
+	    quid       	"37BEE17001A7"
+	    title      	"AutoLayout"
+	    zoom       	100
+	    max_height 	28350
+	    max_width  	21600
+	    origin_x   	0
+	    origin_y   	0
+	    items      	(list diagram_item_list
+		(object ClassView "Class" "Logical View::Group::absGroup" @20
+		    ShowCompartmentStereotypes 	TRUE
+		    IncludeAttribute 	TRUE
+		    location   	(682, 1209)
+		    font       	(object Font
+			italics    	TRUE)
+		    label      	(object ItemLabel
+			Parent_View 	@20
+			location   	(576, 1158)
+			fill_color 	13434879
+			nlines     	1
+			max_width  	212
+			justify    	0
+			label      	"absGroup")
+		    icon_style 	"Icon"
+		    line_color 	3342489
+		    fill_color 	13434879
+		    quidu      	"36BB26020059"
+		    width      	230
+		    height     	126
+		    annotation 	8
+		    autoResize 	TRUE)
+		(object ClassView "Class" "Logical View::Group::absHalfGroup" @21
+		    ShowCompartmentStereotypes 	TRUE
+		    IncludeAttribute 	TRUE
+		    location   	(1085, 682)
+		    font       	(object Font
+			italics    	TRUE)
+		    label      	(object ItemLabel
+			Parent_View 	@21
+			location   	(942, 631)
+			fill_color 	13434879
+			nlines     	1
+			max_width  	286
+			justify    	0
+			label      	"absHalfGroup")
+		    icon_style 	"Icon"
+		    line_color 	3342489
+		    fill_color 	13434879
+		    quidu      	"36BB26160012"
+		    width      	304
+		    height     	126
+		    annotation 	8
+		    autoResize 	TRUE)
+		(object InheritView "" @22
+		    stereotype 	TRUE
+		    line_color 	3342489
+		    quidu      	"36BB276602B4"
+		    client     	@20
+		    supplier   	@21
+		    line_style 	0)
+		(object InheritView "" @23
+		    stereotype 	TRUE
+		    line_color 	3342489
+		    quidu      	"37BD369E00CF"
+		    client     	@20
+		    supplier   	@21
+		    line_style 	0)
+		(object ClassView "Class" "Logical View::Group::intHalfGroup" @24
+		    ShowCompartmentStereotypes 	TRUE
+		    IncludeAttribute 	TRUE
+		    location   	(651, 682)
+		    label      	(object ItemLabel
+			Parent_View 	@24
+			location   	(523, 653)
+			fill_color 	13434879
+			nlines     	1
+			max_width  	256
+			justify    	0
+			label      	"intHalfGroup")
+		    stereotype 	(object ItemLabel
+			Parent_View 	@24
+			location   	(523, 603)
+			fill_color 	13434879
+			anchor     	10
+			nlines     	1
+			max_width  	256
+			justify    	0
+			label      	"<<Interface>>")
+		    icon       	"Interface"
+		    icon_style 	"Label"
+		    line_color 	3342489
+		    fill_color 	13434879
+		    quidu      	"36BB25E30376"
+		    width      	274
+		    height     	182
+		    annotation 	8
+		    autoResize 	TRUE)
+		(object ClassView "Class" "Logical View::Group::intGroup" @25
+		    ShowCompartmentStereotypes 	TRUE
+		    IncludeAttribute 	TRUE
+		    location   	(1085, 1240)
+		    label      	(object ItemLabel
+			Parent_View 	@25
+			location   	(957, 1211)
+			fill_color 	13434879
+			nlines     	1
+			max_width  	256
+			justify    	0
+			label      	"intGroup")
+		    stereotype 	(object ItemLabel
+			Parent_View 	@25
+			location   	(957, 1161)
+			fill_color 	13434879
+			anchor     	10
+			nlines     	1
+			max_width  	256
+			justify    	0
+			label      	"<<Interface>>")
+		    icon       	"Interface"
+		    icon_style 	"Label"
+		    line_color 	3342489
+		    fill_color 	13434879
+		    quidu      	"36BB25ED037A"
+		    width      	274
+		    height     	182
+		    annotation 	8
+		    autoResize 	TRUE)
+		(object ClassView "Class" "Logical View::Group::Group" @26
+		    ShowCompartmentStereotypes 	TRUE
+		    IncludeAttribute 	TRUE
+		    location   	(589, 1705)
+		    label      	(object ItemLabel
+			Parent_View 	@26
+			location   	(461, 1676)
+			fill_color 	13434879
+			nlines     	1
+			max_width  	256
+			justify    	0
+			label      	"Group")
+		    stereotype 	(object ItemLabel
+			Parent_View 	@26
+			location   	(461, 1626)
+			fill_color 	13434879
+			anchor     	10
+			nlines     	1
+			max_width  	256
+			justify    	0
+			label      	"<<Interface>>")
+		    icon       	"Interface"
+		    icon_style 	"Label"
+		    line_color 	3342489
+		    fill_color 	13434879
+		    quidu      	"36BB25F702B6"
+		    width      	274
+		    height     	182
+		    annotation 	8
+		    autoResize 	TRUE)
+		(object RealizeView "" @27
+		    stereotype 	TRUE
+		    line_color 	3342489
+		    quidu      	"37BD36A302F3"
+		    client     	@20
+		    supplier   	@26
+		    line_style 	0)
+		(object InheritView "" @28
+		    stereotype 	TRUE
+		    line_color 	3342489
+		    quidu      	"37BD3801033C"
+		    client     	@26
+		    supplier   	@25
+		    line_style 	0)
+		(object ClassView "Class" "Logical View::Group::HalfGroup" @29
+		    ShowCompartmentStereotypes 	TRUE
+		    IncludeAttribute 	TRUE
+		    location   	(279, 1240)
+		    label      	(object ItemLabel
+			Parent_View 	@29
+			location   	(151, 1211)
+			fill_color 	13434879
+			nlines     	1
+			max_width  	256
+			justify    	0
+			label      	"HalfGroup")
+		    stereotype 	(object ItemLabel
+			Parent_View 	@29
+			location   	(151, 1161)
+			fill_color 	13434879
+			anchor     	10
+			nlines     	1
+			max_width  	256
+			justify    	0
+			label      	"<<Interface>>")
+		    icon       	"Interface"
+		    icon_style 	"Label"
+		    line_color 	3342489
+		    fill_color 	13434879
+		    quidu      	"36BB260C00B8"
+		    width      	274
+		    height     	182
+		    annotation 	8
+		    autoResize 	TRUE)
+		(object InheritView "" @30
+		    stereotype 	TRUE
+		    line_color 	3342489
+		    quidu      	"36BB282A0161"
+		    client     	@26
+		    supplier   	@29
+		    line_style 	0)
+		(object InheritView "" @31
+		    stereotype 	TRUE
+		    line_color 	3342489
+		    quidu      	"37BD3801013E"
+		    client     	@26
+		    supplier   	@29
+		    line_style 	0)
+		(object RealizeView "" @32
+		    stereotype 	TRUE
+		    line_color 	3342489
+		    quidu      	"37BD374002D1"
+		    client     	@21
+		    supplier   	@29
+		    line_style 	0)
+		(object InheritView "" @33
+		    stereotype 	TRUE
+		    line_color 	3342489
+		    quidu      	"37BD3802037A"
+		    client     	@29
+		    supplier   	@24
+		    line_style 	0)
+		(object ClassView "Class" "Logical View::BaseCopy::intCopyAble" @34
+		    ShowCompartmentStereotypes 	TRUE
+		    IncludeAttribute 	TRUE
+		    location   	(279, 186)
+		    label      	(object ItemLabel
+			Parent_View 	@34
+			location   	(151, 133)
+			fill_color 	13434879
+			nlines     	1
+			max_width  	256
+			justify    	0
+			label      	"intCopyAble")
+		    stereotype 	(object ItemLabel
+			Parent_View 	@34
+			location   	(151, 83)
+			fill_color 	13434879
+			anchor     	10
+			nlines     	1
+			max_width  	256
+			justify    	0
+			label      	"<<Interface>>")
+		    icon       	"Interface"
+		    icon_style 	"Label"
+		    line_color 	3342489
+		    fill_color 	13434879
+		    quidu      	"36BB22B90136"
+		    width      	274
+		    height     	230
+		    annotation 	8
+		    autoResize 	TRUE)
+		(object ClassView "Class" "Logical View::BaseCopy::copyAble" @35
+		    ShowCompartmentStereotypes 	TRUE
+		    IncludeAttribute 	TRUE
+		    location   	(217, 713)
+		    label      	(object ItemLabel
+			Parent_View 	@35
+			location   	(89, 660)
+			fill_color 	13434879
+			nlines     	1
+			max_width  	256
+			justify    	0
+			label      	"copyAble")
+		    stereotype 	(object ItemLabel
+			Parent_View 	@35
+			location   	(89, 610)
+			fill_color 	13434879
+			anchor     	10
+			nlines     	1
+			max_width  	256
+			justify    	0
+			label      	"<<Interface>>")
+		    icon       	"Interface"
+		    icon_style 	"Label"
+		    line_color 	3342489
+		    fill_color 	13434879
+		    quidu      	"36BB22B9021D"
+		    width      	274
+		    height     	230
+		    annotation 	8
+		    autoResize 	TRUE)
+		(object InheritView "" @36
+		    stereotype 	TRUE
+		    line_color 	3342489
+		    quidu      	"37BD38030187"
+		    client     	@29
+		    supplier   	@35
+		    line_style 	0)
+		(object InheritView "" @37
+		    stereotype 	TRUE
+		    line_color 	3342489
+		    quidu      	"37BD1BE003E2"
+		    client     	@35
+		    supplier   	@34
+		    line_style 	0)
+		(object ClassView "Class" "Logical View::BaseCopy::absCopyAble" @38
+		    ShowCompartmentStereotypes 	TRUE
+		    IncludeAttribute 	TRUE
+		    location   	(713, 155)
+		    font       	(object Font
+			italics    	TRUE)
+		    label      	(object ItemLabel
+			Parent_View 	@38
+			location   	(578, 80)
+			fill_color 	13434879
+			nlines     	1
+			max_width  	270
+			justify    	0
+			label      	"absCopyAble")
+		    icon_style 	"Icon"
+		    line_color 	3342489
+		    fill_color 	13434879
+		    quidu      	"36BB22B9029F"
+		    width      	288
+		    height     	174
+		    annotation 	8
+		    autoResize 	TRUE)
+		(object AssociationViewNew "" @39
+		    location   	(878, 380)
+		    stereotype 	TRUE
+		    line_color 	3342489
+		    quidu      	"37BD1B6400B9"
+		    roleview_list 	(list RoleViews
+			(object RoleView "" @40
+			    Parent_View 	@39
+			    location   	(-52, -85)
+			    label      	(object SegLabel @41
+				Parent_View 	@40
+				location   	(930, 197)
+				hidden     	TRUE
+				anchor     	1
+				anchor_loc 	1
+				nlines     	1
+				max_width  	450
+				justify    	0
+				label      	""
+				pctDist    	0.800000
+				height     	42
+				orientation 	0)
+			    stereotype 	TRUE
+			    line_color 	3342489
+			    quidu      	"37BD1B6400BA"
+			    client     	@39
+			    supplier   	@38
+			    vertices   	(list Points
+				(878, 380)
+				(938, 380)
+				(938, 155)
+				(857, 155))
+			    line_style 	0)
+			(object RoleView "testInstance" @42
+			    Parent_View 	@39
+			    location   	(-52, -85)
+			    label      	(object SegLabel @43
+				Parent_View 	@42
+				location   	(755, 304)
+				anchor     	1
+				anchor_loc 	1
+				nlines     	1
+				max_width  	276
+				justify    	0
+				label      	"+$testInstance"
+				pctDist    	0.800000
+				height     	42
+				orientation 	1)
+			    stereotype 	TRUE
+			    line_color 	3342489
+			    quidu      	"37BD1B6400BB"
+			    client     	@39
+			    supplier   	@38
+			    vertices   	(list Points
+				(878, 380)
+				(713, 380)
+				(713, 242))
+			    line_style 	0)))
+		(object InheritView "" @44
+		    stereotype 	TRUE
+		    line_color 	3342489
+		    quidu      	"37BD373B00A3"
+		    client     	@21
+		    supplier   	@38
+		    line_style 	0)
+		(object RealizeView "" @45
+		    stereotype 	TRUE
+		    line_color 	3342489
+		    quidu      	"37BD1B64006A"
+		    client     	@38
+		    supplier   	@35
+		    line_style 	0)))))

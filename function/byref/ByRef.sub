@@ -1,0 +1,638 @@
+
+(object Petal
+    version    	42
+    _written   	"Rose 4.5.8163.3"
+    charSet    	0)
+
+(object SubSystem "ByRef"
+    is_unit    	TRUE
+    is_loaded  	TRUE
+    quid       	"36BB4AA503DA"
+    visible_modules 	(list dependency_list
+	(object Dependency_Relationship
+	    quid       	"36BB4FB3010A"
+	    supplier   	"Component View::Order"
+	    quidu      	"36BB46B601E7"
+	    supplier_is_subsystem 	TRUE)
+	(object Dependency_Relationship
+	    quid       	"37BC8EC002B5"
+	    supplier   	"Component View::BaseCopy"
+	    quidu      	"36BABF4B0011"
+	    supplier_is_subsystem 	TRUE))
+    physical_models 	(list unit_reference_list
+	(object module "ByRefLong" "NotAModuleType" "NotAModulePart"
+	    attributes 	(list Attribute_Set
+		(object Attribute
+		    tool       	"Java"
+		    name       	"FileName"
+		    value      	"D:\\Personal\\Code\\Java\\ByRef\\ByRefLong.java"))
+	    quid       	"36BB4E3D0116"
+	    stereotype 	""
+	    visible_modules 	(list dependency_list
+		(object Dependency_Relationship
+		    quid       	"36BB4FB3010B"
+		    supplier   	"Component View::Order"
+		    quidu      	"36BB46B601E7"
+		    supplier_is_subsystem 	TRUE)
+		(object Dependency_Relationship
+		    quid       	"37BC8EC102AC"
+		    supplier   	"Component View::Order"
+		    quidu      	"36BB46B601E7"
+		    supplier_is_subsystem 	TRUE)
+		(object Dependency_Relationship
+		    quid       	"37BD1C2C025B"
+		    supplier   	"Component View::Order"
+		    quidu      	"36BB46B601E7"
+		    supplier_is_subsystem 	TRUE)
+		(object Dependency_Relationship
+		    quid       	"37BD363502FF"
+		    supplier   	"Component View::Order"
+		    quidu      	"36BB46B601E7"
+		    supplier_is_subsystem 	TRUE))
+	    language   	"Java")
+	(object module "ByRefDouble" "NotAModuleType" "NotAModulePart"
+	    attributes 	(list Attribute_Set
+		(object Attribute
+		    tool       	"Java"
+		    name       	"FileName"
+		    value      	"D:\\Personal\\Code\\Java\\ByRef\\ByRefDouble.java"))
+	    quid       	"36BB4E3D026A"
+	    stereotype 	""
+	    visible_modules 	(list dependency_list
+		(object Dependency_Relationship
+		    quid       	"36BB4FB3024A"
+		    supplier   	"Component View::Order"
+		    quidu      	"36BB46B601E7"
+		    supplier_is_subsystem 	TRUE)
+		(object Dependency_Relationship
+		    quid       	"37BC8EC10017"
+		    supplier   	"Component View::Order"
+		    quidu      	"36BB46B601E7"
+		    supplier_is_subsystem 	TRUE)
+		(object Dependency_Relationship
+		    quid       	"37BD1C26000D"
+		    supplier   	"Component View::Order"
+		    quidu      	"36BB46B601E7"
+		    supplier_is_subsystem 	TRUE)
+		(object Dependency_Relationship
+		    quid       	"37BD362F00A7"
+		    supplier   	"Component View::Order"
+		    quidu      	"36BB46B601E7"
+		    supplier_is_subsystem 	TRUE))
+	    language   	"Java")
+	(object module "measurable" "NotAModuleType" "NotAModulePart"
+	    attributes 	(list Attribute_Set
+		(object Attribute
+		    tool       	"Java"
+		    name       	"FileName"
+		    value      	"D:\\Personal\\Code\\Java\\ByRef\\measurable.java"))
+	    quid       	"36BB4E3D0300"
+	    stereotype 	""
+	    language   	"Java")
+	(object module "ByRefChar" "NotAModuleType" "NotAModulePart"
+	    attributes 	(list Attribute_Set
+		(object Attribute
+		    tool       	"Java"
+		    name       	"FileName"
+		    value      	"D:\\Personal\\Code\\Java\\ByRef\\ByRefChar.java"))
+	    quid       	"36BB4E3E0009"
+	    stereotype 	""
+	    visible_modules 	(list dependency_list
+		(object Dependency_Relationship
+		    quid       	"36BB4FB40057"
+		    supplier   	"Component View::Order"
+		    quidu      	"36BB46B601E7"
+		    supplier_is_subsystem 	TRUE)
+		(object Dependency_Relationship
+		    quid       	"37BC8EC0035F"
+		    supplier   	"Component View::Order"
+		    quidu      	"36BB46B601E7"
+		    supplier_is_subsystem 	TRUE)
+		(object Dependency_Relationship
+		    quid       	"37BD1C23035C"
+		    supplier   	"Component View::Order"
+		    quidu      	"36BB46B601E7"
+		    supplier_is_subsystem 	TRUE)
+		(object Dependency_Relationship
+		    quid       	"37BD362C037E"
+		    supplier   	"Component View::Order"
+		    quidu      	"36BB46B601E7"
+		    supplier_is_subsystem 	TRUE))
+	    language   	"Java")
+	(object module "TDouble" "NotAModuleType" "NotAModulePart"
+	    attributes 	(list Attribute_Set
+		(object Attribute
+		    tool       	"Java"
+		    name       	"FileName"
+		    value      	"D:\\Personal\\Code\\Java\\ByRef\\TDouble.java"))
+	    quid       	"36BB4E3E00B3"
+	    stereotype 	""
+	    language   	"Java")
+	(object module "countable" "NotAModuleType" "NotAModulePart"
+	    attributes 	(list Attribute_Set
+		(object Attribute
+		    tool       	"Java"
+		    name       	"FileName"
+		    value      	"D:\\Personal\\Code\\Java\\ByRef\\countable.java"))
+	    quid       	"36BB4E3E0226"
+	    stereotype 	""
+	    visible_modules 	(list dependency_list
+		(object Dependency_Relationship
+		    quid       	"37BC8EC20005"
+		    supplier   	"Component View::BaseCopy::intCountable"
+		    quidu      	"37BC8EAE00E2"
+		    supplier_is_spec 	TRUE))
+	    language   	"Java")
+	(object module "intMeasurable" "NotAModuleType" "NotAModulePart"
+	    attributes 	(list Attribute_Set
+		(object Attribute
+		    tool       	"Java"
+		    name       	"FileName"
+		    value      	"D:\\Personal\\Code\\Java\\ByRef\\intMeasurable.java"))
+	    quid       	"36BB4E3E02B2"
+	    stereotype 	""
+	    realized_interfaces 	(list realize_rel_list
+		(object Realize_Relationship
+		    quid       	"37BF050002F3"
+		    supplier   	"Logical View::ByRef::intMeasurable"
+		    quidu      	"36BB4E3E02BC"))
+	    language   	"Java")
+	(object module "intCountable" "NotAModuleType" "NotAModulePart"
+	    attributes 	(list Attribute_Set
+		(object Attribute
+		    tool       	"Java"
+		    name       	"FileName"
+		    value      	"E:\\Personal\\Code\\Java\\ByRef\\intCountable.java"))
+	    quid       	"36BB4E3E033E"
+	    stereotype 	""
+	    realized_interfaces 	(list realize_rel_list
+		(object Realize_Relationship
+		    quid       	"37BF04FD0321"
+		    supplier   	"Logical View::ByRef::intCountable"
+		    quidu      	"36BB4E3E0348"))
+	    language   	"Java")
+	(object module "ByRefByte" "NotAModuleType" "NotAModulePart"
+	    attributes 	(list Attribute_Set
+		(object Attribute
+		    tool       	"Java"
+		    name       	"FileName"
+		    value      	"D:\\Personal\\Code\\Java\\ByRef\\ByRefByte.java"))
+	    quid       	"36BB4E3F00E7"
+	    stereotype 	""
+	    visible_modules 	(list dependency_list
+		(object Dependency_Relationship
+		    quid       	"36BB4FB50120"
+		    supplier   	"Component View::Order"
+		    quidu      	"36BB46B601E7"
+		    supplier_is_subsystem 	TRUE)
+		(object Dependency_Relationship
+		    quid       	"37BC8EC002B6"
+		    supplier   	"Component View::BaseCopy"
+		    quidu      	"36BABF4B0011"
+		    supplier_is_subsystem 	TRUE)
+		(object Dependency_Relationship
+		    quid       	"37BC8EC002B7"
+		    supplier   	"Component View::Order"
+		    quidu      	"36BB46B601E7"
+		    supplier_is_subsystem 	TRUE)
+		(object Dependency_Relationship
+		    quid       	"37BD1C210219"
+		    supplier   	"Component View::BaseCopy"
+		    quidu      	"36BABF4B0011"
+		    supplier_is_subsystem 	TRUE)
+		(object Dependency_Relationship
+		    quid       	"37BD1C21021A"
+		    supplier   	"Component View::Order"
+		    quidu      	"36BB46B601E7"
+		    supplier_is_subsystem 	TRUE)
+		(object Dependency_Relationship
+		    quid       	"37BD362A02DB"
+		    supplier   	"Component View::BaseCopy"
+		    quidu      	"36BABF4B0011"
+		    supplier_is_subsystem 	TRUE)
+		(object Dependency_Relationship
+		    quid       	"37BD362A02DC"
+		    supplier   	"Component View::Order"
+		    quidu      	"36BB46B601E7"
+		    supplier_is_subsystem 	TRUE))
+	    language   	"Java")
+	(object module "ByRefObject" "NotAModuleType" "NotAModulePart"
+	    attributes 	(list Attribute_Set
+		(object Attribute
+		    tool       	"Java"
+		    name       	"FileName"
+		    value      	"D:\\Personal\\Code\\Java\\ByRef\\ByRefObject.java"))
+	    quid       	"36BB4E3F015F"
+	    stereotype 	""
+	    language   	"Java")
+	(object module "ByRefShort" "NotAModuleType" "NotAModulePart"
+	    attributes 	(list Attribute_Set
+		(object Attribute
+		    tool       	"Java"
+		    name       	"FileName"
+		    value      	"D:\\Personal\\Code\\Java\\ByRef\\ByRefShort.java"))
+	    quid       	"36BB4E3F0245"
+	    stereotype 	""
+	    visible_modules 	(list dependency_list
+		(object Dependency_Relationship
+		    quid       	"36BB4FB502F7"
+		    supplier   	"Component View::Order"
+		    quidu      	"36BB46B601E7"
+		    supplier_is_subsystem 	TRUE)
+		(object Dependency_Relationship
+		    quid       	"37BC8EC10389"
+		    supplier   	"Component View::Order"
+		    quidu      	"36BB46B601E7"
+		    supplier_is_subsystem 	TRUE)
+		(object Dependency_Relationship
+		    quid       	"37BD1C2F03DC"
+		    supplier   	"Component View::Order"
+		    quidu      	"36BB46B601E7"
+		    supplier_is_subsystem 	TRUE)
+		(object Dependency_Relationship
+		    quid       	"37BD363900B6"
+		    supplier   	"Component View::Order"
+		    quidu      	"36BB46B601E7"
+		    supplier_is_subsystem 	TRUE))
+	    language   	"Java")
+	(object module "ByRefInt" "NotAModuleType" "NotAModulePart"
+	    attributes 	(list Attribute_Set
+		(object Attribute
+		    tool       	"Java"
+		    name       	"FileName"
+		    value      	"D:\\Personal\\Code\\Java\\ByRef\\ByRefInt.java"))
+	    quid       	"36BB4E3F02C7"
+	    stereotype 	""
+	    visible_modules 	(list dependency_list
+		(object Dependency_Relationship
+		    quid       	"36BB4FB503D3"
+		    supplier   	"Component View::Order"
+		    quidu      	"36BB46B601E7"
+		    supplier_is_subsystem 	TRUE)
+		(object Dependency_Relationship
+		    quid       	"37BC8EC1016C"
+		    supplier   	"Component View::Order"
+		    quidu      	"36BB46B601E7"
+		    supplier_is_subsystem 	TRUE)
+		(object Dependency_Relationship
+		    quid       	"37BD1C2A0136"
+		    supplier   	"Component View::Order"
+		    quidu      	"36BB46B601E7"
+		    supplier_is_subsystem 	TRUE)
+		(object Dependency_Relationship
+		    quid       	"37BD363301DA"
+		    supplier   	"Component View::Order"
+		    quidu      	"36BB46B601E7"
+		    supplier_is_subsystem 	TRUE))
+	    language   	"Java")
+	(object module "ByRefFloat" "NotAModuleType" "NotAModulePart"
+	    attributes 	(list Attribute_Set
+		(object Attribute
+		    tool       	"Java"
+		    name       	"FileName"
+		    value      	"D:\\Personal\\Code\\Java\\ByRef\\ByRefFloat.java"))
+	    quid       	"36BB4E3F0372"
+	    stereotype 	""
+	    visible_modules 	(list dependency_list
+		(object Dependency_Relationship
+		    quid       	"36BB4FB600D2"
+		    supplier   	"Component View::Order"
+		    quidu      	"36BB46B601E7"
+		    supplier_is_subsystem 	TRUE)
+		(object Dependency_Relationship
+		    quid       	"37BC8EC100C2"
+		    supplier   	"Component View::Order"
+		    quidu      	"36BB46B601E7"
+		    supplier_is_subsystem 	TRUE)
+		(object Dependency_Relationship
+		    quid       	"37BD1C2800BA"
+		    supplier   	"Component View::Order"
+		    quidu      	"36BB46B601E7"
+		    supplier_is_subsystem 	TRUE)
+		(object Dependency_Relationship
+		    quid       	"37BD36310140"
+		    supplier   	"Component View::Order"
+		    quidu      	"36BB46B601E7"
+		    supplier_is_subsystem 	TRUE))
+	    language   	"Java")
+	(object module "ByRefBoolean" "NotAModuleType" "NotAModulePart"
+	    attributes 	(list Attribute_Set
+		(object Attribute
+		    tool       	"Java"
+		    name       	"FileName"
+		    value      	"D:\\Personal\\Code\\Java\\ByRef\\ByRefBoolean.java"))
+	    quid       	"37BC8EC000A2"
+	    stereotype 	""
+	    language   	"Java"))
+    physical_presentations 	(list unit_reference_list
+	(object Module_Diagram "ByRef"
+	    quid       	"37BF04E501F0"
+	    title      	"ByRef"
+	    zoom       	100
+	    max_height 	28350
+	    max_width  	21600
+	    origin_x   	0
+	    origin_y   	0
+	    items      	(list diagram_item_list
+		(object ModView "Component View::ByRef::ByRefBoolean" "NotAModuleType" "NotAModulePart" @1
+		    location   	(217, 155)
+		    label      	(object ItemLabel
+			Parent_View 	@1
+			location   	(176, 130)
+			fill_color 	13434879
+			anchor_loc 	3
+			nlines     	2
+			max_width  	150
+			label      	"ByRefBoolean")
+		    icon_style 	"Icon"
+		    line_color 	3342489
+		    fill_color 	13434879
+		    quidu      	"37BC8EC000A2"
+		    width      	270
+		    autoResize 	TRUE
+		    width      	270
+		    height     	162)
+		(object ModView "Component View::ByRef::ByRefFloat" "NotAModuleType" "NotAModulePart" @2
+		    location   	(620, 155)
+		    label      	(object ItemLabel
+			Parent_View 	@2
+			location   	(582, 130)
+			fill_color 	13434879
+			anchor_loc 	3
+			nlines     	2
+			max_width  	139
+			label      	"ByRefFloat")
+		    icon_style 	"Icon"
+		    line_color 	3342489
+		    fill_color 	13434879
+		    quidu      	"36BB4E3F0372"
+		    width      	250
+		    autoResize 	TRUE
+		    width      	250
+		    height     	162)
+		(object ModView "Component View::ByRef::ByRefInt" "NotAModuleType" "NotAModulePart" @3
+		    location   	(1023, 155)
+		    label      	(object ItemLabel
+			Parent_View 	@3
+			location   	(988, 130)
+			fill_color 	13434879
+			anchor_loc 	3
+			nlines     	2
+			max_width  	127
+			label      	"ByRefInt")
+		    icon_style 	"Icon"
+		    line_color 	3342489
+		    fill_color 	13434879
+		    quidu      	"36BB4E3F02C7"
+		    width      	228
+		    autoResize 	TRUE
+		    width      	228
+		    height     	162)
+		(object ModView "Component View::ByRef::ByRefShort" "NotAModuleType" "NotAModulePart" @4
+		    location   	(1426, 155)
+		    label      	(object ItemLabel
+			Parent_View 	@4
+			location   	(1388, 130)
+			fill_color 	13434879
+			anchor_loc 	3
+			nlines     	2
+			max_width  	139
+			label      	"ByRefShort")
+		    icon_style 	"Icon"
+		    line_color 	3342489
+		    fill_color 	13434879
+		    quidu      	"36BB4E3F0245"
+		    width      	250
+		    autoResize 	TRUE
+		    width      	250
+		    height     	162)
+		(object ModView "Component View::ByRef::ByRefObject" "NotAModuleType" "NotAModulePart" @5
+		    location   	(1829, 155)
+		    label      	(object ItemLabel
+			Parent_View 	@5
+			location   	(1788, 130)
+			fill_color 	13434879
+			anchor_loc 	3
+			nlines     	2
+			max_width  	150
+			label      	"ByRefObject")
+		    icon_style 	"Icon"
+		    line_color 	3342489
+		    fill_color 	13434879
+		    quidu      	"36BB4E3F015F"
+		    width      	270
+		    autoResize 	TRUE
+		    width      	270
+		    height     	162)
+		(object ModView "Component View::ByRef::ByRefByte" "NotAModuleType" "NotAModulePart" @6
+		    location   	(2263, 155)
+		    label      	(object ItemLabel
+			Parent_View 	@6
+			location   	(2225, 130)
+			fill_color 	13434879
+			anchor_loc 	3
+			nlines     	2
+			max_width  	139
+			label      	"ByRefByte")
+		    icon_style 	"Icon"
+		    line_color 	3342489
+		    fill_color 	13434879
+		    quidu      	"36BB4E3F00E7"
+		    width      	250
+		    autoResize 	TRUE
+		    width      	250
+		    height     	162)
+		(object ModView "Component View::ByRef::intCountable" "NotAModuleType" "NotAModulePart" @7
+		    location   	(248, 806)
+		    label      	(object ItemLabel
+			Parent_View 	@7
+			location   	(198, 781)
+			fill_color 	13434879
+			anchor_loc 	3
+			nlines     	2
+			max_width  	187
+			label      	"intCountable")
+		    icon_style 	"Icon"
+		    line_color 	3342489
+		    fill_color 	13434879
+		    quidu      	"36BB4E3E033E"
+		    width      	336
+		    autoResize 	TRUE
+		    width      	336
+		    height     	162)
+		(object InterfaceView "Logical View::ByRef::intCountable" @8
+		    location   	(248, 1240)
+		    label      	(object ItemLabel
+			Parent_View 	@8
+			location   	(247, 1348)
+			anchor_loc 	1
+			nlines     	2
+			max_width  	229
+			justify    	0
+			label      	"intCountable")
+		    icon       	"Interface"
+		    icon_style 	"Icon"
+		    line_color 	3342489
+		    fill_color 	13434879
+		    quidu      	"36BB4E3E0348"
+		    width      	58
+		    height     	58
+		    autoResize 	TRUE)
+		(object RealizeView "" @9
+		    stereotype 	TRUE
+		    line_color 	3342489
+		    quidu      	"37BF04FD0321"
+		    client     	@7
+		    supplier   	@8
+		    line_style 	0)
+		(object ModView "Component View::ByRef::intMeasurable" "NotAModuleType" "NotAModulePart" @10
+		    location   	(682, 806)
+		    label      	(object ItemLabel
+			Parent_View 	@10
+			location   	(626, 781)
+			fill_color 	13434879
+			anchor_loc 	3
+			nlines     	2
+			max_width  	211
+			label      	"intMeasurable")
+		    icon_style 	"Icon"
+		    line_color 	3342489
+		    fill_color 	13434879
+		    quidu      	"36BB4E3E02B2"
+		    width      	380
+		    autoResize 	TRUE
+		    width      	380
+		    height     	162)
+		(object InterfaceView "Logical View::ByRef::intMeasurable" @11
+		    location   	(682, 1240)
+		    label      	(object ItemLabel
+			Parent_View 	@11
+			location   	(681, 1348)
+			anchor_loc 	1
+			nlines     	2
+			max_width  	229
+			justify    	0
+			label      	"intMeasurable")
+		    icon       	"Interface"
+		    icon_style 	"Icon"
+		    line_color 	3342489
+		    fill_color 	13434879
+		    quidu      	"36BB4E3E02BC"
+		    width      	58
+		    height     	58
+		    autoResize 	TRUE)
+		(object RealizeView "" @12
+		    stereotype 	TRUE
+		    line_color 	3342489
+		    quidu      	"37BF050002F3"
+		    client     	@10
+		    supplier   	@11
+		    line_style 	0)
+		(object ModView "Component View::ByRef::countable" "NotAModuleType" "NotAModulePart" @13
+		    location   	(2666, 155)
+		    label      	(object ItemLabel
+			Parent_View 	@13
+			location   	(2631, 130)
+			fill_color 	13434879
+			anchor_loc 	3
+			nlines     	2
+			max_width  	127
+			label      	"countable")
+		    icon_style 	"Icon"
+		    line_color 	3342489
+		    fill_color 	13434879
+		    quidu      	"36BB4E3E0226"
+		    width      	228
+		    autoResize 	TRUE
+		    width      	228
+		    height     	162)
+		(object ModView "Component View::ByRef::TDouble" "NotAModuleType" "NotAModulePart" @14
+		    location   	(186, 465)
+		    label      	(object ItemLabel
+			Parent_View 	@14
+			location   	(151, 440)
+			fill_color 	13434879
+			anchor_loc 	3
+			nlines     	2
+			max_width  	127
+			label      	"TDouble")
+		    icon_style 	"Icon"
+		    line_color 	3342489
+		    fill_color 	13434879
+		    quidu      	"36BB4E3E00B3"
+		    width      	228
+		    autoResize 	TRUE
+		    width      	228
+		    height     	162)
+		(object ModView "Component View::ByRef::ByRefChar" "NotAModuleType" "NotAModulePart" @15
+		    location   	(589, 465)
+		    label      	(object ItemLabel
+			Parent_View 	@15
+			location   	(551, 440)
+			fill_color 	13434879
+			anchor_loc 	3
+			nlines     	2
+			max_width  	139
+			label      	"ByRefChar")
+		    icon_style 	"Icon"
+		    line_color 	3342489
+		    fill_color 	13434879
+		    quidu      	"36BB4E3E0009"
+		    width      	250
+		    autoResize 	TRUE
+		    width      	250
+		    height     	162)
+		(object ModView "Component View::ByRef::measurable" "NotAModuleType" "NotAModulePart" @16
+		    location   	(992, 465)
+		    label      	(object ItemLabel
+			Parent_View 	@16
+			location   	(957, 440)
+			fill_color 	13434879
+			anchor_loc 	3
+			nlines     	2
+			max_width  	127
+			label      	"measurable")
+		    icon_style 	"Icon"
+		    line_color 	3342489
+		    fill_color 	13434879
+		    quidu      	"36BB4E3D0300"
+		    width      	228
+		    autoResize 	TRUE
+		    width      	228
+		    height     	162)
+		(object ModView "Component View::ByRef::ByRefDouble" "NotAModuleType" "NotAModulePart" @17
+		    location   	(1395, 465)
+		    label      	(object ItemLabel
+			Parent_View 	@17
+			location   	(1357, 440)
+			fill_color 	13434879
+			anchor_loc 	3
+			nlines     	2
+			max_width  	139
+			label      	"ByRefDouble")
+		    icon_style 	"Icon"
+		    line_color 	3342489
+		    fill_color 	13434879
+		    quidu      	"36BB4E3D026A"
+		    width      	250
+		    autoResize 	TRUE
+		    width      	250
+		    height     	162)
+		(object ModView "Component View::ByRef::ByRefLong" "NotAModuleType" "NotAModulePart" @18
+		    location   	(1798, 465)
+		    label      	(object ItemLabel
+			Parent_View 	@18
+			location   	(1760, 440)
+			fill_color 	13434879
+			anchor_loc 	3
+			nlines     	2
+			max_width  	139
+			label      	"ByRefLong")
+		    icon_style 	"Icon"
+		    line_color 	3342489
+		    fill_color 	13434879
+		    quidu      	"36BB4E3D0116"
+		    width      	250
+		    autoResize 	TRUE
+		    width      	250
+		    height     	162)))))

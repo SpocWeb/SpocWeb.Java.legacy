@@ -1,0 +1,1520 @@
+
+(object Petal
+    version    	42
+    _written   	"Rose 4.5.8163.3"
+    charSet    	0)
+
+(object Class_Category "Boole"
+    is_unit    	TRUE
+    is_loaded  	TRUE
+    quid       	"36BB89C30327"
+    visible_categories 	(list visibility_relationship_list
+	(object Visibility_Relationship
+	    quid       	"37BFD8140266"
+	    supplier   	"Logical View::BaseCopy"
+	    quidu      	"36BB22B90122"))
+    exportControl 	"Public"
+    logical_models 	(list unit_reference_list
+	(object Class "intBoole"
+	    attributes 	(list Attribute_Set
+		(object Attribute
+		    tool       	"Java"
+		    name       	"GenerateFinalizer"
+		    value      	FALSE)
+		(object Attribute
+		    tool       	"Java"
+		    name       	"GenerateStaticInitializer"
+		    value      	FALSE)
+		(object Attribute
+		    tool       	"Java"
+		    name       	"GenerateInstanceInitializer"
+		    value      	FALSE)
+		(object Attribute
+		    tool       	"Java"
+		    name       	"GenerateDefaultConstructor"
+		    value      	FALSE))
+	    quid       	"36BB89C3033A"
+	    documentation 	
+|This Class defines the basic Interface for a Boolean Algebra.
+| * The two basic Operations AND and OR are intertwined 
+| * in that both use the same inverse: NOT, 
+| * but it leads only to the other operation's neutral Element,
+| * instead of to this operations's neutral Element.
+| * 
+| * The Definition can be extended to Vectors of Boolean Elements,
+| * which allows for operations on large sets of Elements,
+| * in which each one acts independently (Vector, not Polynom).
+| * In a binary Representation AND and OR can be defined by MUL and ADD,
+| * but without Carry Bit.
+| 
+	    
+	    stereotype 	"Interface"
+	    operations 	(list Operations
+		(object Operation "ANDat"
+		    attributes 	(list Attribute_Set
+			(object Attribute
+			    tool       	"Java"
+			    name       	"Abstract"
+			    value      	TRUE))
+		    quid       	"37BD36260299"
+		    documentation 	
+|Boolean AND Operation in Place: &=, &&= for single Bit	
+|	 * a AND b = true <=> (a = true) AND (b = true) 	 
+		    
+		    parameters 	(list Parameters
+			(object Parameter "arg"
+			    type       	"Object"))
+		    result     	"Boole"
+		    concurrency 	"Sequential"
+		    opExportControl 	"Public"
+		    uid        	0)
+		(object Operation "ORat"
+		    attributes 	(list Attribute_Set
+			(object Attribute
+			    tool       	"Java"
+			    name       	"Abstract"
+			    value      	TRUE))
+		    quid       	"37BD362602AD"
+		    documentation 	
+|Boolean OR Operation in Place: |=, ||= for single Bit	
+|	 * a OR b = true <=> (a = true) OR (b = true) 	 
+		    
+		    parameters 	(list Parameters
+			(object Parameter "arg"
+			    type       	"Object"))
+		    result     	"Boole"
+		    concurrency 	"Sequential"
+		    opExportControl 	"Public"
+		    uid        	0)
+		(object Operation "FalseAt"
+		    attributes 	(list Attribute_Set
+			(object Attribute
+			    tool       	"Java"
+			    name       	"Abstract"
+			    value      	TRUE))
+		    quid       	"37BD362602CB"
+		    documentation 	
+|Boolean Constant for the Representation of 'false': =0 	
+|	 * Sets this Object to False, i.e. not 'true';
+|	 * with Vectors it sets all Elements to their respective Value of False
+		    
+		    result     	"Boole"
+		    concurrency 	"Sequential"
+		    opExportControl 	"Public"
+		    uid        	0)
+		(object Operation "NOTat"
+		    attributes 	(list Attribute_Set
+			(object Attribute
+			    tool       	"Java"
+			    name       	"Abstract"
+			    value      	TRUE))
+		    quid       	"37BD362602CC"
+		    documentation 	
+|Boolean NOT Operation in Place: ~=, != for single Bit	
+|	 * NOT a = true <=> (a = false) 
+|	 * This Operation cannot be implemented by infinite Sets,
+|	 * Therefore you need other means to define some Operations.	 
+		    
+		    result     	"Boole"
+		    concurrency 	"Sequential"
+		    opExportControl 	"Public"
+		    uid        	0))
+	    module     	"Component View::Boole::intBoole"
+	    quidu      	"36BB89C30330"
+	    language   	"Java")
+	(object Class "Boole"
+	    attributes 	(list Attribute_Set
+		(object Attribute
+		    tool       	"Java"
+		    name       	"GenerateFinalizer"
+		    value      	FALSE)
+		(object Attribute
+		    tool       	"Java"
+		    name       	"GenerateStaticInitializer"
+		    value      	FALSE)
+		(object Attribute
+		    tool       	"Java"
+		    name       	"GenerateInstanceInitializer"
+		    value      	FALSE)
+		(object Attribute
+		    tool       	"Java"
+		    name       	"GenerateDefaultConstructor"
+		    value      	FALSE))
+	    quid       	"36BB89C40026"
+	    documentation 	
+|This Class defines the full Interface for a Boolean Algebra.
+| * The two basic Operations AND and OR are intertwined 
+| * in that both use the same inverse: NOT, 
+| * but it leads only to the other operation's neutral Element,
+| * instead of to this operations's neutral Element.
+| * 
+| * These Operations and their Negation cover the full Range 
+| * of ALL 16 possible binary Operations,
+| * except for '<=', which has no simple name 
+| * and can easily be replaced by => by swapping the Arguments.
+| * 
+| * The Definition can be extended to Vectors of Boolean Elements,
+| * which allows for operations on large sets of Elements,
+| * in which each one acts independently (Vector, not Polynom).
+| * 
+| * This allows for a Representation of Sets, where each Boole
+| * Item indicates the Existence of this Element in the Set.
+| * 
+| * In a binary Representation AND and OR can be defined by MUL and ADD,
+| * but without Carry Bit.
+| 
+	    
+	    stereotype 	"Interface"
+	    superclasses 	(list inheritance_relationship_list
+		(object Inheritance_Relationship
+		    attributes 	(list Attribute_Set)
+		    quid       	"37BD362300E6"
+		    supplier   	"Logical View::Boole::intBoole"
+		    quidu      	"36BB89C3033A")
+		(object Inheritance_Relationship
+		    attributes 	(list Attribute_Set)
+		    quid       	"37BD362302DB"
+		    supplier   	"Logical View::BaseCopy::copyAble"
+		    quidu      	"36BB22B9021D"))
+	    operations 	(list Operations
+		(object Operation "AND"
+		    attributes 	(list Attribute_Set
+			(object Attribute
+			    tool       	"Java"
+			    name       	"Abstract"
+			    value      	TRUE))
+		    quid       	"37BD362302EF"
+		    documentation 	
+|Boolean AND Operation: &, && for single Bit	
+|	 * For Sets: Intersection	
+		    
+		    parameters 	(list Parameters
+			(object Parameter "arg"
+			    type       	"Object"))
+		    result     	"Boole"
+		    concurrency 	"Sequential"
+		    opExportControl 	"Public"
+		    uid        	0)
+		(object Operation "OR"
+		    attributes 	(list Attribute_Set
+			(object Attribute
+			    tool       	"Java"
+			    name       	"Abstract"
+			    value      	TRUE))
+		    quid       	"37BD36230317"
+		    documentation 	
+|Boolean OR Operation: |, || for single Bit	
+|	 * For Sets: Union	
+		    
+		    parameters 	(list Parameters
+			(object Parameter "arg"
+			    type       	"Object"))
+		    result     	"Boole"
+		    concurrency 	"Sequential"
+		    opExportControl 	"Public"
+		    uid        	0)
+		(object Operation "NOT"
+		    attributes 	(list Attribute_Set
+			(object Attribute
+			    tool       	"Java"
+			    name       	"Abstract"
+			    value      	TRUE))
+		    quid       	"37BD36230349"
+		    documentation 	
+|Boolean NOT Operation: ~, ! for single Bit	
+|	 * For Sets: Returns the Complement Set	
+		    
+		    result     	"Boole"
+		    concurrency 	"Sequential"
+		    opExportControl 	"Public"
+		    uid        	0)
+		(object Operation "XOR"
+		    attributes 	(list Attribute_Set
+			(object Attribute
+			    tool       	"Java"
+			    name       	"Abstract"
+			    value      	TRUE))
+		    quid       	"37BD36230353"
+		    documentation 	
+|Boolean XOR Operation: ^		
+|	 * a XOR b = true <=> (a AND ~b) OR (~a AND b)
+|	 * For Sets: Gives Set of all Elements, that are either in one or the other	
+		    
+		    parameters 	(list Parameters
+			(object Parameter "arg"
+			    type       	"Object"))
+		    result     	"Boole"
+		    concurrency 	"Sequential"
+		    opExportControl 	"Public"
+		    uid        	0)
+		(object Operation "DIFF"
+		    attributes 	(list Attribute_Set
+			(object Attribute
+			    tool       	"Java"
+			    name       	"Abstract"
+			    value      	TRUE))
+		    quid       	"37BD3623037B"
+		    documentation 	
+|Boolean DIFF Operation: -
+|	 * a - b <=> (a AND NOT b) <=> NOT IMP	
+|	 * For Sets:	Difference Set
+		    
+		    parameters 	(list Parameters
+			(object Parameter "arg"
+			    type       	"Object"))
+		    result     	"Boole"
+		    concurrency 	"Sequential"
+		    opExportControl 	"Public"
+		    uid        	0)
+		(object Operation "IMP"
+		    attributes 	(list Attribute_Set
+			(object Attribute
+			    tool       	"Java"
+			    name       	"Abstract"
+			    value      	TRUE))
+		    quid       	"37BD362303C1"
+		    documentation 	
+|Boolean IMP Operation: =>
+|	 * a IMP b <=> (NOT a OR b)
+|	 * For Sets: Gives Set of all Elements, that exist in b when they exist in a	
+		    
+		    parameters 	(list Parameters
+			(object Parameter "arg"
+			    type       	"Object"))
+		    result     	"Boole"
+		    concurrency 	"Sequential"
+		    opExportControl 	"Public"
+		    uid        	0)
+		(object Operation "EQV"
+		    attributes 	(list Attribute_Set
+			(object Attribute
+			    tool       	"Java"
+			    name       	"Abstract"
+			    value      	TRUE))
+		    quid       	"37BD36240001"
+		    documentation 	
+|Boolean EQV Operation: <=>
+|	 * a EQV b <=> NOT(a XOR b)
+|	 * For Sets: Gives Set of all Elements, that are either in both ore none	
+		    
+		    parameters 	(list Parameters
+			(object Parameter "arg"
+			    type       	"Object"))
+		    result     	"Boole"
+		    concurrency 	"Sequential"
+		    opExportControl 	"Public"
+		    uid        	0)
+		(object Operation "True"
+		    attributes 	(list Attribute_Set
+			(object Attribute
+			    tool       	"Java"
+			    name       	"Abstract"
+			    value      	TRUE))
+		    quid       	"37BD36240033"
+		    documentation 	
+|Boolean Constant for the Representation of 'true': 1
+|	 * i.e. NOT 'false'.	 
+|	 * For Sets: The Set of ALL Elements (only posssible for known finite SuperSets) 
+		    
+		    result     	"Boole"
+		    concurrency 	"Sequential"
+		    opExportControl 	"Public"
+		    uid        	0)
+		(object Operation "False"
+		    attributes 	(list Attribute_Set
+			(object Attribute
+			    tool       	"Java"
+			    name       	"Abstract"
+			    value      	TRUE))
+		    quid       	"37BD3624003D"
+		    documentation 	
+|Boolean Constant for the Representation of 'false': 0
+|	 * i.e. NOT 'true'.	 
+|	 * For Sets: Returns the empty Set	
+		    
+		    result     	"Boole"
+		    concurrency 	"Sequential"
+		    opExportControl 	"Public"
+		    uid        	0)
+		(object Operation "XORat"
+		    attributes 	(list Attribute_Set
+			(object Attribute
+			    tool       	"Java"
+			    name       	"Abstract"
+			    value      	TRUE))
+		    quid       	"37BD3624003E"
+		    documentation 	
+|Boolean XOR Operation in Place: ^=	
+|	 * a XOR b <=> (a AND NOT b) OR (NOT a AND b)
+|	 * For Sets: Gives Set of all Elements, that are either in one or the other 	
+		    
+		    parameters 	(list Parameters
+			(object Parameter "arg"
+			    type       	"Object"))
+		    result     	"Boole"
+		    concurrency 	"Sequential"
+		    opExportControl 	"Public"
+		    uid        	0)
+		(object Operation "DIFFat"
+		    attributes 	(list Attribute_Set
+			(object Attribute
+			    tool       	"Java"
+			    name       	"Abstract"
+			    value      	TRUE))
+		    quid       	"37BD3624007A"
+		    documentation 	
+|Boolean DIFF Operation in Place: -=
+|	 * a - b <=> (a AND NOT b) <=> NOT IMP	
+|	 * For Sets:	Difference Set
+		    
+		    parameters 	(list Parameters
+			(object Parameter "arg"
+			    type       	"Object"))
+		    result     	"Boole"
+		    concurrency 	"Sequential"
+		    opExportControl 	"Public"
+		    uid        	0)
+		(object Operation "IMPat"
+		    attributes 	(list Attribute_Set
+			(object Attribute
+			    tool       	"Java"
+			    name       	"Abstract"
+			    value      	TRUE))
+		    quid       	"37BD362400A2"
+		    documentation 	
+|Boolean IMP Operation in Place: =>
+|	 * a IMP b <=> (NOT a OR b)
+|	 * For Sets: Gives Set of all Elements, that exist in b when they exist in a	
+		    
+		    parameters 	(list Parameters
+			(object Parameter "arg"
+			    type       	"Object"))
+		    result     	"Boole"
+		    concurrency 	"Sequential"
+		    opExportControl 	"Public"
+		    uid        	0)
+		(object Operation "EQVat"
+		    attributes 	(list Attribute_Set
+			(object Attribute
+			    tool       	"Java"
+			    name       	"Abstract"
+			    value      	TRUE))
+		    quid       	"37BD362400D4"
+		    documentation 	
+|Boolean EQV Operation in Place: <=>
+|	 * a EQV b <=> NOT (a XOR b)
+|	 * For Sets: Gives Set of all Elements, that are either in both ore none 	
+		    
+		    parameters 	(list Parameters
+			(object Parameter "arg"
+			    type       	"Object"))
+		    result     	"Boole"
+		    concurrency 	"Sequential"
+		    opExportControl 	"Public"
+		    uid        	0)
+		(object Operation "TrueAt"
+		    attributes 	(list Attribute_Set
+			(object Attribute
+			    tool       	"Java"
+			    name       	"Abstract"
+			    value      	TRUE))
+		    quid       	"37BD362400FC"
+		    documentation 	
+|Boolean Constant for the Representation of 'true': 1	
+|	 * For Sets: Set of all Elements (only posssible for finite Sets)	
+		    
+		    result     	"Boole"
+		    concurrency 	"Sequential"
+		    opExportControl 	"Public"
+		    uid        	0)
+		(object Operation "isFalse"
+		    attributes 	(list Attribute_Set
+			(object Attribute
+			    tool       	"Java"
+			    name       	"Abstract"
+			    value      	TRUE))
+		    quid       	"37BD36240106"
+		    documentation 	
+|Returns true, when 'this' is False, or an empty Set	 
+		    
+		    result     	"boolean"
+		    concurrency 	"Sequential"
+		    opExportControl 	"Public"
+		    uid        	0)
+		(object Operation "isTrue"
+		    attributes 	(list Attribute_Set
+			(object Attribute
+			    tool       	"Java"
+			    name       	"Abstract"
+			    value      	TRUE))
+		    quid       	"37BD36240110"
+		    documentation 	
+|Returns true, when 'this' is True, or a full Set	 
+		    
+		    result     	"boolean"
+		    concurrency 	"Sequential"
+		    opExportControl 	"Public"
+		    uid        	0)
+		(object Operation "SubEq"
+		    attributes 	(list Attribute_Set
+			(object Attribute
+			    tool       	"Java"
+			    name       	"Abstract"
+			    value      	TRUE))
+		    quid       	"37BD3624011A"
+		    documentation 	
+|Determines, whether 'this' is less than or a SubSet of arg	
+		    
+		    parameters 	(list Parameters
+			(object Parameter "arg"
+			    type       	"Object"))
+		    result     	"boolean"
+		    concurrency 	"Sequential"
+		    opExportControl 	"Public"
+		    uid        	0)
+		(object Operation "SuperEq"
+		    attributes 	(list Attribute_Set
+			(object Attribute
+			    tool       	"Java"
+			    name       	"Abstract"
+			    value      	TRUE))
+		    quid       	"37BD36240142"
+		    documentation 	
+|Determines, whether 'this' is more than or a SuperSet of arg	
+		    
+		    parameters 	(list Parameters
+			(object Parameter "arg"
+			    type       	"Object"))
+		    result     	"boolean"
+		    concurrency 	"Sequential"
+		    opExportControl 	"Public"
+		    uid        	0)
+		(object Operation "Sub"
+		    attributes 	(list Attribute_Set
+			(object Attribute
+			    tool       	"Java"
+			    name       	"Abstract"
+			    value      	TRUE))
+		    quid       	"37BD36240174"
+		    documentation 	
+|Determines, whether 'this' is less than or a real SubSet of arg	
+		    
+		    parameters 	(list Parameters
+			(object Parameter "arg"
+			    type       	"Object"))
+		    result     	"boolean"
+		    concurrency 	"Sequential"
+		    opExportControl 	"Public"
+		    uid        	0)
+		(object Operation "Super"
+		    attributes 	(list Attribute_Set
+			(object Attribute
+			    tool       	"Java"
+			    name       	"Abstract"
+			    value      	TRUE))
+		    quid       	"37BD3624019C"
+		    documentation 	
+|Determines, whether 'this' is more than or a real SuperSet of arg	
+		    
+		    parameters 	(list Parameters
+			(object Parameter "arg"
+			    type       	"Object"))
+		    result     	"boolean"
+		    concurrency 	"Sequential"
+		    opExportControl 	"Public"
+		    uid        	0))
+	    module     	"Component View::Boole::Boole"
+	    quidu      	"36BB89C40025"
+	    language   	"Java")
+	(object Class "absBoole"
+	    attributes 	(list Attribute_Set
+		(object Attribute
+		    tool       	"Java"
+		    name       	"GenerateFinalizer"
+		    value      	FALSE)
+		(object Attribute
+		    tool       	"Java"
+		    name       	"GenerateStaticInitializer"
+		    value      	FALSE)
+		(object Attribute
+		    tool       	"Java"
+		    name       	"GenerateInstanceInitializer"
+		    value      	FALSE)
+		(object Attribute
+		    tool       	"Java"
+		    name       	"GenerateDefaultConstructor"
+		    value      	FALSE))
+	    quid       	"36BB89C40269"
+	    documentation 	
+|This Class defines the full Interface for a Boolean Algebra.
+| * The two basic Operations AND and OR are intertwined 
+| * in that both use the same inverse: NOT, 
+| * but it leads only to the other operation's neutral Element,
+| * instead of to this operations's neutral Element.
+| * 
+| * The Definition can be extended to Vectors of Boolean Elements,
+| * which allows for operations on large sets of Elements,
+| * in which each one acts independently (Vector, not Polynom).
+| * In a binary Representation AND and OR can be defined by MUL and ADD,
+| * but without Carry Bit.
+| * 
+| * This Class has been created for Delegation, 
+| * by having all Methods work with self, because ???	 
+	    
+	    stereotype 	"Delegator"
+	    superclasses 	(list inheritance_relationship_list
+		(object Inheritance_Relationship
+		    attributes 	(list Attribute_Set)
+		    quid       	"36BB89C4029B"
+		    supplier   	"Logical View::BaseCopy::absCopyAble"
+		    quidu      	"36BB22B9029F")
+		(object Inheritance_Relationship
+		    attributes 	(list Attribute_Set)
+		    quid       	"37BD361D0322"
+		    supplier   	"Logical View::BaseCopy::absCopyAble"
+		    quidu      	"36BB22B9029F"))
+	    realized_interfaces 	(list realize_rel_list
+		(object Realize_Relationship
+		    attributes 	(list Attribute_Set)
+		    quid       	"37BD361E014D"
+		    supplier   	"Logical View::Boole::Boole"
+		    quidu      	"36BB89C40026"))
+	    operations 	(list Operations
+		(object Operation "absBoole"
+		    attributes 	(list Attribute_Set)
+		    quid       	"37BD361E0360"
+		    documentation 	
+|Constructor to pass over 'this' for Delegation.	 
+		    
+		    parameters 	(list Parameters
+			(object Parameter "self_"
+			    type       	"Boole"))
+		    concurrency 	"Sequential"
+		    opExportControl 	"Public"
+		    uid        	0)
+		(object Operation "XOR"
+		    attributes 	(list Attribute_Set)
+		    quid       	"37BD361E03CE"
+		    documentation 	
+|Boolean XOR Operation: ^		
+|	 * a ^ b = (a & ~b) | (~a & b)
+		    
+		    parameters 	(list Parameters
+			(object Parameter "arg"
+			    type       	"Object"))
+		    result     	"Boole"
+		    concurrency 	"Sequential"
+		    opExportControl 	"Public"
+		    uid        	0)
+		(object Operation "DIFF"
+		    attributes 	(list Attribute_Set)
+		    quid       	"37BD361F0054"
+		    documentation 	
+|Boolean DIFF Operation: -
+|	 * a - b <=> (a AND NOT b) <=> NOT IMP	
+|	 * For Sets:	Difference Set
+		    
+		    parameters 	(list Parameters
+			(object Parameter "arg"
+			    type       	"Object"))
+		    result     	"Boole"
+		    concurrency 	"Sequential"
+		    opExportControl 	"Public"
+		    uid        	0)
+		(object Operation "IMP"
+		    attributes 	(list Attribute_Set)
+		    quid       	"37BD361F00C2"
+		    documentation 	
+|Boolean IMP Operation: =>
+|	 * a => b = ~a | (a & b) == ~a | b
+		    
+		    parameters 	(list Parameters
+			(object Parameter "arg"
+			    type       	"Object"))
+		    result     	"Boole"
+		    concurrency 	"Sequential"
+		    opExportControl 	"Public"
+		    uid        	0)
+		(object Operation "EQV"
+		    attributes 	(list Attribute_Set)
+		    quid       	"37BD361F0131"
+		    documentation 	
+|Boolean EQV Operation: <=>
+|	 * a <=> b = ~(a ^ b) 
+		    
+		    parameters 	(list Parameters
+			(object Parameter "arg"
+			    type       	"Object"))
+		    result     	"Boole"
+		    concurrency 	"Sequential"
+		    opExportControl 	"Public"
+		    uid        	0)
+		(object Operation "False"
+		    attributes 	(list Attribute_Set)
+		    quid       	"37BD361F019F"
+		    documentation 	
+|Boolean Constant for the Representation of 'false' = 0	
+		    
+		    result     	"Boole"
+		    concurrency 	"Sequential"
+		    opExportControl 	"Public"
+		    uid        	0)
+		(object Operation "True"
+		    attributes 	(list Attribute_Set)
+		    quid       	"37BD361F01A0"
+		    documentation 	
+|Boolean Constant for the Representation of 'true': 1		
+		    
+		    result     	"Boole"
+		    concurrency 	"Sequential"
+		    opExportControl 	"Public"
+		    uid        	0)
+		(object Operation "AND"
+		    attributes 	(list Attribute_Set)
+		    quid       	"37BD361F01A9"
+		    documentation 	
+|Boolean AND Operation: &, && for single Bit	
+		    
+		    parameters 	(list Parameters
+			(object Parameter "arg"
+			    type       	"Object"))
+		    result     	"Boole"
+		    concurrency 	"Sequential"
+		    opExportControl 	"Public"
+		    uid        	0)
+		(object Operation "OR"
+		    attributes 	(list Attribute_Set)
+		    quid       	"37BD361F0217"
+		    documentation 	
+|Boolean OR Operation: |, || for single Bit	
+		    
+		    parameters 	(list Parameters
+			(object Parameter "arg"
+			    type       	"Object"))
+		    result     	"Boole"
+		    concurrency 	"Sequential"
+		    opExportControl 	"Public"
+		    uid        	0)
+		(object Operation "NOT"
+		    attributes 	(list Attribute_Set)
+		    quid       	"37BD361F0285"
+		    documentation 	
+|Boolean NOT Operation: ~, ! for single Bit	
+		    
+		    result     	"Boole"
+		    concurrency 	"Sequential"
+		    opExportControl 	"Public"
+		    uid        	0)
+		(object Operation "XORat"
+		    attributes 	(list Attribute_Set)
+		    quid       	"37BD361F0286"
+		    documentation 	
+|Boolean XOR Operation in Place: ^=	
+|	 * a XOR b = true <=> ((a = true) AND (b = false)) OR ((a = false) AND (b = true))
+		    
+		    parameters 	(list Parameters
+			(object Parameter "arg"
+			    type       	"Object"))
+		    result     	"Boole"
+		    concurrency 	"Sequential"
+		    opExportControl 	"Public"
+		    uid        	0)
+		(object Operation "DIFFat"
+		    attributes 	(list Attribute_Set)
+		    quid       	"37BD361F02F3"
+		    documentation 	
+|Boolean DIFF Operation in Place: -=
+|	 * a - b <=> (a AND NOT b) <=> NOT IMP	
+|	 * For Sets:	Difference Set
+		    
+		    parameters 	(list Parameters
+			(object Parameter "arg"
+			    type       	"Object"))
+		    result     	"Boole"
+		    concurrency 	"Sequential"
+		    opExportControl 	"Public"
+		    uid        	0)
+		(object Operation "IMPat"
+		    attributes 	(list Attribute_Set)
+		    quid       	"37BD361F0361"
+		    documentation 	
+|Boolean IMP Operation in Place: =>
+|	 * a IMP b = true <=> (a = true) => (b = true)
+		    
+		    parameters 	(list Parameters
+			(object Parameter "arg"
+			    type       	"Object"))
+		    result     	"Boole"
+		    concurrency 	"Sequential"
+		    opExportControl 	"Public"
+		    uid        	0)
+		(object Operation "EQVat"
+		    attributes 	(list Attribute_Set)
+		    quid       	"37BD361F03C6"
+		    documentation 	
+|Boolean EQV Operation in Place: <=>
+|	 * a EQV b = true <=> (a = b)
+		    
+		    parameters 	(list Parameters
+			(object Parameter "arg"
+			    type       	"Object"))
+		    result     	"Boole"
+		    concurrency 	"Sequential"
+		    opExportControl 	"Public"
+		    uid        	0)
+		(object Operation "TrueAt"
+		    attributes 	(list Attribute_Set)
+		    quid       	"37BD3620004C"
+		    documentation 	
+|Boolean Constant for the Representation of 'true': 1	
+		    
+		    result     	"Boole"
+		    concurrency 	"Sequential"
+		    opExportControl 	"Public"
+		    uid        	0)
+		(object Operation "ANDat"
+		    attributes 	(list Attribute_Set)
+		    quid       	"37BD36200056"
+		    documentation 	
+|Boolean AND Operation in Place: &=, &&= for single Bit	
+		    
+		    parameters 	(list Parameters
+			(object Parameter "arg"
+			    type       	"Object"))
+		    result     	"Boole"
+		    concurrency 	"Sequential"
+		    opExportControl 	"Public"
+		    uid        	0)
+		(object Operation "ORat"
+		    attributes 	(list Attribute_Set)
+		    quid       	"37BD362000CE"
+		    documentation 	
+|Boolean OR Operation in Place: |=, ||= for single Bit	
+		    
+		    parameters 	(list Parameters
+			(object Parameter "arg"
+			    type       	"Object"))
+		    result     	"Boole"
+		    concurrency 	"Sequential"
+		    opExportControl 	"Public"
+		    uid        	0)
+		(object Operation "NOTat"
+		    attributes 	(list Attribute_Set)
+		    quid       	"37BD36200132"
+		    documentation 	
+|Boolean NOT Operation in Place: ~=, != for single Bit	
+		    
+		    result     	"Boole"
+		    concurrency 	"Sequential"
+		    opExportControl 	"Public"
+		    uid        	0)
+		(object Operation "FalseAt"
+		    attributes 	(list Attribute_Set)
+		    quid       	"37BD3620013C"
+		    documentation 	
+|Boolean Constant for the Representation of 'false' = 0
+|	 *  i.e. not 'true'.	 
+		    
+		    result     	"Boole"
+		    concurrency 	"Sequential"
+		    opExportControl 	"Public"
+		    uid        	0)
+		(object Operation "copyAt"
+		    attributes 	(list Attribute_Set)
+		    quid       	"37BD36200146"
+		    documentation 	
+|Complement to Copy.
+|	 * Does a 'deepCopy', i.e. also inner Components are copied.
+|	 * Copies the Value of arg into it's own Value
+|	 * and returns itself for further use.
+|	 * When overriding, use copyAt on all Components.	 
+		    
+		    parameters 	(list Parameters
+			(object Parameter "arg"
+			    type       	"Object")
+			(object Parameter "Depth"
+			    type       	"int"))
+		    result     	"copyAble"
+		    concurrency 	"Sequential"
+		    opExportControl 	"Public"
+		    uid        	0)
+		(object Operation "newInstance"
+		    attributes 	(list Attribute_Set)
+		    quid       	"37BD36200218"
+		    documentation 	
+|Creates an uninitalized new Instance of it's class.
+|	 * This can in VB also be achieved by 'CreateObjectFromInstance',
+|	 * which may be slower.
+|	 * When overriding, use newInstance on all Components.	 
+		    
+		    result     	"copyAble"
+		    concurrency 	"Sequential"
+		    opExportControl 	"Public"
+		    uid        	0)
+		(object Operation "fromStreamAt"
+		    attributes 	(list Attribute_Set)
+		    quid       	"37BD36200219"
+		    documentation 	
+|Fills this Instance with the Contents read from the String.	 
+		    
+		    parameters 	(list Parameters
+			(object Parameter "arg"
+			    type       	"java.io.StreamTokenizer"))
+		    result     	"copyAble"
+		    concurrency 	"Sequential"
+		    opExportControl 	"Public"
+		    uid        	0)
+		(object Operation "isFalse"
+		    attributes 	(list Attribute_Set)
+		    quid       	"37BD36200287"
+		    documentation 	
+|Returns true, when 'this' is False, or an empty Set	 
+		    
+		    result     	"boolean"
+		    concurrency 	"Sequential"
+		    opExportControl 	"Public"
+		    uid        	0)
+		(object Operation "isTrue"
+		    attributes 	(list Attribute_Set)
+		    quid       	"37BD36200291"
+		    documentation 	
+|Returns true, when 'this' is True, or a full Set	 
+		    
+		    result     	"boolean"
+		    concurrency 	"Sequential"
+		    opExportControl 	"Public"
+		    uid        	0)
+		(object Operation "SubEq"
+		    attributes 	(list Attribute_Set)
+		    quid       	"37BD3620029B"
+		    documentation 	
+|Determines, whether 'this' is less than or a SubSet of arg	
+		    
+		    parameters 	(list Parameters
+			(object Parameter "arg"
+			    type       	"Object"))
+		    result     	"boolean"
+		    concurrency 	"Sequential"
+		    opExportControl 	"Public"
+		    uid        	0)
+		(object Operation "Sub"
+		    attributes 	(list Attribute_Set)
+		    quid       	"37BD36200309"
+		    documentation 	
+|Determines, whether 'this' is less than or a real SubSet of arg	
+		    
+		    parameters 	(list Parameters
+			(object Parameter "arg"
+			    type       	"Object"))
+		    result     	"boolean"
+		    concurrency 	"Sequential"
+		    opExportControl 	"Public"
+		    uid        	0)
+		(object Operation "SuperEq"
+		    attributes 	(list Attribute_Set)
+		    quid       	"37BD3620036D"
+		    documentation 	
+|Determines, whether 'this' is more than or a SuperSet of arg	
+		    
+		    parameters 	(list Parameters
+			(object Parameter "arg"
+			    type       	"Object"))
+		    result     	"boolean"
+		    concurrency 	"Sequential"
+		    opExportControl 	"Public"
+		    uid        	0)
+		(object Operation "Super"
+		    attributes 	(list Attribute_Set)
+		    quid       	"37BD3621001B"
+		    documentation 	
+|Determines, whether 'this' is more than or a real SuperSet of arg	
+		    
+		    parameters 	(list Parameters
+			(object Parameter "arg"
+			    type       	"Object"))
+		    result     	"boolean"
+		    concurrency 	"Sequential"
+		    opExportControl 	"Public"
+		    uid        	0))
+	    module     	"Component View::Boole::absBoole"
+	    quidu      	"36BB89C4025F"
+	    language   	"Java")
+	(object Class "Boolean"
+	    attributes 	(list Attribute_Set
+		(object Attribute
+		    tool       	"Java"
+		    name       	"GenerateFinalizer"
+		    value      	FALSE)
+		(object Attribute
+		    tool       	"Java"
+		    name       	"GenerateStaticInitializer"
+		    value      	FALSE)
+		(object Attribute
+		    tool       	"Java"
+		    name       	"GenerateInstanceInitializer"
+		    value      	FALSE)
+		(object Attribute
+		    tool       	"Java"
+		    name       	"GenerateDefaultConstructor"
+		    value      	FALSE)
+		(object Attribute
+		    tool       	"Java"
+		    name       	"Final"
+		    value      	TRUE))
+	    quid       	"36BB89C4030A"
+	    documentation 	
+|This Class is a Realization of Boole
+| * with a single boolean Value.
+| 
+	    
+	    superclasses 	(list inheritance_relationship_list
+		(object Inheritance_Relationship
+		    attributes 	(list Attribute_Set)
+		    quid       	"37BD36250310"
+		    supplier   	"Logical View::Boole::absBoole"
+		    quidu      	"36BB89C40269"))
+	    operations 	(list Operations
+		(object Operation "Boolean"
+		    attributes 	(list Attribute_Set)
+		    quid       	"37BD3625031A"
+		    documentation 	
+|Empty Constructor for newInstance	 
+		    
+		    concurrency 	"Sequential"
+		    opExportControl 	"Public"
+		    uid        	0)
+		(object Operation "Boolean"
+		    attributes 	(list Attribute_Set)
+		    quid       	"37BD36250324"
+		    documentation 	
+|Constructor for scalar Type boolean	 
+		    
+		    parameters 	(list Parameters
+			(object Parameter "arg"
+			    type       	"boolean"))
+		    concurrency 	"Sequential"
+		    opExportControl 	"Public"
+		    uid        	0)
+		(object Operation "Boolean"
+		    attributes 	(list Attribute_Set)
+		    quid       	"37BD36250342"
+		    documentation 	
+|Constructor for Object Types	 
+		    
+		    parameters 	(list Parameters
+			(object Parameter "arg"
+			    type       	"Object"))
+		    concurrency 	"Sequential"
+		    opExportControl 	"Public"
+		    uid        	0)
+		(object Operation "convertArg"
+		    attributes 	(list Attribute_Set)
+		    quid       	"37BD36250360"
+		    documentation 	
+|Helper Routine to convert to long from any other numeric Type:
+|	 * RingLong, Number or countable.
+|	 * Uses absHalfGroup.longValue to do that.
+|	 
+		    
+		    parameters 	(list Parameters
+			(object Parameter "arg"
+			    type       	"Object"))
+		    result     	"boolean"
+		    concurrency 	"Sequential"
+		    opExportControl 	"Private"
+		    uid        	0)
+		(object Operation "TrueAt"
+		    attributes 	(list Attribute_Set)
+		    quid       	"37BD3625037E"
+		    documentation 	
+|Boolean Constant for the Representation of 'true': 1	
+		    
+		    result     	"Boole"
+		    concurrency 	"Sequential"
+		    opExportControl 	"Public"
+		    uid        	0)
+		(object Operation "ANDat"
+		    attributes 	(list Attribute_Set)
+		    quid       	"37BD36250388"
+		    documentation 	
+|Boolean AND Operation in Place: &=, &&=	
+		    
+		    parameters 	(list Parameters
+			(object Parameter "arg"
+			    type       	"Object"))
+		    result     	"Boole"
+		    concurrency 	"Sequential"
+		    opExportControl 	"Public"
+		    uid        	0)
+		(object Operation "ORat"
+		    attributes 	(list Attribute_Set)
+		    quid       	"37BD3625039C"
+		    documentation 	
+|Boolean OR Operation in Place: |=, ||=	
+		    
+		    parameters 	(list Parameters
+			(object Parameter "arg"
+			    type       	"Object"))
+		    result     	"Boole"
+		    concurrency 	"Sequential"
+		    opExportControl 	"Public"
+		    uid        	0)
+		(object Operation "NOTat"
+		    attributes 	(list Attribute_Set)
+		    quid       	"37BD362503E2"
+		    documentation 	
+|Boolean NOT Operation in Place: ~=, != for single Bit	
+		    
+		    result     	"Boole"
+		    concurrency 	"Sequential"
+		    opExportControl 	"Public"
+		    uid        	0)
+		(object Operation "FalseAt"
+		    attributes 	(list Attribute_Set)
+		    quid       	"37BD36260004"
+		    documentation 	
+|Boolean Constant for the Representation of 'false': 0	 
+		    
+		    result     	"Boole"
+		    concurrency 	"Sequential"
+		    opExportControl 	"Public"
+		    uid        	0)
+		(object Operation "shallowCopyAt"
+		    attributes 	(list Attribute_Set)
+		    quid       	"37BD36260005"
+		    documentation 	
+|Does a shallow Copy of the Argument.
+|	 * I.e. both Instances will share their inner Components.
+|	 
+		    
+		    parameters 	(list Parameters
+			(object Parameter "arg"
+			    type       	"Object"))
+		    result     	"copyAble"
+		    concurrency 	"Sequential"
+		    opExportControl 	"Public"
+		    uid        	0)
+		(object Operation "newInstance"
+		    attributes 	(list Attribute_Set)
+		    quid       	"37BD36260022"
+		    documentation 	
+|Creates an uninitalized new Instance of it's class.
+|	 * This can in VB also be achieved by 'CreateObjectFromInstance',
+|	 * which may be slower.
+|	 * When overriding, use newInstance on all Components.
+|	 
+		    
+		    result     	"copyAble"
+		    concurrency 	"Sequential"
+		    opExportControl 	"Public"
+		    uid        	0)
+		(object Operation "XORat"
+		    attributes 	(list Attribute_Set)
+		    quid       	"37BD3626002C"
+		    documentation 	
+|Boolean XOR Operation in Place: ^=	
+|	 * a XOR b = true <=> ((a = true) AND (b = false)) OR ((a = false) AND (b = true))
+		    
+		    parameters 	(list Parameters
+			(object Parameter "arg"
+			    type       	"Object"))
+		    result     	"Boole"
+		    concurrency 	"Sequential"
+		    opExportControl 	"Public"
+		    uid        	0))
+	    class_attributes 	(list class_attribute_list
+		(object ClassAttribute "Value"
+		    attributes 	(list Attribute_Set)
+		    quid       	"36BB89C40328"
+		    documentation 	
+|This is the Value of this Boolean Element	
+|	 * It is made public to allow for direct Manipulation 
+|	 * and Transfer of ByRef Values. 
+		    
+		    type       	"boolean"
+		    exportControl 	"Public"))
+	    module     	"Component View::Boole::Boolean"
+	    quidu      	"36BB89C40300"
+	    language   	"Java")
+	(object Association "$UNNAMED$0"
+	    attributes 	(list Attribute_Set)
+	    quid       	"36BB8AD0023D"
+	    roles      	(list role_list
+		(object Role "$UNNAMED$1"
+		    quid       	"36BB8AD0023E"
+		    supplier   	"Logical View::Boole::absBoole"
+		    quidu      	"36BB89C40269")
+		(object Role "self"
+		    attributes 	(list Attribute_Set
+			(object Attribute
+			    tool       	"Java"
+			    name       	"InitialValue"
+			    value      	""))
+		    quid       	"36BB8AD0023F"
+		    label      	"self"
+		    supplier   	"Logical View::Boole::Boole"
+		    quidu      	"36BB89C40026"
+		    exportControl 	"Protected"
+		    is_navigable 	TRUE))))
+    logical_presentations 	(list unit_reference_list
+	(object ClassDiagram "Boole"
+	    quid       	"36BB8ADA03C8"
+	    title      	"Boole"
+	    zoom       	100
+	    max_height 	28350
+	    max_width  	21600
+	    origin_x   	0
+	    origin_y   	0
+	    items      	(list diagram_item_list
+		(object ClassView "Class" "Logical View::Boole::intBoole" @1
+		    ShowCompartmentStereotypes 	TRUE
+		    IncludeAttribute 	TRUE
+		    IncludeOperation 	TRUE
+		    location   	(589, 217)
+		    label      	(object ItemLabel
+			Parent_View 	@1
+			location   	(461, 83)
+			fill_color 	13434879
+			nlines     	1
+			max_width  	256
+			justify    	0
+			label      	"intBoole")
+		    stereotype 	(object ItemLabel
+			Parent_View 	@1
+			location   	(461, 33)
+			fill_color 	13434879
+			anchor     	10
+			nlines     	1
+			max_width  	256
+			justify    	0
+			label      	"<<Interface>>")
+		    icon       	"Interface"
+		    icon_style 	"Label"
+		    line_color 	3342489
+		    fill_color 	13434879
+		    quidu      	"36BB89C3033A"
+		    width      	274
+		    height     	392
+		    annotation 	8
+		    autoResize 	TRUE)
+		(object ClassView "Class" "Logical View::BaseCopy::intCopyAble" @2
+		    ShowCompartmentStereotypes 	TRUE
+		    IncludeAttribute 	TRUE
+		    IncludeOperation 	TRUE
+		    location   	(217, 217)
+		    label      	(object ItemLabel
+			Parent_View 	@2
+			location   	(53, 85)
+			fill_color 	13434879
+			nlines     	1
+			max_width  	328
+			justify    	0
+			label      	"intCopyAble")
+		    stereotype 	(object ItemLabel
+			Parent_View 	@2
+			location   	(53, 35)
+			fill_color 	13434879
+			anchor     	10
+			nlines     	1
+			max_width  	328
+			justify    	0
+			label      	"<<Interface>>")
+		    icon       	"Interface"
+		    icon_style 	"Label"
+		    line_color 	3342489
+		    fill_color 	13434879
+		    quidu      	"36BB22B90136"
+		    width      	346
+		    height     	388
+		    annotation 	8
+		    autoResize 	TRUE)
+		(object ClassView "Class" "Logical View::BaseCopy::copyAble" @3
+		    ShowCompartmentStereotypes 	TRUE
+		    IncludeAttribute 	TRUE
+		    location   	(217, 589)
+		    label      	(object ItemLabel
+			Parent_View 	@3
+			location   	(89, 536)
+			fill_color 	13434879
+			nlines     	1
+			max_width  	256
+			justify    	0
+			label      	"copyAble")
+		    stereotype 	(object ItemLabel
+			Parent_View 	@3
+			location   	(89, 486)
+			fill_color 	13434879
+			anchor     	10
+			nlines     	1
+			max_width  	256
+			justify    	0
+			label      	"<<Interface>>")
+		    icon       	"Interface"
+		    icon_style 	"Label"
+		    line_color 	3342489
+		    fill_color 	13434879
+		    quidu      	"36BB22B9021D"
+		    width      	274
+		    height     	230
+		    annotation 	8
+		    autoResize 	TRUE)
+		(object InheritView "" @4
+		    stereotype 	TRUE
+		    line_color 	3342489
+		    quidu      	"37BD1BE003E2"
+		    client     	@3
+		    supplier   	@2
+		    line_style 	0)
+		(object ClassView "Class" "Logical View::Boole::Boole" @5
+		    ShowCompartmentStereotypes 	TRUE
+		    IncludeAttribute 	TRUE
+		    location   	(589, 589)
+		    label      	(object ItemLabel
+			Parent_View 	@5
+			location   	(461, 560)
+			fill_color 	13434879
+			nlines     	1
+			max_width  	256
+			justify    	0
+			label      	"Boole")
+		    stereotype 	(object ItemLabel
+			Parent_View 	@5
+			location   	(461, 510)
+			fill_color 	13434879
+			anchor     	10
+			nlines     	1
+			max_width  	256
+			justify    	0
+			label      	"<<Interface>>")
+		    icon       	"Interface"
+		    icon_style 	"Label"
+		    line_color 	3342489
+		    fill_color 	13434879
+		    quidu      	"36BB89C40026"
+		    width      	274
+		    height     	182
+		    annotation 	8
+		    autoResize 	TRUE)
+		(object ClassView "Class" "Logical View::Boole::absBoole" @6
+		    ShowCompartmentStereotypes 	TRUE
+		    IncludeAttribute 	TRUE
+		    location   	(589, 868)
+		    label      	(object ItemLabel
+			Parent_View 	@6
+			location   	(467, 855)
+			fill_color 	13434879
+			nlines     	1
+			max_width  	244
+			justify    	0
+			label      	"absBoole")
+		    stereotype 	(object ItemLabel
+			Parent_View 	@6
+			location   	(467, 805)
+			fill_color 	13434879
+			anchor     	10
+			nlines     	1
+			max_width  	244
+			justify    	0
+			label      	"<<Delegator>>")
+		    icon_style 	"Icon"
+		    line_color 	3342489
+		    fill_color 	13434879
+		    quidu      	"36BB89C40269"
+		    width      	262
+		    height     	150
+		    annotation 	8
+		    autoResize 	TRUE)
+		(object RealizeView "" @7
+		    stereotype 	TRUE
+		    line_color 	3342489
+		    quidu      	"37BD361E014D"
+		    client     	@6
+		    supplier   	@5
+		    line_style 	0)
+		(object AssociationViewNew "$UNNAMED$0" @8
+		    location   	(736, 767)
+		    stereotype 	TRUE
+		    line_color 	3342489
+		    quidu      	"36BB8AD0023D"
+		    roleview_list 	(list RoleViews
+			(object RoleView "self" @9
+			    Parent_View 	@8
+			    location   	(209, 54)
+			    label      	(object SegLabel @10
+				Parent_View 	@9
+				location   	(661, 781)
+				anchor     	1
+				anchor_loc 	1
+				nlines     	1
+				max_width  	84
+				justify    	0
+				label      	"#self"
+				pctDist    	0.343777
+				height     	67
+				orientation 	0)
+			    stereotype 	TRUE
+			    line_color 	3342489
+			    quidu      	"36BB8AD0023F"
+			    client     	@8
+			    supplier   	@5
+			    line_style 	0)
+			(object RoleView "$UNNAMED$1" @11
+			    Parent_View 	@8
+			    location   	(209, 54)
+			    label      	(object SegLabel @12
+				Parent_View 	@11
+				location   	(684, 752)
+				hidden     	TRUE
+				anchor     	1
+				anchor_loc 	1
+				nlines     	1
+				max_width  	450
+				justify    	0
+				label      	""
+				pctDist    	0.800000
+				height     	42
+				orientation 	1)
+			    stereotype 	TRUE
+			    line_color 	3342489
+			    quidu      	"36BB8AD0023E"
+			    client     	@8
+			    supplier   	@6
+			    line_style 	0)))
+		(object InheritView "" @13
+		    stereotype 	TRUE
+		    line_color 	3342489
+		    quidu      	"37BD362300E6"
+		    client     	@5
+		    supplier   	@1
+		    line_style 	0)
+		(object InheritView "" @14
+		    stereotype 	TRUE
+		    line_color 	3342489
+		    quidu      	"37BD362302DB"
+		    client     	@5
+		    supplier   	@3
+		    line_style 	0)
+		(object ClassView "Class" "Logical View::Boole::Boolean" @15
+		    ShowCompartmentStereotypes 	TRUE
+		    IncludeAttribute 	TRUE
+		    location   	(589, 1116)
+		    label      	(object ItemLabel
+			Parent_View 	@15
+			location   	(422, 1035)
+			fill_color 	13434879
+			nlines     	1
+			max_width  	334
+			justify    	0
+			label      	"Boolean")
+		    icon_style 	"Icon"
+		    line_color 	3342489
+		    fill_color 	13434879
+		    quidu      	"36BB89C4030A"
+		    width      	352
+		    height     	186
+		    annotation 	8
+		    autoResize 	TRUE)
+		(object InheritView "" @16
+		    stereotype 	TRUE
+		    line_color 	3342489
+		    quidu      	"37BD36250310"
+		    client     	@15
+		    supplier   	@6
+		    line_style 	0)
+		(object ClassView "Class" "Logical View::BaseCopy::absCopyAble" @17
+		    ShowCompartmentStereotypes 	TRUE
+		    IncludeAttribute 	TRUE
+		    location   	(186, 868)
+		    font       	(object Font
+			italics    	TRUE)
+		    label      	(object ItemLabel
+			Parent_View 	@17
+			location   	(51, 793)
+			fill_color 	13434879
+			nlines     	1
+			max_width  	270
+			justify    	0
+			label      	"absCopyAble")
+		    icon_style 	"Icon"
+		    line_color 	3342489
+		    fill_color 	13434879
+		    quidu      	"36BB22B9029F"
+		    width      	288
+		    height     	174
+		    annotation 	8
+		    autoResize 	TRUE)
+		(object AssociationViewNew "" @18
+		    location   	(184, 1025)
+		    stereotype 	TRUE
+		    line_color 	3342489
+		    quidu      	"37BD1B6400B9"
+		    roleview_list 	(list RoleViews
+			(object RoleView "" @19
+			    Parent_View 	@18
+			    location   	(-2, 157)
+			    label      	(object SegLabel @20
+				Parent_View 	@19
+				location   	(21, 993)
+				hidden     	TRUE
+				anchor     	1
+				anchor_loc 	1
+				nlines     	1
+				max_width  	450
+				justify    	0
+				label      	""
+				pctDist    	0.800000
+				height     	42
+				orientation 	0)
+			    stereotype 	TRUE
+			    line_color 	3342489
+			    quidu      	"37BD1B6400BA"
+			    client     	@18
+			    supplier   	@17
+			    vertices   	(list Points
+				(184, 1025)
+				(62, 1025)
+				(62, 955))
+			    line_style 	3
+			    origin_attachment 	(184, 1025)
+			    terminal_attachment 	(62, 955))
+			(object RoleView "testInstance" @21
+			    Parent_View 	@18
+			    location   	(-2, 157)
+			    label      	(object SegLabel @22
+				Parent_View 	@21
+				location   	(188, 1007)
+				anchor     	1
+				anchor_loc 	1
+				nlines     	1
+				max_width  	276
+				justify    	0
+				label      	"+$testInstance"
+				pctDist    	0.026042
+				height     	19
+				orientation 	0)
+			    stereotype 	TRUE
+			    line_color 	3342489
+			    quidu      	"37BD1B6400BB"
+			    client     	@18
+			    supplier   	@17
+			    vertices   	(list Points
+				(184, 1025)
+				(306, 1025)
+				(306, 955))
+			    line_style 	3
+			    origin_attachment 	(184, 1025)
+			    terminal_attachment 	(306, 955))))
+		(object InheritView "" @23
+		    stereotype 	TRUE
+		    line_color 	3342489
+		    quidu      	"37BD361D0322"
+		    client     	@6
+		    supplier   	@17
+		    line_style 	0)
+		(object RealizeView "" @24
+		    stereotype 	TRUE
+		    line_color 	3342489
+		    quidu      	"37BD1B64006A"
+		    client     	@17
+		    supplier   	@3
+		    line_style 	0)))))

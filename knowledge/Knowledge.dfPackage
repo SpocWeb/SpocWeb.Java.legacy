@@ -1,0 +1,204 @@
+package id3rrn5c9fodqegc9fq5d49;
+
+/**
+@version 2.0
+@physicalPackage
+@__modelType diagram 
+*/
+class diagram {
+/**
+@shapeType DependencyLink
+@__modelType link
+@__ref <oiref:design#Class#id457m4c9fodqegc9fq5a4l.diagram:oiref><oihard>
+@automatic 
+*/
+class link {
+}/**
+@__ref <oiref:java#Class#knowledge.CachedValue:oiref><oihard>
+@__modelType reference 
+*/
+class reference {
+}/**
+@__ref <oiref:java#Class#knowledge.DbCachedFactory:oiref><oihard>
+@__modelType reference 
+*/
+class reference97 {
+}/**
+@__ref <oiref:java#Class#knowledge.MetaType:oiref><oihard>
+@__modelType reference 
+*/
+class reference98 {
+}/**
+@__ref <oiref:java#Class#knowledge.Status:oiref><oihard>
+@__modelType reference 
+*/
+class reference99 {
+}/**
+@__ref <oiref:java#Class#knowledge.Relation:oiref><oihard>
+@__modelType reference 
+*/
+class reference100 {
+}/**
+@__ref <oiref:java#Class#knowledge.EnumAttribute:oiref><oihard>
+@__modelType reference 
+*/
+class reference101 {
+}/**
+@__ref <oiref:java#Class#knowledge.AttributeObject:oiref><oihard>
+@__modelType reference 
+*/
+class reference102 {
+}/**
+@__ref <oiref:java#Class#knowledge.Objekt:oiref><oihard>
+@__modelType reference 
+*/
+class reference103 {
+}/**
+@__ref <oiref:java#Class#knowledge.IDirtyFlag:oiref><oihard>
+@__modelType reference 
+*/
+class reference104 {
+}/**
+@__ref <oiref:java#Class#knowledge.IPersistAble:oiref><oihard>
+@__modelType reference 
+*/
+class reference105 {
+}/**
+@__ref <oiref:java#Class#knowledge.Type:oiref><oihard>
+@__modelType reference 
+*/
+class reference106 {
+}/**
+@__ref <oiref:java#Class#knowledge.TimeAttribute:oiref><oihard>
+@__modelType reference 
+*/
+class reference107 {
+}/**
+@__ref <oiref:java#Class#knowledge.IAttribute:oiref><oihard>
+@__modelType reference 
+*/
+class reference108 {
+}/**
+@__ref <oiref:java#Class#knowledge.IdKey:oiref><oihard>
+@__modelType reference 
+*/
+class reference109 {
+}/**
+@__ref <oiref:java#Class#knowledge.IReadyFlag:oiref><oihard>
+@__modelType reference 
+*/
+class reference110 {
+}/**
+@__ref <oiref:java#Class#knowledge.DBObjectFactory:oiref><oihard>
+@__modelType reference 
+*/
+class reference111 {
+}/**
+@__ref <oiref:java#Class#knowledge.ObjectType:oiref><oihard>
+@__modelType reference 
+*/
+class reference112 {
+}/**
+@__ref <oiref:java#Class#knowledge.IRelation:oiref><oihard>
+@__modelType reference 
+*/
+class reference113 {
+}/**
+@__ref <oiref:java#Class#knowledge.IDescriptor:oiref><oihard>
+@__modelType reference 
+*/
+class reference114 {
+}/**
+@__ref <oiref:java#Class#knowledge.StringAttribute:oiref><oihard>
+@__modelType reference 
+*/
+class reference115 {
+}/**
+@__ref <oiref:java#Class#knowledge.IPrimaryKey:oiref><oihard>
+@__modelType reference 
+*/
+class reference116 {
+}/**
+@__ref <oiref:java#Class#knowledge.MetricAttribute:oiref><oihard>
+@__modelType reference 
+*/
+class reference117 {
+}/**
+@__ref <oiref:java#Class#knowledge.PersistAble:oiref><oihard>
+@__modelType reference 
+*/
+class reference118 {
+}/**
+@__ref <oiref:java#Class#knowledge.IObject:oiref><oihard>
+@__modelType reference 
+*/
+class reference119 {
+}/**
+@__ref <oiref:java#Class#knowledge.DirtyFlag:oiref><oihard>
+@__modelType reference 
+*/
+class reference120 {
+}/**
+@__ref <oiref:java#Class#knowledge.BasicAttribute:oiref><oihard>
+@__modelType reference 
+*/
+class reference121 {
+}}/**
+@__tags
+@shapeType ClassDiagram 
+*/
+class __tags {
+}/**
+@__options 
+*/
+class __options {
+}/**
+@__positions <oigroup:<oiref:java#Extends#Knowledge.IdKey#Knowledge.DirtyFlag:oiref>=555,280,555,140:oigroup>
+<oigroup:MemberLink#<oiref:java#Member#Knowledge.DBObjectFactory#FactoryTime:oiref>=127,325,127,375,217,375,217,285,167,285:oigroup>
+<oigroup:MemberLink#<oiref:java#Member#Knowledge.AttributeObject#Subject:oiref>=871,1502,871,1338:oigroup>
+<oigroup:MemberLink#<oiref:java#Member#Knowledge.ObjectType#Type:oiref>=580,1263,600,1263:oigroup>
+<oigroup:<oiref:java#Implements#Knowledge.Status#Knowledge.PersistAble:oiref>=430,770,430,246:oigroup>
+<oigroup:<oiref:java#Implements#Knowledge.Status#Knowledge.IDescriptor:oiref>=400,850,386,850:oigroup>
+<oigroup:<oiref:java#Extends#Knowledge.EnumAttribute#Knowledge.BasicAttribute:oiref>=990,649,907,649:oigroup>
+<oigroup:MemberLink#<oiref:java#Member#Knowledge.DBObjectFactory#FactoryObject:oiref>=50,325,50,521,294,521,294,139,167,139:oigroup>
+<oigroup:<oiref:java#Implements#Knowledge.IdKey#Knowledge.IPrimaryKey:oiref>=571,280,725,168:oigroup>
+<oigroup:<oiref:java#Implements#Knowledge.BasicAttribute#Knowledge.IObject:oiref>=888,230,888,207:oigroup>
+<oigroup:<oiref:java#Implements#Knowledge.BasicAttribute#Knowledge.IPrimaryKey:oiref>=757,230,757,168:oigroup>
+<oigroup:<oiref:java#Extends#Knowledge.MetricAttribute#Knowledge.BasicAttribute:oiref>=990,466,907,466:oigroup>
+<oigroup:<oiref:java#Implements#Knowledge.Relation#Knowledge.IRelation:oiref>=830,1470,980,1470:oigroup>
+<oigroup:<oiref:java#Extends#Knowledge.Relation#Knowledge.AttributeObject:oiref>=830,1584,850,1584:oigroup>
+<oigroup:<oiref:java#Extends#Knowledge.IRelation#Knowledge.IAttribute:oiref>=1015,1362,1015,1090:oigroup>
+<oigroup:MemberLink#<oiref:java#Member#Knowledge.DBObjectFactory#FactoryMetaType:oiref>=40,325,40,552,304,552,304,108,167,108:oigroup>
+<oigroup:MemberLink#<oiref:java#Member#Knowledge.BasicAttribute#Subject:oiref>=838,804,838,860:oigroup>
+<oigroup:MemberLink#<oiref:java#Member#Knowledge.Type#MetaType:oiref>=600,1368,472,1432:oigroup>
+<oigroup:<oiref:java#Extends#Knowledge.AttributeObject#Knowledge.Objekt:oiref>=892,1502,892,1338:oigroup>
+<oigroup:<oiref:java#Implements#Knowledge.IdKey#Knowledge.PersistAble:oiref>=461,280,461,246:oigroup>
+<oigroup:<oiref:java#Extends#Knowledge.ObjectType#Knowledge.Status:oiref>=486,1200,486,1168:oigroup>
+<oigroup:MemberLink#<oiref:java#Member#Knowledge.DBObjectFactory#FactoryStatus:oiref>=30,325,30,583,314,583,314,77,167,77:oigroup>
+<oigroup:<oiref:java#Extends#Knowledge.IAttribute#Knowledge.IObject:oiref>=957,960,957,207:oigroup>
+<oigroup:<oiref:java#Implements#Knowledge.BasicAttribute#Knowledge.PersistAble:oiref>=720,240,522,240:oigroup>
+<oigroup:<oiref:java#Extends#Knowledge.MetaType#Knowledge.Status:oiref>=424,1402,424,1168:oigroup>
+<oigroup:<oiref:java#Extends#Knowledge.StringAttribute#Knowledge.BasicAttribute:oiref>=990,304,907,304:oigroup>
+<oigroup:<oiref:java#Implements#Knowledge.AttributeObject#Knowledge.IAttribute:oiref>=950,1502,950,1090:oigroup>
+<oigroup:MemberLink#<oiref:java#Member#Knowledge.DBObjectFactory#FactoryEnum:oiref>=87,325,87,415,257,415,257,245,167,245:oigroup>
+<oigroup:<oiref:java#Extends#Knowledge.TimeAttribute#Knowledge.BasicAttribute:oiref>=990,792,907,792:oigroup>
+<oigroup:<oiref:java#Extends#Knowledge.Objekt#Knowledge.Status:oiref>=770,937,587,937:oigroup>
+<oigroup:MemberLink#<oiref:java#Member#Knowledge.DBObjectFactory#FactoryString:oiref>=17,325,17,479,327,479,327,181,167,181:oigroup>
+<oigroup:MemberLink#<oiref:java#Member#Knowledge.DBObjectFactory#FactoryType:oiref>=60,325,60,490,284,490,284,170,167,170:oigroup>
+<oigroup:MemberLink#<oiref:java#Member#Knowledge.DBObjectFactory#FactoryMetric:oiref>=47,325,47,455,297,455,297,205,167,205:oigroup>
+<oigroup:MemberLink#<oiref:java#Member#Knowledge.ObjectType#Status:oiref>=533,1200,533,1168:oigroup>
+<oigroup:MemberLink#<oiref:java#Member#Knowledge.BasicAttribute#Status:oiref>=720,787,587,787:oigroup>
+<oigroup:MemberLink#<oiref:java#Member#Knowledge.BasicAttribute#Type:oiref>=730,804,730,1080:oigroup>
+<oigroup:<oiref:java#Extends#Knowledge.Type#Knowledge.Relation:oiref>=736,1398,736,1460:oigroup>
+<oigroup:MemberLink#<oiref:java#Member#Knowledge.Objekt#Type:oiref>=770,1194,752,1194:oigroup>
+<oigroup:<oiref:java#Extends#Knowledge.DbCachedFactory#Knowledge.DBObjectFactory:oiref>=100,620,100,325:oigroup>
+<oigroup:MemberLink#<oiref:java#Member#Knowledge.Relation#Object:oiref>=788,1460,788,1338:oigroup>
+<oigroup:MemberLink#<oiref:java#Member#Knowledge.Objekt#Status:oiref>=770,1014,587,1014:oigroup>
+<oigroup:MemberLink#<oiref:java#Member#Knowledge.DBObjectFactory#Factory:oiref>=167,123,350,123:oigroup>
+<oigroup:MemberLink#<oiref:java#Member#Knowledge.ObjectType#MetaTypeID:oiref>=456,1326,456,1402:oigroup>
+<oigroup:<oiref:java#Extends#Knowledge.Status#Knowledge.IdKey:oiref>=493,770,493,726:oigroup>
+<oigroup:<oiref:java#Implements#Knowledge.Objekt#Knowledge.IObject:oiref>=930,860,930,207:oigroup>
+<oigroup:MemberLink#<oiref:java#Member#Knowledge.Type#Type2:oiref>=712,1398,712,1448,802,1448,802,1358,752,1358:oigroup>
+*/
+class __positions {
+}
