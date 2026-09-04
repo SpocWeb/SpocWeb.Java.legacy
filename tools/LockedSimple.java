@@ -1,17 +1,37 @@
 package tools;
 
 /**
-  * Title: LockedSimple<p>
-  * Description:
-  * Example for a simple Strategy for synchronized Access:
+  * Counting, non-blocking Read/Write Lock that trusts its Clients to unlock exactly once.
+  *
+  * <p>Example for a simple Strategy for synchronized Access:
   * asynchronous non-blocking Locks.
   * These work similar to Semaphores, i.e. they rely on correct Client Use .
   * Without Locking it is not guaranteed that the Number of Unlocks
   * matches the Number of Locks without noticing.
   * This is especially relevant for Read Locking which is designed for Multiple Use.
   *
-  * An Improvement can only happen when this Object gives out individual Lock Tokens
-  * that are being identified on Release!
+  * <p>An Improvement can only happen when this Object gives out individual Lock Tokens
+  * that are being identified on Release! {@link LockImproved} is exactly that Improvement.
+  *
+  * <h2>Invariants</h2>
+  *
+  * <p>The Write Flag and the Read Counter are mutually exclusive: a Write Lock is only
+  * granted while the Read Counter is zero, and a Read Lock only while the Write Flag is
+  * clear. Because Locks carry no Identity, the Counter is only correct as long as every
+  * Client releases exactly what it took; an extra Release is detected only when it drives
+  * the Counter negative.
+  *
+  * <h2>Collaborators</h2>
+  *
+  * <table>
+  * <caption>Types this Class works with</caption>
+  * <tr><th>Type</th><th>Relationship</th></tr>
+  * <tr><td>{@link LockImproved}</td>
+  *     <td>The token-based Successor that fixes the Identity Weakness described above.</td></tr>
+  * <tr><td>{@link LockAble}</td>
+  *     <td>Deliberately NOT implemented: the commented-out Declaration records that this
+  *         Class supports a simpler Model without Lock IDs.</td></tr>
+  * </table>
   *
   * Known SubClasses:
   *
@@ -25,7 +45,7 @@ package tools;
   * <!-- docstate
   * pass: 2
   * mtime: 2026-09-04T16:35:47Z
-  * digest: b087577b23536c6a3e242fe9216dfe5576f91ea0437a27340287b6aa8e74d4d4
+  * digest: bf5ce80fb5da03de8d39f8cf92cc492fb76fbc322829c912e7a41e679ecb871c
   * stale: false
   * -->
   */
@@ -55,13 +75,19 @@ public class LockedSimple
 /// #region : Accessor Methods (getXXX/isXXX/setXXX)
 ////////////////////////////////////////////////////////////////////////////////
 
-	/** @return the Number of Read Locks applied on this Object.      */
+	/** Reports how many Read Locks are currently held.
+     *
+     * @return the Number of Read Locks applied on this Object.
+     */
 	public int getNumReadLocks() { return numReadLocks; }
 
 	/**
-     * Tries to apply an additional Read (un-)Lock on this Object.
+     * Takes or returns one Read Lock, refusing to take one while the Write Lock is held.
      * This Method does not block.
+     *
+     * @param lock {@code true} to take a Read Lock, {@code false} to return one
      * @return true when the lock succeeded.
+     * @throws IllegalStateException on a Release that drives the Read Counter negative
      */
 	public synchronized boolean lockRead(boolean lock) {
 		if (lock) {
@@ -74,9 +100,13 @@ public class LockedSimple
 		return true; }
 
 	/**
-     * Tries to apply a Write (un-)Lock on this Object.
+     * Takes or returns the exclusive Write Lock, refusing it while any Read Lock is held.
      * This Method does not block.
+     *
+     * @param lock {@code true} to take the Write Lock, {@code false} to release it
      * @return true when the lock succeeded.
+     * @throws IllegalStateException on a Release while the Write Lock is not held, or
+     *         while a Read Lock exists
      */
 	public synchronized boolean lockWrite(boolean lock) {
 		if (lock) {
@@ -92,7 +122,7 @@ public class LockedSimple
 /// #region : Constructors, calling each other using this()/super()
 ////////////////////////////////////////////////////////////////////////////////
 
-	/** Empty Constructor	 */
+	/** Creates an unlocked Instance; protected so only Subclasses expose Locking. */
 	protected LockedSimple() { }
 
 ////////////////////////////////////////////////////////////////////////////////
@@ -100,14 +130,24 @@ public class LockedSimple
 ////////////////////////////////////////////////////////////////////////////////
 
 	/**
-     * Tries to promote a read Lock to a write Lock or vice versa (demote)
+     * Converts a held Read Lock into the Write Lock, or the Write Lock back into a Read Lock.
+     *
+     * <p>Tries to promote a read Lock to a write Lock or vice versa (demote).
      * No other Object can acquire the Lock during this Operation,
-     * because it is synchronized.
+     * because it is synchronized. Whichever Lock was released is re-acquired if the second
+     * Step fails, so a failed Conversion is not observable.
+     *
      * @param promote Flag whether to promote or to demote.
      * @return true iff the Promotion / Demotion worked.
      * Otherwise the Lock Status is left unchanged!
      */
 	public synchronized boolean lockRead2write(boolean promote) {
+		// TODO: LOGIC: this Guard makes the whole Method a no-op that always returns false.
+		// Promotion needs exactly ONE Read Lock (the Caller's own), but `> 1` only enters
+		// when at least two exist - and then lockWrite(true) is refused because a Read Lock
+		// remains. Demotion needs the Write Lock held, which implies numReadLocks == 0, so
+		// the else Branch is unreachable. The Conditions should be numReadLocks == 1 for
+		// promote and numReadLocks == 0 for demote.
 		if (numReadLocks > 1) { //should not happen for demoting
 			if (promote) { //for promoting this also prevents it.
 				if (lockRead (false)) { //free the Read Lock
@@ -138,7 +178,10 @@ public class LockedSimple
 /// #region : static Testing and main() Methods
 ////////////////////////////////////////////////////////////////////////////////
 
-	/** Tests all Methods of this Class	 */
+	/** Placeholder Self-Test that currently only announces itself.
+	 *
+	 * @param args ignored; present so the Method matches the main() Signature
+	 */
 	public static void testIt(String[] args) { //throws java.io.IOException {
 		System.out.println("Testing " + LockedSimple.class.getName());
 	}
@@ -154,29 +197,42 @@ public class LockedSimple
 
 
 /**
- * Helper Class for testing Class ThreadLock
+ * Holds a {@link LockedSimple}'s Write Lock for five Seconds from its own Thread.
+ *
+ * <p>Helper Class for testing Class ThreadLock
  * Opened up in its own Thread to demonstrate concurrent Access.
+ * Each Step is printed, so running two Instances against one Lock shows on the Console
+ * whether the second one was actually kept out.
+ *
  * <!-- docstate
  * pass: 2
  * mtime: 2026-09-04T16:35:47Z
- * digest: 05b55d35d6baa1d7f03e96a7151c3cc608124f216be1a49c2e3d8f4ebc95f7d3
+ * digest: b1e7b5030c1e9c3203fa2a17aa606851c34b8eb7a145ede462342e80554c06f6
  * stale: false
  * -->
  */
 class LockTester
 	implements Runnable {
 
+	/** The Lock this Tester acquires and releases. */
 	private LockedSimple Locker;
 
 	/** Prepares for testing the given ThreadLock
 	 * on the given Ressource.
+	 *
 	 * @param Locker_ The Lock Manager to test
-	 * @param Item_ The Item to lock
 	 */
 	public LockTester(LockedSimple Locker_) {
 		this.Locker = Locker_; }
 
-	/** Method of the Runnable Interface	 */
+	/** Takes the Write Lock, holds it for five Seconds, then releases it.
+	 *
+	 * <p>Method of the Runnable Interface.
+	 */
+	// TODO: LOGIC: lockWrite(true)'s Result is discarded, so a refused Lock is treated as
+	// acquired: the Thread prints "Lock acquired", sleeps, and then calls lockWrite(false),
+	// which releases a Lock it never held - or throws IllegalStateException. That makes the
+	// Test report Success in exactly the contended Case it exists to exercise.
 	public void run() {
 		System.out.println("Acquiring lock on " + Locker);
 		Locker.lockWrite(true); //local Lock

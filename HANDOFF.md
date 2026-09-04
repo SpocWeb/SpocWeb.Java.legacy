@@ -8,8 +8,8 @@ untouched and is its own multi-session effort.
 | Scope | Pass 1+2 | Pass 3 | Notes |
 |---|---|---|---|
 | `tools/mementos/` | done | done | 2 interfaces |
-| `tools/threads/` | done | done | 1 class, 2 defects flagged |
-| `tools/` (root of folder) | in progress | generated, narrative pending | 16 types across 13 files |
+| `tools/threads/` | done | done | 1 class, 2 defects flagged; no diagram (single type) |
+| `tools/` (root of folder) | done | done | 16 types across 13 files |
 | everything else | not started | not started | see Claims below |
 
 Tooling: `D:/_/_AI/skills/Java.ReadMeGenerator/ReadMeGenerator/target/readmegenerator.jar`,
@@ -23,7 +23,7 @@ immediately, and commit at each folder boundary.
 
 | Folder | Files | Claimed by | Status |
 |---|--:|---|---|
-| `tools/` | 16 | main | in progress |
+| `tools/` | 16 | main | done |
 | `streamIO/` | 674 | — | not started |
 | `function/` | 204 | — | not started |
 | `graphic/` | 131 | — | not started |
@@ -68,6 +68,22 @@ Flagged, never fixed — fixing is a separate, explicitly authorized task. See t
 | tools/ErrorHandler.java | ErrorHandler |  | 82 | `BeforeOp` and `AfterOp` are never assigned: no constructor parameter and no setter reaches either field, so the documented "bounding by two Operations" feature is unreachable and both null checks in `call()` are always false. | Medium |
 | tools/FilterCallTransAction.java | FilterCallTransAction |  | 51 | `BeforeOp` and `AfterOp` are never assigned, so the documented (un-)Locking bracket around the transaction is unreachable - the same dead-feature defect as in `ErrorHandler`. | Medium |
 | tools/FilterCallTransAction.java | FilterCallTransAction | commitTrans() | 82 | The comment claims the commit "is atomic even if it is not synchronized, because only a single Object has to be swapped", but two non-volatile fields are written unsynchronized: a concurrent reader can observe the new `Subject` while `Subst` still aliases it, or see either write out of order. Safe single-threaded only, which undercuts the locking use case the class documents. | Medium |
+| tools/LockImproved.java | LockImproved |  | 65 | `writeLock` is default-initialised to 0 while "free" is encoded as `LOCK_NONE` (-1), so a freshly constructed instance looks permanently write-locked by client 0. Both `getWriteLock(int)` and `getRead_Lock(int)` take their early exit and return `LOCK_NONE` forever: no lock of either kind can ever be acquired. | High |
+| tools/LockImproved.java | LockImproved | lockRead2write(boolean, int) | 228 | The rollback guards are unreachable for a wrong LockID: `setRead_Lock`/`setWriteLock` throw `IllegalArgumentException` instead of returning `LOCK_NONE`, so the caller gets an exception rather than the documented `LOCK_NONE`, and the released lock is never restored on that path. | Medium |
+| tools/LockedSimple.java | LockedSimple | lockRead2write(boolean) | 145 | The `numReadLocks > 1` guard makes the whole method a no-op returning false. Promotion needs exactly one read lock (the caller's own), but the guard only enters with at least two - and then `lockWrite(true)` is refused because a read lock remains. Demotion needs the write lock held, which implies zero read locks, so that branch is unreachable. | High |
+| tools/LockedSimple.java | LockTester | run() | 232 | `lockWrite(true)`'s result is discarded, so a refused lock is treated as acquired: the thread prints "Lock acquired", sleeps, then calls `lockWrite(false)`, releasing a lock it never held or throwing. The test reports success in exactly the contended case it exists to exercise. | Medium |
+| tools/LockManager.java | LockManager | lock(Object) | 166 | The method is `synchronized` on `this` and then calls `super.lock(item)`, which blocks on the item's own monitor. The blocking thread keeps this object's monitor for the whole wait, so no other thread can enter `lock`, `unlock` or the global `lock()` to release it: one thread waiting for an item deadlocks every other client of the manager. | High |
+| tools/LockManager.java | LockManager | lock() | 217 | `if` around `wait()` instead of `while`. The comment argues this is safe because no `notifyAll()` is used, but `unlock()` calls `super.unlock()` to "notify ALL of the other waiting Threads", and the JLS permits spurious wakeups regardless - so `wait()` can return while no-resource-locked is still false and the thread proceeds as if it held the global lock. | High |
+| tools/LockManager.java | LockManager | unlock() | 250 | The counter is decremented before anything checks that the global lock is actually held; the comment says so and no check follows. An unmatched `unlock()` drives `count` to -2, releases waiters that hold nothing, and is only noticed by the last branch, which cannot run because the earlier `count >= 0` branch already consumed the common case. | Medium |
+| tools/LockedServer.java | LockedServer | getLock(boolean) | 99 | Stub returning -1 unconditionally: the class satisfies `LockAble` at compile time while silently refusing every lock request at runtime. A client following the contract sees `LOCK_NONE` and cannot tell an unimplemented server from a genuinely contended one. | High |
+| tools/LockedServer.java | LockedServer | setLock(boolean, int) | 115 | Stub returning -1 unconditionally - the release counterpart of the defect above. Nothing is released and no caller can distinguish that from a bad LockID. | High |
+| tools/LockedServer.java | LockedServer | setLock(byte, int) | 158 | The `switch` contains no statements at all, only fall-through comments describing what each level was meant to do, so no level change ever happens and `LockLevel` is read and discarded. | Medium |
+| tools/LockedServer.java | LockedServer | setLocked(Object, boolean) | 187 | The entire body is commented out, so the method silently does nothing. Callers believing they hold a lock proceed straight into the critical section. | High |
+| tools/LockedServer.java | LockedServer | lockWrite() | 213 | `if` around `wait()` instead of `while`. A spurious wakeup, or a `notify()` aimed at another waiter, lets the thread fall through and set `writeLocked = true` while another thread still holds the lock, so two writers run at once. | High |
+| tools/TransactFTP.java | TransactFTP | sendFile(File, long) | 122 | The timeout comparison is inverted: `timeout >= System.currentTimeMillis()` reports a timeout while the deadline is still in the future, so any call that finds the flag file present returns false on the first iteration and never waits at all. | High |
+| tools/TransactFTP.java | TransactFTP | sendFile(File, long) | 133 | `renameTo`'s boolean result is discarded. On a failed rename (cross-volume, permissions, destination locked) the payload stays where it was, yet the flag file is raised anyway, so the receiver is told a transfer completed and then reads a stale or absent data file. | High |
+| tools/TransactFTP.java | TransactFTP | receiveFile(File, long) | 161 | The same inverted timeout comparison as in `sendFile`: a receiver that finds no payload returns false immediately instead of waiting for one. | High |
+| tools/WorkerThread.java | WorkerThread | startWithTimeOut(long) | 110 | `Thread.stop()` throws `ThreadDeath` at an arbitrary point in the worker, so it can leave a held monitor released mid-update and the shared `Params` array half written - the caller then reads a torn result rather than seeing a failure. It is also removed from the JDK: on 20 and later this line throws `UnsupportedOperationException`, making the timeout path fail outright. | High |
 
 ## Tool defects found and fixed during the pilot
 
@@ -83,9 +99,27 @@ live in the skill's `cli-reference.md` and in `ProgramTests.java`, one named tes
 | `tools/mementos/Originator.java`'s block became `<!-- docstate* pass: 2` | the block pattern consumed the newline after its marker on rewrite |
 | `tools/threads/TimeOuter.java`'s documented constructor reported undocumented | a `// TODO: LOGIC:` marker between Javadoc and declaration detached the Javadoc |
 
+## Verification of the pilot
+
+Run from the repository root against `tools/`, after the last documentation edit:
+
+- `list-todo --recurse` - no rows, so every type and member carries a summary.
+- `check-stale --recurse` - 2 rows, 2 rows, 0 rows, 0 rows over four runs: the expected
+  two-run stale-to-fresh convergence, silent thereafter.
+- `list-stale --recurse` - no rows.
+- `update-readme tools --recurse --subsystems --scaffold-opening` - reports `unchanged`,
+  and the hand-written opening narrative, `## Architecture` and `## Entry Points` sections
+  all survive the re-run untouched.
+- Every `.java` file under `tools/` is still CRLF.
+
 ## Next Action
 
-Finish Pass 1+2 for the 13 remaining files directly in `tools/`, re-run
-`update-readme tools --recurse --subsystems`, then write the `## Architecture`,
-`## Entry Points` and opening narrative for `tools/ReadMe.md` and its two sub-folders.
-Then decide with the user whether to continue into `streamIO/` or build Milestone B first.
+The pilot folder is finished. Next is **Milestone B of the generator itself** - the tags
+pipeline (Pass 4-7): `extract-tags`, `enrich-raw-tags`, `split-fill-chunks`,
+`merge-fill-chunks`, `build-vocabulary`, `compact-vocabulary`, `apply-tags`, `build-index`,
+`search`, `suggest-tags`. Accepted tags are written back into the same
+`<!-- docstate -->` block `check-stale` already maintains, and `build-index` produces the
+BM25 `tags-index.tsv`. It is verified by re-running the pipeline over `tools/`.
+
+Documenting the remaining 1,439 `.java` files is a separate multi-session effort; claim a
+folder in the table above before starting one.

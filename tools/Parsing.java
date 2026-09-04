@@ -6,13 +6,27 @@ import java.io.StreamTokenizer;
 import java.io.Writer;
 
 /**
- * Title:        Parsing<p>
- * Description:
- * This Class is slightly obsolete, because all this is implemented
+ * Static Helpers for reading Separator-delimited Structures and Numbers off a Tokenizer.
+ *
+ * <p>This Class is slightly obsolete, because all this is implemented
  * in the streamIO Classes Scanner, StreamParser and StreamIterator(old)
- * in a more elegant and consistent Manner, but it is still being used.
- * because it can easily parse Separator Structures, Numbers
- * <p>
+ * in a more elegant and consistent Manner, but it is still being used,
+ * because it can easily parse Separator Structures, Numbers.
+ *
+ * <p>The Separator Strings are {@code public static} Fields rather than Parameters, so the
+ * Format is configured once, globally, for every Caller in the JVM.
+ *
+ * <h2>Collaborators</h2>
+ *
+ * <table>
+ * <caption>Types this Class works with</caption>
+ * <tr><th>Type</th><th>Relationship</th></tr>
+ * <tr><td>{@link java.io.StreamTokenizer}</td>
+ *     <td>The Input every read Helper advances and inspects.</td></tr>
+ * <tr><td>{@link java.io.Writer}</td>
+ *     <td>The Output the Formatting Helpers append to.</td></tr>
+ * </table>
+ *
  *
  * Copyright:    Copyright (c) <p>
  * Company:      <p>
@@ -21,13 +35,13 @@ import java.io.Writer;
  * <!-- docstate
  * pass: 2
  * mtime: 2026-09-04T16:35:47Z
- * digest: 6801afe74ea54865d538f792a9ae41f9daf1d54cd95b12b7ae9e93b1bf39fd1c
+ * digest: beb87e0522d3c95f516e7faa317ce447b20dc561af6abe11efc3952fc6588479
  * stale: false
  * -->
  */
 public class Parsing {
 
-	/** Initializing Constructor	*/
+	/** Creates an Instance, although every Member of this Class is {@code static}.	*/
 	public Parsing() { }
 
 

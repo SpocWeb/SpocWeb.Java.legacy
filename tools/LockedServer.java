@@ -1,10 +1,29 @@
 package tools;
 
 /**
-  * Title: LockedServer<p>
-  * Description:
-  * Example Base Class that uses the LockManager
+  * Unfinished Example of a Server Object exposing {@link LockAble} on top of a LockManager.
+  *
+  * <p>Example Base Class that uses the LockManager
   * and implements the LockAble Interface.
+  *
+  * <p><strong>Incomplete:</strong> the Interface Methods are Stubs that refuse every
+  * Request, {@link #setLocked(Object, boolean)} has its Body commented out, and only the
+  * simple {@link #lockWrite()} / {@link #unlockWrite()} Pair actually locks anything. The
+  * Class is a Sketch of the intended Shape, not a working Implementation - see the marked
+  * Defects below before using it.
+  *
+  * <h2>Collaborators</h2>
+  *
+  * <table>
+  * <caption>Types this Class works with</caption>
+  * <tr><th>Type</th><th>Relationship</th></tr>
+  * <tr><td>{@link LockAble}</td>
+  *     <td>Interface declared, and the Source of the LOCK_NONE/READ/WRITE Levels.</td></tr>
+  * <tr><td>{@link LockManager}</td>
+  *     <td>The Manager this Example is meant to delegate to, as its Name says.</td></tr>
+  * <tr><td>{@link ThreadLock}</td>
+  *     <td>Consulted by {@link #getLock()} to see whether this Object is write-locked.</td></tr>
+  * </table>
   *
   * Known SubClasses:
   *
@@ -18,7 +37,7 @@ package tools;
   * <!-- docstate
   * pass: 2
   * mtime: 2026-09-04T16:35:47Z
-  * digest: d1c10d0889c343247cff73da04a0f517de7e74d6021f0c164618030144c4fbcc
+  * digest: 00453e436f482459403cbf1eb732b1800389ad0f44b6f5b37b48fe5d6ece4f20
   * stale: false
   * -->
   */
@@ -39,8 +58,9 @@ implements LockAble
 ////////////////////////////////////////////////////////////////////////////////
 
 	/**
-	 * Number of Read Locks applied
-	 * If this is not managed in this Object you need a @see Bag
+	 * Number of Read Locks applied.
+	 *
+	 * <p>If this is not managed in this Object you need a Bag
 	 * to maintain it for a Set of Objects.
 	 */
 	protected int numReadLocks;
@@ -53,7 +73,7 @@ implements LockAble
 /// #region : Constructors, calling each other using this()/super()
 ////////////////////////////////////////////////////////////////////////////////
 
-	/** Empty Constructor	 */
+	/** Creates an unlocked Instance; protected because this Class is only a Base Example. */
 	protected LockedServer() { }
 
 ////////////////////////////////////////////////////////////////////////////////
@@ -69,38 +89,46 @@ implements LockAble
 ////////////////////////////////////////////////////////////////////////////////
 
 	/**
-	 * Tries to acquire a read or write Lock.
-	 * There can be any Number of ReadLocks but only a single WriteLock to synchronize updates.
-	 * Only a single ReadLock can be extended to WriteLock.
-	 * Any Iterator acquires a ReadLock on the Container.
-	 * Any Enumerator tries to acquire a WriteLock on the Container
-	 * as soon as it starts to modify it.
-	 * @return the LockID to identify the Lock in @see setLock()
+	 * {@inheritDoc}
+	 *
+	 * <p><strong>Not implemented:</strong> always refuses the Lock.
+	 *
+	 * @param write {@code true} for a Write Lock, {@code false} for a Read Lock
+	 * @return always {@link LockAble#LOCK_NONE}
 	 */
+	// TODO: LOGIC: Stub - returns -1 unconditionally, so this Class satisfies the LockAble
+	// Interface at Compile Time while silently refusing every Lock Request at Runtime. A
+	// Client following the Contract sees LOCK_NONE and cannot tell an unimplemented Server
+	// from a genuinely contended one.
 	public int getLock(boolean write) {
 		return -1; }
 
 	/**
-	 * Tries to release the identified read or write Lock with the given LockID.
-	 * There can be any Number of ReadLocks (has to be maintained)
-	 * but only a single WriteLock to synchronize updates.
-	 * Only a single ReadLock can be extended to WriteLock.
-	 * A WriteLock can only be acquired when no ReadLock exists
-	 * (except possibly by this Client identified by the LockID)
-	 * Any non blocking Iterator acquires a ReadLock on the Container.
-	 * Any Enumerator tries to acquire a WriteLock on the Container
-	 * as soon as it starts to modify it.
-	 * @return the LockID if succeeded, -1 otherwise.
+	 * {@inheritDoc}
+	 *
+	 * <p><strong>Not implemented:</strong> always reports Failure.
+	 *
+	 * @param write {@code true} to hold or take the Write Lock, {@code false} for a Read Lock
+	 * @param LockID the ID a previous {@link #getLock(boolean)} would have returned
+	 * @return always {@link LockAble#LOCK_NONE}
 	 */
+	// TODO: LOGIC: Stub - returns -1 unconditionally, the Release Counterpart of the Defect
+	// above. Nothing is released, and no Caller can distinguish that from a bad LockID.
 	public int setLock(boolean write, int LockID) {
 		return -1; }
 
-	/**Returns the maximum Lock Level of the Container to support prioritized Locking.
+	/**Returns the strongest Lock Level currently held on this Object.
+	 *
+	 * <p>Returns the maximum Lock Level of the Container to support prioritized Locking.
 	 * There can be any Number of ReadLocks but only a single WriteLock to synchronize updates.
 	 * Only a single ReadLock can be extended to WriteLock.
 	 * Any Iterator acquires a ReadLock on the Container.
 	 * Any Enumerator tries to acquire a WriteLock on the Container
 	 * as soon as it starts to modify it.
+	 *
+	 * @return {@link LockAble#LOCK_READ} while Read Locks exist,
+	 *         {@link LockAble#LOCK_WRITE} while this Object is write-locked,
+	 *         {@link LockAble#LOCK_NONE} when it is free
 	 */
 	public int getLock() {
 		if (numReadLocks > 0)  {
@@ -109,7 +137,9 @@ implements LockAble
 			return LOCK_WRITE; }
 			return LOCK_NONE ; }
 
-	/**Sets the Lock Level of the Container to support prioritized Locking
+	/**Raises or lowers this Object's Lock Level and returns the ID needed to release it.
+	 *
+	 * <p>Sets the Lock Level of the Container to support prioritized Locking
 	 * and returns the LockID, which is necessary to release the Lock.
 	 * There can be any Number of ReadLocks (has to be maintained)
 	 * but only a single WriteLock to synchronize updates.
@@ -119,8 +149,15 @@ implements LockAble
 	 * Any non blocking Iterator acquires a ReadLock on the Container.
 	 * Any Enumerator tries to acquire a WriteLock on the Container
 	 * as soon as it starts to modify it.
+	 *
+	 * @param LockLevel the desired Level: LOCK_NONE, LOCK_READ or LOCK_WRITE
+	 * @param LockID the ID identifying the Caller's existing Lock, where it has one
+	 * @return {@link LockAble#LOCK_READ} while Read Locks exist, otherwise LockID
 	 */
 	public int setLock(byte LockLevel, int LockID) {
+		// TODO: LOGIC: the switch has no Statements at all - only Fall-through Comments
+		// describing what each Level was meant to do - so no Level Change ever happens and
+		// the Method just reports the current Read State. LockLevel is read and discarded.
 		switch (LockLevel) {
 			case LOCK_NONE : //either release a READ or a WRITE Lock
 			case LOCK_READ : //either add a READ Lock or release a WRITE Lock
@@ -134,19 +171,21 @@ implements LockAble
 		return ret; }
 
 	/**
-	 * Lock or Unlock the requested record.
+	 * Locks or unlocks one Resource - <strong>currently a no-op</strong>.
+	 *
+	 * <p>Lock or Unlock the requested record.
 	 * If the argument is null, lock the whole database.
 	 * This method blocks until the lock succeeds.
 	 * No timeouts are defined for this.
 	 *
-	 * Must be synchronized to ensure that the current Thread holds the Monitor.
-	 *
-	 * if lock() is called more often than unlock(),
+	 * <p>if lock() is called more often than unlock(),
 	 * the DataServer will freeze the last Clients, since no notify() happens.
 	 *
 	 * @param item The Object item to lock.
 	 * @param lock Flag indicating whether to (un-) lock the Item.
 	 */
+	// TODO: LOGIC: the entire Body is commented out, so this Method silently does nothing.
+	// Callers believing they hold a Lock will proceed straight into the critical Section.
 	public void setLocked(Object item, boolean lock) {
 /*		if (lock) {
 			lock  (item);
@@ -155,22 +194,26 @@ implements LockAble
 		}
 */	}
 
-	boolean writeLocked; 
-	
+	/** Whether this Object as a whole is currently write-locked. */
+	boolean writeLocked;
+
 	/**
-	 * Lock the requested Item.
-	 * This method blocks until the lock succeeds.
+	 * Acquires the Write Lock on this whole Object, blocking until it is free.
+	 *
+	 * <p>This method blocks until the lock succeeds.
 	 * No timeouts are defined for this.
 	 *
-	 * Must be synchronized to ensure that the current Thread holds the Monitor.
+	 * <p>Must be synchronized to ensure that the current Thread holds the Monitor.
 	 *
-	 * if lock() is called more often than unlock(),
+	 * <p>if lockWrite() is called more often than unlockWrite(),
 	 * the Server would freeze the last Clients, since no notify() happens.
-	 *
-	 * @param item The Ressource to lock. If null, this Object is locked
 	 */
 	public synchronized void lockWrite() { //must be synchronized...
 		if (writeLocked) { //wait for the Unlock
+			// TODO: LOGIC: `if` around wait() instead of `while`. A spurious Wakeup - which
+			// the JLS explicitly permits - or a notify() aimed at another Waiter lets this
+			// Thread fall through and set writeLocked = true while another Thread still holds
+			// the Lock, so two Writers run at once. The Condition must be re-tested in a loop.
 			try { //since no notifyAll() is used, if() can be used instead of while() Loops
 				wait(); //wait (w.o. Timeout) until the lock is freed. This creates a DeadLock, when also synchronized on 'this'!
 			} catch(InterruptedException x) { //should not happen...
@@ -182,12 +225,12 @@ implements LockAble
 	}
 
 	/**
-	 * Unlock the requested record.
-	 * Ignored if the caller does not have a current lock on the requested record.
+	 * Releases the Write Lock on this whole Object and wakes one waiting Writer.
 	 *
-	 * Must be synchronized to ensure that the current Thread holds the Monitor.
-	 * Throws IllegalStateException when unlock() is called more often than lock().
-	 * @param item The managed Ressource. If null, this Object is locked
+	 * <p>Ignored if the caller does not have a current lock: the Flag is cleared
+	 * unconditionally, so an unmatched Release is not detected.
+	 *
+	 * <p>Must be synchronized to ensure that the current Thread holds the Monitor.
 	 */
 	public synchronized void unlockWrite() { //no DeadLock possible, since the Access Order is always the same
 		writeLocked = false;
@@ -198,7 +241,10 @@ implements LockAble
 /// #region : static Testing and main() Methods
 ////////////////////////////////////////////////////////////////////////////////
 
-	/** Tests all Methods of this Class	 */
+	/** Placeholder Self-Test that currently only announces itself.
+	 *
+	 * @param args ignored; present so the Method matches the main() Signature
+	 */
 	public static void testIt(String[] args) { //throws java.io.IOException {
 		System.out.println("Testing " + LockedServer.class.getName());
 	}

@@ -5,12 +5,12 @@ import java.util.HashMap;
 import java.util.Iterator;
 
 /**
- * Title: ThreadLock<p>
- * Description: </BR>
- * Manages the exclusive, blocking (Write-) Locking
+ * Serializes write Access to arbitrary Objects across several Calls, by their own Monitors.
+ *
+ * <p>Manages the exclusive, blocking (Write-) Locking
  * on an arbitrary (not predefined) Set of Objects or int Values.
- * 
- * Created to synchronize Read/Write Access on Server-side Record Lists.  
+ *
+ * <p>Created to synchronize Read/Write Access on Server-side Record Lists.
  *
  * This relieves the individual Object of managing Locks across several Client Calls
  * and in the Case of an int it saves creating a Class and Instances for that Purpose.
@@ -19,7 +19,7 @@ import java.util.Iterator;
  * and all Access will be serialized across several Calls by blocking Threads!
  *
  * To create a Read Lock too, embed the lock() and unlock() Methods into the Server Object,
- * coordinate and delegate them to ThreadLock like in @see LockImproved.
+ * coordinate and delegate them to ThreadLock like in {@link LockImproved}.
  *
  * The Clients are identified by their Thread, because they are blocked anyway,
  * so no single Thread would go back and aquire or release the same Lock again.
@@ -55,6 +55,27 @@ import java.util.Iterator;
  * Known SubClasses: </BR>
  * LockManager which extends the Functionality
  * by allowing global Locks on all managed Items and the Manager itself. </BR>
+ *
+ * <h2>Invariants</h2>
+ *
+ * <p>The Monitor of a Substitute Object per locked Item - not of the Item itself - is what
+ * Threads block on, and a Counter per Item records how many Threads are queued for it. An
+ * Item with no Entry is unlocked. A Lock belongs to the Thread that took it, since a
+ * blocked Thread cannot re-enter to take or release the same Lock again; the Class
+ * therefore stores no Owner and cannot detect a Release by the wrong Thread.
+ *
+ * <h2>Collaborators</h2>
+ *
+ * <table>
+ * <caption>Types this Class works with</caption>
+ * <tr><th>Type</th><th>Relationship</th></tr>
+ * <tr><td>{@link LockManager}</td>
+ *     <td>Subclass adding a global Lock over every managed Item.</td></tr>
+ * <tr><td>{@link LockImproved}</td>
+ *     <td>The non-blocking, token-based Alternative referenced above for Read Locks.</td></tr>
+ * <tr><td>{@link java.util.HashMap}</td>
+ *     <td>Holds the per-Item Substitute Monitors and their Waiter Counts.</td></tr>
+ * </table>
  *
  * </BR>
  * Copyright:	Copyright (c) Matthias Heuer<p>
@@ -433,32 +454,43 @@ public class ThreadLock {
 }
 
 /**
- * Helper Class for testing Class ThreadLock
+ * Holds one {@link ThreadLock} Lock for five Seconds from its own Thread, printing each Step.
+ *
+ * <p>Helper Class for testing Class ThreadLock
  * Opened up in its own Thread to demonstrate concurrent Access.
+ * A negative Item selects the global Lock instead of an individual one, so running several
+ * Instances shows on the Console whether local and global Locks exclude each other.
+ *
  * <!-- docstate
  * pass: 2
  * mtime: 2026-09-04T16:35:47Z
- * digest: 05b55d35d6baa1d7f03e96a7151c3cc608124f216be1a49c2e3d8f4ebc95f7d3
+ * digest: a6270f791ff6ac126251f21602260e2b3033eae015dd2d38109924509cc60d5b
  * stale: false
  * -->
  */
 class ThreadLockTester
 	implements Runnable {
 
+	/** The Item to lock, or a negative Value to take the global Lock instead. */
 	private int Item;
 
+	/** The Lock under Test. */
 	private ThreadLock Locker;
 
 	/** Prepares for testing the given ThreadLock
 	 * on the given Ressource.
+	 *
 	 * @param Locker_ The Lock Manager to test
-	 * @param Item_ The Item to lock
+	 * @param Item_ The Item to lock, or a negative Value for the global Lock
 	 */
 	public ThreadLockTester(ThreadLock Locker_, int Item_) {
 		this.Locker = Locker_;
 		this.Item   = Item_; }
 
-	/** Method of the Runnable Interface	 */
+	/** Takes the Lock, holds it for five Seconds, then releases it.
+	 *
+	 * <p>Method of the Runnable Interface.
+	 */
 	public void run() {
 		System.out.println("Acquiring lock on " + Item);
 		if (Item >= 0) {
@@ -483,9 +515,11 @@ class ThreadLockTester
 }
 
 /**
- * Helper Class for the ThreadLock Class
+ * Mutable int Holder serving as one Item's Waiter Count and as the Monitor Threads block on.
+ *
+ * <p>Helper Class for the ThreadLock Class.
  * Provides a modifyable Wrapper for public primitive int Values.
- * Used as a Counter for the Number of waiting Threads similar to @see Bag Elements.
+ * Used as a Counter for the Number of waiting Threads similar to Bag Elements.
  * No Methods are used, so they are left Default.
  *
  * Alternatively also an int[1] could have been used,

@@ -3,11 +3,32 @@ package tools;
 import java.util.Hashtable;
 
 /**
-  * Title: LockImproved<p>
-  * Description:
-  * TODO: Describes the Purpose / Responsibilities of this Class, not it's Implementation.
-  * If similar Classes exist (e.g. Polymorphism),
-  * characterize the specific Differences to compare these.
+  * Non-blocking {@link LockAble} that hands out numbered Read Locks and one exclusive Write Lock.
+  *
+  * <p>Every Acquisition attempt returns immediately: a Caller that cannot get the Lock is
+  * told so via {@link LockAble#LOCK_NONE} rather than being made to wait, which is the
+  * Difference to {@link ThreadLock}, whose Write Lock blocks until it is granted.
+  * Read Locks are tracked individually in a Hashtable used as a Set, so any Number of them
+  * can coexist and each Holder releases exactly its own.
+  *
+  * <h2>Invariants</h2>
+  *
+  * <p>Lock IDs are drawn from a single monotonically increasing Counter and are never
+  * reused, so an ID identifies its Holder unambiguously. A Write Lock and a Read Lock are
+  * mutually exclusive. {@link #getLock(boolean)} and {@link #setLock(boolean, int)} are
+  * synchronized, but the underlying accessors are not, so the Interface Methods are the
+  * only safe Entry Points for concurrent Callers.
+  *
+  * <h2>Collaborators</h2>
+  *
+  * <table>
+  * <caption>Types this Class works with</caption>
+  * <tr><th>Type</th><th>Relationship</th></tr>
+  * <tr><td>{@link LockAble}</td>
+  *     <td>Interface implemented, and the Source of the LOCK_NONE Sentinel.</td></tr>
+  * <tr><td>{@link ThreadLock}</td>
+  *     <td>The blocking Alternative this Class contrasts with.</td></tr>
+  * </table>
   *
   * Known SubClasses:
   *
@@ -21,7 +42,7 @@ import java.util.Hashtable;
   * <!-- docstate
   * pass: 2
   * mtime: 2026-09-04T16:35:47Z
-  * digest: bef9aceb6f360b015bf24d1bb628e4bd52f8537c8b79a60a80035efe5ed83fee
+  * digest: 63e8f740337bd665f16f0f1f47193e3da21b866f84ad3e18cf073776b9981543
   * stale: false
   * -->
   */
@@ -40,7 +61,12 @@ implements LockAble {
 /// #region : Variables
 ////////////////////////////////////////////////////////////////////////////////
 
-	/** Flag indicating Write Locking	 */
+	/** ID of the Client currently holding the Write Lock, or LOCK_NONE while it is free.	 */
+	// TODO: LOGIC: default-initialised to 0, but "free" is encoded as LockAble.LOCK_NONE
+	// (-1), so a freshly constructed Instance looks permanently write-locked by Client 0:
+	// getWriteLock(int) and getRead_Lock(int) both take their `writeLock != LOCK_NONE`
+	// early exit and return LOCK_NONE forever. No Lock of either kind can ever be acquired
+	// until this field is initialised to LOCK_NONE.
 	protected int writeLock;
 
 	/** Counter for the Read Locks passed out to the Clients	 */
@@ -53,27 +79,29 @@ implements LockAble {
 /// #region : Accessor Methods (getXXX/isXXX/setXXX)
 ////////////////////////////////////////////////////////////////////////////////
 
-	/** @return the Number of Read Locks applied on this Object.      */
+	/** Reports how many Read Locks are currently held.
+     *
+     * @return the Number of Read Locks applied on this Object.
+     */
 	public int getNumReadLocks() { return ReadLocks.size(); }
 
 	/**
-     * Tries to acquire an (additional) Read Lock on this Object.
+     * Tries to acquire the exclusive Write Lock under a freshly issued ID.
      * This Method does not block.
-     * @param LockID The ID returned by the getLockRead() Method
-     * @return the LockID when the unlock succeeded, LockAble.LOCK_NONE otherwise
-     * @throws IllegalArgumentException when the LockID does not match
-     * (this should not happen; using Excepion to prevent ignoring the Return Code)
+     *
+     * @return the newly issued LockID when the Write Lock was granted,
+     *         {@link LockAble#LOCK_NONE} when it is already held
      */
 	public int getWriteLock() {
 		return getWriteLock(++cntLocks); } //this promotes counting also failed locks!
 
 	/**
-     * Tries to acquire an (additional) Read Lock on this Object.
+     * Tries to acquire the exclusive Write Lock under the given, caller-chosen ID.
      * This Method does not block.
-     * @param LockID The ID returned by the getLockRead() Method
-     * @return the LockID when the unlock succeeded, LockAble.LOCK_NONE otherwise
-     * @throws IllegalArgumentException when the LockID does not match
-     * (this should not happen; using Excepion to prevent ignoring the Return Code)
+     *
+     * @param LockID the ID to record as the Holder of the Write Lock
+     * @return LockID when the Write Lock was granted,
+     *         {@link LockAble#LOCK_NONE} when it is already held
      */
 	protected int getWriteLock(int LockID) {
 		if (writeLock != LockAble.LOCK_NONE) {
@@ -81,20 +109,22 @@ implements LockAble {
 		return writeLock = LockID; }
 
 	/**
-     * Tries to acquire an (additional) Read Lock on this Object.
+     * Tries to acquire an (additional) Read Lock under a freshly issued ID.
      * This Method does not block.
-     * @param LockID The ID returned by the getLockRead() Method
-     * @return the LockID when the unlock succeeded, LockAble.LOCK_NONE otherwise
-     * @throws IllegalStateException when the LockID already exists.
+     *
+     * @return the newly issued LockID when the Read Lock was granted,
+     *         {@link LockAble#LOCK_NONE} while the Write Lock is held
      */
 	public int getRead_Lock() {
 		return getRead_Lock(++cntLocks); } //this promotes counting also failed locks!
 
 	/**
-     * Tries to acquire an (additional) Read Lock on this Object.
+     * Tries to acquire an (additional) Read Lock under the given, caller-chosen ID.
      * This Method does not block.
-     * @param LockID The ID returned by the getLockRead() Method
-     * @return the LockID when the unlock succeeded, LockAble.LOCK_NONE otherwise
+     *
+     * @param LockID the ID to register as one of the Read Lock Holders
+     * @return LockID when the Read Lock was granted,
+     *         {@link LockAble#LOCK_NONE} while the Write Lock is held
      * @throws IllegalStateException when the LockID already exists.
      */
 	protected int getRead_Lock(int LockID) {
@@ -106,10 +136,11 @@ implements LockAble {
 		return LockID; }
 
 	/**
-     * Tries to free this Object from the given Write Lock.
+     * Releases the Write Lock held under the given ID.
      * This Method does not block.
-     * @param LockID The ID returned by the getLockRead() Method
-     * @return the LockID when the unlock succeeded, LockAble.LOCK_NONE otherwise
+     *
+     * @param LockID The ID returned by the {@link #getWriteLock()} Method
+     * @return LockID once the Write Lock has been released
      * @throws IllegalArgumentException when the LockID does not match
      * (this should not happen; using Excepion to prevent ignoring the Return Code)
      */
@@ -120,10 +151,11 @@ implements LockAble {
 		return LockID; }
 
 	/**
-     * Tries to free this Object from the given Read Lock.
+     * Releases the one Read Lock registered under the given ID.
      * This Method does not block.
-     * @param LockID The ID returned by the getLockRead() Method
-     * @return the LockID when the unlock succeeded, LockAble.LOCK_NONE otherwise
+     *
+     * @param LockID The ID returned by the {@link #getRead_Lock()} Method
+     * @return LockID once that Read Lock has been removed
      * @throws IllegalArgumentException when the LockID does not match
      * (this should not happen; using Excepion to prevent ignoring the Return Code)
      */
@@ -137,8 +169,11 @@ implements LockAble {
 ////////////////////////////////////////////////////////////////////////////
 
 	/**
-     * Tries to acquire an (additional) Read Lock on this Object.
-     * This Method does not block.
+     * {@inheritDoc}
+     *
+     * <p>Acquires either the exclusive Write Lock or an additional Read Lock, without
+     * blocking: a Caller that cannot have it is told so rather than made to wait.
+     *
      * @return LockAble.LOCK_NONE when the lock failed, the Lock Number otherwise!
      */
 	public synchronized int getLock(boolean write) {
@@ -150,10 +185,12 @@ implements LockAble {
 	}
 
 	/**
-     * Tries to free this Object from the given Read or Write Lock.
-     * This Method does not block.
-     * @param LockID The ID returned by the getLockRead() Method
-     * @return the LockID when the unlock succeeded, LockAble.LOCK_NONE otherwise
+     * {@inheritDoc}
+     *
+     * <p>Releases the Read or Write Lock held under the given ID, without blocking.
+     *
+     * @param LockID The ID returned by the {@link #getLock(boolean)} Method
+     * @return LockID once the Lock has been released
      * @throws IllegalArgumentException when the LockID does not match
      * (this should not happen; using Excepion to prevent ignoring the Return Code)
      */
@@ -174,14 +211,24 @@ implements LockAble {
 ////////////////////////////////////////////////////////////////////////////////
 
 	/**
-     * Tries to promote a read Lock to a write Lock or vice versa (demote)
+     * Converts a held Read Lock into the Write Lock, or the Write Lock back into a Read Lock.
+     *
+     * <p>Tries to promote a read Lock to a write Lock or vice versa (demote).
      * No other Object can acquire the Lock during this Operation,
-     * because it is synchronized.
+     * because it is synchronized. On Failure the released Lock is re-acquired, so the
+     * Caller keeps whatever it had.
+     *
      * @param promote Flag whether to promote or to demote.
+     * @param LockID the ID of the Lock this Caller already holds
      * @return the same LockID iff the Promotion / Demotion worked, LockAble.LOCK_NONE otherwise
      * Otherwise the Lock Status is left unchanged!
+     * @throws IllegalArgumentException when LockID names no Lock this Object handed out
      */
 	public synchronized int lockRead2write(boolean promote, int LockID) {
+		// TODO: LOGIC: the rollback Guards below are unreachable for a wrong LockID -
+		// setRead_Lock/setWriteLock throw IllegalArgumentException instead of returning
+		// LOCK_NONE, so the Caller gets an Exception rather than the documented LOCK_NONE,
+		// and the released Lock is never restored on that Path.
 		if (promote) { //for promoting this also prevents it.
 			if (setRead_Lock(LockID) == LockID) { //try to free the Read Lock
 				if (getWriteLock(LockID) == LockID) {
@@ -204,7 +251,10 @@ implements LockAble {
 /// #region : static Testing and main() Methods
 ////////////////////////////////////////////////////////////////////////////////
 
-	/** Tests all Methods of this Class	 */
+	/** Placeholder Self-Test that currently only announces itself.
+	 *
+	 * @param args ignored; present so the Method matches the main() Signature
+	 */
 	public static void testIt(String[] args) { //throws java.io.IOException {
 		System.out.println("Testing " + LockImproved.class.getName());
 	}
