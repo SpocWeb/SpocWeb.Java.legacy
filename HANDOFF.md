@@ -118,17 +118,29 @@ path, so invoking one from a sub-folder produces keys nothing can join on.
 - The index shrank from 29,995 to 25,220 rows because the Java `build-index` merges by
   unit-id where the C# one appends. The 4,775 removed rows were exact duplicate unit-ids
   from repeated C# runs; all 25,201 distinct unit-ids survive.
-- **`compact-vocabulary` was not run, and must not be run yet.** A reconciliation sweep
-  afterwards (`build-vocabulary` over all 31 `raw-tags.tsv` files on the machine, additive
-  and idempotent) grew the shared vocabulary from 3,787 to 6,522 tags, so the earlier
-  dry-run figures were computed against a schema that was missing 2,735 tags. Two reasons
-  it stays blocked, both recorded with the measured data in the skill's `tags-pipeline.md`:
-  usage is counted from `tags-index.tsv`, which covers only 3,559 of the 6,088 tags
-  actually assigned across the corpus, so a prune would delete ~2,960 used tags as unused
-  (rebuilding the index over the C# roots needs the C# tool); and the 300-tag default cuts
-  at "used 40+ times", which would leave over 5,500 documented units with no tag at all.
-  The lossless alternative is consolidating the 630 stem-duplicate tags through the
-  schema's `merged:` map, which is `consolidate-vocabulary` and is Milestone C.
+- **`compact-vocabulary` was not run, and must not be run yet - now for a structural
+  reason, not a fixable one.** The index rebuild that was supposed to unblock it has been
+  done: `build-index` was re-run over 27 of the 31 tag stores (2026-09-04), growing
+  `tags-index.tsv` from 25,220 to 32,477 rows and index-visible tags from 3,559 to 3,942.
+  The invisible remainder barely moved, 2,725 -> 2,257, because **1,815 of those tags
+  (80%) exist only on member-level rows** (method/field/property) and `tags-index.tsv`
+  carries one row per *class* by construction. No `build-index` run can ever count them.
+  So usage counting cannot see roughly a third of the vocabulary, and the third it cannot
+  see is the specific, low-usage, high-information end. At the 300-tag default the cut
+  lands above "used 13 times", leaving 5,406 documented units with no tag at all.
+  Measured figures and the argument are in the C# skill's `tags-pipeline.md`.
+  The lossless alternative is consolidating the 990 stem-collapsible tags through the
+  schema's `merged:` map, which is `consolidate-vocabulary`, and both tools now rewrite
+  `raw-tags.tsv` on `--apply` so such a decision actually sticks.
+- **Three tag stores are unreachable and need a decision.** Their `unit-id` columns are
+  absolute paths from checkout locations that no longer exist, so no fresh scan can
+  reproduce their keys: `.../SpocWeb.ReadMeGenerator/ReadMeGenerator/raw-tags.tsv` (681
+  rows), `_SpocWeb.Root/_std/SpocWeb.ReadMeGenerator/ReadMeGenerator/raw-tags.tsv` (681,
+  byte-identical to the first) and `_org.structs/.readme-generator/raw-tags.tsv` (2,234).
+  Their tags are registered in the schema and permanently uncountable. The first two look
+  like stale copies of stores that already exist one directory up. Either migrate the
+  unit-id paths to the current relative form or delete the stores; leaving them inflates
+  every vocabulary measure with rows nothing can ever join on.
 - Nine axis-B candidates were reported for review: Callable Abstraction, Concurrency, Error
   Handling, File Transfer, Interprocess Communication, Memento Pattern, Resource
   Coordination, Text Parsing, Transaction Semantics. Axis B stays a raw string in
