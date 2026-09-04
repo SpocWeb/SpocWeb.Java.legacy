@@ -132,30 +132,25 @@ path, so invoking one from a sub-folder produces keys nothing can join on.
   The lossless alternative is consolidating the 990 stem-collapsible tags through the
   schema's `merged:` map, which is `consolidate-vocabulary`, and both tools now rewrite
   `raw-tags.tsv` on `--apply` so such a decision actually sticks.
-- **Three tag stores need a unit-id path migration, and hold real data.** Their `unit-id`
-  and `file` columns are absolute paths from the machine's older layout, so a fresh scan
-  reproduces none of their keys and `build-index`/`apply-tags` skip them entirely. The
-  paths are **not** dead - they map onto the live roots (`C:\_\_\_AI\.claude\...` ->
-  `D:\_\_AI\...`, `c:\_\NET\...` -> `D:\_\_Matthias\Code\NET\...`), and once
-  mapped they resolve at 680/680, 680/680 and 2,220/2,234 (the 14 are 13 `TODO: LLM`
-  placeholders plus one genuinely deleted `StepRKQ.cs`):
+- **The absolute-path stores are migrated, and the join had a second bug.** Five stores (not
+  three) held absolute paths - 5,201 rows - and 5,273 of 5,280 rows were rewritten to the
+  relative form on 2026-09-04, backups in the session scratchpad. Two of the five were the
+  807-row class-level stores that the earlier sweep had *included*, so those runs attached no
+  tags at all while reporting success. Re-measuring then went backwards, which exposed the
+  bigger defect: one store records `_root/Db/...` where the filesystem says `_root/db/...`,
+  and the unit-id lookup used `StringComparer.Ordinal`, so 1,131 rows of curated tags joined
+  to nothing on casing alone. The lookup is `OrdinalIgnoreCase` now, both copies of it are one
+  method (the duplication is why the earlier duplicate-unit-id fix reached `apply-tags` and
+  not `build-index`), and `RawTagsLookupTests` pins all three behaviours. 285 C# tests pass.
 
-  | store | rows | class-level rows | distinct tags | tags not yet index-visible |
-  |---|--:|--:|--:|--:|
-  | `_org.structs/.readme-generator/raw-tags.tsv` | 2,234 | 1,041 | 462 | 115 |
-  | `.../SpocWeb.ReadMeGenerator/ReadMeGenerator/raw-tags.tsv` | 680 | 101 | 28 | 13 |
-  | `_SpocWeb.Root/_std/.../ReadMeGenerator/raw-tags.tsv` | 680 | 101 | 28 | 13 |
+  Coverage per root afterwards: `_root/db` 461/461 index rows tagged (was 15/461),
+  `_org.structs` 2,401/2,401, `_SpocWeb.Root` 12,231/14,527, 26,507 of 32,810 index rows
+  overall. The corpus-wide *distinct*-tag count is not a coverage measure and drifted down
+  (3,942 -> 3,855) as rows were re-derived from their stores.
 
-  The two 680-row stores are byte-identical to each other and are member-level companions
-  (570 method rows each) to the 808-row class-level stores one directory up. The
-  `_org.structs` store is **not** a redundant copy of the live `org.structs` one: 1,471 of
-  its 2,154 unit keys do not appear there at all.
-
-  Migrating the columns to the working-directory-relative form the rest of the pipeline
-  uses would add roughly 1,140 class-level index rows and make up to 128 currently
-  invisible tags countable. Open questions before that: which root each store's paths
-  should be relative to, whether both identical member-level stores stay, and whether the
-  `_org.structs` tree is live code worth documenting or a stale fork of `org.structs`.
+  Residual: an integrity check keyed on (file basename, class name) finds 353 of 15,668
+  class-level store rows whose tag is still absent from the matching index row - about 2.3%,
+  some of which is collision noise from that lossy key. Not chased further.
 - Nine axis-B candidates were reported for review: Callable Abstraction, Concurrency, Error
   Handling, File Transfer, Interprocess Communication, Memento Pattern, Resource
   Coordination, Text Parsing, Transaction Semantics. Axis B stays a raw string in
