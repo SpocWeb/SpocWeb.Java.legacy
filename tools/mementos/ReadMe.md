@@ -8,6 +8,16 @@ digest:
       mtime: '2026-09-04T16:35:47Z'
       digest: c02e6618cf7aea70cfe5b8ccaa564438d0dfa633b2e08d3540be19c46ec8ea77
   folders: {}
+tags:
+- code/state_snapshot
+- code/marker_interface
+concepts:
+- Memento Pattern
+facets:
+  layer: infrastructure
+  status: stable
+  complexity: low
+description: 'A two-interface expression of the Memento pattern, kept deliberately minimal: an object that can snapshot and restore its own state, and an opaque token standing for one such snapshot.'
 ---
 
 # mementos

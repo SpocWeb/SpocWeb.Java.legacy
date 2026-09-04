@@ -42,6 +42,9 @@ import streamIO.copy.ICopyAble;
  * mtime: 2026-09-04T16:35:47Z
  * digest: 40ed294b938ad0fa8b822f7f158d112a17acae3d1f35c8235823f726db5d228d
  * stale: false
+ * tags: [code/transaction, code/copy_on_write, code/decorator]
+ * concepts: [Transaction Semantics]
+ * facets: {layer: infrastructure, status: experimental, complexity: medium}
  * -->
  */
 public class FilterCallTransAction

@@ -51,6 +51,9 @@ import java.io.IOException;
   * mtime: 2026-09-04T16:35:47Z
   * digest: b6cf8ae03ead577f575bf7804b19ee2850e947f026103c3907495910bb91190b
   * stale: false
+  * tags: [code/locking, code/global_lock]
+  * concepts: [Concurrency]
+  * facets: {layer: infrastructure, status: broken, complexity: high}
   * -->
   */
 public class LockManager

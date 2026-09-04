@@ -33,6 +33,9 @@ import streamIO.exception.BaseException;
   * mtime: 2026-09-04T16:35:47Z
   * digest: f667d180315172ddfb147afacef7da21d36565d20b00d3b62f0546e48dd041d9
   * stale: false
+  * tags: [code/exception_wrapping, code/unchecked_exception]
+  * concepts: [Error Handling]
+  * facets: {layer: infrastructure, status: stable, complexity: low}
   * -->
   */
 public class IOError

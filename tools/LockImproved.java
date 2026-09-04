@@ -44,6 +44,9 @@ import java.util.Hashtable;
   * mtime: 2026-09-04T16:35:47Z
   * digest: 63e8f740337bd665f16f0f1f47193e3da21b866f84ad3e18cf073776b9981543
   * stale: false
+  * tags: [code/locking, code/non_blocking, code/lock_tokens]
+  * concepts: [Concurrency]
+  * facets: {layer: infrastructure, status: broken, complexity: medium}
   * -->
   */
 public class LockImproved

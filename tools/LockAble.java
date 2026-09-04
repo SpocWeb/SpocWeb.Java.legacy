@@ -41,6 +41,9 @@ package tools; //always define a Package
   * mtime: 2026-09-04T16:35:47Z
   * digest: 6766c96ec19e37bb231427110229f55fbe0332af8008893a4382afe1529389f5
   * stale: false
+  * tags: [code/locking, code/interface_contract]
+  * concepts: [Concurrency]
+  * facets: {layer: infrastructure, status: stable, complexity: low}
   * -->
   */
 public interface LockAble {

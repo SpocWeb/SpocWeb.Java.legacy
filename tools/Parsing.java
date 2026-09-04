@@ -37,6 +37,9 @@ import java.io.Writer;
  * mtime: 2026-09-04T16:35:47Z
  * digest: beb87e0522d3c95f516e7faa317ce447b20dc561af6abe11efc3952fc6588479
  * stale: false
+ * tags: [code/tokenizer, code/text_parsing, code/legacy_helper]
+ * concepts: [Text Parsing]
+ * facets: {layer: utility, status: legacy, complexity: medium}
  * -->
  */
 public class Parsing {

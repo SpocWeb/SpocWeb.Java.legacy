@@ -31,6 +31,9 @@ package tools;
  * mtime: 2026-09-04T16:35:46Z
  * digest: be38cf2148451f456f3f524d2431d414c0f12d2e4b0f830ac0ace189e10386f2
  * stale: false
+ * tags: [code/callback_interface, code/generic_operation]
+ * concepts: [Callable Abstraction]
+ * facets: {layer: infrastructure, status: stable, complexity: low}
  * -->
  */
 public interface CallAble {

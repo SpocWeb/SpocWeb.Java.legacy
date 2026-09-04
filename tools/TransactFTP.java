@@ -55,6 +55,9 @@ import java.io.IOException;
   * mtime: 2026-09-04T16:35:47Z
   * digest: 990a990957c885ea92580f7dc43ad12220b1907b26365313fa4d54c51e087ba2
   * stale: false
+  * tags: [code/file_transfer, code/flag_file_handshake, code/timeout_handling]
+  * concepts: [File Transfer, Interprocess Communication]
+  * facets: {layer: io, status: broken, complexity: medium}
   * -->
   */
 public class TransactFTP {

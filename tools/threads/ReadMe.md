@@ -5,6 +5,16 @@ digest:
       mtime: '2026-09-04T16:35:47Z'
       digest: 662207cbd8bb355598443b3878c17635b3ad73e6a6cafc68254d6def88b4d01e
   folders: {}
+tags:
+- code/watchdog_thread
+- code/timeout_handling
+concepts:
+- Concurrency
+facets:
+  layer: infrastructure
+  status: experimental
+  complexity: low
+description: 'A single watchdog: given a thread that is already running, interrupt it once its time is up.'
 ---
 
 # threads

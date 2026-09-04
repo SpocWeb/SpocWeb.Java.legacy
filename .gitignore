@@ -120,3 +120,8 @@ jacoco/
 *.swo
 *~
 /_NaturalLang
+
+# Tags-pipeline intermediates: raw-tags.tsv is the durable artifact, these are not
+raw-tags-enriched.tsv
+raw-tags-fresh.tsv
+tagchunks/

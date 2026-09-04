@@ -47,6 +47,9 @@ package tools;
   * mtime: 2026-09-04T16:35:47Z
   * digest: bf5ce80fb5da03de8d39f8cf92cc492fb76fbc322829c912e7a41e679ecb871c
   * stale: false
+  * tags: [code/locking, code/reference_counting, code/non_blocking]
+  * concepts: [Concurrency]
+  * facets: {layer: infrastructure, status: broken, complexity: medium}
   * -->
   */
 public class LockedSimple
@@ -209,6 +212,9 @@ public class LockedSimple
  * mtime: 2026-09-04T16:35:47Z
  * digest: b1e7b5030c1e9c3203fa2a17aa606851c34b8eb7a145ede462342e80554c06f6
  * stale: false
+ * tags: [code/manual_test_harness, code/locking]
+ * concepts: [Concurrency]
+ * facets: {layer: utility, status: experimental, complexity: low}
  * -->
  */
 class LockTester

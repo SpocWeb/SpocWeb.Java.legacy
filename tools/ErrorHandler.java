@@ -53,6 +53,9 @@ import streamIO.exception.BaseException;
  * mtime: 2026-09-04T16:35:47Z
  * digest: 3196360d8e83e0b43c3a8ec16164af7ead6da84ff7f2933038029c58199b3b5b
  * stale: false
+ * tags: [code/error_handling, code/decorator, code/retry_logic]
+ * concepts: [Error Handling]
+ * facets: {layer: infrastructure, status: broken, complexity: medium}
  * -->
  */
 public class ErrorHandler

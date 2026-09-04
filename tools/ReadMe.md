@@ -56,6 +56,18 @@ digest:
     threads/:
       mtime: '2026-09-04T16:35:47Z'
       digest: 81ddcb7b1eb4832b7f3dd9b92f07047b1181564ca0285ba1314b814364e42b53
+tags:
+- code/concurrency_primitives
+- code/locking
+- code/call_wrapping
+concepts:
+- Concurrency
+- Resource Coordination
+facets:
+  layer: infrastructure
+  status: experimental
+  complexity: high
+description: Reusable concurrency and call-wrapping primitives, written as a study of how to coordinate access to shared resources in plain Java without a framework.
 ---
 
 # tools

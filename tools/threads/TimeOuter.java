@@ -32,6 +32,9 @@ package tools.threads;
  * mtime: 2026-09-04T16:35:47Z
  * digest: 662207cbd8bb355598443b3878c17635b3ad73e6a6cafc68254d6def88b4d01e
  * stale: false
+ * tags: [code/watchdog_thread, code/timeout_handling, code/thread_interruption]
+ * concepts: [Concurrency]
+ * facets: {layer: infrastructure, status: experimental, complexity: low}
  * -->
  */
 public class TimeOuter 

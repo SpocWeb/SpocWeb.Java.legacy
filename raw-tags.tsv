@@ -1,0 +1,23 @@
+unit-id	level	file	axis-a-candidates	axis-b-candidates	facet-layer	facet-status	facet-complexity
+tools/CallAble.java:CallAble	class	tools/CallAble.java	code/callback_interface, code/generic_operation	Callable Abstraction	infrastructure	stable	low
+tools	folder	tools	code/concurrency_primitives, code/locking, code/call_wrapping	Concurrency, Resource Coordination	infrastructure	experimental	high
+tools/ErrorHandler.java:ErrorHandler	class	tools/ErrorHandler.java	code/error_handling, code/decorator, code/retry_logic	Error Handling	infrastructure	broken	medium
+tools/FilterCallTransAction.java:FilterCallTransAction	class	tools/FilterCallTransAction.java	code/transaction, code/copy_on_write, code/decorator	Transaction Semantics	infrastructure	experimental	medium
+tools/IOError.java:IOError	class	tools/IOError.java	code/exception_wrapping, code/unchecked_exception	Error Handling	infrastructure	stable	low
+tools/LockAble.java:LockAble	class	tools/LockAble.java	code/locking, code/interface_contract	Concurrency	infrastructure	stable	low
+tools/LockImproved.java:LockImproved	class	tools/LockImproved.java	code/locking, code/non_blocking, code/lock_tokens	Concurrency	infrastructure	broken	medium
+tools/LockManager.java:LockManager	class	tools/LockManager.java	code/locking, code/global_lock	Concurrency	infrastructure	broken	high
+tools/LockedServer.java:LockedServer	class	tools/LockedServer.java	code/locking, code/server_facade, code/stub_implementation	Concurrency	infrastructure	unfinished	medium
+tools/LockedSimple.java:LockedSimple	class	tools/LockedSimple.java	code/locking, code/reference_counting, code/non_blocking	Concurrency	infrastructure	broken	medium
+tools/LockedSimple.java:LockTester	class	tools/LockedSimple.java	code/manual_test_harness, code/locking	Concurrency	utility	experimental	low
+tools/Parsing.java:Parsing	class	tools/Parsing.java	code/tokenizer, code/text_parsing, code/legacy_helper	Text Parsing	utility	legacy	medium
+tools/ThreadLock.java:ThreadLock	class	tools/ThreadLock.java	code/locking, code/blocking_wait, code/monitor_per_object	Concurrency	infrastructure	experimental	high
+tools/ThreadLock.java:ThreadLockTester	class	tools/ThreadLock.java	code/manual_test_harness, code/locking	Concurrency	utility	experimental	low
+tools/ThreadLock.java:Monitor	class	tools/ThreadLock.java	code/mutable_holder, code/wait_counting	Concurrency	infrastructure	stable	low
+tools/TransactFTP.java:TransactFTP	class	tools/TransactFTP.java	code/file_transfer, code/flag_file_handshake, code/timeout_handling	File Transfer, Interprocess Communication	io	broken	medium
+tools/WorkerThread.java:WorkerThread	class	tools/WorkerThread.java	code/thread_lifecycle, code/timeout_handling, code/shared_parameter_array	Concurrency	infrastructure	legacy	medium
+tools/mementos/Memento.java:Memento	class	tools/mementos/Memento.java	code/marker_interface, code/state_snapshot	Memento Pattern	infrastructure	stable	low
+tools/mementos	folder	tools/mementos	code/state_snapshot, code/marker_interface	Memento Pattern	infrastructure	stable	low
+tools/mementos/Originator.java:Originator	class	tools/mementos/Originator.java	code/state_snapshot, code/interface_contract	Memento Pattern	infrastructure	stable	low
+tools/threads/TimeOuter.java:TimeOuter	class	tools/threads/TimeOuter.java	code/watchdog_thread, code/timeout_handling, code/thread_interruption	Concurrency	infrastructure	experimental	low
+tools/threads	folder	tools/threads	code/watchdog_thread, code/timeout_handling	Concurrency	infrastructure	experimental	low

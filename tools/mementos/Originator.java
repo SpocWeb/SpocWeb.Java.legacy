@@ -34,6 +34,9 @@ package tools.mementos; //
   * mtime: 2026-09-04T16:35:47Z
   * digest: c02e6618cf7aea70cfe5b8ccaa564438d0dfa633b2e08d3540be19c46ec8ea77
   * stale: false
+  * tags: [code/state_snapshot, code/interface_contract]
+  * concepts: [Memento Pattern]
+  * facets: {layer: infrastructure, status: stable, complexity: low}
   * -->
   */
 public interface Originator {

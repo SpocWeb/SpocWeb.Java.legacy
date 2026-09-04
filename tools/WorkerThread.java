@@ -50,6 +50,9 @@ package tools;
   * mtime: 2026-09-04T16:35:47Z
   * digest: 13fcbe3eaa38951d9c734a4e9b57b7575185443d87fecc5e36f3857127c4f484
   * stale: false
+  * tags: [code/thread_lifecycle, code/timeout_handling, code/shared_parameter_array]
+  * concepts: [Concurrency]
+  * facets: {layer: infrastructure, status: legacy, complexity: medium}
   * -->
   */
 public abstract class WorkerThread

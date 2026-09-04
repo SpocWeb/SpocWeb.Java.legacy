@@ -5,16 +5,16 @@
 Pilot folder `tools/` only. The rest of the tree (1,455 `.java` files, 136 folders) is
 untouched and is its own multi-session effort.
 
-| Scope | Pass 1+2 | Pass 3 | Notes |
-|---|---|---|---|
-| `tools/mementos/` | done | done | 2 interfaces |
-| `tools/threads/` | done | done | 1 class, 2 defects flagged; no diagram (single type) |
-| `tools/` (root of folder) | done | done | 16 types across 13 files |
-| everything else | not started | not started | see Claims below |
+| Scope | Pass 1+2 | Pass 3 | Pass 4-7 | Notes |
+|---|---|---|---|---|
+| `tools/mementos/` | done | done | done | 2 interfaces |
+| `tools/threads/` | done | done | done | 1 class, 2 defects flagged; no diagram (single type) |
+| `tools/` (root of folder) | done | done | done | 16 types across 13 files |
+| everything else | not started | not started | not started | see Claims below |
 
 Tooling: `D:/_/_AI/skills/Java.ReadMeGenerator/ReadMeGenerator/target/readmegenerator.jar`,
-built with the colocated Maven Wrapper. Milestone A commands only — there is no `scaffold`,
-no tags pipeline and no `list-dependencies` yet.
+built with the colocated Maven Wrapper. Milestones A and B are built; there is no
+`scaffold`, no `consolidate-vocabulary` and no `list-dependencies` yet (Milestone C).
 
 ## Claims
 
@@ -99,6 +99,33 @@ live in the skill's `cli-reference.md` and in `ProgramTests.java`, one named tes
 | `tools/mementos/Originator.java`'s block became `<!-- docstate* pass: 2` | the block pattern consumed the newline after its marker on rewrite |
 | `tools/threads/TimeOuter.java`'s documented constructor reported undocumented | a `// TODO: LOGIC:` marker between Javadoc and declaration detached the Javadoc |
 
+## Tags pipeline (Pass 4-7)
+
+`raw-tags.tsv` at the repository root is the store of record and is committed: 22 confirmed
+rows covering all 19 types plus the three folders, with both tag axes and all three facets
+filled. `raw-tags-enriched.tsv` and `tagchunks/` are intermediates and are gitignored.
+
+Every command runs **from this directory**: a `unit-id` is a working-directory-relative
+path, so invoking one from a sub-folder produces keys nothing can join on.
+
+- **Shared, not repo-local:** `$CLAUDE_CONFIG_DIR/tags-schema.yaml` and
+  `$CLAUDE_CONFIG_DIR/tags-index.tsv` (`D:/_/_AI`) span every project on this machine, C#
+  included. Pull that repo before Pass 5 and Pass 7 and push after.
+- This run added **28 axis-A tags** (3,759 -> 3,787) and **19 index rows**. Both files
+  flipped from CRLF to LF, which is the convention the C# skill's own documentation says to
+  converge on; the diff is that flip plus this run's rows, with no unit-id lost (verified by
+  comparing the sorted unit-id sets).
+- The index shrank from 29,995 to 25,220 rows because the Java `build-index` merges by
+  unit-id where the C# one appends. The 4,775 removed rows were exact duplicate unit-ids
+  from repeated C# runs; all 25,201 distinct unit-ids survive.
+- **The shared vocabulary is 12x over its 300-tag ceiling.** `compact-vocabulary` (dry run)
+  would prune 3,487 tags and strip 22 references in `tools/` alone. Applying it rewrites
+  tags across the C# repositories too, so it needs an explicit decision and was not run.
+- Nine axis-B candidates were reported for review: Callable Abstraction, Concurrency, Error
+  Handling, File Transfer, Interprocess Communication, Memento Pattern, Resource
+  Coordination, Text Parsing, Transaction Semantics. Axis B stays a raw string in
+  `concepts:` until `match-axis-b` exists (Milestone C).
+
 ## Verification of the pilot
 
 Run from the repository root against `tools/`, after the last documentation edit:
@@ -110,16 +137,28 @@ Run from the repository root against `tools/`, after the last documentation edit
 - `update-readme tools --recurse --subsystems --scaffold-opening` - reports `unchanged`,
   and the hand-written opening narrative, `## Architecture` and `## Entry Points` sections
   all survive the re-run untouched.
+- `apply-tags --raw-tags=raw-tags.tsv` - 22 targets written, then 0 written / 22 unchanged
+  on the second run. `check-stale` stays silent afterwards: the digest covers only member
+  summaries, so applying tags never flips a class to stale.
+- `update-readme --recurse --subsystems --scaffold-opening` still reports `unchanged` with
+  the new `tags:`/`concepts:`/`facets:`/`description:` front matter in place.
+- `search "read write lock arbitrary objects"` ranks `tools/LockImproved.java` third, behind
+  two C# `ILock` rows - the cross-project corpus works.
 - Every `.java` file under `tools/` is still CRLF.
 
 ## Next Action
 
-The pilot folder is finished. Next is **Milestone B of the generator itself** - the tags
-pipeline (Pass 4-7): `extract-tags`, `enrich-raw-tags`, `split-fill-chunks`,
-`merge-fill-chunks`, `build-vocabulary`, `compact-vocabulary`, `apply-tags`, `build-index`,
-`search`, `suggest-tags`. Accepted tags are written back into the same
-`<!-- docstate -->` block `check-stale` already maintains, and `build-index` produces the
-BM25 `tags-index.tsv`. It is verified by re-running the pipeline over `tools/`.
+The pilot folder is finished through Pass 7, and Milestones A and B of the generator are
+built and proven on it. Two independent choices remain, for the user to make:
 
-Documenting the remaining 1,439 `.java` files is a separate multi-session effort; claim a
-folder in the table above before starting one.
+1. **Milestone C of the generator** - repair/dedup/extras: `list-corrupted`,
+   `fix-doc-split`, `find-duplicates`, `scaffold`/`scaffold-remarks`,
+   `consolidate-vocabulary`, `match-axis-b`/`apply-axis-b-matches`,
+   `resolve-tag-conflicts`, `migrate-collaborators`.
+2. **Document the remaining 1,439 `.java` files** - a multi-session effort in its own
+   right. Claim a folder in the table above before starting one, deepest first, and commit
+   at each folder boundary. `streamIO/` (674 files) is the largest and would itself need
+   several sessions.
+
+Whether to run `compact-vocabulary --apply` on the shared vocabulary is a third, separate
+decision - see the Tags pipeline section above.
