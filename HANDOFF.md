@@ -128,10 +128,14 @@ concurrently against the same file):
 
 | Batch | Files | Lines | Documented | Status | Claimed by |
 |---|--:|--:|--:|---|---|
-| `streamIO/copy` | 206 | 42863 | 0 | unclaimed | - |
-| `function` | 204 | 27689 | 0 | unclaimed | - |
-| `streamIO/object` | 185 | 38857 | 0 | unclaimed | - |
-| `streamIO/integer` | 157 | 39243 | 0 | unclaimed | - |
+| `streamIO/copy` (root+boole+groupM+monoid+order+primitiveOp+shift) | 82 | 11329 | 0 | claimed | agent-copy-misc |
+| `streamIO/copy/group` | 124 | 31328 | 0 | claimed | agent-copy-group |
+| `function` (root+index+real+string+vector+byref) | 98 | 12899 | 0 | claimed | agent-function-misc |
+| `function/derive` | 106 | 14586 | 0 | claimed | agent-function-derive |
+| `streamIO/object` (root+backTrack+filterIn+filterInOut+filterOut+integer+yaml+json) | 79 | 13501 | 0 | claimed | agent-object-misc |
+| `streamIO/object/enumer` | 79 | 18229 | 0 | unclaimed | - |
+| `streamIO/object/parser` | 27 | 6942 | 0 | unclaimed | - |
+| `streamIO/integer` (needs further sub-batch splitting, 157 files/39243 lines total) | 157 | 39243 | 0 | unclaimed | - |
 | `graphic` (root+example+implement+svg) | 50 | 14297 | 50 | done | agent-graphic-misc |
 | `graphic/math2D`+`graphic/ms3d` | 18 | 3525 | 18 | done | agent-graphic-2d |
 | `graphic/math3D` | 32 | 6425 | 32 | done | agent-graphic-math3D |
