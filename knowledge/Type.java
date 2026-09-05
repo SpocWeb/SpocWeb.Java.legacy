@@ -3,6 +3,17 @@ package knowledge;
 import java.lang.reflect.Field;
 
 /**
+ * The classification an object carries, itself modelled as a {@link Relation} so that
+ * types can be related to one another rather than only listed.
+ *
+ * <p>Two super-type references are held: the inherited one, which gives a hierarchy and
+ * is also how an enumeration's values are modelled as sub-types of the enumeration, and
+ * {@code Type2}, which turns that hierarchy into a network. The {@link MetaType} on top of
+ * both is the fixed, coarse split that the rest of the package switches on.
+ *
+ * <p>Being a relation, a type is persisted with its parents' columns concatenated onto its
+ * own, which is why {@code Fields} starts from {@code Relation.Fields}.
+ *
  * Type of the Object for Categorization,
  * usable only for one Dimensional Categories.
  * The rest must be done by Attributes of certain Types.
@@ -12,6 +23,12 @@ import java.lang.reflect.Field;
  * Design Decisions:
  * No Hierarchy or even Network structure imposed on these Types (apart from the MetaType).
  * Possibly with increasing Model Size these Types have to be organized in their own way!
+ * <!-- docstate
+ * pass: 2
+ * mtime: 2026-09-05T08:15:05Z
+ * digest: 3e9ea35caf35e54a98c55037e662b1c11b0bd9d813060ce3e1c8b0e44d8b7cef
+ * stale: false
+ * -->
  */
 public class Type
 extends Relation {

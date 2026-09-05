@@ -4,6 +4,18 @@ import java.lang.reflect.Field;
 
 
 /**
+  * A primary key that is a single meaningless integer ID, and the base class for every
+  * object identified that way.
+  *
+  * <p>The ID carries no meaning precisely so that it stays stable while everything
+  * describing the object changes. {@code equals} and {@code hashCode} are defined on the
+  * ID alone, which is what {@link IPrimaryKey} requires and what lets
+  * {@link DbCachedFactory} use such an object as its own cache key.
+  *
+  * <p>It is also a {@link DirtyFlag}, so an instance carries both its identity and its
+  * modification state - the two things a generic persistence layer needs before it knows
+  * anything else about the object.
+  *
   * IdKey.java
   *
   * Created on 9. Mai 2001, 00:01
@@ -17,6 +29,12 @@ import java.lang.reflect.Field;
   *
   * @author  Matthias Heuer
   * @version
+  * <!-- docstate
+  * pass: 2
+  * mtime: 2026-09-05T08:16:08Z
+  * digest: 16fe011f60dca9f33ac26c7d4c908cdcf4e910a6dd52fa20e6ef4a3e2aff04e8
+  * stale: false
+  * -->
   */
 public class IdKey
 extends DirtyFlag
@@ -89,7 +107,7 @@ implements PersistAble, IPrimaryKey {
 	  * This generic Implementation can be overridden by faster hardcoded ones. */
 	public String toString() { return Condition(); }
 
-	/**  Returns a hashcode for this Object
+	/** ï¿½Returns a hashcode for this Object
 	 *  This HashCode has to be identified with the primary key of this Object  */
 	public int hashCode() { return ID; }
 
@@ -126,7 +144,16 @@ implements PersistAble, IPrimaryKey {
 		return new IdKey(((IdKey)Key).ID); }
 //		return (IPrimaryKey) newInstance(new IdKey(RS.getInt(DBKeyNames[0]))); } //since there is only one Field, Sequence doesn't matter here!
 
-	/** Overloaded Constructor initializing by the primary Key 	  */
+	// TODO: LOGIC: the block comment disabling the code above is never closed, so it runs
+	// on until the end of the following Javadoc and swallows it; newInstance below is
+	// therefore left undocumented in the generated API.
+	/**
+	 * Returns a new instance of this class initialised from the given primary key.
+	 *
+	 * <p>Overloaded Constructor initializing by the primary Key.
+	 *
+	 * @param Key the key the new instance is built from
+	 */
 	public PersistAble newInstance (IPrimaryKey Key) {
 		return DBObjectFactory.newInstance (this, Key); }
 

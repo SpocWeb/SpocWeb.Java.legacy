@@ -5,6 +5,18 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 
 /**
+ * A named, typed entity in the knowledge model - the plain object that attributes and
+ * relations are hung off, and the root of both.
+ *
+ * <p>{@link AttributeObject} and {@link Relation} extend it rather than replace it, and
+ * what tells the three apart at runtime is the {@link MetaType} of their {@link Type}, not
+ * their Java class: the same row can be read back as whichever of them its meta-type says
+ * it is. That is why the subject and object columns are declared here, on the base class,
+ * even though a plain object uses neither.
+ *
+ * <p><b>Invariant,</b> not enforced here: the meta-type of this object's type must read
+ * {@code Object} (1).
+ *
  * This Class can aggregate Scalar Attributes and models Objects only
  * The MetaType of the Type for this Class must always be 'Object'(1).
  * Derived Classes are:
@@ -25,6 +37,12 @@ import java.util.ArrayList;
  * where a relational Table is mapped to a specific Object manually or by Name.
  * OODBs work like this and they can exploit the Reflection API of Languages like Java.
  *
+ * <!-- docstate
+ * pass: 2
+ * mtime: 2026-09-05T08:17:51Z
+ * digest: 1dbe6ed790a568df2a522e7a0b71c6e616d0efe002b1b33bf42594c25d5e7ae4
+ * stale: false
+ * -->
  */
 public class Objekt
 extends Status
@@ -108,15 +126,19 @@ implements IObject {
 		return Status; }
 	
 	/** Returns the Type for this Object */
-	public Type getType() throws SQLException { 
+	public Type getType() throws SQLException {
 		if (Type == null)
-            Type = (Type) DBObjectFactory.FactoryStatus.getObject(new IdKey(StatusID)); 
+            // TODO: LOGIC: keyed by StatusID, not TypeID, and routed through FactoryStatus
+            // rather than FactoryType, so this resolves and caches the Status row as this
+            // object's Type whenever the two IDs differ; BasicAttribute.getType has the
+            // identical defect.
+            Type = (Type) DBObjectFactory.FactoryStatus.getObject(new IdKey(StatusID));
 		return Type; }
-	
-	/** Returns the Status for this Object */
+
+	/** Returns the ID of the Status for this Object, without resolving it. */
 	public int getStatusID() { return StatusID; }
-	
-	/** Returns the Type for this Object */
+
+	/** Returns the ID of the Type for this Object, without resolving it. */
 	public int getTypeID() { return TypeID; }
 	
 	////////////////////////////////////////////////////////////////////////////

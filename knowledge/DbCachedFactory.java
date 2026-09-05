@@ -7,6 +7,18 @@ import java.sql.SQLException;
 import java.util.WeakHashMap;
 
 /**
+  * A {@link DBObjectFactory} that returns the same instance for the same primary key for
+  * as long as anything still holds it, by caching loaded objects weakly.
+  *
+  * <p>The cache is a {@link WeakHashMap} keyed by the object's own primary key, holding a
+  * {@link WeakReference} to the object. Both halves are deliberate: these objects are
+  * usually their own key, so a strong key would pin them, and a strong value would defeat
+  * the point of unloading unused rows.
+  *
+  * <p><b>Identity, not just speed:</b> because the same key yields the same instance, a
+  * caller may compare loaded objects by reference and may mutate one knowing every holder
+  * sees the change. That guarantee lasts only while a strong reference exists somewhere.
+  *
   * DbCachedFactory.java
   *
   * Maintains a Set of Objects weakly cached in a WeakHashTable
@@ -17,6 +29,12 @@ import java.util.WeakHashMap;
   *
   * @author  Matthias Heuer
   * @version
+  * <!-- docstate
+  * pass: 2
+  * mtime: 2026-09-05T08:15:05Z
+  * digest: f67c870a8da4593e7b6730db628bb74fb020aa5596bca60c4fe8a15f25bfbaad
+  * stale: false
+  * -->
   */
 public class DbCachedFactory 
 extends DBObjectFactory {
@@ -29,6 +47,18 @@ extends DBObjectFactory {
 	//  static Methods  //
 	//////////////////////
 	
+	/**
+	 * Installs a cached factory over the given connection for each of the eight object
+	 * kinds this package persists.
+	 *
+	 * <p>Only the first four - status, object, meta-type and type - become caching
+	 * factories; the four primitive attribute kinds stay plain {@link DBObjectFactory}
+	 * instances, because an attribute is identified by its type/subject/status triple
+	 * rather than by a stable ID and so gains nothing from an identity cache.
+	 *
+	 * @param C the connection every installed factory will read through
+	 * @throws SQLException when a factory cannot be prepared against the connection
+	 */
 	public static void initCachedFactories(Connection C) throws SQLException {
 		FactoryStatus   = new DbCachedFactory(C, new Status  (0)); 
 		FactoryObject   = new DbCachedFactory(C, new Objekt  (0)); 
@@ -82,6 +112,9 @@ extends DBObjectFactory {
 			ResultSet rs = conn.createStatement().executeQuery(STR_Select_Max + TableName);
 			while (rs.next ())
 				MaxID = rs.getLong(1);
+		// TODO: LOGIC: the failure is swallowed whole, leaving MaxID at 0; a caller cannot tell
+		// a table whose largest ID really is 0 from one whose max query failed, and the
+		// 0-means-insert convention documented on MaxID then applies to every object.
 		} catch(SQLException x) { }
 	}
 

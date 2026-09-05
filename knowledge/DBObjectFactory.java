@@ -13,6 +13,26 @@ import java.util.ArrayList;
 import streamIO.AStreamOut;
 
 /**
+  * Loads, saves and deletes any {@link PersistAble} object over one JDBC connection, by
+  * reading the table and column names the object reports about itself and reflecting over
+  * its fields.
+  *
+  * <p>One instance binds a connection to a single table: the prototype passed to the
+  * constructor supplies the table name and the field arrays, from which the SELECT, INSERT,
+  * UPDATE and DELETE prefixes are built once and reused. The eight {@code Factory*} statics
+  * are the per-table instances the rest of the package resolves its references through, and
+  * {@link #initFactories(Connection)} is what installs them.
+  *
+  * <p><b>Invariant:</b> the prototype's {@code Fields()} and {@code DBFieldNames()} must
+  * agree in order and length, and the result set a row is read from must present the key
+  * columns first and the data columns after, in that same order - the reader addresses
+  * columns by position, not by name, so a mismatch mis-assigns fields silently rather than
+  * failing.
+  *
+  * <p>Values are written into the SQL text directly rather than through bound parameters;
+  * see the flagged defects at {@link #Condition(IPrimaryKey, String)} and
+  * {@link #insertObject(PersistAble)}.
+  *
   * Title: DBObjectFactory.java<p>
   * Description:
   * Implements all the Behavior necessary to load / cache / save an Object implementing
@@ -50,6 +70,12 @@ import streamIO.AStreamOut;
   * Created on	2000-11-26, 01;13;44<p>
   * @author 	Matthias Heuer
   * @version	1.0
+  * <!-- docstate
+  * pass: 2
+  * mtime: 2006-03-11T02:04:43Z
+  * digest: 1c6bc609d8ecc848acc12f660f2491e9827acda816c4619787b280f66bb9b5da
+  * stale: false
+  * -->
   */
 public class DBObjectFactory
 extends Object {
@@ -176,8 +202,12 @@ extends Object {
 		System.arraycopy(ret, 0, ret2, 0, j);
 		return ret2; }
 
-	/** @return an Array of Field Names extracted from the Array of the Fields,
-	  * Since ususally the Field Name is the same as the Class Name. */
+	/**
+	 * Returns the declared name of each of the given fields, in the same order.
+	 *
+	 * @return an Array of Field Names extracted from the Array of the Fields,
+	 *   Since ususally the Field Name is the same as the Class Name.
+	 */
 	final static public String[] getFieldNames(Field[] Fields) {
 		int i = Fields.length;
 		String[] fieldNames = new String[i];
@@ -185,8 +215,11 @@ extends Object {
 			fieldNames[i] = Fields[i].getName();
 		return fieldNames; }
 
-	/** @return an Array of Field Types extracted from the Array of the Fields,
-	  */
+	/**
+	 * Returns the declared type of each of the given fields, in the same order.
+	 *
+	 * @return an Array of Field Types extracted from the Array of the Fields
+	 */
 	final static public Class[] getFieldTypes(Field[] Fields) {
 		int i = Fields.length;
 		Class[] FieldTypes = new Class[i];
@@ -194,8 +227,19 @@ extends Object {
 			FieldTypes[i] = Fields[i].getType();
 		return FieldTypes; }
 
-	/** @return a String representing the SQL Condition for this Primary key
-	  * This generic Implementation can be overridden by faster hardcoded ones. */
+	/**
+	 * Builds the WHERE clause selecting exactly the row the given key identifies, ANDing one
+	 * equality per key column.
+	 *
+	 * @param Prefix prepended to each column name, for qualifying columns by table
+	 * @return a String representing the SQL Condition for this Primary key.
+	 *   This generic Implementation can be overridden by faster hardcoded ones.
+	 * @throws IllegalAccessError when a key field cannot be read reflectively
+	 */
+	// TODO: SECURITY: the key value is concatenated into the SQL text with no quoting and no
+	// escaping, so any String or Date key whose value contains a quote breaks the statement
+	// and any attacker-controlled key value injects SQL; the same holds for insertObject and
+	// updateObject. Bound parameters are the fix, not escaping.
 	public static String Condition (IPrimaryKey obj, String Prefix) {
 		StringBuffer ret = new StringBuffer(DBObjectFactory.STR_WHERE_);
 		String[] dBKeyNames = obj.DBKeyNames();
@@ -319,14 +363,27 @@ extends Object {
 	//  Methods  //
 	///////////////
 
-	/** Update this Object in the DB.
-	 *  Returns true when updated.  */
+	/**
+	 * Deletes the row the object's primary key identifies.
+	 *
+	 * @return true when exactly one row was deleted
+	 * @throws SQLException when the statement fails
+	 */
 	public boolean deleteObject(PersistAble obj) throws SQLException {
 		StringBuffer SB = new StringBuffer(strDelete).append(obj.primaryKey().Condition());
 		return (1 == Conn.createStatement().executeUpdate(SB.toString())); } //create a new Statement for each Query!
 
-	/** Update this Object in the DB.
-	 *  Returns true when updated.  */
+	/**
+	 * Inserts the object as a new row.
+	 *
+	 * @return true when exactly one row was inserted
+	 * @throws SQLException when the statement fails
+	 * @throws IllegalAccessError when a field cannot be read reflectively
+	 */
+	// TODO: LOGIC: the column list built in the constructor is keys-then-fields in ascending
+	// order, but the value list below appends fields first and then keys, each descending, so
+	// values line up with the wrong columns for every table with more than one column; only a
+	// table whose key and field lists are symmetric would survive this.
 	public boolean insertObject(PersistAble obj) throws SQLException {
 //		IPrimaryKey Key = obj.primaryKey();
 		StringBuffer SB = new StringBuffer(strInsert);
