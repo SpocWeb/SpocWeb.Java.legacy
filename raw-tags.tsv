@@ -52,3 +52,6 @@ knowledge/KnowledgeTest.java:KnowledgeTest	class	knowledge/KnowledgeTest.java	co
 tools/threads/TimeOuterTest.java:TimeOuterTest	class	tools/threads/TimeOuterTest.java	code/unit_test, code/thread_interruption, code/timeout_handling	Testing, Concurrency	test	stable	medium
 streamIO/detector/LimitedSizeStreamOut.java:LimitedSizeStreamOut	class	streamIO/detector/LimitedSizeStreamOut.java	code/fixed_size_buffer, code/overflow_detection	Capacity Management, Stream Output	infrastructure	stable	low
 streamIO/detector	folder	streamIO/detector	code/fixed_size_buffer, code/overflow_detection	Capacity Management, Stream Output	infrastructure	stable	low
+streamIO/factory/FactoryByClass.java:FactoryByClass	class	streamIO/factory/FactoryByClass.java	code/factory_pattern, code/reflection	Object Instantiation, Prototype Pattern	infrastructure	stable	low
+streamIO/factory/FactoryByPrototype.java:FactoryByPrototype	class	streamIO/factory/FactoryByPrototype.java	code/factory_pattern, code/cloneable_pattern	Object Instantiation, Prototype Pattern	infrastructure	stable	low
+streamIO/factory	folder	streamIO/factory	code/factory_pattern, code/reflection, code/cloneable_pattern	Object Instantiation, Prototype Pattern	infrastructure	stable	low

@@ -4,17 +4,14 @@ import graphs.ICopy;
 import streamIO.IFactory;
 
 /**
-  * Title: FactoryByPrototype<p>
-  * Description:
-  * Purpose:
-  * Returns new Object of the same Class.
-  * This is similar to the Prototype Approach,
+  * Creates a new Object by copying a prototype Object's data, not only its Class.
+  * This is similar to {@link FactoryByClass}'s Approach,
   * only that the Prototype also copies Data, not only Type Information.
-  * 
+  *
   * Design Decisions / Implementation Details:
   * Since Cloneable() is only a tagging Interface
   * and the clone() Method is protected, an explicit ICopy Interface has to be used!
-  * 
+  *
   * Known SubClasses: <none>
   * 
   * Known Uses: <none>
@@ -24,6 +21,15 @@ import streamIO.IFactory;
   * Created on	10-01-2002, 09:24 AM<p>
   * @author 	Matthias Heuer
   * @version	1.0
+  * <!-- docstate
+  * pass: 2
+  * mtime: 2026-09-05T09:06:26Z
+  * digest: 7c5a248552a32f2ecf0d2b79051f4e31047176293281134fc09db2bd28cc332f
+  * stale: false
+  * tags: [code/factory_pattern, code/cloneable_pattern]
+  * concepts: [Object Instantiation, Prototype Pattern]
+  * facets: {layer: infrastructure, status: stable, complexity: low}
+  * -->
   */
 public class FactoryByPrototype
 implements IFactory {
@@ -60,12 +66,8 @@ implements IFactory {
 	/// #region : Interface IFactory: Implementation
 	////////////////////////////////////////////////////////////////////////////////
 	
-	/** @return the next (Parent) Object of this one.
-	  * No Exception is thrown at the End, instead EOI is returned.
-	  * When IO Processes are bound to this streamIO, IOException is wrapped into an IOError.
-	  * This is less explicit, but much faster because Exception Handling can be extremely slow.
-	  * Alternatively this Method can block until new Data is available,
-	  * but this should always have a TimeOut to avoid DeadLocks.
+	/** Creates a new Object by copying the prototype supplied to the constructor.
+	  * @return a copy of the prototype Object, via {@link ICopy#Copy()}
 	  */
 	public Object nextItem() { return obj.Copy(); }
 	

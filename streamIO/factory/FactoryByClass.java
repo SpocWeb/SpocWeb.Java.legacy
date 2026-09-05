@@ -7,15 +7,13 @@ import streamIO.exception.BaseException;
 //import java.lang.reflect.Constructor;
 
 /**
-  * Title: FactoryByClass<p>
-  * Description:
-  * Purpose:
-  * Returns new Object of the same Class.
+  * Creates a new, uninitialized instance of the same Class as a given prototype Object,
+  * using reflection rather than copying.
   * This is similar to the Prototype Approach,
   * only that the Prototype also copies Data, not only Type Information.
-  * 
+  *
   * Design Decisions / Implementation Details:
-  * 
+  *
   * Known SubClasses: <none>
   * 
   * Known Uses: <none>
@@ -25,6 +23,15 @@ import streamIO.exception.BaseException;
   * Created on	10-01-2002, 09:24 AM<p>
   * @author 	Matthias Heuer
   * @version	1.0
+  * <!-- docstate
+  * pass: 2
+  * mtime: 2026-09-05T09:06:15Z
+  * digest: 0e3e8c5748ccde039fcbefef77c261c8fa507b364a7cdf104c9dd28c2b099b80
+  * stale: false
+  * tags: [code/factory_pattern, code/reflection]
+  * concepts: [Object Instantiation, Prototype Pattern]
+  * facets: {layer: infrastructure, status: stable, complexity: low}
+  * -->
   */
 public class FactoryByClass
 implements IFactory {
@@ -74,12 +81,11 @@ implements IFactory {
 	/// #region : Interface IFactory: Implementation
 	////////////////////////////////////////////////////////////////////////////////
 	
-	/** @return the next (Parent) Object of this one.
-	  * No Exception is thrown at the End, instead EOI is returned.
-	  * When IO Processes are bound to this streamIO, IOException is wrapped into an IOError.
-	  * This is less explicit, but much faster because Exception Handling can be extremely slow.
-	  * Alternatively this Method can block until new Data is available,
-	  * but this should always have a TimeOut to avoid DeadLocks.
+	/** Creates a new instance of the Class captured from the constructor's Object, via
+	  * its public no-argument constructor.
+	  * @return a new instance of the captured Class
+	  * @throws BaseException wrapping any {@link InstantiationException} or
+	  *         {@link IllegalAccessException} thrown by the reflective construction
 	  */
 	public Object nextItem() {
 		try {
