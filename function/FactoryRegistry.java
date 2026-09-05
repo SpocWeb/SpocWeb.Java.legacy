@@ -26,6 +26,15 @@ import streamIO.IFactory;
   * Created on	10-02-2002, 01:11 AM<p>
   * @author 	Matthias Heuer
   * @version	1.0
+  * <!-- docstate
+  * pass: 2
+  * mtime: 2026-09-05T10:12:24Z
+  * digest: b0c23f3c1e9647f3583ffdfba79580a92f90f94f3fff429e1e1255d11139e4a8
+  * stale: false
+  * tags: [code/function_contract, code/function_composition]
+  * concepts: [Function/Relation Contract]
+  * facets: {layer: utility, status: legacy, complexity: low}
+  * -->
   */
 public class FactoryRegistry
 implements IProcessor {
@@ -258,7 +267,7 @@ implements IProcessor {
 	public Object MapAt(Object factory) { // throws Exception {
 		return ((IFactory) f.get(factory)).nextItem(); }
 
-	/** Returns arg Mapped in Place by this Object: this.MapAt(arg) this=°arg
+	/** Returns arg Mapped in Place by this Object: this.MapAt(arg) this=ï¿½arg
 	  * This is the Function working on 'arg' defined by the implementing Class.
 	  * The Class implementing this Method is the means of exchanging this Operation.	  */
 //	public Object MapAt (Object arg) { }

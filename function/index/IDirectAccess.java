@@ -9,6 +9,15 @@ package function.index;
  * Defines the Interface for random Read/Write Access to a Container.  
  * @author heuerm
  *
+ * <!-- docstate
+ * pass: 2
+ * mtime: 2026-09-05T10:13:18Z
+ * digest: 3552dba47de0dde794e9322634f6149077361c94aa9c208a9f965b56c3766a49
+ * stale: false
+ * tags: [code/indexing]
+ * concepts: [Indexed Collection Access]
+ * facets: {layer: utility, status: legacy, complexity: low}
+ * -->
  */
 public interface IDirectAccess 
 extends IDirectRead {

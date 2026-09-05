@@ -8,6 +8,15 @@ package function;
  * When the Element is comparable, only one gives True.
  *
  * Absolute Value is only important because of the Metric defined by "<".
+ * <!-- docstate
+ * pass: 2
+ * mtime: 2026-09-05T10:12:24Z
+ * digest: c4985a068122b3d0efde1e6f199d9d57d8c3a3477a1ae4348b979dc4560fe27f
+ * stale: false
+ * tags: [code/function_contract, code/function_composition]
+ * concepts: [Function/Relation Contract]
+ * facets: {layer: utility, status: legacy, complexity: low}
+ * -->
  */
 public interface IIOrderAble {
 

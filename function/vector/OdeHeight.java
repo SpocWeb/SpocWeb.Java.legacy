@@ -35,6 +35,15 @@ import math.vector.VectorDouble;
  * To draw these HyperPlanes, you have to Step along a Trajectory in two Dimensions
  * (full circle) and branch off to the third Dimension (also full circle)
  * and connect each inner circle with the previous one, by choosing the nearest Point.
+ * <!-- docstate
+ * pass: 2
+ * mtime: 2026-09-05T10:13:18Z
+ * digest: 81cc7650ebdd7c8cfb85f94540e5dd458e0929c0ab22961867d932be4e9963bd
+ * stale: false
+ * tags: [code/differential_integration, code/vector_math]
+ * concepts: [ODE Integration]
+ * facets: {layer: utility, status: legacy, complexity: low}
+ * -->
  */
 public class OdeHeight
 extends AOdeFloat {

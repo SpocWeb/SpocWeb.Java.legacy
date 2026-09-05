@@ -10,6 +10,15 @@ package function;
  *
  * Absolute Value is only important because of the Metric defined by "<".
  * A Default Implementation is done in 'absOrderable'.
+ * <!-- docstate
+ * pass: 2
+ * mtime: 2026-09-05T10:12:24Z
+ * digest: 452a900f42fe5adb6248f41274e168b2fab949d682356fdff69eb16d74bd1de4
+ * stale: false
+ * tags: [code/function_contract, code/function_composition]
+ * concepts: [Function/Relation Contract]
+ * facets: {layer: utility, status: legacy, complexity: low}
+ * -->
  */
 public interface IOrderAble
 extends IIOrderAble, Comparable {

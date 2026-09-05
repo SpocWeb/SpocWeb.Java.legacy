@@ -10,6 +10,9 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 
 /**
+ * Abstract {@link IIndexer} that adds a bulk {@link #update(ResultSet, int[])} helper for
+ * indexing a JDBC {@link ResultSet} by one or more columns.
+ *
  * Title: <p>
  * Description:
  * Purpose:
@@ -29,15 +32,26 @@ import java.sql.SQLException;
  * Created on	10-26-2002, 12:47 PM<p>
  * @author heuerm
  * @version	1.0
+ * <!-- docstate
+ * pass: 2
+ * mtime: 2026-09-05T16:41:04Z
+ * digest: 0c441140a5630e8953cc549451e9b2f5ad29863bc5aaa89f1bafae6684e93bf9
+ * stale: false
+ * tags: [code/indexing]
+ * concepts: [Indexed Collection Access]
+ * facets: {layer: utility, status: legacy, complexity: low}
+ * -->
  */
-abstract public class AIndexer 
+abstract public class AIndexer
 implements IIndexer {
 
-	/** @see function.index.IIndexer#setIndexOf(java.lang.Object, int)	 */
-	abstract public int setIndexOf(Object arg, int ndx); 
-	
-	/** @see function.index.IIndex#getIndexOf(java.lang.Object)  */
-	abstract public int getIndexOf(Object arg); 
+	/** Records the index at which {@code arg} occurs.
+	 * @see function.index.IIndexer#setIndexOf(java.lang.Object, int)	 */
+	abstract public int setIndexOf(Object arg, int ndx);
+
+	/** Returns the index previously recorded for {@code arg}.
+	 * @see function.index.IIndex#getIndexOf(java.lang.Object)  */
+	abstract public int getIndexOf(Object arg);
 	
 	/**
 	 * creates an Index on the given ResultSet

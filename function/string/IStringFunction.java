@@ -9,9 +9,12 @@ package function.string;
 import function.IFunction;
 
 /**
+  * Type-safe refinement of {@link function.IFunction} for functions that map a String to a
+  * String.
+  *
   * Title: IStringFunction<p>
   * Description:
-  * Defines the Interface for an Object mapping Strings to Strings. 
+  * Defines the Interface for an Object mapping Strings to Strings.
   * This is used as an Alternative to IFunction which maps Objects to Objects. 
   * 
   * Any stateless String Function can be defined as IStringFunction 
@@ -30,6 +33,15 @@ import function.IFunction;
   * Created on	12-21-2002, 04:51 PM<p>
   * @author 	Matthias Heuer
   * @version	1.0
+  * <!-- docstate
+  * pass: 2
+  * mtime: 2026-09-05T20:43:48Z
+  * digest: 25dbe9419f92962ca1fe974eabffd88ad92611d399184c039936e45bd31afe7b
+  * stale: false
+  * tags: [code/string_transform, code/function_contract]
+  * concepts: [String Transform Function]
+  * facets: {layer: utility, status: legacy, complexity: low}
+  * -->
  */
 public interface IStringFunction 
 extends IFunction {

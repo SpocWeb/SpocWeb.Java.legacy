@@ -13,6 +13,15 @@ import java.io.File;
  * for the cost of one additional Call to myFunction().
  * This corresponds to Filters and other recursively calling Objects.
  * It makes it possible to dynamically assemble Functions for fast Evaluations
+ * <!-- docstate
+ * pass: 2
+ * mtime: 2026-09-05T16:31:33Z
+ * digest: 71d0e17bc3e162b495201fcddb1937b05e4d51056f458b7d66dbe5bd448b1fda
+ * stale: false
+ * tags: [code/function_contract, code/function_composition]
+ * concepts: [Function/Relation Contract]
+ * facets: {layer: utility, status: legacy, complexity: low}
+ * -->
  * and to use it for analytical Operations like Derivation.  */
 public abstract class AFunction
 implements IFunction {
@@ -50,7 +59,8 @@ implements IFunction {
     /// preliminary Member Implementations 
     ///////////////////////////////////////////////////////////////////////////
     
-	/** @return arg mapped in Place by this Object: this.MapAt(arg) this=°arg
+	/** Maps {@code arg} in place; the base implementation always throws and must be overridden.
+	  * @return arg mapped in Place by this Object: this.MapAt(arg) this=ï¿½arg
 	  * This is the Function working on 'arg' defined by the implementing Class.
 	  * The Class implementing this Method is the means of exchanging this Operation.	 */
 	public Object MapAt(final Object arg) {
@@ -93,7 +103,8 @@ implements IFunction {
 	/**Returns the 'simplified' Concatenation of this Function and arg.	 */
 //	public IFunction simplify(IFunction arg){return null;}
 
-	/**@return  The string representation of the Function.
+	/** Returns the fully qualified class name of this function.
+	 * @return  The string representation of the Function.
 	 * @since   JDK1.0
 	 * Uses getName() to get the fully qualified Name,
 	 * which is needed for Restoration in the forName() Method.	 */

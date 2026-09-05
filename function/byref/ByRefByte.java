@@ -19,6 +19,15 @@ import function.ICountAble;
   * Created on	2001-12-12, 01;52;04<p>
   * @author 	Matthias Heuer
   * @version	1.0
+  * <!-- docstate
+  * pass: 2
+  * mtime: 2026-09-05T10:12:24Z
+  * digest: 42a89f81a7f30f24f951cac77179d8bc1a26b4038486694d02c514414deaebca
+  * stale: false
+  * tags: [code/function_wrapper, code/mathematical_constants]
+  * concepts: [By-Reference Primitive Wrapper]
+  * facets: {layer: utility, status: legacy, complexity: low}
+  * -->
   */
 final public class ByRefByte
 extends AOrderAble

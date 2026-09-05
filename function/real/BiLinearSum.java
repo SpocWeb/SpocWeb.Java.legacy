@@ -27,6 +27,15 @@ import streamIO.real.random.RandomLorentz;
  * @author mheuer
  * @version	1.0
  *
+ * <!-- docstate
+ * pass: 2
+ * mtime: 2026-09-05T16:43:36Z
+ * digest: 93e66d9670d4db071264cc9d5eebdb86c9f4082011c4a605b178c823ee4c4a70
+ * stale: false
+ * tags: [code/running_aggregates, code/mathematical_function]
+ * concepts: [Streaming Numeric Aggregator]
+ * facets: {layer: utility, status: legacy, complexity: low}
+ * -->
  */
 public class BiLinearSum 
 extends StatefulFloatFunction {
@@ -62,11 +71,13 @@ extends StatefulFloatFunction {
 		factorNew = Math.sqrt(1.0-factorOld*factorOld) * scale; /*Normierung auf Amplitude 1.0 */
 	}
 	
-	/** @return the next Random single Precision Number	 */
+	/** Widens {@code value_} to {@code double} and delegates to {@link #Map(double)}.
+	 * @return the next Random single Precision Number	 */
 	public float Map(final float value_){ return (float) Map((double) value_); }
-	
-	/** @return the next Random double Precision Number	 */
-	public double Map(final double value_){ 
+
+	/** Blends the current Value with {@code value_} using {@link #factorOld}/{@link #factorNew}.
+	 * @return the next Random double Precision Number	 */
+	public double Map(final double value_){
 		return _Value  =
 			   _Value *factorOld +
 			   value_*factorNew; }

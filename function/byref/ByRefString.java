@@ -16,6 +16,15 @@ package function.byref;
   * Created on	2001-12-12, 01;52;04<p>
   * @author 	Matthias Heuer
   * @version	1.0
+  * <!-- docstate
+  * pass: 2
+  * mtime: 2026-09-05T20:48:45Z
+  * digest: 178ed43b17fdfbf4ebf461b0b82f1e6a5e86955816582054f2f602fa24846e78
+  * stale: false
+  * tags: [code/function_wrapper, code/mathematical_constants]
+  * concepts: [By-Reference Primitive Wrapper]
+  * facets: {layer: utility, status: legacy, complexity: low}
+  * -->
   */
 final public class ByRefString {
 

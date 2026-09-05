@@ -28,6 +28,15 @@ import streamIO.object.IStreamIn;
   * Created on	2000-11-26, 01;13;44<p>
   * @author 	Matthias Heuer
   * @version	1.0
+  * <!-- docstate
+  * pass: 2
+  * mtime: 2026-09-05T16:43:31Z
+  * digest: 98647c0e8206c5866d4100f72110ee720cd5292ef859722b3da842e3b0849096
+  * stale: false
+  * tags: [code/running_aggregates, code/mathematical_function]
+  * concepts: [Streaming Numeric Aggregator]
+  * facets: {layer: utility, status: legacy, complexity: low}
+  * -->
   */
 public class Adder 
 extends StatefulFloatFunction {
@@ -41,15 +50,18 @@ extends StatefulFloatFunction {
 	  * @param startValue_ Start Value returned by this Filter */
 	public Adder(double startValue_) { super(startValue_); }
 	
-    /** @see function.IFloatFunction#getOrder()     */
+    /** Reports that offsetting the stream is strictly order-preserving.
+     * @see function.IFloatFunction#getOrder()     */
     public byte getOrder() { return IStreamIn.ORDER_ASC_STRICT; }
-    
-	/** @return the next single Precision Number	 */
+
+	/** Adds the fixed offset to {@code value_} and returns the result.
+	 * @return the next single Precision Number	 */
 	public float Map(final float value_) { //return (float) (Sum += Generator.nextDouble()); }
 	    //	++count;
 		return (float)(value_+_Value); }
 
-	/** @return the next double Precision Number	 */
+	/** Adds the fixed offset to {@code value_} and returns the result.
+	 * @return the next double Precision Number	 */
 	public double Map(final double value_) { //return Sum += Generator.nextDouble(); }
 	    //	++count;
 		return value_+_Value; }

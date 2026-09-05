@@ -9,6 +9,9 @@ package function.vector;
 import math.vector.VectorDouble;
 
 /**
+ * Stateless binary operator that keeps the first (non-zero, non-NaN) value seen, for use e.g.
+ * building pivot matrices from streams of individual values/events.
+ *
  * Title: <p>
  * Description:
  * Purpose:
@@ -28,20 +31,31 @@ import math.vector.VectorDouble;
  * Created on	10-26-2002, 12:47 PM<p>
  * @author heuerm
  * @version	1.0
+ * <!-- docstate
+ * pass: 2
+ * mtime: 2026-09-05T20:45:20Z
+ * digest: 235aff503f0ff465d7ed2900888ff79c087725d2d547bde928db7d1b57317bcf
+ * stale: false
+ * tags: [code/vector_math, code/function_composition]
+ * concepts: [Vector Field Function]
+ * facets: {layer: utility, status: legacy, complexity: low}
+ * -->
  */
 public class OpFirst extends AOdeFloat {
-	
+
 	/** the single Instance of this binary Operator 	 */
-	public static final OpFirst OpFirst = new OpFirst(); 
-	
-	/** @see function.vector.IBinaryOpFloat#Funktion(double, double)	 */
-	public double Funktion(final double x, final double y) { 
-		if ((x == 0) || 
-			(x != x)) //NaN 
-			return y; 
+	public static final OpFirst OpFirst = new OpFirst();
+
+	/** Returns the running Value x, unless it is still the zero/NaN sentinel, in which case y.
+	 * @see function.vector.IBinaryOpFloat#Funktion(double, double)	 */
+	public double Funktion(final double x, final double y) {
+		if ((x == 0) ||
+			(x != x)) //NaN
+			return y;
 		return x; }
-	
-	/** @see function.vector.IBinaryOpFloat#Funktion(double, double[], double[])	 */
+
+	/** Fills dydx with the smaller of x and each element of y (used to latch the first value).
+	 * @see function.vector.IBinaryOpFloat#Funktion(double, double[], double[])	 */
 	public void Funktion(final double x, final double[] y, final double[] dydx) {
 		VectorDouble.MIN(dydx, y, y.length, x); }
 	

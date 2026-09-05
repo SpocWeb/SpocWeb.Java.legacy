@@ -17,6 +17,15 @@ import function.derive.ring.body.Gauss;
 /**Defines many Functions describing (accumulated) Probabilities
  * Most of these Functions are (unfortunately) also defined in BodyFuncs
  * That was the Reason, why most Constants were defined in IMeasurAble!
+ * <!-- docstate
+ * pass: 2
+ * mtime: 2026-09-05T20:59:53Z
+ * digest: 7d2ef15b98e1ca414fe6852c90f0934ef24781ad8781fbbc9f27dc9d11e4c31c
+ * stale: false
+ * tags: [code/combinatorics, code/special_function]
+ * concepts: [Combinatorics]
+ * facets: {layer: utility, status: legacy, complexity: low}
+ * -->
  */
 public class ProbFuncs {
 
@@ -368,6 +377,8 @@ public class ProbFuncs {
 		  END;
 
 	/**Returns the Value of the normed Exponential-Distribution
+	 * with Mean m and Standard-Deviation m :	p(x) = 1 - exp(-x/m)	 */
+	/**Returns the Value of the normed accumulated Exponential-Distribution
 	 * with Mean m and Standard-Deviation m :	p(x) = 1 - exp(-x/m)	 */
 	final static public double pExpKum(final double x, final double m) {
 		return 1 - Math.exp(-x/m); }

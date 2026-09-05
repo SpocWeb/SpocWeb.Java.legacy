@@ -12,6 +12,15 @@ package function.vector;
  * @see function.derive.ring.OdeLinear == 1
  * @see function.derive.ring.OdeSquare == x
  * @see function.derive.ring.OdeExp    == y
+ * <!-- docstate
+ * pass: 2
+ * mtime: 2026-09-05T10:13:18Z
+ * digest: 6c0f5bc83fd076ae3c31e4ca2c0d0d791387f2803b8e5cecd519427a329a42f7
+ * stale: false
+ * tags: [code/vector_math, code/function_composition]
+ * concepts: [Vector Field Function]
+ * facets: {layer: utility, status: legacy, complexity: low}
+ * -->
  */
 public interface IBinaryOpFloat {
 

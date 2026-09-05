@@ -6,6 +6,15 @@ import function.IMeasurAble;
 
 /**Calculates and stores the BERNOULLI Values for each number.
  * The Caching ensures a fast access to previously used BERNOULLI Values by Caching.  
+ * <!-- docstate
+ * pass: 2
+ * mtime: 2026-09-05T20:59:44Z
+ * digest: 6118a8824e06960135a34f83cf02180857b98cebafe2d67af0605dc22fac81ff
+ * stale: false
+ * tags: [code/combinatorics, code/special_function]
+ * concepts: [Combinatorics]
+ * facets: {layer: utility, status: legacy, complexity: low}
+ * -->
  */
 public class Bernoulli {
 
@@ -58,6 +67,7 @@ public class Bernoulli {
 */		}
 		return BERNOULLI[--maxVal]; }
 
+	/**Tests {@link #BERNOULLI(int)} against the hard-coded low-order cache values.	 */
 	public static void testBernoulli() throws java.io.IOException {
 		L.n("Teste den Algorithmus zur Erzeugung der Bernoulli-Zahlen :\n");
 		Assert.EQUALS(BERNOULLI[ 1], BERNOULLI ( 1));

@@ -26,6 +26,15 @@ import function.IMeasurAble;
   * Created on	2001-12-12, 01;52;04<p>
   * @author 	Matthias Heuer
   * @version	1.0
+  * <!-- docstate
+  * pass: 2
+  * mtime: 2026-09-05T20:52:42Z
+  * digest: 690c39a915bdefe96e7d6fdff284da279c82fc0f5bf421b9b9904c2b653f7a36
+  * stale: false
+  * tags: [code/function_wrapper, code/mathematical_constants]
+  * concepts: [By-Reference Primitive Wrapper]
+  * facets: {layer: utility, status: legacy, complexity: low}
+  * -->
   */
 final public class ByRefInt
 extends AOrderAble 
@@ -44,22 +53,29 @@ implements ICountAble {
 	//  static Methods for scalar (1Dim) Values:
 	////////////////////////////////////////////////////////////////////////////////
 	
-	/** @return the Value rotated left by 1  */
-	final static public int ROL(int x, final int octave) { 
-		final int maxVal = 1 << octave; 
-		if((x <<= 1) > maxVal) 
+	/** Rotates the low {@code octave} bits of x left by 1.
+	 * @return the Value rotated left by 1  */
+	final static public int ROL(int x, final int octave) {
+		final int maxVal = 1 << octave;
+		if((x <<= 1) > maxVal)
 			x -= maxVal-1;
-		return x; 
+		return x;
 	}
-	
-	/** @return the Value rotated right by 1  */
-	final static public int ROR(final int x, final int octave) { 
-		final int corr = (x &  1) << octave; 
-		return    corr + (x >> 1); 
+
+	/** Rotates the low {@code octave} bits of x right by 1.
+	 * @return the Value rotated right by 1  */
+	// TODO: LOGIC: the dropped low bit is shifted into position 'octave' (corr = (x&1)<<octave),
+	// one bit above the top of the octave-bit range that ROL above uses (maxVal = 1<<octave).
+	// E.g. ROR(5, 3) returns 10 (1010b), outside the 3-bit range ROL(5, 3) operates in (which
+	// correctly returns 3). The shift should likely be '<<(octave-1)' to wrap into the top bit.
+	final static public int ROR(final int x, final int octave) {
+		final int corr = (x &  1) << octave;
+		return    corr + (x >> 1);
 	}
-	
-	/** @return the Value with it's Bit Sequence reverted */
-	final static public int REVERT(int x, final int octave) { 
+
+	/** Reverses the order of the low {@code octave} bits of x.
+	 * @return the Value with it's Bit Sequence reverted */
+	final static public int REVERT(int x, final int octave) {
 		int ret = 0; 
 		for(int i = octave; --i >= 0;) {
 			ret <<= 1; 
@@ -69,16 +85,19 @@ implements ICountAble {
 		}
 		return ret; }
 	
-	/** @return the Sign of x-y  */
+	/** Returns the relative Position of x to y: +1 if x&lt;y, -1 if y&lt;x, 0 if equal.
+	 * @return the Sign of x-y  */
 	final static public byte POSITION(final int x, final int y) {
 		return (byte) (
-			(x < y) ?  1 : 
+			(x < y) ?  1 :
 			(y < x) ? -1 : 0); }
 
-	/** @return the Minimum of both Values */
+	/** Returns the smaller of x and y.
+	 * @return the Minimum of both Values */
 	final static public int MIN(final int x, final int y) { return (x < y) ? x : y; }
-	
-	/** @return the Maximum of both Values */
+
+	/** Returns the larger of x and y.
+	 * @return the Maximum of both Values */
 	final static public int MAX(final int x, final int y) { return (x > y) ? x : y; }
 	
 	/**Defines the Sqr for simple Types	 */
@@ -302,8 +321,9 @@ implements ICountAble {
 		}
 	}
 	
+	/** The main entry point for the application; runs {@link #testIt()}. */
 	final static public void main(final String[] args) {
-		testIt(); 
+		testIt();
 	}
 	
 }

@@ -9,6 +9,15 @@ import streamIO.Log;
 /**This Class defines the Prime Numbers necessary for breaking up Integers
  * into their Prime Numbers some Methods to test for Primality 
  * and the PI Function as well as it's Inverse.    
+ * <!-- docstate
+ * pass: 2
+ * mtime: 2026-09-05T20:59:51Z
+ * digest: 9effac5d7fad9c3a7b2619bb4d5552f7cd3e1bbd43c70e46afc68d589e768b10
+ * stale: false
+ * tags: [code/combinatorics, code/special_function]
+ * concepts: [Combinatorics]
+ * facets: {layer: utility, status: legacy, complexity: low}
+ * -->
  */
 final public class Prime {
 	
@@ -51,9 +60,9 @@ final public class Prime {
 		return x; 
 	}
 	
-	/**
+	/**Tests whether n is prime, extending the prime cache as needed.
 	 * @param n the Number to test. Since long Numbers have 64 Bit...
-	 * @return true when the given Number is a Prime. 
+	 * @return true when the given Number is a Prime.
 	 */
 	final static public boolean IS_PRIME(final long n) {
 		double maximumVal = Math.sqrt(n); 
@@ -69,9 +78,9 @@ final public class Prime {
 		return true; 
 	}
 	
-	/**
-	 * @param n the Number to test. 
-	 * @return true when the given Number is a Prime. 
+	/**Tests whether n is prime, using only the precomputed {@link #NUMBERS} table.
+	 * @param n the Number to test.
+	 * @return true when the given Number is a Prime.
 	 */
 	final static public boolean IS_PRIME(final int n) {
 		final int maxVal = (int) Math.sqrt(n); //the maximum Number to test
@@ -124,10 +133,13 @@ final public class Prime {
 	
 	/////////////////////////////////////////////////////////////////////////////////////
 	
+	/**The main entry point for the application; runs the self-test.
+	 * @param args ignored	 */
 	final static public void main(final String[] args) {
 		testIt();
 	}
-		
+
+	/**Tests {@link #IS_PRIME(long)} against the Mersenne Numbers and the prime cache itself.	 */
 	final static public void testIt() {
 		final int lastPrime = NUMBERS[NUMBERS.length-1];
 		L.n("Number of Prime Numbers").l(NUMBERS.length);

@@ -23,6 +23,15 @@ package function.byref;
  * @author mheuer
  * @version	1.0
  *
+ * <!-- docstate
+ * pass: 2
+ * mtime: 2026-09-05T10:12:24Z
+ * digest: 2fe9fa190260535dab752dbf8e20f5b4d780ab4a4e51361e73c056e10bb7ae05
+ * stale: false
+ * tags: [code/function_wrapper, code/mathematical_constants]
+ * concepts: [By-Reference Primitive Wrapper]
+ * facets: {layer: utility, status: legacy, complexity: low}
+ * -->
  */
 public interface IAdjustAble extends ICategorizeAble {
 	

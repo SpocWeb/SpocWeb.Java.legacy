@@ -19,6 +19,15 @@ package function.real;
   * Created on	2000-11-26, 01;13;44<p>
   * @author 	Matthias Heuer
   * @version	1.0
+  * <!-- docstate
+  * pass: 2
+  * mtime: 2026-09-05T16:45:08Z
+  * digest: b465a82fa608c014ea00ef3eee899cb71d51dd004ef411a5884df92b1d334c74
+  * stale: false
+  * tags: [code/running_aggregates, code/mathematical_function]
+  * concepts: [Streaming Numeric Aggregator]
+  * facets: {layer: utility, status: legacy, complexity: low}
+  * -->
   */
 public class SumSquares 
 	extends StatefulFloatFunction {
@@ -34,15 +43,18 @@ public class SumSquares
 	public SumSquares(final double StartValue) {
 		super(StartValue); }
 
-	/** @return the next single Precision Number	 */
+	/** Adds {@code value_}'s square to the running sum and passes it through unchanged.
+	 * @return the next single Precision Number	 */
 	public float Map(final float value_) { //return (float) (Sum += Generator.nextDouble()); }
 		++_Count; _Value += value_*value_; return value_; }
 
-	/** @return the next double Precision Number	 */
+	/** Adds {@code value_}'s square to the running sum and passes it through unchanged.
+	 * @return the next double Precision Number	 */
 	public double Map(final double value_) { //return Sum += Generator.nextDouble(); }
 		++_Count; _Value += value_*value_; return value_; }
 
-	/** @return the SMV, Square Mean Value
+	/** Returns the mean of squares of every value passed through this node so far.
+	 * @return the SMV, Square Mean Value
 	  * of the Elements passed through this Node
 	  * @throws NAN when no Element has passed this Node yet.  */
 	public double getSMV() {

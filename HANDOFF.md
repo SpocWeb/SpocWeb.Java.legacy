@@ -130,7 +130,7 @@ concurrently against the same file):
 |---|--:|--:|--:|---|---|
 | `streamIO/copy` (root+boole+groupM+monoid+order+primitiveOp+shift) | 82 | 11329 | 82 | done | agent-copy-misc |
 | `streamIO/copy/group` | 124 | 31328 | 0 | claimed | agent-copy-group |
-| `function` (root+index+real+string+vector+byref) | 98 | 12899 | 0 | claimed | agent-function-misc |
+| `function` (root+index+real+string+vector+byref) | 98 | 12899 | 98 | done | agent-function-misc |
 | `function/derive` | 106 | 14586 | 106 | done | agent-function-derive |
 | `streamIO/object` (root+backTrack+filterIn+filterInOut+filterOut+integer+yaml+json) | 79 | 13501 | 0 | claimed | agent-object-misc |
 | `streamIO/object/enumer` | 79 | 18229 | 0 | unclaimed | - |
@@ -529,6 +529,13 @@ same harness against it. A test that has not been seen red proves nothing.
 | streamIO/copy/boole/TesterBond.java | TesterBond | ORat(Object) | 114-122 | Copy-paste from `ANDat`: all four constant-argument branches are backwards for OR semantics. | Critical | open |
 | streamIO/copy/boole/fuzzy/FuzzyEQV.java | FuzzyEQV | getMembership(Object) | 47 | Missing `1 -` prefix - returns the raw difference instead of its complement, inverting equivalence semantics. | High | open |
 | streamIO/copy/ACopyAble.java | ACopyAble | toStream(IFormatOut) | 386 | Default `ST.addItem(this)` + `toString()` calling `toStream(...)` risks infinite recursion (already noted by the original author's own comment "leads to infinite Recursion!"). | Medium | open |
+| function/CatProcessor.java | CatProcessor | constructor(IProcessor, IProcessor) | ~ | Null-check reads the instance fields `inner`/`outer` (always null at this point in the constructor) instead of the `Inner` parameter; the apparent fallback-to-`Outer`-when-`Inner`-is-null intent never happens, so a caller passing `Inner == null` gets `inner == null` and a later `NullPointerException` from `MapAt()`/`equals()`. | Medium | open |
+| function/Projections.java | Projections | Mercator(double[]) | 243 | Indexes `V[2]`, but every other projection in this class treats `V` as a 2-element (x,y) position; calling this with the same 2-element vectors used everywhere else throws `ArrayIndexOutOfBoundsException`. Likely meant `V[1]`, mirroring `Cyl_MercatorAt` below. | High | open |
+| function/real/Product.java | Product | getHMV() | 50 | Method name and Javadoc call this the Harmonic Mean, but `Math.pow(_Value, 1.0/_Count)` computes the Geometric Mean; callers relying on the name/doc for the harmonic mean get the wrong statistic. | Medium | open |
+| function/string/AStringFunction.java | AStringFunction | TO_CAMEL | 89 | If `_` is the last character of the input, `arg.charAt(++i)` reads one past the end of the string, throwing `StringIndexOutOfBoundsException` (reachable whenever a hungarian-notation input ends with an underscore, e.g. `TO_CAMEL.Map("FOO_")`). | Medium | open |
+| function/vector/OdeLorentz.java | OdeLorentz | Funktion(double, double[], double[]) | 48 | The standard Lorenz equations are `dy/dt = x*(r-z) - y`, but this computes `x[1] - x[0]*(x[2]-r)`, which equals `x[0]*(r-x[2]) + x[1]` - the sign of the y-term is flipped; every integration step diverges from the intended chaotic Lorenz attractor. | High | open |
+| function/byref/ByRefInt.java | ByRefInt | ROR(int, int) | 64 | The dropped low bit is shifted into position `octave` (`corr = (x&1)<<octave`), one bit above the top of the octave-bit range `ROL` uses (`maxVal = 1<<octave`); e.g. `ROR(5, 3)` returns 10, outside the 3-bit range `ROL(5, 3)` operates in. Likely should be `<<(octave-1)`. | Medium | open |
+| function/byref/ByRefLong.java | ByRefLong | ROR(long, int) | 259 | Same defect as `ByRefInt.ROR` - the dropped low bit is shifted one bit above the top of the octave-bit range. | Medium | open |
 
 ## Tool defects found and fixed during the pilot
 

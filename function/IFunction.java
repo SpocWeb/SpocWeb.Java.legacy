@@ -31,11 +31,21 @@ package function;
  *
  * Functions are more expensive, but also more elegant than Operations,
  * because they allow for chaning the result into the next Function,
+ * <!-- docstate
+ * pass: 2
+ * mtime: 2026-09-05T16:31:51Z
+ * digest: 3ebc816c3741327d15c1634f3aebab3ff8ad65bde4d82e7a5ff71f7e03292a47
+ * stale: false
+ * tags: [code/function_contract, code/function_composition]
+ * concepts: [Function/Relation Contract]
+ * facets: {layer: utility, status: legacy, complexity: low}
+ * -->
  * similar to Pipes and Filters, but have to transport the Result back. */
 public interface IFunction
 extends IProcessor {
 	
-	/** @return arg mapped by this Object: this.Map(arg) == this°arg
+	/** Maps {@code arg} to its result according to the implementing class.
+	  * @return arg mapped by this Object: this.Map(arg) == thisï¿½arg
 	  * This is the Function working on 'arg' defined by the implementing Class.
 	  * The Class implementing this Method is the means of exchanging this Operation.	 */
 	Object Map (final Object arg);

@@ -4,9 +4,9 @@ import function.AOrderAble;
 import function.ICountAble;
 
 /**
-  * Title: ByRefShort<p>
+  * Title: ByRefChar<p>
   * Description:
-  * This class is for transporting an Integer back from a Method Call.
+  * This class is for transporting a char back from a Method Call.
   * It can also be used for generic Sorting Algorithms or as a Function,
   * since it implements OrderAble and ICountAble.
   * The Range of a 16 Bit Java Character is
@@ -21,6 +21,15 @@ import function.ICountAble;
   * Created on	2001-12-12, 01;52;04<p>
   * @author 	Matthias Heuer
   * @version	1.0
+  * <!-- docstate
+  * pass: 2
+  * mtime: 2026-09-05T20:48:50Z
+  * digest: c0e842f8670ddd42bf1fe09fbbedd30bb9cafc362ceea36276f7725ec89e4f94
+  * stale: false
+  * tags: [code/function_wrapper, code/mathematical_constants]
+  * concepts: [By-Reference Primitive Wrapper]
+  * facets: {layer: utility, status: legacy, complexity: low}
+  * -->
   */
 final public class ByRefChar
 extends AOrderAble

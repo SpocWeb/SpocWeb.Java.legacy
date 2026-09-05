@@ -18,6 +18,15 @@ import java.io.IOException;
  * and A, B are incomparAble.
  *
  * Abstract Methods:
+ * <!-- docstate
+ * pass: 2
+ * mtime: 2026-09-05T10:12:24Z
+ * digest: 57480895404c700c20e5a8389ce898bc1197ad1068d0d3914353e9153709b1db
+ * stale: false
+ * tags: [code/function_contract, code/function_composition]
+ * concepts: [Function/Relation Contract]
+ * facets: {layer: utility, status: legacy, complexity: low}
+ * -->
  * less	 */
 public class AOrderAble
 extends ACopy

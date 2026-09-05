@@ -7,6 +7,15 @@ import graphs.ILinked;
   * @see ILinked Interface which allows to only link 'this' with another Object.
   * On the other hand none of the linked Processors know anything about their Use
   * in a linked structure, unlike in an ILinked structure. 
+  * <!-- docstate
+  * pass: 2
+  * mtime: 2026-09-05T16:34:04Z
+  * digest: efa14ac51ea352c50f9d15bf46524296f0d34946032efb8c7f237b2ae61ead9b
+  * stale: false
+  * tags: [code/function_contract, code/function_composition]
+  * concepts: [Function/Relation Contract]
+  * facets: {layer: utility, status: legacy, complexity: low}
+  * -->
   */
 public class CatProcessor {
 //implements Graph.ICPair { //Creates cross-dependencies and is of only documentary use
@@ -21,10 +30,12 @@ public class CatProcessor {
 	//  Accessor Methods (getXXX/setXXX)
 	////////////////////////////////////////////////////////////////////////////////
 	
-	/** @return the inner of the concatenated Functions	 */
+	/** Returns the inner processor, applied first.
+	 * @return the inner of the concatenated Functions	 */
 	public IProcessor getInner() { return inner; }
 
-	/** @return the outer of the concatenated Functions	 */
+	/** Returns the outer processor, applied to the inner processor's result.
+	 * @return the outer of the concatenated Functions	 */
 	public IProcessor getOuter() { return outer; }
 
 	/** Accessor Method
@@ -41,6 +52,11 @@ public class CatProcessor {
 	
 	/**Constructor for a concatenated Function, the Inverse is optional	 */
 	public CatProcessor(IProcessor Outer, IProcessor Inner) {
+		// TODO: LOGIC: this null-check reads the instance fields 'inner'/'outer', which are always
+		// null at this point in the constructor (they are only assigned below), not the 'Inner'
+		// parameter. The apparent intent - fall back to using Outer as inner when Inner is null -
+		// never happens; a caller passing Inner == null ends up with inner == null and a
+		// NullPointerException later from MapAt()/equals().
 		if  (inner == null) { inner = outer; outer = null; }
 		this.inner = Inner;
 		this.outer = Outer;
@@ -57,7 +73,8 @@ public class CatProcessor {
 		Object tmp = inner.MapAt(arg); if (outer == null) return tmp;
 		return       outer.MapAt(tmp); }
 
-	/**@return  The string representation of the Function.
+	/** Returns the inner processor's string form, wrapped by the outer's when one is set.
+	 * @return  The string representation of the Function.
 	 * @since   JDK1.0	 */
 	public String toString() {
 		String Return = inner.toString();

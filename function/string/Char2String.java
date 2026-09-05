@@ -4,10 +4,13 @@ import math.vector.VectorChar;
 import math.vector.VectorString;
 
 /**
+  * Maps single characters (or the character at a fixed position of a String) to their encoded
+  * String replacement, via a direct array lookup rather than a hash table.
+  *
   * Title: Char2String<p>
   * Description:
   * Purpose:
-  * Maps Characters to Strings (Encoding) very fast. 
+  * Maps Characters to Strings (Encoding) very fast.
   * Also maps Strings to Strings by the Character at the given Position. 
   * 
   * Design Decisions / Implementation Details:
@@ -23,6 +26,15 @@ import math.vector.VectorString;
   * Created on	12-21-2002, 04:54 PM<p>
   * @author 	Matthias Heuer
   * @version	1.0
+  * <!-- docstate
+  * pass: 2
+  * mtime: 2026-09-05T20:43:43Z
+  * digest: 4e1d690f1ceba860b900c76a79c9d2727bb21a542594ac3a96199de14560725a
+  * stale: false
+  * tags: [code/string_transform, code/function_contract]
+  * concepts: [String Transform Function]
+  * facets: {layer: utility, status: legacy, complexity: low}
+  * -->
   */
 public class Char2String
 extends AStringFunction {
@@ -95,7 +107,8 @@ extends AStringFunction {
 	/** holds the inverse(!) Encoding Array used for encoding the incoming Bytes	 */
 	protected String[] encoding;
 	
-	/** @return The inverse Encoding Array used for encoding the incoming Bytes	 */
+	/** Returns the encoding registered for character code {@code i}, or null if none.
+	 * @return The inverse Encoding Array used for encoding the incoming Bytes	 */
 	public String getEncoding(final int i) { return LOOKUP(encoding, i); }
 	
 	/**not published, since it could be modified 
@@ -147,7 +160,8 @@ extends AStringFunction {
 	/// #region : public Methods, then private Methods
 	////////////////////////////////////////////////////////////////////////////////
 	
-	/** @return the Mapping of arg by this Function, null otherwise 	 */
+	/** Looks up the encoding registered for character code {@code chr}.
+	 * @return the Mapping of arg by this Function, null otherwise 	 */
 	public String Map(final int chr) {
 		return LOOKUP(encoding, chr); }
 	

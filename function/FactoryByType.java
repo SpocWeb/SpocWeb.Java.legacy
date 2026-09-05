@@ -29,6 +29,15 @@ import graphs.ICPair;
   * Created on	10-06-2002, 11:15 AM<p>
   * @author 	Matthias Heuer
   * @version	1.0
+  * <!-- docstate
+  * pass: 2
+  * mtime: 2026-09-05T10:12:24Z
+  * digest: 4fd7420fd421c66b85dc2a7357fc7f173c5085ba11959ed301a67430ad0337ef
+  * stale: false
+  * tags: [code/function_contract, code/function_composition]
+  * concepts: [Function/Relation Contract]
+  * facets: {layer: utility, status: legacy, complexity: low}
+  * -->
   */
 final public class FactoryByType
 implements IProcessor {

@@ -1174,3 +1174,109 @@ streamIO/copy/ICopyAble.java:ICopyAble	class	streamIO/copy/ICopyAble.java	code/a
 streamIO/copy/IICopyAble.java:IICopyAble	class	streamIO/copy/IICopyAble.java	code/abstract_interface	Copy Semantics	utility	legacy	medium
 streamIO/copy/TestCopy.java:TestCopy	class	streamIO/copy/TestCopy.java	code/manual_test_harness	Copy Semantics	utility	legacy	medium
 streamIO/copy	folder	streamIO/copy	code/abstract_base,code/serialization,code/delegation	Copy Semantics,Algebraic Structure	utility	legacy	medium
+function/ACountAble.java:ACountAble	class	function/ACountAble.java	code/function_contract,code/function_composition	Function/Relation Contract	utility	legacy	low
+function/AFunction.java:AFunction	class	function/AFunction.java	code/function_contract,code/function_composition	Function/Relation Contract	utility	legacy	low
+function/AInvertAble.java:AInvertAble	class	function/AInvertAble.java	code/function_contract,code/function_composition	Function/Relation Contract	utility	legacy	low
+function/AOrderAble.java:AOrderAble	class	function/AOrderAble.java	code/function_contract,code/function_composition	Function/Relation Contract	utility	legacy	low
+function/ArrayMapper.java:ArrayMapper	class	function/ArrayMapper.java	code/function_contract,code/function_composition	Function/Relation Contract	utility	legacy	low
+function/ByRefFunc.java:ByRefFunc	class	function/ByRefFunc.java	code/function_contract,code/function_composition	Function/Relation Contract	utility	legacy	low
+function/CatProcessor.java:CatProcessor	class	function/CatProcessor.java	code/function_contract,code/function_composition	Function/Relation Contract	utility	legacy	low
+function/FactoryByType.java:FactoryByType	class	function/FactoryByType.java	code/function_contract,code/function_composition	Function/Relation Contract	utility	legacy	low
+function/FactoryRegistry.java:FactoryRegistry	class	function/FactoryRegistry.java	code/function_contract,code/function_composition	Function/Relation Contract	utility	legacy	low
+function/FunctionAble.java:FunctionAble	class	function/FunctionAble.java	code/function_contract,code/function_composition	Function/Relation Contract	utility	legacy	low
+function/FunctionByHash.java:FunctionByHash	class	function/FunctionByHash.java	code/function_contract,code/function_composition	Function/Relation Contract	utility	legacy	low
+function/ICountAble.java:ICountAble	class	function/ICountAble.java	code/function_contract,code/function_composition	Function/Relation Contract	utility	legacy	low
+function/IDynamicFunction.java:IDynamicFunction	class	function/IDynamicFunction.java	code/function_contract,code/function_composition	Function/Relation Contract	utility	legacy	low
+function/IFloatFunction.java:IFloatFunction	class	function/IFloatFunction.java	code/function_contract,code/function_composition	Function/Relation Contract	utility	legacy	low
+function/IFunction.java:IFunction	class	function/IFunction.java	code/function_contract,code/function_composition	Function/Relation Contract	utility	legacy	low
+function/IIOrderAble.java:IIOrderAble	class	function/IIOrderAble.java	code/function_contract,code/function_composition	Function/Relation Contract	utility	legacy	low
+function/IIntFunction.java:IIntFunction	class	function/IIntFunction.java	code/function_contract,code/function_composition	Function/Relation Contract	utility	legacy	low
+function/IInvertAble.java:IInvertAble	class	function/IInvertAble.java	code/function_contract,code/function_composition	Function/Relation Contract	utility	legacy	low
+function/IMeasurAble.java:IMeasurAble	class	function/IMeasurAble.java	code/function_contract,code/function_composition	Function/Relation Contract	utility	legacy	low
+function/IOrderAble.java:IOrderAble	class	function/IOrderAble.java	code/function_contract,code/function_composition	Function/Relation Contract	utility	legacy	low
+function/IProcessor.java:IProcessor	class	function/IProcessor.java	code/function_contract,code/function_composition	Function/Relation Contract	utility	legacy	low
+function/PrintOp.java:PrintOp	class	function/PrintOp.java	code/function_contract,code/function_composition	Function/Relation Contract	utility	legacy	low
+function/Projections.java:Projections	class	function/Projections.java	code/function_contract,code/function_composition	Function/Relation Contract	utility	legacy	low
+function/byref/ByRefBoolean.java:ByRefBoolean	class	function/byref/ByRefBoolean.java	code/function_wrapper,code/mathematical_constants	By-Reference Primitive Wrapper	utility	legacy	low
+function/byref/ByRefByte.java:ByRefByte	class	function/byref/ByRefByte.java	code/function_wrapper,code/mathematical_constants	By-Reference Primitive Wrapper	utility	legacy	low
+function/byref/ByRefChar.java:ByRefChar	class	function/byref/ByRefChar.java	code/function_wrapper,code/mathematical_constants	By-Reference Primitive Wrapper	utility	legacy	low
+function/byref/ByRefDouble.java:ByRefDouble	class	function/byref/ByRefDouble.java	code/function_wrapper,code/mathematical_constants	By-Reference Primitive Wrapper	utility	legacy	low
+function/byref/ByRefFloat.java:ByRefFloat	class	function/byref/ByRefFloat.java	code/function_wrapper,code/mathematical_constants	By-Reference Primitive Wrapper	utility	legacy	low
+function/byref/ByRefInt.java:ByRefInt	class	function/byref/ByRefInt.java	code/function_wrapper,code/mathematical_constants	By-Reference Primitive Wrapper	utility	legacy	low
+function/byref/ByRefLong.java:ByRefLong	class	function/byref/ByRefLong.java	code/function_wrapper,code/mathematical_constants	By-Reference Primitive Wrapper	utility	legacy	low
+function/byref/ByRefObject.java:ByRefObject	class	function/byref/ByRefObject.java	code/function_wrapper,code/mathematical_constants	By-Reference Primitive Wrapper	utility	legacy	low
+function/byref/ByRefShort.java:ByRefShort	class	function/byref/ByRefShort.java	code/function_wrapper,code/mathematical_constants	By-Reference Primitive Wrapper	utility	legacy	low
+function/byref/ByRefString.java:ByRefString	class	function/byref/ByRefString.java	code/function_wrapper,code/mathematical_constants	By-Reference Primitive Wrapper	utility	legacy	low
+function/byref/CachedCountAble.java:CachedCountAble	class	function/byref/CachedCountAble.java	code/caching,code/function_wrapper	Caching Decorator	utility	legacy	low
+function/byref/CachedDouble.java:CachedDouble	class	function/byref/CachedDouble.java	code/caching,code/function_wrapper	Caching Decorator	utility	legacy	low
+function/byref/CachedInteger.java:CachedInteger	class	function/byref/CachedInteger.java	code/caching,code/function_wrapper	Caching Decorator	utility	legacy	low
+function/byref/CachedMeasurAble.java:CachedMeasurAble	class	function/byref/CachedMeasurAble.java	code/caching,code/function_wrapper	Caching Decorator	utility	legacy	low
+function/byref/IAdjustAble.java:IAdjustAble	class	function/byref/IAdjustAble.java	code/function_wrapper,code/mathematical_constants	By-Reference Primitive Wrapper	utility	legacy	low
+function/byref/ICategorizeAble.java:ICategorizeAble	class	function/byref/ICategorizeAble.java	code/function_wrapper,code/mathematical_constants	By-Reference Primitive Wrapper	utility	legacy	low
+function/byref/IFloat.java:IFloat	class	function/byref/IFloat.java	code/function_wrapper,code/mathematical_constants	By-Reference Primitive Wrapper	utility	legacy	low
+function/byref/IInteger.java:IInteger	class	function/byref/IInteger.java	code/function_wrapper,code/mathematical_constants	By-Reference Primitive Wrapper	utility	legacy	low
+function/byref/ShortComparator.java:ShortComparator	class	function/byref/ShortComparator.java	code/numeric_comparison	Comparator	utility	legacy	low
+function/byref/TestByRef.java:TestByRef	class	function/byref/TestByRef.java	code/testing	Test Harness	utility	legacy	low
+function/byref/combinatoric/Bernoulli.java:Bernoulli	class	function/byref/combinatoric/Bernoulli.java	code/combinatorics,code/special_function	Combinatorics	utility	legacy	low
+function/byref/combinatoric/BesselFuncs.java:BesselFuncs	class	function/byref/combinatoric/BesselFuncs.java	code/combinatorics,code/special_function	Combinatorics	utility	legacy	low
+function/byref/combinatoric/CombiFuncs.java:CombiFuncs	class	function/byref/combinatoric/CombiFuncs.java	code/combinatorics,code/special_function	Combinatorics	utility	legacy	low
+function/byref/combinatoric/DblFactorial.java:DblFactorial	class	function/byref/combinatoric/DblFactorial.java	code/combinatorics,code/special_function	Combinatorics	utility	legacy	low
+function/byref/combinatoric/Factorial.java:Factorial	class	function/byref/combinatoric/Factorial.java	code/combinatorics,code/special_function	Combinatorics	utility	legacy	low
+function/byref/combinatoric/Prime.java:Prime	class	function/byref/combinatoric/Prime.java	code/combinatorics,code/special_function	Combinatorics	utility	legacy	low
+function/byref/combinatoric/ProbFuncs.java:ProbFuncs	class	function/byref/combinatoric/ProbFuncs.java	code/combinatorics,code/special_function	Combinatorics	utility	legacy	low
+function/byref/combinatoric/TestCombinatoric.java:TestCombinatoric	class	function/byref/combinatoric/TestCombinatoric.java	code/combinatorics,code/special_function	Combinatorics	utility	legacy	low
+function/index/AIndexer.java:AIndexer	class	function/index/AIndexer.java	code/indexing	Indexed Collection Access	utility	legacy	low
+function/index/IDirectAccess.java:IDirectAccess	class	function/index/IDirectAccess.java	code/indexing	Indexed Collection Access	utility	legacy	low
+function/index/IDirectRead.java:IDirectRead	class	function/index/IDirectRead.java	code/indexing	Indexed Collection Access	utility	legacy	low
+function/index/IIndex.java:IIndex	class	function/index/IIndex.java	code/indexing	Indexed Collection Access	utility	legacy	low
+function/index/IIndexAble.java:IIndexAble	class	function/index/IIndexAble.java	code/indexing	Indexed Collection Access	utility	legacy	low
+function/index/IIndexer.java:IIndexer	class	function/index/IIndexer.java	code/indexing	Indexed Collection Access	utility	legacy	low
+function/index/IndexComparator.java:IndexComparator	class	function/index/IndexComparator.java	code/indexing	Indexed Collection Access	utility	legacy	low
+function/index/IndexEntry.java:IndexEntry	class	function/index/IndexEntry.java	code/indexing	Indexed Collection Access	utility	legacy	low
+function/index/Indexer.java:Indexer	class	function/index/Indexer.java	code/indexing	Indexed Collection Access	utility	legacy	low
+function/real/Adder.java:Adder	class	function/real/Adder.java	code/running_aggregates,code/mathematical_function	Streaming Numeric Aggregator	utility	legacy	low
+function/real/BiLinearSum.java:BiLinearSum	class	function/real/BiLinearSum.java	code/running_aggregates,code/mathematical_function	Streaming Numeric Aggregator	utility	legacy	low
+function/real/FourierCoefficient.java:FourierCoefficient	class	function/real/FourierCoefficient.java	code/running_aggregates,code/mathematical_function	Streaming Numeric Aggregator	utility	legacy	low
+function/real/LinearScale.java:LinearScale	class	function/real/LinearScale.java	code/running_aggregates,code/mathematical_function	Streaming Numeric Aggregator	utility	legacy	low
+function/real/Maximum.java:Maximum	class	function/real/Maximum.java	code/running_aggregates,code/mathematical_function	Streaming Numeric Aggregator	utility	legacy	low
+function/real/Minimum.java:Minimum	class	function/real/Minimum.java	code/running_aggregates,code/mathematical_function	Streaming Numeric Aggregator	utility	legacy	low
+function/real/Multiplier.java:Multiplier	class	function/real/Multiplier.java	code/running_aggregates,code/mathematical_function	Streaming Numeric Aggregator	utility	legacy	low
+function/real/Product.java:Product	class	function/real/Product.java	code/running_aggregates,code/mathematical_function	Streaming Numeric Aggregator	utility	legacy	low
+function/real/RunningMean.java:RunningMean	class	function/real/RunningMean.java	code/running_aggregates,code/mathematical_function	Streaming Numeric Aggregator	utility	legacy	low
+function/real/StatefulFloatFunction.java:StatefulFloatFunction	class	function/real/StatefulFloatFunction.java	code/running_aggregates,code/mathematical_function	Streaming Numeric Aggregator	utility	legacy	low
+function/real/Sum.java:Sum	class	function/real/Sum.java	code/running_aggregates,code/mathematical_function	Streaming Numeric Aggregator	utility	legacy	low
+function/real/SumSquares.java:SumSquares	class	function/real/SumSquares.java	code/running_aggregates,code/mathematical_function	Streaming Numeric Aggregator	utility	legacy	low
+function/string/AStringFunction.java:AStringFunction	class	function/string/AStringFunction.java	code/string_transform,code/function_contract	String Transform Function	utility	legacy	low
+function/string/Char2String.java:Char2String	class	function/string/Char2String.java	code/string_transform,code/function_contract	String Transform Function	utility	legacy	low
+function/string/IStringFunction.java:IStringFunction	class	function/string/IStringFunction.java	code/string_transform,code/function_contract	String Transform Function	utility	legacy	low
+function/string/StringFunction.java:StringFunction	class	function/string/StringFunction.java	code/string_transform,code/function_contract	String Transform Function	utility	legacy	low
+function/string/SubString.java:SubString	class	function/string/SubString.java	code/string_transform,code/function_contract	String Transform Function	utility	legacy	low
+function/vector/AFloatVectorField.java:AFloatVectorField	class	function/vector/AFloatVectorField.java	code/vector_math,code/function_composition	Vector Field Function	utility	legacy	low
+function/vector/AOdeFloat.java:AOdeFloat	class	function/vector/AOdeFloat.java	code/differential_integration,code/vector_math	ODE Integration	utility	legacy	low
+function/vector/IBinaryOpFloat.java:IBinaryOpFloat	class	function/vector/IBinaryOpFloat.java	code/vector_math,code/function_composition	Vector Field Function	utility	legacy	low
+function/vector/IFloatScalarField.java:IFloatScalarField	class	function/vector/IFloatScalarField.java	code/vector_math,code/function_composition	Vector Field Function	utility	legacy	low
+function/vector/IFloatVectorField.java:IFloatVectorField	class	function/vector/IFloatVectorField.java	code/vector_math,code/function_composition	Vector Field Function	utility	legacy	low
+function/vector/IFloatVectorFunction.java:IFloatVectorFunction	class	function/vector/IFloatVectorFunction.java	code/vector_math,code/function_composition	Vector Field Function	utility	legacy	low
+function/vector/OdeHeight.java:OdeHeight	class	function/vector/OdeHeight.java	code/differential_integration,code/vector_math	ODE Integration	utility	legacy	low
+function/vector/OdeLorentz.java:OdeLorentz	class	function/vector/OdeLorentz.java	code/differential_integration,code/vector_math	ODE Integration	utility	legacy	low
+function/vector/OpCount.java:OpCount	class	function/vector/OpCount.java	code/vector_math,code/function_composition	Vector Field Function	utility	legacy	low
+function/vector/OpFirst.java:OpFirst	class	function/vector/OpFirst.java	code/vector_math,code/function_composition	Vector Field Function	utility	legacy	low
+function/vector/OpLast.java:OpLast	class	function/vector/OpLast.java	code/vector_math,code/function_composition	Vector Field Function	utility	legacy	low
+function/vector/OpMax.java:OpMax	class	function/vector/OpMax.java	code/vector_math,code/function_composition	Vector Field Function	utility	legacy	low
+function/vector/OpMin.java:OpMin	class	function/vector/OpMin.java	code/vector_math,code/function_composition	Vector Field Function	utility	legacy	low
+function/vector/OpProd.java:OpProd	class	function/vector/OpProd.java	code/vector_math,code/function_composition	Vector Field Function	utility	legacy	low
+function/vector/OpSum.java:OpSum	class	function/vector/OpSum.java	code/vector_math,code/function_composition	Vector Field Function	utility	legacy	low
+function/vector/StepConstant.java:StepConstant	class	function/vector/StepConstant.java	code/differential_integration,code/vector_math	ODE Integration	utility	legacy	low
+function/vector/StepConstant.java:HeightOde	class	function/vector/StepConstant.java	code/differential_integration,code/vector_math	ODE Integration	utility	legacy	low
+function/vector/fChargeField.java:fChargeField	class	function/vector/fChargeField.java	code/vector_math,code/function_composition	Vector Field Function	utility	legacy	low
+function/vector/fLength.java:fLength	class	function/vector/fLength.java	code/vector_math,code/function_composition	Vector Field Function	utility	legacy	low
+function/vector/fProduct.java:fProduct	class	function/vector/fProduct.java	code/vector_math,code/function_composition	Vector Field Function	utility	legacy	low
+function/vector/fSinProd.java:fSinProd	class	function/vector/fSinProd.java	code/vector_math,code/function_composition	Vector Field Function	utility	legacy	low
+function/vector/fSum.java:fSum	class	function/vector/fSum.java	code/vector_math,code/function_composition	Vector Field Function	utility	legacy	low
+function	folder	function	code/function_contract,code/function_composition	Function/Relation Core Contracts	utility	legacy	high
+function/byref	folder	function/byref	code/function_wrapper,code/caching	By-Reference Primitive Wrappers	utility	legacy	high
+function/byref/combinatoric	folder	function/byref/combinatoric	code/combinatorics,code/special_function	Combinatorics and Special Functions	utility	legacy	medium
+function/index	folder	function/index	code/indexing	Indexing Abstractions	utility	legacy	medium
+function/real	folder	function/real	code/running_aggregates	Streaming Numeric Aggregators	utility	broken	medium
+function/string	folder	function/string	code/string_transform	String Transform Functions	utility	broken	low
+function/vector	folder	function/vector	code/vector_math,code/differential_integration	Vector Fields and ODE Integration	domain	broken	high

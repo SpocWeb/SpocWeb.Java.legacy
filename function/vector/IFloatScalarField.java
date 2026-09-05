@@ -1,6 +1,9 @@
 package function.vector;
 
 /**
+  * Defines a scalar field: a function mapping a position vector to a single {@code double} or
+  * {@code float} value.
+  *
   * Title: IFloatScalarField<p>
   * Description:
   * Defines the Interface for ...TODO: Describes the Purpose / Responsibilities
@@ -21,6 +24,15 @@ package function.vector;
   * Created on	06-16-2002, 08:32 PM<p>
   * @author 	Matthias Heuer
   * @version	1.0
+  * <!-- docstate
+  * pass: 2
+  * mtime: 2026-09-05T20:46:47Z
+  * digest: 933de58d30b33b9e34921f10ac3a359fc3aaa70dfe6f05002bd272bb814b39a9
+  * stale: false
+  * tags: [code/vector_math, code/function_composition]
+  * concepts: [Vector Field Function]
+  * facets: {layer: utility, status: legacy, complexity: low}
+  * -->
   */
 public interface IFloatScalarField {
 

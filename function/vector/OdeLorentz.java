@@ -2,12 +2,21 @@ package function.vector;
 
 /**ODE (Differentialgleichung) for the chaotic Lorentz curve,
  * welche die Konvektionsrollen zwischen Schichten beschreibt.
- * Eine weitere 'zeitunabhängige' Differentialgleichung.
+ * Eine weitere 'zeitunabhï¿½ngige' Differentialgleichung.
  *
  * The Range for the Lorentz Curve is
  * x [-13,+13]
  * y [-24,+24]
  * z [ 25, 40]
+ * <!-- docstate
+ * pass: 2
+ * mtime: 2026-09-05T20:46:42Z
+ * digest: 78e12c66f675563f27a9cf79c5289c1c0b22208c9b833fab701fec0d66ec57bb
+ * stale: false
+ * tags: [code/differential_integration, code/vector_math]
+ * concepts: [ODE Integration]
+ * facets: {layer: utility, status: legacy, complexity: low}
+ * -->
  */
 public class OdeLorentz
 extends AOdeFloat {
@@ -39,6 +48,11 @@ extends AOdeFloat {
      *
      * The Dimensions have the following Meaning:
      */
+	// TODO: LOGIC: the standard Lorenz equations are dy/dt = x*(r-z) - y, i.e.
+	// x[0]*(r-x[2]) - x[1]. This line computes x[1] - x[0]*(x[2]-r), which equals
+	// x[0]*(r-x[2]) + x[1] - the sign of the y-term is flipped (+x[1] instead of -x[1]).
+	// Every call to this method (every integration step) produces a trajectory that diverges
+	// from the intended chaotic Lorenz attractor.
 	public void Funktion (double t, double[] x, double[] y) {	//
 		y[0] =(x[1]-x[0])*s;
 		y[1] = x[1]-x[0] *(x[2]-r);

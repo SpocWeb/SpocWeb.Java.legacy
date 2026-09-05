@@ -8,6 +8,15 @@ import java.io.IOException;
 /**Tests all Methods in the ByRef Package.  
  * Also contains Test Data for most Functions to save reading them from Files. 
  * (already in Java Context available to any Java Tester.
+ * <!-- docstate
+ * pass: 2
+ * mtime: 2026-09-05T10:12:24Z
+ * digest: 48f785f60d207cf42e0a3eff03a3a046bede62d840f060029ece23101efdcbd8
+ * stale: false
+ * tags: [code/testing]
+ * concepts: [Test Harness]
+ * facets: {layer: utility, status: legacy, complexity: low}
+ * -->
  */
 public class TestByRef {
 

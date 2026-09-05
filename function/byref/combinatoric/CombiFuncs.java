@@ -21,6 +21,15 @@ import function.byref.ByRefLong;
  * which has been done for Variationen, Kombinationen, pBinCum, pHypCum, pPoissonCum,
  * pLorentz, pLorentzCum, pNormLtz, pNormLtzCum, pNormalCum, Bessel,
  * pKvSv, pKvSvCum, pNormExp, pNormExpCum, pExpCum, pExp
+ * <!-- docstate
+ * pass: 2
+ * mtime: 2026-09-05T10:13:18Z
+ * digest: 6bc34ff54e0266c7f4baa454fd115f765c933b761e2562ecefde9385d53ea2ca
+ * stale: false
+ * tags: [code/combinatorics, code/special_function]
+ * concepts: [Combinatorics]
+ * facets: {layer: utility, status: legacy, complexity: low}
+ * -->
  */
 final public class CombiFuncs {
 	

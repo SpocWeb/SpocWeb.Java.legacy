@@ -5,6 +5,9 @@ import java.util.Map;
 import math.vector.VectorString;
 
 /**
+  * Maps an input String (or one of its characters) to a replacement String via an internal
+  * {@link Map}, e.g. for encoding special characters into XML or ANSI.
+  *
   * Title: StringFunction<p>
   * Description:
   * Purpose:
@@ -27,6 +30,15 @@ import math.vector.VectorString;
   * Created on	12-21-2002, 06:56 PM<p>
   * @author 	Matthias Heuer
   * @version	1.0
+  * <!-- docstate
+  * pass: 2
+  * mtime: 2026-09-05T20:43:53Z
+  * digest: 3451d1c74fe4ba80aff0cf02d4a4cdb389a68c3767450a6f80da6c4949574c1b
+  * stale: false
+  * tags: [code/string_transform, code/function_contract]
+  * concepts: [String Transform Function]
+  * facets: {layer: utility, status: legacy, complexity: low}
+  * -->
   */
 public class StringFunction 
 extends AStringFunction {
@@ -78,7 +90,8 @@ extends AStringFunction {
 	/// #region : Interface IStringFunction: Implementation
 	////////////////////////////////////////////////////////////////////////////////
 	
-	/** @return the Mapping of arg by this Function, null otherwise 	 */
+	/** Looks {@code arg} up in the underlying map.
+	 * @return the Mapping of arg by this Function, null otherwise 	 */
 	public String Map(final String arg) { return (String) map.get(arg); }
 	
 	////////////////////////////////////////////////////////////////////////////////

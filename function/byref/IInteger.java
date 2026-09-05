@@ -27,6 +27,15 @@ import function.ICountAble;
  * @author mheuer
  * @version	1.0
  *
+ * <!-- docstate
+ * pass: 2
+ * mtime: 2026-09-05T10:12:24Z
+ * digest: e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855
+ * stale: false
+ * tags: [code/function_wrapper, code/mathematical_constants]
+ * concepts: [By-Reference Primitive Wrapper]
+ * facets: {layer: utility, status: legacy, complexity: low}
+ * -->
  */
 public interface IInteger 
 extends ICountAble, ICategorizeAble{}

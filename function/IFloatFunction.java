@@ -9,6 +9,15 @@ package function;
  *
  * @author  Matthias Heuer
  * @version
+ * <!-- docstate
+ * pass: 2
+ * mtime: 2026-09-05T10:12:24Z
+ * digest: 50a3e813947b45aace23338ec0fce4ea91b9a0f197cc76942edb6af0b6b5afc8
+ * stale: false
+ * tags: [code/function_contract, code/function_composition]
+ * concepts: [Function/Relation Contract]
+ * facets: {layer: utility, status: legacy, complexity: low}
+ * -->
  */
 public interface IFloatFunction {
 

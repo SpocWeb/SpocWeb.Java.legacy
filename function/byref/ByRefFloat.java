@@ -30,6 +30,15 @@ import function.IMeasurAble;
   * Created on	2001-12-12, 01;52;04<p>
   * @author 	Matthias Heuer
   * @version	1.0
+  * <!-- docstate
+  * pass: 2
+  * mtime: 2026-09-05T20:51:58Z
+  * digest: 3a0fe22df57a6fde789287e94fdd755b89b500315c41793aa99c519dbfad0717
+  * stale: false
+  * tags: [code/function_wrapper, code/mathematical_constants]
+  * concepts: [By-Reference Primitive Wrapper]
+  * facets: {layer: utility, status: legacy, complexity: low}
+  * -->
   */
 final public class ByRefFloat
 extends AOrderAble
@@ -44,7 +53,7 @@ implements ICountAble { //IMeasurAble { //
 	/**This is the Value of the Object	 */
 	public float Value;
 
-	/*	Accuracy used as Criterion for Convergence	*/
+	/** Accuracy used as Criterion for Convergence	*/
 	public static float  FloatAccuracy =  IMeasurAble.FLOAT_ACCURACY;
 
 	///////////////////////////////////////////////////////////////////////////////
@@ -205,17 +214,20 @@ implements ICountAble { //IMeasurAble { //
 	final static public boolean EQUALS(final float value, final float argVal) {
 		return IS_ZERO(value - argVal, value + argVal); }
 	
-	/** @return the Sign of x-y  */
+	/** Returns the relative Position of x to y: +1 if x&lt;y, -1 if y&lt;x, 0 if equal.
+	 * @return the Sign of x-y  */
 	final static public byte POSITION(final float x, final float y) {
 		return (byte) (
-			(x < y) ?  1 : 
+			(x < y) ?  1 :
 			(y < x) ? -1 : 0); }
-	
-	/** @return the Minimum of both Values */
+
+	/** Returns the smaller of x and y.
+	 * @return the Minimum of both Values */
 	final static public float MIN(final float x, final float y) {
 		return (x < y) ? x : y; }
 
-	/** @return the Maximum of both Values */
+	/** Returns the larger of x and y.
+	 * @return the Maximum of both Values */
 	final static public float MAX(final float x, final float y) {
 		return (x > y) ? x : y; 
 	}
@@ -245,10 +257,10 @@ implements ICountAble { //IMeasurAble { //
 		return (left <= x) ^ (right < x);
 	}
 
-	/**
+	/** Combines the magnitude of a with the sign of b.
 	 * @param a
 	 * @param b
-	 * @return b with the Sign of a
+	 * @return a with the Sign of b
 	 */
 	final static public float assignSign(final float a, final float b) {
 		final boolean aIsPositive = (a >= 0); 
@@ -268,12 +280,14 @@ implements ICountAble { //IMeasurAble { //
 
 	/////////////////////////////////////////////////////////////////////////////////////
 
-	/** @return the Sinus and Cosinus of x in Place	 */
+	/** Writes the cosine and sine of x into CosSin[0] and CosSin[1].
+	 * @return the Sinus and Cosinus of x in Place	 */
 	final static public void CosSin(final double x, final float[] CosSin) {
 		CosSin(x, CosSin, 0, 1);
 	}
-	
-	/** @return the Sinus and Cosinus of x in Place	 */
+
+	/** Reduces x into [-Pi,Pi] and writes its cosine/sine into CosSin at the given indexes.
+	 * @return the Sinus and Cosinus of x in Place	 */
 	final static public void CosSin(double x, final float[] CosSin, final int cos, final int sin) {
 		//		Sin.Value = Math.cos(x); return Math.sin(x);
 		boolean neg;
@@ -294,15 +308,15 @@ implements ICountAble { //IMeasurAble { //
 		CosSin[sin] = -CosSin[sin];
 	}
 	
-	/**
+	/** Writes the cosine and sine of x (already in [-Pi,Pi]) into CosSin[0] and CosSin[1].
 	 * @param SinCos the Sinus and Cosinus of x in Place
 	 * @param x is expected to be in the Range of -Pi..Pi
 	 */
 	final static public void CosSinSafe(final double x, final float[] CosSin) {
-		CosSinSafe(x, CosSin, 0, 1); 
+		CosSinSafe(x, CosSin, 0, 1);
 	}
-	
-	/**
+
+	/** Writes the cosine and sine of x (already in [-Pi,Pi]) into CosSin at the given indexes.
 	 * @param SinCos the Sinus and Cosinus of x in Place
 	 * @param x is expected to be in the Range of -Pi..Pi
 	 */

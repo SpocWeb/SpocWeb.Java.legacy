@@ -10,6 +10,15 @@ package function;
   * Functions are more expensive, but also more elegant than Operations,
   * because they allow for piping the result into the next Function,
   * similar to Pipes and Filters, but they have to transport the Result back,
+  * <!-- docstate
+  * pass: 2
+  * mtime: 2026-09-05T10:12:24Z
+  * digest: c0435d21959a50ccd7f03472f948b0f4e21c72e5c3642e5292635015e420734d
+  * stale: false
+  * tags: [code/function_contract, code/function_composition]
+  * concepts: [Function/Relation Contract]
+  * facets: {layer: utility, status: legacy, complexity: low}
+  * -->
   * so they are more expensive, especially on WANs.	 */
 public interface FunctionAble {
 

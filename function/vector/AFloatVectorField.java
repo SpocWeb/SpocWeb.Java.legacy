@@ -1,6 +1,9 @@
 package function.vector;
 
 /**
+  * Base {@link IFloatVectorField} implementation supplying the batch (array-of-vectors)
+  * overloads of {@code map} in terms of the single-vector abstract methods.
+  *
   * Title: AFloatVectorField.java<p>
   * Description:
   * TODO: Describes the Purpose / Responsibilities of this Class, not it's Implementation.
@@ -16,6 +19,15 @@ package function.vector;
   * Created on	06-20-2001, 08:22 PM<p>
   * @author 	Matthias Heuer
   * @version	1.0
+  * <!-- docstate
+  * pass: 2
+  * mtime: 2026-09-05T20:47:02Z
+  * digest: bb0261e08baccfdda6b166ccf9af3e1c97449e0fb8756112d5bc7f4f7f9b1345
+  * stale: false
+  * tags: [code/vector_math, code/function_composition]
+  * concepts: [Vector Field Function]
+  * facets: {layer: utility, status: legacy, complexity: low}
+  * -->
   */
 public abstract class AFloatVectorField
 implements IFloatVectorField {

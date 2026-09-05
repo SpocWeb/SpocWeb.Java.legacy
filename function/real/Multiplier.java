@@ -20,6 +20,15 @@ package function.real;
   * Created on	2000-11-26, 01;13;44<p>
   * @author 	Matthias Heuer
   * @version	1.0
+  * <!-- docstate
+  * pass: 2
+  * mtime: 2026-09-05T16:44:16Z
+  * digest: 637f145847b8b2d5d7a6a6d6294a851ac0db242905c42052a93b6fffe05bff58
+  * stale: false
+  * tags: [code/running_aggregates, code/mathematical_function]
+  * concepts: [Streaming Numeric Aggregator]
+  * facets: {layer: utility, status: legacy, complexity: low}
+  * -->
   */
 public class Multiplier 
 	extends StatefulFloatFunction {
@@ -28,7 +37,8 @@ public class Multiplier
 	//  Variables
 	////////////////////////////////////////////////////////////////////////////////
 
-	/** @return the Scaling Factor taking the Generator's MaxValue into Account	 */
+	/** Returns the configured scaling factor.
+	 * @return the Scaling Factor taking the Generator's MaxValue into Account	 */
 	public double getScale() { return _Value; }
 
 	////////////////////////////////////////////////////////////////////////////////
@@ -47,13 +57,15 @@ public class Multiplier
 		super(Scale);
 	}
 
-	/** @return the next single Precision Number	 */
+	/** Scales {@code value_} by the configured factor.
+	 * @return the next single Precision Number	 */
 	public float Map(final float value_) {
 		//		++count;
 		return (float) (value_ * _Value);
 	}
 
-	/** @return the next double Precision Number	 */
+	/** Scales {@code value_} by the configured factor.
+	 * @return the next double Precision Number	 */
 	public double Map(final double value_) {
 		//		++count;
 		return value_ * _Value;

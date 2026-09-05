@@ -9,6 +9,15 @@ import function.vector.IFloatVectorField;
  * from a Sphere to a Plane.
  * All Coordinates are assumed to be in Radians.
  * @see BodyTensor.Projections for the corresponding Operations with Tensor Objects.
+ * <!-- docstate
+ * pass: 2
+ * mtime: 2026-09-05T16:39:06Z
+ * digest: b0564e3eb8990c8f5ffddb0f6c83bb7b5df5404821eff35b02509f9824a25337
+ * stale: false
+ * tags: [code/function_contract, code/function_composition]
+ * concepts: [Function/Relation Contract]
+ * facets: {layer: utility, status: legacy, complexity: low}
+ * -->
  */
 public class Projections
 extends AFunction
@@ -128,21 +137,37 @@ implements IFloatVectorField
 /// Enumeration Constants for the selected Transformation
 ///////////////////////////////////////////////////////////////////////////////////
 
+	/** Selects the identity (no-op) cylindrical projection. */
 	final public static int Cyl_Netz			=  0;
+	/** Selects conversion from hours to radians. */
 	final public static int Hour2Rad			=  1;
+	/** Selects conversion from degrees to radians. */
 	final public static int Deg2Rad				=  2;
+	/** Selects the azimuthal cylindrical projection. */
 	final public static int Cyl_Azimuthal		=  3;
+	/** Selects the gnomonic cylindrical projection. */
 	final public static int Cyl_Gnomonisch		=  4;
+	/** Selects the Mercator cylindrical projection. */
 	final public static int Cyl_Mercator		=  5;
+	/** Selects the orthographic cylindrical projection. */
 	final public static int Cyl_Orthograph		=  6;
+	/** Selects the stereographic cylindrical projection. */
 	final public static int Cyl_Stereograph		=  7;
+	/** Selects the identity polar net projection. */
 	final public static int Polar_Netz			=  8;
+	/** Selects the azimuthal polar projection. */
 	final public static int Polar_Azimuthal		=  9;
+	/** Selects the gnomonic polar projection. */
 	final public static int Polar_Gnomonisch	= 10;
+	/** Selects the orthographic polar projection. */
 	final public static int Polar_Orthograph	= 11;
+	/** Selects the stereographic polar projection. */
 	final public static int Polar_Stereograph	= 12;
+	/** Selects the sinusoidal projection. */
 	final public static int Sinusoidal			= 13;
+	/** Selects the Albers equal-area projection. */
 	final public static int Albers				= 14; //??
+	/** Selects the Mollweide projection. */
 	final public static int Mollweide			= 15; //??
 
 	//////////////////////
@@ -162,7 +187,7 @@ implements IFloatVectorField
 		return VectorDouble.MUL_AT(V, Hour); }
 
 	/**Projektion des Nordpols in die Mitte einer Polar-Darstellung
-	 * mit äquidistantem Breiten- Raster
+	 * mit ï¿½quidistantem Breiten- Raster
 	 * x' = Cos(x) * (Pi/2-y)
 	 * y' = Sin(x) * (Pi/2-y)
 	 */
@@ -205,7 +230,7 @@ implements IFloatVectorField
 
 	/**
 	 * Projektion des Nordpols in die Mitte einer Polar-Darstellung
-	 * mit flächenerhaltendem Breiten- Raster nach Lambert
+	 * mit flï¿½chenerhaltendem Breiten- Raster nach Lambert
 	 * x' = Cos(x) * sin((y-Pi/2)/2)
 	 * y' = Sin(x) * sin((y-Pi/2)/2)
 	 */
@@ -218,6 +243,10 @@ implements IFloatVectorField
 	final static public double ProjZentrum = 0.3;
 
 	/** stereographische Projektion von der Kugel auf den Zylinder */
+	// TODO: LOGIC: indexes V[2], but every other projection in this class treats V as a
+	// 2-element (x,y) position (V[0]/V[1]) - calling this with the same 2-element vectors used
+	// everywhere else (e.g. as produced by map(double[], double[])) throws
+	// ArrayIndexOutOfBoundsException. Likely meant V[1], mirroring Cyl_MercatorAt below.
 	public double[] Mercator(double[] V) {
 		double[] c_s = new double[2];
 		ByRefDouble.COS_SIN (V [2], c_s);

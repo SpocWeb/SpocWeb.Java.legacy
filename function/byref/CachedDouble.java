@@ -5,12 +5,15 @@
 package function.byref;
 
 /**
+ * Caching decorator over an {@link IFloat}, marking the cache dirty before every write
+ * delegates to the wrapped value.
+ *
  * Title: CachedDouble<p>
  * Description:
  * Purpose:
  *
  * Design Decisions / Implementation Details:
- * 
+ *
  *
  * Known SubClasses: <none>
  *
@@ -25,6 +28,15 @@ package function.byref;
  * @author mheuer
  * @version	1.0
  *
+ * <!-- docstate
+ * pass: 2
+ * mtime: 2026-09-05T20:54:49Z
+ * digest: f1a3426d63b22ebee07b722c4e307e72572fd0896e0400b772b306fab52dbf4c
+ * stale: false
+ * tags: [code/caching, code/function_wrapper]
+ * concepts: [Caching Decorator]
+ * facets: {layer: utility, status: legacy, complexity: low}
+ * -->
  */
 public class CachedDouble 
 extends CachedMeasurAble //ByRefDouble 
@@ -39,42 +51,42 @@ implements IFloat
 		super(inner_);
 	}
 
-	/**
+	/** Marks the cache dirty, then delegates to the inner value.
 	 * @see function.ByRef.IAdjustAble#setDouble(double)
 	 */
 	public void setDouble(double val) {
 		assertIsDirty(true);
 		((IFloat) inner).setDouble(val); }
 
-	/**
+	/** Marks the cache dirty, then delegates to the inner value.
 	 * @see function.ByRef.IAdjustAble#setFloat(float)
 	 */
 	public void setFloat(float val) {
 		assertIsDirty(true);
 		((IFloat) inner).setFloat(val); }
 
-	/**
+	/** Marks the cache dirty, then delegates to the inner value.
 	 * @see function.ByRef.ICategorizeAble#setByte(byte)
 	 */
 	public void setByte(byte val) {
 		assertIsDirty(true);
 		((IFloat) inner).setByte(val); }
 
-	/**
+	/** Marks the cache dirty, then delegates to the inner value.
 	 * @see function.ByRef.ICategorizeAble#setInt(int)
 	 */
 	public void setInt(int val) {
 		assertIsDirty(true);
 		((IFloat) inner).setInt(val); }
 
-	/**
+	/** Marks the cache dirty, then delegates to the inner value.
 	 * @see function.ByRef.ICategorizeAble#setLong(long)
 	 */
 	public void setLong(long val) {
 		assertIsDirty(true);
 		((IFloat) inner).setLong(val); }
 
-	/**
+	/** Marks the cache dirty, then delegates to the inner value.
 	 * @see function.ByRef.ICategorizeAble#setShort(short)
 	 */
 	public void setShort(short val) {

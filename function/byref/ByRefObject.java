@@ -1,7 +1,7 @@
 package function.byref;
 
 /**
-  * Title: ByRefShort<p>
+  * Title: ByRefObject<p>
   * Description:
   * This class is for transporting an Object back from a Method Call.
   *
@@ -14,6 +14,15 @@ package function.byref;
   * Created on	2001-12-12, 01;52;04<p>
   * @author 	Matthias Heuer
   * @version	1.0
+  * <!-- docstate
+  * pass: 2
+  * mtime: 2026-09-05T20:48:33Z
+  * digest: e8afd207f65348b163a962aaf8f2bdfaefd1eef9285784a2e22549f4b8734304
+  * stale: false
+  * tags: [code/function_wrapper, code/mathematical_constants]
+  * concepts: [By-Reference Primitive Wrapper]
+  * facets: {layer: utility, status: legacy, complexity: low}
+  * -->
   */
 final public class ByRefObject {
 //extends Const { //in Java cannot make protected Variable 'Value' public! Only add a setValue() Method.

@@ -26,6 +26,15 @@ import function.ICountAble;
   * Created on	2001-12-12, 01;52;04<p>
   * @author 	Matthias Heuer
   * @version	1.0
+  * <!-- docstate
+  * pass: 2
+  * mtime: 2026-09-05T20:53:18Z
+  * digest: 32c5aaf64643a8efe0bff78db39d2faaebcd345b48f073c6e3e8457455648703
+  * stale: false
+  * tags: [code/function_wrapper, code/mathematical_constants]
+  * concepts: [By-Reference Primitive Wrapper]
+  * facets: {layer: utility, status: legacy, complexity: low}
+  * -->
   */
 final public class ByRefLong
 //	extends ConstCount //not possible in Java to make a protected Variable ('Value') public
@@ -203,48 +212,64 @@ implements ICountAble {
 		if (obj == this) return  true; 
 		return Value == ByRefLong.TO_LONG(obj); }
 	
+	/** Returns ths minus module when module is positive, otherwise the bitwise complement of ths. */
 	final static public long CMPL(final long  ths, final int module) {
-		if (module > 0) 
-			return  ths - module; 
+		if (module > 0)
+			return  ths - module;
 			return ~ths; }
 
+	/** Splits {@link #Value} around mask/modByPeriod, leaving the lower part in Value.
+	 * @return the upper part of the original Value */
 	public long UPPER(final long mask, final long modByPeriod) {
 		long ret;
 		if (modByPeriod < 0) {
             ret = Value >> -modByPeriod; Value &=(mask-1); return ret; }
 			ret = Value / mask;	         Value %= mask   ; return ret; }
 
+	/** Returns the lower part of value around mask/modByPeriod, scaled by modByPeriod. */
 	final static public long LOWER(final long value, final long mask, final long modByPeriod) {
 		if (modByPeriod < 0) {
 			return (value &(mask-1)) <<(-modByPeriod-1); } 	//this is exactly ModAtDivAt()!!!
 			return (value % mask)     *  modByPeriod   ; }
 
+	/** Returns ths shifted left by 1 bit. */
 	final static public long SHL (final long  ths){return ths << 1; }
+	/** Returns ths shifted right by 1 bit. */
 	final static public long SHR (final long  ths){return ths >> 1; }
+	/** Shifts ths left by -module bits if module is negative, otherwise multiplies ths by module. */
 	final static public long SHL (final long  ths, final int module) { if (module < 0) return ths << -module; return ths* module; }
+	/** Shifts ths right by -module bits if module is negative, otherwise divides ths by module. */
 	final static public long SHR (final long  ths, final int module) { if (module < 0) return ths >> -module; return ths/ module; }
+	/** Adds the lower part (per {@link #LOWER}) into ths, then shifts right by module. */
 	final static public long ROR (long  ths, final long Mask, final long modByPeriod, int module){
 		ths += LOWER(ths, Mask, modByPeriod); return SHR(ths, module); }
-	
+
+	/** Shifts {@link #Value} left by module and adds in the upper part (per {@link #UPPER}). */
 	public ByRefLong ROL_AT (final long mask, final long modByPeriod, final int module){
 		Value = SHL(Value, module); Value += UPPER(mask, modByPeriod); return this; }
-	
-	/** @return the Value rotated left by 1  */
-	final static public long ROL(long x, final int octave) { 
-		final long maxVal = 1l << octave; 
-		if((x <<= 1) > maxVal) 
+
+	/** Rotates the low {@code octave} bits of x left by 1.
+	 * @return the Value rotated left by 1  */
+	final static public long ROL(long x, final int octave) {
+		final long maxVal = 1l << octave;
+		if((x <<= 1) > maxVal)
 			x -= maxVal-1;
-		return x; 
+		return x;
 	}
-	
-	/** @return the Value rotated right by 1  */
-	final static public long ROR(final long x, final int octave) { 
-		final long corr = (x &  1) << octave; 
-		return    corr + (x >> 1); 
+
+	/** Rotates the low {@code octave} bits of x right by 1.
+	 * @return the Value rotated right by 1  */
+	// TODO: LOGIC: the dropped low bit is shifted into position 'octave' (corr = (x&1)<<octave),
+	// one bit above the top of the octave-bit range that ROL above uses (maxVal = 1L<<octave) -
+	// see the identical defect flagged in ByRefInt.ROR. Likely should be '<<(octave-1)'.
+	final static public long ROR(final long x, final int octave) {
+		final long corr = (x &  1) << octave;
+		return    corr + (x >> 1);
 	}
-	
-	/** @return the Value with it's Bit Sequence reverted */
-	final static public long REVERT(long x, final int octave) { 
+
+	/** Reverses the order of the low {@code octave} bits of x.
+	 * @return the Value with it's Bit Sequence reverted */
+	final static public long REVERT(long x, final int octave) {
 		long ret = 0; 
 		for(int i = octave; --i >= 0;) {
 			ret <<= 1; 

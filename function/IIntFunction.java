@@ -21,18 +21,27 @@ package function;
  * @author mheuer
  * @version	1.0
  *
+ * <!-- docstate
+ * pass: 2
+ * mtime: 2026-09-05T16:39:28Z
+ * digest: 3732b6b17b89b0487a3497b4657f54ae191c842a4b39449bcdbd5af8694458e6
+ * stale: false
+ * tags: [code/function_contract, code/function_composition]
+ * concepts: [Function/Relation Contract]
+ * facets: {layer: utility, status: legacy, complexity: low}
+ * -->
  */
 public interface IIntFunction {
 	
-	/**
-	 * @param value the Value to map. 
-	 * @return a Mapping from long to long. 
+	/** Maps a {@code long} value to another {@code long} value.
+	 * @param value the Value to map.
+	 * @return a Mapping from long to long.
 	 */
 	public long Map(final long value);
-	
-	/**
-	 * @param value the Value to map. 
-	 * @return a Mapping from int to int. 
+
+	/** Maps an {@code int} value to another {@code int} value.
+	 * @param value the Value to map.
+	 * @return a Mapping from int to int.
 	 */
 	public int Map(final int value);
 

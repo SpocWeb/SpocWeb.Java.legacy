@@ -17,14 +17,25 @@ import function.AFunction;
  * 
  * @author heuerm
  *
+ * <!-- docstate
+ * pass: 2
+ * mtime: 2026-09-05T20:43:14Z
+ * digest: d76ff8ecddbf2b888af28c46ba8b933108be2ffb145892d11916071d944c41a5
+ * stale: false
+ * tags: [code/string_transform, code/function_contract]
+ * concepts: [String Transform Function]
+ * facets: {layer: utility, status: legacy, complexity: low}
+ * -->
  */
 public abstract class AStringFunction 
 extends AFunction 
 implements IStringFunction {
 
+	/** Maps a String argument to its result, per the concrete String function. */
 	public abstract String Map(final String arg);
-	
-	/** @see function.IFunction#Map(java.lang.Object)	 */
+
+	/** Converts {@code arg} to a String and delegates to {@link #Map(String)}.
+	 * @see function.IFunction#Map(java.lang.Object)	 */
 	public Object Map(final Object arg) { return Map(arg.toString()); }
 	
 	///////////////////////////////////////////////////////////////////////////
@@ -71,18 +82,22 @@ implements IStringFunction {
 	 */
 	final static public IStringFunction TO_CAMEL = new AStringFunction() {
 		public String Map(final String arg) {
-			final int len = arg.length();  
+			final int len = arg.length();
 			final StringBuffer ret = new StringBuffer(len);
 			for(int i = -1; ++i < len;) {
-				final char chr = arg.charAt(i); 
+				final char chr = arg.charAt(i);
 				if (chr != '_') {
 					ret.append(Character.toLowerCase(chr));
 				} else {
+					// TODO: LOGIC: if '_' is the last character of arg, arg.charAt(++i) reads one
+					// past the end of the string and throws StringIndexOutOfBoundsException.
+					// Reachable whenever the input (hungarian-notation) string ends with an
+					// underscore, e.g. TO_CAMEL.Map("FOO_").
 					ret.append(Character.toUpperCase(arg.charAt(++i)));
 				}
 			}
-			return ret.toString(); 
-		} 
+			return ret.toString();
+		}
 	};
 
 	/** Singleton of the stateless IStringFunction converting a String into hungarian Notation
@@ -121,110 +136,110 @@ implements IStringFunction {
 			{ { ";", ".," }
 			, { "\"", "\"\"" }
 			, { "\t", "    " }
-			, { "©", "(c)" }
-			, { "®", "(r)" }
-			, { "´", "acute" }
-			, { "«", "//" }
-			, { "»", "\\\\" }
-			, { "¡", "!i" }
-			, { "¿", "?i" }
+			, { "ï¿½", "(c)" }
+			, { "ï¿½", "(r)" }
+			, { "ï¿½", "acute" }
+			, { "ï¿½", "//" }
+			, { "ï¿½", "\\\\" }
+			, { "ï¿½", "!i" }
+			, { "ï¿½", "?i" }
 			, {
-				"À", "`A" }
-			, { "à", "`a" }
-			, { "Á", "/A" }
-			, { "á", "/a" }
-			, { "Â", "^A" }
-			, { "â", "^a" }
-			, { "Ã", "~A" }
-			, { "ã", "~a" }
-			, { "Ä", "Ae" }
-			, { "ä", "ae" }
-			, { "Å", "Ao" }
-			, { "å", "ao" }
-			, { "Æ", "AE" }
-			, { "æ", "aE" }
+				"ï¿½", "`A" }
+			, { "ï¿½", "`a" }
+			, { "ï¿½", "/A" }
+			, { "ï¿½", "/a" }
+			, { "ï¿½", "^A" }
+			, { "ï¿½", "^a" }
+			, { "ï¿½", "~A" }
+			, { "ï¿½", "~a" }
+			, { "ï¿½", "Ae" }
+			, { "ï¿½", "ae" }
+			, { "ï¿½", "Ao" }
+			, { "ï¿½", "ao" }
+			, { "ï¿½", "AE" }
+			, { "ï¿½", "aE" }
 			, { //all "A" Variations
-				"Ç", ",C" }
-			, { "ç", ",c" }
-			, { "Ð", "ETH" }
-			, { "ð", "eth" }
-			, { "È", "`E" }
-			, { "è", "`e" }
-			, { "É", "/E" }
-			, { "é", "/e" }
-			, { "Ê", "^E" }
-			, { "ê", "^e" }
-			, { "Ë", "EE" }
-			, { "ë", "eE" }
+				"ï¿½", ",C" }
+			, { "ï¿½", ",c" }
+			, { "ï¿½", "ETH" }
+			, { "ï¿½", "eth" }
+			, { "ï¿½", "`E" }
+			, { "ï¿½", "`e" }
+			, { "ï¿½", "/E" }
+			, { "ï¿½", "/e" }
+			, { "ï¿½", "^E" }
+			, { "ï¿½", "^e" }
+			, { "ï¿½", "EE" }
+			, { "ï¿½", "eE" }
 			, { //all "E" Variations
-				"Ì", "`I" }
-			, { "ì", "`i" }
-			, { "Í", "/I" }
-			, { "í", "/i" }
-			, { "Î", "^I" }
-			, { "î", "^i" }
-			, { "Ï", "II" }
-			, { "ï", "iI" }
+				"ï¿½", "`I" }
+			, { "ï¿½", "`i" }
+			, { "ï¿½", "/I" }
+			, { "ï¿½", "/i" }
+			, { "ï¿½", "^I" }
+			, { "ï¿½", "^i" }
+			, { "ï¿½", "II" }
+			, { "ï¿½", "iI" }
 			, { //all "N" Variations
-				"Ñ", "~N" }
-			, { "ñ", "~n" }
+				"ï¿½", "~N" }
+			, { "ï¿½", "~n" }
 			, { //all "O" Variations
-			    "Ò", "`O" }
-			, { "ò", "`o" }
-			, { "Ó", "/O" }
-			, { "ó", "/o" }
-			, { "Ô", "^O" }
-			, { "ô", "^o" }
-			, { "Õ", "~O" }
-			, { "õ", "~o" }
-			, { "Ö", "Oe" }
-			, { "ö", "oe" }
-			, { "Ø", "/O" }
-			, { "ø", "/o" }
+			    "ï¿½", "`O" }
+			, { "ï¿½", "`o" }
+			, { "ï¿½", "/O" }
+			, { "ï¿½", "/o" }
+			, { "ï¿½", "^O" }
+			, { "ï¿½", "^o" }
+			, { "ï¿½", "~O" }
+			, { "ï¿½", "~o" }
+			, { "ï¿½", "Oe" }
+			, { "ï¿½", "oe" }
+			, { "ï¿½", "/O" }
+			, { "ï¿½", "/o" }
 			, { //all "O" Variations
-				"Ù", "`U" }
-			, { "ù", "`u" }
-			, { "Ú", "/U" }
-			, { "ú", "/u" }
-			, { "Û", "^U" }
-			, { "û", "^u" }
-			, { "Ü", "Ue" }
-			, { "ü", "ue" }
+				"ï¿½", "`U" }
+			, { "ï¿½", "`u" }
+			, { "ï¿½", "/U" }
+			, { "ï¿½", "/u" }
+			, { "ï¿½", "^U" }
+			, { "ï¿½", "^u" }
+			, { "ï¿½", "Ue" }
+			, { "ï¿½", "ue" }
 			, { //all "U" Variations
-				"Ý", "`Y" }
-			, { "ý", "`y" }
-			, { "ÿ", "yy" }
-			, { "Þ", "THORN" }
-			, { "þ", "thorn" }
-			, { "ß", "sz" } //instead of "ss" which makes the previous Vowel pronounced brief
-			, { "§", "sect" }
-			, { "¶", "para" }
-			, { "µ", "micro" }
-			, { "¦", "brvbar" }
-			, { "±", "+-" }
-			, { "·", "middot" }
-			, { "¨", ".." }
-			, { "¸", "cedil" }
-			, { "ª", "ordf" }
-			, { "º", "ordm" }
-			, { "¬", "not" }
-			, { "­", "shy" }
-			, { "¯", "macr" }
-			, { "°", "deg" }
-			, { "¹", "sup1" }
-			, { "²", "sup2" }
-			, { "³", "sup3" }
-			, { "¼", "frac14" }
-			, { "½", "frac12" }
-			, { "¾", "frac34" }
-			, { "×", "times" }
-			, { "÷", "divide" }
+				"ï¿½", "`Y" }
+			, { "ï¿½", "`y" }
+			, { "ï¿½", "yy" }
+			, { "ï¿½", "THORN" }
+			, { "ï¿½", "thorn" }
+			, { "ï¿½", "sz" } //instead of "ss" which makes the previous Vowel pronounced brief
+			, { "ï¿½", "sect" }
+			, { "ï¿½", "para" }
+			, { "ï¿½", "micro" }
+			, { "ï¿½", "brvbar" }
+			, { "ï¿½", "+-" }
+			, { "ï¿½", "middot" }
+			, { "ï¿½", ".." }
+			, { "ï¿½", "cedil" }
+			, { "ï¿½", "ordf" }
+			, { "ï¿½", "ordm" }
+			, { "ï¿½", "not" }
+			, { "ï¿½", "shy" }
+			, { "ï¿½", "macr" }
+			, { "ï¿½", "deg" }
+			, { "ï¿½", "sup1" }
+			, { "ï¿½", "sup2" }
+			, { "ï¿½", "sup3" }
+			, { "ï¿½", "frac14" }
+			, { "ï¿½", "frac12" }
+			, { "ï¿½", "frac34" }
+			, { "ï¿½", "times" }
+			, { "ï¿½", "divide" }
 			, { //Currencies
-				"¢", "Cent" }
-			, { "£", "Pound" }
-			, { "¤", "Ccy" }
-			, { "¥", "Yen" }
-			, { "€", "Euro" } 
+				"ï¿½", "Cent" }
+			, { "ï¿½", "Pound" }
+			, { "ï¿½", "Ccy" }
+			, { "ï¿½", "Yen" }
+			, { "ï¿½", "Euro" } 
 	}; //also replacing Semicolons and Tabs to be able to use them as Separators!
 	
 	/** Characters that are to be encoded by Strings
@@ -271,7 +286,9 @@ implements IStringFunction {
 	/** Alternative Quote Character of an XML Attribute	 */
 	final static public char CHR_QUOTE = '"';
 
+	/** XML entity name for a double quote, without the leading/trailing '&amp;'/';'. */
 	final static public String XML_STR_QUOTE     = "quot";
+	/** XML entity name for an apostrophe, without the leading/trailing '&amp;'/';'. */
 	final static public String XML_STR_APOSTROPH = "apos";
 	
 //	final static public String XML_ENTITY_QUOTE = XML_ENTITY_START+XML_STR_QUOTE    +XML_ENTITY_STOP;
@@ -312,7 +329,7 @@ implements IStringFunction {
 	 * ASCII   from 0x00 to 0x7F
 	 * Latin-1 from 0x80 to 0xFF
 	 * 
-	 * ¥¤£¢÷×¾½¼³²¹°¯­¬ºª¸¨·±¦µ¶§ßþÞÿýÝüÜûÛúÚùÙøØöÖõÕôÔóÓòÒñÑïÏîÎíÍìÌëËêÊéÉèÈðÐçÇæÆåÅäÄãÃâÂáÁàÀ¿¡»«´©><&
+	 * ï¿½ï¿½ï¿½ï¿½ï¿½×¾ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½><&
 	 * 
 	 * These Encodings are READABLE and can be maintained in ANSI using 7 Bit Editors, 
 	 * but they require 6 Bytes Storage compared to 2 Bytes in UTF-8, 
@@ -326,135 +343,135 @@ implements IStringFunction {
 	 */
 	private static final String[][] ARR_LATIN1_ENTITY_STRINGS = 
 		{ {" ", "nbsp"} //,{"<", "lt"    }, {"&", "amp"   }, {">", "gt"    }, {"\"", "quot" }, {"\'", "apos" } //basic XML Entities
-		, { "©", "copy" }
-		, {"®", "reg" }
-		, {"´", "acute" }
-		, {"«", "laquo" }
-		, {"»", "raquo" }
-		, {"¡", "iexcl" }
-		, {"¿", "iquest" }
+		, { "ï¿½", "copy" }
+		, {"ï¿½", "reg" }
+		, {"ï¿½", "acute" }
+		, {"ï¿½", "laquo" }
+		, {"ï¿½", "raquo" }
+		, {"ï¿½", "iexcl" }
+		, {"ï¿½", "iquest" }
 		, {
-			"À", "Agrave" }
-		, { "à", "agrave" }
-		, { "Á", "Aacute" }
-		, { "á", "aacute" }
-		, { "Â", "Acirc" }
-		, { "â", "acirc" }
-		, { "Ã", "Atilde" }
-		, { "ã", "atilde" }
-		, { "Ä", "Auml" }
-		, { "ä", "auml" }
-		, { "Å", "Aring" }
-		, { "å", "aring" }
-		, { "Æ", "AElig" }
-		, { "æ", "aelig" }
+			"ï¿½", "Agrave" }
+		, { "ï¿½", "agrave" }
+		, { "ï¿½", "Aacute" }
+		, { "ï¿½", "aacute" }
+		, { "ï¿½", "Acirc" }
+		, { "ï¿½", "acirc" }
+		, { "ï¿½", "Atilde" }
+		, { "ï¿½", "atilde" }
+		, { "ï¿½", "Auml" }
+		, { "ï¿½", "auml" }
+		, { "ï¿½", "Aring" }
+		, { "ï¿½", "aring" }
+		, { "ï¿½", "AElig" }
+		, { "ï¿½", "aelig" }
 		, { //all "A" Variations
-			"Ç", "Ccedil" }
-		, { "ç", "ccedil" }
-		, { "Ð", "ETH" }
-		, { "ð", "eth" }
-		, { "È", "Egrave" }
-		, { "è", "egrave" }
-		, { "É", "Eacute" }
-		, { "é", "eacute" }
-		, { "Ê", "Ecirc" }
-		, { "ê", "ecirc" }
-		, { "Ë", "Euml" }
-		, { "ë", "euml" }
+			"ï¿½", "Ccedil" }
+		, { "ï¿½", "ccedil" }
+		, { "ï¿½", "ETH" }
+		, { "ï¿½", "eth" }
+		, { "ï¿½", "Egrave" }
+		, { "ï¿½", "egrave" }
+		, { "ï¿½", "Eacute" }
+		, { "ï¿½", "eacute" }
+		, { "ï¿½", "Ecirc" }
+		, { "ï¿½", "ecirc" }
+		, { "ï¿½", "Euml" }
+		, { "ï¿½", "euml" }
 		, { //all "E" Variations
-			"Ì", "Igrave" }
-		, { "ì", "igrave" }
-		, { "Í", "Iacute" }
-		, { "í", "iacute" }
-		, { "Î", "Icirc" }
-		, { "î", "icirc" }
-		, { "Ï", "Iuml" }
-		, { "ï", "iuml" }
+			"ï¿½", "Igrave" }
+		, { "ï¿½", "igrave" }
+		, { "ï¿½", "Iacute" }
+		, { "ï¿½", "iacute" }
+		, { "ï¿½", "Icirc" }
+		, { "ï¿½", "icirc" }
+		, { "ï¿½", "Iuml" }
+		, { "ï¿½", "iuml" }
 		, { //all "I" Variations
-			"Ñ", "Ntilde" }
-		, { "ñ", "ntilde" }
-		, { "Ò", "Ograve" }
-		, { "ò", "ograve" }
-		, { "Ó", "Oacute" }
-		, { "ó", "oacute" }
-		, { "Ô", "Ocirc" }
-		, { "ô", "ocirc" }
-		, { "Õ", "Otilde" }
-		, { "õ", "otilde" }
-		, { "Ö", "Ouml" }
-		, { "ö", "ouml" }
-		, { "Ø", "Oslash" }
-		, { "ø", "oslash" }
+			"ï¿½", "Ntilde" }
+		, { "ï¿½", "ntilde" }
+		, { "ï¿½", "Ograve" }
+		, { "ï¿½", "ograve" }
+		, { "ï¿½", "Oacute" }
+		, { "ï¿½", "oacute" }
+		, { "ï¿½", "Ocirc" }
+		, { "ï¿½", "ocirc" }
+		, { "ï¿½", "Otilde" }
+		, { "ï¿½", "otilde" }
+		, { "ï¿½", "Ouml" }
+		, { "ï¿½", "ouml" }
+		, { "ï¿½", "Oslash" }
+		, { "ï¿½", "oslash" }
 		, { //all "O" Variations
-			"Ù", "Ugrave" }
-		, { "ù", "ugrave" }
-		, { "Ú", "Uacute" }
-		, { "ú", "uacute" }
-		, { "Û", "Ucirc" }
-		, { "û", "ucirc" }
-		, { "Ü", "Uuml" }
-		, { "ü", "uuml" }
+			"ï¿½", "Ugrave" }
+		, { "ï¿½", "ugrave" }
+		, { "ï¿½", "Uacute" }
+		, { "ï¿½", "uacute" }
+		, { "ï¿½", "Ucirc" }
+		, { "ï¿½", "ucirc" }
+		, { "ï¿½", "Uuml" }
+		, { "ï¿½", "uuml" }
 		, { //all "U" Variations
-			"Ý", "Yacute" }
-		, { "ý", "yacute" }
-		, { "ÿ", "yuml" }
-		, { "Þ", "THORN" }
-		, { "þ", "thorn" }
-		, { "ß", "szlig" }
-		, { "§", "sect" }
-		, { "¶", "para" }
-		, { "µ", "micro" }
-		, { "¦", "brvbar" }
-		, { "±", "plusmn" }
-		, { "·", "middot" }
-		, { "¨", "uml" }
-		, { "¸", "cedil" }
-		, { "ª", "ordf" }
-		, { "º", "ordm" }
-		, { "¬", "not" }
-		, { "­", "shy" }
-		, { "¯", "macr" }
-		, { "°", "deg" }
-		, { "¹", "sup1" }
-		, { "²", "sup2" }
-		, { "³", "sup3" }
-		, { "¼", "frac14" }
-		, { "½", "frac12" }
-		, { "¾", "frac34" }
-		, { "×", "times" }
-		, { "÷", "divide" }
-		, { "¢", "cent" }
-		, { "£", "pound" }
-		, { "¤", "curren" }
-		, { "¥", "yen" }
-		, {"€", "euro" } //Currencies
+			"ï¿½", "Yacute" }
+		, { "ï¿½", "yacute" }
+		, { "ï¿½", "yuml" }
+		, { "ï¿½", "THORN" }
+		, { "ï¿½", "thorn" }
+		, { "ï¿½", "szlig" }
+		, { "ï¿½", "sect" }
+		, { "ï¿½", "para" }
+		, { "ï¿½", "micro" }
+		, { "ï¿½", "brvbar" }
+		, { "ï¿½", "plusmn" }
+		, { "ï¿½", "middot" }
+		, { "ï¿½", "uml" }
+		, { "ï¿½", "cedil" }
+		, { "ï¿½", "ordf" }
+		, { "ï¿½", "ordm" }
+		, { "ï¿½", "not" }
+		, { "ï¿½", "shy" }
+		, { "ï¿½", "macr" }
+		, { "ï¿½", "deg" }
+		, { "ï¿½", "sup1" }
+		, { "ï¿½", "sup2" }
+		, { "ï¿½", "sup3" }
+		, { "ï¿½", "frac14" }
+		, { "ï¿½", "frac12" }
+		, { "ï¿½", "frac34" }
+		, { "ï¿½", "times" }
+		, { "ï¿½", "divide" }
+		, { "ï¿½", "cent" }
+		, { "ï¿½", "pound" }
+		, { "ï¿½", "curren" }
+		, { "ï¿½", "yen" }
+		, {"ï¿½", "euro" } //Currencies
 	};
 	/* {
 	//{" ", "nbsp"  }, //0xA0
-	{"¡", "iexcl" }, {"¢", "cent"  }, {"£", "pound" }, {"¤", "curren"},
-	{"¥", "yen"   }, {"¦", "brvbar"}, {"§", "sect"  }, {"¨", "uml"   },
-	{"©", "copy"  }, {"ª", "ordf"  }, {"«", "laquo" }, {"¬", "not"   },
-	{"­", "shy"   }, {"®", "reg"   }, {"¯", "macr"  }, {"°", "deg"   },
-	{"±", "plusmn"}, {"²", "sup2"  }, {"³", "sup3"  }, {"´", "acute" },
-	{"µ", "micro" }, {"¶", "para"  }, {"·", "middot"}, {"¸", "cedil" },
-	{"¹", "sup1"  }, {"º", "ordm"  }, {"»", "raquo" }, {"¼", "frac14"},
-	{"½", "frac12"}, {"¾", "frac34"}, {"¿", "iquest"}, {"À", "Agrave"},
-	{"Á", "Aacute"}, {"Â", "Acirc" }, {"Ã", "Atilde"}, {"Ä", "Auml"  },
-	{"Å", "Aring" }, {"Æ", "AElig" }, {"Ç", "Ccedil"}, {"È", "Egrave"},
-	{"É", "Eacute"}, {"Ê", "Ecirc" }, {"Ë", "Euml"  }, {"Ì", "Igrave"},
-	{"Í", "Iacute"}, {"Î", "Icirc" }, {"Ï", "Iuml"  }, {"Ð", "ETH"   },
-	{"Ñ", "Ntilde"}, {"Ò", "Ograve"}, {"Ó", "Oacute"}, {"Ô", "Ocirc" },
-	{"Õ", "Otilde"}, {"Ö", "Ouml"  }, {"×", "times" }, {"Ø", "Oslash"},
-	{"Ù", "Ugrave"}, {"Ú", "Uacute"}, {"Û", "Ucirc" }, {"Ü", "Uuml"  },
-	{"Ý", "Yacute"}, {"Þ", "THORN" }, {"ß", "szlig" }, {"à", "agrave"},
-	{"á", "aacute"}, {"â", "acirc" }, {"ã", "atilde"}, {"ä", "auml"  },
-	{"å", "aring" }, {"æ", "aelig" }, {"ç", "ccedil"}, {"è", "egrave"},
-	{"é", "eacute"}, {"ê", "ecirc" }, {"ë", "euml"  }, {"ì", "igrave"},
-	{"í", "iacute"}, {"î", "icirc" }, {"ï", "iuml"  }, {"ð", "eth"   },
-	{"ñ", "ntilde"}, {"ò", "ograve"}, {"ó", "oacute"}, {"ô", "ocirc" },
-	{"õ", "otilde"}, {"ö", "ouml"  }, {"÷", "divide"}, {"ø", "oslash"},
-	{"ù", "ugrave"}, {"ú", "uacute"}, {"û", "ucirc" }, {"ü", "uuml"  },
-	{"ý", "yacute"}, {"þ", "thorn" }, {"ÿ", "yuml"  } //0xFF
+	{"ï¿½", "iexcl" }, {"ï¿½", "cent"  }, {"ï¿½", "pound" }, {"ï¿½", "curren"},
+	{"ï¿½", "yen"   }, {"ï¿½", "brvbar"}, {"ï¿½", "sect"  }, {"ï¿½", "uml"   },
+	{"ï¿½", "copy"  }, {"ï¿½", "ordf"  }, {"ï¿½", "laquo" }, {"ï¿½", "not"   },
+	{"ï¿½", "shy"   }, {"ï¿½", "reg"   }, {"ï¿½", "macr"  }, {"ï¿½", "deg"   },
+	{"ï¿½", "plusmn"}, {"ï¿½", "sup2"  }, {"ï¿½", "sup3"  }, {"ï¿½", "acute" },
+	{"ï¿½", "micro" }, {"ï¿½", "para"  }, {"ï¿½", "middot"}, {"ï¿½", "cedil" },
+	{"ï¿½", "sup1"  }, {"ï¿½", "ordm"  }, {"ï¿½", "raquo" }, {"ï¿½", "frac14"},
+	{"ï¿½", "frac12"}, {"ï¿½", "frac34"}, {"ï¿½", "iquest"}, {"ï¿½", "Agrave"},
+	{"ï¿½", "Aacute"}, {"ï¿½", "Acirc" }, {"ï¿½", "Atilde"}, {"ï¿½", "Auml"  },
+	{"ï¿½", "Aring" }, {"ï¿½", "AElig" }, {"ï¿½", "Ccedil"}, {"ï¿½", "Egrave"},
+	{"ï¿½", "Eacute"}, {"ï¿½", "Ecirc" }, {"ï¿½", "Euml"  }, {"ï¿½", "Igrave"},
+	{"ï¿½", "Iacute"}, {"ï¿½", "Icirc" }, {"ï¿½", "Iuml"  }, {"ï¿½", "ETH"   },
+	{"ï¿½", "Ntilde"}, {"ï¿½", "Ograve"}, {"ï¿½", "Oacute"}, {"ï¿½", "Ocirc" },
+	{"ï¿½", "Otilde"}, {"ï¿½", "Ouml"  }, {"ï¿½", "times" }, {"ï¿½", "Oslash"},
+	{"ï¿½", "Ugrave"}, {"ï¿½", "Uacute"}, {"ï¿½", "Ucirc" }, {"ï¿½", "Uuml"  },
+	{"ï¿½", "Yacute"}, {"ï¿½", "THORN" }, {"ï¿½", "szlig" }, {"ï¿½", "agrave"},
+	{"ï¿½", "aacute"}, {"ï¿½", "acirc" }, {"ï¿½", "atilde"}, {"ï¿½", "auml"  },
+	{"ï¿½", "aring" }, {"ï¿½", "aelig" }, {"ï¿½", "ccedil"}, {"ï¿½", "egrave"},
+	{"ï¿½", "eacute"}, {"ï¿½", "ecirc" }, {"ï¿½", "euml"  }, {"ï¿½", "igrave"},
+	{"ï¿½", "iacute"}, {"ï¿½", "icirc" }, {"ï¿½", "iuml"  }, {"ï¿½", "eth"   },
+	{"ï¿½", "ntilde"}, {"ï¿½", "ograve"}, {"ï¿½", "oacute"}, {"ï¿½", "ocirc" },
+	{"ï¿½", "otilde"}, {"ï¿½", "ouml"  }, {"ï¿½", "divide"}, {"ï¿½", "oslash"},
+	{"ï¿½", "ugrave"}, {"ï¿½", "uacute"}, {"ï¿½", "ucirc" }, {"ï¿½", "uuml"  },
+	{"ï¿½", "yacute"}, {"ï¿½", "thorn" }, {"ï¿½", "yuml"  } //0xFF
 	{"<", "lt"    }, {"&", "amp"   }, {">", "gt"    }, {"\'", "quot" }, {"\"", "apos" },//basic XML Entities
 	}; */
 
@@ -504,7 +521,7 @@ implements IStringFunction {
 	final static public StringFunction XML_ENTITY_DECODER = new StringFunction(ARR_XML_ENTITY_STRINGS, 0, 1);
 
 	////////////////////////////////////////////////////////////////////////////////
-	/// #region : Latin-1 (ISO-8859-1) XML Encoder für
+	/// #region : Latin-1 (ISO-8859-1) XML Encoder fï¿½r
 	////////////////////////////////////////////////////////////////////////////////
 
 	/** Function encapsulating the XML Encoding
@@ -561,7 +578,7 @@ implements IStringFunction {
 		ASSERT_EQUALS(STR_TEST_UPPER , StringFunction.TO_UPPER .Map(STR_TEST_CAMEL)); 
 		System.out.println("Careful: DOS (OEM) Output differs significantly from Windows (ANSI = Latin-1)");
 		System.out.println("Number of Encodings:" + ARR_LATIN1_ENTITY_CHARS.length);
-		System.out.println("á=" + 'á' + "=" + (int) 'á');
+		System.out.println("ï¿½=" + 'ï¿½' + "=" + (int) 'ï¿½');
 		java.io.FileOutputStream stream = new java.io.FileOutputStream("C:/test.txt");
 		for (int i = ARR_LATIN1_ENTITY_CHARS.length; --i >= 0;) {
 			stream.write(ARR_LATIN1_ENTITY_CHARS[i]);
@@ -583,8 +600,9 @@ implements IStringFunction {
 		stream.close();
 	}
 
+	/** The main entry point for the application; runs {@link #testIt()}. */
 	public static void main(final String[] args) throws Exception {
 		testIt();
 	}
-	
+
 }

@@ -1,6 +1,9 @@
 package function.vector;
 
 /**
+  * Defines a vector field: a function mapping one or more position vectors to a vector value
+  * of the same dimension, in either {@code double} or {@code float} precision.
+  *
   * Title: IFloatVectorField<p>
   * Description:
   * Defines the Interface for ...
@@ -22,6 +25,15 @@ package function.vector;
   * Created on	06-16-2002, 08:32 PM<p>
   * @author 	Matthias Heuer
   * @version	1.0
+  * <!-- docstate
+  * pass: 2
+  * mtime: 2026-09-05T20:46:52Z
+  * digest: 29ec3f0e7ad4853f1a570cd146bd1d28aa2cca08e616d84fd32f4ee143b40215
+  * stale: false
+  * tags: [code/vector_math, code/function_composition]
+  * concepts: [Vector Field Function]
+  * facets: {layer: utility, status: legacy, complexity: low}
+  * -->
   */
 public interface IFloatVectorField {
 

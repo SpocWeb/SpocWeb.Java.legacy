@@ -8,6 +8,15 @@ import streamIO.Log;
  * Design Decisions: Using double instead of Long, because the range is larger.
  * short	:  8
  * integer	: 12
+ * <!-- docstate
+ * pass: 2
+ * mtime: 2026-09-05T20:59:46Z
+ * digest: 961dc71d6f19f4205b37911e74d71033dc4cffd7a080d277a2f9459faf5deeba
+ * stale: false
+ * tags: [code/combinatorics, code/special_function]
+ * concepts: [Combinatorics]
+ * facets: {layer: utility, status: legacy, complexity: low}
+ * -->
  * long		: 20, because n! ~ n^n  */
 public class Factorial {
 
@@ -46,8 +55,9 @@ public class Factorial {
 	/// #region : static Testing and main() Methods (not in Interfaces)
 	////////////////////////////////////////////////////////////////////////////
 	
+	/**Tests {@link #value(int)} against known Factorial Values.	 */
 	public static void testIt() throws Exception {
-		L.n("Teste den Algorithmus zur Erzeugung der Fakultäten :");
+		L.n("Teste den Algorithmus zur Erzeugung der Fakultï¿½ten :");
 		Assert.EQUALS(1, value(0), "0!");
 		Assert.EQUALS(1, value(1), "1!");
 		Assert.EQUALS(2, value(2), "2!");

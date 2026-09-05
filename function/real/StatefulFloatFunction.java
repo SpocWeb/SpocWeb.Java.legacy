@@ -9,11 +9,14 @@ import function.IFloatFunction;
 import function.derive.CMeasurAble;
 
 /**
+ * Base class for the stateful streaming filters in this package (sum, product, mean, min/max,
+ * ...), each accumulating a running {@code double} value across successive {@link #Map} calls.
+ *
  * Title: enclosing_type<p>
  * Description:
  * Purpose:
- * Base Class for several stateful FloatFunctions 
- * (which not Functions in their original Sense!) 
+ * Base Class for several stateful FloatFunctions
+ * (which not Functions in their original Sense!)
  *
  * Design Decisions / Implementation Details:
  *
@@ -28,6 +31,15 @@ import function.derive.CMeasurAble;
  * @author mheuer
  * @version	1.0
  *
+ * <!-- docstate
+ * pass: 2
+ * mtime: 2026-09-05T16:44:56Z
+ * digest: 9e3ae7dd07b0a37ae58f7b8d7c960b001a59d2f64b7c409631529971916db7d4
+ * stale: false
+ * tags: [code/running_aggregates, code/mathematical_function]
+ * concepts: [Streaming Numeric Aggregator]
+ * facets: {layer: utility, status: legacy, complexity: low}
+ * -->
  */
 public abstract class StatefulFloatFunction 
 extends CMeasurAble //

@@ -13,6 +13,15 @@ package function.real;
   * thus	avoiding one float Point Multiplication
   * and optionally replacing one float Point Subtration
   * by an integer Subtraction.
+  * <!-- docstate
+  * pass: 2
+  * mtime: 2026-09-05T16:43:41Z
+  * digest: d30363cfc46960a78f8390cb55bec8c712158a4d72bf3f945802bef9125ec13d
+  * stale: false
+  * tags: [code/running_aggregates, code/mathematical_function]
+  * concepts: [Streaming Numeric Aggregator]
+  * facets: {layer: utility, status: legacy, complexity: low}
+  * -->
   */
 public class LinearScale
 extends Multiplier {
@@ -51,10 +60,12 @@ extends Multiplier {
 	/** Random Integer Number from Shift to Shift+MaxLong-1	 */
 //	public int nextInt() { return Generator.nextLong() + Shift; }
 
-	/** @return the next Random single Precision Number	 */
+	/** Scales and shifts {@code value_} by the configured range.
+	 * @return the next Random single Precision Number	 */
 	public float Map(final float value_){ return (float) (_Value*(value_ + shift)); }
 
-	/** @return the next Random double Precision Number	 */
+	/** Scales and shifts {@code value_} by the configured range.
+	 * @return the next Random double Precision Number	 */
 	public double Map(final double value_){ return _Value*(value_ + shift); }
 
 }

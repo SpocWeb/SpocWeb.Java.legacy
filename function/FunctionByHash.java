@@ -26,6 +26,15 @@ import java.util.Set;
   * @see FactoryRegistry for a typesafe Registry for IFactory Objects
   * @see structure.Registry for an Interface
   *
+  * <!-- docstate
+  * pass: 2
+  * mtime: 2026-09-05T10:12:24Z
+  * digest: 4120c2d71b5ca73a1d5b6bbf52ddd6bcabd23ef65195376ef68970f30f159027
+  * stale: false
+  * tags: [code/function_contract, code/function_composition]
+  * concepts: [Function/Relation Contract]
+  * facets: {layer: utility, status: legacy, complexity: low}
+  * -->
   */
 public class FunctionByHash
 extends AFunction
@@ -316,7 +325,7 @@ implements IDynamicFunction {
 			   ret =  inPut; }
 		return ret; }
 
-	/** Returns arg Mapped in Place by this Object: this.MapAt(arg) this=°arg
+	/** Returns arg Mapped in Place by this Object: this.MapAt(arg) this=ï¿½arg
 	  * This is the Function working on 'arg' defined by the implementing Class.
 	  * The Class implementing this Method is the means of exchanging this Operation.	  */
 //	public Object MapAt (Object arg) { }

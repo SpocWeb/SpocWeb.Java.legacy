@@ -39,6 +39,15 @@ import graphs.IValue;
  * @see streamIO.copy.monoid.Association which allows only an untyped Access to the Key / Index. 
  * @author heuerm
  *
+ * <!-- docstate
+ * pass: 2
+ * mtime: 2026-09-05T16:41:40Z
+ * digest: 67d73bb3aed59ac84546d912deba46de725f87c9887f2f99467afa783225a34b
+ * stale: false
+ * tags: [code/indexing]
+ * concepts: [Indexed Collection Access]
+ * facets: {layer: utility, status: legacy, complexity: low}
+ * -->
  */
 public class IndexEntry 
 extends AOrderAble
@@ -160,45 +169,54 @@ implements IMeasurAble, Comparable, ICountAble, IIndexAble, IValue, IPair //woul
 	/// Interface IPair Implementation
 	///////////////////////////////////////////////////////////////////////////
 	
-	/** @see graphs.IPair#setKey(java.lang.Object)	 */
+	/** Sets {@link #index} by converting {@code _val} to an {@code int}.
+	 * @see graphs.IPair#setKey(java.lang.Object)	 */
 	public void setVal(final Object _val) { index = ByRefInt.TO_INT(_val); }
-	
-	/** @see graphs.ICPair#getKey()	 */
+
+	/** Returns {@link #index} boxed as an {@link Integer}.
+	 * @see graphs.ICPair#getKey()	 */
 	public Object getVal() { return new Integer(index); }
-	
+
 	////////////////////////////////////////////////////////////////////////////////
 	//  Interface ICountAble Implementation
 	////////////////////////////////////////////////////////////////////////////////
 
-	/** @see function.ICountAble#getByte()	 */
+	/** Returns {@link #index} narrowed to a {@code byte}.
+	 * @see function.ICountAble#getByte()	 */
 	public byte getByte() { return (byte) index; }
-	
-	/** @see function.ICountAble#getLong()	 */
+
+	/** Returns {@link #index} widened to a {@code long}.
+	 * @see function.ICountAble#getLong()	 */
 	public long getLong() { return index; }
-	
-	/** @see function.ICountAble#getShort()	 */
+
+	/** Returns {@link #index} narrowed to a {@code short}.
+	 * @see function.ICountAble#getShort()	 */
 	public short getShort() { return (short) index; }
-	
+
 	///////////////////////////////////////////////////////////////////////////
 	/// Interface IMeasurAble Implementation
 	///////////////////////////////////////////////////////////////////////////
-	
-	/** @see function.IMeasurAble#getDouble()	 */
+
+	/** Delegates to {@link #key}, which must implement {@link IMeasurAble}.
+	 * @see function.IMeasurAble#getDouble()	 */
 	public double getDouble() { return ((IMeasurAble) key).getDouble(); }
-	
-	/** @see function.IMeasurAble#getFloat()	 */
+
+	/** Delegates to {@link #key}, which must implement {@link IMeasurAble}.
+	 * @see function.IMeasurAble#getFloat()	 */
 	public float getFloat() { return ((IMeasurAble) key).getFloat(); }
-	
+
 	///////////////////////////////////////////////////////////////////////////
 	/// Interface IOrderAble Implementation
 	///////////////////////////////////////////////////////////////////////////
-	
-	/** @see function.IIOrderAble#isLessThan(java.lang.Object)	 */
+
+	/** Delegates to {@link #key}, which must implement {@link IIOrderAble}.
+	 * @see function.IIOrderAble#isLessThan(java.lang.Object)	 */
 	public boolean isLessThan(final Object arg) {
 		return ((IIOrderAble) key).isLessThan(arg);
 	}
-	
-	/** @see function.IIOrderAble#isLessThan(java.lang.Object)	 */
+
+	/** Compares this entry's {@link #key} to {@code arg}'s key.
+	 * @see function.IIOrderAble#isLessThan(java.lang.Object)	 */
 	public int compareTo(final Object arg) {
 		return ((Comparable) key).compareTo(((IndexEntry)arg).key);
 	}
@@ -284,11 +302,13 @@ implements IMeasurAble, Comparable, ICountAble, IIndexAble, IValue, IPair //woul
 		return key.equals(arg); 
 	}
 	
+	/** Compares this entry to another by their {@link #key} values. */
 	public boolean equals(final IndexEntry arg) {
-		return key.equals(arg.key); 
-	} 
+		return key.equals(arg.key);
+	}
 
-	/** @see java.lang.Object#toString()	 */
+	/** Returns the key and index in the form {@code (key@index)}.
+	 * @see java.lang.Object#toString()	 */
 	public String toString() {
 		return "("+key+"@"+index+")";
 	}

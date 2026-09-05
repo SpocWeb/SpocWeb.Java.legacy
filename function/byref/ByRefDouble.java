@@ -41,6 +41,15 @@ import function.derive.ring.body.Exponential;
   * Created on	2001-12-12, 01;52;04<p>
   * @author 	Matthias Heuer
   * @version	1.0
+  * <!-- docstate
+  * pass: 2
+  * mtime: 2026-09-05T20:51:00Z
+  * digest: 48817001edf5fada32b686c9167a6579891e4c196669ec535f9f36de0b3d95d3
+  * stale: false
+  * tags: [code/function_wrapper, code/mathematical_constants]
+  * concepts: [By-Reference Primitive Wrapper]
+  * facets: {layer: utility, status: legacy, complexity: low}
+  * -->
   */
 public class ByRefDouble
 //extends CMeasurAble //not possible in Java to make a protected Variable ('Value') public
@@ -48,7 +57,7 @@ public class ByRefDouble
 extends ACountAble //AOpMeasurAble //AOpDouble
 implements IInteger, IFloat {
 
-	/* actual Accuracy used as Criterion for Convergence	*/
+	/** actual Accuracy used as Criterion for Convergence	*/
 	public static double DoubleAccuracy = IMeasurAble.DOUBLE_ACCURACY;
 
 	////////////////////////////////////////////////////////////////////////////
@@ -129,10 +138,11 @@ implements IInteger, IFloat {
 			if (Value != Val) {
 				throw new IllegalArgumentException(); }
 			return Val; }
+	*/
 
-		/**Returns the Object Value represented by a scalar Variable of Type float.
-		 * It consists of an IEEE Number with 32 Bit (4 Byte):
-		 * 23 Bit Mantissa, 8 Bit Exponent, 1 Bit Sign	 */
+	/**Returns the Object Value represented by a scalar Variable of Type float.
+	 * It consists of an IEEE Number with 32 Bit (4 Byte):
+	 * 23 Bit Mantissa, 8 Bit Exponent, 1 Bit Sign	 */
 	public float getFloat() { //return Value; }
 		float Val = (float) Value;
 		if (Val != Value) {
@@ -145,14 +155,14 @@ implements IInteger, IFloat {
 	//  Interface IAdjustAble: Implementation
 	///////////////////////////////////////////////////////////////////////////////
 
-	/**
+	/** Sets {@link #Value} to val.
 	 * @see function.ByRef.IAdjustAble#setDouble(double)
 	 */
 	public void setDouble(double val) {
 		Value = val;
 	}
 
-	/**
+	/** Sets {@link #Value} to val.
 	 * @see function.ByRef.IAdjustAble#setFloat(float)
 	 */
 	public void setFloat(float val) {
@@ -249,28 +259,29 @@ implements IInteger, IFloat {
 	//  static Methods (could not be defined in IMeasurAble)
 	////////////////////////////////////////////////////////////////////////////
 	
-	/**
+	/** Parses arg from the start as a double, tolerating a trailing fraction/exponent.
 	 * @param arg
 	 * @return NaN if the String could not be parsed
 	 */
 	final static public double TRY_PARSE(final String arg) {
-		double[] ret = { Double.NaN }; 
+		double[] ret = { Double.NaN };
 		TRY_PARSE(arg, 0, ret);
-		return ret[0]; 
+		return ret[0];
 	}
-	
-	/**
+
+	/** Parses arg from the start as a double into defaultValue[0].
 	 * @param arg
-	 * @return NaN if the String could not be parsed
+	 * @return the Position after the parsed Number, or -1/the start Position if it could not be parsed
 	 */
 	final static public int TRY_PARSE(final String arg, final double[] defaultValue) {
-		return TRY_PARSE(arg, 0, defaultValue); 
+		return TRY_PARSE(arg, 0, defaultValue);
 	}
-	
-	/**
+
+	/** Parses arg as a double (with optional fraction and exponent) starting at pos, writing the
+	 * result into defaultValue[0].
 	 * @param arg
-	 * @param pos Position to start Parsing from 
-	 * @return NaN if the String could not be parsed
+	 * @param pos Position to start Parsing from
+	 * @return the Position after the parsed Number, or -1/the original pos if it could not be parsed
 	 */
 	final static public int TRY_PARSE(final String arg, int pos, final double[] defaultValue) {
 		if (arg == null) return -1;
@@ -553,7 +564,7 @@ implements IInteger, IFloat {
 					return  y; 
 	}
 		
-	/**
+	/** Combines the magnitude of x with the sign of y.
 	 * @param x determines the absolute Value
 	 * @param y determines the Sign
 	 * @return x with the Sign of y
@@ -637,19 +648,21 @@ implements IInteger, IFloat {
 		return false;
 	}
 	
-	/** @return the Minimum of both Values */
+	/** Returns the relative Position of x to y: +1 if x&lt;y, -1 if y&lt;x, 0 if equal. */
 	final static public byte POSITION(final double x, final double y) {
 		return (byte) (
-			(x < y) ?  1 : 
+			(x < y) ?  1 :
 			(y < x) ? -1 : 0); }
 
-	/**@see Math#min(double, double) 
+	/** Returns the smaller of x and y.
+	 * @see Math#min(double, double)
 	 * @return the Minimum of both Values */
 	final static public double MIN(final double x, final double y) {
 		return (x < y) ? x : y;
 	}
 
-	/** @return the Maximum of both Values */
+	/** Returns the larger of x and y.
+	 * @return the Maximum of both Values */
 	final static public double MAX(final double x, final double y) {
 		return (x > y) ? x : y;
 	}
@@ -698,7 +711,8 @@ implements IInteger, IFloat {
 		return (ExpM1 + ExpM1 / Exp) * HALF;
 	} //
 		
-	/** @return the Sinus and Cosinus of x in Place	 */
+	/** Reduces x into [-Pi,Pi] and returns its sine, writing the cosine into Cos.
+	 * @return the Sinus and Cosinus of x in Place	 */
 	final static public double SIN_COS(double x, ByRefDouble Cos) {
 		boolean neg;
 		if (neg = (x < 0)) {
@@ -718,12 +732,14 @@ implements IInteger, IFloat {
 		//		Sin.Value = Math.cos(x); return Math.sin(x);
 	}
 	
-	/** @return the Sinus and Cosinus of x in Place	 */
+	/** Writes the cosine and sine of x into CosSin[0] and CosSin[1].
+	 * @return the Sinus and Cosinus of x in Place	 */
 	final static public void COS_SIN(final double x, final double[] CosSin) {
 		COS_SIN(x, CosSin, 0, 1);
 	}
-	
-	/** @return the Sinus and Cosinus of x in Place	 */
+
+	/** Reduces x into [-Pi,Pi] and writes its cosine/sine into CosSin at the given indexes.
+	 * @return the Sinus and Cosinus of x in Place	 */
 	final static public void COS_SIN(double x, final double[] CosSin
 			, final int cosIndex, final int sinIndex) {
 		//		Sin.Value = Math.cos(x); return Math.sin(x);
@@ -745,15 +761,15 @@ implements IInteger, IFloat {
 		CosSin[sinIndex] = -CosSin[sinIndex];
 	}
 	
-	/**
+	/** Writes the cosine and sine of x (already in [-Pi,Pi]) into CosSin[0] and CosSin[1].
 	 * @param SinCos the Sinus and Cosinus of x in Place
 	 * @param x is expected to be in the Range of -Pi..Pi
 	 */
 	final static public void COS_SIN_SAFE(final double x, final double[] CosSin) {
-		COS_SIN_SAFE(x, CosSin, 0, 1); 
+		COS_SIN_SAFE(x, CosSin, 0, 1);
 	}
-	
-	/**
+
+	/** Writes the cosine and sine of x (already in [-Pi,Pi]) into CosSin at the given indexes.
 	 * @param SinCos the Sinus and Cosinus of x in Place
 	 * @param x is expected to be in the Range of -Pi..Pi
 	 */
@@ -767,7 +783,7 @@ implements IInteger, IFloat {
 		}
 	}	
 		
-	/**
+	/** Returns the sine of x (already in [-Pi,Pi]), writing the cosine into Cos.
 	 * @return the Sinus and Cosinus of x in Place
 	 * @param x is expected to be in the Range of -PI..Pi
 	 */

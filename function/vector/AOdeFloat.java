@@ -6,6 +6,9 @@
 package function.vector;
 
 /**
+ * Base class for a binary real-valued operation ({@link IBinaryOpFloat}), adding a {@code float}
+ * overload of {@code Funktion} that delegates to the {@code double} implementation.
+ *
  * Title: AOdeFloat<p>
  * Description:
  * Purpose:
@@ -26,18 +29,30 @@ package function.vector;
  * @author mheuer
  * @version	1.0
  *
+ * <!-- docstate
+ * pass: 2
+ * mtime: 2026-09-05T20:44:55Z
+ * digest: a6366f6b9fadb6cb050ff127748ca985b5ba5796d3d7077f9789e54c0ca416e6
+ * stale: false
+ * tags: [code/differential_integration, code/vector_math]
+ * concepts: [ODE Integration]
+ * facets: {layer: utility, status: legacy, complexity: low}
+ * -->
  */
 public abstract class AOdeFloat 
 implements IBinaryOpFloat {
 
-	/** @see function.vector.IBinaryOpFloat#Funktion(float, float)	 */
+	/** Widens both arguments to {@code double} and delegates to {@link #Funktion(double, double)}.
+	 * @see function.vector.IBinaryOpFloat#Funktion(float, float)	 */
 	public float Funktion(float x, float y) {
 		return (float) Funktion((double) x, (double) y); }
 
-	/** @see function.vector.IBinaryOpFloat#Funktion(double, double)	 */
+	/** Returns the 1st derivative in x of this function at point y.
+	 * @see function.vector.IBinaryOpFloat#Funktion(double, double)	 */
 	public abstract double Funktion(double x, double y);
 
-	/** @see function.vector.IBinaryOpFloat#Funktion(double, double[], double[])	 */
+	/** Writes the 1st derivative in x of every coordinate of y into dydx.
+	 * @see function.vector.IBinaryOpFloat#Funktion(double, double[], double[])	 */
 	public abstract void Funktion(double x, double[] y, double[] dydx);
 
 }

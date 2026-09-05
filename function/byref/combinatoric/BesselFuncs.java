@@ -10,6 +10,15 @@ import function.byref.ByRefInt;
 import function.derive.ring.body.GammaLn;
 
 /**Definition of ALL Bessel Functions: I, J, K
+ * <!-- docstate
+ * pass: 2
+ * mtime: 2026-09-05T20:59:55Z
+ * digest: 6e3a7727d322ad2a6fc9d6d838058bdf3cca1c487b6aabc3342e2abb6b621887
+ * stale: false
+ * tags: [code/combinatorics, code/special_function]
+ * concepts: [Combinatorics]
+ * facets: {layer: utility, status: legacy, complexity: low}
+ * -->
  */
 public class BesselFuncs {
 
@@ -70,7 +79,7 @@ public class BesselFuncs {
 		double Quadrat = ByRefDouble.SQR(x);
 		if (! modif) Quadrat = -Quadrat;
 		v1 = IMeasurAble.EULER_C + Math.log(x); v1 += v1; v2 = 0.0;      /*1.Teil*/
-		int Z1 = 0; while (++Z1 <= N) v2 += 1.0/Z1; /*è (n) berechnen*/
+		int Z1 = 0; while (++Z1 <= N) v2 += 1.0/Z1; /*ï¿½ (n) berechnen*/
 			Z1 = 0;
 		do { /*1. & 3. Teil,wenn man Jn in die Entwicklung Bronstein S.441 einsetzt*/
 			fa = f;
@@ -268,7 +277,7 @@ public class BesselFuncs {
 			double d3 = ByRefDouble.SQR(x/3.75);   /*doppelte Genauigkeit*/
 			return 1.0+d3*(3.5156229+d3*(3.0899424  +d3*(1.2067492
 			              +d3*(0.2659732+d3*(0.360768e-1+d3* 0.45813e-2))))); }
-		/*ohne Exp/ûx-Anteil sehr glatt*/
+		/*ohne Exp/ï¿½x-Anteil sehr glatt*/
 		double sx = Math.abs(x);
 		double d3 = 3.75/sx;
 		return Math.exp(sx)/Math.sqrt(sx)*(0.39894228
@@ -282,7 +291,7 @@ public class BesselFuncs {
 			double d3 = ByRefDouble.SQR(x/3.75);   /*doppelte Genauigkeit*/
 			return x*(IMeasurAble.HALF +d3*(0.87890594  +d3*(0.51498869 +d3*(0.15084934
 			                  +d3*(0.2658733e-1+d3*(0.301532e-2+d3*0.32411e-3)))))); }
-		/*ohne Exp/ûx-Anteil sehr glatt*/
+		/*ohne Exp/ï¿½x-Anteil sehr glatt*/
 		double sx = Math.abs (x);
 		double d3 = 3.75/sx;
 		double d2 = 0.2282967e-1+d3*(-0.2895312e-1+d3*(0.1787654e-1-d3* 0.420059e-2));
@@ -337,7 +346,7 @@ public class BesselFuncs {
 			return -Math.log(x_2)*BesselI0 (x)+(-0.57721566
 			          +d2*(0.42278420 +d2*(0.23069756+d2*(0.3488590e-1
 			          +d2*(0.262698e-2+d2*(0.10750e-3+d2* 0.7400000e-5)))))); }
-		/*ohne Exp/ûx-Anteil sehr glatt*/
+		/*ohne Exp/ï¿½x-Anteil sehr glatt*/
 		double d2 = ICountAble.TWO/x;
 		return Math.exp (-x)/Math.sqrt (x)*(1.25331414
 		          +d2*(-0.7832358e-1+d2*(+0.2189568e-1+d2*(-0.1062446e-1
@@ -352,7 +361,7 @@ public class BesselFuncs {
 			return Math.log(x_2)*BesselI1 (x)+(1.0
 			          +d2*(+0.15443144  +d2*(-0.67278579 +d2*(-0.18156897
 			          +d2*(-0.1919402e-1+d2*(-0.110404e-2+d2*(-0.4686e-4)))))))/x; }
-		/*ohne Exp/ûx-Anteil sehr glatt*/
+		/*ohne Exp/ï¿½x-Anteil sehr glatt*/
 		double d2 = ICountAble.TWO/x;
 		return Math.exp (-x)/Math.sqrt (x)*(1.25331414
 		          +d2*(+0.23498619 +d2*(-0.3655620e-1+d2*(+0.1504268e-1
@@ -925,6 +934,7 @@ public class BesselFuncs {
 		L.readString();
 	}
 
+	/**Tests all Bessel Function variants (I0/I1/I, J0/J1/J, K0/K1/K, Y0/Y1/Y) of this Class.	 */
 	public static void testIt() throws java.io.IOException {
 		testBesselI0();
 		testBesselI1();

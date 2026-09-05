@@ -2,9 +2,11 @@ package function;
 
 import math.vector.VectorDouble;
 
-/**Class with only static Methods for Number Classes:
- * All IMeasurAble Classes can be converted to these Float Types,
- * and also (with Rounding Errors) to the Integer Types in 'ICountAble'.
+/**Provides {@code double}/{@code float} conversion and a library of floating-point math
+ * constants shared by every measurable, countable and orderable numeric type in this package.
+ *
+ * <p>All IMeasurAble Classes can be converted to these Float Types,
+ * and also (with Rounding Errors) to the Integer Types in {@link ICountAble}.
  *
  * Contains only Constants in Double Precision:
  * Double   2.2*10^- 308...1.8*10^ 308 (.5*2^-1023...2^1023)  8-Byte  15-16
@@ -32,6 +34,15 @@ import math.vector.VectorDouble;
  * It consists of an IEEE Number with 64 Bit (10 Byte):
  * 64 Bit Mantissa, 15 Bit Exponent, 1 Bit Sign
  *
+ * <!-- docstate
+ * pass: 2
+ * mtime: 2026-09-05T16:30:14Z
+ * digest: 1ed79c91c57804bffa8a25f6b669f6b6f2d76471f5cbe761cc8d4c818e4c43b9
+ * stale: false
+ * tags: [code/function_contract, code/function_composition]
+ * concepts: [Function/Relation Contract]
+ * facets: {layer: utility, status: legacy, complexity: low}
+ * -->
  * The Problem is that static Methods cannot be declared in Interfaces */
 public interface IMeasurAble
 extends IOrderAble //maybe it is a bad idea to enforce Implementation of these Methods! 
@@ -55,47 +66,72 @@ extends IOrderAble //maybe it is a bad idea to enforce Implementation of these M
 	//  static Rational Constants:
 	////////////////////////////////////////////////////////////////////////////
 
+	/** The fraction one half (0.5). */
 	final static public float  HALF   = 1.0f/2; //ICountAble.ONE/ICountAble.TWO;
+	/** The fraction one third. */
 	final static public double THIRD  = 1.0 /3; //ICountAble.ONE/ICountAble.THREE;
+	/** The fraction one quarter (0.25). */
 	final static public float  QUARTER= 1.0f/4; //ICountAble.ONE/ICountAble.FOUR;
 
+	/** One percent (0.01), for converting percentage values to a fraction. */
 	final static public double PERCENT  = 1.0/100 ; //ICountAble.ONE/ICountAble.HUNDRED;	//For Perccent Values
+	/** One permille (0.001), for converting permille values to a fraction. */
 	final static public double PERMILLE = 1.0/1000; //ICountAble.ONE/ICountAble.THOUSAND;	//For Permille Values
 
+	/** Over-relaxation factor (1.1) used by iterative solvers. */
 	final static public float EINSK1	= 1.1f; 	//for Over -Relaxation
+	/** Under-relaxation factor (0.9) used by iterative solvers. */
 	final static public float NULLK9	= 0.9f; 	//for Under-Relaxation
+	/** Small relaxation step factor (0.1). */
 	final static public float NULLK1	= 0.1f;
 
+	/** Positive infinity, computed as 1.0f/0 rather than {@link Float#POSITIVE_INFINITY}. */
 	final static public float  INFINITY	=  1.0f/0; //(ICountAble. ONE/ICountAble.ZERO);
+	/** Negative infinity, computed as -1.0f/0 rather than {@link Float#NEGATIVE_INFINITY}. */
 	final static public float _INFINITY	= -1.0f/0; //(float) (ICountAble._ONE/ICountAble.ZERO);
+	/** Not-a-number, computed as 0.0f/0 rather than {@link Float#NaN}. */
 	final static public float  NAN		=  0.0f/0; //(float) (ICountAble.ZERO/ICountAble.ZERO);
 	
 	////////////////////////////////////////////////////////////////////////////
 	//  static Rational Constant Objects:
 	////////////////////////////////////////////////////////////////////////////
 	
+	/** Boxed form of {@link #HALF}. */
 	final static public Double Half		= new Double(HALF);
+	/** Boxed form of {@link #THIRD}. */
 	final static public Double Third	= new Double(THIRD);
+	/** Boxed form of {@link #QUARTER}. */
 	final static public Double Quarter	= new Double(QUARTER);
 
+	/** Boxed form of {@link #PERCENT}. */
 	final static public Double Percent	= new Double(PERCENT);				//For Prozentangaben
+	/** Boxed form of {@link #PERMILLE}. */
 	final static public Double Permille	= new Double(PERMILLE);			   //For Promilleangaben
 
+	/** Boxed form of {@link #EINSK1}. */
 	final static public Double EinsK1	= new Double(EINSK1);				  //for Over -Relaxation
+	/** Boxed form of {@link #NULLK9}. */
 	final static public Double NullK9	= new Double(NULLK9);				  //for Under-Relaxation
+	/** Boxed form of {@link #NULLK1}. */
 	final static public Double NullK1	= new Double(NULLK1);
 
+	/** Boxed form of {@link #INFINITY}. */
 	final static public Double  Infinity	= new Double( INFINITY);
+	/** Boxed form of {@link #_INFINITY}. */
 	final static public Double _Infinity	= new Double(_INFINITY);
 
 	////////////////////////////////////////////////////////////////////////////
 	//  static Transcendental Constants:
 	////////////////////////////////////////////////////////////////////////////
 
+	/** Natural logarithm of 2 (approx. 0.693147). */
 	final static public double LN2	= Math.log(ICountAble.TWO);	//0,69314718055994530941723212145818;      nat?rlicher Logarithmus von 2=1/Lbe
+	/** Binary logarithm of e, i.e. 1/{@link #LN2} (approx. 1.442695). */
 	final static public double LBE	= ICountAble.ONE/LN2;	//1,4426950408889634073599246810019;      Binaerer Logarithmus von e (s.u.)
+	/** Natural logarithm of 10 (approx. 2.302585). */
 	final static public double LN10	= Math.log(10);	//2,3025850929940456840179914546844
 //	final static public double LN10 = Lb10/Lbe;	//define it like this for fast binary Logarithms
+	/** Binary logarithm of 10 (approx. 3.321928). */
 	final static public double LB10	= LN10/LN2;	//3,3219280948873623478703194294894;      Binaerer Logarithmus von 10
 
 	/**Decadic Logarithm of two LG2	= 0,30102999566398119521373889472449	 */
@@ -120,38 +156,63 @@ extends IOrderAble //maybe it is a bad idea to enforce Implementation of these M
 	 * Grenzwert der Verhaeltnisse der Abstaende
 	 * von quadratischen Bifurkationen*.	 */
 	final static public double FEIGEN = 4.669201660910299097;
+	/** Negative Pi. */
 	final static public double _PI = -PI;
+	/** Pi divided by four (45 degrees in radians). */
 	final static public double PI_QUARTER = PI*QUARTER;
+	/** Pi divided by two (90 degrees in radians). */
 	final static public double PI_HALF = PI*HALF;
+	/** Three quarters of Pi (135 degrees in radians). */
 	final static public double THREE_PI_QUARTER = 3*PI_QUARTER;
+	/** Two times Pi, a full circle in radians. */
 	final static public double TWO_PI  = PI*ICountAble.TWO;
+	/** A full circle expressed in gon (400). */
 	final static public double FULL_GON= 400;
+	/** A full circle expressed in degrees (360). */
 	final static public double FULL_DEG= 360;
+	/** Radians per degree, for converting degrees to radians. */
 	final static public double GRAD   = TWO_PI/FULL_DEG;	//Zur Umrechnung in andere Winkelsysteme
+	/** Radians per gon, for converting gon to radians. */
 	final static public double GON    = TWO_PI/FULL_GON;
+	/** Cube root of 2 (approx. 1.259921). */
 	final static public double CBCRT2 =  1.2599210498948731647672106072782; //Bxp  (Drittel);
 //	final static public double CBCRT2 = (ONE/Sqr (CbcRt2)+CbcRt2)*TWO/THREE; //NachIteration fuer letzte Bits}
 //	final static public double SQRT2  = (TWO/SqRt2+SqRt2)*HALF;  //Nachiteration fuer letzte Bits
+	/** Square root of 2. */
 	final static public double SQRT2  = Math.sqrt(2.0); //ICountAble.TWO);
+	/** Square root of 3. */
 	final static public double SQRT3  = Math.sqrt(3.0); //ICountAble.THREE);
+	/** Square root of 5. */
 	final static public double SQRT5  = Math.sqrt(5.0); //ICountAble.FIVE);
+	/** Square root of Pi. */
 	final static public double SQRTPI = Math.sqrt(PI);
+	/** Square root of 2*Pi. */
 	final static public double SQRT2PI= SQRTPI * SQRT2;
+	/** Square of {@link #CBCRT2}. */
 	final static public double SQRCBCRT2 = CBCRT2*CBCRT2;
+	/** The golden ratio's reciprocal, (sqrt(5)-1)/2, approx. 0.618. */
 	final static public double      GOLDEN = (SQRT5-1.0)*0.5;//(SqRt (5)-1)/2=0.618 Verhaeltnis des goldenen Schnittes
+	/** The complement of {@link #GOLDEN}, approx. 0.382. */
 	final static public double     CGOLDEN = 1-GOLDEN;//= 0.3819 ,dessen Komplement und der
+	/** One plus {@link #GOLDEN}, the golden ratio, approx. 1.618. */
 	final static public double   ONEGOLDEN = 1+GOLDEN;//= 1.681 Faktor zur Vergroesserung e. Intervalles
+	/** Natural logarithm of {@link #ONEGOLDEN}. */
 	final static public double LNONEGOLDEN = Math.log(ONEGOLDEN);
+	/** Small value used as a floating-point comparison tolerance (2e-16). */
 	final static public double EPSILON    = 2e-16; //2 ^ Genauigkeit;      //'Kleine' Groesse im Vergleich zu 1
 
 	////////////////////////////////////////////////////////////////////////////
 	//  static Transcendental Constant Objects:
 	////////////////////////////////////////////////////////////////////////////
 
+	/** Boxed form of {@link #LN2}. */
 	final static public Double Ln2	= new Double(LN2);	//.69314718055994530941;	  nat?rlicher Logarithmus von 2=1/Lbe
-	final static public Double Lbe	= new Double(LBE);	//1.4426950408889634073;	  Bin„rer Logarithmus von e (s.u.)
+	/** Boxed form of {@link #LBE}. */
+	final static public Double Lbe	= new Double(LBE);	//1.4426950408889634073;	  Binï¿½rer Logarithmus von e (s.u.)
+	/** Boxed form of {@link #LN10}. */
 	final static public Double Ln10	= new Double(LN10);	//2.302585093	//Lb10/Lbe;
-	final static public Double Lb10	= new Double(LB10);	//Ln10/Ln2;	//3.3219280948873623479;	  Bin„rer Logarithmus von 10
+	/** Boxed form of {@link #LB10}. */
+	final static public Double Lb10	= new Double(LB10);	//Ln10/Ln2;	//3.3219280948873623479;	  Binï¿½rer Logarithmus von 10
 
 	/**Decadic Logarithm of two Lg2	= 0,30102999566398119521373889472449	 */
 	final static public Double Lg2	= new Double(LG2);	//.30102999566398119519;	  dekadischer Logarithmus von 2=
@@ -170,26 +231,47 @@ extends IOrderAble //maybe it is a bad idea to enforce Implementation of these M
 	 * Grenzwert der Verhaeltnisse der Abstaende
 	 * von quadratischen Bifurkationen.	 */
 	final static public Double Feigen = new Double(FEIGEN);
+	/** Boxed form of {@link #_PI}. */
 	final static public Double _Pi    = new Double(-PI);
+	/** Boxed form of {@link #PI_HALF}. */
 	final static public Double PiHalf = new Double(PI_HALF);
+	/** Boxed form of {@link #PI_QUARTER}. */
 	final static public Double PiQuarter = new Double(PI_QUARTER);
+	/** Boxed form of {@link #THREE_PI_QUARTER}. */
 	final static public Double ThreePiQuarter = new Double(THREE_PI_QUARTER);
+	/** Boxed form of {@link #TWO_PI}. */
 	final static public Double TwoPi  = new Double(TWO_PI);
+	/** Boxed form of {@link #FULL_GON}. */
 	final static public Double FullGon= new Double(FULL_GON);
+	/** Boxed form of {@link #FULL_DEG}. */
 	final static public Double FullDeg= new Double(FULL_DEG);
+	/** Boxed form of {@link #GRAD}. */
 	final static public Double Grad   = new Double(GRAD);	//Zur Umrechnung in andere Winkelsysteme
+	/** Boxed form of {@link #GON}. */
 	final static public Double Gon    = new Double(GON);
+	/** Boxed form of {@link #SQRT2}. */
 	final static public Double SqRt2  = new Double(SQRT2);
+	/** Boxed form of {@link #CBCRT2}. */
 	final static public Double CbcRt2 = new Double(CBCRT2); //Bxp  (Drittel);
+	/** Boxed form of {@link #SQRT3}. */
 	final static public Double SqRt3  = new Double(SQRT3);
+	/** Boxed form of {@link #SQRTPI}. */
 	final static public Double SqRtPi = new Double(SQRTPI);
+	/** Boxed form of {@link #SQRT2PI}. */
 	final static public Double SqRt2Pi= new Double(SQRT2PI);
+	/** Boxed form of {@link #SQRT5}. */
 	final static public Double SqRt5  = new Double(SQRT5);
+	/** Boxed form of {@link #GOLDEN}. */
 	final static public Double	Golden= new Double(GOLDEN);//(SqRt (5)-1)/2=0.681 Verhaeltnis des goldenen Schnittes
+	/** Boxed form of {@link #CGOLDEN}. */
 	final static public Double   cGolden	= new Double(CGOLDEN);//1 - Golden = 0.319 ,dessen Komplement und der
+	/** Boxed form of {@link #ONEGOLDEN}. */
 	final static public Double OneGolden	= new Double(ONEGOLDEN);//1 + Golden = 1.681 Faktor zur Vergroesserung e. Intervalles
+	/** Boxed form of {@link #LNONEGOLDEN}. */
 	final static public Double LnOneGolden	= new Double(LNONEGOLDEN);
+	/** Boxed form of {@link #SQRCBCRT2}. */
 	final static public Double  SqrCbcRt2	= new Double(SQRCBCRT2);
+	/** Boxed form of {@link #EPSILON}. */
 	final static public Double Epsilon		= new Double(EPSILON); //2 ^ Genauigkeit;	  //'Kleine' Groesse im Vergleich zu 1
 
 	////////////////////////////////////////////////////////////////////////////

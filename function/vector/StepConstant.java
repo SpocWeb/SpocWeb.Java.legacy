@@ -31,6 +31,15 @@ import function.IMeasurAble;
  * derived from absStepper, because that is used in all Graphics Routines
  * (because it allows for accessing the y Coordinate)
  * and because it contains some optimizations.
+ * <!-- docstate
+ * pass: 2
+ * mtime: 2026-09-05T10:13:18Z
+ * digest: cffdcdce18a10fa7714999acb4c3d3bb0f9e7efde84136330b99b2ad72af5fd2
+ * stale: false
+ * tags: [code/differential_integration, code/vector_math]
+ * concepts: [ODE Integration]
+ * facets: {layer: utility, status: legacy, complexity: low}
+ * -->
  */
 public class StepConstant
 	extends AStepper {
@@ -136,6 +145,15 @@ public class StepConstant
 
 /**Helper ODE that converts a time independent Force Field into an ODE
  * that can be integrated by a 1-dim. Stepper Routine, which is very effective.
+ * <!-- docstate
+ * pass: 2
+ * mtime: 2026-09-05T10:13:18Z
+ * digest: 5995d3234fcecd9053f6231f71dd0743fd648f9038c8c43c728f1b356f0a54b7
+ * stale: false
+ * tags: [code/differential_integration, code/vector_math]
+ * concepts: [ODE Integration]
+ * facets: {layer: utility, status: legacy, complexity: low}
+ * -->
  * It is only used in conjunction with the 'StepConstant' Stepper.	 */
 class HeightOde
 extends AOdeFloat 

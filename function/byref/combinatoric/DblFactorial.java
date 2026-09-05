@@ -9,6 +9,15 @@ import streamIO.Log;
  * short	:  8
  * integer	: 12
  * long		: 20, because n!! ~ n^n
+ * <!-- docstate
+ * pass: 2
+ * mtime: 2026-09-05T10:13:18Z
+ * digest: be3b47561a8f89eb26fc2d3f72be9106090d1b951972687d8093641fb80e11a2
+ * stale: false
+ * tags: [code/combinatorics, code/special_function]
+ * concepts: [Combinatorics]
+ * facets: {layer: utility, status: legacy, complexity: low}
+ * -->
  * n!! = dblFact(n) = n * dblFact(n-2); Fact(0) = Fact(1) = 1;	 */
 public class DblFactorial {
 
@@ -56,7 +65,7 @@ public class DblFactorial {
 	
 	/**Tests all Methods of this Class	 */
 	public static void testIt() throws java.io.IOException {
-		L.n("Teste den Algorithmus zur Erzeugung der Doppel-Fakultäten :");
+		L.n("Teste den Algorithmus zur Erzeugung der Doppel-Fakultï¿½ten :");
 		Assert.EQUALS(1, value(0), "0!!");
 		Assert.EQUALS(1, value(1), "!!");
 		Assert.EQUALS(2, value(2), "2!!");

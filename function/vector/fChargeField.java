@@ -19,6 +19,15 @@ import math.vector.VectorFloat;
  * The MultiPole Moments of lesser Order are Zero with these Examples, i.e.
  * MultiPoles of Order > 0 (MonoPole) are electrically neutral etc.
  * The MultiPole Moments of higher Order are not Zero with these Examples,
+ * <!-- docstate
+ * pass: 2
+ * mtime: 2026-09-05T10:13:18Z
+ * digest: b43ede2018f0ca5e2423ce2919ecff1c2946c665525b86fc274e1940b33c10f3
+ * stale: false
+ * tags: [code/vector_math, code/function_composition]
+ * concepts: [Vector Field Function]
+ * facets: {layer: utility, status: legacy, complexity: low}
+ * -->
  * because the MultiPoles have an extent!	*/
 public class fChargeField
 extends AFloatVectorField {

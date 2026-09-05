@@ -21,6 +21,15 @@ import java.util.Arrays;
   * Created on	2000-11-26, 01;13;44<p>
   * @author 	Matthias Heuer
   * @version	1.0
+  * <!-- docstate
+  * pass: 2
+  * mtime: 2026-09-05T16:44:49Z
+  * digest: f2083985eabb479c85dba28dab3b576f2a74eaccd146c195a39c4add6a1e7e25
+  * stale: false
+  * tags: [code/running_aggregates, code/mathematical_function]
+  * concepts: [Streaming Numeric Aggregator]
+  * facets: {layer: utility, status: legacy, complexity: low}
+  * -->
   */
 public class RunningMean
 extends StatefulFloatFunction {
@@ -36,14 +45,17 @@ extends StatefulFloatFunction {
 		_Count = -1; 
 	}
 
-	/** @return the current Gliding Mean of the Filter without advancing the Filter. 	 */
+	/** Returns the current gliding mean without advancing the filter.
+	 * @return the current Gliding Mean of the Filter without advancing the Filter. 	 */
 	public double getMean() { return _Value/_Bins.length; }
 
-	/** @see function.IFloatFunction#Map(float)	 */
+	/** Widens {@code value_} to {@code double} and delegates to {@link #Map(double)}.
+	 * @see function.IFloatFunction#Map(float)	 */
 	public float Map(float value_) {
 		return (float) Map((double) value_); }
 
-	/** @see function.IFloatFunction#Map(double)	 */
+	/** Folds {@code value} into the running window, evicting the oldest bin.
+	 * @see function.IFloatFunction#Map(double)	 */
 	public double Map(double value) {
 		if (--_Count < 0) { //Rollover
 			if (_Count < -1) { //Initialization with Constant Value

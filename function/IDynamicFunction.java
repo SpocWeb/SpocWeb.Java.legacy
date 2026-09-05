@@ -17,6 +17,15 @@ package function;
  *
  * @author  Matthias Heuer
  * @version
+ * <!-- docstate
+ * pass: 2
+ * mtime: 2026-09-05T10:12:24Z
+ * digest: 935ebc4f12164cce23ee84f66220e2ffde673697f5aa3421431e938f9c1406cf
+ * stale: false
+ * tags: [code/function_contract, code/function_composition]
+ * concepts: [Function/Relation Contract]
+ * facets: {layer: utility, status: legacy, complexity: low}
+ * -->
  */
 public interface IDynamicFunction
 extends IFunction { //IProcessor

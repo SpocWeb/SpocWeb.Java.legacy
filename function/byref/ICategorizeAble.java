@@ -23,6 +23,15 @@ package function.byref;
  * @author mheuer
  * @version	1.0
  *
+ * <!-- docstate
+ * pass: 2
+ * mtime: 2026-09-05T10:12:24Z
+ * digest: f3890bdfee3a0cff5ef74da268fae1dcbce5fdc7e04b81f1fbfbea56d244ecbb
+ * stale: false
+ * tags: [code/function_wrapper, code/mathematical_constants]
+ * concepts: [By-Reference Primitive Wrapper]
+ * facets: {layer: utility, status: legacy, complexity: low}
+ * -->
  */
 public interface ICategorizeAble {
 	

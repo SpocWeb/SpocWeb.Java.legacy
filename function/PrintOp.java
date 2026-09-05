@@ -31,6 +31,15 @@ import function.byref.ByRefInt;
  * @author mheuer
  * @version	1.0
  *
+ * <!-- docstate
+ * pass: 2
+ * mtime: 2026-09-05T10:12:24Z
+ * digest: dd5c436844aaa8e0bbc628fe3639142490341642dcbe93dc40b54c90b4ba8fbb
+ * stale: false
+ * tags: [code/function_contract, code/function_composition]
+ * concepts: [Function/Relation Contract]
+ * facets: {layer: utility, status: legacy, complexity: low}
+ * -->
  */
 public class PrintOp 
 implements IProcessor, ITester {

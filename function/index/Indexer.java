@@ -19,7 +19,7 @@ import tester.OrderatorComparable;
  * I rather use a variant of Association, IndexElement 
  * stored in a TreeSorted, ArraySorted or a HashSet. 
  * ArraySorted allows to find Objects by Interpolation which is very fast, 
- * but Insertion is a slow Operation requiring O(N²) Movements, though very fast ones. 
+ * but Insertion is a slow Operation requiring O(Nï¿½) Movements, though very fast ones. 
  * A better Solution would be a Tree. 
  * 
  * Essentially this is only a type-safe Wrapper around a Container. 
@@ -39,24 +39,37 @@ import tester.OrderatorComparable;
  * but has slow Insertion, requiring reordering. 
  * @see java.util.HashSet can not return the Elements in a sorted Order 
  * @see java.util.TreeMap can do both, but it has the Mapping Overhead
+ * <!-- docstate
+ * pass: 2
+ * mtime: 2026-09-05T16:42:07Z
+ * digest: c92ab749c929f17cc380356f2d058929556461eb36e1ab1258bfda8675c8cd47
+ * stale: false
+ * tags: [code/indexing]
+ * concepts: [Indexed Collection Access]
+ * facets: {layer: utility, status: legacy, complexity: low}
+ * -->
  */
 public class Indexer 
 extends AIndexer {
 	
-	final static public int NOT_IN_INDEX = Integer.MIN_VALUE; 
-	
+	/** Sentinel returned by {@link #getIndexOf(Object)} and {@link #remove(Object)} when the
+	 * given Object is not present in this index. */
+	final static public int NOT_IN_INDEX = Integer.MIN_VALUE;
+
+	/** Sample German words used by {@link #testIt()} to self-test the index. */
 	final static public String[] TEST_STRINGS = new String[] {
 		//"Fischer's", "Fritz", "fischt", "frische", "Fische", 
-		"Bolle", "reiste", "jüngst", "zu", "Pfingsten", 
+		"Bolle", "reiste", "jï¿½ngst", "zu", "Pfingsten", 
 		"nach", "Pankow", "war", "sein", "Ziel", 
-		"da", "verlor", "er", "seinen", "Jüngsten",
-		"janz", "plötzlich", "im", "Jewühl", 
+		"da", "verlor", "er", "seinen", "Jï¿½ngsten",
+		"janz", "plï¿½tzlich", "im", "Jewï¿½hl", 
 		"'ne", "volle", "halbe", "Stunde", 
-		"hat", "er ", "nach ", "ihm", "jespührt", 
+		"hat", "er ", "nach ", "ihm", "jespï¿½hrt", 
 		"aber", "dennoch", "hat ", "sich", "Bolle ", 
-		"janz ", "köstlich", "amüsiert"
+		"janz ", "kï¿½stlich", "amï¿½siert"
 	};
 	
+	/** Indexes {@link #TEST_STRINGS} and asserts each string's index matches its position. */
 	public static void testIt() {
 		main(TEST_STRINGS);
 	}
@@ -108,19 +121,17 @@ extends AIndexer {
 	/// Constructor
 	///////////////////////////////////////////////////////////////////////////
 	
-	/**
-	 * 
+	/** Creates an index backed by a {@link SortedArray} of the given initial capacity.
 	 * @param _initialCapacity
 	 */
-	public Indexer(final int _initialCapacity) { 
+	public Indexer(final int _initialCapacity) {
 		this.set = new SortedArray(_initialCapacity); } //
-	
-	/**
-	 * 
-	 * @param _initialCapacity a (higher) Estimate for the Capacity to save resizing Operations 
-	 * @param _orderator 
+
+	/** Creates an index backed by a {@link SortedArray} using a custom ordering.
+	 * @param _initialCapacity a (higher) Estimate for the Capacity to save resizing Operations
+	 * @param _orderator the ordering used to sort and locate entries
 	 */
-	public Indexer(final int _initialCapacity, final IOrderator _orderator) { 
+	public Indexer(final int _initialCapacity, final IOrderator _orderator) {
 		this.set = new SortedArray(_initialCapacity, _orderator); } //
 	
 	///////////////////////////////////////////////////////////////////////////
@@ -152,9 +163,8 @@ extends AIndexer {
 	///////////////////////////////////////////////////////////////////////////
 	
 	/**
-	 * returns the Number of Objects in this Index. 
-	 * @param arg
-	 * @return NOT_IN_INDEX if the Object is not in the List.  
+	 * Returns the Number of Objects in this Index.
+	 * @return the Number of Objects in this Index.
 	 */
 	public int getInt() { return set.getInt(); }
 
@@ -198,6 +208,10 @@ extends AIndexer {
 		return elm.index; 
 	}
 	
+	/** Removes {@code arg} from this index.
+	 * @param arg the Object to remove
+	 * @return the removed Object's former index, or {@link #NOT_IN_INDEX} if it was not present
+	 */
 	public int remove(final Object arg) {
 		final IndexEntry elm = (IndexEntry) set.removeItem(arg); 
 		if (elm == null)

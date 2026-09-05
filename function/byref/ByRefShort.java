@@ -19,6 +19,15 @@ import function.ICountAble;
   * Created on	2001-12-12, 01;52;04<p>
   * @author 	Matthias Heuer
   * @version	1.0
+  * <!-- docstate
+  * pass: 2
+  * mtime: 2026-09-05T20:53:30Z
+  * digest: 1d6a24c7d155f897361c9ec3d72854f5a60bba03ce0511badd714cf4196cb73b
+  * stale: false
+  * tags: [code/function_wrapper, code/mathematical_constants]
+  * concepts: [By-Reference Primitive Wrapper]
+  * facets: {layer: utility, status: legacy, complexity: low}
+  * -->
   */
 final public class ByRefShort
 extends AOrderAble
@@ -28,12 +37,14 @@ implements ICountAble {
 	//  static Methods for scalar (1Dim) Values:
 	////////////////////////////////////////////////////////////////////////////////
 	
-	/** @return the Minimum of both Values */
+	/** Returns the smaller of x and y.
+	 * @return the Minimum of both Values */
 	final static public short Min(short x, short y) {
 		return (x < y) ? x : y;
 	}
 
-	/** @return the Maximum of both Values */
+	/** Returns the larger of x and y.
+	 * @return the Maximum of both Values */
 	final static public short Max(short x, short y) {
 		return (x > y) ? x : y;
 	}

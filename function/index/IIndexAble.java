@@ -19,6 +19,15 @@ package function.index;
  * ICountAble and IIndexAble 
  * 
  * @see IIn
+ * <!-- docstate
+ * pass: 2
+ * mtime: 2026-09-05T10:13:18Z
+ * digest: 51f4b68f3a6b50b8072b75def9482f2f5940fda732e5ee9b24d332bc80668ae1
+ * stale: false
+ * tags: [code/indexing]
+ * concepts: [Indexed Collection Access]
+ * facets: {layer: utility, status: legacy, complexity: low}
+ * -->
  */
 public interface IIndexAble 
 //extends ICountAble //implies IMeasurAble and IOrderAble

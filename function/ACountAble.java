@@ -1,6 +1,9 @@
 package function;
 
 /**
+  * Abstract base class for {@link ICountAble} implementations, providing static helpers that
+  * narrow a {@code double} into an exact {@code byte}/{@code short}/{@code int}/{@code long}.
+  *
   * Title: ACountAble<p>
   * Description:
   * Purpose:
@@ -20,6 +23,15 @@ package function;
   * Created on	06-29-2002, 06:26 PM<p>
   * @author 	Matthias Heuer
   * @version	1.0
+  * <!-- docstate
+  * pass: 2
+  * mtime: 2026-09-05T16:31:14Z
+  * digest: 685f865e2eaee425976713b2f24d5b5f278fdac69aa8e6bea55e495d377da455
+  * stale: false
+  * tags: [code/function_contract, code/function_composition]
+  * concepts: [Function/Relation Contract]
+  * facets: {layer: utility, status: legacy, complexity: low}
+  * -->
   */
 public abstract class ACountAble
 extends AOrderAble
