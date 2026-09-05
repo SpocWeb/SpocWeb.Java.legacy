@@ -24,17 +24,26 @@ import math.vector.VectorInt;
 import streamIO.Log;
 
 /**
- * @author heuerm
+ * Allows to play the Synthesizer using the Keyboard.
+ * Even several Keys can be pressed simultaneously, to play Accords,
+ * depending on the Keyboard.
  *
- * Allows to play the Synthesizer using the Keyboard. 
- * Even several Keys can be pressed simultaneously, to play Accords,  
- * depending on the Keyboard. 
- * 
- * The "middle C" with a Frequency of 256-280 Hz is mapped to Number 60. 
- * All other Numbers rise a Half-tone Step per Digit, 
- * so that an Octave comprises 12 Digits.  
+ * The "middle C" with a Frequency of 256-280 Hz is mapped to Number 60.
+ * All other Numbers rise a Half-tone Step per Digit,
+ * so that an Octave comprises 12 Digits.
+ *
+ * @author heuerm
+ * <!-- docstate
+ * pass: 2
+ * mtime: 2026-09-05T10:24:48Z
+ * digest: 521bdc297824916368adb774857f6223c6f4a1f1c162c657695c3808e34e2d67
+ * stale: false
+ * tags: [code/midi_playback, code/keyboard_input]
+ * concepts: [Interactive MIDI Player]
+ * facets: {layer: utility, status: experimental, complexity: medium}
+ * -->
  */
-public class DirectPlayer 
+public class DirectPlayer
 implements KeyListener{
 
 	/**
@@ -50,11 +59,11 @@ implements KeyListener{
 			'y','s','x','d','c','v','g','b','h','n','j','m',
 			'k',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',
 			'q','2','w','3','e','r','5','t','6','z','7','u',
-			'i','9','o','0','p','ü','´','+',' ',' ',' ',' ',
+			'i','9','o','0','p','ï¿½','ï¿½','+',' ',' ',' ',' ',
 			'Y','S','X','D','C','V','G','B','H','N','J','M',
 			'K',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',
-			'Q','"','W','§','E','R','%','T','&','Z','/','U',
-			'I',')','O','=','P','Ü','`','*',' ',' ',' ',' '
+			'Q','"','W','ï¿½','E','R','%','T','&','Z','/','U',
+			'I',')','O','=','P','ï¿½','`','*',' ',' ',' ',' '
 	};
 	
 	/**
@@ -69,9 +78,9 @@ implements KeyListener{
 			' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',
 			' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',
 			'a','w','s','e','d','f','t','g','z','h','u','j',
-			'k','o','l','p','ö','ä','+','#',' ',' ',' ',' ',
+			'k','o','l','p','ï¿½','ï¿½','+','#',' ',' ',' ',' ',
 			'A','W','S','E','D','F','T','G','Z','H','U','J',
-			'K','O','L','P','Ö','Ä','+','#',' ',' ',' ',' ' 
+			'K','O','L','P','ï¿½','ï¿½','+','#',' ',' ',' ',' ' 
 	};
 	
 	/**
@@ -85,13 +94,13 @@ implements KeyListener{
 			' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',
 			' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',
 			'<','a','y','s','x','c','f','v','g','b','h','n',
-			'm','k',',','l','.','-','ä',' ',' ',' ',' ',' ',
+			'm','k',',','l','.','-','ï¿½',' ',' ',' ',' ',' ',
 			'q','2','w','3','e','r','5','t','6','z','7','u',
-			'i','9','o','0','p','ü','´','+',' ',' ',' ',' ',
+			'i','9','o','0','p','ï¿½','ï¿½','+',' ',' ',' ',' ',
 			'>','A','Y','S','X','C','F','V','G','B','H','N',
-			'M','K',';','L',':','_','Ä',' ',' ',' ',' ',' ',
-			'Q','"','W','§','E','R','%','T','&','Z','/','U',
-			'I',')','O','=','P','Ü','`','*',' ',' ',' ',' '
+			'M','K',';','L',':','_','ï¿½',' ',' ',' ',' ',' ',
+			'Q','"','W','ï¿½','E','R','%','T','&','Z','/','U',
+			'I',')','O','=','P','ï¿½','`','*',' ',' ',' ',' '
 	};
 	
 	/**
@@ -105,13 +114,13 @@ implements KeyListener{
 			' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',
 			' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',
 			'<','a','y','s','x','c','f','v','g','b','h','n',
-			'm','k',',','l','.','-','ä',' ',' ',' ',' ',' ',
+			'm','k',',','l','.','-','ï¿½',' ',' ',' ',' ',' ',
 			'q','2','w','3','e','r','5','t','6','z','7','u',
-			'i','9','o','0','p','ü','´','+',' ',' ',' ',' ',
+			'i','9','o','0','p','ï¿½','ï¿½','+',' ',' ',' ',' ',
 			'>','A','Y','S','X','C','F','V','G','B','H','N',
-			'M','K',';','L',':','_','Ä',' ',' ',' ',' ',' ',
-			'Q','"','W','§','E','R','%','T','&','Z','/','U',
-			'I',')','O','=','P','Ü','`','*',' ',' ',' ',' '
+			'M','K',';','L',':','_','ï¿½',' ',' ',' ',' ',' ',
+			'Q','"','W','ï¿½','E','R','%','T','&','Z','/','U',
+			'I',')','O','=','P','ï¿½','`','*',' ',' ',' ',' '
 	};
 	
 	/** Mapping of Keys to Notes	 */
@@ -184,6 +193,7 @@ implements KeyListener{
 		return -1; 
 	}*/
 	
+	/** Diagnostic Helper: opens the default Synthesizer and prints its available Instruments, Polyphony and Channel Count, then plays a single Test Note on Channel 0. */
 	public static void WRITE_INFO() throws MidiUnavailableException {
 		Synthesizer synthesizer = MidiSystem.getSynthesizer();
 		synthesizer.open(); 
@@ -256,7 +266,7 @@ implements KeyListener{
 		case '.':	return ':'; 
 		case '-':	return '_'; 
 		case '2':	return '"'; 
-		case '3':	return '§'; 
+		case '3':	return 'ï¿½'; 
 		case '4':	return '$'; 
 		case '5':	return '%'; 
 		case '6':	return '&'; 
@@ -264,7 +274,7 @@ implements KeyListener{
 		case '8':	return '('; 
 		case '9':	return ')'; 
 		case '0':	return '='; 
-		case 'ß':	return '?'; 
+		case 'ï¿½':	return '?'; 
 		default:	return key; 
 		}
 	}
@@ -275,35 +285,39 @@ implements KeyListener{
 	 */
 	public static final int KEY_VELOCITY = 93; 
 	
-	/** @see java.awt.event.KeyListener#keyPressed(java.awt.event.KeyEvent)	 */
+	/** Looks up the pressed Key's Note via {@link #NOTES_BY_KEY} and, if not already held, sends a MIDI Note-On on Channel 0.
+	 * @see java.awt.event.KeyListener#keyPressed(java.awt.event.KeyEvent)	 */
 	public void keyPressed(final KeyEvent e) {
 		char key = GET_KEY(e, true); //e.getKeyChar();
-		int pos = LAST_INDEX_OF(keys, key); 
+		int pos = LAST_INDEX_OF(keys, key);
 		if (pos < 0) {
 			keys.append(key);
 			Log.N(keys);
 			try{
-				int note = NOTES_BY_KEY[key]+24; 
-				System.out.println("Note = "+note); 
-				channels[0].noteOn(note, KEY_VELOCITY); 
+				// TODO: LOGIC: key can be 65535 (the CapsLock Key, per GET_KEY's own handling above), which is out of bounds for the 256-entry NOTES_BY_KEY array; the resulting ArrayIndexOutOfBoundsException is silently swallowed by the catch below, so pressing CapsLock plays no Note but still (harmlessly) appends 65535 to keys.
+				int note = NOTES_BY_KEY[key]+24;
+				System.out.println("Note = "+note);
+				channels[0].noteOn(note, KEY_VELOCITY);
 			} catch(Exception x) {}
 		}
 	}
-	
-	/** @see java.awt.event.KeyListener#keyReleased(java.awt.event.KeyEvent)	 */
+
+	/** Looks up the released Key's Note via {@link #NOTES_BY_KEY} and, if held, sends a MIDI Note-Off on Channel 0.
+	 * @see java.awt.event.KeyListener#keyReleased(java.awt.event.KeyEvent)	 */
 	public void keyReleased(final KeyEvent e) {
 		char key = GET_KEY(e, false); //e.getKeyChar();
-		int pos = LAST_INDEX_OF(keys, key); 
+		int pos = LAST_INDEX_OF(keys, key);
 		if (pos >= 0) {
 			keys.deleteCharAt(pos);
-			Log.N(keys); 
+			Log.N(keys);
 			try{
-				channels[0].noteOff(NOTES_BY_KEY[key], KEY_VELOCITY); 
+				channels[0].noteOff(NOTES_BY_KEY[key], KEY_VELOCITY);
 			} catch(Exception x) {}
 		}
 	}
-	
-	/** @see java.awt.event.KeyListener#keyTyped(java.awt.event.KeyEvent)	 */
+
+	/** Unused: Key-Typed Events carry no Key-Code information usable for Note Lookup.
+	 * @see java.awt.event.KeyListener#keyTyped(java.awt.event.KeyEvent)	 */
 	public void keyTyped(final KeyEvent e) {} 		//ignored so far...
 	
 }

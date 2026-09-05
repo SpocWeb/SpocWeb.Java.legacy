@@ -97,7 +97,7 @@ concurrently against the same file):
 | `flow` | 14 | 1022 | 14 | done | agent-flow |
 | `reflect` | 12 | 2492 | 12 | done | agent-reflect |
 | `streamIO/diffPatch` | 11 | 2895 | 11 | done | agent-diffPatch |
-| `sound` | 10 | 1030 | 0 | claimed | agent-sound |
+| `sound` | 10 | 1030 | 10 | done | agent-sound |
 | `tools` | 17 | 3468 | 17 | done | - |
 | `(root)` | 9 | 1073 | 9 | done | main |
 | `streamIO/asyncMessage` | 7 | 541 | 7 | done | main |
@@ -232,6 +232,13 @@ same harness against it. A test that has not been seen red proves nothing.
 | streamIO/diffPatch/VersionTree.java | VersionTree | writeTo() | ~174 | When more than 10 non-Branch Tags exist, the resize block computes a doubled `tmp` array but never assigns it back to `tags`, and the resize check is off-by-one. Serializing a Tree with more than 10 real Tags throws `ArrayIndexOutOfBoundsException` on the 11th. | High | open |
 | streamIO/diffPatch/VersionTree.java | VersionTree | addVersion(DiffSet) | ~384 | `(currDiff.getBranch() != diff.getBranch())` is duplicated verbatim as both clauses of an `&&`, almost certainly meant to be a `.equals()` check - relies on String reference identity, so after deserialization (fresh Branch-name Strings) a legitimate same-Branch append can be misidentified as a different Branch and throw a spurious `VersionException`. | Medium | open |
 | flow/push/MultiCaster.java | MultiCaster | putA(Object) | ~60-65 | Creates one new unpooled `Thread` per pushed item to deliver to `next2`, with no pooling or throttling. Under sustained high-throughput input this exhausts OS thread resources and can throw `OutOfMemoryError: unable to create native thread`. | Low-Medium | open |
+| sound/WaveDataChunk.java | WaveDataChunk | WaveDataChunk(...) (16-bit case) | ~66 | `streamIn.readInt()` (4 bytes) fills `stream16`, but a 16-bit Sample is only 2 bytes - over-reads the data Chunk by 2x for the common 16-bit PCM case, misaligning/exhausting the Stream. Should use `readShort()`. | High | open |
+| sound/MidiChunk.java | MidiChunk | MidiChunk(...) | ~44 | `events = new byte[chunkSize]` is allocated but never filled (no `readFully`), and the Stream position is never advanced past this Chunk's bytes - `events` stays all-zero and the next Chunk read (e.g. the next Track in `MidiFile`) misreads the unread bytes as a new Chunk Header, breaking multi-track MIDI parsing entirely. | High | open |
+| sound/WaveFile.java | WaveFile | main(String[]) | ~92 | `streamOut.close()` is called unconditionally, but `streamOut` is `null` whenever `args` is non-empty. Any real command-line invocation with a file argument throws NPE. | Medium | open |
+| sound/WaveStreamOut.java | WaveStreamOut | addInt(int) (24-bit case) | ~54 | `writer.writeInt(b)` writes 4 bytes for a 24-bit Sample instead of 3, corrupting Sample Values and producing a data Chunk longer than the Size header written in the constructor. Mirrors a pre-existing `//TODO: write 3 Bytes` comment left by the original author. | Medium | open |
+| sound/WaveStreamIn.java | WaveStreamIn | WaveStreamIn(...) | ~45 | `IOException` from the initial `skipBytes(channel*...)` is silently swallowed; if the skip fails partway, every subsequent Sample is read from the wrong Offset with no error signal. | Medium | open |
+| sound/WaveStreamIn.java | WaveStreamIn | nextLongInternal() (24-bit case) | - | Reads via `readInt()` (4 bytes) for a 24-bit Sample; the symmetric read-side counterpart to the WaveStreamOut 24-bit bug above. Already flagged by the original author's own `//TODO: read only 3 Bytes!` comment - real and still present, reported here per protocol, left as the author's existing comment. | Medium | open |
+| sound/DirectPlayer.java | DirectPlayer | keyPressed(...) | ~294 | `GET_KEY` can return `65535` (the CapsLock key value), out of bounds for the 256-entry `NOTES_BY_KEY` array; the resulting `ArrayIndexOutOfBoundsException` is silently swallowed, so CapsLock plays no note (harmless, but silent). | Low | open |
 
 ## Tool defects found and fixed during the pilot
 

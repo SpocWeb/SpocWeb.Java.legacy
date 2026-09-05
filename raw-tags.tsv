@@ -201,3 +201,14 @@ flow/push/Joiner.java:Joiner	class	flow/push/Joiner.java	code/producer_consumer	
 flow/push/MultiCaster.java:MultiCaster	class	flow/push/MultiCaster.java	code/multicast	Dataflow, Pipeline	domain	broken	medium
 flow/push/Screener.java:Screener	class	flow/push/Screener.java	code/adapter_pattern	Dataflow, Pipeline	domain	stable	low
 flow/push/SingleOutputPushStage.java:SingleOutputPushStage	class	flow/push/SingleOutputPushStage.java	code/producer_consumer	Dataflow, Pipeline	domain	stable	low
+sound/DirectPlayer.java:DirectPlayer	class	sound/DirectPlayer.java	code/midi_playback, code/keyboard_input	Interactive MIDI Player	utility	experimental	medium
+sound	folder	sound	code/binary_file_format, code/file_parsing, code/audio	Audio File Parsing, RIFF/WAV/MIDI	domain	legacy	medium
+sound/FileChunk.java:FileChunk	class	sound/FileChunk.java	code/binary_reader, code/file_parsing	RIFF Chunk	domain	legacy	low
+sound/MidiChunk.java:MidiChunk	class	sound/MidiChunk.java	code/midi_playback	MIDI Track	domain	broken	low
+sound/MidiFile.java:MidiFile	class	sound/MidiFile.java	code/midi_playback, code/file_parsing	Standard MIDI File	domain	broken	medium
+sound/RiffFile.java:RiffFile	class	sound/RiffFile.java	code/binary_file_format	RIFF Container	domain	stable	low
+sound/WaveDataChunk.java:WaveDataChunk	class	sound/WaveDataChunk.java	code/audio, code/binary_data_reading	WAV Data Chunk	domain	broken	medium
+sound/WaveFile.java:WaveFile	class	sound/WaveFile.java	code/audio, code/file_parsing	WAV Container	domain	legacy	medium
+sound/WaveFormatChunk.java:WaveFormatChunk	class	sound/WaveFormatChunk.java	code/audio, code/binary_file_format	WAV Format Chunk	domain	stable	low
+sound/WaveStreamIn.java:WaveStreamIn	class	sound/WaveStreamIn.java	code/audio, code/media_playback	PCM Sample Stream	domain	broken	medium
+sound/WaveStreamOut.java:WaveStreamOut	class	sound/WaveStreamOut.java	code/audio, code/media_playback	WAV Writer	domain	broken	low

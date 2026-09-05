@@ -6,15 +6,27 @@ import streamIO.integer.AStreamIn_Int;
 import streamIO.integer.encoding.BigEndianReader;
 
 /**
- * 
+ * Adapts one Channel of a WAV {@link WaveDataChunk}'s interleaved Sample Data (as described by a {@link WaveFormatChunk})
+ * into a sequential {@code int}-valued Sample Stream, skipping over the other Channels' Bytes in each Frame.
+ *
  * @author heuerm
  *
+ * <!-- docstate
+ * pass: 2
+ * mtime: 2026-09-05T10:24:56Z
+ * digest: 9781f0f391b90bb33ddbdca4b00f2f97a506256ec00ba7858134fe6b3f35ea1e
+ * stale: false
+ * tags: [code/audio, code/media_playback]
+ * concepts: [PCM Sample Stream]
+ * facets: {layer: domain, status: broken, complexity: medium}
+ * -->
  */
-public class WaveStreamIn 
+public class WaveStreamIn
 extends AStreamIn_Int {
-	
-	public final BigEndianReader StreamIn; 
-	
+
+	/** Reference to the underlying Reader, shared with {@link #Format}'s Stream 	*/
+	public final BigEndianReader StreamIn;
+
 	/** The actual Channel to retrieve 	 */
 	public final int Channel; 
 	
@@ -37,25 +49,34 @@ extends AStreamIn_Int {
 		this.StreamIn = format.streamIn; 
 		this.Format = format; 
 		this.Data = data; 
-		this.Channel = channel % format.NumChannels; 
+		this.Channel = channel % format.NumChannels;
 		try {
+			// TODO: LOGIC: IOException from skipBytes is silently swallowed here; if the skip to this Channel's initial Offset fails (e.g. Stream shorter than expected), the Stream position is left wherever the partial skip stopped, and every subsequent Sample is silently read from the wrong Offset with no indication of the failure.
 			StreamIn.skipBytes(channel*(Format.BitsPerSample/8));
 		} catch (IOException x) {
-			
+
 		}
 	}
 
+	/** Computes the Number of Samples remaining on this Channel, from the total Data Chunk Size and Frame Size.
+	 * @return the Number of Samples not yet read */
 	public long availAble() {
-		return Data.chunkSize / Format.FrameSize - Position; 
+		return Data.chunkSize / Format.FrameSize - Position;
 	}
 
+	/** Mark/reset is not supported by this Stream.
+	 * @return always 0 */
 	public long getMaxMarkSize() { return 0; }
 
 	/**Public Method for other Classes to determine the minimum Value from the Stream	 */
 	public double getMinDouble() { return Integer.MIN_VALUE; }
 
+	/** No byte-order Flag is tracked by this Stream.
+	 * @return always 0 */
 	public byte getOrder() { return 0; }
 
+	/** Returns the current Read Position.
+	 * @return the current Position in the Stream, in Samples */
 	public long getPosition() { return Position; }
 
 	protected long nextLongInternal() {

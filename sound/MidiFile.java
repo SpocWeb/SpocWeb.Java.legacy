@@ -12,13 +12,9 @@ import streamIO.integer.encoding.BigEndianReader;
 /**
  * Title: MidiFile<p>
  * Description:
- * Purpose:
- *
- * Purpose / Responsibilities of this Class
- *
- * Design Decisions / Implementation Details:
- * If similar Classes exist (e.g. Polymorphism),
- * characterize the specific Differences to compare these.
+ * Reads a Standard MIDI File ("MThd" Header plus a Sequence of "MTrk" Track Chunks):
+ * parses the Track Type, Track Count and Ticks-per-Quarter-Note from the Header,
+ * then reads each declared Track as a {@link MidiChunk}.
  *
  * Known SubClasses: <none>
  *
@@ -30,6 +26,15 @@ import streamIO.integer.encoding.BigEndianReader;
  * @author mheuer
  * @version	1.0
  *
+ * <!-- docstate
+ * pass: 2
+ * mtime: 2026-09-05T10:22:51Z
+ * digest: c3ce69791da3ef0e5264fffe7a35b369ccdbdef2fb5871d2f81e2c946ba3c0ac
+ * stale: false
+ * tags: [code/midi_playback, code/file_parsing]
+ * concepts: [Standard MIDI File]
+ * facets: {layer: domain, status: broken, complexity: medium}
+ * -->
  */
 public class MidiFile extends FileChunk {
 
@@ -37,9 +42,9 @@ public class MidiFile extends FileChunk {
 	final static public String MIDI_HEADER = "MThd"; 
 	
 	/** 
-	 * 0––single track.Only one track to worry about. 
-	 * 1––multiple tracks, synchronous.Several tracks, all starting at the same time.
-	 * 2––multiple tracks, asynchronous.Several tracks, potentially starting at different times.
+	 * 0ï¿½ï¿½single track.Only one track to worry about. 
+	 * 1ï¿½ï¿½multiple tracks, synchronous.Several tracks, all starting at the same time.
+	 * 2ï¿½ï¿½multiple tracks, asynchronous.Several tracks, potentially starting at different times.
 	 */
 	final public short trackTypes; 
 
@@ -51,8 +56,8 @@ public class MidiFile extends FileChunk {
 
 	private MidiChunk[] tracks; 
 	
-	/**
-	 * @param streamIn_
+	/** Reads the "MThd" Header (Track Type, Track Count, Ticks per Quarter Note) followed by that many "MTrk" Track Chunks.
+	 * @param streamIn_ the DataInput Implementation to use
 	 * @throws IOException
 	 */
 	public MidiFile(final BigEndianReader streamIn_) throws IOException {

@@ -12,7 +12,7 @@ import streamIO.integer.encoding.BigEndianReader;
 /**
  * Title: WaveFormatChunk<p>
  * Description:
- * Represents a Chunk from a File. 
+ * Reads the "fmt " Chunk of a WAV File, describing the Sample Encoding (Channel Count, Sample Rate, Bit Depth, Compression Tag) used by the following "data" Chunk.
  *
  *
  * Known SubClasses: <none>
@@ -25,6 +25,15 @@ import streamIO.integer.encoding.BigEndianReader;
  * @author mheuer
  * @version	1.0
  *
+ * <!-- docstate
+ * pass: 2
+ * mtime: 2026-09-05T10:23:32Z
+ * digest: 30c3f74e44126b91bfc396952540a82f25c93df97df8c90fae255a6f667e6754
+ * stale: false
+ * tags: [code/audio, code/binary_file_format]
+ * concepts: [WAV Format Chunk]
+ * facets: {layer: domain, status: stable, complexity: low}
+ * -->
  */
 public class WaveFormatChunk 
 extends FileChunk {
@@ -121,9 +130,8 @@ extends FileChunk {
 		BitsPerSample = reader.readShort(); 
 	}
 
-	/**
-	 * @param streamIn_
-	 * @param chunkType_
+	/** Reads the "fmt " Chunk Header, then its Fields via {@link #read(BigEndianReader)}.
+	 * @param streamIn_ the DataInput Implementation to use
 	 * @throws IOException
 	 */
 	public WaveFormatChunk(BigEndianReader streamIn_) throws IOException {

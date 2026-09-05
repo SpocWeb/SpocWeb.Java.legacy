@@ -12,17 +12,9 @@ import streamIO.integer.encoding.BigEndianReader;
 /**
  * Title: WaveDataChunk<p>
  * Description:
- * MetaData Class for a Wav File Data Frame. 
- * The Frame has several (1 or 2, 5 on Surround) Channels 
- * and each Channel is coded using 8, 16 or 24 Bits. 
- * 
- * Purpose:
- *
- * Purpose / Responsibilities of this Class
- *
- * Design Decisions / Implementation Details:
- * If similar Classes exist (e.g. Polymorphism),
- * characterize the specific Differences to compare these.
+ * MetaData Class for a Wav File Data Frame.
+ * The Frame has several (1 or 2, 5 on Surround) Channels
+ * and each Channel is coded using 8, 16 or 24 Bits.
  *
  * Known SubClasses: <none>
  *
@@ -34,6 +26,15 @@ import streamIO.integer.encoding.BigEndianReader;
  * @author mheuer
  * @version	1.0
  *
+ * <!-- docstate
+ * pass: 2
+ * mtime: 2026-09-05T10:23:08Z
+ * digest: 48eb140df3d8d7b35cc2ab9aa010051b81440d6f2ba606e46202ab94d39284fa
+ * stale: false
+ * tags: [code/audio, code/binary_data_reading]
+ * concepts: [WAV Data Chunk]
+ * facets: {layer: domain, status: broken, complexity: medium}
+ * -->
  */
 public class WaveDataChunk 
 extends FileChunk {
@@ -47,9 +48,10 @@ extends FileChunk {
 	/** the Data as an 8 Bit Stream 	 */
 	final public byte[] stream_8; 
 
-	/**
-	 * @param streamIn_
-	 * @param chunkType_
+	/** Reads the "data" Chunk, storing its Samples either as raw Bytes ({@link #stream_8}, for 8- and 24-Bit Resolutions)
+	 * or as a decoded Int Array ({@link #stream16}, for 16-Bit Resolution).
+	 * @param streamIn_ the DataInput Implementation to use
+	 * @param numBytesPerValue the Sample Resolution in Bytes: 1 (8 Bit), 2 (16 Bit) or 3 (24 Bit)
 	 * @throws IOException
 	 */
 	public WaveDataChunk(final BigEndianReader streamIn_, final int numBytesPerValue) throws IOException {
@@ -57,13 +59,14 @@ extends FileChunk {
 		switch (numBytesPerValue) {
 			case 1:
 				stream16 = null;
-				stream_8 = new byte[chunkSize]; 
-				streamIn.readFully(stream_8); 
+				stream_8 = new byte[chunkSize];
+				streamIn.readFully(stream_8);
 				break;
 			case 2:
-				stream16 = new int [chunkSize/numBytesPerValue]; 
-				stream_8 = null; 
+				stream16 = new int [chunkSize/numBytesPerValue];
+				stream_8 = null;
 				for (int i = -1; ++i < stream16.length; ) {
+					// TODO: LOGIC: readInt() consumes 4 Bytes per Sample, but a 16-Bit Sample is only 2 Bytes; this over-reads the Stream by 2x for the (most common) 16-Bit case, misaligning or exhausting the underlying Stream. Should use streamIn.readShort() here.
 					stream16[i] = streamIn.readInt(); }
 				break;
 			case 3: //24 Bit

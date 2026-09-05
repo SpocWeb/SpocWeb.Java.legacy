@@ -5,17 +5,39 @@ import java.io.IOException;
 import streamIO.integer.IStreamOutInt;
 import streamIO.integer.encoding.BigEndianWriter;
 
-public class WaveStreamOut 
-//extends AStreamOutByte 
+/**
+ * Writes a single-Channel (mono) PCM WAV File: on construction it writes the RIFF/WAVE Header,
+ * the "fmt " Chunk, and the "data" Chunk Header (with a Size computed from {@code numSamples}
+ * up front), after which Samples are appended one by one via {@link #addInt(int)}.
+ * <!-- docstate
+ * pass: 2
+ * mtime: 2026-09-05T10:24:03Z
+ * digest: 315f34ac9470463fc2999cfc32694d82d5460783d20c02952411095c568127cf
+ * stale: false
+ * tags: [code/audio, code/media_playback]
+ * concepts: [WAV Writer]
+ * facets: {layer: domain, status: broken, complexity: low}
+ * -->
+ */
+public class WaveStreamOut
+//extends AStreamOutByte
 implements IStreamOutInt {
 
+	/** WAV Format Tag value for uncompressed Pulse Code Modulation 	 */
 	public static final int FORMAT_PCM = 1;
-	
+
 	/** 8, 16 or 24 	 */
-	public final int BitsPerSample; 
-	
-	private final BigEndianWriter writer; 
-	
+	public final int BitsPerSample;
+
+	private final BigEndianWriter writer;
+
+	/** Opens the File and writes the RIFF/WAVE Header, "fmt " Chunk and "data" Chunk Header.
+	 * @param filePath the Path of the WAV File to create
+	 * @param sampleRate the Sampling Frequency in Hz
+	 * @param bitsPerSample the Sample Resolution: 8, 16 or 24
+	 * @param numSamples the total Number of Samples that will be written, used to size the "data" Chunk up front
+	 * @throws IOException
+	 */
 	public WaveStreamOut(final String filePath, int sampleRate, int bitsPerSample, int numSamples) throws IOException {
 		int bytesPerSample = bitsPerSample/8; 
 		int dataLength = numSamples*bytesPerSample; 
@@ -42,22 +64,32 @@ implements IStreamOutInt {
 		writer.writeInt(dataLength); 
 	}
 
+	/** Closes the underlying File. */
 	public void close() throws IOException { writer.close(); }
 
+	/** Appends one Sample, encoded according to {@link #BitsPerSample}.
+	 * @param b the Sample Value to write
+	 * @return this Instance, for Chaining
+	 */
 	public IStreamOutInt addInt(int b) {
 		try {
 		if (BitsPerSample == 8)
-			writer.writeByte(b); 
+			writer.writeByte(b);
 		else if (BitsPerSample == 16)
-			writer.writeShort(b); 
+			writer.writeShort(b);
 		else if (BitsPerSample == 24)
+			// TODO: LOGIC: writeInt(b) writes 4 Bytes, but a 24-Bit Sample should only be 3 Bytes; this both corrupts the encoded Sample Values and writes a "data" Chunk longer than the Size header written in the constructor (which was sized from numSamples*bitsPerSample/8).
 			writer.writeInt(b); //TODO: write 3 Bytes
 		} catch (IOException x) {
-			throw new RuntimeException(x); 
+			throw new RuntimeException(x);
 		}
 		return this;
 	}
 
+	/** Appends one Sample truncated to {@code int}, via {@link #addInt(int)}.
+	 * @param b the Sample Value to write
+	 * @return this Instance, for Chaining
+	 */
 	public IStreamOutInt addLong(long b) { return addInt((int)b); }
 	
 }

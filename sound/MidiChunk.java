@@ -12,7 +12,7 @@ import streamIO.integer.encoding.BigEndianReader;
 /**
  * Title: MidiChunk<p>
  * Description:
- * Reads and writes MIDI Chunks from / to a File 
+ * Represents a single MIDI Track Chunk ("MTrk") read from a File, sized to hold its raw Event Data as an unparsed Byte Array.
  *
  *
  * Known SubClasses: <none>
@@ -25,24 +25,33 @@ import streamIO.integer.encoding.BigEndianReader;
  * @author mheuer
  * @version	1.0
  *
+ * <!-- docstate
+ * pass: 2
+ * mtime: 2026-09-05T10:22:41Z
+ * digest: 8a4964081ce0acacfeb0bc62a7dbcb830ad415d931717727d8fec7294e0d7fd9
+ * stale: false
+ * tags: [code/midi_playback]
+ * concepts: [MIDI Track]
+ * facets: {layer: domain, status: broken, complexity: low}
+ * -->
  */
-public class MidiChunk 
+public class MidiChunk
 extends FileChunk {
 
 	/** Header Prefix indicating a MIDI File Track Chunk  	*/
 	final static public String TRACK_HEADER = "MTrk";
-	
+
 	/** Data about MIDI Events 	 */
 	final public byte[] events;
-	
-	/**
-	 * @param streamIn_
-	 * @param chunkType_
+
+	/** Reads the next "MTrk" Chunk from the Stream and copies its raw Content into {@link #events}, without parsing individual MIDI Events.
+	 * @param streamIn_ the DataInput Implementation to use
 	 * @throws IOException
 	 */
 	public MidiChunk(final BigEndianReader streamIn_) throws IOException {
 		super(streamIn_, TRACK_HEADER);
 		events = new byte[chunkSize];
+		// TODO: LOGIC: events is allocated but never filled from streamIn_ (no readFully(events) call), and the Stream position is never advanced past this Chunk's chunkSize bytes, so events stays all zero and subsequent Chunk reads (e.g. the next Track in MidiFile) will misread the unread Event bytes as a new Chunk Header.
 	}
 
 }

@@ -29,6 +29,15 @@ import streamIO.integer.encoding.BigEndianReader;
  * @author mheuer
  * @version	1.0
  *
+ * <!-- docstate
+ * pass: 2
+ * mtime: 2026-09-05T10:13:24Z
+ * digest: 204d0ee3a8988c8e45876d595271e3191c8353ccd78b07ad0a8e9573ebe8507d
+ * stale: false
+ * tags: [code/binary_file_format]
+ * concepts: [RIFF Container]
+ * facets: {layer: domain, status: stable, complexity: low}
+ * -->
  */
 public class RiffFile 
 extends FileChunk { //extension is not really necessary, only as a Convenience! 
