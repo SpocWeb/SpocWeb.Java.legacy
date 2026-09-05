@@ -21,6 +21,11 @@ import streamIO.object.parser.jdbc.ResultSetSep;
   * Created on	12-22-2002, 03:18 PM<p>
   * @author 	Matthias Heuer
   * @version	1.0
+  * <!-- docstate
+  * tags: [code/stream_io, code/stream_input, code/stream_output, code/struct]
+  * concepts: [Primitive and Structured Stream I/O Core Abstractions]
+  * facets: {layer: utility, status: legacy, complexity: high}
+  * -->
   */
 public interface IStreamByte
 extends

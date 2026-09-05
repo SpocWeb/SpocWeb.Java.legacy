@@ -42,6 +42,11 @@ import streamIO.object.IStreamIn;
  * Similar Classes:
  * @see stringOp.DeQueueInt sporting only a fixed Size Buffer.
  * @see streamIO.Object.Enumerator.Container.DeQueueArr
+ * <!-- docstate
+ * tags: [code/pipe_abstraction, code/pipe_implementation]
+ * concepts: [In-Memory Producer-Consumer Byte Pipes]
+ * facets: {layer: utility, status: legacy, complexity: high}
+ * -->
  */
 public class PipeByte
 extends APipeByte {
@@ -120,6 +125,7 @@ extends APipeByte {
 	/// public Methods
 	////////////////////////////////////////////////////////////////////////////
 	
+	/** Returns the usable Capacity of the backing Array (one less than its length, since one slot distinguishes full from empty). */
 	public int getCapacity() { return IFO.length-1; }
 	
 	/**Increases the Space for the DeQueue. */
@@ -197,27 +203,32 @@ extends APipeByte {
 	 */
 	public int read() { if (stack) return pop(); return get(); }	
 	
-	/**@return the next Item of the Store without removing it.	 */
+	/** Returns the next Item without removing it.
+	 * @return the next Item of the Store without removing it.	 */
 	public int peek() { return IFO[stack ? SP : (QP+1 >= IFO.length)? 0 : QP+1]; }
-	
-	/**@return the Number of Elements in this Store.	 */
+
+	/** Returns the Number of Elements in this Store, delegating to {@link #getInt()}.
+	 * @return the Number of Elements in this Store.	 */
 	public int available() { return getInt(); }
 	
-	/**@return the Number of Elements in this Store.	 */
+	/** Returns the Number of Elements in this Store, computed from the Stack/Queue Pointer distance.
+	 * @return the Number of Elements in this Store.	 */
 	public int getInt() {
 		final int ret = SP - QP;
 		if (ret >= 0) 
 			return ret; 
 		return ret + IFO.length; }
 	
-	/**@return true, if the Store is empty.	 */
+	/** Returns whether the Store is empty, by comparing the Stack/Queue Pointers directly.
+	 * @return true, if the Store is empty.	 */
 	public boolean isZero() { return (SP == QP); } //available() == 0); }
-	
+
 	/**@return true, if the Store is empty.	 */
 	//public boolean isEmpty() {
 	//	return available() == 0; }
-	
-	/**@return true, if the Store is full.	 */
+
+	/** Returns whether the Store is full (has reached its usable Capacity).
+	 * @return true, if the Store is full.	 */
 	public boolean isFull() {  return available() == IFO.length-1; }
 	
 	//////////////////////////////////////////////////////////////////////////////
@@ -245,14 +256,16 @@ extends APipeByte {
 			throw new InvalidParameterException("Only OrderQueue or OrderStack are allowed for "+this.getClass().getName()); }
 		stack = (Order == IStreamIn.ORDER_STACK); }
 	
-	/** @see streamIO.Float.IStreamIn_Int#getOrder()	 */
+	/** Returns {@link IStreamIn#ORDER_STACK} or {@link IStreamIn#ORDER_QUEUE} depending on this Store's mode.
+	 * @see streamIO.Float.IStreamIn_Int#getOrder()	 */
 	public byte getOrder() { return stack ? IStreamIn.ORDER_STACK : IStreamIn.ORDER_QUEUE; }
 	
 	////////////////////////////////////////////////////////////////////////////////////
 	/// mark()ing and reset()ing
 	////////////////////////////////////////////////////////////////////////////////////
 	
-	/** @see streamIO.Byte.IStreamIn_Byte#getMaxMarkSize()	 */
+	/** Always returns Long.MAX_VALUE.
+	 * @see streamIO.Byte.IStreamIn_Byte#getMaxMarkSize()	 */
 	public long getMaxMarkSize() { return Long.MAX_VALUE; }
 	
 	/** Mark for resetting the IStreamIn_Byte */
@@ -266,7 +279,8 @@ extends APipeByte {
 		setCapacity(readLimit);
 		mark = (stack ? SP : QP); }
 	
-	/** @see streamIO.object.AStreamIn#getPosition()	 */
+	/** Not implemented; always returns 0.
+	 * @see streamIO.object.AStreamIn#getPosition()	 */
 	public long getPosition() { return 0; } //stream.getPosition(); }
 	
 	/**
@@ -285,6 +299,7 @@ extends APipeByte {
 		}
 		return position; }
 	
+	/** Renders the backing Array's contents, marking the Queue ('Q') and Stack ('S') Pointers. */
 	public String toString() {
 		StringBuffer B = new StringBuffer();
 		for (int i = -1; ++i < IFO.length; ) {

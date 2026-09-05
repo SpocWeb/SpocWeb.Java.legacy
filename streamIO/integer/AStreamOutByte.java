@@ -28,6 +28,11 @@ import tools.IOError;
   * @see IStreamIn_Byte
   * @see java.io.OutputStream
   * @see java.io.InputStream
+  * <!-- docstate
+  * tags: [code/stream_io, code/stream_input, code/stream_output, code/struct]
+  * concepts: [Primitive and Structured Stream I/O Core Abstractions]
+  * facets: {layer: utility, status: legacy, complexity: high}
+  * -->
   */
 public abstract class AStreamOutByte
 extends AStreamOut
@@ -442,7 +447,8 @@ implements IStreamOutByte {
 	//  IStreamOut Methods
 	////////////////////////////////////////////////////////////////////////////////
 	
-	/** @see streamIO.IIStreamOut#addItem(java.lang.Object)	 */
+	/** Writes {@code String.valueOf(arg)} as bytes to this stream.
+	 * @see streamIO.IIStreamOut#addItem(java.lang.Object)	 */
 	public IIStreamOut addItem(final Object arg) {
 		try { WRITE(this, String.valueOf(arg));
 		} catch (final IOException x) {

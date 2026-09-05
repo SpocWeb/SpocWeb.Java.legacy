@@ -52,21 +52,24 @@ import tools.IOError;
  *
  * @author  Matthias Heuer
  * @version
+ * <!-- docstate
+ * tags: [code/multiplexer, code/multiplexing, code/raid_encoding]
+ * concepts: [RAID-Style Stream Multiplexing plus Markov/Viterbi Math]
+ * facets: {layer: domain, status: legacy, complexity: high}
+ * -->
  */
 public class DeMultiplexerIn_Raid0 
 extends AStreamIn_Byte {
 
-	/**
+	/** Runs {@link #testIt()} when invoked with no arguments.
 	 * @param args
 	 */
 	public static void main(final String[] args) throws IOException {
 		if (args.length == 0)
-			testIt(); 
+			testIt();
 	}
-	
-	/**
-	 * Tests correct De-Multiplexing 
-	 * by concurrently reading from and writing to the multiplexed Streams. 
+
+	/** Creates {@code numStreams} MonitorByte pipes with the given read/write timeouts.
 	 * @param args
 	 */
 	final static public MonitorByte[] getMonitors(final int numStreams, final long timeOutWrite, final long timeOutRead) {
@@ -162,13 +165,15 @@ extends AStreamIn_Byte {
 		return currItem = sources[currInStream].read();
 	}
 	
-	/** @see streamIO.integer.IStreamIn_Byte#close()	 */
+	/** Closes every source Stream.
+	 * @see streamIO.integer.IStreamIn_Byte#close()	 */
 	public void close() throws IOException {
 		for (int i = sources.length; --i >= 0; )
 			sources[i].close();
 	}
-	
-	/** @see streamIO.integer.IStreamIn_Byte#mark(int)	 */
+
+	/** Marks every source Stream, dividing the read limit evenly across them.
+	 * @see streamIO.integer.IStreamIn_Byte#mark(int)	 */
 	public void mark(final int readlimit) {
 		markInStream = currInStream; 
 		final int roundlimit = 1 + (readlimit / sources.length);
@@ -185,7 +190,8 @@ extends AStreamIn_Byte {
 		return this; 
 	}
 	
-	/** @see streamIO.integer.IStreamIn_Byte#reSet(long)	 */
+	/** Resets every source Stream to the given round-robin Position.
+	 * @see streamIO.integer.IStreamIn_Byte#reSet(long)	 */
 	public long reSet(long position) { //throws IOException {
 		final long roundlimit = position / sources.length;
 		for (int i = sources.length; --i >= 0; )
@@ -199,7 +205,8 @@ extends AStreamIn_Byte {
 		return position; 
 	}
 	
-	/**@see streamIO.IMarkAble#getMaxMarkSize() 
+	/** Returns the smallest maximum-mark-size supported across all source Streams.
+	 * @see streamIO.IMarkAble#getMaxMarkSize()
 	 * @see streamIO.integer.IStreamIn_Byte#getMaxMarkSize()	 */
 	public long getMaxMarkSize() {
 	    long minSupported = Long.MAX_VALUE; 
@@ -211,7 +218,8 @@ extends AStreamIn_Byte {
 		return minSupported; 
 	}
 	
-	/** @see streamIO.integer.IStreamIn_Int#getOrder()	 */
+	/** Always returns {@link #ORDER_NONE}, since interleaving source Streams has no defined order.
+	 * @see streamIO.integer.IStreamIn_Int#getOrder()	 */
 	public byte getOrder() { return ORDER_NONE; }
 
 	////////////////////////////////////////////////////////////////////////////
@@ -221,7 +229,8 @@ extends AStreamIn_Byte {
 	/** current Output Object, originally defined in AStreamIn */
 	public int currInt() { return currItem; }
 
-	/** @see streamIO.integer.AStreamIn_Byte#getPosition()	 */
+	/** Returns a combined round-robin Position across all source Streams.
+	 * @see streamIO.integer.AStreamIn_Byte#getPosition()	 */
 	public long getPosition() {
 		final long ret = sources[currInStream].getPosition()*sources.length+currInStream; 
 		return ret;

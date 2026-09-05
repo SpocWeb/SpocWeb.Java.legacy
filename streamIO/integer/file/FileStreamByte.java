@@ -55,6 +55,11 @@ import function.byref.ByRefInt;
   * @see java.io.InputStream
   * @see java.io.DataInput
   * @see java.io.DataOutput
+  * <!-- docstate
+  * tags: [code/file_io, code/stream_io]
+  * concepts: [File-Backed StreamIO Implementations]
+  * facets: {layer: utility, status: legacy, complexity: high}
+  * -->
   */
 public class FileStreamByte 
 extends RandomAccessFile //TODO: Byte Channels are the new IO Paradigm since 1.4
@@ -188,7 +193,8 @@ implements IStreamByte, IStreamByteRandom {
 	/** holds the Order of the Data in the File   */
 	public byte Order;
 	
-	/** @return the Order of the Data in the File  */
+	/** Returns the byte order of the Data in the File.
+	 * @return the Order of the Data in the File  */
 	public byte getOrder() { return Order; }
 	
 	/** Reference to the File Object to be able to create an IntIterator	 */
@@ -201,18 +207,21 @@ implements IStreamByte, IStreamByteRandom {
 	/// #region : Constructors, calling each other using this()/super() (not in Interfaces)
 	////////////////////////////////////////////////////////////////////////////
 	
-	/** @see streamIO.integer.IStreamIn_Int#IntIterator()	 */
+	/** Creates a new independent Reader on the same File and mode.
+	 * @see streamIO.integer.IStreamIn_Int#IntIterator()	 */
 	public IStreamIn_Int IntIterator() {
 		try { return new FileStreamByte(file, mode);
 		} catch (final FileNotFoundException x) {
 			return handleExceptionObject(x);
 		}
 	}
-	
-	/** @see streamIO.IIterAble#Iterator()	 */
+
+	/** Delegates to {@link #IntIterator()}.
+	 * @see streamIO.IIterAble#Iterator()	 */
 	public IIStreamIn Iterator() { return IntIterator(); }
-    
-    /** @see streamIO.real.IStreamIn_Float#FloatIterator()     */
+
+    /** Delegates to {@link #IntIterator()}.
+     * @see streamIO.real.IStreamIn_Float#FloatIterator()     */
     public IStreamIn_Float FloatIterator() { return IntIterator(); }
     
 	/**
@@ -420,7 +429,8 @@ implements IStreamByte, IStreamByteRandom {
       * @see streamIO.IMarkAble#mark(long)     */
     public IMarkAble mark(final long readLimit) { mark(); return this; }
     
-    /** @see streamIO.IReSetAble#jump()     */
+    /** Jumps forward one Position, equivalent to jump(1).
+     * @see streamIO.IReSetAble#jump()     */
     public IReSetAble jump() { return AReSetAble.JUMP(this); }
     
 	/** 
@@ -431,7 +441,8 @@ implements IStreamByte, IStreamByteRandom {
 	 */
     public IPushBackAble pushBack() { return AReSetAble.PUSH_BACK(this); }
 	
-	/** @see streamIO.IAvailAble#availAble()     */
+	/** Returns the number of bytes still available (File length minus current position).
+	 * @see streamIO.IAvailAble#availAble()     */
     public long availAble() {
         try { return length() - getFilePointer();
 	    } catch (final IOException x) {
@@ -439,7 +450,8 @@ implements IStreamByte, IStreamByteRandom {
 		}
     }
     
-    /** @see streamIO.IAvailAble#getPosition()     */
+    /** Returns the current File Pointer position, wrapping any IOException.
+     * @see streamIO.IAvailAble#getPosition()     */
     public long getPosition() {
         try { return getFilePointer();
 	    } catch (final IOException x) {
@@ -478,11 +490,13 @@ implements IStreamByte, IStreamByteRandom {
 	  */
 	public IReSetAble reSet() { reSet(0); return this; }
 	
-    /** @see streamIO.IReSetAble#reSet(java.lang.String)     */
-	public IReSetAble reSet(final String throwFailureExceptionMessage) { 
+    /** Resets to the last mark, throwing an Exception with the given Message on failure.
+     * @see streamIO.IReSetAble#reSet(java.lang.String)     */
+	public IReSetAble reSet(final String throwFailureExceptionMessage) {
 	    reSet(0, throwFailureExceptionMessage); return this; }
-    
-    /** @see streamIO.IReSetAble#reSet(java.lang.String)     */
+
+    /** Resets to the last mark plus the given offset.
+     * @see streamIO.IReSetAble#reSet(java.lang.String)     */
 	public long reSet(final long offset) { return reSet(offset, throwFailureExceptionMessage); }
     
 	/**
@@ -985,27 +999,33 @@ implements IStreamByte, IStreamByteRandom {
 		AStreamOutByte.WRITE_SAFE(this, b, off, len); }
 	  */
 
-	/** @see streamIO.Byte.IStreamOutByte#addString(StringBuffer, int, int)	 */
+	/** Writes the StringBuffer range [start, stop) as bytes to this File.
+	 * @see streamIO.Byte.IStreamOutByte#addString(StringBuffer, int, int)	 */
 	public IStreamOutByte addBuffer(final StringBuffer b, final int stop, final int start) {
-		AStreamOutByte.WRITE_SAFE(this, b, stop, start); 
+		AStreamOutByte.WRITE_SAFE(this, b, stop, start);
 		return this; }
 
-	/** @see streamIO.Byte.IStreamOutByte#addString(StringBuffer)	 */
+	/** Writes the leading StringBuffer range [0, stop) as bytes to this File.
+	 * @see streamIO.Byte.IStreamOutByte#addString(StringBuffer)	 */
 	public IStreamOutByte addBuffer(final StringBuffer b, final int stop) {
 		return addBuffer(b, stop, 0); }
 
-	/** @see streamIO.Byte.IStreamOutByte#addString(StringBuffer)	 */
+	/** Writes the whole StringBuffer as bytes to this File.
+	 * @see streamIO.Byte.IStreamOutByte#addString(StringBuffer)	 */
 	public IStreamOutByte addBuffer(final StringBuffer b) {
 		return addBuffer(b, b.length()); }
-	
-	/** @see streamIO.integer.IStreamOutByte#addString(java.lang.String)	 */
-	public IStreamOutByte addString(final String b) { return addString(b, b.length()); } 
 
-	/** @see streamIO.integer.IStreamOutByte#addString(java.lang.String, int)	 */
+	/** Writes the whole String as bytes to this File.
+	 * @see streamIO.integer.IStreamOutByte#addString(java.lang.String)	 */
+	public IStreamOutByte addString(final String b) { return addString(b, b.length()); }
+
+	/** Writes the leading substring [0, stop) as bytes to this File.
+	 * @see streamIO.integer.IStreamOutByte#addString(java.lang.String, int)	 */
 	public IStreamOutByte addString(final String b, final int stop) {
-		return addString(b, stop, 0); } 
+		return addString(b, stop, 0); }
 
-	/** @see streamIO.integer.IStreamOutByte#addString(java.lang.String, int, int)	 */
+	/** Writes the substring [start, stop) as bytes to this File.
+	 * @see streamIO.integer.IStreamOutByte#addString(java.lang.String, int, int)	 */
 	public IStreamOutByte addString(final String b, final int stop, final int start) {
 		AStreamOutByte.WRITE_SAFE(this, b, stop, start); 
 		return this; }
@@ -1034,55 +1054,69 @@ implements IStreamByte, IStreamByteRandom {
 		return this; 
 	}
 	
-    /** @see streamIO.real.IStreamIn_Float#nextDouble()     */
+    /** Returns the next value widened to a double.
+     * @see streamIO.real.IStreamIn_Float#nextDouble()     */
     public double nextDouble() { return nextInt(); }
-    
-    /** @see streamIO.real.IStreamIn_Float#nextFloat()     */
+
+    /** Returns the next value widened to a float.
+     * @see streamIO.real.IStreamIn_Float#nextFloat()     */
     public float nextFloat() { return nextInt(); }
-    
-    /** @see streamIO.IIStreamIn#isValid()     */
+
+    /** Returns true unless the current Item is EOF.
+     * @see streamIO.IIStreamIn#isValid()     */
     public boolean isValid() { return currItem.Value != EOF; }
-    
-    /** @see #nextItem() returns this Object or null; 	*/
+
+    /** Holds the current Item as a boxed, reusable int reference.
+     * @see #nextItem() returns this Object or null; 	*/
     final public ByRefInt currItem = new ByRefInt();
-    
-    /** @see streamIO.IFactory#nextItem()     */
+
+    /** Advances to and returns the next Item, boxed as a {@link ByRefInt}, or null at EOF.
+     * @see streamIO.IFactory#nextItem()     */
     public Object nextItem() {
         if (EOF == (currItem.Value = nextInt())) 
             return null; 
         return currItem; //new Integer(nextInt());
     }
     
-	/** @see streamIO.integer.IStreamIn_Int#currLong()	 */
+	/** Returns the current Item as a long, without advancing.
+	 * @see streamIO.integer.IStreamIn_Int#currLong()	 */
 	public long currLong() { return currItem.Value; }
-	
-	/** @see streamIO.integer.IStreamIn_Int#currInt()	 */
+
+	/** Returns the current Item as an int, without advancing.
+	 * @see streamIO.integer.IStreamIn_Int#currInt()	 */
 	public int currInt() { return currItem.Value; }
-	
-	/** @see streamIO.real.IStreamIn_Float#currDouble()	 */
+
+	/** Returns the current Item widened to a double, without advancing.
+	 * @see streamIO.real.IStreamIn_Float#currDouble()	 */
 	public double currDouble() { return currItem.Value; }
-	
-	/** @see streamIO.real.IStreamIn_Float#currFloat()	 */
+
+	/** Returns the current Item widened to a float, without advancing.
+	 * @see streamIO.real.IStreamIn_Float#currFloat()	 */
 	public float currFloat() { return currItem.Value; }
-	
-	/** @return the next Value without moving to it.	 */
+
+	/** Reads the next int value without advancing the stream position.
+	 * @return the next Value without moving to it.	 */
 	public int peekInt() { //throws    NoSuchMethodException {
 		//throw new NoSuchMethodException("No generic Implementation!");
-		final int ret = nextInt(); 
-		pushBack(); 
-		return ret; 
+		final int ret = nextInt();
+		pushBack();
+		return ret;
 	}
-	
-	/** @return the next Value without moving to it.	 */
+
+	/** Reads the next value without advancing, by delegating to {@link #peekInt()}.
+	 * @return the next Value without moving to it.	 */
 	public long peekLong() { return peekInt(); }
-	
-	/** @see streamIO.real.IStreamIn_Float#peekDouble()	 */
+
+	/** Reads the next value without advancing, by delegating to {@link #peekInt()}.
+	 * @see streamIO.real.IStreamIn_Float#peekDouble()	 */
 	public double peekDouble() { return peekInt(); }
-	
-	/** @see streamIO.real.IStreamIn_Float#peekFloat()	 */
+
+	/** Reads the next value without advancing, by delegating to {@link #peekInt()}.
+	 * @see streamIO.real.IStreamIn_Float#peekFloat()	 */
 	public float peekFloat() { return peekInt(); }
-	
-	/** @see streamIO.integer.IStreamIn_Int#fill(int[], int, int)	 */
+
+	/** Fills the int array range [start, stop) by repeatedly calling {@link #nextInt()}.
+	 * @see streamIO.integer.IStreamIn_Int#fill(int[], int, int)	 */
 	public int fill(int[] arr, int stop, int start) {
 		try {
 			return this.read(arr, start, stop-start); 

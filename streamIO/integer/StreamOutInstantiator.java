@@ -49,6 +49,11 @@ import synch.ValidationRule;
  * Created on	10-26-2002, 12:47 PM<p>
  * @author heuerm
  * @version	1.0
+ * <!-- docstate
+ * tags: [code/stream_io, code/stream_input, code/stream_output, code/struct]
+ * concepts: [Primitive and Structured Stream I/O Core Abstractions]
+ * facets: {layer: utility, status: legacy, complexity: high}
+ * -->
  */
 public class StreamOutInstantiator 
 extends AStreamOutStruct //StreamIn_Struct // 
@@ -95,11 +100,13 @@ implements IStreamOutStruct, IStreamIn_Struct {
 	
 	///////////////////////////////////////////////////////////////////////////
 	
-	/** @see streamIO.integer.IStreamOutStruct#peek_Struct()	 */
+	/** Returns a String representation of the innermost currently-open structure Object, without closing it.
+	 * @see streamIO.integer.IStreamOutStruct#peek_Struct()	 */
 	public String peek_Struct() {
 		return objects[SP-1].toString(); }
 	
-	/** @see streamIO.integer.IStreamOutStruct#open_Struct(java.lang.String)	 */
+	/** Opens (pushes) a nested structure of the given open/close tag onto the structure Stack.
+	 * @see streamIO.integer.IStreamOutStruct#open_Struct(java.lang.String)	 */
 	public IStreamOutStruct open_Struct(final String openClose) {
 		L.enter().l(openClose);
 		item = null; 
@@ -118,7 +125,8 @@ implements IStreamOutStruct, IStreamIn_Struct {
 		}
 		return this; }
 	
-	/** @see streamIO.integer.IStreamOutStruct#closeStruct()	 */
+	/** Closes (pops) the innermost open structure, handing the parsed Object back to its parent via readField.
+	 * @see streamIO.integer.IStreamOutStruct#closeStruct()	 */
 	public IStreamOutStruct closeStruct() {
 		L.enter(); 
 		writeName(null); 
@@ -132,14 +140,16 @@ implements IStreamOutStruct, IStreamIn_Struct {
 		structName = names[SP]; names[SP] = null; 
 		return this; }
 	
-	/** @see streamIO.integer.IStreamOutStruct#closeStruct(java.lang.String)	 */
+	/** Closes the innermost open structure, verifying it matches the given name.
+	 * @see streamIO.integer.IStreamOutStruct#closeStruct(java.lang.String)	 */
 	public IStreamOutStruct closeStruct(final String name) {
 		L.enter().l(name); 
 		if (!ValidationRule.EQUALS(structName, name)) 
 			throw new RuntimeException("Expcected to close '"+structName+"'"); 
 		return closeStruct(); }
 	
-	/** @see streamIO.integer.IStreamOutStruct#open_Struct()	 */
+	/** Opens a nested structure using the last written Name as its tag.
+	 * @see streamIO.integer.IStreamOutStruct#open_Struct()	 */
 	public IStreamOutStruct open_Struct() { 
 		L.enter(); //used only on parsing, not on...
 		//final String name = currName; currName = null; 
@@ -149,19 +159,22 @@ implements IStreamOutStruct, IStreamIn_Struct {
 	/// Interface IStreamOutStruct
 	///////////////////////////////////////////////////////////////////////////
 	
-	/** @see streamIO.integer.IStreamOutStruct#closeAll() */
+	/** Closes every structure still open on the Stack.
+	 * @see streamIO.integer.IStreamOutStruct#closeAll() */
 	public void closeAll() {
 		while(SP > 0)
 			closeStruct(); 
 	}
 
-	/** @see streamIO.integer.IStreamOutStruct#open_Quote() */
+	/** Not implemented; always returns null.
+	 * @see streamIO.integer.IStreamOutStruct#open_Quote() */
 	public IStreamOutStruct open_Quote() {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
-	/** @see streamIO.integer.IStreamOutStruct#closeQuote() */
+	/** Not implemented; always returns null.
+	 * @see streamIO.integer.IStreamOutStruct#closeQuote() */
 	public IStreamOutStruct closeQuote() {
 		// TODO Auto-generated method stub
 		return null;
@@ -178,7 +191,8 @@ implements IStreamOutStruct, IStreamIn_Struct {
 			return streamIn.nextString(); 
 		return string; }
 	
-	/** @see streamIO.integer.IStreamIn_Byte#nextString(int) */
+	/** Returns the next String truncated to the given length.
+	 * @see streamIO.integer.IStreamIn_Byte#nextString(int) */
 	public String nextString(final int length) {
 		return nextString().substring(0, length); }
 	
@@ -192,8 +206,10 @@ implements IStreamOutStruct, IStreamIn_Struct {
 	
 	protected IStreamOutStruct[] paramThis = { this }; 
 	
-	/** @see streamIO.integer.IStreamOutInt#addInt(int)	 */
-	public IStreamOutChar addString(final String _str) { 
+	/** Handles the given String Value: instantiates/looks up an Object for {@code _class_}/{@code _objId_}/{@code _refId_}
+	 * Name-Values, otherwise appends it to the cached current String.
+	 * @see streamIO.integer.IStreamOutInt#addInt(int)	 */
+	public IStreamOutChar addString(final String _str) {
 		L.enter().l(_str); 
 		if (IStreamOutStruct.STR_CLASS.equals(currName)) { 
 			try { 
@@ -228,7 +244,8 @@ implements IStreamOutStruct, IStreamIn_Struct {
 		}
 		return this; }
 	
-	/** @see streamIO.integer.IStreamOutStruct#writeName(java.lang.String) */
+	/** Writes the Name of the next Name-Value Pair, triggering the previous Field's readField first.
+	 * @see streamIO.integer.IStreamOutStruct#writeName(java.lang.String) */
 	public IStreamOutStruct writeName(final String name) {
 		L.enter().l(name);
 		if (currObj  != null) {
@@ -247,14 +264,16 @@ implements IStreamOutStruct, IStreamIn_Struct {
 		currName = name; 
 		return this; }
 	
-	/** @see streamIO.integer.IStreamOutStruct#writeNameValuePair(java.lang.String, java.lang.String)	 */
+	/** Writes a Name-Value Pair by writing the Name followed by the Value.
+	 * @see streamIO.integer.IStreamOutStruct#writeNameValuePair(java.lang.String, java.lang.String)	 */
 	public  IStreamOutStruct writeNameValuePair(final String name, final String value) {
 		L.enter().l("name=").l(name).s().l("value=").l(value); 
 		writeName(name); 
 		addString(value); 
 		return this; }
 	
-	/** @see streamIO.integer.IStreamOutStruct#writeNameValuePair(java.lang.String, java.lang.String, boolean)	 */
+	/** Writes a Name-Value Pair; the quoting flag is ignored by this in-memory implementation.
+	 * @see streamIO.integer.IStreamOutStruct#writeNameValuePair(java.lang.String, java.lang.String, boolean)	 */
 	public IStreamOutStruct writeNameValuePair(String name, String value,
 			boolean useQuotes) { return writeNameValuePair(name, value); }
 	
@@ -268,14 +287,16 @@ implements IStreamOutStruct, IStreamIn_Struct {
 	/* An Alternative for Arrays would be not to clone them, 
 	 * but to remember the start and stop Indices and return them on readInts().  */ 
 	
-	/** @see streamIO.integer.IStreamIn_Byte#nextBuffer(int) */
+	/** Delegates to the wrapped Reader's nextBuffer(int), or returns null when reading in-memory.
+	 * @see streamIO.integer.IStreamIn_Byte#nextBuffer(int) */
 	public StringBuffer nextBuffer(final int length) {
 		if (streamIn != null) //
 			return streamIn.nextBuffer(length); //read it from the Stream
 		return null;
 	}
 	
-	/** @see streamIO.integer.IStreamIn_Byte#nextBuffer(int, java.lang.StringBuffer) */
+	/** Delegates to the wrapped Reader's nextBuffer(int, StringBuffer), or returns null when reading in-memory.
+	 * @see streamIO.integer.IStreamIn_Byte#nextBuffer(int, java.lang.StringBuffer) */
 	public StringBuffer nextBuffer(final int length, final StringBuffer buffer) {
 		if (streamIn != null) //
 			return streamIn.nextBuffer(length, buffer); //read it from the Stream
@@ -286,26 +307,30 @@ implements IStreamOutStruct, IStreamIn_Struct {
 	
 	protected long lng; 
 	
-	/** @see streamIO.integer.IStreamOutInt#addInt(int)	 */
-	public IStreamOutInt addLong(final long value) { 
+	/** Caches the given value as the current long value, to be picked up by writeName(String).
+	 * @see streamIO.integer.IStreamOutInt#addInt(int)	 */
+	public IStreamOutInt addLong(final long value) {
 		L.enter().l("value=").l(value); 
 		lng = value; return this; }
 	
-	/** @see streamIO.integer.IStreamIn_Int#nextLong() */
+	/** Delegates to the wrapped Reader's nextLong(), or returns 0 when reading in-memory.
+	 * @see streamIO.integer.IStreamIn_Int#nextLong() */
 	public long nextLong() {
 		if (streamIn != null) //
 			return streamIn.nextLong(); //read it from the Stream
 		return 0;
 	}
 	
-	/** @see streamIO.integer.IStreamIn_Int#currLong() */
+	/** Delegates to the wrapped Reader's currLong(), or returns 0 when reading in-memory.
+	 * @see streamIO.integer.IStreamIn_Int#currLong() */
 	public long currLong() {
 		if (streamIn != null) //
 			return streamIn.currLong(); //read it from the Stream
 		return 0;
 	}
 	
-	/** @see streamIO.integer.IStreamIn_Int#peekLong() */
+	/** Delegates to the wrapped Reader's peekLong(), or returns 0 when reading in-memory.
+	 * @see streamIO.integer.IStreamIn_Int#peekLong() */
 	public long peekLong() {
 		if (streamIn != null) //
 			return streamIn.peekLong(); //read it from the Stream
@@ -314,32 +339,37 @@ implements IStreamOutStruct, IStreamIn_Struct {
 	
 	///////////////////////////////////////////////////////////////////////////
 	
-	/** @see streamIO.integer.IStreamOutInt#addInt(int)	 */
-	public IStreamOutInt addInt(final int value) { 
+	/** Caches the given value as the current int value, to be picked up by writeName(String).
+	 * @see streamIO.integer.IStreamOutInt#addInt(int)	 */
+	public IStreamOutInt addInt(final int value) {
 		L.enter().l("value=").l(value); 
 		lng = value; return this; }
 	
-	/** @see stringOp.parser.IIStreamIn_Int#nextInt()	 */
+	/** Delegates to the wrapped Reader's nextInt(), or returns the cached lng narrowed to int.
+	 * @see stringOp.parser.IIStreamIn_Int#nextInt()	 */
 	public int nextInt() { 
 		if (streamIn != null)
 			return (int) (lng = streamIn.nextInt()); 
 		return (int) lng; }
 	
-	/** @see streamIO.integer.IStreamIn_Int#currInt() */
+	/** Delegates to the wrapped Reader's currInt(), or returns the cached lng narrowed to int.
+	 * @see streamIO.integer.IStreamIn_Int#currInt() */
 	public int currInt() {
 		if (streamIn != null) //
 			return streamIn.currInt(); //read it from the Stream
 		return (int) lng;
 	}
 	
-	/** @see streamIO.integer.IStreamIn_Int#peekInt() */
+	/** Delegates to the wrapped Reader's peekInt(), or returns the cached lng narrowed to int.
+	 * @see streamIO.integer.IStreamIn_Int#peekInt() */
 	public int peekInt() {
 		if (streamIn != null) //
 			return streamIn.peekInt(); //read it from the Stream
 		return (int) lng;
 	}
 	
-	/** @see streamIO.integer.IStreamIn_Int#IntIterator() */
+	/** Delegates to the wrapped Reader's IntIterator(), or returns this when reading in-memory.
+	 * @see streamIO.integer.IStreamIn_Int#IntIterator() */
 	public IStreamIn_Int IntIterator() {
 		if (streamIn != null) //
 			return streamIn.IntIterator(); //read it from the Stream
@@ -347,7 +377,8 @@ implements IStreamOutStruct, IStreamIn_Struct {
 	
 	///////////////////////////////////////////////////////////////////////////
 	
-	/** @see streamIO.integer.IStreamIn_Primitive#nextBool() */
+	/** Delegates to the wrapped Reader's nextBool(), or decodes the cached lng (0/1) when reading in-memory.
+	 * @see streamIO.integer.IStreamIn_Primitive#nextBool() */
 	public boolean nextBool() {
 		if (streamIn != null) //
 			return streamIn.nextBool(); //read it from the Stream
@@ -360,37 +391,43 @@ implements IStreamOutStruct, IStreamIn_Struct {
 	
 	///////////////////////////////////////////////////////////////////////////
 	
-	/** @see streamIO.integer.IStreamOutInt#addInt(int)	 */
-	public IStreamOutInt addShort(final short value) { 
+	/** Caches the given value as the current short value, to be picked up by writeName(String).
+	 * @see streamIO.integer.IStreamOutInt#addInt(int)	 */
+	public IStreamOutInt addShort(final short value) {
 		L.enter().l("value=").l(value); 
 		lng = value; return this; }
 	
 	///////////////////////////////////////////////////////////////////////////
 	
-	/** @see streamIO.integer.IStreamOutInt#addInt(int)	 */
-	public IStreamOutFloat addFloat(final float value) { 
+	/** Caches the given value as the current double value, to be picked up by writeName(String).
+	 * @see streamIO.integer.IStreamOutInt#addInt(int)	 */
+	public IStreamOutFloat addFloat(final float value) {
 		L.enter().l("value=").l(value); 
 		dbl = value; return this; }
 	
-	/** @see streamIO.real.IStreamIn_Float#nextFloat() */
+	/** Delegates to the wrapped Reader's nextFloat(), or returns the cached dbl narrowed to float.
+	 * @see streamIO.real.IStreamIn_Float#nextFloat() */
 	public float nextFloat() {
 		if (streamIn != null)
 			return (float) (dbl = streamIn.nextFloat()); 
 		return (float) dbl; }
 	
-	/** @see streamIO.real.IStreamIn_Float#currFloat() */
+	/** Delegates to the wrapped Reader's currFloat(), or returns the cached dbl narrowed to float.
+	 * @see streamIO.real.IStreamIn_Float#currFloat() */
 	public float currFloat() {
 		if (streamIn != null)
 			return (float) (dbl = streamIn.currFloat()); 
 		return (float) dbl; }
 	
-	/** @see streamIO.real.IStreamIn_Float#peekFloat() */
+	/** Delegates to the wrapped Reader's peekFloat(), or returns the cached dbl narrowed to float.
+	 * @see streamIO.real.IStreamIn_Float#peekFloat() */
 	public float peekFloat() {
 		if (streamIn != null)
 			return (float) (dbl = streamIn.peekFloat()); 
 		return (float) dbl; }
 	
-	/** @see streamIO.real.IStreamIn_Float#FloatIterator() */
+	/** Delegates to the wrapped Reader's FloatIterator(), or returns this when reading in-memory.
+	 * @see streamIO.real.IStreamIn_Float#FloatIterator() */
 	public IStreamIn_Float FloatIterator() {
 		if (streamIn != null) //
 			return streamIn.FloatIterator(); //read it from the Stream
@@ -400,34 +437,45 @@ implements IStreamOutStruct, IStreamIn_Struct {
 	
 	protected double dbl; 
 	
-	/** @see streamIO.integer.IStreamOutInt#addInt(int)	 */
-	public IStreamOutFloat addDouble(final double value) { 
+	/** Caches the given value as the current double value, to be picked up by writeName(String).
+	 * @see streamIO.integer.IStreamOutInt#addInt(int)	 */
+	public IStreamOutFloat addDouble(final double value) {
 		L.enter().l("value=").l(value); 
 		dbl = value; return this; }
 	
-	/** @see streamIO.real.IStreamIn_Float#nextDouble() */
+	/** Delegates to the wrapped Reader's nextDouble(), or returns the cached dbl.
+	 * @see streamIO.real.IStreamIn_Float#nextDouble() */
 	public double nextDouble() {
 		if (streamIn != null)
 			return dbl = streamIn.nextDouble(); 
 		return dbl; }
 	
-	/** @see streamIO.real.IStreamIn_Float#currDouble() */
+	/** Delegates to the wrapped Reader's currDouble(), or returns the cached dbl.
+	 * @see streamIO.real.IStreamIn_Float#currDouble() */
 	public double currDouble() {
 		if (streamIn != null)
 			return dbl = streamIn.currDouble(); 
 		return dbl; }
 	
-	/** @see streamIO.real.IStreamIn_Float#peekDouble() */
+	/** Delegates to the wrapped Reader's peekDouble(), or returns the cached dbl.
+	 * @see streamIO.real.IStreamIn_Float#peekDouble() */
 	public double peekDouble() {
+		// TODO: LOGIC: calls streamIn.currDouble() instead of streamIn.peekDouble() - copy-paste
+		// from currDouble() above. peekDouble() is supposed to look ahead without advancing the
+		// Reader; delegating to currDouble() instead means the "peek" semantics silently differ
+		// from a real peek whenever the wrapped Reader distinguishes the two (e.g. it may not
+		// advance/read a new value at all, or advance when it shouldn't, depending on the
+		// Reader's own currDouble()/peekDouble() contract).
 		if (streamIn != null)
-			return dbl = streamIn.currDouble(); 
+			return dbl = streamIn.currDouble();
 		return dbl; }
 	
 	///////////////////////////////////////////////////////////////////////////
 	
 	protected Object item; 
 	
-	/** @see streamIO.IIStreamOut#addItem(java.lang.Object)	 */
+	/** Caches the given Object as the current Item to be picked up by writeName(String).
+	 * @see streamIO.IIStreamOut#addItem(java.lang.Object)	 */
 	public IIStreamOut addItem(final Object _value) { 
 		L.enter().l("value=").l(_value); 
 		item = _value; 
@@ -436,7 +484,8 @@ implements IStreamOutStruct, IStreamIn_Struct {
 		//	item = ((Cloneable) item).clone(); //the clone() Method is not public in Cloneable!  
 		return this; }
 	
-	/** @see streamIO.IFactory#nextItem()	 */
+	/** Returns the cached current Item.
+	 * @see streamIO.IFactory#nextItem()	 */
 	public Object nextItem() { 
 		//final Object ret = item; //item = null; 
 		return item; }
@@ -449,16 +498,23 @@ implements IStreamOutStruct, IStreamIn_Struct {
 	/** Cache for the Array handed over	 */
 	protected short[] shorts = DEFAULT_SHORTS; 
 	
-	/** @see streamIO.integer.IStreamIn_Struct#nextShorts()	 */
+	/** Returns and clears the accumulated short Array.
+	 * @see streamIO.integer.IStreamIn_Struct#nextShorts()	 */
 	public short[] nextShorts() { final short[] ret = shorts; shorts = DEFAULT_SHORTS; return ret; }
-	
-	/** @see streamIO.integer.IStreamOutStructArrays#addShorts(short[], int, int) */
+
+	/** Appends the given range of the short Array to the accumulated shorts Array.
+	 * @see streamIO.integer.IStreamOutStructArrays#addShorts(short[], int, int) */
 	public IStreamOutStruct addShorts(final short[] values, final int stop, final int start) {
-		final short[] tmp = new short[ints.length+stop-start]; 
-		System.arraycopy(  ints,     0, tmp, 0, ints.length); 
+		// TODO: LOGIC: this reads/sizes off "ints" instead of "shorts" - a copy-paste bug from
+		// addInts() below. It should extend the "shorts" field, not read the (probably
+		// unrelated, possibly empty) ints array; this corrupts the size and contents of the
+		// accumulated shorts every time addShorts() is called. Same copy-paste pattern recurs in
+		// addLongs()/addFloats()/addDoubles()/addItems()/addStrings() further below.
+		final short[] tmp = new short[ints.length+stop-start];
+		System.arraycopy(  ints,     0, tmp, 0, ints.length);
 		System.arraycopy(values, start, tmp   , ints.length, stop-start);
-		shorts = tmp; 
-		return this; //trigger(); //zu früh! vielleicht kommt noch was nach?  
+		shorts = tmp;
+		return this; //trigger(); //zu frï¿½h! vielleicht kommt noch was nach?
 	}
 	
 	///////////////////////////////////////////////////////////////////////////
@@ -470,19 +526,21 @@ implements IStreamOutStruct, IStreamIn_Struct {
 	/** Cache for the Array handed over	 */
 	protected int[] ints = DEFAULT_INTS; 
 	
-	/** @see streamIO.integer.IStreamIn_Struct#nextInts()	 */
-	public int[] nextInts() { 
+	/** Returns and clears the accumulated int Array, delegating to the wrapped Reader when reading.
+	 * @see streamIO.integer.IStreamIn_Struct#nextInts()	 */
+	public int[] nextInts() {
 		if (streamIn != null) //&& (ints == DEFAULT_INTS) //no addInts happened
 			return streamIn.nextInts(); //read it from the Stream
 		final int[] ret = ints; ints = DEFAULT_INTS; return ret; }
 	
-	/** @see streamIO.integer.IStreamOutStructArrays#addInts(int[], int, int) */
+	/** Appends the given range of the int Array to the accumulated ints Array.
+	 * @see streamIO.integer.IStreamOutStructArrays#addInts(int[], int, int) */
 	public IStreamOutStruct addInts(final int[] values, final int stop, final int start) {
 		final int[] tmp = new int[ints.length+stop-start]; 
 		System.arraycopy(  ints,     0, tmp, 0, ints.length); 
 		System.arraycopy(values, start, tmp   , ints.length, stop-start);
 		ints = tmp; 
-		return this; //trigger(); //zu früh! vielleicht kommt noch was nach?  
+		return this; //trigger(); //zu frï¿½h! vielleicht kommt noch was nach?  
 	}
 	
 	///////////////////////////////////////////////////////////////////////////
@@ -493,19 +551,23 @@ implements IStreamOutStruct, IStreamIn_Struct {
 	/** Cache for the Array handed over	 */
 	protected long[] longs = DEFAULT_LONGS; 
 	
-	/** @see streamIO.integer.IStreamIn_Struct#nextInts()	 */
-	public long[] nextLongs() { 
+	/** Returns and clears the accumulated long Array, delegating to the wrapped Reader when reading.
+	 * @see streamIO.integer.IStreamIn_Struct#nextInts()	 */
+	public long[] nextLongs() {
 		if (streamIn != null) //&& (longs == DEFAULT_LONGS)) //no addInts happened
 			return streamIn.nextLongs(); //read it from the Stream
 		final long[] ret = longs; longs = DEFAULT_LONGS; return ret; }
 	
-	/** @see streamIO.integer.IStreamOutStructArrays#addLongs(long[], int, int) */
+	/** Appends the given range of the long Array to the accumulated longs Array.
+	 * @see streamIO.integer.IStreamOutStructArrays#addLongs(long[], int, int) */
 	public IStreamOutStruct addLongs(final long[] values, final int stop, final int start) {
-		final long[] tmp = new long[ints.length+stop-start]; 
-		System.arraycopy(  ints,     0, tmp, 0, ints.length); 
+		// TODO: LOGIC: same copy-paste bug as addShorts() above - sizes/copies off "ints" instead
+		// of "longs", corrupting the accumulated longs Array.
+		final long[] tmp = new long[ints.length+stop-start];
+		System.arraycopy(  ints,     0, tmp, 0, ints.length);
 		System.arraycopy(values, start, tmp   , ints.length, stop-start);
-		longs = tmp; 
-		return this; //trigger(); //zu früh! vielleicht kommt noch was nach?  
+		longs = tmp;
+		return this; //trigger(); //zu frï¿½h! vielleicht kommt noch was nach?  
 	}
 
 	///////////////////////////////////////////////////////////////////////////
@@ -516,19 +578,23 @@ implements IStreamOutStruct, IStreamIn_Struct {
 	/** Cache for the Array handed over	 */
 	protected float[] floats = DEFAULT_FLOATS; 
 	
-	/** @see streamIO.integer.IStreamIn_Struct#nextInts()	 */
-	public float[] nextFloats() { 
+	/** Returns and clears the accumulated float Array, delegating to the wrapped Reader when reading.
+	 * @see streamIO.integer.IStreamIn_Struct#nextInts()	 */
+	public float[] nextFloats() {
 		if (streamIn != null) //&& (floats == DEFAULT_FLOATS)) //no addInts happened
 			return streamIn.nextFloats(); //read it from the Stream
 		final float[] ret = floats; floats = DEFAULT_FLOATS; return ret; }
 	
-	/** @see streamIO.integer.IStreamOutStructArrays#addFloats(float[], int, int) */
+	/** Appends the given range of the float Array to the accumulated floats Array.
+	 * @see streamIO.integer.IStreamOutStructArrays#addFloats(float[], int, int) */
 	public IStreamOutStruct addFloats(final float[] values, final int stop, final int start) {
-		final float[] tmp = new float[ints.length+stop-start]; 
-		System.arraycopy(  ints,     0, tmp, 0, ints.length); 
+		// TODO: LOGIC: same copy-paste bug as addShorts() above - sizes/copies off "ints" instead
+		// of "floats", corrupting the accumulated floats Array.
+		final float[] tmp = new float[ints.length+stop-start];
+		System.arraycopy(  ints,     0, tmp, 0, ints.length);
 		System.arraycopy(values, start, tmp   , ints.length, stop-start);
-		floats = tmp; 
-		return this; //trigger(); //zu früh! vielleicht kommt noch was nach?  
+		floats = tmp;
+		return this; //trigger(); //zu frï¿½h! vielleicht kommt noch was nach?  
 	}
 	
 	///////////////////////////////////////////////////////////////////////////
@@ -539,19 +605,23 @@ implements IStreamOutStruct, IStreamIn_Struct {
 	/** Cache for the Array handed over	 */
 	protected double[] doubles = DEFAULT_DOUBLES; 
 	
-	/** @see streamIO.integer.IStreamIn_Struct#nextInts()	 */
-	public double[] nextDoubles() { 
+	/** Returns and clears the accumulated double Array, delegating to the wrapped Reader when reading.
+	 * @see streamIO.integer.IStreamIn_Struct#nextInts()	 */
+	public double[] nextDoubles() {
 		if (streamIn != null) //&& (doubles == DEFAULT_DOUBLES)) //no addInts happened
 			return streamIn.nextDoubles(); //read it from the Stream
 		final double[] ret = doubles; doubles = DEFAULT_DOUBLES; return ret; }
 	
-	/** @see streamIO.integer.IStreamOutStructArrays#addDoubles(double[], int, int) */
+	/** Appends the given range of the double Array to the accumulated doubles Array.
+	 * @see streamIO.integer.IStreamOutStructArrays#addDoubles(double[], int, int) */
 	public IStreamOutStruct addDoubles(final double[] values, final int stop, final int start) {
-		final double[] tmp = new double[ints.length+stop-start]; 
-		System.arraycopy(  ints,     0, tmp, 0, ints.length); 
+		// TODO: LOGIC: same copy-paste bug as addShorts() above - sizes/copies off "ints" instead
+		// of "doubles", corrupting the accumulated doubles Array.
+		final double[] tmp = new double[ints.length+stop-start];
+		System.arraycopy(  ints,     0, tmp, 0, ints.length);
 		System.arraycopy(values, start, tmp   , ints.length, stop-start);
-		doubles = tmp; 
-		return this; //trigger(); //zu früh! vielleicht kommt noch was nach?  
+		doubles = tmp;
+		return this; //trigger(); //zu frï¿½h! vielleicht kommt noch was nach?  
 	}
 	
 	///////////////////////////////////////////////////////////////////////////
@@ -562,19 +632,23 @@ implements IStreamOutStruct, IStreamIn_Struct {
 	/** Cache for the Array handed over	 */
 	protected Object[] items = DEFAULT_ITEMS; 
 	
-	/** @see streamIO.integer.IStreamIn_Struct#nextInts()	 */
-	public Object[] nextItems() { 
+	/** Returns and clears the accumulated Object Array, delegating to the wrapped Reader when reading.
+	 * @see streamIO.integer.IStreamIn_Struct#nextInts()	 */
+	public Object[] nextItems() {
 		if (streamIn != null) //&& (items == DEFAULT_ITEMS)) //no addInts happened
 			return streamIn.nextItems(); //read it from the Stream
 		final Object[] ret = items; items = DEFAULT_ITEMS; return ret; }
 	
-	/** @see streamIO.integer.IStreamOutStructArrays#addItems(java.lang.Object[], int, int) */
+	/** Appends the given range of the Object Array to the accumulated items Array.
+	 * @see streamIO.integer.IStreamOutStructArrays#addItems(java.lang.Object[], int, int) */
 	public IStreamOutStruct addItems(final Object[] values, final int stop, final int start) {
-		final Object[] tmp = new Object[ints.length+stop-start]; 
-		System.arraycopy(  ints,     0, tmp, 0, ints.length); 
+		// TODO: LOGIC: same copy-paste bug as addShorts() above - sizes/copies off "ints" instead
+		// of "items", corrupting the accumulated items Array.
+		final Object[] tmp = new Object[ints.length+stop-start];
+		System.arraycopy(  ints,     0, tmp, 0, ints.length);
 		System.arraycopy(values, start, tmp   , ints.length, stop-start);
-		items = tmp; 
-		return this; //trigger(); //zu früh! vielleicht kommt noch was nach?  
+		items = tmp;
+		return this; //trigger(); //zu frï¿½h! vielleicht kommt noch was nach?  
 	}
 	
 	///////////////////////////////////////////////////////////////////////////
@@ -585,138 +659,159 @@ implements IStreamOutStruct, IStreamIn_Struct {
 	/** Cache for the Array handed over	 */
 	protected String[] strings = DEFAULT_STRINGS; 
 	
-	/** @see streamIO.integer.IStreamIn_Struct#nextInts()	 */
-	public String[] nextStrings() { 
+	/** Returns and clears the accumulated String Array, delegating to the wrapped Reader when reading.
+	 * @see streamIO.integer.IStreamIn_Struct#nextInts()	 */
+	public String[] nextStrings() {
 		if (streamIn != null) //&& (strings == DEFAULT_STRINGS) //no addInts happened
 			return streamIn.nextStrings(); //read it from the Stream
 		final String[] ret = strings; strings = DEFAULT_STRINGS; return ret; }
 	
-	/** @see streamIO.integer.IStreamOutStructArrays#addStrings(java.lang.String[], int, int) */
+	/** Appends the given range of the String Array to the accumulated strings Array.
+	 * @see streamIO.integer.IStreamOutStructArrays#addStrings(java.lang.String[], int, int) */
 	public IStreamOutStruct addStrings(final String[] values, final int stop, final int start) {
-		final String[] tmp = new String[ints.length+stop-start]; 
-		System.arraycopy(  ints,     0, tmp, 0, ints.length); 
+		// TODO: LOGIC: same copy-paste bug as addShorts() above - sizes/copies off "ints" instead
+		// of "strings", corrupting the accumulated strings Array.
+		final String[] tmp = new String[ints.length+stop-start];
+		System.arraycopy(  ints,     0, tmp, 0, ints.length);
 		System.arraycopy(values, start, tmp   , ints.length, stop-start);
-		strings = tmp; 
-		return this; //trigger(); //zu früh! vielleicht kommt noch was nach?  
+		strings = tmp;
+		return this; //trigger(); //zu frï¿½h! vielleicht kommt noch was nach?  
 	}
 	
 	////////////////////////////////////////////////////////////////////////////
 	/// Interface IStreamIn_Struct
 	////////////////////////////////////////////////////////////////////////////
 	
-	/** @see streamIO.integer.IStreamIn_Struct#nextToken() */
+	/** Delegates to the wrapped Reader's nextToken(), or returns 0 when reading in-memory.
+	 * @see streamIO.integer.IStreamIn_Struct#nextToken() */
 	public int nextToken() throws IOException {
 		if (streamIn != null) //
 			return streamIn.nextToken(); //read it from the Stream
 		return 0;
 	}
 	
-	/** @see streamIO.integer.IStreamIn_Struct#currToken() */
+	/** Delegates to the wrapped Reader's currToken(), or returns 0 when reading in-memory.
+	 * @see streamIO.integer.IStreamIn_Struct#currToken() */
 	public int currToken() {
 		if (streamIn != null) //
 			return streamIn.currToken(); //read it from the Stream
 		return 0;
 	}
 	
-	/** @see streamIO.IPushBackAble#pushBack() */
+	/** Delegates to the wrapped Reader's pushBack(), or returns null when reading in-memory.
+	 * @see streamIO.IPushBackAble#pushBack() */
 	public IPushBackAble pushBack() {
 		if (streamIn != null) //
 			return streamIn.pushBack(); //read it from the Stream
 		return null;
 	}
 	
-	/** @see streamIO.IIStreamIn#isValid() */
+	/** Delegates to the wrapped Reader's isValid(), or returns false when reading in-memory.
+	 * @see streamIO.IIStreamIn#isValid() */
 	public boolean isValid() {
 		if (streamIn != null) //
 			return streamIn.isValid(); //read it from the Stream
 		return false;
 	}
 	
-	/** @see streamIO.IIterAble#Iterator() */
+	/** Delegates to the wrapped Reader's Iterator(), or returns null when reading in-memory.
+	 * @see streamIO.IIterAble#Iterator() */
 	public IIStreamIn Iterator() {
 		if (streamIn != null) //
 			return streamIn.Iterator(); //
 		return null;
 	}
 	
-	/** @see streamIO.IOrdered#getOrder() */
+	/** Delegates to the wrapped Reader's getOrder(), or returns 0 when reading in-memory.
+	 * @see streamIO.IOrdered#getOrder() */
 	public byte getOrder() {
 		if (streamIn != null) //
 			return streamIn.getOrder(); //
 		return 0;
 	}
 	
-	/** @see streamIO.integer.IStreamIn_Char#getStreamIn_Byte() */
+	/** Delegates to the wrapped Reader's getStreamIn_Byte(), or returns null when reading in-memory.
+	 * @see streamIO.integer.IStreamIn_Char#getStreamIn_Byte() */
 	public IStreamIn_Byte getStreamIn_Byte() {
 		if (streamIn != null) //
 			return streamIn.getStreamIn_Byte(); //
 		return null;
 	}
 	
-	/** @see streamIO.integer.IStreamIn_Char#nextChar() */
+	/** Delegates to the wrapped Reader's nextChar(), or returns 0 when reading in-memory.
+	 * @see streamIO.integer.IStreamIn_Char#nextChar() */
 	public char nextChar() {
 		if (streamIn != null) //
 			return streamIn.nextChar(); //
 		return 0;
 	}
 	
-	/** @see streamIO.integer.IStreamIn_Char#read() */
+	/** Delegates to the wrapped Reader's read(), or returns 0 when reading in-memory.
+	 * @see streamIO.integer.IStreamIn_Char#read() */
 	public int read() throws IOException {
 		if (streamIn != null) //
 			return streamIn.read(); //
 		return 0;
 	}
 	
-	/** @see streamIO.integer.IStreamIn_Char#read(char[]) */
+	/** Delegates to the wrapped Reader's read(char[]), or returns 0 when reading in-memory.
+	 * @see streamIO.integer.IStreamIn_Char#read(char[]) */
 	public int read(final char[] cbuf) throws IOException {
 		if (streamIn != null) //
 			return streamIn.read(cbuf); //
 		return 0;
 	}
 	
-	/** @see streamIO.integer.IStreamIn_Char#read(char[], int, int) */
+	/** Delegates to the wrapped Reader's read(char[], int, int), or returns 0 when reading in-memory.
+	 * @see streamIO.integer.IStreamIn_Char#read(char[], int, int) */
 	public int read(final char[] cbuf, final int off, final int len) throws IOException {
 		if (streamIn != null) //
 			return streamIn.read(cbuf, off, len); //
 		return 0;
 	}
 	
-	/** @see streamIO.integer.IStreamIn_Byte#read(byte[]) */
+	/** Delegates to the wrapped Reader's read(byte[]), or returns 0 when reading in-memory.
+	 * @see streamIO.integer.IStreamIn_Byte#read(byte[]) */
 	public int read(final byte[] b) throws IOException {
 		if (streamIn != null) //
 			return streamIn.read(b); //
 		return 0;
 	}
 	
-	/** @see streamIO.integer.IStreamIn_Byte#read(byte[], int, int) */
+	/** Delegates to the wrapped Reader's read(byte[], int, int), or returns 0 when reading in-memory.
+	 * @see streamIO.integer.IStreamIn_Byte#read(byte[], int, int) */
 	public int read(final byte[] b, final int off, final int len) throws IOException {
 		if (streamIn != null) //
 			return streamIn.read(b, off, len); //
 		return 0;
 	}
 	
-	/** @see streamIO.integer.IStreamIn_Byte#read(int, java.lang.StringBuffer) */
+	/** Delegates to the wrapped Reader's read(int, StringBuffer), or returns null when reading in-memory.
+	 * @see streamIO.integer.IStreamIn_Byte#read(int, java.lang.StringBuffer) */
 	public StringBuffer read(final int _sep, final StringBuffer _b) throws IOException {
 		if (streamIn != null) //
 			return streamIn.read(_sep, _b); //
 		return null;
 	}
 	
-	/** @see streamIO.integer.IStreamIn_Byte#read(int) */
+	/** Delegates to the wrapped Reader's read(int), or returns null when reading in-memory.
+	 * @see streamIO.integer.IStreamIn_Byte#read(int) */
 	public StringBuffer read(final int _sep) throws IOException {
 		if (streamIn != null) //
 			return streamIn.read(_sep); //
 		return null;
 	}
 	
-	/** @see streamIO.integer.IStreamIn_Byte#read(int[]) */
+	/** Delegates to the wrapped Reader's read(int[]), or returns 0 when reading in-memory.
+	 * @see streamIO.integer.IStreamIn_Byte#read(int[]) */
 	public int read(final int[] b) throws IOException {
 		if (streamIn != null) //
 			return streamIn.read(b); //
 		return 0;
 	}
 	
-	/** @see streamIO.integer.IStreamIn_Byte#read(int[], int, int) */
+	/** Delegates to the wrapped Reader's read(int[], int, int), or returns 0 when reading in-memory.
+	 * @see streamIO.integer.IStreamIn_Byte#read(int[], int, int) */
 	public int read(final int[] b, final int off, final int len) throws IOException {
 		if (streamIn != null) //
 			return streamIn.read(b, off, len); //
@@ -725,84 +820,96 @@ implements IStreamOutStruct, IStreamIn_Struct {
 	
 	///////////////////////////////////////////////////////////////////////////
 	
-	/** @see streamIO.IAvailAble#availAble() */
+	/** Delegates to the wrapped Reader's availAble(), or returns 0 when reading in-memory.
+	 * @see streamIO.IAvailAble#availAble() */
 	public long availAble() {
 		if (streamIn != null) //
 			return streamIn.availAble(); //
 		return 0;
 	}
 	
-	/** @see streamIO.IAvailAble#getPosition() */
+	/** Delegates to the wrapped Reader's getPosition(), or returns 0 when reading in-memory.
+	 * @see streamIO.IAvailAble#getPosition() */
 	public long getPosition() {
 		if (streamIn != null) //
 			return streamIn.getPosition(); //
 		return 0;
 	}
 	
-	/** @see streamIO.IMarkAble#getMaxMarkSize() */
+	/** Delegates to the wrapped Reader's getMaxMarkSize(), or returns 0 when reading in-memory.
+	 * @see streamIO.IMarkAble#getMaxMarkSize() */
 	public long getMaxMarkSize() {
 		if (streamIn != null) //
 			return streamIn.getMaxMarkSize(); //
 		return 0;
 	}
 	
-	/** @see streamIO.IMarkAble#mark() */
+	/** Delegates to the wrapped Reader's mark(), or returns null when reading in-memory.
+	 * @see streamIO.IMarkAble#mark() */
 	public IMarkAble mark() {
 		if (streamIn != null) //
 			return streamIn.mark(); //
 		return null;
 	}
 	
-	/** @see streamIO.IMarkAble#mark(long) */
+	/** Delegates to the wrapped Reader's mark(long), or returns null when reading in-memory.
+	 * @see streamIO.IMarkAble#mark(long) */
 	public IMarkAble mark(final long readLimit) {
 		if (streamIn != null) //
 			return streamIn.mark(readLimit); //
 		return null;
 	}
 	
-	/** @see streamIO.IReSetAble#reSet() */
+	/** Delegates to the wrapped Reader's reSet(), or returns null when reading in-memory.
+	 * @see streamIO.IReSetAble#reSet() */
 	public IReSetAble reSet() {
 		if (streamIn != null) //
 			return streamIn.reSet(); //
 		return null;
 	}
 	
-	/** @see streamIO.IReSetAble#reSet(java.lang.String) */
+	/** Delegates to the wrapped Reader's reSet(String), or returns null when reading in-memory.
+	 * @see streamIO.IReSetAble#reSet(java.lang.String) */
 	public IReSetAble reSet(final String failureExceptionMessage) {
 		if (streamIn != null) //
 			return streamIn.reSet(failureExceptionMessage); //
 		return null;
 	}
 	
-	/** @see streamIO.IReSetAble#reSet(long) */
+	/** Delegates to the wrapped Reader's reSet(long), or returns 0 when reading in-memory.
+	 * @see streamIO.IReSetAble#reSet(long) */
 	public long reSet(final long relPosition) {
 		if (streamIn != null) //
 			return streamIn.reSet(relPosition); //
 		return 0;
 	}
 	
-	/** @see streamIO.IReSetAble#jump(long) */
+	/** Delegates to the wrapped Reader's jump(long), or returns 0 when reading in-memory.
+	 * @see streamIO.IReSetAble#jump(long) */
 	public long jump(final long offset) {
 		if (streamIn != null) //
 			return streamIn.jump(offset); //
 		return 0;
 	}
 	
-	/** @see streamIO.IReSetAble#jump() */
+	/** Delegates to the wrapped Reader's jump(), or returns null when reading in-memory.
+	 * @see streamIO.IReSetAble#jump() */
 	public IReSetAble jump() {
 		if (streamIn != null) //
 			return streamIn.jump(); //
 		return null;
 	}
 	
-	/** @see streamIO.integer.IStreamIn_Byte#available() */
+	/** Delegates to the wrapped Reader's available(), or returns 0 when reading in-memory.
+	 * @see streamIO.integer.IStreamIn_Byte#available() */
 	public int available() throws IOException {
 		if (streamIn != null) //
 			return streamIn.available(); //
 		return 0;
 	}
 	
-	/** @see streamIO.integer.IStreamIn_Int#fill(int[], int, int)	 */
+	/** Delegates to the wrapped Reader's fill(int[], int, int), or returns 0 when reading in-memory.
+	 * @see streamIO.integer.IStreamIn_Int#fill(int[], int, int)	 */
 	public int fill(int[] arr, int stop, int start) {
 		if (streamIn != null) //
 			return streamIn.fill(arr, stop, start);
@@ -813,9 +920,10 @@ implements IStreamOutStruct, IStreamIn_Struct {
 	/// Static Testing & Main Methods 
 	///////////////////////////////////////////////////////////////////////////
 	
+	/** Smoke-tests round-tripping a {@link VersionTree} through this in-memory cloning Instantiator. */
 	public static void main(final String[] args) throws Exception {
-		final StreamOutInstantiator instant = new StreamOutInstantiator(); 
-		final VersionTree vs = VersionedObjects.testIt(); 
+		final StreamOutInstantiator instant = new StreamOutInstantiator();
+		final VersionTree vs = VersionedObjects.testIt();
 		final String original = vs.toString(); 
 		vs.writeTo(instant, "root"); 
 		final String copy = instant.currObj.toString(); 

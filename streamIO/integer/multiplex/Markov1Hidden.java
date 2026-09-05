@@ -72,11 +72,17 @@ import streamIO.integer.IStreamOutStruct;
  * Created on	10-26-2002, 12:47 PM<p>
  * @author heuerm
  * @version	1.0
+ * <!-- docstate
+ * tags: [code/multiplexer, code/multiplexing, code/raid_encoding]
+ * concepts: [RAID-Style Stream Multiplexing plus Markov/Viterbi Math]
+ * facets: {layer: domain, status: legacy, complexity: high}
+ * -->
  */
 final public class Markov1Hidden 
 extends Markov1 {
 	
-	public static final int[] EMPTY_LIST = new int[0]; 
+	/** Shared, immutable empty int Array used as the initial (empty) hidden-state Path. */
+	public static final int[] EMPTY_LIST = new int[0];
 	
 	/** initializing Constructor for the given Markov- Model  
 	 * All Matrices and Vectors are expected to be column-Sum-Normed (transposed) to 1. 
@@ -148,14 +154,14 @@ extends Markov1 {
 		return maxPath; 
 	}
 	
-	/**
-	 * @param observations the Sequence of Observations to compare 
-	 * @return a Tripel containing the 
-	 * Probability of the Model 
-	 * Probability of the Sequence given this Model 
-	 * Sequence of hidden Events plus the most probable next Event.  
+	/** Runs the Viterbi Algorithm over the given Observation Sequence to find the most probable hidden Path.
+	 * @param observations the Sequence of Observations to compare
+	 * @return a Tripel containing the
+	 * Probability of the Model
+	 * Probability of the Sequence given this Model
+	 * Sequence of hidden Events plus the most probable next Event.
 	 */
-	final public Viterbi calcPathProbs(final int[] observations) { 
+	final public Viterbi calcPathProbs(final int[] observations) {
 		initCalc(observations.length);
 		
 		for(int j = 0; j < observations.length;) { //consider the observations from y IN SEQUENCE!!!
@@ -241,6 +247,7 @@ extends Markov1 {
 	/** The Logger for this Class	 */
 	private static final Log L = new Log(Viterbi.class); 
 	
+	/** Validates {@link #calcPathProbs} against known-good Path/Probability results for two Test Models. */
 	public static void testIt() {
 		Viterbi totalArgmaxValmax;
 		Markov1Hidden markov;
@@ -260,10 +267,11 @@ extends Markov1 {
 		Assert.EQUALS(PATH, totalArgmaxValmax.path); 
 	}
 	
+	/** Runs {@link #testIt()}. */
 	public static void main(final String[] args) throws Exception {
-		testIt(); 
+		testIt();
 	}
-	
+
 }
 
 /** 
@@ -285,6 +293,11 @@ extends Markov1 {
  * Created on	10-26-2002, 12:47 PM<p>
  * @author heuerm
  * @version	1.0
+ * <!-- docstate
+ * tags: [code/multiplexer, code/multiplexing, code/raid_encoding]
+ * concepts: [RAID-Style Stream Multiplexing plus Markov/Viterbi Math]
+ * facets: {layer: domain, status: legacy, complexity: high}
+ * -->
  */
 final class Viterbi 
 extends AStreamWriteAble {
@@ -292,20 +305,23 @@ extends AStreamWriteAble {
 	/** the most probable Viterbi path up to the current state	 */
 	protected int[] path;  
 	
-	/** @return Returns the path.	 */
+	/** Returns the most probable Path up to the current state.
+	 * @return Returns the path.	 */
 	public int[] getPath() { return path; }
-	
+
 	/** the probability of the most probable Viterbi path up to the current state.	 */
-	protected double probPath; 
-	
-	/** @return Returns the probPath.	 */
+	protected double probPath;
+
+	/** Returns the Probability of the most probable Path up to the current state.
+	 * @return Returns the probPath.	 */
 	public double getProbPath() { return probPath; }
-	
-	/** the Sum of all Probabilities of all paths from the start to the current state, 
+
+	/** the Sum of all Probabilities of all paths from the start to the current state,
 	 * i.e. the Probability of the Sequence given this Model of transition and observation.  	 */
-	protected double probAll; 
-	
-	/** @return Returns the probAll.	 */
+	protected double probAll;
+
+	/** Returns the Probability of the Sequence given this Model.
+	 * @return Returns the probAll.	 */
 	public double getProbAll() { return probAll; }
 	
 	/** Deriving Classes must add their own Attributes and Elements (possibly via Reflection)  

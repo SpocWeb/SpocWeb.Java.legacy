@@ -20,6 +20,11 @@ import tools.IOError;
   * Created on	05-30-2002, 03:58 PM<p>
   * @author 	Matthias Heuer
   * @version	1.0
+  * <!-- docstate
+  * tags: [code/stream_io, code/stream_input, code/stream_output, code/struct]
+  * concepts: [Primitive and Structured Stream I/O Core Abstractions]
+  * facets: {layer: utility, status: legacy, complexity: high}
+  * -->
   */
 public abstract class AStreamByte
 extends AStreamIn_Byte
@@ -391,14 +396,17 @@ implements IStreamByte {
 		AStreamOutByte.WRITE_SAFE(this, b, stop, start); 
 		return this; }
 	
-	/** @see streamIO.integer.IStreamOutByte#addString(java.lang.String)	 */
-	public IStreamOutByte addString(final String b) { return addString(b, b.length()); } 
+	/** Writes the whole String as bytes to this stream.
+	 * @see streamIO.integer.IStreamOutByte#addString(java.lang.String)	 */
+	public IStreamOutByte addString(final String b) { return addString(b, b.length()); }
 
-	/** @see streamIO.integer.IStreamOutByte#addString(java.lang.String, int)	 */
+	/** Writes a leading substring of the String, from index 0 up to {@code stop}, as bytes.
+	 * @see streamIO.integer.IStreamOutByte#addString(java.lang.String, int)	 */
 	public IStreamOutByte addString(final String b, final int stop) {
-		return addString(b, stop, 0); } 
+		return addString(b, stop, 0); }
 
-	/** @see streamIO.integer.IStreamOutByte#addString(java.lang.String, int, int)	 */
+	/** Writes the substring of the String in the range [start, stop) as bytes to this stream.
+	 * @see streamIO.integer.IStreamOutByte#addString(java.lang.String, int, int)	 */
 	public IStreamOutByte addString(final String b, final int stop, final int start) {
 		AStreamOutByte.WRITE_SAFE(this, b, stop, start); 
 		return this; }

@@ -31,6 +31,11 @@ import streamIO.IOrdered;
   * @see IStreamOutByte
   * @see java.io.OutputStream
   * @see java.io.InputStream
+  * <!-- docstate
+  * tags: [code/stream_io, code/stream_input, code/stream_output, code/struct]
+  * concepts: [Primitive and Structured Stream I/O Core Abstractions]
+  * facets: {layer: utility, status: legacy, complexity: high}
+  * -->
   */
 public interface IStreamIn_Byte
 extends IStreamIn_Int, IMarkAble, IOrdered { //InputStream is no Interface
@@ -43,7 +48,7 @@ extends IStreamIn_Int, IMarkAble, IOrdered { //InputStream is no Interface
 	 * '\n' \u000A NEW LINE
 	 * '\f' \u000C FORM FEED
 	 * '\r' \u000D CARRIAGE RETURN
-	 * '  ' \u0020 SPACE
+	 * 'ï¿½ï¿½' \u0020 SPACE
 	 * Unicode space separator (category "Zs"), but is not a no-break space (\u00A0 or \uFEFF).
 	 * Unicode line separator (category "Zl").
 	 * Unicode paragraph separator (category "Zp").
@@ -52,11 +57,11 @@ extends IStreamIn_Int, IMarkAble, IOrdered { //InputStream is no Interface
 	 * \u000B '  ' VERTICAL TABULATION.
 	 * \u000C '\f' FORM FEED.
 	 * \u000D '\r' CARRIAGE RETURN.
-	 * \u001C '  ' FILE SEPARATOR.
-	 * \u001D '  ' GROUP SEPARATOR.
-	 * \u001E '  ' RECORD SEPARATOR.
-	 * \u001F '  ' UNIT SEPARATOR.
-	 * \u0020 '  ' SPACE
+	 * \u001C 'ï¿½ï¿½' FILE SEPARATOR.
+	 * \u001D 'ï¿½ï¿½' GROUP SEPARATOR.
+	 * \u001E 'ï¿½ï¿½' RECORD SEPARATOR.
+	 * \u001F 'ï¿½ï¿½' UNIT SEPARATOR.
+	 * \u0020 'ï¿½ï¿½' SPACE
 	 */
 	final static public String WHITESPACE = "\t\n\f\r ";
 
@@ -72,15 +77,25 @@ extends IStreamIn_Int, IMarkAble, IOrdered { //InputStream is no Interface
 	/** Carriage Return Character for parsing */
 	final static public byte BYTE_CARRIAGE_RETURN = 0xD;
 
+	/** Horizontal Tab Character ('\t'). */
 	final static public char CHR_HORIZONTAL_TABULATOR = BYTE_TAB; //'\t';
+	/** Line Feed Character ('\n'). */
 	final static public char CHR_LINE_FEED = BYTE_LINE_FEED; //'\n';
+	/** Vertical Tabulation Character. */
 	final static public char CHR_VERTICAL_TABULATION = '\u000B';
+	/** Form Feed Character ('\f'). */
 	final static public char CHR_FORM_FEED = '\f';
+	/** Carriage Return Character ('\r'). */
 	final static public char CHR_CARRIAGE_RETURN = BYTE_CARRIAGE_RETURN; //'\r';
+	/** File Separator control Character. */
 	final static public char CHR_FILE_SEPARATOR = '\u001C';
+	/** Group Separator control Character. */
 	final static public char CHR_GROUP_SEPARATOR = '\u001D';
+	/** Record Separator control Character. */
 	final static public char CHR_RECORD_SEPARATOR = '\u001E';
+	/** Unit Separator control Character. */
 	final static public char CHR_UNIT_SEPARATOR = '\u001F';
+	/** Space Character (' '). */
 	final static public char CHR_SPACE = ' ';
 	
 	/** Character used to indicate an Escaping:	 */

@@ -138,7 +138,7 @@ concurrently against the same file):
 | `streamIO/object` (root+backTrack+filterIn+filterInOut+filterOut+integer+yaml+json) | 79 | 13501 | 79 | done | agent-object-misc |
 | `streamIO/object/enumer` | 79 | 18229 | 79 | done | agent-object-enumer |
 | `streamIO/object/parser` | 27 | 6942 | 27 | done | agent-object-parser |
-| `streamIO/integer` (root+adapter+file+multiplex+pipe) | 56 | 15359 | 0 | claimed | agent-integer-core |
+| `streamIO/integer` (root+adapter+file+multiplex+pipe) | 56 | 15359 | 56 | done | agent-integer-core |
 | `streamIO/integer/encoding`+`filter`+`random` | 56 | 10273 | 56 | done | agent-integer-encoding |
 | `streamIO/integer/jdbc` | 31 | 11899 | 0 | claimed | agent-integer-jdbc |
 | `graphic` (root+example+implement+svg) | 50 | 14297 | 50 | done | agent-graphic-misc |
@@ -612,6 +612,20 @@ same harness against it. A test that has not been seen red proves nothing.
 | streamIO/integer/random/BitNoise.java | BitNoise | Map(long) vs Map(int) | 58 | The `long` overload unconditionally decrements `nextBit` by `bitsPerValue` before the loop the `int` overload guards conditionally, giving inconsistent bit-consumption cadence between the two overloads. | Medium | open |
 | streamIO/integer/random/RandomBit2.java | RandomBit2 | getPosition() | 56 | Returns `currItem.Value` (the last single bit produced) instead of `this.value` (the full shift-register state), breaking mark/reSet replay - unlike the sibling `RandomBit`. | High | open |
 | streamIO/integer/random/RandomMix.java | RandomMix | reset(long) | 120 | Unconditionally throws `RuntimeException` instead of setting the internal seed/state, unlike its sibling generators' `reset()`. | Medium | open |
+| streamIO/integer/AStreamOutStruct.java | AStreamOutStruct | open_Struct(String, Object) | 247 | `alreadyWritten.put(newId, obj)` has key/value reversed vs. the `get(obj)` lookup above it; object back-references are never found again, so circular object graphs recurse indefinitely. | High | open |
+| streamIO/integer/StreamIn_Struct.java | StreamIn_Struct | nextString(), nextStrings(int, int), nextItems(int, int) | 265, 776, 833 | Each compares against the `EOI` sentinel, but the delegate returns `null` at EOF, so end-of-input is never detected. | High | open |
+| streamIO/integer/StreamOutInstantiator.java | StreamOutInstantiator | addShorts/addLongs/addFloats/addDoubles/addItems/addStrings(Array, int, int) | 503, 559, 586, 613, 640, 667 | Each sizes/copies off the `ints` field instead of its own array field, corrupting all six accumulator arrays. | Critical | open |
+| streamIO/integer/StreamOutInstantiator.java | StreamOutInstantiator | peekDouble() | 458 | Calls `streamIn.currDouble()` instead of `streamIn.peekDouble()`. | Medium | open |
+| streamIO/integer/StreamIn_Primitive.java | StreamIn_Primitive | nextEnum(String[]) | 154 | `1 << names.length` is an int shift before widening to long; breaks for 32-63 name enums despite the Javadoc's "up to 64" claim. | Medium | open |
+| streamIO/integer/adapter/ArrayStreamIn_Int.java | ArrayStreamIn_Int | nextLongInternal() | 124 | When wrapping a `long[]`, delegates to `nextInt()` -> `nextLong()` -> back into itself: infinite recursion / `StackOverflowError`. | Critical | open |
+| streamIO/integer/adapter/ReaderToStreamIn_Byte.java | ReaderToStreamIn_Byte | read(int[], int, int) | 128 | Narrows Reader output to `(byte)` before storing into an `int[]`, corrupting any code point outside -128..127. | Medium | open |
+| streamIO/integer/adapter/WriterToStreamOutByte.java | WriterToStreamOutByte | write(char[], int, int) | 70 | Ignores `off`/`len`, always writes the whole array. | Medium | open |
+| streamIO/integer/AStreamIn_Char.java, streamIO/integer/StreamOutStructCollection.java | AStreamIn_Char, StreamOutStructCollection | (whole class) | 36, 35 | Both classes are unimplemented IDE stubs (every method returns a hardcoded default) despite non-stub Javadoc describing real behavior; `StreamOutStructCollection`'s constructor also discards its `_stream` parameter (`super(null)`, line 48). | High | open |
+| streamIO/integer/multiplex/DeMultiplexerIn_Raid5.java | DeMultiplexerIn_Raid5 | read() | 160 | Error message logs `currItem ^ nextItem` (stale) instead of `thisItem ^ nextItem` (the value actually checked). | Low | open |
+| streamIO/integer/pipe/APipeByte.java | APipeByte | main() | 177 | Calls `testIt(args)` but only a no-arg `testIt()` exists; does not compile as written. | High | open |
+| streamIO/integer/pipe/MemoryPipe.java | MemoryPipe | (constructor) | 83 | `markQP = SP` (copy-paste; should be `= QP`); currently benign since both start at 0. | Low | open |
+| streamIO/integer/file/FilterCrLfFromQuoted.java | FilterCrLfFromQuoted | main() | 34 | `FI`/`FO` are never closed in a `finally`, and `FI` is never closed at all. | Low | open |
+| streamIO/integer/file/FileStreamIn_Byte.java | FileStreamIn_Byte | read(byte[], int, int)-family default | 500 | `(char) (val = read())` narrows the int result of `read()` to `char` before storing into an `int[]` buffer; a normal byte round-trips fine, but the EOF sentinel `-1` becomes `0xFFFF` (65535) once written, silently corrupting the last buffer slot on EOF instead of leaving it untouched. | Medium | open |
 
 ## Tool defects found and fixed during the pilot
 

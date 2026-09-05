@@ -44,13 +44,19 @@ import streamIO.integer.IStreamOutByte;
  *
  * @author  Matthias Heuer
  * @version
+ * <!-- docstate
+ * tags: [code/multiplexer, code/multiplexing, code/raid_encoding]
+ * concepts: [RAID-Style Stream Multiplexing plus Markov/Viterbi Math]
+ * facets: {layer: domain, status: legacy, complexity: high}
+ * -->
  */
 public class MultiplexerOutRaid0 
 extends AStreamOutByte {
 
+	/** Runs {@link DeMultiplexerIn_Raid0#testIt()} when invoked with no arguments. */
 	public static void main(final String[] args) throws IOException {
 		if (args.length == 0)
-			DeMultiplexerIn_Raid0.testIt(); 
+			DeMultiplexerIn_Raid0.testIt();
 	}
 	
 	////////////////////////////////////////////////////////////////////////////
@@ -76,14 +82,16 @@ extends AStreamOutByte {
 	//  Methods
 	////////////////////////////////////////////////////////////////////////////
 
-	/** @see streamIO.integer.IStreamOutByte#write(int)	 */
+	/** Writes the byte to the next Output Stream in Round-Robin order.
+	 * @see streamIO.integer.IStreamOutByte#write(int)	 */
 	public void write(final int b) throws IOException {
 		if(++currStreamOut >= forwards.length) {
 			 currStreamOut  = 0; }//Modulus Increment
 		forwards[currStreamOut].write(b); 
 	}
 
-	/** @see streamIO.integer.IStreamOutByte#flush()	 */
+	/** Flushes every Output Stream, collecting (not stopping on) any Exceptions.
+	 * @see streamIO.integer.IStreamOutByte#flush()	 */
 	public void flush() throws IOException {
 		String innerExceptions = ""; 
 		for(int i = forwards.length; --i >= 0;) 
@@ -96,7 +104,8 @@ extends AStreamOutByte {
 			throw new IOException(innerExceptions);
 	}
 
-	/** @see streamIO.integer.IStreamOutByte#close()	 */
+	/** Closes every Output Stream, collecting (not stopping on) any Exceptions.
+	 * @see streamIO.integer.IStreamOutByte#close()	 */
 	public void close() throws IOException {
 		String innerExceptions = ""; 
 		for(int i = forwards.length; --i >= 0;) 

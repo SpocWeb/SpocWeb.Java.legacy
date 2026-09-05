@@ -25,14 +25,18 @@ import streamIO.object.IStreamIn;
   * and can work much more effectively from the Batch Extreme
   * to the continuous Realtime Extreme.
   * 
+  * <!-- docstate
+  * tags: [code/pipe_abstraction, code/pipe_implementation]
+  * concepts: [In-Memory Producer-Consumer Byte Pipes]
+  * facets: {layer: utility, status: legacy, complexity: high}
+  * -->
   */
 public class MonitorByte
 extends AStreamByte
 {   
 	//Streams are not Interfaces, but abstract Classes!!
 
-	/**
-	 * 
+	/** Runs {@link #testIt()} when invoked with no arguments.
 	 * @param args
 	 */
 	public static void main(final String[] args) throws IOException {
@@ -109,16 +113,13 @@ extends AStreamByte
 	/// #region : Constructors
 	////////////////////////////////////////////////////////////////////////////
 	
-	/**
-	 * @param timeoutMillisWrite
-	 * @param timeoutMillisRead
-	 */
+	/** Constructs a MonitorByte using the default read/write timeouts. */
 	public MonitorByte() {
 	}
-	
-	/**
-	 * @param timeoutMillisWrite
-	 * @param timeoutMillisRead
+
+	/** Constructs a MonitorByte with explicit read/write timeouts.
+	 * @param _timeoutMillisWrite
+	 * @param _timeoutMillisRead
 	 */
 	public MonitorByte(long _timeoutMillisWrite, long _timeoutMillisRead) {
 		this.timeoutMillisWrite = _timeoutMillisWrite;
@@ -132,7 +133,8 @@ extends AStreamByte
 	/** holds the Order of the Data in the streamIO   */
 	protected byte Order = IStreamIn.ORDER_NONE;
 	
-	/** @return the Order of the Data in the streamIO, called by the Client  */
+	/** Returns the Order of the Data in the streamIO.
+	 * @return the Order of the Data in the streamIO, called by the Client  */
 	public byte getOrder() { return Order; }
 	
 	/** Sets the Order of the Data in the streamIO, called by the Server  */
@@ -364,7 +366,8 @@ extends AStreamByte
 	  */
 	public long getMaxMarkSize() { return 1; } //Long.MAX_VALUE; } 
 	
-	/** @see streamIO.object.AStreamIn#getPosition()	 */
+	/** Returns 0 while marked, 1 once a Value has been written past the mark.
+	 * @see streamIO.object.AStreamIn#getPosition()	 */
 	public long getPosition() { return marked ? 0 : 1; } //stream.getPosition(); }
 	
 }

@@ -28,25 +28,34 @@ import streamIO.real.AAStreamIn_Float;
  * @author mheuer
  * @version	1.0
  *
+ * <!-- docstate
+ * tags: [code/stream_io, code/stream_input, code/stream_output, code/struct]
+ * concepts: [Primitive and Structured Stream I/O Core Abstractions]
+ * facets: {layer: utility, status: legacy, complexity: high}
+ * -->
  */
 public abstract class AAStreamIn_Int 
 extends AAStreamIn_Float
 implements IStreamIn_Int {
 	
-	/** @see streamIO.integer.IStreamIn_Int#nextLong()	 */
+	/** Reads and returns the next {@code long} value from this stream.
+	 * @see streamIO.integer.IStreamIn_Int#nextLong()	 */
 	public abstract long nextLong();
-	
-	/** @see streamIO.integer.IStreamIn_Int#nextInt()	 */
-	public abstract int nextInt(); 
-	
-	/** @see streamIO.integer.IStreamIn_Int#getOrder()	 */
-	public abstract byte getOrder(); 
+
+	/** Reads and returns the next {@code int} value from this stream.
+	 * @see streamIO.integer.IStreamIn_Int#nextInt()	 */
+	public abstract int nextInt();
+
+	/** Returns the byte order this stream reads values in.
+	 * @see streamIO.integer.IStreamIn_Int#getOrder()	 */
+	public abstract byte getOrder();
 	
 	/////////////////////////////////////////////////////////////////////////////////////
 	// Implementations
 	/////////////////////////////////////////////////////////////////////////////////////
 	
-	/** @return the next Value without moving to it.	 */
+	/** Reads the next {@code long} value without advancing the stream position.
+	 * @return the next Value without moving to it.	 */
 	public long peekLong() { //throws    NoSuchMethodException {
 		//throw new NoSuchMethodException("No generic Implementation!");
 		final long ret = nextLong(); 
@@ -54,7 +63,8 @@ implements IStreamIn_Int {
 		return ret; 
 	}
 	
-	/** @return the next Value without moving to it.	 */
+	/** Reads the next {@code int} value without advancing the stream position.
+	 * @return the next Value without moving to it.	 */
 	public int peekInt() { //throws    NoSuchMethodException {
 		//throw new NoSuchMethodException("No generic Implementation!");
 		final int ret = nextInt(); 

@@ -40,6 +40,11 @@ import streamIO.integer.IStreamOutByte;
   * @see java.io.DataInput
   * @see java.io.DataOutput
   *
+  * <!-- docstate
+  * tags: [code/file_io, code/stream_io]
+  * concepts: [File-Backed StreamIO Implementations]
+  * facets: {layer: utility, status: legacy, complexity: high}
+  * -->
   */
 public class FileStreamOutByte
 extends FileOutputStream
@@ -268,14 +273,17 @@ implements IStreamOutByte {
 		AStreamOutByte.WRITE_SAFE(this, b, stop, start); 
 		return this; }
 	
-	/** @see streamIO.integer.IStreamOutByte#addString(java.lang.String)	 */
-	public IStreamOutByte addString(final String b) { return addString(b, b.length()); } 
+	/** Writes the whole String as bytes to this File.
+	 * @see streamIO.integer.IStreamOutByte#addString(java.lang.String)	 */
+	public IStreamOutByte addString(final String b) { return addString(b, b.length()); }
 
-	/** @see streamIO.integer.IStreamOutByte#addString(java.lang.String, int)	 */
+	/** Writes the leading substring [0, stop) as bytes to this File.
+	 * @see streamIO.integer.IStreamOutByte#addString(java.lang.String, int)	 */
 	public IStreamOutByte addString(final String b, final int stop) {
-		return addString(b, stop, 0); } 
+		return addString(b, stop, 0); }
 
-	/** @see streamIO.integer.IStreamOutByte#addString(java.lang.String, int, int)	 */
+	/** Writes the substring [start, stop) as bytes to this File.
+	 * @see streamIO.integer.IStreamOutByte#addString(java.lang.String, int, int)	 */
 	public IStreamOutByte addString(final String b, final int stop, final int start) {
 		AStreamOutByte.WRITE_SAFE(this, b, stop, start); 
 		return this; }

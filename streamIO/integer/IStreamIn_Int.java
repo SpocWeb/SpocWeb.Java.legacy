@@ -15,6 +15,11 @@ import stringOp.parser.IIStreamIn_Int;
   * 
   * known Subclasses: 
   * @see IStreamIn_Byte which extends this Interface for Parsing 
+  * <!-- docstate
+  * tags: [code/stream_io, code/stream_input, code/stream_output, code/struct]
+  * concepts: [Primitive and Structured Stream I/O Core Abstractions]
+  * facets: {layer: utility, status: legacy, complexity: high}
+  * -->
   */
 public interface IStreamIn_Int 
 extends IIStreamIn_Int, IStreamIn_Float 
@@ -30,20 +35,25 @@ extends IIStreamIn_Int, IStreamIn_Float
 	 */
 	public int fill(final int[] arr, final int stop, final int start); 
 	
-	/** @return the next Long Number (converts IOException into a RuntimeException) 	 */
+	/** Reads and returns the next {@code long} value.
+	 * @return the next Long Number (converts IOException into a RuntimeException) 	 */
 	public long nextLong();
-	
-	/** @return the current Long Number 	 */
-	public long currLong(); 
-	
-	/** @return the current Integer Number 	 */
-	public int currInt(); 
-	
-	/** @return the next Value without moving to it.	 */
-	public long peekLong(); //throws    NoSuchMethodException; 
-	
-	/** @return the next Value without moving to it.	 */
-	public int peekInt(); //throws    NoSuchMethodException; 
+
+	/** Returns the current {@code long} value, without advancing.
+	 * @return the current Long Number 	 */
+	public long currLong();
+
+	/** Returns the current {@code int} value, without advancing.
+	 * @return the current Integer Number 	 */
+	public int currInt();
+
+	/** Reads the next {@code long} value without advancing the stream position.
+	 * @return the next Value without moving to it.	 */
+	public long peekLong(); //throws    NoSuchMethodException;
+
+	/** Reads the next {@code int} value without advancing the stream position.
+	 * @return the next Value without moving to it.	 */
+	public int peekInt(); //throws    NoSuchMethodException;
 	
 	/** This is a type-safe Substitute for clone()
 	 * returns a new Iterator for the same Base Set

@@ -28,6 +28,11 @@ import java.io.IOException;
  * Created on	10-26-2002, 12:47 PM<p>
  * @author heuerm
  * @version	1.0
+ * <!-- docstate
+ * tags: [code/stream_io, code/stream_input, code/stream_output, code/struct]
+ * concepts: [Primitive and Structured Stream I/O Core Abstractions]
+ * facets: {layer: utility, status: legacy, complexity: high}
+ * -->
  */
 abstract public class AStreamOutChar 
 extends AStreamOutByte 
@@ -37,21 +42,25 @@ implements IStreamOutChar {
 	/// Interface IStreamOutChar
 	////////////////////////////////////////////////////////////////////////////////
 		
-	/** @see streamIO.integer.IStreamOutChar#addChar(char)	 */
-	abstract public IStreamOutChar addChar(final char chr); 
-	
+	/** Writes a single Character to this stream.
+	 * @see streamIO.integer.IStreamOutChar#addChar(char)	 */
+	abstract public IStreamOutChar addChar(final char chr);
+
 	////////////////////////////////////////////////////////////////////////////////
 	/// Interface IStreamOutByte
 	////////////////////////////////////////////////////////////////////////////////
-	
-	/** @see streamIO.integer.IStreamOutByte#write(int)	 */
-	abstract public void write(final int b) throws IOException; 
-	
-	/** @see streamIO.IStreamOut#flush()	 */
-	abstract public void flush() throws IOException; 
-	
-	/** @see streamIO.integer.IStreamOutByte#close()	 */
-	abstract public void close() throws IOException; 
+
+	/** Writes a single byte to this stream.
+	 * @see streamIO.integer.IStreamOutByte#write(int)	 */
+	abstract public void write(final int b) throws IOException;
+
+	/** Flushes any buffered output to the underlying destination.
+	 * @see streamIO.IStreamOut#flush()	 */
+	abstract public void flush() throws IOException;
+
+	/** Closes this stream, releasing any underlying resources.
+	 * @see streamIO.integer.IStreamOutByte#close()	 */
+	abstract public void close() throws IOException;
 	
 	////////////////////////////////////////////////////////////////////////////////
 	//  Interface IStreamOutChar: Methods handling Characters and Strings
@@ -200,35 +209,42 @@ implements IStreamOutChar {
 	public void write(final String b, final int off, final int len) throws IOException {
 		WRITE(this, b, off, len); }
 
-	/** @see streamIO.integer.IStreamOutChar#addBuffer(java.lang.StringBuffer, int, int) 	 */
+	/** Writes the StringBuffer range [start, stop) as Characters to this stream.
+	 * @see streamIO.integer.IStreamOutChar#addBuffer(java.lang.StringBuffer, int, int) 	 */
 	public IStreamOutChar addBuffer(final StringBuffer b, final int stop, final int start) {
-		WRITE_SAFE(this, b, stop, start); 
+		WRITE_SAFE(this, b, stop, start);
 		return this; }
-	
-	/** @see streamIO.integer.IStreamOutChar#addBuffer(java.lang.StringBuffer, int) 	 */
+
+	/** Writes the leading StringBuffer range [0, stop) as Characters to this stream.
+	 * @see streamIO.integer.IStreamOutChar#addBuffer(java.lang.StringBuffer, int) 	 */
 	public IStreamOutChar addBuffer(final StringBuffer b, final int stop) {
 		return addBuffer(b, stop, 0); }
 
-	/** @see streamIO.integer.IStreamOutChar#addBuffer(java.lang.StringBuffer) 	 */
+	/** Writes the whole StringBuffer as Characters to this stream.
+	 * @see streamIO.integer.IStreamOutChar#addBuffer(java.lang.StringBuffer) 	 */
 	public IStreamOutChar addBuffer(final StringBuffer b) {
 		return addBuffer(b, b.length()); }
-	
-	/** @see streamIO.integer.IStreamOutChar#addString(java.lang.String) 	 */
-	public IStreamOutChar addString(final String b) { return addString(b, b.length()); } 
 
-	/** @see streamIO.integer.IStreamOutChar#addString(java.lang.String, int) 	 */
+	/** Writes the whole String as Characters to this stream.
+	 * @see streamIO.integer.IStreamOutChar#addString(java.lang.String) 	 */
+	public IStreamOutChar addString(final String b) { return addString(b, b.length()); }
+
+	/** Writes the leading substring [0, stop) of the String as Characters to this stream.
+	 * @see streamIO.integer.IStreamOutChar#addString(java.lang.String, int) 	 */
 	public IStreamOutChar addString(final String b, final int stop) {
-		return addString(b, stop, 0); } 
+		return addString(b, stop, 0); }
 
-	/** @see streamIO.integer.IStreamOutChar#addString(java.lang.String, int, int) 	 */
+	/** Writes the substring [start, stop) of the String as Characters to this stream.
+	 * @see streamIO.integer.IStreamOutChar#addString(java.lang.String, int, int) 	 */
 	public IStreamOutChar addString(final String b, final int stop, final int start) {
-		AStreamOutByte.WRITE_SAFE(this, b, stop, start); 
+		AStreamOutByte.WRITE_SAFE(this, b, stop, start);
 		return this; }
-	
+
 	////////////////////////////////////////////////////////////////////////////////
 	/// Static Testing & Main Methods
 	////////////////////////////////////////////////////////////////////////////////
-		
+
+	/** Empty smoke-test entry point; performs no action. */
 	public static void main(final String[] args) throws Exception {
 	}
 }

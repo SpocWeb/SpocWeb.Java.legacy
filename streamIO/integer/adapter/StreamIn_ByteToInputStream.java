@@ -35,6 +35,11 @@ import streamIO.integer.IStreamIn_Byte;
  * @author mheuer
  * @version	1.0
  *
+ * <!-- docstate
+ * tags: [code/stream_adapter, code/stream_bridging, code/stream_wrapper]
+ * concepts: [Bridges streamIO Interfaces to java.io and Arrays]
+ * facets: {layer: utility, status: legacy, complexity: high}
+ * -->
  */
 public class StreamIn_ByteToInputStream 
 extends InputStream {
@@ -135,24 +140,29 @@ extends InputStream {
 	  */
 	public long maxReadLimit() { return stream.getMaxMarkSize(); }
 
-	/** @see streamIO.Byte.IStreamIn_Byte#mark(int)	 */
+	/** Delegates to the wrapped Stream's mark(long).
+	 * @see streamIO.Byte.IStreamIn_Byte#mark(int)	 */
 	public void mark(int readLimit) { stream.mark(readLimit); }
-	
-	/** @see streamIO.Float.IStreamIn_Int#getOrder()	 */
+
+	/** Not tracked by this adapter; always returns 0.
+	 * @see streamIO.Float.IStreamIn_Int#getOrder()	 */
 	public byte getOrder() { return 0; }
 
 	/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 	/// Optimizations 
 	/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-	/** @see streamIO.Byte.IStreamIn_Byte#read(byte[], int, int)	 */
+	/** Delegates to the wrapped Stream's read(byte[], int, int).
+	 * @see streamIO.Byte.IStreamIn_Byte#read(byte[], int, int)	 */
 	public int read(byte[] b, int off, int len) throws IOException {
 		return stream.read(b, off, len); }
 
-	/** @see streamIO.Byte.IStreamIn_Byte#read(byte[])	 */
+	/** Delegates to the wrapped Stream's read(byte[]).
+	 * @see streamIO.Byte.IStreamIn_Byte#read(byte[])	 */
 	public int read(byte[] b) throws IOException { return stream.read(b); }
 
-	/** @see streamIO.Byte.IStreamIn_Byte#jump(long)	 */
+	/** Delegates to the wrapped Stream's jump(long).
+	 * @see streamIO.Byte.IStreamIn_Byte#jump(long)	 */
 	public long skip(long n) throws IOException { return stream.jump(n); }
 
 }

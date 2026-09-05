@@ -31,6 +31,11 @@ import function.byref.ByRefLong;
  * Created on	10-26-2002, 12:47 PM<p>
  * @author heuerm
  * @version	1.0
+ * <!-- docstate
+ * tags: [code/stream_io, code/stream_input, code/stream_output, code/struct]
+ * concepts: [Primitive and Structured Stream I/O Core Abstractions]
+ * facets: {layer: utility, status: legacy, complexity: high}
+ * -->
  */
 public class LocalePrimitive {
 	
@@ -106,7 +111,8 @@ public class LocalePrimitive {
 	
 	///////////////////////////////////////////////////////////////////////////
 	
-	/** @see streamIO.integer.IStreamOutInt#addLong(long)	 */
+	/** Writes the long value in the given numeric format, swallowing any IOException as an unchecked IOError.
+	 * @see streamIO.integer.IStreamOutInt#addLong(long)	 */
 	final static public void ADD_LONG_SAFE(final IStreamOutByte stream
 			, final long b, final char base
 			, final char minLen) {
@@ -116,7 +122,8 @@ public class LocalePrimitive {
 		}
 	}
 	
-	/** @see streamIO.integer.IStreamOutInt#addLong(long)	 */
+	/** Writes the long value in the given numeric format, swallowing any IOException as an unchecked IOError.
+	 * @see streamIO.integer.IStreamOutInt#addLong(long)	 */
 	final static public void ADD_LONG_SAFE(final IStreamOutByte stream
 			, final long b, final char base
 			, final int dotPos, final char chrDot
@@ -130,17 +137,20 @@ public class LocalePrimitive {
 		}
 	}
 	
-	/** @see streamIO.integer.IStreamOutInt#addLong(long)	 */
+	/** Writes the double value in scientific (exponential) notation using the given numeric format.
+	 * @see streamIO.integer.IStreamOutInt#addLong(long)	 */
 	final static public void ADD_DOUBLE_SCIENTIFIC(final IStreamOutByte stream, double value
 	) throws IOException {
 		ADD_DOUBLE_SCIENTIFIC(stream, value, DEFAULT_CHR_DOT); }
 	
-	/** @see streamIO.integer.IStreamOutInt#addLong(long)	 */
+	/** Writes the double value in scientific (exponential) notation using the given numeric format.
+	 * @see streamIO.integer.IStreamOutInt#addLong(long)	 */
 	final static public void ADD_DOUBLE_SCIENTIFIC(final IStreamOutByte stream, double value
 			, final byte precision) throws IOException {
 		ADD_DOUBLE_SCIENTIFIC(stream, value, DEFAULT_PRECISION); }
 	
-	/** @see streamIO.integer.IStreamOutInt#addLong(long)	 */
+	/** Writes the double value in scientific (exponential) notation using the given numeric format.
+	 * @see streamIO.integer.IStreamOutInt#addLong(long)	 */
 	final static public void ADD_DOUBLE_SCIENTIFIC(final IStreamOutByte stream, double value
 			, final byte precision, final char chrDot //negative Precision rounds to integer Numbers, also determines the Dot Position!
 			, final char minLen
@@ -148,7 +158,8 @@ public class LocalePrimitive {
 		ADD_DOUBLE_SCIENTIFIC(stream, value, precision, chrDot 
 				, minLen, DEFAULT_CHR_PAD); }
 	
-	/** @see streamIO.integer.IStreamOutInt#addLong(long)	 */
+	/** Writes the double value in scientific (exponential) notation using the given numeric format.
+	 * @see streamIO.integer.IStreamOutInt#addLong(long)	 */
 	final static public void ADD_DOUBLE_SCIENTIFIC(final IStreamOutByte stream, double value
 			, final byte precision, final char chrDot //negative Precision rounds to integer Numbers, also determines the Dot Position!
 			, final char minLen, final char chrPad
@@ -156,7 +167,8 @@ public class LocalePrimitive {
 		ADD_DOUBLE_SCIENTIFIC(stream, value, precision, chrDot 
 				, minLen, chrPad, DEFAULT_BASE); }
 	
-	/** @see streamIO.integer.IStreamOutInt#addLong(long)	 */
+	/** Writes the double value in scientific (exponential) notation using the given numeric format.
+	 * @see streamIO.integer.IStreamOutInt#addLong(long)	 */
 	final static public void ADD_DOUBLE_SCIENTIFIC(final IStreamOutByte stream, double value
 			, final byte precision, final char chrDot //negative Precision rounds to integer Numbers, also determines the Dot Position!
 			, final char minLen, final char chrPad
@@ -165,7 +177,8 @@ public class LocalePrimitive {
 		ADD_DOUBLE_SCIENTIFIC(stream, value, precision, chrDot 
 				, minLen, chrPad, base, DEFAULT_CHR_MINUS); }
 	
-	/** @see streamIO.integer.IStreamOutInt#addLong(long)	 */
+	/** Writes the double value in scientific (exponential) notation using the given numeric format.
+	 * @see streamIO.integer.IStreamOutInt#addLong(long)	 */
 	final static public void ADD_DOUBLE_SCIENTIFIC(final IStreamOutByte stream, double value
 			, final byte precision, final char chrDot //negative Precision rounds to integer Numbers, also determines the Dot Position!
 			, final char minLen, final char chrPad
@@ -175,7 +188,8 @@ public class LocalePrimitive {
 		ADD_DOUBLE_SCIENTIFIC(stream, value, precision, chrDot 
 				, minLen, chrPad, base, chrMinus, DEFAULT_CHR_PLUS); }
 	
-	/** @see streamIO.integer.IStreamOutInt#addLong(long)	 */
+	/** Writes the double value in scientific (exponential) notation using the given numeric format.
+	 * @see streamIO.integer.IStreamOutInt#addLong(long)	 */
 	final static public void ADD_DOUBLE_SCIENTIFIC(final IStreamOutByte stream, double value
 			, final byte precision, final char chrDot //negative Precision rounds to integer Numbers, also determines the Dot Position!
 			, final char minLen, final char chrPad
@@ -185,7 +199,8 @@ public class LocalePrimitive {
 		ADD_DOUBLE_SCIENTIFIC(stream, value, precision, chrDot 
 				, minLen, chrPad, base, chrMinus, chrPlus, DEFAULT_CHR_EXP); }
 	
-	/** @see streamIO.integer.IStreamOutInt#addLong(long)	 */
+	/** Writes the double value in scientific (exponential) notation using the given numeric format.
+	 * @see streamIO.integer.IStreamOutInt#addLong(long)	 */
 	final static public void ADD_DOUBLE_SCIENTIFIC(final IStreamOutByte stream, double value
 			, final byte precision, final char chrDot //negative Precision rounds to integer Numbers, also determines the Dot Position!
 			, final char minLen, final char chrPad
@@ -196,7 +211,8 @@ public class LocalePrimitive {
 		ADD_DOUBLE_SCIENTIFIC(stream, value, precision, chrDot 
 				, minLen, chrPad, base, chrMinus, chrPlus, chrExp, DEFAULT_CHR_GROUP); }
 	
-	/** @see streamIO.integer.IStreamOutInt#addLong(long)	 */
+	/** Writes the double value in scientific (exponential) notation using the given numeric format.
+	 * @see streamIO.integer.IStreamOutInt#addLong(long)	 */
 	final static public void ADD_DOUBLE_SCIENTIFIC(final IStreamOutByte stream, double value
 			, final byte precision, final char chrDot //negative Precision rounds to integer Numbers, also determines the Dot Position!
 			, final char minLen, final char chrPad
@@ -207,7 +223,8 @@ public class LocalePrimitive {
 		ADD_DOUBLE_SCIENTIFIC(stream, value, precision, chrDot 
 				, minLen, chrPad, base, chrMinus, chrPlus, chrExp, chrGroup, Math.log(base)); }
 	
-	/** @see streamIO.integer.IStreamOutInt#addLong(long)	 */
+	/** Writes the double value in scientific (exponential) notation using the given numeric format.
+	 * @see streamIO.integer.IStreamOutInt#addLong(long)	 */
 	final static public void ADD_DOUBLE_SCIENTIFIC(final IStreamOutByte stream, double value
 			, final byte precision, final char chrDot //negative Precision rounds to integer Numbers, also determines the Dot Position!
 			, final char minLen, final char chrPad
@@ -220,7 +237,8 @@ public class LocalePrimitive {
 				, minLen, chrPad, base, chrMinus, chrPlus, chrExp, chrGroup, lnBase, null); }
 	
 	
-	/** @see streamIO.integer.IStreamOutInt#addLong(long)	 */
+	/** Writes the double value in scientific (exponential) notation using the given numeric format.
+	 * @see streamIO.integer.IStreamOutInt#addLong(long)	 */
 	final static public void ADD_DOUBLE_SCIENTIFIC(final IStreamOutByte stream, final double x
 			, final char base) throws IOException {
 		final double lnBase = Math.log(base); 
@@ -230,7 +248,8 @@ public class LocalePrimitive {
 				, DEFAULT_CHR_EXP, DEFAULT_CHR_GROUP, lnBase, null);
 	}
 	
-	/** @see streamIO.integer.IStreamOutInt#addLong(long)	 */
+	/** Writes the double value in scientific (exponential) notation using the given numeric format.
+	 * @see streamIO.integer.IStreamOutInt#addLong(long)	 */
 	final static public void ADD_DOUBLE_SCIENTIFIC(final IStreamOutByte stream, double value
 			, final byte precision, final char chrDot //negative Precision rounds to integer Numbers, also determines the Dot Position!
 			, final char minLen, final char chrPad
@@ -258,7 +277,8 @@ public class LocalePrimitive {
 		ADD_LONG(stream, exp, base, -1, chrDot, (char) 1, chrPad, chrMinus, chrPlus, chrGroup, buf);  
 	}
 	
-	/** @see streamIO.integer.IStreamOutInt#addLong(long)	 */
+	/** Writes the double value in the given numeric format, swallowing any IOException as an unchecked IOError.
+	 * @see streamIO.integer.IStreamOutInt#addLong(long)	 */
 	final static public void ADD_DOUBLE_SAFE(final IStreamOutByte stream, final double value) {
 		try { ADD_DOUBLE(stream, value, DEFAULT_PRECISION, DEFAULT_CHR_DOT
 				, DEFAULT_MIN_LENGTH, DEFAULT_CHR_PAD, DEFAULT_BASE, DEFAULT_CHR_MINUS
@@ -268,27 +288,31 @@ public class LocalePrimitive {
 		}
 	}
 	
-	/** @see streamIO.integer.IStreamOutInt#addLong(long)	 */
+	/** Writes the double value in the given numeric format, falling back to scientific notation on overflow/underflow.
+	 * @see streamIO.integer.IStreamOutInt#addLong(long)	 */
 	final static public void ADD_DOUBLE(final IStreamOutByte stream, final double value) throws IOException {
 		ADD_DOUBLE(stream, value, DEFAULT_PRECISION, DEFAULT_CHR_DOT, DEFAULT_MIN_LENGTH
 				, DEFAULT_CHR_PAD, DEFAULT_BASE, DEFAULT_CHR_MINUS, DEFAULT_CHR_PLUS
 				, DEFAULT_CHR_EXP, DEFAULT_CHR_GROUP, false, DEFAULT_PRECISION_FACTOR); }
 	
-	/** @see streamIO.integer.IStreamOutInt#addLong(long)	 */
+	/** Writes the double value in the given numeric format, falling back to scientific notation on overflow/underflow.
+	 * @see streamIO.integer.IStreamOutInt#addLong(long)	 */
 	final static public void ADD_DOUBLE(final IStreamOutByte stream
 			, final double value
 			, final byte precision //negative Precision rounds to integer Numbers, also determines the Dot Position!
 			) throws IOException {
 		ADD_DOUBLE(stream, value, precision, DEFAULT_CHR_DOT); }
 	
-	/** @see streamIO.integer.IStreamOutInt#addLong(long)	 */
+	/** Writes the double value in the given numeric format, falling back to scientific notation on overflow/underflow.
+	 * @see streamIO.integer.IStreamOutInt#addLong(long)	 */
 	final static public void ADD_DOUBLE(final IStreamOutByte stream
 			, final double value
 			, final byte precision, final char chrDot //negative Precision rounds to integer Numbers, also determines the Dot Position!
 			) throws IOException {
 		ADD_DOUBLE(stream, value, precision, chrDot, (char)1); }
 	
-	/** @see streamIO.integer.IStreamOutInt#addLong(long)	 */
+	/** Writes the double value in the given numeric format, falling back to scientific notation on overflow/underflow.
+	 * @see streamIO.integer.IStreamOutInt#addLong(long)	 */
 	final static public void ADD_DOUBLE(final IStreamOutByte stream
 			, final double value
 			, final byte precision, final char chrDot //negative Precision rounds to integer Numbers, also determines the Dot Position!
@@ -296,7 +320,8 @@ public class LocalePrimitive {
 			) throws IOException {
 		ADD_DOUBLE(stream, value, precision, chrDot, minLen, DEFAULT_CHR_PAD); }
 	
-	/** @see streamIO.integer.IStreamOutInt#addLong(long)	 */
+	/** Writes the double value in the given numeric format, falling back to scientific notation on overflow/underflow.
+	 * @see streamIO.integer.IStreamOutInt#addLong(long)	 */
 	final static public void ADD_DOUBLE(final IStreamOutByte stream
 			, final double value
 			, final byte precision, final char chrDot //negative Precision rounds to integer Numbers, also determines the Dot Position!
@@ -304,7 +329,8 @@ public class LocalePrimitive {
 		ADD_DOUBLE(stream, value, precision, chrDot, minLen, chrPad, DEFAULT_BASE);
 	}
 	
-	/** @see streamIO.integer.IStreamOutInt#addLong(long)	 */
+	/** Writes the double value in the given numeric format, falling back to scientific notation on overflow/underflow.
+	 * @see streamIO.integer.IStreamOutInt#addLong(long)	 */
 	final static public void ADD_DOUBLE(final IStreamOutByte stream
 			, final double value
 			, final byte precision, final char chrDot //negative Precision rounds to integer Numbers, also determines the Dot Position!
@@ -315,7 +341,8 @@ public class LocalePrimitive {
 				, DEFAULT_CHR_MINUS);
 	}
 	
-	/** @see streamIO.integer.IStreamOutInt#addLong(long)	 */
+	/** Writes the double value in the given numeric format, falling back to scientific notation on overflow/underflow.
+	 * @see streamIO.integer.IStreamOutInt#addLong(long)	 */
 	final static public void ADD_DOUBLE(final IStreamOutByte stream
 			, final double value
 			, final byte precision, final char chrDot //negative Precision rounds to integer Numbers, also determines the Dot Position!
@@ -327,7 +354,8 @@ public class LocalePrimitive {
 				, chrMinus, DEFAULT_CHR_PLUS);
 	}
 	
-	/** @see streamIO.integer.IStreamOutInt#addLong(long)	 */
+	/** Writes the double value in the given numeric format, falling back to scientific notation on overflow/underflow.
+	 * @see streamIO.integer.IStreamOutInt#addLong(long)	 */
 	final static public void ADD_DOUBLE(final IStreamOutByte stream
 			, final double value
 			, final byte precision, final char chrDot //negative Precision rounds to integer Numbers, also determines the Dot Position!
@@ -339,7 +367,8 @@ public class LocalePrimitive {
 				, chrMinus, chrPlus, DEFAULT_CHR_EXP);
 	}
 	
-	/** @see streamIO.integer.IStreamOutInt#addLong(long)	 */
+	/** Writes the double value in the given numeric format, falling back to scientific notation on overflow/underflow.
+	 * @see streamIO.integer.IStreamOutInt#addLong(long)	 */
 	final static public void ADD_DOUBLE(final IStreamOutByte stream
 			, final double value
 			, final byte precision, final char chrDot //negative Precision rounds to integer Numbers, also determines the Dot Position!
@@ -352,7 +381,8 @@ public class LocalePrimitive {
 				, chrMinus, chrPlus, chrExp, DEFAULT_CHR_GROUP);
 	}
 	
-	/** @see streamIO.integer.IStreamOutInt#addLong(long)	 */
+	/** Writes the double value in the given numeric format, falling back to scientific notation on overflow/underflow.
+	 * @see streamIO.integer.IStreamOutInt#addLong(long)	 */
 	final static public void ADD_DOUBLE(final IStreamOutByte stream
 			, final double value
 			, final byte precision, final char chrDot //negative Precision rounds to integer Numbers, also determines the Dot Position!
@@ -365,7 +395,8 @@ public class LocalePrimitive {
 				, chrMinus, chrPlus, chrExp, chrGroup, false);
 	}
 	
-	/** @see streamIO.integer.IStreamOutInt#addLong(long)	 */
+	/** Writes the double value in the given numeric format, falling back to scientific notation on overflow/underflow.
+	 * @see streamIO.integer.IStreamOutInt#addLong(long)	 */
 	final static public void ADD_DOUBLE(final IStreamOutByte stream
 			, final double value
 			, final byte precision, final char chrDot //negative Precision rounds to integer Numbers, also determines the Dot Position!
@@ -380,7 +411,8 @@ public class LocalePrimitive {
 				, ByRefLong.POW(base, precision));
 	}
 	
-	/** @see streamIO.integer.IStreamOutInt#addLong(long)	 */
+	/** Writes the double value in the given numeric format, swallowing any IOException as an unchecked IOError.
+	 * @see streamIO.integer.IStreamOutInt#addLong(long)	 */
 	final static public void ADD_DOUBLE_SAFE(final IStreamOutByte stream
 			, final double value 
 			, final byte precision, final char chrDot //negative Precision rounds to integer Numbers, also determines the Dot Position!
@@ -399,7 +431,8 @@ public class LocalePrimitive {
 		}
 	}
 	
-	/** @see streamIO.integer.IStreamOutInt#addLong(long)	 */
+	/** Writes the double value in the given numeric format, falling back to scientific notation on overflow/underflow.
+	 * @see streamIO.integer.IStreamOutInt#addLong(long)	 */
 	final static public void ADD_DOUBLE(final IStreamOutByte stream
 			, final double value 
 			, final byte precision, final char chrDot //negative Precision rounds to integer Numbers, also determines the Dot Position!
@@ -413,7 +446,8 @@ public class LocalePrimitive {
 		ADD_DOUBLE(stream, value, precision, chrDot, minLen, chrPad, base
 				, chrMinus, chrPlus, chrExp, chrGroup, zeroOnUnderflow, precisionFactor, null); }
 	
-	/** @see streamIO.integer.IStreamOutInt#addLong(long)	 */
+	/** Writes the double value in the given numeric format, falling back to scientific notation on overflow/underflow.
+	 * @see streamIO.integer.IStreamOutInt#addLong(long)	 */
 	final static public void ADD_DOUBLE(final IStreamOutByte stream
 			, final double value 
 			, final byte precision, final char chrDot //negative Precision rounds to integer Numbers, also determines the Dot Position!
@@ -428,7 +462,8 @@ public class LocalePrimitive {
 		ADD_DOUBLE(stream, value, precision, chrDot, minLen, chrPad, base
 				, chrMinus, chrPlus, chrExp, chrGroup, zeroOnUnderflow, precisionFactor, buf, Math.log(base)); }
 	
-	/** @see streamIO.integer.IStreamOutInt#addLong(long)	 */
+	/** Writes the double value in the given numeric format, falling back to scientific notation on overflow/underflow.
+	 * @see streamIO.integer.IStreamOutInt#addLong(long)	 */
 	final static public void ADD_DOUBLE(final IStreamOutByte stream
 			, final double value 
 			, final byte precision, final char chrDot //negative Precision rounds to integer Numbers, also determines the Dot Position!
@@ -456,7 +491,8 @@ public class LocalePrimitive {
 		ADD_LONG(stream, b, base, dotPos, chrDot, minLen, chrPad, chrMinus, chrPlus, chrGroup, buf); 
 	}
 	
-	/** @see streamIO.integer.IStreamOutInt#addLong(long)	 */
+	/** Writes the long value in the given numeric format, swallowing any IOException as an unchecked IOError.
+	 * @see streamIO.integer.IStreamOutInt#addLong(long)	 */
 	final static public void ADD_LONG_SAFE(final IStreamOutByte stream, final long b) {
 		try { ADD_LONG(stream, b);
 		} catch(final IOException x) {
@@ -464,32 +500,37 @@ public class LocalePrimitive {
 		}
 	}
 	
-	/** @see streamIO.integer.IStreamOutInt#addLong(long)	 */
+	/** Writes the long value in the given numeric format (base, decimal point, padding, sign and grouping characters).
+	 * @see streamIO.integer.IStreamOutInt#addLong(long)	 */
 	final static public void ADD_LONG(final IStreamOutByte stream, final long b) throws IOException {
 		ADD_LONG(stream, b, DEFAULT_BASE); 
 	}
 	
-	/** @see streamIO.integer.IStreamOutInt#addLong(long)	 */
+	/** Writes the long value in the given numeric format (base, decimal point, padding, sign and grouping characters).
+	 * @see streamIO.integer.IStreamOutInt#addLong(long)	 */
 	final static public void ADD_LONG(final IStreamOutByte stream
 			, final long b, final char base) throws IOException {
 		ADD_LONG(stream, b, base, -1); 
 	}
 	
-	/** @see streamIO.integer.IStreamOutInt#addLong(long)	 */
+	/** Writes the long value in the given numeric format (base, decimal point, padding, sign and grouping characters).
+	 * @see streamIO.integer.IStreamOutInt#addLong(long)	 */
 	final static public void ADD_LONG(final IStreamOutByte stream
 			, final long b, final char base
 			, final int dotPos) throws IOException {
 		ADD_LONG(stream, b, base, dotPos, DEFAULT_CHR_DOT); 
 	}
 	
-	/** @see streamIO.integer.IStreamOutInt#addLong(long)	 */
+	/** Writes the long value in the given numeric format (base, decimal point, padding, sign and grouping characters).
+	 * @see streamIO.integer.IStreamOutInt#addLong(long)	 */
 	final static public void ADD_LONG(final IStreamOutByte stream
 			, final long b, final char base
 			, final int dotPos, final char chrDot) throws IOException {
 		ADD_LONG(stream, b, base, dotPos, chrDot, DEFAULT_MIN_LENGTH); 
 	}
 	
-	/** @see streamIO.integer.IStreamOutInt#addLong(long)	 */
+	/** Writes the long value in the given numeric format (base, decimal point, padding, sign and grouping characters).
+	 * @see streamIO.integer.IStreamOutInt#addLong(long)	 */
 	final static public void ADD_LONG(final IStreamOutByte stream
 			, final long b, final char base
 			, final int dotPos, final char chrDot
@@ -497,14 +538,16 @@ public class LocalePrimitive {
 		ADD_LONG(stream, b, base, dotPos, chrDot, minLen, DEFAULT_CHR_PAD); 
 	}
 	
-	/** @see streamIO.integer.IStreamOutInt#addLong(long)	 */
+	/** Writes the long value in the given numeric format (base, decimal point, padding, sign and grouping characters).
+	 * @see streamIO.integer.IStreamOutInt#addLong(long)	 */
 	final static public void ADD_LONG(final IStreamOutByte stream
 			, final long b, final char base
 			, final int dotPos, final char chrDot
 			, final char minLen, final char chrPad) throws IOException {
 		ADD_LONG(stream, b, base, dotPos, chrDot, minLen, chrPad, DEFAULT_CHR_MINUS); }
 	
-	/** @see streamIO.integer.IStreamOutInt#addLong(long)	 */
+	/** Writes the long value in the given numeric format (base, decimal point, padding, sign and grouping characters).
+	 * @see streamIO.integer.IStreamOutInt#addLong(long)	 */
 	final static public void ADD_LONG(final IStreamOutByte stream
 			, final long b, final char base
 			, final int dotPos, final char chrDot
@@ -513,7 +556,8 @@ public class LocalePrimitive {
 		ADD_LONG(stream, b, base, dotPos, chrDot, minLen, chrPad, 
 				chrMinus, DEFAULT_CHR_PLUS); }
 	
-	/** @see streamIO.integer.IStreamOutInt#addLong(long)	 */
+	/** Writes the long value in the given numeric format (base, decimal point, padding, sign and grouping characters).
+	 * @see streamIO.integer.IStreamOutInt#addLong(long)	 */
 	final static public void ADD_LONG(final IStreamOutByte stream
 			, final long b, final char base
 			, final int dotPos, final char chrDot
@@ -522,7 +566,8 @@ public class LocalePrimitive {
 		ADD_LONG(stream, b, base, dotPos, chrDot, minLen, chrPad, 
 				chrMinus, chrPlus, DEFAULT_CHR_GROUP); }
 	
-	/** @see streamIO.integer.IStreamOutInt#addLong(long)	 */
+	/** Writes the long value in the given numeric format (base, decimal point, padding, sign and grouping characters).
+	 * @see streamIO.integer.IStreamOutInt#addLong(long)	 */
 	final static public void ADD_LONG(final IStreamOutByte stream
 			, final long b, final char base
 			, final int dotPos, final char chrDot
@@ -536,7 +581,8 @@ public class LocalePrimitive {
 	 * replaced by the Criterion chrPad != 0	 */
 	//public static boolean leadingZero; 
 	
-	/** @see streamIO.integer.IStreamOutInt#addLong(long)	 */
+	/** Writes the long value in the given numeric format (base, decimal point, padding, sign and grouping characters).
+	 * @see streamIO.integer.IStreamOutInt#addLong(long)	 */
 	final static public void ADD_LONG(final IStreamOutByte stream
 			, long b, final char base
 			, final int dotPos, final char chrDot
@@ -756,9 +802,7 @@ public class LocalePrimitive {
 	/** Default Singleton with english Notation	 */
 	final public static LocalePrimitive DEFAULT_LOCALE = new LocalePrimitive(); 
 	
-	/**	
-	 * @param precision
-	 */
+	/** Constructs a LocalePrimitive with the default base, precision and formatting characters. */
 	public LocalePrimitive() {
 		L.debug("Empty Constructor"); 
 		lnBase = DEFAULT_LN_BASE; 
@@ -767,12 +811,11 @@ public class LocalePrimitive {
 		precisionFactor = DEFAULT_PRECISION_FACTOR; 
 	}
 	
-	/**	
-	 * 
-	 * @param _base
-	 * @param _precision
+	/** Constructs a LocalePrimitive for the given numeric base, deriving the precision
+	 * from the base and the double mantissa width.
+	 * @param _base the numeric base (radix) to format Numbers in
 	 */
-	public LocalePrimitive(final char _base) { 
+	public LocalePrimitive(final char _base) {
 		lnBase = Math.log(_base); 
 		this.base = _base; 
 		precision = (byte) 
@@ -780,10 +823,9 @@ public class LocalePrimitive {
 		precisionFactor = Math.round(Math.exp(lnBase*precision)); //ByRefLong.POW(base, precision); 
 	}
 	
-	/**	
-	 * 
-	 * @param _base
-	 * @param _precision
+	/** Constructs a LocalePrimitive for the given numeric base and explicit precision.
+	 * @param _base the numeric base (radix) to format Numbers in
+	 * @param _precision the number of digits of precision to use
 	 */
 	public LocalePrimitive(final char _base, final byte _precision) {
 		lnBase = Math.log(_base); 
@@ -796,7 +838,8 @@ public class LocalePrimitive {
 	/// Methods for Writing
 	///////////////////////////////////////////////////////////////////////////
 	
-	/** @see streamIO.integer.IStreamOutInt#addLong(long)	 */
+	/** Writes the long value using this LocalePrimitive's configured format, swallowing any IOException as an unchecked IOError.
+	 * @see streamIO.integer.IStreamOutInt#addLong(long)	 */
 	final public void addLongSafe(final IStreamOutByte stream, final long b
 			, final char[] arr) {
 		try { addLong(stream, b, arr); 
@@ -805,7 +848,8 @@ public class LocalePrimitive {
 		}
 	}
 	
-	/** @see streamIO.integer.IStreamOutInt#addLong(long)	 */
+	/** Writes the long value using this LocalePrimitive's configured format.
+	 * @see streamIO.integer.IStreamOutInt#addLong(long)	 */
 	final public void addLong(final IStreamOutByte stream, final long b
 			, final char[] arr) throws IOException {
 		ADD_LONG(stream, b, this.base
@@ -815,14 +859,16 @@ public class LocalePrimitive {
 				, this.chrGroup, arr); 
 	}
 	
-	/** @see streamIO.integer.IStreamOutInt#addLong(long)	 */
+	/** Writes the double value in scientific notation using this LocalePrimitive's configured format.
+	 * @see streamIO.integer.IStreamOutInt#addLong(long)	 */
 	final public void addDoubleScientific(final IStreamOutByte stream, double value
 			, final char[] buf) throws IOException {
 		ADD_DOUBLE_SCIENTIFIC(stream, value, this.precision, this.chrDot 
 				, this.minLength, this.chrPad, this.base, this.chrMinus
 				, this.chrPlus, this.chrExp, this.chrGroup, this.lnBase, buf); }
 	
-	/** @see streamIO.integer.IStreamOutInt#addLong(long)	 */
+	/** Writes the double value in scientific notation using this LocalePrimitive's configured format, swallowing any IOException as an unchecked IOError.
+	 * @see streamIO.integer.IStreamOutInt#addLong(long)	 */
 	final public void addDoubleScientificSafe(final IStreamOutByte stream
 			, double value, final char[] buf) {
 		try { addDoubleScientific(stream, value, buf); 
@@ -831,7 +877,8 @@ public class LocalePrimitive {
 		}
 	}
 	
-	/** @see streamIO.integer.IStreamOutInt#addLong(long)	 */
+	/** Writes the double value using this LocalePrimitive's configured format, swallowing any IOException as an unchecked IOError.
+	 * @see streamIO.integer.IStreamOutInt#addLong(long)	 */
 	final public void addDoubleSafe(final IStreamOutByte stream, final double value 
 			, final char[] buf) {
 		try { addDouble(stream, value, buf); 
@@ -840,7 +887,8 @@ public class LocalePrimitive {
 		}
 	}
 	
-	/** @see streamIO.integer.IStreamOutInt#addLong(long)	 */
+	/** Writes the double value using this LocalePrimitive's configured format.
+	 * @see streamIO.integer.IStreamOutInt#addLong(long)	 */
 	final public void addDouble(final IStreamOutByte stream, final double value 
 			, final char[] buf) throws IOException {
 		ADD_DOUBLE(stream, value, this.precision, this.chrDot, this.minLength
@@ -851,6 +899,9 @@ public class LocalePrimitive {
 	/// Methods for Reading & Parsing
 	///////////////////////////////////////////////////////////////////////////
 	
+	/** Tests whether the given Character represents a Digit in this Locale's Base system.
+	 * @param value the Character to test
+	 * @return true if the Character decodes to a valid Digit */
 	final public boolean isDigit(final int value) { return GET_DIGIT(value) >= 0; }
 	
 	/**

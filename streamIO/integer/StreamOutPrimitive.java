@@ -35,6 +35,11 @@ import tools.IOError;
  * Created on	10-26-2002, 12:47 PM<p>
  * @author heuerm
  * @version	1.0
+ * <!-- docstate
+ * tags: [code/stream_io, code/stream_input, code/stream_output, code/struct]
+ * concepts: [Primitive and Structured Stream I/O Core Abstractions]
+ * facets: {layer: utility, status: legacy, complexity: high}
+ * -->
  */
 public class StreamOutPrimitive 
 extends AStreamOutChar //clutters the Interface 
@@ -63,8 +68,11 @@ implements IStreamOutPrimitive {
 	
 	final public IStreamOutByte streamByte; 
 	
+	/** Returns the underlying byte Stream this Writer is wrapping. */
 	final public IStreamOutByte getStreamOutByte() { return streamByte; }
-	
+
+	/** Wraps the given byte Stream to write primitive Values to it.
+	 * @param _stream the underlying byte output Stream to write to */
 	public StreamOutPrimitive(final IStreamOutByte _stream) {
 		this.streamByte = _stream; 
 	}
@@ -112,17 +120,20 @@ implements IStreamOutPrimitive {
 		//else
 			streamByte.write(b); }
 	
-	/** @see streamIO.integer.IStreamOutByte#flush()	 */
+	/** Flushes the underlying byte Stream.
+	 * @see streamIO.integer.IStreamOutByte#flush()	 */
 	public void flush() throws IOException { streamByte.flush(); }
-	
-	/** @see streamIO.integer.IStreamOutByte#close()	 */
+
+	/** Closes the underlying byte Stream.
+	 * @see streamIO.integer.IStreamOutByte#close()	 */
 	public void close() throws IOException { streamByte.close(); }
 	
 	////////////////////////////////////////////////////////////////////////////
 	/// Interface IStreamOutChar
 	////////////////////////////////////////////////////////////////////////////
 	
-	/** @see streamIO.integer.IStreamOutPrimitive#addChar(char)	 */
+	/** Writes the list Separator (if pending) then the given Character to the underlying Stream.
+	 * @see streamIO.integer.IStreamOutPrimitive#addChar(char)	 */
 	public IStreamOutChar addChar(final char chr) {
 		try { listChr(); 
 			write(chr);
@@ -131,7 +142,8 @@ implements IStreamOutPrimitive {
 		}
 		return this; }
 	
-	/** @see streamIO.integer.IStreamOutChar#addString(java.lang.String, int, int) 	 */
+	/** Writes the list Separator (if pending) then the substring [start, stop) as bytes, unescaped.
+	 * @see streamIO.integer.IStreamOutChar#addString(java.lang.String, int, int) 	 */
 	public IStreamOutChar addString(final String b, final int stop, final int start) {
 		try { listChr(); 
 			WRITE_UNSAFE(this, b, stop, start); //super.addString(b, stop, start); 
@@ -144,7 +156,8 @@ implements IStreamOutPrimitive {
 	/// Interface IStreamOutPrimitive
 	////////////////////////////////////////////////////////////////////////////
 	
-	/** @see streamIO.integer.IStreamOutInt#addLong(long)	 */
+	/** Writes the list Separator (if pending) then the long value, formatted via this Writer's Locale.
+	 * @see streamIO.integer.IStreamOutInt#addLong(long)	 */
 	public IStreamOutInt addLong(final long b) { //no Encoding
 		try { listChr(); 
 			locale.addLong(streamByte, b, buf); 
@@ -153,7 +166,8 @@ implements IStreamOutPrimitive {
 		}
 		return this;  }
 	
-	/** @see streamIO.real.IStreamOutFloat#addDouble(double)	 */
+	/** Writes the list Separator (if pending) then the double value, formatted via this Writer's Locale.
+	 * @see streamIO.real.IStreamOutFloat#addDouble(double)	 */
 	public IStreamOutFloat addDouble(final double value) { //no Encoding
 		try { listChr(); 
 			locale.addDouble(streamByte, value, buf); 
@@ -162,7 +176,8 @@ implements IStreamOutPrimitive {
 		}
 		return this; }
 	
-	/** @see streamIO.integer.IStreamOutPrimitive#addBool(boolean)	 */
+	/** Writes the list Separator (if pending) then the locale's String representation of the boolean value.
+	 * @see streamIO.integer.IStreamOutPrimitive#addBool(boolean)	 */
 	public IStreamOutPrimitive addBool(final boolean value) {
 		try { listChr(); 
 			//addString(locale.strBool[value?1:0]); //applies Encoding
@@ -174,26 +189,32 @@ implements IStreamOutPrimitive {
 	
 	///////////////////////////////////////////////////////////////////////////
 	
-	/** @see streamIO.integer.IStreamOutInt#addInt(int)	 */
+	/** Writes the int value by delegating to {@link #addLong(long)}.
+	 * @see streamIO.integer.IStreamOutInt#addInt(int)	 */
 	public IStreamOutInt addInt(final int b) { return addLong(b); }
-	
-	/** @see streamIO.real.IStreamOutFloat#addFloat(float)	 */
+
+	/** Writes the float value by delegating to {@link #addDouble(double)}.
+	 * @see streamIO.real.IStreamOutFloat#addFloat(float)	 */
 	public IStreamOutFloat addFloat(final float value) {
 		return addDouble(value); }
-	
-	/** @see streamIO.IStreamOut#addItems(java.lang.Object)	 */
+
+	/** Writes the given Object's Items with no flattening depth limit.
+	 * @see streamIO.IStreamOut#addItems(java.lang.Object)	 */
 	public long addItems(final Object arg) {
 		return addItems(arg, Integer.MAX_VALUE); }
-	
-	/** @see streamIO.IStreamOut#addItems(java.lang.Object, int)	 */
+
+	/** Writes the given Object's Items, flattening nested Arrays/Collections up to the given depth.
+	 * @see streamIO.IStreamOut#addItems(java.lang.Object, int)	 */
 	public long addItems(final Object arg, final int flatDepth) {
 		return AStreamOut.ADD_ITEMS(this, arg, flatDepth); }
-	
-	/** @see streamIO.IStreamOut#addItems(java.lang.Object[])	 */
+
+	/** Writes the given Object array's Items.
+	 * @see streamIO.IStreamOut#addItems(java.lang.Object[])	 */
 	public long addItems(final Object[] arg) {
 		return AStreamOut.ADD_ITEMS(this, arg); }
-	
-	/** @see streamIO.IStreamOut#addItems(streamIO.IIStreamIn)	 */
+
+	/** Writes all Items read from the given input Stream.
+	 * @see streamIO.IStreamOut#addItems(streamIO.IIStreamIn)	 */
 	public long addItems(final IIStreamIn arg) {
 		return AStreamOut.STREAM(arg, this); }
 	
@@ -201,7 +222,7 @@ implements IStreamOutPrimitive {
 	/// Testing and main() Methods
 	///////////////////////////////////////////////////////////////////////////
 	
-	/** @see streamIO.integer.IStreamOutInt#addLong(long)	 */
+	/** Smoke-tests {@link LocalePrimitive#ADD_DOUBLE} on a range of representative double Values, including scientific notation. */
 	public static void TEST_DOUBLE() throws Exception {
 		final StringBufferOutputStream stream = new StringBufferOutputStream();
 		byte precision = (byte) 5; 
@@ -246,7 +267,7 @@ implements IStreamOutPrimitive {
 		L.n(result);
 	}
 
-	/** @see streamIO.integer.IStreamOutInt#addLong(long)	 */
+	/** Smoke-tests {@link LocalePrimitive#ADD_LONG} against {@link Long#toString(long, int)}. */
 	public static void TEST_LONG() throws Exception {
 		final StringBufferOutputStream stream = new StringBufferOutputStream();
 		long value = 123456789; 
@@ -256,9 +277,10 @@ implements IStreamOutPrimitive {
 		stream.getBuffer().setLength(0); 
 	}
 	
+	/** Runs {@link #TEST_DOUBLE()} and {@link #TEST_LONG()}. */
 	public static void main(final String[] args) throws Exception {
-		TEST_DOUBLE(); 
-		TEST_LONG(); 
+		TEST_DOUBLE();
+		TEST_LONG();
 	}
 	
 }

@@ -28,12 +28,22 @@ import java.io.IOException;
  * Created on	10-26-2002, 12:47 PM<p>
  * @author heuerm
  * @version	1.0
+ * <!-- docstate
+ * tags: [code/stream_io, code/stream_input, code/stream_output, code/struct]
+ * concepts: [Primitive and Structured Stream I/O Core Abstractions]
+ * facets: {layer: utility, status: legacy, complexity: high}
+ * -->
  */
-public class AStreamIn_Char 
-extends AStreamIn_Byte 
+public class AStreamIn_Char
+extends AStreamIn_Byte
 implements IStreamIn_Char {
 
-	/* (non-Javadoc)
+	// TODO: LOGIC: this whole class is an IDE-generated stub - every overridden method below
+	// is unimplemented and returns a hardcoded default (0/null) instead of delegating to a
+	// real character stream or throwing UnsupportedOperationException. Any code that actually
+	// uses an AStreamIn_Char instance will silently get wrong data instead of failing loudly.
+
+	/** Always returns 0; not implemented.
 	 * @see streamIO.integer.IStreamIn_Byte#available()
 	 */
 	public int available() throws IOException {
@@ -41,7 +51,7 @@ implements IStreamIn_Char {
 		return 0;
 	}
 
-	/* (non-Javadoc)
+	/** Always returns 0; not implemented.
 	 * @see streamIO.IOrdered#getOrder()
 	 */
 	public byte getOrder() {
@@ -49,7 +59,7 @@ implements IStreamIn_Char {
 		return 0;
 	}
 
-	/* (non-Javadoc)
+	/** Always returns 0; not implemented.
 	 * @see streamIO.IAvailAble#getPosition()
 	 */
 	public long getPosition() {
@@ -57,7 +67,7 @@ implements IStreamIn_Char {
 		return 0;
 	}
 
-	/* (non-Javadoc)
+	/** Always returns 0; not implemented.
 	 * @see streamIO.IMarkAble#getMaxMarkSize()
 	 */
 	public long getMaxMarkSize() {
@@ -65,7 +75,7 @@ implements IStreamIn_Char {
 		return 0;
 	}
 
-	/* (non-Javadoc)
+	/** Always returns {@code null}; not implemented.
 	 * @see streamIO.integer.IStreamIn_Char#getStreamIn_Byte()
 	 */
 	public IStreamIn_Byte getStreamIn_Byte() {
@@ -73,7 +83,7 @@ implements IStreamIn_Char {
 		return null;
 	}
 
-	/* (non-Javadoc)
+	/** Always returns 0; not implemented.
 	 * @see streamIO.integer.IStreamIn_Char#nextChar()
 	 */
 	public char nextChar() {
@@ -81,7 +91,7 @@ implements IStreamIn_Char {
 		return 0;
 	}
 
-	/* (non-Javadoc)
+	/** Always returns 0; not implemented.
 	 * @see streamIO.integer.IStreamIn_Byte#read()
 	 */
 	public int read() throws IOException {
@@ -89,7 +99,7 @@ implements IStreamIn_Char {
 		return 0;
 	}
 
-	/* (non-Javadoc)
+	/** No-op; not implemented.
 	 * @see streamIO.integer.IStreamIn_Byte#close()
 	 */
 	public void close() throws IOException {
@@ -97,6 +107,7 @@ implements IStreamIn_Char {
 
 	}
 
+	/** Empty smoke-test entry point; performs no action. */
 	public static void main(final String[] args) throws Exception {
 	}
 }

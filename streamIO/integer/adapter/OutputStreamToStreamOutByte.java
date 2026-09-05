@@ -30,6 +30,11 @@ import streamIO.integer.AStreamOutByte;
  * @author mheuer
  * @version	1.0
  *
+ * <!-- docstate
+ * tags: [code/stream_adapter, code/stream_bridging, code/stream_wrapper]
+ * concepts: [Bridges streamIO Interfaces to java.io and Arrays]
+ * facets: {layer: utility, status: legacy, complexity: high}
+ * -->
  */
 public class OutputStreamToStreamOutByte 
 extends AStreamOutByte {
@@ -48,24 +53,29 @@ extends AStreamOutByte {
 	/// Implementation of IStreamOutByte 
 	/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-	/** @see streamIO.Byte.IStreamOutByte#addString(int)	 */
+	/** Delegates to the wrapped OutputStream's write(int).
+	 * @see streamIO.Byte.IStreamOutByte#addString(int)	 */
 	public void write(int b) throws IOException { stream.write(b); }
 
-	/** @see streamIO.Byte.IStreamOutByte#flush()	 */
+	/** Delegates to the wrapped OutputStream's flush().
+	 * @see streamIO.Byte.IStreamOutByte#flush()	 */
 	public void flush() throws IOException { stream.flush(); }
 
-	/** @see streamIO.Byte.IStreamOutByte#close()	 */
+	/** Delegates to the wrapped OutputStream's close().
+	 * @see streamIO.Byte.IStreamOutByte#close()	 */
 	public void close() throws IOException { stream.close(); }
 
 	/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 	/// Optimizations 
 	/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 	
-	/** @see streamIO.Byte.IStreamOutByte#addString(byte[], int, int)	 */
+	/** Delegates to the wrapped OutputStream's write(byte[], int, int).
+	 * @see streamIO.Byte.IStreamOutByte#addString(byte[], int, int)	 */
 	public void write(byte[] b, int off, int len) throws IOException {
 		stream.write(b, off, len); }
 
-	/** @see streamIO.Byte.IStreamOutByte#addString(byte[])	 */
+	/** Delegates to the wrapped OutputStream's write(byte[]).
+	 * @see streamIO.Byte.IStreamOutByte#addString(byte[])	 */
 	public void write(byte[] b) throws IOException { stream.write(b); }
 
 }

@@ -32,6 +32,11 @@ import streamIO.object.IStreamIn;
   * Created on	05-12-2002, 09:05 PM<p>
   * @author 	Matthias Heuer
   * @version	1.0
+  * <!-- docstate
+  * tags: [code/stream_io, code/stream_input, code/stream_output, code/struct]
+  * concepts: [Primitive and Structured Stream I/O Core Abstractions]
+  * facets: {layer: utility, status: legacy, complexity: high}
+  * -->
   */
 public class StreamIn_Arithmetic 
 extends AStreamIn_Byte {
@@ -150,7 +155,8 @@ extends AStreamIn_Byte {
 	  * Monotonous is implicitly sorted!	 */
 	//	public boolean isMonotonous() { return true; }
 	
-	/** @return the Order in which Elements are returned by the Iterators
+	/** Returns whether this arithmetic sequence is ascending or descending, based on the sign of {@code increment}.
+	 * @return the Order in which Elements are returned by the Iterators
 	  * when they are added using addItem() and removed using nextItem().	 */
 	public byte getOrder() {
 		if (increment >= 0) {
@@ -179,7 +185,8 @@ extends AStreamIn_Byte {
 		return position;
 	}
 	
-	/** @see streamIO.object.AStreamIn#getPosition()	 */
+	/** Returns the current position relative to the last mark, in Increments.
+	 * @see streamIO.object.AStreamIn#getPosition()	 */
 	public long getPosition() { return (value - markValue)/increment; } //
 	
 	/**Marks the current position in this Iterator.

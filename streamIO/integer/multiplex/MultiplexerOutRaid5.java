@@ -10,7 +10,8 @@ import java.io.IOException;
 
 import streamIO.integer.IStreamOutByte;
 
-/**
+/** Multiplexes this StreamOutByte to a List of Output Streams in RAID 5 Fashion, writing each
+ * Block and an XOR Parity Block to allow reconstructing a failed Stream.
  * @author heuerm
  *
  * @see streamIO.object.MultiplexerOut which is effectively a RAID0 (Striping)
@@ -25,13 +26,19 @@ import streamIO.integer.IStreamOutByte;
  * to write each Block twice: 
  * once unchanged and once XORed with another block on a different Disk. 
  * By distributing the XORed Blocks to all Disks no single Bottleneck appears. 
+ * <!-- docstate
+ * tags: [code/multiplexer, code/multiplexing, code/raid_encoding]
+ * concepts: [RAID-Style Stream Multiplexing plus Markov/Viterbi Math]
+ * facets: {layer: domain, status: legacy, complexity: high}
+ * -->
  */
 public class MultiplexerOutRaid5 
 extends MultiplexerOutRaid0 {
 
+	/** Runs {@link DeMultiplexerIn_Raid5#testIt()} when invoked with no arguments. */
 	public static void main(final String[] args) throws IOException {
 		if (args.length == 0)
-			DeMultiplexerIn_Raid5.testIt(); 
+			DeMultiplexerIn_Raid5.testIt();
 	}
 	
 	////////////////////////////////////////////////////////////////////////////
@@ -48,7 +55,7 @@ extends MultiplexerOutRaid0 {
 	//  Constructors
 	////////////////////////////////////////////////////////////////////////////
 
-	/**
+	/** Constructs a RAID 5 Multiplexer over the given Output Streams.
 	 * @param _forwards
 	 */
 	public MultiplexerOutRaid5(IStreamOutByte[] _forwards) {
@@ -59,7 +66,8 @@ extends MultiplexerOutRaid0 {
 	//  Methods
 	////////////////////////////////////////////////////////////////////////////
 
-	/** @see streamIO.integer.IStreamOutByte#write(int)	 */
+	/** Writes a single byte via the parent Multiplexer, tolerating (and chaining) Exceptions instead of failing fast.
+	 * @see streamIO.integer.IStreamOutByte#write(int)	 */
 	private Exception writeTolerantly(final int b, final Exception previous) throws IOException {
 		try { //quite Expensive to enter a Catch Block ...
 			super.write(b);
@@ -79,7 +87,8 @@ extends MultiplexerOutRaid0 {
 		super.close();
 	}
 	
-	/** @see streamIO.integer.IStreamOutByte#write(int)	 */
+	/** Buffers every other byte, then writes the pair plus their XOR Parity as three RAID 5 Blocks.
+	 * @see streamIO.integer.IStreamOutByte#write(int)	 */
 	public void write(final int b) throws IOException {
 		//Log.N("Value:"+b);
 		if (currItemSet = !currItemSet) {

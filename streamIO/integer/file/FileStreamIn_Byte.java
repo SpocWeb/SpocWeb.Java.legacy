@@ -47,19 +47,28 @@ import function.byref.ByRefInt;
   * @see java.io.DataInput
   * @see java.io.DataOutput
   *
+  * <!-- docstate
+  * tags: [code/file_io, code/stream_io]
+  * concepts: [File-Backed StreamIO Implementations]
+  * facets: {layer: utility, status: legacy, complexity: high}
+  * -->
   */
 public class FileStreamIn_Byte 
 extends FileInputStream 
 implements IStreamIn_Byte {
 	
-	final static public IStreamIn_Int HANDLE_EXCEPTION_OBJECT(final IOException x, 
+	/** Either rethrows the given IOException as a FailureException with the given Message,
+	 * or (when the Message is null) swallows it and returns null. */
+	final static public IStreamIn_Int HANDLE_EXCEPTION_OBJECT(final IOException x,
 	        final String throwFailureExceptionMessage) {
 	    if (null != throwFailureExceptionMessage)
 	        throw new FailureException(throwFailureExceptionMessage, x);
-		return null; 
+		return null;
 	}
-	
-	final static public int HANDLE_EXCEPTION(final IOException x, 
+
+	/** Either rethrows the given IOException as a FailureException with the given Message,
+	 * or (when the Message is null) swallows it and returns {@link #EOF}. */
+	final static public int HANDLE_EXCEPTION(final IOException x,
 	        final String throwFailureExceptionMessage) {
 	    if (null != throwFailureExceptionMessage)
 	        throw new FailureException(throwFailureExceptionMessage, x);
@@ -86,25 +95,29 @@ implements IStreamIn_Byte {
 	/** holds the Order of the Data in the File   */
 	public byte Order;
 	
-	/** @return the Order of the Data in the File  */
+	/** Returns the byte order of the Data in the File.
+	 * @return the Order of the Data in the File  */
 	public byte getOrder() { return Order; }
-	
+
 	////////////////////////////////////////////////////////////////////////////
 	/// #region : Constructors, calling each other using this()/super() (not in Interfaces)
 	////////////////////////////////////////////////////////////////////////////
-	
-	/** @see streamIO.integer.IStreamIn_Int#IntIterator()	 */
+
+	/** Creates a new independent Reader on the same open File Descriptor.
+	 * @see streamIO.integer.IStreamIn_Int#IntIterator()	 */
 	public IStreamIn_Int IntIterator() {
 		try { return new FileStreamIn_Byte(getFD());
 		} catch (final IOException x) {
 			return handleExceptionObject(x);
 		}
 	}
-	
-    /** @see streamIO.real.IStreamIn_Float#FloatIterator()     */
+
+    /** Delegates to {@link #IntIterator()}.
+     * @see streamIO.real.IStreamIn_Float#FloatIterator()     */
     public IStreamIn_Float FloatIterator() { return IntIterator(); }
-    
-	/** @see streamIO.IIterAble#Iterator()	 */
+
+	/** Delegates to {@link #IntIterator()}.
+	 * @see streamIO.IIterAble#Iterator()	 */
 	public IIStreamIn Iterator() { return IntIterator(); }
     
 	/**
@@ -484,6 +497,12 @@ implements IStreamIn_Byte {
 	  * @throws IOException - if an I/O error occurs.
 	  * @see read()
 	  */
+	// TODO: LOGIC: "(char) (val = read())" narrows the int result of read() to a char before
+	// storing it into this int[] - for a normal byte 0..255 this round-trips fine, but the EOF
+	// sentinel (-1) becomes 0xFFFF (65535) once written into b[off+i], not -1. The loop-exit
+	// check below correctly tests the unnarrowed "val", but the caller's buffer still ends up
+	// with a bogus 65535 in the slot where EOF was hit, instead of that slot being left alone or
+	// carrying a real -1.
 	public int read(int[] b, int off, int len) throws IOException {
 		int val, i = -1;
 		while (++i < len) {
@@ -500,27 +519,34 @@ implements IStreamIn_Byte {
 	/////////////////////////////////////////////////////////////////////////////////////
 	
 	
+	/** Always returns Integer.MAX_VALUE. */
 	public long getMaxMarkSize() { return Integer.MAX_VALUE; }
-	
-    /** @see streamIO.IMarkAble#mark()     */
+
+    /** Marks the current position, allowing up to {@link #getMaxMarkSize()} bytes to be read before invalidation.
+     * @see streamIO.IMarkAble#mark()     */
     public IMarkAble mark() { return mark(getMaxMarkSize()); }
-    
-    /** @see streamIO.IMarkAble#mark(long)     */
+
+    /** Marks the current position, allowing up to {@code readLimit} bytes to be read before invalidation.
+     * @see streamIO.IMarkAble#mark(long)     */
     public IMarkAble mark(long readLimit) {
         this.mark((int) readLimit);
-        return this; 
+        return this;
     }
-    
-    /** @see streamIO.real.IStreamIn_Float#nextDouble()     */
+
+    /** Returns the next value widened to a double.
+     * @see streamIO.real.IStreamIn_Float#nextDouble()     */
     public double nextDouble() { return nextInt(); }
-    
-    /** @see streamIO.real.IStreamIn_Float#nextFloat()     */
+
+    /** Returns the next value widened to a float.
+     * @see streamIO.real.IStreamIn_Float#nextFloat()     */
     public float nextFloat() { return nextInt(); }
-    
-    /** @see streamIO.IIStreamIn#isValid()     */
+
+    /** Returns true unless the current Item is EOF.
+     * @see streamIO.IIStreamIn#isValid()     */
     public boolean isValid() { return currItem.Value != EOF; }
-    
-    /** @see streamIO.IReSetAble#jump()     */
+
+    /** Jumps forward one Position, equivalent to jump(1).
+     * @see streamIO.IReSetAble#jump()     */
     public IReSetAble jump() { return AReSetAble.JUMP(this); }
     
 	/** 
@@ -531,37 +557,43 @@ implements IStreamIn_Byte {
 	 */
     public IPushBackAble pushBack() { return AReSetAble.PUSH_BACK(this); }
 	
-    /** @see streamIO.IReSetAble#jump(long)     */
-    public long jump(final long offset) { 
-        try { return skip(offset);  
+    /** Skips {@code offset} bytes on this File, wrapping any IOException.
+     * @see streamIO.IReSetAble#jump(long)     */
+    public long jump(final long offset) {
+        try { return skip(offset);
         } catch (final IOException x) {
 			return handleException(x);
         }
     }
-    
-    /** @see streamIO.IReSetAble#reSet()     */
+
+    /** Resets this Stream to the last mark()ed Position, wrapping any IOException.
+     * @see streamIO.IReSetAble#reSet()     */
     public IReSetAble reSet() {
-        try { reset(); return this; 
+        try { reset(); return this;
         } catch (final IOException x) {
 			return handleExceptionObject(x);
         }
     }
-    
-    /** @see streamIO.IReSetAble#reSet(java.lang.String)     */
+
+    /** Resets to the last mark, throwing an Exception with the given Message on failure.
+     * @see streamIO.IReSetAble#reSet(java.lang.String)     */
     public IReSetAble reSet(final String failureExceptionMessage) {
         return AReSetAble.RESET(this, failureExceptionMessage); }
-    
-    /** @see #nextItem() returns this Object or null; 	*/
+
+    /** Holds the current Item as a boxed, reusable int reference.
+     * @see #nextItem() returns this Object or null; 	*/
     final public ByRefInt currItem = new ByRefInt();
-    
-    /** @see streamIO.IFactory#nextItem()     */
+
+    /** Advances to and returns the next Item, boxed as a {@link ByRefInt}, or null at EOF.
+     * @see streamIO.IFactory#nextItem()     */
     public Object nextItem() {
-        if (EOF == (currItem.Value = nextInt())) 
-            return null; 
+        if (EOF == (currItem.Value = nextInt()))
+            return null;
         return currItem; //new Integer(nextInt());
     }
-    
-    /** @see streamIO.IAvailAble#availAble()     */
+
+    /** Returns the number of bytes still available, wrapping any IOException.
+     * @see streamIO.IAvailAble#availAble()     */
     public long availAble() {
         try {
             return available();
@@ -569,8 +601,9 @@ implements IStreamIn_Byte {
 			return handleException(x);
         }
     }
-    
-    /** @see streamIO.IAvailAble#getPosition()     */
+
+    /** Returns the current position of the File's Channel, wrapping any IOException.
+     * @see streamIO.IAvailAble#getPosition()     */
     public long getPosition() {
         try {
             return getChannel().position();
@@ -583,36 +616,45 @@ implements IStreamIn_Byte {
     /// IStreamIn
     ///////////////////////////////////////////////////////////////////////////
     
-	/** @see streamIO.integer.IStreamIn_Int#currLong()	 */
+	/** Returns the current Item as a long, without advancing.
+	 * @see streamIO.integer.IStreamIn_Int#currLong()	 */
 	public long currLong() { return currItem.Value; }
-	
-	/** @see streamIO.integer.IStreamIn_Int#currInt()	 */
+
+	/** Returns the current Item as an int, without advancing.
+	 * @see streamIO.integer.IStreamIn_Int#currInt()	 */
 	public int currInt() { return currItem.Value; }
-	
-	/** @see streamIO.real.IStreamIn_Float#currDouble()	 */
+
+	/** Returns the current Item widened to a double, without advancing.
+	 * @see streamIO.real.IStreamIn_Float#currDouble()	 */
 	public double currDouble() { return currItem.Value; }
-	
-	/** @see streamIO.real.IStreamIn_Float#currFloat()	 */
+
+	/** Returns the current Item widened to a float, without advancing.
+	 * @see streamIO.real.IStreamIn_Float#currFloat()	 */
 	public float currFloat() { return currItem.Value; }
-	
-	/** @return the next Value without moving to it.	 */
+
+	/** Reads the next int value without advancing the stream position.
+	 * @return the next Value without moving to it.	 */
 	public int peekInt() { //throws    NoSuchMethodException {
 		//throw new NoSuchMethodException("No generic Implementation!");
-		final int ret = nextInt(); 
-		pushBack(); 
-		return ret; 
+		final int ret = nextInt();
+		pushBack();
+		return ret;
 	}
-	
-	/** @return the next Value without moving to it.	 */
+
+	/** Reads the next value without advancing, by delegating to {@link #peekInt()}.
+	 * @return the next Value without moving to it.	 */
 	public long peekLong() { return peekInt(); }
-	
-	/** @see streamIO.real.IStreamIn_Float#peekDouble()	 */
+
+	/** Reads the next value without advancing, by delegating to {@link #peekInt()}.
+	 * @see streamIO.real.IStreamIn_Float#peekDouble()	 */
 	public double peekDouble() { return peekInt(); }
-	
-	/** @see streamIO.real.IStreamIn_Float#peekFloat()	 */
+
+	/** Reads the next value without advancing, by delegating to {@link #peekInt()}.
+	 * @see streamIO.real.IStreamIn_Float#peekFloat()	 */
 	public float peekFloat() { return peekInt(); }
 
-	/** @see streamIO.integer.IStreamIn_Int#fill(int[], int, int)	 */
+	/** Fills the int array range [start, stop) by repeatedly calling {@link #nextInt()}.
+	 * @see streamIO.integer.IStreamIn_Int#fill(int[], int, int)	 */
 	public int fill(int[] arr, int stop, int start) {
 		try {
 			return this.read(arr, start, stop-start); 

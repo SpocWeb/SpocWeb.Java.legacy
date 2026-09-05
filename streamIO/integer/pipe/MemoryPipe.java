@@ -35,6 +35,11 @@ import streamIO.object.IStreamIn;
  * @see streamIO.integer.pipe.PipeByte which does the same as this Class! 
  * @see streamIO.object.enumer.container.DeQueueArr 
  * 		which implements the same for Object Streams
+ * <!-- docstate
+ * tags: [code/pipe_abstraction, code/pipe_implementation]
+ * concepts: [In-Memory Producer-Consumer Byte Pipes]
+ * facets: {layer: utility, status: legacy, complexity: high}
+ * -->
  */
 public class MemoryPipe 
 extends AStreamByte {
@@ -43,9 +48,11 @@ extends AStreamByte {
 	/// #region : testing & Main Methods
 	////////////////////////////////////////////////////////////////////////////////
 	
+	/** Empty smoke-test entry point; performs no action. */
 	public static void main(final String[] args) {
 	}
-	
+
+	/** Empty test stub; performs no action. */
 	public static void testIt(final String[] args) {
 	}
 	
@@ -78,6 +85,8 @@ extends AStreamByte {
 	/** QueuePointer, first Element (Head) of IFO	 */	protected int QP = 0;
 	
 	/** marked StackPointer,  last Element (Tail) of IFO	 */	protected int markSP = SP;
+	// TODO: LOGIC: initialized from SP instead of QP (copy-paste from the line above) - the
+	// marked Queue Pointer should mirror QP, not SP; as written it starts wrong whenever SP != QP.
 	/** marked QueuePointer, first Element (Head) of IFO	 */	protected int markQP = SP;
 	
 	/** Increment when the Space runs out.
@@ -174,7 +183,8 @@ extends AStreamByte {
 		return tmp.length; 
 	}
 	
-	/** @return the minimum Number of Items fitting into this Buffer.
+	/** Returns the current backing Array's Capacity.
+	 * @return the minimum Number of Items fitting into this Buffer.
 	  * The actual Number may be higher, so available() should be called again
 	  * at the End of this Number. */
 	public int getCapacity() { return IFO.length; }
@@ -283,10 +293,12 @@ extends AStreamByte {
 			return -1; //jumps from 1 to -1 this is not really correct,
 		return getInt(); } //but since nextItem() does not reduce SP or QP, it has to work like this!
 	
-	/** @see streamIO.object.AStreamIn#getPosition()	 */
+	/** Not implemented; always returns 0.
+	 * @see streamIO.object.AStreamIn#getPosition()	 */
 	public long getPosition() { return 0; } //stream.getPosition(); }
-	
-	/** @see streamIO.integer.IStreamIn_Byte#getMaxMarkSize()	 */
+
+	/** Not implemented; always returns -1.
+	 * @see streamIO.integer.IStreamIn_Byte#getMaxMarkSize()	 */
 	public long getMaxMarkSize() { return -1; } //Long.MAX_VALUE; }
 	
 	/** Does not work properly, since the Contents is overwritten 
@@ -297,14 +309,16 @@ extends AStreamByte {
 		markQP = QP; 
 	}
 	
-	/** @see streamIO.integer.IStreamIn_Byte#reSet(long)	 */
+	/** Resets to the last marked SP/QP, then jumps forward by the given Position.
+	 * @see streamIO.integer.IStreamIn_Byte#reSet(long)	 */
 	public long reSet(final long _position) { //throws IOException {
-		SP = markSP; 
-		QP = markQP; 
-		return jump(_position); 
+		SP = markSP;
+		QP = markQP;
+		return jump(_position);
 	}
-	
-	/** @see streamIO.integer.IStreamIn_Byte#close()	 */
+
+	/** Discards the backing Array, making this Pipe unusable.
+	 * @see streamIO.integer.IStreamIn_Byte#close()	 */
 	public void close() { //throws IOException {
 		IFO = null; 
 	}

@@ -34,6 +34,11 @@ import function.byref.ByRefInt;
  * Created on	10-26-2002, 12:47 PM<p>
  * @author heuerm
  * @version	1.0
+ * <!-- docstate
+ * tags: [code/stream_io, code/stream_input, code/stream_output, code/struct]
+ * concepts: [Primitive and Structured Stream I/O Core Abstractions]
+ * facets: {layer: utility, status: legacy, complexity: high}
+ * -->
  */
 public class StreamIn_Primitive 
 extends AStreamIn_Char
@@ -62,8 +67,11 @@ implements IStreamIn_Primitive {
 	 * from any InputStream or IStreamIn_Byte without Delegation Overhead! 	*/
 	final public IStreamIn_Byte streamByte; 
 	
+	/** Returns the underlying byte Stream this Reader is wrapping. */
 	final public IStreamIn_Byte getStreamIn_Byte() { return streamByte; }
-	
+
+	/** Wraps the given byte Stream to read primitive Values from it.
+	 * @param _stream the underlying byte input Stream to read from */
 	public StreamIn_Primitive(final IStreamIn_Byte _stream) {
 		this.streamByte = _stream; 
 		L.debug(_stream); 
@@ -84,19 +92,24 @@ implements IStreamIn_Primitive {
 		resetVersion(null); 
 		return streamByte.reSet(); }
 	
-	/** @see streamIO.integer.IStreamIn_Byte#close()	 */
+	/** Closes the underlying byte Stream.
+	 * @see streamIO.integer.IStreamIn_Byte#close()	 */
 	public void close() throws IOException { streamByte.close(); }
-	
-	/** @see streamIO.integer.IStreamIn_Byte#available()	 */
-	public int available() throws IOException { return streamByte.available(); } 
-	
-	/** @see streamIO.IAvailAble#getPosition()	 */
+
+	/** Delegates to the underlying byte Stream's {@code available()}.
+	 * @see streamIO.integer.IStreamIn_Byte#available()	 */
+	public int available() throws IOException { return streamByte.available(); }
+
+	/** Delegates to the underlying byte Stream's current read position.
+	 * @see streamIO.IAvailAble#getPosition()	 */
 	public long getPosition() { return streamByte.getPosition(); }
-	
-	/** @see streamIO.IMarkAble#getMaxMarkSize()	 */
+
+	/** Delegates to the underlying byte Stream's maximum mark/reset size.
+	 * @see streamIO.IMarkAble#getMaxMarkSize()	 */
 	public long getMaxMarkSize() { return streamByte.getMaxMarkSize(); }
-	
-	/** @see streamIO.IOrdered#getOrder()	 */
+
+	/** Delegates to the underlying byte Stream's byte order.
+	 * @see streamIO.IOrdered#getOrder()	 */
 	public byte getOrder() { return streamByte.getOrder(); }
 	
 	/** return the next Byte read, -1 for EOF (End Of File) 
@@ -107,9 +120,10 @@ implements IStreamIn_Primitive {
 	/// Interface IStreamOutChar
 	////////////////////////////////////////////////////////////////////////////
 	
-	/** @see streamIO.integer.IStreamIn_Primitive#nextChar()	 */
-	public char nextChar() { 
-		try { return (char) streamByte.read(); 
+	/** Reads and returns the next Character from the underlying byte Stream.
+	 * @see streamIO.integer.IStreamIn_Primitive#nextChar()	 */
+	public char nextChar() {
+		try { return (char) streamByte.read();
 		} catch (final IOException x) {
 			throw new IOError(x);
 		}
@@ -142,8 +156,12 @@ implements IStreamIn_Primitive {
 	 * or the negative Number of Characters read without finding a Match.  
 	 */
 	public int nextEnum(final String[] names) {
+		// TODO: LOGIC: "1 << names.length" performs an int shift (Java shift amounts on int are
+		// taken mod 32) before widening to long, so for names.length in [32,63] this does not
+		// produce the intended 64-bit mask the Javadoc promises ("up to 64 Values") - it silently
+		// wraps. Use 1L << names.length to get a correct long shift.
 		//using a long saves creating and deleting a boolean[names.length] on the Heap
-		long all  = 1 << names.length; 
+		long all  = 1 << names.length;
 		long bits = all-1; //Assume that there are less than 64 Values in an enm.
 		int i = -1; 
 		do {
@@ -161,7 +179,8 @@ implements IStreamIn_Primitive {
 		return -i; 
 	}
 	
-	/** @see IStreamIn_Int#nextLong()	 */
+	/** Reads and returns the next value narrowed from a {@code double} to a {@code long}.
+	 * @see IStreamIn_Int#nextLong()	 */
 	public long nextLong() { return (long) nextDouble(); } /*
 		final double dbl = nextDouble(); 
 		if (dbl != dbl)//by Default NaN is cast to 0!
@@ -173,28 +192,32 @@ implements IStreamIn_Primitive {
 		return (long) dbl; }
 	*/ 
 	
-	/** @see streamIO.real.IStreamIn_Float#nextDouble()	 */
+	/** Reads and returns the next {@code double} value, using this Reader's Locale, swallowing any IOException.
+	 * @see streamIO.real.IStreamIn_Float#nextDouble()	 */
 	public double nextDouble() { return READ_DOUBLE_FROM_SAFE(this, locale, currItem); }
-	
-	/** @see streamIO.real.IStreamIn_Float#nextDouble()	 */
+
+	/** Reads the next {@code double} value from the given Stream/Locale, swallowing any IOException as an unchecked IOError.
+	 * @see streamIO.real.IStreamIn_Float#nextDouble()	 */
 	final static public double READ_DOUBLE_FROM_SAFE(final IStreamIn_Byte stream
 			, final LocalePrimitive locale, final ByRefInt currItem) {
-		try { return READ_DOUBLE_FROM(stream, locale, currItem); 
+		try { return READ_DOUBLE_FROM(stream, locale, currItem);
 		} catch(final IOException x) {
-			throw new IOError(x); 
+			throw new IOError(x);
 		}
 	}
-	
-	/** @see streamIO.real.IStreamIn_Float#nextDouble()	 */
+
+	/** Reads the next {@code double} value from the given Stream, using the default Locale.
+	 * @see streamIO.real.IStreamIn_Float#nextDouble()	 */
 	final static public double READ_DOUBLE_FROM(
 			final IStreamIn_Byte stream) throws IOException {
-		return READ_DOUBLE_FROM(stream, LocalePrimitive.DEFAULT_LOCALE); 
+		return READ_DOUBLE_FROM(stream, LocalePrimitive.DEFAULT_LOCALE);
 	}
-	
-	/** @see streamIO.real.IStreamIn_Float#nextDouble()	 */
+
+	/** Reads the next {@code double} value from the given Stream, using the given Locale.
+	 * @see streamIO.real.IStreamIn_Float#nextDouble()	 */
 	final static public double READ_DOUBLE_FROM(final IStreamIn_Byte stream
 			, final LocalePrimitive locale) throws IOException {
-		return READ_DOUBLE_FROM(stream, locale, null); 
+		return READ_DOUBLE_FROM(stream, locale, null);
 	}
 	
 	/** return the next double Value read from the stream using the given locale 
@@ -351,14 +374,17 @@ implements IStreamIn_Primitive {
 	/// Default Implementations 
 	///////////////////////////////////////////////////////////////////////////
 	
-	/** @see stringOp.parser.IIStreamIn_Int#nextInt()	 */
+	/** Reads and returns the next value narrowed from a {@code long} to an {@code int}.
+	 * @see stringOp.parser.IIStreamIn_Int#nextInt()	 */
 	public int nextInt() { return (int) nextLong(); }
-	
-	/** @see streamIO.real.IStreamIn_Float#nextFloat()	 */
+
+	/** Reads and returns the next value narrowed from a {@code double} to a {@code float}.
+	 * @see streamIO.real.IStreamIn_Float#nextFloat()	 */
 	public float nextFloat() { return (float) nextDouble(); }
 	
 	///////////////////////////////////////////////////////////////////////////
 	
+	/** Empty smoke-test entry point; performs no action. */
 	public static void main(final String[] args) throws Exception {
 		testReadDouble(Math.PI*1e12); 
 		testReadDouble(.23456, ".23456"); 

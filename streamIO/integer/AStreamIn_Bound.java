@@ -30,40 +30,53 @@ import streamIO.integer.random.IStreamIn_Bound_Int;
  * @author mheuer
  * @version 1.0
  *  
+ * <!-- docstate
+ * tags: [code/stream_io, code/stream_input, code/stream_output, code/struct]
+ * concepts: [Primitive and Structured Stream I/O Core Abstractions]
+ * facets: {layer: utility, status: legacy, complexity: high}
+ * -->
  */
 public abstract class AStreamIn_Bound 
 extends AStreamIn_Int
 implements IStreamIn_Bound_Int {
 	
-	/** @see streamIO.integer.random.IStreamIn_Bound_Int#getMinValue() */
+	/** Returns the smallest value this bounded stream can produce.
+	 * @see streamIO.integer.random.IStreamIn_Bound_Int#getMinValue() */
 	abstract public long getMinValue();
-	
-	/** @see streamIO.IAvailAble#availAble()	 */
+
+	/** Returns the number of values still available from this stream.
+	 * @see streamIO.IAvailAble#availAble()	 */
 	abstract public long availAble();
-	
-	/** @see streamIO.IMarkAble#getMaxMarkSize()	 */
-	abstract public long getMaxMarkSize(); 
-	
-	/** @see streamIO.IOrdered#getOrder()	 */
+
+	/** Returns the maximum number of Bytes/Values that can be marked and reset.
+	 * @see streamIO.IMarkAble#getMaxMarkSize()	 */
+	abstract public long getMaxMarkSize();
+
+	/** Returns the byte order this stream reads values in.
+	 * @see streamIO.IOrdered#getOrder()	 */
 	abstract public byte getOrder();
-	
-	/** @see streamIO.IAvailAble#getPosition()	 */
-	abstract public long getPosition(); 
-	
+
+	/** Returns the current read position within this stream.
+	 * @see streamIO.IAvailAble#getPosition()	 */
+	abstract public long getPosition();
+
 	/** @see streamIO.real.AAStreamIn_Float#nextInt()	 */
-	//abstract public int nextInt(); 
-	
-	/** @see streamIO.real.AAStreamIn_Float#nextLong()	 */
-	abstract protected long nextLongInternal(); 
-	
+	//abstract public int nextInt();
+
+	/** Reads and returns the next raw {@code long} value, without bounds handling.
+	 * @see streamIO.real.AAStreamIn_Float#nextLong()	 */
+	abstract protected long nextLongInternal();
+
 	/////////////////////////////////////////////////////////////////////////////////////
 	//generic Routines for filling Arrays:
 	/////////////////////////////////////////////////////////////////////////////////////
-	
-	/** @see streamIO.real.IStreamIn_Bound_Float#getMinDouble()	 */
+
+	/** Returns the minimum value, as a double.
+	 * @see streamIO.real.IStreamIn_Bound_Float#getMinDouble()	 */
 	final public double getMinDouble() { return getMinValue(); }
-	
-	/** @return the maximum Value	 */
+
+	/** Returns the maximum value, as a double.
+	 * @return the maximum Value	 */
 	final public double getMaxDouble() { return getMaxValue(); }
 
 	/**

@@ -36,6 +36,11 @@ import tools.IOError;
  * @author mheuer
  * @version	1.0
  *
+ * <!-- docstate
+ * tags: [code/stream_adapter, code/stream_bridging, code/stream_wrapper]
+ * concepts: [Bridges streamIO Interfaces to java.io and Arrays]
+ * facets: {layer: utility, status: legacy, complexity: high}
+ * -->
  */
 public class WriterToStreamOutByte 
 extends AStreamOutChar
@@ -47,13 +52,16 @@ implements IStreamOutChar {
 	/** Constructor for WriterToStreamOutByte.	 */
 	public WriterToStreamOutByte(Writer writer_) { this.writer = writer_; }
 	
-	/** @see streamIO.Byte.IStreamOutByte#addString(int)	 */
+	/** Delegates to the wrapped Writer's write(int).
+	 * @see streamIO.Byte.IStreamOutByte#addString(int)	 */
 	public void write(int b) throws IOException { writer.write(b); }
-	
-	/** @see streamIO.Byte.IStreamOutByte#addString(byte[])	 */
+
+	/** Writes the whole byte array by delegating to {@link #write(byte[], int, int)}.
+	 * @see streamIO.Byte.IStreamOutByte#addString(byte[])	 */
 	public void write(byte[] b) throws IOException { write(b, 0, b.length); }
-	
-	/** @see streamIO.Byte.IStreamOutByte#addString(byte[], int, int)	 */
+
+	/** Writes the byte range [off, off+len) to the wrapped Writer, one Character at a time.
+	 * @see streamIO.Byte.IStreamOutByte#addString(byte[], int, int)	 */
 	public void write(byte[] b, int off, int len) throws IOException {
 		final int stop = off+len; 
 		for (int i = off-1; ++i < stop;) {
@@ -61,15 +69,21 @@ implements IStreamOutChar {
 		}
 	}
 	
-	/** @see streamIO.Byte.IStreamOutByte#addString(char[], int, int)	 */
+	/** Writes the char range [off, off+len) to the wrapped Writer.
+	 * @see streamIO.Byte.IStreamOutByte#addString(char[], int, int)	 */
 	public void write(char[] b, int off, int len) throws IOException {
+		// TODO: LOGIC: off/len are ignored - this always writes the whole array
+		// (writer.write(b, 0, b.length)) instead of writer.write(b, off, len), so a caller
+		// asking for a sub-range gets the entire array written instead.
 		writer.write(b, 0, b.length); }
-	
-	/** @see streamIO.Byte.IStreamOutByte#addString(int[])	 */
+
+	/** Writes the whole int array by delegating to {@link #addItem(int[], int, int)}.
+	 * @see streamIO.Byte.IStreamOutByte#addString(int[])	 */
 	public void addItem(int[] b) throws IOException { addItem(b, 0, b.length); }
-	
-	/** @see streamIO.Byte.IStreamOutByte#addString(int[], int, int)	 */
-	public void addItem(int[] b, int off, int len) throws IOException { 
+
+	/** Writes the int range [off, off+len) to the wrapped Writer, one value at a time.
+	 * @see streamIO.Byte.IStreamOutByte#addString(int[], int, int)	 */
+	public void addItem(int[] b, int off, int len) throws IOException {
 		final int stop = off+len; 
 		for (int i = off-1; ++i < stop;) {
 			writer.write(b[i]);
@@ -80,27 +94,33 @@ implements IStreamOutChar {
 	// Interface IStreamOutChar
 	/////////////////////////////////////////////////////////////////////////////////
 	
-	/** @see streamIO.integer.IStreamOutChar#getStreamOutByte()	 */
+	/** Returns this Writer itself, since it also implements the byte-level Interface.
+	 * @see streamIO.integer.IStreamOutChar#getStreamOutByte()	 */
 	public IStreamOutByte getStreamOutByte() { return this;	} //.out; }
-	
-	/** @see streamIO.Byte.IStreamOutByte#addString(String)	 */
-	public void write(final String str) throws IOException { 
+
+	/** Delegates to the wrapped Writer's write(String).
+	 * @see streamIO.Byte.IStreamOutByte#addString(String)	 */
+	public void write(final String str) throws IOException {
 		writer.write(str); }
-	
-	/** @see streamIO.Byte.IStreamOutByte#addString(String, int, int)	 */
+
+	/** Delegates to the wrapped Writer's write(String, int, int).
+	 * @see streamIO.Byte.IStreamOutByte#addString(String, int, int)	 */
 	public void write(final String str, final int off, final int len
 			) throws IOException {
 		writer.write(str, off, len); }
-	
-	/** @see streamIO.Byte.IStreamOutByte#addString(StringBuffer)	 */
-	public IStreamOutChar addBuffer(final StringBuffer b) { 
+
+	/** Writes the whole StringBuffer by delegating to {@link #addBuffer(StringBuffer, int)}.
+	 * @see streamIO.Byte.IStreamOutByte#addString(StringBuffer)	 */
+	public IStreamOutChar addBuffer(final StringBuffer b) {
 		return addBuffer(b, b.length()); }
-	
-	/** @see streamIO.Byte.IStreamOutByte#addString(StringBuffer, int, int)	 */
+
+	/** Writes the leading StringBuffer range [0, stop) by delegating to {@link #addBuffer(StringBuffer, int, int)}.
+	 * @see streamIO.Byte.IStreamOutByte#addString(StringBuffer, int, int)	 */
 	public IStreamOutChar addBuffer(final StringBuffer b, final int stop) {
 		return addBuffer(b, stop, 0); }
 	
-	/** @see streamIO.Byte.IStreamOutByte#addString(StringBuffer, int, int)	 */
+	/** Writes the StringBuffer range [start, stop) to the wrapped Writer.
+	 * @see streamIO.Byte.IStreamOutByte#addString(StringBuffer, int, int)	 */
 	public IStreamOutChar addBuffer(final StringBuffer b, final int stop, int start) {
 		AStreamOutByte.WRITE_SAFE(this, b, stop, start); 
 		return this; 
@@ -130,13 +150,16 @@ implements IStreamOutChar {
 		return this; 
 	}
 	
-	/** @see streamIO.Byte.IStreamOutByte#flush()	 */
+	/** Delegates to the wrapped Writer's flush().
+	 * @see streamIO.Byte.IStreamOutByte#flush()	 */
 	public void flush() throws IOException { writer.flush(); }
 
-	/** @see streamIO.Byte.IStreamOutByte#close()	 */
+	/** Delegates to the wrapped Writer's close().
+	 * @see streamIO.Byte.IStreamOutByte#close()	 */
 	public void close() throws IOException { writer.close(); }
 
-	/** @see streamIO.integer.AStreamOutChar#addChar(char)	 */
+	/** Writes the given Character to the wrapped Writer, wrapping any IOException as an unchecked IOError.
+	 * @see streamIO.integer.AStreamOutChar#addChar(char)	 */
 	public IStreamOutChar addChar(final char chr) {
 		try { writer.write(chr);
 		} catch(final IOException x) {

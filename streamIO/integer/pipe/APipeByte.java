@@ -26,6 +26,11 @@ import streamIO.integer.IStreamOutByte;
   * Created on	12-29-2002, 02:58 PM<p>
   * @author 	Matthias Heuer
   * @version	1.0
+  * <!-- docstate
+  * tags: [code/pipe_abstraction, code/pipe_implementation]
+  * concepts: [In-Memory Producer-Consumer Byte Pipes]
+  * facets: {layer: utility, status: legacy, complexity: high}
+  * -->
   */
 public abstract class APipeByte
 extends AStreamByte
@@ -39,18 +44,22 @@ implements IStreamByte {
 	/// #region : Interface IStreamOutByte: Implementation
 	////////////////////////////////////////////////////////////////////////////////
 	
-	/** @see streamIO.Byte.IStreamOutByte#addString(byte[], int, int)	 */
+	/** Writes the byte range [off, off+len) to this Pipe.
+	 * @see streamIO.Byte.IStreamOutByte#addString(byte[], int, int)	 */
 	public void write(byte[] b, int off, int len) throws IOException {
 		AStreamOutByte.WRITE(this, b, off, len); }
 
-	/** @see streamIO.Byte.IStreamOutByte#addString(byte[]) */
+	/** Writes the whole byte array to this Pipe.
+	 * @see streamIO.Byte.IStreamOutByte#addString(byte[]) */
 	public void write(byte[] b) throws IOException { write(b, 0, b.length); }
 
-	/** @see streamIO.Byte.IStreamOutByte#addString(char[], int, int)	 */
+	/** Writes the char range [off, off+len) as bytes to this Pipe, swallowing any IOException.
+	 * @see streamIO.Byte.IStreamOutByte#addString(char[], int, int)	 */
 	public void write(final char[] b, final int off, final int len) {
 		AStreamOutByte.WRITE_SAFE(this, b, off, len); }
 
-	/** @see streamIO.Byte.IStreamOutByte#addString(char[]) */
+	/** Writes the whole char array as bytes to this Pipe.
+	 * @see streamIO.Byte.IStreamOutByte#addString(char[]) */
 	public void write(final char[] b) { write(b, 0, b.length); }
 
 	/** @see streamIO.Byte.IStreamOutByte#addItem(int[], int, int)	 
@@ -62,24 +71,29 @@ implements IStreamByte {
 	public void addItem(int[] b) throws IOException { addItem(b, 0, b.length); }
 	 */
 
-	/** @see streamIO.Byte.IStreamOutByte#addString(String, int, int)	 */
+	/** Writes the substring [off, off+len) as bytes to this Pipe.
+	 * @see streamIO.Byte.IStreamOutByte#addString(String, int, int)	 */
 	public void write(final String b, final int off, final int len) throws IOException {
 		AStreamOutByte.WRITE(this, b, off, len); }
 
-	/** @see streamIO.Byte.IStreamOutByte#addString(String) */
+	/** Writes the whole String as bytes to this Pipe.
+	 * @see streamIO.Byte.IStreamOutByte#addString(String) */
 	public void write(final String b) throws IOException { write(b, 0, b.length()); }
 
-	/** @see streamIO.Byte.IStreamOutByte#addString(StringBuffer, int, int)	 */
+	/** Writes the StringBuffer range [start, stop) as bytes to this Pipe.
+	 * @see streamIO.Byte.IStreamOutByte#addString(StringBuffer, int, int)	 */
 	public IStreamOutByte addBuffer(final StringBuffer b, final int stop, final int start) {
-		AStreamOutByte.WRITE_SAFE(this, b, stop, start); 
+		AStreamOutByte.WRITE_SAFE(this, b, stop, start);
 		return this; }
-	
-	/** @see streamIO.Byte.IStreamOutByte#addString(StringBuffer)	 */
-	public IStreamOutByte addBuffer(final StringBuffer b, final int stop) { 
+
+	/** Writes the leading StringBuffer range [0, stop) as bytes to this Pipe.
+	 * @see streamIO.Byte.IStreamOutByte#addString(StringBuffer)	 */
+	public IStreamOutByte addBuffer(final StringBuffer b, final int stop) {
 		return addBuffer(b, stop, 0); }
-	
-	/** @see streamIO.Byte.IStreamOutByte#addString(StringBuffer)	 */
-	public IStreamOutByte addBuffer(final StringBuffer b) { 
+
+	/** Writes the whole StringBuffer as bytes to this Pipe.
+	 * @see streamIO.Byte.IStreamOutByte#addString(StringBuffer)	 */
+	public IStreamOutByte addBuffer(final StringBuffer b) {
 		return addBuffer(b, b.length()); }
 	
 	////////////////////////////////////////////////////////////////////////////////
@@ -127,22 +141,28 @@ implements IStreamByte {
 	/// #region : Parent IStreamOutByte: abstract Methods
 	////////////////////////////////////////////////////////////////////////////////
 	
-	/** @see streamIO.Float.IStreamIn_Int#getOrder()	 */
+	/** Returns the byte order of this Pipe's Data.
+	 * @see streamIO.Float.IStreamIn_Int#getOrder()	 */
 	public abstract byte getOrder(); // { return 0; }
 
-	/** @see streamIO.Byte.IStreamIn_Byte#available()	 */
+	/** Returns the number of bytes available to read without blocking.
+	 * @see streamIO.Byte.IStreamIn_Byte#available()	 */
 	public abstract int available() throws IOException; // { return 0; }
 
-	/** @see streamIO.Byte.IStreamIn_Byte#mark(int) */
+	/** Marks the current Position, allowing up to {@code readLimit} bytes to be read before invalidation.
+	 * @see streamIO.Byte.IStreamIn_Byte#mark(int) */
 	public abstract void mark(int readLimit); // {}
 
-	/** @see streamIO.Byte.IStreamIn_Byte#getMaxMarkSize()	 */
+	/** Returns the maximum number of bytes that can be marked and reset.
+	 * @see streamIO.Byte.IStreamIn_Byte#getMaxMarkSize()	 */
 	public abstract long getMaxMarkSize(); // { return false; }
 
-	/** @see streamIO.Byte.IStreamIn_Byte#read()	 */
+	/** Reads and returns the next byte, or EOF at end of Pipe.
+	 * @see streamIO.Byte.IStreamIn_Byte#read()	 */
 	public abstract int read() throws IOException; //{ return 0; }
 
-	/** @see streamIO.Byte.IStreamIn_Byte#reSet(long)	 */
+	/** Resets this Pipe to the given Position relative to the last mark.
+	 * @see streamIO.Byte.IStreamIn_Byte#reSet(long)	 */
 	public abstract long reSet(long position); // { return 0; }
 
 	////////////////////////////////////////////////////////////////////////////////
@@ -159,6 +179,10 @@ implements IStreamByte {
 	 * @param args Array of parameters passed to the application
 	 * via the command line.	 */
 	public static void main (final String[] args) throws Exception {
+		// TODO: LOGIC: calls testIt(args), but the only testIt() defined in this class takes no
+		// arguments - this does not compile as written (no applicable testIt(String[]) overload
+		// exists here). Should be testIt() (ignoring args) or a testIt(String[]) overload needs
+		// to be added.
 		testIt(args); }
 
 }

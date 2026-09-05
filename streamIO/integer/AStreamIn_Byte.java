@@ -28,6 +28,11 @@ import function.byref.ByRefInt;
   * @see IStreamIn_Byte
   * @see java.io.OutputStream
   * @see java.io.InputStream
+  * <!-- docstate
+  * tags: [code/stream_io, code/stream_input, code/stream_output, code/struct]
+  * concepts: [Primitive and Structured Stream I/O Core Abstractions]
+  * facets: {layer: utility, status: legacy, complexity: high}
+  * -->
   */
 public abstract class AStreamIn_Byte
 extends AAStreamIn_Int 
@@ -122,33 +127,41 @@ implements IStreamIn_Byte, Cloneable {//  to support the clone() Method below
     /// abstract Methods
     /////////////////////////////////////////////////////////////////////////////////////
     
-    /** @see streamIO.integer.IStreamIn_Byte#available()     */
+    /** Returns the number of bytes that can be read without blocking.
+     * @see streamIO.integer.IStreamIn_Byte#available()     */
     abstract public int available() throws IOException;
-    
-    /** @see streamIO.IOrdered#getOrder()     */
-    abstract public byte getOrder(); 
-    
-    /** @see streamIO.IAvailAble#getPosition()     */
-    abstract public long getPosition(); 
-    
-    /** @see streamIO.real.IStreamIn_Bound_Float#getMinDouble()     */
-    public double getMinDouble() { return Byte.MIN_VALUE; } 
-    
+
+    /** Returns the byte order this stream reads values in.
+     * @see streamIO.IOrdered#getOrder()     */
+    abstract public byte getOrder();
+
+    /** Returns the current read position within this stream.
+     * @see streamIO.IAvailAble#getPosition()     */
+    abstract public long getPosition();
+
+    /** Returns the minimum value representable, as a double ({@link Byte#MIN_VALUE}).
+     * @see streamIO.real.IStreamIn_Bound_Float#getMinDouble()     */
+    public double getMinDouble() { return Byte.MIN_VALUE; }
+
     /////////////////////////////////////////////////////////////////////////////////////
     /// Default Implementations
     /////////////////////////////////////////////////////////////////////////////////////
-    
-    final public ByRefInt currItem = new ByRefInt(); //ByRefByte(); 
-    
-    /** @see streamIO.object.IStreamIn#currItem()     */
+
+    /** Holds the current Item as a boxed, reusable {@code int} reference. */
+    final public ByRefInt currItem = new ByRefInt(); //ByRefByte();
+
+    /** Returns the current Item, boxed as a {@link ByRefInt}.
+     * @see streamIO.object.IStreamIn#currItem()     */
     public Object currItem() { return currItem; }
-    
-    /** @see streamIO.real.IStreamIn_Float#nextDouble()     */
+
+    /** Returns the next value widened to a double.
+     * @see streamIO.real.IStreamIn_Float#nextDouble()     */
     public double nextDouble() { return nextInt(); }
     
-    /** @see streamIO.IFactory#nextItem()
+    /** Advances to and returns the next Item, or {@link #EOI} at end of stream.
+     * @see streamIO.IFactory#nextItem()
      */
-    public Object nextItem() { 
+    public Object nextItem() {
         final int nextInt = nextInt();
         if (nextInt == EOF)
             return EOI; 
@@ -577,16 +590,20 @@ implements IStreamIn_Byte, Cloneable {//  to support the clone() Method below
 	  */
 	public long nextLong() { return nextInt(); }
 	
-	/** @see streamIO.integer.IStreamIn_Int#currLong()	 */
+	/** Returns the current Item as a {@code long}, without advancing.
+	 * @see streamIO.integer.IStreamIn_Int#currLong()	 */
 	public long currLong() { return currItem.Value; }
-	
-	/** @see streamIO.integer.IStreamIn_Int#currInt()	 */
+
+	/** Returns the current Item as an {@code int}, without advancing.
+	 * @see streamIO.integer.IStreamIn_Int#currInt()	 */
 	public int currInt() { return currItem.Value; }
-	
-	/** @see streamIO.real.IStreamIn_Float#currDouble()	 */
+
+	/** Returns the current Item widened to a {@code double}, without advancing.
+	 * @see streamIO.real.IStreamIn_Float#currDouble()	 */
 	public double currDouble() { return currItem.Value; }
-	
-	/** @see streamIO.real.IStreamIn_Float#currFloat()	 */
+
+	/** Returns the current Item widened to a {@code float}, without advancing.
+	 * @see streamIO.real.IStreamIn_Float#currFloat()	 */
 	public float currFloat() { return currItem.Value; }
 	
 	/** return the String read from the Stream 

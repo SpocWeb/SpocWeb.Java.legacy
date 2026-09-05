@@ -41,6 +41,11 @@ import tools.IOError;
  * @author mheuer
  * @version	1.0
  *
+ * <!-- docstate
+ * tags: [code/stream_adapter, code/stream_bridging, code/stream_wrapper]
+ * concepts: [Bridges streamIO Interfaces to java.io and Arrays]
+ * facets: {layer: utility, status: legacy, complexity: high}
+ * -->
  */
 public class InputStreamToStreamIn_Byte 
 extends AStreamIn_Byte 
@@ -151,28 +156,34 @@ implements IStreamIn_Byte {
 	  */
 	public long getMaxMarkSize() { return stream.markSupported() ? Integer.MAX_VALUE : -1; }
 	
-	/** @see streamIO.Byte.IStreamIn_Byte#mark(int)	 */
+	/** Marks the current position in the wrapped InputStream.
+	 * @see streamIO.Byte.IStreamIn_Byte#mark(int)	 */
 	public IMarkAble mark(long readLimit) { stream.mark((int) readLimit); return this; }
-	
-	/** @see streamIO.Float.IStreamIn_Int#getOrder()	 */
+
+	/** Not tracked by the wrapped InputStream; always returns 0.
+	 * @see streamIO.Float.IStreamIn_Int#getOrder()	 */
 	public byte getOrder() { return 0; }
-	
-	/** @see streamIO.object.AStreamIn#getPosition()	 */
+
+	/** Not tracked by the wrapped InputStream; always returns 0.
+	 * @see streamIO.object.AStreamIn#getPosition()	 */
 	public long getPosition() { return 0; } //stream.getPosition(); }
 	
 	/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 	/// Optimizations 
 	/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 	
-	/** @see streamIO.Byte.IStreamIn_Byte#read(byte[], int, int)	 */
+	/** Delegates to the wrapped InputStream's {@code read(byte[], int, int)}.
+	 * @see streamIO.Byte.IStreamIn_Byte#read(byte[], int, int)	 */
 	public int read(byte[] b, int off, int len) throws IOException {
 		return stream.read(b, off, len); }
-	
-	/** @see streamIO.Byte.IStreamIn_Byte#read(byte[])	 */
+
+	/** Delegates to the wrapped InputStream's {@code read(byte[])}.
+	 * @see streamIO.Byte.IStreamIn_Byte#read(byte[])	 */
 	public int read(byte[] b) throws IOException { return stream.read(b); }
-	
-	/** @see streamIO.Byte.IStreamIn_Byte#jump(long)	 */
-	public long jump(final long n) { 
+
+	/** Skips {@code n} bytes on the wrapped InputStream, wrapping any IOException as an unchecked IOError.
+	 * @see streamIO.Byte.IStreamIn_Byte#jump(long)	 */
+	public long jump(final long n) {
 	    try { return stream.skip(n); 
 	    } catch(final IOException x) {
 	        throw new IOError(x);

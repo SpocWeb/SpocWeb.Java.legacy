@@ -34,6 +34,11 @@ import streamIO.IIStreamOut;
  * 
  * @author heuerm
  * @version 1.0
+ * <!-- docstate
+ * tags: [code/stream_io, code/stream_input, code/stream_output, code/struct]
+ * concepts: [Primitive and Structured Stream I/O Core Abstractions]
+ * facets: {layer: utility, status: legacy, complexity: high}
+ * -->
  */
 public interface IStreamOutStruct 
 extends IStreamOutPrimitive, IStreamOutStructArrays, IIStreamOut {
@@ -41,11 +46,14 @@ extends IStreamOutPrimitive, IStreamOutStructArrays, IIStreamOut {
 	/** Reserved Keyword for the Type Information Attribute 	 */
 	final public static String STR_VALUE = "_value_"; 
 	
-	final public static String STR_CLASS = "_class_"; 
-	
-	final public static String STR_REF_ID = "_refId_"; 
-	
-	final public static String STR_OBJ_ID = "_objId_"; 
+	/** Reserved Keyword for the Name-Value Pair holding an Object's Class name */
+	final public static String STR_CLASS = "_class_";
+
+	/** Reserved Keyword for the Name-Value Pair holding a back-reference to an already-written Object's ID */
+	final public static String STR_REF_ID = "_refId_";
+
+	/** Reserved Keyword for the Name-Value Pair holding the ID assigned to a newly-written Object */
+	final public static String STR_OBJ_ID = "_objId_";
 	
 	/** Name of the 'Dummy' Name-Value Pair for the Member Name 	 */
 	//public static String STR_NAME = "_name_"; 

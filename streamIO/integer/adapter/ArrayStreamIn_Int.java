@@ -31,6 +31,11 @@ import streamIO.object.IStreamIn;
  * @author heuerm
  * @version	1.0
  *
+ * <!-- docstate
+ * tags: [code/stream_adapter, code/stream_bridging, code/stream_wrapper]
+ * concepts: [Bridges streamIO Interfaces to java.io and Arrays]
+ * facets: {layer: utility, status: legacy, complexity: high}
+ * -->
  */
 public class ArrayStreamIn_Int 
 extends AStreamIn_Int
@@ -52,7 +57,8 @@ implements IStreamIn_Int {
 	/** Local Cache for the Order of the Array	 */
 	protected byte order = IStreamIn.ORDER_NONE;
 	
-	/** @see streamIO.real.IStreamIn_Float#getOrder()	 */
+	/** Returns the cached Order of the wrapped Array.
+	 * @see streamIO.real.IStreamIn_Float#getOrder()	 */
 	public byte getOrder() { return order; }
 
 	/** Data Repository 	 */
@@ -93,7 +99,8 @@ implements IStreamIn_Int {
 	/// Methods
 	///////////////////////////////////////////////////////////////////////////
 
-    /** @see streamIO.real.AAStreamIn_Float#getPosition()     */
+    /** Returns the current read Position (Index) within the wrapped Array.
+     * @see streamIO.real.AAStreamIn_Float#getPosition()     */
     public long getPosition() { return pos; }
     
 	/**Marks the current position in this Iterator.
@@ -107,30 +114,41 @@ implements IStreamIn_Int {
 		mark = pos; 
 		return this; }
 	
-	/** @see streamIO.real.StreamIn_Float#reSet()	 */
+	/** Resets the Position to the last mark()ed Index.
+	 * @see streamIO.real.StreamIn_Float#reSet()	 */
 	public IReSetAble reSet() { pos = mark; return this; }
-	
-	/** @see streamIO.integer.IStreamIn_Int#nextLong()	 */
+
+	/** Reads and returns the next raw {@code long} value from the wrapped Array.
+	 * @see streamIO.integer.IStreamIn_Int#nextLong()	 */
 	public long nextLongInternal() {
 		if (arrInt != null) {
 			if (++pos >= max) {
 				return EOF; }
-			return arrInt[pos]; 
-		} 
-		return nextInt(); 
+			return arrInt[pos];
+		}
+		// TODO: LOGIC: this delegates to nextInt(), but nextInt() (in the AStreamIn_Int parent)
+		// is implemented as "(int) nextLong()", and nextLong() calls back into this very method
+		// (nextLongInternal()). When this class wraps a long[] (arrInt == null), every call
+		// recurses into itself indefinitely, causing a StackOverflowError instead of reading
+		// arrLong[pos]. This branch should read from arrLong directly (mirroring the arrInt
+		// branch above), not call nextInt().
+		return nextInt();
 	}
 	
-	/** @see streamIO.real.IStreamIn_Bound_Float#getMinDouble()	 */
+	/** Returns the minimum Value present in the wrapped Array.
+	 * @see streamIO.real.IStreamIn_Bound_Float#getMinDouble()	 */
 	public double getMinDouble() {
 		if (arrInt != null)
 		return VectorInt.MIN_VAL(arrInt);
 		return VectorInt.MIN_VAL(arrLong);
 	}
 	
-    /** @see streamIO.real.AAStreamIn_Float#availAble()     */
+    /** Returns the number of Items still available to read, based on the wrapped Array's length.
+     * @see streamIO.real.AAStreamIn_Float#availAble()     */
     public long availAble() { return getMaxMarkSize()-pos; }
 
-    /** @see streamIO.real.AAStreamIn_Float#getMaxMarkSize()     */
+    /** Returns the length of the wrapped Array.
+     * @see streamIO.real.AAStreamIn_Float#getMaxMarkSize()     */
     public long getMaxMarkSize() {
         if (arrLong != null)
             return arrLong.length; 

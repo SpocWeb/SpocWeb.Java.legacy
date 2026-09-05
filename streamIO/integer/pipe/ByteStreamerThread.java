@@ -24,6 +24,11 @@ import tester.process.StreamProcessor;
  * This is especially necessary, when remoting a Process,
  * because otherwise forwarding both Input and Output streamIO
  * would block each other. 
+ * <!-- docstate
+ * tags: [code/pipe_abstraction, code/pipe_implementation]
+ * concepts: [In-Memory Producer-Consumer Byte Pipes]
+ * facets: {layer: utility, status: legacy, complexity: high}
+ * -->
  */
 public class ByteStreamerThread 
 extends Thread {

@@ -23,6 +23,11 @@ import java.io.IOException;
   * Created on	12-22-2002, 03:52 PM<p>
   * @author 	Matthias Heuer
   * @version	1.0
+  * <!-- docstate
+  * tags: [code/stream_io, code/stream_input, code/stream_output, code/struct]
+  * concepts: [Primitive and Structured Stream I/O Core Abstractions]
+  * facets: {layer: utility, status: legacy, complexity: high}
+  * -->
   */
 public interface IStreamByteRandom 
 extends IStreamByte {
@@ -38,9 +43,9 @@ extends IStreamByte {
 	 */
 	public long getFilePointer()   throws IOException;   // in updateRow(),
 	
-	/**
+	/** Returns the length of the underlying file.
 	 * @see java.io.RandomAccessFile#length()
-	 * @return the Length of the File 
+	 * @return the Length of the File
 	 * @throws IOException
 	 */
 	public long length()           throws IOException; // in updateRow(), moveToInsertRow()

@@ -34,11 +34,11 @@ import tools.IOError;
  * 1 List Separator: ,
  * 
  * alle add-Operationen sollten mit einem Separator versehen werden, 
- * damit man auch bei variablen und unbekannten Längen, 
+ * damit man auch bei variablen und unbekannten Lï¿½ngen, 
  * die bei lesbaren Formaten unweigerlich auftreten, noch parsen kann. 
  * 
- * Bei binären Formaten ist das weniger notwendig,
- * denn die Größe der Elemente (int, byte, double etc.) sind bekannt
+ * Bei binï¿½ren Formaten ist das weniger notwendig,
+ * denn die Grï¿½ï¿½e der Elemente (int, byte, double etc.) sind bekannt
  * und mit der Struktur ist auch das Rekonstruieren trivial!
  * 
  * Known SubClasses: <none>
@@ -50,6 +50,11 @@ import tools.IOError;
  * Created on	10-26-2002, 12:47 PM<p>
  * @author heuerm
  * @version	1.0
+ * <!-- docstate
+ * tags: [code/stream_io, code/stream_input, code/stream_output, code/struct]
+ * concepts: [Primitive and Structured Stream I/O Core Abstractions]
+ * facets: {layer: utility, status: legacy, complexity: high}
+ * -->
  */
 final public class StreamOutStruct 
 extends AStreamOutStruct
@@ -252,7 +257,8 @@ implements IStreamOutStruct
 		pushStruct(close); 
 	}
 	
-	/** @see streamIO.integer.IStreamOutStruct#writeNameValuePair(java.lang.String, java.lang.String)	 */
+	/** Writes a Name-Value Pair, quoting the Value by default.
+	 * @see streamIO.integer.IStreamOutStruct#writeNameValuePair(java.lang.String, java.lang.String)	 */
 	public IStreamOutStruct writeNameValuePair(final String name, final String value) {
 		return writeNameValuePair(name, value, true); }
 	
@@ -260,8 +266,9 @@ implements IStreamOutStruct
 	/// Lists of Values
 	///////////////////////////////////////////////////////////////////////////
 	
-	/** @see streamIO.integer.IStreamOutStruct#open_Struct(java.lang.String)	 */
-	public IStreamOutStruct open_Struct(final String openClose) { 
+	/** Writes the given Name, then opens a nested structure.
+	 * @see streamIO.integer.IStreamOutStruct#open_Struct(java.lang.String)	 */
+	public IStreamOutStruct open_Struct(final String openClose) {
 		writeName(openClose); 
 		open_Struct(); 
 		return this; }
@@ -334,7 +341,7 @@ implements IStreamOutStruct
 				listChr(); 
 			} else //start a List...
 				pushStruct(chrCol); 
-			if (insertRows) // == startedTag) // für leere Seps
+			if (insertRows) // == startedTag) // fï¿½r leere Seps
 				indent(2); // 
 			WRITE(streamByte, name); //addString(name); 
 			streamByte.write(chrPair); 
@@ -499,8 +506,9 @@ implements IStreamOutStruct
 	/// static Testing & Main Methods
 	///////////////////////////////////////////////////////////////////////////
 	
+	/** Smoke-tests writing structured double Arrays/Values through this Writer. */
 	public static void main(final String[] args) {
-		final StreamOutStruct stream = new StreamOutStruct(new StringBufferOutputStream()); 
+		final StreamOutStruct stream = new StreamOutStruct(new StringBufferOutputStream());
 		final double[] values = new double[9]; 
 		stream.addDoubles(values); 
 		stream.addDoubles(values); 

@@ -52,12 +52,16 @@ import streamIO.integer.pipe.MonitorByte;
  *
  * @author  Matthias Heuer
  * @version
+ * <!-- docstate
+ * tags: [code/multiplexer, code/multiplexing, code/raid_encoding]
+ * concepts: [RAID-Style Stream Multiplexing plus Markov/Viterbi Math]
+ * facets: {layer: domain, status: legacy, complexity: high}
+ * -->
  */
 public class DeMultiplexerIn_Raid5 
 extends DeMultiplexerIn_Raid0 {
 
-	/**
-	 * 
+	/** Runs {@link #testIt()} when invoked with no arguments.
 	 * @param args
 	 */
 	public static void main(final String[] args) throws IOException {
@@ -158,11 +162,17 @@ extends DeMultiplexerIn_Raid0 {
 			return this.currItem = thisItem; 
 		} //first Exception is ignored!
 		if ((thisItem ^ nextItem) != parity)
-			throw new IOException("Transmission Error: Expected:"+parity+" actual:"+(currItem ^ nextItem)); 
+			// TODO: LOGIC: the "actual" value logged here is "currItem ^ nextItem", but currItem
+			// still holds the Item from the *previous* read() call at this point (it is only
+			// assigned below, after this check) - the diagnostic should report the just-computed
+			// "thisItem ^ nextItem" (the value actually compared against parity above), not a
+			// stale currItem XORed with nextItem.
+			throw new IOException("Transmission Error: Expected:"+parity+" actual:"+(currItem ^ nextItem));
 		return this.currItem = thisItem; 
 	}
 
-	/** @see streamIO.integer.IStreamIn_Byte#mark(int)	 */
+	/** Marks every source Stream, dividing the read limit evenly across them.
+	 * @see streamIO.integer.IStreamIn_Byte#mark(int)	 */
 	public void mark(final int readlimit) {
 		markInStream = currInStream; 
 		final int roundlimit = 1 + (readlimit / sources.length);

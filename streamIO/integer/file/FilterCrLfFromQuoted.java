@@ -13,6 +13,11 @@ import java.io.IOException;
   * 
   * @author  Matthias Heuer
   * @version
+  * <!-- docstate
+  * tags: [code/file_io, code/stream_io]
+  * concepts: [File-Backed StreamIO Implementations]
+  * facets: {layer: utility, status: legacy, complexity: high}
+  * -->
   */
 public class FilterCrLfFromQuoted {
 	
@@ -23,23 +28,24 @@ public class FilterCrLfFromQuoted {
     protected static final String [] DEFAULT_ARGS = new String [] {
     		"D:\\Personal\\Databases\\MusicCollection\\Tracks.txt", 
 			"D:\\Personal\\Databases\\MusicCollection\\Tracks1.txt"};
-	/**
+	/** Throws all CR/LF Characters out of Quoted Sections in the File.
 	  * @param args the command line arguments
-	  *
-	  * Throws all CR/LF Characters out of Quoted Sections in the File...
 	  */
 	public static void main (String[] args) throws FileNotFoundException, IOException {
 		if (args.length == 0)
-			args = DEFAULT_ARGS; 
+			args = DEFAULT_ARGS;
 		final  FileInputStream FI = new  FileInputStream(args[0]);
 		final FileOutputStream FO = new FileOutputStream(args[1]);
+		// TODO: LOGIC: neither FI nor FO is closed in a finally block, and FI is never closed at
+		// all (only FO.close() below) - an IOException partway through the loop leaks both File
+		// handles.
 		boolean inside = false;
 		for(int val; (val = FI.read ()) != -1;) {
-			if (val == '"') { 
+			if (val == '"') {
 				inside = !inside; FO.write (val); }
-			else if((val == '\r') || 
-					(val == '\n')) { 
-				if (! inside) 
+			else if((val == '\r') ||
+					(val == '\n')) {
+				if (! inside)
 					FO.write (val); }
 			else FO.write (val);
 		}

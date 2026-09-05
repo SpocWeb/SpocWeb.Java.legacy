@@ -41,6 +41,11 @@ import tools.IOError;
  * Created on	10-26-2002, 12:47 PM<p>
  * @author heuerm
  * @version	1.0
+ * <!-- docstate
+ * tags: [code/stream_io, code/stream_input, code/stream_output, code/struct]
+ * concepts: [Primitive and Structured Stream I/O Core Abstractions]
+ * facets: {layer: utility, status: legacy, complexity: high}
+ * -->
  */
 final public class StreamIn_Struct 
 extends StreamIn_Primitive 
@@ -66,15 +71,14 @@ implements IStreamIn_Struct, IStreamIn_StructX {
 	/// Constructors
 	///////////////////////////////////////////////////////////////////////////////
 	
-	/**
-	 * @param _stream the Stream to read from 
+	/** Wraps the given byte Stream to read structured Data from it, without Separators.
+	 * @param _stream the Stream to read from
 	 */
 	public StreamIn_Struct(final IStreamIn_Byte _stream) { super(_stream); }
-	
-	/**
-	 * 
-	 * @param _stream the Stream to read from 
-	 * @param separators the Separator Characters to use. 
+
+	/** Wraps the given byte Stream to read structured Data from it, using the given Separators.
+	 * @param _stream the Stream to read from
+	 * @param separators the Separator Characters to use.
 	 */
 	public StreamIn_Struct(final IStreamIn_Byte _stream, final String separators) {
 		super(_stream);
@@ -216,7 +220,8 @@ implements IStreamIn_Struct, IStreamIn_StructX {
 	/** If true, the Separators found on parsing, are removed from the Result */
 	public boolean removeLast = true;
 	
-	/** @return the current Object (the collected StringBuffer) without moving.
+	/** Returns the current collected StringBuffer without advancing.
+	 * @return the current Object (the collected StringBuffer) without moving.
 	  * Here it is used to return the actual Data instead of the Tokens.
 	  * It also optionally removes the last Character
 	  * and prepares clearing the String at the next nextItem() Call.
@@ -226,7 +231,8 @@ implements IStreamIn_Struct, IStreamIn_StructX {
 			return null; //EOI; //this is only to keep the Semantics and return EOI instead of -1
 		return buffer; }
 	
-	/** @return the current Object (the collected StringBuffer) without moving.
+	/** Returns the current collected content as a String without advancing.
+	 * @return the current Object (the collected StringBuffer) without moving.
 	  * Here it is used to return the actual Data instead of the Tokens.
 	  * It also optionally removes the last Character
 	  * and prepares clearing the String at the next nextItem() Call.
@@ -244,6 +250,7 @@ implements IStreamIn_Struct, IStreamIn_StructX {
 	  * handing back the ByRefInt. 
 	  * To hand back the actual Object filter using Parser2StreamIn! 
 	  */
+	/** Advances to the next Token and returns the collected StringBuffer, or {@code null} at end of stream. */
 	public StringBuffer nextBuffer() {
 		if (TAG_EOF == currToken)
 			return null; //EOI; //this is only to keep the Semantics and return EOI instead of -1
@@ -257,24 +264,31 @@ implements IStreamIn_Struct, IStreamIn_StructX {
 		return currBuffer(); 
 	}
 	
-	/** @see streamIO.integer.IStreamIn_Struct#nextString()	 */
+	/** Reads and returns the next String, or {@code null} at end of stream.
+	 * @see streamIO.integer.IStreamIn_Struct#nextString()	 */
 	public String nextString() {
+		// TODO: LOGIC: nextBuffer() returns null (not the EOI sentinel) at end of stream per its
+		// own Javadoc above, so this "EOI == nextBuffer()" comparison can never be true and EOF
+		// is never detected here - nextString() will call buffer.toString() on stale/empty
+		// content instead of returning null past the end of the stream.
 		if (EOI == nextBuffer())
-			return null; //EOI; 
-		return buffer.toString(); 
+			return null; //EOI;
+		return buffer.toString();
 	}
 	
-	/** @return the next Token or Character (in a ByRefInt when Separator == null or == "")
+	/** Advances to and returns the next Item (the collected StringBuffer).
+	 * @return the next Token or Character (in a ByRefInt when Separator == null or == "")
 	  * and adds the intermediate Characters to the StringBuffer returned by currItem().
 	  * Wraps IO Exceptions into BaseExceptions
 	  * Most simple Scanning Routine...
 	  * Design Decisions:
-	  * handing back the ByRefInt. 
-	  * To hand back the actual Object filter using Parser2StreamIn! 
+	  * handing back the ByRefInt.
+	  * To hand back the actual Object filter using Parser2StreamIn!
 	  */
 	public Object nextItem() { return nextBuffer(); }
-	
-	/** @return the current Object (the collected StringBuffer) without moving.
+
+	/** Returns the current Item (the collected StringBuffer) without advancing.
+	 * @return the current Object (the collected StringBuffer) without moving.
 	  * Here it is used to return the actual Data instead of the Tokens.
 	  * It also optionally removes the last Character
 	  * and prepares clearing the String at the next nextItem() Call.
@@ -290,7 +304,8 @@ implements IStreamIn_Struct, IStreamIn_StructX {
 	/** used solely in currToken()	 */
 	public int currToken; //
 	
-	/** @see streamIO.integer.IStreamIn_Struct#currToken()	 */
+	/** Returns the current Token value, without advancing.
+	 * @see streamIO.integer.IStreamIn_Struct#currToken()	 */
 	public int currToken() { return currToken;	}
 	
 	/** Resets the Iterator to the last marked Position,
@@ -312,6 +327,7 @@ implements IStreamIn_Struct, IStreamIn_StructX {
 	  * Created to provide a typesafe and more intuitively named Routine,
 	  * additionally to the generic nextItem() Routine!
 	  */
+	/** Advances to and returns the next Token, reading the intermediate Characters into {@link #buffer}. */
 	public int nextToken() throws IOException {
 		if (clearOnNext) 
 			buffer.setLength(0); 
@@ -504,22 +520,26 @@ implements IStreamIn_Struct, IStreamIn_StructX {
 	/** Buffer to collect a List of int Values	*/
 	protected short[] shortBuf = new short[5];  
 	
-	/** @see streamIO.integer.IStreamIn_Struct#nextShorts() */
+	/** Reads all remaining short Values into a newly allocated array.
+	 * @see streamIO.integer.IStreamIn_Struct#nextShorts() */
 	public short[] nextShorts() { 
 		final int len = nextShorts(Integer.MAX_VALUE, 0); 
 		final short[] ret = new short[len]; 
 		System.arraycopy(shortBuf, 0, ret, 0, len); 
 		return ret; }
 	
-	/** @see streamIO.integer.IStreamIn_Struct#nextShorts(short[]) */
+	/** Fills the given short array with as many Values as it holds.
+	 * @see streamIO.integer.IStreamIn_Struct#nextShorts(short[]) */
 	public int nextShorts(final short[] ret) {
 		return nextShorts(null, (ret != null) ? ret.length : Integer.MAX_VALUE); }
 	
-	/** @see streamIO.integer.IStreamIn_Struct#nextShorts(short[], int) */
+	/** Fills the leading range [0, stop) of the given short array.
+	 * @see streamIO.integer.IStreamIn_Struct#nextShorts(short[], int) */
 	public int nextShorts(final short[] ret, final int stop) {
 		return nextShorts(ret, stop, 0); }
 	
-	/** @see streamIO.integer.IStreamIn_Struct#nextShorts(short[], int, int) */
+	/** Fills the range [start, stop) of the given short array.
+	 * @see streamIO.integer.IStreamIn_Struct#nextShorts(short[], int, int) */
 	public int nextShorts(final short[] ret, final int stop, int start) {
 		start = nextShorts(stop, start);
 		System.arraycopy(shortBuf, 0, ret, 0, start); 
@@ -553,22 +573,26 @@ implements IStreamIn_Struct, IStreamIn_StructX {
 	/** Buffer to collect a List of int Values	*/
 	protected long[] longBuf = new long[5];  
 	
-	/** @see streamIO.integer.IStreamIn_Struct#nextLongs() */
+	/** Reads all remaining long Values into a newly allocated array.
+	 * @see streamIO.integer.IStreamIn_Struct#nextLongs() */
 	public long[] nextLongs() { 
 		final int len = nextLongs(Integer.MAX_VALUE, 0); 
 		final long[] ret = new long[len]; 
 		System.arraycopy(longBuf, 0, ret, 0, len); 
 		return ret; }
 	
-	/** @see streamIO.integer.IStreamIn_Struct#nextLongs(long[]) */
+	/** Fills the given long array with as many Values as it holds.
+	 * @see streamIO.integer.IStreamIn_Struct#nextLongs(long[]) */
 	public int nextLongs(final long[] ret) {
 		return nextLongs(null, (ret != null) ? ret.length : Integer.MAX_VALUE); }
 	
-	/** @see streamIO.integer.IStreamIn_Struct#nextLongs(long[], int) */
+	/** Fills the leading range [0, stop) of the given long array.
+	 * @see streamIO.integer.IStreamIn_Struct#nextLongs(long[], int) */
 	public int nextLongs(final long[] ret, final int stop) {
 		return nextLongs(ret, stop, 0); }
 	
-	/** @see streamIO.integer.IStreamIn_Struct#nextLongs(long[], int, int) */
+	/** Fills the range [start, stop) of the given long array.
+	 * @see streamIO.integer.IStreamIn_Struct#nextLongs(long[], int, int) */
 	public int nextLongs(final long[] ret, final int stop, int start) {
 		start = nextLongs(stop, start);
 		System.arraycopy(longBuf, 0, ret, 0, start); 
@@ -602,22 +626,26 @@ implements IStreamIn_Struct, IStreamIn_StructX {
 	/** Buffer to collect a List of int Values	*/
 	protected float[] floatBuf = new float[5];  
 	
-	/** @see streamIO.integer.IStreamIn_Struct#nextFloats() */
+	/** Reads all remaining float Values into a newly allocated array.
+	 * @see streamIO.integer.IStreamIn_Struct#nextFloats() */
 	public float[] nextFloats() { 
 		final int len = nextFloats(Integer.MAX_VALUE, 0); 
 		final float[] ret = new float[len]; 
 		System.arraycopy(floatBuf, 0, ret, 0, len); 
 		return ret; }
 	
-	/** @see streamIO.integer.IStreamIn_Struct#nextFloats(float[]) */
+	/** Fills the given float array with as many Values as it holds.
+	 * @see streamIO.integer.IStreamIn_Struct#nextFloats(float[]) */
 	public int nextFloats(final float[] ret) {
 		return nextFloats(null, (ret != null) ? ret.length : Integer.MAX_VALUE); }
 	
-	/** @see streamIO.integer.IStreamIn_Struct#nextFloats(float[], int) */
+	/** Fills the leading range [0, stop) of the given float array.
+	 * @see streamIO.integer.IStreamIn_Struct#nextFloats(float[], int) */
 	public int nextFloats(final float[] ret, final int stop) {
 		return nextFloats(ret, stop, 0); }
 	
-	/** @see streamIO.integer.IStreamIn_Struct#nextFloats(float[], int, int) */
+	/** Fills the range [start, stop) of the given float array.
+	 * @see streamIO.integer.IStreamIn_Struct#nextFloats(float[], int, int) */
 	public int nextFloats(final float[] ret, final int stop, int start) {
 		start = nextFloats(stop, start);
 		System.arraycopy(floatBuf, 0, ret, 0, start); 
@@ -651,22 +679,26 @@ implements IStreamIn_Struct, IStreamIn_StructX {
 	/** Buffer to collect a List of int Values	*/
 	protected double[] doubleBuf = new double[5];  
 	
-	/** @see streamIO.integer.IStreamIn_Struct#nextDoubles() */
+	/** Reads all remaining double Values into a newly allocated array.
+	 * @see streamIO.integer.IStreamIn_Struct#nextDoubles() */
 	public double[] nextDoubles() { 
 		final int len = nextDoubles(Integer.MAX_VALUE, 0); 
 		final double[] ret = new double[len]; 
 		System.arraycopy(doubleBuf, 0, ret, 0, len); 
 		return ret; }
 	
-	/** @see streamIO.integer.IStreamIn_Struct#nextDoubles(double[]) */
+	/** Fills the given double array with as many Values as it holds.
+	 * @see streamIO.integer.IStreamIn_Struct#nextDoubles(double[]) */
 	public int nextDoubles(final double[] ret) {
 		return nextDoubles(null, (ret != null) ? ret.length : Integer.MAX_VALUE); }
 	
-	/** @see streamIO.integer.IStreamIn_Struct#nextDoubles(double[], int) */
+	/** Fills the leading range [0, stop) of the given double array.
+	 * @see streamIO.integer.IStreamIn_Struct#nextDoubles(double[], int) */
 	public int nextDoubles(final double[] ret, final int stop) {
 		return nextDoubles(ret, stop, 0); }
 	
-	/** @see streamIO.integer.IStreamIn_Struct#nextDoubles(double[], int, int) */
+	/** Fills the range [start, stop) of the given double array.
+	 * @see streamIO.integer.IStreamIn_Struct#nextDoubles(double[], int, int) */
 	public int nextDoubles(final double[] ret, final int stop, int start) {
 		start = nextDoubles(stop, start);
 		System.arraycopy(doubleBuf, 0, ret, 0, start); 
@@ -716,37 +748,45 @@ implements IStreamIn_Struct, IStreamIn_StructX {
 	/** Buffer to collect a List of int Values	*/
 	protected String[] stringBuf = new String[5];  
 	
-	/** @see streamIO.integer.IStreamIn_Struct#nextStrings() */
-	public String[] nextStrings() { 
+	/** Reads all remaining Strings into a newly allocated array.
+	 * @see streamIO.integer.IStreamIn_Struct#nextStrings() */
+	public String[] nextStrings() {
 		final int len = nextStrings(Integer.MAX_VALUE, 0); 
 		final String[] ret = new String[len]; 
 		System.arraycopy(stringBuf, 0, ret, 0, len); 
 		return ret; }
 	
-	/** @see streamIO.integer.IStreamIn_Struct#nextStrings(java.lang.String[]) */
+	/** Fills the given String array with as many Values as it holds.
+	 * @see streamIO.integer.IStreamIn_Struct#nextStrings(java.lang.String[]) */
 	public int nextStrings(final String[] ret) {
 		return nextStrings(null, (ret != null) ? ret.length : Integer.MAX_VALUE); }
 	
-	/** @see streamIO.integer.IStreamIn_Struct#nextStrings(java.lang.String[], int) */
+	/** Fills the leading range [0, stop) of the given String array.
+	 * @see streamIO.integer.IStreamIn_Struct#nextStrings(java.lang.String[], int) */
 	public int nextStrings(final String[] ret, final int stop) {
 		return nextStrings(ret, stop, 0); }
 	
-	/** @see streamIO.integer.IStreamIn_Struct#nextStrings(java.lang.String[], int, int) */
+	/** Fills the range [start, stop) of the given String array.
+	 * @see streamIO.integer.IStreamIn_Struct#nextStrings(java.lang.String[], int, int) */
 	public int nextStrings(final String[] ret, final int stop, int start) {
 		start = nextStrings(stop, start);
 		System.arraycopy(stringBuf, 0, ret, 0, start); 
 		return start; }
 	
-	/**
-	 * @param stop
-	 * @param start
-	 * @return
+	/** Fills {@link #stringBuf} from index {@code start} up to {@code stop} with successive {@link #nextString()} results.
+	 * @param stop the first index not to fill (exclusive)
+	 * @param start the first index to fill (inclusive)
+	 * @return the number of Strings actually filled
 	 */
+	// TODO: LOGIC: same EOI/null mismatch as nextString() above - nextString() returns null
+	// (not the EOI sentinel) at end of stream, so "EOI == curr" below never detects end of
+	// stream; the loop instead keeps appending a null into stringBuf until the stop count is
+	// reached, rather than stopping at the true end of input.
 	private int nextStrings(final int stop, int start) {
 		for(; start < stop; ) {
-			final String curr = nextString(); 
-			if (EOI == curr) 
-				return start; //break; 
+			final String curr = nextString();
+			if (EOI == curr)
+				return start; //break;
 			if (start >= stringBuf.length) {
 				final String[] tmp = new String[stringBuf.length+stringBuf.length+1]; 
 				System.arraycopy(stringBuf, 0, tmp, 0, stringBuf.length); 
@@ -765,37 +805,44 @@ implements IStreamIn_Struct, IStreamIn_StructX {
 	/** Buffer to collect a List of int Values	*/
 	protected Object[] objectBuf = new Object[5];  
 	
-	/** @see streamIO.integer.IStreamIn_Struct#nextStrings() */
-	public Object[] nextItems() { 
+	/** Reads all remaining Items into a newly allocated array.
+	 * @see streamIO.integer.IStreamIn_Struct#nextItems() */
+	public Object[] nextItems() {
 		final int len = nextItems(Integer.MAX_VALUE, 0); 
 		final Object[] ret = new Object[len]; 
 		System.arraycopy(objectBuf, 0, ret, 0, len); 
 		return ret; }
 	
-	/** @see streamIO.integer.IStreamIn_Struct#nextItems(Object[]) */
+	/** Fills the given Object array with as many Values as it holds.
+	 * @see streamIO.integer.IStreamIn_Struct#nextItems(Object[]) */
 	public int nextItems(final Object[] ret) {
 		return nextItems(ret, ret.length); }
 	
-	/** @see streamIO.integer.IStreamIn_Struct#nextItems(Object[], int) */
+	/** Fills the leading range [0, stop) of the given Object array.
+	 * @see streamIO.integer.IStreamIn_Struct#nextItems(Object[], int) */
 	public int nextItems(final Object[] ret, final int stop) {
 		return nextItems(ret, stop, 0); }
 	
-	/** @see streamIO.integer.IStreamIn_Struct#nextItems(Object[], int, int) */
+	/** Fills the range [start, stop) of the given Object array.
+	 * @see streamIO.integer.IStreamIn_Struct#nextItems(Object[], int, int) */
 	public int nextItems(final Object[] ret, final int stop, int start) {
 		start = nextItems(stop, start);
-		System.arraycopy(objectBuf, 0, ret, 0, start); 
+		System.arraycopy(objectBuf, 0, ret, 0, start);
 		return start; }
-	
-	/**
-	 * @param stop
-	 * @param start
-	 * @return
+
+	/** Fills {@link #objectBuf} from index {@code start} up to {@code stop} with successive {@link #nextItem()} results.
+	 * @param stop the first index not to fill (exclusive)
+	 * @param start the first index to fill (inclusive)
+	 * @return the number of Items actually filled
 	 */
+	// TODO: LOGIC: same EOI/null mismatch as nextString()/nextStrings() above - nextItem()
+	// delegates to nextBuffer(), which returns null (not EOI) at end of stream, so "EOI == curr"
+	// below never detects end of stream.
 	private int nextItems(final int stop, int start) {
 		for(; start < stop; ) {
-			final Object curr = nextItem(); 
-			if (EOI == curr) 
-				return start; //break; 
+			final Object curr = nextItem();
+			if (EOI == curr)
+				return start; //break;
 			if (start >= objectBuf.length) {
 				final Object[] tmp = new Object[objectBuf.length+objectBuf.length+1]; 
 				System.arraycopy(objectBuf, 0, tmp, 0, objectBuf.length); 
@@ -842,6 +889,7 @@ implements IStreamIn_Struct, IStreamIn_StructX {
 	//	static Testing and main() Methods (not in Interfaces)
 	////////////////////////////////////////////////////////////////////////////
 	
+	/** Smoke-tests round-tripping a {@link VersionTree} through this Reader and a {@link StreamOutInstantiator}. */
 	public static void testStreaming() throws Exception {
 		final VersionTree vs = VersionedObjects.testIt(); 
 		final String original = vs.toString(); 
@@ -925,7 +973,7 @@ implements IStreamIn_Struct, IStreamIn_StructX {
 	/** Tests all Methods of this Class	 */
 	public static void testQuoting() throws Exception {
 		//java.nio.ByteBuffer buf; byte byt = buf.get(); 
-		final StringReader sr = new StringReader("Hallo, hier ist ein '\\'doppelt'' gequoteter, zusammenhängender' String, der nicht getrennt werden sollte!");
+		final StringReader sr = new StringReader("Hallo, hier ist ein '\\'doppelt'' gequoteter, zusammenhï¿½ngender' String, der nicht getrennt werden sollte!");
 		final IStreamIn_Byte inStream = new ReaderToStreamIn_Byte(sr); 
 		final String Separators = "\\', "; 
 		final StreamIn_Struct parser = new StreamIn_Struct(inStream, Separators); 

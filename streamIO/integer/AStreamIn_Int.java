@@ -30,6 +30,11 @@ import function.byref.ByRefLong;
  * 
  * @author heuerm
  * @version 1.0
+ * <!-- docstate
+ * tags: [code/stream_io, code/stream_input, code/stream_output, code/struct]
+ * concepts: [Primitive and Structured Stream I/O Core Abstractions]
+ * facets: {layer: utility, status: legacy, complexity: high}
+ * -->
  */
 public abstract class AStreamIn_Int 
 extends AAStreamIn_Int {
@@ -37,53 +42,68 @@ extends AAStreamIn_Int {
 	/** Long has enough Capacity to hold any integer Item 	 */
 	final public ByRefLong	currItem	= new ByRefLong();
 	
-	/** @see streamIO.real.AAStreamIn_Float#currItem() */
+	/** Returns the current Item, boxed as a {@link ByRefLong}.
+	 * @see streamIO.real.AAStreamIn_Float#currItem() */
 	final public Object currItem() { return currItem; }
-	
-	/** @see streamIO.real.AAStreamIn_Float#nextItem() */
+
+	/** Advances to and returns the next Item, boxed as a {@link ByRefLong}.
+	 * @see streamIO.real.AAStreamIn_Float#nextItem() */
 	final public Object nextItem() { nextLong(); return currItem; }
-	
-	/** @see Stream.Float.IStreamIn_Int#nextInt() */
+
+	/** Reads and returns the next {@code long} value, updating {@link #currItem}.
+	 * @see Stream.Float.IStreamIn_Int#nextInt() */
 	final public long nextLong() { return currItem.Value = nextLongInternal(); }
-	
-	/** @see Stream.Float.IStreamIn_Float#nextDouble() */
+
+	/** Returns the next value widened to a {@code double}.
+	 * @see Stream.Float.IStreamIn_Float#nextDouble() */
 	public double nextDouble() { return nextLong(); }
-	
-	/** @see streamIO.integer.AAStreamIn_Int#nextInt() */
+
+	/** Returns the next value narrowed to an {@code int}.
+	 * @see streamIO.integer.AAStreamIn_Int#nextInt() */
 	final public int nextInt() { return (int) nextLong(); }
-	
-	/** @see streamIO.real.IStreamIn_Float#currDouble()	 */
+
+	/** Returns the current Item widened to a {@code double}, without advancing.
+	 * @see streamIO.real.IStreamIn_Float#currDouble()	 */
 	public double currDouble() { return currItem.Value; }
-	
-	/** @see streamIO.real.IStreamIn_Float#currFloat()	 */
+
+	/** Returns the current Item narrowed to a {@code float}, without advancing.
+	 * @see streamIO.real.IStreamIn_Float#currFloat()	 */
 	public float currFloat() { return currItem.Value; }
-	
-	/** @see streamIO.real.IStreamIn_Float#currDouble()	 */
+
+	/** Returns the current Item as a {@code long}, without advancing.
+	 * @see streamIO.real.IStreamIn_Float#currDouble()	 */
 	public long currLong() { return currItem.Value; }
-	
-	/** @see streamIO.real.IStreamIn_Float#currFloat()	 */
+
+	/** Returns the current Item narrowed to an {@code int}, without advancing.
+	 * @see streamIO.real.IStreamIn_Float#currFloat()	 */
 	public int currInt() { return (int) currItem.Value; }
-	
+
 	/////////////////////////////////////////////////////////////////////////////////////
 	/// abstract Methods
 	/////////////////////////////////////////////////////////////////////////////////////
 
-	/** @see Stream.Float.IStreamIn_Int#nextInt() */
+	/** Reads and returns the next raw {@code long} value from the underlying source.
+	 * @see Stream.Float.IStreamIn_Int#nextInt() */
 	abstract protected long nextLongInternal();
 
-	/** @see streamIO.real.AAStreamIn_Float#getMinDouble() */
+	/** Returns the smallest value this stream can produce, as a double.
+	 * @see streamIO.real.AAStreamIn_Float#getMinDouble() */
 	abstract public double getMinDouble();
 
-	/** @see streamIO.integer.AAStreamIn_Int#getOrder() */
+	/** Returns the byte order this stream reads values in.
+	 * @see streamIO.integer.AAStreamIn_Int#getOrder() */
 	abstract public byte getOrder();
 
-	/** @see streamIO.real.AAStreamIn_Float#availAble() */
+	/** Returns the number of values still available from this stream.
+	 * @see streamIO.real.AAStreamIn_Float#availAble() */
 	abstract public long availAble();
 
-	/** @see streamIO.real.AAStreamIn_Float#getMaxMarkSize() */
+	/** Returns the maximum number of Values that can be marked and reset.
+	 * @see streamIO.real.AAStreamIn_Float#getMaxMarkSize() */
 	abstract public long getMaxMarkSize();
 
-	/** @see streamIO.real.AAStreamIn_Float#getPosition() */
+	/** Returns the current read position within this stream.
+	 * @see streamIO.real.AAStreamIn_Float#getPosition() */
 	abstract public long getPosition();
 	
 }

@@ -50,12 +50,17 @@ import streamIO.Log;
  * Created on	10-26-2002, 12:47 PM<p>
  * @author heuerm
  * @version	1.0
+ * <!-- docstate
+ * tags: [code/multiplexer, code/multiplexing, code/raid_encoding]
+ * concepts: [RAID-Style Stream Multiplexing plus Markov/Viterbi Math]
+ * facets: {layer: domain, status: legacy, complexity: high}
+ * -->
  */
 public class Markov1 {
 
-	/**
+	/** Computes the stationary (equilibrium) Probability Vector by raising the Transition Matrix to a high Power.
 	 * @param matrix the Transition Matrix.
-	 * @return the stationary Vector for the given Transition Matrix. 
+	 * @return the stationary Vector for the given Transition Matrix.
 	 */
 	public static final double[] STATIONARY(final double[][] matrix) {
 		final double[][] base = MatrixDouble.BXP(matrix, 10);
@@ -82,18 +87,18 @@ public class Markov1 {
 	
 	protected final String[] states; 
 	
-	/**
-	 * 
+	/** Constructs an unnamed Markov Chain of Order 1 from initial and transition Probabilities.
+	 * @param _initialProbs initial Probabilities
+	 * @param _transitProbs transition Probabilities
 	 */
 	public Markov1(final double[] _initialProbs, final double[][] _transitProbs) {
-		this(_initialProbs, _transitProbs, null); 
+		this(_initialProbs, _transitProbs, null);
 	}
 	
-	/**
-	 * 
-	 * @param _initialProbs initial    Probabilities 
-	 * @param _transitProbs transition Probabilities 
-	 * @param _stateNames Strings describing the Meaning of the States 
+	/** Constructs a named Markov Chain of Order 1, validating that Probabilities sum to 1.
+	 * @param _initialProbs initial    Probabilities
+	 * @param _transitProbs transition Probabilities
+	 * @param _stateNames Strings describing the Meaning of the States
 	 */
 	public Markov1(final double[] _initialProbs
 			, final double[][] _transitProbs
@@ -119,9 +124,9 @@ public class Markov1 {
 	/// Methods 
 	///////////////////////////////////////////////////////////////////////////
 	
-	/**
-	 * @return the stationary Probability Vector, 
-	 * unless the Matrix is reduceable.  
+	/** Returns this Chain's stationary Probability Vector.
+	 * @return the stationary Probability Vector,
+	 * unless the Matrix is reduceable.
 	 */
 	public double[] stationary() { return STATIONARY(this.transitionProbs); }
 	
@@ -167,24 +172,31 @@ public class Markov1 {
 	/** The Logger for this Class	 */
 	private static final Log L = new Log(Markov1.class); 
 	
+	/** Runs {@link #testIt()}. */
 	public static void main(final String[] args) throws Exception {
-		testIt(); 
+		testIt();
 	}
-	
+
+	/** Smoke-tests that {@link MatrixDouble#BXP} matches repeated squaring via {@link MatrixDouble#POW}. */
 	public static void testPower() throws Exception {
-		for(int i = -1; ++i < 6;) 
+		for(int i = -1; ++i < 6;)
 			Assert.EQUALS(
-					MatrixDouble.BXP(transitProbsSeaweed, i), 
-					MatrixDouble.POW(transitProbsSeaweed, 1 << i)); 
+					MatrixDouble.BXP(transitProbsSeaweed, i),
+					MatrixDouble.POW(transitProbsSeaweed, 1 << i));
 	}
-	
+
+	/** Runs {@link #testPower()} and validates the stationary Vector for both Test Matrices. */
 	public static void testIt() throws Exception {
-		testPower();  
-		testEigen(transitProbsSeaweed, stationarySeaweed); 
-		testEigen(TRANSIT_PROBS, STATIONARY); 
+		testPower();
+		testEigen(transitProbsSeaweed, stationarySeaweed);
+		testEigen(TRANSIT_PROBS, STATIONARY);
 	}
-	
-	public static void testEigen(final double[][] matrix, 
+
+	/** Validates that {@link #STATIONARY} for the given Matrix matches the expected eigenvector.
+	 * @param matrix the Transition Matrix to test
+	 * @param eigenvector the expected stationary Probability Vector
+	 */
+	public static void testEigen(final double[][] matrix,
 			final double[] eigenvector) throws Exception {
 		final double[] eigen = STATIONARY(matrix);
 		L.n(eigen); 

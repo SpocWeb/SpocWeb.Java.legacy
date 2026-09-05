@@ -30,6 +30,11 @@ import streamIO.object.parser.StreamOutXML;
  * Created on	10-26-2002, 12:47 PM<p>
  * @author heuerm
  * @version	1.0
+ * <!-- docstate
+ * tags: [code/stream_io, code/stream_input, code/stream_output, code/struct]
+ * concepts: [Primitive and Structured Stream I/O Core Abstractions]
+ * facets: {layer: utility, status: legacy, complexity: high}
+ * -->
  */
 abstract public class AStreamWriteAble 
 implements IStreamWriteAble {
@@ -147,7 +152,8 @@ implements IStreamWriteAble {
 	
 	/////////////////////////////////////////////////////////////////////////////
 	
+	/** Empty smoke-test entry point; performs no action. */
 	public static void main(final String[] args) throws Exception {
 	}
-	
+
 }
