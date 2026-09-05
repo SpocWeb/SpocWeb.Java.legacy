@@ -23,6 +23,15 @@ package streamIO.copy.boole;
  * This Class has been created for Delegation,
  * by having all Methods work with self,
  * because the SubClass absSetInteger is used by Binary and BitVector.
+ * <!-- docstate
+ * pass: 2
+ * mtime: 2026-09-05T10:13:24Z
+ * digest: 49c26c8d00d86df878f9079d10d1db506b6ca2fc8eaf7474efe8e7f5a016a26e
+ * stale: false
+ * tags: [code/boolean_algebra, code/abstract_base, code/delegation]
+ * concepts: [Boolean Algebra, Delegation Pattern]
+ * facets: {layer: utility, status: legacy, complexity: medium}
+ * -->
  * ArrStruct cannot use it directly, because Bits are not defined there!	 */
 public class ABoole	//abstract	cannot be abstract, because it has to be delegated to!
 extends ALattice

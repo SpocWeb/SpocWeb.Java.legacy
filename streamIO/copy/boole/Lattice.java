@@ -9,6 +9,15 @@ import streamIO.copy.ICopyAble;
  * a 'grtr' b <=> a Super b <=> a OR  b == b
  *
  * The Definition of AND and OR based on an Order Relation is done in 'MinMaxLattice'
+ * <!-- docstate
+ * pass: 2
+ * mtime: 2026-09-05T10:13:24Z
+ * digest: 6ca5e3beee3e2edafa97a0500620d55bec7e0852a18857611619c04b15937a89
+ * stale: false
+ * tags: [code/lattice_structure]
+ * concepts: [Lattice]
+ * facets: {layer: utility, status: legacy, complexity: medium}
+ * -->
  */
 public interface Lattice
 extends ILattice, ICopyAble

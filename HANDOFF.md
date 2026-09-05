@@ -128,7 +128,7 @@ concurrently against the same file):
 
 | Batch | Files | Lines | Documented | Status | Claimed by |
 |---|--:|--:|--:|---|---|
-| `streamIO/copy` (root+boole+groupM+monoid+order+primitiveOp+shift) | 82 | 11329 | 0 | claimed | agent-copy-misc |
+| `streamIO/copy` (root+boole+groupM+monoid+order+primitiveOp+shift) | 82 | 11329 | 82 | done | agent-copy-misc |
 | `streamIO/copy/group` | 124 | 31328 | 0 | claimed | agent-copy-group |
 | `function` (root+index+real+string+vector+byref) | 98 | 12899 | 0 | claimed | agent-function-misc |
 | `function/derive` | 106 | 14586 | 106 | done | agent-function-derive |
@@ -219,6 +219,14 @@ at 46% of the corpus) have not been sampled.
   of it fails outright. Read and write with the encoding the file already has.
 - **Match on LF, write back CRLF.** The tree is CRLF, so a patch script that matches
   multi-line strings has to normalise first or every match silently fails.
+- **`apply-tags` shares the same first-path-only quirk as `check-stale`/`list-todo`.**
+  Confirmed 2026-09-05 on `streamIO/copy`: passing 5 root file paths in one `apply-tags`
+  call wrote tags for only 1 of them (0 targets for the file that happened to already be
+  tagged, "unchanged" for it, real writes for the rest) - always invoke per-file.
+- **`check-stale` can corrupt a docstate block via duplicated comment fragments.**
+  `streamIO/copy/TestCopy.java`'s docstate block had each line prefixed with a duplicated
+  `//import Stream.*` fragment after a `check-stale` run - manually rewritten clean by the
+  agent. Worth a closer look if it recurs elsewhere.
 
 ## Decisions
 
@@ -510,6 +518,17 @@ same harness against it. A test that has not been seen red proves nothing.
 | function/derive/ring/body/Logarithm.java | Logarithm | getDerivative(double) | 58 | Returns `-Math.log(x)` instead of the correct derivative `1/x`; reachable on every call. | High | open |
 | function/derive/ring/body/Logarithm.java | Logarithm | getFuncDerive(double, ByRefDouble) | 65 | Returns `-Math.log(x)` as the function value instead of `Math.log(x)` (disagrees with `Map(x)`); the derivative ByRef output is correct, but the returned value is negated for every caller. | High | open |
 | function/derive/ring/body/vector/fSum.java | fSum | Map(Object) | 18 | `Sum` is initialized as a copy of `V.a[0]`, but the loop then runs `i` from `Dim-1` down to `0` inclusive and adds `V.getAt(0)` again, double-counting coordinate 0 in the result for every tensor of dimension >= 1. | High | open |
+| streamIO/copy/primitiveOp/AOpDouble.java | AOpDouble | copyAt/equals/less/grtr/MaxAt/MinAt/addAt/subAt/mulAt/divAt(long), LinAt(long,long) | 43,46,49,52,55,58,61,64,67,70,79 | Each of these 11 `long`-overload methods calls itself with an identical signature/arguments instead of delegating to the corresponding `double`-based op - infinite recursion, `StackOverflowError` on any call. | Critical | open |
+| streamIO/copy/primitiveOp/AOpMeasurAble.java | AOpMeasurAble | LinAt(long, long) | 60 | No-op - both parameters are ignored and the object is returned unchanged. | Medium | open |
+| streamIO/copy/shift/AShiftAble.java | AShiftAble | aslAt/asrAt/lsrAt(int, Object) | 143, 161, 178 | The `carry` parameter is accepted but never read or written - silently discarded (the original author left an inline TODO on `aslAt`). | Medium | open |
+| streamIO/copy/order/Interval.java | Interval | ANDAt(Interval) | 201 | Missing `return this;` after the no-containment branch - falls through into the partial-containment logic, corrupting the just-mutated state. | High | open |
+| streamIO/copy/monoid/integer/ASetInteger.java | ASetInteger | clear(int) | 38 | Uses XOR instead of AND-NOT to clear a bit - clearing an already-0 bit sets it to 1 instead. | High | open |
+| streamIO/copy/monoid/integer/Permutation.java | Permutation | Multi_Fact(Permutation) | 1600 | Parameter `p` is never read - always uses its own array, ignoring the documented "Carry Element used for the Base". | Medium | open |
+| streamIO/copy/monoid/AssociationEquivalence.java | AssociationEquivalence | equals(Object, Object) | 42 | Copy-paste: checks `A instanceof ICPair` instead of `B instanceof ICPair`, so the intended branch never fires when B is the `ICPair`. | Medium | open |
+| streamIO/copy/boole/TesterBond.java | TesterBond | ORat(Object) | 112 | Copy-paste from `ANDat`: detects `a OR !a` and sets `mTest = False`, should be `True`. | High | open |
+| streamIO/copy/boole/TesterBond.java | TesterBond | ORat(Object) | 114-122 | Copy-paste from `ANDat`: all four constant-argument branches are backwards for OR semantics. | Critical | open |
+| streamIO/copy/boole/fuzzy/FuzzyEQV.java | FuzzyEQV | getMembership(Object) | 47 | Missing `1 -` prefix - returns the raw difference instead of its complement, inverting equivalence semantics. | High | open |
+| streamIO/copy/ACopyAble.java | ACopyAble | toStream(IFormatOut) | 386 | Default `ST.addItem(this)` + `toString()` calling `toStream(...)` risks infinite recursion (already noted by the original author's own comment "leads to infinite Recursion!"). | Medium | open |
 
 ## Tool defects found and fixed during the pilot
 

@@ -29,6 +29,15 @@ import streamIO.Log;
  * @author mheuer
  * @version	1.0
  *
+ * <!-- docstate
+ * pass: 2
+ * mtime: 2026-09-05T20:45:07Z
+ * digest: 9d50ed2ee16fff46e8e224d3f84d3efe0e374c6ddc8b57ab1acb68010e2a9779
+ * stale: false
+ * tags: [code/fuzzy_logic]
+ * concepts: [Fuzzy Logic]
+ * facets: {layer: utility, status: legacy, complexity: medium}
+ * -->
  */
 public class FuzzyManifold {
 
@@ -55,8 +64,8 @@ public class FuzzyManifold {
 	/// Factory Methods
 	/////////////////////////////////////////////////////////////////////////////////////
 
-	/** 
-	 * @param values an Array of Values to initialize this FuzzyNumber 
+	/**Builds one {@link FuzzyNumber} per name/values pair.
+	 * @param values an Array of Values to initialize this FuzzyNumber
 	 * @return a FuzzyNumber initialized by this Array
 	 */
 	final static public FuzzyNumber[] FuzzyNumber(final String[] names, final float[][] values) {
@@ -67,8 +76,8 @@ public class FuzzyManifold {
 		return ret; 
 	}
 	
-	/** 
-	 * @param valuesNames an Array of Values and Names to initialize this FuzzyNumber 
+	/**Builds one {@link FuzzyNumber} per (name, values) pair packed as an {@code Object[2]} row.
+	 * @param valuesNames an Array of Values and Names to initialize this FuzzyNumber
 	 * @return a FuzzyNumber initialized by this Array
 	 */
 	final static public FuzzyNumber[] FuzzyNumber(final Object[][] namesValues) {
@@ -81,8 +90,8 @@ public class FuzzyManifold {
 		return ret; 
 	}
 	
-	/** 
-	 * @param values an Array of Values to initialize this FuzzyNumber 
+	/**Builds a {@link FuzzyNumber} from a 2-, 3- or 4-element values array (left/mid/right/height).
+	 * @param values an Array of Values to initialize this FuzzyNumber
 	 * @return a FuzzyNumber initialized by this Array
 	 */
 	final static public FuzzyNumber FuzzyNumber(final String name, final float[] values) {
@@ -187,7 +196,8 @@ public class FuzzyManifold {
 	/** a complete Set of Categories 	 */
 	private final FuzzyNumber[] categories;
 
-	/** @return the indicated Category 	 */ 
+	/**Returns the fuzzy number for the given category index.
+	 * @return the indicated Category 	 */
 	public FuzzyNumber getCategory(final int category) {
 		return categories[category]; }
 
@@ -248,11 +258,13 @@ public class FuzzyManifold {
 
 	/////////////////////////////////////////////////////////////////////////////////////
 
-	/** @return an Array with the Memberships for the given Value	*/
+	/**Computes the membership of value in every category, allocating a fresh result array.
+	 * @return an Array with the Memberships for the given Value	*/
 	public float[] fuzzify(final float value) {
 		return fuzzify(null, value); }
 
-	/** @return an Array with the Memberships for the given Value	*/
+	/**Computes the membership of value in every category, reusing ret when non-null.
+	 * @return an Array with the Memberships for the given Value	*/
 	public float[] fuzzify(float[] ret, final float value) {
 		if (ret == null) {
 			ret = new float[categories.length]; }
@@ -260,11 +272,13 @@ public class FuzzyManifold {
 			ret[i] = categories[i].Map(value); }
 		return ret; }
 
-	/** @return the absolute Weight of this Category to find a weighted Center	*/
+	/**Returns the given category's precomputed weight (mass).
+	 * @return the absolute Weight of this Category to find a weighted Center	*/
 	public float getWeight(final int category) {
 		return categories[category].getWeight(); }
 
-	/** @return the Center 'of Mass' for this Category	*/
+	/**Returns the given category's precomputed center of mass.
+	 * @return the Center 'of Mass' for this Category	*/
 	public float getCenter(final int category) {
 		return categories[category].getCenter(); }
 	
@@ -386,8 +400,8 @@ public class FuzzyManifold {
 		final float[] ret = categories[category].deFuzzify(null, limit); 
 		return ret[1]/ret[0]; }
 
-	/** 
-	 * @param category the Category to describe 
+	/**Returns a "dimensionName=categoryName" description of the given category.
+	 * @param category the Category to describe
 	 * @return a visual Description of this Category inclusive Dimension
 	 */
 	public String getDescription(final int category) {

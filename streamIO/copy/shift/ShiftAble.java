@@ -6,6 +6,15 @@ import streamIO.copy.ICopyAble;
  * as well as rotation left and right.
  *
  * A Default Implementation is done in 'absShiftable'.
+ * <!-- docstate
+ * pass: 2
+ * mtime: 2026-09-05T10:13:25Z
+ * digest: 1846b6484c8acea8d8f9d2ff722bdda6c32153858ac07e48eb8050b72572bbcc
+ * stale: false
+ * tags: [code/in_place_operation, code/bit_manipulation]
+ * concepts: [Shift and Rotate]
+ * facets: {layer: utility, status: legacy, complexity: medium}
+ * -->
  */
 public interface ShiftAble
 extends IShiftAble, ICopyAble {

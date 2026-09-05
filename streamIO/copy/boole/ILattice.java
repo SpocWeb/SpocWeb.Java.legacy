@@ -31,6 +31,15 @@ package streamIO.copy.boole;
  * if an Order Relation is given by:
  *  a AND b = a min b
  *  a OR  b = a max b
+ * <!-- docstate
+ * pass: 2
+ * mtime: 2026-09-05T10:13:24Z
+ * digest: 929bb16577ff24edfe762c1ccdef2bade3e7ebcd2a0933e54471b258916b7f86
+ * stale: false
+ * tags: [code/lattice_structure]
+ * concepts: [Lattice]
+ * facets: {layer: utility, status: legacy, complexity: medium}
+ * -->
  * This Definition is done in Lattice.MinMaxLattice 	 */
 public interface ILattice
 //extends Lattice, CopyAble

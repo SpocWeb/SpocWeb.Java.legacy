@@ -21,6 +21,15 @@ package streamIO.copy.boole.fuzzy;
  * @author mheuer
  * @version	1.0
  *
+ * <!-- docstate
+ * pass: 2
+ * mtime: 2026-09-05T20:44:14Z
+ * digest: 355d133ca802bbb0a7a4ea34fd1931febccd1a0fabd49115e7edcad1e169d794
+ * stale: false
+ * tags: [code/fuzzy_logic]
+ * concepts: [Fuzzy Logic]
+ * facets: {layer: utility, status: legacy, complexity: medium}
+ * -->
  */
 public class FuzzyNOT 
 extends AFuzzyUnaryOp
@@ -31,7 +40,8 @@ extends AFuzzyUnaryOp
 		super(f1_);
 	}
 
-	/** @see streamIO.copy.boole.fuzzy.IFuzzifier#getMembership(java.lang.Object)	 */
+	/**Returns the fuzzy complement (1 minus the membership) of the wrapped fuzzifier for arg.
+	 * @see streamIO.copy.boole.fuzzy.IFuzzifier#getMembership(java.lang.Object)	 */
 	public float getMembership(final Object arg) {
 		return 1-f1.getMembership(arg);
 	}

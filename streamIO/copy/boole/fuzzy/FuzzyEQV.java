@@ -6,6 +6,8 @@
 package streamIO.copy.boole.fuzzy;
 
 /**
+ * Fuzzy equivalence of two fuzzifiers: their memberships agree exactly when this
+ * returns 1, and disagree completely when it returns 0.
  * Title: FuzzyEQV<p>
  * Description:
  * Purpose:
@@ -26,22 +28,32 @@ package streamIO.copy.boole.fuzzy;
  * @author mheuer
  * @version	1.0
  *
+ * <!-- docstate
+ * pass: 2
+ * mtime: 2026-09-05T20:43:59Z
+ * digest: 6ad8ea433570371dece7046b8fbb122572ebd5fde1de561e90039fc379c9bd28
+ * stale: false
+ * tags: [code/fuzzy_logic]
+ * concepts: [Fuzzy Logic]
+ * facets: {layer: utility, status: broken, complexity: medium}
+ * -->
  */
-public class FuzzyEQV 
+public class FuzzyEQV
 extends AFuzzyBinaryOp {
 
-	/**
-	 * @param f1_
-	 * @param f2_
+	/**Combines two fuzzifiers into their fuzzy equivalence.
+	 * @param f1_ the first fuzzifier
+	 * @param f2_ the second fuzzifier
 	 */
 	public FuzzyEQV(final IFuzzifier f1_, final IFuzzifier f2_) {
 		super(f1_, f2_);
 	}
 
-	/* Equivalence is defined as: A EQV B = (A AND B) OR ((NOT A) AND (NOT B))
-	 * this can be transformed into the given Expression 
+	/** Equivalence is defined as: A EQV B = (A AND B) OR ((NOT A) AND (NOT B))
+	 * this can be transformed into the given Expression
 	 * @see streamIO.copy.boole.fuzzy.IFuzzifier#getMembership(java.lang.Object)
 	 */
+	// TODO: LOGIC: missing "1 - " - per the class's own documented formula (and the general fuzzy EQV = NOT XOR relationship), equivalence should be highest (near 1) when the two memberships are close and lowest when they differ; this returns the raw absolute difference instead, which is backwards (it is the XOR/difference measure, not its complement).
 	public float getMembership(final Object arg) {
 		return Math.abs(f1.getMembership(arg)-f2.getMembership(arg));
 	}

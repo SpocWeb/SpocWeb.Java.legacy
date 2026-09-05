@@ -27,6 +27,15 @@ import streamIO.copy.order.IOrder;
   * created in the main() method.
   *
   * @see streamIO.Copy.Boole.Fuzzy which operates with float Numbers.
+  * <!-- docstate
+  * pass: 2
+  * mtime: 2026-09-05T10:13:24Z
+  * digest: a28503540f85c54db5bdde714542212fb78fbc8cf317c4fe471bb055a7296187
+  * stale: false
+  * tags: [code/lattice_structure, code/lattice_operations]
+  * concepts: [Lattice, Order Relation]
+  * facets: {layer: utility, status: legacy, complexity: medium}
+  * -->
   */
 public class MinMaxLattice
 extends ALattice

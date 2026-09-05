@@ -1,5 +1,16 @@
 package streamIO.copy.groupM;
 
+/**Default implementation layer adding direct {@code long}-argument multiplication and
+ * <!-- docstate
+ * pass: 2
+ * mtime: 2026-09-05T16:32:07Z
+ * digest: 2841e04434878d00eeff22b7f1d041933000309bc9de4beab0052affce802d70
+ * stale: false
+ * tags: [code/abstract_base, code/multiplicative_group]
+ * concepts: [Algebraic Group, Multiplicative Structure]
+ * facets: {layer: utility, status: legacy, complexity: medium}
+ * -->
+ * division on top of {@link AGroupM}'s generic {@link Object}-argument operations. */
 public abstract class AGroupMLng
 extends AGroupM
 implements ILngGroupM {

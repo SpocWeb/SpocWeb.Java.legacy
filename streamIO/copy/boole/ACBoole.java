@@ -1,6 +1,8 @@
 package streamIO.copy.boole;
 
 /**
+  * Abstract base class for constant (read-only) Boolean-algebra objects, throwing on
+  * every in-place `...At()` operation.
   * Title: ACBoole<p>
   * Description:
   * Purpose:
@@ -20,6 +22,15 @@ package streamIO.copy.boole;
   * Created on	07-16-2002, 03:59 PM<p>
   * @author 	Matthias Heuer
   * @version	1.0
+  * <!-- docstate
+  * pass: 2
+  * mtime: 2026-09-05T16:45:04Z
+  * digest: 2447fe19369e9d0d8f9ea54e6a08fb30045516a3c2ed2d8dadb36ef8932d8b06
+  * stale: false
+  * tags: [code/boolean_algebra, code/abstract_base]
+  * concepts: [Boolean Algebra]
+  * facets: {layer: utility, status: legacy, complexity: medium}
+  * -->
   */
 public abstract class ACBoole
 extends ACLattice

@@ -4,6 +4,15 @@ import streamIO.copy.ICopyAble;
 
 /**This Class is a Realization of Boole
  * with a single boolean Value (Bit).
+ * <!-- docstate
+ * pass: 2
+ * mtime: 2026-09-05T10:13:24Z
+ * digest: 8f53324e434da24eb8d4a5c51b56b2a61eb018a2ebaa7f08da521273d2206756
+ * stale: false
+ * tags: [code/boolean_algebra]
+ * concepts: [Boolean Algebra]
+ * facets: {layer: utility, status: legacy, complexity: medium}
+ * -->
  * The Name conflicts with java.lang.Boolean.	 */
 final public class Boolean
 extends ABoole {

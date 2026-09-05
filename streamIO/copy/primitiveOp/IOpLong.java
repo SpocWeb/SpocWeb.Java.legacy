@@ -4,6 +4,15 @@ import streamIO.copy.ICopyAble;
 import function.IOrderAble;
 
 /**This Interface adds all Methods to the IOpLong
+ * <!-- docstate
+ * pass: 2
+ * mtime: 2026-09-05T10:13:25Z
+ * digest: bfbd9bb5eb1ef325f4f946ca3a8ab349c8d5dd4ce9c4bc077a91c8d0972647ee
+ * stale: false
+ * tags: [code/arithmetic_operation, code/in_place_operation, code/numeric_interface]
+ * concepts: [Primitive Numeric Operations, Mutable Value Semantics]
+ * facets: {layer: utility, status: legacy, complexity: medium}
+ * -->
  * that can be indirectly defined by IOpLong */
 public interface IOpLong
 extends IIOpLong, ICopyAble, IOrderAble {

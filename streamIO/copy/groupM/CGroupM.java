@@ -2,6 +2,15 @@ package streamIO.copy.groupM;
 
 /**Implements Constants for all Types of GroupM Classes.
  * This Class inhibits the Use of ...At() Routines
+ * <!-- docstate
+ * pass: 2
+ * mtime: 2026-09-05T10:13:25Z
+ * digest: 655248ffb57ce6e21800f8796283987ba61c4301cc7fa72ecfa1bc0a43604296
+ * stale: false
+ * tags: [code/immutable_wrapper, code/delegation]
+ * concepts: [Algebraic Group, Constant/Immutable Wrapper]
+ * facets: {layer: utility, status: legacy, complexity: medium}
+ * -->
  * but still supports all other Methods of the GroupM Class.	 */
 public class CGroupM
 extends CSemiGroupM

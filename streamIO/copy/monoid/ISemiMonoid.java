@@ -3,50 +3,50 @@ package streamIO.copy.monoid;
 import streamIO.copy.ICopyAble;
 import function.IFunction;
 
-/**SemiMonoid (M,°):
- * Set of Objects with Operation ° called 'map()' on any two Objects.
+/**SemiMonoid (M,ï¿½):
+ * Set of Objects with Operation ï¿½ called 'map()' on any two Objects.
  * I.e. in a SemiMonoid any two Objects can be "concatenated" or "mapped".
  * Example is e.g. String Concatenation or Function Concatenation / Mapping.
- * This Concatenation is associative i.e. (a°b)°c==a°(b°c) but not commutative!
+ * This Concatenation is associative i.e. (aï¿½b)ï¿½c==aï¿½(bï¿½c) but not commutative!
  * Therefore pairs of Operations can be defined:
  * map()/unMap() with the Operand coming from the left and
  * cat()/unCat() with the Operand coming from the right
  *
  * It can be proven that:
  *
- * !(A°B)== !B°!A
+ * !(Aï¿½B)== !Bï¿½!A
  * [A,A] == [A,!A] == [A,Id] == 0
- * A°!A == !A°A == Id == A.unMap(A) == A.unCat(A) == A.solve(A) == A.reSolve(A)
+ * Aï¿½!A == !Aï¿½A == Id == A.unMap(A) == A.unCat(A) == A.solve(A) == A.reSolve(A)
  *
- * A.map(A .unMap(w))==  A°!A°w == w == A.unMap(A .map(w))== !A° A°w
+ * A.map(A .unMap(w))==  Aï¿½!Aï¿½w == w == A.unMap(A .map(w))== !Aï¿½ Aï¿½w
  * with w being a simple Object, a Map or a Monoid.
  * Therefore an extended and a reduced Syntax have been defined.
  *
- *  W =  B  °  A  ° D ==  C  ° D     with  B  °  A  ==  C
- * {c}={c@b}°{b@a}°{a}=={a-c}°{a}        {c@b}°{b@a}=={c@a}
+ *  W =  B  ï¿½  A  ï¿½ D ==  C  ï¿½ D     with  B  ï¿½  A  ==  C
+ * {c}={c@b}ï¿½{b@a}ï¿½{a}=={a-c}ï¿½{a}        {c@b}ï¿½{b@a}=={c@a}
  *
- * b == A°a == A.map(a)  and  a == !A°b == A.unMap(b)
- * c == B°b == B.map(b)  and  b == !B°c == B.unMap(c)
+ * b == Aï¿½a == A.map(a)  and  a == !Aï¿½b == A.unMap(b)
+ * c == Bï¿½b == B.map(b)  and  b == !Bï¿½c == B.unMap(c)
  * 
- * A.map(B) = A°B = C                            can be resolved for A:
- * A == C.solve(B) ==  C°!B ==  A°B°!B    and it can be resolved for B:
- * B == A.unMap(C) == !A° C == !A°A° B
+ * A.map(B) = Aï¿½B = C                            can be resolved for A:
+ * A == C.solve(B) ==  Cï¿½!B ==  Aï¿½Bï¿½!B    and it can be resolved for B:
+ * B == A.unMap(C) == !Aï¿½ C == !Aï¿½Aï¿½ B
  * 
  * Because of the extended Syntax with Object, reSolve() has been defined,
  * which has the same Effect, but reversed Arguments:
- * A°!B == A.solve(B) == B.reSolve(A)
+ * Aï¿½!B == A.solve(B) == B.reSolve(A)
  * 
  * 
  * 
  * Deprecated:
- * A.cat(B).  unCat(B) ==  A° B°!B == A == A.unCat(B).cat(B) == A°!B° B
+ * A.cat(B).  unCat(B) ==  Aï¿½ Bï¿½!B == A == A.unCat(B).cat(B) == Aï¿½!Bï¿½ B
  * A.cat(B).reSolve(A) ==  A.solve(A.cat(B)) == A.cat(A.solve(B))
- * B.map(A).reSolve(A) == !A° A° B == B == B.reSolve(A).map(A)
- *                                      == A.  unCat(A).cat(B) == A°!A° B
+ * B.map(A).reSolve(A) == !Aï¿½ Aï¿½ B == B == B.reSolve(A).map(A)
+ *                                      == A.  unCat(A).cat(B) == Aï¿½!Aï¿½ B
  * 
- * C ==  A° B == A.    cat(B) == B.  map(A)   and
- * A ==  C°!B == C.  unCat(B) == B.unMap(C)   and
- * B == !A° C == C.reSolve(A) == A.solve(C)
+ * C ==  Aï¿½ B == A.    cat(B) == B.  map(A)   and
+ * A ==  Cï¿½!B == C.  unCat(B) == B.unMap(C)   and
+ * B == !Aï¿½ C == C.reSolve(A) == A.solve(C)
  *
  * mapAt() and unMapAt() return the Argument Type in Place
  * solve() and reSolve() can not be calculcated in Place!
@@ -76,43 +76,52 @@ import function.IFunction;
  * The Notation using map helps understanding, because the Sequence of Objects
  * follows the Mapping and Bracketing becomes irrelevant because of Associativity
  * 
- * A  °  B   °  c  = (A  °  B )  °  c  = A  ° (B  °  c ) =
+ * A  ï¿½  B   ï¿½  c  = (A  ï¿½  B )  ï¿½  c  = A  ï¿½ (B  ï¿½  c ) =
  * A.map(B).map(c) = (A.map(B)).map(c) = A.map(B.map(c))
  * 
  * The only Difference is that the ...At() Methods don't modify 'this' but arg!
  * There is a Left- and a Right- Inverse Operations: unMap() and solve() 
+ * <!-- docstate
+ * pass: 2
+ * mtime: 2026-09-05T10:13:25Z
+ * digest: fea721cfea886b2980d2f124a49920d9b3701d1d8d23fc399c2694589accf395
+ * stale: false
+ * tags: [code/concatenation, code/algebraic_structure]
+ * concepts: [Monoid, Concatenation]
+ * facets: {layer: utility, status: legacy, complexity: medium}
+ * -->
  */
 public interface ISemiMonoid
 extends IISemiMonoid, ICopyAble, IFunction {
 	
-	/** Mapping / Left-Concat in Place:  this=°arg  ==  this(arg(x))
+	/** Mapping / Left-Concat in Place:  this=ï¿½arg  ==  this(arg(x))
 	  * This Operation doesn't return and modify 'this', but 'arg'!
 	  * so to concatenate Mappings, use B.mapAt(A.mapAt(a))
 	  * which is more efficient than B.map(A.map(a)) 
 	  * or even worse: B.map(A).map(a) or (B.mapAt(A)).mapAt(a) which works only once! 
 	  */     public ISemiMonoid mapAt(final Object arg);
-	/** Mapping/Left -Concat:  this°arg  */	public ISemiMonoid map  (final Object arg);
-	/** Mapping/Right-Concat:   arg°this 
+	/** Mapping/Left -Concat:  thisï¿½arg  */	public ISemiMonoid map  (final Object arg);
+	/** Mapping/Right-Concat:   argï¿½this 
 	 * commented out, since it only confuses */	
 	//public ISemiMonoid cat  (final Object arg);
-	/** Left-Concatenation in Place:  arg=this°arg 
+	/** Left-Concatenation in Place:  arg=thisï¿½arg 
 	 * Left in the Interface, because it can be implemented quite efficiently! */ 
 	//public ISemiMonoid catAt(final Object arg);
 	
-	/** Duplication:   x^2 = x°x    */	public ISemiMonoid   dpl  ();
-	/** Duplication in Place: x°=x  */	public ISemiMonoid   dplAt();
-	/** Triplication:  x^3 = x^2°=x */	public ISemiMonoid   tpl  ();
+	/** Duplication:   x^2 = xï¿½x    */	public ISemiMonoid   dpl  ();
+	/** Duplication in Place: xï¿½=x  */	public ISemiMonoid   dplAt();
+	/** Triplication:  x^3 = x^2ï¿½=x */	public ISemiMonoid   tpl  ();
 	/** Triplication in Place: x^=3 */	public ISemiMonoid   tplAt();
 	/** Quadruplication: x^4 == (x^2)^2	*/	public ISemiMonoid qdl  ();
 	/** Quadruplication in Place: x^4	*/	public ISemiMonoid qdlAt();
 	
-	/** Integer Multiplication: °^ n	*/	public ISemiMonoid mll	(int n);
-	/** Integer Multiplication: °^=n	*/	public ISemiMonoid mllAt	(int n);
+	/** Integer Multiplication: ï¿½^ n	*/	public ISemiMonoid mll	(int n);
+	/** Integer Multiplication: ï¿½^=n	*/	public ISemiMonoid mllAt	(int n);
 	
-	/**Multiplication with an Integer Power of 2 in Place: °*=2^n	 */
+	/**Multiplication with an Integer Power of 2 in Place: ï¿½*=2^n	 */
 	public ISemiMonoid mll2PowAt(final int n);
 	
-	/**Multiplication with an Integer Power of 2: °*2^n	 */
+	/**Multiplication with an Integer Power of 2: ï¿½*2^n	 */
 	public ISemiMonoid mll2Pow  (final int n);
 	
 }

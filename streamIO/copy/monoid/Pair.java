@@ -24,6 +24,15 @@ package streamIO.copy.monoid;
   *
   * @author  Matthias Heuer
   * @version
+  * <!-- docstate
+  * pass: 2
+  * mtime: 2026-09-05T10:13:25Z
+  * digest: e69085b7bb22b54b8e48379d02e6c2413b9dc9f1ae63a397eb2b1ec33e96ac86
+  * stale: false
+  * tags: [code/key_value_pair]
+  * concepts: [Key-Value Pair]
+  * facets: {layer: utility, status: legacy, complexity: medium}
+  * -->
   */
 final public class Pair
 extends Association {

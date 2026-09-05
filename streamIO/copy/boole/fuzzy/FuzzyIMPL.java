@@ -6,6 +6,7 @@
 package streamIO.copy.boole.fuzzy;
 
 /**
+ * Fuzzy (Kleene-Dienes) implication of two fuzzifiers: {@code A IMPL B = max(1-A, B)}.
  * Title: FuzzyIMPL<p>
  * Description:
  * Purpose:
@@ -26,6 +27,15 @@ package streamIO.copy.boole.fuzzy;
  * @author mheuer
  * @version	1.0
  *
+ * <!-- docstate
+ * pass: 2
+ * mtime: 2026-09-05T10:13:24Z
+ * digest: 327630afc8d45ea3417de8caaf66220cef204b250344748e0ece741deff82e31
+ * stale: false
+ * tags: [code/fuzzy_logic]
+ * concepts: [Fuzzy Logic]
+ * facets: {layer: utility, status: legacy, complexity: medium}
+ * -->
  */
 public class FuzzyIMPL 
 extends AFuzzyBinaryOp {

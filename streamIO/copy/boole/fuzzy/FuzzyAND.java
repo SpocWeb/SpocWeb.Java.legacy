@@ -28,6 +28,15 @@ package streamIO.copy.boole.fuzzy;
  * @author mheuer
  * @version	1.0
  *
+ * <!-- docstate
+ * pass: 2
+ * mtime: 2026-09-05T20:44:10Z
+ * digest: e37138ad1df11c85fdc7b662f1c470e392f79edf1612c98bc4f5e1d14ce7e8dc
+ * stale: false
+ * tags: [code/fuzzy_logic]
+ * concepts: [Fuzzy Logic]
+ * facets: {layer: utility, status: legacy, complexity: medium}
+ * -->
  */
 public class FuzzyAND 
 extends AFuzzyBinaryOp
@@ -38,7 +47,8 @@ extends AFuzzyBinaryOp
 		super(f1, f2); 
 	}
 
-	/** @see streamIO.copy.boole.fuzzy.IFuzzifier#getMembership(java.lang.Object)	 */
+	/**Returns the conjunction (minimum) of the two fuzzifiers' memberships for arg.
+	 * @see streamIO.copy.boole.fuzzy.IFuzzifier#getMembership(java.lang.Object)	 */
 	public float getMembership(final Object arg) {
 		return Math.min(f1.getMembership(arg), f2.getMembership(arg));
 	}

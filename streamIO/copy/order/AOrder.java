@@ -16,6 +16,15 @@ import function.IOrderAble;
  * and A, B are incomparAble.
  *
  * Abstract Methods:
+ * <!-- docstate
+ * pass: 2
+ * mtime: 2026-09-05T10:13:25Z
+ * digest: 038a7ba4e5dbe1556f01bc4db804f12b9d987fcc2e631737f54a4e5449a9620a
+ * stale: false
+ * tags: [code/abstract_base, code/delegation, code/numeric_comparison]
+ * concepts: [Order Relation, Delegation Pattern]
+ * facets: {layer: utility, status: legacy, complexity: medium}
+ * -->
  * less	 */
 public class AOrder
 extends ACopyAble

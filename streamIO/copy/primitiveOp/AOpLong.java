@@ -6,6 +6,15 @@ import function.AOrderAble;
  * by calling Methods from IOpLong.
  * Actually these Classes are deprecated,
  * because Operations with double Arguments are added to the Real Interface.
+ * <!-- docstate
+ * pass: 2
+ * mtime: 2026-09-05T10:13:25Z
+ * digest: 45025bc5b8d4d29b97d603fab7347a8e06c2a469587d4b641708ad7726fa49c6
+ * stale: false
+ * tags: [code/abstract_base, code/delegation, code/arithmetic_operation]
+ * concepts: [Primitive Numeric Operations, Deprecated API]
+ * facets: {layer: utility, status: legacy, complexity: medium}
+ * -->
  * Also Operations with long Arguments are added to the IIntRing Interface */
 public abstract class AOpLong
 extends AOrderAble

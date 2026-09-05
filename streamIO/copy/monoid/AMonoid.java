@@ -23,8 +23,17 @@ import function.IInvertAble;
   * but they are not made final!
   *
   * Abstract Methods:
-  * catAt (°=)
+  * catAt (ï¿½=)
   * unCatAt (\=)
+  * <!-- docstate
+  * pass: 2
+  * mtime: 2026-09-05T16:40:38Z
+  * digest: b4d9693cc2d990337565454957cf116a938343e2842b0354e5933837358babd6
+  * stale: false
+  * tags: [code/abstract_base, code/delegation, code/concatenation]
+  * concepts: [Monoid, Delegation Pattern]
+  * facets: {layer: utility, status: legacy, complexity: medium}
+  * -->
   */
 public class AMonoid
 extends ASemiMonoid
@@ -65,13 +74,13 @@ implements IMonoid {
 	//  Interface Monoid: abstract Methods
 	////////////////////////////////////////////////////////////////////////////////
 
-	/**Returns arg mapped by the Inverse of this Object: !this°arg
+	/**Returns arg mapped by the Inverse of this Object: !thisï¿½arg
 	 * This is the Function working on 'arg' defined by the implementing Class.
 	 * The Class implementing this Method is the means of exchanging this Operation.	 */
 	public Object UnMap (Object arg) {
 		throw new OperationNotSupported(); }
 
-	/**Returns arg mapped in Place by the Inverse of this Object: !this=°arg
+	/**Returns arg mapped in Place by the Inverse of this Object: !this=ï¿½arg
 	 * This is the Function working on 'arg' defined by the implementing Class.
 	 * The Class implementing this Method is the means of exchanging this Operation.	 */
 	public Object UnMapAt(Object arg) {
@@ -99,47 +108,47 @@ implements IMonoid {
 
 	//Interface "IMonoid"
 
-	/**Right-Concatenation with the Inverse in Place: this°=!arg  this\=arg
+	/**Right-Concatenation with the Inverse in Place: thisï¿½=!arg  this\=arg
 	 * This is the Inverse Operation to catAt(), not to map()!
 	 * A Standard Implementation. Can be overwritten by faster Implementations.	 */
 	//public IMonoid tacAt(Object arg) {
 	//	return (IMonoid) self.catAt(((IMonoid) arg).rev());}
 
-	/**Mapping / Left-Concat with !arg:  !this°arg	*/
+	/**Mapping / Left-Concat with !arg:  !thisï¿½arg	*/
 	public IMonoid pam  (Object arg) {
 		return ((IMonoid) self).pamAt((ISemiMonoid) ((ICopyAble) arg).copy()); }
 
-	/**Mapping / Left-Concat with !arg:  !this°arg	*/
+	/**Mapping / Left-Concat with !arg:  !thisï¿½arg	*/
 /*	public Object unMap  (Object arg) {
 		if (arg instanceof SemiMonoid)
 			return ((Monoid) self).unMap  ((SemiMonoid) arg);
 			return ((Monoid) self).unMapAt(((CopyAble)  arg).copy()); }
 //		return ((Monoid) self).invert().map  (arg); }
-
-	/**Mapping / Left-Concat with !arg in Place: !this=°arg
+*/
+	/**Mapping / Left-Concat with !arg in Place: !this=ï¿½arg
 	 * Most efficient Implementation possible!
 	 */
 	public IMonoid pamAt(Object arg) {
 		return (IMonoid) ((IMonoid) self).rev().mapAt(arg); }
 
-	/**Mapping / Left-Concat in Place with !arg: !this=°arg */
+	/**Mapping / Left-Concat in Place with !arg: !this=ï¿½arg */
 /*	public Object unMapAt(Object arg) {
 		if (arg instanceof SemiMonoid)
 			return ((Monoid) self).unMapAt((SemiMonoid) arg);
 			return ((Monoid) self).invert().mapAt(arg); }
 
-	/**(Right) Concatenation with the Inverse of arg: this°!arg
-	 * Resolves the Equation A°B = C = A.cat(B) for A:
-	 * A =  C °!B = C.cat(B.invert()) = C.unCat(B)
+	/**(Right) Concatenation with the Inverse of arg: thisï¿½!arg
+	 * Resolves the Equation Aï¿½B = C = A.cat(B) for A:
+	 * A =  C ï¿½!B = C.cat(B.invert()) = C.unCat(B)
 	 * To solve it for B, you have to call solve():
-	 * B = !A ° C = A.invert().cat(C) = A.unCat(C)
+	 * B = !A ï¿½ C = A.invert().cat(C) = A.unCat(C)
 	 * If arg has no Inverse (i.e. the Inverse is a Relation, not a Function),
 	 * you still can use unCat() to find certain unique Solutions.
 	 * A Standard Implementation. Can be overwritten by faster Implementations.	 */
 	//public IMonoid tac(Object arg) { //return self.Inverse.catAt(arg); } //there is not always an Inverse!
 	//	return ((IMonoid) self.copy()).tacAt(arg);}
 
-	/**Left-Concatenation with the Inverse: this°!arg
+	/**Left-Concatenation with the Inverse: thisï¿½!arg
 	 * This is the Inverse Operation to map(), not to cat()!
 	 * Requires arg to be a Monoid!
 	 * A Standard Implementation. Can be overwritten by faster Implementations.	 */
@@ -147,19 +156,19 @@ implements IMonoid {
 		return (IMonoid) self.mapAt(((IMonoid) arg).rev()); }
 //	  return ((Monoid) arg).invert().catAt(self); }
 
-	/**Left-Concatenation with the Inverse: arg°!this
-	 * Resolves the Equation A°B = C = A.map(B) for A:
-	 * A = C°!B = C.map(B.invert()) = C.solve(B) = B.reSolve(C) = A.map(B).solve(B)
+	/**Left-Concatenation with the Inverse: argï¿½!this
+	 * Resolves the Equation Aï¿½B = C = A.map(B) for A:
+	 * A = Cï¿½!B = C.map(B.invert()) = C.solve(B) = B.reSolve(C) = A.map(B).solve(B)
 	 * Requires arg to be a Mapping and returns one!
 	 */
 /*	public Object reSolve(Object arg) {
 		if (arg instanceof SemiMonoid)
 			return ((Monoid) self).reSolve((SemiMonoid) arg);
 		return null; }
-
-	/**Left-Concatenation with the Inverse: arg°!this
-	 * Resolves the Equation A°B = C = A.map(B) for A:
-	 * A = C°!B = C.map(B.invert()) = C.solve(B) = B.reSolve(C) = A.map(B).solve(B)
+*/
+	/**Left-Concatenation with the Inverse: argï¿½!this
+	 * Resolves the Equation Aï¿½B = C = A.map(B) for A:
+	 * A = Cï¿½!B = C.map(B.invert()) = C.solve(B) = B.reSolve(C) = A.map(B).solve(B)
 	 * Requires arg to be a Mapping and returns one!
 	 */
 	public ISemiMonoid reSolve(Object arg) {

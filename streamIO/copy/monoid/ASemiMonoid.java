@@ -4,7 +4,7 @@ import streamIO.copy.ACopyAble;
 import streamIO.copy.ICopyAble;
 import function.IFunction;
 
-/**Default Implementation of a concatenative SemiMonoid (G,°).
+/**Default Implementation of a concatenative SemiMonoid (G,ï¿½).
  * This Implementation must be kept completely synchronous to ASemiGroup
  * The Interface is separated out,
  * because it is used to simulate multiple Inheritance by Delegation.
@@ -20,7 +20,16 @@ import function.IFunction;
  *
  * Must not be abstract, because it is used for Delegation!
  * Abstract Methods:
- * catAt (°=)
+ * catAt (ï¿½=)
+ * <!-- docstate
+ * pass: 2
+ * mtime: 2026-09-05T16:41:37Z
+ * digest: 502e05b2ae506ef4cbcb7a2cc0ab18146f03cd5ed875034dc33e51a405c68cd2
+ * stale: false
+ * tags: [code/abstract_base, code/delegation, code/concatenation]
+ * concepts: [Monoid, Delegation Pattern]
+ * facets: {layer: utility, status: legacy, complexity: medium}
+ * -->
  */
 public class ASemiMonoid
 extends ACopyAble
@@ -51,18 +60,18 @@ implements ISemiMonoid {
 
 	//Implementations:
 
-	/** Mapping from the Left :  this=°arg	*/
+	/** Mapping from the Left :  this=ï¿½arg	*/
 	public Object Map  (Object arg) {
 		if (arg instanceof ISemiMonoid) return self.map((ISemiMonoid) arg);
 		return self.mapAt(((ICopyAble) arg).copy()); }
 //	  return ((SemiMonoid) arg).cat(self); }
 
-	/** Mapping from the Left :  this°arg	*/
+	/** Mapping from the Left :  thisï¿½arg	*/
 	public ISemiMonoid map  (Object arg) {
 		return self.mapAt(((ISemiMonoid) ((ICopyAble) arg).copy())); }
 //		return ((SemiMonoid) arg).cat(self); }
 
-	/** Mapping from Left in Place:  this=°arg
+	/** Mapping from Left in Place:  this=ï¿½arg
 	  * This Operation doesn't return 'this', but 'arg'!
 	  * so to concatenate Mappings use B.mapAt(A.mapAt(a))
 	  * which is more efficient than B.map(A.map(a)) or B.map(A).map(a)
@@ -71,7 +80,7 @@ implements ISemiMonoid {
 		if (arg instanceof ISemiMonoid) return self.mapAt((ISemiMonoid) arg);
 		return ((ICopyAble) arg).shallowCopyAt(self.map(arg)); }
 
-	/** Mapping from Left in Place:  this=°arg
+	/** Mapping from Left in Place:  this=ï¿½arg
 	  * This Operation doesn't return 'this', but 'arg'!
 	  * so to concatenate Mappings use B.mapAt(A.mapAt(a))
 	  * which is more efficient than B.map(A.map(a)) or B.map(A).map(a)
@@ -82,7 +91,7 @@ implements ISemiMonoid {
 		arg_.shallowCopyAt(self.map(arg));
 		return arg_; }
 
-	/** Mapping from the Right in Place: °arg
+	/** Mapping from the Right in Place: ï¿½arg
 	  * @return  this, mapped by arg.
 	  * Default Implementation to make this Class concrete and be able to delegate to this. 	 */
 	//public ISemiMonoid catAt(Object arg) { //
@@ -90,28 +99,28 @@ implements ISemiMonoid {
 
 	//Delegation:
 
-	/** Mapping from the Right: °arg
+	/** Mapping from the Right: ï¿½arg
 	  * A Standard Implementation. Can be overwritten by faster Implementations.	 */
 	//public ISemiMonoid cat (Object arg) { //throws CloneNotSupportedException {
 	//	return ((ISemiMonoid) self.copy()).catAt(arg); }
 
-	/** Duplication: x^2 == x°x
+	/** Duplication: x^2 == xï¿½x
 	  * A Standard Implementation. Can be overwritten by faster Implementations.	 */
 	public ISemiMonoid dpl () { //throws CloneNotSupportedException {
 		return ((ISemiMonoid) self.copy()).dplAt(); }
 
-	/** Duplication in Place: x°=x
+	/** Duplication in Place: xï¿½=x
 	  * A Standard Implementation. Can be overwritten by faster Implementations.	 */
 	public ISemiMonoid dplAt () {
 		self.mapAt (self); return self; }
 //	  return (SemiMonoid) ((ISemiMonoid) self).catAt (self); }
 
-	/** Triplication: x^3 == (x^2)°=x
+	/** Triplication: x^3 == (x^2)ï¿½=x
 	  * A Standard Implementation. Can be overwritten by faster Implementations.	 */
 	public ISemiMonoid tpl () { //throws CloneNotSupportedException {
 		return ((ISemiMonoid) self.copy()).tplAt(); }
 
-	/** Triplication in Place: x°=x^2
+	/** Triplication in Place: xï¿½=x^2
 	  * A Standard Implementation. Can be overwritten by faster Implementations.	 */
 	public ISemiMonoid tplAt (){ //throws CloneNotSupportedException {
 		self.mapAt(self.dpl()); return self; }
@@ -167,7 +176,8 @@ implements ISemiMonoid {
 	//  Interface IFunction: Dummy Implementations
 	////////////////////////////////////////////////////////////////////////////
 
-	/** @return  true, when this Class can operate on Arguments of this Type
+	/** Returns false by default, since most simple functions are not even algebras.
+	  * @return  true, when this Class can operate on Arguments of this Type
 	  * This Function makes sense at this Level,
 	  * because here there is always the Alternative
 	  * not to operate on the Constants,
@@ -176,7 +186,8 @@ implements ISemiMonoid {
 	  * because most simple Functions are not even Algebras.	 */
 	public boolean canProcess(Object arg) { return false; }
 
-	/** @return  an alternative Representation that is 'simplified'	 */
+	/** Returns this instance unchanged as its own simplified representation.
+	  * @return  an alternative Representation that is 'simplified'	 */
 	public IFunction simplify() {
 		return this; }
 
@@ -190,7 +201,8 @@ implements ISemiMonoid {
 	  * Returns the itself for further use. */
 	public ICopyAble copyAt(Object arg, int Depth) { throw new AbstractMethodError(); }
 
-	/** @return a new, uninitalized Instance of it's class.
+	/** Always throws, since only a concrete subclass knows how to construct itself.
+	  * @return a new, uninitalized Instance of it's class.
 	  * This can in VB also be achieved by 'CreateObjectFromInstance',
 	  * which may be slower.
 	  * When overriding, use newInstance on all Components.	 */

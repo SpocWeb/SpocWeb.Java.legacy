@@ -25,6 +25,15 @@ import function.IFloatFunction;
  * @author mheuer
  * @version	1.0
  *
+ * <!-- docstate
+ * pass: 2
+ * mtime: 2026-09-05T20:44:07Z
+ * digest: 68906883966a52105cae21ce15cf91aa52524b0f80c6f535b0648cd8d206f0e4
+ * stale: false
+ * tags: [code/fuzzy_logic, code/abstract_base]
+ * concepts: [Fuzzy Logic]
+ * facets: {layer: utility, status: legacy, complexity: medium}
+ * -->
  */
 public abstract class AFuzzyUnaryOp 
 implements IFuzzifier, IFloatFunction 
@@ -36,13 +45,16 @@ implements IFuzzifier, IFloatFunction
 	/** Initializing Constructor 	 */
 	public AFuzzyUnaryOp(final IFuzzifier f1_) { this.f1 = f1_; }
 	
-	/** @see function.IFloatFunction#Map(double)	 */
+	/**Returns the fuzzy membership of the boxed argument, delegating to {@link #getMembership(Object)}.
+	 * @see function.IFloatFunction#Map(double)	 */
 	public double Map(final double arg) { return getMembership(new Double(arg)); }
-	
-	/** @see function.IFloatFunction#Map(float)	 */
+
+	/**Returns the fuzzy membership of the boxed argument, delegating to {@link #getMembership(Object)}.
+	 * @see function.IFloatFunction#Map(float)	 */
 	public float Map(final float arg) { return getMembership(new Float(arg)); }
-	
-    /** @see function.IFloatFunction#getOrder()     */
-    public byte getOrder() { return IStreamIn.ORDER_NONE; }    
+
+    /**Returns {@link IStreamIn#ORDER_NONE}, since a fuzzy function imposes no ordering.
+     * @see function.IFloatFunction#getOrder()     */
+    public byte getOrder() { return IStreamIn.ORDER_NONE; }
     
 }

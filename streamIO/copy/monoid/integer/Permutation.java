@@ -38,9 +38,9 @@ import function.byref.ByRefLong;
   * 'map' and 'solve' Operations swap the Order of the Arguments,
   * while 'cat' and 'unCat' keep the Order.
   * Thus:
-  * A.catAt(B).unCatAt(B) == A == (A°=B)\=B (very fast, with A,B Permutations)
-  * C.map  (B).  solve  (B) == A == !B°(B°C) (with Permutation B and C: I->O)
-  * B.map  (B.   solve  (i))== i == (i°B)°!B (with B working from the right)
+  * A.catAt(B).unCatAt(B) == A == (Aï¿½=B)\=B (very fast, with A,B Permutations)
+  * C.map  (B).  solve  (B) == A == !Bï¿½(Bï¿½C) (with Permutation B and C: I->O)
+  * B.map  (B.   solve  (i))== i == (iï¿½B)ï¿½!B (with B working from the right)
   *
   * Permutations of different Length can be concatenated (multiplied),
   * because the upper Elements are assumed as being identical.
@@ -55,6 +55,15 @@ import function.byref.ByRefLong;
   * @see Multi_Pow
   * @see Multi_Fact
   *
+  * <!-- docstate
+  * pass: 2
+  * mtime: 2026-09-05T16:34:07Z
+  * digest: 60d5e807916ae1e87b561028a803cc692be4c2b4ce7797e3b46d25b405d88eef
+  * stale: false
+  * tags: [code/permutation, code/multiplicative_semigroup, code/bit_manipulation]
+  * concepts: [Permutation, Multi-Index]
+  * facets: {layer: utility, status: broken, complexity: medium}
+  * -->
   * The Methods are analogous to the ones in gAdic. */
 final public class Permutation
 extends AMonoid
@@ -200,7 +209,7 @@ implements SetInteger, SwapAble, IInvertAble {
 		return true;
 	}
 
-	/**Mapping from the Left in Place:  this=°arg
+	/**Mapping from the Left in Place:  this=ï¿½arg
 	 * This Operation doesn't return 'this', but 'arg'!
 	 * so to concatenate Mappings use B.mapAt(A.mapAt(a))
 	 * which is more efficient than B.map(A.map(a)) or B.map(A).map(a)
@@ -215,7 +224,7 @@ implements SetInteger, SwapAble, IInvertAble {
 		return arg_;
 	}
 
-	/**Mapping from the Left in Place:  this=°arg
+	/**Mapping from the Left in Place:  this=ï¿½arg
 	 * This Operation doesn't return 'this', but 'arg'!
 	 * so to concatenate Mappings use B.mapAt(A.mapAt(a))
 	 * which is more efficient than B.map(A.map(a)) or B.map(A).map(a)
@@ -247,7 +256,7 @@ implements SetInteger, SwapAble, IInvertAble {
 		return null;
 	}
 
-	/**Mapping from the Left :  this°arg	*/
+	/**Mapping from the Left :  thisï¿½arg	*/
 	public static Object map(int[] ths, int thsLength, Object arg) {
 		//	  if (arg instanceof Object[])	{ Object   [] arg_ = (Object   []) arg; return map(arg_, arg_.length, ths, thsLength); }
 		if (arg instanceof int[]) {
@@ -280,35 +289,35 @@ implements SetInteger, SwapAble, IInvertAble {
 	//defining unMap directly on Integers is very ineffective,
 	//because you have to loop through O(N) Elements
 
-	/**Mapping from the Left :  this°arg  <=>  return Value(arg)	*/
+	/**Mapping from the Left :  thisï¿½arg  <=>  return Value(arg)	*/
 	public static int map(int[] ths, int thsLength, int arg) {
 		if (arg >= thsLength)
 			return arg;
 		return ths[arg];
 	}
 
-	/**Mapping of arg by this: this°arg  == this(arg)
+	/**Mapping of arg by this: thisï¿½arg  == this(arg)
 	 * <=> arg.Value(Value) = key()  <=> ret[i]:=!this[arg[i]] <=> ret[this[i]]
 	 * It cannot be calculated in Place!	 */
 	public static Object[] map(Object[] ths, int thsLength, Permutation arg) {
 		return map(ths, thsLength, arg.a, arg.mDim + 1);
 	}
 
-	/**Mapping of arg by this: this°arg  == this(arg)
+	/**Mapping of arg by this: thisï¿½arg  == this(arg)
 	 * <=> arg.Value(Value) = key()  <=> ret[i]:=!this[arg[i]] <=> ret[this[i]]
 	 * It cannot be calculated in Place!	 */
 	public static Object[] map(Object[] ths, int thsLength, int[] arg) {
 		return map(ths, thsLength, arg, arg.length);
 	}
 
-	/**Mapping of arg by this: this°arg  == this(arg)
+	/**Mapping of arg by this: thisï¿½arg  == this(arg)
 	 * <=> arg.Value(Value) = key()  <=> ret[i]:=!this[arg[i]] <=> ret[this[i]]
 	 * It cannot be calculated in Place!	 */
 	public static Object[] map(Object[] ths, int[] arg) {
 		return map(ths, ths.length, arg, arg.length);
 	}
 
-	/**Mapping of arg by this: this°arg  == this(arg)
+	/**Mapping of arg by this: thisï¿½arg  == this(arg)
 	 * <=> arg.Value(Value) = key()  <=> ret[i]:=!this[arg[i]] <=> ret[this[i]]
 	 * It cannot be calculated in Place!	 */
 	public static Object[] map(
@@ -346,7 +355,7 @@ implements SetInteger, SwapAble, IInvertAble {
 		return ret;
 	}
 
-	/**Mapping of arg by this: this°arg  == this(arg)
+	/**Mapping of arg by this: thisï¿½arg  == this(arg)
 	 * <=> arg.Value(Value) = key()  <=> ret[i]:=!this[arg[i]] <=> ret[this[i]]
 	 * It cannot be calculated in Place!	 */
 	public static int[] map(
@@ -384,7 +393,7 @@ implements SetInteger, SwapAble, IInvertAble {
 		return ret;
 	}
 
-	/** Mapping / Concatenation from the right in Place:  this=°arg <=> arg[i]:=this[arg[i]]
+	/** Mapping / Concatenation from the right in Place:  this=ï¿½arg <=> arg[i]:=this[arg[i]]
 	  * <=> arg.Value(arg.key) := Value(arg.key)
 	  * Relies on the Fact that arg is in fact a Permutation!
 	  * Cannot handle when 'arg' is longer than 'this' => ArrayOutOfBoundsException
@@ -413,7 +422,7 @@ implements SetInteger, SwapAble, IInvertAble {
 
 	//the Definitions of unMapAt and unMap in absMonoid are the only possible!
 
-	/**Concatenation with the Inverse in Place: this°!arg
+	/**Concatenation with the Inverse in Place: thisï¿½!arg
 	 * This is the Inverse Operation to map(), not to cat()!
 	 * It cannot be done in Place!	 */
 	public static int[] solve(
@@ -447,7 +456,7 @@ implements SetInteger, SwapAble, IInvertAble {
 	//unMap with Object[] needs a HashTable or Order.indexed[],
 	//which carry the Information of how to map between 'Order.indexed' and 'int'
 
-	/**Concatenation with the Inverse in Place: this°!arg
+	/**Concatenation with the Inverse in Place: thisï¿½!arg
 	 * This is the Inverse Operation to map(), not to cat()!
 	 * It cannot be done in Place!	 */
 	public static Object[] solve(
@@ -477,7 +486,7 @@ implements SetInteger, SwapAble, IInvertAble {
 		return ret;
 	}
 
-	/**Concatenation with the Inverse: °=!arg  <=>  \=arg  <=>
+	/**Concatenation with the Inverse: ï¿½=!arg  <=>  \=arg  <=>
 	 * Can be done in Place only if arg.invert() is known.	 */
 	/*	public static int[] unCat(int[] ths, int thsLength, int[] arg, int argLength) {
 			int[] ret; int i;
@@ -491,7 +500,7 @@ implements SetInteger, SwapAble, IInvertAble {
 			while (--i >= 0)		 ret[arg[i]] = ths[i]; //
 			return ret;	}
 	
-		/**Calculates ths°arg  <=>  arg[ths[i]]
+		/**Calculates thsï¿½arg  <=>  arg[ths[i]]
 		 * Maps the Array to the Permutation in arg
 		 * Relies on the Fact that arg is in fact a Permutation!
 		 * Not possible to do this in Place, because of Order AND Types!
@@ -507,7 +516,7 @@ implements SetInteger, SwapAble, IInvertAble {
 					ret[i] = arg[j]; //cannot be done in Place!!!
 			return ret;	}
 	
-		/**Concatenation / Mapping: ths°arg  <=>  arg[ths[i]]
+		/**Concatenation / Mapping: thsï¿½arg  <=>  arg[ths[i]]
 		 * Maps the Array to the Permutation in arg
 		 * Relies on the Fact that arg is in fact a Permutation!
 		 */
@@ -522,7 +531,7 @@ implements SetInteger, SwapAble, IInvertAble {
 					ret[i] = arg[j]; //can be done in Place!!!
 			return ret;	}
 	
-		/**Maps the Array ths from Right in Place: ths°=arg  <=> arg[ths[i]]
+		/**Maps the Array ths from Right in Place: thsï¿½=arg  <=> arg[ths[i]]
 		 * Relies on the Fact that arg is in fact a Permutation!
 		 * Cannot handle when 'arg' is longer than 'this' => ArrayOutOfBoundsException
 		 */
@@ -565,6 +574,7 @@ implements SetInteger, SwapAble, IInvertAble {
 		letGrad(grad, false, true);
 	}
 	
+	/**Returns a new array holding a copy of this permutation's coefficients.	 */
 	public int[] toArray() {
 		final int[] ret = new int[mDim+1]; 
 		System.arraycopy(a, 0, ret, 0, ret.length); 
@@ -655,7 +665,7 @@ implements SetInteger, SwapAble, IInvertAble {
 	//	Replication intMonoid:	//
 	//////////////////////////////
 
-	/**Mapping from the Left in Place:  this=°arg
+	/**Mapping from the Left in Place:  this=ï¿½arg
 	 * This Operation doesn't return 'this', but 'arg'!
 	 * so to concatenate Mappings use B.mapAt(A.mapAt(a))
 	 * which is more efficient than B.map(A.map(a)) or B.map(A).map(a)
@@ -664,7 +674,7 @@ implements SetInteger, SwapAble, IInvertAble {
 		return mapAt(a, mDim + 1, arg);
 	}
 
-	/**Mapping from the Left in Place:  this=°arg
+	/**Mapping from the Left in Place:  this=ï¿½arg
 	 * This Operation doesn't return 'this', but 'arg'!
 	 * so to concatenate Mappings use B.mapAt(A.mapAt(a))
 	 * which is more efficient than B.map(A.map(a)) or B.map(A).map(a)
@@ -674,14 +684,14 @@ implements SetInteger, SwapAble, IInvertAble {
 		return arg;
 	}
 
-	/**Mapping from Left in Place:  this=°arg
+	/**Mapping from Left in Place:  this=ï¿½arg
 	 * This Operation doesn't return 'this', but 'arg'!
 	 * so to concatenate Mappings use B.mapAt(A.mapAt(a))
 	 * which is more efficient than B.map(A.map(a)) or B.map(A).map(a)
 	 * or A.cat(B).map(a)		   */
 	//	public SemiMonoid mapAt(SemiMonoid arg) { return (SemiMonoid) mapAt(a, mDim+1, arg); }
 
-	/**Mapping from the Left in Place:  this=°arg
+	/**Mapping from the Left in Place:  this=ï¿½arg
 	 * This Operation doesn't return 'this', but 'arg'!
 	 * so to concatenate Mappings use B.mapAt(A.mapAt(a))
 	 * which is more efficient than B.map(A.map(a)) or B.map(A).map(a)
@@ -690,7 +700,7 @@ implements SetInteger, SwapAble, IInvertAble {
 		return mapAt(a, mDim + 1, arg, argLength);
 	}
 
-	/**Mapping from the Left in Place:  this=°arg
+	/**Mapping from the Left in Place:  this=ï¿½arg
 	 * This Operation doesn't return 'this', but 'arg'!
 	 * so to concatenate Mappings use B.mapAt(A.mapAt(a))
 	 * which is more efficient than B.map(A.map(a)) or B.map(A).map(a)
@@ -700,22 +710,22 @@ implements SetInteger, SwapAble, IInvertAble {
 		return arg;
 	}
 
-	/**Mapping from the Left :  arg°	*/
+	/**Mapping from the Left :  argï¿½	*/
 	public Permutation map(final Permutation arg) {
 		return new Permutation(map(a, mDim + 1, arg.a, arg.mDim + 1));
 	}
 
-	/**Mapping from the Left :  arg°	*/
+	/**Mapping from the Left :  argï¿½	*/
 	public int[] map(final int[] arg, final int argLength) {
 		return map(a, mDim + 1, arg, argLength);
 	}
 
-	/**Mapping from the Left :  arg°	*/
+	/**Mapping from the Left :  argï¿½	*/
 	public Object Map(final Object arg) {
 		return map(a, mDim + 1, arg);
 	}
 
-	/**Concatenation with the Inverse in Place: °=!this
+	/**Concatenation with the Inverse in Place: ï¿½=!this
 	 * This is the Inverse Operation to mapAt(), not to catAt()!
 	 * This Operation doesn't return 'this', but 'arg'!
 	 * so to concatenate Mappings use B.solveAt(A.solveAt(a))
@@ -735,7 +745,7 @@ implements SetInteger, SwapAble, IInvertAble {
 		return ((Permutation) rev()).mapAt(arg);
 	}
 
-	/**Concatenation with the Inverse in Place: °=!this
+	/**Concatenation with the Inverse in Place: ï¿½=!this
 	 * This is the Inverse Operation to mapAt(), not to catAt()!
 	 * This Operation doesn't return 'this', but 'arg'!
 	 * so to concatenate Mappings use B.solveAt(A.solveAt(a))
@@ -760,27 +770,27 @@ implements SetInteger, SwapAble, IInvertAble {
 	//	Interface SemiMonoid:	//
 	//////////////////////////////
 
-	/**Mapping from the Left :  arg°	*/
+	/**Mapping from the Left :  argï¿½	*/
 	public int map(final int arg) {
 		if (arg > mDim)
 			return arg;
 		return a[arg];
 	}
 
-	/**Concatenation with the Inverse in Place: °!this	*/
+	/**Concatenation with the Inverse in Place: ï¿½!this	*/
 	public int solve(final int arg) {
 		if (arg > mDim)
 			return arg;
 		return ((Permutation) rev()).a[arg];
 	}
 
-	/**Concatenation with the Inverse in Place: this°!arg
+	/**Concatenation with the Inverse in Place: thisï¿½!arg
 	 * This is the Inverse Operation to map(), not to cat()!
 	 * It cannot be done in Place!	 */
 	public int[] solve(final int[] arg, final int argLength) {
 		return solve(a, mDim + 1, arg, argLength); }
 
-	/**Concatenation with the Inverse in Place: this°!arg
+	/**Concatenation with the Inverse in Place: thisï¿½!arg
 	 * This is the Inverse Operation to map(), not to cat()!
 	 * It cannot be done in Place!	 */
 	public Permutation solve(final Permutation arg) {
@@ -1071,7 +1081,7 @@ implements SetInteger, SwapAble, IInvertAble {
 		/*		for (int Z1 = 0; ++Z1 <= mDim;)
 				{	//This Operation is not destructive, the Result is unique, but not intellegible!
 					int Z2 = -1, Z3 = 0;
-					F *= Z1; //Fakultäten! Wertigkeit der Vertauschungen
+					F *= Z1; //Fakultï¿½ten! Wertigkeit der Vertauschungen
 					while (a[++Z2] != Z1);	//Search for Z1 in the Array
 					while (++Z2 <= mDim) if (a[Z2] < Z1) Z3++;	//Count the number of Inversions
 					Zaehler += F*Z3;	//multiply it by the Value of the Inversion
@@ -1116,7 +1126,7 @@ implements SetInteger, SwapAble, IInvertAble {
 
 	/**Liefert das Vorzeichern der Permutation,d.h. +1 bei gerader,
 	 * -1 bei ungerader und 0 bei der identischen Permutation.
-	 * Dieses Vorzeichen wird durch Zählen der notwendigen
+	 * Dieses Vorzeichen wird durch Zï¿½hlen der notwendigen
 	 * Paarvertauschungen ermittelt.
 	 * Dies ist schneller als die Ermittlung von PermID.	
 	 * Das Vorzeichen multipliziert sich bei Verkettungen von Permutationen, 
@@ -1578,12 +1588,14 @@ implements SetInteger, SwapAble, IInvertAble {
 
 	//Multi_Pow is defined in Vector.Tensor
 
-	/** @return the Sum of all absolute Values of the Indices = Sum (|n [i]|)	 */
+	/**Sums the absolute values of this multi-index's own coefficients.
+	 * @return the Sum of all absolute Values of the Indices = Sum (|n [i]|)	 */
 	public long Multi_ABS() {
 		return Multi_ABS(a, mDim + 1);
 	}
 
-	/** @return the Sum of all absolute Values of the Indices = Sum (|n [i]|)	 */
+	/**Sums the absolute values of the coefficients in the given array.
+	 * @return the Sum of all absolute Values of the Indices = Sum (|n [i]|)	 */
 	public static long Multi_ABS(int[] a, int length) {
 		long sum = 0;
 		while (--length >= 0) {
@@ -1591,8 +1603,10 @@ implements SetInteger, SwapAble, IInvertAble {
 		return sum;
 	}
 
-	/** @return the Product of all Faculties of the Indices = Prod( n [i]!)
+	/**Computes the product of the faculties of this multi-index's own coefficients.
+	 * @return the Product of all Faculties of the Indices = Prod( n [i]!)
 	  * The Carry Element is used for the Base. 	 */
+	// TODO: LOGIC: parameter 'p' is never read - the method always computes the product from this instance's own array 'a', ignoring the "Carry Element used for the Base" documented in the @return comment, so a caller passing a different Carry/base permutation gets a result computed from the wrong operand.
 	public long Multi_Fact(final Permutation p) {
 		long ret = 1;
 		for (int i = mDim+1; --i >= 0; ) {
@@ -1677,7 +1691,7 @@ implements SetInteger, SwapAble, IInvertAble {
 	P2.Grad:=P1.Grad;GetMem (P2.a,Gr);
 	nOver  :=P1.Grad SHL 7; {Maximale Anzahl von ausprobierten Pfaden bei T}
 	nLimit :=P1.Grad SHL 3; {Maximale Anzahl von erfolgreichen Pfaden bei T}
-	{IF Ze_Zeiger (@Annehmen)^ <> NIL THEN Annehmen (P1,P2); {evtl. Gr”áe initialisieren}
+	{IF Ze_Zeiger (@Annehmen)^ <> NIL THEN Annehmen (P1,P2); {evtl. Grï¿½ï¿½e initialisieren}
 	IF Negativ (T) THEN {Bereich der Energie abschaetzen}
 	BEGIN
 	dE:=Null;
@@ -1710,7 +1724,7 @@ implements SetInteger, SwapAble, IInvertAble {
 	2: t:=t*tFaktor; {Abkuehlen,evtl ebenfalls durch eine Funktion ersetzen}
 	IF nSucc = 0 THEN GOTO 9 {fertig,wenn keine Erfolge mehr}
 	END;
-	Fehler:=TRUE; {es waren noch mehr Minimierungen m”glich!}
+	Fehler:=TRUE; {es waren noch mehr Minimierungen mï¿½glich!}
 	9:FreeMem (P2.a,Gr)
 	END;
 	
@@ -1764,9 +1778,9 @@ implements SetInteger, SwapAble, IInvertAble {
 			int j = (int) (Math.random() * tupel.length);
 			//choose a Permutation
 			L.n().l(j).l(tupel[j]).l(" = ").l(((Permutation) tupel[j]).rev());
-			L.n(" P°!P = ").l(tupel[j].map((Permutation) tupel[j].rev()));
-			L.n().l(j).l(tupel[j]).l("; !P°P = ").l(((IMonoid) tupel[j]).pam(tupel[j]));
-			L.n().l(j).l(tupel[j]).l("; P°!P = ").l(((IMonoid) tupel[j]).solve(tupel[j]));
+			L.n(" Pï¿½!P = ").l(tupel[j].map((Permutation) tupel[j].rev()));
+			L.n().l(j).l(tupel[j]).l("; !Pï¿½P = ").l(((IMonoid) tupel[j]).pam(tupel[j]));
+			L.n().l(j).l(tupel[j]).l("; Pï¿½!P = ").l(((IMonoid) tupel[j]).solve(tupel[j]));
 		}
 		L.n("Test the Division of Permutations:");
 		for (int i = 1; ++i < 10;) { //Test the Division of Permutations
@@ -1776,10 +1790,10 @@ implements SetInteger, SwapAble, IInvertAble {
 			//			j =8; k=1;
 			L.n().l(j).l(": J=").l(tupel[j]);
 			L.n().l(k).l(": K=").l(tupel[k]);
-			L.n(" (!K°K)°J = J = ").l((((IMonoid) tupel[k]).pam(tupel[k])).map(tupel[j]));
-			L.n(" !K°(K°J) = J = ").l( ((IMonoid) tupel[k]).pam(tupel[k]  .map(tupel[j])));
-			L.n(" (J°K)°!K = J = ").l((tupel[j].map(tupel[k])).solve(tupel[k]));
-			L.n(" J°(K°!K) = J = ").l( tupel[j].map(tupel[k]  .solve(tupel[k])));
+			L.n(" (!Kï¿½K)ï¿½J = J = ").l((((IMonoid) tupel[k]).pam(tupel[k])).map(tupel[j]));
+			L.n(" !Kï¿½(Kï¿½J) = J = ").l( ((IMonoid) tupel[k]).pam(tupel[k]  .map(tupel[j])));
+			L.n(" (Jï¿½K)ï¿½!K = J = ").l((tupel[j].map(tupel[k])).solve(tupel[k]));
+			L.n(" Jï¿½(Kï¿½!K) = J = ").l( tupel[j].map(tupel[k]  .solve(tupel[k])));
 		}
 	}
 
@@ -1843,11 +1857,8 @@ implements SetInteger, SwapAble, IInvertAble {
 }
 
 /**
- * 
- * Title: <p>
- * Description:
- * Purpose:
- * Iterates through the Indices in a Permutation. 
+ * Iterates through the indices of a {@link Permutation}, delegating position tracking
+ * to the wrapped instance.
  *
  * Known SubClasses: <none>
  *
@@ -1858,6 +1869,15 @@ implements SetInteger, SwapAble, IInvertAble {
  * Created on	10-26-2002, 12:47 PM<p>
  * @author heuerm
  * @version	1.0
+ * <!-- docstate
+ * pass: 2
+ * mtime: 2026-09-05T16:34:07Z
+ * digest: a161b1166546bcdfeae795bcf43db60707c808385944a84360d40d6109417151
+ * stale: false
+ * tags: [code/iterator]
+ * concepts: [Permutation]
+ * facets: {layer: utility, status: broken, complexity: medium}
+ * -->
  */
 class PermutationIterator 
 extends AStreamIn { //IndexIterator {
@@ -1881,10 +1901,12 @@ extends AStreamIn { //IndexIterator {
 	/** There is no Order in the Values of a Permutation.	  */
 	public byte getOrder() { return ORDER_NONE; }
 
-	/** @see streamIO.object.AStreamIn#getMaxMarkSize()	 */
+	/**Returns the maximum mark size, equal to the degree of the underlying permutation.
+	 * @see streamIO.object.AStreamIn#getMaxMarkSize()	 */
 	public long getMaxMarkSize() { return self.mDim; }
-	
-	/** @see streamIO.object.AStreamIn#getPosition()	 */
+
+	/**Returns the current iteration position.
+	 * @see streamIO.object.AStreamIn#getPosition()	 */
 	public long getPosition() { return current; }
 	
 	/**Returns the next Object, postIncremental.	 */

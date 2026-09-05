@@ -38,7 +38,7 @@ import tester.process.Operator;
   * HashTable.Relation and other more complicated Mappings.
   *
   * The Notation (Value@key) has been chosen to support the Mapping Character:
-  * (x@a)°(a@u)°u == x
+  * (x@a)ï¿½(a@u)ï¿½u == x
   *
   * By defining {a,b,...} == {(null, a), (null, b), ...}, Mapping can seamlessly
   * be integrated into Set Theory. (a, null) is then equivalent to null
@@ -79,6 +79,15 @@ import tester.process.Operator;
   * 
   * non-flattened Structures (only Arrays): 
   * @see streamIO.object.enumer.container.SortedArray  
+  * <!-- docstate
+  * pass: 2
+  * mtime: 2026-09-05T16:41:19Z
+  * digest: 80a516596264248c9f9dd0d8e700ee298069c507c22a032823d434298f8a3a2c
+  * stale: false
+  * tags: [code/dictionary_entry, code/concatenation]
+  * concepts: [Key-Value Pair, Dictionary]
+  * facets: {layer: utility, status: legacy, complexity: medium}
+  * -->
   */
 public class Association 
 extends AMonoid   //this creates a circular Dependency between Stream and BaseCopy!!!
@@ -301,9 +310,10 @@ implements Serializable, Cloneable, IPair, ITester { //ITester discerns "Value" 
 		ValidationRule.EQUALS(_arg.val, val);
 	}
 
-	/** @return  A string representation of this Association.
+	/** Returns the string representation "value@key" of this association.
+	  * @return  A string representation of this Association.
 	  * The Notation (Value@key) has been chosen to support the Mapping Character:
-	  * (x@a)°(a@u)°u == x
+	  * (x@a)ï¿½(a@u)ï¿½u == x
 	  */
 	public synchronized String toString() { return val + "@" + key; }
 
@@ -318,7 +328,7 @@ implements Serializable, Cloneable, IPair, ITester { //ITester discerns "Value" 
 //		if (Inverse != null)
 //			Inverse = new Association(Value, Key); }
 //		return Inverse; }
-
+*/
 	/** Sets the Inverse Association:  !this	 */
 	public void setInverse(IInvertAble Inverse_) { throw new AbstractMethodError(); }
 
@@ -347,7 +357,7 @@ implements Serializable, Cloneable, IPair, ITester { //ITester discerns "Value" 
 	 * but to operate on the Functions and operate the Results on evaluation.	 */
 	public boolean canProcess(Object arg) { return (arg == key); }
 
-	/**Mapping / Concatenation from the right in Place:  this=°arg <=> return Value(arg.Value)
+	/**Mapping / Concatenation from the right in Place:  this=ï¿½arg <=> return Value(arg.Value)
 	 * This virtual Operation has to be implemented by each subclass.	 */
 	public ISemiMonoid mapAt(Object arg) {
 		if (arg instanceof Association)
@@ -359,7 +369,7 @@ implements Serializable, Cloneable, IPair, ITester { //ITester discerns "Value" 
 		throw new AbstractMethodError(); }
 //		return arg; }
 
-	/**Mapping / Concatenation from the right in Place:  this=°arg <=> return Value(arg.Value)
+	/**Mapping / Concatenation from the right in Place:  this=ï¿½arg <=> return Value(arg.Value)
 	 * This virtual Operation has to be implemented by each subclass.	 */
 	public Object MapAt(Object arg) {
 		if (arg instanceof Association)
@@ -369,14 +379,14 @@ implements Serializable, Cloneable, IPair, ITester { //ITester discerns "Value" 
 			return ((ICopyAble) arg).copyAt(val); }
 		throw new AbstractMethodError(); }
 
-	/**Mapping / Concatenation from the right in Place:  this=°arg <=> return Value(arg.Value)
+	/**Mapping / Concatenation from the right in Place:  this=ï¿½arg <=> return Value(arg.Value)
 	 * This virtual Operation has to be implemented by each subclass.	 */
 	public IMonoid pamAt(Object arg) {
 //		if (arg instanceof Association)
 			return unMapAt((Association) arg); }
 //		throw new AbstractMethodError(); }
 
-	/**Mapping / Concatenation from the right in Place:  this=°arg <=> return Value(arg.Value)
+	/**Mapping / Concatenation from the right in Place:  this=ï¿½arg <=> return Value(arg.Value)
 	 * This virtual Operation has to be implemented by each subclass.	 */
 	public Object UnMapAt(Object arg) {
 		if (arg instanceof Association)
@@ -397,14 +407,14 @@ implements Serializable, Cloneable, IPair, ITester { //ITester discerns "Value" 
 
 	//  essential Implementations
 
-	/**Mapping / Concatenation from the right in Place:  this=°arg <=> return Value(arg.Value)
+	/**Mapping / Concatenation from the right in Place:  this=ï¿½arg <=> return Value(arg.Value)
 	 * This virtual Operation has to be implemented by each subclass.	 */
 	public IMonoid pam(Object arg) {
 //		if (arg instanceof Association)
 			return pam( (Association) arg); }
 //		return null; }
 
-	/**Mapping / Concatenation from the right in Place:  this=°arg <=> return Value(arg.Value)
+	/**Mapping / Concatenation from the right in Place:  this=ï¿½arg <=> return Value(arg.Value)
 	 * This virtual Operation has to be implemented by each subclass.	 */
 	public Object UnMap(Object arg) {
 		if (arg instanceof Association)
@@ -416,7 +426,7 @@ implements Serializable, Cloneable, IPair, ITester { //ITester discerns "Value" 
 
 	//  additional Implementations
 
-	/**Mapping / Concatenation from the right in Place:  this=°arg <=> arg.Value = Value(arg.Value)
+	/**Mapping / Concatenation from the right in Place:  this=ï¿½arg <=> arg.Value = Value(arg.Value)
 	 * <=> arg.Value(arg.key) := Value(arg.key)
 	 * This virtual Operation has to be implemented by each subclass.	 */
 	public Association mapAt(Association arg_) {
@@ -426,7 +436,7 @@ implements Serializable, Cloneable, IPair, ITester { //ITester discerns "Value" 
 		else arg_.val = null;
 		return arg_; }
 
-	/**Concatenation with the Inverse in Place: !this=°arg
+	/**Concatenation with the Inverse in Place: !this=ï¿½arg
 	 * <=> arg.Val(arg.key) := key(arg.Val)
 	 * This is the Inverse Operation to cat(), not to map()!
 	 * This virtual Operation has to be implemented by each concrete Subclass.		 */
@@ -438,9 +448,9 @@ implements Serializable, Cloneable, IPair, ITester { //ITester discerns "Value" 
 		else arg.val = null;
 		return arg; }
 
-	/**Left-Concatenation with the Inverse: this°!arg  <=>  this.key = arg.Value(this.key)
-	 * Resolves the Equation A°B = C = A.map(B) for A:
-	 * A = C°!B = C.map(B.invert()) = C.solve(B) = B.reSolve(C) = A.map(B).solve(B)
+	/**Left-Concatenation with the Inverse: thisï¿½!arg  <=>  this.key = arg.Value(this.key)
+	 * Resolves the Equation Aï¿½B = C = A.map(B) for A:
+	 * A = Cï¿½!B = C.map(B.invert()) = C.solve(B) = B.reSolve(C) = A.map(B).solve(B)
 	 * Requires arg to be a Monoid!
 	 */
 	public Association solveAt(final Association arg) {
@@ -450,7 +460,7 @@ implements Serializable, Cloneable, IPair, ITester { //ITester discerns "Value" 
 		else key = null;
 		return this; }
 
-	/**Left-Concatenation with the Inverse: this°!arg  <=>  (arg.Value(key), Value)
+	/**Left-Concatenation with the Inverse: thisï¿½!arg  <=>  (arg.Value(key), Value)
 	 * This is the Inverse Operation to map(), not to cat()!	 */
 	public Association solve(Association arg) {
 		if ((key   ==   arg.key) ||  //MUST be a Mapping!
@@ -458,17 +468,17 @@ implements Serializable, Cloneable, IPair, ITester { //ITester discerns "Value" 
 			return new Association(arg.val, val); }
 		return null; }
 
-	/**Left-Concatenation with the Inverse: arg°!this <=> (Value, arg.Value(key))
-	 * Resolves the Equation A°B = C = A.map(B) for A:
-	 * A = C°!B = C.map(B.invert()) = C.solve(B) = B.reSolve(C) = A.map(B).solve(B)
+	/**Left-Concatenation with the Inverse: argï¿½!this <=> (Value, arg.Value(key))
+	 * Resolves the Equation Aï¿½B = C = A.map(B) for A:
+	 * A = Cï¿½!B = C.map(B.invert()) = C.solve(B) = B.reSolve(C) = A.map(B).solve(B)
 	 * Requires arg to be a Mapping and returns one!
 	 */
 	public Association reSolve(Association arg) {
 		return (Association) arg.map(((IMonoid) self).rev()); }
 
-	/**Left-Concatenation with the Inverse: this°!arg  <=>  (arg.Value(key), Value)
-	 * Resolves the Equation A°B = C = A.map(B) for A:
-	 * A = C°!B = C.map(B.invert()) = C.solve(B) = B.reSolve(C) = A.map(B).solve(B)
+	/**Left-Concatenation with the Inverse: thisï¿½!arg  <=>  (arg.Value(key), Value)
+	 * Resolves the Equation Aï¿½B = C = A.map(B) for A:
+	 * A = Cï¿½!B = C.map(B.invert()) = C.solve(B) = B.reSolve(C) = A.map(B).solve(B)
 	 * Requires arg to be a Monoid!
 	 */
 	public IMonoid solve(Object arg) {
@@ -476,7 +486,7 @@ implements Serializable, Cloneable, IPair, ITester { //ITester discerns "Value" 
 			return solve((Association) arg); //MUST be a Mapping
 		return null; }
 
-	/**Mapping from the Left :  arg°
+	/**Mapping from the Left :  argï¿½
 	 * mapAt() uses shallowCopyAt(map(arg))
 	 */
 	public ISemiMonoid map  (Object arg) {
@@ -484,7 +494,7 @@ implements Serializable, Cloneable, IPair, ITester { //ITester discerns "Value" 
 			return map  ( (Association) arg); }
 //		return null; }
 
-	/**Mapping from the Left :  arg°
+	/**Mapping from the Left :  argï¿½
 	 * mapAt() uses shallowCopyAt(map(arg))
 	 */
 	public Object Map  (Object arg) {
@@ -495,12 +505,12 @@ implements Serializable, Cloneable, IPair, ITester { //ITester discerns "Value" 
 			return val; }
 		return null; }
 
-	/**Mapping / Concatenation from the right in Place:  °=arg
+	/**Mapping / Concatenation from the right in Place:  ï¿½=arg
 	 * Not really necessary to implemented this by each subclass.	 */
 	public Association map(final Association arg_) {
 		return new Association(arg_.key, map(arg_.val)); }
 
-	/**Mapping / Concatenation from the right in Place:  °=arg
+	/**Mapping / Concatenation from the right in Place:  ï¿½=arg
 	 * This virtual Operation has to be implemented by each subclass.	 */
 /*	public SemiMonoid catAt(Object arg) {
 		Association arg_ = (Association) arg;
@@ -508,8 +518,8 @@ implements Serializable, Cloneable, IPair, ITester { //ITester discerns "Value" 
 			(Value.equals(arg_.Key))) Value = arg_.Value;
 		else Value = null;
 		return this; }
-
-	/**Concatenation with the Inverse in Place: °=!arg
+*/
+	/**Concatenation with the Inverse in Place: ï¿½=!arg
 	 * This is the Inverse Operation to cat(), not to map()!
 	 * This virtual Operation has to be implemented by each concrete Subclass.		 */
 /*	public Monoid unCatAt (Object arg) {
@@ -518,7 +528,7 @@ implements Serializable, Cloneable, IPair, ITester { //ITester discerns "Value" 
 			(Value.equals(arg_.Value))) Value = arg_.Key;
 		else Value = null;
 		return this; }
-
+*/
 	/**Creates a Copy of the given Depth from 'arg'	 */
 	public ICopyAble copyAt(final Object arg, final int Depth) {
 		if (Depth == 0) {

@@ -17,6 +17,15 @@ import streamIO.exception.ReadOnlyException;
  * Design Decisions:
  * All Constant Classes are derived from this one.
  * They cannot inherit the Implementations from the abs... Classes,
+ * <!-- docstate
+ * pass: 2
+ * mtime: 2026-09-05T10:13:24Z
+ * digest: 63c4af46ef332e49269761392a59ef34cca9e8b0754daf2b766d632a695f5f14
+ * stale: false
+ * tags: [code/immutable_wrapper, code/delegation]
+ * concepts: [Copy Semantics, Constant/Immutable Wrapper]
+ * facets: {layer: utility, status: legacy, complexity: medium}
+ * -->
  * but it is more performant to delegate everything right away!	 */
 public class CCopyAble
 extends ACopyAble

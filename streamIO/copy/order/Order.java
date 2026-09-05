@@ -13,6 +13,15 @@ import function.IOrderAble;
  *
  * Absolute Value is only important because of the Metric defined by "<".
  * A Default Implementation is done in 'AOrderable'.
+ * <!-- docstate
+ * pass: 2
+ * mtime: 2026-09-05T10:13:25Z
+ * digest: 1339efb09cd1a2f3424b5ed52774c4db9a1da7a0bd0071845001964ed1fdad37
+ * stale: false
+ * tags: [code/numeric_comparison, code/in_place_operation]
+ * concepts: [Order Relation]
+ * facets: {layer: utility, status: legacy, complexity: medium}
+ * -->
  */
 public interface Order
 extends IOrderAble, ICopyAble {

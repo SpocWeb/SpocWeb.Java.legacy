@@ -15,6 +15,15 @@ package streamIO.copy.shift;
  * is too fragile, it can be externalized by adding the Carry as In-Parameter
  * and adding getCarry() for the Out-Parameter, since shifting returns itself.
  * Rotation is not affected, higher Rotations are simulated using Shifting
+ * <!-- docstate
+ * pass: 2
+ * mtime: 2026-09-05T10:13:25Z
+ * digest: 24216fad89cec4f8d90be8165e08e9208a8a209aca3ee11384c0bc92a877478b
+ * stale: false
+ * tags: [code/in_place_operation, code/bit_manipulation]
+ * concepts: [g-adic Number Representation, Shift and Rotate]
+ * facets: {layer: utility, status: legacy, complexity: medium}
+ * -->
  * and transferring the Carry.	 */
 public interface IShiftAble {
 

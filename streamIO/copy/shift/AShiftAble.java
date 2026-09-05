@@ -10,6 +10,15 @@ import streamIO.copy.ICopyAble;
  *
  * There is a difference between arithmetic and logical Shifting
  * when using signed integers.
+ * <!-- docstate
+ * pass: 2
+ * mtime: 2026-09-05T16:29:09Z
+ * digest: 97789ca44665bdbbf08b4128af1193ac15a40fc7c6b7ef8d3e7e490b9a74307f
+ * stale: false
+ * tags: [code/abstract_base, code/delegation, code/in_place_operation]
+ * concepts: [Shift and Rotate, Delegation Pattern]
+ * facets: {layer: utility, status: broken, complexity: medium}
+ * -->
  * The highest bit has to retain it's value with arithmetic Shifting. */
 public class AShiftAble
 extends ACopyAble
@@ -139,6 +148,7 @@ implements ShiftAble {
 		return self; }
 
 	/**Arithmetic Shift left by several Positions in Place: x<<=arg	 */
+	// TODO: LOGIC: the Carry parameter is accepted but never read or written - it is silently ignored, so a caller chaining shifts across objects via an externalized carry (per IShiftAble's documented design) loses the carry value here.
 	public ShiftAble aslAt(int arg, Object Carry)	{ //TODO: define how Carry is meant to work!
  		if (arg < 0) return asrAt(-arg, Carry);
 		ShiftAble buf = self.getCarry(); self.setCarry(null);	//Clear the Carry to prevent rotation, because asl works recursive!
@@ -156,6 +166,7 @@ implements ShiftAble {
 		return self; }
 
 	/**Arithmetic Shift right by several Positions: x>>=arg	 */
+	// TODO: LOGIC: the Carry parameter is accepted but never read or written - it is silently ignored, so an externalized carry chained across objects (per IShiftAble's documented design) is lost here.
 	public ShiftAble asrAt(int arg, Object Carry)	{
 		if (arg < 0) return aslAt(-arg);
 		ShiftAble buf = self.getCarry(); self.setCarry(null);	//Clear the Carry to prevent rotation, because asl works recursive!
@@ -172,6 +183,7 @@ implements ShiftAble {
 		return self; }
 
 	/**Logic Shift right by several Positions: x>>=arg	 */
+	// TODO: LOGIC: the Carry parameter is accepted but never read or written - it is silently ignored, so an externalized carry chained across objects (per IShiftAble's documented design) is lost here.
 	public ShiftAble lsrAt(int arg, Object Carry)	{
 		if (arg < 0) return aslAt(-arg);	//lsl is equivalent to asl!
 		ShiftAble buf = self.getCarry(); self.setCarry(null);	//Clear the Carry to prevent rotation, because asl works recursive!
@@ -290,6 +302,7 @@ implements ShiftAble {
 	 * When overriding, use newInstance on all Components.	 */
 	public ICopyAble newInstance() { throw new AbstractMethodError(); }
 
+	/**Always throws, since a concrete carry representation is type-specific.	 */
 	public Object createCarry() { throw new AbstractMethodError(); }
 
 	/**Fills this Instance with the Contents read from the streamIO.

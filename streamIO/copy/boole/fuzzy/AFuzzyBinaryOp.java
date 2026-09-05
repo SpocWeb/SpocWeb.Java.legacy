@@ -24,6 +24,15 @@ package streamIO.copy.boole.fuzzy;
  * @author mheuer
  * @version	1.0
  *
+ * <!-- docstate
+ * pass: 2
+ * mtime: 2026-09-05T10:13:24Z
+ * digest: 384328ba9e927141b017b2869d6b0caca24991f880d7ab1a4b09b0b75df90b85
+ * stale: false
+ * tags: [code/fuzzy_logic, code/abstract_base]
+ * concepts: [Fuzzy Logic]
+ * facets: {layer: utility, status: legacy, complexity: medium}
+ * -->
  */
 public abstract class AFuzzyBinaryOp 
 extends AFuzzyUnaryOp

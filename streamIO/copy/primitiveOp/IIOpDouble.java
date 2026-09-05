@@ -6,6 +6,15 @@ package streamIO.copy.primitiveOp;
  * But it is also implemented by all Vector Interval and ComplexDbl Classes.
  * But what is the benefit of this Interface, except for Unification?
  * These Constructs must be orderAble due to their comparability with double Numbers.
+ * <!-- docstate
+ * pass: 2
+ * mtime: 2026-09-05T10:13:25Z
+ * digest: 5b0bc6bb2ac790adeda3079bb822f7448935f2249c3329d021c7656534cdb93c
+ * stale: false
+ * tags: [code/arithmetic_operation, code/in_place_operation, code/numeric_comparison]
+ * concepts: [Primitive Numeric Operations]
+ * facets: {layer: utility, status: legacy, complexity: medium}
+ * -->
  */
 public interface IIOpDouble {
 

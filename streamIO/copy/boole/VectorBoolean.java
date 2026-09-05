@@ -5,6 +5,8 @@ import streamIO.Log;
 import streamIO.copy.ICopyAble;
 
 /**
+  * A resizable, {@code int}-array-backed bit vector implementing {@link Boole} with
+  * per-bit AND/OR/XOR/NOT.
   * Title: VectorBoolean<p>
   * Description:
   * 'null' is defined as being 'false' in all Dimensions.
@@ -22,6 +24,15 @@ import streamIO.copy.ICopyAble;
   * Created on	06-13-2002, 05:20 PM<p>
   * @author 	Matthias Heuer
   * @version	1.0
+  * <!-- docstate
+  * pass: 2
+  * mtime: 2026-09-05T20:42:19Z
+  * digest: 43dec5464dc685b77bdcdf264fa519e40b94507755f4688f668a7712244f606e
+  * stale: false
+  * tags: [code/boolean_algebra, code/bit_vector, code/bit_manipulation]
+  * concepts: [Boolean Algebra, Bit Vector]
+  * facets: {layer: utility, status: legacy, complexity: medium}
+  * -->
   */
 public class VectorBoolean
 extends ABoole {
@@ -73,7 +84,8 @@ extends ABoole {
 	/// #region : Accessor Methods (getXXX/isXXX/setXXX)
 	////////////////////////////////////////////////////////////////////////////////
 	
-	/** @return true, if the Bit at the given Index is set. 	 */
+	/**Tests whether the bit at the given index is set.
+	 * @return true, if the Bit at the given Index is set. 	 */
 	public boolean isSet(final int i) {
 		final int byt = i >> SHIFT;
 		if (byt >= values.length) 
@@ -117,7 +129,8 @@ extends ABoole {
 	/// #region : public Methods, then private Methods
 	////////////////////////////////////////////////////////////////////////////////
 	
-	/** @return a String Representation of this Object    */
+	/**Returns the comma-separated indices of the set bits, enclosed in parentheses.
+	 * @return a String Representation of this Object    */
 	public String toString() {
 		final StringBuffer buf = new StringBuffer(values.length << (SHIFT+3));
 		buf.append("(");
@@ -145,11 +158,13 @@ extends ABoole {
 	/// #region : Interface Boole: Implementation
 	////////////////////////////////////////////////////////////////////////////////
 	
-	/** @return a new Instance of this Class	*/
+	/**Creates a new, zero-filled instance with the same bit capacity as this one.
+	 * @return a new Instance of this Class	*/
 	public ICopyAble newInstance() {
 		return new VectorBoolean(values.length); }
 
-	/** @return a new Instance of this Class	*/
+	/**Copies the bits of arg into this instance, resizing the backing array as needed.
+	 * @return a new Instance of this Class	*/
 	public ICopyAble copyAt(Object arg) {
 		VectorBoolean arg_ = (VectorBoolean) arg;
 		if (arg_.values.length > values.length) {
@@ -184,7 +199,8 @@ extends ABoole {
 	int getCapacity() {
 		return values.length << SHIFT; }
 
-	/** @return the maximum Bit set 	*/
+	/**Returns the index of the highest set bit, or -1 when no bit is set.
+	 * @return the maximum Bit set 	*/
 	public int size() {
 		int i = values.length;
 		while (--i >= 0) {

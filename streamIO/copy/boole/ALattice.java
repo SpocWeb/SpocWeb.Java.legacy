@@ -3,7 +3,18 @@ package streamIO.copy.boole;
 import streamIO.copy.ACopyAble;
 import streamIO.copy.ICopyAble;
 
-/**Abstract implementation of a Lattice (without NOT, False and True)	 */
+/**Abstract implementation of a Lattice (without NOT, False and True)
+ *
+ * <!-- docstate
+ * pass: 2
+ * mtime: 2026-09-05T10:13:24Z
+ * digest: 7dd6925e3c5a2d7e39ac3787e788eb17fc1d54f93c8e76ca3617f74de5283c09
+ * stale: false
+ * tags: [code/lattice_structure, code/abstract_base, code/delegation]
+ * concepts: [Lattice, Delegation Pattern]
+ * facets: {layer: utility, status: legacy, complexity: medium}
+ * -->
+ */
 public class ALattice
 extends ACopyAble
 implements Lattice {

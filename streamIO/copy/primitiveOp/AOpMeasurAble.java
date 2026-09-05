@@ -6,6 +6,15 @@ import function.IMeasurAble;
   * by calling Methods from intOpDouble
   * Actually these Classes are deprecated,
   * because Operations with double Arguments are added to the Real Interface.
+  * <!-- docstate
+  * pass: 2
+  * mtime: 2026-09-05T16:15:56Z
+  * digest: 841fd9a098ba1a4deff12630b268c4a73d41989a3ce12fd268042ab37dfca0d1
+  * stale: false
+  * tags: [code/abstract_base, code/arithmetic_operation, code/deprecated_api]
+  * concepts: [Primitive Numeric Operations, Measurable Values]
+  * facets: {layer: utility, status: broken, complexity: medium}
+  * -->
   */
 public abstract class AOpMeasurAble
 extends AOpDouble
@@ -56,6 +65,7 @@ implements IMeasurAble {
 	public IOpLong cbcAt() { double tmp = getDouble(); return mulAt(tmp*tmp); }
 
 	/**  Linear Mapping in Place: x*=a + y	*/
+	// TODO: LOGIC: no-op - both parameters a and y are ignored and the object is returned unchanged, silently failing to perform the linear mapping the contract promises.
 	public IOpLong LinAt		(long a, long y) {
 		return this; }
 

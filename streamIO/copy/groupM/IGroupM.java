@@ -30,6 +30,15 @@ package streamIO.copy.groupM;
  * This Element is neutral for both left and right * Operations.
  * ...there is only a single inverse Element for each Element.
  * This is the same Element for both left and right * Operations.
+ * <!-- docstate
+ * pass: 2
+ * mtime: 2026-09-05T10:13:25Z
+ * digest: e73345aef7d9210ad5613060f400bea87159c7870e3b53bf98f5886c1d6d70a0
+ * stale: false
+ * tags: [code/multiplicative_group, code/algebraic_structure]
+ * concepts: [Algebraic Group, Multiplicative Structure]
+ * facets: {layer: utility, status: legacy, complexity: medium}
+ * -->
  */
 public interface IGroupM
 extends ISemiGroupM, IIGroupM {

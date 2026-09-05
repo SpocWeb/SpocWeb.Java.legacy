@@ -25,6 +25,15 @@ import streamIO.copy.ICopyAble;
   * @see streamIO.Copy.IGroup.IRing.IMetric.Body.IntervalA
   * @see streamIO.Copy.IGroup.IRing.IMetric.Body.IntervalP
   * are derived from AMetricBody to define arithmetic Operations
+  * <!-- docstate
+  * pass: 2
+  * mtime: 2026-09-05T16:30:32Z
+  * digest: c74a90cb3f0e1bc8ed9bf2f9484aa4d5e7d4f1bca296215cb95a3600b70f6237
+  * stale: false
+  * tags: [code/interval_arithmetic, code/set_operations]
+  * concepts: [Interval Arithmetic, Order Relation]
+  * facets: {layer: utility, status: broken, complexity: medium}
+  * -->
   */
 public class Interval
 extends AOrder {
@@ -198,6 +207,7 @@ extends AOrder {
 		boolean contL =		contains(arg.Left );
 		boolean contR =		contains(arg.Right);
 		if ( (contL && contR)) return this; //full containment
+		// TODO: LOGIC: missing "return this;" here - after collapsing Left onto Right for the no-containment case, execution falls through into the partial-containment branch below, which re-reads the just-mutated Left and can overwrite it again with a wrong border instead of leaving the collapsed (empty-intersection) interval in place.
 		if (!(contL || contR)) Left.copyAt(Right); //no containment
 		//partial containment: take the two contained points
 		if (arg.contains(Left )) { //take this left Point and use the contained other Point;

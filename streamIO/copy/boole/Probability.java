@@ -17,6 +17,15 @@ import function.byref.ByRefFloat;
   * p(A | B) = p(A) + p(B) - p(A & B)
   *
   *
+  * <!-- docstate
+  * pass: 2
+  * mtime: 2026-09-05T10:13:24Z
+  * digest: e1a8c18b8aa89c6b2ef3ea99a7aec09a312f8ba15a5aec48bdff715a1c614765
+  * stale: false
+  * tags: [code/boolean_algebra, code/numeric_comparison]
+  * concepts: [Boolean Algebra, Probability]
+  * facets: {layer: utility, status: legacy, complexity: medium}
+  * -->
   */
 public class Probability
 extends ABoole

@@ -1,20 +1,29 @@
 package streamIO.copy.monoid;
 
-/**ISemiMonoid (M,°):
+/**ISemiMonoid (M,ï¿½):
  * This Interface must be kept completely synchronous to ISemiGroup
  * Defines the most basic Interface necessary for a concatenative SemiGroup:'()='
  * All other operations are only Shortcuts and can be defined using '()='.
+ * <!-- docstate
+ * pass: 2
+ * mtime: 2026-09-05T10:13:25Z
+ * digest: 6c2efa5723ed0d0ec94a440938c0c56173a114e8f28243dda61546106e78a1b4
+ * stale: false
+ * tags: [code/concatenation]
+ * concepts: [Monoid, Concatenation]
+ * facets: {layer: utility, status: legacy, complexity: medium}
+ * -->
  * Could also be called 'concatenable' or 'mappable / mapping' */
 public interface IISemiMonoid {
 	
-	/**Mapping / Left-Concat in Place:  this=°arg
+	/**Mapping / Left-Concat in Place:  this=ï¿½arg
      * This Operation doesn't return 'this', but 'arg'!
      * so to concatenate Mappings use B.mapAt(A.mapAt(a))
      * which is more efficient for single Values than B.map(A.map(a))
 	 * or B.map(A).map(a) or A.cat(B).map(a)           */
 //   public Object       mapAt(Object     arg);
 
-	/**Mapping / Left-Concat in Place:  this=°arg
+	/**Mapping / Left-Concat in Place:  this=ï¿½arg
      * This Operation doesn't modify and return 'this', but 'arg'!!!
      * so to concatenate Mappings use B.mapAt(A.mapAt(a))
      * which is more efficient for single Values than B.map(A.map(a))
@@ -22,7 +31,7 @@ public interface IISemiMonoid {
 	 */
      public ISemiMonoid mapAt(Object arg);
 
-	/**Mapping / Right-Concatenation in Place: this°=arg
+	/**Mapping / Right-Concatenation in Place: thisï¿½=arg
 	 * This virtual Operation has to be implemented by each subclass.	 */
 //	public SemiMonoid catAt(Object arg);
 

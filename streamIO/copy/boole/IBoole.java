@@ -38,6 +38,15 @@ package streamIO.copy.boole;
  * BUT:
  * a AND NOT a = 1 != a or 1-a
  *
+ * <!-- docstate
+ * pass: 2
+ * mtime: 2026-09-05T10:13:24Z
+ * digest: b0fcb2ebc4a4fdc505867ec1ad809c50ba14b647782ccce170921b264e36346d
+ * stale: false
+ * tags: [code/boolean_algebra]
+ * concepts: [Boolean Algebra]
+ * facets: {layer: utility, status: legacy, complexity: medium}
+ * -->
  */
 public interface IBoole
 extends ILattice {

@@ -23,6 +23,15 @@ import streamIO.copy.ICopyAble;
  * Abstract Methods:
  * mulAt (*=)
  * divAt (/=)
+ * <!-- docstate
+ * pass: 2
+ * mtime: 2026-09-05T10:13:25Z
+ * digest: 6a488b8d1bea511a961fb9e4561e3ba567f6b7d00b49ade3727e2305e33cf821
+ * stale: false
+ * tags: [code/abstract_base, code/delegation, code/multiplicative_group]
+ * concepts: [Algebraic Group, Delegation Pattern]
+ * facets: {layer: utility, status: legacy, complexity: medium}
+ * -->
  */
 public class AGroupM
 extends ASemiGroupM

@@ -95,54 +95,54 @@ import streamIO.copy.boole.Lattice;
   * c := 1-|1-2c|
   *
   Neuronale Netze minimieren die quadratische Differenz-Funktion
-  zwischen gewünschtem und aktuellem Ergebnis.
-  Als Input/Output Paare können neben den aktuellen (und hoffentlich repräsentativen)
+  zwischen gewï¿½nschtem und aktuellem Ergebnis.
+  Als Input/Output Paare kï¿½nnen neben den aktuellen (und hoffentlich reprï¿½sentativen)
   Ergebnissen auch mit Hilfe einer Regel generierte Paare dienen.
-  Dadurch verinnerlicht das System die Regel und besitzt eine größere Datenbasis.
-  Die Lerngewichtung der künstlichen Fälle
-  Die Menge der Datensätze sollte die Anzahl der Neuronen wesentlich überschreiten,
+  Dadurch verinnerlicht das System die Regel und besitzt eine grï¿½ï¿½ere Datenbasis.
+  Die Lerngewichtung der kï¿½nstlichen Fï¿½lle
+  Die Menge der Datensï¿½tze sollte die Anzahl der Neuronen wesentlich ï¿½berschreiten,
   sonst wird sich ein Neuron auf je einen Datensatz spezialisieren
   und keine Generalisierung tritt ein,
   d.h. das Netz reagiert unvorhersehbar bei neuen Daten.
 
   Kohonen Netzwerke minimieren eine Energiefunktion
 
-  Fakten über Industrie Roboter:
-  -nur einsetzbar in gleichförmig strukturierten Umgebungen,
+  Fakten ï¿½ber Industrie Roboter:
+  -nur einsetzbar in gleichfï¿½rmig strukturierten Umgebungen,
    daher bisher nichts weiter als reprogrammierbare Positioniermaschinen,
    auch aufgrund ihrer Steifigkeit
-  -Die Gewöhnung an unregelmäßige Umgebungen ist dagegen immer wieder gescheitert,
-   nicht zuletzt aus Kostengründen.
-  -Sie können nur 1/20 ihres Eigengewichts tragen, im Gegensatz zum Menschen,
+  -Die Gewï¿½hnung an unregelmï¿½ï¿½ige Umgebungen ist dagegen immer wieder gescheitert,
+   nicht zuletzt aus Kostengrï¿½nden.
+  -Sie kï¿½nnen nur 1/20 ihres Eigengewichts tragen, im Gegensatz zum Menschen,
    der ca. 50% oder mehr des tragen (wenn auch nicht sicher handhaben) kann.
-  -Die Preise für Industrie Roboter sind, nicht zuletzt aufgrund der billigen PC Hardware,
-   um 75% gefallen und werden um weitere 50% fallen auf ca. 10% der ursprünglichen Kosten.
-  -Feedback über den Motorstrom erlaubt es, die Masse der Last abzuschätzen.
-  -Wenn das Nachschwingen durch Sensoren verringert würde,
-   könnten die Taktzeiten in den Fabriken reduziert werden.
+  -Die Preise fï¿½r Industrie Roboter sind, nicht zuletzt aufgrund der billigen PC Hardware,
+   um 75% gefallen und werden um weitere 50% fallen auf ca. 10% der ursprï¿½nglichen Kosten.
+  -Feedback ï¿½ber den Motorstrom erlaubt es, die Masse der Last abzuschï¿½tzen.
+  -Wenn das Nachschwingen durch Sensoren verringert wï¿½rde,
+   kï¿½nnten die Taktzeiten in den Fabriken reduziert werden.
 
-  -3D Steuerung durch die Maus: links / rechts, oben/unten und vor/zurück über das Rad!!!
+  -3D Steuerung durch die Maus: links / rechts, oben/unten und vor/zurï¿½ck ï¿½ber das Rad!!!
 
-  -Transienten müssen sowohl im Fourier- als auch im Zeitraum betrachtet werden.
-   Die Wahl des geeigneten Zeitintervalles erfolgt zweckmäßig als
+  -Transienten mï¿½ssen sowohl im Fourier- als auch im Zeitraum betrachtet werden.
+   Die Wahl des geeigneten Zeitintervalles erfolgt zweckmï¿½ï¿½ig als
    geometrisches Mittel der typischen Zeiten (z.B. Schwingungsperiode*Abklingzeit)
-   Alternativ (aber mit leicht höherem Aufwand) können auch die gesamte Transiente
+   Alternativ (aber mit leicht hï¿½herem Aufwand) kï¿½nnen auch die gesamte Transiente
    fourier transformiert werden.
 
-  -Alternative logische Verknüpfungen: Schnittmenge / AND Verknüpfung: t-Normen
+  -Alternative logische Verknï¿½pfungen: Schnittmenge / AND Verknï¿½pfung: t-Normen
    a min b Problem: in 0 nicht differenzierbar => Ableitung unstetig!
    a  *  b => Ableitung stetig, aber Komplement nicht def.
    a  *  b / (a + b - a*b) ("Hamacher Produkt")
    (abg) + (1-(1-a)(1-b))(1-g)  "kompensierendes AND"
 
    a+b-ab
-   -Vereinigungsmenge / OR Verknüpfung: t-CoNormen bzw. s-Normen
-    CoNormen, weil diese Normen durch die Einführung des Komplements
+   -Vereinigungsmenge / OR Verknï¿½pfung: t-CoNormen bzw. s-Normen
+    CoNormen, weil diese Normen durch die Einfï¿½hrung des Komplements
     mit Hilfe der de Morgan Regeln definiert werden.
 
-	Prüfung von deMorgan:
+	Prï¿½fung von deMorgan:
 	!(ab) = !a | !b
-	1-(ab) ?= (1-a)+(1-b)-(1-a)(1-b) nein, dazu müßten a oder b 0 oder 1 sein.
+	1-(ab) ?= (1-a)+(1-b)-(1-a)(1-b) nein, dazu mï¿½ï¿½ten a oder b 0 oder 1 sein.
 	1-ab ?= 1-a+1-b-(1-a-b+ab)
 	1-ab ?= 1-a+1-b-1+a+b-ab
 	1-ab ?= 1-ab stimmt!!!!
@@ -154,12 +154,12 @@ import streamIO.copy.boole.Lattice;
 	abg + (1-g)(a+b-ab) je nach g entweder AND oder OR
    abg + (1-(1-a-b+ab))(1-g)  "kompensierendes AND"
    abg+(1-1+a+b-ab)(1-g)  "kompensierendes AND"
-   abg+(a+b-ab)(1-g)  "kompensierendes AND, wechselt fließend zwischen AND und OR"
+   abg+(a+b-ab)(1-g)  "kompensierendes AND, wechselt flieï¿½end zwischen AND und OR"
 
-	Nur die Komplementarität geht wieder verloren, wie immer!
+	Nur die Komplementaritï¿½t geht wieder verloren, wie immer!
 
-Zur Defuzzifizierung wird idealerweise der Flächenschwerpunkt berechnet.
-Das ist aber nur bei einfachen Mengen (Formen) möglich.
+Zur Defuzzifizierung wird idealerweise der Flï¿½chenschwerpunkt berechnet.
+Das ist aber nur bei einfachen Mengen (Formen) mï¿½glich.
 
   * Known SubClasses:
   *
@@ -173,6 +173,15 @@ Das ist aber nur bei einfachen Mengen (Formen) möglich.
   * but which operates solely on the IOrder Interface.
   * 
   * @see streamIO.copy.group.ring.metric.FuzzyNumber for a Predicate defined on the float Range 
+  * <!-- docstate
+  * pass: 2
+  * mtime: 2026-09-05T10:13:24Z
+  * digest: 3e0006e85dbcd39af2af216aca4dae48ddbc20820ef1acf7e33fa3670db790d4
+  * stale: false
+  * tags: [code/fuzzy_logic, code/boolean_algebra, code/lattice_structure]
+  * concepts: [Fuzzy Logic, Boolean Algebra]
+  * facets: {layer: utility, status: legacy, complexity: medium}
+  * -->
   */
 public class FuzzyBoole
 extends ABoole {

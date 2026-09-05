@@ -1,6 +1,17 @@
 package streamIO.copy.order;
 
-/**Adds the Capability to compare double Numbers directly */
+/**Adds the Capability to compare double Numbers directly
+ *
+ * <!-- docstate
+ * pass: 2
+ * mtime: 2026-09-05T10:13:25Z
+ * digest: 14f278f2569831dcdbdebb362db089dd494ab58c5789e512a920dcbd136b9808
+ * stale: false
+ * tags: [code/numeric_comparison]
+ * concepts: [Order Relation]
+ * facets: {layer: utility, status: legacy, complexity: medium}
+ * -->
+ */
 public interface IDblOrder
 extends ILngOrder {
 

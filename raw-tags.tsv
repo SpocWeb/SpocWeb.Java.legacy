@@ -1082,3 +1082,95 @@ function/derive/ring/body/TestBodyFuncs.java:TestBodyFuncs.main(String[])	method
 function/derive/ring/body/TestBodyFuncs.java:TestBodyFuncs.testExpInt()	method	function/derive/ring/body/TestBodyFuncs.java	code/testing	Exponential Integral Self-Test	test	legacy	low
 function/derive/ring/body/TestBodyFuncs.java:TestBodyFuncs.testGaussIntegral()	method	function/derive/ring/body/TestBodyFuncs.java	code/testing	Gaussian Integral Self-Test	test	legacy	low
 function/derive/ring/body/vector/testBodyVFuncs.java:testBodyVFuncs.main(String[])	method	function/derive/ring/body/vector/testBodyVFuncs.java	code/testing	Demo Entry Point	test	legacy	low
+streamIO/copy/primitiveOp/IOpLong.java:IOpLong	class	streamIO/copy/primitiveOp/IOpLong.java	code/arithmetic_operation,code/in_place_operation,code/numeric_interface	Primitive Numeric Operations,Mutable Value Semantics	utility	legacy	medium
+streamIO/copy/primitiveOp/IIOpLong.java:IIOpLong	class	streamIO/copy/primitiveOp/IIOpLong.java	code/arithmetic_operation,code/in_place_operation,code/numeric_comparison	Primitive Numeric Operations	utility	legacy	medium
+streamIO/copy/primitiveOp/AOpLong.java:AOpLong	class	streamIO/copy/primitiveOp/AOpLong.java	code/abstract_base,code/delegation,code/arithmetic_operation	Primitive Numeric Operations,Deprecated API	utility	legacy	medium
+streamIO/copy/primitiveOp/IOpDouble.java:IOpDouble	class	streamIO/copy/primitiveOp/IOpDouble.java	code/arithmetic_operation,code/in_place_operation,code/numeric_interface	Primitive Numeric Operations	utility	legacy	medium
+streamIO/copy/primitiveOp/IIOpDouble.java:IIOpDouble	class	streamIO/copy/primitiveOp/IIOpDouble.java	code/arithmetic_operation,code/in_place_operation,code/numeric_comparison	Primitive Numeric Operations	utility	legacy	medium
+streamIO/copy/primitiveOp/AOpDouble.java:AOpDouble	class	streamIO/copy/primitiveOp/AOpDouble.java	code/abstract_base,code/delegation,code/deprecated_api	Primitive Numeric Operations,Deprecated API	utility	broken	medium
+streamIO/copy/primitiveOp/AOpMeasurAble.java:AOpMeasurAble	class	streamIO/copy/primitiveOp/AOpMeasurAble.java	code/abstract_base,code/arithmetic_operation,code/deprecated_api	Primitive Numeric Operations,Measurable Values	utility	broken	medium
+streamIO/copy/primitiveOp	folder	streamIO/copy/primitiveOp	code/arithmetic_operation,code/abstract_base,code/deprecated_api	Primitive Numeric Operations,Deprecated API	utility	legacy	medium
+streamIO/copy/shift/IShiftAble.java:IShiftAble	class	streamIO/copy/shift/IShiftAble.java	code/in_place_operation,code/bit_manipulation	g-adic Number Representation,Shift and Rotate	utility	legacy	medium
+streamIO/copy/shift/ShiftAble.java:ShiftAble	class	streamIO/copy/shift/ShiftAble.java	code/in_place_operation,code/bit_manipulation	Shift and Rotate	utility	legacy	medium
+streamIO/copy/shift/AShiftAble.java:AShiftAble	class	streamIO/copy/shift/AShiftAble.java	code/abstract_base,code/delegation,code/in_place_operation	Shift and Rotate,Delegation Pattern	utility	broken	medium
+streamIO/copy/shift/SwapAble.java:SwapAble	class	streamIO/copy/shift/SwapAble.java	code/in_place_operation	Random-Access Iteration	utility	legacy	medium
+streamIO/copy/shift	folder	streamIO/copy/shift	code/bit_manipulation,code/in_place_operation,code/abstract_base	g-adic Number Representation,Shift and Rotate	utility	legacy	medium
+streamIO/copy/order/IOrder.java:IOrder	class	streamIO/copy/order/IOrder.java	code/numeric_comparison,code/in_place_operation	Order Relation,Comparable Types	utility	legacy	medium
+streamIO/copy/order/IDblOrder.java:IDblOrder	class	streamIO/copy/order/IDblOrder.java	code/numeric_comparison	Order Relation	utility	legacy	medium
+streamIO/copy/order/ILngOrder.java:ILngOrder	class	streamIO/copy/order/ILngOrder.java	code/numeric_comparison	Order Relation	utility	legacy	medium
+streamIO/copy/order/LngOrder.java:LngOrder	class	streamIO/copy/order/LngOrder.java	code/numeric_comparison	Order Relation	utility	legacy	medium
+streamIO/copy/order/AOrder.java:AOrder	class	streamIO/copy/order/AOrder.java	code/abstract_base,code/delegation,code/numeric_comparison	Order Relation,Delegation Pattern	utility	legacy	medium
+streamIO/copy/order/Order.java:Order	class	streamIO/copy/order/Order.java	code/numeric_comparison,code/in_place_operation	Order Relation	utility	legacy	medium
+streamIO/copy/order/COrder.java:COrder	class	streamIO/copy/order/COrder.java	code/abstract_base,code/delegation,code/immutable_wrapper	Order Relation,Constant/Immutable Wrapper	utility	legacy	medium
+streamIO/copy/order/IInterval.java:IInterval	class	streamIO/copy/order/IInterval.java	code/abstract_base	Interval Arithmetic	utility	broken	medium
+streamIO/copy/order/Interval.java:Interval	class	streamIO/copy/order/Interval.java	code/interval_arithmetic,code/set_operations	Interval Arithmetic,Order Relation	utility	broken	medium
+streamIO/copy/order/IntervalOrd.java:IntervalOrd	class	streamIO/copy/order/IntervalOrd.java	code/interval_arithmetic,code/algorithm_optimization	Interval Arithmetic	utility	legacy	medium
+streamIO/copy/order/testOrder.java:testOrder	class	streamIO/copy/order/testOrder.java	code/manual_test_harness	Order Relation	utility	legacy	medium
+streamIO/copy/order	folder	streamIO/copy/order	code/numeric_comparison,code/interval_arithmetic,code/abstract_base	Order Relation,Interval Arithmetic	utility	legacy	medium
+streamIO/copy/groupM/ISemiGroupM.java:ISemiGroupM	class	streamIO/copy/groupM/ISemiGroupM.java	code/multiplicative_semigroup,code/algebraic_structure	Algebraic SemiGroup,Multiplicative Structure	utility	legacy	medium
+streamIO/copy/groupM/IIGroupM.java:IIGroupM	class	streamIO/copy/groupM/IIGroupM.java	code/multiplicative_group	Algebraic Group,Multiplicative Structure	utility	legacy	medium
+streamIO/copy/groupM/IISemiGroupM.java:IISemiGroupM	class	streamIO/copy/groupM/IISemiGroupM.java	code/multiplicative_semigroup	Algebraic SemiGroup	utility	legacy	medium
+streamIO/copy/groupM/IGroupM.java:IGroupM	class	streamIO/copy/groupM/IGroupM.java	code/multiplicative_group,code/algebraic_structure	Algebraic Group,Multiplicative Structure	utility	legacy	medium
+streamIO/copy/groupM/IDblGroupM.java:IDblGroupM	class	streamIO/copy/groupM/IDblGroupM.java	code/multiplicative_group,code/numeric_comparison	Algebraic Group,Multiplicative Structure	utility	legacy	medium
+streamIO/copy/groupM/ILngGroupM.java:ILngGroupM	class	streamIO/copy/groupM/ILngGroupM.java	code/multiplicative_group	Algebraic Group,Multiplicative Structure	utility	legacy	medium
+streamIO/copy/groupM/ASemiGroupM.java:ASemiGroupM	class	streamIO/copy/groupM/ASemiGroupM.java	code/abstract_base,code/delegation,code/multiplicative_semigroup	Algebraic SemiGroup,Delegation Pattern	utility	legacy	medium
+streamIO/copy/groupM/AGroupM.java:AGroupM	class	streamIO/copy/groupM/AGroupM.java	code/abstract_base,code/delegation,code/multiplicative_group	Algebraic Group,Delegation Pattern	utility	legacy	medium
+streamIO/copy/groupM/AGroupMDbl.java:AGroupMDbl	class	streamIO/copy/groupM/AGroupMDbl.java	code/abstract_base,code/deprecated_api	Algebraic Group,Multiplicative Structure	utility	legacy	medium
+streamIO/copy/groupM/AGroupMLng.java:AGroupMLng	class	streamIO/copy/groupM/AGroupMLng.java	code/abstract_base,code/multiplicative_group	Algebraic Group,Multiplicative Structure	utility	legacy	medium
+streamIO/copy/groupM/CSemiGroupM.java:CSemiGroupM	class	streamIO/copy/groupM/CSemiGroupM.java	code/immutable_wrapper,code/delegation	Algebraic SemiGroup,Constant/Immutable Wrapper	utility	legacy	medium
+streamIO/copy/groupM/CGroupM.java:CGroupM	class	streamIO/copy/groupM/CGroupM.java	code/immutable_wrapper,code/delegation	Algebraic Group,Constant/Immutable Wrapper	utility	legacy	medium
+streamIO/copy/groupM/TestGroupM.java:TestGroupM	class	streamIO/copy/groupM/TestGroupM.java	code/manual_test_harness	Algebraic Group	utility	legacy	medium
+streamIO/copy/groupM	folder	streamIO/copy/groupM	code/multiplicative_group,code/algebraic_structure,code/delegation	Algebraic Group,Multiplicative Structure	utility	legacy	medium
+streamIO/copy/monoid/integer/ASetInteger.java:ASetInteger	class	streamIO/copy/monoid/integer/ASetInteger.java	code/bit_manipulation,code/delegation	Bit Set,Delegation Pattern	utility	broken	medium
+streamIO/copy/monoid/integer/SetInteger.java:SetInteger	class	streamIO/copy/monoid/integer/SetInteger.java	code/bit_manipulation	Bit Set	utility	legacy	medium
+streamIO/copy/monoid/integer/Permutation.java:Permutation	class	streamIO/copy/monoid/integer/Permutation.java	code/permutation,code/multiplicative_semigroup,code/bit_manipulation	Permutation,Multi-Index	utility	broken	medium
+streamIO/copy/monoid/integer/Permutation.java:PermutationIterator	method	streamIO/copy/monoid/integer/Permutation.java	code/iterator	Permutation	utility	broken	medium
+streamIO/copy/monoid/integer	folder	streamIO/copy/monoid/integer	code/permutation,code/bit_manipulation,code/multiplicative_semigroup	Permutation,Bit Set	utility	legacy	medium
+streamIO/copy/monoid/IISemiMonoid.java:IISemiMonoid	class	streamIO/copy/monoid/IISemiMonoid.java	code/concatenation	Monoid,Concatenation	utility	legacy	medium
+streamIO/copy/monoid/ISemiMonoid.java:ISemiMonoid	class	streamIO/copy/monoid/ISemiMonoid.java	code/concatenation,code/algebraic_structure	Monoid,Concatenation	utility	legacy	medium
+streamIO/copy/monoid/IIMonoid.java:IIMonoid	class	streamIO/copy/monoid/IIMonoid.java	code/concatenation	Monoid,Concatenation	utility	legacy	medium
+streamIO/copy/monoid/IMonoid.java:IMonoid	class	streamIO/copy/monoid/IMonoid.java	code/concatenation,code/algebraic_structure	Monoid,Concatenation	utility	legacy	medium
+streamIO/copy/monoid/ASemiMonoid.java:ASemiMonoid	class	streamIO/copy/monoid/ASemiMonoid.java	code/abstract_base,code/delegation,code/concatenation	Monoid,Delegation Pattern	utility	legacy	medium
+streamIO/copy/monoid/AMonoid.java:AMonoid	class	streamIO/copy/monoid/AMonoid.java	code/abstract_base,code/delegation,code/concatenation	Monoid,Delegation Pattern	utility	legacy	medium
+streamIO/copy/monoid/AMapper.java:AMapper	class	streamIO/copy/monoid/AMapper.java	code/abstract_base,code/concatenation	Monoid,Function Mapping	utility	legacy	medium
+streamIO/copy/monoid/ArrayMonoid.java:ArrayMonoid	class	streamIO/copy/monoid/ArrayMonoid.java	code/concatenation,code/array_manipulation	Monoid,String/Array Concatenation	utility	legacy	medium
+streamIO/copy/monoid/StringMonoid.java:StringMonoid	class	streamIO/copy/monoid/StringMonoid.java	code/concatenation,code/string_concatenation	Monoid,String/Array Concatenation	utility	legacy	medium
+streamIO/copy/monoid/Pair.java:Pair	class	streamIO/copy/monoid/Pair.java	code/key_value_pair	Key-Value Pair	utility	legacy	medium
+streamIO/copy/monoid/Association.java:Association	class	streamIO/copy/monoid/Association.java	code/dictionary_entry,code/concatenation	Key-Value Pair,Dictionary	utility	legacy	medium
+streamIO/copy/monoid/AssociationEquivalence.java:AssociationEquivalence	class	streamIO/copy/monoid/AssociationEquivalence.java	code/custom_equivalence	Key-Value Pair	utility	broken	medium
+streamIO/copy/monoid/testMonoid.java:testMonoid	class	streamIO/copy/monoid/testMonoid.java	code/manual_test_harness	Monoid	utility	legacy	medium
+streamIO/copy/monoid	folder	streamIO/copy/monoid	code/concatenation,code/algebraic_structure,code/dictionary_entry	Monoid,Concatenation	utility	legacy	medium
+streamIO/copy/boole/IBoole.java:IBoole	class	streamIO/copy/boole/IBoole.java	code/boolean_algebra	Boolean Algebra	utility	legacy	medium
+streamIO/copy/boole/ABoole.java:ABoole	class	streamIO/copy/boole/ABoole.java	code/boolean_algebra,code/abstract_base,code/delegation	Boolean Algebra,Delegation Pattern	utility	legacy	medium
+streamIO/copy/boole/ACBoole.java:ACBoole	class	streamIO/copy/boole/ACBoole.java	code/boolean_algebra,code/abstract_base	Boolean Algebra	utility	legacy	medium
+streamIO/copy/boole/Boole.java:Boole	class	streamIO/copy/boole/Boole.java	code/boolean_algebra	Boolean Algebra	utility	legacy	medium
+streamIO/copy/boole/Boolean.java:Boolean	class	streamIO/copy/boole/Boolean.java	code/boolean_algebra	Boolean Algebra	utility	legacy	medium
+streamIO/copy/boole/Ternary.java:Ternary	class	streamIO/copy/boole/Ternary.java	code/boolean_algebra,code/lattice_structure	Boolean Algebra,Three-Valued Logic	utility	legacy	medium
+streamIO/copy/boole/VectorBoolean.java:VectorBoolean	class	streamIO/copy/boole/VectorBoolean.java	code/boolean_algebra,code/bit_vector,code/bit_manipulation	Boolean Algebra,Bit Vector	utility	legacy	medium
+streamIO/copy/boole/ILattice.java:ILattice	class	streamIO/copy/boole/ILattice.java	code/lattice_structure	Lattice	utility	legacy	medium
+streamIO/copy/boole/ALattice.java:ALattice	class	streamIO/copy/boole/ALattice.java	code/lattice_structure,code/abstract_base,code/delegation	Lattice,Delegation Pattern	utility	legacy	medium
+streamIO/copy/boole/Lattice.java:Lattice	class	streamIO/copy/boole/Lattice.java	code/lattice_structure	Lattice	utility	legacy	medium
+streamIO/copy/boole/ACLattice.java:ACLattice	class	streamIO/copy/boole/ACLattice.java	code/lattice_structure,code/abstract_base	Lattice	utility	legacy	medium
+streamIO/copy/boole/CLattice.java:CLattice	class	streamIO/copy/boole/CLattice.java	code/lattice_structure,code/immutable_wrapper,code/delegation	Lattice,Constant/Immutable Wrapper	utility	legacy	medium
+streamIO/copy/boole/MinMaxLattice.java:MinMaxLattice	class	streamIO/copy/boole/MinMaxLattice.java	code/lattice_structure,code/lattice_operations	Lattice,Order Relation	utility	legacy	medium
+streamIO/copy/boole/Probability.java:Probability	class	streamIO/copy/boole/Probability.java	code/boolean_algebra,code/numeric_comparison	Boolean Algebra,Probability	utility	legacy	medium
+streamIO/copy/boole/TesterBond.java:TesterBond	class	streamIO/copy/boole/TesterBond.java	code/boolean_algebra,code/algorithm_optimization	Boolean Algebra,Predicate Algebra	utility	broken	medium
+streamIO/copy/boole	folder	streamIO/copy/boole	code/boolean_algebra,code/lattice_structure,code/fuzzy_logic	Boolean Algebra,Lattice	utility	legacy	medium
+streamIO/copy/boole/fuzzy/IFuzzifier.java:IFuzzifier	class	streamIO/copy/boole/fuzzy/IFuzzifier.java	code/fuzzy_logic	Fuzzy Logic	utility	legacy	medium
+streamIO/copy/boole/fuzzy/AFuzzyUnaryOp.java:AFuzzyUnaryOp	class	streamIO/copy/boole/fuzzy/AFuzzyUnaryOp.java	code/fuzzy_logic,code/abstract_base	Fuzzy Logic	utility	legacy	medium
+streamIO/copy/boole/fuzzy/AFuzzyBinaryOp.java:AFuzzyBinaryOp	class	streamIO/copy/boole/fuzzy/AFuzzyBinaryOp.java	code/fuzzy_logic,code/abstract_base	Fuzzy Logic	utility	legacy	medium
+streamIO/copy/boole/fuzzy/FuzzyAND.java:FuzzyAND	class	streamIO/copy/boole/fuzzy/FuzzyAND.java	code/fuzzy_logic	Fuzzy Logic	utility	legacy	medium
+streamIO/copy/boole/fuzzy/FuzzyOR.java:FuzzyOR	class	streamIO/copy/boole/fuzzy/FuzzyOR.java	code/fuzzy_logic	Fuzzy Logic	utility	legacy	medium
+streamIO/copy/boole/fuzzy/FuzzyNOT.java:FuzzyNOT	class	streamIO/copy/boole/fuzzy/FuzzyNOT.java	code/fuzzy_logic	Fuzzy Logic	utility	legacy	medium
+streamIO/copy/boole/fuzzy/FuzzyEQV.java:FuzzyEQV	class	streamIO/copy/boole/fuzzy/FuzzyEQV.java	code/fuzzy_logic	Fuzzy Logic	utility	broken	medium
+streamIO/copy/boole/fuzzy/FuzzyIMPL.java:FuzzyIMPL	class	streamIO/copy/boole/fuzzy/FuzzyIMPL.java	code/fuzzy_logic	Fuzzy Logic	utility	legacy	medium
+streamIO/copy/boole/fuzzy/FuzzyBoole.java:FuzzyBoole	class	streamIO/copy/boole/fuzzy/FuzzyBoole.java	code/fuzzy_logic,code/boolean_algebra,code/lattice_structure	Fuzzy Logic,Boolean Algebra	utility	legacy	medium
+streamIO/copy/boole/fuzzy/FuzzyNumber.java:FuzzyNumber	class	streamIO/copy/boole/fuzzy/FuzzyNumber.java	code/fuzzy_logic,code/interval_arithmetic	Fuzzy Logic	utility	legacy	medium
+streamIO/copy/boole/fuzzy/FuzzyManifold.java:FuzzyManifold	class	streamIO/copy/boole/fuzzy/FuzzyManifold.java	code/fuzzy_logic	Fuzzy Logic	utility	legacy	medium
+streamIO/copy/boole/fuzzy	folder	streamIO/copy/boole/fuzzy	code/fuzzy_logic	Fuzzy Logic	utility	legacy	medium
+streamIO/copy/ACopyAble.java:ACopyAble	class	streamIO/copy/ACopyAble.java	code/abstract_base,code/serialization,code/reflection	Copy Semantics,Serialization	utility	broken	medium
+streamIO/copy/CCopyAble.java:CCopyAble	class	streamIO/copy/CCopyAble.java	code/immutable_wrapper,code/delegation	Copy Semantics,Constant/Immutable Wrapper	utility	legacy	medium
+streamIO/copy/ICopyAble.java:ICopyAble	class	streamIO/copy/ICopyAble.java	code/abstract_interface,code/serialization	Copy Semantics,Serialization	utility	legacy	medium
+streamIO/copy/IICopyAble.java:IICopyAble	class	streamIO/copy/IICopyAble.java	code/abstract_interface	Copy Semantics	utility	legacy	medium
+streamIO/copy/TestCopy.java:TestCopy	class	streamIO/copy/TestCopy.java	code/manual_test_harness	Copy Semantics	utility	legacy	medium
+streamIO/copy	folder	streamIO/copy	code/abstract_base,code/serialization,code/delegation	Copy Semantics,Algebraic Structure	utility	legacy	medium

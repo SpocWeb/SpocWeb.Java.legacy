@@ -16,6 +16,15 @@ import function.byref.ByRefBoolean;
   * all Operations can be performed explicitly...
   * With Boolean Algebras, as soon as one Coefficient is constant,
   * the whole Expression may collapse.
+  * <!-- docstate
+  * pass: 2
+  * mtime: 2026-09-05T16:44:44Z
+  * digest: ec63526d1ee08017692e0e053bd52e1826a4be0e89646902f0bc30a3d887106a
+  * stale: false
+  * tags: [code/boolean_algebra, code/algorithm_optimization]
+  * concepts: [Boolean Algebra, Predicate Algebra]
+  * facets: {layer: utility, status: broken, complexity: medium}
+  * -->
   */
 public class TesterBond
 extends ABoole
@@ -39,7 +48,8 @@ implements ITester {
 	//	Accessor Methods: get...()/set...()
 	////////////////////////////////////////////////////////////////////////////////
 
-	/** @return the inner ITester Function	 */
+	/**Returns the wrapped {@link ITester} function this bond delegates to.
+	 * @return the inner ITester Function	 */
 	public ITester getTester() {
 		return mTest; }
 
@@ -106,11 +116,13 @@ implements ITester {
 		//Idempotenz: a OR a == a
 		if ((arg == mTest) || arg.equals(mTest)) return this;
 		//Inverse: a OR !a == True
+		// TODO: LOGIC: copy-paste bug from ANDat - sets mTest = False here, but the comment (and Boolean algebra: a OR NOT a == True) requires mTest = True. Every OR with the exact complement of the current value produces the wrong (False) result instead of True.
 		if (arg instanceof TesterNOT) { //
 			ITester arg_ = ((TesterNOT) arg).getTester();
 			if ((arg_ == mTest) || (arg_.equals(mTest))) {
 				mTest = False; return this; } }
 		//Constant Argument...
+		// TODO: LOGIC: copy-paste bug from ANDat - all four branches below test "is arg false" (the condition needed for AND's "a AND false == false" rule) but then assign mTest = True, and never touch mTest when arg is true. Per the "a OR true == true" comment this is backwards: it should set mTest = True when arg is TRUE, and leave mTest unchanged when arg is false. As written, OR-ing with a constant produces the wrong result in every case.
 		if (arg instanceof TesterConst) { //a OR true == true ...
 			if (!((TesterConst)arg).test(null)) mTest = True;
 		} else if (arg instanceof java.lang.Boolean) {
@@ -147,6 +159,7 @@ implements ITester {
 			mTest = new TesterNOT(mTest);
 		} return this; }
 
+	/**Returns this instance unchanged as its own simplified representation.	 */
 	public TesterBond simplify() {
 		return this; }
 

@@ -11,6 +11,15 @@ package streamIO.copy.order;
  * They cannot inherit the Implementations from the A... Classes,
  * but it is more performant to delegate everything right away!
  * This Class is unnecessary, because the Default Implementation of ACopyAble
+ * <!-- docstate
+ * pass: 2
+ * mtime: 2026-09-05T10:13:25Z
+ * digest: 6c40af6350593748ac7e2079e4a5f20add36fc1ac1e67ce9aca3d30dda9aa94e
+ * stale: false
+ * tags: [code/abstract_base, code/delegation, code/immutable_wrapper]
+ * concepts: [Order Relation, Constant/Immutable Wrapper]
+ * facets: {layer: utility, status: legacy, complexity: medium}
+ * -->
  * already delegates to copyAt() which throws an Error.  	 */
 public class COrder
 extends AOrder {

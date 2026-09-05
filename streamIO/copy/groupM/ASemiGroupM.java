@@ -27,6 +27,15 @@ import streamIO.copy.ICopyAble;
   * The primitive Methods throw Exceptions to warn Developers early.
   *
   * Abstract Methods:
+  * <!-- docstate
+  * pass: 2
+  * mtime: 2026-09-05T10:13:25Z
+  * digest: 60651f235ccf090adaf0b09fb8c7af56bd81b09f337b297c236746ab4da224ca
+  * stale: false
+  * tags: [code/abstract_base, code/delegation, code/multiplicative_semigroup]
+  * concepts: [Algebraic SemiGroup, Delegation Pattern]
+  * facets: {layer: utility, status: legacy, complexity: medium}
+  * -->
   * mulAt (*=)	 */
 public class ASemiGroupM //All
 extends ACopyAble

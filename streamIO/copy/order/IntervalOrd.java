@@ -24,6 +24,15 @@ package streamIO.copy.order;
   * @see streamIO.Copy.IOrder.Interval
   * @see streamIO.Copy.IOrder.IntervalOrd
   * are minimal Definitions for Intervals
+  * <!-- docstate
+  * pass: 2
+  * mtime: 2026-09-05T10:13:25Z
+  * digest: bac55d174f3fb434bbbdd2ca899fbeec92cd5b47a4c41de5d388b08c705555ef
+  * stale: false
+  * tags: [code/interval_arithmetic, code/algorithm_optimization]
+  * concepts: [Interval Arithmetic]
+  * facets: {layer: utility, status: legacy, complexity: medium}
+  * -->
   */
 public class IntervalOrd
 extends Interval {

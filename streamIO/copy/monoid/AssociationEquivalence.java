@@ -9,6 +9,15 @@ import tester.IEquivalence;
   * There is a certain Overhead involved in using an external Equivalence Object,
   * because both Arguments have to be tested and converted instead of only one
   * and Optimizations become harder, because the Type of both Arguments is unknown.
+  * <!-- docstate
+  * pass: 2
+  * mtime: 2026-09-05T16:41:26Z
+  * digest: bfdb449a6e3d578ea3852a2a1ab292723258331bde09b48fa519bcb0c4b3697e
+  * stale: false
+  * tags: [code/custom_equivalence]
+  * concepts: [Key-Value Pair]
+  * facets: {layer: utility, status: broken, complexity: medium}
+  * -->
   */
 public class AssociationEquivalence
 implements IEquivalence {
@@ -39,6 +48,7 @@ implements IEquivalence {
 			Association B_ = (Association) B;
 			BKey   = B_.key;
 //			BValue = B_.Value;
+		// TODO: LOGIC: copy-paste bug - this checks "A instanceof ICPair" (already established false above, since A was already matched as Association/Pair) instead of "B instanceof ICPair". When B is an ICPair but not an Association, this branch is never taken and the method falls through to "return B.equals(A)" instead of comparing BKey, producing an incorrect equivalence result.
 		} else if (A instanceof ICPair) {
 			ICPair B_ = (ICPair) B;
 			BKey   = B_.getKey  ();

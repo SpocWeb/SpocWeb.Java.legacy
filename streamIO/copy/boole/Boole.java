@@ -22,6 +22,15 @@ package streamIO.copy.boole;
  *
  * In a binary Representation AND and OR can be defined by MUL and ADD,
  * but without Carry Bit.
+ * <!-- docstate
+ * pass: 2
+ * mtime: 2026-09-05T10:13:24Z
+ * digest: 1b2455fac98d2e35c12e5db829a1fee563bfbe8c7cc6591408939634c9d1905a
+ * stale: false
+ * tags: [code/boolean_algebra]
+ * concepts: [Boolean Algebra]
+ * facets: {layer: utility, status: legacy, complexity: medium}
+ * -->
  */
 public interface Boole
 extends IBoole, Lattice {

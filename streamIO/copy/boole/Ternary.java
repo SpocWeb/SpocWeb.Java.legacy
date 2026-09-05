@@ -3,6 +3,7 @@ package streamIO.copy.boole;
 import function.ICountAble;
 
 /**
+  * Realizes a three-valued (false/null/true) Boolean-like lattice backed by a single byte.
   * Title: Ternary<p>
   * Description:
   * This Class is a Realization of Boole
@@ -57,6 +58,15 @@ import function.ICountAble;
   * Created on	03-24-2002, 02:53 AM<p>
   * @author 	Matthias Heuer
   * @version	1.0
+  * <!-- docstate
+  * pass: 2
+  * mtime: 2026-09-05T16:48:32Z
+  * digest: 8dd3f89809f21396ae9901b665420ccbf9a690951a5b41f4900d0c2eb06b00f6
+  * stale: false
+  * tags: [code/boolean_algebra, code/lattice_structure]
+  * concepts: [Boolean Algebra, Three-Valued Logic]
+  * facets: {layer: utility, status: legacy, complexity: medium}
+  * -->
   */
 final public class Ternary
 extends ABoole
@@ -261,7 +271,7 @@ implements ICountAble {
 /// #region : Interface ComparAble: Implementation
 ////////////////////////////////////////////////////////////////////////////
 
-	/**
+	/**Compares this ternary value to arg, returning the sign of their difference.
 	  * @return Sign(this-arg), the exact Position of this Object relative to arg
 	  *
 	  * @see java.lang.Comparable#compareTo

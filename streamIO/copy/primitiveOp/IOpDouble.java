@@ -1,6 +1,15 @@
 package streamIO.copy.primitiveOp;
 
 /**This Interface adds all Methods to the intOpDouble
+ * <!-- docstate
+ * pass: 2
+ * mtime: 2026-09-05T10:13:25Z
+ * digest: 986668d3d2265053c03fc4ee0f921ca912570d6749d665c15b9a824108631edc
+ * stale: false
+ * tags: [code/arithmetic_operation, code/in_place_operation, code/numeric_interface]
+ * concepts: [Primitive Numeric Operations]
+ * facets: {layer: utility, status: legacy, complexity: medium}
+ * -->
  * that can be indirectly defined by intOpDouble */
 public interface IOpDouble
 extends IIOpDouble, IOpLong {

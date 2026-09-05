@@ -11,6 +11,15 @@ import function.IInvertAble;
   * Sublasses:
   * @see Relation
   * @see Association
+  * <!-- docstate
+  * pass: 2
+  * mtime: 2026-09-05T16:41:47Z
+  * digest: a8977c5db1c4c5c988b6864757ce0465a962cf3df6b7318a9e315424472fffaa
+  * stale: false
+  * tags: [code/abstract_base, code/concatenation]
+  * concepts: [Monoid, Function Mapping]
+  * facets: {layer: utility, status: legacy, complexity: medium}
+  * -->
   */
 public abstract class AMapper
 extends AMonoid
@@ -27,7 +36,8 @@ implements IInvertAble, IStreamOut {
 	// Interface IStreamOut
 	///////////////////////////////////////////////////////////////////////////
 
-	/** @see streamIO.IStreamOut#flush()	 */
+	/**Does nothing; there is no buffered output to flush at this level.
+	 * @see streamIO.IStreamOut#flush()	 */
 	public void flush() throws IOException { }
 	
 	/** adds these Items to the Store in Place: +=
@@ -70,7 +80,8 @@ implements IInvertAble, IStreamOut {
 		    this.mInverse    =   inverse;
 		    this.mInverse.setInverse (this);  }
 
-	/** @return the Inverse, cached for here for all inheriting Classes */
+	/**Returns the cached inverse mapper, computing and caching it via {@link #rev()} on first use.
+	 * @return the Inverse, cached for here for all inheriting Classes */
 	public IInvertAble getInverse() { //
 		if (mInverse == null) return rev(); // fail fast Method! realize early that an Error occurred!
 		return mInverse; }
@@ -82,7 +93,7 @@ implements IInvertAble, IStreamOut {
 			return (IMonoid) mInverse;
 			return (IMonoid)(mInverse =(IInvertAble) ((IMonoid) self).pamAt(((IMonoid) self).Identity())); }
 
-	/**Returns arg Mapped in Place by this Object: this.MapAt(arg) this=°arg
+	/**Returns arg Mapped in Place by this Object: this.MapAt(arg) this=ï¿½arg
      * This is the Function working on 'arg' defined by the implementing Class.
 	 * The Class implementing this Method is the means of exchanging this Operation.	 */
 	public Object UnMap(Object arg) {
@@ -90,7 +101,7 @@ implements IInvertAble, IStreamOut {
 			getInverse(); //Optimization!
 		return mInverse.UnMap(arg); }
 
-	/**Returns arg Mapped in Place by this Object: this.MapAt(arg) this=°arg
+	/**Returns arg Mapped in Place by this Object: this.MapAt(arg) this=ï¿½arg
      * This is the Function working on 'arg' defined by the implementing Class.
 	 * The Class implementing this Method is the means of exchanging this Operation.	 */
 	public Object UnMapAt(Object arg) {

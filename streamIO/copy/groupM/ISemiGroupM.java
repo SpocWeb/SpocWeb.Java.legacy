@@ -27,6 +27,15 @@ import streamIO.copy.ICopyAble;
  * The Interface has been separated from the Implementation in Java,
  * because it is used for multiple Inheritance.
  * Could also be called 'fullMultiplicable'
+ * <!-- docstate
+ * pass: 2
+ * mtime: 2026-09-05T10:13:25Z
+ * digest: bfb13cda01f605b8a5ca8032f79e2cae367bc358922c7218867752ffe7506bd9
+ * stale: false
+ * tags: [code/multiplicative_semigroup, code/algebraic_structure]
+ * concepts: [Algebraic SemiGroup, Multiplicative Structure]
+ * facets: {layer: utility, status: legacy, complexity: medium}
+ * -->
  */
 public interface ISemiGroupM
 extends IISemiGroupM, ICopyAble {

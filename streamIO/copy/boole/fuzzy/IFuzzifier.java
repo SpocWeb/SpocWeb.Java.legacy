@@ -27,13 +27,22 @@ package streamIO.copy.boole.fuzzy;
  * @author mheuer
  * @version	1.0
  *
+ * <!-- docstate
+ * pass: 2
+ * mtime: 2026-09-05T20:44:16Z
+ * digest: e071c6f22bdde4825e088d859d36b135a61301e593422ecde92e35b8114d2d09
+ * stale: false
+ * tags: [code/fuzzy_logic]
+ * concepts: [Fuzzy Logic]
+ * facets: {layer: utility, status: legacy, complexity: medium}
+ * -->
  */
 public interface IFuzzifier {
 
-	/** 
-	 * @param arg the Object to test for Membership 
-	 * @return the Degree of Membership for the given Object 
+	/**Returns the degree to which arg belongs to this fuzzy set.
+	 * @param arg the Object to test for Membership
+	 * @return the Degree of Membership for the given Object
 	 */
-	public abstract float getMembership(final Object arg); 
+	public abstract float getMembership(final Object arg);
 
 }

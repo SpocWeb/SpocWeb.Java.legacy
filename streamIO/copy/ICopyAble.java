@@ -22,6 +22,15 @@ import streamIO.IDeserializer;
  *
  * Because in Java any local Variable must be initialized,
  * this doesn't really save time for simple Classes, but for Containers.
+ * <!-- docstate
+ * pass: 2
+ * mtime: 2026-09-05T10:13:24Z
+ * digest: 639af05a9a4a2a9562b0f3bf9e22e02a718f79defeaa1dab065caa810409c6e9
+ * stale: false
+ * tags: [code/abstract_interface, code/serialization]
+ * concepts: [Copy Semantics, Serialization]
+ * facets: {layer: utility, status: legacy, complexity: medium}
+ * -->
  */
 public interface ICopyAble	//The last two Interfaces define no Methods!
 extends ICopy, IICopyAble, java.lang.Cloneable, java.io.Serializable {

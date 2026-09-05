@@ -2,7 +2,18 @@ package streamIO.copy.shift;
 
 import streamIO.copy.ICopyAble;
 
-/**This Interface can be implemented by all random Access Iterators */
+/**This Interface can be implemented by all random Access Iterators
+ *
+ * <!-- docstate
+ * pass: 2
+ * mtime: 2026-09-05T10:13:25Z
+ * digest: 8d3202c1351c5b831993a9125c695f22dc3ad192061f7396881fe18d8d59ac3d
+ * stale: false
+ * tags: [code/in_place_operation]
+ * concepts: [Random-Access Iteration]
+ * facets: {layer: utility, status: legacy, complexity: medium}
+ * -->
+ */
 public interface SwapAble
 extends ICopyAble {
 

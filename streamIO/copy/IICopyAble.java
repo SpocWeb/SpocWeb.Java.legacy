@@ -30,6 +30,15 @@ import streamIO.IInstantiAble;
  * 	because it is too weak and would require rewriting many Implementations.
  *  The Casting from CopyAble is still mostly necessary,
  * 	except for copy(ST) = newInstance().copyAt(ST)
+ * <!-- docstate
+ * pass: 2
+ * mtime: 2026-09-05T10:13:24Z
+ * digest: 7808ddedd7455c81fd404614598d743f6415ad7014d01e3b062c906d70add4ec
+ * stale: false
+ * tags: [code/abstract_interface]
+ * concepts: [Copy Semantics]
+ * facets: {layer: utility, status: legacy, complexity: medium}
+ * -->
  */
 public interface IICopyAble
 extends IInstantiAble {

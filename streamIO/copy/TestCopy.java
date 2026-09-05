@@ -5,6 +5,18 @@ import java.lang.reflect.Array;
 
 import streamIO.Log;
 
+/**Manual test harness entry point for the {@code streamIO.copy} package, exercising
+ * {@link ACopyAble}'s copy/serialization contract via {@link ACopyAble#testIt}.
+ * <!-- docstate
+ * pass: 2
+ * mtime: 2026-09-05T20:48:47Z
+ * digest: 4ad2dcd84b7bfb9bfa648a9ec91a165d37aefaa27c24616bbdfec8661ab97b44
+ * stale: false
+ * tags: [code/manual_test_harness]
+ * concepts: [Copy Semantics]
+ * facets: {layer: utility, status: legacy, complexity: medium}
+ * -->
+ */
 public class TestCopy {
 
 	/** Logger for Testing, modify Threshold for switching Logging */

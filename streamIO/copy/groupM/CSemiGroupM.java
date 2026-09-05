@@ -4,6 +4,15 @@ import streamIO.copy.CCopyAble;
 
 /**Implements Constants for all Types of SemiGroupM Classes.
  * This Class inhibits the Use of ...At() Routines
+ * <!-- docstate
+ * pass: 2
+ * mtime: 2026-09-05T10:13:25Z
+ * digest: cf0842b300c50f76ce57d5648e6e042f5fd654fc11dbc7f069911786378fc5fb
+ * stale: false
+ * tags: [code/immutable_wrapper, code/delegation]
+ * concepts: [Algebraic SemiGroup, Constant/Immutable Wrapper]
+ * facets: {layer: utility, status: legacy, complexity: medium}
+ * -->
  * but still supports all other Methods of the SemiGroupM Class.	 */
 public class CSemiGroupM
 extends CCopyAble

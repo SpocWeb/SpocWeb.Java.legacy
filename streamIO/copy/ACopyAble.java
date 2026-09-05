@@ -44,6 +44,15 @@ import streamIO.exception.BaseException;
  * But I won't delete the existing Implementations until it is necessary,
  * because it would cause too much work and is less effective
  * than a concrete Implementation.
+ * <!-- docstate
+ * pass: 2
+ * mtime: 2026-09-05T20:48:42Z
+ * digest: 57cfad59da206e214d89b2e91914168a7e0730ff2884efc952c5e138a5a7587f
+ * stale: false
+ * tags: [code/abstract_base, code/serialization, code/reflection]
+ * concepts: [Copy Semantics, Serialization]
+ * facets: {layer: utility, status: broken, complexity: medium}
+ * -->
  */
 public abstract class ACopyAble
 extends ACopy
@@ -361,10 +370,12 @@ ICopyAble, Serializable, Cloneable {//to be able to Stream out and clone the Obj
 		catch (InstantiationException e) {throw new InstantiationError(e.toString()); }
 	}
 
-	/** @see streamIO.copy.IICopyAble#randomizeAt()	 */
+	/**Default no-op that leaves this instance unchanged; override to actually randomize state.
+	 * @see streamIO.copy.IICopyAble#randomizeAt()	 */
 	public ICopyAble randomizeAt() { return this; }
-			
-	/** @see streamIO.copy.IICopyAble#random()	 */
+
+	/**Returns a new, randomized instance, built via {@link #newInstance()} then {@link #randomizeAt()}.
+	 * @see streamIO.copy.IICopyAble#random()	 */
 	public ICopyAble random() { return newInstance().randomizeAt(); }
 		
 	/** Generic Implementation of the newInstance() Method, needn't be overwritten!
@@ -382,7 +393,8 @@ ICopyAble, Serializable, Cloneable {//to be able to Stream out and clone the Obj
 	 * Default Implementation that can be overwritten by more effective ones.
 	 * TODO: declare this Methods as abstract!
 	 */
-	public void toStream(final IFormatOut ST) 
+	// TODO: LOGIC: default delegates back to ST.addItem(this), and this class's own toString() calls toStream(...) - a formatter whose addItem(Object) falls back to Object.toString() (or otherwise re-enters this object's own serialization) recurses infinitely; the author already flagged this inline ("leads to infinite Recursion!"). Any concrete subclass that does not override toStream is at risk whenever paired with such a formatter.
+	public void toStream(final IFormatOut ST)
 	throws IOException { ST.addItem(this); } //leads to infinite Recursion!
 
 	/**Writes the Contents of this Object into the streamIO.
@@ -406,7 +418,7 @@ ICopyAble, Serializable, Cloneable {//to be able to Stream out and clone the Obj
 		catch(InstantiationException e) { throw new IOException(e.toString()); } //no abstract Classes or Interfaces involved
 		catch(  NoSuchFieldException e) { throw new IOException(e.toString()); } //only known Fields should occur!
 		return this; }
-
+*/
 	/**Creates an uninitalized new Instance of it's class
 	 * and fills it with the Contents read from the Stream.
 	 * Default Implementation that can be overwritten by more effective ones.

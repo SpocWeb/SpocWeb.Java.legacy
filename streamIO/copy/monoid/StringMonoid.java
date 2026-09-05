@@ -30,6 +30,15 @@ import function.IInvertAble;
  *
  * The String Methods endsWith(), startsWith() and contains() define a HomoMorphism
  * that is explained in StrSearcher (also for isPrefixOf() and isSuffixOf()).
+ * <!-- docstate
+ * pass: 2
+ * mtime: 2026-09-05T10:13:25Z
+ * digest: 1b83405b720c8f0127c06feacf5657056de331e851b8906edfac0c30b40138a8
+ * stale: false
+ * tags: [code/concatenation, code/string_concatenation]
+ * concepts: [Monoid, String/Array Concatenation]
+ * facets: {layer: utility, status: legacy, complexity: medium}
+ * -->
  */
 public class StringMonoid
 extends AMonoid //
@@ -141,13 +150,13 @@ extends AMonoid //
 		try { inner = arg.sval; arg.nextToken(); return this; }
 		catch (java.io.IOException x) { return null; }}
 
-	/**Concatenation in Place: this°=arg
+	/**Concatenation in Place: thisï¿½=arg
 	 * This virtual Operation has to be implemented by each subclass.	 */
 	public ISemiMonoid catAt(Object arg)	{
 		inner = inner.concat(arg.toString()); // Stream.XMLOutputStream.toString(arg));
 		return this; }
 
-	/**Right-Concatenation with the Inverse in Place: this°=!arg  this\=arg
+	/**Right-Concatenation with the Inverse in Place: thisï¿½=!arg  this\=arg
 	 * This is the Inverse Operation to catAt(), not to map()!
 	 * This virtual Operation has to be implemented by each concrete Subclass.		 */
 	public IMonoid tacAt (Object arg) {//throws InvalidAlgorithmParameterException {
@@ -156,7 +165,7 @@ extends AMonoid //
 		inner = inner.substring (0, inner.length() - arg_.length()); // Stream.XMLOutputStream.toString(arg));
 		return this; }
 
-	/**Mapping from Left in Place:  this=°arg
+	/**Mapping from Left in Place:  this=ï¿½arg
 	 * This Operation doesn't return 'this', but 'arg'!
 	 * so to concatenate Mappings use B.mapAt(A.mapAt(a))
 	 * which is more efficient than B.map(A.map(a)) or B.map(A).map(a)
@@ -164,7 +173,7 @@ extends AMonoid //
 	//public ISemiMonoid mapAt(ISemiMonoid arg) {
 	//	return arg.catAt (this); }
 
-	/**Mapping / Left-Concat with !arg in Place: !this=°arg */
+	/**Mapping / Left-Concat with !arg in Place: !this=ï¿½arg */
 	public ISemiMonoid unMapAt(ISemiMonoid arg) {
 		return ((StringMonoid) arg).tacAt (this); }
 
@@ -186,17 +195,17 @@ extends AMonoid //
 		if (this.Inverse != null) throw new IllegalStateException();
 		this.Inverse = Inverse_; }
 
-	/** Returns arg mapped by the Inverse of this Object: !this°arg
+	/** Returns arg mapped by the Inverse of this Object: !thisï¿½arg
 	 * This is the Function working on 'arg' defined by the implementing Class.
 	 * The Class implementing this Method is the means of exchanging this Operation.	  */
 	public IMonoid pam (Object arg) { return pamAt(((ISemiMonoid) arg).copy()); }
 
-	/** Returns arg mapped in Place by the Inverse of this Object: !this=°arg
+	/** Returns arg mapped in Place by the Inverse of this Object: !this=ï¿½arg
 	 * This is the Function working on 'arg' defined by the implementing Class.
 	 * The Class implementing this Method is the means of exchanging this Operation.	  */
 	public IMonoid pamAt (Object arg) { return pamAt(arg); }
 
-	/** Returns arg mapped by this Object: this.map(arg) == this°arg
+	/** Returns arg mapped by this Object: this.map(arg) == thisï¿½arg
 	 * This is the Function working on 'arg' defined by the implementing Class.
 	 * The Class implementing this Method is the means of exchanging this Operation.	  */
 	public ISemiMonoid map (Object arg) { return mapAt(((ISemiMonoid) arg).copy()); }

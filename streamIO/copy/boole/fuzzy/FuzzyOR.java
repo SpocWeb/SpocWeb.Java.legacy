@@ -8,11 +8,11 @@ package streamIO.copy.boole.fuzzy;
 /**
  * Title: FuzzyOR<p>
  * Description:
- * Binary Conjunction of two fuzzy inputs (Predicates). 
- * This corresponds to the classical MIN Function, 
- * which is discontinuous. 
- * Usually though, the AND Conjunction 
- * is not performed for the same fuzzy Variable, 
+ * Binary Disjunction of two fuzzy inputs (Predicates).
+ * This corresponds to the classical MAX Function,
+ * which is discontinuous.
+ * Usually though, the OR Disjunction
+ * is not performed for the same fuzzy Variable,
  * but for different Fuzzy Variables! 
  * Thus it does not simply implement the IFloatFunction Interface, 
  * because with the IFuzzifier Interface, 
@@ -28,6 +28,15 @@ package streamIO.copy.boole.fuzzy;
  * @author mheuer
  * @version	1.0
  *
+ * <!-- docstate
+ * pass: 2
+ * mtime: 2026-09-05T20:44:12Z
+ * digest: d5a05c177dd8a1d8458dfe61239c91f9ac49ff5298e2ec265c0525c07796fe99
+ * stale: false
+ * tags: [code/fuzzy_logic]
+ * concepts: [Fuzzy Logic]
+ * facets: {layer: utility, status: legacy, complexity: medium}
+ * -->
  */
 public class FuzzyOR 
 extends AFuzzyBinaryOp
@@ -38,7 +47,8 @@ extends AFuzzyBinaryOp
 		super(f1, f2); 
 	}
 
-	/** @see streamIO.copy.boole.fuzzy.IFuzzifier#getMembership(java.lang.Object)	 */
+	/**Returns the disjunction (maximum) of the two fuzzifiers' memberships for arg.
+	 * @see streamIO.copy.boole.fuzzy.IFuzzifier#getMembership(java.lang.Object)	 */
 	public float getMembership(final Object arg) {
 		return Math.max(f1.getMembership(arg), f2.getMembership(arg));
 	}
