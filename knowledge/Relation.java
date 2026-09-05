@@ -4,11 +4,27 @@ import java.sql.SQLException;
  
 
 /**
+ * An {@link AttributeObject} that also points at an object, making it the N:M side of
+ * the model.
+ *
+ * <p>Because a relation is itself an object, its own object end may be another relation,
+ * which is how relations of three or more members are expressed without a separate
+ * construct. The object end must never be a plain attribute.
+ *
+ * <p><b>Invariant,</b> not enforced here: the {@link MetaType} of this object's
+ * {@link Type} must read {@code Relation} (3).
+ *
  * This Class can aggregate Scalar Attributes and models
  * N:M Relations(with Attributes) using Subject and Objekt
  * The MetaType of the Type for this Class must always be 'Relation'(3).
  *
  * Design Decisions:
+ * <!-- docstate
+ * pass: 2
+ * mtime: 2026-09-05T08:13:26Z
+ * digest: 6432581a9ca8b74efce8dfdabc89261c11c19b4cf274dee7693f4bce7723c4cc
+ * stale: false
+ * -->
  */
 public class Relation
 extends AttributeObject

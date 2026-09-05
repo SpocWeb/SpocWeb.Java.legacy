@@ -5,10 +5,29 @@ import java.sql.SQLException;
  
 
 /**
+ * Base class for a primitive attribute value hanging off a subject {@link Objekt} in a 1:N
+ * relation, typed by a {@link Type} and stamped with a {@link Status}.
+ *
+ * <p>It deliberately does not extend {@link AttributeObject}: an attribute needs no
+ * identity or description of its own, so the triple (type, subject, status) is both its
+ * data and its primary key - which is why the class implements {@link IPrimaryKey} and
+ * {@link PersistAble} and returns {@code this} from {@link #primaryKey()}.
+ *
+ * <p>The three object references are resolved lazily through {@link DBObjectFactory} and
+ * cached in place, so the first accessor call may hit the database and later ones do not.
+ * Subclasses add the actual value and its table name; this class reports an empty
+ * {@link #TableName()} because it is never persisted on its own.
+ *
  * This Class is the Base Class for primitive Attributes.
  * It references an Object, has a Type and a Status
  *
  * Design Decisions:
+ * <!-- docstate
+ * pass: 2
+ * mtime: 2026-09-05T08:12:43Z
+ * digest: 33b966511689c9b9caed04d6f16b44d712582f3fef5f9ca6fcf4b2b07ad75b8a
+ * stale: false
+ * -->
  */
 public class BasicAttribute
 //extends AttributeObject	//this Class already brings ID and Description with it!
@@ -75,9 +94,12 @@ implements IObject, IPrimaryKey, PersistAble {
 		return Status; }
 	
 	/** Returns the Type for this Object */
-	public Type getType() throws SQLException { 
+	public Type getType() throws SQLException {
 		if (Type == null)
-            Type = (Type) DBObjectFactory.FactoryStatus.getObject(new IdKey(StatusID)); 
+            // TODO: LOGIC: keyed by StatusID, not TypeID, so this resolves and caches the
+            // Status row as this attribute's Type whenever the two IDs differ - which is the
+            // normal case; getStatus() one method above uses the same key correctly.
+            Type = (Type) DBObjectFactory.FactoryStatus.getObject(new IdKey(StatusID));
 		return Type; }
 	
 	/** Returns the Subject for this Object. */

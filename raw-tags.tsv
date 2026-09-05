@@ -34,3 +34,10 @@ knowledge/DirtyFlag.java:DirtyFlag	class	knowledge/DirtyFlag.java	code/state_fla
 knowledge/CachedValue.java:CachedValue	class	knowledge/CachedValue.java	code/caching, code/lazy_loading, code/state_flag	Lazy Evaluation, State Tracking	domain	experimental	low
 knowledge/ObjectType.java:ObjectType	class	knowledge/ObjectType.java	code/type_system, code/entity_model, code/domain_model	Domain Model, Object Classification	domain	stable	low
 knowledge/MetaType.java:MetaType	class	knowledge/MetaType.java	code/type_system, code/entity_model, code/orm, code/reflection	Domain Model, Object Classification	domain	stable	low
+knowledge/AttributeObject.java:AttributeObject	class	knowledge/AttributeObject.java	code/entity_model, code/domain_model, code/lazy_loading	Domain Model, Attribute Modelling	domain	stable	medium
+knowledge/Relation.java:Relation	class	knowledge/Relation.java	code/entity_model, code/domain_model, code/lazy_loading	Domain Model, Relationship Modelling	domain	stable	medium
+knowledge/BasicAttribute.java:BasicAttribute	class	knowledge/BasicAttribute.java	code/entity_model, code/composite_key, code/orm, code/lazy_loading	Domain Model, Persistence	persistence	stable	medium
+knowledge/MetricAttribute.java:MetricAttribute	class	knowledge/MetricAttribute.java	code/entity_model, code/orm, code/value_object	Domain Model, Attribute Modelling	domain	stable	low
+knowledge/StringAttribute.java:StringAttribute	class	knowledge/StringAttribute.java	code/entity_model, code/orm, code/value_object	Domain Model, Attribute Modelling	domain	stable	low
+knowledge/TimeAttribute.java:TimeAttribute	class	knowledge/TimeAttribute.java	code/entity_model, code/orm, code/value_object	Domain Model, Attribute Modelling	domain	stable	low
+knowledge/EnumAttribute.java:EnumAttribute	class	knowledge/EnumAttribute.java	code/entity_model, code/orm, code/enum_mapping, code/value_object	Domain Model, Attribute Modelling	domain	stable	low

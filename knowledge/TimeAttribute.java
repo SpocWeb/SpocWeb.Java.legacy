@@ -4,11 +4,26 @@ import java.lang.reflect.Field;
 import java.util.Date;
 
 /**
+ * A {@link BasicAttribute} holding one {@link java.util.Date} value.
+ *
+ * <p>{@link java.util.Date} is mutable, and the value is a public field handed out by
+ * reference, so a caller can change a stored timestamp in place without the owning object
+ * noticing.
+ *
+ * <p>The class is a thin specialisation: it adds the value, its table name and its own
+ * field arrays, and inherits the type/subject/status key from {@link BasicAttribute}.
+ *
  * This Class can aggregate Scalar DateTime Attributes and models 1:N Relations
  * using the SubjectID to group Attributes (e.g. for Time Series)
  * The MetaType of the Type for these Objects must always be 'Time'.
  *
  * Design Decisions:
+ * <!-- docstate
+ * pass: 2
+ * mtime: 2026-09-05T08:13:09Z
+ * digest: 15e5a1d110d57d6036802c17986ec89ab670763329b5468f7cf8de6661754d34
+ * stale: false
+ * -->
  */
 public class TimeAttribute
 extends BasicAttribute {
@@ -21,6 +36,11 @@ extends BasicAttribute {
 	final static public String STR_TableName = "TimeAttribute"; //
 	
 	/** Array of Field Names, selects only the non static, final or transient Fields	 */
+	// TODO: LOGIC: seeded with an empty array instead of BasicAttribute.Keys, so Fields()
+	// returns only this class's own Value column despite its 'including Parent Fields'
+	// contract; the inherited TypeID/SubjectID/StatusID key columns are missing from every
+	// generic insert, update and select DBObjectFactory builds from it. MetaType, which
+	// concatenates Status.Fields, shows the intended form.
 	final static public Field[] Fields = DBObjectFactory.conCat(new Field[0], TimeAttribute.class.getDeclaredFields()); //getFields ()};
 	
 	/** String Constants for the Field Names */

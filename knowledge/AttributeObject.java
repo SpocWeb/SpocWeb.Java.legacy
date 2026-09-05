@@ -3,11 +3,28 @@ package knowledge;
 import java.sql.SQLException;
 
 /**
+ * An {@link Objekt} that additionally points at a subject, modelling the 1:N side of the
+ * model: many attributes grouped under one subject.
+ *
+ * <p>Unlike {@link BasicAttribute} it keeps its own identity, name and description, which
+ * is what lets further attributes hang off it in turn - the mechanism behind grouping a
+ * time series under a single carrier object.
+ *
+ * <p><b>Invariants,</b> neither enforced here: the {@link MetaType} of this object's
+ * {@link Type} must read {@code Attribute} (2), and the subject must be a plain object,
+ * never an attribute or a relation.
+ *
  * This Class can aggregate Scalar Attributes and models 1:N Relations
  * using the Subject to group Attributes (e.g. for Time Series)
  * The MetaType of the Type for this Class must always be 'Attribute'(2).
  *
  * Design Decisions:
+ * <!-- docstate
+ * pass: 2
+ * mtime: 2026-09-05T08:13:26Z
+ * digest: 3ad6a09b894102a440ecb61db23b95c40f26b3ba7d4c0a3904553dbeebab54d8
+ * stale: false
+ * -->
  */
 public class AttributeObject
 extends Objekt
@@ -37,10 +54,10 @@ implements IAttribute {
 	//  Accessors  //
 	/////////////////
 	
-	/** Returns the Subject for this Object. */
+	/** Returns the ID of the Subject for this Object, without resolving it. */
 	public int getSubjectID() { return SubjectID; }
 	
-	/** Returns the Subject for this Object. */
+	/** Returns the Subject for this Object, resolving and caching it on first call. */
 	public Objekt getSubject() throws SQLException { 
 		if (Subject == null)
             Subject = (Objekt) DBObjectFactory.FactoryObject.getObject(new IdKey(SubjectID)); 
