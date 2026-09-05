@@ -6,20 +6,28 @@ import java.sql.SQLException;
 import knowledge.IDescriptor;
 
 /**
-  * Title: Objekt<p>
-  * Description:
   * Base Object for any persistable Class.
   * Defines Fields and Accessors for the Name and Description
   *
   * Known SubClasses:
   *
   * @see knowledge.IDescriptor defines Methods for accessing the Name and Description of an Object.
+  * @see PersistedObject the ID-based base class this extends.
   *
   * Copyright:	Copyright (c) Matthias Heuer<p>
   * Company:	personal<p>
   * Created on	2001-01-10, 06;07;04<p>
   * @author 	Matthias Heuer
   * @version	1.0
+  * <!-- docstate
+  * pass: 2
+  * mtime: 2026-09-05T09:12:16Z
+  * digest: 4d36d1fbaa6c6af34b9e2c79774d7c71a66dac8d5d57ac84f69ba2c366e090e5
+  * stale: false
+  * tags: [code/entity_model, code/domain_model]
+  * concepts: [Domain Model, Persistence]
+  * facets: {layer: persistence, status: stable, complexity: low}
+  * -->
   */
 public class Objekt
 extends PersistedObject
@@ -52,14 +60,16 @@ implements IDescriptor
 	  * final does only work up to the Constructor */
 //	public void setName(String Name_) { Name = Name_; }
 
-	/** @return Name of this Object	 */
+	/** Returns this Object's Name.
+	  * @return Name of this Object	 */
 	public String getName() { return Name; }
 
 	/** @return Description of this Object
 	  * final does only work up to the Constructor */
 //	public void setDescription(String Description_) { this.Description = Description_; }
 
-	/** @return Description of this Object	 */
+	/** Returns this Object's Description.
+	  * @return Description of this Object	 */
 	public String getDescription() { return Description; }
 
 ////////////////////////////////////////////////////////////////////////////////

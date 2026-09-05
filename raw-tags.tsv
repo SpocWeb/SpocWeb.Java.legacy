@@ -58,3 +58,6 @@ streamIO/factory	folder	streamIO/factory	code/factory_pattern, code/reflection, 
 streamIO/character/FileReader.java:FileReader	class	streamIO/character/FileReader.java	code/file_io, code/encoding_handling, code/file_polling	File I/O, Text Encoding	infrastructure	stable	low
 streamIO/character/FileWriter.java:FileWriter	class	streamIO/character/FileWriter.java	code/file_io, code/encoding_handling	File I/O, Text Encoding	infrastructure	stable	low
 streamIO/character	folder	streamIO/character	code/file_io, code/encoding_handling, code/file_polling	File I/O, Text Encoding	infrastructure	stable	low
+persistences/Objekt.java:Objekt	class	persistences/Objekt.java	code/entity_model, code/domain_model	Domain Model, Persistence	persistence	stable	low
+persistences/PersistedObject.java:PersistedObject	class	persistences/PersistedObject.java	code/entity_model, code/registry_pattern	Record Identity, Persistence	persistence	broken	low
+persistences	folder	persistences	code/entity_model, code/registry_pattern, code/domain_model	Domain Model, Persistence	persistence	broken	low

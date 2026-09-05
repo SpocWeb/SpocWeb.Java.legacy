@@ -7,8 +7,7 @@ import java.util.HashMap;
 import streamIO.copy.monoid.Association;
 
 /**
-  * Helper Base Class for persistent Objects
-  * Does not define any concrete Methods or Variables.
+  * Base Class for persistent Objects, identified and hashed by a non-semantic String ID.
   *
   * But to support Persistence and dynamic Relations
   * these are built using Associations by ID
@@ -27,6 +26,15 @@ import streamIO.copy.monoid.Association;
   * @see knowledge.IdKey defines the Root Class for IPersistAble Objects with ID
   * @see knowledge.DirtyFlag defines a Flag indicating whether Data has been changed.
   *
+  * <!-- docstate
+  * pass: 2
+  * mtime: 2026-09-05T09:12:58Z
+  * digest: 8c74a4945e1684e9b6224126a3dfd0dde5638e956448c64311cc1e1a997e7df7
+  * stale: false
+  * tags: [code/entity_model, code/registry_pattern]
+  * concepts: [Record Identity, Persistence]
+  * facets: {layer: persistence, status: broken, complexity: low}
+  * -->
   */
 public class PersistedObject
 extends knowledge.DirtyFlag {
@@ -38,6 +46,8 @@ extends knowledge.DirtyFlag {
 	/** Reference to the HashMap containing all active Persisted Objects
 	  * Newly created Objects are automatically added to this Collection.
 	  */
+	// TODO: LOGIC: never initialized (stays null); getObject(String) and setId(String) both
+	// dereference it and throw NullPointerException whenever either is actually invoked.
 	private static HashMap objects;
 
 ////////////////////////////////////////////////////////////////////////////////
@@ -151,6 +161,10 @@ extends knowledge.DirtyFlag {
 	  * The ID is used for hashing and also as the Result of the toString Method.
 	  * The Object has no Identity except for the given ID.
 	  */
+	// TODO: LOGIC: checks the field `ID` (always null here, before it has ever been
+	// assigned) instead of the parameter `ID_`, so this condition is always false and
+	// setId(ID_) is never called from this constructor - every instance built this way,
+	// including via PersistedObject(ResultSet), keeps a null ID.
 	public PersistedObject(String ID_) {
 		if (ID != null) {
 			setId(ID_); }
@@ -160,20 +174,20 @@ extends knowledge.DirtyFlag {
 //  public Methods, then private Methods
 ////////////////////////////////////////////////////////////////////////////////
 
-	/**
+	/** Returns this Object's ID.
 	  * @return the ID as the Description of the Object.
 	  */
 	public String toString() {
 		return ID; }
 
-	/**
+	/** Hashes this Object by its ID.
 	  * @return a HashCode based on the ID of the Object
 	  */
 	final public int hashCode() {
 //		return IDCode; }
 		return ID.hashCode(); }
 
-	/**
+	/** Compares by ID, not by reference identity alone.
 	  * @return true, if the Argument arg equals the UserObject.
 	  */
 	final public boolean equals(Object arg) {

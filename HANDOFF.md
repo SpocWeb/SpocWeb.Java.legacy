@@ -66,7 +66,7 @@ cost more tokens than one and burn the 5-hour window N times faster.
 | `streamIO/fileSystem` | 4 | 288 | 0 | unclaimed | - |
 | `streamIO/testing` | 3 | 433 | 0 | unclaimed | - |
 | `swing` | 3 | 679 | 0 | unclaimed | - |
-| `persistences` | 2 | 306 | 0 | unclaimed | - |
+| `persistences` | 2 | 306 | 2 | done | main |
 | `streamIO/character` | 2 | 244 | 2 | done | main |
 | `streamIO/factory` | 2 | 205 | 2 | done | main |
 | `streamIO/detector` | 1 | 102 | 1 | done | main |
@@ -170,6 +170,8 @@ same harness against it. A test that has not been seen red proves nothing.
 | knowledge/DBObjectFactory.java | DBObjectFactory | DBObjectFactory(Connection, PersistAble) | - | `strDBFieldNames` is `ARRAY_TO_STRING(FieldNames, ",")` with the last character stripped, which throws `StringIndexOutOfBoundsException` on a prototype whose `Fields()` is empty (verified: the join returns "" and `substring(0, -1)` throws). No current class has empty Fields, so it is latent. Noted while fixing the insert order; deliberately not fixed, as it is outside the flagged set. | Low | open |
 | knowledge/DBObjectFactory.java | DBObjectFactory | DBObjectFactory(Connection, PersistAble) | - | The column-name strings are built from `FieldNames()`/`KeyNames()`, the Java field names, rather than `DBFieldNames()`/`DBKeyNames()`. Every class in this package defines the two as the same array, so it is currently harmless, but it defeats the point of having separate DB names. Noted while fixing; not fixed, as it is outside the flagged set. | Low | open |
 | knowledge/MetricAttribute.java, StringAttribute.java, TimeAttribute.java, EnumAttribute.java | - | - | - | Originally flagged High: the static `Fields` array seeded from an empty array rather than `BasicAttribute.Keys`, said to drop the inherited key columns. **Withdrawn - not a defect.** `Fields` means "non-key data columns" here and the keys arrive separately from `primaryKey().Keys()`; at runtime `MetricAttribute` reports `Fields=[Value]` and `Keys=[StatusID, SubjectID, TypeID]`, which covers the table exactly. Only the inherited javadoc phrase "including Parent Fields" was wrong. | - | **withdrawn** |
+| persistences/PersistedObject.java | PersistedObject | PersistedObject(String) | 165 | Checks the field `ID` (always null at that point, before it is ever assigned) instead of the parameter `ID_`, so the guard is always false and `setId(ID_)` is never called from this constructor. Every instance built via `new PersistedObject(ID_)` or `PersistedObject(ResultSet)` (which delegates to it) keeps a `null` ID. | High | open |
+| persistences/PersistedObject.java | PersistedObject | (field `objects`) | 41 | The static registry HashMap is never initialized (`= new HashMap()` missing), so `getObject(String)` and `setId(String)` both throw `NullPointerException` on the first real use. Currently unreached in practice only because the constructor bug above never calls `setId`. | High | open |
 
 ## Tool defects found and fixed during the pilot
 
