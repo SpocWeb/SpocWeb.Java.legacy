@@ -2,8 +2,14 @@
 
 ## Status
 
-Pilot folder `tools/` only. The rest of the tree (1,455 `.java` files, 136 folders) is
-untouched and is its own multi-session effort.
+**2026-09-05: full-corpus autonomous run started** (main session, no sub-agents per
+parallelism rules). Working the Claims table below smallest-unclaimed-first, one batch
+(Pass 1+2 -> Pass 3 -> Pass 4-7) at a time, committing and pushing at each folder
+boundary. This section and the Claims table are the resume point if the run stops.
+
+Pilot folder `tools/` only, plus `knowledge/` (calibration) and now `streamIO/detector/`.
+The rest of the tree (1,455 `.java` files, 136 folders, minus what's now `done` below) is
+untouched.
 
 | Scope | Pass 1+2 | Pass 3 | Pass 4-7 | Notes |
 |---|---|---|---|---|
@@ -63,7 +69,7 @@ cost more tokens than one and burn the 5-hour window N times faster.
 | `persistences` | 2 | 306 | 0 | unclaimed | - |
 | `streamIO/character` | 2 | 244 | 0 | unclaimed | - |
 | `streamIO/factory` | 2 | 205 | 0 | unclaimed | - |
-| `streamIO/detector` | 1 | 102 | 0 | unclaimed | - |
+| `streamIO/detector` | 1 | 102 | 1 | done | main |
 
 ## Calibration - measured cost of one batch
 

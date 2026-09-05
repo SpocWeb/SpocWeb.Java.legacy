@@ -50,3 +50,5 @@ knowledge/DbCachedFactory.java:DbCachedFactory	class	knowledge/DbCachedFactory.j
 knowledge	folder	knowledge	code/orm, code/domain_model, code/entity_model, code/reflection	Knowledge Representation, Object-Relational Mapping	persistence	legacy	high
 knowledge/KnowledgeTest.java:KnowledgeTest	class	knowledge/KnowledgeTest.java	code/unit_test, code/test_double, code/sql_generation	Testing, Regression Pinning	test	stable	medium
 tools/threads/TimeOuterTest.java:TimeOuterTest	class	tools/threads/TimeOuterTest.java	code/unit_test, code/thread_interruption, code/timeout_handling	Testing, Concurrency	test	stable	medium
+streamIO/detector/LimitedSizeStreamOut.java:LimitedSizeStreamOut	class	streamIO/detector/LimitedSizeStreamOut.java	code/fixed_size_buffer, code/overflow_detection	Capacity Management, Stream Output	infrastructure	stable	low
+streamIO/detector	folder	streamIO/detector	code/fixed_size_buffer, code/overflow_detection	Capacity Management, Stream Output	infrastructure	stable	low

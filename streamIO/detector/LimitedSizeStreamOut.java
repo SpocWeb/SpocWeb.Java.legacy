@@ -5,11 +5,8 @@ import streamIO.Assert;
 import streamIO.IIStreamOut;
 
 /**
-  * Title: LimitedSizeStreamOut<p>
-  * Description:
-  * Purpose:
   * Collects a limited Size of Objects and refuses to accept more,
-  * first by returning null from the addItem Method,  
+  * first by returning null from the addItem Method,
   * and then by throwing an ArrayIndexOutOfBoundsException!
   *
   * Design Decisions / Implementation Details:
@@ -24,6 +21,15 @@ import streamIO.IIStreamOut;
   * Created on	10-19-2002, 01:45 PM<p>
   * @author 	Matthias Heuer
   * @version	1.0
+  * <!-- docstate
+  * pass: 2
+  * mtime: 2026-09-05T08:59:38Z
+  * digest: 23ff7be59b434838b2585468a119790fde9fa263ffb819ee1af02a29c658d38f
+  * stale: false
+  * tags: [code/fixed_size_buffer, code/overflow_detection]
+  * concepts: [Capacity Management, Stream Output]
+  * facets: {layer: infrastructure, status: stable, complexity: low}
+  * -->
   */
 public class LimitedSizeStreamOut
 extends AStreamOut {
@@ -42,7 +48,8 @@ extends AStreamOut {
 /// #region : Accessor Methods (getXXX/isXXX/setXXX)
 ////////////////////////////////////////////////////////////////////////////////
 
-	/** @return the Objects added to the streamIO:   */
+	/** Returns the backing array holding every Object added so far.
+	  * @return the Objects added to the streamIO:   */
 	public Object[] getItems() { return items; }
 
 ////////////////////////////////////////////////////////////////////////////////
