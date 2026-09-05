@@ -16,9 +16,6 @@ import streamIO.integer.jdbc.AConnection;
 import streamIO.integer.jdbc.DriverFix;
 
 /**
- * Title: DriverSep<p>
- * Description:
- * Purpose:
  * Provides a Driver Implementation for the jdbc 2.0 Framework
  * defaults all Interface Implementations to the Classes of this Package.  
  *
@@ -37,6 +34,11 @@ import streamIO.integer.jdbc.DriverFix;
  * @author mheuer
  * @version	1.0
  *
+ * <!-- docstate
+ * tags: [code/jdbc_adapter, code/sax_event_generation]
+ * concepts: [Minimal JDBC Driver over Separated-Format Flat Files]
+ * facets: {layer: domain, status: legacy, complexity: high}
+ * -->
  */
 public class DriverSep implements Driver{
 
@@ -74,14 +76,14 @@ public class DriverSep implements Driver{
 
 	/////////////////////////////////////////////////////////////////////////////////////
 
-	/**
+	/** Returns the fixed Major Version of this Driver.
 	 * @see java.sql.Driver#getMajorVersion()
 	 */
 	public int getMajorVersion() {
 		return MajorVersion;
 	}
 
-	/**
+	/** Returns the fixed Minor Version of this Driver.
 	 * @see java.sql.Driver#getMinorVersion()
 	 */
 	public int getMinorVersion() {
@@ -90,14 +92,19 @@ public class DriverSep implements Driver{
 
 	/////////////////////////////////////////////////////////////////////////////////////
 
-	/** 
+	/** Tests whether the given URL starts with this Driver's {@link #PREFIX_SEP}.
 	 * @see java.sql.Driver#acceptsURL(java.lang.String)
 	 */
 	public boolean acceptsURL(final String url) throws SQLException {
 		return url.startsWith(PREFIX_SEP);
 	}
 
-	/**
+	// TODO: LOGIC: calls acceptsURL(PREFIX_SEP) instead of acceptsURL(url), so this always
+	// checks the Constant against itself (trivially true) rather than validating the actual
+	// `url` Argument. Any URL - matching Prefix or not - falls through to
+	// url.substring(PREFIX_SEP.length()), which throws StringIndexOutOfBoundsException for a
+	// URL shorter than PREFIX_SEP instead of the intended SQLException("Unsupported jdbc-URL").
+	/** Strips this Driver's Prefix from the URL and opens a {@link ConnectionSep} on the remainder.
 	 * @see java.sql.Driver#connect(java.lang.String, java.util.Properties)
 	 */
 	public Connection connect(final String url, final Properties info)
@@ -108,7 +115,8 @@ public class DriverSep implements Driver{
 		return new ConnectionSep(url.substring(PREFIX_SEP.length()), info);
 	}
 
-	/** @see java.sql.Driver#getPropertyInfo(java.lang.String, java.util.Properties)	 */
+	/** Returns the fixed set of Connection Properties this Driver understands.
+	  * @see java.sql.Driver#getPropertyInfo(java.lang.String, java.util.Properties)	 */
 	public DriverPropertyInfo[] getPropertyInfo(final String url, final Properties info) { //throws SQLException {
 		return AConnection.DRIVER_PROPS_INFO;
 	}

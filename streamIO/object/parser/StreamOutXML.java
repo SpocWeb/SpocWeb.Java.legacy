@@ -26,10 +26,8 @@ import tools.IOError;
 import function.string.Char2String;
 import function.string.StringFunction;
 
-/** 
-  * Title: StreamOutXML <p>
-  * 
-  * Helper Class for writing XML Data to a Character Output streamIO (e.g. a 'Writer'). 
+/**
+  * Helper Class for writing XML Data to a Character Output streamIO (e.g. a 'Writer').
   * Encoding to a Byte streamIO must happen afterwards (e.g. using a Filter). 
   * Implements the SAX ContentHandler Interface to directly generate XML. 
   * 
@@ -52,12 +50,12 @@ import function.string.StringFunction;
   * @see java.io.PrintStream because that would allow mixing non XML Contents
   * 
   * Anstatt die Daten in (unlesbares und uneditierbares) UTF-8 zu encoden, 
-  * kann man alle Zeichen > 127 als XML Entitäten schreiben, aber nur in XML! 
-  * alternativ können Umlaute auch kürzer als ss, ue, ae und oe geschrieben werden. 
+  * kann man alle Zeichen > 127 als XML Entitï¿½ten schreiben, aber nur in XML! 
+  * alternativ kï¿½nnen Umlaute auch kï¿½rzer als ss, ue, ae und oe geschrieben werden. 
   * 
-  * folgende Elemente MÜSSEN beim Schreiben von XML encoded werden: 
+  * folgende Elemente Mï¿½SSEN beim Schreiben von XML encoded werden: 
   * &lt; wegen Element Starts und 
-  * & wegen der Entitäten, sowie
+  * & wegen der Entitï¿½ten, sowie
   * ' oder " wegen der Attribute (nur dort)
   *   
   * Encoding of other Unicode Characters can either be performed in one Step
@@ -71,6 +69,11 @@ import function.string.StringFunction;
   * 
   * @see com.megginson.sax.StreamOutXML which provides a similar Functionality, 
   * but triggered by the SAX Events. 
+  * <!-- docstate
+  * tags: [code/xml_parsing, code/xml_streaming]
+  * concepts: [XML Read/Write Stream Bridging]
+  * facets: {layer: utility, status: legacy, complexity: high}
+  * -->
   */
 public class StreamOutXML 
 extends AStreamOutStruct //StreamOutPrimitive  
@@ -496,7 +499,7 @@ implements ContentHandler, IStreamOutPrimitive, IStreamOutStruct //, ErrorHandle
 		endAttribute();
 		return this; }
 	
-	/**
+	/** Starts an Attribute using this Instance's current default Quote Style.
 	 * @param name the Name of the Attribute to write
 	 * @param dblQuote
 	 * @return the Separator Character used
@@ -504,8 +507,9 @@ implements ContentHandler, IStreamOutPrimitive, IStreamOutStruct //, ErrorHandle
 	 * @throws IOException */
 	public StreamOutXML startAttribute(final String name) throws AbstractMethodError, IOException {
 		return startAttribute(name, dblQuote); }
-	
-	/**
+
+	/** Writes the Attribute Name, Separator and opening Quote Character, and switches the
+	  * Encoder to escape that Quote Character within the Value that follows.
 	 * @param name the Name of the Attribute to write
 	 * @param dblQuote
 	 * @return the Separator Character used
@@ -526,7 +530,8 @@ implements ContentHandler, IStreamOutPrimitive, IStreamOutStruct //, ErrorHandle
 		mapper.setEncoding(chrDelim , strDelim);
 		return this; }
 
-	/**
+	/** Writes the closing Quote Character for the current Attribute, if one is open, and restores
+	  * the Encoder's Quote-escaping state.
 	 * @throws IOException */
 	public StreamOutXML endAttribute() throws IOException {
 		listChr = CHR_IGNORE; 
@@ -605,17 +610,20 @@ implements ContentHandler, IStreamOutPrimitive, IStreamOutStruct //, ErrorHandle
 	//	Interface: ContentHandler
 	////////////////////////////////////////////////////////////////////////////
 	
-	/** @see org.xml.sax.ContentHandler#setDocumentLocator(org.xml.sax.Locator)	 */
-	public void setDocumentLocator(final Locator locator) { 		
+	/** No-op: the Locator is not needed to write XML, only to consume it.
+	  * @see org.xml.sax.ContentHandler#setDocumentLocator(org.xml.sax.Locator)	 */
+	public void setDocumentLocator(final Locator locator) {
 	}
-	
-	/** @see org.xml.sax.ContentHandler#startDocument()	 */
+
+	/** No-op: nothing needs writing before the first Element.
+	  * @see org.xml.sax.ContentHandler#startDocument()	 */
 	public void startDocument() { //throws SAXException {
 	}
-	
-	/** @see org.xml.sax.ContentHandler#endDocument()	 */
+
+	/** Closes every still-open Tag, completing the Document.
+	  * @see org.xml.sax.ContentHandler#endDocument()	 */
 	public void endDocument() { //throws SAXException {
-		closeAll(); 
+		closeAll();
 	}
 	
 	/** defines an XML Prefix, can appear in any Element Declaration  
@@ -630,7 +638,8 @@ implements ContentHandler, IStreamOutPrimitive, IStreamOutStruct //, ErrorHandle
 		System.out.println("TODO:"); 
 	}
 	
-	/** @see org.xml.sax.ContentHandler#startElement(java.lang.String, java.lang.String, java.lang.String, org.xml.sax.Attributes)	 */
+	/** Translates a SAX startElement Event into a Start Tag, wrapping any IOException as a SAXException.
+	  * @see org.xml.sax.ContentHandler#startElement(java.lang.String, java.lang.String, java.lang.String, org.xml.sax.Attributes)	 */
 	public void startElement(final String namespaceURI, final String localName
 	, final String qName, final Attributes atts) throws SAXException {
 		try {
@@ -640,7 +649,8 @@ implements ContentHandler, IStreamOutPrimitive, IStreamOutStruct //, ErrorHandle
 		}
 	}
 	
-	/** @see org.xml.sax.ContentHandler#endElement(java.lang.String, java.lang.String, java.lang.String)	 */
+	/** Translates a SAX endElement Event into an End Tag, wrapping any IOException as a SAXException.
+	  * @see org.xml.sax.ContentHandler#endElement(java.lang.String, java.lang.String, java.lang.String)	 */
 	public void endElement(final String namespaceURI, final String localName
 	, final String qName) throws SAXException {
 		try {
@@ -650,7 +660,8 @@ implements ContentHandler, IStreamOutPrimitive, IStreamOutStruct //, ErrorHandle
 		}
 	}
 	
-	/** @see org.xml.sax.ContentHandler#characters(char[], int, int)	 */
+	/** Writes the given Character Range as a CDATA Section.
+	  * @see org.xml.sax.ContentHandler#characters(char[], int, int)	 */
 	public void characters(final char[] ch, final int start, final int length) throws SAXException {
 		try { //TODO: rather don't write a CDATA Section and encode the Output in UTF and XML! 
 			this.cData(new String(ch, start, length));
@@ -659,12 +670,14 @@ implements ContentHandler, IStreamOutPrimitive, IStreamOutStruct //, ErrorHandle
 		}
 	}
 	
-	/** @see org.xml.sax.ContentHandler#ignorableWhitespace(char[], int, int)	 */
+	/** Treated identically to {@link #characters(char[], int, int)}.
+	  * @see org.xml.sax.ContentHandler#ignorableWhitespace(char[], int, int)	 */
 	public void ignorableWhitespace(final char[] ch, final int start, final int length) throws SAXException {
 		characters(ch, start, length);
 	}
-	
-	/** @see org.xml.sax.ContentHandler#processingInstruction(java.lang.String, java.lang.String)	 */
+
+	/** Writes the Target and Data joined by '=' as an XML Processing Instruction.
+	  * @see org.xml.sax.ContentHandler#processingInstruction(java.lang.String, java.lang.String)	 */
 	public void processingInstruction(final String target, final String data) throws SAXException {
 		try { //TODO: rather don't write a CDATA Section and encode the Output in UTF and XML! 
 			this.processing(target+'='+data); 
@@ -739,28 +752,33 @@ implements ContentHandler, IStreamOutPrimitive, IStreamOutStruct //, ErrorHandle
 	 * 1st Pass: only primitive Values as Attributes 
 	 * 2nd Pass: Lists and Objects as Elements   */
 	
-	/** @see streamIO.integer.IStreamOutStruct#open_Struct(String, String)	 */
+	/** Requires the Open and Close Names to be identical, then delegates to {@link #open_Struct(String)}.
+	  * @see streamIO.integer.IStreamOutStruct#open_Struct(String, String)	 */
 	public IStreamOutStruct open_Struct(final String open, final String close) {
-		if(!ValidationRule.EQUALS(open, close)) 
+		if(!ValidationRule.EQUALS(open, close))
 			throw new RuntimeException("Opening and Closing Tags should be identical!");
 		return open_Struct(open); }
-	
-	/** @see streamIO.integer.IStreamOutStruct#open_Struct(java.lang.String)	 */
-	public IStreamOutStruct open_Struct(final String openClose) { 
+
+	/** Opens an Element with the given Tag Name.
+	  * @see streamIO.integer.IStreamOutStruct#open_Struct(java.lang.String)	 */
+	public IStreamOutStruct open_Struct(final String openClose) {
 		try { startTag(openClose);  
 		} catch(final IOException x) {
 			throw new IOError(x); 
 		}
 		return this; }
 	
-	/** @see streamIO.integer.IStreamOutStruct#writeNameValuePair(java.lang.String, java.lang.String)	 */
+	/** Writes the Name/Value Pair as a quoted Attribute.
+	  * @see streamIO.integer.IStreamOutStruct#writeNameValuePair(java.lang.String, java.lang.String)	 */
 	public IStreamOutStruct writeNameValuePair(final String name, final String value) {
 		return writeNameValuePair(name, value, true); }
-	
-	/** @see streamIO.integer.IStreamOutStruct#peek_Struct()	 */
+
+	/** Returns the Name of the innermost currently open Tag.
+	  * @see streamIO.integer.IStreamOutStruct#peek_Struct()	 */
 	public String peek_Struct() { return tagName[SP-1]; }
-	
-	/** @see streamIO.integer.IStreamOutStruct#closeStruct(String)	 */
+
+	/** Closes the Element with the given expected Tag Name.
+	  * @see streamIO.integer.IStreamOutStruct#closeStruct(String)	 */
 	public IStreamOutStruct closeStruct(final String struct) {
 		try { endTag(struct);
 		} catch(final IOException x) {
@@ -768,7 +786,8 @@ implements ContentHandler, IStreamOutPrimitive, IStreamOutStruct //, ErrorHandle
 		}
 		return this; }
 	
-	/** @see streamIO.integer.IStreamOutStruct#closeStruct()	 */
+	/** Closes the innermost currently open Element.
+	  * @see streamIO.integer.IStreamOutStruct#closeStruct()	 */
 	public IStreamOutStruct closeStruct() {
 		try { endTag(); 
 		} catch(final IOException x) {
@@ -777,7 +796,8 @@ implements ContentHandler, IStreamOutPrimitive, IStreamOutStruct //, ErrorHandle
 		arrIndex = -1; //listType = null; 
 		return this; }
 	
-	/** @see streamIO.integer.IStreamOutStruct#closeAll()	 */
+	/** Closes every still-open Element.
+	  * @see streamIO.integer.IStreamOutStruct#closeAll()	 */
 	public void closeAll() {
 		try { endAll(); 
 		} catch(final IOException x) {
@@ -785,7 +805,8 @@ implements ContentHandler, IStreamOutPrimitive, IStreamOutStruct //, ErrorHandle
 		}
 	}
 	
-	/** @see streamIO.integer.IStreamOutStruct#writeName(java.lang.String)	 */
+	/** Writes an Attribute Name without its Value, e.g. as a Preamble to writing a Value separately.
+	  * @see streamIO.integer.IStreamOutStruct#writeName(java.lang.String)	 */
 	public IStreamOutStruct writeName(final String name) {
 		try { startAttribute(name); //open_Struct(name, name); 
 		} catch(final IOException x) {
@@ -793,7 +814,8 @@ implements ContentHandler, IStreamOutPrimitive, IStreamOutStruct //, ErrorHandle
 		}
 		return this; }
 	
-	/** @see streamIO.integer.IStreamOutStruct#writeNameValuePair(java.lang.String, java.lang.String, boolean)	 */
+	/** Writes the Name/Value Pair as an Attribute, using the given Quote Style.
+	  * @see streamIO.integer.IStreamOutStruct#writeNameValuePair(java.lang.String, java.lang.String, boolean)	 */
 	public IStreamOutStruct writeNameValuePair(final String name, final String value, final boolean useQuotes) {
 		try { attribute(name, value, useQuotes); 
 		} catch(final IOException x) {
@@ -805,7 +827,8 @@ implements ContentHandler, IStreamOutPrimitive, IStreamOutStruct //, ErrorHandle
 	//  IStreamOut Methods
 	////////////////////////////////////////////////////////////////////////////////
 	
-	/** @see streamIO.IIStreamOut#addItem(java.lang.Object)	 */
+	/** Closes the current Tag, wrapping any IOException as an unchecked IOError.
+	  * @see streamIO.IIStreamOut#addItem(java.lang.Object)	 */
 	public IIStreamOut closeTagSafe() {
 		try { return closeTag();
 		} catch(final IOException x) {
@@ -813,13 +836,15 @@ implements ContentHandler, IStreamOutPrimitive, IStreamOutStruct //, ErrorHandle
 		}
 	}
 	
-	/** @see streamIO.IIStreamOut#addItem(java.lang.Object)	 */
+	/** Closes any open Tag, then delegates writing to the given Object's own writeTo(...).
+	  * @see streamIO.IIStreamOut#addItem(java.lang.Object)	 */
 	public IIStreamOut addItem(final IStreamWriteAble arg) {
 		if (inTag)
 			closeTagSafe();
 		arg.writeTo(this, itemName); return this; }
-	
-	/** @see streamIO.IIStreamOut#addItem(java.lang.Object)	 */
+
+	/** Closes any open Tag, then delegates to the inherited generic addItem(Object).
+	  * @see streamIO.IIStreamOut#addItem(java.lang.Object)	 */
 	public IIStreamOut addItem(final Object arg) {
 		if (inTag)
 			closeTagSafe(); 
@@ -832,11 +857,13 @@ implements ContentHandler, IStreamOutPrimitive, IStreamOutStruct //, ErrorHandle
 	
 	final static String STR_TEXT = "text"; 
 	
-	/** @see streamIO.integer.IStreamOutStruct#open_Quote()	 */
+	/** Opens a "text" Element to hold quoted free-form Text.
+	  * @see streamIO.integer.IStreamOutStruct#open_Quote()	 */
 	public IStreamOutStruct open_Quote() {
 		return open_Struct(STR_TEXT, STR_TEXT); }
-	
-	/** @see streamIO.integer.IStreamOutStruct#closeQuote()	 */
+
+	/** Closes the "text" Element opened by {@link #open_Quote()}.
+	  * @see streamIO.integer.IStreamOutStruct#closeQuote()	 */
 	public IStreamOutStruct closeQuote() {
 		closeStruct(STR_TEXT); 
 		return this; }
@@ -869,7 +896,8 @@ implements ContentHandler, IStreamOutPrimitive, IStreamOutStruct //, ErrorHandle
 	/// concrete List Elements 
 	///////////////////////////////////////////////////////////////////////////
 	
-	/** @see streamIO.integer.IStreamOutStruct#addInts(int[])	 */
+	/** Writes each int Value as a numbered Attribute of the current List Element.
+	  * @see streamIO.integer.IStreamOutStruct#addInts(int[])	 */
 	public IStreamOutStruct addInts(final int[] values, final int stop, final int start) {
 		try { 
 			checkListStart(STR_INT);
@@ -880,7 +908,8 @@ implements ContentHandler, IStreamOutPrimitive, IStreamOutStruct //, ErrorHandle
 		}
 		return this; }
 	
-	/** @see streamIO.integer.IStreamOutStructArrays#addShorts(short[], int, int) */
+	/** Writes each short Value as a numbered Attribute of the current List Element.
+	  * @see streamIO.integer.IStreamOutStructArrays#addShorts(short[], int, int) */
 	public IStreamOutStruct addShorts(final short[] values, final int stop, final int start) {
 		try { 
 			checkListStart(STR_SHORT);
@@ -891,7 +920,8 @@ implements ContentHandler, IStreamOutPrimitive, IStreamOutStruct //, ErrorHandle
 		}
 		return this; }
 	
-	/** @see streamIO.integer.IStreamOutStructArrays#addLongs(long[], int, int) */
+	/** Writes each long Value as a numbered Attribute of the current List Element.
+	  * @see streamIO.integer.IStreamOutStructArrays#addLongs(long[], int, int) */
 	public IStreamOutStruct addLongs(final long[] values, final int stop, final int start) {
 		try { 
 			checkListStart(STR_LONG);
@@ -902,7 +932,8 @@ implements ContentHandler, IStreamOutPrimitive, IStreamOutStruct //, ErrorHandle
 		}
 		return this; }
 	
-	/** @see streamIO.integer.IStreamOutStructArrays#addFloats(float[], int, int) */
+	/** Writes each float Value as a numbered Attribute of the current List Element.
+	  * @see streamIO.integer.IStreamOutStructArrays#addFloats(float[], int, int) */
 	public IStreamOutStruct addFloats(final float[] values, final int stop, final int start) {
 		try { 
 			checkListStart(STR_FLOAT);
@@ -913,7 +944,8 @@ implements ContentHandler, IStreamOutPrimitive, IStreamOutStruct //, ErrorHandle
 		}
 		return this; }
 	
-	/** @see streamIO.integer.IStreamOutStructArrays#addDoubles(double[], int, int) */
+	/** Writes each double Value as a numbered Attribute of the current List Element.
+	  * @see streamIO.integer.IStreamOutStructArrays#addDoubles(double[], int, int) */
 	public IStreamOutStruct addDoubles(final double[] values, final int stop, final int start) {
 		try { 
 			checkListStart(STR_DOUBLE);
@@ -924,7 +956,8 @@ implements ContentHandler, IStreamOutPrimitive, IStreamOutStruct //, ErrorHandle
 		}
 		return this; }
 	
-	/** @see streamIO.integer.IStreamOutStructArrays#addStrings(java.lang.String[], int, int) */
+	/** Writes each String Value as a numbered Attribute of the current List Element.
+	  * @see streamIO.integer.IStreamOutStructArrays#addStrings(java.lang.String[], int, int) */
 	public IStreamOutStruct addStrings(final String[] values, int stop, int start) {
 		try { 
 			checkListStart(STR_STRING);
@@ -935,22 +968,30 @@ implements ContentHandler, IStreamOutPrimitive, IStreamOutStruct //, ErrorHandle
 		}
 		return this; }
 	
-	/** @see streamIO.integer.IStreamOutStructArrays#addItems(java.lang.Object[], int, int) */
+	// TODO: LOGIC: the `else` on the line below binds only to the immediately following
+	// `startTag(name);` statement (no braces) - `closeTag(); AStreamOutByte.WRITE(...);
+	// endTag(name);` execute unconditionally on every iteration, including when `value`
+	// IS an IStreamWriteAble that already wrote its own Element via writeTo(...) above.
+	// Every non-IStreamWriteAble Element also ends up empty-bodied, since closeTag() is
+	// called before any Content is written and endTag(name) closes it again immediately.
+	/** Writes each Object as its own Element: an {@link IStreamWriteAble} writes itself via
+	  * writeTo(...), anything else is written as Text within an Element named by its List Index.
+	  * @see streamIO.integer.IStreamOutStructArrays#addItems(java.lang.Object[], int, int) */
 	public IStreamOutStruct addItems(final Object[] values, int stop, int start) {
-		try { 
+		try {
 			checkListStart(STR_OBJECT);
 			for(int i = start-1; ++i < stop; ) { //Objects require Elements to contain structured Contents
-				final Object value = values[i]; 
-				final String name = "_"+(++arrIndex); 
-				if (value instanceof IStreamWriteAble) 
-					((IStreamWriteAble) value).writeTo(this, name); 
-				else 
-					startTag(name); closeTag(); 
+				final Object value = values[i];
+				final String name = "_"+(++arrIndex);
+				if (value instanceof IStreamWriteAble)
+					((IStreamWriteAble) value).writeTo(this, name);
+				else
+					startTag(name); closeTag();
 					AStreamOutByte.WRITE(encoder, String.valueOf(value));
-					endTag(name); 
+					endTag(name);
 			}
 		} catch(final IOException x) {
-			throw new IOError(x); 
+			throw new IOError(x);
 		}
 		return this; }
 	

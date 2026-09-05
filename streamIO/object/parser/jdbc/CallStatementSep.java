@@ -13,10 +13,7 @@ import java.sql.SQLException;
 import streamIO.integer.jdbc.ACallStatement;
 
 /**
- * Title: CallStatementSep<p>
- * Description:
- * Purpose:
- * CallableStatement Implementation for Separated Files. 
+ * CallableStatement Implementation for Separated Files.
  *
  * Design Decisions / Implementation Details:
  *
@@ -30,46 +27,51 @@ import streamIO.integer.jdbc.ACallStatement;
  * @author mheuer
  * @version	1.0
  *
+ * <!-- docstate
+ * tags: [code/jdbc_adapter, code/sax_event_generation]
+ * concepts: [Minimal JDBC Driver over Separated-Format Flat Files]
+ * facets: {layer: domain, status: legacy, complexity: high}
+ * -->
  */
 public class CallStatementSep
 	extends  ACallStatement {
 
+	// TODO: LOGIC: unimplemented stub - always returns null instead of the requested Table's
+	// ResultSet or throwing an explicit "not implemented" Exception, so any Caller expecting
+	// a real Result silently gets null.
 	/** @see streamIO.integer.jdbc.APrepStatement#getResultSet(java.io.File, java.lang.String)	 */
 	protected ResultSet getResultSet(File table, String tableName) throws SQLException, IOException {
 		// TODO Auto-generated method stub
 		return null;
 	}
 	
-	/**
-	 * @param conn
-	 * @param sql_
-	 * @param resultSetType
-	 * @param resultSetConcurrency
-	 * @param resultSetHoldability
+	/** Initializing Constructor forwarding the full JDBC ResultSet Configuration to the base Class.
+	 * @param conn the separated-Files Connection to run this Statement against
+	 * @param sql_ the Call SQL Text
+	 * @param resultSetType one of the ResultSet TYPE_* Constants
+	 * @param resultSetConcurrency one of the ResultSet CONCUR_* Constants
+	 * @param resultSetHoldability one of the ResultSet HOLD_CURSORS_OVER_COMMIT / CLOSE_CURSORS_AT_COMMIT Constants
 	 */
 	public CallStatementSep(ConnectionSep conn, String sql_, int resultSetType, int resultSetConcurrency, int resultSetHoldability) {
 		super(conn, sql_, resultSetType, resultSetConcurrency, resultSetHoldability);
-		// TODO Auto-generated constructor stub
 	}
 
-	/**
-	 * @param conn
-	 * @param sql
-	 * @param resultSetType
-	 * @param resultSetConcurrency
+	/** Initializing Constructor defaulting the ResultSet Holdability to the base Class' Default.
+	 * @param conn the separated-Files Connection to run this Statement against
+	 * @param sql the Call SQL Text
+	 * @param resultSetType one of the ResultSet TYPE_* Constants
+	 * @param resultSetConcurrency one of the ResultSet CONCUR_* Constants
 	 */
 	public CallStatementSep(ConnectionSep conn, String sql, int resultSetType, int resultSetConcurrency) {
 		super(conn, sql, resultSetType, resultSetConcurrency);
-		// TODO Auto-generated constructor stub
 	}
 
-	/**
-	 * @param conn
-	 * @param sql
+	/** Initializing Constructor defaulting ResultSet Type, Concurrency and Holdability.
+	 * @param conn the separated-Files Connection to run this Statement against
+	 * @param sql the Call SQL Text
 	 */
 	public CallStatementSep(ConnectionSep conn, String sql) {
 		super(conn, sql);
-		// TODO Auto-generated constructor stub
 	}
 
 }

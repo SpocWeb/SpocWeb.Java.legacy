@@ -26,6 +26,11 @@ import swing.HashTreeNode;
   * 	to the Nodes already created and thus ensuring
   * 	the Integrity of the Tree, because only the Parent Node is given
   * 	by it's UserObject.
+  * <!-- docstate
+  * tags: [code/stream_parsing, code/parser]
+  * concepts: [Separator-Driven Token Parsing and Stream Adapters]
+  * facets: {layer: utility, status: legacy, complexity: high}
+  * -->
   */
 public class JTreeContainer {
 

@@ -26,6 +26,11 @@ import graphs.KeyValuePair;
   *
   * Although defaulting the Separator Characters to <\>, you can override them.
   *
+  * <!-- docstate
+  * tags: [code/xml_parsing, code/xml_streaming]
+  * concepts: [XML Read/Write Stream Bridging]
+  * facets: {layer: utility, status: legacy, complexity: high}
+  * -->
   */
 public class XMLScannerStreamIn
 extends AFilterIn {
@@ -48,7 +53,7 @@ extends AFilterIn {
 	
 	//Helper Constants
 	
-	/**Prefix für XML Strings	 */
+	/**Prefix fï¿½r XML Strings	 */
 	final static public String XML_STR_PREFIX = "xml version=\"1.0\" encoding=\"ISO-8859-1\" ";
 	
 	/**Message for Grammar Errors	 */
@@ -338,7 +343,7 @@ extends AFilterIn {
 	"		<Established>1992</Established>" +
 	"		<URL>http://www.icon-is.com/e/dev/sw/sw_main.asp</URL>" +
 	"		<Manager>AFALK01</Manager>" +
-	"		<Desc>Entwicklung von kundenspezifischen Softwarelösungen im technischen und wissenschaftlichen Bereich.</Desc>" +
+	"		<Desc>Entwicklung von kundenspezifischen Softwarelï¿½sungen im technischen und wissenschaftlichen Bereich.</Desc>" +
 	"		<Person Manager='yes' Programmer='yes' Designer=\"no\">" +
 	"			<ID>AFALK01</ID>" +
 	"			<LastName>Falk</LastName>" +
@@ -382,7 +387,7 @@ extends AFilterIn {
 	"		<Established>1994</Established>" +
 	"		<URL>http://www.icon-is.com/d/dev/hw/hw_main.asp</URL>" +
 	"		<Manager>TKEFE01</Manager>" +
-	"		<Desc>Entwicklung von kundenspezifischen mikroelektronischen Geräten.</Desc>" +
+	"		<Desc>Entwicklung von kundenspezifischen mikroelektronischen Gerï¿½ten.</Desc>" +
 	"		<Person Manager='yes' Programmer='yes' Designer='no'>" +
 	"			<ID>TKEFE01</ID>" +
 	"			<LastName>Kefer</LastName>" +

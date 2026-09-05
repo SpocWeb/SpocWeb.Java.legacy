@@ -13,15 +13,12 @@ import java.sql.SQLException;
 import streamIO.integer.jdbc.AStatement;
 
 /**
- * Title: StatementSep<p>
- * Description:
- * parses simple Queries without Fields and without Conditions. 
- * Basically it resolves the Table Name based on the Settings in the Connection: 
- * Path, Suffix and Separators. 
- * 
- * Purpose: 
+ * Parses simple Queries without Fields and without Conditions.
+ * Basically it resolves the Table Name based on the Settings in the Connection:
+ * Path, Suffix and Separators.
+ *
  * Provides a Statement Implementation for the jdbc 1.0 Framework
- * defaults all Interface Implementations to the Classes of this Package.  
+ * defaults all Interface Implementations to the Classes of this Package.
  *
  * Design Decisions / Implementation Details:
  *
@@ -35,6 +32,11 @@ import streamIO.integer.jdbc.AStatement;
  * @author mheuer
  * @version	1.0
  *
+ * <!-- docstate
+ * tags: [code/jdbc_adapter, code/sax_event_generation]
+ * concepts: [Minimal JDBC Driver over Separated-Format Flat Files]
+ * facets: {layer: domain, status: legacy, complexity: high}
+ * -->
  */
 public class StatementSep 
 extends AStatement {

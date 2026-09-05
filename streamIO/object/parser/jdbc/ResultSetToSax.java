@@ -25,10 +25,7 @@ import com.sun.org.apache.xml.internal.utils.DOMBuilder;
 import function.byref.ByRefInt;
 
 /**
-  * Title: ResultSetToSax<p>
-  *
-  * Purpose:
-  * Feeds the SAX Interface from a JDBC ResultSet. 
+  * Feeds the SAX Interface from a JDBC ResultSet.
   * Unfortunately this is not understood by common XML Parsers as a SAXInputStream. 
   *
   * Design Decisions / Implementation Details:
@@ -71,6 +68,11 @@ import function.byref.ByRefInt;
   * Created on	02-08-2003, 02:07 PM<p>
   * @author 	Matthias Heuer
   * @version	1.0
+  * <!-- docstate
+  * tags: [code/jdbc_adapter, code/sax_event_generation]
+  * concepts: [Minimal JDBC Driver over Separated-Format Flat Files]
+  * facets: {layer: domain, status: legacy, complexity: high}
+  * -->
   */
 public class ResultSetToSax
 extends AStreamIn {
@@ -79,22 +81,26 @@ extends AStreamIn {
 	/// #region : static Constants and Variables
 	////////////////////////////////////////////////////////////////////////////////
 	
-	final static public String SCHEME_FILE = "file:///"; 
+	/** URI Scheme Prefix stripped from a File Path before it is opened as a local File. */
+	final static public String SCHEME_FILE = "file:///";
 		
 	////////////////////////////////////////////////////////////////////////////////
 	/// #region : static Methods, dispatching between RS-Fix and RS-Sep
 	////////////////////////////////////////////////////////////////////////////////
 	
-	/** @return a DOM loaded with a File in Fixed or Separated Format */
+	/** Strips a leading "file:///" Scheme, then delegates to the File-based Overload.
+	  * @return a DOM loaded with a File in Fixed or Separated Format */
 	final static public Document RESULTSET_TO_DOM
 	(  String filePath, final String root, final String separators
 	, final boolean fieldNames, final String attributePrefix
 	) throws SAXException, SQLException, IOException {
 		if (filePath.startsWith(SCHEME_FILE))
-			filePath = filePath.substring(SCHEME_FILE.length()); 
+			filePath = filePath.substring(SCHEME_FILE.length());
 		return RESULTSET_TO_DOM(new File(filePath), root, separators, fieldNames, attributePrefix); }
 
-	/** @return a DOM loaded with a File in Fixed or Separated Format */
+	/** Dispatches to the right ResultSet Implementation based on the File's Suffix
+	  * (Fixed, Separated, or Tab-Separated).
+	  * @return a DOM loaded with a File in Fixed or Separated Format */
 	final static public Document RESULTSET_TO_DOM
 	( final File file, final String root, final String separators
 	, final boolean fieldNames, final String attributePrefix
@@ -108,14 +114,16 @@ extends AStreamIn {
 	// processing RS-FIX
 	/////////////////////////////////////////////////////////////////////////////////////
 	
-	/** @return a DOM loaded with a File in Fixed Format */
+	/** Convenience Overload taking a File Path instead of a File.
+	  * @return a DOM loaded with a File in Fixed Format */
 	final static public Document RESULTSET_FIX_TO_DOM
 	( final String filePath, final String root, final String separators
 	, final boolean fieldNames, final boolean fieldDefaults, final String attributePrefix
 	) throws SAXException, SQLException, IOException {
 		return RESULTSET_FIX_TO_DOM(new File(filePath), root, attributePrefix); }//, separators, fieldNames, fieldDefaults); }
 
-	/** @return a DOM loaded with a File in Fixed Format */
+	/** Opens the Fixed-Format File as a ResultSetFix and drains it into a DOM Document.
+	  * @return a DOM loaded with a File in Fixed Format */
 	final static public Document RESULTSET_FIX_TO_DOM
 	( final File file, final String root//, final String separators, final boolean fieldNames, final boolean fieldDefaults
 			, final String attributePrefix
@@ -126,13 +134,15 @@ extends AStreamIn {
 	// processing RS-SEP
 	/////////////////////////////////////////////////////////////////////////////////////
 	
-	/** @return a DOM loaded with a File in Separated Format */
+	/** Convenience Overload taking a File Path instead of a File.
+	  * @return a DOM loaded with a File in Separated Format */
 	final static public Document RESULTSET_SEP_TO_DOM
 	( final String filePath, final String root, final String separators
 	, final boolean fieldNames, final String attributePrefix) throws SAXException, IOException {
 		return RESULTSET_SEP_TO_DOM(new File(filePath), root, separators, fieldNames, attributePrefix); }
-	
-	/** @return a DOM loaded with a File in Separated Format */
+
+	/** Opens the separated File as a ResultSetSep and drains it into a DOM Document.
+	  * @return a DOM loaded with a File in Separated Format */
 	final static public Document RESULTSET_SEP_TO_DOM
 	( final File file, final String root, final String separators
 	, final boolean fieldNames, final String attributePrefix
@@ -143,7 +153,8 @@ extends AStreamIn {
 	// processing RS no matter where it comes from 
 	/////////////////////////////////////////////////////////////////////////////////////
 	
-	/** @return a DOM loaded with the given ResultSet */
+	/** Drains the given ResultSet through this Class' SAX-Event simulation into a new DOM Document.
+	  * @return a DOM loaded with the given ResultSet */
 	public static Document RESULTSET_TO_DOM ( final ResultSet rs, final String root
 			, final String attributePrefix
 	) throws SAXException, IOException {
@@ -161,12 +172,16 @@ extends AStreamIn {
 	
 	/** Root Node Parameters */
 	public String rootNamespaceURI = "";
+	/** Local Name of the Root Element. */
 	public String rootLocalName = ""; //localRoot";
+	/** Qualified Name of the Root Element. */
 	public String rootQName = "root";
-	
+
 	/** Row Node Parameters */
 	public String namespaceURI = "";
+	/** Local Name used for each Row Element. */
 	public String localName = ""; //localRow";
+	/** Qualified Name used for each Row Element. */
 	public String qName = "Row";
 
 	/** Text added to each Row */
@@ -206,21 +221,25 @@ extends AStreamIn {
 	/// #region : Interface IStreamIn: Implementation
 	////////////////////////////////////////////////////////////////////////////////
 	
-	/** @see streamIO.object.AStreamIn#getMaxMarkSize()	 */
+	/** Not tracked from the ResultSet: always reports the Maximum possible Value.
+	  * @see streamIO.object.AStreamIn#getMaxMarkSize()	 */
 	public long getMaxMarkSize() { return Long.MAX_VALUE; }
-	
-	/** @see streamIO.object.AStreamIn#getPosition()	 */
-	public long getPosition() { 
-		try { return resultSet.getRow(); 
+
+	/** Delegates to the ResultSet's own current Row Number.
+	  * @see streamIO.object.AStreamIn#getPosition()	 */
+	public long getPosition() {
+		try { return resultSet.getRow();
 		} catch (final SQLException x) {
-			throw new BaseException(x); 
+			throw new BaseException(x);
 		}
 	}
-	
-	/** @see streamIO.Object.IStreamIn#currItem()	 */
+
+	/** Returns the reused Attributes View over the current Row.
+	  * @see streamIO.Object.IStreamIn#currItem()	 */
 	public Object currItem() { return attributes; }
 
-	/** @see streamIO.IAvailAble#availAble()	 */
+	/** Reports whether a current Row Token exists; does not use the (commented-out) real Cursor Checks.
+	  * @see streamIO.IAvailAble#availAble()	 */
 	public long availAble() {
 		if (token == null) 
 			return -1; 

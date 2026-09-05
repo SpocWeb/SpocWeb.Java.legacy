@@ -21,9 +21,6 @@ import streamIO.integer.jdbc.AResultSet;
 import streamIO.integer.jdbc.ResultSetFix;
 
 /**
- * Title: ConnectionSep<p>
- * Description:
- * Purpose:
  * Provides a Connection Implementation for the jdbc 1.0 Framework
  * using Files with separated Content. 
  * 
@@ -42,6 +39,11 @@ import streamIO.integer.jdbc.ResultSetFix;
  * @author mheuer
  * @version	1.0
  * @see streamIO.integer.jdbc.ConnectionFix
+ * <!-- docstate
+ * tags: [code/jdbc_adapter, code/sax_event_generation]
+ * concepts: [Minimal JDBC Driver over Separated-Format Flat Files]
+ * facets: {layer: domain, status: legacy, complexity: high}
+ * -->
  */
 public class ConnectionSep 
 extends AConnection {
@@ -67,12 +69,13 @@ extends AConnection {
 	/// Constructors 
 	///////////////////////////////////////////////////////////////////////////
 
-	/**
-	 * @param path
-	 * @param driver_
-	 * @param propSuffix
-	 * @param defaultSuffix
-	 * @param defaultSep
+	/** Initializing Constructor forwarding an explicit Driver, Suffix Properties, Default Suffix
+	  * and Default Separators to the base Class.
+	 * @param path Directory holding the separated-Files "Tables"
+	 * @param driver_ jdbc Driver to register this Connection with
+	 * @param propSuffix Properties mapping per-Table Suffixes, when they differ from the Default
+	 * @param defaultSuffix Suffix assumed for a Table when not present in propSuffix
+	 * @param defaultSep Separator Characters assumed for a Table when not present in propSuffix
 	 * @throws SQLException
 	 */
 	public ConnectionSep(final String path, final Driver driver_, final Properties propSuffix,
@@ -80,42 +83,45 @@ extends AConnection {
 		super(path, driver_, propSuffix, defaultSuffix, defaultSep);
 	}
 	
-	/**
-	 * 
+	/** Initializing Constructor defaulting the Driver to {@link DriverSep#driver}, the File Suffix
+	  * to {@link #SUFFIX_SEP} and the Separators to {@link ResultSetFix#TAB_SEPARATORS}.
 	 * @param url URL of the jdbc Connection
 	 * @param suffix Properties Object containing the Table Files Suffix (Default: ".fix")
-	 * @throws SQLException when the Directory does not exist or the Prefix does not match. 
+	 * @throws SQLException when the Directory does not exist or the Prefix does not match.
 	 */
 	public ConnectionSep(final String url, final Properties propSuffix) throws SQLException {
 		super(url, DriverSep.driver, propSuffix, SUFFIX_SEP, ResultSetFix.TAB_SEPARATORS); 
 	}
 
-	/**
-	 * @param _path
-	 * @param _driver
-	 * @param _suffix
-	 * @param _separator
+	/** Initializing Constructor using an explicit jdbc Driver and a single Suffix/Separator pair
+	  * for every Table in the Directory.
+	 * @param _path Directory holding the separated-Files "Tables"
+	 * @param _driver jdbc Driver to register this Connection with
+	 * @param _suffix File Suffix used for every Table
+	 * @param _separator Separator Characters used for every Table
 	 * @throws SQLException
 	 */
 	public ConnectionSep(final String _path, final Driver _driver, final String _suffix,
 			final String _separator) throws SQLException {
 		super(_path, _driver, _suffix, _separator);
 	}
-	
-	/**
-	 * @param _path
-	 * @param _suffix
-	 * @param _separator
+
+	/** Initializing Constructor defaulting to {@link DriverSep#driver} with a single Suffix/Separator
+	  * pair for every Table in the Directory.
+	 * @param _path Directory holding the separated-Files "Tables"
+	 * @param _suffix File Suffix used for every Table
+	 * @param _separator Separator Characters used for every Table
 	 * @throws SQLException
 	 */
 	public ConnectionSep(final String _path, final String _suffix, final String _separator)
 			throws SQLException {
 		super(_path, _suffix, _separator);
 	}
-	
-	/**
-	 * @param _path
-	 * @param _suffix If the Suffix is not given, it is assumed to be present in the Table Names. 
+
+	/** Initializing Constructor deriving the Separator Characters from the given Suffix
+	  * (Comma-separated for {@link #SUFFIX_CSV}, Tab-separated otherwise).
+	 * @param _path Directory holding the separated-Files "Tables"
+	 * @param _suffix If the Suffix is not given, it is assumed to be present in the Table Names.
 	 * @throws SQLException
 	 */
 	public ConnectionSep(final String _path, final String _suffix)
@@ -127,49 +133,53 @@ extends AConnection {
 	/// Methods
 	///////////////////////////////////////////////////////////////////////////
 
-	/**
+	/** Creates a plain Statement backed by this separated-Files Connection.
 	 * @see java.sql.Connection#createStatement()
 	 */
 	public Statement createStatement() { //throws SQLException {
 		return new StatementSep(this);
 	}
 
-	/**
+	/** Creates a PreparedStatement for the given SQL, backed by this separated-Files Connection.
 	 * @see java.sql.Connection#prepareStatement(java.lang.String)
 	 */
 	public PreparedStatement prepareStatement(final String sql) { //throws SQLException {
 		return new PrepStatementSep(this, sql);
 	}
 
-	/**
+	/** Creates a CallableStatement for the given SQL, backed by this separated-Files Connection.
 	 * @see java.sql.Connection#prepareCall(java.lang.String)
 	 */
 	public CallableStatement prepareCall(final String sql) { //throws SQLException {
 		return new CallStatementSep(this, sql);
 	}
 
-	/** @see java.sql.Connection#createStatement(int, int)	 */
+	/** Creates a Statement with the given ResultSet Type and Concurrency.
+	  * @see java.sql.Connection#createStatement(int, int)	 */
 	public Statement createStatement(
 		final int resultSetType,
 		final int resultSetConcurrency) { //throws SQLException {
 		return new StatementSep(this, resultSetType, resultSetConcurrency);
 	}
 
-	/** @see java.sql.Connection#prepareStatement(java.lang.String, int, int)	 */
+	/** Creates a PreparedStatement with the given ResultSet Type and Concurrency.
+	  * @see java.sql.Connection#prepareStatement(java.lang.String, int, int)	 */
 	public PreparedStatement prepareStatement(final String sql,
 		final int resultSetType,
 		final int resultSetConcurrency) { //throws SQLException {
 		return new PrepStatementSep(this, sql, resultSetType, resultSetConcurrency);
 	}
 
-	/** @see java.sql.Connection#prepareCall(java.lang.String, int, int)	 */
+	/** Creates a CallableStatement with the given ResultSet Type and Concurrency.
+	  * @see java.sql.Connection#prepareCall(java.lang.String, int, int)	 */
 	public CallableStatement prepareCall(final String sql,
 		final int resultSetType,
 		final int resultSetConcurrency) { //throws SQLException {
 		return new CallStatementSep(this, sql, resultSetType, resultSetConcurrency);
 	}
 
-	/** @see java.sql.Connection#createStatement(int, int, int)	 */
+	/** Creates a Statement with the given ResultSet Type, Concurrency and Holdability.
+	  * @see java.sql.Connection#createStatement(int, int, int)	 */
 	public Statement createStatement(
 			final int resultSetType,
 			final int resultSetConcurrency,
@@ -180,7 +190,8 @@ extends AConnection {
 			resultSetHoldability);
 	}
 
-	/** @see java.sql.Connection#prepareStatement(java.lang.String, int, int, int)	 */
+	/** Creates a PreparedStatement with the given ResultSet Type, Concurrency and Holdability.
+	  * @see java.sql.Connection#prepareStatement(java.lang.String, int, int, int)	 */
 	public PreparedStatement prepareStatement(final String sql,
 			final int resultSetType,
 			final int resultSetConcurrency,
@@ -191,7 +202,8 @@ extends AConnection {
 			resultSetHoldability);
 	}
 
-	/** @see java.sql.Connection#prepareCall(java.lang.String, int, int, int)	 */
+	/** Creates a CallableStatement with the given ResultSet Type, Concurrency and Holdability.
+	  * @see java.sql.Connection#prepareCall(java.lang.String, int, int, int)	 */
 	public CallableStatement prepareCall(final String sql,
 			final int resultSetType,
 			final int resultSetConcurrency,
@@ -204,7 +216,11 @@ extends AConnection {
 
 	/** TODO: support autogenerated Keys */
 
-	/** @see java.sql.Connection#prepareStatement(java.lang.String, int)	 */
+	// TODO: LOGIC: `autoGeneratedKeys` is accepted but never consulted; this always behaves
+	// like the plain 2-arg prepareStatement(String) with fixed TYPE_FORWARD_ONLY/CONCUR_READ_ONLY,
+	// silently ignoring a caller's request for generated Keys instead of honoring or rejecting it.
+	/** Always uses TYPE_FORWARD_ONLY/CONCUR_READ_ONLY, ignoring the requested autoGeneratedKeys Flag.
+	  * @see java.sql.Connection#prepareStatement(java.lang.String, int)	 */
 	public PreparedStatement prepareStatement(final String sql,
 			final int autoGeneratedKeys) { //throws SQLException {
 		return new PrepStatementSep(this, sql,
@@ -212,14 +228,19 @@ extends AConnection {
 			ResultSet.CONCUR_READ_ONLY);
 	}
 
-	/** @see java.sql.Connection#prepareStatement(java.lang.String, int[])	 */
+	// TODO: LOGIC: `columnIndexes` is accepted but never consulted, same as the autoGeneratedKeys
+	// overload above.
+	/** Always uses TYPE_FORWARD_ONLY/CONCUR_READ_ONLY, ignoring the requested Column Indexes.
+	  * @see java.sql.Connection#prepareStatement(java.lang.String, int[])	 */
 	public PreparedStatement prepareStatement(final String sql, final int[] columnIndexes) { //throws SQLException {
 		return new PrepStatementSep(this, sql,
 			ResultSet.TYPE_FORWARD_ONLY,
 			ResultSet.CONCUR_READ_ONLY);
 	}
 
-	/** @see java.sql.Connection#prepareStatement(java.lang.String, java.lang.String[])	 */
+	// TODO: LOGIC: `columnNames` is accepted but never consulted, same as the two overloads above.
+	/** Always uses TYPE_FORWARD_ONLY/CONCUR_READ_ONLY, ignoring the requested Column Names.
+	  * @see java.sql.Connection#prepareStatement(java.lang.String, java.lang.String[])	 */
 	public PreparedStatement prepareStatement(final String sql, final String[] columnNames) { //throws SQLException {
 		return new PrepStatementSep(this, sql,
 			ResultSet.TYPE_FORWARD_ONLY,

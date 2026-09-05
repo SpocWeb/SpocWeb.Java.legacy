@@ -19,10 +19,7 @@ import technology.xml.XslTrafo;
 import com.sun.org.apache.xml.internal.utils.DOMBuilder;
 
 /**
-  * Title: ResultSetToNestedSax<p>
-  *
-  * Purpose:
-  * Feeds the SAX Interface from a JDBC ResultSet. 
+  * Feeds the SAX Interface from a JDBC ResultSet.
   * Unfortunately this is not understood by common XML Parsers as a SAXInputStream. 
   *
   * Design Decisions / Implementation Details:
@@ -65,6 +62,11 @@ import com.sun.org.apache.xml.internal.utils.DOMBuilder;
   * Created on	02-08-2003, 02:07 PM<p>
   * @author 	Matthias Heuer
   * @version	1.0
+  * <!-- docstate
+  * tags: [code/jdbc_adapter, code/sax_event_generation]
+  * concepts: [Minimal JDBC Driver over Separated-Format Flat Files]
+  * facets: {layer: domain, status: legacy, complexity: high}
+  * -->
   */
 public class ResultSetToNestedSax
 extends AStreamIn {
@@ -82,20 +84,23 @@ extends AStreamIn {
 	// processing RS-SEP
 	/////////////////////////////////////////////////////////////////////////////////////
 	
-	/** @return a DOM loaded with a File in Separated Format */
+	/** Convenience Overload taking a File Path instead of a File.
+	  * @return a DOM loaded with a File in Separated Format */
 	final static public Document RESULTSET_SEP_TO_DOM
 	( final String filePath, final String root, final String separators
 	, final boolean fieldNames
 	) throws SAXException, IOException {
 		return RESULTSET_SEP_TO_DOM(new File(filePath), root, separators, fieldNames); }
-	
-	/** @return a DOM loaded with a File in Separated Format */
+
+	/** Opens the separated File as a ResultSetSep and drains it into a DOM Document.
+	  * @return a DOM loaded with a File in Separated Format */
 	final static public Document RESULTSET_SEP_TO_DOM
 	( final File file, final String root, final String separators
 	, final boolean fieldNames) throws SAXException, IOException {
 		return RESULTSET_TO_DOM(new ResultSetSep(file, separators, fieldNames), root); }
-	
-	/** @return a DOM loaded with a File in Separated Format */
+
+	/** Convenience Overload deriving the Separators and Field Names from the File itself.
+	  * @return a DOM loaded with a File in Separated Format */
 	final static public Document RESULTSET_SEP_TO_DOM
 	( final File file) throws SAXException, IOException {
 		return RESULTSET_TO_DOM(new ResultSetSep(file, null, null, file.getName())); }
@@ -104,11 +109,13 @@ extends AStreamIn {
 	// processing RS no matter where it comes from 
 	/////////////////////////////////////////////////////////////////////////////////////
 	
-	/** @return a DOM loaded with the given ResultSet */
+	/** Convenience Overload defaulting the Root Element Name.
+	  * @return a DOM loaded with the given ResultSet */
 	public static Document RESULTSET_TO_DOM ( final ResultSet rs) throws SAXException, IOException {
 		return RESULTSET_TO_DOM (rs, null); }
 
-	/** @return a DOM loaded with the given ResultSet */
+	/** Drains the given ResultSet through this Class' SAX-Event simulation into a new DOM Document.
+	  * @return a DOM loaded with the given ResultSet */
 	public static Document RESULTSET_TO_DOM ( final ResultSet rs, final String root
 	) throws SAXException, IOException {
 		final Document doc = XslTrafo.NEW_DOCUMENT();
@@ -124,12 +131,16 @@ extends AStreamIn {
 	
 	/** Root Node Parameters */
 	public String rootNamespaceURI = "";
+	/** Local Name of the Root Element. */
 	public String rootLocalName = ""; //localRoot";
+	/** Qualified Name of the Root Element. */
 	public String rootQName = "node";
-	
+
 	/** Row Node Parameters */
 	public String namespaceURI = "";
+	/** Local Name used for each Row Element. */
 	public String localName = ""; //localRow";
+	/** Qualified Name used for each Row Element. */
 	public String qName = rootQName;
 	
 	/** contains the Stack of Nesting Elements	*/
@@ -176,10 +187,12 @@ extends AStreamIn {
 	/// #region : Interface IStreamIn: Implementation
 	////////////////////////////////////////////////////////////////////////////////
 	
-	/** @see streamIO.Object.IStreamIn#currItem()	 */
+	/** Returns the reused Attributes View over the current Row.
+	  * @see streamIO.Object.IStreamIn#currItem()	 */
 	public Object currItem() { return attributes; }
-	
-	/** @see streamIO.IAvailAble#availAble()	 */
+
+	/** Reports whether a current Row Token exists; does not use the (commented-out) real Cursor Checks.
+	  * @see streamIO.IAvailAble#availAble()	 */
 	public long availAble() {
 		if (token == null) { 
 			return -1; }
@@ -193,11 +206,13 @@ extends AStreamIn {
 */		return  1; 
 	}
 	
-	/** @see streamIO.object.AStreamIn#getMaxMarkSize()	 */
+	/** Not tracked from the ResultSet: always reports the Maximum possible Value.
+	  * @see streamIO.object.AStreamIn#getMaxMarkSize()	 */
 	public long getMaxMarkSize() { return Long.MAX_VALUE; } // resultSet.(); }
-	
-	/** @see streamIO.object.AStreamIn#getPosition()	 */
-	public long getPosition() { 
+
+	/** Delegates to the ResultSet's own current Row Number.
+	  * @see streamIO.object.AStreamIn#getPosition()	 */
+	public long getPosition() {
 		try { return resultSet.getRow(); 
 		} catch (final SQLException x) {
 			throw new BaseException(x); 

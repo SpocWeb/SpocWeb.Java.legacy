@@ -63,6 +63,11 @@ import function.byref.ByRefInt;
   * and to determine the Position of the Value of a certain optional key in it.
   *
   * Design Decisions:
+  * <!-- docstate
+  * tags: [code/stream_parsing, code/parser]
+  * concepts: [Separator-Driven Token Parsing and Stream Adapters]
+  * facets: {layer: utility, status: legacy, complexity: high}
+  * -->
   */
 public class InputStream2StreamIn
 extends AStreamIn
@@ -161,7 +166,8 @@ implements IParserIn {
 	  * This Iterator may already deliver fully parsed Objects like Numbers etc.	 */
 	private IStreamIn_Byte is; // InputStream IS;
 	
-	/** @return the Reference to the current Input streamIO.  */
+	/** Returns the underlying byte Stream this Instance parses Tokens from.
+	  * @return the Reference to the current Input streamIO.  */
 	public IStreamIn_Byte getStreamIn() { return is; }
 	
 	/** Sets the current Input streamIO.   */
@@ -311,13 +317,16 @@ implements IParserIn {
 	//  Interface StreamIn: Implementation
 	////////////////////////////////////////////////////////////////////////////
 	
-	/** @see streamIO.object.AStreamIn#getMaxMarkSize()	 */
+	/** Delegates to the underlying byte Stream's own Mark support.
+	  * @see streamIO.object.AStreamIn#getMaxMarkSize()	 */
 	public long getMaxMarkSize() { return is.getMaxMarkSize(); }
-	
-	/** @see streamIO.object.AStreamIn#getPosition()	 */
+
+	/** Delegates to the underlying byte Stream's own Position tracking.
+	  * @see streamIO.object.AStreamIn#getPosition()	 */
 	public long getPosition() { return is.getPosition(); }
-	
-	/** @return the current Object (the collected StringBuffer) without moving.
+
+	/** Returns the currently assembled Token, optionally trimming its trailing Separator.
+	  * @return the current Object (the collected StringBuffer) without moving.
 	  * Here it is used to return the actual Data instead of the Tokens.
 	  * It also optionally removes the last Character
 	  * and prepares clearing the String at the next nextItem() Call.
@@ -333,13 +342,14 @@ implements IParserIn {
 	/** used solely in nextItem()	 */
 	protected ByRefInt currToken = new ByRefInt(); //why create a new Instance all the time?
 	
-	/** @return the next Token or Character (in a ByRefInt when Separator == null or == "")
+	/** Delegates to {@link #nextToken()}, wrapping any IOException into a BaseException.
+	  * @return the next Token or Character (in a ByRefInt when Separator == null or == "")
 	  * and adds the intermediate Characters to the StringBuffer returned by currItem().
 	  * Wraps IO Exceptions into BaseExceptions
 	  * Most simple Scanning Routine...
 	  * Design Decisions:
-	  * handing back the ByRefInt. 
-	  * To hand back the actual Object filter using Parser2StreamIn! 
+	  * handing back the ByRefInt.
+	  * To hand back the actual Object filter using Parser2StreamIn!
 	  */
 	public Object nextItem() {
 		try { return nextToken(); //inner loop for Performance Reasons
@@ -350,7 +360,9 @@ implements IParserIn {
 	/** Flag to indicate that the Separators are not complete yet! 	 */
 	//boolean readingSeps = true; 
 	
-	/** @return the next Token or Character (in a ByRefInt when Separator == null or == "")
+	/** Scans Characters from the underlying Stream, appending them to the Buffer, until a Separator
+	  * Character (or Escape Sequence) is found, then returns its Position/Tag as a ByRefInt.
+	  * @return the next Token or Character (in a ByRefInt when Separator == null or == "")
 	  * and add the intermediate Characters to the StringBuffer returned by currItem().
 	  * Most simple Scanning Routine...
 	  * Design Decisions:
@@ -384,7 +396,8 @@ implements IParserIn {
 	/** Flag to switch off Escaping	 */
 	public boolean doEscape = true; 
 	
-	/** @return the Order in which Elements are returned by the Iterators
+	/** This Stream imposes no particular Order on its Items.
+	  * @return the Order in which Elements are returned by the Iterators
 	  * when they are added using addItem() and removed using nextItem().	 */
 	public byte getOrder() { return ORDER_NONE; }
 
@@ -517,6 +530,10 @@ implements IParserIn {
 			Log.N("Table-Parameters:");
 			while( (KeyValue[1] != null) &&
 				 ( !KeyValue[1].equals(lastKey))) { 	//Read the Parameters and skip the Comments
+				// TODO: LOGIC: unconditionally casts the underlying `is` (declared IStreamIn_Byte)
+				// to FileStreamByte to read a File Position; readParameters(...) accepts any
+				// IStreamIn_Byte, so passing a non-file-backed Stream while posKey is non-null
+				// throws ClassCastException instead of gracefully skipping Position tracking.
 				if (ret < 0) { //if no PosKey found yet...
 					ret = -(int) ((FileStreamByte) is).getFilePointer(); }
 				final int numFields = readParameter(KeyValue);
@@ -569,7 +586,8 @@ implements IParserIn {
 		return jump(position); 
 	} //cannot use IS.skip(), because Characters don't match Tokens!
 
-	/** @return the next Item without moving to it.	 */
+	/** Not supported by this Stream: there is no Lookahead Buffer beyond the current Token.
+	  * @return the next Item without moving to it.	 */
 	public Object peekItem() { //throws	NoSuchMethodException {
 		throw new OperationNotSupported(InputStream2StreamIn.class); } //not possible, left same Implementation as in AStreamIn
 
@@ -579,7 +597,8 @@ implements IParserIn {
 	public IMarkAble mark() { //throws NoSuchMethodException {
 		is.mark(Integer.MAX_VALUE); return this; }
 
-	/** @return the (minimum) Number of Items left (in the Buffer),
+	/** Estimates how many Items are still available, assuming half the raw bytes may be Escape Characters.
+	  * @return the (minimum) Number of Items left (in the Buffer),
 	  * i.e. the minimum Number of times to call nextItem().
 	  * The actual Number may be higher, so available() should be called again
 	  * at the End of this Number.
@@ -690,7 +709,7 @@ implements IParserIn {
 	}
 
 	/**
-	 * Beispiel für das Ermitteln statistischer Funktionen aus Dateien:
+	 * Beispiel fï¿½r das Ermitteln statistischer Funktionen aus Dateien:
 	 * Vorkommen bestimmter Zeichen v.a. { und }
 	 * Vorkommen bestimmter Zeichenfolgen (keywords wie class, for, while, if etc.)
 	 *

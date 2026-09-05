@@ -14,19 +14,7 @@ import java.sql.SQLException;
 import streamIO.integer.jdbc.APrepStatement;
 
 /**
- * Title: PrepStatementSep<p>
- * Description:
- * Purpose:
- *
- * Purpose / Responsibilities of this Class
- *
- * Design Decisions / Implementation Details:
- * If similar Classes exist (e.g. Polymorphism),
- * characterize the specific Differences to compare these.
- *
- * Known SubClasses: <none>
- *
- * Known Uses: <none>
+ * PreparedStatement Implementation for Separated Files.
  *
  * Copyright:	Copyright (c) Matthias Heuer<p>
  * Company:	personal<p>
@@ -34,26 +22,44 @@ import streamIO.integer.jdbc.APrepStatement;
  * @author mheuer
  * @version	1.0
  *
+ * <!-- docstate
+ * tags: [code/jdbc_adapter, code/sax_event_generation]
+ * concepts: [Minimal JDBC Driver over Separated-Format Flat Files]
+ * facets: {layer: domain, status: legacy, complexity: high}
+ * -->
  */
 public class PrepStatementSep
 	extends APrepStatement //Sep
 	implements PreparedStatement {
 
+	/** Initializing Constructor forwarding the full JDBC ResultSet Configuration to the base Class.
+	  * @param conn the separated-Files Connection to run this Statement against
+	  * @param sql_ the parameterized SQL Text
+	  * @param resultSetType one of the ResultSet TYPE_* Constants
+	  * @param resultSetConcurrency one of the ResultSet CONCUR_* Constants
+	  * @param resultSetHoldability one of the ResultSet HOLD_CURSORS_OVER_COMMIT / CLOSE_CURSORS_AT_COMMIT Constants	 */
 	public PrepStatementSep(ConnectionSep conn, String sql_, int resultSetType, int resultSetConcurrency, int resultSetHoldability) {
 		super(conn, sql_, resultSetType, resultSetConcurrency, resultSetHoldability);
-		// TODO Auto-generated constructor stub
 	}
 
+	/** Initializing Constructor defaulting the ResultSet Holdability to the base Class' Default.
+	  * @param conn the separated-Files Connection to run this Statement against
+	  * @param sql the parameterized SQL Text
+	  * @param resultSetType one of the ResultSet TYPE_* Constants
+	  * @param resultSetConcurrency one of the ResultSet CONCUR_* Constants	 */
 	public PrepStatementSep(ConnectionSep conn, String sql, int resultSetType, int resultSetConcurrency) {
 		super(conn, sql, resultSetType, resultSetConcurrency);
-		// TODO Auto-generated constructor stub
 	}
 
+	/** Initializing Constructor defaulting ResultSet Type, Concurrency and Holdability.
+	  * @param conn the separated-Files Connection to run this Statement against
+	  * @param sql the parameterized SQL Text	 */
 	public PrepStatementSep(ConnectionSep conn, String sql) {
 		super(conn, sql);
-		// TODO Auto-generated constructor stub
 	}
 
+	// TODO: LOGIC: unimplemented stub - always returns null instead of the requested Table's
+	// ResultSet or throwing an explicit "not implemented" Exception.
 	/** @see streamIO.integer.jdbc.AStatement#getResultSet(java.io.File, java.lang.String)	 */
 	protected ResultSet getResultSet(File table, String tableName) throws SQLException, IOException {
 		// TODO Auto-generated method stub

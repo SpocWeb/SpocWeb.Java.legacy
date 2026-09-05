@@ -18,8 +18,6 @@ import streamIO.exception.BaseException;
 import streamIO.integer.adapter.OutputStreamToStreamOutByte;
 
 /**
- * Title:        XMLFormatter<p>
- * Description:
  * This Class provides Methods to write Objects to an XML streamIO<p>
  * Uses the Reflection API to explore the Object
  * and write primitive Fields as Attributes
@@ -34,6 +32,11 @@ import streamIO.integer.adapter.OutputStreamToStreamOutByte;
  * Company:      Matthias Heuer<p>
  * @author		 Matthias Heuer
  * @version 1.0
+ * <!-- docstate
+ * tags: [code/xml_parsing, code/xml_streaming]
+ * concepts: [XML Read/Write Stream Bridging]
+ * facets: {layer: utility, status: legacy, complexity: high}
+ * -->
  */
 public class XMLFormatter
 extends AFormatterOut { //for it's Storage Capabilities.

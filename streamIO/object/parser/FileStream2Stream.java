@@ -12,10 +12,7 @@ import streamIO.integer.pipe.ByteStreamerThread;
 import streamIO.object.IStreamIn;
 
 /**
-  * Title: FileStream2Stream<p>
-  * Description:
-  * Purpose:
-  * Merges the Contents of a streamIO of File Names (and Flags for Directories) 
+  * Merges the Contents of a streamIO of File Names (and Flags for Directories)
   * into a single streamIO of Bytes.
   * The Separation between the Files is indicated by special Bytes
   * that should not appear within the streamIO.
@@ -49,6 +46,11 @@ import streamIO.object.IStreamIn;
   * Created on	12-25-2002, 06:32 PM<p>
   * @author 	Matthias Heuer
   * @version	1.0
+  * <!-- docstate
+  * tags: [code/stream_parsing, code/parser]
+  * concepts: [Separator-Driven Token Parsing and Stream Adapters]
+  * facets: {layer: utility, status: legacy, complexity: high}
+  * -->
   */
 public class FileStream2Stream
 extends AStreamIn_Byte {
@@ -86,22 +88,26 @@ extends AStreamIn_Byte {
 	/// #region : static Methods
 	////////////////////////////////////////////////////////////////////////////////
 	
-	/** @return a streamIO of Bytes in the Format described from all Files in the given Directory	 */
+	/** Convenience Overload defaulting the Name Prefix to the Directory's own canonical Path.
+	  * @return a streamIO of Bytes in the Format described from all Files in the given Directory	 */
 	final static public FileStream2Stream FILE_SYSTEM_STREAM(File dir)
 		throws IOException {
 		return FILE_SYSTEM_STREAM(dir, "", dir.getCanonicalPath()); }
-	
-	/** @return a streamIO of Bytes in the Format described from all Files in the given Directory	 */
+
+	/** Convenience Overload defaulting the Name Prefix to the Directory's own canonical Path.
+	  * @return a streamIO of Bytes in the Format described from all Files in the given Directory	 */
 	final static public FileStream2Stream FILE_SYSTEM_STREAM(File dir, String suffix_)
 		throws IOException {
 		return FILE_SYSTEM_STREAM(dir, suffix_, dir.getCanonicalPath(), ""); }
-	
-	/** @return a streamIO of Bytes in the Format described from all Files in the given Directory	 */
+
+	/** Convenience Overload defaulting the Replacement to an empty String, i.e. the Prefix is simply stripped.
+	  * @return a streamIO of Bytes in the Format described from all Files in the given Directory	 */
 	final static public FileStream2Stream FILE_SYSTEM_STREAM(File dir, String suffix_, String prefix_)
 		throws IOException {
 		return FILE_SYSTEM_STREAM(dir, suffix_, prefix_, ""); }
-	
-	/** @return a streamIO of Bytes in the Format described from all Files in the given Directory	 */
+
+	/** Builds the Byte Stream by chaining a {@link FileSystem2Stream} of matching Files under this Instance.
+	  * @return a streamIO of Bytes in the Format described from all Files in the given Directory	 */
 	final static public FileStream2Stream FILE_SYSTEM_STREAM(File dir, String suffix_, String prefix_, String replacement_)
 		throws IOException {
 		return
@@ -150,7 +156,8 @@ extends AStreamIn_Byte {
 	/** Value escaped on last Operation */
 	protected int escapedChar = EOF;
 	
-	/**
+	/** Returns the next Byte of the merged Stream, escaping any special Separator Byte encountered
+	  * and moving to the next File/Directory Name once the current Source is exhausted.
 	 * @see streamIO.Byte.IStreamIn_Byte#read()
 	 */
 	public int read() throws IOException {
@@ -213,34 +220,46 @@ extends AStreamIn_Byte {
 	/// #region : Interface IStreamIn_Byte: abstract Methods
 	////////////////////////////////////////////////////////////////////////////////
 	
-	/** @see streamIO.Float.IStreamIn_Int#getOrder()	 */
+	/** This Stream imposes no particular Order on its Items.
+	  * @see streamIO.Float.IStreamIn_Int#getOrder()	 */
 	public byte getOrder() { return IStreamIn.ORDER_NONE; }
-	
-	/** @see streamIO.Byte.IStreamIn_Byte#available()	 */
+
+	/** Not tracked: always reports EOF regardless of how much data actually remains.
+	  * @see streamIO.Byte.IStreamIn_Byte#available()	 */
 	public int available() { return EOF; }
-	
-	/** @see streamIO.Byte.IStreamIn_Byte#close()	 */
+
+	/** No-op: nothing is held open across Files that needs explicit closing here.
+	  * @see streamIO.Byte.IStreamIn_Byte#close()	 */
 	public void close() {}
-	
-	/** @see streamIO.Byte.IStreamIn_Byte#mark(int)	 */
+
+	/** No-op: Marking is not actually implemented, despite {@link #getMaxMarkSize()} reporting a real Channel Size.
+	  * @see streamIO.Byte.IStreamIn_Byte#mark(int)	 */
 	public void mark(final int readLimit) {}
-	
-	/** @see streamIO.Byte.IStreamIn_Byte#getMaxMarkSize()	 */
-	public long getMaxMarkSize() { 
-		try { return stream.getChannel().size(); 
+
+	// TODO: LOGIC: dereferences `stream` unguarded; `stream` is null before the first File is
+	// opened and again once read() reaches EOF (see read(), lines ~159-166), so calling this
+	// Method at either point throws NullPointerException instead of the declared BaseException.
+	/** Reports the current File's Channel Size, delegated from the underlying FileInputStream.
+	  * @see streamIO.Byte.IStreamIn_Byte#getMaxMarkSize()	 */
+	public long getMaxMarkSize() {
+		try { return stream.getChannel().size();
 		} catch (final IOException x) {
-			throw new BaseException(x); 
+			throw new BaseException(x);
 		}
 	}
-	
-	/** @see streamIO.Byte.IStreamIn_Byte#reSet(long)	 */
+
+	/** Not supported: Reset is a no-op that always reports failure.
+	  * @see streamIO.Byte.IStreamIn_Byte#reSet(long)	 */
 	public long reSet(long Position) { return -1; }
-	
-	/** @see streamIO.object.AStreamIn#getPosition()	 */
-	public long getPosition() { 
-		try { return stream.getChannel().position(); 
+
+	// TODO: LOGIC: same unguarded `stream` dereference as getMaxMarkSize() above - null before
+	// the first File is opened or after EOF, throwing NullPointerException instead of BaseException.
+	/** Reports the current File's Channel Position, delegated from the underlying FileInputStream.
+	  * @see streamIO.object.AStreamIn#getPosition()	 */
+	public long getPosition() {
+		try { return stream.getChannel().position();
 		} catch(final IOException x) {
-			throw new BaseException(x); 
+			throw new BaseException(x);
 		}
 	}
 	

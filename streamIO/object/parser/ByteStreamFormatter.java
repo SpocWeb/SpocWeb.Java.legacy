@@ -15,9 +15,6 @@ import streamIO.integer.file.FileStreamOutByte;
 import function.byref.ByRefInt;
 
 /**
-  * Title: ByteStreamFormatter<p>
-  * Description:
-  * Purpose:
   * Streams out the Contents of the Input streamIO to the Output streamIO.
   * The streamIO is parsed by the given Parser Characters
   * and the Formatter formats the Strings read from the Input streamIO
@@ -42,6 +39,11 @@ import function.byref.ByRefInt;
   * Created on	08-06-2001, 04:05 PM<p>
   * @author 	Matthias Heuer
   * @version	1.0
+  * <!-- docstate
+  * tags: [code/stream_parsing, code/parser]
+  * concepts: [Separator-Driven Token Parsing and Stream Adapters]
+  * facets: {layer: utility, status: legacy, complexity: high}
+  * -->
   */
 public class ByteStreamFormatter
 implements Runnable {

@@ -7,6 +7,11 @@ package streamIO.object.parser;
   * For improved Functionality it can filter out a range of WhiteSpace Characters.
   * It should be applied as near as possible to the InputStream2StreamIn Object.
   * 
+  * <!-- docstate
+  * tags: [code/stream_parsing, code/parser]
+  * concepts: [Separator-Driven Token Parsing and Stream Adapters]
+  * facets: {layer: utility, status: legacy, complexity: high}
+  * -->
   */
 public class AlliterationStreamIn {
 }

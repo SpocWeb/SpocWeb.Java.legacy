@@ -27,6 +27,11 @@ import function.byref.ByRefInt;
   * @see java.io.InputStream into the
   * @see streamIO.IIStreamIn Interface
   *
+  * <!-- docstate
+  * tags: [code/stream_parsing, code/parser]
+  * concepts: [Separator-Driven Token Parsing and Stream Adapters]
+  * facets: {layer: utility, status: legacy, complexity: high}
+  * -->
   */
 final public class MaskedStreamIn
 extends AFilterIn
@@ -165,7 +170,8 @@ implements IParserIn {
 		}
 	}
 	
-	/** @return the current Object without moving.
+	/** Delegates to the wrapped Scanner's currItem(), forwarding the assembled Data rather than a Token.
+	  * @return the current Object without moving.
 	  * This is just a caching Functionality and should be done
 	  * at the Client Process, for faster Access.
 	  * Here the Semantics are changed: it is used to return the actual Data instead of the Tokens. */

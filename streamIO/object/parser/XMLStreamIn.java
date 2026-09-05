@@ -13,8 +13,6 @@ import function.byref.ByRefInt;
 import graphs.KeyValuePair;
 
 /**
- * Title:        XMLStreamIn<p>
- * Description:
  * Methods to read complete Object Trees from an XML streamIO
  * and static Methods to set the Values in Arrays and Objects. <p>
  * 
@@ -27,6 +25,11 @@ import graphs.KeyValuePair;
  * Company:      Matthias Heuer<p>
  * @author		 Matthias Heuer
  * @version 1.0
+ * <!-- docstate
+ * tags: [code/xml_parsing, code/xml_streaming]
+ * concepts: [XML Read/Write Stream Bridging]
+ * facets: {layer: utility, status: legacy, complexity: high}
+ * -->
  */
 public class XMLStreamIn
 extends AStreamIn
@@ -112,6 +115,12 @@ implements IDeserializer {
 	/** Reference to the Input streamIO	 */
 	protected XMLScannerStreamIn scan;
 	
+	// TODO: LOGIC: constructed as its own independent ByRefInt rather than aliasing
+	// `scan.currXMLToken` (see checkPair()'s cast of `scan.currXMLToken`, which IS the live
+	// Token). Every loop guard in this class that reads `currXMLToken.Value` unqualified
+	// (fromXMLField, ArrayFromXMLAt, fromXMLAtOld, loadItem, fromXMLAt, availAble) therefore
+	// reads a Value that is never updated after construction (always 0), instead of the
+	// Scanner's actual current Token.
 	/** Cache for the last XML Token	 */
 	protected ByRefInt currXMLToken = new ByRefInt();
 	
@@ -146,10 +155,12 @@ implements IDeserializer {
 	//  Methods
 	///////////////////////////////////////////////////////////////////////////////
 	
-	/** @see streamIO.object.AStreamIn#getMaxMarkSize()	 */
+	/** Delegates to the wrapped XML Scanner's own Mark support.
+	  * @see streamIO.object.AStreamIn#getMaxMarkSize()	 */
 	public long getMaxMarkSize() { return scan.getMaxMarkSize(); }
-	
-	/** @see streamIO.object.AStreamIn#getPosition()	 */
+
+	/** Delegates to the wrapped XML Scanner's own Position tracking.
+	  * @see streamIO.object.AStreamIn#getPosition()	 */
 	public long getPosition() { return scan.getPosition(); }
 	
 	/**Clears the Object Cache and breaks Reference Tracking	 */

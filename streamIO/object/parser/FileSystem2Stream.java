@@ -12,9 +12,6 @@ import streamIO.object.filterInOut.FilterReflectionFunction;
 import function.FunctionByHash;
 
 /**
-  * Title: FileSystem2Stream<p>
-  * Description:
-  * Purpose:
   * Returns all Files and Directories in a FileSystem as a streamIO of FileNames.
   * The Separation between Directories is indicated by special Strings:
   * "."  indicates the Start of a SubDirectory
@@ -36,6 +33,11 @@ import function.FunctionByHash;
   * Created on	12-25-2002, 06:32 PM<p>
   * @author 	Matthias Heuer
   * @version	1.0
+  * <!-- docstate
+  * tags: [code/stream_parsing, code/parser]
+  * concepts: [Separator-Driven Token Parsing and Stream Adapters]
+  * facets: {layer: utility, status: legacy, complexity: high}
+  * -->
   */
 public class FileSystem2Stream 
 extends AStreamIn {
@@ -97,7 +99,7 @@ extends AStreamIn {
 	/// #region : Accessor Methods (getXXX/isXXX/setXXX)
 	////////////////////////////////////////////////////////////////////////////////
 	
-	/**
+	/** Returns the File or Directory Marker last produced by {@link #nextItem()}.
 	 * @see streamIO.Object.IStreamIn#currItem()
 	 */
 	public Object currItem() {
@@ -114,7 +116,8 @@ extends AStreamIn {
 	 */
 	public boolean dirBeforeStart; 
 	
-	/**
+	/** Advances the recursive depth-first Directory Walk by one Step, returning the next File,
+	  * Directory or a Directory-Start/-End Marker as appropriate.
 	 * @see streamIO.Byte.IStreamIn_Byte#read()
 	 */
 	public Object nextItem() {
@@ -187,26 +190,32 @@ extends AStreamIn {
 	/// #region : Interface IStreamIn_Byte: abstract Methods
 	////////////////////////////////////////////////////////////////////////////////
 	
-	/** @see streamIO.Float.IStreamIn_Int#getOrder()	 */
+	/** This Stream imposes no particular Order on its Items.
+	  * @see streamIO.Float.IStreamIn_Int#getOrder()	 */
 	public byte getOrder() { return 0; }
-	
-	/** @see streamIO.Byte.IStreamIn_Byte#available()	 */
+
+	/** Rough Estimate of remaining Work, derived from the pending Directory Stack and current File Index.
+	  * @see streamIO.Byte.IStreamIn_Byte#available()	 */
 	public long availAble() { return stack.size() + currFile; }
-	
-	/** @see streamIO.Byte.IStreamIn_Byte#close()	 */
+
+	/** No-op: nothing is held open across Directories that needs explicit closing here.
+	  * @see streamIO.Byte.IStreamIn_Byte#close()	 */
 	public void close() throws IOException {}
-	
-	/** @see streamIO.Byte.IStreamIn_Byte#mark(int)	 */
+
+	/** No-op: Marking is not implemented for this Tree Walk.
+	  * @see streamIO.Byte.IStreamIn_Byte#mark(int)	 */
 	public void mark(int readLimit) {}
-	
-	/** @see streamIO.Byte.IStreamIn_Byte#getMaxMarkSize()	 */
+
+	/** Not supported: always reports -1, i.e. no Mark/Reset support.
+	  * @see streamIO.Byte.IStreamIn_Byte#getMaxMarkSize()	 */
 	public long getMaxMarkSize() { return -1; }
 	
 	/** A Scalar cannot well encode the current State in a TreeWalk!  
 	 * @see streamIO.object.AStreamIn#getPosition()	 */
 	public long getPosition() { return 0; }
 	
-	/** @see streamIO.Byte.IStreamIn_Byte#reSet(long)	 */
+	/** Not supported: this Tree Walk cannot rewind to an arbitrary Position; always returns 0.
+	  * @see streamIO.Byte.IStreamIn_Byte#reSet(long)	 */
 	public long reset(final long Position) throws IOException { return 0; }
 	
 	////////////////////////////////////////////////////////////////////////////////

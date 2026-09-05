@@ -14,6 +14,11 @@ import streamIO.object.AStreamIn;
   * This is a small TestBed for the nested Streams.
   * @see streamIO.Object.ArrayStreamIn
   * @see streamIO.Object.Enumerator.Container.Array for the full Implementation
+  * <!-- docstate
+  * tags: [code/stream_parsing, code/parser]
+  * concepts: [Separator-Driven Token Parsing and Stream Adapters]
+  * facets: {layer: utility, status: legacy, complexity: high}
+  * -->
   */
 public class Array2Stream
 extends AStreamIn
@@ -60,7 +65,8 @@ implements IIStreamOut {
 	//  Methods, public ones, then private ones (not in Interfaces)
 	////////////////////////////////////////////////////////////////////////////
 	
-	/** @return the (minimum) Number of Items left (in the Buffer),
+	/** Reports how many buffered Items are still available for {@link #nextItem()}.
+	  * @return the (minimum) Number of Items left (in the Buffer),
 	  * i.e. the minimum Number of times to call nextItem().
 	  * The actual Number may be higher, so available() should be called again
 	  * at the End of this Number.
@@ -70,21 +76,24 @@ implements IIStreamOut {
 	  */
 	public long availAble() { return arr.size() - curr - 1; }
 
-	/**
+	/** Reports whether the current Position still refers to an Item within the Array.
 	 * @see streamIO.IIStreamIn#isValid()
 	 */
 	public boolean isValid() { return curr < arr.size(); }
-	
-	/** @see streamIO.object.AStreamIn#getMaxMarkSize()	 */
+
+	/** Not implemented: always returns 0, i.e. no Mark/Reset support is advertised.
+	  * @see streamIO.object.AStreamIn#getMaxMarkSize()	 */
 	public long getMaxMarkSize() {
 		// TODO Auto-generated method stub
 		return 0;
 	}
-	
-	/** @see streamIO.object.AStreamIn#getPosition()	 */
+
+	/** Returns the current Cursor Position within the backing Array.
+	  * @see streamIO.object.AStreamIn#getPosition()	 */
 	public long getPosition() { return curr; }
-	
-	/** @see streamIO.object.AStreamIn#currItem()	 */
+
+	/** Returns the Item at the current Position, or {@link IIStreamIn#EOI} once the Array is exhausted.
+	  * @see streamIO.object.AStreamIn#currItem()	 */
 	public Object currItem() {
 		if (curr >= arr.size()) 
 			return IIStreamIn.EOI; 
@@ -93,7 +102,8 @@ implements IIStreamOut {
 		return arr.get(curr);
 	}
 	
-	/** @return the next (Parent) Object of this one.
+	/** Advances the Cursor and returns the Item now at that Position (or EOI once exhausted).
+	  * @return the next (Parent) Object of this one.
 	  * No Exception is thrown at the End, instead EOI is returned.
 	  * When IO Processes are bound to this streamIO, IOException is wrapped into an IOError.
 	  * This is less explicit, but much faster because Exception Handling can be extremely slow.
@@ -135,6 +145,9 @@ implements IIStreamOut {
 	public static void testIt(String[] args) throws java.io.IOException {
 		System.out.println("Testing " + Array2Stream.class.getName());
 		Array2Stream arr1, arr3, arrOut, arr = new Array2Stream();
+		// TODO: LOGIC: arr.set(index, ...) is called on a freshly constructed, still-empty
+		// ArrayList (DefaultSize only reserves capacity, it does not add elements), so this
+		// throws IndexOutOfBoundsException immediately instead of populating the array via add().
 		arr .arr.set(0, "0");
 		arr .arr.set(1, arr1 = new Array2Stream());
 		arr .arr.set(2, "2");

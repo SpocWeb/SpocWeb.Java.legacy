@@ -52,6 +52,11 @@ import function.byref.ByRefInt;
   * @see StreamInFromParser where only finite deep Structures are possible,
   * but the Level is directly encoded in the Separator Character
   *
+  * <!-- docstate
+  * tags: [code/stream_parsing, code/parser]
+  * concepts: [Separator-Driven Token Parsing and Stream Adapters]
+  * facets: {layer: utility, status: legacy, complexity: high}
+  * -->
   */
 public class ParserBracket2StreamIn
 extends AStreamIn {
@@ -91,10 +96,12 @@ extends AStreamIn {
 		if (newLevel == 0) { return this; } //opening Bracket
 		return currItem = in.currItem(); }
 	
-	/** @see streamIO.object.AStreamIn#getMaxMarkSize()	 */
+	/** Delegates to the wrapped Parser Stream's own Mark support.
+	  * @see streamIO.object.AStreamIn#getMaxMarkSize()	 */
 	public long getMaxMarkSize() { return in.getMaxMarkSize(); }
-	
-	/** @see streamIO.object.AStreamIn#getPosition()	 */
+
+	/** Delegates to the wrapped Parser Stream's own Position tracking.
+	  * @see streamIO.object.AStreamIn#getPosition()	 */
 	public long getPosition() { return in.getPosition(); }
 	
 }

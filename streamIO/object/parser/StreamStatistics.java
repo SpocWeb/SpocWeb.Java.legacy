@@ -1,9 +1,6 @@
 package streamIO.object.parser;
 
 /**
-  * Title: StreamStatistics<p>
-  * Description:
-  * Purpose:
   * Collects Statistics of Tokens in a streamIO
   *
   *
@@ -16,6 +13,11 @@ package streamIO.object.parser;
   * Created on	12-25-2002, 06:26 PM<p>
   * @author 	Matthias Heuer
   * @version	1.0
+  * <!-- docstate
+  * tags: [code/stream_parsing, code/parser]
+  * concepts: [Separator-Driven Token Parsing and Stream Adapters]
+  * facets: {layer: utility, status: legacy, complexity: high}
+  * -->
   */
 public class StreamStatistics
 {

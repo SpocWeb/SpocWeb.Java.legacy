@@ -10,6 +10,11 @@ import streamIO.object.IStreamIn;
   * so Assembly happens at the lowest Level possible.
   *
   * This is used e.g. in @see MaskedStreamIn
+  * <!-- docstate
+  * tags: [code/stream_parsing, code/parser]
+  * concepts: [Separator-Driven Token Parsing and Stream Adapters]
+  * facets: {layer: utility, status: legacy, complexity: high}
+  * -->
   */
 public interface IParserIn
 	extends IStreamIn {

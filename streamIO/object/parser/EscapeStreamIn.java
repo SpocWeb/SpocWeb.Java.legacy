@@ -61,6 +61,11 @@ import function.byref.ByRefInt;
   * @see InputStream which is handed over in the Constructor and the Object based
   * @see IStreamIn which it implements.
   *
+  * <!-- docstate
+  * tags: [code/stream_parsing, code/parser]
+  * concepts: [Separator-Driven Token Parsing and Stream Adapters]
+  * facets: {layer: utility, status: legacy, complexity: high}
+  * -->
   */
 final public class EscapeStreamIn
 extends AStreamIn {
@@ -113,20 +118,24 @@ extends AStreamIn {
 	//these Methods complement the isSpace, isSpaceChar, isWhiteSpace and isIsoControl
 	//in Class 'java.lang.Character'
 	
-	/** @return true when this Character is a Letter	 */
+	/** Tests whether the given Character Code is Whitespace, per {@link IStreamIn_Byte#WHITESPACE}.
+	  * @return true when this Character is a Letter	 */
 	public static boolean isWhiteSpace(int c) {
 		return IStreamIn_Byte.WHITESPACE.indexOf(c) >= 0; }
-	
-	/** @return true when this Character is a Letter	 */
+
+	/** Tests whether the given Character Code falls in the ASCII Letter Ranges 'a'-'z' or 'A'-'Z'.
+	  * @return true when this Character is a Letter	 */
 	public static boolean isLetter(int c) {
 		return ((c >= CHR_a && c <= CHR_z) ||
 				(c >= CHR_A && c <= CHR_Z)); }
-	
-	/** @return true when this Character is a Number	 */
+
+	/** Tests whether the given Character Code falls in the ASCII Digit Range '0'-'9'.
+	  * @return true when this Character is a Number	 */
 	public static boolean isDigit(int c) {
 		return (c >= CHR_0 && c <= CHR_9); }
-	
-	/** @return true, when c is a Hex Digit	 */
+
+	/** Tests whether the given Character Code is a decimal Digit or a Hex Letter 'A'-'F'/'a'-'f'.
+	  * @return true, when c is a Hex Digit	 */
 	public static boolean isHexDigit(int c) {
 		return (isDigit(c)	|| ((c >= CHR_A) && (c <= CHR_F))
 							|| ((c >= CHR_a) && (c <= CHR_f)) ); }
@@ -178,7 +187,8 @@ extends AStreamIn {
 	//  Methods
 	///////////////////////////////////////////////////////////////////////////////
 	
-	/** @return the current Object without moving.
+	/** Returns the current accumulated Token, optionally trimming its trailing Separator.
+	  * @return the current Object without moving.
 	  * Here it is used to return the actual Data instead of the Tokens.
 	  * It also optionally removes the last Character
 	  * and prepares clearing the String at the next nextItem() Call. */
@@ -191,7 +201,8 @@ extends AStreamIn {
 	//	else //this is only to keep the Semantics and return EOI instead of -1
 			return Buffer; }
 	
-	/** @return the next Character and adds it to the StringBuffer.
+	/** Reads and unescapes the next Character from the wrapped InputStream.
+	  * @return the next Character and adds it to the StringBuffer.
 	  * Filters out Escape Characters and wraps IO Exceptions into BaseExceptions
 	  * Most simple Scanning Routine... */
 	public Object nextItem() {
@@ -265,18 +276,22 @@ extends AStreamIn {
 		}
 		return jump(Position); } //cannot use IS.skip(), because Characters don't match Tokens!
 	
-	/** @return the next Item without moving to it.	 */
+	/** Not supported by this Stream: there is no Lookahead Buffer, only the underlying InputStream Mark.
+	  * @return the next Item without moving to it.	 */
 	public Object peekItem() { //throws    NoSuchMethodException {
 	    throw new OperationNotSupported(EscapeStreamIn.class); } //not possible, left same Implementation as in AStreamIn
-	
-	/** @return the Order in which Elements are returned by the Iterators
+
+	/** This Stream imposes no particular Order on its Items.
+	  * @return the Order in which Elements are returned by the Iterators
 	  * when they are added using addItem() and removed using nextItem().	 */
 	public byte getOrder() { return ORDER_NONE; }
 
-	/** @see streamIO.object.AStreamIn#getMaxMarkSize()	 */
+	/** Reports whether Mark/Reset is supported, delegating to the wrapped InputStream.
+	  * @see streamIO.object.AStreamIn#getMaxMarkSize()	 */
 	public long getMaxMarkSize() { return in.markSupported() ? Long.MAX_VALUE : -1; }
 	
-	/** @see streamIO.object.AStreamIn#getPosition()	 */
+	/** Not tracked by this Stream: always returns 0 regardless of how many Characters were consumed.
+	  * @see streamIO.object.AStreamIn#getPosition()	 */
 	public long getPosition() { return 0; }
 	
 	/** Marks the current position in this Iterator.
@@ -285,7 +300,8 @@ extends AStreamIn {
 	public IMarkAble mark() { //throws NoSuchMethodException {
 		in.mark(Integer.MAX_VALUE); return this; }
 	
-	/** @return the (minimum) Number of Items left (in the Buffer),
+	/** Estimates how many Items are still available, assuming half the raw bytes may be Escape Characters.
+	  * @return the (minimum) Number of Items left (in the Buffer),
 	  * i.e. the minimum Number of times to call nextItem().
 	  * The actual Number may be higher, so available() should be called again
 	  * at the End of this Number.

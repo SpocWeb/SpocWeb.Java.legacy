@@ -19,6 +19,11 @@ import function.byref.ByRefInt;
   * @see streamIO.object.parser.StreamInFromParser which does the Reverse 
   * @see which implements a different Approach for Bracketed streamIO Structures,
   * that translates more easily into the Parser Format.
+  * <!-- docstate
+  * tags: [code/stream_parsing, code/parser]
+  * concepts: [Separator-Driven Token Parsing and Stream Adapters]
+  * facets: {layer: utility, status: legacy, complexity: high}
+  * -->
   */
 public class ParserFromStreamIn
 extends AStreamIn {
@@ -39,10 +44,12 @@ extends AStreamIn {
 	/** Returns the current Item, returned last from nextItem */
 	public Object currItem() { return currItem; }
 	
-	/** @see streamIO.object.AStreamIn#getPosition()	 */
+	/** Delegates to the wrapped nested Stream's own Position tracking.
+	  * @see streamIO.object.AStreamIn#getPosition()	 */
 	public long getPosition() { return in.getPosition(); }
-	
-	/** @see streamIO.object.AStreamIn#getMaxMarkSize()	 */
+
+	/** Delegates to the wrapped nested Stream's own Mark support.
+	  * @see streamIO.object.AStreamIn#getMaxMarkSize()	 */
 	public long getMaxMarkSize() { return in.getMaxMarkSize(); }
 	
 	/** Returns the Number of Items available */
@@ -52,12 +59,19 @@ extends AStreamIn {
 			 ret = 0; }
 		return ret; }
 	
-	/** @return the next Item,
+	/** Advances the wrapped nested Stream by one Step, translating a Sub-Stream/EOI transition
+	  * into a Level change and returning the current Level for the older Parser Protocol.
+	  * @return the next Item,
 	 * An Iterator indicates a nested streamIO / Container
 	 */
 	public Object nextItem() {
 		for (;;) {
 			Object nextItem = in.nextItem();
+				  // TODO: LOGIC: on EOI this only decrements currLevel; `in` is never restored to
+				  // the parent Stream that was replaced when descending a Level (see the
+				  // `in = (IStreamIn) nextItem` branch below), so after the first nested Stream
+				  // is exhausted, subsequent calls keep querying the same now-exhausted inner
+				  // Stream instead of resuming the parent - no Stack of enclosing Streams is kept.
 				  if((nextItem == EOI) && !in.isValid()) { --currLevel.Value; //EOF: up one Level
 			}else if (nextItem instanceof IStreamIn) {
 				in = (IStreamIn) nextItem;                  ++currLevel.Value; //StreamIn: down one Level
@@ -67,8 +81,9 @@ extends AStreamIn {
 			}
 		}
 	}
-	
-	/** @see streamIO.object.IStreamIn#reSet(long)	 */
+
+	/** Delegates to the wrapped nested Stream's own reSet(long).
+	  * @see streamIO.object.IStreamIn#reSet(long)	 */
 	public long reSet(final long _position) { //throws NoSuchMethodException {
 		return in.reSet(_position);
 	}

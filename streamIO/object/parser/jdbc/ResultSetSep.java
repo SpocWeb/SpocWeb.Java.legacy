@@ -23,8 +23,6 @@ import streamIO.object.parser.InputStream2StreamIn;
 import tools.IOError;
 
 /**
-  * Title: ResultSetSep<p>
-  * Description:
   * Implements the Interface java.sql.ResultSet
   * for a file of fixed Length 2D Data.
   * 
@@ -35,7 +33,7 @@ import tools.IOError;
   * Needs only an ISTreamIn_Byte to be able to work as a read only, forward only ResultSet! 
   * Needs an IStreamOutByte to be able to insert or update Data by appending it. 
   * On Deletion and Updating the deleted or updated Row is marked, 
-  * so it is skipped on Reading and Truncation can be done in one Sweep. ´
+  * so it is skipped on Reading and Truncation can be done in one Sweep. ï¿½
   * Files without an Operation Flag can be updated or deleted
   * by overwriting the Contents of the overwritten or deleted Row with empty Strings, 
   * except for the last (hopefully non-key) Column 
@@ -99,6 +97,11 @@ import tools.IOError;
   * Created on	1999-12-31, 12;38;24<p>
   * @author 	Matthias Heuer
   * @version	1.0
+  * <!-- docstate
+  * tags: [code/jdbc_adapter, code/sax_event_generation]
+  * concepts: [Minimal JDBC Driver over Separated-Format Flat Files]
+  * facets: {layer: domain, status: legacy, complexity: high}
+  * -->
   */
 public class ResultSetSep
 extends AResultSetStream {
@@ -122,19 +125,22 @@ extends AResultSetStream {
 	/** Default Value for the Capitalization of the Parameter Keys     */
 	//final static public boolean capitalizeDefault = true;
 	
-	/** @return the Maximum Number of Rows left from the current Position.
+	/** Estimates an upper Bound on remaining Rows, assuming every Field stays empty.
+	  * @return the Maximum Number of Rows left from the current Position.
 	 * This is only reached with only empty Fields!
 	 * Divide this Number by the average Number of Characters in each Field	 */
 	public long getMaxNumRowsLeft() throws IOException { //Separators without Escape Character
 		return (rndFile.length() - rndFile.getFilePointer())/(Separator.length()-1); }
-	
-	/** @return the Maximum Number of Rows left from the current Position.
+
+	/** Estimates the remaining Rows using the average observed Row Size so far.
+	  * @return the Maximum Number of Rows left from the current Position.
 	 * This is only reached with only empty Fields!
 	 * Divide this Number by the average Number of Characters in each Field	 */
 	public long getAvgNumRowsLeft() throws IOException { //Separators without Escape Character
 		return (rndFile.length() - rndFile.getFilePointer())/getAvgRowSize(); }
-	
-	/** @return the Average Number of Rows left from the current Position
+
+	/** Computes the average Row Size seen so far, from the File Position and current Row Count.
+	  * @return the Average Number of Rows left from the current Position
 	 * estimated by the average Length of the previous Rows.	 */
 	public long getAvgRowSize() throws IOException {
 		return (rndFile.getFilePointer() - rowOffsets.getLongAt(firstPos))/position; }
@@ -521,7 +527,8 @@ extends AResultSetStream {
 		}
 		return ""; } //FieldDefaults[columnIndex]; }
 
-	/** @return the Number of currently available Fields	 */
+	/** Returns how many Fields the current Row actually holds.
+	  * @return the Number of currently available Fields	 */
 	public int getNumFields() { return fields.getInt(); }
 	
 	/**
@@ -593,7 +600,7 @@ extends AResultSetStream {
 	/** fills the current Row with the Default Values	 */
 	public void fillDefaults() { DbColumn.FILL_DEFAULTS(columns, fields); }
 	
-	/**
+	/** Returns the current Row's Fields, as a whole.
 	 * @return the current Object.
 	 * In this Case this is the complete Row Object.
 	 */
