@@ -47,3 +47,4 @@ knowledge/Objekt.java:Objekt	class	knowledge/Objekt.java	code/entity_model, code
 knowledge/Type.java:Type	class	knowledge/Type.java	code/type_system, code/entity_model, code/domain_model	Domain Model, Object Classification	domain	stable	medium
 knowledge/DBObjectFactory.java:DBObjectFactory	class	knowledge/DBObjectFactory.java	code/orm, code/data_access, code/sql_generation, code/reflection	Persistence, Object-Relational Mapping	persistence	stable	high
 knowledge/DbCachedFactory.java:DbCachedFactory	class	knowledge/DbCachedFactory.java	code/caching, code/cache_lookup, code/orm, code/data_access	Persistence, Identity Caching	persistence	stable	medium
+knowledge	folder	knowledge	code/orm, code/domain_model, code/entity_model, code/reflection	Knowledge Representation, Object-Relational Mapping	persistence	legacy	high

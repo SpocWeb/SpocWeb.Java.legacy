@@ -43,7 +43,7 @@ cost more tokens than one and burn the 5-hour window N times faster.
 | `graphs` | 31 | 11258 | 0 | unclaimed | - |
 | `asynch` | 28 | 3052 | 0 | unclaimed | - |
 | `streamIO/(root)` | 28 | 8003 | 0 | unclaimed | - |
-| `knowledge` | 26 | 2595 | 0 | **in progress** (calibration batch) | main |
+| `knowledge` | 26 | 2595 | 26 | done | main |
 | `stringOp` | 16 | 4579 | 0 | unclaimed | - |
 | `tools` | 16 | 3281 | 16 | done | - |
 | `aspect` | 15 | 2493 | 0 | unclaimed | - |
@@ -64,6 +64,39 @@ cost more tokens than one and burn the 5-hour window N times faster.
 | `streamIO/character` | 2 | 244 | 0 | unclaimed | - |
 | `streamIO/factory` | 2 | 205 | 0 | unclaimed | - |
 | `streamIO/detector` | 1 | 102 | 0 | unclaimed | - |
+
+## Calibration - measured cost of one batch
+
+`knowledge/` was documented end to end (Pass 1+2 on all 26 types, Pass 3 ReadMe, tag rows)
+as a calibration batch on 2026-09-05.
+
+| Measure | Value |
+|---|--:|
+| Files | 26 |
+| Lines of source | 2,595 |
+| Tokens, batch only | ~90,000 |
+| Tokens, including the one-time reading of the four pass reference files | ~120,000 |
+| Tokens per line of source | ~35 |
+| Defects flagged | 12 |
+
+Extrapolated to the remaining 311,757 lines: **~11M tokens**, plus roughly 30k per session
+for re-reading the pass references. That is the low end of the earlier 10-17M estimate.
+Treat it as a floor rather than a forecast: `knowledge/` is dense, small, heavily
+pre-commented legacy code, and the large batches (`math` at 697 lines per file, `streamIO`
+at 46% of the corpus) have not been sampled.
+
+## Tool quirks found while running the batch
+
+- **`check-stale` reads only its first path argument.** Passing seven files silently
+  processed one and reported the other six as clean. Loop per file.
+- **Never write `*/` inside a `// TODO:` marker.** A marker quoting the token landed inside
+  an unterminated block comment and closed it, turning the rest of the line into code;
+  `list-stale` then reported a lexical error and would have skipped the file forever. The
+  per-file parse gate caught it immediately, which is what that gate is for.
+- **Not every file in this tree is UTF-8.** `knowledge/IdKey.java` is Latin-1; a UTF-8 read
+  of it fails outright. Read and write with the encoding the file already has.
+- **Match on LF, write back CRLF.** The tree is CRLF, so a patch script that matches
+  multi-line strings has to normalise first or every match silently fails.
 
 ## Decisions
 
