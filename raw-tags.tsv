@@ -88,3 +88,10 @@ streamIO/vector/random/RandomVectorPseudo.java:RandomVectorPseudo	class	streamIO
 streamIO/vector/random/RandomVectorPseudoSequential.java:RandomVectorPseudoSequential	class	streamIO/vector/random/RandomVectorPseudoSequential.java	code/random_number_generation	Random Sampling, Monte Carlo	utility	stable	high
 streamIO/vector/random/RandomVectorQuasi.java:RandomVectorQuasi	class	streamIO/vector/random/RandomVectorQuasi.java	code/random_number_generation, code/quasi_random_sequence	Random Sampling, Monte Carlo	utility	stable	high
 streamIO/vector/random	folder	streamIO/vector/random	code/random_number_generation, code/quasi_random_sequence	Random Sampling, Monte Carlo	utility	stable	high
+streamIO/adapter/Value2Pipe.java:Value2Pipe	class	streamIO/adapter/Value2Pipe.java	code/adapter_pattern, code/stream_abstraction	Adapter Pattern	infrastructure	stable	low
+streamIO/adapter/Pipe2Value.java:Pipe2Value	class	streamIO/adapter/Pipe2Value.java	code/adapter_pattern, code/stream_abstraction	Adapter Pattern	infrastructure	stable	low
+streamIO/adapter/CValue2StreamIn.java:CValue2StreamIn	class	streamIO/adapter/CValue2StreamIn.java	code/adapter_pattern, code/stream_abstraction	Adapter Pattern	infrastructure	broken	low
+streamIO/adapter/StreamIn2CValue.java:StreamIn2CValue	class	streamIO/adapter/StreamIn2CValue.java	code/adapter_pattern, code/stream_abstraction	Adapter Pattern	infrastructure	stable	low
+streamIO/adapter/StreamOut2ValueSetter.java:StreamOut2ValueSetter	class	streamIO/adapter/StreamOut2ValueSetter.java	code/adapter_pattern, code/stream_abstraction	Adapter Pattern	infrastructure	stable	low
+streamIO/adapter/ValueSetter2StreamOut.java:ValueSetter2StreamOut	class	streamIO/adapter/ValueSetter2StreamOut.java	code/adapter_pattern, code/stream_abstraction	Adapter Pattern	infrastructure	stable	low
+streamIO/adapter	folder	streamIO/adapter	code/adapter_pattern, code/stream_abstraction	Adapter Pattern	infrastructure	broken	low

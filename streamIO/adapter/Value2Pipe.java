@@ -6,15 +6,8 @@ import streamIO.object.IPipe;
 import streamIO.object.enumer.APipe;
 
 /**
-  * Title: Value2Pipe<p>
-  * Description:
-  * Purpose:
-  * Adapter from the IValue get/set Interface to the Pipe Interface (bidirectional streamIO)
+  * Adapter from the IValue get/set Interface to the Pipe Interface (bidirectional streamIO).
   *
-  * Design Decisions / Implementation Details:
-  * If similar Classes exist (e.g. Polymorphism),
-  * characterize the specific Differences to compare these.
-  * 
   * Known SubClasses: <none>
   *	
   *	similar Classes: 
@@ -27,6 +20,15 @@ import streamIO.object.enumer.APipe;
   * Created on	09-23-2002, 05:39 PM<p>
   * @author 	Matthias Heuer
   * @version	1.0
+  * <!-- docstate
+  * pass: 2
+  * mtime: 2026-09-05T09:37:46Z
+  * digest: 0e83d3a82518dd563cd88cec8a733d192f6a0a7cbb555aca091abbe0091093c0
+  * stale: false
+  * tags: [code/adapter_pattern, code/stream_abstraction]
+  * concepts: [Adapter Pattern]
+  * facets: {layer: infrastructure, status: stable, complexity: low}
+  * -->
   */
 public class Value2Pipe
 extends APipe
@@ -57,19 +59,24 @@ implements IPipe {
 	/// #region : Interface Pipe: Implementation
 	////////////////////////////////////////////////////////////////////////////////
 	
-	/** @return the Number of Items available from the getter */
+	/** A getter always has an Item available.
+	  * @return the Number of Items available from the getter */
 	public long availAble() { return 1; }
 
-	/** @return the Item returned by the last nextItem() */
+	/** Returns the Item returned by the last {@link #nextItem()} call.
+	  * @return the Item returned by the last nextItem() */
 	public Object currItem() { return currItem; }
 
-	/** @return the next Item from the getter */
+	/** Reads the next Item from the wrapped IValue getter.
+	  * @return the next Item from the getter */
 	public Object nextItem() { return currItem = value.getVal(); }
 
-	/** @see streamIO.object.AStreamIn#getMaxMarkSize()	 */
+	/** Returns the largest Mark ever supported: this Adapter has no size limit.
+	  * @see streamIO.object.AStreamIn#getMaxMarkSize()	 */
 	public long getMaxMarkSize() { return Long.MAX_VALUE; }
-	
-	/** @see streamIO.object.AStreamIn#getPosition()	 */
+
+	/** Position is not tracked by this Adapter.
+	  * @see streamIO.object.AStreamIn#getPosition()	 */
 	public long getPosition() { return 0; }
 	
 	////////////////////////////////////////////////////////////////////////////

@@ -4,14 +4,7 @@ import graphs.IValue;
 import streamIO.object.IPipe;
 
 /**
-  * Title: Pipe2Value<p>
-  * Description:
-  * Purpose:
   * Adapter from the IValue Interface to a bidirectional streamIO Interface.
-  *
-  * Design Decisions / Implementation Details:
-  * If similar Classes exist (e.g. Polymorphism),
-  * characterize the specific Differences to compare these.
   *
   * Known SubClasses: <none>
   *
@@ -22,6 +15,15 @@ import streamIO.object.IPipe;
   * Created on	09-23-2002, 05:05 PM<p>
   * @author 	Matthias Heuer
   * @version	1.0
+  * <!-- docstate
+  * pass: 2
+  * mtime: 2026-09-05T09:37:06Z
+  * digest: 30205c66afabcda37c97046914520afc0f181722e1e10f3fd23f8153164a808b
+  * stale: false
+  * tags: [code/adapter_pattern, code/stream_abstraction]
+  * concepts: [Adapter Pattern]
+  * facets: {layer: infrastructure, status: stable, complexity: low}
+  * -->
   */
 public class Pipe2Value
 implements IValue {
@@ -37,10 +39,11 @@ implements IValue {
 /// #region : Accessor Methods (getXXX/isXXX/setXXX)
 ////////////////////////////////////////////////////////////////////////////////
 
-	/** @return the Value :   */
+	/** Reads the next Value from the wrapped Pipe.
+	  * @return the Value :   */
 	public Object getVal() { return pipe.nextItem(); }
 
-	/** sets the TODO: 	 */
+	/** Writes the given Value to the wrapped Pipe. 	 */
 	public void setVal(Object arg) { pipe.addItem(arg); }
 
 ////////////////////////////////////////////////////////////////////////////////

@@ -5,15 +5,7 @@ import streamIO.AStreamOut;
 import streamIO.IIStreamOut;
 
 /**
-  * Title: ValueSetter2StreamOut<p>
-  * Description:
-  * Purpose:
-  * Adapter from the IValueSetter to the StreamOut Interface
-  * Purpose / Responsibilities of this Class
-  *
-  * Design Decisions / Implementation Details:
-  * If similar Classes exist (e.g. Polymorphism),
-  * characterize the specific Differences to compare these.
+  * Adapter from the IValueSetter to the StreamOut Interface.
   *
   * Known SubClasses: <none>
   *
@@ -24,6 +16,15 @@ import streamIO.IIStreamOut;
   * Created on	09-23-2002, 09:46 AM<p>
   * @author 	Matthias Heuer
   * @version	1.0
+  * <!-- docstate
+  * pass: 2
+  * mtime: 2026-09-05T09:37:56Z
+  * digest: e29cb6e0fadb82b5371f7de5790d26b1d21fafe1f8bde43f700d4c0f67ace440
+  * stale: false
+  * tags: [code/adapter_pattern, code/stream_abstraction]
+  * concepts: [Adapter Pattern]
+  * facets: {layer: infrastructure, status: stable, complexity: low}
+  * -->
   */
 public class ValueSetter2StreamOut
 extends AStreamOut {
@@ -66,6 +67,7 @@ extends AStreamOut {
 /// #region : Interface IStreamOut: Implementation
 ////////////////////////////////////////////////////////////////////////////////
 
+	/** Writes the given Item to the wrapped IValueSetter. */
 	public IIStreamOut addItem(Object arg) {
 		setter.setVal(arg); return this; }
 
