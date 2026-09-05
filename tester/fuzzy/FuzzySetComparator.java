@@ -47,6 +47,15 @@ import tester.IMetric;
  * Created on	10-26-2002, 12:47 PM<p>
  * @author heuerm
  * @version	1.0
+ * <!-- docstate
+ * pass: 2
+ * mtime: 2026-09-05T10:13:33Z
+ * digest: c53ec825e1e8bb7e44485065a0796c0334943bd6a38124d2b3953a5e61868216
+ * stale: false
+ * tags: [code/similarity_matching]
+ * concepts: [Fuzzy Set Comparator]
+ * facets: {layer: utility, status: legacy, complexity: low}
+ * -->
  */
 public class FuzzySetComparator {
 	

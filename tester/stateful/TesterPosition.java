@@ -4,6 +4,15 @@ import tester.ITester;
 
 /**This is a Helper ITester Class to find an Object at a given Position, starting at 0.
  * It returns true #Position times, as determined in the Constructor.
+ * <!-- docstate
+ * pass: 2
+ * mtime: 2026-09-05T10:13:33Z
+ * digest: 40192c10850fb7887e7b8226e795cd20dda8c3c4b27310c7927030b863a21df1
+ * stale: false
+ * tags: [code/stateful_algorithm]
+ * concepts: [Position-Aware Tester]
+ * facets: {layer: utility, status: legacy, complexity: low}
+ * -->
  * It is used e.g. in Container	*/
 final public class TesterPosition
 implements ITester {

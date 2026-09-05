@@ -24,6 +24,15 @@ package tester; //
   *
   * @see Operation.ITester for an unary Testing Method.
   *
+  * <!-- docstate
+  * pass: 2
+  * mtime: 2026-09-05T10:13:32Z
+  * digest: 38ee796ffa24a75cf6836fe30dcd92b99facaf277192705bd45f8bd7d65c8728
+  * stale: false
+  * tags: [code/custom_equivalence]
+  * concepts: [Equivalence Interface]
+  * facets: {layer: utility, status: legacy, complexity: low}
+  * -->
   */
 public interface IEquivalence {
 //implements ITester { //ITester tests a single Object,

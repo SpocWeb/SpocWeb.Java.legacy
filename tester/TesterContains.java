@@ -23,6 +23,15 @@ import function.ICountAble;
  * Created on	10-26-2002, 12:47 PM<p>
  * @author heuerm
  * @version	1.0
+ * <!-- docstate
+ * pass: 2
+ * mtime: 2026-09-05T11:10:22Z
+ * digest: 5bcb84fe5fc624e364d300e0b25c8f7bbac52039ef929b485ce85cde23dd1a12
+ * stale: false
+ * tags: [code/predicate_filter]
+ * concepts: [Containment Tester]
+ * facets: {layer: utility, status: legacy, complexity: low}
+ * -->
  */
 public class TesterContains 
 implements ITester {
@@ -38,19 +47,22 @@ implements ITester {
 		this.str = _str; 
 	}
 
-	/** @see tester.ITester#test(java.lang.Object)	 */
+	/** Returns whether {@link #str} contains the character carried by an {@link ICountAble} or an {@code int[]}, false for any other argument type.
+	 * @see tester.ITester#test(java.lang.Object)	 */
 	public boolean test(final Object arg) {
 		if(arg instanceof ICountAble)
 			return test ((ICountAble) arg);
 		if(arg instanceof int[])
 			return test(((int[]) arg)[0]);
-		return false; 
+		return false;
 	}
-	
-	/** @see tester.ITester#test(java.lang.Object)	 */
+
+	/** Returns whether {@link #str} contains the character given by arg's {@link ICountAble#getInt()}.
+	 * @see tester.ITester#test(java.lang.Object)	 */
 	public boolean test(final ICountAble arg) { return str.indexOf(arg.getInt()) >= 0; }
-	
-	/** @see tester.ITester#test(java.lang.Object)	 */
+
+	/** Returns whether {@link #str} contains the given character code.
+	 * @see tester.ITester#test(java.lang.Object)	 */
 	public boolean test(final int arg) { return str.indexOf(arg) >= 0; }
 	
 }

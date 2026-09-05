@@ -15,6 +15,15 @@ import stringOp.search.StrSearcher;
   *
   * @author  Matthias Heuer
   * @version
+  * <!-- docstate
+  * pass: 2
+  * mtime: 2026-09-05T11:13:23Z
+  * digest: f6d1b225fa9c4b117bdfcaa0d77883cc8aae728e4284ccf3c31c6499d544db97
+  * stale: false
+  * tags: [code/stream_processing]
+  * concepts: [Pattern Searcher]
+  * facets: {layer: utility, status: legacy, complexity: low}
+  * -->
   */
 class PatternSearcher
 implements IDiscreteTransition {
@@ -86,6 +95,12 @@ implements IDiscreteTransition {
 	 * Accesses the List only sequentially, so it is apted for Streams and IStreamIns.
 	 * It requires at Maximum LL+PL Comparisons.
 	 * @returns: The Start Position of the Pattern in the Stream, -1 if not found.
+	 */
+	/**
+	 * Searches Iter for this instance's pattern using the Knuth-Morris-Pratt state machine,
+	 * consuming items sequentially.
+	 * @param Iter the stream to search
+	 * @return the start position of the pattern in the stream, or -1 if not found
 	 */
 	public int indexOf(IIStreamIn Iter) {
 		A.State = -1;

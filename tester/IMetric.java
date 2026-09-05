@@ -38,6 +38,15 @@ package tester;
  * Created on	10-26-2002, 12:47 PM<p>
  * @author heuerm
  * @version	1.0
+ * <!-- docstate
+ * pass: 2
+ * mtime: 2026-09-05T10:13:32Z
+ * digest: fc08e1a28b5a135a83f6094c994f84f25d368be5fd2dd524881192294c120847
+ * stale: false
+ * tags: [code/metric_interface]
+ * concepts: [Metric Interface]
+ * facets: {layer: utility, status: legacy, complexity: low}
+ * -->
  */
 public interface IMetric {
 	

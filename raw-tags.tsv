@@ -400,3 +400,65 @@ graphs/Value.java:Value	class	graphs/Value.java	code/graph_element	Value Holder	
 graphs/testGraph.java:testGraph	class	graphs/testGraph.java	code/graph_data_structure	Scratch Test Class	test	legacy	low
 graphs/testGraph.java:testGraph.testNumberFormat()	method	graphs/testGraph.java	code/graph_data_structure	Scratch Test Method	test	legacy	low
 graphs/testGraph.java:testGraph.main(String[])	method	graphs/testGraph.java	code/graph_data_structure	Scratch Test Entry Point	test	legacy	low
+tester/AComparator.java:AComparator	class	tester/AComparator.java	code/comparator	Comparator Base Class	utility	legacy	low
+tester	folder	tester	code/comparator,code/metric_interface,code/predicate_logic	Testing Abstractions	utility	legacy	medium
+tester/Discrete.java:Discrete	class	tester/Discrete.java	code/predicate_logic	Discrete Value Test	utility	legacy	low
+tester/EquivalenceIdentity.java:EquivalenceIdentity	class	tester/EquivalenceIdentity.java	code/custom_equivalence	Identity-Based Equivalence	utility	legacy	low
+tester/FilterTestWaiter.java:FilterTestWaiter	class	tester/FilterTestWaiter.java	code/predicate_filter	Blocking Test Waiter	utility	broken	low
+tester/IComparator.java:IComparator	class	tester/IComparator.java	code/comparator	Comparator Interface	utility	legacy	low
+tester/IDoubleMetric.java:IDoubleMetric	class	tester/IDoubleMetric.java	code/metric_interface	Double Metric Interface	utility	legacy	low
+tester/IEquivalence.java:IEquivalence	class	tester/IEquivalence.java	code/custom_equivalence	Equivalence Interface	utility	legacy	low
+tester/IMetric.java:IMetric	class	tester/IMetric.java	code/metric_interface	Metric Interface	utility	legacy	low
+tester/IOrderator.java:IOrderator	class	tester/IOrderator.java	code/comparator	Orderator Interface	utility	legacy	low
+tester/IScalarMetric.java:IScalarMetric	class	tester/IScalarMetric.java	code/metric_interface	Scalar Metric Interface	utility	legacy	low
+tester/ITestAble.java:ITestAble	class	tester/ITestAble.java	code/predicate_logic	Testable Interface	utility	legacy	low
+tester/ITester.java:ITester	class	tester/ITester.java	code/predicate_logic	Tester Interface	utility	legacy	low
+tester/MetricByHash.java:MetricByHash	class	tester/MetricByHash.java	code/metric_interface	Hash-Based Metric	utility	legacy	low
+tester/MetricMeasurAble.java:MetricMeasurAble	class	tester/MetricMeasurAble.java	code/metric_interface	Metric Base Class	utility	broken	low
+tester/OrderatorComparable.java:OrderatorComparable	class	tester/OrderatorComparable.java	code/comparator	Comparable-Based Orderator	utility	legacy	low
+tester/OrderatorOrderable.java:OrderatorOrderable	class	tester/OrderatorOrderable.java	code/comparator	Orderable-Based Orderator	utility	legacy	low
+tester/TesterContains.java:TesterContains	class	tester/TesterContains.java	code/predicate_filter	Containment Tester	utility	legacy	low
+tester/TesterEquals.java:TesterEquals	class	tester/TesterEquals.java	code/predicate_logic	Equality Tester	utility	legacy	low
+tester/TesterEquivalence.java:TesterEquivalence	class	tester/TesterEquivalence.java	code/custom_equivalence	Equivalence Tester	utility	legacy	low
+tester/algebra/TesterAND.java:TesterAND	class	tester/algebra/TesterAND.java	code/boolean_algebra,code/predicate_logic	Boolean AND Tester	utility	legacy	low
+tester/algebra	folder	tester/algebra	code/boolean_algebra,code/predicate_logic	Boolean Predicate Composition	utility	legacy	low
+tester/algebra/TesterConst.java:TesterConst	class	tester/algebra/TesterConst.java	code/boolean_algebra	Constant Tester	utility	legacy	low
+tester/algebra/TesterNOT.java:TesterNOT	class	tester/algebra/TesterNOT.java	code/boolean_algebra,code/predicate_logic	Boolean NOT Tester	utility	legacy	low
+tester/algebra/TesterOR.java:TesterOR	class	tester/algebra/TesterOR.java	code/boolean_algebra,code/predicate_logic	Boolean OR Tester	utility	legacy	low
+tester/algebra/TesterXOR.java:TesterXOR	class	tester/algebra/TesterXOR.java	code/boolean_algebra,code/predicate_logic	Boolean XOR Tester	utility	legacy	low
+tester/fuzzy/FuzzyDictionary.java:FuzzyDictionary	class	tester/fuzzy/FuzzyDictionary.java	code/fuzzy_search,code/similarity_matching	Fuzzy Dictionary Lookup	utility	broken	medium
+tester/fuzzy	folder	tester/fuzzy	code/fuzzy_search,code/string_similarity	Approximate Matching	utility	legacy	medium
+tester/fuzzy/FuzzySentenceComparator.java:FuzzySentenceComparator	class	tester/fuzzy/FuzzySentenceComparator.java	code/string_similarity	Fuzzy Sentence Comparator	utility	broken	medium
+tester/fuzzy/FuzzySetComparator.java:FuzzySetComparator	class	tester/fuzzy/FuzzySetComparator.java	code/similarity_matching	Fuzzy Set Comparator	utility	legacy	low
+tester/logic/ConditionTable.java:ConditionTable	class	tester/logic/ConditionTable.java	code/decision_tree,code/rule_engine	Condition Table	utility	broken	medium
+tester/logic	folder	tester/logic	code/decision_tree,code/rule_engine	Business Rule Tables	utility	legacy	medium
+tester/logic/DecisionMaker.java:DecisionMaker	class	tester/logic/DecisionMaker.java	code/decision_tree,code/rule_engine	Decision Maker	utility	legacy	medium
+tester/logic/DecisionTable.java:DecisionTable	class	tester/logic/DecisionTable.java	code/decision_tree,code/rule_engine	Decision Table	utility	legacy	medium
+tester/logic/DecisionTool.java:DecisionTool	class	tester/logic/DecisionTool.java	code/decision_tree	Decision Tool	utility	legacy	low
+tester/process/Automaton.java:Automaton	class	tester/process/Automaton.java	code/state_machine	Automaton Base Class	utility	legacy	low
+tester/process	folder	tester/process	code/state_machine,code/stream_processing	Automata and Stream Processing	utility	legacy	medium
+tester/process/DiscreteAutomaton.java:DiscreteAutomaton	class	tester/process/DiscreteAutomaton.java	code/state_machine	Discrete Automaton	utility	legacy	medium
+tester/process/DiscreteAutomaton.java:AddInt	class	tester/process/DiscreteAutomaton.java	code/state_machine	Discrete Add Transition	utility	legacy	low
+tester/process/DiscreteAutomaton.java:MulInt	class	tester/process/DiscreteAutomaton.java	code/state_machine	Discrete Multiply Transition	utility	legacy	low
+tester/process/DiscreteAutomaton.java:SubtInt	class	tester/process/DiscreteAutomaton.java	code/state_machine	Discrete Subtract Transition	utility	legacy	low
+tester/process/DiscreteAutomaton.java:DivInt	class	tester/process/DiscreteAutomaton.java	code/state_machine	Discrete Divide Transition	utility	legacy	low
+tester/process/DiscreteFnByHash.java:DiscreteFnByHash	class	tester/process/DiscreteFnByHash.java	code/state_machine	Hash-Based Discrete Function	utility	legacy	low
+tester/process/DynTransByFunction.java:DynTransByFunction	class	tester/process/DynTransByFunction.java	code/state_machine	Function-Based Dynamic Transition	utility	legacy	low
+tester/process/IDiscreteTransition.java:IDiscreteTransition	class	tester/process/IDiscreteTransition.java	code/state_machine	Discrete Transition Interface	utility	legacy	low
+tester/process/IDynTransition.java:IDynTransition	class	tester/process/IDynTransition.java	code/state_machine	Dynamic Transition Interface	utility	legacy	low
+tester/process/IDynamicTransition.java:IDynamicTransition	class	tester/process/IDynamicTransition.java	code/state_machine	Dynamic Transition Interface	utility	legacy	low
+tester/process/IOEProcess.java:IOEProcess	class	tester/process/IOEProcess.java	code/stream_processing	I/O/Error Process Wrapper	utility	broken	medium
+tester/process/IOEProcess.java:IOEProcess.main(String[])	method	tester/process/IOEProcess.java	code/stream_processing	Demo Entry Point	test	legacy	low
+tester/process/IOEProcess.java:IOEProcess.testIt()	method	tester/process/IOEProcess.java	code/stream_processing	Self-Test Method	test	broken	low
+tester/process/MatrixAutomaton.java:MatrixAutomaton	class	tester/process/MatrixAutomaton.java	code/state_machine	Matrix-Based Automaton	utility	legacy	medium
+tester/process/Operator.java:Operator	class	tester/process/Operator.java	code/state_machine	Transition Operator	utility	legacy	low
+tester/process/PatternSearcher.java:PatternSearcher	class	tester/process/PatternSearcher.java	code/stream_processing	Pattern Searcher	utility	legacy	low
+tester/process/StateMachine.java:StateMachine	class	tester/process/StateMachine.java	code/state_machine	Finite State Machine	utility	legacy	low
+tester/process/StreamProcessor.java:StreamProcessor	class	tester/process/StreamProcessor.java	code/stream_processing	Stream Processor	utility	broken	low
+tester/process/TransitionByFunction.java:TransitionByFunction	class	tester/process/TransitionByFunction.java	code/state_machine	Function-Based Transition	utility	legacy	low
+tester/process/testProcess.java:testProcess	class	tester/process/testProcess.java	code/state_machine	Scratch Test Class	test	legacy	low
+tester/process/testProcess.java:testProcess.main(String[])	method	tester/process/testProcess.java	code/state_machine	Scratch Test Entry Point	test	legacy	low
+tester/stateful/Flipper.java:Flipper	class	tester/stateful/Flipper.java	code/stateful_algorithm	Boolean Flip-Flop	utility	legacy	low
+tester/stateful	folder	tester/stateful	code/stateful_algorithm	Sequence Analysis	utility	legacy	low
+tester/stateful/TestSequence.java:TestSequence	class	tester/stateful/TestSequence.java	code/stateful_algorithm	Test Sequence Runner	utility	legacy	low
+tester/stateful/TesterPosition.java:TesterPosition	class	tester/stateful/TesterPosition.java	code/stateful_algorithm	Position-Aware Tester	utility	legacy	low

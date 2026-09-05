@@ -26,6 +26,15 @@ package tester;
   * They have to be set within the concrete ITester Class or Instance.
   *
   * @see Function.IEquivalence for a binary Testing Method (typ. without State)
+  * <!-- docstate
+  * pass: 2
+  * mtime: 2026-09-05T10:13:33Z
+  * digest: 65a4caef85d3b4e1b0b917c9a637629949b21586d03fec9fe6eb150c1c6290b8
+  * stale: false
+  * tags: [code/predicate_logic]
+  * concepts: [Tester Interface]
+  * facets: {layer: utility, status: legacy, complexity: low}
+  * -->
   */
 public interface ITester {
 

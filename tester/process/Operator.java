@@ -27,6 +27,15 @@ package tester.process;
   * it should be implemented as a Singleton to enable direct == Comparison .
   * Otherwise they should carry additional Sematics
   * like e.g. RingFuncs.AddAt which stores the Increment.
+  * <!-- docstate
+  * pass: 2
+  * mtime: 2026-09-05T10:13:33Z
+  * digest: 0aeb8ce88482fc73c1aa1e271457496f1231e0fb1b4fd8d31659037e26d26be8
+  * stale: false
+  * tags: [code/state_machine]
+  * concepts: [Transition Operator]
+  * facets: {layer: utility, status: legacy, complexity: low}
+  * -->
   */
 public interface Operator {
 

@@ -18,6 +18,15 @@ import function.IIOrderAble;
  * @see function.IIOrderAble
  * @author heuerm
  *
+ * <!-- docstate
+ * pass: 2
+ * mtime: 2026-09-05T11:10:12Z
+ * digest: 9092e07eee4624b63817847c0bc75de049256dec9e938a1dd93ab7eefc627dcd
+ * stale: false
+ * tags: [code/comparator]
+ * concepts: [Orderable-Based Orderator]
+ * facets: {layer: utility, status: legacy, complexity: low}
+ * -->
  */
 final public class OrderatorOrderable
 extends AComparator
@@ -29,7 +38,8 @@ implements IComparator {
 	/** Singleton Constructor 	 */
 	private OrderatorOrderable() { }
 
-	/** @see tester.IOrderator#less(java.lang.Object, java.lang.Object)	 */
+	/** Returns whether a is less than b by delegating to {@link IIOrderAble#isLessThan(Object)} on a.
+	 * @see tester.IOrderator#less(java.lang.Object, java.lang.Object)	 */
 	public boolean less(final Object a, final Object b) {
 		return ((IIOrderAble) a).isLessThan(b);
 	}

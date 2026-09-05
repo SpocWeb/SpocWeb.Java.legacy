@@ -11,11 +11,21 @@ import streamIO.Log;
 import function.byref.ByRefChar;
 
 /**
+ * Provides default equals, hash-code, less and compare implementations that concrete
+ * {@link IComparator} subclasses inherit rather than reimplement.
+ *
  * @author heuerm
- * 
- * Default Implementations for other Comparators 
+ * <!-- docstate
+ * pass: 2
+ * mtime: 2026-09-05T11:09:08Z
+ * digest: 186e48e9a81445093f8705e9cc61a84a78ed7b3f2729a9a292c5f41c06dc1d10
+ * stale: false
+ * tags: [code/comparator]
+ * concepts: [Comparator Base Class]
+ * facets: {layer: utility, status: legacy, complexity: low}
+ * -->
  */
-public abstract class AComparator 
+public abstract class AComparator
 implements IComparator {
 
 	/**Fail-Safe Test for Equality (provided the equals() Method can handle null).  
@@ -28,7 +38,8 @@ implements IComparator {
 		return A.equals(B);
 	}
 
-	/** @see tester.IEquivalence#HashCode(java.lang.Object)	 */
+	/** Delegates to {@link Object#hashCode()} for the argument's hash code.
+	 * @see tester.IEquivalence#HashCode(java.lang.Object)	 */
 	public int HashCode(final Object A) {
 		return A.hashCode();
 	}
@@ -39,15 +50,16 @@ implements IComparator {
 		return compare(a, b) < 0;
 	}
 
-	/** @see java.util.Comparator#compare(java.lang.Object, java.lang.Object)	 */
+	/** Compares two objects by delegating to {@link #less(Object, Object)} in both directions.
+	 * @see java.util.Comparator#compare(java.lang.Object, java.lang.Object)	 */
 	public int compare(final Object o1, final Object o2) {
-		if (o1 == o2) 
-			return 0; 
+		if (o1 == o2)
+			return 0;
 		if (less(o2, o1))
 			return 1;
 		if (less(o1, o2))
 			return -1;
-		return 0; 
+		return 0;
 	}
 
 	/**

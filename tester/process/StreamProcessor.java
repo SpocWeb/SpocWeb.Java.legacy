@@ -22,6 +22,15 @@ import streamIO.object.enumer.container.AContainer;
  *
  * @author  Matthias Heuer
  * @version
+ * <!-- docstate
+ * pass: 2
+ * mtime: 2026-09-05T11:13:35Z
+ * digest: 540d180068ab69a650bf277237285722b149903ef1055fca7d7c45be9f789e5b
+ * stale: false
+ * tags: [code/stream_processing]
+ * concepts: [Stream Processor]
+ * facets: {layer: utility, status: broken, complexity: low}
+ * -->
  */
 public class StreamProcessor
 extends Automaton
@@ -73,17 +82,26 @@ implements IAvailAble, Runnable {
 		Out.addItem(ret);
 		return ret; }
 	
-	/** @return the (minimum) Number of Items left (in the Buffer),
+	/** Delegates to the input stream's own {@link IAvailAble#availAble()}.
+	  * @return the (minimum) Number of Items left (in the Buffer),
 	  * i.e. the minimum Number of times to call nextItem().
 	  * The actual Number may be higher, so available() should be called again
 	  * at the End of this Number.
 	  */
 	public long availAble() { return ((IAvailAble)In).availAble(); }
-	
-	/** @see streamIO.IAvailAble#getPosition()	 */
-	public long getPosition() { return ((IAvailAble)In).availAble(); }
 
-	/** @see streamIO.IIStreamIn#isEmpty()	 */
+	/** Returns the input stream's current read position.
+	 * @see streamIO.IAvailAble#getPosition()	 */
+	public long getPosition() {
+		// TODO: LOGIC: this delegates to availAble() instead of the input's actual position
+		// method, so it returns the number of items left rather than the current read position -
+		// the two are unrelated for most streams (e.g. a stream that shrinks its buffer as it
+		// reads).
+		return ((IAvailAble)In).availAble();
+	}
+
+	/** Returns whether the input stream still has valid data to read.
+	 * @see streamIO.IIStreamIn#isValid()	 */
 	public boolean isValid() { return In.isValid(); }
 	
 	/** Streams the whole Contents of the IStreamIn through the Automaton

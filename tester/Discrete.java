@@ -9,6 +9,15 @@ package tester;
  * The latter is achieved with a double Indirection in Java 
  * (all Pointers have same Size which allows for rapid Compacting).
  * In C# all References are updated synchronously.
+ * <!-- docstate
+ * pass: 2
+ * mtime: 2026-09-05T10:13:32Z
+ * digest: 87dd36b89597ebcdb023ae90d1074275408f88821284f60589b6692e5112d001
+ * stale: false
+ * tags: [code/predicate_logic]
+ * concepts: [Discrete Value Test]
+ * facets: {layer: utility, status: legacy, complexity: low}
+ * -->
  */
 final public class Discrete
 extends AComparator {

@@ -14,6 +14,15 @@ package tester.process;
   * Most Operations are of Order O(|Q|^2),
   * so this Representation is apted best for full Automatons.
   *
+  * <!-- docstate
+  * pass: 2
+  * mtime: 2026-09-05T10:13:33Z
+  * digest: 92fde1b8f384f539451319f23fdbbcd409a5b765ae76e2d1d4b799dfca7b7fb5
+  * stale: false
+  * tags: [code/state_machine]
+  * concepts: [Matrix-Based Automaton]
+  * facets: {layer: utility, status: legacy, complexity: medium}
+  * -->
   * Like with Graphs, Automatons can be represented by Matrices or Lists.	 */
 public class MatrixAutomaton {
 

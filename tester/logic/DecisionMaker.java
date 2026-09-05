@@ -14,6 +14,15 @@ import tester.ITestAble;
   * Created on	2001-06-04, 08;45;48<p>
   * @author 	Matthias Heuer
   * @version	1.0
+  * <!-- docstate
+  * pass: 2
+  * mtime: 2026-09-05T10:13:33Z
+  * digest: ee5a4ed5af8e0d641de170a8fd6bbf47e8231925fadce3b6bf372e5c2fec110c
+  * stale: false
+  * tags: [code/decision_tree, code/rule_engine]
+  * concepts: [Decision Maker]
+  * facets: {layer: utility, status: legacy, complexity: medium}
+  * -->
   */
 public class DecisionMaker
 extends DecisionTool {

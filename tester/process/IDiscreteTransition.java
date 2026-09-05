@@ -9,6 +9,15 @@ package tester.process;
  *
  *  @author  Matthias Heuer
  *  @version
+ * <!-- docstate
+ * pass: 2
+ * mtime: 2026-09-05T10:13:33Z
+ * digest: e7260ed1e430ff62c5171647f749ab92e2e0ce39bdadd8a110433e8f9a8a4ccb
+ * stale: false
+ * tags: [code/state_machine]
+ * concepts: [Discrete Transition Interface]
+ * facets: {layer: utility, status: legacy, complexity: low}
+ * -->
  */
 public interface IDiscreteTransition {
 

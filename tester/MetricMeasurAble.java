@@ -19,6 +19,15 @@ import function.IMeasurAble;
  * @see function.IMeasurAble 
  * @author heuerm
  *
+ * <!-- docstate
+ * pass: 2
+ * mtime: 2026-09-05T11:10:01Z
+ * digest: 6e4e0034229206e573e3f42b103e3a271d4c59872a2fc6f57e0a40c42468867e
+ * stale: false
+ * tags: [code/metric_interface]
+ * concepts: [Metric Base Class]
+ * facets: {layer: utility, status: broken, complexity: low}
+ * -->
  */
 final public class MetricMeasurAble
 extends AComparator
@@ -30,30 +39,38 @@ implements IScalarMetric {
 	/** Singleton Constructor 	 */
 	private MetricMeasurAble() {}
 
-	/** @see tester.IOrderator#less(java.lang.Object, java.lang.Object)	 */
+	/** Returns whether a's measured value is less than b's, via {@link #dist(Object, Object)}.
+	 * @see tester.IOrderator#less(java.lang.Object, java.lang.Object)	 */
 	public boolean less(final Object a, final Object b) {
 		return dist(a, b) < 0;
 	}
-	/** @see tester.IScalarMetric#dist(java.lang.Object, java.lang.Object)	 */
+	/** Returns the difference of the two objects' {@link IMeasurAble#getDouble()} values, or 0 when they are the same object.
+	 * @see tester.IScalarMetric#dist(java.lang.Object, java.lang.Object)	 */
 	public double dist(final Object a, final Object b) {
 		if (a == b)
-			return 0; 
-		return ((IMeasurAble) a).getDouble() - ((IMeasurAble) a).getDouble(); 
+			return 0;
+		// TODO: LOGIC: both operands call a.getDouble() - b's value is never read, so dist()
+		// always returns 0 for distinct objects instead of their actual difference. Should be
+		// ((IMeasurAble) a).getDouble() - ((IMeasurAble) b).getDouble().
+		return ((IMeasurAble) a).getDouble() - ((IMeasurAble) a).getDouble();
 	}
 
-	/** @see tester.IEquivalence#equals(java.lang.Object, java.lang.Object)	 */
+	/** Returns whether A and B have the same measured value, via {@link #dist(Object, Object)}.
+	 * @see tester.IEquivalence#equals(java.lang.Object, java.lang.Object)	 */
 	public boolean equals(final Object A, final Object B) {
 		if (A == B)
-			return true; 
+			return true;
 		return dist(A, B) == 0;
 	}
 
-	/** @see tester.IEquivalence#HashCode(java.lang.Object)	 */
+	/** Returns a hash code derived from the object's {@link IMeasurAble#getFloat()} value.
+	 * @see tester.IEquivalence#HashCode(java.lang.Object)	 */
 	public int HashCode(final Object A) {
 		return Float.floatToIntBits(((IMeasurAble) A).getFloat());
 	}
 
-	/** @see java.util.Comparator#compare(java.lang.Object, java.lang.Object)	 */
+	/** Compares two objects by their {@link IMeasurAble#getDouble()} values, returning -1, 0 or 1 accordingly.
+	 * @see java.util.Comparator#compare(java.lang.Object, java.lang.Object)	 */
 	public int compare(final Object o1, final Object o2) {
 		if (o1 == o2) 
 			return 0; 

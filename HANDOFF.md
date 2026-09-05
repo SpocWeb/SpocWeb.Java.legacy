@@ -85,7 +85,7 @@ concurrently against the same file):
 | `math` | 84 | 58523 | 0 | unclaimed | - |
 | `structure` | 52 | 4933 | 0 | claimed | agent-structure |
 | `streamIO/real` | 51 | 6801 | 0 | claimed | agent-streamIO-real |
-| `tester` | 49 | 3327 | 0 | claimed | agent-tester |
+| `tester` | 49 | 3327 | 49 | done | agent-tester |
 | `technology` | 41 | 9400 | 0 | claimed | agent-technology |
 | `synch` | 32 | 4243 | 32 | done | agent-synch |
 | `graphs` | 31 | 11258 | 31 | done | agent-graphs |
@@ -275,6 +275,13 @@ same harness against it. A test that has not been seen red proves nothing.
 | streamIO/StringBufferOutputStream.java | StringBufferOutputStream | addBuffer(StringBuffer, int) | ~208 | Calls `addBuffer(b, 0, stop)` against a 3-arg overload whose parameter order is `(b, stop, start)` - reversed vs. the correct sibling `addString(String, int)`. For any `stop > 0` this silently appends nothing. | Medium | open |
 | graphs/AGraph.java | AGraph | (edge-filtering method) | ~116 | Filters by `curr.val` (the target Node index) instead of `curr.weight`, so weight-based edge filtering silently filters on the wrong field. | Medium | open |
 | graphs/SparseMatrix.java | SparseMatrix | getDegree/getInDegree helper | ~241 | Calls itself instead of `getOutDegree(j)`, causing infinite recursion and a `StackOverflowError` on every call. | High | open |
+| tester/logic/ConditionTable.java | ConditionTable | constructor | ~39 | Validation loop reads the instance field `Conditions` (still null) instead of the constructor parameter `Conditions_`, before the field is assigned - every construction throws `NullPointerException`. | Critical | open |
+| tester/MetricMeasurAble.java | MetricMeasurAble | dist(Object, Object) | ~49 | Both operands call `a.getDouble()`; `b`'s value is never read, so `dist()` always returns 0 for distinct objects. | High | open |
+| tester/FilterTestWaiter.java | FilterTestWaiter | test(Object) | ~56 | `wait(waitTime)` is called without holding this instance's monitor (no `synchronized` block) - always throws `IllegalMonitorStateException` at runtime. | High | open |
+| tester/fuzzy/FuzzyDictionary.java | FuzzyDictionary | getMostSimilarItem(Object, double) | ~75 | `minIndex` is a hardcoded constant, never computed by comparison; reads `distances.getDoubleAt(-1)` - the method never actually searches and always returns -1. | High | open |
+| tester/fuzzy/FuzzySentenceComparator.java | FuzzySentenceComparator | read(InputStream, StringBuffer, char) | ~208 | Loop condition compares against a hardcoded literal char instead of the `sep` parameter - a caller passing a different separator never sees the loop terminate on it. | Medium | open |
+| tester/process/StreamProcessor.java | StreamProcessor | getPosition() | ~93 | Delegates to `availAble()` instead of an actual position method - returns items-remaining, not read position. | Medium | open |
+| tester/process/IOEProcess.java | IOEProcess | testIt() | ~77 | `Runtime.exec("java Process.IOEProcess")` uses the wrong fully-qualified class name (actual: `tester.process.IOEProcess`) - the child process fails immediately. | Low | open |
 
 ## Tool defects found and fixed during the pilot
 

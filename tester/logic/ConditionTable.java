@@ -14,6 +14,15 @@ package tester.logic;
   * Created on	2001-06-04, 08;45;09<p>
   * @author 	Matthias Heuer
   * @version	1.0
+  * <!-- docstate
+  * pass: 2
+  * mtime: 2026-09-05T11:12:21Z
+  * digest: cbce57b7a6e1915143f07f462ed22113818318c3676d8fb9f927149bea77f730
+  * stale: false
+  * tags: [code/decision_tree, code/rule_engine]
+  * concepts: [Condition Table]
+  * facets: {layer: utility, status: broken, complexity: medium}
+  * -->
   */
 public class ConditionTable {
 	/**List of Conditions	 */
@@ -30,6 +39,10 @@ public class ConditionTable {
 
 	/**Initializing Constructor	 */
 	public ConditionTable(byte[][] Conditions_) {
+		// TODO: LOGIC: the validation loop below reads the instance field `Conditions`, which is
+		// still null at this point - it is only assigned from the parameter `Conditions_` after
+		// this block runs - so every call to this constructor throws a NullPointerException
+		// instead of validating Conditions_. The reads here should target Conditions_.
 		int i = Conditions.length;
 		int CndLength = Conditions[0].length;
 		while (--i > 0)

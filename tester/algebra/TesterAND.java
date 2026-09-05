@@ -3,6 +3,15 @@ package tester.algebra;
 import tester.ITester;
 
 /** Concatenates two ITester Objects using AND
+  * <!-- docstate
+  * pass: 2
+  * mtime: 2026-09-05T10:13:33Z
+  * digest: 7a11ba30ce35111b091f20589eb4528aa9dfd765da590f0141f50f2e50f883a4
+  * stale: false
+  * tags: [code/boolean_algebra, code/predicate_logic]
+  * concepts: [Boolean AND Tester]
+  * facets: {layer: utility, status: legacy, complexity: low}
+  * -->
   */
 public class TesterAND
 implements ITester {

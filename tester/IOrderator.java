@@ -19,6 +19,15 @@ package tester;
  * @see java.util.Comparator which requires a more heavyweight Implementation. 
  * @author heuerm
  * 
+ * <!-- docstate
+ * pass: 2
+ * mtime: 2026-09-05T10:13:32Z
+ * digest: 249092fc1be8f510f5ab83ddae3fcf335c863eb5aa43a7c129a755ddcdc62f02
+ * stale: false
+ * tags: [code/comparator]
+ * concepts: [Orderator Interface]
+ * facets: {layer: utility, status: legacy, complexity: low}
+ * -->
  */
 public interface IOrderator 
 extends IEquivalence {

@@ -12,6 +12,15 @@ package tester;
  * 
  * @author  Matthias Heuer
  * @version
+ * <!-- docstate
+ * pass: 2
+ * mtime: 2026-09-05T11:09:34Z
+ * digest: 25723c64d152ea1fa7c5c513c936f4836116589e879dedd795ed62e48aec7f74
+ * stale: false
+ * tags: [code/predicate_filter]
+ * concepts: [Blocking Test Waiter]
+ * facets: {layer: utility, status: broken, complexity: low}
+ * -->
  */
 public class FilterTestWaiter
 implements ITester {
@@ -47,6 +56,9 @@ implements ITester {
 			if (Delegate.test (arg)) return true; //break; //when the Condition succeeds
 			if (waitTime <= 0) return false; //throw new TimeOutException(); //when timed out
 			try {
+				// TODO: LOGIC: wait(waitTime) is called without holding this instance's monitor
+				// (test() is not synchronized and there is no surrounding synchronized(this) block),
+				// so every call throws IllegalMonitorStateException at runtime instead of waiting.
 				wait(waitTime); //notify the next Thread on Interruption, because the Condition also holds for that one
 			} catch (InterruptedException e) {
 				notify(); return false; } //throw e; }

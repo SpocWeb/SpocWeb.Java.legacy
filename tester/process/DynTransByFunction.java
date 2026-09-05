@@ -14,6 +14,15 @@ import function.IDynamicFunction;
   *
   * @author  Matthias Heuer
   * @version
+  * <!-- docstate
+  * pass: 2
+  * mtime: 2026-09-05T10:13:33Z
+  * digest: 7efe181257f829b4cf1000a61eac2adaf41cd02dc5cdd14b34c99118ac2bcc24
+  * stale: false
+  * tags: [code/state_machine]
+  * concepts: [Function-Based Dynamic Transition]
+  * facets: {layer: utility, status: legacy, complexity: low}
+  * -->
   */
 public class DynTransByFunction
 extends TransitionByFunction

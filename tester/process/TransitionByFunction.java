@@ -15,6 +15,15 @@ import graphs.PairVal;
   *
   * Like with Graphs, Automatons can be represented by Matrices or sparse Lists.
   *
+  * <!-- docstate
+  * pass: 2
+  * mtime: 2026-09-05T10:13:33Z
+  * digest: 52edd83f2b287448f9a76fe663b726fac6fce6bc3c9e25103680c6549070e52c
+  * stale: false
+  * tags: [code/state_machine]
+  * concepts: [Function-Based Transition]
+  * facets: {layer: utility, status: legacy, complexity: low}
+  * -->
   */
 public class TransitionByFunction
 implements Operator {

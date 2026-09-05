@@ -8,6 +8,15 @@ package tester.process;
  *
  * @author  Matthias Heuer
  * @version
+ * <!-- docstate
+ * pass: 2
+ * mtime: 2026-09-05T10:13:33Z
+ * digest: 01f11b8650e668f2f747afd80a452f4f239735fa5f7e120863388ebc3da88fac
+ * stale: false
+ * tags: [code/state_machine]
+ * concepts: [Dynamic Transition Interface]
+ * facets: {layer: utility, status: legacy, complexity: low}
+ * -->
  */
 public interface IDynamicTransition
 extends IDiscreteTransition {

@@ -22,6 +22,15 @@ import function.AFunction;
   * This is the Graph View of concurrent Processing. 
   * 
   * @see stringOp.search.RegExp implements a non-deterministic Automaton 
+  * <!-- docstate
+  * pass: 2
+  * mtime: 2026-09-05T11:12:34Z
+  * digest: c7c658bc57c6faebb7a7d8922cd32e12992b4549748913a7823a2080a53f0d68
+  * stale: false
+  * tags: [code/state_machine]
+  * concepts: [Automaton Base Class]
+  * facets: {layer: utility, status: legacy, complexity: low}
+  * -->
   */
 public class Automaton
 extends AFunction {
@@ -54,7 +63,8 @@ extends AFunction {
 	public void setState(Object State) {
 		mState = State; }
 	
-	/** @return the current State of the Automaton.
+	/** Returns the Automaton's current State.
+	  * @return the current State of the Automaton.
 	  * Also returned by Operation if the Output Function is null. */
 	public Object getState() { return mState; }
 	

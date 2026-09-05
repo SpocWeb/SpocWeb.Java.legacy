@@ -23,6 +23,15 @@ import graphs.Pair;
   * Created on	09-16-2002, 10:49 AM<p>
   * @author 	Matthias Heuer
   * @version	1.0
+  * <!-- docstate
+  * pass: 2
+  * mtime: 2026-09-05T11:13:18Z
+  * digest: 7ea861cdbfc75d6064c70f9087d9236de59435300fd35ae11304ba9e13f7ae1a
+  * stale: false
+  * tags: [code/state_machine]
+  * concepts: [Finite State Machine]
+  * facets: {layer: utility, status: legacy, complexity: low}
+  * -->
   */
 public class StateMachine
 implements IProcessor {
@@ -41,10 +50,11 @@ implements IProcessor {
 /// #region : Accessor Methods (getXXX/isXXX/setXXX)
 ////////////////////////////////////////////////////////////////////////////////
 
-	/** @return TODO:   */
+	/** Returns this machine's current state.
+	 * @return the current state	 */
 	public Object getState() { return state; }
 
-	/** sets the TODO: 	 */
+	/** Sets this machine's current state, bypassing the transition function.	 */
 	public void setState(Object arg) { state = arg; }
 
 ////////////////////////////////////////////////////////////////////////////////
@@ -71,7 +81,9 @@ implements IProcessor {
 	/** Pair Object to look up the Combination (Input, State) in the Transition Function */
 	protected Pair lookup = new Pair();
 
-	/** @return the State of this State Machine,
+	/** Advances this machine to its next state by applying {@link #transit} to arg and the
+	  * previous state.
+	  * @return the State of this State Machine,
 	  * reacting to the given Input and its previous State
 	  * The Output Function must be a separate Map of this State to the Output Space
 	  * and can be concatenated with this Mapping.

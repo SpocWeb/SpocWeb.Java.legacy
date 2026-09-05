@@ -2,9 +2,18 @@ package tester.algebra;
 
 import tester.ITester;
 
-/** Concatenates two ITester Objects using AND
+/** Concatenates two ITester Objects using XOR
+  * <!-- docstate
+  * pass: 2
+  * mtime: 2026-09-05T11:10:56Z
+  * digest: 7a11ba30ce35111b091f20589eb4528aa9dfd765da590f0141f50f2e50f883a4
+  * stale: false
+  * tags: [code/boolean_algebra, code/predicate_logic]
+  * concepts: [Boolean XOR Tester]
+  * facets: {layer: utility, status: legacy, complexity: low}
+  * -->
   */
-public class TesterXOR 
+public class TesterXOR
 implements ITester {
 
 	/** Reference to the first ITester Object	*/

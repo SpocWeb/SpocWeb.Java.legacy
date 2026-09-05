@@ -33,6 +33,15 @@ import java.io.StreamTokenizer;
  *
  * @author  Matthias Heuer
  * @version
+ * <!-- docstate
+ * pass: 2
+ * mtime: 2026-09-05T11:12:45Z
+ * digest: 9d041bb97c49f3497178f32608b1950b10b2f21fcb42ca36186d2be990105253
+ * stale: false
+ * tags: [code/stream_processing]
+ * concepts: [I/O/Error Process Wrapper]
+ * facets: {layer: utility, status: broken, complexity: medium}
+ * -->
  */
 public class IOEProcess extends Object {
 
@@ -44,6 +53,11 @@ public class IOEProcess extends Object {
 	 * e.g. using a Stop Command Ctrl-Z comes.
 	 * It parses the Input into words and returns each word as an answer.
      * @param args the command line arguments
+     * <!-- docstate
+     * tags: [code/stream_processing]
+     * concepts: [Demo Entry Point]
+     * facets: {layer: test, status: legacy, complexity: low}
+     * -->
      */
     public static void main (String[] args) throws IOException, InterruptedException {
 //		System.out.println ("Starting IOEProcess"); //add a Separator...
@@ -59,6 +73,13 @@ public class IOEProcess extends Object {
 //		System.out.println ("Stopping IOEProcess"); //add a Separator...
     }
 
+	/** Spawns this class as a child process and pipes lines typed on {@link System#in} to it,
+     * <!-- docstate
+     * tags: [code/stream_processing]
+     * concepts: [Self-Test Method]
+     * facets: {layer: test, status: broken, complexity: low}
+     * -->
+	 * printing back whatever the child tokenizes and echoes, until 'stop' is entered. */
 	public static void testIt() throws IOException, InterruptedException {
 //		System.err,	System.in, System.out can be redirected, since they are writeable
 //		using setErr, setIn, setOut
@@ -66,6 +87,9 @@ public class IOEProcess extends Object {
 		RT.traceInstructions(true);
 		RT.traceMethodCalls (true);
 //		Runtime.getRuntime().runFinalizersOnExit (true);
+		// TODO: LOGIC: "Process.IOEProcess" is not this class's fully-qualified name (it is
+		// tester.process.IOEProcess), so this exec() launches a nonexistent class and the child
+		// process fails immediately with a ClassNotFoundException / NoClassDefFoundError.
 		Process Child = RT.exec("java Process.IOEProcess");
 //		System.out.println ("Exit Value = " + Child.exitValue ()); //throws IllegalThreadStateException "process has not exited"
 		PrintStream OUT = new PrintStream(Child.getOutputStream ());

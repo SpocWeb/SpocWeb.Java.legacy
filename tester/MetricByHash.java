@@ -21,6 +21,15 @@ import function.byref.ByRefChar;
  * 
  * @author heuerm
  *
+ * <!-- docstate
+ * pass: 2
+ * mtime: 2026-09-05T11:09:48Z
+ * digest: 21d8ade175d985ac68e2db544035e5d5cf0cc9111b67c933ae00e5ba8f6a0203
+ * stale: false
+ * tags: [code/metric_interface]
+ * concepts: [Hash-Based Metric]
+ * facets: {layer: utility, status: legacy, complexity: low}
+ * -->
  */
 final public class MetricByHash 
 extends AComparator
@@ -36,14 +45,16 @@ implements IScalarMetric {
 	/// IFloatMetric
 	///////////////////////////////////////////////////////////////////////////
 	
-	/** @see tester.IScalarMetric#dist(java.lang.Object, java.lang.Object)	 */
+	/** Returns the difference of the two objects' {@link Object#hashCode()} values, or 0 when they are the same object.
+	 * @see tester.IScalarMetric#dist(java.lang.Object, java.lang.Object)	 */
 	public double dist(final Object a, final Object b) {
 		if (a == b)
 			return 0;
 		return a.hashCode() - b.hashCode(); 
 	}
 	
-	/** @see java.util.Comparator#compare(java.lang.Object, java.lang.Object)	 */
+	/** Compares two objects by their {@link Object#hashCode()} values, returning -1, 0 or 1 accordingly.
+	 * @see java.util.Comparator#compare(java.lang.Object, java.lang.Object)	 */
 	public int compare(final Object o1, final Object o2) {
 		if (o1 == o2) 
 			return 0; 

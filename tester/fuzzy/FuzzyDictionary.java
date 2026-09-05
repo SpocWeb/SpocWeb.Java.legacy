@@ -32,6 +32,15 @@ import tester.IMetric;
  * Created on	10-26-2002, 12:47 PM<p>
  * @author heuerm
  * @version	1.0
+ * <!-- docstate
+ * pass: 2
+ * mtime: 2026-09-05T11:11:44Z
+ * digest: 389020fe00936d0522eccfc8dc9287faf55ce747f984c58b0234af2a6845c7b2
+ * stale: false
+ * tags: [code/fuzzy_search, code/similarity_matching]
+ * concepts: [Fuzzy Dictionary Lookup]
+ * facets: {layer: utility, status: broken, complexity: medium}
+ * -->
  */
 public class FuzzyDictionary {
 	
@@ -56,48 +65,31 @@ public class FuzzyDictionary {
 	}
 	
 	/**
-	 * Aggretating (AND-Operation) the Matches is just a Multiplication 
-	 *  
-	 * @see #similarities stores the similarities for the last Operation for deeper Analysis. 
-	 * @param sentence the Sentence to search for. 
-	 * @param addToDictionary Flag whether to add the Words of this Sentence to the Dictionary
-	 * @param minSimilarity Threshold controlling whether to add this Sentence to the Sentence List.
-	 * To make sure the Sentence is always added, set it to Integer.MAX_VALUE 
-	 * To make sure the Sentence is never  added, set it to any negative Value
-	 * @return the most similar Sentence to the given one. 
-	 * 
-	 * @param token the Object to find 
-	 * @param maxDist the maximum Distance to consider an Object to be distinct 
-	 * and to be added to this Dictionary. 
-	 * To always add any Object to the Dictionary, set it to 0 
+	 * Adds token to {@link #words} when the last recorded distance exceeds maxDist.
+	 * @param token the Object to find
+	 * @param maxDist the maximum Distance to consider an Object to be distinct
+	 * and to be added to this Dictionary.
+	 * To always add any Object to the Dictionary, set it to 0
 	 * To never  add any Object to the Dictionary, set it to Double.POS_INFINITY
-	 * @return the Index of the Object most similar to 'token'. 
+	 * @return the Index of the Object most similar to 'token'.
 	 */
 	public int getMostSimilarItem(final Object token, final double maxDist) {
-		final int minIndex = -1; 
-		final double minDist = distances.getDoubleAt(minIndex); 
-		if (minDist > maxDist) 
-			words.addItem(token); 
-		return minIndex; 
+		final int minIndex = -1;
+		// TODO: LOGIC: minIndex is never assigned the index of an actual candidate - it stays
+		// the constant -1 - so distances.getDoubleAt(minIndex) always reads index -1 instead of
+		// a distance found by comparing token against the existing words, and the method always
+		// returns -1 without ever locating the most similar item.
+		final double minDist = distances.getDoubleAt(minIndex);
+		if (minDist > maxDist)
+			words.addItem(token);
+		return minIndex;
 	}
-	
+
 	/**
-	 * Aggretating (AND-Operation) the Matches is just a Multiplication 
-	 *  
-	 * @see #similarities stores the similarities for the last Operation for deeper Analysis. 
-	 * @param sentence the Sentence to search for. 
-	 * @param addToDictionary Flag whether to add the Words of this Sentence to the Dictionary
-	 * @param minSimilarity Threshold controlling whether to add this Sentence to the Sentence List.
-	 * To make sure the Sentence is always added, set it to Integer.MAX_VALUE 
-	 * To make sure the Sentence is never  added, set it to any negative Value
-	 * @return the most similar Sentence to the given one. 
-	 * 
-	 * @param token the Object to find 
-	 * @param maxDist the maximum Distance to consider an Object to be distinct 
-	 * and to be added to this Dictionary. 
-	 * To always add any Object to the Dictionary, set it to 0 
-	 * To never  add any Object to the Dictionary, set it to Double.POS_INFINITY
-	 * @return the Index of the Object most similar to 'token'. 
+	 * Searches {@link #words} for the entry closest to token by {@link #metric}, recording every
+	 * distance into {@link #distances}.
+	 * @param token the Object to find
+	 * @return the Index of the Object most similar to 'token'.
 	 */
 	public int getMostSimilarItem(final Object token) {
 		double minDist = 0; 

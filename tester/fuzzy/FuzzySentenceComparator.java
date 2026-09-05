@@ -41,6 +41,15 @@ import tester.IMetric;
  * Created on	10-26-2002, 12:47 PM<p>
  * @author heuerm
  * @version	1.0
+ * <!-- docstate
+ * pass: 2
+ * mtime: 2026-09-05T11:12:00Z
+ * digest: 59b92329d7d7ef7362b0c662fdb4ae7c0212a545c7fc61e28aa731693777499b
+ * stale: false
+ * tags: [code/string_similarity]
+ * concepts: [Fuzzy Sentence Comparator]
+ * facets: {layer: utility, status: broken, complexity: medium}
+ * -->
  */
 public class FuzzySentenceComparator 
 //extends FuzzySetComparator 
@@ -52,7 +61,7 @@ public class FuzzySentenceComparator
 	/** String containing most Keyboard Characters applicable as Separators	 
 	 * Actually it would be better to negate this Criterion 
 	 * and define only Characters and Letters as valid Parts of an Identifier. */
-	final static public String ALL_SEPARATORS = " ,.?!\"\\+#*'-:;<>|@€²³§$%&/()=?`´"; 
+	final static public String ALL_SEPARATORS = " ,.?!\"\\+#*'-:;<>|@ï¿½ï¿½ï¿½ï¿½$%&/()=?`ï¿½"; 
 	
 	///////////////////////////////////////////////////////////////////////////
 	
@@ -191,27 +200,34 @@ public class FuzzySentenceComparator
 	/////////////////////////////////////////////////////////////////////////////////////
 	
 	/**
-	 * 
-	 * @param args strings with Sentences to compare against the first one. 
+	 * Reads characters from fis into buf up to the next separator character or end of stream.
+	 * @param fis the stream to read from
+	 * @param buf reused buffer that receives the characters read, cleared on entry
+	 * @param sep the separator character terminating one record
+	 * @return the separator character, or -1 when the stream ended first
 	 */
 	public static int read(final InputStream fis, final StringBuffer buf, final char sep) throws Exception {
-		buf.setLength(0); 
-		for(int curr; '§' !=(curr = fis.read());) {
+		buf.setLength(0);
+		// TODO: LOGIC: the loop condition compares against the hardcoded literal '?' instead of
+		// the sep parameter, so a caller passing a different separator character never sees the
+		// loop terminate on it - it only stops on this hardcoded character or end of stream.
+		for(int curr; 'ï¿½' !=(curr = fis.read());) {
 			if (curr == -1)
-				return curr; 
-			buf.append((char) curr); 
+				return curr;
+			buf.append((char) curr);
 		}
-		return sep; 
+		return sep;
 	}
-	
+
 	/**
-	 * 
-	 * @param args strings with Sentences to compare against the first one. 
+	 * Reads sentences from the file named by args[0] and logs, for each, the closest previously
+	 * seen sentence found via {@link #getMostSimilar_Sentence(String)}.
+	 * @param args args[0] is the path of the file containing the sentences to compare
 	 */
 	public static void main(final String[] args) throws Exception {
 		final FuzzySentenceComparator comp = new FuzzySentenceComparator(); 
 		L.n(new Date()); 
-		final char sep = '§'; 
+		final char sep = 'ï¿½'; 
 		final StringBuffer buf = new StringBuffer(); 
 		final FileInputStream fis = new FileInputStream(args[0]);
 		int count = 0; 

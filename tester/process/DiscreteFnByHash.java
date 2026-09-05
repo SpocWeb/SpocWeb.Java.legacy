@@ -15,6 +15,15 @@ import java.util.Hashtable;
   *
   * @author  Matthias Heuer
   * @version
+  * <!-- docstate
+  * pass: 2
+  * mtime: 2026-09-05T10:13:33Z
+  * digest: b6daa9c7d5fad692b549f33b204f5c49fafef1e95541684a9ddd18e458079a3d
+  * stale: false
+  * tags: [code/state_machine]
+  * concepts: [Hash-Based Discrete Function]
+  * facets: {layer: utility, status: legacy, complexity: low}
+  * -->
   */
 public class DiscreteFnByHash
 extends Object

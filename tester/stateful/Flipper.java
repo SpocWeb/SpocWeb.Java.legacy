@@ -26,6 +26,15 @@ import tester.ITester;
   * Created on	09-14-2002, 08:58 AM<p>
   * @author 	Matthias Heuer
   * @version	1.0
+  * <!-- docstate
+  * pass: 2
+  * mtime: 2026-09-05T11:13:56Z
+  * digest: ae9ba95d8899c53a3a554c740dfd200716756090595bd6f917376aae8e0dfedf
+  * stale: false
+  * tags: [code/stateful_algorithm]
+  * concepts: [Boolean Flip-Flop]
+  * facets: {layer: utility, status: legacy, complexity: low}
+  * -->
   */
 public class Flipper
 implements ITester {
@@ -41,10 +50,11 @@ implements ITester {
 	/// #region : Accessor Methods (getXXX/isXXX/setXXX)
 	////////////////////////////////////////////////////////////////////////////////
 	
-	/** @return true iff TODO:   */
+	/** Returns this Flipper's current state, without flipping it.
+	 * @return true iff the last {@link #test(Object)} call left this Flipper in the true state */
 	public boolean isTrue() { return value; }
-	
-	/** sets the TODO: 	 */
+
+	/** Sets this Flipper's state directly, bypassing {@link #test(Object)}. 	 */
 	void setTrue(final boolean value_) { this.value = value_; }
 	
 	////////////////////////////////////////////////////////////////////////////////

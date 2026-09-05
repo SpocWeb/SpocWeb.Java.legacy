@@ -23,6 +23,15 @@ import function.byref.ByRefInt;
   *
   * @author  Matthias Heuer
   * @version
+  * <!-- docstate
+  * pass: 2
+  * mtime: 2026-09-05T10:13:33Z
+  * digest: 8cd086a89cf59c944a160a594e7957cf3ce7d066af995a9fe16dbfaa209c6270
+  * stale: false
+  * tags: [code/state_machine]
+  * concepts: [Discrete Automaton]
+  * facets: {layer: utility, status: legacy, complexity: medium}
+  * -->
   */
 public class DiscreteAutomaton
 extends Object {
@@ -103,6 +112,15 @@ extends Object {
 
 /** Example Class for a simple discrete Automaton with calculated Output.
   * This Function adds the Input to the State.
+  * <!-- docstate
+  * pass: 2
+  * mtime: 2026-09-05T10:13:33Z
+  * digest: e7260ed1e430ff62c5171647f749ab92e2e0ce39bdadd8a110433e8f9a8a4ccb
+  * stale: false
+  * tags: [code/state_machine]
+  * concepts: [Discrete Add Transition]
+  * facets: {layer: utility, status: legacy, complexity: low}
+  * -->
   */
 class AddInt
 implements IDiscreteTransition {
@@ -119,6 +137,15 @@ implements IDiscreteTransition {
 
 /** Example Class for a simple discrete Automaton with calculated Output.
   * This Function multiplies the Input to the State.
+  * <!-- docstate
+  * pass: 2
+  * mtime: 2026-09-05T10:13:33Z
+  * digest: e7260ed1e430ff62c5171647f749ab92e2e0ce39bdadd8a110433e8f9a8a4ccb
+  * stale: false
+  * tags: [code/state_machine]
+  * concepts: [Discrete Multiply Transition]
+  * facets: {layer: utility, status: legacy, complexity: low}
+  * -->
   */
 class MulInt
 implements IDiscreteTransition {
@@ -135,6 +162,15 @@ implements IDiscreteTransition {
 
 /** Example Class for a simple discrete Automaton with calculated Output.
   * This Function subtracts the Input from the State.
+  * <!-- docstate
+  * pass: 2
+  * mtime: 2026-09-05T10:13:33Z
+  * digest: e7260ed1e430ff62c5171647f749ab92e2e0ce39bdadd8a110433e8f9a8a4ccb
+  * stale: false
+  * tags: [code/state_machine]
+  * concepts: [Discrete Subtract Transition]
+  * facets: {layer: utility, status: legacy, complexity: low}
+  * -->
   */
 class SubtInt
 implements IDiscreteTransition {
@@ -151,6 +187,15 @@ implements IDiscreteTransition {
 
 /** Example Class for a simple discrete Automaton with calculated Output.
   * This Function divides the State by the Input.
+  * <!-- docstate
+  * pass: 2
+  * mtime: 2026-09-05T10:13:33Z
+  * digest: e7260ed1e430ff62c5171647f749ab92e2e0ce39bdadd8a110433e8f9a8a4ccb
+  * stale: false
+  * tags: [code/state_machine]
+  * concepts: [Discrete Divide Transition]
+  * facets: {layer: utility, status: legacy, complexity: low}
+  * -->
   */
 class DivInt
 implements IDiscreteTransition {

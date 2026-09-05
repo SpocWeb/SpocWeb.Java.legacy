@@ -14,6 +14,15 @@ package tester.logic;
   * Created on	2001-06-04, 08;44;32<p>
   * @author 	Matthias Heuer
   * @version	1.0
+  * <!-- docstate
+  * pass: 2
+  * mtime: 2026-09-05T10:13:33Z
+  * digest: 3e14555052e3104625d4f319da2fd671fdd585a09d23b9c652c2c535804209ef
+  * stale: false
+  * tags: [code/decision_tree]
+  * concepts: [Decision Tool]
+  * facets: {layer: utility, status: legacy, complexity: low}
+  * -->
   */
 public class DecisionTool
 extends DecisionTable {

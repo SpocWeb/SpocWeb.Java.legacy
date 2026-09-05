@@ -25,6 +25,15 @@ import java.util.Comparator;
   * @see tester.OrderatorComparable
   * @see tester.OrderatorOrderable
   *
+  * <!-- docstate
+  * pass: 2
+  * mtime: 2026-09-05T10:13:32Z
+  * digest: e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855
+  * stale: false
+  * tags: [code/comparator]
+  * concepts: [Comparator Interface]
+  * facets: {layer: utility, status: legacy, complexity: low}
+  * -->
   */
 public interface IComparator
 extends IOrderator, Comparator {

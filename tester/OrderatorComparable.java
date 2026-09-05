@@ -15,17 +15,28 @@ package tester;
  * 
  * @author heuerm
  *
+ * <!-- docstate
+ * pass: 2
+ * mtime: 2026-09-05T11:10:08Z
+ * digest: 6ef4ed43681d352b5addfd986da1edae8b29665b88b0f24c88f95da7d91bc615
+ * stale: false
+ * tags: [code/comparator]
+ * concepts: [Comparable-Based Orderator]
+ * facets: {layer: utility, status: legacy, complexity: low}
+ * -->
  */
 final public class OrderatorComparable 
 extends AComparator
 implements IComparator {
 
-	final static public OrderatorComparable Orderator = new OrderatorComparable(); 
-	
+	/** Shared singleton instance, since this Comparator is stateless. */
+	final static public OrderatorComparable Orderator = new OrderatorComparable();
+
 	/** Singleton Constructor 	 */
 	private OrderatorComparable() { }
-	
-	/** @see java.util.Comparator#compare(java.lang.Object, java.lang.Object)	 */
+
+	/** Compares two objects via their own {@link Comparable#compareTo(Object)} implementation.
+	 * @see java.util.Comparator#compare(java.lang.Object, java.lang.Object)	 */
 	public int compare(final Object o1, final Object o2) {
 		if (o1 == o2) 
 			return 0; 

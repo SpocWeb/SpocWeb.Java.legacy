@@ -28,6 +28,15 @@ package tester;
  * @author mheuer
  * @version	1.0
  *
+ * <!-- docstate
+ * pass: 2
+ * mtime: 2026-09-05T11:09:25Z
+ * digest: 8b916896f7cbabe0136d260831c65d8024118dacc3a37fb213d149b1d0963c5b
+ * stale: false
+ * tags: [code/custom_equivalence]
+ * concepts: [Identity-Based Equivalence]
+ * facets: {layer: utility, status: legacy, complexity: low}
+ * -->
  */
 public class EquivalenceIdentity 
 implements IEquivalence {
@@ -75,6 +84,8 @@ implements IEquivalence {
 	}
 
 	/**
+	 * Tests A and B for identity, or for equality when this instance was constructed
+	 * with {@code equivalence == true}, negating the result when {@code negation == true}.
 	 * @see tester.IEquivalence#equals(Object, Object)
 	 */
 	public boolean equals(final Object A, final Object B) {
@@ -83,6 +94,8 @@ implements IEquivalence {
 			(A.equals(B)))); }
 
 	/**
+	 * Returns {@code A.hashCode()} when comparing by equality, or the JVM identity hash
+	 * when comparing by identity only.
 	 * @return the discrete Topology
 	 * @see tester.IEquivalence#HashCode(Object)
 	 */
