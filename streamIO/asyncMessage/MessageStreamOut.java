@@ -23,6 +23,15 @@ import streamIO.Log;
  * TODO: a fail-safe Message Queue directly writes into a persistent Store 
  * and tries to send it in parallel. 
  * @author heuerm
+ * <!-- docstate
+ * pass: 2
+ * mtime: 2026-09-05T09:49:57Z
+ * digest: 6adb8368b6290c4dd7d00064db04aeb9ce7b293ab2afed0d0320419bd5757c4c
+ * stale: false
+ * tags: [code/message_queue, code/retry_logic]
+ * concepts: [Asynchronous Messaging]
+ * facets: {layer: infrastructure, status: stable, complexity: low}
+ * -->
  */
 public class MessageStreamOut 
 extends AStreamOut {
@@ -52,36 +61,36 @@ extends AStreamOut {
 	/** the Message Receiver 	*/
 	private final IMessageReceiver receiver; 
 	
-	/**
-	 * @param receiver the Message Receiver 
+	/** Starts sending from {@link IMessageReceiver#START_ID}, with the default Retry Sleep bounds.
+	 * @param receiver the Message Receiver
 	 */
 	public MessageStreamOut(final IMessageReceiver receiver) {
-		this(receiver, IMessageReceiver.START_ID); 
+		this(receiver, IMessageReceiver.START_ID);
 	}
 	
-	/**
-	 * @param receiver the Message Receiver 
-	 * @param currId the Start ID of this Connection 
+	/** Starts sending from the given ID, with the default Retry Sleep bounds.
+	 * @param receiver the Message Receiver
+	 * @param currId the Start ID of this Connection
 	 */
 	public MessageStreamOut(final IMessageReceiver receiver, final long currId) {
-		this(receiver, currId, DEFAULT_MAX_SLEEP_TIME); 
+		this(receiver, currId, DEFAULT_MAX_SLEEP_TIME);
 	}
 	
-	/**
-	 * @param receiver the Message Receiver 
-	 * @param currId the Start ID of this Connection 
-	 * @param maxSleepTime maximum Sleep Time between Retries 
+	/** Starts sending from the given ID, with the default minimum Retry Sleep.
+	 * @param receiver the Message Receiver
+	 * @param currId the Start ID of this Connection
+	 * @param maxSleepTime maximum Sleep Time between Retries
 	 */
 	public MessageStreamOut(final IMessageReceiver receiver, final long currId
 			, final long maxSleepTime) {
-		this(receiver, currId, maxSleepTime, DEFAULT_MIN_SLEEP_TIME); 
+		this(receiver, currId, maxSleepTime, DEFAULT_MIN_SLEEP_TIME);
 	}
 	
-	/**
-	 * @param receiver the Message Receiver 
-	 * @param currId the Start ID of this Connection 
-	 * @param maxSleepTime maximum Sleep Time between Retries 
-	 * @param minSleepTime minimum Sleep Time between Retries (initial) 
+	/** Starts sending from the given ID, with explicit Retry Sleep bounds.
+	 * @param receiver the Message Receiver
+	 * @param currId the Start ID of this Connection
+	 * @param maxSleepTime maximum Sleep Time between Retries
+	 * @param minSleepTime minimum Sleep Time between Retries (initial)
 	 */
 	public MessageStreamOut(final IMessageReceiver receiver, final long currId
 			, final long maxSleepTime, final long minSleepTime) {
@@ -97,7 +106,8 @@ extends AStreamOut {
 	// Interface IStreamOut
 	///////////////////////////////////////////////////////////////////////////
 	
-	/** @see streamIO.IStreamOut#flush()	 */
+	/** Forwards to the wrapped Receiver's own flush.
+	 * @see streamIO.IStreamOut#flush()	 */
 	public void flush() {
 		this.receiver.flush();
 	}
@@ -123,7 +133,8 @@ extends AStreamOut {
 		}
 	}
 
+	/** unused entry point; kept for the ad-hoc Test Convention used across this Package. */
 	public static void main(String[] args) {
 	}
-	
+
 }

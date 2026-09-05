@@ -30,6 +30,15 @@ import streamIO.IIStreamOut;
  * and only accepts continguous Messages. 
  * Alternatively all not processed Messages have to be written out 
  * into a persistent Store on shutdown. 
+ * <!-- docstate
+ * pass: 2
+ * mtime: 2026-09-05T09:50:22Z
+ * digest: 7f6d8412fe11d1bddfa8ef805b998b2ae90ef9685aa318dd479606e83b3d1b7e
+ * stale: false
+ * tags: [code/message_queue, code/deduplication]
+ * concepts: [Asynchronous Messaging]
+ * facets: {layer: infrastructure, status: stable, complexity: medium}
+ * -->
  */
 public class MessageOnlyOnce 
 extends MessageReceiver {
@@ -49,37 +58,39 @@ extends MessageReceiver {
 	final BitSet receivedIDs; // = new BitSet(INITIAL_CAPACITY); 
 	//VectorInt vector = new VectorInt(); 
 	
-	/**
-	 * @param currId the next Message to expect. 
-	 * @param processor
+	/** Starts expecting Messages from {@link IMessageReceiver#START_ID}, with an empty Cache of received IDs.
+	 * @param processor the downstream Processor.
 	 */
 	public MessageOnlyOnce(final IIStreamOut processor) {
 		super(processor);
-		this.idOffset = START_ID; 
-		this.receivedIDs = new BitSet(INITIAL_CAPACITY); 
+		this.idOffset = START_ID;
+		this.receivedIDs = new BitSet(INITIAL_CAPACITY);
 	}
 
-	/**
-	 * @param currId the next Message to expect. 
-	 * @param processor
+	/** Starts expecting Messages from the given ID, with an empty Cache of received IDs.
+	 * @param processor the downstream Processor.
+	 * @param currId the next Message to expect.
 	 */
 	public MessageOnlyOnce(final IIStreamOut processor, final int currId) {
 		super(processor);
-		this.idOffset = currId; 
-		this.receivedIDs = new BitSet(INITIAL_CAPACITY); 
+		this.idOffset = currId;
+		this.receivedIDs = new BitSet(INITIAL_CAPACITY);
 	}
 
-	/**
-	 * @param currId the next Message to expect. 
-	 * @param processor
+	/** Resumes from a previously received Cache of Message IDs, e.g. after a Restart.
+	 * @param processor the downstream Processor.
+	 * @param currId the next Message to expect.
+	 * @param _receivedIDs the already received Message IDs to resume from; cloned defensively.
 	 */
 	public MessageOnlyOnce(final IIStreamOut processor, final int currId, final BitSet _receivedIDs) {
 		super(processor);
-		this.idOffset = currId; 
-		this.receivedIDs = (BitSet) _receivedIDs.clone(); 
+		this.idOffset = currId;
+		this.receivedIDs = (BitSet) _receivedIDs.clone();
 	}
 	
-	/** @see streamIO.asyncMessage.IMessageReceiver#addItem(long, java.lang.Object)
+	/** Accepts an out-of-sequence Message and discards a duplicate, tracking already-received IDs
+	 * in a Bit Vector offset by {@link #idOffset}.
+	 * @see streamIO.asyncMessage.IMessageReceiver#addItem(long, java.lang.Object)
 	 */
 	public long addItem(final long id, final Object value) {
 		final long nextId = id+1;
@@ -92,6 +103,7 @@ extends MessageReceiver {
 		return nextId; 
 	}
 	
+	/** unused entry point; kept for the ad-hoc Test Convention used across this Package. */
 	public static void main(String[] args) {
 	}
 }

@@ -7,10 +7,21 @@
 package streamIO.asyncMessage;
 
 /**
+ * Receives Messages identified by a strictly ascending {@code long} ID, the asynchronous
+ * counterpart to an {@link streamIO.IIStreamOut}.
+ * Implementors are free to choose their own Service Level Agreement for out-of-sequence
+ * or duplicate Messages - see {@link MessageReceiver}, {@link MessageOnlyOnce} and
+ * {@link MessageInSequence} for increasingly strict Guarantees.
  * @author heuerm
- *
- * TODO To change the template for this generated type comment go to
- * Window - Preferences - Java - Code Style - Code Templates
+ * <!-- docstate
+ * pass: 2
+ * mtime: 2026-09-05T09:48:35Z
+ * digest: 9a9ea3dd27cae651f99d6d6e5da5df017b75c5c97c92433335823aac3e17943c
+ * stale: false
+ * tags: [code/message_queue]
+ * concepts: [Asynchronous Messaging]
+ * facets: {layer: infrastructure, status: stable, complexity: low}
+ * -->
  */
 public interface IMessageReceiver {
 

@@ -14,6 +14,15 @@ import streamIO.Log;
  * reliable Transport. 
  * Actually this is implemented on the Client Side Adapter.   
  * @author heuerm
+ * <!-- docstate
+ * pass: 2
+ * mtime: 2026-09-05T09:48:44Z
+ * digest: bbd65fad70b09bee67c64c7a0f202b633a515c3ec3cb1ba127cd7e83a960a451
+ * stale: false
+ * tags: [code/message_queue]
+ * concepts: [Asynchronous Messaging]
+ * facets: {layer: infrastructure, status: stable, complexity: low}
+ * -->
  */
 public class MessageReceiver 
 implements IMessageReceiver {
@@ -25,14 +34,15 @@ implements IMessageReceiver {
 	 */
 	private IIStreamOut processor; 
 	
-	/**
-	 * @param processor
+	/** Wraps the given downstream Processor.
+	 * @param processor the Processor to forward accepted Messages to.
 	 */
 	public MessageReceiver(final IIStreamOut processor) {
 		this.processor = processor;
 	}
-	
-	/** @see streamIO.IStreamOut#flush()	 */
+
+	/** Does nothing; there is no Buffer to clear at this Service Level.
+	 * @see streamIO.IStreamOut#flush()	 */
 	public void flush() {}
 	
 	/**
@@ -51,6 +61,7 @@ implements IMessageReceiver {
 		return id+1;
 	}
 
+	/** unused entry point; kept for the ad-hoc Test Convention used across this Package. */
 	public static void main(String[] args) {
 	}
 

@@ -102,3 +102,11 @@ analysis/PartyTypeAssociation.java:PartyTypeAssociation	class	analysis/PartyType
 analysis/Responsibility.java:Responsibility	class	analysis/Responsibility.java	code/domain_model, code/type_system	Domain Model, Relationship Modelling	domain	stable	low
 analysis/ResponsibilityType.java:ResponsibilityType	class	analysis/ResponsibilityType.java	code/domain_model, code/type_system	Domain Model, Relationship Modelling	domain	stable	low
 analysis	folder	analysis	code/domain_model, code/type_system	Domain Model, Relationship Modelling	domain	stable	low
+streamIO/asyncMessage/FaultyReceiver.java:FaultyReceiver	class	streamIO/asyncMessage/FaultyReceiver.java	code/test_harness	Reliability Testing	infrastructure	stable	low
+streamIO/asyncMessage	folder	streamIO/asyncMessage	code/message_queue	Asynchronous Messaging	infrastructure	stable	medium
+streamIO/asyncMessage/IMessageReceiver.java:IMessageReceiver	class	streamIO/asyncMessage/IMessageReceiver.java	code/message_queue	Asynchronous Messaging	infrastructure	stable	low
+streamIO/asyncMessage/MessageInSequence.java:MessageInSequence	class	streamIO/asyncMessage/MessageInSequence.java	code/message_queue, code/sequence_processor	Asynchronous Messaging	infrastructure	stable	low
+streamIO/asyncMessage/MessageOnlyOnce.java:MessageOnlyOnce	class	streamIO/asyncMessage/MessageOnlyOnce.java	code/message_queue, code/deduplication	Asynchronous Messaging	infrastructure	stable	medium
+streamIO/asyncMessage/MessageOptimized.java:MessageOptimized	class	streamIO/asyncMessage/MessageOptimized.java	code/message_queue, code/sequence_processor	Asynchronous Messaging	infrastructure	stable	medium
+streamIO/asyncMessage/MessageReceiver.java:MessageReceiver	class	streamIO/asyncMessage/MessageReceiver.java	code/message_queue	Asynchronous Messaging	infrastructure	stable	low
+streamIO/asyncMessage/MessageStreamOut.java:MessageStreamOut	class	streamIO/asyncMessage/MessageStreamOut.java	code/message_queue, code/retry_logic	Asynchronous Messaging	infrastructure	stable	low
