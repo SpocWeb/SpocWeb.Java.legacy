@@ -11,23 +11,30 @@ import synch.InvalidException;
 /**
   * Title: AAspect<p>
   * Description:
-  * Purpose:
-  * Base Class for a BO Aspect
-  * Purpose / Responsibilities of this Class
-  *
-  * Design Decisions / Implementation Details:
-  * If similar Classes exist (e.g. Polymorphism),
-  * characterize the specific Differences to compare these.
-  *
-  * Known SubClasses: <none>
-  *
-  * Known Uses: <none>
+  * Abstract base class for a named, typed "aspect" of a business object:
+  * a self-describing property that knows its own name, can be read/written
+  * both directly (via {@link #getVal()}/{@link #setVal(Object)}) and by
+  * dotted/underscore-separated path name (via {@link #get(String)}/
+  * {@link #set(String, Object)}), and tracks a dirty flag it can propagate
+  * to and from nested Aspect-typed public fields via reflection.
+  * Concrete leaf types (e.g. StringAspect, DoubleAspect) supply the actual
+  * value storage and validation; composite types (e.g. PersonAspect) simply
+  * declare public Aspect-typed fields as sub-properties.
   *
   * Copyright:	Copyright (c) Matthias Heuer<p>
   * Company:	personal<p>
   * Created on	07-22-2002, 07:23 PM<p>
   * @author 	Matthias Heuer
   * @version	1.0
+  * <!-- docstate
+  * pass: 2
+  * mtime: 2026-09-05T10:23:27Z
+  * digest: 1d35b91657113f94ed957b17185649c53e58ed90f62e5002e1874b4b5a661428
+  * stale: false
+  * tags: [code/domain_model, code/hierarchy]
+  * concepts: [Aspect Framework, Reflection-Based Dirty Tracking]
+  * facets: {layer: domain, status: stable, complexity: high}
+  * -->
   */
 public abstract class AAspect
 extends DirtyFlag
@@ -76,7 +83,8 @@ implements IAspect {
 	/** holds The Aspect Name == key   */
 	protected String Name;
 
-	/** @return The Aspect Name identical to getKey() but typed as String  */
+	/** Returns this Aspect's name.
+	  * @return the (possibly fully-qualified) name of this Aspect; identical to {@link #getKey()} but typed as String  */
 	public String getName() { return Name; }
 
 	/** Sets The Aspect Name. TODO: shouldn't this be an Invariant?  */
@@ -249,7 +257,8 @@ implements IAspect {
 			throw new IllegalAccessError(x.toString()); }
 		return this; }
 
-	/** @return the Aspect denoted by the given Name
+	/** Resolves and returns the sub-Aspect denoted by the given (local or fully-qualified) property name.
+	  * @return the Aspect denoted by the given Name
 	  * Works both with local Names and fully qualified Names!
 	  * SubStr is a Monoid and the hierarchical structure matches the Object structure.
 	  */
@@ -349,11 +358,13 @@ implements IAspect {
 	public IInstantiAble NewInstance() {
 		return newInstance(Name); }
 
-	/** @return a new Instance of this Object */
+	/** Creates a new, empty Instance of this Object, keeping the same Name (see {@link #newInstance(String)}).
+	  * @return a new, empty Instance */
 	final public Object newInstance() {
 		return newInstance(Name); }
 
-	/** @return a new Instance of this Object */
+	/** Creates a new, empty Instance of this Aspect's concrete class via its (String)-Constructor, using Reflection.
+	  * @return a new Instance of this Object */
 	public IAspect newInstance(String Name) {
 		Class[] cls = { String.class }; //, IHierarchyAspect.class };
 		Object[] args = { Name }; //, Parent };
@@ -366,13 +377,15 @@ implements IAspect {
 			throw new NoSuchMethodError(x.toString()); }
 	}
 
-	/** @return a deep Copy of this Object */
+	/** Creates a new Instance under the given Name and deep-copies this Aspect's Value(s) into it.
+	  * @return a deep Copy of this Object */
 	final public IAspect Clone(String Name) {
 		IAspect ret = (IAspect) newInstance(Name);
 		ret.setVal(this);
 		return ret; }
 
-	/** @return a deep Copy of this Object
+	/** Delegates to {@link #Clone(String)} using this Aspect's own Name.
+	  * @return a deep Copy of this Object
 	  * made final to allow for INLINEing  */
 	final public Object clone() { return Clone(this.Name); }
 

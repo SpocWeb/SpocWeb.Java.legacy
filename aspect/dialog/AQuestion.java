@@ -10,9 +10,10 @@ import aspect.AAspect;
 /**
   * Title: AQuestion<p>
   * Description:
-  * Purpose:
-  * Base Class for all Questions
-  * Purpose / Responsibilities of this Class
+  * Abstract base class for a single Question in a console-driven Dialog:
+  * an Aspect that holds the question text, can be asked standalone (print
+  * the question, read an answer, store it via setVal()), and knows the
+  * name of the next Question to proceed to.
   *
   * Design Decisions / Implementation Details:
   * Using the Question Name for the Result Variable Name is a Problem,
@@ -30,6 +31,15 @@ import aspect.AAspect;
   * Created on	01-05-2003, 03:26 PM<p>
   * @author 	Matthias Heuer
   * @version	1.0
+  * <!-- docstate
+  * pass: 2
+  * mtime: 2026-09-05T10:25:46Z
+  * digest: bee3b646f5a943b57c89e893a280b5a99385381fbfe93e2e83781e8b641ade94
+  * stale: false
+  * tags: [code/dialog]
+  * concepts: [Console Q&A Model]
+  * facets: {layer: domain, status: stable, complexity: low}
+  * -->
   */
 public abstract class AQuestion
 extends AAspect
@@ -69,10 +79,12 @@ extends AAspect
 /// #region : Accessor Methods (getXXX/isXXX/setXXX)
 ////////////////////////////////////////////////////////////////////////////////
 
-	/** @return the Question */
+	/** Returns the Text of this Question.
+	  * @return the Text of this Question to display to the User */
 	public String getQuestion() { return question; }
 
-	/** @return the Name of the next Question, possibly dependant on the Answer */
+	/** Returns the name of the Question to proceed to next.
+	  * @return the Name of the next Question to proceed to, which may depend on the Answer given, or null to end the Dialog */
 	public abstract String getNext(); // { return next; }
 
 	/** @return the Name of the next Question, possibly dependant on the Answer */

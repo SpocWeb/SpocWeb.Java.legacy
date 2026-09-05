@@ -7,21 +7,25 @@ import streamIO.Assert;
 /**
   * Title: PersonAspect<p>
   * Description:
-  * Purpose:
-  * Example for a Composite Aspect
-  * Contains Properties describing a "natural" Person
-  *
-  * Design Decisions / Implementation Details:
-  *
-  * Known SubClasses: <none>
-  *
-  * Known Uses: <none>
+  * Composite Aspect describing a natural person: first name, last name and
+  * a nested AddressAspect. Example of a Composite Aspect built purely from
+  * public Aspect fields; also carries this class's own unit-test data/logic
+  * in testIt().
   *
   * Copyright:	Copyright (c) Matthias Heuer<p>
   * Company:	personal<p>
   * Created on	07-20-2002, 12:20 AM<p>
   * @author 	Matthias Heuer
   * @version	1.0
+  * <!-- docstate
+  * pass: 2
+  * mtime: 2026-09-05T10:24:53Z
+  * digest: 6cf1f556eb3bc6ecf4dd03a247f597d59051c0ea3a1d93a3f7301304977ec23e
+  * stale: false
+  * tags: [code/composite_pattern, code/domain_model]
+  * concepts: [Composite Aspect, Attribute Modelling]
+  * facets: {layer: domain, status: stable, complexity: low}
+  * -->
   */
 public class PersonAspect
 extends SimpleAspect //AHierarchyAspect //Aspect
@@ -57,6 +61,7 @@ extends SimpleAspect //AHierarchyAspect //Aspect
 	/** Holds the Last Name, initialized in the Constructor!	 */
 	 final public AddressAspect Address = new AddressAspect(Name + SEP + ADDRESS, this);
 
+	/** Constant used as a local key prefix when addressing the home Address's sub-Properties, e.g. HOME + SEP + AddressAspect.CITY */
 	final static public String HOME = "home";
 
 ////////////////////////////////////////////////////////////////////////////////
@@ -67,10 +72,24 @@ extends SimpleAspect //AHierarchyAspect //Aspect
 /// #region : Constructors, calling each other using this()/super()
 ////////////////////////////////////////////////////////////////////////////////
 
-	/** Initializing Constructor	 */
+	/** Initializing Constructor
+	 *
+	 * <!-- docstate
+	 * tags: [code/domain_model]
+	 * concepts: [Attribute Modelling]
+	 * facets: {layer: domain, status: stable, complexity: low}
+	 * -->
+	 */
 	public PersonAspect(String name, IHierarchyAspect Parent) { super(name, Parent); }
 
-	/** Initializing Constructor	 */
+	/** Initializing Constructor
+	 *
+	 * <!-- docstate
+	 * tags: [code/domain_model]
+	 * concepts: [Attribute Modelling]
+	 * facets: {layer: domain, status: stable, complexity: low}
+	 * -->
+	 */
 	public PersonAspect(String Name) { super(Name, null); }
 
 ////////////////////////////////////////////////////////////////////////////////
@@ -90,7 +109,14 @@ extends SimpleAspect //AHierarchyAspect //Aspect
 	protected static final String STR_HANNOVER  = "Hannover";
 	protected static final String STR_MERCATOR  = "Mercatorstr. 5";
 
-	/** Tests all Methods of this Class	 */
+	/** Tests all Methods of this Class
+	 *
+	 * <!-- docstate
+	 * tags: [code/test_harness]
+	 * concepts: [Testing]
+	 * facets: {layer: test, status: broken, complexity: low}
+	 * -->
+	 */
 	public static void testIt(String[] args) { //throws java.io.IOException {
 		System.out.println("Testing " + PersonAspect.class.getName());
 		try {
@@ -123,6 +149,11 @@ extends SimpleAspect //AHierarchyAspect //Aspect
 	/**The main entry point for the application.
 	 *
 	 * @param args Array of parameters passed to the application
+	 * <!-- docstate
+	 * tags: [code/test_harness]
+	 * concepts: [Testing]
+	 * facets: {layer: test, status: stable, complexity: low}
+	 * -->
 	 * via the command line.	 */
 	public static void main (String[] args) { //throws java.io.IOException {
 		testIt(args); }

@@ -212,3 +212,30 @@ sound/WaveFile.java:WaveFile	class	sound/WaveFile.java	code/audio, code/file_par
 sound/WaveFormatChunk.java:WaveFormatChunk	class	sound/WaveFormatChunk.java	code/audio, code/binary_file_format	WAV Format Chunk	domain	stable	low
 sound/WaveStreamIn.java:WaveStreamIn	class	sound/WaveStreamIn.java	code/audio, code/media_playback	PCM Sample Stream	domain	broken	medium
 sound/WaveStreamOut.java:WaveStreamOut	class	sound/WaveStreamOut.java	code/audio, code/media_playback	WAV Writer	domain	broken	low
+aspect/AAspect.java:AAspect	class	aspect/AAspect.java	code/domain_model, code/hierarchy	Aspect Framework, Reflection-Based Dirty Tracking	domain	stable	high
+aspect	folder	aspect	code/domain_model, code/composite_pattern, code/hierarchy	Attribute Modelling, Reflective Property Access	domain	stable	medium
+aspect/AHierarchyAspect.java:AHierarchyAspect	class	aspect/AHierarchyAspect.java	code/domain_model, code/hierarchy	Aspect Framework, Reflection-Based Dirty Tracking	domain	stable	high
+aspect/AddressAspect.java:AddressAspect	class	aspect/AddressAspect.java	code/composite_pattern, code/domain_model	Composite Aspect, Attribute Modelling	domain	stable	low
+aspect/AddressAspect.java:AddressAspect.AddressAspect(String, IHierarchyAspect)	method	aspect/AddressAspect.java	code/domain_model	Attribute Modelling	domain	stable	low
+aspect/AddressAspect.java:AddressAspect.AddressAspect(String)	method	aspect/AddressAspect.java	code/domain_model	Attribute Modelling	domain	stable	low
+aspect/AddressAspect.java:AddressAspect.testIt(String[])	method	aspect/AddressAspect.java	code/test_harness	Testing	test	stable	low
+aspect/AddressAspect.java:AddressAspect.main(String[])	method	aspect/AddressAspect.java	code/test_harness	Testing	test	stable	low
+aspect/DoubleAspect.java:DoubleAspect	class	aspect/DoubleAspect.java	code/domain_model	Typed Property Validation	domain	stable	medium
+aspect/IAspect.java:IAspect	class	aspect/IAspect.java	code/domain_model, code/hierarchy	Aspect Framework	domain	stable	medium
+aspect/IHierarchyAspect.java:IHierarchyAspect	class	aspect/IHierarchyAspect.java	code/domain_model, code/hierarchy	Aspect Framework	domain	stable	medium
+aspect/ListAspect.java:ListAspect	class	aspect/ListAspect.java	code/domain_model	List/Table Aspect	domain	stable	medium
+aspect/PersonAspect.java:PersonAspect	class	aspect/PersonAspect.java	code/composite_pattern, code/domain_model	Composite Aspect, Attribute Modelling	domain	stable	low
+aspect/PersonAspect.java:PersonAspect.PersonAspect(String, IHierarchyAspect)	method	aspect/PersonAspect.java	code/domain_model	Attribute Modelling	domain	stable	low
+aspect/PersonAspect.java:PersonAspect.PersonAspect(String)	method	aspect/PersonAspect.java	code/domain_model	Attribute Modelling	domain	stable	low
+aspect/PersonAspect.java:PersonAspect.testIt(String[])	method	aspect/PersonAspect.java	code/test_harness	Testing	test	broken	low
+aspect/PersonAspect.java:PersonAspect.main(String[])	method	aspect/PersonAspect.java	code/test_harness	Testing	test	stable	low
+aspect/SimpleAspect.java:SimpleAspect	class	aspect/SimpleAspect.java	code/composite_pattern, code/domain_model	Composite Aspect, Attribute Modelling	domain	stable	low
+aspect/StringAspect.java:StringAspect	class	aspect/StringAspect.java	code/domain_model	Typed Property Validation	domain	stable	medium
+aspect/dialog/AQuestion.java:AQuestion	class	aspect/dialog/AQuestion.java	code/dialog	Console Q&A Model	domain	stable	low
+aspect/dialog	folder	aspect/dialog	code/dialog, code/dialog_invocation	Console Dialog Engine	domain	stable	low
+aspect/dialog/BoolQuestion.java:BoolQuestion	class	aspect/dialog/BoolQuestion.java	code/dialog	Console Q&A Model	domain	broken	low
+aspect/dialog/Dialog.java:Dialog	class	aspect/dialog/Dialog.java	code/dialog, code/dialog_invocation	Dialog Tree Runner	domain	stable	medium
+aspect/dialog/StreamDialog.java:StreamDialog	class	aspect/dialog/StreamDialog.java	code/dialog	Unimplemented Stub	domain	unfinished	low
+aspect/dialog/StreamDialog.java:StreamDialog.StreamDialog()	method	aspect/dialog/StreamDialog.java	code/dialog	Unimplemented Stub	domain	unfinished	low
+aspect/dialog/StreamDialog.java:StreamDialog.main(String[])	method	aspect/dialog/StreamDialog.java	code/dialog	Unimplemented Stub	domain	unfinished	low
+aspect/dialog/StringQuestion.java:StringQuestion	class	aspect/dialog/StringQuestion.java	code/dialog	Console Q&A Model	domain	stable	low

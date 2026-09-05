@@ -8,21 +8,25 @@ import synch.InvalidException;
 /**
   * Title: StringAspect<p>
   * Description:
-  * Purpose:
-  * Extends and implements the Aspect Class for String Values
-  * Purpose / Responsibilities of this Class
-  *
-  * Implementation Details:
-  *
-  * Known SubClasses:
-  *
-  * Known Uses:
+  * Extends and implements the Aspect Class for String Values, with
+  * Min/Max length validation and an (unused-for-validation) RegExp field.
+  * Unlike the other primitive Aspects, "" (empty string) is the regular
+  * representation of "no Value", never null.
   *
   * Copyright:	Copyright (c) Matthias Heuer<p>
   * Company:	personal<p>
   * Created on	07-01-2002, 05:26 PM<p>
   * @author 	Matthias Heuer
   * @version	1.0
+  * <!-- docstate
+  * pass: 2
+  * mtime: 2026-09-05T10:25:39Z
+  * digest: f7b860d99a5f5f8393269f705c9cdeb15b8812fd0b529502142582ef25e2f952
+  * stale: false
+  * tags: [code/domain_model]
+  * concepts: [Typed Property Validation]
+  * facets: {layer: domain, status: stable, complexity: medium}
+  * -->
   */
 public class StringAspect
 extends AHierarchyAspect { //Aspect {
@@ -50,7 +54,8 @@ protected String Value = ""; //String is the only Class where 'null' has a regul
 /** holds the Minimum Length for the Input    */
 protected int MinLength = 0;
 
-/** @return the Minimum Length for the Input   */
+/** Returns the lower bound enforced on this Aspect's Value length.
+  * @return the Minimum Length accepted by {@link #setValue(Object)} (validated in validatePrimVal)  */
 public int getMinLength() {
 	return MinLength; }
 
@@ -67,7 +72,8 @@ public void setMinLength(int MinLength_) {
 /** holds the Maximum Length for the Input   */
 protected int MaxLength = Integer.MAX_VALUE;
 
-/** @return the Maximum Length for the Input  */
+/** Returns the upper bound enforced on this Aspect's Value length.
+  * @return the Maximum Length accepted by {@link #setValue(Object)} (validated in validatePrimVal)  */
 public int getMaxLength() {
 	return MaxLength; }
 
@@ -84,7 +90,8 @@ public void setMaxLength(int MaxLength_) {
 /** holds Regular Expression this String has to obey to   */
 protected String RegExp;
 
-/** @return Regular Expression this String has to obey to  */
+/** Returns the stored pattern constraint.
+  * @return the Regular Expression this String is meant to obey to (stored only; not enforced by validatePrimVal)  */
 public String getRegExp() {
 	return RegExp; }
 
@@ -118,14 +125,15 @@ public void setRegExp(String RegExp_) {
 /// #region : Accessor Methods (getXXX/isXXX/setXXX)
 ////////////////////////////////////////////////////////////////////////////////
 
-/** @return The Aspect Value as a (boxed) Object  */
+/** Returns the current Value.
+  * @return the current String Value (never null; "" when unset)  */
 public Object getVal() {
 //	if (Status != 0) { return null; }
 	return Value; }
 
 /**
- * @return The Aspect Value as a String Representation
- * This is always possible for any Type
+ * Returns the current Value as a String.
+ * @return the current String Value itself (never null; "" when unset)
  * This replaces the getString() Method for typed Results.
  */
 public String toString() {
@@ -171,7 +179,9 @@ protected void setPrimVal(Object value) {
 //protected void setString(String value_) throws InvalidException {
 //	Value = value_; }
 
-/** @return The Aspect Value as a long Representation  */
+/** Parses the current Value as a long.
+  * @return the current Value parsed as a long
+  * @throws DataFormatException if the Value is not a valid long literal */
 public long getLong() throws DataFormatException {
 //	if (Status != 0)    { throw new InvalidException(this, value_, "Aspect '" + Name + "' has Status:" + Status); }
 	try {
@@ -179,7 +189,9 @@ public long getLong() throws DataFormatException {
 	catch (Exception x) { throw new DataFormatException("The Value '" + Value + "' could not be parsed: " + x.toString()); }
 }
 
-/** @return The Aspect Value as a double Representation  */
+/** Parses the current Value as a double.
+  * @return the current Value parsed as a double
+  * @throws DataFormatException if the Value is not a valid double literal */
 public double getDouble() throws DataFormatException {
 //	if (Status != 0)    { throw new InvalidException(this, value_, "Aspect '" + Name + "' has Status:" + Status); }
 	try {
@@ -187,7 +199,9 @@ public double getDouble() throws DataFormatException {
 	catch (Exception x) { throw new DataFormatException("The Value '" + Value + "' could not be parsed: " + x.toString()); }
 }
 
-/** @return The Aspect Value as a Date Representation  */
+/** Parses the current Value as a Date.
+  * @return the current Value parsed as a Date via the deprecated Date(String) constructor
+  * @throws DataFormatException if the Value cannot be parsed as a Date */
 public Date getDate() throws DataFormatException {
 //	if (Status != 0)    { throw new InvalidException("Aspect '" + Name + "' has Status:" + Status); }
 	try {

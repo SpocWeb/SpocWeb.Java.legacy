@@ -15,8 +15,6 @@ import streamIO.Log;
 /**
  * Title: Dialog<p>
  * Description:
- * Purpose:
- *
  * A Dialog holds a Tree of Questions (possibly w. Diamonds!)
  * It allows to lookup the next Question to retrieve
  * and to retrieve the Value of a certain Question!
@@ -34,6 +32,15 @@ import streamIO.Log;
  * @author mheuer
  * @version	1.0
  *
+ * <!-- docstate
+ * pass: 2
+ * mtime: 2026-09-05T10:26:09Z
+ * digest: 9a77335c0c995e190e846a5fe75e41754f2a1bd357cf77e5d0ae648b75996b5e
+ * stale: false
+ * tags: [code/dialog, code/dialog_invocation]
+ * concepts: [Dialog Tree Runner]
+ * facets: {layer: domain, status: stable, complexity: medium}
+ * -->
  */
 public class Dialog {
 
@@ -94,19 +101,23 @@ static final String[][] DIALOG = {
 		start = start_;
 	}
 
+	/** Character marking the start of a variable reference to substitute inside a Question's text (see REPLACE_BY_MAP) */
 	public char startChar = '[';
 
+	/** Character marking the end of a variable reference to substitute inside a Question's text (see REPLACE_BY_MAP) */
 	public char stopChar = ']';
 
 ////////////////////////////////////////////////////////////////////////////
 /// #region : Methods, public ones, then private ones (not in Interfaces)
 ////////////////////////////////////////////////////////////////////////////
 
-	/** @return this Dialog to allow for concatenating adds! */
+	/** Looks up a previously registered Question by Name.
+	  * @return the Question registered under the given Name, or null if none was added */
 	public AQuestion getQuestion(String name) {
 		return (AQuestion) questions.get(name); }
 
-	/** @return this Dialog to allow for concatenating adds! */
+	/** Registers the given Question under its own Name.
+	  * @return this Dialog to allow for concatenating adds! */
 	public Dialog addQuestion(AQuestion question) {
 		questions.put(question.getName(), question);
 		return this; }

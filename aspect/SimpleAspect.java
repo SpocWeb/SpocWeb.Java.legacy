@@ -5,23 +5,25 @@ package aspect;
 /**
   * Title: SimpleAspect<p>
   * Description:
-  * Purpose:
-  * Base Class for all Container Aspects without Validation
-  * Purpose / Responsibilities of this Class
-  *
-  * Design Decisions / Implementation Details:
-  * If similar Classes exist (e.g. Polymorphism),
-  * characterize the specific Differences to compare these.
-  *
-  * Known SubClasses: <none>
-  *
-  * Known Uses: <none>
+  * Base Class for composite "container" Aspects that hold no Value of
+  * their own (getVal() returns this, setPrimVal()/validatePrimVal() are
+  * no-ops) and simply group public Aspect-typed fields, e.g. AddressAspect
+  * and PersonAspect.
   *
   * Copyright:	Copyright (c) Matthias Heuer<p>
   * Company:	personal<p>
   * Created on	08-02-2001, 08:02 PM<p>
   * @author 	Matthias Heuer
   * @version	1.0
+  * <!-- docstate
+  * pass: 2
+  * mtime: 2026-09-05T10:25:22Z
+  * digest: 6b9e90a4b530a44147529d675b95d5d63473312938cb7e2b238aaf7eeba3b9a5
+  * stale: false
+  * tags: [code/composite_pattern, code/domain_model]
+  * concepts: [Composite Aspect, Attribute Modelling]
+  * facets: {layer: domain, status: stable, complexity: low}
+  * -->
   */
 public class SimpleAspect
 extends AHierarchyAspect {

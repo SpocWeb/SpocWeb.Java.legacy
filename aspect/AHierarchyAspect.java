@@ -7,25 +7,25 @@ import synch.InvalidException;
 /**
   * Title: AHierarchyAspect<p>
   * Description:
-  * Purpose:
   * Abstract Base Implementation of a HierarchyAspect
   * * it can have 'Parent' Aspects and inherits the Prefix from them
   * * validate and propagate Changes   upward to the Parents  (Multi Field Plausis).
   * * validate and propagate Changes downward to the Children (One   Field Plausis).
-  *
-  * Design Decisions / Implementation Details:
-  * If similar Classes exist (e.g. Polymorphism),
-  * characterize the specific Differences to compare these.
-  *
-  * Known SubClasses: <none>
-  *
-  * Known Uses: <none>
   *
   * Copyright:	Copyright (c) Matthias Heuer<p>
   * Company:	personal<p>
   * Created on	07-22-2002, 09:11 PM<p>
   * @author 	Matthias Heuer
   * @version	1.0
+  * <!-- docstate
+  * pass: 2
+  * mtime: 2026-09-05T10:23:42Z
+  * digest: 834fd581e4836929d6c2f3023550943914b86cdbc4fafb0609b7075521d3ad1a
+  * stale: false
+  * tags: [code/domain_model, code/hierarchy]
+  * concepts: [Aspect Framework, Reflection-Based Dirty Tracking]
+  * facets: {layer: domain, status: stable, complexity: high}
+  * -->
   */
 public abstract class AHierarchyAspect
 extends AAspect
@@ -48,7 +48,8 @@ implements IHierarchyAspect {
 	  */
 	protected IHierarchyAspect Parent;
 
-	/** @return The Aspect Parent  */
+	/** Returns this Aspect's Parent, if any.
+	  * @return the Parent Aspect this Aspect is nested under, or null if this Aspect is a root  */
 	public IHierarchyAspect getParent() { return Parent; }
 
 	/** Sets The Aspect Name. TODO: shouldn't this be an Invariant?  */
@@ -232,6 +233,10 @@ implements IHierarchyAspect {
 		try {
 			while (--i >= 0) {	//for each Field of Aspect Type, perform the get, clone and set Operations!
 				Field field = fields[i];
+				// TODO: LOGIC: type check uses IAspect.class but the result is cast to IHierarchyAspect;
+				// a public field typed as a plain (non-hierarchy) IAspect would pass the check and then
+				// throw ClassCastException here. Other methods in this class (validate(), the no-arg
+				// update()) consistently check IHierarchyAspect.class instead - this one does not.
 				if (IAspect.class.isAssignableFrom(field.getType())) { //Aspect Type => recourse
 					((IHierarchyAspect) field.get(this)).update(Source, Value, oldVal);
 				}

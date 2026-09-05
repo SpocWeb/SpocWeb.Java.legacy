@@ -5,23 +5,24 @@ import synch.InvalidException;
 /**
   * Title: BoolQuestion<p>
   * Description:
-  * Purpose:
-  * stores a boolean Question that can only be answered by Yes or No
-  * Purpose / Responsibilities of this Class
-  *
-  * Design Decisions / Implementation Details:
-  * If similar Classes exist (e.g. Polymorphism),
-  * characterize the specific Differences to compare these.
-  *
-  * Known SubClasses: <none>
-  *
-  * Known Uses: <none>
+  * A Question that can only be answered Yes or No, branching to a
+  * different next-Question name (nextOnTrue/nextOnFalse) depending on the
+  * Answer given.
   *
   * Copyright:	Copyright (c) Matthias Heuer<p>
   * Company:	personal<p>
   * Created on	01-05-2003, 03:54 PM<p>
   * @author 	Matthias Heuer
   * @version	1.0
+  * <!-- docstate
+  * pass: 2
+  * mtime: 2026-09-05T10:26:00Z
+  * digest: fd3a4be4bf2434d3e4250a1f784a2453e5efdc9d6b40278769dbf8bda4b7953d
+  * stale: false
+  * tags: [code/dialog]
+  * concepts: [Console Q&A Model]
+  * facets: {layer: domain, status: broken, complexity: low}
+  * -->
   */
 public class BoolQuestion
 extends AQuestion {
@@ -43,9 +44,12 @@ extends AQuestion {
 /// #region : Accessor Methods (getXXX/isXXX/setXXX)
 ////////////////////////////////////////////////////////////////////////////////
 
+	/** Sets the given boolean Answer directly (bypassing text parsing). */
 	public void setAnswer(boolean value) {
 		this.answer = value; }
 
+	/** Returns the Answer given.
+	  * @return the Answer given, typed as boolean */
 	public boolean getBoolAnswer() { return answer; }
 
 ////////////////////////////////////////////////////////////////////////////////
@@ -77,16 +81,23 @@ extends AQuestion {
 ////////////////////////////////////////////////////////////////////////////////
 
 	/**
+	 * Returns the Answer boxed as an Object.
+	 * @return the Answer, boxed as a Boolean
 	 * @see graphs.ICValue#getVal()
 	 */
 	public Object getVal() { return new Boolean(answer); }
 
 	/**
+	 * Parses the first character of the given Value's String representation: 'Y'/'y'/'J'/'j' (also
+	 * accepting the German "Ja") set the Answer true, anything else sets it false.
 	 * @see aspect.AAspect#setValue(Object)
 	 */
 	protected void setValue(Object val) throws InvalidException {
 		String str = val.toString().trim();
 		boolean value = false; //= Boolean.valueOf(str).booleanValue();
+		// TODO: LOGIC: str.charAt(0) throws StringIndexOutOfBoundsException when the trimmed input is
+		// empty (e.g. the user just presses Enter at the console prompt in AQuestion.ask()/Dialog.ask()),
+		// and val.toString() above throws NullPointerException if val is null. Neither is guarded.
 		switch(str.charAt(0)) {
 			case 'Y':
 			case 'y':
@@ -95,7 +106,8 @@ extends AQuestion {
 		} //switch()
 		setAnswer(value); }
 
-	/** @return the Name of the next Question, possibly dependant on the Answer */
+	/** Returns the name of the next Question, selected by the Answer given.
+	  * @return the name of the next Question: nextOnTrue if answered Yes, nextOnFalse if answered No */
 	public String getNext() {
 		return answer ? nextOnTrue : nextOnFalse; }
 

@@ -93,7 +93,7 @@ concurrently against the same file):
 | `streamIO/(root)` | 28 | 8003 | 0 | unclaimed | - |
 | `knowledge` | 27 | 3363 | 27 | done | main |
 | `stringOp` | 16 | 4579 | 0 | unclaimed | - |
-| `aspect` | 15 | 2493 | 0 | claimed | agent-aspect |
+| `aspect` | 15 | 2493 | 15 | done | agent-aspect |
 | `flow` | 14 | 1022 | 14 | done | agent-flow |
 | `reflect` | 12 | 2492 | 12 | done | agent-reflect |
 | `streamIO/diffPatch` | 11 | 2895 | 11 | done | agent-diffPatch |
@@ -239,6 +239,10 @@ same harness against it. A test that has not been seen red proves nothing.
 | sound/WaveStreamIn.java | WaveStreamIn | WaveStreamIn(...) | ~45 | `IOException` from the initial `skipBytes(channel*...)` is silently swallowed; if the skip fails partway, every subsequent Sample is read from the wrong Offset with no error signal. | Medium | open |
 | sound/WaveStreamIn.java | WaveStreamIn | nextLongInternal() (24-bit case) | - | Reads via `readInt()` (4 bytes) for a 24-bit Sample; the symmetric read-side counterpart to the WaveStreamOut 24-bit bug above. Already flagged by the original author's own `//TODO: read only 3 Bytes!` comment - real and still present, reported here per protocol, left as the author's existing comment. | Medium | open |
 | sound/DirectPlayer.java | DirectPlayer | keyPressed(...) | ~294 | `GET_KEY` can return `65535` (the CapsLock key value), out of bounds for the 256-entry `NOTES_BY_KEY` array; the resulting `ArrayIndexOutOfBoundsException` is silently swallowed, so CapsLock plays no note (harmless, but silent). | Low | open |
+| aspect/AHierarchyAspect.java | AHierarchyAspect | update(Object, Object, Object) | ~233 | Type check tests `IAspect.class.isAssignableFrom(field.getType())` but the result is cast to `IHierarchyAspect`; every other reflection loop in the class checks `IHierarchyAspect.class`. A public field typed as a plain (non-hierarchy) `IAspect` would pass the check and throw `ClassCastException` at the cast. No such field exists among the 15 in-scope classes today, but the interface permits it. | Low-Medium | open |
+| aspect/ListAspect.java | ListAspect | removeVal(int) | ~243 | Bounds guard uses `Index > list.size()` instead of `>=`, so `Index == list.size()` (one past the last element) slips through to `list.remove(Index)`, which throws an unchecked `IndexOutOfBoundsException` instead of the graceful `null` this method returns for every other invalid index. | Low | open |
+| aspect/ListAspect.java | ListAspect | testList() | ~324 | `asp2.set(PersonAspect.HOME + SEP + AddressAspect.CITY, ...)` uses `PersonAspect.HOME` ("home") as a field-name prefix, but `PersonAspect` has no field named "home" - its address field is `PersonAspect.ADDRESS`. `getLocalField()` fails to resolve and returns `null`, so `set()` throws `NullPointerException`; running `ListAspect.testIt()`/`main()` crashes immediately at this line. | Medium | open |
+| aspect/dialog/BoolQuestion.java | BoolQuestion | setValue(Object) | ~95 | `str.charAt(0)` throws `StringIndexOutOfBoundsException` on empty trimmed input, and `val.toString()` throws `NullPointerException` if `val` is null. A user running the console `Dialog` who presses Enter with no input at a Yes/No prompt crashes the dialog instead of re-prompting or defaulting. | Medium | open |
 
 ## Tool defects found and fixed during the pilot
 

@@ -5,8 +5,7 @@ import synch.InvalidException;
 /**
   * Title: StringQuestion<p>
   * Description:
-  * Purpose:
-  * implements the Model for a Text Question
+  * Implements the Model for a Text Question: a free-form String Answer with a fixed next-Question Name.
   *
   * Design Decisions / Implementation Details:
   *
@@ -19,6 +18,15 @@ import synch.InvalidException;
   * Created on	01-05-2003, 03:38 PM<p>
   * @author 	Matthias Heuer
   * @version	1.0
+  * <!-- docstate
+  * pass: 2
+  * mtime: 2026-09-05T10:26:23Z
+  * digest: 412d0ead6285240368a85982bcf5e776ddf0939ad70198a9c3e92af92cf23245
+  * stale: false
+  * tags: [code/dialog]
+  * concepts: [Console Q&A Model]
+  * facets: {layer: domain, status: stable, complexity: low}
+  * -->
   */
 public class StringQuestion
 extends AQuestion {
@@ -61,12 +69,14 @@ extends AQuestion {
 ////////////////////////////////////////////////////////////////////////////////
 
 	/**
-	 * @return the given Answer 
+	 * Returns the given Answer boxed as an Object.
+	 * @return the given Answer, typed as Object
 	 * @see graphs.ICValue#getVal()
 	 */
 	public Object getVal() { return answer; }// throws InvalidException {	}
 
-	/** @return the given Answer in its original Type */
+	/** Returns the given Answer.
+	  * @return the given Answer as a String (its native Type for this Question) */
 	public String getAnswer() { return answer; }// throws InvalidException {
 
 	/**
@@ -79,7 +89,9 @@ extends AQuestion {
 	public void setAnswer(String answer_) { // throws InvalidException {
 		this.answer = answer_; }
 
-	/** @see aspect.dialog.AQuestion#getNext()	 */
+	/** Returns the fixed name of the next Question.
+	  * @return the fixed Name of the next Question (does not branch on the Answer, unlike BoolQuestion)
+	  * @see aspect.dialog.AQuestion#getNext()	 */
 	public String getNext() { return next; }
 
 ////////////////////////////////////////////////////////////////////////////////

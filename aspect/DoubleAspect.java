@@ -10,21 +10,24 @@ import function.byref.ByRefDouble;
 /**
   * Title: DoubleAspect<p>
   * Description:
-  * Purpose:
-  * Extends and implements the Aspect Class for String Values
-  * Purpose / Responsibilities of this Class
-  *
-  * Implementation Details:
-  *
-  * Known SubClasses:
-  *
-  * Known Uses:
+  * Extends and implements the Aspect Class for double-precision numeric
+  * Values, with Min/Max range validation and an optional Modulus (step
+  * size) check. Uses NaN as the representation for "no Value".
   *
   * Copyright:	Copyright (c) Matthias Heuer<p>
   * Company:	personal<p>
   * Created on	07-01-2002, 05:26 PM<p>
   * @author 	Matthias Heuer
   * @version	1.0
+  * <!-- docstate
+  * pass: 2
+  * mtime: 2026-09-05T10:24:05Z
+  * digest: 4ab02385677c808fa6e3900877966b64dad70f0fe35af11d4d52456146181398
+  * stale: false
+  * tags: [code/domain_model]
+  * concepts: [Typed Property Validation]
+  * facets: {layer: domain, status: stable, complexity: medium}
+  * -->
   */
 public class DoubleAspect
 extends AHierarchyAspect { //Aspect {
@@ -50,7 +53,8 @@ extends AHierarchyAspect { //Aspect {
 	/** holds the Minimum Value for the Input    */
 	protected double MinValue = Double.MIN_VALUE;
 	
-	/** @return the Minimum Value for the Input   */
+	/** Returns the lower bound enforced on this Aspect's Value.
+	  * @return the Minimum Value accepted by {@link #setValue(Object)} (validated in validatePrimVal)  */
 	public double getMinValue() {
 		return MinValue; }
 	
@@ -65,7 +69,8 @@ extends AHierarchyAspect { //Aspect {
 	/** holds the Maximum Value for the Input   */
 	protected double MaxValue = Double.MAX_VALUE;
 	
-	/** @return the Maximum Value for the Input  */
+	/** Returns the upper bound enforced on this Aspect's Value.
+	  * @return the Maximum Value accepted by {@link #setValue(Object)} (validated in validatePrimVal)  */
 	public double getMaxValue() {
 		return MaxValue; }
 	
@@ -80,7 +85,8 @@ extends AHierarchyAspect { //Aspect {
 	/** holds the Maximum Value for the Input   */
 	protected double Module = Double.MAX_VALUE;
 	
-	/** @return the Maximum Value for the Input  */
+	/** Returns the required Modulus.
+	  * @return the required Modulus: a set Value must be an (approximate) integer multiple of this  */
 	public double getModule() {
 		return Module; }
 	
@@ -116,7 +122,8 @@ extends AHierarchyAspect { //Aspect {
 	/// #region : Accessor Methods (getXXX/isXXX/setXXX)
 	////////////////////////////////////////////////////////////////////////////////
 	
-	/** @return The Aspect Value as a (boxed) Object  */
+	/** Returns the current Value boxed as an Object.
+	  * @return the current double Value, boxed as a Double  */
 	public Object getVal() {
 	//	if (Status != 0) { return null; }
 		return new Double(value); }
@@ -125,18 +132,21 @@ extends AHierarchyAspect { //Aspect {
 	/// Convenience Access Methods.
 	///////////////////////////////////////////////////////////////////////////////////
 	
-	/** @return The Aspect Value as a long Representation  */
+	/** Converts the current Value to a long.
+	  * @return the current Value truncated/rounded to a long, via ACountAble.getLong()  */
 	public long getLong() { return ACountAble.getLong(value); }
-	
-	/** @return The Aspect Value as a double Representation  */
+
+	/** Returns the current Value as a primitive.
+	  * @return the current Value as a primitive double  */
 	public double getDouble() { return value; }
-	
-	/** @return The Aspect Value as a Date Representation  */
+
+	/** Reinterprets the current Value as an epoch-milliseconds timestamp.
+	  * @return the current Value reinterpreted as epoch milliseconds and wrapped in a Date  */
 	public Date getDate() { return new Date(ACountAble.getLong(value)); }
-	
+
 	/**
-	 * @return The Aspect Value as a String Representation
-	 * This is always possible for any Type
+	 * Formats the current Value as a String.
+	 * @return the current Value formatted as a String, or "" if the Value is NaN (i.e. unset)
 	 */
 	public String toString() {
 		if (value != value) { //cannot test for NaN or Infinity using '==' !

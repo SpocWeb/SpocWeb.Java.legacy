@@ -32,6 +32,15 @@ import synch.InvalidException;
   * Created on	07-22-2002, 07:30 PM<p>
   * @author 	Matthias Heuer
   * @version	1.0
+  * <!-- docstate
+  * pass: 2
+  * mtime: 2026-09-05T10:24:25Z
+  * digest: c11a7ddf63f14ece97525b7fdc1528b834f52cc28f98c41ee97008d1da7dc96b
+  * stale: false
+  * tags: [code/domain_model, code/hierarchy]
+  * concepts: [Aspect Framework]
+  * facets: {layer: domain, status: stable, complexity: medium}
+  * -->
   */
 public interface IHierarchyAspect
 extends IAspect, IValidator, ISubscriber
@@ -45,7 +54,8 @@ extends IAspect, IValidator, ISubscriber
 /// #region : Accessor Methods (getXXX/isXXX/setXXX)
 ////////////////////////////////////////////////////////////////////////////////
 
-	/** @return The Aspect Parent  */
+	/** Returns this Aspect's Parent, if any.
+	  * @return the Parent Aspect this Aspect is nested under, or null if this Aspect is a root  */
 	public IHierarchyAspect getParent();
 
 ////////////////////////////////////////////////////////////////////////////////

@@ -38,6 +38,15 @@ import synch.InvalidException;
   * and are slightly harder to use due to Accessor Methods,
   * but they are still typesafe AND other Convenience can be used
   * like Read Only Values etc.
+  * <!-- docstate
+  * pass: 2
+  * mtime: 2026-09-05T10:24:18Z
+  * digest: 4f98d2e90ceea351e8bdaeb01ebf3ef86b508927095d2908f7f23a7813dd0ee4
+  * stale: false
+  * tags: [code/domain_model, code/hierarchy]
+  * concepts: [Aspect Framework]
+  * facets: {layer: domain, status: stable, complexity: medium}
+  * -->
   */
 public interface IAspect
 	extends IPair, Cloneable, IInstantiAble, IDirtyFlag { //ICopyAble {
@@ -50,10 +59,12 @@ public interface IAspect
 /// #region : Accessor Methods (getXXX/isXXX/setXXX)
 ////////////////////////////////////////////////////////////////////////////////
 
-	/** @return The Aspect Name, which is identical to getKey() but typed to String   */
+	/** Returns this Aspect's name.
+	  * @return the (possibly fully-qualified) Aspect Name, which is identical to getKey() but typed to String   */
 	public String getName();
 
-	/** @return the Aspect denoted by the given Name
+	/** Resolves the sub-Aspect denoted by the given (local or fully qualified) property name.
+	  * @return the Aspect denoted by the given Name
 	  * Works both with local Names and fully qualified Names!
 	  * SubStr is a Monoid and the hierarchical structure matches the Object structure.
 	  */
@@ -90,7 +101,8 @@ public interface IAspect
 	/** Recursively clears this Aspect and all Subaspects */
 //	public void clear(String Property);
 
-	/** @return a deep Copy of this Object */
+	/** Creates a new, empty Instance of this Aspect's concrete type under the given Name (not a copy of this Object's Value).
+	  * @return a new, empty Instance */
 	public IAspect newInstance(String Name);
 
 	/** Tries to fill this Object with the given Value.

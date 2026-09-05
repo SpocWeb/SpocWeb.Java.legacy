@@ -7,9 +7,9 @@ import synch.InvalidException;
 /**
   * Title: ListAspect<p>
   * Description:
-  * Purpose:
-  * Extends and implements the Aspect Class for Objects (Tables)
-  * Purpose / Responsibilities of this Class
+  * Extends and implements the Aspect Class for a List (Table) of Aspect
+  * records, optionally keyed by an identifying "Id Column" name, with
+  * lookup/add/remove operations by index or by (Property, Value) match.
   *
   * Design Decisions:
   * Instead of using a ListAspect containing ListAspects (generic),
@@ -36,6 +36,15 @@ import synch.InvalidException;
   * Created on	07-01-2002, 05:26 PM<p>
   * @author 	Matthias Heuer
   * @version	1.0
+  * <!-- docstate
+  * pass: 2
+  * mtime: 2026-09-05T10:25:16Z
+  * digest: eff64eebe9894b63bc607f5b042eace22a795804578384e7c3ab671a34e667a7
+  * stale: false
+  * tags: [code/domain_model]
+  * concepts: [List/Table Aspect]
+  * facets: {layer: domain, status: stable, complexity: medium}
+  * -->
   */
 public class ListAspect
 extends AHierarchyAspect { //Aspect {
@@ -140,11 +149,13 @@ extends AHierarchyAspect { //Aspect {
 	/// #region : Accessor Methods (getXXX/isXXX/setXXX)
 	////////////////////////////////////////////////////////////////////////////////
 	
-	/** @return a certain (indexed) Aspect Value as a (boxed) Object  */
+	/** Returns the Element at the given position.
+	  * @return the list Element (an IAspect record) at the given Index  */
 	public IAspect getAt(final int i) {
 		return (IAspect) list.get(i); }
-	
-	/** @return a certain (indexed) Aspect Value as a (boxed) Object
+
+	/** Searches the list (from the end) for an Element whose Property Prop equals val.
+	  * @return a certain (indexed) Aspect Value as a (boxed) Object
 	  * where the Property Prop has the given Value.
 	  * only the first Match is returned (Prop should be a unique key)
 	  */
@@ -159,7 +170,8 @@ extends AHierarchyAspect { //Aspect {
 				return curr; }
 		} return null; }
 	
-	/** @return a certain (indexed) Aspect Value as a (boxed) Object
+	/** Collects all list Elements whose Property Prop equals val.
+	  * @return a certain (indexed) Aspect Value as a (boxed) Object
 	  * where the Property Prop has the given Value.
 	  * only the first Match is returned (Prop should be a unique key)
 	  */
@@ -175,13 +187,14 @@ extends AHierarchyAspect { //Aspect {
 				ret.add(curr); }
 		} return ret; }
 	
-	/** @return The current Aspect Value as a (boxed) Object  */
+	/** Returns the currently selected Element.
+	  * @return the currently selected list Element (set via setVal/setPrimVal), or null if none is selected  */
 	public Object getVal() {
 		return Value; }
-	
+
 	/**
-	 * @return The Aspect Value as a String Representation
-	 * This is always possible for any Type
+	 * Formats the currently selected Element as a String.
+	 * @return the selected Element's String Representation, or null if no Element is selected
 	 */
 	public String toString() {
 		if (Value == null) {
@@ -217,16 +230,23 @@ extends AHierarchyAspect { //Aspect {
 		addVal(value, list.size());
 	}
 	
+	/** Removes the given Element from the list (identity/equals lookup via ArrayList.indexOf).
+	  * @return the Item just removed, or null if it was not found in the list
+	  */
 	public IAspect removeVal(IAspect value) {
 		int ndx = list.indexOf(value);
 		if (ndx < 0) { //not in the List
 			return null; }
 		return removeVal(ndx); }
-	
+
 	/** removes the Value at the given Index.
 	  * @return the Item just removed
 	  */
 	public IAspect removeVal(int Index) {
+		// TODO: LOGIC: bounds check uses '>' instead of '>=', so Index == list.size() (one past the
+		// last valid element) slips through this guard and reaches list.remove(Index) below, which
+		// throws an unchecked IndexOutOfBoundsException instead of returning null like every other
+		// out-of-range Index does here.
 		if ((Index < 0) || (Index > list.size())) { //better to let the Exception to be thrown now...
 			return null; } //...than later when this Context does no longer exist
 		return (IAspect) list.remove(Index); }
@@ -246,9 +266,8 @@ extends AHierarchyAspect { //Aspect {
 				return curr; }
 		} return null; }
 	
-	/** @return a certain (indexed) Aspect Value as a (boxed) Object
-	  * where the Property Prop has the given Value.
-	  * only the first Match is returned (Prop should be a unique key)
+	/** Removes and collects all list Elements whose Property Prop equals val.
+	  * @return the removed Elements
 	  */
 	public ArrayList removeVals(String Prop, Object val) {
 		ArrayList ret = new ArrayList(list.size());
@@ -305,6 +324,9 @@ extends AHierarchyAspect { //Aspect {
 		asp2.set(PersonAspect.LAST_NAME, PersonAspect.STR_WARMBOLD);
 		asp1.set(PersonAspect.LAST_NAME, PersonAspect.STR_HEUER   );
 		asp1.Address.City.setVal(PersonAspect.STR_FRANKFURT);
+		// TODO: LOGIC: PersonAspect.HOME ("home") does not match any public field of PersonAspect
+		// (the address field is named "Address", exposed via PersonAspect.ADDRESS); getLocalField()
+		// will fail to resolve it and return null, so the following set() throws NullPointerException.
 		asp2.set(PersonAspect.HOME + SEP + AddressAspect.CITY, PersonAspect.STR_HANNOVER);
 		sa.addVal(asp1);
 		sa.addVal(asp2); //would I allow Duplicates? yes, otherwise inserting would be too expensive!
