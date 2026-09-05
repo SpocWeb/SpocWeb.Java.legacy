@@ -43,9 +43,9 @@ cost more tokens than one and burn the 5-hour window N times faster.
 | `graphs` | 31 | 11258 | 0 | unclaimed | - |
 | `asynch` | 28 | 3052 | 0 | unclaimed | - |
 | `streamIO/(root)` | 28 | 8003 | 0 | unclaimed | - |
-| `knowledge` | 26 | 2595 | 26 | done | main |
+| `knowledge` | 27 | 3363 | 27 | done | main |
 | `stringOp` | 16 | 4579 | 0 | unclaimed | - |
-| `tools` | 16 | 3281 | 16 | done | - |
+| `tools` | 17 | 3468 | 17 | done | - |
 | `aspect` | 15 | 2493 | 0 | unclaimed | - |
 | `flow` | 14 | 1022 | 0 | unclaimed | - |
 | `reflect` | 12 | 2492 | 0 | unclaimed | - |
@@ -130,13 +130,19 @@ explicitly authorized task. The `Status` column records what happened afterwards
 matching `// TODO: LOGIC:` / `// TODO: SECURITY:` marker at each line for anything still
 open.
 
-The `knowledge/` rows were fixed under test on 2026-09-05 and are pinned by
-`knowledge/KnowledgeTest.java`, which runs with plain `javac`/`java` and no database:
+Every row below was fixed under test on 2026-09-05, pinned by two suites that need no
+build file, no test framework and no database:
 
 ```
-javac -d out knowledge/*.java
-java -cp "out;." knowledge.KnowledgeTest
+javac -d out knowledge/*.java     && java -cp "out;." knowledge.KnowledgeTest
+javac -d out tools/threads/*.java && java -cp "out;." tools.threads.TimeOuterTest
 ```
+
+`TimeOuterTest` is the partial case worth knowing about. The interrupt-count defect is
+directly observable and is tested for what it does. Unsafe publication is a data race and
+cannot be reproduced on demand, so those checks pin the structural properties whose absence
+made the race possible - that no constructor starts the monitoring thread, and that the
+state it reads is final - rather than pretending to observe the race itself.
 
 Every one of those checks was confirmed to fail against the pre-fix sources before the fix
 landed, by compiling `git show HEAD:knowledge/*.java` into a separate tree and running the
@@ -144,8 +150,8 @@ same harness against it. A test that has not been seen red proves nothing.
 
 | File Path | Class | Method | Line | Description | Severity | Status |
 |---|---|---|---|---|---|---|
-| tools/threads/TimeOuter.java | TimeOuter | run() | 81 | Class contract says the monitored Thread is interrupted "after the given TimeOut" (one shot), but the loop re-interrupts it every `sleepTime` while it stays alive; `testIt()` has to clear `doInterrupt` by hand to get the documented behaviour. | Medium | open |
-| tools/threads/TimeOuter.java | TimeOuter | TimeOuter(Thread, long) | 62 | `this` is published to a new Thread from inside the constructor via `new Thread(this).start()`; the fields that Thread reads are non-final and unsynchronized, so a subclass constructor or a reordered write could let it observe `sleepTime == 0` or `monitoredThread == null`. | Medium | open |
+| tools/threads/TimeOuter.java | TimeOuter | run() | - | Class contract said the monitored Thread is interrupted "after the given TimeOut" (one shot), but the loop re-interrupted it every `sleepTime` while it stayed alive; `testIt()` had to clear `doInterrupt` by hand to get the documented behaviour. Confirmed red at 6 interruptions where 1 was contracted. `run()` is now one-shot and the demo no longer juggles the flag. | Medium | **fixed** |
+| tools/threads/TimeOuter.java | TimeOuter | TimeOuter(Thread, long) | - | `this` was published to a new Thread from inside the constructor via `new Thread(this).start()`, and the fields that Thread reads were non-final and unsynchronized. Construction and starting are now separate: the constructor is private and starts nothing, `monitor(Thread, long)` starts the thread after construction completes, and all three fields are final. | Medium | **fixed** |
 | knowledge/DBObjectFactory.java | DBObjectFactory | insertObject(PersistAble) | - | The column list is built keys-then-fields ascending, but the value list appended fields first and then keys, each descending, so every value landed in the wrong column. Confirmed against the emitted SQL: `INSERT INTO MetricAttribute(StatusID,SubjectID,TypeID,Value) VALUES (4.5,11,22,33)`. | High | **fixed** |
 | knowledge/DBObjectFactory.java | DBObjectFactory | Condition(IPrimaryKey, String), insertObject, updateObject | - | Values were concatenated into the SQL text unquoted and unescaped, so a string containing an apostrophe produced invalid SQL and a hostile one could close the literal and append clauses. Now routed through `DBObjectFactory.literal(Object)`: numbers bare, everything else single-quoted with embedded quotes doubled. | High | **fixed** |
 | knowledge/DBObjectFactory.java | DBObjectFactory | updateObject(PersistAble) | - | Appended `STR_WHERE_` and then a `Condition()` that already opens with `WHERE`, emitting `SET Value=4.5  WHERE  WHERE (TypeID=11)`. Not flagged during documentation; found by inspecting the captured SQL. | High | **fixed** |
