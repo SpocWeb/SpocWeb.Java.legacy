@@ -83,10 +83,10 @@ concurrently against the same file):
 | `streamIO/integer` | 157 | 39243 | 0 | unclaimed | - |
 | `graphic` | 131 | 29665 | 0 | unclaimed | - |
 | `math` | 84 | 58523 | 0 | unclaimed | - |
-| `structure` | 52 | 4933 | 0 | unclaimed | - |
-| `streamIO/real` | 51 | 6801 | 0 | unclaimed | - |
-| `tester` | 49 | 3327 | 0 | unclaimed | - |
-| `technology` | 41 | 9400 | 0 | unclaimed | - |
+| `structure` | 52 | 4933 | 0 | claimed | agent-structure |
+| `streamIO/real` | 51 | 6801 | 0 | claimed | agent-streamIO-real |
+| `tester` | 49 | 3327 | 0 | claimed | agent-tester |
+| `technology` | 41 | 9400 | 0 | claimed | agent-technology |
 | `synch` | 32 | 4243 | 32 | done | agent-synch |
 | `graphs` | 31 | 11258 | 31 | done | agent-graphs |
 | `asynch` | 28 | 3052 | 28 | done | agent-asynch |
