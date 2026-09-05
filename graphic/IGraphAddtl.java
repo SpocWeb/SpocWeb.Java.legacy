@@ -8,21 +8,24 @@ package graphic;
 import java.awt.Color;
 
 /**
- * Title: IGraphAddtl<p>
- * Description:
- * Defines additional Graphic Primitives not in the java.awt.Graphics Class 
- * for optimizing Speed. 
- *
- * Known SubClasses: <none>
- *
- * Known Uses: <none>
+ * Defines additional graphic primitives not in {@link java.awt.Graphics},
+ * for optimized speed: direct line/rectangle/triangle/polygon drawing built
+ * on {@code setPixel()} instead of general path filling.
  *
  * Copyright:	Copyright (c) Matthias Heuer<p>
  * Company:	personal<p>
  * Created on	10-26-2002, 12:47 PM<p>
  * @author mheuer
  * @version	1.0
- *
+ * <!-- docstate
+ * pass: 2
+ * mtime: 2026-09-05T12:02:02Z
+ * digest: 7510e05fc5f58a85706ce66b470bd447dde1f28bd318ae228f76d59f705b39de
+ * stale: false
+ * tags: [code/graphics, code/line_rasterization]
+ * concepts: [Additional Fast Primitives Interface]
+ * facets: {layer: infrastructure, status: legacy, complexity: low}
+ * -->
  */
 public interface IGraphAddtl {
 

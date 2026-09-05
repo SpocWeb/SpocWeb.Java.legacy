@@ -4,6 +4,9 @@ import graphic.IPoint2DFunction;
 import graphic.Point2D;
 
 /**
+  * Generates an "AppleMan" fractal (a Mandelbrot/Julia-style escape-time set)
+  * over a 2D parameter plane.
+  * <p>
   * Title: Apple<p>
   * Description:
   * Purpose:
@@ -23,6 +26,15 @@ import graphic.Point2D;
   * Created on	07-07-2002, 09:50 AM<p>
   * @author 	Matthias Heuer
   * @version	1.0
+  * <!-- docstate
+  * pass: 2
+  * mtime: 2026-09-05T11:50:57Z
+  * digest: a0e654b4f5726ea3c44530c821d59632fa8757f721fcd67042900d3cddfbc2d0
+  * stale: false
+  * tags: [code/algorithm, code/math]
+  * concepts: [Fractal Applet (Escape-Time Set)]
+  * facets: {layer: test, status: legacy, complexity: medium}
+  * -->
   */
 public class Apple
 implements IPoint2DFunction {
@@ -35,13 +47,16 @@ implements IPoint2DFunction {
 	/// #region : static Methods
 	////////////////////////////////////////////////////////////////////////////////
 	
-	/** @return the Square of the argument */
+	/** Squares the given value.
+	 * @return the Square of the argument */
 	final static public double sqr(double arg) { return arg*arg; }
-	
-	/** @return the Square of the argument */
+
+	/** Squares the given value.
+	 * @return the Square of the argument */
 	final static public float sqr(float arg) { return arg*arg; }
-	
-	/** @return true, if this Vector definitely lies inside the Apple Man */
+
+	/** Cheaply tests whether a point is definitely inside the Mandelbrot-style Apple set.
+	 * @return true, if this Vector definitely lies inside the Apple Man */
 	public static boolean inAppleMan(double[] V) {
 		//the first Test solely relies on the real Component!
 		if ((V[0] < -1.25) ||
@@ -55,7 +70,8 @@ implements IPoint2DFunction {
 			return sqr(sqrIm + sqrIm + shiftRe) < sqrIm; }
 			return sqr(1 + V[0]) + sqrIm < 0.0625; } //1/16
 	
-	/** @return the abs Norm of the given complex Value */
+	/** Computes a cheap L1-style approximation of the complex absolute value.
+	 * @return the abs Norm of the given complex Value */
 	public static double AbsV(double[] V) {
 		if (V[0] >= 0) {
 			if (V[1] >= 0) { //even faster not to call abs()? Should be left to the Compiler!
@@ -65,7 +81,8 @@ implements IPoint2DFunction {
 				return  V[1] - V[0]; }
 				return -V[1] - V[0]; }
 	
-	/** @return the Apple Function x*x+c in Place */
+	/** Applies the complex iteration x = x*x + c to {@code x} in place.
+	 * @return the Apple Function x*x+c in Place */
 	public static double[] AppleFuncAt (double[] x, double[] c) {
 	//	x *= x;
 	//	x += c; //x*x+c komplex !
@@ -183,7 +200,7 @@ implements IPoint2DFunction {
 	 * @param StepWidth_ the Step Size of the Parameter Range
 	 * @param JuliaParam_ the Julia Parameter. If null the AppleMan Set is calculated.
 	 * @param MaxDepth_ the Maximum Depth up to which the Iteration is performed.
-	 * @param boolean retSize_ switches returning the final Value when no Convergence.
+	 * @param retSize_ switches returning the final Value when no Convergence.
 	 */
 	protected Apple(double[] StartValue_, double[] StepWidth_, double[] JuliaParam_, int MaxDepth_, boolean retSize_) {
 		this.MaxDepth = MaxDepth_;

@@ -1,9 +1,20 @@
 package graphic;
 
-/**This Class defines different Pens and Brushes
+/**
+ * Generates bit-pattern constants for dashed pens and hatched brushes.
  *
- * A Pen is used to draw a Line (no matter in which Direction)
- * A Brush is used to fill an Area (where the Vectors are aligned!).  */
+ * <p>A pen is used to draw a line (no matter in which direction); a brush is
+ * used to fill an area (where the vectors are aligned).
+ * <!-- docstate
+ * pass: 2
+ * mtime: 2026-09-05T11:52:15Z
+ * digest: 970a9e919fe501c8dfd2e218d83c1378dc1aadcaa06ecb6ac3fd4e1157c72435
+ * stale: false
+ * tags: [code/graphics]
+ * concepts: [Pen and Brush Pattern Factory]
+ * facets: {layer: utility, status: legacy, complexity: medium}
+ * -->
+ */
 public class GraphicPattern
 {
 	/**number of Bits in the Patterns (int assumed)	 */
@@ -56,6 +67,7 @@ public class GraphicPattern
 		return Pattern;
 	}
 
+	/** Bit mask for the highest bit of a pattern word, used when shifting right. */
 	private static final int TopBit = 0x80000000;
 
 	/**Generates a periodic Density Pattern:

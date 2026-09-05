@@ -50,14 +50,21 @@ import technology.xml.SaxDispatcher;
  * @author mheuer
  * @version	1.0
  *
+ * <!-- docstate
+ * pass: 2
+ * mtime: 2026-09-05T11:48:29Z
+ * digest: cd5372a949813412e28c3269508728e2136d6d10dd580b31f5fe776a330059aa
+ * stale: false
+ * tags: [code/rendering, code/parsing]
+ * concepts: [SVG Applet Renderer]
+ * facets: {layer: utility, status: broken, complexity: high}
+ * -->
  */
 public class SvgApplet 
 extends BaseApplet 
 implements IRepainter { // 
 
-	/**
-	 * 
-	 */
+	/** Serialization version identifier for this class. */
 	private static final long serialVersionUID = 1L;
 	/** Local Logger Class */
 	private final Log L = new Log(SvgApplet.class, 1);
@@ -145,37 +152,67 @@ implements IRepainter { //
 	/// #region : static Constants for the XML Grammar
 	////////////////////////////////////////////////////////////////////////////////
 	/// Elements
+	/** SVG element name {@code svg}, the root element. */
 	final static public String STR_ELM_SVG = "svg";
+	/** SVG element name {@code ellipse}. */
 	final static public String STR_ELM_ELLIPSE = "ellipse";
+	/** SVG element name {@code rect}. */
 	final static public String STR_ELM_RECT = "rect";
+	/** SVG element name {@code image}. */
 	final static public String STR_ELM_IMAGE = "image";
+	/** SVG element name {@code circle}. */
 	final static public String STR_ELM_CIRCLE = "circle";
+	/** SVG element name {@code line}. */
 	final static public String STR_ELM_LINE = "line";
+	/** SVG element name {@code text}. */
 	final static public String STR_ELM_TEXT = "text";
+	/** SVG element name {@code polygon}. */
 	final static public String STR_ELM_POLYGON = "polygon";
+	/** SVG element name {@code polyline}. */
 	final static public String STR_ELM_POLYLINE = "polyline";
+	/** SVG element name {@code path}. */
 	final static public String STR_ELM_PATH = "path";
+	/** SVG element name {@code a} (anchor/link). */
 	final static public String STR_ELM_A = "a";
+	/** SVG element name {@code g} (group). */
 	final static public String STR_ELM_G = "g";
+	/** SVG element name {@code desc} (description). */
 	final static public String STR_ELM_DESC = "desc";
+	/** Empty element-name placeholder. */
 	final static public String STR_ELM_ = "";
 
 	/// Attributes
+	/** SVG attribute name {@code viewBox}. */
 	final static public String STR_ATTR_VIEW_BOX = "viewBox";
+	/** SVG attribute name {@code width}. */
 	final static public String STR_ATTR_WIDTH = "width";
+	/** SVG attribute name {@code height}. */
 	final static public String STR_ATTR_HEIGHT = "height";
+	/** SVG attribute name {@code x1}, the line start X coordinate. */
 	final static public String STR_ATTR_X1 = "x1";
+	/** SVG attribute name {@code x2}, the line end X coordinate. */
 	final static public String STR_ATTR_X2 = "x2";
+	/** SVG attribute name {@code y1}, the line start Y coordinate. */
 	final static public String STR_ATTR_Y1 = "y1";
+	/** SVG attribute name {@code y2}, the line end Y coordinate. */
 	final static public String STR_ATTR_Y2 = "y2";
+	/** SVG attribute name {@code x}. */
 	final static public String STR_ATTR_X = "x";
+	/** SVG attribute name {@code y}. */
 	final static public String STR_ATTR_Y = "y";
+	/** SVG attribute name {@code xlink:href}, the referenced resource URI. */
 	final static public String STR_ATTR_HREF = "xlink:href";
+	/** SVG attribute name {@code cx}, the ellipse/circle center X coordinate. */
 	final static public String STR_ATTR_CX = "cx";
+	/** SVG attribute name {@code cy}, the ellipse/circle center Y coordinate. */
 	final static public String STR_ATTR_CY = "cy";
+	/** SVG attribute name {@code rx}, the ellipse X radius. */
 	final static public String STR_ATTR_RX = "rx";
+	/** SVG attribute name {@code ry}, the ellipse Y radius. */
 	final static public String STR_ATTR_RY = "ry";
+	/** SVG attribute name {@code font-size}. */
 	final static public String STR_ATTR_FONT_SIZE = "font-size";
+	/** Empty attribute-name placeholder. */
 	final static public String STR_ATTR_ = "";
 
 	////////////////////////////////////////////////////////////////////////////
@@ -190,14 +227,26 @@ implements IRepainter { //
 		graph = graph_;
 	}
 
+	/** Whether the Applet's bounds are squared before mapping coordinates, so X and Y scale equally. */
 	protected boolean equiScale = true;
-	
-	protected Coordinates2D trafo; 
-	
+
+	/** Current coordinate transform between SVG user space and Applet pixel space, or {@code null} before {@link #svg(Attributes)} sets it. */
+	protected Coordinates2D trafo;
+
+	/**
+	 * Returns the current coordinate transform.
+	 * @param bounds currently unused; the transform is returned regardless of this argument
+	 */
+	// TODO: LOGIC: the bounds parameter is ignored and the transform is never recomputed from it;
+	// every caller passes null, so this is effectively a no-arg getter for #trafo.
 	protected Coordinates2D getTrafo(final Rectangle bounds) {
-		return trafo; 
+		return trafo;
 	}
-	
+
+	/** Sets the coordinate transform and installs a mouse controller for it on this Applet. */
+	// TODO: LOGIC: adds a new Coord2DMouseController via addMouseListener/addMouseMotionListener
+	// on every call without removing the listeners installed by a previous call, so repeated
+	// invocations (this method is protected and callable by subclasses) accumulate duplicate listeners.
 	protected void setTrafo(final Coordinates2D trafo_) {
 		this.trafo = trafo_;
 		Coord2DMouseController ctrl = new Coord2DMouseController(trafo, this);
@@ -292,6 +341,7 @@ implements IRepainter { //
 	public SvgApplet() {}
 	
 	/**
+	 * Creates an instance that will load the SVG document at the given URI.
 	 * @param svgUri_ the URI of the Graphics to paint
 	 */
 	public SvgApplet(final String svgUri_) {
@@ -435,6 +485,10 @@ implements IRepainter { //
 	 * paints an Image Object
 	 * @param atts Attrributes for Height, Width etc. 
 	 */
+	// TODO: SECURITY: the xlink:href attribute of an <image> element is untrusted content coming
+	// from the parsed SVG document; it is concatenated into a URL and fetched below with no
+	// validation (scheme allow-list, path-traversal check), letting a malicious SVG file make this
+	// Applet fetch an arbitrary URL (SSRF-like) or read an arbitrary local file.
 	public void image(final Attributes atts) throws MalformedURLException {
 		final double[] rect = getRectangle(atts); //% are relative to the left, top Border
 		final Point2D P1 = getTrafo(null).mapPt(rect[0]-coords[0], rect[1]);
@@ -595,6 +649,7 @@ implements IRepainter { //
 	}
 	
 	/**
+	 * Launches this class as a standalone Frame displaying the SVG file given as {@code args[0]}.
 	 * @param args URLs to indicate the Input(args[0]), TrafoXSL(args[1]), Output(args[2])
 	 * The URLs can also be absolute or relative FileSystem Paths! ^
 	 * e.g. java technology.xml.XslTrafo

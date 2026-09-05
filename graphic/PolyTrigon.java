@@ -2,13 +2,29 @@ package graphic;
 
 import java.awt.Color;
 
-/**Class to enable rapid trigonometric calculation in the integer range.  */
+/**Class to enable rapid trigonometric calculation in the integer range.
+ *
+ * <!-- docstate
+ * pass: 2
+ * mtime: 2026-09-05T12:01:24Z
+ * digest: d7ecc38a44429b79afa03dbb7d454ccdd602995c8e41e708424c4bde3d15919c
+ * stale: false
+ * tags: [code/geometry_computation, code/2d_geometry]
+ * concepts: [Fast Trigonometry and Shape Generation]
+ * facets: {layer: utility, status: legacy, complexity: high}
+ * -->
+ */
 public class PolyTrigon {
 	
+	/** Number of degrees in a full circle. */
 	final static public int FullDegree = 360;
+	/** Angle in degrees pointing east (0). */
 	final static public int East  =   0;
+	/** Angle in degrees pointing north (a quarter turn from {@link #East}). */
 	final static public int North = FullDegree >> 2;
+	/** Angle in degrees pointing west (a half turn from {@link #East}). */
 	final static public int West  = FullDegree >> 1;
+	/** Angle in degrees pointing south (three quarter turns from {@link #East}). */
 	final static public int South = 3*North;
 
 	/**Angle Extent of the full Circle (0 - 360 Degrees)	 */
@@ -69,7 +85,7 @@ public class PolyTrigon {
 	/**Returns the Radius at Angle W to the Border of the Ellipse with Radiusses R.	 */
 	final static public Point2D EllipseRadius(final int W, final Point2D R, Point2D X) {  //Klammern weglassen,wenn direkt in IEllRec verwendet}
 		final Point2D ret = ICosSin(W, X);
-		ret.x *= R.x; ret.x /= SinusFactor; //statt 14-mal rechts zu schieben einfach 2* links schieben und höheres Byte nehmen
+		ret.x *= R.x; ret.x /= SinusFactor; //statt 14-mal rechts zu schieben einfach 2* links schieben und hï¿½heres Byte nehmen
 		ret.y *= R.y; ret.y /= SinusFactor; //14-mal rechts schieben ist sogar falsch, da es bei negativen Zahlen eins zuviel liefert!
 		return ret; }
 
@@ -178,19 +194,24 @@ public class PolyTrigon {
 		return ret; 
 	}
 	
-	/** 
-	 * @param pt the Point to convert 
-	 * @param col the Color to convert 
-	 * @return a new short[] filled with the Coordinates and Color 
+	/**
+	 * Packs a point and color into a new {@code short[5]}.
+	 *
+	 * @param pt the Point to convert
+	 * @param col the Color to convert
+	 * @return a new short[] filled with the Coordinates and Color
 	 */
 	final static public short[] COLORED_POINT(final Point2D pt, final Color col) {
 		return COLORED_POINT(pt, col, null); }
-	
-	/** 
-	 * @param pt the Point to convert 
-	 * @param col the Color to convert 
+
+	/**
+	 * Packs a point and color's coordinates and RGB components into
+	 * {@code ret}, or a new {@code short[5]} when {@code ret} is null.
+	 *
+	 * @param pt the Point to convert
+	 * @param col the Color to convert
 	 * @param ret the Object to fill, can be null
-	 * @return ret or a new short[] if null, filled with the Coordinates and Color 
+	 * @return ret or a new short[] if null, filled with the Coordinates and Color
 	 */
 	final static public short[] COLORED_POINT(final Point2D pt, final Color col, short[] ret) {
 		if (ret == null) {

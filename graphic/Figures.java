@@ -13,6 +13,15 @@ import java.awt.Rectangle;
  * Design Decisions:
  * Parameters that are rarely changed are separated out of the Call Interface
  * and put into Instance Variables.
+ * <!-- docstate
+ * pass: 2
+ * mtime: 2026-09-05T12:05:24Z
+ * digest: 9de35de3fa6dc76ec41c2a657aa6df380ca64050751522ad360723b3cdc19982
+ * stale: false
+ * tags: [code/graphics, code/geometry]
+ * concepts: [Special-Purpose Shape Drawing]
+ * facets: {layer: utility, status: broken, complexity: medium}
+ * -->
  */
 final public class Figures {
 
@@ -339,6 +348,10 @@ final public class Figures {
 	public void VectorGrid(int[] xP, int[] yP, int[][]xV, int[][]yV) {
 		//first fill up all the Colummns
 		int[] xc, yc;
+		// TODO: LOGIC: both loops pre-increment from 0 ("while (++i < ...)"),
+		// so the first iteration uses index 1, never 0 - unlike the "i = -1;
+		// while (++i < n)" pattern used elsewhere in this codebase to include
+		// index 0. Row 0 and column 0 of the grid are silently never drawn.
 		int i = 0;
 		Point2D P = new Point2D();
 		Point2D V = new Point2D();
@@ -423,7 +436,13 @@ final public class Figures {
 		}	//Now R contains the maximum Radius
 		i = w.length;
 		while (--i >= 0) {
-//			Point2D P = PolyTrigon.EllipseRadius(w[i], R);
+			// TODO: LOGIC: the y-coordinates use "R.getX()" instead of
+			// "R.getY()" for the start point (mismatched with the end point,
+			// which correctly uses R.getY()), skewing the ellipse's radial
+			// lines whenever the radii differ in x and y. Also, w[i] (the
+			// angle) is never used - the commented-out PolyTrigon.EllipseRadius
+			// call above suggests the per-angle direction was never wired up,
+			// so this draws the same line w.length times.
 			g.drawLine (Origin.getX() - R.getX(), Origin.getY() - R.getX(), Origin.getX() + R.getX(), Origin.getY() + R.getY());
 		}
 	}

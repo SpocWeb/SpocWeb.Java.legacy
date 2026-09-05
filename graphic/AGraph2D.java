@@ -39,6 +39,15 @@ import math.vector.VectorShort;
  * The current Position will frequently vary but is still retained 
  * to allow for relative Drawing like in Turtle Graphics. 
  * Current Font, Brush, Color and Texture are also retained. 
+ * <!-- docstate
+ * pass: 2
+ * mtime: 2026-09-05T12:19:08Z
+ * digest: b6956ff6f7cdbd8acae17bd7e2e40f888e423c552bd244e5f9b48add6c23b838
+ * stale: false
+ * tags: [code/graphics, code/rasterization]
+ * concepts: [Polygon/Line Rasterization Base Class]
+ * facets: {layer: infrastructure, status: broken, complexity: high}
+ * -->
  */
 public abstract class AGraph2D
 extends AGraphTurtle //java.awt.Graphics	//Factory not under Control! 
@@ -91,9 +100,14 @@ implements IGraphShape {
 		return j + 1; //+1 to skip the null Element
 	}
 
-	/**resizes the Polygon in Place	 */
+	/**Resizes the Polygon in Place by the given X and Y factors.	 */
 	final static public int [][] sizePolygonAt(int [][] Polygon, int X, int Y) {
 		int i = -1;
+		// TODO: LOGIC: this checks "X != 1" twice instead of "X != 1 || Y != 1"
+		// (contrast with movePolygonAt's correct "(X != 0) || (Y != 0)" just
+		// below); when X == 1 but Y != 1, the whole condition is false and the
+		// resize loop is skipped, so the Y scale factor is silently never
+		// applied.
 		if ((X != 1) ||
 			(X != 1))
 			while (++i < Polygon.length) {
@@ -253,6 +267,10 @@ implements IGraphShape {
 		if (LineWidth > 0)	//This routine is for thick lines:
 		if (vStep) drawHLine(	x-LineWidth, x+LineWidth, y	); else	//draw a horizontal Line of width
 		if (hStep) drawVLine(x, y-LineWidth, y+LineWidth	); else	//draw a vertical   Line of width
+					// TODO: LOGIC: the fourth argument (y1) is "x+LineWidth"
+					// instead of "y+LineWidth"; the filled box's bottom edge
+					// is computed from x instead of y, so the box is
+					// mispositioned/mis-sized whenever x != y.
 					fillRect(	x-LineWidth, y-LineWidth,
 								x+LineWidth, x+LineWidth);	//draw a filled Box of the width
 		P.x = x;
@@ -483,19 +501,23 @@ implements IGraphShape {
 	public void  drawRect (final Point2D P1) {
 		drawRect(P1.x, P1.y); }
 
-	/** @see IGraphShape#fill3DRect(int, int, int, int, boolean)	 */
+	/** Draws a 3-D highlighted rectangle via {@link #Rect3D}.
+	 * @see IGraphShape#draw3DRect(int, int, int, int, boolean)	 */
 	public void draw3DRect(final int x, final int y, final int width, final int height, final boolean raised) {
 		Rect3D(x, y, width, height, raised, false); }
 
-	/** @see IGraphShape#draw3DRect(int, int, int, int, boolean)	 */
+	/** Draws a 3-D highlighted rectangle spanned by the two given points.
+	 * @see IGraphShape#draw3DRect(int, int, int, int, boolean)	 */
 	public void draw3DRect(final Point2D P0, final Point2D P1, final boolean raised) {
 		Rect3D(P0.x, P0.y, P1.x-P0.x, P1.y-P0.y, raised, false); }
-	
-	/** @see IGraphShape#fill3DRect(int, int, int, int, boolean)	 */
+
+	/** Fills a 3-D highlighted rectangle via {@link #Rect3D}.
+	 * @see IGraphShape#fill3DRect(int, int, int, int, boolean)	 */
 	public void fill3DRect(final int x, final int y, final int width, final int height, final boolean raised) {
 		Rect3D(x, y, width, height, raised, true); }
-	
-	/** @see IGraphShape#fill3DRect(Point2D, Point2D, boolean)	 */
+
+	/** Fills a 3-D highlighted rectangle spanned by the two given points.
+	 * @see IGraphShape#fill3DRect(Point2D, Point2D, boolean)	 */
 	public void fill3DRect(final Point2D P0, final Point2D P1, final boolean raised) {
 		Rect3D(P0.x, P0.y, P1.x-P0.x, P1.y-P0.y, raised, true); }
 	
@@ -546,19 +568,23 @@ implements IGraphShape {
 			drawLine(xP[i], yP[i]); }
 	}
 	
-	/** @see graphic.IGraphics#drawPolygon(java.awt.Polygon)	 */
+	/** Draws the outline of the given AWT polygon.
+	 * @see graphic.IGraphics#drawPolygon(java.awt.Polygon)	 */
 	public void drawPolygon(final Polygon p) {
 		drawPolygon(p.xpoints, p.ypoints, p.npoints); }
-	
-	/** @see graphic.IGraphics#fillPolygon(java.awt.Polygon)	 */
+
+	/** Fills the given AWT polygon.
+	 * @see graphic.IGraphics#fillPolygon(java.awt.Polygon)	 */
 	public void fillPolygon(final Polygon p) {
 		fillPolygon(p.xpoints, p.ypoints, p.npoints); }
-	
-	/** @see graphic.IGraphics#drawPolyline(int[], int[], int)	 */
+
+	/** Draws an open polyline over the first {@code nPoints} coordinates.
+	 * @see graphic.IGraphics#drawPolyline(int[], int[], int)	 */
 	public void drawPolyline(final int[] xPoints, final int[] yPoints, final int nPoints) {
 		drawPolygon(xPoints, yPoints, false, nPoints); }
-	
-	/** @see graphic.IGraphics#drawPolygon(int[], int[], int)	 */
+
+	/** Draws a closed polygon over the first {@code nPoints} coordinates.
+	 * @see graphic.IGraphics#drawPolygon(int[], int[], int)	 */
 	public void drawPolygon(final int[] xPoints, final int[] yPoints, final int nPoints) {
 		drawPolygon(xPoints, yPoints, true, nPoints); }
 	
@@ -810,7 +836,7 @@ implements IGraphShape {
 				P1y = P2y;
 			}
 			filling = true;
-			//erst die vollständige geordnete Liste von horizontalen Strecken zeichnen!
+			//erst die vollstï¿½ndige geordnete Liste von horizontalen Strecken zeichnen!
 			for (int i = -1; ++i <= num; ) { //mit einem even-odd Algorithmus, der Zeilen bevorzugt!
 				P.x = xi[i]; 
 				final Color col = ((P.x & 1) == 1) ? colCache : backColor; 
@@ -1264,6 +1290,7 @@ implements IGraphShape {
 	}
 
 	/**
+	 * Replaces the clipping area with the given rectangle.
 	 * @see graphic.IGraphics#setClip(int, int, int, int)
 	 */
 	public void setClip(int x, int y, int width, int height) {
@@ -1272,6 +1299,7 @@ implements IGraphShape {
 	}
 
 	/**
+	 * Returns the current clipping area as a {@link Rectangle}.
 	 * @see graphic.IGraphics#getClip()
 	 */
 	public Shape getClip() {
@@ -1279,6 +1307,8 @@ implements IGraphShape {
 	}
 
 	/**
+	 * Sets the clipping area to the given shape.
+	 * @throws RuntimeException if the shape is not a {@link Rectangle}.
 	 * @see graphic.IGraphics#setClip(java.awt.Shape)
 	 */
 	public void setClip(Shape clip) {
@@ -1290,19 +1320,22 @@ implements IGraphShape {
 		throw new RuntimeException("Not implemented!"); 
 	}
 
-	/** @see graphic.IGraphics#getClipBounds(java.awt.Rectangle)	 */
+	/** Not implemented; always returns {@code null}.
+	 * @see graphic.IGraphics#getClipBounds(java.awt.Rectangle)	 */
 	public Rectangle getClipBounds(Rectangle r) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
-	/** @see graphic.IGraphics#getClipRect()	 */
+	/** Not implemented; always returns {@code null}.
+	 * @see graphic.IGraphics#getClipRect()	 */
 	public Rectangle getClipRect() {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
-	/** @see graphic.IGraphics#hitClip(int, int, int, int)	 */
+	/** Not implemented; always returns {@code false}.
+	 * @see graphic.IGraphics#hitClip(int, int, int, int)	 */
 	public boolean hitClip(int x, int y, int width, int height) {
 		// TODO Auto-generated method stub
 		return false;
@@ -1311,10 +1344,12 @@ implements IGraphShape {
 	///////////////////////////////////////////////////////////////////////////////////
 
 
-	/** @see graphic.IGraphics#translate(int, int)	 */
+	/** Not implemented; always throws {@link RuntimeException}.
+	 * @throws RuntimeException always.
+	 * @see graphic.IGraphics#translate(int, int)	 */
 	public void translate(int x, int y) {
 		// TODO Auto-generated method stub
-		throw new RuntimeException("Not implemented!"); 
+		throw new RuntimeException("Not implemented!");
 	}
 
 	///////////////////////////////////////////////////////////////////////////////////
@@ -1353,7 +1388,8 @@ implements IGraphShape {
 
 	}
 
-	/** @see graphic.IGraphShape#fillPolygon(int[][], int)	 */
+	/** Fills the polygon defined by {@code PointsColors} via {@link #fillPolygon(int[][], int)}.
+	 * @see graphic.IGraphShape#fillPolygon(int[][], int)	 */
 	public void fillPolygon(final int[][] PointsColors) {
 		fillPolygon(PointsColors, PointsColors.length);	}
 
@@ -1362,7 +1398,9 @@ implements IGraphShape {
 	/// Implementation of continuous filling with arbitrary many Parameters for Interpolation!
 	/////////////////////////////////////////////////////////////////////////////////////
 
-	/** @see graphic.IGraphShape#drawLine(short[], short[], graphic.IPalette)	 */
+	/** Draws a line between the two given (x, y, ...interpolated components) vectors,
+	 * shading each pixel from the given palette.
+	 * @see graphic.IGraphShape#drawLine(short[], short[], graphic.IPalette)	 */
 	public void drawLine(short[] p0, short[] p1, IPalette palette) {
 		if (p1[1] < p0[1]) { //Sort so that p0.y < p1.y 
 			final short[] tmp = p1; p1 = p0; p0 = tmp; }
@@ -1403,7 +1441,9 @@ implements IGraphShape {
 		setPixel(p1, palette); //Set the current Point to the End Point
 	}
 
-	/** @see IGraphShape#fillPolygon(short[][], IPalette)	 */
+	/** Fills the polygon defined by the given vectors, splitting it into triangles
+	 * fanned from the last point, shading each via the given palette.
+	 * @see IGraphShape#fillPolygon(short[][], IPalette)	 */
 	public void fillPolygon (final short [][]p, final IPalette palette) {
 		switch (p.length) {
 			case 0 : break; 
@@ -1422,7 +1462,9 @@ implements IGraphShape {
 		}
 	}
 
-	/** @see IGraphShape#fillTriangle(short[], short[], short[], IPalette)	 */
+	/** Fills the triangle spanned by the three given vectors row-wise, shading each
+	 * pixel via the given palette.
+	 * @see IGraphShape#fillTriangle(short[], short[], short[], IPalette)	 */
 	public void fillTriangle (short[] p0, short[] p1, short[] p2, final IPalette palette) {
 		//Sort so that p0.y < p1.y < p2.y 
 		if (p1[1] < p0[1]) { final short [] tmp = p1; p1 = p0; p0 = tmp; } 
@@ -1449,7 +1491,9 @@ implements IGraphShape {
 		drawHLine(p1, x3, palette);	//draw a horizontal Line2D! modifies x3!
 	}
 
-	/** @see IGraphShape#fillHTriangle(short[], short[], short[], IPalette)	 */
+	/** Fills the half-triangle with a horizontal side between x1 and x2, from x0,
+	 * shading each pixel via the given palette.
+	 * @see IGraphShape#fillHTriangle(short[], short[], short[], IPalette)	 */
 	public void fillHTriangle(final short[] x0, final short[] x1, final short[] x2
 	, final IPalette palette) {
 		if (x0[1] == x1[1]) {

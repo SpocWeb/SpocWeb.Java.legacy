@@ -12,21 +12,18 @@ import graphic.mvc.BaseApplet;
 import math.vector.VectorFloat;
 
 /**
- * Title: <p>
- * Description:
- * Purpose:
- * Simulates the Behavior of Molecules in a liquid State: 
- * The Energy is not sufficient to leave the Liquid (the Potential is, in fact a Lorentz Curve)
- * Dissipation is added to converge to a steady state in thermal Equilibrium. 
- * Temperature is added by adding random Speed Components.  
- * 
- * For simulating a Flock some more is necessary: 
- * -no Dissipation, but this leads to the 'escape' from View, thus 
- * -a Bounding Box to keep the Flock in 
- * -other (heuristic) Drivers than random Temperature Bumps. 
- *  
- *
- * Design Decisions / Implementation Details:
+ * Simulates a flock of points that repel each other and drift under random
+ * thermal noise, rendered live through a {@link Map2DPainter}.
+ * <p>
+ * Purpose: models the behavior of molecules in a liquid state, where the
+ * energy is not sufficient to leave the liquid (the potential is, in fact,
+ * a Lorentz curve). Dissipation is added to converge to a steady state in
+ * thermal equilibrium, and temperature is added by adding random speed
+ * components.
+ * <p>
+ * For simulating a flock some more is necessary: no dissipation (which would
+ * otherwise let members escape the view), a bounding box to keep the flock
+ * in, and other heuristic drivers than random temperature bumps.
  *
  * Known SubClasses: <none>
  *
@@ -37,17 +34,33 @@ import math.vector.VectorFloat;
  * Created on	10-26-2002, 12:47 PM<p>
  * @author heuerm
  * @version	1.0
+ * <!-- docstate
+ * pass: 2
+ * mtime: 2026-09-05T11:47:01Z
+ * digest: 1ae0d8241d9702771f77681f721abfafccb34c6159716d8c1b823044d997b730
+ * stale: false
+ * tags: [code/algorithm, code/simulation]
+ * concepts: [Flocking Particle Simulation]
+ * facets: {layer: test, status: legacy, complexity: medium}
+ * -->
  */
 public class TravellingFlock {
-	
+
 	/**
-	 * 
+	 * Creates a new, otherwise stateless flock simulation instance.
 	 */
 	public TravellingFlock() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
 
+	/**
+	 * Launches an interactive applet window and runs the flock simulation
+	 * forever, repainting after every integration step.
+	 *
+	 * @param args ignored
+	 * @throws Exception propagated from {@link Thread#sleep(long)} or applet setup
+	 */
 	public static void main(final String[] args) throws Exception {
 		final int numBirds = 26; 
 		final Map2DModel flock = new Map2DModel(numBirds); 
@@ -86,7 +99,7 @@ public class TravellingFlock {
 				//add some random Speed Change and multiply some Dissipation. 
 				for (int j = speed.length; --j >= 0;) { 
 					speed[j] += (Math.random()-.5)*randomNess; 
-					speed[j] *= .999; //Dämpfung
+					speed[j] *= .999; //Dï¿½mpfung
 				}
 				//Now calculate the Speeds. 
 				for (int j = bird.length; --j >= 0;)
@@ -102,14 +115,16 @@ public class TravellingFlock {
 	/** The Random Component of each Speed Change	 */
 	static double randomNess = 0.01; 
 	
-	static float a = 1; 
-	
-	static float b = 1; 
-	
-	/** 
-	 * the Potential is r^-12 - r^-6 
-	 * @param r
-	 * @return
+	/** Reserved tuning coefficient, currently unused. */
+	static float a = 1;
+
+	/** Reserved tuning coefficient, currently unused. */
+	static float b = 1;
+
+	/**
+	 * Computes the Lennard-Jones-style potential r^-12 - r^-6 for a squared distance.
+	 * @param r2 squared distance between two bodies
+	 * @return the potential value at that distance
 	 */
 	double potential(final double r2) {
 		final double r6 = r2 * r2 * r2; 

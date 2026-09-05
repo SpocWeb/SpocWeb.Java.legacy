@@ -22,6 +22,22 @@ import java.awt.image.PixelGrabber;
  * and is possible slower, because it doesn't use cached Information.
  * Using it to draw Pixels and Lines is a waste.
  * Using it to do parketting of Polygons is too complicated.
+ *
+ * <h2>Collaborators</h2>
+ * <table>
+ * <tr><th>Type</th><th>Relationship</th></tr>
+ * <tr><td>{@link Graph2D}</td><td>superclass; supplies the pixel drawing primitive this class textures</td></tr>
+ * </table>
+ * @see Graph2D
+ * <!-- docstate
+ * pass: 2
+ * mtime: 2026-09-05T11:49:06Z
+ * digest: e10dfa76fb3e07d59d7957c94c39d6b5f9e07f3c080e7f98b00f899a6ccb0b2f
+ * stale: false
+ * tags: [code/graphics]
+ * concepts: [Texture-Sampling Color Strategy]
+ * facets: {layer: utility, status: legacy, complexity: medium}
+ * -->
  */
 public class TextureGraphics
 //	extends AGraphText
@@ -36,6 +52,7 @@ public class TextureGraphics
 	/**Width of the Memory Image	 */
 	protected int Width;
 
+	/** Source Image the {@link #Pixels} buffer was grabbed from. */
 	protected Image Pattern;
 
 	/**Scaling Factor	 */

@@ -28,6 +28,15 @@ import java.util.Arrays;
  * To avoid the costly indexed Array accesses, 
  * temporary Row and Column Values are kept,
  * which are only updated when the x or y Coordinates change.
+ * <!-- docstate
+ * pass: 2
+ * mtime: 2026-09-05T11:55:27Z
+ * digest: 57daa47975574748299f1fb173b7670532920f608b50da38820afa177578ab25
+ * stale: false
+ * tags: [code/3d_rendering]
+ * concepts: [Z-Buffer]
+ * facets: {layer: domain, status: broken, complexity: medium}
+ * -->
  */
 final public class ZBuffer
 extends AGraph2DOut {
@@ -122,6 +131,10 @@ extends AGraph2DOut {
 	 * Changing Color only with setColor!
 	 */
 	public void setPixel (int x, int y, float z) {
+		// TODO: LOGIC: the clip guard checks "x >= XMax" twice and never
+		// checks "y >= YMax"; a caller passing y >= YMax reaches MinZ[x][y]
+		// (and X[y] once cached) below and throws ArrayIndexOutOfBoundsException
+		// instead of being clipped like every other out-of-range coordinate.
 		if ((x >= XMax) ||
 			(x <  0   ) ||
 			(x >= XMax) ||

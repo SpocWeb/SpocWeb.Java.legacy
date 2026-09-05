@@ -5,21 +5,24 @@ import java.awt.Graphics;
 import java.awt.Rectangle;
 
 /**
-  * Title: Bar3D<p>
-  * Description:
-  * Methods to quickly draw 2D and pseudo 3D Bars.
-  * @see Graphics.Figures for
-  * Arrows, Coordinate Systems with optional Ticks and Rasters,
-  * Triangles, Squares, Rounded Rectangles, Balls with 3D Effect
-  * Bezier Splines etc.
-  *
-  * Known SubClasses:
+  * Draws and fills 2D and pseudo-3D bars, including full histograms.
   *
   * Copyright:	Copyright (c) Matthias Heuer<p>
   * Company:	personal<p>
   * Created on	06-05-2002, 09:45 PM<p>
   * @author 	Matthias Heuer
   * @version	1.0
+  * @see Figures arrows, coordinate systems, triangles, rounded rectangles,
+  * 3D balls, Bezier splines etc.
+  * <!-- docstate
+  * pass: 2
+  * mtime: 2026-09-05T11:57:01Z
+  * digest: 6ca57ec90983a43a4cad6688c04acbb99526ed9648c5d5836051156c5475b5d7
+  * stale: false
+  * tags: [code/chart_rendering, code/3d_rendering]
+  * concepts: [3D Bar Chart]
+  * facets: {layer: domain, status: legacy, complexity: medium}
+  * -->
   */
 public class Bar3D {
 

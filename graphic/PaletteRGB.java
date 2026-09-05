@@ -3,9 +3,10 @@ package graphic;
 import java.awt.Color;
 
 /**
- * Holds a Palette, i.e. an Array of Colors
- * 
- * Also static Methods for Color Model Conversion,
+ * Holds a palette, i.e. an array of colors, plus static color-model
+ * conversion methods (RGB/HSB/CMY).
+ *
+ * <p>Also static Methods for Color Model Conversion,
  * good example for Coordinate Transformation in a 3 dimensional Space
  * between three orthogonal Coordinate Systems: 
  * 
@@ -55,6 +56,15 @@ import java.awt.Color;
  * 
  * Brown is a dark Red/Orange/Yellow but usually not seen as this; 
  * thus it is easily misconcieved as not belonging to an Orange Palette! 
+ * <!-- docstate
+ * pass: 2
+ * mtime: 2026-09-05T12:03:20Z
+ * digest: d9964e816cc6e7a92018723760d9080a615e84877ae8de8aee2bc19c20e49d76
+ * stale: false
+ * tags: [code/color_palette]
+ * concepts: [RGB/HSV Color Model Conversion]
+ * facets: {layer: utility, status: broken, complexity: medium}
+ * -->
  */
 final public class PaletteRGB 
 implements IPalette, ISimplePalette {
@@ -109,13 +119,16 @@ implements IPalette, ISimplePalette {
 			return  palette[(c + colorOffset) % palette.length]; }
 	
 	/**
+	 * Builds a color directly from the RGB components at
+	 * {@link #colorOffset}, {@code colorOffset+1} and {@code colorOffset+2}.
+	 *
 	 * @param c a complex Parameter could consist of
 	 * - a simple Index
 	 * - RGB Values
-	 * - u,v Coordinates of a Texture Mapping 
-	 * - Normals or their Cosinusses for Phong or Gouraud Shading 
+	 * - u,v Coordinates of a Texture Mapping
+	 * - Normals or their Cosinusses for Phong or Gouraud Shading
 	 * - z-Values for Fog Simulation or ambient Light
-	 * - etc. 
+	 * - etc.
 	 * @return the selected Color determined by this Palette
 	 */
 	public Color getColor(final short[] c) {
@@ -159,11 +172,17 @@ implements IPalette, ISimplePalette {
 		Color.RED, Color.YELLOW, Color.GREEN, Color.CYAN, Color.BLUE, Color.MAGENTA, 
 		Color.PINK, Color.GRAY, Color.ORANGE, BROWN, Color.BLACK, Color.WHITE};
 	
-	/** 
+	/**
+	 * Looks up the brilliant color for a hue on the 6-step {@link #HUE_COLORS} wheel.
+	 *
 	 * @param hue the Hue (cycling around [0,6))
 	 * @return the brilliant Color for this Hue
 	 */
 	final static public Color HUE2COLOR(int hue) {
+		// TODO: LOGIC: negative wrap-around uses "6-hue" instead of "6+hue"
+		// (contrast the correct "hue += 6" wrap in RGB2HSB below); for hue=-1
+		// this computes 7 instead of 5, so "hue %= 6" then yields 1, not 5,
+		// returning the wrong color for any negative argument.
 		if (hue < 0) {
 			hue = 6-hue; }
 		hue %= 6;
@@ -270,8 +289,8 @@ implements IPalette, ISimplePalette {
 	 * The Saturation is the maximum color difference normed to [0,1).
 	 * The Hue is the weighted maximum color normed to [0,6) and cycling 
 	 * between the primary Colors: 
-	 * Alternatively it could cycle through 360° with a primary Color 
-	 * every 60°. 
+	 * Alternatively it could cycle through 360ï¿½ with a primary Color 
+	 * every 60ï¿½. 
 	 * Since Hue doesn't matter for Saturation = 0 or Brightness = 0 
 	 * the Colors can be represented on a Single- or Double- Cone Surface.
 	 * Alternatively they can be mapped to a Sphere.    

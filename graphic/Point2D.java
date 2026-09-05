@@ -12,6 +12,15 @@ package graphic;
  * Contains some integer arithmetics useful for 2D Graphics
  * 
  * By making this Class final e.g. the Access Methods are sped up by Inlining
+ * <!-- docstate
+ * pass: 2
+ * mtime: 2026-09-05T12:04:32Z
+ * digest: e971f2468efb8a14dc45335d10b10c5239414526cb334745c7f61fe303331bd3
+ * stale: false
+ * tags: [code/2d_geometry, code/point_normal_calculation]
+ * concepts: [Integer 2D Point]
+ * facets: {layer: domain, status: broken, complexity: low}
+ * -->
  */
 final public class Point2D {
 
@@ -27,11 +36,13 @@ final public class Point2D {
 	/**The <i>x</i> coordinate.	  */
 	public int x; //use short
 
+	/** Replaces the x coordinate, returning the new value. */
 	public int setX(final int x) {
 		//L.n("setX("+x+")");
 		return this.x = x;
 	}
 
+	/** Returns the x coordinate. */
 	public int getX() {
 		return x;
 	}
@@ -39,19 +50,26 @@ final public class Point2D {
 	/**The <i>y</i> coordinate.	  */
 	public int y; //use short
 
+	/** Replaces the y coordinate, returning the new value. */
 	public int setY(final int y) {
 		//L.n("setX("+x+")");
 		return this.y = y;
 	}
 
+	/** Returns the y coordinate. */
 	public int getY() {
 		return y;
 	}
 
+	/** Returns this point's coordinates as a new {@code short[2]}. */
 	public short[] getCoords() {
 		return getCoords(null);
 	}
 
+	/**
+	 * Writes this point's coordinates into {@code ret}, or a new
+	 * {@code short[2]} when {@code ret} is null or too small.
+	 */
 	public short[] getCoords(short[] ret) {
 		if ((ret == null) || (ret.length < 2)) 
 			ret = new short[2]; 
@@ -114,10 +132,14 @@ final public class Point2D {
 		return this;
 	}
 
-	/**Adds the Coordinates of P to this Point2D	 */
+	/** Sets each coordinate to the smaller of itself and P's matching coordinate. */
 	public Point2D MinAt(final Point2D P) {
 		if (x > P.x)
 			x = P.x;
+		// TODO: LOGIC: compares "y > P.x" and assigns "y = P.x" instead of
+		// using P.y; the y coordinate is min'd against P's x coordinate, not
+		// P's y coordinate, corrupting every bounding-box computation that
+		// relies on this method whenever P.x != P.y.
 		if (y > P.x)
 			y = P.x;
 		return this;
@@ -127,12 +149,16 @@ final public class Point2D {
 	public Point2D MaxAt(final Point2D P) {
 		if (x < P.x)
 			x = P.x;
+		// TODO: LOGIC: compares "y < P.x" and assigns "y = P.x" instead of
+		// using P.y; same P.x/P.y mixup as MinAt() above, corrupting every
+		// bounding-box computation that relies on this method whenever
+		// P.x != P.y.
 		if (y < P.x)
 			y = P.x;
 		return this;
 	}
 
-	/** @return the larger Coordinate of P (x or y)	 */
+	/** Returns the larger of this point's two coordinates. */
 	public int MaxVal() {
 		if (x < y)
 			return y;
@@ -144,7 +170,11 @@ final public class Point2D {
 		return new Point2D(this);
 	}
 
-	/**@return the Sum of the Coordinates of this Point2D 	 */
+	/**
+	 * Returns the sum of this point's two coordinates.
+	 *
+	 * @return the Sum of the Coordinates of this Point2D
+	 */
 	public int Sum() {
 		return x + y;
 	}

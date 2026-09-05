@@ -5,7 +5,11 @@ import graphic.mvc.plane2D.VectorPolygon;
 
 import java.awt.Color;
 
-/**2 dimensional Mapping of a Body consisting of Planes.
+/**
+ * A 2-dimensional mapping of a body made of polygon planes, either a
+ * genuinely 2D body or the projection of a 3D body onto two dimensions.
+ *
+ * <p>2 dimensional Mapping of a Body consisting of Planes.
  * The Body can be a genuine 2 dimensional Body
  * or the Mapping of a 3 dimensional Body to two Dimensions.
  *
@@ -59,6 +63,15 @@ import java.awt.Color;
  * These have to be put into the Polygons on calculation.
  * 
  * @deprecated use graphic.mvc.plane2D.VectorPolygon instead
+ * <!-- docstate
+ * pass: 2
+ * mtime: 2026-09-05T11:58:15Z
+ * digest: 5c06d308f3880806f404929266f1490900a082b5258b0fbc8d3fb43f2376f46b
+ * stale: false
+ * tags: [code/3d_geometry, code/polygon_calculation]
+ * concepts: [3D-to-2D Body Projection]
+ * facets: {layer: domain, status: legacy, complexity: medium}
+ * -->
  */
 public class Body2D
 extends Polygon2D {
@@ -108,6 +121,12 @@ extends Polygon2D {
 	 * Borders are painted in this Color, if it is not null	 */
 	public Color borderColor;
 
+	/**
+	 * Converts this body's plane polygons into a {@link VectorPolygon}.
+	 *
+	 * @param oriented whether the resulting matrices should track orientation
+	 * @return the equivalent {@link VectorPolygon} representation
+	 */
 	public VectorPolygon getVectorPolygon(final boolean oriented) {
 		VectorPolygon ret = new VectorPolygon(polygons.length); 
 		for (int i = polygons.length; --i >= 0;) {

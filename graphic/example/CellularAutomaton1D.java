@@ -7,6 +7,9 @@ import java.awt.Frame;
 import java.awt.Graphics;
 
 /**
+  * Simulates a 1D elementary cellular automaton, evolving a row of binary cells
+  * over time according to a numbered rule.
+  * <p>
   * Title: CellularAutomaton1D<p>
   * Description:
   * This is an Example of a 1dim. cellular Automaton showing emergent Behavior,
@@ -24,9 +27,9 @@ import java.awt.Graphics;
   * The Figures that appear are all triangular in Shape,
   * due to the Propagation Scheme of 1 Neighbor limiting any Effects.
   * The Types of Figures appearing are:
-  * Class 1 empty or filled or patterned Planes, einfache Flächen 0, 255
+  * Class 1 empty or filled or patterned Planes, einfache Flï¿½chen 0, 255
   * Class 2 fractal Patterns, Sierpinski Triangles in various Orientations and Completeness
-  * Class 3 Pseudo randomi Patterns  30 =   11110 zufallsähnlich
+  * Class 3 Pseudo randomi Patterns  30 =   11110 zufallsï¿½hnlich
   * Class 4 110 = 1101110 lokalisiert mit Ww.
   *
   * single Lines
@@ -49,6 +52,15 @@ import java.awt.Graphics;
   * Created on	06-07-2002, 11:36 PM<p>
   * @author 	Matthias Heuer
   * @version	1.0
+  * <!-- docstate
+  * pass: 2
+  * mtime: 2026-09-05T11:49:54Z
+  * digest: 0485dcc8aec69e18709ab6f228b542669bf38114a6ea6316237bcb6d561f1eff
+  * stale: false
+  * tags: [code/algorithm, code/simulation]
+  * concepts: [1D Cellular Automaton]
+  * facets: {layer: test, status: legacy, complexity: medium}
+  * -->
   */
 public class CellularAutomaton1D 
 extends Frame { //Applet {
@@ -57,9 +69,7 @@ extends Frame { //Applet {
 /// #region : static Constants and Variables
 ////////////////////////////////////////////////////////////////////////////////
 
-	/**
-	 * 
-	 */
+	/** Serialization version marker for {@link Frame} compatibility. */
 	private static final long serialVersionUID = 1L;
 
 	/** Size of the Graphic Area     */
@@ -78,10 +88,12 @@ extends Frame { //Applet {
 ////////////////////////////////////////////////////////////////////////////////
 
 	/**
-     * @return the Function Value of the boolean Function
-     *  determined by the given RuleNumber at the given Index
+     * Evaluates the boolean function determined by the given rule number at
+     * the given multi-index.
      * @param NumRule RuleNumber from 0 to 2^(2^index.length)
      * @param index Multi index for the Function.
+     * @return the Function Value of the boolean Function
+     *  determined by the given RuleNumber at the given Index
      */
 	final static public boolean RuleValue(int NumRule, int[] index) {
 		int i = index.length;
@@ -191,11 +203,16 @@ extends Frame { //Applet {
 		}
 	}
 
+	/**
+	 * Reads back the cell state at the given position from {@link #memImg}.
+	 * @return 0 if the pixel is black (cell off), 1 otherwise (cell on)
+	 */
 	protected int getPixel(int x, int y) { //black == 0 == false
 		if ((memImg.getPixel(x, y) & MemoryImage.RGB_VALUES) == 0) {
 			return 0; }
 			return 1; }
 
+	/** Sets the given cell's color in {@link #memImg}: white if on, black if off. */
 	protected void setPixel(int x, int y, boolean value) {
 		if (value) { //
 			memImg.setPixel(x, y, Color.white); //color it white
@@ -213,9 +230,9 @@ extends Frame { //Applet {
 		System.out.println("Testing " + CellularAutomaton1D.class.getName());
 		CellularAutomaton1D f = new CellularAutomaton1D(2, 1); //Frame();
 		/** interesting Rule Sets:
-		* 0, 255 Klasse 1 einfache Flächen
+		* 0, 255 Klasse 1 einfache Flï¿½chen
 		*  Klasse 2 fraktale Muster
-		*  30 =   11110 Klasse 3 zufallsähnlich
+		*  30 =   11110 Klasse 3 zufallsï¿½hnlich
 		* 110 = 1101110 Klasse 4 lokalisiert mit Ww.
 		*
 		*/

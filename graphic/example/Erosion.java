@@ -6,9 +6,11 @@
 package graphic.example;
 
 /**
+ * Generates a 2D fractal height map using the "Fault Formation" algorithm.
+ * <p>
  * Title: Erosion<p>
  * Description:
- * Implements the Fault Formation Algorithm for generating 2D fractal Maps. 
+ * Implements the Fault Formation Algorithm for generating 2D fractal Maps.
  * TODO: not tested yet!
  * Algorithm stems from the eBook "Game Programming" Chapter 6 06_2_HeightMaps101.htm
  *
@@ -24,12 +26,25 @@ package graphic.example;
  * @author mheuer
  * @version	1.0
  *
+ * <!-- docstate
+ * pass: 2
+ * mtime: 2026-09-05T11:48:25Z
+ * digest: 95adcfa40f678d2a80663c49c06b73b08ac737da0e35547a0eb7a9c0f364e146
+ * stale: false
+ * tags: [code/algorithm, code/math]
+ * concepts: [Terrain Erosion Generator]
+ * facets: {layer: test, status: broken, complexity: medium}
+ * -->
  */
 public class Erosion {
 
+	/** The generated height data, one entry per grid cell. */
 	protected char[] m_ucpData;
+
+	/** Scaling factor applied to height values. */
 	protected float m_fHeightScale; //scaling variable
 
+	/** Width and height of the (square) height map; must be a power of two. */
 	public int m_iSize; //must be a power of two
 
 	/**
@@ -151,6 +166,9 @@ public class Erosion {
 				FilterHeightField(fTempBuffer, fFilter);
 		}
 
+		// TODO: LOGIC: fTempBuffer holds the computed heights, but the commented-out
+		// normalize/copy step below was never replaced with real code, so m_ucpData
+		// stays all-zero after this method returns.
 		/*
 		NormalizeTerrain(fTempBuffer);
 		for (z = 0; z < m_iSize; z++) {

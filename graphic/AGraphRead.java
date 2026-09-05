@@ -2,19 +2,30 @@ package graphic;
 
 import java.awt.Color;
 
-/**Graphics Context which can be written AND read!
- * Ususally you need a Consumer for this.
- * But in Java this doesn't have a getGraphics Method or graphics Object,
- * so you would have to
+/**
+ * A graphics context that can be both written and read, adding non-recursive
+ * flood fill on top of {@link AGraphImage} and {@link IGraph2DIn}.
  *
- * The whole picture would have to be loaded into an integer Array.
- * The highest Byte of the Integer is good for Determining the Z Coordinate.
+ * <p>The whole picture would have to be loaded into an integer array; the
+ * highest byte of the integer is good for determining the z coordinate.
  *
  * TODO: add a z Raster in the highest Byte of the int Pixels.
  *		to enable limited z-Buffering.
  *		Use the Extent of the whole Picture for this.
  *
  *		Add Painting with transparent Planes to indicate hidden Bodies.
+ *
+ * @see AGraphImage
+ * @see IGraph2DIn
+ * <!-- docstate
+ * pass: 2
+ * mtime: 2026-09-05T11:55:18Z
+ * digest: 1589100bcafed1aee8ae9bef8223ae6d23ea4ffa6f5add55d6151bdb8adffb86
+ * stale: false
+ * tags: [code/graphics, code/image_processing]
+ * concepts: [Flood Fill Base Class]
+ * facets: {layer: infrastructure, status: legacy, complexity: medium}
+ * -->
  */
 public abstract class AGraphRead
 	extends AGraphImage
@@ -34,9 +45,11 @@ public abstract class AGraphRead
 		fillFlood (P.getX(), P.getX(), P.getY(), +1, Border);
 	}
 
+	/** Fills the area from the given starting point on, in the current painting color. */
 	public void fillFlood(Point2D StartPoint, int Border) {
 		fillFlood (StartPoint.getX(), StartPoint.getX(), StartPoint.getY(), +1, Border);}
 
+	/** Fills the area from the given starting point on, in the given color. */
 	public void fillFlood(Point2D StartPoint, int Border, Color Col) {
 		setColor (Col);
 		fillFlood (StartPoint.getX(), StartPoint.getX(), StartPoint.getY(), +1, Border);
@@ -90,22 +103,32 @@ public abstract class AGraphRead
 	////////////////////////////////////////////////////////////////////////////
 
 	/**
+	 * Not implemented; always throws.
+	 *
+	 * @throws RuntimeException always
 	 * @see graphic.IGraphics#setPaintMode()
 	 */
 	public void setPaintMode() {
 		// TODO Auto-generated method stub
-		throw new RuntimeException("Not implemented!"); 
+		throw new RuntimeException("Not implemented!");
 	}
 
 	/**
+	 * Not implemented; always throws.
+	 *
+	 * @throws RuntimeException always
 	 * @see graphic.IGraphics#setXORMode(java.awt.Color)
 	 */
 	public void setXORMode(Color c1) {
 		// TODO Auto-generated method stub
-		throw new RuntimeException("Not implemented!"); 
+		throw new RuntimeException("Not implemented!");
 	}
 
 	/**
+	 * Copies each pixel of the given rectangle to the location offset by
+	 * (dx, dy), one pixel at a time via {@link #getPixel(int, int)} and
+	 * {@link #setPixel(int, int, int)}.
+	 *
 	 * @see graphic.IGraphics#copyArea(int, int, int, int, int, int)
 	 */
 	public void copyArea(final int x, final int y, final int width, final int height, final int dx, final int dy) {

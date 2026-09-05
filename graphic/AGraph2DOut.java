@@ -8,26 +8,25 @@ package graphic;
 import java.awt.Color;
 
 /**
- * Title: AGraph2DOut<p>
- * Description:
- * Purpose:
- *
- * Purpose / Responsibilities of this Class
- *
- * Design Decisions / Implementation Details:
- * If similar Classes exist (e.g. Polymorphism),
- * characterize the specific Differences to compare these.
- *
- * Known SubClasses: <none>
- *
- * Known Uses: <none>
+ * Implements the pen-position and color bookkeeping common to
+ * {@link IGraph2DOut} implementations, in terms of a single abstract
+ * setPixel-by-color primitive subclasses supply.
  *
  * Copyright:	Copyright (c) Matthias Heuer<p>
  * Company:	personal<p>
  * Created on	10-26-2002, 12:47 PM<p>
  * @author mheuer
  * @version	1.0
- *
+ * @see IGraph2DOut
+ * <!-- docstate
+ * pass: 2
+ * mtime: 2026-09-05T11:55:02Z
+ * digest: f6c56e08f3a359eaf0b233e03750f58d292251ad8d1c571b0c6ee838934a7f6b
+ * stale: false
+ * tags: [code/graphics]
+ * concepts: [Pen State Management Base Class]
+ * facets: {layer: infrastructure, status: broken, complexity: low}
+ * -->
  */
 public abstract class AGraph2DOut 
 implements IGraph2DOut {
@@ -44,22 +43,34 @@ implements IGraph2DOut {
 	protected Color col;
 
 	/**
+	 * Replaces the current painting color, skipping the assignment when the
+	 * given color already equals it.
+	 *
 	 * @see graphic.IGraph2DOut#setColor(java.awt.Color)
 	 */
 	public void setColor(final Color color) {
+		// TODO: LOGIC: col is null until the first color is set (no field
+		// initializer); when col == null and color != null, "col != color"
+		// is true and "col.equals(color)" throws NullPointerException, so the
+		// very first setColor(Color) call with a non-null color on a fresh
+		// instance fails instead of just assigning col.
 		if ((col != color) && //Optimization
 			!col.equals(color)) {
-			col = color;  
+			col = color;
 		}
 	}
 
 	/**
+	 * Returns the current painting color.
+	 *
 	 * @see graphic.IGraph2DOut#getColor()
 	 */
 	public Color getColor() { return col; }
 
+	/** Replaces the current painting color, built from a packed RGB value. */
 	public void setColor(final int color) { setColor(new Color(color)); }
 
+	/** Replaces the current painting color, built from separate RGB components. */
 	public void setColor(final int red, final int green, final int blue) {
 		setColor(new Color(red, green, blue)); }
 

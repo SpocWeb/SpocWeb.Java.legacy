@@ -3,11 +3,21 @@ package graphic;
 import java.awt.Color;
 
 /**
- * Most basic Interface for Output only Graphics in 2 Dimensions.
- * The Methods reflect the Fact that the Color should not be handed over everytime,
- * for Performance and Readability Reasons.
- * Also the Handle to the actual Graphics Context is stored here. 
- * This is effectively an OutputStream for Coordinate Pairs.
+ * Most basic interface for output-only graphics in two dimensions.
+ *
+ * <p>The methods reflect the fact that the color should not be handed over
+ * every time, for performance and readability reasons; the handle to the
+ * actual graphics context is stored here too. This is effectively an
+ * output stream for coordinate pairs.
+ * <!-- docstate
+ * pass: 2
+ * mtime: 2026-09-05T11:50:15Z
+ * digest: 6b2084b3da06623c72ed1154cc008179a1e3988bbb086a8b590fe271e5d29063
+ * stale: false
+ * tags: [code/graphics]
+ * concepts: [Graphics Output Interface]
+ * facets: {layer: infrastructure, status: legacy, complexity: low}
+ * -->
  */
 public interface IGraph2DOut {
 

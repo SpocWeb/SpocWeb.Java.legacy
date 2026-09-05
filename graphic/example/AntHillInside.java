@@ -7,6 +7,9 @@ import java.awt.Frame;
 import java.awt.Graphics;
 
 /**
+  * Simulates "Langton's Ant", a 2D cellular automaton that flips pixel color
+  * and turns based on the color of the cell it enters.
+  * <p>
   * Title: AntHillInside<p>
   * Description:
   * This is an Example of a 2dim. cellular Automaton: "Langtons Ant" showing emergent Behavior,
@@ -35,6 +38,15 @@ import java.awt.Graphics;
   * Created on	06-07-2002, 11:36 PM<p>
   * @author 	Matthias Heuer
   * @version	1.0
+  * <!-- docstate
+  * pass: 2
+  * mtime: 2026-09-05T11:49:07Z
+  * digest: 190448e2d8ee6d9c29f63fb0b405b1606631fec72085f5b71028028e110a4665
+  * stale: false
+  * tags: [code/algorithm, code/simulation]
+  * concepts: [Ant Colony Cellular Automaton]
+  * facets: {layer: test, status: broken, complexity: medium}
+  * -->
   */
 public class AntHillInside 
 extends Frame { //Applet {
@@ -43,9 +55,7 @@ extends Frame { //Applet {
 	/// #region : static Constants and Variables
 	////////////////////////////////////////////////////////////////////////////////
 	
-	/**
-	 * 
-	 */
+	/** Serialization version marker for {@link Frame} compatibility. */
 	private static final long serialVersionUID = 1L;
 
 	/** Height of the Graphic Area     */
@@ -137,6 +147,13 @@ extends Frame { //Applet {
 //		System.out.println("After  painting");
 	}
 
+	/**
+	 * Runs the ant simulation forever, moving one cell per iteration and
+	 * flipping each visited cell's color according to Langton's Ant rules.
+	 *
+	 * @throws RuntimeException if {@link #dir} holds a value outside the
+	 *         {@code DIR_*} constants
+	 */
 	protected void moveAnt() {
 		while (true) {
 			try {
@@ -149,6 +166,9 @@ extends Frame { //Applet {
 				case DIR_RIGHT: ++x; break;
 				default: throw new RuntimeException("Invalid Direction:" + dir); //break;
 			}
+			// TODO: LOGIC: x/y are never clamped or wrapped to [0, WIDTH)/[0, HEIGHT).
+			// Since the ant runs forever it will eventually walk off the buffer and
+			// this call will throw ArrayIndexOutOfBoundsException.
 			int col = memImg.getPixel(x, y) & MemoryImage.RGB_VALUES;
 			if (col == 0) { //pixel is black...
 				memImg.setPixel(x, y, Color.white); //color it white

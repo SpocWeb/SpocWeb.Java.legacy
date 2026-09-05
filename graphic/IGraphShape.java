@@ -10,20 +10,27 @@ import java.awt.Rectangle;
 import java.awt.Shape;
 
 /**
- * Title: IGraphShape<p>
- * Description:
- * Defines the Interface for painting complex Shapes (Polygons etc.)
- *
- * Known SubClasses: <none>
- *
- * Known Uses: <none>
+ * Defines the interface for painting complex shapes such as polygons,
+ * triangles and rounded rectangles, mirroring the relevant part of
+ * {@link java.awt.Graphics} plus interpolated, palette-driven variants.
  *
  * Copyright:	Copyright (c) Matthias Heuer<p>
  * Company:	personal<p>
  * Created on	10-26-2002, 12:47 PM<p>
  * @author mheuer
  * @version	1.0
- *
+ * @see IGraph2DOut
+ * @see ITurtle
+ * @see IGraphAddtl
+ * <!-- docstate
+ * pass: 2
+ * mtime: 2026-09-05T11:58:44Z
+ * digest: 17b8f60909c83c739a53bf01e716cca3f1807d501d0bda3ed481047ede74aa8d
+ * stale: false
+ * tags: [code/graphics, code/geometry]
+ * concepts: [Shape Rendering Interface]
+ * facets: {layer: infrastructure, status: legacy, complexity: low}
+ * -->
  */
 public interface IGraphShape 
 extends IGraph2DOut, ITurtle, IGraphAddtl {
@@ -51,28 +58,28 @@ extends IGraph2DOut, ITurtle, IGraphAddtl {
 	/// #range: Clipping
 	/////////////////////////////////////////////////////////////////////////////////////
 
-	/** @see java.awt.Graphics#getClipBounds(java.awt.Rectangle)	 */
+	/** Returns the current clipping area's bounds, reusing the given rectangle. @see java.awt.Graphics#getClipBounds(java.awt.Rectangle) */
 	public abstract Rectangle getClipBounds(Rectangle r);
 
-	/** @see java.awt.Graphics#getClipRect()	 */
+	/** Returns the current clipping area's bounds. @see java.awt.Graphics#getClipRect() */
 	public abstract Rectangle getClipRect();
 
-	/** @see java.awt.Graphics#getClipBounds()	 */
+	/** Returns the current clipping area's bounds, or null if unset. @see java.awt.Graphics#getClipBounds() */
 	public abstract Rectangle getClipBounds();
 
-	/** @see java.awt.Graphics#clipRect(int, int, int, int)	 */
+	/** Intersects the current clip with the given rectangle. @see java.awt.Graphics#clipRect(int, int, int, int) */
 	public abstract void clipRect(int x, int y, int width, int height);
 
-	/** @see java.awt.Graphics#setClip(int, int, int, int)	 */
+	/** Replaces the current clip with the given rectangle. @see java.awt.Graphics#setClip(int, int, int, int) */
 	public abstract void setClip(int x, int y, int width, int height);
 
-	/** @see java.awt.Graphics#getClip()	 */
+	/** Returns the current clipping area as a shape, or null if unset. @see java.awt.Graphics#getClip() */
 	public abstract Shape getClip();
 
-	/** @see java.awt.Graphics#setClip(java.awt.Shape)	 */
+	/** Replaces the current clip with the given shape. @see java.awt.Graphics#setClip(java.awt.Shape) */
 	public abstract void setClip(Shape clip);
 
-	/** @see java.awt.Graphics#hitClip(int, int, int, int)	 */
+	/** Returns whether the given rectangle intersects the current clip. @see java.awt.Graphics#hitClip(int, int, int, int) */
 	public abstract boolean hitClip(int x, int y, int width, int height);
 
 	/**Sets a Pixel in the current Color at the current Position,
@@ -83,17 +90,17 @@ extends IGraph2DOut, ITurtle, IGraphAddtl {
 	/// #range: Shapes, defined by the jawa.awt.Graphics Class
 	/////////////////////////////////////////////////////////////////////////////////////
 
-	/** @see java.awt.Graphics#drawLine(int, int, int, int)	 */
+	/** Draws a straight line between the two given points. @see java.awt.Graphics#drawLine(int, int, int, int) */
 	public abstract void drawLine(int x1, int y1, int x2, int y2);
 
 	/**Optimization: Sides are parallel to the Graphics Raster 
 	 * @see java.awt.Graphics#fillRect(int, int, int, int)	 */
 	public abstract void fillRect(int x, int y, int width, int height);
 
-	/** @see java.awt.Graphics#clearRect(int, int, int, int)	 */
+	/** Clears the given rectangle to the background color. @see java.awt.Graphics#clearRect(int, int, int, int) */
 	public abstract void clearRect(int x, int y, int width, int height);
 
-	/** @see java.awt.Graphics#drawRoundRect(int, int, int, int, int, int)	 */
+	/** Draws the outline of a rounded rectangle. @see java.awt.Graphics#drawRoundRect(int, int, int, int, int, int) */
 	public abstract void drawRoundRect(
 		int x,
 		int y,
@@ -102,7 +109,7 @@ extends IGraph2DOut, ITurtle, IGraphAddtl {
 		int arcWidth,
 		int arcHeight);
 
-	/** @see java.awt.Graphics#fillRoundRect(int, int, int, int, int, int)	 */
+	/** Fills a rounded rectangle in the current color. @see java.awt.Graphics#fillRoundRect(int, int, int, int, int, int) */
 	public abstract void fillRoundRect(
 		int x,
 		int y,
@@ -111,16 +118,16 @@ extends IGraph2DOut, ITurtle, IGraphAddtl {
 		int arcWidth,
 		int arcHeight);
 
-	/** @see java.awt.Graphics#drawOval(int, int, int, int)	 */
+	/** Draws the outline of an ellipse bounded by the given rectangle. @see java.awt.Graphics#drawOval(int, int, int, int) */
 	public abstract void drawOval(int x, int y, int width, int height);
 
-	/** @see java.awt.Graphics#fillOval(int, int, int, int)	 */
+	/** Fills an ellipse bounded by the given rectangle in the current color. @see java.awt.Graphics#fillOval(int, int, int, int) */
 	public abstract void fillOval(int x, int y, int width, int height);
 
-	/** @see java.awt.Graphics#drawArc(int, int, int, int, int, int)	 */
+	/** Draws the outline of a circular or elliptical arc. @see java.awt.Graphics#drawArc(int, int, int, int, int, int) */
 	public abstract void drawArc(int x, int y, int width, int height, int startAngle, int arcAngle);
 
-	/** @see java.awt.Graphics#fillArc(int, int, int, int, int, int)	 */
+	/** Fills a circular or elliptical arc in the current color. @see java.awt.Graphics#fillArc(int, int, int, int, int, int) */
 	public abstract void fillArc(int x, int y, int width, int height, int startAngle, int arcAngle);
 
 	/** 
@@ -141,19 +148,19 @@ extends IGraph2DOut, ITurtle, IGraphAddtl {
 	 */
 	public abstract void fillPolygon(int[] xPoints, int[] yPoints, int nPoints);
 
-	/** @see java.awt.Graphics#draw3DRect(int, int, int, int, boolean)	 */
+	/** Draws the outline of a rectangle with a pseudo-3D highlight/shadow border. @see java.awt.Graphics#draw3DRect(int, int, int, int, boolean) */
 	public abstract void draw3DRect(int x, int y, int width, int height, boolean raised);
 
-	/** @see java.awt.Graphics#drawPolygon(java.awt.Polygon)	 */
+	/** Draws the outline of the given AWT polygon. @see java.awt.Graphics#drawPolygon(java.awt.Polygon) */
 	public abstract void drawPolygon(Polygon p);
 
-	/** @see java.awt.Graphics#drawRect(int, int, int, int)	 */
+	/** Draws the outline of a rectangle. @see java.awt.Graphics#drawRect(int, int, int, int) */
 	public abstract void drawRect(int x, int y, int width, int height);
 
-	/** @see java.awt.Graphics#fill3DRect(int, int, int, int, boolean)	 */
+	/** Fills a rectangle with a pseudo-3D highlight/shadow border in the current color. @see java.awt.Graphics#fill3DRect(int, int, int, int, boolean) */
 	public abstract void fill3DRect(int x, int y, int width, int height, boolean raised);
 
-	/** @see java.awt.Graphics#fillPolygon(java.awt.Polygon)	 */
+	/** Fills the given AWT polygon in the current color. @see java.awt.Graphics#fillPolygon(java.awt.Polygon) */
 	public abstract void fillPolygon(Polygon p);
 
 	/////////////////////////////////////////////////////////////////////////////////////

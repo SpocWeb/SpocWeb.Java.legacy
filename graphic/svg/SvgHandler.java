@@ -7,15 +7,7 @@ package graphic.svg;
 
 
 /**
- * Title: SvgHandler<p>
- * Description:
- * Purpose:
- *
- * Purpose / Responsibilities of this Class
- *
- * Design Decisions / Implementation Details:
- * If similar Classes exist (e.g. Polymorphism),
- * characterize the specific Differences to compare these.
+ * Placeholder type reserved for future SVG element-handling logic; currently empty.
  *
  * Known SubClasses: <none>
  *
@@ -27,6 +19,15 @@ package graphic.svg;
  * @author mheuer
  * @version	1.0
  *
+ * <!-- docstate
+ * pass: 2
+ * mtime: 2026-09-05T11:47:38Z
+ * digest: e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855
+ * stale: false
+ * tags: [code/parsing]
+ * concepts: [Empty SAX Handler Placeholder]
+ * facets: {layer: utility, status: unfinished, complexity: low}
+ * -->
  */
 public class SvgHandler {
 

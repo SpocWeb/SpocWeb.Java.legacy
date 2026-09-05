@@ -16,6 +16,15 @@ import java.awt.Graphics;
  *
  * Backtracking the Turtle works, due to no rounding errors,
  * still it is faster to just buffer the old Location.
+ * <!-- docstate
+ * pass: 2
+ * mtime: 2026-09-05T11:51:37Z
+ * digest: 56390f7115e42acb2db1486dcd5312d4a7d10e2802738ce23659ad1f62dc119e
+ * stale: false
+ * tags: [code/algorithm, code/graphics]
+ * concepts: [Turtle-Graphics Fractal]
+ * facets: {layer: test, status: legacy, complexity: medium}
+ * -->
  */
 final public class Fractal
 extends Frame { //Applet {
@@ -24,9 +33,7 @@ extends Frame { //Applet {
 	/// #region : static Constants and Variables
 	////////////////////////////////////////////////////////////////////////////////
 	
-	/**
-	 * 
-	 */
+	/** Serialization version marker for {@link Frame} compatibility. */
 	private static final long serialVersionUID = 1L;
 
 	/** Size of the Graphic Area     */
@@ -40,8 +47,9 @@ extends Frame { //Applet {
 	////////////////////////////////////////////////////////////////////////////
 	
 	/**
+	 * Computes the binary octave (power-of-two exponent) covering a magnitude,
+	 * used in {@link Plasma} and in Fourier transformation.
 	 * @return the first Number for which (1 >> Octave) > num
-	 * used in Plasma and in Fourier Transformation
 	 */
 	final static public byte Octave(int num) {
 		if (num < 0 ) num = -num;
@@ -78,7 +86,8 @@ extends Frame { //Applet {
 		while (SR > 1);   //{das immer weiter verfeinert wird}
 		return MnMx; }
 
-	/** @see #raster2D(int[][], IRaster) uses this Method exclusively to set the Value of a Pixel	 */
+	/** Sets one raster pixel's color and updates the running min/max range.
+	 * @see #raster2D(int[][], IRaster) uses this Method exclusively to set the Value of a Pixel	 */
 	private static void SET_RASTER2D_PIXEL(
 		final int[][] picture,
 		final IRaster painter,
@@ -215,7 +224,7 @@ extends Frame { //Applet {
 		g.turn	(-angle  );
 	}
 
-	/**iteriertes (3,4,5) 90ø-Dreieck	 */
+	/**iteriertes (3,4,5) 90ï¿½-Dreieck	 */
 	public void Euklid  (int Grad, int Length) {
 		final int angle = 37; //{angle in the 3,4,5 - Triangle (Dreieck})
 		int D5, Kurz;

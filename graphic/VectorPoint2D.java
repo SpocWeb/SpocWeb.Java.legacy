@@ -13,17 +13,12 @@ import streamIO.Log;
 import streamIO.copy.ICopyAble;
 
 /**
- * Title: VectorPoint2D<p>
- * Description:
- * Purpose:
- *
- * Defines a typed, dynamically growable Array of Point2D Objects with integer Coordinates. 
- * Could also be a regular ArrayList, but this one is typed better. 
- * Optionally the Elements can be preallocated, 
- * so access is guaranteed to return a Point2D Object and not null! 
- * Since this is a Value Object, 
- * the Objects are not replaced but the Elements are copied. 
- * Additionally all Elements are already filled on Construction. 
+ * A typed, dynamically growable array of {@link Point2D} objects with integer coordinates.
+ * <p>
+ * Could also be a regular {@code ArrayList}, but this one is typed better. Optionally the
+ * elements can be preallocated, so access is guaranteed to return a {@link Point2D} object
+ * and not null. Since this is a value object, the objects are not replaced but the elements
+ * are copied. Additionally all elements are already filled on construction.
  *
  * Design Decisions / Implementation Details:
  * If similar Classes exist (e.g. Polymorphism),
@@ -41,13 +36,20 @@ import streamIO.copy.ICopyAble;
  * @author mheuer
  * @version	1.0
  *
+ * <!-- docstate
+ * pass: 2
+ * mtime: 2026-09-05T12:24:20Z
+ * digest: 968951b38b3022e7bbdb467b0199dcf9cef8b0358cb1bf0c930ad946be37048a
+ * stale: false
+ * tags: [code/collection, code/geometry]
+ * concepts: [Point2D Array Utilities]
+ * facets: {layer: utility, status: broken, complexity: medium}
+ * -->
  */
 final public class VectorPoint2D 
 extends AVector {
 
-	/**
-	 * 
-	 */
+	/** Serialization format version for this class. */
 	private static final long serialVersionUID = 1L;
 	/** streamIO for logging the Progress of Convergence */
 	public static Log L = new Log(VectorPoint2D.class, 1); 
@@ -60,20 +62,16 @@ extends AVector {
 	/// #region : static Methods
 	////////////////////////////////////////////////////////////////////////////////
 
-	/** @return a filled List of the given minimum Size 
-	 * 
-	 * @param list
-	 * @param newSize
-	 * @return
+	/** Returns a new array of the given minimum size, filled with fresh {@link Point2D}
+	 * instances, per {@link #GET_FILLED_ARRAY(int, Point2D[])}.
 	 */
 	final static public Point2D[] GET_FILLED_ARRAY(int minSize) {
 		return GET_FILLED_ARRAY(minSize, null);
 	}
 
-	/** @return a filled List of at least the given minimum Size 
-	 * 
-	 * @param list
-	 * @param newSize
+	/** Returns {@code list} unchanged if it already has at least {@code minSize}
+	 * elements, otherwise a new, larger array copied from {@code list} (or empty) and
+	 * padded with fresh {@link Point2D} instances up to {@code minSize}.
 	 * @return list if it was large enough, or a new enlarged Array
 	 */
 	final static public Point2D[] GET_FILLED_ARRAY(int minSize, final Point2D[] list) {
@@ -136,7 +134,8 @@ extends AVector {
 	//	final static public Point2D[] MinMax(Point2D[] arr) { }
 
 	/**
-	 * @return the Minimum Values of each Column 
+	 * Min's every element of {@code arg} into {@code ret}, column-wise.
+	 * @return the Minimum Values of each Column
 	 */
 	final static public Point2D Min(Point2D ret, Point2D[] arg) {
 		for (int i = arg.length; --i >= 0;) {
@@ -164,7 +163,8 @@ extends AVector {
 		return ret;
 	}
 
-	/** @return the Maximum Values of each Column */
+	/** Max's every element of {@code arg} into {@code ret}, column-wise.
+	 * @return the Maximum Values of each Column */
 	final static public Point2D Max(Point2D ret, Point2D[] arg) {
 		for (int i = arg.length; --i >= 0;) {
 			ret.MaxAt(arg[i]);
@@ -202,6 +202,7 @@ extends AVector {
 	}
 
 	/**
+	  * Adds the given int increment to every element of {@code ret} in [start, stop).
 	  * @return the given Array incremented by the given Increment
 	  * @param ret Array with the Values to be processed. Also returned by this Method.
 	  * @param Increment the Increment to add to
@@ -216,6 +217,8 @@ extends AVector {
 	}
 
 	/**
+	  * Adds the given {@link Point2D} increment to every non-null element of
+	  * {@code ret} in [start, stop).
 	  * @return the given Array incremented by the given Increment
 	  * @param ret Array with the Values to be processed. Also returned by this Method.
 	  * @param Increment the Increment to add to
@@ -233,6 +236,8 @@ extends AVector {
 	}
 
 	/**
+	  * Adds the given {@code (x, y)} increment to every element of {@code ret} in
+	  * [start, stop).
 	  * @return the given Array incremented by the given Increment
 	  * @param ret Array with the Values to be processed. Also returned by this Method.
 	  * @param Increment the Increment to add to
@@ -257,6 +262,8 @@ extends AVector {
 	}
 
 	/**
+	  * Subtracts the given {@link Point2D} decrement from every element of
+	  * {@code ret} in [start, stop).
 	  * @return the given Array incremented by the given Increment
 	  * @param ret Array with the Values to be processed. Also returned by this Method.
 	  * @param Increment the Increment to add to
@@ -271,6 +278,8 @@ extends AVector {
 	}
 
 	/**
+	  * Subtracts the given {@code (x, y)} decrement from every element of
+	  * {@code ret} in [start, stop).
 	  * @return the given Array incremented by the given Increment
 	  * @param ret Array with the Values to be processed. Also returned by this Method.
 	  * @param Increment the Increment to add to
@@ -296,7 +305,8 @@ extends AVector {
 		return ret;
 	}
 
-	/** 
+	/**
+	 * Sums the x and y components of each row into a new array, per {@link #RowSum(Point2D[], int, int, int[])}.
 	 * @return the Array ret filled with the Sum of all Values in each Row.
 	 */
 	final static public int[] RowSum(Point2D[] arr) {
@@ -304,6 +314,7 @@ extends AVector {
 	}
 
 	/**
+	 * Sums the x and y components of each row into {@code ret}, per {@link #RowSum(Point2D[], int, int, int[])}.
 	 * @para ret the return Vector. To contain the Sum, it must be cleared before!
 	 * @return the Array ret filled with the Sum of all Values in each Row.
 	 */
@@ -312,6 +323,7 @@ extends AVector {
 	}
 
 	/**
+	 * Sums the x and y components of each row in [Start, Stop) into {@code ret}.
 	 * @para ret the return Vector. To contain the Sum, it must be cleared before!
 	 * @return the Array ret filled with the Sum of all Values in each Row.
 	 */
@@ -322,12 +334,14 @@ extends AVector {
 		return ret;
 	}
 
-	/** @return The Sum Vector of all Rows as Values in the Array. 	 */
+	/** Sums all rows of {@code arr} into a new {@link Point2D}, per {@link #ColSum(Point2D[], int, int, Point2D)}.
+	 * @return The Sum Vector of all Rows as Values in the Array. 	 */
 	final static public Point2D ColSum(Point2D[] arr) {
 		return ColSum(arr, 0, arr.length, new Point2D());
 	}
 
 	/**
+	 * Sums all rows of {@code arr} into {@code ret}, per {@link #ColSum(Point2D[], int, int, Point2D)}.
 	 * @para ret the return Vector. To contain the Sum, it must be cleared before!
 	 * @return The Sum Vector of all Rows as Values in the Array.
 	 */
@@ -336,6 +350,7 @@ extends AVector {
 	}
 
 	/**
+	 * Sums the rows of {@code arr} in [startRow, stopRow) into {@code ret}.
 	 * @para ret the return Vector. To contain the Sum, it must be cleared before!
 	 * @return The Sum Vector of all Rows as Values in the Array.
 	 */
@@ -346,12 +361,16 @@ extends AVector {
 		return ret;
 	}
 
-	/** @return The Sum Vector of all Rows as Values in the Array. 	 */
+	/** Column-wise maxes all rows of {@code arr} into a new {@link Point2D}, per
+	 * {@link #ColMax(Point2D[], int, int, Point2D)}.
+	 * @return The Sum Vector of all Rows as Values in the Array. 	 */
 	final static public Point2D ColMax(Point2D[] arr) {
 		return ColMax(arr, 0, arr.length, new Point2D(Integer.MIN_VALUE, Integer.MIN_VALUE));
 	}
 
 	/**
+	 * Column-wise maxes all rows of {@code arr} into {@code ret}, per
+	 * {@link #ColMax(Point2D[], int, int, Point2D)}.
 	 * @para ret the return Vector. To contain the Sum, it must be cleared before!
 	 * @return The Sum Vector of all Rows as Values in the Array.
 	 */
@@ -360,6 +379,7 @@ extends AVector {
 	}
 
 	/**
+	 * Column-wise maxes the rows of {@code arr} in [startRow, stopRow) into {@code ret}.
 	 * @para ret the return Vector. To contain the Sum, it must be cleared before!
 	 * @return The Sum Vector of all Rows as Values in the Array.
 	 */
@@ -370,7 +390,9 @@ extends AVector {
 		return ret;
 	}
 
-	/** @return a shallow Copy of the given Array */
+	/** Shallow-copies the element references of {@code arr} into {@code ret}.
+	 * @return a shallow Copy of the given Array
+	 * @throws IndexOutOfBoundsException if the arrays' lengths differ. */
 	public static Point2D[] shallowCopyAt(Point2D[] ret, Point2D[] arr) {
 		if (ret.length != arr.length) {
 			throw new IndexOutOfBoundsException("Expected: " + ret.length + " Actual: " + arr.length);
@@ -382,7 +404,8 @@ extends AVector {
 		return ret;
 	}
 
-	/** @return a deep Copy of the given Matrix */
+	/** Deep-copies each element of {@code arr} in [Start, Stop) into {@code ret}.
+	 * @return a deep Copy of the given Matrix */
 	public static Point2D[] copyAt(Point2D[] ret, Point2D[] arr, int Start, int Stop) {
 		while (--Stop >= Start) {
 			ret[Stop].copyAt(arr[Stop]);
@@ -391,7 +414,8 @@ extends AVector {
 		return ret;
 	}
 
-	/** @return the Matrix ret with deep Copie of the given Vector arr in every Row */
+	/** Copies the given {@link Point2D} arr into every element of {@code ret} in [Start, Stop).
+	 * @return the Matrix ret with deep Copie of the given Vector arr in every Row */
 	public static Point2D[] copyAt(Point2D[] ret, Point2D arr, int Start, int Stop) {
 		while (--Stop >= Start) {
 			//VectorDouble.copyAt(ret[Stop], arr); 
@@ -400,7 +424,8 @@ extends AVector {
 		return ret;
 	}
 
-	/** @return the Matrix ret with deep Copie of the given Vector arr in every Row */
+	/** Copies the given {@code (x, y)} arr into every element of {@code ret} in [Start, Stop).
+	 * @return the Matrix ret with deep Copie of the given Vector arr in every Row */
 	public static Point2D[] copyAt(Point2D[] ret, int[] arr, int Start, int Stop) {
 		while (--Stop >= Start) {
 			ret[Stop].copyAt(arr);
@@ -408,7 +433,8 @@ extends AVector {
 		return ret;
 	}
 
-	/** @return a deep Copy of the given Array */
+	/** Returns a new array holding a deep copy of every element of {@code arr}.
+	 * @return a deep Copy of the given Array */
 	public static Point2D[] copy(Point2D[] arr) {
 		int len;
 		Point2D[] ret = new Point2D[len = arr.length];
@@ -418,7 +444,8 @@ extends AVector {
 		return ret;
 	}
 
-	/** @return a deep Copy of the given Array */
+	/** Returns a new array of {@link Point2D} built from each {@code (x, y)} pair in {@code arr}.
+	 * @return a deep Copy of the given Array */
 	public static Point2D[] copy(int[][] arr) {
 		int len;
 		Point2D[] ret = new Point2D[len = arr.length];
@@ -440,15 +467,22 @@ extends AVector {
 		Point2D[] ret = new Point2D[dim];
 		System.arraycopy(a, 0, ret, 0, a.length);
 		//Arrays.fill(ret, a.length, dim, null);
+		// TODO: LOGIC: builds the correctly-resized array "ret" but returns
+		// the original, unresized "a" instead; callers relying on the return
+		// value to get an array of the requested "dim" silently get the old
+		// size back.
 		return a;
 	}
 
-	/** @return the given Array multiplied in Place by the given Factor */
+	/** Multiplies every element of {@code ret} in place by {@code Factor}, per
+	 * {@link #mulAt(Point2D[], int, int, int)}.
+	 * @return the given Array multiplied in Place by the given Factor */
 	public static Point2D[] mulAt(Point2D[] ret, int Factor) {
 		return mulAt(ret, Factor, 0, ret.length);
 	}
 
-	/** @return the given Array multiplied in Place by the given Factor */
+	/** Multiplies each element of {@code ret} in [Start, Stop) in place by {@code Factor}.
+	 * @return the given Array multiplied in Place by the given Factor */
 	public static Point2D[] mulAt(Point2D[] ret, int Factor, int Start, int Stop) {
 		while (--Stop >= Start) {
 			ret[Stop].mulAt(Factor);
@@ -465,12 +499,11 @@ extends AVector {
 	////////////////////////////////////////////////////////////////////////////////
 
 	/**
+	  * Negates every element of {@code ret} in [start1, stop1) in place.
 	  * @return the Negative of the given Array
 	  * @param ret Array with the Values to be processed. Also returned by this Method.
 	  * @param start1 Index from  where the outer Array is processed
 	  * @param stop1  Index up to where the outer Array is processed (not ret[stop]!)
-	  * @param start2 Index from  where the inner Array is processed
-	  * @param stop2  Index up to where the inner Array is processed (not ret[stop]!)
 	  */
 	final static public Point2D[] NegAt(Point2D[] ret, int start1, int stop1) {
 		while (--stop1 >= start1) {
@@ -480,6 +513,8 @@ extends AVector {
 	}
 
 	/**
+	  * Takes the absolute value of every element of {@code ret} in place, per
+	  * {@link #AbsVAt(Point2D[], int, int)}.
 	  * @return the absolute Value of the Values in the given Array
 	  * @param ret Array with the Values to be processed. Also returned by this Method.
 	  */
@@ -515,7 +550,8 @@ extends AVector {
 		return permuteRows(new Point2D[a.length], a, index);
 	}
 	
-	/** @return this Vector with the Rows permuted according to the given Permutation     */
+	/** Writes {@code a[index[i]]} into {@code ret[i]} for every row, leaving {@code a} untouched.
+	 * @return this Vector with the Rows permuted according to the given Permutation     */
 	final static public Point2D[] permuteRows(Point2D[] ret, Point2D[] a, int[] index) {
 		for (int i = index.length; --i >= 0;) {
 			ret[i] = a[index[i]];
@@ -535,6 +571,8 @@ extends AVector {
 	}
 	
 	/**
+	 * Returns a new array holding the per-row maximum value of {@code arr}, per
+	 * {@link #MaxVal(int[], Point2D[], int, int)}.
 	 * @return Maximum Value of the every Row in the Array.
 	 */
 	final static public int[] MaxVal(Point2D[] arr) {
@@ -544,6 +582,8 @@ extends AVector {
 	}
 	
 	/**
+	 * Fills {@code ret} with the per-row maximum value of {@code arr}, per
+	 * {@link #MaxVal(int[], Point2D[], int, int)}.
 	 * @return Maximum Value of the every Row in the Array.
 	 */
 	final static public int[] MaxVal(int[] ret, Point2D[] arr) {
@@ -608,6 +648,9 @@ extends AVector {
 		//		if (startRow >= stopRow) {
 		//			return; }
 		//		stream(vals[startRow], stream);
+		// TODO: LOGIC: "for (int i = startRow; ++i < stopRow;)" pre-increments
+		// before the first use of i, so vals[startRow] itself is never
+		// streamed; the loop effectively covers [startRow+1, stopRow).
 		for (int i = startRow; ++i < stopRow;) {
 			stream.println(vals[i]);
 		}
@@ -624,10 +667,12 @@ extends AVector {
 	/// #region : Accessor Methods (getXXX/isXXX/setXXX)
 	////////////////////////////////////////////////////////////////////////////////
 	
-	/** @see math.AVector#getAt(int)	 */
+	/** Returns the element at index {@code i} via {@link #getPointAt(int)}.
+	 * @see math.AVector#getAt(int)	 */
 	public Object getAt(final int i) { return getPointAt(i); }
-	
+
 	/**
+	 * Returns the backing array itself (not a copy), so callers can modify it directly.
 	 * @return the internal List to modify it externally
 	 */
 	public Point2D[] getList() {
@@ -985,7 +1030,8 @@ extends AVector {
 	//	final static public Point2D[] MinMax(Point2D[] arr) { }
 
 	/**
-	 * @return the Minimum Values of each Column 
+	 * Min's every stored element into {@code ret}, per {@link #Min(Point2D, Point2D[])}.
+	 * @return the Minimum Values of each Column
 	 */
 	public Point2D Min(final Point2D ret) {
 		return Min(ret, items);
@@ -1000,7 +1046,8 @@ extends AVector {
 		return Min(items, 0, itemCount);
 	}
 
-	/** @return the Maximum Values of each Column */
+	/** Max's every stored element into {@code ret}, per {@link #Max(Point2D, Point2D[])}.
+	 * @return the Maximum Values of each Column */
 	public Point2D Max(final Point2D ret) {
 		return Max(ret, items);
 	}

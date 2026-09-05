@@ -3,24 +3,29 @@ package graphic;
 import java.awt.Graphics;
 
 /**
-  * Title: drawAble<p>
-  * Description:
-  * Defines the common Interface for Objects that have a graphical Representation, 
-  * which corresponds to an Object Oriented Design, instead of a Functional.
-  * At a certain Point it doesn't make Sense anymore
-  * to define Routines for specific Shapes in the Graph2D Object.
-  * Only the most generic and possibly (hardware) accelerated Routines
-  * should be present in the Graph2D Object.
-  * Implementors are:
-  * @see
+  * Defines the common contract for objects that can draw and fill their own
+  * graphical representation, favoring an object-oriented design over a purely
+  * functional one.
   *
-  * Known SubClasses:
+  * <p>At a certain point it doesn't make sense anymore to define routines for
+  * specific shapes in the {@link Graph2D} object; only the most generic and
+  * possibly (hardware) accelerated routines should live there.
   *
   * Copyright:	Copyright (c) Matthias Heuer<p>
   * Company:	personal<p>
   * Created on	06-05-2002, 09:24 AM<p>
   * @author 	Matthias Heuer
   * @version	1.0
+  * @see Graph2D
+  * <!-- docstate
+  * pass: 2
+  * mtime: 2026-09-05T11:47:42Z
+  * digest: 697237ae89fd00545916a47d1e7606d448ccd84823b7a59635cd50c14ee0066d
+  * stale: false
+  * tags: [code/graphics]
+  * concepts: [Rendering Abstraction Interface]
+  * facets: {layer: infrastructure, status: legacy, complexity: low}
+  * -->
   */
 public interface IDrawAble {
 

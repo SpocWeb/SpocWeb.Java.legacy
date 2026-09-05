@@ -45,6 +45,15 @@ import java.awt.image.MemoryImageSource;
  * 
  * @deprecated due to the Existence of java.awt.image.BufferedImage 
  * which allows also to draw Images.   
+ * <!-- docstate
+ * pass: 2
+ * mtime: 2026-09-05T12:02:32Z
+ * digest: e6e2987b4d402da3c8ff9549434e79c2077828bcc20231f4e2d969ba2cc7a90e
+ * stale: false
+ * tags: [code/image_processing, code/graphics]
+ * concepts: [In-Memory Bitmap]
+ * facets: {layer: infrastructure, status: legacy, complexity: medium}
+ * -->
  */
 public class MemoryImage
 extends AGraphRead {
@@ -306,6 +315,9 @@ extends AGraphRead {
 	}
 
 	/**
+	 * Not implemented; always throws.
+	 *
+	 * @throws RuntimeException always
 	 * @see graphic.IGraphics#drawImage(java.awt.Image, int, int, int, int, int, int, int, int, java.awt.image.ImageObserver)
 	 */
 	public boolean drawImage(final Image img, final int dx1, final int dy1, final int dx2, final int dy2, final int sx1, final int sy1, final int sx2, final int sy2, final ImageObserver observer) {

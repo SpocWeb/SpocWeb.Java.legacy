@@ -11,31 +11,36 @@ import java.text.CharacterIterator;
 import streamIO.Log;
 
 /**
-  * Title: AGraphText<p>
-  * Description:
-  * TODO: Describes the Purpose / Responsibilities of this Class, not it's Implementation.
-  * If similar Classes exist (e.g. Polymorphism),
-  * characterize the specific Differences to compare these.
-  * Extends Class TODO because ...
-  * Implements Interface TODO because ...
-  * Consists of Members TODO, ...
-  * Uses Class TODO for ...
-  *
-  * Known SubClasses:
+  * Renders text as vector polygons using a built-in bitmap-derived font,
+  * independent of AWT's {@link Font} mechanism, plus word-wrapping helpers.
   *
   * Copyright:	Copyright (c) Matthias Heuer<p>
   * Company:	personal<p>
   * Created on	06-03-2002, 11:44 PM<p>
   * @author 	Matthias Heuer
   * @version	1.0
+  * @see AGraph2D
+  * @see GraphTextMetrics metrics matching this class's built-in font
+  * <!-- docstate
+  * pass: 2
+  * mtime: 2026-09-05T12:10:36Z
+  * digest: 7e139bdd2d8d74ab996480f461611541bca81d03b3f7d4e0b9ec814de10ef04a
+  * stale: false
+  * tags: [code/bitmap_font_rendering, code/graphics]
+  * concepts: [Vector Font Rendering Base Class]
+  * facets: {layer: infrastructure, status: legacy, complexity: medium}
+  * -->
   */
 public abstract class AGraphText 
 extends AGraph2D 
 implements IGraphText {
 	
-	private static final Log L = new Log(AGraphText.class, 0); 
-	
+	/** Logging channel for this class. */
+	private static final Log L = new Log(AGraphText.class, 0);
+
 	/**
+	 * Builds a scaled copy of the default font's polygon description.
+	 *
 	 * @param SizeX
 	 * @param SizeY
 	 * @return a new Copy of the Default Font scaled by the given integer Scales
@@ -61,6 +66,8 @@ implements IGraphText {
 	private FontMetrics fontMetrics = DEFAULT_FONT_METRICS; 
 
 	/**
+	 * Returns the metrics for the currently selected bitmap font.
+	 *
 	 * @return a FontMetrics Object allowing to determine the String Sizes with a given Font
 	 */
 	public FontMetrics getFontMetrics() { return fontMetrics; }
@@ -76,8 +83,9 @@ implements IGraphText {
 	 */
 	private int[][][][] font = DEFAULT_FONT; //getFontPolygons();
 
+	/** Replaces the font's polygon description, unless {@code font} is null. */
 	public void setFont(int[][][][] font) {
-		if (font != null) 
+		if (font != null)
 			this.font = font;
 	}
 
@@ -94,7 +102,8 @@ implements IGraphText {
 	/////////////////////////////////////////////////////////////////////////////////////
 	///#region: Member Methods
 	
-	final static public float FACTOR_BMP_2_PPT = 1; 
+	/** Conversion factor from bitmap-font units to points; currently identity (1). */
+	final static public float FACTOR_BMP_2_PPT = 1;
 	
 	/**
 	 * draws the given Text into this Graphics Context using the current Font. 
@@ -293,6 +302,9 @@ implements IGraphText {
 	////////////////////////////////////////////////////////////////////////////
 
 	/**
+	 * Draws the given byte range, interpreted as Latin-1 text, starting at
+	 * the given position.
+	 *
 	 * @see graphic.IGraphics#drawBytes(byte[], int, int, int, int)
 	 */
 	public void drawBytes(final byte[] data, final int offset, final int length, final int x, final int y) {
@@ -305,6 +317,8 @@ implements IGraphText {
 	}
 
 	/**
+	 * Draws the given character range starting at the given position.
+	 *
 	 * @see graphic.IGraphics#drawChars(char[], int, int, int, int)
 	 */
 	public void drawChars(final char[] data, final int offset, final int length, final int x, final int y) {
@@ -314,6 +328,8 @@ implements IGraphText {
 	}
 
 	/**
+	 * Draws the attributed text starting at the given position.
+	 *
 	 * @see graphic.IGraphics#drawString(int, java.text.AttributedCharacterIterator, int)
 	 */
 	public void drawString(AttributedCharacterIterator iterator, int x, int y) {
@@ -340,16 +356,24 @@ implements IGraphText {
 	/////////////////////////////////////////////////////////////////////////////////
 
 	/**
+	 * This bitmap-font renderer has no {@link Font}; always returns null.
+	 *
 	 * @see graphic.IGraphics#getFont()
 	 */
 	public Font getFont() { return null; }
 
 	/**
+	 * Not supported; always throws, since this class draws its own bitmap
+	 * font rather than an AWT {@link Font}.
+	 *
+	 * @throws RuntimeException always
 	 * @see graphic.IGraphics#setFont(java.awt.Font)
 	 */
 	public void setFont(final Font font) { throw new RuntimeException("Not supported!"); }
 
 	/**
+	 * Returns the current bitmap font's metrics, ignoring {@code f}.
+	 *
 	 * @see graphic.IGraphics#getFontMetrics(java.awt.Font)
 	 */
 	public FontMetrics getFontMetrics(final Font f) { return fontMetrics; }
@@ -581,7 +605,7 @@ implements IGraphText {
 			{ {} }, //165
 			{ {} }, //166
 			{ { { 2, 1 }, { 1, 0 }, { 0, 1 }, { 0, 2 }, { 2, 3 } },
-					{ { 0, 3 }, { 1, 4 }, { 2, 3 }, { 2, 2 }, { 0, 1 } } }, //167	§
+					{ { 0, 3 }, { 1, 4 }, { 2, 3 }, { 2, 2 }, { 0, 1 } } }, //167	ï¿½
 			{ {} }, //168
 			{ {} }, //169
 			{ {} }, //170
@@ -611,7 +635,7 @@ implements IGraphText {
 			{ {} }, //194
 			{ {} }, //195
 			{ { { 0, 4 }, { 0, 3 }, { 1, 0 }, { 2, 3 }, { 2, 4 } },
-					{ { 2, 3 }, { 0, 3 } }, { { 0, 0 } }, { { 2, 0 } } }, //196	Ä	'painted in two Draws
+					{ { 2, 3 }, { 0, 3 } }, { { 0, 0 } }, { { 2, 0 } } }, //196	ï¿½	'painted in two Draws
 			{ {} }, //197
 			{ {} }, //198
 			{ {} }, //199
@@ -631,18 +655,18 @@ implements IGraphText {
 			{ {} }, //213
 			{
 					{ { 0, 1 }, { 1, 0 }, { 2, 1 }, { 2, 3 }, { 1, 4 },
-							{ 0, 3 }, { 0, 1 } }, { { 0, 0 } }, { { 2, 0 } } }, //214	Ö
+							{ 0, 3 }, { 0, 1 } }, { { 0, 0 } }, { { 2, 0 } } }, //214	ï¿½
 			{ {} }, //215
 			{ {} }, //216
 			{ {} }, //217
 			{ {} }, //218
 			{ {} }, //219
 			{ { { 0, 1 }, { 0, 3 }, { 1, 4 }, { 2, 3 }, { 2, 1 } },
-					{ { 0, 0 } }, { { 2, 0 } } }, //220	Ü
+					{ { 0, 0 } }, { { 2, 0 } } }, //220	ï¿½
 			{ {} }, //221
 			{ {} }, //222
 			{ { { 0, 4 }, { 0, 1 }, { 1, 0 }, { 2, 1 }, { 1, 2 }, { 2, 3 },
-					{ 1, 4 } } }, //223	ß
+					{ 1, 4 } } }, //223	ï¿½
 			{ {} }, //224
 			{ {} }, //225
 			{ {} }, //226
@@ -650,7 +674,7 @@ implements IGraphText {
 			{
 					{ { 0, 2 }, { 1, 1 }, { 2, 1 }, { 2, 4 }, { 1, 4 },
 							{ 0, 3 }, { 1, 2 }, { 2, 2 } }, { { 0, 0 } },
-					{ { 2, 0 } } }, //228	ä
+					{ { 2, 0 } } }, //228	ï¿½
 			{ {} }, //229
 			{ {} }, //230
 			{ {} }, //231
@@ -669,21 +693,23 @@ implements IGraphText {
 			{ {} }, //244
 			{ {} }, //245
 			{ { { 0, 3 }, { 1, 2 }, { 2, 3 }, { 1, 4 }, { 0, 3 } },
-					{ { 0, 1 } }, { { 2, 1 } } }, //246	ö
+					{ { 0, 1 } }, { { 2, 1 } } }, //246	ï¿½
 			{ {} }, //247
 			{ {} }, //248
 			{ {} }, //249
 			{ {} }, //250
 			{ {} }, //251
 			{ { { 0, 2 }, { 0, 3 }, { 1, 4 }, { 2, 4 }, { 2, 2 } },
-					{ { 0, 1 } }, { { 2, 1 } } }, //252	ü
+					{ { 0, 1 } }, { { 2, 1 } } }, //252	ï¿½
 			{ {} }, //253
 			{ {} }, //254
 			{ {} }, //255
 	};
 	
+	/** Default bitmap font, scaled by a factor of 2 in each direction. */
 	protected final static int[][][][] DEFAULT_FONT = getFont(2,2);
-	
+
+	/** Metrics matching {@link #DEFAULT_FONT}. */
 	protected final static FontMetrics DEFAULT_FONT_METRICS = new GraphTextMetrics(2, 2);
 
 	/**The main entry point for the application.
@@ -730,9 +756,9 @@ implements IGraphText {
 		AGraphText g2D = new JavaGraphic(g);
 		//		Figures Fig = new Figures(g2D);
 
-		String loCase = "abcdefghijklmnopqrstuvwxyzäöü";
-		String upCase = "ABCDEFGHIJKLMNOPQRSTUVWXYZÄÖÜ";
-		String numbers = "012345678 9:;,.#'!§$%&/\\(){}[]=?<>^~*+-_ ";
+		String loCase = "abcdefghijklmnopqrstuvwxyzï¿½ï¿½ï¿½";
+		String upCase = "ABCDEFGHIJKLMNOPQRSTUVWXYZï¿½ï¿½ï¿½";
+		String numbers = "012345678 9:;,.#'!ï¿½$%&/\\(){}[]=?<>^~*+-_ ";
 		String testCase = "AAABBBBaaabbb";
 
 		g2D.P.setX(100);
@@ -766,33 +792,50 @@ implements IGraphText {
 
 }
 
-class GraphTextMetrics 
+/**
+ * {@link FontMetrics} for {@link AGraphText}'s built-in bitmap font: every
+ * character has the same fixed advance and ascent, scaled by a constant
+ * factor in each direction.
+ *
+ * @see AGraphText
+ * <!-- docstate
+ * pass: 2
+ * mtime: 2026-09-05T12:10:36Z
+ * digest: 4a13afbef640130b63c283b402762d6068f4814e14302d0aa3b3012109543dce
+ * stale: false
+ * tags: [code/bitmap_font_rendering]
+ * concepts: [Font Metrics Holder]
+ * facets: {layer: infrastructure, status: legacy, complexity: low}
+ * -->
+ */
+class GraphTextMetrics
 extends FontMetrics {
 
-	/**
-	 * 
-	 */
+	/** Required by {@link java.io.Serializable}; this class is never serialized meaningfully. */
 	private static final long serialVersionUID = 1L;
 
 	/** Total Width of a Character */
-	private static final int X_SCALE = 4; 
+	private static final int X_SCALE = 4;
 
 	/** Total Height of a Character */
-	private static final int Y_SCALE = 6; 
+	private static final int Y_SCALE = 6;
 
+	/** Character advance width, {@code X_SCALE} scaled by the constructor's x factor. */
 	private int scaleX;
-	 
+
+	/** Character ascent, {@code Y_SCALE} scaled by the constructor's y factor. */
 	private int scaleY;
 
-	/**
-	 */
+	/** Creates metrics for a font scaled by the given integer x/y factors. */
 	protected GraphTextMetrics(int scaleX_, int scaleY_) {
 		super(null);
 		scaleX = scaleX_ * X_SCALE;
 		scaleY = scaleY_ * Y_SCALE;
 	}
-	
+
 	/**
+	 * Returns the fixed character advance width.
+	 *
 	 * @see java.awt.FontMetrics#getMaxAdvance()
 	 */
 	public int getMaxAdvance() {
@@ -800,6 +843,9 @@ extends FontMetrics {
 	}
 
 	/**
+	 * Returns the width of the given character range: a fixed per-character
+	 * advance times the character count.
+	 *
 	 * @see java.awt.FontMetrics#charsWidth(char[], int, int)
 	 */
 	public int charsWidth(char[] data, int off, int len) {
@@ -807,6 +853,8 @@ extends FontMetrics {
 	}
 
 	/**
+	 * Returns the fixed character advance width, ignoring {@code ch}.
+	 *
 	 * @see java.awt.FontMetrics#charWidth(char)
 	 */
 	public int charWidth(char ch) {
@@ -814,6 +862,8 @@ extends FontMetrics {
 	}
 
 	/**
+	 * Returns the fixed character ascent.
+	 *
 	 * @see java.awt.FontMetrics#getAscent()
 	 */
 	public int getAscent() {
@@ -821,6 +871,8 @@ extends FontMetrics {
 	}
 
 	/**
+	 * Returns zero; this bitmap font has no inter-line leading.
+	 *
 	 * @see java.awt.FontMetrics#getLeading()
 	 */
 	public int getLeading() {

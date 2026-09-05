@@ -9,19 +9,26 @@ import java.awt.Shape;
 import java.awt.image.ImageObserver;
 
 /**
-  * Title: JavaGraphic<p>
-  * Description:
-  * Extends the Graph2D Class with optimized Methods that exploit
-  * the possibly native Routines for simple graphical Objects like Lines, Rectangles etc.
-  * @see graphic.GraphicsAdapter which does the same, but does not carefully overwrite each Method of the new Interface. 
-  *
-  * Known SubClasses:
+  * Extends {@link Graph2D} with optimized methods that delegate to AWT's
+  * possibly native routines for simple graphical objects like lines,
+  * rectangles, ovals and arcs.
   *
   * Copyright:	Copyright (c) Matthias Heuer<p>
   * Company:	personal<p>
   * Created on	06-08-2002, 11:04 AM<p>
   * @author 	Matthias Heuer
   * @version	1.0
+  * @see graphic.GraphicsAdapter does the same, but does not carefully
+  * overwrite each method of the new interface
+  * <!-- docstate
+  * pass: 2
+  * mtime: 2026-09-05T12:09:12Z
+  * digest: 4a5457bb942b01c40253be3c42f2129f8f49d5b5da31627bbdf00ccc85e7425f
+  * stale: false
+  * tags: [code/graphics]
+  * concepts: [AWT-Delegated Rendering]
+  * facets: {layer: infrastructure, status: broken, complexity: medium}
+  * -->
   */
 final public class JavaGraphic 
 extends Graph2D { //implements IGraphics {
@@ -35,7 +42,10 @@ extends Graph2D { //implements IGraphics {
 	////////////////////////////////////////////////////////////////////////////
 
 	/**
-	 * @param img the Image to draw. 
+	 * Draws the source rectangle (sx1, sy1)-(sx2, sy2) of the image scaled
+	 * into the destination rectangle (dx1, dy1)-(dx2, dy2), delegating to AWT.
+	 *
+	 * @param img the Image to draw.
 	 * @param x the Top Left Corner of the Image
 	 * @param y the Top Left Corner of the Image
 	 * @param width the Width of the Image
@@ -45,8 +55,10 @@ extends Graph2D { //implements IGraphics {
 	public boolean drawImage(final Image img, final int dx1, final int dy1, final int dx2, final int dy2, final int sx1, final int sy1, final int sx2, final int sy2, final ImageObserver observer) {
 		return g.drawImage(img, dx1, dy1, dx2, dy2, sx1, sy1, sx2, sy2, observer);
 	}
-	
+
 	/**
+	 * Returns the font metrics for the current font.
+	 *
 	 * @return a FontMetrics Object allowing to determine the String Sizes with a given Font
 	 */
 	public FontMetrics getFontMetrics(){
@@ -54,6 +66,8 @@ extends Graph2D { //implements IGraphics {
 	}
 
 	/**
+	 * Returns the font currently used for drawing text.
+	 *
 	 * @see graphic.IGraphics#getFont()
 	 */
 	public Font getFont() {
@@ -61,6 +75,8 @@ extends Graph2D { //implements IGraphics {
 	}
 
 	/**
+	 * Sets the font subsequently used for drawing text.
+	 *
 	 * @see graphic.IGraphics#getFont()
 	 */
 	public void setFont(Font font) {
@@ -102,16 +118,28 @@ extends Graph2D { //implements IGraphics {
 		drawString(S.toString(), x, y); 
 	}
 	
-	/** @see graphic.IGraphText#drawChar(char)	 */
+	/**
+	 * Draws a single character at the current position.
+	 *
+	 * @see graphic.IGraphText#drawChar(char)
+	 */
 	public void drawChar(final char c) {
-		drawString(new String(new char[] { c })); 
+		drawString(new String(new char[] { c }));
 	}
-	
-	/** @see graphic.IGraphText#drawChar(char, graphic.Point2D)	 */
+
+	/**
+	 * Draws a single character at the given position.
+	 *
+	 * @see graphic.IGraphText#drawChar(char, graphic.Point2D)
+	 */
 	public void drawChar(final char c, Point2D p) {
 		drawString(new String(new char[] { c }), p); }
-	
-	/** @see graphic.IGraphText#drawChars(char[], int, int, int, int)	 */
+
+	/**
+	 * Draws the given character range at the given position.
+	 *
+	 * @see graphic.IGraphText#drawChars(char[], int, int, int, int)
+	 */
 	public void drawChars(char[] data, int offset, int length, int x, int y) {
 		drawString(new String(data, offset, length), x, y); } 
 	
@@ -124,7 +152,7 @@ extends Graph2D { //implements IGraphics {
 		super(gr);
 	}
 
-	/**Constructor that defines a Clippíng Area	 */
+	/**Constructor that defines a Clippï¿½ng Area	 */
 	public JavaGraphic(Graphics gr, Point2D ClipTL, Point2D ClipBR) {
 		super(gr, ClipTL, ClipBR);
 	}
@@ -472,6 +500,9 @@ extends Graph2D { //implements IGraphics {
 
 	/**Draws an Ellipse with Center in M and Radiuses R  */
 	public void fillEllipse(Point2D M, Point2D R) {
+		// TODO: LOGIC: calls g.drawOval (outline only) instead of g.fillOval,
+		// unlike every sibling fillEllipse overload in this class; this
+		// overload silently draws an unfilled ellipse.
 		g.drawOval(M.getX() - R.getX(), M.getY() - R.getY(), R.getX() << 1, R.getY() << 1);
 	}
 
@@ -505,6 +536,9 @@ extends Graph2D { //implements IGraphics {
 		P.setY(Start.getY());
 		rx = r;
 		ry = r;
+		// TODO: LOGIC: dispatches to MethodDrawRRect (outline) instead of
+		// MethodFillRRect, so this "fill" method actually draws an unfilled
+		// rounded rectangle - see orderedMethod() in Graph2D.
 		orderedMethod(Width.getX(), Width.getY(), MethodDrawRRect);
 	}
 
@@ -517,6 +551,9 @@ extends Graph2D { //implements IGraphics {
 		P.setY(Start.getY());
 		rx = R.getX();
 		ry = R.getY();
+		// TODO: LOGIC: dispatches to MethodDrawRRect (outline) instead of
+		// MethodFillRRect, same bug as the overload above - draws an
+		// unfilled rounded rectangle instead of filling it.
 		orderedMethod(Width.getX(), Width.getY(), MethodDrawRRect);
 	}
 

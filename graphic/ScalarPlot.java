@@ -5,21 +5,25 @@ import graphic.example.Fractal;
 import java.awt.Color;
 
 /**
-  * Title: ScalarPlot<p>
-  * Description:
-  * Contains Methods to paint Figures with Scalar Color Gradients:
-  * Horizontal or vertical Lines
-  * general Lines
-  * Squares
-  * Triangles
-  *
-  * Known SubClasses:
+  * Paints lines, squares, triangles and polygons with bilinearly
+  * interpolated scalar color gradients, driven by an integer
+  * line-drawing algorithm.
   *
   * Copyright:	Copyright (c) Matthias Heuer<p>
   * Company:	personal<p>
   * Created on	06-06-2002, 08:59 PM<p>
   * @author 	Matthias Heuer
   * @version	1.0
+  * @see AGraph2D
+  * <!-- docstate
+  * pass: 2
+  * mtime: 2026-09-05T12:07:03Z
+  * digest: f2c5617c86b6f5edd4ff21fd17b0acfbbd3e9b7b04b88e5896fc99110fee792d
+  * stale: false
+  * tags: [code/chart_rendering, code/line_rasterization]
+  * concepts: [Scalar Color Interpolation Plot]
+  * facets: {layer: domain, status: legacy, complexity: medium}
+  * -->
   */
 public class ScalarPlot {
 
@@ -27,7 +31,9 @@ public class ScalarPlot {
 	/// #region : Variables
 	////////////////////////////////////////////////////////////////////////////
 	
+	/** Last drawn left-edge scalar value, used by {@link #ScalarSquare} to detect an identical row worth copying. */
 	private int z0Old = Integer.MIN_VALUE;
+	/** Last drawn right-edge scalar value, used by {@link #ScalarSquare} to detect an identical row worth copying. */
 	private int z1Old = Integer.MIN_VALUE;
 
 	/**Reference to the Graphics Context	 */
@@ -370,9 +376,14 @@ public class ScalarPlot {
 		return mnMx; 
 	}
 
-	/** @see #refineRaster2D(Point2D, Point2D, IPoint2DFunction, boolean) uses this exclusively 
-	 * to paint a single Rectangle 
-	 */ 
+	/**
+	 * Paints one raster block: samples {@code painter} at {@code SF}, tracks
+	 * the min/max color seen in {@code mnMx}, and either fills the block's
+	 * rectangle or sets a single pixel.
+	 *
+	 * @see #refineRaster2D(Point2D, Point2D, IPoint2DFunction, boolean) uses this exclusively
+	 * to paint a single Rectangle
+	 */
 	private void paintRasterBlock(final IPoint2DFunction painter, final boolean fillBlock, final Point2D SF,
 		final Point2D PP, final Point2D end, final Point2D stop, final Point2D mnMx, final int SR) {
 		final int newColor = painter.getValue(SF) + ColorOffset;	//Modulo Operation is expensive!

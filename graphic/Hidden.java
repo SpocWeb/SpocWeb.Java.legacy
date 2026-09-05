@@ -14,6 +14,15 @@ import java.util.Arrays;
  * To avoid the costly indexed Array accesses,
  * temporary Min and Max Values are kept,
  * which are only updated when the x Coordinate changes.
+ * <!-- docstate
+ * pass: 2
+ * mtime: 2026-09-05T11:55:24Z
+ * digest: 92f54315a926c97b63438daf7546f1d07ef8529d63248330e799b8c57468680b
+ * stale: false
+ * tags: [code/3d_rendering, code/geometry]
+ * concepts: [Hidden Line Removal]
+ * facets: {layer: domain, status: broken, complexity: medium}
+ * -->
  */
 final public class Hidden
 extends AGraph2DOut {
@@ -36,7 +45,9 @@ extends AGraph2DOut {
 
 	/** Cached last Values for Optimizations */
 	protected int TmpUG;
+	/** Cached upper limit for {@link #TmpX}, see {@link #TmpUG}. */
 	protected int TmpOG;
+	/** x Coordinate the {@link #TmpUG}/{@link #TmpOG} cache currently applies to. */
 	protected int TmpX;
 
 	/** Reference to the Delegate Interface */
@@ -125,6 +136,10 @@ extends AGraph2DOut {
 	 * @see graphic.IGraph2DOut#setPixel(java.awt.Color)
 	 */
 	public void setPixel(final int x, final int y, final Color color_) {
+		// TODO: LOGIC: off-by-one - UG/OG are sized XMax (valid indices
+		// 0..XMax-1), but this guard only rejects x > XMax, letting x == XMax
+		// through to "OG[x]"/"UG[x]" below and throwing
+		// ArrayIndexOutOfBoundsException; should be "x >= XMax".
 		if (x > XMax) { return; }
 		if (x == TmpX) {
 			if ((y <= TmpOG) &&

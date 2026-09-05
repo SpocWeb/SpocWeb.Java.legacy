@@ -20,23 +20,25 @@ import math.vector.VectorFloat;
 import streamIO.Log;
 
 /**
- * Title: HyperGraphPainter<p>
- * Description:
- *
- * This Painter paints only Portions of a Grap
- * in the Shape of a Hyperbolic Graph with a single Node in the Center 
- * and the next Nodes arranged around it. 
- *
- * Known SubClasses: <none>
- *
- * Known Uses: <none>
+ * Paints only the portion of a graph reachable from a focused center node,
+ * arranged as a hyperbolic layout with that node in the middle and its
+ * neighbors around it.
  *
  * Copyright:	Copyright (c) Matthias Heuer<p>
  * Company:	personal<p>
  * Created on	10-26-2002, 12:47 PM<p>
  * @author mheuer
  * @version	1.0
- *
+ * @see Graph2DPainter base class this extends
+ * <!-- docstate
+ * pass: 2
+ * mtime: 2026-09-05T11:56:54Z
+ * digest: 47ea802779e690b9726cebf95694260dabdbae240879ba16e6b12daf81df3d3c
+ * stale: false
+ * tags: [code/graph_rendering]
+ * concepts: [Hyperbolic Graph Layout Painter]
+ * facets: {layer: domain, status: legacy, complexity: medium}
+ * -->
  */
 public class HyperGraphPainter extends Graph2DPainter {
 
@@ -54,24 +56,30 @@ public class HyperGraphPainter extends Graph2DPainter {
 	public HyperGraphPainter(final ICanvas canvas) { super(canvas); }
 
 	/**
-	 * @param points
-	 * @param edges
+	 * Creates a painter over the given explicit points and edges.
+	 *
+	 * @param points node positions
+	 * @param edges the graph's edges
 	 */
 	public HyperGraphPainter(final VectorPoint2D points, final SparseMatrix edges, final ICanvas canvas) {
 		super(canvas, points, edges);
 	}
 
 	/**
-	 * @param edges
+	 * Creates a painter over the given edges, with node positions taken from
+	 * the model.
+	 *
+	 * @param edges the graph's edges
 	 */
 	public HyperGraphPainter(final SparseMatrix edges, final ICanvas canvas) {
 		super(canvas, edges);
 	}
 
 	/**
-	 * @param model_
-	 * @param common_
-	 * @param canvas_
+	 * Creates a painter over an existing graph model.
+	 *
+	 * @param model_ the graph model to paint
+	 * @param canvas_ the canvas to paint onto
 	 */
 	public HyperGraphPainter(final Graph2DModel model_, final ICanvas canvas_) {
 		super(canvas_, model_);
@@ -152,14 +160,21 @@ public class HyperGraphPainter extends Graph2DPainter {
 	/// static main() and testing Methods
 	///////////////////////////////////////////////////////////////////////
 
+	/** Demonstrates this painter on a sample Sedgewick graph. */
 	public static void testIt() {
 		final SparseMatrix matrix = SparseGraph.getSedgewick29_1().getAntiSymmetric();
-		final BaseApplet applet = new BaseApplet(); 
+		final BaseApplet applet = new BaseApplet();
 		HyperGraphPainter painter = new HyperGraphPainter(matrix, applet);
 		painter.addDefaultControllers(applet);
 		painter.show();
 	}
 
+	/**
+	 * The main entry point for the application.
+	 *
+	 * @param args Array of parameters passed to the application via the
+	 * command line; unused.
+	 */
 	public static void main(String[] args) {
 		testIt();
 	}

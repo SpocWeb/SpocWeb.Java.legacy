@@ -8,12 +8,23 @@ import java.awt.Rectangle;
 import java.awt.image.ImageObserver;
 
 /**
- * This Class is the minimal extension to AGraph2D,
- * by defining only the setPixel() Method.
- * It is basically a Testbed for all Methods defined in
+ * Minimal, concrete extension of {@link AGraphImage} onto AWT's
+ * {@link Graphics}, defining only the low-level pixel and clipping methods
+ * so it can serve as a testbed for everything {@link AGraph2D},
+ * {@link AGraphRead} and {@link AGraphText} implement.
+ *
  * @see AGraph2D
  * @see AGraphRead
  * @see AGraphText
+ * <!-- docstate
+ * pass: 2
+ * mtime: 2026-09-05T11:57:14Z
+ * digest: 99e38ed3606a65fe96555080b86c9e9ac0ea35f6d220b8cbb9c862740a86ba3e
+ * stale: false
+ * tags: [code/graphics]
+ * concepts: [AWT Graphics Adapter]
+ * facets: {layer: infrastructure, status: broken, complexity: medium}
+ * -->
  */
 public class Graph2D 
 extends AGraphImage { //implements IGraph2DIn {
@@ -40,7 +51,7 @@ extends AGraphImage { //implements IGraph2DIn {
 			new Point2D(R.x + R.width, R.y + R.height));
 	}
 
-	/**Constructor that defines a Clippíng Area	 */
+	/**Constructor that defines a Clippï¿½ng Area	 */
 	public Graph2D(Graphics g_, Point2D ClipTL_, Point2D ClipBR_) {
 		this.g = g_;
 		setClipBounds(ClipTL_.getLocation(), ClipBR_.getLocation());
@@ -96,12 +107,19 @@ extends AGraphImage { //implements IGraph2DIn {
 		return img;
 	}
 
+	/** Selects {@link Graphics#setClip(int, int, int, int)} in {@link #orderedMethod(int, int, int)}. */
 	protected final static int MethodSetClip = 0;
+	/** Selects {@link Graphics#drawRect(int, int, int, int)} in {@link #orderedMethod(int, int, int)}. */
 	protected final static int MethodDrawRect = 1;
+	/** Selects {@link Graphics#fillRect(int, int, int, int)} in {@link #orderedMethod(int, int, int)}. */
 	protected final static int MethodFillRect = 2;
+	/** Selects {@link Graphics#draw3DRect(int, int, int, int, boolean)} in {@link #orderedMethod(int, int, int)}. */
 	protected final static int MethodDrawRect3 = 3;
+	/** Selects {@link Graphics#fill3DRect(int, int, int, int, boolean)} in {@link #orderedMethod(int, int, int)}. */
 	protected final static int MethodFillRect3 = 4;
+	/** Selects {@link Graphics#drawRoundRect(int, int, int, int, int, int)} in {@link #orderedMethod(int, int, int)}. */
 	protected final static int MethodDrawRRect = 5;
+	/** Selects {@link Graphics#fillRoundRect(int, int, int, int, int, int)} in {@link #orderedMethod(int, int, int)}. */
 	protected final static int MethodFillRRect = 6;
 
 	/**Only used for RoundRect in orderedMethod!	 */
@@ -202,12 +220,18 @@ extends AGraphImage { //implements IGraph2DIn {
 	}
 
 	/**
+	 * Not yet implemented; always reports success without drawing.
+	 *
 	 * @see graphic.IGraphics#drawImage(java.awt.Image, int, int, int, int, int, int, int, int, java.awt.image.ImageObserver)
 	 */
 	public boolean drawImage(final Image img, final int dx1, final int dy1, final int dx2, final int dy2, final int sx1, final int sy1, final int sx2, final int sy2, final ImageObserver observer) {
+		// TODO: LOGIC: stub always returns true without drawing anything (the
+		// underlying java.awt.Graphics.drawImage call was never wired up);
+		// every caller of this overload silently gets "success" while no
+		// pixels are actually painted.
 		// TODO Auto-generated method stub
 		//throw new RuntimeException("Not implemented!");
-		return true; 
+		return true;
 	}
 
 }

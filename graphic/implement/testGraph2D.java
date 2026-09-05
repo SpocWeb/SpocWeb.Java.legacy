@@ -25,16 +25,51 @@ import java.awt.Rectangle;
 
 /**This class reads PARAM tags from its HTML host page and sets
  * the color and label properties of the applet. Program execution
- * begins with the init() method.  */
+ * begins with the init() method.
+ * <p>Also serves as a standalone demo/test harness ({@link #main(String[])}) exercising
+ * most drawing primitives across the {@code graphic} package.
+ *
+ * <h2>Collaborators</h2>
+ * <table>
+ * <tr><th>Type</th><th>Relationship</th></tr>
+ * <tr><td>{@link Graph2D}</td><td>primary drawing context used by the paint demos</td></tr>
+ * <tr><td>{@link JavaGraphic}</td><td>faster {@link Graph2D} implementation swapped in for double buffering</td></tr>
+ * <tr><td>{@link Figures}</td><td>arrow/spline/Bezier demo drawing</td></tr>
+ * <tr><td>{@link Bar3D}</td><td>3D bar demo drawing</td></tr>
+ * <tr><td>{@link Marker}</td><td>marker-type gallery demo</td></tr>
+ * <tr><td>{@link ScalarPlotNew}</td><td>scalar/height-plot demo</td></tr>
+ * <tr><td>{@link MemoryImage}</td><td>in-memory Z-ordered bitmap used by {@link #paint2(Graphics)}</td></tr>
+ * <tr><td>{@link PaletteRGB}</td><td>RGB/HSB color conversion and palette generation</td></tr>
+ * <tr><td>{@link Fractal}</td><td>fractal-line and plasma demo drawing</td></tr>
+ * <tr><td>{@link TextureGraphics}</td><td>texture-fill demo used by {@link #paint2(Graphics)} case 4</td></tr>
+ * </table>
+ * @see Graph2D
+ * @see JavaGraphic
+ * @see Figures
+ * @see Bar3D
+ * @see Marker
+ * @see ScalarPlotNew
+ * @see MemoryImage
+ * @see PaletteRGB
+ * @see Fractal
+ * @see TextureGraphics
+ * <!-- docstate
+ * pass: 2
+ * mtime: 2026-09-05T11:52:39Z
+ * digest: 64a6dfbeaa0fbfb5b1dffda2f08c50499db0225ffd62b1dd604ccc475bb8f968
+ * stale: false
+ * tags: [code/graphics, code/testing]
+ * concepts: [Graph2D Demo Harness]
+ * facets: {layer: test, status: legacy, complexity: low}
+ * -->
+ */
 public class testGraph2D extends Frame { //Applet {
 
 	////////////////////////////////////////////////////////////////////////////////
 	/// #region : static Constants and Variables
 	////////////////////////////////////////////////////////////////////////////////
 	
-	/**
-	 * 
-	 */
+	/** Serialization version marker for this {@link Frame} subclass. */
 	private static final long serialVersionUID = 1L;
 
 	/** Size of the Graphic Area     */
@@ -47,13 +82,21 @@ public class testGraph2D extends Frame { //Applet {
 	/// #region : static Methods
 	////////////////////////////////////////////////////////////////////////////
 	
+	/** HSB equivalent of red, via {@link PaletteRGB#RGB2HSB(double, double, double)}. */
 	double [] HSBred   = PaletteRGB.RGB2HSB(1,0,0);
+	/** HSB equivalent of yellow, via {@link PaletteRGB#RGB2HSB(double, double, double)}. */
 	double [] HSByell  = PaletteRGB.RGB2HSB(1,1,0);
+	/** HSB equivalent of green, via {@link PaletteRGB#RGB2HSB(double, double, double)}. */
 	double [] HSBgreen = PaletteRGB.RGB2HSB(0,1,0);
+	/** HSB equivalent of cyan, via {@link PaletteRGB#RGB2HSB(double, double, double)}. */
 	double [] HSBcyan  = PaletteRGB.RGB2HSB(0,1,1);
+	/** HSB equivalent of blue, via {@link PaletteRGB#RGB2HSB(double, double, double)}. */
 	double [] HSBblue  = PaletteRGB.RGB2HSB(0,0,1);
+	/** HSB equivalent of magenta, via {@link PaletteRGB#RGB2HSB(double, double, double)}. */
 	double [] HSBmagen = PaletteRGB.RGB2HSB(1,0,1);
+	/** HSB equivalent of black, via {@link PaletteRGB#RGB2HSB(double, double, double)}. */
 	double [] HSBblack = PaletteRGB.RGB2HSB(0,0,0);
+	/** HSB equivalent of white, via {@link PaletteRGB#RGB2HSB(double, double, double)}. */
 	double [] HSBwhite = PaletteRGB.RGB2HSB(1,1,1);
 
 /*	System.out.print("HSB-red:  " + HSBred  [0] + HSBred  [1] + HSBred  [2]);
@@ -62,13 +105,21 @@ public class testGraph2D extends Frame { //Applet {
 	System.out.print("HSB-black:" + HSBblack[0] + HSBblack[1] + HSBblack[2]);
 	System.out.print("HSB-white:" + HSBwhite[0] + HSBwhite[1] + HSBwhite[2]);
 */
+	/** Round-trips {@link #HSBred} back through {@link PaletteRGB#HSB2RGB(double, double, double)}, for verification. */
 	double [] RGBred   = PaletteRGB.HSB2RGB(HSBred  [0], HSBred  [1], HSBred  [2]);
+	/** Round-trips {@link #HSByell} back through {@link PaletteRGB#HSB2RGB(double, double, double)}, for verification. */
 	double [] RGByell  = PaletteRGB.HSB2RGB(HSByell [0], HSByell [1], HSByell [2]);
+	/** Round-trips {@link #HSBgreen} back through {@link PaletteRGB#HSB2RGB(double, double, double)}, for verification. */
 	double [] RGBgreen = PaletteRGB.HSB2RGB(HSBgreen[0], HSBgreen[1], HSBgreen[2]);
+	/** Round-trips {@link #HSBcyan} back through {@link PaletteRGB#HSB2RGB(double, double, double)}, for verification. */
 	double [] RGBcyan  = PaletteRGB.HSB2RGB(HSBcyan [0], HSBcyan [1], HSBcyan [2]);
+	/** Round-trips {@link #HSBblue} back through {@link PaletteRGB#HSB2RGB(double, double, double)}, for verification. */
 	double [] RGBblue  = PaletteRGB.HSB2RGB(HSBblue [0], HSBblue [1], HSBblue [2]);
+	/** Round-trips {@link #HSBmagen} back through {@link PaletteRGB#HSB2RGB(double, double, double)}, for verification. */
 	double [] RGBmagen = PaletteRGB.HSB2RGB(HSBmagen[0], HSBmagen[1], HSBmagen[2]);
+	/** Round-trips {@link #HSBblack} back through {@link PaletteRGB#HSB2RGB(double, double, double)}, for verification. */
 	double [] RGBblack = PaletteRGB.HSB2RGB(HSBblack[0], HSBblack[1], HSBblack[2]);
+	/** Round-trips {@link #HSBwhite} back through {@link PaletteRGB#HSB2RGB(double, double, double)}, for verification. */
 	double [] RGBwhite = PaletteRGB.HSB2RGB(HSBwhite[0], HSBwhite[1], HSBwhite[2]);
 
 	/**The entry point for the applet. 	 */
@@ -88,8 +139,11 @@ public class testGraph2D extends Frame { //Applet {
 			System.out.println(x.toString()); }
 */	}
 
+	/** HTML host-page PARAM name carrying the label text, read by {@link #usePageParams()}. */
 	private final static String labelParam = "label";
+	/** HTML host-page PARAM name carrying the background color, read by {@link #usePageParams()}. */
 	private final static String backgroundParam = "background";
+	/** HTML host-page PARAM name carrying the foreground color, read by {@link #usePageParams()}. */
 	private final static String foregroundParam = "foreground";
 
 	/** Reads parameters from the applet's HTML Host Page and sets Applet properties.	 */
@@ -135,6 +189,7 @@ public class testGraph2D extends Frame { //Applet {
 		};
 		return info; }
 
+	/** Label component displaying the text/colors read by {@link #usePageParams()}. */
 	Label label1 = new Label();
 
 	/**
@@ -148,34 +203,55 @@ public class testGraph2D extends Frame { //Applet {
 //		this.add("North",label1);
 	}
 
+	/** Last x-coordinate reported to {@link #mouseMove(Event, int, int)}, for erasing the previous marker. */
 	int xOld;
+	/** Last y-coordinate reported to {@link #mouseMove(Event, int, int)}, for erasing the previous marker. */
 	int yOld;
+	/** Bounds of the coordinate label last drawn by {@link #mouseMove(Event, int, int)}. */
 	Rectangle TextBox = new Rectangle();
+	/** Coordinate label text last drawn by {@link #mouseMove(Event, int, int)}. */
 	String strOld;
 
+	/** Width of the {@link MemoryImage} buffer used by {@link #paint2(Graphics)}. */
 	private int width  = 1024;
+	/** Height of the {@link MemoryImage} buffer used by {@link #paint2(Graphics)}. */
 	private int height = 768;
 
+	/** X-coordinates of the red demo polygon drawn by {@link #paint2(Graphics)}. */
 	int[] xP1 = {100, 900, 900, 100};
+	/** X-coordinates of the green demo polygon drawn by {@link #paint2(Graphics)}. */
 	int[] xP2 = {200, 100, 600, 700};
+	/** X-coordinates of the blue demo polygon drawn by {@link #paint2(Graphics)}. */
 	int[] xP3 = {800, 900, 400, 300};
 
+	/** Y-coordinates of the red demo polygon drawn by {@link #paint2(Graphics)}. */
 	int[] yP1 = {400, 400, 500, 500};
+	/** Y-coordinates of the green demo polygon drawn by {@link #paint2(Graphics)}. */
 	int[] yP2 = {600, 500, 100, 200};
+	/** Y-coordinates of the blue demo polygon drawn by {@link #paint2(Graphics)}. */
 	int[] yP3 = {600, 500, 100, 200};
 
+	/** X-coordinates of the red height-plot polygon used in {@link #paint2(Graphics)} case 2. */
 	int[] xP4 = {100, 400, 500};
+	/** X-coordinates of the green height-plot polygon used in {@link #paint2(Graphics)} case 2. */
 	int[] xP5 = { 50, 600, 650};
 
+	/** Y-coordinates of the red height-plot polygon used in {@link #paint2(Graphics)} case 2. */
 	int[] yP4 = {500, 100, 600};
+	/** Y-coordinates of the green height-plot polygon used in {@link #paint2(Graphics)} case 2. */
 	int[] yP5 = {300, 400, 550};
 
+	/** Per-vertex height (Z) values for {@link #xP4}/{@link #yP4}, packed into the color's high byte. */
 	int[] zP4 = {- 1<<24, -64<<24, -64<<24};
+	/** Per-vertex height (Z) values for {@link #xP5}/{@link #yP5}, packed into the color's high byte. */
 	int[] zP5 = {-48<<24, -48<<24, -48<<24};
 
 	//Works only if the Difference does not exceed the maximum int Range!
+	/** Per-vertex height (Z) values for {@link #xP1}/{@link #yP1}, packed into the color's high byte. */
 	int[] zP1 = { 0<<24,-62<<24,-62<<24, 0<<24};
+	/** Per-vertex height (Z) values for {@link #xP2}/{@link #yP2}, packed into the color's high byte. */
 	int[] zP2 = {-62<<24,-62<<24, 0<<24, 0<<24};
+	/** Per-vertex height (Z) values for {@link #xP3}/{@link #yP3}, packed into the color's high byte. */
 	int[] zP3 = { 0<<24, 0<<24,-62<<24,-62<<24};
 
 	/** Counter for the key Presses */
@@ -258,18 +334,28 @@ public class testGraph2D extends Frame { //Applet {
 		if (Waviness < 2.0) Waviness += 0.1;
 		return true; }
 
+	/** Marker demo used by {@link #paintSimple(Graphics)} to draw the marker-type gallery. */
 	Marker Mk;
+	/** Figures demo used by {@link #paintSimple(Graphics)} for arrows, splines and Bezier curves. */
 	Figures Bx;	//Boxes
+	/** 3D-bar demo used by {@link #paintSimple(Graphics)} to draw filled bars. */
 	Bar3D B3D;	//3D Bars
+	/** Current {@link Graph2D} drawing context, reassigned per paint call and demo section. */
 	Graph2D g2D;
 
+	/** Top-left clip corner used by {@link #mouseUp(Event, int, int)}'s fractal-line demo. */
 	Point2D ClipTL = new Point2D( 60, 50);
+	/** Bottom-right clip corner used by {@link #mouseUp(Event, int, int)}'s fractal-line demo. */
 	Point2D ClipBR = new Point2D(260, 260);
+	/** Fractal-line waviness, incremented on each {@link #mouseUp(Event, int, int)} up to 2.0. */
 	double Waviness = 0.0;
 
+	/** Cyclic 300-color palette shared by the scalar-plot demos, cached for reuse. */
 	Color[] Palette = PaletteRGB.CYCLE_PALETTE(300); //cached for Reuse!
+	/** Scalar-plot demo context created per {@link #paint(Graphics)} call. */
 	ScalarPlotNew SP;
 
+	/** Double-buffer image maintained by {@link #paintSimple(Graphics)} and drawn by {@link #paint2(Graphics)}. */
 	Image img;
 	/** The Clipping Bounds of the Window are determined e.g. 
 	 * by the Height of it's Title Bar!	 */
@@ -439,6 +525,7 @@ public class testGraph2D extends Frame { //Applet {
 		int[] yiR = C2d.MapY.map(yR);
 		Bx.drawRaster(xiR, yiR);
 	}
+	*/
 
 	/**
 	 * Demonstrates the Capabilities of combining Colors of subsequent Drawings

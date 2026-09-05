@@ -6,24 +6,26 @@ import graphs.SparseMatrix;
 import streamIO.IIStreamIn;
 
 /**
-  * Title: Wire2D<p>
-  * Description:
-  * Purpose:
-  * Wireframe Model in 2D
-  * only needs 
-  * the Vertices Coordinates and 
-  * the (undirected) Edges
-  *
-  *
-  * Known SubClasses: <none>
-  *
-  * Known Uses: <none>
+  * A 2D wireframe model needing only vertex coordinates and undirected edges,
+  * stored as either a {@link SparseMatrix} or a {@link MatrixGraph}.
   *
   * Copyright:	Copyright (c) Matthias Heuer<p>
   * Company:	personal<p>
   * Created on	08-08-2001, 07:05 PM<p>
   * @author 	Matthias Heuer
   * @version	1.0
+  * @see Polygon2D base class holding the vertex points
+  * @see SparseMatrix one representation of the edge list
+  * @see MatrixGraph the other representation of the edge list
+  * <!-- docstate
+  * pass: 2
+  * mtime: 2026-09-05T11:54:53Z
+  * digest: 1d456d041e156550ca8898df3d481b9000384e4deb665d9d1f91b77203ca8fc6
+  * stale: false
+  * tags: [code/2d_geometry, code/graph_rendering]
+  * concepts: [Wireframe Model]
+  * facets: {layer: domain, status: legacy, complexity: medium}
+  * -->
   */
 public class Wire2D
 extends Polygon2D {

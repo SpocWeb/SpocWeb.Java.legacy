@@ -9,10 +9,29 @@ import java.awt.Graphics;
  * according to the GreyFillPalette, which defines a Raster of Pixels
  * with growing Density.
  * This is particularly interesting on monochromatic, but high resolution Displays.
- * The same can be achieved by selecting the corresponding Pattern as FillPattern. */
+ * The same can be achieved by selecting the corresponding Pattern as FillPattern.
+ *
+ * <h2>Collaborators</h2>
+ * <table>
+ * <tr><th>Type</th><th>Relationship</th></tr>
+ * <tr><td>{@link Graph2D}</td><td>superclass; supplies the pixel drawing primitive this class dithers</td></tr>
+ * </table>
+ * @see Graph2D
+ * <!-- docstate
+ * pass: 2
+ * mtime: 2026-09-05T11:48:31Z
+ * digest: 28e019968bec4a470b36335153215dc316ebb048b8621cc6c8dd70980c98ddcf
+ * stale: false
+ * tags: [code/graphics, code/algorithm]
+ * concepts: [Greyscale Dithering Strategy]
+ * facets: {layer: utility, status: broken, complexity: medium}
+ * -->
+ */
 public class GreyColor
 	extends Graph2D
 {
+		/** Per-Grey-level 8x8 dithering raster; row index is the Grey level (0-63),
+		 * column index is the pixel's y-coordinate low bits, each entry a bitmask over the x-coordinate low bits. */
 		short [][] GreyFillPalette = {
 		{ 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00},
 		{ 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x01},
@@ -83,7 +102,7 @@ public class GreyColor
 	/**Initializing Constructor	with Default Clipping Area  */
 	public GreyColor(Graphics g){super (g);}
 
-	/**Constructor that defines a Clippíng Area		 */
+	/**Constructor that defines a Clippï¿½ng Area		 */
 	public GreyColor(Graphics g_, Point2D ClipTL_, Point2D ClipBR_){super (g_, ClipTL_, ClipBR_);}
 
 	/**Sets the Gray Level of the current Painting Color	 */
@@ -94,6 +113,10 @@ public class GreyColor
 	 * This is particularly interesting on monochromatic, but high resolution Displays.	 */
 	public void setPixel()
 	{
+		// TODO: LOGIC: column index `1 + (P.getY() & 7)` ranges 1..8, but each
+		// GreyFillPalette row has only 8 columns (valid indices 0..7); when
+		// (P.getY() & 7) == 7 this throws ArrayIndexOutOfBoundsException. Likely
+		// meant to index by `(P.getY() & 7)` directly, without the `1 +`.
 		if ((GreyFillPalette [Grey] [1+ (P.getY() & 7)] & (1 << (P.getX() & 7))) == 0) return;
 		super.setPixel ();
 	}

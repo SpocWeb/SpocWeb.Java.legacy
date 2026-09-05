@@ -1,22 +1,28 @@
 package graphic;
 
 /**
- * This Class adds the (calculated) Extent of the resulting Polygon
- * to the simmple Array of Points.
- * @see graphic.mvc.plane2D.MatrixShort, because Point2D is not extensible  
+ * Adds the (calculated) extent of the resulting polygon to a plain array of
+ * points.
  *
- * Design Decisions:
- * Negative Indices in the Planes convert to 'null' in the Polygon,
- * which again results in the Breaking of the Line.
- * In the same way you could assume Lines as always closed
- * and mark then as open by using null as the last Point.
- * But this is the same as assuming Polygons as open
- * and close them by adding the same Point at the End.
- * I think the best is to leave this open and allow for a both,
- * programmatic and data driven Solution like done here and in Polygon2D.
- * 
+ * <p>Design decision: negative indices in the source planes convert to
+ * {@code null} in the polygon, which breaks the line at that point - the
+ * same effect as marking an otherwise-closed line open by using {@code null}
+ * as its last point, or a polygon open by repeating its first point at the
+ * end. Both a programmatic and a data-driven solution are supported here and
+ * in {@code Polygon2D}, deliberately left open rather than picking one.
+ *
  * @deprecated use graphic.mvc.plane2D.MatrixShort instead
- * @see graphic.mvc.plane2D.VectorPolygon storing a whole polyhedron in short[][][] 
+ * @see graphic.mvc.plane2D.MatrixShort Point2D is not extensible
+ * @see graphic.mvc.plane2D.VectorPolygon storing a whole polyhedron in short[][][]
+ * <!-- docstate
+ * pass: 2
+ * mtime: 2026-09-05T11:52:12Z
+ * digest: b6973bac9df07c7d1dba7e43af60b16ccee108baa80bc65374a7e07e5ca253fd
+ * stale: false
+ * tags: [code/2d_geometry, code/polygon_calculation]
+ * concepts: [2D Polygon]
+ * facets: {layer: domain, status: broken, complexity: medium}
+ * -->
  */
 public class Polygon2D {
 
@@ -72,12 +78,22 @@ public class Polygon2D {
 	 */
 	public Point2D[] getPoints() { return Points; }
 
-	/** @return the Extent of the Polygon	 */
+	/**
+	 * Returns this polygon's bounding extent, computing and caching it on
+	 * first access.
+	 *
+	 * @return the Extent of the Polygon
+	 */
 	public Line2D getExtent() {
 		if (Extent == null) {	//calculate it first
 			Point2D Point;
 			Extent = new Line2D(Points[0], Points[0]);
 			int Length = Points.length;
+			// TODO: LOGIC: this.Points is overwritten with a fresh all-null array
+			// BEFORE the loop below reads "Points[Length]", so every iteration sees
+			// null and mergeAt() never runs beyond the first point set above; the
+			// resulting Extent only ever covers Points[0], and the polygon's real
+			// point data is destroyed for every subsequent getPoints() call.
 			this.Points = new Point2D[Length];
 			while (--Length >= 0) { //Create Copies of these Points, because this prevents from fiddling arount with them
 				if ((Point = Points[Length]) != null) {

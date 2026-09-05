@@ -1,20 +1,23 @@
 package graphic;
 
 /**
- * Line with two Point2D Coordinates with Integer Values
- * Can calculate the following Values:
- * -Height
- * -Width
- * -Center of the Line / Rectangle / Ellipsis
- * -Length of the Line / Diagonal
- * -Volume of the Rectangle
+ * A line between two integer {@link Point2D} coordinates, doubling as a
+ * bounding rectangle, ellipse or rounded rectangle depending on how the
+ * caller interprets it.
  *
- * Used as a Bounding Rectange in @see Polygon2D
- * Used to represent
- * -straight Lines
- * -Rectangles
- * -Ellipses
- * -rounded Rectangles
+ * <p>Can compute its height, width, center, length/diagonal and the volume
+ * of the rectangle it bounds.
+ *
+ * @see Polygon2D uses this as its bounding rectangle
+ * <!-- docstate
+ * pass: 2
+ * mtime: 2026-09-05T11:58:11Z
+ * digest: 58d14ab05118e5ca00d187769b4af2b183304f48cbc1a2c7bc8df218d0980e77
+ * stale: false
+ * tags: [code/2d_geometry, code/geometry_computation]
+ * concepts: [2D Line/Bounding Box]
+ * facets: {layer: domain, status: broken, complexity: low}
+ * -->
  */
 public class Line2D {
 
@@ -136,15 +139,20 @@ public class Line2D {
 /*	public boolean intersect(Line2D arg) {
 		return ((orderAble)arg.a[0]).between(a[0], a[1]) ||
 			   ((orderAble)arg.a[1]).between(a[0], a[1]); }
-
+*/
 	//Operations:
 
-	protected boolean bolOrdered;
+	// already declared as a field above; kept disabled here to preserve the original note.
+	// protected boolean bolOrdered;
+	// public boolean ordered(){return bolOrdered;}
 
-	public boolean ordered(){return bolOrdered;}
-
-	/**Orders the Coordinates, so the smaller ones end up in Start
-	 * and the higher ones end up in Stop.	 */
+	/**
+	 * Reorders the coordinates in place, so the smaller ones end up in
+	 * {@link #Start} and the higher ones in {@link #Stop}, then marks this
+	 * line as ordered.
+	 *
+	 * @return this line, for chaining
+	 */
 	public Line2D orderAt() {
 		int tmp;
 		if (! bolOrdered) {
@@ -212,6 +220,12 @@ public class Line2D {
 	 * This can be used to do affine coordinate Transformation for simple Graphics
 	 * or to generate uniformly distributed Data in a Hypercube
 	 * from random Vectors in [0,1)^n.
+	 */
+	/**
+	 * Applies this line's affine box-to-box mapping to the given point,
+	 * modifying it in place.
+	 *
+	 * @return the same point instance, for chaining
 	 */
 	public Point2D LinAt(Point2D arg) {
 		arg.setX(arg.getX() * Width.setX(Width.getX() + Start.getX()));

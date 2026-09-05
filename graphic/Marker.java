@@ -20,33 +20,66 @@ package graphic;
  *
  * Because Markers are used only here, it has it's own Method
  * of displaying Polygons.
+ * <!-- docstate
+ * pass: 2
+ * mtime: 2026-09-05T12:06:18Z
+ * digest: 7f3e9372626a5460beb008a0e69dc4050fa694058f04c8790f4b038e1ba3baf2
+ * stale: false
+ * tags: [code/chart_rendering, code/graphics]
+ * concepts: [Point Marker Drawing]
+ * facets: {layer: utility, status: legacy, complexity: low}
+ * -->
  */
 public class Marker {
 	//List of all Constants for the Marker Types
 
+	/** Selects {@link #PixelMarker()}: a single pixel. */
 	final static public int  PixelMarker =  0;
+	/** Selects {@link #CrossMarker()}: an X-shaped cross. */
 	final static public int  CrossMarker =  1;
+	/** Selects {@link #PlusMarker()}: a + shape. */
 	final static public int   PlusMarker =  2;
+	/** Selects {@link #CPlusMarker()}: a + shape inside a circle. */
 	final static public int  CPlusMarker =  3;
+	/** Selects {@link #StarMarker()}: a star (*) shape. */
 	final static public int   StarMarker =  4;
+	/** Selects {@link #SGridMarker()}: a small grid/asterisk shape. */
 	final static public int  SGridMarker =  5;
+	/** Selects {@link #SquareMarker()}: a square outline. */
 	final static public int SquareMarker =  6;
+	/** Selects {@link #WindowMarker()}: a square with a crosshair. */
 	final static public int WindowMarker =  7;
+	/** Selects {@link #FenceMarker()}: a fence-like shape. */
 	final static public int  FenceMarker =  8;
+	/** Selects {@link #RhombMarker()}: a rhombus outline. */
 	final static public int  RhombMarker =  9;
+	/** Selects {@link #RauteMarker()}: a rhombus filled with a plus sign. */
 	final static public int  RauteMarker = 10;
+	/** Selects {@link #leftMarker()}: a triangle pointing left. */
 	final static public int   leftMarker = 11;
+	/** Selects {@link #rightMarker()}: a triangle pointing right. */
 	final static public int  rightMarker = 12;
+	/** Selects {@link #BFlyMarker()}: a butterfly shape. */
 	final static public int   BFlyMarker = 13;
+	/** Selects {@link #DownMarker()}: a triangle pointing down. */
 	final static public int   DownMarker = 14;
+	/** Selects {@link #UpTriMarker()}: a triangle pointing up. */
 	final static public int  UpTriMarker = 15;
+	/** Selects {@link #HGlassMarker()}: an hourglass shape. */
 	final static public int  HGlassMarker = 16;
+	/** Selects {@link #CircleMarker()}: a circle or ellipse outline. */
 	final static public int CircleMarker = 17;
+	/** Selects {@link #Y_ORU_Marker()}: a Y-shaped marker, open right/up. */
 	final static public int Y_ORU_Marker = 18;
+	/** Selects {@link #Y_LOR_Marker()}: a Y-shaped marker, left/open right. */
 	final static public int Y_LOR_Marker = 19;
+	/** Selects {@link #Y_OLU_Marker()}: a Y-shaped marker, open left/up. */
 	final static public int Y_OLU_Marker = 20;
+	/** Selects {@link #Y_LUR_Marker()}: a Y-shaped marker, left/up/right. */
 	final static public int Y_LUR_Marker = 21;
+	/** Selects {@link #CCrossMarker()}: an X shape inside a circle. */
 	final static public int CCrossMarker = 22;
+	/** Number of defined marker type constants; not itself a dispatchable marker. */
 	final static public int  CountMarker = 23;
 
 /**Maximal sind 20 Bit setzbar   _ _  => 2 bei 2-facher Symmetrie bleiben noch

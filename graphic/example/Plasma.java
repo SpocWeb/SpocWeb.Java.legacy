@@ -4,13 +4,16 @@ import graphic.IRaster;
 import graphic.Point2D;
 
 /**
+ * Generates a 2D fractal scalar distribution ("Plasma") via recursive midpoint
+ * displacement over an {@link IRaster}.
+ * <p>
  * Title: Plasma<p>
  * Description:
  * Purpose:
- * Class encapsulating the Algorithm to generate a 2D Fractal scalar Distribution 
+ * Class encapsulating the Algorithm to generate a 2D Fractal scalar Distribution
  * ("Plasma")
- * 
- * @see graphic.example.Erosion for a different Algorithm to generate 2D Height Maps. 
+ *
+ * @see graphic.example.Erosion for a different Algorithm to generate 2D Height Maps.
  *
  * Known SubClasses:
  *
@@ -21,6 +24,15 @@ import graphic.Point2D;
  * Created on	07-07-2002, 09:50 AM<p>
  * @author 	Matthias Heuer
  * @version	1.0
+ * <!-- docstate
+ * pass: 2
+ * mtime: 2026-09-05T11:47:37Z
+ * digest: 032b31d0119559d6a638f30f06e5408e93a8788bfaf10b82997d0736ee24dd7b
+ * stale: false
+ * tags: [code/algorithm, code/math]
+ * concepts: [Plasma/Height-Map Fractal]
+ * facets: {layer: test, status: legacy, complexity: medium}
+ * -->
  */
 public class Plasma
 implements IRaster {
@@ -40,13 +52,13 @@ implements IRaster {
 	/** Storage of the Picture in the Plasma Diagram */
 	protected int[][] Picture;
 
-	/*  The currently calculated TestPoint */
+	/** The currently calculated test point, reused across {@link #getValue(Point2D)} calls. */
 	protected Point2D TP  = new Point2D();
 
-	/*  Helper for storing the Step Sizes */
+	/** Helper point for storing the current step sizes. */
 	protected Point2D MR  = new Point2D();
 
-	/*  The total Width of the Raster */
+	/** The total width of the raster, set once by {@link #initPicture(int[][])}. */
 	protected Point2D Width; // = new Point2D();
 
 	/** Step Size of the current raster */

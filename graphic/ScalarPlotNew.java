@@ -5,31 +5,31 @@ import graphic.example.Fractal;
 import java.awt.Color;
 
 /**
-  * Title: ScalarPlotNew<p>
-  * Description:
-  * Contains Methods to paint Figures with Scalar Color Gradients, 
-  * independent from the actual Implementation, 
-  * although, when this Functionality is integrated in AGraph2D, 
-  * it could be dependent again. 
-  * 
-  * To achieve a smooth Color Gradient, a palette is required;  
-  * it is hard to interpolate RGB Values, 
-  * rather use several int Values for this! 
-  * You can interpolate Brightness on the same Color! 
-  * You need a Color Function Object to determine the real Color Value. 
-  * 
-  * Horizontal or vertical Lines
-  * general Lines
-  * Squares
-  * Triangles
+  * Paints lines, squares, triangles and polygons with bilinearly
+  * interpolated scalar color gradients, against the generic
+  * {@link IGraphShape} interface rather than a concrete graphics class.
   *
-  * Known SubClasses:
+  * <p>A palette is required for a smooth color gradient: interpolating RGB
+  * values directly looks poor, so this class interpolates integer indices
+  * (or brightness on one color) and delegates the actual color lookup to
+  * a palette function.
   *
   * Copyright:	Copyright (c) Matthias Heuer<p>
   * Company:	personal<p>
   * Created on	06-06-2002, 08:59 PM<p>
   * @author 	Matthias Heuer
   * @version	1.0
+  * @see IGraphShape
+  * @see ScalarPlot the AGraph2D-specific counterpart of this class
+  * <!-- docstate
+  * pass: 2
+  * mtime: 2026-09-05T12:08:02Z
+  * digest: 980690755fc2b7d9ddd2fd57556fa3e44bb78d0ee57f78cdc304a2aaf198d67a
+  * stale: false
+  * tags: [code/chart_rendering, code/line_rasterization]
+  * concepts: [Scalar Color Interpolation Plot (Revised)]
+  * facets: {layer: domain, status: broken, complexity: medium}
+  * -->
   */
 public class ScalarPlotNew {
 
@@ -37,7 +37,9 @@ public class ScalarPlotNew {
 	/// #region : Variables
 	////////////////////////////////////////////////////////////////////////////
 	
+	/** Last drawn left-edge scalar value, used by {@link #ScalarSquare} to detect an identical row worth copying. */
 	private int z0Old = Integer.MIN_VALUE;
+	/** Last drawn right-edge scalar value, used by {@link #ScalarSquare} to detect an identical row worth copying. */
 	private int z1Old = Integer.MIN_VALUE;
 
 	/**Reference to the Graphics Context	 */
@@ -365,7 +367,7 @@ public class ScalarPlotNew {
 		else		{dz = (z0-z1); zStep = -1;}
 		if (u1 > u0){du = (u1-u0); uStep = +1;}
 		else		{du = (u0-u1); uStep = -1;}
-		zd = dx-dz; ud = dx-du; 
+		zd = dx-dz; ud = dx-du;
 		g.setPixel(x0, y, z0); //Set the Start to the Start Point so that at least the last Draw Action
 		while (x0 < x1) { //no longer guaranteed to come along x0 AND z0 at the same time!
 			//no clipping anymore!
@@ -374,6 +376,13 @@ public class ScalarPlotNew {
 			if (zd >= 0) {x0++	   ; zd -= dz; ud -= du;
 				if (color) { 	//only zd (Color) decides about stepping forward!
 					setPaletteColor(z0);
+					// TODO: LOGIC: calls the single-arg drawHLine(x0), which
+					// draws from the graphics context's *current* x position -
+					// but unlike the 6-arg ScalarRow overload above, this method
+					// never tracks or sets a "segment start" x via g.P.x (it
+					// only ever calls the stateless g.setPixel(x, y, z) form).
+					// The resulting line is drawn from whatever x position g
+					// happens to hold, not from this segment's actual start.
 					g.drawHLine(x0);
 					color = false;
 				}
@@ -515,9 +524,14 @@ public class ScalarPlotNew {
 		return mnMx; 
 	}
 
-	/** @see #refineRaster2D(Point2D, Point2D, IPoint2DFunction, boolean) uses this exclusively 
-	 * to paint a single Rectangle 
-	 */ 
+	/**
+	 * Paints one raster block: samples {@code painter} at {@code SF}, tracks
+	 * the min/max color seen in {@code mnMx}, and either fills the block's
+	 * rectangle or sets a single pixel.
+	 *
+	 * @see #refineRaster2D(Point2D, Point2D, IPoint2DFunction, boolean) uses this exclusively
+	 * to paint a single Rectangle
+	 */
 	private void paintRasterBlock(final IPoint2DFunction painter, final boolean fillBlock, final Point2D SF,
 		final Point2D PP, final Point2D end, final Point2D stop, final Point2D mnMx, final int SR) {
 		final int newColor = painter.getValue(SF) + ColorOffset;	//Modulo Operation is expensive!

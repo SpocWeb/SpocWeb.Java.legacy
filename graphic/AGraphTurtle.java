@@ -7,26 +7,26 @@ package graphic;
 
 
 /**
- * Title: AGraphTurtle<p>
- * Description:
- * Purpose:
- *
- * Purpose / Responsibilities of this Class
- *
- * Design Decisions / Implementation Details:
- * If similar Classes exist (e.g. Polymorphism),
- * characterize the specific Differences to compare these.
- *
- * Known SubClasses: <none>
- *
- * Known Uses: <none>
+ * Extends {@link AGraph2DOut} with turtle-graphics style movement:
+ * relative moves, turns and optional line trailing driven by a current
+ * direction and pen position.
  *
  * Copyright:	Copyright (c) Matthias Heuer<p>
  * Company:	personal<p>
  * Created on	10-26-2002, 12:47 PM<p>
  * @author mheuer
  * @version	1.0
- *
+ * @see AGraph2DOut
+ * @see ITurtle
+ * <!-- docstate
+ * pass: 2
+ * mtime: 2026-09-05T11:49:55Z
+ * digest: 7455e2b2f89860219c0028706ddaf7d454e549a74ac8461fcd0fca39499d4d87
+ * stale: false
+ * tags: [code/geometry]
+ * concepts: [Turtle Graphics Base Class]
+ * facets: {layer: infrastructure, status: legacy, complexity: low}
+ * -->
  */
 public abstract class AGraphTurtle 
 extends AGraph2DOut 
@@ -70,6 +70,8 @@ implements ITurtle {
 		P.setLocation(Pt) ; }
 
 	/**
+	 * Returns the turtle's current pen position.
+	 *
 	 * @return the current Position of the Turtle
 	 */
 	public Point2D getPosition() {

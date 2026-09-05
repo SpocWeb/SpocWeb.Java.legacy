@@ -740,3 +740,63 @@ graphic/ms3d/Ms3dTexture.java:Ms3dTexture	class	graphic/ms3d/Ms3dTexture.java	co
 graphic/ms3d/Ms3dTextureMap.java:Ms3dTextureMap	class	graphic/ms3d/Ms3dTextureMap.java	code/mesh_data	MS3D Texture Coordinate Map	domain	legacy	low
 graphic/ms3d/Ms3dTriangle.java:Ms3dTriangle	class	graphic/ms3d/Ms3dTriangle.java	code/mesh_data	MS3D Mesh Triangle	domain	legacy	low
 graphic/ms3d/Ms3dVertex.java:Ms3dVertex	class	graphic/ms3d/Ms3dVertex.java	code/mesh_data	MS3D Mesh Vertex	domain	broken	low
+graphic	folder	graphic	code/graphics,code/rendering	2D Graphics Abstraction Layer	infrastructure	legacy	high
+graphic/IDrawAble.java:IDrawAble	class	graphic/IDrawAble.java	code/graphics	Rendering Abstraction Interface	infrastructure	legacy	low
+graphic/IGraph2DIn.java:IGraph2DIn	class	graphic/IGraph2DIn.java	code/graphics,code/image_processing	Graphics Input Interface	infrastructure	legacy	low
+graphic/IGraph2DOut.java:IGraph2DOut	class	graphic/IGraph2DOut.java	code/graphics	Graphics Output Interface	infrastructure	legacy	low
+graphic/IGraphAddtl.java:IGraphAddtl	class	graphic/IGraphAddtl.java	code/graphics,code/line_rasterization	Additional Fast Primitives Interface	infrastructure	legacy	low
+graphic/IGraphImage.java:IGraphImage	class	graphic/IGraphImage.java	code/graphics,code/image_processing	Image Rendering Interface	infrastructure	legacy	low
+graphic/IGraphShape.java:IGraphShape	class	graphic/IGraphShape.java	code/graphics,code/geometry	Shape Rendering Interface	infrastructure	legacy	low
+graphic/IGraphText.java:IGraphText	class	graphic/IGraphText.java	code/graphics	Text Rendering Interface	infrastructure	legacy	low
+graphic/IPalette.java:IPalette	class	graphic/IPalette.java	code/color_palette	Color Palette Interface	infrastructure	legacy	low
+graphic/IPoint2DFunction.java:IPoint2DFunction	class	graphic/IPoint2DFunction.java	code/geometry,code/point_normal_calculation	Point Function Interface	infrastructure	legacy	low
+graphic/IRaster.java:IRaster	class	graphic/IRaster.java	code/geometry,code/2d_geometry	Raster Generation Interface	infrastructure	legacy	low
+graphic/ISimplePalette.java:ISimplePalette	class	graphic/ISimplePalette.java	code/color_palette	Simple Color Palette Interface	infrastructure	legacy	low
+graphic/ITurtle.java:ITurtle	class	graphic/ITurtle.java	code/geometry	Turtle Graphics Interface	infrastructure	legacy	low
+graphic/AGraph2D.java:AGraph2D	class	graphic/AGraph2D.java	code/graphics,code/rasterization	Polygon/Line Rasterization Base Class	infrastructure	broken	high
+graphic/AGraph2DOut.java:AGraph2DOut	class	graphic/AGraph2DOut.java	code/graphics	Pen State Management Base Class	infrastructure	broken	low
+graphic/AGraphImage.java:AGraphImage	class	graphic/AGraphImage.java	code/graphics,code/image_processing	Image Rendering Base Class	infrastructure	legacy	low
+graphic/AGraphRead.java:AGraphRead	class	graphic/AGraphRead.java	code/graphics,code/image_processing	Flood Fill Base Class	infrastructure	legacy	medium
+graphic/AGraphText.java:AGraphText	class	graphic/AGraphText.java	code/bitmap_font_rendering,code/graphics	Vector Font Rendering Base Class	infrastructure	legacy	medium
+graphic/AGraphText.java:GraphTextMetrics	class	graphic/AGraphText.java	code/bitmap_font_rendering	Font Metrics Holder	infrastructure	legacy	low
+graphic/AGraphTurtle.java:AGraphTurtle	class	graphic/AGraphTurtle.java	code/geometry	Turtle Graphics Base Class	infrastructure	legacy	low
+graphic/Bar3D.java:Bar3D	class	graphic/Bar3D.java	code/chart_rendering,code/3d_rendering	3D Bar Chart	domain	legacy	medium
+graphic/Body2D.java:Body2D	class	graphic/Body2D.java	code/3d_geometry,code/polygon_calculation	3D-to-2D Body Projection	domain	legacy	medium
+graphic/Figures.java:Figures	class	graphic/Figures.java	code/graphics,code/geometry	Special-Purpose Shape Drawing	utility	broken	medium
+graphic/Graph2D.java:Graph2D	class	graphic/Graph2D.java	code/graphics	AWT Graphics Adapter	infrastructure	broken	medium
+graphic/GraphicPattern.java:GraphicPattern	class	graphic/GraphicPattern.java	code/graphics	Pen and Brush Pattern Factory	utility	legacy	medium
+graphic/GraphicsAdapter.java:GraphicsAdapter	class	graphic/GraphicsAdapter.java	code/graphics,code/adapter	AWT Graphics Delegate Adapter	infrastructure	broken	high
+graphic/Hidden.java:Hidden	class	graphic/Hidden.java	code/3d_rendering,code/geometry	Hidden Line Removal	domain	broken	medium
+graphic/HyperGraphPainter.java:HyperGraphPainter	class	graphic/HyperGraphPainter.java	code/graph_rendering	Hyperbolic Graph Layout Painter	domain	legacy	medium
+graphic/JavaGraphic.java:JavaGraphic	class	graphic/JavaGraphic.java	code/graphics	AWT-Delegated Rendering	infrastructure	broken	medium
+graphic/Line2D.java:Line2D	class	graphic/Line2D.java	code/2d_geometry,code/geometry_computation	2D Line/Bounding Box	domain	broken	low
+graphic/Marker.java:Marker	class	graphic/Marker.java	code/chart_rendering,code/graphics	Point Marker Drawing	utility	legacy	low
+graphic/MemoryImage.java:MemoryImage	class	graphic/MemoryImage.java	code/image_processing,code/graphics	In-Memory Bitmap	infrastructure	legacy	medium
+graphic/PaletteRGB.java:PaletteRGB	class	graphic/PaletteRGB.java	code/color_palette	RGB/HSV Color Model Conversion	utility	broken	medium
+graphic/PaletteShading.java:PaletteShading	class	graphic/PaletteShading.java	code/color_palette	Shading Palette	utility	broken	low
+graphic/Point2D.java:Point2D	class	graphic/Point2D.java	code/2d_geometry,code/point_normal_calculation	Integer 2D Point	domain	broken	low
+graphic/Polygon2D.java:Polygon2D	class	graphic/Polygon2D.java	code/2d_geometry,code/polygon_calculation	2D Polygon	domain	broken	medium
+graphic/PolyTrigon.java:PolyTrigon	class	graphic/PolyTrigon.java	code/geometry_computation,code/2d_geometry	Fast Trigonometry and Shape Generation	utility	legacy	high
+graphic/ScalarPlot.java:ScalarPlot	class	graphic/ScalarPlot.java	code/chart_rendering,code/line_rasterization	Scalar Color Interpolation Plot	domain	legacy	medium
+graphic/ScalarPlotNew.java:ScalarPlotNew	class	graphic/ScalarPlotNew.java	code/chart_rendering,code/line_rasterization	Scalar Color Interpolation Plot (Revised)	domain	broken	medium
+graphic/TexturePalette.java:TexturePalette	class	graphic/TexturePalette.java	code/color_palette	Texture-Mapped Palette	utility	legacy	low
+graphic/VectorPoint2D.java:VectorPoint2D	class	graphic/VectorPoint2D.java	code/collection,code/geometry	Point2D Array Utilities	utility	broken	medium
+graphic/Wire2D.java:Wire2D	class	graphic/Wire2D.java	code/2d_geometry,code/graph_rendering	Wireframe Model	domain	legacy	medium
+graphic/ZBuffer.java:ZBuffer	class	graphic/ZBuffer.java	code/3d_rendering	Z-Buffer	domain	broken	medium
+graphic/example	folder	graphic/example	code/algorithm	Procedural Generation Demos	test	legacy	medium
+graphic/example/AntHillInside.java:AntHillInside	class	graphic/example/AntHillInside.java	code/algorithm,code/simulation	Ant Colony Cellular Automaton	test	broken	medium
+graphic/example/Apple.java:Apple	class	graphic/example/Apple.java	code/algorithm,code/math	Fractal Applet (Escape-Time Set)	test	legacy	medium
+graphic/example/CellularAutomaton1D.java:CellularAutomaton1D	class	graphic/example/CellularAutomaton1D.java	code/algorithm,code/simulation	1D Cellular Automaton	test	legacy	medium
+graphic/example/Erosion.java:Erosion	class	graphic/example/Erosion.java	code/algorithm,code/math	Terrain Erosion Generator	test	broken	medium
+graphic/example/Fractal.java:Fractal	class	graphic/example/Fractal.java	code/algorithm,code/graphics	Turtle-Graphics Fractal	test	legacy	medium
+graphic/example/Plasma.java:Plasma	class	graphic/example/Plasma.java	code/algorithm,code/math	Plasma/Height-Map Fractal	test	legacy	medium
+graphic/example/TravellingFlock.java:TravellingFlock	class	graphic/example/TravellingFlock.java	code/algorithm,code/simulation	Flocking Particle Simulation	test	legacy	medium
+graphic/implement	folder	graphic/implement	code/graphics	Graph2D Color Strategy Implementations	utility	legacy	medium
+graphic/implement/GrayColor.java:GrayColor	class	graphic/implement/GrayColor.java	code/graphics,code/algorithm	Dithering Color Strategy	utility	broken	medium
+graphic/implement/GreyColor.java:GreyColor	class	graphic/implement/GreyColor.java	code/graphics,code/algorithm	Greyscale Dithering Strategy	utility	broken	medium
+graphic/implement/RandomColor.java:RandomColor	class	graphic/implement/RandomColor.java	code/graphics,code/algorithm	Random/Anti-Moire Color Strategy	utility	legacy	low
+graphic/implement/TextureGraphics.java:TextureGraphics	class	graphic/implement/TextureGraphics.java	code/graphics	Texture-Sampling Color Strategy	utility	legacy	medium
+graphic/implement/testGraph2D.java:testGraph2D	class	graphic/implement/testGraph2D.java	code/graphics,code/testing	Graph2D Demo Harness	test	legacy	low
+graphic/svg	folder	graphic/svg	code/rendering,code/parsing	SVG Rendering and Parsing	utility	legacy	medium
+graphic/svg/SvgApplet.java:SvgApplet	class	graphic/svg/SvgApplet.java	code/rendering,code/parsing	SVG Applet Renderer	utility	broken	high
+graphic/svg/SvgHandler.java:SvgHandler	class	graphic/svg/SvgHandler.java	code/parsing	Empty SAX Handler Placeholder	utility	unfinished	low
