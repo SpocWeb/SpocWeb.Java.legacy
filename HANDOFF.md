@@ -118,6 +118,31 @@ path, so invoking one from a sub-folder produces keys nothing can join on.
 - The index shrank from 29,995 to 25,220 rows because the Java `build-index` merges by
   unit-id where the C# one appends. The 4,775 removed rows were exact duplicate unit-ids
   from repeated C# runs; all 25,201 distinct unit-ids survive.
+- **The vocabulary is consolidated on the singular form (2026-09-05).** The 115 reviewed
+  near-duplicate merges are applied, with the singular canonical in every case rather than
+  whichever spelling the index happened to use more - `--prefer=singular`, added for this,
+  since the usage-driven direction had sent 90 pairs one way and 26 the other and resolved the
+  same word in opposite directions across two namespaces. 19 of the 115 reverse merges an
+  earlier session had already applied the other way, including `code/extension_method` ->
+  `code/extension_methods` across 1,363 references.
+
+  Final state, verified: `merged:` has 115 entries, no cycles, no chains, no plural canonical,
+  no canonical missing from the free list; 6,407 free tags; and **no merged-away spelling
+  remains in any of the 31 tag stores**. Total written: 9,845 tag references across the corpus
+  and 4,086 store rows, in two passes.
+
+  Four defects surfaced doing it, all now fixed and tested: `ApplyMerges` recorded both
+  directions when a merge was reversed (a two-step cycle) and left the winning spelling out of
+  the free list; redistribution reordered `[Tags]` arguments alphabetically on declarations
+  where nothing merged (55,151 of the first pass's 66,373 references were that churn); the
+  raw-tags rewriter normalised separators on untouched rows; and `SaveSchema` wrote CRLF into a
+  file every other writer keeps LF.
+
+  **Known design gap, not fixed:** nothing reads `merged:` to translate a tag, and
+  redistribution only acts on the current run's proposals - so a merge recorded but not
+  redistributed can never be picked up by a later run. That stranded 68 of these 115 pairs
+  until they were revived into the free list by hand. A `redistribute-merges` command would
+  close it properly; see the C# skill's `tags-pipeline.md`.
 - **`compact-vocabulary` was not run, and must not be run yet - now for a structural
   reason, not a fixable one.** The index rebuild that was supposed to unblock it has been
   done: `build-index` was re-run over 27 of the 31 tag stores (2026-09-04), growing
