@@ -45,6 +45,15 @@ import streamIO.object.json.JSONTest;
   * Created on 06-02-2001, 11:02 PM<p>
   * @author 	Matthias Heuer
   * @version 1.0
+  * <!-- docstate
+  * pass: 2
+  * mtime: 2026-09-05T10:13:18Z
+  * digest: 43d26c0959c31e7119ace6ec409a36e574aedeb2854705c4f9e45aa5631f47a6
+  * stale: false
+  * tags: [code/pair_data_structure]
+  * concepts: [Pair with Value]
+  * facets: {layer: domain, status: legacy, complexity: low}
+  * -->
   */
 final public class PairVal //'final' speeds up Methods that directly use PairVal
 extends Pair
@@ -116,7 +125,8 @@ extends Pair
 //		if (Key != null) HC += Key.hashCode(); //make this conformant to the equals() Method
 		return HC; }
 
-	/** @return  A string representation of this Association.     */
+	/** Returns this Association rendered as "(val@Key)".
+	 * @return  A string representation of this Association.     */
 	public synchronized String toString() { return "(" + val + "@" + Key + ")"; }
 
 }

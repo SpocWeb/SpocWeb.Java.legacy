@@ -12,26 +12,23 @@ import streamIO.Log;
 import streamIO.object.AStreamIn;
 
 /**
- * Title: AEdgeStreamIn<p>
- * Description:
- * Purpose:
- *
- * Purpose / Responsibilities of this Class
- *
- * Design Decisions / Implementation Details:
- * If similar Classes exist (e.g. Polymorphism),
- * characterize the specific Differences to compare these.
- *
- * Known SubClasses: <none>
- *
- * Known Uses: <none>
- *
- * Copyright:	Copyright (c) Matthias Heuer<p>
- * Company:	personal<p>
- * Created on	10-26-2002, 12:47 PM<p>
+ * Abstract base for streams of {@link Edge} objects (adjacency-list/-matrix iterators).
+ * Implements the shared {@link streamIO.object.IStreamIn} plumbing (current/next item,
+ * filtering by Node, mark size) on top of the abstract {@link #nextEdge()}, and adds two
+ * higher-level utilities built from repeatedly draining the stream: summing absolute
+ * Edge weights ({@link #absWeightSum()}) and an iterative force-directed layout
+ * ({@link #generateGraphics(float[][])}) that nudges randomly placed Points towards the
+ * Distances given by the Edges.
  * @author mheuer
- * @version	1.0
- *
+ * <!-- docstate
+ * pass: 2
+ * mtime: 2026-09-05T10:42:19Z
+ * digest: 0ebc9bd8dc1b7a3045a6ef18d11e35f7c2f6384da0176a120d622707848bfecc
+ * stale: false
+ * tags: [code/graph_edge, code/graph_iteration]
+ * concepts: [Edge Stream Base Class]
+ * facets: {layer: domain, status: legacy, complexity: medium}
+ * -->
  */
 public abstract class AEdgeStreamIn 
 extends AStreamIn 
@@ -51,24 +48,28 @@ implements IEdgeStreamIn {
 	
 	///////////////////////////////////////////////////////////////////////////
 	
-	/** @see streamIO.IAvailAble#availAble()	 */
-	abstract public long availAble(); 
-	
-	/** @see graphs.IEdgeStreamIn#nextEdge()	 */
-	abstract public Edge nextEdge(); 
-	
-	/** @see graphs.IEdgeStreamIn#getNumNodes()	 */
-	abstract public int getNumNodes(); 
-	
-	/** @see streamIO.IAvailAble#getPosition()	 */
-	abstract public long getPosition(); 
+	/** Returns the number of Edges still available before this stream is exhausted.
+	 * @see streamIO.IAvailAble#availAble()	 */
+	abstract public long availAble();
+
+	/** Returns the next Edge in the stream, or null once exhausted.
+	 * @see graphs.IEdgeStreamIn#nextEdge()	 */
+	abstract public Edge nextEdge();
+
+	/** Returns the number of Nodes in the Graph this stream iterates over.
+	 * @see graphs.IEdgeStreamIn#getNumNodes()	 */
+	abstract public int getNumNodes();
+
+	/** Returns the current read position within the Edge stream.
+	 * @see streamIO.IAvailAble#getPosition()	 */
+	abstract public long getPosition();
 	
 	///////////////////////////////////////////////////////////////////////////
 	
 	/** Usually the same Edge is being reused in the streamIO */
 	protected Edge currEdge = new Edge(); 
 	
-	/** 
+	/** Returns the current (reused) Edge instance last produced by {@link #nextEdge()}.
 	 * @see streamIO.Object.IStreamIn#currItem()
 	 */
 	public Edge currEdge() { return currEdge; }
@@ -78,39 +79,48 @@ implements IEdgeStreamIn {
 	 */
 	public int filter = -1; 
 	
-	/** @see Stream.Object.IStreamIn#getFilter()	 */
+	/** Returns the current node filter value, boxed as an Integer.
+	 * @see Stream.Object.IStreamIn#getFilter()	 */
 	public Object getFilter() { return new Integer(filter); }
-	
-	/** @see Stream.Object.IStreamIn#setFilter(java.lang.Object)	 */
-	public void setFilter(final Object value) { 
+
+	/** Sets the node filter, converting the given Object to an int via {@link ByRefInt#TO_INT}.
+	 * @see Stream.Object.IStreamIn#setFilter(java.lang.Object)	 */
+	public void setFilter(final Object value) {
 		filter = ByRefInt.TO_INT(value); }
-	
-	/** @see graphs.IEdgeStreamIn#getEdgeFilter()	 */
+
+	/** Returns the current edge filter value.
+	 * @see graphs.IEdgeStreamIn#getEdgeFilter()	 */
 	public int getEdgeFilter() { return filter; }
-	
-	/** @see graphs.IEdgeStreamIn#setEdgeFilter(int)	 */
+
+	/** Sets the edge filter value used to restrict which Edges are returned.
+	 * @see graphs.IEdgeStreamIn#setEdgeFilter(int)	 */
 	public void setEdgeFilter(int Value) { filter = Value; }
-	
+
 	///////////////////////////////////////////////////////////////////////////////////////
-	
-	/** @see streamIO.IMarkAble#getMaxMarkSize()	 */
+
+	/** Returns the maximum mark size, defined as the number of Nodes in the Graph.
+	 * @see streamIO.IMarkAble#getMaxMarkSize()	 */
 	public long getMaxMarkSize() { return getNumNodes(); }
-	
-	/** @see streamIO.Object.IStreamIn#currItem()	 */
+
+	/** Returns the current item, delegating to {@link #currEdge()}.
+	 * @see streamIO.Object.IStreamIn#currItem()	 */
 	public Object currItem() { return currEdge(); }
-	
-	/** @return the next Record, (returning the currently available Records) 	*/
+
+	/** Advances and returns the next Edge, delegating to {@link #nextEdge()}.
+	 * @return the next Record, (returning the currently available Records) 	*/
 	public Object nextItem() { return nextEdge(); }
-	
+
 	/**
-	 * @param iter the streamIO of Edges 
+	 * Sums the absolute Weights of all remaining Edges in this stream.
+	 * @param iter the streamIO of Edges
 	 * @return the Sum of all absolute Weights
 	 */
 	public double absWeightSum() { return absWeightSumAndCount(null); }
-	
+
 	/**
+	 * Sums the absolute Weights of all remaining Edges in this stream, optionally reporting how many were counted.
 	 * @param byRefCount receives the Number of Edges, if not null
-	 * @param iter the streamIO of Edges 
+	 * @param iter the streamIO of Edges
 	 * @return the Sum of all absolute Weights
 	 */
 	public double absWeightSumAndCount(final int[] byRefCount) {

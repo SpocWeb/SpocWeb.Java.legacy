@@ -37,7 +37,7 @@ import tester.TesterEquals;
  * <p>
  * Extends SparseMatrix by adding numerous Graph Methods. Additional State / Member
  * Variables are added only for cacheing the Graph Operation Results. A dense Matrix is
- * represented best in O(#Vertices²) using a 2D Table (CrossTab Query Layout) A sparse
+ * represented best in O(#Verticesï¿½) using a 2D Table (CrossTab Query Layout) A sparse
  * Matrix can be represented in O(#Edges) either relationally as a List of Triples
  * (y,x,a[y,x]) or as an Adjacency List with one Row per Line y: x1, a[y,x1], x2, a[y,x2],
  * ... A sparse Graph with Default Weights can be represented as a List of Pairs (y,x)
@@ -52,7 +52,7 @@ import tester.TesterEquals;
  *      to the Super Class SparseMatrix. Known SubClasses: <none> Known Uses: <none>
  *      Similar Classes:
  * @see graphs.MatrixGraph which stores the Graph in a 2D Matrix and thus is best used for
- *      dense Graphs with O(V²) Edges. Copyright: Copyright (c) Matthias Heuer
+ *      dense Graphs with O(Vï¿½) Edges. Copyright: Copyright (c) Matthias Heuer
  *      <p>
  *      Company: personal
  *      <p>
@@ -65,6 +65,15 @@ import tester.TesterEquals;
  * Clustering and Sequencing are not quite the same: 
  * Sequencing tries to minimize the Elements above the Diagonal 
  * Clustering tries to minimize the Distance from  the Diagonal 
+ * <!-- docstate
+ * pass: 2
+ * mtime: 2026-09-05T10:13:18Z
+ * digest: 1381c6872803f1e31ccd377134d7a78f9481f6784200681c04df3fe95c91c524
+ * stale: false
+ * tags: [code/sparse_graph, code/graph_algorithm]
+ * concepts: [Sparse Graph]
+ * facets: {layer: domain, status: legacy, complexity: high}
+ * -->
  */
 final public class SparseGraph 
 extends SparseMatrix 
@@ -237,6 +246,7 @@ implements ITester { // only for
 	public static boolean ENLARGE_TO_DRAIN_END_NODES = true;
 
 	/**
+	 * Creates an empty SparseGraph sized for the given Number of Nodes, growing its backing Storage by the given Increment.
 	 * @param NumNodes
 	 * @param _capacityIncrement
 	 */
@@ -246,7 +256,7 @@ implements ITester { // only for
 	}
 
 	/**
-	 * 
+	 * Creates an empty SparseGraph with default initial capacity.
 	 */
 	public SparseGraph() {
 		super();
@@ -254,6 +264,7 @@ implements ITester { // only for
 	}
 
 	/**
+	 * Creates an empty SparseGraph sized for the given Number of Nodes.
 	 * @param NumNodes
 	 */
 	public SparseGraph(final int _numNodes) {
@@ -262,6 +273,7 @@ implements ITester { // only for
 	}
 
 	/**
+	 * Creates a SparseGraph populated from the given int[][] Edge list.
 	 * @param numNodes_
 	 * @param edges_
 	 * @param directed
@@ -272,6 +284,7 @@ implements ITester { // only for
 	}
 
 	/**
+	 * Creates a SparseGraph populated from the given char[][] Edge list.
 	 * @param numNodes_
 	 * @param edges_
 	 * @param directed
@@ -282,6 +295,7 @@ implements ITester { // only for
 	}
 
 	/**
+	 * Creates a SparseGraph populated from the given char[][] Edge list, with Node ids offset by the given char.
 	 * @param numNodes_
 	 * @param edges_
 	 * @param offset
@@ -294,6 +308,7 @@ implements ITester { // only for
 	}
 
 	/**
+	 * Creates a SparseGraph from a dense double[][] Weight Matrix, keeping Weights within [min_, max_].
 	 * @param weights_
 	 * @param symmetric_
 	 * @param min_
@@ -306,6 +321,7 @@ implements ITester { // only for
 	}
 
 	/**
+	 * Creates a SparseGraph from a dense double[][] Weight Matrix, keeping Weights of at least min_.
 	 * @param weights_
 	 * @param symmetric_
 	 * @param min_
@@ -317,6 +333,7 @@ implements ITester { // only for
 	}
 
 	/**
+	 * Creates a SparseGraph from a dense float[][] Weight Matrix, keeping Weights within [min_, max_].
 	 * @param weights_
 	 * @param symmetric_
 	 * @param min_
@@ -329,6 +346,7 @@ implements ITester { // only for
 	}
 
 	/**
+	 * Creates a SparseGraph from a dense float[][] Weight Matrix, keeping Weights of at least min_.
 	 * @param weights_
 	 * @param symmetric_
 	 * @param min_
@@ -340,6 +358,7 @@ implements ITester { // only for
 	}
 
 	/**
+	 * Creates a SparseGraph as a copy of the given SparseMatrix, optionally transposed.
 	 * @param AL
 	 */
 	public SparseGraph(final SparseMatrix AL, final boolean transposed) {
@@ -348,6 +367,7 @@ implements ITester { // only for
 	}
 
 	/**
+	 * Creates a SparseGraph by connecting the given Node Coordinates whenever their Distance is below maxDist.
 	 * @param coords_
 	 * @param maxDist
 	 */
@@ -357,6 +377,7 @@ implements ITester { // only for
 	}
 
 	/**
+	 * Creates a SparseGraph from a dense MatrixGraph, keeping Weights within [Min, Max], optionally transposed.
 	 * @param AM
 	 * @param Min
 	 * @param Max
@@ -368,6 +389,7 @@ implements ITester { // only for
 	}
 
 	/**
+	 * Creates a SparseGraph from a dense MatrixGraph, keeping Weights within [Min, Max].
 	 * @param AM
 	 * @param Min
 	 * @param Max
@@ -382,6 +404,7 @@ implements ITester { // only for
 	// ///////////////////////////////////////////////////////////////////////////////////
 
 	/**
+	 * Checks whether every Node has at most one incoming Edge (Fan-In &lt;= 1), i.e. this Graph is a Forest/Hierarchy.
 	 * @return true when the Graph is hierarchic A Graph is hierarchic (a Forest), if
 	 *         every Node has at most one Parent and a Tree if only a single Root Node has
 	 *         no Parents (Forest can be converted into a Tree by adding an artificial
@@ -409,7 +432,7 @@ implements ITester { // only for
 	 * Inverse Operation to the Hull, which consists of all direct Graphs with Weights.
 	 * The Generating Graph consists of the longest Paths to the Root. By making all
 	 * Weights negative and equal -1 this Minimization yields the Generating Graph. TODO:
-	 * cannot be called twice! TODO: die Funktion ist fragwürdig!!! sie geht z.B. gar
+	 * cannot be called twice! TODO: die Funktion ist fragwï¿½rdig!!! sie geht z.B. gar
 	 * nicht auf _startVertex ein!
 	 * @return the shortest Paths to the given Vertex given by Pointers to their resp.
 	 *         Parent Node in sequence
@@ -645,6 +668,7 @@ implements ITester { // only for
 	// //////////////////////////////////////////////////////////////////////////
 
 	/**
+	 * Collapses each (strongly) connected Component to a single Node, returning the resulting Component Graph.
 	 * @return a new, simplified Graph ("Component Graph") consisting only of Component
 	 *         Nodes. For undirected Graphs this is the List of connected Component
 	 *         Representatives. For directed Graphs this is the List of strongly connected
@@ -932,7 +956,8 @@ implements ITester { // only for
 	/** value uses solely for detecting the shortest Hamilton Cycle */
 	protected float minLength;
 
-	/** @see tester.ITester#test(java.lang.Object) */
+	/** Checks whether closing the current Hamilton path back to its start yields a new shortest Cycle, recording it into ifo if so.
+	 * @see tester.ITester#test(java.lang.Object) */
 	public boolean test(final Object arg) {
 		final SparseEdge curr = (SparseEdge) arg;
 		if (curr.val == 0) if (counter == getInt() - 1) {
@@ -947,6 +972,7 @@ implements ITester { // only for
 		return false;
 	}
 
+	/** Searches for the shortest Hamilton Cycle starting at Node 0, recording it via this ITester's {@link #test(Object)}. */
 	public void HamiltonCycle() {
 		initSearch();
 		minLength = Float.MAX_VALUE;
@@ -1143,6 +1169,7 @@ implements ITester { // only for
 	}
 
 	/**
+	 * Returns the discrete (unweighted, Edge-count) Distance from start to stop via a Breadth Search, or -1 if unreachable.
 	 * @return the number of Nodes between i and j in the Direction of the Relation or -1
 	 *         if there is no Connection. Uses visit() and local Variables, so it must be
 	 *         synchronized! Breadth Search returns the shorted Paths in p and stops as
@@ -1168,6 +1195,7 @@ implements ITester { // only for
 	// /////////////////////////////////////////////////////////////////////////
 
 	/**
+	 * Returns whether start is reachable from stop (i.e. start "&gt;" stop in the topological Order Relation).
 	 * @return true, when the Stop Node lies in the Direction of the Relation as seen from
 	 *         the Start Node ( Start > Stop ). This is only valid, if the Graph doesn't
 	 *         contain cycles, so it defines an Order Relation and can be topologically
@@ -1181,6 +1209,7 @@ implements ITester { // only for
 	}
 
 	/**
+	 * Returns whether stop is reachable from start (i.e. start "&lt;" stop in the topological Order Relation).
 	 * @return true, when the Stop Node lies in the Direction of the Relation as seen from
 	 *         the Start Node ( Start < Stop ). This is only valid, if the Graph doesn't
 	 *         contain cycles, so it defines an Order Relation and can be topologically
@@ -1194,8 +1223,9 @@ implements ITester { // only for
 	}
 
 	/**
-	 * @return true, when the Stop Node lies in the Direction of the Relation as seen from
-	 *         the Start Node ( Start < Stop ). This is only valid, if the Graph doesn't
+	 * Returns whether start and stop are mutually reachable from each other (or identical), i.e. equivalent under the topological Order Relation.
+	 * @return true when start and stop are mutually reachable (or the same Node).
+	 *         This is only valid, if the Graph doesn't
 	 *         contain cycles, so it defines an Order Relation and can be topologically
 	 *         sorted. Uses visit() and local Variables, so it must be synchronized!
 	 *         Breadth Search returns the shorted Paths in p p[] contains the Path taken,
@@ -1214,6 +1244,7 @@ implements ITester { // only for
 	// /////////////////////////////////////////////////////////////////////////
 
 	/**
+	 * Follows the Union-Find parent chain from x to its Root without any path compression.
 	 * @return the (current) Root(s) of this Element when defining Equivalences. This is
 	 *         the fastest way, but it does not reduce the needed time for the next Search
 	 *         like the other Implementations.
@@ -1229,6 +1260,7 @@ implements ITester { // only for
 	}
 
 	/**
+	 * Follows the Union-Find parent chain from x to its Root, compressing the Path by one Level per step (path halving).
 	 * @return the (current) Root of this Element when defining Equivalences. Reduces the
 	 *         Height of the Tree by one on every Level. Uses two indexed accesses, so it
 	 *         is very fast too!
@@ -1247,6 +1279,7 @@ implements ITester { // only for
 	}
 
 	/**
+	 * Follows the Union-Find parent chain from x to its Root recursively, fully compressing the Path so every visited Element points directly at the Root.
 	 * @return the (current) Root of this Element when defining Equivalences. Reduces the
 	 *         Height of the Tree to one on every Element of the Search Tree. Uses
 	 *         Recursion, so it is slower than lastItem on the first Operation, but since
@@ -1261,6 +1294,7 @@ implements ITester { // only for
 	}
 
 	/**
+	 * Checks (without uniting) whether Key and Value belong to the same Union-Find Equivalence Class.
 	 * @return true, if key and Value are equivalent, considering all Relations as
 	 *         Equivalence Relations.
 	 */
@@ -1732,12 +1766,14 @@ implements ITester { // only for
 		return ret;
 	}
 
-	/** @return the maximum Weight of all Edges */
+	/** Returns the maximum Weight across all Edges of this Graph.
+	 * @return the maximum Weight of all Edges */
 	final public float maxWeight() {
 		return maxWeight(false);
 	}
 
 	/**
+	 * Scans all Edges of this Graph and returns either the maximum or the minimum Weight.
 	 * @param min Flag whether to calculate the Minimum
 	 * @return the maximum or minimum Weight of all Edges
 	 */
@@ -3081,6 +3117,7 @@ implements ITester { // only for
 		// printNumbersAsChars(joints, 'A');
 	}
 
+	/** Builds a sample directed Graph and asserts its strongly connected Components (and their simplified Component Graph) match the expected Result. */
 	public static void testStrongConnect() {
 		L.n("Testing the Calculation of strongly Connected Components ", 1).l(
 				"\n in directed Graphs:", 1);
@@ -3106,6 +3143,7 @@ implements ITester { // only for
 		Assert.EQUALS(simpleExpected, simple); // requires the equals() Method to work!
 	}
 
+	/** Builds a sample Graph and asserts its doubly (bi-)connected Components match the expected Result. */
 	public static void testDoublyConnect() {
 		L.n("Testing the doubly connected Components of a Sample Graph:");
 		SparseGraph AM = new SparseGraph(13); // create a directed Graph
@@ -3119,6 +3157,7 @@ implements ITester { // only for
 			Assert.EQUALS(((i == 0) || (i == 2)), null != biConnectedGraphs[i]);
 	}
 
+	/** Builds a sample Graph made robust and asserts it withstands removal of critical Joints as expected. */
 	public static void testRobustness() {
 		L.n("Testing the Robustness of a Graph made robust:");
 		SparseGraph AM = new SparseGraph(13); // create a directed Graph
@@ -3143,6 +3182,7 @@ implements ITester { // only for
 		}
 	}
 
+	/** Builds the Sedgewick 29.1 sample Graph as a directed SparseMatrix from the {@link #Sedgewick_29_1} Edge list. */
 	final static public SparseMatrix getSedgewick29_1() {
 		return new SparseMatrix(13, Sedgewick_29_1, 'A', true);
 	}
@@ -3163,7 +3203,7 @@ implements ITester { // only for
 	 * but not double connected (see Chapter 30). {Origin, Destination, Weight} used for
 	 * undirected (30.2) and for directed, weighted Graphs (32.8)
 	 */
-	static final char[][] Sedgewick_30_2b = { // für zweifachen Zusammenhang
+	static final char[][] Sedgewick_30_2b = { // fï¿½r zweifachen Zusammenhang
 	{'G', 'C', 1}, {'G', 'H', 3}, {'J', 'G', 1}, {'L', 'G', 5},};
 
 	/*
@@ -3197,8 +3237,8 @@ implements ITester { // only for
 
 	static final char[][] Sedgewick_32_1 = { // additional Edges for the directed Graph
 	{'A', 'G', (char) 4}, {'C', 'A', (char) 1}, {'G', 'C', (char) 1},
-			{'I', 'H', (char) 2}, // doppelt für gerichtete Graphen
-			{'L', 'M', (char) 1}, // doppelt für gerichtete Graphen
+			{'I', 'H', (char) 2}, // doppelt fï¿½r gerichtete Graphen
+			{'L', 'M', (char) 1}, // doppelt fï¿½r gerichtete Graphen
 	};
 
 	static final int[] minSpanSedgewick_31_1 = {
@@ -3411,6 +3451,7 @@ implements ITester { // only for
 	// / testing Maximum Flow Algorithm
 	// /////////////////////////////////////////////////////////////////////////
 
+	/** Builds {@link MatrixGraph#FLOW_GRAPH_1} as a SparseGraph and asserts its maximum Flow from Node 0 to 3 is 2000. */
 	final static public void testMaximumFlow1() {
 		final SparseGraph graph = new SparseGraph(4);
 		graph.addFlowEdges(MatrixGraph.FLOW_GRAPH_1, 'A');
@@ -3419,6 +3460,7 @@ implements ITester { // only for
 		// Assert.EQUALS(FLOW_EXPECTED_1, flow);
 	}
 
+	/** Builds {@link MatrixGraph#FLOW_GRAPH_2} as a SparseGraph and asserts its maximum Flow from Node 0 to 5 is 12. */
 	final static public void testMaximumFlow2() {
 		final SparseGraph graph = new SparseGraph(6);
 		graph.addFlowEdges(MatrixGraph.FLOW_GRAPH_2, 'A');
@@ -3427,6 +3469,7 @@ implements ITester { // only for
 		// Assert.EQUALS(FLOW_EXPECTED_2, flow);
 	}
 
+	/** Runs MAX_PAIRING on a sample bipartite preference List and asserts the resulting Pairing matches the expected Assignment. */
 	final static public void testMaxPairing() {
 		final int[][] pairing = {{0, 0}, {0, 1}, {0, 2}, {1, 0}, {1, 1}, {1, 5}, {2, 2},
 				{2, 3}, {2, 4}, {3, 0}, {3, 1}, {4, 3}, {4, 4}, {4, 5}, {5, 2}, {5, 4},
@@ -3436,6 +3479,7 @@ implements ITester { // only for
 		Assert.EQUALS(expected, result);
 	}
 
+	/** Builds a sample 14-Node Graph and runs {@link #HamiltonCycle()} on it to exercise the shortest-Hamilton-Cycle search. */
 	final static public void testHamiltonCycle() {
 		final SparseGraph graph = new SparseGraph(14);
 		graph.addEdges(Sedgewick_31_1a, false);
@@ -3558,7 +3602,7 @@ implements ITester { // only for
 	public static String INDENT_FIRST = "+---"; 
 	
 	/** Alternative Start String Value for a Tree-like Structure	 */
-	public static String INDENT_FIRST_1 = "+———"; 
+	public static String INDENT_FIRST_1 = "+ï¿½ï¿½ï¿½"; 
 	
 	/** Alternative Indent String Value for a Tree-like Structure	 */
 	public static String INDENT_NEXT = "|   "; 

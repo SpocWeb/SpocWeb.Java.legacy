@@ -33,6 +33,15 @@ package graphs;
   * Created on	2000-07-20, 03;28;30<p>
   * @author 	Matthias Heuer
   * @version	1.0
+  * <!-- docstate
+  * pass: 2
+  * mtime: 2026-09-05T10:13:18Z
+  * digest: a1903fea526db7b8ec68adf2d1a8f525aa6a9e486a4fb1a5a214c032ab9da6ca
+  * stale: false
+  * tags: [code/pair_data_structure]
+  * concepts: [Pair Interface]
+  * facets: {layer: domain, status: legacy, complexity: low}
+  * -->
   */
 public interface IPair
 extends ICPair, IValue {

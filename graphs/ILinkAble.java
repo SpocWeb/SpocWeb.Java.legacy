@@ -38,6 +38,15 @@ import tester.IEquivalence;
   * Created on	2000-07-20, 03;55;09<p>
   * @author 	Matthias Heuer
   * @version	1.0
+  * <!-- docstate
+  * pass: 2
+  * mtime: 2026-09-05T10:13:18Z
+  * digest: 02f8a32a2515220d0985bf0096e93989a761924ec16a4a4c6c64ddd328d9b6ff
+  * stale: false
+  * tags: [code/graph_edge]
+  * concepts: [Linkable Interface]
+  * facets: {layer: domain, status: legacy, complexity: low}
+  * -->
   */
 public interface ILinkAble //
 extends ILinked //, IPair //although setVal() takes only an untyped Object!

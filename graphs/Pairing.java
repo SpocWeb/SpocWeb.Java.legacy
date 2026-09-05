@@ -38,6 +38,15 @@ import streamIO.copy.monoid.integer.Permutation;
  * @author mheuer
  * @version	1.0
  *
+ * <!-- docstate
+ * pass: 2
+ * mtime: 2026-09-05T10:13:18Z
+ * digest: 477d33ec8a4e4b2fc90cda4766e0af11ad3a1fa7b430eb9df146ff4eddb2be3a
+ * stale: false
+ * tags: [code/graph_matching]
+ * concepts: [Graph Pairing/Matching Quality]
+ * facets: {layer: domain, status: legacy, complexity: medium}
+ * -->
  */
 public class Pairing {
 	
@@ -115,47 +124,47 @@ public class Pairing {
 	}
 
 		/**
-	 * 
-	 * @param pairing The List of Origins as chosen by the Targets. 
-	 * @return the Quality of the given Pairing 
-	 * mesured in Rank, meaning 
+	 * Returns the overall Quality of the given Pairing, combining both the origins' and the targets' Rank preferences.
+	 * @param pairing The List of Origins as chosen by the Targets.
+	 * @return the Quality of the given Pairing
+	 * mesured in Rank, meaning
 	 * best  Quality = 0       <p/>
 	 * worst Quality = n*n(-1) <p/>
 	 */
 	public int quality(final int[] pairing) {
-		return 
-		originQuality(pairing) + 
+		return
+		originQuality(pairing) +
 		targetQuality(pairing);
 	}
 
 	/**
-	 * 
-	 * @param pairing The List of Origins as chosen by the Targets. 
-	 * @return the Quality of the given Pairing 
-	 * mesured in Rank, meaning 
+	 * Returns the Quality of the given Pairing as seen from the origins' Rank preferences (how well each Target was ranked by its assigned Origin).
+	 * @param pairing The List of Origins as chosen by the Targets.
+	 * @return the Quality of the given Pairing
+	 * mesured in Rank, meaning
 	 * best  Quality = 0       <p/>
 	 * worst Quality = n*n(-1) <p/>
 	 */
 	public int originQuality(final int[] pairing) {
 		getOriginRanks();
 		int ret = 0;
-		for (int target = pairing.length; --target >= 0;) 
+		for (int target = pairing.length; --target >= 0;)
 			ret += originRanks[pairing[target]][target];
 		return ret;
 	}
-	
+
 	/**
-	 * 
-	 * @param pairing The List of Origins as chosen by the Targets. 
-	 * @return the Quality of the given Pairing 
-	 * mesured in Rank, meaning 
+	 * Returns the Quality of the given Pairing as seen from the targets' Rank preferences (how well each Target ranked its assigned Origin).
+	 * @param pairing The List of Origins as chosen by the Targets.
+	 * @return the Quality of the given Pairing
+	 * mesured in Rank, meaning
 	 * best  Quality = 0       <p/>
 	 * worst Quality = n*n(-1) <p/>
 	 */
 	public int targetQuality(final int[] pairing) {
 		getTargetRanks();
 		int ret = 0;
-		for (int target = pairing.length; --target >= 0;) 
+		for (int target = pairing.length; --target >= 0;)
 			ret += targetRanks[target][pairing[target]];
 		return ret;
 	}

@@ -1,28 +1,20 @@
 package graphs;
 
 /**
-  * Title: Value<p>
-  * Description:
-  * Purpose:
-  * implements the IValue Interface
-  * Purpose / Responsibilities of this Class
-  *
-  * Design Decisions / Implementation Details:
-  * If similar Classes exist (e.g. Polymorphism),
-  * characterize the specific Differences to compare these.
-  *
-  * Known SubClasses: 
-  * @see asynch.Future cannot derive, because Accessors are made final for Performance Reasons
+  * Extends {@link CValue} with a public {@link #setVal(Object)}, implementing
+  * {@link IValue} for a mutable, read/write single-Value holder.
   * @see graphs.KeyValuePair
-  * Pair
-  *
-  * Known Uses: <none>
-  *
-  * Copyright:	Copyright (c) Matthias Heuer<p>
-  * Company:	personal<p>
-  * Created on	08-31-2002, 10:09 AM<p>
+  * @see graphs.Pair
   * @author 	Matthias Heuer
-  * @version	1.0
+  * <!-- docstate
+  * pass: 2
+  * mtime: 2026-09-05T10:42:29Z
+  * digest: 8b1f92079d952aab897ddabf24ff33779654228f90c2fa841a452c9ea2eb6e08
+  * stale: false
+  * tags: [code/graph_element]
+  * concepts: [Value Holder]
+  * facets: {layer: domain, status: legacy, complexity: low}
+  * -->
   */
 public class Value
 extends CValue

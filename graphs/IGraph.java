@@ -9,11 +9,20 @@ package graphs;
 import streamIO.IIStreamIn;
 
 /**
- * Interface for all Graph-specific Operations.  
+ * Interface for all Graph-specific Operations: querying and mutating Edges (add/set,
+ * weighted or Flow), and reading Fan-In/Fan-Out and In-/Out-Degree per Node or for the
+ * whole Graph. Implemented by both the dense {@link MatrixGraph} and the sparse
+ * {@link SparseMatrix}/{@link SparseGraph} representations.
  * @author heuerm
- *
- * TODO To change the template for this generated type comment go to
- * Window - Preferences - Java - Code Style - Code Templates
+ * <!-- docstate
+ * pass: 2
+ * mtime: 2026-09-05T10:42:48Z
+ * digest: d5f780762fc25ca84e2ccfe1403269c0094daff42849c3649b8fcdf023458bef
+ * stale: false
+ * tags: [code/graph_interfaces]
+ * concepts: [Graph Interface]
+ * facets: {layer: domain, status: legacy, complexity: low}
+ * -->
  */
 public interface IGraph {
 
@@ -23,13 +32,16 @@ public interface IGraph {
 	public abstract void clear();
 
 	//	final static public int True = ~False;	//not needed, except for initialization!
+	/** Returns a generic Iterator over the Edges of this Graph.
+	 * @return a generic Iterator over the Edges of this Graph  */
 	public abstract IIStreamIn Iterator();
 
 	/**Returns an Iterator to the Elements of the List. 	 */
 	public abstract IEdgeStreamIn EdgeIterator();
 
-	/** @return the Number of Nodes in this Graph  */
-	public int getInt(); 
+	/** Returns the Number of Nodes in this Graph.
+	 * @return the Number of Nodes in this Graph  */
+	public int getInt();
 	
 	/**For undirected Graphs Fan-In and Fan-Out are the same. 
 	 * AKA In-Degree
@@ -76,13 +88,14 @@ public interface IGraph {
 	 * @return the Number of Edges going out of this Node of this Graph  */
 	public int[] getDegree(); 
 	
-	/** 
-	 * @param start start Node of the Edge 
-	 * @param end end Node of the Edge 
+	/**
+	 * Returns the weight of the directed Edge of the given Type between start and end Node.
+	 * @param start start Node of the Edge
+	 * @param end end Node of the Edge
 	 * @param typ type of the Edge
-	 * @return the weight of the directed Edge of the given Type between start and end Node   
+	 * @return the weight of the directed Edge of the given Type between start and end Node
 	 */
-	public abstract float getWeight(int start, int end, int typ); 
+	public abstract float getWeight(int start, int end, int typ);
 	
 	/** 
 	 * Defaults the type of the Edge to 0. 

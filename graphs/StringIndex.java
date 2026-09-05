@@ -4,25 +4,40 @@ import java.util.ArrayList;
 import java.util.Hashtable;
 
 
+/**
+ * Bidirectional mapping between Strings and dense zero-based int Indices, assigned in
+ * first-seen Order. Used to intern String Keys (e.g. Node Names) as small Integers for
+ * use as Array Indices in the Graph representations.
+ * <!-- docstate
+ * pass: 2
+ * mtime: 2026-09-05T10:42:46Z
+ * digest: 03fa22289d0a39bc00a876c954c43e4b3a37c7f4ecb167a8d9e830bc11e379a2
+ * stale: false
+ * tags: [code/graph_dictionaries]
+ * concepts: [String Interning Index]
+ * facets: {layer: utility, status: legacy, complexity: low}
+ * -->
+ */
 public class StringIndex {
 
-	/// <summary>Dictionary of all indices</summary>
+	/** Maps each interned String Key to its assigned Index.	 */
 	protected final Hashtable dict = new Hashtable();
 
-	/// <summary>Dictionary of all indices</summary>
+	/** Reverse mapping: the String Key at each assigned Index, in Order of Insertion.	 */
 	protected final ArrayList list = new ArrayList();
 
-	/// <summary>Flag to convert all Keys to lower Case (for Case-insensitivity and readability)</summary>
-	public final boolean ToLower = true; 
+	/** Flag to convert all Keys to lower Case (for Case-insensitivity and readability)	 */
+	public final boolean ToLower = true;
 
 	/**
+	 * Returns all interned Strings as an Array, ordered by their assigned Index.
 	 * @return the internal List as an Array Copy
 	 */
 	public String[] getList() { return (String[]) list.toArray(new String[list.size()]); }
 	
-	/// <summary>returns the index of the given String</summary>
-	/// <param name="key">the String to search for</param>
-	/// <returns>the index of the given String</returns>
+	/** Looks up the index of the given String without adding it.
+	 * @param key the String to search for
+	 * @return the index of the given String, or Integer.MIN_VALUE if not yet interned	 */
 	public int get(String key) {
 		if (ToLower)
 			key = key.toLowerCase();
@@ -32,6 +47,10 @@ public class StringIndex {
 		return Integer.MIN_VALUE; 
 	}
 
+	/** Reverse lookup: returns the String Key that was assigned the given Index.
+	 * @param that the Index to look up
+	 * @return the String Key at this Index
+	 * @throws IndexOutOfBoundsException if the Index is out of the current Range	 */
 	public String UnMap(int that) {
 		if (that < 0)
 			throw new IndexOutOfBoundsException("Index to low: " + that);
@@ -40,9 +59,9 @@ public class StringIndex {
 		return list.get(that).toString(); 
 	}
 
-	/// <summary>returns the Index of the given Key</summary>
-	/// <param name="key"></param>
-	/// <returns>the Index of the given Key</returns>
+	/** Interns the given String, assigning it the next free Index if not already present.
+	 * @param key the String to intern
+	 * @return the (new or existing) Index of the given Key	 */
 	public int set(String key) {
 		if (ToLower)
 			key = key.toLowerCase();
@@ -59,6 +78,8 @@ public class StringIndex {
 	//    throw new NotImplementedException();
 	//}
 
+	/** Smoke-tests interning by adding a handful of Strings (including a case-differing duplicate) to a fresh StringIndex.
+	 * @param args unused	 */
 	public static void main(String[] args) {
 		StringIndex sx = new StringIndex(); 
 		int pos; 

@@ -364,3 +364,39 @@ streamIO/RunnablePrinter.java:RunnablePrinter	class	streamIO/RunnablePrinter.jav
 streamIO/StreamInRunner.java:StreamInRunner	class	streamIO/StreamInRunner.java	code/iterator	Stream Input Runner	infrastructure	legacy	low
 streamIO/StreamOutPrimitive.java:StreamOutPrimitive	class	streamIO/StreamOutPrimitive.java	code/output_stream	Primitive Output Stream Base	infrastructure	legacy	medium
 streamIO/StringBufferOutputStream.java:StringBufferOutputStream	class	streamIO/StringBufferOutputStream.java	code/output_stream	StringBuffer-Backed Output Stream	infrastructure	broken	medium
+graphs/ACopy.java:ACopy	class	graphs/ACopy.java	code/graph_edge	Copyable Base Class	utility	legacy	low
+graphs	folder	graphs	code/graph_data_structure,code/sparse_graph,code/adjacency_matrix	Graph Data Structures	domain	legacy	high
+graphs/AEdgeStreamIn.java:AEdgeStreamIn	class	graphs/AEdgeStreamIn.java	code/graph_edge,code/graph_iteration	Edge Stream Base Class	domain	legacy	medium
+graphs/AGraph.java:AGraph	class	graphs/AGraph.java	code/graph_abstraction	Graph Base Class	domain	broken	medium
+graphs/CValue.java:CValue	class	graphs/CValue.java	code/graph_element	Comparable Value Holder	domain	legacy	low
+graphs/DisJointSet.java:DisJointSet	class	graphs/DisJointSet.java	code/disjoint_set,code/union_find	Disjoint Set / Union-Find	utility	legacy	medium
+graphs/Edge.java:Edge	class	graphs/Edge.java	code/graph_edge	Graph Edge	domain	legacy	low
+graphs/EquivalenceByParent.java:EquivalenceByParent	class	graphs/EquivalenceByParent.java	code/custom_equivalence,code/disjoint_set	Parent-Based Equivalence	utility	legacy	low
+graphs/FlowEdge.java:FlowEdge	class	graphs/FlowEdge.java	code/graph_edge	Flow-Network Edge	domain	legacy	low
+graphs/ICPair.java:ICPair	class	graphs/ICPair.java	code/pair_data_structure	Comparable Pair Interface	domain	legacy	low
+graphs/ICValue.java:ICValue	class	graphs/ICValue.java	code/graph_element	Comparable Value Interface	domain	legacy	low
+graphs/ICopy.java:ICopy	class	graphs/ICopy.java	code/graph_edge	Copyable Interface	utility	legacy	low
+graphs/IEdgeStreamIn.java:IEdgeStreamIn	class	graphs/IEdgeStreamIn.java	code/graph_edge,code/graph_iteration	Edge Stream Interface	domain	legacy	low
+graphs/IGraph.java:IGraph	class	graphs/IGraph.java	code/graph_interfaces	Graph Interface	domain	legacy	low
+graphs/ILinkAble.java:ILinkAble	class	graphs/ILinkAble.java	code/graph_edge	Linkable Interface	domain	legacy	low
+graphs/ILinked.java:ILinked	class	graphs/ILinked.java	code/graph_edge	Linked Interface	domain	legacy	low
+graphs/IPair.java:IPair	class	graphs/IPair.java	code/pair_data_structure	Pair Interface	domain	legacy	low
+graphs/IValue.java:IValue	class	graphs/IValue.java	code/graph_element	Value Interface	domain	legacy	low
+graphs/IValueSetter.java:IValueSetter	class	graphs/IValueSetter.java	code/graph_element	Value Setter Interface	domain	legacy	low
+graphs/KeyValuePair.java:KeyValuePair	class	graphs/KeyValuePair.java	code/key_value_pair	Key-Value Pair	domain	legacy	low
+graphs/MatrixGraph.java:AdjMatrixEdgeStream	class	graphs/MatrixGraph.java	code/adjacency_matrix,code/graph_iteration	Adjacency Matrix Edge Stream	domain	legacy	medium
+graphs/MatrixGraph.java:MatrixGraph	class	graphs/MatrixGraph.java	code/adjacency_matrix,code/dense_graph	Adjacency-Matrix Graph	domain	legacy	high
+graphs/Pair.java:Pair	class	graphs/Pair.java	code/pair_data_structure	Pair	domain	legacy	low
+graphs/PairKey.java:PairKey	class	graphs/PairKey.java	code/pair_data_structure,code/key_value_pair	Pair Used As Key	domain	legacy	low
+graphs/PairSym.java:PairSym	class	graphs/PairSym.java	code/pair_data_structure	Symmetric (Unordered) Pair	domain	legacy	low
+graphs/PairVal.java:PairVal	class	graphs/PairVal.java	code/pair_data_structure	Pair with Value	domain	legacy	low
+graphs/Pairing.java:Pairing	class	graphs/Pairing.java	code/graph_matching	Graph Pairing/Matching Quality	domain	legacy	medium
+graphs/SparseEdge.java:SparseEdge	class	graphs/SparseEdge.java	code/graph_edge,code/sparse_graph	Sparse Graph Edge	domain	legacy	low
+graphs/SparseGraph.java:SparseGraph	class	graphs/SparseGraph.java	code/sparse_graph,code/graph_algorithm	Sparse Graph	domain	legacy	high
+graphs/SparseMatrix.java:SparseMatrix	class	graphs/SparseMatrix.java	code/sparse_matrix,code/sparse_graph	Sparse Matrix Graph	domain	broken	high
+graphs/SparseMatrix.java:SparseEdgeStream	class	graphs/SparseMatrix.java	code/sparse_graph,code/graph_iteration	Sparse Edge Stream	domain	legacy	medium
+graphs/StringIndex.java:StringIndex	class	graphs/StringIndex.java	code/graph_dictionaries	String Interning Index	utility	legacy	low
+graphs/Value.java:Value	class	graphs/Value.java	code/graph_element	Value Holder	domain	legacy	low
+graphs/testGraph.java:testGraph	class	graphs/testGraph.java	code/graph_data_structure	Scratch Test Class	test	legacy	low
+graphs/testGraph.java:testGraph.testNumberFormat()	method	graphs/testGraph.java	code/graph_data_structure	Scratch Test Method	test	legacy	low
+graphs/testGraph.java:testGraph.main(String[])	method	graphs/testGraph.java	code/graph_data_structure	Scratch Test Entry Point	test	legacy	low

@@ -3,7 +3,7 @@ package graphs;
 import streamIO.copy.monoid.Association;
 
 /**
-  * Title: IValue<p>
+  * Title: ICValue<p>
   * Description:
   * Defines the Interface for a stateful Constant Objet
   * that can return (a Copy or Read Only Version of) its Value.
@@ -27,6 +27,15 @@ import streamIO.copy.monoid.Association;
   * Created on	08-31-2002, 10:03 AM<p>
   * @author 	Matthias Heuer
   * @version	1.0
+  * <!-- docstate
+  * pass: 2
+  * mtime: 2026-09-05T10:42:14Z
+  * digest: a1903fea526db7b8ec68adf2d1a8f525aa6a9e486a4fb1a5a214c032ab9da6ca
+  * stale: false
+  * tags: [code/graph_element]
+  * concepts: [Comparable Value Interface]
+  * facets: {layer: domain, status: legacy, complexity: low}
+  * -->
   */
 public interface ICValue {
 	

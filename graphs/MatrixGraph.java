@@ -16,6 +16,15 @@ import tester.ITester;
  * The Items can neither be connected, nor can they modify the Graph itself. 
  * This Iterator is quite similar to the HashTable Iterator.
  * This is one of the many Examples where a Nested structure requires a nested Iterator 
+ * <!-- docstate
+ * pass: 2
+ * mtime: 2026-09-05T10:13:18Z
+ * digest: dce809f172c7ea2c1573c5b8be086eba6a5bc838f735406c1dae41e1e422077b
+ * stale: false
+ * tags: [code/adjacency_matrix, code/graph_iteration]
+ * concepts: [Adjacency Matrix Edge Stream]
+ * facets: {layer: domain, status: legacy, complexity: medium}
+ * -->
  */
 class AdjMatrixEdgeStream 
 extends AEdgeStreamIn {
@@ -38,7 +47,8 @@ extends AEdgeStreamIn {
 	
 	/////////////////////////////////////////////////////////////////////////////////////
 	
-	/** @see graphs.IEdgeStreamIn#getNumNodes()	 */
+	/** Returns the number of Nodes in the underlying MatrixGraph.
+	 * @see graphs.IEdgeStreamIn#getNumNodes()	 */
 	public int getNumNodes() { return am.getInt(); }
 	
 	/** Resets the Iterator to the last marked Position,
@@ -68,14 +78,16 @@ extends AEdgeStreamIn {
 	public Object removeCurrent() throws OperationNotSupported { //ByRefLong available) {
 		throw new OperationNotSupported(); }
 	
-	/** @see graphs.AEdgeStreamIn#getPosition()	 */
+	/** Returns the linear Position within the flattened Matrix, computed as the sum of the lengths of preceding Rows plus the current column.
+	 * @see graphs.AEdgeStreamIn#getPosition()	 */
 	public long getPosition() {
-		long ret = 0; 
+		long ret = 0;
 		for(int i = currEdge.key; --i >= 0;)
-			ret += am.a[i].length; 
+			ret += am.a[i].length;
 		return ret+currEdge.val; }
-	
-	/** @return the next Record, (returning the currently available Records) 	*/
+
+	/** Advances to and returns the next Edge, scanning across the current Row and then down subsequent Rows of the Matrix.
+	 * @return the next Record, (returning the currently available Records) 	*/
 	public Edge nextEdge() { //
 		if (++currEdge.val  < currRow.length) { //Items left in the Row...
 			currEdge.weight = currRow[currEdge.val]; //
@@ -130,6 +142,15 @@ extends AEdgeStreamIn {
  * possibly using Bubble Sort, since the Vertices typically only swap their Places. 
  * A Scale free Graph is matched very well by a sparse Graph, 
  * whereas a scaled Graph can be represented both by a dense or a sparse Matrix. 
+ * <!-- docstate
+ * pass: 2
+ * mtime: 2026-09-05T10:13:18Z
+ * digest: 030876dd8eaecb39209fc4f0d8e0e4e92ba77709616c45a19c85d1eae9b12ede
+ * stale: false
+ * tags: [code/adjacency_matrix, code/dense_graph]
+ * concepts: [Adjacency-Matrix Graph]
+ * facets: {layer: domain, status: legacy, complexity: high}
+ * -->
  */
 public class MatrixGraph 
 extends AGraph
@@ -495,14 +516,16 @@ implements IIterAble, IGraph {
 	 * @return the Number of Nodes in this Graph  */
 	public int getInt() { return a.length; }
 	
-	/** @see graphs.IGraph#getWeight(int, int, int)	 */
+	/** Returns the Weight between _start and _end if _typ matches this Matrix's Edge Type, otherwise positive Infinity.
+	 * @see graphs.IGraph#getWeight(int, int, int)	 */
 	public float getWeight(final int _start, final int _end, final int _typ) {
 		if (this.typ != _typ)
-			return Float.POSITIVE_INFINITY; 
+			return Float.POSITIVE_INFINITY;
 		return a[_start][_end];
 	}
-	
-	/** @see graphs.IGraph#getWeight(int, int)	 */
+
+	/** Returns the Weight of the directed Edge between _start and _end, ignoring Edge Type.
+	 * @see graphs.IGraph#getWeight(int, int)	 */
 	public float getWeight(final int _start, final int _end) { return a[_start][_end]; }
 	
 	/**Dynamically add/remove an Edge to/from the Graph.
@@ -651,7 +674,8 @@ implements IIterAble, IGraph {
 	public float setEdge(final int start, final int end, final float weight) {
 		return setEdge(start, end, false, weight); }
 	
-	/** @see graphs.IGraph#setEdge(int, int, boolean, boolean)	 */
+	/** Sets the Edge between start and end to the default Weight, overriding per the given flags.
+	 * @see graphs.IGraph#setEdge(int, int, boolean, boolean)	 */
 	public float setEdge(final int start, final int end, final boolean directed, final boolean override) {
 		return setEdge(start, end, directed, DEFAULT_WEIGHT, override); }
 	
@@ -685,11 +709,13 @@ implements IIterAble, IGraph {
 	public float setEdge(final int start, final int end, final boolean directed) {
 		return setEdge(start, end, directed, True); }
 
-	/** @see graphs.IGraph#setEdge(int, int, boolean, float, boolean)	 */
+	/** Sets the (undirected) Edge between start and end to the given Weight, subject to override.
+	 * @see graphs.IGraph#setEdge(int, int, boolean, float, boolean)	 */
 	public float setEdge(final int start, final int end, final float weight, final boolean directed) {
 		return setEdge(start, end, false, weight, directed); }
-	
-	/** @see graphs.IGraph#setEdge(int, int, boolean, float, boolean)	 */
+
+	/** Sets the Edge between start and end to the given Weight, mirroring it to the reverse Edge unless directed.
+	 * @see graphs.IGraph#setEdge(int, int, boolean, float, boolean)	 */
 	public float setEdge(final int start, final int end, final boolean directed, final float weight, final boolean override) {
 		float ret = setEdge(start, end, override, weight); 
 		if (directed)
@@ -745,19 +771,23 @@ implements IIterAble, IGraph {
 		//			a[numVertex][numVertex] = True;	//Initialize the Diagonal, linear
 	}
 	
-	/** @see graphs.IGraph#getFanIn()	 */
+	/** Returns the Fan-In (sum of incoming Edge Weights) of the given Node.
+	 * @see graphs.IGraph#getFanIn(int)	 */
 	public double getFanIn(final int node) {
 		return MatrixFloat.COL_SUM(this.a, node); }
 
-	/** @see graphs.IGraph#getFanOut()	 */
+	/** Returns the Fan-Out (sum of outgoing Edge Weights) of the given Node.
+	 * @see graphs.IGraph#getFanOut(int)	 */
 	public double getFanOut(final int node) {
 		return MatrixFloat.ROW_SUM(this.a, node); }
 
-	/** @see graphs.IGraph#getFanIn()	 */
+	/** Returns the Fan-In (sum of incoming Edge Weights) of every Node.
+	 * @see graphs.IGraph#getFanIn()	 */
 	public float[] getFanIn() {
 		return MatrixFloat.COL_SUM(this.a); }
 
-	/** @see graphs.IGraph#getFanOut()	 */
+	/** Returns the Fan-Out (sum of outgoing Edge Weights) of every Node.
+	 * @see graphs.IGraph#getFanOut()	 */
 	public float[] getFanOut() {
 		return MatrixFloat.ROW_SUM(this.a); }
 
@@ -1431,6 +1461,10 @@ implements IIterAble, IGraph {
 	final static public double DIMENSION(final float[][] a, final int n) {
 		return DIMENSION(a[n], null); }
 	
+	/** Returns the topological Dimension around Vertex n, using a non-parametric linear fit over Vertex n's row of the full Distance Matrix a.
+	 * @param a the full Matrix of all (euklidean) Distances between all Vertices
+	 * @param n the Vertex to calculate the Dimension for
+	 */
 	final static public double DIMENSION_BY_FIT(final float[][] a, final int n) {
 		return DIMENSION_BY_FIT(a[n], null); }
 	
@@ -1610,14 +1644,16 @@ implements IIterAble, IGraph {
 		return ret;
 	}
 	
-	/** @return a Proposal for the Coordinates into the given Matrix of the Nodes 
-	 * based on the Distances. 
+	/** Refines the given initial Coordinates into a Layout Proposal based on this Graph's Edge Distances.
+	 * @return a Proposal for the Coordinates into the given Matrix of the Nodes
+	 * based on the Distances.
 	 * The given Coordinates are used as initial Guess. */
 	public float[][] generateGraphics(final float[][] startPoints) {
 		return this.EdgeIterator().generateGraphics(startPoints);
 	}
-	
-	/** @return a Proposal for the nDim Coordinates of the Nodes  */
+
+	/** Generates a Layout Proposal with randomly initialized nDim-dimensional Coordinates for the Nodes of this Graph.
+	 * @return a Proposal for the nDim Coordinates of the Nodes  */
 	public float[][] generateGraphics(final int nDim) {
 		return this.EdgeIterator().generateGraphics(this.getInt(), nDim);
 	}
@@ -1734,21 +1770,24 @@ implements IIterAble, IGraph {
 	/// testing Maximum Flow Algorithm
 	///////////////////////////////////////////////////////////////////////////
 	
+	/** Origin/Target/Capacity triples for a 4-Node Flow test Graph (A-B-D and A-C-D, plus a small C-B cross Edge). */
 	final static public char[][] FLOW_GRAPH_1 = {
-			{'A', 'B', (char) 1000}, 
-			{'A', 'C', (char) 1000}, 
-			{'B', 'D', (char) 1000}, 
-			{'C', 'D', (char) 1000}, 
-			{'C', 'B', (char)    1} 
-	}; 
-	
+			{'A', 'B', (char) 1000},
+			{'A', 'C', (char) 1000},
+			{'B', 'D', (char) 1000},
+			{'C', 'D', (char) 1000},
+			{'C', 'B', (char)    1}
+	};
+
+	/** Expected resulting Flow Matrix (net Flow between Node pairs) for {@link #FLOW_GRAPH_1}. */
 	final static public float[][] FLOW_EXPECTED_1 = {
-			{0, 1000, 1000, 0}, 
-			{-1000, 0, 0, 1000}, 
-			{-1000, 0, 0, 1000}, 
-			{0, -1000, -1000, 0}				
-	}; 
-	
+			{0, 1000, 1000, 0},
+			{-1000, 0, 0, 1000},
+			{-1000, 0, 0, 1000},
+			{0, -1000, -1000, 0}
+	};
+
+	/** Builds {@link #FLOW_GRAPH_1}, computes the maximum Flow from Node 0 to 3, and asserts it matches {@link #FLOW_EXPECTED_1}. */
 	final static public void testMaximumFlow1() {
 		final MatrixGraph graph = new MatrixGraph(4, 0, 0); 
 		graph.addFlowEdges(FLOW_GRAPH_1, 'A'); 
@@ -1756,26 +1795,29 @@ implements IIterAble, IGraph {
 		Assert.EQUALS(FLOW_EXPECTED_1, flow);
 	}
 	
+	/** Origin/Target/Capacity triples for a 6-Node Flow test Graph (two parallel paths A-B/C-D/E-F). */
 	final static public char[][] FLOW_GRAPH_2 = {
-			{'A', 'B', (char) 6}, 
-			{'A', 'C', (char) 8}, 
-			{'B', 'D', (char) 6}, 
-			{'B', 'E', (char) 3}, 
-			{'C', 'D', (char) 3}, 
+			{'A', 'B', (char) 6},
+			{'A', 'C', (char) 8},
+			{'B', 'D', (char) 6},
+			{'B', 'E', (char) 3},
+			{'C', 'D', (char) 3},
 			{'C', 'E', (char) 3},
-			{'D', 'F', (char) 8}, 
-			{'E', 'F', (char) 6} 
-	}; 
-	
+			{'D', 'F', (char) 8},
+			{'E', 'F', (char) 6}
+	};
+
+	/** Expected resulting Flow Matrix (net Flow between Node pairs) for {@link #FLOW_GRAPH_2}. */
 	final static public float[][] FLOW_EXPECTED_2 = {
-			{ 0, 6, 6, 0, 0, 0}, 
-			{-6, 0, 0, 3, 3, 0}, 
-			{-6, 0, 0, 3, 3, 0}, 
-			{ 0,-3,-3, 0, 0, 6}, 
-			{ 0,-3,-3, 0, 0, 6}, 
-			{ 0, 0, 0,-6,-6, 0} 
-	}; 
-	
+			{ 0, 6, 6, 0, 0, 0},
+			{-6, 0, 0, 3, 3, 0},
+			{-6, 0, 0, 3, 3, 0},
+			{ 0,-3,-3, 0, 0, 6},
+			{ 0,-3,-3, 0, 0, 6},
+			{ 0, 0, 0,-6,-6, 0}
+	};
+
+	/** Builds {@link #FLOW_GRAPH_2}, computes the maximum Flow from Node 0 to 5, and asserts it matches {@link #FLOW_EXPECTED_2}. */
 	final static public void testMaximumFlow2() {
 		final MatrixGraph graph = new MatrixGraph(6, 0, 0); 
 		graph.addFlowEdges(FLOW_GRAPH_2, 'A'); 

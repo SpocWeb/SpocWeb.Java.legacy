@@ -8,13 +8,29 @@ import java.util.Locale;
 import stringOp.HeapByIndex;
 import stringOp.Huffman;
 
-/**This class can take a variable number of parameters on the command
- * line. Program execution begins with the main() method. The class
- * constructor is not invoked unless an object of type 'Class1'
- * created in the main() method.	 */
+/**Command-line entry point that runs the self-tests of several unrelated Classes
+ * ({@link SparseMatrix}, {@link MatrixGraph}, {@link DisJointSet} and two Classes
+ * outside this Package) in sequence; kept separate from those Classes' own testIt()
+ * <!-- docstate
+ * pass: 2
+ * mtime: 2026-09-05T10:42:34Z
+ * digest: 49b364a9d8448f92ff4acee01bff747c1c4ce7a78ad00055901d45e75589b448
+ * stale: false
+ * tags: [code/graph_data_structure]
+ * concepts: [Scratch Test Class]
+ * facets: {layer: test, status: legacy, complexity: low}
+ * -->
+ * Methods just to bundle them into one runnable Program.	 */
 public class testGraph {
 
-	/** Tests the Formatting of Numbers according to different Locales 	*/
+	/** Tests the Formatting of Numbers according to different Locales
+	 *
+	 * <!-- docstate
+	 * tags: [code/graph_data_structure]
+	 * concepts: [Scratch Test Method]
+	 * facets: {layer: test, status: legacy, complexity: low}
+	 * -->
+	 */
 	public static void testNumberFormat() {
 		// normally we would have a GUI with a menu for this
 		Locale[] locales = NumberFormat.getAvailableLocales();
@@ -47,6 +63,11 @@ public class testGraph {
 	/**The main entry point for the application.
 	 *
 	 * @param args Array of parameters passed to the application
+	 * <!-- docstate
+	 * tags: [code/graph_data_structure]
+	 * concepts: [Scratch Test Entry Point]
+	 * facets: {layer: test, status: legacy, complexity: low}
+	 * -->
 	 * via the command line.	 */
 	public static void main (final String[] args) throws Exception	{
 		SparseMatrix.testIt();

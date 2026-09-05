@@ -31,6 +31,15 @@ import tester.IEquivalence;
   * Created on	2000-08-13, 04;06;42<p>
   * @author 	Matthias Heuer
   * @version	1.0
+  * <!-- docstate
+  * pass: 2
+  * mtime: 2026-09-05T10:13:18Z
+  * digest: 866d059657e42585b77618772023c2dd3e668f289e0a60224684696e3e27bcbd
+  * stale: false
+  * tags: [code/graph_edge]
+  * concepts: [Linked Interface]
+  * facets: {layer: domain, status: legacy, complexity: low}
+  * -->
   */
 public interface ILinked
 //extends ICPair //Pair has both Item and Parent!

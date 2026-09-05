@@ -17,7 +17,7 @@ import tester.IEquivalence;
   * which defines the same Mechanism using a Function 
   * 
   * Could also determine the Equivalence Classes within a Container, 
-  * in an O(n²) Algorithm by looping through the Container 
+  * in an O(nï¿½) Algorithm by looping through the Container 
   * with two Iterators and comparing the Objects directly using equals() 
   * 
   * Unfortunately the Objects in the Associations must stem from a Set, 
@@ -39,6 +39,15 @@ import tester.IEquivalence;
   * Created on	2000-08-13, 05;04;42<p>
   * @author 	Matthias Heuer
   * @version	1.0
+  * <!-- docstate
+  * pass: 2
+  * mtime: 2026-09-05T10:13:18Z
+  * digest: e9d0e6ae10eed7e5a3f2be8d35ceef1fbe66b33455114519c520fda9618779e2
+  * stale: false
+  * tags: [code/custom_equivalence, code/disjoint_set]
+  * concepts: [Parent-Based Equivalence]
+  * facets: {layer: utility, status: legacy, complexity: low}
+  * -->
   */
 public class EquivalenceByParent
 implements   IEquivalence {

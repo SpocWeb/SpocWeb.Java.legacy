@@ -15,10 +15,24 @@ import streamIO.integer.random.RandomQuick;
 import streamIO.real.IStreamIn_Float;
 
 /**
+ * Abstract base for {@link IGraph} implementations, holding the shared ternary-logic
+ * and default-weight/-type Constants and a library of static helper Methods for bulk-
+ * loading Edges into any {@link IGraph} from int/char/float/double Arrays, a full
+ * Weight Matrix, or a {@link StreamTokenizer}, plus generating random or scale-free
+ * Graphs. Also implements {@link #isSubGraph(IGraph)} and {@link #equals(IGraph)} in
+ * terms of the static {@link #IS_SUB_Graph(IGraph, IGraph, boolean)}.
  * @author heuerm
- *
+ * <!-- docstate
+ * pass: 2
+ * mtime: 2026-09-05T10:43:25Z
+ * digest: dcbd7c14c5b67876e2d47ab169628f7abab2250e61f506f7eac6a27b21b86b60
+ * stale: false
+ * tags: [code/graph_abstraction]
+ * concepts: [Graph Base Class]
+ * facets: {layer: domain, status: broken, complexity: medium}
+ * -->
  */
-public abstract class AGraph 
+public abstract class AGraph
 implements IGraph {
 	
 	/** Logger for this Class	 */
@@ -96,10 +110,13 @@ implements IGraph {
 	 */
 	final static public void ADD_EDGES(final IGraph graph, final IEdgeStreamIn iter_, 
 			final double _min, final double _max, final boolean transposed) {
-		final boolean useAbsolute = (_min > 0); 
+		final boolean useAbsolute = (_min > 0);
 		for (Edge curr; (curr = iter_.nextEdge()) != IIStreamIn.EOI;) {
 			//if (curr.key == curr.value) { continue; }
-			final float val = (useAbsolute ? Math.abs(curr.val) : curr.val); 
+			// TODO: LOGIC: filters by curr.val (the target Node index), not curr.weight;
+			// the Javadoc and parameter names (_min/_max as Weight bounds) say this should
+			// range-check the Edge Weight, so Edges are filtered by the wrong Field.
+			final float val = (useAbsolute ? Math.abs(curr.val) : curr.val);
 			if ((val < _min) || (val > _max)) {
 				L.n("addEdges(): Filtered out: Weight out of Range:").l(val);
 				continue;

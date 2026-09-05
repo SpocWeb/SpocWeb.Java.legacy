@@ -62,6 +62,15 @@ import synch.ValidationRule;
   * Created on 06-02-2001, 11:02 PM<p>
   * @author 	Matthias Heuer
   * @version 1.0
+  * <!-- docstate
+  * pass: 2
+  * mtime: 2026-09-05T10:13:18Z
+  * digest: 112a03f35cc6e7ca8878fd09cebec00d4a071eefabd039925eeb2c6dc8917817
+  * stale: false
+  * tags: [code/pair_data_structure]
+  * concepts: [Pair]
+  * facets: {layer: domain, status: legacy, complexity: low}
+  * -->
   */
 public class Pair //final speeds up Methods that directly use Pair
 extends Value //PairKey cannot be extended due to its constant Key!
@@ -177,7 +186,8 @@ implements IPair {
 		if (Key != null) { HC ^= Key.hashCode(); } //make this conformant to the equals() Method
 		return HC; }
 	
-	/** @return  A string representation of this Association.     */
+	/** Returns this Association rendered as "(val@Key)".
+	 * @return  A string representation of this Association.     */
 	public synchronized String toString() { return "(" + val + "@" + Key + ")"; }
 	
 }

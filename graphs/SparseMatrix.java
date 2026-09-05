@@ -58,7 +58,7 @@ import streamIO.exception.OperationNotSupported;
  * It can be implemented either using a linked List (which allows for Extensions like type & weight) 
  * or a dynamic Array (but with Extensions this becomes as expensive as linked Lists). 
  * The sparse Transpose can be used when direct Access to the incoming Edges is needed. 
- * The full Matrix is small for dense Matrices (> N²/2), 
+ * The full Matrix is small for dense Matrices (> Nï¿½/2), 
  * because Row and Column are given implicitly by their Position.  
  * 
  * If one of the two Columns is unique in this List, it is a Tree or Forest,
@@ -156,6 +156,15 @@ import streamIO.exception.OperationNotSupported;
  *  whether all Nodes have only 0 or 1 Children.
  * *Using the VectorInt Object (faster) instead of a Linked List 
  *  to implement that new Nodes can be added dynamically. 
+ * <!-- docstate
+ * pass: 2
+ * mtime: 2026-09-05T10:42:08Z
+ * digest: ff52fc50e38e4ebe9f5652001dd1a2b4c006d68feb3d3813ded97a78120f44aa
+ * stale: false
+ * tags: [code/sparse_matrix, code/sparse_graph]
+ * concepts: [Sparse Matrix Graph]
+ * facets: {layer: domain, status: broken, complexity: high}
+ * -->
  */
 public class SparseMatrix 
 extends AVector 
@@ -197,7 +206,8 @@ implements IIterAble, IGraph {
 	//  Accessor Methods (getXXX/isXXX/setXXX)
 	////////////////////////////////////////////////////////////////////////////
 	
-	/** @see graphs.IGraph#clear()	 */
+	/** Removes all Edges by nulling out every Node's adjacency List.
+	 * @see graphs.IGraph#clear()	 */
 	public void clear() {
 		//final int ret = this.itemCount; 
 		Arrays.fill(rootNodes,null); 
@@ -228,6 +238,9 @@ implements IIterAble, IGraph {
 	 * where a Path is searched that visits each NODE only once.
 	 * It is not related to the Traveling Salesman Problem (TSP)	
 	 */
+	// TODO: LOGIC: infinite recursion - this calls itself instead of getOutDegree(j),
+	// so any call to this overload throws StackOverflowError. Compare to the sibling
+	// no-arg getDegree() below, which correctly delegates to getOutDegree().
 	public int getDegree(final int j) { return getDegree(j); }
 	
 	/**Returns the (Out-)Degree of the Node j,
@@ -350,11 +363,13 @@ implements IIterAble, IGraph {
 		return ret; 
 	}
 	
-	/** @see SparseGraph#getInDegree() which returns the # of incoming Edges, not their Weight
+	/** Returns the Fan-In (sum of incoming Edge Weights) of the given Node, via the transposed Matrix's Fan-Out.
+	 * @see SparseGraph#getInDegree() which returns the # of incoming Edges, not their Weight
 	 * @see graphs.IGraph#getFanIn()	 */
 	public double getFanIn(final int node) { return trp().getFanOut(node); }
-	
-	/** @see SparseGraph#getOutDegree() which returns the # of outgoing Edges, not their Weight
+
+	/** Returns the Fan-Out (sum of outgoing Edge Weights) of the given Node.
+	 * @see SparseGraph#getOutDegree() which returns the # of outgoing Edges, not their Weight
 	 * @see graphs.IGraph#getFanOut()	 */
 	public double getFanOut(final int node) {
 		double sum = 0; 
@@ -363,9 +378,10 @@ implements IIterAble, IGraph {
 		return sum;
 	}
 	
-	/** @see SparseGraph#getInDegree() which returns the # of incoming Edges, not their Weight
+	/** Returns the Fan-In (sum of incoming Edge Weights) of every Node.
+	 * @see SparseGraph#getInDegree() which returns the # of incoming Edges, not their Weight
 	 * @see graphs.IGraph#getFanIn()	 */
-	public float[] getFanIn() { 
+	public float[] getFanIn() {
 		if (transposed != null)
 			return transposed.getFanOut(); 
 		final float[] ret = new float[itemCount]; 
@@ -378,7 +394,8 @@ implements IIterAble, IGraph {
 		return ret;
 	}
 	
-	/** @see SparseGraph#getOutDegree() which returns the # of outgoing Edges, not their Weight
+	/** Returns the Fan-Out (sum of outgoing Edge Weights) of every Node.
+	 * @see SparseGraph#getOutDegree() which returns the # of outgoing Edges, not their Weight
 	 * @see graphs.IGraph#getFanOut()	 */
 	public float[] getFanOut() {
 		final float[] ret = new float[itemCount]; 
@@ -426,14 +443,16 @@ implements IIterAble, IGraph {
 	public IEdgeStreamIn EdgeIterator() {
 		return new SparseEdgeStream(this); }
 	
+	/** Returns a new SparseEdgeStream (the concretely typed Edge Iterator) over this Matrix. */
 	public SparseEdgeStream SparseEdgeIterator() {
 		return new SparseEdgeStream(this); }
-	
+
 	////////////////////////////////////////////////////////////////////////////
 	/// #region : dynamic Array Size Methods
 	////////////////////////////////////////////////////////////////////////////
-	
-	/** @return the item at the given Position as an Object */
+
+	/** Returns the head SparseEdge of the adjacency List at Position i, or null if i is out of Range.
+	 * @return the item at the given Position as an Object */
 	public Object getAt(final int i) {
 		if (!indexInRange(i)) 
 			return null; 
@@ -566,9 +585,9 @@ implements IIterAble, IGraph {
 		this(DEFAULT_CAPACITY_INIT, DEFAULT_CAPACITY_INCR);
 	}
 	
-	/** 
-	 * 
-	 * @param NumNodes Preset of the minimum Number of Nodes. 
+	/**
+	 * Constructs an empty SparseMatrix preset for the given minimum Number of Nodes.
+	 * @param NumNodes Preset of the minimum Number of Nodes.
 	 */
 	public SparseMatrix(final int NumNodes) {
 		this(NumNodes, DEFAULT_CAPACITY_INCR);
@@ -1202,7 +1221,8 @@ implements IIterAble, IGraph {
 			 edge.weight = weight;
 		return ret; }
 	
-	/** @see graphs.IGraph#setEdge(int, int, boolean, boolean)	 */
+	/** Sets the Edge between start and end to the default Weight, overriding per the given flags.
+	 * @see graphs.IGraph#setEdge(int, int, boolean, boolean)	 */
 	public float setEdge(int start, int end, boolean directed, boolean override) {
 		return setEdge(start, end, directed, AGraph.DEFAULT_WEIGHT, override); }
 	
@@ -1524,7 +1544,7 @@ implements IIterAble, IGraph {
 	 * through Bubble Sort
 	 */
 	public void sortEdge(int nodeNr) {
-		//for a linked List Bubble Sort is just right, although it is O(n²)
+		//for a linked List Bubble Sort is just right, although it is O(nï¿½)
 		while (sweepEdgesReordered(nodeNr));
 	}
 
@@ -1845,12 +1865,14 @@ implements IIterAble, IGraph {
 	/// #region : generating Coordinate Proposals from the Distances
 	////////////////////////////////////////////////////////////////////////////
 	
-	/** @return a Proposal for the nDim Coordinates of the Nodes  */
+	/** Generates a Layout Proposal with randomly initialized dim-dimensional Coordinates for the Nodes of this Matrix.
+	 * @return a Proposal for the nDim Coordinates of the Nodes  */
 	public float[][] generateGraph(final int dim) {
 		return this.EdgeIterator().generateGraphics(numVertices, dim);
 	}
 
-	/** @return a Proposal for the nDim Coordinates of the Nodes  */
+	/** Refines the given initial Coordinates into a Layout Proposal based on this Matrix's Edge Distances.
+	 * @return a Proposal for the nDim Coordinates of the Nodes  */
 	public float[][] generateGraph(final float[][] _startPoints) {
 		return this.EdgeIterator().generateGraphics(_startPoints);
 	}
@@ -2066,6 +2088,15 @@ implements IIterAble, IGraph {
  * @see streamIO.Object.Enumerator.Container.HashContainer 
  * because both iterate through a 2Dim structure.
  * This is one of the many Examples where a Nested structure requires a nested Iterator 
+ * <!-- docstate
+ * pass: 2
+ * mtime: 2026-09-05T10:42:08Z
+ * digest: 598fdafd336fb21b01d2948f2f486a4e62a7d590174b9b42af67534e023d82a8
+ * stale: false
+ * tags: [code/sparse_graph, code/graph_iteration]
+ * concepts: [Sparse Edge Stream]
+ * facets: {layer: domain, status: legacy, complexity: medium}
+ * -->
  */
 final class SparseEdgeStream 
 extends AEdgeStreamIn {
@@ -2119,7 +2150,8 @@ extends AEdgeStreamIn {
 	/** returns the Order of the Items in this List, in this case 0 = no Order	 */
 	public byte getOrder() { return 0; }
 
-	/** @see graphs.IEdgeStreamIn#getNumNodes()	 */
+	/** Returns the number of Nodes in the underlying SparseMatrix.
+	 * @see graphs.IEdgeStreamIn#getNumNodes()	 */
 	public int getNumNodes() { return al.getInt(); }
 	
 	/** removes the current Edge, and returns it 	*/
@@ -2167,7 +2199,8 @@ extends AEdgeStreamIn {
 		return currEdge;
 	}
 	
-	/** @return the next Record, (returning the currently available Records) 	*/
+	/** Advances to and returns the next SparseEdge, scanning across the current Row's linked List and then down subsequent Rows.
+	 * @return the next Record, (returning the currently available Records) 	*/
 	public SparseEdge nextSparseEdge() { //
 		if (currListEdge != null) { //regular Case within a Row 
 			prevListEdge = currListEdge; 
@@ -2189,9 +2222,10 @@ extends AEdgeStreamIn {
 		return null;
 	}
 	
-	/** @return the next Record, (returning the currently available Records) 	*/
+	/** Advances to and returns the next Edge, delegating to {@link #nextSparseEdge()} and copying its Fields into the reused currEdge.
+	 * @return the next Record, (returning the currently available Records) 	*/
 	public Edge nextEdge() { //
-		final SparseEdge ret = nextSparseEdge(); 
+		final SparseEdge ret = nextSparseEdge();
 		if (ret == null)
 			return null; 
 		currEdge.val    = currListEdge.val; //new Integer(currEdge.Node);

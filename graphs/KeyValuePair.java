@@ -8,7 +8,7 @@ import tester.ITester;
 //import javax.naming.OperationNotSupportedException;
 
 /**
-  * Title: PairKey<p>
+  * Title: KeyValuePair<p>
   * Description:
   * This Pair Class assumes the Identity of its key only.
   *
@@ -34,6 +34,15 @@ import tester.ITester;
   *
   * Subclasses
   * @see Pair
+  * <!-- docstate
+  * pass: 2
+  * mtime: 2026-09-05T10:13:18Z
+  * digest: 1d53195f957ec09cb5eaac359f82dab9195727c34a9270273cd350e6fa3e258f
+  * stale: false
+  * tags: [code/key_value_pair]
+  * concepts: [Key-Value Pair]
+  * facets: {layer: domain, status: legacy, complexity: low}
+  * -->
   */
 public class KeyValuePair
 extends Value
@@ -79,7 +88,8 @@ implements ICPair, IValue, ICopy, ITester { //, IPair {
 	
 	///////////////////////////////////////////////////////////////////////////
 	
-    /** @return A shallow Copy of this Object
+    /** Returns a shallow copy of this Object by delegating to {@link #clone()}.
+	  * @return A shallow Copy of this Object
 	  * The Default Implementation is to delegate to the clone() Method.
 	  * The same is done in the Methods Iterator() etc. of most Container Iterators */
 	public ICopy Copy() {
@@ -165,9 +175,10 @@ implements ICPair, IValue, ICopy, ITester { //, IPair {
 	/// #region : Object Methods
 	////////////////////////////////////////////////////////////////////////////////
 	
-	/** @see java.lang.Object#toString()	 */
-	public String toString() { 
-		return String.valueOf(key)+"->"+String.valueOf(val); 
+	/** Returns this pair rendered as "key->val".
+	 * @see java.lang.Object#toString()	 */
+	public String toString() {
+		return String.valueOf(key)+"->"+String.valueOf(val);
 	}
 	
 }

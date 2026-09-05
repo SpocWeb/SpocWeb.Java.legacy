@@ -38,6 +38,15 @@ package graphs;
  * Copyright:	Copyright (c) Matthias Heuer<p>
  * Company:	personal<p>
  * Created on	10-26-2002, 12:47 PM<p>
+ * <!-- docstate
+ * pass: 2
+ * mtime: 2026-09-05T10:42:47Z
+ * digest: c971612b7288d3d6a2bd3fd853bc31c62da385b0af85d30d259edd3e33c82533
+ * stale: false
+ * tags: [code/graph_edge]
+ * concepts: [Graph Edge]
+ * facets: {layer: domain, status: legacy, complexity: low}
+ * -->
  */
 final public class Edge
 implements IPair {
@@ -94,8 +103,10 @@ implements IPair {
 		val = ((Integer) value_).intValue(); 
 	}
 	
+	/** Accessor Method
+	 * @return the Type of this Edge, boxed  */
 	public Object getTyp() {
-		return new Integer(typ); 
+		return new Integer(typ);
 	}
 
 	/** Accessor Method

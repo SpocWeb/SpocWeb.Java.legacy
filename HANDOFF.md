@@ -88,7 +88,7 @@ concurrently against the same file):
 | `tester` | 49 | 3327 | 0 | unclaimed | - |
 | `technology` | 41 | 9400 | 0 | unclaimed | - |
 | `synch` | 32 | 4243 | 32 | done | agent-synch |
-| `graphs` | 31 | 11258 | 0 | claimed | agent-graphs |
+| `graphs` | 31 | 11258 | 31 | done | agent-graphs |
 | `asynch` | 28 | 3052 | 28 | done | agent-asynch |
 | `streamIO/(root)` | 28 | 8003 | 28 | done | agent-streamIO-root |
 | `knowledge` | 27 | 3363 | 27 | done | main |
@@ -273,6 +273,8 @@ same harness against it. A test that has not been seen red proves nothing.
 | streamIO/AReSetAble.java | AReSetAble | JUMP(IReSetAble, long) | ~106 | Loop guard `++i < offset` is only ever true for a positive offset; a negative offset (as passed by `PUSH_BACK`, which relies on this returning `-1`) always returns `0` without calling `iter.jump()`, so `pushBack()` can never succeed through this static helper. | Medium | open |
 | streamIO/Log.java | Log | XML_DATE_FORMATTER (field) | ~247 | A single static `SimpleDateFormat` instance is shared and invoked from `GET_XML_DATE()`/`GET_XML_DATE(Date)` across all Loggers and threads; `SimpleDateFormat` is not thread-safe, so concurrent logging calls can corrupt the formatted date or throw. | Medium | open |
 | streamIO/StringBufferOutputStream.java | StringBufferOutputStream | addBuffer(StringBuffer, int) | ~208 | Calls `addBuffer(b, 0, stop)` against a 3-arg overload whose parameter order is `(b, stop, start)` - reversed vs. the correct sibling `addString(String, int)`. For any `stop > 0` this silently appends nothing. | Medium | open |
+| graphs/AGraph.java | AGraph | (edge-filtering method) | ~116 | Filters by `curr.val` (the target Node index) instead of `curr.weight`, so weight-based edge filtering silently filters on the wrong field. | Medium | open |
+| graphs/SparseMatrix.java | SparseMatrix | getDegree/getInDegree helper | ~241 | Calls itself instead of `getOutDegree(j)`, causing infinite recursion and a `StackOverflowError` on every call. | High | open |
 
 ## Tool defects found and fixed during the pilot
 

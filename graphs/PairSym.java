@@ -52,6 +52,15 @@ import streamIO.object.json.JSONTest;
   * Created on 06-02-2001, 11:02 PM<p>
   * @author 	Matthias Heuer
   * @version 1.0
+  * <!-- docstate
+  * pass: 2
+  * mtime: 2026-09-05T10:13:18Z
+  * digest: 9e240d9a96ff78b490f626e83994c27f782bee5d1798f9d0882dc78bca1d209f
+  * stale: false
+  * tags: [code/pair_data_structure]
+  * concepts: [Symmetric (Unordered) Pair]
+  * facets: {layer: domain, status: legacy, complexity: low}
+  * -->
   */
 final public class PairSym //final speeds up Methods that directly use Pair
 extends KeyValuePair {
@@ -135,7 +144,8 @@ extends KeyValuePair {
 		if (key != null) { HC ^= key.hashCode(); } //make this conformant to the equals() Method
 		return HC; }
 
-	/** @return  A string representation of this Association.     */
+	/** Returns this Association rendered as "(val@key)".
+	 * @return  A string representation of this Association.     */
 	public synchronized String toString() { return "(" + val + "@" + key + ")"; }
 
 }

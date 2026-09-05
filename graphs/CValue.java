@@ -1,22 +1,20 @@
 package graphs;
 
 /**
-  * Title: CValue<p>
-  * Description:
-  * Purpose:
-  * implements the ICValue Interface
-  *
-  * Design Decisions / Implementation Details:
-  *
-  * Known SubClasses: Value, Future
-  *
-  * Known Uses: <none>
-  *
-  * Copyright:	Copyright (c) Matthias Heuer<p>
-  * Company:	personal<p>
-  * Created on	08-31-2002, 10:10 AM<p>
+  * Minimal, mutable holder for a single Object Value, implementing {@link ICValue}.
+  * The Value is exposed as a public Field for fast direct Access as well as through
+  * {@link #getVal()}.
+  * @see graphs.Value which adds a public setVal() Method
   * @author 	Matthias Heuer
-  * @version	1.0
+  * <!-- docstate
+  * pass: 2
+  * mtime: 2026-09-05T10:42:25Z
+  * digest: ff5062ea16b8cebeb428c168c0442a1dbeb8c15d82027fcfdb3bc6db9a072524
+  * stale: false
+  * tags: [code/graph_element]
+  * concepts: [Comparable Value Holder]
+  * facets: {layer: domain, status: legacy, complexity: low}
+  * -->
   */
 public class CValue
 implements ICValue {
@@ -59,7 +57,8 @@ implements ICValue {
 	/// #region : Object Methods
 	////////////////////////////////////////////////////////////////////////////////
 	
-	/** @see java.lang.Object#toString()	 */
+	/** Returns the wrapped Value converted to its String representation.
+	 * @see java.lang.Object#toString()	 */
 	public String toString() { return String.valueOf(val); }
 	
 }

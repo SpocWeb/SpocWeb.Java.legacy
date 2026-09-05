@@ -42,6 +42,15 @@ import streamIO.Log;
   * All these Operations can be directly performed on Objects using Linked Lists.
   * @see graphs.ILinked
   * @see streamIO.Object.Enumerator.ListItem
+  * <!-- docstate
+  * pass: 2
+  * mtime: 2026-09-05T10:13:18Z
+  * digest: 2995c9d885f3f6b7c7359d2060d970dfbecff7bb4c48e55f94a6fea0e7932f5c
+  * stale: false
+  * tags: [code/disjoint_set, code/union_find]
+  * concepts: [Disjoint Set / Union-Find]
+  * facets: {layer: utility, status: legacy, complexity: medium}
+  * -->
   */
 final public class DisJointSet {
 	
@@ -80,7 +89,7 @@ final public class DisJointSet {
 			if (par >= 0)
 				parent[i] = lastItemFastest(par); 
 			//else if(removeChildCount)
-			//	parent[i] = i; //stört lastItemFastest(), weil die Endbedingung nicht mehr erfüllt wird! 
+			//	parent[i] = i; //stï¿½rt lastItemFastest(), weil die Endbedingung nicht mehr erfï¿½llt wird! 
 		}
 		return parent; 
 	}

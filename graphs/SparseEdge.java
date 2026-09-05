@@ -34,6 +34,15 @@ package graphs;
  * 
  * TODO: maybe derive this Class from graph.Edge 
  * but that would make it non-final and add the Key Value 
+ * <!-- docstate
+ * pass: 2
+ * mtime: 2026-09-05T10:13:18Z
+ * digest: 0528f08f1e9c1183d8833368618a2dad4d7003b98a3a161da804313f576dfa6e
+ * stale: false
+ * tags: [code/graph_edge, code/sparse_graph]
+ * concepts: [Sparse Graph Edge]
+ * facets: {layer: domain, status: legacy, complexity: low}
+ * -->
  */
 public class SparseEdge {
 	
@@ -141,13 +150,13 @@ public class SparseEdge {
 		.append(',').append(x.weight).append("),"); while ((x = x.next) != null); //use Numbers for Output
 		return S.toString(); }
 	
-	/** 
+	/** Returns true if obj is a SparseEdge equal to this one.
 	 * @see java.lang.Object#equals(java.lang.Object)
 	 */
 	public boolean equals(final Object obj) {
-		if (!(obj instanceof SparseEdge)) 
-			return false; 
-		return equals((SparseEdge) obj); 
+		if (!(obj instanceof SparseEdge))
+			return false;
+		return equals((SparseEdge) obj);
 	}
 	
 	/**
