@@ -14,21 +14,19 @@ import streamIO.Assert;
 import streamIO.Log;
 
 /**
- * Title: MatrixTriDiagonal<p>
- * Description:
- * Purpose:
- * Groups Methods to solve (Tri-, Band-) Diagonal Matrices.
- * By letting the next Diagonal Vectors always start from 0, 
- * Transposition is made very easy: just swap the Vectors around the Diagonal. 
- * 
- * It also detects and solves cyclic tridiagonal Equations, 
- * (when the Length of the non-diagonal Vectors is the same as the Diagonal 
- * AND the Values of these Elements are nonzero)
- * by applying the Sherman-Morrison Formula for small Matrix Modifications. 
+ * Solves tri- and cyclic-tridiagonal linear systems, storing each diagonal as its own vector
+ * indexed from 0.
  *
- * @see math.MatrixBand can be used for unstable tridiagonal Matrices, 
+ * <p>By letting the non-diagonal vectors always start from 0, transposition is made very easy:
+ * just swap the vectors around the diagonal.
+ *
+ * <p>It also detects and solves cyclic tridiagonal equations (when the length of the
+ * non-diagonal vectors is the same as the diagonal AND the values of these elements are
+ * nonzero) by applying the Sherman-Morrison formula for small matrix modifications.
+ *
+ * @see math.MatrixBand can be used for unstable tridiagonal Matrices,
  * because it implements basic Pivoting!
- * 
+ *
  * Known SubClasses: <none>
  *
  * Known Uses: <none>
@@ -39,6 +37,15 @@ import streamIO.Log;
  * @author mheuer
  * @version	1.0
  *
+ * <!-- docstate
+ * pass: 2
+ * mtime: 2026-09-05T12:44:58Z
+ * digest: e29a8dce3bff27012e781a591db91f6ad404bf31bf0d93c0d80264373736552d
+ * stale: false
+ * tags: [code/tridiagonal_matrix_solving, code/band_diagonal_matrix]
+ * concepts: [Tridiagonal Matrix Solver]
+ * facets: {layer: utility, status: broken, complexity: medium}
+ * -->
  */
 public class MatrixTriDiagonal {
 
@@ -64,8 +71,9 @@ public class MatrixTriDiagonal {
 	
 	private double[] u; 
 	
-	/** @return true when this Equation is cyclic	 */
-	public boolean getCyclic() { return _isCyclic; } //subDiag.length == diag.length; 
+	/** Returns whether this system is currently treated as cyclic tridiagonal.
+	 * @return true when this Equation is cyclic	 */
+	public boolean getCyclic() { return _isCyclic; } //subDiag.length == diag.length;
 	
 	/**used to override possible cyclicity 
 	 * @param cyclic Flag when this Equation is to be considered as cyclic	 */
@@ -77,8 +85,7 @@ public class MatrixTriDiagonal {
 		_isCyclic = cyclic_; // 
 	}
 	
-	/** 
-	 * @param cyclic Flag when this Equation is to be considered as cyclic	 */
+	/** Returns whether this system is currently treated as cyclic tridiagonal. */
 	public boolean isCyclic() { return _isCyclic; }
 	
 	/////////////////////////////////////////////////////////////////////////////////////
@@ -124,6 +131,7 @@ public class MatrixTriDiagonal {
 	 * for tridiagonal Matrices this is just lower and upper Subdiagonal switched. 
 	 * @return a new Matrix which holds the Transpose of this Matrix, but sharing it's Elements! 
 	 */
+	/** Returns a new tridiagonal matrix holding this one's transpose, sharing its element arrays. */
 	public MatrixTriDiagonal TRP() {
 		return new MatrixTriDiagonal(superDiag, diag, subDiag); //, cyclic);
 	}
@@ -154,11 +162,16 @@ public class MatrixTriDiagonal {
 		final double alpha = superDiag[n-1];
 		final double beta  = subDiag[n-1];
 			
+		// TODO: LOGIC: nonCyclic is cached and only its corner diagonal entries (0 and n-1) are
+		// refreshed below on repeat calls; if diag's interior values (1..n-2) change between two
+		// solveCyclicAt calls on the same instance (subDiag/diag/superDiag are shared, mutable
+		// arrays, not defensively copied by the constructor), the stale interior values from the
+		// first call are silently reused instead of the current diag content.
 		if (nonCyclic == null) { //set up an auxiliary, non-cyclic tridiagonal System
 			final double[] newDiag=VectorDouble.COPY(diag); //new double[n];
 			u=new double[n];
 			nonCyclic = new MatrixTriDiagonal(subDiag, newDiag, superDiag);
-			//nonCyclic.setCyclic(false); 
+			//nonCyclic.setCyclic(false);
 		} else {
 			VectorDouble.FILL_AT(u, 0, 1, n-1);
 		}

@@ -88,7 +88,7 @@ concurrently against the same file):
 | `math` (root+algorithm+integration+wavelet) | 18 | 3123 | 18 | done | agent-math-core |
 | `math/fit`+`math/refiner` | 27 | 3644 | 27 | done | agent-math-fit |
 | `math/minimizer` | 11 | 3043 | 11 | done | agent-math-minimizer |
-| `math/matrix` | 13 | 15603 | 0 | claimed | agent-math-matrix |
+| `math/matrix` | 13 | 15603 | 13 | done | agent-math-matrix |
 | `math/vector` | 15 | 33025 | 9 | claimed | agent-math-vector (partial: QuaternaryOp/AVector/VectorObject/HunterInt/HunterFloat/HunterDouble/VectorString/statistic/Correlation/statistic/StatisticsFloat done; VectorChar/VectorLong/VectorShort/VectorInt/VectorFloat/VectorDouble remain - follow-up agent needed) |
 | `structure` | 52 | 4933 | 52 | done | agent-structure |
 | `streamIO/real` | 51 | 6801 | 51 | done | agent-streamIO-real |
@@ -391,6 +391,17 @@ same harness against it. A test that has not been seen red proves nothing.
 | math/vector/VectorString.java | VectorString | removeAt(int) | 1760 | Same unconditional-`--itemCount`-on-failure bug as `VectorObject.removeAt(int)` above. | High | open |
 | math/vector/VectorString.java | VectorString | copyInto(int[]) | 1894 | Same `ArrayStoreException` hazard as `VectorObject.copyInto(int[])` (`items` is `String[]`, not `int[]`). | Critical | open |
 | math/vector/VectorString.java | VectorString | toArray() | 1912 | Same `ArrayStoreException` hazard as above. | Critical | open |
+| math/matrix/MatrixFloatStreamIn.java | MatrixFloatStreamIn | constructor | 45 | `currPos` is initialized to `matrix.getInt()` (== `items.length`), one past the last valid index; calling `currVector()` before any `nextVector()` reads `matrix.items[itemCount]`, throwing `ArrayIndexOutOfBoundsException`. | Medium | open |
+| math/matrix/MatrixDouble.java | MatrixDoubleStreamIn | constructor | 4224 | Same off-by-one as `MatrixFloatStreamIn`'s constructor (parallel class). | Medium | open |
+| math/matrix/MatrixObject.java | MatrixObject | copyInto(int[]) | 255 | `items` is `Object[][]` but `anArray` is `int[]`; `System.arraycopy` compiles (both are `Object`) but throws `ArrayStoreException` at runtime for any non-empty matrix because the component types are incompatible. | High | open |
+| math/matrix/MatrixObject.java | MatrixObject | toArray() | 270 | Same `Object[][]`-into-`int[]` arraycopy defect as `copyInto(int[])` above. | High | open |
+| math/matrix/MatrixInt.java | MatrixInt | COPY_AT(int[][], int[], int, int) | 891 | Arraycopy direction is reversed - copies `ret[stop]` into `arr` (the single row argument) on every iteration, overwriting `arr` instead of filling `ret` as the Javadoc and parameter naming describe; the method never actually fills `ret`. | High | open |
+| math/matrix/MatrixFloat.java | MatrixFloat | COPY_AT(float[][], float[], int, int) | 1182 | Same reversed-direction defect as `MatrixInt.COPY_AT` (parallel class). | High | open |
+| math/matrix/MatrixDouble.java | MatrixDouble | COPY_AT(double[][], double[][], int, int) | 1112 | Same reversed-direction defect, uniquely also present in the matrix-to-matrix overload here (copies `ret[stop]` into `arr[stop]`, overwriting `arr`). | High | open |
+| math/matrix/MatrixDouble.java | MatrixDouble | COPY_AT(double[][], double[], int, int) | 1125 | Same reversed-direction defect as `MatrixInt`/`MatrixFloat`'s single-vector `COPY_AT` overload. | High | open |
+| math/matrix/MatrixTriDiagonal.java | MatrixTriDiagonal | solveCyclicAt(...) | 165 | `nonCyclic` is cached and only its corner diagonal entries (0 and n-1) are refreshed on repeat calls; since `subDiag`/`diag`/`superDiag` are shared, mutable arrays not defensively copied by the constructor, stale interior values from an earlier call are silently reused if `diag`'s interior (1..n-2) changes between two calls on the same instance. | Medium | open |
+| math/matrix/Quaternion.java | Quaternion | getAxis() | 181 | `q` is a `float[4]` (valid indices 0-3), so `q[4]` is always out of bounds, throwing `ArrayIndexOutOfBoundsException` on every call - should read `q[3]`, the scalar/real component, matching `getAngle()`'s use of `q[3]`. | Critical | open |
+| math/matrix/Quaternion.java | Quaternion | set(float[]) | 557 | Ignores the `fpQuat` parameter entirely and calls `copyAt(q)`, copying the backing array onto itself (a no-op) instead of `copyAt(fpQuat)`; this method never actually changes the quaternion's value. | High | open |
 
 ## Tool defects found and fixed during the pilot
 

@@ -10,9 +10,8 @@ import streamIO.Log;
 import function.byref.ByRefDouble;
 
 /**
- * Title: Eigenvalues<p>
- * Description:
- * Groups static Methods to calculate Eigenvalues of general Matrices.
+ * Groups static methods to calculate eigenvalues of general (possibly nonsymmetric) matrices
+ * via balancing, Hessenberg reduction and the QR algorithm.
  *
  * Design Decisions / Implementation Details:
  *
@@ -30,6 +29,15 @@ import function.byref.ByRefDouble;
  * @author mheuer
  * @version	1.0
  *
+ * <!-- docstate
+ * pass: 2
+ * mtime: 2026-09-05T12:45:35Z
+ * digest: 85352e2a4e078d8fac55893a91380c904730dba08248aa4f080cefc11ad9be91
+ * stale: false
+ * tags: [code/eigenvalue_decomposition, code/numerical_linear_algebra]
+ * concepts: [General (Non-Symmetric) Eigenvalue Computation]
+ * facets: {layer: utility, status: legacy, complexity: high}
+ * -->
  */
 public class Eigenvalues {
 
@@ -47,6 +55,11 @@ public class Eigenvalues {
 	 * This O(n*n) Operation considerably increases the Stability of finding the EigenValues  
 	 * A symmetric Matrix is already balanced and unaffected by this Operation. 
 	 * @param a Matrix to balance in Place
+	 * <!-- docstate
+	 * tags: [code/eigenvalue_decomposition]
+	 * concepts: [Matrix Balancing (Numerical Stability)]
+	 * facets: {layer: utility, status: legacy, complexity: medium}
+	 * -->
 	 */
 	final static public void BALANCE(final double[][] a) {
 		final int n = a.length;
@@ -101,6 +114,11 @@ public class Eigenvalues {
 	 * 
 	 * @param a the real (possibly nonsymmetric) Matrix, reduced in Place
 	 * Elements a[i][j] with i>j+1 are undefined and assumed to be 0 on return. 
+	 * <!-- docstate
+	 * tags: [code/eigenvalue_decomposition]
+	 * concepts: [Reduction to Hessenberg Form]
+	 * facets: {layer: utility, status: legacy, complexity: medium}
+	 * -->
 	 */
 	final static public void HESSENBERG(final double[][] a) {
 		final int n = a.length; 
@@ -152,6 +170,11 @@ public class Eigenvalues {
 	 * @param a (balanced) Matrix to calculate all Eigenvalues from 
 	 * @param wr filled with real Parts of the EigenValues 
 	 * @param wi filled with imaginary Parts of the EigenValues 
+	 * <!-- docstate
+	 * tags: [code/eigenvalue_decomposition]
+	 * concepts: [QR Algorithm Eigenvalue Extraction]
+	 * facets: {layer: utility, status: legacy, complexity: high}
+	 * -->
 	 */
 	final static public void EIGENVALUES(final double[][] a, final double[] wr, final double[] wi) {
 		EIGENVALUES(a, a.length, wr, wi); 
@@ -163,6 +186,11 @@ public class Eigenvalues {
 	 * @param n the Size of the Matrix to consider: from 0 to n-1
 	 * @param wr filled with real Parts of the EigenValues 
 	 * @param wi filled with imaginary Parts of the EigenValues 
+	 * <!-- docstate
+	 * tags: [code/eigenvalue_decomposition]
+	 * concepts: [QR Algorithm Eigenvalue Extraction (Bounded Iterations)]
+	 * facets: {layer: utility, status: legacy, complexity: high}
+	 * -->
 	 */
 	final static public void EIGENVALUES(final double[][] a, final int n, final double[] wr, final double[] wi) {
 		double anorm = Math.abs(a[1][1]);
@@ -214,7 +242,14 @@ public class Eigenvalues {
 		}
 	}
 
-	/** performs the Shift on Matrix a by x	 */
+	/** performs the Shift on Matrix a by x
+	 *
+	 * <!-- docstate
+	 * tags: [code/eigenvalue_decomposition]
+	 * concepts: [Wilkinson Shift Step]
+	 * facets: {layer: utility, status: legacy, complexity: medium}
+	 * -->
+	 */
 	private static double EV_SHIFT(final double[][] a, final int nn, final double x) {
 		for (int i=0; i<nn; i++) { //adjusting the Diagonal: A-=x*1
 			a[i][i] -= x; } 
@@ -222,7 +257,14 @@ public class Eigenvalues {
 		return s;
 	}
 
-	/** sets the Values of a complex conjugate Pair of Eigenvalues	 */
+	/** sets the Values of a complex conjugate Pair of Eigenvalues
+	 *
+	 * <!-- docstate
+	 * tags: [code/eigenvalue_decomposition]
+	 * concepts: [Complex Eigenvalue Pair Assembly]
+	 * facets: {layer: utility, status: legacy, complexity: low}
+	 * -->
+	 */
 	private static void SET_COMPLEX_EV_PAIR(final double[] wr, final double[] wi, final double t, final int nn,
 		double x, final double y, final double w) {
 		final double p=0.5*(y-x);
@@ -248,6 +290,11 @@ public class Eigenvalues {
 	 * @param x 
 	 * @param y 
 	 * @param w 
+	 * <!-- docstate
+	 * tags: [code/eigenvalue_decomposition]
+	 * concepts: [Eigenvalue Refinement Step]
+	 * facets: {layer: utility, status: legacy, complexity: medium}
+	 * -->
 	 */
 	private static void IMPROVE_EV(final double[][] a, final int nn, final int l, double x, double y, double w) {
 		int m=(nn-2);
@@ -351,6 +398,11 @@ public class Eigenvalues {
 
 	/** Writes the Row and Column norms of the given Matrix 
 	 * @param a Matrix to calculate and write the Norms for...
+	 * <!-- docstate
+	 * tags: [code/eigenvalue_decomposition, code/testing]
+	 * concepts: [Matrix Norm Diagnostic Output]
+	 * facets: {layer: test, status: legacy, complexity: low}
+	 * -->
 	 */
 	private static final void writeNorms(final double[][] a) {
 		final int NP=a.length;
@@ -381,7 +433,14 @@ public class Eigenvalues {
 		},{ 0, -1.7320508075688739, 1.7320508075688739, 0, 0}
 	};
 	
-	/** Tests the Eigenvalues Calculation	 */
+	/** Tests the Eigenvalues Calculation
+	 *
+	 * <!-- docstate
+	 * tags: [code/testing, code/eigenvalue_decomposition]
+	 * concepts: [Eigenvalue Self-Test]
+	 * facets: {layer: test, status: legacy, complexity: low}
+	 * -->
+	 */
 	private static final void testEIGENVALUES() {
 		final int NP=testMatrix.length;
 		double[] wr=new double[NP];
@@ -422,7 +481,14 @@ public class Eigenvalues {
 		}
 	};
 
-	/** Tests the Hessenberg Reduction	 */
+	/** Tests the Hessenberg Reduction
+	 *
+	 * <!-- docstate
+	 * tags: [code/testing, code/eigenvalue_decomposition]
+	 * concepts: [Hessenberg Self-Test]
+	 * facets: {layer: test, status: legacy, complexity: low}
+	 * -->
+	 */
 	private static final void testHessenberg() {
 		final int NP=testHessenberg.length;
 		double[][] a = MatrixDouble.COPY(testHessenberg);
@@ -454,6 +520,14 @@ public class Eigenvalues {
 		Assert.EQUALS(testHessenbergResult, a, .001);
 	}
 
+	/** Runs the balancing, Hessenberg-reduction and eigenvalue self-tests against fixed expected results.
+	 *
+	 * <!-- docstate
+	 * tags: [code/testing]
+	 * concepts: [Demo Entry Point]
+	 * facets: {layer: test, status: legacy, complexity: low}
+	 * -->
+	 */
 	final static public void main(String[] args) {
 		testBalance();
 		testHessenberg(); 

@@ -10,17 +10,11 @@ import streamIO.Assert;
 import function.byref.ByRefDouble;
 
 /**
- * Title: MatrixQR<p>
- * Description:
- * Purpose:
- * defines the Matrix QR Decomposition as Instance Methods 
- * retaining the Decomposition in Place, e.g. for further Updates. 
- * QR Decomposition can also be performed on non-square Matrices. 
- * 
- * One Advantage of QR Decomposition is that this Decomposition 
- * can be updated to amend for changed Matrix Coefficients in O(n²) Operations, 
- * so a Set of similar Matrices can be solved faster! 
- * 
+ * QR-decomposable matrix that retains its decomposition in place as instance state, so a
+ * changed coefficient can be re-solved via an O(n^2) update rather than a full re-decomposition.
+ *
+ * <p>QR decomposition can also be performed on non-square matrices.
+ *
  * Known SubClasses: <none>
  *
  * Known Uses: <none>
@@ -31,6 +25,15 @@ import function.byref.ByRefDouble;
  * @author mheuer
  * @version	1.0
  *
+ * <!-- docstate
+ * pass: 2
+ * mtime: 2026-09-05T12:47:06Z
+ * digest: 78fa0b49e68ebbb0185f72de8a9abf7840acf96b220224039015313c31f75d66
+ * stale: false
+ * tags: [code/qr_decomposition, code/numerical_linear_algebra]
+ * concepts: [QR Decomposition]
+ * facets: {layer: utility, status: legacy, complexity: high}
+ * -->
  */
 public class MatrixQR extends MatrixDouble {
 
@@ -43,7 +46,7 @@ public class MatrixQR extends MatrixDouble {
 	 */
 	private static final long serialVersionUID = 1L;
 
-	/**
+	/** Constructs an empty QR-decomposable matrix with the given initial capacity and capacity increment.
 	 * @param initialCapacity
 	 * @param capacityIncrement_
 	 */
@@ -51,35 +54,34 @@ public class MatrixQR extends MatrixDouble {
 		super(initialCapacity, capacityIncrement_);
 	}
 
-	/**
+	/** Constructs an empty QR-decomposable matrix with the given initial capacity.
 	 * @param initialCapacity
 	 */
 	public MatrixQR(final int initialCapacity) {
 		super(initialCapacity);
 	}
 
-	/**
-	 * 
+	/** Constructs an empty QR-decomposable matrix with the default initial capacity.
 	 */
 	public MatrixQR() {
 		super();
 	}
 
-	/**
+	/** Constructs a QR-decomposable matrix by copying the given double array.
 	 * @param a
 	 */
 	public MatrixQR(final double[][] a) {
 		super(a);
 	}
 
-	/**
+	/** Constructs a QR-decomposable matrix by copying from the given object of any supported type.
 	 * @param arg
 	 */
 	public MatrixQR(final Object arg) {
 		super(arg);
 	}
 
-	/**
+	/** Constructs a QR-decomposable matrix from the given object, with the given capacity increment.
 	 * @param arg
 	 * @param capacityIncrement_
 	 */
@@ -87,7 +89,7 @@ public class MatrixQR extends MatrixDouble {
 		super(arg, capacityIncrement_);
 	}
 
-	/**
+	/** Constructs a QR-decomposable matrix by copying the given float array, with the given capacity increment.
 	 * @param arg
 	 * @param capacityIncrement_
 	 */
@@ -95,7 +97,7 @@ public class MatrixQR extends MatrixDouble {
 		super(arg, capacityIncrement_);
 	}
 
-	/**
+	/** Constructs a QR-decomposable matrix by copying the given float array.
 	 * @param arg
 	 */
 	public MatrixQR(final float[][] arg) {
@@ -152,8 +154,8 @@ public class MatrixQR extends MatrixDouble {
 			double xi = 0;
 			for(int j = ret.length; --j >= 0; ) {
 				final double[] rj = items[j];
-				double xij = diag[j]*b[j]; //rjk==diag[j] für j = k
-				for(int k = ret.length; --k > j; ) { //rjk==0 für k < j
+				double xij = diag[j]*b[j]; //rjk==diag[j] fï¿½r j = k
+				for(int k = ret.length; --k > j; ) { //rjk==0 fï¿½r k < j
 					xij+=rj[k]*b[k]; 
 				}
 				xi+=q[i][j]*xij; //qij=qji
@@ -179,8 +181,8 @@ public class MatrixQR extends MatrixDouble {
 			for(int j = ret.length; --j >= 0; ) {
 				final double xij = bi*qi[j];
 				final double[] rj = items[j];
-				ret[j]+=xij*diag[j]; //rjk==diag[j] für j = k
-				for(int k = ret.length; --k > j; ) { //rjk==0 für k < j
+				ret[j]+=xij*diag[j]; //rjk==diag[j] fï¿½r j = k
+				for(int k = ret.length; --k > j; ) { //rjk==0 fï¿½r k < j
 					ret[k]+=xij*rj[k]; 
 				}
 			}
@@ -233,7 +235,7 @@ public class MatrixQR extends MatrixDouble {
 		}
 	}
 	
-	/**	update an explicit QR decomposition in O(n²) Operations (2.10):
+	/**	update an explicit QR decomposition in O(nï¿½) Operations (2.10):
 	 * Q'*R' = A' = A+s*t = Q*R+s*t = Q*(R+u*v)
 	 * This is relatively easy, because no Pivoting was performed. 
 	 * 
@@ -331,7 +333,7 @@ public class MatrixQR extends MatrixDouble {
 		}
 	}
 	
-	/**	update an explicit QR decomposition in O(n²) Operations (2.10):
+	/**	update an explicit QR decomposition in O(nï¿½) Operations (2.10):
 	 * Q'*R' = A' = A+s*t = Q*R+s*t = Q*(R+u*v)
 	 * This is relatively easy, because no Pivoting was performed. 
 	 * 
@@ -344,7 +346,7 @@ public class MatrixQR extends MatrixDouble {
 		UPDATE_QR(r, qt, u, v, null);
 	}
 	
-	/**	update an explicit QR decomposition in O(n²) Operations (2.10):
+	/**	update an explicit QR decomposition in O(nï¿½) Operations (2.10):
 	 * Q'*R' = A' = A+s*t = Q*R+s*t = Q*(R+u*v)
 	 * This is relatively easy, because no Pivoting was performed. 
 	 * 

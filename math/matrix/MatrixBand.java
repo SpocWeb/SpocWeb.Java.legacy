@@ -11,20 +11,17 @@ import math.vector.VectorDouble;
 import streamIO.Assert;
 
 /**
- * Title: MatrixBand<p>
- * Description:
- * Purpose:
- * Represents a Matrix in Band Diagonal Form 
- * (without Side Elements, treat these preferably as periodic Border-Conditions). 
- * Provides Methods to multiply (map) and 
- * to resolve (unmap, using a LU-Decomposition) Vectors. 
- * Also holds static Methods for other Cases of O(N²) Solutions:
- * Toeplitz and Vandermonde Matrices 
+ * Represents a matrix in band-diagonal form and provides LU decomposition with partial
+ * pivoting to map and solve vectors against it.
+ *
+ * <p>Side elements are not stored; treat these preferably as periodic border conditions.
+ * Also holds static methods for other cases of O(n^2) solutions: Toeplitz and Vandermonde
+ * matrices.
  * @see math.MatrixTriDiagonal
- * Can be used for unstable tridiagonal Matrices too, 
+ * Can be used for unstable tridiagonal Matrices too,
  * because it implements basic Pivoting!
- * 
- * Design Decisions: 
+ *
+ * Design Decisions:
  * inherits from AMatrix, 
  * although it needs only those Elements defined there, 
  * not the ones it implicitly inherits from AVector! 
@@ -39,6 +36,15 @@ import streamIO.Assert;
  * @author mheuer
  * @version	1.0
  *
+ * <!-- docstate
+ * pass: 2
+ * mtime: 2026-09-05T12:46:12Z
+ * digest: 7fc761933a5dfa831e2b2102188db8bd3db0203835acb96204f72de2b5ad0573
+ * stale: false
+ * tags: [code/band_diagonal_matrix, code/matrix_algebra]
+ * concepts: [Band-Diagonal Matrix]
+ * facets: {layer: utility, status: legacy, complexity: medium}
+ * -->
  */
 final public class MatrixBand 
 extends AMatrix {
@@ -66,7 +72,8 @@ extends AMatrix {
 	/** Number of Sub-Diagonals */
 	private final int numSubDiags; 
 	
-	/** @return the item at the given Position as an Object */
+	/** Returns the diagonal-storage row at the given position, or {@code null} when out of range.
+	 * @return the item at the given Position as an Object */
 	public Object getAt(final int i) {
 		if (!indexInRange(i)) 
 			return null; 
@@ -108,15 +115,15 @@ extends AMatrix {
 		*/
 	}
 
-	/** 
-	 * 
-	 * @param diags_ Diagonals stored as: 
-	 *   Sub-Diagonal: diags[1..m1][j..n] 
-	 *       Diagonal: diags[m1+1 ][1..n] 
+	/** Creates a band matrix over the given compact diagonal storage and sub-diagonal count.
+	 *
+	 * @param diags_ Diagonals stored as:
+	 *   Sub-Diagonal: diags[1..m1][j..n]
+	 *       Diagonal: diags[m1+1 ][1..n]
 	 * Super-Diagonal: diags[m1+2..m1+m2+1][1..j]
-	 * 
-	 * @param nSubD_ the Number of Sub-Diagonals, 
-	 * the Number of Super-Diagonals is calculated   
+	 *
+	 * @param nSubD_ the Number of Sub-Diagonals,
+	 * the Number of Super-Diagonals is calculated
 	 */
 	public MatrixBand(final double[][] diags_, final int nSubD_) {
 		diags = diags_;
@@ -260,7 +267,7 @@ extends AMatrix {
 	 * the Values of the first N Moments qi of the Distribution (x1, x2, ..., xn) 
 	 * |   1      1   ...    1  |  w0       q0
 	 * |  x1     x2   ...   xn  |  w1       q1
-	 * |  x1²    x2²  ...   xn² |  w2    =  q2
+	 * |  x1ï¿½    x2ï¿½  ...   xnï¿½ |  w2    =  q2
 	 * |   .      .    .     .  |   .       .
 	 * |   .      .    .     .  |   .       .
 	 * |x1^n-1 x2^n-1 ... xn^n-1| w[n-1]   q[n-1]
@@ -268,11 +275,11 @@ extends AMatrix {
 	 * The transposed Problem solves the Problem of 
 	 * Fitting of Polynoms Coefficients ci to yi Values at Values xi  
 	 * It is solved by direct Polynom Fitting. 
-	 * |1 x1 x1² ... x1^n-1| c1   y1 
-	 * |1 x2 x2² ... x1^n-1| c1   y1 
+	 * |1 x1 x1ï¿½ ... x1^n-1| c1   y1 
+	 * |1 x2 x2ï¿½ ... x1^n-1| c1   y1 
 	 * |.  .  .   .     .  | .  = .  
 	 * |.  .  .   .     .  | .    .  
-	 * |1 xn xn² ... xn^n-1| cn   yn 
+	 * |1 xn xnï¿½ ... xn^n-1| cn   yn 
 	 * 
 	 * </PRE>
 	 * Vandermonde Matrices are notoriously ill-conditioned. 

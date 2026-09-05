@@ -868,3 +868,43 @@ graphic/mvc/plane2D	folder	graphic/mvc/plane2D	code/polygon_operations,code/text
 graphic/mvc/plane2D/TexturePainter.java:TexturePainter	class	graphic/mvc/plane2D/TexturePainter.java	code/texture_mapping,code/gui	MilkShape3D Model Texture Painter	domain	legacy	medium
 graphic/mvc/plane2D/TexturedBody.java:TexturedBody	class	graphic/mvc/plane2D/TexturedBody.java	code/texture_mapping	Textured 3D Body	domain	legacy	medium
 graphic/mvc/plane2D/VectorPolygon.java:VectorPolygon	class	graphic/mvc/plane2D/VectorPolygon.java	code/vector_operations,code/z_ordering	Dynamic Array of 3D-Projected Polygons	domain	broken	high
+math/matrix/AMatrix.java:AMatrix	class	math/matrix/AMatrix.java	code/matrix_base_class,code/matrix_algebra	Matrix Base Class	utility	legacy	medium
+math/matrix	folder	math/matrix	code/matrix_algebra,code/numerical_linear_algebra	Numerical Linear Algebra (Matrix Types and Decompositions)	utility	legacy	high
+math/matrix/Eigenvalues.java:Eigenvalues	class	math/matrix/Eigenvalues.java	code/eigenvalue_decomposition,code/numerical_linear_algebra	General (Non-Symmetric) Eigenvalue Computation	utility	legacy	high
+math/matrix/Eigenvalues.java:Eigenvalues.BALANCE(double[][])	method	math/matrix/Eigenvalues.java	code/eigenvalue_decomposition	Matrix Balancing (Numerical Stability)	utility	legacy	medium
+math/matrix/Eigenvalues.java:Eigenvalues.HESSENBERG(double[][])	method	math/matrix/Eigenvalues.java	code/eigenvalue_decomposition	Reduction to Hessenberg Form	utility	legacy	medium
+math/matrix/Eigenvalues.java:Eigenvalues.EIGENVALUES(double[][], double[], double[])	method	math/matrix/Eigenvalues.java	code/eigenvalue_decomposition	QR Algorithm Eigenvalue Extraction	utility	legacy	high
+math/matrix/Eigenvalues.java:Eigenvalues.EIGENVALUES(double[][], int, double[], double[])	method	math/matrix/Eigenvalues.java	code/eigenvalue_decomposition	QR Algorithm Eigenvalue Extraction (Bounded Iterations)	utility	legacy	high
+math/matrix/Eigenvalues.java:Eigenvalues.EV_SHIFT(double[][], int, double)	method	math/matrix/Eigenvalues.java	code/eigenvalue_decomposition	Wilkinson Shift Step	utility	legacy	medium
+math/matrix/Eigenvalues.java:Eigenvalues.SET_COMPLEX_EV_PAIR(double[], double[], double, int, double, double, double)	method	math/matrix/Eigenvalues.java	code/eigenvalue_decomposition	Complex Eigenvalue Pair Assembly	utility	legacy	low
+math/matrix/Eigenvalues.java:Eigenvalues.IMPROVE_EV(double[][], int, int, double, double, double)	method	math/matrix/Eigenvalues.java	code/eigenvalue_decomposition	Eigenvalue Refinement Step	utility	legacy	medium
+math/matrix/Eigenvalues.java:Eigenvalues.writeNorms(double[][])	method	math/matrix/Eigenvalues.java	code/eigenvalue_decomposition,code/testing	Matrix Norm Diagnostic Output	test	legacy	low
+math/matrix/Eigenvalues.java:Eigenvalues.testEIGENVALUES()	method	math/matrix/Eigenvalues.java	code/testing,code/eigenvalue_decomposition	Eigenvalue Self-Test	test	legacy	low
+math/matrix/Eigenvalues.java:Eigenvalues.testHessenberg()	method	math/matrix/Eigenvalues.java	code/testing,code/eigenvalue_decomposition	Hessenberg Self-Test	test	legacy	low
+math/matrix/Eigenvalues.java:Eigenvalues.main(String[])	method	math/matrix/Eigenvalues.java	code/testing	Demo Entry Point	test	legacy	low
+math/matrix/MatrixBand.java:MatrixBand	class	math/matrix/MatrixBand.java	code/band_diagonal_matrix,code/matrix_algebra	Band-Diagonal Matrix	utility	legacy	medium
+math/matrix/MatrixDouble.java:MatrixDouble	class	math/matrix/MatrixDouble.java	code/matrix_operations,code/matrix_algebra	Double-Precision Dense Matrix	utility	broken	high
+math/matrix/MatrixDouble.java:MatrixDoubleStreamIn	class	math/matrix/MatrixDouble.java	code/matrix_operations	Double Matrix Row Stream Iterator	utility	broken	low
+math/matrix/MatrixFloat.java:MatrixFloat	class	math/matrix/MatrixFloat.java	code/matrix_operations,code/matrix_algebra	Single-Precision Dense Matrix	utility	broken	high
+math/matrix/MatrixFloatStreamIn.java:MatrixFloatStreamIn	class	math/matrix/MatrixFloatStreamIn.java	code/matrix_operations	Float Matrix Row Stream Iterator	utility	broken	low
+math/matrix/MatrixInt.java:MatrixInt	class	math/matrix/MatrixInt.java	code/matrix_operations,code/matrix_algebra	Integer Dense Matrix	utility	broken	high
+math/matrix/MatrixObject.java:MatrixObject	class	math/matrix/MatrixObject.java	code/matrix_base_class,code/matrix_operations	Generic Object Matrix	utility	broken	medium
+math/matrix/MatrixQR.java:MatrixQR	class	math/matrix/MatrixQR.java	code/qr_decomposition,code/numerical_linear_algebra	QR Decomposition	utility	legacy	high
+math/matrix/MatrixSVD.java:MatrixSVD	class	math/matrix/MatrixSVD.java	code/svd_decomposition,code/singular_value_decomposition	Singular Value Decomposition	utility	legacy	high
+math/matrix/MatrixSymmetric.java:MatrixSymmetric	class	math/matrix/MatrixSymmetric.java	code/eigenvalue_decomposition,code/tridiagonal_matrix_solving	Symmetric Matrix Eigen-Decomposition (Cholesky/Householder)	utility	legacy	high
+math/matrix/MatrixSymmetric.java:MatrixSymmetric.DECOMPOSE(double[][], double[])	method	math/matrix/MatrixSymmetric.java	code/lu_decomposition	Cholesky Decomposition	utility	legacy	medium
+math/matrix/MatrixSymmetric.java:MatrixSymmetric.INVERSE(double[][], double[])	method	math/matrix/MatrixSymmetric.java	code/matrix_algebra	Symmetric Matrix Inversion via Cholesky	utility	legacy	medium
+math/matrix/MatrixSymmetric.java:MatrixSymmetric.SOLVE(double[][], double[], double[], double[])	method	math/matrix/MatrixSymmetric.java	code/matrix_algebra	Cholesky-Based Linear Solve	utility	legacy	medium
+math/matrix/MatrixSymmetric.java:MatrixSymmetric.SOLVE_AT(double[][], double[], double[])	method	math/matrix/MatrixSymmetric.java	code/matrix_algebra	Cholesky-Based Linear Solve (In-Place)	utility	legacy	medium
+math/matrix/MatrixSymmetric.java:MatrixSymmetric.EIGENVALUES(double[], double[], double[][])	method	math/matrix/MatrixSymmetric.java	code/eigenvalue_decomposition	Tridiagonal QL Eigenvalue Extraction	utility	legacy	high
+math/matrix/MatrixSymmetric.java:MatrixSymmetric.TRI_DIAGONALIZE(double[][], double[], double[], boolean)	method	math/matrix/MatrixSymmetric.java	code/tridiagonal_matrix_solving	Householder Tridiagonalization	utility	legacy	high
+math/matrix/MatrixSymmetric.java:MatrixSymmetric.orthogonalize(double[][], int, double[])	method	math/matrix/MatrixSymmetric.java	code/matrix_algebra	Gram-Schmidt Orthogonalization	utility	legacy	medium
+math/matrix/MatrixSymmetric.java:MatrixSymmetric.testEigenVectors()	method	math/matrix/MatrixSymmetric.java	code/testing,code/eigenvalue_decomposition	Eigenvector Self-Test	test	legacy	low
+math/matrix/MatrixSymmetric.java:MatrixSymmetric.compareCoords(double, double, double, double)	method	math/matrix/MatrixSymmetric.java	code/testing	Coordinate Comparison Test Helper	test	legacy	low
+math/matrix/MatrixSymmetric.java:MatrixSymmetric.OFFSET_MATRIX(double[][], int, int)	method	math/matrix/MatrixSymmetric.java	code/matrix_algebra	Diagonal Offset Utility	utility	legacy	low
+math/matrix/MatrixSymmetric.java:MatrixSymmetric.testEigenVectorsOffset()	method	math/matrix/MatrixSymmetric.java	code/testing,code/eigenvalue_decomposition	Offset Eigenvector Self-Test	test	legacy	low
+math/matrix/MatrixSymmetric.java:MatrixSymmetric.testTriDiagonalize()	method	math/matrix/MatrixSymmetric.java	code/testing,code/tridiagonal_matrix_solving	Tridiagonalization Self-Test	test	legacy	low
+math/matrix/MatrixSymmetric.java:MatrixSymmetric.testSolveCholesky()	method	math/matrix/MatrixSymmetric.java	code/testing,code/lu_decomposition	Cholesky Solve Self-Test	test	legacy	low
+math/matrix/MatrixSymmetric.java:MatrixSymmetric.main(String[])	method	math/matrix/MatrixSymmetric.java	code/testing	Demo Entry Point	test	legacy	low
+math/matrix/MatrixTriDiagonal.java:MatrixTriDiagonal	class	math/matrix/MatrixTriDiagonal.java	code/tridiagonal_matrix_solving,code/band_diagonal_matrix	Tridiagonal Matrix Solver	utility	broken	medium
+math/matrix/Quaternion.java:Quaternion	class	math/matrix/Quaternion.java	code/quaternion_algebra,code/quaternion_math	Quaternion Rotation Algebra	utility	broken	medium

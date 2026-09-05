@@ -10,18 +10,13 @@ import streamIO.Log;
 import function.byref.ByRefDouble;
 
 /**
- * Title: MatrixSVD<p>
- * Description:
- * Purpose:
- * 
- * Performs Singular Value Decomposition of a Matrix: 
- * A=U*w*V^t
- * Also holds the Members of SVD, so it can be processed comfortably. 
- * Especially analyzing the Diagonal Matrix W yields direct Information 
- * on the Mapping Properties like Null Space and Condition. 
- * Additionally the Pseudo Inverse can be constructed 
- * by inverting the Diagonal and inverting/transposing the Trafo Matrices. 
- * 
+ * Performs and holds the Singular Value Decomposition of a matrix, A=U*w*V^t, so its
+ * members can be processed comfortably afterwards.
+ *
+ * <p>Analyzing the diagonal matrix W yields direct information on the mapping's properties,
+ * such as null space and condition. Additionally the pseudo-inverse can be constructed by
+ * inverting the diagonal and inverting/transposing the transformation matrices.
+ *
  * Known SubClasses: <none>
  *
  * Known Uses: <none>
@@ -32,6 +27,15 @@ import function.byref.ByRefDouble;
  * @author mheuer
  * @version	1.0
  *
+ * <!-- docstate
+ * pass: 2
+ * mtime: 2026-09-05T12:47:35Z
+ * digest: 499d976593db3395202f84b20b2c2a6903beb4c5694dae7ddae31b721c9890d9
+ * stale: false
+ * tags: [code/svd_decomposition, code/singular_value_decomposition]
+ * concepts: [Singular Value Decomposition]
+ * facets: {layer: utility, status: legacy, complexity: high}
+ * -->
  */
 public class MatrixSVD {
 	

@@ -22,16 +22,12 @@ import graphs.AGraph;
 import graphs.MatrixGraph;
 
 /**
-  * Title: MatrixFloat<p>
-  * Description:
-  * Class implements a dynamic Vector of VectorFloat Elements 
-  * each representing a Row. 
-  * Also implements many Methods to handle non-dynamic 2-dim Arrays of float[][]. 
-  * Instances of this Class operate as Matrices that can be used for...
-  * Solving Equations by decomposing into upper and lower Triangle Matrices: A = U*L 
-  * Mapping Vectors with the actual or the decomposed Form, 
-  * calculating Eigenvalues
-  * etc.  
+  * Dynamic matrix of {@code VectorFloat}-shaped rows, plus a large set of static methods
+  * operating directly on non-dynamic {@code float[][]} arrays.
+  *
+  * <p>Instances of this class operate as matrices that can be used for solving equations by
+  * decomposing into upper and lower triangular matrices (A = U*L), mapping vectors with the
+  * actual or decomposed form, and calculating eigenvalues.
   *
   * Known SubClasses:
   *
@@ -40,6 +36,15 @@ import graphs.MatrixGraph;
   * Created on	06-08-2002, 01:10 PM<p>
   * @author 	Matthias Heuer
   * @version	1.0
+  * <!-- docstate
+  * pass: 2
+  * mtime: 2026-09-05T12:57:44Z
+  * digest: 6ca344e67cace59c3fc80e862586629bab7ce835d8dfe0fa9a7bd9cbda9b6365
+  * stale: false
+  * tags: [code/matrix_operations, code/matrix_algebra]
+  * concepts: [Single-Precision Dense Matrix]
+  * facets: {layer: utility, status: broken, complexity: high}
+  * -->
   */
 public class MatrixFloat 
 extends AMatrix {
@@ -79,7 +84,7 @@ extends AMatrix {
 	/// #region : Matrix Power & Exponentiation
 	////////////////////////////////////////////////////////////////////////////////
 
-	/**
+	/** Returns the matrix raised to the given integer power via binary exponentiation.
 	 * @param matrix
 	 * @return the Matrix raised to the binary Power of pow: M^(2^pow)
 	 */
@@ -106,14 +111,14 @@ extends AMatrix {
 		return self; 
 	}
 	
-	/**
+	/** Raises the matrix in place to the binary power, stopping early once a dominant eigenvalue emerges.
 	 * @param matrix
 	 * @return the Matrix raised to the binary Power of pow: M^(2^pow)
 	 */
 	public static final float[][] BXP_AT(final float[][] matrix, final int pow) {
 		return BXP_AT(matrix, pow, null); }
-	
-	/**
+
+	/** Raises the matrix in place to the binary power, using the given scratch matrix.
 	 * @param matrix
 	 * @return the Matrix raised to the binary Power of pow: M^(2^pow)
 	 */
@@ -123,14 +128,15 @@ extends AMatrix {
 			SWAP(power, matrix); 
 		return matrix; }
 	
-	/**
+	/** Returns the matrix raised to the binary power, stopping early once a dominant eigenvalue emerges.
 	 * @param matrix
 	 * @return the Matrix raised to the binary Power of pow: M^(2^pow)
 	 */
-	public static final float[][] BXP(final float[][] matrix, final int pow) { 
+	public static final float[][] BXP(final float[][] matrix, final int pow) {
 		return BXP(matrix, pow, null, null); }
-	
-	/**
+
+	/** Returns the matrix raised to the binary power using the given scratch matrices, stopping
+	 * early once a dominant eigenvalue emerges.
 	 * @param matrix
 	 * @return the Matrix raised to the binary Power of pow: M^(2^pow)
 	 */
@@ -152,7 +158,7 @@ extends AMatrix {
 		}
 		return base; }
 
-	/**
+	/** Returns whether every row of the matrix is 'simple' (all elements equal).
 	 * @param base the Matrix to check
 	 * @return true when the Matrix consists only of 'simple' Rows
 	 */
@@ -164,9 +170,9 @@ extends AMatrix {
 		return true; 
 	}
 	
-	/**
+	/** Returns whether every element of the row equals its first element.
 	 * @param row the Row to check
-	 * @return true when all Elements of the Row have the same Value. 
+	 * @return true when all Elements of the Row have the same Value.
 	 */
 	public static final boolean IS_ROW_SIMPLE(final float[] row) {
 		for(int k = row.length; --k > 0;) {
@@ -180,9 +186,10 @@ extends AMatrix {
 	/// #region : static Methods for Calculations on Polygons
 	////////////////////////////////////////////////////////////////////////////////
 
-	/** @return the Extent of the Polygon
+	/** Returns this polygon's extent as a two-row array of per-column minimum and maximum values.
+	 * @return the Extent of the Polygon
 	 * i.e. the Minimum and Maximum Values of each Column in two Vectors 	 */
-	public float[][] getExtent() { return EXTENT(null, this.items, 0, this.itemCount); } 
+	public float[][] getExtent() { return EXTENT(null, this.items, 0, this.itemCount); }
 
 	/** 
 	 * returns the Extent of the Polygon
@@ -315,8 +322,8 @@ extends AMatrix {
 		return ret;
 	}
 
-	/**
-	 * @param points 
+	/** Returns the arithmetic mean of the plane's vertex points.
+	 * @param points
 	 * @param plane
 	 * @return the middle Points of this Plane
 	 */
@@ -327,8 +334,8 @@ extends AMatrix {
 		return VectorFloat.MUL_AT(mid, 1.0f / plane.length);
 	}
 
-	/**
-	 * @param points 
+	/** Returns the arithmetic mean point of each plane's vertices.
+	 * @param points
 	 * @param planes
 	 * @return the middle Points of the Planes
 	 */
@@ -559,12 +566,14 @@ extends AMatrix {
 		return ret; 
 	}
 	
-	/** @return this Vector with the Rows permuted according to the given Permutation     */
+	/** Permutes every row's columns according to the given index, in place.
+	 * @return this Vector with the Rows permuted according to the given Permutation     */
 	final static public float[][] PERMUTE_COLS_AT(final float[][] a, final int[] index) {
-		return PERMUTE_COLS_AT(a, index, false); 
+		return PERMUTE_COLS_AT(a, index, false);
 	}
-	
-	/** @return this Vector with the Rows permuted according to the given Permutation     */
+
+	/** Permutes every row's columns according to the given index, in place, optionally reversed.
+	 * @return this Vector with the Rows permuted according to the given Permutation     */
 	final static public float[][] PERMUTE_COLS_AT(final float[][] a, final int[] index, boolean reverse) {
 		float[] tmp, swp = new float[index.length]; //reusing the Array since no Permutation in Place!
 		for (int i = a.length; --i >= 0;) {
@@ -581,7 +590,8 @@ extends AMatrix {
 	final static public float[][] PERMUTE_ROWS(final float[][] a, final int[] index) {
 		return PERMUTE_ROWS(a, index, false); }
 	
-	/** @return this Vector with the Rows permuted according to the given Permutation     */
+	/** Fills {@code ret} with the rows of {@code a} reordered according to the given index.
+	 * @return this Vector with the Rows permuted according to the given Permutation     */
 	final static public float[][] PERMUTE_ROWS(final float[][] ret, final float[][] a, final int[] index) {
 		return PERMUTE_ROWS(ret, a, index, false); }
 	
@@ -593,7 +603,8 @@ extends AMatrix {
 		return PERMUTE_ROWS(null, a, index, reverse);
 	}
 	
-	/** @return this Vector with the Rows permuted according to the given Permutation     */
+	/** Fills {@code ret} (or a new array) with the rows of {@code a} reordered, optionally reversed.
+	 * @return this Vector with the Rows permuted according to the given Permutation     */
 	final static public float[][] PERMUTE_ROWS(float[][] ret, final float[][] a, final int[] index, final boolean reverse) {
 		if (ret == null)
 			ret = new float[a.length][]; 
@@ -751,7 +762,7 @@ extends AMatrix {
 	 */
 	//	final static public float[][] MIN_MAX(float[][] arr) { }
 
-	/**
+	/** Returns the sum of every element in the given matrix.
 	 * @return the Sum of all Matrix Elements
 	 */
 	final static public double SUM(final float[][] arg) {
@@ -773,13 +784,13 @@ extends AMatrix {
 		return ret;
 	}
 
-	/**
+	/** Returns the minimum value of each column across all rows.
 	 * @return the Minimum Values of each Column in Place
 	 */
 	final static public float[] MIN(final float[][] arg) {
 		return MIN(null, arg, 0, arg.length); }
 
-	/**
+	/** Returns the minimum value of each column across all rows, into the given array.
 	 * @return the Minimum Values of each Column in Place
 	 */
 	final static public float[] MIN(final float[] ret, final float[][] arg) {
@@ -812,11 +823,13 @@ extends AMatrix {
 		return ret;
 	}
 
-	/** @return the Maximum Values of each Column */
+	/** Returns the maximum value of each column across all rows.
+	 * @return the Maximum Values of each Column */
 	final static public float[] MAX(final float[][] arg) {
 		return MAX(null, arg, 0, arg.length); }
-	
-	/** @return the Maximum Values of each Column */
+
+	/** Returns the maximum value of each column across all rows, into the given array.
+	 * @return the Maximum Values of each Column */
 	final static public float[] MAX(final float[] ret, final float[][] arg) {
 		return MAX(ret, arg, 0, arg.length); }
 	
@@ -859,57 +872,57 @@ extends AMatrix {
 		return ADD_AT(ret, Increment, 0, ret.length);
 	}
 
-	/**
-	  * @return the given Array incremented by the given Increment
-	  * @param ret Array with the Values to be processed. Also returned by this Method.
-	  * @param Increment the Increment to add to
-	  * @param start Index from  where the Array is processed
-	  * @param stop  Index up to where the Array is processed (not ret[stop]!)
-	  */
+	/** Adds the given scalar increment to every row in the given range, in place.
+	 * @return the given Array incremented by the given Increment
+	 * @param ret Array with the Values to be processed. Also returned by this Method.
+	 * @param Increment the Increment to add to
+	 * @param start Index from  where the Array is processed
+	 * @param stop  Index up to where the Array is processed (not ret[stop]!)
+	 */
 	final static public float[][] ADD_AT(float[][] ret, double Increment, int start, int stop) {
 		while (--stop >= start) 
 			VectorFloat.ADD_AT(ret[stop], Increment);
 		return ret;
 	}
 
-	/**
-	  * @param ret Array with the Values to be processed. Also returned by this Method.
-	  * @param Increment the Increment to add to
-	  * @return the given Array incremented by the given Increment
-	  */
+	/** Adds the given vector to every row, in place.
+	 * @param ret Array with the Values to be processed. Also returned by this Method.
+	 * @param Increment the Increment to add to
+	 * @return the given Array incremented by the given Increment
+	 */
 	final static public float[][] ADD_AT(final float[][] ret, final float[] Decrement) {
 		return ADD_AT(ret, Decrement, 0, ret.length);
 	}
 
-	/**
-	  * @return the given Array incremented by the given Increment
-	  * @param ret Array with the Values to be processed. Also returned by this Method.
-	  * @param Increment the Increment to add to
-	  * @param start Index from  where the Array is processed
-	  * @param stop  Index up to where the Array is processed (not ret[stop]!)
-	  */
+	/** Adds the given vector to every row in the given range, in place.
+	 * @return the given Array incremented by the given Increment
+	 * @param ret Array with the Values to be processed. Also returned by this Method.
+	 * @param Increment the Increment to add to
+	 * @param start Index from  where the Array is processed
+	 * @param stop  Index up to where the Array is processed (not ret[stop]!)
+	 */
 	final static public float[][] ADD_AT(float[][] ret, float[] Decrement, int start, int stop) {
 		while (--stop >= start) 
 			VectorFloat.ADD_AT(ret[stop], Decrement);
 		return ret;
 	}
 
-	/**
-	  * @param ret Array with the Values to be processed. Also returned by this Method.
-	  * @param Increment the Increment to add to
-	  * @return the given Array incremented by the given Increment
-	  */
+	/** Adds the given double-precision vector to every row, in place.
+	 * @param ret Array with the Values to be processed. Also returned by this Method.
+	 * @param Increment the Increment to add to
+	 * @return the given Array incremented by the given Increment
+	 */
 	final static public float[][] ADD_AT(final float[][] ret, final double[] Decrement) {
 		return ADD_AT(ret, Decrement, 0, ret.length);
 	}
 
-	/**
-	  * @return the given Array incremented by the given Increment
-	  * @param ret Array with the Values to be processed. Also returned by this Method.
-	  * @param Increment the Increment to add to
-	  * @param start Index from  where the Array is processed
-	  * @param stop  Index up to where the Array is processed (not ret[stop]!)
-	  */
+	/** Adds the given double-precision vector to every row in the given range, in place.
+	 * @return the given Array incremented by the given Increment
+	 * @param ret Array with the Values to be processed. Also returned by this Method.
+	 * @param Increment the Increment to add to
+	 * @param start Index from  where the Array is processed
+	 * @param stop  Index up to where the Array is processed (not ret[stop]!)
+	 */
 	final static public float[][] ADD_AT(float[][] ret, double[] Decrement, int start, int stop) {
 		while (--stop >= start) {
 			VectorFloat.ADD_AT(ret[stop], Decrement);
@@ -919,35 +932,35 @@ extends AMatrix {
 
 	///////////////////////////////////////////////////////////////////////////
 
-	/**
-	  * @param ret Array with the Values to be processed. Also returned by this Method.
-	  * @param Decrement the Decrement to subtract from 
-	  * @return the given Array decremented by the given Decrement
-	  */
+	/** Subtracts the given vector from every row, in place.
+	 * @param ret Array with the Values to be processed. Also returned by this Method.
+	 * @param Decrement the Decrement to subtract from
+	 * @return the given Array decremented by the given Decrement
+	 */
 	final static public float[][] SUB_AT(float[][] ret, float[] decrement) {
 		return SUB_AT(ret, decrement, 0, ret.length);
 	}
 
-	/**
-	  * @return the given Array decremented by the given Decrement
-	  * @param ret Array with the Values to be processed. Also returned by this Method.
-	  * @param Decrement the Decrement to subtract from 
-	  * @param start Index from  where the Array is processed
-	  * @param stop  Index up to where the Array is processed (not ret[stop]!)
-	  */
+	/** Subtracts the given vector from every row in the given range, in place.
+	 * @return the given Array decremented by the given Decrement
+	 * @param ret Array with the Values to be processed. Also returned by this Method.
+	 * @param Decrement the Decrement to subtract from
+	 * @param start Index from  where the Array is processed
+	 * @param stop  Index up to where the Array is processed (not ret[stop]!)
+	 */
 	final static public float[][] SUB_AT(float[][] ret, float[] Decrement, int start, int stop) {
 		while (--stop >= start) 
 			VectorFloat.SUB_AT(ret[stop], Decrement);
 		return ret;
 	}
 
-	/**
-	  * @return the given Array incremented by the given Increment
-	  * @param ret Array with the Values to be processed. Also returned by this Method.
-	  * @param Increment the Increment to add to
-	  * @param start Index from  where the Array is processed
-	  * @param stop  Index up to where the Array is processed (not ret[stop]!)
-	  */
+	/** Subtracts the given double-precision vector from every row in the given range, in place.
+	 * @return the given Array incremented by the given Increment
+	 * @param ret Array with the Values to be processed. Also returned by this Method.
+	 * @param Increment the Increment to add to
+	 * @param start Index from  where the Array is processed
+	 * @param stop  Index up to where the Array is processed (not ret[stop]!)
+	 */
 	final static public float[][] SUB_AT(float[][] ret, double[] decrement, int start, int stop) {
 		while (--stop >= start) 
 			VectorFloat.SUB_AT(ret[stop], decrement);
@@ -997,37 +1010,38 @@ extends AMatrix {
 
 	/////////////////////////////////////////////////////////////////////////////////////
 
-	/** @return an Array filled with the Sum of all Values in each Row.	 */
+	/** Returns a new array holding the sum of every row's values.
+	 * @return an Array filled with the Sum of all Values in each Row.	 */
 	final static public float[] ROW_SUM(final float[][] arr) {
 		return ROW_SUM(arr, 0, arr.length, new float[arr.length]); }
 
-	/**
+	/** Returns the sum of the values in a single row.
 	 * @para ret the return Vector. To contain the Sum, it must be cleared before!
 	 * @return the Array ret filled with the Sum of all Values in each Row.
 	 */
 	final static public float ROW_SUM(final float[][] arr, final int row) {
 		return ROW_SUM(arr, row, 0, arr.length); }
 
-	/**
+	/** Returns the sum of the values in a single row within the given column range.
 	 * @para ret the return Vector. To contain the Sum, it must be cleared before!
 	 * @return the Array ret filled with the Sum of all Values in each Row.
 	 */
-	final static public float ROW_SUM(final float[][] arr, final int row, 
+	final static public float ROW_SUM(final float[][] arr, final int row,
 			final int start, final int stop) {
 		return (float) VectorFloat.SUM(arr[row], start, stop); }
 
-	/**
+	/** Fills the given array with the sum of every row's values.
 	 * @para ret the return Vector. To contain the Sum, it must be cleared before!
 	 * @return the Array ret filled with the Sum of all Values in each Row.
 	 */
 	final static public float[] ROW_SUM(final float[][] arr, final float[] ret) {
 		return ROW_SUM(arr, 0, arr.length, ret); }
 
-	/**
+	/** Fills the given array with the sum of each row's values within the given row range.
 	 * @para ret the return Vector. To contain the Sum, it must be cleared before!
 	 * @return the Array ret filled with the Sum of all Values in each Row.
 	 */
-	final static public float[] ROW_SUM(final float[][] arr, 
+	final static public float[] ROW_SUM(final float[][] arr,
 			final int start, int stop, final float[] ret) {
 		int len = arr[0].length;
 		while (--stop >= start) 
@@ -1037,16 +1051,19 @@ extends AMatrix {
 
 	/////////////////////////////////////////////////////////////////////////////////////
 
-	/** @return The Sum Vector of all Rows as Values in the Array. 	 */
+	/** Returns a new array holding the sum of every column's values.
+	 * @return The Sum Vector of all Rows as Values in the Array. 	 */
 	final static public float[] COL_SUM(final float[][] arr) {
 		return COL_SUM(arr, 0, arr.length, null); }
 
-	/** @return The Sum Vector of all Rows as Values in the Array. 	 */
+	/** Returns the sum of the values in a single column.
+	 * @return The Sum Vector of all Rows as Values in the Array. 	 */
 	final static public float COL_SUM(final float[][] arr, final int col) {
 		return COL_SUM(arr, col, 0, arr.length); }
 
-	/** @return The Sum Vector of all Rows as Values in the Array. 	 */
-	final static public float COL_SUM(final float[][] arr, final int col, 
+	/** Returns the sum of the values in a single column within the given row range.
+	 * @return The Sum Vector of all Rows as Values in the Array. 	 */
+	final static public float COL_SUM(final float[][] arr, final int col,
 			final int startRow, final int stopRow) {
 		float sum = 0;
 		for (int i = stopRow; --i >= startRow; ) {
@@ -1054,7 +1071,7 @@ extends AMatrix {
 		return sum;
 	}
 
-	/**
+	/** Fills the given array with the sum of every column's values.
 	 * @para ret the return Vector. To contain the Sum, it must be cleared before!
 	 * @return The Sum Vector of all Rows as Values in the Array.
 	 */
@@ -1062,11 +1079,11 @@ extends AMatrix {
 		return COL_SUM(arr, 0, arr.length, ret);
 	}
 
-	/**
+	/** Fills the given array with the sum of every column's values within the given row range.
 	 * @para ret the return Vector. To contain the Sum, it must be cleared before!
 	 * @return The Sum Vector of all Rows as Values in the Array.
 	 */
-	final static public float[] COL_SUM(final float[][] arr, 
+	final static public float[] COL_SUM(final float[][] arr,
 			final int startRow, final int stopRow, float[] ret) {
 		if (ret == null) 
 			ret  = new float[stopRow]; 
@@ -1077,12 +1094,13 @@ extends AMatrix {
 	
 	/////////////////////////////////////////////////////////////////////////////////////
 
-	/** @return The Maximum Vector of all Rows as Values in the Array. 	 */
+	/** Returns a new array holding the maximum value of every column.
+	 * @return The Maximum Vector of all Rows as Values in the Array. 	 */
 	final static public float[] COL_MAX(final float[][] arr) {
 		return COL_MAX(arr, 1, arr.length, VectorFloat.COPY(arr[0]));
 	}
 
-	/**
+	/** Fills the given array with the maximum value of every column, or delegates when {@code ret} is null.
 	 * @para ret the return Vector. To contain the Maximum, it must be set to -Infinity before!
 	 * @return The Maximum Vector of all Rows as Values in the Array.
 	 */
@@ -1092,11 +1110,11 @@ extends AMatrix {
 		return COL_MAX(arr, 0, arr.length, ret);
 	}
 
-	/**
+	/** Fills the given array with the maximum value of every column within the given row range.
 	 * @para ret the return Vector. To contain the Maximum, it must be set to -Infinity before!
 	 * @return The Maximum Vector of all Rows as Values in the Array.
 	 */
-	final static public float[] COL_MAX(final float[][] arr, 
+	final static public float[] COL_MAX(final float[][] arr,
 			final int startRow, int stopRow, final float[] ret) {
 		while (--stopRow >= startRow) 
 			VectorFloat.MAX_AT(ret, arr[stopRow], 0, ret.length);
@@ -1105,12 +1123,13 @@ extends AMatrix {
 
 	/////////////////////////////////////////////////////////////////////////////////////
 
-	/** @return The Maximum Vector of all Rows as Values in the Array. 	 */
+	/** Returns a new array holding the minimum value of every column.
+	 * @return The Maximum Vector of all Rows as Values in the Array. 	 */
 	final static public float[] COL_MIN(final float[][] arr) {
 		return COL_MIN(arr, 1, arr.length, VectorFloat.COPY(arr[0]));
 	}
 
-	/**
+	/** Fills the given array with the minimum value of every column, or delegates when {@code ret} is null.
 	 * @para ret the return Vector. To contain the Maximum, it must be set to -Infinity before!
 	 * @return The Maximum Vector of all Rows as Values in the Array.
 	 */
@@ -1120,7 +1139,7 @@ extends AMatrix {
 		return COL_MIN(arr, 0, arr.length, ret);
 	}
 
-	/**
+	/** Fills the given array with the minimum value of every column within the given row range.
 	 * @para ret the return Vector. To contain the Maximum, it must be set to -Infinity before!
 	 * @return The Maximum Vector of all Rows as Values in the Array.
 	 */
@@ -1132,7 +1151,8 @@ extends AMatrix {
 
 	/////////////////////////////////////////////////////////////////////////////////////
 
-	/** @return a shallow Copy of the given Array */
+	/** Copies each row reference (not the row contents) from {@code arr} into {@code ret}.
+	 * @return a shallow Copy of the given Array */
 	public static float[][] SHALLOW_COPY_AT(final float[][] ret, final float[][] arr) {
 		int len;
 		if (ret.length != (len = arr.length)) 
@@ -1142,11 +1162,13 @@ extends AMatrix {
 		return ret;
 	}
 
-	/** @return a deep Copy of the given Matrix */
+	/** Copies every row's values from {@code arr} into the matching row of {@code ret}.
+	 * @return a deep Copy of the given Matrix */
 	public static float[][] COPY_AT(final float[][] ret, final float[][] arr) {
 		return COPY_AT(ret, arr, 0, arr.length); }
 
-	/** @return a deep Copy of the given Matrix */
+	/** Copies each row's values from {@code arr} into {@code ret} within the given row range.
+	 * @return a deep Copy of the given Matrix */
 	public static float[][] COPY_AT(final float[][] ret, final float[][] arr, final int start, int stop) {
 		while (--stop >= start) { //Optimization!
 			System.arraycopy(arr[stop], 0, ret[stop], 0, arr[stop].length);
@@ -1155,23 +1177,29 @@ extends AMatrix {
 		return ret;
 	}
 
-	/** @return the Matrix ret with deep Copie of the given Vector arr in every Row */
+	/** Copies the given row's values into every row of {@code ret} within the given range.
+	 * @return the Matrix ret with deep Copie of the given Vector arr in every Row */
+	// TODO: LOGIC: arraycopy direction is reversed - copies ret[stop] into arr (the single row
+	// argument), overwriting arr on every iteration, instead of copying arr into every row of
+	// ret as the Javadoc and parameter naming describe. The method never actually fills ret.
 	public static float[][] COPY_AT(final float[][] ret, final float[] arr, final int start, int stop) {
 		while (--stop >= start) {
-			//VectorDouble.copyAt(ret[stop], arr); 
+			//VectorDouble.copyAt(ret[stop], arr);
 			System.arraycopy(ret[stop], 0, arr, 0, arr.length);
 		} //Optimization!
 		return ret;
 	}
 
-	/** @return the Matrix ret with deep Copie of the given Vector arr in every Row */
+	/** Copies the given double-precision row's values into every row of {@code ret} within the given range.
+	 * @return the Matrix ret with deep Copie of the given Vector arr in every Row */
 	public static float[][] COPY_AT(final float[][] ret, final double[] arr, final int start, int stop) {
 		while (--stop >= start) {
 			VectorDouble.COPY_AT(ret[stop], arr); } //
 		return ret;
 	}
 
-	/** @return a deep Copy of the given Matrix */
+	/** Returns a deep copy of the given float matrix.
+	 * @return a deep Copy of the given Matrix */
 	final static public float[][] COPY(final float[][] arr) {
 		int len;
 		float[][] ret = new float[len = arr.length][];
@@ -1180,7 +1208,8 @@ extends AMatrix {
 		return ret;
 	}
 
-	/** @return a deep Copy of the given Matrix */
+	/** Returns a new float matrix converted (narrowed) from the given double matrix.
+	 * @return a deep Copy of the given Matrix */
 	final static public float[][] COPY(final double[][] arr) {
 		int len;
 		float[][] ret = new float[len = arr.length][];
@@ -1189,7 +1218,8 @@ extends AMatrix {
 		return ret;
 	}
 
-	/** @return a deep Copy of the given Matrix */
+	/** Returns a new float matrix converted from the given int matrix.
+	 * @return a deep Copy of the given Matrix */
 	public static float[][] COPY(final int[][] arr) {
 		int len;
 		float[][] ret = new float[len = arr.length][];
@@ -1212,12 +1242,14 @@ extends AMatrix {
 		return a;
 	}
 
-	/** @return the given Array multiplied in Place by the given Factor */
+	/** Multiplies every row by the given scalar factor, in place.
+	 * @return the given Array multiplied in Place by the given Factor */
 	public static float[][] MUL_AT(final float[][] ret, final double Factor) {
 		return MUL_AT(ret, Factor, 0, ret.length); }
 
-	/** @return the given Array multiplied in Place by the given Factor */
-	public static float[][] MUL_AT(final float[][] ret, final double Factor, 
+	/** Multiplies every row in the given range by the given scalar factor, in place.
+	 * @return the given Array multiplied in Place by the given Factor */
+	public static float[][] MUL_AT(final float[][] ret, final double Factor,
 			final int start, int stop) {
 		while (--stop >= start) 
 			VectorFloat.MUL_AT(ret[stop], Factor); 
@@ -1240,7 +1272,8 @@ extends AMatrix {
 		return ret;
 	}
 
-	/** @return the Transpose of the given Array  */
+	/** Returns a new matrix holding the transpose of the given (possibly non-square) matrix.
+	 * @return the Transpose of the given Array  */
 	public static float[][] TRP(final float[][] a) {
 		//return trpAt(copy(a)); //too slow, doesn't work for non-square Matrices!!!
 		float[][] ret = new float[a[0].length][a.length]; //make it rectangular
@@ -1388,13 +1421,13 @@ extends AMatrix {
 		return ret;
 	}
 
-	/** Scalar Product Multiplication: °
+	/** Scalar Product Multiplication: ï¿½
 	  * This is in fact a non-commutative linear Mapping (thus the Naming):
 	  * A*B with A being a Row Vector multiplied from the Left
 	  *
 	  * The Distributive Law applies:
-	  * M°(a+b) == M°a + M°b
-	  * (x+y)°M == x°M + y°M
+	  * Mï¿½(a+b) == Mï¿½a + Mï¿½b
+	  * (x+y)ï¿½M == xï¿½M + yï¿½M
 	  *
 	  * The Matrix itself is identical to the Derivative Jacobian Matrix of this linear Mapping:
 	  * (A*x)' = A
@@ -1430,13 +1463,13 @@ extends AMatrix {
 			ret[i] = MAP(a[i], b, ret[i]); 
 		return ret; }
 	
-	/** Scalar Product Multiplication: °
+	/** Scalar Product Multiplication: ï¿½
 	  * This is in fact a non-commutative linear Mapping (thus the Naming):
-	  * B°A with A being a Column Vector multiplied from the right
+	  * Bï¿½A with A being a Column Vector multiplied from the right
 	  *
 	  * The Distributive Law applies:
-	  * M°(a+b) == M°a + M°b
-	  * (x+y)°M == x°M + y°M
+	  * Mï¿½(a+b) == Mï¿½a + Mï¿½b
+	  * (x+y)ï¿½M == xï¿½M + yï¿½M
 	  *
 	  * The Matrix itself is identical to the Derivative Jacobian Matrix of this linear Mapping:
 	  * (A*x)' = A
@@ -1467,17 +1500,18 @@ extends AMatrix {
 		return ret;
 	}
 
-	/** @see #MAP(float[], float[][], int, int, float[]) 	 */
+	/** Maps the given row vector by the matrix from the right, within the given column range.
+	 * @see #MAP(float[], float[][], int, int, float[]) 	 */
 	final static public float[] MAP(final float[] a, final float[][] b, final int stop, final int start) { //previously named mul()
 		return MAP(a, b, stop, start, null); }
 	
-	/** Scalar Product Multiplication: °
+	/** Scalar Product Multiplication: ï¿½
 	  * This is in fact a non-commutative linear Mapping (thus the Naming):
 	  * A*B with A being a Row Vector multiplied from the Left
 	  *
 	  * The Distributive Law applies:
-	  * M°(a+b) == M°a + M°b
-	  * (x+y)°M == x°M + y°M
+	  * Mï¿½(a+b) == Mï¿½a + Mï¿½b
+	  * (x+y)ï¿½M == xï¿½M + yï¿½M
 	  *
 	  * The Matrix itself is identical to the Derivative Jacobian Matrix of this linear Mapping:
 	  * (A*x)' = A
@@ -1504,13 +1538,13 @@ extends AMatrix {
 	final static public float[] MAP(final float[] a, final float[][] b, final float[] ret) { //previously named mul()
 		return MAP(a, b, b[0].length, 0, ret); }
 	
-	/** Scalar Product Multiplication: °
+	/** Scalar Product Multiplication: ï¿½
 	  * This is in fact a non-commutative linear Mapping (thus the Naming):
 	  * A*B with A being a Row Vector multiplied from the Left
 	  *
 	  * The Distributive Law applies:
-	  * M°(a+b) == M°a + M°b
-	  * (x+y)°M == x°M + y°M
+	  * Mï¿½(a+b) == Mï¿½a + Mï¿½b
+	  * (x+y)ï¿½M == xï¿½M + yï¿½M
 	  *
 	  * The Matrix itself is the Derivative Jacobian Matrix of the Mapping:
 	  * (A*x)' = A
@@ -1547,7 +1581,7 @@ extends AMatrix {
 			VectorFloat.addProdAt(ret, b[i], a[i], start, stop); } //+= Vector * Skalar!
 		return ret; }
 
-	/** Scalar Product Multiplication: °
+	/** Scalar Product Multiplication: ï¿½
 	  * This is in fact a non-commutative linear Mapping (thus the Naming):
 	  * A*B with A being a Row Vector multiplied from the Left
 	  *
@@ -1574,13 +1608,13 @@ extends AMatrix {
 		return ret;
 	}
 
-	/** Scalar Product Multiplication: °
+	/** Scalar Product Multiplication: ï¿½
 	  * This is in fact a non-commutative linear Mapping (thus the Naming):
 	  * A*B with A consisting of Row Vectors multiplied from the Left
 	  *
 	  * Distributive Law applies:
-	  * M°(a+b) == M°a + M°b
-	  * (x+y)°M == x°M + y°M
+	  * Mï¿½(a+b) == Mï¿½a + Mï¿½b
+	  * (x+y)ï¿½M == xï¿½M + yï¿½M
 	  *
 	  * The Matrix itself is the Derivative Jacobian Matrix of the Mapping:
 	  * (A*x)' = A
@@ -1622,8 +1656,8 @@ extends AMatrix {
 	  * arg is a Row Vector multiplied from the Left
 	  *
 	  * The Distributive Law applies:
-	  * M°(a+b) == M°a + M°b
-	  * (x+y)°M == x°M + y°M
+	  * Mï¿½(a+b) == Mï¿½a + Mï¿½b
+	  * (x+y)ï¿½M == xï¿½M + yï¿½M
 	  *
 	  * This Multiplication can also multiply the Transpose Tensors,
 	  * by just swapping the Operands!
@@ -1650,8 +1684,8 @@ extends AMatrix {
 	  * arg is a Row Vector multiplied from the Left
 	  *
 	  * The Distributive Law applies:
-	  * M°(a+b) == M°a + M°b
-	  * (x+y)°M == x°M + y°M
+	  * Mï¿½(a+b) == Mï¿½a + Mï¿½b
+	  * (x+y)ï¿½M == xï¿½M + yï¿½M
 	  *
 	  * This Multiplication can also multiply the Transpose Tensors,
 	  * by just swapping the Operands!
@@ -1668,7 +1702,7 @@ extends AMatrix {
 	//  static Methods for Matrix Operations (symmetric/antisymmetric)
 	////////////////////////////////////////////////////////////////////////////////
 
-	/**
+	/** Returns whether the given matrix is symmetric.
 	  * @param arr The Array to test for Symmetry
 	  * @return true if the given Array is symmetric, i.e. a[i][j] = a[j][i].
 	  */
@@ -1676,7 +1710,7 @@ extends AMatrix {
 		return IS_SYMMETRIC(arr, arr.length);
 	}
 
-	/**
+	/** Returns whether the leading square section of the given matrix is symmetric.
 	  * @param arr The Array to test for Symmetry
 	  * @return true if the given Array is symmetric, i.e. a[i][j] = a[j][i].
 	  */
@@ -1691,14 +1725,14 @@ extends AMatrix {
 		return true;
 	}
 
-	/**
+	/** Returns whether the given matrix is anti-symmetric.
 	  * @param arr The Array to test for Symmetry
 	  * @return true if the given Array is symmetric, i.e. a[i][j] = -a[j][i].
 	  */
 	final static public boolean IS_ANTI_SYMMETRIC(final float[][] arr) {
 		return IS_ANTI_SYMMETRIC(arr, arr.length); }
 
-	/**
+	/** Returns whether the leading square section of the given matrix is anti-symmetric.
 	  * @param arr The Array to test for Symmetry
 	  * @return true if the given Array is symmetric, i.e. a[i][j] = -a[j][i].
 	  */
@@ -1731,7 +1765,7 @@ extends AMatrix {
 	final static public void COPY_LOWER_TO_UPPER(float[][] a) {
 		COPY_LOWER_TO_UPPER(a, a.length); }
 	
-	/**
+	/** Overwrites the upper triangle with the lower triangle's values, in place.
 	  * @param arr The Array to make symmetric
 	  * @return the given Array made symmetric by copying the lower Triangle to the upper.
 	  */
@@ -1744,7 +1778,7 @@ extends AMatrix {
 		return a;
 	}
 	
-	/**
+	/** Makes the matrix symmetric in place by adding each off-diagonal pair together.
 	  * @param arr The Array to be made symmetric
 	  * @return the given Array made symmetric.
 	  */
@@ -1759,7 +1793,7 @@ extends AMatrix {
 		return arr;
 	}
 
-	/**
+	/** Makes the matrix anti-symmetric in place by subtracting each off-diagonal pair.
 	  * @param arr The Array to be made antisymmetric
 	  * @return the given Array made antisymmetric by subtracting the Upper from the Lower Triangle.
 	  */
@@ -1774,7 +1808,7 @@ extends AMatrix {
 		return arr;
 	}
 
-	/**
+	/** Negates every element of the matrix, in place.
 	  * @return the Negative of the given Array
 	  * @param ret Array with the Values to be processed. Also returned by this Method.
 	  */
@@ -1784,7 +1818,7 @@ extends AMatrix {
 		return NEG_AT(ret, 0, ret.length, 0, ret[0].length);
 	}
 
-	/**
+	/** Negates the elements within the given row and column range, in place.
 	  * @return the Negative of the given Array
 	  * @param ret Array with the Values to be processed. Also returned by this Method.
 	  * @param start1 Index from  where the outer Array is processed
@@ -1798,7 +1832,7 @@ extends AMatrix {
 		return ret;
 	}
 
-	/**
+	/** Replaces every element with its multiplicative inverse, in place.
 	  * @return the multiplicative Inverse of the given Array
 	  * @param ret Array with the Values to be processed. Also returned by this Method.
 	  */
@@ -1808,7 +1842,7 @@ extends AMatrix {
 		return INV_AT(ret, 0, ret.length, 0, ret[0].length);
 	}
 
-	/**
+	/** Replaces the elements within the given row and column range with their multiplicative inverse, in place.
 	  * @return the multiplicative Inverse of the given Array
 	  * @param ret Array with the Values to be processed. Also returned by this Method.
 	  * @param start1 Index from  where the outer Array is processed
@@ -1822,7 +1856,7 @@ extends AMatrix {
 		return ret;
 	}
 
-	/**
+	/** Replaces every element with its absolute value, in place.
 	  * @return the absolute Value of the Values in the given Array
 	  * @param ret Array with the Values to be processed. Also returned by this Method.
 	  */
@@ -2015,7 +2049,7 @@ extends AMatrix {
 		return a; 
 	}
 
-	/**
+	/** Returns a new all-zero square matrix of the given dimension.
 	 * @return a Zero Matrix (zero Mapping) for the given Dimension.
 	 */
 	final static public float[][] ZERO(final int dim) {
@@ -2044,7 +2078,9 @@ extends AMatrix {
 		return true;
 	}
 
-	/** @see Object#equals(java.lang.Object)	 */
+	/** Returns whether two matrices of possibly different declared lengths are equal, treating
+	 * any excess rows in the longer one as required to be zero.
+	 * @see Object#equals(java.lang.Object)	 */
 	final static public boolean EQUALS(final float[][] a, final int aLength, final float[][] b, final int bLength) {
 		if (a == b) {
 			return true; }
@@ -2059,12 +2095,14 @@ extends AMatrix {
 		} 
 	}
 	
-	/** @see Object#equals(java.lang.Object)	 */
+	/** Returns whether the two given matrices are equal.
+	 * @see Object#equals(java.lang.Object)	 */
 	final static public boolean EQUALS(final float[][] a, final float[][] b) {
-		return EQUALS(a, a.length, b, b.length); 
+		return EQUALS(a, a.length, b, b.length);
 	}
-	
-	/** @see Object#equals(java.lang.Object)
+
+	/** Returns whether the two matrices are equal within the given row range.
+	 * @see Object#equals(java.lang.Object)
 	 */
 	final static public boolean EQUALS(final float[][] a, final float[][] b, final int start, final int stop) {
 		for (int i = stop; --i >= start; ) {
@@ -2156,7 +2194,7 @@ extends AMatrix {
 		return ORTHO_AT(COPY(a), null, normal);
 	}
 
-	/**
+	/** Fills the given array with the maximum value of every row.
 	 * @return Maximum Value of the every Row in the Array.
 	 */
 	final static public float[] MAX_VAL(float[] ret, float[][] arr) {
@@ -2723,7 +2761,7 @@ extends AMatrix {
 		return true;
 	}
 
-	//	final static public boolean  antiSym  (); ð antiHerm fuer reelle Matrizen;
+	//	final static public boolean  antiSym  (); ï¿½ antiHerm fuer reelle Matrizen;
 
 	/**true, when the Matrix is normal, i.e. M*M^T = M^T*M.
 	 * i.e. M*M^T is symmetric
@@ -2867,7 +2905,7 @@ extends AMatrix {
 	/// Rotation Matrices and Operations
 	///////////////////////////////////////////////////////////////////////////////////
 
-	/**
+	/** Returns a rotation matrix aligning this vector with the axis at the given dimension.
 	 * @return a Rotation Matrix defined by the Direction given by this Vector.
 	 *
 	 * The Vector is converted in Place into Polar Coordinates.
@@ -2896,7 +2934,7 @@ extends AMatrix {
 		return Matrix;
 	}
 
-	/**
+	/** Returns a rotation matrix aligning this vector with the x-axis, converting the vector to polar coordinates in place.
 	 * @return a Rotation Matrix defined by the Direction given by this Vector.
 	 *
 	 * The Vector is converted in Place into Polar Coordinates.
@@ -3011,7 +3049,7 @@ extends AMatrix {
 	/// #region : Accessor Methods (getXXX/isXXX/setXXX)
 	////////////////////////////////////////////////////////////////////////////////
 
-	/**
+	/** Returns the live backing array so it can be modified externally.
 	 * @return the internal List to modify it externally
 	 */
 	public float[][] getList() { return items; }
@@ -3028,7 +3066,8 @@ extends AMatrix {
 		return null;
 	}
 
-	/** @return the item at the given Position as an Object */
+	/** Returns the row at the given position, boxed as a plain {@code Object}.
+	 * @return the item at the given Position as an Object */
 	public Object getAt(final int i) { return getVectorAt(i); }
 	
 	/**Sets (adds or replaces) the component at the specified index.
@@ -3257,12 +3296,14 @@ extends AMatrix {
 		return false; 
 	}
 	
-	/** @see Object#equals(java.lang.Object)	 */
+	/** Returns whether this matrix's current rows equal the given raw array.
+	 * @see Object#equals(java.lang.Object)	 */
 	public boolean equals(final float[][] arg) {
 		return EQUALS(items, itemCount, arg, arg.length);
 	}
 	
-	/** @see Object#equals(java.lang.Object)	 */
+	/** Returns whether this matrix's current rows equal the given matrix's.
+	 * @see Object#equals(java.lang.Object)	 */
 	public boolean equals(final MatrixFloat arg) {
 		return EQUALS(items, itemCount, arg.items, arg.itemCount);
 	}
@@ -3370,8 +3411,8 @@ extends AMatrix {
 	 */
 	//	final static public float[][] MinMax(float[][] arr) { }
 
-	/**
-	 * @return the Minimum Values of each Column 
+	/** Fills the given array with the minimum value of every column.
+	 * @return the Minimum Values of each Column
 	 */
 	public float[] Min(final float[] ret) {
 		return MIN(ret, items);
@@ -3386,7 +3427,8 @@ extends AMatrix {
 		return MIN(items, 0, itemCount);
 	}
 
-	/** @return the Maximum Values of each Column */
+	/** Fills the given array with the maximum value of every column.
+	 * @return the Maximum Values of each Column */
 	public float[] Max(final float[] ret) {
 		return MAX(ret, items);
 	}
@@ -3527,15 +3569,15 @@ extends AMatrix {
 		return IS_NORMAL(items); 
 	}
 	
-	/**
+	/** Returns whether this matrix is symmetric.
 	  * @param arr The Array to test for Symmetry
 	  * @return true if the given Array is symmetric, i.e. a[i][j] = a[j][i].
 	  */
 	public boolean isSymmetric() {
-		return IS_SYMMETRIC(items, itemCount); 
+		return IS_SYMMETRIC(items, itemCount);
 	}
-	
-	/**
+
+	/** Returns whether this matrix is anti-symmetric.
 	  * @param arr The Array to test for Symmetry
 	  * @return true if the given Array is symmetric, i.e. a[i][j] = -a[j][i].
 	  */
@@ -3547,13 +3589,13 @@ extends AMatrix {
 	/// #region : Mapping and Concatenation
 	////////////////////////////////////////////////////////////////////////////////
 	
-	/** Scalar Product Multiplication from the right: °
+	/** Scalar Product Multiplication from the right: ï¿½
 	  * This is in fact a non-commutative linear Mapping (thus the Naming):
 	  * A*B with A being a Row Vector multiplied from the Left
 	  *
 	  * The Distributive Law applies:
-	  * M°(a+b) == M°a + M°b
-	  * (x+y)°M == x°M + y°M
+	  * Mï¿½(a+b) == Mï¿½a + Mï¿½b
+	  * (x+y)ï¿½M == xï¿½M + yï¿½M
 	  *
 	  * The Matrix itself is the Derivative Jacobian Matrix of the Mapping:
 	  * (A*x)' = A
@@ -3599,13 +3641,13 @@ extends AMatrix {
 		}
 	}
 	
-	/** Scalar Product Multiplication: °
+	/** Scalar Product Multiplication: ï¿½
 	  * This is in fact a non-commutative linear Mapping (thus the Naming):
 	  * A*B with A consisting of Row Vectors multiplied from the Left
 	  *
 	  * Distributive Law applies:
-	  * M°(a+b) == M°a + M°b
-	  * (x+y)°M == x°M + y°M
+	  * Mï¿½(a+b) == Mï¿½a + Mï¿½b
+	  * (x+y)ï¿½M == xï¿½M + yï¿½M
 	  *
 	  * The Matrix itself is the Derivative Jacobian Matrix of the Mapping:
 	  * (A*x)' = A
@@ -3633,13 +3675,13 @@ extends AMatrix {
 		return CAT(a, items);
 	}
 	
-	/** Scalar Product Multiplication: °
+	/** Scalar Product Multiplication: ï¿½
 	  * This is in fact a non-commutative linear Mapping (thus the Naming):
 	  * A*B with A consisting of Row Vectors multiplied from the Left
 	  *
 	  * Distributive Law applies:
-	  * M°(a+b) == M°a + M°b
-	  * (x+y)°M == x°M + y°M
+	  * Mï¿½(a+b) == Mï¿½a + Mï¿½b
+	  * (x+y)ï¿½M == xï¿½M + yï¿½M
 	  *
 	  * The Matrix itself is the Derivative Jacobian Matrix of the Mapping:
 	  * (A*x)' = A
@@ -3761,7 +3803,8 @@ extends AMatrix {
 		VectorFloat.SUB_AT(vector, items[vector.length]); 
 	}
 	
-	/** @return this Matrix filled with translation Values for the given vector 
+	/** Fills this matrix in place with a homogeneous translation matrix for the given vector.
+	 * @return this Matrix filled with translation Values for the given vector
 	 * (in homogenous Coordinates)
 	 * @param the vector to translate with
 	 */
@@ -3775,7 +3818,8 @@ extends AMatrix {
 		return this; 
 	}
 	
-	/** @return this Matrix filled with Values for the given Euler Angles 
+	/** Fills this matrix in place with a homogeneous rotation matrix for the given Euler angles.
+	 * @return this Matrix filled with Values for the given Euler Angles
 	 * (in homogenous Coordinates)
 	 * @param eulerAngles the angles to rotate with
 	 */

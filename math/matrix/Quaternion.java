@@ -17,13 +17,13 @@ import function.byref.ByRefDouble;
 import function.byref.ByRefFloat;
 
 /**
- * Title: Quaternion<p>
- * Description:
- * Quaternions are a 4 dimensional algebraic Extension to Complex Numbers 
- * invented by Hamilton. They form a non-commutative (not anti-commutative) Body
+ * Represents a Hamilton quaternion, a 4-dimensional algebraic extension of the complex
+ * numbers, and provides the algebra and rotation conversions built on it.
+ *
+ * <p>They form a non-commutative (not anti-commutative) Body
  * q = q0*1 + q1*i + q2*j + q3*k
  * 
- * with i² = j² = k² = -1 = i*j*k 
+ * with iï¿½ = jï¿½ = kï¿½ = -1 = i*j*k 
  * 
  * so i*j = k = -j*i etc. so you lose Commutativity! 
  * You can view it as a Number with 3 imaginary Components, 
@@ -39,8 +39,8 @@ import function.byref.ByRefFloat;
  * p * q = p0*q0 - P*Q + (p0*Q + q0*P + PxQ)
  * 
  * Defining q' = q0 - Q 
- * results in q*q' = q'*q = |q|²  
- * and 1/q = q'/|q|² just like with Complex Numbers. 
+ * results in q*q' = q'*q = |q|ï¿½  
+ * and 1/q = q'/|q|ï¿½ just like with Complex Numbers. 
  * 
  * Quaternions with a Length of 1 can be used 
  * to emulate Rotations in three Dimensions, 
@@ -61,6 +61,15 @@ import function.byref.ByRefFloat;
  * @author mheuer
  * @version	1.0
  *
+ * <!-- docstate
+ * pass: 2
+ * mtime: 2026-09-05T12:48:13Z
+ * digest: 9c564c52de4a247057241b49684dc5643850be838eee14a704a8b5697a2c1fb3
+ * stale: false
+ * tags: [code/quaternion_algebra, code/quaternion_math]
+ * concepts: [Quaternion Rotation Algebra]
+ * facets: {layer: utility, status: broken, complexity: medium}
+ * -->
  */
 public class Quaternion 
 extends ACopyAble {
@@ -124,7 +133,8 @@ extends ACopyAble {
 		stream.addItem(")");
 	}
 
-	/** @return the Norm (Length) of this Vector */
+	/** Returns the Euclidean norm (length) of this quaternion viewed as a 4-vector.
+	 * @return the Norm (Length) of this Vector */
 	public double norm() {
 		return Math.sqrt(sqrNorm()); }
 
@@ -164,10 +174,13 @@ extends ACopyAble {
 		return 2 * Math.acos(q[3]);
 	}
 
-	/**
+	/** Returns the normalized rotation axis encoded by this unit quaternion's imaginary part.
 	 * @return the axis of rotation as a Vector3D
 	 */
 	public Vector3D getAxis() {
+		// TODO: LOGIC: q is a float[4] (valid indices 0-3), so q[4] is always out of bounds;
+		// this throws ArrayIndexOutOfBoundsException on every call. Should read q[3], the
+		// scalar/real component, matching getAngle()'s use of q[3].
 		double sa = 1 / Math.sqrt(1 - ByRefFloat.SQR(q[4]));
 		float[] ret = new float[3]; 
 		System.arraycopy(q, 0, ret, 0, 3); 
@@ -519,17 +532,20 @@ extends ACopyAble {
 		ByRefDouble.EQUALS(q[3], arg.q[3]);
 	}
 
-	/** @return a pointer to the whole array	 */
+	/** Returns the live backing array, in x, y, z, real order; mutating it mutates this quaternion.
+	 * @return a pointer to the whole array	 */
 	public float[] get() {
 		return q;
 	}
 
-	/** @return a CVector3 of the vector component	 */
+	/** Returns the imaginary (vector) part of this quaternion as a 3D vector.
+	 * @return a CVector3 of the vector component	 */
 	public Vector3D getVector() {
 		return new Vector3D(q);
 	}
 
-	/** @return the scalar Part	 */
+	/** Returns the real (scalar) part of this quaternion.
+	 * @return the scalar Part	 */
 	public float getScalar() {
 		return q[3];
 	}
@@ -538,6 +554,9 @@ extends ACopyAble {
 	 * 
 	 * @param fpQuat
 	 */
+	// TODO: LOGIC: ignores the fpQuat parameter entirely and calls copyAt(q), copying the
+	// backing array onto itself (a no-op); should be copyAt(fpQuat). This method never
+	// actually changes this quaternion's value.
 	public void set(float[] fpQuat) {
 		copyAt(q);
 	}
@@ -601,22 +620,25 @@ extends ACopyAble {
 		return ret;
 	}
 
-	/** @return this set to 0 in Place */
+	/** Resets this quaternion's components to 0 in place.
+	 * @return this set to 0 in Place */
 	public Quaternion zeroAt() {
 		Arrays.fill(q, 0, 4, 0);
-		return this; 
+		return this;
 	}
 
-	/** @return this randomized in Place */
+	/** Fills this quaternion's components with random values in [-1, 1] in place.
+	 * @return this randomized in Place */
 	public ICopyAble randomizeAt() {
 		q[0] = ByRefFloat.Random1_1();
 		q[1] = ByRefFloat.Random1_1();
 		q[2] = ByRefFloat.Random1_1();
 		q[3] = ByRefFloat.Random1_1();
-		return this; 
+		return this;
 	}
 
-	/** @return this set to 1 in Place */
+	/** Resets this quaternion to the multiplicative identity (0,0,0,1) in place.
+	 * @return this set to 1 in Place */
 	public Quaternion oneAt() {
 		Arrays.fill(q, 0, 3, 0);
 		q[3] = 1; 

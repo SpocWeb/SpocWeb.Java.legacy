@@ -8,16 +8,23 @@ import math.vector.AVector;
 import streamIO.copy.ICopyAble;
 
 /**
- * Dynamic Size Matrix of Objects: 
- * variable Number of Object Arrays 
- * which again could be maintained using VectorObject Items, 
- * but are currently implemented as simple Arrays. 
- * 
+ * Dynamic-size matrix of {@code Object[]} rows, backed by a plain two-dimensional array rather
+ * than {@code VectorObject} items.
+ *
  * @author heuerm
- * 
- * Usage: 
- * @see streamIO.integer.jdbc.ResultSetArray uses this Structure 
- * to cache an entire ResultSet in RAM. 
+ *
+ * Usage:
+ * @see streamIO.integer.jdbc.ResultSetArray uses this Structure
+ * to cache an entire ResultSet in RAM.
+ * <!-- docstate
+ * pass: 2
+ * mtime: 2026-09-05T12:43:46Z
+ * digest: 856c3c019d0f07b9ad736bc977e3b5165caa1417384041d57703a862330a9c1b
+ * stale: false
+ * tags: [code/matrix_base_class, code/matrix_operations]
+ * concepts: [Generic Object Matrix]
+ * facets: {layer: utility, status: broken, complexity: medium}
+ * -->
  */
 public class MatrixObject 
 extends AVector {
@@ -37,7 +44,8 @@ extends AVector {
 	/// #region : Accessor Methods (getXXX/isXXX/setXXX)
 	////////////////////////////////////////////////////////////////////////////////
 
-	/** @return the item at the given Position as an Object */
+	/** Returns the row at the given position, boxed as a plain {@code Object}.
+	 * @return the item at the given Position as an Object */
 	public Object getAt(final int i) { return getVectorAt(i); }
 
 	/**Returns the component at the specified index.
@@ -136,7 +144,8 @@ extends AVector {
 	/// for multidimensional rectangular Arrays 
 	////////////////////////////////////////////////////////////////////////////////
 
-	/** @return the Value at the given Position	 */
+	/** Returns the row array stored at the given 2-D coordinate.
+	 * @return the Value at the given Position	 */
 	public Object[] getAt(int Row, int Col) {
 		return items[Row * dimFactors[0] + Col * dimFactors[1]];
 	}
@@ -146,7 +155,8 @@ extends AVector {
 		items[Row * dimFactors[0] + Col * dimFactors[1]] = Value;
 	}
 
-	/** @return the Value at the given Position	 */
+	/** Returns the row array stored at the given 3-D coordinate.
+	 * @return the Value at the given Position	 */
 	public Object[] getAt(int Sheet, int Row, int Col) {
 		return items[Sheet * dimFactors[0] + Row * dimFactors[1] + Col * dimFactors[2]];
 	}
@@ -156,7 +166,8 @@ extends AVector {
 		items[Sheet * dimFactors[0] + Row * dimFactors[1] + Col * dimFactors[2]] = Value;
 	}
 
-	/** @return the Value at the given Position	 */
+	/** Returns the row array stored at the given multi-dimensional coordinate.
+	 * @return the Value at the given Position	 */
 	public Object[] getAt(int[] Col) {
 		return items[multiIndex(Col)];
 	}
@@ -241,6 +252,9 @@ extends AVector {
 	 *
 	 * @param   anArray   the array into which the components get copied.
 	 * Declared final, because System.arraycopy is the fastest way.	 */
+	// TODO: LOGIC: items is Object[][] but anArray is int[]; System.arraycopy compiles (both
+	// are Object) but throws ArrayStoreException at runtime for any non-empty matrix because
+	// the component types are incompatible.
 	final public synchronized void copyInto(int[] anArray) {
 		System.arraycopy(items, 0, anArray, 0, itemCount);
 		/*Object elementDataLocal[] = this.Items;
@@ -253,6 +267,8 @@ extends AVector {
 	 * The array must be big enough to hold all the objects in this  VectorInt.
 	 *
 	 * @param   anArray   the array into which the components get copied.	 */
+	// TODO: LOGIC: same Object[][]-into-int[] arraycopy defect as copyInto(int[]) above;
+	// throws ArrayStoreException at runtime for any non-empty matrix.
 	final public synchronized int[] toArray() {
 		int[] Return = new int[itemCount];
 		System.arraycopy(items, 0, Return, 0, itemCount);

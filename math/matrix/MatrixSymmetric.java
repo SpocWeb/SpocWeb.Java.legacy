@@ -15,14 +15,15 @@ import function.IMeasurAble;
 import function.byref.ByRefDouble;
 
 /**
- * Title: MatrixSymmetric
+ * Groups static methods to solve linear equations and to calculate eigenvalues and
+ * eigenvectors of symmetric matrices via Cholesky decomposition and Householder
+ * tridiagonalization.
  * <p>
- * Description: Purpose: Groups static Methods to compute Linear Equations and to
- * calculate Eigenvalues and Eigenvectors of symmetric Matrices. Symmetric Matrices pose
- * Oportunity for fast Algorithms and are extraordinarily stable, even without or only
- * minimal Pivoting, at least when being positive definite. A Matrix with Offset e.g. 1
- * poses no Problem for Eigenvalues and Vectors, because the 0s in the 0th Row and Column
- * are resolved to an EigenValue of 0 automatically! Known SubClasses: <none> Known Uses:
+ * Symmetric matrices pose opportunity for fast algorithms and are extraordinarily stable,
+ * even without or only minimal pivoting, at least when being positive definite. A matrix
+ * with an offset (e.g. 1) poses no problem for eigenvalues and vectors, because the 0s in
+ * the 0th row and column are resolved to an eigenvalue of 0 automatically.
+ * Known SubClasses: <none> Known Uses:
  * <none> Copyright: Copyright (c) Matthias Heuer
  * <p>
  * Company: personal
@@ -31,6 +32,15 @@ import function.byref.ByRefDouble;
  * <p>
  * @author mheuer
  * @version 1.0
+ * <!-- docstate
+ * pass: 2
+ * mtime: 2026-09-05T12:46:40Z
+ * digest: ec24a2c0026dce2eeb778a1b3eb68550eb616044c801c5cbd72bbb35fd70e262
+ * stale: false
+ * tags: [code/eigenvalue_decomposition, code/tridiagonal_matrix_solving]
+ * concepts: [Symmetric Matrix Eigen-Decomposition (Cholesky/Householder)]
+ * facets: {layer: utility, status: legacy, complexity: high}
+ * -->
  */
 public class MatrixSymmetric {
 
@@ -47,6 +57,11 @@ public class MatrixSymmetric {
 	 *            the Diagonal.
 	 * @param diag stores the Diagonal of the Cholesky Decomposition.
 	 * @return true if the Matrix is positive definite and thus could be decomposed.
+	 * <!-- docstate
+	 * tags: [code/lu_decomposition]
+	 * concepts: [Cholesky Decomposition]
+	 * facets: {layer: utility, status: legacy, complexity: medium}
+	 * -->
 	 */
 	final static public boolean DECOMPOSE(final double[][] a, final double[] diag) {
 		for (int i = 0; i < a.length; i++) {
@@ -71,6 +86,11 @@ public class MatrixSymmetric {
 	 *            the Decomposition L
 	 * @param diag stores the Diagonal of the Cholesky Decomposition.
 	 * @return the Inverse of the decomposed Matrix: L^-1
+	 * <!-- docstate
+	 * tags: [code/matrix_algebra]
+	 * concepts: [Symmetric Matrix Inversion via Cholesky]
+	 * facets: {layer: utility, status: legacy, complexity: medium}
+	 * -->
 	 */
 	final static public boolean INVERSE(final double[][] a, final double[] diag) {
 		for (int i = 0; i < a.length; i++) {
@@ -92,6 +112,11 @@ public class MatrixSymmetric {
 	 * @param diag stores the Diagonal of the Cholesky Decomposition.
 	 * @param b right Side of the Equation
 	 * @param x Solution of the Equation
+	 * <!-- docstate
+	 * tags: [code/matrix_algebra]
+	 * concepts: [Cholesky-Based Linear Solve]
+	 * facets: {layer: utility, status: legacy, complexity: medium}
+	 * -->
 	 */
 	final static public void SOLVE(final double[][] a, final double[] diag,
 			final double[] b, final double[] x) {
@@ -104,6 +129,11 @@ public class MatrixSymmetric {
 	 * @param a decomposed symmetric Matrix
 	 * @param diag stores the Diagonal of the Cholesky Decomposition.
 	 * @param b right Side of the Equation, replaced by the Solution of the Equation
+	 * <!-- docstate
+	 * tags: [code/matrix_algebra]
+	 * concepts: [Cholesky-Based Linear Solve (In-Place)]
+	 * facets: {layer: utility, status: legacy, complexity: medium}
+	 * -->
 	 */
 	final static public void SOLVE_AT(final double[][] a, final double[] diag,
 			final double[] b) {
@@ -137,6 +167,11 @@ public class MatrixSymmetric {
 	 * @param trafo Transformation Matrix of TRI_DIALONALIZE or Identity Matrix for a
 	 *            simple tridiagonal Matrix, null if Eigenvectors are not wanted. The
 	 *            Columns will contain the Eigenvectors corresponding to d.
+	 * <!-- docstate
+	 * tags: [code/eigenvalue_decomposition]
+	 * concepts: [Tridiagonal QL Eigenvalue Extraction]
+	 * facets: {layer: utility, status: legacy, complexity: high}
+	 * -->
 	 */
 	final static public void EIGENVALUES(final double[] diag, final double[] subDiag,
 			final double[][] trafo) {
@@ -215,6 +250,11 @@ public class MatrixSymmetric {
 	 * @param a the Matrix to compute Eigenvectors from; modified in Place to contain the
 	 *            Transformation Matrix Q, so that the EigenVectors can be computed in the
 	 *            original Coordinate System.
+	 * <!-- docstate
+	 * tags: [code/tridiagonal_matrix_solving]
+	 * concepts: [Householder Tridiagonalization]
+	 * facets: {layer: utility, status: legacy, complexity: high}
+	 * -->
 	 */
 	final static public void TRI_DIAGONALIZE(final double[][] a, final double[] diag,
 			final double[] subDiag, final boolean calcTrafo) {
@@ -301,9 +341,14 @@ public class MatrixSymmetric {
 		}
 	}
 
-	/**
+	/** Subtracts from every column of {@code a} its projection onto {@code v}, in place.
 	 * @see #TRI_DIAGONALIZE(double[][], double[], double[], boolean) uses this Method
 	 *      exclusively
+	 * <!-- docstate
+	 * tags: [code/matrix_algebra]
+	 * concepts: [Gram-Schmidt Orthogonalization]
+	 * facets: {layer: utility, status: legacy, complexity: medium}
+	 * -->
 	 */
 	final static public void orthogonalize(final double[][] a, final int length,
 			final double[] v) {
@@ -337,8 +382,10 @@ public class MatrixSymmetric {
 			{-3.0, -2.0, -1.0, 0.0, 1.0, 2.0, 3.0, 4.0, 5.0, 4.0,},
 			{-4.0, -3.0, -2.0, -1.0, 0.0, 1.0, 2.0, 3.0, 4.0, 5.0}};
 
+	/** Threshold below which a coordinate is treated as zero to avoid division by it in tests. */
 	final static public double TINY = 1e-6;
 
+	/** Formatter used by the self-tests to print matrices and vectors with 2 integer and 2 fraction digits. */
 	final static public NumberFormatter FORMATTER = new NumberFormatter(2, 2);
 
 	/**
@@ -346,6 +393,11 @@ public class MatrixSymmetric {
 	 * Ratios of Eigenvector and Mapping with the EigenValue. It also demonstrates the
 	 * Ability to handle Index Offsets (here by 1) resulting in Rows and Columns
 	 * consisting of 0s resulting in an EigenValue of 0.
+	 * <!-- docstate
+	 * tags: [code/testing, code/eigenvalue_decomposition]
+	 * concepts: [Eigenvector Self-Test]
+	 * facets: {layer: test, status: legacy, complexity: low}
+	 * -->
 	 */
 	private static final void testEigenVectors() throws IOException {
 		final int NP=TEST_MATRIX.length;
@@ -372,6 +424,11 @@ public class MatrixSymmetric {
 	 * @param c1
 	 * @param c2
 	 * @param ratio expected Ratio
+	 * <!-- docstate
+	 * tags: [code/testing]
+	 * concepts: [Coordinate Comparison Test Helper]
+	 * facets: {layer: test, status: legacy, complexity: low}
+	 * -->
 	 */
 	final static public void compareCoords(final double c1, final double c2,
 			final double ratio, final double acc) throws IOException {
@@ -390,6 +447,11 @@ public class MatrixSymmetric {
 	 * @param minRowIndex # of Rows to shift down
 	 * @param minColIndex # of Columns to shift right
 	 * @return a new Matrix filled with the Contents of source
+	 * <!-- docstate
+	 * tags: [code/matrix_algebra]
+	 * concepts: [Diagonal Offset Utility]
+	 * facets: {layer: utility, status: legacy, complexity: low}
+	 * -->
 	 */
 	final static public double[][] OFFSET_MATRIX(final double[][] source,
 			final int minRowIndex, final int minColIndex) {
@@ -410,6 +472,11 @@ public class MatrixSymmetric {
 	 * Ability to handle Index Offsets (here by 1) resulting in Rows and Columns
 	 * consisting of 0s resulting in an EigenValue of 0.
 	 * @throws IOException
+	 * <!-- docstate
+	 * tags: [code/testing, code/eigenvalue_decomposition]
+	 * concepts: [Offset Eigenvector Self-Test]
+	 * facets: {layer: test, status: legacy, complexity: low}
+	 * -->
 	 */
 	private static final void testEigenVectorsOffset() throws IOException {
 		final int NP = TEST_MATRIX.length;
@@ -450,6 +517,11 @@ public class MatrixSymmetric {
 	/**
 	 * tests Transformation of a symmetric into a tri-diagonal Matrix for faster
 	 * Calculation of EigenValues
+	 * <!-- docstate
+	 * tags: [code/testing, code/tridiagonal_matrix_solving]
+	 * concepts: [Tridiagonalization Self-Test]
+	 * facets: {layer: test, status: legacy, complexity: low}
+	 * -->
 	 */
 	private static final void testTriDiagonalize() throws IOException {
 		final int NP = TEST_MATRIX.length;
@@ -490,7 +562,14 @@ public class MatrixSymmetric {
 		MatrixDouble.STREAM(f, System.out, FORMATTER, ", ");
 	}
 
-	/** tests both Cholesky Decomposition and Backsubstition */
+	/** tests both Cholesky Decomposition and Backsubstition
+	 *
+	 * <!-- docstate
+	 * tags: [code/testing, code/lu_decomposition]
+	 * concepts: [Cholesky Solve Self-Test]
+	 * facets: {layer: test, status: legacy, complexity: low}
+	 * -->
+	 */
 	private static final void testSolveCholesky() {
 		final int N = 3;
 		double sum;
@@ -551,6 +630,11 @@ public class MatrixSymmetric {
 	/**
 	 * tests all Methods of this Class
 	 * @param args
+	 * <!-- docstate
+	 * tags: [code/testing]
+	 * concepts: [Demo Entry Point]
+	 * facets: {layer: test, status: legacy, complexity: low}
+	 * -->
 	 */
 	final static public void main(final String[] args) throws IOException {
 		testTriDiagonalize();

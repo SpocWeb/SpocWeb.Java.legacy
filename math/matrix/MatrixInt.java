@@ -22,11 +22,8 @@ import streamIO.copy.ICopyAble;
 import function.byref.ByRefFloat;
 
 /**
- * Title: MatrixInt<p>
- * Description:
- * Collects Methods for int[][] Arrays 
- * Usually this is used for Polygons 
- *
+ * Collects static and instance methods for {@code int[][]} arrays, usually representing
+ * polygons and their planes.
  *
  * Known SubClasses: <none>
  *
@@ -41,6 +38,15 @@ import function.byref.ByRefFloat;
  * @author mheuer
  * @version	1.0
  *
+ * <!-- docstate
+ * pass: 2
+ * mtime: 2026-09-05T12:52:28Z
+ * digest: 0324262935d2c65dd43a11e6d3ebf81c55ed5d86badc34f72f61dc11773a311c
+ * stale: false
+ * tags: [code/matrix_operations, code/matrix_algebra]
+ * concepts: [Integer Dense Matrix]
+ * facets: {layer: utility, status: broken, complexity: high}
+ * -->
  */
 public class MatrixInt 
 extends AMatrix {
@@ -90,7 +96,7 @@ extends AMatrix {
 			polygon[i] = (int []) polygon[i].clone(); } 
 		return polygon; }
 
-	/** 
+	/** Returns the sum of every element in the given matrix.
 	 * @return the Sum of the Items in the square Section of the Matrix
 	 * @param nn the Matrix to use
 	 */
@@ -98,10 +104,10 @@ extends AMatrix {
 		return SUM(nn, 0, nn.length, 0, nn[nn.length>>1].length); 
 	}
 
-	/** 
+	/** Returns the sum of the elements within the given row and column range.
 	 * @return the Sum of the Items in the square Section of the Matrix
 	 * @param nn the Matrix to use
-	 * @param rowStart 
+	 * @param rowStart
 	 * @param rowStop
 	 * @param colStart
 	 * @param colStop
@@ -160,30 +166,27 @@ extends AMatrix {
 		return sum;
 	}
 
-	/**
-	 * 
-	 * @param matrix the Matrix to calculate the Entropy for 
-	 * @return the Entropy of the given Matrix 
+	/** Returns the Shannon entropy of the given matrix's element values.
+	 * @param matrix the Matrix to calculate the Entropy for
+	 * @return the Entropy of the given Matrix
 	 */
 	final static public double ENTROPY(final int[][] matrix) {
 		return MatrixInt.ENTROPY(matrix, MatrixInt.SUM(matrix)); }
 
-	/**
-	 * 
-	 * @param matrix the Matrix to calculate the Entropy for 
+	/** Returns the Shannon entropy of the given matrix given its precomputed element sum.
+	 * @param matrix the Matrix to calculate the Entropy for
 	 * @param sum the total Sum of Elements in this Matrix
-	 * @return the Entropy of the given Matrix 
+	 * @return the Entropy of the given Matrix
 	 */
 	final static public double ENTROPY(final int[][] matrix, final long sum) {
 		return MatrixInt.ENTROPY(matrix, matrix.length, matrix[matrix.length >> 1].length, sum); }
 
-	/**
-	 * 
-	 * @param matrix the Matrix to calculate the Entropy for 
-	 * @param numRows the Number of Rows to consider 
-	 * @param numCols the Number of Columns to consider 
+	/** Returns the Shannon entropy computed over the given row/column range of the matrix.
+	 * @param matrix the Matrix to calculate the Entropy for
+	 * @param numRows the Number of Rows to consider
+	 * @param numCols the Number of Columns to consider
 	 * @param sum the total Sum of Elements in this Matrix
-	 * @return the Entropy of the given Matrix 
+	 * @return the Entropy of the given Matrix
 	 */
 	final static public double ENTROPY(
 		final int[][] matrix,
@@ -337,8 +340,8 @@ extends AMatrix {
 		return ret;
 	}
 
-	/**
-	 * @param points 
+	/** Returns the arithmetic mean of the plane's vertex points.
+	 * @param points
 	 * @param plane
 	 * @return the middle Points of this Plane
 	 */
@@ -349,8 +352,8 @@ extends AMatrix {
 		return VectorInt.DIV_AT(mid, plane.length);
 	}
 
-	/**
-	 * @param points 
+	/** Returns the arithmetic mean point of each plane's vertices.
+	 * @param points
 	 * @param planes
 	 * @return the middle Points of the Planes
 	 */
@@ -466,13 +469,13 @@ extends AMatrix {
 	 */
 	//	final static public int[][] MIN_MAX(int[][] arr) { }
 
-	/**
+	/** Returns the minimum value of each column across all rows.
 	 * @return the Minimum Values of each Column in Place
 	 */
 	final static public int[] MIN(final int[][] arg) {
 		return MIN(null, arg, 0, arg.length); }
 
-	/**
+	/** Returns the minimum value of each column across all rows, into the given array.
 	 * @return the Minimum Values of each Column in Place
 	 */
 	final static public int[] MIN(final int[] ret, final int[][] arg) {
@@ -505,11 +508,13 @@ extends AMatrix {
 		return ret;
 	}
 
-	/** @return the Maximum Values of each Column */
+	/** Returns the maximum value of each column across all rows.
+	 * @return the Maximum Values of each Column */
 	final static public int[] MAX(final int[][] arg) {
 		return MAX(null, arg, 0, arg.length); }
-	
-	/** @return the Maximum Values of each Column */
+
+	/** Returns the maximum value of each column across all rows, into the given array.
+	 * @return the Maximum Values of each Column */
 	final static public int[] MAX(final int[] ret, final int[][] arg) {
 		return MAX(ret, arg, 0, arg.length); }
 	
@@ -540,19 +545,19 @@ extends AMatrix {
 		return ret;
 	}
 	
-	/**
-	 * @see #MAX(int[][]) for the Maximum of multiple Columns 
-	 * @param col the Column to determine the Maximum of 
-	 * @param matrix the Matrix to determine the Maximum of a single Column 
+	/** Returns the maximum value of a single column across all rows.
+	 * @see #MAX(int[][]) for the Maximum of multiple Columns
+	 * @param col the Column to determine the Maximum of
+	 * @param matrix the Matrix to determine the Maximum of a single Column
 	 * @return the Maximum of the single Column
 	 */
 	final static public int MAX(final int[][] matrix, final int col) {
 		return MAX(matrix, col, 0, matrix.length); }
-	
-	/**
-	 * @see #MAX(int[][]) for the Maximum of multiple Columns 
-	 * @param col the Column to determine the Maximum of 
-	 * @param matrix the Matrix to determine the Maximum of a single Column 
+
+	/** Returns the maximum value of a single column within the given row range.
+	 * @see #MAX(int[][]) for the Maximum of multiple Columns
+	 * @param col the Column to determine the Maximum of
+	 * @param matrix the Matrix to determine the Maximum of a single Column
 	 * @return the Maximum of the single Column
 	 */
 	final static public int MAX(final int[][] matrix, final int col, final int start, final int stop) {
@@ -565,19 +570,19 @@ extends AMatrix {
 		return max;
 	}
 
-	/**
-	 * @see #MIN(int[][]) for the Minimum of multiple Columns 
-	 * @param col the Column to determine the Maximum of 
-	 * @param matrix the Matrix to determine the Maximum of a single Column 
+	/** Returns the minimum value of a single column across all rows.
+	 * @see #MIN(int[][]) for the Minimum of multiple Columns
+	 * @param col the Column to determine the Maximum of
+	 * @param matrix the Matrix to determine the Maximum of a single Column
 	 * @return the Maximum of the single Column
 	 */
 	final static public int MIN(final int[][] matrix, final int col) {
 		return MIN(matrix, col, 0, matrix.length); }
-	
-	/**
-	 * @see #MIN(int[][]) for the Minimum of multiple Columns 
-	 * @param col the Column to determine the Maximum of 
-	 * @param matrix the Matrix to determine the Maximum of a single Column 
+
+	/** Returns the minimum value of a single column within the given row range.
+	 * @see #MIN(int[][]) for the Minimum of multiple Columns
+	 * @param col the Column to determine the Maximum of
+	 * @param matrix the Matrix to determine the Maximum of a single Column
 	 * @return the Maximum of the single Column
 	 */
 	final static public int MIN(final int[][] matrix, final int col, final int start, final int stop) {
@@ -602,35 +607,35 @@ extends AMatrix {
 		return ADD_AT(ret, Increment, 0, ret.length);
 	}
 
-	/**
-	  * @return the given Array incremented by the given Increment
-	  * @param ret Array with the Values to be processed. Also returned by this Method.
-	  * @param Increment the Increment to add to
-	  * @param start Index from  where the Array is processed
-	  * @param stop  Index up to where the Array is processed (not ret[stop]!)
-	  */
+	/** Adds the given scalar increment to every row in the given range, in place.
+	 * @return the given Array incremented by the given Increment
+	 * @param ret Array with the Values to be processed. Also returned by this Method.
+	 * @param Increment the Increment to add to
+	 * @param start Index from  where the Array is processed
+	 * @param stop  Index up to where the Array is processed (not ret[stop]!)
+	 */
 	final static public int[][] ADD_AT(int[][] ret, int Increment, int start, int stop) {
 		while (--stop >= start) 
 			VectorInt.ADD_AT(ret[stop], Increment);
 		return ret;
 	}
 
-	/**
-	  * @param ret Array with the Values to be processed. Also returned by this Method.
-	  * @param Increment the Increment to add to
-	  * @return the given Array incremented by the given Increment
-	  */
+	/** Adds the given vector to every row, in place.
+	 * @param ret Array with the Values to be processed. Also returned by this Method.
+	 * @param Increment the Increment to add to
+	 * @return the given Array incremented by the given Increment
+	 */
 	final static public int[][] ADD_AT(final int[][] ret, final int[] Decrement) {
 		return ADD_AT(ret, Decrement, 0, ret.length);
 	}
 
-	/**
-	  * @return the given Array incremented by the given Increment
-	  * @param ret Array with the Values to be processed. Also returned by this Method.
-	  * @param Increment the Increment to add to
-	  * @param start Index from  where the Array is processed
-	  * @param stop  Index up to where the Array is processed (not ret[stop]!)
-	  */
+	/** Adds the given vector to every row in the given range, in place.
+	 * @return the given Array incremented by the given Increment
+	 * @param ret Array with the Values to be processed. Also returned by this Method.
+	 * @param Increment the Increment to add to
+	 * @param start Index from  where the Array is processed
+	 * @param stop  Index up to where the Array is processed (not ret[stop]!)
+	 */
 	final static public int[][] ADD_AT(int[][] ret, int[] Decrement, int start, int stop) {
 		while (--stop >= start) 
 			VectorInt.ADD_AT(ret[stop], Decrement);
@@ -639,22 +644,22 @@ extends AMatrix {
 
 	///////////////////////////////////////////////////////////////////////////
 
-	/**
-	  * @param ret Array with the Values to be processed. Also returned by this Method.
-	  * @param Decrement the Decrement to subtract from 
-	  * @return the given Array decremented by the given Decrement
-	  */
+	/** Subtracts the given vector from every row, in place.
+	 * @param ret Array with the Values to be processed. Also returned by this Method.
+	 * @param Decrement the Decrement to subtract from
+	 * @return the given Array decremented by the given Decrement
+	 */
 	final static public int[][] SUB_AT(int[][] ret, int[] decrement) {
 		return SUB_AT(ret, decrement, 0, ret.length);
 	}
 
-	/**
-	  * @return the given Array decremented by the given Decrement
-	  * @param ret Array with the Values to be processed. Also returned by this Method.
-	  * @param Decrement the Decrement to subtract from 
-	  * @param start Index from  where the Array is processed
-	  * @param stop  Index up to where the Array is processed (not ret[stop]!)
-	  */
+	/** Subtracts the given vector from every row in the given range, in place.
+	 * @return the given Array decremented by the given Decrement
+	 * @param ret Array with the Values to be processed. Also returned by this Method.
+	 * @param Decrement the Decrement to subtract from
+	 * @param start Index from  where the Array is processed
+	 * @param stop  Index up to where the Array is processed (not ret[stop]!)
+	 */
 	final static public int[][] SUB_AT(int[][] ret, int[] Decrement, int start, int stop) {
 		while (--stop >= start) 
 			VectorInt.SUB_AT(ret[stop], Decrement);
@@ -704,37 +709,38 @@ extends AMatrix {
 
 	/////////////////////////////////////////////////////////////////////////////////////
 
-	/** @return an Array filled with the Sum of all Values in each Row.	 */
+	/** Returns a new array holding the sum of every row's values.
+	 * @return an Array filled with the Sum of all Values in each Row.	 */
 	final static public int[] ROW_SUM(final int[][] arr) {
 		return ROW_SUM(arr, 0, arr.length, new int[arr.length]); }
 
-	/**
+	/** Returns the sum of the values in a single row.
 	 * @para ret the return Vector. To contain the Sum, it must be cleared before!
 	 * @return the Array ret filled with the Sum of all Values in each Row.
 	 */
 	final static public int ROW_SUM(final int[][] arr, final int row) {
 		return ROW_SUM(arr, row, 0, arr.length); }
 
-	/**
+	/** Returns the sum of the values in a single row within the given column range.
 	 * @para ret the return Vector. To contain the Sum, it must be cleared before!
 	 * @return the Array ret filled with the Sum of all Values in each Row.
 	 */
-	final static public int ROW_SUM(final int[][] arr, final int row, 
+	final static public int ROW_SUM(final int[][] arr, final int row,
 			final int start, final int stop) {
 		return (int) VectorInt.SUM(arr[row], stop, start); }
 
-	/**
+	/** Fills the given array with the sum of every row's values.
 	 * @para ret the return Vector. To contain the Sum, it must be cleared before!
 	 * @return the Array ret filled with the Sum of all Values in each Row.
 	 */
 	final static public int[] ROW_SUM(final int[][] arr, final int[] ret) {
 		return ROW_SUM(arr, 0, arr.length, ret); }
 
-	/**
+	/** Fills the given array with the sum of each row's values within the given row range.
 	 * @para ret the return Vector. To contain the Sum, it must be cleared before!
 	 * @return the Array ret filled with the Sum of all Values in each Row.
 	 */
-	final static public int[] ROW_SUM(final int[][] arr, 
+	final static public int[] ROW_SUM(final int[][] arr,
 			final int start, int stop, final int[] ret) {
 		int len = arr[0].length;
 		while (--stop >= start) 
@@ -744,12 +750,12 @@ extends AMatrix {
 
 	/////////////////////////////////////////////////////////////////////////////////////
 
-	/** @return The Sum Vector of all Rows as Values in the Array. 	 */
+	/** Returns a new array holding the sum of every column's values.
+	 * @return The Sum Vector of all Rows as Values in the Array. 	 */
 	final static public int[] COL_SUM(final int[][] arr) {
 		return COL_SUM(arr, 0, arr.length, null); }
 
-	/** 
-	 * 
+	/** Returns the sum of the values in a single column.
 	 * @param nn the Matrix to use
 	 * @param col the Column to calculate the Sum for
 	 * @return the Sum of the Items in the given Column
@@ -757,15 +763,14 @@ extends AMatrix {
 	public static long COL_SUM(final int[][] nn, int col) {
 		return COL_SUM(nn, col, 0, nn.length); }
 
-	/** 
-	 * 
+	/** Returns the sum of the values in a single column within the given row range.
 	 * @param nn the Matrix to use
 	 * @param col the Column to calculate the Sum for
-	 * @param start 
+	 * @param start
 	 * @param stop
 	 * @return the Sum of the Items in the given Column
 	 */
-	public static int COL_SUM(final int[][] nn, final int col, 
+	public static int COL_SUM(final int[][] nn, final int col,
 			final int start, final int stop) {
 		int colSum = 0;//MatrixInt.COL_SUM(nn, j, 1, numRows);
 		for (int i=stop; --i>=start; ) {
@@ -775,7 +780,7 @@ extends AMatrix {
 		return colSum;
 	}
 
-	/**
+	/** Fills the given array with the sum of every column's values.
 	 * @para ret the return Vector. To contain the Sum, it must be cleared before!
 	 * @return The Sum Vector of all Rows as Values in the Array.
 	 */
@@ -783,11 +788,11 @@ extends AMatrix {
 		return COL_SUM(arr, 0, arr.length, ret);
 	}
 
-	/**
+	/** Fills the given array with the sum of every column's values within the given row range.
 	 * @para ret the return Vector. To contain the Sum, it must be cleared before!
 	 * @return The Sum Vector of all Rows as Values in the Array.
 	 */
-	final static public int[] COL_SUM(final int[][] arr, 
+	final static public int[] COL_SUM(final int[][] arr,
 			final int startRow, final int stopRow, int[] ret) {
 		if (ret == null) 
 			ret  = new int[stopRow]; 
@@ -798,12 +803,13 @@ extends AMatrix {
 	
 	/////////////////////////////////////////////////////////////////////////////////////
 
-	/** @return The Maximum Vector of all Rows as Values in the Array. 	 */
+	/** Returns a new array holding the maximum value of every column.
+	 * @return The Maximum Vector of all Rows as Values in the Array. 	 */
 	final static public int[] COL_MAX(final int[][] arr) {
 		return COL_MAX(arr, 1, arr.length, VectorInt.COPY(arr[0]));
 	}
 
-	/**
+	/** Fills the given array with the maximum value of every column, or delegates when {@code ret} is null.
 	 * @para ret the return Vector. To contain the Maximum, it must be set to -Infinity before!
 	 * @return The Maximum Vector of all Rows as Values in the Array.
 	 */
@@ -813,11 +819,11 @@ extends AMatrix {
 		return COL_MAX(arr, 0, arr.length, ret);
 	}
 
-	/**
+	/** Fills the given array with the maximum value of every column within the given row range.
 	 * @para ret the return Vector. To contain the Maximum, it must be set to -Infinity before!
 	 * @return The Maximum Vector of all Rows as Values in the Array.
 	 */
-	final static public int[] COL_MAX(final int[][] arr, 
+	final static public int[] COL_MAX(final int[][] arr,
 			final int startRow, int stopRow, final int[] ret) {
 		while (--stopRow >= startRow) 
 			VectorInt.MAX_AT(ret, arr[stopRow], 0, ret.length);
@@ -826,12 +832,13 @@ extends AMatrix {
 
 	/////////////////////////////////////////////////////////////////////////////////////
 
-	/** @return The Maximum Vector of all Rows as Values in the Array. 	 */
+	/** Returns a new array holding the minimum value of every column.
+	 * @return The Maximum Vector of all Rows as Values in the Array. 	 */
 	final static public int[] COL_MIN(final int[][] arr) {
 		return COL_MIN(arr, 1, arr.length, VectorInt.COPY(arr[0]));
 	}
 
-	/**
+	/** Fills the given array with the minimum value of every column, or delegates when {@code ret} is null.
 	 * @para ret the return Vector. To contain the Maximum, it must be set to -Infinity before!
 	 * @return The Maximum Vector of all Rows as Values in the Array.
 	 */
@@ -841,7 +848,7 @@ extends AMatrix {
 		return COL_MIN(arr, 0, arr.length, ret);
 	}
 
-	/**
+	/** Fills the given array with the minimum value of every column within the given row range.
 	 * @para ret the return Vector. To contain the Maximum, it must be set to -Infinity before!
 	 * @return The Maximum Vector of all Rows as Values in the Array.
 	 */
@@ -853,7 +860,8 @@ extends AMatrix {
 
 	/////////////////////////////////////////////////////////////////////////////////////
 
-	/** @return a shallow Copy of the given Array */
+	/** Copies each row reference (not the row contents) from {@code arr} into {@code ret}.
+	 * @return a shallow Copy of the given Array */
 	public static int[][] SHALLOW_COPY_AT(final int[][] ret, final int[][] arr) {
 		int len;
 		if (ret.length != (len = arr.length)) 
@@ -863,11 +871,13 @@ extends AMatrix {
 		return ret;
 	}
 
-	/** @return a deep Copy of the given Matrix */
+	/** Copies every row's values from {@code arr} into the matching row of {@code ret}.
+	 * @return a deep Copy of the given Matrix */
 	public static int[][] COPY_AT(final int[][] ret, final int[][] arr) {
 		return COPY_AT(ret, arr, 0, arr.length); }
 
-	/** @return a deep Copy of the given Matrix */
+	/** Copies each row's values from {@code arr} into {@code ret} within the given row range.
+	 * @return a deep Copy of the given Matrix */
 	public static int[][] COPY_AT(final int[][] ret, final int[][] arr, final int start, int stop) {
 		while (--stop >= start) { //Optimization!
 			System.arraycopy(arr[stop], 0, ret[stop], 0, arr[stop].length);
@@ -876,21 +886,27 @@ extends AMatrix {
 		return ret;
 	}
 
-	/** @return the Matrix ret with deep Copie of the given Vector arr in every Row */
+	/** Copies the given row's values into every row of {@code ret} within the given range.
+	 * @return the Matrix ret with deep Copie of the given Vector arr in every Row */
+	// TODO: LOGIC: arraycopy direction is reversed - copies ret[stop] into arr (the single row
+	// argument), overwriting arr on every iteration, instead of copying arr into every row of
+	// ret as the Javadoc and parameter naming describe. The method never actually fills ret.
 	public static int[][] COPY_AT(final int[][] ret, final int[] arr, final int start, int stop) {
 		while (--stop >= start) {
-			//VectorDouble.copyAt(ret[stop], arr); 
+			//VectorDouble.copyAt(ret[stop], arr);
 			System.arraycopy(ret[stop], 0, arr, 0, arr.length);
 		} //Optimization!
 		return ret;
 	}
 
-	/** @return a deep Copy of the given Matrix */
+	/** Returns a shallow, row-sharing copy of the given matrix.
+	 * @return a deep Copy of the given Matrix */
 	final static public int[][] COPY(final int[][] arr) {
-		return COPY(arr, arr.length, false); 
+		return COPY(arr, arr.length, false);
 	}
 
-	/** @return a deep Copy of the given Matrix */
+	/** Returns a copy of the given matrix's first {@code length} rows, deep when requested.
+	 * @return a deep Copy of the given Matrix */
 	final static public int[][] COPY(final int[][] arr, final int length, final boolean deepCopy) {
 		final int[][] ret = new int[length][];
 		if (deepCopy)
@@ -926,12 +942,14 @@ extends AMatrix {
 		return a;
 	}
 
-	/** @return the given Array multiplied in Place by the given Factor */
+	/** Multiplies every row by the given scalar factor, in place.
+	 * @return the given Array multiplied in Place by the given Factor */
 	public static int[][] MUL_AT(final int[][] ret, final int Factor) {
 		return MUL_AT(ret, Factor, 0, ret.length); }
 
-	/** @return the given Array multiplied in Place by the given Factor */
-	public static int[][] MUL_AT(final int[][] ret, final int Factor, 
+	/** Multiplies every row in the given range by the given scalar factor, in place.
+	 * @return the given Array multiplied in Place by the given Factor */
+	public static int[][] MUL_AT(final int[][] ret, final int Factor,
 			final int start, int stop) {
 		while (--stop >= start) 
 			VectorInt.MUL_AT(ret[stop], Factor); 
@@ -954,7 +972,8 @@ extends AMatrix {
 		return ret;
 	}
 
-	/** @return the Transpose of the given Array  */
+	/** Returns a new matrix holding the transpose of the given (possibly non-square) matrix.
+	 * @return the Transpose of the given Array  */
 	public static int[][] TRP(final int[][] a) {
 		//return trpAt(copy(a)); //too slow, doesn't work for non-square Matrices!!!
 		int[][] ret = new int[a[0].length][a.length]; //make it rectangular
@@ -1096,13 +1115,13 @@ extends AMatrix {
 		return ret;
 	}
 
-	/** Scalar Product Multiplication: °
+	/** Scalar Product Multiplication: ï¿½
 	  * This is in fact a non-commutative linear Mapping (thus the Naming):
 	  * A*B with A being a Row Vector multiplied from the Left
 	  *
 	  * The Distributive Law applies:
-	  * M°(a+b) == M°a + M°b
-	  * (x+y)°M == x°M + y°M
+	  * Mï¿½(a+b) == Mï¿½a + Mï¿½b
+	  * (x+y)ï¿½M == xï¿½M + yï¿½M
 	  *
 	  * The Matrix itself is identical to the Derivative Jacobian Matrix of this linear Mapping:
 	  * (A*x)' = A
@@ -1130,13 +1149,13 @@ extends AMatrix {
 		return MAP(b, a, 0, b[0].length);
 	}
 
-	/** Scalar Product Multiplication: °
+	/** Scalar Product Multiplication: ï¿½
 	  * This is in fact a non-commutative linear Mapping (thus the Naming):
-	  * B°A with A being a Column Vector multiplied from the right
+	  * Bï¿½A with A being a Column Vector multiplied from the right
 	  *
 	  * The Distributive Law applies:
-	  * M°(a+b) == M°a + M°b
-	  * (x+y)°M == x°M + y°M
+	  * Mï¿½(a+b) == Mï¿½a + Mï¿½b
+	  * (x+y)ï¿½M == xï¿½M + yï¿½M
 	  *
 	  * The Matrix itself is identical to the Derivative Jacobian Matrix of this linear Mapping:
 	  * (A*x)' = A
@@ -1169,17 +1188,19 @@ extends AMatrix {
 	}
 
 	/** @see #MAP(int[], int[], int[][], int, int) 	 */
+	/** Maps the given row vector by the matrix from the right, within the given column range.
+	 * @see #MAP(int[], int[], int[][], int, int) 	 */
 	final static public int[] MAP(final int[] a, final int[][] b, final int start, final int stop) { //previously named mul()
-		return MAP(null, a, b, start, stop); 
+		return MAP(null, a, b, start, stop);
 	}
 
-	/** Scalar Product Multiplication: °
+	/** Scalar Product Multiplication: ï¿½
 	  * This is in fact a non-commutative linear Mapping (thus the Naming):
 	  * A*B with A being a Row Vector multiplied from the Left
 	  *
 	  * The Distributive Law applies:
-	  * M°(a+b) == M°a + M°b
-	  * (x+y)°M == x°M + y°M
+	  * Mï¿½(a+b) == Mï¿½a + Mï¿½b
+	  * (x+y)ï¿½M == xï¿½M + yï¿½M
 	  *
 	  * The Matrix itself is the Derivative Jacobian Matrix of the Mapping:
 	  * (A*x)' = A
@@ -1216,7 +1237,7 @@ extends AMatrix {
 			VectorInt.ADD_PROD_AT(ret, b[i], a[i], start, stop); } //+= Vector * Skalar!
 		return ret; }
 
-	/** Scalar Product Multiplication: °
+	/** Scalar Product Multiplication: ï¿½
 	  * This is in fact a non-commutative linear Mapping (thus the Naming):
 	  * A*B with A being a Row Vector multiplied from the Left
 	  *
@@ -1243,13 +1264,13 @@ extends AMatrix {
 		return ret;
 	}
 
-	/** Scalar Product Multiplication: °
+	/** Scalar Product Multiplication: ï¿½
 	  * This is in fact a non-commutative linear Mapping (thus the Naming):
 	  * A*B with A consisting of Row Vectors multiplied from the Left
 	  *
 	  * Distributive Law applies:
-	  * M°(a+b) == M°a + M°b
-	  * (x+y)°M == x°M + y°M
+	  * Mï¿½(a+b) == Mï¿½a + Mï¿½b
+	  * (x+y)ï¿½M == xï¿½M + yï¿½M
 	  *
 	  * The Matrix itself is the Derivative Jacobian Matrix of the Mapping:
 	  * (A*x)' = A
@@ -1291,8 +1312,8 @@ extends AMatrix {
 	  * arg is a Row Vector multiplied from the Left
 	  *
 	  * The Distributive Law applies:
-	  * M°(a+b) == M°a + M°b
-	  * (x+y)°M == x°M + y°M
+	  * Mï¿½(a+b) == Mï¿½a + Mï¿½b
+	  * (x+y)ï¿½M == xï¿½M + yï¿½M
 	  *
 	  * This Multiplication can also multiply the Transpose Tensors,
 	  * by just swapping the Operands!
@@ -1319,8 +1340,8 @@ extends AMatrix {
 	  * arg is a Row Vector multiplied from the Left
 	  *
 	  * The Distributive Law applies:
-	  * M°(a+b) == M°a + M°b
-	  * (x+y)°M == x°M + y°M
+	  * Mï¿½(a+b) == Mï¿½a + Mï¿½b
+	  * (x+y)ï¿½M == xï¿½M + yï¿½M
 	  *
 	  * This Multiplication can also multiply the Transpose Tensors,
 	  * by just swapping the Operands!
@@ -1337,7 +1358,7 @@ extends AMatrix {
 	//  static Methods for Matrix Operations (symmetric/antisymmetric)
 	////////////////////////////////////////////////////////////////////////////////
 
-	/**
+	/** Returns whether the given matrix is symmetric.
 	  * @param arr The Array to test for Symmetry
 	  * @return true if the given Array is symmetric, i.e. a[i][j] = a[j][i].
 	  */
@@ -1345,7 +1366,7 @@ extends AMatrix {
 		return IS_SYMMETRIC(arr, arr.length);
 	}
 
-	/**
+	/** Returns whether the leading square section of the given matrix is symmetric.
 	  * @param arr The Array to test for Symmetry
 	  * @return true if the given Array is symmetric, i.e. a[i][j] = a[j][i].
 	  */
@@ -1360,14 +1381,14 @@ extends AMatrix {
 		return true;
 	}
 
-	/**
+	/** Returns whether the given matrix is anti-symmetric.
 	  * @param arr The Array to test for Symmetry
 	  * @return true if the given Array is symmetric, i.e. a[i][j] = -a[j][i].
 	  */
 	final static public boolean IS_ANTI_SYMMETRIC(final int[][] arr) {
 		return IS_ANTI_SYMMETRIC(arr, arr.length); }
 
-	/**
+	/** Returns whether the leading square section of the given matrix is anti-symmetric.
 	  * @param arr The Array to test for Symmetry
 	  * @return true if the given Array is symmetric, i.e. a[i][j] = -a[j][i].
 	  */
@@ -1400,7 +1421,7 @@ extends AMatrix {
 	final static public void COPY_LOWER_TO_UPPER(final int[][] a) {
 		COPY_LOWER_TO_UPPER(a, a.length); }
 	
-	/**
+	/** Overwrites the upper triangle with the lower triangle's values, in place.
 	  * @param arr The Array to make symmetric
 	  * @return the given Array made symmetric by copying the lower Triangle to the upper.
 	  */
@@ -1413,7 +1434,7 @@ extends AMatrix {
 		return a;
 	}
 	
-	/**
+	/** Makes the matrix symmetric in place by adding each off-diagonal pair together.
 	  * @param arr The Array to be made symmetric
 	  * @return the given Array made symmetric.
 	  */
@@ -1428,7 +1449,7 @@ extends AMatrix {
 		return arr;
 	}
 
-	/**
+	/** Makes the matrix anti-symmetric in place by subtracting each off-diagonal pair.
 	  * @param arr The Array to be made antisymmetric
 	  * @return the given Array made antisymmetric by subtracting the Upper from the Lower Triangle.
 	  */
@@ -1443,7 +1464,7 @@ extends AMatrix {
 		return arr;
 	}
 
-	/**
+	/** Negates every element of the matrix, in place.
 	  * @return the Negative of the given Array
 	  * @param ret Array with the Values to be processed. Also returned by this Method.
 	  */
@@ -1453,7 +1474,7 @@ extends AMatrix {
 		return NEG_AT(ret, 0, ret.length, 0, ret[0].length);
 	}
 
-	/**
+	/** Negates the elements within the given row and column range, in place.
 	  * @return the Negative of the given Array
 	  * @param ret Array with the Values to be processed. Also returned by this Method.
 	  * @param start1 Index from  where the outer Array is processed
@@ -1467,7 +1488,7 @@ extends AMatrix {
 		return ret;
 	}
 
-	/**
+	/** Replaces every element with its absolute value, in place.
 	  * @return the absolute Value of the Values in the given Array
 	  * @param ret Array with the Values to be processed. Also returned by this Method.
 	  */
@@ -1632,7 +1653,7 @@ extends AMatrix {
 		return a; 
 	}
 
-	/**
+	/** Returns a new all-zero square matrix of the given dimension.
 	 * @return a Zero Matrix (zero Mapping) for the given Dimension.
 	 */
 	final static public int[][] ZERO(final int dim) {
@@ -1661,7 +1682,9 @@ extends AMatrix {
 		return true;
 	}
 
-	/** @see Object#equals(java.lang.Object)	 */
+	/** Returns whether two matrices of possibly different declared lengths are equal, treating
+	 * any excess rows in the longer one as required to be zero.
+	 * @see Object#equals(java.lang.Object)	 */
 	final static public boolean EQUALS(final int[][] a, final int aLength, final int[][] b, final int bLength) {
 		if (a == b) {
 			return true; }
@@ -1676,12 +1699,14 @@ extends AMatrix {
 		} 
 	}
 	
-	/** @see Object#equals(java.lang.Object)	 */
+	/** Returns whether the two given matrices are equal.
+	 * @see Object#equals(java.lang.Object)	 */
 	final static public boolean EQUALS(final int[][] a, final int[][] b) {
-		return EQUALS(a, a.length, b, b.length); 
+		return EQUALS(a, a.length, b, b.length);
 	}
-	
-	/** @see Object#equals(java.lang.Object)
+
+	/** Returns whether the two matrices are equal within the given row range.
+	 * @see Object#equals(java.lang.Object)
 	 */
 	final static public boolean EQUALS(final int[][] a, final int[][] b, final int start, final int stop) {
 		for (int i = stop; --i >= start; ) {
@@ -1725,7 +1750,8 @@ extends AMatrix {
 		return true;
 	}
 
-	/** @return this Vector with the Rows permuted according to the given Permutation     */
+	/** Permutes every row's columns according to the given index, in place.
+	 * @return this Vector with the Rows permuted according to the given Permutation     */
 	final static public int[][] PERMUTE_COLS_AT(final int[][] a, final int[] index) {
 		int[] tmp, swp = new int[index.length]; //reusing the Array since no Permutation in Place!
 		for (int i = a.length; --i >= 0;) {
@@ -1743,7 +1769,8 @@ extends AMatrix {
 		return PERMUTE_ROWS(new int[a.length][], a, index);
 	}
 
-	/** @return this Vector with the Rows permuted according to the given Permutation     */
+	/** Fills {@code ret} with the rows of {@code a} reordered according to the given index.
+	 * @return this Vector with the Rows permuted according to the given Permutation     */
 	final static public int[][] PERMUTE_ROWS(final int[][] ret, final int[][] a, final int[] index) {
 		for (int i = index.length; --i >= 0;) 
 			ret[i] = a[index[i]];
@@ -1811,7 +1838,7 @@ extends AMatrix {
 		return ORTHO_AT(COPY(a), null);
 	}
 
-	/**
+	/** Fills the given array with the maximum value of every row.
 	 * @return Maximum Value of the every Row in the Array.
 	 */
 	final static public int[] MAX_VAL(final int[] ret, final int[][] arr) {
@@ -2340,7 +2367,7 @@ extends AMatrix {
 		return true;
 	}
 
-	//	final static public boolean  antiSym  (); ð antiHerm fuer reelle Matrizen;
+	//	final static public boolean  antiSym  (); ï¿½ antiHerm fuer reelle Matrizen;
 
 	/**true, when the Matrix is normal, i.e. M*M^T = M^T*M.
 	 * i.e. M*M^T is symmetric
@@ -2491,18 +2518,19 @@ extends AMatrix {
 	/// #region : Accessor Methods (getXXX/isXXX/setXXX)
 	////////////////////////////////////////////////////////////////////////////////
 
-	/**
-	 * @param original Returns the internal Structure by Reference! 
-	 * Should usually be false(Default), except when it is guaranteed, 
-	 * that the Array will be used Read-Only.  
-	 * @see #toArray() 
+	/** Returns the backing array directly at depth 0, or a (deep when depth &gt; 1) copy otherwise.
+	 * @param original Returns the internal Structure by Reference!
+	 * Should usually be false(Default), except when it is guaranteed,
+	 * that the Array will be used Read-Only.
+	 * @see #toArray()
 	 * @return the Items	 */
 	public int[][] getItems(final int depth) {
-		if (depth == 0) 
-			return items; 
-		return COPY(this.items, this.itemCount, depth > 1); } //, this.itemCount); } 
-	
-	/** @return a Copy of the internal List 	 */
+		if (depth == 0)
+			return items;
+		return COPY(this.items, this.itemCount, depth > 1); } //, this.itemCount); }
+
+	/** Returns a shallow copy of the backing array.
+	 * @return a Copy of the internal List 	 */
 	public int[][] getItems() { return getItems(0); }
 	
 	/**Returns the component at the specified index.
@@ -2517,7 +2545,8 @@ extends AMatrix {
 		return null;
 	}
 
-	/** @return the item at the given Position as an Object */
+	/** Returns the row at the given position, boxed as a plain {@code Object}.
+	 * @return the item at the given Position as an Object */
 	public Object getAt(final int i) { return getVectorAt(i); }
 	
 	/**Sets (adds or replaces) the component at the specified index.
@@ -2740,12 +2769,14 @@ extends AMatrix {
 		return false; 
 	}
 	
-	/** @see Object#equals(java.lang.Object)	 */
+	/** Returns whether this matrix's current rows equal the given raw array.
+	 * @see Object#equals(java.lang.Object)	 */
 	public boolean equals(final int[][] arg) {
 		return EQUALS(items, itemCount, arg, arg.length);
 	}
-	
-	/** @see Object#equals(java.lang.Object)	 */
+
+	/** Returns whether this matrix's current rows equal the given matrix's.
+	 * @see Object#equals(java.lang.Object)	 */
 	public boolean equals(final MatrixInt arg) {
 		return EQUALS(items, itemCount, arg.items, arg.itemCount);
 	}
@@ -2858,8 +2889,8 @@ extends AMatrix {
 	 */
 	//	final static public int[][] MinMax(int[][] arr) { }
 
-	/**
-	 * @return the Minimum Values of each Column 
+	/** Fills the given array with the minimum value of every column.
+	 * @return the Minimum Values of each Column
 	 */
 	public int[] Min(final int[] ret) {
 		return MIN(ret, items);
@@ -2874,7 +2905,8 @@ extends AMatrix {
 		return MIN(items, 0, itemCount);
 	}
 
-	/** @return the Maximum Values of each Column */
+	/** Fills the given array with the maximum value of every column.
+	 * @return the Maximum Values of each Column */
 	public int[] Max(final int[] ret) {
 		return MAX(ret, items);
 	}
@@ -2944,9 +2976,10 @@ extends AMatrix {
 		return this;
 	}
 
-	/** @return the Extent of the Polygon
+	/** Returns the polygon's extent as a two-row array of per-column minimum and maximum values.
+	 * @return the Extent of the Polygon
 	 * i.e. the Minimum and Maximum Values of each Column in two Vectors 	 */
-	public int[][] getExtent() { return EXTENT(null, this.items, 0, this.itemCount); } 
+	public int[][] getExtent() { return EXTENT(null, this.items, 0, this.itemCount); }
 
 	/**
 	 * Reads the Order of the Points of a single Plane from the current ResultSet
