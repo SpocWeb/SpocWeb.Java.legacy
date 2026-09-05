@@ -21,3 +21,10 @@ tools/mementos	folder	tools/mementos	code/state_snapshot, code/marker_interface	
 tools/mementos/Originator.java:Originator	class	tools/mementos/Originator.java	code/state_snapshot, code/interface_contract	Memento Pattern	infrastructure	stable	low
 tools/threads/TimeOuter.java:TimeOuter	class	tools/threads/TimeOuter.java	code/watchdog_thread, code/timeout_handling, code/thread_interruption	Concurrency	infrastructure	experimental	low
 tools/threads	folder	tools/threads	code/watchdog_thread, code/timeout_handling	Concurrency	infrastructure	experimental	low
+knowledge/IObject.java:IObject	class	knowledge/IObject.java	code/entity_model, code/interface_contract, code/type_system	Domain Model, Object Classification	domain	stable	low
+knowledge/IAttribute.java:IAttribute	class	knowledge/IAttribute.java	code/entity_model, code/interface_contract, code/domain_model	Domain Model, Attribute Modelling	domain	stable	low
+knowledge/IRelation.java:IRelation	class	knowledge/IRelation.java	code/entity_model, code/domain_model, code/interface_contract	Domain Model, Relationship Modelling	domain	stable	low
+knowledge/IDescriptor.java:IDescriptor	class	knowledge/IDescriptor.java	code/interface_contract, code/accessor, code/metadata	Domain Model, Naming	domain	stable	low
+knowledge/IReadyFlag.java:IReadyFlag	class	knowledge/IReadyFlag.java	code/state_flag, code/interface_contract	State Tracking	domain	stable	low
+knowledge/IDirtyFlag.java:IDirtyFlag	class	knowledge/IDirtyFlag.java	code/state_flag, code/interface_contract	State Tracking	domain	stable	low
+knowledge/IPrimaryKey.java:IPrimaryKey	class	knowledge/IPrimaryKey.java	code/composite_key, code/primary_key_lookup, code/sql_generation, code/reflection	Persistence, Record Identity	persistence	stable	medium

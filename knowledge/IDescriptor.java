@@ -1,7 +1,17 @@
 package knowledge;
 
 /**
-  * Defines Methods for an Object that contains a Name and a Description
+  * Gives an object a human-readable name and description.
+  *
+  * <p>The two {@code STR_} constants are the column and field names those two properties
+  * are stored under, exposed here so persistence code names them once rather than
+  * repeating string literals.
+  * <!-- docstate
+  * pass: 2
+  * mtime: 2026-09-05T08:08:18Z
+  * digest: fa851efe1fb3361d5f2a89597fc80163781a5806062d7de484091002c9aae71e
+  * stale: false
+  * -->
   */
 public interface IDescriptor {
 

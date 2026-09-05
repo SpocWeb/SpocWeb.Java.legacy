@@ -2,8 +2,24 @@ package knowledge;
 
 import java.sql.SQLException;
 
-/** Describes the List of available Statuses for most Objects in this Package.
- *  Also Base Class for most Objects in this Package.
+/**
+ * Base interface for most objects in this package, giving each one a {@link Status} and a
+ * {@link Type}.
+ *
+ * <p>Both are exposed twice: as the resolved object, which may hit the database and so
+ * throws, and as the raw integer ID, which is whatever the record already holds and never
+ * throws. Callers that only need to compare or persist an object should prefer the ID
+ * accessors, because resolving is the expensive half.
+ *
+ * @see Status the lifecycle state an object is in
+ * @see Type the classification an object belongs to
+ * @see IAttribute the sub-interface for objects qualifying another object
+ * <!-- docstate
+ * pass: 2
+ * mtime: 2026-09-05T08:07:26Z
+ * digest: 4855d745126326a3a5dfef45e7fef31c9f50798a59a098db19119792967a942d
+ * stale: false
+ * -->
  */
 public interface IObject {
 
@@ -27,5 +43,9 @@ public interface IObject {
 	/** Returns the Type for this Object */
 	int getTypeID();
 
-    int attribute1 = 0;	
+	/**
+	 * Unused placeholder left over from a modelling-tool template, referenced nowhere in the
+	 * tree.
+	 */
+    int attribute1 = 0;
 }
