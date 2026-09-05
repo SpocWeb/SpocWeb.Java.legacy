@@ -2,6 +2,71 @@
 
 ## Status
 
+**2026-09-05 (latest): session paused here by explicit user request ("pause at the
+next milestone, update HANDOFF.md so the next session can take over").** Everything
+below reflects the exact state at pause time - read this before doing anything else.
+
+**What just finished and is fully committed+pushed (both `D:/_/_Matthias/Code/Java` and
+`D:/_/_AI`):**
+- Milestone C of the companion CLI (`D:/_/_AI/skills/Java.ReadMeGenerator/ReadMeGenerator/`)
+  is now **entirely built** - part 1 (repair/dedup: `list-corrupted`, `fix-doc-split`,
+  `fix-javadoc-escape`, `find-duplicates`, `annotate-pairs`) and part 2 (migration/scaffold:
+  `resolve-tag-conflicts`, `migrate-frontmatter`, `add-tree`/`remove-tree`,
+  `match-axis-b`/`apply-axis-b-matches`, `migrate-collaborators`,
+  `scaffold`/`scaffold-remarks`/`scaffold-collaborators`) both landed, 129 tests green, jar
+  rebuilt at `.../ReadMeGenerator/target/readmegenerator.jar`. `SKILL.md`'s milestone table
+  and `cli-reference.md` are up to date. **The `scaffold` command is now available** for
+  future batches but has not yet been adopted in the workflow below - still using
+  hand-authored Javadoc via Write/Edit per the existing per-batch agent prompts. Worth
+  reconsidering for efficiency in a future session, not required.
+- Claims-table batches closed out this session (Pass 1-3 + tags + HANDOFF + commit/push,
+  all `done` below): `graphic` (root+example+implement+svg, 34 bugs), `graphic/math3D`
+  (1 bug, +1 new axis-A tag `code/platonic_solids`), `graphic/mvc` (10 bugs, +4 new axis-A
+  tags `code/matrix_operations`/`code/vector_operations`/`code/texture_mapping`/`code/z_ordering`),
+  `math/matrix` (11 bugs, 0 new tags).
+
+**IN-FLIGHT - needs immediate attention next session:**
+- `math/vector` (15 files, 33025 lines) is **partially done, row still says `claimed`**.
+  9 of 15 files are documented, tagged (NOT YET - see below), 16 bugs already verified and
+  recorded in the Bugs Found table, and committed/pushed. The other 6 very large files
+  (`VectorChar.java`, `VectorLong.java`, `VectorShort.java`, `VectorInt.java`,
+  `VectorFloat.java`, `VectorDouble.java`, 2400-6500 lines each) were handed to a background
+  agent (dispatched this session, task/agent id `a882d24bf9ae7f62b` - only meaningful within
+  this session's process, will NOT resume automatically in a new session) to finish. **That
+  agent's completion status is unknown at pause time** - it may have finished, partially
+  finished, or still be running when this session ends (background agents do not persist
+  across a session restart). First action next session: run
+  `java -jar D:/_/_AI/skills/Java.ReadMeGenerator/ReadMeGenerator/target/readmegenerator.jar list-todo math/vector`
+  to see the real current state, then either (a) if it's 0 rows, the agent finished -
+  proceed straight to gathering its bug/tag report equivalent by reading the 6 files'
+  fresh `<!-- docstate -->`/TODO markers yourself and running Pass 4-7, or (b) if rows
+  remain, dispatch a fresh agent (same prompt pattern as the other batches this session) to
+  pick up wherever `list-todo` says work remains, being careful to re-verify which of the 6
+  files are actually done vs. not via `list-todo` per-file (do not trust file existence of
+  Javadoc alone).
+- **raw-tags.tsv and tags-index.tsv/tags-schema.yaml do NOT yet have `math/vector` rows** -
+  the tags pipeline (Pass 4-7) for math/vector was deliberately deferred until the whole
+  folder is done, since Pass 3 (folder ReadMe.md) needs the complete class list. Do not run
+  Pass 4-7 for math/vector until `list-todo math/vector` returns zero rows across all 15
+  files.
+
+**Still unclaimed, not yet started (pick up after math/vector is closed out):**
+`streamIO/copy` (206 files, 42863 lines), `function` (204 files, 27689 lines),
+`streamIO/object` (185 files, 38857 lines), `streamIO/integer` (157 files, 39243 lines) -
+these are large enough to likely need sub-batch splitting by line count (see how `math` and
+`graphic` were split into sub-rows earlier this session) before dispatching, to stay under
+the ~400k-token-per-agent budget in the `parallelism-rules` skill.
+
+**Standing instructions still in force:** "finish all passes of /Java.ReadMeGenerator on
+the whole corpus autonomously, only stop when problems occur" + "continue as before with up
+to 5 parallel agents" (reaffirmed via "build Milestone C, then continue"). The pause just
+now was an explicit user interruption, not a stopping problem - resume the autonomous run
+per those standing instructions once picked back up, following the exact orchestration
+pattern used throughout this session (see "up to 5 parallel agents" coordination rules
+below): orchestrator alone runs git/tags/HANDOFF edits; dispatched agents do Pass 1+2+3 only
+for their assigned folder, never spawn sub-agents of their own, and must independently
+verify `list-todo` returns zero rows before reporting done (not just `check-stale`).
+
 **2026-09-05: full-corpus autonomous run started** (main session, no sub-agents per
 parallelism rules). Working the Claims table below smallest-unclaimed-first, one batch
 (Pass 1+2 -> Pass 3 -> Pass 4-7) at a time, committing and pushing at each folder
