@@ -80,3 +80,11 @@ streamIO/exception/FailureException.java:FailureException	class	streamIO/excepti
 streamIO/exception/OperationNotSupported.java:OperationNotSupported	class	streamIO/exception/OperationNotSupported.java	code/custom_exception	Error Handling	infrastructure	stable	low
 streamIO/exception/ReadOnlyException.java:ReadOnlyException	class	streamIO/exception/ReadOnlyException.java	code/custom_exception	Error Handling	infrastructure	stable	low
 streamIO/exception	folder	streamIO/exception	code/custom_exception, code/exception_wrapping	Error Handling	infrastructure	broken	low
+streamIO/vector/CombinationStream.java:CombinationStream	class	streamIO/vector/CombinationStream.java	code/combinatorics	Combinatorics	utility	stable	medium
+streamIO/vector/CombinationStream2.java:CombinationStream2	class	streamIO/vector/CombinationStream2.java	code/combinatorics	Combinatorics	utility	broken	medium
+streamIO/vector/CombinationsRepeating.java:CombinationsRepeating	class	streamIO/vector/CombinationsRepeating.java	code/combinatorics	Combinatorics	utility	stable	high
+streamIO/vector	folder	streamIO/vector	code/combinatorics	Combinatorics	utility	broken	medium
+streamIO/vector/random/RandomVectorPseudo.java:RandomVectorPseudo	class	streamIO/vector/random/RandomVectorPseudo.java	code/random_number_generation	Random Sampling, Monte Carlo	utility	stable	medium
+streamIO/vector/random/RandomVectorPseudoSequential.java:RandomVectorPseudoSequential	class	streamIO/vector/random/RandomVectorPseudoSequential.java	code/random_number_generation	Random Sampling, Monte Carlo	utility	stable	high
+streamIO/vector/random/RandomVectorQuasi.java:RandomVectorQuasi	class	streamIO/vector/random/RandomVectorQuasi.java	code/random_number_generation, code/quasi_random_sequence	Random Sampling, Monte Carlo	utility	stable	high
+streamIO/vector/random	folder	streamIO/vector/random	code/random_number_generation, code/quasi_random_sequence	Random Sampling, Monte Carlo	utility	stable	high

@@ -61,7 +61,7 @@ cost more tokens than one and burn the 5-hour window N times faster.
 | `streamIO/asyncMessage` | 7 | 541 | 0 | unclaimed | - |
 | `analysis` | 6 | 319 | 0 | unclaimed | - |
 | `streamIO/adapter` | 6 | 435 | 0 | unclaimed | - |
-| `streamIO/vector` | 6 | 947 | 0 | unclaimed | - |
+| `streamIO/vector` | 6 | 947 | 6 | done | main |
 | `streamIO/exception` | 5 | 536 | 5 | done | main |
 | `streamIO/fileSystem` | 4 | 288 | 4 | done | main |
 | `streamIO/testing` | 3 | 433 | 3 | done | main |
@@ -177,6 +177,7 @@ same harness against it. A test that has not been seen red proves nothing.
 | streamIO/fileSystem/FileIterator.java | FileIterator | isValid() | 76 | Returns `!available`, inverted relative to its own `available` field and to the sibling `FileBackupIterator.isValid()` (which returns `available` directly): reports "valid" only once exhausted. | Medium | open |
 | streamIO/fileSystem/FileIterator.java | FileIterator | currItem() | 100 | Always returns `null`: `nextItem()` never assigns the `currItem` field before returning its result, unlike the sibling `FileBackupIterator.nextItem()` which does `return filter = new FileOutputStream(...)`. | Low | open |
 | streamIO/exception/ChainedException.java | ChainedException | printStackTrace(PrintStream) | 136 | The `PrintWriter` wrapping the given `PrintStream` is never flushed or closed, so the printed trace can remain buffered and never reach the stream. The sibling `BaseException.printStackTrace(PrintStream)` does the identical job but explicitly calls `pw.close()`, commented "important to flush!". | Low | open |
+| streamIO/vector/CombinationStream2.java | CombinationStream2 | (field `L`) | 34 | The Logger is constructed with `CombinationStream.class` instead of `CombinationStream2.class` (copy-paste from the sibling class), so every message this Logger writes is mislabeled as coming from `CombinationStream`. | Low | open |
 
 ## Tool defects found and fixed during the pilot
 

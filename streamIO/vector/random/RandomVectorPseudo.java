@@ -17,6 +17,15 @@ import function.byref.ByRefInt;
  * @author heuerm
  * @see streamIO.object.Cantor which implements the Cantor Algorithm for Streams. 
  * @see streamIO.vector.random.RandomVectorPseudoSequential where you always have to complete one Cycle. 
+ * <!-- docstate
+ * pass: 2
+ * mtime: 2026-09-05T09:33:00Z
+ * digest: 3e47cfe7363cb50e3ffd329e2085fc9a76a3b378dd1d993eb515eb480bab8d3f
+ * stale: false
+ * tags: [code/random_number_generation]
+ * concepts: [Random Sampling, Monte Carlo]
+ * facets: {layer: utility, status: stable, complexity: medium}
+ * -->
  */
 public class RandomVectorPseudo {
 	
@@ -46,8 +55,7 @@ public class RandomVectorPseudo {
 	/** Integer Vector returned by CombinationsRepeating 	 */
 	final int[] v;
 	
-	/**
-	 * 
+	/** Creates a Generator for {@code _dim}-dimensional Vectors quantized to {@code _maxOctave} Bits.
 	 * @param _dim
 	 * @param _maxOctave
 	 */
@@ -61,11 +69,13 @@ public class RandomVectorPseudo {
 		v = combinations.currInt(); 
 	}
 	
+	/** Advances to and returns the next binary Pseudo-Random Vector, reverted from {@link #v}. */
 	public int[] nextInt() {
-		maxLevelOfNextChange(); 
-		return r; 
+		maxLevelOfNextChange();
+		return r;
 	}
-	
+
+	/** Advances the underlying Combination and refills {@link #r} by bit-reverting {@link #v}. */
 	protected int maxLevelOfNextChange() {
 		final int level = v.length-1; //combinations.maxLevelOfNextChange();
 		combinations.nextInt(); 
@@ -74,6 +84,7 @@ public class RandomVectorPseudo {
 		return level; 
 	}
 	
+	/** Advances to and returns the next binary Pseudo-Random Vector, normalized to [0,1). */
 	public float[] nextFloat() {
 		final int level = maxLevelOfNextChange(); 
 		for(int i = level+1; --i >= 0;) 

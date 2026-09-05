@@ -18,6 +18,15 @@ import streamIO.Log;
  * @see streamIO.vector.random.RandomVectorPseudo can be stopped at any time, 
  * but does not distribute it's Points evenly. 
  * @see 
+ * <!-- docstate
+ * pass: 2
+ * mtime: 2026-09-05T09:33:20Z
+ * digest: c77041925250afa25a26231bb0785d68501f972a9cb6ac4e7e18b618a0a06ffb
+ * stale: false
+ * tags: [code/random_number_generation]
+ * concepts: [Random Sampling, Monte Carlo]
+ * facets: {layer: utility, status: stable, complexity: high}
+ * -->
  */
 public class RandomVectorPseudoSequential {
 	
@@ -47,8 +56,7 @@ public class RandomVectorPseudoSequential {
 	/** Local State of the Vector	 */
 	//protected final RandomPseudo[] generators;
 	
-	/**
-	 * 
+	/** Creates a Generator for {@code dim}-dimensional Vectors quantized to {@code maxOctave} Bits.
 	 * @param dim
 	 * @param maxOctave
 	 */
@@ -66,8 +74,10 @@ public class RandomVectorPseudoSequential {
 		step = maxValue >> 1;
 	}
 	
+	/** Advances to and returns the next integer Vector in the sequential Cover of the SuperCube. */
 	public int[] nextInt() { calcNextInt(); return v; }
-	
+
+	/** Advances to and returns the next Vector, normalized to [0,1), only recomputing changed Indices. */
 	public float[] nextFloat() {
 		int minIndex = calcNextInt();
 		if (minIndex < 0)
@@ -77,10 +87,7 @@ public class RandomVectorPseudoSequential {
 		return x;
 	}
 	
-	/**
-	 * 
-	 * @param i Index into the Result Vector 
-	 * @param uniqueParent Flag whether the Value Combination of the Parent Elements is unique so far. 
+	/** Advances {@link #v} to its next State, starting the recursive search from Index 0.
 	 * @return the lowest changed Index
 	 */
 	protected int calcNextInt() { return calcNextInt(0, false); }

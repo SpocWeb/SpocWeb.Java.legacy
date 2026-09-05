@@ -21,6 +21,15 @@ import function.byref.combinatoric.CombiFuncs;
  * Also contains a static Method to generate all Combinations for fixed N and dim.  
  * @author heuerm
  *
+ * <!-- docstate
+ * pass: 2
+ * mtime: 2026-09-05T09:32:44Z
+ * digest: 87e3f406ec7a7cdcf37a3bd422e89ab0572225b1c38c5bfb93ebfb5f778d3c68
+ * stale: false
+ * tags: [code/combinatorics]
+ * concepts: [Combinatorics]
+ * facets: {layer: utility, status: stable, complexity: high}
+ * -->
  */
 public class CombinationsRepeating {
 
@@ -115,7 +124,7 @@ public class CombinationsRepeating {
 	 */
 	public int[] nextInt() { maxLevelOfNextChange(); return v; }
 	
-	/**
+	/** Sets the current Dimension and its remaining Item Count, and resets its Vector Slot.
 	 * @param _dim
 	 * @param _remainder
 	 */
@@ -178,7 +187,7 @@ public class CombinationsRepeating {
 		testCombRep(5, 7); 		
 	}
 
-	/**
+	/** Generates and logs all Combinations to select {@code count} Items from {@code dim} Values.
 	 * @return the Array generated
 	 */
 	private static int[][] testCombRep(final int dim, final int count) {

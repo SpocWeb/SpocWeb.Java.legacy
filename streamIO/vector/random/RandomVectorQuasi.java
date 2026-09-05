@@ -28,6 +28,15 @@ import streamIO.integer.random.ARandomInt;
   * @see streamIO.vector.random.RandomVectorPseudo is not quite evenly distributed 
   * @see streamIO.integer.random.RandomPseudoBinary generates the same 1-Dim binary Halton Sequence. 
   * @see streamIO.integer.random.RandomPseudoGAdic generates a 1-Dim g-Adic Halton Sequence. 
+  * <!-- docstate
+  * pass: 2
+  * mtime: 2026-09-05T09:33:25Z
+  * digest: e6c48847de92d1193c04f100c248ca126af7f4b63c37390376bf64bbecc8c4bc
+  * stale: false
+  * tags: [code/random_number_generation, code/quasi_random_sequence]
+  * concepts: [Random Sampling, Monte Carlo]
+  * facets: {layer: utility, status: stable, complexity: high}
+  * -->
   */
 public class RandomVectorQuasi
 extends ARandomInt {
@@ -104,8 +113,8 @@ extends ARandomInt {
 	protected static final int[][] PRIMITIVE_POLYNOMIALS ={
 			{}, //0
 			{0}, //x+1
-			{1}, //x²+x+1
-			{1,2}, //x³+x+1 and x²+x²+1
+			{1}, //xï¿½+x+1
+			{1,2}, //xï¿½+x+1 and xï¿½+xï¿½+1
 			{1,4}, //4,4
 			{2,4,7,11,13,14},
 			{1,13,16,19,22,25},
@@ -193,7 +202,8 @@ extends ARandomInt {
 	
 	///////////////////////////////////////////////////////////////////////////
 	
-	/** @see streamIO.integer.IStreamIn_Int#reSet()	 */
+	/** Resets the Generator's Seed to {@link #DEFAULT_SEED}.
+	 * @see streamIO.integer.IStreamIn_Int#reSet()	 */
 	public IReSetAble reSet() { //throws IOException {
 		reSet(DEFAULT_SEED); return this;  
 	}
