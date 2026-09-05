@@ -8,6 +8,15 @@ import streamIO.exception.BaseException;
   * Used in
   *
   * Design Decisions:
+  * <!-- docstate
+  * pass: 2
+  * mtime: 2026-09-05T10:13:32Z
+  * digest: 678715e69a95b83dea200923d97d55f23f71cee4620cf64dcf0f4d7e3b3f0492
+  * stale: false
+  * tags: [code/validation]
+  * concepts: [Custom Exception Type]
+  * facets: {layer: domain, status: legacy, complexity: low}
+  * -->
   */
 public class InvalidError
 extends BaseException {

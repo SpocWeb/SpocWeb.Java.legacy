@@ -15,6 +15,15 @@ import java.io.ObjectOutputStream;
  * but can extend a simple UniCast Object to a MultiCast Object
  * by adding a MultiCaster, if necessary.
  * The Method addObserver
+ * <!-- docstate
+ * pass: 2
+ * mtime: 2026-09-05T10:13:32Z
+ * digest: a32f6471d3d5bb15d4d766c6c05b666248b80f41d1ac54a3286cc6661af5543a
+ * stale: false
+ * tags: [code/attached_property]
+ * concepts: [Scratch Test Class]
+ * facets: {layer: test, status: unfinished, complexity: low}
+ * -->
  */
 public class testProperty {
 
@@ -25,6 +34,11 @@ public class testProperty {
 	 * via the command line.
 	 *
 	 * Tests all Methods in the Property Package.
+	 * <!-- docstate
+	 * tags: [code/attached_property]
+	 * concepts: [Scratch Test Entry Point]
+	 * facets: {layer: test, status: unfinished, complexity: low}
+	 * -->
 	 */
 	public static void main (String[] args) throws IOException {
 		Integer i = new Integer(44);

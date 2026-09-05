@@ -29,6 +29,15 @@ import tools.WorkerThread;
   * Created on	07-02-2002, 06:17 PM<p>
   * @author 	Matthias Heuer
   * @version	1.0
+  * <!-- docstate
+  * pass: 2
+  * mtime: 2026-09-05T10:13:32Z
+  * digest: f55d467177c579d9ef2f0d57975c2807140f727dfbd798b8cace41ea5aab9230
+  * stale: false
+  * tags: [code/validation, code/validation_rule]
+  * concepts: [Multi-Validator Chain]
+  * facets: {layer: domain, status: legacy, complexity: medium}
+  * -->
   */
 public class MultiValidator
 implements IValidator, IConstrained {

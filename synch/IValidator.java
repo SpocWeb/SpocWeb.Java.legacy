@@ -35,6 +35,15 @@ package synch;
   * Created on	07-02-2002, 06:12 PM<p>
   * @author 	Matthias Heuer
   * @version	1.0
+  * <!-- docstate
+  * pass: 2
+  * mtime: 2026-09-05T10:13:32Z
+  * digest: f3418635f5abda6f8b2d856548267459c0f3439c28137fb15989820f007a7eff
+  * stale: false
+  * tags: [code/validation]
+  * concepts: [Validator Interface]
+  * facets: {layer: domain, status: legacy, complexity: low}
+  * -->
   */
 public interface IValidator {
 

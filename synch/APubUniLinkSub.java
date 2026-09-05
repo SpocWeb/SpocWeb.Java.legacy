@@ -8,10 +8,7 @@ import graphs.ILinked;
   * Description:
   * Allows to chain Subscribers!
   * Can subscribe to a single Publisher only.
-  * Can automatically enchain multiple Subscribers. 
-  * Purpose:
-  * Linkable Subscriber Type
-  * Purpose / Responsibilities of this Class
+  * Can automatically enchain multiple Subscribers.
   *
   * Design Decisions / Implementation Details:
   * To alleviate the Change from a UniCast to a MultiCast,
@@ -32,6 +29,15 @@ import graphs.ILinked;
   * Created on	07-19-2002, 03:24 PM<p>
   * @author 	Matthias Heuer
   * @version	1.0
+  * <!-- docstate
+  * pass: 2
+  * mtime: 2026-09-05T10:44:17Z
+  * digest: 55923b0a3167ebfe54ca1f0608abea4c024d38e2e157d3278e2efa875bbd0ff2
+  * stale: false
+  * tags: [code/publish_subscribe, code/observer_pattern]
+  * concepts: [Publish-Subscribe Chain Link]
+  * facets: {layer: infrastructure, status: broken, complexity: medium}
+  * -->
   */
 public abstract class APubUniLinkSub
 implements IPublisher, ISubscriber, ILinkAble {
@@ -108,6 +114,12 @@ public ILinked getPrnt() { return subscriber; }
  */
 public void update(Object Source, Object Value, Object oldVal) {
 	myUpdate(Source, Value, oldVal);
+	// TODO: LOGIC: no null check on 'subscriber' before propagating. The chain is built
+	// by addSubscriber() so that the *last* (first-added) node ends up with subscriber ==
+	// null; when update() propagation reaches that terminal node, this throws a
+	// NullPointerException instead of just stopping. Every other Subscriber/Publisher in
+	// this package (e.g. Aspect.updateParent(), UniCaster) guards this call with
+	// 'if (subscriber != null)'.
 	subscriber.update(Source, Value, oldVal); }
 
 ////////////////////////////////////////////////////////////////////////////

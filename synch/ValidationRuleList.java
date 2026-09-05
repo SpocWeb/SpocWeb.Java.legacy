@@ -31,6 +31,15 @@ import tools.WorkerThread;
   * Created on	11-27-2002, 11:50 AM<p>
   * @author 	Matthias Heuer
   * @version	1.0
+  * <!-- docstate
+  * pass: 2
+  * mtime: 2026-09-05T10:44:11Z
+  * digest: 28aa68ace32a2808169134b57d4eb62d571706190454b6874547d82ff3493aa9
+  * stale: false
+  * tags: [code/validation_rule]
+  * concepts: [Validation Rule Chain]
+  * facets: {layer: domain, status: broken, complexity: medium}
+  * -->
   */
 public class ValidationRuleList
 implements IValidationRule {
@@ -117,7 +126,7 @@ implements IValidationRule {
 	/** a separate Thread is started to notify the Elements
 	 * This Thread watches the new Thread and catches Timeouts!
 	 */
-	protected void validateInThread(Object Value) 
+	protected void validateInThread(Object Value)
 		throws InvalidException {
 		Object[] params = {Value, null}; //local new Object, handed over to the Worker Thread!
 		WorkerThread t = new WorkerThread (params) {
@@ -129,11 +138,17 @@ implements IValidationRule {
 				}
 			}
 		};
-		try { t.startWithTimeOut(Timeout); 
+		try { t.startWithTimeOut(Timeout);
 		} catch (InterruptedException x) { //except if you use notify()
 			if (RuntimeExceptionHandler != null) {
 				RuntimeExceptionHandler.addItem(x); }
 		} //if this Thread is interrupted, also the Worker Thread should stop!
+		// TODO: LOGIC: 'params' only has 2 elements ({Value, null}), but this reads
+		// params[3] -- guaranteed ArrayIndexOutOfBoundsException every time this method
+		// runs (i.e. whenever Timeout > 0), regardless of whether the Worker Thread threw.
+		// The Exception is actually stored at params[1] (see Params[1] = x above); compare
+		// MultiValidator.notifyValidatorsInThread(), which correctly uses a 4-element array
+		// and checks params[3].
 		if (params[3] != null) { //rethrow the Exception caught on calling the Validator
 			throw (InvalidException) params[3]; }
 	}

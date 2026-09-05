@@ -26,6 +26,15 @@ import knowledge.DirtyFlag;
  * because it uses static local Variables in the Property Get Routines
  * for the boolean Flag and the actual Value!
  * You can usually get along without the boolean Flag
+ * <!-- docstate
+ * pass: 2
+ * mtime: 2026-09-05T10:13:32Z
+ * digest: ade88e75b70b80cb9aa48bbeb2e1d1dff8cf515f033445aa3488e91054b55439
+ * stale: false
+ * tags: [code/cache, code/attached_property]
+ * concepts: [Observable Property Wrapper]
+ * facets: {layer: domain, status: legacy, complexity: low}
+ * -->
  * by just using 'null' as an Indicator for an invalid Value. */
 public class ACachedProperty
 extends DirtyFlag

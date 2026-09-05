@@ -16,10 +16,20 @@ import structure.aspect.Aspect;
  *
  * Made abstract because of copyFrom().
  *
+ * <!-- docstate
+ * pass: 2
+ * mtime: 2026-09-05T10:13:32Z
+ * digest: 95190d558099fe02d5ed3267b4df65d96de9fa09c1fa33128dd889e4d44aa54b
+ * stale: false
+ * tags: [code/attached_property]
+ * concepts: [GUI Property Metadata]
+ * facets: {layer: domain, status: legacy, complexity: low}
+ * -->
  */
 public abstract class AAttribProperty
 	extends Aspect {
 
+	/** Initializing Constructor, forwarding the Name to the {@link Aspect} superclass.  */
 	public AAttribProperty(String name_) { super(name_); }
 
 	/**Determines whether the Value is enabled or not.

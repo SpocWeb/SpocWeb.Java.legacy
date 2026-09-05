@@ -28,6 +28,15 @@ import java.sql.SQLException;
   * Created on	10-15-2002, 12:57 AM<p>
   * @author 	Matthias Heuer
   * @version	1.0
+  * <!-- docstate
+  * pass: 2
+  * mtime: 2026-09-05T10:13:32Z
+  * digest: ab2dc44c2af6ee88cc8281a526f3b240cffb3602226a379a27d3876f3dcd908d
+  * stale: false
+  * tags: [code/validation_rule]
+  * concepts: [Path-Based Validation Rule]
+  * facets: {layer: domain, status: legacy, complexity: medium}
+  * -->
   */
 public class PathValidationRule
 extends ValidationRule {

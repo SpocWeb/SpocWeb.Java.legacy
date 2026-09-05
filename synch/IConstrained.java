@@ -28,6 +28,15 @@ package synch; //
   * Created on	03-22-2002, 08:29 AM<p>
   * @author 	Matthias Heuer
   * @version	1.0
+  * <!-- docstate
+  * pass: 2
+  * mtime: 2026-09-05T10:42:49Z
+  * digest: 8bf2a329abfe8bb2a0b41233a9b2968ecf256fe7de59970790b06b3932a8b36d
+  * stale: false
+  * tags: [code/observer_pattern, code/validation]
+  * concepts: [Constrained Publisher Interface]
+  * facets: {layer: domain, status: legacy, complexity: low}
+  * -->
   */
 public interface IConstrained {
 
@@ -41,10 +50,12 @@ public interface IConstrained {
 	/** removes the given Validator from the List of Validators	  */
 	IValidator removeValidator(IValidator observer);
 
-	/** @return false if this Validator was not subscribed at all.	 */
+	/** Checks whether the given Validator is currently registered.
+	  * @return true if the given Validator is currently registered.	 */
 	public boolean isValidator(IValidator arg);
 
-	/** @return the Number of Validators of this Publisher	 */
+	/** Reports how many Validators are currently registered.
+	  * @return the current Number of registered Validators	 */
 	public int countValidators();
 
 	/** Notification can be triggered externally

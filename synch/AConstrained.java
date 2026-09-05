@@ -3,29 +3,28 @@ package synch;
 /**
   * Title: AConstrained<p>
   * Description:
-  * Purpose:
-  * Abstract Base Class for validating and subscribing Publishers
-  * Purpose / Responsibilities of this Class
-  *
-  * Design Decisions / Implementation Details:
-  * If similar Classes exist (e.g. Polymorphism),
-  * characterize the specific Differences to compare these.
-  *
-  * Extends UniCastConstrained  because ...
-  * Implements Interface IValidator because ...
-  * Consists of Members ...
-  * Uses Class for ...
+  * Abstract base class that combines the single-subscriber publish/subscribe
+  * mechanism of {@link UniCastConstrained} with the {@link IValidator} and
+  * {@link ISubscriber} roles, so a subclass can both veto and react to a
+  * Value change through the same Object.
   *
   * Known SubClasses:
   * @see synch.aspect.Aspect
-  *
-  * Known Uses: <none>
   *
   * Copyright:	Copyright (c) Matthias Heuer<p>
   * Company:	personal<p>
   * Created on	08-01-2002, 10:51 AM<p>
   * @author 	Matthias Heuer
   * @version	1.0
+  * <!-- docstate
+  * pass: 2
+  * mtime: 2026-09-05T10:42:20Z
+  * digest: 48c17a4495dc84c18992e882f1097c178f516a480ae5943d170f8cae692dc4b2
+  * stale: false
+  * tags: [code/observer_pattern, code/validation]
+  * concepts: [Constrained Publisher Base]
+  * facets: {layer: domain, status: legacy, complexity: medium}
+  * -->
   */
 public abstract class AConstrained
 	extends UniCastConstrained

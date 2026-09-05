@@ -16,6 +16,15 @@ package synch;
  * A huge Drawback is that such a LinkedSubscriber can only be used
  * for a single Publisher!!!
  *
+ * <!-- docstate
+ * pass: 2
+ * mtime: 2026-09-05T10:13:32Z
+ * digest: 9d929a7ca10fdfd4b64e642d174af2d4659cfaadff5eb251631fa672d21b9e01
+ * stale: false
+ * tags: [code/subscription, code/observer_pattern]
+ * concepts: [Subscriber-Side Caster]
+ * facets: {layer: infrastructure, status: legacy, complexity: low}
+ * -->
  */
 public abstract class SubCaster
 extends UniCaster

@@ -32,6 +32,15 @@ import synch.InvalidException;
  * Actually for parsing the Names and propagating update() and validate()
  * it is not necessary to implement the Publisher and Subscriber Interfaces!
  * It is sufficient to implement the Subscriber and Validator Interfaces!
+ * <!-- docstate
+ * pass: 2
+ * mtime: 2026-09-05T10:13:32Z
+ * digest: 8f4679221faf8627b06a28be9329ba4de2e3e84068623bf972909d5fa034db6b
+ * stale: false
+ * tags: [code/attached_property, code/observer_pattern]
+ * concepts: [Composite Value Object]
+ * facets: {layer: domain, status: legacy, complexity: medium}
+ * -->
  */
 public abstract class Aspect
 	extends AConstrained
@@ -48,9 +57,10 @@ public abstract class Aspect
 /// #region : static Methods
 ////////////////////////////////////////////////////////////////////////////
 
-	/** @return all public, protected and private Fields
+	/** Collects every Field of the Instance's runtime Class, walking up the Hierarchy
+	  * until (and including) the given Parent Class - useful to (de-)serialize an Object.
+	  * @return all public, protected and private Fields
 	  * declared in this Class and up to the given Parent Class.
-	  * This is a quite useful Method to (de-)serialize an Object.
 	  */
 	public static Vector getAllFields(Object Instance, Class upToThisClass) {
 		Vector fields = new Vector();
@@ -83,7 +93,8 @@ public abstract class Aspect
 	  */
 	protected Aspect Parent;
 
-	/** @return The Aspect Parent  */
+	/** Returns the Parent this Aspect is nested under.
+	  * @return The Aspect Parent  */
 	public Aspect getParent() { return Parent; }
 
 	/** Sets The Aspect Name. TODO: shouldn't this be an Invariant?  */
@@ -107,7 +118,8 @@ public abstract class Aspect
 	/** holds The Aspect Name   */
 	protected String Name;
 
-	/** @return The Aspect Name  */
+	/** Returns this Aspect's Name.
+	  * @return The Aspect Name  */
 	public String getName() { return Name; }
 
 	/** Sets The Aspect Name. TODO: shouldn't this be an Invariant?  */
@@ -121,7 +133,8 @@ public abstract class Aspect
 	/** holds the Flag whether the Control editable   */
 	protected boolean Enabled;
 
-	/** @return the Flag whether the Control editable  */
+	/** Returns whether the Control is editable.
+	  * @return the Flag whether the Control editable  */
 	public boolean getEnabled() {
 		return Enabled; }
 
@@ -137,7 +150,8 @@ public abstract class Aspect
 	/** holds the Control required to enter Data  */
 	protected boolean Required;
 
-	/** @return the Control required to enter Data  */
+	/** Returns whether the Control requires Data to be entered.
+	  * @return the Control required to enter Data  */
 	public boolean getRequired() {
 		return Required; }
 
@@ -154,7 +168,8 @@ public abstract class Aspect
 	/** holds the Control visible to the User   */
 	protected boolean Visible;
 
-	/** @return the Control visible to the User  */
+	/** Returns whether the Control is visible to the User.
+	  * @return the Control visible to the User  */
 	public boolean getVisible() {
 		return Visible; }
 
@@ -169,7 +184,8 @@ public abstract class Aspect
 	/** holds the Error Status for this Aspect   */
 	protected int Status;
 
-	/** @return the Error Status for this Aspect
+	/** Returns the current Error Status for this Aspect.
+	 * @return the Error Status for this Aspect
 	 *   0 when the Value is filled / valid / initialized,
 	 *  -1 when the Value is not filled / empty / initialized,
 	 *  otherwise the (positive) Error Number
@@ -290,7 +306,10 @@ public abstract class Aspect
 			throw new IllegalAccessError(x.toString()); }
 	}
 
-	/** @return a deep Copy of this Object */
+	/** Creates a fresh Instance of this Aspect's runtime Class via its (String, Aspect)
+	  * Constructor, with the given Name and the same Parent - the Field Values are not
+	  * copied here, only combined with {@link #copyAt(Object)} in {@link #Clone(String)}.
+	  * @return a new, uninitialized Instance of this Aspect's Type */
 	final public Aspect newInstance(String Name) {
 		Class[] cls = { String.class, Aspect.class };
 		Object[] args = { Name, Parent };
@@ -304,7 +323,8 @@ public abstract class Aspect
 	}
 
 
-	/** @return a deep Copy of this Object */
+	/** Creates a new Instance with the given Name and deep-copies this Aspect's Values into it.
+	  * @return a deep Copy of this Object */
 	final public Aspect Clone(String Name) {
 		return newInstance(Name).copyAt(this); }
 /*		Aspect ret;
@@ -318,7 +338,8 @@ public abstract class Aspect
 		return ret; }
 */
 
-	/** @return a deep Copy of this Object
+	/** Delegates to {@link #Clone(String)} using this Aspect's own Name.
+	  * @return a deep Copy of this Object
 	  * made final to allow for INLINEing  */
 	final public Object clone() { return Clone(this.Name); }
 

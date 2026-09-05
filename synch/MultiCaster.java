@@ -25,6 +25,15 @@ import tools.WorkerThread;
  * For transient Subscribers a HashSet is needed (depending on the Frequency!).
  *
  * @see MultiValidator that implements the analogous Publisher Interface
+ * <!-- docstate
+ * pass: 2
+ * mtime: 2026-09-05T10:13:32Z
+ * digest: 8646c5b6266d949d9dfe14662a61954889628d8730fbb9e75754135eed4b5a5c
+ * stale: false
+ * tags: [code/publish_subscribe, code/observer_pattern]
+ * concepts: [Multi-Subscriber Publisher]
+ * facets: {layer: infrastructure, status: legacy, complexity: low}
+ * -->
  */
 public class MultiCaster
 	implements ISubscriber, IPublisher {

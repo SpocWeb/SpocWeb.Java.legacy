@@ -6,6 +6,15 @@ package synch;
  * and only used in preparation of the MultiCaster.
  * Normally a setSubscriber() Method would be sufficient to both set
  * and unset the Subscriber (using null)
+ * <!-- docstate
+ * pass: 2
+ * mtime: 2026-09-05T10:13:32Z
+ * digest: f911df095d6cb9c5f15a0ffc33d13ac369768f067b13c63f69d82dcb5d751a04
+ * stale: false
+ * tags: [code/publish_subscribe, code/observer_pattern]
+ * concepts: [Single-Subscriber Publisher]
+ * facets: {layer: infrastructure, status: legacy, complexity: low}
+ * -->
  */
 public class UniCaster
 	implements IPublisher {

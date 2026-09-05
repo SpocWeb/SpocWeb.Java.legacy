@@ -25,6 +25,15 @@ import function.byref.ByRefLong;
  *
  * @see tester.Process.StateMachine for a Machine working with Objects.
  *
+ * <!-- docstate
+ * pass: 2
+ * mtime: 2026-09-05T10:43:46Z
+ * digest: 9b480f1388104ffdca881f49e56a5277e7cdcd0be751aea00bf65fd4dc8fc501
+ * stale: false
+ * tags: [code/state_machine]
+ * concepts: [Finite State Machine]
+ * facets: {layer: utility, status: broken, complexity: low}
+ * -->
  */
 public class StateMachine {
 
@@ -50,7 +59,7 @@ public class StateMachine {
 		int j = numStates; while(--j >= 0) I[j] = 0; }
 	}
 
-	/**Constructor using the number of Vertices and an Adjacency List
+	/*Constructor using the number of Vertices and an Adjacency List
 	 * to initialize itself.	 */
 /*	public StateMachine(int numInputs, int numStates, SparseMatrix AL) {
 		this(numInputs, numStates);
@@ -62,10 +71,9 @@ public class StateMachine {
 				setEdge(It.currentLine(), curr.v, false, curr.w);
 		while (available.Value > 0);
 	}
-
-	/**Constructor sets the number of Vertices
-	 * and allocates the Space for the Matrix generated from the Vectors.
-	 * Also calculates all Distances. 	 */
+*/
+	/**Constructor building the Matrix as a deep copy of the given 2-level Array
+	  * of per-Input/per-State next-State values.	 */
 	public StateMachine(int[][] States) {
 		a = new int[States.length][];
 		int i = States.length; //Copy two Levels deep.
@@ -99,6 +107,9 @@ public class StateMachine {
 		int i = -1;
 		while (++i < a.length) {
 			int j = -1;
+			// TODO: LOGIC: inner bound uses a.length (numInputs, the row count) instead of
+			// a[i].length (numStates, the column count). Throws ArrayIndexOutOfBoundsException
+			// whenever numStates < numInputs, and silently omits columns when numStates > numInputs.
 			while (++j < a.length)
 				S.append(a[i][j]).append(','); //",\t");
 			S.append('\n');
@@ -121,19 +132,19 @@ public class StateMachine {
 						 {'F','E', (char) 2},
 						 {'A','F', (char) 2},
 						 {'G','E', (char) 1}};
-		char[][] Edges2={{'G','C', (char) 1},	//neu für zweifachen Zusammenhang
+		char[][] Edges2={{'G','C', (char) 1},	//neu fï¿½r zweifachen Zusammenhang
 						 {'H','G', (char) 3},
 						 {'G','J', (char) 1},
 						 {'L','G', (char) 5}};
-		char[][] Edges5={{'I','H', (char) 1},	//neu für gerichtete Graphen
+		char[][] Edges5={{'I','H', (char) 1},	//neu fï¿½r gerichtete Graphen
 						 {'M','L', (char) 1}};
-		char[][] Edges3={{'G','C', (char) 1},	//neu für kürzeste Wege und Spannbaum
-						 {'A','C', (char) 1},	//Werte löschen einfach den schon gesetzten Weg!
-						 {'A','G', (char) 6},		//Entfernung ändern!
-						 {'H','I', (char) 2},		//Entfernung ändern!
+		char[][] Edges3={{'G','C', (char) 1},	//neu fï¿½r kï¿½rzeste Wege und Spannbaum
+						 {'A','C', (char) 1},	//Werte lï¿½schen einfach den schon gesetzten Weg!
+						 {'A','G', (char) 6},		//Entfernung ï¿½ndern!
+						 {'H','I', (char) 2},		//Entfernung ï¿½ndern!
 
 						 {'B','D', (char) 2},		//hier kommen die neuen Verbingungen
-						 {'B','E', (char) 4},		//für den ungerichteten gewichteten Graphen
+						 {'B','E', (char) 4},		//fï¿½r den ungerichteten gewichteten Graphen
 						 {'B','C', (char) 1},
 						 {'C','E', (char) 4},
 						 {'E','L', (char) 4},

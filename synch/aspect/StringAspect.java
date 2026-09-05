@@ -5,22 +5,24 @@ import synch.InvalidException;
 /**
   * Title: StringAspect<p>
   * Description:
-  * Purpose:
-  * Aspect representing a String Value
-  *
-  * Design Decisions / Implementation Details:
-  * If similar Classes exist (e.g. Polymorphism),
-  * characterize the specific Differences to compare these.
-  *
-  * Known SubClasses: <none>
-  *
-  * Known Uses: <none>
+  * Leaf {@link Aspect} holding a single String Value, with an enforced MinLength/
+  * MaxLength range checked in {@link #myValidate}. Setting the Value propagates
+  * validation and update notifications up to the Parent Aspect when it actually changes.
   *
   * Copyright:	Copyright (c) Matthias Heuer<p>
   * Company:	personal<p>
   * Created on	07-19-2002, 10:55 PM<p>
   * @author 	Matthias Heuer
   * @version	1.0
+  * <!-- docstate
+  * pass: 2
+  * mtime: 2026-09-05T10:42:37Z
+  * digest: a7c3eb09fd43cfeac800b6c9d2875c7ccfb9bd804aac2ab2c62be3a24abf5ae5
+  * stale: false
+  * tags: [code/attached_property]
+  * concepts: [String Value Aspect]
+  * facets: {layer: domain, status: legacy, complexity: low}
+  * -->
   */
 public class StringAspect
 extends Aspect
@@ -82,7 +84,8 @@ extends Aspect
 	/** holds the Minimum Length for the Input    */
 	protected int MinLength;
 
-	/** @return the Minimum Length for the Input   */
+	/** Returns the minimum accepted Length for the Input.
+	  * @return the Minimum Length for the Input   */
 	public int getMinLength() {
 		return MinLength; }
 
@@ -97,7 +100,8 @@ extends Aspect
 	/** holds the Maximum Length for the Input   */
 	protected int MaxLength = Integer.MAX_VALUE;
 
-	/** @return the Maximum Length for the Input  */
+	/** Returns the maximum accepted Length for the Input.
+	  * @return the Maximum Length for the Input  */
 	public int getMaxLength() {
 		return MaxLength; }
 
@@ -185,8 +189,12 @@ extends Aspect
 /// #region : Interface Object: abstract Methods
 ////////////////////////////////////////////////////////////////////////////////
 
+	/** Returns this Aspect's current String Value.
+	  * @return the current Value  */
 	public String toString() { return Value; }
 
+	/** Sets this Aspect's Value directly to the given String, bypassing validation and
+	  * update propagation (unlike {@link #setValue(Object)}).  */
 	public void fromString(String Value) { this.Value = Value; }
 
 ////////////////////////////////////////////////////////////////////////////////

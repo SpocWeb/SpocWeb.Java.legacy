@@ -7,24 +7,24 @@ package synch.aspect;
 /**
   * Title: PersonAspect<p>
   * Description:
-  * Purpose:
-  * Example for a Composite Aspect
-  * Contains Properties describing a "natural" Person
-  *
-  * A named Value cannot be reused in different Contexts,
-  * but it is able to detect relevang Changes in a key,Value Pair streamIO.
-  *
-  * Design Decisions / Implementation Details:
-  *
-  * Known SubClasses: <none>
-  *
-  * Known Uses: <none>
+  * Example {@link ContainerAspect} describing a natural person: first name, last
+  * name and a nested {@link AddressAspect}, each a child field keyed under this
+  * Aspect's Name.
   *
   * Copyright:	Copyright (c) Matthias Heuer<p>
   * Company:	personal<p>
   * Created on	07-20-2002, 12:20 AM<p>
   * @author 	Matthias Heuer
   * @version	1.0
+  * <!-- docstate
+  * pass: 2
+  * mtime: 2026-09-05T10:42:34Z
+  * digest: 7748fa43ead03f212becdeed8d0ad0135fbf93b9b06f0813a627abec8aa5cb6b
+  * stale: false
+  * tags: [code/attached_property, code/observer_pattern]
+  * concepts: [Composite Value Object]
+  * facets: {layer: domain, status: legacy, complexity: medium}
+  * -->
   */
 public class PersonAspect
 extends ContainerAspect //Aspect
@@ -68,7 +68,14 @@ extends ContainerAspect //Aspect
 /// #region : Constructors, calling each other using this()/super()
 ////////////////////////////////////////////////////////////////////////////////
 
-	/** Initializing Constructor	 */
+	/** Initializing Constructor
+	 *
+	 * <!-- docstate
+	 * tags: [code/attached_property]
+	 * concepts: [Composite Value Object]
+	 * facets: {layer: domain, status: legacy, complexity: low}
+	 * -->
+	 */
 	public PersonAspect(String Name, Aspect Parent) { super(Name, Parent); }
 
 ////////////////////////////////////////////////////////////////////////////////
@@ -87,7 +94,14 @@ extends ContainerAspect //Aspect
 /// #region : static Testing and main() Methods
 ////////////////////////////////////////////////////////////////////////////////
 
-	/** Tests all Methods of this Class	 */
+	/** Tests all Methods of this Class
+	 *
+	 * <!-- docstate
+	 * tags: [code/attached_property]
+	 * concepts: [Scratch Test Method]
+	 * facets: {layer: test, status: legacy, complexity: low}
+	 * -->
+	 */
 	public static void testIt(String[] args) { //throws java.io.IOException {
 		System.out.println("Testing " + PersonAspect.class.getName());
 		try {
@@ -118,6 +132,11 @@ extends ContainerAspect //Aspect
 	/**The main entry point for the application.
 	 *
 	 * @param args Array of parameters passed to the application
+	 * <!-- docstate
+	 * tags: [code/attached_property]
+	 * concepts: [Scratch Test Entry Point]
+	 * facets: {layer: test, status: legacy, complexity: low}
+	 * -->
 	 * via the command line.	 */
 	public static void main (String[] args) { //throws java.io.IOException {
 		testIt(args); }

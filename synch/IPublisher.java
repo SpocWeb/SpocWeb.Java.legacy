@@ -20,6 +20,15 @@ package synch;
  * Separating Validation from Publication is very important,
  * because it gives validating Subscribers the Chance to distinguish between both
  * and it saves the hassle to possibly undo partly performed Publication!
+ * <!-- docstate
+ * pass: 2
+ * mtime: 2026-09-05T10:42:50Z
+ * digest: f15cd50720b40e62c758e66148d642dba6c073ba47a12989b14ece47a626cc87
+ * stale: false
+ * tags: [code/publish_subscribe]
+ * concepts: [Publisher Interface]
+ * facets: {layer: infrastructure, status: legacy, complexity: low}
+ * -->
  */
 public interface IPublisher {
 
@@ -38,10 +47,12 @@ public interface IPublisher {
 	 */
 	public ISubscriber removeSubscriber(ISubscriber arg);
 
-	/** @return false if this Subscriber was not subscribed at all.	 */
+	/** Checks whether the given Subscriber is currently registered.
+	 * @return true if the given Subscriber is currently registered.	 */
 	public boolean isSubscriber(ISubscriber arg);
 
-	/** @return the Number of Subscribers of this Publisher	 */
+	/** Reports how many Subscribers are currently registered.
+	 * @return the current Number of registered Subscribers	 */
 	public int countSubscribers();
 
 	/**Notifies the Subscribers of thie Value

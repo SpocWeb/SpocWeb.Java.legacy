@@ -9,6 +9,15 @@ package synch.property;
  *
  * Made abstract because of copyFrom().
  *
+ * <!-- docstate
+ * pass: 2
+ * mtime: 2026-09-05T10:13:32Z
+ * digest: 194a7fb7a74a9f512a2f8458cfa93554bec7e580c9511ac3c8b035bd6fa839d8
+ * stale: false
+ * tags: [code/attached_property]
+ * concepts: [GUI Property Metadata]
+ * facets: {layer: domain, status: legacy, complexity: low}
+ * -->
  */
 public abstract class UIProperty 
 extends AAttribProperty {

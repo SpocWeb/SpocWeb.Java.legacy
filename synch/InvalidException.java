@@ -27,6 +27,15 @@ import streamIO.object.enumer.Enumerator;
   * Design Decisions:
   * Not making this Exception a RuntimeException makes the Declaration mandatory.
   * @see ReadOnlyException should be used to encapsulate this Exception
+  * <!-- docstate
+  * pass: 2
+  * mtime: 2026-09-05T10:42:54Z
+  * digest: 3319816dd40ee316b0d50f3b0af2af5ede424c4dac90c3e36629bf462c16482e
+  * stale: false
+  * tags: [code/validation]
+  * concepts: [Custom Exception Type]
+  * facets: {layer: domain, status: legacy, complexity: low}
+  * -->
   */
 public class InvalidException
 extends Exception {
@@ -42,7 +51,8 @@ extends Exception {
 	/** holds The Source of the Change that was invalidated   */
 	protected Object source;
 
-	/** @return The Source of the Change that was invalidated  */
+	/** Returns the source of the rejected Change.
+	 * @return the Object whose Change was rejected	 */
 	public Object getSource() {
 		return source; }
 
@@ -53,7 +63,8 @@ extends Exception {
 	/** holds The Value of the Change that was invalidated   */
 	protected Object value;
 
-	/** @return The Value of the Change that was invalidated  */
+	/** Returns the new Value that was rejected.
+	 * @return the rejected new Value	 */
 	public Object getValue() {
 		return value; }
 
@@ -64,7 +75,8 @@ extends Exception {
 	/** holds The Value of the Severity that was invalidated   */
 	protected int severity;
 
-	/** @return The Value of the Severity that was invalidated  */
+	/** Returns the Severity Code of this Validation failure.
+	 * @return the Severity Code of this Validation failure, 0 by default	 */
 	public int getSeverity() {
 		return severity; }
 

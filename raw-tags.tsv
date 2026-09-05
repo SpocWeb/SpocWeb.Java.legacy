@@ -292,3 +292,45 @@ stringOp/search/SearcherRK.java:SearcherRK	class	stringOp/search/SearcherRK.java
 stringOp/search/StrSearcher.java:StrSearcher	class	stringOp/search/StrSearcher.java	code/string_search	String Searcher Interface	utility	legacy	low
 stringOp/testString.java:testString	class	stringOp/testString.java	code/string_algorithms	String Test Harness	test	legacy	low
 stringOp/testString.java:testString.main(String[])	method	stringOp/testString.java	code/string_algorithms	String Test Entry Point	test	legacy	low
+synch/ACachedProperty.java:ACachedProperty	class	synch/ACachedProperty.java	code/cache,code/attached_property	Observable Property Wrapper	domain	legacy	low
+synch	folder	synch	code/publish_subscribe,code/validation,code/observer_pattern	Publish-Subscribe and Validation	infrastructure	legacy	medium
+synch/AConstrained.java:AConstrained	class	synch/AConstrained.java	code/observer_pattern,code/validation	Constrained Publisher Base	domain	legacy	medium
+synch/APubUniLinkSub.java:APubUniLinkSub	class	synch/APubUniLinkSub.java	code/publish_subscribe,code/observer_pattern	Publish-Subscribe Chain Link	infrastructure	broken	medium
+synch/IConstrained.java:IConstrained	class	synch/IConstrained.java	code/observer_pattern,code/validation	Constrained Publisher Interface	domain	legacy	low
+synch/IPublisher.java:IPublisher	class	synch/IPublisher.java	code/publish_subscribe	Publisher Interface	infrastructure	legacy	low
+synch/ISubscriber.java:ISubscriber	class	synch/ISubscriber.java	code/subscription	Subscriber Interface	infrastructure	legacy	low
+synch/IValidation.java:IValidation	class	synch/IValidation.java	code/validation_interface	Validation Interface	domain	legacy	low
+synch/IValidationRule.java:IValidationRule	class	synch/IValidationRule.java	code/validation_rule	Validation Rule Interface	domain	legacy	low
+synch/IValidator.java:IValidator	class	synch/IValidator.java	code/validation	Validator Interface	domain	legacy	low
+synch/InvalidError.java:InvalidError	class	synch/InvalidError.java	code/validation	Custom Exception Type	domain	legacy	low
+synch/InvalidException.java:InvalidException	class	synch/InvalidException.java	code/validation	Custom Exception Type	domain	legacy	low
+synch/MultiCaster.java:MultiCaster	class	synch/MultiCaster.java	code/publish_subscribe,code/observer_pattern	Multi-Subscriber Publisher	infrastructure	legacy	low
+synch/MultiValidator.java:MultiValidator	class	synch/MultiValidator.java	code/validation,code/validation_rule	Multi-Validator Chain	domain	legacy	medium
+synch/PathValidationRule.java:PathValidationRule	class	synch/PathValidationRule.java	code/validation_rule	Path-Based Validation Rule	domain	legacy	medium
+synch/PropDouble.java:PropDouble	class	synch/PropDouble.java	code/attached_property	Observable Double Property	domain	broken	low
+synch/StateMachine.java:StateMachine	class	synch/StateMachine.java	code/state_machine	Finite State Machine	utility	broken	low
+synch/SubCaster.java:SubCaster	class	synch/SubCaster.java	code/subscription,code/observer_pattern	Subscriber-Side Caster	infrastructure	legacy	low
+synch/TooManySubscribersException.java:TooManySubscribersException	class	synch/TooManySubscribersException.java	code/validation	Custom Exception Type	domain	legacy	low
+synch/UniCastConstrained.java:UniCastConstrained	class	synch/UniCastConstrained.java	code/observer_pattern,code/validation	Constrained Publisher	domain	broken	medium
+synch/UniCaster.java:UniCaster	class	synch/UniCaster.java	code/publish_subscribe,code/observer_pattern	Single-Subscriber Publisher	infrastructure	legacy	low
+synch/ValidationRule.java:ValidationRule	class	synch/ValidationRule.java	code/validation_rule	Validation Rule Chain	domain	legacy	high
+synch/ValidationRuleList.java:ValidationRuleList	class	synch/ValidationRuleList.java	code/validation_rule	Validation Rule Chain	domain	broken	medium
+synch/aspect/AddressAspect.java:AddressAspect	class	synch/aspect/AddressAspect.java	code/attached_property,code/observer_pattern	Composite Value Object	domain	legacy	medium
+synch/aspect/AddressAspect.java:AddressAspect.AddressAspect(String, Aspect)	method	synch/aspect/AddressAspect.java	code/attached_property	Composite Value Object	domain	legacy	low
+synch/aspect/AddressAspect.java:AddressAspect.testIt(String[])	method	synch/aspect/AddressAspect.java	code/attached_property	Scratch Test Method	test	legacy	low
+synch/aspect/AddressAspect.java:AddressAspect.main(String[])	method	synch/aspect/AddressAspect.java	code/attached_property	Scratch Test Entry Point	test	legacy	low
+synch/aspect	folder	synch/aspect	code/observer_pattern,code/attached_property	Composite Value Object Tree	domain	legacy	medium
+synch/aspect/Aspect.java:Aspect	class	synch/aspect/Aspect.java	code/attached_property,code/observer_pattern	Composite Value Object	domain	legacy	medium
+synch/aspect/ContainerAspect.java:ContainerAspect	class	synch/aspect/ContainerAspect.java	code/attached_property	Composite Value Object Container	domain	legacy	medium
+synch/aspect/PersonAspect.java:PersonAspect	class	synch/aspect/PersonAspect.java	code/attached_property,code/observer_pattern	Composite Value Object	domain	legacy	medium
+synch/aspect/PersonAspect.java:PersonAspect.PersonAspect(String, Aspect)	method	synch/aspect/PersonAspect.java	code/attached_property	Composite Value Object	domain	legacy	low
+synch/aspect/PersonAspect.java:PersonAspect.testIt(String[])	method	synch/aspect/PersonAspect.java	code/attached_property	Scratch Test Method	test	legacy	low
+synch/aspect/PersonAspect.java:PersonAspect.main(String[])	method	synch/aspect/PersonAspect.java	code/attached_property	Scratch Test Entry Point	test	legacy	low
+synch/aspect/StringAspect.java:StringAspect	class	synch/aspect/StringAspect.java	code/attached_property	String Value Aspect	domain	legacy	low
+synch/property/AAttribProperty.java:AAttribProperty	class	synch/property/AAttribProperty.java	code/attached_property	GUI Property Metadata	domain	legacy	low
+synch/property	folder	synch/property	code/attached_property	GUI Property Metadata	utility	unfinished	low
+synch/property/PropString.java:PropString	class	synch/property/PropString.java	code/attached_property	Unimplemented Stub	domain	unfinished	low
+synch/property/UIProperty.java:UIProperty	class	synch/property/UIProperty.java	code/attached_property	GUI Property Metadata	domain	legacy	low
+synch/property/testProperty.java:testProperty	class	synch/property/testProperty.java	code/attached_property	Scratch Test Class	test	unfinished	low
+synch/property/testProperty.java:testProperty.main(String[])	method	synch/property/testProperty.java	code/attached_property	Scratch Test Entry Point	test	unfinished	low
+synch/writeOnceProperty.java:writeOnceProperty	class	synch/writeOnceProperty.java	code/attached_property	Write-Once Property Wrapper	domain	legacy	low

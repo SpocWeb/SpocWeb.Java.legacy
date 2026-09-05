@@ -24,6 +24,15 @@ package synch;
  *
  * @see java.beans.ChangeListener and
  * @see java.beans.VetoableChangeListener
+ * <!-- docstate
+ * pass: 2
+ * mtime: 2026-09-05T10:13:32Z
+ * digest: 36346ed69046f3ccb9ecc0cf7c611e6abaae5c7376e960e594f622ea2c95d13f
+ * stale: false
+ * tags: [code/subscription]
+ * concepts: [Subscriber Interface]
+ * facets: {layer: infrastructure, status: legacy, complexity: low}
+ * -->
  */
 public interface ISubscriber {
 

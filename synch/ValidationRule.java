@@ -60,6 +60,15 @@ import function.byref.ByRefDouble;
   * Created on	10-14-2002, 11:00 PM<p>
   * @author 	Matthias Heuer
   * @version	1.0
+  * <!-- docstate
+  * pass: 2
+  * mtime: 2026-09-05T10:13:32Z
+  * digest: 69ab8550f0470ca094094a078d916abd3940345b4ad56ea8451b1e0e6d3468c8
+  * stale: false
+  * tags: [code/validation_rule]
+  * concepts: [Validation Rule Chain]
+  * facets: {layer: domain, status: legacy, complexity: high}
+  * -->
   */
 public class ValidationRule 
 implements  IValidationRule, IValidator {
@@ -141,12 +150,13 @@ implements  IValidationRule, IValidator {
 	final static public SimpleDateFormat XML_TIMESTAMP_FORMATTER =
 		new SimpleDateFormat(XML_TIMESTAMP_FORMAT);
 
+	/** Default Formatter used by {@link #PARSE_DATE(String)}, currently the Date-and-Time Formatter */
 	final static public DateFormat DEFAULT_DATE_FORMAT =
 		XML_TIMESTAMP_FORMATTER;
 
 	/**
 	 * parses a Date Parameter
-	 * @param date Parameter für das Datum.
+	 * @param date Parameter fï¿½r das Datum.
 	 *        kann entweder absolut sein in der Notation YYYY-MM-DD
 	 *        oder relativ in der Form +/-nnn[y|M|d|H|m|s]
 	 */
@@ -157,7 +167,7 @@ implements  IValidationRule, IValidator {
 
 	/**
 	 * parses a Date or Time or both Parameter
-	 * @param date Parameter für das Datum.
+	 * @param date Parameter fï¿½r das Datum.
 	 *        kann entweder absolut sein in der Notation YYYY-MM-DD
 	 *        oder relativ in der Form +/-nnn[y|M|d|H|m|s]
 	 */
@@ -187,7 +197,7 @@ implements  IValidationRule, IValidator {
 
 	/**
 	 * parses a Date Parameter
-	 * @param date Parameter für das Datum.
+	 * @param date Parameter fï¿½r das Datum.
 	 *        kann entweder absolut sein in der Notation YYYY-MM-DD
 	 *        oder relativ in der Form +/-nnn[y|M|d|H|m|s]
 	 */
@@ -198,7 +208,7 @@ implements  IValidationRule, IValidator {
 
 	/**
 	 * parses a Date Parameter
-	 * @param date Parameter für das Datum.
+	 * @param date Parameter fï¿½r das Datum.
 	 *        kann entweder absolut sein in der Notation YYYY-MM-DD
 	 *        oder relativ in der Form +/-nnn[y|M|d|H|m|s]
 	 */
@@ -216,7 +226,7 @@ implements  IValidationRule, IValidator {
 
 	/**
 	 * parses a Date Parameter
-	 * @param date Parameter für das Datum.
+	 * @param date Parameter fï¿½r das Datum.
 	 *        kann entweder absolut sein in der Notation YYYY-MM-DD
 	 *        oder relativ in der Form +/-nnn[y|M|d|H|m|s]
 	 * @return the Date relative to the current Date and Time
@@ -266,8 +276,8 @@ implements  IValidationRule, IValidator {
 		return new Date(diff + System.currentTimeMillis());
 	}
 
-	/** Diese Methode validiert ob der übergebene Wert nicht über einem maximalen Datum liegt.
-	 * @param maxDate Parameter für das maximale Datum.
+	/** Diese Methode validiert ob der ï¿½bergebene Wert nicht ï¿½ber einem maximalen Datum liegt.
+	 * @param maxDate Parameter fï¿½r das maximale Datum.
 	 *        kann entweder absolut sein in der Notation YYYY-MM-DD
 	 *        oder relativ in der Form +/-nnn[Y,M,D]
 	 * @param wert zu validierender Wert
@@ -308,8 +318,8 @@ implements  IValidationRule, IValidator {
 		}
 	}
 
-	/** Diese Methode validiert ob der übergebene Wert nicht über einem maximalen Datum liegt.
-	 * @param maxDate Parameter für das maximale Datum.
+	/** Diese Methode validiert ob der ï¿½bergebene Wert nicht ï¿½ber einem maximalen Datum liegt.
+	 * @param maxDate Parameter fï¿½r das maximale Datum.
 	 *        kann entweder absolut sein in der Notation YYYY-MM-DD
 	 *        oder relativ in der Form +/-nnn[Y,M,D]
 	 * @param wert zu validierender Wert
@@ -558,14 +568,16 @@ implements  IValidationRule, IValidator {
 		return false;
 	}
 
-	/** @return true when the given Value conforms to the given Regular Expression Parameter 	 */
+	/** Checks whether the given Value conforms to the given Regular Expression Parameter.
+	 * @return true when the given Value conforms to the given Regular Expression Parameter 	 */
 	final static public boolean CONFORMS_TO_REG_EXP(
 		final Object regExp,
 		final Object value) {
 		return CONFORMS_TO_REG_EXP(regExp.toString(), value.toString());
 	}
 
-	/** @return true when the given Value conforms to the given Regular Expression Parameter 	 */
+	/** Checks whether the given Value conforms to the given Regular Expression Parameter.
+	 * @return true when the given Value conforms to the given Regular Expression Parameter 	 */
 	final static public boolean CONFORMS_TO_REG_EXP(
 		final String regExp,
 		final String strVal) {
@@ -575,7 +587,8 @@ implements  IValidationRule, IValidator {
 		return false;
 	}
 
-	/** @return true when the given Value is not null 	 */
+	/** Checks whether the given Value is null.
+	 * @return true when the given Value is null 	 */
 	final static public boolean IS_NULL(final Object value) {
 		if (value == null) {
 			return true;
@@ -625,10 +638,11 @@ implements  IValidationRule, IValidator {
 	/// #region : static Validation Rules and their Names...
 	///////////////////////////////////////////////////////////////////////////////////////////////////
 
+	/** Name of the static Validation Method {@link #validateMinDate} */
 	final static public String VALIDATE_MIN_DATE = "validateMinDate";
 
-	/** Diese Methode validiert ob der übergebene Wert nicht über einem maximalen Datum liegt.
-	 * @param minDate Parameter für das minimale Datum.
+	/** Diese Methode validiert ob der ï¿½bergebene Wert nicht ï¿½ber einem maximalen Datum liegt.
+	 * @param minDate Parameter fï¿½r das minimale Datum.
 	 *        kann entweder absolut sein in der Notation YYYY-MM-DD
 	 *        oder relativ in der Form +/-nnn[Y,M,D]
 	 * @param wert zu validierender Wert
@@ -674,10 +688,11 @@ implements  IValidationRule, IValidator {
 		}
 	}
 
+	/** Name of the static Validation Method {@link #validateMaxDate} */
 	final static public String VALIDATE_MAX_DATE = "validateMaxDate";
 
-	/** Diese Methode validiert ob der übergebene Wert nicht über einem maximalen Datum liegt.
-	 * @param maxDate Parameter für das maximale Datum.
+	/** Diese Methode validiert ob der ï¿½bergebene Wert nicht ï¿½ber einem maximalen Datum liegt.
+	 * @param maxDate Parameter fï¿½r das maximale Datum.
 	 *        kann entweder absolut sein in der Notation YYYY-MM-DD
 	 *        oder relativ in der Form +/-nnn[Y,M,D]
 	 * @param wert zu validierender Wert
@@ -884,6 +899,7 @@ implements  IValidationRule, IValidator {
 		}
 	}
 
+	/** Name of the static Validation Method {@link #validateIsContained} */
 	final static public String VALIDATE_IS_CONTAINED = "validateIsContained";
 
 	/** validates whether the given Value is contained in the given Parameter Value	 */
@@ -905,9 +921,11 @@ implements  IValidationRule, IValidator {
 		}
 	}
 
+	/** Name of the static Validation Method {@link #validateRegExp} */
 	final static public String VALIDATE_REG_EXP = "validateRegExp";
 
-	/** @throws InvalidException when the Value doesn't conform to the given Regular Expression Parameter	 */
+	/** Validates that the given Value conforms to the given Regular Expression Parameter.
+	 * @throws InvalidException when the Value doesn't conform to the given Regular Expression Parameter	 */
 	final static public void validateRegExp(
 		final Object param,
 		final Object value,
@@ -926,6 +944,7 @@ implements  IValidationRule, IValidator {
 		}
 	}
 
+	/** Name of the static Validation Method {@link #validateNotNull} */
 	final static public String VALIDATE_NOT_NULL = "validateNotNull";
 
 	/** The inverse Test whether the Value is 'null' is only rarely used!
@@ -945,6 +964,7 @@ implements  IValidationRule, IValidator {
 		}
 	}
 
+	/** Name of the static Validation Method {@link #validateNotEmpty} */
 	final static public String VALIDATE_NOT_EMPTY = "validateNotEmpty";
 
 	/** The inverse Test whether the Value is empty is only rarely used!
@@ -964,10 +984,12 @@ implements  IValidationRule, IValidator {
 		}
 	}
 
+	/** Name of the static Validation Method {@link #validateIfEquals} */
 	final static public String VALIDATE_IF_EQUALS = "validateIfEquals";
 
-	/** @throws InvalidException when the Value does not match the Parameter
-	 * This is the most versatile Method, because it delegates to the .equals() Method of param
+	/** Validates the Value against the Parameter using the Parameter's own .equals() Method,
+	  * making this the most versatile of the Validation Methods.
+	 * @throws InvalidException when the Value does not match the Parameter
 	 */
 	final static public void validateIfEquals(
 		final Object param,
@@ -983,9 +1005,11 @@ implements  IValidationRule, IValidator {
 		}
 	}
 
+	/** Name of the static Validation Method {@link #validateIfSame} */
 	final static public String VALIDATE_IF_SAME = "validateIfSame";
 
-	/** @throws InvalidException when the Value is not identical to the Parameter	 */
+	/** Validates that the Value is identical (==) to the Parameter, rather than merely equal.
+	 * @throws InvalidException when the Value is not identical to the Parameter	 */
 	final static public void validateIfSame(
 		final Object param,
 		final Object value,
@@ -1113,7 +1137,8 @@ implements  IValidationRule, IValidator {
 	/// #region : Interface IValidator: Implementation
 	////////////////////////////////////////////////////////////////////////////////
 
-	/** @see synch.IValidator#validate(Object, Object, Object)	 */
+	/** Validates only the new Value, ignoring the Source and old Value Parameters.
+	 * @see synch.IValidator#validate(Object, Object, Object)	 */
 	public void validate(Object Source, Object Value, Object oldVal)
 		throws InvalidException {
 		validate(Value);

@@ -7,6 +7,15 @@ import synch.InvalidException;
  * and knows their Names by Reflection!
  * Since the Container knows its Name,
  * it can detect whether a given Name,Value Pair is relevant!
+ * <!-- docstate
+ * pass: 2
+ * mtime: 2026-09-05T10:13:32Z
+ * digest: f6e02744f2eaf091e2740752c3061a073e8d6c4abd07d5ec9824049450320610
+ * stale: false
+ * tags: [code/attached_property]
+ * concepts: [Composite Value Object Container]
+ * facets: {layer: domain, status: legacy, complexity: medium}
+ * -->
  */
 public class ContainerAspect
 extends Aspect {

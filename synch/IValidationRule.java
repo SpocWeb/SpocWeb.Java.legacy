@@ -23,6 +23,15 @@ package synch;
   * Created on	11-27-2002, 11:41 AM<p>
   * @author 	Matthias Heuer
   * @version	1.0
+  * <!-- docstate
+  * pass: 2
+  * mtime: 2026-09-05T10:13:32Z
+  * digest: 4be99b8d89ed6e05c11f124739cbe1c63bc7fcbf50b5eb6486cd85ffb0a3b1c8
+  * stale: false
+  * tags: [code/validation_rule]
+  * concepts: [Validation Rule Interface]
+  * facets: {layer: domain, status: legacy, complexity: low}
+  * -->
   */
 public interface IValidationRule {
 

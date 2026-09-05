@@ -87,7 +87,7 @@ concurrently against the same file):
 | `streamIO/real` | 51 | 6801 | 0 | unclaimed | - |
 | `tester` | 49 | 3327 | 0 | unclaimed | - |
 | `technology` | 41 | 9400 | 0 | unclaimed | - |
-| `synch` | 32 | 4243 | 0 | claimed | agent-synch |
+| `synch` | 32 | 4243 | 32 | done | agent-synch |
 | `graphs` | 31 | 11258 | 0 | claimed | agent-graphs |
 | `asynch` | 28 | 3052 | 28 | done | agent-asynch |
 | `streamIO/(root)` | 28 | 8003 | 0 | claimed | agent-streamIO-root |
@@ -265,6 +265,11 @@ same harness against it. A test that has not been seen red proves nothing.
 | stringOp/SentenceComparer.java | SentenceComparer | getMostSimilarSentence(String, boolean, int) | ~124 | The index of the best-matching Sentence is never recorded (only the match count `maxMatch` is tracked), so the method always returns -1 regardless of the actual best match found. | High | open |
 | stringOp/SentenceComparer.java | SentenceComparer | getWordSet(String, boolean) | ~151 | Unimplemented: the Sentence is never parsed into Words and the Dictionary is never consulted; always returns an empty `BitSet`. | High | open |
 | stringOp/search/SearcherBM.java | SearcherBM | constructor and search loop | ~48, ~68 | `Object.hashCode()` can be negative; Java's `%` keeps the sign, so a negative hash used as an array index throws `ArrayIndexOutOfBoundsException` instead of wrapping into a valid bucket. | Medium | open |
+| synch/UniCastConstrained.java | UniCastConstrained | addValidator(IValidator) | ~67 | Checks `instanceof MultiCaster`, an unrelated class - `validator` is only ever null, a plain `IValidator`, or a `MultiValidator`. The dead branch aside, the `else` path re-wraps the existing validator into a new `MultiValidator` without ever adding the new argument, so every call after the first silently drops the new validator. | High | open |
+| synch/ValidationRuleList.java | ValidationRuleList | validateInThread(Object) | ~146 | `params` is a 2-element array (`{Value, null}`) but the method unconditionally reads `params[3]` after the worker thread returns, throwing `ArrayIndexOutOfBoundsException` on every timed validation. | High | open |
+| synch/APubUniLinkSub.java | APubUniLinkSub | update(Object, Object, Object) | ~117 | No null check on `subscriber` before propagating; the chain-terminal node (built with `subscriber == null` by `addSubscriber()`) throws `NullPointerException` as soon as propagation reaches it - every other propagation method in the package guards this. | High | open |
+| synch/PropDouble.java | PropDouble | setValue(double) | ~48 | Never calls `subscriber.update(...)`, so the documented "notifies its Subscriber on change" contract is a no-op; any caller relying on the notification silently gets none. | Medium | open |
+| synch/StateMachine.java | StateMachine | toString() | ~110 | Inner loop bound uses `a.length` (row count/`numInputs`) instead of `a[i].length` (column count/`numStates`); throws `ArrayIndexOutOfBoundsException` or silently omits columns for any non-square matrix. | Medium | open |
 
 ## Tool defects found and fixed during the pilot
 

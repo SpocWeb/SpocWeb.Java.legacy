@@ -8,6 +8,15 @@ import function.byref.ByRefDouble;
 /**This class is for transporting a double back from a method call
  * and for observing it's Value.
  * The Code is nearly identical to ByRefDouble, only the Value Property
+ * <!-- docstate
+ * pass: 2
+ * mtime: 2026-09-05T10:43:52Z
+ * digest: 5c4b8f3cb4e44a03996692b7023049f684025ed392ba200f04568ddea5af005b
+ * stale: false
+ * tags: [code/attached_property]
+ * concepts: [Observable Double Property]
+ * facets: {layer: domain, status: broken, complexity: low}
+ * -->
  * is made private here. Subclassing is only possible in C++.   */
 public class PropDouble
 extends AOrderAble
@@ -32,8 +41,15 @@ implements
 	/**Returns the Value 	 */
 	public double getValue() { return Value; }
 
-	/**Sets the Value and notifies Observer(s)	 */
-	public void setValue(double arg) { Value = arg; }
+	/**Sets the Value.
+	 * Despite the {@link #subscriber} field, no Notification is actually sent here
+	 * -- see the TODO below.	 */
+	public void setValue(double arg) {
+		// TODO: LOGIC: setValue() never calls subscriber.update(...), so the public
+		// 'subscriber' field is dead: any code relying on PropDouble to notify its
+		// Observer on a Value change (as ByRefDouble/UniCaster-style callers expect)
+		// silently gets no notification at all.
+		Value = arg; }
 
 	//////////////////////
 	//  Interface ICountAble

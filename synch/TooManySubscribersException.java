@@ -1,11 +1,18 @@
 package synch;
 
-/** This Exception Type is thrown when
-  *
-  *
-  * Used in
-  *
-  * Design Decisions:
+/** Thrown by {@link IPublisher#addSubscriber} (or {@link IConstrained#addValidator})
+  * when a caster that only supports a single Subscriber/Validator is asked to add
+  * another one instead of being transparently upgraded to a MultiCaster/MultiValidator.
+  * Carries the Number of Subscribers already registered at the time of the failed add.
+  * <!-- docstate
+  * pass: 2
+  * mtime: 2026-09-05T10:42:55Z
+  * digest: d7172b68c4b4ceb5903597017ee074065a56f967e0d468e4baffeae41b18d88b
+  * stale: false
+  * tags: [code/validation]
+  * concepts: [Custom Exception Type]
+  * facets: {layer: domain, status: legacy, complexity: low}
+  * -->
   */
 public class TooManySubscribersException
 extends Exception {
@@ -21,7 +28,8 @@ extends Exception {
 /** holds The Number of Subscribers    */
 protected int NumSubscribers;
 
-/** @return The Number of Subscribers   */
+/** Returns how many Subscribers were already registered when the add was rejected.
+ * @return the Number of Subscribers already registered when the add was rejected   */
 public int getNumSubscribers() {
 	return NumSubscribers; }
 

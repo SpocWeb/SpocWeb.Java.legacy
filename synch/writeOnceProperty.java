@@ -8,6 +8,15 @@ package synch;
  * The structure is very close to class 'cachedProperty'
  * but you cannot derive one from the other because both have
  * a public Method (setValue() and invalidate()) that has to be made private
+ * <!-- docstate
+ * pass: 2
+ * mtime: 2026-09-05T10:13:32Z
+ * digest: b707374ecf2f406fbf08166b7eda3291c0426b7b2dc5722e82627d04fa0388b0
+ * stale: false
+ * tags: [code/attached_property]
+ * concepts: [Write-Once Property Wrapper]
+ * facets: {layer: domain, status: legacy, complexity: low}
+ * -->
  */
 public class writeOnceProperty {
 
