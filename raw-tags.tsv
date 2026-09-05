@@ -269,3 +269,26 @@ asynch/SynchExecutor.java:SynchExecutor	class	asynch/SynchExecutor.java	code/thr
 asynch/ThreadExecutor.java:ThreadExecutor	class	asynch/ThreadExecutor.java	code/thread_pooling	Thread Executor	infrastructure	broken	medium
 asynch/ThreadPoolExecutor.java:ThreadPoolExecutor	class	asynch/ThreadPoolExecutor.java	code/thread_pool	Thread Pool Executor	infrastructure	broken	medium
 asynch/ValueSetterRef.java:ValueSetterRef	class	asynch/ValueSetterRef.java	code/deferred_execution	Value Setter Reference	infrastructure	legacy	low
+stringOp/DeQueueInt.java:DeQueueInt	class	stringOp/DeQueueInt.java	code/deque	Integer Deque	utility	legacy	low
+stringOp	folder	stringOp	code/string_algorithms,code/heap_based_algorithm,code/patricia_trie	String Utilities	utility	legacy	medium
+stringOp/EditMetric.java:EditMetric	class	stringOp/EditMetric.java	code/edit_distance	Levenshtein Edit Distance	utility	legacy	low
+stringOp/Grammar.java:Grammar	class	stringOp/Grammar.java	code/grammar_model,code/recursive_grammar	Grammar Evolution	utility	broken	medium
+stringOp/HeapByIndex.java:HeapByIndex	class	stringOp/HeapByIndex.java	code/heap_based_algorithm,code/priority_queue	Index-Based Heap	utility	legacy	medium
+stringOp/Huffman.java:Huffman	class	stringOp/Huffman.java	code/compression	Huffman Coding	utility	legacy	medium
+stringOp/IStringValue.java:IStringValue	class	stringOp/IStringValue.java	code/string_algorithms	String Value Interface	utility	legacy	low
+stringOp/PatriciaNode.java:PatriciaNode	class	stringOp/PatriciaNode.java	code/patricia_trie	Patricia Trie Node	utility	legacy	medium
+stringOp/PatriciaNode.java:ObjectIterator	class	stringOp/PatriciaNode.java	code/patricia_trie	Patricia Trie Object Iterator	utility	legacy	low
+stringOp/PatriciaNode.java:IndexIterator	class	stringOp/PatriciaNode.java	code/patricia_trie	Patricia Trie Index Iterator	utility	legacy	low
+stringOp/PatriciaNode.java:PatriciaIterator	class	stringOp/PatriciaNode.java	code/patricia_trie	Patricia Trie Iterator Base	utility	legacy	low
+stringOp/SentenceComparer.java:SentenceComparer	class	stringOp/SentenceComparer.java	code/string_algorithms	Sentence Similarity Comparer	utility	broken	medium
+stringOp/parser/IIStreamIn_Int.java:IIStreamIn_Int	class	stringOp/parser/IIStreamIn_Int.java	code/parser_interface	Integer Stream Input Interface	utility	legacy	low
+stringOp/parser	folder	stringOp/parser	code/parser,code/expression_parser,code/parser_utility	Math Expression Parser	utility	legacy	medium
+stringOp/parser/MathParser.java:MathParser	class	stringOp/parser/MathParser.java	code/parser,code/expression_parser	Math Expression Parser	utility	legacy	medium
+stringOp/parser/Scanner.java:Scanner	class	stringOp/parser/Scanner.java	code/lexer_parser,code/parser_utility	Character Scanner	utility	legacy	low
+stringOp/search/RegExp.java:RegExp	class	stringOp/search/RegExp.java	code/regex	Regular Expression Matcher	utility	legacy	medium
+stringOp/search	folder	stringOp/search	code/string_search,code/regex,code/search_algorithm	String Search Algorithms	utility	legacy	medium
+stringOp/search/SearcherBM.java:SearcherBM	class	stringOp/search/SearcherBM.java	code/string_search,code/search_algorithm	Boyer-Moore Search	utility	broken	medium
+stringOp/search/SearcherRK.java:SearcherRK	class	stringOp/search/SearcherRK.java	code/string_search,code/search_algorithm	Rabin-Karp Search	utility	legacy	medium
+stringOp/search/StrSearcher.java:StrSearcher	class	stringOp/search/StrSearcher.java	code/string_search	String Searcher Interface	utility	legacy	low
+stringOp/testString.java:testString	class	stringOp/testString.java	code/string_algorithms	String Test Harness	test	legacy	low
+stringOp/testString.java:testString.main(String[])	method	stringOp/testString.java	code/string_algorithms	String Test Entry Point	test	legacy	low

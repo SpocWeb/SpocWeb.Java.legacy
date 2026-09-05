@@ -20,6 +20,15 @@ import java.util.LinkedList;
  * (a%m - b%m) % m = (a-b) % m
  * (a%m * b%m) % m = (a*b) % m
  * (a%m / b%m) % m = (a/b) % m
+ * <!-- docstate
+ * pass: 2
+ * mtime: 2026-09-05T10:13:32Z
+ * digest: 8cc143d6e7961383b4c796b0e4c999559338b90fdb1a27e7246ddb80ef9bc025
+ * stale: false
+ * tags: [code/string_search, code/search_algorithm]
+ * concepts: [Rabin-Karp Search]
+ * facets: {layer: utility, status: legacy, complexity: medium}
+ * -->
  * 	 */
 public class SearcherRK {
 

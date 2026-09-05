@@ -9,6 +9,15 @@ package stringOp;
  * 
  * @see streamIO.integer.pipe.PipeByte which implements a DeQueue with dynamically growing Capacity. 
  * @see streamIO.object.enumer.container.DeQueueArr which grows for Objects. 
+ * <!-- docstate
+ * pass: 2
+ * mtime: 2026-09-05T10:13:32Z
+ * digest: c72a46d5b924aa488253548942aa303545c14f847bcc5c08d57e1cf545ecc98d
+ * stale: false
+ * tags: [code/deque]
+ * concepts: [Integer Deque]
+ * facets: {layer: utility, status: legacy, complexity: low}
+ * -->
  */
 public class DeQueueInt
 //	implements intDeQueue	//intDeQueue uses Objects instead of int.

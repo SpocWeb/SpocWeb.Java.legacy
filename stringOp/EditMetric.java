@@ -10,10 +10,7 @@ import streamIO.integer.random.RandomQuick;
 import tester.IMetric;
 
 /**
- * Title: <p>
- * Description:
- * Purpose:
- * This Class encapsulates the Algorithm for calculating an Extension of 
+ * This Class encapsulates the Algorithm for calculating an Extension of
  * the double Levenshtein (Edit-) distance between two given Strings.  
  * Regular Expressions can capture some individual Variations and mistypings per Word, 
  * but not the general Strategy of 'mistyping'. 
@@ -66,6 +63,15 @@ import tester.IMetric;
  * Created on	10-26-2002, 12:47 PM<p>
  * @author heuerm
  * @version	1.0
+ * <!-- docstate
+ * pass: 2
+ * mtime: 2026-09-05T10:41:10Z
+ * digest: 73a6176a1f09330feff08b65a8291fbfc1423a9b5b4e1e7c8b6611869f444229
+ * stale: false
+ * tags: [code/edit_distance]
+ * concepts: [Levenshtein Edit Distance]
+ * facets: {layer: utility, status: legacy, complexity: low}
+ * -->
  */
 final public class EditMetric 
 implements IMetric 
@@ -84,47 +90,47 @@ implements IMetric
 	/** Character Substitutions for Normalization of german Strings:
 	 * replace any of the left Characters with the right String	 */
 	final static public String[][] GERMAN_SUBSTITUTIONS = {
-			{"ä", "ae"}, 
-			{"æ", "ae"}, 
-			{"ö", "oe"}, 
-			{"ø", "Oe"}, 
-			{"œ", "Oe"}, 
-			{"ü", "ue"}, 
-			{"ß", "ss"}, 
-			{"Ä", "Ae"}, 
-			{"Æ", "Ae"}, 
-			{"Ö", "Oe"}, 
-			{"Ø", "Oe"}, 
-			{"Ü", "Ue"}, 
+			{"ï¿½", "ae"}, 
+			{"ï¿½", "ae"}, 
+			{"ï¿½", "oe"}, 
+			{"ï¿½", "Oe"}, 
+			{"ï¿½", "Oe"}, 
+			{"ï¿½", "ue"}, 
+			{"ï¿½", "ss"}, 
+			{"ï¿½", "Ae"}, 
+			{"ï¿½", "Ae"}, 
+			{"ï¿½", "Oe"}, 
+			{"ï¿½", "Oe"}, 
+			{"ï¿½", "Ue"}, 
 	}; 
 	
 	/** Character Substitution for Normalization of other Characters in Latin-1 Strings
 	 * replace any of the right Characters with the left Character.	 */
 	final static public String[][] LATIN_SUBSTITUTIONS = {
-			{"a", "áâàã"}, 
-			{"c", "ç", }, 
-			{"d", "ð"}, 
-			{"e", "éêèë"}, 
-			{"i", "íîìï"}, 
-			{"n", "ñ"}, 
-			{"o", "óôòõ"}, 
-			{"s", "š"}, 
-			{"t", "Þ"}, 
-			{"u", "úûù"}, 
-			{"y", "ýÿ"}, 
-			{"z", "ž"}, 
-			{"A", "ÁÂÀÃ"}, 
-			{"C", "Ç"}, 
-			{"D", "Ð"}, 
-			{"E", "ÉÊÈË"}, 
-			{"I", "ÍÎÌÏ"}, 
-			{"N", "Ñ"}, 
-			{"O", "ÓÔÒõ"}, 
-			{"S", "Š"}, 
-			{"T", "þ"}, 
-			{"U", "ÚÛÙ"}, 
+			{"a", "ï¿½ï¿½ï¿½ï¿½"}, 
+			{"c", "ï¿½", }, 
+			{"d", "ï¿½"}, 
+			{"e", "ï¿½ï¿½ï¿½ï¿½"}, 
+			{"i", "ï¿½ï¿½ï¿½ï¿½"}, 
+			{"n", "ï¿½"}, 
+			{"o", "ï¿½ï¿½ï¿½ï¿½"}, 
+			{"s", "ï¿½"}, 
+			{"t", "ï¿½"}, 
+			{"u", "ï¿½ï¿½ï¿½"}, 
+			{"y", "ï¿½ï¿½"}, 
+			{"z", "ï¿½"}, 
+			{"A", "ï¿½ï¿½ï¿½ï¿½"}, 
+			{"C", "ï¿½"}, 
+			{"D", "ï¿½"}, 
+			{"E", "ï¿½ï¿½ï¿½ï¿½"}, 
+			{"I", "ï¿½ï¿½ï¿½ï¿½"}, 
+			{"N", "ï¿½"}, 
+			{"O", "ï¿½ï¿½ï¿½ï¿½"}, 
+			{"S", "ï¿½"}, 
+			{"T", "ï¿½"}, 
+			{"U", "ï¿½ï¿½ï¿½"}, 
 			{"Y", "ÝŸ"}, 
-			{"Z", "Ž"}, 
+			{"Z", "ï¿½"}, 
 	}; 
 	
 	/** Character Sound Similarities for Normalization of Strings 
@@ -137,10 +143,10 @@ implements IMetric
 			{"j", "i"}, 
 			{"n", "m"}, 
 			{"ks", "x"}, 
-			{"y", "ijü"}, 
+			{"y", "ijï¿½"}, 
 			{"z", "s"}, 
-			{"ä", "e"}, 
-			{"å", "o"}, 
+			{"ï¿½", "e"}, 
+			{"ï¿½", "o"}, 
 		/*	{"d", "t"}, //Linguistische Lautverschiebungen  
 			{"p", "b"}, 
 			{"l", "r"}, 
@@ -153,9 +159,9 @@ implements IMetric
 	 * modelling an inexperienced 2 Finger Typist. 
 	 */
 	final static public String[] KEYBOARD_LAYOUT_GERMAN = {
-			"^1234567890ß", 
-			" QWERTZUIOPÜ+", 
-			" ASDFGHJKLÖÄ#", 
+			"^1234567890ï¿½", 
+			" QWERTZUIOPï¿½+", 
+			" ASDFGHJKLï¿½ï¿½#", 
 			"<YXCVBNM,.-", 
 	}; 
 	
@@ -191,7 +197,7 @@ implements IMetric
 					final char curr = keys.charAt(j);
 					if (finish) {
 						final int[] index = new int[2]; 
-						ret[curr] = index; //rotate the Axes by 45° 
+						ret[curr] = index; //rotate the Axes by 45ï¿½ 
 						index[0] = i+j; 
 						index[1] = i-j; 
 					} else 
@@ -228,7 +234,7 @@ implements IMetric
 					final int curr = keys[j];
 					if (finish) { //2nd loop: rotate
 						final int[] index = new int[2]; 
-						ret[curr] = index; //rotate the Axes by 45° 
+						ret[curr] = index; //rotate the Axes by 45ï¿½ 
 						index[0] = i+j; 
 						index[1] = i-j; 
 					} else //1st Loop: determine the max. Index
@@ -371,7 +377,7 @@ implements IMetric
 	 * or just skip all Words with less than 5 Characters 
 	 * (since these frequent Words are typically brief, due to Evolution) 
 	 * To handle German plural Forms using Umlaut, just preprocess the Text 
-	 * and replace all 'ä' with 'ae'. 
+	 * and replace all 'ï¿½' with 'ae'. 
 	 * To handle regular Conjugation and Declination, 
 	 * the last 2 or 3 Characters can either be weighed differently 
 	 * or simply be truncated (which also gets rid of all brief Adverbs and Pronouns). 
@@ -515,15 +521,18 @@ implements IMetric
 	/// Methods
 	///////////////////////////////////////////////////////////////////////////
 	
-	/** @see tester.IScalarMetric#dist(java.lang.Object, java.lang.Object)	 */
+	/** Returns the edit distance between two Objects as a double, by delegating to {@link #distInt(Object, Object)}.
+	 * @see tester.IScalarMetric#dist(java.lang.Object, java.lang.Object)	 */
 	public double dist(final Object _a, final Object _b) { return distInt(_a, _b); }
-	
-	/** @see tester.IScalarMetric#dist(java.lang.Object, java.lang.Object)	 */
+
+	/** Converts both arguments to the internal StringBuffer workspaces and returns their edit distance.
+	 * @see tester.IScalarMetric#dist(java.lang.Object, java.lang.Object)	 */
 	public int distInt(final Object _a, final Object _b) {
-		return dist(TO_STRING_BUFFER(_a, a), TO_STRING_BUFFER(_b, b)); 
+		return dist(TO_STRING_BUFFER(_a, a), TO_STRING_BUFFER(_b, b));
 	}
-	
-	/** @see tester.IScalarMetric#dist(java.lang.Object, java.lang.Object)	 */
+
+	/** Copies both Strings into the internal StringBuffer workspaces and returns their edit distance.
+	 * @see tester.IScalarMetric#dist(java.lang.Object, java.lang.Object)	 */
 	public int dist(final String _a, final String _b) {
 		a.setLength(0); a.append(_a); 
 		b.setLength(0); b.append(_b); 
@@ -568,8 +577,8 @@ implements IMetric
 	/** Tests all Methods of this Class */
 	public static void testItOld() {
 		final EditMetric metric = GET_METRIC_GERMAN(); 
-	//	Assert.EQUALS(4, metric.dist("Haus" , "Häus"   ), "Plural Umlaut Forms should be normalized!"); 
-		Assert.EQUALS(1, metric.dist("Haus" , "Häus"   ), "Plural Umlaut Forms should be normalized!"); 
+	//	Assert.EQUALS(4, metric.dist("Haus" , "Hï¿½us"   ), "Plural Umlaut Forms should be normalized!"); 
+		Assert.EQUALS(1, metric.dist("Haus" , "Hï¿½us"   ), "Plural Umlaut Forms should be normalized!"); 
 		Assert.EQUALS(1, metric.dist("Haus" , "Haeus"  ), "Extra Characters within count only for 1"); 
 		Assert.EQUALS(3, metric.dist("Haus" , "Haeuser"), "Extra Characters count only for 1"); 
 		Assert.EQUALS(4, metric.dist("Gumbo", "Gamboli"), "Suffixes count only for 1"); 
@@ -587,8 +596,8 @@ implements IMetric
 	/** Tests all Methods of this Class, now with Prefix and Suffix Correction */
 	public static void testIt() {
 		final EditMetric metric = GET_METRIC_GERMAN(); 
-	//	Assert.EQUALS(4, metric.dist("Haus" , "Häus"   ), "Plural Umlaut Forms should be normalized!"); 
-		Assert.EQUALS(1, metric.dist("Haus" , "Häus"   ), "Plural Umlaut Forms should be normalized!"); 
+	//	Assert.EQUALS(4, metric.dist("Haus" , "Hï¿½us"   ), "Plural Umlaut Forms should be normalized!"); 
+		Assert.EQUALS(1, metric.dist("Haus" , "Hï¿½us"   ), "Plural Umlaut Forms should be normalized!"); 
 		Assert.EQUALS(1, metric.dist("Haus" , "Haeus"  ), "Extra Characters within count only for 1"); 
 		Assert.EQUALS(3, metric.dist("Haus" , "Haeuser"), "Extra Characters count only for 1"); 
 		Assert.EQUALS(3, metric.dist("Gumbo", "Gamboli"), "Suffixes count only for 1"); 

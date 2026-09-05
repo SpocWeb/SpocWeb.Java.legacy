@@ -37,6 +37,15 @@ import function.byref.ByRefChar;
  * which are exploiting the Fact that numerical Operations are built in and fast.
  * @see tester.process.PatternSearcher implements the same Algorithm explicitly using an Automaton.
  * 
+ * <!-- docstate
+ * pass: 2
+ * mtime: 2026-09-05T10:13:32Z
+ * digest: 50a3f64faeacf260e2a91ec77e64d62890c957164a94a17741e9248af91266ae
+ * stale: false
+ * tags: [code/string_search]
+ * concepts: [String Searcher Interface]
+ * facets: {layer: utility, status: legacy, complexity: low}
+ * -->
  */
 public class StrSearcher {
 

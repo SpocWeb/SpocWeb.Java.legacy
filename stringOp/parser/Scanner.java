@@ -61,6 +61,15 @@ import java.util.Vector;
  * @deprecated
  * @see streamIO.object.parser.EscapeStreamIn is newer and replaces the Assembling part of this Scanner
  * @see streamIO.object.parser.InputStream2StreamIn, a high-Performance Parser
+ * <!-- docstate
+ * pass: 2
+ * mtime: 2026-09-05T10:41:35Z
+ * digest: 51d02100cdeac6aca43ffe291c76e9a3766bda47db4bd46fac75ec6a5348ab16
+ * stale: false
+ * tags: [code/lexer_parser, code/parser_utility]
+ * concepts: [Character Scanner]
+ * facets: {layer: utility, status: legacy, complexity: low}
+ * -->
  */
 public class Scanner 
 //implements IIStreamIn_Int 
@@ -163,7 +172,7 @@ public class Scanner
 	 * '\n' \u000A NEW LINE
 	 * '\f' \u000C FORM FEED
 	 * '\r' \u000D CARRIAGE RETURN
-	 * '  ' \u0020 SPACE
+	 * 'ï¿½ï¿½' \u0020 SPACE
 	 * Unicode space separator (category "Zs"), but is not a no-break space (\u00A0 or \uFEFF).
 	 * Unicode line separator (category "Zl").
 	 * Unicode paragraph separator (category "Zp").
@@ -172,11 +181,11 @@ public class Scanner
 	 * \u000B '  ' VERTICAL TABULATION.
 	 * \u000C '\f' FORM FEED.
 	 * \u000D '\r' CARRIAGE RETURN.
-	 * \u001C '  ' FILE SEPARATOR.
-	 * \u001D '  ' GROUP SEPARATOR.
-	 * \u001E '  ' RECORD SEPARATOR.
-	 * \u001F '  ' UNIT SEPARATOR.
-	 * \u0020 '  ' SPACE
+	 * \u001C 'ï¿½ï¿½' FILE SEPARATOR.
+	 * \u001D 'ï¿½ï¿½' GROUP SEPARATOR.
+	 * \u001E 'ï¿½ï¿½' RECORD SEPARATOR.
+	 * \u001F 'ï¿½ï¿½' UNIT SEPARATOR.
+	 * \u0020 'ï¿½ï¿½' SPACE
 	 */
 	final static public String WHITESPACE = "\t\n\f\r ";
 	
@@ -209,24 +218,28 @@ public class Scanner
 	//these Methods complement the isSpace, isSpaceChar, isWhiteSpace and isIsoControl
 	//in Class 'java.lang.Character'
 	
-	/** @return true only when this Character is a Letter	 */
+	/** Tests whether c is a Letter, Digit, or Underscore, i.e. a valid Identifier Character.
+	 * @return true only when this Character is a Letter	 */
 	public static boolean IS_ALPHA_NUM(final int c) {
 		return
 			(c == '_')  ||
 			IS_LETTER(c) ||
 			IS_DIGIT(c); }
-	
-	/** @return true only when this Character is a Letter	 */
+
+	/** Tests whether c is an ASCII Letter, upper or lower Case.
+	 * @return true only when this Character is a Letter	 */
 	public static boolean IS_LETTER(final int c) {
 		return
 			IS_LOWER_LETTER(c) ||
 			IS_UPPER_LETTER(c); }
-	
-	/** @return true only when this Character is a lower Case Letter	 */
+
+	/** Tests whether c is an ASCII lower-case Letter.
+	 * @return true only when this Character is a lower Case Letter	 */
 	public static boolean IS_LOWER_LETTER(final int c) {
 		return (c >= CHR_a && c <= CHR_z); }
-	
-	/** @return true only when this Character is an upper Case Letter	 */
+
+	/** Tests whether c is an ASCII upper-case Letter.
+	 * @return true only when this Character is an upper Case Letter	 */
 	public static boolean IS_UPPER_LETTER(final int c) {
 		return (c >= CHR_A && c <= CHR_Z); }
 	
@@ -587,7 +600,7 @@ public class Scanner
 								"Established(1992,)Established," +
 								"URL(http://www.icon-is.com/e/dev/sw/sw_main.asp,)URL," +
 								"Manager(AFALK01,)Manager," +
-								"Desc(Entwicklung von kundenspezifischen Softwarelösungen im technischen und wissenschaftlichen Bereich.,)Desc," +
+								"Desc(Entwicklung von kundenspezifischen Softwarelï¿½sungen im technischen und wissenschaftlichen Bereich.,)Desc," +
 								"Person(" +
 									"ID(AFALK01,)ID," +
 									"LastName(Falk)LastName," +
@@ -597,7 +610,7 @@ public class Scanner
 								"Person," +
 								"Person(ID(JLEGA01,)ID,LastName(Legat,)LastName,FirstName(Joachim,)FirstName,PhoneExt(54,)PhoneExt,EMail(legat@icon.at,)EMail,)Person,)Division," +
 	//						"Division(Name(CD-ROM)Name,Established(1993)Established,URL(http://www.icon-is.com/d/dev/cd/cd_main.asp)URL,Manager(VGAVR01)Manager,Desc(Entwicklung von CD-ROM Datenbanken.)Desc,Person(ID(VGAVR01)ID,LastName(Gavrielov)LastName,FirstName(Vladislav)FirstName,PhoneExt(32)PhoneExt,EMail(gavrielov@icon.at)EMail,)Person,Person(ID(MPALL01)ID,LastName(Michael)LastName,FirstName(Pallinger)FirstName,PhoneExt(51)PhoneExt,EMail(pallinger@icon.at)EMail,)Person,)Division," +
-	//						"Division(Name(HARDWARE)Name,Established(1994)Established,URL(http://www.icon-is.com/d/dev/hw/hw_main.asp)URL,Manager(TKEFE01)Manager,Desc(Entwicklung von kundenspezifischen mikroelektronischen Geräten.)Desc,Person(ID(TKEFE01)ID,LastName(Kefer)LastName,FirstName(Thomas)FirstName,Title(Dipl.-Ing.)Title,PhoneExt(41)PhoneExt,EMail(kefer@icon.at)EMail,)Person,)Division," +
+	//						"Division(Name(HARDWARE)Name,Established(1994)Established,URL(http://www.icon-is.com/d/dev/hw/hw_main.asp)URL,Manager(TKEFE01)Manager,Desc(Entwicklung von kundenspezifischen mikroelektronischen Gerï¿½ten.)Desc,Person(ID(TKEFE01)ID,LastName(Kefer)LastName,FirstName(Thomas)FirstName,Title(Dipl.-Ing.)Title,PhoneExt(41)PhoneExt,EMail(kefer@icon.at)EMail,)Person,)Division," +
 	//						"Division(Name(ADMIN)Name,Desc(Buchhaltung und Sekretariat.)Desc,Person(ID(VAGGA01)ID,LastName(Aggarwal)LastName,FirstName(Veronika)FirstName,PhoneExt(21)PhoneExt,EMail(aggarwal@icon.at)EMail,)Person,)Division," +
 						")Icon,)";
 	

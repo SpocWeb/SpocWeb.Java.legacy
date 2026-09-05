@@ -18,9 +18,6 @@ import streamIO.object.AStreamIn;
 import function.index.AIndexer;
 
 /**
- * Title: <p>
- * Description:
- * Purpose:
  * Represents a Patricia-Trie (Root with empty Constructor) Node.
  * A Patricia Trie can hold any Data with unique(!) String (Bit-Sequence) Representations
  * and return it in ascending or descending Order using an effective, nearly balanced Tree. 
@@ -46,8 +43,9 @@ import function.index.AIndexer;
  * The Keys must be unique, Patricia Tries don't store multiple identical Keys! 
  * 
  * Design Decisions / Implementation Details:
- * If similar Classes exist (e.g. Polymorphism),
- * characterize the specific Differences to compare these.
+ * Each Node doubles as an inner (branching) or outer (leaf) Node of the Trie: an inner Node's
+ * left/right Children (l, r) point further down the Bit Radix, while a Node whose Child points
+ * back to itself acts as its own Terminator, avoiding a separate null Sentinel.
  *
  * Known SubClasses: <none>
  *
@@ -63,6 +61,15 @@ import function.index.AIndexer;
  * Created on	10-26-2002, 12:47 PM<p>
  * @author heuerm
  * @version	1.0
+ * <!-- docstate
+ * pass: 2
+ * mtime: 2026-09-05T10:43:17Z
+ * digest: 42bd4905599841631014af6d867ac28ef6658445212fe3f32b4458919f577ef6
+ * stale: false
+ * tags: [code/patricia_trie]
+ * concepts: [Patricia Trie Node]
+ * facets: {layer: utility, status: legacy, complexity: medium}
+ * -->
  */
 final public class PatriciaNode 
 extends AIndexer 
@@ -257,14 +264,16 @@ implements IStreamWriteAble {
 	}
 	
 	/**
-	 * @return true when the String Representation of obj equals the Key of this Node. 
+	 * Tests whether obj's String Representation (via eval, if set) equals this Node's Key.
+	 * @return true when the String Representation of obj equals the Key of this Node.
 	 */
 	final public boolean equals(final Object obj) { return EQUALS(key, obj, eval); }
-	
+
 	/**
-	 * @param obj the first Object to compare 
-	 * @param arg the second Object to compare 
-	 * @return the Sign of the first Key minus the second Key 
+	 * Compares two Objects using this Node's eval Function (or their natural String Representation).
+	 * @param obj the first Object to compare
+	 * @param arg the second Object to compare
+	 * @return the Sign of the first Key minus the second Key
 	 */
 	final public int compareTo(final Object obj, final Object arg) { return COMPARE_TO(obj, arg, eval); }
 	
@@ -400,9 +409,10 @@ implements IStreamWriteAble {
 	 */
 	public PatriciaIterator Iterator() { return new PatriciaIterator(this); }
 	
-	/** 
-	 * @return a String Representation of this Trie
-	 * consisting of all Keys stored in it.
+	/**
+	 * Returns a debugging String of this single Node's Key, Index, and Value.
+	 * Use {@link #toString(StringBuffer)} instead to render every Key stored in the whole Trie.
+	 * @return a String Representation of this single Node.
 	 */
 	public String toString() { return key + '@' + ndx + '=' + val; }
 	
@@ -418,17 +428,23 @@ implements IStreamWriteAble {
 	/// IStreamWriteAble
 	///////////////////////////////////////////////////////////////////////////
 	
-	/** @see streamIO.integer.IStreamWriteAble#writeTo(streamIO.integer.IStreamOutStruct, java.lang.String)	 */
+	/** Serializes this single Node (delegating to the generic {@link AStreamWriteAble#WRITE_TO} helper).
+	 * @see streamIO.integer.IStreamWriteAble#writeTo(streamIO.integer.IStreamOutStruct, java.lang.String)	 */
 	public void writeTo(final IStreamOutStruct stream, final String name) {
-		AStreamWriteAble.WRITE_TO(this, stream, name); 
+		AStreamWriteAble.WRITE_TO(this, stream, name);
 	}
-	
-	public static final String STR_BIT = "bit"; 
-	public static final String STR_KEY = "key"; 
-	public static final String STR_NDX = "index"; 
-	public static final String STR_VAL = "value"; 
-	
-	/** @see streamIO.integer.IStreamWriteAble#writeTo(streamIO.integer.IStreamOutStruct)	 */
+
+	/** Field Name used when serializing a Node's Bit Position.	 */
+	public static final String STR_BIT = "bit";
+	/** Field Name used when serializing a Node's Key.	 */
+	public static final String STR_KEY = "key";
+	/** Field Name used when serializing a Node's Index.	 */
+	public static final String STR_NDX = "index";
+	/** Field Name used when serializing a Node's Value.	 */
+	public static final String STR_VAL = "value";
+
+	/** Writes this Node's Bit, Key, and (if present) Index/Value fields as a named Struct.
+	 * @see streamIO.integer.IStreamWriteAble#writeTo(streamIO.integer.IStreamOutStruct)	 */
 	public void writeNodeTo(final IStreamOutStruct stream, final String name) {
 		stream.open_Struct(name);
 		stream.writeName(STR_BIT); stream.addInt(this.Bit); 
@@ -542,10 +558,7 @@ implements IStreamWriteAble {
 
 
 /**
- * Title: <p>
- * Description:
- * Purpose:
- * In-Order Patricia Object Iterator. 
+ * In-Order Patricia Object Iterator.
  * Returns the next Object, also for duplicate Keys. 
  * 
  * Design Decisions / Implementation Details:
@@ -561,6 +574,15 @@ implements IStreamWriteAble {
  * @version	1.0
  * 
  * @see streamIO.object.enumer.container.tree.TreeMap 
+ * <!-- docstate
+ * pass: 2
+ * mtime: 2026-09-05T10:43:17Z
+ * digest: da0a62e9fc6bbc445d2525b858d9b2c7b7d30aa2f3788f1a21a97334e1c9ec69
+ * stale: false
+ * tags: [code/patricia_trie]
+ * concepts: [Patricia Trie Object Iterator]
+ * facets: {layer: utility, status: legacy, complexity: low}
+ * -->
  */
 class ObjectIterator 
 extends AStreamIn
@@ -676,16 +698,18 @@ extends AStreamIn
 	 */
 	public PatriciaNode currNode() { return iter.currNode; }
 	
-	/** @see streamIO.object.AStreamIn#currItem()	 */
+	/** Returns the Value at the current Iterator Position, resolving into the duplicate-Key Array via index when set.
+	 * @see streamIO.object.AStreamIn#currItem()	 */
 	public Object currItem() {
 		if (index >= 0) //the expensive DownCast could be avoided by caching the cast Reference
-			return ((Object[]) iter.currNode.val)[index]; 
+			return ((Object[]) iter.currNode.val)[index];
 		if (iter.currNode == null)
-			return null; 
-		return iter.currNode.val; 
+			return null;
+		return iter.currNode.val;
 	}
-	
-	/** @see streamIO.object.AStreamIn#nextItem()	 */
+
+	/** Advances to the next Value, walking through a duplicate-Key Array before moving the underlying Trie Iterator.
+	 * @see streamIO.object.AStreamIn#nextItem()	 */
 	public Object nextItem() {
 		if (--index < 0) {
 			if  (iter.nextNode() == null)
@@ -697,27 +721,27 @@ extends AStreamIn
 		return currItem(); 
 	}
 	
-	/** @see streamIO.integer.AStreamIn_Int#getOrder()	 */
+	/** Delegates to the underlying {@link PatriciaIterator}'s traversal Order (ascending or descending).
+	 * @see streamIO.integer.AStreamIn_Int#getOrder()	 */
 	public byte getOrder() { return iter.getOrder(); }
-	
-	/** @see streamIO.integer.AStreamIn_Int#getPosition()	 */
+
+	/** Not implemented: the Trie Iterator has no linear Position to report.
+	 * @see streamIO.integer.AStreamIn_Int#getPosition()	 */
 	public long getPosition() { //return index; }
-		throw new RuntimeException("Not implemented!"); } 
-	
-	/** @see streamIO.integer.AStreamIn_Int#availAble()	 */
+		throw new RuntimeException("Not implemented!"); }
+
+	/** Delegates to the underlying {@link PatriciaIterator}'s remaining Node count.
+	 * @see streamIO.integer.AStreamIn_Int#availAble()	 */
 	public long availAble() { return iter.availAble(); }
-	
-	/** mark()in would require to memorize the whole Stack. 
+
+	/** mark()in would require to memorize the whole Stack.
 	 * @see streamIO.integer.AStreamIn_Int#getMaxMarkSize()	 */
 	public long getMaxMarkSize() { return 0; }
-	
+
 }
 
 /**
- * Title: <p>
- * Description:
- * Purpose:
- * In-Order Patricia Index Iterator. 
+ * In-Order Patricia Index Iterator.
  * Returns the next index, also for duplicate Keys. 
  * 
  * Design Decisions / Implementation Details:
@@ -733,6 +757,15 @@ extends AStreamIn
  * @version	1.0
  * 
  * @see streamIO.object.enumer.container.tree.TreeMap 
+ * <!-- docstate
+ * pass: 2
+ * mtime: 2026-09-05T10:43:17Z
+ * digest: b94d9c967f1b160703cf1f03263cc6e2746ca2c5a3da1371b38ea05e9d96de3d
+ * stale: false
+ * tags: [code/patricia_trie]
+ * concepts: [Patricia Trie Index Iterator]
+ * facets: {layer: utility, status: legacy, complexity: low}
+ * -->
  */
 class IndexIterator 
 extends AStreamIn_Int //PatriciaIterator //
@@ -863,31 +896,32 @@ implements IStreamIn_Int
 		return iter.currNode.ndx; 
 	}
 	
-	/** @see streamIO.integer.AStreamIn_Int#getMinDouble()	 */
+	/** Returns the Index stored at the Iterator's configured last Key boundary.
+	 * @see streamIO.integer.AStreamIn_Int#getMinDouble()	 */
 	public double getMinDouble() { return iter.last.ndx; }
-	
-	/** @see streamIO.integer.AStreamIn_Int#getOrder()	 */
+
+	/** Delegates to the underlying {@link PatriciaIterator}'s traversal Order (ascending or descending).
+	 * @see streamIO.integer.AStreamIn_Int#getOrder()	 */
 	public byte getOrder() { return iter.getOrder(); }
-	
-	/** @see streamIO.integer.AStreamIn_Int#getPosition()	 */
+
+	/** Not implemented: the Trie Iterator has no linear Position to report.
+	 * @see streamIO.integer.AStreamIn_Int#getPosition()	 */
 	public long getPosition() { //return index; }
-		throw new RuntimeException("Not implemented!"); } 
-	
-	/** @see streamIO.integer.AStreamIn_Int#availAble()	 */
+		throw new RuntimeException("Not implemented!"); }
+
+	/** Delegates to the underlying {@link PatriciaIterator}'s remaining Node count.
+	 * @see streamIO.integer.AStreamIn_Int#availAble()	 */
 	public long availAble() { return iter.availAble(); }
-	
-	/** mark()in would require to memorize the whole Stack. 
+
+	/** mark()in would require to memorize the whole Stack.
 	 * @see streamIO.integer.AStreamIn_Int#getMaxMarkSize()	 */
 	public long getMaxMarkSize() { return 0; }
-	
+
 }
 
 
 /**
- * Title: <p>
- * Description:
- * Purpose:
- * In-Order Patricia Trie Iterator. 
+ * In-Order Patricia Trie Iterator.
  * Returns the empty Root Node as the very first Item
  * and null only after all TreeNodes, so no additional Check is necessary!  
  * 
@@ -904,6 +938,15 @@ implements IStreamIn_Int
  * @version	1.0
  * 
  * @see streamIO.object.enumer.container.tree.TreeMap 
+ * <!-- docstate
+ * pass: 2
+ * mtime: 2026-09-05T10:43:17Z
+ * digest: edbd0643a228658efb87f2054b133d1c5398e2895d31c3259e9440cd8cb940f8
+ * stale: false
+ * tags: [code/patricia_trie]
+ * concepts: [Patricia Trie Iterator Base]
+ * facets: {layer: utility, status: legacy, complexity: low}
+ * -->
  */
 class PatriciaIterator {
 	

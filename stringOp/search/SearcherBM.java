@@ -11,6 +11,15 @@ package stringOp.search;
  * It requires at Maximum N+M Comparisons, but is fast due to Jumps and
  * usually only N/M Comparisons, since most Characters of the List
  * don't appear in the Search Pattern. 	 
+ * <!-- docstate
+ * pass: 2
+ * mtime: 2026-09-05T10:41:54Z
+ * digest: 5c4b6a52a2ddf98df17b278141a8aaaea6ef49ad1f971a45f23755379d33d7d2
+ * stale: false
+ * tags: [code/string_search, code/search_algorithm]
+ * concepts: [Boyer-Moore Search]
+ * facets: {layer: utility, status: broken, complexity: medium}
+ * -->
  */
 public class SearcherBM {
 
@@ -36,6 +45,10 @@ public class SearcherBM {
 		int j = Max_Char;
 		while (--j >= 0) skip[j] = M; M--; //pre-initialize the Array of Skips
 //		while (--i >= 0) skip[Pattern[i].hashCode() % Max_Char] = M-i;
+		// TODO: LOGIC: Object.hashCode() can be negative (e.g. Integer, Long, many Strings); Java's '%' keeps
+		// the sign of the dividend, so skip[Pattern[i].hashCode() % Max_Char] can index with a negative value
+		// and throw ArrayIndexOutOfBoundsException. Same issue in indexOf() below. Only safe today because the
+		// callers in this codebase pass ByRefChar (non-negative char-derived hashCode).
 		while (++i <= M) skip[Pattern[i].hashCode() % Max_Char] = M-i;
 	}	//the Sequence (0..M) or (M..0) determines, whether the Algorithm works,
 		//because it now replaces larger skips by smaller ones,
@@ -52,6 +65,9 @@ public class SearcherBM {
 		do {
 			if (List[i].equals(Pattern[j])) {--i; --j;}	//as long as Pattern and List are equal
 			else {	//Choose the larger Skip.
+				// TODO: LOGIC: same negative-hashCode risk as the constructor above - a negative
+				// List[i].hashCode() % Max_Char indexes skip[] with a negative value and throws
+				// ArrayIndexOutOfBoundsException.
 				if (M-j+1 > (s = skip[List[i].hashCode() % Max_Char]))
 					 i += M-j+1;
 				else i += s;

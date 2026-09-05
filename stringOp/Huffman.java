@@ -98,6 +98,15 @@ import function.byref.ByRefInt;
   *     = Hp + Hq*Sum(i,   p[i])) = Hp+Hq*1 
   *     = Hp + Hq
   * 
+  * <!-- docstate
+  * pass: 2
+  * mtime: 2026-09-05T10:13:32Z
+  * digest: 06b651cdbe76e91d15a0e7de45fb83e6732b5821e5654cf14207917e4de6ee27
+  * stale: false
+  * tags: [code/compression]
+  * concepts: [Huffman Coding]
+  * facets: {layer: utility, status: legacy, complexity: medium}
+  * -->
   */
 public class Huffman {
 	

@@ -9,16 +9,15 @@ package stringOp.parser;
 import streamIO.IPushBackAble;
 
 /**
- * Title: <p>
- * Description:
- * Purpose:
- * Defines the Interface for a plain input Stream 
+ * Defines the Interface for a plain input Stream
  * with discrete Objects/Values, expressed by an int, 
  * but without any Characteristics;
  * Neither the algebraic, nor the topological Properties of int are used. 
  *
  * Design Decisions / Implementation Details:
- * 
+ * Deliberately untyped (plain int) so implementers are free to encode
+ * characters, tokens, or any other discrete alphabet through this same Interface.
+ *
  * Known SubClasses: <none>
  * Parsers typically use and also implement this Interface, 
  * to extend it with specifc Methods to parse their Grammar. 
@@ -32,6 +31,15 @@ import streamIO.IPushBackAble;
  * Created on	10-26-2002, 12:47 PM<p>
  * @author heuerm
  * @version	1.0
+ * <!-- docstate
+ * pass: 2
+ * mtime: 2026-09-05T10:41:27Z
+ * digest: 85765de1ec69ca4ea2b100fe53fbe5f1c6bbd47bc53327276e23bfe298b9d97c
+ * stale: false
+ * tags: [code/parser_interface]
+ * concepts: [Integer Stream Input Interface]
+ * facets: {layer: utility, status: legacy, complexity: low}
+ * -->
  */
 public interface IIStreamIn_Int 
 extends IPushBackAble {
@@ -54,7 +62,8 @@ extends IPushBackAble {
 	 */
 	final static public int EOF = Byte.MIN_VALUE; // -1; //Integer.MIN_VALUE; //-1;
 	
-	/** @return the next Integer Number (converts IOException into a RuntimeException) 	 */
+	/** Reads and returns the next Value from the Stream, or {@link #EOF} when exhausted.
+	 * @return the next Integer Number (converts IOException into a RuntimeException) 	 */
 	public int nextInt();
 	
 }

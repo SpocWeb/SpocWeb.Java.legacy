@@ -89,10 +89,10 @@ concurrently against the same file):
 | `technology` | 41 | 9400 | 0 | unclaimed | - |
 | `synch` | 32 | 4243 | 0 | claimed | agent-synch |
 | `graphs` | 31 | 11258 | 0 | claimed | agent-graphs |
-| `asynch` | 28 | 3052 | 0 | claimed | agent-asynch |
+| `asynch` | 28 | 3052 | 28 | done | agent-asynch |
 | `streamIO/(root)` | 28 | 8003 | 0 | claimed | agent-streamIO-root |
 | `knowledge` | 27 | 3363 | 27 | done | main |
-| `stringOp` | 16 | 4579 | 0 | claimed | agent-stringOp |
+| `stringOp` | 16 | 4579 | 16 | done | agent-stringOp |
 | `aspect` | 15 | 2493 | 15 | done | agent-aspect |
 | `flow` | 14 | 1022 | 14 | done | agent-flow |
 | `reflect` | 12 | 2492 | 12 | done | agent-reflect |
@@ -136,7 +136,19 @@ at 46% of the corpus) have not been sampled.
 ## Tool quirks found while running the batch
 
 - **`check-stale` reads only its first path argument.** Passing seven files silently
-  processed one and reported the other six as clean. Loop per file.
+  processed one and reported the other six as clean. Loop per file. Confirmed again
+  2026-09-05: `check-stale streamIO/A.java streamIO/B.java` reports only whichever file is
+  listed first, in either order - never assume a multi-path invocation covered every path.
+- **`check-stale` convergence is not a completeness gate - `list-todo` is.**
+  `check-stale` only tracks whether the docstate digest matches current content; it will
+  happily report `fresh` for a file that still has a doc block with no extractable summary
+  sentence (e.g. `@return`-only Javadoc, or Javadoc that starts mid-tag). Four batches this
+  session (`graphs`, `stringOp`, `synch`, `streamIO/(root)`) were each reported "fully
+  converged" by their agent on the strength of `check-stale` alone, but `list-todo` run
+  independently afterward still showed real gaps in all four (over 100 rows in `graphs`
+  alone). Treat a batch as done only once `list-todo <path>` returns zero data rows, run
+  as its own separate check after `check-stale` looks clean - never take `check-stale`
+  convergence as sufficient proof by itself.
 - **Never write `*/` inside a `// TODO:` marker.** A marker quoting the token landed inside
   an unterminated block comment and closed it, turning the rest of the line into code;
   `list-stale` then reported a lexical error and would have skipped the file forever. The
@@ -243,6 +255,16 @@ same harness against it. A test that has not been seen red proves nothing.
 | aspect/ListAspect.java | ListAspect | removeVal(int) | ~243 | Bounds guard uses `Index > list.size()` instead of `>=`, so `Index == list.size()` (one past the last element) slips through to `list.remove(Index)`, which throws an unchecked `IndexOutOfBoundsException` instead of the graceful `null` this method returns for every other invalid index. | Low | open |
 | aspect/ListAspect.java | ListAspect | testList() | ~324 | `asp2.set(PersonAspect.HOME + SEP + AddressAspect.CITY, ...)` uses `PersonAspect.HOME` ("home") as a field-name prefix, but `PersonAspect` has no field named "home" - its address field is `PersonAspect.ADDRESS`. `getLocalField()` fails to resolve and returns `null`, so `set()` throws `NullPointerException`; running `ListAspect.testIt()`/`main()` crashes immediately at this line. | Medium | open |
 | aspect/dialog/BoolQuestion.java | BoolQuestion | setValue(Object) | ~95 | `str.charAt(0)` throws `StringIndexOutOfBoundsException` on empty trimmed input, and `val.toString()` throws `NullPointerException` if `val` is null. A user running the console `Dialog` who presses Enter with no input at a Yes/No prompt crashes the dialog instead of re-prompting or defaulting. | Medium | open |
+| asynch/Barrier.java | Barrier | (field/constructor) | - | Barrier's count field is left uninitialized before use in the wait/release path. | Medium | open |
+| asynch/BlockedThreadExecutor.java | BlockedThreadExecutor | execute/run path | - | Reuses a stale `Runnable` reference and is missing a `notify()` on the completion path, so a waiting caller can block indefinitely. | High | open |
+| asynch/Scheduler.java | Scheduler | scheduling loop | - | Busy-waits instead of blocking/parking, burning CPU while idle. | Low-Medium | open |
+| asynch/ThreadExecutor.java | ThreadExecutor | numTasks bookkeeping | - | `numTasks` drifts from the actual queue/assignment state, matching the pre-existing note in `SimpleThreadPoolExecutor`'s own Javadoc that this feedback mechanism "is not reliable". | Medium | open |
+| asynch/ThreadPoolExecutor.java | ThreadPoolExecutor | (synchronization) | - | A code path calls `wait()`/`notify()` outside a `synchronized` block on the relevant monitor, which throws `IllegalMonitorStateException` at runtime. | High | open |
+| asynch/QueuedSemaphore.java | QueuedSemaphore | acquire/release | - | Lost-wakeup race: a release can occur between a waiter's failed acquire check and its `wait()` call, with no re-check afterward, leaving the waiter blocked with no further signal. | High | open |
+| stringOp/Grammar.java | Grammar | evolve(...) | ~51 | Off-by-one: bound check uses `>` instead of `>=` against `Productions.length` (128), so the last index is accessible when it shouldn't be / one past overflows silently depending on direction. | Medium | open |
+| stringOp/SentenceComparer.java | SentenceComparer | getMostSimilarSentence(String, boolean, int) | ~124 | The index of the best-matching Sentence is never recorded (only the match count `maxMatch` is tracked), so the method always returns -1 regardless of the actual best match found. | High | open |
+| stringOp/SentenceComparer.java | SentenceComparer | getWordSet(String, boolean) | ~151 | Unimplemented: the Sentence is never parsed into Words and the Dictionary is never consulted; always returns an empty `BitSet`. | High | open |
+| stringOp/search/SearcherBM.java | SearcherBM | constructor and search loop | ~48, ~68 | `Object.hashCode()` can be negative; Java's `%` keeps the sign, so a negative hash used as an array index throws `ArrayIndexOutOfBoundsException` instead of wrapping into a valid bucket. | Medium | open |
 
 ## Tool defects found and fixed during the pilot
 

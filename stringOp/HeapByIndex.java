@@ -43,6 +43,15 @@ import function.IOrderAble;
   * The Permutation can be generated during downHeap, delete, insert and change.
   * It is easiest to store this inverse Mapping
   * by storing the Heap Position in the Object itself like done in 'Heap'! 	
+  * <!-- docstate
+  * pass: 2
+  * mtime: 2026-09-05T10:41:21Z
+  * digest: 4b5e613bc794fbe14e9fcf6846cbaafaea1edff08d0ae45178a0d6b0118e420e
+  * stale: false
+  * tags: [code/heap_based_algorithm, code/priority_queue]
+  * concepts: [Index-Based Heap]
+  * facets: {layer: utility, status: legacy, complexity: medium}
+  * -->
   */
 public class HeapByIndex {
 	
@@ -182,7 +191,8 @@ public class HeapByIndex {
 		upHeap(length); 
 	}
 	
-	/** @return the Priority of the Element k in the Heap structure	 
+	/** Returns the Element stored at the given Array Position k, independent of its current Position in the Heap.
+	 * @return the Priority of the Element k in the Heap structure
 	 */
 	public IOrderAble getAt(final int k) { return a[k]; }
 	

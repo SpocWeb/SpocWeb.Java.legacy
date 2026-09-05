@@ -17,6 +17,15 @@ import java.io.IOException;
   *
   * @author  Matthias Heuer
   * @version
+  * <!-- docstate
+  * pass: 2
+  * mtime: 2026-09-05T10:41:16Z
+  * digest: a7b86e1595f96cb4f7b04c3343596dfe60cabbe468c381b0fcf22f10d2298ec3
+  * stale: false
+  * tags: [code/grammar_model, code/recursive_grammar]
+  * concepts: [Grammar Evolution]
+  * facets: {layer: utility, status: broken, complexity: medium}
+  * -->
   */
 public class Grammar 
 extends Object {
@@ -27,15 +36,21 @@ extends Object {
 	/** Creates new Grammar from the Productions given in the File. */
 //    public Grammar (String Productions) { }
 
+	/** Registers the Production (replacement String) to apply whenever Character X is encountered by {@link #evolve(String)}. */
 	public void addProduction( int X, String Evolution) {
 		Productions[X] = Evolution; }
 
+	/** Applies one Generation of the registered Productions to arg: every Character with a registered Production
+	 * is replaced by that Production's String, all other Characters are copied through unchanged.	 */
 	public String evolve(String arg) {
 		StringBuffer result = new StringBuffer();
 		String tmp;
 		int j, i = -1;
 		int l = arg.length();
 		while (++i < l) {
+			// TODO: LOGIC: off-by-one - should be '>=', not '>'. Productions.length is 128 (Byte.MAX_VALUE+1),
+			// so a Character with code exactly 128 passes this guard and then indexes Productions[128],
+			// throwing ArrayIndexOutOfBoundsException.
 			if ((j = arg.charAt (i)) > Productions.length) {
 				result.append((char) j); continue; }
 			if ((tmp = Productions[j]) == null) {

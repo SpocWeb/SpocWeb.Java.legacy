@@ -14,10 +14,7 @@ import math.vector.VectorInt;
 import math.vector.VectorString;
 
 /**
- * Title: <p>
- * Description:
- * Purpose:
- * This Class allows to compare Sentences for Similarity. 
+ * This Class allows to compare Sentences for Similarity.
  * In parallel it can construct a Dictionary for any Language 
  * whose Alphabet and Separator Characters are known. 
  * 
@@ -50,21 +47,30 @@ import math.vector.VectorString;
  * @author heuerm
  * @version	1.0
  * 
- * Alternative Parameter-Übergabe: 
+ * Alternative Parameter-ï¿½bergabe: 
  * 1. Dimension: globale Variable oder Stack-Parameter
  * 2. Dimension: 
  * primitive Parameter-Werte: copied ByVal, also Stack-intensiv, 
  * 	aber keine Seiteneffekte und Thread-safe  
  * schwach typisierte Parameter-Listen: 
- * brauchbar für zahlreiche optionale Werte gleichen Typs, 
+ * brauchbar fï¿½r zahlreiche optionale Werte gleichen Typs, 
  * aber besser sind stark typisierte Werte und Parameter-Objekte mit nulls.
- * Parameter-Objekte: handed over ByRef, auch für Return-Werte brauchbar.
- * typisch auch zur Verkürzung der Parameter-Listen. 
+ * Parameter-Objekte: handed over ByRef, auch fï¿½r Return-Werte brauchbar.
+ * typisch auch zur Verkï¿½rzung der Parameter-Listen. 
  * Alle IMMER notwendigen Objekte und Werte sollten hier gesetzt sein. 
  * Parameter-Listen: Arrays & HashMaps
  * Ein Problem ist z.B. die Auffindung im Array, 
- * aber dafür kann man dann auch HashMaps verwenden. 
+ * aber dafï¿½r kann man dann auch HashMaps verwenden. 
  * 
+ * <!-- docstate
+ * pass: 2
+ * mtime: 2026-09-05T10:42:23Z
+ * digest: 84f9788f127743c47ccd4f9a15d4a9f051442ee800c254be367e3fc3bdb6da1c
+ * stale: false
+ * tags: [code/string_algorithms]
+ * concepts: [Sentence Similarity Comparer]
+ * facets: {layer: utility, status: broken, complexity: medium}
+ * -->
  */
 public class SentenceComparer {
 	
@@ -89,9 +95,7 @@ public class SentenceComparer {
 	/** temporary BitSet to perform the OR Operation	 */
 	protected final BitSet work = new BitSet(); 
 	
-	/**
-	 * 
-	 */
+	/** Creates a Comparer that parses incoming Sentences into Words using the given Separator Characters. */
 	public SentenceComparer(final String _separators) {
 		this.separators = _separators; 
 	}
@@ -103,48 +107,55 @@ public class SentenceComparer {
 	public int getNumDistinctSentences() { return sentenceSets.size(); }
 	
 	/**
-	 * @see #similarities stores the similarities for the last Operation for deeper Analysis. 
-	 * @param sentence the Sentence to search for. 
+	 * Compares the Word Set of sentence against every previously seen Sentence's Word Set by intersecting BitSets, optionally records the Sentence, but always returns -1 instead of the best match's index due to an unfixed bug.
+	 * @see #similarities stores the similarities for the last Operation for deeper Analysis.
+	 * @param sentence the Sentence to search for.
 	 * @param addToDictionary Flag whether to add the Words of this Sentence to the Dictionary
 	 * @param minSimilarity Threshold controlling whether to add this Sentence to the Sentence List.
-	 * To make sure the Sentence is always added, set it to Integer.MAX_VALUE 
+	 * To make sure the Sentence is always added, set it to Integer.MAX_VALUE
 	 * To make sure the Sentence is never  added, set it to any negative Value
-	 * @return the most similar Sentence to the given one. 
+	 * @return the most similar Sentence to the given one.
 	 */
-	public int getMostSimilarSentence(final String sentence, final boolean addToDictionary, 
+	public int getMostSimilarSentence(final String sentence, final boolean addToDictionary,
 			final int minSimilarity) {
-		final BitSet set  = getWordSet(sentence, addToDictionary); 
-		work.clear(); //set.clone(); 
-		int maxMatch = 0; 
+		final BitSet set  = getWordSet(sentence, addToDictionary);
+		work.clear(); //set.clone();
+		int maxMatch = 0;
+		// TODO: LOGIC: the index of the best-matching Sentence is never recorded (only maxMatch, the count, is
+		// tracked); the method always falls through to 'return -1' below regardless of maxMatch, so despite its
+		// Javadoc/name it can never report which Sentence was most similar - only similarities[] is usable.
 		for (int i = sentenceSets.size(); --i >= 0; ) {
 			work.or(set); //set the bits, not necessary to clear, since at most set's bit are set!
-			work.and((BitSet) sentenceSets.get(i)); 
-			final int numMatch = work.cardinality(); 
-			similarities.setAt(i, numMatch); 
+			work.and((BitSet) sentenceSets.get(i));
+			final int numMatch = work.cardinality();
+			similarities.setAt(i, numMatch);
 			if (maxMatch < numMatch) {
 				maxMatch = numMatch;
 			}
 		}
 		if (maxMatch < minSimilarity) {
-			sentenceSets.add(set); 
-			sentences.addItem(sentence); 
+			sentenceSets.add(set);
+			sentences.addItem(sentence);
 		}
-		return -1; 
+		return -1;
 	}
 	
 	/**
-	 * 
-	 * @param sentence the Sentence to analyze for Occurrence of Words. 
-	 * @param addToDictionary Flag whether to add newly found Words to the Dictionary. 
+	 * Intended to parse the Sentence into Words and set a Bit for each Word found or added in the Dictionary, but is unimplemented and always returns an empty BitSet.
+	 * @param sentence the Sentence to analyze for Occurrence of Words.
+	 * @param addToDictionary Flag whether to add newly found Words to the Dictionary.
 	 * @return the BitSet (instead of e.g. a HashSet, because that can be analyzed faster!
 	 */
 	public BitSet getWordSet(final String sentence, final boolean addToDictionary) {
-		final BitSet ret = new BitSet(dictionary.size() << 1); 
+		final BitSet ret = new BitSet(dictionary.size() << 1);
+		// TODO: LOGIC: unimplemented - the Sentence is never parsed into Words, the Dictionary is never
+		// searched or updated, and no Bit is ever set. This always returns an empty BitSet, which makes
+		// getMostSimilarSentence()'s comparison meaningless (every Sentence has an all-zero Word Set).
 		///parse the Sentence into Words
 		///search the Words in the Dictionary which is an O(M) Operation
 		///(searching for EXACT Matches would  only be an O(1) Operation!!!)
 		///either add to the Dictionary or just set the Bit
-		return ret; 
+		return ret;
 	}
 	
 	/**

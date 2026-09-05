@@ -46,6 +46,15 @@ import function.byref.ByRefInt;
  * i.e. the Number of Not-End-States currently inspected. 
  * 
  * see Sedgewick "Algorithms" Chapters 20 and 21
+ * <!-- docstate
+ * pass: 2
+ * mtime: 2026-09-05T10:41:40Z
+ * digest: e2ef2041e61987e31fa9841753ebe94e4a46065381e041f2a5005302bc37fb94
+ * stale: false
+ * tags: [code/regex]
+ * concepts: [Regular Expression Matcher]
+ * facets: {layer: utility, status: legacy, complexity: medium}
+ * -->
  */
 public class RegExp {
 	
@@ -333,7 +342,8 @@ public class RegExp {
 		return matchNext(stream, (int) stream.getPosition()); 
 	}
 	
-	final public ByRefInt currChar = new ByRefInt(); 
+	/** Boxed holder for the Character currently being matched against the Automaton's Testers, reused across calls. */
+	final public ByRefInt currChar = new ByRefInt();
 	
 	/**
 	 * Returns the last Character of the Regular Expression found in string, 

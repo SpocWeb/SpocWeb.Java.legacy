@@ -17,6 +17,15 @@ import java.io.StringBufferInputStream;
  * Top-Down Implementation.
  * Uses the Scanner Class to read simple Objects. 
  * @see function.Derive.RingFuncs.FuncParser 
+ * <!-- docstate
+ * pass: 2
+ * mtime: 2026-09-05T10:13:32Z
+ * digest: bb962de5689478ac2d10b11240caf57b10b940db465da67b4d32d897ee8d8c35
+ * stale: false
+ * tags: [code/parser, code/expression_parser]
+ * concepts: [Math Expression Parser]
+ * facets: {layer: utility, status: legacy, complexity: medium}
+ * -->
  */
 public class MathParser {
 
