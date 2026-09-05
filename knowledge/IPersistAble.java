@@ -6,6 +6,18 @@ import java.util.Vector;
  
 
 /**
+ * Lets an object load, save and delete itself, leaving the storage mechanism entirely to
+ * the implementor.
+ *
+ * <p>This is the active counterpart to {@link PersistAble}: there, an object merely
+ * describes its table and fields and {@link DBObjectFactory} does the work; here the
+ * object performs its own SQL. The two are alternatives, not layers, and a class picks
+ * one.
+ *
+ * <p><b>Invariant:</b> every method except {@link #TableName()} requires the primary key
+ * to be set, and the read methods return {@code null} rather than throwing when nothing
+ * matches - so a null result means "not found", not "not attempted".
+ *
  * IPersistAble.java
  * Functional Interface for persisting Data (into a DB)
  * The Mechanism (Stored Procedure, Prepared Statement or simple Execute) 
@@ -22,6 +34,12 @@ import java.util.Vector;
  *
  * @author  Matthias Heuer
  * @version 
+ * <!-- docstate
+ * pass: 2
+ * mtime: 2026-09-05T08:10:52Z
+ * digest: 9e9b4bb3b0c2bb592006bbca3e036b6c4fbeecab5a7cb185450dc9775c37865c
+ * stale: false
+ * -->
  */
 public interface IPersistAble { 
 	
@@ -59,8 +77,8 @@ public interface IPersistAble {
 	boolean insertIntoDB() throws SQLException; 
 	
 	/** Updates this Object in the DB
-	  * Returns true when inserted, false when updated */
-	boolean updateInDB() throws SQLException; 
+	  * Returns true when a row was updated, false when none matched */
+	boolean updateInDB() throws SQLException;
 	
 	/** Delete this Object from the DB
 	  * Returns true when it could be deleted.  */

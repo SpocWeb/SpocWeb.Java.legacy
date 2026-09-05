@@ -28,3 +28,9 @@ knowledge/IDescriptor.java:IDescriptor	class	knowledge/IDescriptor.java	code/int
 knowledge/IReadyFlag.java:IReadyFlag	class	knowledge/IReadyFlag.java	code/state_flag, code/interface_contract	State Tracking	domain	stable	low
 knowledge/IDirtyFlag.java:IDirtyFlag	class	knowledge/IDirtyFlag.java	code/state_flag, code/interface_contract	State Tracking	domain	stable	low
 knowledge/IPrimaryKey.java:IPrimaryKey	class	knowledge/IPrimaryKey.java	code/composite_key, code/primary_key_lookup, code/sql_generation, code/reflection	Persistence, Record Identity	persistence	stable	medium
+knowledge/PersistAble.java:PersistAble	class	knowledge/PersistAble.java	code/orm, code/persistence, code/reflection, code/interface_contract	Persistence, Object-Relational Mapping	persistence	stable	medium
+knowledge/IPersistAble.java:IPersistAble	class	knowledge/IPersistAble.java	code/persistence, code/data_access, code/interface_contract	Persistence, Data Access	persistence	stable	medium
+knowledge/DirtyFlag.java:DirtyFlag	class	knowledge/DirtyFlag.java	code/state_flag	State Tracking	domain	stable	low
+knowledge/CachedValue.java:CachedValue	class	knowledge/CachedValue.java	code/caching, code/lazy_loading, code/state_flag	Lazy Evaluation, State Tracking	domain	experimental	low
+knowledge/ObjectType.java:ObjectType	class	knowledge/ObjectType.java	code/type_system, code/entity_model, code/domain_model	Domain Model, Object Classification	domain	stable	low
+knowledge/MetaType.java:MetaType	class	knowledge/MetaType.java	code/type_system, code/entity_model, code/orm, code/reflection	Domain Model, Object Classification	domain	stable	low

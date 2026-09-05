@@ -1,6 +1,14 @@
 package knowledge;
 
 /**
+ * Classifies an object along a single dimension, carrying its {@link MetaType},
+ * super-{@link Type} and {@link Status}.
+ *
+ * <p>The {@link MetaType} is the coarse split - simple object, relation, or primitive
+ * attribute - while the super-type reference is what gives the classification a hierarchy,
+ * and is also how an enumeration's individual values are modelled as sub-types of the enum
+ * itself. Anything richer than one dimension is expressed as attributes rather than here.
+ *
  * Type of the Object for Categorization,
  * usable only for one Dimensional Categories.
  * The rest must be done by Attributes of certain Types.
@@ -10,6 +18,12 @@ package knowledge;
  * Design Decisions:
  * No Hierarchy or even Network structure imposed on these Types (apart from the MetaType).
  * Possibly with increasing Model Size these Types have to be organized in their own way!
+ * <!-- docstate
+ * pass: 2
+ * mtime: 2026-09-05T08:10:38Z
+ * digest: fa0303d5d18de8f10951f55cbce718858c1d7d4a51f64d65b2b22fa66fb58147
+ * stale: false
+ * -->
  */
 public class ObjectType
 extends Status {
@@ -52,7 +66,12 @@ extends Status {
 	//  Constructors  //
 	////////////////////
 
-	/** Constructor for a KnowStatus */
+	/**
+	 * Creates a type with its identity inherited from {@link Status} and its classification
+	 * set from the given status and meta-type.
+	 *
+	 * <p>Constructor for a KnowStatus.
+	 */
 	public ObjectType(int ID_, String Name_, String Description_, Status StatusID_, MetaType MetaTypeID_) {
 		super(ID_, Name_, Description_);
 		this.MetaTypeID = MetaTypeID_;

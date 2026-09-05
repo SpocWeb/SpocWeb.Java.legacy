@@ -3,6 +3,18 @@ package knowledge;
 import java.lang.reflect.Field;
 
 /**
+  * Describes a class to {@link DBObjectFactory} well enough for it to be loaded and saved
+  * generically: its table, its fields, and how those fields are named in the database.
+  *
+  * <p>The object stays passive - it issues no SQL of its own, which is the whole
+  * difference from {@link IPersistAble} - and no method here throws, because nothing here
+  * touches a connection.
+  *
+  * <p><b>Invariant:</b> {@link #Fields()}, {@link #FieldNames()} and {@link #DBFieldNames()}
+  * are three parallel views of the same columns and must agree in order and length;
+  * {@link #ForeignKeyCondition()} additionally assumes the {@code <TableName>ID} naming
+  * convention and is wrong for anything that departs from it, such as parallel relations.
+  *
   * PersistAble
   * Interface for Classes that can be generically persisted into a relational DataBase
   * by knowing their Table and Field Names.
@@ -15,6 +27,12 @@ import java.lang.reflect.Field;
   *
   * @author  Matthias Heuer
   * @version
+  * <!-- docstate
+  * pass: 2
+  * mtime: 2026-09-05T08:11:04Z
+  * digest: 1d1e78689fda5fe65676aee605f05e04244529374a40435dae01f5cb9a9855f1
+  * stale: false
+  * -->
   */
 public interface PersistAble { 
 //extends IPrimaryKey { //don't rely on that!
@@ -48,5 +66,9 @@ public interface PersistAble {
 	  * which is not sufficient for e.g. parallel Relations. */
 	String ForeignKeyCondition(); 
 
-    int attribute1 = 0;	
+	/**
+	 * Unused placeholder left over from a modelling-tool template, referenced nowhere in the
+	 * tree.
+	 */
+    int attribute1 = 0;
 }

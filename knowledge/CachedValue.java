@@ -8,17 +8,19 @@ import function.byref.CachedCountAble;
 import function.byref.CachedMeasurAble;
 
 /**
- * Title: enclosing_type<p>
- * Description:
- * Purpose:
+ * A {@link DirtyFlag} whose clean state is restored on demand by a caller-supplied
+ * {@link Runnable} rather than by whoever mutated it.
  *
- * Purpose / Responsibilities of this Class
+ * <p>The inherited {@code dirty} field means "the inner value is not present"; the
+ * {@link #calculator} is the callback expected to put it there. Subclasses own the value
+ * itself - this class holds only the flag and the callback, which is why the value's type
+ * is not fixed here.
  *
- * Design Decisions / Implementation Details:
- * If similar Classes exist (e.g. Polymorphism),
- * characterize the specific Differences to compare these.
+ * <p><b>Invariant:</b> {@link #calculator} must be set before a caller can rely on the
+ * value being recomputed; it is a public field with no null guard, so an unset calculator
+ * is not detected until it is needed.
  *
- * Known SubClasses: 
+ * Known SubClasses:
  * @see CachedCountAble
  * @see CachedMeasurAble
  *
@@ -30,6 +32,12 @@ import function.byref.CachedMeasurAble;
  * @author mheuer
  * @version	1.0
  *
+ * <!-- docstate
+ * pass: 2
+ * mtime: 2026-09-05T08:10:13Z
+ * digest: 327a7738f6b4f8450bcdd6bc19927b6d3e7fd0cfe659814458fd248eaae31460
+ * stale: false
+ * -->
  */
 public class CachedValue extends DirtyFlag {
 
@@ -44,13 +52,20 @@ public class CachedValue extends DirtyFlag {
 	 */
 	public Runnable calculator;
 
-	/** asserts that this Value is dirty! 
-	 * @throws IllegalArgumentException otherwise
+	/**
+	 * Returns silently when the dirty flag already equals the expected state, and otherwise
+	 * tries to reach that state by running {@link #calculator}.
+	 *
+	 * @param dirty_ the dirty state this value is asserted to be in
+	 * @throws IllegalArgumentException when the state differs and no calculator can fix it
 	 */
-	final public void assertIsDirty(boolean dirty_) 
+	final public void assertIsDirty(boolean dirty_)
 	throws IllegalArgumentException {
 		if (dirty == dirty_) { // isDirty()) {
 			return; }
+		// TODO: LOGIC: the null test is inverted - calculator.run() is only reached when
+		// calculator is null, so this throws NullPointerException whenever no calculator is
+		// set, and never invokes one that is set; the branches belong the other way round.
 		if (calculator == null) {
 			calculator.run(); //call a Callback to set the Value
 		} else {
