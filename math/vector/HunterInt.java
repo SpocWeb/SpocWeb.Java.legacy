@@ -44,6 +44,9 @@ import function.byref.ByRefDouble;
  * mtime: 2026-09-05T12:48:05Z
  * digest: 415b655878ed300266642513deb29d6f549d3ac2ab9d33be632ea23fa9b9f58c
  * stale: false
+ * tags: [code/quicksort, code/order_statistic, code/binary_search]
+ * concepts: [Sorted-int[] Hunter (QuickSort/Order Statistics)]
+ * facets: {layer: utility, status: broken, complexity: high}
  * -->
  */
 public class HunterInt {

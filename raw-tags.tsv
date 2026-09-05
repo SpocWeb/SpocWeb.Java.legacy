@@ -908,3 +908,53 @@ math/matrix/MatrixSymmetric.java:MatrixSymmetric.testSolveCholesky()	method	math
 math/matrix/MatrixSymmetric.java:MatrixSymmetric.main(String[])	method	math/matrix/MatrixSymmetric.java	code/testing	Demo Entry Point	test	legacy	low
 math/matrix/MatrixTriDiagonal.java:MatrixTriDiagonal	class	math/matrix/MatrixTriDiagonal.java	code/tridiagonal_matrix_solving,code/band_diagonal_matrix	Tridiagonal Matrix Solver	utility	broken	medium
 math/matrix/Quaternion.java:Quaternion	class	math/matrix/Quaternion.java	code/quaternion_algebra,code/quaternion_math	Quaternion Rotation Algebra	utility	broken	medium
+math/vector/AVector.java:AVector	class	math/vector/AVector.java	code/growable_array,code/array_bounds_check	Vector Family Base Class	utility	legacy	medium
+math/vector/AVector.java:AVectorStreamIn_Float	class	math/vector/AVector.java	code/functional_interfaces	Reverse-Order Float Stream Source	utility	legacy	low
+math/vector/AVector.java:AVectorStreamIn_Int	class	math/vector/AVector.java	code/functional_interfaces	Reverse-Order Int Stream Source	utility	legacy	low
+math/vector	folder	math/vector	code/growable_array,code/quicksort,code/order_statistic	Primitive-Typed Growable Vector Family	utility	broken	high
+math/vector/HunterDouble.java:HunterDouble	class	math/vector/HunterDouble.java	code/quicksort,code/order_statistic,code/binary_search	Sorted-double[] Hunter (QuickSort/Order Statistics)	utility	broken	high
+math/vector/HunterFloat.java:HunterFloat	class	math/vector/HunterFloat.java	code/quicksort,code/order_statistic,code/binary_search	Sorted-float[] Hunter (QuickSort/Order Statistics)	utility	broken	high
+math/vector/HunterInt.java:HunterInt	class	math/vector/HunterInt.java	code/quicksort,code/order_statistic,code/binary_search	Sorted-int[] Hunter (QuickSort/Order Statistics)	utility	broken	high
+math/vector/QuaternaryOp.java:QuaternaryOp	class	math/vector/QuaternaryOp.java	code/strategy_pattern,code/functional_interfaces	Quaternary Arithmetic Operation	utility	legacy	low
+math/vector/VectorChar.java:VectorChar	class	math/vector/VectorChar.java	code/growable_array,code/array_math	Growable char[] Vector	domain	broken	high
+math/vector/VectorChar.java:VectorCharStreamIn	class	math/vector/VectorChar.java	code/functional_interfaces	Reverse-Order Char Stream Source	utility	legacy	low
+math/vector/VectorDouble.java:VectorDouble	class	math/vector/VectorDouble.java	code/growable_array,code/array_math	Growable double[] Vector	domain	broken	high
+math/vector/VectorDouble.java:VectorDoubleStreamIn	class	math/vector/VectorDouble.java	code/functional_interfaces	Reverse-Order Double Stream Source	utility	legacy	low
+math/vector/VectorFloat.java:VectorFloat	class	math/vector/VectorFloat.java	code/growable_array,code/array_math	Growable float[] Vector	domain	broken	high
+math/vector/VectorFloat.java:VectorFloatStreamIn	class	math/vector/VectorFloat.java	code/functional_interfaces	Reverse-Order Float Stream Source	utility	legacy	low
+math/vector/VectorInt.java:VectorInt	class	math/vector/VectorInt.java	code/growable_array,code/array_math	Growable int[] Vector	domain	broken	high
+math/vector/VectorInt.java:VectorIntStreamIn	class	math/vector/VectorInt.java	code/functional_interfaces	Reverse-Order Int Stream Source	utility	legacy	low
+math/vector/VectorLong.java:VectorLong	class	math/vector/VectorLong.java	code/growable_array,code/array_math	Growable long[] Vector	domain	broken	high
+math/vector/VectorLong.java:VectorLongStreamIn	class	math/vector/VectorLong.java	code/functional_interfaces	Reverse-Order Long Stream Source	utility	legacy	low
+math/vector/VectorObject.java:VectorObject	class	math/vector/VectorObject.java	code/growable_array,code/generic_vector	Growable Object[] Vector	utility	broken	medium
+math/vector/VectorShort.java:VectorShort	class	math/vector/VectorShort.java	code/growable_array,code/array_math	Growable short[] Vector	domain	broken	high
+math/vector/VectorShort.java:VectorShortStreamIn	class	math/vector/VectorShort.java	code/functional_interfaces	Reverse-Order Short Stream Source	utility	legacy	low
+math/vector/VectorString.java:VectorString	class	math/vector/VectorString.java	code/growable_array,code/string_parsing,code/string_formatting	Growable String[] Vector with String Utility Library	utility	broken	high
+math/vector/statistic/Correlation.java:Correlation	class	math/vector/statistic/Correlation.java	code/statistical_correlation,code/hypothesis_testing	Cross-Vector Correlation Statistics	domain	legacy	high
+math/vector/statistic/Correlation.java:Correlation.Correlation()	method	math/vector/statistic/Correlation.java	code/statistical_correlation	Private Constructor (Static Utility)	domain	legacy	low
+math/vector/statistic/Correlation.java:Correlation.main(String[])	method	math/vector/statistic/Correlation.java	code/testing	Demo Entry Point	test	legacy	low
+math/vector/statistic/Correlation.java:Correlation.testIt()	method	math/vector/statistic/Correlation.java	code/testing,code/statistical_correlation	Correlation Self-Test Dispatcher	test	legacy	low
+math/vector/statistic/Correlation.java:Correlation.CORRELATION(float, float, float)	method	math/vector/statistic/Correlation.java	code/statistical_correlation	Pearson Correlation from Sums	domain	legacy	low
+math/vector/statistic/Correlation.java:Correlation.CORRELATION_SLOPE(float, float)	method	math/vector/statistic/Correlation.java	code/statistical_correlation	Regression Slope from Correlation	domain	legacy	low
+math/vector/statistic/Correlation.java:Correlation.CORRELATION(float[], float[])	method	math/vector/statistic/Correlation.java	code/statistical_correlation	Pearson Correlation of Two Vectors	domain	legacy	medium
+math/vector/statistic/Correlation.java:Correlation.CORRELATION(float[], float[], int, int)	method	math/vector/statistic/Correlation.java	code/statistical_correlation	Pearson Correlation over a Range	domain	legacy	medium
+math/vector/statistic/Correlation.java:Correlation.CORRELATION(float[][])	method	math/vector/statistic/Correlation.java	code/statistical_correlation	Pearson Correlation Matrix	domain	legacy	medium
+math/vector/statistic/Correlation.java:Correlation.CORRELATION(float[][], int, int)	method	math/vector/statistic/Correlation.java	code/statistical_correlation	Pearson Correlation Matrix (Row Range)	domain	legacy	medium
+math/vector/statistic/Correlation.java:Correlation.CORRELATION(float[][], int, int, int, int)	method	math/vector/statistic/Correlation.java	code/statistical_correlation	Pearson Correlation Matrix (Row/Column Range)	domain	legacy	medium
+math/vector/statistic/Correlation.java:Correlation.FISHER_Z_CORRELATION(double, int)	method	math/vector/statistic/Correlation.java	code/statistical_correlation,code/hypothesis_testing	Fisher Z-Transform of Correlation	domain	legacy	low
+math/vector/statistic/Correlation.java:Correlation.PROB_CORRELATION(double, int)	method	math/vector/statistic/Correlation.java	code/hypothesis_testing	Correlation Significance Probability	domain	legacy	medium
+math/vector/statistic/Correlation.java:Correlation.PROB_Z_CORRELATION(double)	method	math/vector/statistic/Correlation.java	code/hypothesis_testing	Fisher-Z Significance Probability	domain	legacy	low
+math/vector/statistic/Correlation.java:Correlation.RANK_CORRELATION(float[], float[], int, float[], float[], float[])	method	math/vector/statistic/Correlation.java	code/statistical_correlation,code/ranking	Spearman Rank Correlation	domain	legacy	high
+math/vector/statistic/Correlation.java:Correlation.SIGN_CORRELATION_Z(float[], float[])	method	math/vector/statistic/Correlation.java	code/statistical_correlation	Kendall Tau Sign Correlation	domain	legacy	medium
+math/vector/statistic/Correlation.java:Correlation.SIGN_CORRELATION_Z(float[], float[], int, int)	method	math/vector/statistic/Correlation.java	code/statistical_correlation	Kendall Tau Sign Correlation (Range)	domain	legacy	medium
+math/vector/statistic/Correlation.java:Correlation.SIGN_CORRELATION_Z(float[][], int, int)	method	math/vector/statistic/Correlation.java	code/statistical_correlation	Kendall Tau Sign Correlation Matrix	domain	legacy	medium
+math/vector/statistic/Correlation.java:Correlation.SIGN_CORRELATION_Z(float[][], int, int, int, int)	method	math/vector/statistic/Correlation.java	code/statistical_correlation	Kendall Tau Sign Correlation Matrix (Range)	domain	legacy	medium
+math/vector/statistic/Correlation.java:Correlation.SIGN_CORRELATION_Z(int[][])	method	math/vector/statistic/Correlation.java	code/statistical_correlation	Kendall Tau Sign Correlation (int Matrix)	domain	legacy	medium
+math/vector/statistic/Correlation.java:Correlation.SIGN_CORRELATION_Z(int[][], int, int)	method	math/vector/statistic/Correlation.java	code/statistical_correlation	Kendall Tau Sign Correlation (int Matrix, Range)	domain	legacy	medium
+math/vector/statistic/Correlation.java:Correlation.testCorrelation()	method	math/vector/statistic/Correlation.java	code/testing,code/statistical_correlation	Pearson Correlation Self-Test	test	legacy	low
+math/vector/statistic/Correlation.java:Correlation.testRankCorrelation()	method	math/vector/statistic/Correlation.java	code/testing,code/statistical_correlation	Rank Correlation Self-Test	test	legacy	low
+math/vector/statistic/Correlation.java:Correlation.testSignCorrelation()	method	math/vector/statistic/Correlation.java	code/testing,code/statistical_correlation	Sign Correlation Self-Test	test	legacy	low
+math/vector/statistic/Correlation.java:Correlation.testSignCorrelation2()	method	math/vector/statistic/Correlation.java	code/testing,code/statistical_correlation	Sign Correlation Self-Test (Variant)	test	legacy	low
+math/vector/statistic	folder	math/vector/statistic	code/statistical_correlation,code/hypothesis_testing	Statistical Correlation and Hypothesis Testing	domain	legacy	high
+math/vector/statistic/StatisticsFloat.java:StatisticsFloat	class	math/vector/statistic/StatisticsFloat.java	code/hypothesis_testing,code/chi_squared	Statistical Hypothesis Tests over float Data	domain	legacy	high
+math/vector/statistic/StatisticsFloat.java:HyperCubeShare	class	math/vector/statistic/StatisticsFloat.java	code/hypothesis_testing	2D Sampling Test Model	test	legacy	low

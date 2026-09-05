@@ -2,14 +2,24 @@
 
 ## Status
 
-**2026-09-05 (latest): session paused here by explicit user request ("pause at the
-next milestone, update HANDOFF.md so the next session can take over").** Everything
-below reflects the exact state at pause time - read this before doing anything else.
+**2026-09-05 (latest): all in-flight work from the previous pause has been closed out.**
+`math/vector` (15 files) is now fully done - the rate-limited background agent had actually
+finished 5 of its 6 remaining files before failing; a follow-up agent finished the last one
+(`VectorDouble.java`), and the orchestrator independently verified `list-todo math/vector`
+returns zero rows, ran Pass 3 (folder `ReadMe.md` for both `math/vector` and
+`math/vector/statistic`, hand-authored opening paragraphs) and Pass 4-7 (1 new axis-A tag
+`code/statistical_correlation`, 50 tag targets written, index built), recorded all 63 bugs
+found across the folder in the Bugs Found table (16 from the first 9 files + 47 from the
+6 large typed-array classes - many are the same handful of copy-paste-origin defects
+repeated across `VectorChar`/`Long`/`Short`/`Int`/`Float`/`Double`: `mulAt`/`divAt`
+delegating to `subAt`, scalar `mulAt`/`divAt` ignoring their argument, `removeAt` corrupting
+`itemCount` before validating the index, `oneAt` filling with 0 instead of 1), and
+committed+pushed both repos. Everything from this session is now fully committed and
+pushed - there is no in-flight work and no uncommitted state.
 
-**What just finished and is fully committed+pushed (both `D:/_/_Matthias/Code/Java` and
-`D:/_/_AI`):**
+**What's fully committed+pushed (both `D:/_/_Matthias/Code/Java` and `D:/_/_AI`):**
 - Milestone C of the companion CLI (`D:/_/_AI/skills/Java.ReadMeGenerator/ReadMeGenerator/`)
-  is now **entirely built** - part 1 (repair/dedup: `list-corrupted`, `fix-doc-split`,
+  is **entirely built** - part 1 (repair/dedup: `list-corrupted`, `fix-doc-split`,
   `fix-javadoc-escape`, `find-duplicates`, `annotate-pairs`) and part 2 (migration/scaffold:
   `resolve-tag-conflicts`, `migrate-frontmatter`, `add-tree`/`remove-tree`,
   `match-axis-b`/`apply-axis-b-matches`, `migrate-collaborators`,
@@ -23,40 +33,10 @@ below reflects the exact state at pause time - read this before doing anything e
   all `done` below): `graphic` (root+example+implement+svg, 34 bugs), `graphic/math3D`
   (1 bug, +1 new axis-A tag `code/platonic_solids`), `graphic/mvc` (10 bugs, +4 new axis-A
   tags `code/matrix_operations`/`code/vector_operations`/`code/texture_mapping`/`code/z_ordering`),
-  `math/matrix` (11 bugs, 0 new tags).
+  `math/matrix` (11 bugs, 0 new tags), `math/vector` (63 bugs, +1 new axis-A tag
+  `code/statistical_correlation`).
 
-**IN-FLIGHT - needs immediate attention next session:**
-- `math/vector` (15 files, 33025 lines) is **partially done, row still says `claimed`**.
-  9 of 15 files are documented, tagged (NOT YET - see below), 16 bugs already verified and
-  recorded in the Bugs Found table, and committed/pushed. The other 6 very large files
-  (`VectorChar.java`, `VectorLong.java`, `VectorShort.java`, `VectorInt.java`,
-  `VectorFloat.java`, `VectorDouble.java`, 2400-6500 lines each) were handed to a background
-  agent (dispatched this session, task/agent id `a882d24bf9ae7f62b` - only meaningful within
-  this session's process, will NOT resume automatically in a new session). **Confirmed still
-  running as of this pause** (checked via `ListAgents`, ~47 min elapsed) - it has already
-  modified `VectorChar.java`, `VectorFloat.java`, `VectorInt.java`, `VectorLong.java`,
-  `VectorShort.java` in the working tree (uncommitted - left as-is deliberately, mid-edit
-  content should not be committed), `VectorDouble.java` not yet touched. It was NOT stopped
-  before this pause; whether it keeps running, finishes, or is killed depends on what happens
-  to this session/process after pause - assume its outcome is unknown once a new session
-  starts. First action next session: check `git status --short math/vector/` for any further
-  uncommitted changes beyond what's listed here (the agent may have kept working after this
-  note was written), then run
-  `java -jar D:/_/_AI/skills/Java.ReadMeGenerator/ReadMeGenerator/target/readmegenerator.jar list-todo math/vector`
-  to see the real current state, then either (a) if it's 0 rows, the agent finished -
-  proceed straight to gathering its bug/tag report equivalent by reading the 6 files'
-  fresh `<!-- docstate -->`/TODO markers yourself and running Pass 4-7, or (b) if rows
-  remain, dispatch a fresh agent (same prompt pattern as the other batches this session) to
-  pick up wherever `list-todo` says work remains, being careful to re-verify which of the 6
-  files are actually done vs. not via `list-todo` per-file (do not trust file existence of
-  Javadoc alone).
-- **raw-tags.tsv and tags-index.tsv/tags-schema.yaml do NOT yet have `math/vector` rows** -
-  the tags pipeline (Pass 4-7) for math/vector was deliberately deferred until the whole
-  folder is done, since Pass 3 (folder ReadMe.md) needs the complete class list. Do not run
-  Pass 4-7 for math/vector until `list-todo math/vector` returns zero rows across all 15
-  files.
-
-**Still unclaimed, not yet started (pick up after math/vector is closed out):**
+**Next up - pick up from here:**
 `streamIO/copy` (206 files, 42863 lines), `function` (204 files, 27689 lines),
 `streamIO/object` (185 files, 38857 lines), `streamIO/integer` (157 files, 39243 lines) -
 these are large enough to likely need sub-batch splitting by line count (see how `math` and
@@ -160,7 +140,7 @@ concurrently against the same file):
 | `math/fit`+`math/refiner` | 27 | 3644 | 27 | done | agent-math-fit |
 | `math/minimizer` | 11 | 3043 | 11 | done | agent-math-minimizer |
 | `math/matrix` | 13 | 15603 | 13 | done | agent-math-matrix |
-| `math/vector` | 15 | 33025 | 9 | claimed | agent-math-vector (partial: QuaternaryOp/AVector/VectorObject/HunterInt/HunterFloat/HunterDouble/VectorString/statistic/Correlation/statistic/StatisticsFloat done; VectorChar/VectorLong/VectorShort/VectorInt/VectorFloat/VectorDouble remain - follow-up agent needed) |
+| `math/vector` | 15 | 33025 | 15 | done | agent-math-vector (+2 follow-up agents for VectorChar/Long/Short/Int/Float, then VectorDouble) |
 | `structure` | 52 | 4933 | 52 | done | agent-structure |
 | `streamIO/real` | 51 | 6801 | 51 | done | agent-streamIO-real |
 | `tester` | 49 | 3327 | 49 | done | agent-tester |
@@ -473,6 +453,50 @@ same harness against it. A test that has not been seen red proves nothing.
 | math/matrix/MatrixTriDiagonal.java | MatrixTriDiagonal | solveCyclicAt(...) | 165 | `nonCyclic` is cached and only its corner diagonal entries (0 and n-1) are refreshed on repeat calls; since `subDiag`/`diag`/`superDiag` are shared, mutable arrays not defensively copied by the constructor, stale interior values from an earlier call are silently reused if `diag`'s interior (1..n-2) changes between two calls on the same instance. | Medium | open |
 | math/matrix/Quaternion.java | Quaternion | getAxis() | 181 | `q` is a `float[4]` (valid indices 0-3), so `q[4]` is always out of bounds, throwing `ArrayIndexOutOfBoundsException` on every call - should read `q[3]`, the scalar/real component, matching `getAngle()`'s use of `q[3]`. | Critical | open |
 | math/matrix/Quaternion.java | Quaternion | set(float[]) | 557 | Ignores the `fpQuat` parameter entirely and calls `copyAt(q)`, copying the backing array onto itself (a no-op) instead of `copyAt(fpQuat)`; this method never actually changes the quaternion's value. | High | open |
+| math/vector/VectorDouble.java | VectorDouble | MUL_CROSS_AT(double[], double[]) | 671, 676 | `result` is `new double[3]` (valid indices 0-2); both short-array branches write `result[3]`, throwing `ArrayIndexOutOfBoundsException` instead of returning a 2D cross-product result (likely intended `result[2]`). | High | open |
+| math/vector/VectorDouble.java | VectorDouble | (resize helper, ~1021) | 1021 | Returns the original array `a` instead of the newly-resized `ret`; the resized array is discarded and callers relying on the return value get the un-resized input back. | Medium | open |
+| math/vector/VectorDouble.java | VectorDouble | ONE_AT(double[], int, int) | 1061 | Fills the range with 0 instead of 1 (copy-pasted from `ZERO_AT`); callers expecting a one-vector get a zero-vector instead. | Medium | open |
+| math/vector/VectorDouble.java | VectorDouble | (array-fill loop, ~1339) | 1339 | Loop condition `++i <= ret.length` lets `i` reach `ret.length`, so the final iteration writes `ret[ret.length]`, throwing `ArrayIndexOutOfBoundsException` whenever `ret.length > 1`. | High | open |
+| math/vector/VectorDouble.java | VectorDouble | (copy helper, ~2610) | 2610 | Reads `tmp = ret[stop]` instead of `arg[stop]`; whenever `ret` is a distinct fresh array from `arg`, the source values in `arg` are ignored and only `ret`'s garbage/zero prior content is used. | Medium | open |
+| math/vector/VectorDouble.java | VectorDouble | MUL_AT(double[], int, double[], int) | 3319 | When `retLength > arrLength`, `ret`'s elements from `arrLength..retLength-1` are neither multiplied nor zeroed (the `FILL_AT` call that would zero them is commented out), silently keeping their pre-call values instead of becoming 0, as the disabled line's own comment says they should. | Medium | open |
+| math/vector/VectorDouble.java | VectorDouble | MUL_AT(double[], int, float[], int) | 3339 | Same left-over-elements defect as the `double[]` overload above, when `retLength > arrLength`. | Medium | open |
+| math/vector/VectorDouble.java | VectorDouble | removeAt(int) | 5003 | `--itemCount` runs unconditionally as part of evaluating the guard; when `index` is out of range this still returns 0 but `itemCount` has already been permanently decremented, corrupting the vector's size even though no element was removed. Same defect as `VectorObject.removeAt(int)`/`VectorString.removeAt(int)`. | High | open |
+| math/vector/VectorDouble.java | VectorDouble | equals(Object) | 5970 | Violates the `equals()` contract for a null argument: `arg instanceof VectorDouble` is false for null, so this falls through to `arg.equals(this)` and throws `NullPointerException` instead of returning false. | Medium | open |
+| math/vector/VectorDouble.java | VectorDouble | toStream(Writer) | 6074 | Loop `for (i=0; ++i<=itemCount;)` writes `items[1]..items[itemCount]` in addition to `items[0]` written just above - one element past the logically valid range; also `stream.write(itemCount)` writes `itemCount` as a raw character code, not its decimal digits. | Medium | open |
+| math/vector/VectorDouble.java | VectorDouble | fullDiffAt() | 6166 | Infinite loop once `itemCount` reaches 0: `diffAt()` guards `if (itemCount <= 0) return this;` and no longer decrements, but this loop's own condition `itemCount >= 0` stays true forever once `itemCount==0`, so this call never returns. | High | open |
+| math/vector/VectorChar.java | VectorChar | oneAt(char[], int, int) | 541 | Fills with `(char) 0`, not 1 - contradicts both this method's name (`oneAt`) and its own one-arg wrapper `oneAt(char[])`'s documented contract ("set to 1"). | Medium | open |
+| math/vector/VectorChar.java | VectorChar | AbsDiffNorm(char[], char[], char[]) | 804 | `diff[i]` is never assigned on the `dif <= 0` branch, even though the contract says `diff` is "an Output Parameter being filled with the Difference Vector" - only positive-difference elements get written; callers reading `diff[i]` elsewhere see stale content. | Medium | open |
+| math/vector/VectorChar.java | VectorChar | removeAt(int) | 2214 | `--itemCount` runs unconditionally before the range check; an out-of-range `index` still returns 0 as if nothing happened, but `itemCount` has already been permanently decremented, corrupting the vector's size. | High | open |
+| math/vector/VectorChar.java | VectorChar | mulAt(VectorChar) | 2372 | Calls `subAt(...)` instead of `mulAt(...)` - copy-pasted from `subAt(VectorChar)` without updating the delegated call, so this silently subtracts the given vector's values instead of multiplying by them. | High | open |
+| math/vector/VectorChar.java | VectorChar | divAt(VectorChar) | 2379 | Same copy-paste defect as `mulAt(VectorChar)` above, calling `subAt(...)` instead of `divAt(...)`. | High | open |
+| math/vector/VectorChar.java | VectorChar | mulAt(int) | 2412 | The `value` parameter is never used - calls the `(char[], int, int)` overload with `items` itself as the array argument, so it squares every element instead of multiplying by the given scalar. | High | open |
+| math/vector/VectorChar.java | VectorChar | divAt(int) | 2419 | The `value` parameter is never used - divides every element by itself (yielding 1, or an arithmetic error on a zero element) instead of dividing by the given scalar. | High | open |
+| math/vector/VectorLong.java | VectorLong | oneAt(long[], int, int) | 532 | Same fills-with-0-instead-of-1 defect as `VectorChar.oneAt`. | Medium | open |
+| math/vector/VectorLong.java | VectorLong | AbsDiffNorm(long[], long[], long[]) | 796 | Same unassigned-`diff[i]`-on-non-positive-branch defect as `VectorChar.AbsDiffNorm`. | Medium | open |
+| math/vector/VectorLong.java | VectorLong | removeAt(int) | 2207 | Same unconditional-`--itemCount`-before-range-check defect as `VectorChar.removeAt(int)`. | High | open |
+| math/vector/VectorLong.java | VectorLong | mulAt(VectorLong) | 2365 | Same `subAt(...)`-instead-of-`mulAt(...)` copy-paste defect as `VectorChar.mulAt(VectorChar)`. | High | open |
+| math/vector/VectorLong.java | VectorLong | divAt(VectorLong) | 2372 | Same `subAt(...)`-instead-of-`divAt(...)` copy-paste defect as `VectorChar.divAt(VectorChar)`. | High | open |
+| math/vector/VectorLong.java | VectorLong | mulAt(int) | 2405 | Same ignored-scalar-parameter defect (squares elements instead) as `VectorChar.mulAt(int)`. | High | open |
+| math/vector/VectorLong.java | VectorLong | divAt(int) | 2413 | Same ignored-scalar-parameter defect (self-divides elements instead) as `VectorChar.divAt(int)`. | High | open |
+| math/vector/VectorShort.java | VectorShort | oneAt(short[], int, int) | 770 | Same fills-with-0-instead-of-1 defect as `VectorChar.oneAt`. | Medium | open |
+| math/vector/VectorShort.java | VectorShort | removeAt(int) | 3027 | Same unconditional-`--itemCount`-before-range-check defect as `VectorChar.removeAt(int)`. | High | open |
+| math/vector/VectorShort.java | VectorShort | mulAt(VectorShort) | 3334 | Same `subAt(...)`-instead-of-`mulAt(...)` copy-paste defect as `VectorChar.mulAt(VectorChar)`. | High | open |
+| math/vector/VectorShort.java | VectorShort | divAt(VectorShort) | 3342 | Same `subAt(...)`-instead-of-`divAt(...)` copy-paste defect as `VectorChar.divAt(VectorChar)`. | High | open |
+| math/vector/VectorShort.java | VectorShort | mulAt(int) | 3378 | Same ignored-scalar-parameter defect (squares elements instead) as `VectorChar.mulAt(int)`. | High | open |
+| math/vector/VectorShort.java | VectorShort | divAt(int) | 3387 | Same ignored-scalar-parameter defect (self-divides elements instead) as `VectorChar.divAt(int)`. | High | open |
+| math/vector/VectorInt.java | VectorInt | ONE_AT(int[], int, int) | 1010 | Fills with 0 instead of 1 (copy-pasted from `ZERO_AT`); same defect as `VectorChar/VectorLong/VectorShort.oneAt`. | Medium | open |
+| math/vector/VectorInt.java | VectorInt | MUL_CROSS_AT(int[], int[]) | 2042, 2047 | `result` is `new int[3]` (valid indices 0-2); both short-array branches write `result[3]`, throwing `ArrayIndexOutOfBoundsException` (likely intended `result[2]`) - same defect as `VectorDouble.MUL_CROSS_AT`. | High | open |
+| math/vector/VectorInt.java | VectorInt | removeAt(int) | 3572 | Same unconditional-`--itemCount`-before-range-check defect as `VectorChar.removeAt(int)`. | High | open |
+| math/vector/VectorInt.java | VectorInt | mulAt(VectorInt) | 3726 | Same `subAt(...)`-instead-of-multiplicative-op copy-paste defect as `VectorChar.mulAt(VectorChar)`. | High | open |
+| math/vector/VectorInt.java | VectorInt | divAt(VectorInt) | 3731 | Same `subAt(...)`-instead-of-divisive-op copy-paste defect as `VectorChar.divAt(VectorChar)`. | High | open |
+| math/vector/VectorInt.java | VectorInt | mulAt(int) | 3762 | Same ignored-scalar-parameter defect (squares elements instead) as `VectorChar.mulAt(int)`. | High | open |
+| math/vector/VectorInt.java | VectorInt | divAt(int) | 3767 | Same ignored-scalar-parameter defect (self-divides elements instead) as `VectorChar.divAt(int)`. | High | open |
+| math/vector/VectorFloat.java | VectorFloat | ABS(float[], int, int, float[]) | 2107 | Reads `tmp = ret[stop]` instead of `arg[stop]`; the source array `arg` is ignored whenever `ret != arg` (e.g. a fresh/different `ret` array yields an all-zero result). | Medium | open |
+| math/vector/VectorFloat.java | VectorFloat | removeAt(int) | 4297 | Same unconditional-decrement-before-range-check defect as `VectorChar/VectorLong/VectorShort/VectorInt.removeAt`. | High | open |
+| math/vector/VectorFloat.java | VectorFloat | mulAt(VectorFloat) | 4574 | Same `subAt`-instead-of-multiplicative-op defect as the sibling classes' `mulAt(VectorX)`. | High | open |
+| math/vector/VectorFloat.java | VectorFloat | divAt(VectorFloat) | 4580 | Same `subAt`-instead-of-divisive-op defect as the sibling classes' `divAt(VectorX)`. | High | open |
+| math/vector/VectorFloat.java | VectorFloat | mulAt(double) | 4630 | Ignores the `value` parameter and instead multiplies items by itself element-wise; same defect as the sibling classes' `mulAt(scalar)`. | High | open |
+| math/vector/VectorFloat.java | VectorFloat | divAt(double) | 4636 | Ignores the `value` parameter and instead divides items by itself element-wise (yielding all 1s); same defect as the sibling classes' `divAt(scalar)`. | High | open |
 
 ## Tool defects found and fixed during the pilot
 

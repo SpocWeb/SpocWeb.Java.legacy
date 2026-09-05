@@ -26,6 +26,9 @@ import streamIO.copy.ICopyAble;
  * mtime: 2026-09-05T12:45:43Z
  * digest: fe1736b2d6f2ce6fad4d629bb9dbf9ee1bbbd3396b92e5e49a91a4c798bda0e5
  * stale: false
+ * tags: [code/growable_array, code/generic_vector]
+ * concepts: [Growable Object[] Vector]
+ * facets: {layer: utility, status: broken, complexity: medium}
  * -->
  */
 public class VectorObject

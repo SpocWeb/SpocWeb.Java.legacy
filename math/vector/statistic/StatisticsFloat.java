@@ -76,6 +76,9 @@ import function.vector.IFloatVectorField;
  * mtime: 2026-09-05T12:52:49Z
  * digest: e3ef5980c41dfcea2b3a6ae68b5b14c1f9fe7c9f64bfc3bb621613438a34fbd1
  * stale: false
+ * tags: [code/hypothesis_testing, code/chi_squared]
+ * concepts: [Statistical Hypothesis Tests over float Data]
+ * facets: {layer: domain, status: legacy, complexity: high}
  * -->
  */
 public class StatisticsFloat 
@@ -1549,6 +1552,9 @@ implements IFloatFunction {
  * mtime: 2026-09-05T12:52:49Z
  * digest: 59f810c9af4480b89d0c0d1bc28ab2e57bd44753f0081dbf463698af816da14d
  * stale: false
+ * tags: [code/hypothesis_testing]
+ * concepts: [2D Sampling Test Model]
+ * facets: {layer: test, status: legacy, complexity: low}
  * -->
  */
 class HyperCubeShare

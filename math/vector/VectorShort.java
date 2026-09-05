@@ -16,13 +16,16 @@ import function.byref.ByRefInt;
 import function.byref.ByRefShort;
 
 /**
-  * Title: VectorShort<p>
-  * Description:
-  * Defines static Methods to treat Vectors and Arrays with Short Numbers.
-  * @see streamIO.Copy.IGroup.IRing.IMetric.Body.Vector.VectorDbl
-  * @see graphic.mvc.plane2D.MatrixShort 
+  * Growable, index-addressable array of primitive {@code short} elements, plus a large
+  * library of static array-level operations (arithmetic, min/max, negation, linear
+  * combinations, polynomial-style radix trimming and shifting) shared by every method of
+  * this class and its instances alike.
   *
-  * Implements a dynamic Array of primitive int Type, 
+  * <p>Defines static Methods to treat Vectors and Arrays with Short Numbers.
+  * @see streamIO.Copy.IGroup.IRing.IMetric.Body.Vector.VectorDbl
+  * @see graphic.mvc.plane2D.MatrixShort
+  *
+  * Implements a dynamic Array of primitive int Type,
   * which grows (and optionally shrinks) linearly or geometrically 
   * and thus saves wrapping open-ended Streams of Primitives. 
   * @see java.util.ArrayList 
@@ -39,6 +42,15 @@ import function.byref.ByRefShort;
   * Created on	05-16-2002, 11:35 PM<p>
   * @author 	Matthias Heuer
   * @version	1.0
+  * <!-- docstate
+  * pass: 2
+  * mtime: 2026-09-05T13:25:39Z
+  * digest: dbcc290a41569f91d584a14ca1fe3f04d1fbb2919bc03c9afe3818284f865830
+  * stale: false
+  * tags: [code/growable_array, code/array_math]
+  * concepts: [Growable short[] Vector]
+  * facets: {layer: domain, status: broken, complexity: high}
+  * -->
   */
 final public class VectorShort 
 extends AVector 
@@ -94,7 +106,10 @@ extends AVector
 	/// Boolean Trafos: so far there is no 'VectorBool' 
 	//////////////////////////////////////////////////////////////////////////////////////////////////////
 
-	/** @return the Vector converted from primitives to Objects */
+	/**
+	 * Returns a new array boxing every element of the given primitive array.
+	 * @return the Vector converted from primitives to Objects
+	 */
 	final static public Boolean[] TO_BOOLEAN(final boolean[] vector) {
 		final Boolean[] ret = new Boolean[vector.length];
 		for (int i=vector.length; --i >= 0;) {
@@ -103,7 +118,11 @@ extends AVector
 		return ret; 
 	}
 
-	/** @return the Vector converted Objects from to primitives */
+	/**
+	 * Returns a new primitive array unboxing every element of the given array,
+	 * substituting the given default for a null element.
+	 * @return the Vector converted Objects from to primitives
+	 */
 	final static public boolean[] TO_BOOLEAN(final Boolean[] vector, final boolean defaultForNulls) {
 		final boolean[] ret = new boolean[vector.length];
 		for (int i=vector.length; --i >= 0;) {
@@ -117,7 +136,10 @@ extends AVector
 	/// Matrix Trafos: extracting a Column, so far there is no 'MatrixInt' 
 	//////////////////////////////////////////////////////////////////////////////////////////////////////
 
-	/** @return the Vector converted from primitives to Objects */
+	/**
+	 * Collects the column at the given position from every row of the matrix.
+	 * @return the Vector converted from primitives to Objects
+	 */
 	final static public short[] COLUMN(final short[][] matrix, final int col) {
 		short[] ret = new short[matrix.length];
 		for (int i = matrix.length; --i >= 0;) {
@@ -126,7 +148,10 @@ extends AVector
 		return ret;
 	}
 
-	/** @return the Vector converted Objects from to primitives */
+	/**
+	 * Returns a new matrix that is the transpose of the given one.
+	 * @return the Vector converted Objects from to primitives
+	 */
 	final static public short[][] TRANSPOSE(final short[][] matrix) {
 		short[][] ret = new short[matrix[0].length][];
 		for (int i = ret.length; --i >= 0;) {
@@ -215,14 +240,18 @@ extends AVector
 	////////////////////////////////////////////////////////////////////////////////
 
 	////////////////////////////////////////////////////////////////////////////////
-	/// Methoden für polynomiale Rechnungen
+	/// Methoden fï¿½r polynomiale Rechnungen
 	////////////////////////////////////////////////////////////////////////////////
 
-	/** @see #TRIM_AT(short[], int, int)	 */
+	/**
+	 * Trims the entire vector by the given module.
+	 * @see #TRIM_AT(short[], int, int)	 */
 	final static public int TRIM_AT(final short[] vector, final short module) {
 		return TRIM_AT(vector, module, vector.length); }
-	
-	/** @see #TRIM_AT(short[], int, int)	 */
+
+	/**
+	 * Trims the first num elements of the vector by the given module.
+	 * @see #TRIM_AT(short[], int, int)	 */
 	final static public int TRIM_AT(final short[] vector, final short module, final int num) {
 		return TRIM_AT(vector, module, 0, num); }
 	
@@ -418,7 +447,10 @@ extends AVector
 
 	////////////////////////////////////////////////////////////////////////////////
 
-	/** @return the Column at the given Position */
+	/**
+	 * Returns a new array boxing every element of the given primitive array.
+	 * @return the Column at the given Position
+	 */
 	final static public Short[] TO_INTEGER(final short[] vector) {
 		final Short[] ret = new Short[vector.length];
 		for (int i=vector.length; --i >= 0;) {
@@ -427,7 +459,11 @@ extends AVector
 		return ret; 
 	}
 
-	/** @return the Column at the given Position */
+	/**
+	 * Returns a new primitive array unboxing every element of the given array,
+	 * substituting the given default for a null element.
+	 * @return the Column at the given Position
+	 */
 	final static public short[] TO_INTEGER(final Short[] vector, final short defaultForNulls) {
 		final short[] ret = new short[vector.length];
 		for (int i=vector.length; --i >= 0;) {
@@ -437,7 +473,9 @@ extends AVector
 		return ret; 
 	}
 
-	/** @return the Permutation rotated left by 1 Element in Place	  */
+	/**
+	 * Rotates the given permutation left by one element, in place.
+	 * @return the Permutation rotated left by 1 Element in Place	  */
 	final static public short[] ROL(short[] this_) {
 		final int last = this_.length-1;
 		short tmp = this_[0]; 
@@ -446,7 +484,9 @@ extends AVector
 		return this_; 
 	}
 
-	/** @return the Permutation rotated right by 1 Element in Place	  */
+	/**
+	 * Rotates the given permutation right by one element, in place.
+	 * @return the Permutation rotated right by 1 Element in Place	  */
 	final static public short[] ROR(short[] this_) {
 		final int last = this_.length-1;
 		short tmp = this_[last]; 
@@ -690,12 +730,16 @@ extends AVector
 		return a;
 	}
 
-	/** @return the given Array with all Elements set to 0. 	 */
+	/**
+	 * Sets every element of the given array to 0.
+	 * @return the given Array with all Elements set to 0. 	 */
 	final static public short[] zeroAt(final short[] ret) {
 		return zeroAt(ret, 0, ret.length);
 	}
 
-	/** @return the given Array with the Elements from Start (inclusive) to Stop (exclusive) set to 0. 	 */
+	/**
+	 * Sets the elements in the given range of the array to 0.
+	 * @return the given Array with the Elements from Start (inclusive) to Stop (exclusive) set to 0. 	 */
 	final static public short[] zeroAt(final short[] ret, final int start, final int stop) {
 		java.util.Arrays.fill(ret, start, stop, (short) 0);
 		return ret;
@@ -719,23 +763,34 @@ extends AVector
 		return a;
 	}
 
-	/** @return the given Array with all Elements set to 1. 	 */
+	/**
+	 * Sets every element of the given array to 1.
+	 * @return the given Array with all Elements set to 1. 	 */
 	final static public short[] oneAt(final short[] ret) {
 		return oneAt(ret, 0, ret.length);
 	}
 
-	/** @return the given Array with the Elements from Start (inclusive) to Stop (exclusive) set to 0. 	 */
+	// TODO: LOGIC: fills with (short) 0, not 1 - contradicts both this method's name
+	// ("oneAt") and its own one-arg wrapper oneAt(short[])'s documented contract ("set to
+	// 1"). Every element in [start, stop) is zeroed instead of set to 1. Same defect as
+	// VectorChar.oneAt(char[], int, int) / VectorLong.oneAt(long[], int, int).
+	/**
+	 * Sets the elements in the given range of the array to 1.
+	 * @return the given Array with the Elements from Start (inclusive) to Stop (exclusive) set to 0. 	 */
 	final static public short[] oneAt(final short[] ret, final int start, final int stop) {
 		java.util.Arrays.fill(ret, start, stop, (short) 0);
 		return ret;
 	}
 
-	/** @return the given Array with all Elements set to the given Value. 	 */
+	/**
+	 * Fills every element of the given array with the given value.
+	 * @return the given Array with all Elements set to the given Value. 	 */
 	final static public short[] fillAt(final short[] ret, final short val) {
 		return fillAt(ret, val, 0, ret.length);
 	}
 
 	/**
+	 * Fills the elements in the given range of the array with the given value.
 	 * @return the given Array with the Elements from Start (inclusive)
 	 * to Stop (exclusive) set to the given Value.
 	 */
@@ -744,12 +799,18 @@ extends AVector
 		return ret;
 	}
 
-	/** @return The Sum of all Values in the Array. 	 */
+	/**
+	 * Returns whether every element of the array is zero.
+	 * @return true when every element of the Array is zero.
+	 */
 	final static public boolean isZero(final short[] arr) {
 		return isZero(arr, 0, arr.length);
 	}
 
-	/** @return The Sum of all Values in the Array.	 */
+	/**
+	 * Returns whether every element in the given range of the array is zero.
+	 * @return true when every element in the given range is zero.
+	 */
 	final static public boolean isZero(final short[] arr, final int start, int stop) {
 		while (--stop >= start) {
 			if (arr[stop] != 0) {
@@ -811,12 +872,16 @@ extends AVector
 	//  static Methods returning a single Number from the Array
 	////////////////////////////////////////////////////////////////////////////////
 
-	/** @return The Sum of all Values in the Array. 	 */
+	/**
+	 * Returns the sum of all values in the array.
+	 * @return The Sum of all Values in the Array. 	 */
 	final static public long Sum(short[] arr) {
 		return Sum(arr, 0, arr.length);
 	}
 
-	/** @return The Sum of all Values in the Array.	 */
+	/**
+	 * Returns the sum of the values in the given range of the array.
+	 * @return The Sum of all Values in the Array.	 */
 	final static public long Sum(short[] arr, int Start, int Stop) {
 		if (Start == Stop) {
 			return 0;
@@ -828,12 +893,16 @@ extends AVector
 		return Sum;
 	}
 
-	/** @return The Product of all Values in the Array. 	 */
+	/**
+	 * Returns the product of all values in the array.
+	 * @return The Product of all Values in the Array. 	 */
 	final static public long Prod(short[] arr) {
 		return Prod(arr, 0, arr.length);
 	}
 
-	/** @return The Product of all Values in the Array.	 */
+	/**
+	 * Returns the product of the values in the given range of the array.
+	 * @return The Product of all Values in the Array.	 */
 	final static public long Prod(short[] arr, int Start, int Stop) {
 		if (Start == Stop) {
 			return 1;
@@ -1297,6 +1366,7 @@ extends AVector
 	}
 
 	/**
+	  * Returns the Euclidean norm (square root of the sum of squares) of the given array.
 	  * @return the Norm of the given Array
 	  */
 	final static public double Norm(short[] arr) {
@@ -1304,6 +1374,7 @@ extends AVector
 	}
 
 	/**
+	  * Returns the squared Euclidean norm (sum of squares) of the given array.
 	  * @return the squared Norm of the given Array
 	  */
 	final static public double SqrNorm(short[] arr) {
@@ -1326,6 +1397,7 @@ extends AVector
 	}
 
 	/**
+	  * Returns the squared Euclidean distance between the two given arrays.
 	  * @param arr1 first  Vector, not modified.
 	  * @param arr2 second Vector, not modified.
 	  * @return the squared Norm of the Distance between the given Arrays
@@ -1341,6 +1413,8 @@ extends AVector
 	}
 
 	/**
+	  * Returns the sum of the absolute differences between corresponding elements
+	  * of the two given arrays.
 	  * @param arr1 first  Vector, not modified.
 	  * @param arr2 second Vector, not modified.
 	  * @return the absolute Norm of the Distance between the given Arrays
@@ -1359,6 +1433,8 @@ extends AVector
 	}
 
 	/**
+	  * Returns the sum of absolute differences between the two given arrays,
+	  * also writing the signed difference of each element pair into diff.
 	  * @param diff is an Output Parameter being filled with the Difference Vector.
 	  * @return the squared Norm of the given Array
 	  */
@@ -1376,8 +1452,8 @@ extends AVector
 	}
 
 	/**
-	  * @param diff is an Output Parameter being filled with the Difference Vector.
-	  * @return the squared Norm of the given Array
+	  * Returns the sum of the absolute values of the array's elements.
+	  * @return the sum of the absolute Values of the given Array
 	  */
 	final static public int AbsV_Norm(short[] arr) {
 		int a, norm = 0; //Calculate the Norm
@@ -1417,6 +1493,7 @@ extends AVector
 	}
 
 	/**
+	  * Returns the largest of the pairwise (elementwise) minimums of the two given arrays.
 	  * @return the Scalar Product of the two Vectors.
 	  */
 	final static public int MaxMinProd(short[] a, short[] arg) {
@@ -1424,6 +1501,8 @@ extends AVector
 	}
 
 	/**
+	  * Returns the largest of the pairwise (elementwise) minimums of the two given
+	  * arrays, over the given range.
 	  * @return the MaxMin Product of the two Vectors.
 	  */
 	final static public int MaxMinProd(short[] a, short[] arg, int start, int stop) {
@@ -1443,6 +1522,7 @@ extends AVector
 	}
 
 	/**
+	  * Negates every element of the given array, in place.
 	  * @return the Negative of the given Array
 	  * @param ret Array with the Values to be processed. Also returned by this Method.
 	  */
@@ -1451,6 +1531,7 @@ extends AVector
 	}
 
 	/**
+	  * Negates the elements in the given range of the array, in place.
 	  * @return the Negative of the given Array
 	  * @param ret Array with the Values to be processed. Also returned by this Method.
 	  * @param start Index from  where the Array is processed
@@ -1461,6 +1542,7 @@ extends AVector
 	}
 
 	/**
+	  * Writes the negation of x into ret, over the given range.
 	  * @return the Negative of the given Array
 	  * @param ret Array with the Values to be processed. Also returned by this Method.
 	  * @param start Index from  where the Array is processed
@@ -1474,6 +1556,7 @@ extends AVector
 	}
 
 	/**
+	  * Writes the negation of the given double array into ret, over the given range.
 	  * @return the Negative of the given Array
 	  * @param ret Array with the Values to be processed. Also returned by this Method.
 	  * @param start Index from  where the Array is processed
@@ -1487,6 +1570,7 @@ extends AVector
 	}
 
 	/**
+	  * Writes the negation of the given float array into ret, over the given range.
 	  * @return the Negative of the given Array
 	  * @param ret Array with the Values to be processed. Also returned by this Method.
 	  * @param start Index from  where the Array is processed
@@ -1500,6 +1584,7 @@ extends AVector
 	}
 
 	/**
+	  * Returns a new array containing the negation of the given array.
 	  * @return the Negative of the given Array
 	  * @param ret Array with the Values to be processed. Also returned by this Method.
 	  */
@@ -1508,6 +1593,7 @@ extends AVector
 	}
 
 	/**
+	  * Returns a new array containing the negation of the given range of the array.
 	  * @return the Negative of the given Array
 	  * @param ret Array with the Values to be processed. Also returned by this Method.
 	  * @param start Index from  where the Array is processed
@@ -1518,6 +1604,7 @@ extends AVector
 	}
 
 	/**
+	  * Returns a new short array containing the negation of the given double array.
 	  * @return the Negative of the given Array
 	  * @param ret Array with the Values to be processed. Also returned by this Method.
 	  */
@@ -1526,6 +1613,8 @@ extends AVector
 	}
 
 	/**
+	  * Returns a new short array containing the negation of the given range of the
+	  * given double array.
 	  * @return the Negative of the given Array
 	  * @param ret Array with the Values to be processed. Also returned by this Method.
 	  * @param start Index from  where the Array is processed
@@ -1536,6 +1625,7 @@ extends AVector
 	}
 
 	/**
+	  * Returns a new short array containing the negation of the given float array.
 	  * @return the Negative of the given Array
 	  * @param ret Array with the Values to be processed. Also returned by this Method.
 	  */
@@ -1544,6 +1634,8 @@ extends AVector
 	}
 
 	/**
+	  * Returns a new short array containing the negation of the given range of the
+	  * given float array.
 	  * @return the Negative of the given Array
 	  * @param ret Array with the Values to be processed. Also returned by this Method.
 	  * @param start Index from  where the Array is processed
@@ -1564,6 +1656,8 @@ extends AVector
 	}
 
 	/**
+	  * Replaces the elements in the given range of the array with their absolute
+	  * value, in place.
 	  * @return the absolute Value of the Values in the given Array
 	  * @param ret Array with the Values to be processed. Also returned by this Method.
 	  * @param start Index from  where the Array is processed
@@ -1585,6 +1679,7 @@ extends AVector
 	///////////////////////////////////////////////////////////////////////////////////
 
 	/**
+	  * Clamps every element of the given array to at most the given limit, in place.
 	  * To implement subAt, just negate the Increment.
 	  * @param ret Array with the Values to be processed. Also returned by this Method.
 	  * @param Increment the Increment to add to
@@ -1595,6 +1690,7 @@ extends AVector
 	}
 
 	/**
+	  * Clamps the elements in the given range to at most the given limit, in place.
 	  * @return the given Array incremented by the given Increment
 	  * @param ret Array with the Values to be processed. Also returned by this Method.
 	  * @param Increment the Increment to add to
@@ -1611,6 +1707,7 @@ extends AVector
 	}
 
 	/**
+	  * Replaces each element of ret with the elementwise minimum of ret and arr, in place.
 	  * @return the Sum of the given Arrays
 	  * @param ret Array with the Values to be processed. Also returned by this Method.
 	  */
@@ -1619,6 +1716,8 @@ extends AVector
 	}
 
 	/**
+	  * Replaces the elements of ret in the given range with the elementwise
+	  * minimum of ret and arr, in place.
 	  * @return the Sum of the given Arrays
 	  * @param ret Array with the Values to be processed. Also returned by this Method.
 	  * @param start Index from  where the Array is processed
@@ -1634,6 +1733,7 @@ extends AVector
 	}
 
 	/**
+	  * Clamps every element of the given array to at least the given limit, in place.
 	  * To implement subAt, just negate the Increment.
 	  * @param ret Array with the Values to be processed. Also returned by this Method.
 	  * @param Increment the Increment to add to
@@ -1644,6 +1744,7 @@ extends AVector
 	}
 
 	/**
+	  * Clamps the elements in the given range to at least the given limit, in place.
 	  * @return the given Array incremented by the given Increment
 	  * @param ret Array with the Values to be processed. Also returned by this Method.
 	  * @param Increment the Increment to add to
@@ -1660,6 +1761,7 @@ extends AVector
 	}
 
 	/**
+	  * Replaces each element of ret with the elementwise maximum of ret and arr, in place.
 	  * @return the Sum of the given Arrays
 	  * @param ret Array with the Values to be processed. Also returned by this Method.
 	  */
@@ -1668,6 +1770,8 @@ extends AVector
 	}
 
 	/**
+	  * Replaces the elements of ret in the given range with the elementwise
+	  * maximum of ret and arr, in place.
 	  * @return the Sum of the given Arrays
 	  * @param ret Array with the Values to be processed. Also returned by this Method.
 	  * @param start Index from  where the Array is processed
@@ -1683,6 +1787,7 @@ extends AVector
 	}
 
 	/**
+	  * Adds the given increment to every element of the array, in place.
 	  * To implement subAt, just negate the Increment.
 	  * @param ret Array with the Values to be processed. Also returned by this Method.
 	  * @param Increment the Increment to add to
@@ -1693,6 +1798,7 @@ extends AVector
 	}
 
 	/**
+	  * Adds the given increment to the elements in the given range, in place.
 	  * @return the given Array incremented by the given Increment
 	  * @param ret Array with the Values to be processed. Also returned by this Method.
 	  * @param Increment the Increment to add to
@@ -1707,6 +1813,7 @@ extends AVector
 	}
 
 	/**
+	  * Adds arr elementwise into ret, in place.
 	  * @return the Sum of the given Arrays
 	  * @param ret Array with the Values to be processed. Also returned by this Method.
 	  */
@@ -1715,6 +1822,7 @@ extends AVector
 	}
 
 	/**
+	  * Adds arr elementwise into ret over the given range, in place.
 	  * @return the Sum of the given Arrays
 	  * @param ret Array with the Values to be processed. Also returned by this Method.
 	  * @param start Index from  where the Array is processed
@@ -1724,6 +1832,8 @@ extends AVector
 		return addAt(ret, arr, start, stop, 0);}
 
 	/**
+	  * Adds arr elementwise into ret over the given range at the given offset
+	  * into ret, in place.
 	  * @return the Sum of the given Arrays
 	  * @param ret Array with the Values to be processed. Also returned by this Method.
 	  * @param start Index from  where the Array is processed
@@ -1737,6 +1847,7 @@ extends AVector
 	}
 
 	/**
+	  * Writes the elementwise sum of sum1 and sum2 into ret.
 	  * @return the Sum of the given Arrays
 	  * @param ret Array with the Values to be processed. Also returned by this Method.
 	  */
@@ -1745,6 +1856,8 @@ extends AVector
 	}
 
 	/**
+	  * Writes the elementwise sum of sum1 and sum2 into ret over the given range,
+	  * copying the longer operand's tail through when the two arrays' lengths differ.
 	  * @return the Sum of the given Arrays
 	  * @param ret Array with the Values to be processed. Also returned by this Method.
 	  * @param start Index from  where the Array is processed
@@ -1769,6 +1882,7 @@ extends AVector
 	}
 
 	/**
+	  * Writes sum1 incremented by incr into ret.
 	  * @return the Sum of the given Arrays
 	  * @param ret Array with the Values to be processed. Also returned by this Method.
 	  */
@@ -1777,6 +1891,7 @@ extends AVector
 	}
 
 	/**
+	  * Writes sum1 incremented by incr into ret over the given range.
 	  * @return the Sum of the given Arrays
 	  * @param ret Array with the Values to be processed. Also returned by this Method.
 	  * @param start Index from  where the Array is processed
@@ -1790,6 +1905,7 @@ extends AVector
 	}
 
 	/**
+	  * Returns a new array containing the elementwise sum of the two given arrays.
 	  * @return the Sum of the given Arrays
 	  * @param ret Array with the Values to be processed. Also returned by this Method.
 	  */
@@ -1798,6 +1914,8 @@ extends AVector
 	}
 
 	/**
+	  * Returns a new array of length stop containing the elementwise sum of the two
+	  * given arrays over the given range.
 	  * @return the Sum of the given Arrays
 	  * @param ret Array with the Values to be processed. Also returned by this Method.
 	  * @param start Index from  where the Array is processed
@@ -1808,6 +1926,7 @@ extends AVector
 	}
 
 	/**
+	  * Subtracts arr elementwise from ret, in place.
 	  * @return the Difference of the given Arrays
 	  * @param ret Array with the Values to be processed. Also returned by this Method.
 	  */
@@ -1816,6 +1935,7 @@ extends AVector
 	}
 
 	/**
+	  * Subtracts arr elementwise from ret over the given range, in place.
 	  * @return the Difference of the given Arrays
 	  * @param ret Array with the Values to be processed. Also returned by this Method.
 	  * @param start Index from  where the Array is processed
@@ -1829,6 +1949,7 @@ extends AVector
 	}
 
 	/**
+	  * Writes the elementwise difference (min - sub) into ret.
 	  * @return the Difference of the given Arrays
 	  * @param ret Array with the Values to be processed. Also returned by this Method.
 	  */
@@ -1837,6 +1958,7 @@ extends AVector
 	}
 
 	/**
+	  * Writes the elementwise difference (min - sub) into ret over the given range.
 	  * @return the Difference of the given Arrays
 	  * @param ret Array with the Values to be processed. Also returned by this Method.
 	  * @param start Index from  where the Array is processed
@@ -1850,6 +1972,7 @@ extends AVector
 	}
 
 	/**
+	  * Returns a new array containing the elementwise difference min - sub.
 	  * @return the Difference of the given Arrays
 	  * @param ret Array with the Values to be processed. Also returned by this Method.
 	  */
@@ -1858,6 +1981,8 @@ extends AVector
 	}
 
 	/**
+	  * Returns a new array containing the elementwise difference min - sub over
+	  * the given range.
 	  * @return the Difference of the given Arrays
 	  * @param ret Array with the Values to be processed. Also returned by this Method.
 	  * @param start Index from  where the Array is processed
@@ -1868,6 +1993,8 @@ extends AVector
 	}
 
 	/**
+	  * Writes the elementwise difference (min - sub) into ret over the given range,
+	  * where min is a double array.
 	  * @return the Difference of the given Arrays
 	  * @param ret Array with the Values to be processed. Also returned by this Method.
 	  * @param start Index from  where the Array is processed
@@ -1881,6 +2008,8 @@ extends AVector
 	}
 
 	/**
+	  * Writes the elementwise difference (min - sub) into ret over the given range,
+	  * where min is a float array.
 	  * @return the Difference of the given Arrays
 	  * @param ret Array with the Values to be processed. Also returned by this Method.
 	  * @param start Index from  where the Array is processed
@@ -1894,6 +2023,8 @@ extends AVector
 	}
 
 	/**
+	  * Returns a new array containing the elementwise difference min - sub,
+	  * where min is a double array.
 	  * @return the Difference of the given Arrays
 	  * @param ret Array with the Values to be processed. Also returned by this Method.
 	  */
@@ -1902,6 +2033,8 @@ extends AVector
 	}
 
 	/**
+	  * Returns a new array containing the elementwise difference min - sub over the
+	  * given range, where min is a double array.
 	  * @return the Difference of the given Arrays
 	  * @param ret Array with the Values to be processed. Also returned by this Method.
 	  * @param start Index from  where the Array is processed
@@ -1912,6 +2045,8 @@ extends AVector
 	}
 
 	/**
+	  * Returns a new array containing the elementwise difference min - sub,
+	  * where min is a float array.
 	  * @return the Difference of the given Arrays
 	  * @param ret Array with the Values to be processed. Also returned by this Method.
 	  */
@@ -1920,6 +2055,8 @@ extends AVector
 	}
 
 	/**
+	  * Returns a new array containing the elementwise difference min - sub over the
+	  * given range, where min is a float array.
 	  * @return the Difference of the given Arrays
 	  * @param ret Array with the Values to be processed. Also returned by this Method.
 	  * @param start Index from  where the Array is processed
@@ -1930,6 +2067,7 @@ extends AVector
 	}
 
 	/**
+	  * Multiplies every element of the given array by the given factor, in place.
 	  * To implement divAt, just invert the Factor
 	  * @param Factor the Factor to multiply with
 	  * @param ret Array with the Values to be processed. Also returned by this Method.
@@ -1940,6 +2078,7 @@ extends AVector
 	}
 
 	/**
+	  * Multiplies the elements in the given range by the given factor, in place.
 	  * @return the Product of the Array with the given Factor
 	  * @param ret Array with the Values to be processed. Also returned by this Method.
 	  * @param Factor the Factor to multiply with
@@ -1954,6 +2093,7 @@ extends AVector
 	}
 
 	/**
+	  * Multiplies ret elementwise by arr, in place.
 	  * @return the Product of the given Arrays
 	  * @param ret Array with the Values to be processed. Also returned by this Method.
 	  */
@@ -1962,6 +2102,7 @@ extends AVector
 	}
 
 	/**
+	  * Multiplies ret elementwise by arr over the given range, in place.
 	  * @return the Product of the given Arrays
 	  * @param ret Array with the Values to be processed. Also returned by this Method.
 	  * @param start Index from  where the Array is processed
@@ -1975,6 +2116,7 @@ extends AVector
 	}
 
 	/**
+	  * Writes the elementwise product of min and sub into ret.
 	  * @return the Product of the given Arrays
 	  * @param ret Array with the Values to be processed. Also returned by this Method.
 	  */
@@ -1983,6 +2125,7 @@ extends AVector
 	}
 
 	/**
+	  * Writes the elementwise product of min and sub into ret over the given range.
 	  * @return the Product of the given Arrays
 	  * @param ret Array with the Values to be processed. Also returned by this Method.
 	  * @param start Index from  where the Array is processed
@@ -1996,6 +2139,7 @@ extends AVector
 	}
 
 	/**
+	  * Returns a new array containing min scaled by the given factor.
 	  * @return a new Array containing the Product of the given Array
 	  * @param ret Array with the Values to be processed.
 	  */
@@ -2004,6 +2148,7 @@ extends AVector
 	}
 
 	/**
+	  * Writes min scaled by the given factor into ret.
 	  * @return a new Array containing the Product of the given Array
 	  * @param ret Array with the Values to be processed.
 	  */
@@ -2012,6 +2157,7 @@ extends AVector
 	}
 
 	/**
+	  * Writes min scaled by the given factor into ret over the given range.
 	  * @return the Product of the given Arrays
 	  * @param ret Array with the Values to be processed. Also returned by this Method.
 	  * @param start Index from  where the Array is processed
@@ -2025,6 +2171,7 @@ extends AVector
 	}
 
 	/**
+	  * Returns a new array containing the elementwise product of the two given arrays.
 	  * @return the Difference of the given Arrays
 	  * @param ret Array with the Values to be processed. Also returned by this Method.
 	  */
@@ -2033,6 +2180,8 @@ extends AVector
 	}
 
 	/**
+	  * Returns a new array containing the elementwise product of the two given
+	  * arrays over the given range.
 	  * @return the Product of the given Arrays
 	  * @param ret Array with the Values to be processed. Also returned by this Method.
 	  * @param start Index from  where the Array is processed
@@ -2043,6 +2192,7 @@ extends AVector
 	}
 
 	/**
+	  * Divides ret elementwise by arr, in place.
 	  * @return the Quotient of the given Arrays
 	  * @param ret Array with the Values to be processed. Also returned by this Method.
 	  */
@@ -2051,6 +2201,7 @@ extends AVector
 	}
 
 	/**
+	  * Divides ret elementwise by arr over the given range, in place.
 	  * @return the Quotient of the given Arrays
 	  * @param ret Array with the Values to be processed. Also returned by this Method.
 	  * @param start Index from  where the Array is processed
@@ -2064,6 +2215,7 @@ extends AVector
 	}
 
 	/**
+	  * Writes the elementwise quotient of min divided by sub into ret.
 	  * @return the Quotient of the given Arrays
 	  * @param ret Array with the Values to be processed. Also returned by this Method.
 	  */
@@ -2072,6 +2224,7 @@ extends AVector
 	}
 
 	/**
+	  * Writes the elementwise quotient of min divided by sub into ret over the given range.
 	  * @return the Quotient of the given Arrays
 	  * @param ret Array with the Values to be processed. Also returned by this Method.
 	  * @param start Index from  where the Array is processed
@@ -2085,6 +2238,7 @@ extends AVector
 	}
 
 	/**
+	  * Returns a new array containing the elementwise quotient of the two given arrays.
 	  * @return the Quotient of the given Arrays
 	  * @param ret Array with the Values to be processed. Also returned by this Method.
 	  */
@@ -2093,6 +2247,8 @@ extends AVector
 	}
 
 	/**
+	  * Returns a new array containing the elementwise quotient of the two given
+	  * arrays over the given range.
 	  * @return the Quotient of the given Arrays
 	  * @param ret Array with the Values to be processed. Also returned by this Method.
 	  * @param start Index from  where the Array is processed
@@ -2102,7 +2258,10 @@ extends AVector
 		return div(new short[stop], min, sub, start, stop);
 	}
 
-	/** @return MaxMin Product of the two Vectors: ret maxAt(a min y)	  */
+	/**
+	 * Updates each element of ret, over the given range, to the greater of itself
+	 * and the minimum of the corresponding element of a and the scalar y.
+	 * @return MaxMin Product of the two Vectors: ret maxAt(a min y)	  */
 	final static public short[] MaxMin(short[] ret, short[] a, short y, int start, int stop) {
 		short x; //FALSE; //can also start with any lower Value!
 		while (--stop >= start) {
@@ -2120,7 +2279,10 @@ extends AVector
 		return ret;
 	}
 
-	/** @return MaxMin Product of the two Vectors: ret maxAt(a min b)	  */
+	/**
+	 * Updates each element of ret, over the given range, to the greater of itself
+	 * and the minimum of the corresponding elements of a and b.
+	 * @return MaxMin Product of the two Vectors: ret maxAt(a min b)	  */
 	final static public short[] MaxMin(short[] ret, short[] a, short[] b, int start, int stop) {
 		short x, y; //FALSE; //can also start with any lower Value!
 		while (--stop >= start) {
@@ -2138,12 +2300,18 @@ extends AVector
 		return ret;
 	}
 
-	/** @return MaxMin Product of the two Vectors: ret maxAt(a min b)	  */
+	/**
+	 * Updates each element of ret to the greater of itself and the minimum of
+	 * the corresponding elements of a and b, over the full array.
+	 * @return MaxMin Product of the two Vectors: ret maxAt(a min b)	  */
 	final static public short[] MaxMin(short[] ret, short[] a, short[] b) {
 		return MaxMin(ret, a, b, 0, ret.length);
 	}
 
-	/** @return MaxMin Product of the two Vectors: ret maxAt(a min y)	  */
+	/**
+	 * Updates each element of ret to the greater of itself and the minimum of
+	 * the corresponding element of a and the scalar y, over the full array.
+	 * @return MaxMin Product of the two Vectors: ret maxAt(a min y)	  */
 	final static public short[] MaxMin(short[] ret, short[] a, short y) {
 		return MaxMin(ret, a, y, 0, ret.length);
 	}
@@ -2679,7 +2847,9 @@ extends AVector
 	//	Methods for the dynamic 1dim Array Use
 	////////////////////////////////////////////////////////////////////////////////
 
-	/** 
+	/**
+	 * Returns whether this vector's elements are strictly ascending, strictly
+	 * descending, or in no consistent order.
 	 * @return the Order of the Items in this Container
 	 * @see streamIO.Float.IStreamIn_Float#getOrder()
 	 */
@@ -2777,7 +2947,10 @@ extends AVector
 		return 0;
 	}
 
-	/** @return the item at the given Position as an Object */
+	/**
+	 * Returns the item at the given position boxed as a {@link ByRefShort}.
+	 * @return the item at the given Position as an Object
+	 */
 	public Object getAt(final int i) {
 		return new ByRefShort(getShortAt(i));
 	}
@@ -2854,8 +3027,13 @@ extends AVector
 	 * @exception  ArrayIndexOutOfBoundsException  if the index was invalid.
 	 */
 	public short removeAt(final int index) {
+		// TODO: LOGIC: `--itemCount` runs unconditionally before the range check; when
+		// `index` is out of range (> the pre-decrement itemCount, or negative) this method
+		// returns early with 0 as if nothing happened, but itemCount has already been
+		// permanently decremented, corrupting the vector's size even though no element was
+		// actually removed. Same defect as VectorObject.removeAt(int) / VectorChar.removeAt(int).
 		if (index > --itemCount)  //
-			return 0; 
+			return 0;
 		final short ret = items[index]; 
 		System.arraycopy(items, index+1, items, index, itemCount-index); 
 		return ret;
@@ -2866,7 +3044,10 @@ extends AVector
 	/// for multidimensional rectangular Arrays 
 	////////////////////////////////////////////////////////////////////////////////
 
-	/** @return the Value at the given Position	 */
+	/**
+	 * Returns the value at the given row and column, viewing this vector's backing
+	 * array as a rectangular matrix.
+	 * @return the Value at the given Position	 */
 	public double getAt(int Row, int Col) {
 		return items[Row * dimFactors[0] + Col * dimFactors[1]];
 	}
@@ -2876,7 +3057,10 @@ extends AVector
 		items[Row * dimFactors[0] + Col * dimFactors[1]] = Value;
 	}
 
-	/** @return the Value at the given Position	 */
+	/**
+	 * Returns the value at the given sheet, row and column, viewing this vector's
+	 * backing array as a rectangular 3D tensor.
+	 * @return the Value at the given Position	 */
 	public double getAt(int Sheet, int Row, int Col) {
 		return items[Sheet * dimFactors[0] + Row * dimFactors[1] + Col * dimFactors[2]];
 	}
@@ -2886,7 +3070,10 @@ extends AVector
 		items[Sheet * dimFactors[0] + Row * dimFactors[1] + Col * dimFactors[2]] = Value;
 	}
 
-	/** @return the Value at the given Position	 */
+	/**
+	 * Returns the value at the given multi-dimensional index of this vector viewed
+	 * as a rectangular multi-index array.
+	 * @return the Value at the given Position	 */
 	public double getAt(final int[] Col) {
 		return items[multiIndex(Col)];
 	}
@@ -3095,28 +3282,32 @@ extends AVector
 	// Multiplication with a Permutation
 	////////////////////////////////////////////////////////////////////////////////
 
-	/** 
+	/**
+	 * Returns the minimum value in this vector.
 	 * @return the Minimum Value in this Vector
 	 */
 	public int MinVal() {
 		return MinVal(items);
 	}
 
-	/** 
+	/**
+	 * Returns the position of the minimum value in this vector.
 	 * @return the Position of the Minimum Value in this Vector
 	 */
 	public int MinPos() {
 		return MinPos(items);
 	}
 
-	/** 
+	/**
+	 * Returns the maximum value in this vector.
 	 * @return the Maximum Value in this Vector
 	 */
 	public int MaxVal() {
 		return MAX_VAL(items);
 	}
 
-	/** 
+	/**
+	 * Returns the position of the maximum value in this vector.
 	 * @return the Position of the Maximum Value in this Vector
 	 */
 	public int MaxPos() {
@@ -3143,11 +3334,17 @@ extends AVector
 	}
 
 	/** multiplies this Vector by the given Portion of the values */
+	// TODO: LOGIC: calls subAt(...) instead of mulAt(...) - copy-pasted from subAt(VectorShort)
+	// above without updating the delegated call, so this silently subtracts the given
+	// vector's values instead of multiplying by them. Same defect as VectorChar.mulAt(VectorChar).
 	public VectorShort mulAt(final VectorShort vector) {
 		return subAt(vector.items, 0, vector.itemCount);
 	}
 
 	/** divides this Vector by the given Portion of the vector*/
+	// TODO: LOGIC: calls subAt(...) instead of divAt(...) - copy-pasted from subAt(VectorShort)
+	// above without updating the delegated call, so this silently subtracts the given
+	// vector's values instead of dividing by them. Same defect as VectorChar.divAt(VectorChar).
 	public VectorShort divAt(final VectorShort vector) {
 		return subAt(vector.items, 0, vector.itemCount);
 	}
@@ -3181,11 +3378,19 @@ extends AVector
 	}
 
 	/** multiplies this Vector by the given Portion of the values */
+	// TODO: LOGIC: the `value` parameter is never used - this calls the (short[], int, int)
+	// overload with `items` itself as the array argument, so it squares every element
+	// (items[i] *= items[i]) instead of multiplying by the given scalar `value`. Same
+	// defect as VectorChar.mulAt(int).
 	public VectorShort mulAt(final int value) {
 		return mulAt(items, 0, itemCount);
 	}
 
 	/** divides this Vector by the given Portion of the vector*/
+	// TODO: LOGIC: the `value` parameter is never used - this calls the (short[], int, int)
+	// overload with `items` itself as the divisor array, so it divides every element by
+	// itself (yielding 1, or an arithmetic error on a zero element) instead of dividing by
+	// the given scalar `value`. Same defect as VectorChar.divAt(int).
 	public VectorShort divAt(final int value) {
 		return divAt(items, 0, itemCount);
 	}
@@ -3307,9 +3512,11 @@ extends AVector
 	////////////////////////////////////////////////////////////////////////////////
 
 	/**
+	 * Returns a view of this vector's backing array with row and column index
+	 * factors swapped, sharing the same underlying data.
 	 * @return a VectorShort with IndexFactors such
 	 *  that the Elements are transposed.
-	 * Only useful when simulating a rectangular Tensor on a 1 dim Array. 
+	 * Only useful when simulating a rectangular Tensor on a 1 dim Array.
 	 */
 	public VectorShort getTranspose() {
 		if (dimFactors.length != 2) {
@@ -3395,26 +3602,45 @@ extends AVector
 
 }
 
-/** Iterator for the MatrixFloat Class (in reverse Order) */
+/** Iterator for the MatrixFloat Class (in reverse Order)
+ *
+ * <!-- docstate
+ * pass: 2
+ * mtime: 2026-09-05T13:25:39Z
+ * digest: 6ce97631064df1ad0c3887dabb0e50d219c28125fcc58810e01c0c90fc444d99
+ * stale: false
+ * tags: [code/functional_interfaces]
+ * concepts: [Reverse-Order Short Stream Source]
+ * facets: {layer: utility, status: legacy, complexity: low}
+ * -->
+ */
 final class VectorShortStreamIn 
 extends AVectorStreamIn_Int
 {
 
 	final VectorShort vector;
 
+	/**
+	 * Constructs a reverse-order iterator over the given vector's elements.
+	 * @param vector_ the vector to iterate over
+	 */
 	public VectorShortStreamIn(final VectorShort vector_) {
 		super(vector_.MaxVal()); //
 		this.vector = vector_;
 		pos = vector.getInt();
 	}
 
-	/** @see Stream.Float.IStreamIn_Bound_Int#getMinValue()	 */
+	/**
+	 * Returns the minimum value in the wrapped vector.
+	 * @see Stream.Float.IStreamIn_Bound_Int#getMinValue()	 */
 	public long getMinValue() { return vector.MinVal(); }
-	
+
 	/** @see Stream.Float.IStreamIn_Int#nextInt()	 */
 	protected long nextLongInternal() { return vector.items[--pos]; }
 
-    /** @see streamIO.real.AStreamIn_Float#getMaxMarkSize()     */
+    /**
+     * Returns the number of elements in the wrapped vector, used as the maximum mark size.
+     * @see streamIO.real.AStreamIn_Float#getMaxMarkSize()     */
     public long getMaxMarkSize() { return vector.getInt(); }
 
 }

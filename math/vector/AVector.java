@@ -55,6 +55,9 @@ import function.index.IDirectAccess;
  * mtime: 2026-09-05T12:44:29Z
  * digest: a1a96f492d44e5e982cc3b2a125fe57cbe710b95cf0326dc90ffdd8bcff693df
  * stale: false
+ * tags: [code/growable_array, code/array_bounds_check]
+ * concepts: [Vector Family Base Class]
+ * facets: {layer: utility, status: legacy, complexity: medium}
  * -->
  */
 public abstract class AVector
@@ -305,6 +308,9 @@ implements IDirectAccess
  * mtime: 2026-09-05T12:44:29Z
  * digest: b14314a9f9a48335e179bff02a82b673eef948a798c2df8f94ff853ab3e0bccf
  * stale: false
+ * tags: [code/functional_interfaces]
+ * concepts: [Reverse-Order Float Stream Source]
+ * facets: {layer: utility, status: legacy, complexity: low}
  * -->
  */
 abstract class AVectorStreamIn_Float
@@ -364,6 +370,9 @@ extends AStreamIn_Float {
  * mtime: 2026-09-05T12:44:29Z
  * digest: 40963f774241d628bd3bc7ff803575f984ad0a360a863843c6d855861dd7eae2
  * stale: false
+ * tags: [code/functional_interfaces]
+ * concepts: [Reverse-Order Int Stream Source]
+ * facets: {layer: utility, status: legacy, complexity: low}
  * -->
  */
 abstract class AVectorStreamIn_Int

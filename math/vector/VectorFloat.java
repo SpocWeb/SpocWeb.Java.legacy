@@ -25,6 +25,7 @@ import function.vector.IFloatScalarField;
 import function.vector.IFloatVectorField;
 
 /**
+ * Provides static Methods and a dynamic Array Type for Vectors and Arrays of primitive float Numbers.
  * Title: VectorFloat<p>
  * Description:
  * Defines only static Methods to treat Vectors and Arrays with float Numbers.
@@ -47,6 +48,15 @@ import function.vector.IFloatVectorField;
  * Created on	05-16-2002, 11:35 PM<p>
  * @author 	Matthias Heuer
  * @version	1.0
+ * <!-- docstate
+ * pass: 2
+ * mtime: 2026-09-05T13:49:26Z
+ * digest: 17ee4d954b6a5cc8cc0ab5b97284d1c6f25145277e08f62cd4b7623962571610
+ * stale: false
+ * tags: [code/growable_array, code/array_math]
+ * concepts: [Growable float[] Vector]
+ * facets: {layer: domain, status: broken, complexity: high}
+ * -->
  */
 public class VectorFloat 
 extends AVector {
@@ -124,7 +134,8 @@ extends AVector {
 		return a;
 	}
 	
-	/** @return the Column at the given Position */
+	/** Extracts a single Column from the given rectangular Matrix.
+	 * @return the Column at the given Position */
 	final static public float[] COLUMN(final float[][] matrix, final int col) {
 		float[] ret = new float[matrix.length];
 		for (int i = matrix.length; --i >= 0;) {
@@ -132,7 +143,8 @@ extends AVector {
 		return ret;
 	}
 
-	/** @return the Column at the given Position */
+	/** Transposes the given rectangular Matrix by extracting each Column as a Row.
+	 * @return the Column at the given Position */
 	final static public float[][] TRANSPOSE(final float[][] matrix) {
 		float[][] ret = new float[matrix[0].length][];
 		for (int i = ret.length; --i >= 0;) {
@@ -394,7 +406,8 @@ extends AVector {
 
 	/////////////////////////////////////////////////////////////////////////////////////
 
-	/** @see Object#equals(java.lang.Object) 	 */
+	/** Compares the given Range of both Arrays Element by Element for Equality (via ByRefFloat.EQUALS).
+	 * @see Object#equals(java.lang.Object) 	 */
 	final static public boolean EQUALS(final float[] a, final float[] b, final int start, final int stop) {
 		for (int i = stop; --i >= start; ) {
 			if (!ByRefFloat.EQUALS(a[i], b[i])) 
@@ -403,7 +416,8 @@ extends AVector {
 		return true; 
 	}
 
-	/** @see Object#equals(java.lang.Object) 	 */
+	/** Compares both Arrays for Equality, treating missing trailing Elements as 0.
+	 * @see Object#equals(java.lang.Object) 	 */
 	final static public boolean EQUALS(final float[] a, final float[] b) {
 		if (a == b) 
 			return true; 
@@ -551,11 +565,13 @@ extends AVector {
 		return a;
 	}
 
-	/** @return the given Array with all Elements set to 0. 	 */
+	/** Sets all Elements of the given Array to 0.
+	 * @return the given Array with all Elements set to 0. 	 */
 	final static public float[] ZERO_AT(final float[] ret) {
 		return ZERO_AT(ret, 0, ret.length); }
 
-	/** @return the given Array with the Elements from start (inclusive) to stop (exclusive) set to 0. 	 */
+	/** Sets the given Range of the Array to 0.
+	 * @return the given Array with the Elements from start (inclusive) to stop (exclusive) set to 0. 	 */
 	final static public float[] ZERO_AT(float[] ret, int start, int stop) {
 		java.util.Arrays.fill(ret, start, stop, 0);
 		return ret; }
@@ -577,23 +593,27 @@ extends AVector {
 		return a;
 	}
 
-	/** @return the given Array with all Elements set to 1. 	 */
+	/** Sets all Elements of the given Array to 1.
+	 * @return the given Array with all Elements set to 1. 	 */
 	final static public float[] ONE_AT(float[] ret) {
 		return ONE_AT(ret, 0, ret.length);
 	}
 
-	/** @return the given Array with the Elements from start (inclusive) to stop (exclusive) set to 0. 	 */
+	/** Sets the given Range of the Array to 1.
+	 * @return the given Array with the Elements from start (inclusive) to stop (exclusive) set to 0. 	 */
 	final static public float[] ONE_AT(float[] ret, int start, int stop) {
 		java.util.Arrays.fill(ret, start, stop, 1);
 		return ret;
 	}
 
-	/** @return the given Array with all Elements set to the given Value. 	 */
+	/** Fills the whole Array with the given Value.
+	 * @return the given Array with all Elements set to the given Value. 	 */
 	final static public float[] FILL_AT(float[] ret, float val) {
 		return FILL_AT(ret, val, 0, ret.length);
 	}
 
 	/**
+	 * Fills the given Range of the Array with the given Value.
 	 * @return the given Array with the Elements from start (inclusive)
 	 * to stop (exclusive) set to the given Value.
 	 */
@@ -602,10 +622,11 @@ extends AVector {
 		return ret;
 	}
 
-	/** @return true if 
-	 * all Values in the Array are zero or 
-	 * the Array has zero Length or 
-	 * the Array is null. 	 
+	/** Checks whether the whole Array is all-zero, empty, or null.
+	 * @return true if
+	 * all Values in the Array are zero or
+	 * the Array has zero Length or
+	 * the Array is null.
 	 */
 	final static public boolean IS_ZERO(final float[] arr) {
 		if ((arr == null) || (arr.length == 0)) {
@@ -613,7 +634,8 @@ extends AVector {
 		return IS_ZERO(arr, 0, arr.length);
 	}
 
-	/** @return true if 
+	/** Checks whether the given Range of the Array is all-zero.
+	 * @return true if
 	 * all Values in the Array are zero in the given Range
 	 */
 	final static public boolean IS_ZERO(final float[] arr, final int start, int stop) {
@@ -875,7 +897,8 @@ extends AVector {
 	final static public float[] RANDOM(final int maxLength) {
 		return RANDOMIZE_AT(new float[RandomQuick.NEXT_INT(maxLength)]); }
 	
-	/** @see streamIO.copy.IICopyAble#randomizeAt()	 */
+	/** Creates a new Array of the given Length filled with random Values.
+	 * @see streamIO.copy.IICopyAble#randomizeAt()	 */
 	final static public float[] RANDOMIZED(final int length) {
 		return RANDOMIZE_AT(new float[length]); }
 						
@@ -892,15 +915,18 @@ extends AVector {
 	//  static Methods returning a single Number from the Array
 	////////////////////////////////////////////////////////////////////////////////
 
-	/** @return The Sum of all Values in the Array. 	 */
+	/** Sums up all Values of the Array.
+	 * @return The Sum of all Values in the Array. 	 */
 	final static public double SUM(final float[] arr) {
 		return SUM(arr, 0, arr.length); }
-	
-	/** @return The Sum of all Values in the Array. 	 */
+
+	/** Sums up the first length Values of the Array.
+	 * @return The Sum of all Values in the Array. 	 */
 	final static public double SUM(final float[] arr, final int length) {
 		return SUM(arr, 0, length); }
-	
-	/** @return The Sum of all Values in the Array.	 */
+
+	/** Sums up the given Range of Values in the Array.
+	 * @return The Sum of all Values in the Array.	 */
 	final static public double SUM(final float[] arr, final int start, int stop) {
 		if (start == stop) {
 			return 0; }
@@ -910,11 +936,13 @@ extends AVector {
 		return sum;
 	}
 
-	/** @return The Product of all Values in the Array. 	 */
+	/** Multiplies together all Values of the Array.
+	 * @return The Product of all Values in the Array. 	 */
 	final static public double PROD(final float[] arr) {
 		return PROD(arr, 0, arr.length); }
 
-	/** @return The Product of all Values in the Array.	 */
+	/** Multiplies together the given Range of Values in the Array.
+	 * @return The Product of all Values in the Array.	 */
 	final static public double PROD(final float[] arr, final int start, int stop) {
 		if (start == stop) 
 			return 1; 
@@ -1287,12 +1315,14 @@ extends AVector {
 	/////////////////////////////////////////////////////////////////////////////////////
 	
 	/**
+	 * Calculates the Euclidean Norm (Length) of the given Vector.
 	 * @return the euklidean Norm of the given Array
 	 */
 	final static public double NORM(final float[] arr) {
 		return Math.sqrt(NORM_SQR(arr, arr.length)); }
-	
+
 	/**
+	 * Rescales the given Array in Place to Unit Length.
 	 * @return the euklidean Norm of the given Array
 	 * @param the Array is normed to the given Length
 	 */
@@ -1300,6 +1330,7 @@ extends AVector {
 		return NORMALIZE_AT(arr, 1); }
 	
 	/**
+	 * Rescales the given Array in Place to the given Length.
 	 * @return the euklidean Norm of the given Array
 	 * @param the Array is normed to the given Length
 	 */
@@ -1307,8 +1338,9 @@ extends AVector {
 		final double ret = Math.sqrt(NORM_SQR(arr, arr.length));
 		MUL_AT(arr, length / ret);
 		return ret; }
-	
+
 	/**
+	 * Calculates the squared Euclidean Norm of the whole Vector.
 	 * @return the squared euklidean Norm of the given Array
 	 */
 	final static public double NORM_SQR(final float[] arr) {
@@ -1339,38 +1371,43 @@ extends AVector {
 	}
 	
 	/**
+	 * Calculates the Euclidean Distance between the given Arrays.
 	 * @param arr1 first  Vector, not modified.
 	 * @param arr2 second Vector, not modified.
 	 * @return the squared euklidean Norm of the Distance between the given Arrays
 	 */
 	final static public double DIST(final float[] arr1, final float[] arr2) {
 		return Math.sqrt(DIST_SQR(arr1, arr2)); }
-	
+
 	/**
+	 * Calculates the Euclidean Distance between the first dim Elements of both Arrays.
 	 * @param arr1 first  Vector, not modified.
 	 * @param arr2 second Vector, not modified.
 	 * @return the squared euklidean Norm of the Distance between the given Arrays
 	 */
 	final static public double DIST(final float[] arr1, final float[] arr2, int dim) {
 		return Math.sqrt(DIST_SQR(arr1, arr2, dim)); }
-	
+
 	/**
+	 * Calculates the squared Euclidean Distance between the given Arrays.
 	 * @param arr1 first  Vector, not modified.
 	 * @param arr2 second Vector, not modified.
 	 * @return the squared euklidean Norm of the Distance between the given Arrays
 	 */
 	final static public double DIST_SQR(final float[] arr1, final float[] arr2) {
 		return DIFF_NORM_SQR(arr1, arr2, null); }
-	
+
 	/**
+	 * Calculates the squared Euclidean Distance between the first dim Elements of both Arrays.
 	 * @param arr1 first  Vector, not modified.
 	 * @param arr2 second Vector, not modified.
 	 * @return the squared euklidean Norm of the Distance between the given Arrays
 	 */
 	final static public double DIST_SQR(final float[] arr1, final float[] arr2, int dim) {
 		return DIFF_NORM_SQR(arr1, arr2, dim, null); }
-	
+
 	/**
+	 * Calculates the Euclidean Distance between a float and a double Array.
 	 * @param arr1 first  Vector, not modified.
 	 * @param arr2 second Vector, not modified.
 	 * @return the squared Norm of the Distance between the given Arrays
@@ -1379,6 +1416,7 @@ extends AVector {
 		return Math.sqrt(DIST_SQR(arr1, arr2)); }
 
 	/**
+	 * Calculates the Euclidean Distance between the first dim Elements of a float and a double Array.
 	 * @param arr1 first  Vector, not modified.
 	 * @param arr2 second Vector, not modified.
 	 * @return the squared Norm of the Distance between the given Arrays
@@ -1387,14 +1425,17 @@ extends AVector {
 		return Math.sqrt(DIST_SQR(arr1, arr2, dim)); }
 
 	/**
+	 * Calculates the squared Euclidean Distance between a float and a double Array.
 	 * @param arr1 first  Vector, not modified.
 	 * @param arr2 second Vector, not modified.
 	 * @return the squared Norm of the Distance between the given Arrays
 	 */
 	final static public double DIST_SQR(final float[] arr1, final double[] arr2) {
 		return DIST_SQR(arr1, arr2, arr1.length); }
-	
+
 	/**
+	 * Calculates the squared Euclidean Distance between the first dim Elements of a float and a double Array,
+	 * tolerating Length Mismatches by adding in the excess Tail's own squared Norm.
 	 * @param arr1 first  Vector, not modified.
 	 * @param arr2 second Vector, not modified.
 	 * @return the squared Norm of the Distance between the given Arrays
@@ -1436,6 +1477,7 @@ extends AVector {
 	 * It must be as large as the larger of both Arguments 
 	 * @return the squared euklidean Norm of the Difference between the given Arrays
 	 */
+	/** Calculates the squared Euclidean Distance between the first numDims Elements of both Arrays, optionally filling diff with the Difference Vector, tolerating Length Mismatches. */
 	final static public double DIFF_NORM_SQR(final float[] arr1, final float[] arr2, final int numDims, final float[] diff) {
 		double norm; //Calculate the Norm
 		int minLength = numDims; 
@@ -1466,6 +1508,7 @@ extends AVector {
 	}
 	
 	/**
+	 * Calculates the Manhattan (Taxicab) Distance between the given Arrays.
 	 * @param arr1 first  Vector, not modified.
 	 * @param arr2 second Vector, not modified.
 	 * @return the absolute Norm of the Distance between the given Arrays
@@ -1504,7 +1547,7 @@ extends AVector {
 	}
 	
 	/**
-	  * @param diff is an Output Parameter being filled with the Difference Vector.
+	  * Calculates the Sum of the absolute Values of the given Array.
 	  * @return the Scalar AbsV Norm of the given Array
 	  */
 	final static public float NORM_ABS(final float[] arr) {
@@ -1724,7 +1767,7 @@ extends AVector {
 	 * @param y the y Data 
 	 * @param sig the Standard Errors in x, can be null 
 	 * @param abSigaSigb returns the Line Parameters (and it's Standard Errors) 
-	 * @return Chi² for ndata-2 Degrees of Freedom
+	 * @return Chiï¿½ for ndata-2 Degrees of Freedom
 	 */
 	final static public float LINEAR_FIT(final float[] x, final float[] y
 	, final float[] sig, final float[][] abSigaSigb) {
@@ -1744,7 +1787,7 @@ extends AVector {
 	 * @param abSigaSigb returns the Line Parameters a (Offset), b (Inclination) 
 	 * and optionally it's Standard Errors.
 	 * optional (null allowed, length 1 or 2 allowed) 
-	 * @return Chi² for stop-start-2 Degrees of Freedom, 
+	 * @return Chiï¿½ for stop-start-2 Degrees of Freedom, 
 	 * which allows to test the Quality of the Fit. 
 	 * (not the Validity, this also depends on the Number of points fitted)  
 	 */
@@ -1776,7 +1819,7 @@ extends AVector {
 		final float xAvg=(float) (sx/ss); //
 		final float yAvg=(float) (sy/ss); //
 		
-		L.n("Calculate Chi²"); 		
+		L.n("Calculate Chiï¿½"); 		
 		double sumDy=0;
 		double sumSqrD=0;
 		if (sig != null) {
@@ -1826,13 +1869,15 @@ extends AVector {
 	///////////////////////////////////////////////////////////////////////////////////
 	
 	/**
+	  * Negates all Elements of the given Array in Place.
 	  * @return the Negative of the given Array
 	  * @param ret Array with the Values to be processed. Also returned by this Method.
 	  */
 	final static public float[] NEG_AT(final float[] ret) {
 		return NEG_AT(ret, 0, ret.length); }
-	
+
 	/**
+	  * Negates the given Range of the Array in Place.
 	  * @return the Negative of the given Array
 	  * @param ret Array with the Values to be processed. Also returned by this Method.
 	  * @param start Index from  where the Array is processed
@@ -1840,8 +1885,9 @@ extends AVector {
 	  */
 	final static public float[] NEG_AT(final float[] ret, final int start, final int stop) {
 		return NEG(ret, start, stop, ret); }
-	
+
 	/**
+	  * Negates the given Range of x into ret (or a new Array, if ret is null).
 	  * @param start Index from  where the Array is processed
 	 * @param stop  Index up to where the Array is processed (not ret[stop]!)
 	 * @param ret Array with the Values to be processed. Also returned by this Method.
@@ -1856,6 +1902,7 @@ extends AVector {
 	}
 	
 	/**
+	  * Negates the given Range of the double Array x into a float Array ret (or a new Array, if ret is null).
 	  * @param start Index from  where the Array is processed
 	 * @param stop  Index up to where the Array is processed (not ret[stop]!)
 	 * @param ret Array with the Values to be processed. Also returned by this Method.
@@ -1870,13 +1917,15 @@ extends AVector {
 	}
 	
 	/**
+	  * Negates the whole Array into a new Array.
 	  * @return the Negative of the given Array
 	  * @param ret Array with the Values to be processed. Also returned by this Method.
 	  */
 	final static public float[] NEG(final float[] x) {
 		return NEG(x, 0, x.length, null); }
-	
+
 	/**
+	  * Negates the given Range of the Array into a new Array.
 	  * @return the Negative of the given Array
 	  * @param ret Array with the Values to be processed. Also returned by this Method.
 	  * @param start Index from  where the Array is processed
@@ -1884,15 +1933,17 @@ extends AVector {
 	  */
 	final static public float[] NEG(final float[] x, final int start, final int stop) {
 		return NEG(x, start, stop, null); }
-	
+
 	/**
+	  * Negates the whole double Array into a new float Array.
 	  * @return the Negative of the given Array
 	  * @param ret Array with the Values to be processed. Also returned by this Method.
 	  */
 	final static public float[] NEG(final double[] x) {
 		return NEG(x, 0, x.length, null); }
-	
+
 	/**
+	  * Negates the given Range of the double Array into a new float Array.
 	  * @return the Negative of the given Array
 	  * @param ret Array with the Values to be processed. Also returned by this Method.
 	  * @param start Index from  where the Array is processed
@@ -1902,13 +1953,15 @@ extends AVector {
 		return NEG(x, start, stop, null); }
 	
 	/**
+	  * Applies floor() to all Elements of the given Array in Place.
 	  * @return the Negative of the given Array
 	  * @param ret Array with the Values to be processed. Also returned by this Method.
 	  */
 	final static public float[] FLOOR_AT(final float[] ret) {
 		return FLOOR_AT(ret, 0, ret.length); }
-	
+
 	/**
+	  * Applies floor() to the given Range of the Array in Place.
 	  * @return the Negative of the given Array
 	  * @param ret Array with the Values to be processed. Also returned by this Method.
 	  * @param start Index from  where the Array is processed
@@ -1916,8 +1969,9 @@ extends AVector {
 	  */
 	final static public float[] FLOOR_AT(final float[] ret, final int start, final int stop) {
 		return FLOOR(ret, start, stop, ret); }
-	
+
 	/**
+	  * Applies floor() to the given Range of x into ret.
 	  * @param start Index from  where the Array is processed
 	 * @param stop  Index up to where the Array is processed (not ret[stop]!)
 	 * @param ret Array with the Values to be processed. Also returned by this Method.
@@ -1932,6 +1986,7 @@ extends AVector {
 	}
 
 	/**
+	  * Applies floor() to the given Range of the double Array x into a float Array ret.
 	  * @param start Index from  where the Array is processed
 	 * @param stop  Index up to where the Array is processed (not ret[stop]!)
 	 * @param ret Array with the Values to be processed. Also returned by this Method.
@@ -1946,6 +2001,7 @@ extends AVector {
 	}
 
 	/**
+	  * Applies floor() to the whole Array into a new Array.
 	  * @return the Negative of the given Array
 	  * @param ret Array with the Values to be processed. Also returned by this Method.
 	  */
@@ -1953,6 +2009,7 @@ extends AVector {
 		return FLOOR(x, 0, x.length, null); }
 
 	/**
+	  * Applies floor() to the given Range of the Array into a new Array.
 	  * @return the Negative of the given Array
 	  * @param ret Array with the Values to be processed. Also returned by this Method.
 	  * @param start Index from  where the Array is processed
@@ -1962,6 +2019,7 @@ extends AVector {
 		return FLOOR(x, start, stop, null); }
 
 	/**
+	  * Applies floor() to the whole double Array into a new float Array.
 	  * @return the Negative of the given Array
 	  * @param ret Array with the Values to be processed. Also returned by this Method.
 	  */
@@ -1969,6 +2027,7 @@ extends AVector {
 		return FLOOR(x, 0, x.length, null); }
 
 	/**
+	  * Applies floor() to the given Range of the double Array into a new float Array.
 	  * @return the Negative of the given Array
 	  * @param ret Array with the Values to be processed. Also returned by this Method.
 	  * @param start Index from  where the Array is processed
@@ -1978,6 +2037,7 @@ extends AVector {
 		return FLOOR(x, start, stop, null); }
 
 	/**
+	  * Replaces every Element of the whole Array by its multiplicative Inverse, in Place.
 	  * @return the multiplicative Inverse of the given Array
 	  * @param ret Array with the Values to be processed. Also returned by this Method.
 	  */
@@ -1985,6 +2045,7 @@ extends AVector {
 		return INV_AT(ret, 0, ret.length); }
 
 	/**
+	  * Replaces every Element of the given Range of the Array by its multiplicative Inverse, in Place.
 	  * @return the multiplicative Inverse of the given Array
 	  * @param ret Array with the Values to be processed. Also returned by this Method.
 	  * @param start Index from  where the Array is processed
@@ -1992,24 +2053,27 @@ extends AVector {
 	  */
 	final static public float[] INV_AT(final float[] ret, final int start, final int stop) {
 		return INV(ret, start, stop, ret); }
-	
+
 	/**
+	  * Calculates the multiplicative Inverse of the whole Array into a new Array.
 	  * @param arg Array with the Values to be processed
 	  * @param ret Array with the inverted Values. returned by this Method.
 	  * @return the multiplicative Inverse of the given Array
 	  */
 	final static public float[] INV(final float[] arg) {
 		return INV(arg, 0, arg.length, null); }
-	
+
 	/**
+	  * Calculates the multiplicative Inverse of the whole Array into ret.
 	  * @param arg Array with the Values to be processed
 	  * @param ret Array with the inverted Values. returned by this Method.
 	  * @return the multiplicative Inverse of the given Array
 	  */
 	final static public float[] INV(final float[] arg, final float[] ret) {
 		return INV(arg, 0, arg.length, ret); }
-	
+
 	/**
+	  * Calculates the multiplicative Inverse of the given Range of arg into ret.
 	  * @param start Index from  where the Array is processed
 	 * @param stop  Index up to where the Array is processed (not ret[stop]!)
 	 * @param ret Array with the Values to be processed. Also returned by this Method.
@@ -2024,13 +2088,15 @@ extends AVector {
 	}
 	
 	/**
+	  * Replaces all Elements of the given Array by their absolute Value, in Place.
 	  * @return the absolute Value of the Values in the given Array
 	  * @param ret Array with the Values to be processed. Also returned by this Method.
 	  */
 	final static public float[] ABS_AT(final float[] ret) {
 		return ABS_AT(ret, 0, ret.length); }
-	
+
 	/**
+	  * Calculates the absolute Value of the given Range of arg into ret.
 	  * This is used e.g. in deriving the Distances of Poisson Distributions
 	  * from the given Probabilities.
 	 * @param ret Array with the Values to be processed. Also returned by this Method.
@@ -2038,18 +2104,20 @@ extends AVector {
 	  */
 	final static public float[] ABS(final float[] arg, final int start, int stop, float[] ret) {
 		if (ret == null)
-			ret = new float[stop]; 
+			ret = new float[stop];
 		while (--stop >= start) {
 			final float tmp; //Calculate the Norm
-			if (0 <= (tmp = ret[stop])) 
+			// TODO: LOGIC: reads from ret[stop] instead of arg[stop], so the source Array arg is ignored whenever ret != arg (e.g. when called with a fresh/different ret Array the result is all zeros).
+			if (0 <= (tmp = ret[stop]))
 				ret[stop] =  tmp;
 			else
 				ret[stop] = -tmp;
 		}
 		return ret;
 	}
-	
+
 	/**
+	  * Replaces the given Range of the Array by its absolute Value, in Place.
 	  * @return the absolute Value of the Values in the given Array
 	  * @param ret Array with the Values to be processed. Also returned by this Method.
 	  * @param start Index from  where the Array is processed
@@ -2067,14 +2135,16 @@ extends AVector {
 	}
 	
 	/**
+	  * Raises every Element of the whole Array to the given Exponent into a new Array.
 	  * @param exp the Exponent to use
 	 * @param ret Array with the Values to be processed. Also returned by this Method.
 	 * @return the Power to the given Exponent of the Values in the given Array
 	  */
 	final static public float[] POW(final float[] arg, final double exp) {
 		return POW(arg, exp, 0, arg.length, null); }
-	
+
 	/**
+	  * Raises every Element of the whole Array to the given Exponent into ret.
 	  * @param exp the Exponent to use
 	 * @param ret Array with the Values to be processed. Also returned by this Method.
 	 * @return the Power to the given Exponent of the Values in the given Array
@@ -2083,13 +2153,14 @@ extends AVector {
 		return POW(arg, exp, 0, ret.length, ret); }
 
 	/**
+	  * Raises every Element of the given Range of arg to the given Exponent into ret; exp==1 is optimized to a plain copy.
 	  * @param exp the Exponent to use
 	 * @param start Index from  where the Array is processed
 	 * @param stop  Index up to where the Array is processed (not ret[stop]!)
 	 * @param ret Array with the Values to be processed. Also returned by this Method.
 	 * @return the Power to the given Exponent of the Values in the given Array
 	  */
-	final static public float[] POW(final float[] arg, final double exp, final int start, 
+	final static public float[] POW(final float[] arg, final double exp, final int start,
 			int stop, float[] ret) {
 		if (ret == null)
 			ret  = new float[stop]; 
@@ -2102,21 +2173,23 @@ extends AVector {
 	}
 	
 	/**
+	  * Raises every Element of the whole Array to the given Exponent, in Place.
 	  * @return the Power to the given Exponent of the Values in the given Array
 	  * @param ret Array with the Values to be processed. Also returned by this Method.
 	  * @param exp the Exponent to use
 	  */
 	final static public float[] POW_AT(final float[] ret, final double exp) {
 		return POW_AT(ret, exp, 0, ret.length); }
-	
+
 	/**
+	  * Raises every Element of the given Range of the Array to the given Exponent, in Place.
 	  * @return the Power to the given Exponent of the Values in the given Array
 	  * @param ret Array with the Values to be processed. Also returned by this Method.
 	  * @param exp the Exponent to use
 	  * @param start Index from  where the Array is processed
 	  * @param stop  Index up to where the Array is processed (not ret[stop]!)
 	  */
-	final static public float[] POW_AT(final float[] ret, final double exp, 
+	final static public float[] POW_AT(final float[] ret, final double exp,
 			final int start, int stop) {
 		if (exp == 1) //Optimization: save Exponentiation
 			return ret; 
@@ -2174,14 +2247,16 @@ extends AVector {
 	///////////////////////////////////////////////////////////////////////////////////
 
 	/**
+	  * Caps the whole Array so no Element exceeds upperLimit, in Place.
 	  * @return the Array ret limited by the given Maximum (upper Limit)
 	  * @param ret Array with the Values to be processed. Also returned by this Method.
 	  * @param upperLimit upper Limit to bound the Array Values by
 	  */
 	final static public float[] MIN_AT(final float[] ret, final float upperLimit) {
 		return MIN_AT(ret, upperLimit, 0, ret.length); }
-	
+
 	/**
+	  * Caps the given Range of the Array so no Element exceeds upperLimit, in Place.
 	  * @return the Array ret limited by the given Maximum (upper Limit)
 	  * @param ret Array with the Values to be processed. Also returned by this Method.
 	  * @param upperLimit upper Limit to bound the Array Values by
@@ -2191,21 +2266,23 @@ extends AVector {
 	  */
 	final static public float[] MIN_AT(final float[] ret, final float upperLimit, final int start, int stop) {
 		while (--stop >= start) {
-			if (ret[stop] > upperLimit) 
+			if (ret[stop] > upperLimit)
 				ret[stop] = upperLimit;
 		}
 		return ret;
 	}
-	
+
 	/**
+	  * Caps the whole ret Array Element-wise against arr, in Place.
 	  * @return the Value-by-Value Minimum of the given Arrays in ret
 	  * @param ret Array with the Values to be processed. Also returned by this Method.
 	  * @param arr unchanged Array of Values to compare with
 	  */
 	final static public float[] MIN_AT(float[] ret, float[] arr) {
 		return MIN_AT(ret, arr, 0, arr.length); }
-	
+
 	/**
+	  * Caps the given Range of ret Element-wise against arr, in Place.
 	  * @return the Value-by-Value Minimum of the given Arrays in ret
 	  * @param ret Array with the Values to be processed. Also returned by this Method.
 	  * @param arr unchanged Array of Values to compare with
@@ -2214,13 +2291,14 @@ extends AVector {
 	  */
 	final static public float[] MIN_AT(final float[] ret, final float[] arr, final int start, int stop) {
 		while (--stop >= start) {
-			if (ret[stop] > arr[stop]) 
+			if (ret[stop] > arr[stop])
 				ret[stop] = arr[stop];
 		}
 		return ret;
 	}
-	
+
 	/**
+	  * Raises the whole Array so no Element is below Limit, in Place.
 	  * @param ret Array with the Values to be processed. Also returned by this Method.
 	  * @param Increment the Increment to add to
 	  * @return the given Array bounded by the given Limit
@@ -2229,6 +2307,7 @@ extends AVector {
 		return MAX_AT(ret, Limit, 0, ret.length); }
 	
 	/**
+	  * Raises the given Range of the Array so no Element is below Limit, in Place.
 	  * @return the given Array incremented by the given Increment
 	  * @param ret Array with the Values to be processed. Also returned by this Method.
 	  * @param Increment the Increment to add to
@@ -2237,20 +2316,22 @@ extends AVector {
 	  */
 	final static public float[] MAX_AT(float[] ret, float Limit, int start, int stop) {
 		while (--stop >= start) {
-			if (ret[stop] < Limit) 
-				ret[stop] = Limit; 
+			if (ret[stop] < Limit)
+				ret[stop] = Limit;
 		}
 		return ret;
 	}
-	
+
 	/**
+	  * Raises the whole ret Array Element-wise against arr, in Place.
 	  * @return the Sum of the given Arrays
 	  * @param ret Array with the Values to be processed. Also returned by this Method.
 	  */
 	final static public float[] MAX_AT(final float[] ret, final float[] arr) {
 		return MAX_AT(ret, arr, 0, arr.length); }
-	
+
 	/**
+	  * Raises the given Range of ret Element-wise against arr, in Place.
 	  * @return the Sum of the given Arrays
 	  * @param ret Array with the Values to be processed. Also returned by this Method.
 	  * @param start Index from  where the Array is processed
@@ -2276,6 +2357,7 @@ extends AVector {
 		return ADD_AT(ret, increment, 0, ret.length); }
 
 	/**
+	  * Adds the given Increment to every Element of the given Range of ret, in Place.
 	  * @return the given Array incremented by the given Increment
 	  * @param ret Array with the Values to be processed. Also returned by this Method.
 	  * @param increment the Increment to add to
@@ -2283,12 +2365,13 @@ extends AVector {
 	  * @param stop  Index up to where the Array is processed (not ret[stop]!)
 	  */
 	final static public float[] ADD_AT(final float[] ret, final double increment, final int start, int stop) {
-		while (--stop >= start) 
-			ret[stop] += increment; 
+		while (--stop >= start)
+			ret[stop] += increment;
 		return ret;
 	}
 
 	/**
+	  * Adds arr Element-wise to the whole ret Array, in Place (tolerating Length Mismatches).
 	  * @return the Sum of the given Arrays
 	  * @param ret Array with the Values to be processed. Also returned by this Method.
 	  */
@@ -2296,38 +2379,42 @@ extends AVector {
 		return ADD_AT(ret, ret.length, arr, arr.length); }
 
 	/**
+	  * Adds the first arrLength Elements of arr to ret, in Place (or falls back to ADD if arr is longer than ret).
 	  * @return the Sum of the given Arrays
 	  * @param ret Array with the Values to be processed. Also returned by this Method.
 	  */
 	final static public float[] ADD_AT(final float[] ret, final int retLength, final float[] arr, final int arrLength) {
 		if (retLength < arrLength) //make it work (though less effectively)
-			return ADD(ret, retLength, arr, arrLength); 
+			return ADD(ret, retLength, arr, arrLength);
 		return ADD_AT(ret, arr, 0, arrLength); }
 
 	/**
+	  * Adds the double Array arr Element-wise to ret, in Place (or falls back to ADD if arr is longer than ret).
 	  * @return the Sum of the given Arrays
 	  * @param ret Array with the Values to be processed. Also returned by this Method.
 	  */
 	final static public float[] ADD_AT(final float[] ret, final double[] arr) {
 		if (ret.length < arr.length) //make it work (though less effectively)
-			return ADD(ret, arr); 
+			return ADD(ret, arr);
 		return ADD_AT(ret, arr, 0, arr.length); }
 
 	/////////////////////////////////////////////////////////////////////////////////////
 
 	/**
+	  * Adds arr Element-wise to the given Range of ret, in Place.
 	  * @return the Sum of the given Arrays
 	  * @param ret Array with the Values to be processed. Also returned by this Method.
 	  * @param start Index from  where the Array is processed
 	  * @param stop  Index up to where the Array is processed (not ret[stop]!)
 	  */
 	final static public float[] ADD_AT(final float[] ret, final float[] arr, final int start, int stop) {
-		while (--stop >= start) 
-			ret[stop] += arr[stop]; 
+		while (--stop >= start)
+			ret[stop] += arr[stop];
 		return ret;
 	}
 
 	/**
+	  * Adds the double Array arr Element-wise to the given Range of ret, in Place.
 	  * @return the Sum of the given Arrays
 	  * @param ret Array with the Values to be processed. Also returned by this Method.
 	  * @param start Index from  where the Array is processed
@@ -2342,6 +2429,7 @@ extends AVector {
 	/////////////////////////////////////////////////////////////////////////////////////
 	
 	/**
+	  * Adds two Arrays Element-wise into ret.
 	  * @return the Sum of the given Arrays
 	  * @param ret Array with the Values to be processed. Also returned by this Method.
 	  */
@@ -2349,6 +2437,7 @@ extends AVector {
 		return ADD(ret, sum1, sum2, 0, sum1.length); }
 
 	/**
+	  * Adds two Arrays Element-wise into ret, tolerating Length Mismatches by copying the excess Tail.
 	  * @return the Sum of the given Arrays
 	  * @param ret Array with the Values to be processed. Also returned by this Method.
 	  * @param start Index from  where the Array is processed
@@ -2375,6 +2464,7 @@ extends AVector {
 	}
 
 	/**
+	  * Adds a float and a double Array Element-wise into ret, tolerating Length Mismatches.
 	  * @return the Sum of the given Arrays
 	  * @param ret Array with the Values to be processed. Also returned by this Method.
 	  * @param start Index from  where the Array is processed
@@ -2402,6 +2492,7 @@ extends AVector {
 	}
 	
 	/**
+	  * Adds the Increment to every Element of sum1 into ret.
 	  * @return the Sum of the given Arrays
 	  * @param ret Array with the Values to be processed. Also returned by this Method.
 	  */
@@ -2409,6 +2500,7 @@ extends AVector {
 		return ADD(ret, sum1, incr, 0, sum1.length); }
 
 	/**
+	  * Adds the Increment to the given Range of sum1 into ret.
 	  * @return the Sum of the given Arrays
 	  * @param ret Array with the Values to be processed. Also returned by this Method.
 	  * @param start Index from  where the Array is processed
@@ -2423,13 +2515,15 @@ extends AVector {
 	/////////////////////////////////////////////////////////////////////////////////////
 
 	/**
+	  * Adds two Arrays Element-wise into a new Array, tolerating Length Mismatches.
 	  * @return the Sum of the given Arrays
 	  * @param ret Array with the Values to be processed. Also returned by this Method.
 	  */
 	final static public float[] ADD(final float[] sum1, final float[] sum2) {
 		return ADD(sum1, sum1.length, sum2, sum2.length); }
-	
+
 	/**
+	  * Adds two Arrays (given as prefix Lengths) Element-wise into a new Array, tolerating Length Mismatches.
 	  * @return the Sum of the given Arrays
 	  * @param ret Array with the Values to be processed. Also returned by this Method.
 	  */
@@ -2451,6 +2545,7 @@ extends AVector {
 	}
 
 	/**
+	  * Adds a float and a double Array Element-wise into a new Array, tolerating Length Mismatches.
 	  * @return the Sum of the given Arrays
 	  * @param ret Array with the Values to be processed. Also returned by this Method.
 	  */
@@ -2470,6 +2565,7 @@ extends AVector {
 	}
 	
 	/**
+	  * Adds the Increment to every Element of sum1 into a new Array.
 	  * @return the Sum of the given Array and the Increment
 	  * @param ret Array with the Values to be processed. Also returned by this Method.
 	  */
@@ -2477,6 +2573,7 @@ extends AVector {
 		return ADD(sum1, Incr, 0, sum1.length); }
 
 	/**
+	  * Adds the given Range of two Arrays Element-wise into a new Array.
 	  * @return the Sum of the given Arrays
 	  * @param ret Array with the Values to be processed. Also returned by this Method.
 	  * @param start Index from  where the Array is processed
@@ -2486,6 +2583,7 @@ extends AVector {
 		return ADD(new float[stop], sum1, sum2, start, stop); }
 
 	/**
+	  * Adds the Increment to the given Range of sum1 into a new Array.
 	  * @return the Sum of the given Array and the Increment
 	  * @param ret Array with the Values to be processed. Also returned by this Method.
 	  * @param start Index from  where the Array is processed
@@ -2498,13 +2596,15 @@ extends AVector {
 	/////////////////////////////////////////////////////////////////////////////////////
 	
 	/**
+	  * Subtracts sub Element-wise from the whole ret Array, in Place (tolerating Length Mismatches).
 	  * @return the Difference of the given Arrays
 	  * @param ret Array with the Values to be processed. Also returned by this Method.
 	  */
 	final static public float[] SUB_AT(final float[] ret, final float[] sub) {
 		return SUB_AT(ret, ret.length, sub, sub.length); }
-	
+
 	/**
+	  * Subtracts the first subLength Elements of sub from ret, in Place (or falls back to SUB if sub is longer than ret).
 	  * @return the Difference of the given Arrays
 	  * @param ret Array with the Values to be processed. Also returned by this Method.
 	  */
@@ -2517,6 +2617,7 @@ extends AVector {
 		return SUB_AT(ret, sub, 0, sub.length); }
 
 	/**
+	  * Subtracts the double Array sub from ret, in Place (or falls back to SUB if sub is longer than ret).
 	  * @return the Difference of the given Arrays
 	  * @param ret Array with the Values to be processed. Also returned by this Method.
 	  */
@@ -2528,6 +2629,7 @@ extends AVector {
 	/////////////////////////////////////////////////////////////////////////////////////
 
 	/**
+	  * Subtracts sub Element-wise from the given Range of ret, in Place.
 	  * @return the Difference of the given Arrays
 	  * @param ret Array with the Values to be processed. Also returned by this Method.
 	  * @param start Index from  where the Array is processed
@@ -2540,6 +2642,7 @@ extends AVector {
 	}
 
 	/**
+	  * Subtracts the double Array sub Element-wise from the given Range of ret, in Place.
 	  * @return the Difference of the given Arrays
 	  * @param ret Array with the Values to be processed. Also returned by this Method.
 	  * @param start Index from  where the Array is processed
@@ -2550,10 +2653,11 @@ extends AVector {
 			ret[stop] -= sub[stop]; }
 		return ret;
 	}
-	
+
 	/////////////////////////////////////////////////////////////////////////////////////
-	
+
 	/**
+	  * Subtracts sub Element-wise from min into ret.
 	  * @return the Difference of the given Arrays
 	  * @param ret Array with the Values to be processed. Also returned by this Method.
 	  */
@@ -2561,29 +2665,32 @@ extends AVector {
 		return SUB(ret, min, sub, 0, sub.length); }
 
 	/**
+	  * Subtracts the given Range of sub Element-wise from min into ret.
 	  * @return the Difference of the given Arrays
 	  * @param ret Array with the Values to be processed. Also returned by this Method.
 	  * @param start Index from  where the Array is processed
 	  * @param stop  Index up to where the Array is processed (not ret[stop]!)
 	  */
 	final static public float[] SUB(float[] ret, final float[] min, final float[] sub, final int start, int stop) {
-		if (ret == null) 
-			ret = new float[stop]; 
-		while (--stop >= start) 
-			ret[stop] = min[stop] - sub[stop]; 
+		if (ret == null)
+			ret = new float[stop];
+		while (--stop >= start)
+			ret[stop] = min[stop] - sub[stop];
 		return ret;
 	}
-	
+
 	/////////////////////////////////////////////////////////////////////////////////////
 
 	/**
+	  * Subtracts sub Element-wise from min into a new Array, tolerating Length Mismatches.
 	  * @return the Difference of the given Arrays
 	  * @param ret Array with the Values to be processed. Also returned by this Method.
 	  */
 	final static public float[] SUB(final float[] min, final float[] sub) {
 		return SUB(min, min.length, sub, sub.length); }
-			
+
 	/**
+	  * Subtracts sub (given as prefix Lengths) Element-wise from ths into a new Array, tolerating Length Mismatches.
 	  * @return the Difference of the given Arrays
 	  * @param ret Array with the Values to be processed. Also returned by this Method.
 	  */
@@ -2605,6 +2712,7 @@ extends AVector {
 	}
 		
 	/**
+	  * Subtracts the given Range of sub Element-wise from min into a new Array.
 	  * @return the Difference of the given Arrays
 	  * @param ret Array with the Values to be processed. Also returned by this Method.
 	  * @param start Index from  where the Array is processed
@@ -2614,18 +2722,20 @@ extends AVector {
 		return SUB(new float[stop], min, sub, start, stop); }
 
 	/**
+	  * Subtracts the given Range of the double Array sub Element-wise from min into ret.
 	  * @return the Difference of the given Arrays
 	  * @param ret Array with the Values to be processed. Also returned by this Method.
 	  * @param start Index from  where the Array is processed
 	  * @param stop  Index up to where the Array is processed (not ret[stop]!)
 	  */
 	final static public float[] SUB(final float[] ret, final float[] min, final double[] sub, final int start, int stop) {
-		while (--stop >= start) 
-			ret[stop] = (float) (min[stop] - sub[stop]); 
+		while (--stop >= start)
+			ret[stop] = (float) (min[stop] - sub[stop]);
 		return ret;
 	}
 
 	/**
+	  * Subtracts the double Array sub from min into a new Array, tolerating Length Mismatches.
 	  * @return the Difference of the given Arrays
 	  * @param ret Array with the Values to be processed. Also returned by this Method.
 	  */
@@ -2643,6 +2753,7 @@ extends AVector {
 	}
 
 	/**
+	  * Subtracts the given Range of the double Array sub from min into a new Array.
 	  * @return the Difference of the given Arrays
 	  * @param ret Array with the Values to be processed. Also returned by this Method.
 	  * @param start Index from  where the Array is processed
@@ -2651,10 +2762,11 @@ extends AVector {
 	final static public float[] SUB(final float[] min, final double[] sub, final int start, final int stop) {
 		return SUB(new float[stop], min, sub, start, stop);
 	}
-	
+
 	/////////////////////////////////////////////////////////////////////////////////////
-	
+
 	/**
+	  * Multiplies every Element of the whole Array by the given Factor, in Place.
 	  * To implement divAt, just invert the Factor
 	  * @param Factor the Factor to multiply with
 	  * @param ret Array with the Values to be processed. Also returned by this Method.
@@ -2664,6 +2776,7 @@ extends AVector {
 		return MUL_AT(ret, factor, 0, ret.length); }
 
 	/**
+	  * Multiplies every Element of the given Range of ret by the given Factor, in Place.
 	  * @return the Product of the Array with the given Factor
 	  * @param ret Array with the Values to be processed. Also returned by this Method.
 	  * @param Factor the Factor to multiply with
@@ -2677,6 +2790,7 @@ extends AVector {
 	}
 
 	/**
+	  * Multiplies factor Element-wise into the whole ret Array, in Place (tolerating Length Mismatches).
 	  * @return the Product of the given Arrays
 	  * @param ret Array with the Values to be processed. Also returned by this Method.
 	  */
@@ -2684,25 +2798,28 @@ extends AVector {
 		return MUL_AT(ret, ret.length, factor, factor.length); }
 
 	/**
+	  * Multiplies factor Element-wise into ret, in Place, over the shorter of both prefix Lengths.
 	  * @return the Product of the given Arrays
 	  * @param ret Array with the Values to be processed. Also returned by this Method.
 	  */
 	final static public float[] MUL_AT(final float[] ret, final int retLength, final float[] factor, final int factorLength) {
 		return MUL_AT(ret, factor, 0, Math.min(factorLength, retLength)); }
-	
+
 	/**
+	  * Multiplies factor Element-wise into the given Range of ret, in Place.
 	  * @return the Product of the given Arrays
 	  * @param ret Array with the Values to be processed. Also returned by this Method.
 	  * @param start Index from  where the Array is processed
 	  * @param stop  Index up to where the Array is processed (not ret[stop]!)
 	  */
 	final static public float[] MUL_AT(final float[] ret, final float[] factor, final int start, int stop) {
-		while (--stop >= start) 
-			ret[stop] *= factor[stop]; 
+		while (--stop >= start)
+			ret[stop] *= factor[stop];
 		return ret;
 	}
 
 	/**
+	  * Multiplies the double Array factor Element-wise into the given Range of ret, in Place.
 	  * @return the Product of the given Arrays
 	  * @param ret Array with the Values to be processed. Also returned by this Method.
 	  * @param start Index from  where the Array is processed
@@ -2717,6 +2834,7 @@ extends AVector {
 	/////////////////////////////////////////////////////////////////////////////////////
 
 	/**
+	  * Multiplies two Arrays Element-wise into ret.
 	  * @return the Product of the given Arrays
 	  * @param ret Array with the Values to be processed. Also returned by this Method.
 	  */
@@ -2724,30 +2842,33 @@ extends AVector {
 		return MUL(ret, f1, f2, 0, f2.length); }
 
 	/**
+	  * Multiplies the given Range of two Arrays Element-wise into ret.
 	  * @return the Product of the given Arrays
 	  * @param ret Array with the Values to be processed. Also returned by this Method.
 	  * @param start Index from  where the Array is processed
 	  * @param stop  Index up to where the Array is processed (not ret[stop]!)
 	  */
 	final static public float[] MUL(final float[] ret, final float[] f1, final float[] f2, final int start, int stop) {
-		while (--stop >= start) 
-			ret[stop] = f1[stop] * f2[stop]; 
+		while (--stop >= start)
+			ret[stop] = f1[stop] * f2[stop];
 		return ret;
 	}
 
 	/**
+	  * Multiplies the given Range of a double and a float Array Element-wise into ret.
 	  * @return the Product of the given Arrays
 	  * @param ret Array with the Values to be processed. Also returned by this Method.
 	  * @param start Index from  where the Array is processed
 	  * @param stop  Index up to where the Array is processed (not ret[stop]!)
 	  */
 	final static public float[] MUL(final float[] ret, final double[] f1, final float[] f2, final int start, int stop) {
-		while (--stop >= start) 
-			ret[stop] = (float) f1[stop] * f2[stop]; 
+		while (--stop >= start)
+			ret[stop] = (float) f1[stop] * f2[stop];
 		return ret;
 	}
-	
+
 	/**
+	  * Multiplies every Element of f1 by the scalar f2 into a new Array.
 	  * @return a new Array containing the Product of the given Array
 	  * @param ret Array with the Values to be processed.
 	  */
@@ -2755,6 +2876,7 @@ extends AVector {
 		return MUL(new float[f1.length], f1, f2, 0, f1.length); }
 
 	/**
+	  * Multiplies every Element of f1 by the scalar f2 into ret.
 	  * @return a new Array containing the Product of the given Array
 	  * @param ret Array with the Values to be processed.
 	  */
@@ -2762,6 +2884,7 @@ extends AVector {
 		return MUL(ret, f1, f2, 0, f1.length); }
 
 	/**
+	  * Multiplies every Element of the given Range of f1 by the scalar f2 into ret.
 	  * @return the Product of the given Arrays
 	  * @param ret Array with the Values to be processed. Also returned by this Method.
 	  * @param start Index from  where the Array is processed
@@ -2778,18 +2901,20 @@ extends AVector {
 	}
 
 	/**
+	  * Multiplies the given Range of a double Array f1 by the scalar f2 into a float Array ret.
 	  * @return the Product of the given Arrays
 	  * @param ret Array with the Values to be processed. Also returned by this Method.
 	  * @param start Index from  where the Array is processed
 	  * @param stop  Index up to where the Array is processed (not ret[stop]!)
 	  */
 	final static public float[] MUL(final float[] ret, final double[] f1, final float f2, final int start, int stop) {
-		while (--stop >= start) 
-			ret[stop] = (float) f1[stop] * f2; 
+		while (--stop >= start)
+			ret[stop] = (float) f1[stop] * f2;
 		return ret;
 	}
-	
+
 	/**
+	  * Multiplies two Arrays Element-wise into a new Array, over the shorter Length.
 	  * @return the Difference of the given Arrays
 	  * @param ret Array with the Values to be processed. Also returned by this Method.
 	  */
@@ -2797,6 +2922,7 @@ extends AVector {
 		return MUL(f1, f2, 0, Math.min(f2.length, f1.length)); }
 
 	/**
+	  * Multiplies the given Range of two Arrays Element-wise into a new Array.
 	  * @return the Product of the given Arrays
 	  * @param ret Array with the Values to be processed. Also returned by this Method.
 	  * @param start Index from  where the Array is processed
@@ -2808,6 +2934,7 @@ extends AVector {
 	/////////////////////////////////////////////////////////////////////////////////////
 
 	/**
+	  * Divides the whole ret Array Element-wise by denom, in Place (or falls back to DIV if denom is longer than ret).
 	  * @return the Quotient of the given Arrays
 	  * @param ret Array with the Values to be processed. Also returned by this Method.
 	  */
@@ -2817,6 +2944,7 @@ extends AVector {
 		return DIV_AT(ret, denom, 0, denom.length); }
 
 	/**
+	  * Divides the whole ret Array Element-wise by the double Array denom, in Place (or falls back to DIV if denom is longer than ret).
 	  * @return the Quotient of the given Arrays
 	  * @param ret Array with the Values to be processed. Also returned by this Method.
 	  */
@@ -2827,18 +2955,20 @@ extends AVector {
 	}
 
 	/**
+	  * Divides the given Range of ret Element-wise by the double Array denom, in Place.
 	  * @return the Quotient of the given Arrays
 	  * @param ret Array with the Values to be processed. Also returned by this Method.
 	  * @param start Index from  where the Array is processed
 	  * @param stop  Index up to where the Array is processed (not ret[stop]!)
 	  */
 	final static public float[] DIV_AT(final float[] ret, final double[] denom, final int start, int stop) {
-		while (--stop >= start) 
-			ret[stop] /= denom[stop]; 
+		while (--stop >= start)
+			ret[stop] /= denom[stop];
 		return ret;
 	}
 
 	/**
+	  * Divides the given Range of ret Element-wise by denom, in Place.
 	  * @return the Quotient of the given Arrays
 	  * @param ret Array with the Values to be processed. Also returned by this Method.
 	  * @param start Index from  where the Array is processed
@@ -2853,6 +2983,7 @@ extends AVector {
 	/////////////////////////////////////////////////////////////////////////////////////
 
 	/**
+	  * Divides numer Element-wise by denom into ret.
 	  * @return the Quotient of the given Arrays
 	  * @param ret Array with the Values to be processed. Also returned by this Method.
 	  */
@@ -2861,30 +2992,33 @@ extends AVector {
 	}
 
 	/**
+	  * Divides the given Range of numer Element-wise by denom into ret.
 	  * @return the Quotient of the given Arrays
 	  * @param ret Array with the Values to be processed. Also returned by this Method.
 	  * @param start Index from  where the Array is processed
 	  * @param stop  Index up to where the Array is processed (not ret[stop]!)
 	  */
 	final static public float[] DIV(final float[] ret, final float[] numer, final float[] denom, final int start, int stop) {
-		while (--stop >= start) 
+		while (--stop >= start)
 			ret[stop] = numer[stop] / denom[stop];
 		return ret;
 	}
 
 	/**
+	  * Divides the given Range of numer Element-wise by the double Array denom into ret.
 	  * @return the Quotient of the given Arrays
 	  * @param ret Array with the Values to be processed. Also returned by this Method.
 	  * @param start Index from  where the Array is processed
 	  * @param stop  Index up to where the Array is processed (not ret[stop]!)
 	  */
 	final static public float[] DIV(final float[] ret, final float[] numer, final double[] denom, final int start, int stop) {
-		while (--stop >= start) 
+		while (--stop >= start)
 			ret[stop] = numer[stop] / (float)denom[stop];
 		return ret;
 	}
-	
+
 	/**
+	  * Divides numer Element-wise by denum into a new Array, filling the excess Tail with Infinity when numer is longer.
 	  * @return the Quotient of the given Arrays
 	  * @param ret Array with the Values to be processed. Also returned by this Method.
 	  */
@@ -2903,6 +3037,7 @@ extends AVector {
 	}
 
 	/**
+	  * Divides the float Array numer Element-wise by the double Array denum into a new Array, filling the excess Tail with Infinity when numer is longer.
 	  * @return the Quotient of the given Arrays
 	  * @param ret Array with the Values to be processed. Also returned by this Method.
 	  */
@@ -2921,6 +3056,7 @@ extends AVector {
 	}
 	
 	/**
+	  * Divides the given Range of min Element-wise by sub into a new Array.
 	  * @return the Quotient of the given Arrays
 	  * @param ret Array with the Values to be processed. Also returned by this Method.
 	  * @param start Index from  where the Array is processed
@@ -2932,7 +3068,8 @@ extends AVector {
 
 	/////////////////////////////////////////////////////////////////////////////////////
 
-	/** @return MaxMin Product of the two Vectors: ret maxAt(a min y)	  */
+	/** Raises ret Element-wise to the Minimum of a and the scalar y, in the given Range.
+	 * @return MaxMin Product of the two Vectors: ret maxAt(a min y)	  */
 	final static public float[] MAX_MIN_PROD(float[] ret, float[] a, float y, int start, int stop) {
 		float x; //FALSE; //can also start with any lower Value!
 		while (--stop >= start) {
@@ -2950,7 +3087,8 @@ extends AVector {
 		return ret;
 	}
 
-	/** @return MaxMin Product of the two Vectors: ret maxAt(a min b)	  */
+	/** Raises ret Element-wise to the Minimum of a and b, in the given Range.
+	 * @return MaxMin Product of the two Vectors: ret maxAt(a min b)	  */
 	final static public float[] MAX_MIN_PROD(float[] ret, float[] a, float[] b, int start, int stop) {
 		float x, y; //FALSE; //can also start with any lower Value!
 		while (--stop >= start) {
@@ -2968,12 +3106,14 @@ extends AVector {
 		return ret;
 	}
 
-	/** @return MaxMin Product of the two Vectors: ret maxAt(a min b)	  */
+	/** Raises the whole ret Array Element-wise to the Minimum of a and b.
+	 * @return MaxMin Product of the two Vectors: ret maxAt(a min b)	  */
 	final static public float[] MAX_MIN_PROD(float[] ret, float[] a, float[] b) {
 		return MAX_MIN_PROD(ret, a, b, 0, ret.length);
 	}
 
-	/** @return MaxMin Product of the two Vectors: ret maxAt(a min y)	  */
+	/** Raises the whole ret Array Element-wise to the Minimum of a and the scalar y.
+	 * @return MaxMin Product of the two Vectors: ret maxAt(a min y)	  */
 	final static public float[] MAX_MIN_PROD(float[] ret, float[] a, float y) {
 		return MAX_MIN_PROD(ret, a, y, 0, ret.length);
 	}
@@ -3699,16 +3839,16 @@ extends AVector {
 	/// Differentiation and Integration
 	///////////////////////////////////////////////////////////////////////////////////
 	
-	/** Summen werden rückwärts gebildet! 
-	 * Dadurch werden die von der Diff-Operation übrig gebliebenen Elemente widerverwendet 
+	/** Summen werden rï¿½ckwï¿½rts gebildet! 
+	 * Dadurch werden die von der Diff-Operation ï¿½brig gebliebenen Elemente widerverwendet 
 	 * und die Vektoren bleiben einsatzbereit. 
 	 * 
 	 * @param items the Values to aggregate 
 	 */
 	final static public void SUMM_AT(final float[] items) { SUM_AT(items, 0, items.length); }
 	
-	/** Summen werden rückwärts gebildet! 
-	 * Dadurch werden die von der Diff-Operation übrig gebliebenen Elemente widerverwendet 
+	/** Summen werden rï¿½ckwï¿½rts gebildet! 
+	 * Dadurch werden die von der Diff-Operation ï¿½brig gebliebenen Elemente widerverwendet 
 	 * und die Vektoren bleiben einsatzbereit. 
 	 * 
 	 * @param items the Values to aggregate 
@@ -3758,7 +3898,8 @@ extends AVector {
 		return items; 
 	}
 
-	/** 
+	/**
+	 * Calculates the Differentiated Polynomial in Place: the reverse Operation to SUMM_POLYNOM_AT.
 	 * @see streamIO.copy.group.ring.metric.body.vector.IManifold#diffAt()
 	 */
 	final static public float[] DIFF_POLYNOM_AT(final float[] items, final int itemCount) {
@@ -3858,15 +3999,16 @@ extends AVector {
 		} //
 		return ret/(stop-start); } //... 
 			
-	/** 
-	 * @param moments the List of Moments to be filled by this Routine 
-	 * starting from 
+	/**
+	 * Fills the given Range of Statistical Moments (Count, Absolute Deviation, Variance, Skewness, Curtosis) of the Data.
+	 * @param moments the List of Moments to be filled by this Routine
+	 * starting from
 	 * moments[0] = #Items
 	 * moments[1] = Absolute Deviation
-	 * moments[2] = Squared Deviation = Variation 
+	 * moments[2] = Squared Deviation = Variation
 	 * moments[3] = cubed Deviation = Skewness
 	 * moments[4] = quadrupled Deviation = Curtosis
-	 * @return the Mean of this Distribution 	 
+	 * @return the Mean of this Distribution
 	 */
 	final static public double MOMENTS(final float[] items, final double[] moments, final int start, int stop) {
 		moments[0] = stop-start; 
@@ -3888,8 +4030,9 @@ extends AVector {
 			moments[i] /= moments[0]; }
 		return mean; }
 			
-	/** @return the Variance of this Distribution (most frequent Value)	 */
-	final static public double COVARIANCE(final int length, 
+	/** Calculates the Covariance between two Distributions given their Means and a common Length.
+	 * @return the Variance of this Distribution (most frequent Value)	 */
+	final static public double COVARIANCE(final int length,
 	final float[] items1, final double mean1, 
 	final float[] items2, final double mean2) {
 		double cov = 0;
@@ -3897,7 +4040,8 @@ extends AVector {
 			cov +=(items1[i]-mean1)*(items2[i]-mean2); }
 		return cov/(length-1); }
 				
-	/** @return the Variance of this Distribution (most frequent Value)	 */
+	/** Calculates the Covariance between two same-length Distributions given their Means.
+	 * @return the Variance of this Distribution (most frequent Value)	 */
 	final static public double COVARIANCE(final float[] items1, final double mean1, final float[] items2, final double mean2) {
 		if (items1.length != items2.length) {
 			throw new RuntimeException("For calculating the CoVariance, the Dimensions must match: "+items1.length+" == "+items2.length); }
@@ -3930,6 +4074,7 @@ extends AVector {
 	}
 
 	/**
+	 * Maps the given Vector in Place from the Unity Cube to the Cube with the given Origin and Width.
 	 * @return the given Vector mapped from the Unity Cube
 	 * to the Cube with the given Origin and Width.
 	 *
@@ -4027,17 +4172,19 @@ extends AVector {
 	protected float[] items;
 	
 	/**
-	 * @param original Returns the internal Structure by Reference! 
-	 * Should usually be false(Default), except when it is guaranteed, 
-	 * that the Array will be used Read-Only.   
+	 * Returns the Items of this Vector, either by Reference or as a Copy.
+	 * @param original Returns the internal Structure by Reference!
+	 * Should usually be false(Default), except when it is guaranteed,
+	 * that the Array will be used Read-Only.
 	 * @return the Items	 */
 	public float[] getItems(final boolean original) {
 		if (original) {
 			return items; }
-		return VectorFloat.COPY(items, new float[itemCount]); 
+		return VectorFloat.COPY(items, new float[itemCount]);
 	}
-	
-	/** @return the Items	 */
+
+	/** Returns a Copy of the Items of this Vector.
+	 * @return the Items	 */
 	public float[] getItems() { return getItems(false); }
 	
 	////////////////////////////////////////////////////////////////////////////////
@@ -4056,7 +4203,8 @@ extends AVector {
 		return 0;
 	}
 
-	/** @return the item at the given Position as an Object */
+	/** Wraps the primitive float Value at the given Index into a ByRefFloat Object.
+	 * @return the item at the given Position as an Object */
 	public Object getAt(final int i) {
 		if (!indexInRange(i)) { return null; }
 		return new ByRefFloat(getFloatAt(i));
@@ -4149,11 +4297,12 @@ extends AVector {
 	 * @return	 the value removed.
 	 * @exception  ArrayIndexOutOfBoundsException  if the index was invalid.
 	 */
+	// TODO: LOGIC: decrements itemCount unconditionally before the range check, corrupting the Vector's size on an out-of-range access; same defect as VectorChar/VectorLong/VectorShort/VectorInt removeAt.
 	public float removeAt(final int index) {
 		if (index > --itemCount)  //
-			return 0; 
-		final float ret = items[index]; 
-		System.arraycopy(items, index+1, items, index, itemCount-index); 
+			return 0;
+		final float ret = items[index];
+		System.arraycopy(items, index+1, items, index, itemCount-index);
 		return ret;
 	}
 
@@ -4162,7 +4311,8 @@ extends AVector {
 	/// for multidimensional rectangular Arrays 
 	////////////////////////////////////////////////////////////////////////////////
 
-	/** @return the Value at the given Position	 */
+	/** Reads a Value from the rectangular 2-dim View of this Vector at the given Row/Column.
+	 * @return the Value at the given Position	 */
 	public float getAt(int Row, int Col) {
 		return items[Row * dimFactors[0] + Col * dimFactors[1]];
 	}
@@ -4172,7 +4322,8 @@ extends AVector {
 		items[Row * dimFactors[0] + Col * dimFactors[1]] = Value;
 	}
 
-	/** @return the Value at the given Position	 */
+	/** Reads a Value from the rectangular 3-dim View of this Vector at the given Sheet/Row/Column.
+	 * @return the Value at the given Position	 */
 	public float getAt(int Sheet, int Row, int Col) {
 		return items[Sheet * dimFactors[0] + Row * dimFactors[1] + Col * dimFactors[2]];
 	}
@@ -4182,7 +4333,8 @@ extends AVector {
 		items[Sheet * dimFactors[0] + Row * dimFactors[1] + Col * dimFactors[2]] = Value;
 	}
 
-	/** @return the Value at the given Position	 */
+	/** Reads a Value from the rectangular multi-dim View of this Vector at the given Multi-Index.
+	 * @return the Value at the given Position	 */
 	public float getAt(int[] Col) {
 		return items[multiIndex(Col)];
 	}
@@ -4385,16 +4537,20 @@ extends AVector {
 	// Arithmetic Methods for Arrays
 	////////////////////////////////////////////////////////////////////////////////
 
-	/** @return the Minimum Value in this Vector	 */
+	/** Determines the smallest Value held by this Vector.
+	 * @return the Minimum Value in this Vector	 */
 	public double MinVal() { return MIN_VAL(items); }
 
-	/** @return the Position of the Minimum Value in this Vector	 */
+	/** Determines the Index of the smallest Value held by this Vector.
+	 * @return the Position of the Minimum Value in this Vector	 */
 	public int MinPos() { return MIN_POS(items); }
 
-	/** @return the Maximum Value in this Vector	 */
+	/** Determines the largest Value held by this Vector.
+	 * @return the Maximum Value in this Vector	 */
 	public double MaxVal() { return MAX_VAL(items); }
 
-	/** @return the Position of the Maximum Value in this Vector	 */
+	/** Determines the Index of the largest Value held by this Vector.
+	 * @return the Position of the Maximum Value in this Vector	 */
 	public int MaxPos() { return MAX_POS(items); }
 
 	/////////////////////////////////////////////////////////////////////////////////////
@@ -4418,11 +4574,13 @@ extends AVector {
 		return subAt(vector.items, 0, vector.itemCount);
 	}
 
+	// TODO: LOGIC: calls subAt instead of a multiplicative operation; same defect as VectorChar/VectorLong/VectorShort/VectorInt mulAt(VectorX).
 	/** multiplies this Vector by the given Portion of the values */
 	public VectorFloat mulAt(final VectorFloat vector) {
 		return subAt(vector.items, 0, vector.itemCount);
 	}
 
+	// TODO: LOGIC: calls subAt instead of a divisive operation; same defect as VectorChar/VectorLong/VectorShort/VectorInt divAt(VectorX).
 	/** divides this Vector by the given Portion of the vector*/
 	public VectorFloat divAt(final VectorFloat vector) {
 		return subAt(vector.items, 0, vector.itemCount);
@@ -4472,11 +4630,13 @@ extends AVector {
 		return this;
 	}
 
+	// TODO: LOGIC: ignores the value parameter and instead multiplies items by itself element-wise; same defect as VectorChar/VectorLong/VectorShort/VectorInt mulAt(scalar).
 	/** multiplies this Vector by the given Portion of the values */
 	public VectorFloat mulAt(final double value) {
 		return mulAt(items, 0, itemCount);
 	}
 
+	// TODO: LOGIC: ignores the value parameter and instead divides items by itself element-wise (yielding all 1s); same defect as VectorChar/VectorLong/VectorShort/VectorInt divAt(scalar).
 	/** divides this Vector by the given Portion of the vector*/
 	public VectorFloat divAt(final double value) {
 		return divAt(items, 0, itemCount);
@@ -4623,6 +4783,7 @@ extends AVector {
 		}
 	*/
 	/**
+	 * Constructs a rectangular, multidimensional Vector View with the given Sizes per Dimension.
 	 * @param Cols the Numbers of Columns in the float[]
 	 */
 	public VectorFloat(final int[] dimSizes_) {
@@ -4655,19 +4816,22 @@ extends AVector {
 	///////////////////////////////////////////////////////////////////////////
 	
 	/** 
+	 * Determines whether the Items in this Container are strictly ascending, descending, or neither.
 	 * @return the Order of the Items in this Container
 	 * @see streamIO.Float.IStreamIn_Float#getOrder()
 	 */
-	public byte getOrder() { 
+	public byte getOrder() {
 		int ret = HunterFloat.GET_ORDER(items, 0, itemCount); 
 		if (ret <  IOrdered.ORDER_DESC)
 			return IOrdered.ORDER_NONE; 
 		return (byte) ret; }
 
-	/** @return the Sum of the Values in this Distribution 	 */
+	/** Sums up all Items of this Vector.
+	 * @return the Sum of the Values in this Distribution 	 */
 	public double getSum() { return SUM(items, 0, itemCount); }
-		
-	/** @return the Mean of this Distribution (average Value)	 */
+
+	/** Calculates the Average of all Items of this Vector.
+	 * @return the Mean of this Distribution (average Value)	 */
 	public double getMean() { return getSum()/itemCount; }
 	
 	/** @return the Mode of this Distribution 
@@ -4680,15 +4844,18 @@ extends AVector {
 	public double getMedian() {
 		return HunterFloat.GET_MEDIAN_FAST(items); }
 	
-	/** @return the Variance of this Distribution (most frequent Value)	 */
+	/** Calculates the 1st Moment (mean absolute Deviation) of this Distribution about the given Mean.
+	 * @return the Variance of this Distribution (most frequent Value)	 */
 	public double getAbsDeviation(final double mean) {
 		return MOMENT(items, 1, 0, itemCount, mean); }
-	
-	/** @return the Variance of this Distribution (most frequent Value)	 */
+
+	/** Calculates the 2nd Moment (Variance) of this Distribution about the given Mean.
+	 * @return the Variance of this Distribution (most frequent Value)	 */
 	public double getVariance(final double mean) {
 		return MOMENT(items, 2, 0, itemCount, mean); }
-	
-	/** @return the Variance of this Distribution (most frequent Value)	 */
+
+	/** Calculates the Covariance between this and another same-length Distribution given their Means.
+	 * @return the Variance of this Distribution (most frequent Value)	 */
 	public double getCoVariance(final double mean, final VectorFloat arg, final double argMean) {
 		if (this.itemCount != arg.itemCount) {
 			throw new RuntimeException("For calculating the CoVariance, the Dimensions must match: "+itemCount+" == "+arg.itemCount); }
@@ -4697,38 +4864,47 @@ extends AVector {
 			cov +=(items[i]-mean)*(arg.items[i]-argMean); }
 		return cov/(itemCount-1); }
 	
-	/** @return the Variance of this Distribution (most frequent Value)	 */
+	/** Calculates the Variance of this Distribution about its own Mean.
+	 * @return the Variance of this Distribution (most frequent Value)	 */
 	public double getVariance() { return getVariance(getMean()); }
-		
-	/** @return the Standard Deviation of this Distribution (most frequent Value)	 */
+
+	/** Calculates the Standard Deviation of this Distribution about its own Mean.
+	 * @return the Standard Deviation of this Distribution (most frequent Value)	 */
 	public double getStdDev() { return getStdDev(getMean()); }
-	
-	/** @return the Standard Deviation of this Distribution (most frequent Value)	 */
-	public double getStdDev(final double mean) { 
+
+	/** Calculates the Standard Deviation of this Distribution about the given Mean.
+	 * @return the Standard Deviation of this Distribution (most frequent Value)	 */
+	public double getStdDev(final double mean) {
 		return Math.sqrt(getVariance(mean)); }
-		
-	/** @return the SkewNess of this Distribution (most frequent Value)	 */
+
+	/** Calculates the 3rd Moment (Skewness) of this Distribution about the given Mean.
+	 * @return the SkewNess of this Distribution (most frequent Value)	 */
 	public double getSkewNess(final double mean) {
 		return MOMENT(items, 3, 0, itemCount, mean); }
-	
-	/** @return the SkewNess of this Distribution (most frequent Value)	 */
+
+	/** Calculates the Skewness of this Distribution about its own Mean.
+	 * @return the SkewNess of this Distribution (most frequent Value)	 */
 	public double getSkewNess() { return getSkewNess(getMean()); }
-		
-	/** @return the Curtosis of this Distribution (most frequent Value)	 */
+
+	/** Calculates the Curtosis of this Distribution about its own Mean.
+	 * @return the Curtosis of this Distribution (most frequent Value)	 */
 	public double getCurtosis() { return getCurtosis(getMean()); }
-		
-	/** @return the Curtosis of this Distribution (most frequent Value)	 */
+
+	/** Calculates the 4th Moment (Curtosis) of this Distribution about the given Mean.
+	 * @return the Curtosis of this Distribution (most frequent Value)	 */
 	public double getCurtosis(final double mean) {
 		return MOMENT(items, 4, 0, itemCount, mean); }
-		
-	/** @return the denoted Moment of this Distribution 	 */
+
+	/** Calculates the given Moment of this Distribution about the given Mean.
+	 * @return the denoted Moment of this Distribution 	 */
 	public double getMoment(final int moment, final double mean) {
 		return MOMENT(items, moment, 0, itemCount, mean); }
 	
-	/** 
-	 * @param i the Index to evaluate 
+	/**
+	 * Error-tolerant Lookup returning 0 for a null Array or an out-of-Bounds Index.
+	 * @param i the Index to evaluate
 	 * @param arg the Array to read
-	 * @return the Value at the given Index, 0 otherwise. 
+	 * @return the Value at the given Index, 0 otherwise.
 	 */
 	public static float GET_AT(final int i, final float[] arg) {
 		if (arg == null) 
@@ -4743,6 +4919,7 @@ extends AVector {
 	////////////////////////////////////////////////////////////////////////////////
 
 	/**
+	 * Creates a transposed View sharing this Vector's backing Array, by permuting the Index Factors.
 	 * @return a VectorFloat with IndexFactors such
 	 *  that the Elements are transposed.
 	 */
@@ -4800,6 +4977,7 @@ extends AVector {
 	//  static Testing and main() Methods
 	////////////////////////////////////////////////////////////////////////////////
 
+	/** Tests that converting a random Vector to Polar and back to Rectangular Coordinates reproduces the original. */
 	public static void testRectPolar() {
 		L.n("Tests the Conversion between Rectangular and Polar Coordinates and back.");
 		int dim = 4;
@@ -4872,7 +5050,8 @@ extends AVector {
 	 * Result: not significantly faster! 
 	 */
 	private static final void testCopying() {
-		L.n("Testing whether the clone() Operation is significantly faster); "); 		L.n("than the COPY which uses System.arrayCopy()."); 
+		L.n("Testing whether the clone() Operation is significantly faster); "); 
+		L.n("than the COPY which uses System.arrayCopy()."); 
 		final float[] orig = new float[200000];
 		long time; 
 		time = System.currentTimeMillis(); 
@@ -4948,24 +5127,39 @@ extends AVector {
 
 }
 
-/** Iterator for the VectorFloat Class (in reverse Order) */
-final class VectorFloatStreamIn 
+/** Iterator for the VectorFloat Class (in reverse Order)
+ *
+ * <!-- docstate
+ * pass: 2
+ * mtime: 2026-09-05T13:49:26Z
+ * digest: 3bd91f1d650732c36a74487880786585df21ddb2b9cec3d08f658b25d6276e07
+ * stale: false
+ * tags: [code/functional_interfaces]
+ * concepts: [Reverse-Order Float Stream Source]
+ * facets: {layer: utility, status: legacy, complexity: low}
+ * -->
+ */
+final class VectorFloatStreamIn
 extends AVectorStreamIn_Float {
 
+	/** The VectorFloat wrapped by this Iterator. */
 	final public VectorFloat vector;
 
+	/** Constructs a reverse-order Stream over the given VectorFloat, starting from its current Item Count. */
 	public VectorFloatStreamIn(final VectorFloat vector_) {
 		this.vector = vector_;
 		pos = vector.getInt();
 	}
-	
+
 	/** @see Stream.Float.IStreamIn_Float#nextDouble()	 */
 	protected double nextDoubleInternal() { return vector.items[--pos]; }
-	
-	/** @see Stream.Float.IStreamIn_Bound_Int#getMinValue()	 */
+
+	/** Delegates to the wrapped Vector's Minimum Value.
+	 * @see Stream.Float.IStreamIn_Bound_Int#getMinValue()	 */
 	public double getMinDouble() { return vector.MinVal(); }
-	
-    /** @see streamIO.real.AStreamIn_Float#getMaxMarkSize()     */
+
+    /** Delegates to the wrapped Vector's current Item Count.
+     * @see streamIO.real.AStreamIn_Float#getMaxMarkSize()     */
     public long getMaxMarkSize() { return vector.getInt(); }
     
 }

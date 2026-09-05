@@ -42,6 +42,9 @@ import function.byref.ByRefDouble;
  * mtime: 2026-09-05T12:49:12Z
  * digest: 7d52769deb81f0aed858aaa8e3338947d4e5e53728dd49b3c712fb7fb99a566b
  * stale: false
+ * tags: [code/quicksort, code/order_statistic, code/binary_search]
+ * concepts: [Sorted-float[] Hunter (QuickSort/Order Statistics)]
+ * facets: {layer: utility, status: broken, complexity: high}
  * -->
  */
 public class HunterFloat {

@@ -42,6 +42,9 @@ import function.derive.ring.body.Gauss;
  * mtime: 2026-09-05T12:51:41Z
  * digest: 91ae175b90447f995760fd819ca039fa5eca28c832920bf4d295d1227f92fe76
  * stale: false
+ * tags: [code/statistical_correlation, code/hypothesis_testing]
+ * concepts: [Cross-Vector Correlation Statistics]
+ * facets: {layer: domain, status: legacy, complexity: high}
  * -->
  */
 public class Correlation {
@@ -53,15 +56,36 @@ public class Correlation {
 	///  Testing & Main Methods
 	////////////////////////////////////////////////////////////////////////////
 	
-	/** only static Methods	 */
+	/** only static Methods
+	 *
+	 * <!-- docstate
+	 * tags: [code/statistical_correlation]
+	 * concepts: [Private Constructor (Static Utility)]
+	 * facets: {layer: domain, status: legacy, complexity: low}
+	 * -->
+	 */
 	private Correlation() {}
 	
-	/** Runs {@link #testIt()}, the self-test suite for this class. */
+	/** Runs {@link #testIt()}, the self-test suite for this class.
+	 *
+	 * <!-- docstate
+	 * tags: [code/testing]
+	 * concepts: [Demo Entry Point]
+	 * facets: {layer: test, status: legacy, complexity: low}
+	 * -->
+	 */
 	public static void main(final String[] args) throws Exception {
 		testIt(); 
 	}
 	
-	/** tests all Methods of this Class 	 */
+	/** tests all Methods of this Class
+	 *
+	 * <!-- docstate
+	 * tags: [code/testing, code/statistical_correlation]
+	 * concepts: [Correlation Self-Test Dispatcher]
+	 * facets: {layer: test, status: legacy, complexity: low}
+	 * -->
+	 */
 	final static public void testIt() throws Exception {
 		testSignCorrelation(); 
 		testSignCorrelation2(); 
@@ -85,6 +109,11 @@ public class Correlation {
 	 * @param coVariance the CoVariance between x and y
 	 * @param xVariance the Variance or Squared Difference to the Average of x
 	 * @return Pearson's linear Correlation Coefficient r between two Data Sets 
+	 * <!-- docstate
+	 * tags: [code/statistical_correlation]
+	 * concepts: [Pearson Correlation from Sums]
+	 * facets: {layer: domain, status: legacy, complexity: low}
+	 * -->
 	 */
 	final static public double CORRELATION(final float yVariance, final float coVariance, final float xVariance) {
 		double ret = coVariance/Math.sqrt(xVariance*yVariance);
@@ -102,6 +131,11 @@ public class Correlation {
 	 * @param coVariance the CoVariance between x and y
 	 * @param xVariance the Variance or Squared Difference to the Average of x
 	 * @return the slope s of the linear Correlation between x and y = yMean + s*(x-xMean) 
+	 * <!-- docstate
+	 * tags: [code/statistical_correlation]
+	 * concepts: [Regression Slope from Correlation]
+	 * facets: {layer: domain, status: legacy, complexity: low}
+	 * -->
 	 */
 	final static public double CORRELATION_SLOPE(final float coVariance, final float xVariance) {
 		return coVariance/xVariance; }
@@ -128,6 +162,11 @@ public class Correlation {
 	 * -1 total Anti-Correlation: y = a * x with negative a 
 	 *  0 no significant Correlation 
 	 * +1 total Correlation: y = a * x with positive a
+	 * <!-- docstate
+	 * tags: [code/statistical_correlation]
+	 * concepts: [Pearson Correlation of Two Vectors]
+	 * facets: {layer: domain, status: legacy, complexity: medium}
+	 * -->
 	 */
 	final static public double CORRELATION(final float[] x, final float[] y) {
 		if (x.length != y.length) {
@@ -143,6 +182,11 @@ public class Correlation {
 	 * @param n the Number of Items in each Vector (must be the same!)
 	 * @return Pearson's linear Correlation Coefficient between the two Data Sets x[] and y[]
 	 * by constructing Pairs (x[i], y[i])
+	 * <!-- docstate
+	 * tags: [code/statistical_correlation]
+	 * concepts: [Pearson Correlation over a Range]
+	 * facets: {layer: domain, status: legacy, complexity: medium}
+	 * -->
 	 */
 	final static public double CORRELATION(final float[] x, final float[] y, final int start, final int stop) {
 		//Calculate the Averages
@@ -174,6 +218,11 @@ public class Correlation {
 	 * Computes Pearson's linear Correlation Coefficient between columns 0 and 1 of {@code x}.
 	 * @param x the Data Vectors
 	 * @return Pearson's linear Correlation Coefficient r between the Columns 0 and 1 of the Data Sets x[j]
+	 * <!-- docstate
+	 * tags: [code/statistical_correlation]
+	 * concepts: [Pearson Correlation Matrix]
+	 * facets: {layer: domain, status: legacy, complexity: medium}
+	 * -->
 	 */
 	final static public double CORRELATION(final float[][] x) {
 		return CORRELATION(x, 0, 1, 0, x.length); }
@@ -185,6 +234,11 @@ public class Correlation {
 	 * @param yCol the y Column to use
 	 * @param n the Number of Items in each Vector (must be the same!)
 	 * @return Pearson's linear Correlation Coefficient between the given Columns of the Data Sets x[j]
+	 * <!-- docstate
+	 * tags: [code/statistical_correlation]
+	 * concepts: [Pearson Correlation Matrix (Row Range)]
+	 * facets: {layer: domain, status: legacy, complexity: medium}
+	 * -->
 	 */
 	final static public double CORRELATION(final float[][] x, final int xCol, final int yCol) {
 		return CORRELATION(x, xCol, yCol, 0, x.length); }
@@ -195,6 +249,11 @@ public class Correlation {
 	 * @param x Data Matrix, unchanged
 	 * @param n the Number of Items in each Vector (must be the same!)
 	 * @return Pearson's linear Correlation Coefficient between the given Columns of the Data Sets x[j]
+	 * <!-- docstate
+	 * tags: [code/statistical_correlation]
+	 * concepts: [Pearson Correlation Matrix (Row/Column Range)]
+	 * facets: {layer: domain, status: legacy, complexity: medium}
+	 * -->
 	 */
 	final static public double CORRELATION(final float[][] x, final int xCol, final int yCol, final int start, final int stop) {
 		//Calculate the Averages
@@ -229,6 +288,11 @@ public class Correlation {
 	 * @param r Person's linear Correlation Coefficient
 	 * @return Fisher's Z Parameter for calculating the Significance of Differences in r
 	 * assuming a binormal Distribution of x and y.
+	 * <!-- docstate
+	 * tags: [code/statistical_correlation, code/hypothesis_testing]
+	 * concepts: [Fisher Z-Transform of Correlation]
+	 * facets: {layer: domain, status: legacy, complexity: low}
+	 * -->
 	 */
 	final static public double FISHER_Z_CORRELATION(final double r, final int n) {
 		//final float TINY = 1e-20f;
@@ -244,6 +308,11 @@ public class Correlation {
 	 * there is NO Correlation
 	 * (i.e. low Values indicate a high Significance of the Correlation).
 	 * The Parameter t is derived from r and the Number of Items.
+	 * <!-- docstate
+	 * tags: [code/hypothesis_testing]
+	 * concepts: [Correlation Significance Probability]
+	 * facets: {layer: domain, status: legacy, complexity: medium}
+	 * -->
 	 */
 	final static public double PROB_CORRELATION(final double r, final int n) {
 		//final float TINY = 1e-20f;
@@ -261,6 +330,11 @@ public class Correlation {
 	 * (i.e. low Values indicate a high Significance of the Correlation).
 	 * The Parameter z is derived from r and the Number of Items,
 	 * but only reliable for N > 10
+	 * <!-- docstate
+	 * tags: [code/hypothesis_testing]
+	 * concepts: [Fisher-Z Significance Probability]
+	 * facets: {layer: domain, status: legacy, complexity: low}
+	 * -->
 	 */
 	final static public float PROB_Z_CORRELATION(final double z) {
 		return 1-Gauss.pGaussCum(Math.abs((float)z)); }
@@ -276,6 +350,11 @@ public class Correlation {
 	 * @param z returns Fisher's z, i.e. the Number of Std.Deviations of d from it's expected Value 
 	 * @param rS returns Spearman's Rank Correlation 
 	 * @return the two-sided Probability of rs' Deviation from the expected 0   
+	 * <!-- docstate
+	 * tags: [code/statistical_correlation, code/ranking]
+	 * concepts: [Spearman Rank Correlation]
+	 * facets: {layer: domain, status: legacy, complexity: high}
+	 * -->
 	 */
 	final static public double RANK_CORRELATION(final float[] data1, final float[] data2, final int n
 	, final float[] d, final float[] z, final float[] rS) {
@@ -320,6 +399,11 @@ public class Correlation {
 	 * @param data1 first Data Vector
 	 * @param data2 second Data Vector 
 	 * @return Fisher's z, i.e. the Number of Standard Deviations from the expected Value 0   
+	 * <!-- docstate
+	 * tags: [code/statistical_correlation]
+	 * concepts: [Kendall Tau Sign Correlation]
+	 * facets: {layer: domain, status: legacy, complexity: medium}
+	 * -->
 	 */
 	final static public double SIGN_CORRELATION_Z(final float[] xData, final float[] yData) {
 		return SIGN_CORRELATION_Z(xData, yData, 0, yData.length); }
@@ -339,6 +423,11 @@ public class Correlation {
 	 * @param start first Element to consider (inclusive) 
 	 * @param start last  Element to consider (exclusive) 
 	 * @return Fisher's z, i.e. the Number of Standard Deviations from the expected Value 0   
+	 * <!-- docstate
+	 * tags: [code/statistical_correlation]
+	 * concepts: [Kendall Tau Sign Correlation (Range)]
+	 * facets: {layer: domain, status: legacy, complexity: medium}
+	 * -->
 	 */
 	final static public double SIGN_CORRELATION_Z(final float[] xData, final float[] yData, final int start, final int stop) {
 		int numDecisiveY=0;
@@ -385,6 +474,11 @@ public class Correlation {
 	 * @param data1 first Data Vector 
 	 * @param data2 second Data Vector 
 	 * @return Fisher's z, i.e. the Number of Standard Deviations from the expected Value 0   
+	 * <!-- docstate
+	 * tags: [code/statistical_correlation]
+	 * concepts: [Kendall Tau Sign Correlation Matrix]
+	 * facets: {layer: domain, status: legacy, complexity: medium}
+	 * -->
 	 */
 	final static public double SIGN_CORRELATION_Z(final float[][] data, final int xCol, final int yCol) {
 		return SIGN_CORRELATION_Z(data, xCol, yCol, 0, data.length); }
@@ -403,6 +497,11 @@ public class Correlation {
 	 * @param start first Element to consider (inclusive) 
 	 * @param start last  Element to consider (exclusive) 
 	 * @return Fisher's z, i.e. the Number of Standard Deviations from the expected Value 0   
+	 * <!-- docstate
+	 * tags: [code/statistical_correlation]
+	 * concepts: [Kendall Tau Sign Correlation Matrix (Range)]
+	 * facets: {layer: domain, status: legacy, complexity: medium}
+	 * -->
 	 */
 	final static public double SIGN_CORRELATION_Z(final float[][] data, final int xCol, final int yCol, final int start, final int stop) {
 		int numDecisiveY=0;
@@ -443,6 +542,11 @@ public class Correlation {
 	 * @param matrix the Matrix of aggregated Event Counts. 
 	 * The Bins defining the Categories in Rows and Columns MUST be numerically monotonous (ascending or descending)  
 	 * @return the robust Sign Correlation
+	 * <!-- docstate
+	 * tags: [code/statistical_correlation]
+	 * concepts: [Kendall Tau Sign Correlation (int Matrix)]
+	 * facets: {layer: domain, status: legacy, complexity: medium}
+	 * -->
 	 */
 	final static public double SIGN_CORRELATION_Z(final int[][] counts) {
 		return SIGN_CORRELATION_Z(counts, counts.length, counts[counts.length >> 1].length); }
@@ -455,6 +559,11 @@ public class Correlation {
 	 * @param matrix the Matrix of aggregated Event Counts. 
 	 * The Bins defining the Categories in Rows and Columns MUST be numerically monotonous (ascending or descending)  
 	 * @return the robust Sign Correlation
+	 * <!-- docstate
+	 * tags: [code/statistical_correlation]
+	 * concepts: [Kendall Tau Sign Correlation (int Matrix, Range)]
+	 * facets: {layer: domain, status: legacy, complexity: medium}
+	 * -->
 	 */
 	final static public double SIGN_CORRELATION_Z(final int[][] counts, final int rowStop, final int colStop) {
 		long diff=0;
@@ -494,7 +603,14 @@ public class Correlation {
 	/// static Testing an Main Methods. 
 	///////////////////////////////////////////////////////////////////////////
 	
-	/** tests the Correlation between two Variables using Pearson's r Statistic	 */
+	/** tests the Correlation between two Variables using Pearson's r Statistic
+	 *
+	 * <!-- docstate
+	 * tags: [code/testing, code/statistical_correlation]
+	 * concepts: [Pearson Correlation Self-Test]
+	 * facets: {layer: test, status: legacy, complexity: low}
+	 * -->
+	 */
 	private static final void testCorrelation() {
 		
 		final float[][] doseVsSpore 
@@ -523,7 +639,14 @@ public class Correlation {
 		Assert.EQUALS(2.9206275939941406E-6, probZ, "Probability based on Fisher's Z"); 
 	}
 
-	/** tests the Rank Correlation between two Variables	 */
+	/** tests the Rank Correlation between two Variables
+	 *
+	 * <!-- docstate
+	 * tags: [code/testing, code/statistical_correlation]
+	 * concepts: [Rank Correlation Self-Test]
+	 * facets: {layer: test, status: legacy, complexity: low}
+	 * -->
+	 */
 	private static final void testRankCorrelation() {
 		final int NDAT = 20;
 		final int NMON = 12;
@@ -632,7 +755,14 @@ public class Correlation {
 		L.n("jMin=").l(jMin); 
 	}
 
-	/** tests the Correlation using Signs only 	 */	
+	/** tests the Correlation using Signs only
+	 *
+	 * <!-- docstate
+	 * tags: [code/testing, code/statistical_correlation]
+	 * concepts: [Sign Correlation Self-Test]
+	 * facets: {layer: test, status: legacy, complexity: low}
+	 * -->
+	 */
 	private static final void testSignCorrelation() {
 		final String[] txt= {"RandomFast","RandomQuick","RandomBySubt","RandomInt"
 			,"RandomMix","RandomJava","RandomLong","RandomLinear","RandomShuffle"};
@@ -679,7 +809,14 @@ public class Correlation {
 		}
 	}
 
-	/** tests the second Implementation using Matrices	 */
+	/** tests the second Implementation using Matrices
+	 *
+	 * <!-- docstate
+	 * tags: [code/testing, code/statistical_correlation]
+	 * concepts: [Sign Correlation Self-Test (Variant)]
+	 * facets: {layer: test, status: legacy, complexity: low}
+	 * -->
+	 */
 	private static final void testSignCorrelation2() {
 		final int NDAT = 1000;
 		final int IP = 8;

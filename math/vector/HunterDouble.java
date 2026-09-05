@@ -41,6 +41,9 @@ import function.byref.ByRefDouble;
  * mtime: 2026-09-05T12:50:31Z
  * digest: c65db4c674eeb0aad5b3a94f9799b939ffb48b69e43471fe1cf26ce7a65e433f
  * stale: false
+ * tags: [code/quicksort, code/order_statistic, code/binary_search]
+ * concepts: [Sorted-double[] Hunter (QuickSort/Order Statistics)]
+ * facets: {layer: utility, status: broken, complexity: high}
  * -->
  */
 public class HunterDouble {

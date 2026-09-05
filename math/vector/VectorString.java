@@ -46,6 +46,9 @@ import function.byref.ByRefChar;
  * mtime: 2026-09-05T12:55:55Z
  * digest: 1bff658a632c7ee9809d41d7fb845896dd96c84c39f66ce0d20ffce7dc676efd
  * stale: false
+ * tags: [code/growable_array, code/string_parsing, code/string_formatting]
+ * concepts: [Growable String[] Vector with String Utility Library]
+ * facets: {layer: utility, status: broken, complexity: high}
  * -->
  */
 public class VectorString extends AVector {
