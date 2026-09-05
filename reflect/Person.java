@@ -30,6 +30,15 @@ import streamIO.Assert;
   * Created on	07-24-2002, 11:51 PM<p>
   * @author 	Matthias Heuer
   * @version	1.0
+  * <!-- docstate
+  * pass: 2
+  * mtime: 2026-09-05T10:23:07Z
+  * digest: 08f14257b5e5ed9e841745819e4aa0ab9060672686da6f0fb5a14d69068946b4
+  * stale: false
+  * tags: [code/domain_model]
+  * concepts: [Domain Model]
+  * facets: {layer: domain, status: legacy, complexity: low}
+  * -->
   */
 public class Person
 extends ReflectAble {
@@ -46,24 +55,33 @@ extends ReflectAble {
 /// #region : Variables
 ////////////////////////////////////////////////////////////////////////////////
 
+	/** Property Name of {@link #firstName}, for use with {@link ReflectAble#get(String)}/{@code set} */
 	final static public String FIRST_NAME = "firstName";
 
+	/** Given name */
 	public String firstName;
 
+	/** Property Name of {@link #lastName}, for use with {@link ReflectAble#get(String)}/{@code set} */
 	final static public String LAST_NAME = "lastName";
 
+	/** Family name */
 	public String  lastName;
 
+	/** Property Name reserved for a future {@code birthDate} Field (currently commented out) */
 	final static public String BIRTH_DATE = "birthDate";
 
 //	public Date   birthDate;
 
+	/** Property Name of {@link #home}, for use with {@link ReflectAble#get(String)}/{@code set} */
 	final static public String HOME = "home";
 
+	/** Home Address; eagerly instantiated so nested Property access never hits a null Reference */
 	final public Address home = new Address(); //have to instantiate it to prevent NullPointers!
 
+	/** Property Name of {@link #addresses}, for use with {@link ReflectAble#get(String)}/{@code set} */
 	final static public String ADRESSES = "addresses";
 
+	/** Additional Addresses beyond {@link #home}; eagerly instantiated so nested Property access never hits a null Reference */
 	final public Collection addresses = new ArrayList(); //have to instantiate it to prevent NullPointers!
 
 ////////////////////////////////////////////////////////////////////////////////
@@ -74,7 +92,14 @@ extends ReflectAble {
 /// #region : Constructors, calling each other using this()/super()
 ////////////////////////////////////////////////////////////////////////////////
 
-	/** Empty Constructor	 */
+	/** Empty Constructor
+	 *
+	 * <!-- docstate
+	 * tags: [code/domain_model]
+	 * concepts: [Domain Model]
+	 * facets: {layer: domain, status: stable, complexity: low}
+	 * -->
+	 */
 	public Person() { }
 
 ////////////////////////////////////////////////////////////////////////////////
@@ -94,7 +119,14 @@ extends ReflectAble {
 	protected static final String STR_HANNOVER  = "Hannover";
 	protected static final String STR_MERCATOR  = "Mercatorstr. 5";
 
-	/** Tests all Methods of this Class	 */
+	/** Tests all Methods of this Class
+	 *
+	 * <!-- docstate
+	 * tags: [code/test_harness]
+	 * concepts: [Testing]
+	 * facets: {layer: test, status: legacy, complexity: low}
+	 * -->
+	 */
 	public static void testIt(String[] args) { //throws java.io.IOException {
 		System.out.println("Testing " + Person.class.getName());
 		Person mHeuer = new Person();
@@ -119,6 +151,11 @@ extends ReflectAble {
 	/**The main entry point for the application.
 	 *
 	 * @param args Array of parameters passed to the application
+	 * <!-- docstate
+	 * tags: [code/test_harness]
+	 * concepts: [Testing]
+	 * facets: {layer: test, status: stable, complexity: low}
+	 * -->
 	 * via the command line.	 */
 	public static void main (String[] args) { //throws java.io.IOException {
 		testIt(args); }

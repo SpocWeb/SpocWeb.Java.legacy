@@ -5,19 +5,11 @@
 package reflect;
 
 /**
- * Title: enclosing_type<p>
+ * Title: IIntangible<p>
  * Description:
- * Purpose:
- *
- * Purpose / Responsibilities of this Class
- *
- * Design Decisions / Implementation Details:
- * If similar Classes exist (e.g. Polymorphism),
- * characterize the specific Differences to compare these.
- *
- * Known SubClasses: <none>
- *
- * Known Uses: <none>
+ * Marker Interface classifying a {@link IThing} as intangible - an abstract or
+ * conceptual entity such as a {@link IMathThing}/{@link IType}, as opposed to a
+ * concrete {@link IIndividual}.
  *
  * Copyright:	Copyright (c) Matthias Heuer<p>
  * Company:	personal<p>
@@ -25,6 +17,15 @@ package reflect;
  * @author mheuer
  * @version	1.0
  *
+ * <!-- docstate
+ * pass: 2
+ * mtime: 2026-09-05T10:22:34Z
+ * digest: c2f4cbb5ba21efef35cc8c109b5b9d74a43ed6b6952599ec7672bb9899a092c9
+ * stale: false
+ * tags: [code/reflection_interface, code/domain_model]
+ * concepts: [Domain Model, Object Classification]
+ * facets: {layer: domain, status: stable, complexity: low}
+ * -->
  */
 public interface IIntangible extends IThing {
 

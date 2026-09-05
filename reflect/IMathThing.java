@@ -1,23 +1,15 @@
 /**
- * File  Name: MathOrCompThing.java
+ * File  Name: IMathThing.java
  * Created on: 01.11.2002
  */
 package reflect;
 
 /**
- * Title: enclosing_type<p>
+ * Title: IMathThing<p>
  * Description:
- * Purpose:
- *
- * Purpose / Responsibilities of this Class
- *
- * Design Decisions / Implementation Details:
- * If similar Classes exist (e.g. Polymorphism),
- * characterize the specific Differences to compare these.
- *
- * Known SubClasses: <none>
- *
- * Known Uses: <none>
+ * Marker Interface classifying a {@link IIntangible} as a mathematical/computational
+ * Thing - the common super-Interface of {@link IType}, i.e. entities describable
+ * purely by their formal Properties and Methods rather than by physical extension.
  *
  * Copyright:	Copyright (c) Matthias Heuer<p>
  * Company:	personal<p>
@@ -25,6 +17,15 @@ package reflect;
  * @author mheuer
  * @version	1.0
  *
+ * <!-- docstate
+ * pass: 2
+ * mtime: 2026-09-05T10:22:38Z
+ * digest: c2f4cbb5ba21efef35cc8c109b5b9d74a43ed6b6952599ec7672bb9899a092c9
+ * stale: false
+ * tags: [code/reflection_interface, code/domain_model]
+ * concepts: [Domain Model, Object Classification]
+ * facets: {layer: domain, status: stable, complexity: low}
+ * -->
  */
 public interface IMathThing extends IIntangible {
 

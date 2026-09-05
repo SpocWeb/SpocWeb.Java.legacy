@@ -27,18 +27,25 @@ import java.security.ProtectionDomain;
   * to create Instances and Class Objects.
   *
   * Design Decisions / Implementation Details:
-  * If similar Classes exist (e.g. Polymorphism),
-  * characterize the specific Differences to compare these.
-  *
-  * Known SubClasses: <none>
-  *
-  * Known Uses: <none>
+  * Wraps rather than extends {@code java.lang.Class} (which is final) and mirrors most
+  * of its public reflective Methods by delegating to the wrapped {@link #cls}. Only
+  * Interfaces are accepted, since this reflect Package models multiple Inheritance of
+  * Type through Interfaces rather than single Class Inheritance.
   *
   * Copyright:	Copyright (c) Matthias Heuer<p>
   * Company:	personal<p>
   * Created on	10-29-2002, 10:40 PM<p>
   * @author 	Matthias Heuer
   * @version	1.0
+  * <!-- docstate
+  * pass: 2
+  * mtime: 2026-09-05T10:23:59Z
+  * digest: a3a8358f77020d6b5a8e3c0351cfe71a25400752e8a546886ba5e5fa0ad16e90
+  * stale: false
+  * tags: [code/generic_interface_reflection, code/reflection_interface]
+  * concepts: [Domain Model, Object Classification]
+  * facets: {layer: domain, status: broken, complexity: medium}
+  * -->
   */
 public class Type implements IType
 //extends Class //not possible, since final
@@ -116,8 +123,10 @@ public class Type implements IType
 	/// #region : Constructors, calling each other using this()/super()
 	////////////////////////////////////////////////////////////////////////////////
 
-	/** Empty Constructor	 */
+	/** Wraps {@code cls_}, which must be an Interface Class Object.
+	  * @throws ClassCastException if {@code cls_} does not represent an Interface */
 	public Type(Class cls_) {
+		// TODO: LOGIC: checks the field `cls` (always null at this point, since it is assigned on the next line) instead of the constructor argument `cls_`. This throws a NullPointerException on every call, including the static `TYPE` initializers in IThing/IIndividual/IIntangible/IMathThing/IType, so the intended "Only Interfaces are allowed!" validation never runs. Should be `if (!cls_.isInterface())`.
 		if (!cls.isInterface()) {
 			throw new ClassCastException("Only Interfaces are allowed!");
 		}
@@ -295,6 +304,7 @@ public class Type implements IType
 	 * @throw NullPointerException - if the specified Class parameter is null.
 	 */
 	public boolean isAssignableFrom(Class cls) {
+		// TODO: LOGIC: the parameter `cls` shadows the field `this.cls`, so this calls cls.isAssignableFrom(cls) - comparing the argument to itself - which is always true. It never consults the wrapped Type's Class, so the Method always returns true regardless of the actual assignability relationship. Should be `return this.cls.isAssignableFrom(cls);`.
 		return cls.isAssignableFrom(cls);
 	}
 
@@ -883,6 +893,8 @@ public class Type implements IType
 	}
 
 	/**
+	 * Reports this Type Object's own Type, which is always the shared {@link IType#TYPE} constant (every {@code Type} Instance is itself classified as an {@link IType}).
+	 * @return the shared {@link IType#TYPE} Type Object.
 	 * @see reflect.IThing#getType()
 	 */
 	public Type getType() {

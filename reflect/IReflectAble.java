@@ -27,6 +27,15 @@ import tester.ITester;
   * Created on	07-24-2002, 09:15 PM<p>
   * @author 	Matthias Heuer
   * @version	1.0
+  * <!-- docstate
+  * pass: 2
+  * mtime: 2026-09-05T10:22:58Z
+  * digest: 1010e4e23f74f9de03293f1c16a1e2fee3fe06f1d1323e55a28977740941dbd1
+  * stale: false
+  * tags: [code/reflection, code/interface_contract]
+  * concepts: [Reflection]
+  * facets: {layer: domain, status: stable, complexity: low}
+  * -->
   */
 public interface IReflectAble {
 
@@ -58,10 +67,12 @@ public interface IReflectAble {
 	/** Sets the given Data Value  	 */
 	void set(String data, Object value); // throws InvalidException;
 
-	/** @return the given Data Value 	 */
+	/** Reads a Property, possibly nested along a {@link #SEP}-separated Path.
+	  * @return the given Data Value 	 */
 	Object get(String data);
 
-	/** @return the given Data Value or Function Result (analogous to SmallTalk) 	 */
+	/** Invokes a named Method or indexed Data accessor with the given Parameters, analogous to a SmallTalk message send.
+	  * @return the given Data Value or Function Result (analogous to SmallTalk) 	 */
 	Object call(String data, Object[] params);
 
 ////////////////////////////////////////////////////////////////////////////////
@@ -71,7 +82,8 @@ public interface IReflectAble {
 	/** @return a new Instace of this Type 	 */
 //	IReflectAble newInstance();
 
-	/** @return a new Instace of this Type
+	/** Creates a new, empty Instance of the same concrete Type as this Object, via reflection.
+	  * @return a new Instace of this Type
 	  * @param Params the Parameters to the Constructor.
 	  * If null or an empty Array, the empty Constructor is called.
 	  */
@@ -86,6 +98,7 @@ public interface IReflectAble {
 	public IReflectAble CopyAt(Object Value);
 
 	/**
+	 * Creates and returns an independent, recursively-copied clone of this Object.
 	 * @return a deep Copy!
 	 * Substitute for the Clone() Method which cannot be performed recursively,
 	 * because the Members are declared final public to enforce Value Types!

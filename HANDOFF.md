@@ -95,7 +95,7 @@ concurrently against the same file):
 | `stringOp` | 16 | 4579 | 0 | unclaimed | - |
 | `aspect` | 15 | 2493 | 0 | claimed | agent-aspect |
 | `flow` | 14 | 1022 | 0 | claimed | agent-flow |
-| `reflect` | 12 | 2492 | 0 | claimed | agent-reflect |
+| `reflect` | 12 | 2492 | 12 | done | agent-reflect |
 | `streamIO/diffPatch` | 11 | 2895 | 0 | claimed | agent-diffPatch |
 | `sound` | 10 | 1030 | 0 | claimed | agent-sound |
 | `tools` | 17 | 3468 | 17 | done | - |
@@ -226,6 +226,8 @@ same harness against it. A test that has not been seen red proves nothing.
 | FileHex.java | FileHex | main(String[]) | 37 | In the `IOException` catch block, `e.fillInStackTrace()` is called but its result is discarded and `e` is never used again - dead code, almost certainly meant to enrich `n` (the Exception actually thrown) instead. | Low | open |
 | FilterFind.java | FilterFind | read() | 172 | `breakCountDown` defaults to 0 and is never set in the constructor, so on the very first call `--breakCountDown == -1` is immediately true and `read()` returns EOF before ever reading from the wrapped Stream or checking for the Separator. `main()`'s `while (streamIn_.available() > 0)` loop then never terminates, since the underlying Stream is never actually consumed through this filter. | Medium | open |
 | FixRecordScrambler.java | FixRecordScrambler | main(String[]) | 149 | The 7 documented parameters require `args.length==7` and are read up to `args[6]`, but the guard only warns (without returning) when `args.length!=6` - passing exactly 6 arguments, which satisfies neither the guard nor the actual requirement, throws `ArrayIndexOutOfBoundsException` at `args[6]` instead of showing the Syntax message. | Low | open |
+| reflect/Type.java | Type | Type(Class) | 126 | Checks the field `cls` (still `null` at that point) instead of the constructor argument `cls_`, so every call to `new Type(...)` throws `NullPointerException` - including the static `TYPE` initializers in `IThing`/`IIndividual`/`IIntangible`/`IMathThing`/`IType`. Should be `if (!cls_.isInterface())`. | High | open |
+| reflect/Type.java | Type | isAssignableFrom(Class) | 304 | The parameter `cls` shadows the field `this.cls`, so this calls `cls.isAssignableFrom(cls)` - the argument compared to itself - always `true`, regardless of the wrapped Type's actual `Class`. Should be `return this.cls.isAssignableFrom(cls);`. | Medium | open |
 
 ## Tool defects found and fixed during the pilot
 

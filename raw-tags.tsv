@@ -154,3 +154,22 @@ XRename.java:XRename	class	XRename.java	code/cli_tool, code/directory_traversal	
 XRename.java:XRename.rename(boolean, String, String, String, String, String, String, String, String, String)	method	XRename.java	code/directory_traversal	Directory Traversal	utility	stable	low
 XRename.java:XRename.rename(boolean, String, String, String, String, String, String, String, String, File)	method	XRename.java	code/directory_traversal	Directory Traversal	utility	stable	medium
 XRename.java:XRename.main(String[])	method	XRename.java	code/cli_tool	Directory Traversal	utility	stable	low
+reflect/Accessor.java:Accessor	class	reflect/Accessor.java	code/reflection_helper, code/reflection_based_property_access	Reflection	utility	stable	medium
+reflect	folder	reflect	code/reflection, code/domain_model	Reflection, Domain Model	domain	legacy	medium
+reflect/Address.java:Address	class	reflect/Address.java	code/domain_model	Domain Model	domain	stable	low
+reflect/Address.java:Address.Address()	method	reflect/Address.java	code/domain_model	Domain Model	domain	stable	low
+reflect/Address.java:Address.testIt(String[])	method	reflect/Address.java	code/test_harness	Testing	test	stable	low
+reflect/Address.java:Address.main(String[])	method	reflect/Address.java	code/test_harness	Testing	test	stable	low
+reflect/IIndividual.java:IIndividual	class	reflect/IIndividual.java	code/reflection_interface, code/domain_model	Domain Model, Object Classification	domain	stable	low
+reflect/IIntangible.java:IIntangible	class	reflect/IIntangible.java	code/reflection_interface, code/domain_model	Domain Model, Object Classification	domain	stable	low
+reflect/IMathThing.java:IMathThing	class	reflect/IMathThing.java	code/reflection_interface, code/domain_model	Domain Model, Object Classification	domain	stable	low
+reflect/IReflectAble.java:IReflectAble	class	reflect/IReflectAble.java	code/reflection, code/interface_contract	Reflection	domain	stable	low
+reflect/IThing.java:IThing	class	reflect/IThing.java	code/reflection_interface, code/domain_model	Domain Model, Object Classification	domain	stable	low
+reflect/IType.java:IType	class	reflect/IType.java	code/reflection_interface, code/type_system	Domain Model, Object Classification	domain	stable	low
+reflect/Person.java:Person	class	reflect/Person.java	code/domain_model	Domain Model	domain	legacy	low
+reflect/Person.java:Person.Person()	method	reflect/Person.java	code/domain_model	Domain Model	domain	stable	low
+reflect/Person.java:Person.testIt(String[])	method	reflect/Person.java	code/test_harness	Testing	test	legacy	low
+reflect/Person.java:Person.main(String[])	method	reflect/Person.java	code/test_harness	Testing	test	stable	low
+reflect/ReflectAble.java:ReflectAble	class	reflect/ReflectAble.java	code/reflection, code/reflection_based_property_access, code/reflection_object_instantiation	Reflection	domain	legacy	high
+reflect/Thing.java:Thing	class	reflect/Thing.java	code/reflection_interface, code/domain_model	Domain Model, Object Classification	domain	stable	low
+reflect/Type.java:Type	class	reflect/Type.java	code/generic_interface_reflection, code/reflection_interface	Domain Model, Object Classification	domain	broken	medium

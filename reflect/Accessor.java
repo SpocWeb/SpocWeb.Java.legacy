@@ -14,17 +14,12 @@ import streamIO.Log;
 /**
  * Title: Accessor<p>
  * Description:
- * Purpose:
- *
- * Purpose / Responsibilities of this Class
- *
- * Design Decisions / Implementation Details:
- * If similar Classes exist (e.g. Polymorphism),
- * characterize the specific Differences to compare these.
- *
- * Known SubClasses: <none>
- *
- * Known Uses: <none>
+ * Reflection helper that reads or writes a named Field or JavaBean-style getter/setter
+ * on an arbitrary Object, swallowing the usual reflection Exceptions so callers can
+ * treat "no such Member" as a simple boolean/null result instead of a checked Exception.
+ * Unlike {@link ReflectAble}, this Class works on any Object without requiring it to
+ * implement {@link IReflectAble}; it also caches the last resolved Class/Field/Method
+ * for repeated Calls with the same Name.
  *
  * Copyright:	Copyright (c) Matthias Heuer<p>
  * Company:	personal<p>
@@ -32,17 +27,29 @@ import streamIO.Log;
  * @author mheuer
  * @version	1.0
  *
+ * <!-- docstate
+ * pass: 2
+ * mtime: 2026-09-05T10:22:13Z
+ * digest: e75575b684f7c2d0b3b4fedebd4518a89641971d3c9fad5febd490cf56885fc5
+ * stale: false
+ * tags: [code/reflection_helper, code/reflection_based_property_access]
+ * concepts: [Reflection]
+ * facets: {layer: utility, status: stable, complexity: medium}
+ * -->
  */
 public class Accessor {
 
 	/** Logger for Testing, modify Threshold for switching Logging */
 	static Log L = new Log(Accessor.class, 1);
 	
-	final static public String STR_GET = "get"; 
-	
-	final static public String STR_SET = "set"; 
-	
-	final static public String STR_ADD = "add"; 
+	/** Prefix used to build a getter Method Name from a Property Name */
+	final static public String STR_GET = "get";
+
+	/** Prefix used to build a setter Method Name from a Property Name */
+	final static public String STR_SET = "set";
+
+	/** Prefix used to build an "add" Method Name from a Property Name, for collection-typed Properties */
+	final static public String STR_ADD = "add";
 	
 	/////////////////////////////////////////////////////////////////////////////////////
 	// Arguments for performing the Call, not for concurrent Access!
@@ -71,10 +78,12 @@ public class Accessor {
 	/** Method last used	 */	
 	protected Method mtd; 
 	
+	/** Sets the public Field named {@code name} on {@code ths}, silently doing nothing if it does not exist or is not accessible */
 	final static public void SET_FIELD(final Object ths, final String name, final Object value) {
-		SET_FIELD(ths, null, name, value); 
+		SET_FIELD(ths, null, name, value);
 	}
-	
+
+	/** Sets the public Field named {@code name} on {@code ths}, resolved against {@code cls} (or {@code ths.getClass()} when null); silently does nothing on failure */
 	final static public void SET_FIELD(final Object ths, final Class cls, final String name, final Object value) {
 		try {
 			_SET_FIELD(ths, cls, name, value);
@@ -158,6 +167,7 @@ public class Accessor {
 		mtd.invoke(ths, args);
 	}
 	
+	/** Finds a setter Method matching {@code name} case-insensitively with exactly one Parameter, constructs that Parameter's Type from {@code value} via a matching single-argument Constructor, and invokes it; throws if no such Method is found */
 	public void findSetMethod(
 	final Object ths, Class cls, final String name, final Object value)
 	throws
@@ -181,10 +191,12 @@ public class Accessor {
 		throw new NoSuchMethodException(name+" not found!"); 
 	}
 	
+	/** Invokes the no-argument Method named {@code name} on {@code ths} and returns its Result, or null on failure */
 	final static public Object GET_METHOD(final Object ths, final String name) {
-		return GET_METHOD(ths, ths.getClass(), name); 
+		return GET_METHOD(ths, ths.getClass(), name);
 	}
-	
+
+	/** Invokes the no-argument Method named {@code name}, resolved against {@code cls}, and returns its Result, or null on failure */
 	final static public Object GET_METHOD(final Object ths, final Class cls, final String name) {
 		try { //no Parameters can be expressed using null!
 			return _GET_METHOD(ths, cls, name, false, null);
@@ -216,13 +228,18 @@ public class Accessor {
 		return mtd.invoke(ths, null);
 	}
 
+	/** Tries, in order, to set the Field {@code name}, then call {@code setName(value)}, then call {@code addName(value)} */
 	public void setOrAddFieldOrMethod(final Object ths, final String name, final Object value) {
-		setOrAddFieldOrMethod(ths, null, name, value); 
+		setOrAddFieldOrMethod(ths, null, name, value);
 	}
 
+	/** Tries, in order, to set the Field {@code name} on {@code ths} (resolved against {@code cls}), then call its setter, then its adder.
+	  * @return true if the Field was set or a setter/adder Method was successfully invoked */
 	public boolean setOrAddFieldOrMethod(final Object ths, final Class cls, final String name, final Object value) {
 		return setOrAddFieldOrMethod(ths, cls, name, value, null); }
 
+	/** Tries, in order, to set the Field {@code name}, then call its setter, then its adder, using {@code argCls} as the declared Parameter Type when given.
+	  * @return true if the Field was set or a setter/adder Method was successfully invoked */
 	public boolean setOrAddFieldOrMethod(final Object ths, final Class cls, final String name, final Object value, final Class argCls) {
 		try{ _SET_FIELD(ths, cls,          name, value        ); return true; } catch(final Exception ignored) { L.n(ignored); }
 		final String cName = Character.toUpperCase(name.charAt(0))+name.substring(1); 
@@ -232,15 +249,21 @@ public class Accessor {
 		return false; 
 	}
 	
+	/** Reads the Field {@code name} on {@code ths}, or (failing that) calls its getter Method.
+	  * @return the Field {@code name}'s Value, or (failing that) the Result of calling {@code getName()}; null if neither exists */
 	public Object getFieldOrMethod(final Object ths, final String name) {
 		return getFieldOrMethod(ths, null, name, false); }
-	
+
 	/** Type of the last GET Method for handing it over to the CALLER	 */
-	final public Class[] retCls = new Class[1];  
-	
+	final public Class[] retCls = new Class[1];
+
+	/** Reports the declared Type resolved by the most recent {@link #getFieldOrMethod} Call.
+	  * @return the declared Type resolved by the last {@link #getFieldOrMethod} Call */
 	public Class getRetClass() {
 		return retCls[0]; }
-	
+
+	/** Reads the Field {@code name} (resolved against {@code cls}), or (failing that) calls its getter Method; when {@code returnType} is true, returns the declared Type instead of the Value.
+	  * @return the Field {@code name}'s Value or Type (if {@code returnType}), or (failing that) the Result/Type of calling {@code getName()}; null if neither exists */
 	public Object getFieldOrMethod(final Object ths, final Class cls, final String name, final boolean returnType) {
 		retCls[0] = null;
 		try{ return _GET_FIELD (ths, cls,          name, returnType, retCls); } catch(final Exception ignored) { L.n(ignored); }

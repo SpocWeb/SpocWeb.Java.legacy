@@ -5,19 +5,11 @@
 package reflect;
 
 /**
- * Title: enclosing_type<p>
+ * Title: Thing<p>
  * Description:
- * Purpose:
- *
- * Purpose / Responsibilities of this Class
- *
- * Design Decisions / Implementation Details:
- * If similar Classes exist (e.g. Polymorphism),
- * characterize the specific Differences to compare these.
- *
- * Known SubClasses: <none>
- *
- * Known Uses: <none>
+ * Minimal concrete Implementation of {@link IThing}, returning the shared
+ * {@link IThing#TYPE} constant for every Instance. Serves as the root default
+ * Implementation of the classification hierarchy rooted at {@link IThing}.
  *
  * Copyright:	Copyright (c) Matthias Heuer<p>
  * Company:	personal<p>
@@ -25,6 +17,15 @@ package reflect;
  * @author mheuer
  * @version	1.0
  *
+ * <!-- docstate
+ * pass: 2
+ * mtime: 2026-09-05T10:23:41Z
+ * digest: 0f64399909c8e1b83f25bb752f289fe676dbbf3709cf6fca35552cdebd1cbf8a
+ * stale: false
+ * tags: [code/reflection_interface, code/domain_model]
+ * concepts: [Domain Model, Object Classification]
+ * facets: {layer: domain, status: stable, complexity: low}
+ * -->
  */
 public class Thing implements IThing {
 
@@ -36,6 +37,8 @@ public class Thing implements IThing {
 	}
 
 	/**
+	 * Reports this Thing's Type, which is always the shared {@link IThing#TYPE} constant.
+	 * @return the shared {@link IThing#TYPE} Type Object.
 	 * @see reflect.IThing#getType()
 	 */
 	public Type getType() { return IThing.TYPE; }

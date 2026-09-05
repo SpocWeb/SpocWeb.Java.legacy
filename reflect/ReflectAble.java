@@ -81,6 +81,15 @@ import tester.ITester;
   * Created on	07-24-2002, 09:29 PM<p>
   * @author 	Matthias Heuer
   * @version	1.0
+  * <!-- docstate
+  * pass: 2
+  * mtime: 2026-09-05T10:23:32Z
+  * digest: d321c6bd5dd918d718134ae02eb7aa430164240d1684b8419ef0659560743340
+  * stale: false
+  * tags: [code/reflection, code/reflection_based_property_access, code/reflection_object_instantiation]
+  * concepts: [Reflection]
+  * facets: {layer: domain, status: legacy, complexity: high}
+  * -->
   */
 public class ReflectAble
 extends UniCastConstrained //UniCaster
@@ -90,6 +99,7 @@ implements  IReflectAble, IPublisher, IDirtyFlag {
 	/// #region : static Constants
 	////////////////////////////////////////////////////////////////////////////////
 	
+	/** When true (the default), a failed {@link #get(String)}/{@code set(String, Object)} throws instead of returning/ignoring silently */
 	public static boolean throwExceptions = true;
 
 	/** Constant to make handing over no Parameters more explicit */
@@ -192,13 +202,15 @@ implements  IReflectAble, IPublisher, IDirtyFlag {
 	/// #region calling a Method by Name
 	/////////////////////////////////////////////////////////////////////////////////////
 	
-	/** @return the given Function (or indexed Data Value) Result (analogous to SmallTalk)
+	/** Invokes the Method named {@code name} on {@code ths}, matching Parameter Types from the given arguments.
+	  * @return the given Function (or indexed Data Value) Result (analogous to SmallTalk)
 	  * This Method is shorter, because no Fields and no Ambiguities in the Method Name are allowed.
 	  */
 	final static public Object CALL(Object ths, String name, Object[] params) {
 		return CALL(ths, name, params, null); }
 
-	/** @return the given Function (or indexed Data Value) Result (analogous to SmallTalk)
+	/** Invokes the Method named {@code name}, resolved against {@code cls} (or {@code ths.getClass()} when null).
+	  * @return the given Function (or indexed Data Value) Result (analogous to SmallTalk)
 	  * This Method is shorter, because no Fields and no Ambiguities in the Method Name are allowed.
 	  */
 	protected static final Object CALL(Object ths, String name, Object[] params, Class cls) {
@@ -408,16 +420,17 @@ implements  IReflectAble, IPublisher, IDirtyFlag {
 	// #region: individual Methods to set or get Fields or use IReflectAble!
 	/////////////////////////////////////////////////////////////////////////////////////
 	
-	/** 
-	 * 
-	 * @param ths Object to set the Field of 
+	/**
+	 * Tries {@code str} as a single-argument setter Method (if {@code pos == len}) or as a no-argument
+	 * getter Method whose Result is then recursed into via {@link IReflectAble#set(String, Object)}.
+	 * @param ths Object to set the Field of
 	 * @param propName Name of the Property to set
-	 * @param value Value to set the Property to 
+	 * @param value Value to set the Property to
 	 * @param cls Class of ths, can be null
-	 * @param pos Position in the Path 
-	 * @param len Length in the Path 
+	 * @param pos Position in the Path
+	 * @param len Length in the Path
 	 * @param str Path String
-	 * @return true when the 
+	 * @return true when a matching Method was found and invoked
 	 * @throws SecurityException
 	 * @throws IllegalAccessException
 	 * @throws IllegalArgumentException
@@ -501,6 +514,7 @@ implements  IReflectAble, IPublisher, IDirtyFlag {
 	/////////////////////////////////////////////////////////////////////////////////////
 	
 	/**
+	 * Creates a new Instance of {@code ths}'s Class and deep-copies all public Fields into it.
 	 * @return a deep Copy!
 	 * Substitute for the Clone() Method which cannot be performed recursively,
 	 * because the Members are declared final public to enforce Value Types!
@@ -572,11 +586,13 @@ implements  IReflectAble, IPublisher, IDirtyFlag {
 			throw new IllegalAccessError(x.toString()); }
 		return ths; }
 
-	/** @return a new Instace of this Type 	 */
+	/** Creates a new Instance of {@code ths}'s Class via its empty Constructor, or a matching Constructor when {@code params} is given.
+	  * @return a new Instace of this Type 	 */
 	final static public Object NEW_INSTANCE(final Object ths, final Object[] params) {
 		return NEW_INSTANCE(ths, params, null); }
 
-	/** @return a new Instace of this Type 	 */
+	/** Creates a new Instance of {@code cls} (or {@code ths.getClass()} when null) via its empty Constructor, or a matching Constructor when {@code params} is given.
+	  * @return a new Instace of this Type 	 */
 	protected static final Object NEW_INSTANCE(final Object ths, final Object[] params, Class cls) {
 		if (cls == null) {
 			cls =  ths.getClass(); }
@@ -617,10 +633,12 @@ implements  IReflectAble, IPublisher, IDirtyFlag {
 	  */
 	public boolean dirty;
 
-	/** @return the Dirty Flag recursively set by the set() Operation */
+	/** Reports whether this Object (or any nested {@link ReflectAble} Property) has been modified since the Dirty Flag was last reset.
+	  * @return the Dirty Flag recursively set by the set() Operation */
 	public boolean isDirty() { return dirty; }
 
-	/** @return the Dirty Flag recursively set by the set() Operation on the given Property */
+	/** Reports the Dirty Flag of the given nested Property instead of this Object itself.
+	  * @return the Dirty Flag recursively set by the set() Operation on the given Property */
 	public boolean isDirty(String PropName) {
 		if ((PropName == null) ||
 			(PropName.length() == 0)) {
@@ -765,7 +783,8 @@ implements  IReflectAble, IPublisher, IDirtyFlag {
 	final public Object call(String name, Object[] params) {
 		return CALL(this, name, params, cls); }
 
-	/** @return a new Instace of this Type
+	/** Creates a new, empty Instance of this Object's concrete Class via reflection.
+	  * @return a new Instace of this Type
 	  * @param Params the Parameters to the Constructor.
 	  * If null or an empty Array, the empty Constructor is called.
 	  */
@@ -773,6 +792,7 @@ implements  IReflectAble, IPublisher, IDirtyFlag {
 		return  (IReflectAble) NEW_INSTANCE(this, params, cls); }
 
 	/**
+	 * Creates a new empty Instance of this Object's Class and deep-copies this Object's Fields into it.
 	 * @return a deep Copy!
 	 * Substitute for the Clone() Method which cannot be performed recursively,
 	 * because the Members are declared final public to enforce Value Types!
