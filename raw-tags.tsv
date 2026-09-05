@@ -1,6 +1,6 @@
 unit-id	level	file	axis-a-candidates	axis-b-candidates	facet-layer	facet-status	facet-complexity
 tools/CallAble.java:CallAble	class	tools/CallAble.java	code/callback_interface, code/generic_operation	Callable Abstraction	infrastructure	stable	low
-tools	folder	tools	code/concurrency_primitives, code/locking, code/call_wrapping	Concurrency, Resource Coordination	infrastructure	experimental	high
+tools	folder	tools	code/concurrency_primitive, code/locking, code/call_wrapping	Concurrency, Resource Coordination	infrastructure	experimental	high
 tools/ErrorHandler.java:ErrorHandler	class	tools/ErrorHandler.java	code/error_handling, code/decorator, code/retry_logic	Error Handling	infrastructure	broken	medium
 tools/FilterCallTransAction.java:FilterCallTransAction	class	tools/FilterCallTransAction.java	code/transaction, code/copy_on_write, code/decorator	Transaction Semantics	infrastructure	experimental	medium
 tools/IOError.java:IOError	class	tools/IOError.java	code/exception_wrapping, code/unchecked_exception	Error Handling	infrastructure	stable	low

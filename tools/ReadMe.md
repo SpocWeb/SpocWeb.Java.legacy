@@ -57,7 +57,7 @@ digest:
       mtime: '2026-09-04T16:35:47Z'
       digest: 81ddcb7b1eb4832b7f3dd9b92f07047b1181564ca0285ba1314b814364e42b53
 tags:
-- code/concurrency_primitives
+- code/concurrency_primitive
 - code/locking
 - code/call_wrapping
 concepts:
