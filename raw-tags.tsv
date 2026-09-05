@@ -65,3 +65,7 @@ swing/HashTreeNode.java:HashTreeNode	class	swing/HashTreeNode.java	code/tree_nod
 swing/JHyperTree.java:JHyperTree	class	swing/JHyperTree.java	code/tree_data_structure, code/ui_components	Tree Visualization, UI Component	infrastructure	stable	medium
 swing/KeyTreeNavigator.java:KeyTreeNavigator	class	swing/KeyTreeNavigator.java	code/keyboard_navigation, code/tree_navigation	Tree Visualization, UI Component	infrastructure	stable	medium
 swing	folder	swing	code/tree_node, code/tree_data_structure, code/keyboard_navigation, code/hash_equality	Tree Visualization, Graph Model	infrastructure	broken	high
+streamIO/testing/ITestCase.java:ITestCase	class	streamIO/testing/ITestCase.java	code/test_harness	Testing	test	stable	low
+streamIO/testing/ATestCase.java:ATestCase	class	streamIO/testing/ATestCase.java	code/test_harness, code/reflection_based_dispatch	Testing, Reflection	test	broken	medium
+streamIO/testing/TestCollection.java:TestCollection	class	streamIO/testing/TestCollection.java	code/test_harness, code/composite_pattern	Testing, Composite Pattern	test	stable	low
+streamIO/testing	folder	streamIO/testing	code/test_harness, code/composite_pattern, code/reflection_based_dispatch	Testing, Reflection	test	broken	medium

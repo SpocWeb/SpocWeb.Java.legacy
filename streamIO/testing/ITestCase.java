@@ -3,8 +3,6 @@ package streamIO.testing;
 import streamIO.IIStreamOut;
 
 /**
-  * Title: ITestCase<p>
-  * Description:
   * Defines the Interface for a (composite) Test Case
   * that is to be run automatically.
   *
@@ -27,6 +25,15 @@ import streamIO.IIStreamOut;
   * Created on	10-19-2002, 09:37 AM<p>
   * @author 	Matthias Heuer
   * @version	1.0
+  * <!-- docstate
+  * pass: 2
+  * mtime: 2026-09-05T09:19:21Z
+  * digest: d39834cc28b3803e82cedccd6046e9a8b5d4b0180129c7354539528e3499d2f8
+  * stale: false
+  * tags: [code/test_harness]
+  * concepts: [Testing]
+  * facets: {layer: test, status: stable, complexity: low}
+  * -->
   */
 public interface ITestCase {
 

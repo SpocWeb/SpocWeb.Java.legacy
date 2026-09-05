@@ -9,11 +9,9 @@ import streamIO.exception.BaseException;
 import streamIO.exception.FailureException;
 
 /**
-  * Title: ATestCase<p>
-  * Description:
-  * Purpose:
-  * Abstract Test Case, defaults the setUp() and tearDown() Methods to empty Methods
-  * Purpose / Responsibilities of this Class
+  * Abstract Test Case, defaults the setUp() and tearDown() Methods to empty Methods,
+  * and drives Tests either directly, or reflectively over every public no-argument
+  * {@code test...()} Method of a Class or Object.
   *
   * Design Decisions / Implementation Details:
   * If similar Classes exist (e.g. Polymorphism),
@@ -28,6 +26,15 @@ import streamIO.exception.FailureException;
   * Created on	10-19-2002, 05:32 PM<p>
   * @author 	Matthias Heuer
   * @version	1.0
+  * <!-- docstate
+  * pass: 2
+  * mtime: 2026-09-05T09:19:35Z
+  * digest: e5b7732d0250b9556bba1a79d4509a41d72c3a11e269372a2e5c260cee9611ad
+  * stale: false
+  * tags: [code/test_harness, code/reflection_based_dispatch]
+  * concepts: [Testing, Reflection]
+  * facets: {layer: test, status: broken, complexity: medium}
+  * -->
   */
 public abstract class ATestCase
 implements ITestCase {
@@ -210,6 +217,10 @@ implements ITestCase {
 		} catch (   IllegalAccessException x) { throw new BaseException(x); //should never happen!
 		} catch (InvocationTargetException x) {
 			Throwable inner = x.getTargetException();
+			// TODO: LOGIC: both branches log/rethrow the wrapping InvocationTargetException
+			// `x` instead of `inner`, the exception the test Method actually threw. The
+			// reported stack trace and any FailureHandler/ErrorHandler item is therefore
+			// always the reflection wrapper, not the real cause.
 			if (inner instanceof FailureException) {
 				return handleException(x, FailureHandler); } //normal Failure
 				return handleException(x,   ErrorHandler); //Runtime Error

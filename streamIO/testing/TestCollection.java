@@ -7,11 +7,8 @@ import java.util.Iterator;
 import streamIO.IIStreamOut;
 
 /**
-  * Title: TestCollection<p>
-  * Description:
-  * Purpose:
-  * Composite Pattern typed for Test Cases
-  * Purpose / Responsibilities of this Class
+  * Composite Pattern typed for Test Cases: runs a nested Collection of
+  * {@link ITestCase}s depth-first before running its own reflective Tests.
   *
   * Design Decisions / Implementation Details:
   * If similar Classes exist (e.g. Polymorphism),
@@ -26,6 +23,15 @@ import streamIO.IIStreamOut;
   * Created on	10-19-2002, 12:04 PM<p>
   * @author 	Matthias Heuer
   * @version	1.0
+  * <!-- docstate
+  * pass: 2
+  * mtime: 2026-09-05T09:19:40Z
+  * digest: 88dee787283c86215e596233f8c60efcab7e72958aba601b05e96a34b542e516
+  * stale: false
+  * tags: [code/test_harness, code/composite_pattern]
+  * concepts: [Testing, Composite Pattern]
+  * facets: {layer: test, status: stable, complexity: low}
+  * -->
   */
 public class TestCollection
 extends ATestCase
