@@ -7,6 +7,15 @@ package graphic.math3D;
  * to loop through Rasters in different Dimensions.
  * With known Index, the Parameters Start and even the float[] V
  * can be determined (with Index = 0 or max and the Raster R).
+ * <!-- docstate
+ * pass: 2
+ * mtime: 2026-09-05T10:13:18Z
+ * digest: c59475f71809f5bfd76bcdc107833e67f861731c5cb6454e496d48b8def0ca10
+ * stale: false
+ * tags: [code/geometry, code/3d_geometry]
+ * concepts: [3D Spatial Object Base Class]
+ * facets: {layer: domain, status: legacy, complexity: low}
+ * -->
  */
 public abstract class	ASpatial
 	implements			ISpatial {

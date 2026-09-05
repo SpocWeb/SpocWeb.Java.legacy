@@ -24,6 +24,15 @@ import graphs.SparseMatrix;
   * Created on	08-07-2002, 12:41 PM<p>
   * @author 	Matthias Heuer
   * @version	1.0
+  * <!-- docstate
+  * pass: 2
+  * mtime: 2026-09-05T10:13:18Z
+  * digest: 95e747849d8dc3c306319e106763442bc9c2bd36f0b8eb0baa3ff9e7bb1fe6cc
+  * stale: false
+  * tags: [code/3d_geometry, code/graph_rendering]
+  * concepts: [3D Wireframe Model]
+  * facets: {layer: domain, status: legacy, complexity: medium}
+  * -->
   */
 public class Wire3D extends Polygon3D {
 

@@ -13,6 +13,18 @@ import Vector.*;
 import Graph2D.*;
 */
 /**Class for drawing real 3D Columns (solid or wire)
+import Graph2D.* <!-- docstate
+import Graph2D.* pass: 2
+import Graph2D.* mtime: 2026-09-05T10:13:18Z
+import Graph2D.* digest: f6c86a52d57aecbf0ea7b4175a90235b10ebe5e8ee8dade9fb454ddf81f9647b
+import Graph2D.* stale: false
+import Graph2D.
+ * digest: f6c86a52d57aecbf0ea7b4175a90235b10ebe5e8ee8dade9fb454ddf81f9647b
+ * stale: false
+ * tags: [code/3d_rendering, code/chart_rendering]
+ * concepts: [3D Column Chart Element]
+ * facets: {layer: domain, status: legacy, complexity: low}
+ * -->
  * and Points within this Column.	 */
 public class Column3D {
 

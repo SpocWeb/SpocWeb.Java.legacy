@@ -10,6 +10,15 @@ import java.awt.Color;
  * Stateful Helper Class that encapsulates Drawing a Series of Planes in 3 Dimensions.
  * Called by the recursive Plot Routine in Raster.
  * Implements the ISpatial Interface for this!
+ * <!-- docstate
+ * pass: 2
+ * mtime: 2026-09-05T10:13:18Z
+ * digest: 27793d870d4330dcd57cdca39a7a5e9ae4586820301f2f87fe002eb58ff78f62
+ * stale: false
+ * tags: [code/3d_rendering, code/chart_rendering]
+ * concepts: [Plane Plotter]
+ * facets: {layer: domain, status: legacy, complexity: medium}
+ * -->
  */
 public class PlanePlotter
 	extends ASpatial {

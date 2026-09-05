@@ -16,6 +16,15 @@ import Body.*;
  * Helper Class that encapsulates Drawing a Sequence of HyperCubes (Voxels) in 3D.
  * It is supposed to being called by the recursive Rastering Routine.
  * In this Example the Value is calculated.
+ * <!-- docstate
+ * pass: 2
+ * mtime: 2026-09-05T10:13:18Z
+ * digest: f1987c4872f750f9fb34abeb6a3d9edb3dd60bde710dd1934387bbe916093607
+ * stale: false
+ * tags: [code/3d_rendering]
+ * concepts: [Voxel Plot]
+ * facets: {layer: domain, status: legacy, complexity: medium}
+ * -->
  */
 public class VoxelPlot
 	extends ASpatial {

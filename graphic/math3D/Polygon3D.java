@@ -22,6 +22,15 @@ import tools.Parsing;
  * which could be replaced by a MatrixFloat to allow for dynamic addition of Vectors. 
  * Defines Calculation and Cacheing of Tangents, Normals, BiNormals as well as 
  * Extrusion and Rotation to form 3D Bodies with 2D Surfaces from a 1D Line. 
+ * <!-- docstate
+ * pass: 2
+ * mtime: 2026-09-05T12:43:41Z
+ * digest: 11ba61c60c8c82bc2a3606a6356021ceda036422994bcb90e3cd46f5d2df14b8
+ * stale: false
+ * tags: [code/3d_geometry, code/polygon_calculation]
+ * concepts: [3D Polygon]
+ * facets: {layer: domain, status: legacy, complexity: medium}
+ * -->
  */
 public class Polygon3D {
 
@@ -45,6 +54,7 @@ public class Polygon3D {
 		return ret; }
 
 	/**
+	 * Computes the consecutive-Point Differences of the given Points, normalizing each in place.
 	 * @return the normalized Tangents (and calculates them, if needed)
 	 * This is the normal Differentiation Operation!
 	 * It can deal with periodic Border Conditions, resulting in the Null Vector for the first Norm.
@@ -88,7 +98,8 @@ public class Polygon3D {
 				extent.mergeAt(points[numPoints]); }
 		} return extent; }
 
-	/** @return the Extent of the Polygon */
+	/** Returns a copy of this Polygon's bounding Extent, calculating it first if not yet cached.
+	 * @return the Extent of the Polygon */
 	public Line getExtent() { return (Line)getExtentAt().copy(); }
 
 	///////////////////////////////////////////////////////////////////////////////////
@@ -155,7 +166,8 @@ public class Polygon3D {
 	/** Local Buffer to store the BiNormals */
 	protected float[][] biNormals;
 
-	/** @return the BiNormals (and calculates them, if needed) */
+	/** Returns the Cross Product of the Tangents and Normals at each Point, calculating and caching it if needed.
+	 * @return the BiNormals (and calculates them, if needed) */
 	public float[][] getBiNormals() { //The BiNormals have to be shifted by 1
 		if (biNormals == null) { //create the Cross Product
 			float[][] Tangents = getTangents(); //1 Point  less, except when periodic
@@ -575,6 +587,15 @@ public class Polygon3D {
 /**
  * Helper IFunction Class to help drawing Rotation Bodies
  * Used only in Rotation().
+ * <!-- docstate
+ * pass: 2
+ * mtime: 2026-09-05T12:43:41Z
+ * digest: 4d05f74052c8e55377cbac74453a9fdf6432748f27703d9be18e6464afa64401
+ * stale: false
+ * tags: [code/3d_geometry]
+ * concepts: [Rotated-Form Cross-Section]
+ * facets: {layer: domain, status: legacy, complexity: low}
+ * -->
  */
 class RotateFormXSection extends AFunction {
 
@@ -612,6 +633,15 @@ class RotateFormXSection extends AFunction {
  * with each Map() Call.
  * Used in Wrap around Order, if more Map() Calls happen.
  * Used in Tube() exclusively
+ * <!-- docstate
+ * pass: 2
+ * mtime: 2026-09-05T12:43:41Z
+ * digest: 6b21327e01ec8cedc56f32a7fe5b0f6c8716bbfed32c82f24b81424b864b018f
+ * stale: false
+ * tags: [code/3d_geometry]
+ * concepts: [Cross-Section Form Enumeration]
+ * facets: {layer: domain, status: legacy, complexity: low}
+ * -->
  */
 class EnumFormXSection extends AFunction {
 

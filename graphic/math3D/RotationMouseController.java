@@ -25,6 +25,15 @@ import math.matrix.MatrixFloat;
  * @author mheuer
  * @version	1.0
  *
+ * <!-- docstate
+ * pass: 2
+ * mtime: 2026-09-05T10:13:18Z
+ * digest: 7e188960c9c2e89bc988fabc1af2f628c72b64e48a90dae220b2cb7c6cb70754
+ * stale: false
+ * tags: [code/mouse_input]
+ * concepts: [Mouse-Driven Rotation Controller]
+ * facets: {layer: domain, status: legacy, complexity: low}
+ * -->
  */
 public class RotationMouseController 
 extends BaseMouseController {

@@ -5,6 +5,15 @@ import graphic.AGraph2D;
 import java.awt.Color;
 
 /**Helper Class that encapsulates Drawing a Polygon in 2 or 3 Dimensions.
+ * <!-- docstate
+ * pass: 2
+ * mtime: 2026-09-05T10:13:18Z
+ * digest: 12acfd1555ee5f89e33b30033c6dd529975316a937389593974c3cea48c04b00
+ * stale: false
+ * tags: [code/3d_rendering, code/polygon_calculation]
+ * concepts: [3D Polygon Plotter]
+ * facets: {layer: domain, status: legacy, complexity: medium}
+ * -->
  * Caches the mapped Points for a faster Redraw.  */
 public class PolygonPlot {
 

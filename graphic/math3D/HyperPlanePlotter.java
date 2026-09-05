@@ -17,6 +17,15 @@ import streamIO.copy.group.ring.StepRK;
  * This is used for drawing the full Equipotential Plane.
  *
  * TODO: eliminate the hardcoded Stepper Routine StepRKQ
+ * <!-- docstate
+ * pass: 2
+ * mtime: 2026-09-05T10:13:18Z
+ * digest: 3f2710a7e9387a18578a10f248dce64d8ab0b67ed73823334fac3030559072fb
+ * stale: false
+ * tags: [code/3d_rendering, code/chart_rendering]
+ * concepts: [Hyperplane Plotter]
+ * facets: {layer: domain, status: legacy, complexity: medium}
+ * -->
  *		 and the hardcoded ODE Height  */
 public class HyperPlanePlotter
 	extends ASpatial {

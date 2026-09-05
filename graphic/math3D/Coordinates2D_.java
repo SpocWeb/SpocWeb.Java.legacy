@@ -12,6 +12,15 @@ import java.awt.Rectangle;
  *
  * An affine Coordinate Mapping is given by two Vectors,
  * which characterize the Mapping of an Interval to another.
+ * <!-- docstate
+ * pass: 2
+ * mtime: 2026-09-05T10:13:18Z
+ * digest: 35bb23fae4f7957d1d20dcd8fd9214732158bf77cc9e77899c771336e2c2f216
+ * stale: false
+ * tags: [code/coordinate_transform]
+ * concepts: [2D Coordinate Transform Variant]
+ * facets: {layer: domain, status: legacy, complexity: low}
+ * -->
  */
 public class Coordinates2D_
 extends Coordinates2D

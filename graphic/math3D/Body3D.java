@@ -79,6 +79,15 @@ import tools.Parsing;
  * This prevents some Optimizations like copying and mapping in the same loop.
  * On the other hand, one of these Operations can be skipped at all,
  * if both Entities are properly separated!
+ * <!-- docstate
+ * pass: 2
+ * mtime: 2026-09-05T10:13:18Z
+ * digest: fa16e1578fd31cd5b678f0e057ba0536849661f7d9493d0548ebfe86e512da48
+ * stale: false
+ * tags: [code/3d_geometry, code/computational_geometry]
+ * concepts: [3D Solid Body]
+ * facets: {layer: domain, status: legacy, complexity: medium}
+ * -->
  */
 public class Body3D
 extends Polygon3D {
@@ -322,7 +331,7 @@ extends Polygon3D {
 		int NumPoints = (int) Parsing.nextNumber(ST, StreamTokenizer.TT_EOL, 1, !givenNumber);	//maximum Number of Points in a Plane, can be larger than the actual max. Number
 		if (givenNumber) //if 'const' appears behind NumPoints,
 		{	//this signals that all Planes have the same number of Points.
-			givenNumber = !((ST.nextToken() == StreamTokenizer.TT_WORD) && ("const".equals(ST.sval)));	//String-Vergleich nur über Equals!!!
+			givenNumber = !((ST.nextToken() == StreamTokenizer.TT_WORD) && ("const".equals(ST.sval)));	//String-Vergleich nur ï¿½ber Equals!!!
 			while (ST.nextToken() != StreamTokenizer.TT_EOL);
 			maxPointsPerPlane = NumPoints;
 		}

@@ -55,6 +55,15 @@ import math.vector.VectorFloat;
  *
  * The Politics are: Start and End Point are always calculated,
  *					 all the Rest only on demand.
+ * <!-- docstate
+ * pass: 2
+ * mtime: 2026-09-05T12:43:13Z
+ * digest: 42e918f04ea6718cb0151a8d3a3fcf1256695faa19fc4a1c6f02e6c5a6241cad
+ * stale: false
+ * tags: [code/3d_geometry, code/computational_geometry]
+ * concepts: [3D Line Segment]
+ * facets: {layer: domain, status: legacy, complexity: low}
+ * -->
  */
 public class Line {		//This allows for all Matrix Operations.
 
@@ -257,12 +266,14 @@ public class Line {		//This allows for all Matrix Operations.
 
 	//Use 'between' and not 'contains' to test, if a Point lies in this Line.
 
-	/** @return true when this (Hyper-)Cube intersects with the given HyperCube 	 */
+	/** Tests whether the given Line's Start and End Points both lie within this Line's Extent.
+	 * @return true when this (Hyper-)Cube intersects with the given HyperCube 	 */
 	public boolean contains(Line arg) {
 		return VectorFloat.BETWEEN(a[0], arg.a[0], a[1]) &&
 			   VectorFloat.BETWEEN(a[0], arg.a[1], a[1]); }
 
-	/** @return true when this (Hyper-)Cube intersects with the given HyperCube 	 */
+	/** Tests whether either of the given Line's Start or End Point lies within this Line's Extent.
+	 * @return true when this (Hyper-)Cube intersects with the given HyperCube 	 */
 	public boolean intersects(Line arg) {
 		return VectorFloat.BETWEEN(a[0], arg.a[0], a[1]) ||
 			   VectorFloat.BETWEEN(a[0], arg.a[1], a[1]); }
@@ -271,6 +282,7 @@ public class Line {		//This allows for all Matrix Operations.
 
 	protected boolean bolOrdered;
 
+	/** Reports whether {@link #orderAt()} has already been applied to this Line. */
 	public boolean ordered() { return bolOrdered; }
 
 	/**Orders the Coordinates, so the smaller ones end up in Start
@@ -306,6 +318,7 @@ public class Line {		//This allows for all Matrix Operations.
 		} return this; }
 
 	/**
+	 * Creates an independent Line with the same Start and End Points.
      * @return a Copy of this Line
      */
 	public Line copy() {

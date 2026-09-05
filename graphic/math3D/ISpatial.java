@@ -3,6 +3,15 @@ package graphic.math3D;
 /**
  * Interface that defines Methods of Figures that need to be rastered 
  * and drawn into a GUI or placed into or evaluated at a Position. 
+ * <!-- docstate
+ * pass: 2
+ * mtime: 2026-09-05T10:13:18Z
+ * digest: df1161a3e8e33ee25911612b2f0901809e2be5b891420b3238e3ca3580d75056
+ * stale: false
+ * tags: [code/3d_geometry]
+ * concepts: [Spatial Object Interface]
+ * facets: {layer: infrastructure, status: legacy, complexity: low}
+ * -->
  */
 public interface ISpatial {
 

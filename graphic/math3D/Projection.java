@@ -21,9 +21,18 @@ import math.vector.VectorFloat;
  *
  * Da hier Zeilenvektoren von links multipliziert
  * (und damit die Zeilen von Matrizen addiert) werden,
- * müssen die Spalten mit ratio skaliert werden und nicht die Zeilen!!!
+ * mï¿½ssen die Spalten mit ratio skaliert werden und nicht die Zeilen!!!
  *
  *
+ * <!-- docstate
+ * pass: 2
+ * mtime: 2026-09-05T10:13:18Z
+ * digest: 274cecc64481a7e4c7b8530756741055b1601d5638ebd2e4b08bb4b2a809460c
+ * stale: false
+ * tags: [code/projection, code/3d_geometry]
+ * concepts: [3D-to-2D Projection]
+ * facets: {layer: domain, status: legacy, complexity: medium}
+ * -->
  */
 public class Projection
 extends Line {

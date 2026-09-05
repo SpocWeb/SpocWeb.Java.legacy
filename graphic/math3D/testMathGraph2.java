@@ -55,13 +55,22 @@ import math.vector.VectorShort;
  * @author mheuer
  * @version	1.0
  *
+ * <!-- docstate
+ * pass: 2
+ * mtime: 2026-09-05T12:43:54Z
+ * digest: a555733308787286d2372e2b3e51ad11c8708389026984a8ad574214b255f5b9
+ * stale: false
+ * tags: [code/testing]
+ * concepts: [3D Graph Demo/Test Harness]
+ * facets: {layer: test, status: legacy, complexity: low}
+ * -->
  */
 public class testMathGraph2
 //	extends Body3DPainter
 implements IPainter { //
 
 	/**
-	 * 
+	 * Default Constructor; all state is initialized by field defaults.
 	 */
 	public testMathGraph2() {
 	}
@@ -279,7 +288,8 @@ implements IPainter { //
 		return poly; 
 	}
 
-	/** @see graphic.mvc.IPainter#draw(graphic.IGraphText)	 */
+	/** Paints the scalar-triangle and color-hexagon test figures.
+	 * @see graphic.mvc.IPainter#draw(graphic.IGraphText)	 */
 	public void draw(final IGraphText gText) {
 		testFillScalarTriangle(gText);
 		testDrawColorHexaGon(gText);

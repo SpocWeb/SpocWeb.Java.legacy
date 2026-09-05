@@ -800,3 +800,41 @@ graphic/implement/testGraph2D.java:testGraph2D	class	graphic/implement/testGraph
 graphic/svg	folder	graphic/svg	code/rendering,code/parsing	SVG Rendering and Parsing	utility	legacy	medium
 graphic/svg/SvgApplet.java:SvgApplet	class	graphic/svg/SvgApplet.java	code/rendering,code/parsing	SVG Applet Renderer	utility	broken	high
 graphic/svg/SvgHandler.java:SvgHandler	class	graphic/svg/SvgHandler.java	code/parsing	Empty SAX Handler Placeholder	utility	unfinished	low
+graphic/math3D/ASpatial.java:ASpatial	class	graphic/math3D/ASpatial.java	code/geometry,code/3d_geometry	3D Spatial Object Base Class	domain	legacy	low
+graphic/math3D	folder	graphic/math3D	code/3d_geometry,code/3d_rendering,code/coordinate_transform	3D Graph Visualization and Plotting	domain	legacy	high
+graphic/math3D/Body3D.java:Body3D	class	graphic/math3D/Body3D.java	code/3d_geometry,code/computational_geometry	3D Solid Body	domain	legacy	medium
+graphic/math3D/Body3DPainter.java:Body3DPainter	class	graphic/math3D/Body3DPainter.java	code/3d_rendering	3D Body Renderer	domain	legacy	medium
+graphic/math3D/Column3D.java:Column3D	class	graphic/math3D/Column3D.java	code/3d_rendering,code/chart_rendering	3D Column Chart Element	domain	legacy	low
+graphic/math3D/Coordinates2D_.java:Coordinates2D_	class	graphic/math3D/Coordinates2D_.java	code/coordinate_transform	2D Coordinate Transform Variant	domain	legacy	low
+graphic/math3D/Coordinates3D.java:Coordinates3D	class	graphic/math3D/Coordinates3D.java	code/coordinate_transform,code/3d_geometry	3D Coordinate Transform	domain	legacy	medium
+graphic/math3D/Figures2D.java:Figures2D	class	graphic/math3D/Figures2D.java	code/geometry,code/graphics	2D Figure Drawing Helpers	utility	legacy	low
+graphic/math3D/Figures3D.java:Figures3D	class	graphic/math3D/Figures3D.java	code/3d_geometry,code/graphics	3D Figure Drawing Helpers	utility	legacy	low
+graphic/math3D/FloatPointKeyController.java:FloatPointKeyController	class	graphic/math3D/FloatPointKeyController.java	code/keyboard_input	Keyboard-Driven Point Controller	domain	legacy	low
+graphic/math3D/HistoPlot.java:HistoPlot	class	graphic/math3D/HistoPlot.java	code/chart_rendering	Histogram Plotter	domain	legacy	medium
+graphic/math3D/HyperPlanePlotter.java:HyperPlanePlotter	class	graphic/math3D/HyperPlanePlotter.java	code/3d_rendering,code/chart_rendering	Hyperplane Plotter	domain	legacy	medium
+graphic/math3D/ICoordMapper.java:ICoordMapper	class	graphic/math3D/ICoordMapper.java	code/coordinate_transform	Coordinate Mapper Interface	infrastructure	legacy	low
+graphic/math3D/ISpatial.java:ISpatial	class	graphic/math3D/ISpatial.java	code/3d_geometry	Spatial Object Interface	infrastructure	legacy	low
+graphic/math3D/Line.java:Line	class	graphic/math3D/Line.java	code/3d_geometry,code/computational_geometry	3D Line Segment	domain	legacy	low
+graphic/math3D/OdePlotter.java:OdePlotter	class	graphic/math3D/OdePlotter.java	code/numerical_integration,code/3d_rendering	ODE Trajectory Plotter	domain	broken	medium
+graphic/math3D/PlanePlotter.java:PlanePlotter	class	graphic/math3D/PlanePlotter.java	code/3d_rendering,code/chart_rendering	Plane Plotter	domain	legacy	medium
+graphic/math3D/Platonic.java:Platonic	class	graphic/math3D/Platonic.java	code/platonic_solids,code/3d_geometry	Platonic Solid Coordinate Generator	domain	legacy	medium
+graphic/math3D/Platonic.java:Platonic.testMatrixTetrahedron()	method	graphic/math3D/Platonic.java	code/platonic_solids,code/testing	Tetrahedron Matrix Self-Test	test	legacy	low
+graphic/math3D/Platonic.java:Platonic.main(String[])	method	graphic/math3D/Platonic.java	code/platonic_solids,code/testing	Demo Entry Point	test	legacy	low
+graphic/math3D/PlotVector.java:PlotVector	class	graphic/math3D/PlotVector.java	code/3d_rendering,code/geometry	Vector Field Plot Element	domain	legacy	low
+graphic/math3D/Polygon3D.java:Polygon3D	class	graphic/math3D/Polygon3D.java	code/3d_geometry,code/polygon_calculation	3D Polygon	domain	legacy	medium
+graphic/math3D/Polygon3D.java:RotateFormXSection	class	graphic/math3D/Polygon3D.java	code/3d_geometry	Rotated-Form Cross-Section	domain	legacy	low
+graphic/math3D/Polygon3D.java:EnumFormXSection	class	graphic/math3D/Polygon3D.java	code/3d_geometry	Cross-Section Form Enumeration	domain	legacy	low
+graphic/math3D/PolygonPlot.java:PolygonPlot	class	graphic/math3D/PolygonPlot.java	code/3d_rendering,code/polygon_calculation	3D Polygon Plotter	domain	legacy	medium
+graphic/math3D/ProjectPlot.java:ProjectPlot	class	graphic/math3D/ProjectPlot.java	code/3d_rendering,code/projection	Projected 3D Plot	domain	legacy	medium
+graphic/math3D/Projection.java:Projection	class	graphic/math3D/Projection.java	code/projection,code/3d_geometry	3D-to-2D Projection	domain	legacy	medium
+graphic/math3D/RotationMouseController.java:RotationMouseController	class	graphic/math3D/RotationMouseController.java	code/mouse_input	Mouse-Driven Rotation Controller	domain	legacy	low
+graphic/math3D/ScalarPlanePlotter.java:ScalarPlanePlotter	class	graphic/math3D/ScalarPlanePlotter.java	code/3d_rendering,code/chart_rendering	Scalar-Colored Plane Plotter	domain	legacy	medium
+graphic/math3D/ScalarPointPlot.java:ScalarPointPlot	class	graphic/math3D/ScalarPointPlot.java	code/3d_rendering,code/chart_rendering	Scalar-Colored Point Plot	domain	legacy	low
+graphic/math3D/TestMathGraph3.java:TestMathGraph3	class	graphic/math3D/TestMathGraph3.java	code/testing,code/3d_rendering	3D Graph Demo/Test Harness	test	legacy	low
+graphic/math3D/TestOdePlotter.java:TestOdePlotter	class	graphic/math3D/TestOdePlotter.java	code/testing,code/numerical_integration	ODE Plotter Demo/Test Harness	test	legacy	low
+graphic/math3D/TranslationMouseController.java:TranslationMouseController	class	graphic/math3D/TranslationMouseController.java	code/mouse_input	Mouse-Driven Translation Controller	domain	legacy	low
+graphic/math3D/VoxelPlot.java:VoxelPlot	class	graphic/math3D/VoxelPlot.java	code/3d_rendering	Voxel Plot	domain	legacy	medium
+graphic/math3D/Wire3D.java:Wire3D	class	graphic/math3D/Wire3D.java	code/3d_geometry,code/graph_rendering	3D Wireframe Model	domain	legacy	medium
+graphic/math3D/testMathGraph2.java:testMathGraph2	class	graphic/math3D/testMathGraph2.java	code/testing	3D Graph Demo/Test Harness	test	legacy	low
+graphic/math3D/testMathGraph3D.java:testMathGraph3D	class	graphic/math3D/testMathGraph3D.java	code/testing,code/3d_rendering	3D Graph Demo/Test Harness	test	legacy	low
+graphic/math3D/testMathGraph3D.java:testMathGraph3D.main(String[])	method	graphic/math3D/testMathGraph3D.java	code/testing	Demo Entry Point	test	legacy	low

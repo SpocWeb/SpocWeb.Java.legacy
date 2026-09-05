@@ -9,7 +9,18 @@ import Vector.*;
 import ByRef.*;
 import BaseCopy.*;
 */
-/**Class drawing different Figures (Arrows etc.) */
+/**Class drawing different Figures (Arrows etc.)
+ *
+ * <!-- docstate
+ * pass: 2
+ * mtime: 2026-09-05T10:13:18Z
+ * digest: c3a08f96e79949a57e4db919efbc6015688199f23a8acec7a4963c97b30d058d
+ * stale: false
+ * tags: [code/geometry, code/graphics]
+ * concepts: [2D Figure Drawing Helpers]
+ * facets: {layer: utility, status: legacy, complexity: low}
+ * -->
+ */
 public class Figures2D {
 
 	/**Reference to the Coordinate System for Conversion	 */

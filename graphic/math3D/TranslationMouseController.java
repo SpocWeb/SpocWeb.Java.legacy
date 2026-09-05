@@ -24,6 +24,15 @@ import graphic.mvc.IPainter;
  * @author mheuer
  * @version	1.0
  *
+ * <!-- docstate
+ * pass: 2
+ * mtime: 2026-09-05T10:13:18Z
+ * digest: 0e7045804931fe6458bef223410610ec7e8205af0e8c21116395a3043647e75c
+ * stale: false
+ * tags: [code/mouse_input]
+ * concepts: [Mouse-Driven Translation Controller]
+ * facets: {layer: domain, status: legacy, complexity: low}
+ * -->
  */
 public class TranslationMouseController 
 extends BaseMouseController {

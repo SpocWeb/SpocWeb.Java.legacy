@@ -42,6 +42,15 @@ import streamIO.Log;
  * @author mheuer
  * @version	1.0
  *
+ * <!-- docstate
+ * pass: 2
+ * mtime: 2026-09-05T12:42:57Z
+ * digest: 14baa639ced5f9161098c13e4f74aa33848bee5965d305c08c1a4953aea99241
+ * stale: false
+ * tags: [code/3d_rendering]
+ * concepts: [3D Body Renderer]
+ * facets: {layer: domain, status: legacy, complexity: medium}
+ * -->
  */
 public class Body3DPainter 
 implements IPainter {
@@ -71,6 +80,7 @@ implements IPainter {
 	
 	protected final float[] rotation = { 1, 0, 0}; 
 
+	/** Half of Pi, used as the rotation limit just short of looking straight up or down. */
 	final static public float PI_HALF = (float) Math.PI/2;
 
 	protected final float[] rotLimits = { 1, -PI_HALF-PI_HALF, PI_HALF-0.02f}; 
@@ -152,7 +162,8 @@ implements IPainter {
 	/// Methods
 	/////////////////////////////////////////////////////////////////////////////////////
 
-	/** @see graphic.mvc.IPainter#paintFrame(graphic.IGraphText)	 */
+	/** Prepares the current frame and paints the mapped 2D body into it.
+	 * @see graphic.mvc.IPainter#paintFrame(graphic.IGraphText)	 */
 	public void draw(final IGraphText gText) {
 		preparedraw(gText);
 		if (gText == null) {

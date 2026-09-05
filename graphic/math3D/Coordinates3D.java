@@ -24,6 +24,15 @@ import math.vector.VectorFloat;
  * the Distances of the Means of the Points (3N, Middles).
  * But since the Middles are calculated mostly anyway
  * and their Distance is also easily calculated (AbsV)...
+ * <!-- docstate
+ * pass: 2
+ * mtime: 2026-09-05T10:13:18Z
+ * digest: c0c91d6e296b87203d94eb9afba07b7ca5262575dd7c71e1d7503584e843d465
+ * stale: false
+ * tags: [code/coordinate_transform, code/3d_geometry]
+ * concepts: [3D Coordinate Transform]
+ * facets: {layer: domain, status: legacy, complexity: medium}
+ * -->
  */
 public class Coordinates3D
 	implements ICoordMapper {

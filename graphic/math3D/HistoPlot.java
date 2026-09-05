@@ -5,7 +5,18 @@ import graphic.IGraphShape;
 
 import java.awt.Color;
 
-/**Helper Class that encapsulates Drawing a Vector Value in 3 Dimensions.  */
+/**Helper Class that encapsulates Drawing a Vector Value in 3 Dimensions.
+ *
+ * <!-- docstate
+ * pass: 2
+ * mtime: 2026-09-05T10:13:18Z
+ * digest: 5eb1542c82861cd9f1f7709708e0de02a32a0feccacb57dc3673a53a1b03fbfd
+ * stale: false
+ * tags: [code/chart_rendering]
+ * concepts: [Histogram Plotter]
+ * facets: {layer: domain, status: legacy, complexity: medium}
+ * -->
+ */
 public class HistoPlot
 	extends ASpatial {
 

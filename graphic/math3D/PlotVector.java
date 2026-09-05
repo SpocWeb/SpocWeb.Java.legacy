@@ -12,6 +12,15 @@ import math.vector.VectorFloat;
  * Encapsulates Drawing Vector Arrows in 2 or 3 Dimensions
  * Is to be called by the recursive Rastering Routine.
  * It gives a rastered View to the Vector Field e.g. of ODEs 	 
+ * <!-- docstate
+ * pass: 2
+ * mtime: 2026-09-05T10:13:18Z
+ * digest: bfcf629c2bc35bbe17281fb397428edd5e5ec50e88a8693e880ed58b12e80b21
+ * stale: false
+ * tags: [code/3d_rendering, code/geometry]
+ * concepts: [Vector Field Plot Element]
+ * facets: {layer: domain, status: legacy, complexity: low}
+ * -->
  */
 public class PlotVector
 	extends ASpatial {

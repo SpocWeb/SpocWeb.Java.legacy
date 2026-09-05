@@ -16,6 +16,15 @@ import streamIO.copy.group.ring.AStepper;
  *
  * Design Decisions:
  * Most Variables kept in package, so they can be accessed by PlotOde2 and PlotOdeRect
+ * <!-- docstate
+ * pass: 2
+ * mtime: 2026-09-05T12:43:21Z
+ * digest: 962ecc865bb78240bcd97fddef180bb170006268a3dcd69133f4ce8659ba6234
+ * stale: false
+ * tags: [code/numerical_integration, code/3d_rendering]
+ * concepts: [ODE Trajectory Plotter]
+ * facets: {layer: domain, status: broken, complexity: medium}
+ * -->
  */
 public class OdePlotter
 	extends ASpatial {
@@ -26,6 +35,7 @@ public class OdePlotter
 	/**Graphics Context to paint to	 */
 	final IGraphShape g2D;
 
+	/** When true, the trajectory is integrated both forward and backward from the Starting Point. */
 	public boolean bothWays = true;
 
 	/**Reference to the Coordinate System for Conversion	 */
@@ -88,6 +98,10 @@ public class OdePlotter
 	public void drawLoop() {
 		Point2D currPoint;
 		int i = -1; //Run until...
+		// TODO: LOGIC: when Rect is null (a legal constructor argument - see OdePlotter(IGraphShape, ICoordMapper,
+		// AStepper, Rectangle), the loop condition "(Rect != null) && Rect.contains(...)" is false from the start,
+		// so the do/while body executes exactly once instead of running unbounded (as the comments below imply,
+		// "until ... the drawing Area is left"). Any caller passing a null Rect gets a single-step trajectory.
 		do {
 			//or a goal or a minimum Step Size is reached
 			//or the Starting point is reached again with an accuracy that depends on the largest Distance reached.

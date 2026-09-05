@@ -7,6 +7,15 @@ import math.vector.VectorFloat;
 /**Used for drawing Points as well as their Projections to the Coordinate System.
  * The Points are buffered, so the Projections can be interconnected.
  * This class can also be used to draw a 1 dimensional Parameter Plot.
+ * <!-- docstate
+ * pass: 2
+ * mtime: 2026-09-05T10:13:18Z
+ * digest: 3e045ed3d8c9008790e545d9e8b3ebcd575c15c68de384ebda6e35b36af79644
+ * stale: false
+ * tags: [code/3d_rendering, code/projection]
+ * concepts: [Projected 3D Plot]
+ * facets: {layer: domain, status: legacy, complexity: medium}
+ * -->
  */
 public class ProjectPlot {
 

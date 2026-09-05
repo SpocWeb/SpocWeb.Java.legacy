@@ -7,6 +7,15 @@ import graphic.Point2D;
 import math.vector.VectorFloat;
 
 /**loose Collection of 3dimensional Figures (Arrows, Points with Normals, etc.).
+ * <!-- docstate
+ * pass: 2
+ * mtime: 2026-09-05T10:13:18Z
+ * digest: 8861d828ea0097b54bce66405f710b1623ecb12999fa1af8757d3a9d913335a9
+ * stale: false
+ * tags: [code/3d_geometry, code/graphics]
+ * concepts: [3D Figure Drawing Helpers]
+ * facets: {layer: utility, status: legacy, complexity: low}
+ * -->
  * Routines to extrude and rotate.	 */
 public class Figures3D {
 
@@ -156,18 +165,18 @@ public class Figures3D {
 	   k = j*SizeOf (Word);
 	   writer.Grad = j;GetMem (writer.a,k);PW = PK[1];Kopiere (PW,writer.a,k);INC (writer);{Original-Reihenfolge}
 	   writer.Grad = j;GetMem (writer.a,k);PV = writer[j];
-	   for (j = 1 TO Pred (j) DO        {Erzeugen der Seiten-Fl„chen}
+	   for (j = 1 TO Pred (j) DO        {Erzeugen der Seiten-Flï¿½chen}
 	    {
 	     INC (writer);writer.Grad = 4;GetMem (writer.a,SizeOf (Word) SHL 2);
 	     PV = Plane.Punkte+PW;           {Reihenfolge umkehren}
-	     writer[2] = PW;              {RechteckSeitenFl„che}
+	     writer[2] = PW;              {RechteckSeitenFlï¿½che}
 	     writer[3] = PV;DEC (PV);INC (PW);
 	     writer[4] = PW+Plane.Punkte;
 	     writer[1] = PW;
 	    }
 	   INC (writer);writer.Grad = 4;GetMem (writer.a,SizeOf (Word) SHL 2);
 	   PV = Plane.Punkte+PW;           {Reihenfolge umkehren}
-	   writer[2] = PW;              {RechteckSeitenFl„che}
+	   writer[2] = PW;              {RechteckSeitenFlï¿½che}
 	   writer[3] = PV;
 	   writer[4] = P_Word (PK.a)+Plane.Punkte;
 	   writer[1] = P_Word (PK.a);
@@ -193,11 +202,11 @@ public class Figures3D {
 	 TG = SizeOf (Real)*N;
 	 S.Punkte = N*L.Anzahl;
 	 S.OFlaechen = 0;S.MaxEck = 4;
-	 S.Flaechen = S.Punkte;IF NOT closed THEN DEC (S.Flaechen,N-2); {N Fl„chen weniger, daf?r 2 Endfl„chen}
+	 S.Flaechen = S.Punkte;IF NOT closed THEN DEC (S.Flaechen,N-2); {N Flï¿½chen weniger, daf?r 2 Endflï¿½chen}
 	 NEW_Punkte (P_Koerper2 (S),3,Farbe,0,4,0,NEW_Assign);
 	 PPr = S.Raender[S.Flaechen];
 	 IF NOT closed
-	  THEN         {N-Ecke als Endfl„chen (eben)}
+	  THEN         {N-Ecke als Endflï¿½chen (eben)}
 	   {
 	    i = 4*SizeOf (Word);
 	    j = N*SizeOf (Word);
@@ -239,7 +248,7 @@ public class Figures3D {
 	      Subtraktion (PV2,PV1,T1,SizeOf (Real),3);
 	     }
 	   KreuzProdukt (T2,T1,Bn);Norm3 (Bn);
-	{  Addition     (T2,T1,Tn,SizeOf (Real),3);Norm3 (Tn); {Tangente wird nicht ben”tigt}
+	{  Addition     (T2,T1,Tn,SizeOf (Real),3);Norm3 (Tn); {Tangente wird nicht benï¿½tigt}
 	   IF ((NOT closed) AND ((i = 1) OR (i = L.Anzahl))) OR NOT Frenet
 	    THEN KreuzProdukt (T1,Bn,Nm)
 	    ELSE Subtraktion  (T2,T1,Nm,SizeOf (Real),3);
@@ -272,7 +281,7 @@ public class Figures3D {
 	     INC (RZ1);
 	     INC (RZ2);
 	    }
-	   INC (j,N);INC (m,N); {h„tte auch in obige Schleife gepaát,wird aber noch oben ben”tigt !}
+	   INC (j,N);INC (m,N); {hï¿½tte auch in obige Schleife gepaï¿½t,wird aber noch oben benï¿½tigt !}
 	   IF (j > S.Punkte) THEN j = 1;
 	   Zeiger (PV1).Offset = Zeiger (PV2).Offset;
 	   rx = rx+drx;
@@ -332,8 +341,8 @@ public class Figures3D {
 	 g = g/Pred (N+Byte (Voll));
 	 for (i = 1 TO N DO { Cos_Sin (SW,RZ1,RZ2);SW = SW+g;INC (RZ1);INC (RZ2); }
 	 S.Punkte = L.Punkte*N;PG = S.Punkte*SizeOf (Vektor3);GetMem (S.EckPunkte,PG);
-	 j = 0;for (i = 1 TO L.Flaechen DO INC (j,L.Raender[i].Grad); {Seiten-Fl„chen}
-	 S. Flaechen = j*N;IF NOT Voll THEN INC (S.Flaechen,L.Flaechen SHL 1); {Rand-Fl„chen}
+	 j = 0;for (i = 1 TO L.Flaechen DO INC (j,L.Raender[i].Grad); {Seiten-Flï¿½chen}
+	 S. Flaechen = j*N;IF NOT Voll THEN INC (S.Flaechen,L.Flaechen SHL 1); {Rand-Flï¿½chen}
 	 S.OFlaechen = 0;S.MaxEck = 4;
 	 FG = S.Flaechen*SizeOf (Permutation);GetMem (S.Raender,FG);
 	 PK = P_Permutation (L.Raender);
@@ -343,7 +352,7 @@ public class Figures3D {
 	 PV1 = P_Vektor2 (L.EckPunkte);
 	 PV2 = P_Vektor3 (S.EckPunkte);
 	 NP = 1;Summe = Null; {#Punkte}
-	 for (i = 1 TO L.Punkte DO {EckPunkte des Rot-K”rpers erzeugen}
+	 for (i = 1 TO L.Punkte DO {EckPunkte des Rot-Kï¿½rpers erzeugen}
 	  {
 	   B_Hilf = ABS (PV1[1]) > Eps;
 	   IF B_Hilf {Exzentrischer Punkt}
@@ -371,8 +380,8 @@ public class Figures3D {
 	 DEC (NP);S.Punkte = NP;ReSizeMem (Pointer (S.EckPunkte),PG,NP*SizeOf (Vektor3));
 	 PK = P_Permutation (L.Raender);
 	 writer = P_Permutation (S.Raender);
-	 NF = 0;NP = 0; {#Fl„chen}
-	 for (i = 1 TO L.Flaechen DO {Fl„chen aufbauen}
+	 NF = 0;NP = 0; {#Flï¿½chen}
+	 for (i = 1 TO L.Flaechen DO {Flï¿½chen aufbauen}
 	  {
 	   PW1 = PK[PK.Grad];
 	   PW2 = P_Word (PK.a);
@@ -386,7 +395,7 @@ public class Figures3D {
 	        ELSE FlaechenBilden (4,ABS (BF[PW1]),ABS (BF[PW2]),FALSE);
 	     Zeiger (PW1).Offset = Zeiger (PW2).Offset;INC (PW2); {zyklisch geschlossen}
 	    }
-	   IF NOT Voll THEN {Rand-Fl„chen ansetzen}
+	   IF NOT Voll THEN {Rand-Flï¿½chen ansetzen}
 	    {
 	     INC (NF,2);
 	     Z3 = PK.Grad*SizeOf (Word);                  {gleiche Reihenfolge}

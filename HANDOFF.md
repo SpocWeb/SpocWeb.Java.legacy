@@ -83,7 +83,7 @@ concurrently against the same file):
 | `streamIO/integer` | 157 | 39243 | 0 | unclaimed | - |
 | `graphic` (root+example+implement+svg) | 50 | 14297 | 34 | done | agent-graphic-misc |
 | `graphic/math2D`+`graphic/ms3d` | 18 | 3525 | 18 | done | agent-graphic-2d |
-| `graphic/math3D` | 32 | 6425 | 0 | claimed | agent-graphic-math3D |
+| `graphic/math3D` | 32 | 6425 | 1 | done | agent-graphic-math3D |
 | `graphic/mvc` | 26 | 4789 | 0 | claimed | agent-graphic-mvc |
 | `math` (root+algorithm+integration+wavelet) | 18 | 3123 | 18 | done | agent-math-core |
 | `math/fit`+`math/refiner` | 27 | 3644 | 27 | done | agent-math-fit |
@@ -363,6 +363,7 @@ same harness against it. A test that has not been seen red proves nothing.
 | graphic/svg/SvgApplet.java | SvgApplet | getTrafo(Rectangle) | 240 | The `bounds` parameter is ignored and the transform is never recomputed from it; every caller passes null, so this is effectively a no-arg getter for `#trafo`. | Low | open |
 | graphic/svg/SvgApplet.java | SvgApplet | setTrafo(Coordinates2D) | 247 | Adds a new `Coord2DMouseController` via `addMouseListener`/`addMouseMotionListener` on every call without removing the listeners installed by a previous call; repeated invocations accumulate duplicate listeners. | Medium | open |
 | graphic/svg/SvgApplet.java | SvgApplet | image(Attributes) | 488 | The `xlink:href` attribute of an `<image>` element is untrusted content from the parsed SVG document; it is concatenated into a URL and fetched with no validation (scheme allow-list, path-traversal check), letting a malicious SVG file make this Applet fetch an arbitrary URL (SSRF-like) or read an arbitrary local file. | Medium | open |
+| graphic/math3D/OdePlotter.java | OdePlotter | drawLoop() | 101 | `Rect` is a legal constructor argument that may be `null`; the do/while loop condition `(Rect != null) && Rect.contains(...)` is then false from the start, so the trajectory draws exactly one step instead of running unbounded until the drawing area is left, as the surrounding comments describe. | Medium | open |
 
 ## Tool defects found and fixed during the pilot
 

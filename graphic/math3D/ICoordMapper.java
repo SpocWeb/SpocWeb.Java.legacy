@@ -3,6 +3,15 @@ package graphic.math3D;
 import graphic.Point2D;
 
 /**Interface that defines a Mapping Method from a float[] to 2D Coordinates.
+ * <!-- docstate
+ * pass: 2
+ * mtime: 2026-09-05T10:13:18Z
+ * digest: 3b0f55f53a8756d2820b507094a41a4118a671dac67fe74e97a220410920f79f
+ * stale: false
+ * tags: [code/coordinate_transform]
+ * concepts: [Coordinate Mapper Interface]
+ * facets: {layer: infrastructure, status: legacy, complexity: low}
+ * -->
  * Also calculating the Distance has to happen here!  */
 public interface ICoordMapper {
 

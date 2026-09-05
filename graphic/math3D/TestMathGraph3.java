@@ -32,6 +32,15 @@ import streamIO.copy.group.ring.StepRK;
  * Program execution begins with the init() method.
  * 
  * 
+ * <!-- docstate
+ * pass: 2
+ * mtime: 2026-09-05T12:43:48Z
+ * digest: 5a16ab48715ae164d55f5d1f9447b20cc7e6ab5cab262fa2209d90de186c8f1e
+ * stale: false
+ * tags: [code/testing, code/3d_rendering]
+ * concepts: [3D Graph Demo/Test Harness]
+ * facets: {layer: test, status: legacy, complexity: low}
+ * -->
  */
 public class TestMathGraph3 
 //extends Body3DPainter
@@ -41,6 +50,7 @@ implements IPainter { //Applet {
 	/// #region : static Constants and Variables
 	////////////////////////////////////////////////////////////////////////////////
 
+	/** The {@link #state} counter value that selects the Lorentz attractor demo. */
 	final static public int TEST_LORENTZ = 9;
 	
 	private static final int TEST_SCANNING = 6;
@@ -99,7 +109,8 @@ implements IPainter { //Applet {
 
 	Image img;
 	
-	/** @see graphic.mvc.IPainter#paintFrame(graphic.IGraphText)	 */
+	/** Repaints the current demo Frame, selected by {@link #state}'s counter.
+	 * @see graphic.mvc.IPainter#paintFrame(graphic.IGraphText)	 */
 	public void draw(IGraphText gText) {
 		if (gText == null) {
 			canvas.repaint(); 

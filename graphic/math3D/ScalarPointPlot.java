@@ -8,6 +8,15 @@ import graphic.Point2D;
 import java.awt.Color;
 /**Helper Class that encapsulates Drawing Balls symbolizing scalar Values in 3 Dimensions.
  * This Class is supposed to be called by the recursive Stepper Routine.
+ * <!-- docstate
+ * pass: 2
+ * mtime: 2026-09-05T10:13:18Z
+ * digest: 52ebe7a273d20eccdde68ca02e9ba7fa66c2e7f8121139389241403068789ca9
+ * stale: false
+ * tags: [code/3d_rendering, code/chart_rendering]
+ * concepts: [Scalar-Colored Point Plot]
+ * facets: {layer: domain, status: legacy, complexity: low}
+ * -->
  */
 public class ScalarPointPlot
 	extends ASpatial {

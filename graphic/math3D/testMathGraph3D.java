@@ -41,11 +41,29 @@ import graphic.Polygon2D;
   * Created on	06-28-1999, 12:52 PM<p>
   * @author 	Matthias Heuer
   * @version	1.0
+  * <!-- docstate
+  * pass: 2
+  * mtime: 2026-09-05T12:43:56Z
+  * digest: 9e1011bc96149b47b55fc3c33048149d63790d3ec049d4cfb92a82662664b585
+  * stale: false
+  * tags: [code/testing, code/3d_rendering]
+  * concepts: [3D Graph Demo/Test Harness]
+  * facets: {layer: test, status: legacy, complexity: low}
+  * -->
   */
 public class testMathGraph3D {
 
 	private static int state = -10;
 
+	/**The main entry point for the application; runs a fixed series of function and
+	 * body plot demos selected by {@link #state}.
+	 *
+	 * <!-- docstate
+	 * tags: [code/testing]
+	 * concepts: [Demo Entry Point]
+	 * facets: {layer: test, status: legacy, complexity: low}
+	 * -->
+	 * @param args Array of parameters passed to the application via the command line.	 */
 	public static void main(String[] args) {
 		plotFunction(Sinus.SINUS);
 		plotFunction(Cosinus.Cosinus);

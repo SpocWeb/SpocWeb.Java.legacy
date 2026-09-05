@@ -5,9 +5,21 @@ import math.vector.VectorDouble;
 import streamIO.Assert;
 import streamIO.Log;
 
-/**Contains the Coordinates for the five Platonic Bodies	 */
+/**Contains the Coordinates for the five Platonic Bodies
+ *
+ * <!-- docstate
+ * pass: 2
+ * mtime: 2026-09-05T12:43:33Z
+ * digest: 658452854a9bea9ff704f76e4f5357d4ebbdebcb30c762621df00ec1f79f04e5
+ * stale: false
+ * tags: [code/platonic_solids, code/3d_geometry]
+ * concepts: [Platonic Solid Coordinate Generator]
+ * facets: {layer: domain, status: legacy, complexity: medium}
+ * -->
+ */
 public class Platonic {
 	
+	/** The square root of 3, reused by {@link #MatrixTetrahedron}. */
 	final static public double Sqrt3 = Math.sqrt(3);
 	
 	/** Matrix to transform cartesian Coordinates 
@@ -37,6 +49,7 @@ public class Platonic {
 		{ 1, 1/Sqrt3, Math.sqrt(8/3.0)}
 	};
 	
+	/** The square root of 2, reused by {@link #MatrixTetrahedron2} and the Octahedron/Dodecahedron coordinates. */
 	final static public double Sqrt2 = Math.sqrt(2);
 	
 	/** Alternative Matrix to transform cartesian Coordinates 
@@ -131,7 +144,9 @@ public class Platonic {
 		{4,1,5},
 		{4,6,1}};
 
+	/** The golden ratio, used to build the Dodecahedron and Icosahedron coordinates. */
 	final static public double golden  = function.IMeasurAble.GOLDEN;
+	/** The golden ratio minus one (its reciprocal), used alongside {@link #golden}. */
 	final static public double golden1 = function.IMeasurAble.ONEGOLDEN;
 
 	/**The Points of an Dodecahedron	
@@ -235,6 +250,7 @@ public class Platonic {
 								   {+1, -1, -1},
 								   {-0, +0, -2}};
 
+	/**The Planes of a Rauthedron	 */
 	public static final
 	int[][] PlanesRauthedron ={{ 1,  2,  7,  3},
 							   { 1,  3,  8,  4},
@@ -283,6 +299,11 @@ public class Platonic {
 	/**
 	 * demonstrates how each Point the hexagonal System 
 	 * has d*(d+1) nearest Neighbors 
+	 * <!-- docstate
+	 * tags: [code/platonic_solids, code/testing]
+	 * concepts: [Tetrahedron Matrix Self-Test]
+	 * facets: {layer: test, status: legacy, complexity: low}
+	 * -->
 	 */
 	final static public void testMatrixTetrahedron() {
 		int counterDist1 = 0; 
@@ -307,7 +328,14 @@ public class Platonic {
 		Assert.EQUALS(12, counterDist1); 
 	}
 	
+	/**The main entry point for the application; runs {@link #testMatrixTetrahedron()}.
+	 * <!-- docstate
+	 * tags: [code/platonic_solids, code/testing]
+	 * concepts: [Demo Entry Point]
+	 * facets: {layer: test, status: legacy, complexity: low}
+	 * -->
+	 * @param args Array of parameters passed to the application via the command line. */
 	final static public void main(final String[] args) {
-		testMatrixTetrahedron(); 
+		testMatrixTetrahedron();
 	}
 }

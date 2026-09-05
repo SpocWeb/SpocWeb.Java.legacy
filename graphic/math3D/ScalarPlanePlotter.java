@@ -10,6 +10,15 @@ import java.awt.Color;
 /**
  * Helper Routine to be called by the recursive Rastering Routine.
  * The Planes are filled with an interpolated Coloring determined by the palette. 	 
+ * <!-- docstate
+ * pass: 2
+ * mtime: 2026-09-05T10:13:18Z
+ * digest: 192611d1dd35096220e5610c4f447927de0eaa31b84a6aa6ed5304eb561e9034
+ * stale: false
+ * tags: [code/3d_rendering, code/chart_rendering]
+ * concepts: [Scalar-Colored Plane Plotter]
+ * facets: {layer: domain, status: legacy, complexity: medium}
+ * -->
  */
 public class ScalarPlanePlotter
 	extends PlanePlotter {

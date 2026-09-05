@@ -26,6 +26,15 @@ import java.awt.event.KeyListener;
  * @author mheuer
  * @version	1.0
  *
+ * <!-- docstate
+ * pass: 2
+ * mtime: 2026-09-05T12:43:04Z
+ * digest: 0a7776602a52eda30d4e4e800afb601685439486d5d67dc7573e6385819cf7cf
+ * stale: false
+ * tags: [code/keyboard_input]
+ * concepts: [Keyboard-Driven Point Controller]
+ * facets: {layer: domain, status: legacy, complexity: low}
+ * -->
  */
 public class FloatPointKeyController 
 extends MultiPainter
@@ -91,10 +100,12 @@ implements KeyListener {
 	/// KeyListener Event Callback Methods
 	/////////////////////////////////////////////////////////////////////////////////////
 
-	/** @see java.awt.event.KeyListener#keyTyped(java.awt.event.KeyEvent)	 */
+	/** Does nothing; only key press and release move the point.
+	 * @see java.awt.event.KeyListener#keyTyped(java.awt.event.KeyEvent)	 */
 	public void keyTyped(KeyEvent e) { }
 
-	/** @see java.awt.event.KeyListener#keyPressed(java.awt.event.KeyEvent)	 */
+	/** Moves the point when the pressed key's modifiers match this controller's {@link #modifier}.
+	 * @see java.awt.event.KeyListener#keyPressed(java.awt.event.KeyEvent)	 */
 	public void keyPressed(KeyEvent e) {
 		final int mod = e.getModifiersEx() & ~InputEvent.CTRL_DOWN_MASK;
 		if ((modifier == 0) && (mod != 0)) {
@@ -104,7 +115,8 @@ implements KeyListener {
 		movePoint(e.getKeyCode(), e.getModifiersEx()); 
 	}
 
-	/** @see java.awt.event.KeyListener#keyReleased(java.awt.event.KeyEvent)	 */
+	/** Does nothing; only key press and release move the point.
+	 * @see java.awt.event.KeyListener#keyReleased(java.awt.event.KeyEvent)	 */
 	public void keyReleased(KeyEvent e) {}
 
 }
