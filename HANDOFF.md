@@ -86,7 +86,7 @@ concurrently against the same file):
 | `structure` | 52 | 4933 | 0 | claimed | agent-structure |
 | `streamIO/real` | 51 | 6801 | 0 | claimed | agent-streamIO-real |
 | `tester` | 49 | 3327 | 49 | done | agent-tester |
-| `technology` | 41 | 9400 | 0 | claimed | agent-technology |
+| `technology` | 41 | 9400 | 41 | done | agent-technology |
 | `synch` | 32 | 4243 | 32 | done | agent-synch |
 | `graphs` | 31 | 11258 | 31 | done | agent-graphs |
 | `asynch` | 28 | 3052 | 28 | done | agent-asynch |
@@ -275,6 +275,10 @@ same harness against it. A test that has not been seen red proves nothing.
 | streamIO/StringBufferOutputStream.java | StringBufferOutputStream | addBuffer(StringBuffer, int) | ~208 | Calls `addBuffer(b, 0, stop)` against a 3-arg overload whose parameter order is `(b, stop, start)` - reversed vs. the correct sibling `addString(String, int)`. For any `stop > 0` this silently appends nothing. | Medium | open |
 | graphs/AGraph.java | AGraph | (edge-filtering method) | ~116 | Filters by `curr.val` (the target Node index) instead of `curr.weight`, so weight-based edge filtering silently filters on the wrong field. | Medium | open |
 | graphs/SparseMatrix.java | SparseMatrix | getDegree/getInDegree helper | ~241 | Calls itself instead of `getOutDegree(j)`, causing infinite recursion and a `StackOverflowError` on every call. | High | open |
+| technology/RandomGUID.java | RandomGUID | getRandomGUID(boolean) | 160 | If `MessageDigest.getInstance("MD5")` throws `NoSuchAlgorithmException`, the catch block only logs it and leaves `md5 == null`; execution falls through to `md5.update(...)`, throwing an unhandled `NullPointerException` instead of failing with the original cause. | Low | open |
+| technology/xml/XmlToDirHandler.java | XmlToDirHandler | main(String[]) | 209 | `System.out.println(args)` prints the `String[]` array's reference/hashcode (e.g. `[Ljava.lang.String;@...`) instead of its contents; likely meant `Arrays.toString(args)` or a loop over the elements. | Low | open |
+| technology/xml/XmlUnmarshaller.java | XmlUnmarshaller | setBuffer(String) | 298 | Duplicate `argType == long.class` check (already handled two branches above), almost certainly meant `argType == double.class`. A double-typed field is never converted here and falls through to the no-op else branch, leaving the raw String instead of a `Double`. | Medium | open |
+| technology/xml/test/KundeInSystem.java | KundeInSystem | ZKDBBaseType() (accessor) | 83 | The getter for field `typ` is named literally `ZKDBBaseType()` instead of `getTyp()` (compare the sibling `setTyp(ZKDBBaseType)` and every other class in the package's `getTyp()`) - almost certainly a copy/rename mistake. Reflection-based access by naming convention, as used elsewhere in this codebase (Accessor/SaxDispatcher), will not find a `getTyp` method on this class. | Medium | open |
 | tester/logic/ConditionTable.java | ConditionTable | constructor | ~39 | Validation loop reads the instance field `Conditions` (still null) instead of the constructor parameter `Conditions_`, before the field is assigned - every construction throws `NullPointerException`. | Critical | open |
 | tester/MetricMeasurAble.java | MetricMeasurAble | dist(Object, Object) | ~49 | Both operands call `a.getDouble()`; `b`'s value is never read, so `dist()` always returns 0 for distinct objects. | High | open |
 | tester/FilterTestWaiter.java | FilterTestWaiter | test(Object) | ~56 | `wait(waitTime)` is called without holding this instance's monitor (no `synchronized` block) - always throws `IllegalMonitorStateException` at runtime. | High | open |

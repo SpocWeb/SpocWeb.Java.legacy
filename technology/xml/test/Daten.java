@@ -15,13 +15,19 @@ import java.util.ArrayList;
 import java.util.Iterator;
 
 /**
- * 
- * ============= DATEN TYPE ==================	
- * 				Das Datenfeld beinhaltet alle Business Relevante Daten für
- * die Transaktion
- * 				
- * 
+ * Castor-generated value object for the ZKDB "Daten" (data) XML type: holds the Kunde plus
+ * all business-relevant collections (Adresse, Bankverbindung, etc.) for a Transaktion.
+ *
  * @version $Revision$ $Date$
+ * <!-- docstate
+ * pass: 2
+ * mtime: 2026-09-05T10:13:32Z
+ * digest: 5ebbe934eeaef67014bdda0f8981a4e4da9caec13f0dbab8b07313c6aca6d0fd
+ * stale: false
+ * tags: [code/data_transfer_object]
+ * concepts: [Castor Data Transfer Object Root]
+ * facets: {layer: domain, status: legacy, complexity: medium}
+ * -->
 **/
 public class Daten 
 extends ZKDBBaseType {
@@ -63,6 +69,7 @@ extends ZKDBBaseType {
      //- Constructors -/
     //----------------/
 
+    /** Creates an empty Daten with all collection fields initialized to empty lists. */
     public Daten() {
         super();
         _kundeInSystemList = new ArrayList();
@@ -83,8 +90,8 @@ extends ZKDBBaseType {
     //-----------/
 
     /**
-     * 
-     * 
+     * Appends a Adresse to the end of the list.
+     *
      * @param vAdresse
     **/
     public void addAdresse(Adresse vAdresse)
@@ -94,8 +101,8 @@ extends ZKDBBaseType {
     } //-- void addAdresse(Adresse) 
 
     /**
-     * 
-     * 
+     * Inserts a Adresse at the given position in the list.
+     *
      * @param index
      * @param vAdresse
     **/
@@ -106,8 +113,8 @@ extends ZKDBBaseType {
     } //-- void addAdresse(int, Adresse) 
 
     /**
-     * 
-     * 
+     * Appends a Bankverbindung to the end of the list.
+     *
      * @param vBankverbindung
     **/
     public void addBankverbindung(Bankverbindung vBankverbindung)
@@ -117,8 +124,8 @@ extends ZKDBBaseType {
     } //-- void addBankverbindung(Bankverbindung) 
 
     /**
-     * 
-     * 
+     * Inserts a Bankverbindung at the given position in the list.
+     *
      * @param index
      * @param vBankverbindung
     **/
@@ -129,8 +136,8 @@ extends ZKDBBaseType {
     } //-- void addBankverbindung(int, Bankverbindung) 
 
     /**
-     * 
-     * 
+     * Appends a Benutzererkennung to the end of the list.
+     *
      * @param vBenutzererkennung
     **/
     public void addBenutzererkennung(Benutzererkennung vBenutzererkennung)
@@ -140,8 +147,8 @@ extends ZKDBBaseType {
     } //-- void addBenutzererkennung(Benutzererkennung) 
 
     /**
-     * 
-     * 
+     * Inserts a Benutzererkennung at the given position in the list.
+     *
      * @param index
      * @param vBenutzererkennung
     **/
@@ -152,8 +159,8 @@ extends ZKDBBaseType {
     } //-- void addBenutzererkennung(int, Benutzererkennung) 
 
     /**
-     * 
-     * 
+     * Appends a Kommunikation to the end of the list.
+     *
      * @param vKommunikation
     **/
     public void addKommunikation(Kommunikation vKommunikation)
@@ -163,8 +170,8 @@ extends ZKDBBaseType {
     } //-- void addKommunikation(Kommunikation) 
 
     /**
-     * 
-     * 
+     * Inserts a Kommunikation at the given position in the list.
+     *
      * @param index
      * @param vKommunikation
     **/
@@ -175,8 +182,8 @@ extends ZKDBBaseType {
     } //-- void addKommunikation(int, Kommunikation) 
 
     /**
-     * 
-     * 
+     * Appends a Kreditkarte to the end of the list.
+     *
      * @param vKreditkarte
     **/
     public void addKreditkarte(Kreditkarte vKreditkarte)
@@ -186,8 +193,8 @@ extends ZKDBBaseType {
     } //-- void addKreditkarte(Kreditkarte) 
 
     /**
-     * 
-     * 
+     * Inserts a Kreditkarte at the given position in the list.
+     *
      * @param index
      * @param vKreditkarte
     **/
@@ -198,8 +205,8 @@ extends ZKDBBaseType {
     } //-- void addKreditkarte(int, Kreditkarte) 
 
     /**
-     * 
-     * 
+     * Appends a KundeInSystem to the end of the list.
+     *
      * @param vKundeInSystem
     **/
     public void addKundeInSystem(KundeInSystem vKundeInSystem)
@@ -209,8 +216,8 @@ extends ZKDBBaseType {
     } //-- void addKundeInSystem(KundeInSystem) 
 
     /**
-     * 
-     * 
+     * Inserts a KundeInSystem at the given position in the list.
+     *
      * @param index
      * @param vKundeInSystem
     **/
@@ -221,8 +228,8 @@ extends ZKDBBaseType {
     } //-- void addKundeInSystem(int, KundeInSystem) 
 
     /**
-     * 
-     * 
+     * Appends a Kundenbeziehung to the end of the list.
+     *
      * @param vKundenbeziehung
     **/
     public void addKundenbeziehung(Kundenbeziehung vKundenbeziehung)
@@ -232,8 +239,8 @@ extends ZKDBBaseType {
     } //-- void addKundenbeziehung(Kundenbeziehung) 
 
     /**
-     * 
-     * 
+     * Inserts a Kundenbeziehung at the given position in the list.
+     *
      * @param index
      * @param vKundenbeziehung
     **/
@@ -244,8 +251,8 @@ extends ZKDBBaseType {
     } //-- void addKundenbeziehung(int, Kundenbeziehung) 
 
     /**
-     * 
-     * 
+     * Appends a Kundenkarte to the end of the list.
+     *
      * @param vKundenkarte
     **/
     public void addKundenkarte(Kundenkarte vKundenkarte)
@@ -255,8 +262,8 @@ extends ZKDBBaseType {
     } //-- void addKundenkarte(Kundenkarte) 
 
     /**
-     * 
-     * 
+     * Inserts a Kundenkarte at the given position in the list.
+     *
      * @param index
      * @param vKundenkarte
     **/
@@ -267,8 +274,8 @@ extends ZKDBBaseType {
     } //-- void addKundenkarte(int, Kundenkarte) 
 
     /**
-     * 
-     * 
+     * Appends a Kundenmerkmal to the end of the list.
+     *
      * @param vKundenmerkmal
     **/
     public void addKundenmerkmal(Kundenmerkmal vKundenmerkmal)
@@ -278,8 +285,8 @@ extends ZKDBBaseType {
     } //-- void addKundenmerkmal(Kundenmerkmal) 
 
     /**
-     * 
-     * 
+     * Inserts a Kundenmerkmal at the given position in the list.
+     *
      * @param index
      * @param vKundenmerkmal
     **/
@@ -290,8 +297,8 @@ extends ZKDBBaseType {
     } //-- void addKundenmerkmal(int, Kundenmerkmal) 
 
     /**
-     * 
-     * 
+     * Appends a Rolle to the end of the list.
+     *
      * @param vRolle
     **/
     public void addRolle(Rolle vRolle)
@@ -301,8 +308,8 @@ extends ZKDBBaseType {
     } //-- void addRolle(Rolle) 
 
     /**
-     * 
-     * 
+     * Inserts a Rolle at the given position in the list.
+     *
      * @param index
      * @param vRolle
     **/
@@ -312,149 +319,129 @@ extends ZKDBBaseType {
         _rolleList.add(index, vRolle);
     } //-- void addRolle(int, Rolle) 
 
-    /**
-    **/
+    /** Removes all Adresse elements from the list. */
     public void clearAdresse()
     {
         _adresseList.clear();
     } //-- void clearAdresse() 
 
-    /**
-    **/
+    /** Removes all Bankverbindung elements from the list. */
     public void clearBankverbindung()
     {
         _bankverbindungList.clear();
     } //-- void clearBankverbindung() 
 
-    /**
-    **/
+    /** Removes all Benutzererkennung elements from the list. */
     public void clearBenutzererkennung()
     {
         _benutzererkennungList.clear();
     } //-- void clearBenutzererkennung() 
 
-    /**
-    **/
+    /** Removes all Kommunikation elements from the list. */
     public void clearKommunikation()
     {
         _kommunikationList.clear();
     } //-- void clearKommunikation() 
 
-    /**
-    **/
+    /** Removes all Kreditkarte elements from the list. */
     public void clearKreditkarte()
     {
         _kreditkarteList.clear();
     } //-- void clearKreditkarte() 
 
-    /**
-    **/
+    /** Removes all KundeInSystem elements from the list. */
     public void clearKundeInSystem()
     {
         _kundeInSystemList.clear();
     } //-- void clearKundeInSystem() 
 
-    /**
-    **/
+    /** Removes all Kundenbeziehung elements from the list. */
     public void clearKundenbeziehung()
     {
         _kundenbeziehungList.clear();
     } //-- void clearKundenbeziehung() 
 
-    /**
-    **/
+    /** Removes all Kundenkarte elements from the list. */
     public void clearKundenkarte()
     {
         _kundenkarteList.clear();
     } //-- void clearKundenkarte() 
 
-    /**
-    **/
+    /** Removes all Kundenmerkmal elements from the list. */
     public void clearKundenmerkmal()
     {
         _kundenmerkmalList.clear();
     } //-- void clearKundenmerkmal() 
 
-    /**
-    **/
+    /** Removes all Rolle elements from the list. */
     public void clearRolle()
     {
         _rolleList.clear();
     } //-- void clearRolle() 
 
-    /**
-    **/
+    /** Returns an Iterator over all Adresse elements in the list. */
     public Iterator enumerateAdresse()
     {
         return _adresseList.iterator();
     } //-- Iterator enumerateAdresse() 
 
-    /**
-    **/
+    /** Returns an Iterator over all Bankverbindung elements in the list. */
     public Iterator enumerateBankverbindung()
     {
         return _bankverbindungList.iterator();
     } //-- Iterator enumerateBankverbindung() 
 
-    /**
-    **/
+    /** Returns an Iterator over all Benutzererkennung elements in the list. */
     public Iterator enumerateBenutzererkennung()
     {
         return _benutzererkennungList.iterator();
     } //-- Iterator enumerateBenutzererkennung() 
 
-    /**
-    **/
+    /** Returns an Iterator over all Kommunikation elements in the list. */
     public Iterator enumerateKommunikation()
     {
         return _kommunikationList.iterator();
     } //-- Iterator enumerateKommunikation() 
 
-    /**
-    **/
+    /** Returns an Iterator over all Kreditkarte elements in the list. */
     public Iterator enumerateKreditkarte()
     {
         return _kreditkarteList.iterator();
     } //-- Iterator enumerateKreditkarte() 
 
-    /**
-    **/
+    /** Returns an Iterator over all KundeInSystem elements in the list. */
     public Iterator enumerateKundeInSystem()
     {
         return _kundeInSystemList.iterator();
     } //-- Iterator enumerateKundeInSystem() 
 
-    /**
-    **/
+    /** Returns an Iterator over all Kundenbeziehung elements in the list. */
     public Iterator enumerateKundenbeziehung()
     {
         return _kundenbeziehungList.iterator();
     } //-- Iterator enumerateKundenbeziehung() 
 
-    /**
-    **/
+    /** Returns an Iterator over all Kundenkarte elements in the list. */
     public Iterator enumerateKundenkarte()
     {
         return _kundenkarteList.iterator();
     } //-- Iterator enumerateKundenkarte() 
 
-    /**
-    **/
+    /** Returns an Iterator over all Kundenmerkmal elements in the list. */
     public Iterator enumerateKundenmerkmal()
     {
         return _kundenmerkmalList.iterator();
     } //-- Iterator enumerateKundenmerkmal() 
 
-    /**
-    **/
+    /** Returns an Iterator over all Rolle elements in the list. */
     public Iterator enumerateRolle()
     {
         return _rolleList.iterator();
     } //-- Iterator enumerateRolle() 
 
     /**
-     * 
-     * 
+     * Returns the Adresse at the given position in the list.
+     *
      * @param index
     **/
     public Adresse getAdresse(int index)
@@ -468,8 +455,7 @@ extends ZKDBBaseType {
         return (Adresse) _adresseList.get(index);
     } //-- Adresse getAdresse(int) 
 
-    /**
-    **/
+    /** Returns all Adresse elements as a new array. */
     public Adresse[] getAdresse()
     {
         int size = _adresseList.size();
@@ -480,16 +466,15 @@ extends ZKDBBaseType {
         return mArray;
     } //-- Adresse[] getAdresse() 
 
-    /**
-    **/
+    /** Returns the number of Adresse elements in the list. */
     public int getAdresseCount()
     {
         return _adresseList.size();
     } //-- int getAdresseCount() 
 
     /**
-     * 
-     * 
+     * Returns the Bankverbindung at the given position in the list.
+     *
      * @param index
     **/
     public Bankverbindung getBankverbindung(int index)
@@ -503,8 +488,7 @@ extends ZKDBBaseType {
         return (Bankverbindung) _bankverbindungList.get(index);
     } //-- Bankverbindung getBankverbindung(int) 
 
-    /**
-    **/
+    /** Returns all Bankverbindung elements as a new array. */
     public Bankverbindung[] getBankverbindung()
     {
         int size = _bankverbindungList.size();
@@ -515,16 +499,15 @@ extends ZKDBBaseType {
         return mArray;
     } //-- Bankverbindung[] getBankverbindung() 
 
-    /**
-    **/
+    /** Returns the number of Bankverbindung elements in the list. */
     public int getBankverbindungCount()
     {
         return _bankverbindungList.size();
     } //-- int getBankverbindungCount() 
 
     /**
-     * 
-     * 
+     * Returns the Benutzererkennung at the given position in the list.
+     *
      * @param index
     **/
     public Benutzererkennung getBenutzererkennung(int index)
@@ -538,8 +521,7 @@ extends ZKDBBaseType {
         return (Benutzererkennung) _benutzererkennungList.get(index);
     } //-- Benutzererkennung getBenutzererkennung(int) 
 
-    /**
-    **/
+    /** Returns all Benutzererkennung elements as a new array. */
     public Benutzererkennung[] getBenutzererkennung()
     {
         int size = _benutzererkennungList.size();
@@ -550,16 +532,15 @@ extends ZKDBBaseType {
         return mArray;
     } //-- Benutzererkennung[] getBenutzererkennung() 
 
-    /**
-    **/
+    /** Returns the number of Benutzererkennung elements in the list. */
     public int getBenutzererkennungCount()
     {
         return _benutzererkennungList.size();
     } //-- int getBenutzererkennungCount() 
 
     /**
-     * 
-     * 
+     * Returns the Kommunikation at the given position in the list.
+     *
      * @param index
     **/
     public Kommunikation getKommunikation(int index)
@@ -573,8 +554,7 @@ extends ZKDBBaseType {
         return (Kommunikation) _kommunikationList.get(index);
     } //-- Kommunikation getKommunikation(int) 
 
-    /**
-    **/
+    /** Returns all Kommunikation elements as a new array. */
     public Kommunikation[] getKommunikation()
     {
         int size = _kommunikationList.size();
@@ -585,16 +565,15 @@ extends ZKDBBaseType {
         return mArray;
     } //-- Kommunikation[] getKommunikation() 
 
-    /**
-    **/
+    /** Returns the number of Kommunikation elements in the list. */
     public int getKommunikationCount()
     {
         return _kommunikationList.size();
     } //-- int getKommunikationCount() 
 
     /**
-     * 
-     * 
+     * Returns the Kreditkarte at the given position in the list.
+     *
      * @param index
     **/
     public Kreditkarte getKreditkarte(int index)
@@ -608,8 +587,7 @@ extends ZKDBBaseType {
         return (Kreditkarte) _kreditkarteList.get(index);
     } //-- Kreditkarte getKreditkarte(int) 
 
-    /**
-    **/
+    /** Returns all Kreditkarte elements as a new array. */
     public Kreditkarte[] getKreditkarte()
     {
         int size = _kreditkarteList.size();
@@ -620,8 +598,7 @@ extends ZKDBBaseType {
         return mArray;
     } //-- Kreditkarte[] getKreditkarte() 
 
-    /**
-    **/
+    /** Returns the number of Kreditkarte elements in the list. */
     public int getKreditkarteCount()
     {
         return _kreditkarteList.size();
@@ -638,8 +615,8 @@ extends ZKDBBaseType {
     } //-- Kunde getKunde() 
 
     /**
-     * 
-     * 
+     * Returns the KundeInSystem at the given position in the list.
+     *
      * @param index
     **/
     public KundeInSystem getKundeInSystem(int index)
@@ -653,8 +630,7 @@ extends ZKDBBaseType {
         return (KundeInSystem) _kundeInSystemList.get(index);
     } //-- KundeInSystem getKundeInSystem(int) 
 
-    /**
-    **/
+    /** Returns all KundeInSystem elements as a new array. */
     public KundeInSystem[] getKundeInSystem()
     {
         int size = _kundeInSystemList.size();
@@ -665,16 +641,15 @@ extends ZKDBBaseType {
         return mArray;
     } //-- KundeInSystem[] getKundeInSystem() 
 
-    /**
-    **/
+    /** Returns the number of KundeInSystem elements in the list. */
     public int getKundeInSystemCount()
     {
         return _kundeInSystemList.size();
     } //-- int getKundeInSystemCount() 
 
     /**
-     * 
-     * 
+     * Returns the Kundenbeziehung at the given position in the list.
+     *
      * @param index
     **/
     public Kundenbeziehung getKundenbeziehung(int index)
@@ -688,8 +663,7 @@ extends ZKDBBaseType {
         return (Kundenbeziehung) _kundenbeziehungList.get(index);
     } //-- Kundenbeziehung getKundenbeziehung(int) 
 
-    /**
-    **/
+    /** Returns all Kundenbeziehung elements as a new array. */
     public Kundenbeziehung[] getKundenbeziehung()
     {
         int size = _kundenbeziehungList.size();
@@ -700,16 +674,15 @@ extends ZKDBBaseType {
         return mArray;
     } //-- Kundenbeziehung[] getKundenbeziehung() 
 
-    /**
-    **/
+    /** Returns the number of Kundenbeziehung elements in the list. */
     public int getKundenbeziehungCount()
     {
         return _kundenbeziehungList.size();
     } //-- int getKundenbeziehungCount() 
 
     /**
-     * 
-     * 
+     * Returns the Kundenkarte at the given position in the list.
+     *
      * @param index
     **/
     public Kundenkarte getKundenkarte(int index)
@@ -723,8 +696,7 @@ extends ZKDBBaseType {
         return (Kundenkarte) _kundenkarteList.get(index);
     } //-- Kundenkarte getKundenkarte(int) 
 
-    /**
-    **/
+    /** Returns all Kundenkarte elements as a new array. */
     public Kundenkarte[] getKundenkarte()
     {
         int size = _kundenkarteList.size();
@@ -735,16 +707,15 @@ extends ZKDBBaseType {
         return mArray;
     } //-- Kundenkarte[] getKundenkarte() 
 
-    /**
-    **/
+    /** Returns the number of Kundenkarte elements in the list. */
     public int getKundenkarteCount()
     {
         return _kundenkarteList.size();
     } //-- int getKundenkarteCount() 
 
     /**
-     * 
-     * 
+     * Returns the Kundenmerkmal at the given position in the list.
+     *
      * @param index
     **/
     public Kundenmerkmal getKundenmerkmal(int index)
@@ -758,8 +729,7 @@ extends ZKDBBaseType {
         return (Kundenmerkmal) _kundenmerkmalList.get(index);
     } //-- Kundenmerkmal getKundenmerkmal(int) 
 
-    /**
-    **/
+    /** Returns all Kundenmerkmal elements as a new array. */
     public Kundenmerkmal[] getKundenmerkmal()
     {
         int size = _kundenmerkmalList.size();
@@ -770,16 +740,15 @@ extends ZKDBBaseType {
         return mArray;
     } //-- Kundenmerkmal[] getKundenmerkmal() 
 
-    /**
-    **/
+    /** Returns the number of Kundenmerkmal elements in the list. */
     public int getKundenmerkmalCount()
     {
         return _kundenmerkmalList.size();
     } //-- int getKundenmerkmalCount() 
 
     /**
-     * 
-     * 
+     * Returns the Rolle at the given position in the list.
+     *
      * @param index
     **/
     public Rolle getRolle(int index)
@@ -793,8 +762,7 @@ extends ZKDBBaseType {
         return (Rolle) _rolleList.get(index);
     } //-- Rolle getRolle(int) 
 
-    /**
-    **/
+    /** Returns all Rolle elements as a new array. */
     public Rolle[] getRolle()
     {
         int size = _rolleList.size();
@@ -805,16 +773,15 @@ extends ZKDBBaseType {
         return mArray;
     } //-- Rolle[] getRolle() 
 
-    /**
-    **/
+    /** Returns the number of Rolle elements in the list. */
     public int getRolleCount()
     {
         return _rolleList.size();
     } //-- int getRolleCount() 
 
     /**
-     * 
-     * 
+     * Removes the given Adresse from the list.
+     *
      * @param vAdresse
     **/
     public boolean removeAdresse(Adresse vAdresse)
@@ -824,8 +791,8 @@ extends ZKDBBaseType {
     } //-- boolean removeAdresse(Adresse) 
 
     /**
-     * 
-     * 
+     * Removes the given Bankverbindung from the list.
+     *
      * @param vBankverbindung
     **/
     public boolean removeBankverbindung(Bankverbindung vBankverbindung)
@@ -835,8 +802,8 @@ extends ZKDBBaseType {
     } //-- boolean removeBankverbindung(Bankverbindung) 
 
     /**
-     * 
-     * 
+     * Removes the given Benutzererkennung from the list.
+     *
      * @param vBenutzererkennung
     **/
     public boolean removeBenutzererkennung(Benutzererkennung vBenutzererkennung)
@@ -846,8 +813,8 @@ extends ZKDBBaseType {
     } //-- boolean removeBenutzererkennung(Benutzererkennung) 
 
     /**
-     * 
-     * 
+     * Removes the given Kommunikation from the list.
+     *
      * @param vKommunikation
     **/
     public boolean removeKommunikation(Kommunikation vKommunikation)
@@ -857,8 +824,8 @@ extends ZKDBBaseType {
     } //-- boolean removeKommunikation(Kommunikation) 
 
     /**
-     * 
-     * 
+     * Removes the given Kreditkarte from the list.
+     *
      * @param vKreditkarte
     **/
     public boolean removeKreditkarte(Kreditkarte vKreditkarte)
@@ -868,8 +835,8 @@ extends ZKDBBaseType {
     } //-- boolean removeKreditkarte(Kreditkarte) 
 
     /**
-     * 
-     * 
+     * Removes the given KundeInSystem from the list.
+     *
      * @param vKundeInSystem
     **/
     public boolean removeKundeInSystem(KundeInSystem vKundeInSystem)
@@ -879,8 +846,8 @@ extends ZKDBBaseType {
     } //-- boolean removeKundeInSystem(KundeInSystem) 
 
     /**
-     * 
-     * 
+     * Removes the given Kundenbeziehung from the list.
+     *
      * @param vKundenbeziehung
     **/
     public boolean removeKundenbeziehung(Kundenbeziehung vKundenbeziehung)
@@ -890,8 +857,8 @@ extends ZKDBBaseType {
     } //-- boolean removeKundenbeziehung(Kundenbeziehung) 
 
     /**
-     * 
-     * 
+     * Removes the given Kundenkarte from the list.
+     *
      * @param vKundenkarte
     **/
     public boolean removeKundenkarte(Kundenkarte vKundenkarte)
@@ -901,8 +868,8 @@ extends ZKDBBaseType {
     } //-- boolean removeKundenkarte(Kundenkarte) 
 
     /**
-     * 
-     * 
+     * Removes the given Kundenmerkmal from the list.
+     *
      * @param vKundenmerkmal
     **/
     public boolean removeKundenmerkmal(Kundenmerkmal vKundenmerkmal)
@@ -912,8 +879,8 @@ extends ZKDBBaseType {
     } //-- boolean removeKundenmerkmal(Kundenmerkmal) 
 
     /**
-     * 
-     * 
+     * Removes the given Rolle from the list.
+     *
      * @param vRolle
     **/
     public boolean removeRolle(Rolle vRolle)
@@ -923,8 +890,8 @@ extends ZKDBBaseType {
     } //-- boolean removeRolle(Rolle) 
 
     /**
-     * 
-     * 
+     * Replaces the Adresse at the given position in the list.
+     *
      * @param index
      * @param vAdresse
     **/
@@ -939,8 +906,8 @@ extends ZKDBBaseType {
     } //-- void setAdresse(int, Adresse) 
 
     /**
-     * 
-     * 
+     * Replaces the entire list of Adresse elements with the given array's contents.
+     *
      * @param adresseArray
     **/
     public void setAdresse(Adresse[] adresseArray)
@@ -953,8 +920,8 @@ extends ZKDBBaseType {
     } //-- void setAdresse(Adresse) 
 
     /**
-     * 
-     * 
+     * Replaces the Bankverbindung at the given position in the list.
+     *
      * @param index
      * @param vBankverbindung
     **/
@@ -969,8 +936,8 @@ extends ZKDBBaseType {
     } //-- void setBankverbindung(int, Bankverbindung) 
 
     /**
-     * 
-     * 
+     * Replaces the entire list of Bankverbindung elements with the given array's contents.
+     *
      * @param bankverbindungArray
     **/
     public void setBankverbindung(Bankverbindung[] bankverbindungArray)
@@ -983,8 +950,8 @@ extends ZKDBBaseType {
     } //-- void setBankverbindung(Bankverbindung) 
 
     /**
-     * 
-     * 
+     * Replaces the Benutzererkennung at the given position in the list.
+     *
      * @param index
      * @param vBenutzererkennung
     **/
@@ -999,8 +966,8 @@ extends ZKDBBaseType {
     } //-- void setBenutzererkennung(int, Benutzererkennung) 
 
     /**
-     * 
-     * 
+     * Replaces the entire list of Benutzererkennung elements with the given array's contents.
+     *
      * @param benutzererkennungArray
     **/
     public void setBenutzererkennung(Benutzererkennung[] benutzererkennungArray)
@@ -1013,8 +980,8 @@ extends ZKDBBaseType {
     } //-- void setBenutzererkennung(Benutzererkennung) 
 
     /**
-     * 
-     * 
+     * Replaces the Kommunikation at the given position in the list.
+     *
      * @param index
      * @param vKommunikation
     **/
@@ -1029,8 +996,8 @@ extends ZKDBBaseType {
     } //-- void setKommunikation(int, Kommunikation) 
 
     /**
-     * 
-     * 
+     * Replaces the entire list of Kommunikation elements with the given array's contents.
+     *
      * @param kommunikationArray
     **/
     public void setKommunikation(Kommunikation[] kommunikationArray)
@@ -1043,8 +1010,8 @@ extends ZKDBBaseType {
     } //-- void setKommunikation(Kommunikation) 
 
     /**
-     * 
-     * 
+     * Replaces the Kreditkarte at the given position in the list.
+     *
      * @param index
      * @param vKreditkarte
     **/
@@ -1059,8 +1026,8 @@ extends ZKDBBaseType {
     } //-- void setKreditkarte(int, Kreditkarte) 
 
     /**
-     * 
-     * 
+     * Replaces the entire list of Kreditkarte elements with the given array's contents.
+     *
      * @param kreditkarteArray
     **/
     public void setKreditkarte(Kreditkarte[] kreditkarteArray)
@@ -1083,8 +1050,8 @@ extends ZKDBBaseType {
     } //-- void setKunde(Kunde) 
 
     /**
-     * 
-     * 
+     * Replaces the KundeInSystem at the given position in the list.
+     *
      * @param index
      * @param vKundeInSystem
     **/
@@ -1099,8 +1066,8 @@ extends ZKDBBaseType {
     } //-- void setKundeInSystem(int, KundeInSystem) 
 
     /**
-     * 
-     * 
+     * Replaces the entire list of KundeInSystem elements with the given array's contents.
+     *
      * @param kundeInSystemArray
     **/
     public void setKundeInSystem(KundeInSystem[] kundeInSystemArray)
@@ -1113,8 +1080,8 @@ extends ZKDBBaseType {
     } //-- void setKundeInSystem(KundeInSystem) 
 
     /**
-     * 
-     * 
+     * Replaces the Kundenbeziehung at the given position in the list.
+     *
      * @param index
      * @param vKundenbeziehung
     **/
@@ -1129,8 +1096,8 @@ extends ZKDBBaseType {
     } //-- void setKundenbeziehung(int, Kundenbeziehung) 
 
     /**
-     * 
-     * 
+     * Replaces the entire list of Kundenbeziehung elements with the given array's contents.
+     *
      * @param kundenbeziehungArray
     **/
     public void setKundenbeziehung(Kundenbeziehung[] kundenbeziehungArray)
@@ -1143,8 +1110,8 @@ extends ZKDBBaseType {
     } //-- void setKundenbeziehung(Kundenbeziehung) 
 
     /**
-     * 
-     * 
+     * Replaces the Kundenkarte at the given position in the list.
+     *
      * @param index
      * @param vKundenkarte
     **/
@@ -1159,8 +1126,8 @@ extends ZKDBBaseType {
     } //-- void setKundenkarte(int, Kundenkarte) 
 
     /**
-     * 
-     * 
+     * Replaces the entire list of Kundenkarte elements with the given array's contents.
+     *
      * @param kundenkarteArray
     **/
     public void setKundenkarte(Kundenkarte[] kundenkarteArray)
@@ -1173,8 +1140,8 @@ extends ZKDBBaseType {
     } //-- void setKundenkarte(Kundenkarte) 
 
     /**
-     * 
-     * 
+     * Replaces the Kundenmerkmal at the given position in the list.
+     *
      * @param index
      * @param vKundenmerkmal
     **/
@@ -1189,8 +1156,8 @@ extends ZKDBBaseType {
     } //-- void setKundenmerkmal(int, Kundenmerkmal) 
 
     /**
-     * 
-     * 
+     * Replaces the entire list of Kundenmerkmal elements with the given array's contents.
+     *
      * @param kundenmerkmalArray
     **/
     public void setKundenmerkmal(Kundenmerkmal[] kundenmerkmalArray)
@@ -1203,8 +1170,8 @@ extends ZKDBBaseType {
     } //-- void setKundenmerkmal(Kundenmerkmal) 
 
     /**
-     * 
-     * 
+     * Replaces the Rolle at the given position in the list.
+     *
      * @param index
      * @param vRolle
     **/
@@ -1219,8 +1186,8 @@ extends ZKDBBaseType {
     } //-- void setRolle(int, Rolle) 
 
     /**
-     * 
-     * 
+     * Replaces the entire list of Rolle elements with the given array's contents.
+     *
      * @param rolleArray
     **/
     public void setRolle(Rolle[] rolleArray)

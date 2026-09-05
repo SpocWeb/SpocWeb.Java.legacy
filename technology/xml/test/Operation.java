@@ -14,13 +14,19 @@ package technology.xml.test;
 import java.util.Hashtable;
 
 /**
- * 
- * =============  OPERATION TYPE ==================	
- * Kennzeichnung der Operation: C,D,S,E oder X
- * X Kennzeichnet eine nicht initialisierte Nachricht (Castor/Java)
- * 
- * 
+ * Castor-generated typesafe enumeration for the ZKDB "Operation" XML type: marks a Transaktion
+ * as C(reate), D(elete), S, E, or the uninitialized-message marker X.
+ *
  * @version $Revision$ $Date$
+ * <!-- docstate
+ * pass: 2
+ * mtime: 2026-09-05T10:13:32Z
+ * digest: 897aa8bc4d355c10a02576020a4095ca1ef3ed576a392afd47229134baba282c
+ * stale: false
+ * tags: [code/data_transfer_object]
+ * concepts: [Castor Data Transfer Object]
+ * facets: {layer: domain, status: legacy, complexity: low}
+ * -->
 **/
 public class Operation 
 implements java.io.Serializable {

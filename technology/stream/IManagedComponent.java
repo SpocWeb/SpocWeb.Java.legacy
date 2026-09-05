@@ -8,9 +8,8 @@ package technology.stream;
 import java.util.Map;
 
 /**
- * Title: ManagedComponent<p>
- * Description:
- * Defines the Interface for a managed Component or Resource
+ * Defines the lifecycle contract (init/exit/debug state) for a managed component or
+ * resource, plus the JNDI environment-lookup names its adapters share.
  *
  * Known Implementations: 
  * @see com.ctp.soap.proxy.IAttributedStreamOut
@@ -24,33 +23,42 @@ import java.util.Map;
  * @author mheuer
  * @version	1.0
  *
+ * <!-- docstate
+ * pass: 2
+ * mtime: 2026-09-05T11:11:52Z
+ * digest: c5210c389a6f84f606f05407fe9a1c4b8b26280c5536dd57ab9dd6be604b5040
+ * stale: false
+ * tags: [code/stream_adapter]
+ * concepts: [Managed Component Interface]
+ * facets: {layer: infrastructure, status: legacy, complexity: low}
+ * -->
  */
 public interface IManagedComponent {
 
 	/**
-	 * Alle JNDI Einträge unter diesem Pfad werden durch den AppServer
-	 * aus dem Deployment Descriptor spezifisch für jede Bean befüllt. 
+	 * Alle JNDI Eintrï¿½ge unter diesem Pfad werden durch den AppServer
+	 * aus dem Deployment Descriptor spezifisch fï¿½r jede Bean befï¿½llt. 
 	 */
 	final static public String DD_NAMING_ROOT = "java:comp/env";
 
 	//String Constants for the Environment Names to look up Adapter Properties
 
-	/** Konstante für Environment Variablen unter adapter	 */
+	/** Konstante fï¿½r Environment Variablen unter adapter	 */
 	final static public String STR_ADAPTER_ROOT ="adapter/";
 
-	/** Konstante für Environment Variable adapter/ConFactory	 */
+	/** Konstante fï¿½r Environment Variable adapter/ConFactory	 */
 	final static public String STR_CON_FACTORY=STR_ADAPTER_ROOT+"ConFactory";
 
-	/** Konstante für Environment Variable adapter/AdapterName	 */
+	/** Konstante fï¿½r Environment Variable adapter/AdapterName	 */
 	final static public String STR_ADAPTER=STR_ADAPTER_ROOT+"AdapterName";
 
-	/** Konstante für Environment Variable adapter/IDManager	 */
+	/** Konstante fï¿½r Environment Variable adapter/IDManager	 */
 	final static public String STR_ID_MANAGER=STR_ADAPTER_ROOT+"IDManager";
 
-	/** Konstante für Environment Variable adapter/StoreLocation	 */
+	/** Konstante fï¿½r Environment Variable adapter/StoreLocation	 */
 	final static public String STR_STORE=STR_ADAPTER_ROOT+"StoreLocation";
 
-	/** Konstante für Environment Variable adapter/params	 */
+	/** Konstante fï¿½r Environment Variable adapter/params	 */
 	final static public String STR_PARAMS=STR_ADAPTER_ROOT+"params";
 
 	/////////////////////////////////////////////////////////////////////////////////////

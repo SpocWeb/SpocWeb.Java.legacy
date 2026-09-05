@@ -20,10 +20,8 @@ import org.w3c.dom.NodeList;
 
 
 /**
- * Title: DomDemo<p>
- * Description:
- * Purpose:
- * Demonstrates the Construction of a DOM
+ * Demonstrates building and reading a DOM: parsing it from a file, constructing one in code,
+ * and transforming it with XSLT.
  *
  * Design Decisions / Implementation Details:
  * If similar Classes exist (e.g. Polymorphism),
@@ -39,6 +37,15 @@ import org.w3c.dom.NodeList;
  * @author mheuer
  * @version	1.0
  *
+ * <!-- docstate
+ * pass: 2
+ * mtime: 2026-09-05T11:12:52Z
+ * digest: 4173c457ab550b0b15d50206d5c2a76444e000d60231212fb663e9de6b7f40f9
+ * stale: false
+ * tags: [code/xml_parsing]
+ * concepts: [DOM Parsing Demo]
+ * facets: {layer: test, status: legacy, complexity: low}
+ * -->
  */
 public class DomDemo {
 
@@ -46,6 +53,16 @@ public class DomDemo {
 	private static final String STR_SEARCH_MODE = "SearchMode";
 	private static final String STR_DELETED = "ShowDeleted";
 	private static final String STR_LEVEL = "Level";
+	/**
+	 * Parses, builds and transforms sample DOM documents to demonstrate this class's helpers.
+	 *
+	 * @param args unused
+	 * <!-- docstate
+	 * tags: [code/xml_parsing]
+	 * concepts: [Demo Entry Point]
+	 * facets: {layer: test, status: legacy, complexity: low}
+	 * -->
+	 */
 	public static void main(String[] args) throws Exception {
 		DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance(); 
 		DocumentBuilder builder = factory.newDocumentBuilder();
@@ -66,6 +83,11 @@ public class DomDemo {
 	
 	/** tolerantly returns "" instead of null or a NullPointerException
 	 * for the Value of an Attribute.  
+	 * <!-- docstate
+	 * tags: [code/xml_parsing]
+	 * concepts: [DOM Attribute Lookup]
+	 * facets: {layer: test, status: legacy, complexity: low}
+	 * -->
 	 */	
 	final static public String GET_ATTRIB_VALUE
 	(final NamedNodeMap atts, final String key) throws Exception {
@@ -88,6 +110,11 @@ public class DomDemo {
 	 * DOM is only an Interface. 
 	 * To implement Operations, the DOM Interface must be extended 
 	 * or all Operations are delegated. 
+	 * <!-- docstate
+	 * tags: [code/xml_parsing]
+	 * concepts: [DOM Traversal Demo]
+	 * facets: {layer: test, status: legacy, complexity: low}
+	 * -->
 	 */	
 	final public static void testIt2(Document doc) throws Exception {
 		final NamedNodeMap atts = doc.getDocumentElement().getAttributes();
@@ -136,6 +163,11 @@ public class DomDemo {
 	 * DOM is only an Interface. 
 	 * To implement Operations, the DOM Interface must be extended 
 	 * or all Operations are delegated. 
+	 * <!-- docstate
+	 * tags: [code/xml_parsing]
+	 * concepts: [DOM Traversal Demo]
+	 * facets: {layer: test, status: legacy, complexity: low}
+	 * -->
 	 */	
 	public static void testIt(Node dom) throws Exception {
 //		Document doc; // = 

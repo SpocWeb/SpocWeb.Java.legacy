@@ -13,11 +13,8 @@ import org.xml.sax.Attributes;
 import org.xml.sax.SAXException;
 
 /**
- * Title: XmlToDirHandler<p>
- * Description:
- * Purpose:
- * Handler for the generic Sax Parser technology.xml.SaxDispatcher
- * Converts XML File Structures into File System Structures. 
+ * Reflection-dispatched {@link SaxDispatcher} handler that converts an XML file/directory
+ * description into a matching file system directory structure.
  *
  * Design Decisions / Implementation Details:
  *
@@ -31,6 +28,15 @@ import org.xml.sax.SAXException;
  * @author mheuer
  * @version	1.0
  *
+ * <!-- docstate
+ * pass: 2
+ * mtime: 2026-09-05T11:14:56Z
+ * digest: 4b8ed08424b156d5292bc68b540ff21478811b05b2f88f5875de625363c5c613
+ * stale: false
+ * tags: [code/xml_parsing]
+ * concepts: [XML to Directory-Tree Handler]
+ * facets: {layer: utility, status: broken, complexity: medium}
+ * -->
  */
 public class XmlToDirHandler {
 
@@ -43,7 +49,9 @@ public class XmlToDirHandler {
 	////////////////////////////////////////////////////////////////////////////////
 
 	/// Attributes
+	/** XML attribute name holding a file or directory's own name. */
 	final static public String STR_ATTR_NAME = "name";
+	/** XML attribute name holding a Row's music category, used as its directory name. */
 	final static public String STR_ATTR_CATEGORY = "MusicCategory";
 
 	////////////////////////////////////////////////////////////////////////////
@@ -192,12 +200,16 @@ public class XmlToDirHandler {
 	}
 
 	/**
-	 * @param args The FileList and the Base Directory. 
-	 * ../../Databases/MusicCollection/Categories.xml 
+	 * Delegates to {@link #createFiles(String[])} with the given command-line arguments.
+	 *
+	 * @param args The FileList and the Base Directory.
+	 * ../../Databases/MusicCollection/Categories.xml
 	 * M:\\__Categories
 	 */
 	public static void main(String[] args
 	) throws Exception { //
+		// TODO: LOGIC: prints the String[] array's reference/hashcode (e.g. "[Ljava.lang.String;@...")
+		// instead of its contents; likely meant Arrays.toString(args) or a loop over the elements.
 		System.out.println(args);
 		createFiles(args);
 	}

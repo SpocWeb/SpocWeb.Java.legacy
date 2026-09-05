@@ -56,17 +56,13 @@ import com.sun.org.apache.xml.internal.serializer.SerializerFactory;
 import com.sun.org.apache.xml.internal.utils.TreeWalker;
 
 /**
- * Title: XslTrafo<p>
- * Description:
- * Purpose:
- * Implements an XSL Trafo Architecture:
- * different XML Sources (XML Documents, separated or fixed Length Tables) 
- * are loaded into DOMs
- * and can be tranformed and merged into higher Level DOMs
- * which are retained in RAM and can be transformed again etc.
- * Thus XML needn't be serialized
+ * Implements an XSL trafo pipeline architecture, reflectively dispatched from an XTL script
+ * document, where different XML sources (documents, separated or fixed-length tables) are
+ * loaded into DOMs and can be transformed and merged into higher-level DOMs kept in RAM.
+ *
+ * <p>Thus XML needn't be serialized
  * and complex DOMs don't need to be parsed again but stored in DOM Variables.
- * 
+ *
  * Additionally an XML Language is defined (with DOM Variables) 
  * to describe the concatenated Process. 
  * (should be XML, the Parser comes for free then) and an Interpreter for it
@@ -99,6 +95,15 @@ import com.sun.org.apache.xml.internal.utils.TreeWalker;
  * @author mheuer
  * @version	1.0
  *
+ * <!-- docstate
+ * pass: 2
+ * mtime: 2026-09-05T11:16:37Z
+ * digest: 5d05d51a6985d686518446f2c30fb9cc663037dbf2d83c3526f558ea21e135f2
+ * stale: false
+ * tags: [code/xslt_transformation]
+ * concepts: [XSLT Transformer]
+ * facets: {layer: utility, status: legacy, complexity: low}
+ * -->
  */
 public class XslTrafo {
 	
@@ -112,6 +117,7 @@ public class XslTrafo {
 	final static public TransformerFactory TRAFO_FACTORY =
 		TransformerFactory.newInstance();
 	
+	/** Creates a new SAX {@link XMLReader}, or {@code null} if none is available. */
 	final static public XMLReader NEW_READER() {
 		try {
 			return  XMLReaderFactory.createXMLReader();
@@ -142,31 +148,53 @@ public class XslTrafo {
 	////////////////////////////////////////////////////////////////////////////////
 	
 	/// Element Names
+	/** Element name for {@link #load(Attributes)}. */
 	final static public String STR_ELM_LOAD  = "load";
+	/** Element name for {@link #store(Attributes)}. */
 	final static public String STR_ELM_STORE = "store";
+	/** Element name for the join/union group of Elements. */
 	final static public String STR_ELM_JOIN  = "join";
+	/** Element name for {@link #trafo(Attributes)}. */
 	final static public String STR_ELM_TRAFO = "trafo";
+	/** Element name for {@link #debug(Attributes)}. */
 	final static public String STR_ELM_DEBUG = "debug";
-	
+
 	/// Attribute Names
+	/** Attribute holding a Variable's Name. */
 	final static public String STR_ATTR_NAME   = "name";
+	/** Attribute holding the optional root Name for the loaded Element. */
 	final static public String STR_ATTR_ROOT   = "root"; //optional root Name for the loaded Element
+	/** Attribute holding a source URI or Variable Name. */
 	final static public String STR_ATTR_SOURCE = "source"; //
+	/** Attribute holding a destination URI. */
 	final static public String STR_ATTR_DEST   = "dest"; //
+	/** Attribute holding the Variable Name of a Trafo's Input. */
 	final static public String STR_ATTR_INPUT  = "input"; //
-	final static public String STR_ATTR_XSLT   = "xslt"; //Path to an XSLT 
-	final static public String STR_ATTR_XPATH  = "xpath"; 
+	/** Attribute holding the Path to an XSLT. */
+	final static public String STR_ATTR_XSLT   = "xslt"; //Path to an XSLT
+	/** Attribute holding an (unimplemented) XPath expression. */
+	final static public String STR_ATTR_XPATH  = "xpath";
+	/** Attribute holding the Flag whether Field Names are given in a DB RS. */
 	final static public String STR_ATTR_NAMES  = "fieldNames"; //Flag whether Field Names are given in a DB RS
+	/** Attribute holding the Flag whether Field Defaults are given in a DB RS. */
 	final static public String STR_ATTR_DEFAULTS="fieldDefaults"; //Flag whether Defaults are given in a DB RS
-	final static public String STR_ATTR_SEPS   = "separators"; 
+	/** Attribute holding the separator Characters for a separated File. */
+	final static public String STR_ATTR_SEPS   = "separators";
+	/** Attribute holding a reference to the Root of a loaded Variable. */
 	final static public String STR_ATTR_REF    = "urn"; //reference to the Root of a loaded Variable
+	/** Attribute holding the File Suffix filter for loading a full Directory. */
 	final static public String STR_ATTR_SUFFIX = "suffix"; //Suffix for Files when loading a full Directory
 	
 	////////////////////////////////////////////////////////////////////////////
 	/// #region : static Methods
 	////////////////////////////////////////////////////////////////////////////
 
-	/** @return a new absolute URL from the given Locator and a (possibly relative) URL */
+	/**
+	 * Resolves url against systemID's location, returning url unchanged when it already names
+	 * a drive, protocol or absolute path.
+	 *
+	 * @return a new absolute URL from the given Locator and a (possibly relative) URL
+	 */
 	final static public String GET_ABSOLUTE_URL(String systemID, String url) {
 		if (url.indexOf(':') >= 0) //either a Drive or a Protocol 
 			return url;
@@ -206,7 +234,10 @@ public class XslTrafo {
 		STREAM(node, writer);
 	}
 	
-	/** @return the Node with the given XPath from the given DOM.
+	/**
+	 * Not yet implemented; currently returns node unchanged regardless of xPath.
+	 *
+	 * @return the Node with the given XPath from the given DOM.
 	 * @throws SAXException although this shouldn't happen!
 	 */
 	final public static Node XPATH
@@ -224,7 +255,10 @@ public class XslTrafo {
 		*/
 	}
 	
-	/** @return the given DOM, converted into an XML String.
+	/**
+	 * Serializes node to an XML string via {@link #STREAM(Node, Writer)}.
+	 *
+	 * @return the given DOM, converted into an XML String.
 	 * @throws SAXException although this shouldn't happen!
 	 */
 	final static public String TO_STRING(final Node node
@@ -264,12 +298,20 @@ public class XslTrafo {
 		//last Row does not receive a CR/LF! Use "System.out.println();" to flush Console!
 	}
 	
-	/** @return a new Document with the given Name created from the global DOM_Builder */
+	/**
+	 * Creates a new, empty DOM Document from the global {@link #DOM_BUILDER}.
+	 *
+	 * @return a new Document with the given Name created from the global DOM_Builder
+	 */
 	final public static Document NEW_DOCUMENT() {
 		return DOM_BUILDER.newDocument();
 	} //creates an empty DOM
 	
-	/** @return a new Element with the given Name, created from the existing Node */
+	/**
+	 * Creates a new, detached Element named name, owned by node's Document.
+	 *
+	 * @return a new Element with the given Name, created from the existing Node
+	 */
 	final public static Element NEW_ELEMENT(
 		final Node node,
 		final String name) {
@@ -280,7 +322,11 @@ public class XslTrafo {
 		return owner.createElement(name);
 	}
 	
-	/** @return a new, parsed Trafo Object from the given XSLT DOM */
+	/**
+	 * Compiles trafo into a {@link Transformer} via {@link #TRAFO_FACTORY}.
+	 *
+	 * @return a new, parsed Trafo Object from the given XSLT DOM
+	 */
 	final public static Transformer NEW_TRAFO(final Node trafo)
 		throws TransformerConfigurationException {
 		return TRAFO_FACTORY.newTransformer(new DOMSource(trafo));
@@ -305,8 +351,10 @@ public class XslTrafo {
 		return (Element) ret;
 	}
 	
-	/** 
-	 * @return the (parent) Document from the given Node 
+	/**
+	 * Returns node itself when it already is a Document, otherwise its owner Document.
+	 *
+	 * @return the (parent) Document from the given Node
 	 * no matter if it is a regular Node or a Document itself
 	 */
 	final static public Document GET_DOCUMENT(final Node node) {
@@ -315,8 +363,10 @@ public class XslTrafo {
 			: node.getOwnerDocument();
 	}
 	
-	/** 
-	 * @return the given Node itself or the Root Node it 'node' is a Document 
+	/**
+	 * Returns node's document Element when node is a Document, otherwise node itself.
+	 *
+	 * @return the given Node itself or the Root Node it 'node' is a Document
 	 */
 	final static public Element GET_ELEMENT(final Node node) {
 		return (node instanceof Document)
@@ -898,6 +948,17 @@ public class XslTrafo {
 	 * E:\Personal\Code\XSL\Music\example\SongStyle.xsl
 	 * E:\Personal\Code\xsl\Music\example\output.html
 	 */
+	/**
+	 * Processes a trafo-chain document (1 argument) or performs a single input/trafo/output
+	 * transformation (3 arguments); otherwise prints the syntax and runs {@link #testIt()}.
+	 *
+	 * @param args URLs to indicate the Input(args[0]), TrafoXSL(args[1]), Output(args[2])
+	 * The URLs can also be absolute or relative FileSystem Paths! ^
+	 * e.g. java technology.xml.XslTrafo
+	 * "E:\Personal\Code\XSL\Music\example\Seal Second 06 Kiss_from_a_Rose.xml"
+	 * E:\Personal\Code\XSL\Music\example\SongStyle.xsl
+	 * E:\Personal\Code\xsl\Music\example\output.html
+	 */
 	final static public void trafo(final String[] args) throws IOException
 	, SAXException
 	, ParserConfigurationException
@@ -924,6 +985,16 @@ public class XslTrafo {
 	/**
 	 * @param args URLs to indicate the Input(args[0]), TrafoXSL(args[1]), Output(args[2])
 	 * The URLs can also be absolute or relative FileSystem Paths! 
+	 * e.g. java technology.xml.XslTrafo
+	 * "E:\Personal\Code\XSL\Music\example\Seal Second 06 Kiss_from_a_Rose.xml"
+	 * E:\Personal\Code\XSL\Music\example\SongStyle.xsl
+	 * E:\Personal\Code\xsl\Music\example\output.html
+	 */
+	/**
+	 * Delegates to {@link #trafo(String[])} with the given command-line arguments.
+	 *
+	 * @param args URLs to indicate the Input(args[0]), TrafoXSL(args[1]), Output(args[2])
+	 * The URLs can also be absolute or relative FileSystem Paths!
 	 * e.g. java technology.xml.XslTrafo
 	 * "E:\Personal\Code\XSL\Music\example\Seal Second 06 Kiss_from_a_Rose.xml"
 	 * E:\Personal\Code\XSL\Music\example\SongStyle.xsl

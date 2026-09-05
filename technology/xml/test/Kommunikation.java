@@ -12,11 +12,18 @@ package technology.xml.test;
 //---------------------------------/
 
 /**
- * 
- * =============  KOMMUNIKATION TYPE ==================	
- * 				
- * 
+ * Castor-generated value object for the ZKDB "Kommunikation" (contact channel) XML type.
+ *
  * @version $Revision$ $Date$
+ * <!-- docstate
+ * pass: 2
+ * mtime: 2026-09-05T10:13:32Z
+ * digest: 3617429d44ff7604594bf052d7535f6a407b078e52851a1577093ad3f515f1a8
+ * stale: false
+ * tags: [code/data_transfer_object]
+ * concepts: [Castor Data Transfer Object]
+ * facets: {layer: domain, status: legacy, complexity: low}
+ * -->
 **/
 public class Kommunikation 
 extends ZKDBBaseType 
@@ -32,10 +39,13 @@ extends ZKDBBaseType
 	 */
 	private static final long serialVersionUID = 1L;
 
+	/** Communication channel type discriminator (e.g. phone, e-mail). */
 	public ZKDBBaseType typ;
 
+    /** Flag indicating this is the preferred communication channel. */
     public ZKDBBaseType bevorzugt;
 
+    /** Connection-specific detail (e.g. the phone number or e-mail address). */
     public ZKDBBaseType verb_info;
 
 
@@ -43,6 +53,7 @@ extends ZKDBBaseType
      //- Constructors -/
     //----------------/
 
+    /** Creates an empty Kommunikation with all fields unset. */
     public Kommunikation() {
         super();
     } //-- de.bahn.zkdb.bcm.data.Kommunikation()

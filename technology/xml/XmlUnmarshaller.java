@@ -22,19 +22,14 @@ import technology.xml.test.Nachricht;
 import function.IFunction;
 
 /**
- * Title: XmlUnmarshaller<p>
- * Description:
- * Purpose:
- * This Class unmarshals XML into an Object Structure, 
- * if the Element and Attribute Names 
- * exactly match the Member Variable Names 
- * (later also get/set Method Names like in IReflectAble) 
- * of the respective Objects. 
- * The Instances are derived either from the Member Variable Types 
- * (when they are concrete and final) 
- * or from a generic Factory which maps the Element Names to Instances. 
+ * Unmarshals XML into an object graph by reflection, matching Element and Attribute names
+ * directly to member variable names of the respective objects.
+ *
+ * <p>The Instances are derived either from the Member Variable Types
+ * (when they are concrete and final)
+ * or from a generic Factory which maps the Element Names to Instances.
  * (possibly you need to consider the whole Path, not just the Element Name)
- * 
+ *
  * The corresponding Java Value Classes can be generated either 
  * using Castor (www.apache.org) or by applying an XSLT to the Schema File. 
  * For aquiring one Java File per Class unfortunately 
@@ -63,6 +58,15 @@ import function.IFunction;
  * @author mheuer
  * @version	1.0
  *
+ * <!-- docstate
+ * pass: 2
+ * mtime: 2026-09-05T11:15:36Z
+ * digest: 1f8617c789746218e8c139f985a8e4b6d1975507d0fd03454bb14c95279e8b25
+ * stale: false
+ * tags: [code/xml_deserialization, code/reflection_dispatch]
+ * concepts: [Reflection-Based XML Unmarshaller]
+ * facets: {layer: infrastructure, status: broken, complexity: high}
+ * -->
  */
 public class XmlUnmarshaller extends SaxHandler {
 	
@@ -295,6 +299,10 @@ public class XmlUnmarshaller extends SaxHandler {
 		} else if (argType == int  .class){ newValue = Integer.decode(strValue);
 		} else if (argType == long .class){ newValue = Long.decode(strValue);
 		} else if (argType == float.class){ newValue = Float.valueOf(strValue);
+		// TODO: LOGIC: duplicate check of "argType == long.class" (already handled two branches
+		// above); almost certainly meant "argType == double.class". As written, a double-typed
+		// field is never converted here and falls through to the no-op else branch, leaving
+		// newValue as the raw String instead of a Double.
 		} else if (argType == long .class){ newValue = Double.valueOf(strValue);
 		} else if (argType == Date .class){ newValue = new Date(Date.parse(newValue.toString()));
 		} else {
@@ -323,7 +331,12 @@ public class XmlUnmarshaller extends SaxHandler {
 		currBuffer.append(ch, start, length);
 	}
 
-	/** @see org.xml.sax.ContentHandler#ignorableWhitespace(char[], int, int)	 */
+	/**
+	 * Appends the given whitespace to the current Element's text buffer, only when
+	 * {@code collectWhiteSpace} is set.
+	 *
+	 * @see org.xml.sax.ContentHandler#ignorableWhitespace(char[], int, int)
+	 */
 	public void ignorableWhitespace(char[] ch, int start, int length) throws SAXException {
 		if (collectWhiteSpace) {
 			//append to Default Text Property of Object 
@@ -379,6 +392,16 @@ public class XmlUnmarshaller extends SaxHandler {
 	 * E:\Personal\Code\XSL\Music\example\SongStyle.xsl
 	 * E:\Personal\Code\xsl\Music\example\output.html
 	 */
+	/**
+	 * Logs the given arguments and delegates to {@link #unmarshal(String[])}.
+	 *
+	 * @param args URLs to indicate the Input(args[0]), TrafoXSL(args[1]), Output(args[2])
+	 * The URLs can also be absolute or relative FileSystem Paths! ^
+	 * e.g. java technology.xml.XslTrafo
+	 * "E:\Personal\Code\XSL\Music\example\Seal Second 06 Kiss_from_a_Rose.xml"
+	 * E:\Personal\Code\XSL\Music\example\SongStyle.xsl
+	 * E:\Personal\Code\xsl\Music\example\output.html
+	 */
 	public static void main(String[] args) throws Exception { //
 		Log.L(args);
 		unmarshal(args);
@@ -386,18 +409,41 @@ public class XmlUnmarshaller extends SaxHandler {
 
 }
 
-class PackageFactory 
+/**
+ * Creates a new instance of the class named {@code packageName + "." + arg} by reflection,
+ * used by {@link XmlUnmarshaller} to instantiate sub-objects from Element names.
+ * <!-- docstate
+ * pass: 2
+ * mtime: 2026-09-05T11:15:36Z
+ * digest: aeb32e1b8a8c689738c9c9750d68bc586403e4bfa0d47517cb6ff1e2dd47f33d
+ * stale: false
+ * tags: [code/reflection_dispatch]
+ * concepts: [Reflective Class Factory]
+ * facets: {layer: infrastructure, status: legacy, complexity: low}
+ * -->
+ */
+class PackageFactory
 implements IFunction {
 
 	/** Logger for Testing, modify Threshold for switching Logging */
 	static Log L = new Log(PackageFactory.class, 1);
-	
-	final public String packageName; 
-	
+
+	/** The Java package prepended to an Element name to resolve its Class. */
+	final public String packageName;
+
+	/**
+	 * Creates a factory that resolves Element names within the given Java package.
+	 * @param packageName_
+	 */
 	public PackageFactory(final String packageName_) {
 		this.packageName = packageName_; }
-	
-	/** @see function.IFunction#Map(java.lang.Object)	 */
+
+	/**
+	 * Instantiates {@code packageName + "." + arg}, returning {@code null} when the class
+	 * cannot be found or instantiated.
+	 *
+	 * @see function.IFunction#Map(java.lang.Object)
+	 */
 	public Object Map(final Object arg) {
 		try {
 			return Class.forName(packageName+'.'+arg.toString()).newInstance();
@@ -408,15 +454,27 @@ implements IFunction {
 		return null; 
 	}
 
-	/** @see function.IFunction#canProcess(java.lang.Object)	 */
+	/**
+	 * Always returns {@code true}; this factory can attempt to process any Object.
+	 *
+	 * @see function.IFunction#canProcess(java.lang.Object)
+	 */
 	public boolean canProcess(Object arg) {
 		return true;
 	}
 
-	/** @see function.IFunction#simplify()	 */
+	/**
+	 * Returns this factory unchanged; there is nothing to simplify.
+	 *
+	 * @see function.IFunction#simplify()
+	 */
 	public IFunction simplify() { return this; }
 
-	/** @see function.IProcessor#MapAt(java.lang.Object)	 */
+	/**
+	 * Always returns {@code null}; indexed mapping is not supported.
+	 *
+	 * @see function.IProcessor#MapAt(java.lang.Object)
+	 */
 	public Object MapAt(Object arg) { return null; }
 }
 

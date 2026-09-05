@@ -26,8 +26,11 @@ import java.security.NoSuchAlgorithmException;
 import java.security.SecureRandom;
 import java.util.Random;
 
-/*
- * In the multitude of java GUID generators, I found none that
+/**
+ * Generates a globally-unique, cryptographically-seeded 128-bit GUID by MD5-hashing the
+ * local host address, the current time and a random number.
+ *
+ * <p>In the multitude of java GUID generators, I found none that
  * guaranteed randomness.  GUIDs are guaranteed to be globally unique
  * by using ethernet MACs, IP addresses, time elements, and sequential
  * numbers.  GUIDs are not expected to be random and most often are
@@ -92,11 +95,25 @@ import java.util.Random;
  *
  *
  * - Marc
+ *
+ * @author Marc A. Mnich
+ * @version 1.2.1 11/05/02
+ * <!-- docstate
+ * pass: 2
+ * mtime: 2026-09-05T11:09:55Z
+ * digest: 76213e73a1edaa0edc27691998b5d2e08b3fe6c7353f2dd7e634a9b0410df3a5
+ * stale: false
+ * tags: [code/guid_generation]
+ * concepts: [GUID Generator]
+ * facets: {layer: utility, status: broken, complexity: low}
+ * -->
  */
 
 public class RandomGUID extends Object {
 
+    /** The seed string (host address, time and random number) hashed to produce this GUID. */
     public String valueBeforeMD5 = "";
+    /** The raw, lower-case hexadecimal MD5 digest of {@link #valueBeforeMD5}. */
     public String valueAfterMD5 = "";
     private static Random myRand;
     private static SecureRandom mySecureRand;
@@ -124,19 +141,19 @@ public class RandomGUID extends Object {
     }
 
 
-    /*
-     * Default constructor.  With no specification of security option,
-     * this constructor defaults to lower security, high performance.
+    /**
+     * Creates a new GUID using the standard, non-secure random generator (high performance,
+     * lower security).
      */
     public RandomGUID() {
         getRandomGUID(false);
     }
 
-    /*
-     * Constructor with security option.  Setting secure true
-     * enables each random number generated to be cryptographically
-     * strong.  Secure false defaults to the standard Random function seeded
-     * with a single cryptographically strong random number.
+    /**
+     * Creates a new GUID, optionally using a cryptographically strong random generator for
+     * every number instead of only for the seed.
+     *
+     * @param secure when {@code true}, uses {@link SecureRandom} for each random number
      */
     public RandomGUID(boolean secure) {
         getRandomGUID(secure);
@@ -149,6 +166,9 @@ public class RandomGUID extends Object {
         MessageDigest md5 = null;
         StringBuffer sbValueBeforeMD5 = new StringBuffer();
 
+        // TODO: LOGIC: if MD5 is unavailable, this catch block only logs the exception and
+        // leaves md5 == null; execution falls through to md5.update(...) below, which then
+        // throws an unhandled NullPointerException instead of failing with the original cause.
         try {
             md5 = MessageDigest.getInstance("MD5");
         } catch (NoSuchAlgorithmException e) {
@@ -196,10 +216,11 @@ public class RandomGUID extends Object {
     }
 
 
-    /*
-     * Convert to the standard format for GUID
-     * (Useful for SQL Server UniqueIdentifiers, etc.)
-     * Example: C2FEEEAC-CFCD-11D1-8B05-00600806D9B6
+    /**
+     * Returns this GUID formatted as the standard hyphenated hex string (useful for SQL
+     * Server {@code UniqueIdentifier} values, etc.), e.g. {@code C2FEEEAC-CFCD-11D1-8B05-00600806D9B6}.
+     *
+     * @return the 36-character hyphenated hexadecimal GUID representation
      */
     public String toString() {
         String raw = valueAfterMD5.toUpperCase();
@@ -217,8 +238,10 @@ public class RandomGUID extends Object {
         return sb.toString();
     }
 
-    /*
-     * Demonstraton and self test of class
+    /**
+     * Generates and prints 100 sample GUIDs to demonstrate and self-test the class.
+     *
+     * @param args unused
      */
     public static void main(String args[]) {
         for (int i=0; i< 100; i++) {

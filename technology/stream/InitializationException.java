@@ -8,15 +8,8 @@ package technology.stream;
 import streamIO.exception.ChainedException;
 
 /**
- * Title: InitializationException<p>
- * Description:
- * Purpose:
- *
- * Purpose / Responsibilities of this Class
- *
- * Design Decisions / Implementation Details:
- * If similar Classes exist (e.g. Polymorphism),
- * characterize the specific Differences to compare these.
+ * Signals that an {@link IManagedComponent} could not be initialized, e.g. due to missing
+ * parameters.
  *
  * Known SubClasses: <none>
  *
@@ -28,6 +21,15 @@ import streamIO.exception.ChainedException;
  * @author mheuer
  * @version	1.0
  *
+ * <!-- docstate
+ * pass: 2
+ * mtime: 2026-09-05T11:12:05Z
+ * digest: 266ca5ce053d190ac02c622f854223ee2a41ecc0f42528ea9018e90b11c5f35d
+ * stale: false
+ * tags: [code/stream_adapter]
+ * concepts: [Custom Exception Type]
+ * facets: {layer: infrastructure, status: legacy, complexity: low}
+ * -->
  */
 public class InitializationException extends ChainedException {
 
@@ -37,7 +39,7 @@ public class InitializationException extends ChainedException {
 	private static final long serialVersionUID = 1L;
 
 	/**
-	 * 
+	 * Creates an exception with no message and no cause.
 	 */
 	public InitializationException() {
 		super();
@@ -45,6 +47,7 @@ public class InitializationException extends ChainedException {
 	}
 
 	/**
+	 * Creates an exception with the given message.
 	 * @param inMessage
 	 */
 	public InitializationException(String inMessage) {
@@ -53,6 +56,7 @@ public class InitializationException extends ChainedException {
 	}
 
 	/**
+	 * Creates an exception wrapping the given cause.
 	 * @param inThrowable
 	 */
 	public InitializationException(Throwable inThrowable) {
@@ -61,6 +65,7 @@ public class InitializationException extends ChainedException {
 	}
 
 	/**
+	 * Creates an exception with the given message, wrapping the given cause.
 	 * @param inMessage
 	 * @param inThrowable
 	 */

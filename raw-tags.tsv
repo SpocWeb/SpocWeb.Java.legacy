@@ -462,3 +462,59 @@ tester/stateful/Flipper.java:Flipper	class	tester/stateful/Flipper.java	code/sta
 tester/stateful	folder	tester/stateful	code/stateful_algorithm	Sequence Analysis	utility	legacy	low
 tester/stateful/TestSequence.java:TestSequence	class	tester/stateful/TestSequence.java	code/stateful_algorithm	Test Sequence Runner	utility	legacy	low
 tester/stateful/TesterPosition.java:TesterPosition	class	tester/stateful/TesterPosition.java	code/stateful_algorithm	Position-Aware Tester	utility	legacy	low
+technology/RandomGUID.java:RandomGUID	class	technology/RandomGUID.java	code/guid_generation	GUID Generator	utility	broken	low
+technology	folder	technology	code/guid_generation,code/directory_services,code/xml_parsing	Technology Integration Demos	infrastructure	legacy	medium
+technology/Threading.java:Threading	class	technology/Threading.java	code/thread_synchronization	Recursive Thread Demo	test	legacy	low
+technology/Threading.java:Threading.recourse(int)	method	technology/Threading.java	code/thread_synchronization	Recursive Depth Demo	test	legacy	low
+technology/Threading.java:Threading.main(String[])	method	technology/Threading.java	code/thread_synchronization	Demo Entry Point	test	legacy	low
+technology/jndi/CmdLnBrowser.java:CmdLnBrowser	class	technology/jndi/CmdLnBrowser.java	code/directory_services	Command-Line JNDI Browser	utility	legacy	low
+technology/jndi	folder	technology/jndi	code/directory_services	Naming and Directory Services	infrastructure	legacy	low
+technology/jndi/InitCtx.java:InitCtx	class	technology/jndi/InitCtx.java	code/directory_services	JNDI Context Demo	test	legacy	low
+technology/jndi/InitCtx.java:InitCtx.testIt(String[])	method	technology/jndi/InitCtx.java	code/directory_services	Self-Test Method	test	legacy	low
+technology/jndi/InitCtx.java:InitCtx.main(String[])	method	technology/jndi/InitCtx.java	code/directory_services	Demo Entry Point	test	legacy	low
+technology/sound/WaveReader.java:WaveReader	class	technology/sound/WaveReader.java	code/audio	WAV File Reader	utility	legacy	medium
+technology/sound	folder	technology/sound	code/audio	Java Sound API Demos	infrastructure	legacy	low
+technology/stream/AAttributedStream.java:AAttributedStream	class	technology/stream/AAttributedStream.java	code/stream_adapter	Attributed Stream Base Class	infrastructure	legacy	low
+technology/stream	folder	technology/stream	code/stream_adapter	Attributed Stream Processing	infrastructure	legacy	medium
+technology/stream/IAttributedStreamIn.java:IAttributedStreamIn	class	technology/stream/IAttributedStreamIn.java	code/stream_adapter	Attributed Stream Input Interface	infrastructure	legacy	low
+technology/stream/IAttributedStreamOut.java:IAttributedStreamOut	class	technology/stream/IAttributedStreamOut.java	code/stream_adapter	Attributed Stream Output Interface	infrastructure	legacy	low
+technology/stream/IManagedComponent.java:IManagedComponent	class	technology/stream/IManagedComponent.java	code/stream_adapter	Managed Component Interface	infrastructure	legacy	low
+technology/stream/InitializationException.java:InitializationException	class	technology/stream/InitializationException.java	code/stream_adapter	Custom Exception Type	infrastructure	legacy	low
+technology/stream/OpenByteArrayOutputStream.java:OpenByteArrayOutputStream	class	technology/stream/OpenByteArrayOutputStream.java	code/stream_adapter	Exposed-Buffer Byte Array Stream	infrastructure	legacy	low
+technology/stream/ProcessingException.java:ProcessingException	class	technology/stream/ProcessingException.java	code/stream_adapter	Custom Exception Type	infrastructure	legacy	low
+technology/xml/DamlHandler.java:DamlHandler	class	technology/xml/DamlHandler.java	code/sax_parsing,code/xml_parsing	DAML SAX Handler	infrastructure	legacy	medium
+technology/xml	folder	technology/xml	code/sax_parsing,code/xml_parsing,code/xslt_transformation	XML Processing	infrastructure	legacy	medium
+technology/xml/DomDemo.java:DomDemo	class	technology/xml/DomDemo.java	code/xml_parsing	DOM Parsing Demo	test	legacy	low
+technology/xml/DomDemo.java:DomDemo.main(String[])	method	technology/xml/DomDemo.java	code/xml_parsing	Demo Entry Point	test	legacy	low
+technology/xml/DomDemo.java:DomDemo.GET_ATTRIB_VALUE(NamedNodeMap, String)	method	technology/xml/DomDemo.java	code/xml_parsing	DOM Attribute Lookup	test	legacy	low
+technology/xml/DomDemo.java:DomDemo.testIt2(Document)	method	technology/xml/DomDemo.java	code/xml_parsing	DOM Traversal Demo	test	legacy	low
+technology/xml/DomDemo.java:DomDemo.testIt(Node)	method	technology/xml/DomDemo.java	code/xml_parsing	DOM Traversal Demo	test	legacy	low
+technology/xml/ResultSetToAttributes.java:ResultSetToAttributes	class	technology/xml/ResultSetToAttributes.java	code/data_transfer_object	JDBC ResultSet to XML Attributes	utility	legacy	low
+technology/xml/SaxClientXmlWriter.java:SaxClientXmlWriter	class	technology/xml/SaxClientXmlWriter.java	code/sax_parsing	SAX-Based XML Writer	infrastructure	legacy	medium
+technology/xml/SaxDispatcher.java:SaxDispatcher	class	technology/xml/SaxDispatcher.java	code/sax_parsing,code/reflection_dispatch	Reflection-Based SAX Dispatcher	infrastructure	legacy	medium
+technology/xml/SaxHandler.java:SaxHandler	class	technology/xml/SaxHandler.java	code/sax_parsing	SAX Content Handler Base	infrastructure	legacy	low
+technology/xml/XmlHandler.java:XmlHandler	class	technology/xml/XmlHandler.java	code/xml_parsing	XML Handler Base	infrastructure	legacy	low
+technology/xml/XmlToDirHandler.java:XmlToDirHandler	class	technology/xml/XmlToDirHandler.java	code/xml_parsing	XML to Directory-Tree Handler	utility	broken	medium
+technology/xml/XmlUnmarshaller.java:XmlUnmarshaller	class	technology/xml/XmlUnmarshaller.java	code/xml_deserialization,code/reflection_dispatch	Reflection-Based XML Unmarshaller	infrastructure	broken	high
+technology/xml/XmlUnmarshaller.java:PackageFactory	class	technology/xml/XmlUnmarshaller.java	code/reflection_dispatch	Reflective Class Factory	infrastructure	legacy	low
+technology/xml/XslTrafo.java:XslTrafo	class	technology/xml/XslTrafo.java	code/xslt_transformation	XSLT Transformer	utility	legacy	low
+technology/xml/test/Adresse.java:Adresse	class	technology/xml/test/Adresse.java	code/data_transfer_object	Castor Data Transfer Object	domain	legacy	low
+technology/xml/test	folder	technology/xml/test	code/data_transfer_object,code/xml_deserialization	Castor-Generated Data Model	domain	legacy	medium
+technology/xml/test/Bankverbindung.java:Bankverbindung	class	technology/xml/test/Bankverbindung.java	code/data_transfer_object	Castor Data Transfer Object	domain	legacy	low
+technology/xml/test/Benutzererkennung.java:Benutzererkennung	class	technology/xml/test/Benutzererkennung.java	code/data_transfer_object	Castor Data Transfer Object	domain	legacy	low
+technology/xml/test/ConsistencyCorrector.java:ConsistencyCorrector	class	technology/xml/test/ConsistencyCorrector.java	code/data_transfer_object	Data Consistency Corrector	domain	legacy	low
+technology/xml/test/Daten.java:Daten	class	technology/xml/test/Daten.java	code/data_transfer_object	Castor Data Transfer Object Root	domain	legacy	medium
+technology/xml/test/Kommunikation.java:Kommunikation	class	technology/xml/test/Kommunikation.java	code/data_transfer_object	Castor Data Transfer Object	domain	legacy	low
+technology/xml/test/Kreditkarte.java:Kreditkarte	class	technology/xml/test/Kreditkarte.java	code/data_transfer_object	Castor Data Transfer Object	domain	legacy	low
+technology/xml/test/Kunde.java:Kunde	class	technology/xml/test/Kunde.java	code/data_transfer_object	Castor Data Transfer Object	domain	legacy	low
+technology/xml/test/KundeInSystem.java:KundeInSystem	class	technology/xml/test/KundeInSystem.java	code/data_transfer_object	Castor Data Transfer Object	domain	broken	low
+technology/xml/test/Kundenbeziehung.java:Kundenbeziehung	class	technology/xml/test/Kundenbeziehung.java	code/data_transfer_object	Castor Data Transfer Object	domain	legacy	low
+technology/xml/test/Kundenkarte.java:Kundenkarte	class	technology/xml/test/Kundenkarte.java	code/data_transfer_object	Castor Data Transfer Object	domain	legacy	low
+technology/xml/test/Kundenmerkmal.java:Kundenmerkmal	class	technology/xml/test/Kundenmerkmal.java	code/data_transfer_object	Castor Data Transfer Object	domain	legacy	low
+technology/xml/test/Nachricht.java:Nachricht	class	technology/xml/test/Nachricht.java	code/data_transfer_object	Castor Data Transfer Object	domain	legacy	low
+technology/xml/test/Operation.java:Operation	class	technology/xml/test/Operation.java	code/data_transfer_object	Castor Data Transfer Object	domain	legacy	low
+technology/xml/test/Rolle.java:Rolle	class	technology/xml/test/Rolle.java	code/data_transfer_object	Castor Data Transfer Object	domain	legacy	low
+technology/xml/test/StatusValue.java:StatusValue	class	technology/xml/test/StatusValue.java	code/data_transfer_object	Castor Data Transfer Object	domain	legacy	low
+technology/xml/test/Steuerung.java:Steuerung	class	technology/xml/test/Steuerung.java	code/data_transfer_object	Castor Data Transfer Object	domain	legacy	low
+technology/xml/test/Transaktion.java:Transaktion	class	technology/xml/test/Transaktion.java	code/data_transfer_object	Castor Data Transfer Object	domain	legacy	low
+technology/xml/test/ZKDBBaseType.java:ZKDBBaseType	class	technology/xml/test/ZKDBBaseType.java	code/data_transfer_object	Castor Data Transfer Object Base	domain	legacy	low

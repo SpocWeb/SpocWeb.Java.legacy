@@ -20,9 +20,8 @@ import org.xml.sax.SAXException;
 import org.xml.sax.helpers.DefaultHandler;
 
 /**
- * Title: SaxHandler<p>
- * Description:
- * Collects common Functionality for most SAX Parsers. 
+ * Collects common functionality for most SAX parsers: lazy parser creation, parsing from a
+ * URI/File/InputStream/InputSource, and locator tracking with a location-annotated error.
  *
  * Design Decisions / Implementation Details:
  *
@@ -36,6 +35,15 @@ import org.xml.sax.helpers.DefaultHandler;
  * @author mheuer
  * @version	1.0
  *
+ * <!-- docstate
+ * pass: 2
+ * mtime: 2026-09-05T11:14:21Z
+ * digest: 67e4bd82b426fdd97a7e73925044b17cb6a65d7779538063a861c94b6b306e1f
+ * stale: false
+ * tags: [code/sax_parsing]
+ * concepts: [SAX Content Handler Base]
+ * facets: {layer: infrastructure, status: legacy, complexity: low}
+ * -->
  */
 public class SaxHandler 
 extends DefaultHandler {
@@ -44,7 +52,7 @@ extends DefaultHandler {
 	final static public SAXParserFactory SAX_FACTORY = SAXParserFactory.newInstance();
 	
 	/**
-	 * 
+	 * Creates a handler with no parser yet assigned; one is created lazily on first {@link #parse}.
 	 */
 	public SaxHandler() {
 		super();
@@ -129,7 +137,11 @@ extends DefaultHandler {
 	 */
 	protected Locator locator;
 
-	/** @return the Locator for the given Document	 */
+	/**
+	 * Returns the Locator handed over by the SAX source, or {@code null} before parsing starts.
+	 *
+	 * @return the Locator for the given Document
+	 */
 	final public Locator getDocumentLocator() {
 		return locator;
 	}

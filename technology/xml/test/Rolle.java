@@ -12,11 +12,18 @@ package technology.xml.test;
 //---------------------------------/
 
 /**
- * 
- * =============  ROLLE TYPE ==================	
- * 			
- * 
+ * Castor-generated value object for the ZKDB "Rolle" (role) XML type.
+ *
  * @version $Revision$ $Date$
+ * <!-- docstate
+ * pass: 2
+ * mtime: 2026-09-05T10:13:32Z
+ * digest: f12a68c1f5d5ef96113ec78d7ef937f87d6b8571ce357a3febb6d3e76b065e7a
+ * stale: false
+ * tags: [code/data_transfer_object]
+ * concepts: [Castor Data Transfer Object]
+ * facets: {layer: domain, status: legacy, complexity: low}
+ * -->
 **/
 public class Rolle 
 extends ZKDBBaseType 
@@ -31,6 +38,7 @@ extends ZKDBBaseType
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
+	/** Role type discriminator. */
 	public ZKDBBaseType typ;
 
 
@@ -38,6 +46,7 @@ extends ZKDBBaseType
      //- Constructors -/
     //----------------/
 
+    /** Creates an empty Rolle with all fields unset. */
     public Rolle() {
         super();
     } //-- de.bahn.zkdb.bcm.data.Rolle()

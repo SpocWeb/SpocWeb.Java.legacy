@@ -23,12 +23,10 @@ import streamIO.exception.BaseException;
 import streamIO.object.parser.jdbc.ResultSetToSax;
 
 /**
- * Title: ResultSetToAttributes<p>
- * Description:
- * Purpose:
- * Represents the Fields/Columns of a JDBC ResultSet's current Row 
- * as a SAX XML Attributes Object. 
- * Also contains static Methods to convert other Objects into 
+ * Represents the fields/columns of a JDBC ResultSet's current row as a SAX XML Attributes
+ * object.
+ *
+ * <p>Also contains static Methods to convert other Objects into
  * @see Attributes (which are read-only)
  * @see ResultSet
  * @see Map
@@ -47,6 +45,15 @@ import streamIO.object.parser.jdbc.ResultSetToSax;
  * @author mheuer
  * @version	1.0
  *
+ * <!-- docstate
+ * pass: 2
+ * mtime: 2026-09-05T11:13:22Z
+ * digest: adc43502fc17895de46aeeae0a9c3b8a21cda4a164956e2bd3653984a27a6d5b
+ * stale: false
+ * tags: [code/data_transfer_object]
+ * concepts: [JDBC ResultSet to XML Attributes]
+ * facets: {layer: utility, status: legacy, complexity: low}
+ * -->
  */
 public class ResultSetToAttributes
 implements Attributes {
@@ -55,7 +62,9 @@ implements Attributes {
 	/// #region : static Methods for converting between Map, ResultSet and Properties
 	////////////////////////////////////////////////////////////////////////////////
 	
-	/** 
+	/**
+	 * Delegates to {@link #MAP2PROPERTIES(Properties, Map)} with a new, empty Properties Object.
+	 *
 	 * @param ret Properties Object to fill
 	 * @param rs Resultset to read from, not advanded
 	 * @return a new Properties Object filled with the Field Mappings of the given ResultSet
@@ -231,6 +240,8 @@ implements Attributes {
 	////////////////////////////////////////////////////////////////////////////
 	
 	/**
+	 * Returns the number of columns in the wrapped ResultSet's current row.
+	 *
 	 * @see org.xml.sax.Attributes#getLength()
 	 */
 	public int getLength() {
@@ -298,6 +309,8 @@ implements Attributes {
 	}
 
 	/**
+	 * Returns the current row's column value at the given 1-based index as a String.
+	 *
 	 * @see org.xml.sax.Attributes#getValue(int)
 	 */
 	public String getValue(final int index) {
@@ -309,6 +322,9 @@ implements Attributes {
 	}
 
 	/**
+	 * Returns the column index for localName, or -1 when uri does not match this instance's
+	 * {@link #uri}.
+	 *
 	 * @see org.xml.sax.Attributes#getIndex(String, String)
 	 */
 	public int getIndex(final String uri, final String localName) {
@@ -323,6 +339,9 @@ implements Attributes {
 	}
 
 	/**
+	 * Returns the column index for qName after stripping this instance's {@link #uri} prefix,
+	 * or -1 when qName does not start with it.
+	 *
 	 * @see org.xml.sax.Attributes#getIndex(String)
 	 * @see java.sql.ResultSet#findColumn(String) which has the same Meaning and Interface
 	 */
@@ -333,6 +352,9 @@ implements Attributes {
 	}
 
 	/**
+	 * Resolves uri/localName to a column index and delegates to {@link #getType(int)},
+	 * always returning {@code "CDATA"}.
+	 *
 	 * @see org.xml.sax.Attributes#getType(String, String)
 	 */
 	public String getType(final String uri, final String localName) {
@@ -340,6 +362,9 @@ implements Attributes {
 	}
 
 	/**
+	 * Resolves qName to a column index and delegates to {@link #getType(int)}, always
+	 * returning {@code "CDATA"}.
+	 *
 	 * @see org.xml.sax.Attributes#getType(String)
 	 */
 	public String getType(final String qName) {
@@ -347,6 +372,8 @@ implements Attributes {
 	}
 
 	/**
+	 * Resolves uri/localName to a column index and returns that column's value.
+	 *
 	 * @see org.xml.sax.Attributes#getValue(String, String)
 	 */
 	public String getValue(final String uri, final String localName) {
@@ -354,6 +381,8 @@ implements Attributes {
 	}
 
 	/**
+	 * Resolves qName to a column index and returns that column's value.
+	 *
 	 * @see org.xml.sax.Attributes#getValue(String)
 	 */
 	public String getValue(final String qName) {
@@ -361,6 +390,8 @@ implements Attributes {
 	}
 
 	/**
+	 * Renders the current row as an XML attribute-list string via {@link #WRITE_ATTRIBUTES}.
+	 *
 	 * @see java.lang.Object#toString()
 	 */
 	public String toString() {

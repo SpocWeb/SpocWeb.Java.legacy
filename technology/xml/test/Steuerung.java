@@ -13,15 +13,20 @@ package technology.xml.test;
 
 
 /**
- *   
- * =============  STEURERUNG TYPE ==================	
- * 		***** Beinhaltet die Steurungsdaten vom Trafolayer, wird nicht
- * von dem BusinessLayer validiert. Alle Felder sind Pflicht und
- * dienen zur Steuerung des Protokolls ******Alle Felder sind
- * Pflicht und dienen zur Steuerung des Protokolls					
- * 			
- * 
+ * Castor-generated value object for the ZKDB "Steuerung" (control section) XML type: holds
+ * the Trafo-layer control data for a Transaktion, not validated by the BusinessLayer. All
+ * fields are mandatory and control protocol handling.
+ *
  * @version $Revision$ $Date$
+ * <!-- docstate
+ * pass: 2
+ * mtime: 2026-09-05T10:13:32Z
+ * digest: 8381843c6de4c424c86c243810c3534a71573733bbbeb916996452acf10f4ff9
+ * stale: false
+ * tags: [code/data_transfer_object]
+ * concepts: [Castor Data Transfer Object]
+ * facets: {layer: domain, status: legacy, complexity: low}
+ * -->
 **/
 public class Steuerung 
 implements java.io.Serializable {
@@ -59,6 +64,7 @@ implements java.io.Serializable {
      //- Constructors -/
     //----------------/
 
+    /** Creates an empty Steuerung with all fields unset. */
     public Steuerung() {
         super();
     } //-- de.bahn.zkdb.bcm.data.Steuerung()
@@ -259,12 +265,10 @@ implements java.io.Serializable {
     } //-- void setZKDBID(java.lang.String) 
 
 	/**
-	 * @param args URLs to indicate the Input(args[0]), TrafoXSL(args[1]), Output(args[2])
-	 * The URLs can also be absolute or relative FileSystem Paths! ^
-	 * e.g. java technology.xml.XslTrafo
-	 * "E:\Personal\Code\XSL\Music\example\Seal Second 06 Kiss_from_a_Rose.xml"
-	 * E:\Personal\Code\XSL\Music\example\SongStyle.xsl
-	 * E:\Personal\Code\xsl\Music\example\output.html
+	 * Demonstrates that {@code int.class} and {@code Integer.class} are distinct Class
+	 * objects, and looks up the {@code setStatusNummer(int)} Method by reflection.
+	 *
+	 * @param args unused
 	 */
 	public static void main(final String[] args) throws Exception { //
 		final Class c1 = int.class;

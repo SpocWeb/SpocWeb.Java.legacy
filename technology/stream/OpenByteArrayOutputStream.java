@@ -11,11 +11,8 @@ import java.io.InputStream;
 import java.io.OutputStream;
 
 /**
- * Title: OpenByteArrayOutputStream<p>
- * Description:
- * Purpose:
- * Opens up the super Class to save copying the inner Buffer. 
- * Also holds some static Methods for fast Streaming. 
+ * Exposes {@link ByteArrayOutputStream}'s internal buffer directly, to avoid copying it, and
+ * adds static helpers for chunked stream copying.
  *
  * Known SubClasses: <none>
  *
@@ -28,6 +25,15 @@ import java.io.OutputStream;
  * @author mheuer
  * @version	1.0
  *
+ * <!-- docstate
+ * pass: 2
+ * mtime: 2026-09-05T11:11:57Z
+ * digest: d923490d98af945a850b43c0f65d19b2693434a304294f3091c8cea4d156e7fd
+ * stale: false
+ * tags: [code/stream_adapter]
+ * concepts: [Exposed-Buffer Byte Array Stream]
+ * facets: {layer: infrastructure, status: legacy, complexity: low}
+ * -->
  */
 public class OpenByteArrayOutputStream extends ByteArrayOutputStream {
 

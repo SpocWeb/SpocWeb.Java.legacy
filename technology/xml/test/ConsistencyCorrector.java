@@ -7,22 +7,32 @@ import function.IInvertAble;
 
 /** 
  * Vergleicht zwei IDs mit jeweiligem Status auf Konsistenz 
- * und updated ggf. die ältere. 
+ * und updated ggf. die ï¿½ltere. 
  * 
- * Hier wird geprüft, ob beide Werte zusammenpassen, sofern beide verändert wurden. 
- * Passen sie nicht und wurde nur einer verändert, wird der jeweils andere nachgezogen, 
- * wurde keiner verändert, wird gar nichts gemacht (außer man hat den Debug Modus an). 
+ * Hier wird geprï¿½ft, ob beide Werte zusammenpassen, sofern beide verï¿½ndert wurden. 
+ * Passen sie nicht und wurde nur einer verï¿½ndert, wird der jeweils andere nachgezogen, 
+ * wurde keiner verï¿½ndert, wird gar nichts gemacht (auï¿½er man hat den Debug Modus an). 
  * Wird die passende EKP-Nummer oder Rise-ID nicht gefunden 
- * oder passen die Werte nicht zusammen, wird über den Return String USER_WARNING zurückgeliefert.
+ * oder passen die Werte nicht zusammen, wird ï¿½ber den Return String USER_WARNING zurï¿½ckgeliefert.
  * 
  * Die Klasse stellt Dummy Methoden mit auskommentierten Datenbank- Zugriffen bereit, 
- * um die bijektive Abbildung der IDs aufeinander auszuführen. 
+ * um die bijektive Abbildung der IDs aufeinander auszufï¿½hren. 
  * 
+ * <!-- docstate
+ * pass: 2
+ * mtime: 2026-09-05T10:13:32Z
+ * digest: d1bbe940fa7247fa6935860c9d7fd6b2a25f4ea7602a23c2af01d22ebc49fd1f
+ * stale: false
+ * tags: [code/data_transfer_object]
+ * concepts: [Data Consistency Corrector]
+ * facets: {layer: domain, status: legacy, complexity: low}
+ * -->
  */
 public class ConsistencyCorrector 
 extends AInvertAble {
 
-	final static public String USER_WARNING = "Warnung:"; 
+	/** Prefix returned when the IDs could not be reconciled and a user warning is required. */
+	final static public String USER_WARNING = "Warnung:";
 
 	/////////////////////////////////////////////////////////////////////////////////////
 	// Implement IInvertAble
@@ -50,15 +60,19 @@ extends AInvertAble {
 		}
 */	}
 
-	/** 
+	/**
+	 * Delegates to {@link #map(Object, boolean)} in the RiseID-to-EKP direction.
+	 *
 	 * @see de.deutschepost.rise.common.util.Mapper#map(Object)
-	 * @return the EKP-Number for the given RiseID 
+	 * @return the EKP-Number for the given RiseID
 	 */
 	public Object Map(Object arg) { return map(arg, true); }
 
-	/** 
+	/**
+	 * Delegates to {@link #map(Object, boolean)} in the EKP-to-RiseID direction.
+	 *
 	 * @see de.deutschepost.rise.common.util.Function#UN_MAP(java.lang.Object)
-	 * @return the RiseID for the given EKP-Number  
+	 * @return the RiseID for the given EKP-Number
 	 */
 	public Object UnMap(Object arg) { return map(arg, false); }
 	
@@ -78,9 +92,12 @@ extends AInvertAble {
 	}
 
 	/**
+	 * Checks whether status is one of the values still valid after a merge (CHANGED,
+	 * UNCHANGED or {@code null}), rejecting DELETED, ERROR and any other value.
+	 *
 	 * @param status the Status of the Field as it should be after Merging
 	 * @return boolean true when the Status is one of the expected, i.e. CHANGED or UNCHANGED
-	 */    
+	 */
 	final static public boolean IS_STATUS_OK_AFTER_MERGE(final StatusValue status) {
 		if (status == StatusValue.CHANGED) { //test the most frequent Results first
 			return true; }
@@ -145,19 +162,19 @@ extends AInvertAble {
 	}
 		
    /**
-	* Extra Prüfung für von redundante Beziehungen id1 und id2: 
+	* Extra Prï¿½fung fï¿½r von redundante Beziehungen id1 und id2: 
 	* * Beteiligung (Konzern), 
 	* * Master (Dublette), 
 	* * Verband, 
-	* * Zentrale (für Filialen) 
+	* * Zentrale (fï¿½r Filialen) 
 	* Alle diese Relationen werden redundant doppelt verwaltet: 
 	* einmal als Relationen zwischen EKP Nummern und 
 	* als Relationen zwischen RISE-IDs. 
-	* Hier wird geprüft, ob beide Werte zusammenpassen, sofern beide verändert wurden. 
-	* Wurde nur einer verändert, wird der andere nachgezogen, 
-	* wurde keiner verändert, wird gar nichts gemacht (außer man hat den Debug Modus an). 
+	* Hier wird geprï¿½ft, ob beide Werte zusammenpassen, sofern beide verï¿½ndert wurden. 
+	* Wurde nur einer verï¿½ndert, wird der andere nachgezogen, 
+	* wurde keiner verï¿½ndert, wird gar nichts gemacht (auï¿½er man hat den Debug Modus an). 
 	* Wird die passende EKP-Nummer oder Rise-ID nicht gefunden 
-	* oder passen die Werte nicht zusammen, wird über den Return String ReturnXML.WARNING zurückgeliefert.   
+	* oder passen die Werte nicht zusammen, wird ï¿½ber den Return String ReturnXML.WARNING zurï¿½ckgeliefert.   
 	* @param castor Castor Objekt 
 	* @return null if the Data was missing or ok, ekpNr from DB if the ids were contradictionary
 	* @throws RemoteException Remote
@@ -209,7 +226,7 @@ extends AInvertAble {
 	}   
 	
 	/**
-	 * Prüft die Konsistenz der Beteiligung des Unternehmens
+	 * Prï¿½ft die Konsistenz der Beteiligung des Unternehmens
 	 * @param unternehmung
 	 * @param mapperRise2Ekp
 	 * @return null if OK, error message otherwise
@@ -220,8 +237,8 @@ extends AInvertAble {
 			if (USER_WARNING.equals(result)){
 				return result+" Fehler in den IDs"; 
 			} else {
-				return "Inkonsistente Beteiligungen: EKP-Nr des Konzerns, ermittelt über die ZkdbID:"+result+
-						"\ndirekte Angabe des Konzerns über EKP-Nr:"+unternehmung.getAnotherID();
+				return "Inkonsistente Beteiligungen: EKP-Nr des Konzerns, ermittelt ï¿½ber die ZkdbID:"+result+
+						"\ndirekte Angabe des Konzerns ï¿½ber EKP-Nr:"+unternehmung.getAnotherID();
 			}
 		} 
 		//correctable...

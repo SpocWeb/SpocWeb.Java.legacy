@@ -20,15 +20,10 @@ import org.xml.sax.XMLReader;
 import org.xml.sax.helpers.XMLFilterImpl;
 
 /**
- * Title: XmlHandler<p>
- * Purpose: 
- * Provides an extended Default Implementation and 
- * Java Documentation of the different Methods and Interfaces 
- * implemented in an XML SAX Application. 
- * Additionally implements a SAX Filter
- * that allows to safely concatenate several SAX Filters 
- * with overwritten protected Handler Methods, 
- * without compromising the Filtering Functionality. 
+ * Provides a documented, chainable default implementation of the SAX handler interfaces by
+ * making each public callback {@code final} and delegating to an overridable, boolean-
+ * returning {@code _}-suffixed method that decides whether to propagate the event further
+ * down the filter chain.
  *
  * Design Decisions / Implementation Details:
  * The Base Class provides sufficient, but not very useful 
@@ -57,6 +52,15 @@ import org.xml.sax.helpers.XMLFilterImpl;
  * @author mheuer
  * @version	1.0
  *
+ * <!-- docstate
+ * pass: 2
+ * mtime: 2026-09-05T11:14:37Z
+ * digest: fdad091f5029218e2ce72185ce8af80cf4e9061a77730ab49055318e429925d4
+ * stale: false
+ * tags: [code/xml_parsing]
+ * concepts: [XML Handler Base]
+ * facets: {layer: infrastructure, status: legacy, complexity: low}
+ * -->
  */
 public class XmlHandler extends XMLFilterImpl 
 implements EntityResolver, DTDHandler, ContentHandler, ErrorHandler {
@@ -139,11 +143,14 @@ implements EntityResolver, DTDHandler, ContentHandler, ErrorHandler {
 	}
 
 	/**
+	 * Invokes {@link #startElement_} and, when it returns {@code true}, propagates the Element
+	 * start to the underlying filter chain.
+	 *
 	 * @param namespaceURI The Namespace, already decoded by the SAX Parser
 	 * @param localName Name without Prefix or Namespace
 	 * @param qName Name as it appears in the Dokument: 'prefix:name'
-	 * @param atts parsed Quasi-Map of Attributes (Names are unique!) 
-	 * containing Names, Indices, Values, Namespace Prefixes etc. 
+	 * @param atts parsed Quasi-Map of Attributes (Names are unique!)
+	 * containing Names, Indices, Values, Namespace Prefixes etc.
 	 * @see org.xml.sax.ContentHandler#startElement(String, String, String, Attributes)
 	 */
 	final public void startElement(String namespaceURI, String localName, String qName, Attributes atts
@@ -159,6 +166,9 @@ implements EntityResolver, DTDHandler, ContentHandler, ErrorHandler {
 	protected StringBuffer buffer = new StringBuffer(); 
 
 	/**
+	 * Invokes {@link #endElement_} and, when it returns {@code true}, propagates the Element
+	 * end to the underlying filter chain, then clears the text {@link #buffer}.
+	 *
 	 * @param namespaceURI the Namespace, already decoded by the SAX Parser
 	 * @param localName Name without Prefix or Namespace
 	 * @param qName Name as it appears in the Dokument: 'prefix:name'

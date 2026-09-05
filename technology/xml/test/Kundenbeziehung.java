@@ -12,11 +12,18 @@ package technology.xml.test;
 //---------------------------------/
 
 /**
- * 
- * =============  KUNDENBEZIEHUNG TYPE ==================	
- * 				
- * 
+ * Castor-generated value object for the ZKDB "Kundenbeziehung" (customer relationship) XML type.
+ *
  * @version $Revision$ $Date$
+ * <!-- docstate
+ * pass: 2
+ * mtime: 2026-09-05T10:13:32Z
+ * digest: f10c975b2919e1a13f614998a6f86a6a54626a500398952abb952746a0c84a1a
+ * stale: false
+ * tags: [code/data_transfer_object]
+ * concepts: [Castor Data Transfer Object]
+ * facets: {layer: domain, status: legacy, complexity: low}
+ * -->
 **/
 public class Kundenbeziehung 
 extends ZKDBBaseType 
@@ -32,8 +39,10 @@ extends ZKDBBaseType
 	 */
 	private static final long serialVersionUID = 1L;
 
+	/** Relationship type discriminator. */
 	public ZKDBBaseType typ;
 
+    /** ZKDB ID of the related customer. */
     public ZKDBBaseType ZKDBID;
 
 
@@ -41,6 +50,7 @@ extends ZKDBBaseType
      //- Constructors -/
     //----------------/
 
+    /** Creates an empty Kundenbeziehung with all fields unset. */
     public Kundenbeziehung() {
         super();
     } //-- de.bahn.zkdb.bcm.data.Kundenbeziehung()

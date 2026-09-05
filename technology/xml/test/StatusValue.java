@@ -14,13 +14,19 @@ package technology.xml.test;
 import java.util.Hashtable;
 
 /**
- * 
- * =============  STATUSVALUE TYPE ==================	
- * StatusValue ist der BasisTyp fuer die oefters vorkommende
- * Status-Attribute
- * 
- * 
+ * Castor-generated typesafe enumeration for the ZKDB "StatusValue" XML type, the base type
+ * for the frequently-recurring status attributes (CHANGED, DELETED, UNCHANGED, ERROR).
+ *
  * @version $Revision$ $Date$
+ * <!-- docstate
+ * pass: 2
+ * mtime: 2026-09-05T10:13:32Z
+ * digest: 61b78b2060a4ab039b8cfccf0a6c86ef77edc5969f573f2d67eae414d4f767a3
+ * stale: false
+ * tags: [code/data_transfer_object]
+ * concepts: [Castor Data Transfer Object]
+ * facets: {layer: domain, status: legacy, complexity: low}
+ * -->
 **/
 public class StatusValue 
 implements java.io.Serializable {

@@ -13,11 +13,19 @@ package technology.xml.test;
 
 
 /**
- * 
- * =============  TRANSAKTION TYPE ================= 
- * 			
- * 
+ * Castor-generated value object for the ZKDB "Transaktion" (transaction) XML type, pairing a
+ * {@link Steuerung} control section with its {@link Daten} payload.
+ *
  * @version $Revision$ $Date$
+ * <!-- docstate
+ * pass: 2
+ * mtime: 2026-09-05T10:13:32Z
+ * digest: d9528e86954b8504b3ffbc5393db38f47b3a1e466c2ceb5c75ae6a3cfdd7b447
+ * stale: false
+ * tags: [code/data_transfer_object]
+ * concepts: [Castor Data Transfer Object]
+ * facets: {layer: domain, status: legacy, complexity: low}
+ * -->
 **/
 public class Transaktion 
 implements java.io.Serializable {
@@ -41,6 +49,7 @@ implements java.io.Serializable {
      //- Constructors -/
     //----------------/
 
+    /** Creates an empty Transaktion with no Steuerung or Daten set. */
     public Transaktion() {
         super();
     } //-- de.bahn.zkdb.bcm.data.Transaktion()

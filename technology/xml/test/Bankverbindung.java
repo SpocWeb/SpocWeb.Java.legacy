@@ -12,11 +12,18 @@ package technology.xml.test;
 //---------------------------------/
 
 /**
- * 
- * =============  BANKVERBINDUNG TYPE ==================	
- * 				
- * 
+ * Castor-generated value object for the ZKDB "Bankverbindung" (bank account) XML type.
+ *
  * @version $Revision$ $Date$
+ * <!-- docstate
+ * pass: 2
+ * mtime: 2026-09-05T10:13:32Z
+ * digest: d8314bb8e2130fcf2930e9c01811dcfb00b67d522417daf4f0e38b04cde5e7b5
+ * stale: false
+ * tags: [code/data_transfer_object]
+ * concepts: [Castor Data Transfer Object]
+ * facets: {layer: domain, status: legacy, complexity: low}
+ * -->
 **/
 public class Bankverbindung 
 extends ZKDBBaseType 
@@ -32,18 +39,25 @@ extends ZKDBBaseType
 	 */
 	private static final long serialVersionUID = 1L;
 
+	/** Bank account type discriminator. */
 	public ZKDBBaseType typ;
 
+    /** Account holder's name. */
     public ZKDBBaseType kto_inhaber;
 
+    /** Account number. */
     public ZKDBBaseType kto_nr;
 
+    /** Name of the credit institution. */
     public ZKDBBaseType kreditinstitut;
 
+    /** Bank sort code ("Bankleitzahl"). */
     public ZKDBBaseType BLZ;
 
+    /** Flag indicating this is the preferred bank account. */
     public ZKDBBaseType bevorzugt;
 
+    /** Flag blocking direct debit ("Lastschrift") on this account. */
     public ZKDBBaseType lastschrift_sperre;
 
 
@@ -51,6 +65,7 @@ extends ZKDBBaseType
      //- Constructors -/
     //----------------/
 
+    /** Creates an empty Bankverbindung with all fields unset. */
     public Bankverbindung() {
         super();
     } //-- de.bahn.zkdb.bcm.data.Bankverbindung()

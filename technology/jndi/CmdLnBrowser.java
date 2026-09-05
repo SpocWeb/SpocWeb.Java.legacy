@@ -23,6 +23,15 @@ import javax.naming.NamingException;
   * mv 
   * mkdir 
   * 
+  * <!-- docstate
+  * pass: 2
+  * mtime: 2026-09-05T11:10:56Z
+  * digest: 4b8f5fad08596c8bac6db2d669d3d32095c8ef20bb09dbe01763ce2f0bf8db86
+  * stale: false
+  * tags: [code/directory_services]
+  * concepts: [Command-Line JNDI Browser]
+  * facets: {layer: utility, status: legacy, complexity: low}
+  * -->
   */
 public class CmdLnBrowser {
 
@@ -116,8 +125,8 @@ public class CmdLnBrowser {
 		}
 	}
 
-	/** adds the Binding of obj to name
-	 * a Rebind overwrites the given Binding. 
+	/** Adds the Binding of obj to name; unlike {@link #set(Name, Object)}, fails if name is
+	 * already bound rather than overwriting it.
 	 * @param name
 	 * @param obj
 	 * @throws Exception

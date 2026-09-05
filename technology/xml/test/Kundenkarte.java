@@ -12,11 +12,18 @@ package technology.xml.test;
 //---------------------------------/
 
 /**
- * 
- * =============  KUNDENKARTE TYPE ==================	
- * 				
- * 
+ * Castor-generated value object for the ZKDB "Kundenkarte" (customer card) XML type.
+ *
  * @version $Revision$ $Date$
+ * <!-- docstate
+ * pass: 2
+ * mtime: 2026-09-05T10:13:32Z
+ * digest: 039f63b61bc1c9f389683ba7e7f0cc46e335771333ac9cf3fe1d8add38dc4572
+ * stale: false
+ * tags: [code/data_transfer_object]
+ * concepts: [Castor Data Transfer Object]
+ * facets: {layer: domain, status: legacy, complexity: low}
+ * -->
 **/
 public class Kundenkarte 
 extends ZKDBBaseType 
@@ -32,18 +39,25 @@ extends ZKDBBaseType
 	 */
 	private static final long serialVersionUID = 1L;
 
+	/** Card type discriminator. */
 	public ZKDBBaseType typ;
 
+    /** Card number. */
     public ZKDBBaseType nummer;
 
+    /** Travel class this card entitles to. */
     public ZKDBBaseType befoerderungsklasse;
 
+    /** Validity duration. */
     public ZKDBBaseType gueltigkeitsdauer;
 
+    /** Validity start date. */
     public ZKDBBaseType gueltig_von;
 
+    /** Validity end date. */
     public ZKDBBaseType gueltig_bis;
 
+    /** Display label for this card. */
     public ZKDBBaseType bezeichnung;
 
 
@@ -51,6 +65,7 @@ extends ZKDBBaseType
      //- Constructors -/
     //----------------/
 
+    /** Creates an empty Kundenkarte with all fields unset. */
     public Kundenkarte() {
         super();
     } //-- de.bahn.zkdb.bcm.data.Kundenkarte()

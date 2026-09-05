@@ -12,12 +12,19 @@ package technology.xml.test;
 //---------------------------------/
 
 /**
- * 
- * =============  ZKDBBASE TYPE ==================
- * Der BasisTyp fuer saemtliche Elemente mit einer Delta-Attribute
- * 			
- * 
+ * Castor-generated base value object for every ZKDB XML element carrying a content string,
+ * status and modification time (a "Delta-Attribute" element).
+ *
  * @version $Revision$ $Date$
+ * <!-- docstate
+ * pass: 2
+ * mtime: 2026-09-05T10:13:32Z
+ * digest: 054c92bf4e88b9e2ff34e994923ac483b6da1adcf657ccc83ffc5beba8de9d4d
+ * stale: false
+ * tags: [code/data_transfer_object]
+ * concepts: [Castor Data Transfer Object Base]
+ * facets: {layer: domain, status: legacy, complexity: low}
+ * -->
 **/
 public class ZKDBBaseType 
 implements java.io.Serializable {
@@ -46,12 +53,17 @@ implements java.io.Serializable {
      //- Constructors -/
     //----------------/
 
+	/** Creates a ZKDBBaseType with empty content. */
 	public ZKDBBaseType() {
 		super();
 		setContent("");
 	} //-- de.bahn.zkdb.bcm.data.ZKDBBaseType()
 
 
+	/**
+	 * Creates a ZKDBBaseType wrapping the given content.
+	 * @param content
+	 */
 	public ZKDBBaseType(final String content) {
 		super();
 		setContent(content);
@@ -134,8 +146,12 @@ implements java.io.Serializable {
 		this._status = StatusValue.valueOf(status);
 	} //-- void setStatus(de.bahn.zkdb.bcm.data.types.StatusValueType) 
 
+	/**
+	 * Returns this instance's content string.
+	 * @see java.lang.Object#toString()
+	 */
 	public String toString() {
-		return this._content; 
+		return this._content;
 	}
 
 }

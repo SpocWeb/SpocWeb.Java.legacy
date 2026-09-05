@@ -12,11 +12,18 @@ package technology.xml.test;
 //---------------------------------/
 
 /**
- * 
- * =============  KUNDENMERKMAL TYPE ==================	
- * 			
- * 
+ * Castor-generated value object for the ZKDB "Kundenmerkmal" (customer attribute) XML type.
+ *
  * @version $Revision$ $Date$
+ * <!-- docstate
+ * pass: 2
+ * mtime: 2026-09-05T10:13:32Z
+ * digest: bd309d298e1a928a774ca440b403b8b0efa6dab7fb4194de56bd564a2be7c213
+ * stale: false
+ * tags: [code/data_transfer_object]
+ * concepts: [Castor Data Transfer Object]
+ * facets: {layer: domain, status: legacy, complexity: low}
+ * -->
 **/
 public class Kundenmerkmal 
 extends ZKDBBaseType 
@@ -32,6 +39,7 @@ extends ZKDBBaseType
 	 */
 	private static final long serialVersionUID = 1L;
 
+	/** Attribute type discriminator. */
 	public ZKDBBaseType typ;
 
     /**
@@ -41,6 +49,7 @@ extends ZKDBBaseType
     **/
     public ZKDBBaseType sys_extern;
 
+    /** The attribute's value. */
     public ZKDBBaseType merkmal;
 
 
@@ -48,6 +57,7 @@ extends ZKDBBaseType
      //- Constructors -/
     //----------------/
 
+    /** Creates an empty Kundenmerkmal with all fields unset. */
     public Kundenmerkmal() {
         super();
     } //-- de.bahn.zkdb.bcm.data.Kundenmerkmal()

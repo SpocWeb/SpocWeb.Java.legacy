@@ -21,26 +21,24 @@ import streamIO.integer.filter.FilterIn_Byte;
 import function.IIntFunction;
 
 /**
- * Title: WaveReader<p>
- * Description:
- * Purpose:
+ * Demonstrates reading a WAV file with the Java Sound API and re-synthesizing a sine-wave
+ * WAV file of raw PCM samples produced through {@link IIntFunction#Map(int)}.
  *
- * Purpose / Responsibilities of this Class
- *
- * Design Decisions / Implementation Details:
- * If similar Classes exist (e.g. Polymorphism),
- * characterize the specific Differences to compare these.
- *
- * Known SubClasses: <none>
- *
- * Known Uses: <none>
- *
- * Copyright:	Copyright (c) Matthias Heuer<p>
+ * <p>Copyright:	Copyright (c) Matthias Heuer<p>
  * Company:	personal<p>
  * Created on	10-26-2002, 12:47 PM<p>
  * @author mheuer
  * @version	1.0
  *
+ * <!-- docstate
+ * pass: 2
+ * mtime: 2026-09-05T11:11:09Z
+ * digest: 6356a8972f22a64c6b4e3863dcfbee58e39a9e2af31725b6b6234756587968d6
+ * stale: false
+ * tags: [code/audio]
+ * concepts: [WAV File Reader]
+ * facets: {layer: utility, status: legacy, complexity: medium}
+ * -->
  */
 public class WaveReader 
 implements IIntFunction {
@@ -50,6 +48,11 @@ implements IIntFunction {
 	static final File file = new File(filePath); 
 
 	
+	/**
+	 * Reads the sample WAV file and writes a re-synthesized sine-wave copy alongside it.
+	 *
+	 * @param args unused
+	 */
 	public static void main(String[] args) throws Exception {
 		AudioFileFormat fileFormat = AudioSystem.getAudioFileFormat(file);
 		AudioInputStream stream    = AudioSystem.getAudioInputStream(file);
@@ -82,6 +85,8 @@ implements IIntFunction {
 */	}
 
 	/**
+	 * Always returns 0; the long-valued overload of this function is unused by this class.
+	 *
 	 * @see function.IIntFunction#Map(long)
 	 */
 	public long Map(final long value) {
@@ -89,6 +94,8 @@ implements IIntFunction {
 	}
 
 	/**
+	 * Returns a sine-wave PCM sample, scaled to the range -127..127, for the given input index.
+	 *
 	 * @see function.IIntFunction#Map(int)
 	 */
 	public int Map(final int value) {

@@ -16,13 +16,10 @@ import org.xml.sax.InputSource;
 import org.xml.sax.SAXException;
 
 /**
- * Title: SaxDispatcher<p>
- * Description:
- * Purpose:
- * This is a SAX Handler, 
- * that calls Methods from a Class by Reflection  
- * and hands over the Attributes Object as the single Parameter. 
- * 
+ * A SAX handler that dispatches each Element event by reflection to a method of an arbitrary
+ * target object, passing the Attributes object as its single parameter.
+ *
+ * <p>
  * The Method Name corresponds to the Element Name for Start Elements 
  * and qName+"End" for End Elements. 
  * In-between any Text Content is accumulated in a public Stringbuffer, 
@@ -45,6 +42,15 @@ import org.xml.sax.SAXException;
  * @author mheuer
  * @version	1.0
  *
+ * <!-- docstate
+ * pass: 2
+ * mtime: 2026-09-05T11:14:09Z
+ * digest: 5acbf086ba95b1ebfc0ff6fa9349f47a9510dbccee3662810426cbaa3ab882fe
+ * stale: false
+ * tags: [code/sax_parsing, code/reflection_dispatch]
+ * concepts: [Reflection-Based SAX Dispatcher]
+ * facets: {layer: infrastructure, status: legacy, complexity: medium}
+ * -->
  */
 public class SaxDispatcher 
 extends SaxHandler {
@@ -86,6 +92,14 @@ extends SaxHandler {
 		}
 	}
 
+	/**
+	 * Parses the document at the given URI, dispatching each Element event by reflection to
+	 * eventHandler through a new {@link SaxDispatcher}.
+	 *
+	 * @param uri the URI from where to load the document
+	 * @param eventHandler the object whose methods are invoked for each Element
+	 * @param strict whether to raise a SAXException for an Element with no matching Method
+	 */
 	final static public void PARSE(
 		String uri,
 		Object eventHandler,
@@ -178,7 +192,11 @@ extends SaxHandler {
 		if (!carryOverText) buffer.setLength(0); //Text is not transferred into Nodes. 
 	}
 
-	/** @see org.xml.sax.ContentHandler#endElement(java.lang.String, java.lang.String, java.lang.String)	 */
+	/**
+	 * Dispatches the Element's end by reflection to a method named qName + "End".
+	 *
+	 * @see org.xml.sax.ContentHandler#endElement(java.lang.String, java.lang.String, java.lang.String)
+	 */
 	public void endElement(final String uri, final String localName, final String qName)
 		throws SAXException {
 		callByReflection(qName+"End", strictEnd, eventHandler, null, null); // 
@@ -195,13 +213,21 @@ extends SaxHandler {
 	 */
 	final public StringBuffer buffer = new StringBuffer(); 
 	
-	/** @see org.xml.sax.ContentHandler#characters(char[], int, int)	 */
+	/**
+	 * Appends the given character range to {@link #buffer}.
+	 *
+	 * @see org.xml.sax.ContentHandler#characters(char[], int, int)
+	 */
 	public void characters(final char[] ch, final int start, final int length)
 	throws SAXException {
-		buffer.append(ch, start, length); 
+		buffer.append(ch, start, length);
 	}
-	
-	/** @see org.xml.sax.ContentHandler#ignorableWhitespace(char[], int, int)	 */
+
+	/**
+	 * Appends the given whitespace to {@link #buffer} only when {@code collectWhiteSpace} is set.
+	 *
+	 * @see org.xml.sax.ContentHandler#ignorableWhitespace(char[], int, int)
+	 */
 	public void ignorableWhitespace(final char[] ch, final int start, final int length)
 	throws SAXException {
 		if (collectWhiteSpace) {

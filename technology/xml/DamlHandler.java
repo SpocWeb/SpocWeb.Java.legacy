@@ -18,10 +18,8 @@ import org.xml.sax.SAXException;
 import streamIO.Log;
 
 /**
- * Title: DamlHandler<p>
- * Description:
- * Purpose:
- * Handles DAML Syntax from an XmlReader and writes out relational Data. 
+ * Handles DAML syntax reflectively dispatched from a SAX reader and writes out relational
+ * (entity, triple and relation) tab-separated data files.
  *
  * Design Decisions / Implementation Details:
  * The current Context collects the Details of different Tables 
@@ -38,13 +36,24 @@ import streamIO.Log;
  * @author mheuer
  * @version	1.0
  *
+ * <!-- docstate
+ * pass: 2
+ * mtime: 2026-09-05T11:12:43Z
+ * digest: 2ed9658a226692b52907ec8182940a00d5762604729c1d00833e035a20628583
+ * stale: false
+ * tags: [code/sax_parsing, code/xml_parsing]
+ * concepts: [DAML SAX Handler]
+ * facets: {layer: infrastructure, status: legacy, complexity: medium}
+ * -->
  */
 public class DamlHandler {
 
+	/** Field separator written between columns of every output record. */
 	final static public char SEPARATOR = '\t';
 
 	/**
-	 * 
+	 * Extracts the {@code rdf:resource} attribute value with its leading {@code '#'} stripped.
+	 *
 	 * @param atts
 	 * @return the rdf:resource Attribute trimmed by the first '#' Character
 	 */
@@ -138,8 +147,10 @@ public class DamlHandler {
 		entityOut.write("\r\n");
 	}
 
+	/** Maximum length of an Entity ID column. */
 	final static public int ENTITY_ID_LENGTH = 50;
 
+	/** Maximum length of each ID segment combined into a Triple ID. */
 	final static public int TRIPLE_ID_LENGTH = ENTITY_ID_LENGTH / 3;
 
 	/** writes a Triple Record (Relation Element), for the current Entity  
@@ -332,6 +343,8 @@ public class DamlHandler {
 	////////////////////////////////////////////////////////////////////////////
 
 	/**
+	 * Delegates to {@link #parse(String[])} with the given command-line arguments.
+	 *
 	 * @param args URLs to indicate the Input(args[0]), TrafoXSL(args[1]), Output(args[2])
 	 * The URLs can also be absolute or relative FileSystem Paths! ^
 	 * e.g. java technology.xml.XslTrafo
@@ -344,6 +357,11 @@ public class DamlHandler {
 	}
 
 	/**
+	 * Creates a {@link DamlHandler} from the given entity/triple/relation output paths and
+	 * processes the DAML document named by the first argument, or prints the command syntax
+	 * when fewer than 4 arguments are given.
+	 *
+	 * @param args entity path, triple path, relation path plus the input DAML file
 	 */
 	final static public void parse(String[] args)
 		throws IOException, SAXException, ParserConfigurationException {

@@ -12,11 +12,18 @@ package technology.xml.test;
 //---------------------------------/
 
 /**
- * 
- * =============  BENUTZERERKENNUNG TYPE ==================	
- * 			
- * 
+ * Castor-generated value object for the ZKDB "Benutzererkennung" (user credential) XML type.
+ *
  * @version $Revision$ $Date$
+ * <!-- docstate
+ * pass: 2
+ * mtime: 2026-09-05T10:13:32Z
+ * digest: 64e663e0990affe6c5335fd12a8079d173017fda6b49073ff3d26bf6f53b1bda
+ * stale: false
+ * tags: [code/data_transfer_object]
+ * concepts: [Castor Data Transfer Object]
+ * facets: {layer: domain, status: legacy, complexity: low}
+ * -->
 **/
 public class Benutzererkennung 
 extends ZKDBBaseType 
@@ -32,10 +39,13 @@ extends ZKDBBaseType
 	 */
 	private static final long serialVersionUID = 1L;
 
+	/** Credential type discriminator. */
 	public ZKDBBaseType typ;
 
+    /** User name. */
     public ZKDBBaseType benutzername;
 
+    /** PIN/password. */
     public ZKDBBaseType pin;
 
 
@@ -43,6 +53,7 @@ extends ZKDBBaseType
      //- Constructors -/
     //----------------/
 
+    /** Creates an empty Benutzererkennung with all fields unset. */
     public Benutzererkennung() {
         super();
     } //-- de.bahn.zkdb.bcm.data.Benutzererkennung()

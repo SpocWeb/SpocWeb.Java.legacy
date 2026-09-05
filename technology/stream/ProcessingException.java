@@ -8,15 +8,8 @@ package technology.stream;
 import streamIO.exception.ChainedException;
 
 /**
- * Title: ProcessingException<p>
- * Description:
- * Purpose:
- *
- * Purpose / Responsibilities of this Class
- *
- * Design Decisions / Implementation Details:
- * If similar Classes exist (e.g. Polymorphism),
- * characterize the specific Differences to compare these.
+ * Signals that an attributed stream's {@code process(...)} step could not process the given
+ * data.
  *
  * Known SubClasses: <none>
  *
@@ -28,6 +21,15 @@ import streamIO.exception.ChainedException;
  * @author mheuer
  * @version	1.0
  *
+ * <!-- docstate
+ * pass: 2
+ * mtime: 2026-09-05T11:12:09Z
+ * digest: 266ca5ce053d190ac02c622f854223ee2a41ecc0f42528ea9018e90b11c5f35d
+ * stale: false
+ * tags: [code/stream_adapter]
+ * concepts: [Custom Exception Type]
+ * facets: {layer: infrastructure, status: legacy, complexity: low}
+ * -->
  */
 public class ProcessingException extends ChainedException {
 
@@ -37,7 +39,7 @@ public class ProcessingException extends ChainedException {
 	private static final long serialVersionUID = 1L;
 
 	/**
-	 * 
+	 * Creates an exception with no message and no cause.
 	 */
 	public ProcessingException() {
 		super();
@@ -45,6 +47,7 @@ public class ProcessingException extends ChainedException {
 	}
 
 	/**
+	 * Creates an exception with the given message.
 	 * @param inMessage
 	 */
 	public ProcessingException(String inMessage) {
@@ -53,6 +56,7 @@ public class ProcessingException extends ChainedException {
 	}
 
 	/**
+	 * Creates an exception wrapping the given cause.
 	 * @param inThrowable
 	 */
 	public ProcessingException(Throwable inThrowable) {
@@ -61,6 +65,7 @@ public class ProcessingException extends ChainedException {
 	}
 
 	/**
+	 * Creates an exception with the given message, wrapping the given cause.
 	 * @param inMessage
 	 * @param inThrowable
 	 */

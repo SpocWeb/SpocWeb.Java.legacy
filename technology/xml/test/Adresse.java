@@ -12,11 +12,18 @@ package technology.xml.test;
 //---------------------------------/
 
 /**
- * 
- * =============  ADRESSE TYPE ==================	
- * 			
- * 
+ * Castor-generated value object for the ZKDB "Adresse" (address) XML type.
+ *
  * @version $Revision$ $Date$
+ * <!-- docstate
+ * pass: 2
+ * mtime: 2026-09-05T10:13:32Z
+ * digest: fc02235315d187d260313dc80497c304ee15a1ada73c542da18f4bd1129b4140
+ * stale: false
+ * tags: [code/data_transfer_object]
+ * concepts: [Castor Data Transfer Object]
+ * facets: {layer: domain, status: legacy, complexity: low}
+ * -->
 **/
 public class Adresse 
 extends ZKDBBaseType 
@@ -32,32 +39,46 @@ extends ZKDBBaseType
 	 */
 	private static final long serialVersionUID = 1L;
 
+	/** Address type discriminator (e.g. private/business address). */
 	public ZKDBBaseType typ;
 
+    /** Flag indicating this is a PO box ("Postfach") address. */
     public ZKDBBaseType postfachflag;
 
+    /** Flag indicating whether this address record is currently valid. */
     public ZKDBBaseType valid_flag;
 
+    /** Customer's last name. */
     public ZKDBBaseType kundenname;
 
+    /** Customer's first name. */
     public ZKDBBaseType vorname;
 
+    /** Customer's middle name. */
     public ZKDBBaseType mittelname;
 
+    /** Street and house number, or PO box number. */
     public ZKDBBaseType strasse_postfach;
 
+    /** Additional address line (e.g. building, floor). */
     public ZKDBBaseType adresszusatz;
 
+    /** Postal code. */
     public ZKDBBaseType plz;
 
+    /** City/town. */
     public ZKDBBaseType ort;
 
+    /** Additional locality qualifier for the city/town. */
     public ZKDBBaseType ergaenzung_ort;
 
+    /** State/region. */
     public ZKDBBaseType region;
 
+    /** Preferred salutation for correspondence. */
     public ZKDBBaseType briefanrede;
 
+    /** ISO country code. */
     public ZKDBBaseType land_iso_code;
 
 
@@ -65,6 +86,7 @@ extends ZKDBBaseType
      //- Constructors -/
     //----------------/
 
+    /** Creates an empty Adresse with all fields unset. */
     public Adresse() {
         super();
     } //-- de.bahn.zkdb.bcm.data.Adresse()

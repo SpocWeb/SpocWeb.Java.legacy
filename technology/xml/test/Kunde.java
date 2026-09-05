@@ -12,11 +12,18 @@ package technology.xml.test;
 //---------------------------------/
 
 /**
- * 
- * =============  KUNDE TYPE ==================	
- * 				
- * 
+ * Castor-generated value object for the ZKDB "Kunde" (customer) XML type.
+ *
  * @version $Revision$ $Date$
+ * <!-- docstate
+ * pass: 2
+ * mtime: 2026-09-05T10:13:32Z
+ * digest: 94ffef6168f0c7a307319877809de5c57fe02ccaf986b7625b4b5fb722e1d152
+ * stale: false
+ * tags: [code/data_transfer_object]
+ * concepts: [Castor Data Transfer Object]
+ * facets: {layer: domain, status: legacy, complexity: low}
+ * -->
 **/
 public class Kunde 
 extends ZKDBBaseType 
@@ -32,60 +39,88 @@ extends ZKDBBaseType
 	 */
 	private static final long serialVersionUID = 1L;
 
+	/** Primary ZKDB customer ID. */
 	public ZKDBBaseType ZKDBID;
 
+	/** Secondary/alternate customer ID. */
 	public ZKDBBaseType anotherID;
 
+    /** Flag indicating this customer is an organization rather than a natural person. */
     public ZKDBBaseType orgflag;
 
+    /** Customer's last name. */
     public ZKDBBaseType kundenname;
 
+    /** Customer's first name. */
     public ZKDBBaseType vorname;
 
+    /** Customer's middle name. */
     public ZKDBBaseType mittelname;
 
+    /** Additional name qualifier (e.g. "von", "-"). */
     public ZKDBBaseType namenzusatz;
 
+    /** Academic or professional title. */
     public ZKDBBaseType titel;
 
+    /** Salutation (e.g. Mr./Ms.). */
     public ZKDBBaseType anrede;
 
+    /** Special/alternate salutation. */
     public ZKDBBaseType bes_anrede;
 
+    /** Date of birth. */
     public ZKDBBaseType geburtsdatum;
 
+    /** Gender. */
     public ZKDBBaseType geschlecht;
 
+    /** Marital status. */
     public ZKDBBaseType familienstand;
 
+    /** ISO nationality code. */
     public ZKDBBaseType nationalitaet_iso_code;
 
+    /** Number of children. */
     public ZKDBBaseType anzahl_kinder;
 
+    /** Income bracket. */
     public ZKDBBaseType gehaltsklasse;
 
+    /** Education level. */
     public ZKDBBaseType ausbildung;
 
+    /** Smoker flag. */
     public ZKDBBaseType raucher;
 
+    /** Preferred travel class. */
     public ZKDBBaseType wagenklasse;
 
+    /** Legal form, for organization customers. */
     public ZKDBBaseType rechtsform;
 
+    /** Commercial register number, for organization customers. */
     public ZKDBBaseType registernr;
 
+    /** Commercial register location, for organization customers. */
     public ZKDBBaseType registerort;
 
+    /** Flag blocking this customer record. */
     public ZKDBBaseType kundensperre;
 
+    /** Flag blocking marketing communication to this customer. */
     public ZKDBBaseType werbungssperre;
 
+    /** Preferred payment method. */
     public ZKDBBaseType zahlungsart;
 
+    /** Direct debit status. */
     public ZKDBBaseType lastschrift_status;
 
+    /** Flag blocking direct debit for this customer. */
     public ZKDBBaseType lastschrift_sperre;
 
+    /** Sales/distribution channel. */
     public ZKDBBaseType vertriebsweg;
 
 
@@ -93,6 +128,7 @@ extends ZKDBBaseType
      //- Constructors -/
     //----------------/
 
+    /** Creates an empty Kunde with all fields unset. */
     public Kunde() {
         super();
     } //-- de.bahn.zkdb.bcm.data.Kunde()

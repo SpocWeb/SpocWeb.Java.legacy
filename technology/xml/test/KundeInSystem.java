@@ -12,11 +12,18 @@ package technology.xml.test;
 //---------------------------------/
 
 /**
- * 
- * ============  KUNDEINSYSTEM TYPE ==================	
- * 			
- * 
+ * Castor-generated value object for the ZKDB "KundeInSystem" (customer-per-system) XML type.
+ *
  * @version $Revision$ $Date$
+ * <!-- docstate
+ * pass: 2
+ * mtime: 2026-09-05T10:13:32Z
+ * digest: dc0b17ab239375509d0e55d7c9c35667ba77ed1dd8d3dca43090512ee493a666
+ * stale: false
+ * tags: [code/data_transfer_object]
+ * concepts: [Castor Data Transfer Object]
+ * facets: {layer: domain, status: broken, complexity: low}
+ * -->
 **/
 public class KundeInSystem 
 extends ZKDBBaseType 
@@ -32,10 +39,13 @@ extends ZKDBBaseType
 	 */
 	private static final long serialVersionUID = 1L;
 
+	/** Record type discriminator. */
 	public ZKDBBaseType typ;
 
+    /** Flag blocking this customer in the given system. */
     public ZKDBBaseType sperre;
 
+    /** Status of the customer within the given system. */
     public ZKDBBaseType systemStatus;
 
 
@@ -43,6 +53,7 @@ extends ZKDBBaseType
      //- Constructors -/
     //----------------/
 
+    /** Creates an empty KundeInSystem with all fields unset. */
     public KundeInSystem() {
         super();
     } //-- de.bahn.zkdb.bcm.data.KundeInSystem()
@@ -72,15 +83,20 @@ extends ZKDBBaseType
         return this.systemStatus;
     } //-- SystemStatus getSystemStatus() 
 
+    // TODO: LOGIC: this accessor is named "ZKDBBaseType" instead of "getTyp" (compare the
+    // sibling setTyp(ZKDBBaseType) below and every other class in this package's getTyp()) -
+    // almost certainly a copy/rename mistake. Reflection-based access by naming convention
+    // (as used elsewhere in this codebase, e.g. Accessor/SaxDispatcher) will not find a
+    // "getTyp" method on this class.
     /**
      * Returns the value of field 'typ'.
-     * 
+     *
      * @return the value of field 'typ'.
     **/
     public ZKDBBaseType ZKDBBaseType()
     {
         return this.typ;
-    } //-- Typ getTyp() 
+    } //-- Typ getTyp()
 
     /**
      * Sets the value of field 'sperre'.

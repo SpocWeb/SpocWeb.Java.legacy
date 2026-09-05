@@ -9,12 +9,9 @@ import java.io.InputStream;
 import java.util.Map;
 
 /**
- * Title: IAttributedStreamIn<p>
- * Description:
- * Defines the Interface 
- * for handing over an InputStream and a Map of Attributes along a Processing Line 
- * Interfaces between asynchronous and synchronous Protocols and Technologies 
- * like HTTP, JMS, DB etc. 
+ * Defines the on-demand side of an attributed stream processing chain: handing over an
+ * InputStream plus a Map of Attributes between asynchronous and synchronous protocols and
+ * technologies like HTTP, JMS, DB etc.
  *
  * Design Decisions / Implementation Details:
  * Using Streams is for once adequate for simple HTTP Requests and Responses 
@@ -39,6 +36,15 @@ import java.util.Map;
  * @author mheuer
  * @version	1.0
  *
+ * <!-- docstate
+ * pass: 2
+ * mtime: 2026-09-05T11:11:48Z
+ * digest: 0b8b488aebfd15c4cab93f70fccc38cbefc3625e13cf77cd01ba895fa48bac17
+ * stale: false
+ * tags: [code/stream_adapter]
+ * concepts: [Attributed Stream Input Interface]
+ * facets: {layer: infrastructure, status: legacy, complexity: low}
+ * -->
  */
 public interface IAttributedStreamIn 
 extends IManagedComponent {
