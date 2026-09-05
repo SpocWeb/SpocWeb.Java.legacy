@@ -57,7 +57,7 @@ cost more tokens than one and burn the 5-hour window N times faster.
 | `reflect` | 12 | 2492 | 0 | unclaimed | - |
 | `streamIO/diffPatch` | 11 | 2895 | 0 | unclaimed | - |
 | `sound` | 10 | 1030 | 0 | unclaimed | - |
-| `(root)` | 9 | 1073 | 0 | unclaimed | - |
+| `(root)` | 9 | 1073 | 0 | claimed | main |
 | `streamIO/asyncMessage` | 7 | 541 | 7 | done | main |
 | `analysis` | 6 | 319 | 6 | done | main |
 | `streamIO/adapter` | 6 | 435 | 6 | done | main |
