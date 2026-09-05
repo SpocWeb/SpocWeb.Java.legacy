@@ -32,10 +32,16 @@ below reflects the exact state at pause time - read this before doing anything e
   (`VectorChar.java`, `VectorLong.java`, `VectorShort.java`, `VectorInt.java`,
   `VectorFloat.java`, `VectorDouble.java`, 2400-6500 lines each) were handed to a background
   agent (dispatched this session, task/agent id `a882d24bf9ae7f62b` - only meaningful within
-  this session's process, will NOT resume automatically in a new session) to finish. **That
-  agent's completion status is unknown at pause time** - it may have finished, partially
-  finished, or still be running when this session ends (background agents do not persist
-  across a session restart). First action next session: run
+  this session's process, will NOT resume automatically in a new session). **Confirmed still
+  running as of this pause** (checked via `ListAgents`, ~47 min elapsed) - it has already
+  modified `VectorChar.java`, `VectorFloat.java`, `VectorInt.java`, `VectorLong.java`,
+  `VectorShort.java` in the working tree (uncommitted - left as-is deliberately, mid-edit
+  content should not be committed), `VectorDouble.java` not yet touched. It was NOT stopped
+  before this pause; whether it keeps running, finishes, or is killed depends on what happens
+  to this session/process after pause - assume its outcome is unknown once a new session
+  starts. First action next session: check `git status --short math/vector/` for any further
+  uncommitted changes beyond what's listed here (the agent may have kept working after this
+  note was written), then run
   `java -jar D:/_/_AI/skills/Java.ReadMeGenerator/ReadMeGenerator/target/readmegenerator.jar list-todo math/vector`
   to see the real current state, then either (a) if it's 0 rows, the agent finished -
   proceed straight to gathering its bug/tag report equivalent by reading the 6 files'
