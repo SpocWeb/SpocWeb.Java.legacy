@@ -17,7 +17,10 @@ import streamIO.Log;
 import streamIO.integer.encoding.BigEndianReader;
 
 /**
- * Title: Ms3dTexture<p>
+ * Holds one material/texture loaded from a Milkshape 3D file, including its lighting
+ * values, texture/alpha map file names and the loaded {@link #textureImg}.
+ *
+ * <p>Title: Ms3dTexture<p>
  * Description:
  * Data Object for a Material/Texture
  *
@@ -35,6 +38,15 @@ import streamIO.integer.encoding.BigEndianReader;
  * @author mheuer
  * @version	1.0
  *
+ * <!-- docstate
+ * pass: 2
+ * mtime: 2026-09-05T11:53:32Z
+ * digest: 800666f67a1b86c3eb5d6ddd20ee3821e3ff7bb505e2158d45fd1cf7117da49b
+ * stale: false
+ * tags: [code/image_loading]
+ * concepts: [MS3D Texture Loader]
+ * facets: {layer: domain, status: legacy, complexity: low}
+ * -->
  */
 public class Ms3dTexture {
 
@@ -53,7 +65,7 @@ public class Ms3dTexture {
 	BufferedImage textureImg;
 
 	/**
-	 * 
+	 * Reads this material's name, lighting values, texture/alpha map paths and shininess/transparency from the file.
 	 */
 	public Ms3dTexture(final BigEndianReader input) throws IOException {
 		input.readFully(name);         //Material name
@@ -83,6 +95,7 @@ public class Ms3dTexture {
 		L.n("alphaMap="+new String(alpha));
 	}
 
+	/** Separator inserted between the model's directory and the stored texture file name. */
 	final static public String prefix = "\\"; //"file:./";
 
 	/** loads the Texture for this Mesh 

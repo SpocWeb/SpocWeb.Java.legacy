@@ -16,33 +16,55 @@ import graphs.SparseMatrix;
 import math.vector.VectorObject;
 
 /**
- * Title: Map2DPainter<p>
+ * Displays, translates, scales and edits a {@link Map2DModel}, re-generating the mapped
+ * points whenever the underlying edges have changed.
+ *
+ * <p>Title: Map2DPainter<p>
  * Description:<p>
- * A Painter that is able to display, translate, scale 
- * and edit a mapped Model consisting of 
- * a Set of 2D Points in @see math.MatrixFloat Coordinates and 
- * a Set of Edges in @see graphs.SparseMatrix Representation. 
- * @see graphic.math3D.Wire3D is isomorphic to this Model  
- * 
- * Allows to dynamically re-calculate the Points when the Edges have changed! 
- * 
+ * A Painter that is able to display, translate, scale
+ * and edit a mapped Model consisting of
+ * a Set of 2D Points in @see math.MatrixFloat Coordinates and
+ * a Set of Edges in @see graphs.SparseMatrix Representation.
+ * @see graphic.math3D.Wire3D is isomorphic to this Model
+ *
+ * Allows to dynamically re-calculate the Points when the Edges have changed!
+ *
  * Design Decisions / Implementation Details:<p>
  *
  * Known SubClasses: <none>
  *
  * Known Uses: <none>
  *
+ * <h2>Collaborators</h2>
+ *
+ * | Type | Relationship |
+ * |---|---|
+ * | {@link Map2DModel} | Model this painter displays and edits. |
+ * | {@link Map2DMouseController} | Mouse controller installed by {@link #addDefaultControllers(IController)}. |
+ *
  * Copyright:	Copyright (c) Matthias Heuer<p>
  * Company:	personal<p>
  * Created on	10-26-2002, 12:47 PM<p>
  * @author mheuer
  * @version	1.0
+ * @see Map2DModel the model this painter displays
+ * @see Map2DMouseController the mouse controller it installs
  *
+ * <!-- docstate
+ * pass: 2
+ * mtime: 2026-09-05T11:47:31Z
+ * digest: ad2faa50b2972364a7ec522aeddf5a6d57be02a10fe3e4262d7cbd506a446cc3
+ * stale: false
+ * tags: [code/view_model]
+ * concepts: [2D Graph Painter]
+ * facets: {layer: domain, status: legacy, complexity: medium}
+ * -->
  */
-public class Map2DPainter 
+public class Map2DPainter
 extends Graph2DPainter {
 	
 	/**
+	 * Creates a painter over a new model built from the given points, edges and edge labels.
 	 * @param canvas
 	 * @param points
 	 * @param edges
@@ -50,10 +72,11 @@ extends Graph2DPainter {
 	 */
 	public Map2DPainter(final ICanvas canvas, final VectorPoint2D _points,
 			final SparseMatrix _edges, final VectorObject _edgeLabels) {
-		this(canvas, new Map2DModel(_points, _edges, _edgeLabels)); 
+		this(canvas, new Map2DModel(_points, _edges, _edgeLabels));
 	}
-	
+
 	/**
+	 * Creates a painter over an empty {@link Map2DModel}.
 	 * @param points
 	 * @param edges
 	 */
@@ -72,6 +95,7 @@ extends Graph2DPainter {
 	}
 	
 	/**
+	 * Creates a painter over the given points with no edges.
 	 * @param points
 	 * @param edges
 	 */
@@ -80,14 +104,16 @@ extends Graph2DPainter {
 	}
 	
 	/**
+	 * Creates a painter over a new model built from the given points and edges.
 	 * @param points
 	 * @param edges
 	 */
 	public Map2DPainter(final ICanvas canvas, final VectorPoint2D points, final SparseMatrix edges) {
-		this(canvas, new Map2DModel(points, edges)); 
+		this(canvas, new Map2DModel(points, edges));
 	}
-	
+
 	/**
+	 * Creates a painter for the given canvas and model.
 	 * @param model_
 	 * @param common_
 	 * @param keyListener
@@ -128,7 +154,8 @@ extends Graph2DPainter {
 		super.draw(gText);
 	}
 	
-	/** @return a StringBuffer containing a Representation of the Coordinates.  */
+	/** Formats the mapped point at the given index as "x,y".
+	 * @return a StringBuffer containing a Representation of the Coordinates.  */
 	public StringBuffer getCoordString(final int i) {
 		if (!showCoords)
 			return null; 

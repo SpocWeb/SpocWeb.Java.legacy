@@ -10,7 +10,10 @@ import graphic.mvc.Graph2D.Graph2DMouseController;
 import graphic.mvc.Point2D.Point2DModel;
 
 /**
- * Title: Map2DMouseController<p>
+ * Handles mouse interaction with a {@link Map2DModel}: adds or removes points and edges on
+ * double-click, and drags either a single focused point or the whole canvas.
+ *
+ * <p>Title: Map2DMouseController<p>
  * Description:
  * Purpose:
  *
@@ -24,12 +27,28 @@ import graphic.mvc.Point2D.Point2DModel;
  *
  * Known Uses: <none>
  *
+ * <h2>Collaborators</h2>
+ *
+ * | Type | Relationship |
+ * |---|---|
+ * | {@link Map2DModel} | Model whose points and coordinate transform this controller edits. |
+ *
  * Copyright:	Copyright (c) Matthias Heuer<p>
  * Company:	personal<p>
  * Created on	10-26-2002, 12:47 PM<p>
  * @author mheuer
  * @version	1.0
+ * @see Map2DModel the model this controller edits
  *
+ * <!-- docstate
+ * pass: 2
+ * mtime: 2026-09-05T11:47:45Z
+ * digest: 231c7c777e625ae0ffaf8c8c12b67ca86ea126ab6b8da56a0fc13b62d9554700
+ * stale: false
+ * tags: [code/view_model]
+ * concepts: [2D Graph Mouse Controller]
+ * facets: {layer: domain, status: legacy, complexity: low}
+ * -->
  */
 public class Map2DMouseController extends Graph2DMouseController {
 
@@ -39,6 +58,7 @@ public class Map2DMouseController extends Graph2DMouseController {
 	private float[] lastFocusPosition = new float[2];
 
 	/**
+	 * Creates a mouse controller for the given model and focus painter.
 	 * @param model_
 	 * @param common_
 	 */

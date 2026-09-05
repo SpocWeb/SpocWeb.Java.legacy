@@ -17,6 +17,15 @@ import streamIO.object.parser.jdbc.ResultSetSep;
 /**This class reads PARAM tags from its HTML host page and sets
  * the color and label properties of the applet. Program execution
  * begins with the init() method.
+ * <!-- docstate
+ * pass: 2
+ * mtime: 2026-09-05T10:13:18Z
+ * digest: ca70060b98fcdb176f190e34b3efef9ea972144f260259e503affe0cd6f87fdd
+ * stale: false
+ * tags: [code/view_model]
+ * concepts: [2D Graph Demo/Test Harness]
+ * facets: {layer: test, status: legacy, complexity: low}
+ * -->
  */
 public class testMathGraph2 
 implements IPainter { //

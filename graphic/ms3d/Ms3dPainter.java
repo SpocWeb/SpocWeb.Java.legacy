@@ -24,14 +24,17 @@ import math.vector.VectorShort;
 import streamIO.Log;
 
 /**
- * Title: Ms3dPainter<p>
+ * Painter Object, receives or generates a Viewer Window
+ * to output the MilkShape3D Model referenced.
+ *
+ * <p>Title: Ms3dPainter<p>
  * Description:
- * Painter Object, receives or generates a Viewer Window 
- * to output the MilkShape3D Model referenced.  
- * 
- * This allows to separate the Events and Representation 
- * from the actual Model Data, which are a minimum Interface.  
- * 
+ * Painter Object, receives or generates a Viewer Window
+ * to output the MilkShape3D Model referenced.
+ *
+ * This allows to separate the Events and Representation
+ * from the actual Model Data, which are a minimum Interface.
+ *
  *
  * Design Decisions / Implementation Details:
  *
@@ -39,14 +42,30 @@ import streamIO.Log;
  *
  * Known Uses: <none>
  *
+ * <h2>Collaborators</h2>
+ *
+ * | Type | Relationship |
+ * |---|---|
+ * | {@link Ms3d} | Model this painter maps to 2D and draws. |
+ *
  * Copyright:	Copyright (c) Matthias Heuer<p>
  * Company:	personal<p>
  * Created on	10-26-2002, 12:47 PM<p>
  * @author mheuer
  * @version	1.0
+ * @see Ms3d the model this painter draws
  *
+ * <!-- docstate
+ * pass: 2
+ * mtime: 2026-09-05T11:53:07Z
+ * digest: 76f390e46ed1517600f7b70fec5fdbbc8751d36be18913556b03dfcad52b7275
+ * stale: false
+ * tags: [code/3d_rendering]
+ * concepts: [MS3D Model Renderer]
+ * facets: {layer: domain, status: legacy, complexity: medium}
+ * -->
  */
-public class Ms3dPainter 
+public class Ms3dPainter
 extends Body3DPainter {
 
 	/** Logger to be used for Output 	 */
@@ -60,6 +79,7 @@ extends Body3DPainter {
 	public Ms3d ms3D;
 
 	/**
+	 * Creates a painter for the given canvas.
 	 * @param canvas_ the Canvas to paint to
 	 */
 	public Ms3dPainter(final ICanvas canvas_) {
@@ -67,13 +87,15 @@ extends Body3DPainter {
 	}
 
 	/**
+	 * Creates a painter for the given active (event-driven) canvas.
 	 * @param canvas_ the Canvas to paint to
 	 */
 	public Ms3dPainter(final IActiveCanvas canvas_) {
 		super(canvas_);
 	}
 
-	/** @see graphic.mvc.IPainter#paintFrame(graphic.IGraphText)	 */
+	/** Maps the model's vertices and triangles into a 2D polygon set and paints it, along with the bones.
+	 * @see graphic.mvc.IPainter#paintFrame(graphic.IGraphText)	 */
 	public void draw(IGraphText gText) {
 		//super.draw(gText);
 		L.n(".", 0);

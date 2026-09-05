@@ -36,11 +36,14 @@ import streamIO.Log;
 import streamIO.integer.encoding.BigEndianReader;
 
 /**
- * Title: Ms3d<p>
+ * Loads a Milkshape 3D (.ms3d) model file and holds its meshes, textures, triangles,
+ * vertices and skeleton joints, and can stream that data back out or animate the joints.
+ *
+ * <p>Title: Ms3d<p>
  * Description:
  * Purpose:
- * Loader and Storage for a full Ms3d Model consisting of 
- * Meshes = { 	Textures = {FileName}, 
+ * Loader and Storage for a full Ms3d Model consisting of
+ * Meshes = { 	Textures = {FileName},
  * 				Triangles = {3*Vertices = {(x,y,z),bone}}}
  * 				TextureCoords = {3* (u,v)}
  * Joint = {Position, EulerRotation}
@@ -49,35 +52,67 @@ import streamIO.integer.encoding.BigEndianReader;
  *
  * Known Uses: <none>
  *
+ * <h2>Collaborators</h2>
+ *
+ * | Type | Relationship |
+ * |---|---|
+ * | {@link Ms3dMesh} | Mesh groups referencing subsets of {@link #triangles}. |
+ * | {@link Ms3dTriangle} | Facet data, loaded and streamed by this class. |
+ * | {@link Ms3dJoint} | Skeleton joints, transformed by {@link #setupJoints()} and {@link #animateJoint(Ms3dJoint, float)}. |
+ * | {@link Ms3dTexture} | Textures loaded via {@link #loadTextures(Component)}. |
+ * | {@link Ms3dVertex} | Individual model vertices held in {@link #vertices}. |
+ *
  * Copyright:	Copyright (c) Matthias Heuer<p>
  * Company:	personal<p>
  * Created on	10-26-2002, 12:47 PM<p>
  * @author mheuer
  * @version	1.0
+ * @see Ms3dMesh mesh groups referencing triangles
+ * @see Ms3dTriangle facet data
+ * @see Ms3dJoint skeleton joints
+ * @see Ms3dTexture model textures
+ * @see Ms3dVertex individual model vertices
  *
+ * <!-- docstate
+ * pass: 2
+ * mtime: 2026-09-05T11:51:57Z
+ * digest: 987aaf8f8693977e31dc93799b999f7f6bc95c4bea4fec556c56faa8cc7146cd
+ * stale: false
+ * tags: [code/binary_parsing, code/skeletal_animation]
+ * concepts: [MS3D Model File Parser]
+ * facets: {layer: domain, status: broken, complexity: high}
+ * -->
  */
 public class Ms3d {
 
-	final static public Log L = new Log(Ms3d.class, 1); 
+	/** streamIO for Logging */
+	final static public Log L = new Log(Ms3d.class, 1);
 
 	/////////////////////////////////////////////////////////////////////////////////////
 	/// Member Variables
 	/////////////////////////////////////////////////////////////////////////////////////
 
+	/** Textures loaded from the model, indexed by {@link Ms3dTriangle#texture}. */
 	final public Ms3dTexture[] textures;
 
-	public ArrayList vertices; 
+	/** List of {@link Ms3dVertex} objects loaded from the model, in file order. */
+	public ArrayList vertices;
 
-	//public Ms3dVertex[] vertices; 
+	//public Ms3dVertex[] vertices;
 
+	/** Facet triangles loaded from the model. */
 	public Ms3dTriangle[] triangles;
 
-	public float[][] verticesC; 
+	/** Vertex coordinates as a plain 2D array, parallel to {@link #vertices}. */
+	public float[][] verticesC;
 
+	/** Triangle vertex-index triples as a plain 2D array, parallel to {@link #triangles}. */
 	public int[][] trianglesC;
 
+	/** Mesh groups, each referencing a subset of {@link #triangles}. */
 	final public Ms3dMesh[] meshes;
 
+	/** Skeleton joints/bones of the model. */
 	final public Ms3dJoint[] joints;
 
 	/** relative Texture Coordinates, initialized later from the resp. Triangle Texture Coordinates 
@@ -125,6 +160,8 @@ public class Ms3d {
 
 	/** writes the Data of this Object to a Stream */
 	public void streamJoints(final OutputStream ps) {
+		// TODO: LOGIC: delegates to streamVertices(PrintStream) instead of streamJoints(PrintStream)
+		// (copy-paste from a neighboring overload), so calling this writes vertex data instead of joints.
 		streamVertices(new PrintStream(ps));
 	}
 
@@ -232,13 +269,14 @@ public class Ms3d {
 	}
 	
 	/**
-	 * 
+	 * Builds a {@link Body3D} view over this model's plain vertex/triangle arrays.
 	 * @return a Body3DGraph Representation of the loaded Data
 	 */
 	public Body3D getBody3DG() {
 		return new Body3D(verticesC, trianglesC, false);
 	}
 
+	/** Directory the model file was loaded from, used to resolve texture file paths. */
 	public File path;
 
 	/**
@@ -297,8 +335,8 @@ public class Ms3d {
 	/** Read the vertices, reading both a 2D Array and a List of Vertex Objects	 */
 	public void normalize() {
 		//P=#Punkte T=#Dreiecke
-		//statt ein (u,v) Paar für jeden Eckpunkt jedes Dreiecks anzugeben: 3*T
-		//nur ein (u,v) Paar für jeden Punkt angeben: P
+		//statt ein (u,v) Paar fï¿½r jeden Eckpunkt jedes Dreiecks anzugeben: 3*T
+		//nur ein (u,v) Paar fï¿½r jeden Punkt angeben: P
 		for (int i = triangles.length; --i >= 0; ) {
 			final Ms3dTriangle triangle = triangles[i];
 			if (triangle.texture > textures.length) {
@@ -631,7 +669,10 @@ public class Ms3d {
 		//Transformation math.matrix
 		MatrixFloat matTmp;
 		if(uiFrame == 0) { //If its at the extremes
-			matTmp = new MatrixFloat(pJoint.rotKeyFrames[0].transRot); 
+			matTmp = new MatrixFloat(pJoint.rotKeyFrames[0].transRot);
+		// TODO: LOGIC: compares the rotation-frame index against numTransFrames (the translation-keyframe
+		// count) instead of numRotFrames/rotKeyFrames.length; when the two counts differ this either
+		// SLERPs between frames it shouldn't or indexes rotKeyFrames[uiFrame] out of bounds below.
 		} else if(uiFrame == pJoint.numTransFrames) {
 			matTmp = new MatrixFloat(pJoint.rotKeyFrames[uiFrame-1].transRot);
 		} else { //If its in the middle of two frames, use a quaternion SLERP operation to calculate a new position

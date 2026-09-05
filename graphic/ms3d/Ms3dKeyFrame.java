@@ -13,7 +13,9 @@ import math.vector.VectorInt;
 import streamIO.integer.encoding.BigEndianReader;
 
 /**
- * Title: Ms3dKeyFrame<p>
+ * Holds a single animation keyframe's start time and translation-or-rotation vector.
+ *
+ * <p>Title: Ms3dKeyFrame<p>
  * Description:
  * Holds the Data for a KeyFrame for either Translation or Rotation Data
  *
@@ -28,6 +30,15 @@ import streamIO.integer.encoding.BigEndianReader;
  * @author mheuer
  * @version	1.0
  *
+ * <!-- docstate
+ * pass: 2
+ * mtime: 2026-09-05T11:52:42Z
+ * digest: a1fbb726a0af9ce52190ab49c29e6f19f489b21549f3d99eb689fb8146700d18
+ * stale: false
+ * tags: [code/skeletal_animation]
+ * concepts: [MS3D Animation Keyframe]
+ * facets: {layer: domain, status: legacy, complexity: low}
+ * -->
  */
 public class Ms3dKeyFrame {
 
@@ -35,7 +46,7 @@ public class Ms3dKeyFrame {
 	float[] transRot = new float[3]; //Translation or Rotation values
 
 	/**
-	 * 
+	 * Reads this keyframe's start time and translation/rotation values from the file.
 	 */
 	public Ms3dKeyFrame(final BigEndianReader input) throws IOException {
 		startTime = input.readFloat();     //Time at which keyframe is started

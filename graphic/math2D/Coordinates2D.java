@@ -15,6 +15,15 @@ import java.awt.Rectangle;
  *
  * The Mapping takes place between the Clipping Area of the Graph2D Object
  * and the Data Area.
+ * <!-- docstate
+ * pass: 2
+ * mtime: 2026-09-05T10:13:18Z
+ * digest: cf33bac07ba34b0e08a5dba84932c0265ca3be9a345411556418a2f1e6dedd14
+ * stale: false
+ * tags: [code/coordinate_transform]
+ * concepts: [2D Coordinate Transform]
+ * facets: {layer: domain, status: legacy, complexity: low}
+ * -->
  */
 public class Coordinates2D {
 

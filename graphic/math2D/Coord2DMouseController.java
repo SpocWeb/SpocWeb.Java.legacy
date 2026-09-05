@@ -11,10 +11,13 @@ import graphic.mvc.IRepainter;
 import streamIO.Log;
 
 /**
- * Title: Coord2DMouseController<p>
+ * Controls drag-and-drop panning of the view pane's {@link Coordinates2D}, with shrink on
+ * single click and enlarge on double click.
+ *
+ * <p>Title: Coord2DMouseController<p>
  * Description:
  * Purpose:
- * Controls Drag & Drop of the ViewPane. 
+ * Controls Drag & Drop of the ViewPane.
  * Shrinking with Click
  * Enlarging with DoubleClick
  *
@@ -27,9 +30,19 @@ import streamIO.Log;
  * Created on	10-26-2002, 12:47 PM<p>
  * @author mheuer
  * @version	1.0
+ * @see Coordinates2D the coordinate system this controller changes
  *
+ * <!-- docstate
+ * pass: 2
+ * mtime: 2026-09-05T11:47:54Z
+ * digest: f0d75e45c453366785563fe3edb13b37f7fbbbeeb3dc50fa7c5aae47f45411ad
+ * stale: false
+ * tags: [code/view_model]
+ * concepts: [2D Coordinate Mouse Controller]
+ * facets: {layer: domain, status: legacy, complexity: low}
+ * -->
  */
-public class Coord2DMouseController 
+public class Coord2DMouseController
 extends BaseMouseController {
 
 	/** streamIO for Logging */

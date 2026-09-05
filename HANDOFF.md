@@ -82,7 +82,7 @@ concurrently against the same file):
 | `streamIO/object` | 185 | 38857 | 0 | unclaimed | - |
 | `streamIO/integer` | 157 | 39243 | 0 | unclaimed | - |
 | `graphic` (root+example+implement+svg) | 50 | 14297 | 0 | claimed | agent-graphic-misc |
-| `graphic/math2D`+`graphic/ms3d` | 18 | 3525 | 0 | done (Pass 1+2+3) | agent-graphic-2d |
+| `graphic/math2D`+`graphic/ms3d` | 18 | 3525 | 18 | done | agent-graphic-2d |
 | `graphic/math3D` | 32 | 6425 | 0 | unclaimed | - |
 | `graphic/mvc` | 26 | 4789 | 0 | unclaimed | - |
 | `math` (root+algorithm+integration+wavelet) | 18 | 3123 | 18 | done | agent-math-core |

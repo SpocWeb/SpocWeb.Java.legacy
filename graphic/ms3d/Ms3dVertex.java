@@ -13,14 +13,16 @@ import math.vector.VectorFloat;
 import streamIO.integer.encoding.BigEndianReader;
 
 /**
- * Title: Ms3dVertex<p>
+ * Stores one model vertex's coordinates and the bone it is attached to.
+ *
+ * <p>Title: Ms3dVertex<p>
  * Description:
- * Stores the Data for a single Graphics Vertex 
+ * Stores the Data for a single Graphics Vertex
  * connected to a Bone.
  * 
  * 15 Bytes:
  *  1 Editor Flags
- * 12=3*4 für x,y,z 
+ * 12=3*4 fï¿½r x,y,z 
  *  1 Bone 
  *  1 unused
  * 
@@ -40,6 +42,15 @@ import streamIO.integer.encoding.BigEndianReader;
  * @author mheuer
  * @version	1.0
  *
+ * <!-- docstate
+ * pass: 2
+ * mtime: 2026-09-05T11:54:05Z
+ * digest: eab6d4dff89a68bf2241f3202daa6e4f76f337d5bd1630298c20b2597658fa0e
+ * stale: false
+ * tags: [code/mesh_data]
+ * concepts: [MS3D Mesh Vertex]
+ * facets: {layer: domain, status: broken, complexity: low}
+ * -->
  */
 public class Ms3dVertex { 
 //extends Vector3D { //final, cannot be extended
@@ -75,7 +86,7 @@ public class Ms3dVertex {
 	}
 
 	/**
-	 * 
+	 * Creates a vertex from the given coordinates and bone index, without reading from a file.
 	 */
 	public Ms3dVertex(final float[] coords_, final int bone_) {
 		this.coords = coords_;
@@ -83,13 +94,17 @@ public class Ms3dVertex {
 	}
 
 	/**
-	 * 
+	 * Reads a single vertex from the file, allocating its own coordinate array.
 	 */
 	public Ms3dVertex(final BigEndianReader input) throws IOException {
 		this(input, new float[3]); //
 	}
-	
+
+	/** Writes this vertex's coordinates and bone index to the given stream. */
 	public void toStream(final OutputStream streamOut) {
+		// TODO: LOGIC: calls toStream(OutputStream) itself (PrintStream is-an OutputStream, and there is
+		// no toStream(PrintStream) overload), recursing on every call until StackOverflowError; almost
+		// certainly meant to call stream(new PrintStream(streamOut)), the method that actually writes.
 		toStream(new PrintStream(streamOut));
 	}
 	

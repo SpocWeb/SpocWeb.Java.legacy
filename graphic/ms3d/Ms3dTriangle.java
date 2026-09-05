@@ -12,10 +12,12 @@ import math.vector.VectorInt;
 import streamIO.integer.encoding.BigEndianReader;
 
 /**
- * Title: Ms3dTriangle<p>
+ * Stores one facet triangle's vertex indices, texture and per-vertex texture coordinates.
+ *
+ * <p>Title: Ms3dTriangle<p>
  * Description:
  * Purpose:
- * Stores the Data of a Facet Triangle in the Milkshake Format. 
+ * Stores the Data of a Facet Triangle in the Milkshake Format.
  * Milkshake uses Triangles exclusively!
  *
  * Known SubClasses: <none>
@@ -28,6 +30,15 @@ import streamIO.integer.encoding.BigEndianReader;
  * @author mheuer
  * @version	1.0
  *
+ * <!-- docstate
+ * pass: 2
+ * mtime: 2026-09-05T10:13:18Z
+ * digest: 988bf11c444ab3d57c3862fca5536a0d577addc83a8069c45fbf592c579d77f2
+ * stale: false
+ * tags: [code/mesh_data]
+ * concepts: [MS3D Mesh Triangle]
+ * facets: {layer: domain, status: legacy, complexity: low}
+ * -->
  */
 public class Ms3dTriangle {
 

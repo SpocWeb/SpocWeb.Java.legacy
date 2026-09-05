@@ -13,6 +13,15 @@ package graphic.math2D;
  * @see graphic.math2D.LinCoordMap 
  * with those from 
  * @see graphic.math2D.Raster
+ * <!-- docstate
+ * pass: 2
+ * mtime: 2026-09-05T10:13:18Z
+ * digest: 3fda585440159ab2a2346f7794433d083a2714fd82e5efd42343cb7318bbe6a5
+ * stale: false
+ * tags: [code/coordinate_transform]
+ * concepts: [Linear Coordinate Mapping]
+ * facets: {layer: domain, status: legacy, complexity: low}
+ * -->
  */
 public class LinCoordMap {
 

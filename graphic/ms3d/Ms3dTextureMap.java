@@ -8,7 +8,9 @@ package graphic.ms3d;
 import java.io.PrintStream;
 
 /**
- * Title: Ms3dTextureMap<p>
+ * Holds the texture-coordinate mapping for one vertex of a triangle.
+ *
+ * <p>Title: Ms3dTextureMap<p>
  * Description:
  * Purpose:
  * Holds the Mapping of a Texture to a Vertex
@@ -23,6 +25,15 @@ import java.io.PrintStream;
  * @author mheuer
  * @version	1.0
  *
+ * <!-- docstate
+ * pass: 2
+ * mtime: 2026-09-05T11:53:49Z
+ * digest: b870a1f8527ba2b71eb2f8864ce369ee817fb3da31659a6804ce16fc7afacdcb
+ * stale: false
+ * tags: [code/mesh_data]
+ * concepts: [MS3D Texture Coordinate Map]
+ * facets: {layer: domain, status: legacy, complexity: low}
+ * -->
  */
 public class Ms3dTextureMap {
 
@@ -55,12 +66,14 @@ public class Ms3dTextureMap {
 		//ps.println(); //omit; to be able to append...
 	}
 
-	/** @see java.lang.Object#equals(java.lang.Object)	 */
+	/** Delegates to {@link #equals(Ms3dTextureMap)} after casting the argument.
+	 * @see java.lang.Object#equals(java.lang.Object)	 */
 	public boolean equals(Object obj) {
 		return equals((Ms3dTextureMap) obj);
 	}
 
-	/** @see java.lang.Object#equals(java.lang.Object)	 */
+	/** Compares vertex number and texture coordinates for equality.
+	 * @see java.lang.Object#equals(java.lang.Object)	 */
 	public boolean equals(Ms3dTextureMap obj) {
 		return (this.vertexNum == obj.vertexNum) && 
 		(this.textureCoords[0] == obj.textureCoords[0]) && 

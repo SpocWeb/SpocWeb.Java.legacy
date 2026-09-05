@@ -10,10 +10,12 @@ import java.io.IOException;
 import streamIO.integer.encoding.BigEndianReader;
 
 /**
- * Title: Ms3dMesh<p>
+ * Groups a subset of a model's triangles that share one material/texture.
+ *
+ * <p>Title: Ms3dMesh<p>
  * Description:
- * Holds the Data of a Mesh consisting of several Triangles, 
- * which form a Subgroup by sharing a Material/Texture. 
+ * Holds the Data of a Mesh consisting of several Triangles,
+ * which form a Subgroup by sharing a Material/Texture.
  *
  *
  * Known SubClasses: <none>
@@ -26,6 +28,15 @@ import streamIO.integer.encoding.BigEndianReader;
  * @author mheuer
  * @version	1.0
  *
+ * <!-- docstate
+ * pass: 2
+ * mtime: 2026-09-05T11:52:48Z
+ * digest: ba0622e4636a4c23a19c5667897af3db76b6e69a411f664526271430d1097d24
+ * stale: false
+ * tags: [code/mesh_data]
+ * concepts: [MS3D Mesh]
+ * facets: {layer: domain, status: legacy, complexity: medium}
+ * -->
  */
 public class Ms3dMesh {
 
@@ -36,7 +47,9 @@ public class Ms3dMesh {
 	final int texture;      //Material index, -1 = no texture
 	
 	/**
-	 * 
+	 * Reads this mesh's name, triangle indices and texture index from the file, and stamps
+	 * the resolved texture onto each referenced triangle.
+	 * @throws IOException if a referenced triangle already has a different texture assigned
 	 */
 	public Ms3dMesh(final BigEndianReader input, final Ms3dTriangle[] triangles) throws IOException {
 		input.readUnsignedByte(); //Editor flags again, ignore

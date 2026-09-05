@@ -720,3 +720,23 @@ math/refiner/NewtonFloatRefinerQ.java:NewtonFloatRefinerQ	class	math/refiner/New
 math/refiner/PegasusFloatRefiner.java:PegasusFloatRefiner	class	math/refiner/PegasusFloatRefiner.java	code/root_finding	Pegasus Method Root Refiner	utility	legacy	medium
 math/refiner/RidderFloatRefinerQ.java:RidderFloatRefinerQ	class	math/refiner/RidderFloatRefinerQ.java	code/root_finding	Ridders' Method Root Refiner	utility	legacy	medium
 math/refiner/SecantFloatRefiner.java:SecantFloatRefiner	class	math/refiner/SecantFloatRefiner.java	code/root_finding	Secant Method Root Refiner	utility	legacy	low
+graphic/math2D/Coord2DMouseController.java:Coord2DMouseController	class	graphic/math2D/Coord2DMouseController.java	code/view_model	2D Coordinate Mouse Controller	domain	legacy	low
+graphic/math2D	folder	graphic/math2D	code/coordinate_transform,code/raster_generation,code/view_model	2D Graph Visualization (MVC)	domain	legacy	medium
+graphic/math2D/Coordinates2D.java:Coordinates2D	class	graphic/math2D/Coordinates2D.java	code/coordinate_transform	2D Coordinate Transform	domain	legacy	low
+graphic/math2D/LinCoordMap.java:LinCoordMap	class	graphic/math2D/LinCoordMap.java	code/coordinate_transform	Linear Coordinate Mapping	domain	legacy	low
+graphic/math2D/Map2DModel.java:Map2DModel	class	graphic/math2D/Map2DModel.java	code/view_model	2D Graph Model	domain	broken	medium
+graphic/math2D/Map2DMouseController.java:Map2DMouseController	class	graphic/math2D/Map2DMouseController.java	code/view_model	2D Graph Mouse Controller	domain	legacy	low
+graphic/math2D/Map2DPainter.java:Map2DPainter	class	graphic/math2D/Map2DPainter.java	code/view_model	2D Graph Painter	domain	legacy	medium
+graphic/math2D/Raster.java:Raster	class	graphic/math2D/Raster.java	code/raster_generation	Point Raster Generation	utility	legacy	high
+graphic/math2D/testMathGraph2.java:testMathGraph2	class	graphic/math2D/testMathGraph2.java	code/view_model	2D Graph Demo/Test Harness	test	legacy	low
+graphic/ms3d/FileBMP.java:FileBMP	class	graphic/ms3d/FileBMP.java	code/image_loading	BMP File Loader (Unimplemented Stub)	utility	unfinished	low
+graphic/ms3d	folder	graphic/ms3d	code/binary_parsing,code/skeletal_animation,code/mesh_data	MilkShape 3D Model Loader	domain	legacy	high
+graphic/ms3d/Ms3d.java:Ms3d	class	graphic/ms3d/Ms3d.java	code/binary_parsing,code/skeletal_animation	MS3D Model File Parser	domain	broken	high
+graphic/ms3d/Ms3dJoint.java:Ms3dJoint	class	graphic/ms3d/Ms3dJoint.java	code/skeletal_animation	MS3D Skeletal Joint	domain	legacy	medium
+graphic/ms3d/Ms3dKeyFrame.java:Ms3dKeyFrame	class	graphic/ms3d/Ms3dKeyFrame.java	code/skeletal_animation	MS3D Animation Keyframe	domain	legacy	low
+graphic/ms3d/Ms3dMesh.java:Ms3dMesh	class	graphic/ms3d/Ms3dMesh.java	code/mesh_data	MS3D Mesh	domain	legacy	medium
+graphic/ms3d/Ms3dPainter.java:Ms3dPainter	class	graphic/ms3d/Ms3dPainter.java	code/3d_rendering	MS3D Model Renderer	domain	legacy	medium
+graphic/ms3d/Ms3dTexture.java:Ms3dTexture	class	graphic/ms3d/Ms3dTexture.java	code/image_loading	MS3D Texture Loader	domain	legacy	low
+graphic/ms3d/Ms3dTextureMap.java:Ms3dTextureMap	class	graphic/ms3d/Ms3dTextureMap.java	code/mesh_data	MS3D Texture Coordinate Map	domain	legacy	low
+graphic/ms3d/Ms3dTriangle.java:Ms3dTriangle	class	graphic/ms3d/Ms3dTriangle.java	code/mesh_data	MS3D Mesh Triangle	domain	legacy	low
+graphic/ms3d/Ms3dVertex.java:Ms3dVertex	class	graphic/ms3d/Ms3dVertex.java	code/mesh_data	MS3D Mesh Vertex	domain	broken	low

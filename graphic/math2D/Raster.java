@@ -25,6 +25,15 @@ import math.vector.VectorFloat;
  * @see graphic.math2D.LinCoordMap 
  * with those from 
  * @see graphic.math2D.Raster
+ * <!-- docstate
+ * pass: 2
+ * mtime: 2026-09-05T11:48:46Z
+ * digest: 9c2f6786741937b4361f97403658f9e97a8f1b69e91cbf055909eb389d0800fd
+ * stale: false
+ * tags: [code/raster_generation]
+ * concepts: [Point Raster Generation]
+ * facets: {layer: utility, status: legacy, complexity: high}
+ * -->
  */
 public class Raster {
 
@@ -84,14 +93,14 @@ public class Raster {
 
 	/** Generates a graphic Representation of the Nodes of this connected Component
 	  * from an SparseMatrix Object based on Triangulation.
-	  * Vermeide Überschneidungen (bei N Knoten mit ca. 4N Verbindungen ein 4N*N Problem!)
-	  * Näherungslösung: verringere Überschneidungen (die in > 2D sowieso vorkommen)
-	  * Nimm je 3 zusammenhängende Knoten und ermittle die geometrische Lösung.
-	  * Ist die Lösung
+	  * Vermeide ï¿½berschneidungen (bei N Knoten mit ca. 4N Verbindungen ein 4N*N Problem!)
+	  * Nï¿½herungslï¿½sung: verringere ï¿½berschneidungen (die in > 2D sowieso vorkommen)
+	  * Nimm je 3 zusammenhï¿½ngende Knoten und ermittle die geometrische Lï¿½sung.
+	  * Ist die Lï¿½sung
 	  * * Eindeutig, dann Koordinaten festlegen
-	  * * zweideutig, dann überspringen!
-	  * * Unmöglich, z.B. wenn zwei Punkte schon festliegen,
-	  *   setze den dritten (verlängere die Abstände gleichmäßig) derart,
+	  * * zweideutig, dann ï¿½berspringen!
+	  * * Unmï¿½glich, z.B. wenn zwei Punkte schon festliegen,
+	  *   setze den dritten (verlï¿½ngere die Abstï¿½nde gleichmï¿½ï¿½ig) derart,
 	  *   dass er nicht genau auf der Linie sitzt
 	  *
 	  * @return the 2D Coordinates of the Nodes
@@ -136,7 +145,8 @@ public class Raster {
 				generateGraph(node0, P0, node2, P2, dist[1], ret, left);
 			}
 		}
-	
+	*/
+
 		/**
 		  * Calculates (an Approximation for) a Triangle given the Distances and two Points.
 		  * Usually there are two or four Solutions symmetric to the Line P1-P2.
@@ -224,6 +234,8 @@ public class Raster {
 	/// #region : static Testing and main() Methods
 	////////////////////////////////////////////////////////////////////////////////
 
+	/** Builds a 4-node distance matrix and generates 2D coordinates from it via {@link SparseGraph#generateGraph(int)}.
+	 * @return the generated 2D coordinates for each node. */
 	final static public float[][] testGenerateGraph() {
 		//to be able to generate a Graph, at least Triangles have to be defined!
 		//so too sparse Graphs are not completely drawn!

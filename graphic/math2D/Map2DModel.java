@@ -16,24 +16,46 @@ import math.matrix.MatrixFloat;
 import math.vector.VectorObject;
 
 /**
- * Title: Map2DModel<p>
+ * Holds the original 2D point/edge data alongside its mapped {@link Point2D} positions and
+ * the {@link Coordinates2D} transform used to derive them, allowing points to be added and
+ * moved interactively via the GUI.
+ *
+ * <p>Title: Map2DModel<p>
  * Description:
- * Model holding both the original float[][] Data and the mapped Point2Ds. 
- * Also the Coordinate Trafo is stored here, 
- * to allow for adding new Points and moving the Points via the GUI. 
- * 
+ * Model holding both the original float[][] Data and the mapped Point2Ds.
+ * Also the Coordinate Trafo is stored here,
+ * to allow for adding new Points and moving the Points via the GUI.
+ *
  * Known SubClasses: <none>
  *
  * Known Uses: <none>
+ *
+ * <h2>Collaborators</h2>
+ *
+ * | Type | Relationship |
+ * |---|---|
+ * | {@link Coordinates2D} | Maps raw points into display coordinates; stored as {@link #coordTrafo}. |
+ * | {@link MatrixFloat} | Backing store for the raw point data ({@link #points}). |
  *
  * Copyright:	Copyright (c) Matthias Heuer<p>
  * Company:	personal<p>
  * Created on	10-26-2002, 12:47 PM<p>
  * @author mheuer
  * @version	1.0
+ * @see Coordinates2D the coordinate transform this model stores
+ * @see MatrixFloat the backing store for raw point data
  *
+ * <!-- docstate
+ * pass: 2
+ * mtime: 2026-09-05T11:46:15Z
+ * digest: 7b8c895665b46e590f6ca1d88d70c61752b7a86cf4a3c2d5006cdb7ff59b553b
+ * stale: false
+ * tags: [code/view_model]
+ * concepts: [2D Graph Model]
+ * facets: {layer: domain, status: broken, complexity: medium}
+ * -->
  */
-public class Map2DModel 
+public class Map2DModel
 extends Graph2DModel {
 	
 	/** The Coordinate System used */
@@ -52,55 +74,62 @@ extends Graph2DModel {
 	/////////////////////////////////////////////////////////////////////////////////////
 	
 	/**
-	 * 
+	 * Creates an empty map model with no points, edges or labels.
 	 */
 	public Map2DModel() { super(); }
-	
+
 	/**
+	 * Creates a map model initialized with the given edge matrix.
 	 * @param edges_
 	 */
 	public Map2DModel(final SparseMatrix edges_) { super(edges_); }
-	
+
 	/**
+	 * Creates a map model initialized with the given edges and their labels.
 	 * @param _edges
 	 * @param _edgeLabels
 	 */
 	public Map2DModel(final SparseMatrix _edges, final VectorObject _edgeLabels) {
 		super(_edges, _edgeLabels);
 	}
-	
+
 	/**
+	 * Creates a map model initialized with the given mapped points.
 	 * @param mapPoints_
 	 */
 	public Map2DModel(final VectorPoint2D mapPoints_) { super(mapPoints_); }
-	
+
 	/**
+	 * Creates a map model initialized with the given mapped points and edges.
 	 * @param mapPoints_
 	 * @param edges_
 	 */
 	public Map2DModel(final VectorPoint2D mapPoints_, final SparseMatrix edges_) {
 		super(mapPoints_, edges_);
 	}
-	
+
 	/**
+	 * Creates a map model initialized with the given mapped points, edges and edge labels.
 	 * @param _mapPoints
 	 * @param _edges
 	 * @param _labels
 	 */
 	public Map2DModel(final VectorPoint2D _mapPoints, final SparseMatrix _edges,
 			final VectorObject _edgeLabels) {
-		super(_mapPoints, _edges, _edgeLabels); 
+		super(_mapPoints, _edges, _edgeLabels);
 	}
-	
+
 	/**
+	 * Creates a map model initialized with the given mapped points and their labels.
 	 * @param _mapPoints
 	 * @param _pointLabels
 	 */
 	public Map2DModel(final VectorPoint2D _mapPoints, final VectorObject _pointLabels) {
 		super(_mapPoints, _pointLabels);
 	}
-	
+
 	/**
+	 * Creates a map model initialized with the given mapped points, point labels and edges.
 	 * @param _mapPoints
 	 * @param _pointLabels
 	 * @param _edges
@@ -109,8 +138,10 @@ extends Graph2DModel {
 			final SparseMatrix _edges) {
 		super(_mapPoints, _pointLabels, _edges);
 	}
-	
+
 	/**
+	 * Creates a map model initialized with the given mapped points, point labels, edges
+	 * and edge labels.
 	 * @param _mapPoints
 	 * @param _pointLabels
 	 * @param _edges
@@ -120,31 +151,35 @@ extends Graph2DModel {
 			final SparseMatrix _edges, final VectorObject _edgeLabels) {
 		super(_mapPoints, _pointLabels, _edges, _edgeLabels);
 	}
-	
+
 	/**
+	 * Creates a map model with initial capacity for the given number of points.
 	 * @param capacity
 	 */
 	public Map2DModel(final int capacity) { super(capacity); }
-	
+
 	/**
+	 * Creates a map model initialized with the given point labels.
 	 * @param _pointLabels
 	 */
 	public Map2DModel(final VectorObject _pointLabels) { super(_pointLabels); }
-	
+
 	/**
+	 * Creates a map model initialized with the given point labels and edges.
 	 * @param _pointLabels
 	 * @param _edges
 	 */
 	public Map2DModel(final VectorObject _pointLabels, final SparseMatrix _edges) {
 		super(_pointLabels, _edges);
 	}
-	
+
 	/**
+	 * Creates a map model initialized with the given point labels, edges and edge labels.
 	 * @param _pointLabels
 	 * @param _edges
 	 * @param _edgeLabels
 	 */
-	public Map2DModel(final VectorObject _pointLabels, 
+	public Map2DModel(final VectorObject _pointLabels,
 			final SparseMatrix _edges, final VectorObject _edgeLabels) {
 		super(_pointLabels, _edges, _edgeLabels);
 	}
@@ -177,6 +212,9 @@ extends Graph2DModel {
 		final float y,
 		final String label_) {
 		points.setAt(position, new float[] { x, y });
+		// TODO: LOGIC: coordTrafo may be null here (it is only set via setTrafo()/getTrafo()); unlike the
+		// double-parameter overload further below, this path has no null guard and throws
+		// NullPointerException when a point is added before a trafo exists.
 		super.addPoint(position, coordTrafo.mapPt(x, y), label_);
 	}
 	
@@ -187,6 +225,9 @@ extends Graph2DModel {
 	 */
 	public void addPoint(final float x, final float y, final String _label) {
 		points.addItem(new float[] { x, y });
+		// TODO: LOGIC: coordTrafo may be null here (it is only set via setTrafo()/getTrafo()); unlike the
+		// double-parameter overload below, this path has no null guard and throws NullPointerException
+		// when a point is added before a trafo exists.
 		super.addPoint(coordTrafo.mapPt(x, y), _label);
 	}
 	
@@ -216,6 +257,9 @@ extends Graph2DModel {
 	 */
 	public void addPoint(final float[] point, final String _label) {
 		points.addItem(point);
+		// TODO: LOGIC: coordTrafo may be null here (it is only set via setTrafo()/getTrafo()); unlike the
+		// double-parameter overloads above, this path has no null guard and throws NullPointerException
+		// when a point is added before a trafo exists.
 		super.addPoint(coordTrafo.mapPt(point), _label);
 	}
 	
@@ -240,6 +284,7 @@ extends Graph2DModel {
 	/// #region : Graphics Model Methods
 	////////////////////////////////////////////////////////////////////////////
 	
+	/** Whether the X and Y scale are kept equal by squaring the target bounds in {@link #getTrafo(Rectangle)}. */
 	final public boolean equiScale = true;
 	
 	/** setter for the Coordinate Transformation

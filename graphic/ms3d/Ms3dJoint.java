@@ -14,7 +14,9 @@ import math.vector.VectorString;
 import streamIO.integer.encoding.BigEndianReader;
 
 /**
- * Title: Ms3dJoint<p>
+ * Stores one skeleton bone's name, parent, start pose and rotation/translation keyframes.
+ *
+ * <p>Title: Ms3dJoint<p>
  * Description:
  * Stores the Information of a Bone Joint and it's Animation
  *
@@ -29,6 +31,15 @@ import streamIO.integer.encoding.BigEndianReader;
  * @author mheuer
  * @version	1.0
  *
+ * <!-- docstate
+ * pass: 2
+ * mtime: 2026-09-05T11:52:26Z
+ * digest: eda016644b4e406ff07fae304e42cc4b75ca01e0918824961f3b8392677aa01d
+ * stale: false
+ * tags: [code/skeletal_animation]
+ * concepts: [MS3D Skeletal Joint]
+ * facets: {layer: domain, status: legacy, complexity: medium}
+ * -->
  */
 public class Ms3dJoint {
 
@@ -102,7 +113,7 @@ public class Ms3dJoint {
 	char currTransFrame;
 
 	/**
-	 * 
+	 * Reads this joint's name, parent name, start rotation/position and keyframes from the file.
 	 */
 	public Ms3dJoint(final BigEndianReader input) throws IOException {
 		input.readUnsignedByte(); //ignore Editor Flag
@@ -131,6 +142,7 @@ public class Ms3dJoint {
 	}
 	
 	/**
+	 * Formats this joint as its name, parent name and starting position.
 	 * @see Object#toString()
 	 */
 	public String toString() {
