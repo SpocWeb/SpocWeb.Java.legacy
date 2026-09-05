@@ -240,7 +240,23 @@ at 46% of the corpus) have not been sampled.
   type's simple name.** `streamIO/copy/group/ring/metric/body/vector/AManifold.java:381`
   (`Interpolator(IManifold)`, returning an `Interpolator`) reports "no Javadoc comment"
   despite a valid one - confirmed via direct source read (lines 375-390). Suspected root
-  cause is the docstate/Javadoc matcher confusing the method with its own return type.
+  cause is the docstate/Javadoc matcher confusing the method with its own return type. The
+  same pattern recurred on `AContainer.ChangeIterator()` and 5 others in
+  `streamIO/object/enumer` - treat any "no Javadoc comment" row on a method whose name
+  equals its return type as a known false positive after a source-read check, not a gap.
+- **`extract-tags`/`build-index` on a folder recurse into every sibling subfolder, and a
+  `grep -v "/subfolder/"` filter (with a trailing slash) does NOT catch that subfolder's own
+  folder-level scaffold row**, because that row's path has no trailing slash
+  (`streamIO/integer/encoding` vs `streamIO/integer/encoding/BigEndianReader.java`). When
+  splitting a multi-agent batch across sibling folders (e.g. `streamIO/integer` root vs its
+  `encoding`/`filter`/`random`/`jdbc` subfolders, each owned by a different agent), filtering
+  scaffold rows to isolate one agent's scope must exclude the bare folder path too, not just
+  `/subfolder/`-prefixed rows - otherwise the sibling's folder-level tags/concept get silently
+  overwritten with the wrong batch's data. Caught and fixed via `git diff` review on the
+  `streamIO/integer` core batch (2026-09-06): `encoding`/`filter`/`random`/`jdbc` folder rows
+  had been given the root batch's generic tags before the mistake was caught, reverted by
+  deleting the 4 duplicate raw-tags.tsv rows and re-running `apply-tags` on the 3 affected
+  folders (the 4th, `jdbc`, had no `ReadMe.md` yet so nothing to revert there).
 
 ## Decisions
 
