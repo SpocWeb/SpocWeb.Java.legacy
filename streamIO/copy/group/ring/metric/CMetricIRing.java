@@ -9,6 +9,15 @@ import streamIO.exception.ReadOnlyException;
 /**Implements Constants for all Types of IIntRing Classes.
  * This Class inhibits the Use of ...At() Routines
  * but still supports all other Methods of the IIntRing Class.
+ * <!-- docstate
+ * pass: 2
+ * mtime: 2026-09-05T10:13:24Z
+ * digest: df95e825884a8500f39e97ae5d4edf026f63638732786f1117747e45517b9067
+ * stale: false
+ * tags: [code/metric_space, code/root_finding, code/numerical_integration, code/big_integer_arithmetic]
+ * concepts: [Metric Spaces - Root Finding and Numerical Integration]
+ * facets: {layer: domain, status: legacy, complexity: high}
+ * -->
  * It prevents Class Proliferation by not separating out the copyAt() Interface	 */
 public class CMetricIRing
 extends CIntRing

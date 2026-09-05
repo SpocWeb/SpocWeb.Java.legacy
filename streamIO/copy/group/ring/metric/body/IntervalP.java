@@ -31,6 +31,11 @@ import streamIO.copy.group.ring.metric.IMetricIRing;
   * @see streamIO.Copy.IGroup.IRing.IMetric.Body.IntervalA
   * @see streamIO.Copy.IGroup.IRing.IMetric.Body.IntervalP
   * are derived from AMetricBody to define arithmetic Operations
+  * <!-- docstate
+  * tags: [code/rational_numbers, code/interval_arithmetic]
+  * concepts: [Rational Numbers and Interval Arithmetic]
+  * facets: {layer: domain, status: legacy, complexity: high}
+  * -->
   */
 final public class IntervalP
 extends IntervalA {

@@ -27,6 +27,15 @@ import function.IFunction;
  * @author mheuer
  * @version	1.0
  *
+ * <!-- docstate
+ * pass: 2
+ * mtime: 2026-09-05T10:13:24Z
+ * digest: f727c22459b894a956a3c9b5b7fc6dc3076ab0c6170e2270afb757726c834fd2
+ * stale: false
+ * tags: [code/metric_space, code/root_finding, code/numerical_integration, code/big_integer_arithmetic]
+ * concepts: [Metric Spaces - Root Finding and Numerical Integration]
+ * facets: {layer: domain, status: legacy, complexity: high}
+ * -->
  */
 public class PegasusRefiner
 extends ARefinerQ {

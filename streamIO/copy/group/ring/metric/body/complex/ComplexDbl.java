@@ -29,13 +29,12 @@ import function.derive.ring.body.TanH;
 //TODO: Optimization: Delegate ALL Operations to Value, not only the Basic ones!
 //TODO: Optimization: Cache the Results of Tests like isZero() isOne() etc.
 
-/**Concrete final Class to define Complex Numbers of arbitrary Types.
+/**Concrete final Class to define Complex Numbers backed by primitive {@code double} parts.
  * Complex Numbers from a Metric Body form a non-metric algebraic complete Body.
  *
  * Design Decisions:
- * Chose MetricIRing instead of AMetricBody as the Constituents,
- * because all basic operations are allowed on them,
- * but they can also contain basic Integer Types, and so allow for Optimizations.
+ * Unlike {@link Complex}, which stores its real and imaginary parts as {@link IMetricIRing}
+ * constituents of arbitrary type, this class fixes both parts to {@code double} for speed.
  *
  * The Behavior of Complex Numbers can be controlled by boolean static Variables:
  * -A Complex will always be checked for zero imaginary Part after any Operation.
@@ -49,11 +48,20 @@ import function.derive.ring.body.TanH;
  * This Class is practically completely copied from Interval!
  * Any change here should also be done in Interval!
  *
- * Making Real and Imag protected Variables
+ * Making real and imag protected fields
  * prevents direct Modification from the Outside.
  * Indirect Modification is not possible, if using Constants as Elements.
+ * <!-- docstate
+ * pass: 2
+ * mtime: 2026-09-05T16:17:34Z
+ * digest: 55b2ece8dd7d36b0abe6fef22ad5add3d66b8de1b801a3a5fd0fcff924db63a4
+ * stale: false
+ * tags: [code/complex_numbers, code/fourier_transform]
+ * concepts: [Complex Number Arithmetic and Fourier Transform]
+ * facets: {layer: domain, status: legacy, complexity: high}
+ * -->
  * This makes it possible to create real Complex Constants!	 */
-final public class ComplexDbl 
+final public class ComplexDbl
 extends AMetricBody 
 //implements IMeasurAble 
 {
@@ -264,19 +272,19 @@ extends AMetricBody
 	//////////////////////////////////////
 
 	/**Multiplies the ComplexDbl Number by i or divides it by -i:
-	 * i.e. Im <= Re and Re <= -Im, which is a Rotation by +90°	 */
+	 * i.e. Im <= Re and Re <= -Im, which is a Rotation by +90ï¿½	 */
 	public IIntRing MulI() {
 		return ((ComplexDbl) copy()).mulIAt();
 	}
 
 	/**Divides the ComplexDbl Number by i or multiplies it by -i:
-	 * i.e. Im <= -Re and Re <= Im, which is a Rotation by -90°	 */
+	 * i.e. Im <= -Re and Re <= Im, which is a Rotation by -90ï¿½	 */
 	public IIntRing DivI() {
 		return ((ComplexDbl) copy()).divIAt();
 	}
 
 	/**Divides the ComplexDbl Number by i or multiplies it by -i in Place:
-	 * i.e. Im <= -Re and Re <= Im, which is a Rotation by -90°	 */
+	 * i.e. Im <= -Re and Re <= Im, which is a Rotation by -90ï¿½	 */
 	public IIntRing divIAt() {
 		double tmp = real;
 		real = imag;
@@ -285,7 +293,7 @@ extends AMetricBody
 	}
 
 	/**Multiplies the ComplexDbl Number by i or divides it by -i in Place:
-	 * i.e. Im <= Re and Re <= -Im, which is a Rotation by +90°	 */
+	 * i.e. Im <= Re and Re <= -Im, which is a Rotation by +90ï¿½	 */
 	public IIntRing mulIAt() {
 		double tmp = imag;
 		imag = real;
@@ -475,8 +483,8 @@ extends AMetricBody
 
 	/**Division in Place: /=
 	 * assumes null to be 1
-	 * obige Implementation vermeidet Genauigkeitsverlust und einen Überlauf durch die Quadrierung
-	 * und spart außerdem effektiv 2 Sqr und wendet nur 1 Vergleich mehr an als andere.	 */
+	 * obige Implementation vermeidet Genauigkeitsverlust und einen ï¿½berlauf durch die Quadrierung
+	 * und spart auï¿½erdem effektiv 2 Sqr und wendet nur 1 Vergleich mehr an als andere.	 */
 	public IGroupM divAt(Object arg) {
 		//		++MulOperations;
 		//		++MulOptimizations;
@@ -590,8 +598,8 @@ extends AMetricBody
 	}
 
 	/**Division by the conjugate complex argument in Place: /=
-	 * obige Implementation vermeidet Genauigkeitsverlust und einen Überlauf durch die Quadrierung
-	 * und spart außerdem effektiv 2 Sqr und wendet nur 1 Vergleich mehr an als andere.	 */
+	 * obige Implementation vermeidet Genauigkeitsverlust und einen ï¿½berlauf durch die Quadrierung
+	 * und spart auï¿½erdem effektiv 2 Sqr und wendet nur 1 Vergleich mehr an als andere.	 */
 	public IIntRing divAtCjg(Object arg) {
 		if (arg instanceof ComplexDbl) {
 			ComplexDbl arg_ = (ComplexDbl) arg;
@@ -615,7 +623,7 @@ extends AMetricBody
 	}
 
 	/**Inversion in Place: 1/x
-	 * obige Implementation ist genauer und verhindert einen Überlauf, ersetzt aber effektiv
+	 * obige Implementation ist genauer und verhindert einen ï¿½berlauf, ersetzt aber effektiv
 	 * 1 Division durch eine Inversion und 1 Vergleich	 */
 	public IGroupM invAt() { //loses the Reference to 'Real', because it doesn't use copyAt
 		if (!(bolLazySimplify && (imag == ICountAble.ZERO))) {
@@ -638,8 +646,9 @@ extends AMetricBody
 		return new ComplexDbl();
 	}
 
-	/** @see streamIO.copy.IICopyAble#randomizeAt()	 */
-	public ICopyAble randomizeAt() { return new ComplexDbl(ByRefDouble.RANDOM_1_1(), ByRefDouble.RANDOM_1_1()); } 
+	/**Returns a new instance with both real and imaginary parts set to random values in [-1, 1].
+	 * @see streamIO.copy.IICopyAble#randomizeAt()	 */
+	public ICopyAble randomizeAt() { return new ComplexDbl(ByRefDouble.RANDOM_1_1(), ByRefDouble.RANDOM_1_1()); }
 	
 	/**Complement to Copy.
 	 * Does a 'deepCopy', i.e. also inner Components are copied.
@@ -795,18 +804,22 @@ extends AMetricBody
 
 	//Only the real part counts, this is at least valid for the Calculation of ArcTan
 
+	/**Returns whether the real part is negative; the imaginary part is not considered.	 */
 	public boolean negative() {
 		return (real < ICountAble.ZERO);
 	} // && Imag.negative());}
+	/**Returns whether the real part is positive; the imaginary part is not considered.	 */
 	public boolean positive() {
 		return (real > ICountAble.ZERO);
 	} // && Imag.positive());}
 
+	/**Sets this to the real value 2, in Place, zeroing the imaginary part.	 */
 	public IIntRing twoAt() {
 		real = ICountAble.TWO;
 		imag = ICountAble.ZERO;
 		return this;
 	}
+	/**Sets this to the real value 3, in Place, zeroing the imaginary part.	 */
 	public IIntRing threeAt() {
 		real = ICountAble.THREE;
 		imag = ICountAble.ZERO;
@@ -827,7 +840,8 @@ extends AMetricBody
 		return this;
 	}
 
-	/** @return the Apple Function x*x+c in Place */
+	/**Applies the Mandelbrot/Julia iteration step z = z*z + c to this value, in Place.
+	 * @return the Apple Function x*x+c in Place */
 	public ComplexDbl AppleFuncAt(ComplexDbl c) {
 		double reIm = real * imag;
 		real = c.real + real * real - imag * imag;
@@ -908,7 +922,7 @@ extends AMetricBody
 			g /= f;
 			f = Math.sqrt(f * (ICountAble.ONE + Math.sqrt(ICountAble.ONE + g * g)));
 		}
-		if (rNeg) //wählt immer die Lösung mit der kleinsten Phase aus !
+		if (rNeg) //wï¿½hlt immer die Lï¿½sung mit der kleinsten Phase aus !
 			if (iNeg) {
 				real = -imag / (f + f);
 				imag = -f;
@@ -1017,7 +1031,7 @@ extends AMetricBody
 	}
 
 	/**Chordaler Betrag: 0 < x < 1 streng monoton steigend.
-	 * Der Chordale Betrag gibt die Höhe des Punktes
+	 * Der Chordale Betrag gibt die Hï¿½he des Punktes
 	 * auf der Riemannschen Zahlenkugel an.	 */
 	public IIntRing chordal() {
 		IIntRing tmp = (IIntRing) Norm();
@@ -1250,6 +1264,7 @@ extends AMetricBody
 	}
 
 	/**Tests the Methods of this Class	 */
+	/**Runs this class's self-tests and prints expected-versus-actual results to standard out.	 */
 	public static void testIt() throws java.io.IOException {
 		ComplexDbl test = new ComplexDbl(new BodyDouble(), new BodyDouble());
 		testInstance = test; //defined in ACopyAble to test the abstract Methods
@@ -1337,7 +1352,7 @@ extends AMetricBody
 		L.n("Test von Sqr/SqRt : Soll : (3,4)  Ist : (" + c3);
 		c3 = (MetricBody) ((ComplexDbl) c2.cbc()).CbcRt();
 		L.n(
-			"Test von Cbc/CbcRt: Soll : (3,4)  Ist : (" + c3 + " oder um 120° verschoben");
+			"Test von Cbc/CbcRt: Soll : (3,4)  Ist : (" + c3 + " oder um 120ï¿½ verschoben");
 		c3 = (MetricBody) c2.CbcRt().cbc();
 		L.n("Test von Cbc/CbcRt: Soll : (3,4)  Ist : (" + c3);
 	};

@@ -51,6 +51,11 @@ import function.derive.CCountAble;
   * @see streamIO.Copy.IOrder.Interval
   * @see streamIO.Copy.IOrder.IntervalOrd
   * are minimal Definitions for Intervals
+  * <!-- docstate
+  * tags: [code/rational_numbers, code/interval_arithmetic]
+  * concepts: [Rational Numbers and Interval Arithmetic]
+  * facets: {layer: domain, status: legacy, complexity: high}
+  * -->
   */
 public class IntervalDblA
 extends AMetricBody {
@@ -471,8 +476,8 @@ extends AMetricBody {
 
 	/**Division in Place: /=
 	 * assumes null to be 1
-	 * obige Implementation vermeidet Genauigkeitsverlust und einen Überlauf durch die Quadrierung
-	 * und spart außerdem effektiv 2 Sqr und wendet nur 1 Vergleich mehr an als andere.	 */
+	 * obige Implementation vermeidet Genauigkeitsverlust und einen ï¿½berlauf durch die Quadrierung
+	 * und spart auï¿½erdem effektiv 2 Sqr und wendet nur 1 Vergleich mehr an als andere.	 */
 	public IntervalDblA divAt(double arg) {
 		if (arg < ICountAble.ZERO) swapAt();
 		Left  /= arg;
@@ -481,8 +486,8 @@ extends AMetricBody {
 
 	/**Division in Place: /=
 	 * assumes null to be 1
-	 * obige Implementation vermeidet Genauigkeitsverlust und einen Überlauf durch die Quadrierung
-	 * und spart außerdem effektiv 2 Sqr und wendet nur 1 Vergleich mehr an als andere.	 */
+	 * obige Implementation vermeidet Genauigkeitsverlust und einen ï¿½berlauf durch die Quadrierung
+	 * und spart auï¿½erdem effektiv 2 Sqr und wendet nur 1 Vergleich mehr an als andere.	 */
 	public IGroupM divAt(Object arg) {
 //		++MulOperations;
 //		++MulOptimizations;

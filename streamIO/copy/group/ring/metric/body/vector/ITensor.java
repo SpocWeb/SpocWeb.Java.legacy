@@ -6,6 +6,15 @@ import streamIO.object.enumer.IndexEnumerator;
 
 /** Integrates the Interfaces of Metric IntegrityRing and
   * IndexEnumerator
+  * <!-- docstate
+  * pass: 2
+  * mtime: 2026-09-05T16:39:56Z
+  * digest: dba6f78e09f333faee839af511e0a86e21085d747f697e56b2581eded70e7f69
+  * stale: false
+  * tags: [code/tensor, code/manifold_generation, code/interpolation]
+  * concepts: [Vector/Matrix/Tensor and Manifold Interpolation]
+  * facets: {layer: domain, status: legacy, complexity: high}
+  * -->
   */
 public interface ITensor
 extends IMetricIRing, IndexEnumerator {
@@ -109,25 +118,44 @@ extends IMetricIRing, IndexEnumerator {
 
 	/**Flags for the Array Operations 	 */
 
+	/** Op-code for element-wise Addition: only for Tensor + Tensor	 */
 	final static public int opFlagAdd		=  0; 	//only for Tensor + Tensor
+	/** Op-code for element-wise Subtraction: only for Tensor - Tensor	 */
 	final static public int opFlagSubt		=  1; 	//only for Tensor - Tensor
+	/** Op-code for Matrix Multiplication: only for Manifold * Manifold	 */
 	final static public int opFlagMMul		=  2; 	//only for Manifold * Manifold
+	/** Op-code for Matrix Division: only for Manifold / Manifold	 */
 	final static public int opFlagMDiv		=  3; 	//only for Manifold / Manifold
+	/** Op-code for a linear (scale-and-shift) Operation	 */
 	final static public int opFlagLin		=  4;
+	/** Op-code for an add-Product Operation: this += a*b	 */
 	final static public int opFlag_AddProd =  5;
+	/** Op-code for a subtract-Product Operation: this -= a*b	 */
 	final static public int opFlagSubtProd =  6;
+	/** Op-code for a bilinear Operation combining two Factors and two Terms	 */
 	final static public int opFlagBiLin	=  7;
+	/** Op-code for an element-wise Maximum Operation	 */
 	final static public int opFlagMax		=  8;
+	/** Op-code for an element-wise Minimum Operation	 */
 	final static public int opFlagMin		=  9;
+	/** Op-code selecting the first  Operand/Term of a multi-argument Operation	 */
 	final static public int opFlagONE		= 10;
+	/** Op-code selecting the second Operand/Term of a multi-argument Operation	 */
 	final static public int opFlagTWO		= 11;
+	/** Op-code selecting the third  Operand/Term of a multi-argument Operation	 */
 	final static public int opFlagTHREE	= 12;
+	/** Op-code selecting the fourth Operand/Term of a multi-argument Operation	 */
 	final static public int opFlagFOUR 	= 13;
 
+	/** Function-code testing whether a Value lies between two bounds	 */
 	final static public int funcFlagBetween= 0;
+	/** Function-code testing "greater than"	 */
 	final static public int funcFlagGrtr	= 1;
+	/** Function-code testing "greater than or equal"	 */
 	final static public int funcFlagGrtrEq	= 2;
+	/** Function-code testing "less than"	 */
 	final static public int funcFlagLess	= 3;
+	/** Function-code testing "less than or equal"	 */
 	final static public int funcFlagLessEq	= 4;
 
 
@@ -135,15 +163,18 @@ extends IMetricIRing, IndexEnumerator {
 	//	Generic Scalar Products
 	//////////////////////////////
 
-	/** @return the Sum of all Elements in this Tensor Sum(i, x[i])	  */
+	/**Returns the Sum of all Elements in this Tensor.
+	  * @return the Sum of all Elements in this Tensor Sum(i, x[i])	  */
 	public IIntRing Sum();
 
-	/** @return this Tensor shortened at the given Degree.
+	/**Returns a copy of this Tensor with the given Degree summed away.
+	  * @return this Tensor shortened at the given Degree.
 	  * I.e. all Elements at Level Degree are replaced by the Sum of all Elements below it
 	  */
 	public IIntRing Sum(int Degree);
 
-	/** @return this Tensor shortened in Place at the given Degree.
+	/**Sums away the given Degree in Place, decreasing this Tensor's Degree by 1.
+	  * @return this Tensor shortened in Place at the given Degree.
 	  * I.e. all Elements at Level Degree are replaced
 	  * by the Sum of the Elements right below them.
 	  * The Degree of the Tensor decreases by 1
@@ -157,7 +188,8 @@ extends IMetricIRing, IndexEnumerator {
 	// short() c      = Sum(i, a[i]*b[i] = Sum(i, a.mul(b)) , the Scalar Product
 	// map  () uses the Scalar Product
 
-	/** @return the dyadic Product of this Tensor and arg.
+	/**Returns the dyadic Product of this Tensor and arg, a pre-step to the generic Scalar Product.
+	  * @return the dyadic Product of this Tensor and arg.
 	  * This is a pre Step to calculating the generic Scalar Product.
 	  * The Degree of the Tensor is the Sum of the Degrees of the Factors.
 	  *
@@ -165,7 +197,8 @@ extends IMetricIRing, IndexEnumerator {
 	  */
 	public ITensor dyad(ITensor arg);
 
-	/** @return the dyadic Product of this Tensor and arg.
+	/**Returns the dyadic Product of this Tensor and arg at the given Degree.
+	  * @return the dyadic Product of this Tensor and arg.
 	  * This is a pre Step to calculating the generic Scalar Product.
 	  * The Degree of the Tensor is the Sum of the Degrees of the Factors.
 	  *
@@ -173,18 +206,20 @@ extends IMetricIRing, IndexEnumerator {
 	  */
 	public ITensor dyad(ITensor arg, int Degree);
 
-	/** @return the dyadic Product of this Tensor and arg.
+	/**Computes the dyadic Product of this Tensor and arg in Place.
+	  * @return the dyadic Product of this Tensor and arg.
 	  * This is a pre Step to calculating the generic Scalar Product.
 	  * The Degree of the Tensor is the Sum of the Degrees of the Factors.
 	  *
 	  * The inner structure of arg is retained on creating the Product.
 	  *
-	  * a[i,j,k]°b[l,m,n] = c[i,j,k,l,m,n] is the scalar Element calculated by
-	  * a[i,j,k] := a[i,j,k]°b[]
+	  * a[i,j,k]ï¿½b[l,m,n] = c[i,j,k,l,m,n] is the scalar Element calculated by
+	  * a[i,j,k] := a[i,j,k]ï¿½b[]
 	  */
 	public ITensor dyadAt(ITensor arg);
 
-	/** @return this Tensor multiplied in Place at the given Degree.
+	/**Multiplies this Tensor by arg in Place at the given Degree.
+	  * @return this Tensor multiplied in Place at the given Degree.
 	  * This is a pre Step to calculating the Scalar Product.
 	  *
 	  * The outer structure remains the same and is used to hold the Product.
@@ -199,10 +234,10 @@ extends IMetricIRing, IndexEnumerator {
 	 * is only used within this same line.		*/
 	public ITensor LU_ComposeAt();
 
-	/** "Multiplication": °
+	/** "Multiplication": ï¿½
 	  * This is in fact a non-commutative linear Mapping:
-	  * M°(a+b) == M°a + M°b
-	  * (x+y)°M == x°M + y°M
+	  * Mï¿½(a+b) == Mï¿½a + Mï¿½b
+	  * (x+y)ï¿½M == xï¿½M + yï¿½M
 	  *
 	  * The Matrix itself is the Derivative Jacobian Matrix of the Mapping:
 	  * (A*x)' = A
@@ -219,10 +254,10 @@ extends IMetricIRing, IndexEnumerator {
 	  * (and transposing the Result, which is not necessary for Vectors) */
 	public IIntRing catAt(ITensor arg);
 
-	/** Scalar Product Multiplication: °
+	/** Scalar Product Multiplication: ï¿½
 	  * This is in fact a non-commutative linear Mapping:
-	  * M°(a+b) == M°a + M°b
-	  * (x+y)°M == x°M + y°M
+	  * Mï¿½(a+b) == Mï¿½a + Mï¿½b
+	  * (x+y)ï¿½M == xï¿½M + yï¿½M
 	  *
 	  * The Matrix itself is the Derivative Jacobian Matrix of the Mapping:
 	  * (A*x)' = A
@@ -264,7 +299,8 @@ extends IMetricIRing, IndexEnumerator {
 //	public IIntRing cat(byte Degree1,
 //		ITensor arg, byte Degree2);
 
-	/** @return the Tensor Product with a Matrix
+	/**Computes the Tensor Product of this Tensor with a Matrix along the given Degree, in Place.
+	  * @return the Tensor Product with a Matrix
 	  *
 	  * T[i,j,k]*A[m,j] = R[i,m,k]
 	  * Transpose the Matrix if necessary.

@@ -23,6 +23,15 @@ import function.vector.IFloatVectorField;
  * This is not true for Determining an x Value that fulfills a certain Criterion,
  * like with Finding Roots or Minima!
  * For that ARefiner and it's descendants are used!
+ * <!-- docstate
+ * pass: 2
+ * mtime: 2026-09-05T21:13:00Z
+ * digest: 9bec6385be1319f2ad6d5aea5e050a2b44a14e4b50f0828f6f7ac2db249b54bd
+ * stale: false
+ * tags: [code/ring_theory, code/ode_solver]
+ * concepts: [Ring Algebra and ODE Solvers]
+ * facets: {layer: domain, status: legacy, complexity: high}
+ * -->
  */
 public abstract class AStepper
 implements IStepper, IFloatStepper, IIStreamIn { //IStreamIn_Float {
@@ -239,14 +248,16 @@ implements IStepper, IFloatStepper, IIStreamIn { //IStreamIn_Float {
 	  * Nearly equivalent is currItem != null
 	  * (when the Container does not contain null Entries, like e.g. HashTables)
 	  */
+	/**Always returns 100: a reasonably high placeholder Estimate, since the true Count is not known in advance.	 */
 	public long availAble() { return 100; } //return a reasonably high Number
-	
-	/**
+
+	/**Always returns true: an AStepper is always considered valid.
 	 * @see streamIO.IIStreamIn#isValid()
 	 */
 	public boolean isValid() { return true; }
 	
-	/** @return the next (Parent) Object of this one.
+	/**Performs one Stepper Step and returns the new y Value.
+	 * @return the next (Parent) Object of this one.
 	  * No Exception is thrown at the End, instead EOI is returned.
 	  * When IO Processes are bound to this streamIO, IOException is wrapped into an IOError.
 	  * This is less explicit, but much faster because Exception Handling can be extremely slow.

@@ -10,6 +10,15 @@ import function.vector.IBinaryOpFloat;
  *
  * Step() performs a single Step with fixed width.
  * Run () performs as many Steps as necessary to reach a certain x Value.
+ * <!-- docstate
+ * pass: 2
+ * mtime: 2026-09-05T21:13:31Z
+ * digest: 648bef55b270b3a2ea64f9217f40f52bfea59f76d5b8efa2a037caa4bae00c75
+ * stale: false
+ * tags: [code/ring_theory, code/ode_solver]
+ * concepts: [Ring Algebra and ODE Solvers]
+ * facets: {layer: domain, status: legacy, complexity: high}
+ * -->
  */
 public class StepMP
 extends AStepper {
@@ -31,6 +40,7 @@ extends AStepper {
 	/// #region : Constructors, calling each other using this()/super() (not in Interfaces)
 	////////////////////////////////////////////////////////////////////////////
 	
+	/**Initializes this Stepper and allocates the generic IIntRing Helper Vectors W/V1/V2.	 */
 	public void Init(IIntRing Step_, IIntRing x_, IIntRing y_, IODE f_) {
 		//Allocate Space to save iterative Allocation and Destruction!
 		super.Init(Step_, x_, y_, f_);		//Create the Storage for the Helper Vectors:
@@ -39,6 +49,7 @@ extends AStepper {
 		V2	= (IIntRing) y.newInstance();
 	}
 
+	/**Initializes this Stepper and allocates the primitive double[] Helper Vectors W_/V1_/V2_.	 */
 	public void Init(double Step_, double x_, double[] y_, IBinaryOpFloat f_) {
 		//Allocate Space to save iterative Allocation and Destruction!
 		super.Init(Step_, x_, y_, f_);		//Create the Storage for the Helper Vectors:

@@ -17,17 +17,25 @@ import function.ICountAble;
 import function.IMeasurAble;
 import function.byref.ByRefDouble;
 
-/**Concrete final Class to define ComplexDbl Numbers of arbitrary Types
- * in Polar Representation.
+/**Concrete final Class to define {@link ComplexDbl} Numbers, backed by primitive
+ * {@code double} parts, in Polar Representation.
  * ComplexDbl Numbers from a Metric Body form a non-metric algebraic complete Body.
  *
  * Design Decisions:
- * Chose AMetricIRing instead of AMetricBody as the Constituents,
- * because all basic operations are allowed on them,
- * but they can also contain basic Integer Types, and so allow for Optimizations.
+ * Unlike {@link Polar}, which stores its radius and angle as arbitrary-type constituents,
+ * this class fixes both parts to {@code double} for speed.
  *
  * The Behavior of ComplexDbl Numbers can be controlled by boolean static Variables:
  * -A ComplexDbl will always be checked for zero imaginary Part after any Operation.
+ * <!-- docstate
+ * pass: 2
+ * mtime: 2026-09-05T10:13:25Z
+ * digest: 9df3d1f3ca058b0d7be60a64457b56f2f3ada29b204cca268be636ce36bd043c
+ * stale: false
+ * tags: [code/complex_numbers, code/fourier_transform]
+ * concepts: [Complex Number Arithmetic and Fourier Transform]
+ * facets: {layer: domain, status: legacy, complexity: high}
+ * -->
  */
 final public class PolarDbl
 extends AMetricBody {

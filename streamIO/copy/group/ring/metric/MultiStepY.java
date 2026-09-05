@@ -7,6 +7,15 @@ import streamIO.copy.group.ring.IRefiner;
 /**Multiple Zero Iteration with the given Refiner
  * Same Restrictions for f as on the Refiner Class.
  * Additionally tests for minimum absolute Value of yl!
+ * <!-- docstate
+ * pass: 2
+ * mtime: 2026-09-05T21:07:43Z
+ * digest: ba33d0d560832da769e42311b5c5dc0c4f0033e4e88a4c74f6e1e2c7b1565d61
+ * stale: false
+ * tags: [code/metric_space, code/root_finding, code/numerical_integration, code/big_integer_arithmetic]
+ * concepts: [Metric Spaces - Root Finding and Numerical Integration]
+ * facets: {layer: domain, status: legacy, complexity: high}
+ * -->
  * Performs as many Steps as necessary.	*/
 public class MultiStepY
 extends MultiStep
@@ -15,6 +24,7 @@ implements IRefiner {
 	/**Maximum Function Value before Iteration stops	 */
 	public IMetricIRing MaxYDiff;
 
+	/**Initializes this Stepper from Refiner, additionally computing the minimum absolute yl-Value Threshold.	 */
 	public void Init(ARefiner Refiner) {
 		//necessary, ZeroStep() calculates dx automatically
 		super.Init(Refiner);

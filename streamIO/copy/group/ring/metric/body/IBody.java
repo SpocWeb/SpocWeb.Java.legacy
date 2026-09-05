@@ -8,6 +8,11 @@ package streamIO.copy.group.ring.metric.body;
  * The only reason to distinguish between MetricIRing and MetricBody
  * is to make the Interfaces smaller and to have a better overview.
  * Eventually I'm gonna stop adding Functions directly to Body
+ * <!-- docstate
+ * tags: [code/rational_numbers, code/interval_arithmetic]
+ * concepts: [Rational Numbers and Interval Arithmetic]
+ * facets: {layer: domain, status: legacy, complexity: high}
+ * -->
  * and instead create them statically with Body Argument. */
 public interface IBody
 {

@@ -13,6 +13,15 @@ import function.byref.TestByRef;
 
 /**This Class contains some Integral Functions
  * that appear in Fourier Transformations:
+ * <!-- docstate
+ * pass: 2
+ * mtime: 2026-09-05T16:18:15Z
+ * digest: c3b07a4d58320f8f0a2c27883e02c71ac77e831e0879c4344533e79bdcb8a3dd
+ * stale: false
+ * tags: [code/complex_numbers, code/fourier_transform]
+ * concepts: [Complex Number Arithmetic and Fourier Transform]
+ * facets: {layer: domain, status: legacy, complexity: high}
+ * -->
  * e.g. e^x/x and e^x/SqRt(x)*/
 public class FourierFuncs {
 
@@ -309,6 +318,8 @@ public class FourierFuncs {
 		}
 	}
 
+	/**Tests {@link #cElliptIn(MetricBody, MetricBody, MetricBody, MetricBody)} against a table
+	 * of precomputed reference values, printing each case's expected and actual result.	 */
 	public static void testCElliptIn() {
 		double [][] test= {{1.075603, 0.579379, 1.431272, 2.983978,  4.55056913061},
 						   {0.460754, 0.355149, 1.543104, 9.871250, 30.84605257102},
@@ -342,6 +353,7 @@ public class FourierFuncs {
 		}
 	}
 
+	/**Placeholder self-test for the elliptic function; not yet implemented.	 */
 	public static void testElliptFn() { //TODO: implement the Test
 	}
 

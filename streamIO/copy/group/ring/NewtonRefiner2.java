@@ -8,10 +8,20 @@ import function.IFunction;
  * Works only on R->R Value Functions.
  * Requires f and f' to be differentiable and f'' to be continuous.
  * Returns the 'Multiplicity' of the Zero! 
+ * <!-- docstate
+ * pass: 2
+ * mtime: 2026-09-05T21:13:21Z
+ * digest: d7647936271a26ef0f16eae6940a02dc38861d3c3d6659e624ba1ead93ace390
+ * stale: false
+ * tags: [code/ring_theory, code/ode_solver]
+ * concepts: [Ring Algebra and ODE Solvers]
+ * facets: {layer: domain, status: legacy, complexity: high}
+ * -->
  */
 public class NewtonRefiner2
 extends ARefiner {
 	
+	/**Constructor, additionally taking the first and second Derivative Functions f1/f2.	 */
 	public NewtonRefiner2(final IIntRing x, final IFunction f0, final IFunction f1, final IFunction f2) {
 		super (x, f0);
 		this.f1= f1;

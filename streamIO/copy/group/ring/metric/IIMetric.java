@@ -25,6 +25,15 @@ package streamIO.copy.group.ring.metric;
  * to sort, order and compare the Elements.
  * On the other Hand it creates a recursive Dependency between Metric
  * and MetricIRing, that can only be resolved by iterative Compilation.
+ * <!-- docstate
+ * pass: 2
+ * mtime: 2026-09-05T10:13:24Z
+ * digest: 972e157edfd6054e3c843b38d9600e88afe6d8804d676df838832e5d46a71a61
+ * stale: false
+ * tags: [code/metric_space, code/root_finding, code/numerical_integration, code/big_integer_arithmetic]
+ * concepts: [Metric Spaces - Root Finding and Numerical Integration]
+ * facets: {layer: domain, status: legacy, complexity: high}
+ * -->
  */
 public interface IIMetric {
 

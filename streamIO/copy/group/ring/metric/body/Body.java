@@ -6,6 +6,11 @@ import streamIO.copy.group.ring.IIntRing;
  *
  * Design Decisions:
  * All basic Operations are already defined in IIntRing.
+ * <!-- docstate
+ * tags: [code/rational_numbers, code/interval_arithmetic]
+ * concepts: [Rational Numbers and Interval Arithmetic]
+ * facets: {layer: domain, status: legacy, complexity: high}
+ * -->
  */
 public interface Body
 extends IBody, IIntRing {

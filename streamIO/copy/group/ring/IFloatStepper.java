@@ -11,6 +11,15 @@ package streamIO.copy.group.ring;
  * and the Float Processors work with double Accuracy (and more!) internally
  * and double Parameters only fill up the Stack,
  * all these Routines use double Numbers.
+ * <!-- docstate
+ * pass: 2
+ * mtime: 2026-09-05T10:13:24Z
+ * digest: 33c58da311af1032e9bb1ba07335add56ef5a5e996131c5442db1479c6e11001
+ * stale: false
+ * tags: [code/ring_theory, code/ode_solver]
+ * concepts: [Ring Algebra and ODE Solvers]
+ * facets: {layer: domain, status: legacy, complexity: high}
+ * -->
  */
 public interface IFloatStepper {
 

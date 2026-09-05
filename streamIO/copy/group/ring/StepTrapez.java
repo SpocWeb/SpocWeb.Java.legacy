@@ -13,6 +13,15 @@ import function.vector.IFloatVectorFunction;
  * Step() performs a single Step with fixed width and 'numSteps' middle Points.
  * Run () performs as many Steps as necessary to reach a certain x Value.
  * The Result is always in the public (x,y) Values.
+ * <!-- docstate
+ * pass: 2
+ * mtime: 2026-09-05T21:13:57Z
+ * digest: 80048007eaea110228f4d600d82308040b23ec22bb9d2d57160ba5528a870a22
+ * stale: false
+ * tags: [code/ring_theory, code/ode_solver]
+ * concepts: [Ring Algebra and ODE Solvers]
+ * facets: {layer: domain, status: legacy, complexity: high}
+ * -->
  */
 public class StepTrapez
 extends AStepper {
@@ -55,6 +64,7 @@ extends AStepper {
 		Fn = f;
 	}
 
+	/**Initializes this Stepper and allocates the primitive double[] Helper Vectors Y2/Y3/Y4.	 */
 	public void Init(double Step_, double x_, double[] y_, IFloatVectorFunction f_) {
 		//Allocate Space to save iterative Allocation and Destruction!
 		super.Init(Step_, x_, y_, null);		//Create the Storage for the Helper Vectors:

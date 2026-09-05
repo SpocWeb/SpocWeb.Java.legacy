@@ -9,6 +9,15 @@ import streamIO.copy.order.IOrder;
  *
  * Design Decisions:
  * All the Methods of this Interface are usually defined using an ordered Group.
+ * <!-- docstate
+ * pass: 2
+ * mtime: 2026-09-05T10:13:24Z
+ * digest: 38b88e60f9f7062dab8cc740f5fff0f4892c8bdb0fd11937a3d01a08367acb7a
+ * stale: false
+ * tags: [code/metric_space, code/root_finding, code/numerical_integration, code/big_integer_arithmetic]
+ * concepts: [Metric Spaces - Root Finding and Numerical Integration]
+ * facets: {layer: domain, status: legacy, complexity: high}
+ * -->
  * So there is no pure virtual base class 'int'. */
 public interface IScalarMetric
 extends IOrder, INorm //, Group	//taken out, don't want to implement all the Methods of 'Group'

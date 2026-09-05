@@ -57,6 +57,15 @@ import function.IOrderAble;
  *
  * The Politics are: Start and End Point are always calculated,
  *					 all the Rest only on demand.
+ * <!-- docstate
+ * pass: 2
+ * mtime: 2026-09-05T20:53:50Z
+ * digest: c9a41805b6c203d80dca35cab710386216221dd99af58f7fab1ef3f993df504a
+ * stale: false
+ * tags: [code/tensor, code/manifold_generation, code/interpolation]
+ * concepts: [Vector/Matrix/Tensor and Manifold Interpolation]
+ * facets: {layer: domain, status: legacy, complexity: high}
+ * -->
  */
 public class Line
 	extends Tensor {		//This allows for all Matrix Operations.
@@ -260,6 +269,8 @@ public class Line
 
 	protected boolean bolOrdered;
 
+	/**Returns whether {@link #orderAt()} has already been applied to this Line
+	 * (i.e. Start holds the smaller and Stop the higher Coordinates).	 */
 	public boolean ordered() { return bolOrdered; }
 
 	/**Orders the Coordinates, so the smaller ones end up in Start

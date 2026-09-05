@@ -6,6 +6,15 @@ import function.IOrderAble;
 
 /**Performs several Steps for ODE Integration with a variable Step Size
  * up to the Target. This Code is separated from the Steppers,
+ * <!-- docstate
+ * pass: 2
+ * mtime: 2026-09-05T10:13:24Z
+ * digest: 530c0eaf4b5312d67a901c12a215684829c3c1f39068f9566ea57c02675c59b9
+ * stale: false
+ * tags: [code/metric_space, code/root_finding, code/numerical_integration, code/big_integer_arithmetic]
+ * concepts: [Metric Spaces - Root Finding and Numerical Integration]
+ * facets: {layer: domain, status: legacy, complexity: high}
+ * -->
  * because it cannot be implemented in the base Class 	 */
 public abstract class AStepperQ
 extends AStepper {

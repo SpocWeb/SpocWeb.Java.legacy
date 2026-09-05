@@ -3,7 +3,14 @@ package streamIO.copy.group.ring.metric.body;
 import streamIO.copy.ACopyAble;
 import streamIO.copy.group.ring.metric.TestMetric;
 
-/**Tests all Methods in this Package	 */
+/**Tests all Methods in this Package
+ *
+ * <!-- docstate
+ * tags: [code/rational_numbers, code/interval_arithmetic]
+ * concepts: [Rational Numbers and Interval Arithmetic]
+ * facets: {layer: domain, status: legacy, complexity: high}
+ * -->
+ */
 public class TestBody {
 
 	/**The main entry point for the application.

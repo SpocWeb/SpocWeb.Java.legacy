@@ -27,6 +27,15 @@ import function.derive.ring.body.Cosinus;
  * AStepper is not inherited, since it uses IODE instead of Function
  * and also needs different Variable Names.
  * No use in defining an abstract Super Class just for xl, yl, dx.
+ * <!-- docstate
+ * pass: 2
+ * mtime: 2026-09-05T10:13:24Z
+ * digest: 026045d1c455d858e489c47efb37d316f86e83038f4c02fe0789a22bd2247ca8
+ * stale: false
+ * tags: [code/ring_theory, code/ode_solver]
+ * concepts: [Ring Algebra and ODE Solvers]
+ * facets: {layer: domain, status: legacy, complexity: high}
+ * -->
  */
 public abstract class ARefiner
 implements IRefiner {

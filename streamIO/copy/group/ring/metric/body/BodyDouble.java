@@ -13,6 +13,11 @@ import java.io.StreamTokenizer;
  * Sign:	  1 =			1 Bit
  *
  * Design Decisions:
+ * <!-- docstate
+ * tags: [code/rational_numbers, code/interval_arithmetic]
+ * concepts: [Rational Numbers and Interval Arithmetic]
+ * facets: {layer: domain, status: legacy, complexity: high}
+ * -->
  * This Implementation is made 'final' to exploit the resulting benefits. */
 final public class BodyDouble //TODO: was final to speed up Operations, undone because of AQuantityDouble
 extends ABodyDouble {

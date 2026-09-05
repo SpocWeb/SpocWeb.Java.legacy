@@ -50,7 +50,7 @@ import function.derive.IDeriveAble;
  * <x,y+z> = <x,y> + <x,z>
  * <x,k*y> = ~k*<x,y>
  * <x,0> = <0,x> = 0
- * (<x,z> = <y,z> für alle z) => x == y
+ * (<x,z> = <y,z> fï¿½r alle z) => x == y
  *
  * The Problem here is the redefinition of several Methods.
  * The Multiplication with a Scalar means the Streching of the Vector/Polynom
@@ -81,6 +81,15 @@ import function.derive.IDeriveAble;
  * @author mheuer
  * @version	1.0
  *
+ * <!-- docstate
+ * pass: 2
+ * mtime: 2026-09-05T20:54:27Z
+ * digest: 5e4e9c191a21da677c3b4a787dda19403a6d4cd2e314d0ca1938097c92ca94c6
+ * stale: false
+ * tags: [code/tensor, code/manifold_generation, code/interpolation]
+ * concepts: [Vector/Matrix/Tensor and Manifold Interpolation]
+ * facets: {layer: domain, status: legacy, complexity: high}
+ * -->
  */
 public class PolynomDbl 
 extends VectorDbl 
@@ -96,17 +105,17 @@ implements IDeriveAble
 
 	/////////////////////////////////////////////////////////////////////////////////////
 
-	/** 
+	/**Builds the linear Factor Polynom with the given real zero.
 	 * @param zeroPos
-	 * @return the LinearFactor (1*x-zeroPos) as a Polynom 
+	 * @return the LinearFactor (1*x-zeroPos) as a Polynom
 	 */
 	final static public PolynomDbl GET_LF(final double zeroPos) {
 		return new PolynomDbl(VectorDouble.GET_LF(zeroPos), false); }
 
-	/** 
+	/**Builds the quadratic Factor Polynom for a conjugate Pair of complex zeros.
 	 * @param real
 	 * @param imag
-	 * @return the LinearFactor (x-real-i*imag)*(x-real+i*imag)=x²-2*real*x+real²+imag² as a Polynom
+	 * @return the LinearFactor (x-real-i*imag)*(x-real+i*imag)=xï¿½-2*real*x+realï¿½+imagï¿½ as a Polynom
 	 */
 	final static public PolynomDbl GET_LF(final double real, final double imag) {
 		return new PolynomDbl(VectorDouble.GET_LF(real, imag), false); }
@@ -204,7 +213,8 @@ implements IDeriveAble
 		((PolynomDbl) copy()).ModAtDivAt(arg, ret);
 		return ret; }
 	
-	/** @see streamIO.copy.group.ring.IIntRing#ModAtDivAt(java.lang.Object, streamIO.copy.group.ring.IIntRing)	 */
+	/**Delegates to the typed overload, dividing this Polynom in Place with Remainder.
+	 * @see streamIO.copy.group.ring.IIntRing#ModAtDivAt(java.lang.Object, streamIO.copy.group.ring.IIntRing)	 */
 	public IIntRing ModAtDivAt(Object arg, IIntRing quotient) {
 		return ModAtDivAt((PolynomDbl) arg, (PolynomDbl) quotient); }
 
@@ -236,7 +246,8 @@ implements IDeriveAble
 	//redefine Differentiation and Integration
 	/////////////////////////////////////////////////////////////////////////////////////
 		
-	/** @see streamIO.copy.group.ring.metric.body.vector.IManifold#diffAt()	 */
+	/**Differentiates this Polynom in Place, redefined as Polynom Differentiation (not Sample Differencing).
+	 * @see streamIO.copy.group.ring.metric.body.vector.IManifold#diffAt()	 */
 	public IManifold diffAt() { a.diffPolynomAt(); return this; }
 
 	/**Returns the Integrated Vector of this Manifold in Place: int(i)= a(i) + a(i+1)
@@ -342,7 +353,7 @@ implements IDeriveAble
 		return a.getDoubleAt(0); }
 
 	/**
-	 * divides the LinearFactor (x-real-i*imag)*(x-real+i*imag)=x²-2*real*x+real²+imag² from this Polynom 
+	 * divides the LinearFactor (x-real-i*imag)*(x-real+i*imag)=xï¿½-2*real*x+realï¿½+imagï¿½ from this Polynom 
 	 * eliminating two Radices at the complex Positions. 
 	 * This saves half of the complex Operations. 
 	 * @param real

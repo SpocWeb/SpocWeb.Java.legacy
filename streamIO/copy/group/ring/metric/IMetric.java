@@ -18,6 +18,15 @@ import streamIO.copy.ICopyAble;
  * not symmetric
  * not positive definite
  * possibly violating the Triangle Inequation
+ * <!-- docstate
+ * pass: 2
+ * mtime: 2026-09-05T10:13:24Z
+ * digest: 4a14b852017719f3e36e4e3a23db958e0ce4ff33847fa4ba64a8b9ee6e2a5088
+ * stale: false
+ * tags: [code/metric_space, code/root_finding, code/numerical_integration, code/big_integer_arithmetic]
+ * concepts: [Metric Spaces - Root Finding and Numerical Integration]
+ * facets: {layer: domain, status: legacy, complexity: high}
+ * -->
  */
 public interface IMetric
 extends IIMetric, ICopyAble {

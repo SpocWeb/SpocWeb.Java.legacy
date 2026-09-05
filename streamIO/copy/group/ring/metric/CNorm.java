@@ -2,6 +2,15 @@ package streamIO.copy.group.ring.metric;
 
 /**Implements Constants for all Types of IIntRing Classes.
  * This Class inhibits the Use of ...At() Routines
+ * <!-- docstate
+ * pass: 2
+ * mtime: 2026-09-05T10:13:24Z
+ * digest: 8c050ce6eae9d9b24814a16fa3a4ebc60a26b6c61159920769af0aa4ff9c71ce
+ * stale: false
+ * tags: [code/metric_space, code/root_finding, code/numerical_integration, code/big_integer_arithmetic]
+ * concepts: [Metric Spaces - Root Finding and Numerical Integration]
+ * facets: {layer: domain, status: legacy, complexity: high}
+ * -->
  * but still supports all other Methods of the IIntRing Class.	 */
 public class CNorm
 extends CMetric

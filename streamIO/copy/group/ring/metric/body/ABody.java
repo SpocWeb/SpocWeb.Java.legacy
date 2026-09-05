@@ -18,6 +18,11 @@ import streamIO.copy.group.ring.AIntRing;
 
 /**Default Constructor for the abstract Body Class
  * The Body is rather used as a metric Body,
+ * <!-- docstate
+ * tags: [code/rational_numbers, code/interval_arithmetic]
+ * concepts: [Rational Numbers and Interval Arithmetic]
+ * facets: {layer: domain, status: legacy, complexity: high}
+ * -->
  * because of it's topological Properties.  */
 public abstract class ABody
 extends AIntRing

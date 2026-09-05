@@ -51,6 +51,15 @@ import function.IMeasurAble;
  * @author mheuer
  * @version	1.0
  *
+ * <!-- docstate
+ * pass: 2
+ * mtime: 2026-09-05T10:13:24Z
+ * digest: 11d87a492cd823106cba41cb070075e01db0b770c91b7d4c7b6c4b528e3556ab
+ * stale: false
+ * tags: [code/metric_space, code/root_finding, code/numerical_integration, code/big_integer_arithmetic]
+ * concepts: [Metric Spaces - Root Finding and Numerical Integration]
+ * facets: {layer: domain, status: legacy, complexity: high}
+ * -->
  */
 public class GoldenMinimizer
 extends SecantRefiner {	//ARefinerQ {	//swaps the Points unnecessarily!
@@ -86,7 +95,7 @@ extends SecantRefiner {	//ARefinerQ {	//swaps the Points unnecessarily!
 		final IMetricIRing lInt = (IMetricIRing) x_.sub(xl); final boolean lNeg = lInt.negative();
 		if (lNeg ^ rNeg) {	//Check if x is between xl and xr.
 			throw new AbstractMethodError((maximize?"Maximum":"Minimum")+" not bracketed by ("+xl+","+yl+"),("+xMid+","+yMid+"),("+xr+","+yr+")"); }
-		if (rInt.isMoreThan(lInt) ^ lNeg) { //xMid liegt näher bei xl  // == xr+golden(xMid-xr) //{neuer Punkt wird ermittelt}
+		if (rInt.isMoreThan(lInt) ^ lNeg) { //xMid liegt nï¿½her bei xl  // == xr+golden(xMid-xr) //{neuer Punkt wird ermittelt}
 			xMid = x_; dx = (IIntRing)xr.sub(xMid); dx.mulAt(IMeasurAble.cGolden); xTst.copyAt(xMid); xTst.addAt(dx);				yTst = (IMetricIRing) f.Map(xTst); 	
 		} else { 	// == xl+golden(xTst-xl)
 			xTst = x_; dx = (IIntRing)xl.sub(xTst); dx.mulAt(IMeasurAble.cGolden); xMid.copyAt(xTst); xMid.addAt(dx); yTst = yMid;	yMid = (IMetricIRing) f.Map(xMid); 

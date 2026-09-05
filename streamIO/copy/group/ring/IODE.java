@@ -7,6 +7,15 @@ package streamIO.copy.group.ring;
  * Design Decisions:
  * Used 'IRing' instead of 'Tensor' for y, to facilitate both
  * scalar and Vector Differntial Equations.
+ * <!-- docstate
+ * pass: 2
+ * mtime: 2026-09-05T10:13:24Z
+ * digest: c016f92b06cb03d4f5e7de4c8b2ead36a9417ae2a6ded068b5a5dc2ff4f962d7
+ * stale: false
+ * tags: [code/ring_theory, code/ode_solver]
+ * concepts: [Ring Algebra and ODE Solvers]
+ * facets: {layer: domain, status: legacy, complexity: high}
+ * -->
  */
 public interface IODE {
 

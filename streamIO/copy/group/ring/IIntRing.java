@@ -4,6 +4,15 @@ import streamIO.copy.groupM.IGroupM;
 
 /**Integrity Ring integrates full multiplicative and additive Group Capabilities.
  * I.e. not only 0, but also 1 and thus also -1 are defined.
+ * <!-- docstate
+ * pass: 2
+ * mtime: 2026-09-05T10:13:24Z
+ * digest: 52ea65e70b8a0275ab844f2aa86ec0e9a2f0cf06490cc277dd4e9ce4c3d4b0fd
+ * stale: false
+ * tags: [code/ring_theory, code/ode_solver]
+ * concepts: [Ring Algebra and ODE Solvers]
+ * facets: {layer: domain, status: legacy, complexity: high}
+ * -->
  * It also defines the Complement for the Processing of gAdic Numbers.  */
 public interface IIntRing
 extends IRing, IGroupM, integer, IComplex {

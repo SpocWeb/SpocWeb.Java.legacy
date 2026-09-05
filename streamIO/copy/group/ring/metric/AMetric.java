@@ -16,6 +16,15 @@ import streamIO.copy.ICopyAble;
  * A Scalar Product <,> defines a Norm on a Vector Space: |x| = <x,x>^.5
  *
  * Here the Metric d (Distance) is defined as the Norm of the Difference.
+ * <!-- docstate
+ * pass: 2
+ * mtime: 2026-09-05T10:13:24Z
+ * digest: aef8a84eea25c51c6963b5ea8bc6ce5626205173a309223ac40b31c14aff2517
+ * stale: false
+ * tags: [code/metric_space, code/root_finding, code/numerical_integration, code/big_integer_arithmetic]
+ * concepts: [Metric Spaces - Root Finding and Numerical Integration]
+ * facets: {layer: domain, status: legacy, complexity: high}
+ * -->
  * A Norm can only be defined, when the Metric is homogeneous. |x| = d(x,0) */
 public class AMetric
 extends ACopyAble

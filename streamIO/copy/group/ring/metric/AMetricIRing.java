@@ -17,6 +17,15 @@ import function.byref.ByRefDouble;
  * relation No new operations are defined, but both Interfaces are integrated into one.
  * Design Decisions: The following Methods are left open, since they are pure virtual
  * Methods: addAt, subAt, mulAt, divAt, less, maxValueAt
+ * <!-- docstate
+ * pass: 2
+ * mtime: 2026-09-05T21:06:27Z
+ * digest: 90749431550c937068ac1623fa60db9adbfa5e665d4adfa4564fd504f3ab6e2b
+ * stale: false
+ * tags: [code/metric_space, code/root_finding, code/numerical_integration, code/big_integer_arithmetic]
+ * concepts: [Metric Spaces - Root Finding and Numerical Integration]
+ * facets: {layer: domain, status: legacy, complexity: high}
+ * -->
  */
 public abstract class AMetricIRing extends AIntRing implements IMetricIRing {
 
@@ -794,7 +803,7 @@ public abstract class AMetricIRing extends AIntRing implements IMetricIRing {
 
 	/**
 	 * binaerer ggT-Algorithmus, sehr viel schneller als normaler euklid. Algorithmus,
-	 * aber nur für ganze Zahlen 'this' und y
+	 * aber nur fï¿½r ganze Zahlen 'this' und y
 	 */
 	public IMetricIRing ggT2At(IMetricIRing y) {
 		y = (IMetricIRing) y.AbsV(); // {damit der ungerade-ungerade-Fall zu KLEINEREN
@@ -973,7 +982,9 @@ public abstract class AMetricIRing extends AIntRing implements IMetricIRing {
 	 * Copy int i = 1; while (++i <= 10) { if ((((MetricIRing)
 	 * abs.subAt(Modulus)).negative()) break; else copyAt(abs); //use DeepCopy } if (i ==
 	 * 11) subAt((((MetricIRing) divAt(Modulus)).Floor().mul(Modulus)); //explizit
-	 * berechnen if (neg) return ((MetricIRing) negAt(); else return this; /**Returns the
+	 * berechnen if (neg) return ((MetricIRing) negAt(); else return this;
+	 */
+	/**Returns the
 	 * Remainder of the Division by Modulus. The Remainder is centered around 0.
 	 */
 	public IMetricIRing Rem(Object Modulus) {
@@ -1115,7 +1126,9 @@ public abstract class AMetricIRing extends AIntRing implements IMetricIRing {
 	 * new Body.BodyDouble(); while (++i.Value <= 6) { i.PythagTripel(a, b, c);
 	 * System.out.println(" a = " + a + "; a^2 = " + a.sqr() + "; b = " + b + "; b^2 = " +
 	 * b.sqr() + "; c = " + c + "; c^2 = " + c.sqr()); } System.in.read();
-	 * System.in.read(); } /**Method to test all Implementations in this class.
+	 * System.in.read(); }
+	 */
+	/**Method to test all Implementations in this class.
 	 */
 	public static void testIt() throws Exception {
 		IMetricIRing test = (IMetricIRing) testInstance;

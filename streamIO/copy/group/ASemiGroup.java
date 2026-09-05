@@ -64,6 +64,15 @@ import streamIO.copy.ICopyAble;
   *
   * Abstract Methods:
   * addAt (+=)
+  * <!-- docstate
+  * pass: 2
+  * mtime: 2026-09-05T10:13:24Z
+  * digest: cf238d2cdc4eff098ac94587bb4439f65bc6412f5f103badb998c3f2fdbe4eb3
+  * stale: false
+  * tags: [code/group_algebra, code/date_time]
+  * concepts: [Group/SemiGroup Algebra]
+  * facets: {layer: domain, status: legacy, complexity: high}
+  * -->
   */
 public abstract class ASemiGroup
 extends ACopyAble	//Number	//The Problem here is that not every Group maps to numeric Values.

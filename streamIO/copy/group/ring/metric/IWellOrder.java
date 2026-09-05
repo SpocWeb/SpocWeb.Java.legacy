@@ -14,6 +14,15 @@ import streamIO.copy.ICopyAble;
  * This has two benefits for Integers:
  * 1) The Values form a true binary remainder class
  * 2) There is a special Value indicating 'Null' or 'Overflow'
+ * <!-- docstate
+ * pass: 2
+ * mtime: 2026-09-05T10:13:24Z
+ * digest: 6fbdadd20e58078adfbff656a05716d5f3364361cf9e7c359d744d447d4cc612
+ * stale: false
+ * tags: [code/metric_space, code/root_finding, code/numerical_integration, code/big_integer_arithmetic]
+ * concepts: [Metric Spaces - Root Finding and Numerical Integration]
+ * facets: {layer: domain, status: legacy, complexity: high}
+ * -->
  */
 public interface IWellOrder
 extends IIWellOrder, ICopyAble {

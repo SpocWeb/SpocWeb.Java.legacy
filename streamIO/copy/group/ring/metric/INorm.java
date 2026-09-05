@@ -17,6 +17,15 @@ package streamIO.copy.group.ring.metric;
  *
  * But is can be shown that all Norms create identical Topologies in all R^n Spaces!
  * In 1-dimensionas Spaces all these Norms are the same.
+ * <!-- docstate
+ * pass: 2
+ * mtime: 2026-09-05T10:13:24Z
+ * digest: d08e0df0a8bfe3f7d36da3019ded99a71af30962ae9261e0ff92893e7a8c3d06
+ * stale: false
+ * tags: [code/metric_space, code/root_finding, code/numerical_integration, code/big_integer_arithmetic]
+ * concepts: [Metric Spaces - Root Finding and Numerical Integration]
+ * facets: {layer: domain, status: legacy, complexity: high}
+ * -->
  */
 public interface INorm
 extends IINorm, IMetric {

@@ -51,6 +51,15 @@ import function.derive.CCountAble;
   * @see streamIO.Copy.IOrder.Interval
   * @see streamIO.Copy.IOrder.IntervalOrd
   * are minimal Definitions for Intervals
+  * <!-- docstate
+  * pass: 2
+  * mtime: 2026-09-05T21:00:22Z
+  * digest: 1c2f311a0b9648b33da42f286f0da1dc609ae72480b0975a486718663020daaf
+  * stale: false
+  * tags: [code/rational_numbers, code/interval_arithmetic]
+  * concepts: [Rational Numbers and Interval Arithmetic]
+  * facets: {layer: domain, status: legacy, complexity: high}
+  * -->
   */
 public class IntervalDbl
 	extends AMetricBody {
@@ -356,8 +365,8 @@ public class IntervalDbl
 
 	/**Division in Place: /=
 	 * assumes null to be 1
-	 * obige Implementation vermeidet Genauigkeitsverlust und einen Überlauf durch die Quadrierung
-	 * und spart außerdem effektiv 2 Sqr und wendet nur 1 Vergleich mehr an als andere.	 */
+	 * obige Implementation vermeidet Genauigkeitsverlust und einen ï¿½berlauf durch die Quadrierung
+	 * und spart auï¿½erdem effektiv 2 Sqr und wendet nur 1 Vergleich mehr an als andere.	 */
 	public IGroupM divAt(Object arg) {
 //		++MulOperations;
 //		++MulOptimizations;
@@ -786,8 +795,10 @@ public class IntervalDbl
 	//	CopyAble	//
 	//////////////////
 
+	/**No-op: an Interval has no imaginary Part to conjugate.	 */
 	public IIntRing cjgAt() { return this; }
 
+	/**Returns false: an Interval is always real-valued, never complex.	 */
 	public boolean isComplex() { return false; }
 
 //	public SemiMonoid mapAt(SemiMonoid arg) { ((CopyAble) arg).copyAt(this); return arg; }

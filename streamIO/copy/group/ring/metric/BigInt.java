@@ -20,11 +20,7 @@ import streamIO.copy.groupM.IGroupM;
 import streamIO.copy.groupM.ISemiGroupM;
 import function.ICountAble;
 
-/**
- * Title: BigInt<p>
- * Description:
- * Purpose:
- * Concrete Implementation of a dynamic Size arbitrary Precision Number. 
+/**Concrete Implementation of a dynamic Size arbitrary Precision Number.
  * Can also be used to convert any Number from one Representation into any other Representation. 
  * 
  * Implementation Details: 
@@ -49,6 +45,15 @@ import function.ICountAble;
  * @author mheuer
  * @version	1.0
  *
+ * <!-- docstate
+ * pass: 2
+ * mtime: 2026-09-05T21:05:32Z
+ * digest: 5e27082f717c3e985a604ecb7f876d7f461017fae1ea2411b483503d343e25a8
+ * stale: false
+ * tags: [code/metric_space, code/root_finding, code/numerical_integration, code/big_integer_arithmetic]
+ * concepts: [Metric Spaces - Root Finding and Numerical Integration]
+ * facets: {layer: domain, status: legacy, complexity: high}
+ * -->
  */
 public class BigInt extends AMetricIRing 
 implements ICountAble{
@@ -63,27 +68,34 @@ implements ICountAble{
 
 	/////////////////////////////////////////////////////////////////////////////////////
 
-	/** @see streamIO.copy.group.ring.metric.IIWellOrder#maxValueAt()	 */
+	/**Always throws: BigInt is of dynamic Size, so it has no maximum Value.
+	 * @see streamIO.copy.group.ring.metric.IIWellOrder#maxValueAt()	 */
 	public IWellOrder maxValueAt() {
 		throw new RuntimeException("No maximum Value defined for "+BigInt.class);
 	}
 
-	/** @see streamIO.copy.group.ring.metric.IMetricIRing#FloorAt()	 */
+	/**No-op: BigInt already only holds integer Values.
+	 * @see streamIO.copy.group.ring.metric.IMetricIRing#FloorAt()	 */
 	public IMetricIRing FloorAt() { return this; }
 
-	/** @see streamIO.copy.group.ring.IIntRing#CmplAt()	 */
+	/**No-op: BigInt has no bitwise Complement Representation.
+	 * @see streamIO.copy.group.ring.IIntRing#CmplAt()	 */
 	public IIntRing CmplAt() { return this; }
 
-	/** @see streamIO.copy.group.ring.IComplex#cjgAt()	 */
+	/**No-op: a BigInt has no imaginary Part to conjugate.
+	 * @see streamIO.copy.group.ring.IComplex#cjgAt()	 */
 	public IIntRing cjgAt() { return this; }
 
-	/** @see streamIO.copy.group.ring.IComplex#isComplex()	 */
+	/**Returns false: a BigInt is always real-valued, never complex.
+	 * @see streamIO.copy.group.ring.IComplex#isComplex()	 */
 	public boolean isComplex() { return false; }
 
-	/** @see streamIO.copy.group.ring.IIntRing#addCarry()	 */
+	/**No-op: BigInt handles g-adic Carry directly within its own Add/Sub Operations.
+	 * @see streamIO.copy.group.ring.IIntRing#addCarry()	 */
 	public void addCarry() {}
 
-	/** @see streamIO.copy.group.ring.IIntRing#toUpperAt()	 */
+	/**No-op: BigInt has no separate g-adic upper Position to raise to.
+	 * @see streamIO.copy.group.ring.IIntRing#toUpperAt()	 */
 	public IIntRing toUpperAt() {
 		return this;
 	}
@@ -106,12 +118,14 @@ implements ICountAble{
 	/// Constructors
 	/////////////////////////////////////////////////////////////////////////////////////
 
-	/** @param module_ the Module to use	 */
+	/**Constructor: creates a zero-valued BigInt with the given Module.
+	 * @param module_ the Module to use	 */
 	public BigInt(final int module_) {
 		this.module = module_;
 	}
 
-	/** @param module_ the Module to use	 */
+	/**Constructor: creates a BigInt from a single primitive {@code int} Value.
+	 * @param module_ the Module to use	 */
 	public BigInt(final int module_, int value) {
 		if (value < 0) {
 			this.negative = true; 
@@ -127,7 +141,8 @@ implements ICountAble{
 		VectorInt.TRIM_AT(items, module, numItems);
 	}
 
-	/** @param module_ the Module to use	 */
+	/**Constructor: converts value into this BigInt's Radix, via the Horner Scheme if the Modules differ.
+	 * @param module_ the Module to use	 */
 	public BigInt(final int module_, final BigInt value) {
 		this.module = module_; 
 		if (module == value.module) {
@@ -141,7 +156,8 @@ implements ICountAble{
 		}
 	}
 
-	/** @see streamIO.copy.group.IISemiGroup#addAt(java.lang.Object)	 */
+	/**Delegates to the typed overload, adding arg to this BigInt in Place.
+	 * @see streamIO.copy.group.IISemiGroup#addAt(java.lang.Object)	 */
 	public ISemiGroup addAt(final Object arg) {
 		return addAt((BigInt) arg);
 	}
@@ -167,22 +183,26 @@ implements ICountAble{
 		}
 	}
 
-	/** @see streamIO.copy.group.IISemiGroup#addAt(java.lang.Object)	 */
+	/**Delegates to the typed overload, subtracting arg from this BigInt in Place.
+	 * @see streamIO.copy.group.IISemiGroup#addAt(java.lang.Object)	 */
 	public IGroup subAt(final Object arg) {
 		return subAt((BigInt) arg);
 	}
 
-	/** @see streamIO.copy.group.IISemiGroup#addAt(java.lang.Object)	 */
+	/**Subtracts arg from this BigInt in Place.
+	 * @see streamIO.copy.group.IISemiGroup#addAt(java.lang.Object)	 */
 	public BigInt subAt(final BigInt arg) {
 		return addAt(arg, !arg.negative);
 	}
 
-	/** @see streamIO.copy.group.IISemiGroup#addAt(java.lang.Object)	 */
+	/**Adds arg to this BigInt in Place.
+	 * @see streamIO.copy.group.IISemiGroup#addAt(java.lang.Object)	 */
 	public ISemiGroup addAt(final BigInt arg) {
 		return addAt(arg, arg.negative);
 	}
-	
-	/** @see streamIO.copy.group.IISemiGroup#addAt(java.lang.Object)	 */
+
+	/**Adds a single primitive {@code int} Value to this BigInt in Place.
+	 * @see streamIO.copy.group.IISemiGroup#addAt(java.lang.Object)	 */
 	public BigInt addAt(final int value) {
 		items[0]+=value; 
 		canonicalizeAt();
@@ -263,17 +283,20 @@ implements ICountAble{
 		return this;
 	}
 
-	/** @see function.IIOrderAble#isLessThan(java.lang.Object)	 */
+	/**Delegates to the typed overload, comparing this BigInt with arg.
+	 * @see function.IIOrderAble#isLessThan(java.lang.Object)	 */
 	public boolean isLessThan(Object arg) {
 		return less((BigInt) arg);
 	}
 
-	/** @see function.IIOrderAble#isLessThan(java.lang.Object)	 */
+	/**Returns whether this BigInt is less than arg.
+	 * @see function.IIOrderAble#isLessThan(java.lang.Object)	 */
 	public boolean less(final BigInt arg) {
 		return Position(arg) < 0;
 	}
 
-	/** @see function.IIOrderAble#isLessThan(java.lang.Object)	 */
+	/**Returns the Sign of the Comparison between this BigInt and arg (negative/0/positive).
+	 * @see function.IIOrderAble#isLessThan(java.lang.Object)	 */
 	public int Position(final BigInt arg) {
 		if (negative == arg.negative) { //same sign
 			int sign = VectorInt.COMPARE_TO(this.items, this.numItems, arg.items, arg.numItems);
@@ -289,18 +312,20 @@ implements ICountAble{
 		return negative?-1:1;
 	}
 
-	/** @see streamIO.copy.groupM.IISemiGroupM#mulAt(java.lang.Object)	 */
+	/**Delegates to the typed overload, multiplying this BigInt by arg (not in Place: mulAt returns a new Value).
+	 * @see streamIO.copy.groupM.IISemiGroupM#mulAt(java.lang.Object)	 */
 	public ISemiGroupM mulAt(final Object arg) {
 		return mul((BigInt) arg);
 	}
-		
-	/** @see streamIO.copy.groupM.IISemiGroupM#mulAt(java.lang.Object)	 */
+
+	/**Delegates to the typed overload, multiplying this BigInt by arg.
+	 * @see streamIO.copy.groupM.IISemiGroupM#mulAt(java.lang.Object)	 */
 	public ISemiGroupM mul(final Object arg) {
 		return mul((BigInt) arg);
 	}
-		
-	/**
-	 * although the explicit convolution is an O(n²) Operation, 
+
+	/**Multiplies this BigInt by arg via explicit Convolution.
+	 * although the explicit convolution is an O(nï¿½) Operation,
 	 * it is more explicit and easy to realize using addProdAt 
 	 * 
 	 * A more efficient Algorithm is described in the numerical Recipes, 
@@ -319,16 +344,16 @@ implements ICountAble{
 	}
 	
 	/**
-	 * Do a Kind of Polynom Division, which is slow, 
-	 * but at least applies both to Integers and to Polynoms!  
-	 * @see streamIO.copy.groupM.IIGroupM#divAt(java.lang.Object)	 
+	 * Do a Kind of Polynom Division, which is slow,
+	 * but at least applies both to Integers and to Polynoms!
+	 * @see streamIO.copy.groupM.IIGroupM#divAt(java.lang.Object)
 	 */
 	public IGroupM divAt(final Object arg) {
 		return div((BigInt) arg);
 	}
 
-	/**
-	 * Do a Kind of Polynom Division, which is slow, 
+	/**Divides this BigInt by arg, returning a new Value.
+	 * Do a Kind of Polynom Division, which is slow,
 	 * but at least applies both to Integers and to Polynoms!  
 	 * @see streamIO.copy.groupM.IIGroupM#divAt(java.lang.Object)	 
 	 */
@@ -336,7 +361,8 @@ implements ICountAble{
 		return ((BigInt) copy()).ModAtDivAt(arg, new BigInt(module));
 	}
 	
-	/** @see streamIO.copy.group.ring.IIntRing#ModAtDivAt(java.lang.Object, streamIO.copy.group.ring.IIntRing)	 */
+	/**Delegates to the typed overload, dividing this BigInt in Place with Remainder.
+	 * @see streamIO.copy.group.ring.IIntRing#ModAtDivAt(java.lang.Object, streamIO.copy.group.ring.IIntRing)	 */
 	public IIntRing ModAtDivAt(Object arg, IIntRing quotient) {
 		return ModAtDivAt((BigInt) arg, (BigInt) quotient);
 	}
@@ -394,16 +420,20 @@ implements ICountAble{
 	/// Interface ICountAble
 	////////////////////////////////////////////////////////////////////////////////
 
-	/** @see function.ICountAble#getByte()	 */
+	/**Returns this BigInt's Value truncated to a {@code byte}, via {@link #getLong()}.
+	 * @see function.ICountAble#getByte()	 */
 	public byte getByte() { return (byte) getLong(); }
 
-	/** @see function.ICountAble#getShort()	 */
+	/**Returns this BigInt's Value truncated to a {@code short}, via {@link #getLong()}.
+	 * @see function.ICountAble#getShort()	 */
 	public short getShort() { return (short) getLong(); }
 
-	/** @see function.ICountAble#getInt()	 */
+	/**Returns this BigInt's Value truncated to an {@code int}, via {@link #getLong()}.
+	 * @see function.ICountAble#getInt()	 */
 	public int getInt() { return (int) getLong(); }
 
-	/** @see function.ICountAble#getLong()	 */
+	/**Returns this BigInt's Value as a {@code long}, throwing on Overflow.
+	 * @see function.ICountAble#getLong()	 */
 	public long getLong() {
 		checkInvariant();
 		int i = numItems;
@@ -419,8 +449,9 @@ implements ICountAble{
 		return ret;
 	}
 
-	/** @see function.IMeasurAble#getDouble()	 */
-	public double getDouble() { 
+	/**Returns this BigInt's Value converted to a {@code double} (may lose Precision for large Values).
+	 * @see function.IMeasurAble#getDouble()	 */
+	public double getDouble() {
 		//return getLong(); 
 		checkInvariant();
 		int i = numItems;
@@ -435,32 +466,37 @@ implements ICountAble{
 		return ret;
 	}
 
-	/** @see function.IMeasurAble#getFloat()	 */
+	/**Returns this BigInt's Value converted to a {@code float}, via {@link #getDouble()}.
+	 * @see function.IMeasurAble#getFloat()	 */
 	public float getFloat() { return (float) getDouble(); }
 
 	////////////////////////////////////////////////////////////////////////////////
 	/// Interface ICopyAble
 	////////////////////////////////////////////////////////////////////////////////
 
-	/** @see streamIO.copy.group.ring.metric.IIWellOrder#maxValueAt()	 */
+	/**Delegates to the typed overload, copying arg's Value into this BigInt in Place.
+	 * @see streamIO.copy.ICopyAble#copyAt(Object, int)	 */
 	public ICopyAble copyAt(Object arg, int Depth) {
 		return copyAt((BigInt) arg);
 	}
 
-	/** @see streamIO.copy.group.ring.metric.IIWellOrder#maxValueAt()	 */
+	/**Copies arg's Value, Sign and Module into this BigInt in Place.
+	 * @see streamIO.copy.ICopyAble#copyAt(Object, int)	 */
 	public BigInt copyAt(final BigInt arg) {
 		setNumItems(arg.numItems);
 		System.arraycopy(arg.items, 0, this.items, 0, arg.numItems);
-		this.negative = arg.negative; 
-		this.module = arg.module; 
+		this.negative = arg.negative;
+		this.module = arg.module;
 		return this;
 	}
 
-	/** @see streamIO.copy.group.ring.metric.IIWellOrder#maxValueAt()	 */
+	/**Delegates to the typed overload, comparing this BigInt with arg for equality.
+	 * @see java.lang.Object#equals(java.lang.Object)	 */
 	public boolean equals(final Object arg) {
 		return equals((BigInt) arg); }
 
-	/** @see streamIO.copy.group.ring.metric.IIWellOrder#maxValueAt()	 */
+	/**Returns whether this BigInt and arg represent the same numeric Value.
+	 * @see java.lang.Object#equals(java.lang.Object)	 */
 	public boolean equals(final BigInt arg) {
 		return 0 == Position(arg);
 	}
@@ -474,7 +510,8 @@ implements ICountAble{
 	/// Optimizations
 	////////////////////////////////////////////////////////////////////////////////
 
-	/** @see java.lang.Object#toString()	 */
+	/**Returns a string representation of this BigInt in its own Radix (digits/letters if Module &lt; 36, else comma-separated Items).
+	 * @see java.lang.Object#toString()	 */
 	public String toString() {
 		StringBuffer sb = new StringBuffer(4*numItems);
 		sb.append(negative?'-':' ');
@@ -526,9 +563,9 @@ implements ICountAble{
 		return this; 
 	}
 
-	/**
+	/**Sets this BigInt to 0 in Place.
 	 * @see streamIO.copy.group.IGroup#zeroAt()
-	 * @return this set to 0 in Place 	 
+	 * @return this set to 0 in Place
 	 */
 	public IGroup zeroAt() {
 		numItems = 0; 

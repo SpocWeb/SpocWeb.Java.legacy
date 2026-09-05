@@ -8,9 +8,8 @@ import java.io.IOException;
 import streamIO.copy.group.DateTime;
 import streamIO.object.IStreamIn;
 
-/**
-  * Title: Unit<p>
-  * Description:
+/**Defines a physical Unit as a scale factor into its base SI Unit, with a large catalog
+  * of predefined constants for the SI, CGS, imperial and other unit systems.
   *
   * Defines the Interface for a (physical) Unit.
   * A Unit defines the Metric and Norm for a Parameter Space
@@ -56,6 +55,15 @@ import streamIO.object.IStreamIn;
   * Created on	2000-08-13, 02;34;24<p>
   * @author 	Matthias Heuer
   * @version	1.0
+  * <!-- docstate
+  * pass: 2
+  * mtime: 2026-09-05T16:33:53Z
+  * digest: c8f8348b301aa800a54271e9e72308fa6f2737e50d445878cbb844ec14a48502
+  * stale: false
+  * tags: [code/si_units, code/unit_conversion]
+  * concepts: [Physical Units and Conversion]
+  * facets: {layer: domain, status: legacy, complexity: high}
+  * -->
   */
 public class Unit //declared abstract to avoid Instantiation, although fully Functiona.
 //extends FractionLong //don't extend!
@@ -119,7 +127,8 @@ implements ILinked, IFloatFunction {
 	//  Accessor Methods (getXXX/setXXX)
 	////////////////////////////////////////////////////////////////////////////////
 	
-	/** @return the Base Unit / Dimension
+	/**Returns the Base Unit / Dimension, or {@code null} when this Unit is itself a base Unit.
+	  * @return the Base Unit / Dimension
 	  * This allows to find out whether two Types can be converted.
 	  * This defines an Equivalence Relation to a Base Element */
 	public Unit getBaseUnit() { return mBaseUnit; }
@@ -247,7 +256,9 @@ implements ILinked, IFloatFunction {
 		/** Atto   -18  */
 		final static public double atto  = 1e-18;
 	
+		/** Percent  Factor = 1e-2 */
 		final static public double Percent  = 1e-2;
+		/** Permille Factor = 1e-3 */
 		final static public double Permille = 1e-3;
 	
 		//non decadic integer Factors:
@@ -317,33 +328,55 @@ implements ILinked, IFloatFunction {
 	
 	*/
 	
+		/** Square Second, Dimension: Time^2   Size: SECOND*SECOND */
 		final static public double SqrSECOND = SECOND*SECOND;
+		/** Square Meter, Dimension: Length^2   Size: METER*METER */
 		final static public double SqrMETER  = METER*METER;
+		/** Steradian, Dimension: solid Angle   Size: RADIAN*RADIAN */
 		final static public double Steradian = RADIAN*RADIAN;
 	
+		/** Cubic Meter, Dimension: Length^3   Size: METER*SqrMETER */
 		final static public double CbcMETER  = METER * SqrMETER;
 	
+		/** KiloGram, Dimension: Mass   Size: kilo*GRAM */
 		final static public double KILO_GRAM  = kilo * GRAM;
 	
 	
 		//Umrechnungen in fundamentale SI-Einheiten:
 	
+		/** Newton, Dimension: force   Size: METER*KILO_GRAM/SqrSECOND */
 		final static public double Newton    = METER * KILO_GRAM / SqrSECOND;
+		/** Pascal, Dimension: pressure   Size: Newton/SqrMETER */
 		final static public double Pascal    = Newton / SqrMETER;
+		/** Joule, Dimension: energy   Size: Newton*METER */
 		final static public double Joule     = Newton * METER;
+		/** Watt, Dimension: power   Size: Joule/SECOND */
 		final static public double Watt      = Joule / SECOND;
+		/** Coulomb, Dimension: electric charge   Size: AMPERE*SECOND */
 		final static public double COULOMB   = AMPERE * SECOND;
+		/** Volt, Dimension: electric potential difference   Size: Watt/AMPERE */
 		final static public double Volt      = Watt / AMPERE;
+		/** Ohm, Dimension: electric resistance   Size: Volt/AMPERE */
 		final static public double Ohm       = Volt / AMPERE;
+		/** Siemens, Dimension: electric conductance   Size: AMPERE/Volt */
 		final static public double Siemens   = AMPERE / Volt;
+		/** Farad, Dimension: electric capacitance   Size: COULOMB/Volt */
 		final static public double Farad     = COULOMB / Volt;
+		/** Weber, Dimension: magnetic flux   Size: Volt*SECOND */
 		final static public double Weber     = Volt * SECOND;
+		/** Henry, Dimension: inductance   Size: Ohm*SECOND */
 		final static public double Henry     = Ohm * SECOND;
+		/** Tesla, Dimension: magnetic flux density   Size: Weber/SqrMETER */
 		final static public double Tesla     = Weber / SqrMETER;
+		/** Lumen, Dimension: luminous flux   Size: CANDELA*Steradian */
 		final static public double Lumen     = CANDELA * Steradian;
+		/** Lux, Dimension: illuminance   Size: Lumen/SqrMETER */
 		final static public double Lux       = Lumen / SqrMETER;
+		/** Hertz, Dimension: frequency   Size: 1/SECOND */
 		final static public double Hertz     = 1 / SECOND;
+		/** Becquerel, Dimension: radioactivity   Size: Hertz */
 		final static public double Becquerel = Hertz;
+		/** Gray, Dimension: absorbed radiation dose   Size: Joule/KILO_GRAM */
 		final static public double Gray      = Joule / KILO_GRAM;
 	
 	
@@ -351,14 +384,22 @@ implements ILinked, IFloatFunction {
 	
 		//Winkel-Einheiten (angle):
 	
+		/** The mathematical constant Pi = 3.14159265... */
 		final static public double Pi = Math.PI;
 	
+		/** Degree, Dimension: planar Angle   Size: Pi/180 */
 		final static public double Degree     = Pi/180;
+		/** full Circle, Dimension: planar Angle   Size: 2*Pi */
 		final static public double Circle     = 2*Pi;
+		/** Arc Minute, Dimension: planar Angle   Size: Degree/60 */
 		final static public double ArcMinute  = Degree/60;
+		/** Arc Second, Dimension: planar Angle   Size: ArcMinute/60 */
 		final static public double ArcSECOND  = ArcMinute/60;
+		/** Right Angle, Dimension: planar Angle   Size: Pi/2*RADIAN */
 		final static public double RightAngle = Pi/2*RADIAN;
+		/** Quadrant, Dimension: planar Angle   Size: RightAngle */
 		final static public double Quadrant   = RightAngle;
+		/** Grade (gon), Dimension: planar Angle   Size: RightAngle/100 */
 		final static public double Grade      = RightAngle/100;
 	
 		//Laengen-Einheiten (length):
@@ -660,7 +701,9 @@ implements ILinked, IFloatFunction {
 	
 		//Einheiten der Beschleunigung (acceleration):
 	
+		/** standard Gravity, Dimension: acceleration   Size: 9.80665*METER/SqrSECOND */
 		final static public double Gravity = 9.80665*METER/SqrSECOND;
+		/** Gal, Dimension: acceleration   Size: 1e-2*METER/SqrSECOND */
 		final static public double Gal     = 1e-2*METER/SqrSECOND;
 	
 		//Einheiten der Masse (mass):
@@ -738,191 +781,308 @@ implements ILinked, IFloatFunction {
 	
 		//Einheiten der Kraft (force):
 	
+		/** Dyne, Dimension: force   Size: 0.00001*Newton */
 		final static public double Dyne        =       0.00001 *Newton;
+		/** Poundal, Dimension: force   Size: 0.138255*Newton */
 		final static public double Poundal     =       0.138255*Newton;
+		/** Ton Force, Dimension: force   Size: 9964.02*Newton */
 		final static public double TonForce    =    9964.02    *Newton;
 		//(PoundForce)
+		/** Pound Force, Dimension: force   Size: 4.44822*Newton */
 		final static public double PoundForce  =       4.44822 *Newton;
+		/** Pound Weight, Dimension: force   Size: PoundForce */
 		final static public double PoundWeight =                       PoundForce;
 		//(KilogramForce)
+		/** Kilogram Force, Dimension: force   Size: 9.80665*Newton */
 		final static public double KilogramForce  =    9.80665 *Newton;
+		/** Kilogram Weight, Dimension: force   Size: KilogramForce */
 		final static public double KilogramWeight =                    KilogramForce;
+		/** Gram Weight, Dimension: force   Size: KilogramWeight/kilo */
 		final static public double GRAMWeight     =                    KilogramWeight/kilo;
 	
 		//Einheiten des Druckes (pressure):
 		//(Pascal)
+		/** Atmosphere, Dimension: pressure   Size: 101325*Pascal */
 		final static public double Atmosphere  = 101325   *Pascal;
+		/** Inch of Mercury, Dimension: pressure   Size: 386.39*Pascal */
 		final static public double InchMercury =    386.39*Pascal;
+		/** Barye, Dimension: pressure   Size: Pascal/10 */
 		final static public double Barye       =           Pascal/10;
+		/** Bar, Dimension: pressure   Size: 100000*Pascal */
 		final static public double Bar         = 100000   *Pascal;
 		//(Torr)
+		/** Torr, Dimension: pressure   Size: 133.22*Pascal */
 		final static public double Torr        =    133.22*Pascal;
+		/** Millimeter of Mercury, Dimension: pressure   Size: Torr */
 		final static public double MilliMETERMercury = Torr;
 	
 		//Einheiten der Energie (energy):
 	
+		/** Calorie, Dimension: energy   Size: 4.1868*Joule */
 		final static public double Calorie      = 4.1868*Joule;
 		//(Erg)
+		/** Erg, Dimension: energy   Size: 1e-7*Joule */
 		final static public double Erg     =     1e-7*Joule;
+		/** Rydberg energy, Dimension: energy   Size: 2.1799e-11*Erg */
 		final static public double Rydberg = 2.1799e-11*Erg;
 		//(BTU)
+		/** British Thermal Unit, Dimension: energy   Size: 1.05506e3*Joule */
 		final static public double BTU    = 1.05506e3*Joule;
+		/** British Thermal Unit, Dimension: energy   Size: BTU */
 		final static public double BritishThermalUnit =     BTU;
+		/** Therm, Dimension: energy   Size: 1e5*BTU */
 		final static public double Therm              = 1e5*BTU;
 	
 		//Einheiten der Leistung (power):
 	
+		/** Horse Power, Dimension: power   Size: 745.700*Watt */
 		final static public double HorsePower   = 745.700*Watt;
+		/** Cheval Vapeur (metric horsepower), Dimension: power   Size: 735.499*Watt */
 		final static public double ChevalVapeur = 735.499*Watt;
 	
 		//Einheiten der Temperatur (temperature):
 	
 		//Umrechnungs-Konstanten
+		/** Conversion factor of degrees Fahrenheit per degree Celsius: 5/9 */
 		final static public double FahrenheitProCelsius = 5/9;
+		/** Fahrenheit zero-point offset: 32 */
 		final static public double Fahrenheit0 = 32;
 	
 	    //Einheiten
+		/** Centigrade, Dimension: temperature   Size: KELVIN */
 		final static public double Centigrade = KELVIN;
+		/** Celsius, Dimension: temperature   Size: KELVIN */
 		final static public double Celsius    = KELVIN;
+		/** Fahrenheit, Dimension: temperature   Size: FahrenheitProCelsius*KELVIN */
 		final static public double Fahrenheit = FahrenheitProCelsius*KELVIN;
+		/** Rankine, Dimension: temperature   Size: Fahrenheit */
 		final static public double Rankine    = Fahrenheit;
 	
 		//Einheiten der Viscositaet (viscosity):
 	
+		/** Stokes, Dimension: kinematic viscosity   Size: 1e-4*SqrMETER/SECOND */
 		final static public double Stokes = 1e-4*SqrMETER/SECOND;
 		//(Poise)
+		/** Poise, Dimension: dynamic viscosity   Size: 0.1*Pascal*SECOND */
 		final static public double Poise = 0.1*Pascal*SECOND;
+		/** Reyn, Dimension: dynamic viscosity   Size: 6.89476e4*Poise */
 		final static public double Reyn = 6.89476e4*Poise;
+		/** Rhe, Dimension: fluidity   Size: 1/Poise */
 		final static public double Rhes =         1/Poise;
 	
 		//Einheiten des Lichtes (light)
 	
+		/** Stilb, Dimension: luminance   Size: 1e4*CANDELA/SqrMETER */
 		final static public double Stilb      = 1e4 * CANDELA / SqrMETER;
+		/** Nit, Dimension: luminance   Size: CANDELA/SqrMETER */
 		final static public double Nit        = CANDELA / SqrMETER;
+		/** Hefnerkerze, Dimension: luminous intensity   Size: 0.92*CANDELA */
 		final static public double Hefner     = 0.92 * CANDELA;
+		/** Candle, Dimension: luminous intensity   Size: CANDELA */
 		final static public double Candle     = CANDELA;
+		/** Phot, Dimension: illuminance   Size: 1e4*Lux */
 		final static public double Phot       = 1e4 * Lux;
+		/** Foot-Candle, Dimension: illuminance   Size: Lux*SqrMETER/SqrFoot */
 		final static public double FootCandle = Lux * SqrMETER / SqrFoot;
 		//(Lambert)
+		/** Lambert, Dimension: luminance   Size: (1e4/Pi)*Lumen/SqrMETER */
 		final static public double Lambert    = (1e4/Pi) * Lumen / SqrMETER;
+		/** Apostilb, Dimension: luminance   Size: 1e-4*Lambert */
 		final static public double Apostilb   = 1e-4 * Lambert;
 		//(Talbot)
+		/** Talbot, Dimension: luminous energy   Size: Lumen*SECOND */
 		final static public double Talbot     = Lumen*SECOND;
+		/** Lumerg, Dimension: luminous energy   Size: Talbot */
 		final static public double Lumerg     = Talbot;
 	
 		//Einheiten der Radioactivitaet (radioactivity):
 	
+		/** Rutherford, Dimension: radioactivity   Size: 1e6/SECOND */
 		final static public double Rutherford = 1e6/SECOND;
+		/** Rad, Dimension: absorbed radiation dose   Size: 0.01*Gray */
 		final static public double Rad        = 0.01*Gray;
+		/** Curie, Dimension: radioactivity   Size: 37e9*Becquerel */
 		final static public double Curie      = 37e9*Becquerel;
+		/** Rontgen, Dimension: radiation exposure   Size: 0.258e-3*COULOMB/KILO_GRAM */
 		final static public double Rontgen    = 0.258e-3*COULOMB/KILO_GRAM;
+		/** Roentgen, Dimension: radiation exposure   Size: Rontgen */
 		final static public double Roentgen   = Rontgen;
 	
 		//Einheiten der Elektrizitaet (electricity):
 		//(AMPERE)
+		/** Ampere, Dimension: electric current   Size: AMPERE */
 		final static public double Amp        =                AMPERE;
+		/** Abampere (CGS-emu), Dimension: electric current   Size: 10*AMPERE */
 		final static public double AbAMPERE   =           10 * AMPERE;
+		/** Biot, Dimension: electric current   Size: 10*AMPERE */
 		final static public double Biot       =           10 * AMPERE;
+		/** Statampere (CGS-esu), Dimension: electric current   Size: 3.335635e-10*AMPERE */
 		final static public double StatAMPERE = 3.335635e-10 * AMPERE;
+		/** Gilbert, Dimension: magnetomotive force   Size: 0.79577472*AMPERE */
 		final static public double Gilbert    =   0.79577472 * AMPERE;
 		//(Ohm)
+		/** Abohm (CGS-emu), Dimension: electric resistance   Size: 1e-9*Ohm */
 		final static public double AbOhm      = 1e-9 * Ohm;
+		/** Statohm (CGS-esu), Dimension: electric resistance   Size: 8.987584e11*Ohm */
 		final static public double StatOhm    = 8.987584e11 * Ohm;
 		//(Mho)
+		/** Mho, Dimension: electric conductance   Size: 1/Ohm */
 		final static public double Mho        = 1 / Ohm;
+		/** Abmho (CGS-emu), Dimension: electric conductance   Size: 1e9*Mho */
 		final static public double AbMho      = 1e9 * Mho;
 		//(COULOMB)
+		/** Abcoulomb (CGS-emu), Dimension: electric charge   Size: 10*COULOMB */
 		final static public double AbCOULOMB   =           10 * COULOMB;
+		/** Statcoulomb (CGS-esu), Dimension: electric charge   Size: 3.335635e-10*COULOMB */
 		final static public double StatCOULOMB = 3.335635e-10 * COULOMB;
 		//(Farad)
+		/** Abfarad (CGS-emu), Dimension: electric capacitance   Size: 1e9*Farad */
 		final static public double AbFarad = 1e9 * Farad;
+		/** Statfarad (CGS-esu), Dimension: electric capacitance   Size: 1.112646e-12*Farad */
 		final static public double StatFarad = 1.112646e-12 * Farad;
 		//(Henry)
+		/** Abhenry (CGS-emu), Dimension: inductance   Size: 1e-9*Henry */
 		final static public double AbHenry = 1e-9 * Henry;
+		/** Stathenry (CGS-esu), Dimension: inductance   Size: 8.987584e11*Henry */
 		final static public double StatHenry = 8.987584e11 * Henry;
 		//(Volt)
+		/** Abvolt (CGS-emu), Dimension: electric potential   Size: 1e-8*Volt */
 		final static public double AbVolt = 1e-8 * Volt;
+		/** Statvolt (CGS-esu), Dimension: electric potential   Size: 299.7930*Volt */
 		final static public double StatVolt = 299.7930 * Volt;
 		//(magnetic)
+		/** Gauss, Dimension: magnetic flux density   Size: 1e-4*Tesla */
 		final static public double Gauss   = 1e-4 * Tesla;
+		/** Gamma, Dimension: magnetic flux density   Size: 1e-9*Tesla */
 		final static public double Gamma   = 1e-9 * Tesla;
+		/** Oersted, Dimension: magnetic field strength   Size: 1e3/(4*Pi)*AMPERE/METER */
 		final static public double Oersted = 1e3 / (4 * Pi) * AMPERE / METER;
+		/** Maxwell, Dimension: magnetic flux   Size: 1e-8*Weber */
 		final static public double Maxwell = 1e-8 * Weber;
+		/** Bohr magneton, Dimension: magnetic moment   Size: 9.2740154e-21*Erg/Gauss */
 		final static public double BohrMagneton    =  9.2740154e-21 * Erg / Gauss;
+		/** Nuclear magneton, Dimension: magnetic moment   Size: 5.0507866e-24*Erg/Gauss */
 		final static public double NuclearMagneton =  5.0507866e-24 * Erg / Gauss;
 	
 		//Einheiten der Information (information):
 	
+		/** Nibble, Dimension: information   Size: 4 bits */
 		final static public int Nibble = 4 * BIT;
+		/** Byte, Dimension: information   Size: 8 bits */
 		final static public int Byte   = 8 * BIT;
+		/** Word, Dimension: information   Size: 2*Byte */
 		final static public int Word   = 2 * Byte;
+		/** DWord, Dimension: information   Size: 2*Word */
 		final static public int DWord  = 2 * Word;
+		/** Baud, Dimension: symbol rate   Size: BIT/SECOND */
 		final static public double Baud   = BIT / SECOND;
 	
 	    //{Fundamentale physicalische Konstanten}
+		/** Speed of light in vacuum, Size: 2.99792458e8*METER/SECOND */
 		final static public double c_0 = 2.99792458e8 * METER / SECOND; //{Lichtgeschwindigkeit}
+		/** Vacuum permittivity, Size: 8.85419e-12*Farad/METER */
 		final static public double e_0 = 8.85419e-12 * Farad / METER;
+		/** Vacuum permeability, Size: 4*Pi*1e-7*Henry/METER */
 		final static public double m_0 = 4 * Pi * 1e-7 * Henry / METER;
 	
+		/** Planck constant, Size: 6.6260755e-34*Joule*SECOND */
 		final static public double h_Planck = 6.6260755e-34 * Joule * SECOND; //{Plancksche Konstante}
 	                //{6.62617636e-34 J/Hz}
+		/** Reduced Planck constant (h-bar), Size: h_Planck/(2*Pi) */
 		final static public double h_quer = h_Planck / (2 * Pi);
+		/** Elementary charge, Size: 1.60217733e-19*COULOMB */
 		final static public double q_El = 1.60217733e-19 * COULOMB;
+		/** Electron rest mass, Size: 9.1093897e-31*KILO_GRAM */
 		final static public double m_El = 9.1093897e-31 * KILO_GRAM; //{Ruhemasse d. Elektrons}
 	            //{9.1095344e-31 kg}
+		/** Proton rest mass, Size: 1.6726231e-27*KILO_GRAM */
 		final static public double m_Pr = 1.6726231e-27 * KILO_GRAM; //{Ruhemasse d. Protons}
 	            //{1.67264858e-27 kg}
+		/** Neutron rest mass, Size: 1.67495438e-27*KILO_GRAM */
 		final static public double m_Nt = 1.67495438e-27 * KILO_GRAM; //{Ruhemasse d. Neutrons}
+		/** Avogadro constant, Size: 6.0221367e23/MOL */
 		final static public double N_Av = 6.0221367e23 / MOL;  //{Avogadro-Konstante}
 	            //{6.00220453e23/mol}
+		/** Newtonian gravitational constant, Size: 6.67260e-11*Newton/SqrMETER/(KILO_GRAM*KILO_GRAM) */
 		final static public double c_Grav = 6.67260e-11 * Newton / SqrMETER / (KILO_GRAM*KILO_GRAM); //{Gravitationskonstante}
-	              //{6.672041e-11 Nmý/kgý}
+	              //{6.672041e-11 Nmï¿½/kgï¿½}
+		/** Boltzmann constant, Size: 1.380658e-23*Joule/KELVIN */
 		final static public double k_B = 1.380658e-23 * Joule / KELVIN; //{Boltzmann Konstante}
 	           //{1.38066244e-23  J/K}
+		/** Celsius zero point expressed in Kelvin: 273.15*KELVIN */
 		final static public double Celsius0 = 273.15 * KELVIN;
 	
 		//(Konstanten auf Erdoberflaeche)
+		/** Standard temperature, Size: 273.15*KELVIN */
 		final static public double T_Norm = 273.15 * KELVIN;     //{Norm-Temperatur}
+		/** Standard atmospheric pressure, Size: 1013.25*milli*Bar */
 		final static public double p_Luft = 1013.25 * milli * Bar; //{Norm_Druck}
+		/** Standard gravitational acceleration at Earth's surface, Size: 9.80665*METER/SqrSECOND */
 		final static public double g_Erde = 9.80665 * METER / SqrSECOND; //{Fallbeschleunigung}
 	              //{9.80665 m/s}
 	
+		/** Speed of sound in the standard atmosphere, Size: 340.29205*METER/SECOND */
 		final static public double c_Schall = 340.29205 * METER / SECOND; //{Standard Atmosphaere}
 	
 		//(Abgeleitete Konstanten)
+	/** Stefan-Boltzmann constant, Size: 5.67051e-8*Watt/SqrMETER/KELVIN^4 */
 	    final static public double StefanConstant = 5.67051e-8*Watt/SqrMETER/(KELVIN*KELVIN*KELVIN*KELVIN);
+	/** Molar gas constant, Size: k_B*N_Av*Joule/KELVIN/MOL */
 	    final static public double R_Gas = k_B * N_Av * Joule / KELVIN / MOL; //{Molare Gaskonstante}
 	           //{8.3144126 J/(mol*K)}
 	
+		/** Molar volume of an ideal gas at standard temperature and pressure. */
 		final static public double MOLVolume  =R_Gas * T_Norm * MOL / p_Luft;
 		            //{22.41410e-3*CbcMETER/MOL; {Molares Normvolumen}
 		            //{22.413837      l/mol} {ideal gas, STP}
+		/** Atomic mass unit, Size: GRAM/N_Av */
 		final static public double u_Atom     = GRAM/N_Av; //{Atomare Masseneinheit} {1.660565586e-27 kg}
+		/** Planck mass, Size: 2.17671e-8*KILO_GRAM */
 		final static public double PlanckMass = 2.17671e-8*KILO_GRAM;
+		/** Bohr radius, Size: 0.529177249e-10*METER */
 		final static public double BohrRadius = 0.529177249e-10*METER; //{Bohrscher Radius}
 		            //{0.529177064e-10 m}      {infinite mass nucleus}
+		/** Fine-structure constant (dimensionless): 1/137.0359895 */
 		final static public double FineStructureConstant     = 1/137.0359895;
+		/** Rydberg constant, Size: 1.09737318e7/METER */
 		final static public double RydbergConstant           = 1.09737318e7/METER;
+		/** Electron Compton wavelength, Size: 2.426309e-12*METER */
 		final static public double ElectronComptonWavelength = 2.426309e-12*METER;
+		/** Classical electron radius, Size: 2.817938e-15*METER */
 		final static public double ClassicalElectronRadius   = 2.817938e-15*METER;
+		/** Thomson cross section, Size: 6.652245e-29*SqrMETER */
 		final static public double ThomsonCrossSection       = 6.652245e-29*SqrMETER; //{m^2}
+		/** Electron magnetic moment, Size: 9.284832e-24*Joule/Tesla */
 		final static public double ElectronMagneticMoment    = 9.284832e-24*Joule/Tesla; //{J/T}
+		/** Electron g-factor (dimensionless): 1.0011596567 */
 		final static public double ElectronGFactor           = 1.0011596567;
+		/** Magnetic flux quantum, Size: 2.0678506e-15*Weber (= h/(2*q_El)) */
 		final static public double MagneticFluxQuantum       = 2.0678506e-15*Weber;  //{ = h / ( 2 e ) }
+		/** Weak mixing angle sin^2(ThetaW), dimensionless: 0.230 */
 		final static public double WeakMixingAngle           = 0.230; //{= Sin (ThetaW)^2}
 	
 		//(Astronomische Konstanten)
 	
+		/** Solar constant, Size: 1.37e3*Watt/SqrMETER */
 		final static public double SolarConstant    = 1.37e3*Watt/SqrMETER;
+		/** Solar surface temperature, Size: 5770*KELVIN */
 		final static public double SolarTemperature = 5770*KELVIN; //{Oberflaeche}
+		/** Age of the universe, Size: 4.7e17*SECOND */
 		final static public double AgeOfUniverse    = 4.7e17*SECOND;
+		/** Hubble constant, Size: 3.2e-18/SECOND (approx. 50 km/(s*Mpc)) */
 		final static public double HubbleConstant   = 3.2e-18/SECOND; //{50km/(s*Mpc)}
+		/** Galactic radius, Size: 1e4*Parsec */
 		final static public double GalacticRadius   = 1e4*Parsec;
+		/** Galactic orbital period, Size: Circle*GalacticRadius/(2.5e5*METER/SECOND) */
 		final static public double GalacticPeriod   = Circle*GalacticRadius/(2.5e5*METER/SECOND);
+		/** Inclination of the galactic plane against the ecliptic, Size: 62.5*Degree */
 		final static public double GalacticPlane    = 62.5*Degree; //{Neigung der galaktischen Ebene gegen die Ekliptik}
+		/** Galactic mass, Size: 2.78e41*KILO_GRAM */
 		final static public double GalacticMass     = 2.78e41*KILO_GRAM;
 	
+		/** ElectronVolt, Dimension: energy   Size: q_El*Volt */
 		final static public double ElectronVolt = q_El*Volt;
+		/** Faraday constant, Size: q_El*N_Av */
 		final static public double C_Faraday    = q_El*N_Av; //{Faraday -Konstante} {F = 9.648456e4 C/mol}
 	
 	////////////////////////////////////////////////////////////////////////////////

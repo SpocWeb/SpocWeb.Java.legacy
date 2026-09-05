@@ -21,6 +21,15 @@ import function.IFunction;
  * Created on	10-26-2002, 12:47 PM<p>
  * @author mheuer
  * @version	1.0
+ * <!-- docstate
+ * pass: 2
+ * mtime: 2026-09-05T10:13:24Z
+ * digest: fb8d2c16e16d767ce7dd72d0b9e6a628a04d622ed7c17e25f23d497388566e43
+ * stale: false
+ * tags: [code/ring_theory, code/ode_solver]
+ * concepts: [Ring Algebra and ODE Solvers]
+ * facets: {layer: domain, status: legacy, complexity: high}
+ * -->
  */
 public class FixPtRefiner
 extends ARefiner {

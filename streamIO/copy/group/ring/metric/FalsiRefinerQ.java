@@ -10,6 +10,15 @@ import function.IFunction;
  * except if the Multiplicity is known and given
  * (can also act as a Relaxation Parameter!)
  * Works only on R->R Value Functions. 
+ * <!-- docstate
+ * pass: 2
+ * mtime: 2026-09-05T10:13:24Z
+ * digest: ae4c1bf88daa99ea23dd341a2031abdf6a15e023cbb27f8fc59b71405558a74e
+ * stale: false
+ * tags: [code/metric_space, code/root_finding, code/numerical_integration, code/big_integer_arithmetic]
+ * concepts: [Metric Spaces - Root Finding and Numerical Integration]
+ * facets: {layer: domain, status: legacy, complexity: high}
+ * -->
  */
 public class FalsiRefinerQ
 extends ARefinerQ {

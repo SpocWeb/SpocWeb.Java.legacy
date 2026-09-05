@@ -7,6 +7,15 @@ import streamIO.copy.group.ring.IODE;
 import function.IMeasurAble;
 
 /**Runge Kutta Fehlberg Integration of ODEs.
+ * <!-- docstate
+ * pass: 2
+ * mtime: 2026-09-05T21:08:16Z
+ * digest: c1acf3d4bf7f057b642305b97fc815bb80181e689504b5e4e2a10fb57180feaa
+ * stale: false
+ * tags: [code/metric_space, code/root_finding, code/numerical_integration, code/big_integer_arithmetic]
+ * concepts: [Metric Spaces - Root Finding and Numerical Integration]
+ * facets: {layer: domain, status: legacy, complexity: high}
+ * -->
  */
 public class StepRKFQ
 extends StepRKF {
@@ -14,6 +23,7 @@ extends StepRKF {
 	/**Local Helper Vectors, contains intermediate Results	 */
 	protected IIntRing yT;
 
+	/**Initializes this Stepper and allocates the additional Helper Vector yT.	 */
 	public void Init(IIntRing Step, IIntRing x_, IIntRing y_, IODE f_) {
 		super.Init(Step, x_, y_, f_);
 		yT	= (IIntRing) y_.newInstance();
@@ -111,6 +121,7 @@ extends StepRKF {
 		yTmp = dy; dy = yT; yT = yTmp;	//for reuse on next Iteration!
 		return y; }
 
+	/**Method to test this Class's Runge-Kutta-Fehlberg Stepper Implementation.	 */
 	public static void testIt() {
 		System.out.println("Testing StepRKF (Runge-Kutta):");
 		IIntRing xl = (IIntRing) ACopyAble.testInstance.copy();

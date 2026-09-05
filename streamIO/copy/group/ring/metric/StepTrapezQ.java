@@ -12,6 +12,15 @@ import function.IFunction;
  * Step() performs a single Step with fixed width.
  * Run () performs as many Steps as necessary to reach a certain x Value.
  * When too many Points are necessary to calculate a certain Step,
+ * <!-- docstate
+ * pass: 2
+ * mtime: 2026-09-05T10:13:24Z
+ * digest: 8b3f75dce59d8af896170ed520dfbbe5528eab0ab0d13e5cbd19314bae2c12bc
+ * stale: false
+ * tags: [code/metric_space, code/root_finding, code/numerical_integration, code/big_integer_arithmetic]
+ * concepts: [Metric Spaces - Root Finding and Numerical Integration]
+ * facets: {layer: domain, status: legacy, complexity: high}
+ * -->
  * the Step Size should be reduced around the critical Area.	*/
 public class StepTrapezQ
 extends      StepTrapez {

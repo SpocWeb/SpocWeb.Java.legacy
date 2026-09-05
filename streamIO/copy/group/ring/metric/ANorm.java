@@ -11,7 +11,7 @@ package streamIO.copy.group.ring.metric;
  * A scalar Product defines a canonic Norm on X with |x|:=<x,x>.
  *
  * A strict connex Order on a Group X, that flips with the Sign defines a Norm:
- * the absolute Value |x| = +x für x>=0, -x fur x < 0
+ * the absolute Value |x| = +x fï¿½r x>=0, -x fur x < 0
  * This fulfills the Triangle InEquation (Proof: Look at each of the 4 Cases)
  * and is homogenic, so it is a Norm.
  *
@@ -26,6 +26,15 @@ package streamIO.copy.group.ring.metric;
  * You can equivalently always define a translation invariant and
  * homogeneous Metric as the Norm of the Difference: d(x,y) = |x-y|
  *
+ * <!-- docstate
+ * pass: 2
+ * mtime: 2026-09-05T10:13:24Z
+ * digest: 89bd1ad748e9ca678c425ac6f815fb7585b6621405d682ceb55fd2ad9ed08ea7
+ * stale: false
+ * tags: [code/metric_space, code/root_finding, code/numerical_integration, code/big_integer_arithmetic]
+ * concepts: [Metric Spaces - Root Finding and Numerical Integration]
+ * facets: {layer: domain, status: legacy, complexity: high}
+ * -->
  * The Implementations here are not very efficient and should be overwritten. */
 public class ANorm
 extends AMetric

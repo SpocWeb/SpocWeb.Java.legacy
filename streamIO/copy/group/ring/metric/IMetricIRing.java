@@ -13,6 +13,15 @@ import streamIO.copy.group.ring.IIntRing;
  * 10: MetricRing
  *  8: MIntRing
  *
+ * <!-- docstate
+ * pass: 2
+ * mtime: 2026-09-05T10:13:24Z
+ * digest: 7906308a2b5d9a05be0be2312fd657a730c83d80d8600af1f335f6bcd3351061
+ * stale: false
+ * tags: [code/metric_space, code/root_finding, code/numerical_integration, code/big_integer_arithmetic]
+ * concepts: [Metric Spaces - Root Finding and Numerical Integration]
+ * facets: {layer: domain, status: legacy, complexity: high}
+ * -->
  */
 public interface IMetricIRing
 extends IScalarMetric, //The Distinction between ScalarMetric and Metric are solved better in C++!

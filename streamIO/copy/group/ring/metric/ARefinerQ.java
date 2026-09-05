@@ -19,6 +19,15 @@ import function.IFunction;
  *
  * These Descendants are used in MultiStepYQ
  * which does a faster Check for Convergence relying on (yr > 0).
+ * <!-- docstate
+ * pass: 2
+ * mtime: 2026-09-05T10:13:24Z
+ * digest: 2d174e129804694e5c7dc6170728ae1edb2889816abd549c679846554cfdddb2
+ * stale: false
+ * tags: [code/metric_space, code/root_finding, code/numerical_integration, code/big_integer_arithmetic]
+ * concepts: [Metric Spaces - Root Finding and Numerical Integration]
+ * facets: {layer: domain, status: legacy, complexity: high}
+ * -->
  */
 public abstract class ARefinerQ
 extends SecantRefiner	//SecantRefiner extends ARefiner by xr and yr.

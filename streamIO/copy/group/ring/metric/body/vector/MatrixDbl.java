@@ -15,6 +15,11 @@ package streamIO.copy.group.ring.metric.body.vector;
   * Created on	2000-11-26, 01;13;44<p>
   * @author 	Matthias Heuer
   * @version	1.0
+  * <!-- docstate
+  * tags: [code/tensor, code/manifold_generation, code/interpolation]
+  * concepts: [Vector/Matrix/Tensor and Manifold Interpolation]
+  * facets: {layer: domain, status: legacy, complexity: high}
+  * -->
   */
 public class MatrixDbl
 extends Matrix

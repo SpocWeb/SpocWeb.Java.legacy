@@ -18,8 +18,10 @@ import streamIO.copy.groupM.IGroupM;
 import streamIO.copy.groupM.ISemiGroupM;
 import streamIO.copy.order.IOrder;
 
-/** 
- * Regular Vectors consist of unrelated Items (incompatible Domains) 
+/**Abstract base class for a sampled function ({@link IManifold}), extending {@link ATensor}
+ * with finite-difference, statistical and search Operations that mix across Dimensions.
+ *
+ * Regular Vectors consist of unrelated Items (incompatible Domains)
  * then there are Vectors you can rotate between (compatible Domains) 
  * then come (Meta-) Vectors that have the same Domain in each Dimension
  * (Function Space, Samplings).  
@@ -43,6 +45,15 @@ import streamIO.copy.order.IOrder;
  * 
  * known Subclasses: 
  * @see streamIO.copy.group.ring.metric.body.vector.VectorDbl
+ * <!-- docstate
+ * pass: 2
+ * mtime: 2026-09-05T16:44:19Z
+ * digest: 3b314189fd1455a6e76158e5df4621ac8b18c3c642eef54a81ea536654c2e1f6
+ * stale: false
+ * tags: [code/tensor, code/manifold_generation, code/interpolation]
+ * concepts: [Vector/Matrix/Tensor and Manifold Interpolation]
+ * facets: {layer: domain, status: legacy, complexity: high}
+ * -->
  */
 public abstract class AManifold
 extends ATensor
@@ -70,7 +81,8 @@ implements IManifold {
 
 	//Require only IOrderAble, Order, ByRefInt
 
-	/** @return the Minimum of all Elements in this streamIO Min(i, x[i])
+	/**Returns a new copy holding the Minimum of all Elements in the stream.
+	  * @return the Minimum of all Elements in this streamIO Min(i, x[i])
 	  * This Implementation creates a Copy of the minimum Element of the streamIO */
 	public static IOrder MinCopy(final IIStreamIn str) {
 		AReSetAble.TRY_TO_RESET(str, "");
@@ -80,7 +92,8 @@ implements IManifold {
 			Min.MinAt(xi); } //MinAt is more effective than creating new Copies
 		return Min;	}
 
-	/** @return the Minimum of all Elements in this streamIO Min(i, x[i])
+	/**Returns a new copy holding the Maximum of all Elements in the stream.
+	  * @return the Minimum of all Elements in this streamIO Min(i, x[i])
 	  * This Implementation creates a Copy of the maximum Element of the streamIO */
 	public static IOrder MaxCopy(final IIStreamIn str) {
 		AReSetAble.TRY_TO_RESET(str, "");
@@ -90,7 +103,8 @@ implements IManifold {
 			Max.MaxAt(xi); }
 		return Max;	}
 
-	/** @return the Minimum and Maximum of all Elements in this streamIO Min(i, x[i])
+	/**Returns the Minimum and, via Max_, the Maximum of all Elements in the stream.
+	  * @return the Minimum and Maximum of all Elements in this streamIO Min(i, x[i])
 	  * Requires only 1/3 of the Comparisons when using Min and Max
 	  * This Implementation reuses the Elements of the streamIO
 	  * Except for ByRefObject all Interfaces are already defined in AStreamIn  */
@@ -113,7 +127,8 @@ implements IManifold {
 		Max_.Value = Max;
 		return Min;	}
 
-	/** @return the Minimum of all Elements in this streamIO Min(i, x[i])
+	/**Returns a new copy holding the Minimum, and via Max_ the Maximum, of all Elements.
+	  * @return the Minimum of all Elements in this streamIO Min(i, x[i])
 	  * Requires only 1/3 of the Comparisons when using Min and Max
 	  * creates a Copies of the first Item
 	  * and uses them to store the Minimum and Maximum
@@ -141,7 +156,8 @@ implements IManifold {
 
 	//the following Methods require IRing Operations
 
-	/** @return the Product of all Elements in this streamIO Prod(i, x[i])
+	/**Returns the Product of all Elements in the stream, and via i the Element count.
+	  * @return the Product of all Elements in this streamIO Prod(i, x[i])
 	  * All Elements of this streamIO should be positive.
 	  * Multiplication does not create extinction.
 	  */
@@ -157,7 +173,8 @@ implements IManifold {
 
 	//Declaration of Ring and Tensor is premature, moved this Method from Package Permutation to Vector
 
-	/** @return the Sum of all Elements in this streamIO Sum(i, x[i])
+	/**Returns the Sum of all Elements in the stream, and via i the Element count.
+	  * @return the Sum of all Elements in this streamIO Sum(i, x[i])
 	  * This is half as expensive as the renormed Sum, but may incur Extinction of Digits.
 	  * Any Sum should be normed to a certain Origin (should lie in the Range):
 	  * Sum(i, x[i]) == Sum(i, x[i] - x0) + n*x0
@@ -184,6 +201,7 @@ implements IManifold {
 	  * but the absolute Accuracy decreases with the Number of Elements,
 	  * which is not a Problem for short Sums.
 	  */
+	/**Returns the Sum of all Elements in the stream, renormed by x0 to reduce Extinction.	 */
 	public static IGroup Sum(final IIStreamIn str, ByRefInt i, Object x0) {
 		AReSetAble.TRY_TO_RESET(str, "");
 		if (i != null) i.Value = 1;
@@ -209,6 +227,7 @@ implements IManifold {
 	  * 	  the third Sum would be VERY large and prone to Extinction
 	  *  and the second Sum would be smaller and ideally Zero (when x0 is the Average)
 	  */
+	/**Returns the Squared Sum of all Elements in the stream, renormed by x0.	 */
 	public static IGroup SqrSum(final IIStreamIn str, ByRefInt i, Object x0) {
 		AReSetAble.TRY_TO_RESET(str, "");
 		if (i != null) i.Value = 1;
@@ -230,6 +249,7 @@ implements IManifold {
 	  * where the first Sum would be very large and prone to Extinction
 	  *  and the second Sum would ideally be Zero (when x0 is the Average).
 	  */
+	/**Returns the Squared Sum of all Elements in the stream, unnormed (cheaper, less accurate).	 */
 	public static IGroup SqrSum(final IIStreamIn str, ByRefInt i) {
 		AReSetAble.TRY_TO_RESET(str, "");
 		if (i != null) i.Value = 1;
@@ -250,6 +270,7 @@ implements IManifold {
 	  * where the first Sum would be very large and prone to Extinction
 	  *  and the second Sum would ideally be Zero (when x0 is the Average).
 	  */
+	/**Returns the Sum, and via SqrSum simultaneously the Squared Sum, renormed by x0.	 */
 	public static IGroup SumSqrSum(final IIStreamIn str, ByRefInt i, Object x0, IGroup SqrSum) {
 		AReSetAble.TRY_TO_RESET(str, "");
 		if (i != null) i.Value = 1;
@@ -275,6 +296,7 @@ implements IManifold {
 	  * where the first Sum would be very large and prone to Extinction
 	  *  and the second Sum would ideally be Zero (when x0 is the Average).
 	  */
+	/**Returns the Sum, and via Variance/Skewness/Kurtosis the corresponding Moments, renormed by x0.	 */
 	public static IGroup Moments(final IIStreamIn str, ByRefInt i, Object x0, IGroup Variance, IGroup Skewness, IGroup Kurtosis) {
 		AReSetAble.TRY_TO_RESET(str, "");
 		if (i != null) i.Value = 1;
@@ -298,7 +320,8 @@ implements IManifold {
 
 	//the following Methods require MetricIRing
 
-	/** @return the Index of the Element that came closest to x0 in this streamIO
+	/**Returns the Index of the Element closest to x0, overwriting x0 with the Distance found.
+	  * @return the Index of the Element that came closest to x0 in this streamIO
 	  * x0 returns the Distance to the closest Match in Place. */
 	public static int search(final IIStreamIn str, final Object x0, final boolean copy) {
 		AReSetAble.TRY_TO_RESET(str, "");
@@ -356,12 +379,13 @@ implements IManifold {
 	//	Differential Operations:	//
 	//////////////////////////////////
 
-	/** Constructor building the Interpolation Polynom
+	/**Builds a new Interpolation Polynom from the Samples given in this Manifold and y_.
 	  * from the Samples given in this Manifold and y.	 */
-	public abstract Interpolator Interpolator(IManifold y_); // {
+	public abstract Interpolator Interpolator(IManifold y_);
 //		return new Interpolator (a, y_.a, mDim); }
 
-	/** @return the Difference Vector of this Manifold in Place: diff(i)= a(i) - a(i+1)
+	/**Replaces this Manifold in Place with its first Difference Vector.
+	  * @return the Difference Vector of this Manifold in Place: diff(i)= a(i) - a(i+1)
 	  * The Difference Vector has one Item less than the original Vector.
 	  * For complete Reversibility the last Item is preserved.	 */
 	public abstract IManifold diffAt(); // {
@@ -380,6 +404,7 @@ implements IManifold {
 	  * from a previous diff Operation or initialized before.
 	  * If you want to start Integration from a certain Value,
 	  * it is faster to modify this start Value by modifying the last Item.	 */
+	/**Replaces this Manifold in Place with its integrated (cumulative-sum) Vector.	 */
 	public abstract IManifold summAt(); // {
 /*		boolean startIs0;
 		IIntRing tmp1, tmp2;
@@ -396,6 +421,7 @@ implements IManifold {
 	/** @return the full Difference Vector of this Manifold in Place
 	  * The full Difference Vector consists of all Derivatives.
 	  * It can be used to calculate inter- and extrapolations with Horner(). 	 */
+	/**Replaces this Manifold in Place with the full chain of all its Derivatives.	 */
 	public abstract IManifold fullDiffAt(); // {
 /*		int i = 0;
 		ByRefInt fact = new ByRefInt(1);
@@ -406,6 +432,7 @@ implements IManifold {
 	/** Adds a Point (y0) to the Manifold.
 	  * If the Manifold has been differentiated,
 	  * all Points are differentiated 	 */
+	/**Appends a Point (y0) to this Manifold, differentiating it if already differentiated.	 */
 	public abstract IManifold addPointAt(IIntRing y0); // {
 /*		mDim += diffLevel;
 		letGrad (mDim + 1, true, false);
@@ -418,6 +445,7 @@ implements IManifold {
 	/** Adds a Point (y0, x0) to the Difference Vector.
 	  * The x Coordinate is given implicitly by the inverse Coordinate Differences
 	  * in invDiffX. 	 */
+	/**Appends a Point (y0, x0) to this Manifold's Difference Vector, using x's inverse coordinate differences.	 */
 	public abstract IManifold addPointAt(IIntRing y0, IIntRing x0, IManifold x); // {
 /*		x.addAtPoint(x0);
 		mDim += diffLevel;
@@ -436,6 +464,7 @@ implements IManifold {
 	  * but for a single interpolated Value, it is better to use Inter/Extrapolation
 	  * with either Polynomial or Rational Functions.
 	  * The Division by the factorials is done once, when this function is differenced! 	 */
+	/**Evaluates this Manifold's Value at Point x via the Horner scheme over its cached Differences.	 */
 	public abstract IIntRing Horner(IIntRing x, IIntRing x0, IIntRing h); // {
 /*		int i = mDim; 	//coordinate independent transformed coordinate!
 		ByRefInt j = new ByRefInt(i);	//Because of using backward differences, I have to use (x0-x)
@@ -457,10 +486,12 @@ implements IManifold {
 	  *
 	  * This Operation can be iterated as often as wanted,
 	  * but the number of Items in the Vector decreases until zero is reached.	 */
+	/**Replaces this Manifold in Place with its Derivative with respect to invDiffX.	 */
 	public IManifold deriveAt(IManifold invDiffX) {
 		diffAt().mulAt(invDiffX); return this; }
 
-	/** @return the Derivate Vector of this Manifold in Place:
+	/**Replaces this Manifold in Place with its Integral with respect to diffX.
+	  * @return the Derivate Vector of this Manifold in Place:
 	  * derive(i)= dy(i)/dx(i) = (a(i) - a(i+1))/(x(i) - x(i+1))
 	  * The Derivative Vector has one Item less than the original Vector.
 	  * For complete Reversibility the last Item is preserved.
@@ -473,19 +504,22 @@ implements IManifold {
 		return(IManifold)
 			 ((IManifold)mulAt(diffX)).summAt();}
 
-	/** @return the full Difference Vector of this Manifold in Place
+	/**Returns the full chain of all Derivatives of a copy of this Manifold.
+	  * @return the full Difference Vector of this Manifold in Place
 	  * The full Difference Vector consists of all Derivatives.
 	  * It can be used to calculate inter- and extrapolations. 	 */
 	public IManifold fullDiff() { return ((IManifold)copy()).fullDiffAt(); }
 
-	/** @return the Integrated Vector of this Manifold in Place: int(i)= a(i) + a(i+1)
+	/**Returns the integrated (cumulative-sum) Vector of a copy of this Manifold.
+	  * @return the Integrated Vector of this Manifold in Place: int(i)= a(i) + a(i+1)
 	  * This is the reverse Operation to diffAt().
 	  * The Integral has one Item more than this Vector.
 	  * This last Item is new and initialized to zero, if it was not preserved
 	  * from a previous diff Operation.	 */
 	public IManifold summ() {return ((IManifold) copy()).summAt();}
 
-	/** @return the Difference Vector of this Manifold: diff(i)= a(i+1) - a(i)
+	/**Returns the first Difference Vector of a copy of this Manifold.
+	  * @return the Difference Vector of this Manifold: diff(i)= a(i+1) - a(i)
 	  * The Difference Vector has one Item less than the original Vector.	 */
 	public IManifold diff() {return ((IManifold) copy()).diffAt();}
 

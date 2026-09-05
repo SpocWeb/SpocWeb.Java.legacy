@@ -10,6 +10,15 @@ import function.derive.IDeriveAble;
  * except if the Multiplicity is known and given
  * (can also act as a Relaxation Parameter!)
  * Works only on R->R Value Functions. 
+ * <!-- docstate
+ * pass: 2
+ * mtime: 2026-09-05T10:13:24Z
+ * digest: 0e344b3aee639cf48be4daab1d33294b7986d7e9a866b68090db4f0de4d44797
+ * stale: false
+ * tags: [code/metric_space, code/root_finding, code/numerical_integration, code/big_integer_arithmetic]
+ * concepts: [Metric Spaces - Root Finding and Numerical Integration]
+ * facets: {layer: domain, status: legacy, complexity: high}
+ * -->
  */
 public class NewtonRefinerQ
 extends ARefinerQ {

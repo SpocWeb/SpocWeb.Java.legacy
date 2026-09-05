@@ -14,6 +14,15 @@ import function.derive.ring.ACAlgebra;
  * as the constant Function / Algebra / Vector over it's own Set.
  * Abstract Methods:
  * addAt, subAt, mulAt, divAt, less
+ * <!-- docstate
+ * pass: 2
+ * mtime: 2026-09-05T20:57:34Z
+ * digest: 056dd460a0a6c6fc4e22b93fa0d9035ffdb2e7684b4f1df9b471031c486bf19d
+ * stale: false
+ * tags: [code/rational_numbers, code/interval_arithmetic]
+ * concepts: [Rational Numbers and Interval Arithmetic]
+ * facets: {layer: domain, status: legacy, complexity: high}
+ * -->
  * FloorAt */
 public abstract class AMetricBody
 extends ACAlgebra // AMetricIRing
@@ -36,7 +45,7 @@ implements MetricBody {
 	/**Returns 0/0 in Place: NaN (Not a Number)	 */
 /*	public WellOrder NaNAt() {		//left abstract
 		zeroAt(); divAt(zero()); return this; }
-
+*/
 
 	//////////////////////////////
 	//	Trigonometric Constants	//
@@ -163,6 +172,7 @@ implements MetricBody {
 	    } while (Faktor.isMoreThan(Accuracy));
 		return Summe; }
 
+	/**Returns the Sinus of this angle, reduced modulo 2*Pi into the Range (-pi,+pi) first.	 */
 	public MetricBody sin() {	//return ((MetricBody)copy()).sinAt(); }
 		return (MetricBody) SinPi(Rem(twoPi())); }	//sin(x) = sin (x+2Pi) Range (-pi,+pi)
 
@@ -383,10 +393,10 @@ implements MetricBody {
 			{tmp = exp(); tmp.dec(); }	//this could lead to a recursion!
 		else if (Recursion == 2)	//Value large enough to use conventional Calculation with sufficient Accuracy.
 			tmp = ((MetricBody) copy()).expM1At();	//this could lead to a recursion!
-		else {	//Konvergenz schlecht für x < 0, wegen Auslöschung!
+		else {	//Konvergenz schlecht fï¿½r x < 0, wegen Auslï¿½schung!
 			MetricBody Summe   = (MetricBody)copy();
 			boolean bolNegative = negative(); 	//=> negativen Wert nehmen
-			if (bolNegative) Summe.negAt(); 	//und anschließend Kehrwert bilden
+			if (bolNegative) Summe.negAt(); 	//und anschlieï¿½end Kehrwert bilden
 			MetricBody	Faktor	= (MetricBody) Summe.copy();
 			MetricBody  Quadrat = (MetricBody) sqr(); Quadrat.halfAt();
 			ByRefLong Z1 = new ByRefLong(2);
@@ -433,6 +443,7 @@ implements MetricBody {
 	 * This is the Inverse to the binary integer natural Logarithm lb().	 */
 /*	public MetricBody nBxp() {
 		return (MetricBody)mul2Pow(((ICountAble)Floor()).getInt()); }
+*/
 
 	/**Returns the exponential Function: 10^x
 	 * This is the Inverse to the decadic Logarithm lg().

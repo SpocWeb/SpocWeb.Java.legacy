@@ -102,7 +102,7 @@ import function.byref.ByRefShort;
  * Islamischer Kalender : ist ein reiner Mond-Kalender, und ein Jahr hat 354 oder
  *                        355 Tage. Die Monate korrespondieren nicht mit dem
  *                Sonnenjahr und wandern in 30-jaehrigen Zyklen darueber hinweg.
- *				  In diesem Zyklus sind 11 Schalttage gleichmäßig verteilt.
+ *				  In diesem Zyklus sind 11 Schalttage gleichmï¿½ï¿½ig verteilt.
  *                Die Namen der Monate sind:
  *				  Muharram, Safar, Rabia I, Rabia II, Jumada I, Jumada II,
  *                Rajab, Sha'ban, Ramadan, Shawwal, Dhu al-Qada, Dhu al-Hijah
@@ -173,13 +173,13 @@ import function.byref.ByRefShort;
  * Dort wird naemlich oftmals ein Feiertag, der auf das Wochenende faellt,
  * am naechsten Werktag nachgeholt.
  *
- * Der Kalender der franzoesischen Revolution (calendrier républicain)
+ * Der Kalender der franzoesischen Revolution (calendrier rï¿½publicain)
  *
  * Die franzoesischen Revolutionaere wollten scheinbar alles anders machen, und so
  * haben sie sich auch einen ganz besonderen Kalender einfallen lassen.
  * Dieser enthielt 12 Monate, die entsprechend den jahreszeitlichen Verhaeltnissen
  * benannt wurden. Jeweils drei Monate wurden sprachlich durch die gleiche Endung
- * zusammengefasst (z.B. Nivôse,Pluviôse, Ventôse). Ein Monat setzte sich aus drei
+ * zusammengefasst (z.B. Nivï¿½se,Pluviï¿½se, Ventï¿½se). Ein Monat setzte sich aus drei
  * Dekaden zusammen; jede Woche beinhaltete demzufolge zehn Tage, die auf den
  * lateinischen Zahlwoertern basierende neue Namen erhielten
  * (z.B. Primidi, Duodi, Tridi usw.).
@@ -187,16 +187,16 @@ import function.byref.ByRefShort;
  * Waehrend die gewoehnlichen Tage nach Pflanzen und Mineralien benannt wurden,
  * bezeichnete man jeden 5., 15. und 25. Tag des Monats mit dem Namen eines Tieres.
  * Der 10., 20. und 30. Tag jedes Monats war ein Ruhetag, den man verschiedenen
- * Tugenden (z.B. "A la vérité" [= 20. nivôse]) oder anderen Idealen
- * (z.B. "A l'Etre-Suprême" [= 10. vendémiaire]) widmete.
- * Der Beginn eines Jahres im Calendrier républicain wurde auf die Herbst - Tag-
+ * Tugenden (z.B. "A la vï¿½ritï¿½" [= 20. nivï¿½se]) oder anderen Idealen
+ * (z.B. "A l'Etre-Suprï¿½me" [= 10. vendï¿½miaire]) widmete.
+ * Der Beginn eines Jahres im Calendrier rï¿½publicain wurde auf die Herbst - Tag-
  * und Nachtgleiche gelegt, nicht zuletzt, weil dieses Datum zufaellig mit der
  * Ausrufung der Republik am 21. September 1791 zusammenfiel.
  * 12 Monate * 3 Dekaden (Wochen) * 10 Tage ergibt 360 Tage. Die fehlenden fuenf
- * Tage (in Schaltjahren 6) wurden als sogenannte "jours complémentaires"
+ * Tage (in Schaltjahren 6) wurden als sogenannte "jours complï¿½mentaires"
  * [vielfach auch als "Sanculotides" bezeichnet] einfach an den zwoelften Monat
  * angehaengt und erhielten als republikanische Feiertage besondere Namen
- * (z.B. "Fête de la vertu").
+ * (z.B. "Fï¿½te de la vertu").
  * Ob ein Jahr ein Schaltjahr war oder nicht, hing daher von der herbstlichen
  * Tag- und Nachtgleiche ab. Dieser Kalender wurde mit einem Gesetz zur Abschaffung
  * des gregorianischen Kalenders vom 5.Oktober 1793 eingefuehrt, allerdings mit dem
@@ -240,9 +240,18 @@ import function.byref.ByRefShort;
  * Die Jahreszeiten: 
  * Beginn der Jahreszeiten ist jeweils am 21. des letzten Monats der Jahreszeit, also am 
  * 21.12. (Winter, Sonnenwende)
- * 21.03. (Frühling, Tag/Nacht-Gleiche, in Schaltjahren 20.3.)
+ * 21.03. (Frï¿½hling, Tag/Nacht-Gleiche, in Schaltjahren 20.3.)
  * 21.06. (Sommer, Sonnenwende) und 
  * 21.09. (Herbst, Tag/Nacht-Gleiche ) 
+ * <!-- docstate
+ * pass: 2
+ * mtime: 2026-09-05T21:18:18Z
+ * digest: ea94bfee1d75b8b582f0a9ccbccd8d601019156a4b8c5d51b7e4c72458126fcf
+ * stale: false
+ * tags: [code/group_algebra, code/date_time]
+ * concepts: [Group/SemiGroup Algebra]
+ * facets: {layer: domain, status: legacy, complexity: high}
+ * -->
  */
 final public class DateTime
 extends AGroupDbl { //adding and subtracting Dates and Times allowed, but not Multiplication, because of absolute Origin
@@ -301,12 +310,12 @@ extends AGroupDbl { //adding and subtracting Dates and Times allowed, but not Mu
 	  * To create Sets of Days, use the BitSet Class or similar Classes
 	  * provided by the Language like SET in Pascal.	 */
 	final static public byte MONDAY		= 0;
-	final static public byte TUESDAY	= 1;
-	final static public byte WEDNESDAY	= 2;
-	final static public byte THURSDAY	= 3;
-	final static public byte FRIDAY		= 4;
-	final static public byte SATURDAY	= 5;
-	final static public byte SUNDAY		= 6;
+	/**Constant for Tuesday, also returned by getWeekDay().	 */	final static public byte TUESDAY	= 1;
+	/**Constant for Wednesday, also returned by getWeekDay().	 */	final static public byte WEDNESDAY	= 2;
+	/**Constant for Thursday, also returned by getWeekDay().	 */	final static public byte THURSDAY	= 3;
+	/**Constant for Friday, also returned by getWeekDay().	 */	final static public byte FRIDAY		= 4;
+	/**Constant for Saturday, also returned by getWeekDay().	 */	final static public byte SATURDAY	= 5;
+	/**Constant for Sunday, also returned by getWeekDay().	 */	final static public byte SUNDAY		= 6;
 
 	/**
 	 * Names of the Week Days
@@ -316,17 +325,17 @@ extends AGroupDbl { //adding and subtracting Dates and Times allowed, but not Mu
 
 	/** Constants for the Months of the Year, also returned by getMonth()	 */
 	final static public byte JANUARY	=  1;
-	final static public byte FEBRUARY	=  2;
-	final static public byte MARCH		=  3;
-	final static public byte APRIL		=  4;
-	final static public byte MAY		=  5;
-	final static public byte JUNE		=  6;
-	final static public byte JULY		=  7;
-	final static public byte AUGUST		=  8;
-	final static public byte SEPTEMBER	=  9;
-	final static public byte OCTOBER	= 10;
-	final static public byte NOVEMBER	= 11;
-	final static public byte DECEMBER	= 12;
+	/**Constant for February, also returned by getMonth().	 */	final static public byte FEBRUARY	=  2;
+	/**Constant for March, also returned by getMonth().	 */	final static public byte MARCH		=  3;
+	/**Constant for April, also returned by getMonth().	 */	final static public byte APRIL		=  4;
+	/**Constant for May, also returned by getMonth().	 */	final static public byte MAY		=  5;
+	/**Constant for June, also returned by getMonth().	 */	final static public byte JUNE		=  6;
+	/**Constant for July, also returned by getMonth().	 */	final static public byte JULY		=  7;
+	/**Constant for August, also returned by getMonth().	 */	final static public byte AUGUST		=  8;
+	/**Constant for September, also returned by getMonth().	 */	final static public byte SEPTEMBER	=  9;
+	/**Constant for October, also returned by getMonth().	 */	final static public byte OCTOBER	= 10;
+	/**Constant for November, also returned by getMonth().	 */	final static public byte NOVEMBER	= 11;
+	/**Constant for December, also returned by getMonth().	 */	final static public byte DECEMBER	= 12;
 
 	/**Names of the Months	 */
 	final static public String[] Months = {"", "January", "February", "March", "April", "Mai", "Juni",
@@ -334,9 +343,9 @@ extends AGroupDbl { //adding and subtracting Dates and Times allowed, but not Mu
 
 	/**Constants for the Phases of the Moon, also returned by getMoon()	 */
 	final static public byte MoonNew	=  0;
-	final static public byte MoonGrow	=  1;
-	final static public byte MoonFull	=  2;
-	final static public byte MoonDimn	=  3;
+	/**Constant for the waxing Moon Phase, also returned by getMoon().	 */	final static public byte MoonGrow	=  1;
+	/**Constant for the full Moon Phase, also returned by getMoon().	 */	final static public byte MoonFull	=  2;
+	/**Constant for the waning Moon Phase, also returned by getMoon().	 */	final static public byte MoonDimn	=  3;
 
 	/**Names of the Moon Phases	 */
 	final static public String[] MoonPhases = {"new", "waxing", "full", "waning"};
@@ -355,27 +364,49 @@ extends AGroupDbl { //adding and subtracting Dates and Times allowed, but not Mu
 	/**Islam Months with 29 Days */	final static public byte[] IslamMonth29 = {FEBRUARY, APRIL, JUNE, AUGUST, OCTOBER, DECEMBER};
 	/**Islam Months with 30 Days */	final static public byte[] IslamMonth30 = {JANUARY, MARCH, MAY, JULY, SEPTEMBER, NOVEMBER};
 
+	/**Index for New Year's Day (Neujahr) in the German Holiday Table.	 */
 	final static public int HOLIDAY_GER_Neujahr         = 0;
+	/**Index for Epiphany (Heilige Drei Koenige) in the German Holiday Table.	 */
 	final static public int HOLIDAY_GER_HlDreiKoenige   = 1;
+	/**Index for Rose Monday (Rosenmontag) in the German Holiday Table.	 */
 	final static public int HOLIDAY_GER_Rosenmontag     = 2;
+	/**Index for Good Friday (Karfreitag) in the German Holiday Table.	 */
 	final static public int HOLIDAY_GER_Karfreitag      = 3;
+	/**Index for Easter Sunday (Ostersonntag) in the German Holiday Table.	 */
 	final static public int HOLIDAY_GER_OsterSonntag    = 4;
+	/**Index for Easter Monday (Ostermontag) in the German Holiday Table.	 */
 	final static public int HOLIDAY_GER_OsterMontag     = 5;
+	/**Index for Labour Day (Erster Mai) in the German Holiday Table.	 */
 	final static public int HOLIDAY_GER_ErsterMai       = 6;
+	/**Index for Ascension Day (Christi Himmelfahrt) in the German Holiday Table.	 */
 	final static public int HOLIDAY_GER_Himmelfahrt     = 7;
+	/**Index for Whit Sunday (Pfingstsonntag) in the German Holiday Table.	 */
 	final static public int HOLIDAY_GER_PfingstSonntag  = 8;
+	/**Index for Whit Monday (Pfingstmontag) in the German Holiday Table.	 */
 	final static public int HOLIDAY_GER_PfingstMontag   = 9;
+	/**Index for Corpus Christi (Fronleichnam) in the German Holiday Table.	 */
 	final static public int HOLIDAY_GER_Fronleichnam    = 10;
+	/**Index for the Swiss National Day (Bundesfeier) in the German Holiday Table.	 */
 	final static public int HOLIDAY_GER_Bundesfeier     = 11;
+	/**Index for the Peace of Augsburg Day (Augsburger Friedensfest) in the German Holiday Table.	 */
 	final static public int HOLIDAY_GER_AugsburgFrieden = 12;
+	/**Index for Assumption Day (Mariae Himmelfahrt) in the German Holiday Table.	 */
 	final static public int HOLIDAY_GER_MariaHimmel     = 13;
+	/**Index for German Unity Day (Tag der Deutschen Einheit) in the German Holiday Table.	 */
 	final static public int HOLIDAY_GER_DeutscheEinheit = 14;
+	/**Index for Austria's National Day (Nationalfeiertag) in the German Holiday Table.	 */
 	final static public int HOLIDAY_GER_Nationalfeier   = 15;
+	/**Index for Reformation Day (Reformationstag) in the German Holiday Table.	 */
 	final static public int HOLIDAY_GER_Reformationstag = 16;
+	/**Index for All Saints' Day (Allerheiligen) in the German Holiday Table.	 */
 	final static public int HOLIDAY_GER_Allerheiligen   = 17;
+	/**Index for the Day of Repentance and Prayer (Buss- und Bettag) in the German Holiday Table.	 */
 	final static public int HOLIDAY_GER_BussUndBettag   = 18;
+	/**Index for the Immaculate Conception (Mariae Empfaengnis) in the German Holiday Table.	 */
 	final static public int HOLIDAY_GER_MariaEmpfaengnis= 19;
+	/**Index for the first Christmas Day (1. Weihnachtsfeiertag) in the German Holiday Table.	 */
 	final static public int HOLIDAY_GER_Weihnacht1      = 20;
+	/**Index for the second Christmas Day (2. Weihnachtsfeiertag) in the German Holiday Table.	 */
 	final static public int HOLIDAY_GER_Weihnacht2      = 21;
 
 	//////////////////
@@ -745,7 +776,7 @@ extends AGroupDbl { //adding and subtracting Dates and Times allowed, but not Mu
 
 	/**Rechnet das islamische Kalender-Datum in JulDay
 	 * in die julianische Tageszaehlung um.
-	 * Liefert Jahr, Monat und Tag in einem DateTime Objekt zurück.
+	 * Liefert Jahr, Monat und Tag in einem DateTime Objekt zurï¿½ck.
 	 * Berechnet auch den Zyklus und den Tag des islamischen Jahres.	 */
 	final static public DateTime IslamDatum (int JulDay, ByRefShort Zyklus, ByRefShort YearDay) {
 		short Z_Dat;
@@ -780,16 +811,18 @@ extends AGroupDbl { //adding and subtracting Dates and Times allowed, but not Mu
 		return (int)(Year + 0.5) != (int) Year; 
 	}
 
-	/** @return the Julian Day inclusive Fraction
+	/**Computes the DateTime of a Moon Phase given as an Offset from a given Year.
+	 * @return the Julian Day inclusive Fraction
 	 * of the n-th Phase since January 1900 (Greenwich Mean Time)
 	 * The Moon Phase is digitalized into four Phases,
 	 * because different formulas apply to the Times.	 */
 	public static DateTime Moon(final short year, final int n, int Phase) {
 		final int phases = (int)((year-1900)*MOON_CYCLES_PER_YEAR);
-		return Moon(phases+n, Phase); 
+		return Moon(phases+n, Phase);
 	}
 
-	/** @return the Julian Day inclusive Fraction
+	/**Computes the DateTime of the n-th Moon Phase since January 1900.
+	 * @return the Julian Day inclusive Fraction
 	 * of the n-th Phase since January 1900 (Greenwich Mean Time)
 	 * The Moon Phase is digitalized into four Phases,
 	 * because different formulas apply to the Times.	 */
@@ -814,7 +847,7 @@ extends AGroupDbl { //adding and subtracting Dates and Times allowed, but not Mu
 
 	/** Returns a proposed Date of Easter Sunday for the given Year. 
 	 * Ostern ist der erste Sonntag nach dem ersten Fruehjahrsvollmond. 
-	 * Frühjahrs-Anfang ist am 21.3., also mindestens 31+28+21=80 Tage ins Jahr hinein, 
+	 * Frï¿½hjahrs-Anfang ist am 21.3., also mindestens 31+28+21=80 Tage ins Jahr hinein, 
 	 * bzw. 2,7119 Mondzyklen 
 	 */
 	final static public DateTime EasterSunday2(final short year) {
@@ -984,7 +1017,8 @@ extends AGroupDbl { //adding and subtracting Dates and Times allowed, but not Mu
 	/**Sets the Month		 */	public void	setMonth	(byte  Month)	{ validJulDate = false; validDate = true; this.Month  = Month; YearDay = -1; }
 	/**Sets the Year		 */	public void	setYear		(short Year)	{ validJulDate = false; validDate = true; this.Year	  = Year;  YearDay = -1; }
 
-	/** @return the Date in julian Day Counting.	 */
+	/**Returns this DateTime's Value in Julian Day Counting, recalculating from Date/Time if not cached.
+	 * @return the Date in julian Day Counting.	 */
 	public double getDays() {
 		int carryOverDays = 0; 
 		//there is a certain Overhead involved, because of breaking the integer and fraction up.
@@ -1213,15 +1247,16 @@ extends AGroupDbl { //adding and subtracting Dates and Times allowed, but not Mu
 	/**Creates an uninitialized new Instance of a DateTime Object	 */
 	public ICopyAble newInstance() { return new DateTime(); }
 
-	/** @see streamIO.copy.IICopyAble#randomizeAt()	 */
-	public ICopyAble randomizeAt() { return new DateTime(ByRefDouble.RANDOM_1_1()*2000); } 
+	/**Returns a new instance holding a random Julian Day Value scaled into a plausible Date Range.
+	 * @see streamIO.copy.IICopyAble#randomizeAt()	 */
+	public ICopyAble randomizeAt() { return new DateTime(ByRefDouble.RANDOM_1_1()*2000); }
 
 	/**Copies the Contents of arg from a streamIO to this DateTime Object.	 */
 	public ICopyAble fromStreamAt(StreamTokenizer ST) {	//TODO: implement this
 		return this; }
 
 	/**
-	 * Separator String für the Date
+	 * Separator String fï¿½r the Date
 	 */
 	final static public char CHR_SEP_TIME = ':';
 
@@ -1232,7 +1267,7 @@ extends AGroupDbl { //adding and subtracting Dates and Times allowed, but not Mu
 	final static public char CHR_SEP_DATE_TIME = 'T';
 
 	/**
-	 * Separator String für the Date
+	 * Separator String fï¿½r the Date
 	 * The XML Schema Format uses '-'
 	 */
 	final static public char CHR_SEP_DATE = '-';
@@ -1281,12 +1316,12 @@ extends AGroupDbl { //adding and subtracting Dates and Times allowed, but not Mu
 		return ret; 
 	}
 	
-	/**
+	/**Delegates to {@link #toXmlString()}.
 	 * @return a String Representation of this Object.
 	 */
 	public String toString() { return toXmlString(); }
-	
-	/**
+
+	/**Formats this DateTime as a Date/Time or Julian-Day String, depending on FormatJulian.
 	 * @return a String Representation of this Object.
 	 */
 	public String toXmlString() {
@@ -1369,19 +1404,19 @@ extends AGroupDbl { //adding and subtracting Dates and Times allowed, but not Mu
 //		return subt(arg).isZero();
 	}
 
-	/**
+	/**Converts this DateTime's Julian-Day Value into Seconds.
 	 * @return the Time measured in Seconds
 	 */
 	public double getSeconds() {
 		return getDays()*SECS_PER_DAY; }
 
-	/**
+	/**Converts this DateTime's Julian-Day Value into Minutes.
 	 * @return the Time measured in Minutes
 	 */
 	public double getMinutes() {
 		return getDays()*MINS_PER_DAY; }
 
-	/**
+	/**Converts this DateTime's Julian-Day Value into Hours.
 	 * @return the Time measured in Hours
 	 */
 	public double getHours() {
@@ -1575,6 +1610,7 @@ extends AGroupDbl { //adding and subtracting Dates and Times allowed, but not Mu
 		}
 	}
 
+	/**Method to test this Class's Date/Time, Julian-Day and Calendar Calculations.	 */
 	public static void testAll() {
 		short Year = -130; DateTime dat;
 		dat = new DateTime((short) 1998, (byte) 12, (byte) 1);

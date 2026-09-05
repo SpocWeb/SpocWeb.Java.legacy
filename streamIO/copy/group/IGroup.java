@@ -31,6 +31,15 @@ package streamIO.copy.group;
  * This Element is neutral for both left and right + Operations.
  * ...there is only a single negative Element for each Element.
  * This is the same Element for both left and right + Operations.
+ * <!-- docstate
+ * pass: 2
+ * mtime: 2026-09-05T10:13:24Z
+ * digest: 7e2ca790f2acf5e12005d81e5a2a212114c0f4b87fa7c2495e19544ba108b431
+ * stale: false
+ * tags: [code/group_algebra, code/date_time]
+ * concepts: [Group/SemiGroup Algebra]
+ * facets: {layer: domain, status: legacy, complexity: high}
+ * -->
  */
 public interface IGroup
 extends ISemiGroup, IIGroup {

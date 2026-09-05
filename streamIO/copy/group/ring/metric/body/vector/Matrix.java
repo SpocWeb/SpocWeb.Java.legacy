@@ -17,6 +17,15 @@ import streamIO.copy.groupM.IGroupM;
   * it is used for two Purposes:
   * -linear Mapping of Tensors
   * -bilinear Form for Mapping Vectors to Scalars
+  * <!-- docstate
+  * pass: 2
+  * mtime: 2026-09-05T20:54:51Z
+  * digest: d017014b188abb6327f98ad85427b7536eb7dc6a48570a86b707b6db326110ac
+  * stale: false
+  * tags: [code/tensor, code/manifold_generation, code/interpolation]
+  * concepts: [Vector/Matrix/Tensor and Manifold Interpolation]
+  * facets: {layer: domain, status: legacy, complexity: high}
+  * -->
   */
 public class Matrix
 extends Tensor // AMatrix {
@@ -273,7 +282,7 @@ implements IMatrix {
 			Sum.divAt(iRow.a[i]); }
 		return b; }
 
-	/** Multiplication in Place: °=
+	/** Multiplication in Place: ï¿½=
 	  * This is a linear Mapping in Fact.
 	  * It returns the Argument, modified in Place.
 	  *
@@ -288,12 +297,13 @@ implements IMatrix {
 			return this; }
 		else return super.mulAt(arg);	//Use same Scalar Multiplication as with Polynoms and Manifolds
 	}
-
+*/
 	//////////////////////////
 	//	Matrix Inversion	//
 	//////////////////////////
 
-	/** Inversion in Place: 1/x	 */	public IGroupM invAt(){return (IGroupM)shallowCopyAt(inv());}
+	/** Inversion in Place: 1/x	 */
+	public IGroupM invAt(){return (IGroupM)shallowCopyAt(inv());}
 	/** Inversion: 1/x	 */			public IGroupM inv()	 {return invTrp().trpAt();}
 	/** Inversion and Transposition: 1/xT	 */
 	public Matrix invTrp() { return solveLU((Matrix) one());}
@@ -386,7 +396,7 @@ implements IMatrix {
 				return false;
 		return true; }
 
-//	public boolean  orthoNorm();  ð unitaer fuer reelle Matrizen;
+//	public boolean  orthoNorm();  ï¿½ unitaer fuer reelle Matrizen;
 
 	/**true, when the Matrix is hermitean resp. symmetric, i.e. M = Mt.	 */
 	public boolean  isHermitean  () {	//The Optimization here is that you have to test only one Triangle
@@ -396,7 +406,7 @@ implements IMatrix {
 					return false;
 		return true; }
 
-//	public boolean  symmetr  ();  ð hermite fuer reelle Matrizen;
+//	public boolean  symmetr  ();  ï¿½ hermite fuer reelle Matrizen;
 
 	/**true, when the Matrix is anti-hermitean resp. anti-symmetric, i.e. M = -Mt.	 */
 	public boolean  isAntiHermitean () {	//The Optimization here is that you have to test only one Triangle
@@ -406,7 +416,7 @@ implements IMatrix {
 					return false;
 		return true; }
 
-//	public boolean  antiSym  (); ð antiHerm fuer reelle Matrizen;
+//	public boolean  antiSym  (); ï¿½ antiHerm fuer reelle Matrizen;
 
 	/**true, when the Matrix is normal, i.e. M*M^T = M^T*M.
 	 * i.e. M*M^T is symmetric	 */
@@ -448,8 +458,9 @@ implements IMatrix {
 	public Matrix SwapRowsAt (int Dim1, int Dim2) {
 		IIntRing c = a[Dim1]; a[Dim1] = a[Dim2]; a[Dim2] = c; return this;}
 
+	/**Manual smoke-test entry point exercising a 2-Dimensional {@link BodyDouble} Matrix.	 */
 	public static void main(String[] args) {
-		Matrix matrix = new Matrix(new BodyDouble(), 2); 
-		matrix.map(matrix); 
+		Matrix matrix = new Matrix(new BodyDouble(), 2);
+		matrix.map(matrix);
 	}
 }

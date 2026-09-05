@@ -13,6 +13,15 @@ import streamIO.copy.order.IOrder;
  * and because the Integration with algebraic Operation comes only in AMetricIRing.
  *
  * Is a Delegator, inherits self from AOrder,
+ * <!-- docstate
+ * pass: 2
+ * mtime: 2026-09-05T10:13:24Z
+ * digest: 5d6c47b6b3c4552a3918f85557ce12853c0f79e267758b54002ad6aec8f21194
+ * stale: false
+ * tags: [code/metric_space, code/root_finding, code/numerical_integration, code/big_integer_arithmetic]
+ * concepts: [Metric Spaces - Root Finding and Numerical Integration]
+ * facets: {layer: domain, status: legacy, complexity: high}
+ * -->
  * doesn't define it's own self, because the Methods are too few and too frequent.	 */
 public class AScalarMetric
 extends AOrder

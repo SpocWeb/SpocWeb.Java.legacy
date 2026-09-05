@@ -5,6 +5,15 @@ import streamIO.exception.ReadOnlyException;
 
 /**Implements Constants for all Types of SemiGroup Classes.
  * This Class inhibits the Use of ...At() Routines
+ * <!-- docstate
+ * pass: 2
+ * mtime: 2026-09-05T10:13:24Z
+ * digest: 4f761f1e2b37b9a68164d28d94d9ac37b89570a96c9cc796e2d7beda08630ea1
+ * stale: false
+ * tags: [code/group_algebra, code/date_time]
+ * concepts: [Group/SemiGroup Algebra]
+ * facets: {layer: domain, status: legacy, complexity: high}
+ * -->
  * but still supports all other Methods of the SemiGroup Class.	 */
 public class CSemiGroup
 extends CCopyAble

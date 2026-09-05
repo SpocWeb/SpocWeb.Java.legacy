@@ -24,9 +24,10 @@ import tester.ITester;
 import function.IProcessor;
 import function.derive.ring.AAlgebra;
 
-/**
-  * Title: ATensor<p>
-  * Description:
+/**Abstract base class for tensor-like Manifolds, adding {@link IndexEnumerator} traversal
+  * to the {@link streamIO.copy.group.ring.metric.IMetricIRing} algebra so a Manifold can be
+  * both computed on and iterated over.
+  *
   * Abstract Base Class to all Manifolds
   * Adds the IndexEnumerator Methods to the MetricIRing Interface
   *
@@ -49,6 +50,15 @@ import function.derive.ring.AAlgebra;
   * Created on	2000-11-26, 01;13;44<p>
   * @author 	Matthias Heuer
   * @version	1.0
+  * <!-- docstate
+  * pass: 2
+  * mtime: 2026-09-05T16:41:54Z
+  * digest: 037efcb680d6b8b7dc8318755f66e8952001017a95c592eb512db86ab3c8ab51
+  * stale: false
+  * tags: [code/tensor, code/manifold_generation, code/interpolation]
+  * concepts: [Vector/Matrix/Tensor and Manifold Interpolation]
+  * facets: {layer: domain, status: legacy, complexity: high}
+  * -->
   */
 public abstract class ATensor
 extends AAlgebra //AMetricIRing
@@ -109,7 +119,8 @@ implements ITensor { //IndexEnumerator {
 	 * (for performance Reasons)	 */
 	public int getDim(){ return  mDim; }
 
-	/** @return the Filter Object
+	/**Returns the current Filter Object.
+	  * @return the Filter Object
 	  * only Items that are equal to this Object are returned by nextItem()! */
 	public Object getFilter() { return mFilter; }
 
@@ -119,7 +130,8 @@ implements ITensor { //IndexEnumerator {
 	  * because the Result Set can be decreased dramatically. */
 	public void setFilter(Object Value) { mFilter = Value; }
 
-	/** @return the current Major Version of the Container to support fast-fail Enumerators
+	/**Returns the current Major Version, used by fast-fail Enumerators to detect structural changes.
+	  * @return the current Major Version of the Container to support fast-fail Enumerators
 	  * Should be incremented on each structural change of the Container
 	  * and checked for the same Value on each Call of nextItem() or currItem()
 	  * to warn the User (Client) of the Enumerator.
@@ -130,7 +142,8 @@ implements ITensor { //IndexEnumerator {
 	  */
 	public int getMajor() { return majorVersion; }
 
-	/** @return the incremented current Major Version of the Container
+	/**Increments and returns the current Major Version, to indicate a structural change.
+	  * @return the incremented current Major Version of the Container
 	  * to indicate Modification to fast-fail Iterators.
 	  * The Version should be incremented on each structural change of the Container
 	  * and checked for the same Value on each Call of nextItem() or currItem()
@@ -140,7 +153,8 @@ implements ITensor { //IndexEnumerator {
 	  */
 	public int incMajor() { return ++majorVersion; }
 
-	/** @return the current Version of the Container to support fast-fail Enumerators
+	/**Returns the current minor Version, used by fast-fail Enumerators to detect data changes.
+	  * @return the current Version of the Container to support fast-fail Enumerators
 	  * Should be incremented on each change of the Container
 	  * and checked for the same Value on each Call of nextItem() or currItem()
 	  * to warn the User (Client) of the Enumerator.
@@ -151,7 +165,8 @@ implements ITensor { //IndexEnumerator {
 	  */
 	public int getMinor() { return minorVersion; } //return 0; }
 
-	/** @return the incremented current minor Version of the Container
+	/**Increments and returns the current minor Version, to indicate a data change.
+	  * @return the incremented current minor Version of the Container
 	  * to indicate Modification to fast-fail Iterators.
 	  * The Version should be incremented on each change of the Container
 	  * and checked for the same Value on each Call of nextItem() or currItem()
@@ -165,14 +180,16 @@ implements ITensor { //IndexEnumerator {
 	//	IndexEnumerator: abstract Methods
 	///////////////////////////////////////////////////////////////////////////
 
-	/** @return the Item at the given absolute Position
+	/**Returns the Item at the given absolute Position.
+	  * @return the Item at the given absolute Position
 	  * While this is possible in principle for all Enumerators,
 	  * it is too ineffective to loop through the whole Enumerator
 	  * @see function.index.IDirectRead defines the same Method
 	  */
 	public abstract Object getAt(final int Index); // { return null; }
 
-	/** @return the Item at the given absolute Position
+	/**Inserts the given Item at the given absolute Position.
+	  * @return the Item at the given absolute Position
 	  * While this is possible in principle for all Enumerators,
 	  * it is too ineffective to loop through the whole Enumerator
 	  */
@@ -227,35 +244,42 @@ implements ITensor { //IndexEnumerator {
 	public IMarkAble mark(final long readLimit) { //throws NoSuchMethodException {
 		mark = curr; return this; }
 
-	/** @return the Number of minimum available Objects		*/
+	/**Returns the number of Items remaining ahead of the current Position.
+	 * @return the Number of minimum available Objects		*/
 	public long availAble() { return mDim - curr; }
 
-	/**
+	/**Returns whether the current Position is still within the valid Range.
 	 * @see streamIO.IIStreamIn#isValid()
 	 */
 	public boolean isValid() { return curr <= mDim; }
 
-	/** @return the number of Items
+	/**Returns the number of Items already passed, reachable again via previousItem().
+	  * @return the number of Items
 	  * that are to be reached by previousItem.	 */
 	public long availableBefore() { return curr; }
 
-	/** @see streamIO.object.AStreamIn#getMaxMarkSize()	 */
+	/**Returns the maximum number of Items that can be marked/rewound over.
+	 * @see streamIO.object.AStreamIn#getMaxMarkSize()	 */
 	public long getMaxMarkSize() { return mDim; }
 
-	/** @see streamIO.object.AStreamIn#getPosition()	 */
+	/**Returns the current Position of this Enumerator.
+	 * @see streamIO.object.AStreamIn#getPosition()	 */
 	public long getPosition() { return curr; }
 
-	/** @see streamIO.IReSetAble#reSet(java.lang.String)	 */
+	/**Resets this Enumerator to its initial Position, failing with the given message if unsupported.
+	 * @see streamIO.IReSetAble#reSet(java.lang.String)	 */
 	public IReSetAble reSet(String failureExceptionMessage) {
 		return AReSetAble.RESET(this, failureExceptionMessage); }
-	
-	/** @see streamIO.IReSetAble#jump(long)	 */
+
+	/**Advances the current Position by the given (possibly negative) amount.
+	 * @see streamIO.IReSetAble#jump(long)	 */
 	public long jump(final long _position) { return (curr+=_position)-curr; }
-	
+
 	/**Returns the Item at the given relative Position	 */
 	public Object getRel(final int index) { return getAt(curr + index); }
 
-	/** @see streamIO.object.IStreamIn#jump()     */
+	/**Jumps this Enumerator forward by one Position.
+	 * @see streamIO.object.IStreamIn#jump()     */
 	public IReSetAble jump() { return AReSetAble.JUMP(this); }
     
 	/** 
@@ -450,7 +474,8 @@ implements ITensor { //IndexEnumerator {
 	//  Interface StreamOut
 	////////////////////////////////////////////////////////////////////////////////
 	
-	/** @see streamIO.IStreamOut#flush()	 */
+	/**No-op: this Container has no buffered writes to flush.
+	 * @see streamIO.IStreamOut#flush()	 */
 	public void flush() { }
 	
 	/** Adds this Item to the Store in Place: +=
@@ -493,11 +518,13 @@ implements ITensor { //IndexEnumerator {
 	//  Interface Pipe
 	////////////////////////////////////////////////////////////////////////////////
 
-	/** @return the Order in which Elements are returned by the Iterators
+	/**Returns stack Order: items added via addItem() come back first via nextItem().
+	  * @return the Order in which Elements are returned by the Iterators
 	  * when they are added using addItem() and removed using nextItem().	 */
 	public byte getOrder() { return IPipe.ORDER_STACK; }
 
-	/** @return The Comparator being used to compare Elements.
+	/**Returns {@code null}, meaning Elements are compared via their own natural ordering.
+	  * @return The Comparator being used to compare Elements.
 	  * If 'null', the Elements are assumed to implement
 	  * @see IScalarMetric or
 	  * @see java.lang.Comparable  or
@@ -518,7 +545,8 @@ implements ITensor { //IndexEnumerator {
 	//  Interface IterAble
 	////////////////////////////////////////////////////////////////////////////////
 
-	/** @return an Enumerator for this Container 	*/
+	/**Returns {@code null}: this Container does not support a separate Enumerator instance.
+	  * @return an Enumerator for this Container 	*/
 	public Enumerator Enumerator() {
 		return null; }
 
@@ -640,7 +668,8 @@ implements ITensor { //IndexEnumerator {
 	public Object findFirst (Object Item) { //throws NoSuchMethodException {
 		reSet (0); return AStreamIn.FIND_NEXT(this, Item, null); }
 
-	/** @return true when this Object is contained in this Container
+	/**Returns whether the given Item is contained in this Container.
+	  * @return true when this Object is contained in this Container
 	  * This is the same Operation as (findFirst() != EOI) || (available() >= 0)
 	  * @see Sub() and SubEq() for the according Container Methods,
 	  * The Name contains() is only to be used for single Elements
@@ -653,7 +682,8 @@ implements ITensor { //IndexEnumerator {
 //			throw new OperationNotSupported(x.toString(), x); }
 	}
 
-	/**@return true, when all Objects of this streamIO exists in the streamIO arg
+	/**Returns whether every Object of this streamIO also occurs in arg.
+	 * @return true, when all Objects of this streamIO exists in the streamIO arg
 	 * Requires streamIO arg to be restartAble.
 	 * There are more restrictive and thus 'cheaper' Searches:
 	 * -finding all Elements of arg in Sequence
@@ -663,7 +693,8 @@ implements ITensor { //IndexEnumerator {
 	public boolean SubEq(IIStreamIn arg, boolean Sequence) {
 		return AStreamIn.SUB_EQ(this, arg, Sequence); }
 
-	/** @return the next Item without moving to it.	 */
+	/**Returns the next Item without moving the current Position to it.
+	 * @return the next Item without moving to it.	 */
 	public Object peekItem() { //throws    NoSuchMethodException {
 		return getAt(curr+1); }
 
@@ -703,7 +734,8 @@ implements ITensor { //IndexEnumerator {
 		return ret.toString(); 
 	}
 
-	/** @return  a string representation of the object.
+	/**Streams every Element of this Container to the given output in sequence.
+	 * @return  a string representation of the object.
 	 *  @see Object#toString()
 	 */
 	public void toStream(final IFormatOut stream) {//throws IOException
@@ -720,7 +752,8 @@ implements ITensor { //IndexEnumerator {
 	// short() c      = Sum(i, a[i]*b[i] = Sum(i, a.mul(b)) , the Scalar Product
 	// map  () uses the Scalar Product
 
-	/** @return the dyadic Product of this Tensor and arg.
+	/**Returns the dyadic Product of a copy of this Tensor and arg.
+	  * @return the dyadic Product of this Tensor and arg.
 	  * This is a pre Step to calculating the generic Scalar Product.
 	  * The Degree of the Tensor is the Sum of the Degrees of the Factors.
 	  *
@@ -729,7 +762,8 @@ implements ITensor { //IndexEnumerator {
 	public ITensor dyad(ITensor arg) {
 		return ((ITensor) copy()).dyadAt(arg); }
 
-	/** @return the dyadic Product of this Tensor and arg.
+	/**Returns the dyadic Product of a copy of this Tensor and arg at the given Degree.
+	  * @return the dyadic Product of this Tensor and arg.
 	  * This is a pre-Step for calculating the generic Scalar Product.
 	  * The Degree of the Tensor is the Sum of the Degrees of the Factors.
 	  *
@@ -774,23 +808,26 @@ implements ITensor { //IndexEnumerator {
 	  * Makes only Sense for Vectors */
 	public ITensor normalize()	{return ((ITensor) copy()).normalizeAt();}
 
-	/** @return the Sum of all Elements in this Tensor Sum(i, x[i])	  */
+	/**Returns the Sum of all Elements in this Tensor.
+	 * @return the Sum of all Elements in this Tensor Sum(i, x[i])	  */
 	public IIntRing Sum() {
 		return (IIntRing) AManifold.Sum(this, null); }
 
-	/** @return this Tensor shortened at the given Degree.
+	/**Returns a copy of this Tensor with the given Degree summed away.
+	  * @return this Tensor shortened at the given Degree.
 	  * I.e. all Elements at Level 'Degree' are replaced by the Sum of all Elements below it
 	  */
 	public IIntRing Sum(int Degree) {
 		return ((Tensor) copy()).SumAt(Degree); }
 
-	/** @return this Tensor shortened in Place at the given Degree.
+	/**Sums away the given Degree in Place, decreasing this Tensor's Degree by 1.
+	  * @return this Tensor shortened in Place at the given Degree.
 	  * I.e. all Elements at Level Degree are replaced
 	  * by the Sum of the Elements right below them.
 	  * The Degree of the Tensor decreases by 1
 	  * a[i,j,k] => a[i,k] = Sum(j, a[i,j,k])
-	  * 
-	  * A Scalar Product can be considered as the Trace of the dyadic Product. 
+	  *
+	  * A Scalar Product can be considered as the Trace of the dyadic Product.
 	  */
 	public IIntRing SumAt(int Degree) {
 		if (--Degree < 0)

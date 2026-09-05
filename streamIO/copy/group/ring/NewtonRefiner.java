@@ -26,6 +26,15 @@ import function.derive.IDeriveAble;
  * @author mheuer
  * @version	1.0
  *
+ * <!-- docstate
+ * pass: 2
+ * mtime: 2026-09-05T10:13:24Z
+ * digest: d7f38299f3c9ae946add9e04598568598cc384e468c17bdaa21c2fa9bbd27a77
+ * stale: false
+ * tags: [code/ring_theory, code/ode_solver]
+ * concepts: [Ring Algebra and ODE Solvers]
+ * facets: {layer: domain, status: legacy, complexity: high}
+ * -->
  */
 public class NewtonRefiner
 extends ARefiner {
@@ -46,7 +55,7 @@ extends ARefiner {
 	protected IFunction f1;
 
 	/** Performs a single approximating Step
-	 * dy = dx°f' <=> dx ? dy°f'^-1 cat instead of mul! not commutative!
+	 * dy = dxï¿½f' <=> dx ? dyï¿½f'^-1 cat instead of mul! not commutative!
 	 */
 	public IIntRing refine() {
 		yl = (IIntRing)       f .Map(xl) ;

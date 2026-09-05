@@ -2,20 +2,23 @@
 
 ## Status
 
-**2026-09-05 (latest): all in-flight work from the previous pause has been closed out.**
-`math/vector` (15 files) is now fully done - the rate-limited background agent had actually
-finished 5 of its 6 remaining files before failing; a follow-up agent finished the last one
-(`VectorDouble.java`), and the orchestrator independently verified `list-todo math/vector`
-returns zero rows, ran Pass 3 (folder `ReadMe.md` for both `math/vector` and
-`math/vector/statistic`, hand-authored opening paragraphs) and Pass 4-7 (1 new axis-A tag
-`code/statistical_correlation`, 50 tag targets written, index built), recorded all 63 bugs
-found across the folder in the Bugs Found table (16 from the first 9 files + 47 from the
-6 large typed-array classes - many are the same handful of copy-paste-origin defects
-repeated across `VectorChar`/`Long`/`Short`/`Int`/`Float`/`Double`: `mulAt`/`divAt`
-delegating to `subAt`, scalar `mulAt`/`divAt` ignoring their argument, `removeAt` corrupting
-`itemCount` before validating the index, `oneAt` filling with 0 instead of 1), and
-committed+pushed both repos. Everything from this session is now fully committed and
-pushed - there is no in-flight work and no uncommitted state.
+**2026-09-05 (latest): `streamIO/copy/group` (124 files) closed out.** The 5-agent wave's
+last remaining batch is done: `list-todo streamIO/copy/group` returns zero real gaps (one
+confirmed tool false-positive on `AManifold.Interpolator(IManifold)` - a method whose simple
+name equals its return type's simple name, now recorded as a new tool-quirk bullet); 4 bugs
+verified via grep (`Fraction.Floor()`/`FractionLong.Floor()` swapped-operand reciprocal bugs,
+`QuantityDouble`'s two constructors both never assigning `mUnit`) and added to the Bugs Found
+table; 0 new axis-A tags needed (all candidate concepts - complex numbers, SI units, tensors/
+manifolds, rational/interval arithmetic, metric spaces, ring theory, group algebra - already
+existed in the schema); tags applied and index built (124 rows); both repos committed and
+pushed. Everything from this session is now fully committed and pushed - there is no
+in-flight work and no uncommitted state.
+
+**Next up (per the standing "up to 5 parallel agents, autonomous" instruction):** claim and
+dispatch the next wave for the remaining unclaimed folders - `streamIO/object/enumer`
+(79 files/18229 lines), `streamIO/object/parser` (27/6942), and `streamIO/integer`
+(157/39243, needs further sub-batch splitting by line count first, following the same
+pattern used for `math`/`graphic`/`streamIO/copy`/`function`/`streamIO/object` earlier).
 
 **What's fully committed+pushed (both `D:/_/_Matthias/Code/Java` and `D:/_/_AI`):**
 - Milestone C of the companion CLI (`D:/_/_AI/skills/Java.ReadMeGenerator/ReadMeGenerator/`)
@@ -129,7 +132,7 @@ concurrently against the same file):
 | Batch | Files | Lines | Documented | Status | Claimed by |
 |---|--:|--:|--:|---|---|
 | `streamIO/copy` (root+boole+groupM+monoid+order+primitiveOp+shift) | 82 | 11329 | 82 | done | agent-copy-misc |
-| `streamIO/copy/group` | 124 | 31328 | 0 | claimed | agent-copy-group |
+| `streamIO/copy/group` | 124 | 31328 | 124 | done | agent-copy-group |
 | `function` (root+index+real+string+vector+byref) | 98 | 12899 | 98 | done | agent-function-misc |
 | `function/derive` | 106 | 14586 | 106 | done | agent-function-derive |
 | `streamIO/object` (root+backTrack+filterIn+filterInOut+filterOut+integer+yaml+json) | 79 | 13501 | 79 | done | agent-object-misc |
@@ -231,6 +234,11 @@ at 46% of the corpus) have not been sampled.
   reporting "no Javadoc comment" even though the method has a valid one-line Javadoc -
   confirmed via `list-corrupted` and direct source inspection. Treat this one specific row
   as a known tool limitation, not an outstanding documentation gap.
+- **`list-todo` has another false positive when a method's simple name equals its return
+  type's simple name.** `streamIO/copy/group/ring/metric/body/vector/AManifold.java:381`
+  (`Interpolator(IManifold)`, returning an `Interpolator`) reports "no Javadoc comment"
+  despite a valid one - confirmed via direct source read (lines 375-390). Suspected root
+  cause is the docstate/Javadoc matcher confusing the method with its own return type.
 
 ## Decisions
 
@@ -552,6 +560,10 @@ same harness against it. A test that has not been seen red proves nothing.
 | streamIO/object/integer/XMLScanner.java | XMLScanner | (tag-type constants) | 97 | `XML_TAG_PROCESS` is defined as 6, the same value as `XML_TAG_TEXT`; any code distinguishing a Processing Instruction from Text Data by comparing against this constant cannot actually do so. | Medium | open |
 | streamIO/object/json/JSONTokener.java | JSONTokener | next(int) | 207 | Off-by-one: `String.substring(i, j)` is valid for `j == mySource.length()` (it can return the final characters of the source), but this check rejects that valid boundary case - e.g. a `\uXXXX` escape ending exactly at EOF. | Medium | open |
 | streamIO/object/json/JSONTokener.java | JSONTokener | nextValue() | 358 | Object/array nesting recurses (`nextValue` -> `JSONObject`/`JSONArray` constructor -> `nextValue` -> ...) with no depth limit, unlike `JSONStringer`'s own `maxdepth=20`; deeply nested untrusted JSON input can cause a stack-overflow denial of service. | Medium | open |
+| streamIO/copy/group/ring/metric/body/Fraction.java | Fraction | Floor() | 207 | Computes `Denominator.div(Numerator)` (the reciprocal) instead of `Numerator.div(Denominator)`; `Floor()` returns the floor of the wrong ratio entirely. | High | open |
+| streamIO/copy/group/ring/metric/body/FractionLong.java | FractionLong | Floor() | 216 | Same swapped-operand defect as `Fraction.Floor()`, copy-pasted into the `long`-based implementation. | High | open |
+| streamIO/copy/group/ring/metric/body/units/QuantityDouble.java | QuantityDouble | QuantityDouble(double, Unit) | 104 | The `unit` constructor parameter is never assigned to the `mUnit` field, so `getUnit()`/`getBaseUnit()`/any unit-dependent operation throws `NullPointerException` on every instance built through this constructor. | Critical | open |
+| streamIO/copy/group/ring/metric/body/units/QuantityDouble.java | QuantityDouble | QuantityDouble(double, Unit, double) | 110 | Same missing `mUnit` assignment as the two-argument constructor above. | Critical | open |
 
 ## Tool defects found and fixed during the pilot
 

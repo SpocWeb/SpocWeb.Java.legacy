@@ -24,6 +24,15 @@ import streamIO.copy.groupM.ISemiGroupM;
  *
  * The Behavior of Complex Numbers can be controlled by boolean static Variables:
  * -A Complex will always be checked for zero imaginary Part after any Operation.
+ * <!-- docstate
+ * pass: 2
+ * mtime: 2026-09-05T10:13:25Z
+ * digest: 95cea1633b23687abae9e8a4a3db9baea542005a75845002b5f0141fb37396a9
+ * stale: false
+ * tags: [code/complex_numbers, code/fourier_transform]
+ * concepts: [Complex Number Arithmetic and Fourier Transform]
+ * facets: {layer: domain, status: legacy, complexity: high}
+ * -->
  */
 final public class Polar
 extends AMetricBody {

@@ -14,6 +14,15 @@ import streamIO.real.StreamOutPlotter;
 /**Class with static Methods and Coefficients Cache
  * to encapsulate the Fourier Operations used with FFT.
  * This encompasses complex and real FT, as well as Sine and Cosine Transform.
+ * <!-- docstate
+ * pass: 2
+ * mtime: 2026-09-05T16:18:05Z
+ * digest: ee62910fa63b2d41422d015c10f661a72e662dea54d5ab1fc1f19dd1b6d6a434
+ * stale: false
+ * tags: [code/complex_numbers, code/fourier_transform]
+ * concepts: [Complex Number Arithmetic and Fourier Transform]
+ * facets: {layer: domain, status: legacy, complexity: high}
+ * -->
  */
 public class Fourier {
 	
@@ -522,8 +531,9 @@ public class Fourier {
 		testMix();
 	}
 	
+	/**The command-line entry point; ignores {@code args} and runs {@link #testIt()}.	 */
 	public static void main(String[] args) throws IOException {
-		testIt(); 
+		testIt();
 	}
 
 }

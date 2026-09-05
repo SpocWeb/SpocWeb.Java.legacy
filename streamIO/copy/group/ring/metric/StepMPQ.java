@@ -17,6 +17,15 @@ import function.byref.ByRefInt;
  *
  * Step() performs a single Step and controls it's width.
  * Run () performs as many Steps as necessary to reach a certain x Value.
+ * <!-- docstate
+ * pass: 2
+ * mtime: 2026-09-05T10:13:24Z
+ * digest: 53d6368d4783bc38d993d25896527a440595b955d07bc94750b6f5bcca952cc9
+ * stale: false
+ * tags: [code/metric_space, code/root_finding, code/numerical_integration, code/big_integer_arithmetic]
+ * concepts: [Metric Spaces - Root Finding and Numerical Integration]
+ * facets: {layer: domain, status: legacy, complexity: high}
+ * -->
  */
 public class StepMPQ
 extends      StepMP {
@@ -53,7 +62,7 @@ extends      StepMP {
 	/**Bulirsch-Stoer-Schritt mit Beobachtung des lokalen Abbruchfehlers
 	 * zur Loesung der DGL in (x,Y),die durch f bestimmt wird. 	 */
 	public IIntRing step(IIntRing h) {
-		//ByRefInt statt ByRefLong, weil es unwahrscheinlich ist, so große Auswertungen zu fahren.
+		//ByRefInt statt ByRefLong, weil es unwahrscheinlich ist, so groï¿½e Auswertungen zu fahren.
 		ByRefInt n1 = new ByRefInt(2);
 		ByRefInt n2 = new ByRefInt(3);
 		IIntRing H  = h;

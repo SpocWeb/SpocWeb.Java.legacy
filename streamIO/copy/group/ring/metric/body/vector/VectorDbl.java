@@ -33,18 +33,15 @@ import function.byref.ByRefObject;
 import function.derive.IFloatDeriveAble;
 import function.index.IDirectAccess;
 
-/**
-  * Title: VectorDbl<p>
-  * Description:
-  * VectorDbl with double Numbers, which is much easier to debug and faster
-  * than using Tensor, which is a Vector of IIntRing Elements. 
+/**A {@link AManifold Manifold} of primitive {@code double} Elements, which is much easier to debug and faster
+  * than using {@link Tensor}, which is a Vector of {@link IIntRing} Elements.
   * Is both a Container for Numbers and a MetricIntegrityRing
-  * on the Set of it's Elements. 
-  * 
-  * TODO: resolve the Conflict between treating these Objects 
-  * as Samples (i.e. ordered Sets) over the same Dimension (addAt, diff etc.) or  
+  * on the Set of it's Elements.
+  *
+  * TODO: DESIGN: resolve the Conflict between treating these Objects
+  * as Samples (i.e. ordered Sets) over the same Dimension (addAt, diff etc.) or
   * as Polynomes (addAt adds only to the 1st Element, diff does Polynom division)
-  * 
+  *
   * The Inheritance Hierarchies of both Strains merge at ARing.
   * 
   * AContainer -> AStreamSet -> ABoolRing -> ARing
@@ -78,6 +75,15 @@ import function.index.IDirectAccess;
   * Created on	2000-11-26, 01;13;44<p>
   * @author 	Matthias Heuer
   * @version	1.0
+  * <!-- docstate
+  * pass: 2
+  * mtime: 2026-09-05T20:52:27Z
+  * digest: 01ea6191be9cec28bcb0da8621e537f2f12a595a18f93dfdb30e7ab91a9ede9c
+  * stale: false
+  * tags: [code/tensor, code/manifold_generation, code/interpolation]
+  * concepts: [Vector/Matrix/Tensor and Manifold Interpolation]
+  * facets: {layer: domain, status: legacy, complexity: high}
+  * -->
   */
 public class VectorDbl
 extends AManifold // ATensor // AMetricIRing
@@ -104,20 +110,22 @@ implements IDblGroup, IDblGroupM, IDblOrder, IDirectAccess {
 	//////////////////////
 
 
-	/** @return the dyadic Product of this Tensor and arg.
+	/**Not yet implemented: always returns {@code null}.
+	  * @return the dyadic Product of this Tensor and arg.
 	  * This is a pre Step to calculating the generic Scalar Product.
 	  * The Degree of the Tensor is the Sum of the Degrees of the Factors.
 	  *
 	  * The inner structure of arg is retained on creating the Product.
 	  *
-	  * a[i,j,k]°b[l,m,n] = c[i,j,k,l,m,n] is the scalar Element calculated by
-	  * a[i,j,k] := a[i,j,k]°b[]
+	  * a[i,j,k]ï¿½b[l,m,n] = c[i,j,k,l,m,n] is the scalar Element calculated by
+	  * a[i,j,k] := a[i,j,k]ï¿½b[]
 	  */
 	public ITensor dyadAt(ITensor arg_) {
 		//TODO: implement this!!!
 		return null; }//this; }
 
-	/** @return this Tensor multiplied in Place at the given Degree.
+	/**Not yet implemented: always returns {@code null}.
+	  * @return this Tensor multiplied in Place at the given Degree.
 	  * This is a pre Step to calculating the Scalar Product.
 	  *
 	  * The outer structure remains the same and is used to hold the Product.
@@ -142,10 +150,10 @@ implements IDblGroup, IDblGroupM, IDblOrder, IDirectAccess {
 		//TODO: Implement this
 		return this; }
 
-	/** "Multiplication": °
+	/** "Multiplication": ï¿½
 	  * This is in fact a non-commutative linear Mapping:
-	  * M°(a+b) == M°a + M°b
-	  * (x+y)°M == x°M + y°M
+	  * Mï¿½(a+b) == Mï¿½a + Mï¿½b
+	  * (x+y)ï¿½M == xï¿½M + yï¿½M
 	  *
 	  * The Matrix itself is the Derivative Jacobian Matrix of the Mapping:
 	  * (A*x)' = A
@@ -172,10 +180,10 @@ implements IDblGroup, IDblGroupM, IDblOrder, IDirectAccess {
 			return cat(arg); } //results not in a Mapping in Place!
 */		return this; }
 
-	/** Scalar Product Multiplication: °
+	/** Scalar Product Multiplication: ï¿½
 	  * This is in fact a non-commutative linear Mapping:
-	  * M°(a+b) == M°a + M°b
-	  * (x+y)°M == x°M + y°M
+	  * Mï¿½(a+b) == Mï¿½a + Mï¿½b
+	  * (x+y)ï¿½M == xï¿½M + yï¿½M
 	  *
 	  * The Matrix itself is the Derivative Jacobian Matrix of the Mapping:
 	  * (A*x)' = A
@@ -207,7 +215,8 @@ implements IDblGroup, IDblGroupM, IDblOrder, IDirectAccess {
 			return tmp; }
 */		return this; }
 
-	/** @return the Tensor Product with a Matrix
+	/**Not yet implemented for this flat representation: always returns {@code this} unchanged.
+	  * @return the Tensor Product with a Matrix
 	  *
 	  * T[i,j,k]*A[m,j] = R[i,m,k]
 	  * Transpose the Matrix if necessary.
@@ -351,7 +360,8 @@ implements IDblGroup, IDblGroupM, IDblOrder, IDirectAccess {
 	//	IndexEnumerator: abstract Methods
 	///////////////////////////////////////////////////////////////////////////
 
-	/** @return the Item at the given absolute Position
+	/**Returns the Element at the given absolute Position, or EOI/SOI past either end.
+	  * @return the Item at the given absolute Position
 	  * While this is possible in principle for all Enumerators,
 	  * it is too ineffective to loop through the whole Enumerator
 	  */
@@ -478,12 +488,14 @@ implements IDblGroup, IDblGroupM, IDblOrder, IDirectAccess {
 	/**Inversion in Place: 1/x		*/
 	public IGroupM invAt() { a.invAt(); return this; }
 
-	/** @see IIntRing#IntAt()
+	/**Truncates every Element of this Vector to an Integer, in Place.
+	 * @see IIntRing#IntAt()
 	 * TODO: find out how IntAt should be implemented!
 	 */
 	public IIntRing IntAt() { a.FloorAt(); return this; }
 
-	/** @see IIntRing#FloorAt()
+	/**Floors every Element of this Vector in Place.
+	 * @see IIntRing#FloorAt()
 	 * TODO: find out how FloorAt should be implemented!
 	 */
 	public IMetricIRing FloorAt() { a.FloorAt(); return this; }
@@ -612,10 +624,12 @@ implements IDblGroup, IDblGroupM, IDblOrder, IDirectAccess {
 	/**Optimizations are very likely here,
 	 * but the Algorithm would be too complicated to be implemented here!	 */
 
-	/** @return the Square in Place: x*=x	*/
+	/**Squares every Element of this Vector in Place.
+	 * @return the Square in Place: x*=x	*/
 	public ISemiGroupM sqrAt() { a.sqrAt(); return this; }
 
-	/** @return the Cubic in Place: x*=x^2	*/
+	/**Cubes every Element of this Vector in Place.
+	 * @return the Cubic in Place: x*=x^2	*/
 	public ISemiGroupM cbcAt() { a.cbcAt(); return this; }
 
 
@@ -630,8 +644,9 @@ implements IDblGroup, IDblGroupM, IDblOrder, IDirectAccess {
 	 * When overriding, use newInstance on all Components.	 */
 	public ICopyAble newInstance() { return new VectorDbl(); }
 
-	/** @see streamIO.copy.IICopyAble#randomizeAt()	 */
-	public ICopyAble randomizeAt() { 
+	/**Returns a new instance with every Element set to a random value in [-1, 1].
+	 * @see streamIO.copy.IICopyAble#randomizeAt()	 */
+	public ICopyAble randomizeAt() {
 		this.a.randomizeAt(); return this;  
 	} 
 		
@@ -717,7 +732,8 @@ implements IDblGroup, IDblGroupM, IDblOrder, IDirectAccess {
 			return shallowCopyAt(arg);
 			return    deepCopyAt(arg, Depth); }
 
-	/**@return  a hash code value for this object.
+	/**Returns a hash code value for this object, derived from its Elements.
+	 * @return  a hash code value for this object.
 	 * @see     java.lang.Object#equals(java.lang.Object)
 	 * @see     java.lang.Object#hashCode()
 	 */
@@ -790,6 +806,7 @@ implements IDblGroup, IDblGroupM, IDblOrder, IDirectAccess {
 		for (long i = -1; ++i <= mDim;) { 
 			arr[i] = (IIntRing) a[P.a[i]].copy(); } 
 		return new VectorDbl(arr); }
+	*/
 
 	//Container Methods:
 
@@ -830,6 +847,7 @@ implements IDblGroup, IDblGroupM, IDblOrder, IDirectAccess {
 	/*
 	public VectorDbl swap(int i, int j)
 	{return ((swapAble)copy()).swapAt(i,j);}
+	*/
 
 	/**Returns true, when the Items in the Container are ordered ascending
 	 * from the i-th Item on (monotonous Sequence)	 */
@@ -858,11 +876,14 @@ implements IDblGroup, IDblGroupM, IDblOrder, IDirectAccess {
 	public boolean isMoreThan(Object arg) {
 		return a.grtr(((VectorDbl) arg).a); }
 
+	/**Adds the g-adic Carry into this Vector in Place.	 */
 	public void addCarry(long Carry) {
 		addAt(new ByRefLong(Carry)); return; }
 
+	/**Returns 0: the upper, masked g-adic Part is not held separately by this Class.	 */
 	public long  getUpper(long Mask, long ModByPeriod) {
 		return 0;}	//also clears the Upper Part (Mask) and prepares Addition to the Lower (ModByPeriod)
+	/**Returns 0: the lower g-adic Part is not held separately by this Class.	 */
 	public long  getLower(long Mask, long ModByPeriod) {
 		return 0;}	//Lower Part is cleared on Shifting automatically.
 
@@ -1071,32 +1092,40 @@ implements IDblGroup, IDblGroupM, IDblOrder, IDirectAccess {
 	  * @return  True, when 'Self' >= arg	*/
 	public boolean grtrEq(double arg) { return a.grtrEq(arg); }
 
-	/** @return the Maximum: 	*/
+	/**Returns the element-wise Maximum of this Vector and arg.
+	 * @return the Maximum: 	*/
 	public ILngOrder Max (long arg)  { return Max((double) arg); }
 
-	/** @return the Maximum in Place: 	*/
+	/**Returns the element-wise Maximum of this Vector and arg.
+	 * @return the Maximum in Place: 	*/
 	public IDblOrder Max (double arg) {
 		return new VectorDbl(a.Max(arg), false); }
 
 
-	/** @return the Maximum in Place: 	*/
+	/**Sets this Vector in Place to the element-wise Maximum of itself and arg.
+	 * @return the Maximum in Place: 	*/
 	public ILngOrder MaxAt (long arg) { return MaxAt((double) arg); }
 
-	/** @return the Maximum in Place: 	*/
+	/**Sets this Vector in Place to the element-wise Maximum of itself and arg.
+	 * @return the Maximum in Place: 	*/
 	public IDblOrder MaxAt (double arg) { a.MaxAt(arg); return this; }
 
-	/** @return the Minimum: 	*/
+	/**Returns the element-wise Minimum of this Vector and arg.
+	 * @return the Minimum: 	*/
 	public ILngOrder Min (long arg) { return Min((double) arg); }
 
-	/** @return the Minimum: 	*/
-	public IDblOrder Min (double arg) { 
+	/**Returns the element-wise Minimum of this Vector and arg.
+	 * @return the Minimum: 	*/
+	public IDblOrder Min (double arg) {
 		return new VectorDbl(a.Min(arg), false); }
 
-	/** @return the Minimum in Place: 	*/
+	/**Sets this Vector in Place to the element-wise Minimum of itself and arg.
+	 * @return the Minimum in Place: 	*/
 	public ILngOrder MinAt (long    arg)  {
 		     return MinAt((double) arg); }
 
-	/** @return the Minimum in Place: 	*/
+	/**Sets this Vector in Place to the element-wise Minimum of itself and arg.
+	 * @return the Minimum in Place: 	*/
 	public IDblOrder MinAt (double arg) { a.MinAt(arg); return this; }
 
 
@@ -1111,12 +1140,14 @@ implements IDblGroup, IDblGroupM, IDblOrder, IDirectAccess {
 			BodyDouble.BODY_DOUBLE(a.getItems()),
 			BodyDouble.BODY_DOUBLE(((VectorDbl) y_).a.getItems()), mDim); }
 	
-	/** @return the Difference Vector of this Manifold in Place: diff(i)= a(i) - a(i+1)
+	/**Replaces this Vector in Place with its first Difference Vector.
+	  * @return the Difference Vector of this Manifold in Place: diff(i)= a(i) - a(i+1)
 	  * The Difference Vector has one Item less than the original Vector.
 	  * For complete Reversibility the last Item is preserved.	 */
 	public IManifold diffAt() { a.diffAt(); return this; }
 
-	/** @return  the Integrated Vector of this Manifold in Place: int(i)= a(i) + a(i+1)
+	/**Replaces this Vector in Place with its integrated (cumulative-sum) Vector.
+	  * @return  the Integrated Vector of this Manifold in Place: int(i)= a(i) + a(i+1)
 	  * This is the reverse Operation to diffAt().
 	  *
 	  * It is used e.g.
@@ -1129,7 +1160,8 @@ implements IDblGroup, IDblGroupM, IDblOrder, IDirectAccess {
 	  * it is faster to modify this start Value by modifying the last Item.	 */
 	public IManifold summAt() { a.summAt(); return this; }
 
-	/** @return the full Difference Vector of this Manifold in Place
+	/**Replaces this Vector in Place with the full chain of all its Derivatives.
+	  * @return the full Difference Vector of this Manifold in Place
 	  * The full Difference Vector consists of all Derivatives.
 	  * It can be used to calculate inter- and extrapolations with Horner(). 	 */
 	public IManifold fullDiffAt() { a.fullDiffAt(); return this; }
@@ -1162,7 +1194,8 @@ implements IDblGroup, IDblGroupM, IDblOrder, IDirectAccess {
 			ByRefDouble.GET_DOUBLE(x0),
 			ByRefDouble.GET_DOUBLE(h))); }
 
-	/** @return the dyadic Product of this Tensor and arg.
+	/**Not yet implemented: always returns {@code null}.
+	  * @return the dyadic Product of this Tensor and arg.
 	  * This is a pre Step to calculating the generic Scalar Product.
 	  * The Degree of the Tensor is the Sum of the Degrees of the Factors.
 	  *
@@ -1228,6 +1261,7 @@ implements IDblGroup, IDblGroupM, IDblOrder, IDirectAccess {
 			System.out.println(" z = " + z + "; f (z) = " + Sample.Horner(z, x0, ddx) + " == " + fktn.Map(z.value)); }
 	}
 
+	/**Exercises {@link AManifold}'s static statistical Methods against the sample P2.	 */
 	public static void testVector(VectorDbl P2) {
 		ByRefInt    Pos  = new ByRefInt();
 		ByRefObject Max  = new ByRefObject();

@@ -16,12 +16,21 @@ import streamIO.copy.groupM.ISemiGroupM;
  * (R,+,0,*,1)
  * ([a,b], Max, a, Min, b) (forms a boolean Lattice)
  * ({0,1}, OR , 0, AND, 1)
- * ([0,1], °, 0, *, 1) with the "probabilistic Sum" a°b = a+b-a*b does not quite commute
+ * ([0,1], ï¿½, 0, *, 1) with the "probabilistic Sum" aï¿½b = a+b-a*b does not quite commute
  * only if one of the Arguments is really 0 or 1.
- * (V, +, 0, *, 1)  with a VectorSpace V and the (non-commutative) linear Mapping °
+ * (V, +, 0, *, 1)  with a VectorSpace V and the (non-commutative) linear Mapping ï¿½
  * 
  * A Ring with a commutative Multiplication is called a 'Field' 
  * i.e. (M-{0],*, 1) is a commutative Group.  
+ * <!-- docstate
+ * pass: 2
+ * mtime: 2026-09-05T10:13:24Z
+ * digest: 8d763cad613ae9093dab1fe754d7db840037e5aa86f258f2a09954e30cb80462
+ * stale: false
+ * tags: [code/ring_theory, code/ode_solver]
+ * concepts: [Ring Algebra and ODE Solvers]
+ * facets: {layer: domain, status: legacy, complexity: high}
+ * -->
  */
 public interface IRing
 extends IGroup, ISemiGroupM {

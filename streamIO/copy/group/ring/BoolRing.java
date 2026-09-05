@@ -18,6 +18,15 @@ import streamIO.copy.boole.Boole;
   * Created on	2001-06-12, 12;14;36<p>
   * @author 	Matthias Heuer
   * @version	1.0
+  * <!-- docstate
+  * pass: 2
+  * mtime: 2026-09-05T10:13:24Z
+  * digest: e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855
+  * stale: false
+  * tags: [code/ring_theory, code/ode_solver]
+  * concepts: [Ring Algebra and ODE Solvers]
+  * facets: {layer: domain, status: legacy, complexity: high}
+  * -->
   */
 public interface BoolRing
 extends IRing, Boole { // ALattice //ARing

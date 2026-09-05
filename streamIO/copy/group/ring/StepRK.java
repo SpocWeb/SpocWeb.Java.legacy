@@ -6,6 +6,15 @@ import function.vector.IBinaryOpFloat;
 /**
  *Integrates the given ODE in (x,y) using the Runge-Kutta Formula. Step() performs a single Step with fixed width.
  * Run () performs as many Steps as necessary to reach a certain x Value.
+ * <!-- docstate
+ * pass: 2
+ * mtime: 2026-09-05T21:13:44Z
+ * digest: b4ccf01736b87137e5ebdaf37f7d509035dba9557a88ef04bdd5b40b705f667e
+ * stale: false
+ * tags: [code/ring_theory, code/ode_solver]
+ * concepts: [Ring Algebra and ODE Solvers]
+ * facets: {layer: domain, status: legacy, complexity: high}
+ * -->
  */
 public class StepRK
 extends AStepper {
@@ -30,6 +39,7 @@ extends AStepper {
     /// #region : Constructors, calling each other using this()/super() (not in Interfaces)
     ////////////////////////////////////////////////////////////////////////////
 	
+    /**Initializes this Stepper and allocates the generic IIntRing Helper Vectors w/v1..v4.	 */
     public void Init(IIntRing y) { //Allocate Space to save iterative Allocation and Destruction!
         super.Init(y);
         //		int Grad = y.getDim();		//Create the Storage for the Helper Vectors:
@@ -40,6 +50,7 @@ extends AStepper {
         v4 = (IIntRing)y.newInstance();
     }
 
+    /**Initializes this Stepper and allocates the primitive double[] Helper Vectors wd/v1d..v4d.	 */
     public void Init(double[] y) { //Allocate Space to save iterative Allocation and Destruction!
         super.Init(y);
         //		int Grad = y.getDim();		//Create the Storage for the Helper Vectors:

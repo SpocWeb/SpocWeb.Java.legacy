@@ -34,6 +34,15 @@ import streamIO.copy.ICopyAble;
  * The Return Type is chosen to be ASemiGroup instead of SemiGroup,
  * because this saves a cast from other Interface Types on returning the Result.
  * The Execution is not delegated to a Self_ Variable.
+ * <!-- docstate
+ * pass: 2
+ * mtime: 2026-09-05T10:13:24Z
+ * digest: 08fa52430453ffb4091811a2699e6dc8d27b2de1057aaf55322bbe3242f821d7
+ * stale: false
+ * tags: [code/group_algebra, code/date_time]
+ * concepts: [Group/SemiGroup Algebra]
+ * facets: {layer: domain, status: legacy, complexity: high}
+ * -->
  */
 public interface ISemiGroup
 extends IISemiGroup, ICopyAble {

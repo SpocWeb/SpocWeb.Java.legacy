@@ -16,6 +16,15 @@ import function.vector.IBinaryOpFloat;
  *
  * Step() performs a single Step and controls it's width.
  * Run () performs as many Steps as necessary to reach a certain x Value.
+ * <!-- docstate
+ * pass: 2
+ * mtime: 2026-09-05T21:08:24Z
+ * digest: 3266cd78c00c46d781fc0ccea0299bcb9b9ee80eac1d17e59a2630b31fe97b64
+ * stale: false
+ * tags: [code/metric_space, code/root_finding, code/numerical_integration, code/big_integer_arithmetic]
+ * concepts: [Metric Spaces - Root Finding and Numerical Integration]
+ * facets: {layer: domain, status: legacy, complexity: high}
+ * -->
  */
 public class StepRKQ
 extends StepRK {
@@ -77,7 +86,7 @@ extends StepRK {
 		xOld = (IIntRing) x.newInstance();
 	}
 	
-	/**
+	/**Constructor for a single-Dimensional System, additionally setting the Accuracy.
 	 * @param stepSize_
 	 * @param x
 	 * @param y

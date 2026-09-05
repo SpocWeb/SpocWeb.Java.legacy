@@ -1,9 +1,8 @@
 package streamIO.copy.group.ring.metric.body.units;
 
 import java.io.IOException;
-/**
-  * Title: UnitShift<p>
-  * Description:
+/**A {@link Unit} that converts to its Base Unit by a pure additive offset (no ratio),
+  * e.g. Celsius to Kelvin.
   *
   * Defines the Interface for a Unit with linear Ratio to the Base Unit.
   * A Unit defines the Metric and Norm for a Parameter Space
@@ -49,6 +48,15 @@ import java.io.IOException;
   * Created on	2000-08-13, 02;34;24<p>
   * @author 	Matthias Heuer
   * @version	1.0
+  * <!-- docstate
+  * pass: 2
+  * mtime: 2026-09-05T16:35:17Z
+  * digest: b01369c396e4dac026148e997836b1002f04399fde36b7fa639bea94bfb69c73
+  * stale: false
+  * tags: [code/si_units, code/unit_conversion]
+  * concepts: [Physical Units and Conversion]
+  * facets: {layer: domain, status: legacy, complexity: high}
+  * -->
   */
 public class UnitShift
 extends Unit {

@@ -10,6 +10,15 @@ import streamIO.copy.ICopyAble;
  * usually implemented together with the 'countable' Interface.
  * Also used for sequential Access of Data Structures.
  * Defines the Function pred() and succ()
+ * <!-- docstate
+ * pass: 2
+ * mtime: 2026-09-05T10:13:24Z
+ * digest: 9336269dbf793c45a5b36192fdfa5127412a3c4a09480de4f72cf67d60feeb40
+ * stale: false
+ * tags: [code/ring_theory, code/ode_solver]
+ * concepts: [Ring Algebra and ODE Solvers]
+ * facets: {layer: domain, status: legacy, complexity: high}
+ * -->
  * as Complements to inc() and dec() in IInteger. */
 public class AInteger
 extends ACopyAble

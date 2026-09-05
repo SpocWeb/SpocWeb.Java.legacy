@@ -10,23 +10,23 @@ import streamIO.copy.monoid.integer.Permutation;
 import function.IFunction;
 import function.byref.ByRefInt;
 
-/**
-  * Title: noname2<p>
-  * Description:
-  * TODO: Describes the Purpose / Responsibilities of this Class, not it's Implementation.
-  * If similar Classes exist (e.g. Polymorphism),
-  * characterize the specific Differences to compare these.
-  *
-  * Known SubClasses:
+/**A {@link Tensor} subclass that defines Methods mixing across its Elements
+  * (sampling a Function onto a multidimensional Raster, weighted power Products, Sum, Product).
   *
   * Copyright:	Copyright (c) Matthias Heuer<p>
   * Company:	personal<p>
   * Created on	2000-11-26, 01;13;44<p>
   * @author 	Matthias Heuer
   * @version	1.0
-  */
-/** This Class defines Methods that mix the Elements.
-  *
+  * <!-- docstate
+  * pass: 2
+  * mtime: 2026-09-05T20:53:43Z
+  * digest: 8e626c730864b16cb6c5cb601fe274d2f99474b3b8d505c1ecd0d37de9a6852a
+  * stale: false
+  * tags: [code/tensor, code/manifold_generation, code/interpolation]
+  * concepts: [Vector/Matrix/Tensor and Manifold Interpolation]
+  * facets: {layer: domain, status: legacy, complexity: high}
+  * -->
   */
 public class Manifold
 extends Tensor { //AManifold {
@@ -41,9 +41,8 @@ extends Tensor { //AManifold {
 
 	}
 
-	/** @return a new Tensor S that consists of as many Dimensions as the Raster has.
-	  *
-	  * Recursive static Helper Method to sample a Function on a multidimensional Raster.
+	/**Recursive static Helper Method to sample a Function on a multidimensional Raster,
+	  * populating S so it consists of as many Dimensions as the Raster has.
 	  * Similar to the Plot Routine, but hands over S and an Index,
 	  * instead of the Item of S directly, because the Tensor is being populated!
 	  *
@@ -68,7 +67,8 @@ extends Tensor { //AManifold {
 		} while (--i >= 0);
 	}
 
-	/** @return the Product of all Powers of the Items in x
+	/**Computes the weighted power Product of this Tensor's Elements, using P as the Exponents.
+	  * @return the Product of all Powers of the Items in x
 	  * with the Indices = Prod(x [i]^n [i])
 	  * @see Permutation.Multi_Fakt
 	  * @see Permutation.Multi_ABS
@@ -81,7 +81,8 @@ extends Tensor { //AManifold {
 			Prod.mulAt(a[i].Pow(P.a[i]));
 		return Prod; }
 
-	/** @return  the Sum of all Elements in the Tensor	 */
+	/**Sums all Elements of this Tensor.
+	  * @return  the Sum of all Elements in the Tensor	 */
 	public IIntRing Sum() {
 		int j = mDim;
 		AIntRing Sum = (AIntRing) a[j].copy();
@@ -89,7 +90,8 @@ extends Tensor { //AManifold {
 			Sum.addAt(a[j]);
 		return Sum; }
 
-	/** @return  the Product of all Elements in the Tensor	 */
+	/**Multiplies all Elements of this Tensor together.
+	  * @return  the Product of all Elements in the Tensor	 */
 	public IIntRing Prod() {
 		int j = mDim;
 		IIntRing Prod = (IIntRing) a[0].copy();

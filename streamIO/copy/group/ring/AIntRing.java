@@ -47,6 +47,15 @@ import streamIO.copy.groupM.ISemiGroupM;
  * because they would only confuse the original Polynom or gAdic.
  * It has to be done explicitly by calling
  *
+ * <!-- docstate
+ * pass: 2
+ * mtime: 2026-09-05T10:13:24Z
+ * digest: 83bfabc2d82728aee2d2cd8c4ba22ef3054bcd7b020b69075f2cb9355b96d938
+ * stale: false
+ * tags: [code/ring_theory, code/ode_solver]
+ * concepts: [Ring Algebra and ODE Solvers]
+ * facets: {layer: domain, status: legacy, complexity: high}
+ * -->
  * Additionally the inherited classes needn't call super.copyAt().	 */
 
 public abstract class AIntRing
@@ -475,16 +484,16 @@ implements IIntRing {
 	public IIntRing mulCjg(Object arg)	{ return ((IComplex) copy()).mulAtCjg(arg); }
 
 	/**Division by the conjugate complex argument in Place: /=
-	 * obige Implementation vermeidet Genauigkeitsverlust und einen Überlauf durch die Quadrierung
-	 * und spart außerdem effektiv 2 Sqr und wendet nur 1 Vergleich mehr an als andere.	 */
+	 * obige Implementation vermeidet Genauigkeitsverlust und einen ï¿½berlauf durch die Quadrierung
+	 * und spart auï¿½erdem effektiv 2 Sqr und wendet nur 1 Vergleich mehr an als andere.	 */
 	public IIntRing divCjg(Object arg)	{ return ((IComplex) copy()).divAtCjg(arg); }
 
 	/**Multiplies the Complex Number by i or divides it by -i:
-	 * i.e. Im <= Re and Re <= -Im, which is a Rotation by +90°	 */
+	 * i.e. Im <= Re and Re <= -Im, which is a Rotation by +90ï¿½	 */
 	public IIntRing MulI() { return ((IComplex) copy()).mulIAt(); }
 
 	/**Divides the Complex Number by i or multiplies it by -i:
-	 * i.e. Im <= -Re and Re <= Im, which is a Rotation by -90°	 */
+	 * i.e. Im <= -Re and Re <= Im, which is a Rotation by -90ï¿½	 */
 	public IIntRing DivI() { return ((IComplex) copy()).divIAt(); }
 
 	/**Addition of the conjugate complex argument in Place: +=	 */
@@ -497,16 +506,16 @@ implements IIntRing {
 	public IIntRing mulAtCjg(Object arg) { mulAt(arg); return this; }
 
 	/**Division by the conjugate complex argument in Place: /=
-	 * obige Implementation vermeidet Genauigkeitsverlust und einen Überlauf durch die Quadrierung
-	 * und spart außerdem effektiv 2 Sqr und wendet nur 1 Vergleich mehr an als andere.	 */
+	 * obige Implementation vermeidet Genauigkeitsverlust und einen ï¿½berlauf durch die Quadrierung
+	 * und spart auï¿½erdem effektiv 2 Sqr und wendet nur 1 Vergleich mehr an als andere.	 */
 	public IIntRing divAtCjg(Object arg) { divAt(arg); return this; }
 
 	/**Multiplies the Complex Number by i or divides it by -i in Place:
-	 * i.e. Im <= Re and Re <= -Im, which is a Rotation by +90°	 */
+	 * i.e. Im <= Re and Re <= -Im, which is a Rotation by +90ï¿½	 */
 	public IIntRing mulIAt() { throw new AbstractMethodError(); }
 
 	/**Divides the Complex Number by i or multiplies it by -i in Place:
-	 * i.e. Im <= -Re and Re <= Im, which is a Rotation by -90°	 */
+	 * i.e. Im <= -Re and Re <= Im, which is a Rotation by -90ï¿½	 */
 	public IIntRing divIAt() { throw new AbstractMethodError(); }
 
 	//////////////////////////////////////////////

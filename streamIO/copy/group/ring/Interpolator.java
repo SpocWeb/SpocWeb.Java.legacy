@@ -27,10 +27,20 @@ import function.IMeasurAble;
  * Similar Classes: 
  * @see math.InterpolDouble
  * 
+ * <!-- docstate
+ * pass: 2
+ * mtime: 2026-09-05T21:13:14Z
+ * digest: 001137420d6c266fee2fe7fc26030c92fe2f5d2c435490a46913b83dadac1073
+ * stale: false
+ * tags: [code/ring_theory, code/ode_solver]
+ * concepts: [Ring Algebra and ODE Solvers]
+ * facets: {layer: domain, status: legacy, complexity: high}
+ * -->
  */
 public class Interpolator
 extends AFunction {
 
+	/**Square Root of the double Overflow Threshold, used to bound intermediate Products during Interpolation.	 */
 	final static public double DOUBLE_OVERFLOW = Math.sqrt(IMeasurAble.DOUBLE_OVERFLOW);
 	
 	/** Logger for Testing, modify Threshold for switching Logging */

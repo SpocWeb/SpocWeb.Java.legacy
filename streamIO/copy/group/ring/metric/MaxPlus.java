@@ -38,6 +38,15 @@ import function.byref.ByRefDouble;
   * * minimum Signal Time using Synchronization
   *
   * Design Decisions:
+  * <!-- docstate
+  * pass: 2
+  * mtime: 2026-09-05T21:07:30Z
+  * digest: c286669e7d0bf73cb996dc2363e712e105d8140eeb8d4981befa44fdc99acda9
+  * stale: false
+  * tags: [code/metric_space, code/root_finding, code/numerical_integration, code/big_integer_arithmetic]
+  * concepts: [Metric Spaces - Root Finding and Numerical Integration]
+  * facets: {layer: domain, status: legacy, complexity: high}
+  * -->
   * This Implementation is made 'final' to exploit the resulting benefits. */
 final public class MaxPlus
 extends AMetricIRing	//necessary to define Matrices
@@ -142,7 +151,8 @@ implements ICountAble {
 	 * When overriding, use newInstance on all Components.	 */
 	public ICopyAble newInstance() { return new MaxPlus(); }
 
-	/** @see streamIO.copy.IICopyAble#randomizeAt()	 */
+	/**Returns a new instance holding a random value in [0, 1).
+	 * @see streamIO.copy.IICopyAble#randomizeAt()	 */
 	public ICopyAble randomizeAt() { return new MaxPlus(Math.random()); }
 
 
@@ -311,7 +321,8 @@ implements ICountAble {
 	//  Replication IWellOrder:	//
 	//////////////////////////////////
 
-	/** @return the maximum Value  (less than Infinity) for this Class in Place.	 */
+	/**Sets this to the maximum Value in Place.
+	 * @return the maximum Value  (less than Infinity) for this Class in Place.	 */
 	public IWellOrder maxValueAt() { Value = Double.MAX_VALUE; return this; }
 
 
@@ -495,6 +506,7 @@ implements ICountAble {
 //  	else
 			Value += convertArg(y) * convertArg(b);
 		return this; }
+*/
 
 	//////////////////////////////////////////
 	//  Interface OrderAble	Optimizations	//

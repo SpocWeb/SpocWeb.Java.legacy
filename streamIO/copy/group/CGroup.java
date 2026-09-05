@@ -9,6 +9,15 @@ import streamIO.exception.ReadOnlyException;
  * 
  * TODO: instead of throwing Exceptions, 
  * I should return new Instances (Copy-On-Write!)
+ * <!-- docstate
+ * pass: 2
+ * mtime: 2026-09-05T10:13:24Z
+ * digest: ca8258e1de5fef64fe566b0823ccb68d722cbfd42435a30848cde3e186eae586
+ * stale: false
+ * tags: [code/group_algebra, code/date_time]
+ * concepts: [Group/SemiGroup Algebra]
+ * facets: {layer: domain, status: legacy, complexity: high}
+ * -->
  */
 public class CGroup
 extends CSemiGroup

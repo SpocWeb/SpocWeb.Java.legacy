@@ -6,6 +6,11 @@ import streamIO.copy.group.ring.metric.IMetricIRing;
 /**
  * Defines Methods and Constants for analytical Operations
  * which are possibly overwritten by fast native Implementations like sin() etc.
+ * <!-- docstate
+ * tags: [code/rational_numbers, code/interval_arithmetic]
+ * concepts: [Rational Numbers and Interval Arithmetic]
+ * facets: {layer: domain, status: legacy, complexity: high}
+ * -->
  */
 public interface MetricBody
 extends IMetricIRing, Body {

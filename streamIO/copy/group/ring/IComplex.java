@@ -1,6 +1,15 @@
 package streamIO.copy.group.ring;
 
 /**Defines the Operations for Complex Conjugation for the IIntRing already,
+ * <!-- docstate
+ * pass: 2
+ * mtime: 2026-09-05T10:13:24Z
+ * digest: 158a962777812899eae1e2c55be84b810fcaf6368d1c3b708e428cca707de72e
+ * stale: false
+ * tags: [code/ring_theory, code/ode_solver]
+ * concepts: [Ring Algebra and ODE Solvers]
+ * facets: {layer: domain, status: legacy, complexity: high}
+ * -->
  * because it is used in Tensor Arithmetic */
 public interface IComplex {
 
@@ -31,29 +40,29 @@ public interface IComplex {
 	IIntRing mulCjg(Object arg);
 
 	/**Division by the conjugate complex argument in Place: /=
-	 * obige Implementation vermeidet Genauigkeitsverlust und einen Überlauf durch die Quadrierung
-	 * und spart außerdem effektiv 2 Sqr und wendet nur 1 Vergleich mehr an als andere.	 */
+	 * obige Implementation vermeidet Genauigkeitsverlust und einen ï¿½berlauf durch die Quadrierung
+	 * und spart auï¿½erdem effektiv 2 Sqr und wendet nur 1 Vergleich mehr an als andere.	 */
 	IIntRing divCjg(Object arg);
 
 	/**Division by the conjugate complex argument in Place: /=
-	 * obige Implementation vermeidet Genauigkeitsverlust und einen Überlauf durch die Quadrierung
-	 * und spart außerdem effektiv 2 Sqr und wendet nur 1 Vergleich mehr an als andere.	 */
+	 * obige Implementation vermeidet Genauigkeitsverlust und einen ï¿½berlauf durch die Quadrierung
+	 * und spart auï¿½erdem effektiv 2 Sqr und wendet nur 1 Vergleich mehr an als andere.	 */
 	IIntRing divAtCjg(Object arg);
 
 	/**Multiplies the Complex Number by i or divides it by -i in Place:
-	 * i.e. Im <= Re and Re <= -Im, which is a Rotation by +90°	 */
+	 * i.e. Im <= Re and Re <= -Im, which is a Rotation by +90ï¿½	 */
 	IIntRing mulIAt();
 
 	/**Multiplies the Complex Number by i or divides it by -i:
-	 * i.e. Im <= Re and Re <= -Im, which is a Rotation by +90°	 */
+	 * i.e. Im <= Re and Re <= -Im, which is a Rotation by +90ï¿½	 */
 	IIntRing MulI();
 
 	/**Divides the Complex Number by i or multiplies it by -i in Place:
-	 * i.e. Im <= -Re and Re <= Im, which is a Rotation by -90°	 */
+	 * i.e. Im <= -Re and Re <= Im, which is a Rotation by -90ï¿½	 */
 	IIntRing divIAt();
 
 	/**Divides the Complex Number by i or multiplies it by -i:
-	 * i.e. Im <= -Re and Re <= Im, which is a Rotation by -90°	 */
+	 * i.e. Im <= -Re and Re <= Im, which is a Rotation by -90ï¿½	 */
 	IIntRing DivI();
 
 	/**Testing Method, should be static or directly tested on the Types.

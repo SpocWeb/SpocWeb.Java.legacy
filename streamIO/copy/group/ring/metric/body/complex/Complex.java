@@ -48,6 +48,15 @@ import function.derive.CCountAble;
  * Making Real and Imag protected Variables
  * prevents direct Modification from the Outside.
  * Indirect Modification is not possible, if using Constants as Elements.
+ * <!-- docstate
+ * pass: 2
+ * mtime: 2026-09-05T16:15:11Z
+ * digest: 7945e02f47adca6965d6283be382f4cfb1ed981f5f2ab5d3d01e272a9a33170e
+ * stale: false
+ * tags: [code/complex_numbers, code/fourier_transform]
+ * concepts: [Complex Number Arithmetic and Fourier Transform]
+ * facets: {layer: domain, status: legacy, complexity: high}
+ * -->
  * This makes it possible to create real Complex Constants!	 */
 final public class Complex
 extends AMetricBody
@@ -258,20 +267,20 @@ implements IMeasurAble {
 	//////////////////////////////////////
 
 	/**Multiplies the Complex Number by i or divides it by -i:
-	 * i.e. Im <= Re and Re <= -Im, which is a Rotation by +90°	 */
+	 * i.e. Im <= Re and Re <= -Im, which is a Rotation by +90ï¿½	 */
 	public IIntRing MulI(){return (Complex)((Complex)copy()).mulIAt();}
 
 	/**Divides the Complex Number by i or multiplies it by -i:
-	 * i.e. Im <= -Re and Re <= Im, which is a Rotation by -90°	 */
+	 * i.e. Im <= -Re and Re <= Im, which is a Rotation by -90ï¿½	 */
 	public IIntRing DivI(){return (Complex)((Complex)copy()).divIAt();}
 
 	/**Divides the Complex Number by i or multiplies it by -i in Place:
-	 * i.e. Im <= -Re and Re <= Im, which is a Rotation by -90°	 */
+	 * i.e. Im <= -Re and Re <= Im, which is a Rotation by -90ï¿½	 */
 	public IIntRing divIAt()
 	{IMetricIRing tmp = Real; Real = Imag; Imag = (IMetricIRing) tmp.negAt(); return this;}
 
 	/**Multiplies the Complex Number by i or divides it by -i in Place:
-	 * i.e. Im <= Re and Re <= -Im, which is a Rotation by +90°	 */
+	 * i.e. Im <= Re and Re <= -Im, which is a Rotation by +90ï¿½	 */
 	public IIntRing mulIAt()
 	{IMetricIRing tmp = Imag; Imag = Real; Real = (IMetricIRing) tmp.negAt(); return this;}
 
@@ -426,8 +435,8 @@ implements IMeasurAble {
 
 	/**Division in Place: /=
 	 * assumes null to be 1
-	 * obige Implementation vermeidet Genauigkeitsverlust und einen Überlauf durch die Quadrierung
-	 * und spart außerdem effektiv 2 Sqr und wendet nur 1 Vergleich mehr an als andere.	 */
+	 * obige Implementation vermeidet Genauigkeitsverlust und einen ï¿½berlauf durch die Quadrierung
+	 * und spart auï¿½erdem effektiv 2 Sqr und wendet nur 1 Vergleich mehr an als andere.	 */
 	public IGroupM divAt(Object arg) {
 //		++MulOperations;
 //		++MulOptimizations;
@@ -506,8 +515,8 @@ implements IMeasurAble {
 		return this; }
 
 	/**Division by the conjugate complex argument in Place: /=
-	 * obige Implementation vermeidet Genauigkeitsverlust und einen Überlauf durch die Quadrierung
-	 * und spart außerdem effektiv 2 Sqr und wendet nur 1 Vergleich mehr an als andere.	 */
+	 * obige Implementation vermeidet Genauigkeitsverlust und einen ï¿½berlauf durch die Quadrierung
+	 * und spart auï¿½erdem effektiv 2 Sqr und wendet nur 1 Vergleich mehr an als andere.	 */
 	public IIntRing divAtCjg(Object arg) {
 		if (arg instanceof Complex) {
 			Complex arg_ = (Complex) arg;
@@ -529,7 +538,7 @@ implements IMeasurAble {
 		return this; }
 
 	/**Inversion in Place: 1/x
-	 * obige Implementation ist genauer und verhindert einen Überlauf, ersetzt aber effektiv
+	 * obige Implementation ist genauer und verhindert einen ï¿½berlauf, ersetzt aber effektiv
 	 * 1 Division durch eine Inversion und 1 Vergleich	 */
 	public IGroupM invAt() {		//loses the Reference to 'Real', because it doesn't use copyAt
 		if (!(bolLazySimplify && Imag.isZero())) {
@@ -669,10 +678,14 @@ implements IMeasurAble {
 
 	//Only the real part counts, this is at least valid for the Calculation of ArcTan
 
+	/**Returns whether the real part is negative; the imaginary part is not considered.	 */
 	public boolean negative(){return (Real.negative());}// && Imag.negative());}
+	/**Returns whether the real part is positive; the imaginary part is not considered.	 */
 	public boolean positive(){return (Real.positive());}// && Imag.positive());}
 
+	/**Sets this to the real value 2, in Place, zeroing the imaginary part.	 */
 	public IIntRing twoAt()  {Real.twoAt  (); Imag.zeroAt(); return this;}
+	/**Sets this to the real value 3, in Place, zeroing the imaginary part.	 */
 	public IIntRing threeAt(){Real.threeAt(); Imag.zeroAt(); return this;}
 
 	/**Half in Place: x/=2	*/
@@ -743,7 +756,7 @@ implements IMeasurAble {
 			f.divAt(g); IMetricIRing tmp = f;
 			f = (IMetricIRing) f.sqr();
 			f.inc(); f.SqRtAt(); f.addAt(tmp); f.mulAt(g); f.SqRtAt(); }
-		if (rNeg) //wählt immer die Lösung mit der kleinsten Phase aus !
+		if (rNeg) //wï¿½hlt immer die Lï¿½sung mit der kleinsten Phase aus !
 		if (iNeg) {
 			f.negAt();
 		    Real = Imag; Real.divAt(f.dbl());
@@ -813,7 +826,7 @@ implements IMeasurAble {
 	public IIntRing toUpperAt(){throw new AbstractMethodError();}
 
 	/**Chordaler Betrag: 0 < x < 1 streng monoton steigend.
-	 * Der Chordale Betrag gibt die Höhe des Punktes
+	 * Der Chordale Betrag gibt die Hï¿½he des Punktes
 	 * auf der Riemannschen Zahlenkugel an.	 */
 	public AIntRing chordal() {
 		AIntRing tmp = (AIntRing) Norm();
@@ -1105,7 +1118,7 @@ implements IMeasurAble {
 		c3 = (MetricBody) ((Complex)c2.sqr()).SqRt();
 		System.out.println ("Test von Sqr/SqRt : Soll : (3,4)  Ist : (" + c3);
 		c3 = (MetricBody) ((Complex)c2.cbc()).CbcRt();
-		System.out.println ("Test von Cbc/CbcRt: Soll : (3,4)  Ist : (" + c3 + " oder um 120° verschoben");
+		System.out.println ("Test von Cbc/CbcRt: Soll : (3,4)  Ist : (" + c3 + " oder um 120ï¿½ verschoben");
 		c3 = (MetricBody) c2.CbcRt().cbc();
 		System.out.println ("Test von Cbc/CbcRt: Soll : (3,4)  Ist : (" + c3);
 	};

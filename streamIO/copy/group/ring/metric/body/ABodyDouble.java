@@ -39,6 +39,15 @@ import function.derive.CCountAble;
  *
  * Design Decisions:
  * This Implementation is made 'final' to exploit the resulting benefits. 
+ * <!-- docstate
+ * pass: 2
+ * mtime: 2026-09-05T20:56:38Z
+ * digest: f2796b9a281575b4e871ed0705c1f91218cf816458a4692ecfe1f2031ae6e53d
+ * stale: false
+ * tags: [code/rational_numbers, code/interval_arithmetic]
+ * concepts: [Rational Numbers and Interval Arithmetic]
+ * facets: {layer: domain, status: legacy, complexity: high}
+ * -->
  */
 public class ABodyDouble //
 extends AMetricBody
@@ -152,8 +161,9 @@ implements ICountAble, IMeasurAble {
 	 * When overriding, use newInstance on all Components.	 */
 	public ICopyAble newInstance() { return new ABodyDouble(); }
 
-	/** @see streamIO.copy.IICopyAble#randomizeAt()	 */
-	public ICopyAble randomizeAt() { return new ABodyDouble(ByRefDouble.RANDOM_1_1()); } 
+	/**Returns a new instance holding a random value in [-1, 1].
+	 * @see streamIO.copy.IICopyAble#randomizeAt()	 */
+	public ICopyAble randomizeAt() { return new ABodyDouble(ByRefDouble.RANDOM_1_1()); }
 
 	///////////////////////////////////////////////////////////////////////////
 	//	Constructors
@@ -191,7 +201,8 @@ implements ICountAble, IMeasurAble {
 			return ((ABodyDouble)arg).value; } 
 		return ByRefDouble.GET_DOUBLE(arg); }
 
-	public static boolean COMPARE_EXACT = false; 
+	/**Switches equality comparison between exact bitwise Comparison (true) and Epsilon-tolerant Comparison (false).	 */
+	public static boolean COMPARE_EXACT = false;
 
 	/**Compares two Objects for equality.
 	 * <p>
@@ -700,8 +711,8 @@ implements ICountAble, IMeasurAble {
 			if ((Val > 0) ^ (nVal > 0))	//Overflow or Underflow
 			{
 				if		(n < 0)		value = 0.0;	//Unterlauf, not signed
-				else if (Val > 0)	value = Double.POSITIVE_INFINITY; //Überlauf
-				else				value = Double.NEGATIVE_INFINITY; //Überlauf
+				else if (Val > 0)	value = Double.POSITIVE_INFINITY; //ï¿½berlauf
+				else				value = Double.NEGATIVE_INFINITY; //ï¿½berlauf
 			}
 		}
 		return this;
@@ -900,7 +911,7 @@ implements ICountAble, IMeasurAble {
 	//	Monoid	//
 	//////////////
 
-	/**Returns this=°arg  ==  this(arg) 	*/
+	/**Returns this=ï¿½arg  ==  this(arg) 	*/
 //	public SemiMonoid mapAt(SemiMonoid arg) { arg.copyAt (this); return arg; }
 
 	//////////////

@@ -23,6 +23,15 @@ import function.IMeasurAble;
  * The Behavior of Fractions can be controlled by boolean static Variables:
  * -The Denominator of Fraction will always be positive.
  * -A Fraction will always be shortened after any single Operation.
+ * <!-- docstate
+ * pass: 2
+ * mtime: 2026-09-05T21:00:02Z
+ * digest: 3b427498675f7efef18391a3bee458b1f45d3680af1489bfb629d48e901b68a4
+ * stale: false
+ * tags: [code/rational_numbers, code/interval_arithmetic]
+ * concepts: [Rational Numbers and Interval Arithmetic]
+ * facets: {layer: domain, status: legacy, complexity: high}
+ * -->
  */
 final public class Fraction
 extends AMetricBody {
@@ -63,12 +72,12 @@ extends AMetricBody {
 		Numerator = new RingLong(Numerator_);
 		Denominator = (MetricIRing) Numerator.one();	//Choose the same type -> faster
 	}
-
+*/
 	/**Helper Routine to convert to MetricIRing from any other Type.
 	 * Uses RingLong as the default Type.	 */
 /*	private final MetricIRing convertScalar (Object arg)
 	{return (arg instanceof MetricIRing)? (MetricIRing) arg : new RingLong(arg); }
-
+*/
 	/**Constructor that takes any Object as Input for the Numerator.
 	 * So far rounds to the nearest Integer.
 	 * The Denominator is set to one().
@@ -198,6 +207,10 @@ extends AMetricBody {
 	 *
 	 * Returns an Integer, not a Fraction,
 	 * this also saves time in further Calculations!	 */
+	// TODO: LOGIC: operands are swapped - this computes Denominator/Numerator (the reciprocal)
+	// instead of Numerator/Denominator, unlike the equivalent FloorAt() above which correctly
+	// divides Numerator by Denominator. Floor() therefore returns a wrong result for any Fraction
+	// where Numerator != Denominator (same bug is copy-paste-duplicated in FractionLong.java).
 	public IMetricIRing Floor() { return (IMetricIRing) Denominator.div(Numerator); }	//ignore the Remainder
 
 	/**less: '<' Returns True, when 'Self' < arg	 */
@@ -252,11 +265,11 @@ extends AMetricBody {
 		if (arg instanceof Fraction) {
 			ISemiGroupM H1 = Denominator.mul(((Fraction)arg).Numerator);
 			Numerator  .mulAt(((Fraction)arg).Denominator);
-			if (add) Numerator.addAt (H1);	//Flag für Addition/Subtraktion
+			if (add) Numerator.addAt (H1);	//Flag fï¿½r Addition/Subtraktion
 			else	 Numerator.subAt(H1);
 			Denominator.mulAt(((Fraction)arg).Denominator);
 		} else {	//Integer Argument
-			if (add) Numerator.addAt (Denominator.mul(arg));	//Flag für Addition/Subtraktion
+			if (add) Numerator.addAt (Denominator.mul(arg));	//Flag fï¿½r Addition/Subtraktion
 			else	 Numerator.subAt(Denominator.mul(arg));
 		}
 		if (doSimplify) return shortenAt();
@@ -377,8 +390,11 @@ extends AMetricBody {
 	 * the Fraction is converted to a Float.	 */
 	public static IMetricIRing DisplayThreshold;
 
+	/**String prepended before the Fraction when formatted as text.	 */
 	public static String Starter = "(";
+	/**String appended after the Fraction when formatted as text.	 */
 	public static String Stopper = ")";
+	/**String placed between Numerator and Denominator when formatted as text.	 */
 	public static String Separator = "/";
 
 	/**Returns a string representation of the object. In general, the
@@ -440,13 +456,17 @@ extends AMetricBody {
 	/** Quadruple in Place: x+=x; x+=x  == x*=4 	*/
 	public ISemiGroup quadAt() { Numerator.quadAt(); return this; }
 
+	/**Decrement in Place: x-=1	*/
 	public integer dec() { Numerator.subAt(Denominator); return this; }
+	/**Increment in Place: x+=1	*/
 	public integer inc() { Numerator.addAt (Denominator); return this; }
 	/**Residual in Place: 1-x	 */
 	public integer ResidAt() {
 		Numerator = (IMetricIRing)Denominator.sub(Numerator); return this; }
 
+	/**Returns whether this Fraction is negative (Denominator is kept positive by convention).	 */
 	public boolean negative() { return (Numerator.negative()); }
+	/**Returns whether this Fraction is positive (Denominator is kept positive by convention).	 */
 	public boolean positive() { return (Numerator.positive()); }
 
 	/**absolute Value in Place:				 |x|
@@ -454,7 +474,9 @@ extends AMetricBody {
 	 */
 	public IScalarMetric AbsVAt()  { Numerator.AbsVAt(); return this; }
 
+	/**Returns the exact two in Place.	 */
 	public IIntRing   twoAt() { Numerator.twoAt  (); Denominator.oneAt(); return this; }
+	/**Returns the exact three in Place.	 */
 	public IIntRing threeAt() { Numerator.threeAt(); Denominator.oneAt(); return this; }
 
 	/**Half in Place : x/=2	*/	public IIntRing halfAt () { Denominator.dblAt (); return this; }
@@ -465,6 +487,7 @@ extends AMetricBody {
 		Denominator.sqrAt();
 		return (ISemiGroupM) shortRoundAt(); }	//No ggT for Numerator or Denominator => only rounding.
 
+	/**Cubes this Fraction in Place, then shortens it (no ggT tracking, only rounding).	 */
 	public ISemiGroupM cbcAt() {
 		Numerator  .cbcAt();	//This may incur some optimization
 		Denominator.cbcAt();
@@ -523,7 +546,7 @@ extends AMetricBody {
 		Bei mehrfachen Nullstellen ist der p.Koeffizient der Reihe derjenige,
 		der zum Nenner (x-xo) mit der Potenz p+1 gehoert.
 		Bei konjugiert komplexen Nullstellen (p+i*q,p-i*q) besteht der
-		Nenner aus dem Quadrat (xý-2px+(pý+qý)) und der Zaehler aus dem
+		Nenner aus dem Quadrat (xï¿½-2px+(pï¿½+qï¿½)) und der Zaehler aus dem
 		Linearfaktor (A+Bx);hier wird zuerst A und dann B angegeben.
 
 PROCEDURE PartialBruch (R1 : Rational;VAR N : cNullstelle;VAR P1 : Polynom;
@@ -532,7 +555,7 @@ PROCEDURE PartialBruch (R1 : Rational;VAR N : cNullstelle;VAR P1 : Polynom;
  P_DVN (R1.Zaehler,R1.Nenner,P1,R1.Zaehler);
  NullSuche (R1.Nenner,N);
  Z2:=Succ (R1.Zaehler.Grad);
- Kopiere (R1.Zaehler.a,b.Matrix,Z2*SizeOf (Real)); {Z„hler ?bertragen}
+ Kopiere (R1.Zaehler.a,b.Matrix,Z2*SizeOf (Real)); {Zï¿½hler ?bertragen}
  Loesche (@b.Matrix^[Z2],(R1.Nenner.Grad-R1.Zaehler.Grad)*SizeOf (Real)); {ZeilenMatrix unpassend}
  FOR Z1:=1 TO R1.Nenner.Grad DO    {echt gebrochen rational !}
   BEGIN

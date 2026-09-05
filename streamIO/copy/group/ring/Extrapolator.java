@@ -8,6 +8,15 @@ import streamIO.copy.group.IGroup;
   * It uses either rational or polynomial Interpolation,
   * where the first one is more flexible in the Presence of Poles.
   *
+  * <!-- docstate
+  * pass: 2
+  * mtime: 2026-09-05T10:13:24Z
+  * digest: c1176c5e06f4f2416b6034738fd3ba11f5c4c6233940c981f0c6b0a2ac222c9e
+  * stale: false
+  * tags: [code/ring_theory, code/ode_solver]
+  * concepts: [Ring Algebra and ODE Solvers]
+  * facets: {layer: domain, status: legacy, complexity: high}
+  * -->
   * This Interpolator can be reset after work to calculate another Interpolation */
 public class Extrapolator {
 

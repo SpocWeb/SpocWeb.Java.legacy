@@ -25,6 +25,15 @@ import streamIO.object.enumer.container.AContainer;
   * Created on	2001-06-12, 12;14;36<p>
   * @author 	Matthias Heuer
   * @version	1.0
+  * <!-- docstate
+  * pass: 2
+  * mtime: 2026-09-05T10:13:24Z
+  * digest: d146d9f54504c07e2d37d7c4753ada5a96d23a1b1d10cbcb95dfee3016e527b1
+  * stale: false
+  * tags: [code/ring_theory, code/ode_solver]
+  * concepts: [Ring Algebra and ODE Solvers]
+  * facets: {layer: domain, status: legacy, complexity: high}
+  * -->
   */
 public abstract class ABoolRing 
 extends ARing //ABoole // ALattice //

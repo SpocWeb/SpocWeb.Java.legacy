@@ -18,6 +18,15 @@ import streamIO.copy.ICopyAble;
  * Abstract Methods:
  * addAt (+=)
  * subAt(-=)
+ * <!-- docstate
+ * pass: 2
+ * mtime: 2026-09-05T21:16:44Z
+ * digest: 9feda1a5b100dd0d323db8d2add7a65d93675a05f0fa0011ce6bfda352dd51ed
+ * stale: false
+ * tags: [code/group_algebra, code/date_time]
+ * concepts: [Group/SemiGroup Algebra]
+ * facets: {layer: domain, status: legacy, complexity: high}
+ * -->
  */
 public abstract class AGroup
 extends ASemiGroup
@@ -30,7 +39,8 @@ implements IGroup {
 
 	//Implementation of Interface "Group":
 
-	/** @return this, set to 0 in Place:
+	/**Sets this to 0 in Place, by subtracting itself from itself.
+	 * @return this, set to 0 in Place:
 	  * Can be implemented by subtracting any number from itself.
 	  * A Standard Implementation. Should be overwritten by faster Implementations.	 */
 	public IGroup zeroAt() { return subAt(this); }

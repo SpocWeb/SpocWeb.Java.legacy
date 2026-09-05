@@ -6,6 +6,15 @@ import streamIO.exception.ReadOnlyException;
 
 /**Implements Constants for all Types of Ring Classes.
  * This Class inhibits the Use of ...At() Routines
+ * <!-- docstate
+ * pass: 2
+ * mtime: 2026-09-05T10:13:24Z
+ * digest: b85799f343ff74d6eb45c04cee2f58d9fed2a55c10893c662039e6d4950463d7
+ * stale: false
+ * tags: [code/ring_theory, code/ode_solver]
+ * concepts: [Ring Algebra and ODE Solvers]
+ * facets: {layer: domain, status: legacy, complexity: high}
+ * -->
  * but still supports all other Methods of the Ring Class.	 */
 public class CRing
 extends CGroup

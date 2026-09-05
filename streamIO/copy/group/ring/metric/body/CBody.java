@@ -17,6 +17,11 @@ import function.IMeasurAble;
   * so either AMetricIRing or ConstRing would be the Parent
   * and I rather inherit the Implementations of AMetricIRing for now...
   * As an Optimization later all the Methods will be delegated to inner
+  * <!-- docstate
+  * tags: [code/rational_numbers, code/interval_arithmetic]
+  * concepts: [Rational Numbers and Interval Arithmetic]
+  * facets: {layer: domain, status: legacy, complexity: high}
+  * -->
   * and can then be derived from ConstRing.	 */
 public class CBody
 extends CMetricIRing

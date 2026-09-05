@@ -10,6 +10,15 @@ import streamIO.copy.groupM.IGroupM;
  * by Relations ">"resp."<".
  * Connex means that these Relations are defined for any two Elements.
  * I.e. there is a largest Element, which is also the maximum Element.
+ * <!-- docstate
+ * pass: 2
+ * mtime: 2026-09-05T10:13:24Z
+ * digest: 25cbcb318dfe7b8eb0b484a17f5fea6b65ef8ac52e614b4894759d5f4349ff5e
+ * stale: false
+ * tags: [code/metric_space, code/root_finding, code/numerical_integration, code/big_integer_arithmetic]
+ * concepts: [Metric Spaces - Root Finding and Numerical Integration]
+ * facets: {layer: domain, status: legacy, complexity: high}
+ * -->
  * In Addition there are maximum and minimum Values for this Class.	 */
 public class AWellOrder
 extends ACopyAble

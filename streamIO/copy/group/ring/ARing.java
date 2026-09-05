@@ -31,6 +31,15 @@ import streamIO.copy.groupM.ISemiGroupM;
  * Abstract Methods:
  *  addAt(+=)
  * subAt(-=)
+ * <!-- docstate
+ * pass: 2
+ * mtime: 2026-09-05T10:13:24Z
+ * digest: de97b5d79902ba6cbfcf1a7374a505eeabbb721a4e6b9264ab147a9d0947aff1
+ * stale: false
+ * tags: [code/ring_theory, code/ode_solver]
+ * concepts: [Ring Algebra and ODE Solvers]
+ * facets: {layer: domain, status: legacy, complexity: high}
+ * -->
  *  mulAt(*=)	 */
 public abstract class ARing
 extends AGroup

@@ -10,6 +10,15 @@ import function.IFunction;
 /**Extends Extrapolator with an Evaluation, if the Extrapolation converges
  * and if yes, to which Value it converges.
  * Only now is it possible to define Methods that can calculate Limits
+ * <!-- docstate
+ * pass: 2
+ * mtime: 2026-09-05T10:13:24Z
+ * digest: 7efb6e6bddb46c376a3220bdea35c259f20d40a665e751166ec8ed9b60c54d8f
+ * stale: false
+ * tags: [code/metric_space, code/root_finding, code/numerical_integration, code/big_integer_arithmetic]
+ * concepts: [Metric Spaces - Root Finding and Numerical Integration]
+ * facets: {layer: domain, status: legacy, complexity: high}
+ * -->
  * by themselves, because Convergence cannot be defined without a Metric.  */
 public class ExtraPolValue
 extends Extrapolator {
@@ -146,7 +155,7 @@ extends Extrapolator {
 
 	/**Calculates the Limes of a Function when it's Value converges to x0	 */
 	public IIntRing lim (IFunction F, IIntRing x0, IIntRing h) {
-		//{f (x0+h) = f (x0)+h*f' (x0)+hý*f'' (x0)+... }
+		//{f (x0+h) = f (x0)+h*f' (x0)+hï¿½*f'' (x0)+... }
 		reset();
 //		MetricIRing one = (MetricIRing) h.one();
 //		IIntRing Help = (one.less(h))? (IIntRing) one.divAt(h) : h;

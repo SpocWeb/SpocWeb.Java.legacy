@@ -5,6 +5,15 @@ package streamIO.copy.group.ring;
  * This can be used for DGLs of higher Degree
  * by just using a Tensor as y Value and defining one Dimension per Degree.
  * Of course you can also integrate several independent DGLs in one.
+ * <!-- docstate
+ * pass: 2
+ * mtime: 2026-09-05T10:13:24Z
+ * digest: 33c58da311af1032e9bb1ba07335add56ef5a5e996131c5442db1479c6e11001
+ * stale: false
+ * tags: [code/ring_theory, code/ode_solver]
+ * concepts: [Ring Algebra and ODE Solvers]
+ * facets: {layer: domain, status: legacy, complexity: high}
+ * -->
  */
 public interface IStepper {
 

@@ -12,6 +12,15 @@ import function.vector.IBinaryOpFloat;
  *
  * Step() performs a single Step with variable width.
  * Run () performs as many Steps as necessary to reach a certain x Value.
+ * <!-- docstate
+ * pass: 2
+ * mtime: 2026-09-05T21:07:56Z
+ * digest: b150e51d866d804019d583762b0b2efccb3544b21144076819556a7b74fa991c
+ * stale: false
+ * tags: [code/metric_space, code/root_finding, code/numerical_integration, code/big_integer_arithmetic]
+ * concepts: [Metric Spaces - Root Finding and Numerical Integration]
+ * facets: {layer: domain, status: legacy, complexity: high}
+ * -->
  */
 public class StepRKF
 extends StepRKQ { //AStepper { //
@@ -22,6 +31,7 @@ extends StepRKQ { //AStepper { //
 	/**Local Helper Vectors, contains intermediate Results	 */
 	protected double[] dY, YS;
 
+	/**Initializes this Stepper and allocates the generic IIntRing Helper Vectors dy/yS.	 */
 	public void Init(IIntRing Step, IIntRing x_, IIntRing y_, IODE f_) {
 		super.Init(Step, x_, y_, f_);
 		dy = (IIntRing) y_.newInstance();
@@ -29,6 +39,7 @@ extends StepRKQ { //AStepper { //
 		derive = true;	//recalculate the Derivative on next Step!
 	}	//Allocate Space to save iterative Allocation and Destruction!
 
+	/**Initializes this Stepper and allocates the primitive double[] Helper Vectors dY/YS.	 */
 	public void Init(double Step, double x_, double[] y_, IBinaryOpFloat f_) {
 		super.Init(Step, x_, y_, f_);
 		dY = new double[y_.length];
@@ -36,7 +47,7 @@ extends StepRKQ { //AStepper { //
 		derive = true;	//recalculate the Derivative on next Step!
 	}	//Allocate Space to save iterative Allocation and Destruction!
 
-	/**
+	/**Constructor for a single-Dimensional System.
 	 * @param stepSize_
 	 * @param x
 	 * @param y
@@ -46,7 +57,7 @@ extends StepRKQ { //AStepper { //
 	public StepRKF(double stepSize_, double x, double y, double accuracy_, IBinaryOpFloat f) {
 		super(stepSize_, x, y, accuracy_, f); }
 
-	/**
+	/**Constructor for a multi-Dimensional System.
 	 * @param stepSize_
 	 * @param x
 	 * @param y

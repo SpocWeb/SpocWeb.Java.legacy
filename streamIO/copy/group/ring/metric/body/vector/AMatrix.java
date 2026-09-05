@@ -8,6 +8,11 @@ import streamIO.copy.group.ring.metric.AMetricIRing;
   * This has been done implicitly by having ATensor extend AAlgebra instead of
   * @see AMetricIRing
   * AMatrix  -> ATensor -> AAlgebra -> AMetricIRing
+  * <!-- docstate
+  * tags: [code/tensor, code/manifold_generation, code/interpolation]
+  * concepts: [Vector/Matrix/Tensor and Manifold Interpolation]
+  * facets: {layer: domain, status: legacy, complexity: high}
+  * -->
   */
 public abstract class AMatrix
 extends ATensor

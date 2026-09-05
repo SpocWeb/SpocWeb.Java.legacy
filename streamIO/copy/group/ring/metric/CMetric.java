@@ -4,6 +4,15 @@ import streamIO.copy.CCopyAble;
 
 /**Implements Constants for all Types of WellOrder Classes.
  * This Class inhibits the Use of ...At() Routines
+ * <!-- docstate
+ * pass: 2
+ * mtime: 2026-09-05T10:13:24Z
+ * digest: 29890469122e171ddf801c1d6050f5a475e1dc6f7dfa41872171f33af378f783
+ * stale: false
+ * tags: [code/metric_space, code/root_finding, code/numerical_integration, code/big_integer_arithmetic]
+ * concepts: [Metric Spaces - Root Finding and Numerical Integration]
+ * facets: {layer: domain, status: legacy, complexity: high}
+ * -->
  * but still supports all other Methods of the WellOrder Class.	 */
 public class CMetric
 extends CCopyAble

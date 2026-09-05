@@ -38,6 +38,15 @@ import function.IOrderAble;
   */
 /** Most generic Implementation of a Tensor
   * The Elements can be Scalars or Tensors, which creates a Tensor of higher Degree
+  * <!-- docstate
+  * pass: 2
+  * mtime: 2026-09-05T20:46:21Z
+  * digest: 4eef7e2895f2aadb1af8af15d8cd04f26a8ea76130b428e97513c5d6ec79c887
+  * stale: false
+  * tags: [code/tensor, code/manifold_generation, code/interpolation]
+  * concepts: [Vector/Matrix/Tensor and Manifold Interpolation]
+  * facets: {layer: domain, status: legacy, complexity: high}
+  * -->
   */
 public class Tensor
 extends ATensor { //AManifold
@@ -174,7 +183,8 @@ extends ATensor { //AManifold
 	//	IndexEnumerator: abstract Methods
 	///////////////////////////////////////////////////////////////////////////
 
-	/** @return the Item at the given Multi Index Position
+	/**Returns the Item at the given Multi Index Position, up to its own full Degree.
+	  * @return the Item at the given Multi Index Position
 	  * This is used to define the generic Tensor Product!
 	  * @return this for index.Grad == -1  !
 	  *
@@ -183,7 +193,8 @@ extends ATensor { //AManifold
 	public IIntRing getAt(Permutation MIndex) {
 		return getAt(MIndex, MIndex.getDim()); }
 
-	/** @return the Item at the given Multi Index Position
+	/**Returns the Item at the given Multi Index Position, descending at most MaxGrad levels.
+	  * @return the Item at the given Multi Index Position
 	  * This is used to define the generic Tensor Product!
 	  * @return this for index.Grad == -1  !
 	  *
@@ -196,7 +207,8 @@ extends ATensor { //AManifold
 			ret = ((Tensor) ret).a[MIndex.a[Degree]]; }
 		return ret; }
 
-	/** @return the Item at the given Multi Index Position
+	/**Sets the Item at the given Multi Index Position, up to its own full Degree.
+	  * @return the Item at the given Multi Index Position
 	  * This is used to define the generic Tensor Product!
 	  * @return this for index.Grad == -1  !
 	  *
@@ -205,7 +217,8 @@ extends ATensor { //AManifold
 	public void setAt(Permutation MIndex, IIntRing Value) {
 		setAt(MIndex, Value, MIndex.getDim()); }
 
-	/** @return the Item at the given Multi Index Position
+	/**Sets the Item at the given Multi Index Position, descending at most MaxGrad levels.
+	  * @return the Item at the given Multi Index Position
 	  * This is used to define the generic Tensor Product!
 	  * @return this for index.Grad == -1  !
 	  *
@@ -221,7 +234,8 @@ extends ATensor { //AManifold
 //		ret   =    Value ;
 	}
 
-	/** @return the Item at the given absolute Position
+	/**Returns the Element at the given absolute Position, or EOI/SOI past either end.
+	  * @return the Item at the given absolute Position
 	  * While this is possible in principle for all Enumerators,
 	  * it is too ineffective to loop through the whole Enumerator
 	  */
@@ -231,7 +245,8 @@ extends ATensor { //AManifold
 		if (index < 0) return SOI;
 		return a[index]; }
 
-	/** @return the Item at the given absolute Position
+	/**Inserts arg at the given absolute Position, shifting later Elements up by one.
+	  * @return the Item at the given absolute Position
 	  * While this is possible in principle for all Enumerators,
 	  * it is too ineffective to loop through the whole Enumerator
 	  */
@@ -358,21 +373,24 @@ extends ATensor { //AManifold
 			a[i] = (IIntRing) a2[i];
 		return; }
 
-	/** @return Negation in Place: -		*/
+	/**Negates every Element of this Tensor in Place.
+	 * @return Negation in Place: -		*/
 	public IGroup negAt() {
 		int i = mDim+1;
 		while (--i >= 0)
 			a[i].negAt();
 		return this; }
 
-	/** @return Inversion in Place: 1/x		*/
+	/**Inverts every Element of this Tensor in Place.
+	 * @return Inversion in Place: 1/x		*/
 	public IGroupM invAt() {
 		int i = mDim+1;
 		while (--i >= 0)
 			a[i].invAt();
 		return this; }
 
-	/** @return the maximum Value  (less than Infinity) for this Class in Place.	 */
+	/**Sets every Element of this Tensor to its type's maximum finite Value, in Place.
+	 * @return the maximum Value  (less than Infinity) for this Class in Place.	 */
 	public IWellOrder maxValueAt() {
 		int i = mDim+1;
 		while (--i >= 0)
@@ -382,14 +400,16 @@ extends ATensor { //AManifold
 	/** @return the maximum Value  (less than Infinity) for this Class in Place.	 */
 //	public WellOrder maxValueAt() { Value = Double.MAX_VALUE; return this; }
 
-	/** @return A Vector with integer Numbers in Place: FloorAt	*/
+	/**Truncates every Element of this Tensor to an Integer, in Place.
+	 * @return A Vector with integer Numbers in Place: FloorAt	*/
 	public IIntRing IntAt() {
 		int i = mDim+1;
 		while (--i >= 0) //TODO: find out how IntAt should be implemented!
 			a[i].IntAt();
 		return this; }
 
-	/** @return A Vector with integer Numbers in Place: FloorAt	*/
+	/**Floors every Element of this Tensor in Place.
+	 * @return A Vector with integer Numbers in Place: FloorAt	*/
 	public IMetricIRing FloorAt() {
 		int i = mDim+1;
 		while (--i >= 0)
@@ -475,14 +495,16 @@ extends ATensor { //AManifold
 	/**Optimizations are very likely here,
 	 * but the Algorithm would be too complicated to be implemented here!	 */
 
-	/** @return the Square in Place: x*=x	*/
+	/**Squares every Element of this Tensor in Place.
+	 * @return the Square in Place: x*=x	*/
 	public ISemiGroupM sqrAt () {
 		int i = mDim+1;
 		while (--i >= 0) {
 			a[i].sqrAt();
 		} return this; }
 
-	/** @return the Cubic in Place: x*=x^2	*/
+	/**Cubes every Element of this Tensor in Place.
+	 * @return the Cubic in Place: x*=x^2	*/
 	public ISemiGroupM cbcAt () {
 		int i = mDim+1;
 		while (--i >= 0) {
@@ -496,14 +518,16 @@ extends ATensor { //AManifold
 			a[i].cjgAt();
 		} return this; }
 
-	/** @return the Complement in Place: 1-x	 */
+	/**Complements every Element of this Tensor in Place.
+	 * @return the Complement in Place: 1-x	 */
 	public IIntRing CmplAt() {
 		int i = mDim+1;
 		while (--i >= 0) {
 			a[i].CmplAt();
 		} return this; }
 
-	/** @return true when this is Object has an imaginary Component	 */
+	/**Returns whether any Element of this Tensor has an imaginary Component.
+	 * @return true when this is Object has an imaginary Component	 */
 	public boolean isComplex() {
 		int i = mDim+1;
 		while (--i >= 0) {
@@ -517,7 +541,8 @@ extends ATensor { //AManifold
 	/** Carry the Overflow through the g-adic Representation.	 */
 	public IIntRing toUpperAt() { return this; }
 
-	/** @return the Sum of all Elements	 */
+	/**Returns the Sum of all Elements of this Tensor.
+	 * @return the Sum of all Elements	 */
 	public IIntRing Sum() {
 		int i = mDim;
 		IIntRing ret = (IIntRing) a[i].copy();
@@ -525,7 +550,8 @@ extends ATensor { //AManifold
 			ret.addAt(a[i]); }
 		return ret; }
 
-	/** @return the Sum of all Elements	 */
+	/**Returns the Product of all Elements of this Tensor.
+	 * @return the Sum of all Elements	 */
 	public IIntRing Prod() {
 		int i = mDim;
 		IIntRing ret = (IIntRing) a[i].copy();
@@ -608,8 +634,9 @@ extends ATensor { //AManifold
 				 int i = mDim+1; while (--i >= 0) a[i].LinAt(a1, ((Tensor) y).a[i]); }
 			else{int i = mDim+1; while (--i >= 0) a[i].LinAt(a1, y); }
 		return this; }
+*/
 
-	/**  Linear Mapping in Place: x+=a * y	*/
+	/**Adds a1 times y to this Tensor, element-wise, in Place: x += a1*y.	 */
 	public IRing addProdAt (Object a1, Object y)	{
 		if ((!(a1 instanceof Tensor)) && (y instanceof Tensor))
 			 return opAt(a1, (Tensor)y, null, opFlag_AddProd);
@@ -628,8 +655,9 @@ extends ATensor { //AManifold
 			else{SemiGroupM tmp = ((SemiGroupM)a1).mul(y);
 				 int i = mDim+1; while (--i >= 0) a[i].addAt(tmp); }
 		return this; }
+*/
 
-	/**  Linear Mapping in Place: x-=a * y	*/
+	/**Subtracts a1 times y from this Tensor, element-wise, in Place: x -= a1*y.	 */
 	public IRing subtProdAt (Object a1, Object y) {
 		if ((!(a1 instanceof Tensor)) && (y instanceof Tensor))
 			 return opAt(a1, (Tensor)y, null, opFlagSubtProd);
@@ -648,8 +676,10 @@ extends ATensor { //AManifold
 			else{SemiGroupM tmp = ((SemiGroupM)a1).mul(y);
 				 int i = mDim+1; while (--i >= 0) a[i].subAt(tmp); }
 		return this; }
+*/
 
-	/**BiLinear Mapping in Place: x*=a + y*b	*/
+	/**Combines this Tensor with a1, y and b as x = x*a1 + y*b, element-wise, in Place.
+	 * BiLinear Mapping in Place: x*=a + y*b	*/
 	public IRing BiLinAt(Object a1, Object y, Object b)	{
 		if ((!(a1 instanceof Tensor)) && (y instanceof Tensor) && (!(b instanceof Tensor)))
 			 return opAt(a1, (Tensor)y, (IIntRing)b, opFlagBiLin);
@@ -685,6 +715,7 @@ extends ATensor { //AManifold
 	 * optionally multiplies the first and/or second Vector with a Scalar.
 	 * The Sequence of Processing is swapped, so the Carry can add
 	 * through the (newer) higher Coefficients (no longer necessary, only for gAdic).	 */
+	/**Returns a copy of this Tensor combined element-wise with arg per the given op-code.	 */
 	public Tensor op(Object s1, Tensor arg, IIntRing s2, int Operation) {
 		return ((Tensor) copy()).opAt(s1, arg, s2, Operation); }
 
@@ -836,7 +867,8 @@ extends ATensor { //AManifold
 	//	Generic Scalar Products
 	//////////////////////////////
 
-	/** @return this Tensor multiplied in Place at the given Degree.
+	/**Multiplies this Tensor by arg in Place, recursing to the given Degree.
+	  * @return this Tensor multiplied in Place at the given Degree.
 	  * This is a pre Step to calculating the Scalar Product.
 	  *
 	  * The outer structure remains the same and is used to hold the Product.
@@ -850,14 +882,15 @@ extends ATensor { //AManifold
 			a[i] = ((Tensor) a[i]).dyadAt(arg, Degree);
 		} return this; }
 
-	/** @return the dyadic Product of this Tensor and arg.
+	/**Computes the dyadic Product of this Tensor and arg_ in Place.
+	  * @return the dyadic Product of this Tensor and arg.
 	  * This is a pre Step to calculating the generic Scalar Product.
 	  * The Degree of the Tensor is the Sum of the Degrees of the Factors.
 	  *
 	  * The inner structure of arg is retained on creating the Product.
 	  *
-	  * a[i,j,k]°b[l,m,n] = c[i,j,k,l,m,n] is the scalar Element calculated by
-	  * a[i,j,k] := a[i,j,k]°b[]
+	  * a[i,j,k]ï¿½b[l,m,n] = c[i,j,k,l,m,n] is the scalar Element calculated by
+	  * a[i,j,k] := a[i,j,k]ï¿½b[]
 	  */
 	public ITensor dyadAt(ITensor arg_) {
 		Tensor arg = (Tensor) arg_;
@@ -893,10 +926,10 @@ extends ATensor { //AManifold
 		//TODO: Implement this
 		return this; }
 
-	/** "Multiplication": °
+	/** "Multiplication": ï¿½
 	  * This is in fact a non-commutative linear Mapping:
-	  * M°(a+b) == M°a + M°b
-	  * (x+y)°M == x°M + y°M
+	  * Mï¿½(a+b) == Mï¿½a + Mï¿½b
+	  * (x+y)ï¿½M == xï¿½M + yï¿½M
 	  *
 	  * The Matrix itself is the Derivative Jacobian Matrix of the Mapping:
 	  * (A*x)' = A
@@ -923,10 +956,10 @@ extends ATensor { //AManifold
 			return cat(arg); } //results not in a Mapping in Place!
 	}
 
-	/** Scalar Product Multiplication: °
+	/** Scalar Product Multiplication: ï¿½
 	  * This is in fact a non-commutative linear Mapping:
-	  * M°(a+b) == M°a + M°b
-	  * (x+y)°M == x°M + y°M
+	  * Mï¿½(a+b) == Mï¿½a + Mï¿½b
+	  * (x+y)ï¿½M == xï¿½M + yï¿½M
 	  *
 	  * The Matrix itself is the Derivative Jacobian Matrix of the Mapping:
 	  * (A*x)' = A
@@ -990,6 +1023,7 @@ extends ATensor { //AManifold
 	  *
 	  * T[i,k,j]*A[j,m] =T[i,k][j]*A[j][m]
 	  */
+	/**Computes the Tensor Product of this Tensor with a Matrix along the given Degree, in Place.	 */
 	public ITensor catAt(byte Degree1, Matrix arg) {
 		if (--Degree1 < 0) { //do the actual Multiplication
 			if (a[0] instanceof Tensor) { //multiplying from the left!
@@ -1004,7 +1038,8 @@ extends ATensor { //AManifold
 			return this; }
 	}
 
-	/** @return the Element of the generic Tensor Product
+	/**Returns the Element of the generic Tensor Product of Tensor1 and Tensor2 at the given indices.
+	  * @return the Element of the generic Tensor Product
 	  * calculated from the Coefficients at the given Multi Index Positions
 	  * of the Factors.
 	  * @return Sum(MIndex1[Degree1] = MIndex2[Degree2], Tensor1[MIndex1] * Tensor2[MIndex2])

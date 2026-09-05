@@ -1,9 +1,8 @@
 package streamIO.copy.group.ring.metric.body.units;
 
 import java.io.IOException;
-/**
-  * Title: UnitLinear<p>
-  * Description:
+/**A {@link Unit} that converts to its Base Unit by a pure multiplicative ratio (no offset),
+  * e.g. kilometers to meters.
   *
   * Defines the Interface for a Unit with linear Ratio to the Base Unit.
   * A Unit defines the Metric and Norm for a Parameter Space
@@ -49,6 +48,15 @@ import java.io.IOException;
   * Created on	2000-08-13, 02;34;24<p>
   * @author 	Matthias Heuer
   * @version	1.0
+  * <!-- docstate
+  * pass: 2
+  * mtime: 2026-09-05T16:35:13Z
+  * digest: 81a89862da43f67427af9d9ba1edbeab4f9f60b558d60345abd47c00bbd5c06a
+  * stale: false
+  * tags: [code/si_units, code/unit_conversion]
+  * concepts: [Physical Units and Conversion]
+  * facets: {layer: domain, status: legacy, complexity: high}
+  * -->
   */
 public class UnitLinear
 extends Unit {
