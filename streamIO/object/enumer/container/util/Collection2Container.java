@@ -23,6 +23,11 @@ import streamIO.object.enumer.container.Container;
   * Created on	2000-12-26, 03;03;41<p>
   * @author 	Matthias Heuer
   * @version	1.0
+  * <!-- docstate
+  * tags: [code/adapter, code/scheduling]
+  * concepts: [Small Adapter and Scheduling Helper Classes]
+  * facets: {layer: utility, status: legacy, complexity: high}
+  * -->
   */
 public class Collection2Container 
 extends AContainer {
@@ -168,7 +173,8 @@ extends AContainer {
 	public long reSet(long Position) { //throws    NoSuchMethodException {
 		reSet (); if (Position == 0) return 0; return jump(Position);  }
 
-	/** @return this, set to the Boolean Constant for the Representation of 'false' = 0
+	/** Clears the underlying Collection.
+	 * @return this, set to the Boolean Constant for the Representation of 'false' = 0
 	  * i.e. not 'true'.
 	  * For Conatainers this is equivalent to zeroAt() and clear()
 	  * @see zeroAt()	 */

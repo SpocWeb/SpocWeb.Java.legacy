@@ -72,6 +72,11 @@ import function.index.IIndexAble;
   * If the Set is completely unordered (less and grtr always return false),
   * this Class works like a Stack. If grtr is not implemented,
   * it works like a Mixture between Heap and Stack, i.e. the first Half
+  * <!-- docstate
+  * tags: [code/container, code/hash_table, code/container_iteration]
+  * concepts: [Concrete Storage Containers - Arrays - Hash Tables and Relations]
+  * facets: {layer: utility, status: legacy, complexity: high}
+  * -->
   * is returned in Order and the second Half in Reverse. 	 */
 public class Heap
 extends AContainer
@@ -149,14 +154,16 @@ extends AContainer
 		return EOI; 
 	}	
 
-	/** @return true when this Object is contained in this Container
+	/** Tests, by linear Search, whether an equal Object is stored in this Heap.
+	  * @return true when this Object is contained in this Container
 	  * This is the same Operation as (findFirst() != EOI) || (available() >= 0)
 	  * @see Sub() and SubEq() for the according Container Methods,
 	  * The Name contains() is only to be used for single Elements
 	  */
 	public boolean contains(final Object item) { return findFirst(item) != EOI; }
 
-	/** @return a new (uninitialized) Instance of this Class	  */
+	/** Creates a new, empty Heap with the default Size and Order.
+	 * @return a new (uninitialized) Instance of this Class	  */
 	public ICopyAble newInstance() {
 		return new Heap(); }
 
@@ -164,7 +171,8 @@ extends AContainer
 	//  Accessor Methods (getXXX/setXXX/isXXX/makeXXX)
 	////////////////////////////////////////////////////////////////////////////
 
-	/** @return the Number of Items in the Queue	 */
+	/** Returns the current Element Count.
+	 * @return the Number of Items in the Queue	 */
 	public long availAble() { return N; }
 
 	/** Returns the Contents of the Heap as a reverse sorted Array.
@@ -196,6 +204,7 @@ extends AContainer
 		return N; }
 
 	/**
+	  * Returns the current Element Count, not the backing Array's allocated Length.
 	  * @return the actual Capacity of this Heap	 */
 	public int getCapacity() { return N; }
 

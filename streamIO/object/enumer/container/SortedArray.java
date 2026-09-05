@@ -57,6 +57,11 @@ import function.byref.ByRefDouble;
  * to the Item is returned. Using the inherited Methods even returns
  * the correct Position before or after the Array Index Range.
  *
+ * <!-- docstate
+ * tags: [code/container, code/hash_table, code/container_iteration]
+ * concepts: [Concrete Storage Containers - Arrays - Hash Tables and Relations]
+ * facets: {layer: utility, status: legacy, complexity: high}
+ * -->
  */
 public class SortedArray
 extends Array {
@@ -130,62 +135,78 @@ extends Array {
 
 	//4 Parameters
 
+	/** Delegates to the 5-parameter constructor with the default ascending Order. */
 	public SortedArray(final int initialCapacity, final int capacityIncrement, final IOrderator Comparator, final boolean interpolating) {
 		this(initialCapacity, capacityIncrement, Comparator, interpolating, DEFAULT_ASCENDING_ORDER); }
 
+	/** Delegates to the 5-parameter constructor with no explicit Comparator. */
 	public SortedArray(final int initialCapacity, final int capacityIncrement, final boolean interpolating, final boolean ascendingOrder) {
 		this(initialCapacity, capacityIncrement, null, interpolating, ascendingOrder); }
 
+	/** Delegates to the 5-parameter constructor with the default Capacity Increment. */
 	public SortedArray(final int initialCapacity, final IOrderator Comparator, final boolean interpolating, final boolean ascendingOrder) {
 		this(initialCapacity, DEFAULT_CAPACITY_INCREMENT, Comparator, interpolating, ascendingOrder); }
 
 	//3 Parameters
 
+	/** Delegates to the 5-parameter constructor with the default Interpolation and Order settings. */
 	public SortedArray(final int initialCapacity, final int capacityIncrement, final IOrderator Comparator) {
 		this(initialCapacity, capacityIncrement, Comparator, DEFAULT_INTERPOLATE, DEFAULT_ASCENDING_ORDER); }
 
+	/** Delegates to the 5-parameter constructor with no explicit Comparator and the default Order. */
 	public SortedArray(final int initialCapacity, final int capacityIncrement, final boolean interpolating) {
 		this(initialCapacity, capacityIncrement, null, interpolating, DEFAULT_ASCENDING_ORDER); }
 
+	/** Delegates to the 5-parameter constructor with the default Capacity Increment and Order. */
 	public SortedArray(final int initialCapacity, final IOrderator Comparator, final boolean interpolating) {
 		this(initialCapacity, DEFAULT_CAPACITY_INCREMENT, Comparator, interpolating, DEFAULT_ASCENDING_ORDER); }
 
 
+	/** Delegates to the 5-parameter constructor with the default Capacity Increment and no explicit Comparator. */
 	public SortedArray(final int initialCapacity, final boolean interpolating, final boolean ascendingOrder) {
 		this(initialCapacity, DEFAULT_CAPACITY_INCREMENT, null, interpolating, ascendingOrder); }
 
 
+	/** Delegates to the 5-parameter constructor with the default initial Capacity and Increment. */
 	public SortedArray(final IOrderator Comparator, final boolean interpolating, final boolean ascendingOrder) {
 		this(DEFAULT_CAPACITY, DEFAULT_CAPACITY_INCREMENT, Comparator, interpolating, ascendingOrder); }
 
 	//2 Parameters
 
+	/** Delegates to the 5-parameter constructor with no explicit Comparator and the default Interpolation and Order settings. */
 	public SortedArray(final int initialCapacity, final int capacityIncrement) {
 		this(initialCapacity, capacityIncrement, null, DEFAULT_INTERPOLATE, DEFAULT_ASCENDING_ORDER); }
 
+	/** Delegates to the 5-parameter constructor with the default Capacity Increment, Interpolation and Order settings. */
 	public SortedArray(final int initialCapacity, final IOrderator Comparator) {
 		this(initialCapacity, DEFAULT_CAPACITY_INCREMENT, Comparator, DEFAULT_INTERPOLATE, DEFAULT_ASCENDING_ORDER); }
 
 
+	/** Delegates to the 5-parameter constructor with the default Capacity Increment, no explicit Comparator, and the default Order. */
 	public SortedArray(final int initialCapacity, final boolean interpolating) {
 		this(initialCapacity, DEFAULT_CAPACITY_INCREMENT, null, interpolating, DEFAULT_ASCENDING_ORDER); }
 
 
+	/** Delegates to the 5-parameter constructor with the default initial Capacity, Increment and Order. */
 	public SortedArray(final IOrderator Comparator, final boolean interpolating) {
 		this(DEFAULT_CAPACITY, DEFAULT_CAPACITY_INCREMENT, Comparator, interpolating, DEFAULT_ASCENDING_ORDER); }
 
 
+	/** Delegates to the 5-parameter constructor with the default initial Capacity, Increment and no explicit Comparator. */
 	public SortedArray(final boolean interpolating, final boolean ascendingOrder) {
 		this(DEFAULT_CAPACITY, DEFAULT_CAPACITY_INCREMENT, null, interpolating, ascendingOrder); }
 
 	//1 Parameter
 
+	/** Delegates to the 5-parameter constructor with the default Capacity Increment, no explicit Comparator, and the default Interpolation and Order settings. */
 	public SortedArray(final int initialCapacity) {
 		this(initialCapacity, DEFAULT_CAPACITY_INCREMENT, null, DEFAULT_INTERPOLATE, DEFAULT_ASCENDING_ORDER); }
 
+	/** Delegates to the 5-parameter constructor with the default initial Capacity, Increment, Interpolation and Order settings. */
 	public SortedArray(final IOrderator Comparator) {
 		this(DEFAULT_CAPACITY, DEFAULT_CAPACITY_INCREMENT, Comparator, DEFAULT_INTERPOLATE, DEFAULT_ASCENDING_ORDER); }
 
+	/** Delegates to the 5-parameter constructor with the default initial Capacity, Increment, no explicit Comparator, and the default Order. */
 	public SortedArray(final boolean interpolating) {
 		this(DEFAULT_CAPACITY, DEFAULT_CAPACITY_INCREMENT, null, interpolating, DEFAULT_ASCENDING_ORDER); }
 
@@ -207,14 +228,17 @@ extends Array {
 	// Interface Pipe
 	////////////////////////////////////////////////////////////////////////////////
 
-	/** @return the Order in which Elements are returned by the Iterators
+	/** Returns ORDER_ASC or ORDER_DESC depending on this Array's own sort Direction.
+	 * @return the Order in which Elements are returned by the Iterators
 	  * when they are added using addItem() and removed using nextItem().	 */
 	public byte getOrder() {
 		if (ascending)
 			return IPipe.ORDER_ASC;
 			return IPipe.ORDER_DESC; }
 
-	/** @return The Comparator being used to compare Elements.
+	/** Always returns null; this class compares Elements via {@link #orderator} or
+	 * {@link #metric} instead of a {@link Comparator}.
+	 * @return The Comparator being used to compare Elements.
 	  * If 'null', the Elements are assumed to implement
 	  * @see IScalarMetric or
 	  * @see Comparable  or
@@ -527,6 +551,11 @@ extends Array {
 	 * and allows to reuse positional Information
 	 * Of course it is invalid for a sorted Array to set Items at random Positions.
 	 */
+	// TODO: LOGIC: unlike indexOf(), which falls back to a metric, Comparable, or
+	// IIOrderAble when no orderator is set, this method calls orderator.less(...)
+	// unconditionally - so any SortedArray built with a null Comparator (a supported,
+	// common construction path; see indexOf()'s own null-orderator handling) throws a
+	// NullPointerException on every setAt() call instead of validating the sort order.
 	public Object setAt(final int index, final Object Item) {
 		++minor;
 		if ((ascending == orderator.less(Item, items[index-1])) ||
@@ -540,6 +569,9 @@ extends Array {
 	 * This Method is made invalid, because it makes no sense
 	 * for a sorted Array to get Items inserted at a random Position
 	 */
+	// TODO: LOGIC: same as setAt() above - orderator.less(...) is called unconditionally,
+	// throwing a NullPointerException whenever this SortedArray was built with a null
+	// Comparator instead of falling back to Comparable/IIOrderAble like indexOf() does.
 	public IndexEnumerator addAt(int index, Object Item) {
 		if ((ascending == orderator.less(Item, items[index-1])) ||
 		    (ascending != orderator.less(Item, items[index+1]))) {

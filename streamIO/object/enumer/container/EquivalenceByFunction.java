@@ -16,6 +16,11 @@ import tester.IEquivalence;
   * identitive (x,x)
   * symmetric  (x,y) <=> (y,x)
   * transitive (x,y) && (y,z) => (x,z)
+  * <!-- docstate
+  * tags: [code/container, code/hash_table, code/container_iteration]
+  * concepts: [Concrete Storage Containers - Arrays - Hash Tables and Relations]
+  * facets: {layer: utility, status: legacy, complexity: high}
+  * -->
   */
 public class EquivalenceByFunction
 implements IEquivalence {

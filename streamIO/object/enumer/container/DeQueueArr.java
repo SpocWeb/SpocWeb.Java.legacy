@@ -38,6 +38,11 @@ import streamIO.object.IPipe;
   * @see stringOp.DeQueueInt  sporting only a fixed Size Buffer.
   * @see streamIO.Byte.PipeByte which supports fast, unsynchronized and unchecked Access
   *
+  * <!-- docstate
+  * tags: [code/container, code/hash_table, code/container_iteration]
+  * concepts: [Concrete Storage Containers - Arrays - Hash Tables and Relations]
+  * facets: {layer: utility, status: legacy, complexity: high}
+  * -->
   */
 public class DeQueueArr
 extends AContainer {
@@ -124,7 +129,8 @@ extends AContainer {
 	/** Constructor allocating the Space	 */
 	public DeQueueArr() { this(DEFAULT_CAPACITY, DEFAULT_ORDER); }
 	
-	/** @return a new (uninitialized) Instance of this Class	  */
+	/** Creates a new, empty DeQueueArr with the default Capacity and Order.
+	 * @return a new (uninitialized) Instance of this Class	  */
 	public ICopyAble newInstance() { return new DeQueueArr(); }
 	
 	////////////////////////////////////////////////////////////////////////////
@@ -153,7 +159,8 @@ extends AContainer {
 		IFO = tmp;
 		return newCap; }
 	
-	/** @return the minimum Number of Items fitting into this Buffer.
+	/** Returns the current Length of the backing Array.
+	 * @return the minimum Number of Items fitting into this Buffer.
 	  * The actual Number may be higher, so available() should be called again
 	  * at the End of this Number. */
 	public int getCapacity() { return IFO.length; }
@@ -222,6 +229,9 @@ extends AContainer {
 	/** Returns true, if the Store is empty.	 */
 	public boolean isZero() { return (SP == QP); }
 	
+	// TODO: LOGIC: this comparison does not account for wrap-around of the ring buffer -
+	// when QP == 0, "QP-1" is -1, which SP (always >= 0) can never equal, so isFull()
+	// always reports false in that case even when the buffer genuinely has no free slot.
 	/** Returns true, if the Store is full.	 */
 	public boolean isFull() { return (SP == QP-1); }
 	
@@ -258,7 +268,9 @@ extends AContainer {
 			return EOI;
 		return IFO[(int) index]; }
 	
-	/** @return an alternative String Representation of this DeQueue
+	/** Renders every slot of the backing Array with 'Q'/'S' markers at the Queue/Stack
+	 * Pointers, for Debugging.
+	 * @return an alternative String Representation of this DeQueue
 	  * listing the whole Array indicating the Pointers and all Elements.
 	  * used for Debugging only
 	  */

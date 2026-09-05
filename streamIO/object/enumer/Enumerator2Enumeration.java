@@ -15,6 +15,11 @@ package streamIO.object.enumer;
   * Created on 06-03-2001, 12:40 AM<p>
   * @author 	Matthias Heuer
   * @version 1.0
+  * <!-- docstate
+  * tags: [code/enumerator, code/iterator_adapter]
+  * concepts: [Custom Streaming Enumerator and Iterator Bridge Layer for Object Collections]
+  * facets: {layer: utility, status: legacy, complexity: high}
+  * -->
   */
 final public class Enumerator2Enumeration
 	implements java.util.Enumeration
@@ -38,6 +43,8 @@ final public class Enumerator2Enumeration
 	//  Constructors, calling each other using this()/super() (not in Interfaces)
 	////////////////////////////////////////////////////////////////////////////
 
+	/** Creates an {@link java.util.Enumeration} bridge over the given {@link Enumerator}.
+	  * @param Source the Enumerator to adapt */
 	public Enumerator2Enumeration(Enumerator Source) { this.Source = Source; }
 
 	////////////////////////////////////////////////////////////////////////////
@@ -48,13 +55,16 @@ final public class Enumerator2Enumeration
 	//  Interface Enumeration: Implementation
 	////////////////////////////////////////////////////////////////////////////
 
-	/** @return The current Item from the Input streamIO */
+	/** Returns the Item last returned by {@link #nextElement()}.
+	  * @return The current Item from the Input streamIO */
 	public Object currItem() { return currItem; }
 
-	/** @return The next Item from the Input streamIO */
+	/** Advances to and returns the next Item from the underlying {@link Enumerator}.
+	  * @return The next Item from the Input streamIO */
 	public Object nextElement() { return currItem = Source.nextItem(); }
 
-	/** @return the Number of Items (at least) available */
+	/** Reports whether the underlying {@link Enumerator} still has Items available.
+	  * @return the Number of Items (at least) available */
 	public boolean hasMoreElements() { return Source.availAble() > 0; }
 
 	////////////////////////////////////////////////////////////////////////////

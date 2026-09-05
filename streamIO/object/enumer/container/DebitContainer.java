@@ -45,6 +45,11 @@ import streamIO.object.ModificationException;
   * It is similar to the Bag Class which is also capable of storing Debits, 
   * AND more effective (needs only a single Lookup)! 
   *
+  * <!-- docstate
+  * tags: [code/container, code/hash_table, code/container_iteration]
+  * concepts: [Concrete Storage Containers - Arrays - Hash Tables and Relations]
+  * facets: {layer: utility, status: legacy, complexity: high}
+  * -->
   */
 public class DebitContainer
 extends AContainer {
@@ -80,10 +85,12 @@ extends AContainer {
 	//  Accessor Methods (getXXX/isXXX/setXXX)
 	////////////////////////////////////////////////////////////////////////////
 	
-	/** @return the Debit Container collecting all Liabilities 	*/
+	/** Returns the Container of not-yet-settled Liabilities.
+	 * @return the Debit Container collecting all Liabilities 	*/
 	public Container getDebit () { return mDebit; }
 
-	/** @return the Credit Container collecting all Assets 	*/
+	/** Returns the Container of confirmed Assets.
+	 * @return the Credit Container collecting all Assets 	*/
 	public Container getCredit() { return mCredit; }
 
 	/** Increases the capacity of this Array, if necessary, to ensure
@@ -95,7 +102,8 @@ extends AContainer {
 	public int setCapacity(int minCapacity) {
 		return mCredit.setCapacity(minCapacity); }
 
-	/** @return  the minimum current Capacity of this Container.	 */
+	/** Delegates to the Credit side's Capacity; the Debit side is not reported here.
+	 * @return  the minimum current Capacity of this Container.	 */
 	public int getCapacity() {
 		return mCredit.getCapacity(); }
 
@@ -139,14 +147,17 @@ extends AContainer {
 								        mDebit.    addItem(arg);   return null; }
 		catch (ModificationException x) { throw new ReadOnlyException(x.toString()); } }
 
-	/** @return a new Instance of this Class	 */
+	/** Creates a new, empty DebitContainer with fresh Credit and Debit Containers of the
+	 * same concrete Types as this one's.
+	 * @return a new Instance of this Class	 */
 	public ICopyAble newInstance() {
 		return new DebitContainer (
 			(Container) mCredit.newInstance(),
 			(Container) mDebit .newInstance());
 	}
 
-	/** @return a String Representation of this Object.
+	/** Renders both the Credit and Debit sides, e.g. "({credit} - {debit})".
+	  * @return a String Representation of this Object.
 	  * to indicate nested Brackets, different Types of Brackets can be used
 	  */
 	public String toString() {

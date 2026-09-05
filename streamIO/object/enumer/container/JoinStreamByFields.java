@@ -41,6 +41,11 @@ import tester.IEquivalence;
   *  and multiplying them before eliminating Failures.
   *  Additionally the most eliminating Joins
   *  and the Tests supported by Indices should be performed first)
+  * <!-- docstate
+  * tags: [code/container, code/hash_table, code/container_iteration]
+  * concepts: [Concrete Storage Containers - Arrays - Hash Tables and Relations]
+  * facets: {layer: utility, status: legacy, complexity: high}
+  * -->
   */
 public class JoinStreamByFields
 extends AFilterIn {

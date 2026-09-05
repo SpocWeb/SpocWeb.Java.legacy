@@ -65,6 +65,11 @@ import streamIO.object.enumer.IndexEnumerator;
   * when it is in the Collection, otherwise it returns the Position after / before
   * the Search Range, so that another Search can directly be appended.
   * So the returned Index has to be tested, before using it!
+  * <!-- docstate
+  * tags: [code/container, code/hash_table, code/container_iteration]
+  * concepts: [Concrete Storage Containers - Arrays - Hash Tables and Relations]
+  * facets: {layer: utility, status: legacy, complexity: high}
+  * -->
   */
 public class Array
 extends ARAContainer
@@ -652,6 +657,11 @@ implements RAContainer {
 /**Iterator for the 'Array' Class.
  * Since this Class is only instantiated by "Array" itself,
  * it is protected in this Package
+ * <!-- docstate
+ * tags: [code/container, code/hash_table, code/container_iteration]
+ * concepts: [Concrete Storage Containers - Arrays - Hash Tables and Relations]
+ * facets: {layer: utility, status: legacy, complexity: high}
+ * -->
  * This one has nothing to do with the ArrayIterator of Package streamIO. */
 final class ArrayIterator
 extends AIndexEnumerator { //ArrayEnum { //
@@ -659,7 +669,8 @@ extends AIndexEnumerator { //ArrayEnum { //
 	/**Reference to the Array iterated	 */
 	protected Array array;
 	
-	/** @return the Order this Iterator returns the Items in. 	*/
+	/** This Iterator always returns Items in Stack (LIFO) Order.
+	 * @return the Order this Iterator returns the Items in. 	*/
 	public byte getOrder() { return IPipe.ORDER_STACK; }
 	
 	/**Constructor with the Array as Parameter	 */
@@ -673,17 +684,22 @@ extends AIndexEnumerator { //ArrayEnum { //
 	/** Reset the Reverse Iterator	 */
 	public IReSetAble reSet(){ curr = array.itemCount -1; return this; }
 
-	/** @return the total Number of Objects in this Enumerator / Container
+	/** Returns the backing Array's current Item Count.
+	 * @return the total Number of Objects in this Enumerator / Container
 	  * For Random Access Stores this is definitely limited and can thus be returned.
 	  */
 	public int getInt() { return array.itemCount; }
 
-	/** @return  the previous Item	 */
+	/** Not part of the Enumerator contract (see {@link #prevItem()}); reads the current
+	 * Item, then decrements the Position.
+	 * @return  the previous Item	 */
 	public Object previousItem() { //ByRefLong available) {
 		Object Item = currentItem(); //available);
 		curr--; return Item; }
 
-	/** @return  the current Item	 */
+	/** Not part of the Enumerator contract (see {@link #currItem()}); reads the backing
+	 * Array's Item at the current Position under synchronization.
+	 * @return  the current Item	 */
 	public Object currentItem() { //ByRefLong available) {
 		synchronized (array) {
 			if ((//available.Value =
@@ -717,7 +733,8 @@ extends AIndexEnumerator { //ArrayEnum { //
 	// Optimizations...
 	////////////////////////////////////////////////////////////////////////////////
 	
-	/** @return the minimum Number of Items left in this streamIO.	  */
+	/** Computes the remaining Items from the backing Array's Count and current Position.
+	 * @return the minimum Number of Items left in this streamIO.	  */
 	public long availAble() { return array.itemCount - curr -1; }
 
 }

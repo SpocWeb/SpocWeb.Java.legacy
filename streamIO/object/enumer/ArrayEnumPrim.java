@@ -14,6 +14,11 @@ import streamIO.object.ModificationException;
  * @author 		 Matthias Heuer
  * @version 1.0
  * @stereotype enumeration
+ * <!-- docstate
+ * tags: [code/enumerator, code/iterator_adapter]
+ * concepts: [Custom Streaming Enumerator and Iterator Bridge Layer for Object Collections]
+ * facets: {layer: utility, status: legacy, complexity: high}
+ * -->
  */
 public class ArrayEnumPrim
 extends AIndexEnumerator {
@@ -46,7 +51,8 @@ extends AIndexEnumerator {
 	//	Interface StreamIn
 	////////////////////////////////////////////////////////////////////////////////
 	
-	/** @return the total Number of Objects in this Enumerator / Container
+	/** Returns the cached Length of the wrapped Array.
+	  * @return the total Number of Objects in this Enumerator / Container
 	  * For Random Access Stores this is definitely limited and can thus be returned.
 	  */
 	public int getInt() { return Length; }

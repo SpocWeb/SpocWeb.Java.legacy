@@ -23,6 +23,11 @@ import streamIO.object.IStreamIn;
   * the original fist Element is being used.
   * The first Elements of the Pairs are then modified in Place,
   * so they should be copied, when they come from JoinStreamByFields etc.
+  * <!-- docstate
+  * tags: [code/container, code/hash_table, code/container_iteration]
+  * concepts: [Concrete Storage Containers - Arrays - Hash Tables and Relations]
+  * facets: {layer: utility, status: legacy, complexity: high}
+  * -->
   */
 public class FlattenStream
 extends AFilterIn {

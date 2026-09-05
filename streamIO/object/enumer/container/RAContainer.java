@@ -6,6 +6,11 @@ import streamIO.object.enumer.IndexEnumerator;
   * to access, replace and insert Items by a certain Position.
   * This extends the Interface Relation which has the same Methods and allows to
   * access Elements by integer Object Keys
+  * <!-- docstate
+  * tags: [code/container, code/hash_table, code/container_iteration]
+  * concepts: [Concrete Storage Containers - Arrays - Hash Tables and Relations]
+  * facets: {layer: utility, status: legacy, complexity: high}
+  * -->
   */
 public interface RAContainer
 extends Container, IndexEnumerator {

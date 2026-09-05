@@ -19,6 +19,11 @@ import streamIO.object.AStreamIn;
   * @author 	Matthias Heuer
   * @version	1.0
   * @stereotype enumeration
+  * <!-- docstate
+  * tags: [code/enumerator, code/iterator_adapter]
+  * concepts: [Custom Streaming Enumerator and Iterator Bridge Layer for Object Collections]
+  * facets: {layer: utility, status: legacy, complexity: high}
+  * -->
   */
 public abstract class AChangeStreamIn
 extends AStreamIn
@@ -41,7 +46,8 @@ implements ChangeIterator {
 	//  Accessor Methods (getXXX/setXXX)
 	////////////////////////////////////////////////////////////////////////////
 	
-	/** @return the current Version of the Container to support fast-fail Enumerators
+	/** Returns this streamIO's own recorded minor Version, without consulting the Container.
+	  * @return the current Version of the Container to support fast-fail Enumerators
 	  * Should be incremented on each change of the Container
 	  * and checked for the same Value on each Call of nextItem() or currItem()
 	  * to warn the User (Client) of the Enumerator.
@@ -52,7 +58,8 @@ implements ChangeIterator {
 	  */
 	final public int getMinor() { return minor; } //return 0; }
 	
-	/** @return the incremented current Version of the Container
+	/** Increments and returns this streamIO's own recorded minor Version.
+	  * @return the incremented current Version of the Container
 	  * to indicate Modification to fast-fail Iterators.
 	  * The Version should be incremented on each change of the Container
 	  * and checked for the same Value on each Call of nextItem() or currItem()
@@ -85,7 +92,8 @@ implements ChangeIterator {
 	/** Empty Constructor	 */
 	protected AChangeStreamIn() { }
 	
-	/** @return a new ChangeIterator with the same Position	 */
+	/** Clones this streamIO to obtain an independent ChangeIterator at the same Position.
+	  * @return a new ChangeIterator with the same Position	 */
 	public ChangeIterator ChangeIterator() {
 		try { return (ChangeIterator) this.clone(); }
 		catch (CloneNotSupportedException x) { return null; } } //throw new CloneNotSupportedError(x.toString); } }

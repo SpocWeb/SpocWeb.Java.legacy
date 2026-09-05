@@ -2,7 +2,14 @@ package streamIO.object.enumer.container.util;
 
 import streamIO.Log;
 
-/** Small Test Class that prints it's Name, Number of Runs, the Time and exits  */
+/** Small Test Class that prints it's Name, Number of Runs, the Time and exits
+ *
+ * <!-- docstate
+ * tags: [code/adapter, code/scheduling]
+ * concepts: [Small Adapter and Scheduling Helper Classes]
+ * facets: {layer: utility, status: legacy, complexity: high}
+ * -->
+ */
 class TestRunAble implements Runnable {
 
 	/** Name of this Instance */
@@ -26,7 +33,8 @@ class TestRunAble implements Runnable {
 //		throw new RuntimeException(); //just for proving that an Exception kills only the current Thread!
 	}
 
-	/** @return it's Class and Name */
+	/** Renders this instance's Name.
+	 * @return this instance's Name */
 	public String toString() {
 		return Name; }
 //		return this.getClass().getName() + "." + Name; }

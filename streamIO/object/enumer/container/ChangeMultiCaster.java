@@ -21,6 +21,11 @@ import streamIO.IIStreamIn;
   * @see streamIO.MultiplexerOut,
   * which calls only a single Element of the List in Round Robin Fashion.
   *
+  * <!-- docstate
+  * tags: [code/container, code/hash_table, code/container_iteration]
+  * concepts: [Concrete Storage Containers - Arrays - Hash Tables and Relations]
+  * facets: {layer: utility, status: legacy, complexity: high}
+  * -->
   */
 public class ChangeMultiCaster
 implements ChangeObserver, ChangeEventSource {

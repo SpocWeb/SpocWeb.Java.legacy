@@ -18,6 +18,11 @@ import streamIO.IReSetAble;
   * Created on 06-03-2001, 12:40 AM<p>
   * @author 	Matthias Heuer
   * @version 1.0
+  * <!-- docstate
+  * tags: [code/enumerator, code/iterator_adapter]
+  * concepts: [Custom Streaming Enumerator and Iterator Bridge Layer for Object Collections]
+  * facets: {layer: utility, status: legacy, complexity: high}
+  * -->
   */
 public class Iterator2Enumerator
 extends AEnumerator
@@ -44,25 +49,30 @@ extends AEnumerator
 	  * and making the nextItem() Method final. */
 	protected long position = 0;
 	
-	/** @see streamIO.object.AStreamIn#getPosition()	 */
+	/** Returns the current Position, incremented on each {@link #nextItem()} call.
+	 * @see streamIO.object.AStreamIn#getPosition()	 */
 	public long getPosition() { return position; }
-	
-	/** @see streamIO.object.AStreamIn#getMaxMarkSize()	 */
+
+	/** Returns -1, since a plain {@link Iterator} does not expose a mark limit.
+	 * @see streamIO.object.AStreamIn#getMaxMarkSize()	 */
 	public long getMaxMarkSize() { return -1; }
 	
 	////////////////////////////////////////////////////////////////////////////
 	//  Constructors, calling each other using this()/super() (not in Interfaces)
 	////////////////////////////////////////////////////////////////////////////
 	
+	/** Creates an Enumerator wrapping the given {@link Iterator}.
+	 * @param _source the Iterator to bridge to the Enumerator interface */
 	public Iterator2Enumerator(final Iterator _source) {
-		super(null); 
+		super(null);
 		this.source = _source; }
-	
+
 	////////////////////////////////////////////////////////////////////////////
 	//  Interface Enumerator: Implementation
 	////////////////////////////////////////////////////////////////////////////
-	
-	/** @return The next Item from the Input streamIO */
+
+	/** Advances to and returns the next Item from the wrapped Iterator.
+	 * @return The next Item from the Input streamIO */
 	public Object nextItem() {
 		try {
 			return currItem = source.next();
@@ -70,36 +80,45 @@ extends AEnumerator
 			return null;
 		}
 	}
-	
-	/** @return The current Item from the Input streamIO */
+
+	/** Returns the current Item without advancing.
+	 * @return The current Item from the Input streamIO */
 	public Object currItem() { return currItem; }
-	
-	/** @return the Number of Items (at least) available */
+
+	/** Tests whether the wrapped Iterator has a next Item.
+	 * @return the Number of Items (at least) available */
 	public long availAble() { return source.hasNext() ? 1 : -1; }
-	
-	/** @return the Number of Items (at least) available */
+
+	/** This Enumerator returns Items unordered, mirroring the wrapped Iterator.
+	 * @return the Number of Items (at least) available */
 	public byte getOrder() { return ORDER_NONE; }
-	
-	/** @return The current Item from the Input streamIO */
+
+	/** Removes the current Item via the wrapped Iterator's {@code remove()}.
+	 * @return The current Item from the Input streamIO */
 	public Object removeCurr() { source.remove(); return currItem; }
-	
-	/** @return The current Item from the Input streamIO */
+
+	/** Not supported: a plain {@link Iterator} offers no way to replace an Item.
+	 * @return The current Item from the Input streamIO */
 	public Object replaceCurr(Object Item) {
 		throw new UnsupportedOperationException(); }
 //		return currItem; }
-	
+
 	/** Resets the Iterator to the last marked Position,
 	  * done automatically on Instantiation
 	  * By Default the Start of the Iterator is marked on Instantiation	 */
 	public IReSetAble reSet() { //throws NoSuchMethodException{
 		reSet (0); return this; }
-	
+
 	/** Resets the Iterator to the given Position
 	  * counted from the last marked Position.
 	  * @return the Number of Positions actually skipped	 */
+	// TODO: LOGIC: infinite recursion - when this.position > _position, this calls
+	// reSet(_position) with the exact same argument again instead of e.g. reSet() followed
+	// by a forward jump, so the condition never changes and every call with a backward
+	// Position throws StackOverflowError.
 	public long reSet(long _position) { //throws    NoSuchMethodException {
-		if (this.position > _position) 
-		    return reSet(_position); 
+		if (this.position > _position)
+		    return reSet(_position);
 		return position + jump(_position - position);  }
 	
 	////////////////////////////////////////////////////////////////////////////

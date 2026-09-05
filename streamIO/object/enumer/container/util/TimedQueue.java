@@ -6,7 +6,14 @@ import streamIO.Log;
 import streamIO.object.enumer.container.Heap;
 import function.IIOrderAble;
 
-/** Value Object for an Event to be executed at the given TimeStamp */
+/** Value Object for an Event to be executed at the given TimeStamp
+ *
+ * <!-- docstate
+ * tags: [code/adapter, code/scheduling]
+ * concepts: [Small Adapter and Scheduling Helper Classes]
+ * facets: {layer: utility, status: legacy, complexity: high}
+ * -->
+ */
 class TimedEvent implements IIOrderAble {
 
 	/** The Event to be executed at the given TimeStamp */
@@ -15,7 +22,8 @@ class TimedEvent implements IIOrderAble {
 	/** The TimeStamp at which the given Event is to be executed   */
 	public long TimeStamp;
 
-	/** @return true, when the TimeStamp
+	/** Orders TimedEvents chronologically by their scheduled TimeStamp.
+	  * @return true, when the TimeStamp
 	  * @param arg is less / earlier than this TimeStamp
 	  */
 	public boolean isLessThan(Object arg) {
@@ -39,7 +47,8 @@ class TimedEvent implements IIOrderAble {
 		this.TimeStamp = System.currentTimeMillis() + relTime;
 	}
 
-	/** @return it's Class and Name */
+	/** Renders this TimedEvent as "event at timestamp".
+	 * @return it's Class and Name */
 	public String toString() {
 		return EventObj + " at " + TimeStamp; }
 
@@ -57,6 +66,11 @@ class TimedEvent implements IIOrderAble {
   * As an Optimization wait() and notify() could be used (requires changed Logic!)
   * instead of sleep() and interrupt(),
   * because the latter is a pretty expensive Operation
+  * <!-- docstate
+  * tags: [code/adapter, code/scheduling]
+  * concepts: [Small Adapter and Scheduling Helper Classes]
+  * facets: {layer: utility, status: legacy, complexity: high}
+  * -->
   */
 public class TimedQueue
 //implements Runnable //a private Runnable doesn't expose run()

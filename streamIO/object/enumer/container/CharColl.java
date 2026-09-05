@@ -11,6 +11,11 @@ import function.byref.ByRefChar;
 /**
   * Implements a Random Access Container for Characters based on a
   * @see StringBuffer
+  * <!-- docstate
+  * tags: [code/container, code/hash_table, code/container_iteration]
+  * concepts: [Concrete Storage Containers - Arrays - Hash Tables and Relations]
+  * facets: {layer: utility, status: legacy, complexity: high}
+  * -->
   */
 public class CharColl
 extends ARAContainer {
@@ -53,7 +58,8 @@ extends ARAContainer {
 	public synchronized int getCapacity() {
 		return string.capacity(); } //
 	
-	/** @return the Number of Items in the Collection	 */
+	/** Returns the current Length of the backing StringBuffer.
+	 * @return the Number of Items in the Collection	 */
 	public int getInt() { return string.length(); }
 	
 	/**Removes this Object from the Set	 */
@@ -128,8 +134,14 @@ extends ARAContainer {
 
 }
 
-/** @see IndexIterator for the
+/** Index-based Iterator over the Characters of a {@link CharColl}.
+  * @see IndexIterator for the
   * @see CharColl Container
+  * <!-- docstate
+  * tags: [code/container, code/hash_table, code/container_iteration]
+  * concepts: [Concrete Storage Containers - Arrays - Hash Tables and Relations]
+  * facets: {layer: utility, status: legacy, complexity: high}
+  * -->
   */
 class CharIterator
 extends AIndexEnumerator {
@@ -145,10 +157,12 @@ extends AIndexEnumerator {
 	//	Interface StreamIn
 	////////////////////////////////////////////////////////////////////////////////
 	
-	/** @return the Order this Iterator returns the Items in. 	*/
+	/** This Iterator always returns Items in Stack (LIFO) Order.
+	 * @return the Order this Iterator returns the Items in. 	*/
 	public byte getOrder() { return IPipe.ORDER_STACK; }
 
-	/** @return the Number of Items in the Collection	 */
+	/** Returns the current Length of the backing CharColl's StringBuffer.
+	 * @return the Number of Items in the Collection	 */
 	public int getInt() { return string.string.length(); }
 
 	/**Returns the current Object.	 */
@@ -214,7 +228,8 @@ extends AIndexEnumerator {
 //  Optimizations
 ////////////////////////////////////////////////////////////////////////////////
 
-	/** @return the minimum Number of Items after the current one,
+	/** Computes the remaining Characters from the backing StringBuffer's Length.
+	 * @return the minimum Number of Items after the current one,
 	  * i.e. the Number of times you can call the nextItem() Method
 	  */
 	public long availAble() { return string.string.length() - curr; }

@@ -21,6 +21,11 @@ import tester.IEquivalence;
   * Created on	04-14-2002, 01:06 AM<p>
   * @author 	Matthias Heuer
   * @version	1.0
+  * <!-- docstate
+  * tags: [code/container, code/hash_table, code/container_iteration]
+  * concepts: [Concrete Storage Containers - Arrays - Hash Tables and Relations]
+  * facets: {layer: utility, status: legacy, complexity: high}
+  * -->
   */
 public class ContainerSet
 implements streamIO.IIterAble {
@@ -37,7 +42,8 @@ implements streamIO.IIterAble {
 	//  Accessor Methods (getXXX/isXXX/setXXX)
 	////////////////////////////////////////////////////////////////////////////////
 	
-	/** @return the Item, equivalent to arg, contained in this Set	 */
+	/** Looks up the Member of this Set that is equivalent to {@code arg}.
+	  * @return the Item, equivalent to arg, contained in this Set	 */
 	final public Object isSet(final Object arg) {
 		try {
 			return cnt.findFirst(arg);
@@ -64,7 +70,8 @@ implements streamIO.IIterAble {
 	/** clears the whole Set */
 	public void clear() { cnt.zeroAt(); }
 
-	/** @return the Number of Items in this Set */
+	/** Returns how many Items this Set currently holds.
+	  * @return the Number of Items in this Set */
 	public int size() { return cnt.getInt(); }
 
 	/** Returns a new Input streamIO of the Objects in this Container

@@ -17,6 +17,11 @@ import streamIO.object.ModificationException;
  * which saves handing over 'this'. But this is not done here,
  * because this abstract Parent Class cannot be an inner Class.
  * @stereotype enumeration
+ * <!-- docstate
+ * tags: [code/enumerator, code/iterator_adapter]
+ * concepts: [Custom Streaming Enumerator and Iterator Bridge Layer for Object Collections]
+ * facets: {layer: utility, status: legacy, complexity: high}
+ * -->
  */
 public abstract class AEnumerator
 extends AChangeStreamIn
@@ -81,7 +86,8 @@ implements Enumerator {
 			major = ((IAlterAble) _container).getMajor(); 
 	} 
 		
-	/** @return a new Enumerator with the same Position	 */
+	/** Creates a new Enumerator with the same Position.
+	 * @return a new Enumerator with the same Position	 */
 	public Enumerator Enumerator() {
 		try { return (Enumerator) this.clone(); }
 		catch (CloneNotSupportedException x) { return null; } } //throw new CloneNotSupportedError(x.toString); } }
@@ -193,7 +199,8 @@ implements Enumerator {
 	//	Interface IStreamOut
 	////////////////////////////////////////////////////////////////////////////
 
-	/** @see streamIO.IStreamOut#flush()	 */
+	/** Does nothing; this Enumerator has no buffered Output to flush.
+	 * @see streamIO.IStreamOut#flush()	 */
 	public void flush() throws IOException {}
 	
 	/** adds this Item to the Store in Place: +=
@@ -224,7 +231,8 @@ implements Enumerator {
 	//  Interface Pipe: Default Implementations
 	////////////////////////////////////////////////////////////////////////////
 
-	/** @return The Comparator being used to compare Elements.
+	/** Returns null by Default, meaning no explicit Comparator is used.
+	 * @return The Comparator being used to compare Elements.
 	  * If 'null', the Elements are assumed to implement
 	  * @see IScalarMetric or
 	  * @see Comparable  or

@@ -40,6 +40,11 @@ import streamIO.object.ModificationException;
   * the End is marked by both returning the Object EOI (End Of Enumerator, 'null')
   * AND by available() <= 0.
   * @stereotype enumeration
+  * <!-- docstate
+  * tags: [code/enumerator, code/iterator_adapter]
+  * concepts: [Custom Streaming Enumerator and Iterator Bridge Layer for Object Collections]
+  * facets: {layer: utility, status: legacy, complexity: high}
+  * -->
   */
 public interface Enumerator
 extends ChangeIterator, IPipe, IAlterAble {

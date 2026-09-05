@@ -15,31 +15,36 @@ import java.sql.SQLException;
  * 
  * @author heuerm
  * 
+ * <!-- docstate
+ * tags: [code/container, code/hash_table, code/container_iteration]
+ * concepts: [Concrete Storage Containers - Arrays - Hash Tables and Relations]
+ * facets: {layer: utility, status: legacy, complexity: high}
+ * -->
  */
 public class TypedAssociation 
 extends Edge {
 	
-	/**
+	/** Creates a TypedAssociation with only a Key.
 	 * @param _key
 	 */
 	public TypedAssociation(final Object _key) { super(_key); }
-	
-	/**
+
+	/** Creates a TypedAssociation with a Key and Value.
 	 * @param _key
 	 * @param _value
 	 */
 	public TypedAssociation(final Object _key, final Object _value) { super(_key, _value); }
-	
-	/**
+
+	/** Creates a TypedAssociation with a Key, Value and Weight.
 	 * @param _key
 	 * @param _value
 	 * @param _weight
 	 */
 	public TypedAssociation(final Object _key, final Object _value, final double _weight) {
 		super(_key, _value, _weight); }
-	
-	/**
-	 * 
+
+	/** Creates a TypedAssociation with a Key, Value, Weight and relationship Type
+	 * (the Predicate of the RDF Triple).
 	 * @param _key
 	 * @param _value
 	 * @param _weight
@@ -76,9 +81,10 @@ extends Edge {
 	/// #region : Object Methods
 	////////////////////////////////////////////////////////////////////////////////
 	
-	/** @see java.lang.Object#toString()	 */
-	public String toString() { 
-		return String.valueOf(key)+"-"+String.valueOf(typ)+"("+weight+")->"+String.valueOf(val); 
+	/** Renders this TypedAssociation as "key-type(weight)->value".
+	 * @see java.lang.Object#toString()	 */
+	public String toString() {
+		return String.valueOf(key)+"-"+String.valueOf(typ)+"("+weight+")->"+String.valueOf(val);
 	}
 	
 }

@@ -16,6 +16,11 @@ import function.index.IIndexAble;
  * @see streamIO.object.enumer.container.HashEntry 
  * @see streamIO.object.enumer.container.tree.TreeMapEntry
  * @author heuerm
+ * <!-- docstate
+ * tags: [code/container, code/hash_table, code/container_iteration]
+ * concepts: [Concrete Storage Containers - Arrays - Hash Tables and Relations]
+ * facets: {layer: utility, status: legacy, complexity: high}
+ * -->
  */
 public class IndexAssociation 
 extends TypedAssociation 
@@ -30,45 +35,49 @@ implements IIndexAble {
 	 */
 	public int ndx; 
 	
-	/** @see function.index.IIndexAble#setNdx(int)	 */
+	/** Sets the integer Index/Value mapped to this Association's Key.
+	 * @see function.index.IIndexAble#setNdx(int)	 */
 	public void setNdx(final int _index) { this.ndx = _index; }
-	
-	/** @see function.index.IIndexAble#setNdx(int)	 */
+
+	/** Returns the integer Index/Value mapped to this Association's Key.
+	 * @return the integer Index/Value mapped to this Association's Key
+	 * @see function.index.IIndexAble#setNdx(int)	 */
 	public int getNdx() { return ndx; }
 	
 	///////////////////////////////////////////////////////////////////////////
 	
-	/**
+	/** Creates an IndexAssociation with only a Key.
 	 * @param _key
 	 */
 	public IndexAssociation(final Object _key) {
 		super(_key);
 	}
-	
-	/**
+
+	/** Creates an IndexAssociation with a Key and Value.
 	 * @param _key
 	 * @param _value
 	 */
 	public IndexAssociation(final Object _key, final Object _value) {
-		super(_key); 
+		super(_key);
 		this.val = _value;
 	}
-	
-	/**
+
+	/** Creates an IndexAssociation with a Key, Value and Weight.
 	 * @param _key
 	 * @param _value
 	 * @param _weight
 	 */
 	public IndexAssociation(final Object _key, final Object _value, final float _weight) {
-		super(_key); 
+		super(_key);
 		this.val = _value;
 		this.weight = _weight;
 	}
-	
-	/**
+
+	/** Creates an IndexAssociation with a Key, Value, Weight and integer Index.
 	 * @param _key
 	 * @param _value
 	 * @param _weight
+	 * @param _index
 	 */
 	public IndexAssociation(final Object _key, final Object _value, final float _weight, final int _index) {
 		super(_key); 
@@ -90,9 +99,10 @@ implements IIndexAble {
 	/// #region : Object Methods
 	////////////////////////////////////////////////////////////////////////////////
 	
-	/** @see java.lang.Object#toString()	 */
-	public String toString() { 
-		return String.valueOf(key)+"-"+String.valueOf(typ)+"("+weight+")->"+ndx+"/"+String.valueOf(val); 
+	/** Renders this IndexAssociation as "key-type(weight)->ndx/value".
+	 * @see java.lang.Object#toString()	 */
+	public String toString() {
+		return String.valueOf(key)+"-"+String.valueOf(typ)+"("+weight+")->"+ndx+"/"+String.valueOf(val);
 	}
 	
 }

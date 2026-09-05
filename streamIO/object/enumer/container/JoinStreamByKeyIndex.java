@@ -23,6 +23,11 @@ import tester.IEquivalence;
   * 	and ...
   * 4) ... select specific Columns during this flattening!
   *
+  * <!-- docstate
+  * tags: [code/container, code/hash_table, code/container_iteration]
+  * concepts: [Concrete Storage Containers - Arrays - Hash Tables and Relations]
+  * facets: {layer: utility, status: legacy, complexity: high}
+  * -->
   */
 public class JoinStreamByKeyIndex
 extends AFilterIn {

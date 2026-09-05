@@ -10,6 +10,11 @@ import streamIO.object.ModificationException;
  * except if the prevItem is modeled as a nested Structrue itself.
  * It should never be visble to the User directly,
  * because it is always hidden by the List Object.
+ * <!-- docstate
+ * tags: [code/enumerator, code/iterator_adapter]
+ * concepts: [Custom Streaming Enumerator and Iterator Bridge Layer for Object Collections]
+ * facets: {layer: utility, status: legacy, complexity: high}
+ * -->
  */
 public class DblListItem
 extends ListItem
@@ -108,6 +113,10 @@ implements ReverseEnumerator {
 	 * In this Case the Exception is thrown.
 	 * That is why this Method should throw an Exception if removing is not allowed.
 	 */
+	// TODO: LOGIC: this method never uses the Item parameter and never writes any state -
+	// it only reads prevItem.currItem (not even this item's own currItem) and returns it,
+	// so calling replaceCurr() silently performs no replacement at all, unlike replacePrev()
+	// just above which does assign prevItem.currItem = Item.
 	public Object replaceCurr(Object Item) { //throws ModificationException {
 		Object ret = prevItem.currItem;
 		return ret; }

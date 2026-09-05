@@ -18,6 +18,11 @@ import graphs.KeyValuePair;
  * 
  * @author Matthias Heuer
  * @version 1.0
+ * <!-- docstate
+ * tags: [code/container, code/hash_table, code/container_iteration]
+ * concepts: [Concrete Storage Containers - Arrays - Hash Tables and Relations]
+ * facets: {layer: utility, status: legacy, complexity: high}
+ * -->
  */
 public class Edge 
 extends KeyValuePair // Association { //Pair
@@ -29,10 +34,12 @@ extends KeyValuePair // Association { //Pair
 	 * or the Distance between the Nodes     */
 	public double weight;
 	
-	/** @return the Weight of this Edge     */
+	/** Returns this Edge's Weight.
+	 * @return the Weight of this Edge     */
 	public double getWeight() { return weight; }
 
-	/** @return the Weight of this Edge     */
+	/** Sets this Edge's Weight.
+	 * @return the Weight of this Edge     */
 	public void setWeight(final double _weight) {
 		//final float ret = Weight;
 		this.weight = _weight; 
@@ -43,14 +50,14 @@ extends KeyValuePair // Association { //Pair
 	/// Constructors
 	///////////////////////////////////////////////////////////////////////////
 	
-	/**
+	/** Creates an Edge with only a Key, and no Value or Weight yet.
 	 * @param _key
 	 */
 	public Edge(final Object _key) {
 		super(_key);
 	}
-	
-	/**
+
+	/** Creates an Edge with a Key and Value, defaulting the Weight to 0.
 	 * @param _key
 	 * @param _value
 	 */
@@ -85,9 +92,10 @@ extends KeyValuePair // Association { //Pair
 	/// #region : Object Methods
 	////////////////////////////////////////////////////////////////////////////////
 	
-	/** @see java.lang.Object#toString()	 */
-	public String toString() { 
-		return String.valueOf(key)+"-"+weight+"->"+String.valueOf(val); 
+	/** Renders this Edge as "key-weight->value".
+	 * @see java.lang.Object#toString()	 */
+	public String toString() {
+		return String.valueOf(key)+"-"+weight+"->"+String.valueOf(val);
 	}
 	
 }

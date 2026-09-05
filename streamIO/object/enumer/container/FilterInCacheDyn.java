@@ -28,6 +28,11 @@ import streamIO.object.IStreamIn;
   * Created on	05-12-2002, 05:17 PM<p>
   * @author 	Matthias Heuer
   * @version	1.0
+  * <!-- docstate
+  * tags: [code/container, code/hash_table, code/container_iteration]
+  * concepts: [Concrete Storage Containers - Arrays - Hash Tables and Relations]
+  * facets: {layer: utility, status: legacy, complexity: high}
+  * -->
   */
 public class FilterInCacheDyn
 extends AFilterIn {
@@ -139,7 +144,8 @@ extends AFilterIn {
 		cache.addItem(currItem);
 		return currItem; }
 
-	/** @return the (minimum) Number of Items left (in the Buffer),
+	/** Combines the cached lookahead still unread with the underlying streamIO's own count.
+	  * @return the (minimum) Number of Items left (in the Buffer),
 	  * i.e. the minimum Number of times to call nextItem().
 	  * The actual Number may be higher, so available() should be called again
 	  * at the End of this Number.

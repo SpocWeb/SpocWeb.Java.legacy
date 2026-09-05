@@ -16,6 +16,11 @@ import streamIO.object.enumer.container.Relation;
   * Bridge Class implementing the ResultSet Interface using a Container as backing
   * This is also the Prototype for writing custom JDBC ResultSet Classes
   * that are synchronized with Data Files in plain ASCII.
+  * <!-- docstate
+  * tags: [code/adapter, code/scheduling]
+  * concepts: [Small Adapter and Scheduling Helper Classes]
+  * facets: {layer: utility, status: legacy, complexity: high}
+  * -->
   */
 public class Container2ResultSet 
 extends AResultSetContainer
@@ -27,12 +32,15 @@ implements ResultSet {
 	/** Cache for the current Row to speed up Access by avoiding a call to currItem(). */
 	protected Container currRow = null;
 	
-	/** @return  the current Object, returned by the last nextItem() Operation.
+	/** Returns the current Object, without advancing.
+	  * @return  the current Object, returned by the last nextItem() Operation.
 	  * No Exception is thrown at the End, instead EOI is returned.
 	  * This is less explicit, but much faster because Exception Handling can be extremely slow.
 	  */
 	public Object currItem() { return currRow; }
 	
+	/** Creates a ResultSet Bridge backed by the given Enumerator.
+	 * @param enm the Enumerator over the Rows to expose as a ResultSet */
 	public Container2ResultSet(final Enumerator enm) {
 		super(null, (int) enm.availAble(), "", null);
 		this.cnt = enm; }
@@ -41,8 +49,9 @@ implements ResultSet {
 	//  Accessor Methods (getXXX/setXXX/isXXX/makeXXX)
 	////////////////////////////////////////////////////////////////////////////
 	
-	/** @see streamIO.IMarkAble#getMaxMarkSize()	 */
-	public long getMaxMarkSize() { return cnt.getMaxMarkSize(); } 
+	/** Delegates to the backing Enumerator's maximum mark Size.
+	 * @see streamIO.IMarkAble#getMaxMarkSize()	 */
+	public long getMaxMarkSize() { return cnt.getMaxMarkSize(); }
 	
 	////////////////////////////////////////////////////////////////////////////////
 	//	Interface ResultSet

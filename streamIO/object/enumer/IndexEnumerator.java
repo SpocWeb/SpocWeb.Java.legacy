@@ -6,6 +6,11 @@ import streamIO.object.ModificationException;
 
 /**Abstract Class for an indexed Access.
  * This extends the abstract (Reverse-) Enumerator
+ * <!-- docstate
+ * tags: [code/enumerator, code/iterator_adapter]
+ * concepts: [Custom Streaming Enumerator and Iterator Bridge Layer for Object Collections]
+ * facets: {layer: utility, status: legacy, complexity: high}
+ * -->
  * Only currItem not implemented yet! */
 public interface IndexEnumerator
 extends ReverseEnumerator {

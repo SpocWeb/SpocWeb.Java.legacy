@@ -14,6 +14,11 @@ import streamIO.IIStreamOut;
  * TODO: Introduce a Timeout for the Blocking.
  * @todo: enhance the Class according to @see PipeByte
  * @stereotype enumeration
+ * <!-- docstate
+ * tags: [code/enumerator, code/iterator_adapter]
+ * concepts: [Custom Streaming Enumerator and Iterator Bridge Layer for Object Collections]
+ * facets: {layer: utility, status: legacy, complexity: high}
+ * -->
  */
 public class CachePipe
 extends APipe //has more virtual Methods
@@ -92,13 +97,16 @@ extends APipe //has more virtual Methods
 	/** Returns the minimum Number of Items available. 	 */
 	public long availAble() { return Buffer.size(); }
 	
-	/** @see streamIO.object.AStreamIn#getPosition()	 */
+	/** This Pipe has no meaningful Position, since Items are consumed from a Queue.
+	 * @see streamIO.object.AStreamIn#getPosition()	 */
 	public long getPosition() { return 0; }
-	
-	/** @see streamIO.object.AStreamIn#getMaxMarkSize()	 */
+
+	/** This Pipe does not support marking.
+	 * @see streamIO.object.AStreamIn#getMaxMarkSize()	 */
 	public long getMaxMarkSize() { return -1; }
-	
+
 	/**
+	 * This Pipe always returns Items in Queue (FIFO) order.
 	 * @return the Order in which Elements are returned or processed.
 	 * @see streamIO.Float.IStreamIn_Int#getOrder()
 	 */

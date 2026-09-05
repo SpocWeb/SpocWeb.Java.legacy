@@ -19,6 +19,11 @@ import function.IProcessor;
   * Since HashContainer is almost always used for unique Storage of Items,
   * Filtering in this Iterator could be simplified by relying on the Fact
   * that there is always at most one equivalent Instance in the Container.
+  * <!-- docstate
+  * tags: [code/container, code/hash_table, code/container_iteration]
+  * concepts: [Concrete Storage Containers - Arrays - Hash Tables and Relations]
+  * facets: {layer: utility, status: legacy, complexity: high}
+  * -->
   */
 final public class HashIterator
 extends AEnumerator {
@@ -58,7 +63,8 @@ extends AEnumerator {
 	// Operations
 	////////////////////////////////////////////////////////////////////////////
 	
-	/** @return the Sort Order this Iterator returns the Items with
+	/** This Iterator returns Items unsorted, by HashCode Bucket order.
+	 * @return the Sort Order this Iterator returns the Items with
 	  * This HashIterator returns the Items sorted by a Modulus of their HashCode
 	  * which basically means 'unsorted'	*/
 	public byte getOrder() { return ORDER_NONE; }
@@ -109,24 +115,30 @@ extends AEnumerator {
 		return (next != IStreamIn.EOI) ? 1 :
 			   (curr != IStreamIn.EOI) ? 0 : -1; } //only a single List!
 	
-	/** @see streamIO.object.AStreamIn#getPosition()	 */
+	/** Returns the current Bin/Row Index within the HashContainer's Bucket Array.
+	 * @see streamIO.object.AStreamIn#getPosition()	 */
 	public long getPosition() { return currRow; }
-	
-	/** @see streamIO.object.AStreamIn#getMaxMarkSize()	 */
+
+	/** Returns the HashContainer's total Item Count, since replay covers the whole Table.
+	 * @see streamIO.object.AStreamIn#getMaxMarkSize()	 */
 	public long getMaxMarkSize() { return hashTable.getInt(); }
-	
-	/** @return  the current Item without Increment	 */
+
+	/** Returns the current Item without advancing.
+	 * @return  the current Item without Increment	 */
 	public Object currItem() { return curr; }
-	
-	/** @return  the current Item without Increment	 */
+
+	/** Returns the current Entry without advancing.
+	 * @return  the current Entry without Increment	 */
 	public IndexAssociation currEntry() { return curr; }
-	
-	/** @return  the next Item with PostIncrement
+
+	/** Advances to and returns the next Item, delegating to {@link #nextEntry()}.
+	 * @return  the next Item with PostIncrement
 	  * If an mFilter Item was specified, the nextItem() is automatically filtered! */
 	public Object nextItem() { return  nextEntry(); }
-	
-	/** @return  the next Item with PostIncrement
-	  * If an mFilter Item was specified, the nextItem() is automatically filtered! */
+
+	/** Advances to and returns the next Entry, honoring the active filter (if any).
+	 * @return  the next Entry with PostIncrement
+	  * If an mFilter Item was specified, the nextEntry() is automatically filtered! */
 	public IndexAssociation nextEntry() { //ByRefLong moreItems) {
 		if (hashTable.major != this.major)
 			throw new ConcurrentModificationException("HashTable has been modified in Structure "+(hashTable.major - this.major)+"-times!");

@@ -16,9 +16,10 @@ import streamIO.object.enumer.AEnumerator;
 import tester.IEquivalence;
 
 /**
- * @deprecated 
- * @see streamIO.object.enumer.container.HashContainer 
- * This class implements a Hashed Container,
+ * Implements a Hashed Container as a Vector of dynamic Object Vectors (Rows) indexed by
+ * HashCode Modulus; superseded by the linked-List-based {@link HashContainer}.
+ * @deprecated use {@link streamIO.object.enumer.container.HashContainer} instead
+ * @see streamIO.object.enumer.container.HashContainer
   * which is a very fast Storage for Objects.
   * The Objects are stored and retrieved by their HashCode,
   * which again is computed from their Contents,<
@@ -142,6 +143,11 @@ import tester.IEquivalence;
   * Another Alternative is to jump ahead when the Bin is already blocked 
   * by an Item, until a free Slot is encountered. 
   * The Problem is when to stop jumping ahead on Searching!  
+  * <!-- docstate
+  * tags: [code/container, code/hash_table, code/container_iteration]
+  * concepts: [Concrete Storage Containers - Arrays - Hash Tables and Relations]
+  * facets: {layer: utility, status: legacy, complexity: high}
+  * -->
   */
 public class HashSet
 extends AContainer {
@@ -385,8 +391,12 @@ extends AContainer {
 	  *			   <code>null</code>.
 	  * @see	 java.lang.Object#equals(java.lang.Object)
 	  * @see	 java.util.HashSet#get(java.lang.Object)	 */
+	/** Adds the Item, or flattens and adds its Contents when it is itself a streamIO.
+	 * @param Item the Item to add; must not be null
+	 * @return this HashSet
+	 * @throws NullPointerException when Item is null */
 	public synchronized ISemiGroup addAt(final Object Item) {
-		if (Item == null) 
+		if (Item == null)
 			throw new NullPointerException();
 		if (Item instanceof IIStreamIn) {
 			addItems((IIStreamIn) Item); return this; }
@@ -461,7 +471,8 @@ extends AContainer {
 */		return ret; }
 
 
-	/** @return this, set to the Boolean Constant for the Representation of 'false' = 0
+	/** Clears every Row of the backing Table.
+	 * @return this, set to the Boolean Constant for the Representation of 'false' = 0
 	  * i.e. not 'true'.
 	  * For Conatainers this is equivalent to zeroAt() and clear()
 	  * @see zeroAt()	 */
@@ -617,12 +628,24 @@ extends AContainer {
 
 }
 
+// TODO: LOGIC: every Enumerator method below (availAble, nextItem, currItem, removeCurr,
+// replaceCurr, reSet(), getMaxMarkSize, getPosition) is an unfinished "Auto-generated
+// method stub" that returns null/0/this without touching the HashSet's Table at all, so
+// iterating over a HashSet with this class never yields any Item. HashSet is itself
+// @deprecated in favor of HashContainer, which likely explains why this was never finished,
+// but any remaining caller of HashSet.Iterator()/Enumerator() silently gets an empty
+// enumeration instead of an error.
 /** Iterator for a HashSet
- * actually this is a chained Iterator over individual Row Iterators. 
+ * actually this is a chained Iterator over individual Row Iterators.
  * @author heuerm
  *
+ * <!-- docstate
+ * tags: [code/container, code/hash_table, code/container_iteration]
+ * concepts: [Concrete Storage Containers - Arrays - Hash Tables and Relations]
+ * facets: {layer: utility, status: legacy, complexity: high}
+ * -->
  */
-class HashSetIterator 
+class HashSetIterator
 extends AEnumerator {
 
 	/** Reference to the HashSet iterated over	 */
@@ -652,31 +675,36 @@ extends AEnumerator {
 		if (Position == 0) return 0; 
 		return jump(Position);  }
 	
-	/** @see streamIO.object.AStreamIn#availAble()	 */
+	/** Unimplemented stub; always reports no Items available.
+	 * @see streamIO.object.AStreamIn#availAble()	 */
 	public long availAble() {
 		// TODO Auto-generated method stub
 		return 0;
 	}
 
-	/** @see streamIO.object.AStreamIn#nextItem()	 */
+	/** Unimplemented stub; always returns null instead of the next Item.
+	 * @see streamIO.object.AStreamIn#nextItem()	 */
 	public Object nextItem() {
 		// TODO Auto-generated method stub
 		return null;
 	}
-	
-	/** @see streamIO.object.AStreamIn#currItem()	 */
+
+	/** Unimplemented stub; always returns null instead of the current Item.
+	 * @see streamIO.object.AStreamIn#currItem()	 */
 	public Object currItem() {
 		// TODO Auto-generated method stub
 		return null;
 	}
-	
-	/** @see streamIO.object.enumer.Enumerator#removeCurr()	 */
+
+	/** Unimplemented stub; never actually removes anything.
+	 * @see streamIO.object.enumer.Enumerator#removeCurr()	 */
 	public Object removeCurr() { //throws ModificationException {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
-	/** @see streamIO.object.enumer.ChangeIterator#replaceCurr(java.lang.Object)	 */
+	/** Unimplemented stub; never actually replaces anything.
+	 * @see streamIO.object.enumer.ChangeIterator#replaceCurr(java.lang.Object)	 */
 	public Object replaceCurr(Object Item) {
 		// TODO Auto-generated method stub
 		return null;
@@ -691,7 +719,7 @@ extends AEnumerator {
 	}
 	
 	
-	/* (non-Javadoc)
+	/** Unimplemented stub; always reports no mark support.
 	 * @see streamIO.object.AStreamIn#getMaxMarkSize()
 	 */
 	public long getMaxMarkSize() {
@@ -699,7 +727,7 @@ extends AEnumerator {
 		return 0;
 	}
 
-	/* (non-Javadoc)
+	/** Unimplemented stub; always reports Position 0.
 	 * @see streamIO.object.AStreamIn#getPosition()
 	 */
 	public long getPosition() {

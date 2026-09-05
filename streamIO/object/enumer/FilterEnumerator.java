@@ -11,6 +11,11 @@ import streamIO.object.ModificationException;
  * to inheriting classes to overwrite nextItem().
  *
  * For a new FilterEnumerator based on this you have to overwrite
+ * <!-- docstate
+ * tags: [code/enumerator, code/iterator_adapter]
+ * concepts: [Custom Streaming Enumerator and Iterator Bridge Layer for Object Collections]
+ * facets: {layer: utility, status: legacy, complexity: high}
+ * -->
  * removeCurrent, currItem, nextItem	 */
 public class FilterEnumerator
 extends AEnumerator
@@ -36,10 +41,12 @@ implements Enumerator {
 	//  Interface StreamIn: Implementation
 	////////////////////////////////////////////////////////////////////////////
 	
-	/** @see streamIO.object.AStreamIn#getMaxMarkSize()	 */
+	/** Delegates to the parent Enumerator's maximum mark Size.
+	 * @see streamIO.object.AStreamIn#getMaxMarkSize()	 */
 	public long getMaxMarkSize() { return parent.getMaxMarkSize(); }
-	
-	/** @see streamIO.object.AStreamIn#getPosition()	 */
+
+	/** Delegates to the parent Enumerator's current Position.
+	 * @see streamIO.object.AStreamIn#getPosition()	 */
 	public long getPosition() { return parent.getPosition(); }
 	
 	/** Passes removing the current Item from the Enumerator to the Parent	 */
@@ -143,6 +150,9 @@ implements Enumerator {
 	  * @param  The Item to replace the current Item (returned by the latest nextItem())
 	  * @return the Object replaced by the Item
 	  */
+	// TODO: LOGIC: infinite recursion - this calls replaceCurr(Item) on itself instead of
+	// delegating to parent.replaceCurr(Item), so any caller invoking this method causes an
+	// unconditional StackOverflowError.
 	public Object replaceCurr(Object Item) { //throws ModificationException {
          return replaceCurr(Item); }
 	

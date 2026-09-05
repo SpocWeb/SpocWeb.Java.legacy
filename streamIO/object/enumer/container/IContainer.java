@@ -15,6 +15,11 @@ package streamIO.object.enumer.container;
   * Created on	03-13-2002, 09:10 AM<p>
   * @author 	Matthias Heuer
   * @version	1.0
+  * <!-- docstate
+  * tags: [code/container, code/hash_table, code/container_iteration]
+  * concepts: [Concrete Storage Containers - Arrays - Hash Tables and Relations]
+  * facets: {layer: utility, status: legacy, complexity: high}
+  * -->
   */
 public interface IContainer
 extends streamIO.IIStreamOut

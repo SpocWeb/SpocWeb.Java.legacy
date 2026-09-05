@@ -19,6 +19,11 @@ import streamIO.object.ModificationException;
   * Created on 06-03-2001, 12:40 AM<p>
   * @author 	Matthias Heuer
   * @version 1.0
+  * <!-- docstate
+  * tags: [code/enumerator, code/iterator_adapter]
+  * concepts: [Custom Streaming Enumerator and Iterator Bridge Layer for Object Collections]
+  * facets: {layer: utility, status: legacy, complexity: high}
+  * -->
   */
 final public class Enumerator2Iterator //Enumerator2Iterator
 implements Iterator {
@@ -38,6 +43,8 @@ implements Iterator {
 	//  Constructors, calling each other using this()/super() (not in Interfaces)
 	////////////////////////////////////////////////////////////////////////////
 
+	/** Creates a {@link java.util.Iterator} bridge over the given input streamIO.
+	  * @param Source the input streamIO to adapt */
 	public Enumerator2Iterator(IIStreamIn Source) { this.Source = Source; }
 
 	////////////////////////////////////////////////////////////////////////////
@@ -48,14 +55,17 @@ implements Iterator {
 	//  Interface Iterator: Implementation
 	////////////////////////////////////////////////////////////////////////////
 
-	/** @return The next Item from the Input streamIO */
+	/** Removes the Item last returned by {@link #next()} from the Source, which must be
+	  * a {@link ReverseEnumerator}.
+	  * @throws IllegalStateException when the Source refuses the Modification */
 	public void remove() throws IllegalStateException {
 //		throw new UnsupportedOperationException(); }
 		try { ((ReverseEnumerator) Source).removeCurr();
 		} catch (ModificationException x) {
 			throw new IllegalStateException(x.toString()); } }
 
-	/** @return The next Item from the Input streamIO */
+	/** Returns the next Item from the Input streamIO.
+	 * @return The next Item from the Input streamIO */
 	public Object next() { return Source.nextItem(); }
 
 	/**This is not the exact Opposite of isEmpty(),

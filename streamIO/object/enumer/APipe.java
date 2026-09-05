@@ -16,6 +16,11 @@ import streamIO.object.IPipe;
  * except if the Queue is empty.
  * TODO: Introduce a Timeout for the Blocking.
  * @stereotype enumeration
+ * <!-- docstate
+ * tags: [code/enumerator, code/iterator_adapter]
+ * concepts: [Custom Streaming Enumerator and Iterator Bridge Layer for Object Collections]
+ * facets: {layer: utility, status: legacy, complexity: high}
+ * -->
  */
 public abstract class APipe
 extends AStreamIn //has more virtual Methods
@@ -53,7 +58,8 @@ implements IPipe {
 	 * The Type of Item is not analyzed, i.e. Containers are added as is.	   */
 	public long addItems(IIStreamIn Iter) { return AStreamOut.STREAM(Iter, this); }
 	
-	/** @see streamIO.IStreamOut#flush()	 */
+	/** Does nothing; this pipe has no buffered output to flush.
+	  * @see streamIO.IStreamOut#flush()	 */
 	public void flush() throws IOException { }
 	
 }

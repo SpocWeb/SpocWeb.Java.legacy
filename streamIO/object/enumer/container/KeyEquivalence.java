@@ -5,6 +5,11 @@ import tester.IEquivalence;
 /** Helper Class for creating an Index on a relational Container.
   * Defines an Equivalence Relation based on a key Field
   * selected by its Field Name. 
+  * <!-- docstate
+  * tags: [code/container, code/hash_table, code/container_iteration]
+  * concepts: [Concrete Storage Containers - Arrays - Hash Tables and Relations]
+  * facets: {layer: utility, status: legacy, complexity: high}
+  * -->
   */
 public class KeyEquivalence
 implements IEquivalence {

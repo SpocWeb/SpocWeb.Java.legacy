@@ -46,6 +46,11 @@ import tester.Discrete;
   * @see streamIO.Copy.IMonoid.Pair
   * @see streamIO.Copy.IMonoid.Association
   *
+  * <!-- docstate
+  * tags: [code/enumerator, code/iterator_adapter]
+  * concepts: [Custom Streaming Enumerator and Iterator Bridge Layer for Object Collections]
+  * facets: {layer: utility, status: legacy, complexity: high}
+  * -->
   */
 public class ListItem
 extends AEnumerator  //leads to expensive Constructor Calls which slows down adding / removing Items.
@@ -62,6 +67,11 @@ implements ILinkAble, IPair //, CopyAble //for Trees and upward Lists to fill up
 	  * Uses Method calls, so it is not very fast!
 	  * For fast Performance use direct Member access like in
 	  * @see Discrete.Forest.IEquivalence	 */
+	// TODO: LOGIC: the loop condition is inverted. It should stop when getPrnt() returns
+	// null (x is the root) and otherwise keep climbing; as written it loops only while
+	// getPrnt() returns null, so a root node (p == null on the first call) sets x = null
+	// and then throws a NullPointerException on the next x.getPrnt() call, while a non-root
+	// node exits immediately and returns just its direct parent instead of the true root.
 	final static public ILinked getRootSimple(ILinked x) {
 		ILinked p;
 		while((p  = x.getPrnt()) == null)
@@ -355,13 +365,16 @@ implements ILinkAble, IPair //, CopyAble //for Trees and upward Lists to fill up
 		if (currItem != null) { HC ^= currItem.hashCode(); } //make this conformant to the equals() Method
 		return HC; }
 
-	/** @return  A string representation of this Association.     */
+	/** Renders this Item as "(currItem@nextItem)".
+	 * @return  A string representation of this Association.     */
 	public synchronized String toString() { return "(" + currItem + "@" + nextItem + ")"; }
 
-	/** @see streamIO.object.AStreamIn#getMaxMarkSize()	 */
+	/** This List Item does not support marking.
+	 * @see streamIO.object.AStreamIn#getMaxMarkSize()	 */
 	public long getMaxMarkSize() { return -1; }
 
-	/** @see streamIO.object.AStreamIn#getPosition()	 */
+	/** This List Item has no meaningful Position of its own.
+	 * @see streamIO.object.AStreamIn#getPosition()	 */
 	public long getPosition() { return 0; }
 	
 }

@@ -28,6 +28,11 @@ import streamIO.IIStreamOut;
   * Created on	09-24-2002, 09:10 PM<p>
   * @author 	Matthias Heuer
   * @version	1.0
+  * <!-- docstate
+  * tags: [code/enumerator, code/iterator_adapter]
+  * concepts: [Custom Streaming Enumerator and Iterator Bridge Layer for Object Collections]
+  * facets: {layer: utility, status: legacy, complexity: high}
+  * -->
   */
 public class PipeSplitter
 extends APipe {
@@ -74,7 +79,8 @@ extends APipe {
 	/// #region : Interface IStreamIn: Implementation
 	////////////////////////////////////////////////////////////////////////////////
 	
-	/** @return the (minimum) Number of Items left (in the Buffer),
+	/** Delegates to the wrapped input streamIO's availability.
+	  * @return the (minimum) Number of Items left (in the Buffer),
 	  * i.e. the minimum Number of times to call nextItem().
 	  * The actual Number may be higher, so available() should be called again
 	  * at the End of this Number.
@@ -84,7 +90,8 @@ extends APipe {
 	  */
 	public long availAble() { return ((IAvailAble)streamIn).availAble(); }
 
-	/** @return the next (Parent) Object of this one.
+	/** Advances the wrapped input streamIO and remembers its result as the current Item.
+	  * @return the next (Parent) Object of this one.
 	  * No Exception is thrown at the End, instead EOI is returned.
 	  * When IO Processes are bound to this streamIO, IOException is wrapped into an IOError.
 	  * This is less explicit, but much faster because Exception Handling can be extremely slow.
@@ -93,7 +100,8 @@ extends APipe {
 	  */
 	public Object nextItem() { return currItem = streamIn.nextItem(); }
 
-	/** @return the current Object of this one.
+	/** Returns the Item last read by {@link #nextItem()}.
+	  * @return the current Object of this one.
 	  * No Exception is thrown at the End, instead EOI is returned.
 	  * When IO Processes are bound to this streamIO, IOException is wrapped into an IOError.
 	  * This is less explicit, but much faster because Exception Handling can be extremely slow.
@@ -116,10 +124,12 @@ extends APipe {
 		streamOut.addItem(arg);
 		return this; }
 
-	/** @see streamIO.object.AStreamIn#getPosition()	 */
+	/** This splitter has no meaningful Position of its own.
+	  * @see streamIO.object.AStreamIn#getPosition()	 */
 	public long getPosition() { return 0; }
-	
-	/** @see streamIO.object.AStreamIn#getMaxMarkSize()	 */
+
+	/** This splitter does not support marking.
+	  * @see streamIO.object.AStreamIn#getMaxMarkSize()	 */
 	public long getMaxMarkSize() { return -1; }
 	
 }

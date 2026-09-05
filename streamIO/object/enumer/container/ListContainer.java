@@ -10,6 +10,11 @@ package streamIO.object.enumer.container;
  * An Exception to this are sorted Lists, where the Position of the Object might change
  * due to adding a new Object.
  * @stereotype container 
+ * <!-- docstate
+ * tags: [code/container, code/hash_table, code/container_iteration]
+ * concepts: [Concrete Storage Containers - Arrays - Hash Tables and Relations]
+ * facets: {layer: utility, status: legacy, complexity: high}
+ * -->
  */
 public interface ListContainer 
 extends Container {

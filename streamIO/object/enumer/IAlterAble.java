@@ -19,6 +19,11 @@ package streamIO.object.enumer;
   * Created on	2001-06-05, 10;25;27<p>
   * @author 	Matthias Heuer
   * @version	1.0
+  * <!-- docstate
+  * tags: [code/enumerator, code/iterator_adapter]
+  * concepts: [Custom Streaming Enumerator and Iterator Bridge Layer for Object Collections]
+  * facets: {layer: utility, status: legacy, complexity: high}
+  * -->
   */
 public interface IAlterAble
 extends IChangeAble, IVersioned {

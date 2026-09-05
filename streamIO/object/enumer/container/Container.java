@@ -74,6 +74,11 @@ import graphs.KeyValuePair;
   * @author 	Matthias Heuer
   * @version	1.0
   * @stereotype container
+  * <!-- docstate
+  * tags: [code/container, code/hash_table, code/container_iteration]
+  * concepts: [Concrete Storage Containers - Arrays - Hash Tables and Relations]
+  * facets: {layer: utility, status: legacy, complexity: high}
+  * -->
   */
 public interface Container
 extends IStreamSet, IContainer, ICountAble, Enumerator, ChangeEventSource { //ICountAble, Enumerator, ChangeEventSource { //
@@ -84,12 +89,15 @@ extends IStreamSet, IContainer, ICountAble, Enumerator, ChangeEventSource { //IC
 	public IReSetAble reSet(); // throws NoSuchMethodException;
 
 	/**
+	 * Computes the Potency (power) Set of this Container's Elements.
 	 * @return an Array of Containers containing the Potency Set of the Containers
 	 * The Number of Elements in the Array is N! = N*(N-1)*...*2*1
 	 */
 	public Container[] Potency ();
 
 	/**
+	 * Raises this Container to the given Power, i.e. all Mappings from C's Elements to this
+	 * Container's Elements.
 	 * @return a Container containing this Container raised to the Power C
 	 * This corresponds to the Set of all Mappings of of the Elements of C
 	 * to the Elements of this Container: C => this

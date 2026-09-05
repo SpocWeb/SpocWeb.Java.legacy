@@ -67,6 +67,11 @@ import graphs.SparseGraph;
  *      Container is not typed. Typically you would like to have a compile Time (i.e. add)
  *      typed or a Runtime typed (highest common Class or Interface) Container
  * @author heuerm
+ * <!-- docstate
+ * tags: [code/container, code/hash_table, code/container_iteration]
+ * concepts: [Concrete Storage Containers - Arrays - Hash Tables and Relations]
+ * facets: {layer: utility, status: legacy, complexity: high}
+ * -->
  */
 final class HashOperationMode extends Enum {
 
@@ -261,6 +266,11 @@ final class HashOperationMode extends Enum {
  *      Vectors have to be initialized and Mappings cannot be stored without creating
  *      additional Objects. On the other Hand it is not necessary to create List Elements
  *      for every added Item.
+ * <!-- docstate
+ * tags: [code/container, code/hash_table, code/container_iteration]
+ * concepts: [Concrete Storage Containers - Arrays - Hash Tables and Relations]
+ * facets: {layer: utility, status: legacy, complexity: high}
+ * -->
  */
 final public class HashContainer extends AContainer {
 
@@ -388,6 +398,8 @@ final public class HashContainer extends AContainer {
 	protected int distinctKeyCount; // =0;
 
 	/**
+	 * Reports the distinct Key Count tracked incrementally, unless the operation
+	 * Mode makes it identical to the Item Count.
 	 * @return the Number of distinct Items in this Container, but only if operation !=
 	 *         COLLECTION_RELATION
 	 */
@@ -696,13 +708,21 @@ final public class HashContainer extends AContainer {
 	/*
 	 * public long reset(long Position) throws NoSuchMethodException { iter.reStart(null);
 	 * if (Position == 0) return 0; return iter.skip(Position); } //no external caller
-	 * cares for a marked Object // return mEnum.reset(Position); } // /** Maps the
-	 * specified <code>Item</code> to the specified <code>Item</code> in this
+	 * cares for a marked Object // return mEnum.reset(Position); }
+	 */
+
+	/**
+	 * Maps the specified <code>Item</code> to the specified <code>Item</code> in this
 	 * HashContainer. Neither the Item nor the Item can be <code>null</code>. <p> The
 	 * Item can be retrieved by calling the <code>get</code> method with a Item that is
-	 * equal to the original Item. @param Item the HashContainer Item. @param Item the
-	 * Item. @return the previous Item of the specified Item in this HashContainer, or
-	 * <code>null</code> if it did not have one. @exception NullPointerException if the
+	 * equal to the original Item.
+	 * @param _key the Key to add or locate
+	 * @param _value the Value to associate with the Key
+	 * @param _typ the relationship Type of the Entry
+	 * @param _weight the Weight of the Entry
+	 * @param _ndx the Index to assign the new Entry
+	 * @return this HashContainer
+	 * @exception NullPointerException if the
 	 * Item or Item is <code>null</code>.
 	 * @see java.lang.Object#equals(java.lang.Object)
 	 * @see java.util.HashContainer#get(java.lang.Object)
@@ -736,6 +756,8 @@ final public class HashContainer extends AContainer {
 	}
 
 	/**
+	 * Looks up the given Key, defaulting the new Entry's Index to {@link #distinctKeyCount}
+	 * when it must be added.
 	 * @param key Object to find or add
 	 * @return the HashEntry found or added
 	 */
@@ -745,6 +767,7 @@ final public class HashContainer extends AContainer {
 	}
 
 	/**
+	 * Looks up the given Key, and only if absent, creates and inserts a new Entry with it.
 	 * @param key Object to find or add
 	 * @return the HashEntry found or added
 	 */
@@ -826,6 +849,7 @@ final public class HashContainer extends AContainer {
 	}
 
 	/**
+	 * Clears every Bin of the backing Table.
 	 * @return this, set to the Boolean Constant for the Representation of 'false' = 0
 	 *         i.e. not 'true'. For Conatainers this is equivalent to zeroAt() and clear()
 	 * @see zeroAt()

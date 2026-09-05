@@ -6,12 +6,17 @@ import streamIO.object.ModificationException;
 
 /**Implements the possible abstract reverse Enumerator Operations
  * @stereotype enumeration
+ * <!-- docstate
+ * tags: [code/enumerator, code/iterator_adapter]
+ * concepts: [Custom Streaming Enumerator and Iterator Bridge Layer for Object Collections]
+ * facets: {layer: utility, status: legacy, complexity: high}
+ * -->
  */
 public abstract class AReverseEnumerator
 extends AEnumerator
 implements ReverseEnumerator {
 
-	/**
+	/** Creates a reverse Enumerator over the given versioned Container.
 	 * @param _container a versioned container backing this Enumerator. Null allowed
 	 */
 	public AReverseEnumerator(final IAlterAble _container) {

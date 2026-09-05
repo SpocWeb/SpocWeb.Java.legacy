@@ -26,6 +26,11 @@ import tester.IEquivalence;
  * 
  * similar Classes: 
  * @see streamIO.object.enumer.container.HashEntry which also extends IndexAssociation
+ * <!-- docstate
+ * tags: [code/red_black_tree, code/iterator_pattern]
+ * concepts: [Red-Black Tree Backed Sorted Map Implementation]
+ * facets: {layer: utility, status: legacy, complexity: high}
+ * -->
  */
 final public class TreeMapEntry 
 extends IndexAssociation //HashMapEntry //would increase the Footprint, reuses next for Linked List Implementation. 
@@ -53,13 +58,16 @@ implements Serializable, Cloneable, ILinkAble
 	 * since a Rotation in a Tree requires to update the Parent too!	 */
 	public TreeMapEntry prnt;
 	
-	/** @see graphs.ILinked#getPrnt()	 */
+	/** Returns this Node's Parent in the Tree.
+	 * @see graphs.ILinked#getPrnt()	 */
 	public ILinked getPrnt() { return prnt; }
-	
-	/** @see graphs.ILinkAble#setPrnt(graphs.ILinked)	 */
+
+	/** Sets this Node's Parent, cast from the generic ILinked Type.
+	 * @see graphs.ILinkAble#setPrnt(graphs.ILinked)	 */
 	public void setPrnt(final ILinked parent) { setPrnt((TreeMapEntry) parent); }
-	
-	/** @see graphs.ILinkAble#setPrnt(graphs.ILinked)	 */
+
+	/** Sets this Node's Parent directly.
+	 * @see graphs.ILinkAble#setPrnt(graphs.ILinked)	 */
 	public void setPrnt(final TreeMapEntry parent) { this.prnt = parent; }
 	
 	///////////////////////////////////////////////////////////////////////////
@@ -130,6 +138,7 @@ implements Serializable, Cloneable, ILinkAble
 	}
 	
 	/**
+	 * Climbs up the Tree from this Node while it is a right (next) Child.
 	 * @return the next (InOrder) Parent of this Node
 	 */
 	public TreeMapEntry nextParent() {
@@ -150,6 +159,7 @@ implements Serializable, Cloneable, ILinkAble
 	}
 	
 	/**
+	 * Climbs up the Tree from this Node while it is a left (previous) Child.
 	 * @return the previous (InOrder) Parent of this Node
 	 */
 	public TreeMapEntry prevParent() {
@@ -190,7 +200,8 @@ implements Serializable, Cloneable, ILinkAble
 	/// Interface: ILinked
 	///////////////////////////////////////////////////////////////////////////
 
-	/** @see graphs.ILinked#getRoot()	 */
+	/** Delegates to {@link #root()}.
+	 * @see graphs.ILinked#getRoot()	 */
 	public ILinked getRoot() { return root(); }
 
 	///////////////////////////////////////////////////////////////////////////
@@ -483,36 +494,50 @@ implements Serializable, Cloneable, ILinkAble
 	/// static null-tolerant Methods
 	///////////////////////////////////////////////////////////////////////////
 	
+	/** Reads the red/black color Flag, tolerating a null Node.
+	 * @return false for a null Node, otherwise its red/black color Flag */
 	final static public boolean IS_RED(final TreeMapEntry p) {
 		return (p == null ? false : p.isRed);
 	}
 
-	final static public void SET_RED(final TreeMapEntry p, final boolean c) { 
-		if (p != null)  p.isRed = c; 
+	/** Sets the red/black color Flag, silently ignoring a null Node. */
+	final static public void SET_RED(final TreeMapEntry p, final boolean c) {
+		if (p != null)  p.isRed = c;
 	}
 
-	final static public TreeMapEntry  PARENT_OF(final TreeMapEntry p) { 
+	/** Reads the Parent reference, tolerating a null Node.
+	 * @return null for a null Node, otherwise its Parent */
+	final static public TreeMapEntry  PARENT_OF(final TreeMapEntry p) {
 		return (p == null ? null: p.prnt);
 	}
 
-	final static public void SET_PARENT(final TreeMapEntry n, final TreeMapEntry parent) { 
-		if (n != null)  n.prnt = parent; 
+	/** Sets the Parent, silently ignoring a null Node. */
+	final static public void SET_PARENT(final TreeMapEntry n, final TreeMapEntry parent) {
+		if (n != null)  n.prnt = parent;
 	}
 
-	final static public TreeMapEntry  PREV_OF(final TreeMapEntry p) { 
-		return (p == null)? null : p.prev; 
+	/** Reads the previous (left) Child, tolerating a null Node.
+	 * @return null for a null Node, otherwise its previous (left) Child */
+	final static public TreeMapEntry  PREV_OF(final TreeMapEntry p) {
+		return (p == null)? null : p.prev;
 	}
 
-	final static public TreeMapEntry  NEXT_OF(final TreeMapEntry p) { 
-		return (p == null)? null : p.next; 
+	/** Reads the next (right) Child, tolerating a null Node.
+	 * @return null for a null Node, otherwise its next (right) Child */
+	final static public TreeMapEntry  NEXT_OF(final TreeMapEntry p) {
+		return (p == null)? null : p.next;
 	}
 
-	final static public TreeMapEntry  LAST_OF(final TreeMapEntry p) { 
-		return (p == null)? null : p.last(); 
+	/** Finds the last (rightmost) Descendant, tolerating a null Node.
+	 * @return null for a null Node, otherwise its last (rightmost) Descendant */
+	final static public TreeMapEntry  LAST_OF(final TreeMapEntry p) {
+		return (p == null)? null : p.last();
 	}
 
-	final static public TreeMapEntry  FIRST_OF(final TreeMapEntry p) { 
-		return (p == null)? null : p.first(); 
+	/** Finds the first (leftmost) Descendant, tolerating a null Node.
+	 * @return null for a null Node, otherwise its first (leftmost) Descendant */
+	final static public TreeMapEntry  FIRST_OF(final TreeMapEntry p) {
+		return (p == null)? null : p.first();
 	}
 
 	/**

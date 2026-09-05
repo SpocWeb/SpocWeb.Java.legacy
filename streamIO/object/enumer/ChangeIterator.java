@@ -30,6 +30,11 @@ import streamIO.object.ModificationException;
   * @author 	Matthias Heuer
   * @version	1.0
   * @stereotype enumeration
+  * <!-- docstate
+  * tags: [code/enumerator, code/iterator_adapter]
+  * concepts: [Custom Streaming Enumerator and Iterator Bridge Layer for Object Collections]
+  * facets: {layer: utility, status: legacy, complexity: high}
+  * -->
   */
 public interface ChangeIterator
 extends IStreamIn, IChangeAble {

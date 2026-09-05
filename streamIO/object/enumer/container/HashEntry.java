@@ -44,6 +44,11 @@ import tester.IEquivalence;
  * 
  * @see streamIO.object.enumer.container.tree.TreeMapEntry which also extends IndexAssociation 
  * and adds Relations to a previous and a Parent Element. 
+ * <!-- docstate
+ * tags: [code/container, code/hash_table, code/container_iteration]
+ * concepts: [Concrete Storage Containers - Arrays - Hash Tables and Relations]
+ * facets: {layer: utility, status: legacy, complexity: high}
+ * -->
  */
 final public class HashEntry 
 extends IndexAssociation  //leads to expensive Constructor Calls which slows down adding / removing Items.
@@ -117,7 +122,8 @@ implements ILinkAble, ICopy, IValue, ICPair //, IPair //, CopyAble //for Trees a
 	//public Object newInstance() {
 	//	return new HashEntry(); }
 
-	/** @return a new Enumerator with the same Position	 */
+	/** Clones this Entry to obtain an independent Enumerator at the same Position.
+	 * @return a new Enumerator with the same Position	 */
 	public HashEntry Enumerator() {
 		try { return (HashEntry) this.clone(); }
 		catch (CloneNotSupportedException x) { return null; } } //throw new CloneNotSupportedError(x.toString); } }
@@ -126,6 +132,7 @@ implements ILinkAble, ICopy, IValue, ICPair //, IPair //, CopyAble //for Trees a
 	  * Does a "shallow" Copy in the Sense of the Container,
 	  * but the List is copied deeply.
 	  * Slow Implementation due to Recursion! */
+	/** Recursively deep-copies this Entry and the rest of its collision List. */
 	public ICopy Copy() {
 		super.Copy();
 		Object Item;

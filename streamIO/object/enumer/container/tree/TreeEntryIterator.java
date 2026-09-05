@@ -14,6 +14,11 @@ import java.util.NoSuchElementException;
 
 /**
  * TreeMap Iterator.
+ * <!-- docstate
+ * tags: [code/red_black_tree, code/iterator_pattern]
+ * concepts: [Red-Black Tree Backed Sorted Map Implementation]
+ * facets: {layer: utility, status: legacy, complexity: high}
+ * -->
  */
 public class TreeEntryIterator 
 implements Iterator {
@@ -43,10 +48,20 @@ implements Iterator {
 	
 	///////////////////////////////////////////////////////////////////////////
 	
+	/**
+	 * Tests whether a next entry is available.
+	 * @return true when a next entry is available
+	 */
 	public boolean hasNext() { return next != null; }
-	
+
+	/**
+	 * Returns the next entry in iteration order.
+	 * @return the next entry in iteration order
+	 * @throws java.util.NoSuchElementException when no next entry remains
+	 * @throws ConcurrentModificationException when the map changed since this iterator was created
+	 */
 	public Object next() { return nextEntry(); }
-	
+
 	/** for typesafe Iteration	 */
 	final TreeMapEntry nextEntry() {
 		if (next == null)
@@ -58,6 +73,13 @@ implements Iterator {
 		return lastReturned;
 	}
 	
+	/**
+	 * Removes the entry last returned by {@link #next()} from the backing map.
+	 *
+	 * @throws IllegalStateException when {@link #next()} was never called, or was already
+	 *         followed by a {@code remove()}
+	 * @throws ConcurrentModificationException when the map changed since this iterator was created
+	 */
 	public void remove() {
 		if (lastReturned == null)
 			throw new IllegalStateException();

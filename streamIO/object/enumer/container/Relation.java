@@ -102,6 +102,11 @@ import graphs.SparseGraph;
   *
   * TODO: the Storage Mechanism in Relation is not implemented at all yet!
   * It just compiles!
+  * <!-- docstate
+  * tags: [code/container, code/hash_table, code/container_iteration]
+  * concepts: [Concrete Storage Containers - Arrays - Hash Tables and Relations]
+  * facets: {layer: utility, status: legacy, complexity: high}
+  * -->
   */
 public class Relation
 extends AMapper //AMonoid //HashTable
@@ -116,7 +121,9 @@ implements IIterAble, IInvertAble { //to be able to stream into this Relation
 	 */
 	private static final long serialVersionUID = 1L;
 
-	/** @return an Adjacency List Representation of all Edges in this Relation / Graph
+	/** Builds a SparseGraph Adjacency List from this Relation's Edges, filling in the
+	  * given Node/Position Mapping.
+	  * @return an Adjacency List Representation of all Edges in this Relation / Graph
 	  * This is the Preparation to solving Problems in the SparseMatrix Representation,
 	  * which is not necessarily faster, because (re-)transforming (in 'sortNodes()')
 	  * is an O(E+N) Op just like in most Graph Algorithms.
@@ -340,13 +347,14 @@ implements IIterAble, IInvertAble { //to be able to stream into this Relation
 	//	new Methods	//
 	//////////////////
 
-	/** Returns the Component at the specified index
+	/** Looks up the first Value mapped to the given Key.
 	  * @see findFirst()
 	  * If the Index does not exist, Stream.Iterator.EOI is returned.
 	  * If several Items exist for this Key, use map() to get them all.
 	  *
 	  * @param	 Key   an index to this Container.
 	  * @return	 the component at the specified index.
+	  * @throws NoSuchMethodError when the underlying Container does not support findFirst()
 	  */
 	public Container getAt(final Object Key) {
 		try {
@@ -734,7 +742,8 @@ implements IIterAble, IInvertAble { //to be able to stream into this Relation
 	//  Interface IInvertAble: abstract Methods
 	////////////////////////////////////////////////////////////////////////////////
 
-	/** @return the Inverse, cached for here for all inheriting Classes
+	/** Builds and caches the inverse Relation by swapping every Association's Key and Value.
+	  * @return the Inverse, cached for here for all inheriting Classes
 	  * Creates the inverse Relation (transposed Graph) !x
 	  * An undirected Graph is it's own Inverse.
 	  * A complete undirected Graph defines an Equivalence Relation.
@@ -758,28 +767,31 @@ implements IIterAble, IInvertAble { //to be able to stream into this Relation
 	//  Interface Monoid: abstract Methods
 	////////////////////////////////////////////////////////////////////////////////
 
-	/** Mapping / Left-Concat with !arg in Place: !this=°arg */
+	/** Mapping / Left-Concat with !arg in Place: !this=ï¿½arg */
 	public IMonoid pamAt(Object arg) {
 		if (mInverse == null) getInverse();
 		return (IMonoid) ((Relation) mInverse).mapAt(arg); }
 
-	/** @return an Iterator that maps the Elements of the given Iterator using this Relation. 	 */
+	/** Wraps the given Iterator in a {@link MapIterator} keyed by this Relation's backing Table.
+	 * @return an Iterator that maps the Elements of the given Iterator using this Relation. 	 */
 	public IStreamIn map(IIStreamIn iter) {
 		return new MapIterator((HashContainer) mCnt, iter); }
 
-	/** @return a new Container with the Elements of 'arg' mapped by this Relation.	 */
+	/** Maps every Element of arg through this Relation into a freshly created Container.
+	 * @return a new Container with the Elements of 'arg' mapped by this Relation.	 */
 	public Container map(Container arg) {
 		Container ret = (Container) arg.newInstance();
 		ret.addItems(map(arg.Iterator()));
 		return ret; }
 
-	/** @return a new Relation with the Elements of 'arg' mapped by this Relation.	 */
+	/** Maps every Element of arg through this Relation into a freshly created Relation.
+	 * @return a new Relation with the Elements of 'arg' mapped by this Relation.	 */
 	public Relation map(Relation arg) {
 		Relation ret = (Relation) arg.newInstance();
 		ret.addItems(map(arg.Iterator()));
 		return ret; }
 
-	/** Mapping/Left -Concat:  this°arg
+	/** Mapping/Left -Concat:  thisï¿½arg
 	  * @return 'arg' mapped by this, instead of 'this'
 	  *
 	  * The Argument is assumed to be a simple Object,
@@ -793,7 +805,7 @@ implements IIterAble, IInvertAble { //to be able to stream into this Relation
 		ret.setFilter(Key);
 		return ret; }
 
-	/** Mapping/Left -Concat:  this°arg
+	/** Mapping/Left -Concat:  thisï¿½arg
 	  * @return 'arg' mapped by this, instead of 'this'
 	  * arg is assumed to be a SemiMonoid itself
 	  */
@@ -801,7 +813,7 @@ implements IIterAble, IInvertAble { //to be able to stream into this Relation
 		Relation arg_ = (Relation) arg;
 		return (ISemiMonoid) this.map(arg_); }
 
-	/** Mapping / Left-Concat in Place:  this=°arg
+	/** Mapping / Left-Concat in Place:  this=ï¿½arg
 	  * implemented by: (arg.key, MapAt(arg.Value))
 	  * @return 'arg' mapped in Place by this, instead of 'this'
 	  * so to concatenate Mappings use B.mapAt(A.mapAt(a))
@@ -814,7 +826,7 @@ implements IIterAble, IInvertAble { //to be able to stream into this Relation
 		arg.copyAt(map(arg)); //short Operations first! (then you can forget about them!)
 		return arg; }
 
-	/** Mapping / Left-Concat in Place:  this=°arg
+	/** Mapping / Left-Concat in Place:  this=ï¿½arg
 	  * @return 'arg' mapped in Place by this, instead of 'this'
 	  * so to concatenate Mappings use B.mapAt(A.mapAt(a))
 	  * which is more efficient for single Values than B.map(A.map(a))
@@ -826,7 +838,7 @@ implements IIterAble, IInvertAble { //to be able to stream into this Relation
 		arg.val = getAt(arg.val); //TODO: this is a Stream with fragile State now, maybe load it into a Container!
 		return arg; }
 
-	/** Mapping / Left-Concat in Place:  this=°arg
+	/** Mapping / Left-Concat in Place:  this=ï¿½arg
 	  * @return 'arg' mapped in Place by this, instead of 'this'
 	  * so to concatenate Mappings use B.mapAt(A.mapAt(a))
 	  * which is more efficient for single Values than B.map(A.map(a))
@@ -839,11 +851,13 @@ implements IIterAble, IInvertAble { //to be able to stream into this Relation
 		if (arg instanceof Association) return mapAt((Association) arg);
 		return self.mapAt(arg); }
 
-	/** @return a String Representation of this Object 	*/
+	/** Delegates to the backing Container's own String Representation.
+	 * @return a String Representation of this Object 	*/
 	public String toString() {
 		return mCnt.toString(); }
 
-	/** @return a new, uninitalized Instance of it's class.
+	/** Creates a new, empty Relation.
+	 * @return a new, uninitalized Instance of it's class.
 	  * This can in VB also be achieved by 'CreateObjectFromInstance',
 	  * which may be slower.
 	  * When overriding, use newInstance on all Components.	 */
@@ -1100,7 +1114,7 @@ implements IIterAble, IInvertAble { //to be able to stream into this Relation
 		}
 
 	/**Returns true, when this Relation is transitive, i.e. a=b && b=c => a=c
-	 * a transitive relation is a projector, i.e. A°A = A
+	 * a transitive relation is a projector, i.e. Aï¿½A = A
 	 * only meaningful for Mapping A->A
 	 * This is true for Relations that are the transitive hull of a spanning Relation */
 	public boolean isTransitive() {	//Map the whole Relation to itself
@@ -1152,12 +1166,14 @@ implements IIterAble, IInvertAble { //to be able to stream into this Relation
 	 */
 //	public IStreamIn hull(Object Start) { return generateHull(map(Start)); }
 
-	/** @return the transitive Hull of this Relation
+	/** Repeatedly maps this Relation by itself, folding new Associations back in until no
+	  * more are produced.
+	  * @return the transitive Hull of this Relation
 	  * i.e. all Elements that can be reached from this one
-	  * by adding the Results of all Powers of A°A to A:
+	  * by adding the Results of all Powers of Aï¿½A to A:
 	  *
 	  * The Hull will be a transitive Relation, i.e. a=b && b=c => a=c
-	  * a transitive relation is a projector, i.e. A°A = A
+	  * a transitive relation is a projector, i.e. Aï¿½A = A
 	  * only meaningful for Mapping A->A
 	  */
 	public Relation hullAt() {
@@ -1219,7 +1235,7 @@ implements IIterAble, IInvertAble { //to be able to stream into this Relation
 						   {"F","E"}, //true (F-D-E)
 						   {"A","F"}, //false
 						   {"G","E"}};//true (G-A-F-E)
-		String[][] Edges2={{"G","C"}, //true (G-A-C)	//neu für zweifachen Zusammenhang
+		String[][] Edges2={{"G","C"}, //true (G-A-C)	//neu fï¿½r zweifachen Zusammenhang
 						   {"G","H"}, //false
 						   {"J","G"}, //false		//these last two Elements
 						   {"J","L"}};//true (J-L)	//differ from the Example in MatrixGraph!!!
@@ -1240,7 +1256,7 @@ implements IIterAble, IInvertAble { //to be able to stream into this Relation
 		System.out.println("isSymmetric  ? " + rel.isSymmetric  ());
 		System.out.println("isTransitive ? " + rel.isTransitive ());
 		rel = rel.map(rel);
-		System.out.println("Rel°Rel = " + rel);
+		System.out.println("Relï¿½Rel = " + rel);
 	}
 
 	/**Tests all Methods of this Class	 */

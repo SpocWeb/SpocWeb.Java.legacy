@@ -10,6 +10,11 @@ import function.IIOrderAble;
  *
  * It is similar to an Iterator,
  * except for the Fact that you supply an Object to search for.
+ * <!-- docstate
+ * tags: [code/container, code/hash_table, code/container_iteration]
+ * concepts: [Concrete Storage Containers - Arrays - Hash Tables and Relations]
+ * facets: {layer: utility, status: legacy, complexity: high}
+ * -->
  */
 public class Hunter {
 

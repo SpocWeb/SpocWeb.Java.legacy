@@ -3,6 +3,11 @@ package streamIO.object.enumer.container;
 import tester.ITester;
 
 /**This Class implements a Join Filter on a Container, i.e.
+ * <!-- docstate
+ * tags: [code/container, code/hash_table, code/container_iteration]
+ * concepts: [Concrete Storage Containers - Arrays - Hash Tables and Relations]
+ * facets: {layer: utility, status: legacy, complexity: high}
+ * -->
  * it returns only those Rows, where Columns i and j are identical. */
 public class Join
 implements ITester {
@@ -13,6 +18,14 @@ implements ITester {
 	/**Constructor to initialize the Columns checked for equality	 */
 	public Join(int i_, int j_)	{ i = i_; j = j_;}
 
+	/**
+	 * Returns whether columns {@code i} and {@code j} of the given {@link Container}
+	 * row hold equal values.
+	 *
+	 * @param arg the {@link Container} row to test
+	 * @return true when the values at columns {@code i} and {@code j} are equal, false
+	 *         when they differ or either column lookup fails
+	 */
 	public boolean test(Object arg)	{
 		try {
 		return  ((Container) arg).getAt(i).equals

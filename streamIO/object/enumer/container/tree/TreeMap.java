@@ -113,6 +113,11 @@ import tester.OrderatorComparable;
  * @see Collection
  * @see Collections#synchronizedMap(Map)
  * @since 1.2
+ * <!-- docstate
+ * tags: [code/red_black_tree, code/iterator_pattern]
+ * concepts: [Red-Black Tree Backed Sorted Map Implementation]
+ * facets: {layer: utility, status: legacy, complexity: high}
+ * -->
  */
 public class TreeMap 
 extends AbstractMap
@@ -438,7 +443,8 @@ implements SortedMap, Cloneable, java.io.Serializable
 	/// find TreeMapEntries
 	///////////////////////////////////////////////////////////////////////////
 	
-	final static public double DEFAULT_WEIGHT = 1; 
+	/** Default Weight assigned to a new Entry when none is given explicitly. */
+	final static public double DEFAULT_WEIGHT = 1;
 	
 	/**
 	 * TODO: rename to setAt
@@ -1083,6 +1089,8 @@ implements SortedMap, Cloneable, java.io.Serializable
 	/// static Testing and main Methods
 	///////////////////////////////////////////////////////////////////////////
 	
+	/** Runs {@link #main(String[])} plus a series of TreeMap insert/remove/re-insert
+	 * checks, asserting the Order is preserved via {@link #testOrdered(TreeMap)}. */
 	public static void testIt() {
 		final String[] args = Indexer.TEST_STRINGS; 
 		main(args);
@@ -1113,6 +1121,8 @@ implements SortedMap, Cloneable, java.io.Serializable
 		}
 	}
 	
+	/** Runs the same insert/remove/re-insert checks as {@link #testIt()}, but against
+	 * {@link java.util.TreeMap} instead, to cross-check the Order assertions. */
 	public static void testTreeMap() {
 		final String[] args = Indexer.TEST_STRINGS; 
 		final java.util.TreeMap index = new java.util.TreeMap(OrderatorComparable.Orderator); 

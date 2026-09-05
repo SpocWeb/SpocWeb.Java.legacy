@@ -109,6 +109,11 @@ import graphs.SparseGraph;
   * and thus you only need to have a Container with Set Operations.
   *
   * TODO: StreamIn should be implemented to allow reading the Function
+  * <!-- docstate
+  * tags: [code/container, code/hash_table, code/container_iteration]
+  * concepts: [Concrete Storage Containers - Arrays - Hash Tables and Relations]
+  * facets: {layer: utility, status: legacy, complexity: high}
+  * -->
   */
 public class Function
 extends AMapper //AMonoid //HashTable
@@ -343,7 +348,8 @@ implements IIterAble, IInvertAble, IDynamicFunction { //to be able to stream int
 	//  The Function must not have any Cycles, i.e. form a DAG or a DAG Forest
 	////////////////////////////////////////////////////////////////////////////
 
-	/** @return  the (current) Root of this Element when defining Equivalences.
+	/** Follows Parent references without path compression, until a Root is reached.
+	 * @return  the (current) Root of this Element when defining Equivalences.
 	  * This is the fastest way, but it does not reduce the needed time
 	  * for the next Search like the other Implementations.
 	  * The Root may not be defined, when this Function contains Cycles! */
@@ -353,7 +359,8 @@ implements IIterAble, IInvertAble, IDynamicFunction { //to be able to stream int
 			x = p;
 		return x; }
 
-	/** @return the (current) Root of this Element when defining Equivalences.
+	/** Follows Parent references, path-halving one Level at a Time as it climbs.
+	 * @return the (current) Root of this Element when defining Equivalences.
 	  * The Root may not be defined, when this Relation contains Cycles!
 	  * Reduces the Height of the Tree by one on every Level.
 	  * Uses two indexed accesses, so it is very fast too!	 */
@@ -364,7 +371,8 @@ implements IIterAble, IInvertAble, IDynamicFunction { //to be able to stream int
 			replaceAt(x, pp); x = p; p = pp; }
 		return p; }
 
-	/** @return  the (current) Root of this Element when defining Equivalences.
+	/** Recursively follows Parent references, fully compressing the Path to the Root.
+	 * @return  the (current) Root of this Element when defining Equivalences.
 	  * The Root may not be defined, when this Relation contains Cycles!
 	  * Reduces the Height of the Tree to one on every Element of the Search Tree.
 	  * Uses Recursion, so it is slower than findRoot on the first Operation,
@@ -375,7 +383,8 @@ implements IIterAble, IInvertAble, IDynamicFunction { //to be able to stream int
 		replaceAt(x, pp = findRootTotal(p)); //find the root and set it to all Elements on the way back.
 		return pp; }
 
-	/** @return  true, if key and Value are equivalent,
+	/** Delegates to {@link #isEquivalent(Object, Object, boolean)} without uniting the Roots.
+	 * @return  true, if key and Value are equivalent,
 	  * considering all Relations as Equivalence Relations.
 	  */
 	public boolean isEquivalent(Object Key, Object Value) {
@@ -892,7 +901,8 @@ implements IIterAble, IInvertAble, IDynamicFunction { //to be able to stream int
 	//  Interface IInvertAble: abstract Methods
 	////////////////////////////////////////////////////////////////////////////////
 
-	/** @return the Inverse, cached for here for all inheriting Classes
+	/** Builds and caches the inverse Function by swapping every Association's Key and Value.
+	  * @return the Inverse, cached for here for all inheriting Classes
 	  * Creates the inverse Relation (transposed Graph) !x
 	  * An undirected Graph is it's own Inverse.
 	  * A complete undirected Graph defines an Equivalence Relation.
@@ -917,30 +927,34 @@ implements IIterAble, IInvertAble, IDynamicFunction { //to be able to stream int
 	//  Interface Monoid: abstract Methods
 	////////////////////////////////////////////////////////////////////////////////
 
-	/** Mapping / Left-Concat with !arg in Place: !this=°arg */
+	/** Mapping / Left-Concat with !arg in Place: !this=ï¿½arg */
 	public IMonoid pamAt(Object arg) {
 		if (mInverse == null) getInverse();
 		return (IMonoid) ((Function) mInverse).mapAt(arg); }
 
-	/** @return an Iterator that maps the Elements of the given Iterator using this Relation. 	 */
+	/** Wraps the given Iterator, using the faster {@link FilterByFunction} when this is a
+	 * true Function, otherwise a generic {@link MapIterator}.
+	 * @return an Iterator that maps the Elements of the given Iterator using this Relation. 	 */
 	public IStreamIn map(IIStreamIn iter) {
 		if (mFunction)
 			return new FilterByFunction(iter, this); //simpler and faster
 			return new MapIterator((HashContainer) mCnt, iter); }
 
-	/** @return a new Container with the Elements of 'arg' mapped by this Relation.	 */
+	/** Maps every Element of arg through this Function into a freshly created Container.
+	 * @return a new Container with the Elements of 'arg' mapped by this Relation.	 */
 	public Container map(Container arg) {
 		Container ret = (Container) arg.newInstance();
 		ret.addItems(map(arg.Iterator()));
 		return ret; }
 
-	/** @return a new Relation with the Elements of 'arg' mapped by this Relation.	 */
+	/** Maps every Element of arg through this Function into a freshly created Function.
+	 * @return a new Relation with the Elements of 'arg' mapped by this Relation.	 */
 	public Function map(Function arg) {
 		Function ret = (Function) arg.newInstance();
 		ret.addItems(map(arg.Iterator()));
 		return ret; }
 
-	/** Mapping/Left -Concat:  this°arg
+	/** Mapping/Left -Concat:  thisï¿½arg
 	  * @return 'arg' mapped by this, instead of 'this'
 	  *
 	  * The Argument is assumed to be a simple Object,
@@ -962,7 +976,7 @@ implements IIterAble, IInvertAble, IDynamicFunction { //to be able to stream int
 		ret.setFilter(Key);
 		return ret; }
 
-	/** Mapping/Left -Concat:  this°arg
+	/** Mapping/Left -Concat:  thisï¿½arg
 	  * @return 'arg' mapped by this, instead of 'this'
 	  * arg is assumed to be a SemiMonoid itself
 	  */
@@ -972,7 +986,7 @@ implements IIterAble, IInvertAble, IDynamicFunction { //to be able to stream int
 		Function arg_ = (Function) arg;
 		return (ISemiMonoid) this.map(arg_); }
 
-	/** Mapping / Left-Concat in Place:  this=°arg
+	/** Mapping / Left-Concat in Place:  this=ï¿½arg
 	  * implemented by: (arg.key, MapAt(arg.Value))
 	  * @return 'arg' mapped in Place by this, instead of 'this'
 	  * so to concatenate Mappings use B.mapAt(A.mapAt(a))
@@ -992,7 +1006,7 @@ implements IIterAble, IInvertAble, IDynamicFunction { //to be able to stream int
 			}
 		} return arg; }
 
-	/** Mapping / Left-Concat in Place:  this=°arg
+	/** Mapping / Left-Concat in Place:  this=ï¿½arg
 	  * @return 'arg' mapped in Place by this, instead of 'this'
 	  * so to concatenate Mappings use B.mapAt(A.mapAt(a))
 	  * which is more efficient for single Values than B.map(A.map(a))
@@ -1007,7 +1021,7 @@ implements IIterAble, IInvertAble, IDynamicFunction { //to be able to stream int
 			arg.val = getAt(arg.val); //TODO: this is a Stream with fragile State now, maybe load it into a Container!
 		} return arg; }
 
-	/** Mapping / Left-Concat in Place:  this=°arg
+	/** Mapping / Left-Concat in Place:  this=ï¿½arg
 	  * @return 'arg' mapped in Place by this, instead of 'this'
 	  * so to concatenate Mappings use B.mapAt(A.mapAt(a))
 	  * which is more efficient for single Values than B.map(A.map(a))
@@ -1020,11 +1034,13 @@ implements IIterAble, IInvertAble, IDynamicFunction { //to be able to stream int
 		if (arg instanceof Association) return mapAt((Association) arg);
 		return self.mapAt(arg); }
 
-	/** @return a String Representation of this Object 	*/
+	/** Delegates to the backing Container's own String Representation.
+	 * @return a String Representation of this Object 	*/
 	public String toString() {
 		return mCnt.toString(); }
 
-	/** @return a new, uninitalized Instance of it's class.
+	/** Creates a new, empty Function.
+	 * @return a new, uninitalized Instance of it's class.
 	  * This can in VB also be achieved by 'CreateObjectFromInstance',
 	  * which may be slower.
 	  * When overriding, use newInstance on all Components.	 */
@@ -1277,7 +1293,7 @@ implements IIterAble, IInvertAble, IDynamicFunction { //to be able to stream int
 		}
 
 	/**Returns true, when this Relation is transitive, i.e. a=b && b=c => a=c
-	 * a transitive relation is a projector, i.e. A°A = A
+	 * a transitive relation is a projector, i.e. Aï¿½A = A
 	 * only meaningful for Mapping A->A
 	 * This is true for Relations that are the transitive hull of a spanning Relation */
 	public boolean isTransitive() {	//Map the whole Relation to itself
@@ -1329,12 +1345,14 @@ implements IIterAble, IInvertAble, IDynamicFunction { //to be able to stream int
 	 */
 //	public IStreamIn hull(Object Start) { return generateHull(map(Start)); }
 
-	/** @return the transitive Hull of this Relation
+	/** Repeatedly maps this Function by itself, folding new Associations back in until no
+	  * more are produced.
+	  * @return the transitive Hull of this Relation
 	  * i.e. all Elements that can be reached from this one
-	  * by adding the Results of all Powers of A°A to A:
+	  * by adding the Results of all Powers of Aï¿½A to A:
 	  *
 	  * The Hull will be a transitive Relation, i.e. a=b && b=c => a=c
-	  * a transitive relation is a projector, i.e. A°A = A
+	  * a transitive relation is a projector, i.e. Aï¿½A = A
 	  * only meaningful for Mapping A->A
 	  */
 	public Function hullAt() {
@@ -1390,7 +1408,7 @@ implements IIterAble, IInvertAble, IDynamicFunction { //to be able to stream int
 		System.out.println("isSymmetric  ? " + rel.isSymmetric  ());
 		System.out.println("isTransitive ? " + rel.isTransitive ());
 		rel = rel.map(rel);
-		System.out.println("Rel°Rel = " + rel);
+		System.out.println("Relï¿½Rel = " + rel);
 	}
 
 	/**Tests the Equivalence Methods of this Class
@@ -1411,7 +1429,7 @@ implements IIterAble, IInvertAble, IDynamicFunction { //to be able to stream int
 						   {"F","E"}, //true (F-D-E)
 						   {"A","F"}, //false
 						   {"G","E"}};//true (G-A-F-E)
-		String[][] Edges2={{"G","C"}, //true (G-A-C)	//neu für zweifachen Zusammenhang
+		String[][] Edges2={{"G","C"}, //true (G-A-C)	//neu fï¿½r zweifachen Zusammenhang
 						   {"G","H"}, //false
 						   {"J","G"}, //false		//these last two Elements
 						   {"J","L"}};//true (J-L)	//differ from the Example in MatrixGraph!!!
@@ -1439,7 +1457,7 @@ implements IIterAble, IInvertAble, IDynamicFunction { //to be able to stream int
 																				Edges [i][0]));
 		i = -1; while (++i < Edges2.length) System.out.print(EQ.isEquivalentMAX(Edges2[i][1],
 																				Edges2[i][0]));
-		System.out.println(); }
+		System.out.println(); } */
 
 	/**Tests all Properties of a single Relation	 */
 	public static void checkRelation(Function rel) {
@@ -1453,10 +1471,12 @@ implements IIterAble, IInvertAble, IDynamicFunction { //to be able to stream int
 		System.out.println("isSymmetric  ? " + rel.isSymmetric  ());
 		System.out.println("isTransitive ? " + rel.isTransitive ());
 		rel = rel.map(rel);
-		System.out.println("Rel°Rel = " + rel);
+		System.out.println("Relï¿½Rel = " + rel);
 	}
 
-	/** @return an Adjacency List Representation of all Edges in this Relation / Graph
+	/** Builds a SparseGraph Adjacency List from this Function's Edges, filling in the
+	  * given Node/Position Mapping.
+	  * @return an Adjacency List Representation of all Edges in this Relation / Graph
 	  * This is the Preparation to solving Problems in the SparseMatrix Representation,
 	  * which is not necessarily faster, since (re-)transforming (in 'sortNodes()')
 	  * is an O(E+N) Op just like most Graph Algorithms.

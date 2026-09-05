@@ -31,6 +31,11 @@ import streamIO.object.enumer.IndexEnumerator;
  * @see CopyStreamIn
  * Alternatively a new Relation is created anyway on flattening the Cross Product.
  * But also flattening would reuse the first Relation.
+ * <!-- docstate
+ * tags: [code/container, code/hash_table, code/container_iteration]
+ * concepts: [Concrete Storage Containers - Arrays - Hash Tables and Relations]
+ * facets: {layer: utility, status: legacy, complexity: high}
+ * -->
  */
 public class RecordSet
 	extends AIndexEnumerator //AStreamIn {
@@ -92,6 +97,7 @@ public class RecordSet
 	////////////////////////////////////////////////////////////////////////////////
 
 	/**
+	 * Reads the ResultSet's current Row into the reused {@link #currItem} Relation.
 	 * @return a single Record from the ResultSet read into a Relation
 	 * A fundamental Optimization here is to reuse the same Relation
 	 * and thus save Creation, Construction and Destruction of the Relation Objects.
@@ -109,12 +115,14 @@ public class RecordSet
 				Fields[i].val = null; }
 		} return currItem; } // = ret; }
 
-	/** @return the current Record from the ResultSet loaded into a Relation */
+	/** Returns the Record last read by {@link #currRow()} or {@link #nextItem()}.
+	 * @return the current Record from the ResultSet loaded into a Relation */
 	public Object currItem() {
 		return currItem;
 	}
 
-	/** @return a single new Record from the ResultSet loaded into a Relation */
+	/** Advances the underlying ResultSet and reads the new current Row.
+	 * @return a single new Record from the ResultSet loaded into a Relation */
 	public Object nextItem() {
 		try { return nextRow();
 		} catch (final SQLException x) { 
@@ -122,7 +130,8 @@ public class RecordSet
 		}
 	}
 
-	/** @return the total Number of Objects in this Enumerator / Container
+	/** Approximates the total Row Count from the current Cursor Position.
+	  * @return the total Number of Objects in this Enumerator / Container
 	  * For Random Access Stores this is definitely limited and can thus be returned.
 	  * Unfortunately ResultSet has no Methods to determine the Number of Rows!
 	  */
@@ -134,7 +143,8 @@ public class RecordSet
 		rs.close();
 	}
 
-	/** @return the next Item without moving to it. */
+	/** Advances, reads the Row, then moves the Cursor back one Row.
+	 * @return the next Item without moving to it. */
 	public Object peekItem() { //throws NoSuchMethodException {
 		Object ret = nextItem();
 		try { rs.relative(-1);
@@ -162,6 +172,9 @@ public class RecordSet
 	 * counted from the last marked Position.
 	 * @return the Number of Positions actually skipped
 	 */
+	// TODO: LOGIC: named "reset" (lowercase 's') instead of "reSet", so this does not
+	// actually override IReSetAble#reSet(long) - same naming defect as
+	// AIndexEnumerator.reset(long), which this class inherits from.
 	public long reset(final long Position) { //throws	NoSuchMethodException {
 		if (Position == 0) return 0;
 		try {
@@ -203,6 +216,7 @@ public class RecordSet
 	}
 
 	/**
+	 * Moves the underlying ResultSet's Cursor to its last Row and reads it.
 	 * @return and moves to the last (Root) Object of this one.
 	 * This should be used with Care, because it could result in Blocking
 	 * or infinite Loops with infinite Streams.
@@ -214,7 +228,8 @@ public class RecordSet
 		} catch (SQLException x) { throw new OperationNotSupported("mark()", x); }
 	}
 
-	/** @return and moves to the first Object of this Container. */
+	/** Moves the underlying ResultSet's Cursor to its first Row and reads it.
+	 * @return and moves to the first Object of this Container. */
 	public Object firstItem() {
 		try {
 			rs.first();
@@ -222,7 +237,8 @@ public class RecordSet
 		} catch (SQLException x) { throw new OperationNotSupported("mark()", x); }
 	}
 
-	/** @return and moves to the first Object of this Container. */
+	/** Moves the underlying ResultSet's Cursor back one Row and reads it.
+	 * @return and moves to the first Object of this Container. */
 	public Object prevItem() {
 		try {
 			rs.previous();
@@ -231,6 +247,7 @@ public class RecordSet
 	}
 
 	/**
+	 * Moves the underlying ResultSet's Cursor to the given absolute Row and reads it.
 	 * @return the Object at the given Position in this Enumeration
 	 * The Result depends on whether the Iterator is deterministic
 	 * and supports these Operations
@@ -242,14 +259,16 @@ public class RecordSet
 		} catch (SQLException x) { throw new OperationNotSupported("mark()", x); }
 	}
 
-	/** @return the previous Record from the ResultSet read into a Relation */
+	/** Moves the underlying ResultSet's Cursor back one Row and reads it.
+	 * @return the previous Record from the ResultSet read into a Relation */
 	public Relation prevRow() throws SQLException {
 		if (!rs.previous()) { return null; } //IStreamIn.SOI;
 		atEnd = false;
 		return currRow();
 	}
 
-	/** @return the next Record from the ResultSet read into a Relation */
+	/** Advances the underlying ResultSet's Cursor by one Row and reads it.
+	 * @return the next Record from the ResultSet read into a Relation */
 	public Relation nextRow() throws SQLException {
 		if (atEnd = !rs.next()) { return null; } //IStreamIn.EOI;
 		return currRow();
@@ -259,7 +278,8 @@ public class RecordSet
 //  Optimizations
 ////////////////////////////////////////////////////////////////////////////////
 
-	/** @return the minimum Number of Items still available from this ResultSet */
+	/** Reports only whether the Cursor is known to be past the last Row.
+	 * @return the minimum Number of Items still available from this ResultSet */
 	public long availAble() {
 		return atEnd ? -1 : 0;// : 1;
 /*		try {
@@ -270,7 +290,8 @@ public class RecordSet
 			throw new OperationNotSupported("available()", x); }
 */	}
 
-	/** @return and removes the given Row from the ResultSet */
+	/** Moves to and deletes the given Row from the underlying ResultSet.
+	 * @return and removes the given Row from the ResultSet */
 	public Object removeAt(int Row) {
 		try {
 			rs.absolute(Row); Object ret = currRow();
@@ -288,7 +309,8 @@ public class RecordSet
 		}
 	}
 
-	/** @return and replaces the given Row from the ResultSet */
+	/** Moves to the given Row, overwrites its Fields from New, and commits the Update.
+	 * @return and replaces the given Row from the ResultSet */
 	public Object setAt(int Row, Object New) {
 		try {
 			rs.absolute(Row);
@@ -298,7 +320,8 @@ public class RecordSet
 		} catch (SQLException x) { throw new OperationNotSupported("mark()", x); }
 	}
 
-	/** @return and removes the given Row from the ResultSet */
+	/** Inserts New as a new Row via the ResultSet's Insert Row; Row is unused.
+	 * @return and removes the given Row from the ResultSet */
 	public IndexEnumerator addAt(int Row, Object New) {
 		try {
 			rs.moveToInsertRow();
@@ -309,6 +332,7 @@ public class RecordSet
 	}
 
 	/**
+	 * This Enumerator has no defined Sort Order, since it follows the ResultSet's own Cursor.
 	 * @return the Order in which Elements are returned by the Iterators
 	 * when they are added using addItem() and removed using nextItem().
 	 */
@@ -331,7 +355,8 @@ public class RecordSet
 		mCnt.add(getObject());
 	return mCnt; }
 
-/** Main Method: Tests all Methods of this Class	*/
+/** Runs {@link #testIt(String[])} as this Class's command-line entry point.
+ * @param args unused command-line arguments */
 	public static void main(String[] args) throws java.io.IOException {// SQLException {
 		testIt(args);
 	}

@@ -12,27 +12,38 @@ import streamIO.object.enumer.ReverseEnumerator;
   * based on it't abstract Operations.
   *
   * The Items can be accessed by an integer Index ranging from 0 to getInt()-1.
+  * <!-- docstate
+  * tags: [code/container, code/hash_table, code/container_iteration]
+  * concepts: [Concrete Storage Containers - Arrays - Hash Tables and Relations]
+  * facets: {layer: utility, status: legacy, complexity: high}
+  * -->
   * The Iterator Methods are delegated to mEnum, THE (single) Iterator for this Container. */
 public abstract class ARAContainer
 extends AContainer
 implements RAContainer {
 	
-	/** @see streamIO.object.enumer.IndexEnumerator#removeAt(int)	 */
-	abstract public Object removeAt(final int _index); 
-	
-	/** @see streamIO.object.enumer.IndexEnumerator#addAt(int, java.lang.Object)	 */
-	abstract public IndexEnumerator addAt(final int _index, final Object _item); 
-	
-	/** @see streamIO.object.enumer.container.Container#getCapacity()	 */
-	abstract public int getCapacity(); 
-	
-	/** @see streamIO.object.enumer.container.Container#setCapacity(int)	 */
+	/** Removes and returns the Item at the given Position, to be implemented by subclasses.
+	 * @see streamIO.object.enumer.IndexEnumerator#removeAt(int)	 */
+	abstract public Object removeAt(final int _index);
+
+	/** Inserts an Item at the given Position, to be implemented by subclasses.
+	 * @see streamIO.object.enumer.IndexEnumerator#addAt(int, java.lang.Object)	 */
+	abstract public IndexEnumerator addAt(final int _index, final Object _item);
+
+	/** Returns the current allocated Capacity, to be implemented by subclasses.
+	 * @see streamIO.object.enumer.container.Container#getCapacity()	 */
+	abstract public int getCapacity();
+
+	/** Ensures at least the given minimum Capacity, to be implemented by subclasses.
+	 * @see streamIO.object.enumer.container.Container#setCapacity(int)	 */
 	abstract public int setCapacity(final int minCapacity);
-	
-	/** @see streamIO.copy.IICopyAble#newInstance()	 */
-	abstract public ICopyAble newInstance(); 
-	
-	/** @return the Object at the given Position in this Enumeration
+
+	/** Creates a new, empty Instance of the concrete Subclass, to be implemented by subclasses.
+	 * @see streamIO.copy.IICopyAble#newInstance()	 */
+	abstract public ICopyAble newInstance();
+
+	/** Returns the Item at the given Position, to be implemented by subclasses.
+	 * @return the Object at the given Position in this Enumeration
 	  * The Result depends on whether the Iterator is deterministic
 	  * and supports these Operations
 	  * Resolves the Conflict between AStreamSet.getAt(int)
@@ -151,7 +162,7 @@ implements RAContainer {
 	 * @see		java.util.Array#size()
 	 */
 /*	public RAContainer subAt(final int index) {
-		removeAt(index); return this; }
+		removeAt(index); return this; } */
 
 	/**Adds the specified component to the end of this Array,
 	 * increasing its size by one. The capacity of this Array is
@@ -161,7 +172,8 @@ implements RAContainer {
 	public synchronized ISemiGroup addAt(final Object obj) {
 		addAt(getInt(), obj); return this; } //adds it at the End (getInt())
 
-	/** @return the minimum Number of Items (in the Buffer)
+	/** Delegates to the single Iterator's own availableBefore() Count.
+	  * @return the minimum Number of Items (in the Buffer)
 	  * that are to be reached by previousItem.
 	  * Should be called again on reaching this Number,
 	  * because the Buffer may be filled up by then.

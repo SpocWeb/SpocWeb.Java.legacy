@@ -18,6 +18,11 @@ import tester.ITester;
   *
   * Actually the Test is superfluous,
   * because the Relation is now implemented using a nested Set / Set Combination.
+  * <!-- docstate
+  * tags: [code/container, code/hash_table, code/container_iteration]
+  * concepts: [Concrete Storage Containers - Arrays - Hash Tables and Relations]
+  * facets: {layer: utility, status: legacy, complexity: high}
+  * -->
   */
 class FindValueTester
 implements ITester {
@@ -28,6 +33,10 @@ implements ITester {
 	/**Switches between searching for Equality or Non-Equality	 */
 	protected boolean inverse;
 
+	/** Tests whether the given {@link Association}'s value matches (or, when {@link #inverse}
+	 * is set, does not match) this Tester's stored {@link #Value}.
+	 * @param Assoc the Association whose value is compared, must be castable to {@link Association}
+	 * @return true when the Association's value equals {@link #Value} (negated if {@link #inverse}) */
 	public boolean test(Object Assoc) {	//rely on the Item being an Association!
 		Association ass = (Association) Assoc;
 		return inverse  ^ (

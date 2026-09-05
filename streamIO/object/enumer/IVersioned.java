@@ -33,6 +33,11 @@ package streamIO.object.enumer;
  * Version State can result, which requires a granular Data-Up-Migration. 
  * @author heuerm
  *
+ * <!-- docstate
+ * tags: [code/enumerator, code/iterator_adapter]
+ * concepts: [Custom Streaming Enumerator and Iterator Bridge Layer for Object Collections]
+ * facets: {layer: utility, status: legacy, complexity: high}
+ * -->
  */
 public interface IVersioned {
 	

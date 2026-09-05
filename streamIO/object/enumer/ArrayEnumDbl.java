@@ -22,6 +22,11 @@ import function.byref.ByRefDouble;
  * @author 		 Matthias Heuer
  * @version 1.0
  * @stereotype enumeration
+ * <!-- docstate
+ * tags: [code/enumerator, code/iterator_adapter]
+ * concepts: [Custom Streaming Enumerator and Iterator Bridge Layer for Object Collections]
+ * facets: {layer: utility, status: legacy, complexity: high}
+ * -->
  */
 public class ArrayEnumDbl
 extends AIndexEnumerator
@@ -59,7 +64,8 @@ implements IStreamIn_Float {
 	/**Initializing Constructor	 */
 	public ArrayEnumDbl(final double[] arr) { this(arr, arr.length); }
 	
-	/** @see streamIO.real.IStreamIn_Float#FloatIterator()	 */
+	/** Creates a new independent Iterator over the same double Array at its Start.
+	 * @see streamIO.real.IStreamIn_Float#FloatIterator()	 */
 	public IStreamIn_Float FloatIterator() { return new ArrayEnumDbl(arr, length); }
 	
 	////////////////////////////////////////////////////////////////////////////
@@ -72,16 +78,20 @@ implements IStreamIn_Float {
 	/**Random double Precision Number	 */
 	public double nextDouble() { return arr[++curr]; }
 	
-	/** @see streamIO.real.IStreamIn_Float#currDouble()	 */
+	/** Returns the current Element, unconverted.
+	 * @see streamIO.real.IStreamIn_Float#currDouble()	 */
 	public double currDouble() { return arr[curr]; }
-	
-	/** @see streamIO.real.IStreamIn_Float#currFloat()	 */
+
+	/** Returns the current Element, narrowed to float.
+	 * @see streamIO.real.IStreamIn_Float#currFloat()	 */
 	final public float currFloat() { return (float) currDouble(); }
-	
-	/** @see streamIO.real.IStreamIn_Float#peekDouble()	 */
+
+	/** Returns the next Element without advancing, unconverted.
+	 * @see streamIO.real.IStreamIn_Float#peekDouble()	 */
 	public double peekDouble() { return arr[1+curr]; }
-	
-	/** @see streamIO.real.IStreamIn_Float#peekFloat()	 */
+
+	/** Returns the next Element without advancing, narrowed to float.
+	 * @see streamIO.real.IStreamIn_Float#peekFloat()	 */
 	public float peekFloat() { return (float) peekDouble(); }
 	
 	////////////////////////////////////////////////////////////////////////////////
@@ -92,12 +102,14 @@ implements IStreamIn_Float {
 	//	Interface StreamIn
 	////////////////////////////////////////////////////////////////////////////////
 	
-	/** @return the total Number of Objects in this Enumerator / Container
+	/** Returns the cached used Length of the wrapped Array.
+	  * @return the total Number of Objects in this Enumerator / Container
 	  * For Random Access Stores this is definitely limited and can thus be returned.
 	  */
 	public int getInt() { return length; }
 
-	/** @return the Item at the given absolute Position
+	/** Wraps the double at the given Position in the reusable {@link #Value} holder.
+	  * @return the Item at the given absolute Position
 	  * @return SOI for negative Indices and EOI for Indices larger than the Size
 	  * Could also use try/catch Block, but that is much more expensive!	 */
 	public Object getAt(final int index) {
@@ -188,16 +200,19 @@ implements IStreamIn_Float {
 							arr, curr + 1, length - curr - 1);
 		--length; return Value; }
 
-	/** @return a new Intstance of an alterable Iterator ,
+	/** Creates a new alterable Iterator over this Array.
+	 * @return a new Intstance of an alterable Iterator ,
 	  * which allows for changing the Data and structure concurrently. */
 	public Enumerator Enumerator() { //return null; }
 		return new ArrayEnumDbl(arr); }
 
-	/** @return a new Intstance of a ChangeIterator,
+	/** Creates a new ChangeIterator over this Array.
+	 * @return a new Intstance of a ChangeIterator,
 	  * which allows for changing the Data concurrently. */
 	public ChangeIterator ChangeIterator() { return new ArrayEnumDbl(arr); }
 
-	/** @return the Order in which Elements are returned or processed.	 */
+	/** This Enumerator always returns Items in Queue (FIFO) Order.
+	 * @return the Order in which Elements are returned or processed.	 */
 	public byte getOrder() { return IPipe.ORDER_QUEUE; }
 
     /** removes the current Item (returned by the latest nextItem())
@@ -208,7 +223,8 @@ implements IStreamIn_Float {
 	//  Optimizations
 	////////////////////////////////////////////////////////////////////////////////
 	
-	/** @return the minimum Number of Items left (in the Buffer).
+	/** Computes the remaining Items from the cached Length and current Position.
+	  * @return the minimum Number of Items left (in the Buffer).
 	  * The actual Number may be higher, so available() should be called again
 	  * at the End of this Number. */
 	public long availAble() { return length - curr - 1; } //-1 because of preIncrement

@@ -13,12 +13,17 @@ import streamIO.object.ModificationException;
  * @author 		 Matthias Heuer
  * @version 1.0
  * @stereotype enumeration
+ * <!-- docstate
+ * tags: [code/enumerator, code/iterator_adapter]
+ * concepts: [Custom Streaming Enumerator and Iterator Bridge Layer for Object Collections]
+ * facets: {layer: utility, status: legacy, complexity: high}
+ * -->
  */
 public abstract class AIndexEnumerator
 extends AReverseEnumerator
 implements IndexEnumerator {
 	
-	/**
+	/** Creates an index-based Enumerator over the given versioned Container.
 	 * @param _container a versioned container backing this Enumerator. Null allowed
 	 */
 	public AIndexEnumerator(final IAlterAble _container) { super(_container); }
@@ -38,15 +43,18 @@ implements IndexEnumerator {
 	//	abstract Methods
 	///////////////////////////////////////////////////////////////////////////
 	
-	/** @see streamIO.object.enumer.IndexEnumerator#addAt(int, java.lang.Object)	 */
+	/** Inserts Item at the given absolute Index, to be implemented by subclasses.
+	 * @see streamIO.object.enumer.IndexEnumerator#addAt(int, java.lang.Object)	 */
 	abstract public IndexEnumerator addAt(final int Index, final Object Item)
-			throws ModificationException; 
-	
-	/** @see streamIO.object.enumer.IndexEnumerator#removeAt(int)	 */
-	abstract public Object removeAt(final int Index) throws ModificationException; 
-	
-	/** @see streamIO.object.enumer.IndexEnumerator#setAt(int, java.lang.Object)	 */
-	abstract public Object setAt(final int Index, final Object Item); 
+			throws ModificationException;
+
+	/** Removes and returns the Item at the given absolute Index, to be implemented by subclasses.
+	 * @see streamIO.object.enumer.IndexEnumerator#removeAt(int)	 */
+	abstract public Object removeAt(final int Index) throws ModificationException;
+
+	/** Replaces the Item at the given absolute Index, to be implemented by subclasses.
+	 * @see streamIO.object.enumer.IndexEnumerator#setAt(int, java.lang.Object)	 */
+	abstract public Object setAt(final int Index, final Object Item);
 	
 	/**Returns the Item at the given absolute Position
 	 * While this is possible in principle for all Enumerators,
@@ -60,32 +68,40 @@ implements IndexEnumerator {
 	 * That is why this Method should throw an exception if removing is not allowed.   */
 	//abstract public Object removeAt(); // { return null; }; //
 	
-	/** @return the total Number of Objects in this Enumerator / Container
+	/** Returns the total Size of the underlying Array or Store, to be implemented by subclasses.
+	  * @return the total Number of Objects in this Enumerator / Container
 	  * For Random Access Stores this is definitely limited and can thus be returned.
 	  */
 	abstract public int getInt(); // { return 0; }
-	
+
 	///////////////////////////////////////////////////////////////////////////
 	//	Methods
 	///////////////////////////////////////////////////////////////////////////
-	
-	/** @see streamIO.IAvailAble#getPosition()	 */
+
+	/** Returns the current Position relative to the last mark()ed Position.
+	 * @see streamIO.IAvailAble#getPosition()	 */
 	public long getPosition() { return curr-mark; }
 	
-	/** @return the Number of minimum available Objects
+	/** Computes the remaining Items from the total Size and the current Position.
+	  * @return the Number of minimum available Objects
 	  * Since this is dependent on the total Number of Items,
 	  * it cannot be programmed here,
 	  * except by introducing the abstract Function
 	  * that returns the total Number of Items.   */
 	public long availAble() { return getInt() - curr -1; }
 	
-	/** @see streamIO.IMarkAble#getMaxMarkSize()	 */
+	/** Returns the total Size, since the whole underlying Array or Store can be replayed.
+	 * @see streamIO.IMarkAble#getMaxMarkSize()	 */
 	public long getMaxMarkSize() { return getInt(); }
 	
 	/** Returns the current Object:
 	  * Returning the cached currItem is faster! 	*/
 	public Object currItem() { return getAt(curr); }
 	
+	// TODO: LOGIC: this method is named "reset" (lowercase 's') instead of "reSet", so it
+	// does not actually override IReSetAble#reSet(long) - the contract every other class in
+	// this hierarchy (e.g. MapIterator, FilterInCacheDyn) implements under that exact name.
+	// Callers going through the reSet(long) contract silently miss this implementation.
 	/**Resets the Enumerator to the last marked Position,
 	 * done automatically on Instantiation	 */
 	public long reset(final long Position) { //throws NoSuchMethodException {
@@ -105,7 +121,7 @@ implements IndexEnumerator {
 	public IMarkAble mark(final long ReadLimit) { //throws NoSuchMethodException {
 		mark = curr; return this; }
 	
-	/**
+	/** Returns the current Position, since that many Items precede it.
 	  * @return the number of Items that are to be reached by previousItem.	 */
 	public long availableBefore() { return curr; }
 

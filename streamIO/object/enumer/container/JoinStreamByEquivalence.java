@@ -20,11 +20,18 @@ import tester.TesterEquivalence;
   * 	and ...
   * 4) ... select specific Columns during this flattening!
   *
+  * <!-- docstate
+  * tags: [code/container, code/hash_table, code/container_iteration]
+  * concepts: [Concrete Storage Containers - Arrays - Hash Tables and Relations]
+  * facets: {layer: utility, status: legacy, complexity: high}
+  * -->
   */
 public class JoinStreamByEquivalence
 extends Product {
 
-	/** @return a Container that consists of the selected Columns 	 */
+	/** Flattens a joined key/value {@link IPair} of Containers into a single Container
+	  * holding the selected Columns of both sides.
+	  * @return a Container that consists of the selected Columns 	 */
 	public static Container flattenPair(IPair p, boolean[] Cols1, boolean[] Cols2) {
 		Container c1  = (Container) p.getKey(); // Key;
 		Container c2  = (Container) p.getVal(); // Val;

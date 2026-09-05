@@ -49,6 +49,11 @@ import graphs.KeyValuePair;
   * Abstract Implementation of a Container.
   * @stereotype container
   * @see streamIO.Object.Enumerator.Container.Container for a description of it's specifics.
+  * <!-- docstate
+  * tags: [code/container, code/hash_table, code/container_iteration]
+  * concepts: [Concrete Storage Containers - Arrays - Hash Tables and Relations]
+  * facets: {layer: utility, status: legacy, complexity: high}
+  * -->
   */
 public abstract class AContainer
 extends AStreamSet
@@ -150,13 +155,16 @@ implements Container {
 	 */
 	public int incMajor() { return ++major; }
 	
-	/** @see streamIO.object.enumer.container.ARAContainer#getPosition()	 */
+	/** Delegates to the single Iterator's own Position.
+	 * @see streamIO.object.enumer.container.ARAContainer#getPosition()	 */
 	public long getPosition() { return enm.getPosition(); }
 
-	/** @see streamIO.object.enumer.container.ARAContainer#getMaxMarkSize()	 */
+	/** Returns the total Item Count, since the whole Container can be replayed.
+	 * @see streamIO.object.enumer.container.ARAContainer#getMaxMarkSize()	 */
 	public long getMaxMarkSize() { return itemCount; }
 
-	/** @see streamIO.object.enumer.container.ARAContainer#reSet(java.lang.String)	 */
+	/** Resets this Container, throwing with the given Message on failure.
+	 * @see streamIO.object.enumer.container.ARAContainer#reSet(java.lang.String)	 */
 	public IReSetAble reSet(final String failureExceptionMessage) {
 		return AReSetAble.RESET(this, failureExceptionMessage);	}
 	
@@ -211,7 +219,8 @@ implements Container {
 	//  Accessor Methods (getXXX/setXXX/isXXX/makeXXX)
 	////////////////////////////////////////////////////////////////////////////
 	
-	/** @return the Filter Object
+	/** Delegates to the single Iterator's own Filter.
+	 * @return the Filter Object
 	  * only Items that are equal to this Object are returned by nextItem()! */
 	public Object getFilter() {
 		return enm.getFilter(); }
@@ -362,19 +371,24 @@ implements Container {
 	//  Interface ICountAble:
 	////////////////////////////////////////////////////////////////////////////
 
-	/** @return  the Number of Items in the Collection represented by an 8 Bit Integer	 */
+	/** Narrows the Item Count to a byte.
+	 * @return  the Number of Items in the Collection represented by an 8 Bit Integer
+	 * @throws IllegalArgumentException when the Count does not fit into a byte	 */
 	public byte   getByte() {
 		byte ret  = (byte) itemCount;
 		if  (ret !=        itemCount) throw new IllegalArgumentException();
 		return ret; }
 
-	/** @return  the Number of Items in the Collection represented by a 16 Bit Integer	 */
+	/** Narrows the Item Count to a short.
+	 * @return  the Number of Items in the Collection represented by a 16 Bit Integer
+	 * @throws IllegalArgumentException when the Count does not fit into a short	 */
 	public short getShort() { //return mNumItems; }
 		short ret  = (short) itemCount;
 		if   (ret !=         itemCount) throw new IllegalArgumentException();
 		return ret; }
 
-	/** @return  the Number of Items in the Collection represented by a 32 Bit Integer
+	/** Returns the current Item Count directly.
+	 * @return  the Number of Items in the Collection represented by a 32 Bit Integer
 	 * Since conventional Memory is usually limited to 4 GByte on 32 Bit Machines,
 	 * 'int' is being used instead of 'long'.	 */
 	public int     getInt() { return itemCount; }
@@ -383,9 +397,10 @@ implements Container {
 //		ByRefLong moreItems = new ByRefLong();
 		while (iter.nextItem() != Iterator.EOI) //  moreItems) != null)
 			Counter++;
-		return Counter;	}
+		return Counter;	} */
 
-	/** @return  the Number of Items in the Collection represented by a 64 Bit Integer	 */
+	/** Returns the Collection's Item Count as a 64 Bit Integer.
+	 * @return  the Number of Items in the Collection represented by a 64 Bit Integer	 */
 	public long   getLong() { return itemCount; }
 
 	////////////////////////////////////////////////////////////////////////////
@@ -819,12 +834,15 @@ implements Container {
 	//  Interface ILattice: Implementation
 	////////////////////////////////////////////////////////////////////////////////
 
-	/** @return this, set to 0 in Place:
+	/** Delegates to {@link #FalseAt()}.
+	 * @return this, set to 0 in Place:
 	  * Can be implemented by subtracting any number from itself.
 	  * A Standard Implementation. Should be overwritten by faster Implementations.	 */
 	public IGroup zeroAt() { FalseAt(); return this; }
 
-	/** @return this, set to the Boolean Constant for the Representation of 'false' = 0
+	/** Removes every Item by repeatedly calling removeCurr() over a full Iteration; a
+	 * generic, slow fallback for subclasses without a faster clear Operation.
+	 * @return this, set to the Boolean Constant for the Representation of 'false' = 0
 	  * i.e. not 'true'.
 	  * For Conatainers this is equivalent to zeroAt() and clear()
 	  * @see zeroAt()	 */
@@ -1031,7 +1049,8 @@ implements Container {
 	//  Interface ChangeAble: optional Methods
 	////////////////////////////////////////////////////////////////////////////
 
-	/** Returns a new Intstance of a ModStreamIn Iterator,
+	/** Delegates to the single Iterator's own ChangeIterator.
+	 * Returns a new Intstance of a ModStreamIn Iterator,
 	  * which allows for changing the Data concurrently. */
 	public ChangeIterator ChangeIterator() {
 		return enm.ChangeIterator(); } // null; }
@@ -1161,13 +1180,15 @@ implements Container {
 	//	Interface Pipe
 	////////////////////////////////////////////////////////////////////////////////
 
-	/** @return the Order in which Elements are returned or processed.
+	/** Delegates to the single Iterator's own Order.
+	 * @return the Order in which Elements are returned or processed.
 	  * @see  addItem() how the Objects are added to the Container
 	  * @see nextItem() how the Objects are retrieved from the Container	 */
 	public byte getOrder() { // { return Pipe.OrderUnDef; }
 		return enm.getOrder(); }
 
-	/** @return The Comparator being used to compare Elements.
+	/** Delegates to the single Iterator's own Comparator.
+	 * @return The Comparator being used to compare Elements.
 	  * If 'null', the Elements are assumed to implement
 	  * @see IScalarMetric or
 	  * @see Comparable  or
@@ -1179,7 +1200,8 @@ implements Container {
 	//	Interface Enumerator
 	////////////////////////////////////////////////////////////////////////////////
 
-	/** @return the (minimum) Number of Items left (in the Buffer),
+	/** Delegates to the single Iterator's own availability.
+	 * @return the (minimum) Number of Items left (in the Buffer),
       * i.e. the minimum Number of times to call nextItem().
 	  * The actual Number may be higher, so available() should be called again
 	  * at the End of this Number.
@@ -1190,7 +1212,8 @@ implements Container {
 	public long availAble() {
 		return enm.availAble(); }
 
-	/** @return the next (Parent) Object of this one.
+	/** Delegates to the single Iterator's own nextItem().
+	 * @return the next (Parent) Object of this one.
 	  * No Exception is thrown at the End, instead EOI is returned.
 	  * When IO Processes are bound to this streamIO, IOException is wrapped into an IOError.
 	  * This is less explicit, but much faster because Exception Handling can be extremely slow.
@@ -1209,7 +1232,8 @@ implements Container {
 	//	Interface Object
 	////////////////////////////////////////////////////////////////////////////////
 
-	/** @return  a string representation of the object.
+	/** Renders this Container's Items, comma-separated inside curly Braces.
+	 * @return  a string representation of the object.
 	  * In general, the toString method returns a string that "textually represents" this object.
 	  * The result should be a concise but informative representation that is easy for a person to read.
 	  * It is recommended that all subclasses override this method.
@@ -1306,7 +1330,8 @@ implements Container {
 	// Interface IStreamOut
 	///////////////////////////////////////////////////////////////////////////////
 
-	/** @see streamIO.IStreamOut#flush()	 */
+	/** Does nothing; this Container has no buffered output to flush.
+	  * @see streamIO.IStreamOut#flush()	 */
 	public void flush() {}
 	
 	/** adds this Item to the Store in Place: +=

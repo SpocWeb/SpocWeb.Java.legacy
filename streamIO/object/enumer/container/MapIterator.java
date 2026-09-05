@@ -23,6 +23,11 @@ import streamIO.object.IStreamIn;
   * Used in:
   * @see Function
   * @see Relation
+  * <!-- docstate
+  * tags: [code/container, code/hash_table, code/container_iteration]
+  * concepts: [Concrete Storage Containers - Arrays - Hash Tables and Relations]
+  * facets: {layer: utility, status: legacy, complexity: high}
+  * -->
   */
 public class MapIterator
 extends AStreamIn {
@@ -60,10 +65,12 @@ extends AStreamIn {
 		if (nextItem == IIStreamIn.EOI) return -1;
 		return relIter.availAble() + 1; }
 
-	/** @return  the current Item, returned by the last nextItem().	 */
+	/** Returns the Item returned by the last {@link #nextItem()} call.
+	 * @return  the current Item, returned by the last nextItem().	 */
 	public Object  currItem() { return currItem; }
 
-	/** @return  the next Item, used for looking ahead for available().	 */
+	/** Advances the Iterator and returns the mapped Item.
+	 * @return  the next Item, used for looking ahead for available().	 */
 	public Object  nextItem() {
 		Object ret = nextItem; nextItem = getNextItem(); return currItem = ret; }
 
@@ -81,10 +88,12 @@ extends AStreamIn {
 			if (( MapAssoc = (Association)    iter.nextItem()) == IIStreamIn.EOI) { return currItem = MapAssoc; } //Iterator.EOI; }
 			relIter.setFilter(MapAssoc.val); } } //set relIter for the given Key
 	
-	/** @see streamIO.object.AStreamIn#getMaxMarkSize()	 */
+	/** Delegates to the underlying Iterator's maximum mark Size.
+	 * @see streamIO.object.AStreamIn#getMaxMarkSize()	 */
 	public long getMaxMarkSize() { return ((IStreamIn) iter).getMaxMarkSize(); }
-	
-	/** @see streamIO.object.AStreamIn#getPosition()	 */
+
+	/** Delegates to the underlying Iterator's current Position.
+	 * @see streamIO.object.AStreamIn#getPosition()	 */
 	public long getPosition() { return ((IStreamIn) iter).getPosition(); }
 	
 }
