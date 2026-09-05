@@ -12,37 +12,35 @@ import function.byref.ByRefDouble;
 import function.derive.ring.Sign;
 
 /**
- * Title: BrentFloatRefinerQ<p>
- * Description:
- * Purpose:
- * Implements the Van Wijngaarde-Dekker-Brent Method 
- * to find the Root of a Function. (see Numerical Recipes ง9.3) 
- * 
- * This is the preferred Algorithm when you have only Function Values, 
- * not the Derivative. 
- * It works even for discontinuous Functions 
- * and allows to even choose between two Values (which one is closer).  
+ * Implements the Van Wijngaarden-Dekker-Brent method to find the root of a function
+ * (Numerical Recipes ยง9.3), combining bracketing, bisection and inverse quadratic
+ * interpolation, using extrapolation to find a bracket when one is not yet available.
  *
- * Design Decisions / Implementation Details:
- * It combines Bracketing, BiSection and inverse quadratic Interpolation. 
- * When Bracketing is not fulfilled, Extrapolation is used to find a Bracket.  
- * 
- * Known SubClasses: <none>
+ * <p>This is the preferred algorithm when only function values are available, not the
+ * derivative. It works even for discontinuous functions, and lets the caller choose between
+ * two candidate values (whichever is closer).
  *
- * Known Uses: <none>
+ * Similar Classes:
+ * @see FalsiFloatRefinerQ  O(1.618... = golden  at best)
+ * @see RidderFloatRefinerQ O(1.414... = SqRt(2) at best)
+ * @see BrentFloatRefinerQ  O(2 at best without evaluating the Derivative )
+ * @see NewtonFloatRefinerQ O(2 at best with    evaluating the Derivative )
  *
- * similar Classes: 
- * @see math.refiner.FalsiFloatRefinerQ  O(1.618... = golden  at best)
- * @see math.refiner.RidderFloatRefinerQ O(1.414... = SqRt(2) at best)
- * @see math.refiner.BrentFloatRefinerQ  O(2 at best without evaluating the Derivative )
- * @see math.refiner.NewtonFloatRefinerQ O(2 at best with    evaluating the Derivative )
- * 
  * Copyright:	Copyright (c) Matthias Heuer<p>
  * Company:	personal<p>
  * Created on	10-26-2002, 12:47 PM<p>
  * @author mheuer
  * @version	1.0
  *
+ * <!-- docstate
+ * pass: 2
+ * mtime: 2026-09-05T11:57:53Z
+ * digest: 4fa681c58f98d89cc4e4969c165d08442ba950d7a01277250b0d079fe2723efb
+ * stale: false
+ * tags: [code/root_finding]
+ * concepts: [Brent's Method Root Refiner]
+ * facets: {layer: utility, status: legacy, complexity: medium}
+ * -->
  */
 public class BrentFloatRefinerQ 
 extends AFloatRefinerQ 
@@ -55,19 +53,18 @@ implements IFloatImprover {
 	/// Member Variables
 	////////////////////////////////////////////////////////////////////////////
 	
-	/** 
-	 * Initialization for self-start 
-	 * @param _xr initial Value for Root finding. 
+	/**
+	 * Initializes for self-start with default endpoints 0 and 1.
 	 */
 	public BrentFloatRefinerQ(){
-		this.xr = 0; 
-		this.xl = 1; 
-		yl=yr=Double.NaN; 
+		this.xr = 0;
+		this.xl = 1;
+		yl=yr=Double.NaN;
 	}
-	
-	/** 
-	 * Initialization for self-start 
-	 * @param _xr initial Value for Root finding. 
+
+	/**
+	 * Initializes for self-start from a single guessed point.
+	 * @param _xr initial Value for Root finding.
 	 */
 	public BrentFloatRefinerQ(final double _xr){
 		this.xl = _xr; 
@@ -89,6 +86,8 @@ implements IFloatImprover {
 	}
 	
 	/**
+	 * Initializes the iteration from two starting points and their already-known function
+	 * values.
 	 */
 	public BrentFloatRefinerQ(final double _xl, final double _xr, final double _yl, final double _yr) {
 		super(_xl, _xr, _yl, _yr);
@@ -97,27 +96,27 @@ implements IFloatImprover {
 	}
 	
 	/**
-	 * @see refiner.IFloatRefiner#refine()
-	 * Performs a single approximating Step, when the Function is given.
+	 * Evaluates {@code f} at {@code xr} and performs a single approximating step from it.
 	 * @return xr, the best x Value so far...
+	 * @see IFloatRefiner#refine()
 	 */
 	public double refine() { return improve(f.Map(xr)); }
-	
+
 	/**
-	 * @see refiner.IFloatRefiner#refine()
-	 * Performs a single approximating Step.
+	 * Performs a single approximating step given the function value at {@code xr}.
 	 * @return xr, the best x Value so far, to be evaluated for the next call.
+	 * @see IFloatImprover#improve(double)
 	 */
 	public double improve(final double fnVal) {
-		finished(fnVal); return xr; 
+		finished(fnVal); return xr;
 	}
-	
+
 	/**
-	 * @see refiner.IFloatRefiner#refine()
-	 * Performs a single approximating Step.
-	 * @return xr, the best x Value so far...
+	 * Records the given function value as bracketing progress, expanding the interval when
+	 * the root is not yet bracketed.
+	 * @return true once the root is bracketed between xl/yl and xr/yr
 	 */
-	protected final boolean bracketed(final double fnVal) { 
+	protected final boolean bracketed(final double fnVal) {
 		if (yr != yr) { //for very late Initialization 
 			if (yl != yl) { //both not initialized, swap the x-Coordinates
 				yl = fnVal; x = xl; xl = xr; xr = x; 
@@ -137,11 +136,12 @@ implements IFloatImprover {
 	}
 	
 	/**
-	 * @see refiner.IFloatRefiner#refine()
-	 * Performs a single approximating Step.
-	 * @return xr, the best x Value so far...
+	 * Performs a single Brent iteration step from the given function value, keeping the
+	 * root bracketed by inverse quadratic interpolation or bisection.
+	 * @return true once the desired x tolerance has been reached
+	 * @see IFloatImprover#finished(double)
 	 */
-	public boolean finished(final double fnVal) { 
+	public boolean finished(final double fnVal) {
 		if (!bracketed(fnVal))
 			return false; 
 		//following two lines just to save Instantiation of new double Variables.

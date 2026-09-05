@@ -690,3 +690,33 @@ math/wavelet/Wavelet.java:Wavelet.transformWavelet(double[], int[], boolean, IWa
 math/wavelet/Wavelet.java:Wavelet.testIt()	method	math/wavelet/Wavelet.java	code/wavelet_transform	Self-Test Method	test	legacy	low
 math/wavelet/Wavelet.java:Wavelet.main(String[])	method	math/wavelet/Wavelet.java	code/wavelet_transform	Demo Entry Point	test	legacy	low
 math/wavelet/WaveletStep.java:WaveletStep	class	math/wavelet/WaveletStep.java	code/wavelet_transform	Wavelet Step Base Class	utility	legacy	low
+math/fit/FitFields.java:FitFields	class	math/fit/FitFields.java	code/function_composition	Vector Field Fit Composition	utility	broken	low
+math/fit	folder	math/fit	code/curve_fitting	Curve Fitting	utility	legacy	high
+math/fit/FitFloat.java:FitFloat	class	math/fit/FitFloat.java	code/curve_fitting	Nonlinear Curve Fit (Levenberg-Marquardt style)	utility	legacy	high
+math/fit/FitFunctions.java:FitFunctions	class	math/fit/FitFunctions.java	code/function_composition	Fit Function Composition	utility	legacy	low
+math/fit/FitGauss.java:FitGauss	class	math/fit/FitGauss.java	code/curve_fitting	Gaussian Basis Function Fit	utility	broken	medium
+math/fit/FitLegendre.java:FitLegendre	class	math/fit/FitLegendre.java	code/curve_fitting	Legendre Polynomial Basis Fit	utility	legacy	medium
+math/fit/FitPolynom.java:FitPolynom	class	math/fit/FitPolynom.java	code/curve_fitting	Polynomial Basis Fit	utility	legacy	medium
+math/fit/FittingFloat.java:FittingFloat	class	math/fit/FittingFloat.java	code/curve_fitting,code/singular_value_decomposition	Linear Least-Squares Fit (SVD)	utility	broken	high
+math/fit/IFloatFitFunction.java:IFloatFitFunction	class	math/fit/IFloatFitFunction.java	code/function_interface	Fit Function Interface	utility	legacy	low
+math/fit/LinearFitDouble.java:LinearFitDouble	class	math/fit/LinearFitDouble.java	code/linear_regression,code/singular_value_decomposition	Linear Fit (SVD)	utility	legacy	medium
+math/fit/LinearRobustFit.java:LinearRobustFit	class	math/fit/LinearRobustFit.java	code/linear_regression	Robust Linear Fit	utility	legacy	medium
+math/fit/weight/IWeightFunction.java:IWeightFunction	class	math/fit/weight/IWeightFunction.java	code/weighting	Weight Function Interface	utility	legacy	low
+math/fit/weight	folder	math/fit/weight	code/weighting	Robust-Fit Weighting Functions	utility	broken	medium
+math/fit/weight/WeightExp.java:WeightExp	class	math/fit/weight/WeightExp.java	code/weighting	Exponential Weight Function	utility	broken	low
+math/fit/weight/WeightGauss.java:WeightGauss	class	math/fit/weight/WeightGauss.java	code/weighting	Gaussian Weight Function	utility	broken	low
+math/fit/weight/WeightLorentz.java:WeightLorentz	class	math/fit/weight/WeightLorentz.java	code/weighting	Lorentzian Weight Function	utility	broken	low
+math/refiner/AFloatImprover.java:AFloatImprover	class	math/refiner/AFloatImprover.java	code/fixed_point_iteration	Iterative Improver Base Class	utility	legacy	low
+math/refiner	folder	math/refiner	code/root_finding	Root Finding and Refinement	utility	legacy	high
+math/refiner/AFloatRefiner.java:AFloatRefiner	class	math/refiner/AFloatRefiner.java	code/root_finding	Root Refiner Base Class	utility	legacy	low
+math/refiner/AFloatRefinerQ.java:AFloatRefinerQ	class	math/refiner/AFloatRefinerQ.java	code/root_finding,code/bracket_matching	Bracketed Root Refiner Base Class	utility	broken	medium
+math/refiner/BrentFloatRefinerQ.java:BrentFloatRefinerQ	class	math/refiner/BrentFloatRefinerQ.java	code/root_finding	Brent's Method Root Refiner	utility	legacy	medium
+math/refiner/FalsiFloatRefinerQ.java:FalsiFloatRefinerQ	class	math/refiner/FalsiFloatRefinerQ.java	code/root_finding	Regula Falsi Root Refiner	utility	legacy	low
+math/refiner/FixPtFloatImprover.java:FixPtFloatImprover	class	math/refiner/FixPtFloatImprover.java	code/fixed_point_iteration	Fixed-Point Iterative Improver	utility	legacy	low
+math/refiner/IFloatImprover.java:IFloatImprover	class	math/refiner/IFloatImprover.java	code/fixed_point_iteration	Iterative Improver Interface	utility	legacy	low
+math/refiner/IFloatRefiner.java:IFloatRefiner	class	math/refiner/IFloatRefiner.java	code/root_finding	Root Refiner Interface	utility	legacy	low
+math/refiner/NewtonFloatRefiner.java:NewtonFloatRefiner	class	math/refiner/NewtonFloatRefiner.java	code/newton_method	Newton's Method Root Refiner	utility	broken	low
+math/refiner/NewtonFloatRefinerQ.java:NewtonFloatRefinerQ	class	math/refiner/NewtonFloatRefinerQ.java	code/newton_method,code/bracket_matching	Bracketed Newton's Method Root Refiner	utility	legacy	medium
+math/refiner/PegasusFloatRefiner.java:PegasusFloatRefiner	class	math/refiner/PegasusFloatRefiner.java	code/root_finding	Pegasus Method Root Refiner	utility	legacy	medium
+math/refiner/RidderFloatRefinerQ.java:RidderFloatRefinerQ	class	math/refiner/RidderFloatRefinerQ.java	code/root_finding	Ridders' Method Root Refiner	utility	legacy	medium
+math/refiner/SecantFloatRefiner.java:SecantFloatRefiner	class	math/refiner/SecantFloatRefiner.java	code/root_finding	Secant Method Root Refiner	utility	legacy	low

@@ -6,16 +6,10 @@
 package math.refiner;
 
 /**
- * Title: IFloatRefiner<p>
- * Description:
- * Interface for performing a single Step 
- * to find a special Point (Zero, Fixpoint or Maximum) in Function f 
- * 
- * Known SubClasses: <none>
- * 
- * Known Uses: <none>
+ * Defines a single refinement step toward a special point (zero, fixpoint or maximum) of a
+ * function.
  *
- * similar Classes: 
+ * Similar Classes:
  * @see streamIO.copy.group.ring.IRefiner
  *
  * Copyright:	Copyright (c) Matthias Heuer<p>
@@ -24,6 +18,15 @@ package math.refiner;
  * @author mheuer
  * @version	1.0
  *
+ * <!-- docstate
+ * pass: 2
+ * mtime: 2026-09-05T11:54:26Z
+ * digest: 0abcfba82c57a06f8ebc7374e1a2e5f11768ecee947361b1459dab264a2fc426
+ * stale: false
+ * tags: [code/root_finding]
+ * concepts: [Root Refiner Interface]
+ * facets: {layer: utility, status: legacy, complexity: low}
+ * -->
  */
 public interface IFloatRefiner {
 

@@ -11,31 +11,17 @@ import function.IFloatFunction;
 import function.byref.ByRefDouble;
 
 /**
- * Title: SecantFloatRefiner<p>
- * Description:
- * Root (x = 0) Search with Secant Formula, 
- * which differs from the Regula Falsi in that 
- * it always accepts the newly extrapolated Zero Position 
- * and thus may not keep a Root bracketed! 
- * 
- * Doesn't work well for multiple Zeros,
- * except if the Multiplicity is known and given
- * (Multiplicity can also act as a Relaxation Parameter!)
- * 
- * Works only on 1-dim. R->R Value Functions. 
- * For R^n->R^n Functions you need a HyperCube 
- * 
- * Requires f to be differentiable and f' to be continuous.
- * Converges with 1.618..., but only near Zeroes.
- * No guaranteed Convergence, because not bounded.  
+ * Root (x = 0) search with the secant formula, which differs from Regula Falsi in that it
+ * always accepts the newly extrapolated zero position and thus may not keep a root
+ * bracketed.
  *
- * Design Decisions / Implementation Details:
+ * <p>Doesn't work well for multiple zeros, except if the multiplicity is known and given
+ * (multiplicity can also act as a relaxation parameter). Works only on 1-dim. R-&gt;R value
+ * functions; for R^n-&gt;R^n functions a hypercube is needed instead. Requires {@code f} to
+ * be differentiable and {@code f'} to be continuous. Converges with order 1.618..., but only
+ * near zeroes, and has no guaranteed convergence, because it is not bounded.
  *
- * Known SubClasses: <none>
- *
- * Known Uses: <none>
- *
- * similar Classes: 
+ * Similar Classes:
  * @see streamIO.copy.group.ring.SecantRefiner
  *
  * Copyright:	Copyright (c) Matthias Heuer<p>
@@ -44,6 +30,15 @@ import function.byref.ByRefDouble;
  * @author mheuer
  * @version	1.0
  *
+ * <!-- docstate
+ * pass: 2
+ * mtime: 2026-09-05T11:56:44Z
+ * digest: 900179b95b5c44435e8ea5e37d52c0932f71e654008bf6c68b177dd6929853c8
+ * stale: false
+ * tags: [code/root_finding]
+ * concepts: [Secant Method Root Refiner]
+ * facets: {layer: utility, status: legacy, complexity: low}
+ * -->
  */
 public class SecantFloatRefiner 
 extends AFloatRefiner {
@@ -129,10 +124,10 @@ extends AFloatRefiner {
 	}
 	
 	/**
-	 * @see refiner.IFloatRefiner#refine()
-	 * Performs a single approximating Step.
-	 * Rotation: (x,y)->(xr, yr)->(xl,yl) 	
-	 * @return xr, the new Estimate for the Root. 
+	 * Performs a single approximating step by the secant formula, rotating
+	 * (x,y)-&gt;(xr, yr)-&gt;(xl,yl).
+	 * @return xr, the new Estimate for the Root.
+	 * @see IFloatRefiner#refine()
 	 */
 	public double refine() {	//following two lines just to save Instantiation of new double Variables.
 		dx*=multiplicity*yr/dy;  //{Regula falsi: new x-Value}

@@ -14,29 +14,27 @@ import function.byref.ByRefFloat;
 import function.derive.ring.body.GammaP;
 
 /**
- * Title: FitFloat<p>
- * Description:
- * Methods for general (non-linear) Fitting of Functions to a Set of Data
- * by minimizing Chi². 
+ * Performs general (non-linear) fitting of an {@link IFloatFitFunction} to a data set by
+ * Levenberg-Marquardt minimization of chi-squared.
  *
- * Design Decisions / Implementation Details:
- * Since Fitting essentially is Minimization, 
- * nonlinear Fitting cannot be performed in a single Step, 
- * but requires Iteration.  
- * Since the Hessian Matrix is based on Chi², it is well-known 
- * and can be used for inverse quadratic Minimization of 
- * Chi²=C0-d*a+a*D*a/2 
+ * <p>Since fitting is essentially minimization, nonlinear fitting cannot be performed in a
+ * single step, but requires iteration. Since the Hessian matrix is based on chi-squared, it
+ * is well-known and can be used for inverse quadratic minimization of
+ * ChiÂ²=C0-d*a+a*D*a/2.
  *
- * Known SubClasses: <none>
- *
- * Known Uses: <none>
- *
- * Copyright:	Copyright (c) Matthias Heuer<p>
- * Company:	personal<p>
- * Created on	10-26-2002, 12:47 PM<p>
  * @author mheuer
  * @version	1.0
+ * @see IFloatFitFunction the function type this fits
  *
+ * <!-- docstate
+ * pass: 2
+ * mtime: 2026-09-05T11:48:27Z
+ * digest: 5b385606dca9bf6412d19c27e2ab14d05e0eab0443c4bfa26808e525ab322d37
+ * stale: false
+ * tags: [code/curve_fitting]
+ * concepts: [Nonlinear Curve Fit (Levenberg-Marquardt style)]
+ * facets: {layer: utility, status: legacy, complexity: high}
+ * -->
  */
 public class FitFloat {
 
@@ -47,11 +45,16 @@ public class FitFloat {
 	// static Methods	
 	/////////////////////////////////////////////////////////////////////////////////////
 	
-	/** @return the actual Number of Parameters switched on to fit	 */
+	/**
+	 * Counts how many entries of {@code bool_} are switched on to fit.
+	 * @return the actual Number of Parameters switched on to fit	 */
 	final static public int GET_NUM_TRUE(final boolean[] bool_) {
 		return GET_NUM_TRUE(bool_, bool_.length); }
-	
-	/** @return the actual Number of Parameters switched to true. 
+
+	/**
+	 * Counts how many of the first {@code numParams_} entries of {@code bool_} are switched
+	 * on to fit.
+	 * @return the actual Number of Parameters switched to true.
 	 * when the bool_ is null, returns numParams_. 	 */
 	final static public int GET_NUM_TRUE(final boolean[] bool_, final int numParams_) {
 		if (bool_ == null) {
@@ -93,7 +96,7 @@ public class FitFloat {
 	
 	/** Convergence Factor,	 */ 
 	float lamda = 0.001f; 
-	/** Cache for the previous Value of chi²	 */
+	/** Cache for the previous Value of chiï¿½	 */
 	float oldChiSqr;
 	/** Parameter Vector testing the new Configuration, 
 	 * shared with the external Parameter Array handed over in the Constructor
@@ -187,7 +190,10 @@ public class FitFloat {
 		MatrixFloat.SOLVE_LU_AT(lu, rows, numFit, oneDa);
 	}
 
-	/** @return the CoVariance Matrix used to determine the Variances	 */
+	/**
+	 * Solves the linearized fitting matrix for the currently varied parameters and rearranges
+	 * the result back to full parameter order.
+	 * @return the CoVariance Matrix used to determine the Variances	 */
 	public float[][] getCoVariance() {
 		final int numFit = GET_NUM_TRUE(vary, numParams); 
 		prepareAndSolve(numFit);
@@ -201,7 +207,7 @@ public class FitFloat {
 	 * @param y y Coordinates of the Data to fit
 	 * @param sig y Standard Deviations of the Data to fit; can be null, if not needed
 	 * @param numData #items to consider in the fit. 
-	 * @return the current chi²
+	 * @return the current chiï¿½
 	 */
 	public float fit(final float[] x, final float[] y) {
 		return fit(x, y, null, x.length); }
@@ -212,7 +218,7 @@ public class FitFloat {
 	 * @param y y Coordinates of the Data to fit
 	 * @param sig y Standard Deviations of the Data to fit; can be null, if not needed
 	 * @param numData #items to consider in the fit. 
-	 * @return the current chi²
+	 * @return the current chiï¿½
 	 */
 	public float fit(final float[] x, final float[] y, final float[] sig) {
 		return fit(x, y, sig, x.length); }
@@ -223,7 +229,7 @@ public class FitFloat {
 	 * @param y y Coordinates of the Data to fit
 	 * @param sig y Standard Deviations of the Data to fit; can be null, if not needed
 	 * @param numData #items to consider in the fit. 
-	 * @return the current chi²
+	 * @return the current chiï¿½
 	 */
 	public float fit(final float[][] x, final float[] y, final float[] sig, final int numData) {
 		preFit();
@@ -236,7 +242,7 @@ public class FitFloat {
 	 * @param y y Coordinates of the Data to fit
 	 * @param sig y Standard Deviations of the Data to fit; can be null, if not needed
 	 * @param numData #items to consider in the fit. 
-	 * @return the current chi²
+	 * @return the current chiï¿½
 	 */
 	public float fit(final float[][] x, final float[] y, final float[] sig) {
 		return fit(x, y, sig, x.length); }
@@ -247,7 +253,7 @@ public class FitFloat {
 	 * @param y y Coordinates of the Data to fit
 	 * @param sig y Standard Deviations of the Data to fit
 	 * @param numData #items to consider in the fit. 
-	 * @return the current chi²
+	 * @return the current chiï¿½
 	 */
 	public float fit(final float[] x, final float[] y, final float[] sig, final int numData) {
 		preFit();
@@ -256,8 +262,8 @@ public class FitFloat {
 	
 	/** nonlinear least-squares fit, Marquardt's method (15.5)
 	 * 
-	 * @param chiSqr the proposed new chi² 
-	 * @return the current chi²
+	 * @param chiSqr the proposed new chiï¿½ 
+	 * @return the current chiï¿½
 	 */
 	private float fit(final float chiSqr) {
 		if (oldChiSqr > chiSqr) { //Improvement!
@@ -283,13 +289,13 @@ public class FitFloat {
 		}
 	}
 	
-	/**	used to evaluate the linearized Fitting Matrix alpha and to calculate Chi²
+	/**	used to evaluate the linearized Fitting Matrix alpha and to calculate Chiï¿½
 	 * 
 	 * @param x x Coordinates of the Data to fit
 	 * @param y y Coordinates of the Data to fit
 	 * @param sig y Standard Deviations of the Data to fit
 	 * @param numData #items to consider in the fit. 
-	 * @return the current chi²
+	 * @return the current chiï¿½
 	 */
 	private float calcChiSqr(final float[] x, final float[] y, final float[] sig, final int numData){
 		final int mfit=GET_NUM_TRUE(vary, numParams);
@@ -303,13 +309,13 @@ public class FitFloat {
 		return chiSqr;
 	}
 	
-	/**	used to evaluate the linearized Fitting Matrix alpha and to calculate Chi²
+	/**	used to evaluate the linearized Fitting Matrix alpha and to calculate Chiï¿½
 	 * 
 	 * @param x x Coordinates of the Data to fit
 	 * @param y y Coordinates of the Data to fit
 	 * @param sig y Standard Deviations of the Data to fit
 	 * @param numData #items to consider in the fit. 
-	 * @return the current chi²
+	 * @return the current chiï¿½
 	 */
 	private float calcChiSqr(final float[][] x, final float[] y, final float[] sig, final int numData){
 		final int mfit=GET_NUM_TRUE(vary, numParams);
@@ -329,7 +335,7 @@ public class FitFloat {
 	 * @param yFunc the fitted Value
 	 * @param sig the Standard Deviation, can be null 
 	 * @param i the current Index applied to y
-	 * @return dy=(y[i]-yFunc)²/sig[i]
+	 * @return dy=(y[i]-yFunc)ï¿½/sig[i]
 	 */
 	private float diffSqr(final float[] y, final float[] sig, int i, final float yFunc) {
 		float sig_i=1;

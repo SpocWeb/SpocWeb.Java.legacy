@@ -9,26 +9,19 @@ import streamIO.Log;
 import function.IFloatFunction;
 
 /**
- * Title: AFloatRefinerQ<p>
- * Description:
- * Stepper Algorithm with Quality Control:
- * Extends Stepping for a Solution in a 1-dim Varable Space
- * by bounding the Zero Position (continuous f)
- * and iterating until the Zero is hit in x AND y Direction.
- * Requires f to be continuous nearly everywhere (otherwise still converges to a Sign Flip). 
- * The Stepper Routine should keep the right Function Value positive 
- * to save Checks and speed up Evaluation.
+ * Stepper algorithm with quality control: extends bracketed root search by iterating until
+ * the zero is hit in both the x and y direction, and collects the static bracketing helper
+ * methods used to find such an interval in the first place.
  *
- * Design Decisions / Implementation Details:
- * Additionally Methods for Bracketing the Zeros are collected here!
+ * <p>Requires {@code f} to be continuous nearly everywhere (otherwise the search still
+ * converges to a sign flip). The stepper routine should keep the right function value
+ * positive, to save checks and speed up evaluation.
  *
- * Known SubClasses used in MultiStepYQ, 
- * which does a faster Check for Convergence relying on (yr > 0): 
+ * Known SubClasses used in MultiStepYQ,
+ * which does a faster Check for Convergence relying on (yr > 0):
  * @see streamIO.copy.group.ring.metric.FalsiRefinerQ
  * @see streamIO.copy.group.ring.metric.NewtonRefinerQ
  * @see streamIO.copy.group.ring.metric.PegasusRefiner
- *
- * Known Uses: <none>
  *
  * Copyright:	Copyright (c) Matthias Heuer<p>
  * Company:	personal<p>
@@ -36,6 +29,15 @@ import function.IFloatFunction;
  * @author mheuer
  * @version	1.0
  *
+ * <!-- docstate
+ * pass: 2
+ * mtime: 2026-09-05T11:55:28Z
+ * digest: 7869751ceaf41c8d2aea1e9cd4335cf51049fa9479dd87d6e8154c210bf47dd5
+ * stale: false
+ * tags: [code/root_finding, code/bracket_matching]
+ * concepts: [Bracketed Root Refiner Base Class]
+ * facets: {layer: utility, status: broken, complexity: medium}
+ * -->
  */
 public class AFloatRefinerQ 
 extends SecantFloatRefiner	//SecantRefiner extends ARefiner by xr and yr.
@@ -56,8 +58,10 @@ extends SecantFloatRefiner	//SecantRefiner extends ARefiner by xr and yr.
 	////////////////////////////////////////////////////////////////////////////
 	
 	/**
+	 * Searches outward from the given interval for a sign change bracketing a root, using
+	 * the default enlargement factor and iteration count.
 	 * @param f the Function to search a Root for (f(x0) = 0)
-	 * @param interval the initial Interval 
+	 * @param interval the initial Interval
 	 * @return the Number of Iterations left, if a Root could be bracketed, -1 otherwise
 	 */
 	final static public int BRACKET(final IFloatFunction f, final float[] interval) {
@@ -99,12 +103,17 @@ extends SecantFloatRefiner	//SecantRefiner extends ARefiner by xr and yr.
 	 * @param intervals filled with the bracketing Intervals 
 	 * @return the Number of bracketing Intervals found 
 	 */
+	// TODO: LOGIC: ret is allocated with the actual bracket count "numIntevals" (the value
+	// returned by the inner BRACKET call), but arraycopy is then told to copy "numIntervals"
+	// elements — the original, larger requested count — into it. Whenever fewer brackets are
+	// found than requested (the normal case), this overruns ret and throws
+	// ArrayIndexOutOfBoundsException; it should copy numIntevals elements, not numIntervals.
 	final static public float[][] BRACKET(final IFloatFunction f, final float xLeft, final float xRight, final int numIntervals) {
 		final float[][] intervals = new float[numIntervals][2];
-		final int numIntevals = BRACKET(f, xLeft, xRight, intervals); 
-		final float[][] ret = new float[numIntevals][]; 
-		System.arraycopy(intervals, 0, ret, 0, numIntervals); 
-		return ret; 
+		final int numIntevals = BRACKET(f, xLeft, xRight, intervals);
+		final float[][] ret = new float[numIntevals][];
+		System.arraycopy(intervals, 0, ret, 0, numIntervals);
+		return ret;
 	}
 	
 	/** inward search for brackets on roots (9.1)

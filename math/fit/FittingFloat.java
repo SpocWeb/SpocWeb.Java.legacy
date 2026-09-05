@@ -11,34 +11,47 @@ import function.byref.ByRefFloat;
 import function.vector.IFloatVectorFunction;
 
 /**
- * Title: FittingFloat<p>
- * Description:
- * Collects Methods for fitting Functions to Data. 
- * Fitting is the more flexible Cousin of Inter-/Intra-Polation, 
- * because it allows for Noise 
- * and to analyze and possibly reduce the Number of free Variables.  
+ * Collects static methods for fitting functions to data by singular value decomposition and
+ * by normal equations, and implements {@link IFloatVectorFunction} itself only to supply a
+ * test basis function for its own self-tests.
  *
- * Design Decisions / Implementation Details:
+ * <p>Fitting is the more flexible cousin of inter-/extrapolation, because it allows for
+ * noise and lets the caller analyze and possibly reduce the number of free variables.
  *
- * Known SubClasses: <none>
- *
- * Known Uses: <none>
- *
- * Copyright:	Copyright (c) Matthias Heuer<p>
- * Company:	personal<p>
- * Created on	10-26-2002, 12:47 PM<p>
  * @author mheuer
  * @version	1.0
+ * @see IFloatVectorFunction the basis-function interface these fits are performed against
  *
+ * <!-- docstate
+ * pass: 2
+ * mtime: 2026-09-05T11:49:24Z
+ * digest: 0257be445b51248eae5b246bfcf437ea1e2de0fd3ec79a972465aeec524819c2
+ * stale: false
+ * tags: [code/curve_fitting, code/singular_value_decomposition]
+ * concepts: [Linear Least-Squares Fit (SVD)]
+ * facets: {layer: utility, status: broken, complexity: high}
+ * -->
  */
-public class FittingFloat 
+public class FittingFloat
 implements IFloatVectorFunction {
 
 	/** Logger for Testing, modify Threshold for switching Logging */
 	static Log L = new Log(FittingFloat.class);
 	
-	/*	SVDFIT  linear least-squares fit by singular value decomposition (15.4)
-		Chapter 15.4 Fitting to a straight Line 	*/
+	// TODO: LOGIC: the Numerical Recipes SVDFIT algorithm this is ported from requires calling
+	// svdcmp(u,ndata,ma,w,v) to decompose u into U*W*V^T, and svbksb(u,w,v,ndata,ma,b,a) to
+	// back-substitute the actual solution into a. Both calls are commented out below, so w/v
+	// must already hold a valid decomposition supplied by the caller, and a is never solved
+	// for at all: the chi-squared computed below evaluates whatever a the caller passed in,
+	// not the least-squares fit. Any caller expecting this method to compute a (as
+	// testSvdFit() does, passing an unfilled a) silently gets a meaningless result.
+	/**
+	 * Computes chi-squared for a linear least-squares fit of {@code funcs} to
+	 * {@code (x, y)} by singular value decomposition (Numerical Recipes 15.4), assuming
+	 * {@code u}, {@code v} and {@code w} already hold a valid SVD of the design matrix and
+	 * that {@code a} already holds the solved coefficients.
+	 * @return the resulting chi-squared
+	 */
 	final static public double svdfit(final float[] x, final float[] y, final float[] sig, final int ndata, final float[] a, final int ma
 	, final float[][] u, final float[][] v, final float[] w, final IFloatVectorFunction funcs) {
 		int j,i;
@@ -50,10 +63,10 @@ implements IFloatVectorFunction {
 			funcs.map(x[i],afunc);
 			tmp=1/sig[i];
 			for (j=1;j<=ma;j++) {
-				u[i][j]=afunc[j]*tmp; } 
+				u[i][j]=afunc[j]*tmp; }
 			b[i]=y[i]*tmp;
 		}
-		//MatrixSVD matrix = new MatrixSVD(u); 
+		//MatrixSVD matrix = new MatrixSVD(u);
 		//svdcmp(u,ndata,ma,w,v);
 		wmax=0;
 		for (j=1;j<=ma;j++)
@@ -62,7 +75,7 @@ implements IFloatVectorFunction {
 		thresh=TOL*wmax;
 		for (j=1;j<=ma;j++)
 			if (w[j] < thresh) {
-				w[j]=0; } 
+				w[j]=0; }
 		//svbksb(u,w,v,ndata,ma,b,a);
 		double chisq=0;
 		for (i=1;i<=ndata;i++) {
@@ -75,8 +88,10 @@ implements IFloatVectorFunction {
 		return chisq; 
 	}
 	
-	/** calculates the (Co-)Variances from Singular Value Decomposition (15.4)
-		*/
+	/**
+	 * Fills {@code cvm} with the covariance matrix derived from an existing singular value
+	 * decomposition (Numerical Recipes 15.4).
+	 */
 	final static public void GET_CO_VARIANCES(final float[][] v, final int ma, final float[] w, final float[][] cvm) {
 		int k,j,i;
 		float sum;
@@ -96,8 +111,13 @@ implements IFloatVectorFunction {
 		}
 	}
 	
-	/*	general linear least-squares fit by normal equations (15.4)
-		Fitting Data to a Straight Line, Chapter 15.2	*/
+	/**
+	 * Performs a general linear least-squares fit of {@code funcs} to {@code (x, y)} by
+	 * normal equations (Numerical Recipes 15.2/15.4), solving only the parameters flagged
+	 * {@code true} in {@code ia} and leaving the rest of {@code a} unchanged.
+	 * @throws RuntimeException when no parameter in {@code ia} is selected to be fitted
+	 * @return the resulting chi-squared
+	 */
 	final static public double lfit(final float[] x, final float[] y, final float[] sig, final int ndat, final float[] a, final boolean[] ia, final int ma
 	, final float[][] covar, final IFloatVectorFunction funcs) {
 		int i,j,k,l,m,mfit=0;
@@ -295,15 +315,24 @@ implements IFloatVectorFunction {
 	/// Implementation of IFloatVectorFunction for Testing Purposes
 	/////////////////////////////////////////////////////////////////////////////////////
 
-	/** @see function.vector.IFloatVectorFunction#map(double, double[])	 */
+	/**
+	 * Test basis function for {@code testLinFit()}: fills {@code yOut} with the constant
+	 * term, {@code x} itself, then {@code sin(i*x)} for each further term.
+	 * @see function.vector.IFloatVectorFunction#map(double, double[])
+	 */
 	public void map(final double x, final double[] yOut) {
 		yOut[1]=1;
 		yOut[2]=x;
 		for (int i=3;i<yOut.length;i++) {
-			yOut[i]=Math.sin(i*x); } 
+			yOut[i]=Math.sin(i*x); }
 	}
 
-	/** @see function.vector.IFloatVectorFunction#map(double, float[])	 */
+	/**
+	 * Test basis function for {@code testLinFit()}: fills {@code yOut} with the constant
+	 * term, {@code x} (narrowed to {@code float}), then {@code sin(i*x)} for each further
+	 * term.
+	 * @see function.vector.IFloatVectorFunction#map(double, float[])
+	 */
 	public void map(final double x, final float[] yOut) {
 		yOut[1]=1;
 		yOut[2]=(float)x;

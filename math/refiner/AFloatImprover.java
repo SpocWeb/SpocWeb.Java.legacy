@@ -8,27 +8,25 @@ package math.refiner;
 
 
 /**
- * Title: <p>
- * Description:
- * Purpose:
- *
- * Purpose / Responsibilities of this Class
- *
- * Design Decisions / Implementation Details:
- * If similar Classes exist (e.g. Polymorphism),
- * characterize the specific Differences to compare these.
- *
- * Known SubClasses: <none>
- *
- * Known Uses: <none>
+ * Holds the current x/y iteration state (last step size and last point) shared by every
+ * {@link AFloatRefiner} subclass, independent of any particular improvement algorithm.
  *
  * Copyright:	Copyright (c) Matthias Heuer<p>
  * Company:	personal<p>
  * Created on	10-26-2002, 12:47 PM<p>
  * @author heuerm
  * @version	1.0
+ * <!-- docstate
+ * pass: 2
+ * mtime: 2026-09-05T11:54:49Z
+ * digest: c390a61249c87b88d499ad006c6804965d4b9fb7dce85816d29c4266dfe1dd53
+ * stale: false
+ * tags: [code/fixed_point_iteration]
+ * concepts: [Iterative Improver Base Class]
+ * facets: {layer: utility, status: legacy, complexity: low}
+ * -->
  */
-public class AFloatImprover 
+public class AFloatImprover
 //implements IFloatImprover
 {
 	

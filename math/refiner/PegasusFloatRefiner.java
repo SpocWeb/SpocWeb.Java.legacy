@@ -9,21 +9,15 @@ import streamIO.Log;
 import function.IFloatFunction;
 
 /**
- * Title: PegasusFloatRefiner<p>
- * Description:
- * Pegasus Root Finding  Algorithm is a Melange of several Algorithms:
- * You can choose between the Pegasus- and the Andersson/Bjoerk Algorithm
- * King's Modifikation can be added also.
- * Convergence is guaranteed; Speed is at best of golden Rule Speed (1.618...)
- * but at least linear (BiSection).
- * Requires y to be differentiable and y' to be continuous for best Convergence,
- * but also works for only continuous y(x). 
- * 
- * Known SubClasses: <none>
+ * Pegasus root finding algorithm, a melange of several algorithms: callers can choose
+ * between the Pegasus and the Andersson/Bjoerk algorithm, and King's modification can be
+ * added too.
  *
- * Known Uses: <none>
+ * <p>Convergence is guaranteed; speed is at best golden-rule speed (1.618...), but at least
+ * linear (bisection). Requires {@code y} to be differentiable and {@code y'} to be
+ * continuous for best convergence, but also works for only continuous {@code y(x)}.
  *
- * similar Classes: 
+ * Similar Classes:
  * @see streamIO.copy.group.ring.metric.PegasusRefiner
  *
  * Copyright:	Copyright (c) Matthias Heuer<p>
@@ -32,6 +26,15 @@ import function.IFloatFunction;
  * @author mheuer
  * @version	1.0
  *
+ * <!-- docstate
+ * pass: 2
+ * mtime: 2026-09-05T11:57:03Z
+ * digest: a72485b51c1aa50dc41a2543b43bb04a8fbcb3372d1b7ac7c9d04b8c91a900e5
+ * stale: false
+ * tags: [code/root_finding]
+ * concepts: [Pegasus Method Root Refiner]
+ * facets: {layer: utility, status: legacy, complexity: medium}
+ * -->
  */
 public class PegasusFloatRefiner 
 extends AFloatRefinerQ {

@@ -16,32 +16,30 @@ import function.vector.IFloatVectorField;
 import function.vector.IFloatVectorFunction;
 
 /**
- * Title: LinearFitDouble<p>
- * Description:
- * Implementation of a general linear Fit Algorithm of Data Values 
- * to a Set of Functions resp. Scalar Fields.
- *  
- * If you need to fit a VectorField:
- * When individual Coefficients per Dimension are possible, fit each Component to the Set of Functions.
- * Otherwise, when only a single Set of Coefficients are needed, 
- * perform a linear Fit on the flattened VectorField 
- * by just spreading out the Elements of each Data Vector.   
+ * Performs a general linear fit of data values to a set of scalar functions, or to a scalar
+ * field, by singular value decomposition, since fitting usually creates ill-conditioned
+ * linear systems and SVD is used to identify the relevant fitting parameters.
  *
- * Design Decisions / Implementation Details:
- * Since Fitting usually creates ill-conditioned linear Systems, 
- * Singular Value Decomposition is used 
- * to identify the relevant Fitting Parameters. 
+ * <p>To fit a vector field: when individual coefficients per dimension are possible, fit
+ * each component to the set of functions. Otherwise, when only a single set of coefficients
+ * is needed, perform a linear fit on the flattened vector field by spreading out the
+ * elements of each data vector.
  *
- * Known SubClasses: <none>
- *
- * Known Uses: <none>
- *
- * Copyright:	Copyright (c) Matthias Heuer<p>
- * Company:	personal<p>
- * Created on	10-26-2002, 12:47 PM<p>
  * @author mheuer
  * @version	1.0
+ * @see MatrixSVD the singular value decomposition this delegates the solve to
+ * @see IFloatVectorFunction one form of fitting function this accepts
+ * @see IFloatVectorField the other form of fitting function this accepts
  *
+ * <!-- docstate
+ * pass: 2
+ * mtime: 2026-09-05T11:50:41Z
+ * digest: 6b8de1248e2e14bc46bc8c914ab471193be2702d44c768c0ac5dbed745912cf3
+ * stale: false
+ * tags: [code/linear_regression, code/singular_value_decomposition]
+ * concepts: [Linear Fit (SVD)]
+ * facets: {layer: utility, status: legacy, complexity: medium}
+ * -->
  */
 public class LinearFitDouble {
 	
@@ -178,7 +176,10 @@ public class LinearFitDouble {
 		matrix.solve(b, params); 
 	}
 	
-	/** @return the Chi² of this Fit	 */	
+	/**
+	 * Evaluates the fitted functions at every data point with the solved {@code params} and
+	 * sums the squared, standard-deviation-weighted residual against {@code y}.
+	 * @return the ChiÂ² of this Fit	 */
 	public double getChiSqr() {
 		double chiSqr=0;
 		for (int i=numData; --i>=0; ) {

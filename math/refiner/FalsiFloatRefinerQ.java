@@ -9,34 +9,35 @@ import streamIO.Log;
 import function.IFloatFunction;
 
 /**
- * Title: FalsiFloatRefinerQ<p>
- * Description:
- * Root Finding (x0 Value for which f(x0)==0) with the Falsi Step Method
- * Doesn't work well for multiple Zeros,
- * except if the Multiplicity is known and given
- * (Multiplicity can also act as a Relaxation Parameter!)
- * Works only on R->R Value Functions. 
- * 
- * False Positioning keeps the Root bracketed, 
- * but converges slower than the Secant Method, 
- * which always moves to the next Point.  
- * 
- * Known SubClasses: <none>
+ * Root finding ({@code x0} for which {@code f(x0)==0}) with the false-position (Regula
+ * Falsi) step method, working only on R-&gt;R value functions; doesn't work well for
+ * multiple zeros, except if the multiplicity is known and given (multiplicity can also act
+ * as a relaxation parameter).
  *
- * Known Uses: <none>
- * 
- * similar Classes: 
- * @see math.refiner.FalsiFloatRefinerQ  O(1.618... = golden  at best)
- * @see math.refiner.RidderFloatRefinerQ O(1.414... = SqRt(2) at best)
- * @see math.refiner.BrentFloatRefinerQ  O(2 at best without evaluating the Derivative )
- * @see math.refiner.NewtonFloatRefinerQ O(2 at best with    evaluating the Derivative )
- * 
+ * <p>False positioning keeps the root bracketed, but converges slower than the secant
+ * method, which always moves to the next point.
+ *
+ * Similar Classes:
+ * @see FalsiFloatRefinerQ  O(1.618... = golden  at best)
+ * @see RidderFloatRefinerQ O(1.414... = SqRt(2) at best)
+ * @see BrentFloatRefinerQ  O(2 at best without evaluating the Derivative )
+ * @see NewtonFloatRefinerQ O(2 at best with    evaluating the Derivative )
+ *
  * Copyright:	Copyright (c) Matthias Heuer<p>
  * Company:	personal<p>
  * Created on	10-26-2002, 12:47 PM<p>
  * @author mheuer
  * @version	1.0
  *
+ * <!-- docstate
+ * pass: 2
+ * mtime: 2026-09-05T11:56:54Z
+ * digest: 32d9f1ef42567acbcb2729761ce8a7cd4d3264029abb6c59722ad9ccda2f698a
+ * stale: false
+ * tags: [code/root_finding]
+ * concepts: [Regula Falsi Root Refiner]
+ * facets: {layer: utility, status: legacy, complexity: low}
+ * -->
  */
 public class FalsiFloatRefinerQ 
 extends AFloatRefinerQ {

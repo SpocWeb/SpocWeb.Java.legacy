@@ -86,7 +86,7 @@ concurrently against the same file):
 | `graphic/math3D` | 32 | 6425 | 0 | unclaimed | - |
 | `graphic/mvc` | 26 | 4789 | 0 | unclaimed | - |
 | `math` (root+algorithm+integration+wavelet) | 18 | 3123 | 18 | done | agent-math-core |
-| `math/fit`+`math/refiner` | 27 | 3644 | 0 | done (Pass 1+2+3) | agent-math-fit |
+| `math/fit`+`math/refiner` | 27 | 3644 | 27 | done | agent-math-fit |
 | `math/minimizer` | 11 | 3043 | 11 | done | agent-math-minimizer |
 | `math/matrix` | 13 | 15603 | 0 | unclaimed | - |
 | `math/vector` | 15 | 33025 | 0 | unclaimed | - |

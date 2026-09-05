@@ -18,31 +18,29 @@ import function.IFloatFunction;
 import function.byref.ByRefFloat;
 
 /**
- * Title: LinearRobustFit<p>
- * Description:
- * Defines static Methods to perform Fits to an affine Model y = a + b*x (linear Regression) 
- * minimizing either Chi² or the minimum absolute Deviation 
- * (which is much more robust against Outliers!)
- * 
- * The Class itself implements a privately used 
- * continuous, but not differentiable Helper Function
- * @see #LINEAR_ROBUST_FIT(float[], float[], float[]) 
- * uses Instances of this Class to fit data to a straight Line robustly (15.7)
- * (i.e. considering the AbsV Norm and not the Squared Norm)
+ * Defines static methods to fit an affine model {@code y = a + b*x} (linear regression) by
+ * minimizing the mean absolute deviation rather than chi-squared, which is much more robust
+ * against outliers.
  *
- * Design Decisions / Implementation Details:
- * The Helper Array for finding the Median is cached.  
+ * <p>The class itself implements a privately used, continuous but not differentiable helper
+ * function: {@link #LINEAR_ROBUST_FIT(float[], float[], float[], int, float[], float)} uses
+ * instances of this class to fit data to a straight line robustly (Numerical Recipes 15.7),
+ * i.e. considering the L1 norm and not the squared norm. The helper array used to find the
+ * median is cached per instance.
  *
- * Known SubClasses: <none>
- *
- * Known Uses: <none>
- *
- * Copyright:	Copyright (c) Matthias Heuer<p>
- * Company:	personal<p>
- * Created on	10-26-2002, 12:47 PM<p>
  * @author mheuer
  * @version	1.0
+ * @see IFloatFunction the interface this implements to be minimized by its own bisection search
  *
+ * <!-- docstate
+ * pass: 2
+ * mtime: 2026-09-05T11:51:11Z
+ * digest: d517d50d78c9bf5368ffef7799f402e6307b6723f6bade17b30343ca0f55f12b
+ * stale: false
+ * tags: [code/linear_regression]
+ * concepts: [Robust Linear Fit]
+ * facets: {layer: utility, status: legacy, complexity: medium}
+ * -->
  */
 public class LinearRobustFit 
 implements IFloatFunction {
@@ -78,7 +76,7 @@ implements IFloatFunction {
 			sx += x_j; //use simple Squares for initial Guess!
 			sy += y_j;
 			sxy += x_j*y_j;
-			sxx += x_j*x_j; //syy is only necessary for Chi²! Not for Parameters a and b
+			sxx += x_j*x_j; //syy is only necessary for Chiï¿½! Not for Parameters a and b
 			syy += y_j*y_j;
 		}
 		final int n = stop-start;
@@ -174,20 +172,26 @@ implements IFloatFunction {
 	/** contains the Sum of the absolute Deviations	*/ 
 	float abdevt;
 	
-    /** @see function.IFloatFunction#getOrder()     */
-    public byte getOrder() { return IStreamIn.ORDER_NONE; }    
-    
+    /**
+     * Reports that this function imposes no ordering requirement on its caller.
+     * @see function.IFloatFunction#getOrder()     */
+    public byte getOrder() { return IStreamIn.ORDER_NONE; }
+
 	/**
-	 * @param b the current Estimate for the Slope of the Line 
-	 * @return the absolute Deviation between the current Fit and the Data 
-	 * scaled by the Size of the Data. 
+	 * Re-estimates the intercept as the median residual for the given slope, then returns
+	 * the sign-weighted deviation used to bracket/bisect the root for the robust fit.
+	 * @param b the current Estimate for the Slope of the Line
+	 * @return the absolute Deviation between the current Fit and the Data
+	 * scaled by the Size of the Data.
 	 */
 	public double Map(final double b) { return Map((float) b); }
 
 	/**
-	 * @param b the current Estimate for the Slope of the Line 
-	 * @return the absolute Deviation between the current Fit and the Data 
-	 * scaled by the Size of the Data. 
+	 * Re-estimates the intercept as the median residual for the given slope, then returns
+	 * the sign-weighted deviation used to bracket/bisect the root for the robust fit.
+	 * @param b the current Estimate for the Slope of the Line
+	 * @return the absolute Deviation between the current Fit and the Data
+	 * scaled by the Size of the Data.
 	 */
 	public float Map(final float b) {
 		float EPS = 1e-7f; 

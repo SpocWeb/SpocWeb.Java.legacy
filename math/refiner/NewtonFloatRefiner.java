@@ -10,34 +10,33 @@ import function.byref.ByRefDouble;
 import function.derive.IFloatDeriveAble;
 
 /**
- * Title: NewtonFloatRefiner<p>
- * Description:
- * Root Finding with Newton Formula using the 1st Derivative. 
- * 
- * Doesn't work well for multiple Zeros,
- * except if the Multiplicity is known and given
- * (Multiplicity can also act as a Relaxation Parameter!)
- * Works on R^n->R^n Value Functions with any n.
- * Requires f to be differentiable and f' to be continuous. 
- * 
- * Design Decision: 
- * can also exploit the Optimization of a IFloatDeriveAble, 
- * to calculate both Function and Derivative at the same Time, 
- * because both share the same Characteristics. 
+ * Root finding with Newton's formula using the 1st derivative; doesn't work well for
+ * multiple zeros unless the multiplicity is known and given (multiplicity can also act as a
+ * relaxation parameter).
  *
- * Known SubClasses: <none>
+ * <p>Works on R^n-&gt;R^n value functions with any n. Requires {@code f} to be
+ * differentiable and {@code f'} to be continuous. Can also exploit the optimization of an
+ * {@link IFloatDeriveAble}, to calculate both function and derivative at the same time,
+ * because both share the same characteristics.
  *
- * Known Uses: <none>
- *
- * similar Classes: 
+ * Similar Classes:
  * @see streamIO.copy.group.ring.NewtonRefiner
- * 
+ *
  * Copyright:	Copyright (c) Matthias Heuer<p>
  * Company:	personal<p>
  * Created on	10-26-2002, 12:47 PM<p>
  * @author mheuer
  * @version	1.0
  *
+ * <!-- docstate
+ * pass: 2
+ * mtime: 2026-09-05T11:56:17Z
+ * digest: 9fb69919ddca71e52bdc814da35a0fafbeeafcdf71044865cd5e9e5fead5f637
+ * stale: false
+ * tags: [code/newton_method]
+ * concepts: [Newton's Method Root Refiner]
+ * facets: {layer: utility, status: broken, complexity: low}
+ * -->
  */
 public class NewtonFloatRefiner 
 extends AFloatRefiner {
@@ -66,9 +65,9 @@ extends AFloatRefiner {
 	public NewtonFloatRefiner(final double x, final IFloatFunction f0, final IFloatFunction f1) { 
 		init(x, f0, f1); }
 	
-	/** The 1st Derivative of the Function for which the Zero is to be determined	 */
+	/** The Function for which the Zero is to be determined	 */
 	protected IFloatFunction f0;
-	
+
 	/** The 1st Derivative of the Function for which the Zero is to be determined	 */
 	protected IFloatFunction f1;
 
@@ -78,7 +77,12 @@ extends AFloatRefiner {
 	/** A Function that calculates both Function and Derivative faster than individually	 */
 	protected ByRefDouble dydx = new ByRefDouble();
 
-	/**Performs a single approximating Step	
+	// TODO: LOGIC: this branch reads the inherited field "f" instead of this class's own
+	// "f0", but init(x, f0, f1) reaches this state via the (x, double) super.init overload,
+	// which explicitly sets f=null; f0 is stored but never read anywhere. Any refiner built
+	// via the (double, IFloatFunction, IFloatFunction) constructor/init therefore throws a
+	// NullPointerException on its very first refine() call. Should read f0.Map(xl), not f.Map(xl).
+	/**Performs a single approximating Step
 	 * @return xl, the new Estimate for the Root
 	 */
 	public double refine() {

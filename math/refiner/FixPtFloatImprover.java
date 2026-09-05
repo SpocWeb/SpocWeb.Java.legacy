@@ -8,27 +8,27 @@ package math.refiner;
 import streamIO.Log;
 
 /**
- * Title: FixPtFloatRefiner<p>
- * Description: 
- * Fixpoint Search according to Banach 
- * Works on R->R Value Functions.
- * Requires f to be differentiable and 1 > |f'| 
- * in the Range considered. 
- * 
- * Linear Convergence: O(1) Method 
+ * Fixpoint search according to Banach, working on R-&gt;R value functions; requires
+ * {@code f} to be differentiable with {@code |f'| < 1} in the range considered, and
+ * converges linearly.
  *
- * Known SubClasses: <none>
- *
- * Known Uses: <none>
- *
- * similar Classes: 
+ * Similar Classes:
  * @see streamIO.copy.group.ring.FixPtRefiner
- * 
+ *
  * Copyright:	Copyright (c) Matthias Heuer<p>
  * Company:	personal<p>
  * Created on	10-26-2002, 12:47 PM<p>
  * @author mheuer
  * @version	1.0
+ * <!-- docstate
+ * pass: 2
+ * mtime: 2026-09-05T11:55:35Z
+ * digest: 56e2f0df4260044a7a138f1f32170539d1684ced584275fd4a1bbca9cc7e6f75
+ * stale: false
+ * tags: [code/fixed_point_iteration]
+ * concepts: [Fixed-Point Iterative Improver]
+ * facets: {layer: utility, status: legacy, complexity: low}
+ * -->
  */
 public class FixPtFloatImprover 
 extends AFloatImprover {

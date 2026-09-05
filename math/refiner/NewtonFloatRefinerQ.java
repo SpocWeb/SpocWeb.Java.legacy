@@ -11,31 +11,21 @@ import function.byref.ByRefDouble;
 import function.derive.IFloatDeriveAble;
 
 /**
- * Title: NewtonFloatRefinerQ
- * <p>
- * Description: O(2) Root Search of with Newton Formula, bracketing and optional
- * BiSection.
- * 
- * Guaranteed linear global Convergence due to BiSection. Works moderately well,
- * also globally and for multiple Zeros, especially when the Multiplicity is
- * known and given (Multiplicity can also act as a Relaxation Parameter!) Works
- * only on R->R Value Functions.
- * 
- * Design Decisions / Implementation Details:
- * 
- * Known SubClasses: <none>
- * 
- * Known Uses: <none>
- * 
- * similar Classes:
- * 
- * @see math.refiner.FalsiFloatRefinerQ O(1.618... = golden at best)
- * @see math.refiner.RidderFloatRefinerQ O(1.414... = SqRt(2) at best)
- * @see math.refiner.BrentFloatRefinerQ O(2 at best without evaluating the
+ * O(2) root search with Newton's formula, bracketing and optional bisection, guaranteeing
+ * linear global convergence due to the bisection fallback.
+ *
+ * <p>Works moderately well globally and for multiple zeros, especially when the
+ * multiplicity is known and given (multiplicity can also act as a relaxation parameter).
+ * Works only on R-&gt;R value functions.
+ *
+ * Similar Classes:
+ * @see FalsiFloatRefinerQ O(1.618... = golden at best)
+ * @see RidderFloatRefinerQ O(1.414... = SqRt(2) at best)
+ * @see BrentFloatRefinerQ O(2 at best without evaluating the
  *      Derivative )
- * @see math.refiner.NewtonFloatRefinerQ O(2 at best with evaluating the
+ * @see NewtonFloatRefinerQ O(2 at best with evaluating the
  *      Derivative )
- * 
+ *
  * Copyright: Copyright (c) Matthias Heuer
  * <p>
  * Company: personal
@@ -44,7 +34,16 @@ import function.derive.IFloatDeriveAble;
  * <p>
  * @author mheuer
  * @version 1.0
- *  
+ *
+ * <!-- docstate
+ * pass: 2
+ * mtime: 2026-09-05T11:58:34Z
+ * digest: 3124a12da19427b1910764a275060b71daccdef778caf94855ce343842c9917b
+ * stale: false
+ * tags: [code/newton_method, code/bracket_matching]
+ * concepts: [Bracketed Newton's Method Root Refiner]
+ * facets: {layer: utility, status: legacy, complexity: medium}
+ * -->
  */
 public class NewtonFloatRefinerQ 
 extends BrentFloatRefinerQ // AFloatRefinerQ 
@@ -79,11 +78,14 @@ extends BrentFloatRefinerQ // AFloatRefinerQ
 	}
 
 	/**
+	 * Initializes for self-start from a single guessed point.
 	 * @param _xr
 	 */
 	public NewtonFloatRefinerQ(double _xr) { super(_xr); }
-	
+
 	/**
+	 * Initializes the iteration from two starting points and their already-known function
+	 * values.
 	 * @param _xl
 	 * @param _xr
 	 * @param _yl
@@ -92,8 +94,10 @@ extends BrentFloatRefinerQ // AFloatRefinerQ
 	public NewtonFloatRefinerQ(double _xl, double _xr, double _yl, double _yr) {
 		super(_xl, _xr, _yl, _yr);
 	}
-	
+
 	/**
+	 * Initializes the iteration from two starting points and the function to search a root
+	 * for, without a derivative.
 	 * @param xl
 	 * @param xr
 	 * @param f_
@@ -130,21 +134,22 @@ extends BrentFloatRefinerQ // AFloatRefinerQ
 	//public boolean assignYlYr = false; 
 	
 	/**
-	 * @see refiner.IFloatRefiner#refine()
-	 * Performs a single approximating Step, when the Function is given.
+	 * Evaluates the function (and its derivative, via {@code f01} when available, otherwise
+	 * via {@code f1}) at {@code x} and performs a single approximating Newton step from it.
 	 * @return x, the best x Value so far...
+	 * @see IFloatRefiner#refine()
 	 */
-	public double refine() { 
+	public double refine() {
 		if (f01 != null) {
 			return improve(f01.getFuncDerive(x, df), df.Value); //
 		} else {
 			return improve(f.Map(x), f1.Map(x));
 		}
 	}
-	
+
 	/**
-	 * @see refiner.IFloatRefiner#refine()
-	 * Performs a single approximating Step.
+	 * Performs a single approximating step given the function value and derivative at
+	 * {@code x}.
 	 * @return x, the best x Value so far, to be evaluated for the next call.
 	 */
 	public double improve(final double fnVal, final double df) {

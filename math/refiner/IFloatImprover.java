@@ -7,26 +7,27 @@
 package math.refiner;
 
 /**
- * Title: <p>
- * Description:
- * Purpose:
- * Interface for a Method on a stateful Object 
- * that tries to improve a Solution for Minimization or Root Finding, 
- * given only the Function Values. 
+ * Defines a stateful improvement step for minimization or root finding that works from
+ * function values alone, without needing a {@link function.IFloatFunction} object.
  *
  * Design Decisions / Implementation Details:
- * @see math.refiner.IFloatRefiner requires a Function Object, 
- * but could directly use an IFloatImprover! 
- *
- * Known SubClasses: <none>
- *
- * Known Uses: <none>
+ * @see IFloatRefiner requires a Function Object,
+ * but could directly use an IFloatImprover!
  *
  * Copyright:	Copyright (c) Matthias Heuer<p>
  * Company:	personal<p>
  * Created on	10-26-2002, 12:47 PM<p>
  * @author heuerm
  * @version	1.0
+ * <!-- docstate
+ * pass: 2
+ * mtime: 2026-09-05T11:54:34Z
+ * digest: 7eb5913917e79f1ab25f12ee5ea7b1907ec0076adfe984d2d792817bd42cc684
+ * stale: false
+ * tags: [code/fixed_point_iteration]
+ * concepts: [Iterative Improver Interface]
+ * facets: {layer: utility, status: legacy, complexity: low}
+ * -->
  */
 public interface IFloatImprover {
 	

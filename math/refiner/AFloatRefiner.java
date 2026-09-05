@@ -13,15 +13,11 @@ import function.byref.ByRefDouble;
 import function.derive.ring.body.Cosinus;
 
 /**
- * Title: AFloatRefiner<p>
- * Description:
- * Abstract Base Class for Searching for the Root of a Function. 
+ * Abstract base class for searching for the root of a function, adding iteration-control
+ * ({@link #solve(int, double, boolean)}) and self-test scaffolding on top of
+ * {@link AFloatImprover}'s state and {@link IFloatRefiner}'s single-step contract.
  *
- * Known SubClasses: <none>
- *
- * Known Uses: <none>
- *
- * similar Classes: 
+ * Similar Classes:
  * @see streamIO.copy.group.ring.ARefiner
  *
  * Copyright:	Copyright (c) Matthias Heuer<p>
@@ -30,6 +26,15 @@ import function.derive.ring.body.Cosinus;
  * @author mheuer
  * @version	1.0
  *
+ * <!-- docstate
+ * pass: 2
+ * mtime: 2026-09-05T11:54:40Z
+ * digest: d5ff8db23e256ccfd3574813e355dcd4b2da8892797489a9861e254d5a8f5188
+ * stale: false
+ * tags: [code/root_finding]
+ * concepts: [Root Refiner Base Class]
+ * facets: {layer: utility, status: legacy, complexity: low}
+ * -->
  */
 public abstract class AFloatRefiner 
 extends AFloatImprover 
