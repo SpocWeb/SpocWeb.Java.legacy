@@ -1,9 +1,9 @@
 package structure.aspect;
 
 /**
-  * Title: GuiAspect<p>
-  * Description:
-  * Purpose:
+  * Extends {@link Aspect} with the Position and Size Fields a bound GUI Control needs, with
+  * Value Access still left to a further Subclass.
+  *
   * Extends the Aspect Object with Fields only relevant to the GUI
   * Purpose / Responsibilities of this Class
   *
@@ -20,6 +20,15 @@ package structure.aspect;
   * Created on	07-01-2002, 04:21 PM<p>
   * @author 	Matthias Heuer
   * @version	1.0
+  * <!-- docstate
+  * pass: 2
+  * mtime: 2026-09-05T11:20:02Z
+  * digest: b62a37085b77ab2cac561cf33e2b1deb087555e10528620277017361428eb72e
+  * stale: false
+  * tags: [code/property_binding]
+  * concepts: [GUI-Bound Aspect]
+  * facets: {layer: domain, status: legacy, complexity: low}
+  * -->
   */
 public abstract class GuiAspect
 extends Aspect {
@@ -43,7 +52,8 @@ extends Aspect {
 /** holds the Height of the Control   */
 protected int Heigth;
 
-/** @return the Height of the Control  */
+/** Returns the bound Control's Height.
+  * @return the Height of the Control  */
 public int getHeigth() {
 	return Heigth; }
 
@@ -58,7 +68,8 @@ public void setHeigth(int Heigth_) {
 /** holds the Width of the Control   */
 protected int Width;
 
-/** @return the Width of the Control  */
+/** Returns the bound Control's Width.
+  * @return the Width of the Control  */
 public int getWidth() {
 	return Width; }
 
@@ -73,7 +84,8 @@ public void setWidth(int Width_) {
 /** holds the Top Coordinate of the Control   */
 protected int Top;
 
-/** @return the Top Coordinate of the Control  */
+/** Returns the bound Control's Top Coordinate.
+  * @return the Top Coordinate of the Control  */
 public int getTop() {
 	return Top; }
 
@@ -88,7 +100,8 @@ public void setTop(int Top_) {
 /** holds the Left Coordinate of the Control   */
 protected int Left;
 
-/** @return the Left Coordinate of the Control  */
+/** Returns the bound Control's Left Coordinate.
+  * @return the Left Coordinate of the Control  */
 public int getLeft() {
 	return Left; }
 

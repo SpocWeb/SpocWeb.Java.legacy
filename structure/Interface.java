@@ -1,8 +1,10 @@
 package structure; //
 
 /**
-  * Title: Interface.java<p>
-  * Description:
+  * Extends {@link IInterface} with the full {@link #complexOp} Operation, separating out an
+  * Interface so complex-Operation Optimizations remain possible without committing to a
+  * concrete Class.
+  *
   * Defines the full Interface for a Class.
   * Separating out the (full) Interface instead of using a concrete abstract Class
   * allows to introduce Optimizations on the complex Operations later
@@ -34,6 +36,15 @@ package structure; //
   * @see     DBridge , bridging the minimum Interface Methods AND inheriting from DAbstraction
   * @see DFullBridge , bridging the full 'Interface' Methods, overwriting complexOp
   *
+  * <!-- docstate
+  * pass: 2
+  * mtime: 2026-09-05T11:16:35Z
+  * digest: bfe0792ea77b77a67b7ce9adf1110eb7f5b1dac58f2a34bdd0dd1e910d67f419
+  * stale: false
+  * tags: [code/bridge]
+  * concepts: [Bridge Interface Implementation]
+  * facets: {layer: utility, status: legacy, complexity: low}
+  * -->
   */
 public interface Interface
 extends IInterface {

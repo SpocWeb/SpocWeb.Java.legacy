@@ -1,8 +1,9 @@
 package structure; //
 
 /**
-  * Title: Circle<p>
-  * Description:
+  * A {@link Figure2D} defined by a Radius, drawn as the mathematical special Case of an
+  * {@link Ellipse} where Rx equals Ry.
+  *
   * The Circle needs fewer Parameters than the Ellipse,
   * thus you could technically derive Ellipse from Circle
   * and possibly redefining R to be Rx.
@@ -21,7 +22,7 @@ package structure; //
   * one should consider not defining a separate Circle Class.
   * If you model an Ellipse by Radius and Eccentricity,
   * Ellipse has one Parameter more than Circle! 
-  * The Formulae for the Area stays the same A=R²*Pi
+  * The Formulae for the Area stays the same A=Rï¿½*Pi
   * General Ellipses have three Parameters: 
   * Rx = R*e, Ry = R/e or e, and the Inclination phi. 
   *
@@ -38,6 +39,15 @@ package structure; //
   * Created on	06-25-2002, 08:19 PM<p>
   * @author 	Matthias Heuer
   * @version	1.0
+  * <!-- docstate
+  * pass: 2
+  * mtime: 2026-09-05T11:13:08Z
+  * digest: 01d74033d90ae9ab6fd71b95f1c15674d0a5e99c31ac4bf9be91a6dfe67ddc75
+  * stale: false
+  * tags: [code/2d_geometry]
+  * concepts: [2D Circle]
+  * facets: {layer: domain, status: legacy, complexity: low}
+  * -->
   */
 public class Circle
 extends Figure2D { //Ellipse { //
@@ -65,7 +75,8 @@ extends Figure2D { //Ellipse { //
 /** holds the Radius of the Circle   */
 protected double R;
 
-/** @return the Radius of the Circle  */
+/** Returns the Radius of the Circle.
+  * @return the Radius of the Circle  */
 public double getR() { return R; }
 
 /** Sets the Radius of the Circle  */
@@ -78,7 +89,8 @@ public void setR(double R_) { this.R = R_; }
 /** holds the Start Angle of the Ellipsis   */
 protected double StartAngle;
 
-/** @return the Start Angle of the Ellipsis  */
+/** Returns the Start Angle of the Circle's Arc.
+  * @return the Start Angle of the Ellipsis  */
 public double getStartAngle() {
 	return StartAngle; }
 
@@ -93,7 +105,8 @@ public void setStartAngle(double StartAngle_) {
 /** holds the Stop Angle of the Ellipsis   */
 protected Object StopAngle;
 
-/** @return the Stop Angle of the Ellipsis  */
+/** Returns the Stop Angle of the Circle's Arc.
+  * @return the Stop Angle of the Ellipsis  */
 public Object getStopAngle() {
 	return StopAngle; }
 
@@ -119,6 +132,8 @@ protected Circle() { }
 /** Also holds for Ellipse! */
 public double Area() { return R*R*Math.PI; }
 
+/** Does not paint anything yet; intended to exploit the Circle's eightfold Symmetry
+  * to draw faster than the fourfold Symmetry available to a general {@link Ellipse}. */
 public void draw() {
 	//exploit the Symmetry to speed up Painting by 8 and not by 4 like with Ellipses.
 }

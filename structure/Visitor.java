@@ -1,8 +1,9 @@
 package structure; //
 
 /**
-  * Title: Visitor<p>
-  * Description:
+  * Declares one {@link #visit} Overload per fixed {@link Element} Type, letting an open Set
+  * of Visitors vary the Operation performed on a closed Set of Elements.
+  *
   * Defines the Interface for a Visitor for the concrete Classes
   * @see ElementA
   * @see ElementB
@@ -27,6 +28,15 @@ package structure; //
   * Created on	03-23-2002, 04:19 PM<p>
   * @author 	Matthias Heuer
   * @version	1.0
+  * <!-- docstate
+  * pass: 2
+  * mtime: 2026-09-05T11:18:31Z
+  * digest: 28c4c02f74c16fd2226ee5ab72fb050c3ba60b707f2b65292b1814c779d9cc26
+  * stale: false
+  * tags: [code/visitor_pattern]
+  * concepts: [Visitor Interface]
+  * facets: {layer: utility, status: legacy, complexity: low}
+  * -->
   */
 public interface Visitor {
 

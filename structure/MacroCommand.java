@@ -1,8 +1,9 @@
 package structure; //
 
 /**
-  * Title: MacroCommand.java<p>
-  * Description:
+  * Composes a {@link HistoryList} of {@link Command}s that can be run forward via
+  * {@link #run()}/{@link #redo()} or undone step by step via {@link #undo()}.
+  *
   * The Command History can be undone / redone Step by Step.
   * TODO: Describes the Purpose / Responsibilities of this Class, not it's Implementation.
   * If similar Classes exist (e.g. Polymorphism),
@@ -15,6 +16,15 @@ package structure; //
   * Created on	03-20-2002, 09:01 PM<p>
   * @author 	Matthias Heuer
   * @version	1.0
+  * <!-- docstate
+  * pass: 2
+  * mtime: 2026-09-05T11:17:09Z
+  * digest: e9394ff854848a9d6af6e6b284dfcdde7595f6abe313c6ad94eaf2c94c850d02
+  * stale: false
+  * tags: [code/command_pattern]
+  * concepts: [Composite Command]
+  * facets: {layer: utility, status: legacy, complexity: low}
+  * -->
   */
 public class MacroCommand
 //extends Command
@@ -69,8 +79,7 @@ implements Runnable {
 			return; }
 		cmd.run(); }
 
-	/**
-	  * 	 */
+	/** Undoes the previous Command in the History, if there is one. */
 	public void undo() {
 		UndoAble cmd;
 		if (null == (cmd = (UndoAble) list.prevItem())) {

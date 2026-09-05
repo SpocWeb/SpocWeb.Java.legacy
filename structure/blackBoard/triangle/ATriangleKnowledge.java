@@ -33,6 +33,15 @@ import structure.blackBoard.IKnowledge;
  * @author mheuer
  * @version	1.0
  *
+ * <!-- docstate
+ * pass: 2
+ * mtime: 2026-09-05T10:13:32Z
+ * digest: c1ea71741597aa519601cbbfd644809a11d0e9743c0d1592e4ee689a2495d016
+ * stale: false
+ * tags: [code/blackboard_pattern, code/rule_based_validation]
+ * concepts: [Triangle Knowledge Source Base]
+ * facets: {layer: domain, status: legacy, complexity: low}
+ * -->
  */
 abstract class ATriangleKnowledge implements IKnowledge {
 

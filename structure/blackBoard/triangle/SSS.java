@@ -5,9 +5,7 @@
 package structure.blackBoard.triangle;
 
 /**
- * Title: SSS<p>
- * Description:
- * Calculates the third Angle from two other known Angles
+ * Calculates the remaining unknown Angle(s) of a Triangle once all three Sides are known.
  *
  * Known SubClasses: <none>
  *
@@ -19,6 +17,15 @@ package structure.blackBoard.triangle;
  * @author mheuer
  * @version	1.0
  *
+ * <!-- docstate
+ * pass: 2
+ * mtime: 2026-09-05T11:22:34Z
+ * digest: 6d8dbb47da669ddb23af70a7f3d53ba4c1b3b001fbc971351ff149e16aef9b8f
+ * stale: false
+ * tags: [code/rule_based_validation]
+ * concepts: [Side-Side-Side Rule]
+ * facets: {layer: domain, status: legacy, complexity: low}
+ * -->
  */
 class SSS extends ATriangleKnowledge {
 
@@ -35,8 +42,9 @@ class SSS extends ATriangleKnowledge {
 	////////////////////////////////////////////////////////////////////////////////
 
 	/**
+	 * Returns whether all three Sides are known and at least one Angle is still missing.
 	 * @see structure.blackBoard.IKnowledge#check()
-	 * @return true iif it makes sense to apply the WSW Algorithm 
+	 * @return true iif it makes sense to apply the WSW Algorithm
 	 */
 	public boolean check() {
 		return (tri.numSides() == 3) && (tri.numAngles() < 3);

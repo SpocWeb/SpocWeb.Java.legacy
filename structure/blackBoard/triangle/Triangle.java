@@ -8,8 +8,10 @@ import streamIO.Assert;
 import structure.blackBoard.IKnowledge;
 
 /**
-  * Title: Triangle<p>
-  * Description:
+  * Blackboard Representation of a Triangle, holding up to six Side/Angle Values and
+  * dispatching to {@link IKnowledge} Solvers ({@link SSS}, {@link SSW}, {@link SWS},
+  * {@link WSW}, {@link WWW}) to derive the unknown ones.
+  *
   * Purpose:
   * BlackBoard Representation of a Triangle.
   *
@@ -27,6 +29,15 @@ import structure.blackBoard.IKnowledge;
   * Created on	10-25-2002, 09:05 PM<p>
   * @author 	Matthias Heuer
   * @version	1.0
+  * <!-- docstate
+  * pass: 2
+  * mtime: 2026-09-05T11:23:47Z
+  * digest: dd07e8419a13399553c3ee551dc3743a443d6ecffdc44194af88a9ab21f5c8dd
+  * stale: false
+  * tags: [code/2d_geometry]
+  * concepts: [Triangle Value Object]
+  * facets: {layer: domain, status: legacy, complexity: low}
+  * -->
   */
 final public class Triangle implements ICopy {
 
@@ -35,17 +46,20 @@ final public class Triangle implements ICopy {
 		return val * val;
 	}
 
-	/** @return the complementing Index */
+	/** Returns the third Index (0, 1 or 2) not equal to either given Index.
+	  * @return the complementing Index */
 	final static public int COMPLEMENT(int i, int j) {
 		return 0 + 1 + 2 - i - j;
 	}
 
-	/** @return the Array filled with the complementing Indexes in cyclic Order */
+	/** Returns a fresh 3-Element Array of Indexes starting at {@code i}, cyclically ordered.
+	  * @return the Array filled with the complementing Indexes in cyclic Order */
 	final static public int[] COMPLEMENT(int i) {
 		return COMPLEMENT(new int[3], i);
 	}
 
-	/** @return the Array filled with the complementing Indexes in cyclic Order */
+	/** Fills the given Array with the three Indexes starting at {@code i}, cyclically ordered.
+	  * @return the Array filled with the complementing Indexes in cyclic Order */
 	final static public int[] COMPLEMENT(int[] ret, int i) {
 		ret[0] = i;
 		if (++i >= 3) {
@@ -59,7 +73,7 @@ final public class Triangle implements ICopy {
 		return ret;
 	}
 
-	/** @return the complementing Index */
+	/** Fills the given Array with {@code NaN}, marking every Value as unknown. */
 	final static public void fillUnknowns(double[] arr) {
 		Arrays.fill(arr, Double.NaN);
 	}
@@ -111,29 +125,35 @@ final public class Triangle implements ICopy {
 	/// #region : calculated Values...
 	////////////////////////////////////////////////////////////////////////////////
 
-	/** @return the Radius of the outer Circle */
+	/** Returns the sum of all three Sides.
+	  * @return the Radius of the outer Circle */
 	public double getCircumference() {
 		return getSide(0) + getSide(1) + getSide(2);
 	}
 
-	/** @return the Radius of the outer Circle */
+	/** Returns the Radius of the Circle circumscribing this Triangle.
+	  * @return the Radius of the outer Circle */
 	public double getCircleOuter() {
 		return getCircumference() / (Math.cos(getAngle(0) / 2) + Math.cos(getAngle(1) / 2) + Math.cos(getAngle(2) / 2));
 	}
 
-	/** @return the Radius of the inner Circle */
+	/** Returns the Radius of the Circle inscribed in this Triangle.
+	  * @return the Radius of the inner Circle */
 	public double getCircleInner() {
 		double circ = getCircumference() / 2;
 		return Math.sqrt((circ - getSide(0)) * (circ - getSide(1)) * (circ - getSide(2)) / circ);
 	}
 
-	/** @return the Height based on the Line of the Triangle */
+	/** Returns the Height dropped onto Side {@code i} from the opposite Vertex.
+	  * @return the Height based on the Line of the Triangle */
 	public double getHeight(int i) {
 		int[] ndx = COMPLEMENT(i);
 		return getSide(ndx[1]) * Math.sin(getAngle(ndx[2]));
 	}
 
-	/** @return the Length of the Line in the middle of the opposite Line */
+	/** Returns the Length of the Median from Vertex {@code i} to the midpoint of the
+	  * opposite Side.
+	  * @return the Length of the Line in the middle of the opposite Line */
 	public double getSideHalf(int i) {
 		int[] ndx = COMPLEMENT(i);
 		return Math.sqrt(
@@ -143,17 +163,19 @@ final public class Triangle implements ICopy {
 			/ 2;
 	}
 
-	/** @return the Length of the Line in the middle of the Angle */
+	/** Returns the Length of the Angle Bisector from Vertex {@code i}.
+	  * @return the Length of the Line in the middle of the Angle */
 	public double getAngleHalf(int i) {
 		int[] ndx = COMPLEMENT(i);
 		return 2 * getSide(ndx[1]) * Math.cos(getAngle(ndx[2]) / 2) * getSide(i) / (getSide(ndx[1]) + getSide(i));
 	}
 
-	/** @return the Area of the Triangle */
+	/** Returns the Area of this Triangle via Heron's Formula.
+	  * @return the Area of the Triangle */
 	public double getArea() {
 		double circ = getCircumference() / 2;
 		return Math.sqrt(circ * (circ - getSide(0)) * (circ - getSide(1)) * (circ - getSide(2)));
-		//Heronsche Flächenformel
+		//Heronsche Flï¿½chenformel
 		//		return getSide(1)*getSide(2)*Math.sin(0); //Sinussatz
 	}
 
@@ -161,12 +183,14 @@ final public class Triangle implements ICopy {
 	/// #region : Accessor Methods (getXXX/isXXX/setXXX)
 	////////////////////////////////////////////////////////////////////////////////
 
-	/** @return an alternative Solution if it exists:   */
+	/** Returns the ambiguous second Solution paired with this Triangle, if one was recorded.
+	  * @return an alternative Solution if it exists:   */
 	public Triangle getAlternative() {
 		return alternative;
 	}
 
 	/**
+	 * Returns a Copy of this Triangle, satisfying the {@link ICopy} Contract.
 	 * @see graphs.ICopy#Copy()
 	 */
 	public ICopy Copy() {
@@ -207,12 +231,15 @@ final public class Triangle implements ICopy {
 	/// Handling the null Values explicitly
 	////////////////////////////////////////////////////////////////////////////////
 
-	/** @return true if the specified Value is set:   */
+	/** Returns whether the Side or Angle at Index {@code i} (0-2 Sides, 3-5 Angles) is known.
+	  * @return true if the specified Value is set:   */
 	public boolean isValueSet(int i) {
 		return (sidesAngles[i] != null);
 	}
 
-	/** @return the specified Angle:   */
+	/** Returns the Value at Index {@code i}, solving for Sides or Angles first if it is not
+	  * yet known.
+	  * @return the specified Angle:   */
 	public double getValue(int i) {
 		if (!isValueSet(i)) {
 			if (i < 3) {
@@ -224,7 +251,10 @@ final public class Triangle implements ICopy {
 		return sidesAngles[i].doubleValue();
 	}
 
-	/** @return the specified Angle:   */
+	/** Sets the Value at Index {@code i}, rejecting an Angle already exceeding Pi.
+	  * @throws IllegalArgumentException when the Index is already set, or an Angle Value
+	  * exceeds Pi
+	  * @return the specified Angle:   */
 	public void setValue(int i, double value) {
 		if (isValueSet(i)) {
 			throw new IllegalArgumentException("Value is already set!");
@@ -240,30 +270,34 @@ final public class Triangle implements ICopy {
 		sidesAngles[i + 3] = new Double(value);
 	}
 
-	/** @return true if the specified Side is set:   */
+	/** Returns whether Side {@code i} is known.
+	  * @return true if the specified Side is set:   */
 	public boolean isSideSet(int i) {
 		return isValueSet(i);
 	}
-	/** @return the specified Angle:   */
+	/** Returns Side {@code i}, solving for it first if not yet known.
+	  * @return the specified Angle:   */
 	public double getSide(int i) {
 		return getValue(i);
 	}
-	/** sets the specified Side: 	 */
+	/** Sets Side {@code i}. */
 	public void setSide(int i, final double value) {
 		setValue(i, value);
 	}
 
-	/** @return true if the specified Angle is set:   */
+	/** Returns whether Angle {@code i} is known.
+	  * @return true if the specified Angle is set:   */
 	public boolean isAngleSet(int i) {
 		return isValueSet(i + 3);
 	}
 
-	/** @return the specified Angle:   */
+	/** Returns Angle {@code i}, solving for it first if not yet known.
+	  * @return the specified Angle:   */
 	public double getAngle(int i) {
 		return getValue(i + 3);
 	}
 
-	/** sets the specified Angle: 	 */
+	/** Sets Angle {@code i}. */
 	public void setAngle(int i, final double value) {
 		setValue(i + 3, value);
 	}
@@ -292,17 +326,20 @@ final public class Triangle implements ICopy {
 	/** The Number of Angles is needed so often that it is cached */
 	private int numAngles;
 
-	/** @return the Number of Sides in this Triangle */
+	/** Returns how many of the three Sides are currently known.
+	  * @return the Number of Sides in this Triangle */
 	public int numSides() {
 		return numSides;
 	}
 
-	/** @return the Number of Angles in this Triangle */
+	/** Returns how many of the three Angles are currently known.
+	  * @return the Number of Angles in this Triangle */
 	public int numAngles() {
 		return numAngles;
 	}
 
-	/** @return the Number of Values in this Triangle */
+	/** Returns the total count of known Sides and Angles.
+	  * @return the Number of Values in this Triangle */
 	public int numValues() {
 		return numAngles + numSides;
 	}

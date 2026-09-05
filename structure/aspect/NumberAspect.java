@@ -3,9 +3,9 @@ package structure.aspect;
 import java.util.zip.DataFormatException;
 
 /**
-  * Title: NumberAspect<p>
-  * Description:
-  * Purpose:
+  * Extends {@link Aspect} with a numeric Min/Max/Modulus Range shared by every numeric
+  * Aspect Subclass, e.g. {@link DoubleAspect}.
+  *
   * Extends the Aspect Class with Methods to specify a numeric Range
   * Normally a double Aspect would be sufficient, because it is large enough (53 Bits)
   * to simulate the int (32 Bits) and nearly the long (64 Bits) Range with full Accuracy.
@@ -26,6 +26,15 @@ import java.util.zip.DataFormatException;
   * Created on	07-01-2002, 05:15 PM<p>
   * @author 	Matthias Heuer
   * @version	1.0
+  * <!-- docstate
+  * pass: 2
+  * mtime: 2026-09-05T11:20:11Z
+  * digest: d2ae22028bcf946313e4b44c7f36aac38952b7a11435d500fff70034146f46ff
+  * stale: false
+  * tags: [code/property_binding]
+  * concepts: [Numeric Aspect]
+  * facets: {layer: domain, status: legacy, complexity: low}
+  * -->
   */
 public abstract class NumberAspect
 extends Aspect {
@@ -56,7 +65,8 @@ public abstract void setValue(double Value) throws DataFormatException;
 /** holds the Minimum Value of this Aspect   */
 protected double MinValue;
 
-/** @return the Minimum Value of this Aspect  */
+/** Returns the lower Bound this Aspect's Value is validated against.
+  * @return the Minimum Value of this Aspect  */
 public double getMinValue() {
 	return MinValue; }
 
@@ -71,7 +81,8 @@ public void setMinValue(double MinValue_) {
 /** holds the Maximum Value of this Aspect   */
 protected double MaxValue;
 
-/** @return the Maximum Value of this Aspect  */
+/** Returns the upper Bound this Aspect's Value is validated against.
+  * @return the Maximum Value of this Aspect  */
 public double getMaxValue() {
 	return MaxValue; }
 
@@ -86,7 +97,8 @@ public void setMaxValue(double MaxValue_) {
 /** holds the Module of this Aspect. The Value must be divisible by the Modulus without Rest   */
 protected double Modulus;
 
-/** @return the Module of this Aspect. The Value must be divisible by the Modulus without Rest  */
+/** Returns the Modulus this Aspect's Value must be evenly divisible by.
+  * @return the Module of this Aspect. The Value must be divisible by the Modulus without Rest  */
 public double getModulus() {
 	return Modulus; }
 

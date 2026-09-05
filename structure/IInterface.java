@@ -1,8 +1,9 @@
 package structure; //
 
 /**
-  * Title: IInterface.java<p>
-  * Description:
+  * Declares the single primitive {@link #simpleOp} Operation a Class Hierarchy must
+  * implement, minimizing the Effort of mixing in new Implementations.
+  *
   * Defines the minimum Interface for a Class Hierarchy.
   * This is often used to separate out the basic Operations for Clarity
   * and to make Mixing of Implementations easier,
@@ -36,6 +37,15 @@ package structure; //
   * @see     DBridge , bridging the minimum Interface Methods AND inheriting from DAbstraction
   * @see DFullBridge , bridging the full 'Interface' Methods, overwriting complexOp
   *
+  * <!-- docstate
+  * pass: 2
+  * mtime: 2026-09-05T11:16:30Z
+  * digest: e9afd23044fad9d1b683b9e1697e36a7b8d3d9a0d095da868d4d3d965c8162ce
+  * stale: false
+  * tags: [code/bridge]
+  * concepts: [Bridge Interface]
+  * facets: {layer: utility, status: legacy, complexity: low}
+  * -->
   */
 public interface IInterface
 {

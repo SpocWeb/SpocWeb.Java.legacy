@@ -83,7 +83,7 @@ concurrently against the same file):
 | `streamIO/integer` | 157 | 39243 | 0 | unclaimed | - |
 | `graphic` | 131 | 29665 | 0 | unclaimed | - |
 | `math` | 84 | 58523 | 0 | unclaimed | - |
-| `structure` | 52 | 4933 | 0 | claimed | agent-structure |
+| `structure` | 52 | 4933 | 52 | done | agent-structure |
 | `streamIO/real` | 51 | 6801 | 0 | claimed | agent-streamIO-real |
 | `tester` | 49 | 3327 | 49 | done | agent-tester |
 | `technology` | 41 | 9400 | 41 | done | agent-technology |
@@ -286,6 +286,12 @@ same harness against it. A test that has not been seen red proves nothing.
 | tester/fuzzy/FuzzySentenceComparator.java | FuzzySentenceComparator | read(InputStream, StringBuffer, char) | ~208 | Loop condition compares against a hardcoded literal char instead of the `sep` parameter - a caller passing a different separator never sees the loop terminate on it. | Medium | open |
 | tester/process/StreamProcessor.java | StreamProcessor | getPosition() | ~93 | Delegates to `availAble()` instead of an actual position method - returns items-remaining, not read position. | Medium | open |
 | tester/process/IOEProcess.java | IOEProcess | testIt() | ~77 | `Runtime.exec("java Process.IOEProcess")` uses the wrong fully-qualified class name (actual: `tester.process.IOEProcess`) - the child process fails immediately. | Low | open |
+| structure/Context.java | Context | send() | ~77 | Calls itself instead of delegating to `currState`, unconditional infinite recursion - `StackOverflowError` on every call. | High | open |
+| structure/Delegate.java | Delegate | raiseEvent() | ~153 | Both catch blocks (`IllegalAccessException`, `InvocationTargetException`) are empty, silently discarding the exception and stopping notification of every Delegate after the one that failed. | Medium | open |
+| structure/HistoryList.java | HistoryList | addItem(Object) | ~90 | Grows the backing array only when `currPtr > stack.length`, one element too late - when `currPtr == stack.length` the write throws `ArrayIndexOutOfBoundsException` instead of growing. | Medium | open |
+| structure/Visitor1.java / Visitor2.java | Visitor1, Visitor2 | visit(ElementA)/visit(ElementB) | ~42-55 | Delegates back to `el.invite(this)`, but `ElementA/ElementB.invite(Visitor)` calls `v.visit(this)` right back - unconditional mutual recursion, `StackOverflowError` on the first call. | High | open |
+| structure/aspect/DoubleAspect.java | DoubleAspect | getLong()/getDouble() | ~139, ~152 | Reads the primitive field `value`, which no `setValue(...)` overload ever assigns (they all write the boxed `Value` field) - stays permanently 0.0, so these methods ignore every Value actually set. | High | open |
+| structure/aspect/ListAspect.java | ListAspect | constructor(String, Aspect[]) | ~60 | `list_` is never assigned to the `list` field - `list` stays permanently null regardless of what's passed in. | Medium | open |
 
 ## Tool defects found and fixed during the pilot
 

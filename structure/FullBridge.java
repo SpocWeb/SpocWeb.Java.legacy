@@ -1,8 +1,9 @@
 package structure; //
 
 /**
-  * Title: FullBridge<p>
-  * Description:
+  * Bridges the full {@link Interface} by casting {@link Bridge}'s Implementor Reference back
+  * to {@link Interface} rather than holding a second Field for it.
+  *
   * Defines a Bridge for the full 'Interface'.
   * The Bridge Pattern allows to separate Interface and Implementation
   * for both Inheritance Hierarchies AND at Runtime.
@@ -29,6 +30,15 @@ package structure; //
   * @see     DBridge , bridging the minimum Interface Methods AND inheriting from DAbstraction
   * @see DFullBridge , bridging the full 'Interface' Methods, overwriting complexOp
   *
+  * <!-- docstate
+  * pass: 2
+  * mtime: 2026-09-05T11:15:33Z
+  * digest: 95b37f0727df1488799d5653ede7c6a8b290aaebcde6b09e011b204ea926c3a5
+  * stale: false
+  * tags: [code/bridge]
+  * concepts: [Full Bridge]
+  * facets: {layer: utility, status: legacy, complexity: low}
+  * -->
   */
 public class FullBridge
 extends Bridge

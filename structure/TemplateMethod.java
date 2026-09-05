@@ -1,8 +1,9 @@
 package structure; //
 
 /**
-  * Title: TemplateMethod<p>
-  * Description:
+  * Declares the single parameterless {@link #run()} Operation of the Template Method
+  * Pattern's Extreme, queued or scheduled rather than invoked with immediate Data.
+  *
   * Defines the Interface for ...TODO: Describes the Purpose / Responsibilities
   * of this Interface, not it's Implementation.
   * If similar Classes exist (e.g. Polymorphism),
@@ -19,6 +20,15 @@ package structure; //
   * Created on	03-11-2002, 09:40 AM<p>
   * @author 	Matthias Heuer
   * @version	1.0
+  * <!-- docstate
+  * pass: 2
+  * mtime: 2026-09-05T11:17:53Z
+  * digest: 3b49c9d11c1f721bdf63aebbc8635ae682e34e7d9b6943434dfdd08889e2683a
+  * stale: false
+  * tags: [code/design_patterns]
+  * concepts: [Template Method Pattern]
+  * facets: {layer: utility, status: legacy, complexity: low}
+  * -->
   */
 public interface TemplateMethod
 //extends

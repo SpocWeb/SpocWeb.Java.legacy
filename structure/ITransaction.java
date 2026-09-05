@@ -1,8 +1,9 @@
 package structure; //TODO: always define a Package
 
 /**
-  * Title: ITransaction<p>
-  * Description:
+  * Declares the minimum Status Constants and {@link #rollbackTx} Operation a Transaction
+  * must support; {@link Transaction} adds the remaining lifecycle Methods.
+  *
   * Defines the minimum Interface for supporting Transactions
   * More Methods are defined in Interface Transaction
   *
@@ -26,6 +27,15 @@ package structure; //TODO: always define a Package
   * @see     DBridge , bridging the minimum Interface Methods AND inheriting from DAbstraction
   * @see DFullBridge , bridging the full 'Interface' Methods, overwriting complexOp
   *
+  * <!-- docstate
+  * pass: 2
+  * mtime: 2026-09-05T11:16:34Z
+  * digest: cca28c40afaeb8bcb9c2e5c2b85de0b961b1682c0c70903d7216fc947e2c614f
+  * stale: false
+  * tags: [code/transaction]
+  * concepts: [Transaction Interface]
+  * facets: {layer: utility, status: legacy, complexity: low}
+  * -->
   */
 public interface ITransaction
 //extends
@@ -37,8 +47,11 @@ public interface ITransaction
 
 	/** TODO: 	 */
 	final static public int TX_Created    = 0;
+	/** Status Value once the Transaction has begun but not yet resolved. */
 	final static public int TX_Started    = 1;
+	/** Status Value once the Transaction's Changes have been made permanent. */
 	final static public int TX_Committed  = 2;
+	/** Status Value once the Transaction has been undone back to its pre-start State. */
 	final static public int TX_RolledBack = 3;
 
 ////////////////////////////////////////////////////////////////////////////////

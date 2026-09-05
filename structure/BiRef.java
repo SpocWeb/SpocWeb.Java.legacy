@@ -1,16 +1,15 @@
 package structure; //
 
 /**
-  * Title: BiRef<p>
-  * Description:
+  * Defines a bidirectional Pointer between an arbitrary source {@link Object} and a target
+  * {@link BiRef} that automatically maintains Consistency and Reference-counts the source.
+  *
   * Since you can build bidirectionally navigable Structures in Java and .NET
   * that are still Memory Managed, it is a very attractive Model
   * to embellish any Object structure using bidirectional References.
   *
   * The only Problem left is changing the Reference in an ACID Operation.
   * This has to be implemented over and over again.
-  * This Class tries to define a bidirectional Pointer
-  * that automatically maintains Consistency.
   *
   * Unfortunately each Pointer Member has to be replaced by an Instance of BiRef.
   * Additionally, when setting a Reference to an Object, it has to be specified,
@@ -42,6 +41,15 @@ package structure; //
   * Created on	03-21-2002, 06:46 PM<p>
   * @author 	Matthias Heuer
   * @version	1.0
+  * <!-- docstate
+  * pass: 2
+  * mtime: 2026-09-05T11:12:43Z
+  * digest: 6563cfc954b2b4671f436c228792a379c8995761effb4407fb72f3f183138a9f
+  * stale: false
+  * tags: [code/reference_counting]
+  * concepts: [Bidirectional Reference]
+  * facets: {layer: utility, status: legacy, complexity: low}
+  * -->
   */
 public class BiRef
 implements RefCounter {
@@ -73,11 +81,13 @@ implements RefCounter {
 //  Accessor Methods (getXXX/isXXX/setXXX)
 ////////////////////////////////////////////////////////////////////////////////
 
-	/** @returns the Source Object	*/
+	/** Returns the source Object this Reference points from.
+	  * @return the Source Object	*/
 	public Object getSource() {
 		return source; }
 
-	/** @returns the Target Object	*/
+	/** Returns the source Object of the target BiRef this Reference points to.
+	  * @return the Target Object	*/
 	public Object getTarget() {
 		return target.getSource(); }
 

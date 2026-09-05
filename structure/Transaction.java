@@ -1,8 +1,9 @@
 package structure; //TODO: always define a Package
 
 /**
-  * Title: Transaction<p>
-  * Description:
+  * Extends {@link ITransaction} with {@link #getStatus}, {@link #startTx} and
+  * {@link #commitTx}, the full lifecycle Interface for supporting Transactions.
+  *
   * Defines the full Interface for supporting Transactions
   *
   * Known SubInterfaces:
@@ -14,6 +15,15 @@ package structure; //TODO: always define a Package
   * Created on	03-12-2002, 09:37 PM<p>
   * @author 	Matthias Heuer
   * @version	1.0
+  * <!-- docstate
+  * pass: 2
+  * mtime: 2026-09-05T11:17:54Z
+  * digest: 05824266b17d339137aaa0ae5517165f6aca741898f1a8ae3e2a7df3b7eb4a74
+  * stale: false
+  * tags: [code/transaction]
+  * concepts: [Transaction Implementation]
+  * facets: {layer: utility, status: legacy, complexity: low}
+  * -->
   */
 public interface Transaction
 extends ITransaction {

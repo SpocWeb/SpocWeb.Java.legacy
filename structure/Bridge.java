@@ -1,8 +1,9 @@
 package structure; //
 
 /**
-  * Title: Bridge<p>
-  * Description:
+  * Bridges the minimum {@link IInterface} by delegating its single primitive Operation, at
+  * Runtime, to a swappable Implementor.
+  *
   * The Bridge Pattern allows to separate Interface and Implementation
   * for both Inheritance Hierarchies AND at Runtime.
   * It delegates ALL Operations of an Interface to an Implementor
@@ -38,6 +39,15 @@ package structure; //
   * @see     DBridge , bridging the minimum Interface Methods AND inheriting from DAbstraction
   * @see DFullBridge , bridging the full 'Interface' Methods, overwriting complexOp
   *
+  * <!-- docstate
+  * pass: 2
+  * mtime: 2026-09-05T11:12:49Z
+  * digest: abfe0fd009b68b099341f71316a3e34ccf10dae1673f2d277ec0b4355a812825
+  * stale: false
+  * tags: [code/bridge]
+  * concepts: [Bridge Implementor]
+  * facets: {layer: utility, status: legacy, complexity: low}
+  * -->
   */
 public class Bridge
 //extends other Bridges to implement the full Interface.

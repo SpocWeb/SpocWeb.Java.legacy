@@ -1,8 +1,9 @@
 package structure; //
 
 /**
-  * Title: Decorator<p>
-  * Description:
+  * Enhances a chained {@link Decorator}'s {@link #doSomething} by wrapping the call, without
+  * changing its Interface.
+  *
   * A Decorator cannot be defined generically,
   * because it can use any existing Interface!
   *
@@ -20,6 +21,15 @@ package structure; //
   * Created on	03-22-2002, 08:33 AM<p>
   * @author 	Matthias Heuer
   * @version	1.0
+  * <!-- docstate
+  * pass: 2
+  * mtime: 2026-09-05T11:14:22Z
+  * digest: be5580fb98950de37e5a051226a1bead89d5d7085f7e622a7a2bbac670615929
+  * stale: false
+  * tags: [code/decorator_pattern]
+  * concepts: [Decorator Pattern]
+  * facets: {layer: utility, status: legacy, complexity: low}
+  * -->
   */
 public class Decorator
 {

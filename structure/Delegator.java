@@ -1,8 +1,9 @@
 package structure; //
 
 /**
-  * Title: Delegator.java<p>
-  * Description:
+  * Bridges the minimum {@link IInterface} while also inheriting {@link Abstraction}'s
+  * {@link Interface#complexOp} implementation, at the cost of a non-final delegation.
+  *
   * The Delegator is an intermediate Class between Abstraction, Bridge and FullBridge, used to...
   * * alleviate the Effort to have to implement the full Interface of 'Interface'
   *   when being delegated to.
@@ -39,6 +40,15 @@ package structure; //
   * @see     DBridge , bridging the minimum Interface Methods AND inheriting from DAbstraction
   * @see DFullBridge , bridging the full 'Interface' Methods, overwriting complexOp
   *
+  * <!-- docstate
+  * pass: 2
+  * mtime: 2026-09-05T11:14:30Z
+  * digest: abfe0fd009b68b099341f71316a3e34ccf10dae1673f2d277ec0b4355a812825
+  * stale: false
+  * tags: [code/delegate_pattern, code/bridge]
+  * concepts: [Delegator]
+  * facets: {layer: utility, status: legacy, complexity: low}
+  * -->
   */
 public class Delegator
 extends Abstraction //Bridge //see above!

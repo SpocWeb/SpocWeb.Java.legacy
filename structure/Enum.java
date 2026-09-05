@@ -5,8 +5,9 @@ import java.security.InvalidParameterException;
 import function.AOrderAble;
 
 /**
-  * Title: Enum<p>
-  * Description:
+  * Demonstrates encoding an Enumeration of Elements as a bounded {@code short} Value, meant
+  * to be subclassed per Enum Type rather than instantiated on its own.
+  *
   * Demonstrates the Implementation of a Class encoding an Enumeration of Elements.
   * This is not a good Example, because you are not forced to create your own Type,
   * but that can be easily enforced by making this Class abstract
@@ -50,6 +51,15 @@ import function.AOrderAble;
   * Created on	2000-06-14, 01;52;47<p>
   * @author 	Matthias Heuer
   * @version	1.0
+  * <!-- docstate
+  * pass: 2
+  * mtime: 2026-09-05T11:15:26Z
+  * digest: 33f3bbc0d268b4189cd1374577f022ca402a154b5d08c757191d4f131d35343b
+  * stale: false
+  * tags: [code/enum_like_type]
+  * concepts: [Type-Safe Enum Emulation]
+  * facets: {layer: utility, status: legacy, complexity: low}
+  * -->
   */
 public class Enum
 extends AOrderAble {
@@ -138,10 +148,12 @@ protected short Value;
 //  Accessor Methods (getXXX/setXXX)
 ////////////////////////////////////////////////////////////////////////////////
 
-/** @return the Minimum Value of this Object	 */
+/** Returns the lower Bound this Enum's Value is validated against.
+  * @return the Minimum Value of this Object	 */
 public short getMinValue() { return MinValue; }
 
-/** @return the Maximum Value of this Object	 */
+/** Returns the upper Bound (exclusive) this Enum's Value is validated against.
+  * @return the Maximum Value of this Object	 */
 public short getMaxValue() { return MaxValue; }
 
 /** Returns the current Value for this Enum */
@@ -180,6 +192,15 @@ public static void main (String[] args) throws java.io.IOException {
   * Opens up dangerous Possibilities like:
   * * modifying inner Values during Algorithms (single- or multithreaded)
   * * requiring Tests by Value instead of by Address / Identity
+  * <!-- docstate
+  * pass: 2
+  * mtime: 2026-09-05T11:15:26Z
+  * digest: 5382b65cad5ba4788242aafdb29305cb76516a799117e5f7ada2c05f609e1b93
+  * stale: false
+  * tags: [code/enum_like_type]
+  * concepts: [Variable Enum Emulation]
+  * facets: {layer: utility, status: legacy, complexity: low}
+  * -->
   */
 class VarEnum
 extends  Enum {
@@ -202,6 +223,17 @@ public VarEnum(short MinValue, short newValue, short MaxValue) {
 
 }
 
+/** A three-valued {@link Enum} fixed to the {@link #FALSE}..{@link #TRUE} Range, used for
+  * <!-- docstate
+  * pass: 2
+  * mtime: 2026-09-05T11:15:26Z
+  * digest: 2949df58732117d60d6680af6c58c138b39fb82d1e652b0cf73056b432fd54cd
+  * stale: false
+  * tags: [code/ternary_logic]
+  * concepts: [Ternary Logic Value]
+  * facets: {layer: utility, status: legacy, complexity: low}
+  * -->
+  * ternary Logic Values. */
 class Ternary
 extends Enum {
 

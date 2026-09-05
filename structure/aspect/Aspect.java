@@ -6,10 +6,9 @@ import java.util.zip.DataFormatException;
 import synch.UniCastConstrained;
 
 /**
-  * Title: Aspect<p>
-  * Description:
-  * Purpose:
-  * Abstract Base Class for all Aspect Types
+  * Abstract Base Class for all Aspect Types, holding shared Name, Enabled/Required/Visible
+  * Flags and validation Status, with Value Access left to each Type-specific Subclass.
+  *
   * No need to add getProperty(int Num),
   * because you can use Reflection for this!
   *
@@ -28,6 +27,15 @@ import synch.UniCastConstrained;
   * Created on	07-01-2002, 03:53 PM<p>
   * @author 	Matthias Heuer
   * @version	1.0
+  * <!-- docstate
+  * pass: 2
+  * mtime: 2026-09-05T11:19:33Z
+  * digest: 554a32e82fa2855e9983d9e3a2d3219fc85c23e8a2603e34cc98a97e3347d676
+  * stale: false
+  * tags: [code/property_binding]
+  * concepts: [Aspect Property Binding Base]
+  * facets: {layer: domain, status: legacy, complexity: medium}
+  * -->
   */
 public abstract class Aspect
 extends UniCastConstrained {
@@ -51,7 +59,8 @@ extends UniCastConstrained {
 /** holds The Aspect Name   */
 protected String Name;
 
-/** @return The Aspect Name  */
+/** Returns this Aspect's Name.
+  * @return The Aspect Name  */
 public String getName() {
 	return Name; }
 
@@ -67,7 +76,8 @@ public void setName(String Name_) {
 /** holds the Control editable   */
 protected boolean Enabled;
 
-/** @return the Control editable  */
+/** Returns whether the Control bound to this Aspect is editable.
+  * @return the Control editable  */
 public boolean getEnabled() {
 	return Enabled; }
 
@@ -83,7 +93,8 @@ public void setEnabled(boolean Enabled_) {
 /** holds the Control required to enter   */
 protected boolean Required;
 
-/** @return the Control required to enter  */
+/** Returns whether the Control bound to this Aspect is required to be filled in.
+  * @return the Control required to enter  */
 public boolean getRequired() {
 	return Required; }
 
@@ -100,7 +111,8 @@ public void setRequired(boolean Required_) {
 /** holds the Control visible to the User   */
 protected boolean Visible;
 
-/** @return the Control visible to the User  */
+/** Returns whether the Control bound to this Aspect is visible to the User.
+  * @return the Control visible to the User  */
 public boolean getVisible() {
 	return Visible; }
 
@@ -115,7 +127,8 @@ public void setVisible(boolean Visible_) {
 /** holds the Error Status for this Aspect   */
 protected int Status;
 
-/** @return the Error Status for this Aspect
+/** Returns the validation Status of this Aspect's Value.
+ * @return the Error Status for this Aspect
  *   0 when the Value is filled / valid / initialized,
  *  -1 when the Value is not filled / empty / initialized,
  *  otherwise the (positive) Error Number
@@ -131,10 +144,11 @@ public void setStatus(int Status_) {
 /// #region : Accessor Methods (getXXX/isXXX/setXXX)
 ////////////////////////////////////////////////////////////////////////////////
 
-/** @return The Aspect Value as a (boxed) Object  */
+/** Returns this Aspect's Value as its natural (boxed) Type.
+  * @return The Aspect Value as a (boxed) Object  */
 public abstract Object getValue();
 
-/**
+/** Returns this Aspect's Value rendered as a String, which every Aspect Type must support.
  * @return The Aspect Value as a String Representation
  * This is always possible for any Type
  */
@@ -152,13 +166,19 @@ public abstract void setValue(Object value) throws DataFormatException;
 /** sets the Aspect Value as a String   */
 public abstract void setString(String value) throws DataFormatException;
 
-/** @return The Aspect Value as a long Representation  */
+/** Returns this Aspect's Value converted to a long.
+  * @return The Aspect Value as a long Representation
+  * @throws DataFormatException when the Value cannot be represented as a long  */
 public abstract long getLong() throws DataFormatException;
 
-/** @return The Aspect Value as a double Representation  */
+/** Returns this Aspect's Value converted to a double.
+  * @return The Aspect Value as a double Representation
+  * @throws DataFormatException when the Value cannot be represented as a double  */
 public abstract double getDouble() throws DataFormatException;
 
-/** @return The Aspect Value as a Date Representation  */
+/** Returns this Aspect's Value converted to a Date.
+  * @return The Aspect Value as a Date Representation
+  * @throws DataFormatException when the Value cannot be represented as a Date  */
 public abstract Date getDate() throws DataFormatException;
 
 /** @return The Aspect Value as a Currency Representation  */
@@ -184,10 +204,12 @@ public abstract Date getDate() throws DataFormatException;
 /// #region : Interface Object: Implementation
 ////////////////////////////////////////////////////////////////////////////////
 
-    /** @return a hashcode for this Aspect.     */
+    /** Derives this Aspect's hash Code from its Name.
+      * @return a hashcode for this Aspect.     */
 	public int hashCode() { return Name.hashCode(); }
 
-    /** @return a String Representation for this Aspect.     */
+    /** Returns this Aspect's Name as its String Representation.
+      * @return a String Representation for this Aspect.     */
 	public String toString() { return Name; }
 
 ////////////////////////////////////////////////////////////////////////////////

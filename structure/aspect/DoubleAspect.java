@@ -6,9 +6,9 @@ import java.util.zip.DataFormatException;
 import synch.InvalidException;
 
 /**
-  * Title: DoubleAspect<p>
-  * Description:
-  * Purpose:
+  * Extends {@link NumberAspect} to store and validate a double Value against the inherited
+  * Min/Max/Modulus Range, notifying Validators and Subscribers on every change.
+  *
   * Extends and implements the NumberAspect Class for double Values
   * Purpose / Responsibilities of this Class
   *
@@ -25,6 +25,15 @@ import synch.InvalidException;
   * Created on	07-01-2002, 05:32 PM<p>
   * @author 	Matthias Heuer
   * @version	1.0
+  * <!-- docstate
+  * pass: 2
+  * mtime: 2026-09-05T11:19:49Z
+  * digest: 823c76cd0520c7fef7672bcc8d9c011d3bf5fd0560ce99849de5f6c9a44a0604
+  * stale: false
+  * tags: [code/property_binding]
+  * concepts: [Double-Valued Aspect]
+  * facets: {layer: domain, status: broken, complexity: low}
+  * -->
   */
 public class DoubleAspect
 extends NumberAspect {
@@ -90,13 +99,14 @@ public void setValue(Double Value_) throws    DataFormatException{
 	this.Value = Value_;
 }
 
-/** @return The Aspect Value as a (boxed) Object  */
+/** Returns this Aspect's Value as a boxed Double, or {@code null} when not validly set.
+  * @return The Aspect Value as a (boxed) Object  */
 public Object getValue() {
 	if (Status != 0) {
 		return null; }
 	return Value; }
 
-/**
+/** Returns this Aspect's Value rendered as a String, or {@code null} when not validly set.
  * @return The Aspect Value as a String Representation
  * This is always possible for any Type
  */
@@ -126,19 +136,31 @@ public void setString(String value) throws DataFormatException {
 		throw new DataFormatException("The Value '" + Value + "' could not be parsed: " + x.toString()); }
 }
 
-/** @return The Aspect Value as a long Representation  */
+/** Returns this Aspect's Value truncated to a long, rejecting a non-integral Value.
+  * @return The Aspect Value as a long Representation
+  * @throws DataFormatException when the Status is invalid or the Value is not integral  */
+// TODO: LOGIC: reads the primitive field `value`, which no setValue(...) overload ever
+// assigns (they all set the boxed `Value` field instead) - `value` stays permanently at its
+// default 0.0, so getLong() (and getDouble() below, and getDate() through it) ignores every
+// Value actually set on this Aspect.
 public long getLong() throws DataFormatException {
 	if (Status != 0)          { throw new DataFormatException("Aspect '" + Name + "' has Status:" + Status); }
 	long ret  = (long) value;
 	if  (ret !=        value) { throw new DataFormatException("Value '" + Value + "' is not integer!"); }
 	return ret; }
 
-/** @return The Aspect Value as a double Representation  */
+/** Returns this Aspect's Value as a primitive double.
+  * @return The Aspect Value as a double Representation
+  * @throws DataFormatException when the Status is invalid  */
+// TODO: LOGIC: same stale-field defect as getLong() above - reads `value`, which is never
+// assigned by setValue(...), instead of the boxed `Value` field that setValue actually writes.
 public double getDouble() throws DataFormatException {
 	if (Status != 0)          { throw new DataFormatException("Aspect '" + Name + "' has Status:" + Status); }
 	return value; }
 
-/** @return The Aspect Value as a Date Representation  */
+/** Returns this Aspect's Value as a Date, derived from {@link #getLong()}.
+  * @return The Aspect Value as a Date Representation
+  * @throws DataFormatException when the Status is invalid or the Value is not integral  */
 public Date getDate() throws DataFormatException {
 	if (Status != 0)          { throw new DataFormatException("Aspect '" + Name + "' has Status:" + Status); }
 	return new Date(getLong()); }

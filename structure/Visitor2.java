@@ -1,8 +1,9 @@
 package structure; //
 
 /**
-  * Title: Visitor2<p>
-  * Description:
+  * A second concrete {@link Visitor}, identical in shape to {@link Visitor1}, that also
+  * delegates each visit back to the Element's own {@link Element#invite}.
+  *
   * Defines the Interface for a Visitor for the concrete Classes
   * @see ElementA
   * @see ElementB
@@ -21,6 +22,15 @@ package structure; //
   * Created on	03-23-2002, 04:19 PM<p>
   * @author 	Matthias Heuer
   * @version	1.0
+  * <!-- docstate
+  * pass: 2
+  * mtime: 2026-09-05T11:18:42Z
+  * digest: 28c4c02f74c16fd2226ee5ab72fb050c3ba60b707f2b65292b1814c779d9cc26
+  * stale: false
+  * tags: [code/visitor_pattern]
+  * concepts: [Concrete Visitor 2]
+  * facets: {layer: utility, status: broken, complexity: low}
+  * -->
   */
 public class Visitor2
 implements   Visitor {
@@ -34,6 +44,8 @@ implements   Visitor {
 	  * Either implement the Behavior here (adding new Visitors)
 	  * or delegate it back to the appropriate Element Class's invite() Method.
 	  */
+	// TODO: LOGIC: same unconditional mutual recursion with ElementA.invite(Visitor) as
+	// Visitor1.visit(ElementA) - StackOverflowError on the first call.
 	public void visit(ElementA elA) {
 		elA.invite(this); //delegate it back...
 	}
@@ -43,6 +55,8 @@ implements   Visitor {
 	  * Either implement the Behavior here (adding new Visitors)
 	  * or delegate it back to the appropriate Element Class's invite() Method.
 	  */
+	// TODO: LOGIC: same unconditional mutual recursion with ElementB.invite(Visitor) as
+	// Visitor1.visit(ElementB) - StackOverflowError on the first call.
 	public void visit(ElementB elB) {
 		elB.invite(this); //delegate it back...
 	}

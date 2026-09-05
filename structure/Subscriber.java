@@ -1,8 +1,9 @@
 package structure; //
 
 /**
-  * Title: Subscriber<p>
-  * Description:
+  * Declares the push-Model {@link #update} Callback a {@link Publisher} invokes on every
+  * registered Observer, carrying both the Publisher and its new State.
+  *
   * Defines the Interface for ...TODO: Describes the Purpose / Responsibilities
   * of this Interface, not it's Implementation.
   * If similar Classes exist (e.g. Polymorphism),
@@ -19,6 +20,15 @@ package structure; //
   * Created on	03-22-2002, 08:29 AM<p>
   * @author 	Matthias Heuer
   * @version	1.0
+  * <!-- docstate
+  * pass: 2
+  * mtime: 2026-09-05T11:17:50Z
+  * digest: 4934c00d44e911a4b722756ba9061fde3c8fdd440adeac0a195763cf9c99a42d
+  * stale: false
+  * tags: [code/observer_pattern]
+  * concepts: [Observer Pattern Subscriber]
+  * facets: {layer: utility, status: legacy, complexity: low}
+  * -->
   */
 public interface Subscriber
 {

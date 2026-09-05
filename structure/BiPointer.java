@@ -1,16 +1,15 @@
 package structure; //
 
 /**
-  * Title: BiPointer<p>
-  * Description:
+  * Attempts to define a bidirectional {@link PointAble} Pointer that automatically maintains its
+  * own Consistency, though disconnecting a Reference is left unfinished (see TODO below).
+  *
   * Since you can build bidirectionally navigable Structures in Java and .NET
   * that are still Memory Managed, it is a very attractive Model
   * to embellish any Object structure using bidirectional References.
   *
   * The only Problem left is changing the Reference in an ACID Operation.
   * This has to be implemented over and over again.
-  * This BiPointer unsuccessfully tries to define a bidirectional Pointer
-  * that automatically maintains Consistency.
   * The Problem with these is that for one thing all Classes have to be PointAble
   * and have to have References to only PointAbles
   * and that unsetting the Reference requires even more Methods
@@ -27,6 +26,15 @@ package structure; //
   * Created on	03-21-2002, 06:46 PM<p>
   * @author 	Matthias Heuer
   * @version	1.0
+  * <!-- docstate
+  * pass: 2
+  * mtime: 2026-09-05T11:12:30Z
+  * digest: caef0fdb5d81d56ef1f75e5deb4578d6a6220a80d444d3463f6af59ebac7a859
+  * stale: false
+  * tags: [code/reference_counting]
+  * concepts: [Bidirectional Pointer]
+  * facets: {layer: utility, status: legacy, complexity: low}
+  * -->
   */
 public class BiPointer
 implements PointAble {

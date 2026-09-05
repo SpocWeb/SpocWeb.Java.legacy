@@ -1,8 +1,10 @@
 package structure; //
 
 /**
-  * Title: Context<p>
-  * Description:
+  * Models a TCP/IP-like Connection whose Requests are all delegated to the current
+  * {@link State}, letting the State itself decide the Connection's Behavior and Successor
+  * State.
+  *
   * This Class maintains the Context for the State Subclasses it references.
   * All State dependent Methods are delegated to the State Object.
   * The State Objects change the Behavior of this Context Class.
@@ -32,6 +34,15 @@ package structure; //
   * Created on	03-22-2002, 10:52 PM<p>
   * @author 	Matthias Heuer
   * @version	1.0
+  * <!-- docstate
+  * pass: 2
+  * mtime: 2026-09-05T11:13:56Z
+  * digest: 9378a3afb375f35066c59a3b8039c965c9869fe3f4682418494c8f5e3f0c28a9
+  * stale: false
+  * tags: [code/state_pattern]
+  * concepts: [State Pattern Context]
+  * facets: {layer: utility, status: broken, complexity: low}
+  * -->
   */
 public class Context {
 
@@ -66,6 +77,9 @@ public class Context {
 		currState.close(this); }
 
 	/** Sends the collected Data */
+	// TODO: LOGIC: send() calls itself instead of delegating to currState (as every sibling
+	// method here does), causing unconditional infinite recursion and a StackOverflowError
+	// on every call.
 	public void send() {
 		send(); }
 

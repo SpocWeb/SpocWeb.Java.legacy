@@ -6,9 +6,9 @@ import java.util.zip.DataFormatException;
 import synch.InvalidException;
 
 /**
-  * Title: StringAspect<p>
-  * Description:
-  * Purpose:
+  * Extends {@link Aspect} to store and validate a String Value against a Min/Max Length
+  * Range, notifying Validators and Subscribers on every change.
+  *
   * Extends and implements the Aspect Class for String Values
   * Purpose / Responsibilities of this Class
   *
@@ -23,6 +23,15 @@ import synch.InvalidException;
   * Created on	07-01-2002, 05:26 PM<p>
   * @author 	Matthias Heuer
   * @version	1.0
+  * <!-- docstate
+  * pass: 2
+  * mtime: 2026-09-05T11:20:34Z
+  * digest: 3f5c148e278c77e3f740e3ef1a981bce96c614cb9e69c72ea93ee4f203266a37
+  * stale: false
+  * tags: [code/property_binding, code/data_validation]
+  * concepts: [String-Valued Aspect]
+  * facets: {layer: domain, status: legacy, complexity: low}
+  * -->
   */
 public class StringAspect
 extends Aspect {
@@ -56,7 +65,8 @@ protected String Value;
 /** holds the Minimum Length for the Input    */
 protected int MinLength;
 
-/** @return the Minimum Length for the Input   */
+/** Returns the shortest Input Length this Aspect accepts.
+  * @return the Minimum Length for the Input   */
 public int getMinLength() {
 	return MinLength; }
 
@@ -71,7 +81,8 @@ public void setMinLength(final int MinLength_) {
 /** holds the Maximum Length for the Input   */
 protected int MaxLength;
 
-/** @return the Maximum Length for the Input  */
+/** Returns the longest Input Length this Aspect accepts.
+  * @return the Maximum Length for the Input  */
 public int getMaxLength() {
 	return MaxLength; }
 
@@ -98,10 +109,12 @@ public void setMaxLength(final int MaxLength_) {
 /// #region : Accessor Methods (getXXX/isXXX/setXXX)
 ////////////////////////////////////////////////////////////////////////////////
 
-/** @return The Aspect Value as a (boxed) Object  */
+/** Returns this Aspect's Value, delegating to {@link #getString()} since String is already
+  * this Aspect's natural Type.
+  * @return The Aspect Value as a (boxed) Object  */
 public Object getValue() { return getString(); }
 
-/**
+/** Returns this Aspect's Value, or {@code null} when not validly set.
  * @return The Aspect Value as a String Representation
  * This is always possible for any Type
  */
@@ -134,7 +147,9 @@ public void setString(String value_) throws DataFormatException {
 	Value = value_; 
 }
 
-/** @return The Aspect Value as a long Representation  */
+/** Parses this Aspect's Value as a long.
+  * @return The Aspect Value as a long Representation
+  * @throws DataFormatException when the Status is invalid or the Value does not parse  */
 public long getLong() throws DataFormatException {
 	if (Status != 0)    
 		throw new DataFormatException("Aspect '" + Name + "' has Status:" + Status); 
@@ -145,7 +160,9 @@ public long getLong() throws DataFormatException {
 	}
 }
 
-/** @return The Aspect Value as a double Representation  */
+/** Parses this Aspect's Value as a double.
+  * @return The Aspect Value as a double Representation
+  * @throws DataFormatException when the Status is invalid or the Value does not parse  */
 public double getDouble() throws DataFormatException {
 	if (Status != 0) 
 		throw new DataFormatException("Aspect '" + Name + "' has Status:" + Status); 
@@ -156,7 +173,9 @@ public double getDouble() throws DataFormatException {
 	}
 }
 
-/** @return The Aspect Value as a Date Representation  */
+/** Parses this Aspect's Value as a Date.
+  * @return The Aspect Value as a Date Representation
+  * @throws DataFormatException when the Status is invalid or the Value does not parse  */
 public Date getDate() throws DataFormatException {
 	if (Status != 0) 
 		throw new DataFormatException("Aspect '" + Name + "' has Status:" + Status); 

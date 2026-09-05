@@ -1,7 +1,8 @@
 package structure; //
 
 /**
-  * Title: Figure2D<p>
+  * Holds a 2D Location shared by every geometric Figure Subclass, such as {@link Circle}.
+  *
   * Contains Coordinates for a 2D Location
   *
   * Known SubClasses:
@@ -14,6 +15,15 @@ package structure; //
   * Created on	06-25-2002, 08:30 PM<p>
   * @author 	Matthias Heuer
   * @version	1.0
+  * <!-- docstate
+  * pass: 2
+  * mtime: 2026-09-05T11:15:32Z
+  * digest: 465d1a693d7720005205081c4f495382ab86ced3067fefb3d085ddf4bd87f910
+  * stale: false
+  * tags: [code/2d_geometry]
+  * concepts: [2D Figure Base Class]
+  * facets: {layer: domain, status: legacy, complexity: low}
+  * -->
   */
 public class Figure2D {
 
@@ -40,7 +50,8 @@ public class Figure2D {
 /** holds the x Position of the Ellipse   */
 protected double X;
 
-/** @return the x Position of the Ellipse  */
+/** Returns the Figure's x Coordinate.
+  * @return the x Position of the Ellipse  */
 public double getX() {
 	return X; }
 
@@ -55,7 +66,8 @@ public void setX(double X_) {
 /** holds the y Position of the Ellipse   */
 protected double Y;
 
-/** @return the y Position of the Ellipse  */
+/** Returns the Figure's y Coordinate.
+  * @return the y Position of the Ellipse  */
 public double getY() {
 	return Y; }
 

@@ -5,9 +5,8 @@
 package structure.blackBoard.triangle;
 
 /**
- * Title: WSW<p>
- * Description:
- * Calculates the third Angle from two other known Angles
+ * Derives the two unknown Sides adjacent to a known Side from the Triangle's known Angles,
+ * via the Law of Sines.
  *
  * Known SubClasses: <none>
  *
@@ -19,6 +18,15 @@ package structure.blackBoard.triangle;
  * @author mheuer
  * @version	1.0
  *
+ * <!-- docstate
+ * pass: 2
+ * mtime: 2026-09-05T11:22:45Z
+ * digest: 9e4debc32845223e85b67365d60e21d223a76c652a56eab5386cfbc0ba4d2bc5
+ * stale: false
+ * tags: [code/rule_based_validation]
+ * concepts: [Angle-Side-Angle Rule]
+ * facets: {layer: domain, status: legacy, complexity: low}
+ * -->
  */
 class WSW extends ATriangleKnowledge {
 
@@ -35,8 +43,9 @@ class WSW extends ATriangleKnowledge {
 	////////////////////////////////////////////////////////////////////////////////
 
 	/**
+	 * Returns whether at least two Angles and one, but not all three, Sides are known.
 	 * @see structure.blackBoard.IKnowledge#check()
-	 * @return true iif it makes sense to apply the WSW Algorithm 
+	 * @return true iif it makes sense to apply the WSW Algorithm
 	 */
 	public boolean check() {
 		return (tri.numAngles() > 1) && (tri.numSides() > 0) && (tri.numSides() < 3);

@@ -1,11 +1,8 @@
 package structure; //
 
 /**
-  * Title: Abstraction<p>
-  * Description:
-  * Implements the common Algorithms of 'Interface'.
-  * Defines the basic Algorithm of complexOp(),
-  * but leaves the concrete simpleOp() open.
+  * Implements the common {@link Interface#complexOp} Algorithm by delegating to a still-abstract
+  * {@link IInterface#simpleOp}, leaving only the primitive Operation for Subclasses to define.
   * Usually these abstract Implementations don't even have any Member Variable!
   *
   * This is an Economization for multiple Implementors of 'Interface'
@@ -38,6 +35,15 @@ package structure; //
   * @see     DBridge , bridging the minimum Interface Methods AND inheriting from DAbstraction
   * @see DFullBridge , bridging the full 'Interface' Methods, overwriting complexOp
   *
+  * <!-- docstate
+  * pass: 2
+  * mtime: 2026-09-05T11:12:19Z
+  * digest: c0a0ee0c564cb3bcba610709f22cb6722da70db6a325c8be25d0da0004a359b9
+  * stale: false
+  * tags: [code/bridge]
+  * concepts: [Bridge Pattern Abstraction]
+  * facets: {layer: utility, status: legacy, complexity: low}
+  * -->
   */
 public abstract class Abstraction
 //extends can possibly extend other Abstractions, thus reducing Code Duplication.

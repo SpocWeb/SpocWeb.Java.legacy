@@ -5,9 +5,8 @@
 package structure.blackBoard.triangle;
 
 /**
- * Title: WWW<p>
- * Description:
- * Calculates the third Angle from two other known Angles
+ * Derives the last unknown Angle of a Triangle from the other two known Angles, since all
+ * three must sum to Pi.
  *
  * Known SubClasses: <none>
  *
@@ -19,6 +18,15 @@ package structure.blackBoard.triangle;
  * @author mheuer
  * @version	1.0
  *
+ * <!-- docstate
+ * pass: 2
+ * mtime: 2026-09-05T11:22:48Z
+ * digest: e62c6892336c5188c25f78108e83738f694fd36301d245ae7aaacb894fa8291e
+ * stale: false
+ * tags: [code/rule_based_validation]
+ * concepts: [Angle-Angle-Angle Rule]
+ * facets: {layer: domain, status: legacy, complexity: low}
+ * -->
  */
 class WWW extends ATriangleKnowledge {
 
@@ -35,8 +43,9 @@ class WWW extends ATriangleKnowledge {
 	////////////////////////////////////////////////////////////////////////////////
 
 	/**
+	 * Returns whether exactly two of the Triangle's three Angles are known.
 	 * @see structure.blackBoard.IKnowledge#check()
-	 * @return true iif it makes sense to apply the WWW Algorithm 
+	 * @return true iif it makes sense to apply the WWW Algorithm
 	 */
 	public boolean check() {
 		return tri.numAngles() == 2;

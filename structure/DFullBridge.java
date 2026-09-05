@@ -1,9 +1,10 @@
 package structure; //
 
 /**
-  * Title: DFullBridge<p>
-  * Description:
-  * Defines a Bridge for the full 'Interface'.
+  * Bridges the full {@link Interface} by extending {@link DBridge} and delegating
+  * {@link #complexOp} to its own separately held Implementor, overriding the inherited
+  * simpleOp()-only delegation.
+  *
   * The Bridge Pattern allows to separate Interface and Implementation
   * for both Inheritance Hierarchies AND at Runtime.
   * This poses a larger Effort on Classes that cannot inherit from 'Abstraction',
@@ -29,6 +30,15 @@ package structure; //
   * @see     DBridge , bridging the minimum Interface Methods AND inheriting from DAbstraction
   * @see DFullBridge , bridging the full 'Interface' Methods, overwriting complexOp
   *
+  * <!-- docstate
+  * pass: 2
+  * mtime: 2026-09-05T11:13:50Z
+  * digest: 5470ff84ad7bf1434ba402fb8c21c98ae003bbe4ed84f065d37d9b5c9439ea46
+  * stale: false
+  * tags: [code/bridge]
+  * concepts: [Delegate-Based Full Bridge]
+  * facets: {layer: utility, status: legacy, complexity: low}
+  * -->
   */
 public class DFullBridge
 extends DBridge

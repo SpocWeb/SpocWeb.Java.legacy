@@ -4,8 +4,9 @@ import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 
 /**
-  * Title: Delegate<p>
-  * Description:
+  * Binds a target Object and a reflected {@link Method} into a callable, immutable Delegate,
+  * chained through a singly linked list so {@link #raiseEvent} can notify every Observer.
+  *
   * Mimicks the .NET Delegate Class.
   * Contains a Reference to an Object Instance and to a Method of this Object.
   * Uses Reflection to call the Method (faster in SDK 1.4).
@@ -33,6 +34,15 @@ import java.lang.reflect.Method;
   * Created on	04-02-2002, 12:35 AM<p>
   * @author 	Matthias Heuer
   * @version	1.0
+  * <!-- docstate
+  * pass: 2
+  * mtime: 2026-09-05T11:14:28Z
+  * digest: 467e9378920da3e92bda20f0cf4a20ac99f072679345168643d93c60bbdb5ca5
+  * stale: false
+  * tags: [code/delegate_pattern]
+  * concepts: [Delegate Chain]
+  * facets: {layer: utility, status: broken, complexity: low}
+  * -->
   */
 public class Delegate {
 
@@ -143,6 +153,11 @@ public class Delegate {
 			do {
 				method.invoke(curr.target, params);
 			} while (null != (curr = curr.next));
+		// TODO: LOGIC: both catch blocks are empty, silently discarding the exception. A
+		// reflective invocation failure (e.g. the target Method itself throwing) both hides
+		// the real cause from every caller and, because the exception breaks out of the
+		// do/while before `curr` is reassigned, silently stops notifying every Delegate after
+		// the one that failed.
 		} catch (IllegalAccessException x) {
 		} catch (InvocationTargetException x) {
 		}

@@ -3,8 +3,9 @@ package structure; //
 import function.FunctionByHash;
 
 /**
-  * Title: Registry<p>
-  * Description:
+  * Declares a keyed Lookup Relation, typically implemented as a Singleton, mapping an
+  * arbitrary key Object to a registered value Object via {@link #getAt}/{@link #setAt}.
+  *
   * A Registry is a Relation and typically used as a Singleton!
   * The Methods getAt() and setAt() parallel the get() and set() Methods
   * only in that they take an Object Parameter (typically a String).
@@ -31,6 +32,15 @@ import function.FunctionByHash;
   * Created on	03-13-2002, 07:19 AM<p>
   * @author 	Matthias Heuer
   * @version	1.0
+  * <!-- docstate
+  * pass: 2
+  * mtime: 2026-09-05T11:16:32Z
+  * digest: f6bd3ac81da0926a31a6874a5a764478f4b6690850c403913f69de4b946dba5d
+  * stale: false
+  * tags: [code/registry_pattern]
+  * concepts: [Registry Interface]
+  * facets: {layer: utility, status: legacy, complexity: low}
+  * -->
   */
 public interface IRegistry
 //extends    Stream.AStreamOut

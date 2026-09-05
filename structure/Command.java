@@ -1,8 +1,9 @@
 package structure; //
 
 /**
-  * Title: Command<p>
-  * Description:
+  * Binds an Invoker to a {@link Runnable} Receiver by delegating {@link #run()} to it, the
+  * minimal realization of the Command Pattern with no undo support.
+  *
   * Defines the Interface for the Command Pattern.
   * This Design Pattern
   *
@@ -108,6 +109,15 @@ package structure; //
   * Created on	03-11-2002, 09:18 AM<p>
   * @author 	Matthias Heuer
   * @version	1.0
+  * <!-- docstate
+  * pass: 2
+  * mtime: 2026-09-05T11:13:42Z
+  * digest: 55a6572503cedb832b59b23b9756589ebdbaf1e0f46ff76da8b0b5ca27cf99f5
+  * stale: false
+  * tags: [code/command_pattern]
+  * concepts: [Command Pattern Base]
+  * facets: {layer: utility, status: legacy, complexity: low}
+  * -->
   */
 public class Command
 //extends
@@ -125,11 +135,13 @@ implements Runnable
 //  Accessor Methods (getXXX/isXXX/setXXX)
 ////////////////////////////////////////////////////////////////////////////////
 
-	/** @return the Receiver Object 	 */
+	/** Returns the Receiver this Command delegates {@link #run()} to.
+	  * @return the Receiver Object 	 */
 	public Runnable getReceiver() {
 		return receiver; }
 
-	/** @param the Receiver Object  	 */
+	/** Sets the Receiver this Command delegates {@link #run()} to.
+	  * @param _receiver the Receiver Object  	 */
 	public void setReceiver(Runnable _receiver) {
 		receiver = _receiver; }
 

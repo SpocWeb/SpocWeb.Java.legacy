@@ -5,15 +5,8 @@
 package structure.blackBoard.triangle;
 
 /**
- * Title: enclosing_type<p>
- * Description:
- * Purpose:
- *
- * Purpose / Responsibilities of this Class
- *
- * Design Decisions / Implementation Details:
- * If similar Classes exist (e.g. Polymorphism),
- * characterize the specific Differences to compare these.
+ * Derives the two remaining unknown Angles of a Triangle from two known Sides and the
+ * Angle enclosed between them, flagging a possible second (ambiguous) Solution.
  *
  * Known SubClasses: <none>
  *
@@ -25,6 +18,15 @@ package structure.blackBoard.triangle;
  * @author mheuer
  * @version	1.0
  *
+ * <!-- docstate
+ * pass: 2
+ * mtime: 2026-09-05T11:22:38Z
+ * digest: 3e9fd6b74f6a293f6c079af02ba8b464eea743b6a37f3ba7b0741d05d8c147c5
+ * stale: false
+ * tags: [code/rule_based_validation]
+ * concepts: [Side-Side-Angle Rule]
+ * facets: {layer: domain, status: legacy, complexity: low}
+ * -->
  */
 public class SSW extends ATriangleKnowledge {
 
@@ -37,8 +39,9 @@ public class SSW extends ATriangleKnowledge {
 	}
 
 	/**
+	 * Returns whether exactly one Angle and two Sides are known.
 	 * @see structure.blackBoard.IKnowledge#check()
-	 * @return true iif it makes sense to apply the WSW Algorithm 
+	 * @return true iif it makes sense to apply the WSW Algorithm
 	 */
 	public boolean check() {
 		return (tri.numAngles() == 1) && (tri.numSides() == 2);

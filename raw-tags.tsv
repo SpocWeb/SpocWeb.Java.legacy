@@ -518,3 +518,66 @@ technology/xml/test/StatusValue.java:StatusValue	class	technology/xml/test/Statu
 technology/xml/test/Steuerung.java:Steuerung	class	technology/xml/test/Steuerung.java	code/data_transfer_object	Castor Data Transfer Object	domain	legacy	low
 technology/xml/test/Transaktion.java:Transaktion	class	technology/xml/test/Transaktion.java	code/data_transfer_object	Castor Data Transfer Object	domain	legacy	low
 technology/xml/test/ZKDBBaseType.java:ZKDBBaseType	class	technology/xml/test/ZKDBBaseType.java	code/data_transfer_object	Castor Data Transfer Object Base	domain	legacy	low
+structure/Abstraction.java:Abstraction	class	structure/Abstraction.java	code/bridge	Bridge Pattern Abstraction	utility	legacy	low
+structure	folder	structure	code/design_patterns	Gang-of-Four Design Pattern Demos	utility	legacy	medium
+structure/BiPointer.java:BiPointer	class	structure/BiPointer.java	code/reference_counting	Bidirectional Pointer	utility	legacy	low
+structure/BiRef.java:BiRef	class	structure/BiRef.java	code/reference_counting	Bidirectional Reference	utility	legacy	low
+structure/Bridge.java:Bridge	class	structure/Bridge.java	code/bridge	Bridge Implementor	utility	legacy	low
+structure/Circle.java:Circle	class	structure/Circle.java	code/2d_geometry	2D Circle	domain	legacy	low
+structure/Command.java:Command	class	structure/Command.java	code/command_pattern	Command Pattern Base	utility	legacy	low
+structure/Context.java:Context	class	structure/Context.java	code/state_pattern	State Pattern Context	utility	broken	low
+structure/DAbstraction.java:DAbstraction	class	structure/DAbstraction.java	code/bridge	Delegate-Based Bridge Abstraction	utility	legacy	low
+structure/DBridge.java:DBridge	class	structure/DBridge.java	code/bridge	Delegate-Based Bridge Implementor	utility	legacy	low
+structure/DFullBridge.java:DFullBridge	class	structure/DFullBridge.java	code/bridge	Delegate-Based Full Bridge	utility	legacy	low
+structure/Decorator.java:Decorator	class	structure/Decorator.java	code/decorator_pattern	Decorator Pattern	utility	legacy	low
+structure/Delegate.java:Delegate	class	structure/Delegate.java	code/delegate_pattern	Delegate Chain	utility	broken	low
+structure/Delegator.java:Delegator	class	structure/Delegator.java	code/delegate_pattern,code/bridge	Delegator	utility	legacy	low
+structure/Element.java:Element	class	structure/Element.java	code/visitor_pattern	Visitor Pattern Element	utility	legacy	low
+structure/ElementA.java:ElementA	class	structure/ElementA.java	code/visitor_pattern	Concrete Visitable Element A	utility	legacy	low
+structure/ElementB.java:ElementB	class	structure/ElementB.java	code/visitor_pattern	Concrete Visitable Element B	utility	legacy	low
+structure/Ellipse.java:Ellipse	class	structure/Ellipse.java	code/2d_geometry	2D Ellipse	domain	legacy	low
+structure/Enum.java:Enum	class	structure/Enum.java	code/enum_like_type	Type-Safe Enum Emulation	utility	legacy	low
+structure/Enum.java:VarEnum	class	structure/Enum.java	code/enum_like_type	Variable Enum Emulation	utility	legacy	low
+structure/Enum.java:Ternary	class	structure/Enum.java	code/ternary_logic	Ternary Logic Value	utility	legacy	low
+structure/Figure2D.java:Figure2D	class	structure/Figure2D.java	code/2d_geometry	2D Figure Base Class	domain	legacy	low
+structure/FullBridge.java:FullBridge	class	structure/FullBridge.java	code/bridge	Full Bridge	utility	legacy	low
+structure/HistoryList.java:HistoryList	class	structure/HistoryList.java	code/undo_redo	Undo/Redo History List	utility	broken	medium
+structure/IInterface.java:IInterface	class	structure/IInterface.java	code/bridge	Bridge Interface	utility	legacy	low
+structure/IRegistry.java:IRegistry	class	structure/IRegistry.java	code/registry_pattern	Registry Interface	utility	legacy	low
+structure/ITransaction.java:ITransaction	class	structure/ITransaction.java	code/transaction	Transaction Interface	utility	legacy	low
+structure/Interface.java:Interface	class	structure/Interface.java	code/bridge	Bridge Interface Implementation	utility	legacy	low
+structure/MacroCommand.java:MacroCommand	class	structure/MacroCommand.java	code/command_pattern	Composite Command	utility	legacy	low
+structure/PointAble.java:PointAble	class	structure/PointAble.java	code/reference_counting	Pointer-Like Reference Holder	utility	legacy	low
+structure/Publisher.java:Publisher	class	structure/Publisher.java	code/observer_pattern	Observer Pattern Publisher	utility	legacy	low
+structure/RefCounter.java:RefCounter	class	structure/RefCounter.java	code/reference_counting	Reference Counter	utility	legacy	low
+structure/Singleton.java:Singleton	class	structure/Singleton.java	code/singleton_pattern	Singleton Pattern	utility	legacy	low
+structure/Singleton.java:Singleton.SINGLETON()	method	structure/Singleton.java	code/singleton_pattern	Singleton Accessor	utility	legacy	low
+structure/Singleton.java:Singleton.Singleton()	method	structure/Singleton.java	code/singleton_pattern	Private Constructor	utility	legacy	low
+structure/State.java:State	class	structure/State.java	code/state_pattern	State Pattern State	utility	legacy	low
+structure/Subscriber.java:Subscriber	class	structure/Subscriber.java	code/observer_pattern	Observer Pattern Subscriber	utility	legacy	low
+structure/TemplateMethod.java:TemplateMethod	class	structure/TemplateMethod.java	code/design_patterns	Template Method Pattern	utility	legacy	low
+structure/Transaction.java:Transaction	class	structure/Transaction.java	code/transaction	Transaction Implementation	utility	legacy	low
+structure/UndoAble.java:UndoAble	class	structure/UndoAble.java	code/undo_redo	Undoable Interface	utility	legacy	low
+structure/Visitor.java:Visitor	class	structure/Visitor.java	code/visitor_pattern	Visitor Interface	utility	legacy	low
+structure/Visitor1.java:Visitor1	class	structure/Visitor1.java	code/visitor_pattern	Concrete Visitor 1	utility	broken	low
+structure/Visitor2.java:Visitor2	class	structure/Visitor2.java	code/visitor_pattern	Concrete Visitor 2	utility	broken	low
+structure/aspect/Aspect.java:Aspect	class	structure/aspect/Aspect.java	code/property_binding	Aspect Property Binding Base	domain	legacy	medium
+structure/aspect	folder	structure/aspect	code/property_binding,code/data_validation	UI Data Binding Aspects	domain	legacy	medium
+structure/aspect/DoubleAspect.java:DoubleAspect	class	structure/aspect/DoubleAspect.java	code/property_binding	Double-Valued Aspect	domain	broken	low
+structure/aspect/GuiAspect.java:GuiAspect	class	structure/aspect/GuiAspect.java	code/property_binding	GUI-Bound Aspect	domain	legacy	low
+structure/aspect/ListAspect.java:ListAspect	class	structure/aspect/ListAspect.java	code/property_binding	List-Valued Aspect	domain	broken	low
+structure/aspect/ListAspect.java:ListAspect.ListAspect(String, Aspect[])	method	structure/aspect/ListAspect.java	code/property_binding	List Aspect Constructor	domain	broken	low
+structure/aspect/ListAspect.java:ListAspect.testIt(String[])	method	structure/aspect/ListAspect.java	code/property_binding	Self-Test Method	test	legacy	low
+structure/aspect/ListAspect.java:ListAspect.main(String[])	method	structure/aspect/ListAspect.java	code/property_binding	Demo Entry Point	test	legacy	low
+structure/aspect/NumberAspect.java:NumberAspect	class	structure/aspect/NumberAspect.java	code/property_binding	Numeric Aspect	domain	legacy	low
+structure/aspect/StringAspect.java:StringAspect	class	structure/aspect/StringAspect.java	code/property_binding,code/data_validation	String-Valued Aspect	domain	legacy	low
+structure/blackBoard/IKnowledge.java:IKnowledge	class	structure/blackBoard/IKnowledge.java	code/blackboard_pattern	Knowledge Source Interface	domain	legacy	low
+structure/blackBoard	folder	structure/blackBoard	code/blackboard_pattern	Blackboard Architecture	domain	legacy	low
+structure/blackBoard/triangle/ATriangleKnowledge.java:ATriangleKnowledge	class	structure/blackBoard/triangle/ATriangleKnowledge.java	code/blackboard_pattern,code/rule_based_validation	Triangle Knowledge Source Base	domain	legacy	low
+structure/blackBoard/triangle	folder	structure/blackBoard/triangle	code/blackboard_pattern,code/rule_based_validation,code/2d_geometry	Rule-Based Triangle Solver	domain	legacy	medium
+structure/blackBoard/triangle/SSS.java:SSS	class	structure/blackBoard/triangle/SSS.java	code/rule_based_validation	Side-Side-Side Rule	domain	legacy	low
+structure/blackBoard/triangle/SSW.java:SSW	class	structure/blackBoard/triangle/SSW.java	code/rule_based_validation	Side-Side-Angle Rule	domain	legacy	low
+structure/blackBoard/triangle/SWS.java:SWS	class	structure/blackBoard/triangle/SWS.java	code/rule_based_validation	Side-Angle-Side Rule	domain	legacy	low
+structure/blackBoard/triangle/Triangle.java:Triangle	class	structure/blackBoard/triangle/Triangle.java	code/2d_geometry	Triangle Value Object	domain	legacy	low
+structure/blackBoard/triangle/WSW.java:WSW	class	structure/blackBoard/triangle/WSW.java	code/rule_based_validation	Angle-Side-Angle Rule	domain	legacy	low
+structure/blackBoard/triangle/WWW.java:WWW	class	structure/blackBoard/triangle/WWW.java	code/rule_based_validation	Angle-Angle-Angle Rule	domain	legacy	low

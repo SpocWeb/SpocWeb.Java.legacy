@@ -1,9 +1,11 @@
 package structure; //
 
 /**
-  * Title: Publisher<p>
+  * Declares the Observer-registration Contract of a Subject in the Observer Pattern, leaving
+  * State-carrying and Notification to the implementing Class.
+  *
   * AKA: Subject in the Observer Pattern
-  * Description:
+  *
   * Defines the Interface for Publishers of Information / State
   * and to maintain a (List of) Observer(s).
   *
@@ -21,6 +23,15 @@ package structure; //
   * Created on	03-22-2002, 08:29 AM<p>
   * @author 	Matthias Heuer
   * @version	1.0
+  * <!-- docstate
+  * pass: 2
+  * mtime: 2026-09-05T11:17:13Z
+  * digest: a0e315587e892f7e155237467fcc0f4bf97cd19cb40cf38719129243a6314bc3
+  * stale: false
+  * tags: [code/observer_pattern]
+  * concepts: [Observer Pattern Publisher]
+  * facets: {layer: utility, status: legacy, complexity: low}
+  * -->
   */
 public interface Publisher {
 

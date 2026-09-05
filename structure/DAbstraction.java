@@ -1,12 +1,9 @@
 package structure; //
 
 /**
-  * Title: DAbstraction<p>
-  * Description:
-  * Implements the common Algorithms of 'Interface'.
-  * Defines the basic Algorithm of complexOp(),
-  * but leaves the concrete simpleOp() open.
-  * Usually these abstract Implementations don't even have any Member Variable!
+  * Implements the common {@link Interface#complexOp} Algorithm like {@link Abstraction}, but
+  * delegates the primitive Operation to a held {@link IInterface} Implementor rather than to
+  * itself, so an unrelated Base Class can still be extended.
   *
   * This is an Economization for multiple Implementors of 'Interface'
   * sharing the same Algorithm.
@@ -38,6 +35,15 @@ package structure; //
   * @see     DBridge , bridging the minimum Interface Methods AND inheriting from DAbstraction
   * @see DFullBridge , bridging the full 'Interface' Methods, overwriting complexOp
   *
+  * <!-- docstate
+  * pass: 2
+  * mtime: 2026-09-05T11:13:46Z
+  * digest: bc8ca4029cac04647afdef77e76402e1aa446518ea5fff2d0094260789b26e3d
+  * stale: false
+  * tags: [code/bridge]
+  * concepts: [Delegate-Based Bridge Abstraction]
+  * facets: {layer: utility, status: legacy, complexity: low}
+  * -->
   */
 public abstract class DAbstraction
 //extends ...can possibly extend other DAbstractions, thus reducing Code Duplication.

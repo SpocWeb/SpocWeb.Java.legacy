@@ -1,8 +1,8 @@
 package structure; //
 
 /**
-  * Title: Ellipse<p>
-  * Description:
+  * A {@link Figure2D} defined by a Radius and Eccentricity, generalizing {@link Circle} to
+  * unequal Rx and Ry.
   *
   * @see structure.Circle
   * Known SubClasses:
@@ -14,6 +14,15 @@ package structure; //
   * Created on	06-25-2002, 08:19 PM<p>
   * @author 	Matthias Heuer
   * @version	1.0
+  * <!-- docstate
+  * pass: 2
+  * mtime: 2026-09-05T11:15:20Z
+  * digest: 1bab36edace006b9651b8ada1f273e75d84ab61a9181ff77f058e46752511117
+  * stale: false
+  * tags: [code/2d_geometry]
+  * concepts: [2D Ellipse]
+  * facets: {layer: domain, status: legacy, complexity: low}
+  * -->
   */
 public class Ellipse
 extends Circle { //Figure2D {
@@ -41,7 +50,8 @@ extends Circle { //Figure2D {
 /** holds the Eccentricity of the Circle, i.e. SqRt(Ry / Rx)   */
 protected double Eccentricity;
 
-/** @return the Eccentricity of the Circle, i.e. SqRt(Ry / Rx)   */
+/** Returns the Eccentricity used to derive Rx and Ry from the shared Radius.
+  * @return the Eccentricity of the Circle, i.e. SqRt(Ry / Rx)   */
 public double getEccentricity() { return Eccentricity; }
 
 /** Sets the Eccentricity of the Circle, i.e. SqRt(Ry / Rx)   */
@@ -54,7 +64,8 @@ public void setEccentricity(double Eccentricity_) { this.Eccentricity = Eccentri
 /** holds the Turning Angle of the Ellipsis   */
 protected double TurnAngle;
 
-/** @return the Turning Angle of the Ellipsis  */
+/** Returns the Angle by which the Ellipse's Axes are turned relative to the Coordinate System.
+  * @return the Turning Angle of the Ellipsis  */
 public double getTurnAngle() {
 	return TurnAngle; }
 
@@ -69,7 +80,8 @@ public void setTurnAngle(double TurnAngle_) {
 /** holds Radius of the Ellipse in x Direction   */
 //protected double Rx;
 
-/** @return Radius of the Ellipse in x Direction  */
+/** Derives the x-Radius from the inherited Radius and this Ellipse's Eccentricity.
+  * @return Radius of the Ellipse in x Direction  */
 public double getRx() { return R/Eccentricity; } //Rx; }
 
 /** Sets Radius of the Ellipse in x Direction  */
@@ -82,7 +94,8 @@ public double getRx() { return R/Eccentricity; } //Rx; }
 /** holds Radius of the Ellipse in y Direction   */
 //protected double Ry;
 
-/** @return Radius of the Ellipse in y Direction  */
+/** Derives the y-Radius from the inherited Radius and this Ellipse's Eccentricity.
+  * @return Radius of the Ellipse in y Direction  */
 public double getRy() { return R*Eccentricity; } //Ry; }
 
 /** Sets Radius of the Ellipse in y Direction  */
@@ -107,6 +120,8 @@ public double getRy() { return R*Eccentricity; } //Ry; }
 /// #region : Interface ISpatial: Implementation
 ////////////////////////////////////////////////////////////////////////////////
 
+/** Does not paint anything yet; intended to exploit the Ellipse's fourfold Symmetry,
+  * fewer than the eightfold Symmetry a {@link Circle} can use. */
 public void draw() {
 	//exploit the Symmetry to speed up Painting by 4 and not by 8 like with Circles.
 }

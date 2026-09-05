@@ -1,12 +1,8 @@
 package structure; //
 
 /**
-  * Title: ElementB<p>
-  * Description:
-  * Defines the Interface for an Element being visited by a Visitor.
-  * This is a generic Interface, except for the Fact
-  *  that the Visitor Interface used is specific
-  *  to the Number and Types of Elements visited.
+  * The other concrete {@link Element} that dispatches {@link Visitor#visit(ElementB)} on
+  * itself.
   *
   * Known SubInterfaces:
   *
@@ -17,6 +13,15 @@ package structure; //
   * Created on	03-23-2002, 04:22 PM<p>
   * @author 	Matthias Heuer
   * @version	1.0
+  * <!-- docstate
+  * pass: 2
+  * mtime: 2026-09-05T11:14:35Z
+  * digest: 6caba42c3d775598f95e0154955f1b69baf4e7641de4b670fbe9d226b94d62ab
+  * stale: false
+  * tags: [code/visitor_pattern]
+  * concepts: [Concrete Visitable Element B]
+  * facets: {layer: utility, status: legacy, complexity: low}
+  * -->
   */
 public class ElementB
 implements   Element {

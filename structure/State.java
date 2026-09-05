@@ -1,10 +1,8 @@
 package structure; //
 
 /**
-  * Title: State<p>
-  * Description:
-  * Defines the Interface for...
-  *
+  * Declares the Connection-lifecycle Operations a {@link Context} delegates to, letting each
+  * concrete State decide the Behavior and Successor State for its own Requests.
   *
   * Known SubInterfaces:
   *
@@ -15,6 +13,15 @@ package structure; //
   * Created on	03-22-2002, 10:51 PM<p>
   * @author 	Matthias Heuer
   * @version	1.0
+  * <!-- docstate
+  * pass: 2
+  * mtime: 2026-09-05T11:17:49Z
+  * digest: ddcb457ea27190da0679f6c109bf531241fd9d54079019a5992c4342da80b8b9
+  * stale: false
+  * tags: [code/state_pattern]
+  * concepts: [State Pattern State]
+  * facets: {layer: utility, status: legacy, complexity: low}
+  * -->
   */
 public interface State {
 

@@ -5,9 +5,8 @@
 package structure.blackBoard.triangle;
 
 /**
- * Title: SWS<p>
- * Description:
- * Calculates the third Angle from two other known Angles
+ * Derives an unknown Side of a Triangle from the two adjacent Sides and their enclosed
+ * Angle, via the Law of Cosines.
  *
  * Known SubClasses: <none>
  *
@@ -19,6 +18,15 @@ package structure.blackBoard.triangle;
  * @author mheuer
  * @version	1.0
  *
+ * <!-- docstate
+ * pass: 2
+ * mtime: 2026-09-05T11:22:41Z
+ * digest: 6cb4458886bdfc91ede42f91fb5cba51b037c9b809d00d43fc4a452d021837ad
+ * stale: false
+ * tags: [code/rule_based_validation]
+ * concepts: [Side-Angle-Side Rule]
+ * facets: {layer: domain, status: legacy, complexity: low}
+ * -->
  */
 class SWS extends ATriangleKnowledge {
 
@@ -35,6 +43,7 @@ class SWS extends ATriangleKnowledge {
 	////////////////////////////////////////////////////////////////////////////////
 
 	/**
+	 * Returns whether at least two Sides and one Angle are known.
 	 * @see structure.blackBoard.IKnowledge#check()
 	 * @return true iif it makes sense to apply the SWS Algorithm
 	 */
