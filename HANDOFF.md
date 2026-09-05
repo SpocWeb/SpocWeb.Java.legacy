@@ -35,6 +35,14 @@ false-positive pattern, see tool quirks - `AContainer.ChangeIterator`, `Function
 `Function.isBiUnique`, `RecordSet.main`, `Relation.getAt`, `Relation.isBiUnique`). **The entire
 7-pass documentation run across the whole corpus is genuinely complete.**
 
+**Optional follow-up, not yet applied:** `build-vocabulary` has been warning since partway
+through this session that the shared vocabulary (6421 axis-A tags) exceeds the recommended
+300-tag ceiling. A dry run of `compact-vocabulary /d/_/_AI/tags-schema.yaml
+/d/_/_AI/tags-index.tsv .` proposes stripping 1104 tag references and rewriting 1152
+`raw-tags.tsv` rows - a large structural change to shared state, well beyond "finish the
+documentation pass", so it was deliberately left unapplied pending explicit approval. Run with
+`--apply` only if/when asked to consolidate the vocabulary; review the dry-run diff first.
+
 **What's fully committed+pushed (both `D:/_/_Matthias/Code/Java` and `D:/_/_AI`):**
 - Milestone C of the companion CLI (`D:/_/_AI/skills/Java.ReadMeGenerator/ReadMeGenerator/`)
   is **entirely built** - part 1 (repair/dedup: `list-corrupted`, `fix-doc-split`,
