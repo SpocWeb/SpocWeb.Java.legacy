@@ -136,9 +136,11 @@ concurrently against the same file):
 | `function` (root+index+real+string+vector+byref) | 98 | 12899 | 98 | done | agent-function-misc |
 | `function/derive` | 106 | 14586 | 106 | done | agent-function-derive |
 | `streamIO/object` (root+backTrack+filterIn+filterInOut+filterOut+integer+yaml+json) | 79 | 13501 | 79 | done | agent-object-misc |
-| `streamIO/object/enumer` | 79 | 18229 | 0 | unclaimed | - |
-| `streamIO/object/parser` | 27 | 6942 | 0 | unclaimed | - |
-| `streamIO/integer` (needs further sub-batch splitting, 157 files/39243 lines total) | 157 | 39243 | 0 | unclaimed | - |
+| `streamIO/object/enumer` | 79 | 18229 | 0 | claimed | agent-object-enumer |
+| `streamIO/object/parser` | 27 | 6942 | 0 | claimed | agent-object-parser |
+| `streamIO/integer` (root+adapter+file+multiplex+pipe) | 56 | 15359 | 0 | claimed | agent-integer-core |
+| `streamIO/integer/encoding`+`filter`+`random` | 56 | 10273 | 0 | claimed | agent-integer-encoding |
+| `streamIO/integer/jdbc` | 31 | 11899 | 0 | claimed | agent-integer-jdbc |
 | `graphic` (root+example+implement+svg) | 50 | 14297 | 50 | done | agent-graphic-misc |
 | `graphic/math2D`+`graphic/ms3d` | 18 | 3525 | 18 | done | agent-graphic-2d |
 | `graphic/math3D` | 32 | 6425 | 32 | done | agent-graphic-math3D |
