@@ -32,7 +32,7 @@ import java.lang.reflect.Field;
   * <!-- docstate
   * pass: 2
   * mtime: 2026-09-05T08:16:08Z
-  * digest: 16fe011f60dca9f33ac26c7d4c908cdcf4e910a6dd52fa20e6ef4a3e2aff04e8
+  * digest: 981e0f391116a6a7d6c34a62af7df728a2d549cbdca9f7c3da51315944c5901d
   * stale: false
   * -->
   */
@@ -143,10 +143,8 @@ implements PersistAble, IPrimaryKey {
 /*	public IPrimaryKey newInstance (IPrimaryKey Key) throws SQLException {
 		return new IdKey(((IdKey)Key).ID); }
 //		return (IPrimaryKey) newInstance(new IdKey(RS.getInt(DBKeyNames[0]))); } //since there is only one Field, Sequence doesn't matter here!
+*/
 
-	// TODO: LOGIC: the block comment disabling the code above is never closed, so it runs
-	// on until the end of the following Javadoc and swallows it; newInstance below is
-	// therefore left undocumented in the generated API.
 	/**
 	 * Returns a new instance of this class initialised from the given primary key.
 	 *

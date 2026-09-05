@@ -12,7 +12,7 @@ digest:
       digest: 327a7738f6b4f8450bcdd6bc19927b6d3e7fd0cfe659814458fd248eaae31460
     DBObjectFactory:
       mtime: '2006-03-11T02:04:43Z'
-      digest: 1c6bc609d8ecc848acc12f660f2491e9827acda816c4619787b280f66bb9b5da
+      digest: c6778f9add1714047042fa2d49d57af51b65ef265f604e6604795322be6a2be4
     DbCachedFactory:
       mtime: '2026-09-05T08:15:05Z'
       digest: f67c870a8da4593e7b6730db628bb74fb020aa5596bca60c4fe8a15f25bfbaad
@@ -48,7 +48,10 @@ digest:
       digest: 1966f21371d872d66df711088938453447ec7416b3ee3d116fee3cd704663924
     IdKey:
       mtime: '2026-09-05T08:16:08Z'
-      digest: 16fe011f60dca9f33ac26c7d4c908cdcf4e910a6dd52fa20e6ef4a3e2aff04e8
+      digest: 981e0f391116a6a7d6c34a62af7df728a2d549cbdca9f7c3da51315944c5901d
+    KnowledgeTest:
+      mtime: '2026-09-05T08:36:43Z'
+      digest: 2b15bb93f00ea71f530c4482710ed8f06577d68787da0488586a95fb9c2ca373
     MetaType:
       mtime: '2026-09-05T08:11:11Z'
       digest: 8dce032d90db5813b6457eda5da2ecf05643b4cc41faff06e5054e866a228722
@@ -69,7 +72,7 @@ digest:
       digest: 6432581a9ca8b74efce8dfdabc89261c11c19b4cf274dee7693f4bce7723c4cc
     Status:
       mtime: '2026-09-05T08:15:05Z'
-      digest: 5d2a1df7bb7addff238a168aa40034dcf3c013325f8cf238f231689267753dec
+      digest: bf90ced1313c9870118de6a98b06b50c66cfa314ddc0377a1dd863ba2d8975ae
     StringAttribute:
       mtime: '2026-09-05T08:13:09Z'
       digest: 80c2dcf5a634d69ce6ac0a8cf0cd2ca0bcf029e75d9906684bf04828e2f9f638
@@ -105,13 +108,23 @@ instance for as long as anything holds it, using weak references so unused rows 
 `IdKey` supplies the stable meaningless ID that makes both the caching and the equality
 contract work.
 
-This folder is 2001-2002 code and is documented here as it stands, not as it should be.
-Pass 1 flagged twelve defects in it, several of them structural: the generic INSERT lines
-its values up against the wrong columns, values are concatenated into SQL unquoted, two
-`getType()` implementations look the type up by status ID, and the four value attributes
-report only their own column while promising their parents'. See the `## Bugs Found` table
-in the repository's `HANDOFF.md`. Nothing was fixed - the folder is documentation-complete,
-not correct.
+This folder is 2001-2002 code. Documenting it surfaced nine real defects, since fixed under
+test: the generic INSERT lined its values up against the wrong columns, values reached the
+SQL text unquoted and so unescaped, `updateObject` emitted `WHERE` twice, and two
+`getType()` implementations looked the type up by status ID. `KnowledgeTest` pins all of
+them. It needs no database and no test framework: a `java.lang.reflect.Proxy` stands in for
+the `Connection` and records the SQL, which is the only way these defects are observable
+from outside the classes at all.
+
+```
+javac -d out knowledge/*.java
+java -cp "out;." knowledge.KnowledgeTest
+```
+
+Four further items originally flagged against the four value attributes turned out to be
+false alarms: `Fields` means "non-key data columns" there, and the keys arrive separately
+from `primaryKey().Keys()`. The `## Bugs Found` table in the repository's `HANDOFF.md`
+records the full history, including that correction.
 
 ## Classes
 
@@ -133,6 +146,7 @@ not correct.
 | [IReadyFlag](IReadyFlag.java) | Exposes a read-only dirty/ready state that the implementor derives rather than stores. |
 | [IRelation](IRelation.java) | An IAttribute that also names an object, modelling an N:M relation between two Objekts. |
 | [IdKey](IdKey.java) | A primary key that is a single meaningless integer ID, and the base class for every object identified that way. |
+| [KnowledgeTest](KnowledgeTest.java) | Regression tests for the defects found while documenting this package. |
 | [MetaType](MetaType.java) | The coarsest classification a Type carries, saying whether an object is a plain object, a relation, or a<br/>primitive attribute value. |
 | [MetricAttribute](MetricAttribute.java) | A BasicAttribute holding one double measurement. |
 | [ObjectType](ObjectType.java) | Classifies an object along a single dimension, carrying its MetaType, super-Type and Status. |

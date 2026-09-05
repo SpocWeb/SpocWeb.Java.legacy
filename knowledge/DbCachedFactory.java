@@ -97,8 +97,9 @@ extends DBObjectFactory {
 	public boolean storeInDB;
 	
 	/** Local static List to cache the already loaded Objects
-	  * Need to use a WeakHashMap, since these Objects are usually their own Primary Keys. 
-	  * On Destruction these Objects have to update the DB! */
+	  * Need to use a WeakHashMap, since these Objects are usually their own Primary Keys.
+	  * Collection does NOT write an Object back: a modified Object that is dropped from this
+	  * cache loses its changes unless it was persisted explicitly beforehand. */
 	protected WeakHashMap LoadedObjects = new WeakHashMap();
 	
 	////////////////////
@@ -108,14 +109,12 @@ extends DBObjectFactory {
     /** Creates new DbCachedFactory */
     public DbCachedFactory (Connection conn, PersistAble Factory) throws SQLException { 
 		super(conn, Factory); 
-		try { 
-			ResultSet rs = conn.createStatement().executeQuery(STR_Select_Max + TableName);
-			while (rs.next ())
-				MaxID = rs.getLong(1);
-		// TODO: LOGIC: the failure is swallowed whole, leaving MaxID at 0; a caller cannot tell
-		// a table whose largest ID really is 0 from one whose max query failed, and the
-		// 0-means-insert convention documented on MaxID then applies to every object.
-		} catch(SQLException x) { }
+		//the failure is not swallowed: MaxID defaulting to 0 is indistinguishable from a table
+		//whose largest ID really is 0, and the 0-means-insert convention documented on MaxID
+		//would then silently apply to every object this factory hands out.
+		ResultSet rs = conn.createStatement().executeQuery(STR_Select_Max + TableName);
+		while (rs.next ())
+			MaxID = rs.getLong(1);
 	}
 
 	///////////////

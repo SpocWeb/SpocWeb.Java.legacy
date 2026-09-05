@@ -48,3 +48,4 @@ knowledge/Type.java:Type	class	knowledge/Type.java	code/type_system, code/entity
 knowledge/DBObjectFactory.java:DBObjectFactory	class	knowledge/DBObjectFactory.java	code/orm, code/data_access, code/sql_generation, code/reflection	Persistence, Object-Relational Mapping	persistence	stable	high
 knowledge/DbCachedFactory.java:DbCachedFactory	class	knowledge/DbCachedFactory.java	code/caching, code/cache_lookup, code/orm, code/data_access	Persistence, Identity Caching	persistence	stable	medium
 knowledge	folder	knowledge	code/orm, code/domain_model, code/entity_model, code/reflection	Knowledge Representation, Object-Relational Mapping	persistence	legacy	high
+knowledge/KnowledgeTest.java:KnowledgeTest	class	knowledge/KnowledgeTest.java	code/unit_test, code/test_double, code/sql_generation	Testing, Regression Pinning	test	stable	medium

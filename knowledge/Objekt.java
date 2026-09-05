@@ -128,11 +128,7 @@ implements IObject {
 	/** Returns the Type for this Object */
 	public Type getType() throws SQLException {
 		if (Type == null)
-            // TODO: LOGIC: keyed by StatusID, not TypeID, and routed through FactoryStatus
-            // rather than FactoryType, so this resolves and caches the Status row as this
-            // object's Type whenever the two IDs differ; BasicAttribute.getType has the
-            // identical defect.
-            Type = (Type) DBObjectFactory.FactoryStatus.getObject(new IdKey(StatusID));
+            Type = (Type) DBObjectFactory.FactoryType.getObject(new IdKey(TypeID));
 		return Type; }
 
 	/** Returns the ID of the Status for this Object, without resolving it. */

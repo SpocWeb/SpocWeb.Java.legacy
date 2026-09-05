@@ -29,9 +29,10 @@ import streamIO.AStreamOut;
   * columns by position, not by name, so a mismatch mis-assigns fields silently rather than
   * failing.
   *
-  * <p>Values are written into the SQL text directly rather than through bound parameters;
-  * see the flagged defects at {@link #Condition(IPrimaryKey, String)} and
-  * {@link #insertObject(PersistAble)}.
+  * <p>Values are rendered into the SQL text by {@link #literal(Object)} rather than bound as
+  * parameters, because {@link IPrimaryKey#Condition()} is a String by contract across three
+  * interfaces. That method is therefore the single point at which a value crosses into SQL
+  * syntax, and the only place to change if this is ever reworked onto prepared statements.
   *
   * Title: DBObjectFactory.java<p>
   * Description:
@@ -73,7 +74,7 @@ import streamIO.AStreamOut;
   * <!-- docstate
   * pass: 2
   * mtime: 2006-03-11T02:04:43Z
-  * digest: 1c6bc609d8ecc848acc12f660f2491e9827acda816c4619787b280f66bb9b5da
+  * digest: c6778f9add1714047042fa2d49d57af51b65ef265f604e6604795322be6a2be4
   * stale: false
   * -->
   */
@@ -236,20 +237,37 @@ extends Object {
 	 *   This generic Implementation can be overridden by faster hardcoded ones.
 	 * @throws IllegalAccessError when a key field cannot be read reflectively
 	 */
-	// TODO: SECURITY: the key value is concatenated into the SQL text with no quoting and no
-	// escaping, so any String or Date key whose value contains a quote breaks the statement
-	// and any attacker-controlled key value injects SQL; the same holds for insertObject and
-	// updateObject. Bound parameters are the fix, not escaping.
 	public static String Condition (IPrimaryKey obj, String Prefix) {
 		StringBuffer ret = new StringBuffer(DBObjectFactory.STR_WHERE_);
 		String[] dBKeyNames = obj.DBKeyNames();
 		Field [] keys = obj.Keys();
 		int i = dBKeyNames.length;
 		while (--i >= 0) try {
-			ret.append("(").append(Prefix).append(dBKeyNames[i]).append("=").append(keys[i].get(obj)).append(") AND ");
+			ret.append("(").append(Prefix).append(dBKeyNames[i]).append("=").append(literal(keys[i].get(obj))).append(") AND ");
 		} catch (IllegalAccessException e) { throw new IllegalAccessError(e.toString()); }
 		ret.setLength(ret.length() - 4); //Cut off the last "AND " Operator
 		return ret.toString (); }
+
+	/**
+	 * Renders a value as an SQL literal: numbers bare, everything else single-quoted with
+	 * embedded quotes doubled.
+	 *
+	 * <p>Every statement this class builds is assembled as text, so this is the single point
+	 * at which a value crosses from Java into SQL syntax. Without it a string containing an
+	 * apostrophe produced invalid SQL, and a hostile one could close the literal and append
+	 * clauses of its own.
+	 *
+	 * <p>Doubling the quote is the SQL standard escape. It is not a substitute for bound
+	 * parameters, which remain the better answer if this class is ever reworked to hand back
+	 * statements rather than strings.
+	 *
+	 * @param value the value to render, may be null
+	 * @return the SQL literal denoting that value, never null
+	 */
+	public static String literal(Object value) {
+		if (value == null) return "NULL";
+		if (value instanceof Number || value instanceof Boolean) return value.toString();
+		return "'" + value.toString().replace("'", "''") + "'"; }
 
 	/** Signature of the key Constructor as Array of Parameter Types
 	  * suitable for calling the Constructor dynamically.  */
@@ -380,17 +398,15 @@ extends Object {
 	 * @throws SQLException when the statement fails
 	 * @throws IllegalAccessError when a field cannot be read reflectively
 	 */
-	// TODO: LOGIC: the column list built in the constructor is keys-then-fields in ascending
-	// order, but the value list below appends fields first and then keys, each descending, so
-	// values line up with the wrong columns for every table with more than one column; only a
-	// table whose key and field lists are symmetric would survive this.
 	public boolean insertObject(PersistAble obj) throws SQLException {
 //		IPrimaryKey Key = obj.primaryKey();
 		StringBuffer SB = new StringBuffer(strInsert);
 		int i;
+		//the column list is the keys first and then the fields, each in array order, so the
+		//values have to be appended in that same order or they land in the wrong columns.
 		try { //should never happen!
-			i = Fields.length; while (--i >= 0) SB.append(Fields[i].get(obj)).append(",");
-			i = Keys  .length; while (--i >= 0) SB.append(Keys  [i].get(obj)).append(","); //
+			i = -1; while (++i < Keys  .length) SB.append(literal(Keys  [i].get(obj))).append(",");
+			i = -1; while (++i < Fields.length) SB.append(literal(Fields[i].get(obj))).append(",");
 		} catch (IllegalAccessException x) { throw new IllegalAccessError(x.toString()); }
 		SB.setCharAt(SB.length()-1, ')');
 		return (1 == Conn.createStatement().executeUpdate(SB.toString())); } //create a new Statement for each Query!
@@ -403,10 +419,10 @@ extends Object {
 		StringBuffer SB = new StringBuffer(strUpdate);
 		int i = Fields.length;
 		while (--i >= 0) try { //for all Fields... IllegalAccessException should never happen!
-			SB.append(DBFieldNames[i]).append("=").append(Fields[i].get(obj)).append(","); //rs.getObject(DBFieldNames[i]));
+			SB.append(DBFieldNames[i]).append("=").append(literal(Fields[i].get(obj))).append(","); //rs.getObject(DBFieldNames[i]));
 		} catch (IllegalAccessException x) { throw new IllegalAccessError(x.toString()); }
 		SB.setCharAt(SB.length ()-1, ' ');
-		SB.append(STR_WHERE_).append(obj.primaryKey().Condition());
+		SB.append(obj.primaryKey().Condition()); //Condition() already opens with WHERE
 		return (1 == Conn.createStatement().executeUpdate(SB.toString())); } //create a new Statement for each Query!
 
 	/** Retrieve this Object from the DB.

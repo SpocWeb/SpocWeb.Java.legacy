@@ -63,14 +63,11 @@ public class CachedValue extends DirtyFlag {
 	throws IllegalArgumentException {
 		if (dirty == dirty_) { // isDirty()) {
 			return; }
-		// TODO: LOGIC: the null test is inverted - calculator.run() is only reached when
-		// calculator is null, so this throws NullPointerException whenever no calculator is
-		// set, and never invokes one that is set; the branches belong the other way round.
-		if (calculator == null) {
+		if (calculator != null) {
 			calculator.run(); //call a Callback to set the Value
 		} else {
-			throw new IllegalArgumentException("Value is " + (dirty? "already set!":"not set yet!")); 
-		}			
+			throw new IllegalArgumentException("Value is " + (dirty? "already set!":"not set yet!"));
+		}
 	}
 		
 }

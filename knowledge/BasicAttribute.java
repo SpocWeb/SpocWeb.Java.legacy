@@ -96,10 +96,7 @@ implements IObject, IPrimaryKey, PersistAble {
 	/** Returns the Type for this Object */
 	public Type getType() throws SQLException {
 		if (Type == null)
-            // TODO: LOGIC: keyed by StatusID, not TypeID, so this resolves and caches the
-            // Status row as this attribute's Type whenever the two IDs differ - which is the
-            // normal case; getStatus() one method above uses the same key correctly.
-            Type = (Type) DBObjectFactory.FactoryStatus.getObject(new IdKey(StatusID));
+            Type = (Type) DBObjectFactory.FactoryType.getObject(new IdKey(TypeID));
 		return Type; }
 	
 	/** Returns the Subject for this Object. */
