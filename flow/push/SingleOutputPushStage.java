@@ -4,12 +4,8 @@ package flow.push;
   * Title: SingleOutputPushStage<p>
   * Description:
   * Purpose:
-  * connects to a single following Stage
-  * Purpose / Responsibilities of this Class
-  *
-  * Design Decisions / Implementation Details:
-  * If similar Classes exist (e.g. Polymorphism),
-  * characterize the specific Differences to compare these.
+  * Base class for a pipeline Stage that holds a reference to a single
+  * following Stage (next1) and forwards Items to it.
   *
   * Known SubClasses: <none>
   *
@@ -20,6 +16,15 @@ package flow.push;
   * Created on	09-12-2002, 12:06 AM<p>
   * @author 	Matthias Heuer
   * @version	1.0
+  * <!-- docstate
+  * pass: 2
+  * mtime: 2026-09-05T10:24:25Z
+  * digest: d5b76c17bf6cb740bdef7df5557eb622873534cef9d9a4f542486f037c99df6f
+  * stale: false
+  * tags: [code/producer_consumer]
+  * concepts: [Dataflow, Pipeline]
+  * facets: {layer: domain, status: stable, complexity: low}
+  * -->
   */
 public class SingleOutputPushStage {
 
@@ -34,7 +39,8 @@ public class SingleOutputPushStage {
 /// #region : Accessor Methods (getXXX/isXXX/setXXX)
 ////////////////////////////////////////////////////////////////////////////////
 
-	/** @return the next Stage:   */
+	/** Returns the single following Stage.
+	  * @return the next Stage:   */
 	public IPushStage getNext1() { return next1; }
 
 	/** sets the next Stage: 	 */

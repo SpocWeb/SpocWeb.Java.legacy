@@ -6,11 +6,9 @@ import tester.ITester;
   * Title: Screener<p>
   * Description:
   * Purpose:
-  * Joins two Streams by waiting for an Input from both Channels. 
-  *
-  * Design Decisions / Implementation Details:
-  * If similar Classes exist (e.g. Polymorphism),
-  * characterize the specific Differences to compare these.
+  * Routes each Object to one of two following Stages, depending on the
+  * Result of an ITester Predicate. Functionally identical to Alternator,
+  * which the same ITester-based routing Logic duplicates.
   *
   * Known SubClasses: <none>
   *
@@ -21,6 +19,15 @@ import tester.ITester;
   * Created on	09-11-2002, 11:53 PM<p>
   * @author 	Matthias Heuer
   * @version	1.0
+  * <!-- docstate
+  * pass: 2
+  * mtime: 2026-09-05T10:24:21Z
+  * digest: a34f1f6078e4da1c357850394a54c27fb64312d3cb34640646fc0f2190d66470
+  * stale: false
+  * tags: [code/adapter_pattern]
+  * concepts: [Dataflow, Pipeline]
+  * facets: {layer: domain, status: stable, complexity: low}
+  * -->
   */
 public class Screener
 extends DualOutputPushStage
@@ -50,6 +57,9 @@ implements IPushStage {
 	/// #region : Interface DualInputPushStage: Implementation
 	////////////////////////////////////////////////////////////////////////////////
 	
+	/** Routes A to next1 if the predicate accepts it, otherwise to next2.
+	  * @return this
+	  */
 	public IPushStage putA(final Object A) {
 		if (predicate.test(A)) {
 			next1.putA(A);

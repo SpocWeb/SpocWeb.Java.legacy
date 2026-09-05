@@ -9,10 +9,6 @@ package flow.push;
   * matches the one from the first streamIO.
   * null Objects in the streamIO are ignored, because they are used as Flags.
   *
-  * Design Decisions / Implementation Details:
-  * If similar Classes exist (e.g. Polymorphism),
-  * characterize the specific Differences to compare these.
-  *
   * Known SubClasses: <none>
   *
   * Known Uses: <none>
@@ -22,6 +18,15 @@ package flow.push;
   * Created on	09-11-2002, 11:53 PM<p>
   * @author 	Matthias Heuer
   * @version	1.0
+  * <!-- docstate
+  * pass: 2
+  * mtime: 2026-09-05T10:24:12Z
+  * digest: 98bb6c7baedcfa0ef16f1c514b5dd8cb85bd0c7a73a175f7b6b85c5b4f80648f
+  * stale: false
+  * tags: [code/producer_consumer]
+  * concepts: [Dataflow, Pipeline]
+  * facets: {layer: domain, status: stable, complexity: medium}
+  * -->
   */
 public abstract class Joiner
 extends SingleOutputPushStage

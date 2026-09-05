@@ -27,6 +27,15 @@ import graphs.ICopy;
   * @author 	Matthias Heuer
   * @version	1.0
   * @deprecated
+  * <!-- docstate
+  * pass: 2
+  * mtime: 2026-09-05T10:23:51Z
+  * digest: 5b7bfbf0b6dc3be0da21e2d9d149ef47bb0d0ca4baf297f5ee924fa0b4cd6a6f
+  * stale: false
+  * tags: [code/adapter_pattern]
+  * concepts: [Dataflow, Pipeline]
+  * facets: {layer: domain, status: legacy, complexity: low}
+  * -->
   */
 public class Cloner
 extends SingleOutputPushStage
@@ -44,6 +53,9 @@ implements IPushStage {
 /// #region : public Methods, then private Methods
 ////////////////////////////////////////////////////////////////////////////////
 
+/** Copies A via ICopy.Copy() and forwards the copy to next1.
+  * @return this
+  */
 public IPushStage putA(final Object A) {
 	next1.putA(((ICopy)A).Copy());
 	return this; }

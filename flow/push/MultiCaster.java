@@ -3,17 +3,13 @@ package flow.push;
 import graphs.ICopy;
 
 /**
-  * Title: Multicaster<p>
+  * Title: MultiCaster<p>
   * Description:
   * Purpose:
   * Multicasts an Object and its Copy to both Successors concurrently 
   * by creating a new Thread.
   * Multicasting to more than two Channels is possible 
   * by concatenating several MultiCasters.
-  *
-  * Design Decisions / Implementation Details:
-  * If similar Classes exist (e.g. Polymorphism),
-  * characterize the specific Differences to compare these.
   *
   * Known SubClasses: <none>
   *
@@ -24,6 +20,15 @@ import graphs.ICopy;
   * Created on	09-11-2002, 11:53 PM<p>
   * @author 	Matthias Heuer
   * @version	1.0
+  * <!-- docstate
+  * pass: 2
+  * mtime: 2026-09-05T10:24:17Z
+  * digest: f9ee69d0abe929b2173cffe4402baf1401768b48ed2bc3d312aed87e3d14d9c1
+  * stale: false
+  * tags: [code/multicast]
+  * concepts: [Dataflow, Pipeline]
+  * facets: {layer: domain, status: broken, complexity: medium}
+  * -->
   */
 public class MultiCaster
 extends DualOutputPushStage
@@ -61,6 +66,9 @@ implements IPushStage {
 	  */
 	public IPushStage putA(final Object A) {
 		final Object B = (doClone ? ((ICopy)A).Copy() : A); //clone();
+		// TODO: LOGIC: unbounded Thread creation, one new Thread per pushed Item with no pooling or
+		// throttling; under sustained high-throughput input this can exhaust OS thread resources
+		// and throw an OutOfMemoryError ("unable to create native thread").
 		new Thread(new Runnable() {
 			public void run() { next2.putA(B); } //if you want to clone, put a Cloner in between!
 		}).start();

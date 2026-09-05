@@ -185,3 +185,19 @@ streamIO/diffPatch/DifferObject.java:DifferObject	class	streamIO/diffPatch/Diffe
 streamIO/diffPatch/VersionException.java:VersionException	class	streamIO/diffPatch/VersionException.java	code/version_control	Versioning	domain	stable	low
 streamIO/diffPatch/VersionTree.java:VersionTree	class	streamIO/diffPatch/VersionTree.java	code/version_tree, code/version_control	Versioning, Branching	domain	broken	high
 streamIO/diffPatch/VersionedObjects.java:VersionedObjects	class	streamIO/diffPatch/VersionedObjects.java	code/version_tree, code/version_control	Versioning, Merging	domain	legacy	high
+flow/ScalarFlowConnection.java:ScalarFlowConnection	class	flow/ScalarFlowConnection.java	code/scalar_operation	Dataflow	domain	stable	low
+flow	folder	flow	code/scalar_operation	Dataflow	domain	stable	low
+flow/push/Alternator.java:Alternator	class	flow/push/Alternator.java	code/adapter_pattern	Dataflow, Pipeline	domain	stable	low
+flow/push	folder	flow/push	code/multicast, code/producer_consumer, code/adapter_pattern	Dataflow, Pipeline	domain	stable	medium
+flow/push/Cloner.java:Cloner	class	flow/push/Cloner.java	code/adapter_pattern	Dataflow, Pipeline	domain	legacy	low
+flow/push/Collector.java:Collector	class	flow/push/Collector.java	code/producer_consumer	Dataflow, Pipeline	domain	stable	low
+flow/push/DevNull.java:DevNull	class	flow/push/DevNull.java	code/null_object	Dataflow, Pipeline	domain	stable	low
+flow/push/DualInputAdapter.java:DualInputAdapter	class	flow/push/DualInputAdapter.java	code/adapter_pattern	Dataflow, Pipeline	domain	stable	low
+flow/push/DualOutputPushStage.java:DualOutputPushStage	class	flow/push/DualOutputPushStage.java	code/producer_consumer	Dataflow, Pipeline	domain	stable	low
+flow/push/IDualInputPushStage.java:IDualInputPushStage	class	flow/push/IDualInputPushStage.java	code/producer_consumer	Dataflow, Pipeline	domain	stable	low
+flow/push/IPushSource.java:IPushSource	class	flow/push/IPushSource.java	code/producer_consumer	Dataflow, Pipeline	domain	stable	low
+flow/push/IPushStage.java:IPushStage	class	flow/push/IPushStage.java	code/producer_consumer	Dataflow, Pipeline	domain	stable	low
+flow/push/Joiner.java:Joiner	class	flow/push/Joiner.java	code/producer_consumer	Dataflow, Pipeline	domain	stable	medium
+flow/push/MultiCaster.java:MultiCaster	class	flow/push/MultiCaster.java	code/multicast	Dataflow, Pipeline	domain	broken	medium
+flow/push/Screener.java:Screener	class	flow/push/Screener.java	code/adapter_pattern	Dataflow, Pipeline	domain	stable	low
+flow/push/SingleOutputPushStage.java:SingleOutputPushStage	class	flow/push/SingleOutputPushStage.java	code/producer_consumer	Dataflow, Pipeline	domain	stable	low

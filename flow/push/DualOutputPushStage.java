@@ -4,12 +4,10 @@ package flow.push;
   * Title: DualOutputPushStage<p>
   * Description:
   * Purpose:
-  * connects to two following Stages
-  * Purpose / Responsibilities of this Class
-  *
-  * Design Decisions / Implementation Details:
-  * If similar Classes exist (e.g. Polymorphism),
-  * characterize the specific Differences to compare these.
+  * Base class for a Stage that fans out to two following Stages (next1, next2).
+  * Extends SingleOutputPushStage with a second output reference; subclasses
+  * (Alternator, Screener, MultiCaster) decide how Items are distributed
+  * between the two.
   *
   * Known SubClasses: <none>
   *
@@ -20,6 +18,15 @@ package flow.push;
   * Created on	09-12-2002, 12:06 AM<p>
   * @author 	Matthias Heuer
   * @version	1.0
+  * <!-- docstate
+  * pass: 2
+  * mtime: 2026-09-05T10:24:08Z
+  * digest: aeb828c3fa325ffad855910125a0e64f737ff759a06359b14338bc3de42c71db
+  * stale: false
+  * tags: [code/producer_consumer]
+  * concepts: [Dataflow, Pipeline]
+  * facets: {layer: domain, status: stable, complexity: low}
+  * -->
   */
 public class DualOutputPushStage
 extends SingleOutputPushStage {
@@ -35,7 +42,8 @@ extends SingleOutputPushStage {
 	/// #region : Accessor Methods (getXXX/isXXX/setXXX)
 	////////////////////////////////////////////////////////////////////////////////
 	
-	/** @return the next Stage:   */
+	/** Returns the second following Stage.
+	  * @return the next Stage:   */
 	public IPushStage getNext2() { return next2; }
 
 	/** sets the next Stage: 	 */

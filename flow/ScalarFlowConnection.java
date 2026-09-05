@@ -33,10 +33,6 @@ import tester.IDoubleMetric;
   * To avoid modelling and thus hardcoding the exact Relations,
   * a Broker Pattern can be used.
   *
-  * Design Decisions / Implementation Details:
-  * If similar Classes exist (e.g. Polymorphism),
-  * characterize the specific Differences to compare these.
-  *
   * Known SubClasses: <none>
   *
   * Known Uses: <none>
@@ -46,6 +42,15 @@ import tester.IDoubleMetric;
   * Created on	10-26-2002, 11:34 PM<p>
   * @author 	Matthias Heuer
   * @version	1.0
+  * <!-- docstate
+  * pass: 2
+  * mtime: 2026-09-05T10:23:44Z
+  * digest: 2df7c06106969ce72eeb9b9bc07e56945b35d2cc9a8a9e6c4ca31c5bf7293a06
+  * stale: false
+  * tags: [code/scalar_operation]
+  * concepts: [Dataflow]
+  * facets: {layer: domain, status: stable, complexity: low}
+  * -->
   */
 public class ScalarFlowConnection
 extends KeyValuePair
@@ -80,7 +85,8 @@ final static public void update() {
 /// #region : Accessor Methods (getXXX/isXXX/setXXX)
 ////////////////////////////////////////////////////////////////////////////////
 
-	/** @return The Function that determines the Flow between the connected Nodes:	 */
+	/** Returns the metric used to compute the flow rate between the two connected Nodes.
+	  * @return The Function that determines the Flow between the connected Nodes:	 */
 	public IDoubleMetric getFlow() {
 		return flow; }
 

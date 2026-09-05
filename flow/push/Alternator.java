@@ -11,10 +11,8 @@ import tester.ITester;
   * depending on the Result of the ITester Routine.
   *
   * Design Decisions / Implementation Details:
-  * If similar Classes exist (e.g. Polymorphism),
-  * characterize the specific Differences to compare these.
-  *
-  * @see the Screener uses the same Logic, only employing a Function.
+  * Screener currently implements the identical Predicate-routing Logic
+  * against the same ITester Interface; the two Classes are functional Duplicates.
   *
   * Known SubClasses: <none>
   *
@@ -25,6 +23,15 @@ import tester.ITester;
   * Created on	09-11-2002, 11:53 PM<p>
   * @author 	Matthias Heuer
   * @version	1.0
+  * <!-- docstate
+  * pass: 2
+  * mtime: 2026-09-05T10:23:50Z
+  * digest: a34f1f6078e4da1c357850394a54c27fb64312d3cb34640646fc0f2190d66470
+  * stale: false
+  * tags: [code/adapter_pattern]
+  * concepts: [Dataflow, Pipeline]
+  * facets: {layer: domain, status: stable, complexity: low}
+  * -->
   */
 public class Alternator
 extends DualOutputPushStage
@@ -54,6 +61,9 @@ implements IPushStage {
 /// #region : Interface DualInputPushStage: Implementation
 ////////////////////////////////////////////////////////////////////////////////
 
+/** Routes A to next1 if the predicate accepts it, otherwise to next2.
+  * @return this
+  */
 public IPushStage putA(final Object A) {
 	if (predicate.test(A)) {
 		next1.putA(A);

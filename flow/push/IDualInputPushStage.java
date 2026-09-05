@@ -1,7 +1,7 @@
 package flow.push;
 
 /**
-  * Title: IDualPushStage<p>
+  * Title: IDualInputPushStage<p>
   * Description:
   * Defines the Interface for a Processing Stage with two Inputs.
   * To differentiate the Input you can either use a Parameter
@@ -20,6 +20,15 @@ package flow.push;
   * Created on	09-11-2002, 09:58 PM<p>
   * @author 	Matthias Heuer
   * @version	1.0
+  * <!-- docstate
+  * pass: 2
+  * mtime: 2026-09-05T10:12:24Z
+  * digest: b0cf5c22f8b1dae5972614250dadf83acd8f76f5454b8cda3295f6bc58a9bdc5
+  * stale: false
+  * tags: [code/producer_consumer]
+  * concepts: [Dataflow, Pipeline]
+  * facets: {layer: domain, status: stable, complexity: low}
+  * -->
   */
 public interface IDualInputPushStage
 extends IPushStage {

@@ -94,7 +94,7 @@ concurrently against the same file):
 | `knowledge` | 27 | 3363 | 27 | done | main |
 | `stringOp` | 16 | 4579 | 0 | unclaimed | - |
 | `aspect` | 15 | 2493 | 0 | claimed | agent-aspect |
-| `flow` | 14 | 1022 | 0 | claimed | agent-flow |
+| `flow` | 14 | 1022 | 14 | done | agent-flow |
 | `reflect` | 12 | 2492 | 12 | done | agent-reflect |
 | `streamIO/diffPatch` | 11 | 2895 | 11 | done | agent-diffPatch |
 | `sound` | 10 | 1030 | 0 | claimed | agent-sound |
@@ -231,6 +231,7 @@ same harness against it. A test that has not been seen red proves nothing.
 | streamIO/diffPatch/VersionTree.java | VersionTree | LESS(int[], int[]) | ~107 | Lexicographic comparison only early-returns `true` on `arr1[i] < arr2[i]`, never early-returns `false` when `arr1[i] > arr2[i]` at an earlier, decisive index - e.g. `LESS([5,1],[3,9])` returns `true` even though `[5,1] > [3,9]`. Used in `readField()` to decide which Version a Branch tag points to after deserialization; can silently point a tag at the wrong Version. | Medium-High | open |
 | streamIO/diffPatch/VersionTree.java | VersionTree | writeTo() | ~174 | When more than 10 non-Branch Tags exist, the resize block computes a doubled `tmp` array but never assigns it back to `tags`, and the resize check is off-by-one. Serializing a Tree with more than 10 real Tags throws `ArrayIndexOutOfBoundsException` on the 11th. | High | open |
 | streamIO/diffPatch/VersionTree.java | VersionTree | addVersion(DiffSet) | ~384 | `(currDiff.getBranch() != diff.getBranch())` is duplicated verbatim as both clauses of an `&&`, almost certainly meant to be a `.equals()` check - relies on String reference identity, so after deserialization (fresh Branch-name Strings) a legitimate same-Branch append can be misidentified as a different Branch and throw a spurious `VersionException`. | Medium | open |
+| flow/push/MultiCaster.java | MultiCaster | putA(Object) | ~60-65 | Creates one new unpooled `Thread` per pushed item to deliver to `next2`, with no pooling or throttling. Under sustained high-throughput input this exhausts OS thread resources and can throw `OutOfMemoryError: unable to create native thread`. | Low-Medium | open |
 
 ## Tool defects found and fixed during the pilot
 

@@ -1,15 +1,12 @@
 package flow.push;
 
 /**
-  * Title: DualPutAdapter<p>
+  * Title: DualInputAdapter<p>
   * Description:
   * Purpose:
-  * Adapter to put between any Stage and the second Input of a DualStage
-  * Purpose / Responsibilities of this Class
-  *
-  * Design Decisions / Implementation Details:
-  * If similar Classes exist (e.g. Polymorphism),
-  * characterize the specific Differences to compare these.
+  * Adapts a single-input IPushStage Producer to feed the second (B) Input
+  * of a downstream IDualInputPushStage: every Item it receives via putA
+  * is forwarded as putB on the wrapped Stage.
   *
   * Known SubClasses: <none>
   *
@@ -20,6 +17,15 @@ package flow.push;
   * Created on	09-11-2002, 11:33 PM<p>
   * @author 	Matthias Heuer
   * @version	1.0
+  * <!-- docstate
+  * pass: 2
+  * mtime: 2026-09-05T10:24:05Z
+  * digest: e05615e5dfc5124d9b0e68a768620125dd9a5bcd868d7dede69f438b7598967c
+  * stale: false
+  * tags: [code/adapter_pattern]
+  * concepts: [Dataflow, Pipeline]
+  * facets: {layer: domain, status: stable, complexity: low}
+  * -->
   */
 public class DualInputAdapter
 implements IPushStage {
@@ -43,7 +49,7 @@ implements IPushStage {
 	/// #region : Interface IPushStage: Implementation
 	////////////////////////////////////////////////////////////////////////////////
 	
-	/** adds an Item to this Stage 	 */
+	/** Forwards item to the wrapped Stage's putB, adapting it as the B Input.	 */
 	public IPushStage putA(Object item) { nextStage.putB(item); return this; }
 
 	////////////////////////////////////////////////////////////////////////////////

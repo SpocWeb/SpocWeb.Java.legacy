@@ -4,11 +4,10 @@ package flow.push;
   * Title: Collector<p>
   * Description:
   * Purpose:
-  * Joins two Streams by waiting for an Input from both Channels
-  *
-  * Design Decisions / Implementation Details:
-  * If similar Classes exist (e.g. Polymorphism),
-  * characterize the specific Differences to compare these.
+  * Funnels two independent input Channels (putA and putB) into a single
+  * output Stream. Unlike Joiner, it does not wait for or pair up Inputs
+  * from both Channels - each Item is forwarded to next1 immediately,
+  * in the order it arrives on either Channel.
   *
   * Known SubClasses: <none>
   *
@@ -19,6 +18,15 @@ package flow.push;
   * Created on	09-11-2002, 11:53 PM<p>
   * @author 	Matthias Heuer
   * @version	1.0
+  * <!-- docstate
+  * pass: 2
+  * mtime: 2026-09-05T10:23:54Z
+  * digest: c7d9be7e3a35f93de9c4ec968c0ae10237fe51cf31ee4fe32b0387db29c5cde9
+  * stale: false
+  * tags: [code/producer_consumer]
+  * concepts: [Dataflow, Pipeline]
+  * facets: {layer: domain, status: stable, complexity: low}
+  * -->
   */
 public class Collector
 extends SingleOutputPushStage
