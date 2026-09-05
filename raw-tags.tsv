@@ -74,3 +74,9 @@ streamIO/fileSystem/SuffixFileNameFilter.java:SuffixFileNameFilter	class	streamI
 streamIO/fileSystem/FileIterator.java:FileIterator	class	streamIO/fileSystem/FileIterator.java	code/file_io, code/iterator_pattern	File System, File I/O	infrastructure	broken	medium
 streamIO/fileSystem/FileBackupIterator.java:FileBackupIterator	class	streamIO/fileSystem/FileBackupIterator.java	code/file_io, code/iterator_pattern, code/file_backup	File System, File I/O	infrastructure	stable	low
 streamIO/fileSystem	folder	streamIO/fileSystem	code/file_filtering, code/file_io, code/iterator_pattern, code/file_backup	File System, File I/O	infrastructure	broken	medium
+streamIO/exception/BaseException.java:BaseException	class	streamIO/exception/BaseException.java	code/custom_exception, code/exception_wrapping	Error Handling	infrastructure	stable	low
+streamIO/exception/ChainedException.java:ChainedException	class	streamIO/exception/ChainedException.java	code/custom_exception, code/exception_wrapping	Error Handling	infrastructure	broken	low
+streamIO/exception/FailureException.java:FailureException	class	streamIO/exception/FailureException.java	code/custom_exception	Error Handling, Testing	infrastructure	stable	low
+streamIO/exception/OperationNotSupported.java:OperationNotSupported	class	streamIO/exception/OperationNotSupported.java	code/custom_exception	Error Handling	infrastructure	stable	low
+streamIO/exception/ReadOnlyException.java:ReadOnlyException	class	streamIO/exception/ReadOnlyException.java	code/custom_exception	Error Handling	infrastructure	stable	low
+streamIO/exception	folder	streamIO/exception	code/custom_exception, code/exception_wrapping	Error Handling	infrastructure	broken	low

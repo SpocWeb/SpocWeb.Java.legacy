@@ -8,10 +8,9 @@ import java.util.Map;
 
 
 /**
-  * Purpose of this Class: 
-  * Keeping Track of the original Exception and it's Origin.
-  * Having a Space to collect the local Variables and Parameters to aid in Debugging! 
-  * 
+  * Keeps Track of an original wrapped Exception and its Origin, with Space to collect
+  * local Variables and Parameters to aid Post Mortem Debugging.
+  *
   * In MS.NET this is done by the command throw; without Parameter issued in a catch Block!
   * It works exactly like @see InvocationTargetException, but unlike
   * @see InvocationTargetException it is a @see RuntimeException and needn't be declared,
@@ -46,13 +45,20 @@ import java.util.Map;
   * @see streamIO.exception.OperationNotSupported
   *
   * @stereotype exception
+  * <!-- docstate
+  * pass: 2
+  * mtime: 2026-09-05T09:27:21Z
+  * digest: 9770483bd989e8e4ec48f076f13965278f6bca37d2df308ddcfe9829fcb06e2f
+  * stale: false
+  * tags: [code/custom_exception, code/exception_wrapping]
+  * concepts: [Error Handling]
+  * facets: {layer: infrastructure, status: stable, complexity: low}
+  * -->
   */
 public class BaseException
 extends RuntimeException {
 	
-	/**
-	 * 
-	 */
+	/** Serialization version identifier. */
 	private static final long serialVersionUID = 1L;
 
 	/**
@@ -60,13 +66,14 @@ extends RuntimeException {
 	 * exception chaining can be enforced easily.
 	 */
 	private Throwable previousThrowable = null;
-	
+
 	/**
 	 * This Variable can contain local Variables by their Names
-	 * to enable Post Mortem Debugging. 
+	 * to enable Post Mortem Debugging.
 	 */
 	private Map localVariables = new HashMap();
-	
+
+	/** Records a local Variable's Value under the given Name for Post Mortem Debugging. */
 	public void addLocalVariable(final String name, final Object value) {
 		localVariables.put(name, value); }
 	
@@ -80,7 +87,6 @@ extends RuntimeException {
 	 * Constructor taking a Throwable and not an Exception to be able to even catch Errors
 	 * although this is not recommended, because it indicates a serious failure.
 	 * The Message is defaulted to the original one.
-	 * Declared 'protected' to enforce the Use of Message that fits the current Semantics.
 	 */
 	public BaseException(final Throwable inThrowable) {
 		this(inThrowable.getMessage(), inThrowable); }

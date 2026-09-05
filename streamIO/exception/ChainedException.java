@@ -11,22 +11,22 @@ import java.io.PrintWriter;
 import java.lang.reflect.InvocationTargetException;
 
 /**
- * Generische Wrapper Klasse für Exceptions
- * 
- * Grund für die Einführung des ExceptionChainers war:
+ * Unchecked Error Class to contain a nested Exception, used to tunnel fatal Errors
+ * (that should never happen) through Method Declarations.
+ *
+ * Generische Wrapper Klasse fï¿½r Exceptions
+ *
+ * Grund fï¿½r die Einfï¿½hrung des ExceptionChainers war:
  * Die Konfiguration oder das Deployment ist so korrupt,
  * dass das System nicht arbeiten kann.
  * Beispiele: Defekter Deploymentdescriptor oder Komponentenkonfiguration
  * NegativBeispiel: 
- * Datenbank nicht verfügbar - dies ist nur eine Resource die zur Zeit nicht verfügbar ist 
- * und sollte über entsprechend konkrete Exceptions behandelt werden. 
- Sofern möglich sollten bestehende Standardexception hierfür genutzt werden (SQLException).
- * --> Rote Lampe auf der Konsole muß leuchten.
+ * Datenbank nicht verfï¿½gbar - dies ist nur eine Resource die zur Zeit nicht verfï¿½gbar ist 
+ * und sollte ï¿½ber entsprechend konkrete Exceptions behandelt werden. 
+ Sofern mï¿½glich sollten bestehende Standardexception hierfï¿½r genutzt werden (SQLException).
+ * --> Rote Lampe auf der Konsole muï¿½ leuchten.
  *
- * Unchecked Error Class to contain a nested Exception. 
- * Used to tunnel fatal Errors (should never happen) through Method Declarations. 
- *
- * The WebLogic 7 Server catches all Throwables and rolls back the Transaction, 
+ * The WebLogic 7 Server catches all Throwables and rolls back the Transaction,
  * so that Messages will be processed over and over again if they trigger an Error! 
  *
  * Purpose of this Class: Keeping Track of the original Exception and it's Origin.
@@ -62,12 +62,19 @@ import java.lang.reflect.InvocationTargetException;
  *
  * @stereotype exception
  * @author  DirkSlootz
+ * <!-- docstate
+ * pass: 2
+ * mtime: 2026-09-05T09:27:54Z
+ * digest: 188c5f35f22b891125d0dcd6d0d271ea516fffc5ec8794919a5e63d4cac07b4e
+ * stale: false
+ * tags: [code/custom_exception, code/exception_wrapping]
+ * concepts: [Error Handling]
+ * facets: {layer: infrastructure, status: broken, complexity: low}
+ * -->
  */
 public class ChainedException extends Exception { //
 
-	/**
-	 * 
-	 */
+	/** Serialization version identifier. */
 	private static final long serialVersionUID = 1L;
 	/**
 	 * By giving <code>BaseException</code> a reference to a Throwable object,
@@ -122,7 +129,11 @@ public class ChainedException extends Exception { //
 		printStackTrace(System.err);
 	}
 
-	/** Prints the Stack Trace of this and the Parent Exception 
+	// TODO: LOGIC: the PrintWriter wrapping inPrintStream is never flushed or closed, so
+	// the printed text can remain buffered and never actually reach the stream. Contrast
+	// the sibling BaseException.printStackTrace(PrintStream), whose otherwise identical
+	// method explicitly closes its PrintWriter with the comment "important to flush!".
+	/** Prints the Stack Trace of this and the Parent Exception
 	 * @param inPrintStream stream for printing stacktrace
 	 */
 	public void printStackTrace(PrintStream inPrintStream) {

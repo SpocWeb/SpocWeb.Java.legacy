@@ -28,18 +28,25 @@ import streamIO.object.enumer.Enumerator;
   * Making this Exception a RuntimeException makes the Declaration obsolete.
   * It should be used to encapsulate caught
   * @see ModificationException thrown by Objects that mustn't be modified in structure.
+  * <!-- docstate
+  * pass: 2
+  * mtime: 2026-09-05T09:28:19Z
+  * digest: d5057f85bd7a9d5285bad22f19b4cdee356ca39db4893f2b86e7a97bda7ca9d9
+  * stale: false
+  * tags: [code/custom_exception]
+  * concepts: [Error Handling]
+  * facets: {layer: infrastructure, status: stable, complexity: low}
+  * -->
   */
 public class ReadOnlyException
 extends BaseException {
 
-	/**
-	 * 
-	 */
+	/** Serialization version identifier. */
 	private static final long serialVersionUID = 1L;
 	/** Reference to the read only Object that caused the Exception */
 	protected Object mThis;
 
-	/** Empty Constructor, defaulting the Error Message!  */
+	/** Empty Constructor; the Error Message stays unset.  */
 	public ReadOnlyException() {}
 
 	/** Constructor taking a Message   */

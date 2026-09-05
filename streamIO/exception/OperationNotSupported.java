@@ -2,8 +2,7 @@ package streamIO.exception;
 
 
 /**
-  * Title:        OperationNotSupported<p>
-  * Description:  Exception thrown in Methods that may or may not be implemented.
+  * Exception thrown in Methods that may or may not be implemented.
   * 				 This is to reduce the Number of Interfaces by providing
   * 				 optional Functionality.
   * 				 The Use of Exceptions is very good here to point Developers
@@ -24,13 +23,20 @@ package streamIO.exception;
   * which can be wrapped with
   * @see java.security.InvalidParameterException
   * @see java.security.
+  * <!-- docstate
+  * pass: 2
+  * mtime: 2026-09-05T09:28:14Z
+  * digest: 584dc44d30f083f784c353ffba46b944a0d0f560d5515ef550f35058ddef44b8
+  * stale: false
+  * tags: [code/custom_exception]
+  * concepts: [Error Handling]
+  * facets: {layer: infrastructure, status: stable, complexity: low}
+  * -->
   */
 public class OperationNotSupported
 extends BaseException {
 
-	/**
-	 * 
-	 */
+	/** Serialization version identifier. */
 	private static final long serialVersionUID = 1L;
 
 	/**Empty Constructor, no Error Message	 */

@@ -62,7 +62,7 @@ cost more tokens than one and burn the 5-hour window N times faster.
 | `analysis` | 6 | 319 | 0 | unclaimed | - |
 | `streamIO/adapter` | 6 | 435 | 0 | unclaimed | - |
 | `streamIO/vector` | 6 | 947 | 0 | unclaimed | - |
-| `streamIO/exception` | 5 | 536 | 0 | unclaimed | - |
+| `streamIO/exception` | 5 | 536 | 5 | done | main |
 | `streamIO/fileSystem` | 4 | 288 | 4 | done | main |
 | `streamIO/testing` | 3 | 433 | 3 | done | main |
 | `swing` | 3 | 679 | 3 | done | main |
@@ -176,6 +176,7 @@ same harness against it. A test that has not been seen red proves nothing.
 | streamIO/testing/ATestCase.java | ATestCase | test(Object, Method, IIStreamOut, IIStreamOut, IIStreamOut) | 214 | Both branches of the `InvocationTargetException` handler log/rethrow the wrapping `x` instead of `inner` (`x.getTargetException()`), the exception the test method actually threw. Every reflectively-run test failure is reported with the reflection wrapper's stack trace instead of the real cause. | Medium | open |
 | streamIO/fileSystem/FileIterator.java | FileIterator | isValid() | 76 | Returns `!available`, inverted relative to its own `available` field and to the sibling `FileBackupIterator.isValid()` (which returns `available` directly): reports "valid" only once exhausted. | Medium | open |
 | streamIO/fileSystem/FileIterator.java | FileIterator | currItem() | 100 | Always returns `null`: `nextItem()` never assigns the `currItem` field before returning its result, unlike the sibling `FileBackupIterator.nextItem()` which does `return filter = new FileOutputStream(...)`. | Low | open |
+| streamIO/exception/ChainedException.java | ChainedException | printStackTrace(PrintStream) | 136 | The `PrintWriter` wrapping the given `PrintStream` is never flushed or closed, so the printed trace can remain buffered and never reach the stream. The sibling `BaseException.printStackTrace(PrintStream)` does the identical job but explicitly calls `pw.close()`, commented "important to flush!". | Low | open |
 
 ## Tool defects found and fixed during the pilot
 
