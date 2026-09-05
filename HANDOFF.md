@@ -87,12 +87,12 @@ concurrently against the same file):
 | `streamIO/real` | 51 | 6801 | 0 | unclaimed | - |
 | `tester` | 49 | 3327 | 0 | unclaimed | - |
 | `technology` | 41 | 9400 | 0 | unclaimed | - |
-| `synch` | 32 | 4243 | 0 | unclaimed | - |
-| `graphs` | 31 | 11258 | 0 | unclaimed | - |
-| `asynch` | 28 | 3052 | 0 | unclaimed | - |
-| `streamIO/(root)` | 28 | 8003 | 0 | unclaimed | - |
+| `synch` | 32 | 4243 | 0 | claimed | agent-synch |
+| `graphs` | 31 | 11258 | 0 | claimed | agent-graphs |
+| `asynch` | 28 | 3052 | 0 | claimed | agent-asynch |
+| `streamIO/(root)` | 28 | 8003 | 0 | claimed | agent-streamIO-root |
 | `knowledge` | 27 | 3363 | 27 | done | main |
-| `stringOp` | 16 | 4579 | 0 | unclaimed | - |
+| `stringOp` | 16 | 4579 | 0 | claimed | agent-stringOp |
 | `aspect` | 15 | 2493 | 15 | done | agent-aspect |
 | `flow` | 14 | 1022 | 14 | done | agent-flow |
 | `reflect` | 12 | 2492 | 12 | done | agent-reflect |
