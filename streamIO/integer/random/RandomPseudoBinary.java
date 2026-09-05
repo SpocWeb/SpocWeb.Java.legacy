@@ -32,6 +32,15 @@ import function.byref.ByRefLong;
  * 
  * @author heuerm
  *
+ * <!-- docstate
+ * pass: 2
+ * mtime: 2026-09-05T21:56:16Z
+ * digest: ba8ca2ac6d7ed571f14dcd72c474278234796a354d501a8550ba56bb5007264b
+ * stale: false
+ * tags: [code/random_number_generation, code/quasi_random_sequence]
+ * concepts: [Pseudo-Random and Quasi-Random Integer Generator Family with Mark/Restore Replay]
+ * facets: {layer: utility, status: legacy, complexity: medium}
+ * -->
  */
 public class RandomPseudoBinary 
 extends ARandomInt 
@@ -44,11 +53,13 @@ implements IIntFunction {
 	 * Required, since the returned Value is a Transformation.	 */
 	protected int value;	//
 	
-	/** @return the Order in which Elements are returned by the Iterators
+	/** Reports this Generator's fixed sub-random Order.
+	 * @return the Order in which Elements are returned by the Iterators
 	  * when they are added using addItem() and removed using nextItem().	 */
 	public byte getOrder() { return IStreamIn.ORDER_RANDOM_SUB; }
 
-	/** @see streamIO.integer.IStreamIn_Int#reSet()	 */
+	/** Resets this generator's Counter, so the next Value is 0.
+	 * @see streamIO.integer.IStreamIn_Int#reSet()	 */
 	public IReSetAble reSet() { value = -1; return this; }
 	
 	/**Changed Semantics! instead of returning to the indicated Position, 
@@ -71,16 +82,16 @@ implements IIntFunction {
 	
 	///////////////////////////////////////////////////////////////////////////
 	
-	/**
+	/** Creates a Generator with the given Octave, i.e. Number of Bits.
 	 * @param maxValue_ the maximum Value of this Generator is given by 2_maxOctav
 	 */
 	public RandomPseudoBinary(final int _maxOctave) {
 		super(1 << _maxOctave);
 		octave  =  _maxOctave ;
-		//this.parent = null; 
+		//this.parent = null;
 	}
-	
-	/**
+
+	/** Creates a Generator sharing the same Octave as an existing one.
 	 * @param maxValue_ the maximum Value of this Generator is given by 2_maxOctav
 	 */
 	public RandomPseudoBinary(final RandomPseudoBinary _parent) {
@@ -99,10 +110,12 @@ implements IIntFunction {
 	/// IIntFunction allows to directly return the random Values by Index. 
 	///////////////////////////////////////////////////////////////////////////
 	
-	/** @see function.IIntFunction#Map(long)	 */
+	/** Bit-reverses {@code _value} within this Generator's Octave.
+	 * @see function.IIntFunction#Map(long)	 */
 	public long Map(final long _value) { return ByRefLong.REVERT(_value, octave); }
 
-	/** @see function.IIntFunction#Map(int)	 */
+	/** Bit-reverses {@code _value} within this Generator's Octave.
+	 * @see function.IIntFunction#Map(int)	 */
 	public int Map(final int _value) { return ByRefInt.REVERT(_value, octave); }
 	
 	///////////////////////////////////////////////////////////////////////////

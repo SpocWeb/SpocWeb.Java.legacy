@@ -2,6 +2,19 @@ package streamIO.integer.random;
 
 import streamIO.object.IStreamIn;
 
+/**
+ * Abstract base for a pseudo-random integer generator, adding float/double derivation and
+ * time-based seeding on top of {@link AStreamIn_BoundInt}'s bounded-integer contract.
+ * <!-- docstate
+ * pass: 2
+ * mtime: 2026-09-05T21:49:48Z
+ * digest: ea5ffb5edfceb342e0114d2e745bfd25503b263c4db16269086361ce892d6845
+ * stale: false
+ * tags: [code/random_number_generation, code/quasi_random_sequence]
+ * concepts: [Pseudo-Random and Quasi-Random Integer Generator Family with Mark/Restore Replay]
+ * facets: {layer: utility, status: legacy, complexity: medium}
+ * -->
+ */
 public abstract class ARandomInt
 extends AStreamIn_BoundInt {
 	
@@ -50,11 +63,13 @@ extends AStreamIn_BoundInt {
 	/**Random single Precision Number	 */
 	public float nextFloat() { return ((float) nextLong())/maxValue; }
 	
-	/** @return the Order in which Elements are returned by the Iterators
+	/** Reports this stream's elements as pseudo-randomly ordered.
+	  * @return the Order in which Elements are returned by the Iterators
 	  * when they are added using addItem() and removed using nextItem().	 */
 	public byte getOrder() { return IStreamIn.ORDER_RANDOM_PSEUDO; }
-	
-	/** @see streamIO.integer.AStreamIn_Bound#getMaxMarkSize()	 */
+
+	/** Returns the largest mark size, since any internal random value can be restored.
+	  * @see streamIO.integer.AStreamIn_Bound#getMaxMarkSize()	 */
 	public long getMaxMarkSize() { return Long.MAX_VALUE; }
 	
 }

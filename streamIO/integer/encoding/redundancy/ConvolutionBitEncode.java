@@ -9,15 +9,9 @@ package streamIO.integer.encoding.redundancy;
 import streamIO.Log;
 
 /**
- * Title: <p>
- * Description:
- * Purpose:
- *
- * Purpose / Responsibilities of this Class
- *
- * Design Decisions / Implementation Details:
- * If similar Classes exist (e.g. Polymorphism),
- * characterize the specific Differences to compare these.
+ * A rate-1/2 convolutional encoder and its simulation harness, testing bit-error rates
+ * over a simulated additive-white-Gaussian-noise (AWGN) channel at several constraint
+ * lengths and Es/No ratios.
  *
  * Known SubClasses: <none>
  *
@@ -28,17 +22,25 @@ import streamIO.Log;
  * Created on	10-26-2002, 12:47 PM<p>
  * @author heuerm
  * @version	1.0
+ * <!-- docstate
+ * pass: 2
+ * mtime: 2026-09-05T21:40:10Z
+ * digest: d5f03a6f69ffaa06b9f40867aa52e118c764369372e4a9cd6dd90c80f3dd6989
+ * stale: false
+ * tags: [code/error_correction, code/convolutional_encoding]
+ * concepts: [Forward Error Correction Codecs - Repetition and Convolutional Encoding]
+ * facets: {layer: utility, status: legacy, complexity: medium}
+ * -->
  */
 public class ConvolutionBitEncode {
 
-	/**
-	 * 
-	 */
+	/** Creates an instance; this class is otherwise used only through its static methods. */
 	public ConvolutionBitEncode() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
 
+	/** Runs no simulation by itself; use {@link #testsdvd(int)} directly. */
 	public static void main(String[] args) {
 	}
 	
@@ -223,7 +225,22 @@ public class ConvolutionBitEncode {
 
 	}
 
-	public static void cnv_encd(int K, //[2][K], 
+	// TODO: LOGIC: `g[K][0][j]`/`g[K][1][j]` below index the polynomial table directly by
+	// the constraint length K, but per the comment on `g` above ("polynomials g[K] for K =
+	// 2*i+3"), the table is meant to be indexed by i = (K-3)/2 (its 4 entries correspond to
+	// K = 3, 5, 7, 9). Calling with the real constraint length (e.g. K=7) reads g[7], out of
+	// bounds for a 4-entry array. Currently unreachable: nothing in this file calls
+	// cnv_encd() with a real K (testsdvd(), the only caller, is itself never invoked).
+	/**
+	 * Rate-1/2 convolutional-encodes {@code in_array} into {@code out_array} using the
+	 * polynomial pair selected for the given constraint length.
+	 *
+	 * @param K constraint length of the encoder's shift register
+	 * @param input_len number of input bits in {@code in_array}
+	 * @param in_array the unencoded 0/1 input bits
+	 * @param out_array receives 2 output symbols per input bit, plus {@code K-1} flush bits
+	 */
+	public static void cnv_encd(int K, //[2][K],
 			int input_len, int[] in_array, int[] out_array) {
 
 		int m;					 /* K - 1 */

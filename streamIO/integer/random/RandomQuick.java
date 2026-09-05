@@ -8,6 +8,11 @@ import streamIO.Assert;
  * There is a very fast way to generate Floats from this, by just masking out the Exponent. 
  * Name in Numerical Recipes: ranqd1
  * Speed: very fast(1)
+ * <!-- docstate
+ * tags: [code/random_number_generation, code/quasi_random_sequence]
+ * concepts: [Pseudo-Random and Quasi-Random Integer Generator Family with Mark/Restore Replay]
+ * facets: {layer: utility, status: legacy, complexity: medium}
+ * -->
  */
 public class RandomQuick
 extends ARandomLong {

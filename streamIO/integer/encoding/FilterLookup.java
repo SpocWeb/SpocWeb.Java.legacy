@@ -10,8 +10,6 @@ import streamIO.integer.IStreamOutByte;
 import streamIO.integer.filter.FilterByte;
 
 /**
-  * Title: FilterLookup<p>
-  * Description:
   * Recodes the Bytes coming through this Input streamIO
   * by looking up their Values in a byte[] Array.
   * This is a Size-preserving Transformation 
@@ -27,6 +25,15 @@ import streamIO.integer.filter.FilterByte;
   * Created on	2002-02-17, 12;08;22<p>
   * @author 	Matthias Heuer
   * @version	1.0
+  * <!-- docstate
+  * pass: 2
+  * mtime: 2026-09-05T21:37:19Z
+  * digest: df8f38248cdb002aa6ea669a2e300c047592a70d47170e84b95e611a56618f07
+  * stale: false
+  * tags: [code/stream_filter, code/base64_encoding, code/crc, code/xor_cipher]
+  * concepts: [Byte/Character Re-Encoding Filters - Base64 BinHex URL/Entity Escaping CRC XOR]
+  * facets: {layer: utility, status: legacy, complexity: medium}
+  * -->
   */
 public class FilterLookup
 extends FilterByte {

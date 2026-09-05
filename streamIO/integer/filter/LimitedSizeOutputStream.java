@@ -26,10 +26,15 @@ import streamIO.integer.pipe.ByteStreamerThread;
  * 		stream() for streaming Data from an Input- to an Output- streamIO (byte- or chunk-wise)
  * 		split() / main() for splitting up a File (by Name) into it's parts.
  *
- * Created on 31. März 2001, 22:23
+ * Created on 31. Mï¿½rz 2001, 22:23
  *
  * @author  Matthias Heuer
  * @version
+ * <!-- docstate
+ * tags: [code/stream_filter]
+ * concepts: [Pluggable Byte-Stream Filter Infrastructure and java.io Adapters]
+ * facets: {layer: utility, status: legacy, complexity: medium}
+ * -->
  */
 public class LimitedSizeOutputStream
 extends FilterOutputStream {

@@ -22,6 +22,11 @@ import streamIO.Log;
  * 
  * known Subclasses: 
  * @see streamIO.integer.random.RandomLong
+ * <!-- docstate
+ * tags: [code/random_number_generation, code/quasi_random_sequence]
+ * concepts: [Pseudo-Random and Quasi-Random Integer Generator Family with Mark/Restore Replay]
+ * facets: {layer: utility, status: legacy, complexity: medium}
+ * -->
  */
 public class RandomLinear
 extends ARandomLong {
@@ -81,7 +86,7 @@ extends ARandomLong {
 	
 	/**
 	 * Reference Implementation of ran0 from Numerical Recipes ran0
-	 * 	“Minimal” random number generator of Park and Miller. 
+	 * 	ï¿½Minimalï¿½ random number generator of Park and Miller. 
 	 * Returns a uniform random deviate between 0.0 and 1.0. 
 	 * Set or reset idum to any integer value (except the unlikely value MASK)
 	 * to initialize the sequence; 
@@ -90,7 +95,7 @@ extends ARandomLong {
 	public long nextValue() {
 		//currItem.Value ^= MASK; //XORing with MASK allows use of zero and other simple bit patterns for idum. 
 		long k=(currItem.Value)/IQ;
-		currItem.Value=IA*(currItem.Value-k*IQ)-IR*k; //Compute idum=(IAcurrItem.Value) % IM without overflows by Schrage’s method. 
+		currItem.Value=IA*(currItem.Value-k*IQ)-IR*k; //Compute idum=(IAcurrItem.Value) % IM without overflows by Schrageï¿½s method. 
 		if (currItem.Value < 0) 
 			currItem.Value += IM;
 		//ans=AM*(currItem.Value); //Convert idum to a floating result.

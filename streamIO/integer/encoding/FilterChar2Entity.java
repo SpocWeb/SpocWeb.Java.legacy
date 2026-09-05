@@ -14,16 +14,13 @@ import streamIO.integer.adapter.ReaderToStreamIn_Byte;
 import streamIO.integer.filter.FilterByte;
 
 /**
-  * Title: FilterChar2Entity<p>
-  *
-  * Description:
   * Recodes the Characters coming through this Input streamIO
   * by converting their Values into a decimal or hexadecimal Representation.
   * This is NOT a Size-preserving Transformation!
   *
   * Usually you would chain FilterChar2String and FilterChar2Entity so
   * that first FilterChar2String is applied, eliminating all those Characters, 
-  * that can safely be substituted by simple Combinations like ae, ue and oe for ä,ü and ö
+  * that can safely be substituted by simple Combinations like ae, ue and oe for ï¿½,ï¿½ and ï¿½
   * or can be replaced by readable Entity Names (that need to be declared in a DTD though).
   * 
   * In Reverse also the Decoding can be chained,
@@ -41,6 +38,15 @@ import streamIO.integer.filter.FilterByte;
   * Created on	2002-02-17, 12;08;22<p>
   * @author 	Matthias Heuer
   * @version	1.0
+  * <!-- docstate
+  * pass: 2
+  * mtime: 2026-09-05T21:36:19Z
+  * digest: 4695c9fe54350d7096a0053c2cc8f5ec84c9fd0e4f1f1b2fca5179318d4bef2a
+  * stale: false
+  * tags: [code/stream_filter, code/base64_encoding, code/crc, code/xor_cipher]
+  * concepts: [Byte/Character Re-Encoding Filters - Base64 BinHex URL/Entity Escaping CRC XOR]
+  * facets: {layer: utility, status: legacy, complexity: medium}
+  * -->
   */
 public class FilterChar2Entity 
 extends FilterByte {
@@ -336,7 +342,7 @@ extends FilterByte {
 
 	/** Tests all Methods of this Class	 */
 	public static void testIt(String[] args) throws java.io.IOException {
-		final String strUmlaute = "aeiouäöüAEIOUÄÖÜ_";
+		final String strUmlaute = "aeiouï¿½ï¿½ï¿½AEIOUï¿½ï¿½ï¿½_";
 		final String strExpected =
 			"aeiou&#228;&#246;&#252;AEIOU&#196;&#214;&#220;_";
 		final String strEncoded = ENCODE_STRING(strUmlaute).toString();

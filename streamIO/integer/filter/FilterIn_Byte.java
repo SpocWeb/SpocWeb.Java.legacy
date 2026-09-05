@@ -34,6 +34,15 @@ import function.IIntFunction;
   * Created on	2002-02-17, 12;30;01<p>
   * @author 	Matthias Heuer
   * @version	1.0
+  * <!-- docstate
+  * pass: 2
+  * mtime: 2026-09-05T21:44:23Z
+  * digest: 3707c3143dd44249ef5d719ec6aefee0e04ef1b20f923fc520de549f724204a3
+  * stale: false
+  * tags: [code/stream_filter]
+  * concepts: [Pluggable Byte-Stream Filter Infrastructure and java.io Adapters]
+  * facets: {layer: utility, status: legacy, complexity: medium}
+  * -->
   */
 public class FilterIn_Byte
 extends AStreamIn_Byte
@@ -118,7 +127,8 @@ extends AStreamIn_Byte
 	//  Interface IStreamIn_Byte: abstract Methods
 	////////////////////////////////////////////////////////////////////////////////
 	
-	/** @return the Order of the Data in the File  */
+	/** Returns the byte order of the wrapped stream, or {@link IStreamIn#ORDER_NONE} when none is wrapped.
+	 * @return the Order of the Data in the File  */
 	public byte getOrder() {
 		if (streamIn != null) {
 			return streamIn.getOrder(); }
@@ -164,7 +174,8 @@ extends AStreamIn_Byte
 	//  Interface IStreamIn_Byte: Implementation
 	////////////////////////////////////////////////////////////////////////////////
 	
-    /** @see streamIO.integer.AStreamIn_Byte#getPosition()     */
+    /** Returns the current read position of the wrapped stream.
+     * @see streamIO.integer.AStreamIn_Byte#getPosition()     */
     public long getPosition() { return streamIn.getPosition(); }
 
 	/**
@@ -293,16 +304,22 @@ extends AStreamIn_Byte
 	public long jump(final long len) { return streamIn.jump(len); }
 
 	/**
-	  * Tests if this input stream supports the mark and reset methods.
-	  * The markSupported method of InputStream returns false.
-	  * @return true if this true type supports the mark and reset method; false otherwise.
+	  * Returns how many bytes ahead of the mark this stream can still guarantee a reset.
+	  * @return the maximum readlimit this stream honors for {@link #mark(int)}.
 	  * @see mark(int), reset()
 	  */
 	public long getMaxMarkSize() { return streamIn.getMaxMarkSize(); }
 
-	/** @see streamIO.Byte.IStreamIn_Byte#read(byte[], int, int)	 */
+	// TODO: LOGIC: `mapper.Map(b[i])` passes a signed byte (-128..127) here, widened with
+	// sign extension, whereas the single-byte read() above passes `streamIn.read()`'s
+	// unsigned 0-255 int directly. A mapper that behaves differently for negative vs. 0-255
+	// input (e.g. a lookup table indexed by the raw value) sees a different argument for
+	// the same underlying byte depending on which read method was called. Should likely be
+	// `mapper.Map(b[i] & 0xFF)` to match read()'s unsigned convention.
+	/** Reads bytes into the given range, applying the mapper (if any) to each byte read.
+	 * @see streamIO.Byte.IStreamIn_Byte#read(byte[], int, int)	 */
 	public int read(final byte[] b, final int off, final int len) throws IOException {
-		int length = streamIn.read(b, off, len); 
+		int length = streamIn.read(b, off, len);
 		if (mapper != null) {
 			for(int i = length; --i >= 0;) {
 				b[i] = (byte) mapper.Map(b[i]);

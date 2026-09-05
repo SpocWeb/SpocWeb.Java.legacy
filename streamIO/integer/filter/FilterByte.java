@@ -36,6 +36,15 @@ import function.IIntFunction;
  * 
  * @author Matthias Heuer
  * @version 1.0
+ * <!-- docstate
+ * pass: 2
+ * mtime: 2026-09-05T21:43:40Z
+ * digest: f5296f0680b88413e9ed7b56479996f17feaef5e2d7adeecf9a15458629f663f
+ * stale: false
+ * tags: [code/stream_filter]
+ * concepts: [Pluggable Byte-Stream Filter Infrastructure and java.io Adapters]
+ * facets: {layer: utility, status: legacy, complexity: medium}
+ * -->
  */
 public class FilterByte 
 extends FilterIn_Byte 
@@ -106,13 +115,17 @@ implements IStreamOutByte {
 	public FilterByte(final InputStream _streamIn) { super(_streamIn); }
 	
 	/**
+	 * Creates a filter delegating to the given Input Stream, mapping each byte read
+	 * through the given function.
 	 * @param _streamIn
 	 * @param _mapper
 	 */
 	public FilterByte(final InputStream _streamIn, final IIntFunction _mapper) {
 		super(_streamIn, _mapper); }
-	
+
 	/**
+	 * Creates a filter delegating to the given Input Stream, mapping each byte read
+	 * through the given function.
 	 * @param _streamIn
 	 * @param _mapper
 	 */
@@ -405,14 +418,17 @@ implements IStreamOutByte {
 		AStreamOutByte.WRITE_SAFE(this.streamOut, b, stop, start);
 		return this; }
 	
-	/** @see streamIO.integer.IStreamOutByte#addString(java.lang.String)	 */
-	public IStreamOutByte addString(final String b) { return addString(b, b.length()); } 
+	/** Writes the whole string to this stream.
+	 * @see streamIO.integer.IStreamOutByte#addString(java.lang.String)	 */
+	public IStreamOutByte addString(final String b) { return addString(b, b.length()); }
 
-	/** @see streamIO.integer.IStreamOutByte#addString(java.lang.String, int)	 */
+	/** Writes the string up to the given stop index to this stream.
+	 * @see streamIO.integer.IStreamOutByte#addString(java.lang.String, int)	 */
 	public IStreamOutByte addString(final String b, final int stop) {
-		return addString(b, stop, 0); } 
+		return addString(b, stop, 0); }
 
-	/** @see streamIO.integer.IStreamOutByte#addString(java.lang.String, int, int)	 */
+	/** Writes the given range of the string to this stream.
+	 * @see streamIO.integer.IStreamOutByte#addString(java.lang.String, int, int)	 */
 	public IStreamOutByte addString(final String b, final int stop, final int start) {
 		AStreamOutByte.WRITE_SAFE(this, b, stop, start); 
 		return this; }

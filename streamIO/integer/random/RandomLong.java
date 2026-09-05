@@ -6,6 +6,11 @@ package streamIO.integer.random;
  * @see RandomAffine which uses int.
  * The Default Parameters are taken from the Table in RandomInt (last Row).
  * Speed: moderate(3)
+ * <!-- docstate
+ * tags: [code/random_number_generation, code/quasi_random_sequence]
+ * concepts: [Pseudo-Random and Quasi-Random Integer Generator Family with Mark/Restore Replay]
+ * facets: {layer: utility, status: legacy, complexity: medium}
+ * -->
  */
 public class RandomLong
 extends RandomLinear {

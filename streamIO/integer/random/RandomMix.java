@@ -11,6 +11,15 @@ import streamIO.IReSetAble;
  * To remove low Order Correlations, the Result of this Generator
  * should be shuffled using RandomShuffle. 
  * Speed: slow(6)
+ * <!-- docstate
+ * pass: 2
+ * mtime: 2026-09-05T21:56:00Z
+ * digest: 1ac4fc978dc70dcafbbdc865b6a25d9c33528456f111f461d7881baa31969abd
+ * stale: false
+ * tags: [code/random_number_generation, code/quasi_random_sequence]
+ * concepts: [Pseudo-Random and Quasi-Random Integer Generator Family with Mark/Restore Replay]
+ * facets: {layer: utility, status: legacy, complexity: medium}
+ * -->
  */
 public class RandomMix
 extends ARandomLong {
@@ -111,10 +120,14 @@ extends ARandomLong {
 			 diff += maxValue;	//...with the Modulus of either of the Generators.
 		return diff; }
 
-	/** @see streamIO.integer.random.ARandomLong#setSeed(long)	 */
+	// TODO: LOGIC: unconditionally throws instead of setting the internal State, unlike the
+	// other reSet()/reset() overloads in this class and its siblings, which all set the seed
+	// successfully; any caller relying on the common reset(long) contract will fail at runtime.
+	/** Not implemented: always throws, since a Bug prevents restoring the internal Seed.
+	 * @see streamIO.integer.random.ARandomLong#setSeed(long)	 */
 	public void reset(final long value_) {
 		throw new RuntimeException("not implemented yet!");
-		//this.ran1.setValue(value_);	
+		//this.ran1.setValue(value_);
 	}
 
 }

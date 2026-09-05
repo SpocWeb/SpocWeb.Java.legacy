@@ -16,6 +16,15 @@ import function.byref.ByRefFloat;
   * are given by P[i] = Sum (0 <= j <= i, p[i])
   * with the last one assumed to the Difference .
   * The Range of the Return Values is [0..n] then.
+  * <!-- docstate
+  * pass: 2
+  * mtime: 2026-09-05T21:55:55Z
+  * digest: 64800fc6fd973b38b4828e7006b772c9eadb06a85c2dbe7c4ae8cb056fe1d6d8
+  * stale: false
+  * tags: [code/random_number_generation, code/quasi_random_sequence]
+  * concepts: [Pseudo-Random and Quasi-Random Integer Generator Family with Mark/Restore Replay]
+  * facets: {layer: utility, status: legacy, complexity: medium}
+  * -->
   */
 public class RandomDiscrete
 extends ARandomInt
@@ -85,7 +94,8 @@ implements IStreamIn_Bound_Int {
 		return ret; 
 	}
 	
-	/** @see streamIO.integer.IStreamIn_Int#reSet()	 */
+	/** Resets the underlying Random Number Generator.
+	 * @see streamIO.integer.IStreamIn_Int#reSet()	 */
 	public IReSetAble reSet() { ran.reSet(); return this; }
 	
 	/**Changed Semantics! Always returns the Period of the random Numbers, 
@@ -107,6 +117,8 @@ implements IStreamIn_Bound_Int {
 	// static Testing and main() Methods
 	/////////////////////////////////////////////////////////////////////////////////////
 	
+	/** Verifies the empirical Distribution of generated Indices against a Binomial
+	 * reference Distribution and prints a Plot comparing both.	 */
 	public static void testIt() {
 		L.enter().println();
 		final int n = 20;

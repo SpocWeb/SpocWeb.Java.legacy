@@ -21,6 +21,15 @@ import streamIO.integer.filter.FilterOutByte;
  * @see streamIO.integer.filter.stats.FilterTriGraphCounter
  * @see streamIO.object.enumer.container.Bag
  * @author heuerm
+ * <!-- docstate
+ * pass: 2
+ * mtime: 2026-09-05T21:48:21Z
+ * digest: 8b2748bf7e8c2a08d9ddfa14c96b1f04104f988b733cc6396a5f6b72458bdfc1
+ * stale: false
+ * tags: [code/frequency_counting, code/statistics]
+ * concepts: [Byte and Digraph/Trigraph Frequency Counters]
+ * facets: {layer: utility, status: legacy, complexity: medium}
+ * -->
  */
 public class FilterDiGraphCounter 
 extends FilterOutByte {
@@ -97,36 +106,32 @@ extends FilterOutByte {
 	/** cache for the last Character */
 	protected int lastChar;
 	
-	/**
-	 *  
-	 */
+	/** Creates a standalone byte-pair counter, with no downstream to delegate writes to. */
 	public FilterDiGraphCounter() {
 		this(FilterByteBag.MAX_CHAR_DEFAULT);
 	}
 
-	/**
+	/** Creates a filter counting byte pairs while delegating writes to the given stream.
 	 * @param streamOut
 	 */
 	public FilterDiGraphCounter(final IStreamOutByte streamOut) {
 		this(streamOut, FilterByteBag.MAX_CHAR_DEFAULT);
 	}
 
-	/**
+	/** Creates a filter counting byte pairs while delegating writes to the given stream.
 	 * @param streamOut
 	 */
 	public FilterDiGraphCounter(final OutputStream streamOut) {
 		this(streamOut, FilterByteBag.MAX_CHAR_DEFAULT);
 	}
 
-	/**
-	 *  
-	 */
+	/** Creates a standalone byte-pair counter, with no downstream to delegate writes to. */
 	public FilterDiGraphCounter(final int _initialSize) {
 		super();
 		this.counters = new int[_initialSize][_initialSize];
 	}
 
-	/**
+	/** Creates a filter counting byte pairs while delegating writes to the given stream.
 	 * @param streamOut
 	 */
 	public FilterDiGraphCounter(final IStreamOutByte streamOut, final int _initialSize) {
@@ -134,7 +139,7 @@ extends FilterOutByte {
 		this.counters = new int[_initialSize][_initialSize];
 	}
 
-	/**
+	/** Creates a filter counting byte pairs while delegating writes to the given stream.
 	 * @param streamOut
 	 */
 	public FilterDiGraphCounter(final OutputStream streamOut, final int _initialSize) {
@@ -178,6 +183,7 @@ extends FilterOutByte {
 	/// static testing & main Methods
 	///////////////////////////////////////////////////////////////////////////
 	
+	/** Runs {@link #testIt()}. */
 	public static void main(final String[] args) {
 		testIt();
 	};

@@ -139,7 +139,7 @@ concurrently against the same file):
 | `streamIO/object/enumer` | 79 | 18229 | 79 | done | agent-object-enumer |
 | `streamIO/object/parser` | 27 | 6942 | 27 | done | agent-object-parser |
 | `streamIO/integer` (root+adapter+file+multiplex+pipe) | 56 | 15359 | 0 | claimed | agent-integer-core |
-| `streamIO/integer/encoding`+`filter`+`random` | 56 | 10273 | 0 | claimed | agent-integer-encoding |
+| `streamIO/integer/encoding`+`filter`+`random` | 56 | 10273 | 56 | done | agent-integer-encoding |
 | `streamIO/integer/jdbc` | 31 | 11899 | 0 | claimed | agent-integer-jdbc |
 | `graphic` (root+example+implement+svg) | 50 | 14297 | 50 | done | agent-graphic-misc |
 | `graphic/math2D`+`graphic/ms3d` | 18 | 3525 | 18 | done | agent-graphic-2d |
@@ -589,6 +589,29 @@ same harness against it. A test that has not been seen red proves nothing.
 | streamIO/object/enumer/container/DeQueueArr.java | DeQueueArr | isFull() | 227 | `return (SP == QP-1)` does not account for wraparound of the ring buffer at `QP==0`. | Medium | open |
 | streamIO/object/enumer/Iterator2Enumerator.java | Iterator2Enumerator | reSet(long) | 110 | When `this.position > _position`, calls `reSet(_position)` with the identical argument again instead of resetting then advancing - infinite recursion, `StackOverflowError` on any backward reset. | High | open |
 | streamIO/object/enumer/ReverseEnumerator.java | ReverseEnumerator | (near removeCurr) | 69 | Unterminated Javadoc block swallows the next declaration as comment text (fixed as a doc-corruption repair, not a logic bug - noted for completeness). | Low | open |
+| streamIO/integer/encoding/BigEndianReader.java | BigEndianReader | MAX_UNSIGNED_INT / readLong() | 153, 170 | `readInt()<<NUM_BITS_INT` shifts an int operand by 32 (`NUM_BITS_INT`); Java reduces the shift distance mod 32, so the upper 32 bits of the resulting long are corrupted instead of holding the high word. | High | open |
+| streamIO/integer/encoding/EscapeInputFilter.java | EscapeInputFilter | constructor | 63 | Unlike the sibling `EscapeOutputFilter` constructor, omits a length guard on the escape-sequence array. | Medium | open |
+| streamIO/integer/encoding/FilterASCII2Base64.java | FilterASCII2Base64 | read() | 451 | Integer division truncates `len*4/3` for a final partial group, dropping output bytes. | Medium | open |
+| streamIO/integer/encoding/FilterBase64ToASCII.java | FilterBase64ToASCII | write() | 453 | Ignores `len` (the 1-3 valid decoded bytes `DECODE()` reports) and always writes the full 3-byte buffer, emitting garbage padding bytes. | Medium | open |
+| streamIO/integer/encoding/FilterBinHex2Byte.java | FilterBinHex2Byte | read(), write() | 163, 196 | Wrong nibble conversion inlined incorrectly from `char2Nibble()`; subtracts `'9'`/`('A'+10)` incorrectly in both directions. | High | open |
+| streamIO/integer/encoding/FilterByte2BinHex.java | FilterByte2BinHex | hexCode(char) | 79 | Subtracts `'9'` instead of `'0'` for a digit character, so `hexCode('5')` and similar produce the wrong nibble value. | High | open |
+| streamIO/integer/encoding/FilterCRC16.java | FilterCRC16 | read() | 212 | `ret > 0` excludes a genuine `0x00` (NUL) data byte from the CRC computation. | Medium | open |
+| streamIO/integer/encoding/FilterCRC32.java | FilterCRC32 | read() | 210 | Same NUL-byte exclusion bug as `FilterCRC16.read()`. | Medium | open |
+| streamIO/integer/encoding/FilterCrypt.java | FilterCrypt | (class) | 32 | Home-grown XOR stream cipher with no cryptographic review, presented as providing meaningful confidentiality. | High (security) | open |
+| streamIO/integer/encoding/FilterString2Char.java | FilterString2Char | read(), write() | 224, 243 | `SB` is never cleared after `lookup()` consumes it in `read()`; `collecting`/`SB` are never reset in `write()`. | Medium | open |
+| streamIO/integer/encoding/FilterUrlDecode.java | FilterUrlDecode | write() | 119 | Checks `Value` against `UrlSpaceReplace` (`'+'`) instead of `'%'` to decide whether to enter the escape-decode state. | Medium | open |
+| streamIO/integer/encoding/redundancy/ConvolutionBitEncode.java | ConvolutionBitEncode | (polynomial table indexing) | 225 | `g[K][0][j]`/`g[K][1][j]` index the polynomial table directly by `K` instead of `(K-3)/2`; currently unreachable given the only `K` value exercised, but wrong for any other constraint length. | Low | open |
+| streamIO/integer/encoding/redundancy/Depeater.java | Depeater | flush() | 161 | Only shortens `length` to the current position; never actually writes out the buffered tail bytes. | Medium | open |
+| streamIO/integer/filter/FilterIn_Byte.java | FilterIn_Byte | (mapper input) | 310 | `mapper.Map(b[i])` passes a signed byte (-128..127) widened inconsistently with the unsigned mapping used elsewhere. | Medium | open |
+| streamIO/integer/filter/FilterReplaceSection.java | FilterReplaceSection | main(String[]) | 429 | When `args.length < 5`, the Syntax message is printed but `main()` falls through instead of returning, reaching code that throws `ArrayIndexOutOfBoundsException`. | Medium | open |
+| streamIO/integer/filter/FilterSplitAtFind.java | FilterSplitAtFind | main(String[]) | 259 | Same missing-return-after-usage-message pattern as `FilterReplaceSection.main()`. | Medium | open |
+| streamIO/integer/filter/FilterSplitAtFind.java | FilterSplitAtFind | (breakCountDown) | 201 | `breakCountDown` defaults to 0 and is only ever set once a separator is found, so it fires immediately (effectively `-1`) before the first real countdown is armed. | High | open |
+| streamIO/integer/filter/LimitedSizeInputStream.java | LimitedSizeInputStream | skip(long) | 128 | Calls `skip(...)` on itself (the same overload, same class) instead of delegating to the wrapped `in.skip()`; unconditional infinite self-recursion. | High | open |
+| streamIO/integer/filter/LimitedSizeInputStream.java | LimitedSizeInputStream | read() | 140 | Off-by-one: `++Counter < MaxSize` stops reading one byte short of `MaxSize`. | Medium | open |
+| streamIO/integer/random/AStreamIn_BoundInt.java | AStreamIn_BoundInt | nextLong(long) | 57 | `(int) _maxLong` silently truncates any bound larger than `Integer.MAX_VALUE`, wrapping instead of respecting the requested long bound. | High | open |
+| streamIO/integer/random/BitNoise.java | BitNoise | Map(long) vs Map(int) | 58 | The `long` overload unconditionally decrements `nextBit` by `bitsPerValue` before the loop the `int` overload guards conditionally, giving inconsistent bit-consumption cadence between the two overloads. | Medium | open |
+| streamIO/integer/random/RandomBit2.java | RandomBit2 | getPosition() | 56 | Returns `currItem.Value` (the last single bit produced) instead of `this.value` (the full shift-register state), breaking mark/reSet replay - unlike the sibling `RandomBit`. | High | open |
+| streamIO/integer/random/RandomMix.java | RandomMix | reset(long) | 120 | Unconditionally throws `RuntimeException` instead of setting the internal seed/state, unlike its sibling generators' `reset()`. | Medium | open |
 
 ## Tool defects found and fixed during the pilot
 

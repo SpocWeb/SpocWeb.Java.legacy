@@ -6,6 +6,11 @@ import java.util.Random;
  * Unfortunately I don't know the Implementation,
  * so I cannot be sure of the Algorithm or it's Parameters, like the Modulus  
  * Speed: fast(2)
+ * <!-- docstate
+ * tags: [code/random_number_generation, code/quasi_random_sequence]
+ * concepts: [Pseudo-Random and Quasi-Random Integer Generator Family with Mark/Restore Replay]
+ * facets: {layer: utility, status: legacy, complexity: medium}
+ * -->
  */
 public class RandomJava
 extends ARandomLong {

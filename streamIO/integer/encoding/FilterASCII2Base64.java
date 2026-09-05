@@ -14,10 +14,8 @@ import streamIO.integer.IStreamOutByte;
 import streamIO.integer.filter.FilterByte;
 
 /**
-  * Title: FilterASCII2Base64<p>
-  * Description:
-  * This Class implements both the Base64 and the so called UUEncode
-  * "Unix to Unix Encode" Format.
+  * Implements both the Base64 and the so called UUEncode "Unix to Unix Encode" Format,
+  * converting three 8-bit input bytes into four 6-bit output characters.
   * Both Formats convert three 8 Bit Characters ("Octets")
   * into four 6 Bit Characters using a 64 Character ASCII Subset.
   * Any Character not from this Set is to be ignored (Whitespace + CRLF)
@@ -259,6 +257,15 @@ import streamIO.integer.filter.FilterByte;
   * Created on	2002-02-17, 12;08;22<p>
   * @author 	Matthias Heuer
   * @version	1.0
+  * <!-- docstate
+  * pass: 2
+  * mtime: 2026-09-05T21:33:44Z
+  * digest: afb6eea92b47952e345bd7da32af6244b2355fa93c1364ee7614b63e361fee6c
+  * stale: false
+  * tags: [code/stream_filter, code/base64_encoding, code/crc, code/xor_cipher]
+  * concepts: [Byte/Character Re-Encoding Filters - Base64 BinHex URL/Entity Escaping CRC XOR]
+  * facets: {layer: utility, status: legacy, complexity: medium}
+  * -->
   */
 public class FilterASCII2Base64
 extends FilterByte {
@@ -342,27 +349,31 @@ extends FilterByte {
 	////////////////////////////////////////////////////////////////////////////////
 	
 	/**
+	 * Creates a Base64-encoding filter, without UU-encoding or inserted line feeds.
 	 * @param streamIn_
 	 */
 	public FilterASCII2Base64(final InputStream streamIn_) throws IOException {
 		this(streamIn_, false, false);
 	}
-	
+
 	/**
+	 * Creates a Base64-encoding filter, without UU-encoding or inserted line feeds.
 	 * @param streamIn_
 	 */
 	public FilterASCII2Base64(final IStreamIn_Byte streamIn_) throws IOException {
 		this(streamIn_, false, false);
 	}
-	
+
 	/**
+	 * Creates a Base64-encoding filter, without UU-encoding or inserted line feeds.
 	 * @param streamOut
 	 */
 	public FilterASCII2Base64(final IStreamOutByte streamOut) throws IOException {
 		this(streamOut, false, false);
 	}
-	
+
 	/**
+	 * Creates a Base64-encoding filter, without UU-encoding or inserted line feeds.
 	 * @param streamOut
 	 */
 	public FilterASCII2Base64(final OutputStream streamOut) throws IOException {
@@ -438,8 +449,15 @@ extends FilterByte {
 		if (++index  < encode.length) return encode[index]; //go on cacheing
 		index = -2; 
 		int len = streamIn.read(buffer); //
-		if (len <= 0) 
+		if (len <= 0)
 			return -1; //
+		// TODO: LOGIC: integer division truncates `len*4/3` for a final partial group -
+		// 1 remaining input byte should keep 2 valid encoded characters (1*4/3==1, off by
+		// one) and 2 remaining bytes should keep 3 (2*4/3==2, off by one); only a full
+		// 3-byte group (len==3) computes correctly. The last encoded character of a
+		// trailing 1- or 2-byte group is overwritten with '=' padding instead of kept,
+		// corrupting the final group of every stream not an exact multiple of 3 bytes -
+		// matches the "97. Element is missing" failure noted in testIt() below.
 		len = len*4/3; //encoded Length is higher
 		ENCODE(buffer, encode, uuencode);
 		if (uuencode) { //can fill up with Garbage

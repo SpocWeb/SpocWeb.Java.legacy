@@ -7,6 +7,15 @@ import streamIO.IReSetAble;
  * This is a faster Implementation than RandomBit, 
  * but less reliable and with a Period of ... 
  * @see streamIO.integer.random.RandomBit is a faster Implementation than this one
+ * <!-- docstate
+ * pass: 2
+ * mtime: 2026-09-05T21:52:14Z
+ * digest: 52de0ca4044fb425f4543c6f0744be4ce930e897d6abbf047ebfbeb33816a7c7
+ * stale: false
+ * tags: [code/random_number_generation, code/quasi_random_sequence]
+ * concepts: [Pseudo-Random and Quasi-Random Integer Generator Family with Mark/Restore Replay]
+ * facets: {layer: utility, status: legacy, complexity: medium}
+ * -->
  */
 public class RandomBit2
 extends ARandomInt {
@@ -47,15 +56,22 @@ extends ARandomInt {
 	/** Initializing Constructor	*/
 	public RandomBit2() { super(1); reSet(); }
 	
-	/**Changed Semantics! Always returns the full internal random Value 
-	 * to be cached on mark() and restored on reSet()  
+	// TODO: LOGIC: returns `currItem.Value` (the last single bit, 0 or 1, produced by
+	// nextLongInternal()) instead of `this.value` (the actual 18+-bit shift-register
+	// state). Unlike the sibling RandomBit.getPosition(), which correctly returns its full
+	// state field, this loses all but the last bit, so caching this via mark() and
+	// restoring it via reSet() cannot reproduce the generator's sequence.
+	/**Changed Semantics! Always returns the full internal random Value
+	 * to be cached on mark() and restored on reSet()
 	 * @see streamIO.IAvailAble#getPosition()	 */
-	public long getPosition() { return currItem.Value; } 
-	
-	/** @see streamIO.integer.IStreamIn_Int#reSet()	 */
+	public long getPosition() { return currItem.Value; }
+
+	/** Resets this generator back to the default seed.
+	 * @see streamIO.integer.IStreamIn_Int#reSet()	 */
 	public IReSetAble reSet() { value = RandomBit.DEFAULT_SEED; return this; }
-	
-	/** @see streamIO.integer.IStreamIn_Int#reSet()	 */
+
+	/** Sets the internal shift-register state to the given seed.
+	 * @see streamIO.integer.IStreamIn_Int#reSet()	 */
 	public void reset(final int _seed) { value = _seed; }
 	
 	/**Changed Semantics! instead of returning to the indicated Position, 

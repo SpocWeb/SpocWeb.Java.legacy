@@ -32,6 +32,15 @@ import function.byref.combinatoric.Prime;
  * etc. 
  * @author heuerm
  *
+ * <!-- docstate
+ * pass: 2
+ * mtime: 2026-09-05T21:56:36Z
+ * digest: 23403b54a571279179142ac8ab3f6b303f4454385f92f1144f4ad1002be0ccc3
+ * stale: false
+ * tags: [code/random_number_generation, code/quasi_random_sequence]
+ * concepts: [Pseudo-Random and Quasi-Random Integer Generator Family with Mark/Restore Replay]
+ * facets: {layer: utility, status: legacy, complexity: medium}
+ * -->
  */
 public class RandomPseudoGAdic 
 extends ARandomInt {
@@ -64,7 +73,8 @@ extends ARandomInt {
 	/** the Logarithm Base 	*/
 	protected final int base; 
 	
-	/** @return the Order in which Elements are returned by the Iterators
+	/** Reports this Generator's fixed sub-random Order.
+	 * @return the Order in which Elements are returned by the Iterators
 	  * when they are added using addItem() and removed using nextItem().	 */
 	public byte getOrder() { return IStreamIn.ORDER_RANDOM_SUB; }
 
@@ -73,8 +83,9 @@ extends ARandomInt {
 	 * @see streamIO.IAvailAble#availAble()	 */
 	public long availAble() { return maxValue; }
 	
-	/**Changed Semantics! instead of returning to the indicated Position, 
-	 * this Method reSets the internal random Value.   
+	/**Decomposes {@code _seed} into this Generator's gAdic Digit Vector {@link #v}.
+	 * Changed Semantics! instead of returning to the indicated Position,
+	 * this Method reSets the internal random Value.
 	 * @see streamIO.integer.IStreamIn_Int#reSet()	 */
 	public long reSet(final long _seed) {
 		long val = _seed;
@@ -93,10 +104,11 @@ extends ARandomInt {
 	 * @see streamIO.IAvailAble#getPosition()	 */
 	public long getPosition() { return currItem.Value; } 
 	
-	/** @see streamIO.integer.IStreamIn_Int#reSet()	 */
+	/** Resets this generator's gAdic Digit Vector to represent 0.
+	 * @see streamIO.integer.IStreamIn_Int#reSet()	 */
 	public IReSetAble reSet() { reSet(0); return this; }
-	
-	/**
+
+	/** Creates a Generator with the given Base and Digit Count (Power).
 	 * @param _base  the maximum Value of this Generator is given by base^power
 	 * @param _power the maximum Value of this Generator is given by base^power
 	 */
@@ -132,8 +144,10 @@ extends ARandomInt {
 		}
 	}
 	
+	/** Cross-checks this Generator's Base-2 Sequence against {@link RandomPseudoBinary}
+	 * and prints a Base-3 Sequence for visual inspection.	 */
 	public static void testIt() {
-		final RandomPseudoGAdic  bin1 = new RandomPseudoGAdic(2, (byte)4); bin1.nextInt();  
+		final RandomPseudoGAdic  bin1 = new RandomPseudoGAdic(2, (byte)4); bin1.nextInt();
 		final RandomPseudoBinary bin2 = new RandomPseudoBinary(4); 
 		for(int i = 40; --i >= 0;) {
 			Assert.EQUALS(bin1.nextInt(), bin2.nextInt());
@@ -145,8 +159,9 @@ extends ARandomInt {
 		GET_RANDOM_VECTOR(5, 8); 
 	}
 	
+	/** Runs {@link #testIt()} as a Command-Line Entry Point.	 */
 	public static void main(final String[] args) {
-		testIt(); 
+		testIt();
 	}
 	
 }

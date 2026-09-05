@@ -18,6 +18,15 @@ import streamIO.integer.filter.FilterOutByte;
   *
   * Both Usages are possible depending on whether the Strings
   * forbidden and replace are equal or not.
+  * <!-- docstate
+  * pass: 2
+  * mtime: 2026-09-05T10:13:25Z
+  * digest: 816d47f3dc53f1c77ec6301180f92d2873d582a274c618d9923e4ed76edbf022
+  * stale: false
+  * tags: [code/stream_filter, code/base64_encoding, code/crc, code/xor_cipher]
+  * concepts: [Byte/Character Re-Encoding Filters - Base64 BinHex URL/Entity Escaping CRC XOR]
+  * facets: {layer: utility, status: legacy, complexity: medium}
+  * -->
   */
 public class EscapeOutputFilter
 extends FilterOutByte {

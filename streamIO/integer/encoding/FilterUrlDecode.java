@@ -11,8 +11,6 @@ import streamIO.integer.IStreamOutByte;
 import streamIO.integer.filter.FilterByte;
 
 /**
-  * Title: FilterUrlDecode<p>
-  * Description:
   * Decodes the Bytes coming through this Input or Output streamIO
   * by converting their Values from a URL Encoding.
   *
@@ -40,6 +38,15 @@ import streamIO.integer.filter.FilterByte;
   * Created on	2002-02-17, 12;08;22<p>
   * @author 	Matthias Heuer
   * @version	1.0
+  * <!-- docstate
+  * pass: 2
+  * mtime: 2026-09-05T21:37:23Z
+  * digest: 5f90850b1a3bf39c700e5c4aac3432e4c5100be2c1743596f5d00d0c2879a9d0
+  * stale: false
+  * tags: [code/stream_filter, code/base64_encoding, code/crc, code/xor_cipher]
+  * concepts: [Byte/Character Re-Encoding Filters - Base64 BinHex URL/Entity Escaping CRC XOR]
+  * facets: {layer: utility, status: legacy, complexity: medium}
+  * -->
   */
 public class FilterUrlDecode
 extends FilterByte {
@@ -112,6 +119,15 @@ extends FilterByte {
 	  * 	In particular, an IOException may be thrown if the output stream has been closed.
 	  */
 	public void write(final int Value) throws IOException {
+		// TODO: LOGIC: this checks Value against UrlSpaceReplace ('+') to decide whether to
+		// enter the two-byte hex-escape state, but the escape marker is '%'
+		// (FilterUrlEncode.UrlEscapeChar), not '+' - unlike read() above, which correctly
+		// switches on UrlEscapeChar. As written, write() never decodes a real "%XY" escape
+		// sequence (its '%' passes straight through unchanged) and instead misinterprets a
+		// literal '+' as the start of a hex pair, consuming and misdecoding the next two
+		// characters. It also never translates '+' back into a space. Should check
+		// `Value == FilterUrlEncode.UrlEscapeChar` here, with '+' handled as its own case
+		// that writes UrlSpaceOriginal directly.
 		switch (c1) {
 			case -2: //not in Escape Sequence
 				if (Value == FilterUrlEncode.UrlSpaceReplace) {

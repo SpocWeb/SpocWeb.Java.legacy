@@ -17,10 +17,7 @@ import streamIO.integer.file.FileStreamOutByte;
 import streamIO.integer.pipe.ByteStreamerThread;
 
 /**
-  * Title: FilterReplaceSection<p>
-  *
-  * Purpose:
-  * Filters a streamIO and cuts out a Section between the beginning and Ending String. 
+  * Filters a streamIO and cuts out a Section between the beginning and Ending String.
   *
   * Design Decisions / Implementation Details:
   * Searching is done primitive, using an O(N*M) Algorithm.
@@ -38,6 +35,15 @@ import streamIO.integer.pipe.ByteStreamerThread;
   * Created on	02-12-2003, 11:29 AM<p>
   * @author 	Matthias Heuer
   * @version	1.0
+  * <!-- docstate
+  * pass: 2
+  * mtime: 2026-09-05T21:46:15Z
+  * digest: 9e1036ce698dcd4172d097862e34517c85f2a76907fe9f7d7d167a126f1f7280
+  * stale: false
+  * tags: [code/stream_filter]
+  * concepts: [Pluggable Byte-Stream Filter Infrastructure and java.io Adapters]
+  * facets: {layer: utility, status: legacy, complexity: medium}
+  * -->
   */
 public class FilterReplaceSection 
 extends FilterByte 
@@ -83,7 +89,7 @@ implements IPlugAbleFilterByte {
 		this.streamIn = stream;
 	}
 
-	/* (non-Javadoc)
+	/** Sets the Input stream to filter, wrapping the given InputStream.
 	 * @see Stream.Byte.IConfigFilterOut#setStreamOut(java.io.OutputStream)
 	 */
 	public void setStreamIn_(InputStream stream) {
@@ -98,7 +104,7 @@ implements IPlugAbleFilterByte {
 		this.streamOut = stream;
 	}
 
-	/* (non-Javadoc)
+	/** Sets the Output stream to filter, wrapping the given OutputStream.
 	 * @see Stream.Byte.IConfigFilterOut#setStreamOut(java.io.OutputStream)
 	 */
 	public void setStreamOut(OutputStream stream) {
@@ -203,7 +209,7 @@ implements IPlugAbleFilterByte {
 	/// #region : Parent AFilter: Implementation / Overrides
 	////////////////////////////////////////////////////////////////////////////////
 
-	/**
+	/** Writes the byte through, replacing any matched section between starter and stopper.
 	 * @see streamIO.Byte.IStreamOutByte#addString(int)
 	 */
 	public void write(int val) throws IOException {
@@ -423,6 +429,10 @@ implements IPlugAbleFilterByte {
 	 * @param args Array of parameters passed to the application
 	 * via the command line.	 
 	 */
+	// TODO: LOGIC: when args.length < 5, the Syntax message is printed but main() falls
+	// through instead of returning, so args[0..4] below throw
+	// ArrayIndexOutOfBoundsException instead of exiting cleanly (same pattern as
+	// EchoFile.main() and FixRecordScrambler.main() elsewhere in this codebase).
 	public static void main(String[] args) throws java.io.IOException {
 		if (args.length < 5) {
 			System.out.println(

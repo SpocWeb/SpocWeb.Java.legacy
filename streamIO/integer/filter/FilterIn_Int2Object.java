@@ -31,6 +31,15 @@ import function.byref.ByRefLong;
   * Created on	05-19-2001, 01:02 PM<p>
   * @author 	Matthias Heuer
   * @version	1.0
+  * <!-- docstate
+  * pass: 2
+  * mtime: 2026-09-05T21:45:12Z
+  * digest: a49e473fe406481549999bc8f5f52b6574ca38163306f449d0314504a75f5193
+  * stale: false
+  * tags: [code/stream_filter]
+  * concepts: [Pluggable Byte-Stream Filter Infrastructure and java.io Adapters]
+  * facets: {layer: utility, status: legacy, complexity: medium}
+  * -->
   */
 public class FilterIn_Int2Object
 extends AStreamIn {
@@ -114,41 +123,48 @@ extends AStreamIn {
 	////////////////////////////////////////////////////////////////////////////////
 	
 	/**
+	  * Returns the boxed long value produced by the most recent {@link #nextItem()} call.
 	  * @return the current Elements in this streamIO.
 	  */
 	public Object currItem() { return value; }
-	
+
 	/**
+	  * Reports whether the wrapped integer stream has reached EOF.
 	  * @return the Number of Elements left in this streamIO.
 	  */
-	public long availAble() { 
+	public long availAble() {
 		if (IStreamIn_Int.EOF == value.Value)
-			return -1; 
+			return -1;
 		return 1; }
-	
+
 	/**
+	  * Reads the next long value from the wrapped stream and boxes it into {@link #value}.
 	  * @return the next Element in this streamIO.
 	  */
 	public Object nextItem() {
 		if (IStreamIn_Int.EOF == (value.Value = in.nextLong()))
-			return null; 
+			return null;
 		return value; }
-	
-	/** @see IStreamIn#reSet() */
+
+	/** Resets the wrapped stream.
+	 * @see IStreamIn#reSet() */
 	public IReSetAble reSet() { return in.reSet(); }
-	
+
 	/**
+	  * Returns the order of the wrapped stream's elements.
 	  * @return the Order of the Elements in this streamIO.
 	  * -1 for descending
 	  *  0 for unordered
 	  * +1 for ascending
 	  */
 	public byte getOrder() { return in.getOrder(); }
-	
-	/** @see streamIO.object.AStreamIn#getMaxMarkSize()	 */
+
+	/** Returns the maximum mark size of the wrapped stream.
+	 * @see streamIO.object.AStreamIn#getMaxMarkSize()	 */
 	public long getMaxMarkSize() { return in.getMaxMarkSize(); }
-	
-	/** @see streamIO.object.AStreamIn#getPosition()	 */
+
+	/** Returns the current position of the wrapped stream.
+	 * @see streamIO.object.AStreamIn#getPosition()	 */
 	public long getPosition() { return in.getPosition(); }
 	
 	////////////////////////////////////////////////////////////////////////////////

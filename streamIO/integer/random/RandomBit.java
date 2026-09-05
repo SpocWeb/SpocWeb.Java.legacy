@@ -6,6 +6,15 @@ import streamIO.IReSetAble;
 /**Returns random Bits distributed in a Uniform fashion
  * i.e. p(1) = p(0) = 0.5
  * @see streamIO.integer.random.RandomBit2 is a slower Implementation than this one
+ * <!-- docstate
+ * pass: 2
+ * mtime: 2026-09-05T21:52:05Z
+ * digest: 49d15691e8c2373ba87c770b00a54c403f9aaf131f084b64c1f3c00ef540f220
+ * stale: false
+ * tags: [code/random_number_generation, code/quasi_random_sequence]
+ * concepts: [Pseudo-Random and Quasi-Random Integer Generator Family with Mark/Restore Replay]
+ * facets: {layer: utility, status: legacy, complexity: medium}
+ * -->
  */
 public class RandomBit
 extends ARandomInt {
@@ -145,7 +154,10 @@ extends ARandomInt {
 		{100,8,7,2,0}
 	};
 	
+	/** Mask isolating the top bit of the 31-bit shift register that triggers a tap. */
 	final static public int UPPER_MASK = 1 << (31-1); //1 << (18-1);
+
+	/** Feedback mask XORed into the register when {@link #UPPER_MASK} triggers a tap. */
 	final static public int LOWER_MASK = 1 << ( 3-1); //(IB1+IB2+IB5);
 	
 	/** Local Storage for the Generation of Bits	 */
@@ -168,7 +180,8 @@ extends ARandomInt {
 			value <<= 1; return 0; }
 	}
 	
-	/** @see streamIO.integer.IStreamIn_Int#reSet()	 */
+	/** Resets this generator back to the default seed.
+	 * @see streamIO.integer.IStreamIn_Int#reSet()	 */
 	public IReSetAble reSet() { reset(DEFAULT_SEED); return this; }
 	
 	/**New Semantic: instead of returning to the indicated Position, 

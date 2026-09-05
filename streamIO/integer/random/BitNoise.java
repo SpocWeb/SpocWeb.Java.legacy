@@ -9,10 +9,7 @@ package streamIO.integer.random;
 import function.IIntFunction;
 
 /**
- * Title: <p>
- * Description:
- * Purpose:
- * Adds a configurable amount of Noise to the Bits handed over. 
+ * Adds a configurable amount of Noise to the Bits handed over.
  *
  * Design Decisions / Implementation Details:
  *
@@ -25,6 +22,15 @@ import function.IIntFunction;
  * Created on	10-26-2002, 12:47 PM<p>
  * @author heuerm
  * @version	1.0
+ * <!-- docstate
+ * pass: 2
+ * mtime: 2026-09-05T21:51:32Z
+ * digest: 7717ef41157b610dcd072cafafc7273ff74abbf9e12d1779f086b0d874c7984c
+ * stale: false
+ * tags: [code/random_number_generation, code/quasi_random_sequence]
+ * concepts: [Pseudo-Random and Quasi-Random Integer Generator Family with Mark/Restore Replay]
+ * facets: {layer: utility, status: legacy, complexity: medium}
+ * -->
  */
 public class BitNoise 
 implements IIntFunction {
@@ -42,7 +48,8 @@ implements IIntFunction {
 	int nextBit; 
 	
 	/**
-	 * @param _rnd the Noise Generator to use. 
+	 * Creates a noise function flipping roughly one bit every flipDistance values.
+	 * @param _rnd the Noise Generator to use.
 	 */
 	public BitNoise(final IStreamIn_Bound_Int _rnd, final int _flipDistance, final int _bitsPerValue) {
 		this.rnd = _rnd; 
@@ -51,19 +58,26 @@ implements IIntFunction {
 		this.nextBit = rnd.nextInt(flipDistance); 
 	}
 	
-	/** @see function.IIntFunction#Map(long)	 */
+	// TODO: LOGIC: this unconditionally decrements `nextBit` by `bitsPerValue` before the
+	// same check-and-decrement the int overload below performs conditionally, so Map(long)
+	// decrements twice as fast as Map(int) for the same bitsPerValue/flipDistance - the two
+	// overloads (meant to behave identically per the shared IIntFunction contract) flip
+	// bits at different, undocumented cadences.
+	/** Flips one Bit of {@code value} whenever the internal Countdown reaches Zero.
+	 * @see function.IIntFunction#Map(long)	 */
 	public long Map(long value) {
-		    nextBit -= bitsPerValue; 
-		if (nextBit >= bitsPerValue) {  
-			nextBit -= bitsPerValue; 
+		    nextBit -= bitsPerValue;
+		if (nextBit >= bitsPerValue) {
+			nextBit -= bitsPerValue;
 		} else {
 			nextBit  = rnd.nextInt(flipDistance);
-			value ^= (1 << nextBit);			
+			value ^= (1 << nextBit);
 		}
 		return value;
 	}
-	
-	/** @see function.IIntFunction#Map(int)	 */
+
+	/** Flips one Bit of {@code value} whenever the internal Countdown reaches Zero.
+	 * @see function.IIntFunction#Map(int)	 */
 	public int Map(int value) {
 		if (nextBit >= bitsPerValue) {  
 			nextBit -= bitsPerValue; 
@@ -74,6 +88,7 @@ implements IIntFunction {
 		return value; 
 	}
 	
+	/** Currently runs no demonstration; present as an entry point for manual testing. */
 	public static void main(final String[] args) throws Exception {
 	}
 	

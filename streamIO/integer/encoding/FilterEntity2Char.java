@@ -9,8 +9,6 @@ import streamIO.integer.IStreamOutByte;
 import streamIO.integer.filter.FilterByte;
 
 /**
-  * Title: FilterEntity2Char<p>
-  * Description:
   * Recodes the Characters coming through this Input streamIO
   * by converting their Values from a decimal or hexadecimal Representation into Characters.
   * This is NOT a Size-preserving Transformation!
@@ -22,6 +20,15 @@ import streamIO.integer.filter.FilterByte;
   * Created on	2002-02-17, 12;08;22<p>
   * @author 	Matthias Heuer
   * @version	1.0
+  * <!-- docstate
+  * pass: 2
+  * mtime: 2026-09-05T21:37:15Z
+  * digest: 8845de45bb9d499b6676def5a46925950faa349363a46efd38f5490c8cd269a5
+  * stale: false
+  * tags: [code/stream_filter, code/base64_encoding, code/crc, code/xor_cipher]
+  * concepts: [Byte/Character Re-Encoding Filters - Base64 BinHex URL/Entity Escaping CRC XOR]
+  * facets: {layer: utility, status: legacy, complexity: medium}
+  * -->
   */
 public class FilterEntity2Char
 extends FilterByte {

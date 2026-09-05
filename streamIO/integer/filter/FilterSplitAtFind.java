@@ -14,10 +14,7 @@ import streamIO.integer.pipe.ByteStreamerThread;
 
 
 /**
-  * Title: FilterSplitAtFind<p>
-  *
-  * Purpose:
-  * Filters a streamIO and ends it (-1) 
+  * Filters a streamIO and ends it (-1)
   * as soon as a certain String is found more often than the specified Number
   *
   * Design Decisions / Implementation Details:
@@ -41,6 +38,15 @@ import streamIO.integer.pipe.ByteStreamerThread;
   * Created on	02-12-2003, 11:29 AM<p>
   * @author 	Matthias Heuer
   * @version	1.0
+  * <!-- docstate
+  * pass: 2
+  * mtime: 2026-09-05T21:46:57Z
+  * digest: e6fc6afcfdc79b1f6831cafc155a6a3caadc34009d8b9586ac69c454138fd48d
+  * stale: false
+  * tags: [code/stream_filter]
+  * concepts: [Pluggable Byte-Stream Filter Infrastructure and java.io Adapters]
+  * facets: {layer: utility, status: legacy, complexity: medium}
+  * -->
   */
 public class FilterSplitAtFind
 extends FilterByte
@@ -195,21 +201,27 @@ extends FilterByte
 	 * and triggers the Creation of a new one! 
 	 * @see streamIO.Byte.IStreamOutByte#addString(int)
 	 */
+	// TODO: LOGIC: `breakCountDown` defaults to 0 and is only ever set once a separator
+	// match already fires `matchesFullString()`; on the very first call, `--breakCountDown
+	// == -1` is immediately true, so this writes EOF (or, in read() below, returns -1)
+	// before the separator has ever been searched for. Mirrors the same defect flagged in
+	// the sibling streamIO.integer.filter.FilterFind class.
 	public void write(int val) throws IOException {
 		if (--breakCountDown == -1) {
 			super.write(EOF); } //
 		if (matchesFullString(val)) {
 			breakCountDown = breakPosition; } //
-		super.write(cache(val)); 
+		super.write(cache(val));
 	}
 
-	/**
+	/** Reads the next byte, ending the section (-1) once the separator has recurred
+	 * maxFinds times.
 	 * @see streamIO.Byte.IStreamIn_Byte#read()
 	 */
 	public int read() throws IOException {
 		if (--breakCountDown == -1) {
 			return -1; }
-		int val = streamIn.read(); 
+		int val = streamIn.read();
 		if (matchesFullString(val)) {
 			breakCountDown = breakPosition; } //
 		return cache(val); }
@@ -223,6 +235,8 @@ extends FilterByte
 		System.out.println("Testing " + FilterSplitAtFind.class.getName());
 	}
 
+	/** Splits the given File into numbered ".chunk" files at every maxFinds-th occurrence
+	 * of the separator. */
 	public static void SPLIT_FILE
 	( final String in_FileName
 	, final String separator
@@ -245,10 +259,14 @@ extends FilterByte
 	 * @param args Array of parameters passed to the application
 	 * via the command line.	 
 	 */
+	// TODO: LOGIC: when args.length < 2, the Syntax message is printed but main() falls
+	// through instead of returning, so args[0]/args[1] below throw
+	// ArrayIndexOutOfBoundsException instead of exiting cleanly (same missing-return
+	// pattern as EchoFile.main() and FilterReplaceSection.main() elsewhere in this codebase).
 	public static void main (String[] args) throws java.io.IOException {
 		if (args.length < 2) {
 			 System.out.println("FileInPath FileOutPath Separator breakPosition numSeparators "); }
-		final String in_FileName =  args[0]; 
+		final String in_FileName =  args[0];
 		final String separator   =  args[1];
 		final String outFileName = (args.length > 2) ? args[2] : in_FileName; 
 		final int breakPosition  = (args.length > 3) ? Integer.parseInt(args[3]) : 0;

@@ -6,6 +6,15 @@ import streamIO.integer.IStreamIn_Int;
  * with good choices of the Parameters, so the first Multiplication
  * can be replaced by a shifting Operation.	 
  * Speed: moderate(3) due to 'long' Arithmetics
+ * <!-- docstate
+ * pass: 2
+ * mtime: 2026-09-05T21:55:56Z
+ * digest: 76eb3ad7312a25c82e42e07c915cd757fd731fdcf9eafc43dbebffbdd7fbacef
+ * stale: false
+ * tags: [code/random_number_generation, code/quasi_random_sequence]
+ * concepts: [Pseudo-Random and Quasi-Random Integer Generator Family with Mark/Restore Replay]
+ * facets: {layer: utility, status: legacy, complexity: medium}
+ * -->
  */
 final public class RandomFast
 extends ARandomLong {
@@ -85,6 +94,7 @@ extends ARandomLong {
 	// Test and Main Methods:
 	/////////////////////////////////////////////////////////////////////////////////////
 	
+	/** Benchmarks the raw Throughput of this Generator by drawing 200 Million Integers. 	 */
 	final static public void main(final String[] arg) {
 		final long startTime = System.currentTimeMillis();  
 		final IStreamIn_Int ran = new RandomFast(); //RandomMix(); // RandomLong(); // RandomLinear(); //RandomInt(); // RandomBySubt(); // RandomJava(); //RandomQuick(); //RandomFast(); 

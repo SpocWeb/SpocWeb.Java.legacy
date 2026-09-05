@@ -14,10 +14,8 @@ import streamIO.integer.IStreamOutByte;
 import streamIO.integer.filter.FilterByte;
 
 /**
-  * Title: FilterBase64ToASCII<p>
-  * Description:
-  * This Class implements both the Base64 and the so called UUEncode
-  * "Unix to Unix Encode" Format.
+  * Implements both the Base64 and the so called UUEncode "Unix to Unix Encode" Format,
+  * decoding four 6-bit input characters back into three 8-bit output bytes.
   * Both Formats convert 24 Bit (three 8 Bit Characters, "Octets")
   * into four 6 Bit Characters using a 64 Character ASCII Subset starting at .
   * Any Character not from this Set is to be ignored (Whitespace + CR/LF)
@@ -256,6 +254,15 @@ import streamIO.integer.filter.FilterByte;
   * Created on	2002-02-17, 12;08;22<p>
   * @author 	Matthias Heuer
   * @version	1.0
+  * <!-- docstate
+  * pass: 2
+  * mtime: 2026-09-05T21:34:21Z
+  * digest: d97b1120861f2dda471b0b8e92cedb8fdf1c05461f7e22a4aa5898bc8787b75d
+  * stale: false
+  * tags: [code/stream_filter, code/base64_encoding, code/crc, code/xor_cipher]
+  * concepts: [Byte/Character Re-Encoding Filters - Base64 BinHex URL/Entity Escaping CRC XOR]
+  * facets: {layer: utility, status: legacy, complexity: medium}
+  * -->
   */
 public class FilterBase64ToASCII
 extends FilterByte {
@@ -322,27 +329,31 @@ extends FilterByte {
 	////////////////////////////////////////////////////////////////////////////////
 	
 	/**
+	 * Creates a Base64-decoding filter, without UU-encoding.
 	 * @param streamIn_
 	 */
 	public FilterBase64ToASCII(InputStream streamIn_) throws IOException {
 		this(streamIn_, false);
 	}
-	
+
 	/**
+	 * Creates a Base64-decoding filter, without UU-encoding.
 	 * @param streamIn_
 	 */
 	public FilterBase64ToASCII(IStreamIn_Byte streamIn_) throws IOException {
 		this(streamIn_, false);
 	}
-	
+
 	/**
+	 * Creates a Base64-decoding filter, without UU-encoding.
 	 * @param streamOut
 	 */
 	public FilterBase64ToASCII(IStreamOutByte streamOut) throws IOException {
 		this(streamOut, false);
 	}
-	
+
 	/**
+	 * Creates a Base64-decoding filter, without UU-encoding.
 	 * @param streamOut
 	 */
 	public FilterBase64ToASCII(OutputStream streamOut) throws IOException {
@@ -442,7 +453,13 @@ extends FilterByte {
 		index = 0;
 		int len = DECODE(encode, buffer, uuencode);
 //		writeAll();
-		streamOut.write(buffer); 
+		// TODO: LOGIC: `len` (the number of valid decoded bytes DECODE() reports, 1-3
+		// depending on how much '=' padding the final group carried) is computed but never
+		// used to slice the write - the full 3-byte `buffer` is always written, appending
+		// up to 2 garbage bytes decoded from '=' padding characters onto the final output
+		// group. Should be `streamOut.write(buffer, 0, len)`. The trailing `++len;` is dead
+		// code left over from this.
+		streamOut.write(buffer);
 		++len;
 	}
 

@@ -14,20 +14,29 @@ import java.io.IOException;
 import java.io.InputStream;
 
 /**
- * Title: BigEndianReader<p>
- * Description:
- * A DataReader Filter for Intel-specific Big-Endian File- and Memory- Formats
- * 
+ * Wraps a {@link DataInput} to read Intel-native (little-endian) primitive values,
+ * assembling each multi-byte value least-significant-byte first.
+ * <p>
+ *
  * Known SubClasses: <none>
- * 
+ *
  * Known Uses: <none>
- * 
+ *
  * Copyright:	Copyright (c) Matthias Heuer<p>
  * Company:	personal<p>
  * Created on	10-26-2002, 12:47 PM<p>
  * @author mheuer
  * @version	1.0
- * 
+ *
+ * <!-- docstate
+ * pass: 2
+ * mtime: 2026-09-05T21:31:44Z
+ * digest: fad034d0251ff62da5e9e4226ed870df5f1d161f754cfa42b2f43c6608e37fe8
+ * stale: false
+ * tags: [code/stream_filter, code/base64_encoding, code/crc, code/xor_cipher]
+ * concepts: [Byte/Character Re-Encoding Filters - Base64 BinHex URL/Entity Escaping CRC XOR]
+ * facets: {layer: utility, status: legacy, complexity: medium}
+ * -->
  */
 public class BigEndianReader 
 //extends DataInputStream //final, cannot be overridden
@@ -75,36 +84,43 @@ implements DataInput
 		this.stream = stream_; 
 	}
 
-	/** @see java.io.DataInput#readFully(byte[])	 */
+	/** Fills the whole array from the underlying stream.
+	 * @see java.io.DataInput#readFully(byte[])	 */
 	public void readFully(final byte[] b) throws IOException {
 		stream.readFully(b);
 	}
 
-	/** @see java.io.DataInput#readFully(byte[], int, int)	 */
+	/** Fills the given slice of the array from the underlying stream.
+	 * @see java.io.DataInput#readFully(byte[], int, int)	 */
 	public void readFully(final byte[] b, final int off, final int len) throws IOException {
 		stream.readFully(b, off, len);
 	}
 
-	/** @see java.io.DataInput#skipBytes(int)	 */
+	/** Skips over the given number of bytes of input.
+	 * @see java.io.DataInput#skipBytes(int)	 */
 	public int skipBytes(final int n) throws IOException {
 		return stream.skipBytes(n); }
 
-	/** @see java.io.DataInput#readBoolean()	 */
+	/** Reads one byte and interprets it as a boolean.
+	 * @see java.io.DataInput#readBoolean()	 */
 	public boolean readBoolean() throws IOException {
 		return stream.readBoolean(); }
 
-	/** @see java.io.DataInput#readByte()	*/
+	/** Reads and returns one signed byte.
+	 * @see java.io.DataInput#readByte()	*/
 	public byte readByte() throws IOException {
 		return stream.readByte(); }
 
-	/** @see java.io.DataInput#readUnsignedByte()	 */
+	/** Reads one byte and returns it as an unsigned value in {@code [0, 255]}.
+	 * @see java.io.DataInput#readUnsignedByte()	 */
 	public int readUnsignedByte() throws IOException {
 		int ret = readByte(); 
 		if (ret < 0) {
 			ret += MAX_UNSIGNED_BYTE; }
 		return ret; }
 
-	/** @see java.io.DataInput#readShort()	 */
+	/** Reads two bytes, low byte first, and returns them as a signed 16-bit value.
+	 * @see java.io.DataInput#readShort()	 */
 	public short readShort() throws IOException {
 		return (short)(readUnsignedByte()+(readByte()<<NUM_BITS_BYTE)); }
 
@@ -114,7 +130,8 @@ implements DataInput
 	/** the maximum Value of an unsigned Short */
 	final static public int MAX_UNSIGNED_SHORT = 1 << NUM_BITS_SHORT; //-((int)Short.MIN_VALUE)-Short.MIN_VALUE; //
 
-	/** @see java.io.DataInput#readUnsignedShort()	 */
+	/** Reads two bytes and returns them as an unsigned 16-bit value.
+	 * @see java.io.DataInput#readUnsignedShort()	 */
 	public int readUnsignedShort() throws IOException {
 		int ret = readShort();
 		if (ret < 0) {
@@ -123,21 +140,28 @@ implements DataInput
 //		return readUnsignedByte()+(readUnsignedByte()<<8); //works too
 	}
 
-	/** @see java.io.DataInput#readChar()	*/
+	/** Reads two bytes and returns them as a char.
+	 * @see java.io.DataInput#readChar()	*/
 	public char readChar() throws IOException {
 		return (char) readUnsignedShort(); }
 
-	/** @see java.io.DataInput#readInt()	 */
+	/** Reads four bytes, low word first, and returns them as a signed 32-bit value.
+	 * @see java.io.DataInput#readInt()	 */
 	public int readInt() throws IOException {
 		return readUnsignedShort()+(readShort()<<NUM_BITS_SHORT); }
 
 	/** Number of Bits in a Short / Word */
 	final static public byte NUM_BITS_INT = NUM_BITS_SHORT << 1;
-	
+
+	// TODO: LOGIC: NUM_BITS_INT is 32, and the left operand `1` is an int, so Java's shift
+	// operator masks the distance to `32 & 0x1F == 0` - this evaluates to `1`, not 2^32.
+	// Every caller relying on MAX_UNSIGNED_INT as the unsigned-32-bit wraparound constant
+	// (readUnsignedInt() below) gets the wrong correction. Use `1L<<NUM_BITS_INT` instead.
 	/** the maximum Value of an unsigned Short */
 	final static public long MAX_UNSIGNED_INT = 1<<NUM_BITS_INT; //-((long)Integer.MIN_VALUE)-Integer.MIN_VALUE; //
 
-	/** @see java.io.DataInput#readInt()	 */
+	/** Reads four bytes and returns them as an unsigned 32-bit value, widened into a long.
+	 * @see java.io.DataInput#readInt()	 */
 	public long readUnsignedInt() throws IOException {
 		long ret = readInt();
 		if (ret < 0) {
@@ -146,23 +170,33 @@ implements DataInput
 		//return readUnsignedShort()+(readShort()<<16);
 	}
 
-	/** @see java.io.DataInput#readLong()	 */	 
+	// TODO: LOGIC: `readInt()<<NUM_BITS_INT` shifts an int operand by 32, which Java reduces
+	// modulo 32 to a shift of 0 - the high 32 bits are added completely unshifted instead of
+	// being placed above the low 32 bits from readUnsignedInt(). readLong() returns a
+	// corrupted value for every input where the upper int is non-zero. Cast to long before
+	// shifting, e.g. `((long) readInt())<<NUM_BITS_INT`.
+	/** Reads eight bytes, low int first, and returns them as a signed 64-bit value.
+	 * @see java.io.DataInput#readLong()	 */
 	public long readLong() throws IOException {
 		return readUnsignedInt()+(readInt()<<NUM_BITS_INT); }
 
-	/** @see java.io.DataInput#readFloat()		*/
+	/** Reads four bytes and reinterprets them as an IEEE 754 float.
+	 * @see java.io.DataInput#readFloat()		*/
 	public float readFloat() throws IOException {
 		return Float.intBitsToFloat(readInt()); }
 
-	/** @see java.io.DataInput#readDouble()	 */
+	/** Reads eight bytes and reinterprets them as an IEEE 754 double.
+	 * @see java.io.DataInput#readDouble()	 */
 	public double readDouble() throws IOException {
 		return Double.longBitsToDouble(readLong()); }
 
-	/** @see java.io.DataInput#readLine()	 */
+	/** Reads a line of text from the underlying stream.
+	 * @see java.io.DataInput#readLine()	 */
 	public String readLine() throws IOException {
 		return stream.readLine(); }
 
-	/** @see java.io.DataInput#readUTF()	 */
+	/** Reads a string encoded in modified UTF-8.
+	 * @see java.io.DataInput#readUTF()	 */
 	public String readUTF() throws IOException {
 		return stream.readUTF(); }
 	

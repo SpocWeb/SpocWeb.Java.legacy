@@ -4,14 +4,11 @@ import math.vector.AVector;
 import streamIO.integer.pipe.PipeByte;
 
 /**
-  * Title: SynchPipeByte<p>
-  * Description:
-  * Purpose:
-  * converts a StreamOutByte into a StreamIn_Byte
+  * Converts a StreamOutByte into a StreamIn_Byte
   * by buffering the Output and optionally triggering re-reads.
   *
   * nextItem() => cache oder blocks or delegiert an run();
-  * dieses run() führt aber auf mehrere addItem() Operationen
+  * dieses run() fï¿½hrt aber auf mehrere addItem() Operationen
   * CachedFilter
   *
   * Design Decisions / Implementation Details:
@@ -26,6 +23,15 @@ import streamIO.integer.pipe.PipeByte;
   * Created on	12-29-2002, 12:13 PM<p>
   * @author 	Matthias Heuer
   * @version	1.0
+  * <!-- docstate
+  * pass: 2
+  * mtime: 2026-09-05T21:37:31Z
+  * digest: affd69101579568c3fb620d6fa907199682ab8f71102c881faebcec8cbfa5883
+  * stale: false
+  * tags: [code/stream_filter, code/base64_encoding, code/crc, code/xor_cipher]
+  * concepts: [Byte/Character Re-Encoding Filters - Base64 BinHex URL/Entity Escaping CRC XOR]
+  * facets: {layer: utility, status: legacy, complexity: medium}
+  * -->
   */
 public class SynchPipeByte
 extends PipeByte {

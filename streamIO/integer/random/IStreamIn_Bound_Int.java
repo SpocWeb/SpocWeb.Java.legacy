@@ -12,23 +12,34 @@ import streamIO.real.IStreamIn_Bound_Float;
   * because this Type is passive and more Operations can be predefined.
   * The Assumption is that the Output Range is normed to [0..MaxValue)
   * It is always possible to build a Wrapper around the Random Generator.
+  * <!-- docstate
+  * pass: 2
+  * mtime: 2026-09-05T21:50:50Z
+  * digest: 9d11b75c33e63a7844682da662efacc030fffad69b5fb34e7462354ab3f79b3a
+  * stale: false
+  * tags: [code/random_number_generation, code/quasi_random_sequence]
+  * concepts: [Pseudo-Random and Quasi-Random Integer Generator Family with Mark/Restore Replay]
+  * facets: {layer: utility, status: legacy, complexity: medium}
+  * -->
   * But unlike with Matrix Operations this is not wanted.  */
 public interface IStreamIn_Bound_Int
 extends IStreamIn_Int, IStreamIn_Bound_Float {
 	
-	/** @return the minimum Value for integer Numbers 
-	 * for other Classes to determine the minimum Value 
+	/** Returns the lower bound of the values this stream generates.
+	 * @return the minimum Value for integer Numbers
+	 * for other Classes to determine the minimum Value
 	 * returned by the Method nextLong().
 	 * When using other Methods like getInt(),
-	 * the Values are bounded of course by the Type used. 
+	 * the Values are bounded of course by the Type used.
 	 */
 	public long getMinValue();
-	
-	/** @return the maximum Value for integer Numbers 
-	 * for other Classes to determine the maximum Value 
+
+	/** Returns the upper bound (exclusive) of the values this stream generates.
+	 * @return the maximum Value for integer Numbers
+	 * for other Classes to determine the maximum Value
 	 * returned by the Method nextLong().
 	 * When using other Methods like getInt(),
-	 * the Values are bounded of course by the Type used. 
+	 * the Values are bounded of course by the Type used.
 	 */
 	public long getMaxValue();
 	

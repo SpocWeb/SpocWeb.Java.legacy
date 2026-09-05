@@ -12,8 +12,6 @@ import function.string.Char2String;
 import function.string.StringFunction;
 
 /**
-  * Title: FilterChar2String<p>
-  * Description:
   * Recodes the Characters coming through this Input streamIO
   * by looking up their Values in a String[] Array.
   * This is NOT a Size-preserving Transformation!
@@ -26,10 +24,10 @@ import function.string.StringFunction;
   * Other XML Markup can encode ALL printable Latin-1 (ISO-8859-1) Characters up to 255,
   * so they can be written in UTF-8 with single Byte Unicode Characters!
   * Other Alternatives for german Umlaut Characters is their standard Replacement:
-  * ss for ß
-  * ae for ä
-  * oe for ö
-  * ue for ü
+  * ss for ï¿½
+  * ae for ï¿½
+  * oe for ï¿½
+  * ue for ï¿½
   *
   * @see FilterChar2String uses readable Entity Names, that require DTD Declaration
   * @see FilterChar2Entity uses hex or decimal Entities, that don't need Declaration
@@ -44,6 +42,15 @@ import function.string.StringFunction;
   * Created on	2002-02-17, 12;08;22<p>
   * @author 	Matthias Heuer
   * @version	1.0
+  * <!-- docstate
+  * pass: 2
+  * mtime: 2026-09-05T21:36:23Z
+  * digest: 294eec0fa19e37253e056d50f83f7c2b37d730224b60cb94fb20f9e34a7eeae5
+  * stale: false
+  * tags: [code/stream_filter, code/base64_encoding, code/crc, code/xor_cipher]
+  * concepts: [Byte/Character Re-Encoding Filters - Base64 BinHex URL/Entity Escaping CRC XOR]
+  * facets: {layer: utility, status: legacy, complexity: medium}
+  * -->
   */
 public class FilterChar2String
 extends FilterByte {

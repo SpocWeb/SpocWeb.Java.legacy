@@ -9,8 +9,6 @@ import streamIO.integer.IStreamOutByte;
 import streamIO.integer.filter.FilterByte;
 
 /**
-  * Title: FilterEnCrypt<p>
-  * Description:
   * This class encrypts/decrypts an Input or Output streamIO.
   * Since it uses XOR password encryption, the same Algorithm can be used
   * for Encryption and Decryption.
@@ -24,7 +22,22 @@ import streamIO.integer.filter.FilterByte;
   * Created on	2001-02-23, 09;29;15<p>
   * @author 	Matthias Heuer
   * @version	1.0
+  * <!-- docstate
+  * pass: 2
+  * mtime: 2026-09-05T21:37:08Z
+  * digest: c736bce67bf6281651afd8fd8e30243dbe3c73f3ce49818884dba3cb4985b8f3
+  * stale: false
+  * tags: [code/stream_filter, code/base64_encoding, code/crc, code/xor_cipher]
+  * concepts: [Byte/Character Re-Encoding Filters - Base64 BinHex URL/Entity Escaping CRC XOR]
+  * facets: {layer: utility, status: legacy, complexity: medium}
+  * -->
   */
+// TODO: SECURITY: this is a home-grown XOR stream cipher with no cryptographic review - a
+// short, guessable password combined with the deterministic key-schedule mutation in
+// encryptByte() below makes this trivially breakable by a known-plaintext or
+// chosen-plaintext attack (a single known byte of output at a given password index leaks
+// that keystream byte). Do not use this class where genuine confidentiality is required;
+// the class-level Javadoc's claim of "an additional level of security" is misleading.
 public class FilterCrypt
 extends FilterByte {
 
@@ -54,51 +67,51 @@ extends FilterByte {
 //  Constructors, calling each other using this()/super()
 ////////////////////////////////////////////////////////////////////////////////
 
-	/** Constructor
+	/** Creates a filter that XOR-encrypts/decrypts bytes written to the given stream.
 	  * @param streamOut IStreamOutByte Object being delegated to
-	  * @param uuencode_ Flag determining whether to use base64 or uu encoding. */
+	  * @param passWord_ the password bytes; copied defensively via {@link #init(byte[])} */
 	protected FilterCrypt(IStreamOutByte streamOut, byte[] passWord_) throws IOException {
 		super(streamOut); init(passWord_); }
 
-	/** Constructor
+	/** Creates a filter that XOR-encrypts/decrypts bytes written to the given stream.
 	  * @param streamOut OutputStream Object being delegated to
-	  * @param uuencode_ Flag determining whether to use base64 or uu encoding. */
+	  * @param passWord_ the password bytes; copied defensively via {@link #init(byte[])} */
 	protected FilterCrypt(OutputStream streamOut, byte[] passWord_) throws IOException {
 		super(streamOut); init(passWord_); }
 
-	/** Constructor
-	  * @param streamOut IStreamOutByte Object being delegated to
-	  * @param uuencode_ Flag determining whether to use base64 or uu encoding. */
+	/** Creates a filter that XOR-encrypts/decrypts bytes read from the given stream.
+	  * @param streamIn_ IStreamIn_Byte Object being delegated to
+	  * @param passWord_ the password string, converted to bytes without a defensive copy */
 	protected FilterCrypt(IStreamIn_Byte streamIn_, String passWord_) throws IOException {
 		super(streamIn_); passWord = passWord_.getBytes(); }
 
-	/** Constructor
-	  * @param streamOut OutputStream Object being delegated to
-	  * @param uuencode_ Flag determining whether to use base64 or uu encoding. */
+	/** Creates a filter that XOR-encrypts/decrypts bytes read from the given stream.
+	  * @param streamIn_ InputStream Object being delegated to
+	  * @param passWord_ the password string, converted to bytes without a defensive copy */
 	protected FilterCrypt(InputStream streamIn_, String passWord_) throws IOException {
 		super(streamIn_); passWord = passWord_.getBytes(); }
 
-	/** Constructor
-	  * @param streamOut IStreamOutByte Object being delegated to
-	  * @param uuencode_ Flag determining whether to use base64 or uu encoding. */
+	/** Creates a filter that XOR-encrypts/decrypts bytes read from the given stream.
+	  * @param streamIn_ IStreamIn_Byte Object being delegated to
+	  * @param passWord_ the password bytes; copied defensively via {@link #init(byte[])} */
 	protected FilterCrypt(IStreamIn_Byte streamIn_, byte[] passWord_) throws IOException {
 		super(streamIn_); init(passWord_); }
 
-	/** Constructor
-	  * @param streamOut OutputStream Object being delegated to
-	  * @param uuencode_ Flag determining whether to use base64 or uu encoding. */
+	/** Creates a filter that XOR-encrypts/decrypts bytes read from the given stream.
+	  * @param streamIn_ InputStream Object being delegated to
+	  * @param passWord_ the password bytes; copied defensively via {@link #init(byte[])} */
 	protected FilterCrypt(InputStream streamIn_, byte[] passWord_) throws IOException {
 		super(streamIn_); init(passWord_); }
 
-	/** Constructor
+	/** Creates a filter that XOR-encrypts/decrypts bytes written to the given stream.
 	  * @param streamOut IStreamOutByte Object being delegated to
-	  * @param uuencode_ Flag determining whether to use base64 or uu encoding. */
+	  * @param passWord_ the password string, converted to bytes without a defensive copy */
 	protected FilterCrypt(IStreamOutByte streamOut, String passWord_) throws IOException {
 		super(streamOut); passWord = passWord_.getBytes(); }
 
-	/** Constructor
+	/** Creates a filter that XOR-encrypts/decrypts bytes written to the given stream.
 	  * @param streamOut OutputStream Object being delegated to
-	  * @param uuencode_ Flag determining whether to use base64 or uu encoding. */
+	  * @param passWord_ the password string, converted to bytes without a defensive copy */
 	protected FilterCrypt(OutputStream streamOut, String passWord_) throws IOException {
 		super(streamOut); passWord = passWord_.getBytes(); }
 

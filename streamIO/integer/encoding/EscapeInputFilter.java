@@ -19,6 +19,15 @@ import streamIO.integer.filter.FilterIn_Byte;
   *
   * Both Usages are possible depending on whether the Strings
   * forbidden and replace are equal or not.
+  * <!-- docstate
+  * pass: 2
+  * mtime: 2026-09-05T21:32:34Z
+  * digest: 449f4ba1061fe1494fb646109bcb58d8cfa51ec016596e30d64e73fa050f9f3a
+  * stale: false
+  * tags: [code/stream_filter, code/base64_encoding, code/crc, code/xor_cipher]
+  * concepts: [Byte/Character Re-Encoding Filters - Base64 BinHex URL/Entity Escaping CRC XOR]
+  * facets: {layer: utility, status: legacy, complexity: medium}
+  * -->
   */
 public class EscapeInputFilter
 extends FilterIn_Byte {
@@ -54,6 +63,11 @@ extends FilterIn_Byte {
 		this.EnCode = EnCode;
 		this.forbidden = forbidden + Escape;
 		this.replace = replace;
+		// TODO: LOGIC: unlike the sibling EscapeOutputFilter constructor, this omits the
+		// `replace.length() < forbidden.length()` guard (see the comment below) - when a
+		// caller passes a `replace` string as long as or longer than `forbidden`,
+		// `forbidden.substring(replace.length())` throws StringIndexOutOfBoundsException
+		// instead of leaving `replace` unpadded.
 		if (doReplace = (replace != null)) { // && (replace.length() < forbidden.length()))
 			//fill up the Replace String with the rest of the forbidden String.
 			replace += forbidden.substring(replace.length());

@@ -18,10 +18,7 @@ import streamIO.integer.random.BitNoise;
 import streamIO.integer.random.RandomQuick;
 
 /**
- * Title: <p>
- * Description:
- * Purpose:
- * Undoes the Operations of the Repeater Class 
+ * Undoes the Operations of the Repeater Class
  * and uses the Redundancy in the Stream to eliminate Transmission Errors. 
  * The Majority of Bits set at a certain Position 
  * determines the Result taken. 
@@ -38,6 +35,15 @@ import streamIO.integer.random.RandomQuick;
  * Created on	10-26-2002, 12:47 PM<p>
  * @author heuerm
  * @version	1.0
+ * <!-- docstate
+ * pass: 2
+ * mtime: 2026-09-05T21:41:27Z
+ * digest: 86123cdd23dbadcd9ef9917231a7d1deb2e27591675cb6246ac493988a3393b6
+ * stale: false
+ * tags: [code/error_correction, code/convolutional_encoding]
+ * concepts: [Forward Error Correction Codecs - Repetition and Convolutional Encoding]
+ * facets: {layer: utility, status: legacy, complexity: medium}
+ * -->
  */
 public class Depeater 
 extends FilterOutByte {
@@ -64,16 +70,20 @@ extends FilterOutByte {
 	int alreadyWritten; 
 	
 	/**
+	 * Creates a filter that recovers one byte from every three repeated copies read from
+	 * the wrapped stream, in blocks of {@code _bufferSize} bytes.
 	 * @param _streamOut
 	 * @param bufferSize
 	 */
 	public Depeater(final IStreamOutByte _streamOut, final int _bufferSize) {
 		super(_streamOut);
 		buf = new byte[2][length = _bufferSize];
-		currBuf =  buf[0]; 
+		currBuf =  buf[0];
 	}
-	
+
 	/**
+	 * Creates a filter that recovers one byte from every three repeated copies read from
+	 * the wrapped stream, in blocks of {@code _bufferSize} bytes.
 	 * @param _streamOut
 	 * @param bufferSize
 	 */
@@ -151,30 +161,41 @@ extends FilterOutByte {
 		}
 		return ret >> 1; }
 	
+	// TODO: LOGIC: flush() only shortens `length` to the current position; it never writes
+	// out the buffered final bytes and never calls super.flush(). A caller that calls
+	// flush() (or close(), if close() delegates to flush() rather than issuing more
+	// write() calls) at the end of a stream whose length isn't already a multiple of the
+	// full buffer relies entirely on a subsequent write() call to emit the last block -
+	// with none coming, the buffered tail is silently dropped.
 	/** indicates the End of Transmission	 */
 	public void flush() { length = pos+1; }
-	
+
 	///////////////////////////////////////////////////////////////////////////
-	/// 
+	///
 	///////////////////////////////////////////////////////////////////////////
-	
+
+	/** Runs {@link #testIt()}. */
 	public static void main(final String[] args) throws Exception {
-		testIt(); 
+		testIt();
 	}
-	
+
+	/** Runs the stream round-trip test and the majority-vote test. */
 	public static void testIt() throws Exception {
-		testStream(); 
-		testMajorityVote(29734); 
+		testStream();
+		testMajorityVote(29734);
 	}
-	
+
+	/** Runs {@link #testStream(String)} on progressively shorter prefixes of a test string. */
 	public static void testStream() throws Exception {
-		final StringBuffer str = new StringBuffer("Hello World!"); 
-		testStream(str.toString()); str.setLength(str.length()-1); 
-		testStream(str.toString()); str.setLength(str.length()-1); 
-		testStream(str.toString()); str.setLength(str.length()-1); 
-		testStream(str.toString()); str.setLength(str.length()-1); 
+		final StringBuffer str = new StringBuffer("Hello World!");
+		testStream(str.toString()); str.setLength(str.length()-1);
+		testStream(str.toString()); str.setLength(str.length()-1);
+		testStream(str.toString()); str.setLength(str.length()-1);
+		testStream(str.toString()); str.setLength(str.length()-1);
 	}
-	
+
+	/** Round-trips the given string through a {@link Repeater}/{@link Depeater} pair with
+	 * injected bit noise, asserting the original string is recovered unchanged. */
 	public static void testStream(final String str) throws Exception {
 		final StringBufferOutputStream os = new StringBufferOutputStream(); 
 		final Depeater Depeater = new Depeater((IStreamOutByte)os, 3); 
@@ -187,6 +208,8 @@ extends FilterOutByte {
 		Assert.EQUALS(str, os.toString()); 
 	}
 	
+	/** Asserts {@link #MAJORITY_VOTE(int, int, int)} recovers the given value from three
+	 * inputs that agree, from two agreeing, and from one bit flipped in each direction. */
 	public static void testMajorityVote(final int num) {
 		Assert.EQUALS(num, MAJORITY_VOTE(num, num, num)); 
 		Assert.EQUALS(num, MAJORITY_VOTE(num, num, 0)); 

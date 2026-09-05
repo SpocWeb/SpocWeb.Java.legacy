@@ -23,6 +23,11 @@ import function.derive.ring.body.GammaLn;
   * Distribution for Rejection,
   * For small T, random Exponential Waiting Times are generated,
   * until the given Time T is exceeded.
+  * <!-- docstate
+  * tags: [code/random_number_generation, code/quasi_random_sequence]
+  * concepts: [Pseudo-Random and Quasi-Random Integer Generator Family with Mark/Restore Replay]
+  * facets: {layer: utility, status: legacy, complexity: medium}
+  * -->
   */
 public class RandomBinomial
 extends RandomPoisson {

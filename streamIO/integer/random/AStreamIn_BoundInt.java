@@ -14,6 +14,15 @@ import streamIO.real.IStreamIn_Float;
  * first to the Range [0..1) and then to [Min..Max)
  * Expects the Subclasses to set MaxValue,
  * because it is being used for norming the Results,
+ * <!-- docstate
+ * pass: 2
+ * mtime: 2026-09-05T21:50:42Z
+ * digest: 5c4d0a54a60ac3d4e02ace9e86abf196e2115634b8a22bc2f6259c4fdc1d6ff8
+ * stale: false
+ * tags: [code/random_number_generation, code/quasi_random_sequence]
+ * concepts: [Pseudo-Random and Quasi-Random Integer Generator Family with Mark/Restore Replay]
+ * facets: {layer: utility, status: legacy, complexity: medium}
+ * -->
  * saving a call to getMaxValue() for Performance Reasons. 	 */
 public abstract class AStreamIn_BoundInt
 extends AStreamIn_Bound
@@ -22,10 +31,12 @@ implements IStreamIn_Bound_Int, IStreamIn_Float {
 	/**Modulus to keep the Values in Range	 */
 	protected long maxValue;
 	
-	/** @return the minimum Value	 */
+	/** Returns zero, the lower bound of every generator in this hierarchy.
+	 * @return the minimum Value	 */
 	public long getMinValue() { return 0; }
-	
-	/** @return the maximum Value	 */
+
+	/** Returns this generator's modulus.
+	 * @return the maximum Value	 */
 	public long getMaxValue() { return maxValue; }
 	
 	/** Initializing Constructor
@@ -46,6 +57,10 @@ implements IStreamIn_Bound_Int, IStreamIn_Float {
 //		return	(int) (((long)nextInt()* _maxInt)/maxValue);}
 		return  (nextInt()% _maxInt); } //may not equally distribute the Space up to MaxInt!
 	
+	// TODO: LOGIC: `(int) _maxLong` silently truncates any bound larger than
+	// Integer.MAX_VALUE (and wraps to a negative int for values just above it), so a
+	// caller passing a genuine long-sized bound gets a result modulo the wrong, truncated
+	// value instead of the requested one.
 	/**Random Long Number from 0 to MaxLong-1	 */
 	public long nextLong(final long _maxLong) {
 		return nextInt((int) _maxLong); } //may not exhaust the Space up to MaxLong!

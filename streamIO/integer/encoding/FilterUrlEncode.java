@@ -13,8 +13,6 @@ import streamIO.integer.IStreamOutByte;
 import streamIO.integer.filter.FilterByte;
 
 /**
-  * Title: FilterUrlEncode<p>
-  * Description:
   * Encodes the Bytes coming through this Input or Output streamIO
   * by converting their Values to a Byte URL Encoding.
   *
@@ -46,6 +44,15 @@ import streamIO.integer.filter.FilterByte;
   *
   * @see java.net.URLDecoder
   * @see java.net.URLEncoder
+  * <!-- docstate
+  * pass: 2
+  * mtime: 2026-09-05T21:37:27Z
+  * digest: e33ecfb2e3e5c7873d0389c0f820bb50e34f7a088d38d14c6270957e3556189c
+  * stale: false
+  * tags: [code/stream_filter, code/base64_encoding, code/crc, code/xor_cipher]
+  * concepts: [Byte/Character Re-Encoding Filters - Base64 BinHex URL/Entity Escaping CRC XOR]
+  * facets: {layer: utility, status: legacy, complexity: medium}
+  * -->
   */
 public class FilterUrlEncode
 extends FilterByte {

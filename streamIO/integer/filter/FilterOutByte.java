@@ -31,6 +31,15 @@ import streamIO.integer.IStreamOutByte;
   * Created on	2002-02-17, 12;30;01<p>
   * @author 	Matthias Heuer
   * @version	1.0
+  * <!-- docstate
+  * pass: 2
+  * mtime: 2026-09-05T21:45:34Z
+  * digest: 270ee960a4911e868692f8afa81d2b37884d1da0767b7afc5ffbd659aa43b50f
+  * stale: false
+  * tags: [code/stream_filter]
+  * concepts: [Pluggable Byte-Stream Filter Infrastructure and java.io Adapters]
+  * facets: {layer: utility, status: legacy, complexity: medium}
+  * -->
   */
 public class FilterOutByte
 extends AStreamOutByte
@@ -73,7 +82,8 @@ extends AStreamOutByte
 	//  public Methods, then private Methods
 	////////////////////////////////////////////////////////////////////////////////
 	
-	/** @see streamIO.AStreamOut#addItem(java.lang.Object)	 */
+	/** Writes the string representation of the given object to this stream.
+	 * @see streamIO.AStreamOut#addItem(java.lang.Object)	 */
 	public IIStreamOut addItem(final Object _arg) {
 		final String arg = String.valueOf(_arg); 
 		AStreamOutByte.WRITE_SAFE(this, arg, arg.length(), 0); //this dispatches automatically (see below) 

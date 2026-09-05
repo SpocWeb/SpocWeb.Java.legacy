@@ -10,6 +10,15 @@ import streamIO.IReSetAble;
  * The Types can also be 'short' instead of 'int' without changing the Results,
  * if the Constants are changed accordingly. 
  * Speed: very fast(1)
+ * <!-- docstate
+ * pass: 2
+ * mtime: 2026-09-05T21:55:51Z
+ * digest: 6435e4f319e0b68861c00fd00cd450c1d5c119ca3afff848d6492e99ae1f0513
+ * stale: false
+ * tags: [code/random_number_generation, code/quasi_random_sequence]
+ * concepts: [Pseudo-Random and Quasi-Random Integer Generator Family with Mark/Restore Replay]
+ * facets: {layer: utility, status: legacy, complexity: medium}
+ * -->
  */
 public class RandomBySubt
 extends ARandomInt {
@@ -72,9 +81,10 @@ extends ARandomInt {
 	
 	int iNextP;
 
-	/** @see streamIO.integer.IStreamIn_Int#reSet()	 */
+	/** Resets this generator back to seed 0.
+	 * @see streamIO.integer.IStreamIn_Int#reSet()	 */
 	public IReSetAble reSet() { //throws IOException {
-		reset(0); return this; 
+		reset(0); return this;
 	}
 
 	/**Changed Semantics! Always returns the Period of the random Numbers, 

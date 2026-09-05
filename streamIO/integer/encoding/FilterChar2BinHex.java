@@ -9,8 +9,6 @@ import streamIO.integer.IStreamOutByte;
 import streamIO.integer.filter.FilterByte;
 
 /**
-  * Title: FilterChar2BinHex<p>
-  * Description:
   * Encodes the Characters coming through this Output streamIO
   * by converting those Values above a certain Threshold (usually 128)
   * into a Hexadecimal Encoding.
@@ -46,6 +44,15 @@ import streamIO.integer.filter.FilterByte;
   * Created on	2002-02-17, 12;08;22<p>
   * @author 	Matthias Heuer
   * @version	1.0
+  * <!-- docstate
+  * pass: 2
+  * mtime: 2026-09-05T21:36:15Z
+  * digest: 10518c654e0b81448833575ed2a7303122aef8bc195e9e78809cf469e9dba5d9
+  * stale: false
+  * tags: [code/stream_filter, code/base64_encoding, code/crc, code/xor_cipher]
+  * concepts: [Byte/Character Re-Encoding Filters - Base64 BinHex URL/Entity Escaping CRC XOR]
+  * facets: {layer: utility, status: legacy, complexity: medium}
+  * -->
   */
 public class FilterChar2BinHex
 extends FilterByte {

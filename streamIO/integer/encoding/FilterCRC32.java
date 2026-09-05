@@ -9,8 +9,6 @@ import streamIO.integer.IStreamOutByte;
 import streamIO.integer.filter.FilterByte;
 
 /**
-  * Title: FilterCRC32<p>
-  * Description:
   * This class calculates the 32-bit CRC of a file or string.
   *
   * Checksums are often used to verify the integrity of data.
@@ -53,6 +51,15 @@ import streamIO.integer.filter.FilterByte;
   * Created on	2001-02-24, 12;46;10<p>
   * @author 	Matthias Heuer
   * @version	1.0
+  * <!-- docstate
+  * pass: 2
+  * mtime: 2026-09-05T21:36:11Z
+  * digest: 541d300ecc45909b00f71d44a31989d265fdba8dd7d41eac139dfe0b987dee69
+  * stale: false
+  * tags: [code/stream_filter, code/base64_encoding, code/crc, code/xor_cipher]
+  * concepts: [Byte/Character Re-Encoding Filters - Base64 BinHex URL/Entity Escaping CRC XOR]
+  * facets: {layer: utility, status: legacy, complexity: medium}
+  * -->
   */
 public class FilterCRC32
 extends FilterByte {
@@ -202,7 +209,10 @@ extends FilterByte {
 	  */
 	public int read() throws IOException {
 		int ret; // = super.read();
-		ret = streamIn.read(); 
+		ret = streamIn.read();
+		// TODO: LOGIC: same NUL-byte exclusion bug as FilterCRC16.read() - `ret > 0` skips
+		// updating the CRC for a genuine 0x00 data byte, giving a wrong CRC for any data
+		// containing NUL bytes. Should be `ret >= 0` (or `ret != EOF`).
 		if (ret > 0) {
 			CRC = updateCRC32(CRC, (byte) ret); }
 		return ret; } //

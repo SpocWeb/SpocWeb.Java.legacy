@@ -11,6 +11,15 @@ import streamIO.IReSetAble;
  * The Default Parameters are derived from the Numerical Recipes.
  * Using integer Types exclusively! 
  * Speed: very fast(1) due to Integer Arithmetics
+ * <!-- docstate
+ * pass: 2
+ * mtime: 2026-09-05T21:51:54Z
+ * digest: 0b085df0c025fb8482f40e9317fd9cf6dcaa4761c545353e893b2bdec8bcd4a6
+ * stale: false
+ * tags: [code/random_number_generation, code/quasi_random_sequence]
+ * concepts: [Pseudo-Random and Quasi-Random Integer Generator Family with Mark/Restore Replay]
+ * facets: {layer: utility, status: legacy, complexity: medium}
+ * -->
  */
 public class RandomAffine
 extends ARandomInt {
@@ -139,7 +148,8 @@ extends ARandomInt {
 	
 	///////////////////////////////////////////////////////////////////////////
 	
-	/** @see streamIO.integer.IStreamIn_Int#reSet()	 */
+	/** Resets this generator back to the default seed.
+	 * @see streamIO.integer.IStreamIn_Int#reSet()	 */
 	public IReSetAble reSet() { reSet(DEFAULT_SEED); return this; }
 
 	/**Random Long Number 	 */

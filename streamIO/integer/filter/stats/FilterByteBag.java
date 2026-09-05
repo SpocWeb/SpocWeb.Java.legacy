@@ -31,23 +31,23 @@ import streamIO.integer.filter.FilterOutByte;
  * @author heuerm
  * 
  * Some linguistic Facts: 
- * Mehr als 60 Prozent unserer mündlichen Äußerungen bestehen aus Konsonanten 
+ * Mehr als 60 Prozent unserer mï¿½ndlichen ï¿½uï¿½erungen bestehen aus Konsonanten 
  * und nur knapp 40 Prozent aus (5+3) Vokalen.
  * Etwa ein Drittel der Silben der englischen Umgangssprache 
  * haben die Form Konsonant + Vokal + Konsonant, wie in cat. 
- * Die 50 meistgebrauchten Wörter einer (jeden) Sprache 
+ * Die 50 meistgebrauchten Wï¿½rter einer (jeden) Sprache 
  * machen etwa 45 % jedes geschriebenen Textes aus.
  * 
- * Die ersten 15 Wörter machen 25% des Textes aus, 
- * die ersten 100 Wörter 60 % und 
+ * Die ersten 15 Wï¿½rter machen 25% des Textes aus, 
+ * die ersten 100 Wï¿½rter 60 % und 
  * die ersten Tausend 85 %. 
- * Mit den ersten 4.000 sind dann 97,5 % des Textes erfaßt. 
+ * Mit den ersten 4.000 sind dann 97,5 % des Textes erfaï¿½t. 
  * 
- * Die mittlere Wortlänge und Satzlänge können relativ einfach berechnet werden. 
- * Die Wortlänge ist der Quotient aus der Gesamtzahl der Buchstaben und der Anzahl der Leerzeichen in einem Text. 
- * Die Satzläge berechnet sich aus der Gesamtzahl der Buchstaben 
+ * Die mittlere Wortlï¿½nge und Satzlï¿½nge kï¿½nnen relativ einfach berechnet werden. 
+ * Die Wortlï¿½nge ist der Quotient aus der Gesamtzahl der Buchstaben und der Anzahl der Leerzeichen in einem Text. 
+ * Die Satzlï¿½ge berechnet sich aus der Gesamtzahl der Buchstaben 
  * geteilt durch die Anzahl der Satzzeichen (mittlere Buchstabenanzahl in einem Satz) 
- * und geteilt durch die mittlere Wortlänge (mittlere Wortanzahl in einem Satz).
+ * und geteilt durch die mittlere Wortlï¿½nge (mittlere Wortanzahl in einem Satz).
  * 
  * Also interesting (e.g. for Cryptography) are Statistics like:
  * Initial and Ending letter frequencies
@@ -57,10 +57,20 @@ import streamIO.integer.filter.FilterOutByte;
  * Whitespace 
  * Vowels 
  * Consonants 
+ * <!-- docstate
+ * pass: 2
+ * mtime: 2026-09-05T21:47:50Z
+ * digest: 86c32b0a65a2c1fb372aaec99ec48e1d22775c4470fd4ee9f7f3b51e1d4ebba3
+ * stale: false
+ * tags: [code/frequency_counting, code/statistics]
+ * concepts: [Byte and Digraph/Trigraph Frequency Counters]
+ * facets: {layer: utility, status: legacy, complexity: medium}
+ * -->
  */
 public class FilterByteBag 
 extends FilterOutByte {
 
+	/** Default initial size of the {@link #counters} array, covering one byte value each. */
 	final static public int MAX_CHAR_DEFAULT = 256;
 	
 	/** 
@@ -82,41 +92,41 @@ extends FilterOutByte {
 	/** empty Constructor	 */
 	public FilterByteBag() { this(MAX_CHAR_DEFAULT); }
 
-	/**
+	/** Creates a filter counting byte occurrences while delegating writes to the given stream.
 	 * @param streamOut
 	 */
 	public FilterByteBag(final IStreamOutByte streamOut) {
 		this(streamOut, MAX_CHAR_DEFAULT);
 	}
 
-	/**
+	/** Creates a filter counting byte occurrences while delegating writes to the given stream.
 	 * @param streamOut
 	 */
 	public FilterByteBag(final OutputStream streamOut) {
 		this(streamOut, MAX_CHAR_DEFAULT);
 	}
 
-	/**
+	/** Creates a standalone counter, with no downstream to delegate writes to.
 	 * @param streamOut
 	 */
-	public FilterByteBag(final int initialSize) { 
-		this.counters = new int[initialSize]; 
+	public FilterByteBag(final int initialSize) {
+		this.counters = new int[initialSize];
 	}
 
-	/**
+	/** Creates a filter counting byte occurrences while delegating writes to the given stream.
 	 * @param streamOut
 	 */
 	public FilterByteBag(final IStreamOutByte streamOut, final int initialSize) {
 		super(streamOut);
-		this.counters = new int[initialSize]; 
+		this.counters = new int[initialSize];
 	}
-	
-	/**
+
+	/** Creates a filter counting byte occurrences while delegating writes to the given stream.
 	 * @param streamOut
 	 */
 	public FilterByteBag(final OutputStream streamOut, final int initialSize) {
 		super(streamOut);
-		this.counters = new int[initialSize]; 
+		this.counters = new int[initialSize];
 	}
 	
 	////////////////////////////////////////////////////////////////////////////////
@@ -151,10 +161,12 @@ extends FilterOutByte {
 	/// testing & main Methods
 	///////////////////////////////////////////////////////////////////////////
 	
+	/** Runs {@link #testIt()}. */
 	public static void main(String[] args) {
 		testIt();
 	};
-	
+
+	/** Checks the built-in letter-frequency tables against their known totals. */
 	public static void testIt() {
 		testTable("ENGLISH", FREQUENCIES_INSENSITIVE_ENGLISH, 583252);
 		testTable("GERMAN ", FREQUENCIES_INSENSITIVE_GERMAN, 10000);

@@ -9,6 +9,11 @@ package streamIO.integer.random;
  * This corresponds to ran1() from the Numerical Recipes 2nd Ed.
  * 
  * In Fact this is a stateful Filter on the incoming Stream of random Numbers. 	
+ * <!-- docstate
+ * tags: [code/random_number_generation, code/quasi_random_sequence]
+ * concepts: [Pseudo-Random and Quasi-Random Integer Generator Family with Mark/Restore Replay]
+ * facets: {layer: utility, status: legacy, complexity: medium}
+ * -->
  */
 public class RandomShuffle
 extends ARandomLong {

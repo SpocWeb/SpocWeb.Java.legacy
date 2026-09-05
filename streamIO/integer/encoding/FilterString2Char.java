@@ -12,8 +12,6 @@ import streamIO.integer.filter.FilterByte;
 import function.string.StringFunction;
 
 /**
-  * Title: FilterString2Char<p>
-  * Description:
   * Recodes the Bytes coming through this Input streamIO
   * by looking up their Values in a String[] Array.
   * This is NOT a Size-preserving Transformation!
@@ -26,10 +24,10 @@ import function.string.StringFunction;
   * Other XML Markup can encode all printable Latin-1 (ISO-8859-1) Characters up to 255,
   * so they can be written in UTF-8 with single Byte Unicode Characters!
   * Other Alternatives for german Umlaut Characters is their standard Replacement:
-  * ss for ß
-  * ae for ä
-  * oe for ö
-  * ue for ü
+  * ss for ï¿½
+  * ae for ï¿½
+  * oe for ï¿½
+  * ue for ï¿½
   *
   * Known SubClasses:
   *
@@ -38,6 +36,15 @@ import function.string.StringFunction;
   * Created on	2002-02-17, 12;08;22<p>
   * @author 	Matthias Heuer
   * @version	1.0
+  * <!-- docstate
+  * pass: 2
+  * mtime: 2026-09-05T21:39:24Z
+  * digest: b18d775d60d627d93688515ff4b12c0ab9767617608e6fa071e34cb498b78ba7
+  * stale: false
+  * tags: [code/stream_filter, code/base64_encoding, code/crc, code/xor_cipher]
+  * concepts: [Byte/Character Re-Encoding Filters - Base64 BinHex URL/Entity Escaping CRC XOR]
+  * facets: {layer: utility, status: legacy, complexity: medium}
+  * -->
   */
 public class FilterString2Char
 extends FilterByte {
@@ -50,7 +57,8 @@ extends FilterByte {
 //  static Methods
 ////////////////////////////////////////////////////////////////////////////////
 
-	/** @return the String if chr is contained in chars_,
+	/** Looks up the given string in the map and returns one character of the result.
+	 * @return the String if chr is contained in chars_,
 	 *  @throws NullPointerException otherwise	 */
 	final static public char LOOKUP(Map string2char, String str, int pos)
 	throws NullPointerException { //IndexOutOfBoundsException {
@@ -216,6 +224,10 @@ extends FilterByte {
 			return chr; }
 		while (stop != (chr = streamIn.read())) {
 			SB.append((char) chr); }
+		// TODO: LOGIC: SB is never cleared (e.g. `SB.setLength(0)`) after lookup() consumes
+		// it, so the next encoded section's characters are appended onto this section's
+		// leftover content instead of starting fresh, corrupting every lookup after the
+		// first encoded section in a stream.
 		return lookup(); }
 
 	/**
@@ -231,6 +243,11 @@ extends FilterByte {
 			if (chr != stop) {
 				SB.append((char) chr);
 				return; }
+			// TODO: LOGIC: `collecting` is never reset to false here, and SB is never
+			// cleared, after lookup() consumes the collected section - every subsequent
+			// character is treated as still inside a collected section (appended to the
+			// stale SB instead of written through), so only the very first encoded section
+			// in a stream is ever decoded correctly.
 			chr = lookup();
 		} else { //!collecting
 			if (chr == start) {

@@ -16,9 +16,7 @@ import streamIO.integer.IStreamOutByte;
 import streamIO.integer.pipe.ByteStreamerThread;
 
 /**
- * Title: FilterBuffer<p>
- * Purpose:
- * Implements a dynamically growing asynchronous Buffer / Cache / Queue 
+ * Implements a dynamically growing asynchronous Buffer / Cache / Queue
  * between an InputStream and an OutputStream. 
  *
  * Design Decisions / Implementation Details:
@@ -41,6 +39,15 @@ import streamIO.integer.pipe.ByteStreamerThread;
  * @author mheuer
  * @version	1.0
  *
+ * <!-- docstate
+ * pass: 2
+ * mtime: 2026-09-05T21:43:10Z
+ * digest: e7e064d86e76db0eecd85789b226689249869f94cccc2f22af3ed28a2d475a34
+ * stale: false
+ * tags: [code/stream_filter]
+ * concepts: [Pluggable Byte-Stream Filter Infrastructure and java.io Adapters]
+ * facets: {layer: utility, status: legacy, complexity: medium}
+ * -->
  */
 public class FilterBuffer 
 extends FilterByte {
@@ -147,6 +154,7 @@ extends FilterByte {
 	/// #region : Parent AFilter: Implementation / Overrides
 	////////////////////////////////////////////////////////////////////////////////
 	
+	/** Flushes any buffered bytes not yet written downstream. */
 	public void close() throws IOException {
 		if (bufferPosition >= 0){
 			streamOut.write(buffer, 0, bufferPosition); }
@@ -165,7 +173,8 @@ extends FilterByte {
 		}
 	}
 
-	/** @see streamIO.Byte.IStreamIn_Byte#read()	 */
+	/** Reads the next buffered byte, refilling the buffer from the wrapped stream when exhausted.
+	 * @see streamIO.Byte.IStreamIn_Byte#read()	 */
 	public int read() throws IOException {
 		if (++bufferPosition >= length) { //read late
 			bufferPosition = 0;

@@ -10,10 +10,7 @@ import java.io.OutputStream;
 import streamIO.integer.IStreamOutByte;
 
 /**
- * Title: IConfigFilterOut<p>
- * Description:
- * Purpose:
- * A Filter whose Output Stream can be replaced during Runtime. 
+ * A Filter whose Output Stream can be replaced during Runtime.
  * This is necessary for a pluggable Architecture. 
  *
  * Known SubClasses: <none>
@@ -26,6 +23,15 @@ import streamIO.integer.IStreamOutByte;
  * @author mheuer
  * @version	1.0
  *
+ * <!-- docstate
+ * pass: 2
+ * mtime: 2026-09-05T21:42:34Z
+ * digest: 4e98d386c98c46ee6ee7f11c2abb3358ed119ca97e2b153d1170fac89eb1bcbf
+ * stale: false
+ * tags: [code/stream_filter]
+ * concepts: [Pluggable Byte-Stream Filter Infrastructure and java.io Adapters]
+ * facets: {layer: utility, status: legacy, complexity: medium}
+ * -->
  */
 public interface IPlugAbleFilterOutByte 
 extends IStreamOutByte {

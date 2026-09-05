@@ -9,10 +9,7 @@ import streamIO.integer.IStreamOutByte;
 import streamIO.integer.filter.FilterByte;
 
 /**
-  * Title: FilterBinHex2Byte<p>
-  * Description:
-  * Encodes the Bytes coming through this Input streamIO
-  * by converting their Values into a Hexadecimal Encoding.
+  * Decodes a stream of two-character hexadecimal ("BinHex") digit pairs back into bytes.
   *
   * An encoding scheme that converts binary data into ASCII characters.
   * Any file, whether it be a graphics file, a text file, or a binary executable file,
@@ -52,6 +49,15 @@ import streamIO.integer.filter.FilterByte;
   * Created on	2002-02-17, 12;08;22<p>
   * @author 	Matthias Heuer
   * @version	1.0
+  * <!-- docstate
+  * pass: 2
+  * mtime: 2026-09-05T21:35:13Z
+  * digest: bff0086e88c24faddec77393c777a419e48fe7ed30da6a54e55075e406120fe6
+  * stale: false
+  * tags: [code/stream_filter, code/base64_encoding, code/crc, code/xor_cipher]
+  * concepts: [Byte/Character Re-Encoding Filters - Base64 BinHex URL/Entity Escaping CRC XOR]
+  * facets: {layer: utility, status: legacy, complexity: medium}
+  * -->
   */
 public class FilterBinHex2Byte
 extends FilterByte {
@@ -157,7 +163,12 @@ extends FilterByte {
 /*		if (bigEndian) {
 			return char2Byte((char) n0, (char) n1); }
 			return char2Byte((char) n1, (char) n0); }
-*/		if (n0 <= '9') {
+*/		// TODO: LOGIC: wrong nibble conversion, inlined incorrectly from char2Nibble()/
+		// char2Byte() above: a digit should subtract '0' (giving 0-9), not '9' (giving
+		// negative values for every digit but '9' itself); a letter should subtract
+		// ('A'-10), not ('A'+10) (giving negative values for 'A'-'F' too). Every decoded
+		// byte from this read() is wrong except for an input pair of two '9' characters.
+		if (n0 <= '9') {
 			n0 -= '9'; } else {
 			n0 -= 'A' + 10; }
 		if (n1 <= '9') {
@@ -185,7 +196,9 @@ extends FilterByte {
 /*		if (bigEndian) {
 			return char2Byte((char) n0, (char) n1); }
 			return char2Byte((char) n1, (char) n0); }
-*/		if (n0 <= '9') {
+*/		// TODO: LOGIC: same wrong nibble conversion as read() above - subtracts '9'/('A'+10)
+		// instead of '0'/('A'-10), so every decoded byte is wrong except for two '9' digits.
+		if (n0 <= '9') {
 			n0 -= '9'; } else {
 			n0 -= 'A' + 10; }
 		if (n1 <= '9') {

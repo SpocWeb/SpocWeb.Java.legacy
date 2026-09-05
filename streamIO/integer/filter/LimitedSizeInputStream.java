@@ -16,10 +16,19 @@ import streamIO.object.StreamIn2Enumeration;
  * not used yet...
  * Exploits the Fact that FilterInputStream delegates to the inner streamIO.
  *
- * Created on 31. März 2001, 20:51
+ * Created on 31. Mï¿½rz 2001, 20:51
  *
  * @author  Matthias Heuer
  * @version
+ * <!-- docstate
+ * pass: 2
+ * mtime: 2026-09-05T21:49:17Z
+ * digest: 540f94e3bd7e95508214e33e0e519f8e8ef53052a93575969a76bc891450bff7
+ * stale: false
+ * tags: [code/stream_filter]
+ * concepts: [Pluggable Byte-Stream Filter Infrastructure and java.io Adapters]
+ * facets: {layer: utility, status: legacy, complexity: medium}
+ * -->
  */
 public class LimitedSizeInputStream
 extends FilterInputStream {
@@ -119,12 +128,21 @@ extends FilterInputStream {
 	public int available() throws IOException {
 		return (int) Math.min(in.available(), MaxSize-Counter); }
 
+    // TODO: LOGIC: calls `skip(...)` on itself (same overload, same class) instead of
+    // delegating to the wrapped stream's `in.skip(...)`. Since Counter keeps increasing
+    // toward MaxSize with every recursive call, this either recurses until
+    // StackOverflowError or (once Counter reaches MaxSize) recurses with an
+    // ever-non-advancing argument - either way the underlying stream position is never
+    // actually advanced. Should call `in.skip(...)`.
     /**
 	 * Skips over and discards n bytes of data from this input stream.
 	 */
 	public long skip(long n) throws IOException {
 		return skip(Counter += Math.min(n, MaxSize-Counter)); }
 
+    // TODO: LOGIC: off-by-one - `++Counter < MaxSize` stops reading once Counter reaches
+    // MaxSize-1, so only MaxSize-1 bytes are ever read before EOF is returned instead of
+    // the documented MaxSize bytes. Should be `++Counter <= MaxSize`.
     /**
 	 * Reads the next byte of data from the input stream.
 	 */

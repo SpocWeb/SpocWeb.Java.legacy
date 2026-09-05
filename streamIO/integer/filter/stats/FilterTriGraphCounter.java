@@ -21,6 +21,15 @@ import streamIO.integer.filter.FilterOutByte;
  * @see streamIO.object.enumer.container.Bag
  * @author heuerm
  *
+ * <!-- docstate
+ * pass: 2
+ * mtime: 2026-09-05T21:48:44Z
+ * digest: fcf78416df7427edbdded6e06006fb74a61014f739c7fa390fd735ab4508a763
+ * stale: false
+ * tags: [code/frequency_counting, code/statistics]
+ * concepts: [Byte and Digraph/Trigraph Frequency Counters]
+ * facets: {layer: utility, status: legacy, complexity: medium}
+ * -->
  */
 public class FilterTriGraphCounter 
 extends FilterOutByte {
@@ -38,36 +47,32 @@ extends FilterOutByte {
 	/** cache for the second last Character, initialize with White Space  */
 	int Char2;
 
-	/**
-	 *  
-	 */
+	/** Creates a standalone byte-triple counter, with no downstream to delegate writes to. */
 	public FilterTriGraphCounter() {
 		this(FilterByteBag.MAX_CHAR_DEFAULT);
 	}
 
-	/**
+	/** Creates a filter counting byte triples while delegating writes to the given stream.
 	 * @param streamOut
 	 */
 	public FilterTriGraphCounter(IStreamOutByte streamOut) {
 		this(streamOut, FilterByteBag.MAX_CHAR_DEFAULT);
 	}
 
-	/**
+	/** Creates a filter counting byte triples while delegating writes to the given stream.
 	 * @param streamOut
 	 */
 	public FilterTriGraphCounter(OutputStream streamOut) {
 		this(streamOut, FilterByteBag.MAX_CHAR_DEFAULT);
 	}
 
-	/**
-	 *  
-	 */
+	/** Creates a standalone byte-triple counter, with no downstream to delegate writes to. */
 	public FilterTriGraphCounter(int _initialSize) {
 		super();
 		this.counters = new int[_initialSize][_initialSize][_initialSize];
 	}
 
-	/**
+	/** Creates a filter counting byte triples while delegating writes to the given stream.
 	 * @param streamOut
 	 */
 	public FilterTriGraphCounter(IStreamOutByte streamOut, int _initialSize) {
@@ -75,7 +80,7 @@ extends FilterOutByte {
 		this.counters = new int[_initialSize][_initialSize][_initialSize];
 	}
 
-	/**
+	/** Creates a filter counting byte triples while delegating writes to the given stream.
 	 * @param streamOut
 	 */
 	public FilterTriGraphCounter(OutputStream streamOut, int _initialSize) {
