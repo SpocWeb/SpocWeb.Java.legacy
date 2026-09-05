@@ -118,6 +118,22 @@ path, so invoking one from a sub-folder produces keys nothing can join on.
 - The index shrank from 29,995 to 25,220 rows because the Java `build-index` merges by
   unit-id where the C# one appends. The 4,775 removed rows were exact duplicate unit-ids
   from repeated C# runs; all 25,201 distinct unit-ids survive.
+- **The Java tool can now consolidate the shared vocabulary itself (2026-09-05).**
+  `consolidate-vocabulary` and `redistribute-merges` are built, pulled forward out of Milestone
+  C because `tags-schema.yaml` is machine-wide and the Java side could otherwise only follow a
+  C# consolidation by hand. Normalisation tables, merge semantics and the `confidence` column's
+  spelling are copied from the C# consolidator on purpose: both tools write the same file, so a
+  difference would make the vocabulary depend on which ran last. Verified against the live
+  schema - both propose exactly `generics -> generic`, usage 10, `PluralSingular`.
+
+  That pair is in the reject ledger, which is why `--reject-file` was added in the same change
+  and should be passed on **every** run: the ledger is machine-wide because whether two tags
+  mean the same thing does not depend on which repo, or which tool, asked. With it the Java
+  tool proposes nothing, which is the correct answer for the current vocabulary.
+
+  75 Java tests pass. Console messages now use plain hyphens; the em dashes were rendering as
+  mojibake in the Windows console.
+
 - **The vocabulary is consolidated on the singular form (2026-09-05).** The 115 reviewed
   near-duplicate merges are applied, with the singular canonical in every case rather than
   whichever spelling the index happened to use more - `--prefer=singular`, added for this,
