@@ -12,27 +12,32 @@ import function.IMeasurAble;
 import function.byref.ByRefDouble;
 
 /**
- * Title: InterpolDouble<p>
- * Description:
- * This Class implements a polynomial Interpolator
- * that interpolates a Function dependent on a one-dimensional Variable.
- * 
- * Also contains Methods for cubic Spline Interpolation in 2 Dimenstions.  
- * 
- * 
- * Known SubClasses: <none>
+ * Implements a polynomial Interpolator that interpolates a Function dependent on a
+ * one-dimensional Variable, and also provides static Methods for rational-function and
+ * bicubic-spline Interpolation in 2 Dimensions.
+ *
+ * <p>Known SubClasses: <none>
  *
  * Known Uses: <none>
- * 
- * Similar Classes: 
+ *
+ * Similar Classes:
  * @see streamIO.copy.group.ring.Interpolator
- * 
+ *
  * Copyright:	Copyright (c) Matthias Heuer<p>
  * Company:	personal<p>
  * Created on	10-26-2002, 12:47 PM<p>
  * @author mheuer
  * @version	1.0
  *
+ * <!-- docstate
+ * pass: 2
+ * mtime: 2026-09-05T11:45:36Z
+ * digest: 5a5dfc775c4f45cb26a56a0eb5939dc37de4d638c4f9af6ba5d85279a12be4e0
+ * stale: false
+ * tags: [code/interpolation]
+ * concepts: [Double Interpolation]
+ * facets: {layer: utility, status: legacy, complexity: low}
+ * -->
  */
 public class InterpolDouble {
 
@@ -498,10 +503,10 @@ public class InterpolDouble {
 		x2u=yy[3];
 		for (int i=0; i<4; i++) { 
 			xxyy=xx[i]*yy[i];
-			y[i]=xxyy*xxyy; //f(x,y)=x²y²
+			y[i]=xxyy*xxyy; //f(x,y)=xï¿½yï¿½
 			y1[i]=2*yy[i]*xxyy; //df/dx=2*y(xy)
 			y2[i]=2*xx[i]*xxyy; //df/dy=2*x(xy)
-			y12[i]=4*xxyy; //d²f/dxdy=4*x*y
+			y12[i]=4*xxyy; //dï¿½f/dxdy=4*x*y
 		}
 		L.n("x1 \t x2 \t y \t expect \t y1 \t expect \t y2 \t expect");
 		for (int i=1;i<=10;i++) {

@@ -22,6 +22,15 @@ import streamIO.copy.groupM.IGroupM;
  * determining the local Optimum,
  * and combining it to a global Optimum.
  * Those Multiplications with the highest Dimensions are performed first!
+ * <!-- docstate
+ * pass: 2
+ * mtime: 2026-09-05T10:13:18Z
+ * digest: 20efe5449b74c915c0965597e47eba4d46e197dc3f846efaf6c8fdf2707e18f3
+ * stale: false
+ * tags: [code/dynamic_programming]
+ * concepts: [Matrix Chain Bracketing]
+ * facets: {layer: utility, status: legacy, complexity: medium}
+ * -->
  */
 public class Bracketing {
 

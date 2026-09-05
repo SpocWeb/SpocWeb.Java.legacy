@@ -8,12 +8,9 @@ package math.wavelet;
 import math.vector.VectorDouble;
 
 /**
- * Title: WaveletStep<p>
- * Description:
- * Purpose:
- * Implementation of Wavelet Stepper Routine. 
- * Defines static Instances (Flyweight Pattern) 
- * that hold the Coefficients required to perform the Transformation. 
+ * Implements a generic Daubechies-family Wavelet Filter Step, precomputing the Filter's
+ * Coefficient pairs and offering the 4/6/12/20-Coefficient variants as Flyweight Instances
+ * via {@link #GET_PARTIAL_TRAFO(int)}.
  *
  * Known SubClasses: <none>
  *
@@ -25,15 +22,27 @@ import math.vector.VectorDouble;
  * @author mheuer
  * @version	1.0
  *
+ * <!-- docstate
+ * pass: 2
+ * mtime: 2026-09-05T11:52:49Z
+ * digest: 12d4590e61ee79b1f01aa7d663c4a2dd3a0c25e5904a67be1289b780a6d6ecf7
+ * stale: false
+ * tags: [code/wavelet_transform]
+ * concepts: [Wavelet Step Base Class]
+ * facets: {layer: utility, status: legacy, complexity: low}
+ * -->
  */
 final public class WaveletStep implements IWaveletStep {
 
 	private static final double c4[]={Daubechies4.C0, Daubechies4.C1, Daubechies4.C2, Daubechies4.C3};
 	
+	/** Normalization Factor shared by the six 6-Coefficient Filter Values. */
 	final static public double C6_NORM = Math.sqrt(2)/32;
-	
+
+	/** Square Root of 10, used to derive the 6-Coefficient Filter Values. */
 	final static public double SQRT10 = Math.sqrt(10);
-	
+
+	/** Square Root of (5+2*SQRT10), used to derive the 6-Coefficient Filter Values. */
 	final static public double C6_SQRT = Math.sqrt(5+SQRT10+SQRT10);
 	
 	private static final double c6[]={
@@ -59,6 +68,11 @@ final public class WaveletStep implements IWaveletStep {
 	
 	private static final WaveletStep[] flyWeights= new WaveletStep[21]; 
 
+	/**
+	 * Looks up the Flyweight Filter Step for the given Coefficient count.
+	 *
+	 * @throws NullPointerException when no Filter is registered for that count
+	 */
 	final static public WaveletStep GET_PARTIAL_TRAFO(final int numCoefficients) {
 		if (flyWeights[numCoefficients] == null) {
 			throw new NullPointerException("No Trafo defined for "+numCoefficients+" Coefficients!"); }
@@ -77,7 +91,11 @@ final public class WaveletStep implements IWaveletStep {
 	
 	private final double[][] coeffs;
 
-	/** @return a meaningful String Representation for Debugging	 */
+	/**
+	 * Returns this class's name annotated with its Coefficient count.
+	 *
+	 * @return a meaningful String Representation for Debugging
+	 */
 	public String toString() { return getClass().getName()+"["+coeffs.length+"]"; }
 
 	/** initialize coefficients for Partial Wavelet Transform, Chapter 13.10
@@ -98,8 +116,10 @@ final public class WaveletStep implements IWaveletStep {
 	}
 
 	/**
+	 * Applies this Filter's Coefficients to the Array in place, forward or inverse.
+	 *
 	 * @see math.IWaveletStep#wtstep(double[], int, boolean)
-	 * Partial Wavelet Transform, Chapter 13.10	
+	 * Partial Wavelet Transform, Chapter 13.10
 	 * Applies an arbitrary wavelet Filter to Data Vector a[1..n] (iSign = true)
 	 * or it's Transpose (iSign = false)
 	 * Used hierarchically by wt1 and wtn.

@@ -9,10 +9,8 @@ import math.vector.VectorDouble;
 import streamIO.Assert;
 
 /**
- * Title: Wavelet<p>
- * Description:
- * Purpose:
- * Collects static Methods to transform real Vectors into Wavelet Space and back. 
+ * Collects static Methods to transform real Vectors into Wavelet Space and back, for both
+ * one-dimensional and multidimensional Data, given a pluggable {@link IWaveletStep}.
  *
  * Known SubClasses: <none>
  *
@@ -24,6 +22,15 @@ import streamIO.Assert;
  * @author mheuer
  * @version	1.0
  *
+ * <!-- docstate
+ * pass: 2
+ * mtime: 2026-09-05T11:53:03Z
+ * digest: 3cd6b021660f26dcab84e3789ae5ffd81dbe99f36aba8b7c18b6bd0fe738f558
+ * stale: false
+ * tags: [code/wavelet_transform]
+ * concepts: [Wavelet Transform Driver]
+ * facets: {layer: utility, status: legacy, complexity: medium}
+ * -->
  */
 public class Wavelet {
 	
@@ -33,6 +40,11 @@ public class Wavelet {
 	 * @param n Portion of the Vector to transform
 	 * @param inverse Flag to perform the inverse Transformation 
 	 * @param wtstep Stepper Routine 
+	 * <!-- docstate
+	 * tags: [code/wavelet_transform]
+	 * concepts: [Single-Level Wavelet Transform]
+	 * facets: {layer: utility, status: legacy, complexity: low}
+	 * -->
 	 */
 	final static public void transformWavelet
 	( final double[] a, final int n, final boolean inverse, final IWaveletStep wtstep) {
@@ -52,6 +64,11 @@ public class Wavelet {
 	 * @param nn Array of Dimensions
 	 * @param inverse Flag to perform the inverse Transformation 
 	 * @param wtstep Stepper Routine to perform the individual Step
+	 * <!-- docstate
+	 * tags: [code/wavelet_transform]
+	 * concepts: [Multi-Level Wavelet Transform]
+	 * facets: {layer: utility, status: legacy, complexity: low}
+	 * -->
 	 */
 	final static public void transformWavelet
 	( final double[] a, final int[] nn, final boolean inverse, final IWaveletStep wtstep) {
@@ -98,6 +115,14 @@ public class Wavelet {
 	private static final int NY = 1 << 4;
 	private static final int[] ndim={NX,NY};
 
+	/** Runs the 1D and multidimensional Wavelet round-trip Tests for every registered Filter.
+	 *
+	 * <!-- docstate
+	 * tags: [code/wavelet_transform]
+	 * concepts: [Self-Test Method]
+	 * facets: {layer: test, status: legacy, complexity: low}
+	 * -->
+	 */
 	final static public void testIt() {
 		testWavelet1Dim(Daubechies4.SINGLETON);
 		testWavelet1Dim(WaveletStep.GET_PARTIAL_TRAFO( 4));
@@ -180,8 +205,16 @@ public class Wavelet {
 		System.out.println();
 	}
 
+	/** Runs {@link #testIt()} as the externally visible Main Method.
+	 *
+	 * <!-- docstate
+	 * tags: [code/wavelet_transform]
+	 * concepts: [Demo Entry Point]
+	 * facets: {layer: test, status: legacy, complexity: low}
+	 * -->
+	 */
 	final static public void main(String[] args) {
-		testIt(); 
+		testIt();
 	}
 
 }

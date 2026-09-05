@@ -12,10 +12,8 @@ import streamIO.real.IStreamIn_Float;
 import function.byref.ByRefFloat;
 
 /**
- * Title: AdaptiveMCIntegrator<p>
- * Description:
- * Implements an adaptive Grid Monte Carlo Integration 
- * with possible Restarts on several Levels. 
+ * Implements an adaptive Grid (VEGAS) Monte Carlo Integration, with possible Restarts of
+ * the Grid, the accumulated Values or the Parameters on several Levels.
  *
  * Known SubClasses: <none>
  *
@@ -27,6 +25,15 @@ import function.byref.ByRefFloat;
  * @author mheuer
  * @version	1.0
  *
+ * <!-- docstate
+ * pass: 2
+ * mtime: 2026-09-05T11:50:26Z
+ * digest: 59b0e83f9700fc5e5e41484b231ada1a296e243a08b14b61dfa216ddc48762a7
+ * stale: false
+ * tags: [code/numerical_integration]
+ * concepts: [Adaptive Monte Carlo Integrator]
+ * facets: {layer: utility, status: legacy, complexity: medium}
+ * -->
  */
 public class AdaptiveMCIntegrator {
 
@@ -117,15 +124,17 @@ public class AdaptiveMCIntegrator {
 	/////////////////////////////////////////////////////////////////////////////////////
 
 	/**
-	 * 
+	 * Allocates the Grid Arrays sized for the given Dimension Count and initializes them
+	 * via {@link #reset(IParamScalarField, float[][], int, int)}.
+	 *
 	 * @param ndim_ the Number of Dimensions to integrate in
-	 * @param ran_ the Random Number Generator to use 
-	 * 
-	 * @param fxn_ the Function fxn(y[], weigth) to integrate across the R^n Interval 
-	 * @param regn_ The rectangular (Hyper-)Volume in R^n over which to integrate 
-	 * @param ncall the number of Function Evaluations to perform 
+	 * @param ran_ the Random Number Generator to use
+	 *
+	 * @param fxn_ the Function fxn(y[], weigth) to integrate across the R^n Interval
+	 * @param regn_ The rectangular (Hyper-)Volume in R^n over which to integrate
+	 * @param ncall the number of Function Evaluations to perform
 	 * @param maxIter the maximum Number of Iterations (should be between 5 and 10)
-	 */	
+	 */
 	public AdaptiveMCIntegrator(final int ndim_, final IStreamIn_Float ran_, final IParamScalarField fxn_, final float[][] region_, final int ncall, final int maxIter) {
 		this.ndim = ndim_; 
 		this.ran = ran_;
@@ -223,7 +232,7 @@ public class AdaptiveMCIntegrator {
 	 * @param init Flag to indicate Initialization 
 	 * @param ncall number of Function Calls per Iteration  
 	 * @param numIter Number of Iterations (less than 5..10, more doesn't help)
-	 * @param stdDevChiSqr if not null, the Values are filled with the Standard Deviation[0] and Chi²[1]
+	 * @param stdDevChiSqr if not null, the Values are filled with the Standard Deviation[0] and Chiï¿½[1]
 	 */
 	public float integrate(final int ncall, final int numIter, final float[] stdDevChiSqr) {
 		float integral = 0;

@@ -6,10 +6,8 @@
 package math.wavelet;
 
 /**
- * Title: IWaveletStep<p>
- * Description:
- * Purpose:
- * Interface defining the Stepper Method for Wavelet Transformation.  
+ * Defines the single Stepper Method that applies one Wavelet Filter Sweep to a Data Array,
+ * implemented by each concrete Wavelet Filter (e.g. {@link Daubechies4}, {@link WaveletStep}).
  *
  * Known Uses: <none>
  *
@@ -19,6 +17,15 @@ package math.wavelet;
  * @author mheuer
  * @version	1.0
  *
+ * <!-- docstate
+ * pass: 2
+ * mtime: 2026-09-05T11:52:19Z
+ * digest: 1947d12136ced4ddb3292f59a4115a1dc3458857288467a5732f9bbb3da98c67
+ * stale: false
+ * tags: [code/wavelet_transform]
+ * concepts: [Wavelet Step Interface]
+ * facets: {layer: utility, status: legacy, complexity: low}
+ * -->
  */
 public interface IWaveletStep {
 	

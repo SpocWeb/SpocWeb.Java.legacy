@@ -8,10 +8,8 @@ package math.wavelet;
 import math.vector.VectorDouble;
 
 /**
- * Title: Daubechies4<p>
- * Description:
- * Purpose:
- * Implementation of a Wavlet Step Routine 
+ * Implements the 4-coefficient Daubechies Wavelet Filter Step (Numerical Recipes 13.10),
+ * as a Singleton {@link IWaveletStep}.
  *
  * Known SubClasses: <none>
  *
@@ -23,21 +21,37 @@ import math.vector.VectorDouble;
  * @author mheuer
  * @version	1.0
  *
+ * <!-- docstate
+ * pass: 2
+ * mtime: 2026-09-05T11:52:11Z
+ * digest: 587a2f530055a990f0d28d700c4cbbd5c6ccf518807f68de53348ebd1bba81b2
+ * stale: false
+ * tags: [code/wavelet_transform]
+ * concepts: [Daubechies-4 Wavelet Step]
+ * facets: {layer: utility, status: legacy, complexity: medium}
+ * -->
  */
 final public class Daubechies4 implements IWaveletStep {
 
-	final static public Daubechies4 SINGLETON = new Daubechies4(); 
+	/** The single shared Instance of this stateless Filter Step. */
+	final static public Daubechies4 SINGLETON = new Daubechies4();
 
 	/** private Singleton Constructor	 */
 	private Daubechies4() {}
 
+	/** Normalization Factor shared by all four Filter Coefficients. */
 	final static public double C_NORM = Math.sqrt(2)/8;
 
+	/** Square Root of 3, used to derive the four Filter Coefficients. */
 	final static public double SQRT3 = Math.sqrt(3);
 
+	/** First Daubechies-4 Filter Coefficient. */
 	final static public double C0 = (1+SQRT3)*C_NORM; // 0.4829629131445341;
+	/** Second Daubechies-4 Filter Coefficient. */
 	final static public double C1 = (3+SQRT3)*C_NORM; // 0.8365163037378079;
+	/** Third Daubechies-4 Filter Coefficient. */
 	final static public double C2 = (3-SQRT3)*C_NORM; // 0.2241438680420134;
+	/** Fourth Daubechies-4 Filter Coefficient. */
 	final static public double C3 = (1-SQRT3)*C_NORM; //-0.1294095225512604;
 
 	/**
@@ -49,7 +63,11 @@ final public class Daubechies4 implements IWaveletStep {
 		daubechies4Step(a, n, isign);
 	}
 
-	/** @return a meaningful String Representation for Debugging	 */
+	/**
+	 * Returns this class's fully-qualified name.
+	 *
+	 * @return a meaningful String Representation for Debugging
+	 */
 	public String toString() { return getClass().getName(); }
 
 	/**

@@ -1,7 +1,10 @@
 package math;
 
 /**
- * Added because of the frequent use of 2-dim Matrices for nontrivial (i.e. > 1dim)
+ * Represents a paraxial (Gaussian) optics ray-transfer (ABCD) matrix and its named factory
+ * constructions for propagation, refraction and lenses.
+ *
+ * <p>Added because of the frequent use of 2-dim Matrices for nontrivial (i.e. > 1dim)
  * linear Systems, e.g. Transistors, Optics, passive Networks etc.
  *
  * Here interpreted as linear (paraxial) Optics:
@@ -21,7 +24,16 @@ package math;
  * Die Tatsache, dass Det (M) = 1 ist, drueckt die Erhaltung der Brillianz bzw.
  * des Produktes von Groesse (Flaeche) und (Raum-) Winkel aus.
  *
- * Komplexe Zahlen können als antisymetrische Matrizen dargestellt werden.
+ * Komplexe Zahlen kï¿½nnen als antisymetrische Matrizen dargestellt werden.
+ * <!-- docstate
+ * pass: 2
+ * mtime: 2026-09-05T11:45:27Z
+ * digest: 7d6bb42fb7823d6b155605e2e54ab0c855f507d754c97d6b6ddd9ed6dcc4e67e
+ * stale: false
+ * tags: [code/matrix_math]
+ * concepts: [2D Linear Optics Transform]
+ * facets: {layer: domain, status: legacy, complexity: medium}
+ * -->
  */
 public class LinearOptics2D {
 

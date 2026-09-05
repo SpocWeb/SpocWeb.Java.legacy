@@ -1,7 +1,18 @@
 package math;
 
 
-/** Defines a 2D Line by it's Vector2D Start and End Point */
+/** Defines a 2D Line by it's Vector2D Start and End Point
+ *
+ * <!-- docstate
+ * pass: 2
+ * mtime: 2026-09-05T11:45:22Z
+ * digest: 56b42cf08423e662ddce12828a1d0dbe889bf73a8332280c7ff52dda0248e0df
+ * stale: false
+ * tags: [code/2d_geometry, code/computational_geometry]
+ * concepts: [2D Line Segment]
+ * facets: {layer: domain, status: legacy, complexity: low}
+ * -->
+ */
 public class Line2D {
 
 	/** Start Point of the Line	 */
@@ -19,6 +30,8 @@ public class Line2D {
 	}
 
 	/**
+	 * Computes twice the signed area of the triangle formed by this Line and a third Point.
+	 *
 	 * @return the Area of the Line and the Point.
 	 */
 	public double Area(Vector2D P3) {

@@ -14,9 +14,8 @@ import function.byref.ByRefFloat;
 import function.vector.IFloatScalarField;
 
 /**
- * Title: StratifiedMCIntegrator<p>
- * Description:
- * Implements a recursive stratified Monte Carlo Integration. 
+ * Implements a recursive stratified Monte Carlo Integration over a rectangular Region in
+ * R^n, bisecting into two Subregions along the Dimension of highest Variance.
  *
  * Known SubClasses: <none>
  *
@@ -28,6 +27,15 @@ import function.vector.IFloatScalarField;
  * @author mheuer
  * @version	1.0
  *
+ * <!-- docstate
+ * pass: 2
+ * mtime: 2026-09-05T11:51:29Z
+ * digest: a66a68b090244ae1c9fa0b4baa12779a7e7a4ac8710879e191217de31f222f04
+ * stale: false
+ * tags: [code/numerical_integration]
+ * concepts: [Stratified Monte Carlo Integrator]
+ * facets: {layer: utility, status: broken, complexity: medium}
+ * -->
  */
 public class StratifiedMCIntegrator {
 
@@ -62,7 +70,7 @@ public class StratifiedMCIntegrator {
 	int iran; 
 	
 	/**
-	 * 
+	 * Constructs an Integrator that draws its sampling Points from the given Generator.
 	 */
 	public StratifiedMCIntegrator(final IStreamIn_Float ran_) {
 		this.ran = ran_;
@@ -78,14 +86,18 @@ public class StratifiedMCIntegrator {
 	 * @param dith Normally 0, 
 	 * but e.g. 0.1 when the Functions active Region 
 	 * falls on the Boundary of a 2^n Region Subdivision (2^n Tree)    
-	 * @param variance if not null, the Variance (StdDev²) is returned in [0]
+	 * @param variance if not null, the Variance (StdDevï¿½) is returned in [0]
 	 * @return the mean Value of the Function in this Region. 
 	 */
 	public float integrate(final IFloatScalarField func, final float region[][], final int nDim, final long numPoints,
 	final float dith, final float[] variance) {
 		final float[] pt=new float[1+nDim];
+		// TODO: LOGIC: the class-level Javadoc for this method documents `variance` as
+		// "if not null, the Variance ... is returned in [0]", but both this line and the
+		// recombination write below always dereference variance[0] unconditionally - passing
+		// null throws NullPointerException instead of silently skipping the output.
 		if (numPoints < MNBS) { //Too few Points for Bisection...
-			float summ2, summ=summ2=0; 
+			float summ2, summ=summ2=0;
 			for (long i=numPoints; --i>=0; ) { //...do straight Monte Carlo
 				RandomUniformVector.RANDOM_VECTOR(ran, pt,region[0],region[1],1,pt.length);
 				final float fVal= func.Map(pt);
@@ -94,7 +106,7 @@ public class StratifiedMCIntegrator {
 			}
 			variance[0]=Math.max(TINY,(summ2-summ*summ/numPoints)/(numPoints*numPoints));
 			return summ/numPoints;
-		} 
+		}
 		//perform preliminary (uniform) sampling 
 		final float[] rmid=new float[1+nDim];
 		final long npre=Math.max((long)(numPoints*PFAC),MNPT);

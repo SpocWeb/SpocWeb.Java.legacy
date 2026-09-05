@@ -2,13 +2,25 @@ package math;
 
 import function.byref.ByRefDouble;
 
-/**The 3D Vector is represented by three Coordinate Systems:
- * Rectangular:	a[0] = x, a[1] = y  , a[2] = z
+/**
+ * Represents an immutable-shaped 3D Vector holding its Coordinates in a shared Array,
+ * interpretable under three Coordinate Systems and convertible between them.
+ *
+ * <p>Rectangular:	a[0] = x, a[1] = y  , a[2] = z
  * Cylindric:	a[0] = r, a[1] = phi, a[2] = z
  * Sphaeric:	a[0] = r, a[1] = phi, a[2] = theta
  *
- * It can be converted into each of those by partly computing the Angles.	 
+ * It can be converted into each of those by partly computing the Angles.
  * @see math.VectorDouble which implements most of this Functionality
+ * <!-- docstate
+ * pass: 2
+ * mtime: 2026-09-05T11:47:40Z
+ * digest: 0f1b0252c63f617e9d0e8e457c0b9fcac5f99043c91a0a638d76feb4ff5a30b0
+ * stale: false
+ * tags: [code/vector_math, code/3d_geometry]
+ * concepts: [3D Vector]
+ * facets: {layer: domain, status: broken, complexity: medium}
+ * -->
  */
 final public class Vector3D {
 
@@ -103,11 +115,19 @@ final public class Vector3D {
 	public double det(final Vector3D v1, final Vector3D v2) {
 		return DET3x3(a, v1.a, v2.a); }
 
-	/** @return the Norm (Length) of this Vector */
+	/**
+	 * Computes the Euclidean Length of this Vector.
+	 *
+	 * @return the Norm (Length) of this Vector
+	 */
 	public double norm() {
 		return Math.sqrt(sqrNorm()); }
 
-	/** @return the Square of this Vector's Norm (Length)  */
+	/**
+	 * Computes the squared Euclidean Length of this Vector, avoiding the square root.
+	 *
+	 * @return the Square of this Vector's Norm (Length)
+	 */
 	public double sqrNorm() {
 		return 
 		ByRefDouble.SQR(a[0])+
@@ -125,16 +145,24 @@ final public class Vector3D {
 		a[2]*=v; 
 		return this; }
 
-	public Vector3D mul(final double v) { 
+	// TODO: LOGIC: the compound assignments a[0]*=v, a[1]*=v, a[2]*=v inside the constructor
+	// call arguments mutate this Vector's own coordinates as a side effect, even though the
+	// method name and return of a new Vector3D imply a non-mutating multiplication (unlike
+	// mulAt(), which is the mutating counterpart above).
+	/** Multiplication with a Scalar, returned as a new Vector. */
+	public Vector3D mul(final double v) {
 		return new Vector3D(a[0]*=v, a[1]*=v, a[2]*=v); }
 
+	/** Adds the given Vector to this Vector in place. */
 	public Vector3D addAt(final Vector3D v) {
-		a[0]+=v.a[0]; a[1]+=v.a[1]; a[2]+=v.a[2]; 
+		a[0]+=v.a[0]; a[1]+=v.a[1]; a[2]+=v.a[2];
 		return this; }
 
+	/** Adds the given Vector to this Vector, returned as a new Vector. */
 	public Vector3D add(final Vector3D v) {
 		return new Vector3D(a[0]+v.a[0], a[1]+v.a[1], a[2]+v.a[2]); }
 
+	/** Subtracts the given Vector from this Vector, returned as a new Vector. */
 	public Vector3D sub(final Vector3D v) {
 		return new Vector3D(a[0]-v.a[0], a[1]-v.a[1], a[2]-v.a[2]); }
 
@@ -151,18 +179,19 @@ final public class Vector3D {
 	public double PyramidVolume(final Vector3D v1, final Vector3D v2, final Vector3D v3) {
 		return sub(v1).det (sub (v2), sub (v3)); }
 	
-	/** 
-	 * 
-	 * @param rayOrigin The Origin of the Ray (1 Degree of Freedom) 
-	 * @param rayDirection The Direction of the Ray 
+	/**
+	 * Tests whether the given Ray intersects the Triangle spanned by the three given Points.
+	 *
+	 * @param rayOrigin The Origin of the Ray (1 Degree of Freedom)
+	 * @param rayDirection The Direction of the Ray
 	 * @param v0 Three Points...
-	 * @param v1 ...which define ... 
-	 * @param v2 ...the Plane and the Triangle. 
-	 * @return the Point in which the Ray intersects the Triangle, 
-	 * 			null if the Ray is parallel to the Triangle 
-	 * 			or hits the Plane outside the Triangle. 
+	 * @param v1 ...which define ...
+	 * @param v2 ...the Plane and the Triangle.
+	 * @return the Point in which the Ray intersects the Triangle,
+	 * 			null if the Ray is parallel to the Triangle
+	 * 			or hits the Plane outside the Triangle.
 	 */
-	final static public Vector3D rayIntersectsTriangle(final Vector3D rayOrigin, final Vector3D rayDirection, 
+	final static public Vector3D rayIntersectsTriangle(final Vector3D rayOrigin, final Vector3D rayDirection,
 	final Vector3D v0, final Vector3D v1, final Vector3D v2) {
 		// Calculate the edges of our triangle in the correct order
 		// for our winding (i.e. the Inner always lies 'right' to the Edge in the Plane).
@@ -180,7 +209,7 @@ final public class Vector3D {
 		// Now let's test to see if it's on the inside edge of each side.
 		// if Q is outside of any of the edge planes, we are done.
 		
-		// Determinant = N°(Q-Vertex of Edge)
+		// Determinant = Nï¿½(Q-Vertex of Edge)
 		// Determinant > 0 : Q is on the outside of the current edge.
 		// Determinant = 0 : Q is on the current edge.
 		// Determinant < 0 : Q is on the inside of the current edge.
@@ -242,18 +271,18 @@ final public class Vector3D {
 		// Plane equation
 		// Ax + By + Cz + D = 0
 		//
-		// normal°Q + D = 0
-		// normal°(P + t*Dir) + D = 0
-		// normal°P + t*normal°Dir + D = 0
+		// normalï¿½Q + D = 0
+		// normalï¿½(P + t*Dir) + D = 0
+		// normalï¿½P + t*normalï¿½Dir + D = 0
 		//
-		// t = -(D + normal°P)
-		// ———————-
-		// normal°Dir
+		// t = -(D + normalï¿½P)
+		// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½-
+		// normalï¿½Dir
 		//
 		// For any plane, D is the distance from the origin to the plane.
 		// By definition, D can be computed by calculating the negative
 		// of the normal dotted with any vertex on the plane.
-		// D = -normal°vertex0
+		// D = -normalï¿½vertex0
 		final double D = -planeNormal.map(planePoint);
 		
 		// denominator = Normal.Dir
@@ -304,6 +333,8 @@ final public class Vector3D {
 	public Vector3D angles (Vector3D[] Turn) {
 		a[1]=Math.atan2 (Math.sqrt (1.0-ByRefDouble.SQR(Turn [2].a[0])),Turn [2].a[0]); // = ArcSin (Turn [2,0]);
 		a[0]=Math.atan2 (Turn [0].a[0],-Turn [1].a[0]);
+		// TODO: LOGIC: a[] is allocated as new double[3] (valid indices 0-2), but this writes
+		// a[3] - guaranteed ArrayIndexOutOfBoundsException on every call to this method.
 		a[3]=Math.atan2 (Turn [2].a[2],-Turn [2].a[1]);
 		return this; }
 
@@ -327,6 +358,8 @@ final public class Vector3D {
 	 */
 	public Vector3D Sphaeric2Rect() {
 		Vector2D V2 = new Vector2D(a)			.Polar2Rect();
+		// TODO: LOGIC: a[] has only 3 elements (indices 0-2); a[3] here is out of bounds and
+		// throws ArrayIndexOutOfBoundsException on every call.
 		Vector2D V3 = new Vector2D(V2.a[0],a[3]).Polar2Rect();
 		return new Vector3D(V3.a[0],V2.a[1],V3.a[1]);
 		//as fast as the calculations below.
@@ -344,6 +377,8 @@ final public class Vector3D {
 	 */
 	public Vector3D Rect2Sphaeric() {
 		Vector2D V2 = new Vector2D(a)			.Rect2Polar();
+		// TODO: LOGIC: a[] has only 3 elements (indices 0-2); a[3] here is out of bounds and
+		// throws ArrayIndexOutOfBoundsException on every call.
 		Vector2D V3 = new Vector2D(V2.a[0],a[3]).Rect2Polar();
 //		double z;
 //		if (V2.a[0] > (z = Math.abs(a[3])))	V3.a[0]= V2.a[0]*Math.sqrt(1.0+Sqr(z/V2.a[0]));
@@ -387,9 +422,12 @@ final public class Vector3D {
 	 * Es liegt in Abhaengigkeit von Det    > 0  |	Ellipse(*)		Punkt
 	 * folgende Situation vor :             = 0  |	Parabel		Geradenpaar(+)
 	 *                                      < 0  |	Hyperbel		Kreuzung
-	 * Bem:(*) nur wenn		   QK[1]*Det[2] > 0,	(sonst nur IMAGINÄRE Loesung)
-	 *     (+) parallel ,wenn |QK[2] LK[2]| < 0		(sonst nur IMAGINÄRE Loesung)
+	 * Bem:(*) nur wenn		   QK[1]*Det[2] > 0,	(sonst nur IMAGINï¿½RE Loesung)
+	 *     (+) parallel ,wenn |QK[2] LK[2]| < 0		(sonst nur IMAGINï¿½RE Loesung)
 	 *         identisch,wenn |LK[2] LK[3]| = 0	 */
+	// TODO: LOGIC: index bugs throughout this method - guaranteed ArrayIndexOutOfBoundsException
+	// on every call: LK.a[3] below (LK is a Vector3D, size 3, valid indices 0-2); and _Det.a[2]
+	// / _M.a[2] used later (both are Vector2D parameters, size 2, valid indices 0-1).
 	public boolean Quadrik   (
 		Vector3D QK,
 		Vector3D LK,

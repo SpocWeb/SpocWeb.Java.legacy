@@ -16,6 +16,15 @@ package math.algorithm;
   * For large Capacities, the Problem can be considered as quasi continuous
   * if you need only an approximate Maximum.
   * For large Number of Types the Calculation becomes quite long.
+  * <!-- docstate
+  * pass: 2
+  * mtime: 2026-09-05T10:13:18Z
+  * digest: 344ebeeda1c993232334c8c6732e3a0989c1da0f599306a7e2ed9bc84f85d04b
+  * stale: false
+  * tags: [code/knapsack_problem, code/dynamic_programming]
+  * concepts: [Knapsack Problem Solver]
+  * facets: {layer: utility, status: legacy, complexity: medium}
+  * -->
   */
 public class KnapSack {
 

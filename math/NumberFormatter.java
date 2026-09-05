@@ -6,9 +6,25 @@ import java.io.OutputStreamWriter;
 import java.io.PrintWriter;
 import java.io.Writer;
 
+/**
+ * Formats numbers into fixed-width, fixed-point decimal Strings with a configurable Digit
+ * count before and after the decimal separator, and streams them directly to a Writer or
+ * OutputStream without allocating intermediate Strings.
+ * <!-- docstate
+ * pass: 2
+ * mtime: 2026-09-05T11:48:41Z
+ * digest: dec88050ddd604b0075dbc511e7ca5ef89859ae6bbbd1df2eb0e2ef678b330ac
+ * stale: false
+ * tags: [code/formatting]
+ * concepts: [Number Formatter]
+ * facets: {layer: utility, status: broken, complexity: low}
+ * -->
+ */
 public class NumberFormatter
 implements IFormatter {
 
+	// TODO: LOGIC: always returns true regardless of val, so it never actually checks
+	// whether the String contains a Number - the check is unimplemented.
 	/** Function to check whether the String contains a Number */
 	final static public boolean isNumber(String val) {
 		return true; }
@@ -31,8 +47,9 @@ implements IFormatter {
 	/** Number of Digits before the Comma */
 	private final long factorAfter;
 
+	/** Decimal separator inserted between the Integer and Fraction Part when streaming. */
 	final public String separator=".";
-	 
+
 	/** StringBuffer to save String Operations	 */
 	private StringBuffer sb = new StringBuffer(20);
 
@@ -109,10 +126,12 @@ implements IFormatter {
 		}
 	}
 
+	/** Constructs a formatter using {@link #DIGITS_BEFORE_DEFAULT} and {@link #DIGITS_AFTER_DEFAULT}. */
 	public NumberFormatter() {
-		this(DIGITS_BEFORE_DEFAULT, DIGITS_AFTER_DEFAULT); 
+		this(DIGITS_BEFORE_DEFAULT, DIGITS_AFTER_DEFAULT);
 	}
 
+	/** Constructs a formatter using the given Digit counts before and after the separator. */
 	public NumberFormatter(final int digitsBefore_, final int digitsAfter_) {
 		this.digitsBefore = (byte) digitsBefore_;
 		this.digitsAfter = (byte) digitsAfter_;
@@ -120,11 +139,22 @@ implements IFormatter {
 		factorAfter = (long) Math.pow(10, digitsAfter+1); //for Rounding
 	}
 
-	/** @return the Object formatted by the Default Format of this Formatter */
+	/**
+	 * Formats the given Object using its own {@code toString()}, ignoring this Formatter's
+	 * configured Digit counts.
+	 *
+	 * @return the Object formatted by the Default Format of this Formatter
+	 */
 	public String format(Object arg) {
 		return arg.toString(); }
 
-	/** @return the Object formatted by the given Format */
+	/**
+	 * Parses the given Object as a decimal number scaled down by 1000 and left-pads it to
+	 * {@link #digitsBefore} width with a leading sign; falls back to the plain
+	 * {@code toString()} when the Object is not a parseable number.
+	 *
+	 * @return the Object formatted by the given Format
+	 */
 	public String format(final Object arg, final String Format) {
 		String str = arg.toString();
 		try {
@@ -138,6 +168,7 @@ implements IFormatter {
 		}
 		return str; }
 
+	/** Demonstrates streaming the value of Pi three times to standard output. */
 	final static public void main(final String[] args) throws IOException {
 		NumberFormatter formatter = new NumberFormatter();
 		PrintWriter pw = new PrintWriter(System.out); 

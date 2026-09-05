@@ -664,3 +664,29 @@ math/minimizer/SimplexMinimizer.java:SimplexMinimizer.testIt()	method	math/minim
 math/minimizer/SimplexMinimizer.java:SimplexMinimizer.main(String[])	method	math/minimizer/SimplexMinimizer.java	code/simplex_method	Demo Entry Point	test	legacy	low
 math/minimizer/SinOfDistDivDist.java:SinOfDistDivDist	class	math/minimizer/SinOfDistDivDist.java	code/test_fixture	Sinc-Like Test Function	test	broken	low
 math/minimizer/VariableMetricMinimizer.java:VariableMetricMinimizer	class	math/minimizer/VariableMetricMinimizer.java	code/optimization	Variable Metric Minimizer (Unimplemented)	utility	unfinished	low
+math/IFormatter.java:IFormatter	class	math/IFormatter.java	code/formatting	Number Formatter Interface	utility	legacy	low
+math	folder	math	code/numerical_algorithm,code/vector_math,code/computational_geometry	Numerical Computing and Geometry	utility	legacy	high
+math/InterpolDouble.java:InterpolDouble	class	math/InterpolDouble.java	code/interpolation	Double Interpolation	utility	legacy	low
+math/Line2D.java:Line2D	class	math/Line2D.java	code/2d_geometry,code/computational_geometry	2D Line Segment	domain	legacy	low
+math/LinearOptics2D.java:LinearOptics2D	class	math/LinearOptics2D.java	code/matrix_math	2D Linear Optics Transform	domain	legacy	medium
+math/NumberFormatter.java:NumberFormatter	class	math/NumberFormatter.java	code/formatting	Number Formatter	utility	broken	low
+math/Vector2D.java:Vector2D	class	math/Vector2D.java	code/vector_math,code/2d_geometry	2D Vector	domain	broken	low
+math/Vector3D.java:Vector3D	class	math/Vector3D.java	code/vector_math,code/3d_geometry	3D Vector	domain	broken	medium
+math/algorithm/Bracketing.java:Bracketing	class	math/algorithm/Bracketing.java	code/dynamic_programming	Matrix Chain Bracketing	utility	legacy	medium
+math/algorithm	folder	math/algorithm	code/dynamic_programming	Dynamic Programming Algorithms	utility	legacy	medium
+math/algorithm/KnapSack.java:KnapSack	class	math/algorithm/KnapSack.java	code/knapsack_problem,code/dynamic_programming	Knapsack Problem Solver	utility	legacy	medium
+math/integration/AdaptiveMCIntegrator.java:AdaptiveMCIntegrator	class	math/integration/AdaptiveMCIntegrator.java	code/numerical_integration	Adaptive Monte Carlo Integrator	utility	legacy	medium
+math/integration	folder	math/integration	code/numerical_integration	Monte Carlo Numerical Integration	utility	legacy	medium
+math/integration/ConstScalarField.java:ConstScalarField	class	math/integration/ConstScalarField.java	code/numerical_integration	Constant Scalar Field	test	legacy	low
+math/integration/IParamScalarField.java:IParamScalarField	class	math/integration/IParamScalarField.java	code/numerical_integration	Parameterized Scalar Field Interface	utility	legacy	low
+math/integration/StratifiedMCIntegrator.java:StratifiedMCIntegrator	class	math/integration/StratifiedMCIntegrator.java	code/numerical_integration	Stratified Monte Carlo Integrator	utility	broken	medium
+math/integration/TestScalarField.java:TestScalarField	class	math/integration/TestScalarField.java	code/numerical_integration	Test Scalar Field	test	legacy	low
+math/wavelet/Daubechies4.java:Daubechies4	class	math/wavelet/Daubechies4.java	code/wavelet_transform	Daubechies-4 Wavelet Step	utility	legacy	medium
+math/wavelet	folder	math/wavelet	code/wavelet_transform	Wavelet Transform	utility	legacy	medium
+math/wavelet/IWaveletStep.java:IWaveletStep	class	math/wavelet/IWaveletStep.java	code/wavelet_transform	Wavelet Step Interface	utility	legacy	low
+math/wavelet/Wavelet.java:Wavelet	class	math/wavelet/Wavelet.java	code/wavelet_transform	Wavelet Transform Driver	utility	legacy	medium
+math/wavelet/Wavelet.java:Wavelet.transformWavelet(double[], int, boolean, IWaveletStep)	method	math/wavelet/Wavelet.java	code/wavelet_transform	Single-Level Wavelet Transform	utility	legacy	low
+math/wavelet/Wavelet.java:Wavelet.transformWavelet(double[], int[], boolean, IWaveletStep)	method	math/wavelet/Wavelet.java	code/wavelet_transform	Multi-Level Wavelet Transform	utility	legacy	low
+math/wavelet/Wavelet.java:Wavelet.testIt()	method	math/wavelet/Wavelet.java	code/wavelet_transform	Self-Test Method	test	legacy	low
+math/wavelet/Wavelet.java:Wavelet.main(String[])	method	math/wavelet/Wavelet.java	code/wavelet_transform	Demo Entry Point	test	legacy	low
+math/wavelet/WaveletStep.java:WaveletStep	class	math/wavelet/WaveletStep.java	code/wavelet_transform	Wavelet Step Base Class	utility	legacy	low

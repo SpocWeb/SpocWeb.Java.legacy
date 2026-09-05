@@ -82,11 +82,11 @@ concurrently against the same file):
 | `streamIO/object` | 185 | 38857 | 0 | unclaimed | - |
 | `streamIO/integer` | 157 | 39243 | 0 | unclaimed | - |
 | `graphic` (root+example+implement+svg) | 50 | 14297 | 0 | claimed | agent-graphic-misc |
-| `graphic/math2D`+`graphic/ms3d` | 18 | 3525 | 0 | claimed | agent-graphic-2d |
+| `graphic/math2D`+`graphic/ms3d` | 18 | 3525 | 0 | done (Pass 1+2+3) | agent-graphic-2d |
 | `graphic/math3D` | 32 | 6425 | 0 | unclaimed | - |
 | `graphic/mvc` | 26 | 4789 | 0 | unclaimed | - |
-| `math` (root+algorithm+integration+wavelet) | 18 | 3123 | 0 | claimed | agent-math-core |
-| `math/fit`+`math/refiner` | 27 | 3644 | 0 | claimed | agent-math-fit |
+| `math` (root+algorithm+integration+wavelet) | 18 | 3123 | 18 | done | agent-math-core |
+| `math/fit`+`math/refiner` | 27 | 3644 | 0 | done (Pass 1+2+3) | agent-math-fit |
 | `math/minimizer` | 11 | 3043 | 11 | done | agent-math-minimizer |
 | `math/matrix` | 13 | 15603 | 0 | unclaimed | - |
 | `math/vector` | 15 | 33025 | 0 | unclaimed | - |
@@ -305,6 +305,30 @@ same harness against it. A test that has not been seen red proves nothing.
 | streamIO/real/random/RandomGauss2.java | RandomGauss2 | nextDoubleInternal() | - | Identical always-false self-comparison bug as `RandomGauss`. | Medium | open |
 | streamIO/real/random/RandomPoisson.java | RandomPoisson | reSet() | - | Unconditional `ranLorentz.reSet()` call throws `NullPointerException` when `EW<12` (`ranLorentz` is not constructed in that branch). | High | open |
 | math/minimizer/SinOfDistDivDist.java | SinOfDistDivDist | Map(double[]) / Map(float[]) | 59, 78 | `ret` is exactly 0.0 when the input equals the center (or origin), so `-Math.sin(ret)/ret` computes `0.0/0.0 = NaN` instead of the mathematical limit -1.0 - a minimizer converging onto this function's own minimum observes NaN. | Medium | open |
+| graphic/math2D/Map2DModel.java | Map2DModel | addPoint(int, float, float, String) | 215 | `coordTrafo` may be null (it is only ever set via `setTrafo()`/`getTrafo()`), but this overload calls `coordTrafo.mapPt(x, y)` with no guard, unlike the double-parameter `addPoint(double, double, String)` overload which checks `coordTrafo != null` first. Throws `NullPointerException` when a point is added before a transform exists. | Medium | open |
+| graphic/math2D/Map2DModel.java | Map2DModel | addPoint(float, float, String) | 228 | Same missing-null-guard defect as the row above, on the 3-arg float overload. | Medium | open |
+| graphic/math2D/Map2DModel.java | Map2DModel | addPoint(float[], String) | 260 | Same missing-null-guard defect as the two rows above, on the `float[]` overload. | Medium | open |
+| graphic/ms3d/Ms3d.java | Ms3d | calcRotation(Ms3dJoint, float) | 673 | Compares the rotation-frame loop index `uiFrame` against `pJoint.numTransFrames` (the translation-keyframe count) instead of `numRotFrames`/`rotKeyFrames.length`. When a joint's rotation and translation keyframe counts differ (the common case), this either runs the SLERP-interpolation branch when it shouldn't or indexes `rotKeyFrames[uiFrame]` out of bounds, throwing `ArrayIndexOutOfBoundsException`. | Medium-High | open |
+| graphic/ms3d/Ms3d.java | Ms3d | streamJoints(OutputStream) | 162 | Delegates to `streamVertices(new PrintStream(ps))` instead of `streamJoints(new PrintStream(ps))` - a copy-paste error from the neighboring overload. Calling this writes vertex data instead of joint data to the stream. | Medium | open |
+| graphic/ms3d/Ms3dVertex.java | Ms3dVertex | toStream(OutputStream) | 105 | Calls `toStream(new PrintStream(streamOut))`, i.e. itself, since `PrintStream` is-an `OutputStream` and there is no `toStream(PrintStream)` overload to resolve to instead. Every call recurses until `StackOverflowError`; almost certainly meant to call `stream(new PrintStream(streamOut))`, the method that actually writes the vertex data. | High | open |
+| math/fit/weight/WeightExp.java | WeightExp | (field `SINGLETON`) | 32 | `SINGLETON` is a non-static instance field initialized by `new WeightExp()`, but the only constructor is this same private one, so instantiating the class recurses into this same field initializer forever - `StackOverflowError`. Needs `static`. | High | open |
+| math/fit/weight/WeightGauss.java | WeightGauss | (field `SINGLETON`) | 33 | Same non-static-`SINGLETON`-recursion defect as `WeightExp`. | High | open |
+| math/fit/weight/WeightLorentz.java | WeightLorentz | (field `SINGLETON`) | 30 | Same non-static-`SINGLETON`-recursion defect as `WeightExp`. | High | open |
+| math/fit/weight/WeightExp.java | WeightExp | probCum(double) | 41 | Returns the same unintegrated exponential density as `prob()` instead of a cumulative probability; already marked by the original author's own `//TODO:`. | Low | open |
+| math/fit/weight/WeightLorentz.java | WeightLorentz | probCum(double) | 43 | Returns `WeightExp`'s exponential-tail formula instead of a Lorentzian-consistent cumulative, inconsistent with this class's own `prob()`/`weight()`/`weightCum()`; already marked by the original author's own `//TODO:`. | Low | open |
+| math/fit/FitFields.java | FitFields | map(double[], double[]) | 22 | Always returns `null` instead of the populated `yOut` array, breaking the `IFloatVectorField#map(double[], double[])` contract for any caller that uses the return value rather than only the out-parameter. | Medium | open |
+| math/fit/FitFields.java | FitFields | map(float[], float[]) | 31 | Same always-`null`-return defect as the row above, on the `float[]` overload. | Medium | open |
+| math/fit/FitGauss.java | FitGauss | map(double[], double[], double[]) | 75 | Unimplemented stub that always returns 0 without evaluating anything or filling `dyda`, unlike the single-`x` overload in the same class; any caller relying on the vector-`x` overload silently gets a wrong (zero) result instead of an error. | Medium | open |
+| math/fit/FitGauss.java | FitGauss | map(float[], float[], float[]) | 89 | Same unimplemented-stub defect as the row above, on the `float[]` overload. | Medium | open |
+| math/fit/FittingFloat.java | FittingFloat | svdfit(...) | 45 | Ported from Numerical Recipes SVDFIT, which requires `svdcmp` to decompose `u` into `U*W*V^T` and `svbksb` to back-substitute the solution into `a`. Both calls are commented out, so `w`/`v` must already hold a valid decomposition supplied by the caller and `a` is never solved for at all - the chi-squared computed evaluates whatever `a` the caller passed in. `testSvdFit()` itself passes an unfilled `a`, so its own self-test is exercising this. | High | open |
+| math/refiner/AFloatRefinerQ.java | AFloatRefinerQ | BRACKET(IFloatFunction, float, float, int) | 103 | `ret` is allocated with the actual bracket count `numIntevals` (the value returned by the inner `BRACKET` call), but `arraycopy` is then told to copy `numIntervals` elements - the original, larger requested count - into it. Whenever fewer brackets are found than requested (the normal case), this overruns `ret` and throws `ArrayIndexOutOfBoundsException`. | High | open |
+| math/refiner/NewtonFloatRefiner.java | NewtonFloatRefiner | refine() | 71 | Reads the inherited field `f` instead of this class's own `f0`, but `init(x, f0, f1)` reaches this state via the `(x, double)` super-`init` overload, which explicitly sets `f=null`; `f0` is stored but never read anywhere. Any refiner built via the `(double, IFloatFunction, IFloatFunction)` constructor/init throws `NullPointerException` on its very first `refine()` call. | High | open |
+| math/Vector3D.java | Vector3D | angles()/Sphaeric2Rect()/Rect2Sphaeric()/Quadrik(...) | 336,361,380,428 | Multiple methods index `a[3]` (or a 2-element `Vector2D`'s `a[2]`) on arrays allocated `new double[3]`/`new double[2]` - guaranteed `ArrayIndexOutOfBoundsException` on every call. | Critical | open |
+| math/Vector3D.java | Vector3D | mul(double) | 148 | Compound assignments `a[0]*=v` etc. mutate `this.a[]` inside the `new Vector3D(...)` constructor arguments, contradicting the non-mutating method name/contract (unlike `mulAt`). | Medium | open |
+| math/Vector2D.java | Vector2D | Equality(...) (2 overloads) | 95, 300 | `x << 2 + y` parses as `x << (2+y)` in Java (operator precedence), not the intended `(x<<2)+y` - corrupts the combined overlap code for most inputs. | Medium | open |
+| math/Vector2D.java | Vector2D | DET2x2(Vector2D) | 307 | Reads `a[2]`/`du.a[2]` on 2-element `Vector2D` arrays - guaranteed `ArrayIndexOutOfBoundsException`; affects `Line2D.Area`/`intersects`, which call it. | Critical | open |
+| math/NumberFormatter.java | NumberFormatter | isNumber(String) | 26 | Always returns `true` regardless of input - the check is unimplemented. | Low | open |
+| math/integration/StratifiedMCIntegrator.java | StratifiedMCIntegrator | integrate(...) | 95 | Own Javadoc documents `variance` as nullable ("if not null..."), but the method unconditionally dereferences `variance[0]` twice - passing `null` throws `NullPointerException`, contradicting the documented contract. | Medium | open |
 
 ## Tool defects found and fixed during the pilot
 
