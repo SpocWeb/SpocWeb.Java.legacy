@@ -138,11 +138,29 @@ path, so invoking one from a sub-folder produces keys nothing can join on.
   raw-tags rewriter normalised separators on untouched rows; and `SaveSchema` wrote CRLF into a
   file every other writer keeps LF.
 
-  **Known design gap, not fixed:** nothing reads `merged:` to translate a tag, and
-  redistribution only acts on the current run's proposals - so a merge recorded but not
-  redistributed can never be picked up by a later run. That stranded 68 of these 115 pairs
-  until they were revived into the free list by hand. A `redistribute-merges` command would
-  close it properly; see the C# skill's `tags-pipeline.md`.
+  **That design gap is now closed.** `redistribute-merges <schema.yaml> <path> [--apply]`
+  applies the schema's recorded `merged:` map directly, with no proposal step, and never writes
+  the schema. It is idempotent, which makes it the cheapest check that a consolidation landed.
+  Its very first run found a straggler two full passes had missed - and `--apply` then wrote
+  nothing, which exposed a second bug: `MemberCommentWriter` located the `<example>` block with
+  a regex that blew through its 5-second timeout on `Tensor.cs` (6,391 lines, 245 example
+  blocks), and a timeout is treated as "no match" and skipped in silence. The block is located
+  by a line scan now and the regex is gone. `redistribute-merges` over Code/NET reports 0
+  references and 0 timeouts; 297 C# tests pass.
+
+- **The `_org.structs` store's corrupted rows are repaired.** Nine rows had lost their tab
+  separators (written as PowerShell's literal `` `t `` escape, or as a single space) and had
+  backslashes in their tag paths, so their unit-ids parsed as nothing and they were inert.
+  Seven are reconstructed by splitting on the level keyword. That made five units live which
+  also appear further down the file with *different* tags, so each pair was collapsed by union
+  rather than picking a winner. The store is now uniformly 8 columns, duplicate-free and LF,
+  and all 2,401 of that tree's index rows carry tags.
+
+  Seven rows are deliberately left as they are, because deleting them is a content decision:
+  three name files that no longer exist (`StepRKQ.cs`, `TestRandom.cs`, `BitNoise.cs`), two are
+  folder rows for `statistics/` and `modeling/` which are not on disk and carry no tags, one has
+  level `derivative` and unit `mathematical-function` (a concept written into a code-unit row),
+  and one `TestBodyFuncs.cs` row has its own path prefix pasted on twice.
 - **`compact-vocabulary` was not run, and must not be run yet - now for a structural
   reason, not a fixable one.** The index rebuild that was supposed to unblock it has been
   done: `build-index` was re-run over 27 of the 31 tag stores (2026-09-04), growing
