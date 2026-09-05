@@ -14,21 +14,56 @@ untouched and is its own multi-session effort.
 
 Tooling: `D:/_/_AI/skills/Java.ReadMeGenerator/ReadMeGenerator/target/readmegenerator.jar`,
 built with the colocated Maven Wrapper. Milestones A and B are built; there is no
-`scaffold`, no `consolidate-vocabulary` and no `list-dependencies` yet (Milestone C).
+`scaffold` and no `list-dependencies` yet (Milestone C); `consolidate-vocabulary` and
+`redistribute-merges` were pulled forward and are built.
 
 ## Claims
 
-One folder at a time, deepest first. Claim a row before starting, push the claim
-immediately, and commit at each folder boundary.
+One batch at a time. Claim a row before starting, push the claim immediately, and commit
+at each batch boundary. Batches are top-level folders, with `streamIO` split one level
+deeper because it alone holds 46% of the corpus. `Lines` and `Documented` are measured,
+not estimated; `Documented` counts files carrying a `docstate` block.
 
-| Folder | Files | Claimed by | Status |
-|---|--:|---|---|
-| `tools/` | 16 | main | done |
-| `streamIO/` | 674 | — | not started |
-| `function/` | 204 | — | not started |
-| `graphic/` | 131 | — | not started |
-| `math/` | 84 | — | not started |
-| _(remaining 16 folders)_ | 362 | — | not started |
+No parallel agents: each agent would carry its own copy of the skill context, so N agents
+cost more tokens than one and burn the 5-hour window N times faster.
+
+| Batch | Files | Lines | Documented | Status | Claimed by |
+|---|--:|--:|--:|---|---|
+| `streamIO/copy` | 206 | 42863 | 0 | unclaimed | - |
+| `function` | 204 | 27689 | 0 | unclaimed | - |
+| `streamIO/object` | 185 | 38857 | 0 | unclaimed | - |
+| `streamIO/integer` | 157 | 39243 | 0 | unclaimed | - |
+| `graphic` | 131 | 29665 | 0 | unclaimed | - |
+| `math` | 84 | 58523 | 0 | unclaimed | - |
+| `structure` | 52 | 4933 | 0 | unclaimed | - |
+| `streamIO/real` | 51 | 6801 | 0 | unclaimed | - |
+| `tester` | 49 | 3327 | 0 | unclaimed | - |
+| `technology` | 41 | 9400 | 0 | unclaimed | - |
+| `synch` | 32 | 4243 | 0 | unclaimed | - |
+| `graphs` | 31 | 11258 | 0 | unclaimed | - |
+| `asynch` | 28 | 3052 | 0 | unclaimed | - |
+| `streamIO/(root)` | 28 | 8003 | 0 | unclaimed | - |
+| `knowledge` | 26 | 2595 | 0 | **in progress** (calibration batch) | main |
+| `stringOp` | 16 | 4579 | 0 | unclaimed | - |
+| `tools` | 16 | 3281 | 16 | done | - |
+| `aspect` | 15 | 2493 | 0 | unclaimed | - |
+| `flow` | 14 | 1022 | 0 | unclaimed | - |
+| `reflect` | 12 | 2492 | 0 | unclaimed | - |
+| `streamIO/diffPatch` | 11 | 2895 | 0 | unclaimed | - |
+| `sound` | 10 | 1030 | 0 | unclaimed | - |
+| `(root)` | 9 | 1073 | 0 | unclaimed | - |
+| `streamIO/asyncMessage` | 7 | 541 | 0 | unclaimed | - |
+| `analysis` | 6 | 319 | 0 | unclaimed | - |
+| `streamIO/adapter` | 6 | 435 | 0 | unclaimed | - |
+| `streamIO/vector` | 6 | 947 | 0 | unclaimed | - |
+| `streamIO/exception` | 5 | 536 | 0 | unclaimed | - |
+| `streamIO/fileSystem` | 4 | 288 | 0 | unclaimed | - |
+| `streamIO/testing` | 3 | 433 | 0 | unclaimed | - |
+| `swing` | 3 | 679 | 0 | unclaimed | - |
+| `persistences` | 2 | 306 | 0 | unclaimed | - |
+| `streamIO/character` | 2 | 244 | 0 | unclaimed | - |
+| `streamIO/factory` | 2 | 205 | 0 | unclaimed | - |
+| `streamIO/detector` | 1 | 102 | 0 | unclaimed | - |
 
 ## Decisions
 
