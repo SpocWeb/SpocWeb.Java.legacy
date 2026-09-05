@@ -12,7 +12,18 @@ import function.byref.ByRefDouble;
 import function.byref.ByRefFloat;
 import function.derive.AFloatDeriveAble;
 
-/**This Class encapsulates the Sinus Hyperbolicus Function.  */
+/**This Class encapsulates the Sinus Hyperbolicus Function.
+ *
+ * <!-- docstate
+ * pass: 2
+ * mtime: 2026-09-05T20:43:26Z
+ * digest: bf5079405d573dfc71ab810afb970b1306ebb9cff53a89bbcaf4c5c227d7850f
+ * stale: false
+ * tags: [code/hyperbolic_function, code/derivable_function_contract]
+ * concepts: [Hyperbolic Functions]
+ * facets: {layer: utility, status: legacy, complexity: medium}
+ * -->
+ */
 public class SinH
 extends AFloatDeriveAble {
 
@@ -28,7 +39,8 @@ extends AFloatDeriveAble {
 	/**private Constructor for Singleton Implementation	 */
 	private SinH() { }
 	
-    /** @see function.IFloatFunction#getOrder()     */
+    /**Reports that SinH preserves strict ascending order of its argument.
+     * @see function.IFloatFunction#getOrder()     */
     public byte getOrder() { return IStreamIn.ORDER_ASC_STRICT; }
     
 	/**This Function represents the Sinus Hyperbolicus Function.  */
@@ -40,7 +52,7 @@ extends AFloatDeriveAble {
 	/**SinH Function for float Arguments...	 */
 	public float  Map(float  x) { return SIN_H(x); }
 
-	/*	Returns SinH Function Derivative: CosH(x) for all x 	*/
+	/**Returns the SinH Function's Derivative: CosH(x) for all x.	 */
 	public double getDerivative(double x) { return CosH.COS_H(x); }	//
 
 	/** Calculates Function and Derivative at the same time,

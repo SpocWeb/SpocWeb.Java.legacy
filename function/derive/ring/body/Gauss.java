@@ -29,6 +29,15 @@ import function.derive.AFloatDeriveAble;
  * @author mheuer
  * @version	1.0
  *
+ * <!-- docstate
+ * pass: 2
+ * mtime: 2026-09-05T16:44:39Z
+ * digest: a8129f1e7e7d6916f93b5be61868805c54b5f786d6333ad5071db3886b297266
+ * stale: false
+ * tags: [code/derivable_function_contract, code/mathematical_function]
+ * concepts: [Statistical Distributions, Gaussian Distribution]
+ * facets: {layer: utility, status: legacy, complexity: medium}
+ * -->
  */
 public class Gauss 
 extends AFloatDeriveAble {
@@ -36,6 +45,7 @@ extends AFloatDeriveAble {
 	/** Logger for Testing, modify Threshold for switching Logging */
 	static Log L = new Log(Gauss.class, 0);
 	
+	/**Local Reference to the single normed Instance (Mean 0, Variance 1).	 */
 	final static public Gauss GAUSS = new Gauss();
 
 	/////////////////////////////////////////////////////////////////////////////////////
@@ -61,7 +71,8 @@ extends AFloatDeriveAble {
 	
 	///////////////////////////////////////////////////////////////////////////
 
-	/** @see function.derive.IFloatDeriveAble#getDerivative(double)	 */
+	/**Returns the Bell Curve Value (the cumulative Gauss Function's Derivative) at x.
+	 * @see function.derive.IFloatDeriveAble#getDerivative(double)	 */
 	public double getDerivative(final double x) {
 		return pGauss((x-average)/stdDev)/stdDev; }
 	
@@ -69,12 +80,14 @@ extends AFloatDeriveAble {
 	 * TODO: not scaled properly! 
 	 * @see function.derive.IDeriveAble#getDerivative()	 */
 /*	public IDeriveAble getDerivative() {
-		return 
-			new CatDerive(Exponential.EXPONENTIAL, 
+		return
+			new CatDerive(Exponential.EXPONENTIAL,
 			new CatDerive(Neg.NEG, Square.SQUARE));
 	}
-	
-	/** @see function.derive.IFloatDeriveAble#getFuncDerive(double, function.byref.ByRefDouble)	 */
+*/
+
+	/**Calculates the Gauss cumulative Function and its Derivative (the Bell Curve) at x.
+	 * @see function.derive.IFloatDeriveAble#getFuncDerive(double, function.byref.ByRefDouble)	 */
 	public double getFuncDerive(double x, final ByRefDouble derivative) {
 		x-=average; 
 		x/=stdDev; 
@@ -82,7 +95,8 @@ extends AFloatDeriveAble {
 			derivative.Value=pGauss(x); }
 		return pGaussCum(x); }
 	
-	/** @see function.derive.IFloatDeriveAble#getFuncDerive(float, function.byref.ByRefFloat)	 */
+	/**Calculates the Gauss cumulative Function and its Derivative (the Bell Curve) at x.
+	 * @see function.derive.IFloatDeriveAble#getFuncDerive(float, function.byref.ByRefFloat)	 */
 	public float getFuncDerive(float x, final ByRefFloat derivative) {
 		x-=average; 
 		x/=stdDev; 
@@ -90,24 +104,28 @@ extends AFloatDeriveAble {
 			derivative.Value=(float) pGauss(x); }
 		return pGaussCum(x); }
 	
-    /** @see function.IFloatFunction#getOrder()     */
+    /**Reports that Gauss preserves strict ascending order of its argument.
+     * @see function.IFloatFunction#getOrder()     */
     public byte getOrder() { return IStreamIn.ORDER_ASC_STRICT; }
-    
-	/** @see function.IFloatFunction#Map(double)	 */
+
+	/**Returns the cumulative Gauss Function's Value at arg.
+	 * @see function.IFloatFunction#Map(double)	 */
 	public double Map(final double arg) {
 		return pGaussCum((arg-average)/stdDev); }
 
-	/** @see function.IFloatFunction#Map(float)	 */
+	/**Returns the cumulative Gauss Function's Value at arg.
+	 * @see function.IFloatFunction#Map(float)	 */
 	public float Map(final float arg) {
 		return pGaussCum((arg-(float)average)/(float)stdDev); }
-	
-	/** @see function.IFunction#Map(java.lang.Object)	 */
+
+	/**Wraps arg as a {@link ByRefDouble}, coercing it to a double Value first.
+	 * @see function.IFunction#Map(java.lang.Object)	 */
 	public Object Map(Object arg) { return new ByRefDouble(ByRefDouble.GET_DOUBLE(arg)); }
 	
 	/////////////////////////////////////////////////////////////////////////////////////
 	
-	/** 
-	 * @param z Fisher's z Statistic, derived from r, Person's linear Correlation Coefficient  
+	/**Computes Fisher's Probability of the Null Hypothesis that there is no Correlation.
+	 * @param z Fisher's z Statistic, derived from r, Person's linear Correlation Coefficient
 	 * @param n The Sample Size used to determine z
 	 * @return Fisher's Probability of the Null Hypothesis that there is no Correlation.
 	 * (i.e. low Values indicate a high Significance of the Correlation).

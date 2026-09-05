@@ -51,6 +51,15 @@ import function.derive.ring.Succ;
  * Power Series (converges for all x):
  * cos(x) = 1 - x^2/2! + x^4/4! -... + (-1)^n*x^(2*n)/(2n)!
  *
+ * <!-- docstate
+ * pass: 2
+ * mtime: 2026-09-05T16:42:35Z
+ * digest: 29a79546b24c68b561f73fd7baae765e2d08562219bc53dc5856f7c474b1313a
+ * stale: false
+ * tags: [code/trigonometric_function, code/derivable_function_contract]
+ * concepts: [Trigonometric Functions]
+ * facets: {layer: utility, status: legacy, complexity: medium}
+ * -->
  */
 final public class Cosinus
 extends AFloatDeriveAble {
@@ -76,10 +85,10 @@ extends AFloatDeriveAble {
 	/**This Function represents the Cosinus Function.	 */
 	public Object Map (Object arg) { return ((MetricBody) arg).cos(); }
 
-	/*	Returns Cos(x) for all x 	*/
+	/**Returns Cos(x) for all x.	 */
 	public double Map(double x) { return Math.cos(x); }	//
 
-	/*	Returns Cos(x) for all x 	*/
+	/**Returns the Cosinus Function's Derivative: -Sin(x) for all x.	 */
 	public double getDerivative(final double x) { return -Math.sin(x); }	//
 
 	/** Calculates Function and Derivative at the same time,

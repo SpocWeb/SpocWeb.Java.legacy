@@ -59,6 +59,15 @@ import function.derive.IDeriveAble;
   *  ~(A OR  B) == ~A AND ~B 	//De Morgan
   *
   * This is also an excellent Example of how to switch from an Operator based Syntax
+  * <!-- docstate
+  * pass: 2
+  * mtime: 2026-09-05T16:39:12Z
+  * digest: f3023da330410471b77c245de498a97b24c4b2cfaef87890931996afe1358bb2
+  * stale: false
+  * tags: [code/algebraic_function, code/function_wrapper]
+  * concepts: [Ring Theory, Function Algebra]
+  * facets: {layer: utility, status: legacy, complexity: medium}
+  * -->
   * with a 'simple' Type to the Method based Syntax of OO Programming.	 */
 final public class Algebra
 extends ACAlgebra //AIntRing
@@ -121,6 +130,7 @@ implements ICountAble {
 									xxp1);
 //									BodyFuncs.ArcTan.ArcTan);
 
+	/**Returns a normed, scaled Lorentz Function usable as a Simulation of the Delta Function of width H.	 */
 	public IDeriveAble Delta3(Object H) {
 		return 	new CatDerive(			new MulAt(H),
 				new CatDerive(Lorentz,  new MulAt(((IGroupM) H).div(IMeasurAble.pi)))); }
@@ -304,7 +314,7 @@ implements ICountAble {
 		else inner = new Quot(new Algebra (inner), convertArg(arg));
 		return this; }
 
-	/**Concatenation / Mapping in Place: arg°=this  ==  arg(this(x))		*/
+	/**Concatenation / Mapping in Place: argï¿½=this  ==  arg(this(x))		*/
 	public ISemiMonoid catAt(Object arg) {
 			 if (!(  arg instanceof IFunction)) inner = arg;
 		else if (    arg instanceof Const       ) inner = arg;
@@ -313,7 +323,7 @@ implements ICountAble {
 																		(IFunction) inner);
 		return this; }
 
-	/**Concatenation / Mapping in Place: this=°arg  ==  this(arg(x))
+	/**Concatenation / Mapping in Place: this=ï¿½arg  ==  this(arg(x))
 	 * Returns the (modified) Argument instead of the 'this'.	 */
 	public ISemiMonoid MapAt(ISemiMonoid arg) {
 		if (!(inner instanceof IFunction)) return this;
@@ -404,7 +414,8 @@ implements ICountAble {
 	 * When overriding, use newInstance on all Components.	 */
 	public ICopyAble newInstance() { return new Algebra(); }
 
-	/**@return  The string representation of the Function.
+	/**Delegates to the wrapped Function's own string representation.
+	 * @return  The string representation of the Function.
 	 * @since   JDK1.0	 */
 	public String toString() { return inner.toString(); }
 
@@ -418,19 +429,25 @@ implements ICountAble {
 	//	IInvertAble Interface	//
 	//////////////////////////////
 
+	/**Maps arg in Place through the wrapped Function, or Copies the constant inner Value into arg.	 */
 	public Object   MapAt(Object arg) {
 		if (inner instanceof IFunction)
 			return ((IFunction) inner).MapAt(arg);
 			return ((ICopyAble) arg).copyAt (inner); }
 
+	/**Maps arg through this Function's Inverse. @return the un-mapped Value	 */
 	public Object UnMap  (Object arg) { return getInverse().Map  (arg); }
 
+	/**Maps arg in Place through this Function's Inverse. @return the un-mapped Value	 */
 	public Object UnMapAt(Object arg) { return getInverse().MapAt(arg); }
 
+	/**Maps arg in Place through this Function's Inverse, typed as an {@link IMonoid}. @return arg mapped	 */
 	public IMonoid pamAt(Object arg) { return (IMonoid) ((IMonoid) getInverse()).mapAt(arg); }
 
+	/**Maps arg in Place through this Function, typed as an {@link ISemiMonoid}. @return arg mapped	 */
 	public ISemiMonoid mapAt(Object arg) { return (ISemiMonoid) MapAt(arg); }
 
+	/**Maps arg through this Function, typed as an {@link ISemiMonoid}. @return the mapped Value	 */
 	public ISemiMonoid map(Object arg) { return (ISemiMonoid) Map(arg); }
 
     /**Local Storage for the Integral to be set by setIntegral()     */
@@ -451,8 +468,9 @@ implements ICountAble {
 		if (inner instanceof IFunction)
 			return ((IDeriveAble) inner).Derivative(n);
 			return CCountAble.Zero; }
+*/
 
-	/**Returns the Derivative of this Function
+	/**Returns the Derivative of this Function, wrapping the wrapped Function's own cached Derivative.
 	 * No caching necessary here, since it is already cached in inner.	 */
 	public IDeriveAble getDerivative() {
 		if (Derivative != null) return Derivative;
@@ -509,13 +527,16 @@ implements ICountAble {
 			return ((IGroupM) inner).invAt();
 		return super.invAt(); }
 
+	/**Rounds the wrapped Value down to the nearest Integer In-Place. @return this Algebra	 */
 	public IMetricIRing FloorAt() {
 		((IMetricIRing) inner).FloorAt();
 		return this; }
 
+	/**Compares the wrapped Value to arg. @return this <  arg	 */
 	public boolean isLessThan(Object arg) {
 		return ((IOrderAble) inner).isLessThan(arg); }
 
+	/**Sets the wrapped Value to its Type's maximum In-Place. @return this Algebra	 */
 	public IWellOrder maxValueAt() {
 		((IWellOrder) inner).maxValueAt(); return this; }
 

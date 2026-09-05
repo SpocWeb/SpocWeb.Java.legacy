@@ -7,7 +7,18 @@ import function.derive.Cat;
 import function.derive.Const;
 import function.derive.IDeriveAble;
 
-/**Extends the Concatenation Function by Derivation Capabilities */
+/**Extends the Concatenation Function by Derivation Capabilities
+ *
+ * <!-- docstate
+ * pass: 2
+ * mtime: 2026-09-05T10:13:18Z
+ * digest: 09c3985bb8ee3f2ce0974106c86c8270b85ad40c36bafeeeec6f63ea75eeabc4
+ * stale: false
+ * tags: [code/function_composition, code/derivative_calculation]
+ * concepts: [Function Algebra, Chain Rule]
+ * facets: {layer: utility, status: legacy, complexity: medium}
+ * -->
+ */
 public class CatDerive
 extends Cat
 implements IDeriveAble {

@@ -30,6 +30,15 @@ import function.derive.ring.ThirdAt;
  * This class can take a variable number of parameters on the command
  * line. Program execution begins with the main() method. The class
  * constructor is not invoked unless an object of type 'Class1'
+ * <!-- docstate
+ * pass: 2
+ * mtime: 2026-09-05T20:42:57Z
+ * digest: c64151498bf126230843f8ba510e61e7f366cef6790bf5f70d5114bc27b2acf6
+ * stale: false
+ * tags: [code/entry_point_code/console_output_code/test]
+ * concepts: [Test Harness]
+ * facets: {layer: utility, status: legacy, complexity: medium}
+ * -->
  * created in the main() method. */
 public class TestBodyFuncs {
 
@@ -44,6 +53,11 @@ public class TestBodyFuncs {
 	 * Smooth, sharp, but expensive Representation of the normed Delta
 	 * as a (Gaussian) Bell Curve.
 	 * If H is null (not given), it is assumed to 1.
+	 * <!-- docstate
+	 * tags: [code/testing]
+	 * concepts: [Delta Function Test Helper]
+	 * facets: {layer: test, status: legacy, complexity: low}
+	 * -->
 	 * The Width is proportional to 1/H, the Height to H.	 */
 	final static public CatDerive Delta2(Object H) {
 		return 	new CatDerive(			new MulAt(new Algebra(((IGroupM) H).div(IMeasurAble.SqRtPi))),
@@ -140,6 +154,11 @@ public class TestBodyFuncs {
 
 	/**Returns the Derivative of a Sigmoid Function
 	 * as a (slightly asymmetric) Simulation of the Delta Function
+	 * <!-- docstate
+	 * tags: [code/testing]
+	 * concepts: [Delta Function Test Helper]
+	 * facets: {layer: test, status: legacy, complexity: low}
+	 * -->
 	 */
 	public static IDeriveAble Delta4(Object H) {
 		return  new CatDerive(							new MulAt(H),
@@ -158,6 +177,11 @@ public class TestBodyFuncs {
 	 * ExpInt (n,0) = 1/(n-1)
 	 *
 	 * (1-GammaP(a, x))*Gamma(a)/x^a with a = 1-n < 0	for n < 1
+	 * <!-- docstate
+	 * tags: [code/testing, code/numerical_integration]
+	 * concepts: [Exponential Integral Test Helper]
+	 * facets: {layer: test, status: legacy, complexity: low}
+	 * -->
 	 */
 	public static IDeriveAble ExpInt(MetricBody n) {
 		MetricBody a = (MetricBody) n.pred();
@@ -170,6 +194,7 @@ public class TestBodyFuncs {
 									new Power(a));
 		return equivalent; }
 
+	/**Logarithmic Integral, defined as the Composition of EI and Logarithm: EI(Ln(x)).	 */
 	final static public IDeriveAble LI = new CatDerive(EI.EI, Logarithm.LOGARITHM);
 
 	/**the Integral over the Gaussian Error Function:
@@ -189,7 +214,14 @@ public class TestBodyFuncs {
 
 	{ GaussIntegral.setDerivative (GaussNorm); }
 
-	/**Tests the Error Gamma Function	 */
+	/**Tests the Error Gamma Function
+	 *
+	 * <!-- docstate
+	 * tags: [code/testing]
+	 * concepts: [Gaussian Integral Self-Test]
+	 * facets: {layer: test, status: legacy, complexity: low}
+	 * -->
+	 */
 	public static void testGaussIntegral() throws IOException {
 		System.out.println("Testing Gauss Function():");
 		System.out.println(	VectorString.FORMAT("x", 8) +
@@ -228,7 +260,14 @@ public class TestBodyFuncs {
 		{ 0, 1.0f, 0.3678794f}
 	};
 
-	/**Tests the Error Gamma Function	 */
+	/**Tests the Error Gamma Function
+	 *
+	 * <!-- docstate
+	 * tags: [code/testing]
+	 * concepts: [Exponential Integral Self-Test]
+	 * facets: {layer: test, status: legacy, complexity: low}
+	 * -->
+	 */
 	public static void testExpInt() throws IOException {
 		System.out.println("Testing ExpInt Function():");
 		System.out.println(	VectorString.FORMAT("n", 8) +
@@ -252,6 +291,11 @@ public class TestBodyFuncs {
 	/**The main entry point for the application.
 	 *
 	 * @param args Array of parameters passed to the application
+	 * <!-- docstate
+	 * tags: [code/testing]
+	 * concepts: [Demo Entry Point]
+	 * facets: {layer: test, status: legacy, complexity: low}
+	 * -->
 	 * via the command line.	 */
 	public static void main (String[] args) throws Exception {
 		GammaLn.testIt();

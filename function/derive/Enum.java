@@ -63,6 +63,15 @@ import streamIO.object.ArrayStreamIn;
   * Created on	06-29-2002, 06:22 PM<p>
   * @author 	Matthias Heuer
   * @version	1.0
+  * <!-- docstate
+  * pass: 2
+  * mtime: 2026-09-05T16:17:11Z
+  * digest: 25af641be81fcea98462fa887a5a0a666ed9c9cda219eb12a09a026f612fdc5d
+  * stale: false
+  * tags: [code/enum_modeling, code/flyweight_pattern]
+  * concepts: [Flyweight Pattern]
+  * facets: {layer: utility, status: legacy, complexity: medium}
+  * -->
   */
 public abstract class Enum
 extends CCountAble
@@ -256,22 +265,36 @@ implements IIterAble {
 	/// #region : Interface Integer: Implementation
 	////////////////////////////////////////////////////////////////////////////////
 	
-	/** @return the Successor of the current Enum */
+	/**Returns the next Enum in list order, or {@code null} when this is already the last one.
+	 * @return the Successor of the current Enum */
+	// TODO: LOGIC: indexes with 'Value' directly instead of the list position 'Value-Offset', and
+	// the bounds check compares 'Value' to 'list.length' instead of 'Value-Offset' to 'list.length-1'.
+	// For any Enum with a non-zero Offset (e.g. Month, Offset=1) this both skips an extra element
+	// (January.succ() returns March, not February) and, for an Offset of 0 combined with a last
+	// Value equal to list.length-1 that is not also >= list.length (e.g. Week, Offset=0: Sunday.Value=6,
+	// list.length=7), throws ArrayIndexOutOfBoundsException instead of returning null.
 	public Enum succ() {
 		if (Value >= list.length) {
 			return null; }
 			return list[((int)Value)+1]; }
-	
-	/** @return the Predecessor of the current Enum */
+
+	/**Returns the previous Enum in list order, or {@code null} when this is already the first one.
+	 * @return the Predecessor of the current Enum */
+	// TODO: LOGIC: indexes with 'Value' directly instead of the list position 'Value-Offset', and
+	// the bounds check compares 'Value' to 0 instead of 'Value-Offset' to 0. For any Enum with a
+	// non-zero Offset (e.g. Month, Offset=1) the first element's pred() returns itself instead of
+	// null (January.Value=1 fails the ==0 check, then list[0] is January again).
 	public Enum pred() {
 		if (Value == 0) {
 			return null; }
 			return list[((int)Value)-1]; }
-	
-	/** @return the Minimum Value in the List of Enums */
+
+	/**Returns the first Enum in the underlying list, by list position rather than Value order.
+	 * @return the Minimum Value in the List of Enums */
 	public Enum getMinValue() { return list[0]; }
-	
-	/** @return the Maximum Value in the List of Enums */
+
+	/**Returns the last Enum in the underlying list, by list position rather than Value order.
+	 * @return the Maximum Value in the List of Enums */
 	public Enum getMaxValue() { return list[list.length-1]; }
 	
 	/** Returns a new Input streamIO of the Objects in this Container

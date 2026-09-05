@@ -35,6 +35,15 @@ import function.derive.ring.Quot;
  * i.e. EI is the analytical Continuation of ExpInt anf GammaP
  * for negative x.
  *
+ * <!-- docstate
+ * pass: 2
+ * mtime: 2026-09-05T16:43:08Z
+ * digest: a2d65a19b857d1ebd7dd60c49fb7f9ec6534e816c084d474ac7821f93b47999f
+ * stale: false
+ * tags: [code/numerical_integration, code/exponential_function]
+ * concepts: [Special Functions, Exponential Integral]
+ * facets: {layer: utility, status: legacy, complexity: medium}
+ * -->
  * See Numerical Recipes 2nd Ed. p257 (6.9.8)	 */
 public class EI
 extends AFloatDeriveAble	//IPartialDerive //
@@ -61,7 +70,8 @@ extends AFloatDeriveAble	//IPartialDerive //
 	/**This Function represents the Exponential Integral (EI) Function.  */
 	public double Map (final double arg) { return EXP_INTEGRAL(arg); }
 
-	/** @return The Derivative at x	 */
+	/**Returns the Exponential Integral's Derivative, Exp(x)/x.
+	 * @return The Derivative at x	 */
 	public double getDerivative(final double x) { return Math.exp(x)/x; }
 
 	/**Calculates Function and Derivative at the same time.

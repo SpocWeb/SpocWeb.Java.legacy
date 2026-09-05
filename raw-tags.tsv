@@ -958,3 +958,127 @@ math/vector/statistic/Correlation.java:Correlation.testSignCorrelation2()	method
 math/vector/statistic	folder	math/vector/statistic	code/statistical_correlation,code/hypothesis_testing	Statistical Correlation and Hypothesis Testing	domain	legacy	high
 math/vector/statistic/StatisticsFloat.java:StatisticsFloat	class	math/vector/statistic/StatisticsFloat.java	code/hypothesis_testing,code/chi_squared	Statistical Hypothesis Tests over float Data	domain	legacy	high
 math/vector/statistic/StatisticsFloat.java:HyperCubeShare	class	math/vector/statistic/StatisticsFloat.java	code/hypothesis_testing	2D Sampling Test Model	test	legacy	low
+function/derive/IDeriveAble.java:IDeriveAble	class	function/derive/IDeriveAble.java	code/derivable_function_contract,code/invertible_function_contract	Calculus,Function Composition	utility	legacy	medium
+function/derive/ADeriveAble.java:ADeriveAble	class	function/derive/ADeriveAble.java	code/derivable_function_contract,code/derivative_calculation	Calculus,Singleton Pattern	utility	legacy	medium
+function/derive/IFloatDeriveAble.java:IFloatDeriveAble	class	function/derive/IFloatDeriveAble.java	code/derivable_function_contract,code/numerical_differentiation	Calculus	utility	legacy	medium
+function/derive/AFloatDeriveAble.java:AFloatDeriveAble	class	function/derive/AFloatDeriveAble.java	code/derivable_function_contract,code/numerical_differentiation	Calculus,Singleton Pattern	utility	legacy	medium
+function/derive/AConst.java:AConst	class	function/derive/AConst.java	code/constant_function,code/derivable_function_contract	Function Algebra	utility	legacy	medium
+function/derive/AFuncRel.java:AFuncRel	class	function/derive/AFuncRel.java	code/function_wrapper,code/function_composition	Function Algebra	utility	legacy	medium
+function/derive/AStatic.java:AStatic	class	function/derive/AStatic.java	code/function_composition,code/mathematical_function	Function Algebra,Simplification	utility	legacy	medium
+function/derive/Cat.java:Cat	class	function/derive/Cat.java	code/function_composition,code/invertible_function_contract	Function Algebra	utility	legacy	medium
+function/derive/Const.java:Const	class	function/derive/Const.java	code/constant_function	Function Algebra	utility	legacy	medium
+function/derive/Enum.java:Enum	class	function/derive/Enum.java	code/enum_modeling,code/flyweight_pattern	Flyweight Pattern	utility	legacy	medium
+function/derive/Ternary.java:Ternary	class	function/derive/Ternary.java	code/enum_modeling,code/boolean_algebra	Three-Valued Logic,Lattice Theory	utility	legacy	medium
+function/derive/Month.java:Month	class	function/derive/Month.java	code/enum_modeling	Calendar	utility	legacy	medium
+function/derive/Week.java:Week	class	function/derive/Week.java	code/enum_modeling	Calendar	utility	legacy	medium
+function/derive/Identity.java:Identity	class	function/derive/Identity.java	code/identity_function,code/derivable_function_contract	Function Algebra	utility	legacy	medium
+function/derive/neuron/ISlab.java:ISlab	class	function/derive/neuron/ISlab.java	code/neural_network,code/function_contract	Neural Networks	utility	legacy	medium
+function/derive/neuron/Slab.java:Slab	class	function/derive/neuron/Slab.java	code/neural_network,code/backpropagation	Neural Networks,Supervised Learning	utility	legacy	medium
+function/derive/neuron/ASlab.java:ASlab	class	function/derive/neuron/ASlab.java	code/neural_network,code/backpropagation	Neural Networks	utility	legacy	medium
+function/derive/neuron/Layer.java:Layer	class	function/derive/neuron/Layer.java	code/neural_network,code/backpropagation	Neural Networks,Supervised Learning	utility	legacy	medium
+function/derive/neuron/Network.java:Network	class	function/derive/neuron/Network.java	code/neural_network,code/backpropagation	Neural Networks,Multilayer Perceptron	utility	legacy	medium
+function/derive/neuron/Sigmoid.java:Sigmoid	class	function/derive/neuron/Sigmoid.java	code/derivable_function_contract,code/neural_network	Activation Functions	utility	legacy	medium
+function/derive/neuron/Kohonen.java:Kohonen	class	function/derive/neuron/Kohonen.java	code/neural_network,code/numerical_algorithm	Self-Organizing Maps,Unsupervised Learning,Topology Preservation	utility	legacy	medium
+function/derive/neuron/KohonenGraph.java:KohonenGraph	class	function/derive/neuron/KohonenGraph.java	code/neural_network,code/data_visualization	Self-Organizing Maps,Visualization	utility	legacy	medium
+function/derive/CCountAble.java:CCountAble	class	function/derive/CCountAble.java	code/constant_function,code/numeric_comparison	Function Algebra,Flyweight Pattern	utility	legacy	medium
+function/derive/CMeasurAble.java:CMeasurAble	class	function/derive/CMeasurAble.java	code/constant_function,code/mathematical_constants	Function Algebra,Numeric Constants	utility	legacy	medium
+function/derive/neuron/testNeuronNet.java:testNeuronNet	class	function/derive/neuron/testNeuronNet.java	code/entry_point_code/console_output_code/test	Neural Networks,Test Harness	utility	legacy	medium
+function/derive/ring/AAlgebra.java:AAlgebra	class	function/derive/ring/AAlgebra.java	code/abstract_math,code/algebraic_function	Ring Theory,Function Algebra	utility	legacy	medium
+function/derive/ring/ACAlgebra.java:ACAlgebra	class	function/derive/ring/ACAlgebra.java	code/abstract_math,code/algebraic_function	Ring Theory,Function Algebra	utility	legacy	medium
+function/derive/ring/Algebra.java:Algebra	class	function/derive/ring/Algebra.java	code/algebraic_function,code/function_wrapper	Ring Theory,Function Algebra	utility	legacy	medium
+function/derive/ring/AbsV.java:AbsV	class	function/derive/ring/AbsV.java	code/mathematical_function,code/derivable_function_contract	Function Algebra	utility	legacy	medium
+function/derive/ring/AddAt.java:AddAt	class	function/derive/ring/AddAt.java	code/function_composition,code/derivable_function_contract	Function Algebra	utility	legacy	medium
+function/derive/ring/CatDerive.java:CatDerive	class	function/derive/ring/CatDerive.java	code/function_composition,code/derivative_calculation	Function Algebra,Chain Rule	utility	legacy	medium
+function/derive/ring/Delta1.java:Delta1	class	function/derive/ring/Delta1.java	code/mathematical_function	Function Algebra,Distribution Theory	utility	legacy	medium
+function/derive/ring/Diff.java:Diff	class	function/derive/ring/Diff.java	code/function_composition,code/derivative_calculation	Function Algebra	utility	legacy	medium
+function/derive/ring/DoubleAt.java:DoubleAt	class	function/derive/ring/DoubleAt.java	code/mathematical_function	Function Algebra	utility	legacy	medium
+function/derive/ring/FuncParser.java:FuncParser	class	function/derive/ring/FuncParser.java	code/expression_builder_code/factory_pattern_code/reflection	Function Parsing	utility	legacy	medium
+function/derive/ring/Function2ODE.java:Function2ODE	class	function/derive/ring/Function2ODE.java	code/differential_integration	Ordinary Differential Equations	utility	legacy	medium
+function/derive/ring/HalfAt.java:HalfAt	class	function/derive/ring/HalfAt.java	code/mathematical_function	Function Algebra	utility	legacy	medium
+function/derive/ring/Inv.java:Inv	class	function/derive/ring/Inv.java	code/invertible_function_contract,code/mathematical_function	Function Algebra	utility	legacy	medium
+function/derive/ring/LinAt.java:LinAt	class	function/derive/ring/LinAt.java	code/mathematical_function,code/derivable_function_contract	Function Algebra	utility	legacy	medium
+function/derive/ring/MulAt.java:MulAt	class	function/derive/ring/MulAt.java	code/function_composition,code/derivable_function_contract	Function Algebra	utility	legacy	medium
+function/derive/ring/Neg.java:Neg	class	function/derive/ring/Neg.java	code/mathematical_function,code/invertible_function_contract	Function Algebra	utility	legacy	medium
+function/derive/ring/OdeConst.java:OdeConst	class	function/derive/ring/OdeConst.java	code/differential_integration	Ordinary Differential Equations	utility	legacy	medium
+function/derive/ring/OdeExp.java:OdeExp	class	function/derive/ring/OdeExp.java	code/differential_integration,code/exponential_function	Ordinary Differential Equations	utility	legacy	medium
+function/derive/ring/OdeHeight2D.java:OdeHeight2D	class	function/derive/ring/OdeHeight2D.java	code/differential_integration	Ordinary Differential Equations	utility	legacy	medium
+function/derive/ring/OdeLinear.java:OdeLinear	class	function/derive/ring/OdeLinear.java	code/differential_integration	Ordinary Differential Equations	utility	legacy	medium
+function/derive/ring/OdeSquare.java:OdeSquare	class	function/derive/ring/OdeSquare.java	code/differential_integration	Ordinary Differential Equations	utility	legacy	medium
+function/derive/ring/Pred.java:Pred	class	function/derive/ring/Pred.java	code/mathematical_function,code/derivable_function_contract	Function Algebra	utility	legacy	medium
+function/derive/ring/Prod.java:Prod	class	function/derive/ring/Prod.java	code/function_composition,code/derivative_calculation	Function Algebra,Product Rule	utility	legacy	medium
+function/derive/ring/Quot.java:Quot	class	function/derive/ring/Quot.java	code/function_composition,code/derivative_calculation	Function Algebra,Quotient Rule	utility	legacy	medium
+function/derive/ring/Resid.java:Resid	class	function/derive/ring/Resid.java	code/mathematical_function	Function Algebra	utility	legacy	medium
+function/derive/ring/SawToothAt.java:SawToothAt	class	function/derive/ring/SawToothAt.java	code/mathematical_function	Function Algebra,Periodic Functions	utility	legacy	medium
+function/derive/ring/Sign.java:Sign	class	function/derive/ring/Sign.java	code/mathematical_function,code/derivable_function_contract	Function Algebra	utility	legacy	medium
+function/derive/ring/SqRt.java:SqRt	class	function/derive/ring/SqRt.java	code/mathematical_function,code/derivable_function_contract	Function Algebra	utility	legacy	medium
+function/derive/ring/Square.java:Square	class	function/derive/ring/Square.java	code/mathematical_function,code/derivable_function_contract	Function Algebra	utility	legacy	medium
+function/derive/ring/Step1.java:Step1	class	function/derive/ring/Step1.java	code/mathematical_function	Function Algebra,Distribution Theory	utility	legacy	medium
+function/derive/ring/Succ.java:Succ	class	function/derive/ring/Succ.java	code/mathematical_function,code/derivable_function_contract	Function Algebra	utility	legacy	medium
+function/derive/ring/Sum.java:Sum	class	function/derive/ring/Sum.java	code/function_composition,code/derivative_calculation	Function Algebra,Sum Rule	utility	legacy	medium
+function/derive/ring/ThirdAt.java:ThirdAt	class	function/derive/ring/ThirdAt.java	code/mathematical_function	Function Algebra	utility	legacy	medium
+function/derive/ring/TripleAt.java:TripleAt	class	function/derive/ring/TripleAt.java	code/mathematical_function	Function Algebra	utility	legacy	medium
+function/derive/ring/fEulerFktn.java:fEulerFktn	class	function/derive/ring/fEulerFktn.java	code/mathematical_function,code/exponential_function	Numerical Series	utility	legacy	medium
+function/derive/ring/fEulerSum.java:fEulerSum	class	function/derive/ring/fEulerSum.java	code/mathematical_function	Numerical Series	utility	legacy	medium
+function/derive/ring/fGeoSum.java:fGeoSum	class	function/derive/ring/fGeoSum.java	code/mathematical_function	Numerical Series	utility	legacy	medium
+function/derive/ring/body/ArCosH.java:ArCosH	class	function/derive/ring/body/ArCosH.java	code/hyperbolic_function,code/derivable_function_contract	Inverse Hyperbolic Functions	utility	legacy	medium
+function/derive/ring/body/ArSinH.java:ArSinH	class	function/derive/ring/body/ArSinH.java	code/hyperbolic_function,code/derivable_function_contract	Inverse Hyperbolic Functions	utility	legacy	medium
+function/derive/ring/body/ArTanH.java:ArTanH	class	function/derive/ring/body/ArTanH.java	code/hyperbolic_function,code/derivable_function_contract	Inverse Hyperbolic Functions	utility	legacy	medium
+function/derive/ring/body/ArcCos.java:ArcCos	class	function/derive/ring/body/ArcCos.java	code/hyperbolic_function,code/derivable_function_contract	Inverse Trigonometric Functions	utility	legacy	medium
+function/derive/ring/body/ArcSin.java:ArcSin	class	function/derive/ring/body/ArcSin.java	code/hyperbolic_function,code/derivable_function_contract	Inverse Trigonometric Functions	utility	legacy	medium
+function/derive/ring/body/ArcTan.java:ArcTan	class	function/derive/ring/body/ArcTan.java	code/hyperbolic_function,code/derivable_function_contract	Inverse Trigonometric Functions	utility	legacy	medium
+function/derive/ring/body/BetaI.java:BetaI	class	function/derive/ring/body/BetaI.java	code/numerical_integration,code/mathematical_function	Statistical Distributions,Incomplete Beta Function	utility	legacy	medium
+function/derive/ring/body/Brillouin.java:Brillouin	class	function/derive/ring/body/Brillouin.java	code/mathematical_function	Thermodynamics,Magnetism	utility	legacy	medium
+function/derive/ring/body/CI.java:CI	class	function/derive/ring/body/CI.java	code/numerical_integration,code/trigonometric_function	Special Functions,Cosine Integral	utility	legacy	medium
+function/derive/ring/body/CoTangens.java:CoTangens	class	function/derive/ring/body/CoTangens.java	code/trigonometric_function,code/derivable_function_contract	Trigonometric Functions	utility	legacy	medium
+function/derive/ring/body/CosH.java:CosH	class	function/derive/ring/body/CosH.java	code/hyperbolic_function,code/derivable_function_contract	Hyperbolic Functions	utility	legacy	medium
+function/derive/ring/body/Cosinus.java:Cosinus	class	function/derive/ring/body/Cosinus.java	code/trigonometric_function,code/derivable_function_contract	Trigonometric Functions	utility	legacy	medium
+function/derive/ring/body/DawsonInt.java:DawsonInt	class	function/derive/ring/body/DawsonInt.java	code/numerical_integration,code/mathematical_function	Special Functions,Dawson Integral	utility	legacy	medium
+function/derive/ring/body/EI.java:EI	class	function/derive/ring/body/EI.java	code/numerical_integration,code/exponential_function	Special Functions,Exponential Integral	utility	legacy	medium
+function/derive/ring/body/ElliptInt.java:ElliptInt	class	function/derive/ring/body/ElliptInt.java	code/numerical_integration	Special Functions,Elliptic Integrals	utility	legacy	medium
+function/derive/ring/body/Exponential.java:Exponential	class	function/derive/ring/body/Exponential.java	code/exponential_function,code/derivable_function_contract	Exponential Functions	utility	legacy	medium
+function/derive/ring/body/GammaLn.java:GammaLn	class	function/derive/ring/body/GammaLn.java	code/gamma_function,code/mathematical_function	Special Functions,Gamma Function	utility	legacy	medium
+function/derive/ring/body/GammaP.java:GammaP	class	function/derive/ring/body/GammaP.java	code/gamma_function,code/derivable_function_contract	Special Functions,Incomplete Gamma Function	utility	legacy	medium
+function/derive/ring/body/Gauss.java:Gauss	class	function/derive/ring/body/Gauss.java	code/derivable_function_contract,code/mathematical_function	Statistical Distributions,Gaussian Distribution	utility	legacy	medium
+function/derive/ring/body/Langevin.java:Langevin	class	function/derive/ring/body/Langevin.java	code/mathematical_function	Thermodynamics,Magnetism	utility	legacy	medium
+function/derive/ring/body/LogNormal.java:LogNormal	class	function/derive/ring/body/LogNormal.java	code/derivable_function_contract,code/mathematical_function	Statistical Distributions,Log-Normal Distribution	utility	legacy	medium
+function/derive/ring/body/Logarithm.java:Logarithm	class	function/derive/ring/body/Logarithm.java	code/logarithm_function,code/derivable_function_contract	Logarithmic Functions	utility	legacy	medium
+function/derive/ring/body/Power.java:Power	class	function/derive/ring/body/Power.java	code/mathematical_function,code/derivable_function_contract	Power Functions	utility	legacy	medium
+function/derive/ring/body/SI.java:SI	class	function/derive/ring/body/SI.java	code/numerical_integration,code/trigonometric_function	Special Functions,Sine Integral	utility	legacy	medium
+function/derive/ring/body/SinH.java:SinH	class	function/derive/ring/body/SinH.java	code/hyperbolic_function,code/derivable_function_contract	Hyperbolic Functions	utility	legacy	medium
+function/derive/ring/body/Sinus.java:Sinus	class	function/derive/ring/body/Sinus.java	code/trigonometric_function,code/derivable_function_contract	Trigonometric Functions	utility	legacy	medium
+function/derive/ring/body/TanH.java:TanH	class	function/derive/ring/body/TanH.java	code/hyperbolic_function,code/derivable_function_contract	Hyperbolic Functions	utility	legacy	medium
+function/derive/ring/body/Tangens.java:Tangens	class	function/derive/ring/body/Tangens.java	code/trigonometric_function,code/derivable_function_contract	Trigonometric Functions	utility	legacy	medium
+function/derive/ring/body/TestBodyFuncs.java:TestBodyFuncs	class	function/derive/ring/body/TestBodyFuncs.java	code/entry_point_code/console_output_code/test	Test Harness	utility	legacy	medium
+function/derive/ring/body/vector/CatPartial.java:CatPartial	class	function/derive/ring/body/vector/CatPartial.java	code/function_composition,code/differential_integration	Partial Derivatives	utility	legacy	medium
+function/derive/ring/body/vector/DiffPartial.java:DiffPartial	class	function/derive/ring/body/vector/DiffPartial.java	code/differential_integration	Partial Derivatives	utility	legacy	medium
+function/derive/ring/body/vector/Dimension.java:Dimension	class	function/derive/ring/body/vector/Dimension.java	code/differential_integration,code/mathematical_function	Partial Derivatives,Vector Calculus	utility	legacy	medium
+function/derive/ring/body/vector/IPartialDerive.java:IPartialDerive	class	function/derive/ring/body/vector/IPartialDerive.java	code/differential_integration,code/derivable_function_contract	Partial Derivatives	utility	legacy	medium
+function/derive/ring/body/vector/OdeHeight.java:OdeHeight	class	function/derive/ring/body/vector/OdeHeight.java	code/differential_integration	Ordinary Differential Equations	utility	legacy	medium
+function/derive/ring/body/vector/OdeLorentz.java:OdeLorentz	class	function/derive/ring/body/vector/OdeLorentz.java	code/differential_integration	Ordinary Differential Equations,Chaos Theory	utility	legacy	medium
+function/derive/ring/body/vector/ProdPartial.java:ProdPartial	class	function/derive/ring/body/vector/ProdPartial.java	code/differential_integration	Partial Derivatives,Product Rule	utility	legacy	medium
+function/derive/ring/body/vector/QuotPartial.java:QuotPartial	class	function/derive/ring/body/vector/QuotPartial.java	code/differential_integration	Partial Derivatives,Quotient Rule	utility	legacy	medium
+function/derive/ring/body/vector/SumPartial.java:SumPartial	class	function/derive/ring/body/vector/SumPartial.java	code/differential_integration	Partial Derivatives,Sum Rule	utility	legacy	medium
+function/derive/ring/body/vector/fChargeField.java:fChargeField	class	function/derive/ring/body/vector/fChargeField.java	code/mathematical_function,code/vector_math	Electromagnetism,Vector Fields	utility	legacy	medium
+function/derive/ring/body/vector/fProduct.java:fProduct	class	function/derive/ring/body/vector/fProduct.java	code/mathematical_function,code/vector_math	Vector Calculus	utility	legacy	medium
+function/derive/ring/body/vector/fSinProd.java:fSinProd	class	function/derive/ring/body/vector/fSinProd.java	code/mathematical_function,code/vector_math	Vector Calculus,Trigonometric Functions	utility	legacy	medium
+function/derive/ring/body/vector/fSum.java:fSum	class	function/derive/ring/body/vector/fSum.java	code/mathematical_function,code/vector_math	Vector Calculus	utility	legacy	medium
+function/derive/ring/body/vector/testBodyVFuncs.java:testBodyVFuncs	class	function/derive/ring/body/vector/testBodyVFuncs.java	code/entry_point_code/console_output_code/test	Test Harness	utility	legacy	medium
+function/derive	folder	function/derive	code/derivable_function_contract,code/mathematical_function	Calculus and Function Algebra	utility	legacy	high
+function/derive/neuron	folder	function/derive/neuron	code/neural_network,code/backpropagation	Neural Networks	domain	broken	high
+function/derive/ring	folder	function/derive/ring	code/algebraic_function,code/derivable_function_contract	Ring-Structured Function Algebra	utility	legacy	high
+function/derive/ring/body	folder	function/derive/ring/body	code/mathematical_function,code/derivable_function_contract	Special Functions and Transcendental Bodies	utility	legacy	high
+function/derive/ring/body/vector	folder	function/derive/ring/body/vector	code/differential_integration,code/vector_math	Vector Calculus and Partial Derivatives	utility	broken	high
+function/derive/CCountAble.java:ByRefComparison	class	function/derive/CCountAble.java	code/numeric_comparison	Comparison Result Holder	utility	legacy	low
+function/derive/CCountAble.java:Comparison	class	function/derive/CCountAble.java	code/enum_modeling,code/numeric_comparison	Comparison Result Enum	utility	legacy	low
+function/derive/neuron/Kohonen.java:KohonenTester	class	function/derive/neuron/Kohonen.java	code/neural_network,code/testing	Self-Organizing Map Test Harness	test	legacy	low
+function/derive/neuron/testNeuronNet.java:testNeuronNet.main(String[])	method	function/derive/neuron/testNeuronNet.java	code/testing	Demo Entry Point	test	legacy	low
+function/derive/ring/TestRingFuncs.java:TestRingFuncs	class	function/derive/ring/TestRingFuncs.java	code/testing,code/algebraic_function	Ring Function Test Harness	test	legacy	low
+function/derive/ring/TestRingFuncs.java:TestRingFuncs.main(String[])	method	function/derive/ring/TestRingFuncs.java	code/testing	Demo Entry Point	test	legacy	low
+function/derive/ring/TestRingFuncs.java:TestRingFuncs.testInstantiation()	method	function/derive/ring/TestRingFuncs.java	code/testing	Instantiation Self-Test	test	legacy	low
+function/derive/ring/body/TestBodyFuncs.java:TestBodyFuncs.Delta2(Object)	method	function/derive/ring/body/TestBodyFuncs.java	code/testing	Delta Function Test Helper	test	legacy	low
+function/derive/ring/body/TestBodyFuncs.java:TestBodyFuncs.Delta4(Object)	method	function/derive/ring/body/TestBodyFuncs.java	code/testing	Delta Function Test Helper	test	legacy	low
+function/derive/ring/body/TestBodyFuncs.java:TestBodyFuncs.ExpInt(MetricBody)	method	function/derive/ring/body/TestBodyFuncs.java	code/testing,code/numerical_integration	Exponential Integral Test Helper	test	legacy	low
+function/derive/ring/body/TestBodyFuncs.java:TestBodyFuncs.main(String[])	method	function/derive/ring/body/TestBodyFuncs.java	code/testing	Demo Entry Point	test	legacy	low
+function/derive/ring/body/TestBodyFuncs.java:TestBodyFuncs.testExpInt()	method	function/derive/ring/body/TestBodyFuncs.java	code/testing	Exponential Integral Self-Test	test	legacy	low
+function/derive/ring/body/TestBodyFuncs.java:TestBodyFuncs.testGaussIntegral()	method	function/derive/ring/body/TestBodyFuncs.java	code/testing	Gaussian Integral Self-Test	test	legacy	low
+function/derive/ring/body/vector/testBodyVFuncs.java:testBodyVFuncs.main(String[])	method	function/derive/ring/body/vector/testBodyVFuncs.java	code/testing	Demo Entry Point	test	legacy	low

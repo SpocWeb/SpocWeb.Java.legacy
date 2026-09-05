@@ -43,6 +43,15 @@ import function.derive.ring.Sum;
  * cot(x) = 1/x - (x/3 + x^3/45 + x^5*2/945 + x^7/4725 + ...
  * 			+ x^(2*n-1)*2^(2n)*Bernoulli[n]/(2n)!
  *
+ * <!-- docstate
+ * pass: 2
+ * mtime: 2026-09-05T16:42:26Z
+ * digest: be011432c84450c84cea47679878a10de0307ccd55f376195a3ce3641fc86d87
+ * stale: false
+ * tags: [code/trigonometric_function, code/derivable_function_contract]
+ * concepts: [Trigonometric Functions]
+ * facets: {layer: utility, status: legacy, complexity: medium}
+ * -->
  */
 public class CoTangens
 extends AStatic
@@ -74,24 +83,27 @@ implements IFloatDeriveAble {
 	 * and the Integral: */
 	private CoTangens(){ }
 	
-    /** @see function.IFloatFunction#getOrder()     */
+    /**Reports that CoTangens imposes no particular Ordering on its Argument.
+     * @see function.IFloatFunction#getOrder()     */
     public byte getOrder() { return IStreamIn.ORDER_NONE; }
-    
+
 	/**This Function represents the CoTangens Function.	 */
 	public Object Map (Object arg) { return ((MetricBody) arg).cot(); }
-	
-	/*	Returns the Cotangens(x) = 1/Tangens(x) for all x 	*/
+
+	/**Returns the Cotangens(x) = 1/Tangens(x) for all x.	 */
 	public double Map(double x) { return ICountAble.ONE / Math.tan(x); }	//
 
-	/*	Returns the Cotangens(x) = 1/Tangens(x) for all x 	*/
+	/**Returns the Cotangens(x) = 1/Tangens(x) for all x.	 */
 	public float Map(float x) { return 1.0f / (float) Math.tan(x); }	//
 
-	/** @return The Derivative at x	 */
+	/**Returns the CoTangens Function's Derivative: -(1+cot^2(x)).
+	 * @return The Derivative at x	 */
 	public float getDerivative(float x) {
 		float cot = (float) (ICountAble.ONE / Math.tan(x));
 		return ICountAble._ONE-cot*cot; }
 
-	/** @return The Derivative at x	 */
+	/**Returns the CoTangens Function's Derivative: -(1+cot^2(x)).
+	 * @return The Derivative at x	 */
 	public double getDerivative(double x) {
 		double cot = ICountAble.ONE / Math.tan(x);
 		return ICountAble._ONE-cot*cot; }

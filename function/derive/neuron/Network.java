@@ -9,7 +9,7 @@ import function.derive.IFloatDeriveAble;
   * Multilayer Networks are for supervised Learning
   *	and can remember any Separation if the inner Layers are large enough.
   *	They minimize (O'-O)^2 with O[j] = f(W[j][i]*I[i]) # W[j][i]*I[i]
-  *	Learning Rule: dW[i,j] = ß * I[i]*(O'-O)[j]*f'(W*I) # ß*f'(W*I) * I°(I-WI)
+  *	Learning Rule: dW[i,j] = ï¿½ * I[i]*(O'-O)[j]*f'(W*I) # ï¿½*f'(W*I) * Iï¿½(I-WI)
   *	Operation: Presentation of a (noisy) Input restores the learned Output
   *
   * This is a quite expensive, but also universal Tool to reproduce or generalize.
@@ -113,6 +113,15 @@ import function.derive.IFloatDeriveAble;
   *				2) Since for each test you need 4 Vectors out of n,
   *					the Number of tests results in n!/(4!*(n-4)!) = n(n-1)(n-2)(n-3)/24
   *
+  * <!-- docstate
+  * pass: 2
+  * mtime: 2026-09-05T16:31:36Z
+  * digest: e8b8287181cdc6affede637caeb37eb14cef5ca7d8d7b8be15ac2f23f5f0faa5
+  * stale: false
+  * tags: [code/neural_network, code/backpropagation]
+  * concepts: [Neural Networks, Multilayer Perceptron]
+  * facets: {layer: utility, status: legacy, complexity: medium}
+  * -->
   * 	 */
 public class Network
 extends AFunction
@@ -138,6 +147,9 @@ implements Slab {
 
 	/**Randomizes all the Weights of this Slab
 	 * by initializing it with Weights uniformly distributed between [-1, +1]	 */
+	// TODO: LOGIC: loop condition is '--i > 0' instead of '--i >= 0', so Layers[0]'s Weights are
+	// never randomized (every other Layer in this Network keeps its default/previously-set Weights).
+	// Reachable on every Network constructed from more than one Layer.
 	public void randomizeWeights() {
 		int i = Layers.length;
 		while (--i > 0)
@@ -149,7 +161,8 @@ implements Slab {
 	public float[] getOutput() {
 		return Layers[Layers.length-1].getOutput(); }
 
-	/** @return arg mapped by this Object: this.Map(arg) == this°arg
+	/**Performs a forward Propagation of the given Input Array through every Layer and returns the Output.
+	 * @return arg mapped by this Object: this.Map(arg) == thisï¿½arg
 	  * This is the Function working on 'arg' defined by the implementing Class.
 	  * The Class implementing this Method is the means of exchanging this Operation.	 */
 	public Object Map (Object arg) {

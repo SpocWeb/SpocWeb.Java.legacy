@@ -8,6 +8,15 @@ import function.derive.CCountAble;
 
 /**This Class encapsulates the Predecessor Function.
  * It subtracts the Constant (Function) 1 form it's Argument.
+ * <!-- docstate
+ * pass: 2
+ * mtime: 2026-09-05T10:13:18Z
+ * digest: 72b7d0d5a36512d0eb97d75b2ed1cb9d98ab60ff37580ce6cef9ad47250d3690
+ * stale: false
+ * tags: [code/mathematical_function, code/derivable_function_contract]
+ * concepts: [Function Algebra]
+ * facets: {layer: utility, status: legacy, complexity: medium}
+ * -->
  * It should work exactly like AddAt, but that is not realized everywhere yet!!  */
 public class Pred
 extends ADeriveAble {

@@ -9,7 +9,18 @@ import function.derive.ring.Algebra;
 import function.derive.ring.CatDerive;
 import function.derive.ring.Neg;
 
-/**This Class encapsulates the ArcTan Function.  */
+/**This Class encapsulates the ArcTan Function.
+ *
+ * <!-- docstate
+ * pass: 2
+ * mtime: 2026-09-05T16:41:54Z
+ * digest: bd46768a0613896b508092f26f06af82e30d7b4dab306f9982ddb2704e7d2b68
+ * stale: false
+ * tags: [code/hyperbolic_function, code/derivable_function_contract]
+ * concepts: [Inverse Trigonometric Functions]
+ * facets: {layer: utility, status: legacy, complexity: medium}
+ * -->
+ */
 final public class ArcTan
 extends AFloatDeriveAble {
 
@@ -34,10 +45,10 @@ extends AFloatDeriveAble {
 	/**This Function represents the ArcTan Function.	 */
 	public Object Map (Object arg) { return ((MetricBody) arg).ArcTan(); }
 
-	/*	Returns ArcTan(x) for all x 	*/
+	/**Returns ArcTan(x) for all x.	 */
 	public double Map(double x) { return Math.atan(x); }	//
 
-	/*	Returns Derivative of ArcTan(x) for all x: 1/SqRt(1+x*x)  	*/
+	/**Returns the Derivative of ArcTan(x) for all x: 1/SqRt(1+x*x).	 */
 	public double getDerivative(double x) {
 		return ICountAble.ONE / Math.sqrt(x*x + ICountAble.ONE); }
 

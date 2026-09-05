@@ -6,7 +6,18 @@ import streamIO.copy.group.ISemiGroup;
 import function.derive.ADeriveAble;
 import function.derive.CCountAble;
 
-/**This Class encapsulates the Negative Function.  */
+/**This Class encapsulates the Negative Function.
+ *
+ * <!-- docstate
+ * pass: 2
+ * mtime: 2026-09-05T16:35:01Z
+ * digest: 084cb8ae337da5f4705f7af814d8ddbafca125697e050dc68f617a736530cee2
+ * stale: false
+ * tags: [code/mathematical_function, code/invertible_function_contract]
+ * concepts: [Function Algebra]
+ * facets: {layer: utility, status: legacy, complexity: medium}
+ * -->
+ */
 final public class Neg
 extends ADeriveAble	//IPartialDerive //
 {
@@ -42,7 +53,8 @@ extends ADeriveAble	//IPartialDerive //
 	/**This Function represents the additive Neg Function.  */
 	public float  Map (float  arg) { return -arg; }
 
-	/**@return  The string representation of the Function.
+	/**Returns the textual "-" representation of this Negation Function.
+	 * @return  The string representation of the Function.
 	 * @since   JDK1.0	 */
 	public String toString() { return "-"; }
 

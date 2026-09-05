@@ -11,7 +11,18 @@ import function.derive.ring.Algebra;
 import function.derive.ring.Diff;
 import function.derive.ring.Prod;
 
-/**This Class encapsulates the ArSinH Function.  */
+/**This Class encapsulates the ArSinH Function.
+ *
+ * <!-- docstate
+ * pass: 2
+ * mtime: 2026-09-05T16:41:34Z
+ * digest: 85c0bb6b876b4fdc0504e9eb68ad6333ee7188e9dff133f35cd91d28c8bcd87c
+ * stale: false
+ * tags: [code/hyperbolic_function, code/derivable_function_contract]
+ * concepts: [Inverse Hyperbolic Functions]
+ * facets: {layer: utility, status: legacy, complexity: medium}
+ * -->
+ */
 final public class ArSinH
 extends AFloatDeriveAble {
 
@@ -32,13 +43,15 @@ extends AFloatDeriveAble {
 	/**This Function represents the ArSinH Function.	 */
 	public Object Map (Object arg) { return ((MetricBody) arg).ArSinH(); }
 	
-    /** @see function.IFloatFunction#getOrder()     */
+    /**Reports that ArSinH preserves strict ascending order of its argument.
+     * @see function.IFloatFunction#getOrder()     */
     public byte getOrder() { return IStreamIn.ORDER_ASC_STRICT; }
-    
-	/*	Returns ArSinH(x) = ln() for x > 1  */
+
+	/**Returns ArSinH(x) = ln(x + SqRt(x^2+1)).	 */
 	public double Map(double x) { return Math.log(x + Math.sqrt(x*x+1)); }
 
-	/** @return The Derivative at x	 */
+	/**Returns the ArSinH Function's Derivative at x.
+	 * @return The Derivative at x	 */
 	public double getDerivative(double x) {
 		return ICountAble.ONE / Math.sqrt(x*x+1); }
 

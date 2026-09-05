@@ -10,6 +10,15 @@ import function.derive.IDeriveAble;
 
 /**This Class encapsulates the Delta1 Function.
  * It jumps to the given Height (Default == 1)
+ * <!-- docstate
+ * pass: 2
+ * mtime: 2026-09-05T10:13:18Z
+ * digest: a5147d6f5211bf97d99037b3bff8e06725cae06680db97eb36fcd5c5354a1f9f
+ * stale: false
+ * tags: [code/mathematical_function]
+ * concepts: [Function Algebra, Distribution Theory]
+ * facets: {layer: utility, status: legacy, complexity: medium}
+ * -->
  * from 0 to 1/Height.  */
 public class Delta1
 extends ADeriveAble { //AStatic { //

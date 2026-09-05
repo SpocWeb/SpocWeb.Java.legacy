@@ -17,6 +17,15 @@ import function.AInvertAble;
  * Design
  * Decisions: R is the only complete Space where Derivatives can be defined
  * 			  so it is only natural to implement the Interface 'IFloatFunction'
+ * <!-- docstate
+ * pass: 2
+ * mtime: 2026-09-05T16:14:51Z
+ * digest: 75d6bc4371fcf02ba3586ce7bde566ae3c3caf500906d478e3261da487149728
+ * stale: false
+ * tags: [code/derivable_function_contract, code/derivative_calculation]
+ * concepts: [Calculus, Singleton Pattern]
+ * facets: {layer: utility, status: legacy, complexity: medium}
+ * -->
  */
 public abstract class ADeriveAble
 extends AInvertAble
@@ -74,9 +83,13 @@ implements IDeriveAble { //
 /*		if (n == 0) return this; //recursive Implementation
 		if (n >  0) return Derivative().Derivative(--n);
 					return Integral  ().Derivative(++n); }
+*/
 
-	/**Returns the n-th Derivative of this Function
-	 * Negative n denote Integration  */
+	/**Walks the derivative/integral chain of {@code f} by {@code n} steps and returns the result.
+	 * Negative n denote Integration
+	 * @param f the Function whose derivative chain is walked
+	 * @param n the number of steps; positive differentiates, negative integrates
+	 * @return the n-th Derivative of this Function	 */
 	public static IDeriveAble Derivative(IDeriveAble f, int n) {
 		while (--n >  0) f = f.getDerivative();
 		while (++n <  0) f = f.getIntegral  ();

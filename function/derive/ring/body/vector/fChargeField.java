@@ -20,6 +20,15 @@ import function.AFunction;
  * The MultiPole Moments of lesser Order are Zero with these Examples, i.e.
  * MultiPoles of Order > 0 (MonoPole) are electrically neutral etc.
  * The MultiPole Moments of higher Order are not Zero with these Examples,
+ * <!-- docstate
+ * pass: 2
+ * mtime: 2026-09-05T10:13:18Z
+ * digest: 894b3dcad8ac7be4205bd7eb1a34f647c283facbc85536d2d32d7541398c343b
+ * stale: false
+ * tags: [code/mathematical_function, code/vector_math]
+ * concepts: [Electromagnetism, Vector Fields]
+ * facets: {layer: utility, status: legacy, complexity: medium}
+ * -->
  * because the MultiPoles have an extent!	*/
 public class fChargeField
 extends AFunction {

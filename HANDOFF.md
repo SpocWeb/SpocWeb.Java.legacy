@@ -131,7 +131,7 @@ concurrently against the same file):
 | `streamIO/copy` (root+boole+groupM+monoid+order+primitiveOp+shift) | 82 | 11329 | 0 | claimed | agent-copy-misc |
 | `streamIO/copy/group` | 124 | 31328 | 0 | claimed | agent-copy-group |
 | `function` (root+index+real+string+vector+byref) | 98 | 12899 | 0 | claimed | agent-function-misc |
-| `function/derive` | 106 | 14586 | 0 | claimed | agent-function-derive |
+| `function/derive` | 106 | 14586 | 106 | done | agent-function-derive |
 | `streamIO/object` (root+backTrack+filterIn+filterInOut+filterOut+integer+yaml+json) | 79 | 13501 | 0 | claimed | agent-object-misc |
 | `streamIO/object/enumer` | 79 | 18229 | 0 | unclaimed | - |
 | `streamIO/object/parser` | 27 | 6942 | 0 | unclaimed | - |
@@ -501,6 +501,15 @@ same harness against it. A test that has not been seen red proves nothing.
 | math/vector/VectorFloat.java | VectorFloat | divAt(VectorFloat) | 4580 | Same `subAt`-instead-of-divisive-op defect as the sibling classes' `divAt(VectorX)`. | High | open |
 | math/vector/VectorFloat.java | VectorFloat | mulAt(double) | 4630 | Ignores the `value` parameter and instead multiplies items by itself element-wise; same defect as the sibling classes' `mulAt(scalar)`. | High | open |
 | math/vector/VectorFloat.java | VectorFloat | divAt(double) | 4636 | Ignores the `value` parameter and instead divides items by itself element-wise (yielding all 1s); same defect as the sibling classes' `divAt(scalar)`. | High | open |
+| function/derive/Enum.java | Enum | succ() | 264 | Indexes `list[(int)Value+1]` and bounds-checks `Value>=list.length` instead of using the list position `Value-Offset`. For any Enum with non-zero Offset (`Month`, Offset=1) this skips an element (`January.succ()` returns March); for Offset=0 with the last element's Value==list.length-1 (`Week`, Sunday.Value=6, list.length=7) it throws `ArrayIndexOutOfBoundsException` instead of returning null. | High | open |
+| function/derive/Enum.java | Enum | pred() | 271 | Indexes `list[(int)Value-1]` and checks `Value==0` instead of using the list position `Value-Offset`. For any Enum with non-zero Offset (`Month`, Offset=1) the first element's `pred()` returns itself instead of null (`January.pred()` returns January). | Medium | open |
+| function/derive/Ternary.java | Ternary | fromString(String) | 224 | Ignores the `ST` parameter entirely and always returns `this`; the class's own TODO admits parsing "-1"/"0"/"1" and "true"/"false"/"null" is unimplemented, so any caller round-tripping a serialized Ternary silently gets back the wrong constant. | Medium | open |
+| function/derive/neuron/Network.java | Network | randomizeWeights() | 144 | Loop uses `while (--i > 0)` instead of `>= 0`, so `Layers[0]`'s Weights are never randomized while every other Layer's are; reachable on any multi-Layer Network after construction. | Medium | open |
+| function/derive/ring/LinAt.java | LinAt | LinAt(Object, Object, IInvertAble) | 39 | Validates the fields `a`/`b` (still null before assignment) instead of the constructor parameters `a_`/`b_`, so these `instanceof IFunction` checks can never trigger regardless of what callers pass in. | Low | open |
+| function/derive/ring/LinAt.java | LinAt | Map(Object) | 65 | When `b==null` (pure scaling) calls `MulAt.MUL_AT(arg, b)` with the null `b` instead of `MulAt.MUL_AT(arg, a)`, breaking the intended `a*x` scaling for every `LinAt` constructed with a null `b`. | High | open |
+| function/derive/ring/body/Logarithm.java | Logarithm | getDerivative(double) | 58 | Returns `-Math.log(x)` instead of the correct derivative `1/x`; reachable on every call. | High | open |
+| function/derive/ring/body/Logarithm.java | Logarithm | getFuncDerive(double, ByRefDouble) | 65 | Returns `-Math.log(x)` as the function value instead of `Math.log(x)` (disagrees with `Map(x)`); the derivative ByRef output is correct, but the returned value is negated for every caller. | High | open |
+| function/derive/ring/body/vector/fSum.java | fSum | Map(Object) | 18 | `Sum` is initialized as a copy of `V.a[0]`, but the loop then runs `i` from `Dim-1` down to `0` inclusive and adds `V.getAt(0)` again, double-counting coordinate 0 in the result for every tensor of dimension >= 1. | High | open |
 
 ## Tool defects found and fixed during the pilot
 

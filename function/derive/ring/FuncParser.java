@@ -15,6 +15,15 @@ import function.derive.CMeasurAble;
  * Variables are not defined and the Multiplication Sign can not be skipped.
  * Top-Down Implementation.	No Backtracking necessary, because of LL(1).
  * @see stringOp.parser.MathParser
+ * <!-- docstate
+ * pass: 2
+ * mtime: 2026-09-05T10:13:18Z
+ * digest: 889e2af19a16052c9268a84674c9af6f8f35ae0b650764f7cd7ce30e8bee7488
+ * stale: false
+ * tags: [code/expression_builder_code/factory_pattern_code/reflection]
+ * concepts: [Function Parsing]
+ * facets: {layer: utility, status: legacy, complexity: medium}
+ * -->
  */
 public class FuncParser
 extends Scanner {
@@ -121,7 +130,7 @@ extends Scanner {
 			if(Inverse && testChar('@')) { Factor(); F = new CatDerive(F, currFunction).simplify (); }
 			//choosing Factor here results in only the very next Argument to be chosen, instead of the next Product with Term or even the next Sum with Expression!
 			//Bracket() Notation is more often used.
-			//° or @ Notation more harmoneously integrates into the other Production Rules, but precedence is a Question!
+			//ï¿½ or @ Notation more harmoneously integrates into the other Production Rules, but precedence is a Question!
 		}
 		else if (IS_DIGIT(currChar)) {	//Function or Constant or Variable (which is a constant Function)
 			if (construct) F = new Algebra(new CMeasurAble(Real())); // Body.BodyDouble(Real()));	//use it for searching or even creating the foreign Base.

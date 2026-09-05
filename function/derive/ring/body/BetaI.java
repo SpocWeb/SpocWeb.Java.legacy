@@ -29,6 +29,15 @@ import function.byref.ByRefInt;
  * Student's t 
  * Fisher's Z
  * The Power Series doesn't converge well, so use the Continued Fraction.
+ * <!-- docstate
+ * pass: 2
+ * mtime: 2026-09-05T16:42:06Z
+ * digest: 25dbf3cc5f692ba08200beaa031cc1b6733c7a78e68ceb29a68738f1d61e9b51
+ * stale: false
+ * tags: [code/numerical_integration, code/mathematical_function]
+ * concepts: [Statistical Distributions, Incomplete Beta Function]
+ * facets: {layer: utility, status: legacy, complexity: medium}
+ * -->
  */
 public class BetaI
 extends AFunction
@@ -154,13 +163,14 @@ extends AFunction
 		return ret;
 	}
 	
-	/**@return the Incomplete Beta Function normed by Beta(a,b):
+	/**Computes the regularized (normed) Incomplete Beta Function.
+	 * @return the Incomplete Beta Function normed by Beta(a,b):
 	 *
 	 *						1		x
 	 *   BetaI(g,x,y) :=--------- *Int t^(a-1)*(1-t)^(b-1)
 	 *                  Beta(a,b)	0
-	 * For every choice of a and b this Function rises smoothly 
-	 * from (0, 0) to (1, 1)   
+	 * For every choice of a and b this Function rises smoothly
+	 * from (0, 0) to (1, 1)
 	 */
 	final static public double BETA_I (final double x, final double a, final double b) {
 		if ((x < 0) || 
@@ -174,18 +184,21 @@ extends AFunction
 			return 1 - factor*BETA_I_KB(b, a, 1-x)/b;   //{erst SymmetrieTransformation}
 	}
 	
-	/** @return the Probability to accept the Hypothesis for a Variable with Student's t Distribution.
-	 * Actually Student's t Distribution converges to the normal Gaussian Distribution with growing Degrees of Freedom. 
-	 * Student's t is used for small Sample Sizes (DoF < 30) in which the Central Limit Theorem does not (yet) apply. 
+	/**Computes the two-tailed Acceptance Probability for Student's t Test.
+	 * @return the Probability to accept the Hypothesis for a Variable with Student's t Distribution.
+	 * Actually Student's t Distribution converges to the normal Gaussian Distribution with growing Degrees of Freedom.
+	 * Student's t is used for small Sample Sizes (DoF < 30) in which the Central Limit Theorem does not (yet) apply.
 	 */
 	final static public double PROBABILITY_STUDENT_T(final double degreesOfFreedom, final double t) {
 		return BetaI.BETA_I(degreesOfFreedom/(degreesOfFreedom+t*t), 0.5*degreesOfFreedom, 0.5); }
-	
-	/** @return the Probability to accept the Hypothesis for a Variable with Fisher's F Distribution	 */
+
+	/**Computes the Acceptance Probability for Fisher's F Test.
+	 * @return the Probability to accept the Hypothesis for a Variable with Fisher's F Distribution	 */
 	final static public double PROBABILITY_FISHER_F(final double df1, final double df2, final double f) {
 		return BetaI.BETA_I(df2/(df2+df1*f), 0.5*df2, 0.5*df1); }
-	
-	/** @return the Probability to accept the Hypothesis for a Variable with Binomial Distribution	 */
+
+	/**Computes the cumulative Binomial Distribution Probability via its Beta Function Relation.
+	 * @return the Probability to accept the Hypothesis for a Variable with Binomial Distribution	 */
 	final static public double PROBABILITY_BINOMIAL_CUM(final double n, final double k, final double p) {
 		return BetaI.BETA_I(p, k, n-k+1); }
 	

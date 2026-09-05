@@ -7,6 +7,15 @@ import function.vector.AOdeFloat;
 /**ODE Definition for the Constant Functions y = c,
  * The Derivative is always 0 and not dependent on either x or y !
  * @see function.derive.ring.OdeLinear which is always 1. 
+ * <!-- docstate
+ * pass: 2
+ * mtime: 2026-09-05T10:13:18Z
+ * digest: 93e638148437b5f7a3ca8dad7180e56cfd37c24e9613e2ac7e6d07e2c12b2a7a
+ * stale: false
+ * tags: [code/differential_integration]
+ * concepts: [Ordinary Differential Equations]
+ * facets: {layer: utility, status: legacy, complexity: medium}
+ * -->
  */
 final public class OdeConst
 extends AOdeFloat 

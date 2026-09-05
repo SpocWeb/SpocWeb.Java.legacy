@@ -10,7 +10,18 @@ import function.derive.CCountAble;
 import function.derive.CMeasurAble;
 import function.derive.Identity;
 
-/**This Class encapsulates the ThirdAt Function.  */
+/**This Class encapsulates the ThirdAt Function.
+ *
+ * <!-- docstate
+ * pass: 2
+ * mtime: 2026-09-05T10:13:18Z
+ * digest: f774fa56056cf86238892886c7539a7c99ba317e2a76eaf624050ea37828914d
+ * stale: false
+ * tags: [code/mathematical_function]
+ * concepts: [Function Algebra]
+ * facets: {layer: utility, status: legacy, complexity: medium}
+ * -->
+ */
 final public class ThirdAt
 extends ADeriveAble {
 

@@ -34,6 +34,15 @@ import Vector.*;
   *
   * The Second Solution corresponds to Dimension.map(arg)
   * returning the full Argument and using Dim = -1 for signaling full Operations.
+  * <!-- docstate
+  * pass: 2
+  * mtime: 2026-09-05T20:43:45Z
+  * digest: f4102c23ed379fd005dd76f561ac8c7c28f2867d03f3a014404cc71c70997e3e
+  * stale: false
+  * tags: [code/differential_integration, code/mathematical_function]
+  * concepts: [Partial Derivatives, Vector Calculus]
+  * facets: {layer: utility, status: legacy, complexity: medium}
+  * -->
   * The first Solution is so far implemented, except in Function(arg).  */
 public class Dimension
 extends AFunction
@@ -142,7 +151,8 @@ implements IPartialDerive {
 	public boolean equals  (Object arg) {
 		return (arg instanceof Dimension) && (Dim == ((Dimension)arg).Dim);}
 
-	/**@return  The string representation of the Function.
+	/**Returns the textual "x[Dim]" representation of this coordinate-projection Function.
+	 * @return  The string representation of the Function.
 	 * @since   JDK1.0	 */
 	public String toString() { return "x[" + Dim + "]"; }
 

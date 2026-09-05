@@ -58,6 +58,15 @@ import graphs.ICopy;
   * Created on	06-29-2002, 07:01 PM<p>
   * @author 	Matthias Heuer
   * @version	1.0
+  * <!-- docstate
+  * pass: 2
+  * mtime: 2026-09-05T16:29:30Z
+  * digest: 7285306fbed827a680140b2a5cc2715961b2463f7d8502da6652c4fc0574a75a
+  * stale: false
+  * tags: [code/enum_modeling, code/boolean_algebra]
+  * concepts: [Three-Valued Logic, Lattice Theory]
+  * facets: {layer: utility, status: legacy, complexity: medium}
+  * -->
   */
 final public class Ternary
 extends Enum //ACLattice
@@ -154,12 +163,12 @@ implements Boole {
 	/// #region : Interface Lattice: abstract Methods
 	////////////////////////////////////////////////////////////////////////////////
 	
-	/** @return true, when this Object is false 	*/	public boolean isFalse () { return this == False; }
-	/** @return true, when this Object is true  	*/	public boolean isTrue  () { return this == True ; }
-	/** @return this <= arg 	*/	public boolean SubEq  (Object arg) { return Value <= ((Ternary) arg).Value; }
-	/** @return this >= arg 	*/	public boolean SuperEq(Object arg) { return Value >= ((Ternary) arg).Value; }
-	/** @return this <  arg 	*/	public boolean Sub    (Object arg) { return Value <  ((Ternary) arg).Value; }
-	/** @return this >  arg 	*/	public boolean Super  (Object arg) { return Value >  ((Ternary) arg).Value; }
+	/** Tests whether this Value is {@link #False}. @return true, when this Object is false 	*/	public boolean isFalse () { return this == False; }
+	/** Tests whether this Value is {@link #True}. @return true, when this Object is true  	*/	public boolean isTrue  () { return this == True ; }
+	/** Compares this Ternary's ordinal Value to arg's. @return this <= arg 	*/	public boolean SubEq  (Object arg) { return Value <= ((Ternary) arg).Value; }
+	/** Compares this Ternary's ordinal Value to arg's. @return this >= arg 	*/	public boolean SuperEq(Object arg) { return Value >= ((Ternary) arg).Value; }
+	/** Compares this Ternary's ordinal Value to arg's. @return this <  arg 	*/	public boolean Sub    (Object arg) { return Value <  ((Ternary) arg).Value; }
+	/** Compares this Ternary's ordinal Value to arg's. @return this >  arg 	*/	public boolean Super  (Object arg) { return Value >  ((Ternary) arg).Value; }
 
 	/** DIFF : A-B == A&!B 	 */
 	public Lattice DIFF(Object arg) {
@@ -190,10 +199,10 @@ implements Boole {
 			return arg_; }
 		return this; }
 
-	/** @return false  */
+	/** Returns the constant {@link #False} Value. @return false  */
 	public Boole False() { return False; }
 
-	/** @return true  */
+	/** Returns the constant {@link #True} Value. @return true  */
 	public Boole True() { return True; }
 
 	/** Boolean NOT Operation in Place: ~=, != for single Bit
@@ -204,8 +213,10 @@ implements Boole {
 	public Boole NOT () {
 		return (Ternary) LIST[(int)(-Value-OFFSET)]; }
 
+	/** Boolean Implication: !this OR arg. @return IMP, this implies arg */
 	public Boole IMP (Object arg){ return (Boole) (NOT().OR(arg)); }
-	/** @return EQV, the Equivalence is defined in the Header */
+	/**Computes the ternary Equivalence: {@link #Null} if either Operand is Null, else True/False by Identity.
+	 * @return EQV, the Equivalence is defined in the Header */
 	public Boole EQV (Object arg){
 		if ((this == Null) ||
 			(arg  == Null)) {
@@ -214,13 +225,25 @@ implements Boole {
 			return   True ; }
 			return   False; }
 
+	/** Returns this immutable Value unchanged, since Ternary constants are shared Singletons. */
 	public ICopy    Copy() { return this; }
+	/** Returns this immutable Value unchanged, since Ternary constants are shared Singletons. */
 	public ICopyAble copy() { return this; }
+	/** Returns this immutable Value unchanged, since Ternary constants are shared Singletons. */
 	public ICopyAble copy(int Depth) { return this; }
+	/** Returns this immutable Value unchanged, since Ternary constants are shared Singletons. */
 	public ICopyAble shallowCopy() { return this; }
+	/** Writes this constant to the given output Format. */
 	public void     toStream  (IFormatOut arg) { arg.addItem(this); }
+	/** Returns this constant unchanged; genuine deserialization is not implemented. */
 	public ICopyAble fromStream(IDeserializer ST) { return this; }
+	/** Returns this constant unchanged; genuine deserialization is not implemented. */
 	public ICopyAble fromStream(InputStream ST) throws IOException { return this; } //fromStreamAt(DefaultParser.newInstance(ST)); }
+	/** Returns this constant unchanged; genuine parsing is not implemented. */
+	// TODO: LOGIC: fromString() ignores its 'ST' argument and always returns 'this' instead of
+	// parsing "-1"/"0"/"1" or "true"/"false"/"null" into the matching Ternary constant, as the
+	// TODO comment below already notes; any caller relying on round-tripping a serialized Ternary
+	// silently gets back the wrong constant.
 	public ICopyAble fromString(String ST) { return this; }
 	///TODO: implement reading -1,0 or 1
 	///as well as 'true', 'false' and 'null'
@@ -229,14 +252,23 @@ implements Boole {
 /// #region : Interface Lattice: Implementation
 ////////////////////////////////////////////////////////////////////////////////
 
+	/** Always throws, since Ternary constants are read-only Singletons that cannot be created In-Place. */
 	public IInstantiAble NewInstance() { throw new ReadOnlyException(CCopyAble.strConst); }
+	/** Always throws, since Ternary constants are read-only Singletons that cannot be created In-Place. */
 	public ICopyAble     newInstance () { throw new ReadOnlyException(CCopyAble.strConst); }
+	/** Always throws, since Ternary constants are read-only Singletons that cannot be copied In-Place. */
 	public ICopyAble     copyAt      (Object arg, int Depth) { throw new ReadOnlyException(CCopyAble.strConst); }
+	/** Always throws, since Ternary constants are read-only Singletons that cannot be copied In-Place. */
 	public ICopyAble     copyAt      (Object arg) { throw new ReadOnlyException(CCopyAble.strConst); }
+	/** Always throws, since Ternary constants are read-only Singletons that cannot be deserialized In-Place. */
 	public ICopyAble     fromStreamAt(streamIO.IDeserializer arg) { throw new ReadOnlyException(CCopyAble.strConst); }
+	/** Always throws, since Ternary constants are read-only Singletons that cannot be deserialized In-Place. */
 	public ICopyAble     fromStreamAt(InputStream arg) { throw new ReadOnlyException(CCopyAble.strConst); }
+	/** Always throws, since Ternary constants are read-only Singletons that cannot be copied In-Place. */
 	public ICopyAble    shallowCopyAt(Object arg) { throw new ReadOnlyException(CCopyAble.strConst); }
+	/** Always throws, since Ternary constants are read-only Singletons that cannot be swapped In-Place. */
 	public ICopyAble     swap        (Object arg) { throw new ReadOnlyException(CCopyAble.strConst); }
+	/** Always throws, since Ternary constants are read-only Singletons that cannot be parsed In-Place. */
 	public ICopyAble     fromStringAt(String arg) { throw new ReadOnlyException(CCopyAble.strConst); }
 
 	/** AND  in Place: &=	 */	public Lattice ANDat	(Object arg) { throw new ReadOnlyException(CCopyAble.strConst); }
@@ -244,11 +276,11 @@ implements Boole {
 	/** DIFF in Place: -=	 */	public Lattice DIFFat	(Object arg) { throw new ReadOnlyException(CCopyAble.strConst); }
 	/** XOR  in Place: ^=	 */	public Lattice XORat	(Object arg) { throw new ReadOnlyException(CCopyAble.strConst); }
 
-	/** @return false	*/	public Boole FalseAt() { throw new ReadOnlyException(CCopyAble.strConst); }
-	/** @return true	*/	public Boole TrueAt () { throw new ReadOnlyException(CCopyAble.strConst); }
-	/** @return NOT: !	*/	public Boole NOTat  () { throw new ReadOnlyException(CCopyAble.strConst); }
-	/** @return IMP: =>	*/	public Boole IMPat  (Object arg){ throw new ReadOnlyException(CCopyAble.strConst); }
-	/** @return EQV: =>	*/	public Boole EQVat  (Object arg){ throw new ReadOnlyException(CCopyAble.strConst); }
+	/** Always throws, since Ternary constants cannot be set to false In-Place. @return false	*/	public Boole FalseAt() { throw new ReadOnlyException(CCopyAble.strConst); }
+	/** Always throws, since Ternary constants cannot be set to true In-Place. @return true	*/	public Boole TrueAt () { throw new ReadOnlyException(CCopyAble.strConst); }
+	/** Always throws, since Ternary constants cannot be negated In-Place. @return NOT: !	*/	public Boole NOTat  () { throw new ReadOnlyException(CCopyAble.strConst); }
+	/** Always throws, since Ternary constants cannot be implicated In-Place. @return IMP: =>	*/	public Boole IMPat  (Object arg){ throw new ReadOnlyException(CCopyAble.strConst); }
+	/** Always throws, since Ternary constants cannot be compared for equivalence In-Place. @return EQV: =>	*/	public Boole EQVat  (Object arg){ throw new ReadOnlyException(CCopyAble.strConst); }
 
 ////////////////////////////////////////////////////////////////////////////////
 /// #region : static Testing and main() Methods
@@ -268,13 +300,15 @@ implements Boole {
 		testIt(args); 
 	}
 
-	/** @see streamIO.copy.IICopyAble#randomizeAt()	 */
-	public ICopyAble randomizeAt() { 
+	/**Returns a uniformly random Ternary constant, delegating to {@link #random()}.
+	 * @see streamIO.copy.IICopyAble#randomizeAt()	 */
+	public ICopyAble randomizeAt() {
 		return random();
 	}
 
-	/** @see streamIO.copy.IICopyAble#random()	 */
-	public ICopyAble random() { 
+	/**Returns a uniformly random Ternary constant: {@link #False}, {@link #Null} or {@link #True}.
+	 * @see streamIO.copy.IICopyAble#random()	 */
+	public ICopyAble random() {
 		int ran = (int)(Math.random()*3);
 		switch (ran) {
 			case 0 : return False;

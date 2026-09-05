@@ -41,6 +41,15 @@ import function.derive.ring.Succ;
  * (1+x^2)\/((1+x^2)(1+k^2x^2))
  *
  *
+ * <!-- docstate
+ * pass: 2
+ * mtime: 2026-09-05T16:43:10Z
+ * digest: 608ba54aaf69ff84401d2c47225df68b8c01457f0c2474cd8add4f836c804bb4
+ * stale: false
+ * tags: [code/numerical_integration]
+ * concepts: [Special Functions, Elliptic Integrals]
+ * facets: {layer: utility, status: legacy, complexity: medium}
+ * -->
  * See Numerical Recipes 2nd Ed. p  ()	 */
 public class ElliptInt
 extends ADeriveAble	//IPartialDerive //
@@ -189,6 +198,7 @@ extends ADeriveAble	//IPartialDerive //
 		if (y < ICountAble.ZERO) e = -e;
 		return c * Hilf + e; }
 
+	/**Reference Value Pairs {@code {phi, m, ...}} used to verify the Elliptic Integral Calculation.	 */
 	final static public double [][] ValuesElliptInt = {
 			{7.920841, 2.368900, 0.667193, 5.486636, 2.22190262041},
 			{1.055195, 1.638578, 0.416069, 4.939865, 0.87082126246},

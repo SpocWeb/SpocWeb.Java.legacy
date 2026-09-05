@@ -24,6 +24,15 @@ import function.byref.combinatoric.Bernoulli;
  * B (j, j*(mu*B)/(k*T)) bei diskreten (Drehimpuls-)Stellungen
  * mu ist dabei das magnetische Dipolmoment
  * Weiterhin gilt: B (1/2,x) = tanh x
+ * <!-- docstate
+ * pass: 2
+ * mtime: 2026-09-05T16:44:15Z
+ * digest: f9a6b8781c5fffcf0458d9e212b801d7c4b50855a8f9927743a209954d6a1ce3
+ * stale: false
+ * tags: [code/mathematical_function]
+ * concepts: [Thermodynamics, Magnetism]
+ * facets: {layer: utility, status: legacy, complexity: medium}
+ * -->
  */
 public class Langevin
 extends AFunction
@@ -36,7 +45,8 @@ implements IFloatFunction
 	/**Private Constructor for the single Instance of the Langevin Function.  */
 	private Langevin() {}
 	
-    /** @see function.IFloatFunction#getOrder()     */
+    /**Reports that Langevin imposes no particular Ordering on its Argument.
+     * @see function.IFloatFunction#getOrder()     */
     public byte getOrder() { return IStreamIn.ORDER_NONE; }
     
 	/**This Function represents the Langevin Function.  */

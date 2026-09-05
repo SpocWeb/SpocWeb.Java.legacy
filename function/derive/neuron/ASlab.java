@@ -6,6 +6,15 @@ import function.AFunction;
 /**
   * Contains all the Variables and Methods shared
   * between a normal Layer and a Kohonen Layer
+  * <!-- docstate
+  * pass: 2
+  * mtime: 2026-09-05T16:31:20Z
+  * digest: 51e49a08e51df1c924c5ebccfbc501bb5cc0e6bdd61b64de66d2ede870e24d14
+  * stale: false
+  * tags: [code/neural_network, code/backpropagation]
+  * concepts: [Neural Networks]
+  * facets: {layer: utility, status: legacy, complexity: medium}
+  * -->
   */
 public abstract class ASlab
 extends AFunction
@@ -75,7 +84,8 @@ implements ISlab {
 	//  Interface IFunction: Implementation
 	////////////////////////////////////////////////////////////////////////////
 	
-	/** @return arg mapped by this Object: this.Map(arg) == this°arg
+	/**Performs a forward Propagation of the given Input Array and returns the Output.
+	 * @return arg mapped by this Object: this.Map(arg) == thisï¿½arg
 	  * This is the Function working on 'arg' defined by the implementing Class.
 	  * The Class implementing this Method is the means of exchanging this Operation.	 */
 	public Object Map (final Object arg) { return getOutput((float[]) arg); }

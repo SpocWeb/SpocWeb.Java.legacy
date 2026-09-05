@@ -19,6 +19,15 @@ import function.IMeasurAble;
  *
  * @author  Matthias Heuer
  * @version
+ * <!-- docstate
+ * pass: 2
+ * mtime: 2026-09-05T16:16:22Z
+ * digest: a8e8f4e57b3294eea147904faacfe7222c40c85afbcee431d8093b2f24d9520e
+ * stale: false
+ * tags: [code/constant_function]
+ * concepts: [Function Algebra]
+ * facets: {layer: utility, status: legacy, complexity: medium}
+ * -->
  */
 public class Const
 //extends ByRefObject  //in Java cannot (like in C++) make protected Variable 'Value' public! Only add a setValue() Method.
@@ -55,7 +64,7 @@ extends AConst //ADeriveAble
 	//	Interface IDeriveAble	//
 	//////////////////////////////
 
-	/** Returns arg mapped by this Object: this.Map(arg) == this°arg
+	/** Returns arg mapped by this Object: this.Map(arg) == thisï¿½arg
 	 * This is the Function working on 'arg' defined by the implementing Class.
 	 * The Class implementing this Method is the means of exchanging this Operation.	  */
 	public Object Map (Object arg) { return Value; }
@@ -97,7 +106,8 @@ extends AConst //ADeriveAble
 
 	//These are the virtual Methods of Object: they cannot be abstracted int AConst!
 
-	/**@return  The string representation of the Function.
+	/**Returns the wrapped Value's own string representation enclosed in {@code Const(...)}.
+	 * @return  The string representation of the Function.
 	 * @since   JDK1.0	 */
 	public String toString() { return "Const(" + Value.toString() + ")"; }
 

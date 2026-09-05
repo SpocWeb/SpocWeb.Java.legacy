@@ -11,6 +11,15 @@ import function.derive.IFloatDeriveAble;
   * It rises slowly from (-Infinity, 0) through (0, 1/2) to (+Infinity, 1) 
   * 
   * Caches Results, because frequently
+  * <!-- docstate
+  * pass: 2
+  * mtime: 2026-09-05T16:31:21Z
+  * digest: f5e5396852daccb2b9abfe5c5cb73f0749d097b0cd3f7567aaeda572e5e16302
+  * stale: false
+  * tags: [code/derivable_function_contract, code/neural_network]
+  * concepts: [Activation Functions]
+  * facets: {layer: utility, status: legacy, complexity: medium}
+  * -->
   * both the Function and the Derivative are requested interleaved. */
 public class Sigmoid
 //extends AFloatDeriveAble
@@ -26,7 +35,8 @@ implements IFloatDeriveAble {
 	/** Caches for the Results	 */	double cacheX = Float.NaN;
 	/** Caches for the Results	 */	double cacheY = Float.NaN;
 	
-    /** @see function.IFloatFunction#getOrder()     */
+    /**Reports that Sigmoid preserves strict ascending order of its argument.
+     * @see function.IFloatFunction#getOrder()     */
     public byte getOrder() { return IStreamIn.ORDER_ASC_STRICT; }
     
 	/** Sigmoid Function: 1/1+e^-x	 */

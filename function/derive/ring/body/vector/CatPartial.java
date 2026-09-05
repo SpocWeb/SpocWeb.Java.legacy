@@ -8,6 +8,15 @@ import function.derive.ring.CatDerive;
 /**This Class adds partial derivability to the Cat Function.
  * It reduces Complexity by eliminating constant Factors on derivation.
  * Relies on / Checks for 'Dimension' to do the partial Operations.
+ * <!-- docstate
+ * pass: 2
+ * mtime: 2026-09-05T10:13:18Z
+ * digest: a6e1e964dc2fa08b316155deb3ec3a2027e7327db25680d9fa64bbcaab32921a
+ * stale: false
+ * tags: [code/function_composition, code/differential_integration]
+ * concepts: [Partial Derivatives]
+ * facets: {layer: utility, status: legacy, complexity: medium}
+ * -->
  */
 final public class CatPartial
 extends CatDerive

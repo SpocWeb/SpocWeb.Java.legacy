@@ -13,6 +13,15 @@ import function.derive.Identity;
 /**This Class encapsulates the Shifting / Adding by a fixed amount Function.
  * It adds a Constant to the Argument.
  * It can be used to shift the Argument Range of a concatenated Function.
+ * <!-- docstate
+ * pass: 2
+ * mtime: 2026-09-05T16:34:01Z
+ * digest: 09f78d1be17a0e1dc76646a55b9a3d82208133fb9261d542ade048841cb9886b
+ * stale: false
+ * tags: [code/function_composition, code/derivable_function_contract]
+ * concepts: [Function Algebra]
+ * facets: {layer: utility, status: legacy, complexity: medium}
+ * -->
  * If H is nothing, it is assumed to 0 and no Shifting takes place.	 */
 public class AddAt
 extends AStatic
@@ -73,7 +82,8 @@ extends AStatic
 		Derivative.Value = ICountAble.ONE;
 		return x + ByRefDouble.GET_DOUBLE(H); } //Map(x); }
 
-	/**@return  The string representation of the Function.
+	/**Returns the shift amount prefixed with a plus sign.
+	 * @return  The string representation of the Function.
 	 * @since   JDK1.0	 */
 	public String toString()	{ return "+" + H; }
 

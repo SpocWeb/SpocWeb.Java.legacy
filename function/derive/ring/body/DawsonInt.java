@@ -18,6 +18,15 @@ import function.byref.ByRefFloat;
  *
  * @author  Matthias Heuer
  * @version
+ * <!-- docstate
+ * pass: 2
+ * mtime: 2026-09-05T16:43:07Z
+ * digest: 3aa591587d36cdd0a3b03a4af5cda326c634326f0304bf3279d21dba7be1364c
+ * stale: false
+ * tags: [code/numerical_integration, code/mathematical_function]
+ * concepts: [Special Functions, Dawson Integral]
+ * facets: {layer: utility, status: legacy, complexity: medium}
+ * -->
  */
 public class DawsonInt
 //extends AFunction
@@ -33,10 +42,15 @@ implements IFloatFunction { //AFloatDeriveAble {
     /** Creates new DawsonInt */
     public DawsonInt () {}
     
+	/**Number of symmetric odd Coefficients used in the Sampling-Theorem Representation.	 */
 	final static public int DNMax = 8;	//{symmetrische ungerade Koeffizienten}
+	/**Number of Coefficients precomputed for the Power Series Representation.	 */
 	final static public int PNMax = 5;	//
+	/**Cached exp(-x^2) Sample Coefficients, lazily built by {@link #DawsonInit()}.	 */
 	public static ByRefDouble[]	DawsonC; //{von -15 ... +15}
+	/**Sampling Step Size for the Sampling-Theorem Representation.	 */
 	final static public ByRefDouble	DawsonH = new ByRefDouble(0.4);
+	/**Precomputed Power Series Coefficients -2/(2i+1)!!, refined in Place by {@link #DawsonInit()}.	 */
 	final static public ByRefDouble[]
 	DPRCoeff = {new ByRefDouble(-2.0),
 				new ByRefDouble(-2.0/3),
@@ -45,7 +59,7 @@ implements IFloatFunction { //AFloatDeriveAble {
 				new ByRefDouble(-2.0/9),
 				new ByRefDouble(-2.0/11)}; //{usw.}
 
-	/*	Initializes the Dawson Integral Algorithm,
+	/**Initializes the Dawson Integral Algorithm,
 		is being called by the Implementation below	*/
 	final static public void DawsonInit() {
 		DawsonC = new ByRefDouble[DNMax+1];
@@ -90,7 +104,8 @@ implements IFloatFunction { //AFloatDeriveAble {
 		Sum.divAt(IMeasurAble.SqRtPi).mulAt(xp.expAt());
 		return Sum; }
 	
-    /** @see function.IFloatFunction#getOrder()     */
+    /**Reports that DawsonInt imposes no particular Ordering on its Argument.
+     * @see function.IFloatFunction#getOrder()     */
     public byte getOrder() { return IStreamIn.ORDER_NONE; }
     
 	/** Returns the Function Value (mapping) of the Argument arg  */
@@ -135,6 +150,7 @@ implements IFloatFunction { //AFloatDeriveAble {
 			return Sum * Math.exp(-xp*xp) / IMeasurAble.SQRTPI; }
 	}
 
+	/**Reference Value Pairs {@code {x, DawsonInt(x)}} used by {@link #testIt()}.	 */
 	final static public double[][] dawsonValues = {
 		{0.04, 0.0399573606}, 
 		{0.16, 0.1572970920}, 
@@ -142,6 +158,7 @@ implements IFloatFunction { //AFloatDeriveAble {
 		{10.0, 0.0502538471}
 	};
 	
+	/**Verifies {@link #DawsonInt_(IMetricIRing)} against the reference {@link #dawsonValues} Pairs.	 */
 	final static public void testIt() throws Exception {
 		final IMetricIRing x = new BodyDouble(); //(MetricIRing) testInstance.copy();
 		for (int i = dawsonValues.length; --i >= 0;) {

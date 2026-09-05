@@ -16,6 +16,15 @@ import function.derive.IDeriveAble;
 /**This Class encapsulates the Quotient Function: Quotient = Dividend / Divisor
  * It multiplies two Functions given in the Constructor.
  * It also implements the Derivation after the Product Rule.
+ * <!-- docstate
+ * pass: 2
+ * mtime: 2026-09-05T16:35:22Z
+ * digest: 9864275f86e6ebf05f5554be7ed6d39ac0d65435caa85b420a7cd46b716918c3
+ * stale: false
+ * tags: [code/function_composition, code/derivative_calculation]
+ * concepts: [Function Algebra, Quotient Rule]
+ * facets: {layer: utility, status: legacy, complexity: medium}
+ * -->
  * It reduces Complexity by eliminating Factors of 1 and null.	 */
 public class Quot
 extends ADeriveAble {
@@ -55,7 +64,8 @@ extends ADeriveAble {
 		return tmp / ((IFloatFunction) Divisor ).Map(arg);	//Divisor assumed to 1
 	}
 
-	/**@return  The string representation of the Function.
+	/**Returns the textual "((Dividend)/(Divisor))" representation of this Quotient.
+	 * @return  The string representation of the Function.
 	 * @since   JDK1.0	 */
 	public String toString() {
 		String Return = Dividend.toString();

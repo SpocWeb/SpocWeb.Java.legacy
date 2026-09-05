@@ -41,6 +41,15 @@ import function.byref.ByRefLong;
  * Company:      <p>
  * @author
  * @version 1.0
+ * <!-- docstate
+ * pass: 2
+ * mtime: 2026-09-05T16:17:38Z
+ * digest: a3bcdf3ae655ecf976eb39855aedf0aceae0e4baec74c1da8b5031d76cba1e9d
+ * stale: false
+ * tags: [code/constant_function, code/numeric_comparison]
+ * concepts: [Function Algebra, Flyweight Pattern]
+ * facets: {layer: utility, status: legacy, complexity: medium}
+ * -->
  */
 public class CCountAble
 extends AConst // Const // ADeriveAble //ByRefLong //bit of an Overhead to use Const, because the Derivative is 0, the Inverse not defined and Map == this;
@@ -56,14 +65,23 @@ implements ICountAble {
 	  * this is skipped.
 	  */
 	final static public CCountAble  Zero    = new CCountAble((int) ZERO);
+	/** Constant Function returning the Value 1.	 */
 	final static public CCountAble  One     = new CCountAble((int)  ONE);
+	/** Constant Function returning the Value -1.	 */
 	final static public CCountAble _One     = new CCountAble((int) _ONE);
+	/** Constant Function returning the Value 2.	 */
 	final static public CCountAble Two      = new CCountAble((int)  TWO);
+	/** Constant Function returning the Value 3.	 */
 	final static public CCountAble Three    = new CCountAble((int)THREE);
+	/** Constant Function returning the Value 4.	 */
 	final static public CCountAble Four     = new CCountAble((int) FOUR);
+	/** Constant Function returning the Value 5.	 */
 	final static public CCountAble Five     = new CCountAble((int) FIVE);
+	/** Constant Function returning the Value 10.	 */
 	final static public CCountAble Ten      = new CCountAble((int)  TEN);
+	/** Constant Function returning the Value 100.	 */
 	final static public CCountAble Hundred  = new CCountAble((int)HUNDRED);
+	/** Constant Function returning the Value 1000.	 */
 	final static public CCountAble Thousand = new CCountAble((int)THOUSAND);
 
 	static { //Initializer
@@ -268,7 +286,8 @@ implements ICountAble {
 
 	//These are the virtual Methods of Object: they cannot be abstracted int AConst!
 
-	/**@return  The string representation of the Function.
+	/**Returns the decimal string representation of the wrapped Long Value.
+	 * @return  The string representation of the Function.
 	 * @since   JDK1.0	 */
 	public String toString() { return Long.toString(Value); } //"CCountAble(" + Value + ")"; }
 
@@ -336,7 +355,16 @@ implements ICountAble {
 
 }
 
-/** Constant IDeriveAble Class with only three possible Values: 0,1,2,3
+/**Constant IDeriveAble Class with only three possible Values: 0,1,2,3
+	 * <!-- docstate
+	 * pass: 2
+	 * mtime: 2026-09-05T16:17:38Z
+	 * digest: 7f6c4f77ff8928a0a8ca1ec33dafa2e6f873e3e8015d61c8bb3c2c566fae795f
+	 * stale: false
+	 * tags: [code/enum_modeling, code/numeric_comparison]
+	 * concepts: [Comparison Result Enum]
+	 * facets: {layer: utility, status: legacy, complexity: low}
+	 * -->
   * The Values match the Return Value of the compare() and Position Methods +1.     */
 class Comparison
 extends CCountAble {
@@ -349,7 +377,16 @@ extends CCountAble {
 
 }
 
-/** Constant IDeriveAble Class with only three possible Values: 0,1,2,3
+/**Mutable variant of {@link Comparison}, allowing its Value to be changed after construction.
+	 * <!-- docstate
+	 * pass: 2
+	 * mtime: 2026-09-05T16:17:38Z
+	 * digest: b817f34ea179447cb18ae995fd71abd78ba92329d58ac0874bb9371a19b357de
+	 * stale: false
+	 * tags: [code/numeric_comparison]
+	 * concepts: [Comparison Result Holder]
+	 * facets: {layer: utility, status: legacy, complexity: low}
+	 * -->
   * The Values match the Return Value of the compare() and Position Methods +1.     */
 class ByRefComparison
 extends Comparison {

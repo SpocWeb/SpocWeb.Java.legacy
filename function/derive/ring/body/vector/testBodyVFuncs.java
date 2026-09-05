@@ -15,12 +15,26 @@ import function.derive.ring.body.Sinus;
  * This class can take a variable number of parameters on the command
  * line. Program execution begins with the main() method. The class
  * constructor is not invoked unless an object of type 'Class1'
+ * <!-- docstate
+ * pass: 2
+ * mtime: 2026-09-05T10:13:18Z
+ * digest: a32f6471d3d5bb15d4d766c6c05b666248b80f41d1ac54a3286cc6661af5543a
+ * stale: false
+ * tags: [code/entry_point_code/console_output_code/test]
+ * concepts: [Test Harness]
+ * facets: {layer: utility, status: legacy, complexity: medium}
+ * -->
  * created in the main() method. */
 public class testBodyVFuncs {
 
 	/**The main entry point for the application.
 	 *
 	 * @param args Array of parameters passed to the application
+	 * <!-- docstate
+	 * tags: [code/testing]
+	 * concepts: [Demo Entry Point]
+	 * facets: {layer: test, status: legacy, complexity: low}
+	 * -->
 	 * via the command line.	 */
 	public static void main(String[] args) {	//Testing Zero, One and Two
 		Algebra[] a = new Algebra[2];

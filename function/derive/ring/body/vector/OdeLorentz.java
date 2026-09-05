@@ -9,7 +9,16 @@ import streamIO.copy.groupM.IGroupM;
 
 /**ODE (Differentialgleichung) for the chaotic Lorentz curve,
  * welche die Konvektionsrollen zwischen Schichten beschreibt.
- * Eine weitere 'zeitunabhängige' Differentialgleichung.
+ * Eine weitere 'zeitunabhï¿½ngige' Differentialgleichung.
+ * <!-- docstate
+ * pass: 2
+ * mtime: 2026-09-05T20:43:48Z
+ * digest: 2d76a232e5d6104fb866e1271d7219fd64c0d372ca050de24e92657e3eef15b0
+ * stale: false
+ * tags: [code/differential_integration]
+ * concepts: [Ordinary Differential Equations, Chaos Theory]
+ * facets: {layer: utility, status: legacy, complexity: medium}
+ * -->
  */
 public class OdeLorentz
 implements IODE {
@@ -32,6 +41,7 @@ implements IODE {
 		this.r = new Double(r);
 	}
 
+	/**Computes the Lorentz System's Derivative y at Point x, ignoring the time-invariant Parameter t.	 */
 	public void Funktion (IIntRing t, IIntRing x_, IIntRing y_) {	//
 		Tensor x = (Tensor) x_;
 		Tensor y = (Tensor) y_;

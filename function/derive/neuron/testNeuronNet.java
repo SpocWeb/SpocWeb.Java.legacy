@@ -12,37 +12,51 @@ package function.derive.neuron;
   * -Multilayer Networks are for supervised Learning
   *  and can remember any Separation if only the inner Layers are large enough.
   *  They minimize (O'-O)^2 with O[j] = f(W[j][i]*I[i]) # W[j][i]*I[i]
-  *  Learning Rule: dW[i,j] = ß * I[i]*(O'-O)[j]*f'(W*I) # ß*f'(W*I) * I°(I-WI)
+  *  Learning Rule: dW[i,j] = ï¿½ * I[i]*(O'-O)[j]*f'(W*I) # ï¿½*f'(W*I) * Iï¿½(I-WI)
   *  Operation: Presentation of a (noisy) Input restores the learned Output
   *
   * -Kohonen Network minimizes the same Function as the Perceptron:
   *  implements competitive Learning by introducing a topological Function
   *  for Interaction between Neurons. (can create associative Maps)
-  *  Learning Rule:  dW[i,j] = ß*(I[i]-W[i,j]) for the maximum j and Neighbors
+  *  Learning Rule:  dW[i,j] = ï¿½*(I[i]-W[i,j]) for the maximum j and Neighbors
   *
   * Hetero Associative Networks:
   * -Hopfield minimizes the same Function, it is:	W[i,j] = W[j,i]
   *  since with O' = I: (O'-O)^2 # (I[j] - W[j][i]*I[i])^2
   *  							= 2I^2 - 2IWI = 2I^2(1-cos(I - W[i]))
   *  Operation: Initialize known Cells, activate other Cells until Minimum reached.
-  *  Learning rule: dW[i,j] = ß * I[i]*I[j] (Hebb Rule)
+  *  Learning rule: dW[i,j] = ï¿½ * I[i]*I[j] (Hebb Rule)
   *  Use: restores a learned Pattern from only part of it.
   *
   * -BAM (bidirectional associative Memory) is a certain Operation Mode
   *  of the Hopfield Network:
   *  Use: To reproduce Associations between noisy Input and Output Data
-  *  Learning Rule:  dW[i,j] = ß*I[i]*I[j]
+  *  Learning Rule:  dW[i,j] = ï¿½*I[i]*I[j]
   *  Operation: Input and Output Vector activate each other iteratively
   *  			until the Originally learned Vectors appear again.
   *
   *
   * A FAM (Fuzzy Associative Memory) is a BAM where the Scalar Product is replaced by
+  * <!-- docstate
+  * pass: 2
+  * mtime: 2026-09-05T10:13:18Z
+  * digest: a32f6471d3d5bb15d4d766c6c05b666248b80f41d1ac54a3286cc6661af5543a
+  * stale: false
+  * tags: [code/entry_point_code/console_output_code/test]
+  * concepts: [Neural Networks, Test Harness]
+  * facets: {layer: utility, status: legacy, complexity: medium}
+  * -->
   */
 public class testNeuronNet {
 
 	/**The main entry point for the application.
 	 *
 	 * @param args Array of parameters passed to the application
+	 * <!-- docstate
+	 * tags: [code/testing]
+	 * concepts: [Demo Entry Point]
+	 * facets: {layer: test, status: legacy, complexity: low}
+	 * -->
 	 * via the command line.	 */
 	public static void main (final String[] args) throws Exception {
 		Layer	.testIt();

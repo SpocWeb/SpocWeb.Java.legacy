@@ -5,7 +5,18 @@ import streamIO.copy.groupM.IGroupM;
 import function.ICountAble;
 import function.derive.ADeriveAble;
 
-/**This Class encapsulates the Double Function.  */
+/**This Class encapsulates the Double Function.
+ *
+ * <!-- docstate
+ * pass: 2
+ * mtime: 2026-09-05T16:34:06Z
+ * digest: 8f55ea31cd8f214d23a90301a11bd5ab78e1ea315e9a3c8800860a5384e7313d
+ * stale: false
+ * tags: [code/invertible_function_contract, code/mathematical_function]
+ * concepts: [Function Algebra]
+ * facets: {layer: utility, status: legacy, complexity: medium}
+ * -->
+ */
 final public class Inv
 extends ADeriveAble {
 
@@ -34,7 +45,8 @@ extends ADeriveAble {
 	/**This Function represents the multiplicative Inv Function.  */
 	public float  Map (float  arg) { return ICountAble.ONE / arg; }
 
-	/**@return  The string representation of the Function.
+	/**Returns the textual "1/" prefix representation of this multiplicative Inverse Function.
+	 * @return  The string representation of the Function.
 	 * @since   JDK1.0	 */
 	public String toString() { return "1/"; }
 

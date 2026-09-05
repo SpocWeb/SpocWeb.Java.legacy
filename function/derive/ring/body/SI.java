@@ -21,6 +21,15 @@ import function.derive.AFloatDeriveAble;
  * For large x this Integral is dominated by the Factor Sin(x)/x
  * For small x this Integral approximates x.
  *
+ * <!-- docstate
+ * pass: 2
+ * mtime: 2026-09-05T20:42:39Z
+ * digest: 6022a25baeace861a426b72acc8588f4594b80ed049aebf664b9f1db127edf9b
+ * stale: false
+ * tags: [code/numerical_integration, code/trigonometric_function]
+ * concepts: [Special Functions, Sine Integral]
+ * facets: {layer: utility, status: legacy, complexity: medium}
+ * -->
  * See Numerical Recipes 2nd Ed. p257 (6.9.8)	 */
 final public class SI
 extends AFloatDeriveAble	//IPartialDerive //
@@ -42,7 +51,8 @@ extends AFloatDeriveAble	//IPartialDerive //
 	/**This Function represents the SI (Integral of the Sinc) Function.  */
 	public double Map (double arg) { return SIN_INTEGRAL(arg); }
 
-	/** @return The Derivative at x	 */
+	/**Returns the Sine Integral's Derivative, the Sinc Function Sin(x)/x.
+	 * @return The Derivative at x	 */
 	public double getDerivative(double x) {
 		return Math.sin(x)/x; }
 

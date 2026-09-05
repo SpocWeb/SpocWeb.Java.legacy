@@ -6,7 +6,18 @@ import function.IFunction;
 import function.derive.ADeriveAble;
 import function.derive.Identity;
 
-/**This Class encapsulates the Square Function.  */
+/**This Class encapsulates the Square Function.
+ *
+ * <!-- docstate
+ * pass: 2
+ * mtime: 2026-09-05T10:13:18Z
+ * digest: 133a98c53bd14bcda7c8c468b5c74e42b891ce703f0f06f2d02ec33a60f164d6
+ * stale: false
+ * tags: [code/mathematical_function, code/derivable_function_contract]
+ * concepts: [Function Algebra]
+ * facets: {layer: utility, status: legacy, complexity: medium}
+ * -->
+ */
 final public class Square
 extends ADeriveAble {
 

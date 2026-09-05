@@ -11,6 +11,18 @@ import IFunction.*;
 import RingFuncs.*;
 */
 /**Extends Sum to process partial Derivation, Integration and Inversion.
+import RingFuncs.* <!-- docstate
+import RingFuncs.* pass: 2
+import RingFuncs.* mtime: 2026-09-05T10:13:18Z
+import RingFuncs.* digest: df61794bb77f652a670f6d9f20119f6e872f25cd5fc5fc52ff2de9d66c691b45
+import RingFuncs.* stale: false
+import RingFuncs.
+ * digest: df61794bb77f652a670f6d9f20119f6e872f25cd5fc5fc52ff2de9d66c691b45
+ * stale: false
+ * tags: [code/differential_integration]
+ * concepts: [Partial Derivatives, Sum Rule]
+ * facets: {layer: utility, status: legacy, complexity: medium}
+ * -->
  * Keeps a Cache of partial Derivatives analogous to Sum.  */
 final public class SumPartial
 extends Sum

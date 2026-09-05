@@ -13,7 +13,18 @@ import function.derive.ring.CatDerive;
 import function.derive.ring.Diff;
 import function.derive.ring.Succ;
 
-/**This Class encapsulates the Cosinus Hyperbolicus Function.  */
+/**This Class encapsulates the Cosinus Hyperbolicus Function.
+ *
+ * <!-- docstate
+ * pass: 2
+ * mtime: 2026-09-05T16:42:34Z
+ * digest: 1695ba63d9af1e849aaad4d4403c0147a654545f0ebb78e132faa9eea1ff7872
+ * stale: false
+ * tags: [code/hyperbolic_function, code/derivable_function_contract]
+ * concepts: [Hyperbolic Functions]
+ * facets: {layer: utility, status: legacy, complexity: medium}
+ * -->
+ */
 final public class CosH
 extends AFloatDeriveAble {
 
@@ -47,13 +58,13 @@ extends AFloatDeriveAble {
 	/**This Function represents the CosH-1 Function.  */
 	public Object Map (Object arg) { return ((MetricBody) arg).cosHm1 (); }
 
-	/*	Returns CosH(x)-1	 */
+	/**Returns CosH(x)-1.	 */
 	public double Map(double x) { return COS_H_M1(x); }
 
-	/*	Returns CosH(x)-1	 */
+	/**Returns CosH(x)-1.	 */
 	public float  Map(float  x) { return COS_H_M1(x); }
 
-	/*	Returns SinH Function Derivative: CosH(x) for all x 	*/
+	/**Returns the CosH-1 Function's Derivative: SinH(x) for all x.	 */
 	public double getDerivative(double x) { return SinH.SIN_H(x); }	//
 
 	/** Calculates Function and Derivative at the same time,
@@ -85,7 +96,7 @@ extends AFloatDeriveAble {
 	    } while (Faktor.isMoreThan(Accuracy));
 		return Summe; }
 
-	/*	Returns CosH(x)-1
+	/**Returns CosH(x)-1.
 		This Power Series gives better accuracy and converges for all x,
 		but only fast for small x.
 		For complex or Matrix Arguments the AbsV() Function has to be used in the Check
@@ -105,7 +116,7 @@ extends AFloatDeriveAble {
 		} while (Faktor > Accuracy);
 		return Summe; }
 
-	/*	Returns CosH(x)-1
+	/**Returns CosH(x)-1.
 		This Power Series gives better accuracy and converges for all x,
 		but only fast for small x.
 		For complex or Matrix Arguments the AbsV() Function has to be used in the Check

@@ -6,6 +6,15 @@ import function.derive.IDeriveAble;
 import function.derive.ring.Prod;
 
 /**This Class adds partial derivability to the Prod Function.
+ * <!-- docstate
+ * pass: 2
+ * mtime: 2026-09-05T10:13:18Z
+ * digest: a6e1e964dc2fa08b316155deb3ec3a2027e7327db25680d9fa64bbcaab32921a
+ * stale: false
+ * tags: [code/differential_integration]
+ * concepts: [Partial Derivatives, Product Rule]
+ * facets: {layer: utility, status: legacy, complexity: medium}
+ * -->
  * It reduces Complexity by eliminating constant Factors on derivation.	 */
 final public class ProdPartial
 extends Prod

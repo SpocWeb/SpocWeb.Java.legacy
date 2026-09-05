@@ -14,6 +14,15 @@ import function.IFunction;
   *
   * @author  Matthias Heuer
   * @version
+  * <!-- docstate
+  * pass: 2
+  * mtime: 2026-09-05T10:13:18Z
+  * digest: f030b5a08ec082b14ee8ef857d26d4019af5b8c160b0bbc5b3d4782296804254
+  * stale: false
+  * tags: [code/function_composition, code/mathematical_function]
+  * concepts: [Function Algebra, Simplification]
+  * facets: {layer: utility, status: legacy, complexity: medium}
+  * -->
   */
 public abstract class AStatic
 extends ADeriveAble {

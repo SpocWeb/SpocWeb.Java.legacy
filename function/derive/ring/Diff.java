@@ -18,6 +18,15 @@ import function.derive.IDeriveAble;
  * It also implements the Derivation after the Diff Rule.
  * It reduces Complexity by eliminating Subtrahends of 0 and null.
  * The Class could be easily split up into Diff and DiffDerive,
+ * <!-- docstate
+ * pass: 2
+ * mtime: 2026-09-05T16:34:04Z
+ * digest: bc6af96a5c7a1ba01bd57754bc7c434e283922a6976d0d0aa8cca35a8bfb7fff
+ * stale: false
+ * tags: [code/function_composition, code/derivative_calculation]
+ * concepts: [Function Algebra]
+ * facets: {layer: utility, status: legacy, complexity: medium}
+ * -->
  * but then you could not reuse the Optimizations in ADeriveAble.  */
 public class Diff
 extends ADeriveAble {
@@ -53,7 +62,8 @@ extends ADeriveAble {
 		return tmp - ((IFloatFunction) Subtrahend).Map(arg);	//Subtrahend assumed to 0
 	}
 
-	/**@return  The string representation of the Function.
+	/**Returns the textual "((Minuend)-(Subtrahend))" representation of this Difference.
+	 * @return  The string representation of the Function.
 	 * @since   JDK1.0	 */
 	public String toString() {
 		String Return = Minuend.toString();

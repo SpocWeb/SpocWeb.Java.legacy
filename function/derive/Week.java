@@ -2,26 +2,22 @@ package function.derive;
 
 import java.util.Hashtable;
 
-/**
-  * Title: Week<p>
-  * Description:
-  * Purpose:
-  * Enumeration for the Weekdays
-  * Purpose / Responsibilities of this Class
-  *
-  * Implementation Details:
-  * If similar Classes exist (e.g. Polymorphism),
-  * characterize the specific Differences to compare these.
-  *
-  * Known SubClasses:
-  *
-  * Known Uses:
+/**Enumeration of the seven Weekdays, following the {@link Enum} singleton-list pattern.
   *
   * Copyright:	Copyright (c) Matthias Heuer<p>
   * Company:	personal<p>
   * Created on	06-29-2002, 08:54 PM<p>
   * @author 	Matthias Heuer
   * @version	1.0
+  * <!-- docstate
+  * pass: 2
+  * mtime: 2026-09-05T16:16:29Z
+  * digest: 4b04997eed9628d7ecd4c29825e4f2b5ae23a8ec28668604820e66731bb44424
+  * stale: false
+  * tags: [code/enum_modeling]
+  * concepts: [Calendar]
+  * facets: {layer: utility, status: legacy, complexity: medium}
+  * -->
   */
 final public class Week
 extends Enum {

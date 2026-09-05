@@ -9,7 +9,18 @@ import function.derive.ring.CatDerive;
 import function.derive.ring.Inv;
 import function.derive.ring.Square;
 
-/**This Class encapsulates the TanH Function.  */
+/**This Class encapsulates the TanH Function.
+ *
+ * <!-- docstate
+ * pass: 2
+ * mtime: 2026-09-05T20:43:27Z
+ * digest: d5f7a49801ce630d8b8247547059ac973d896f56e007f64c98b7d4250987165b
+ * stale: false
+ * tags: [code/hyperbolic_function, code/derivable_function_contract]
+ * concepts: [Hyperbolic Functions]
+ * facets: {layer: utility, status: legacy, complexity: medium}
+ * -->
+ */
 public class TanH
 extends AFloatDeriveAble {
 
@@ -34,22 +45,24 @@ extends AFloatDeriveAble {
 	 */
 	private TanH() { }
 	
-    /** @see function.IFloatFunction#getOrder()     */
+    /**Reports that TanH preserves strict ascending order of its argument.
+     * @see function.IFloatFunction#getOrder()     */
     public byte getOrder() { return IStreamIn.ORDER_ASC_STRICT; }
     
 	/**This Function represents the TanH Function.
 	 * It always returns the Argument.  */
 	public Object Map (Object arg) { return ((MetricBody) arg).TanH(); }
 	
-	/*	Returns TanH(x) = SinH(x)/CosH(x) = (e^x - e^-x) / (e^x + e^-x)
-						= (e^2x - 1) / (e^2x + 1)	 */
+	/**Returns TanH(x) = SinH(x)/CosH(x) = (e^x - e^-x) / (e^x + e^-x)
+						= (e^2x - 1) / (e^2x + 1).	 */
 	public double Map (double x) {
 //		ByRefDouble CosH = new ByRefDouble();
 //		return IMeasurAble.SinH_CosH(x, CosH) / CosH.Value();
 		double e2xM1 = Exponential.ExpM1(x+x);
 		return e2xM1/(e2xM1 + ICountAble.TWO); }
 
-	/** @return The Derivative at x	 */
+	/**Returns the TanH Function's Derivative: 1-tanh^2(x).
+	 * @return The Derivative at x	 */
 	public double getDerivative(double x) {
 		double tanh = Map(x);
 		return ICountAble.ONE-tanh*tanh; }

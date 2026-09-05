@@ -10,6 +10,15 @@ import function.vector.IFloatVectorField;
 
 /**ODE Definition for a Time-invariant Function y' = f(x,y) = f(y),
  * The Derivative is not time(x)-dependent and described as a Vector Function
+ * <!-- docstate
+ * pass: 2
+ * mtime: 2026-09-05T10:13:18Z
+ * digest: a49ba64051f75cd62ffe842de82e314f31b6a5b9c989d380e18e73a513d1744e
+ * stale: false
+ * tags: [code/differential_integration]
+ * concepts: [Ordinary Differential Equations]
+ * facets: {layer: utility, status: legacy, complexity: medium}
+ * -->
  */
 final public class Function2ODE
 extends AFuncRel //ByRefFunc //only for the Value Member, not quite right!

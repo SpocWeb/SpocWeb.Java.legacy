@@ -11,7 +11,18 @@ import function.byref.ByRefDouble;
 import function.byref.ByRefInt;
 import function.derive.AFloatDeriveAble;
 
-/**This Class encapsulates the Exponential Function.  */
+/**This Class encapsulates the Exponential Function.
+ *
+ * <!-- docstate
+ * pass: 2
+ * mtime: 2026-09-05T16:44:35Z
+ * digest: 0361bccde7cab1bf6df4283c1c570af7b834da6503d9efb0a814180e1866133b
+ * stale: false
+ * tags: [code/exponential_function, code/derivable_function_contract]
+ * concepts: [Exponential Functions]
+ * facets: {layer: utility, status: legacy, complexity: medium}
+ * -->
+ */
 public class Exponential
 extends AFloatDeriveAble { //IPartialDerive {
 
@@ -27,16 +38,17 @@ extends AFloatDeriveAble { //IPartialDerive {
 	/**private Constructor for Singleton Implementation	 */
 	private Exponential(){ }
 	
-    /** @see function.IFloatFunction#getOrder()     */
+    /**Reports that Exponential preserves strict ascending order of its argument.
+     * @see function.IFloatFunction#getOrder()     */
     public byte getOrder() { return IStreamIn.ORDER_ASC_STRICT; }
     
 	/**This Function represents the Exponential Function.	 */
 	public Object Map (Object arg) { return ((MetricBody) arg).exp(); }
 
-	/*	Returns Exponential Function exp(x) for all x 	*/
+	/**Returns exp(x) for all x.	 */
 	public double Map(double x) { return Math.exp(x); }	//
 
-	/*	Returns Exponential Function Derivative: exp(x) for all x 	*/
+	/**Returns the Exponential Function's Derivative: exp(x) for all x.	 */
 	public double getDerivative(double x) { return Math.exp(x); }	//
 
 	/** Calculates Function and Derivative at the same time,

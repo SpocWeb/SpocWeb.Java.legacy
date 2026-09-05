@@ -2,26 +2,22 @@ package function.derive;
 
 import java.util.Hashtable;
 
-/**
-  * Title: Month<p>
-  * Description:
-  * Purpose:
-  * Enumeration for the Months of a Year
-  * Purpose / Responsibilities of this Class
-  *
-  * Implementation Details:
-  * If similar Classes exist (e.g. Polymorphism),
-  * characterize the specific Differences to compare these.
-  *
-  * Known SubClasses:
-  *
-  * Known Uses:
+/**Enumeration of the twelve Months of a Year, following the {@link Enum} singleton-list pattern.
   *
   * Copyright:	Copyright (c) Matthias Heuer<p>
   * Company:	personal<p>
   * Created on	06-29-2002, 08:14 PM<p>
   * @author 	Matthias Heuer
   * @version	1.0
+  * <!-- docstate
+  * pass: 2
+  * mtime: 2026-09-05T16:16:27Z
+  * digest: 6cb4c9493471fc4d0d40e2160b0a075a4a8ba9088706a4ebbe5fee621985fb70
+  * stale: false
+  * tags: [code/enum_modeling]
+  * concepts: [Calendar]
+  * facets: {layer: utility, status: legacy, complexity: medium}
+  * -->
   */
 final public class Month
 extends Enum {

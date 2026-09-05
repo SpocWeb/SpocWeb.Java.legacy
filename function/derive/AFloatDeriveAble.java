@@ -21,6 +21,15 @@ import function.byref.ByRefFloat;
   * Design
   * Decisions: R is the only complete Space where Derivatives can be defined
   * 		  so it is only natural to implement the Interface 'IFloatFunction'
+  * <!-- docstate
+  * pass: 2
+  * mtime: 2026-09-05T16:14:54Z
+  * digest: a74a980c5fb4958754067b9483ac83e51b9a25f19cf92dfa273146f969965e69
+  * stale: false
+  * tags: [code/derivable_function_contract, code/numerical_differentiation]
+  * concepts: [Calculus, Singleton Pattern]
+  * facets: {layer: utility, status: legacy, complexity: medium}
+  * -->
   */
 public abstract class AFloatDeriveAble
 extends ADeriveAble
@@ -33,7 +42,8 @@ implements IFloatDeriveAble { //
 	/** Returns the Function Value (mapping) of the Argument arg  */
 	public abstract double Map (final double arg); // { return Map((float ) arg); }
 	
-    /** @see function.IFloatFunction#getOrder()     */
+    /**Reports that this Function imposes no particular serialization order on its arguments.
+     * @see function.IFloatFunction#getOrder()     */
     public byte getOrder() { return IStreamIn.ORDER_NONE; }
     
 	/**Returns the Derivative of the Function	 */ //relies on assumptions.

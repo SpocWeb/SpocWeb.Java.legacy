@@ -13,6 +13,15 @@ import function.vector.IBinaryOpFloat;
  * in just keeping all up to two Dimensions constant,
  * by zeroing out the Derivatives.
  * This is done in "VectorFuncs.OdeHeight"
+ * <!-- docstate
+ * pass: 2
+ * mtime: 2026-09-05T10:13:18Z
+ * digest: abb387d4ee389b5c5527aed6409385c825abc445e1e4a2543971830902ceb678
+ * stale: false
+ * tags: [code/differential_integration]
+ * concepts: [Ordinary Differential Equations]
+ * facets: {layer: utility, status: legacy, complexity: medium}
+ * -->
  */
 public class OdeHeight2D
 implements IODE {

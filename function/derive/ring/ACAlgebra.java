@@ -19,6 +19,15 @@ import function.derive.IDeriveAble;
  *
  * @author  Matthias Heuer
  * @version
+ * <!-- docstate
+ * pass: 2
+ * mtime: 2026-09-05T10:13:18Z
+ * digest: eda0d34d8e93a5d5f8782a46ef3c80d0724ab185adfa5dadb6f30f1804f2eace
+ * stale: false
+ * tags: [code/abstract_math, code/algebraic_function]
+ * concepts: [Ring Theory, Function Algebra]
+ * facets: {layer: utility, status: legacy, complexity: medium}
+ * -->
  */
 public abstract class ACAlgebra
 extends AAlgebra
@@ -47,27 +56,27 @@ implements IDeriveAble {
 	 * This can be done only once, after that an IllegalStateException is thrown.      */
 	public void setInverse (IInvertAble Inverse) { throw new AbstractMethodError(); }
 
-	/** Returns arg Mapped by the Inverse of this Object: !this°arg
+	/** Returns arg Mapped by the Inverse of this Object: !thisï¿½arg
 	 * This is the Function working on 'arg' defined by the implementing Class.
 	 * The Class implementing this Method is the means of exchanging this Operation.	  */
 	public Object UnMap (Object arg) { throw new AbstractMethodError(); }
 
-	/** Returns arg Mapped in Place by the Inverse of this Object: !this=°arg
+	/** Returns arg Mapped in Place by the Inverse of this Object: !this=ï¿½arg
 	 * This is the Function working on 'arg' defined by the implementing Class.
 	 * The Class implementing this Method is the means of exchanging this Operation.	  */
 	public Object UnMapAt (Object arg) { throw new AbstractMethodError(); }
 
-	/** Returns arg Mapped by this Object: this.Map(arg) == this°arg
+	/** Returns arg Mapped by this Object: this.Map(arg) == thisï¿½arg
 	 * This is the Function working on 'arg' defined by the implementing Class.
 	 * The Class implementing this Method is the means of exchanging this Operation.	  */
 	public Object Map (Object arg) { return this; }
 
-	/** Returns arg Mapped in Place by this Object: this.MapAt(arg) this=°arg
+	/** Returns arg Mapped in Place by this Object: this.MapAt(arg) this=ï¿½arg
 	 * This is the Function working on 'arg' defined by the implementing Class.
 	 * The Class implementing this Method is the means of exchanging this Operation.	  */
 	public Object MapAt (Object arg) { ((ICopyAble) arg).copyAt(this); return arg; }
 
-	/** Returns arg Mapped in Place by this Object: this.MapAt(arg) this=°arg
+	/** Returns arg Mapped in Place by this Object: this.MapAt(arg) this=ï¿½arg
 	 * This is the Function working on 'arg' defined by the implementing Class.
 	 * The Class implementing this Method is the means of exchanging this Operation.	  */
 	public ISemiMonoid MapAt (ISemiMonoid arg) { arg.copyAt(this); return arg; }

@@ -34,6 +34,15 @@ import tester.ITester;
   * If applied to (pseudo) random Numbers, the Network spreads out equally
   * over the Range. The Density and Distribution of Points
   * reveals functional Dependencies and indicates the Probabilities.
+  * <!-- docstate
+  * pass: 2
+  * mtime: 2026-09-05T16:31:50Z
+  * digest: 8452130eaa44fa534a9d6431193e2ec43ad4e64f74eb32c058c00d4ec39eb078
+  * stale: false
+  * tags: [code/neural_network, code/data_visualization]
+  * concepts: [Self-Organizing Maps, Visualization]
+  * facets: {layer: utility, status: legacy, complexity: medium}
+  * -->
   */
 public class KohonenGraph 
 extends Frame //Applet
@@ -93,6 +102,7 @@ implements ITester, IIStreamIn {
 	/**Stop Value for the Learning Factor	 */
 	protected static float betaStop = 0.1f;
 
+	/**Creates the Frame and its opaque off-screen double-buffer Image, in black on white.	 */
 	public KohonenGraph() {
 		memImg = new MemoryImage(HEIGHT, WIDTH);
 		memImg.orOperation(MemoryImage.OPAQUE); //make the Image opaque! Otherwise it is not visible!
@@ -299,7 +309,7 @@ implements ITester, IIStreamIn {
 		return 0;
 	}
 
-	/**
+	/**Reports that this generated data stream is always valid, since it never runs dry.
 	 * @see streamIO.IIStreamIn#isValid()
 	 */
 	public boolean isValid() {

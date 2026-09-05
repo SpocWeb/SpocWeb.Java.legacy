@@ -5,7 +5,18 @@ import streamIO.copy.group.ring.metric.IMetricIRing;
 import function.derive.ADeriveAble;
 import function.derive.Identity;
 
-/**This Class encapsulates the Square Root Function.  */
+/**This Class encapsulates the Square Root Function.
+ *
+ * <!-- docstate
+ * pass: 2
+ * mtime: 2026-09-05T10:13:18Z
+ * digest: 7a8e6ec7ba0f2880c0e229649abe849857bd5098d58a70783f768bd11f4bad5a
+ * stale: false
+ * tags: [code/mathematical_function, code/derivable_function_contract]
+ * concepts: [Function Algebra]
+ * facets: {layer: utility, status: legacy, complexity: medium}
+ * -->
+ */
 final public class SqRt
 extends ADeriveAble {
 

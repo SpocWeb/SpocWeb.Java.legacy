@@ -14,6 +14,15 @@ import function.derive.IDeriveAble;
  *
  * The Second Solution corresponds to Dimension.map(arg)
  * returning the full Argument and using Dim = -1 for signaling full Operations.
+ * <!-- docstate
+ * pass: 2
+ * mtime: 2026-09-05T10:13:18Z
+ * digest: fd882d88c250bcb542da8c552c3b4aca39f194e3fc43fa5c2076720741a67cbd
+ * stale: false
+ * tags: [code/differential_integration, code/derivable_function_contract]
+ * concepts: [Partial Derivatives]
+ * facets: {layer: utility, status: legacy, complexity: medium}
+ * -->
  * The first Solution is so far implemented, except in Function(arg).  */
 public interface IPartialDerive
 extends IDeriveAble {

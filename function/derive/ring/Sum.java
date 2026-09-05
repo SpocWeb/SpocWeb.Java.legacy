@@ -16,6 +16,15 @@ import function.derive.IDeriveAble;
 /**This Class encapsulates the Sum Function: Sum = Summand1 + Summand2
  * It adds two Functions given in the Constructor.
  * It also implements the Derivation after the Sum Rule.
+ * <!-- docstate
+ * pass: 2
+ * mtime: 2026-09-05T16:35:23Z
+ * digest: 612e96aba06856a76fee8507f9b8b0e04d156119c7558cd0f376dc8b9ff79bfb
+ * stale: false
+ * tags: [code/function_composition, code/derivative_calculation]
+ * concepts: [Function Algebra, Sum Rule]
+ * facets: {layer: utility, status: legacy, complexity: medium}
+ * -->
  * It reduces Complexity by eliminating Summands of 0 and null.	 */
 public class Sum
 extends ADeriveAble {
@@ -90,7 +99,8 @@ extends ADeriveAble {
 		return Summand1.equals(arg_.Summand1) &&
 			   Summand2.equals(arg_.Summand2); }
 
-	/** @return  The string representation of the Function.
+	/**Returns the textual "((Summand1)+(Summand2))" representation of this Sum.
+	 * @return  The string representation of the Function.
 	  * @since   JDK1.0	 */
 	public String toString() {
 		String Return = Summand1.toString();

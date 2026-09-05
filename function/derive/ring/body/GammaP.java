@@ -40,6 +40,15 @@ import function.derive.ring.Quot;
  * 
  * @see function.derive.ring.body.Gauss 
  * The Gaussian Integral is calculcated as the 
+ * <!-- docstate
+ * pass: 2
+ * mtime: 2026-09-05T16:44:10Z
+ * digest: 54ad0d16ffae1e59e092b9673bf7480e32ffc857a3eab9f0e2cd2d5f2590c9bf
+ * stale: false
+ * tags: [code/gamma_function, code/derivable_function_contract]
+ * concepts: [Special Functions, Incomplete Gamma Function]
+ * facets: {layer: utility, status: legacy, complexity: medium}
+ * -->
  */
 public class GammaP
 extends AFloatDeriveAble {	//IPartialDerive { //
@@ -59,10 +68,12 @@ extends AFloatDeriveAble {	//IPartialDerive { //
 	public MetricBody GammaLn()	{ return (MetricBody) GamLn.copy(); }
 	//Create Copy to keep TX short and avoid Side Effects!
 	
-    /** @see function.IFloatFunction#getOrder()     */
+    /**Reports that GammaP preserves strict ascending order of its argument.
+     * @see function.IFloatFunction#getOrder()     */
     public byte getOrder() { return IStreamIn.ORDER_ASC_STRICT; }
-    
-	/** @return the Derivative of this Function	 */
+
+	/**Returns the Derivative of this Function as a symbolic Expression, Exp(-x)*x^(a-1).
+	 * @return the Derivative of this Function	 */
 	public IDeriveAble getDerivative() {
 		if (Derivative != null) return Derivative; //Exp (-t)*t^(a-1)
 		Derivative = //new MulAt(, //Norming
@@ -90,7 +101,8 @@ extends AFloatDeriveAble {	//IPartialDerive { //
 		return GAMMA_P(arg, ByRefDouble.GET_DOUBLE(a),
 								 ByRefDouble.GET_DOUBLE(GamLn)); }
 
-	/** @return The Derivative at x	 */
+	/**Returns this incomplete Gamma Function's Derivative, Exp(-x)*x^(a-1).
+	 * @return The Derivative at x	 */
 	public double getDerivative(double x) { //Exp (-t)*t^(a-1)
 		return Math.exp(-x)*Math.pow(x, ByRefDouble.GET_DOUBLE(a) - 1); }
 
@@ -124,22 +136,23 @@ extends AFloatDeriveAble {	//IPartialDerive { //
 	 * to [+Infinity, 1] with a Width of SqRt(degreesOfFreedom).
 	 * I.e. the Value of ChiSqr grows proportionally to the Degrees of Freedom.  
 	 * 
-	 * With DoF > 30 the Chi² Distribution is very close to the Normal Distribution:
-	 * SqRt(2*Chi²) = Gauss(mean=SqRt(2*n-1),var=1) for n > 30 
+	 * With DoF > 30 the Chiï¿½ Distribution is very close to the Normal Distribution:
+	 * SqRt(2*Chiï¿½) = Gauss(mean=SqRt(2*n-1),var=1) for n > 30 
 	 * 
 	 * @param degreesOfFreedom the Number of free Variables, 
 	 * usually the Sample Size minus the Number of fitted or normed Parameters   
 	 * 
 	 * @param chiSqr the squared Sum of the Differences to the expected Value, normed by the Variance
 	 *   
-	 * @return the Probability for a Value of chi² smaller than the given, 
+	 * @return the Probability for a Value of chiï¿½ smaller than the given, 
 	 * based on the null Hypothesis that the Sample is from the same Model. 
 	 * The Complement is the Confidence to accept the Null Hypothesis. 
 	 */
 	final static public double PROBABILITY_CHI_SQR(final double degreesOfFreedom, final double chiSqr) {
 		return GAMMA_P(chiSqr*0.5, degreesOfFreedom*0.5); }
 	
-	/**@return the cumulative Error Function with arbitrary Accuracy using GammaP,
+	/**Computes the cumulative Error Function with arbitrary Accuracy using GammaP.
+	 * @return the cumulative Error Function with arbitrary Accuracy using GammaP,
 	 * the incomplete Gamma Function:	(1+Sign (x)*GammP (Sqr (x)/2,Halb))/2	 */
 	final static public double PROBABILITY_GAUSS_CUM(final double x) {
 		double tmp = GammaP.GAMMA_P(x*x*0.5, 0.5, (ByRefDouble) null);

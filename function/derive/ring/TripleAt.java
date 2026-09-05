@@ -7,7 +7,18 @@ import function.derive.ADeriveAble;
 import function.derive.CCountAble;
 import function.derive.Identity;
 
-/**This Class encapsulates the DoubleAt Function.  */
+/**This Class encapsulates the DoubleAt Function.
+ *
+ * <!-- docstate
+ * pass: 2
+ * mtime: 2026-09-05T10:13:18Z
+ * digest: 5d018faaff549ebf9f194aebce5a72c49447d2a7610f67088f419ed4f78dc4d7
+ * stale: false
+ * tags: [code/mathematical_function]
+ * concepts: [Function Algebra]
+ * facets: {layer: utility, status: legacy, complexity: medium}
+ * -->
+ */
 final public class TripleAt
 extends ADeriveAble {
 

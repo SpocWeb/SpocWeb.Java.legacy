@@ -38,6 +38,15 @@ import function.derive.ring.Succ;
  * tan(x) = x + x^3/3 + x^5*2/15 + x^7*17/315 + x^9*62/2835 + ...
  * 			+ x^(2*n-1)*2^(2n)*(2^(2n)-1)*Bernoulli[n]/(2n)!
  *
+ * <!-- docstate
+ * pass: 2
+ * mtime: 2026-09-05T20:42:55Z
+ * digest: 67bb11546b0f6be09484477434add76e8999162d36cb55c3eb965bc74a5d3b32
+ * stale: false
+ * tags: [code/trigonometric_function, code/derivable_function_contract]
+ * concepts: [Trigonometric Functions]
+ * facets: {layer: utility, status: legacy, complexity: medium}
+ * -->
  */
 public class Tangens
 extends AFloatDeriveAble {
@@ -68,10 +77,11 @@ extends AFloatDeriveAble {
 	 * It always returns the Argument.  */
 	public Object Map (final Object arg) { return ((MetricBody) arg).tan(); }
 
-	/*	Returns Tangens(x) for all x 	*/
+	/**Returns Tangens(x) for all x.	 */
 	public double Map(final double x) { return Math.tan(x); }	//
 
-	/** @return The Derivative at x	 */
+	/**Returns the Tangens Function's Derivative: 1+tan^2(x).
+	 * @return The Derivative at x	 */
 	public double getDerivative(final double x) {
 		double ret = Math.tan(x); return 1.0 + ret*ret; }
 

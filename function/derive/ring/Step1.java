@@ -12,10 +12,20 @@ import function.derive.IDeriveAble;
 import Functions.*;
 import Functions.Derive.*;
 import Stream.Copy.Group.Ring.Metric.*;
+*/
 
 /**Implements a non continuous Version of the Step (Heaviside) Function,
  * which rises from 0 to 1 instantaneously at x=0.
  * The Width of the Interval in which this Function rises
+ * <!-- docstate
+ * pass: 2
+ * mtime: 2026-09-05T16:34:46Z
+ * digest: d932a815b9981f430a5863767705eba4bf40cdf475e3a08888187d05531d4675
+ * stale: false
+ * tags: [code/mathematical_function]
+ * concepts: [Function Algebra, Distribution Theory]
+ * facets: {layer: utility, status: legacy, complexity: medium}
+ * -->
  * is proportional to 1/H	 */
 public class Step1
 extends ADeriveAble { //AStatic { //

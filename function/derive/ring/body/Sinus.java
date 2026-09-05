@@ -53,6 +53,15 @@ import function.derive.ring.Succ;
  * Power Series (converges for all x):
  * sin(x) = x - x^3/3! + x^5/5! -... + (-1)^n*x^(2*n+1)/(2n+1)!
  *
+ * <!-- docstate
+ * pass: 2
+ * mtime: 2026-09-05T20:43:17Z
+ * digest: bd322cf4c58c97b2fc182214c826f16015b5951035c383166c2ddc08f882a685
+ * stale: false
+ * tags: [code/trigonometric_function, code/derivable_function_contract]
+ * concepts: [Trigonometric Functions]
+ * facets: {layer: utility, status: legacy, complexity: medium}
+ * -->
  */
 final public class Sinus
 extends AFloatDeriveAble 	//IPartialDerive //
@@ -153,7 +162,7 @@ extends AFloatDeriveAble 	//IPartialDerive //
 	 */
 	public double Map (double arg) { return Math.sin(arg); }
 
-	/*	Returns Sinus Function Derivative cos(x) for all x 	*/
+	/**Returns the Sinus Function's Derivative: Cos(x) for all x.	 */
 	public double getDerivative(double x) { return Math.cos(x); }	//
 
 	/** Calculates Function and Derivative at the same time,
@@ -210,6 +219,7 @@ extends AFloatDeriveAble 	//IPartialDerive //
 	    } while (Faktor > Accuracy);
 		return Summe; }
 
+	/**Returns Sinus(x), exploiting the 2*Pi Periodicity to reduce x into the Base Range first.	 */
 	public static IMetricIRing  sin(IMetricIRing x) {	//return ((MetricIRing)copy()).sinAt(); }
 		return (IMetricIRing) SinPi(x.Rem(IMeasurAble.TwoPi)); }	//sin(x) = sin (x+2Pi) Range (-pi,+pi)
 

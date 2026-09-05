@@ -9,6 +9,15 @@ import function.derive.ring.Diff;
   * Extends Diff to process partial Derivation, Integration and Inversion.
   * Keeps a Cache of partial Derivatives analogous to Sum.
   * Relies on / Checks for 'Dimension' to do the partial Operations.
+  * <!-- docstate
+  * pass: 2
+  * mtime: 2026-09-05T10:13:18Z
+  * digest: df61794bb77f652a670f6d9f20119f6e872f25cd5fc5fc52ff2de9d66c691b45
+  * stale: false
+  * tags: [code/differential_integration]
+  * concepts: [Partial Derivatives]
+  * facets: {layer: utility, status: legacy, complexity: medium}
+  * -->
   */
 final public class DiffPartial
 extends Diff

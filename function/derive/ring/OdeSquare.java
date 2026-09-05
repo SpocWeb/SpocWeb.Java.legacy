@@ -7,6 +7,15 @@ import function.vector.AOdeFloat;
 /**ODE Definition for the Square Functions x^2+c /2,
  * The Derivative is a Copy of the current x Value and not dependent on y ! 
  * @see function.derive.ring.OdeExp where the Derivative is a Copy of y. 
+ * <!-- docstate
+ * pass: 2
+ * mtime: 2026-09-05T10:13:18Z
+ * digest: d25e9cabbec7bb5329819678eec771b8d13ffd1cc9c5f1cd417494e8fe5bdbd2
+ * stale: false
+ * tags: [code/differential_integration]
+ * concepts: [Ordinary Differential Equations]
+ * facets: {layer: utility, status: legacy, complexity: medium}
+ * -->
  */
 final public class OdeSquare
 extends AOdeFloat 

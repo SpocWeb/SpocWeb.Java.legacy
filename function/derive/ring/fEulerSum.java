@@ -6,6 +6,15 @@ import function.AFunction;
 
 /** Ruler Sum Function: N -> R
   * Series with a Sum, that converges to e.
+  * <!-- docstate
+  * pass: 2
+  * mtime: 2026-09-05T10:13:18Z
+  * digest: 0840d965e784a132bf3c3845753f1cf9f2a90556b3c2f2ecb70bc17ccf87f506
+  * stale: false
+  * tags: [code/mathematical_function]
+  * concepts: [Numerical Series]
+  * facets: {layer: utility, status: legacy, complexity: medium}
+  * -->
   * e = Sum (n, 1/n!) 	 */
 public class fEulerSum
 extends AFunction {

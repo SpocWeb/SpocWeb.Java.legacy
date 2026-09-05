@@ -12,7 +12,18 @@ import function.derive.ring.Diff;
 import function.derive.ring.Neg;
 import function.derive.ring.Prod;
 
-/**This Class encapsulates the ArcCos Function.  */
+/**This Class encapsulates the ArcCos Function.
+ *
+ * <!-- docstate
+ * pass: 2
+ * mtime: 2026-09-05T16:41:39Z
+ * digest: 260b7226790d4a15ba786c78132ee325fcb0fa213869128285360a6d76bb33cb
+ * stale: false
+ * tags: [code/hyperbolic_function, code/derivable_function_contract]
+ * concepts: [Inverse Trigonometric Functions]
+ * facets: {layer: utility, status: legacy, complexity: medium}
+ * -->
+ */
 final public class ArcCos
 extends AFloatDeriveAble {
 
@@ -51,7 +62,8 @@ extends AFloatDeriveAble {
 		Werte-Bereich nur [-1,+1]	*/
 	public double Map(double x) { return ARC_COS(x);} //Werte-Bereich nur [-1,+1]
 
-	/** @return The Derivative at x	 */
+	/**Returns the ArcCos Function's Derivative, the Negative of ArcSin's Derivative at x.
+	 * @return The Derivative at x	 */
 	public double getDerivative(double x) {
 		return -ArcSin.ARC_SIN.getDerivative(x); }
 

@@ -8,6 +8,15 @@ import function.derive.CCountAble;
 
 /**Implements a non continuous Version of the AbsV Function,
  * which returns the absolute Value of the Argument.
+ * <!-- docstate
+ * pass: 2
+ * mtime: 2026-09-05T10:13:18Z
+ * digest: 666f901e68f4da049f1a504a4b38ec116d71f649ebe07d9059fdfad836b39192
+ * stale: false
+ * tags: [code/mathematical_function, code/derivable_function_contract]
+ * concepts: [Function Algebra]
+ * facets: {layer: utility, status: legacy, complexity: medium}
+ * -->
  * For Vectors this Function returns the Metric. */
 public class AbsV
 extends ADeriveAble {

@@ -39,6 +39,15 @@ import graphs.IPair;
  * is faster, doesn't require special Constructors
  * and is more similar to the other Operator Classes like Sum and Prod.
  * It reduces Complexity by eliminating inner and outer Functions
+ * <!-- docstate
+ * pass: 2
+ * mtime: 2026-09-05T16:16:31Z
+ * digest: 589d95f28e48132ca4fabf64e09e41f6e4e6601fe41a2f42105b1351b278d78b
+ * stale: false
+ * tags: [code/function_composition, code/invertible_function_contract]
+ * concepts: [Function Algebra]
+ * facets: {layer: utility, status: legacy, complexity: medium}
+ * -->
  * of Identity and null.	 */
 public class Cat
 extends AInvertAble {
@@ -101,7 +110,8 @@ extends AInvertAble {
 			return tmp; } 
 		return       outer.Map(tmp); }
 
-	/**@return  The string representation of the Function.
+	/**Returns a bracketed textual representation showing the outer Function applied to the inner one.
+	 * @return  The string representation of the Function.
 	 * @since   JDK1.0	 */
 	public String toString() {
 		String Return = inner.toString();

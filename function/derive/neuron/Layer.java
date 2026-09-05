@@ -17,6 +17,15 @@ import function.derive.IFloatDeriveAble;
   * to scale one of them so the Frequencies on the Range are the same.
   *
   * Alternatively both Input and Output Vectors can be normed to the Unit SuperCube
+  * <!-- docstate
+  * pass: 2
+  * mtime: 2026-09-05T10:13:18Z
+  * digest: ae6b912ce66378bcf661bf080c48abec40d0b2c0ac400d1f593cbe8056352de1
+  * stale: false
+  * tags: [code/neural_network, code/backpropagation]
+  * concepts: [Neural Networks, Supervised Learning]
+  * facets: {layer: utility, status: legacy, complexity: medium}
+  * -->
   */
 public class Layer
 extends ASlab

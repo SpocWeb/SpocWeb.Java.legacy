@@ -23,6 +23,15 @@ import function.derive.ring.Prod;
  * Ln(a*b) = Ln(a) + Ln(b)
  * Ln(a^b) = Ln(a)*b
  * Ln(Exp(x)) == x
+ * <!-- docstate
+ * pass: 2
+ * mtime: 2026-09-05T20:42:29Z
+ * digest: 17a72627a83724031978c1f1cdefb6b92090918efd0fbd5e022ace64cfbf0dff
+ * stale: false
+ * tags: [code/logarithm_function, code/derivable_function_contract]
+ * concepts: [Logarithmic Functions]
+ * facets: {layer: utility, status: legacy, complexity: medium}
+ * -->
  */
 public class Logarithm
 extends AFloatDeriveAble { //IPartialDerive {
@@ -44,21 +53,28 @@ extends AFloatDeriveAble { //IPartialDerive {
 	 */
 	private Logarithm() {}
 	
-    /** @see function.IFloatFunction#getOrder()     */
+    /**Reports that Logarithm preserves strict ascending order of its argument.
+     * @see function.IFloatFunction#getOrder()     */
     public byte getOrder() { return IStreamIn.ORDER_ASC_STRICT; }
     
 	/**This Function represents the Sinus Function.
 	 * It always returns the Argument.  */
 	public Object Map(Object arg) { return ((MetricBody) arg).ln(); }
 	
-	/*	Returns natural Logarithm ln(x) for positive x 	*/
+	/**Returns natural Logarithm ln(x) for positive x.	 */
 	public double Map(double x) { return Math.log(x); }	//
 
-	/*	Returns Cos(x) for all x 	*/
+	/**Returns the Logarithm Function's Derivative: 1/x.	 */
+	// TODO: LOGIC: returns '-Math.log(x)' instead of '1/x' (the correct Derivative of ln(x), and
+	// the value getFuncDerive() below already computes correctly into 'Derivative.Value'). Any
+	// caller of getDerivative(double) on Logarithm gets ln(x) negated instead of the Derivative.
 	public double getDerivative(double x) { return -Math.log(x); }	//
 
 	/** Calculates Function and Derivative at the same time,
 	 * returns the Function Value directly and the Derivative ByRef	  */
+	// TODO: LOGIC: returns '-Math.log(x)' instead of 'Math.log(x)' as the Function Value, so the
+	// result disagrees with Map(x) (also here in ring/body): every caller of getFuncDerive that
+	// uses the returned Function Value gets the negated Logarithm.
 	public double getFuncDerive (double x, ByRefDouble Derivative) {
 		Derivative.Value = ICountAble.ONE / x;
 		return -Math.log(x); }

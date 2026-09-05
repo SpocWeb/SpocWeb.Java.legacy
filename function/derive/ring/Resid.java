@@ -10,6 +10,15 @@ import function.derive.Identity;
 /**This Class encapsulates the Resid Function: 1 - x
  * It adds the Constant (Function) 1 to it's Argument.
  * It should work exactly like Negative concatenated with AddAt,
+ * <!-- docstate
+ * pass: 2
+ * mtime: 2026-09-05T10:13:18Z
+ * digest: 43e4613a9a36195c9634635d88c5456ab673fa9a24e06f02337b4e514d25474b
+ * stale: false
+ * tags: [code/mathematical_function]
+ * concepts: [Function Algebra]
+ * facets: {layer: utility, status: legacy, complexity: medium}
+ * -->
  * but that is not realized everywhere yet!!  */
 public class Resid
 extends ADeriveAble {

@@ -10,6 +10,15 @@ import function.byref.ByRefDouble;
  * Company:      <p>
  * @author  Matthias Heuer
  * @version 1.0
+ * <!-- docstate
+ * pass: 2
+ * mtime: 2026-09-05T16:28:44Z
+ * digest: 6cfd570b78b644a7174952e4d1545abf4d6646d84a5fa06c73c9648ef352fc70
+ * stale: false
+ * tags: [code/constant_function, code/mathematical_constants]
+ * concepts: [Function Algebra, Numeric Constants]
+ * facets: {layer: utility, status: legacy, complexity: medium}
+ * -->
  */
 public class CMeasurAble
 extends AConst //orderAble // ADeriveAble //ByRefDouble
@@ -19,29 +28,44 @@ implements ICountAble { //
 	//  static Constants
 	////////////////////////////////////////////////////////////////////////////
 
+	/** Constant Function returning the Value 0.5.	 */
 	final static public CMeasurAble Half    = new CMeasurAble (HALF);
+	/** Constant Function returning the Value 1/3.	 */
 	final static public CMeasurAble Third   = new CMeasurAble (THIRD);
+	/** Constant Function returning the Value 0.25.	 */
 	final static public CMeasurAble Quarter = new CMeasurAble (QUARTER);
 
+	/** Constant Function returning the Value 0.01, for expressing Percentages.	 */
 	final static public CMeasurAble Percent = new CMeasurAble (PERCENT);				//For Prozentangaben
+	/** Constant Function returning the Value 0.001, for expressing Per-mille Values.	 */
 	final static public CMeasurAble Permille= new CMeasurAble (PERMILLE);			   //For Promilleangaben
 
+	/** Relaxation Factor slightly above 1, for Over-Relaxation Iterations.	 */
 	final static public CMeasurAble EinsK1  = new CMeasurAble (EINSK1);				  //for Over -Relaxation
+	/** Relaxation Factor slightly below 1, for Under-Relaxation Iterations.	 */
 	final static public CMeasurAble NullK9  = new CMeasurAble (NULLK9);				  //for Under-Relaxation
+	/** Relaxation Factor slightly above 0, for Under-Relaxation Iterations.	 */
 	final static public CMeasurAble NullK1  = new CMeasurAble (NULLK1);
 
+	/** Constant Function returning Not-a-Number (NaN).	 */
 	final static public CMeasurAble  Nan       = new CMeasurAble ( NAN);
+	/** Constant Function returning positive Infinity.	 */
 	final static public CMeasurAble  Infinity  = new CMeasurAble ( INFINITY);
+	/** Constant Function returning negative Infinity.	 */
 	final static public CMeasurAble _Infinity  = new CMeasurAble (_INFINITY);
 
 	///////////////////////////////////////////////////////////////////////////////
 	//Transcendental Constants:
 	///////////////////////////////////////////////////////////////////////////////
 
+	/** Natural Logarithm of 2 = 1/{@link #Lbe}.	 */
 	final static public CMeasurAble Ln2 = new CMeasurAble (LN2);	//.69314718055994530941;	  nat?rlicher Logarithmus von 2=1/Lbe
-	final static public CMeasurAble Lbe = new CMeasurAble (LBE);	//1.4426950408889634073;	  Bin„rer Logarithmus von e (s.u.)
+	/** Binary Logarithm of e (log2(e)).	 */
+	final static public CMeasurAble Lbe = new CMeasurAble (LBE);	//1.4426950408889634073;	  Binï¿½rer Logarithmus von e (s.u.)
+	/** Natural Logarithm of 10.	 */
 	final static public CMeasurAble Ln10= new CMeasurAble (LN10);	//2.302585093	//Lb10/Lbe;
-	final static public CMeasurAble Lb10= new CMeasurAble (LB10);	//Ln10/Ln2;	//3.3219280948873623479;	  Bin„rer Logarithmus von 10
+	/** Binary Logarithm of 10 (log2(10)).	 */
+	final static public CMeasurAble Lb10= new CMeasurAble (LB10);	//Ln10/Ln2;	//3.3219280948873623479;	  Binï¿½rer Logarithmus von 10
 
 	/**Decadic Logarithm of two Lg2	= 0,30102999566398119521373889472449	 */
 	final static public CMeasurAble Lg2	= new CMeasurAble (LG2);	//.30102999566398119519;	  dekadischer Logarithmus von 2=
@@ -64,27 +88,49 @@ implements ICountAble { //
 	/**Feigenbaum-Delta :
 	 * Grenzwert der Verhaeltnisse der Abstaende
 	 * von quadratischen Bifurkationen.	 */
+	/** Feigenbaum Delta: the limit ratio of successive bifurcation-interval widths.	 */
 	final static public CMeasurAble Feigen		= new CMeasurAble (FEIGEN);
+	/** Negative Pi.	 */
 	final static public CMeasurAble _Pi			= new CMeasurAble (-PI);
+	/** Pi divided by 2.	 */
 	final static public CMeasurAble PiHalf		= new CMeasurAble (PI_HALF);
+	/** Pi divided by 4.	 */
 	final static public CMeasurAble PiQuarter	= new CMeasurAble (PI_QUARTER);
+	/** Three quarters of Pi.	 */
 	final static public CMeasurAble ThreePiQuarter = new CMeasurAble (THREE_PI_QUARTER);
+	/** Two times Pi, a full Circle in Radians.	 */
 	final static public CMeasurAble TwoPi		= new CMeasurAble (TWO_PI);
+	/** A full Circle expressed in Gon (400 Gon).	 */
 	final static public CMeasurAble FullGon		= new CMeasurAble (FULL_GON);
+	/** A full Circle expressed in Degrees (360Â°).	 */
 	final static public CMeasurAble FullDeg		= new CMeasurAble (FULL_DEG);
+	/** Conversion Factor from Degrees to Radians.	 */
 	final static public CMeasurAble Grad		= new CMeasurAble (GRAD);	//Zur Umrechnung in andere Winkelsysteme
+	/** Conversion Factor from Gon to Radians.	 */
 	final static public CMeasurAble Gon			= new CMeasurAble (GON);
+	/** Cubic Root of 2.	 */
 	final static public CMeasurAble CbcRt2		= new CMeasurAble (CBCRT2); //Bxp  (Drittel);
+	/** Square Root of 2.	 */
 	final static public CMeasurAble SqRt2		= new CMeasurAble (SQRT2);
+	/** Square Root of 3.	 */
 	final static public CMeasurAble SqRt3		= new CMeasurAble (SQRT3);
+	/** Square Root of 5.	 */
 	final static public CMeasurAble SqRt5		= new CMeasurAble (SQRT5);
+	/** Square Root of Pi.	 */
 	final static public CMeasurAble SqRtPi		= new CMeasurAble (SQRTPI);
+	/** Square Root of 2*Pi.	 */
 	final static public CMeasurAble SqRt2Pi		= new CMeasurAble (SQRT2PI);
+	/** Square of the Cubic Root of 2.	 */
 	final static public CMeasurAble SqrCbcRt2	= new CMeasurAble (SQRCBCRT2);
+	/** Golden Ratio Factor (sqrt(5)-1)/2 &#8776; 0.618, the smaller Golden Section.	 */
 	final static public CMeasurAble Golden		= new CMeasurAble (GOLDEN); //(SqRt (5)-1)/2=0.681 Verhaeltnis des goldenen Schnittes
+	/** Complement of {@link #Golden}: 1 - Golden.	 */
 	final static public CMeasurAble cGolden		= new CMeasurAble (CGOLDEN); //1 - Golden = 0.319 ,dessen Komplement und der
+	/** {@link #Golden} plus 1, the Interval-enlargement Factor of the Golden Section Search.	 */
 	final static public CMeasurAble OneGolden	= new CMeasurAble (ONEGOLDEN); //1 + Golden = 1.681 Faktor zur Vergroesserung e. Intervalles
+	/** Natural Logarithm of {@link #OneGolden}.	 */
 	final static public CMeasurAble LnOneGolden	= new CMeasurAble (LNONEGOLDEN);
+	/** Smallest Value still considered distinguishable from 1, used as a Precision Tolerance.	 */
 	final static public CMeasurAble Epsilon		= new CMeasurAble (EPSILON); //2 ^ Genauigkeit;	  //'Kleine' Groesse im Vergleich zu 1
 
 	////////////////////////////////////////////////////////////////////////////
@@ -340,6 +386,7 @@ implements ICountAble { //
 /*		double Val = (double) Value;
 		if (Value != Val) throw new IllegalArgumentException();
 		return Val; }
+*/
 
 	/**Returns the Object Value represented by a scalar Variable of Type float.
 	 * It consists of an IEEE Number with 32 Bit (4 Byte):
@@ -355,7 +402,8 @@ implements ICountAble { //
 
 	//These are the virtual Methods of Object: they cannot be abstracted int AConst!
 
-	/**@return  The string representation of the Function.
+	/**Returns the decimal string representation of the wrapped Double Value.
+	 * @return  The string representation of the Function.
 	 * @since   JDK1.0	 */
 	public String toString() { return Double.toString(_Value); } //"CMeasurAble(" + value + ")"; }
 

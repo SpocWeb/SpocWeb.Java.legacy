@@ -9,9 +9,7 @@ import function.byref.ByRefDouble;
 import function.derive.AFloatDeriveAble;
 
 /**
- * @author heuerm
- * 
- * The LogNormal Distribution is derived from a normal Distribution 
+ * The LogNormal Distribution is derived from a normal Distribution
  * in that it's Argument is a Logarithm of the (non-negative) Input. 
  * Thus it models the Situation that the relative Deviations fluctuate, 
  * instead of the absolute Deviations, which would be modeled by a Gaussian Normal Distribution. 
@@ -23,12 +21,22 @@ import function.derive.AFloatDeriveAble;
  * s as the Shape Parameter to describe the Width of the Distribution 
  * 
  * From this the Density Function can be derived: 
- * p(x >= 0) = e^(-ln((x-x0)/m)²/2s²)/(x-x0)s*SqRt(2Pi) ~ 1/(x^(1+ln(x)))
+ * p(x >= 0) = e^(-ln((x-x0)/m)ï¿½/2sï¿½)/(x-x0)s*SqRt(2Pi) ~ 1/(x^(1+ln(x)))
  * 
  * The Density Curve rises smoothly from (0, 0) 
  * to a Maximum at (1, 1) resp. SqRt(e)
- * and drops to (Infinity, 0)  
- * 
+ * and drops to (Infinity, 0)
+ *
+ * @author heuerm
+ * <!-- docstate
+ * pass: 2
+ * mtime: 2026-09-05T20:31:21Z
+ * digest: a60865a0b026d0cd061821920c4eaa28c8d37dd4b612c32fe398aa0cb4bb5f9c
+ * stale: false
+ * tags: [code/derivable_function_contract, code/mathematical_function]
+ * concepts: [Statistical Distributions, Log-Normal Distribution]
+ * facets: {layer: utility, status: legacy, complexity: medium}
+ * -->
  */
 public class LogNormal 
 extends AFloatDeriveAble {
@@ -72,7 +80,8 @@ extends AFloatDeriveAble {
 	/// Interface IFloatFunction
 	///////////////////////////////////////////////////////////////////////////
 	
-	/** @see function.IFloatFunction#Map(double)	 */
+	/**Returns the cumulative LogNormal Distribution's Value at x.
+	 * @see function.IFloatFunction#Map(double)	 */
 	public double Map(double x) {
 		x-=average; 
 		x/=scale; 
@@ -83,14 +92,16 @@ extends AFloatDeriveAble {
 	/// Interface IFloatDeriveAble
 	///////////////////////////////////////////////////////////////////////////
 	
-	/** @see function.derive.IFloatDeriveAble#getDerivative(double)	 */
+	/**Returns the LogNormal Density Function's Value at x, this Distribution's Derivative.
+	 * @see function.derive.IFloatDeriveAble#getDerivative(double)	 */
 	public double getDerivative(double x) {
 		x-=average; 
 		x/=scale; 
 		return Math.exp(ByRefDouble.SQR(Math.log(x)/stdDev)/2)/(x*stdDev*ByRefDouble.SQRT2PI); 
 	}
 
-	/** @see function.derive.IFloatDeriveAble#getFuncDerive(double, function.byref.ByRefDouble)	 */
+	/**Calculates the cumulative LogNormal Distribution and its Density at x at the same time.
+	 * @see function.derive.IFloatDeriveAble#getFuncDerive(double, function.byref.ByRefDouble)	 */
 	public double getFuncDerive(double x, final ByRefDouble derivative) {
 		x-=average; 
 		x/=scale; 
@@ -100,13 +111,15 @@ extends AFloatDeriveAble {
 		return Gauss.GAUSS.Map(log);
 	}
 
-	/** @see function.IFunction#Map(java.lang.Object)	 */
+	/**Wraps arg as a {@link ByRefDouble} after mapping it through the cumulative LogNormal Distribution.
+	 * @see function.IFunction#Map(java.lang.Object)	 */
 	public Object Map(final Object arg) {
 		return new ByRefDouble(Map(ByRefDouble.GET_DOUBLE(arg)));
 	}
-	
+
 	///////////////////////////////////////////////////////////////////////////
 
+	/**Verifies that {@code ln}'s getFuncDerive() Value and Derivative agree with Map() and getDerivative().	 */
 	public static void testIt(final LogNormal ln, final double value) {
 		final ByRefDouble ret = new ByRefDouble(); 
 		System.out.println(ln.Map(value));
@@ -116,8 +129,9 @@ extends AFloatDeriveAble {
 	
 	///////////////////////////////////////////////////////////////////////////
 
+	/**Runs {@link #testIt(LogNormal, double)} against a fixed LogNormal Instance at several Points.	 */
 	public static void testIt() {
-		final double average = 5; 
+		final double average = 5;
 		final double scale = 3; 
 		final double stdDev = .5; 
 		final LogNormal ln = new LogNormal(average, scale, stdDev);
@@ -129,6 +143,8 @@ extends AFloatDeriveAble {
 		//TODO: test whether the differentiated Function is the Derivative. 
 	}
 	
+	/**The main entry point for the application: runs {@link #testIt()}.
+	 * @param args Array of parameters passed to the application via the command line.	 */
 	public static void main(final String[] args) {
 		testIt(); 
 	}

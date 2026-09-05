@@ -11,6 +11,15 @@ import function.derive.Identity;
 /**This Class encapsulates the Stretching / Multiplying Function.
  * It multiplies a Constant to the Argument.
  * It can be used to stretch the Argument Range of a concatenated Function.
+ * <!-- docstate
+ * pass: 2
+ * mtime: 2026-09-05T16:34:58Z
+ * digest: b27c8188bbfb17a94316880cd22a12423f6530a7ac38c7b3e0094952e224ae10
+ * stale: false
+ * tags: [code/function_composition, code/derivable_function_contract]
+ * concepts: [Function Algebra]
+ * facets: {layer: utility, status: legacy, complexity: medium}
+ * -->
  * If H is nothing, it is assumed to 1 and no Stretching takes place.	 */
 public class MulAt
 extends AStatic
@@ -73,11 +82,13 @@ extends AStatic
 /// #region : Interface Object: Implementation
 ////////////////////////////////////////////////////////////////////////////
 
-	/**@return  The string representation of the Function.
+	/**Returns the multiplier prefixed with an asterisk.
+	 * @return  The string representation of the Function.
 	 * @since   JDK1.0	 */
 	public String toString() { return "*" + H; }
 
-	/**@return  true when this Function equals the given Parameter.
+	/**Compares this Function's multiplier Factor to another MulAt's.
+	 * @return  true when this Function equals the given Parameter.
 	 * @since   JDK1.0	 */
 	public boolean equals(Object arg) {
 		if (! (arg instanceof MulAt)) {

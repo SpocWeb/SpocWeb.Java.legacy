@@ -27,6 +27,15 @@ import function.byref.combinatoric.CombiFuncs;
  * This Approximation converges for all complex z.
  *
  * GammaLn	= Ln(GammaFactor (x-1.0))     -GammaFactorLn(x)
+ * <!-- docstate
+ * pass: 2
+ * mtime: 2026-09-05T16:44:00Z
+ * digest: b5953fffab7a1eec365f8d326aae93d3bd688fd5e4464674096c3bc2dcb9265e
+ * stale: false
+ * tags: [code/gamma_function, code/mathematical_function]
+ * concepts: [Special Functions, Gamma Function]
+ * facets: {layer: utility, status: legacy, complexity: medium}
+ * -->
  * Gamma	=	 GammaFactor (x-1.0)  * e^-GammaFactorLn(x) */
 public class GammaLn
 extends AFunction
@@ -43,7 +52,8 @@ implements IFloatFunction //deriveAble	//IPartialDerive //
 	/**private Constructor for Singleton Implementation	 */
 	private GammaLn(){}
 	
-    /** @see function.IFloatFunction#getOrder()     */
+    /**Reports that GammaLn preserves strict ascending order of its argument.
+     * @see function.IFloatFunction#getOrder()     */
     public byte getOrder() { return IStreamIn.ORDER_ASC_STRICT; }
     
 	/**This Function represents the GammaLn Function.  */

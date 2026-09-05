@@ -15,6 +15,15 @@ import function.IFunction;
  *
  * @author  Matthias Heuer
  * @version
+ * <!-- docstate
+ * pass: 2
+ * mtime: 2026-09-05T10:13:18Z
+ * digest: 941e66e9699bab302649c0d57c10e102052b070781e1318d15345e69316cb863
+ * stale: false
+ * tags: [code/function_wrapper, code/function_composition]
+ * concepts: [Function Algebra]
+ * facets: {layer: utility, status: legacy, complexity: medium}
+ * -->
  */
 public class AFuncRel
 extends AStatic {

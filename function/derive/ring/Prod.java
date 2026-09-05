@@ -18,6 +18,15 @@ import function.derive.IDeriveAble;
 /**This Class encapsulates the Prod Function: Product = Factor1 * Factor2
  * It multiplies two Functions given in the Constructor.
  * It also implements the Derivation after the Product Rule.
+ * <!-- docstate
+ * pass: 2
+ * mtime: 2026-09-05T16:35:20Z
+ * digest: 59c3e8d2c9164db372ffb31ec67c2b0b90302aab2ce9d3e59416c1a54f70d603
+ * stale: false
+ * tags: [code/function_composition, code/derivative_calculation]
+ * concepts: [Function Algebra, Product Rule]
+ * facets: {layer: utility, status: legacy, complexity: medium}
+ * -->
  * It reduces Complexity by eliminating Factors of 1 and null.	 */
 public class Prod
 extends ADeriveAble {
@@ -98,7 +107,8 @@ extends ADeriveAble {
 		return Factor1.equals(arg_.Factor1) &&
 			   Factor2.equals(arg_.Factor2); }
 
-	/**@return  The string representation of the Function.
+	/**Returns the textual "((Factor1)*(Factor2))" representation of this Product.
+	 * @return  The string representation of the Function.
 	 * @since   JDK1.0	 */
 	public String toString() {
 		String Return = Factor1.toString();

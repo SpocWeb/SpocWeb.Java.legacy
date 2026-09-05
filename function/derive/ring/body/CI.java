@@ -16,13 +16,22 @@ import function.derive.ring.Quot;
 /**This Class encapsulates the real Exponential Integral (CI) Function.
  * It can be calculated by the Power Series or a Continued Fraction.
  * In fact, CI(i*x) = -CI(x) + i*(CI(x) -Pi/2)
- *           ì                           2      4
+ *           ï¿½                           2      4
  *           | Cos (t)                  x      x
  * Ci (x)= - | ------- dt=C + Ln (x) - ---  + --- - ...
  *           x   t                     2*2!   4*4!
  * For large x this Integral is dominated by the Factor Sin(x)/x
  * For small x this Integral approximates x.
  *
+ * <!-- docstate
+ * pass: 2
+ * mtime: 2026-09-05T16:42:20Z
+ * digest: 552be1b72912e410909210435be8c6d4bf2dd025dcdad79b59de43ef9bb82b84
+ * stale: false
+ * tags: [code/numerical_integration, code/trigonometric_function]
+ * concepts: [Special Functions, Cosine Integral]
+ * facets: {layer: utility, status: legacy, complexity: medium}
+ * -->
  * See Numerical Recipes 2nd Ed. p257 (6.9.8)	 */
 public class CI
 extends AFloatDeriveAble	//IPartialDerive //
@@ -46,7 +55,8 @@ extends AFloatDeriveAble	//IPartialDerive //
 	/**This Function represents the Sinus Function.  */
 	public double Map (double arg) { return COS_INTEGRAL(arg); }
 
-	/** @return The Derivative at x	 */
+	/**Returns the Cosine Integral's Derivative, Cos(x)/x.
+	 * @return The Derivative at x	 */
 	public double getDerivative(double x) { return Math.cos(x)/x; }
 
 	/**Calculates Function and Derivative at the same time.
@@ -61,7 +71,7 @@ extends AFloatDeriveAble	//IPartialDerive //
 	/**The real Cosine Integral calculated by the Power Series only.
 	 * very much like the complex CI_CI Function.
 	 * In fact, CI(i*x) = CI(x) + i*CI(x)
-	 *           ì                           2      4
+	 *           ï¿½                           2      4
 	 *           | Cos (t)                  x      x
 	 * Ci (x)= - | ------- dt=C + Ln (x) - ---  + --- - ...
 	 *           x   t                     2*2!   4*4!
@@ -81,7 +91,7 @@ extends AFloatDeriveAble	//IPartialDerive //
 	/**The real Cosine Integral calculated by the Power Series only.
 	 * very much like the complex CI_CI Function.
 	 * In fact, CI(i*x) = CI(x) + i*CI(x)
-	 *           ì                           2      4
+	 *           ï¿½                           2      4
 	 *           | Cos (t)                  x      x
 	 * Ci (x)= - | ------- dt=C + Ln (x) - ---  + --- - ...
 	 *           x   t                     2*2!   4*4!

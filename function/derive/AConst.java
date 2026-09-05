@@ -19,6 +19,15 @@ import function.IInvertAble;
  *
  * @author  Matthias Heuer
  * @version
+ * <!-- docstate
+ * pass: 2
+ * mtime: 2026-09-05T10:13:18Z
+ * digest: 22bc313301421c596b4bf822744650956a6d9993d1760737e10976654f457280
+ * stale: false
+ * tags: [code/constant_function, code/derivable_function_contract]
+ * concepts: [Function Algebra]
+ * facets: {layer: utility, status: legacy, complexity: medium}
+ * -->
  */
 public class AConst
 extends AFunction
@@ -64,24 +73,24 @@ implements IDeriveAble {
 	 * This can be done only once, after that an IllegalStateException is thrown.	  */
 	public void setInverse (IInvertAble inverse) { throw new AbstractMethodError(); }
 
-	/** Returns arg mapped by the Inverse of this Object: !this°arg
+	/** Returns arg mapped by the Inverse of this Object: !thisï¿½arg
 	 * This is the Function working on 'arg' defined by the implementing Class.
 	 * The Class implementing this Method is the means of exchanging this Operation.
 	 * Not possible with constant function, because the Inverse is no Function 	*/
 	public Object UnMap  (Object arg) { throw new AbstractMethodError(); }
 
-	/** Returns arg mapped in Place by the Inverse of this Object: !this=°arg
+	/** Returns arg mapped in Place by the Inverse of this Object: !this=ï¿½arg
 	 * This is the Function working on 'arg' defined by the implementing Class.
 	 * The Class implementing this Method is the means of exchanging this Operation.
 	 * Not possible with constant Functions, because the Inverse is no Function 	*/
 	public Object UnMapAt (Object arg) { throw new AbstractMethodError(); }
 
-	/** Returns arg mapped by this Object: this.Map(arg) == this°arg
+	/** Returns arg mapped by this Object: this.Map(arg) == thisï¿½arg
 	 * This is the Function working on 'arg' defined by the implementing Class.
 	 * The Class implementing this Method is the means of exchanging this Operation.	  */
 	public Object Map (Object arg) { return this; }
 
-	/** Returns arg mapped in Place by this Object: this.MapAt(arg) this=°arg
+	/** Returns arg mapped in Place by this Object: this.MapAt(arg) this=ï¿½arg
 	  * This is the Function working on 'arg' defined by the implementing Class.
 	  * The Class implementing this Method is the means of exchanging this Operation.	  */
 	public Object MapAt (Object arg) {

@@ -12,6 +12,15 @@ import function.byref.ByRefFloat;
 /**This Class encapsulates the Brillouin Function.
  * This Function is defined by
  * The Limit for n-> Infinity is the Langevin Function:
+ * <!-- docstate
+ * pass: 2
+ * mtime: 2026-09-05T16:42:07Z
+ * digest: f1e5747d199ef9764d2b463275485f98f676ede0a3f18898d734ce123f15f3bd
+ * stale: false
+ * tags: [code/mathematical_function]
+ * concepts: [Thermodynamics, Magnetism]
+ * facets: {layer: utility, status: legacy, complexity: medium}
+ * -->
  * L(x) = CotH(x) - 1/x and plays a Role in Thermodynamics of Solids	 */
 public class Brillouin
 extends AFunction //extends AFloatDeriveAble
@@ -29,7 +38,8 @@ implements IFloatFunction
 	/**Constructor taking the Parameter j	 */
 	public Brillouin(double num) { numSpinsFloat = num; }
 	
-    /** @see function.IFloatFunction#getOrder()     */
+    /**Reports that Brillouin imposes no particular Ordering on its Argument.
+     * @see function.IFloatFunction#getOrder()     */
     public byte getOrder() { return IStreamIn.ORDER_NONE; }
     
 	/**This Function represents the Brillouin Function.	 */

@@ -10,7 +10,18 @@ import function.derive.ring.Algebra;
 import function.derive.ring.Prod;
 import function.derive.ring.Sum;
 
-/**This Class encapsulates the ArcSin Function.  */
+/**This Class encapsulates the ArcSin Function.
+ *
+ * <!-- docstate
+ * pass: 2
+ * mtime: 2026-09-05T20:43:24Z
+ * digest: 270ae0e65470f8f70d54be0c2ade58097038d06d2452f7f0e7ab96994428f9aa
+ * stale: false
+ * tags: [code/hyperbolic_function, code/derivable_function_contract]
+ * concepts: [Inverse Trigonometric Functions]
+ * facets: {layer: utility, status: legacy, complexity: medium}
+ * -->
+ */
 final public class ArcSin
 extends AFloatDeriveAble //IPartialDerive //
 {
@@ -19,7 +30,7 @@ extends AFloatDeriveAble //IPartialDerive //
 	final static public MetricBody ARC_SIN(Object arg) {
 		return  ((MetricBody) arg).ArcSin(); }
 
-	/*	Returns ArcSin(x) = ln() for x > 1
+	/**Returns the Arcus Sinus of x.
 		Werte-Bereich nur [-1,+1]	*/
 	final static public double ARC_SIN(double x) {
 		return Math.atan(Math.sqrt(ICountAble.ONE - x*x)); }	//
@@ -43,11 +54,12 @@ extends AFloatDeriveAble //IPartialDerive //
 	/**This Function represents the ArcSin Function.	 */
 	public Object Map (Object arg) { return ARC_SIN(arg); }
 
-	/*	Returns ArcSin(x) = ln() for x > 1
+	/**Returns the Arcus Sinus of x.
 		Werte-Bereich nur [-1,+1]	*/
 	public double Map(double x) { return ARC_SIN(x); }	//
 
-	/** @return The Derivative at x	 */
+	/**Returns the ArcSin Function's Derivative at x: 1/SqRt(1-x^2).
+	 * @return The Derivative at x	 */
 	public double getDerivative(double x) {
 		return ICountAble.ONE / Math.sqrt(ICountAble.ONE - x*x); }
 //		return ArcSinDerive(x); }

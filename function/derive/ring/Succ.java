@@ -8,6 +8,15 @@ import function.derive.CCountAble;
 
 /**This Class encapsulates the Successor Function.
  * It adds the Constant (Function) 1 to it's Argument.
+ * <!-- docstate
+ * pass: 2
+ * mtime: 2026-09-05T10:13:18Z
+ * digest: 99b149954fed66d0f89ad77c589bd76019f6282f94527a212efdcd765e41f73e
+ * stale: false
+ * tags: [code/mathematical_function, code/derivable_function_contract]
+ * concepts: [Function Algebra]
+ * facets: {layer: utility, status: legacy, complexity: medium}
+ * -->
  * It should work exactly like AddAt, but that is not realized everywhere yet!!  */
 public class Succ
 extends ADeriveAble {

@@ -13,6 +13,15 @@ import function.derive.AStatic;
  * LinAt(a, b) = a*x + b
  * It can be used to stretch the Argument Range of a concatenated Function.
  * If b is 'null', it is assumed to 0 and no Shifting takes place.
+ * <!-- docstate
+ * pass: 2
+ * mtime: 2026-09-05T16:34:14Z
+ * digest: 18ddc8ea919bde4f41eb76bc9dd7f8c5e1037068b1aa53eafeff05d7deaf6bf8
+ * stale: false
+ * tags: [code/mathematical_function, code/derivable_function_contract]
+ * concepts: [Function Algebra]
+ * facets: {layer: utility, status: legacy, complexity: medium}
+ * -->
  * If a is 'null', it is assumed to 1 and no Stretching takes place.	 */
 public class LinAt
 extends AStatic
@@ -33,6 +42,9 @@ extends AStatic
 	public LinAt(Object a_, Object b_) { this(a_, b_, null); }
 
 	/**Initializing Constructor	 */
+	// TODO: LOGIC: validates the fields 'a'/'b' (still null before assignment below) instead of
+	// the constructor parameters 'a_'/'b_', so these checks can never trigger regardless of what
+	// callers pass in; an IFunction handed in as a_ or b_ silently slips through uncaught.
 	public LinAt(Object a_, Object b_, IInvertAble Inverse) {
 		if (a instanceof IFunction) throw new AbstractMethodError();
 		if (b instanceof IFunction) throw new AbstractMethodError();
@@ -58,6 +70,9 @@ extends AStatic
 	/**This Function encapsulates the shifting / adding Function: a*x+b
 	 * It multiplies the Argument and adds a Constant to it.
 	 * It can be used to shift and stretch the Argument Range of a concatenated Function.	 */
+	// TODO: LOGIC: when b==null (pure scaling, no shift) this calls 'MulAt.MUL_AT(arg, b)' with the
+	// null 'b' instead of 'MulAt.MUL_AT(arg, a)', so the intended a*x scaling is replaced by a
+	// multiplication against null. Reachable on every LinAt constructed with a null 'b' argument.
 	public Object Map (Object arg) {
 		if (a == null) return AddAt.ADD_AT(arg, b);	//this is already done in LinAt() for all concrete Classes: BodyDouble, RingLong, Fraction, gAdic, Polynom, Tensor and Complex
 		if (b == null) return MulAt.MUL_AT(arg, b);	//this is already done in LinAt() for all concrete Classes: BodyDouble, RingLong, Fraction, gAdic, Polynom, Tensor and Complex
@@ -78,7 +93,8 @@ extends AStatic
 		return x * (Derivative.Value = ByRefDouble.GET_DOUBLE(a)) +
 			ByRefDouble.GET_DOUBLE(b); } //Map(x); }
 
-	/**@return  The string representation of the Function.
+	/**Returns the textual "b + a*" representation of this affine Function.
+	 * @return  The string representation of the Function.
 	 * @since   JDK1.0	 */
 	public String toString()	{ return b + " + " + a + "*";}
 

@@ -17,7 +17,7 @@ import tester.ITester;
  * The Kohonen Network minimizes the same Function as the Perceptron:
  * -but it implements competitive Learning by introducing a topological Function
  *  for Interaction between Neurons (Neighbors) and can create associative Maps.
- * -Learning Rule:  dW[i,j] = ß*(I[i]-W[i,j]) for the maximum j and it's Neighbors. 
+ * -Learning Rule:  dW[i,j] = ï¿½*(I[i]-W[i,j]) for the maximum j and it's Neighbors. 
  *
  * The Kohonen Layer can be used as a self organizing Map,
  * optionally normalizes the Data and activates only the winning Neuron
@@ -145,6 +145,15 @@ import tester.ITester;
  * thus very high (indirect) "Coupling" between all Neurons at the Start
  * (the more Neurons, the higher the Coupling)!!!
  *
+ * <!-- docstate
+ * pass: 2
+ * mtime: 2026-09-05T16:32:23Z
+ * digest: 546e21eaea244e2e7d703b6f6a7366a89654f780cb7eaf6aaf05a7693aa4c94b
+ * stale: false
+ * tags: [code/neural_network, code/numerical_algorithm]
+ * concepts: [Self-Organizing Maps, Unsupervised Learning, Topology Preservation]
+ * facets: {layer: utility, status: legacy, complexity: medium}
+ * -->
  */
 public class Kohonen
 extends ASlab {
@@ -201,6 +210,10 @@ extends ASlab {
 			final IIStreamIn data, final ITester breakIteration) {
 		return modelData(type, dim, numNeuronsPerDim, numNeuronsPerDim, data, breakIteration); }
 
+	/**Builds a new {@link Kohonen} Map of the given Dimensions and trains it for {@code numKSteps} Steps.
+	 * Overload of {@link #MODEL_DATA(int, int, int, IIStreamIn, ITester)} that lets the caller choose
+	 * the Number of training Steps independently of the Number of Neurons per Dimension.
+	 * @return the trained Kohonen Map	 */
 	public static Kohonen modelData(final int type, final int dim, final int numNeuronsPerDim,
 			final int numKSteps, final IIStreamIn data, final ITester breakIteration) {
 		int  inputDim = dim;  //Number of Dimensions
@@ -250,6 +263,10 @@ extends ASlab {
 			final IIStreamIn data, final ITester breakIteration) {
 		return RE_MODEL_DATA(type, kohonen, numNeuronsPerDim, numNeuronsPerDim, data, breakIteration); }
 
+	/**Continues training the given {@link Kohonen} Map for {@code numKSteps} Steps.
+	 * Overload of {@link #RE_MODEL_DATA(int, Kohonen, int, IIStreamIn, ITester)} that lets the
+	 * caller choose the Number of training Steps independently of the Number of Neurons per Dimension.
+	 * @return the further trained Kohonen Map	 */
 	public static Kohonen RE_MODEL_DATA(final int type, final Kohonen kohonen, final int numNeuronsPerDim,
 			final int numKSteps, final IIStreamIn data, final ITester breakIteration) {
 		int neighbor = numNeuronsPerDim / 2;
@@ -422,7 +439,8 @@ extends ASlab {
 		}
 	}
 	
-	/** @return the Number of Neurons / Weights in this Network */
+	/**Reports the size of this Kohonen Map.
+	 * @return the Number of Neurons / Weights in this Network */
 	public int getNumWeights() { return weights.length; }
 	
 	/** Make it public for access by other Programs
@@ -878,7 +896,7 @@ extends ASlab {
 	 */
 	public float getProgress() { return progress; } //
 
-	/**
+	/**Reports how many Back-Propagations have run since the last Weight Randomization.
 	 * @return the current Counter of BackPropagations for the Approximation
 	 */
 	public float getBackPropCounter() { return numBackProps; } //
@@ -1001,6 +1019,15 @@ extends ASlab {
  * Although this is a very broad Interface!
  *
  * Used internally in testIt() to print the Progress to the Screen.
+ * <!-- docstate
+ * pass: 2
+ * mtime: 2026-09-05T16:32:23Z
+ * digest: 65a4caef85d3b4e1b0b917c9a637629949b21586d03fec9fe6eb150c1c6290b8
+ * stale: false
+ * tags: [code/neural_network, code/testing]
+ * concepts: [Self-Organizing Map Test Harness]
+ * facets: {layer: test, status: legacy, complexity: low}
+ * -->
  */
 class KohonenTester
 implements ITester {

@@ -38,6 +38,15 @@ import function.IFunction;
  * To draw these HyperPlanes, you have to Step along a Trajectory in two Dimensions
  * (full circle) and branch off to the third Dimension (also full circle)
  * and connect each inner circle with the previous one, by choosing the nearest Point.
+ * <!-- docstate
+ * pass: 2
+ * mtime: 2026-09-05T10:13:18Z
+ * digest: e0b190908d6ed14de495dba832a22a745b00e5f57fceee7aafae932eddb1f60f
+ * stale: false
+ * tags: [code/differential_integration]
+ * concepts: [Ordinary Differential Equations]
+ * facets: {layer: utility, status: legacy, complexity: medium}
+ * -->
  */
 public class OdeHeight
 	implements IODE {

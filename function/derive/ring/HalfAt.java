@@ -10,7 +10,18 @@ import function.derive.CCountAble;
 import function.derive.CMeasurAble;
 import function.derive.Identity;
 
-/**This Class encapsulates the HalfAt Function.  */
+/**This Class encapsulates the HalfAt Function.
+ *
+ * <!-- docstate
+ * pass: 2
+ * mtime: 2026-09-05T10:13:18Z
+ * digest: 655da3a6ea2b5d841098a2ceb499cbb3297885aa072557c06c70f3ac1b5845ca
+ * stale: false
+ * tags: [code/mathematical_function]
+ * concepts: [Function Algebra]
+ * facets: {layer: utility, status: legacy, complexity: medium}
+ * -->
+ */
 final public class HalfAt
 extends ADeriveAble {
 

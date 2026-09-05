@@ -12,6 +12,15 @@ import function.vector.IFloatVectorField;
 /**This Class encapsulates the Identity Function.
  * It always returns the Argument.
  * It is dangerous to use it, because the Original is returned!!!
+ * <!-- docstate
+ * pass: 2
+ * mtime: 2026-09-05T16:16:25Z
+ * digest: 8acbcbbf1d76bf8fdf02e65c1fc4aadb24c3f0810e0996e35264fe5783086ca7
+ * stale: false
+ * tags: [code/identity_function, code/derivable_function_contract]
+ * concepts: [Function Algebra]
+ * facets: {layer: utility, status: legacy, complexity: medium}
+ * -->
  * So you should not do any great calculations with it. */
 final public class Identity
 extends AFloatDeriveAble
@@ -73,7 +82,8 @@ implements IFloatVectorField {
 		VectorFloat.COPY(arg, out);
 		return out; }
 	
-    /** @see function.IFloatFunction#getOrder()     */
+    /**Reports that Identity preserves strict ascending order of its argument.
+     * @see function.IFloatFunction#getOrder()     */
     public byte getOrder() { return IStreamIn.ORDER_ASC_STRICT; }
     
 	/**Returns the Derivative of the Function at Point x	 */

@@ -10,15 +10,37 @@ import function.derive.IDeriveAble;
  * This class can take a variable number of parameters on the command
  * line. Program execution begins with the main() method. The class
  * constructor is not invoked unless an object of type 'Class1'
+ * <!-- docstate
+ * pass: 2
+ * mtime: 2026-09-05T16:35:25Z
+ * digest: a8c9432c0dbf9ca14ca436b417f4577aede25189ef1d9385ecf3ce403a337936
+ * stale: false
+ * tags: [code/testing, code/algebraic_function]
+ * concepts: [Ring Function Test Harness]
+ * facets: {layer: test, status: legacy, complexity: low}
+ * -->
  * created in the main() method. */
 public class TestRingFuncs {
 
+	/**Empty Placeholder Test verifying that the Package's Classes can be instantiated without Error.
+	 *
+	 * <!-- docstate
+	 * tags: [code/testing]
+	 * concepts: [Instantiation Self-Test]
+	 * facets: {layer: test, status: legacy, complexity: low}
+	 * -->
+	 */
 	public static void testInstantiation() {
 	}
 
 	/**The main entry point for the application.
 	 *
 	 * @param args Array of parameters passed to the application
+	 * <!-- docstate
+	 * tags: [code/testing]
+	 * concepts: [Demo Entry Point]
+	 * facets: {layer: test, status: legacy, complexity: low}
+	 * -->
 	 * via the command line.	 */
 	public static void main(String[] args) throws java.io.IOException {
 		FuncParser.testIt();
