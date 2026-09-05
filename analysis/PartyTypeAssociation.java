@@ -1,14 +1,9 @@
 package analysis;
 
 /**
-  * Title: PartyTypeAssociation<p>
-  * Description:
-  * Defines the Interface for ...TODO: Describes the Purpose / Responsibilities
-  * of this Interface, not it's Implementation.
-  * If similar Classes exist (e.g. Polymorphism),
-  * characterize the specific Differences to compare these.
-  * All interface Operations are implicitly public and abstract.
-  * All interface Attributes are implicitly public, final and static.
+  * Defines the Interface for a directed Parent/Child Association between two PartyTypes,
+  * i.e. an allowed Responsibility at the Knowledge Level.
+  * @see PartyAssociation the analogous Association between two Parties.
   *
   * Known SubInterfaces: <none>
   *
@@ -21,6 +16,15 @@ package analysis;
   * Created on	10-21-2002, 10:41 PM<p>
   * @author 	Matthias Heuer
   * @version	1.0
+  * <!-- docstate
+  * pass: 2
+  * mtime: 2026-09-05T09:41:53Z
+  * digest: f0e4687069327c454a1fd566d7de614559ef76762181c1e75c9056d455bb97c1
+  * stale: false
+  * tags: [code/domain_model, code/type_system]
+  * concepts: [Domain Model, Relationship Modelling]
+  * facets: {layer: domain, status: stable, complexity: low}
+  * -->
   */
 public interface PartyTypeAssociation {
 
@@ -28,10 +32,12 @@ public interface PartyTypeAssociation {
 /// #region : Accessor Methods (getXXX/isXXX/setXXX)
 ////////////////////////////////////////////////////////////////////////////////
 
-	/** @return the Parent Element of this Association 	 */
+	/** Returns the Parent PartyType of this Association.
+	  * @return the Parent Element of this Association 	 */
 	public PartyType getParent();
 
-	/** @return the Child Element of this Association 	 */
+	/** Returns the Child PartyType of this Association.
+	  * @return the Child Element of this Association 	 */
 	public PartyType getChild();
 
 ////////////////////////////////////////////////////////////////////////////////

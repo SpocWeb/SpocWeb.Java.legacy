@@ -95,3 +95,10 @@ streamIO/adapter/StreamIn2CValue.java:StreamIn2CValue	class	streamIO/adapter/Str
 streamIO/adapter/StreamOut2ValueSetter.java:StreamOut2ValueSetter	class	streamIO/adapter/StreamOut2ValueSetter.java	code/adapter_pattern, code/stream_abstraction	Adapter Pattern	infrastructure	stable	low
 streamIO/adapter/ValueSetter2StreamOut.java:ValueSetter2StreamOut	class	streamIO/adapter/ValueSetter2StreamOut.java	code/adapter_pattern, code/stream_abstraction	Adapter Pattern	infrastructure	stable	low
 streamIO/adapter	folder	streamIO/adapter	code/adapter_pattern, code/stream_abstraction	Adapter Pattern	infrastructure	broken	low
+analysis/Party.java:Party	class	analysis/Party.java	code/domain_model, code/type_system	Domain Model, Relationship Modelling	domain	stable	low
+analysis/PartyType.java:PartyType	class	analysis/PartyType.java	code/domain_model, code/type_system	Domain Model, Relationship Modelling	domain	stable	low
+analysis/PartyAssociation.java:PartyAssociation	class	analysis/PartyAssociation.java	code/domain_model, code/type_system	Domain Model, Relationship Modelling	domain	stable	low
+analysis/PartyTypeAssociation.java:PartyTypeAssociation	class	analysis/PartyTypeAssociation.java	code/domain_model, code/type_system	Domain Model, Relationship Modelling	domain	stable	low
+analysis/Responsibility.java:Responsibility	class	analysis/Responsibility.java	code/domain_model, code/type_system	Domain Model, Relationship Modelling	domain	stable	low
+analysis/ResponsibilityType.java:ResponsibilityType	class	analysis/ResponsibilityType.java	code/domain_model, code/type_system	Domain Model, Relationship Modelling	domain	stable	low
+analysis	folder	analysis	code/domain_model, code/type_system	Domain Model, Relationship Modelling	domain	stable	low

@@ -59,7 +59,7 @@ cost more tokens than one and burn the 5-hour window N times faster.
 | `sound` | 10 | 1030 | 0 | unclaimed | - |
 | `(root)` | 9 | 1073 | 0 | unclaimed | - |
 | `streamIO/asyncMessage` | 7 | 541 | 0 | unclaimed | - |
-| `analysis` | 6 | 319 | 0 | unclaimed | - |
+| `analysis` | 6 | 319 | 6 | done | main |
 | `streamIO/adapter` | 6 | 435 | 6 | done | main |
 | `streamIO/vector` | 6 | 947 | 6 | done | main |
 | `streamIO/exception` | 5 | 536 | 5 | done | main |

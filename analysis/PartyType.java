@@ -1,8 +1,6 @@
 package analysis;
 
 /**
-  * Title: PartyType<p>
-  * Description:
   * Defines the Interface for a Party (i.e. Group of Agents) Type.
   * This Interface defines polymorph Operations
   * that are common to all Subtypes of Party
@@ -32,6 +30,15 @@ package analysis;
   * Created on	10-21-2002, 09:47 AM<p>
   * @author 	Matthias Heuer
   * @version	1.0
+  * <!-- docstate
+  * pass: 2
+  * mtime: 2026-09-05T09:41:32Z
+  * digest: c52a48c5aec8a9a545656f88051af1b3a7a5b0e7cd1f502d52ce6a9b54f8f00f
+  * stale: false
+  * tags: [code/domain_model, code/type_system]
+  * concepts: [Domain Model, Relationship Modelling]
+  * facets: {layer: domain, status: stable, complexity: low}
+  * -->
   */
 public interface PartyType {
 
@@ -46,7 +53,8 @@ public interface PartyType {
 /** holds Reference to the Super Type of this Type to be able to reuse Rules and Definitions   */
 //protected PartyType superPartyType;
 
-/** @return Reference to the Super Type of this Type to be able to reuse Rules and Definitions  */
+/** Returns the Super Type this Type derives its Rules and Definitions from, if any.
+  * @return Reference to the Super Type of this Type to be able to reuse Rules and Definitions  */
 public PartyType getsuperPartyType(); // {
 //	return superPartyType; }
 

@@ -1,8 +1,6 @@
 package analysis;
 
 /**
-  * Title: Party<p>
-  * Description:
   * Defines the Interface for a Party (see Fowler: 'Analysis Patterns').
   * A Party is the Abstraction of a Person or an Organization.
   * Since a Party is usually also an Actor,
@@ -25,6 +23,15 @@ package analysis;
   * Created on	10-21-2002, 12:29 AM<p>
   * @author 	Matthias Heuer
   * @version	1.0
+  * <!-- docstate
+  * pass: 2
+  * mtime: 2026-09-05T09:41:23Z
+  * digest: c73587adeb298614978ad38910b866b3db0f8caddc639ad15415cd4e086a9088
+  * stale: false
+  * tags: [code/domain_model, code/type_system]
+  * concepts: [Domain Model, Relationship Modelling]
+  * facets: {layer: domain, status: stable, complexity: low}
+  * -->
   */
 public interface Party {
 
@@ -35,7 +42,8 @@ public interface Party {
 /** holds Reference to the Type of this Party. This is an Alternative to Subclassing that allows to dynamically change the Type   */
 //protected PartyType partyType;
 
-/** @return Reference to the Type of this Party. This is an Alternative to Subclassing that allows to dynamically change the Type  */
+/** Returns this Party's dynamically assignable Type.
+  * @return Reference to the Type of this Party. This is an Alternative to Subclassing that allows to dynamically change the Type  */
 public PartyType getpartyType(); // {
 //	return partyType; }
 
