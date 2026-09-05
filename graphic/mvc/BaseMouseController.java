@@ -33,6 +33,15 @@ import java.awt.event.MouseWheelListener;
  * @author mheuer
  * @version	1.0
  *
+ * <!-- docstate
+ * pass: 2
+ * mtime: 2026-09-05T12:44:45Z
+ * digest: 54b32bc1d43cd045b3b37a4f8122df0336e610f7b66da921f67e42dd26eda195
+ * stale: false
+ * tags: [code/event_handling, code/ui_control]
+ * concepts: [Mouse Controller Base Class]
+ * facets: {layer: infrastructure, status: legacy, complexity: low}
+ * -->
  */
 public class BaseMouseController 
 implements MouseListener, MouseMotionListener, MouseWheelListener {
@@ -105,16 +114,20 @@ implements MouseListener, MouseMotionListener, MouseWheelListener {
 	/// Low Level MouseListener Methods
 	/////////////////////////////////////////////////////////////////////////////////////
 
-	/** @see java.awt.event.MouseListener#mouseClicked(java.awt.event.MouseEvent)	 */
+	/** Does nothing; clicks are handled via {@link #mousePressed(MouseEvent)}/{@link #mouseReleased(MouseEvent)} instead.
+	 * @see java.awt.event.MouseListener#mouseClicked(java.awt.event.MouseEvent)	 */
 	public void mouseClicked(final MouseEvent e) { }
 
-	/** @see java.awt.event.MouseListener#mouseEntered(java.awt.event.MouseEvent)	 */
+	/** Does nothing; no hover behaviour is implemented at this level.
+	 * @see java.awt.event.MouseListener#mouseEntered(java.awt.event.MouseEvent)	 */
 	public void mouseEntered(final MouseEvent e) { }
 
-	/** @see java.awt.event.MouseListener#mouseExited(java.awt.event.MouseEvent)	 */
+	/** Does nothing; no hover behaviour is implemented at this level.
+	 * @see java.awt.event.MouseListener#mouseExited(java.awt.event.MouseEvent)	 */
 	public void mouseExited(MouseEvent e) { }
 
-	/** @see java.awt.event.MouseListener#mousePressed(java.awt.event.MouseEvent)	 */
+	/** Records the press position and delegates to {@link #pressedMouse(int, int)}.
+	 * @see java.awt.event.MouseListener#mousePressed(java.awt.event.MouseEvent)	 */
 	public void mousePressed(final MouseEvent evt) {
 		final int x = evt.getX();
 		final int y = evt.getY();
@@ -123,7 +136,9 @@ implements MouseListener, MouseMotionListener, MouseWheelListener {
 		lastPosition.y = y;
 	}
 
-	/** @see java.awt.event.MouseListener#mouseReleased(java.awt.event.MouseEvent)	 */
+	/** Delegates to {@link #doubleClickMouse(int, int)} on a double click, otherwise to
+	 * {@link #releasedMouse(int, int)}, and records the release position.
+	 * @see java.awt.event.MouseListener#mouseReleased(java.awt.event.MouseEvent)	 */
 	public void mouseReleased(final MouseEvent evt) {
 		final int x = evt.getX();
 		final int y = evt.getY();
@@ -140,10 +155,13 @@ implements MouseListener, MouseMotionListener, MouseWheelListener {
 	/// Low Level MouseMotionListener Methods
 	/////////////////////////////////////////////////////////////////////////////////////
 
-	/** @see java.awt.event.MouseMotionListener#mouseMoved(java.awt.event.MouseEvent)	 */
+	/** Does nothing; passive mouse movement without a button held is not tracked.
+	 * @see java.awt.event.MouseMotionListener#mouseMoved(java.awt.event.MouseEvent)	 */
 	public void mouseMoved(final MouseEvent e) { }
 
-	/** @see java.awt.event.MouseMotionListener#mouseDragged(java.awt.event.MouseEvent)	 */
+	/** Computes the delta since the last recorded position and delegates to
+	 * {@link #dragMouse(int, int, int, int)}, skipping the call when the position is unchanged.
+	 * @see java.awt.event.MouseMotionListener#mouseDragged(java.awt.event.MouseEvent)	 */
 	public void mouseDragged(final MouseEvent e) {
 		final int x = e.getX();
 		final int y = e.getY();
@@ -157,7 +175,8 @@ implements MouseListener, MouseMotionListener, MouseWheelListener {
 		lastPosition.y = y;
 	}
 
-	/** @see java.awt.event.MouseWheelListener#mouseWheelMoved(java.awt.event.MouseWheelEvent)	 */
+	/** Does nothing; mouse wheel input is not currently wired to any drag behaviour.
+	 * @see java.awt.event.MouseWheelListener#mouseWheelMoved(java.awt.event.MouseWheelEvent)	 */
 	public void mouseWheelMoved(MouseWheelEvent e) {
 		// TODO Auto-generated method stub
 		//dragMouse(e.getWheelRotation()); 

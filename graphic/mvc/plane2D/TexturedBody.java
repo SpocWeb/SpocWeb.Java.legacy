@@ -54,6 +54,15 @@ import streamIO.object.parser.jdbc.ResultSetSep;
  * @author mheuer
  * @version	1.0
  *
+ * <!-- docstate
+ * pass: 2
+ * mtime: 2026-09-05T12:50:15Z
+ * digest: c7ce1b74ddfea5ab3713853850a2e1f1eebe7faa43113d9164ee4f6b2d05a559
+ * stale: false
+ * tags: [code/texture_mapping]
+ * concepts: [Textured 3D Body]
+ * facets: {layer: domain, status: legacy, complexity: medium}
+ * -->
  */
 public class TexturedBody 
 extends Body3D {
@@ -114,7 +123,8 @@ extends Body3D {
 	/** Flag whether the Planes of this Body are oriented 	 */
 	public boolean oriented; 
 	
-	/**
+	/** Loads a textured body's geometry and texture coordinates/images from the files at the
+	 * given path (without extension).
 	 * @param PathWoExtension
 	 * @throws FileNotFoundException
 	 * @throws IOException
@@ -132,7 +142,9 @@ extends Body3D {
 		textures = READ_IMAGES(PathWoExtension);
 	}
 	
-	/** @see graphic.mvc.IPainter#paintFrame(graphic.IGraphText)	 */
+	/** Projects this body's 3D points through the given coordinate system and builds the
+	 * resulting textured polygons.
+	 * @see graphic.mvc.IPainter#paintFrame(graphic.IGraphText)	 */
 	public VectorPolygon map(final Coordinates3D c3D) {
 		final short[][] vertices = new short[points.length][3];
 		c3D.map(vertices, points);

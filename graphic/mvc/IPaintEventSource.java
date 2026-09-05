@@ -8,9 +8,8 @@ package graphic.mvc;
 import graphic.IGraphText;
 
 /**
- * Title: IPaintEventSource<p>
- * Description:
- * Interface defining the Methods of a IPaintEventSource
+ * Interface for a source that broadcasts paint events to a set of subscribed
+ * {@link IPainter}s.
  *
  * Known SubClasses: <none>
  *
@@ -22,19 +21,30 @@ import graphic.IGraphText;
  * @author mheuer
  * @version	1.0
  *
+ * <!-- docstate
+ * pass: 2
+ * mtime: 2026-09-05T12:52:16Z
+ * digest: f13f257f30fc2d6a29fe59e061434e3f4711886c376da510c85d5f55a0de9591
+ * stale: false
+ * tags: [code/event_dispatch, code/gui]
+ * concepts: [Paint Event Source Interface]
+ * facets: {layer: infrastructure, status: legacy, complexity: low}
+ * -->
  */
 public interface IPaintEventSource {
 
-	/** @see IPainter#paintFrame(IGraphText) adds the given Painter for the Events
-	 * 
-	 * @param painter to be added 
+	/** Subscribes the given painter to receive future paint events.
+	 * @see IPainter#paintFrame(IGraphText) adds the given Painter for the Events
+	 *
+	 * @param painter to be added
 	 * @return true if the Painter was subscribed
 	 */
 	public abstract boolean addPainter(final IPainter painter);
 
-	/** @see IPainter#paintFrame(IGraphText) removes the given Painter from the Events
-	 * 
-	 * @param painter to be removed 
+	/** Unsubscribes the given painter from paint events.
+	 * @see IPainter#paintFrame(IGraphText) removes the given Painter from the Events
+	 *
+	 * @param painter to be removed
 	 * @return true if the Painter was unsubscribed
 	 */
 	public abstract boolean removePainter(final IPainter painter);

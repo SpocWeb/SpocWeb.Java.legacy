@@ -84,7 +84,7 @@ concurrently against the same file):
 | `graphic` (root+example+implement+svg) | 50 | 14297 | 34 | done | agent-graphic-misc |
 | `graphic/math2D`+`graphic/ms3d` | 18 | 3525 | 18 | done | agent-graphic-2d |
 | `graphic/math3D` | 32 | 6425 | 1 | done | agent-graphic-math3D |
-| `graphic/mvc` | 26 | 4789 | 0 | claimed | agent-graphic-mvc |
+| `graphic/mvc` | 26 | 4789 | 10 | done | agent-graphic-mvc |
 | `math` (root+algorithm+integration+wavelet) | 18 | 3123 | 18 | done | agent-math-core |
 | `math/fit`+`math/refiner` | 27 | 3644 | 27 | done | agent-math-fit |
 | `math/minimizer` | 11 | 3043 | 11 | done | agent-math-minimizer |
@@ -364,6 +364,16 @@ same harness against it. A test that has not been seen red proves nothing.
 | graphic/svg/SvgApplet.java | SvgApplet | setTrafo(Coordinates2D) | 247 | Adds a new `Coord2DMouseController` via `addMouseListener`/`addMouseMotionListener` on every call without removing the listeners installed by a previous call; repeated invocations accumulate duplicate listeners. | Medium | open |
 | graphic/svg/SvgApplet.java | SvgApplet | image(Attributes) | 488 | The `xlink:href` attribute of an `<image>` element is untrusted content from the parsed SVG document; it is concatenated into a URL and fetched with no validation (scheme allow-list, path-traversal check), letting a malicious SVG file make this Applet fetch an arbitrary URL (SSRF-like) or read an arbitrary local file. | Medium | open |
 | graphic/math3D/OdePlotter.java | OdePlotter | drawLoop() | 101 | `Rect` is a legal constructor argument that may be `null`; the do/while loop condition `(Rect != null) && Rect.contains(...)` is then false from the start, so the trajectory draws exactly one step instead of running unbounded until the drawing area is left, as the surrounding comments describe. | Medium | open |
+| graphic/mvc/BufferedPainter.java | BufferedPainter | BufferedPainter(ICanvas) | 83 | `new BufferedImage(dim.height, dim.width, ...)` swaps width and height, transposing the offscreen buffer for any non-square canvas and corrupting `getSize()`/every subsequent `drawImage()`. | High | open |
+| graphic/mvc/plane2D/VectorPolygon.java | VectorPolygon | drawInOrder(IGraphText) | 353 | The branch meant to (re)build `zIndex` when null/stale is entirely commented out; `zIndex`'s only assignment anywhere is `setChanged()` setting it back to null, so this always throws `NullPointerException` at `items[zIndex[i]]`. | High | open |
+| graphic/mvc/plane2D/MatrixShort.java | MatrixShort | SET_DIM_AT(short[][], int) | 480 | Returns the original array `a` instead of the resized `ret` allocated and filled just above; every caller expecting a length-`dim` array back silently gets the unchanged original-length array. | Medium | open |
+| graphic/mvc/plane2D/MatrixShort.java | MatrixShort | MatrixShort(Object) | 819 | Resolves to `MatrixShort(int initialCapacity, int dim)`; `DEFAULT_CAPACITY_INCR` is passed as the row dimension `dim`, not as a capacity increment, silently giving every row the wrong width. | Medium | open |
+| graphic/mvc/plane2D/MatrixShort.java | MatrixShort | newInstance() | 1017 | Same constructor-overload mismatch as above: `capacityIncrement` passed as `dim` for the new instance's row width. | Medium | open |
+| graphic/mvc/plane2D/VectorPolygon.java | VectorPolygon | copyAt(MatrixShort[]) | 293 | Unlike the Object-typed `copyAt()` overload, never calls `setCapacity()` first; when `arg_.length` exceeds the current backing-array length, `arraycopy` throws `ArrayIndexOutOfBoundsException` instead of growing the array. | Medium | open |
+| graphic/mvc/BaseApplet.java | BaseApplet | imageUpdate(...) | 360 | Only `ImageObserver.ALLBITS` is checked; `ERROR`/`ABORT` are never handled, so a failed/aborted asynchronous image load never notifies the observer chain and this method keeps returning true (keep sending updates) forever for that image. | Medium | open |
+| graphic/mvc/BaseApplet.java | BaseApplet | getFaultySuffix(String) | 108 | `fileName.substring(fileName.length()-4)` throws `StringIndexOutOfBoundsException` for filenames shorter than 4 characters, uncaught by any caller. | Low | open |
+| graphic/mvc/plane2D/MatrixShort.java | MatrixShort | STREAM(...) | 650 | `for (int i = startRow; ++i < stopRow;)` pre-increments before the bound check, so `vals[startRow]` itself is never streamed - only rows `startRow+1..stopRow-1` are printed. | Low | open |
+| graphic/mvc/plane2D/MatrixShort.java | MatrixShort | normalizeAt() | 1031 | When `itemCount` is already 0 (or every item is null), `while (items[--itemCount] == null);` decrements past 0 to -1 and indexes `items[-1]`, throwing `ArrayIndexOutOfBoundsException` instead of leaving an empty matrix normalized. | Low | open |
 
 ## Tool defects found and fixed during the pilot
 

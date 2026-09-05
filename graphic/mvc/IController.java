@@ -11,10 +11,7 @@ import java.awt.event.MouseMotionListener;
 import java.awt.event.MouseWheelListener;
 
 /**
- * Title: IController<p>
- * Description:
- * Purpose:
- * Interface for the low Level Controller Event Sources
+ * Interface for a low-level controller that exposes AWT input-listener registration hooks.
  *
  * Known SubInterfaces:
  * @see graphic.mvc.Point2D.ICanvas 
@@ -27,6 +24,15 @@ import java.awt.event.MouseWheelListener;
  * @author mheuer
  * @version	1.0
  *
+ * <!-- docstate
+ * pass: 2
+ * mtime: 2026-09-05T12:42:15Z
+ * digest: 2df85afa152d886d09ccf688118f1960b8d41a95ff0e6275f54adb924945f783
+ * stale: false
+ * tags: [code/event_handling, code/ui_control]
+ * concepts: [Controller Interface]
+ * facets: {layer: infrastructure, status: legacy, complexity: low}
+ * -->
  */
 public interface IController 
 extends IPaintEventSource 
@@ -34,28 +40,36 @@ extends IPaintEventSource
 
 	// Hooks for registering the Controllers
 
-	/** @see java.awt.Component#addMouseListener(java.awt.event.MouseListener) */	
+	/** Registers a listener for mouse click/press/release events.
+	 * @see java.awt.Component#addMouseListener(java.awt.event.MouseListener) */
 	public void addMouseListener(final MouseListener listener);
-	
-	/** @see java.awt.Component#removeMouseListener(java.awt.event.MouseListener) */	
+
+	/** Unregisters a previously added mouse listener.
+	 * @see java.awt.Component#removeMouseListener(java.awt.event.MouseListener) */
 	public void removeMouseListener(final MouseListener listener);
-	
-	/** @see java.awt.Component#removeMouseMotionListener(java.awt.event.MouseMotionListener) */	
+
+	/** Registers a listener for mouse move/drag events.
+	 * @see java.awt.Component#removeMouseMotionListener(java.awt.event.MouseMotionListener) */
 	public void addMouseMotionListener(final MouseMotionListener listener);
 
-	/** @see java.awt.Component#removeMouseMotionListener(java.awt.event.MouseMotionListener) */	
+	/** Unregisters a previously added mouse motion listener.
+	 * @see java.awt.Component#removeMouseMotionListener(java.awt.event.MouseMotionListener) */
 	public void removeMouseMotionListener(final MouseMotionListener listener);
 
-	/** @see java.awt.Component#addMouseWheelListener(java.awt.event.MouseWheelListener) */	
+	/** Registers a listener for mouse wheel events.
+	 * @see java.awt.Component#addMouseWheelListener(java.awt.event.MouseWheelListener) */
 	public void addMouseWheelListener(final MouseWheelListener listener);
 
-	/** @see java.awt.Component#removeMouseWheelListener(java.awt.event.MouseWheelListener) */	
+	/** Unregisters a previously added mouse wheel listener.
+	 * @see java.awt.Component#removeMouseWheelListener(java.awt.event.MouseWheelListener) */
 	public void removeMouseWheelListener(final MouseWheelListener listener);
 
-	/** @see java.awt.Component#addKeyListener(java.awt.event.KeyListener) */	
+	/** Registers a listener for key events.
+	 * @see java.awt.Component#addKeyListener(java.awt.event.KeyListener) */
 	public void addKeyListener(final KeyListener listener);
 
-	/** @see java.awt.Component#removeKeyListener(java.awt.event.KeyListener) */	
+	/** Unregisters a previously added key listener.
+	 * @see java.awt.Component#removeKeyListener(java.awt.event.KeyListener) */
 	public void removeKeyListener(final KeyListener listener);
 
 }

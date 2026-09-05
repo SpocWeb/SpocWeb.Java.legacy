@@ -45,6 +45,15 @@ import graphic.mvc.IPainter;
  * @author mheuer
  * @version	1.0
  *
+ * <!-- docstate
+ * pass: 2
+ * mtime: 2026-09-05T12:49:27Z
+ * digest: 8896c4bbc3d18a82bc0b7adb2b093106e526612bc600a65cd1fb0e545678a362
+ * stale: false
+ * tags: [code/matrix_operations, code/polygon_matrix]
+ * concepts: [Growable short[][] Polygon Matrix]
+ * facets: {layer: utility, status: broken, complexity: high}
+ * -->
  */
 public class MatrixShort 
 extends AVector 
@@ -77,8 +86,10 @@ implements Comparable, IIOrderAble, IPainter {
 		((points[2][0] - points[0][0]) * (points[1][1] - points[0][1]));
 	}
 
-	/** @return a filled List of the given minimum Size 
-	 * 
+	/** Allocates a new list of the given minimum size, with every row filled to the given
+	 * dimension.
+	 * @return a filled List of the given minimum Size
+	 *
 	 * @param list
 	 * @param newSize
 	 * @return
@@ -87,8 +98,10 @@ implements Comparable, IIOrderAble, IPainter {
 		return GET_FILLED_ARRAY(minSize, null, dim);
 	}
 
-	/** @return a filled List of the given minimum Size 
-	 * 
+	/** Reuses the given list when it already has at least the minimum size, otherwise grows
+	 * it into a new array, filling every added row to the given dimension.
+	 * @return a filled List of the given minimum Size
+	 *
 	 * @param list
 	 * @param newSize
 	 * @return
@@ -157,7 +170,8 @@ implements Comparable, IIOrderAble, IPainter {
 	//	final static public short[][] MinMax(short[][] arr) { }
 
 	/**
-	 * @return the Minimum Values of each Column 
+	 * Computes the column-wise minimum over the whole array into ret.
+	 * @return the Minimum Values of each Column
 	 */
 	final static public short[] MIN_AT(final short[] ret, final short[][] arg) {
 		return MIN_AT(ret, arg, 0, arg.length);
@@ -178,6 +192,7 @@ implements Comparable, IIOrderAble, IPainter {
 		return MIN_AT(ret, arg, start, i);
 	}
 
+	/** Computes the column-wise minimum over the given row range into ret. */
 	final static public short[] MIN_AT(final short[] ret, short[][] arg, int start, int stop) {
 		for (; --stop >= start;) {
 			VectorShort.MinAt(ret, arg[stop]);
@@ -185,7 +200,8 @@ implements Comparable, IIOrderAble, IPainter {
 		return ret;
 	}
 
-	/** @return the Maximum Values of each Column */
+	/** Computes the column-wise maximum over the whole array into ret.
+	 * @return the Maximum Values of each Column */
 	final static public short[] MAX(final short[] ret, final short[][] arg) {
 		for (int i = arg.length; --i >= 0;) {
 			VectorShort.MaxAt(arg[i], ret);
@@ -193,10 +209,11 @@ implements Comparable, IIOrderAble, IPainter {
 		return ret;
 	}
 
-	/** 
-	 * Since it is not possible to get the Dimensionality of an empty Matrix, 
-	 * the Optimization is implemented not to start with +Infinity. 
-	 * @return the Maximum Values of each Column 
+	/**
+	 * Computes the column-wise maximum over the given row range.
+	 * Since it is not possible to get the Dimensionality of an empty Matrix,
+	 * the Optimization is implemented not to start with +Infinity.
+	 * @return the Maximum Values of each Column
 	 */
 	final static public short[] MAX(final short[][] arg, final int start, final int stop) {
 		//return Min(fill(Float.POSITIVE_INFINITY, arg[0].length), arg); 
@@ -227,6 +244,7 @@ implements Comparable, IIOrderAble, IPainter {
 	}
 
 	/**
+	  * Adds the given scalar increment in place to every row in the given range.
 	  * @return the given Array incremented by the given Increment
 	  * @param ret Array with the Values to be processed. Also returned by this Method.
 	  * @param Increment the Increment to add to
@@ -240,6 +258,7 @@ implements Comparable, IIOrderAble, IPainter {
 	}
 
 	/**
+	  * Adds the given vector increment in place to every row of the array.
 	  * @return the given Array incremented by the given Increment
 	  * @param ret Array with the Values to be processed. Also returned by this Method.
 	  * @param Increment the Increment to add to
@@ -248,6 +267,7 @@ implements Comparable, IIOrderAble, IPainter {
 		return ADD_AT(ret, increment, 0, ret.length); }
 
 	/**
+	  * Adds the given vector increment in place to every non-null row in the given range.
 	  * @return the given Array incremented by the given Increment
 	  * @param ret Array with the Values to be processed. Also returned by this Method.
 	  * @param Increment the Increment to add to
@@ -275,6 +295,7 @@ implements Comparable, IIOrderAble, IPainter {
 	}
 
 	/**
+	  * Subtracts the given vector decrement in place from every non-null row in the given range.
 	  * @return the given Array incremented by the given Increment
 	  * @param ret Array with the Values to be processed. Also returned by this Method.
 	  * @param Increment the Increment to add to
@@ -303,7 +324,8 @@ implements Comparable, IIOrderAble, IPainter {
 		return ret;
 	}
 
-	/** 
+	/**
+	 * Sums every row of the array into a freshly allocated result vector.
 	 * @return the Array ret filled with the Sum of all Values in each Row.
 	 */
 	final static public short[] ROW_SUM(final short[][] arr) {
@@ -311,6 +333,7 @@ implements Comparable, IIOrderAble, IPainter {
 	}
 
 	/**
+	 * Sums every row of the array into the given result vector.
 	 * @para ret the return Vector. To contain the Sum, it must be cleared before!
 	 * @return the Array ret filled with the Sum of all Values in each Row.
 	 */
@@ -319,6 +342,7 @@ implements Comparable, IIOrderAble, IPainter {
 	}
 
 	/**
+	 * Sums each row in the given range of the array into the corresponding slot of ret.
 	 * @para ret the return Vector. To contain the Sum, it must be cleared before!
 	 * @return the Array ret filled with the Sum of all Values in each Row.
 	 */
@@ -328,12 +352,14 @@ implements Comparable, IIOrderAble, IPainter {
 		return ret;
 	}
 
-	/** @return The Sum Vector of all Rows as Values in the Array. 	 */
+	/** Sums each column across all rows into a freshly allocated result vector.
+	 * @return The Sum Vector of all Rows as Values in the Array. 	 */
 	final static public short[] COL_SUM(final short[][] arr) {
 		return COL_SUM(new short[arr[0].length], arr, 0, arr.length);
 	}
 
 	/**
+	 * Sums each column across all rows into the given result vector.
 	 * @para ret the return Vector. To contain the Sum, it must be cleared before!
 	 * @return The Sum Vector of all Rows as Values in the Array.
 	 */
@@ -342,26 +368,29 @@ implements Comparable, IIOrderAble, IPainter {
 	}
 
 	/**
+	 * Sums a single column across all rows.
 	 * @para ret the return Vector. To contain the Sum, it must be cleared before!
 	 * @return The Sum Vector of all Rows as Values in the Array.
 	 */
 	final static public int COL_SUM(final short[][] arr, final int col) {
-		if (arr == null) 
-			return 0; 
+		if (arr == null)
+			return 0;
 		return COL_SUM(arr, 0, arr.length, col);
 	}
 
 	/**
+	 * Sums each column across the given row range into the given result vector.
 	 * @para ret the return Vector. To contain the Sum, it must be cleared before!
 	 * @return The Sum Vector of all Rows as Values in the Array.
 	 */
 	final static public short[] COL_SUM(final short[] ret, final short[][] arr, final int startRow, int stopRow) {
-		while (--stopRow >= startRow) 
+		while (--stopRow >= startRow)
 			VectorShort.ADD_AT(ret, arr[stopRow]);
 		return ret;
 	}
 
 	/**
+	 * Sums a single column across the given row range.
 	 * @para ret the return Vector. To contain the Sum, it must be cleared before!
 	 * @return The Sum Vector of all Rows as Values in the Array.
 	 */
@@ -372,12 +401,14 @@ implements Comparable, IIOrderAble, IPainter {
 		return sum;
 	}
 
-	/** @return The Sum Vector of all Rows as Values in the Array. 	 */
+	/** Computes each column's maximum across all rows into a freshly allocated result vector.
+	 * @return The Sum Vector of all Rows as Values in the Array. 	 */
 	final static public short[] COL_MAX(final short[][] arr) {
 		return COL_MAX(VectorShort.fillAt(new short[arr[0].length], Short.MIN_VALUE), arr, 0, arr.length);
 	}
 
 	/**
+	 * Computes each column's maximum across all rows into the given result vector.
 	 * @para ret the return Vector. To contain the Sum, it must be cleared before!
 	 * @return The Sum Vector of all Rows as Values in the Array.
 	 */
@@ -386,6 +417,7 @@ implements Comparable, IIOrderAble, IPainter {
 	}
 
 	/**
+	 * Computes each column's maximum across the given row range into the given result vector.
 	 * @para ret the return Vector. To contain the Sum, it must be cleared before!
 	 * @return The Sum Vector of all Rows as Values in the Array.
 	 */
@@ -396,7 +428,8 @@ implements Comparable, IIOrderAble, IPainter {
 		return ret;
 	}
 
-	/** @return a shallow Copy of the given Array */
+	/** Copies row references (not their contents) from arr into ret.
+	 * @return a shallow Copy of the given Array */
 	final static public short[][] SHALLOW_COPY_AT(short[][] ret, short[][] arr) {
 		if (ret.length != arr.length) 
 			throw new IndexOutOfBoundsException("Expected: " + ret.length + " Actual: " + arr.length);
@@ -407,21 +440,24 @@ implements Comparable, IIOrderAble, IPainter {
 		return ret;
 	}
 
-	/** @return a deep Copy of the given Matrix */
+	/** Deep-copies each row in the given range from arr into ret.
+	 * @return a deep Copy of the given Matrix */
 	final static public short[][] COPY_AT(final short[][] ret, final short[][] arr, final int Start, int Stop) {
 		while (--Stop >= Start) 
 			VectorShort.COPY_AT(ret[Stop], arr[Stop]); //Optimization!
 		return ret;
 	}
 
-	/** @return the Matrix ret with deep Copie of the given Vector arr in every Row */
+	/** Copies the given single row's values into every row of ret in the given range.
+	 * @return the Matrix ret with deep Copie of the given Vector arr in every Row */
 	final static public short[][] COPY_AT(final short[][] ret, final short[] arr, final int Start, int Stop) {
 		while (--Stop >= Start) 
 			VectorShort.COPY_AT(ret[Stop], arr); //Optimization!
 		return ret;
 	}
 
-	/** @return a deep Copy of the given Array */
+	/** Deep-copies every row of the given array into a newly allocated matrix.
+	 * @return a deep Copy of the given Array */
 	final static public short[][] COPY(final short[][] arr) {
 		int len = arr.length;
 		final short[][] ret = new short[len][];
@@ -436,20 +472,25 @@ implements Comparable, IIOrderAble, IPainter {
 	 * If the Vector fits, it is returned unchanged!
 	 */
 	final static public short[][] SET_DIM_AT(final short[][] a, final int dim) {
-		if (a.length == dim) 
+		if (a.length == dim)
 			return a;
 		short[][] ret = new short[dim][];
 		System.arraycopy(a, 0, ret, 0, a.length);
 		//Arrays.fill(ret, a.length, dim, null);
+		// TODO: LOGIC: returns the original array 'a' instead of the resized 'ret' that was
+		// just allocated and filled above; every caller expecting a length-'dim' array back
+		// (dim != a.length) silently gets the unchanged original-length array instead.
 		return a;
 	}
 
-	/** @return the given Array multiplied in Place by the given Factor */
+	/** Multiplies every row of the array in place by the given factor.
+	 * @return the given Array multiplied in Place by the given Factor */
 	public static short[][] MUL_AT(short[][] ret, int Factor) {
 		return MUL_AT(ret, Factor, 0, ret.length);
 	}
 
-	/** @return the given Array multiplied in Place by the given Factor */
+	/** Multiplies each row in the given range in place by the given factor.
+	 * @return the given Array multiplied in Place by the given Factor */
 	public static short[][] MUL_AT(short[][] ret, int Factor, int Start, int Stop) {
 		while (--Stop >= Start) 
 			VectorShort.MUL_AT(ret[Stop], Factor);
@@ -465,6 +506,7 @@ implements Comparable, IIOrderAble, IPainter {
 	////////////////////////////////////////////////////////////////////////////////
 
 	/**
+	  * Negates every value in the given row range in place.
 	  * @return the Negative of the given Array
 	  * @param ret Array with the Values to be processed. Also returned by this Method.
 	  * @param start1 Index from  where the outer Array is processed
@@ -479,6 +521,7 @@ implements Comparable, IIOrderAble, IPainter {
 	}
 
 	/**
+	  * Replaces every value in the array in place with its absolute value.
 	  * @return the absolute Value of the Values in the given Array
 	  * @param ret Array with the Values to be processed. Also returned by this Method.
 	  */
@@ -512,7 +555,8 @@ implements Comparable, IIOrderAble, IPainter {
 		return PERMUTE_ROWS(new short[a.length][], a, index);
 	}
 
-	/** @return this Vector with the Rows permuted according to the given Permutation     */
+	/** Reorders rows from a into ret according to the given index permutation.
+	 * @return this Vector with the Rows permuted according to the given Permutation     */
 	final static public short[][] PERMUTE_ROWS(short[][] ret, short[][] a, short[] index) {
 		for(int i = index.length; --i >= 0;) 
 			ret[i] = a[index[i]];
@@ -531,15 +575,17 @@ implements Comparable, IIOrderAble, IPainter {
 	}
 
 	/**
+	 * Finds the maximum element of every row into a freshly allocated result vector.
 	 * @return Maximum Value of the every Row in the Array.
 	 */
 	final static public short[] MAX_VAL(short[][] arr) {
 		short[] ret = new short[arr.length];
-		Arrays.fill(ret, Short.MIN_VALUE); 
+		Arrays.fill(ret, Short.MIN_VALUE);
 		return MAX_VAL(ret, arr, 0, arr.length);
 	}
 
 	/**
+	 * Finds the maximum element of every row into the given result vector.
 	 * @return Maximum Value of the every Row in the Array.
 	 */
 	final static public short[] MAX_VAL(short[] ret, short[][] arr) {
@@ -601,6 +647,8 @@ implements Comparable, IIOrderAble, IPainter {
 		//		if (startRow >= stopRow) {
 		//			return; }
 		//		stream(vals[startRow], stream);
+		// TODO: LOGIC: the loop pre-increments i before the bound check, so vals[startRow]
+		// itself is never printed - only rows startRow+1..stopRow-1 are streamed out.
 		for (int i = startRow; ++i < stopRow;) {
 			stream.println(vals[i]);
 		}
@@ -628,7 +676,8 @@ implements Comparable, IIOrderAble, IPainter {
 	/** Cache for the Sum of the Columns in the given @see #column	*/
 	private int colSum = Short.MIN_VALUE;  
 
-	/** @return the Sum of the Columns in the given @see #column	*/
+	/** Returns the cached sum of {@link #column}, computing and caching it first if invalid.
+	 * @return the Sum of the Columns in the given @see #column	*/
 	public int getColSum() {
 		if (colSum == Short.MIN_VALUE) 
 			colSum = COL_SUM(items, column); 
@@ -644,10 +693,12 @@ implements Comparable, IIOrderAble, IPainter {
 	/// #region : Accessor Methods (getXXX/isXXX/setXXX)
 	////////////////////////////////////////////////////////////////////////////////
 
-	/** @see math.AVector#getAt(int)	 */
+	/** Returns the row at the given index as an Object.
+	 * @see math.AVector#getAt(int)	 */
 	public Object getAt(final int i) { return getArrayAt(i); }
 
 	/**
+	 * Exposes the backing row array directly for external modification.
 	 * @return the internal List to modify it externally
 	 */
 	public short[][] getList() { return items; }
@@ -765,6 +816,9 @@ implements Comparable, IIOrderAble, IPainter {
 	/** Constructs an MatrixShort by copying from the given Object any Type.
 	  * Defaults the Capacity Increment to 'defaultCapacityIncr'.	 */
 	public MatrixShort(final Object arg) {
+		// TODO: LOGIC: resolves to MatrixShort(int initialCapacity, int dim) - so
+		// DEFAULT_CAPACITY_INCR is passed as the row dimension 'dim', not as a capacity
+		// increment, silently giving every row the wrong width.
 		this(DEFAULT_CAPACITY_INIT, DEFAULT_CAPACITY_INCR);
 		copyAt(arg);
 	}
@@ -852,22 +906,26 @@ implements Comparable, IIOrderAble, IPainter {
 		return items.length;
 	}
 
-	/** @see function.IIOrderAble#isLessThan(java.lang.Object)	 */
+	/** Compares this matrix's column sum to another's after casting the argument.
+	 * @see function.IIOrderAble#isLessThan(java.lang.Object)	 */
 	public boolean isLessThan(final Object arg) {
 		return less((MatrixShort) arg);
 	}
 
-	/** @see function.IIOrderAble#isLessThan(java.lang.Object)	 */
+	/** Reports whether this matrix's cached column sum is less than the given one's.
+	 * @see function.IIOrderAble#isLessThan(java.lang.Object)	 */
 	public boolean less(final MatrixShort arg) {
 		return getColSum() < arg.getColSum();
 	}
 
-	/** @see java.lang.Comparable#compareTo(java.lang.Object)	 */
+	/** Compares this matrix to another after casting the argument.
+	 * @see java.lang.Comparable#compareTo(java.lang.Object)	 */
 	public int compareTo(final Object o) {
 		return compareTo((MatrixShort) o);
 	}
 
-	/** @see java.lang.Comparable#compareTo(java.lang.Object)	 */
+	/** Orders matrices by their cached column sum.
+	 * @see java.lang.Comparable#compareTo(java.lang.Object)	 */
 	public int compareTo(final MatrixShort o) {
 		final int cs1 = getColSum();
 		final int cs2 = o.getColSum();
@@ -956,6 +1014,9 @@ implements Comparable, IIOrderAble, IPainter {
 	 * which may be slower.
 	 * When overriding, use newInstance on all Components.	 */
 	public ICopyAble newInstance() {
+		// TODO: LOGIC: resolves to MatrixShort(int initialCapacity, int dim) - so the
+		// existing capacityIncrement value is passed as the row dimension 'dim' of the new
+		// instance rather than as a capacity increment, silently giving it the wrong row width.
 		return new MatrixShort(items.length, capacityIncrement);
 	}
 
@@ -967,6 +1028,9 @@ implements Comparable, IIOrderAble, IPainter {
 	 * so that getAt(getInt()) != 0 
 	 */
 	public MatrixShort normalizeAt() {
+		// TODO: LOGIC: when itemCount is already 0 (or every item is null), this decrements
+		// itemCount past 0 to -1 and indexes items[-1], throwing
+		// ArrayIndexOutOfBoundsException instead of leaving an empty matrix normalized.
 		while (items[--itemCount] == null);
 		++itemCount;
 		return this;
@@ -980,7 +1044,8 @@ implements Comparable, IIOrderAble, IPainter {
 	//	final static public short[][] MinMax(short[][] arr) { }
 
 	/**
-	 * @return the Minimum Values of each Column 
+	 * Computes the column-wise minimum over this matrix's own rows into ret.
+	 * @return the Minimum Values of each Column
 	 */
 	public short[] Min(final short[] ret) {
 		return MIN_AT(ret, items);
@@ -995,7 +1060,8 @@ implements Comparable, IIOrderAble, IPainter {
 		return MIN(items, 0, itemCount);
 	}
 
-	/** @return the Maximum Values of each Column */
+	/** Computes the column-wise maximum over this matrix's own rows into ret.
+	 * @return the Maximum Values of each Column */
 	public short[] Max(final short[] ret) {
 		return MAX(ret, items);
 	}
@@ -1114,7 +1180,8 @@ implements Comparable, IIOrderAble, IPainter {
 		testIt(args);
 	}
 
-	/** @return a short[][] Representation of the given Polygon	*/
+	/** Converts an array of {@link Point2D}s into the short[][] coordinate form used by this class.
+	 * @return a short[][] Representation of the given Polygon	*/
 	final static public short[][] getPolygon(final Point2D[] polygon) {
 		final short[][] pol = new short[polygon.length][2];
 		for (int j = polygon.length; --j >= 0;) {

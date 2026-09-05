@@ -61,6 +61,15 @@ import streamIO.Log;
  * @author mheuer
  * @version 1.0
  *  
+ * <!-- docstate
+ * pass: 2
+ * mtime: 2026-09-05T12:46:21Z
+ * digest: 9dba3823381794e873b63f2270ca822ac5cce85f6da1c3134ac4c3c9b0dcd845
+ * stale: false
+ * tags: [code/gui, code/graphics]
+ * concepts: [Point2D Painter]
+ * facets: {layer: domain, status: legacy, complexity: low}
+ * -->
  */
 public class Point2DPainter 
 implements IPainter, IFocusPainter {
@@ -113,7 +122,8 @@ implements IPainter, IFocusPainter {
 	/// #region : Variables
 	////////////////////////////////////////////////////////////////////////////
 
-	/** @see graphic.mvc.IFocusPainter#getPointRadius() */
+	/** Returns the current focus/point drawing radius.
+	 * @see graphic.mvc.IFocusPainter#getPointRadius() */
 	public char getPointRadius() {
 		return pointRadius;
 	}
@@ -121,22 +131,26 @@ implements IPainter, IFocusPainter {
 	/** Lightweight State shared between View and Controller */
 	public int focusPointIndex = -1;
 
-	/** @see graphic.mvc.IFocusPainter#getFocusIndex() */
+	/** Returns the index of the point that currently has focus, or -1 when none does.
+	 * @see graphic.mvc.IFocusPainter#getFocusIndex() */
 	public int getFocusIndex() {
 		return focusPointIndex;
 	}
 
-	/** @see graphic.mvc.IFocusPainter#setFocusIndex(int) */
+	/** Sets which point index currently has focus.
+	 * @see graphic.mvc.IFocusPainter#setFocusIndex(int) */
 	public void setFocusIndex(int index) {
 		focusPointIndex = index;
 	}
 
-	/** @see graphic.mvc.IFocusPainter#getFocusIndex(int, int) */
+	/** Finds the point nearest the given screen position without changing the current focus.
+	 * @see graphic.mvc.IFocusPainter#getFocusIndex(int, int) */
 	public int getFocusIndex(int x, int y) {
 		return model.mapPoints.findIndexOfLastNeighbour(x, y, pointRadius);
 	}
 
-	/** @see graphic.mvc.IFocusPainter#getFocusIndex(int, int) */
+	/** Moves focus to the point nearest the given screen position.
+	 * @see graphic.mvc.IFocusPainter#setFocusIndex(int, int) */
 	public int setFocusIndex(int x, int y) {
 		focusPointIndex = getFocusIndex(x, y);
 		return focusPointIndex;
@@ -153,7 +167,7 @@ implements IPainter, IFocusPainter {
 	// Interfaces)
 	////////////////////////////////////////////////////////////////////////////
 
-	/**
+	/** Creates a painter over a new, empty {@link Point2DModel}.
 	 * @param canvas_
 	 *            the Canvas to draw to
 	 */
@@ -161,7 +175,7 @@ implements IPainter, IFocusPainter {
 		this(new Point2DModel(), canvas_);
 	}
 
-	/**
+	/** Creates a painter over a new model seeded with the given points.
 	 * @param points
 	 *            List of Points to construct the Model from
 	 */
@@ -169,7 +183,8 @@ implements IPainter, IFocusPainter {
 		this(new Point2DModel(points), canvas);
 	}
 
-	/**
+	/** Creates a painter over the given model and canvas, subscribing itself to both so it
+	 * repaints on model changes and canvas paint events.
 	 * @param model_
 	 *            the general Point2D Model
 	 * @param common_
@@ -242,7 +257,9 @@ implements IPainter, IFocusPainter {
 		paintPoint(g, point, model.getLabel(i), pointRadius, getCoordString(i));
 	}
 	
-	/** @return a StringBuffer containing a Representation of the Coordinates.  */
+	/** Builds the on-screen coordinate label for the point at the given index, when
+	 * {@link #showCoords} is enabled.
+	 * @return a StringBuffer containing a Representation of the Coordinates.  */
 	public StringBuffer getCoordString(final int i) {
 		if (!showCoords)
 			return null; 

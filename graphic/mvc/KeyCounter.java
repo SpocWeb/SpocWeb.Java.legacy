@@ -23,14 +23,24 @@ import java.awt.event.KeyListener;
  * @author mheuer
  * @version	1.0
  *
+ * <!-- docstate
+ * pass: 2
+ * mtime: 2026-09-05T12:43:01Z
+ * digest: a8a22936b66ca3e988942aa148a479661fa88028cf6f32a282f3992d41494f28
+ * stale: false
+ * tags: [code/event_handling]
+ * concepts: [Key-Press Counter]
+ * facets: {layer: utility, status: legacy, complexity: low}
+ * -->
  */
 public class KeyCounter 
 extends MultiPainter
 implements KeyListener {
 
 	/** Counter */
-	public int counter; 
+	public int counter;
 
+	/** The virtual key code (see {@link KeyEvent#getKeyCode()}) this counter tracks. */
 	public int keyCode;
 
 	/**

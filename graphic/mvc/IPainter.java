@@ -8,9 +8,7 @@ package graphic.mvc;
 import graphic.IGraphText;
 
 /**
- * Title: IPainter<p>
- * Description:
- * Interface for a View or Painter Object
+ * Interface for a View/Painter object that renders itself onto a graphics context.
  * Could also be named IDrawAble or IShape
  *
  * Known SubClasses: <none>
@@ -23,14 +21,23 @@ import graphic.IGraphText;
  * @author mheuer
  * @version	1.0
  *
+ * <!-- docstate
+ * pass: 2
+ * mtime: 2026-09-05T12:42:05Z
+ * digest: 10256133fce5514114689ea94983ee890c94d4827625f47a7d216411a219428a
+ * stale: false
+ * tags: [code/gui]
+ * concepts: [Painter/View Interface]
+ * facets: {layer: infrastructure, status: legacy, complexity: low}
+ * -->
  */
 public interface IPainter {
 
-	/** paint Routine called by #paint(Graphics)
-	 * @param gText the Graphics Context, 
+	/** Draws this painter's content, called by paint(Graphics).
+	 * @param gText the Graphics Context,
 	 * if null the Painter tries to acquire it itself and repaints.
-	 * Thus the repaint() Event Method is saved.  
+	 * Thus the repaint() Event Method is saved.
 	 */
 	void draw(final IGraphText gText);
-	
+
 }

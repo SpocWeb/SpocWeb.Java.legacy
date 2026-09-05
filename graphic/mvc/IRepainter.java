@@ -20,6 +20,15 @@ package graphic.mvc;
  * @author mheuer
  * @version	1.0
  *
+ * <!-- docstate
+ * pass: 2
+ * mtime: 2026-09-05T10:13:18Z
+ * digest: 2685d5a4b1612e9c63f801587279f6d2755bc597420775c6fd12901eb1e25b84
+ * stale: false
+ * tags: [code/gui]
+ * concepts: [Repaint Contract Interface]
+ * facets: {layer: infrastructure, status: legacy, complexity: low}
+ * -->
  */
 public interface IRepainter {
 

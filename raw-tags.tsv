@@ -838,3 +838,33 @@ graphic/math3D/Wire3D.java:Wire3D	class	graphic/math3D/Wire3D.java	code/3d_geome
 graphic/math3D/testMathGraph2.java:testMathGraph2	class	graphic/math3D/testMathGraph2.java	code/testing	3D Graph Demo/Test Harness	test	legacy	low
 graphic/math3D/testMathGraph3D.java:testMathGraph3D	class	graphic/math3D/testMathGraph3D.java	code/testing,code/3d_rendering	3D Graph Demo/Test Harness	test	legacy	low
 graphic/math3D/testMathGraph3D.java:testMathGraph3D.main(String[])	method	graphic/math3D/testMathGraph3D.java	code/testing	Demo Entry Point	test	legacy	low
+graphic/mvc/AModel.java:AModel	class	graphic/mvc/AModel.java	code/model_state_management,code/observer_pattern	MVC Model Base Class	infrastructure	legacy	low
+graphic/mvc	folder	graphic/mvc	code/observer_pattern,code/gui	Model-View-Controller Framework	infrastructure	legacy	high
+graphic/mvc/BaseApplet.java:BaseApplet	class	graphic/mvc/BaseApplet.java	code/gui,code/event_handling	Applet Framework Base Class	infrastructure	broken	medium
+graphic/mvc/BaseMouseController.java:BaseMouseController	class	graphic/mvc/BaseMouseController.java	code/event_handling,code/ui_control	Mouse Controller Base Class	infrastructure	legacy	low
+graphic/mvc/BufferedPainter.java:BufferedPainter	class	graphic/mvc/BufferedPainter.java	code/buffering,code/gui	Offscreen-Buffered Painter	infrastructure	broken	medium
+graphic/mvc/ClearingPainter.java:ClearingPainter	class	graphic/mvc/ClearingPainter.java	code/gui	Background-Clearing Painter	infrastructure	legacy	low
+graphic/mvc/Graph2D/Graph2DModel.java:Graph2DModel	class	graphic/mvc/Graph2D/Graph2DModel.java	code/model_state_management,code/interactive_editing	2D Graph Editing Model	domain	legacy	medium
+graphic/mvc/Graph2D	folder	graphic/mvc/Graph2D	code/interactive_editing	2D Graph Editing MVC	domain	legacy	medium
+graphic/mvc/Graph2D/Graph2DMouseController.java:Graph2DMouseController	class	graphic/mvc/Graph2D/Graph2DMouseController.java	code/event_handling,code/interactive_editing	2D Graph Mouse Controller	domain	legacy	low
+graphic/mvc/Graph2D/Graph2DPainter.java:Graph2DPainter	class	graphic/mvc/Graph2D/Graph2DPainter.java	code/gui,code/graphics	2D Graph Painter	domain	legacy	medium
+graphic/mvc/IActiveCanvas.java:IActiveCanvas	class	graphic/mvc/IActiveCanvas.java	code/gui	Active Canvas Interface	infrastructure	legacy	low
+graphic/mvc/ICanvas.java:ICanvas	class	graphic/mvc/ICanvas.java	code/gui	Canvas Interface	infrastructure	legacy	low
+graphic/mvc/IController.java:IController	class	graphic/mvc/IController.java	code/event_handling,code/ui_control	Controller Interface	infrastructure	legacy	low
+graphic/mvc/IFocusPainter.java:IFocusPainter	class	graphic/mvc/IFocusPainter.java	code/keyboard_focus_tracking,code/gui	Focus-Aware Painter Interface	infrastructure	legacy	low
+graphic/mvc/IModel.java:IModel	class	graphic/mvc/IModel.java	code/model_state_management,code/observer_pattern	Model Interface	infrastructure	legacy	low
+graphic/mvc/IPaintEventSource.java:IPaintEventSource	class	graphic/mvc/IPaintEventSource.java	code/event_dispatch,code/gui	Paint Event Source Interface	infrastructure	legacy	low
+graphic/mvc/IPainter.java:IPainter	class	graphic/mvc/IPainter.java	code/gui	Painter/View Interface	infrastructure	legacy	low
+graphic/mvc/IRepainter.java:IRepainter	class	graphic/mvc/IRepainter.java	code/gui	Repaint Contract Interface	infrastructure	legacy	low
+graphic/mvc/KeyCounter.java:KeyCounter	class	graphic/mvc/KeyCounter.java	code/event_handling	Key-Press Counter	utility	legacy	low
+graphic/mvc/MultiPainter.java:MultiPainter	class	graphic/mvc/MultiPainter.java	code/container_pattern,code/gui	Painter Composition (Delegating List)	infrastructure	legacy	low
+graphic/mvc/Point2D/Point2DKeyController.java:Point2DKeyController	class	graphic/mvc/Point2D/Point2DKeyController.java	code/event_handling,code/interactive_editing	Point2D Keyboard Controller	domain	legacy	low
+graphic/mvc/Point2D	folder	graphic/mvc/Point2D	code/interactive_editing	Point2D Editing MVC	domain	legacy	medium
+graphic/mvc/Point2D/Point2DModel.java:Point2DModel	class	graphic/mvc/Point2D/Point2DModel.java	code/model_state_management	Point2D Editing Model	domain	legacy	low
+graphic/mvc/Point2D/Point2DMouseController.java:Point2DMouseController	class	graphic/mvc/Point2D/Point2DMouseController.java	code/event_handling,code/interactive_editing	Point2D Mouse Controller	domain	legacy	low
+graphic/mvc/Point2D/Point2DPainter.java:Point2DPainter	class	graphic/mvc/Point2D/Point2DPainter.java	code/gui,code/graphics	Point2D Painter	domain	legacy	low
+graphic/mvc/plane2D/MatrixShort.java:MatrixShort	class	graphic/mvc/plane2D/MatrixShort.java	code/matrix_operations,code/polygon_matrix	Growable short[][] Polygon Matrix	utility	broken	high
+graphic/mvc/plane2D	folder	graphic/mvc/plane2D	code/polygon_operations,code/texture_mapping	3D Model Texture Mapping and Rendering	domain	broken	high
+graphic/mvc/plane2D/TexturePainter.java:TexturePainter	class	graphic/mvc/plane2D/TexturePainter.java	code/texture_mapping,code/gui	MilkShape3D Model Texture Painter	domain	legacy	medium
+graphic/mvc/plane2D/TexturedBody.java:TexturedBody	class	graphic/mvc/plane2D/TexturedBody.java	code/texture_mapping	Textured 3D Body	domain	legacy	medium
+graphic/mvc/plane2D/VectorPolygon.java:VectorPolygon	class	graphic/mvc/plane2D/VectorPolygon.java	code/vector_operations,code/z_ordering	Dynamic Array of 3D-Projected Polygons	domain	broken	high

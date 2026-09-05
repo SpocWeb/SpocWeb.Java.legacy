@@ -34,6 +34,15 @@ import streamIO.copy.ICopyAble;
  * @author mheuer
  * @version	1.0
  *
+ * <!-- docstate
+ * pass: 2
+ * mtime: 2026-09-05T12:50:28Z
+ * digest: 84d3d0ab21780b5a618275e329d2dbdaf0760f7fcdccf21940113db967cda067
+ * stale: false
+ * tags: [code/vector_operations, code/z_ordering]
+ * concepts: [Dynamic Array of 3D-Projected Polygons]
+ * facets: {layer: domain, status: broken, complexity: high}
+ * -->
  */
 public class VectorPolygon 
 extends AVector {
@@ -68,7 +77,8 @@ extends AVector {
 	/// #region : Accessor Methods (getXXX/isXXX/setXXX)
 	////////////////////////////////////////////////////////////////////////////////
 	
-	/** @return the item at the given Position as an Object */
+	/** Returns the polygon at the given index as an Object.
+	 * @return the item at the given Position as an Object */
 	public Object getAt(final int i) {
 		return getMatrixAt(i);
 	}
@@ -280,6 +290,9 @@ extends AVector {
 	 * The Optimization here is that the Capacity can be ensured before
 	 * and that additional Fields can be set.	 */
 	public VectorPolygon copyAt(final MatrixShort[] arg_) {
+		// TODO: LOGIC: unlike the Object-typed copyAt() overload below, this never calls
+		// setCapacity() first; when arg_.length exceeds the current items.length, arraycopy
+		// throws ArrayIndexOutOfBoundsException instead of growing the backing array.
 		itemCount = arg_.length;
 		System.arraycopy(arg_, 0, items, 0, itemCount);
 		return this;
@@ -337,15 +350,21 @@ extends AVector {
 
 	/** draws the Polygons in their zOrder 	*/
 	public void drawInOrder(final IGraphText g) {
+		// TODO: LOGIC: the branch that is supposed to (re-)build zIndex when it is null or
+		// stale is entirely commented out, so zIndex stays null (its only assignment anywhere
+		// is setChanged() setting it back to null); this method throws
+		// NullPointerException at items[zIndex[i]] on every call.
 		if ((zIndex == null) || (zIndex.length != itemCount)) {
 			//zIndex = new
-			//recreate the Index. 
+			//recreate the Index.
 		; }
 		for (int i = itemCount; --i >= 0; ) {
-			items[zIndex[i]].draw(g); 
+			items[zIndex[i]].draw(g);
 		}
 	}
 	
+	/** When true and {@link #zOrder} is set, polygons with a positive column sum (facing away)
+	 * are skipped during {@link #draw(IGraphText)}. */
 	public boolean skipNegativePoints = false;
 	
 	/** draws the Polygons (in their zOrder) 	*/

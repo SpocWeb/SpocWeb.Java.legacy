@@ -6,15 +6,10 @@
 package graphic.mvc;
 
 /**
- * Title: IModel<p>
- * Description:
- * Purpose:
+ * Marker interface for an MVC model that can notify its views to repaint themselves.
  *
- * Purpose / Responsibilities of this Class
- *
- * Design Decisions / Implementation Details:
- * If similar Classes exist (e.g. Polymorphism),
- * characterize the specific Differences to compare these.
+ * <p>Adds no members of its own; it exists so model implementations are typed distinctly
+ * from arbitrary {@link IRepainter} implementers.
  *
  * Known SubClasses: <none>
  *
@@ -26,6 +21,15 @@ package graphic.mvc;
  * @author mheuer
  * @version	1.0
  *
+ * <!-- docstate
+ * pass: 2
+ * mtime: 2026-09-05T12:42:01Z
+ * digest: e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855
+ * stale: false
+ * tags: [code/model_state_management, code/observer_pattern]
+ * concepts: [Model Interface]
+ * facets: {layer: infrastructure, status: legacy, complexity: low}
+ * -->
  */
 public interface IModel extends IRepainter {
 }

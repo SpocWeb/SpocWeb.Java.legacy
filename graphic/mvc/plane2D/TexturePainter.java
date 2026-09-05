@@ -35,6 +35,15 @@ import streamIO.Log;
  * @author mheuer
  * @version	1.0
  *
+ * <!-- docstate
+ * pass: 2
+ * mtime: 2026-09-05T12:50:11Z
+ * digest: c6d20fbcb9a1ef389595c643dec60089d7557428b79b1e9e54af076891cf590b
+ * stale: false
+ * tags: [code/texture_mapping, code/gui]
+ * concepts: [MilkShape3D Model Texture Painter]
+ * facets: {layer: domain, status: legacy, complexity: medium}
+ * -->
  */
 public class TexturePainter 
 extends Body3DPainter {
@@ -49,21 +58,23 @@ extends Body3DPainter {
 	/** The TexturedBody Object to draw	 */
 	public TexturedBody body;
 
-	/**
+	/** Creates a texture painter over a passive canvas.
 	 * @param canvas_
 	 */
 	public TexturePainter(final ICanvas canvas_) {
 		super(canvas_);
 	}
 
-	/**
+	/** Creates a texture painter over an active canvas that also supplies input events.
 	 * @param canvas_
 	 */
 	public TexturePainter(final IActiveCanvas canvas_) {
 		super(canvas_);
 	}
 
-	/** @see graphic.mvc.IPainter#paintFrame(graphic.IGraphText)	 */
+	/** Recomputes the 3D-to-2D mapping when triggered asynchronously, then draws
+	 * {@link #body} onto the given graphics context.
+	 * @see graphic.mvc.IPainter#paintFrame(graphic.IGraphText)	 */
 	public void draw(IGraphText gText) {
 		//super.draw(gText);
 		L.n(".", 0);

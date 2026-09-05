@@ -49,6 +49,15 @@ import streamIO.Log;
  * @author mheuer
  * @version	1.0
  *
+ * <!-- docstate
+ * pass: 2
+ * mtime: 2026-09-05T12:51:30Z
+ * digest: 989b9ff8f6c1cecfa2be521f7df6bec1d7fc8404307c7f744af8a62d2db3b791
+ * stale: false
+ * tags: [code/gui, code/graphics]
+ * concepts: [2D Graph Painter]
+ * facets: {layer: domain, status: legacy, complexity: medium}
+ * -->
  */
 public class Graph2DPainter 
 extends Point2DPainter {
@@ -78,30 +87,31 @@ extends Point2DPainter {
 		this(canvas, new Graph2DModel()); 
 	}
 	
-	/**
+	/** Creates a painter over a new model built from the given edges, with a matching new set
+	 * of unpositioned points.
 	 * @param edges
 	 */
 	public Graph2DPainter(final ICanvas canvas, final SparseMatrix edges) {
 		this(canvas, new Graph2DModel(new VectorPoint2D(edges.getInt()), edges));
 	}
-	
-	/**
+
+	/** Creates a painter over a new model built from the given points and edges.
 	 * @param points
 	 */
 	public Graph2DPainter(
-	final ICanvas canvas, 
-	final VectorPoint2D points, 
+	final ICanvas canvas,
+	final VectorPoint2D points,
 	final SparseMatrix edges) {
 		this(canvas, new Graph2DModel(points, edges));
 	}
-	
-	/**
+
+	/** Creates a painter over a new model built from the given points, edges and edge labels.
 	 * @param points
 	 */
 	public Graph2DPainter(
-	final ICanvas canvas, 
-	final VectorPoint2D points, 
-	final SparseMatrix edges, 
+	final ICanvas canvas,
+	final VectorPoint2D points,
+	final SparseMatrix edges,
 	final VectorObject labels) {
 		this(canvas, new Graph2DModel(points, edges, labels));
 	}
@@ -113,7 +123,7 @@ extends Point2DPainter {
 		super(model_);
 	}*/
 	
-	/**
+	/** Creates a painter over the given canvas and graph model.
 	 * @param canvas_
 	 * @param model_
 	 * @param common_
@@ -181,9 +191,12 @@ extends Point2DPainter {
 		}
 	}
 	
+	/** Draws all edges first, then delegates to the superclass to draw the points on top.
+	 * @see graphic.mvc.IPainter#draw(graphic.IGraphText)
+	 */
 	public void draw(final IGraphText gText) {
 		paintEdges(gText);
-		super.draw(gText); //since the Points are smaller, they are painted last. 
+		super.draw(gText); //since the Points are smaller, they are painted last.
 		//this.points.setAt(Raster.generateGraph(edges, 2));
 	}
 	

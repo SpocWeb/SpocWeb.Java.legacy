@@ -46,6 +46,15 @@ import streamIO.Log;
  * @author mheuer
  * @version	1.0
  *
+ * <!-- docstate
+ * pass: 2
+ * mtime: 2026-09-05T12:44:17Z
+ * digest: b34fc938c88515a7c9835268a6bf3c127af760107d0e227bf1a5aacc2b2d35a9
+ * stale: false
+ * tags: [code/gui, code/event_handling]
+ * concepts: [Applet Framework Base Class]
+ * facets: {layer: infrastructure, status: broken, complexity: medium}
+ * -->
  */
 public class BaseApplet 
 extends Applet //Frame //Applet has the Advantage of being embeddable!
@@ -93,8 +102,11 @@ implements IActiveCanvas {
 	
 	private static final String[] ALLOWED_SUFFIXES={".JPG", ".GIF", ".PNG", "JPEG"};
 
-	/** @return null if the Suffix is ok for a Picture File, the Suffix otherwise! */
+	/** Checks whether the file name ends in one of the allowed image suffixes.
+	 * @return null if the Suffix is ok for a Picture File, the Suffix otherwise! */
 	final static public String getFaultySuffix(final String fileName) {
+		// TODO: LOGIC: fileName.length()-4 throws StringIndexOutOfBoundsException when
+		// fileName is shorter than 4 characters (e.g. "" or "a.gi"), uncaught by any caller.
 		final String suffix =  fileName.substring(fileName.length()-4);
 		for (int i = ALLOWED_SUFFIXES.length; --i >= 0; ) {
 			if (suffix.equalsIgnoreCase(ALLOWED_SUFFIXES[i])) {
@@ -103,7 +115,8 @@ implements IActiveCanvas {
 		return suffix; 
 	}
 
-	/** @throws RuntimeException if the Suffix is not ok for a Picture File! */
+	/** Validates that the file name has an allowed image suffix.
+	 * @throws RuntimeException if the Suffix is not ok for a Picture File! */
 	final static public void checkFaultySuffix(final String fileName) {
 		final String suffix = getFaultySuffix(fileName);
 		if (suffix != null) {
@@ -187,17 +200,21 @@ implements IActiveCanvas {
 	/// #region : Accessor Methods 
 	////////////////////////////////////////////////////////////////////////////
 
-	/** @see graphic.mvc.IPaintEventSource#addPainter(graphic.mvc.IPainter)	 */
+	/** Delegates to the internal {@link MultiPainter} to subscribe the given painter.
+	 * @see graphic.mvc.IPaintEventSource#addPainter(graphic.mvc.IPainter)	 */
 	public boolean addPainter(final IPainter painter) {
 		return painters.addPainter(painter);
 	}
 
-	/** @see graphic.mvc.IPaintEventSource#removeRepaintListener(graphic.mvc.IPainter)	 */
+	/** Delegates to the internal {@link MultiPainter} to unsubscribe the given painter.
+	 * @see graphic.mvc.IPaintEventSource#removeRepaintListener(graphic.mvc.IPainter)	 */
 	public boolean removePainter(final IPainter painter) {
 		return painters.removePainter(painter);
 	}
 
-	/** @see graphic.mvc.ICanvas#getIGraphText()	 */
+	/** Returns the graphics context for this applet, forcing it to become displayable and
+	 * scheduling an asynchronous repaint first if it has none yet.
+	 * @see graphic.mvc.ICanvas#getIGraphText()	 */
 	public IGraphImage getIGraphImage() {
 		final Graphics graphics = getGraphics(); 
 		if (graphics == null) {
@@ -208,7 +225,8 @@ implements IActiveCanvas {
 		return getIGraphImage(graphics);
 	}
 
-	/** @see graphic.mvc.ICanvas#getIGraphText()	 */
+	/** Wraps the given AWT graphics context, ensuring it has clip bounds set.
+	 * @see graphic.mvc.ICanvas#getIGraphText()	 */
 	public IGraphImage getIGraphImage(final Graphics g) {
 		final IGraphImage graph = new JavaGraphic(g); //
 		getClipBounds(g); //make sure it has bounds
@@ -310,7 +328,8 @@ implements IActiveCanvas {
 	}
 	
 	/**
-	 * @deprecated due to the Fact that this Method is deprecated in java.awt.Component 
+	 * Displays this applet in its own top-level {@link Frame} via {@link #showApplet(Applet)}.
+	 * @deprecated due to the Fact that this Method is deprecated in java.awt.Component
 	 */
 	public void show() {
 		BaseApplet.showApplet(this);
@@ -321,24 +340,31 @@ implements IActiveCanvas {
 	/////////////////////////////////////////////////////////////////////////////////////
 
 	/**
+	 * Forwards a finished asynchronous image load to the superclass, suppressing repaints for
+	 * partial updates.
+	 *
 	 * @see ImageObserver#imageUpdate(java.awt.Image, int, int, int, int, int)
-	 * is implemented by Applet. 
-	 * This method is called when information about an image, 
+	 * is implemented by Applet.
+	 * This method is called when information about an image,
 	 * which was previously requested using an asynchronous interface,
-	 * becomes available. 
+	 * becomes available.
 	 * To prevent repainting whenever some Bits come across the Line, 
 	 * the super Implementation, which triggers a repaint() 
 	 * is only called when the Image has finished loading!  
 	 * If super. is never called, the Images are only (re-)drawn 
 	 * on the (externally triggered) next repaint().
+	 * @return whether further updates should still be delivered for this image.
 	 */
 	public boolean imageUpdate(final Image img, final int infoflags, final int x, final int y, final int width, final int height) {
-		boolean ret = true; 
-		if (0 != (ImageObserver.ALLBITS & infoflags)) { //don't always call the super() Implementation 
-			ret = super.imageUpdate(img, infoflags, x, y, width, height); //only when a whole Image arrived. 
+		boolean ret = true;
+		// TODO: LOGIC: only ALLBITS is checked; ImageObserver.ERROR/ABORT are never handled,
+		// so a failed/aborted asynchronous image load never notifies the observer chain and
+		// this method keeps returning true (keep sending updates) forever for that image.
+		if (0 != (ImageObserver.ALLBITS & infoflags)) { //don't always call the super() Implementation
+			ret = super.imageUpdate(img, infoflags, x, y, width, height); //only when a whole Image arrived.
 			L.l(ret, 1).n();
 		}
-		return ret; 
+		return ret;
 	}
 	
 	/** asynchronously draws the Image indicated by the Filename onto the given Graphics Context 	 */
@@ -428,6 +454,7 @@ implements IActiveCanvas {
 	}
 
 	/**
+	 * Logs the applet's teardown.
 	 * @see java.applet.Applet#destroy()	 */
 	public void destroy() {
 		L.n("destroy");

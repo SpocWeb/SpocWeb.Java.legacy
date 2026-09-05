@@ -31,6 +31,15 @@ import java.util.List;
  * @author mheuer
  * @version	1.0
  *
+ * <!-- docstate
+ * pass: 2
+ * mtime: 2026-09-05T12:43:21Z
+ * digest: 4b170351e96f008e98bac8d9c6c22b8e496516b09e0c61efc047c12f4517925d
+ * stale: false
+ * tags: [code/container_pattern, code/gui]
+ * concepts: [Painter Composition (Delegating List)]
+ * facets: {layer: infrastructure, status: legacy, complexity: low}
+ * -->
  */
 public class MultiPainter 
 implements IPainter, IPaintEventSource {
@@ -45,10 +54,11 @@ implements IPainter, IPaintEventSource {
 	 */
 	private final List painters = new ArrayList(); 
 
-	/** @see IPainter#paintFrame(IGraphText) adds the given Painter for the Events
-	 * 
-	 * @param painter to be added 
-	 * @return true if the Painter was subscribed, false if it was already. 
+	/** Subscribes the given painter so it is invoked on every future {@link #draw(IGraphText)}.
+	 * @see IPainter#paintFrame(IGraphText) adds the given Painter for the Events
+	 *
+	 * @param painter to be added
+	 * @return true if the Painter was subscribed, false if it was already.
 	 */
 	public boolean addPainter(final IPainter painter) {
 		if (painters.contains(painter))
@@ -57,10 +67,10 @@ implements IPainter, IPaintEventSource {
 		return true;
 	}
 
-	/** 
+	/** Unsubscribes the given painter so it is no longer invoked on {@link #draw(IGraphText)}.
 	 * @see IPainter#paintFrame(IGraphText) removes the given Painter from the Events
-	 * 
-	 * @param painter to be removed 
+	 *
+	 * @param painter to be removed
 	 * @return true if the Painter was unsubscribed
 	 */
 	public boolean removePainter(final IPainter painter) {

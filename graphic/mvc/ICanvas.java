@@ -10,15 +10,8 @@ import graphic.IGraphImage;
 import java.awt.Dimension;
 
 /**
- * Title: ICanvas<p>
- * Description:
- * Purpose:
- *
- * Purpose / Responsibilities of this Class
- *
- * Design Decisions / Implementation Details:
- * If similar Classes exist (e.g. Polymorphism),
- * characterize the specific Differences to compare these.
+ * Interface for a passive drawing surface that exposes its graphics context and size,
+ * and can be told to repaint.
  *
  * Known SubClasses: <none>
  *
@@ -30,6 +23,15 @@ import java.awt.Dimension;
  * @author mheuer
  * @version	1.0
  *
+ * <!-- docstate
+ * pass: 2
+ * mtime: 2026-09-05T12:46:31Z
+ * digest: 47c08a57f7be04a8d5ed1e88542cfbe7fa8e25733763474ef18fe0ce203cbab0
+ * stale: false
+ * tags: [code/gui]
+ * concepts: [Canvas Interface]
+ * facets: {layer: infrastructure, status: legacy, complexity: low}
+ * -->
  */
 public interface ICanvas 
 extends IRepainter
@@ -37,9 +39,8 @@ extends IRepainter
 
 	//Graphics getGraphics();
 	
-	/** This Graphics Context definitely has ClipBounds, 
-	 * but these Bounds may be smaller than the Canvas Size, 
-	 * which has to be retrieved by @see #getSize()
+	/** Returns the graphics context to draw onto; its ClipBounds may be smaller than the
+	 * actual canvas size, which is retrieved separately via {@link #getSize()}.
 	 */
 	public abstract IGraphImage getIGraphImage();
 
@@ -51,8 +52,9 @@ extends IRepainter
 	//public abstract void show(); 
 
 	/**
-	 * @return the actual Size of the Canvas 
-	 * as opposed to the ClipBounds of the Graphics Context.   
+	 * Returns this canvas's actual dimensions.
+	 * @return the actual Size of the Canvas
+	 * as opposed to the ClipBounds of the Graphics Context.
 	 */
 	public abstract Dimension getSize();
 

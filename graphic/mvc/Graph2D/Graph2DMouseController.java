@@ -14,15 +14,9 @@ import graphs.IEdgeStreamIn;
 import streamIO.Log;
 
 /**
- * Title: Graph2DMouseController<p>
- * Description:
- * Purpose:
- *
- * Purpose / Responsibilities of this Class
- *
- * Design Decisions / Implementation Details:
- * If similar Classes exist (e.g. Polymorphism),
- * characterize the specific Differences to compare these.
+ * Mouse controller for {@link Graph2DModel}: extends {@link Point2DMouseController} with
+ * dragging a released point onto another to add an edge, and double-clicking an edge to
+ * remove it.
  *
  * Known SubClasses: <none>
  *
@@ -34,6 +28,15 @@ import streamIO.Log;
  * @author mheuer
  * @version	1.0
  *
+ * <!-- docstate
+ * pass: 2
+ * mtime: 2026-09-05T12:51:17Z
+ * digest: 04fa73aaa9d93a9ddb38b0fd0e9baf28c69c1b14fe57c45090900c53271e79c3
+ * stale: false
+ * tags: [code/event_handling, code/interactive_editing]
+ * concepts: [2D Graph Mouse Controller]
+ * facets: {layer: domain, status: legacy, complexity: low}
+ * -->
  */
 public class Graph2DMouseController 
 extends Point2DMouseController {
@@ -44,7 +47,7 @@ extends Point2DMouseController {
 	/** Flag to allow adding Edges dynamically by Drag&Drop */
 	public boolean allowAddingEdges = true;
 
-	/**
+	/** Creates a graph mouse controller wired to the given model and shared focus state.
 	 * @param model_
 	 * @param common_
 	 */

@@ -33,6 +33,15 @@ import streamIO.Log;
  * @author mheuer
  * @version	1.0
  *
+ * <!-- docstate
+ * pass: 2
+ * mtime: 2026-09-05T12:45:47Z
+ * digest: 80dcaa25c61173565880f51082d9335edee12cef8361e7b50bcd9c16f17c59b8
+ * stale: false
+ * tags: [code/model_state_management]
+ * concepts: [Point2D Editing Model]
+ * facets: {layer: domain, status: legacy, complexity: low}
+ * -->
  */
 public class Point2DModel 
 extends AModel {
@@ -42,7 +51,8 @@ extends AModel {
 	
 	///////////////////////////////////////////////////////////////////////////
 	
-	/**
+	/** Looks up the label text for a point index in the given label list, falling back to a
+	 * generated number when unset.
 	 * @param labels List of Labels
 	 * @param i the Index of the Point
 	 * @return the Label of the given Point or a Number when no Label is given
@@ -66,7 +76,7 @@ extends AModel {
 	 */
 	protected final VectorObject pointLabels; // = new ArrayList();
 	
-	/**
+	/** Looks up the label text for the point at the given index in this model's own labels.
 	 * @param labels List of Labels
 	 * @param i the Index of the Point
 	 * @return the Label of the given Point or a Number when no Label is given

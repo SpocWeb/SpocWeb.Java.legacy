@@ -11,15 +11,8 @@ import graphic.mvc.IFocusPainter;
 import streamIO.Log;
 
 /**
- * Title: Point2DMouseController<p>
- * Description:
- * Purpose:
- *
- * Purpose / Responsibilities of this Class
- *
- * Design Decisions / Implementation Details:
- * If similar Classes exist (e.g. Polymorphism),
- * characterize the specific Differences to compare these.
+ * Mouse controller for {@link Point2DPainter}/{@link Point2DModel}: clicking adds or removes
+ * a point, and dragging moves the focused point or pans the whole canvas.
  *
  * Known SubClasses: <none>
  *
@@ -31,6 +24,15 @@ import streamIO.Log;
  * @author mheuer
  * @version	1.0
  *
+ * <!-- docstate
+ * pass: 2
+ * mtime: 2026-09-05T12:46:06Z
+ * digest: d53606260afcfb332bae03fbaf7adb2b67bc53fc42f2d796ea294aade1d8d722
+ * stale: false
+ * tags: [code/event_handling, code/interactive_editing]
+ * concepts: [Point2D Mouse Controller]
+ * facets: {layer: domain, status: legacy, complexity: low}
+ * -->
  */
 public class Point2DMouseController 
 extends BaseMouseController {
@@ -52,7 +54,10 @@ extends BaseMouseController {
 	/////////////////////////////////////////////////////////////////////////////////////
 	
 	/**
-	 * @param controller_ the High-Level Controller used to manipulate the Model
+	 * Creates a mouse controller wired to the given model and the focus/view state it shares
+	 * with the corresponding painter.
+	 * @param model_ the model this controller edits
+	 * @param common_ the shared focus state and view to redraw after an edit
 	 */
 	public Point2DMouseController(final Point2DModel model_, final IFocusPainter common_) { //
 		common = common_; 

@@ -37,6 +37,15 @@ import streamIO.Log;
  * @author mheuer
  * @version	1.0
  *
+ * <!-- docstate
+ * pass: 2
+ * mtime: 2026-09-05T12:45:39Z
+ * digest: 0114a8ef2b3f544e6457867e38b060e48b42a09b8f744b01e33edec63709aaa8
+ * stale: false
+ * tags: [code/event_handling, code/interactive_editing]
+ * concepts: [Point2D Keyboard Controller]
+ * facets: {layer: domain, status: legacy, complexity: low}
+ * -->
  */
 public class Point2DKeyController 
 implements KeyListener {
@@ -45,19 +54,29 @@ implements KeyListener {
 	private static final Log L = new Log(Point2DKeyController.class, 2);
 
 	/* Key Codes for the Navigational Keys */
+	/** Virtual key code for Page Up, moves the focus point/canvas backward on the z axis. */
 	final static public int KEY_PgUp = 33; //1002;
+	/** Virtual key code for Page Down, moves the focus point/canvas forward on the z axis. */
 	final static public int KEY_PgDn = 34; //1003;
+	/** Virtual key code for Up, moves the focus point/canvas up. */
 	final static public int KEY_up = 38; //1004;
+	/** Virtual key code for Down, moves the focus point/canvas down. */
 	final static public int KEY_down = 40; //1005;
+	/** Virtual key code for Left, moves the focus point/canvas left. */
 	final static public int KEY_left = 37; //1006;
+	/** Virtual key code for Right, moves the focus point/canvas right. */
 	final static public int KEY_right = 39; //1007;
 
 	/* Key Codes for the other Keys */
+	/** Virtual key code for Backspace, deletes the last character of the focused label. */
 	final static public int KEY_BackSpace = 8;
+	/** Virtual key code for Delete, removes the focused point. */
 	final static public int KEY_Delete = 127;
+	/** Virtual key code for Enter, advances the focus to the next point. */
 	final static public int KEY_Enter = 10;
 	//final static public int KEY_Tab = 100; //not propagated!!!
 
+	/** Unused reserved key code placeholder. */
 	final static public int KEY_ = 100;
 
 	/////////////////////////////////////////////////////////////////////////////////////
@@ -73,6 +92,11 @@ implements KeyListener {
 	/** Reference to the basic Model */
 	protected final Point2DModel model;  
 
+	/** Creates a controller wired to the given model and the focus/view state it shares
+	 * with the corresponding painter.
+	 * @param model_ the model this controller edits
+	 * @param common_ the shared focus state and view to redraw after an edit
+	 */
 	public Point2DKeyController(final Point2DModel model_, final IFocusPainter common_) {
 		this.common = common_;
 		this.model = model_; 
@@ -82,7 +106,8 @@ implements KeyListener {
 	// Controller Methods (High-Level Events) 
 	/////////////////////////////////////////////////////////////////////////////////
 
-	/** @see java.awt.event.KeyListener#keyTyped(java.awt.event.KeyEvent)	 */
+	/** Does nothing; this controller only reacts to key press/release, not typed characters.
+	 * @see java.awt.event.KeyListener#keyTyped(java.awt.event.KeyEvent)	 */
 	public void keyTyped(final KeyEvent e) {}
 
 	/** 
@@ -113,7 +138,8 @@ implements KeyListener {
 		}
 	}
 
-	/** @see java.awt.event.KeyListener#keyReleased(java.awt.event.KeyEvent)	 */
+	/** Does nothing; this controller acts only on key press.
+	 * @see java.awt.event.KeyListener#keyReleased(java.awt.event.KeyEvent)	 */
 	public void keyReleased(final KeyEvent e) {}
 
 	/** pressed a 'regular' Key  */
