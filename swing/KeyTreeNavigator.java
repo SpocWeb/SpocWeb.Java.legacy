@@ -15,6 +15,15 @@ import tester.ITester;
 /** Helper Class to catch Keys pressed on a JTree and react accordingly:
   * 'R' changes the Root  of the Tree to the selected Node
   * 'F' changes the Focus of the Tree to the selected Node Representative
+  * <!-- docstate
+  * pass: 2
+  * mtime: 2026-09-05T09:16:33Z
+  * digest: 7bf5ba03e9e1be881394a10623aa59053ae28d09e14f6ec6e7febd3d80e722a5
+  * stale: false
+  * tags: [code/keyboard_navigation, code/tree_navigation]
+  * concepts: [Tree Visualization, UI Component]
+  * facets: {layer: infrastructure, status: stable, complexity: medium}
+  * -->
   */
 public class KeyTreeNavigator
 extends KeyAdapter {
@@ -40,17 +49,13 @@ extends KeyAdapter {
 	protected HashContainer treeMap;
 
 	//Needs a Callback Method to notify others of the Root Change Event
-	/** Initializing Constructor
-	  * @param tree_    the JTree Component being watched. This creates a circular Relation
-	  * @param treeMap_ the List of Tree Nodes
-	  * @param rootID_  the ID of the Tree Root in the treeMap_  */
 /*	public KeyTreeNavigator(JTree tree_, HashContainer treeMap_, ITester subscriber_) {
 		this(tree_, treeMap_, subscriber_); }
-
+*/
 	/** Initializing Constructor
 	  * @param tree_    the JTree Component being watched. This creates a circular Relation
 	  * @param treeMap_ the List of Tree Nodes
-	  * @param root_    the current Root of the Tree */
+	  * @param subScriber_ the Root Change Event Subscriber notified via {@link ITester#test(Object)}  */
 	public KeyTreeNavigator(JTree tree_, HashContainer treeMap_, ITester subScriber_) {
 		this.treeMap = treeMap_;
 		this.subScriber = subScriber_;

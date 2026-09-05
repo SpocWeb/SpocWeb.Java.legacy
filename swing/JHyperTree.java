@@ -19,14 +19,21 @@ import streamIO.object.parser.jdbc.ResultSetSep;
 import tester.ITester;
 
 /**
-  * JHyperTree.java
+  * A Tree Implementation to display Networks as HyperGraphs
+  * with the current Node as the common Root of two mirroring TreeViews.
   *
   * Created on 16. Dezember 2001, 03:23
   *
-  * A Tree Implementation to display Networks as HyperGraphs 
-  * with the current Node as the common Root of two mirroring TreeViews. 
-  * 
   * @author  mheuer
+  * <!-- docstate
+  * pass: 2
+  * mtime: 2026-09-05T09:16:10Z
+  * digest: ecd5d90c6abefd2f8d4bf6b212201fc48fa5514e999c5f06539dad7304a2c07b
+  * stale: false
+  * tags: [code/tree_data_structure, code/ui_components]
+  * concepts: [Tree Visualization, UI Component]
+  * facets: {layer: infrastructure, status: stable, complexity: medium}
+  * -->
   */
 public class JHyperTree
 extends javax.swing.JPanel
@@ -36,9 +43,7 @@ implements ITester {
 	//  Variables
 	////////////////////////////////////////////////////////////////////////////////
 	
-	/**
-	 * 
-	 */
+	/** Serialization version identifier. */
 	private static final long serialVersionUID = 1L;
 
 	/** left Tree Component 	*/

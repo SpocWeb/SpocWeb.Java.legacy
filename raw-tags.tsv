@@ -61,3 +61,7 @@ streamIO/character	folder	streamIO/character	code/file_io, code/encoding_handlin
 persistences/Objekt.java:Objekt	class	persistences/Objekt.java	code/entity_model, code/domain_model	Domain Model, Persistence	persistence	stable	low
 persistences/PersistedObject.java:PersistedObject	class	persistences/PersistedObject.java	code/entity_model, code/registry_pattern	Record Identity, Persistence	persistence	broken	low
 persistences	folder	persistences	code/entity_model, code/registry_pattern, code/domain_model	Domain Model, Persistence	persistence	broken	low
+swing/HashTreeNode.java:HashTreeNode	class	swing/HashTreeNode.java	code/tree_node, code/hash_equality, code/graph_traversal	Tree Visualization, Graph Model	infrastructure	broken	high
+swing/JHyperTree.java:JHyperTree	class	swing/JHyperTree.java	code/tree_data_structure, code/ui_components	Tree Visualization, UI Component	infrastructure	stable	medium
+swing/KeyTreeNavigator.java:KeyTreeNavigator	class	swing/KeyTreeNavigator.java	code/keyboard_navigation, code/tree_navigation	Tree Visualization, UI Component	infrastructure	stable	medium
+swing	folder	swing	code/tree_node, code/tree_data_structure, code/keyboard_navigation, code/hash_equality	Tree Visualization, Graph Model	infrastructure	broken	high

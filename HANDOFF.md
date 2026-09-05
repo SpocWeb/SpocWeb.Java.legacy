@@ -65,7 +65,7 @@ cost more tokens than one and burn the 5-hour window N times faster.
 | `streamIO/exception` | 5 | 536 | 0 | unclaimed | - |
 | `streamIO/fileSystem` | 4 | 288 | 0 | unclaimed | - |
 | `streamIO/testing` | 3 | 433 | 0 | unclaimed | - |
-| `swing` | 3 | 679 | 0 | unclaimed | - |
+| `swing` | 3 | 679 | 3 | done | main |
 | `persistences` | 2 | 306 | 2 | done | main |
 | `streamIO/character` | 2 | 244 | 2 | done | main |
 | `streamIO/factory` | 2 | 205 | 2 | done | main |
@@ -172,6 +172,7 @@ same harness against it. A test that has not been seen red proves nothing.
 | knowledge/MetricAttribute.java, StringAttribute.java, TimeAttribute.java, EnumAttribute.java | - | - | - | Originally flagged High: the static `Fields` array seeded from an empty array rather than `BasicAttribute.Keys`, said to drop the inherited key columns. **Withdrawn - not a defect.** `Fields` means "non-key data columns" here and the keys arrive separately from `primaryKey().Keys()`; at runtime `MetricAttribute` reports `Fields=[Value]` and `Keys=[StatusID, SubjectID, TypeID]`, which covers the table exactly. Only the inherited javadoc phrase "including Parent Fields" was wrong. | - | **withdrawn** |
 | persistences/PersistedObject.java | PersistedObject | PersistedObject(String) | 165 | Checks the field `ID` (always null at that point, before it is ever assigned) instead of the parameter `ID_`, so the guard is always false and `setId(ID_)` is never called from this constructor. Every instance built via `new PersistedObject(ID_)` or `PersistedObject(ResultSet)` (which delegates to it) keeps a `null` ID. | High | open |
 | persistences/PersistedObject.java | PersistedObject | (field `objects`) | 41 | The static registry HashMap is never initialized (`= new HashMap()` missing), so `getObject(String)` and `setId(String)` both throw `NullPointerException` on the first real use. Currently unreached in practice only because the constructor bug above never calls `setId`. | High | open |
+| swing/HashTreeNode.java | HashTreeNode | equals(Object) | 328 | When this Node's `userObject` is null (the Empty Constructor allows it) and `arg` is a non-null Object that is not a `DefaultMutableTreeNode`, the final branch calls `userObject.equals(arg)` on a null `userObject` and throws `NullPointerException`. | Low | open |
 
 ## Tool defects found and fixed during the pilot
 

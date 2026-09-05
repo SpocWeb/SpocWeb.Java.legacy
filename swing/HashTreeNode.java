@@ -27,9 +27,10 @@ import streamIO.object.enumer.container.Relation;
 import streamIO.object.parser.jdbc.ResultSetSep;
 
 /**
-  * HashTreeNode.java
-  *
-  * Helper TreeNode Class for swing.
+  * A {@link DefaultMutableTreeNode} hashed and compared by its UserObject rather than by
+  * reference, backed by a process-wide registry of named Trees ({@link #treeList}) so
+  * Nodes can be looked up, and diamonds (Nodes with more than one Parent) can be
+  * represented, by ID across an arbitrary Graph.
   * Overrides equals() and hashCode() Methods
   * to allow for being hashed by it's Contents i.e. UserObject.
   *
@@ -60,6 +61,15 @@ import streamIO.object.parser.jdbc.ResultSetSep;
   * These Dummy Nodes will have the same Label as their Main Representative,
   * but no Child Nodes, since these are only added to the Main Representative.
   * This is made Standard Behavior here, so also general Graphs can be loaded into a JTree.
+  * <!-- docstate
+  * pass: 2
+  * mtime: 2026-09-05T09:16:05Z
+  * digest: 9ae681c5459c9c1117ae6dad5b46d8d87365915bfd5c368294fa5763222e001f
+  * stale: false
+  * tags: [code/tree_node, code/hash_equality, code/graph_traversal]
+  * concepts: [Tree Visualization, Graph Model]
+  * facets: {layer: infrastructure, status: broken, complexity: high}
+  * -->
   */
 public class HashTreeNode
 	extends DefaultMutableTreeNode {
@@ -68,9 +78,7 @@ public class HashTreeNode
 //  static Constants and Variables
 ////////////////////////////////////////////////////////////////////////////////
 
-	/**
-	 * 
-	 */
+	/** Serialization version identifier. */
 	private static final long serialVersionUID = 1L;
 
 	/** HashMap containing all Tree Sets by their Tree Names	  */
@@ -87,7 +95,8 @@ public class HashTreeNode
 	//  static Methods
 	////////////////////////////////////////////////////////////////////////////////
 	
-	/** @return the HashMap by their Map Name
+	/** Looks up the named Tree's node container, creating it on first use.
+	  * @return the HashMap by their Map Name
 	  * If the hashMap does not exist yet, it is being created and added.
 	  * but the latter requires ALWAYS to instante a new HashContainer.
 	  * This is moved to the Relation Interface.
@@ -110,7 +119,8 @@ public class HashTreeNode
 	public static void removeNode(Object TreeID_, Object NodeID_) {
 		getTree(TreeID_).removeItem(NodeID_); }
 
-	/** @return the given Node of the given Tree by their Names. 	  */
+	/** Looks up a Node by its ID within the given Tree.
+	  * @return the given Node of the given Tree by their Names. 	  */
 	public static HashTreeNode getNode(Object TreeID_, Object NodeID_) {
 		return (HashTreeNode) getTree(TreeID_).findFirst(NodeID_); }
 
@@ -174,7 +184,9 @@ public class HashTreeNode
 		}
 	}
 
-	/** @see #fixTreeModel(DefaultMutableTreeNode, HashContainer) uses this Method exclusively 	 */
+	/** Swaps a diamond-marker Child for its Main Representative Node when the latter is
+	  * not already an ancestor of the given root, so a replicated Node is shown once.
+	  * @see #fixTreeModel(DefaultMutableTreeNode, HashContainer) uses this Method exclusively 	 */
 	private static DefaultMutableTreeNode fixDiamond(
 		final DefaultMutableTreeNode root,
 		final HashContainer nodes,
@@ -195,7 +207,8 @@ public class HashTreeNode
 		return child;
 	}
 
-	/** @return an Array of HashTreeNodes wrapping the given Array of User Objects
+	/** Wraps each given Object in its own parentless HashTreeNode, added to the given Tree.
+	  * @return an Array of HashTreeNodes wrapping the given Array of User Objects
 	  * The Nodes are also added to the given Tree
 	  * After creating the Nodes, their Parents can be set separately.
 	  */
@@ -290,9 +303,11 @@ public class HashTreeNode
 	//The Structure of the Collection is the same as one of the resulting Tree.
 	//Where does the Node Name come from?
 
+	/** Constructor taking only the UserObject, added to no Tree and with no Parent. */
 	public HashTreeNode(Object userObject_) {
 		super(userObject_); }
 
+	/** Constructor taking the UserObject and adding this Node as a Child of the given Parent. */
 	public HashTreeNode(Object userObject_, HashTreeNode parent_) {
 		super(userObject_);
 //		parent = parent_;
@@ -303,7 +318,7 @@ public class HashTreeNode
 //  public Methods, then private Methods
 ////////////////////////////////////////////////////////////////////////////////
 
-	/**
+	/** Hashes this Node by its UserObject, instead of the TreeNode.
 	  * @return a HashCode based on the UserObject, instead of the TreeNode.
 	  * since the userObject cannot be protected, the Value cannot be cached.
 	  */
@@ -311,9 +326,12 @@ public class HashTreeNode
 		if (userObject == null) return 0;
 		return userObject.hashCode(); }
 
-	/**
+	/** Compares by UserObject, delegating to a wrapped node's UserObject too.
 	  * @return true, if the Argument arg equals the UserObject.
 	  */
+	// TODO: LOGIC: when this Node's userObject is null (the Empty Constructor allows it)
+	// and arg is a non-null Object that is not a DefaultMutableTreeNode, the final branch
+	// calls userObject.equals(arg) on a null userObject and throws NullPointerException.
 	public boolean equals(Object arg) {
 		if (arg == this) return true; //Optimization
 		if (arg == userObject) return true; //Optimization
