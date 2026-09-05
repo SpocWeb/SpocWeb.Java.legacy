@@ -61,10 +61,10 @@ import function.byref.ByRefLong;
   * 
   * Other JDBC Implementations for plain ASCII Text Databases (Fix & Sep): 
   * HXTT (www.hxtt.com) von Hongxin Technology (China) 
-  * hat vollen Tx-Support, Thread-safe, schreibt in ZIP/TAR files, verschlüsselt etc.    
+  * hat vollen Tx-Support, Thread-safe, schreibt in ZIP/TAR files, verschlï¿½sselt etc.    
   * Other JDBC Implementations: 
   * HSQLDB HSQLDB.org bzw. HSQLDB.sourceforge.net also used in OpenOffice 
-  * als Fortsetzung von Thomas Müllers Hypersonic SQL Projekt.  
+  * als Fortsetzung von Thomas Mï¿½llers Hypersonic SQL Projekt.  
   * 
   * Subclasses:
   * @see streamIO.Byte.ResultSetFix
@@ -76,6 +76,15 @@ import function.byref.ByRefLong;
   * @see ResultSetXmlElement
   * Converting XML into ResultSets is not necessary, 
   * because they can be XSLTd into separated Files. 
+  * <!-- docstate
+  * pass: 2
+  * mtime: 2026-09-05T21:47:22Z
+  * digest: 8b3c200aa071ee9b7570a389504776fd449da30bb53de3fb650a66aa25773382
+  * stale: false
+  * tags: [code/jdbc_adapter, code/database_access, code/database_driver]
+  * concepts: [Filesystem-Backed JDBC Driver Framework with Fixed-Length and Separator-Delimited Table Storage]
+  * facets: {layer: domain, status: legacy, complexity: high}
+  * -->
   */
 public abstract class AResultSet
 extends AResultSetBase
@@ -206,10 +215,10 @@ implements ResultSet
 	//////////////////////////////////////////////////////////////////////////////////////////
 
 	/**
-	 * 
+	 * Maps a column type code to its representing Java class.
 	 * @param type the TypeID to identify the Type
 	 * @return the Class associated with the given TypeID
-	 * @throws SQLException if the TypeID is unknown. 
+	 * @throws SQLException if the TypeID is unknown.
 	 */
 	final static public Class GET_CLASS_FROM_TYPE(final byte type) { //throws SQLException {
 		switch (type) {
@@ -295,7 +304,7 @@ implements ResultSet
 	protected int fetchSize;
 
 	/**
-	  * @returns the fetch size for this ResultSet object.
+	  * Returns the fetch size last set via {@link #setFetchSize(int)}.
 	  * @see java.sql.ResultSet#getFetchSize()
 	  */
 	public int getFetchSize() { return fetchSize; }
@@ -468,9 +477,9 @@ implements ResultSet
 	protected int position; // = -1; // = 0; //Integer.MIN_VALUE;
 	
 	/**
-	  * @returns the current Row Number. 
-	  * Could also return the current Row Pointer / Offset, 
-	  * but that would defy the Interface. 
+	  * Returns the current row number.
+	  * Could also return the current Row Pointer / Offset,
+	  * but that would defy the Interface.
 	  * @see java.sql.ResultSet#getRow()
 	  */
 	public int getRow() { return position; }
@@ -610,13 +619,13 @@ implements ResultSet
 	}
 
 	/**
-	  * @returns the type of this ResultSet object.
+	  * Always returns {@link ResultSet#TYPE_SCROLL_INSENSITIVE}.
 	  * @see java.sql.ResultSet#getType()
 	  */
 	public int getType() { return ResultSet.TYPE_SCROLL_INSENSITIVE; }
 
 	/**
-	  * @returns the Statement object that produced this ResultSet object.
+	  * Returns the {@link Statement} that produced this result set.
 	  * @see java.sql.ResultSet#getStatement()
 	  */
 	public Statement getStatement() { return statement; }
@@ -726,6 +735,8 @@ implements ResultSet
 		return new BigDecimal(getString(columnIndex)); }
 
 	/**
+	  * Gets the column value as a {@link BigDecimal} parsed from its string representation;
+	  * {@code scale} is not applied.
 	  * @see java.sql.ResultSet#getBigDecimal(int, int)
 	  * @deprecated
 	  */
@@ -1240,16 +1251,21 @@ implements ResultSet
 	 * writable Columns 
 	 * non-null Columns or other MetaData
 	 */
-	public void fillFlags(final boolean[] flags) { //final byte opFlag) { 
-		for (int i = flags.length; --i > 0;) 
-			flags[i] = (CHR_BOOLEAN_TRUE == getFirstChar(i));  
+	// TODO: LOGIC: loop condition is "--i > 0", so index 0 is never visited -
+	// flags[0] keeps its default (false) regardless of the actual first column's flag.
+	// Every other reverse loop in this codebase uses "--i >= 0"; this one is inconsistent
+	// and silently under-fills the first element of the caller-supplied array.
+	public void fillFlags(final boolean[] flags) { //final byte opFlag) {
+		for (int i = flags.length; --i > 0;)
+			flags[i] = (CHR_BOOLEAN_TRUE == getFirstChar(i));
 	} //
 
 	/**
+	 * Determines whether the current row holds data as opposed to metadata or a comment.
 	 * @return true if the current Row has Data, false for MetaData or Comments
-	 * @throws SQLException when an invalid Operation Character is encountered. 
+	 * @throws SQLException when an invalid Operation Character is encountered.
 	 */
-	public boolean isDataRow() { //final byte opFlag) { 
+	public boolean isDataRow() { //final byte opFlag) {
 		//throws SQLException {
 		if (!operationSupported)  
 			return true; 
@@ -1339,7 +1355,8 @@ implements ResultSet
 	//public String[] getDefaults() { return fieldDefaults; }
 	
 	/**
-	 * @return a new Array containing all Fields of the current ResultSet Row 
+	 * Returns all fields of the current row in a newly allocated array.
+	 * @return a new Array containing all Fields of the current ResultSet Row
 	 */
 	public String[] getAllFields() {
 		return getAllFields(null, 0); 
@@ -1369,6 +1386,7 @@ implements ResultSet
 	}
 
 	/**
+	 * Returns the number of columns backing this result set.
 	 * @return the Number of currently available Fields
 	 */
 	public int getNumFields() { return columns.length; }

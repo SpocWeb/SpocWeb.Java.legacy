@@ -22,6 +22,15 @@ import math.vector.VectorString;
  * 
  * @author heuerm
  * 
+ * <!-- docstate
+ * pass: 2
+ * mtime: 2026-09-05T21:56:35Z
+ * digest: 7a3993443fa78107bc033ea95bda7cc1d98db27688204e5826cd14f64c51b389
+ * stale: false
+ * tags: [code/jdbc_adapter, code/database_access, code/database_driver]
+ * concepts: [Filesystem-Backed JDBC Driver Framework with Fixed-Length and Separator-Delimited Table Storage]
+ * facets: {layer: domain, status: legacy, complexity: high}
+ * -->
  */
 public class DbColumn 
 implements IDbStringValue {
@@ -202,20 +211,23 @@ implements IDbStringValue {
 	/// Interface 
 	///////////////////////////////////////////////////////////////////////////
 	
-	/** 
+	/**
+	 * Returns this field's current value: the constant name itself when {@code table} is
+	 * {@code null}, otherwise the current value of the backing result set column.
 	 * @return the Value of this Field
 	 * @throws SQLException
 	 */
 	public String getString() throws SQLException {
 		if (table == null) //Constant, with Quotes removed
-			return name; 
-		return table.getString(position); 
+			return name;
+		return table.getString(position);
 	}
-	
-	/** 
-	 * @param value the new Value 
+
+	/**
+	 * Updates this field's value in the backing result set column.
+	 * @param value the new Value
 	 * @return the old Value of this Field
-	 * @throws SQLException when this is not a DB Field 
+	 * @throws SQLException when this is not a DB Field
 	 */
 	public String setString(final String value) throws SQLException {
 		if (table == null) //Constant, with Quotes removed
@@ -362,7 +374,8 @@ implements IDbStringValue {
 	}
 
 	/**
-	 * @param _fieldDefaults
+	 * Copies each entry of {@code _fieldDefaults} into the matching column's default value.
+	 * @param _fieldDefaults default values, one per column, or {@code null} to leave columns unchanged
 	 */
 	final static public void INIT_DEFAULTS(final String[] _fieldDefaults, final DbColumn[] columns) {
 		if (_fieldDefaults == null) 

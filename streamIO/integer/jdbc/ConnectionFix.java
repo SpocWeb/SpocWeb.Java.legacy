@@ -15,38 +15,39 @@ import java.sql.Statement;
 import java.util.Properties;
 
 /**
- * Title: ConnectionFix<p>
- * Description:
- * Purpose:
- * Provides a Connection Implementation for the jdbc 1.0 Framework
- * using Files with fixed Record Size Content. 
- * This Format has three Advantages: 
- * 1) all Characters can be used, no Escaping is necessary  
- * 2) Updates can be done in Place, only Deletions create holes 
- * 3) Editing is easy even with simple Editors.
- * Disadvantages are: 
- * 1) Field Sizes can not be exceeded easily (although Size doesn't matter much anymore...), 
- * either several Rows are concatenated 
- * or the variable-Length Data is externalized into a separate file (BLOB). 
- * 2) since Columns are only named at the Top, it is easy to mistype Data
- * 
- * defaults all Interface Implementations to the Classes of this Package.  
+ * {@link AConnection} implementation for {@code jdbc:fix:} URLs backed by files with a
+ * fixed record size, defaulting every JDBC statement/result-set interface to this
+ * package's fixed-length-table classes ({@link StatementFix}, {@link PrepStatementFix},
+ * {@link CallStatementFix}). Fixed-length records allow arbitrary character content with
+ * no escaping and in-place updates, at the cost of a hard field-size limit.
  *
- * Known SubClasses: <none>
+ * <h2>Collaborators</h2>
  *
- * Known Uses: <none>
- * 
- * similar Classes: 
- * @see streamIO.object.parser.jdbc.ConnectionSep which represents a Connection 
- * to a Set of Separated Files. 
- * In Principal both Types of DB Tables can be mixed. 
- * 
+ * | Type | Relationship |
+ * |---|---|
+ * | {@link StatementFix} | Created by the {@code createStatement} overloads. |
+ * | {@link PrepStatementFix} | Created by the {@code prepareStatement} overloads. |
+ * | {@link CallStatementFix} | Created by the {@code prepareCall} overloads. |
+ * | {@link DriverFix} | Default driver used when none is passed explicitly. |
+ *
+ * @see streamIO.object.parser.jdbc.ConnectionSep a similar Connection over a Set of
+ * Separated Files; the two Table Types can in principle be mixed.
+ *
  * Copyright:	Copyright (c) Matthias Heuer<p>
  * Company:	personal<p>
  * Created on	10-26-2002, 12:47 PM<p>
  * @author mheuer
  * @version	1.0
  *
+ * <!-- docstate
+ * pass: 2
+ * mtime: 2026-09-05T22:09:29Z
+ * digest: aeab9cb357ba5027bbae4c39f5fd00877fbe790fdf6b1440c2521d118f0e283d
+ * stale: false
+ * tags: [code/jdbc_adapter, code/database_access, code/database_driver]
+ * concepts: [Filesystem-Backed JDBC Driver Framework with Fixed-Length and Separator-Delimited Table Storage]
+ * facets: {layer: domain, status: legacy, complexity: high}
+ * -->
  */
 public class ConnectionFix 
 extends AConnection {
@@ -62,10 +63,10 @@ extends AConnection {
 	///////////////////////////////////////////////////////////////////////////
 
 	/**
-	 * 
+	 * Initializing constructor using {@link DriverFix#driver} and fixed-length defaults.
 	 * @param url URL of the jdbc Connection
-	 * @param suffix Properties Object containing the Table Files Suffix (Default: ".fix")
-	 * @throws SQLException when the Directory does not exist or the Prefix does not match. 
+	 * @param propSuffix Properties Object containing the Table Files Suffix (Default: ".fix")
+	 * @throws SQLException when the Directory does not exist or the Prefix does not match.
 	 */
 	public ConnectionFix(final String url, final Properties propSuffix)
 		throws SQLException {
@@ -73,46 +74,49 @@ extends AConnection {
 	}
 
 	/**
-	 * @param path
-	 * @param driver_
-	 * @param propSuffix
-	 * @param defaultSuffix
-	 * @param defaultSep
-	 * @throws SQLException
+	 * Initializing constructor with an explicit {@link Driver} and default suffix/separator.
+	 * @param path URL of the jdbc Connection
+	 * @param propSuffix Properties Object containing the Table Files Suffix
+	 * @param defaultSuffix fallback Table File Suffix if {@code propSuffix} does not specify one
+	 * @param defaultSep fallback Field Separator
+	 * @param driver_ the Driver that created this Connection
+	 * @throws SQLException when the Directory does not exist or the Prefix does not match.
 	 */
 	public ConnectionFix(final String path, final Properties propSuffix,
 			final String defaultSuffix, final String defaultSep, final Driver driver_) throws SQLException {
 		super(path, driver_, propSuffix, defaultSuffix, defaultSep);
 	}
-	
+
 	/**
-	 * @param _path
-	 * @param _driver
-	 * @param _suffix
-	 * @param _separator
-	 * @throws SQLException
+	 * Initializing constructor with an explicit {@link Driver}, fixed suffix and separator.
+	 * @param _path URL of the jdbc Connection
+	 * @param _suffix the Table File Suffix
+	 * @param _separator the Field Separator
+	 * @param _driver the Driver that created this Connection
+	 * @throws SQLException when the Directory does not exist or the Prefix does not match.
 	 */
-	public ConnectionFix(final String _path, final String _suffix, 
+	public ConnectionFix(final String _path, final String _suffix,
 			final String _separator, final Driver _driver) throws SQLException {
 		super(_path, _driver, _suffix, _separator);
 	}
-	
+
 	/**
-	 * @param _path
-	 * @param _suffix
-	 * @param _separator
-	 * @throws SQLException
+	 * Initializing constructor using {@link DriverFix#driver} with a fixed suffix and separator.
+	 * @param _path URL of the jdbc Connection
+	 * @param _suffix the Table File Suffix
+	 * @param _separator the Field Separator
+	 * @throws SQLException when the Directory does not exist or the Prefix does not match.
 	 */
-	public ConnectionFix(final String _path, final String _suffix, 
+	public ConnectionFix(final String _path, final String _suffix,
 			final String _separator) throws SQLException {
 		super(_path, _suffix, _separator);
 	}
-	
+
 	/**
-	 * @param _path
-	 * @param _suffix
-	 * @param _separator
-	 * @throws SQLException
+	 * Initializing constructor using {@link DriverFix#driver} and no explicit separator.
+	 * @param _path URL of the jdbc Connection
+	 * @param _suffix the Table File Suffix
+	 * @throws SQLException when the Directory does not exist or the Prefix does not match.
 	 */
 	public ConnectionFix(final String _path, final String _suffix) throws SQLException {
 		super(_path, _suffix, null);
@@ -122,43 +126,65 @@ extends AConnection {
 	/// Methods
 	///////////////////////////////////////////////////////////////////////////
 
-	/**@see java.sql.Connection#createStatement()	 */
+	/**
+	 * Returns a new {@link StatementFix} bound to this connection.
+	 * @see java.sql.Connection#createStatement()
+	 */
 	public Statement createStatement() { //throws SQLException {
 		return new StatementFix(this);
 	}
 
-	/**@see java.sql.Connection#prepareStatement(java.lang.String)	 */
+	/**
+	 * Returns a new {@link PrepStatementFix} bound to this connection.
+	 * @see java.sql.Connection#prepareStatement(java.lang.String)
+	 */
 	public PreparedStatement prepareStatement(final String sql) { //throws SQLException {
 		return new PrepStatementFix(this, sql);
 	}
 
-	/**@see java.sql.Connection#prepareCall(java.lang.String)	 */
+	/**
+	 * Returns a new {@link CallStatementFix} bound to this connection.
+	 * @see java.sql.Connection#prepareCall(java.lang.String)
+	 */
 	public CallableStatement prepareCall(final String sql) { //throws SQLException {
 		return new CallStatementFix(this, sql);
 	}
 
-	/** @see java.sql.Connection#createStatement(int, int)	 */
+	/**
+	 * Returns a new {@link StatementFix} with the given result set type and concurrency.
+	 * @see java.sql.Connection#createStatement(int, int)
+	 */
 	public Statement createStatement(
 		final int resultSetType,
 		final int resultSetConcurrency) { //throws SQLException {
 		return new StatementFix(this, resultSetType, resultSetConcurrency);
 	}
 
-	/** @see java.sql.Connection#prepareStatement(java.lang.String, int, int)	 */
+	/**
+	 * Returns a new {@link PrepStatementFix} with the given result set type and concurrency.
+	 * @see java.sql.Connection#prepareStatement(java.lang.String, int, int)
+	 */
 	public PreparedStatement prepareStatement(final String sql,
 		final int resultSetType,
 		final int resultSetConcurrency) { //throws SQLException {
 		return new PrepStatementFix(this, sql, resultSetType, resultSetConcurrency);
 	}
 
-	/** @see java.sql.Connection#prepareCall(java.lang.String, int, int)	 */
+	/**
+	 * Returns a new {@link CallStatementFix} with the given result set type and concurrency.
+	 * @see java.sql.Connection#prepareCall(java.lang.String, int, int)
+	 */
 	public CallableStatement prepareCall(final String sql,
 		final int resultSetType,
 		final int resultSetConcurrency) { //throws SQLException {
 		return new CallStatementFix(this, sql, resultSetType, resultSetConcurrency);
 	}
 
-	/** @see java.sql.Connection#createStatement(int, int, int)	 */
+	/**
+	 * Returns a new {@link StatementFix} with the given result set type, concurrency and
+	 * holdability.
+	 * @see java.sql.Connection#createStatement(int, int, int)
+	 */
 	public Statement createStatement(
 			final int resultSetType,
 			final int resultSetConcurrency,
@@ -169,7 +195,11 @@ extends AConnection {
 			resultSetHoldability);
 	}
 
-	/** @see java.sql.Connection#prepareStatement(java.lang.String, int, int, int)	 */
+	/**
+	 * Returns a new {@link PrepStatementFix} with the given result set type, concurrency and
+	 * holdability.
+	 * @see java.sql.Connection#prepareStatement(java.lang.String, int, int, int)
+	 */
 	public PreparedStatement prepareStatement(
 			final String sql,
 			final int resultSetType,
@@ -181,7 +211,11 @@ extends AConnection {
 			resultSetHoldability);
 	}
 
-	/** @see java.sql.Connection#prepareCall(java.lang.String, int, int, int)	 */
+	/**
+	 * Returns a new {@link CallStatementFix} with the given result set type, concurrency and
+	 * holdability.
+	 * @see java.sql.Connection#prepareCall(java.lang.String, int, int, int)
+	 */
 	public CallableStatement prepareCall(
 			final String sql,
 			final int resultSetType,
@@ -195,7 +229,11 @@ extends AConnection {
 
 	/** TODO: support autogenerated Keys */
 
-	/** @see java.sql.Connection#prepareStatement(java.lang.String, int)	 */
+	/**
+	 * Returns a forward-only, read-only {@link PrepStatementFix}; {@code autoGeneratedKeys}
+	 * is accepted but not yet honored (see the {@code TODO} above).
+	 * @see java.sql.Connection#prepareStatement(java.lang.String, int)
+	 */
 	public PreparedStatement prepareStatement(final String sql,
 			final int autoGeneratedKeys) { //throws SQLException {
 		return new PrepStatementFix(this, sql,
@@ -203,14 +241,22 @@ extends AConnection {
 			ResultSet.CONCUR_READ_ONLY);
 	}
 
-	/** @see java.sql.Connection#prepareStatement(java.lang.String, int[])	 */
+	/**
+	 * Returns a forward-only, read-only {@link PrepStatementFix}; {@code columnIndexes} is
+	 * accepted but not yet honored (see the {@code TODO} above).
+	 * @see java.sql.Connection#prepareStatement(java.lang.String, int[])
+	 */
 	public PreparedStatement prepareStatement(final String sql, final int[] columnIndexes) { //throws SQLException {
 		return new PrepStatementFix(this, sql,
 			ResultSet.TYPE_FORWARD_ONLY,
 			ResultSet.CONCUR_READ_ONLY);
 	}
-	
-	/** @see java.sql.Connection#prepareStatement(java.lang.String, java.lang.String[])	 */
+
+	/**
+	 * Returns a forward-only, read-only {@link PrepStatementFix}; {@code columnNames} is
+	 * accepted but not yet honored (see the {@code TODO} above).
+	 * @see java.sql.Connection#prepareStatement(java.lang.String, java.lang.String[])
+	 */
 	public PreparedStatement prepareStatement(final String sql, final String[] columnNames) { //throws SQLException {
 		return new PrepStatementFix(this, sql,
 			ResultSet.TYPE_FORWARD_ONLY,

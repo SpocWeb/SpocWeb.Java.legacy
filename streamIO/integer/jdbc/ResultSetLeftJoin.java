@@ -28,6 +28,15 @@ import function.index.IIndexer;
  * when the Keys are equally distributed! 
  * @author heuerm
  *
+ * <!-- docstate
+ * pass: 2
+ * mtime: 2026-09-05T22:02:44Z
+ * digest: 2a7b60c76e6a32ce2b941bc61e99ff84bf1f9bc911c87c07436fe8a16be87524
+ * stale: false
+ * tags: [code/jdbc_adapter, code/database_access, code/database_driver]
+ * concepts: [Filesystem-Backed JDBC Driver Framework with Fixed-Length and Separator-Delimited Table Storage]
+ * facets: {layer: domain, status: legacy, complexity: high}
+ * -->
  */
 public class ResultSetLeftJoin 
 extends ResultSetCrossJoin {
@@ -97,61 +106,65 @@ extends ResultSetCrossJoin {
 	///////////////////////////////////////////////////////////////////////////
 	
 	/**
-	 * @param _rsIter the ResultSet to iterate over, typically the Many-Side of a Relation 
-	 * @param _rsFind the ResultSet to find Matches in, typically the Lookup/One-Side of a Relation 
-	 * @param _colIter the Colums to match in _rsIter, typically the Set of Foreign Keys 
-	 * @param _colFind the Colums to match in _rsFind, typically the Set of Primary Keys 
-	 * @throws SQLException when the Condition contains other than '=' Criteria or the Number of Keys does not match. 
+	 * Initializing constructor performing an inner join.
+	 * @param _rsIter the ResultSet to iterate over, typically the Many-Side of a Relation
+	 * @param _rsFind the ResultSet to find Matches in, typically the Lookup/One-Side of a Relation
+	 * @param _colIter the Colums to match in _rsIter, typically the Set of Foreign Keys
+	 * @param _colFind the Colums to match in _rsFind, typically the Set of Primary Keys
+	 * @throws SQLException when the Condition contains other than '=' Criteria or the Number of Keys does not match.
 	 */
 	public ResultSetLeftJoin(final ResultSet _rsIter,
-			final ResultSet _rsFind, final int[] _colIter, final int[] _colFind) 
+			final ResultSet _rsFind, final int[] _colIter, final int[] _colFind)
 	throws SQLException {
-		this(_rsIter, _rsFind, _colIter, _colFind, false); 
+		this(_rsIter, _rsFind, _colIter, _colFind, false);
 	}
 	
 	/**
-	 * @param _rsIter the ResultSet to iterate over, typically the Many-Side of a Relation 
-	 * @param _rsFind the ResultSet to find Matches in, typically the Lookup/One-Side of a Relation 
-	 * @param _colIter the Colums to match in _rsIter, typically the Set of Foreign Keys 
-	 * @param _colFind the Colums to match in _rsFind, typically the Set of Primary Keys 
-	 * @param _outer Flag whether to use an outer Join 
-	 * @throws SQLException when the Condition contains other than '=' Criteria or the Number of Keys does not match. 
+	 * Initializing constructor letting the caller choose inner or outer join.
+	 * @param _rsIter the ResultSet to iterate over, typically the Many-Side of a Relation
+	 * @param _rsFind the ResultSet to find Matches in, typically the Lookup/One-Side of a Relation
+	 * @param _colIter the Colums to match in _rsIter, typically the Set of Foreign Keys
+	 * @param _colFind the Colums to match in _rsFind, typically the Set of Primary Keys
+	 * @param _outer Flag whether to use an outer Join
+	 * @throws SQLException when the Condition contains other than '=' Criteria or the Number of Keys does not match.
 	 */
 	public ResultSetLeftJoin(final ResultSet _rsIter,
 			final ResultSet _rsFind, final int[] _colIter, final int[] _colFind
-			, final boolean outer) 
+			, final boolean outer)
 	throws SQLException {
 		this(_rsIter, _rsFind, _colIter, _colFind, outer, false); 
 	}
 	
 	/**
-	 * @param _rsIter the ResultSet to iterate over, typically the Many-Side of a Relation 
-	 * @param _rsFind the ResultSet to find Matches in, typically the Lookup/One-Side of a Relation 
-	 * @param _colIter the Colums to match in _rsIter, typically the Set of Foreign Keys 
-	 * @param _colFind the Colums to match in _rsFind, typically the Set of Primary Keys 
-	 * @param _outer Flag whether to use an outer Join 
-	 * @param _right Flag for a right outer Join; swaps the Sequence of the ResultSet Column Sets. 
-	 * @throws SQLException when the Condition contains other than '=' Criteria or the Number of Keys does not match. 
+	 * Initializing constructor with an explicit right-join flag, no statement reference.
+	 * @param _rsIter the ResultSet to iterate over, typically the Many-Side of a Relation
+	 * @param _rsFind the ResultSet to find Matches in, typically the Lookup/One-Side of a Relation
+	 * @param _colIter the Colums to match in _rsIter, typically the Set of Foreign Keys
+	 * @param _colFind the Colums to match in _rsFind, typically the Set of Primary Keys
+	 * @param _outer Flag whether to use an outer Join
+	 * @param _right Flag for a right outer Join; swaps the Sequence of the ResultSet Column Sets.
+	 * @throws SQLException when the Condition contains other than '=' Criteria or the Number of Keys does not match.
 	 */
 	public ResultSetLeftJoin(final ResultSet _rsIter,
 			final ResultSet _rsFind, final int[] _colIter, final int[] _colFind
-			, final boolean outer, final boolean right) 
+			, final boolean outer, final boolean right)
 	throws SQLException {
 		this(_rsIter, _rsFind, _colIter, _colFind, outer, right, null); 
 	}
 	
 	/**
-	 * @param _rsIter the ResultSet to iterate over, typically the Many-Side of a Relation 
-	 * @param _rsFind the ResultSet to find Matches in, typically the Lookup/One-Side of a Relation 
-	 * @param _conditions the List of '=' Condition in to match, 
-	 * typically the Set of Foreign Keys against the Set of Primary Keys. 
-	 * @param _outer Flag whether to use an outer Join 
-	 * @param _right Flag for a right outer Join; swaps the Sequence of the ResultSet Column Sets. 
-	 * @param _statement Reference to the Statement that created this ResultSet. 
-	 * @throws SQLException when the Condition contains other than '=' Criteria or the Number of Keys does not match. 
+	 * Initializing constructor deriving the match columns from parsed {@code '='} conditions.
+	 * @param _rsIter the ResultSet to iterate over, typically the Many-Side of a Relation
+	 * @param _rsFind the ResultSet to find Matches in, typically the Lookup/One-Side of a Relation
+	 * @param _conditions the List of '=' Condition in to match,
+	 * typically the Set of Foreign Keys against the Set of Primary Keys.
+	 * @param _outer Flag whether to use an outer Join
+	 * @param _right Flag for a right outer Join; swaps the Sequence of the ResultSet Column Sets.
+	 * @param _statement Reference to the Statement that created this ResultSet.
+	 * @throws SQLException when the Condition contains other than '=' Criteria or the Number of Keys does not match.
 	 */
-	public ResultSetLeftJoin(final ResultSet _rsIter, final ResultSet _rsFind, 
-			final IDbTest[] _conditions, 
+	public ResultSetLeftJoin(final ResultSet _rsIter, final ResultSet _rsFind,
+			final IDbTest[] _conditions,
 			final boolean _outer, final boolean _right, 
 			final Statement _statement) 
 	throws SQLException {
@@ -160,17 +173,19 @@ extends ResultSetCrossJoin {
 	}
 	
 	/**
-	 * @param _rsIter the ResultSet to iterate over, typically the Many-Side of a Relation 
-	 * @param _rsFind the ResultSet to find Matches in, typically the Lookup/One-Side of a Relation 
-	 * @param _colIter the Colums to match in _rsIter, typically the Set of Foreign Keys 
-	 * @param _colFind the Colums to match in _rsFind, typically the Set of Primary Keys 
-	 * @param _outer Flag whether to use an outer Join 
-	 * @param _right Flag for a right outer Join; swaps the Sequence of the ResultSet Column Sets. 
-	 * @param _statement Reference to the Statement that created this ResultSet. 
-	 * @throws SQLException when the Condition contains other than '=' Criteria or the Number of Keys does not match. 
+	 * Initializing constructor with an explicit statement reference; delegates to the
+	 * array-based constructor and logs at debug level.
+	 * @param _rsIter the ResultSet to iterate over, typically the Many-Side of a Relation
+	 * @param _rsFind the ResultSet to find Matches in, typically the Lookup/One-Side of a Relation
+	 * @param _colIter the Colums to match in _rsIter, typically the Set of Foreign Keys
+	 * @param _colFind the Colums to match in _rsFind, typically the Set of Primary Keys
+	 * @param _outer Flag whether to use an outer Join
+	 * @param _right Flag for a right outer Join; swaps the Sequence of the ResultSet Column Sets.
+	 * @param _statement Reference to the Statement that created this ResultSet.
+	 * @throws SQLException when the Condition contains other than '=' Criteria or the Number of Keys does not match.
 	 */
-	public ResultSetLeftJoin(final ResultSet _rsIter, final ResultSet _rsFind, 
-			final int[] _colIter, final int[] _colFind, 
+	public ResultSetLeftJoin(final ResultSet _rsIter, final ResultSet _rsFind,
+			final int[] _colIter, final int[] _colFind,
 			final boolean _outer, final boolean _right, 
 			final Statement _statement) 
 	throws SQLException {
@@ -180,17 +195,18 @@ extends ResultSetCrossJoin {
 	}
 	
 	/**
-	 * 
-	 * @param _rsIter the ResultSet to iterate over 
-	 * @param _rsFind the ResultSet to find Matches in 
+	 * Root initializing constructor: builds the {@link IIndexer} over the lookup side's
+	 * match columns and swaps sides when {@code _right} is set.
+	 * @param _rsIter the ResultSet to iterate over
+	 * @param _rsFind the ResultSet to find Matches in
 	 * @param _colIter the Colums to match in _rsIter
 	 * @param _colFind the Colums to match in _rsFind
-	 * @param _outer Flag whether to use an outer Join 
-	 * @param _right Flag for a right outer Join; swaps the ResultSets. 
-	 * @param _statement Reference to the Statement that created this ResultSet. 
+	 * @param _outer Flag whether to use an outer Join
+	 * @param _right Flag for a right outer Join; swaps the ResultSets.
+	 * @param _statement Reference to the Statement that created this ResultSet.
 	 * @throws SQLException
 	 */
-	public ResultSetLeftJoin(final ResultSet[] _rs, final int[][] _cols,  
+	public ResultSetLeftJoin(final ResultSet[] _rs, final int[][] _cols,
 			final boolean _outer, final boolean _right, 
 			final Statement _statement) 
 	throws SQLException {
@@ -206,7 +222,11 @@ extends ResultSetCrossJoin {
 	
 	///////////////////////////////////////////////////////////////////////////
 	
-	/** @see streamIO.integer.jdbc.AResultSet#readNext()	 */
+	/**
+	 * Advances {@code rsIter} and positions {@code rsFind} on the matching row found via
+	 * {@link #index}, or on the null record when no match exists and this is an outer join.
+	 * @see streamIO.integer.jdbc.AResultSet#readNext()
+	 */
 	public boolean next() throws SQLException {
 		for(;rsIter.next();) {
 			buf.setLength(0); 
@@ -229,6 +249,9 @@ extends ResultSetCrossJoin {
 	/// Methods
 	///////////////////////////////////////////////////////////////////////////
 	
+	/**
+	 * Manual smoke test joining two {@link ResultSetSep} test files and printing the result.
+	 */
 	public static void main(final String[] args) throws Exception {
 		try {
 		final ResultSetSep rsIter = new ResultSetSep(ResultSetSep.TEST_FILE_PATH+"CDs.tab"); 

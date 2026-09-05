@@ -1,15 +1,34 @@
 package streamIO.integer.jdbc;
 
-/** Implements the Interface ResultSetMetaData
- * Shares the FieldNames and optionally the FieldSizes with the ResultSet
- * Used in @see Container2ResultSet
- * Very similar to the Interface @see org.xml.sax.Attributes
- */
 import java.sql.ResultSetMetaData;
 import java.sql.SQLException;
 //import java.sql.SQLException;
 
-public class RSMetaData 
+// TODO: LOGIC: every column-indexed method here (isCurrency, isCaseSensitive, getColumnName,
+// getColumnLabel, ...) does "columns[column]" directly against the caller-supplied column
+// number, but java.sql.ResultSetMetaData's contract is 1-based ("the first column is 1",
+// documented on every method below) while `columns` is a plain 0-based array. Confirmed by
+// AResultSet#findColumn(String), which returns the raw 0-based loop index `i` rather than
+// `i+1`. A caller following the standard JDBC contract (column 1 = first column) reads the
+// second column instead of the first throughout, and column == columnCount throws
+// ArrayIndexOutOfBoundsException instead of a documented SQLException for an out-of-range index.
+/**
+ * Implements {@link ResultSetMetaData}, sharing the field names and optionally the field
+ * sizes with the {@link ResultSet} it describes; similar in role to
+ * {@code org.xml.sax.Attributes}.
+ *
+ * @see DbColumn the column descriptors backing this metadata
+ * <!-- docstate
+ * pass: 2
+ * mtime: 2026-09-05T21:58:21Z
+ * digest: 03901f6006700e8aedd29b46b9bbe98300821ff329183bf816349e95f4f0c687
+ * stale: false
+ * tags: [code/jdbc_adapter, code/database_access, code/database_driver]
+ * concepts: [Filesystem-Backed JDBC Driver Framework with Fixed-Length and Separator-Delimited Table Storage]
+ * facets: {layer: domain, status: legacy, complexity: high}
+ * -->
+ */
+public class RSMetaData
 implements ResultSetMetaData {
 
 	////////////////////////////////////////////////////////////////////////////
@@ -261,10 +280,16 @@ implements ResultSetMetaData {
 		return columns[column].colClass.toString(); }		
 		//return "java.lang.String"; }
 
-	/** @see java.sql.Wrapper#isWrapperFor(java.lang.Class)	 */
+	/**
+	 * Always returns {@code false}; this metadata wraps no other implementation.
+	 * @see java.sql.Wrapper#isWrapperFor(java.lang.Class)
+	 */
 	public boolean isWrapperFor(Class arg0) throws SQLException { return false;	}
 
-	/** @see java.sql.Wrapper#unwrap(java.lang.Class)	 */
+	/**
+	 * Always returns {@code null}; this metadata wraps no other implementation.
+	 * @see java.sql.Wrapper#unwrap(java.lang.Class)
+	 */
 	public Object unwrap(Class arg0) throws SQLException { return null;	}
 
 }

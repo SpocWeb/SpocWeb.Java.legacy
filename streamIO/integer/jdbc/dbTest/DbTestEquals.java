@@ -15,6 +15,11 @@ import synch.ValidationRule;
  * Encapsulates a Test for a Relation between two Fields. 
  * @author heuerm
  *
+ * <!-- docstate
+ * tags: [code/predicate, code/predicate_evaluation]
+ * concepts: [Row-Level Equality Test between Two DbColumn Fields]
+ * facets: {layer: domain, status: legacy, complexity: low}
+ * -->
  */
 public class DbTestEquals 
 implements IDbTest {
@@ -22,7 +27,8 @@ implements IDbTest {
 	/** Logger for this Class	 */
 	private Log L = new Log(DbTestEquals.class, 1); 
 	
-	final static public String OPERATOR = "="; 
+	/** The Operator Symbol for an Equals Test. */
+	final static public String OPERATOR = "=";
 	
 	/** the left Field of the Relation	*/
 	final public DbColumn field0; 
@@ -35,19 +41,21 @@ implements IDbTest {
 	 */
 	public String toString() { return field0+getOperator()+field1; }
 	
-	/**
-	 * @param field1
-	 * @param field2
+	/** Creates a Test for Equality between the given two Fields.
+	 * @param field0 the left Operand
+	 * @param field1 the right Operand
 	 */
 	public DbTestEquals(final DbColumn field0, final DbColumn field1) {
 		this.field0 = field0;
 		this.field1 = field1;
 	}
 
-	/** @see streamIO.integer.jdbc.dbTest.IDbTest#getOperator()	 */
-	public String getOperator() { return OPERATOR; } 
+	/** Returns the Equals Operator Symbol.
+	 * @see streamIO.integer.jdbc.dbTest.IDbTest#getOperator()	 */
+	public String getOperator() { return OPERATOR; }
 	
-	/** @see streamIO.integer.jdbc.dbTest.IDbTest#test()	
+	/** Evaluates whether both Fields' String Values are equal.
+	 * @see streamIO.integer.jdbc.dbTest.IDbTest#test()
 	 * @return true when the Column Values match
 	 * @throws SQLException
 	 */
@@ -58,14 +66,17 @@ implements IDbTest {
 		return ValidationRule.EQUALS(param, value); 
 	}
 	
+	/** Creates a new DbTestEquals over the given Fields.	 */
 	public IDbTest newInstance(final DbColumn field0, final DbColumn field1) {
-		return new DbTestEquals(field0, field1); 
+		return new DbTestEquals(field0, field1);
 	}
 
-	/** @see streamIO.integer.jdbc.dbTest.IDbTest#getOperand0()	 */
+	/** Returns the left Operand Field.
+	 * @see streamIO.integer.jdbc.dbTest.IDbTest#getOperand0()	 */
 	public DbColumn getOperand0() { return field0; }
 
-	/** @see streamIO.integer.jdbc.dbTest.IDbTest#getOperand1()	 */
+	/** Returns the right Operand Field.
+	 * @see streamIO.integer.jdbc.dbTest.IDbTest#getOperand1()	 */
 	public DbColumn getOperand1() { return field1; }
 	
 }

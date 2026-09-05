@@ -112,6 +112,15 @@ import streamIO.object.parser.InputStream2StreamIn;
   * 
   * @see streamIO.object.parser.jdbc.ResultSetSep
   * @see streamIO.integer.jdbc.ResultSetFix2
+  * <!-- docstate
+  * pass: 2
+  * mtime: 2026-09-05T21:55:01Z
+  * digest: 24419cd1f4a0102c4e26e3ee13bf3ad52622606b2b69215699bfbf146e3ff136
+  * stale: false
+  * tags: [code/jdbc_adapter, code/database_access, code/database_driver]
+  * concepts: [Filesystem-Backed JDBC Driver Framework with Fixed-Length and Separator-Delimited Table Storage]
+  * facets: {layer: domain, status: legacy, complexity: high}
+  * -->
   */
 public class ResultSetFix 
 extends AResultSetStream {
@@ -119,12 +128,16 @@ extends AResultSetStream {
 	/** Logger for this Class 	 */
 	private static final Log L = new Log(ResultSetFix.class); 
 	
-	/** @return true when the File ends with the Fixed ResultSet Suffix  */
+	/**
+	 * Determines whether a path or file name uses the fixed-length table file suffix.
+	 * @return true when the File ends with the Fixed ResultSet Suffix  */
 	final static public boolean HAS_FORMAT(String filePathOrName) {
 		return VectorString.ENDS_WITH(filePathOrName, ConnectionFix.SUFFIX_FIX);
 	}
 
-	/** @return true when the File ends with the Fixed ResultSet Suffix  */
+	/**
+	 * Determines whether a file uses the fixed-length table file suffix.
+	 * @return true when the File ends with the Fixed ResultSet Suffix  */
 	final static public boolean HAS_FIX_FORMAT(File file) {
 		return VectorString.ENDS_WITH(file, ConnectionFix.SUFFIX_FIX);
 	}

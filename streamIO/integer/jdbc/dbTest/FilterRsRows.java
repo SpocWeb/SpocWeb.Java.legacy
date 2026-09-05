@@ -18,6 +18,11 @@ import streamIO.integer.jdbc.ResultSetCrossJoin;
  * @see streamIO.integer.jdbc.FilterRsByIRowCondition defines the Condition using IRowCondition. 
  * @author heuerm
  *
+ * <!-- docstate
+ * tags: [code/predicate_filter, code/predicate_filtering]
+ * concepts: [Filters ResultSet Rows Where a Predicate is False]
+ * facets: {layer: domain, status: legacy, complexity: low}
+ * -->
  */
 public class FilterRsRows 
 extends FilterResultSet {

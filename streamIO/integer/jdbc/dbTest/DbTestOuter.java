@@ -12,28 +12,35 @@ import streamIO.integer.jdbc.DbColumn;
 import synch.ValidationRule;
 
 /**
+ * Left Outer Join variant of the Equals Test: treats the left Field being null as a Match,
+ * as long as it has not already matched a different Row.
  * @author heuerm
- *
- * TODO To change the template for this generated type comment go to
- * Window - Preferences - Java - Code Style - Code Templates
+ * <!-- docstate
+ * tags: [code/predicate, code/predicate_evaluation]
+ * concepts: [Left Outer Join Row Predicate]
+ * facets: {layer: domain, status: broken, complexity: low}
+ * -->
  */
-public class DbTestOuter 
+public class DbTestOuter
 extends DbTestEquals {
 
-	/**
-	 * @param field1
-	 * @param field2
+	/** Creates a Left Outer Equals Test over the given two Fields.
+	 * @param field1 the left Operand
+	 * @param field2 the right Operand
 	 */
 	public DbTestOuter(DbColumn field1, DbColumn field2) {
 		super(field1, field2);
 	}
 
-	/** creates a new Instance of this Class	 */
+	// TODO: LOGIC: returns a plain DbTestEquals instead of a new DbTestOuter, so a caller
+	// invoking newInstance() on this Test loses the Outer-Join semantics and silently gets
+	// an Equals Test instead (same defect as DbTestLess.newInstance()).
+	/** Creates a new Instance of this Class	 */
 	public IDbTest newInstance(final DbColumn field1, final DbColumn field2) {
-		return new DbTestEquals(field1, field2); 
+		return new DbTestEquals(field1, field2);
 	}
-	
-	/** defines the Operator 	*/
+
+	/** Returns the Left Outer Join Operator Symbol.	 */
 	public String getOperator() { return "=*"; }
 	
 	//the Flags have to be reset with the ResultSet! 	
@@ -41,7 +48,9 @@ extends DbTestEquals {
 	/** Flag whether a Match has already been found 	 */
 	boolean foundMatch = false; 
 	
-	/** @see streamIO.integer.jdbc.dbTest.IDbTest#test()	
+	/** Evaluates the Left Outer Equals Test, treating a null left Field as a Match unless it
+	 * already matched a different Row.
+	 * @see streamIO.integer.jdbc.dbTest.IDbTest#test()
 	 * @return true when the Column Values match
 	 * @throws SQLException
 	 */

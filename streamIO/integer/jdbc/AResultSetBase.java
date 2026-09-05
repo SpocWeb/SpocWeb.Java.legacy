@@ -34,13 +34,40 @@ import streamIO.object.AStreamIn;
 import streamIO.object.IStreamIn;
 
 /**
- * implements the basic common Operations between AResultSet and ResultSetFilter
- * @author heuerm
+ * Abstract base implementing the operations shared by {@link AResultSet} and
+ * {@link FilterResultSet}: column/metadata bookkeeping, the {@link IStreamIn} adapter methods
+ * ({@link #currItem()}, {@link #nextItem()}, {@link #availAble()}), and the {@code String}-column
+ * overloads of the {@link ResultSet} interface that all resolve to an index via
+ * {@link #findColumnOrFail(String)} and delegate to their {@code int}-column counterpart.
  *
+ * <h2>Collaborators</h2>
+ *
+ * | Type | Relationship |
+ * |---|---|
+ * | {@link DbColumn} | Column descriptors backing {@link #getColumns()} and {@link #getNumCols()}. |
+ * | {@link RSMetaData} | Metadata view lazily created by {@link #getMetaData()}. |
+ * | {@link AResultSet} | Concrete file-backed subclass. |
+ * | {@link FilterResultSet} | Concrete filtering subclass. |
+ *
+ * @author heuerm
+ * @see DbColumn
+ * @see RSMetaData
+ * @see AResultSet a concrete subclass
+ * @see FilterResultSet a concrete subclass
+ *
+ * <!-- docstate
+ * pass: 2
+ * mtime: 2026-09-05T21:44:37Z
+ * digest: 708285f3459d7c62fd1aecc56b29a4bf87dc85ba4d5cd91c1051ff9434d7398c
+ * stale: false
+ * tags: [code/jdbc_adapter, code/database_access, code/database_driver]
+ * concepts: [Filesystem-Backed JDBC Driver Framework with Fixed-Length and Separator-Delimited Table Storage]
+ * facets: {layer: domain, status: legacy, complexity: high}
+ * -->
  */
-public abstract class AResultSetBase 
+public abstract class AResultSetBase
 extends AStreamIn
-implements ResultSet 
+implements ResultSet
 {
 
 	////////////////////////////////////////////////////////////////////////////
@@ -333,13 +360,17 @@ implements ResultSet
 	/** List of the Column Objects containing Names, Aliases or Labels, Field Default Strings and Types  */
 	protected DbColumn[] columns;
 	
-	/** @return the Number of Columns      */
-	final public int getNumCols() { 
+	/**
+	 * Returns the number of columns in this result set.
+	 * @return the Number of Columns      */
+	final public int getNumCols() {
 		return columns.length; //metaData.getColumnCount();
 	}
-	
-	/** @return the Number of Columns      */
-	final public DbColumn[] getColumns() { 
+
+	/**
+	 * Returns a shallow copy of this result set's column descriptors.
+	 * @return a clone of the {@link DbColumn} array backing this result set      */
+	final public DbColumn[] getColumns() {
 		return  (DbColumn[])columns.clone(); //no deep Clone necessary
 	}
 	
@@ -369,7 +400,9 @@ implements ResultSet
 	/** holds Flag whether Column Names and Properties are made case insensitive by Capitalizing   */
 	protected boolean capitalizing = true;
 
-	/** @return Flag whether Column Names and Properties are made case insensitive by Capitalizing  */
+	/**
+	 * Reports whether column names and properties are compared case-insensitively.
+	 * @return Flag whether Column Names and Properties are made case insensitive by Capitalizing  */
 	public boolean getCapitalizing() { return capitalizing; }
 
 	/** Sets Flag whether Column Names and Properties are made case insensitive by Capitalizing  */
@@ -385,24 +418,28 @@ implements ResultSet
 	protected Object[] currRow; // = new String[columns.length];
 	
 	/**
-	 * @see streamIO.object.IStreamIn#currItem()	 
+	 * Returns the current row, materialized as an {@code Object[]}.
+	 * @see streamIO.object.IStreamIn#currItem()
 	 * @return the current Object.
 	 * In this Case this is the complete Row Object.
 	 */
 	public Object currItem() { return currRow; }
-	
-	/** @return the Order in which Elements are returned by the Iterators
+
+	/**
+	 * Reports {@link IStreamIn#ORDER_NONE}; result set rows carry no defined iteration order.
+	 * @return the Order in which Elements are returned by the Iterators
 	  * when they are added using addItem() and removed using nextItem().	 */
 	public byte getOrder() { return IStreamIn.ORDER_NONE; }
 	
-	/** 
+	/**
+	 * Reports whether at least one more row can be read, without committing to an exact count.
 	 * @return the minimum Number of Items left (in the Buffer).
 	 * The actual Number may be higher, so available() should be called again
 	 * at the End of this Number.
 	 *
 	 * Nearly equivalent is currItem != null
 	 * (when the Container does not contain null Entries, like e.g. HashTables)
-	 * @see streamIO.IAvailAble#availAble()	
+	 * @see streamIO.IAvailAble#availAble()
 	 */
 	public long availAble() {
 		try {
@@ -416,16 +453,21 @@ implements ResultSet
 		}
 	}
 	
-	/** @see streamIO.IAvailAble#getPosition()	 */
-	final public long getPosition() { 
-		try { return getRow(); 
+	/**
+	 * Returns the current row number, wrapping a checked {@link SQLException} into
+	 * an unchecked {@link BaseException}.
+	 * @see streamIO.IAvailAble#getPosition()
+	 */
+	final public long getPosition() {
+		try { return getRow();
 		} catch (final SQLException x) {
-			throw new BaseException(x); 
+			throw new BaseException(x);
 		}
 	}
-	
-	/** 
-	 * @see streamIO.IFactory#nextItem()	 
+
+	/**
+	 * Advances to and returns the next row as an {@code Object[]}, or {@link #EOI} at the end.
+	 * @see streamIO.IFactory#nextItem()
 	 * @return  the next (Parent) Object of this one.
 	 * No Exception is thrown at the End, instead EOI is returned.
 	 * This is less explicit, but much faster because Exception Handling can be extremely slow.
@@ -459,12 +501,16 @@ implements ResultSet
 		return ret; 
 	}
 	
-	/** @see java.sql.ResultSet#updateString(java.lang.String, final java.lang.String)  */
-	public void updateString(final String columnName, final String x) 
+	/**
+	 * Resolves {@code columnName} to its index and delegates to {@link #updateString(int, String)}.
+	 * @see java.sql.ResultSet#updateString(java.lang.String, final java.lang.String)  */
+	public void updateString(final String columnName, final String x)
 	throws SQLException { updateString(findColumnOrFail(columnName), x); }
-	
-	/** @see java.sql.ResultSet#updateObject(java.lang.String, final java.lang.Object)  */
-	public void updateObject(final String columnName, final Object x) 
+
+	/**
+	 * Resolves {@code columnName} to its index and delegates to {@link #updateObject(int, Object)}.
+	 * @see java.sql.ResultSet#updateObject(java.lang.String, final java.lang.Object)  */
+	public void updateObject(final String columnName, final Object x)
 	throws SQLException { updateObject(findColumnOrFail(columnName), x); }
 	
 	/**
@@ -499,10 +545,11 @@ implements ResultSet
 	throws SQLException { return getAsciiStream(findColumnOrFail(columnName)); }
 
 	/**
+	  * Resolves {@code columnName} to its index and delegates to {@link #getBigDecimal(int, int)}.
 	  * @see java.sql.ResultSet#getBigDecimal(String, int)
 	  * @deprecated
 	  */
-	public BigDecimal getBigDecimal(final String columnName, final int scale) 
+	public BigDecimal getBigDecimal(final String columnName, final int scale)
 	throws SQLException { return getBigDecimal(findColumnOrFail(columnName), scale); }
 
 	/**
@@ -858,308 +905,511 @@ implements ResultSet
 	public void updateTimestamp(final String columnName, final Timestamp x) 
 	throws SQLException { updateTimestamp(findColumnOrFail(columnName), x); }
 
-	/** @see java.lang.Object#clone()	 */
+	/**
+	 * Stub override of {@link java.lang.Object#clone}; not implemented and always returns super.clone().
+	 *
+	 * @see java.lang.Object#clone()
+	 */
 	protected Object clone() throws CloneNotSupportedException {
 		// TODO Auto-generated method stub
 		return super.clone();
 	}
 
-	/** @see java.sql.ResultSet#getHoldability()	 */
+	/**
+	 * Stub override of {@link java.sql.ResultSet#getHoldability}; not implemented and always returns 0.
+	 *
+	 * @see java.sql.ResultSet#getHoldability()
+	 */
 	public int getHoldability() throws SQLException {
 		// TODO Auto-generated method stub
 		return 0;
 	}
 
-	/** @see java.sql.ResultSet#getNCharacterStream(int)	 */
+	/**
+	 * Stub override of {@link java.sql.ResultSet#getNCharacterStream}; not implemented and always returns null.
+	 *
+	 * @see java.sql.ResultSet#getNCharacterStream(int)
+	 */
 	public Reader getNCharacterStream(int arg0) throws SQLException {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
-	/** @see java.sql.ResultSet#getNCharacterStream(java.lang.String)	 */
+	/**
+	 * Stub override of {@link java.sql.ResultSet#getNCharacterStream}; not implemented and always returns null.
+	 *
+	 * @see java.sql.ResultSet#getNCharacterStream(java.lang.String)
+	 */
 	public Reader getNCharacterStream(String arg0) throws SQLException {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
-	/** @see java.sql.ResultSet#getNClob(int)	 */
+	/**
+	 * Stub override of {@link java.sql.ResultSet#getNClob}; not implemented and always returns null.
+	 *
+	 * @see java.sql.ResultSet#getNClob(int)
+	 */
 	public NClob getNClob(int arg0) throws SQLException {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
-	/** @see java.sql.ResultSet#getNClob(java.lang.String)
+	/**
+	 * Stub override of {@link java.sql.ResultSet#getNClob}; not implemented and always returns null.
+	 *
+	 * @see java.sql.ResultSet#getNClob(java.lang.String)
 	 */
 	public NClob getNClob(String arg0) throws SQLException {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
-	/** @see java.sql.ResultSet#getNString(int)	 */
+	/**
+	 * Stub override of {@link java.sql.ResultSet#getNString}; not implemented and always returns null.
+	 *
+	 * @see java.sql.ResultSet#getNString(int)
+	 */
 	public String getNString(int arg0) throws SQLException {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
-	/** @see java.sql.ResultSet#getNString(java.lang.String)	 */
+	/**
+	 * Stub override of {@link java.sql.ResultSet#getNString}; not implemented and always returns null.
+	 *
+	 * @see java.sql.ResultSet#getNString(java.lang.String)
+	 */
 	public String getNString(String arg0) throws SQLException {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
-	/** @see java.sql.ResultSet#getRowId(int)	 */
+	/**
+	 * Stub override of {@link java.sql.ResultSet#getRowId}; not implemented and always returns null.
+	 *
+	 * @see java.sql.ResultSet#getRowId(int)
+	 */
 	public RowId getRowId(int arg0) throws SQLException {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
-	/** @see java.sql.ResultSet#getRowId(java.lang.String)	 */
+	/**
+	 * Stub override of {@link java.sql.ResultSet#getRowId}; not implemented and always returns null.
+	 *
+	 * @see java.sql.ResultSet#getRowId(java.lang.String)
+	 */
 	public RowId getRowId(String arg0) throws SQLException {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
-	/** @see java.sql.ResultSet#getSQLXML(int)	 */
+	/**
+	 * Stub override of {@link java.sql.ResultSet#getSQLXML}; not implemented and always returns null.
+	 *
+	 * @see java.sql.ResultSet#getSQLXML(int)
+	 */
 	public SQLXML getSQLXML(int arg0) throws SQLException {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
-	/** @see java.sql.ResultSet#getSQLXML(java.lang.String)	 */
+	/**
+	 * Stub override of {@link java.sql.ResultSet#getSQLXML}; not implemented and always returns null.
+	 *
+	 * @see java.sql.ResultSet#getSQLXML(java.lang.String)
+	 */
 	public SQLXML getSQLXML(String arg0) throws SQLException {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
-	/** @see java.sql.ResultSet#isClosed()	 */
+	/**
+	 * Stub override of {@link java.sql.ResultSet#isClosed}; not implemented and always returns false.
+	 *
+	 * @see java.sql.ResultSet#isClosed()
+	 */
 	public boolean isClosed() throws SQLException {
 		// TODO Auto-generated method stub
 		return false;
 	}
 
-	/** @see java.sql.ResultSet#updateAsciiStream(int, java.io.InputStream, long)	 */
+	/**
+	 * Stub override of {@link java.sql.ResultSet#updateAsciiStream}; not implemented and performs no action.
+	 *
+	 * @see java.sql.ResultSet#updateAsciiStream(int, java.io.InputStream, long)
+	 */
 	public void updateAsciiStream(int arg0, InputStream arg1, long arg2) throws SQLException {
 		// TODO Auto-generated method stub
 		
 	}
 
-	/** @see java.sql.ResultSet#updateAsciiStream(int, java.io.InputStream)	 */
+	/**
+	 * Stub override of {@link java.sql.ResultSet#updateAsciiStream}; not implemented and performs no action.
+	 *
+	 * @see java.sql.ResultSet#updateAsciiStream(int, java.io.InputStream)
+	 */
 	public void updateAsciiStream(int arg0, InputStream arg1) throws SQLException {
 		// TODO Auto-generated method stub
 		
 	}
 
-	/** @see java.sql.ResultSet#updateAsciiStream(java.lang.String, java.io.InputStream, long)	 */
+	/**
+	 * Stub override of {@link java.sql.ResultSet#updateAsciiStream}; not implemented and performs no action.
+	 *
+	 * @see java.sql.ResultSet#updateAsciiStream(java.lang.String, java.io.InputStream, long)
+	 */
 	public void updateAsciiStream(String arg0, InputStream arg1, long arg2) throws SQLException {
 		// TODO Auto-generated method stub
 		
 	}
 
-	/** @see java.sql.ResultSet#updateAsciiStream(java.lang.String, java.io.InputStream)	 */
+	/**
+	 * Stub override of {@link java.sql.ResultSet#updateAsciiStream}; not implemented and performs no action.
+	 *
+	 * @see java.sql.ResultSet#updateAsciiStream(java.lang.String, java.io.InputStream)
+	 */
 	public void updateAsciiStream(String arg0, InputStream arg1) throws SQLException {
 		// TODO Auto-generated method stub
 		
 	}
 
-	/** @see java.sql.ResultSet#updateBinaryStream(int, java.io.InputStream, long)	 */
+	/**
+	 * Stub override of {@link java.sql.ResultSet#updateBinaryStream}; not implemented and performs no action.
+	 *
+	 * @see java.sql.ResultSet#updateBinaryStream(int, java.io.InputStream, long)
+	 */
 	public void updateBinaryStream(int arg0, InputStream arg1, long arg2) throws SQLException {
 		// TODO Auto-generated method stub
 		
 	}
 
-	/** @see java.sql.ResultSet#updateBinaryStream(int, java.io.InputStream)	 */
+	/**
+	 * Stub override of {@link java.sql.ResultSet#updateBinaryStream}; not implemented and performs no action.
+	 *
+	 * @see java.sql.ResultSet#updateBinaryStream(int, java.io.InputStream)
+	 */
 	public void updateBinaryStream(int arg0, InputStream arg1) throws SQLException {
 		// TODO Auto-generated method stub
 		
 	}
 
-	/** @see java.sql.ResultSet#updateBinaryStream(java.lang.String, java.io.InputStream, long)	 */
+	/**
+	 * Stub override of {@link java.sql.ResultSet#updateBinaryStream}; not implemented and performs no action.
+	 *
+	 * @see java.sql.ResultSet#updateBinaryStream(java.lang.String, java.io.InputStream, long)
+	 */
 	public void updateBinaryStream(String arg0, InputStream arg1, long arg2) throws SQLException {
 		// TODO Auto-generated method stub
 		
 	}
 
-	/** @see java.sql.ResultSet#updateBinaryStream(java.lang.String, java.io.InputStream)	 */
+	/**
+	 * Stub override of {@link java.sql.ResultSet#updateBinaryStream}; not implemented and performs no action.
+	 *
+	 * @see java.sql.ResultSet#updateBinaryStream(java.lang.String, java.io.InputStream)
+	 */
 	public void updateBinaryStream(String arg0, InputStream arg1) throws SQLException {
 		// TODO Auto-generated method stub
 		
 	}
 
-	/** @see java.sql.ResultSet#updateBlob(int, java.io.InputStream, long)	 */
+	/**
+	 * Stub override of {@link java.sql.ResultSet#updateBlob}; not implemented and performs no action.
+	 *
+	 * @see java.sql.ResultSet#updateBlob(int, java.io.InputStream, long)
+	 */
 	public void updateBlob(int arg0, InputStream arg1, long arg2) throws SQLException {
 		// TODO Auto-generated method stub
 		
 	}
 
-	/** @see java.sql.ResultSet#updateBlob(int, java.io.InputStream)	 */
+	/**
+	 * Stub override of {@link java.sql.ResultSet#updateBlob}; not implemented and performs no action.
+	 *
+	 * @see java.sql.ResultSet#updateBlob(int, java.io.InputStream)
+	 */
 	public void updateBlob(int arg0, InputStream arg1) throws SQLException {
 		// TODO Auto-generated method stub
 		
 	}
 
-	/** @see java.sql.ResultSet#updateBlob(java.lang.String, java.io.InputStream, long)	 */
+	/**
+	 * Stub override of {@link java.sql.ResultSet#updateBlob}; not implemented and performs no action.
+	 *
+	 * @see java.sql.ResultSet#updateBlob(java.lang.String, java.io.InputStream, long)
+	 */
 	public void updateBlob(String arg0, InputStream arg1, long arg2) throws SQLException {
 		// TODO Auto-generated method stub
 		
 	}
 
-	/** @see java.sql.ResultSet#updateBlob(java.lang.String, java.io.InputStream)	 */
+	/**
+	 * Stub override of {@link java.sql.ResultSet#updateBlob}; not implemented and performs no action.
+	 *
+	 * @see java.sql.ResultSet#updateBlob(java.lang.String, java.io.InputStream)
+	 */
 	public void updateBlob(String arg0, InputStream arg1) throws SQLException {
 		// TODO Auto-generated method stub
 		
 	}
 
-	/** @see java.sql.ResultSet#updateCharacterStream(int, java.io.Reader, long)	 */
+	/**
+	 * Stub override of {@link java.sql.ResultSet#updateCharacterStream}; not implemented and performs no action.
+	 *
+	 * @see java.sql.ResultSet#updateCharacterStream(int, java.io.Reader, long)
+	 */
 	public void updateCharacterStream(int arg0, Reader arg1, long arg2) throws SQLException {
 		// TODO Auto-generated method stub
 		
 	}
 
-	/** @see java.sql.ResultSet#updateCharacterStream(int, java.io.Reader)	 */
+	/**
+	 * Stub override of {@link java.sql.ResultSet#updateCharacterStream}; not implemented and performs no action.
+	 *
+	 * @see java.sql.ResultSet#updateCharacterStream(int, java.io.Reader)
+	 */
 	public void updateCharacterStream(int arg0, Reader arg1) throws SQLException {
 		// TODO Auto-generated method stub
 		
 	}
 
-	/** @see java.sql.ResultSet#updateCharacterStream(java.lang.String, java.io.Reader, long)	 */
+	/**
+	 * Stub override of {@link java.sql.ResultSet#updateCharacterStream}; not implemented and performs no action.
+	 *
+	 * @see java.sql.ResultSet#updateCharacterStream(java.lang.String, java.io.Reader, long)
+	 */
 	public void updateCharacterStream(String arg0, Reader arg1, long arg2) throws SQLException {
 		// TODO Auto-generated method stub
 		
 	}
 
-	/** @see java.sql.ResultSet#updateCharacterStream(java.lang.String, java.io.Reader)	 */
+	/**
+	 * Stub override of {@link java.sql.ResultSet#updateCharacterStream}; not implemented and performs no action.
+	 *
+	 * @see java.sql.ResultSet#updateCharacterStream(java.lang.String, java.io.Reader)
+	 */
 	public void updateCharacterStream(String arg0, Reader arg1) throws SQLException {
 		// TODO Auto-generated method stub
 		
 	}
 
-	/** @see java.sql.ResultSet#updateClob(int, java.io.Reader, long)	 */
+	/**
+	 * Stub override of {@link java.sql.ResultSet#updateClob}; not implemented and performs no action.
+	 *
+	 * @see java.sql.ResultSet#updateClob(int, java.io.Reader, long)
+	 */
 	public void updateClob(int arg0, Reader arg1, long arg2) throws SQLException {
 		// TODO Auto-generated method stub
 		
 	}
 
-	/** @see java.sql.ResultSet#updateClob(int, java.io.Reader)	 */
+	/**
+	 * Stub override of {@link java.sql.ResultSet#updateClob}; not implemented and performs no action.
+	 *
+	 * @see java.sql.ResultSet#updateClob(int, java.io.Reader)
+	 */
 	public void updateClob(int arg0, Reader arg1) throws SQLException {
 		// TODO Auto-generated method stub
 		
 	}
 
-	/** @see java.sql.ResultSet#updateClob(java.lang.String, java.io.Reader, long)	 */
+	/**
+	 * Stub override of {@link java.sql.ResultSet#updateClob}; not implemented and performs no action.
+	 *
+	 * @see java.sql.ResultSet#updateClob(java.lang.String, java.io.Reader, long)
+	 */
 	public void updateClob(String arg0, Reader arg1, long arg2) throws SQLException {
 		// TODO Auto-generated method stub
 		
 	}
 
-	/** @see java.sql.ResultSet#updateClob(java.lang.String, java.io.Reader)	 */
+	/**
+	 * Stub override of {@link java.sql.ResultSet#updateClob}; not implemented and performs no action.
+	 *
+	 * @see java.sql.ResultSet#updateClob(java.lang.String, java.io.Reader)
+	 */
 	public void updateClob(String arg0, Reader arg1) throws SQLException {
 		// TODO Auto-generated method stub
 		
 	}
 
-	/** @see java.sql.ResultSet#updateNCharacterStream(int, java.io.Reader, long)	 */
+	/**
+	 * Stub override of {@link java.sql.ResultSet#updateNCharacterStream}; not implemented and performs no action.
+	 *
+	 * @see java.sql.ResultSet#updateNCharacterStream(int, java.io.Reader, long)
+	 */
 	public void updateNCharacterStream(int arg0, Reader arg1, long arg2) throws SQLException {
 		// TODO Auto-generated method stub
 		
 	}
 
-	/** @see java.sql.ResultSet#updateNCharacterStream(int, java.io.Reader)	 */
+	/**
+	 * Stub override of {@link java.sql.ResultSet#updateNCharacterStream}; not implemented and performs no action.
+	 *
+	 * @see java.sql.ResultSet#updateNCharacterStream(int, java.io.Reader)
+	 */
 	public void updateNCharacterStream(int arg0, Reader arg1) throws SQLException {
 		// TODO Auto-generated method stub
 		
 	}
 
-	/** @see java.sql.ResultSet#updateNCharacterStream(java.lang.String, java.io.Reader, long)	 */
+	/**
+	 * Stub override of {@link java.sql.ResultSet#updateNCharacterStream}; not implemented and performs no action.
+	 *
+	 * @see java.sql.ResultSet#updateNCharacterStream(java.lang.String, java.io.Reader, long)
+	 */
 	public void updateNCharacterStream(String arg0, Reader arg1, long arg2) throws SQLException {
 		// TODO Auto-generated method stub
 		
 	}
 
-	/** @see java.sql.ResultSet#updateNCharacterStream(java.lang.String, java.io.Reader)	 */
+	/**
+	 * Stub override of {@link java.sql.ResultSet#updateNCharacterStream}; not implemented and performs no action.
+	 *
+	 * @see java.sql.ResultSet#updateNCharacterStream(java.lang.String, java.io.Reader)
+	 */
 	public void updateNCharacterStream(String arg0, Reader arg1) throws SQLException {
 		// TODO Auto-generated method stub
 		
 	}
 
-	/** @see java.sql.ResultSet#updateNClob(int, java.sql.NClob)	 */
+	/**
+	 * Stub override of {@link java.sql.ResultSet#updateNClob}; not implemented and performs no action.
+	 *
+	 * @see java.sql.ResultSet#updateNClob(int, java.sql.NClob)
+	 */
 	public void updateNClob(int arg0, NClob arg1) throws SQLException {
 		// TODO Auto-generated method stub
 		
 	}
 
-	/** @see java.sql.ResultSet#updateNClob(int, java.io.Reader, long)	 */
+	/**
+	 * Stub override of {@link java.sql.ResultSet#updateNClob}; not implemented and performs no action.
+	 *
+	 * @see java.sql.ResultSet#updateNClob(int, java.io.Reader, long)
+	 */
 	public void updateNClob(int arg0, Reader arg1, long arg2) throws SQLException {
 		// TODO Auto-generated method stub
 		
 	}
 
-	/** @see java.sql.ResultSet#updateNClob(int, java.io.Reader)	 */
+	/**
+	 * Stub override of {@link java.sql.ResultSet#updateNClob}; not implemented and performs no action.
+	 *
+	 * @see java.sql.ResultSet#updateNClob(int, java.io.Reader)
+	 */
 	public void updateNClob(int arg0, Reader arg1) throws SQLException {
 		// TODO Auto-generated method stub
 		
 	}
 
-	/** @see java.sql.ResultSet#updateNClob(java.lang.String, java.sql.NClob)	 */
+	/**
+	 * Stub override of {@link java.sql.ResultSet#updateNClob}; not implemented and performs no action.
+	 *
+	 * @see java.sql.ResultSet#updateNClob(java.lang.String, java.sql.NClob)
+	 */
 	public void updateNClob(String arg0, NClob arg1) throws SQLException {
 		// TODO Auto-generated method stub
 		
 	}
 
-	/** @see java.sql.ResultSet#updateNClob(java.lang.String, java.io.Reader, long)	 */
+	/**
+	 * Stub override of {@link java.sql.ResultSet#updateNClob}; not implemented and performs no action.
+	 *
+	 * @see java.sql.ResultSet#updateNClob(java.lang.String, java.io.Reader, long)
+	 */
 	public void updateNClob(String arg0, Reader arg1, long arg2) throws SQLException {
 		// TODO Auto-generated method stub
 		
 	}
 
-	/** @see java.sql.ResultSet#updateNClob(java.lang.String, java.io.Reader)	 */
+	/**
+	 * Stub override of {@link java.sql.ResultSet#updateNClob}; not implemented and performs no action.
+	 *
+	 * @see java.sql.ResultSet#updateNClob(java.lang.String, java.io.Reader)
+	 */
 	public void updateNClob(String arg0, Reader arg1) throws SQLException {
 		// TODO Auto-generated method stub
 		
 	}
 
-	/** @see java.sql.ResultSet#updateNString(int, java.lang.String)	 */
+	/**
+	 * Stub override of {@link java.sql.ResultSet#updateNString}; not implemented and performs no action.
+	 *
+	 * @see java.sql.ResultSet#updateNString(int, java.lang.String)
+	 */
 	public void updateNString(int arg0, String arg1) throws SQLException {
 		// TODO Auto-generated method stub
 		
 	}
 
-	/** @see java.sql.ResultSet#updateNString(java.lang.String, java.lang.String)	 */
+	/**
+	 * Stub override of {@link java.sql.ResultSet#updateNString}; not implemented and performs no action.
+	 *
+	 * @see java.sql.ResultSet#updateNString(java.lang.String, java.lang.String)
+	 */
 	public void updateNString(String arg0, String arg1) throws SQLException {
 		// TODO Auto-generated method stub
 		
 	}
 
-	/** @see java.sql.ResultSet#updateRowId(int, java.sql.RowId)	 */
+	/**
+	 * Stub override of {@link java.sql.ResultSet#updateRowId}; not implemented and performs no action.
+	 *
+	 * @see java.sql.ResultSet#updateRowId(int, java.sql.RowId)
+	 */
 	public void updateRowId(int arg0, RowId arg1) throws SQLException {
 		// TODO Auto-generated method stub
 		
 	}
 
-	/** @see java.sql.ResultSet#updateRowId(java.lang.String, java.sql.RowId)	 */
+	/**
+	 * Stub override of {@link java.sql.ResultSet#updateRowId}; not implemented and performs no action.
+	 *
+	 * @see java.sql.ResultSet#updateRowId(java.lang.String, java.sql.RowId)
+	 */
 	public void updateRowId(String arg0, RowId arg1) throws SQLException {
 		// TODO Auto-generated method stub
 		
 	}
 
-	/** @see java.sql.ResultSet#updateSQLXML(int, java.sql.SQLXML)	 */
+	/**
+	 * Stub override of {@link java.sql.ResultSet#updateSQLXML}; not implemented and performs no action.
+	 *
+	 * @see java.sql.ResultSet#updateSQLXML(int, java.sql.SQLXML)
+	 */
 	public void updateSQLXML(int arg0, SQLXML arg1) throws SQLException {
 		// TODO Auto-generated method stub
 		
 	}
 
-	/** @see java.sql.ResultSet#updateSQLXML(java.lang.String, java.sql.SQLXML)	 */
+	/**
+	 * Stub override of {@link java.sql.ResultSet#updateSQLXML}; not implemented and performs no action.
+	 *
+	 * @see java.sql.ResultSet#updateSQLXML(java.lang.String, java.sql.SQLXML)
+	 */
 	public void updateSQLXML(String arg0, SQLXML arg1) throws SQLException {
 		// TODO Auto-generated method stub
 		
 	}
 
-	/** @see java.sql.Wrapper#isWrapperFor(java.lang.Class)	 */
+	/**
+	 * Stub override of {@link java.sql.Wrapper#isWrapperFor}; not implemented and always returns false.
+	 *
+	 * @see java.sql.Wrapper#isWrapperFor(java.lang.Class)
+	 */
 	public boolean isWrapperFor(Class arg0) throws SQLException {
 		// TODO Auto-generated method stub
 		return false;
 	}
 
-	/** @see java.sql.Wrapper#unwrap(java.lang.Class)	 */
+	/**
+	 * Stub override of {@link java.sql.Wrapper#unwrap}; not implemented and always returns null.
+	 *
+	 * @see java.sql.Wrapper#unwrap(java.lang.Class)
+	 */
 	public Object unwrap(Class arg0) throws SQLException {
 		// TODO Auto-generated method stub
 		return null;

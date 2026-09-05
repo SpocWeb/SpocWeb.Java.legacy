@@ -14,6 +14,11 @@ import tester.IEquivalence;
  * Interface to test the Foreign Key Relation between two ResultSet Rows
  * @author heuerm
  *
+ * <!-- docstate
+ * tags: [code/jdbc_adapter, code/database_access, code/database_driver]
+ * concepts: [Filesystem-Backed JDBC Driver Framework with Fixed-Length and Separator-Delimited Table Storage]
+ * facets: {layer: domain, status: legacy, complexity: high}
+ * -->
  */
 public interface IJoinCondition // 
 extends IEquivalence {

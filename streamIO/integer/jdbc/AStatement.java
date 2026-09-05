@@ -29,42 +29,50 @@ import streamIO.integer.jdbc.dbTest.FilterRsRows;
 import streamIO.integer.jdbc.dbTest.IDbTest;
 
 /**
- * Title: AStatement<p>
- * Description:
- * Purpose:
- * Base Class with Members and get/set Pairs for Statement Classes
- * and Methods to parse a Subset of SQL Statements. 
- * Although SQL is Set-based, this is mostly used for SELECT Statements only. 
- * Typically only individual Rows are inserted, deleted or updated. 
+ * Base class for a {@link Statement} over this package's filesystem-backed tables, providing
+ * the get/set pairs of the {@code Statement} contract plus a hand-rolled parser and evaluator
+ * for a subset of SQL (mainly {@code SELECT}, with row-at-a-time {@code INSERT}/{@code UPDATE}/
+ * {@code DELETE}).
  *
- * Design Decisions / Implementation Details:
- * Parsing can happen in different Ways: 
- * the simple way is to recursively create ResultSets and aggregate them in RAM. 
- * the more complex, but also more performant way is to create a Structure of RS-Filters
- * which dynamically performs filtering and updating (without creating intermediate Cross-Joins). 
- * Most difficult is the Parsing and Evaluation of Conditions. 
- * A canonical Query makes Parsing and Evaluation easier: 
- * all Fields are prefixed with their Table Names
- * all Fields and all Tables are indexed 
+ * <p>Design note: parsing can create and aggregate {@link ResultSet}s recursively in RAM (the
+ * simple approach used here), or build a structure of RS-filters that filters and updates
+ * dynamically without materializing intermediate cross-joins (more complex, more performant,
+ * not implemented). Condition parsing and evaluation is the hardest part; a canonical query -
+ * every field prefixed with its table name, every field and table indexed - makes both easier.
  *
- * Actually there is an SPI for Implementors defined in javax.sql 
- * as well as a Reference Implementation using disconnected RecordSets 
- * read from and written to XML Documents. 
- * This SPI is based on the RowSet Interface, 
- * which extends the ResultSet Interface with Methods to construct a Schema. 
+ * <p>{@code javax.sql} defines an SPI for implementors, with a reference implementation using
+ * disconnected record sets read from and written to XML documents, based on the {@code RowSet}
+ * interface (itself an extension of {@code ResultSet} with schema-construction methods) - not
+ * used here.
  *
- * Known SubClasses: <none>
+ * <h2>Collaborators</h2>
  *
- * Known Uses: <none>
+ * | Type | Relationship |
+ * |---|---|
+ * | {@link AConnection} | Supplies the directory this statement's tables are resolved against. |
+ * | {@link IDbTest} | Parsed condition tree used to evaluate {@code WHERE}/{@code ON} clauses. |
+ * | {@link DbColumn} | Column descriptor resolved by name/alias during parsing. |
  *
  * Copyright:	Copyright (c) Matthias Heuer<p>
  * Company:	personal<p>
  * Created on	10-26-2002, 12:47 PM<p>
  * @author mheuer
  * @version	1.0
+ * @see AConnection
+ * @see IDbTest the parsed condition contract
+ * @see DbColumn
  *
+ * <!-- docstate
+ * pass: 2
+ * mtime: 2026-09-05T21:53:32Z
+ * digest: 14542c063ba1db8ed7f8006df857612d89aef18ee5719a7da8743b910b6dd473
+ * stale: false
+ * tags: [code/jdbc_adapter, code/database_access, code/database_driver]
+ * concepts: [Filesystem-Backed JDBC Driver Framework with Fixed-Length and Separator-Delimited Table Storage]
+ * facets: {layer: domain, status: legacy, complexity: high}
+ * -->
  */
-public abstract class AStatement 
+public abstract class AStatement
 implements Statement {
 
 	//////////////////////////////////////////////////////////////////////////////////
@@ -75,19 +83,43 @@ implements Statement {
 	protected abstract ResultSet getResultSet(final File table, final String tableName) 
 	throws SQLException, IOException;// { return null; }
 	
+	/**
+	 * Always returns {@code false}; this statement tracks no closed state of its own.
+	 * @see java.sql.Statement#isClosed()
+	 */
 	public boolean isClosed() throws SQLException { return false; }
 
+	/**
+	 * Always returns {@code false}; statement pooling is not supported.
+	 * @see java.sql.Statement#isPoolable()
+	 */
 	public boolean isPoolable() throws SQLException { return false;	}
 
-	public void setPoolable(boolean arg0) throws SQLException { 
+	/**
+	 * Always throws, since statement pooling is not supported.
+	 * @throws SQLException always
+	 * @see java.sql.Statement#setPoolable(boolean)
+	 */
+	public void setPoolable(boolean arg0) throws SQLException {
 		throw new SQLException("Poolable not supported"); }
 
+	/**
+	 * Always returns {@code false}; this statement wraps no other implementation.
+	 * @see java.sql.Wrapper#isWrapperFor(Class)
+	 */
 	public boolean isWrapperFor(Class arg0) throws SQLException { return false; }
 
+	/**
+	 * Always returns {@code null}; this statement wraps no other implementation.
+	 * @see java.sql.Wrapper#unwrap(Class)
+	 */
 	public Object unwrap(Class arg0) throws SQLException { return null;	}
 
+	/** Default result-set type used when a statement is created without one specified. */
 	final static public int resultSetTypeDefault        = ResultSet.TYPE_SCROLL_SENSITIVE; // FORWARD_ONLY;
-	final static public int resultSetConcurrencyDefault = ResultSet.CONCUR_UPDATABLE; // READ_ONLY; 
+	/** Default result-set concurrency used when a statement is created without one specified. */
+	final static public int resultSetConcurrencyDefault = ResultSet.CONCUR_UPDATABLE; // READ_ONLY;
+	/** Default result-set holdability used when a statement is created without one specified. */
 	final static public int resultSetHoldabilityDefault = ResultSet.HOLD_CURSORS_OVER_COMMIT; // CLOSE_CURSORS_AT_COMMIT;
 	
 	
@@ -188,17 +220,24 @@ implements Statement {
 	 */
 	final static public String STR_AS = " AS "; 
 	
-	final static public String STR_ON = " ON "; 
-	
+	/** 'On' Clause introducing a join condition. */
+	final static public String STR_ON = " ON ";
+
 	/** Select Statement for the full Table */
 	final static public String STR_SELECT_ALL = STR_SELECT + "* FROM ";
 
-	final static public String STR_LEFT = " LEFT"; 
-	final static public String STR_RIGHT= " RIGHT"; 
-	final static public String STR_FULL = " FULL"; 
-	final static public String STR_INNER = " INNER"; 
-	final static public String STR_OUTER = " OUTER"; 
-	final static public String STR_JOIN = " JOIN "; 
+	/** 'Left' Join-type keyword fragment. */
+	final static public String STR_LEFT = " LEFT";
+	/** 'Right' Join-type keyword fragment. */
+	final static public String STR_RIGHT= " RIGHT";
+	/** 'Full' Join-type keyword fragment. */
+	final static public String STR_FULL = " FULL";
+	/** 'Inner' Join-type keyword fragment. */
+	final static public String STR_INNER = " INNER";
+	/** 'Outer' Join-type keyword fragment. */
+	final static public String STR_OUTER = " OUTER";
+	/** 'Join' keyword fragment, combined with one of the join-type fragments above. */
+	final static public String STR_JOIN = " JOIN ";
 	
 	/** the maximum Number of direct Joins to expect	 */
 	public static char MAX_NUM_JOINS = 10;
@@ -344,10 +383,10 @@ implements Statement {
 	}
 	
 	/**
-	 * @param list
-	 * @param i
-	 * @param tableAlias
-	 * @return the String split by the Separators 'AS', 'ON' or ' '
+	 * Splits a {@code FROM}-clause table reference into its table name and alias.
+	 * @param table the table reference, optionally followed by an {@code AS} alias or a bare alias
+	 * @return a 2-element array of {table name, alias}; both elements equal the trimmed
+	 * input when no alias separator is found
 	 */
 	final static public String[] SPLIT_ALIAS(String table) {
 		table = table.trim(); 
@@ -360,7 +399,15 @@ implements Statement {
 		return alias; 
 	}
 	
-	/** Factory Method to create the correct Type of ResultSet 	 */ 
+	/**
+	 * Resolves {@code tableName} (with or without the connection's file suffix) to a table
+	 * file under the connection's directory and delegates to {@link #getResultSet(File, String)}.
+	 * @throws IOException when neither {@code tableName} nor {@code tableName + suffix} exists
+	 */
+	// TODO: SECURITY: tableName is taken directly from the parsed SQL FROM-clause and passed
+	// unsanitized into `new File(urlDir, tableName)` - a table name containing "../" segments
+	// can escape connection.urlDir and open an arbitrary file on the filesystem (path
+	// traversal). No validation rejects '..' or absolute paths before the File is constructed.
 	protected ResultSet getResultSet(final String tableName) throws SQLException, IOException {
 		File table = new File(((AConnection)conn).urlDir, tableName);
 		if (!table.exists()) 
@@ -377,16 +424,28 @@ implements Statement {
 	/** Reference to the Connection, needed for the URL */
 	protected final AConnection conn;
 	
+	/**
+	 * Returns the {@link Connection} that created this statement.
+	 * @see java.sql.Statement#getConnection()
+	 */
 	public Connection getConnection() { //throws SQLException {
 		return conn;
 	}
-	
+
+	/**
+	 * Delegates to {@link AConnection#getWarnings()}.
+	 * @see java.sql.Statement#getWarnings()
+	 */
 	public SQLWarning getWarnings() { //throws SQLException {
 		return conn.getWarnings();
 	}
-	
+
+	/**
+	 * Delegates to {@link AConnection#clearWarnings()}.
+	 * @see java.sql.Statement#clearWarnings()
+	 */
 	public void clearWarnings() throws SQLException {
-		conn.clearWarnings(); 
+		conn.clearWarnings();
 	}
 	
 	/** the SQL Statement currently executed	 */
@@ -402,6 +461,7 @@ implements Statement {
 	//////////////////////////////////////////////////////////////////////////////////
 	
 	/**
+	 * Initializing constructor using the default result-set type, concurrency and holdability.
 	 * @param conn
 	 */
 	public AStatement(final AConnection conn) {
@@ -449,7 +509,12 @@ implements Statement {
 		}
 	}
 
-	/** @see java.sql.Statement#executeUpdate(java.lang.String)	 */
+	/**
+	 * Executes {@code _sql} as a query and returns the number of rows it produced or
+	 * updated, reading the count directly off a {@link ResultSetCount} when the query
+	 * returns one.
+	 * @see java.sql.Statement#executeUpdate(java.lang.String)
+	 */
 	public int executeUpdate(final String _sql) throws SQLException {
 		currStatement = _sql; 
 		final ResultSet rs = executeQuery(_sql); 
@@ -778,14 +843,19 @@ implements Statement {
 				}
 			}
 			if (table == null) { //try to find the Field by Alias
-				final DbColumn ret = (DbColumn) _FieldsByAlias.get(fieldAlias[0]); 
-				if (ret != null) 
-					return ret; 
-				if (table != null) 
-					try { //try to interpret the Field Name as a Column Number 
-						final double value = Double.parseDouble(fieldAlias[0]); 
-						if (value == (int) value) 
-							col    = (int) value;  //Table.ColumnNumber given 
+				final DbColumn ret = (DbColumn) _FieldsByAlias.get(fieldAlias[0]);
+				if (ret != null)
+					return ret;
+				// TODO: LOGIC: "if (table != null)" is unreachable here - this whole block
+				// only runs when the enclosing "if (table == null)" just matched, so table
+				// is always null at this point. The column-number fallback below (parsing
+				// fieldAlias[0] as a numeric column index) never executes; it was likely
+				// meant to be unconditional or guarded on something else.
+				if (table != null)
+					try { //try to interpret the Field Name as a Column Number
+						final double value = Double.parseDouble(fieldAlias[0]);
+						if (value == (int) value)
+							col    = (int) value;  //Table.ColumnNumber given
 					} catch (final NumberFormatException ignore) {
 					}
 			}
@@ -832,14 +902,20 @@ implements Statement {
 	/** maximum Field Size, not used here */
 	protected int maxFieldSize;
 
-	/** @see java.sql.Statement#getMaxFieldSize()	 */
+	/**
+	 * Returns the value last set via {@link #setMaxFieldSize(int)}; not enforced.
+	 * @see java.sql.Statement#getMaxFieldSize()
+	 */
 	public int getMaxFieldSize() { // throws SQLException {
 		return maxFieldSize; //conn.dbMetaData.getMaxColumnNameLength();
 	}
 
-	/** @see java.sql.Statement#setMaxFieldSize(int)	 */
+	/**
+	 * Stores the maximum field size hint; not enforced by this driver.
+	 * @see java.sql.Statement#setMaxFieldSize(int)
+	 */
 	public void setMaxFieldSize(int max) { // throws SQLException {
-		maxFieldSize = max; 
+		maxFieldSize = max;
 	}
 
 	//////////////////////////////////////////////////////////////////////////////////
@@ -847,24 +923,33 @@ implements Statement {
 	/** maximum Field Size, not used here */
 	protected int maxRows;
 
-	/** @see java.sql.Statement#getMaxRows()	 */
+	/**
+	 * Returns the value last set via {@link #setMaxRows(int)}; not enforced.
+	 * @see java.sql.Statement#getMaxRows()
+	 */
 	public int getMaxRows() { //throws SQLException {
 		return maxRows;
 	}
 
-	/** @see java.sql.Statement#setMaxRows(int)	 */
+	/**
+	 * Stores the maximum row count hint; not enforced by this driver.
+	 * @see java.sql.Statement#setMaxRows(int)
+	 */
 	public void setMaxRows(final int max) { // throws SQLException {
-		maxRows = max; 
+		maxRows = max;
 	}
 
 	//////////////////////////////////////////////////////////////////////////////////
-	
+
 	/** Flag whether to use Escaping, not used here	 */
 	protected boolean escaping = false;
 
-	/** @see java.sql.Statement#setEscapeProcessing(boolean)	 */
+	/**
+	 * Stores the escape-processing flag; not used by this driver's SQL parsing.
+	 * @see java.sql.Statement#setEscapeProcessing(boolean)
+	 */
 	public void setEscapeProcessing(final boolean enable) { // throws SQLException {
-		escaping = enable; 
+		escaping = enable;
 	}
 
 	//////////////////////////////////////////////////////////////////////////////////
@@ -872,39 +957,59 @@ implements Statement {
 	/** Query Timeout in Seconds */
 	protected int queryTimeoutInSecs;
 
-	/** @see java.sql.Statement#getQueryTimeout()	 */
+	/**
+	 * Returns the value last set via {@link #setQueryTimeout(int)}; not enforced.
+	 * @see java.sql.Statement#getQueryTimeout()
+	 */
 	public int getQueryTimeout() { // throws SQLException {
 		return queryTimeoutInSecs;
 	}
 
-	/** @see java.sql.Statement#setQueryTimeout(int)	 */
+	/**
+	 * Stores the query timeout in seconds; not enforced by this driver.
+	 * @see java.sql.Statement#setQueryTimeout(int)
+	 */
 	public void setQueryTimeout(final int seconds) { // throws SQLException {
 		queryTimeoutInSecs = seconds;
 	}
 
 	//////////////////////////////////////////////////////////////////////////////////
-	
+
 	/** The Name of the Table or it's Alias	 */
 	protected String cursorName;
 
-	/** @see java.sql.Statement#setCursorName(java.lang.String)	 */
+	/**
+	 * Stores the cursor name used to identify this statement's current row for
+	 * positioned updates/deletes.
+	 * @see java.sql.Statement#setCursorName(java.lang.String)
+	 */
 	public void setCursorName(final String name) { // throws SQLException {
 		cursorName = name;
 	}
-	
+
 	//////////////////////////////////////////////////////////////////////////////////
-	
+
 	/** Reference to the last computed ResultSet */
 	protected ResultSet currRS;
-	
-	/** @see java.sql.Statement#getResultSet()	 */
+
+	/**
+	 * Returns the result set produced by the last executed query.
+	 * @see java.sql.Statement#getResultSet()
+	 */
 	public ResultSet getResultSet() { //throws SQLException {
 		return currRS;
 	}
-	
-	/** @see java.sql.Statement#close()	 */
+
+	// TODO: LOGIC: close() calls currRS.close() unconditionally; if this statement is
+	// closed before any query has been executed, currRS is still null and this throws
+	// NullPointerException instead of the no-op a caller following the try-with-resources/
+	// close-defensively pattern would expect.
+	/**
+	 * Closes the result set produced by the last executed query.
+	 * @see java.sql.Statement#close()
+	 */
 	public void close() throws SQLException {
-		currRS.close(); 
+		currRS.close();
 	}
 	
 	//////////////////////////////////////////////////////////////////////////////////
@@ -912,51 +1017,82 @@ implements Statement {
 	/** the fetchDirection is only a Hint */
 	protected int fetchDirection;
 	
-	/** @see java.sql.Statement#setFetchDirection(int)	 */
+	/**
+	 * Stores the fetch direction hint; not enforced by this driver.
+	 * @see java.sql.Statement#setFetchDirection(int)
+	 */
 	public void setFetchDirection(final int direction) { // throws SQLException {
-		fetchDirection = direction; 
+		fetchDirection = direction;
 	}
-	
-	/** @see java.sql.Statement#getFetchDirection()	 */
+
+	/**
+	 * Returns the value last set via {@link #setFetchDirection(int)}.
+	 * @see java.sql.Statement#getFetchDirection()
+	 */
 	public int getFetchDirection() { // throws SQLException {
 		return fetchDirection;
 	}
-	
+
 	//////////////////////////////////////////////////////////////////////////////////
-	
+
 	/** the fetchSize is only a Hint, ignored when 0 (default) */
 	protected int fetchSize;
-	
-	/** @see java.sql.Statement#setFetchSize(int)	 */
+
+	/**
+	 * Stores the fetch size hint; not enforced by this driver.
+	 * @see java.sql.Statement#setFetchSize(int)
+	 */
 	public void setFetchSize(final int rows) { // throws SQLException {
 		fetchSize = rows;
 	}
-	
+
+	/**
+	 * Returns the value last set via {@link #setFetchSize(int)}.
+	 * @see java.sql.Statement#getFetchSize()
+	 */
 	public int getFetchSize() { // throws SQLException {
 		return fetchSize;
 	}
-	
+
 	///////////////////////////////////////////////////////////////////////////
-	
-	final int resultSetConcurrency; 
-	
-	/** @see java.sql.Statement#getResultSetConcurrency()	 */
+
+	final int resultSetConcurrency;
+
+	// TODO: LOGIC: always returns resultSetConcurrencyDefault instead of the instance
+	// field resultSetConcurrency set by the constructor - a statement created with a
+	// non-default concurrency mode still reports the class-wide default here.
+	/**
+	 * Always returns {@link #resultSetConcurrencyDefault}.
+	 * @see java.sql.Statement#getResultSetConcurrency()
+	 */
 	public int getResultSetConcurrency() throws SQLException {
 		return resultSetConcurrencyDefault;
 	}
-	
+
 	final int resultSetType;
-	
-	/** @see java.sql.Statement#getResultSetType()	 */
+
+	// TODO: LOGIC: always returns resultSetTypeDefault instead of the instance field
+	// resultSetType set by the constructor - a statement created with a non-default
+	// result-set type still reports the class-wide default here.
+	/**
+	 * Always returns {@link #resultSetTypeDefault}.
+	 * @see java.sql.Statement#getResultSetType()
+	 */
 	public int getResultSetType() throws SQLException {
 		return resultSetTypeDefault;
 	}
-	
+
 	///////////////////////////////////////////////////////////////////////////
-	
-	final int resultSetHoldability; 
-	
-	/** @see java.sql.Statement#getResultSetHoldability()	 */
+
+	final int resultSetHoldability;
+
+	// TODO: LOGIC: always returns resultSetHoldabilityDefault instead of the instance
+	// field resultSetHoldability set by the constructor - a statement created with a
+	// non-default holdability still reports the class-wide default here.
+	/**
+	 * Always returns {@link #resultSetHoldabilityDefault}.
+	 * @see java.sql.Statement#getResultSetHoldability()
+	 */
 	public int getResultSetHoldability() throws SQLException {
 		return resultSetHoldabilityDefault;
 	}
@@ -980,15 +1116,20 @@ implements Statement {
 		return false;
 	}
 	
-	/** 
+	/**
+	 * Always returns {@code 0}; batches of multiple statements are not supported, so there is
+	 * no separate update count to report beyond {@link #executeUpdate(String)}'s own result.
 	 * @see #executeUpdate(String)
-	 * @see java.sql.Statement#getUpdateCount()	 
+	 * @see java.sql.Statement#getUpdateCount()
 	 */
 	public int getUpdateCount() throws SQLException {
 		return 0;
 	}
-	
-	/**@see #executeBatch() with several Statements 
+
+	/**
+	 * Always returns {@code false}; multiple result sets from a batch of statements are not
+	 * supported.
+	 * @see #executeBatch() with several Statements
 	 * @see java.sql.Statement#getMoreResults()
 	 */
 	public boolean getMoreResults() throws SQLException {
@@ -1035,37 +1176,58 @@ implements Statement {
 		throw new SQLException("Not Supported");
 	}
 	
-	/** @see java.sql.Statement#executeUpdate(java.lang.String, int)	 */
+	/**
+	 * Always throws, since retrieving auto-generated keys is not supported.
+	 * @throws SQLException always
+	 * @see java.sql.Statement#executeUpdate(java.lang.String, int)
+	 */
 	public int executeUpdate(final String sql, final int autoGeneratedKeys)
 		throws SQLException {
 		throw new SQLException("Not Supported");
 	}
-	
-	/** @see java.sql.Statement#executeUpdate(java.lang.String, int[])	 */
+
+	/**
+	 * Always throws, since retrieving auto-generated keys is not supported.
+	 * @throws SQLException always
+	 * @see java.sql.Statement#executeUpdate(java.lang.String, int[])
+	 */
 	public int executeUpdate(final String sql, final int[] columnIndexes)
 		throws SQLException {
 		throw new SQLException("Not Supported");
 	}
-	
-	/** @see java.sql.Statement#executeUpdate(java.lang.String, java.lang.String[])	 */
+
+	/**
+	 * Always throws, since retrieving auto-generated keys is not supported.
+	 * @throws SQLException always
+	 * @see java.sql.Statement#executeUpdate(java.lang.String, java.lang.String[])
+	 */
 	public int executeUpdate(final String sql, final String[] columnNames)
 		throws SQLException {
 		throw new SQLException("Not Supported");
 	}
-	
-	/** @see java.sql.Statement#execute(java.lang.String, int)	 */
+
+	/**
+	 * Ignores {@code autoGeneratedKeys} and delegates to {@link #execute(String)}.
+	 * @see java.sql.Statement#execute(java.lang.String, int)
+	 */
 	public boolean execute(final String sql, final int autoGeneratedKeys)
 		throws SQLException {
 		return execute(sql);
 	}
-	
-	/** @see java.sql.Statement#execute(java.lang.String, int[])	 */
+
+	/**
+	 * Ignores {@code columnIndexes} and delegates to {@link #execute(String)}.
+	 * @see java.sql.Statement#execute(java.lang.String, int[])
+	 */
 	public boolean execute(final String sql, final int[] columnIndexes)
 		throws SQLException {
 		return execute(sql);
 	}
-	
-	/** @see java.sql.Statement#execute(java.lang.String, java.lang.String[])	 */
+
+	/**
+	 * Ignores {@code columnNames} and delegates to {@link #execute(String)}.
+	 * @see java.sql.Statement#execute(java.lang.String, java.lang.String[])
+	 */
 	public boolean execute(final String sql, final String[] columnNames)
 		throws SQLException {
 		return execute(sql);

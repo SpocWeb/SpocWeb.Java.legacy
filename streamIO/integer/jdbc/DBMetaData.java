@@ -13,16 +13,22 @@ import java.sql.SQLException;
 import math.vector.VectorInt;
 
 /**
- * Title: DBMetaDataFix<p>
- * Description:
- * Purpose:
+ * Concrete {@link java.sql.DatabaseMetaData} implementation for {@link ConnectionFix}'s
+ * fixed-length-file tables: reports a fixed product name/version, delegates identifier-case
+ * and transaction-isolation queries to the {@link AConnection}, and builds the column
+ * metadata {@link ResultSet} for {@link #getColumns}. Table/index/key/privilege/UDT
+ * metadata is not implemented (see the stub methods below) since this driver has no such
+ * concepts.
  *
- * @see java.sql.DatabaseMetaData Implementation 
- * possibly use the same Implementation for both RSFix and RSSep! 
+ * <h2>Collaborators</h2>
  *
- * Known SubClasses: <none>
+ * | Type | Relationship |
+ * |---|---|
+ * | {@link AConnection} | Supplies the identifier-case and transaction-isolation flags this class reports. |
+ * | {@link ResultSetArray} | Backs the {@link #getColumns} result. |
  *
- * Known Uses: <none>
+ * @see java.sql.DatabaseMetaData the implemented interface;
+ * possibly use the same Implementation for both RSFix and RSSep!
  *
  * Copyright:	Copyright (c) Matthias Heuer<p>
  * Company:	personal<p>
@@ -30,26 +36,48 @@ import math.vector.VectorInt;
  * @author mheuer
  * @version	1.0
  *
+ * <!-- docstate
+ * pass: 2
+ * mtime: 2026-09-05T22:11:01Z
+ * digest: bb105667adbb0fbb969ea5270384eb0686f7e91b34b778cbc49bf6527c08e6ad
+ * stale: false
+ * tags: [code/jdbc_adapter, code/database_access, code/database_driver]
+ * concepts: [Filesystem-Backed JDBC Driver Framework with Fixed-Length and Separator-Delimited Table Storage]
+ * facets: {layer: domain, status: legacy, complexity: high}
+ * -->
  */
 public class DBMetaData 
 extends ADBMetaData {
 
-	/** @see java.sql.DatabaseMetaData#getDefaultTransactionIsolation()	 */
+	/**
+	 * Delegates to {@link AConnection#getTransactionIsolation()}.
+	 * @see java.sql.DatabaseMetaData#getDefaultTransactionIsolation()
+	 */
 	public int getDefaultTransactionIsolation() { //throws SQLException {
 		return connection.getTransactionIsolation();
 	}
 
-	/** @see java.sql.DatabaseMetaData#supportsTransactionIsolationLevel(int)	 */
+	/**
+	 * Reports whether {@code level} equals the connection's current transaction isolation
+	 * level (this driver supports only that single fixed level, not a range).
+	 * @see java.sql.DatabaseMetaData#supportsTransactionIsolationLevel(int)
+	 */
 	public boolean supportsTransactionIsolationLevel(final int level) { //throws SQLException {
 		return level == connection.getTransactionIsolation();
 	}
 
-	/** @see java.sql.DatabaseMetaData#getURL()	 */
+	/**
+	 * Returns the absolute path of the connection's root directory.
+	 * @see java.sql.DatabaseMetaData#getURL()
+	 */
 	public String getURL() { //throws SQLException {
 		return connection.urlDir.getAbsolutePath();
 	}
 
-	/** @see java.sql.DatabaseMetaData#getConnection()	 */
+	/**
+	 * Returns the owning {@link #connection}.
+	 * @see java.sql.DatabaseMetaData#getConnection()
+	 */
 	public Connection getConnection() { //throws SQLException {
 		return connection;
 	}
@@ -64,22 +92,32 @@ extends ADBMetaData {
 	///////////////////////////////////////////////////////////////////////////////////////////////////////
 	
 
-	/** @see java.sql.DatabaseMetaData#getDatabaseProductName()	 */
+	/**
+	 * Returns the fixed literal {@code "ASCII_FIXED_LENGTH"}.
+	 * @see java.sql.DatabaseMetaData#getDatabaseProductName()
+	 */
 	public String getDatabaseProductName() { //throws SQLException {
 		return "ASCII_FIXED_LENGTH";
 	}
 
-	/** @see java.sql.DatabaseMetaData#getDatabaseProductVersion()	 */
+	/**
+	 * Returns the fixed literal {@code "1.0"}.
+	 * @see java.sql.DatabaseMetaData#getDatabaseProductVersion()
+	 */
 	public String getDatabaseProductVersion() { //throws SQLException {
 		return "1.0";
 	}
 
-	/** @see java.sql.DatabaseMetaData#getDriverName()	 */
+	/**
+	 * Returns the fully-qualified class name of the connection's {@link java.sql.Driver}.
+	 * @see java.sql.DatabaseMetaData#getDriverName()
+	 */
 	public String getDriverName() { //throws SQLException {
 		return connection.driver.getClass().getName();
 	}
 
 	/**
+	 * Delegates to {@link java.sql.Driver#getMajorVersion()} on the connection's driver.
 	 * @see java.sql.DatabaseMetaData#getDriverMajorVersion()
 	 */
 	public int getDriverMajorVersion() {
@@ -87,33 +125,52 @@ extends ADBMetaData {
 	}
 
 	/**
+	 * Delegates to {@link java.sql.Driver#getMinorVersion()} on the connection's driver.
 	 * @see java.sql.DatabaseMetaData#getDriverMinorVersion()
 	 */
 	public int getDriverMinorVersion() {
 		return connection.driver.getMinorVersion();
 	}
 
-	/** @see java.sql.DatabaseMetaData#supportsMixedCaseIdentifiers()	 */
+	/**
+	 * Reports the negation of {@code connection.ignoreIDCase}.
+	 * @see java.sql.DatabaseMetaData#supportsMixedCaseIdentifiers()
+	 */
 	public boolean supportsMixedCaseIdentifiers() { //throws SQLException {
 		return !connection.ignoreIDCase;
 	}
 
-	/** @see java.sql.DatabaseMetaData#storesUpperCaseIdentifiers()	 */
+	/**
+	 * Reports {@code connection.useToUpper}.
+	 * @see java.sql.DatabaseMetaData#storesUpperCaseIdentifiers()
+	 */
 	public boolean storesUpperCaseIdentifiers() { //throws SQLException {
 		return connection.useToUpper;
 	}
 
-	/** @see java.sql.DatabaseMetaData#storesLowerCaseIdentifiers()	 */
+	/**
+	 * Reports the negation of {@code connection.useToUpper}.
+	 * @see java.sql.DatabaseMetaData#storesLowerCaseIdentifiers()
+	 */
 	public boolean storesLowerCaseIdentifiers() { //throws SQLException {
 		return !connection.useToUpper;
 	}
 
-	/** @see java.sql.DatabaseMetaData#storesMixedCaseIdentifiers()	 */
+	/**
+	 * Reports the negation of {@code connection.ignoreIDCase}.
+	 * @see java.sql.DatabaseMetaData#storesMixedCaseIdentifiers()
+	 */
 	public boolean storesMixedCaseIdentifiers() { //throws SQLException {
 		return !connection.ignoreIDCase;
 	}
 
-	/** @see java.sql.DatabaseMetaData#getColumns(java.lang.String, java.lang.String, java.lang.String, java.lang.String)	 */
+	/**
+	 * Builds a {@link ResultSetArray} describing the columns of the table at
+	 * {@code catalog/schema_/tableName} in the {@link java.sql.DatabaseMetaData#getColumns}
+	 * layout; several columns (DATA_TYPE, TYPE_NAME, NULLABLE, COLUMN_DEF, IS_NULLABLE) are
+	 * left {@code null} pending the {@code TODO}s below.
+	 * @see java.sql.DatabaseMetaData#getColumns(java.lang.String, java.lang.String, java.lang.String, java.lang.String)
+	 */
 	public ResultSet getColumns(
 		final String catalog,
 		final String schema_,
@@ -123,7 +180,7 @@ extends ADBMetaData {
 		if (schema_ != null) { relPath = schema_ + File.separatorChar + relPath; }
 		if (catalog != null) { relPath = catalog + File.separatorChar + relPath; }
 		//relPath+=connection.suffix; 
-		//Interessant: Initialisierungsfehler new File[][] hier führte zu irreführender Fehlermeldung erst zur Runtime
+		//Interessant: Initialisierungsfehler new File[][] hier fï¿½hrte zu irrefï¿½hrender Fehlermeldung erst zur Runtime
 		final Object[][] tableCol = new Object[COLUMN_FIELDS.length][]; //
 		final File table = new File(relPath); //connection.urlDir, relPath);  
 		final String[] defaults = new String[COLUMN_FIELDS.length]; //VectorString.COPY(COLUMN_FIELD_DEFAULTS); 
@@ -169,7 +226,10 @@ extends ADBMetaData {
 		return new ResultSetArray(tableCol, TABLE_FIELDS); //, defaults); 
 	}
 
-	/** @see java.sql.DatabaseMetaData#getColumnPrivileges(java.lang.String, java.lang.String, java.lang.String, java.lang.String)	 */
+	/**
+	 * Stub override; not implemented and always returns {@code null} (no privilege model exists).
+	 * @see java.sql.DatabaseMetaData#getColumnPrivileges(java.lang.String, java.lang.String, java.lang.String, java.lang.String)
+	 */
 	public ResultSet getColumnPrivileges(
 		String catalog,
 		String schema,
@@ -179,7 +239,10 @@ extends ADBMetaData {
 		return null;
 	}
 
-	/** @see java.sql.DatabaseMetaData#getTablePrivileges(java.lang.String, java.lang.String, java.lang.String)	 */
+	/**
+	 * Stub override; not implemented and always returns {@code null} (no privilege model exists).
+	 * @see java.sql.DatabaseMetaData#getTablePrivileges(java.lang.String, java.lang.String, java.lang.String)
+	 */
 	public ResultSet getTablePrivileges(
 		String catalog,
 		String schemaPattern,
@@ -188,7 +251,10 @@ extends ADBMetaData {
 		return null;
 	}
 
-	/** @see java.sql.DatabaseMetaData#getBestRowIdentifier(java.lang.String, java.lang.String, java.lang.String, int, boolean)	 */
+	/**
+	 * Stub override; not implemented and always returns {@code null} (no key metadata exists).
+	 * @see java.sql.DatabaseMetaData#getBestRowIdentifier(java.lang.String, java.lang.String, java.lang.String, int, boolean)
+	 */
 	public ResultSet getBestRowIdentifier(
 		String catalog,
 		String schema,
@@ -199,7 +265,10 @@ extends ADBMetaData {
 		return null;
 	}
 
-	/** @see java.sql.DatabaseMetaData#getVersionColumns(java.lang.String, java.lang.String, java.lang.String)	 */
+	/**
+	 * Always returns {@code null}; row versioning is not supported by this driver.
+	 * @see java.sql.DatabaseMetaData#getVersionColumns(java.lang.String, java.lang.String, java.lang.String)
+	 */
 	public ResultSet getVersionColumns(
 		String catalog,
 		String schema,
@@ -207,7 +276,10 @@ extends ADBMetaData {
 		return null;
 	}
 
-	/** @see java.sql.DatabaseMetaData#getPrimaryKeys(java.lang.String, java.lang.String, java.lang.String)	 */
+	/**
+	 * Stub override; not implemented and always returns {@code null} (no primary-key metadata exists).
+	 * @see java.sql.DatabaseMetaData#getPrimaryKeys(java.lang.String, java.lang.String, java.lang.String)
+	 */
 	public ResultSet getPrimaryKeys(
 		String catalog,
 		String schema,
@@ -216,7 +288,10 @@ extends ADBMetaData {
 		return null;
 	}
 
-	/** @see java.sql.DatabaseMetaData#getImportedKeys(java.lang.String, java.lang.String, java.lang.String)	 */
+	/**
+	 * Stub override; not implemented and always returns {@code null} (no foreign-key metadata exists).
+	 * @see java.sql.DatabaseMetaData#getImportedKeys(java.lang.String, java.lang.String, java.lang.String)
+	 */
 	public ResultSet getImportedKeys(
 		String catalog,
 		String schema,
@@ -225,7 +300,10 @@ extends ADBMetaData {
 		return null;
 	}
 
-	/** @see java.sql.DatabaseMetaData#getExportedKeys(java.lang.String, java.lang.String, java.lang.String)	 */
+	/**
+	 * Stub override; not implemented and always returns {@code null} (no foreign-key metadata exists).
+	 * @see java.sql.DatabaseMetaData#getExportedKeys(java.lang.String, java.lang.String, java.lang.String)
+	 */
 	public ResultSet getExportedKeys(
 		String catalog,
 		String schema,
@@ -234,7 +312,10 @@ extends ADBMetaData {
 		return null;
 	}
 
-	/** @see java.sql.DatabaseMetaData#getCrossReference(java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String)	 */
+	/**
+	 * Stub override; not implemented and always returns {@code null} (no foreign-key metadata exists).
+	 * @see java.sql.DatabaseMetaData#getCrossReference(java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String)
+	 */
 	public ResultSet getCrossReference(
 		String primaryCatalog,
 		String primarySchema,
@@ -246,13 +327,19 @@ extends ADBMetaData {
 		return null;
 	}
 
-	/** @see java.sql.DatabaseMetaData#getTypeInfo()	 */
+	/**
+	 * Stub override; not implemented and always returns {@code null}.
+	 * @see java.sql.DatabaseMetaData#getTypeInfo()
+	 */
 	public ResultSet getTypeInfo() { //throws SQLException {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
-	/** @see java.sql.DatabaseMetaData#getIndexInfo(java.lang.String, java.lang.String, java.lang.String, boolean, boolean)	 */
+	/**
+	 * Stub override; not implemented and always returns {@code null} (no index metadata exists).
+	 * @see java.sql.DatabaseMetaData#getIndexInfo(java.lang.String, java.lang.String, java.lang.String, boolean, boolean)
+	 */
 	public ResultSet getIndexInfo(
 		String catalog,
 		String schema,
@@ -263,7 +350,10 @@ extends ADBMetaData {
 		return null;
 	}
 
-	/** @see java.sql.DatabaseMetaData#getUDTs(java.lang.String, java.lang.String, java.lang.String, int[])	 */
+	/**
+	 * Stub override; not implemented and always returns {@code null} (no user-defined types exist).
+	 * @see java.sql.DatabaseMetaData#getUDTs(java.lang.String, java.lang.String, java.lang.String, int[])
+	 */
 	public ResultSet getUDTs(
 		String catalog,
 		String schemaPattern,
@@ -273,7 +363,10 @@ extends ADBMetaData {
 		return null;
 	}
 
-	/** @see java.sql.DatabaseMetaData#getSuperTypes(java.lang.String, java.lang.String, java.lang.String)	 */
+	/**
+	 * Stub override; not implemented and always returns {@code null} (no user-defined types exist).
+	 * @see java.sql.DatabaseMetaData#getSuperTypes(java.lang.String, java.lang.String, java.lang.String)
+	 */
 	public ResultSet getSuperTypes(
 		String catalog,
 		String schemaPattern,
@@ -282,7 +375,10 @@ extends ADBMetaData {
 		return null;
 	}
 
-	/** @see java.sql.DatabaseMetaData#getSuperTables(java.lang.String, java.lang.String, java.lang.String)	 */
+	/**
+	 * Stub override; not implemented and always returns {@code null} (no table-inheritance metadata exists).
+	 * @see java.sql.DatabaseMetaData#getSuperTables(java.lang.String, java.lang.String, java.lang.String)
+	 */
 	public ResultSet getSuperTables(
 		String catalog,
 		String schemaPattern,
@@ -291,7 +387,10 @@ extends ADBMetaData {
 		return null;
 	}
 
-	/** @see java.sql.DatabaseMetaData#getAttributes(java.lang.String, java.lang.String, java.lang.String, java.lang.String)	 */
+	/**
+	 * Stub override; not implemented and always returns {@code null} (no user-defined types exist).
+	 * @see java.sql.DatabaseMetaData#getAttributes(java.lang.String, java.lang.String, java.lang.String, java.lang.String)
+	 */
 	public ResultSet getAttributes(
 		String catalog,
 		String schemaPattern,
@@ -301,16 +400,27 @@ extends ADBMetaData {
 		return null;
 	}
 
-	/** @see java.sql.DatabaseMetaData#getDatabaseMajorVersion()	 */
+	/**
+	 * Delegates to {@link java.sql.Driver#getMajorVersion()} on the connection's driver
+	 * (this driver reports the same version for its database and itself).
+	 * @see java.sql.DatabaseMetaData#getDatabaseMajorVersion()
+	 */
 	public int getDatabaseMajorVersion() { //throws SQLException {
 		return connection.driver.getMajorVersion();
 	}
 
-	/** @see java.sql.DatabaseMetaData#getDatabaseMinorVersion()	 */
+	/**
+	 * Delegates to {@link java.sql.Driver#getMinorVersion()} on the connection's driver
+	 * (this driver reports the same version for its database and itself).
+	 * @see java.sql.DatabaseMetaData#getDatabaseMinorVersion()
+	 */
 	public int getDatabaseMinorVersion() { //throws SQLException {
 		return connection.driver.getMinorVersion();
 	}
 
+	/**
+	 * Unused entry point; performs no action.
+	 */
 	public static void main(String[] args) {
 	}
 

@@ -11,12 +11,15 @@ import java.sql.SQLException;
 import streamIO.integer.jdbc.DbColumn;
 
 /**
+ * Wraps another Test and inverts its Result.
  * @author heuerm
- *
- * TODO To change the template for this generated type comment go to
- * Window - Preferences - Java - Code Style - Code Templates
+ * <!-- docstate
+ * tags: [code/predicate, code/predicate_delegate]
+ * concepts: [Negating Row Predicate Wrapper]
+ * facets: {layer: domain, status: legacy, complexity: low}
+ * -->
  */
-public class DbTestNegate 
+public class DbTestNegate
 implements IDbTest {
 
 	/** Reference to the inner Tester	 */
@@ -35,12 +38,14 @@ implements IDbTest {
 	/// Interface IDbTest
 	///////////////////////////////////////////////////////////////////////////
 
-	/** @see streamIO.integer.jdbc.dbTest.IDbTest#getOperator()	 */
+	/** Returns this Negation's own Operator String.
+	 * @see streamIO.integer.jdbc.dbTest.IDbTest#getOperator()	 */
 	public String getOperator() { return operator; }
-	
-	/** @see streamIO.integer.jdbc.dbTest.IDbTest#test()	 */
+
+	/** Evaluates the delegate Test and inverts its Result.
+	 * @see streamIO.integer.jdbc.dbTest.IDbTest#test()	 */
 	public boolean test() throws SQLException {
-		return !delegate.test(); 
+		return !delegate.test();
 	}
 	
 	/** creates a new Instance of this Class	 */
@@ -48,10 +53,12 @@ implements IDbTest {
 		return new DbTestNegate(delegate.newInstance(field1, field2), operator); 
 	}
 	
-	/** @see streamIO.integer.jdbc.dbTest.IDbTest#getOperand0()	 */
+	/** Delegates to the wrapped Test's left Operand.
+	 * @see streamIO.integer.jdbc.dbTest.IDbTest#getOperand0()	 */
 	public DbColumn getOperand0() { return delegate.getOperand0(); }
 
-	/** @see streamIO.integer.jdbc.dbTest.IDbTest#getOperand1()	 */
+	/** Delegates to the wrapped Test's right Operand.
+	 * @see streamIO.integer.jdbc.dbTest.IDbTest#getOperand1()	 */
 	public DbColumn getOperand1() { return delegate.getOperand1(); }
 	
 }

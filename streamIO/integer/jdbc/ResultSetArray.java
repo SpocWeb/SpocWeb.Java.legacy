@@ -18,35 +18,36 @@ import streamIO.object.parser.jdbc.ConnectionSep;
 import streamIO.object.parser.jdbc.ResultSetSep;
 
 /**
- * Title: ArrayResultSet<p>
- * Description:
- * Purpose:
- * An Object[][] Table-backed ResultSet. 
- * The Table Cols represent the ResultSet Cols directly, so they may be typed, 
- * as long as they are not primitive.  
- * There is no Row Concept in this Implementation.  
- * 
- * ResultSet based on a dynamic Array of Object Arrays (fixed Size)
- * Used for providing Arrays in the Form of ResultSets, which allows for relational Operations, 
- *  and for caching ResultSets in RAM, resulting in vast Performance Improvements! 
- * 
- * Known SubClasses: <none>
+ * {@link AResultSetContainer} backed by an in-memory {@link MatrixObject} of
+ * {@code Object[]} rows rather than a file or another data source; columns may be
+ * arbitrarily typed (as long as not primitive) since each cell is a plain {@code Object}.
+ * Useful both for materializing rows directly (relational operations on hand-built data)
+ * and for caching an existing {@link ResultSet} in RAM for a large performance gain,
+ * see the {@link #ResultSetArray(ResultSet)} copy constructor.
  *
- * Known Uses: <none>
+ * <h2>Collaborators</h2>
  *
+ * | Type | Relationship |
+ * |---|---|
+ * | {@link MatrixObject} | Backing storage for the rows. |
+ * | {@link AResultSetContainer} | Superclass supplying the shared field/cursor bookkeeping. |
  *
- * Design Decisions: 
- * reusing a dynamic Object Matrix to stay typesafe, 
- * but still separate the Storage Funktionality from the Iteration. 
- *   
- * @see streamIO.object.enumer.ArrayEnum is very similar
- *
+ * @see streamIO.object.enumer.ArrayEnum a similar, non-JDBC array-backed enumerator
  * Copyright:	Copyright (c) Matthias Heuer<p>
  * Company:	personal<p>
  * Created on	10-26-2002, 12:47 PM<p>
  * @author mheuer
  * @version	1.0
  *
+ * <!-- docstate
+ * pass: 2
+ * mtime: 2026-09-05T22:08:00Z
+ * digest: 08f0cd9c3ecf630b180815e1300cddb943b0115287ec57abeb7039e6ee86ffaf
+ * stale: false
+ * tags: [code/jdbc_adapter, code/database_access, code/database_driver]
+ * concepts: [Filesystem-Backed JDBC Driver Framework with Fixed-Length and Separator-Delimited Table Storage]
+ * facets: {layer: domain, status: legacy, complexity: high}
+ * -->
  */
 public class ResultSetArray 
 extends AResultSetContainer {
@@ -80,9 +81,14 @@ extends AResultSetContainer {
 	///////////////////////////////////////////////////////////////////////////
 	
 	/**
-	 * @param _values
-	 * @param _rowIncrement
-	 * @param _statement, optional
+	 * Root initializing constructor wrapping a pre-populated {@code Object[][]} directly
+	 * (no copy) as this ResultSet's backing {@link MatrixObject}.
+	 * @param _values the row data to wrap
+	 * @param _fieldNames the column names
+	 * @param _numCols the number of columns
+	 * @param _rowIncrement growth increment passed to {@link MatrixObject}
+	 * @param _cursorName the cursor name
+	 * @param _statement the owning Statement, optional
 	 */
 	public ResultSetArray(final Object[][] _values, final String[] _fieldNames, final int _numCols, final int _rowIncrement, final String _cursorName, final Statement _statement) {
 		super(_fieldNames, _numCols, _cursorName, _statement); //TODO: initialize the FieldNames and FieldNumber
@@ -91,45 +97,49 @@ extends AResultSetContainer {
 	}
 
 	/**
-	 * 
-	 * @param _values
-	 * @param _rowIncrement
+	 * Wraps {@code _values} with no cursor name or owning Statement.
+	 * @param _values the row data to wrap
+	 * @param _fieldNames the column names
+	 * @param _rowIncrement growth increment passed to {@link MatrixObject}
 	 */
 	public ResultSetArray(final Object[][] _values, final String[] _fieldNames, final int _rowIncrement) {
 		this(_values, _fieldNames, _fieldNames.length, _rowIncrement, "", null);
 	}
 
 	/**
-	 * 
-	 * @param _values
-	 * @param _rowIncrement
+	 * Wraps {@code _values} using {@link #DEFAULT_ROW_INCR} as the growth increment.
+	 * @param _values the row data to wrap
+	 * @param _fieldNames the column names
 	 */
 	public ResultSetArray(final Object[][] _values, final String[] _fieldNames) {
 		this(_values, _fieldNames, _fieldNames.length, DEFAULT_ROW_INCR, "", null);
 	}
 
 	/**
-	 * 
-	 * @param _values
-	 * @param _rowIncrement
+	 * Wraps {@code _values} with no field names, sizing the column count from the first row.
+	 * @param _values the row data to wrap
 	 */
 	public ResultSetArray(final Object[][] _values) {
 		this(_values, null, _values[0].length, DEFAULT_ROW_INCR, "", null);
 	}
 
 	/**
-	 * @param numCols
-	 * @param _fieldNames
-	 * @param _statement, optional
+	 * Creates an initially empty ResultSet with {@link #DEFAULT_ROW_INIT} reserved rows.
+	 * @param _fieldNames the column names
+	 * @param _numCols the number of columns
+	 * @param _cursorName the cursor name
+	 * @param _statement the owning Statement, optional
 	 */
-	public ResultSetArray(final String[] _fieldNames, final int _numCols, 
+	public ResultSetArray(final String[] _fieldNames, final int _numCols,
 			final String _cursorName, final Statement _statement) {
 		this(_fieldNames, _numCols, DEFAULT_ROW_INIT, DEFAULT_ROW_INCR, _cursorName, _statement);
 	}
 
 	/**
-	 * @param _fieldNames
-	 * @param _statement
+	 * Creates an initially empty ResultSet, sizing the column count from {@code _fieldNames}.
+	 * @param _fieldNames the column names
+	 * @param _cursorName the cursor name
+	 * @param _statement the owning Statement
 	 */
 	public ResultSetArray(final String[] _fieldNames, final String _cursorName, final Statement _statement) {
 		this(_fieldNames, _fieldNames.length, _cursorName, _statement);
@@ -158,12 +168,13 @@ extends AResultSetContainer {
 	}
 
 	/**
-	 * 
-	 * @param numRows initial Number of Rows to reserve
-	 * @param numCols 
-	 * @param rowIncrement
-	 * @param _fieldNames
-	 * @param _statement
+	 * Root initializing constructor for an empty, growable ResultSet.
+	 * @param _fieldNames the column names
+	 * @param _numCols the number of columns
+	 * @param _numRows initial Number of Rows to reserve; {@link #DEFAULT_ROW_INIT} is used if not positive
+	 * @param _rowIncrement growth increment passed to {@link MatrixObject}
+	 * @param _cursorName the cursor name
+	 * @param _statement the owning Statement
 	 */
 	public ResultSetArray(final String[] _fieldNames, final int _numCols,
 			int _numRows, final int _rowIncrement,
@@ -184,10 +195,17 @@ extends AResultSetContainer {
 	 */
 	public int getNumRows() { return table.getInt(); }
 	
-	/** @see streamIO.IMarkAble#getMaxMarkSize()	 */
-	public long getMaxMarkSize() { return table.getInt(); } 
-	
-	/** @see java.sql.ResultSet#getString(int)	 */
+	/**
+	 * Returns the current number of rows, same as {@link #getNumRows()}.
+	 * @see streamIO.IMarkAble#getMaxMarkSize()
+	 */
+	public long getMaxMarkSize() { return table.getInt(); }
+
+	/**
+	 * Returns {@code currRow[columnIndex]} converted via {@link Object#toString()},
+	 * or {@code null} if the field itself is {@code null}.
+	 * @see java.sql.ResultSet#getString(int)
+	 */
 	public String getString(final int columnIndex) {
 		final Object field = currRow[columnIndex];
 		if (field == null)
@@ -195,7 +213,12 @@ extends AResultSetContainer {
 		return field.toString();
 	}
 	
-	/** @see java.sql.ResultSet#relative(int)	 */
+	/**
+	 * Advances {@code position} by {@code rows} and loads {@code currRow} from the
+	 * backing {@link #table}, clamping the position at the row count when it would run
+	 * past the end.
+	 * @see java.sql.ResultSet#relative(int)
+	 */
 	public boolean relative(final int rows) throws SQLException {
 		final boolean ret = (position+=rows) >= table.getInt(); 
 		if (ret)
@@ -204,22 +227,38 @@ extends AResultSetContainer {
 		return !ret;
 	}
 
-	/** @see java.sql.ResultSet#insertRow()	 */
+	/**
+	 * Appends a new, empty row to {@link #table} and positions on it.
+	 * @see java.sql.ResultSet#insertRow()
+	 */
 	public void insertRow() throws SQLException {
 		currRow = new Object[position = columns.length]; 
 		table.addItem(currRow); 
 		//DbColumn.FILL_DEFAULTS(columns, currRow); 
 	}
 
-	/** @see streamIO.integer.jdbc.AResultSet#readNext()	 */
+	/**
+	 * Advances by one row via {@link #relative(int)}.
+	 * @see streamIO.integer.jdbc.AResultSet#readNext()
+	 */
 	protected boolean readNext() throws SQLException { return relative(1); }
 
-	/** @see java.sql.ResultSet#updateString(int, java.lang.String)	 */
+	/**
+	 * Sets {@code currRow[columnIndex]} to {@code x} directly.
+	 * @see java.sql.ResultSet#updateString(int, java.lang.String)
+	 */
 	public void updateString(final int columnIndex, final String x) throws SQLException {
-		currRow[columnIndex] = x; 
+		currRow[columnIndex] = x;
 	}
-	
-	/** @see streamIO.integer.jdbc.AResultSet#isAfterLast()	 */
+
+	// TODO: LOGIC: relative(int) clamps `position` to exactly table.getInt() when it would
+	// run past the end, so `position` never exceeds the row count - it only ever reaches it.
+	// This comparison uses `>` where `>=` is needed, so isAfterLast() always returns false
+	// even when relative()/readNext() has driven the cursor past the last row.
+	/**
+	 * Reports whether the cursor is positioned after the last row.
+	 * @see streamIO.integer.jdbc.AResultSet#isAfterLast()
+	 */
 	public boolean isAfterLast() throws SQLException {
 		return position > table.getInt(); }
 	

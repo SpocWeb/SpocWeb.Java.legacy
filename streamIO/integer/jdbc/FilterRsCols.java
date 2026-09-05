@@ -14,13 +14,29 @@ import math.vector.VectorString;
 
 
 /**
- * Filters and translates the Field Indices. 
- * @author heuerm
+ * Filters and translates the field indices of a {@link ResultSet}, presenting a chosen
+ * subset of columns - optionally renamed, and with {@code *} expanded to every column -
+ * as its own {@link DbColumn} array.
  *
+ * @author heuerm
+ * @see DbColumn
+ *
+ * <!-- docstate
+ * pass: 2
+ * mtime: 2026-09-05T22:01:10Z
+ * digest: 4ac35525d6dfe29f24f80fc610670ac1b3853bbc01f274c580cf81d9cbf0e601
+ * stale: false
+ * tags: [code/jdbc_adapter, code/database_access, code/database_driver]
+ * concepts: [Filesystem-Backed JDBC Driver Framework with Fixed-Length and Separator-Delimited Table Storage]
+ * facets: {layer: domain, status: legacy, complexity: high}
+ * -->
  */
-public class FilterRsCols 
+public class FilterRsCols
 extends FilterResultSet {
 
+	/**
+	 * Unused entry point; performs no action.
+	 */
 	public static void main(final String[] args) {
 	}
 	
@@ -52,9 +68,9 @@ extends FilterResultSet {
 	///////////////////////////////////////////////////////////////////////////
 	
 	/**
-	 * 
-	 * @param _rsIter the Base ResultSet with all Fields 
-	 * @param _fields the Subset of Fields to return 
+	 * Initializing constructor selecting a subset of columns by index.
+	 * @param _rsIter the Base ResultSet with all Fields
+	 * @param _fields the Subset of Fields to return
 	 * @throws SQLException
 	 */
 	public FilterRsCols(final ResultSet _rsIter, final int[] _fields) throws SQLException {
@@ -69,9 +85,9 @@ extends FilterResultSet {
 	}
 
 	/**
-	 * 
-	 * @param _rsIter the Base ResultSet with all Fields 
-	 * @param _fieldNames the List of selected Field-Names 
+	 * Initializing constructor selecting columns by name, using each name as its own alias.
+	 * @param _rsIter the Base ResultSet with all Fields
+	 * @param _fieldNames the List of selected Field-Names
 	 * @throws SQLException
 	 */
 	public FilterRsCols(final ResultSet _rsIter, final String[] _fieldNames) throws SQLException {
@@ -79,9 +95,9 @@ extends FilterResultSet {
 	}
 
 	/**
-	 * 
-	 * @param _rsIter the Base ResultSet with all Fields 
-	 * @param _fieldNames the List of selected Field-Names 
+	 * Initializing constructor selecting columns by name with distinct aliases.
+	 * @param _rsIter the Base ResultSet with all Fields
+	 * @param _fieldNames the List of selected Field-Names
 	 * @param _aliasNames the List of new Field-Names (must be equally long!)
 	 * @throws SQLException
 	 */

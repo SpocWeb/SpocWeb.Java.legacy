@@ -16,27 +16,37 @@ import java.sql.Statement;
 import java.util.Properties;
 
 /**
- * Title: DriverFix<p>
- * Description:
- * Purpose:
- * Provides a Driver Implementation for the jdbc 2.0 Framework
- * defaults all Interface Implementations to the Classes of this Package.  
+ * {@link Driver} implementation for {@code jdbc:fix:} URLs, defaulting every JDBC interface
+ * to this package's fixed-length-table classes; a singleton instance registers itself with
+ * {@link DriverManager} on class load.
  *
- * Design Decisions / Implementation Details:
+ * <h2>Collaborators</h2>
  *
- * Known SubClasses: <none>
- *
- * Known Uses: <none>
- * @see streamIO.object.parser.jdbc.DriverSep
+ * | Type | Relationship |
+ * |---|---|
+ * | {@link ConnectionFix} | Concrete connection created by {@link #connect(String, Properties)}. |
+ * | {@link AConnection} | Supplies the driver property descriptors returned by {@link #getPropertyInfo(String, Properties)}. |
  *
  * Copyright:	Copyright (c) Matthias Heuer<p>
  * Company:	personal<p>
  * Created on	10-26-2002, 12:47 PM<p>
  * @author mheuer
  * @version	1.0
+ * @see streamIO.object.parser.jdbc.DriverSep
+ * @see ConnectionFix
+ * @see AConnection
  *
+ * <!-- docstate
+ * pass: 2
+ * mtime: 2026-09-05T22:00:16Z
+ * digest: fb82ec9ec0130b9bb173c2ac716b99a136847abd8f3ac9e1c01115150507f588
+ * stale: false
+ * tags: [code/jdbc_adapter, code/database_access, code/database_driver]
+ * concepts: [Filesystem-Backed JDBC Driver Framework with Fixed-Length and Separator-Delimited Table Storage]
+ * facets: {layer: domain, status: legacy, complexity: high}
+ * -->
  */
-public class DriverFix 
+public class DriverFix
 implements Driver{
 
 	/** URL Prefix for JDBC-Drivers	*/
@@ -51,13 +61,19 @@ implements Driver{
 	/** Major Version of this Driver */
 	final static public int MajorVersion = 0; 
 
-	/** @see java.sql.Driver#getMajorVersion()	 */
+	/**
+	 * Returns {@link #MajorVersion}.
+	 * @see java.sql.Driver#getMajorVersion()
+	 */
 	public int getMajorVersion() { return MajorVersion; }
 
 	/** Minor Version of this Driver */
-	final static public int MinorVersion = 1; 
+	final static public int MinorVersion = 1;
 
-	/** @see java.sql.Driver#getMinorVersion()	 */
+	/**
+	 * Returns {@link #MinorVersion}.
+	 * @see java.sql.Driver#getMinorVersion()
+	 */
 	public int getMinorVersion() { return MinorVersion; }
 
 	/** Singleton of this Driver */
@@ -78,7 +94,8 @@ implements Driver{
 
 	/////////////////////////////////////////////////////////////////////////////////////
 
-	/** 
+	/**
+	 * Reports whether {@code url} starts with {@link #PREFIX_FIX}.
 	 * @see java.sql.Driver#acceptsURL(java.lang.String)
 	 */
 	public boolean acceptsURL(final String url) throws SQLException {
@@ -89,6 +106,12 @@ implements Driver{
 	 * Strips the Driver specific Part from the URL
 	 * @see java.sql.Driver#connect(java.lang.String, java.util.Properties)
 	 */
+	// TODO: LOGIC: acceptsURL(PREFIX_FIX) checks the constant PREFIX_FIX against itself,
+	// not the actual `url` parameter - this is always true, so the URL-prefix guard never
+	// rejects anything. Any url shorter than PREFIX_FIX then throws
+	// StringIndexOutOfBoundsException from url.substring(...) instead of the intended
+	// SQLException, and any longer url not actually starting with PREFIX_FIX silently
+	// mis-parses the directory path. Should be "acceptsURL(url)".
 	public Connection connect(final String url, final Properties info)
 		throws SQLException {
 		if (!acceptsURL(PREFIX_FIX)) {
@@ -97,7 +120,10 @@ implements Driver{
 		return new ConnectionFix(url.substring(PREFIX_FIX.length()), info);
 	}
 
-	/** @see java.sql.Driver#getPropertyInfo(java.lang.String, java.util.Properties)	 */
+	/**
+	 * Returns {@link AConnection#DRIVER_PROPS_INFO}, ignoring both arguments.
+	 * @see java.sql.Driver#getPropertyInfo(java.lang.String, java.util.Properties)
+	 */
 	public DriverPropertyInfo[] getPropertyInfo(String url, Properties info) { //throws SQLException {
 		return AConnection.DRIVER_PROPS_INFO;
 	}

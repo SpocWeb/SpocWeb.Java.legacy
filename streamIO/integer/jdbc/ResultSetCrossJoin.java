@@ -19,6 +19,15 @@ import java.sql.Statement;
  * 
  * @author heuerm
  *
+ * <!-- docstate
+ * pass: 2
+ * mtime: 2026-09-05T22:06:41Z
+ * digest: d84771902e42cae4aaf8aeef5b561a3daabd3c716cda76728b7bd4b2f7f694e7
+ * stale: false
+ * tags: [code/jdbc_adapter, code/database_access, code/database_driver]
+ * concepts: [Filesystem-Backed JDBC Driver Framework with Fixed-Length and Separator-Delimited Table Storage]
+ * facets: {layer: domain, status: legacy, complexity: high}
+ * -->
  */
 public class ResultSetCrossJoin 
 extends FilterResultSet {
@@ -46,30 +55,36 @@ extends FilterResultSet {
 	///////////////////////////////////////////////////////////////////////////
 	
 	/**
-	 * @param statement_ Reference to the Statement creating the Join. 
-	 * @param rsIter left  RS of the Cross Join 
+	 * Initializing constructor for an inner cross join with no field swap.
+	 * @param rsIter left  RS of the Cross Join
 	 * @param rsFind right RS of the Cross Join
+	 * @throws SQLException when reading either ResultSet's metadata fails
 	 */
 	public ResultSetCrossJoin(final ResultSet rsIter, final ResultSet rsFind) throws SQLException {
 		this(rsIter, rsFind, false);
 	}
-	
+
 	/**
-	 * @param statement_ Reference to the Statement creating the Join. 
-	 * @param rsIter left  RS of the Cross Join 
+	 * Initializing constructor letting the caller choose whether to swap field order.
+	 * @param rsIter left  RS of the Cross Join
 	 * @param rsFind right RS of the Cross Join
+	 * @param _swapFields Flag whether to swap the Sequence of the Fields from rsIter, rsFind to rsFind, rsIter.
+	 * @throws SQLException when reading either ResultSet's metadata fails
 	 */
-	public ResultSetCrossJoin(final ResultSet rsIter, final ResultSet rsFind, 
+	public ResultSetCrossJoin(final ResultSet rsIter, final ResultSet rsFind,
 			final boolean _swapFields) throws SQLException {
 		this(rsIter, rsFind, _swapFields, null);
 	}
 	
 	/**
-	 * @param rsIter left (outer) RS of the left outer Join, the one we iterate over 
+	 * Root initializing constructor: computes the joined field-name layout via
+	 * {@link ResultSetMetaData} and lets {@link FilterResultSet} allocate the columns.
+	 * @param rsIter left (outer) RS of the left outer Join, the one we iterate over
 	 * @param rsFind right(inner) RS of the left outer Join, the one we find matching Fields in.
-	 * @param _swapFields Flag whether to swap the Sequence of the Fields in the ResultSet 
-	 * from rsIter, rsFind to rsFind, rsIter. 
-	 * @param _statement Reference to the Statement creating the Join. 
+	 * @param _swapFields Flag whether to swap the Sequence of the Fields in the ResultSet
+	 * from rsIter, rsFind to rsFind, rsIter.
+	 * @param _statement Reference to the Statement creating the Join.
+	 * @throws SQLException when reading either ResultSet's metadata fails
 	 */
 	public ResultSetCrossJoin(final ResultSet rsIter,
 			final ResultSet rsFind, final boolean _swapFields, final Statement _statement) throws SQLException {
@@ -93,7 +108,11 @@ extends FilterResultSet {
 	/// Read/Write on the current Row
 	///////////////////////////////////////////////////////////////////////////
 	
-	/** @see java.sql.ResultSet#getString(int)	 */
+	/**
+	 * Redirects to the underlying rsIter or rsFind column, translating the joined column
+	 * index into the position within the correct side (swapped if {@link #swapFields}).
+	 * @see java.sql.ResultSet#getString(int)
+	 */
 	public String getString(final int columnIndex) {
 		final int numIterColumns = (swapFields ? this.numFindColumns : this.numIterColumns);
 		try {
@@ -105,7 +124,11 @@ extends FilterResultSet {
 		}
 	}
 	
-	/** @see java.sql.ResultSet#updateString(int, java.lang.String)	 */
+	/**
+	 * Redirects to the underlying rsIter or rsFind column, translating the joined column
+	 * index into the position within the correct side (swapped if {@link #swapFields}).
+	 * @see java.sql.ResultSet#updateString(int, java.lang.String)
+	 */
 	public void updateString(final int columnIndex, final String x) throws SQLException {
 		final int numIterColumns = (swapFields ? this.numFindColumns : this.numIterColumns);
 		if (columnIndex < numIterColumns)
@@ -118,7 +141,10 @@ extends FilterResultSet {
 	// Navigation 
 	///////////////////////////////////////////////////////////////////////////
 	
-	/** @see streamIO.object.IStreamIn#currItem()	 */
+	/**
+	 * Returns this instance itself, since it already exposes the joined row directly.
+	 * @see streamIO.object.IStreamIn#currItem()
+	 */
 	public Object currItem() { return this; }
 	
 	/** late initialized with the Number of Rows in the right "Find" ResultSet	 */
@@ -139,9 +165,15 @@ extends FilterResultSet {
 		return numRowsFind; 
 	}
 	
-	/** @see java.sql.ResultSet#relative(int)	 */
+	// TODO: LOGIC: computes numRowsFind (which has the side effect of caching/restoring
+	// rsFind's cursor position) and then unconditionally returns false without using `rows`
+	// or moving either ResultSet - relative(int) is effectively a no-op stub here.
+	/**
+	 * Always returns {@code false}; relative positioning is not implemented for this join.
+	 * @see java.sql.ResultSet#relative(int)
+	 */
 	public boolean relative(final int rows) throws SQLException {
-		final int numRowsFind = getNumRowsFind(); 
+		final int numRowsFind = getNumRowsFind();
 		return false;
 	}
 	
@@ -181,7 +213,8 @@ extends FilterResultSet {
 		return rsIter.next(); //proceed on the 1st RS
 	}
 
-	final static public String STR_NOT_WELL_DEFINED = "Not well defined for Cross Joins!"; 
+	/** Message used for the {@link SQLException}s thrown by {@link #insertRow()} and {@link #deleteRow()}. */
+	final static public String STR_NOT_WELL_DEFINED = "Not well defined for Cross Joins!";
 	
 	/**The Question is whether to insert the Row into the Iter Table or the Find Table or both.... 
 	 * @see java.sql.ResultSet#insertRow()	 */
@@ -195,15 +228,24 @@ extends FilterResultSet {
 		throw new SQLException(STR_NOT_WELL_DEFINED); 
 	}
 
-	/** @see java.sql.ResultSet#rowUpdated()	 */
+	/**
+	 * Reports whether either side's current row has been updated.
+	 * @see java.sql.ResultSet#rowUpdated()
+	 */
 	public boolean rowUpdated() throws SQLException {
 		return rsIter.rowUpdated() || rsFind.rowUpdated(); }
 
-	/** @see java.sql.ResultSet#rowInserted()	 */
+	/**
+	 * Reports whether either side's current row has been inserted.
+	 * @see java.sql.ResultSet#rowInserted()
+	 */
 	public boolean rowInserted() throws SQLException {
 		return rsIter.rowInserted() || rsFind.rowInserted(); }
 
-	/** @see java.sql.ResultSet#rowDeleted()	 */
+	/**
+	 * Reports whether either side's current row has been deleted.
+	 * @see java.sql.ResultSet#rowDeleted()
+	 */
 	public boolean rowDeleted() throws SQLException {
 		return rsIter.rowDeleted() || rsFind.rowDeleted(); }
 
@@ -218,10 +260,14 @@ extends FilterResultSet {
 			rsFind.updateRow(); 
 	}
 
-	/** @see java.sql.ResultSet#close()	 */
+	/**
+	 * Closes both sides of the join: the base {@code rsIter} (via the superclass) and
+	 * {@link #rsFind}.
+	 * @see java.sql.ResultSet#close()
+	 */
 	public void close() throws SQLException {
-		super.close(); 
-		rsFind.close(); 
+		super.close();
+		rsFind.close();
 	}
 
 }

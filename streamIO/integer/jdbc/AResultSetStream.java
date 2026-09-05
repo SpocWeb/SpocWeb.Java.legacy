@@ -15,10 +15,34 @@ import streamIO.integer.IStreamByteRandom;
 import streamIO.integer.IStreamIn_Byte;
 
 /**
- * @author heuerm
+ * Abstract {@link AResultSet} specialization backed by a byte stream file, using an
+ * {@link IStreamByteRandom} random-access stream when available to support inserts and
+ * repositioning, and a plain {@link IStreamIn_Byte} otherwise for forward-only reading.
  *
+ * <h2>Collaborators</h2>
+ *
+ * | Type | Relationship |
+ * |---|---|
+ * | {@link AResultSet} | Superclass providing the shared {@link java.sql.ResultSet} machinery. |
+ * | {@link IStreamIn_Byte} | The underlying byte stream every constructor requires. |
+ * | {@link IStreamByteRandom} | Optional random-access capability, detected via {@code instanceof}. |
+ *
+ * @author heuerm
+ * @see AResultSet the superclass
+ * @see IStreamIn_Byte the underlying stream
+ * @see IStreamByteRandom the optional random-access capability
+ *
+ * <!-- docstate
+ * pass: 2
+ * mtime: 2026-09-05T21:49:32Z
+ * digest: 1541f36404bc07c16072d9b3106cee5d2f89170d320ee705004866d1e2f17389
+ * stale: false
+ * tags: [code/jdbc_adapter, code/database_access, code/database_driver]
+ * concepts: [Filesystem-Backed JDBC Driver Framework with Fixed-Length and Separator-Delimited Table Storage]
+ * facets: {layer: domain, status: legacy, complexity: high}
+ * -->
  */
-public abstract class AResultSetStream 
+public abstract class AResultSetStream
 extends AResultSet {
 	
 	/**
@@ -51,6 +75,7 @@ extends AResultSet {
 	protected IStreamIn_Byte file;
 	
 	/**
+	 * Initializing constructor deriving columns from field names only.
 	 * @param _cursorName
 	 * @param _statement
 	 */
@@ -62,6 +87,7 @@ extends AResultSet {
 	}
 	
 	/**
+	 * Initializing constructor with an explicit column count.
 	 * @param _fieldNames
 	 * @param _numCols
 	 * @param _cursorName
@@ -76,6 +102,7 @@ extends AResultSet {
 	}
 
 	/**
+	 * Initializing constructor deriving the column count from {@code _fieldNames}.
 	 * @param _fieldNames
 	 * @param _cursorName
 	 * @param _statement
@@ -89,6 +116,7 @@ extends AResultSet {
 	}
 	
 	/**
+	 * Initializing constructor accepting pre-built {@link DbColumn} descriptors.
 	 * @param _cols
 	 * @param _cursorName
 	 * @param _statement
@@ -108,17 +136,23 @@ extends AResultSet {
 	/** cache for the current Reading position 	 */
 	protected long currPointer = IStreamIn_Byte.EOF; 
 	
-	/** @see java.sql.ResultSet#moveToCurrentRow()	 */
+	/**
+	 * Seeks the random-access file back to the position remembered by
+	 * {@link #moveToInsertRow()}, undoing the temporary move to the insert row.
+	 * @see java.sql.ResultSet#moveToCurrentRow()
+	 */
 	public void moveToCurrentRow() throws SQLException {
 		try {
 			rndFile.seek(currPointer);
-			currPointer = IStreamIn_Byte.EOF; 
+			currPointer = IStreamIn_Byte.EOF;
 		} catch (final IOException x) {
-			throw new SQLException(x.toString()); 
+			throw new SQLException(x.toString());
 		}
 	}
-	
-	/** @see java.sql.ResultSet#moveToInsertRow()	 */
+
+	/**
+	 * Reports whether the cursor is currently parked at the insert row.
+	 */
 	public boolean isInInsertRow() { return (currPointer != IStreamIn_Byte.EOF); }
 	
 	/** 
@@ -152,7 +186,8 @@ extends AResultSet {
 	/** fills the current Row with the Default Values	 */
 	public abstract void fillDefaults(); 
 	
-	/**can already be applied to  
+	/**
+	 * Reports whether the underlying stream has no more bytes available to read.
 	 * @see java.sql.ResultSet#isAfterLast()	 */
 	public boolean isAfterLast() throws SQLException {
 		try { return file.available() < 0;
@@ -185,30 +220,56 @@ extends AResultSet {
 	//	abstract Methods
 	////////////////////////////////////////////////////////////////////////////////
 
-	/** @see java.sql.ResultSet#refreshRow()	 */
-	abstract public void refreshRow() throws SQLException; 
+	/**
+	 * Re-reads the current row's data from the stream; left to the concrete subclass.
+	 * @see java.sql.ResultSet#refreshRow()
+	 */
+	abstract public void refreshRow() throws SQLException;
 
-	/** @see java.sql.ResultSet#getString(int)	 */
+	/**
+	 * Gets the designated column's value as a {@code String}; left to the concrete subclass.
+	 * @see java.sql.ResultSet#getString(int)
+	 */
 	abstract public String getString(final int columnIndex);
 
-	/** @see java.sql.ResultSet#relative(int)	 */
+	/**
+	 * Moves the cursor a relative number of rows; left to the concrete subclass.
+	 * @see java.sql.ResultSet#relative(int)
+	 */
 	abstract public boolean relative(int rows) throws SQLException;
 
-	/** @see java.sql.ResultSet#insertRow()	 */
-	abstract public void insertRow() throws SQLException; 
+	/**
+	 * Inserts the contents of the insert row into the stream; left to the concrete subclass.
+	 * @see java.sql.ResultSet#insertRow()
+	 */
+	abstract public void insertRow() throws SQLException;
 
-	/** @see java.sql.ResultSet#updateRow()	 */
-	abstract public void updateRow() throws SQLException; 
+	/**
+	 * Writes the current row's pending changes back to the stream; left to the concrete
+	 * subclass.
+	 * @see java.sql.ResultSet#updateRow()
+	 */
+	abstract public void updateRow() throws SQLException;
 
-	/** @see streamIO.integer.jdbc.AResultSet#readNext()	 */
-	abstract protected boolean readNext() throws SQLException; 
-	
+	/**
+	 * Reads and returns whether a further row is available; left to the concrete subclass.
+	 * @see streamIO.integer.jdbc.AResultSet#readNext()
+	 */
+	abstract protected boolean readNext() throws SQLException;
+
 	/** @see java.sql.ResultSet#updateString(int, java.lang.String)	 */
-	//final public void updateString(final int columnIndex, final String x) throws SQLException { ; } 
-	
-	/** @see java.sql.ResultSet#updateString(int, java.lang.String)	 */
-	abstract public void updateString(int columnIndex, String x) throws SQLException; 
-	
-	/** @see streamIO.IMarkAble#getMaxMarkSize()	 */
+	//final public void updateString(final int columnIndex, final String x) throws SQLException { ; }
+
+	/**
+	 * Updates the designated column of the current or insert row; left to the concrete
+	 * subclass.
+	 * @see java.sql.ResultSet#updateString(int, java.lang.String)
+	 */
+	abstract public void updateString(int columnIndex, String x) throws SQLException;
+
+	/**
+	 * Always returns {@link Long#MAX_VALUE}; a byte stream imposes no mark-size limit.
+	 * @see streamIO.IMarkAble#getMaxMarkSize()
+	 */
 	public long getMaxMarkSize() { return Long.MAX_VALUE; }
 }

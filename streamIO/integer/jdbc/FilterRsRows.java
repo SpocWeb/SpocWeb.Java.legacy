@@ -16,18 +16,32 @@ import math.vector.VectorString;
  * @see streamIO.integer.jdbc.dbTest.FilterRsRows 
  * @author heuerm
  *
+ * <!-- docstate
+ * pass: 2
+ * mtime: 2026-09-05T21:57:30Z
+ * digest: e43780cbf31249bd33c1c3739a15d751fd428ab2f73d227433b7e4c072a2a971
+ * stale: false
+ * tags: [code/jdbc_adapter, code/database_access, code/database_driver]
+ * concepts: [Filesystem-Backed JDBC Driver Framework with Fixed-Length and Separator-Delimited Table Storage]
+ * facets: {layer: domain, status: legacy, complexity: high}
+ * -->
  */
 public class FilterRsRows 
 extends FilterResultSet {
 	
+	/**
+	 * Unused entry point; performs no action.
+	 */
 	public static void main(final String[] args) {
 	}
-	
+
 	///////////////////////////////////////////////////////////////////////////
-	
-	final static public String STR_EQUALS = "="; 
-	
-	final static public String STR_AND = " AND "; 
+
+	/** Equality operator recognized by {@link #parseWhereClause(String)}. */
+	final static public String STR_EQUALS = "=";
+
+	/** Clause separator recognized by {@link #parseWhereClause(String)}. */
+	final static public String STR_AND = " AND ";
 	
 	/**
 	 * parses the Where Clause of a Query for exact Matches between Fields. 

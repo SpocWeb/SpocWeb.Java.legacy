@@ -140,7 +140,8 @@ concurrently against the same file):
 | `streamIO/object/parser` | 27 | 6942 | 27 | done | agent-object-parser |
 | `streamIO/integer` (root+adapter+file+multiplex+pipe) | 56 | 15359 | 56 | done | agent-integer-core |
 | `streamIO/integer/encoding`+`filter`+`random` | 56 | 10273 | 56 | done | agent-integer-encoding |
-| `streamIO/integer/jdbc` | 31 | 11899 | 0 | claimed | agent-integer-jdbc |
+| `streamIO/integer/jdbc` (excl. `dbTest/`) | 31 | 11899 | 31 | done | agent-integer-jdbc |
+| `streamIO/integer/jdbc/dbTest` | 8 | ~1300 | 8 | done | orchestrator (hand-authored, small batch) |
 | `graphic` (root+example+implement+svg) | 50 | 14297 | 50 | done | agent-graphic-misc |
 | `graphic/math2D`+`graphic/ms3d` | 18 | 3525 | 18 | done | agent-graphic-2d |
 | `graphic/math3D` | 32 | 6425 | 32 | done | agent-graphic-math3D |
@@ -642,6 +643,24 @@ same harness against it. A test that has not been seen red proves nothing.
 | streamIO/integer/pipe/MemoryPipe.java | MemoryPipe | (constructor) | 83 | `markQP = SP` (copy-paste; should be `= QP`); currently benign since both start at 0. | Low | open |
 | streamIO/integer/file/FilterCrLfFromQuoted.java | FilterCrLfFromQuoted | main() | 34 | `FI`/`FO` are never closed in a `finally`, and `FI` is never closed at all. | Low | open |
 | streamIO/integer/file/FileStreamIn_Byte.java | FileStreamIn_Byte | read(byte[], int, int)-family default | 500 | `(char) (val = read())` narrows the int result of `read()` to `char` before storing into an `int[]` buffer; a normal byte round-trips fine, but the EOF sentinel `-1` becomes `0xFFFF` (65535) once written, silently corrupting the last buffer slot on EOF instead of leaving it untouched. | Medium | open |
+| streamIO/integer/jdbc/AConnection.java | AConnection | getWarnings() | 363 | `warnings.remove(warnings.size())` always throws `IndexOutOfBoundsException` (valid indices end at `size()-1`). | High | open |
+| streamIO/integer/jdbc/AConnection.java | AConnection | close() | 261 | Never closes open ResultSets/Statements opened through this Connection (pre-existing author TODO already acknowledges the gap). | Medium | open |
+| streamIO/integer/jdbc/ADBMetaData.java | ADBMetaData | getTables(...) | 236 | Accepts `tableNamePattern`/`tableTypes` but never applies either as a filter. | Medium | open |
+| streamIO/integer/jdbc/AResultSet.java | AResultSet | fillFlags() | 1251 | `for (int i = flags.length; --i > 0;)` skips index 0 - an off-by-one that leaves the first flag unset. | Medium | open |
+| streamIO/integer/jdbc/AStatement.java | AStatement | getResultSet(String) | 404 | `tableName` is taken directly from the parsed SQL FROM-clause and passed unsanitized into `new File(urlDir, tableName)` - path traversal via a crafted table name. | High (security) | open |
+| streamIO/integer/jdbc/AStatement.java | AStatement | close() | 1000 | Calls `currRS.close()` unconditionally; `NullPointerException` if `currRS` is null. | Medium | open |
+| streamIO/integer/jdbc/AStatement.java | AStatement | getResultSetConcurrency()/getResultSetType()/getResultSetHoldability() | 1058, 1071, 1086 | Each ignores its own instance field and always returns the class-wide default constant instead. | Medium | open |
+| streamIO/integer/jdbc/AStatement.java | AStatement | (analyzeConditions helper) | 846 | `if (table != null)` is unreachable, nested inside an enclosing `if (table == null)` - dead code. | Low | open |
+| streamIO/integer/jdbc/RSMetaData.java | RSMetaData | (every column-indexed method) | 7 | Every `columns[column]` access assumes 0-based indexing, but `java.sql.ResultSetMetaData`'s contract is 1-based - confirmed via `AResultSet.findColumn` returning a raw 0-based index; a systemic architectural mismatch, not a single-line bug. | High | open |
+| streamIO/integer/jdbc/DriverFix.java | DriverFix | connect(String, Properties) | 106 | Calls `acceptsURL(PREFIX_FIX)` (checks the constant against itself) instead of `acceptsURL(url)` - always-true guard that can throw `StringIndexOutOfBoundsException` for a mismatched URL. | High | open |
+| streamIO/integer/jdbc/CallStatementFix.java | CallStatementFix | (whole class) | 43 | Its `getResultSet(File, String)` factory is itself an unimplemented stub, and the class overrides none of its inherited stub `CallableStatement` methods - entirely non-functional. | High | open |
+| streamIO/integer/jdbc/PrepStatementFix.java | PrepStatementFix | (whole class) | 46 | Same non-functional pattern as `CallStatementFix`. | High | open |
+| streamIO/integer/jdbc/EqualCondition.java | EqualCondition | equals(ResultSet, ResultSet) | 66 | `getString()` can return null for a SQL NULL value; neither branch checks for it before `toUpperCase()`/`trim()`/`equals()`, throwing `NullPointerException`. | Medium | open |
+| streamIO/integer/jdbc/ResultSetCrossJoin.java | ResultSetCrossJoin | relative(int) | 165 | Computes `getNumRowsFind()` (which has cursor-position side effects) then unconditionally returns `false`, ignoring `rows` entirely - effectively a no-op stub. | Medium | open |
+| streamIO/integer/jdbc/ResultSetArray.java | ResultSetArray | isAfterLast() (and relative()'s clamp) | 251 | `relative(int)` clamps `position` to exactly `table.getInt()` (the row count) instead of allowing it past that, so `isAfterLast()`'s `position > table.getInt()` check never trips - the cursor can never be observed as past the last row. | Medium | open |
+| streamIO/integer/jdbc/dbTest/DbTestLess.java | DbTestLess | newInstance(DbColumn, DbColumn) | ~31 | Returns a plain `new DbTestEquals(...)` instead of `new DbTestLess(...)`, silently downgrading the Test's semantics for any caller that clones it via `newInstance()`. | Medium | open |
+| streamIO/integer/jdbc/dbTest/DbTestOuter.java | DbTestOuter | newInstance(DbColumn, DbColumn) | ~32 | Same defect as `DbTestLess.newInstance()` - returns a plain `DbTestEquals` instead of `DbTestOuter`. | Medium | open |
+| streamIO/integer/jdbc/dbTest/DbTestLess.java | DbTestLess | test() | ~45 | Neither `str0` nor `str1` is checked for null before `compareTo()`; `getString()` can return null for a SQL NULL value, throwing `NullPointerException` (same class of bug as `EqualCondition.equals()`). | Medium | open |
 
 ## Tool defects found and fixed during the pilot
 

@@ -12,11 +12,16 @@ import streamIO.integer.jdbc.DbColumn;
  * Encapsulates the Test for a (crisp) Relation between two Fields
  * @author heuerm
  *
+ * <!-- docstate
+ * tags: [code/predicate, code/predicate_interface]
+ * concepts: [Row Predicate Contract between Two DbColumn Fields]
+ * facets: {layer: domain, status: legacy, complexity: low}
+ * -->
  */
 public interface IDbTest {
 
-	/** 
-	 * @return true when the Test succeeds. 
+	/** Evaluates this Test's Relation between its two Operands.
+	 * @return true when the Test succeeds.
 	 * @throws SQLException
 	 */
 	public boolean test() throws SQLException;
@@ -31,11 +36,13 @@ public interface IDbTest {
 	 */
 	public String getOperator(); 
 	
-	/** @return the left Operand 	*/
-	public DbColumn getOperand0(); 
-	
-	/** @return the right Operand 	*/
-	public DbColumn getOperand1(); 
+	/** Returns the left Operand Field of this Test.
+	 * @return the left Operand 	*/
+	public DbColumn getOperand0();
+
+	/** Returns the right Operand Field of this Test.
+	 * @return the right Operand 	*/
+	public DbColumn getOperand1();
 	
 	/** creates a new Instance of this Class	 */
 	public IDbTest newInstance(final DbColumn field0, final DbColumn field1); 

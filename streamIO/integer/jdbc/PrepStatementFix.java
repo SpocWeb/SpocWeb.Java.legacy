@@ -12,38 +12,55 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 
 /**
- * Title: PrepStatementFix<p>
- * Description:
- * Purpose:
+ * Concrete fixed-length-table {@link APrepStatement}; does not override any of its inherited
+ * stub {@code PreparedStatement} parameter setters or {@code execute*} methods, and its own
+ * {@link #getResultSet(File, String)} factory is itself an unimplemented stub - see the
+ * {@code TODO: LOGIC} marker there.
  *
- * Purpose / Responsibilities of this Class
+ * <h2>Collaborators</h2>
  *
- * Design Decisions / Implementation Details:
- * If similar Classes exist (e.g. Polymorphism),
- * characterize the specific Differences to compare these.
- *
- * Known SubClasses: <none>
- *
- * Known Uses: <none>
+ * | Type | Relationship |
+ * |---|---|
+ * | {@link APrepStatement} | Superclass supplying the (unimplemented) {@code PreparedStatement} contract. |
+ * | {@link ConnectionFix} | Connection type accepted by every constructor. |
  *
  * Copyright:	Copyright (c) Matthias Heuer<p>
  * Company:	personal<p>
  * Created on	10-26-2002, 12:47 PM<p>
  * @author mheuer
  * @version	1.0
+ * @see APrepStatement the superclass
+ * @see ConnectionFix
  *
+ * <!-- docstate
+ * pass: 2
+ * mtime: 2026-09-05T21:56:14Z
+ * digest: cb597c8b6a3d3661aa3333de73a27bd4d2ab3987bac431ee0dce8afdb2ac8fbf
+ * stale: false
+ * tags: [code/jdbc_adapter, code/database_access, code/database_driver]
+ * concepts: [Filesystem-Backed JDBC Driver Framework with Fixed-Length and Separator-Delimited Table Storage]
+ * facets: {layer: domain, status: legacy, complexity: high}
+ * -->
  */
 public class PrepStatementFix
-	extends APrepStatement 
+	extends APrepStatement
 	implements PreparedStatement {
 
-	/** @see streamIO.integer.jdbc.APrepStatement#getResultSet(java.io.File, java.lang.String)	 */
+	// TODO: LOGIC: getResultSet(File, String) is itself an unimplemented stub returning
+	// null, and PrepStatementFix overrides none of APrepStatement's stub set*/execute*
+	// methods either - every PreparedStatement operation on this concrete class silently
+	// returns null/false/0 or performs no action instead of doing real work.
+	/**
+	 * Stub override; not implemented and always returns null.
+	 * @see streamIO.integer.jdbc.APrepStatement#getResultSet(java.io.File, java.lang.String)
+	 */
 	protected ResultSet getResultSet(File table, String tableName) throws SQLException, IOException {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	/**
+	 * Initializing constructor delegating to {@link APrepStatement}'s matching constructor.
 	 * @param conn
 	 * @param sql_
 	 * @param resultSetType
@@ -52,10 +69,10 @@ public class PrepStatementFix
 	 */
 	public PrepStatementFix(ConnectionFix conn, String sql_, int resultSetType, int resultSetConcurrency, int resultSetHoldability) {
 		super(conn, sql_, resultSetType, resultSetConcurrency, resultSetHoldability);
-		// TODO Auto-generated constructor stub
 	}
 
 	/**
+	 * Initializing constructor using the default result-set holdability.
 	 * @param conn
 	 * @param sql
 	 * @param resultSetType
@@ -63,16 +80,15 @@ public class PrepStatementFix
 	 */
 	public PrepStatementFix(ConnectionFix conn, String sql, int resultSetType, int resultSetConcurrency) {
 		super(conn, sql, resultSetType, resultSetConcurrency);
-		// TODO Auto-generated constructor stub
 	}
 
 	/**
+	 * Initializing constructor using the default result-set type, concurrency and holdability.
 	 * @param conn
 	 * @param sql
 	 */
 	public PrepStatementFix(ConnectionFix conn, String sql) {
 		super(conn, sql);
-		// TODO Auto-generated constructor stub
 	}
 
 }

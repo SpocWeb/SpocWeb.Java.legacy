@@ -14,6 +14,15 @@ import java.sql.SQLException;
  * but then you could simply use ITester.  
  * @author heuerm
  *
+ * <!-- docstate
+ * pass: 2
+ * mtime: 2026-09-05T21:56:57Z
+ * digest: dadf416dcec82a9c053ec0d0e23ef4bed79c40ba7efdd728979d0afc62f64d19
+ * stale: false
+ * tags: [code/jdbc_adapter, code/database_access, code/database_driver]
+ * concepts: [Filesystem-Backed JDBC Driver Framework with Fixed-Length and Separator-Delimited Table Storage]
+ * facets: {layer: domain, status: legacy, complexity: high}
+ * -->
  */
 public class EqualCondition 
 implements IJoinCondition {
@@ -57,13 +66,18 @@ implements IJoinCondition {
 		this.col2 = _col2; 
 	}
 
-	/** 
-	 * @return true when two Colums of the ResultSet are equal.  
-	 * @see streamIO.integer.jdbc.IJoinCondition#equals(java.sql.ResultSet, java.sql.ResultSet)	 
+	// TODO: LOGIC: getString() can return null for a SQL NULL value, and neither branch
+	// checks for it before calling toUpperCase()/trim()/equals() - a NULL in either
+	// compared column throws NullPointerException instead of yielding a defined
+	// equal/not-equal result.
+	/**
+	 * Compares the configured columns of two result set rows for equality.
+	 * @return true when two Colums of the ResultSet are equal.
+	 * @see streamIO.integer.jdbc.IJoinCondition#equals(java.sql.ResultSet, java.sql.ResultSet)
 	 */
 	public boolean equals(final ResultSet rs1, final ResultSet rs2) throws SQLException {
 		String str1 = rs1.getString(col1); //use the Strings...
-		String str2 = rs2.getString(col2); 
+		String str2 = rs2.getString(col2);
 		if (ignoreCase) {
 			str1 = str1.toUpperCase(); 
 			str2 = str2.toUpperCase(); 
@@ -75,18 +89,26 @@ implements IJoinCondition {
 		return str1.equals(str2); 
 	}
 	
-	/** @see tester.IEquivalence#equals(java.lang.Object, java.lang.Object)	 */
+	/**
+	 * Casts both arguments to {@link ResultSet} and delegates to {@link #equals(ResultSet, ResultSet)},
+	 * wrapping a checked {@link SQLException} into an unchecked one.
+	 * @see tester.IEquivalence#equals(java.lang.Object, java.lang.Object)
+	 */
 	public boolean equals(final Object A, final Object B) {
 		try {
 			return equals((ResultSet) A, (ResultSet) B);
 		} catch (final SQLException x) {
-			throw new RuntimeException(x); 
+			throw new RuntimeException(x);
 		}
 	}
-	
-	/** @see tester.IEquivalence#HashCode(java.lang.Object)	 */
+
+	/**
+	 * Always throws, since equality here depends on two result set rows rather than a
+	 * single object and has no well-defined hash code.
+	 * @see tester.IEquivalence#HashCode(java.lang.Object)
+	 */
 	public int HashCode(final Object A) {
-		throw new RuntimeException("Not well defined!"); 
+		throw new RuntimeException("Not well defined!");
 	}
 	
 }

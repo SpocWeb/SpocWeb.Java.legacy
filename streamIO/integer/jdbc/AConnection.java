@@ -28,27 +28,42 @@ import java.util.Map;
 import java.util.Properties;
 
 /**
- * Title: AConnection<p>
- * Description:
- * Purpose:
+ * Filesystem-backed {@link Connection} whose "database" is a directory of table files sharing
+ * one suffix, with connection parameters (suffix, separators, ID case handling) read from a
+ * {@link Properties} object at construction.
  *
- * Connection Object holding the Parameters for all Tables 
- * in a Directory. 
+ * <p>Transactions are not supported: {@link #setAutoCommit(boolean)} rejects manual mode,
+ * {@link #commit()} and {@link #rollback()} always throw, and only
+ * {@link #isolationLevelDefault} ({@code TRANSACTION_NONE}) is accepted as an isolation level.
+ * Savepoints are likewise unsupported no-ops.
  *
- * Known SubClasses: 
- * @see streamIO.object.parser.jdbc.ConnectionSep
- * @see streamIO.integer.jdbc.ConnectionFix
+ * <h2>Collaborators</h2>
  *
- * Known Uses: <none>
+ * | Type | Relationship |
+ * |---|---|
+ * | {@link DBMetaData} | Lazily created and cached metadata view over {@link #urlDir}. |
+ * | {@link Driver} | The driver that created this connection, if any. |
  *
  * Copyright:	Copyright (c) Matthias Heuer<p>
  * Company:	personal<p>
  * Created on	10-26-2002, 12:47 PM<p>
  * @author mheuer
  * @version	1.0
+ * @see streamIO.object.parser.jdbc.ConnectionSep
+ * @see streamIO.integer.jdbc.ConnectionFix
+ * @see DBMetaData the metadata implementation this connection creates
  *
+ * <!-- docstate
+ * pass: 2
+ * mtime: 2026-09-05T21:37:47Z
+ * digest: 4797edb3841105d233a548ed48c270d362936accd3723eb6429f8d2f72caf74e
+ * stale: false
+ * tags: [code/jdbc_adapter, code/database_access, code/database_driver]
+ * concepts: [Filesystem-Backed JDBC Driver Framework with Fixed-Length and Separator-Delimited Table Storage]
+ * facets: {layer: domain, status: legacy, complexity: high}
+ * -->
  */
-public abstract class AConnection 
+public abstract class AConnection
 implements Connection {
 
 	/** Factory Method for a fully initialized @see DriverPropertyInfo Instance */
@@ -124,8 +139,10 @@ implements Connection {
 	/** the String of Separators to parse by (when using parsing ResultSets) */
 	final public String separators;
 	
-	/** @return the Instance of the Driver used	 */
-	final public Driver driver; 
+	/** The {@link Driver} instance that created this connection, or {@code null} when
+	 * constructed directly.
+	 * @return the Instance of the Driver used	 */
+	final public Driver driver;
 	
 	/** Flag for ignoring the Case	 */
 	final public boolean ignoreIDCase;
@@ -239,13 +256,20 @@ implements Connection {
 	private boolean closed = false;
 
 	/**
+	 * Marks this connection as closed; open result sets and statements are not closed.
+	 *
 	 * @see java.sql.Connection#close()
 	 */
 	public void close() { //do nothing...
-		closed = true; //TODO: close all open ResultSets too! 
+		// TODO: LOGIC: close() never closes Statements/ResultSets opened through this
+		// Connection - callers relying on close() to release file handles or cursors
+		// will leak them; only the closed flag is set.
+		closed = true;
 	}
 
 	/**
+	 * Reports whether {@link #close()} has already been called on this connection.
+	 *
 	 * @see java.sql.Connection#isClosed()
 	 */
 	public boolean isClosed() { return closed; }
@@ -255,12 +279,16 @@ implements Connection {
 	/** Flag to indicate Read-Only ResultSets */
 	private boolean readOnly = false;
 
-	/** 
+	/**
+	 * Stores the read-only hint for this connection without enforcing it.
+	 *
 	 * @see java.sql.Connection#setReadOnly(boolean)
 	 */
 	public void setReadOnly(final boolean readOnly_) { readOnly = readOnly_; }
 
 	/**
+	 * Returns the read-only flag last set via {@link #setReadOnly(boolean)}.
+	 *
 	 * @see java.sql.Connection#isReadOnly()
 	 */
 	public boolean isReadOnly() { return readOnly; }
@@ -271,6 +299,9 @@ implements Connection {
 	private String catalog; 
 
 	/**
+	 * Stores the catalog name for this connection; the value is not validated
+	 * against {@link #urlDir}.
+	 *
 	 * @see java.sql.Connection#setCatalog(java.lang.String)
 	 */
 	public void setCatalog(final String catalog_) { //throws SQLException {
@@ -278,6 +309,9 @@ implements Connection {
 	}
 
 	/**
+	 * Returns the catalog name last set via {@link #setCatalog(String)}, or
+	 * {@code null} when never set.
+	 *
 	 * @see java.sql.Connection#getCatalog()
 	 */
 	public String getCatalog() { //throws SQLException {
@@ -297,15 +331,25 @@ implements Connection {
 		throw new SQLException("Transactions are not supported!"); 
 	}
 
-	/** @see java.sql.Connection#setTransactionIsolation(int)	 */
+	/**
+	 * Accepts only {@link #isolationLevelDefault} ({@code TRANSACTION_NONE}); any other
+	 * level is rejected since this driver does not support transactions.
+	 *
+	 * @throws SQLException when {@code level} is not {@link #isolationLevelDefault}
+	 * @see java.sql.Connection#setTransactionIsolation(int)
+	 */
 	public void setTransactionIsolation(final int level) throws SQLException {
 		if (level != isolationLevelDefault) {
-			throwTxNotSupported(); 
+			throwTxNotSupported();
 		}
-		isolationLevel = level; 
+		isolationLevel = level;
 	}
 
-	/** @see java.sql.Connection#getTransactionIsolation()	 */
+	/**
+	 * Returns the transaction isolation level, always {@link #isolationLevelDefault}.
+	 *
+	 * @see java.sql.Connection#getTransactionIsolation()
+	 */
 	public int getTransactionIsolation() { //throws SQLException {
 		return isolationLevel;
 	}
@@ -319,12 +363,25 @@ implements Connection {
 		warnings.add(warning);
 	}
 
-	/** @see java.sql.Connection#getWarnings()	 */
+	// TODO: LOGIC: warnings.remove(warnings.size()) always throws
+	// IndexOutOfBoundsException - List.remove(int) requires an index strictly less
+	// than size(), so this is out of range even for a non-empty list (valid indices
+	// are 0..size()-1) and doubly so for an empty list. Every call to getWarnings()
+	// therefore throws instead of returning the warning chain or null.
+	/**
+	 * Returns the connection's accumulated {@link SQLWarning} chain.
+	 *
+	 * @see java.sql.Connection#getWarnings()
+	 */
 	public SQLWarning getWarnings() { //throws SQLException {
 		return (SQLWarning) warnings.remove(warnings.size());
 	}
 
-	/** @see java.sql.Connection#clearWarnings()	 */
+	/**
+	 * Discards every warning recorded via {@link #addWarning(SQLWarning)}.
+	 *
+	 * @see java.sql.Connection#clearWarnings()
+	 */
 	public void clearWarnings() { //throws SQLException {
 		warnings.clear();
 	}
@@ -334,12 +391,21 @@ implements Connection {
 	/** Member for the TypeMap used */
 	protected Map typeMap;
 
-	/** @see java.sql.Connection#getTypeMap()	 */
+	/**
+	 * Returns the type map last set via {@link #setTypeMap(Map)}, or {@code null}
+	 * when never set.
+	 *
+	 * @see java.sql.Connection#getTypeMap()
+	 */
 	public Map getTypeMap() { //throws SQLException {
 		return typeMap;
 	}
 
-	/** @see java.sql.Connection#setTypeMap(java.util.Map)	 */
+	/**
+	 * Stores the SQL type map used for custom user-defined type mappings.
+	 *
+	 * @see java.sql.Connection#setTypeMap(java.util.Map)
+	 */
 	public void setTypeMap(final Map map) { //throws SQLException {
 		typeMap = map;
 	}
@@ -348,39 +414,68 @@ implements Connection {
 
 	protected int holdAbility;
 
-	/** @see java.sql.Connection#setHoldability(int)	 */
+	/**
+	 * Stores the result-set holdability without validating it against the constants
+	 * declared on {@link java.sql.ResultSet}.
+	 *
+	 * @see java.sql.Connection#setHoldability(int)
+	 */
 	public void setHoldability(final int holdAbility_) { //throws SQLException {
 		holdAbility = holdAbility_;
 	}
 
-	/** @see java.sql.Connection#getHoldability()	 */
+	/**
+	 * Returns the holdability last set via {@link #setHoldability(int)}.
+	 *
+	 * @see java.sql.Connection#getHoldability()
+	 */
 	public int getHoldability() { //throws SQLException {
-		return holdAbility; 
+		return holdAbility;
 	}
 
 	///////////////////////////////////////////////////////////////////////////
 
-	/** @see java.sql.Connection#setSavepoint()	 */
+	/**
+	 * Savepoints are not supported; always returns {@code null} instead of a real
+	 * {@link Savepoint}.
+	 *
+	 * @see java.sql.Connection#setSavepoint()
+	 */
 	public Savepoint setSavepoint() { //throws SQLException {
 		return null;
 	}
 
-	/** @see java.sql.Connection#setSavepoint(java.lang.String)	 */
+	/**
+	 * Savepoints are not supported; always returns {@code null} instead of a real
+	 * {@link Savepoint}.
+	 *
+	 * @see java.sql.Connection#setSavepoint(java.lang.String)
+	 */
 	public Savepoint setSavepoint(final String name) { //throws SQLException {
 		return null;
 	}
 
-	/** @see java.sql.Connection#rollback(java.sql.Savepoint)	 */
+	/**
+	 * No-op, since savepoints are never created by this connection.
+	 *
+	 * @see java.sql.Connection#rollback(java.sql.Savepoint)
+	 */
 	public void rollback(final Savepoint savepoint) { //throws SQLException {
 	}
 
-	/** @see java.sql.Connection#releaseSavepoint(java.sql.Savepoint)	 */
+	/**
+	 * No-op, since savepoints are never created by this connection.
+	 *
+	 * @see java.sql.Connection#releaseSavepoint(java.sql.Savepoint)
+	 */
 	public void releaseSavepoint(final Savepoint savepoint) { //throws SQLException {
 	}
 
 	///////////////////////////////////////////////////////////////////////////
 
 	/**
+	 * Returns {@code sql} unchanged; this driver performs no native SQL translation.
+	 *
 	 * @see java.sql.Connection#nativeSQL(java.lang.String)
 	 */
 	public String nativeSQL(final String sql) { //throws SQLException {
@@ -388,101 +483,171 @@ implements Connection {
 	}
 
 	/**
-		 * @see java.sql.Connection#setAutoCommit(boolean)
-		 */
+	 * Accepts only auto-commit mode, since this driver never supports manual
+	 * transactions.
+	 *
+	 * @throws SQLException when {@code autoCommit} is {@code false}
+	 * @see java.sql.Connection#setAutoCommit(boolean)
+	 */
 	public void setAutoCommit(boolean autoCommit) throws SQLException {
-		if (!autoCommit) 
+		if (!autoCommit)
 			throwTxNotSupported();
 	}
 
-	/** @see java.sql.Connection#getAutoCommit()	 */
+	/**
+	 * Always returns {@code true}; this connection only ever runs in auto-commit mode.
+	 *
+	 * @see java.sql.Connection#getAutoCommit()
+	 */
 	public boolean getAutoCommit() { //throws SQLException {
 		return true;
 	}
 
-	/** @see java.sql.Connection#commit()	 */
+	/**
+	 * Always throws, since manual transactions are not supported.
+	 *
+	 * @throws SQLException always
+	 * @see java.sql.Connection#commit()
+	 */
 	public void commit() throws SQLException {
 		throwTxNotSupported();
 	}
 
-	/** @see java.sql.Connection#rollback()	 */
+	/**
+	 * Always throws, since manual transactions are not supported.
+	 *
+	 * @throws SQLException always
+	 * @see java.sql.Connection#rollback()
+	 */
 	public void rollback() throws SQLException {
 		throwTxNotSupported();
 	}
 	
-	/** @see java.sql.Connection#createArrayOf(java.lang.String, java.lang.Object[]) 	 */
+	/**
+	 * Stub override of {@link java.sql.Connection#createArrayOf}; not implemented and always returns null.
+	 *
+	 * @see java.sql.Connection#createArrayOf(java.lang.String, java.lang.Object[])
+	 */
 	public Array createArrayOf(String arg0, Object[] arg1) throws SQLException {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
-	/** @see java.sql.Connection#createBlob()	 */
+	/**
+	 * Stub override of {@link java.sql.Connection#createBlob}; not implemented and always returns null.
+	 *
+	 * @see java.sql.Connection#createBlob()
+	 */
 	public Blob createBlob() throws SQLException {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
-	/** @see java.sql.Connection#createClob()	 */
+	/**
+	 * Stub override of {@link java.sql.Connection#createClob}; not implemented and always returns null.
+	 *
+	 * @see java.sql.Connection#createClob()
+	 */
 	public Clob createClob() throws SQLException {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
-	/** @see java.sql.Connection#createNClob()	 */
+	/**
+	 * Stub override of {@link java.sql.Connection#createNClob}; not implemented and always returns null.
+	 *
+	 * @see java.sql.Connection#createNClob()
+	 */
 	public NClob createNClob() throws SQLException {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
-	/** @see java.sql.Connection#createSQLXML()	 */
+	/**
+	 * Stub override of {@link java.sql.Connection#createSQLXML}; not implemented and always returns null.
+	 *
+	 * @see java.sql.Connection#createSQLXML()
+	 */
 	public SQLXML createSQLXML() throws SQLException {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
-	/** @see java.sql.Connection#createStruct(java.lang.String, java.lang.Object[])	 */
+	/**
+	 * Stub override of {@link java.sql.Connection#createStruct}; not implemented and always returns null.
+	 *
+	 * @see java.sql.Connection#createStruct(java.lang.String, java.lang.Object[])
+	 */
 	public Struct createStruct(String arg0, Object[] arg1) throws SQLException {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
-	/** @see java.sql.Connection#getClientInfo()	 */
+	/**
+	 * Stub override of {@link java.sql.Connection#getClientInfo}; not implemented and always returns null.
+	 *
+	 * @see java.sql.Connection#getClientInfo()
+	 */
 	public Properties getClientInfo() throws SQLException {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
-	/** @see java.sql.Connection#getClientInfo(java.lang.String)	 */
+	/**
+	 * Stub override of {@link java.sql.Connection#getClientInfo}; not implemented and always returns null.
+	 *
+	 * @see java.sql.Connection#getClientInfo(java.lang.String)
+	 */
 	public String getClientInfo(String arg0) throws SQLException {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
-	/** @see java.sql.Connection#isValid(int)	 */
+	/**
+	 * Stub override of {@link java.sql.Connection#isValid}; not implemented and always returns false.
+	 *
+	 * @see java.sql.Connection#isValid(int)
+	 */
 	public boolean isValid(int arg0) throws SQLException {
 		// TODO Auto-generated method stub
 		return false;
 	}
 
-	/** @see java.sql.Connection#setClientInfo(java.util.Properties)	 */
+	/**
+	 * Stub override of {@link java.sql.Connection#setClientInfo}; not implemented and performs no action.
+	 *
+	 * @see java.sql.Connection#setClientInfo(java.util.Properties)
+	 */
 	public void setClientInfo(Properties arg0) throws SQLClientInfoException {
 		// TODO Auto-generated method stub
 		
 	}
 
-	/** @see java.sql.Connection#setClientInfo(java.lang.String, java.lang.String)	 */
+	/**
+	 * Stub override of {@link java.sql.Connection#setClientInfo}; not implemented and performs no action.
+	 *
+	 * @see java.sql.Connection#setClientInfo(java.lang.String, java.lang.String)
+	 */
 	public void setClientInfo(String arg0, String arg1) throws SQLClientInfoException {
 		// TODO Auto-generated method stub
 		
 	}
 
-	/** @see java.sql.Wrapper#isWrapperFor(java.lang.Class)	 */
+	/**
+	 * Stub override of {@link java.sql.Wrapper#isWrapperFor}; not implemented and always returns false.
+	 *
+	 * @see java.sql.Wrapper#isWrapperFor(java.lang.Class)
+	 */
 	public boolean isWrapperFor(Class arg0) throws SQLException {
 		// TODO Auto-generated method stub
 		return false;
 	}
 
-	/** @see java.sql.Wrapper#unwrap(java.lang.Class)	 */
+	/**
+	 * Stub override of {@link java.sql.Wrapper#unwrap}; not implemented and always returns null.
+	 *
+	 * @see java.sql.Wrapper#unwrap(java.lang.Class)
+	 */
 	public Object unwrap(Class arg0) throws SQLException {
 		// TODO Auto-generated method stub
 		return null;

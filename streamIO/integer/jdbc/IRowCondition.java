@@ -14,23 +14,31 @@ import javax.sql.RowSet;
 import tester.ITester;
 
 /**
- * @author heuerm
+ * Interface for a tester implementing a row filter, typically applied to a cross product
+ * (join) of two result sets; can also check integrity constraints when inserting rows.
  *
- * Interface for a Tester to implement a RowFilter, 
- * typically applied to a Cross Product (Join) of two ResultSets. 
- * @see javax.sql.rowset.Predicate#evaluate(RowSet rs) 
+ * @author heuerm
+ * @see javax.sql.rowset.Predicate#evaluate(RowSet rs)
  * 	that controls the rowset cursor moving from row to the next.
- *  It can also be used to check Integrity Constraints when inserting Rows. 
+ * <!-- docstate
+ * pass: 2
+ * mtime: 2026-09-05T21:54:31Z
+ * digest: 777f9d040fe051e70071e5545ea58b5f5fae0dd1699192b1844f7014f9b5bc15
+ * stale: false
+ * tags: [code/jdbc_adapter, code/database_access, code/database_driver]
+ * concepts: [Filesystem-Backed JDBC Driver Framework with Fixed-Length and Separator-Delimited Table Storage]
+ * facets: {layer: domain, status: legacy, complexity: high}
+ * -->
  */
-public interface IRowCondition 
+public interface IRowCondition
 extends ITester {
 
-	/** 
-	 * returns true when the Test on  
-	 * @param rs ResultSet to test 
+	/**
+	 * Evaluates this condition against the current row of {@code rs}.
+	 * @param rs ResultSet to test
 	 * @return true when the Test is fulfilled on the current Row
 	 * @throws SQLException
 	 */
-	boolean equals(final ResultSet rs) throws SQLException; 
+	boolean equals(final ResultSet rs) throws SQLException;
 	
 }
