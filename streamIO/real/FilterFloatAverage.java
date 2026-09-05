@@ -11,9 +11,9 @@ import streamIO.Log;
 import function.IFloatFunction;
 
 /**
- * Title: FilterFloatAverage<p>
- * Description:
- * Filters the incoming Data linearly, using an Array of Coefficients. 
+ * Filters the incoming data linearly using a fixed array of convolution coefficients.
+ *
+ * <p>Filters the incoming Data linearly, using an Array of Coefficients.
  * Performs the Convolution in Real Time, not in Fourier Space. 
  * Filtering N Samples with a Filter of Size M is an O(N*M) Operation! 
  * 
@@ -39,6 +39,15 @@ import function.IFloatFunction;
  * @author mheuer
  * @version	1.0
  *
+ * <!-- docstate
+ * pass: 2
+ * mtime: 2026-09-05T11:10:54Z
+ * digest: e76c3c570d594721ac2cae008612dd0fd4aadf7e2097db0e8517be2bcc7acb40
+ * stale: false
+ * tags: [code/stream_filter, code/running_statistics]
+ * concepts: [Running Average Filter]
+ * facets: {layer: infrastructure, status: legacy, complexity: low}
+ * -->
  */
 public class FilterFloatAverage 
 extends FilterFloatDelay {
@@ -127,72 +136,71 @@ extends FilterFloatDelay {
 	//	Constructors
 	/////////////////////////////////////////////////////////////////////////////////////
 	
-	/**
-	 * @param inStream_
-	 * @param coeff_
-	 * @param mapper_
-	 * @param initValue
+	/** Creates a filter reading from {@code inStream_} that averages using {@code coeff_}.
+	 * @param inStream_ the source stream to filter
+	 * @param coeff_ the convolution coefficients
+	 * @param mapper_ optional function mapping the averaged value before delivery
+	 * @param initValue the value the delay cache is pre-filled with
 	 */
 	public FilterFloatAverage( final IStreamIn_Float inStream_, final double[] coeff_, final IFloatFunction mapper_, final double initValue) {
 		super(inStream_, coeff_.length, mapper_, initValue);
-		this.coeff = coeff_; 
+		this.coeff = coeff_;
 	}
 
-	/**
-	 * 
-	 * @param outStream_
-	 * @param coeff_
-	 * @param mapper_
-	 * @param initValue
+	/** Creates a filter writing to {@code outStream_} that averages using {@code coeff_}.
+	 * @param outStream_ the destination stream for filtered output
+	 * @param coeff_ the convolution coefficients
+	 * @param mapper_ optional function mapping the averaged value before delivery
+	 * @param initValue the value the delay cache is pre-filled with
 	 */
-	public FilterFloatAverage( final IStreamOutFloat outStream_, final double[] coeff_, 
+	public FilterFloatAverage( final IStreamOutFloat outStream_, final double[] coeff_,
 	final IFloatFunction mapper_, final double initValue) {
 		super(outStream_, coeff_.length, mapper_, initValue);
-		this.coeff = coeff_; 
+		this.coeff = coeff_;
 	}
 
-	/**
-	 * @param inStream_
-	 * @param windowSize
-	 * @param mapper_
+	/** Creates a filter reading from {@code inStream_}, with the delay cache pre-filled with NaN.
+	 * @param inStream_ the source stream to filter
+	 * @param coeff_ the convolution coefficients
+	 * @param mapper_ optional function mapping the averaged value before delivery
 	 */
 	public FilterFloatAverage(final IStreamIn_Float inStream_, final double[] coeff_, final IFloatFunction mapper_) {
 		this(inStream_, coeff_, mapper_, Double.NaN); }
 
-	/**
-	 * @param outStream_
-	 * @param windowSize
-	 * @param mapper_
+	/** Creates a filter writing to {@code outStream_}, with the delay cache pre-filled with NaN.
+	 * @param outStream_ the destination stream for filtered output
+	 * @param coeff_ the convolution coefficients
+	 * @param mapper_ optional function mapping the averaged value before delivery
 	 */
 	public FilterFloatAverage(final IStreamOutFloat outStream_, final double[] coeff_, final IFloatFunction mapper_) {
 		this(outStream_, coeff_, mapper_, Double.NaN); }
 
-	/**
-	 * @param inStream_
-	 * @param delay
-	 * @param initValue
+	/** Creates a filter reading from {@code inStream_}, with no output-mapping function.
+	 * @param inStream_ the source stream to filter
+	 * @param coeff_ the convolution coefficients
+	 * @param initValue the value the delay cache is pre-filled with
 	 */
 	public FilterFloatAverage(final IStreamIn_Float inStream_, final double[] coeff_, final double initValue) {
 		this(inStream_, coeff_, null, initValue); }
 
-	/**
-	 * @param outStream_
-	 * @param delay
-	 * @param initValue
+	/** Creates a filter writing to {@code outStream_}, with no output-mapping function.
+	 * @param outStream_ the destination stream for filtered output
+	 * @param coeff_ the convolution coefficients
+	 * @param initValue the value the delay cache is pre-filled with
 	 */
 	public FilterFloatAverage(final IStreamOutFloat outStream_, final double[] coeff_, final double initValue) {
 		this(outStream_, coeff_, null, initValue); }
 
-	/**
-	 * @param inStream_
-	 * @param windowSize
+	/** Creates a filter reading from {@code inStream_}, with the delay cache pre-filled with NaN.
+	 * @param inStream_ the source stream to filter
+	 * @param coeff_ the convolution coefficients
 	 */
 	public FilterFloatAverage(final IStreamIn_Float inStream_, final double[] coeff_) {
 		this(inStream_, coeff_, null, Double.NaN); }
 
-	/**
-	 * @param outStream_
-	 * @param windowSize
+	/** Creates a filter writing to {@code outStream_}, with the delay cache pre-filled with NaN.
+	 * @param outStream_ the destination stream for filtered output
+	 * @param coeff_ the convolution coefficients
 	 */
 	public FilterFloatAverage(final IStreamOutFloat outStream_, final double[] coeff_) {
 		this(outStream_, coeff_, null, Double.NaN); }

@@ -5,9 +5,9 @@ import streamIO.integer.random.IStreamIn_Bound_Int;
 import streamIO.object.IStreamIn;
 
 /**
-  * Title: FilterInFloatMul<p>
-  * Description:
-  * Multiplication with a fixed Scale Filter for Number Streams.
+  * Scales an integer random stream by a precomputed factor to produce bounded double values.
+  *
+  * <p>Multiplication with a fixed Scale Filter for Number Streams.
   * Implements an Optimization by precalculating the Scaling Factor
   * taking the Generator's MaxValue into Account
   * thus saving one float Point Multiplication
@@ -23,6 +23,15 @@ import streamIO.object.IStreamIn;
   * Created on	2000-11-26, 01;13;44<p>
   * @author 	Matthias Heuer
   * @version	1.0
+  * <!-- docstate
+  * pass: 2
+  * mtime: 2026-09-05T11:16:49Z
+  * digest: 37150eb7830d3da26f4e13e9522c9af63de57c63499a5c348d1fbd4d4a767e59
+  * stale: false
+  * tags: [code/stream_filter]
+  * concepts: [Multiplicative Scaling Filter]
+  * facets: {layer: infrastructure, status: broken, complexity: low}
+  * -->
   */
 public class FilterInMul
 extends AStreamIn_Float
@@ -34,7 +43,8 @@ implements IStreamIn_Float {
 	/** Scaling Factor taking the Generator's MaxValue into Account	 */
 	protected final double scale;
 	
-	/** @return the Scaling Factor taking the Generator's MaxValue into Account	 */
+	/** Returns the precomputed scaling factor applied to each generated value.
+	 * @return the Scaling Factor taking the Generator's MaxValue into Account	 */
 	public double getScale() { return scale; }
 	
 	/** Initializing Constructor
@@ -68,10 +78,12 @@ implements IStreamIn_Float {
 		return inStream.reSet(position); 
 	}
 	
-	/** @see streamIO.integer.IStreamIn_Int#reSet()	 */
+	/** Resets the wrapped integer stream to its last marked position.
+	 * @see streamIO.integer.IStreamIn_Int#reSet()	 */
 	public IReSetAble reSet() { inStream.reSet(); return this; }
-	
-	/** @return the Order in which Elements are returned by the Iterators
+
+	/** Returns the sort order of the wrapped stream, flipped when the scale is negative.
+	 * @return the Order in which Elements are returned by the Iterators
 	  * when they are added using addItem() and removed using nextItem().	 */
 	public byte getOrder() {
 		final byte ret = inStream.getOrder();
@@ -80,24 +92,33 @@ implements IStreamIn_Float {
 			return (byte) -ret; }
 		return ret; }
 	
-	/** @return the next Random double Precision Number	 */
+	/** Returns the next generated integer, scaled by {@link #scale}.
+	 * @return the next Random double Precision Number	 */
 	public double nextDoubleInternal() { return scale*inStream.nextInt(); }
-	
-	/** @see streamIO.real.IStreamIn_Float#Iterator()	 */
+
+	/** Returns a new independent scaled filter cloned from this stream's underlying generator.
+	 * @see streamIO.real.IStreamIn_Float#Iterator()	 */
 	public IStreamIn_Float FloatIterator() {
 		return new FilterInMul(this.scale, (IStreamIn_Bound_Int) inStream.IntIterator());
 	}
-	
-	/** @see streamIO.real.AStreamIn_Float#availAble()	 */
+
+	/** Returns the number of items still available from the wrapped stream.
+	 * @see streamIO.real.AStreamIn_Float#availAble()	 */
 	public long availAble() { return inStream.availAble(); }
 
-	/** @see streamIO.real.AStreamIn_Float#getMaxMarkSize()	 */
+	/** Returns the maximum mark size of the wrapped stream.
+	 * @see streamIO.real.AStreamIn_Float#getMaxMarkSize()	 */
 	public long getMaxMarkSize() { return inStream.getMaxMarkSize(); }
 
-	/** @see streamIO.real.AStreamIn_Float#getMinDouble()	 */
+	/** Returns the scaled minimum value producible by the wrapped generator.
+	 * @see streamIO.real.AStreamIn_Float#getMinDouble()	 */
+	// TODO: LOGIC: when scale is negative (e.g. via FilterInLin with min>max), multiplying getMinValue()
+	// by a negative scale actually yields the resulting distribution's maximum, not its minimum -
+	// getOrder() above already accounts for this sign flip but this method does not.
 	public double getMinDouble() { return scale*inStream.getMinValue(); }
 
-	/** @see streamIO.real.AStreamIn_Float#getPosition()	 */
+	/** Returns the current position of the wrapped stream.
+	 * @see streamIO.real.AStreamIn_Float#getPosition()	 */
 	public long getPosition() { return inStream.getPosition(); }
 
 }

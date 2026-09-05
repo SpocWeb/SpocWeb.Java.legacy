@@ -16,11 +16,10 @@ import function.byref.ByRefDouble;
 import function.derive.ring.body.Sinus;
 
 /**
- * Title: StreamOutPlotter<p>
- * Description:
- * Prints out the incoming Data pseudo-graphically into a Line-based Device. 
- * 
- * 
+ * Prints incoming float and double data pseudo-graphically as ASCII columns or lines to a
+ * line-based output device.
+ *
+ * <p>
  * Known SubClasses: <none>
  * 
  * Known Uses: <none>
@@ -31,6 +30,15 @@ import function.derive.ring.body.Sinus;
  * @author mheuer
  * @version	1.0
  * 
+ * <!-- docstate
+ * pass: 2
+ * mtime: 2026-09-05T11:23:43Z
+ * digest: e24a8a02a0be66a29e7e6ff570039b1597d6de6b62300df28c388bc583232474
+ * stale: false
+ * tags: [code/signal_processing]
+ * concepts: [Console Plotter Output]
+ * facets: {layer: infrastructure, status: legacy, complexity: low}
+ * -->
  */
 public class StreamOutPlotter 
 implements IStreamOutFloat {
@@ -302,7 +310,8 @@ implements IStreamOutFloat {
 			count = Integer.MIN_VALUE; }
 	}
 	
-	/** @see streamIO.real.IStreamOutFloat#addFloat(float)	 */
+	/** Changes the column base used to draw columns, resetting the previous-value cache for it.
+	 * @see streamIO.real.IStreamOutFloat#addFloat(float)	 */
 	public synchronized void setColumnBase(final int columnBase_) {
 		this.columnBase = columnBase_;
 		if ((columnBase >= 0) && (previous != null)) {
@@ -377,7 +386,8 @@ implements IStreamOutFloat {
 	/** Cached Helper Array to save multiple Initialization	 */
 	protected float[] arr; 
 	
-	/** @see streamIO.real.IStreamOutFloat#addFloat(float)	 */
+	/** Plots a single float value as one line on the shared marker array.
+	 * @see streamIO.real.IStreamOutFloat#addFloat(float)	 */
 	public synchronized IStreamOutFloat addFloat(final float value) {
 		if (arr == null) {
 			arr = new float[2]; }
@@ -386,7 +396,8 @@ implements IStreamOutFloat {
 		return this;
 	}
 	
-	/** @see streamIO.real.IStreamOutFloat#addDouble(double)	 */
+	/** Plots a single double value, narrowed to float, as one line on the shared marker array.
+	 * @see streamIO.real.IStreamOutFloat#addDouble(double)	 */
 	public synchronized IStreamOutFloat addDouble(final double value) {
 		if (arr == null) 
 			arr = new float[2]; 
@@ -395,7 +406,8 @@ implements IStreamOutFloat {
 		return this;
 	}
 		
-	/** @see streamIO.real.IStreamOutFloat#addDouble(double)	 */
+	/** Samples a function at evenly spaced points and plots each resulting value.
+	 * @see streamIO.real.IStreamOutFloat#addDouble(double)	 */
 	public void plot(final IFloatFunction f, double xStart, final double xStop, final int numSteps) {
 		final double dx = (xStop-xStart)/numSteps;
 		for (int i = -1; ++i <= numSteps; xStart+= dx) {

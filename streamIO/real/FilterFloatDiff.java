@@ -13,42 +13,53 @@ import function.IFloatFunction;
  * Differentiator, continuously differentiates the Stream Elements. 
  * @see streamIO.real.FilterFloatSumm which is the Inverse Operator. 
  * @author heuerm
+ * <!-- docstate
+ * pass: 2
+ * mtime: 2026-09-05T11:12:27Z
+ * digest: bb22ea223004a048decfc1e0766ad8de03ae73a609ef0672074b4100def5a977
+ * stale: false
+ * tags: [code/stream_filter]
+ * concepts: [Differencing Filter]
+ * facets: {layer: infrastructure, status: legacy, complexity: low}
+ * -->
  */
 public class FilterFloatDiff 
 extends FilterFloatCache {
 
-	/**
-	 * @param inStream_
-	 * @param mapper_
+	/** Creates a differentiator reading from {@code inStream_} through the given mapping function.
+	 * @param inStream_ the source stream to differentiate
+	 * @param mapper_ optional function mapping each value before differentiation
 	 */
 	public FilterFloatDiff(IStreamIn_Float inStream_, IFloatFunction mapper_) {
 		super(inStream_, mapper_); }
 
-	/**
-	 * @param outStream_
-	 * @param mapper_
+	/** Creates a differentiator writing to {@code outStream_} through the given mapping function.
+	 * @param outStream_ the destination stream for differentiated output
+	 * @param mapper_ optional function mapping each value before differentiation
 	 */
 	public FilterFloatDiff(IStreamOutFloat outStream_, IFloatFunction mapper_) {
 		super(outStream_, mapper_); }
 
-	/**
-	 * @param inStream_
-	 * @param startValue_
+	/** Creates a differentiator reading from {@code inStream_}, with {@link #lastValue} pre-set.
+	 * @param inStream_ the source stream to differentiate
+	 * @param startValue_ the initial value differentiated against
 	 */
 	public FilterFloatDiff(IStreamIn_Float inStream_, double startValue_) {
 		super(inStream_, startValue_); }
 
-	/**
-	 * @param outStream_
-	 * @param startValue_
+	/** Creates a differentiator writing to {@code outStream_}, with {@link #lastValue} pre-set.
+	 * @param outStream_ the destination stream for differentiated output
+	 * @param startValue_ the initial value differentiated against
 	 */
 	public FilterFloatDiff(IStreamOutFloat outStream_, double startValue_) {
 		super(outStream_, startValue_); }
 
-	/** @param inStream_	 */
+	/** Creates a differentiator reading from {@code inStream_}, with no mapping function.
+	 * @param inStream_	 */
 	public FilterFloatDiff(IStreamIn_Float inStream_) { super(inStream_); }
 
-	/** @param outStream_	 */
+	/** Creates a differentiator writing to {@code outStream_}, with no mapping function.
+	 * @param outStream_	 */
 	public FilterFloatDiff(IStreamOutFloat outStream_) { super(outStream_); }
 
 	/** adds a single Value to the Statistics, called by the stream Methods. 	 */

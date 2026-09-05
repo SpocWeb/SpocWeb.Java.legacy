@@ -27,7 +27,18 @@ import streamIO.real.StreamOutPlotter;
 import streamIO.vector.random.RandomVectorQuasi;
 import function.derive.ring.body.Gauss;
 
-/**Tests all Methods of this Package	 */
+/**Tests all Methods of this Package
+ *
+ * <!-- docstate
+ * pass: 2
+ * mtime: 2026-09-05T11:31:02Z
+ * digest: f8a40a52b7cf70bd21ab8eb4df60c73cd6cb6a15ca4fd6fa51173a996b751d2c
+ * stale: false
+ * tags: [code/random_number_generator]
+ * concepts: [Random Generator Test Harness]
+ * facets: {layer: test, status: legacy, complexity: low}
+ * -->
+ */
 public class TestRandom {
 
 	/** Logger for Testing, modify Threshold for switching Logging */
@@ -39,6 +50,11 @@ public class TestRandom {
 	 * using it to calculate the Volume of the Unit n-Spheres.
 	 * Float Point Operations are sufficient,
 	 * since the Result is evaluated statistically anyway!
+	 * <!-- docstate
+	 * tags: [code/random_number_generator]
+	 * concepts: [Generator Self-Test]
+	 * facets: {layer: test, status: legacy, complexity: low}
+	 * -->
 	 */
 	private static final void testGenerator(final IStreamIn_Float ran, final int maxPower) {
 		final double[] actual = { Math.PI, 4*Math.PI/3, Math.PI*Math.PI/2}; 
@@ -73,6 +89,11 @@ public class TestRandom {
 
 	/**Tests and plots the Random Number Generator 
 	 * by comparing it with a given Distribution 
+	 * <!-- docstate
+	 * tags: [code/random_number_generator]
+	 * concepts: [Distribution Test Helper]
+	 * facets: {layer: test, status: legacy, complexity: low}
+	 * -->
 	 * by sampling it between -1 and +1	 */
 	final static public void TEST_RANDOM(final IStreamIn_Float ran,
 	final float[] compare,
@@ -102,6 +123,11 @@ public class TestRandom {
 	}
 
 	/**Tests the Gaussian Random Number Generator
+			Assert.EQUALS(compare, actual, 0, 2* <!-- docstate
+			Assert.EQUALS(compare, actual, 0, 2* tags: [code/random_number_generator]
+			Assert.EQUALS(compare, actual, 0, 2* concepts: [Distribution Test Helper]
+			Assert.EQUALS(compare, actual, 0, 2* facets: {layer: test, status: legacy, complexity: low}
+			Assert.EQUALS(compare, actual, 0, 2* -->
 	 * by sampling it between -1 and +1	 */
 	final static public void TEST_RANDOM(final IStreamIn_Int ran, final float[] compare,
 	final int numBins, final int numPoints, final String distrName) {
@@ -124,6 +150,11 @@ public class TestRandom {
 
 	/** tests an irregular Sequence / Stream of Bits 
 	 * @param ran the stream to test...
+	 * <!-- docstate
+	 * tags: [code/random_number_generator]
+	 * concepts: [Bit-Level Randomness Test]
+	 * facets: {layer: test, status: legacy, complexity: low}
+	 * -->
 	 */ 
 	private static final void testRandomBit(final IStreamIn_Int ran, final double error) {
 		final int numBins = 15;
@@ -156,7 +187,14 @@ public class TestRandom {
 		}
 	}
 
-	/**Tests the Gauss Random Number Generator	 */
+	/**Tests the Gauss Random Number Generator
+	 *
+	 * <!-- docstate
+	 * tags: [code/random_number_generator]
+	 * concepts: [Gaussian Test Helper]
+	 * facets: {layer: test, status: legacy, complexity: low}
+	 * -->
+	 */
 	private static final void testGauss(final IStreamIn_Float ran
 	, final double scale, final double shift, final int numPoints, final int numBins) {
 		final float[] compare = new float[numBins];
@@ -165,9 +203,25 @@ public class TestRandom {
 		TEST_RANDOM(ran, compare, scale, numBins, shift+.5, numPoints, "Gauss");
 	} //+.5 because of Truncation!
 
+	/** Runs {@link #testIt(String[])}.
+	 * @param args unused command-line arguments
+	 * <!-- docstate
+	 * tags: [code/random_number_generator]
+	 * concepts: [Demo Entry Point]
+	 * facets: {layer: test, status: legacy, complexity: low}
+	 * -->
+	 */
 	public static void main(final String[] args) throws Exception {
-		testIt(args); } 
+		testIt(args); }
 
+	/** Exercises every random-number generator in this package against its expected distribution.
+	 * @param args unused command-line arguments
+	 * <!-- docstate
+	 * tags: [code/random_number_generator]
+	 * concepts: [Self-Test Method]
+	 * facets: {layer: test, status: legacy, complexity: low}
+	 * -->
+	 */
 	public static void testIt(final String[] args) throws Exception {
 		L.enter().println();
 		testGenerators();
@@ -179,7 +233,7 @@ public class TestRandom {
 		final float[] compare = new float[numBins]; Arrays.fill(compare, binScale); 
 		
 		RandomChiSqr.testIt	(ran, 13, 0.5, 0, numPoints, numBins);
-		RandomChiSqr.testIt	(ran,  3, 0.3, -0.6, numPoints, numBins); //Chi² has a very steep Start at 0!
+		RandomChiSqr.testIt	(ran,  3, 0.3, -0.6, numPoints, numBins); //Chiï¿½ has a very steep Start at 0!
 		RandomChiSqr.testIt	(ran,  7, 0.5, -0.5, numPoints, numBins);
 		
 		RandomGamma.testIt	(ran, 7, numPoints, numBins); //and one above the Threshold

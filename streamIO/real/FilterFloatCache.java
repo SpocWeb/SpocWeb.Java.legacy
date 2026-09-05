@@ -14,6 +14,15 @@ import function.IFloatFunction;
  * Continuously offsets the Stream Elements by one Element. 
  * @author heuerm
  *
+ * <!-- docstate
+ * pass: 2
+ * mtime: 2026-09-05T11:11:34Z
+ * digest: f27b4dee74e43c0822ffb5bb862b62f4268164c243071ea2dc808c0078604411
+ * stale: false
+ * tags: [code/stream_filter]
+ * concepts: [Float Value Cache Filter]
+ * facets: {layer: infrastructure, status: legacy, complexity: low}
+ * -->
  */
 public class FilterFloatCache 
 extends FilterFloatByFunction {
@@ -21,56 +30,55 @@ extends FilterFloatByFunction {
 	/** stores the last Value to be able to return it, to differentiate or to integrate	 */
 	public double lastValue; // = 0;
 	
-	/** @return the last Value added to/read from this Stream	 */
+	/** Returns the last value added to or read from this stream.
+	 * @return the last Value added to/read from this Stream	 */
 	public double getLastValue() { return lastValue; }
-	
+
 	/////////////////////////////////////////////////////////////////////////////////////
 	/// Constructors
 	/////////////////////////////////////////////////////////////////////////////////////
-	
-	/**
-	 * @param inStream_
-	 * @param mapper_
+
+	/** Creates a cache reading from {@code inStream_} through the given mapping function.
+	 * @param inStream_ the source stream to cache
+	 * @param mapper_ optional function mapping each value before it is cached
 	 */
 	public FilterFloatCache(final IStreamIn_Float inStream_, final IFloatFunction mapper_) {
 		super(inStream_, mapper_);
 	}
-	
-	/**
-	 * @param outStream_
-	 * @param mapper_
+
+	/** Creates a cache writing to {@code outStream_} through the given mapping function.
+	 * @param outStream_ the destination stream for cached output
+	 * @param mapper_ optional function mapping each value before it is cached
 	 */
 	public FilterFloatCache(final IStreamOutFloat outStream_, final IFloatFunction mapper_) {
 		super(outStream_, mapper_);
 	}
 
-	/**
-	 * 
-	 * @param inStream_
-	 * @param startValue_
+	/** Creates a cache reading from {@code inStream_}, with {@link #lastValue} pre-set.
+	 * @param inStream_ the source stream to cache
+	 * @param startValue_ the initial value of {@link #lastValue}
 	 */
 	public FilterFloatCache(final IStreamIn_Float inStream_, final double startValue_) {
-		super(inStream_); 
-		this.lastValue = startValue_; 
+		super(inStream_);
+		this.lastValue = startValue_;
 	}
 
-	/**
-	 * 
-	 * @param outStream_
-	 * @param startValue_
+	/** Creates a cache writing to {@code outStream_}, with {@link #lastValue} pre-set.
+	 * @param outStream_ the destination stream for cached output
+	 * @param startValue_ the initial value of {@link #lastValue}
 	 */
 	public FilterFloatCache(final IStreamOutFloat outStream_, final double startValue_) {
-		super(outStream_); 
-		this.lastValue = startValue_; 
+		super(outStream_);
+		this.lastValue = startValue_;
 	}
 
-	/**
-	 * @param inStream_
+	/** Creates a cache reading from {@code inStream_}, with no mapping function.
+	 * @param inStream_ the source stream to cache
 	 */
 	public FilterFloatCache(final IStreamIn_Float inStream_) { super(inStream_); }
 
-	/**
-	 * @param outStream_
+	/** Creates a cache writing to {@code outStream_}, with no mapping function.
+	 * @param outStream_ the destination stream for cached output
 	 */
 	public FilterFloatCache(final IStreamOutFloat outStream_) { super(outStream_); }
 

@@ -12,9 +12,10 @@ import streamIO.real.random.RandomGauss;
 import function.IFloatFunction;
 
 /**
- * Title: FilterFloatOutliers<p>
- * Description:
- * Continuously filters out Outliers 
+ * Continuously filters out statistical outliers beyond a given standard-deviation limit,
+ * counting how many were rejected on each side.
+ *
+ * <p>Continuously filters out Outliers
  * and counts them to be able to judge their Frequency. 
  * This is only possible by the Fact that the Standard Deviation 
  * is very large with  
@@ -39,6 +40,15 @@ import function.IFloatFunction;
  * @author mheuer
  * @version	1.0
  *
+ * <!-- docstate
+ * pass: 2
+ * mtime: 2026-09-05T11:13:33Z
+ * digest: 5dd28cac687b750661025d54c4650a9877179fb797c16804bc9473eef0f215ee
+ * stale: false
+ * tags: [code/stream_filter, code/anomaly_detection]
+ * concepts: [Outlier Filter]
+ * facets: {layer: infrastructure, status: legacy, complexity: medium}
+ * -->
  */
 public class FilterFloatOutliers extends FilterFloatStatistic {
 
@@ -76,69 +86,76 @@ public class FilterFloatOutliers extends FilterFloatStatistic {
 	// Constructors	
 	/////////////////////////////////////////////////////////////////////////////////////
 	
-	/**
-	 * @param InStream_
-	 * @param offset_
-	 * @param mapper_
+	/** Creates an outlier filter reading from {@code inStream_}, with an explicit mean offset guess.
+	 * @param inStream_ the source stream to filter
+	 * @param offset_ the initial guess of the mean, seeding the running statistics
+	 * @param mapper_ optional function mapping each value before the outlier test
+	 * @param limit_ the standard-deviation threshold beyond which a value counts as an outlier
 	 */
 	public FilterFloatOutliers
 	( final IStreamIn_Float inStream_, final double offset_, final IFloatFunction mapper_
 	, final double limit_) {
-		super(inStream_, offset_, mapper_); this.limit = limit_; 
+		super(inStream_, offset_, mapper_); this.limit = limit_;
 	}
 
-	/**
-	 * @param OutStream_
-	 * @param offset_
-	 * @param mapper_
+	/** Creates an outlier filter writing to {@code outStream_}, with an explicit mean offset guess.
+	 * @param outStream_ the destination stream for filtered output
+	 * @param offset_ the initial guess of the mean, seeding the running statistics
+	 * @param mapper_ optional function mapping each value before the outlier test
+	 * @param limit_ the standard-deviation threshold beyond which a value counts as an outlier
 	 */
 	public FilterFloatOutliers
 	( final IStreamOutFloat outStream_, final double offset_, final IFloatFunction mapper_
 	, final double limit_) {
-		super(outStream_, offset_, mapper_); this.limit = limit_; 
+		super(outStream_, offset_, mapper_); this.limit = limit_;
 	}
 
-	/**
-	 * @param InStream_
-	 * @param offset_
+	/** Creates an outlier filter reading from {@code inStream_}, with no mapping function.
+	 * @param inStream_ the source stream to filter
+	 * @param offset_ the initial guess of the mean, seeding the running statistics
+	 * @param limit_ the standard-deviation threshold beyond which a value counts as an outlier
 	 */
 	public FilterFloatOutliers(final IStreamIn_Float inStream_, final double offset_
 	, final double limit_) {
-		super(inStream_, offset_); this.limit = limit_; 
+		super(inStream_, offset_); this.limit = limit_;
 	}
 
-	/**
-	 * @param OutStream_
-	 * @param offset_
+	/** Creates an outlier filter writing to {@code outStream_}, with no mapping function.
+	 * @param outStream_ the destination stream for filtered output
+	 * @param offset_ the initial guess of the mean, seeding the running statistics
+	 * @param limit_ the standard-deviation threshold beyond which a value counts as an outlier
 	 */
 	public FilterFloatOutliers(final IStreamOutFloat outStream_, final double offset_
 	, final double limit_) {
-		super(outStream_, offset_); this.limit = limit_; 
+		super(outStream_, offset_); this.limit = limit_;
 	}
 
-	/**
-	 * @param InStream_
+	/** Creates an outlier filter reading from {@code inStream_}, with no mean offset guess.
+	 * @param inStream_ the source stream to filter
+	 * @param limit_ the standard-deviation threshold beyond which a value counts as an outlier
 	 */
 	public FilterFloatOutliers(final IStreamIn_Float inStream_, final double limit_) {
-		super(inStream_); this.limit = limit_; 
+		super(inStream_); this.limit = limit_;
 	}
 
-	/**
-	 * @param OutStream_
+	/** Creates an outlier filter writing to {@code outStream_}, with no mean offset guess.
+	 * @param outStream_ the destination stream for filtered output
+	 * @param limit_ the standard-deviation threshold beyond which a value counts as an outlier
 	 */
 	public FilterFloatOutliers(final IStreamOutFloat outStream_, final double limit_) {
-		super(outStream_); this.limit = limit_; 
+		super(outStream_); this.limit = limit_;
 	}
 
-	/**
-	 * @param offset_
+	/** Creates a standalone outlier filter with an explicit mean offset guess and no attached stream.
+	 * @param offset_ the initial guess of the mean, seeding the running statistics
+	 * @param limit_ the standard-deviation threshold beyond which a value counts as an outlier
 	 */
 	public FilterFloatOutliers(final double offset_, final double limit_) {
-		super(offset_); this.limit = limit_; 
+		super(offset_); this.limit = limit_;
 	}
 
-	/**
-	 * 
+	/** Creates a standalone outlier filter with no mean offset guess and no attached stream.
+	 * @param limit_ the standard-deviation threshold beyond which a value counts as an outlier
 	 */
 	public FilterFloatOutliers(final double limit_) { super(); this.limit = limit_; }
 	
@@ -178,7 +195,8 @@ public class FilterFloatOutliers extends FilterFloatStatistic {
 	//	Interface IStreamIn_Float
 	///////////////////////////////////////////////////////////////////////////////////////
 
-	/** @return the next single Precision Number	 */
+	/** Reads and re-reads from the source stream, discarding outliers, until a non-outlier value is found.
+	 * @return the next single Precision Number	 */
 	final public float nextFloat() {
 		for(;;) { 
 			final float ret = map(inStream.nextFloat());

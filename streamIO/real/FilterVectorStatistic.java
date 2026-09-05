@@ -19,10 +19,10 @@ import streamIO.real.random.RandomGaussVector;
 import streamIO.real.random.RandomUniformVector;
 
 /**
- * Title: FilterVectorStatistic<p>
- * Description:
- * 
- * Bidirectional Filter, 
+ * Bidirectional filter that accumulates the running mean vector and covariance matrix of
+ * vectors passing through it.
+ *
+ * <p>Bidirectional Filter,
  * collecting statistical Information (Average and Variance) on the Way, 
  * i.e. whenever a Vector is read from this Filter (working as IStreamIn_Float) 
  * or when a Number is written into this Filter (working as IStreamOutFloat).
@@ -77,6 +77,15 @@ import streamIO.real.random.RandomUniformVector;
  * @author mheuer
  * @version	1.0
  *
+ * <!-- docstate
+ * pass: 2
+ * mtime: 2026-09-05T11:20:24Z
+ * digest: 0a3abd32d9550340a8acd0bdd945f3050a47ea1a05e6d24ed1ac46597222a86d
+ * stale: false
+ * tags: [code/statistics, code/vector_math]
+ * concepts: [Vector Statistics Filter]
+ * facets: {layer: infrastructure, status: legacy, complexity: medium}
+ * -->
  */
 public class FilterVectorStatistic 
 extends AFilter {
@@ -117,39 +126,39 @@ extends AFilter {
 	// Constructors
 	/////////////////////////////////////////////////////////////////////////////////////
 	
-	/**
-	 * @param inStream_
-	 * @param mapper_
+	/** Creates a vector-statistics filter reading from {@code inStream_}, with an explicit offset guess.
+	 * @param inStream_ the source stream to collect statistics from
+	 * @param offset_ the initial guess of the mean vector, seeding the running sums
 	 */
 	public FilterVectorStatistic(final IIStreamIn inStream_, final double[] offset_) {
-		super(inStream_); 
+		super(inStream_);
 		init(offset_);
 	}
-	
-	/**
-	 * @param outStream_
-	 * @param mapper_
+
+	/** Creates a vector-statistics filter writing to {@code outStream_}, with an explicit offset guess.
+	 * @param outStream_ the destination stream for filtered output
+	 * @param offset_ the initial guess of the mean vector, seeding the running sums
 	 */
 	public FilterVectorStatistic(final IIStreamOut outStream_, final double[] offset_) {
-		super(outStream_); 
+		super(outStream_);
 		init(offset_);
 	}
-	
-	/**
-	 * @param inStream_
-	 * @param mapper_
+
+	/** Creates a vector-statistics filter reading from {@code inStream_}, with an explicit offset guess.
+	 * @param inStream_ the source stream to collect statistics from
+	 * @param offset_ the initial guess of the mean vector, seeding the running sums
 	 */
 	public FilterVectorStatistic(final IIStreamIn inStream_, final float[] offset_) {
-		super(inStream_); 
+		super(inStream_);
 		init(VectorDouble.COPY(offset_));
 	}
-	
-	/**
-	 * @param outStream_
-	 * @param mapper_
+
+	/** Creates a vector-statistics filter writing to {@code outStream_}, with an explicit offset guess.
+	 * @param outStream_ the destination stream for filtered output
+	 * @param offset_ the initial guess of the mean vector, seeding the running sums
 	 */
 	public FilterVectorStatistic(final IIStreamOut outStream_, final float[] offset_) {
-		super(outStream_); 
+		super(outStream_);
 		init(VectorDouble.COPY(offset_));
 	}
 	
@@ -161,14 +170,14 @@ extends AFilter {
 		this.var = new double[offSet.length][offSet.length]; //could also be lower Triangular
 	}
 	
-	/**
-	 * @param inStream_
+	/** Creates a vector-statistics filter reading from {@code inStream_}, offsetting to the first item read.
+	 * @param inStream_ the source stream to collect statistics from
 	 */
 	public FilterVectorStatistic(final IIStreamIn inStream_) {
 		super(inStream_); reinitialize = 0; }
-	
-	/**
-	 * @param outStream_
+
+	/** Creates a vector-statistics filter writing to {@code outStream_}, offsetting to the first item written.
+	 * @param outStream_ the destination stream for filtered output
 	 */
 	public FilterVectorStatistic(final IIStreamOut outStream_) {
 		super(outStream_); reinitialize = 0;  }
@@ -193,23 +202,27 @@ extends AFilter {
 	//This is too much Overhead. 
 	//public double getMedian() { return sum+count*offSet; }
 
-	/** @return the Number of all Elements considered so far	 */	
+	/** Returns the number of vectors accumulated so far.
+	 * @return the Number of all Elements considered so far	 */
 	public long getCount() { return count; }
-	
-	/** @return the Sum of all Elements so far 	
+
+	/** Returns the sum of all vectors seen so far, corrected for the running offset.
+	 * @return the Sum of all Elements so far
 	 * Sum(N, x[n]-o) = Sum(N, x[n]) - o*N
 	 */	//sum+count*offSet
 	public double[] getSum() { return VectorDouble.ADD_PROD(sum, offSet, count); }
-	
-	/** @return the Average of all Elements so far 	
-	 * x - o = Avg(N, x[n]-o) = Sum(N, x[n]-o)/N 
+
+	/** Computes the mean vector of all elements seen so far into the given result array.
+	 * @return the Average of all Elements so far
+	 * x - o = Avg(N, x[n]-o) = Sum(N, x[n]-o)/N
 	 */	//sum/count+offSet
-	public double[] getAverage(final double[] ret) { 
+	public double[] getAverage(final double[] ret) {
 		return VectorDouble.ADD_PROD(ret, offSet, sum, 1./count); }
-	
-	/** @return the Average of all Elements so far 	
-	 * x - o = Avg(N, x[n]-o) = Sum(N, x[n]-o)/N 
-	 */	
+
+	/** Returns the mean vector of all elements seen so far, allocating a new result array.
+	 * @return the Average of all Elements so far
+	 * x - o = Avg(N, x[n]-o) = Sum(N, x[n]-o)/N
+	 */
 	public double[] getAverage() { return getAverage(null); }
 	
 	/** @return the absolute Deviation so far
@@ -233,16 +246,17 @@ extends AFilter {
 		VectorDouble.ZERO_AT(this.sum);// = 0;
 	}
 	
-	/** @return the Variance of all Elements so far
-	 * Only the lower Triangle of the Matrix is filled. 
+	/** Returns the sample covariance matrix of all elements seen so far, re-normalizing the running sums first.
+	 * @return the Variance of all Elements so far
+	 * Only the lower Triangle of the Matrix is filled.
 	 * Var(x)*(N-1) = 
-	 * Sum(N, (x[n]-Avg(N, x[n]))²) = Sum(N, (x[n]-x)²)   (...with x = Avg(i, x[i]) )
-	 * Sum(N,([x[n]-o]+[o-x])²) =
-	 * Sum(N,[x[n]-o]² + 2*[x[n]-o][o-x] + [o-x]²) =
-	 * Sum(N,[x[n]-o]²) + 2*Sum(N,[x[n]-o])[o-x] + N*[o-x]² =
-	 * Sum(N,[x[n]-o]²) - 2*Sum(N,[x[n]-o])[x-o] + N*[x-o]² =  (...with Sum(N, x[n]-o)/N = [x-o])
-	 * Sum(N,[x[n]-o]²) - 2*N*[x-o][x-o] + N*[x-o]² = Sum(N,[x[n]-o]²) - N*[x-o]² =  
-	 * Sum(N,[x[n]-o]²) - Sum(N, x[n]-o)²/N 
+	 * Sum(N, (x[n]-Avg(N, x[n]))ï¿½) = Sum(N, (x[n]-x)ï¿½)   (...with x = Avg(i, x[i]) )
+	 * Sum(N,([x[n]-o]+[o-x])ï¿½) =
+	 * Sum(N,[x[n]-o]ï¿½ + 2*[x[n]-o][o-x] + [o-x]ï¿½) =
+	 * Sum(N,[x[n]-o]ï¿½) + 2*Sum(N,[x[n]-o])[o-x] + N*[o-x]ï¿½ =
+	 * Sum(N,[x[n]-o]ï¿½) - 2*Sum(N,[x[n]-o])[x-o] + N*[x-o]ï¿½ =  (...with Sum(N, x[n]-o)/N = [x-o])
+	 * Sum(N,[x[n]-o]ï¿½) - 2*N*[x-o][x-o] + N*[x-o]ï¿½ = Sum(N,[x[n]-o]ï¿½) - N*[x-o]ï¿½ =  
+	 * Sum(N,[x[n]-o]ï¿½) - Sum(N, x[n]-o)ï¿½/N 
 	 */
 	public double[][] getVariance() {
 		reNorm(); 

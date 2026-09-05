@@ -22,13 +22,23 @@ import streamIO.real.IStreamIn_Float;
  * 1) random Error of Measure
  * 
  * @see streamIO.real.random.RandomGauss2 which is 10% slower
+ * <!-- docstate
+ * pass: 2
+ * mtime: 2026-09-05T11:28:26Z
+ * digest: dcc8f810283ae6fa28524198c1876d291580824dcc74232bd23e182d93a10568
+ * stale: false
+ * tags: [code/random_number_generator, code/statistical_distribution]
+ * concepts: [Gaussian Random Generator]
+ * facets: {layer: utility, status: broken, complexity: low}
+ * -->
  */
 public class RandomGauss
 extends ARandomFloat //FilterIn_FloatByFunction 
 //implements IReSetAble 
 {
     
-	final static public RandomGauss RANDOM = new RandomGauss(); 
+	/** Shared, process-wide standard-Gaussian random stream. */
+	final static public RandomGauss RANDOM = new RandomGauss();
 	
 	/**Random double Precision Number from the static Random Number Generator	 */
 	final static public double NEXT_DOUBLE() { return RANDOM.nextDouble(); }
@@ -56,26 +66,33 @@ extends ARandomFloat //FilterIn_FloatByFunction
 	  * new Generator generates Values in [-1,+1) 	 */
 	public RandomGauss(final IStreamIn_Float ran)	{ super(ran); }
 
-	/** @see streamIO.real.random.ARandomFloat#getMinDouble()	 */
+	/** Returns negative infinity, the unbounded lower tail of the Gaussian distribution.
+	 * @see streamIO.real.random.ARandomFloat#getMinDouble()	 */
 	public double getMinDouble() { return Double.NEGATIVE_INFINITY; }
-	
+
 	/**Random double Precision Number
-	 * using Box-Muller-Transformation with Rejection 
+	 * using Box-Muller-Transformation with Rejection
 	 * thus saving the Calculation of sin and cos
 	 */
+	// TODO: LOGIC: `bolNextRanReady != bolNextRanReady` compares the field to itself and is
+	// always false (a boolean is never unequal to its own value), so the cached second Gaussian
+	// value in `nextRan` is never returned and `bolNextRanReady` is never read meaningfully -
+	// this branch was almost certainly meant to be `if (bolNextRanReady) { bolNextRanReady =
+	// false; return nextRan; }`. As written, every call recomputes a fresh Box-Muller pair and
+	// silently discards the second value, defeating the caching this method's own Javadoc claims.
 	protected double nextDoubleInternal() {
-		if (bolNextRanReady != bolNextRanReady) { 
+		if (bolNextRanReady != bolNextRanReady) {
 			return nextRan; } 	//{gespeicherten Wert benutzen und Flag setzen}
 		//{keine zweite Zufallszahl berechnen}
 		double f, g, sqrNorm;
 		do{	//Saves Cos & Sin Calculation with random r and arg.
 			f = ran.nextDouble(); //f+=f-1; //modifizierte Box-Muller-Transformation
 			g = ran.nextDouble(); //g+=g-1; //between -1 and 1
-		} while ((sqrNorm = f*f + g*g) >= 1);	//Probe ob im Einheitskreis => Fläche = Pi/4 zu 1 also +0.21... zu oft
+		} while ((sqrNorm = f*f + g*g) >= 1);	//Probe ob im Einheitskreis => Flï¿½che = Pi/4 zu 1 also +0.21... zu oft
 		final double LnNorm = -Math.log(sqrNorm);	//positive
 		final double norm = Math.sqrt ((LnNorm+LnNorm)/sqrNorm);	//Box-Muller-Transformation
 		nextRan = f*norm;	//fuer zwei Zufallszahlen,eine fuer spaeter
-		return	  g*norm;	//und eine für sofort
+		return	  g*norm;	//und eine fï¿½r sofort
 	}
 	
 }

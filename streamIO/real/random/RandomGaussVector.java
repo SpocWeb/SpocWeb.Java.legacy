@@ -10,9 +10,9 @@ import streamIO.integer.random.RandomLong;
 import streamIO.real.IStreamIn_Float;
 
 /**
- * Title: RandomGaussVector<p>
- * Description:
- * Implements a Stream of random Vectors with Gaussian Distribution. 
+ * Generates a stream of vectors whose components are independently Gaussian-distributed.
+ *
+ * <p>Implements a Stream of random Vectors with Gaussian Distribution.
  *
  *
  * Known SubClasses: <none>
@@ -25,6 +25,15 @@ import streamIO.real.IStreamIn_Float;
  * @author mheuer
  * @version	1.0
  *
+ * <!-- docstate
+ * pass: 2
+ * mtime: 2026-09-05T11:29:21Z
+ * digest: ef48f5b8d514e211f5e7b1a7fc2b2db1469e7c873d70676b5dff58a436e5dd65
+ * stale: false
+ * tags: [code/random_number_generator, code/vector_math]
+ * concepts: [Gaussian Random Vector Generator]
+ * facets: {layer: utility, status: legacy, complexity: medium}
+ * -->
  */
 public class RandomGaussVector 
 extends RandomUniformVector {
@@ -33,51 +42,51 @@ extends RandomUniformVector {
 	// Constructors	
 	/////////////////////////////////////////////////////////////////////////////////////
 	
-	/**
-	 * @param ran_
-	 * @param width_
-	 * @param offset_
+	/** Creates a Gaussian vector generator scaled by {@code width_} and offset by {@code offset_}.
+	 * @param ran_ the underlying uniform stream driving the Gaussian generator
+	 * @param width_ per-component scale factors
+	 * @param offset_ per-component offsets added after scaling
 	 */
 	public RandomGaussVector(final IStreamIn_Float ran_, final float[] width_, final float[] offset_) {
 		super(new RandomGauss(ran_), width_, offset_);
 	}
 
-	/**
-	 * @param ran_
-	 * @param width_
+	/** Creates a Gaussian vector generator scaled by {@code width_}, with no offset.
+	 * @param ran_ the underlying uniform stream driving the Gaussian generator
+	 * @param width_ per-component scale factors
 	 */
 	public RandomGaussVector(final IStreamIn_Float ran_, final float[] width_) {
 		super(new RandomGauss(ran_), width_);
 	}
 
-	/**
-	 * @param ran_
-	 * @param length
+	/** Creates an unscaled, unoffset Gaussian vector generator of the given dimension.
+	 * @param ran_ the underlying uniform stream driving the Gaussian generator
+	 * @param length the number of vector components
 	 */
 	public RandomGaussVector(final IStreamIn_Float ran_, final int length) {
 		super(new RandomGauss(ran_), length);
 	}
 
-	/**
-	 * @param ran_
-	 * @param width_
-	 * @param offset_
+	/** Creates a Gaussian vector generator scaled by {@code width_} and offset by {@code offset_},
+	 * using a default random source.
+	 * @param width_ per-component scale factors
+	 * @param offset_ per-component offsets added after scaling
 	 */
 	public RandomGaussVector(final float[] width_, final float[] offset_) {
 		super(new RandomGauss(), width_, offset_);
 	}
 
-	/**
-	 * @param ran_
-	 * @param width_
+	/** Creates a Gaussian vector generator scaled by {@code width_}, with no offset, using a
+	 * default random source.
+	 * @param width_ per-component scale factors
 	 */
 	public RandomGaussVector(final float[] width_) {
 		super(new RandomGauss(), width_);
 	}
 
-	/**
-	 * @param ran_
-	 * @param length
+	/** Creates an unscaled, unoffset Gaussian vector generator of the given dimension, using a
+	 * default random source.
+	 * @param length the number of vector components
 	 */
 	public RandomGaussVector(final int length) {
 		super(new RandomGauss(), length);
@@ -87,7 +96,8 @@ extends RandomUniformVector {
 	// Methods	
 	/////////////////////////////////////////////////////////////////////////////////////
 	
-	/** @see streamIO.IFactory#nextItem()	 */
+	/** Fills each component of the reused vector with a scaled, offset Gaussian value.
+	 * @see streamIO.IFactory#nextItem()	 */
 	public Object nextItem() {
 		for (int i = value.length; --i >= 0;) {
 			value[i] = ran.nextFloat(); 
@@ -121,8 +131,11 @@ extends RandomUniformVector {
 		System.out.println("Gauss2 Time for "+numItems+" Values (ms):"+(System.currentTimeMillis()-timer));
 	}
 	
+	/** Compares the throughput of {@link RandomGauss} and {@link RandomGauss2}.
+	 * @param args unused command-line arguments
+	 */
 	final static public void main(final String[] args) {
-		testGaussSpeed(); 
+		testGaussSpeed();
 	}
 
 }

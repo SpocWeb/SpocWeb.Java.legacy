@@ -1,6 +1,15 @@
 package streamIO.real;
 
 /** Interface for an Output streamIO of Float Numbers
+ * <!-- docstate
+ * pass: 2
+ * mtime: 2026-09-05T10:13:32Z
+ * digest: 2924a0a8134cccdaac73ae7934d1330d35952a49e71713ed5f1efdecc6b04d61
+ * stale: false
+ * tags: [code/stream_filter]
+ * concepts: [Float Stream Output Interface]
+ * facets: {layer: infrastructure, status: legacy, complexity: low}
+ * -->
  */
 public interface IStreamOutFloat {
 

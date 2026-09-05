@@ -6,9 +6,9 @@ import streamIO.IReSetAble;
 import streamIO.object.IPipe;
 
 /**
-  * Title: StreamIn_Geometric<p>
-  * Description:
-  * IStreamIn_Float of Float Point Numbers N
+  * Generates a geometric progression of numbers, multiplying by a fixed factor each step.
+  *
+  * <p>IStreamIn_Float of Float Point Numbers N
   * starting with 1 (Default),
   * incrementing by a Factor of 2 (Default).
   *
@@ -19,6 +19,15 @@ import streamIO.object.IPipe;
   * Created on	05-12-2002, 09:05 PM<p>
   * @author 	Matthias Heuer
   * @version	1.0
+  * <!-- docstate
+  * pass: 2
+  * mtime: 2026-09-05T11:23:08Z
+  * digest: 462be027aad6515354e49ffd84e0433f4827fda5d6c0e48594685c5c5646f544
+  * stale: false
+  * tags: [code/stream_filter]
+  * concepts: [Geometric Sequence Stream]
+  * facets: {layer: infrastructure, status: broken, complexity: low}
+  * -->
   */
 public class StreamIn_Geometric
 extends AStreamIn_Float {
@@ -40,7 +49,8 @@ extends AStreamIn_Float {
 	//  Accessor Methods (getXXX/setXXX)
 	////////////////////////////////////////////////////////////////////////////////
 	
-	/** @return the minimum Value for other Classes to determine
+	/** Returns the sequence's start value.
+	  * @return the minimum Value for other Classes to determine
 	  * The Type is chosen to be double,
 	  * because this Value is supposed to be tested only once.  */
 	public double getMinDouble() { return markValue; }
@@ -57,6 +67,9 @@ extends AStreamIn_Float {
 		currItem.Value = markValue = (startValue_/ factor); } //this (startValue, Long.MAX_VALUE); }
 	
 	/** Initializing Constructor	 */
+	// TODO: LOGIC: markValue is computed as startValue_ / factor using the still-default
+	// factor (2), before this.factor is assigned from Factor_ on the next line - so a caller
+	// passing a non-default Factor_ gets a markValue divided by 2 instead of by Factor_.
 	public StreamIn_Geometric(final double startValue_, final double Factor_) {
 		currItem.Value = markValue = (startValue_ / factor);
 		this.factor = Factor_; }
@@ -74,7 +87,8 @@ extends AStreamIn_Float {
 	 */
 	public long availAble() { return (long) (Math.log(stopValue/currItem.Value) / Math.log(factor)); }
 	
-	/** @see streamIO.real.AStreamIn_Float#getPosition()	 */
+	/** Returns the number of geometric steps applied since the last mark.
+	 * @see streamIO.real.AStreamIn_Float#getPosition()	 */
 	public long getPosition() { return (long) (Math.log(currItem.Value/markValue) / Math.log(factor)); }
 
 	/**
@@ -96,7 +110,8 @@ extends AStreamIn_Float {
 	//  Interface StreamIn: Implementation
 	////////////////////////////////////////////////////////////////////////////
 		
-	/** @return the Order in which Elements are returned by the Iterators
+	/** Returns alternating, ascending or descending order, depending on the factor's sign and magnitude.
+	 * @return the Order in which Elements are returned by the Iterators
 	  * when they are added using addItem() and removed using nextItem().	 */
 	public byte getOrder() {
 		if (factor < 0) {

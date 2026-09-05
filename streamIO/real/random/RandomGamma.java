@@ -12,6 +12,15 @@ import function.byref.combinatoric.ProbFuncs;
  * The Range of x is [0,1]
  * It is the Waiting Time for the a-th Event of a Poisson Distribution.
  * For a = 1 it is the Exponential Distribution.
+ * <!-- docstate
+ * pass: 2
+ * mtime: 2026-09-05T11:27:50Z
+ * digest: 64a2cd6e0a4aa239651d28bf9889eeb0a0154ac65d0346558dcb8cab2210c5be
+ * stale: false
+ * tags: [code/random_number_generator, code/statistical_distribution]
+ * concepts: [Gamma-Distributed Random Generator]
+ * facets: {layer: utility, status: legacy, complexity: low}
+ * -->
  */
 public class RandomGamma
 extends ARandomFloat {
@@ -63,11 +72,12 @@ extends ARandomFloat {
 	
 	///////////////////////////////////////////////////////////////////////////
 	
-	/** @see streamIO.integer.IStreamIn_Int#reSet()	 */
+	/** Resets the wrapped random stream, failing if it cannot be reset.
+	 * @see streamIO.integer.IStreamIn_Int#reSet()	 */
 	public IReSetAble reSet() { //throws IOException {
 		if (ran.reSet() == null) return null;
 		//if (RanLorentz != null) //not necessary, same Generator!
-		return this; 
+		return this;
 	}
 	
 	/**Random double Precision Number	 */
@@ -96,7 +106,8 @@ extends ARandomFloat {
 //		while ( NOT Negativ (Hilf) OR (Ran <= (1.0+Sqr (g))*Exp (Hilf));
 		return x; }
 	
-	/** @see streamIO.real.random.ARandomFloat#getMinDouble()	 */
+	/** Returns 0, the lower bound of the Gamma distribution.
+	 * @see streamIO.real.random.ARandomFloat#getMinDouble()	 */
 	public double getMinDouble() { return 0; }
 
 	/////////////////////////////////////////////////////////////////////////////////////

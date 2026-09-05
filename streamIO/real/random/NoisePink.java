@@ -14,6 +14,15 @@ import function.IMeasurAble;
  * 
  * This Spectrum is achieved by adding up a chain of Lorentz Noise
  * Generators with connected Cut-Off Frequencies.
+ * <!-- docstate
+ * pass: 2
+ * mtime: 2026-09-05T11:26:51Z
+ * digest: bfe90c0b9398e56ba214857084c7ebf22ed439f0c91e9a620edcb8a07c67818c
+ * stale: false
+ * tags: [code/random_number_generator, code/signal_processing]
+ * concepts: [Pink Noise Generator]
+ * facets: {layer: utility, status: legacy, complexity: low}
+ * -->
  */
 public class NoisePink
 extends ARandomFloat {
@@ -58,7 +67,8 @@ extends ARandomFloat {
 	
 	///////////////////////////////////////////////////////////////////////////
 	
-	/** @see streamIO.integer.IStreamIn_Int#reSet()	 */
+	/** Resets the first Lorentz sub-generator (all others share it, so resetting one resets all).
+	 * @see streamIO.integer.IStreamIn_Int#reSet()	 */
 	public IReSetAble reSet() { //throws IOException {
 		if (lorentzGens[0].reSet() == null) return null;
 		return this; 

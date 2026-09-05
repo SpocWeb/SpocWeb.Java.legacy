@@ -11,9 +11,9 @@ import streamIO.object.AStreamIn;
 import streamIO.real.IStreamIn_Float;
 
 /**
- * Title: RandomUniformVector<p>
- * Description:
- * Implements a Stream of random Vectors with uniform Distribution in each Dimension. 
+ * Generates a stream of vectors whose components are independently uniformly distributed.
+ *
+ * <p>Implements a Stream of random Vectors with uniform Distribution in each Dimension.
  *
  * Known SubClasses: <none>
  *
@@ -25,6 +25,15 @@ import streamIO.real.IStreamIn_Float;
  * @author mheuer
  * @version	1.0
  *
+ * <!-- docstate
+ * pass: 2
+ * mtime: 2026-09-05T11:30:56Z
+ * digest: 42ddab2d7c504d5909a11f1324e05f93e03c542a84bc914876e7ee15c9787761
+ * stale: false
+ * tags: [code/random_number_generator, code/vector_math]
+ * concepts: [Uniform Random Vector Generator]
+ * facets: {layer: utility, status: legacy, complexity: low}
+ * -->
  */
 public class RandomUniformVector 
 extends AStreamIn {
@@ -90,26 +99,33 @@ extends AStreamIn {
 	// Methods
 	/////////////////////////////////////////////////////////////////////////////////////
 	
-	/** @see streamIO.IFactory#nextItem()	 */
+	/** Fills each component of the reused vector with a scaled, offset uniform value.
+	 * @see streamIO.IFactory#nextItem()	 */
 	public Object nextItem() {
-		for (int i = value.length; --i >= 0;) 
-			value[i] = ran.nextFloat(); 
-		if (width != null) 
-			VectorFloat.MUL_AT(value, width); 
-		if (offset != null) 
-			VectorFloat.ADD_AT(value, offset); 
+		for (int i = value.length; --i >= 0;)
+			value[i] = ran.nextFloat();
+		if (width != null)
+			VectorFloat.MUL_AT(value, width);
+		if (offset != null)
+			VectorFloat.ADD_AT(value, offset);
 		return value; }
-	
-	/** @see streamIO.object.IStreamIn#currItem()	 */
+
+	/** Returns the vector most recently filled by {@link #nextItem()}.
+	 * @see streamIO.object.IStreamIn#currItem()	 */
 	public Object currItem() { return value; }
-	
-	/** @see streamIO.IAvailAble#availAble()	 */
+
+	/** Returns the number of vectors still available, dividing the underlying scalar count by
+	 * the vector dimension.
+	 * @see streamIO.IAvailAble#availAble()	 */
 	public long availAble() { return ran.availAble()/value.length; }
-	
-	/** @see streamIO.object.AStreamIn#getMaxMarkSize()	 */
+
+	/** Returns the maximum mark size in vectors, dividing the underlying scalar limit by the
+	 * vector dimension.
+	 * @see streamIO.object.AStreamIn#getMaxMarkSize()	 */
 	public long getMaxMarkSize() { return ran.getMaxMarkSize()/value.length; }
-	
-	/** @see streamIO.object.AStreamIn#getPosition()	 */
+
+	/** Returns the current position of the wrapped scalar stream.
+	 * @see streamIO.object.AStreamIn#getPosition()	 */
 	public long getPosition() { return ran.getPosition(); }
 	
 }

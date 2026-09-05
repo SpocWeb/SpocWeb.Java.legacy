@@ -3,13 +3,24 @@ package streamIO.real;
 import streamIO.object.AStreamIn;
 
 /**
- * Vector Generator
- * Bridges the IStreamIn_Float Interface to the IStreamIn Interface.
+ * Bridges the {@link IStreamIn_Float} interface to the {@code IStreamIn} interface by
+ * converting a stream of float numbers into a stream of reused fixed-length arrays.
+ *
+ * <p>Converts Streams of Float Numbers into Streams of Arrays of the same Length.
  * Converts Streams of Float Numbers into Streams of Arrays of the same Length.
  * Reuses the same Array to save Instantiation 
  * when large Quantities of Values are needed.
  * 
  * @see streamIO.CopyStreamIn can be used to create new Instances.
+ * <!-- docstate
+ * pass: 2
+ * mtime: 2026-09-05T11:17:23Z
+ * digest: d16a43fd58163794a4f662cc313e71c40ae248bc99c7f8a7a64a22b3d6b8a37f
+ * stale: false
+ * tags: [code/stream_filter, code/vector_math]
+ * concepts: [Float-to-Array Adapter Filter]
+ * facets: {layer: infrastructure, status: legacy, complexity: low}
+ * -->
  */
 public class FilterIn_Float2Array
 extends AStreamIn {
@@ -61,18 +72,18 @@ extends AStreamIn {
 	//  Interface StreamIn: Implementation
 	////////////////////////////////////////////////////////////////////////////////
 	
-	/**
+	/** Returns the array most recently filled by {@link #nextItem()}, float or double.
 	  * @return the current Elements in this streamIO.
 	  */
 	public Object currItem() {
 		return doubleVals ? (Object) arrDouble : (Object) arrFloat; }
 
-	/**
+	/** Returns 1, since a single reused array is always the currently available item.
 	  * @return the Number of Elements left in this streamIO.
 	  */
 	public long availAble() { return 1; }
 
-	/**
+	/** Fills the reused array with the next {@code dim} values read from the wrapped stream.
 	  * @return the next Element in this streamIO.
 	  */
 	public Object nextItem() {
@@ -80,18 +91,20 @@ extends AStreamIn {
 			arrFloat[i] = (float) (arrDouble[i] = in.nextDouble()); }
 		return doubleVals ? (Object) arrDouble : (Object) arrFloat; }
 
-	/**
+	/** Returns the sort order of the wrapped float stream.
 	  * @return the Order of the Elements in this streamIO.
 	  * -1 for descending
 	  *  0 for unordered
 	  * +1 for ascending
 	  */
 	public byte getOrder() { return in.getOrder(); }
-	
-	/** @see streamIO.object.AStreamIn#getMaxMarkSize()	 */
+
+	/** Returns the maximum mark size of the wrapped stream.
+	 * @see streamIO.object.AStreamIn#getMaxMarkSize()	 */
 	public long getMaxMarkSize() { return in.getMaxMarkSize(); }
 
-	/** @see streamIO.object.AStreamIn#getPosition()	 */
+	/** Returns the current position of the wrapped stream.
+	 * @see streamIO.object.AStreamIn#getPosition()	 */
 	public long getPosition() { return in.getPosition(); }
 
 	////////////////////////////////////////////////////////////////////////////////

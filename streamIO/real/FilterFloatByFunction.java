@@ -3,9 +3,10 @@ package streamIO.real;
 import function.IFloatFunction;
 
 /**
-  * Title: FilterFloat<p>
-  * Description:
-  * Class to process the Elements of either an Input or an Output streamIO.
+  * Processes the elements of either an input or an output float stream, counting them and
+  * optionally mapping them through an {@link IFloatFunction}.
+  *
+  * <p>Class to process the Elements of either an Input or an Output streamIO.
   * Counts the Items passed through it, 
   * and optionally applies an IFloatFunction to them.  
   * Evaluates a single double Value and the Number of Elements
@@ -21,6 +22,15 @@ import function.IFloatFunction;
   * Created on	2000-11-26, 01;13;44<p>
   * @author 	Matthias Heuer
   * @version	1.0
+  * <!-- docstate
+  * pass: 2
+  * mtime: 2026-09-05T11:11:12Z
+  * digest: d4c95c1c41b029e92661fda6ebfbf29c6283d0024a841cfea7918e07bbb002c7
+  * stale: false
+  * tags: [code/stream_filter]
+  * concepts: [Function-Based Float Filter]
+  * facets: {layer: infrastructure, status: legacy, complexity: low}
+  * -->
   */
 public class FilterFloatByFunction
 extends    FilterIn_FloatByFunction //CMeasurAble //ByRefDouble
@@ -59,7 +69,8 @@ implements IStreamOutFloat {
 	//	Interface IStreamIn_Float
 	///////////////////////////////////////////////////////////////////////////////////////
 	
-	/** @return the next single Precision Number	 */
+	/** Reads, counts and maps the next value from the wrapped input stream.
+	 * @return the next single Precision Number	 */
 	public float nextFloat() { final float ret;
 		currItem.Value = ret = addValue(map(inStream.nextFloat())); 
 		return ret; }

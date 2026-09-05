@@ -20,9 +20,10 @@ import function.real.Multiplier;
 import function.real.Sum;
 
 /**
- * Title: FilterIn_Float<p>
- * Description:
- * Implements a filter for Random Numbers  
+ * Implements a filter over a float random-number stream that optionally maps each value
+ * through an {@link IFloatFunction} before delivery.
+ *
+ * <p>Implements a filter for Random Numbers
  * and optionally applies a mapping Function to the incoming Numbers 
  * 
  * Known SubClasses: 
@@ -36,6 +37,15 @@ import function.real.Sum;
  * @author mheuer
  * @version	1.0
  *
+ * <!-- docstate
+ * pass: 2
+ * mtime: 2026-09-05T11:18:52Z
+ * digest: 06ac6ca3c9d658e4c9ddba639b6eea6afa2b99418f9950d89eb96e74d5be995b
+ * stale: false
+ * tags: [code/stream_filter]
+ * concepts: [Function-Based Float Input Filter]
+ * facets: {layer: infrastructure, status: legacy, complexity: low}
+ * -->
  */
 public class FilterIn_FloatByFunction 
 extends AStreamIn_Float {
@@ -44,16 +54,19 @@ extends AStreamIn_Float {
 	//	static Methods
 	///////////////////////////////////////////////////////////////////////////////////////
 
+	/** Shared, process-wide exponentially distributed random stream, seeded from {@link RandomFast#RANDOM}. */
 	final static public IStreamIn_Float RANDOM_EXPONENTIAL = RANDOM_EXPONENTIAL((IStreamIn_Bound_Int) RandomFast.RANDOM);
 
-	/** @return a Number distributed with p(x) = exp(-x)	 */ 
+	/** Draws the next value from the shared {@link #RANDOM_EXPONENTIAL} stream.
+	 * @return a Number distributed with p(x) = exp(-x)	 */
 	final static public double RANDOM_DOUBLE_EXPONENTIAL() {
-		return RANDOM_EXPONENTIAL.nextDouble(); 
+		return RANDOM_EXPONENTIAL.nextDouble();
 	}
-		
-	/** @return a Number distributed with p(x) = exp(-x)	 */ 
+
+	/** Draws the next value from the shared {@link #RANDOM_EXPONENTIAL} stream.
+	 * @return a Number distributed with p(x) = exp(-x)	 */
 	final static public float RANDOM_FLOAT_EXPONENTIAL() {
-		return RANDOM_EXPONENTIAL.nextFloat(); 
+		return RANDOM_EXPONENTIAL.nextFloat();
 	}
 	
 	/** Returns random negative Numbers distributed in an exponential fashion,
@@ -254,7 +267,8 @@ extends AStreamIn_Float {
 	 * because never out of synch, except during an Operation.	*/
 	protected long count;
 
-	/** @return the current Count of all Elements	*/
+	/** Returns the current count of all elements passed through this filter.
+	 * @return the current Count of all Elements	*/
 	public long getCount() { return count; }
 
 	/** sets the current Count of all Elements	*/
@@ -265,61 +279,72 @@ extends AStreamIn_Float {
 	//	Interface IStreamIn_Float
 	///////////////////////////////////////////////////////////////////////////////////////
 
-	/** @see streamIO.integer.IStreamIn_Int#reSet()	 */
+	/** Attempts to reset the wrapped stream, falling back to a no-op if it is not resettable.
+	 * @see streamIO.integer.IStreamIn_Int#reSet()	 */
 	public IReSetAble reSet() { //throws IOException {
-		return AReSetAble.TRY_TO_RESET(inStream, FilterIn_FloatByFunction.class.toString());  
+		return AReSetAble.TRY_TO_RESET(inStream, FilterIn_FloatByFunction.class.toString());
 	}
 
-	/** @return the double Precision arg, mapped by the given Function	 */
+	/** Applies this filter's mapping function to a double value, or returns it unchanged if none is set.
+	 * @return the double Precision arg, mapped by the given Function	 */
 	final public double map(final double arg) {
-		if (mapper == null) 
-			return arg; 
+		if (mapper == null)
+			return arg;
 		return mapper.Map(arg);
 	}
 
-	/** @return the single Precision arg, mapped by the given Function	 */
+	/** Applies this filter's mapping function to a float value, or returns it unchanged if none is set.
+	 * @return the single Precision arg, mapped by the given Function	 */
 	final public float map(final float arg) {
-		if (mapper == null) 
-			return arg; 
+		if (mapper == null)
+			return arg;
 		return mapper.Map(arg);
 	}
-	
-	/** @see streamIO.object.AStreamIn#getMaxMarkSize()	 */
+
+	/** Returns the maximum mark size of the wrapped stream.
+	 * @see streamIO.object.AStreamIn#getMaxMarkSize()	 */
 	public long getMaxMarkSize() { return inStream.getMaxMarkSize(); }
 
-	/** @see streamIO.object.AStreamIn#getPosition()	 */
+	/** Returns the current position of the wrapped stream.
+	 * @see streamIO.object.AStreamIn#getPosition()	 */
 	public long getPosition() { return inStream.getPosition(); }
-	
-	/** @see streamIO.real.AAStreamIn_Float#availAble()	 */
+
+	/** Returns the number of items still available from the wrapped stream.
+	 * @see streamIO.real.AAStreamIn_Float#availAble()	 */
 	public long availAble() { return inStream.availAble(); }
-	
-	/** @return the next single Precision Number	 */
-	public float nextFloat() { final float ret; 
-		currItem.Value = ret = map(inStream.nextFloat()); 
+
+	/** Reads and maps the next float value from the wrapped stream.
+	 * @return the next single Precision Number	 */
+	public float nextFloat() { final float ret;
+		currItem.Value = ret = map(inStream.nextFloat());
 		return ret; }
-	
-	/** @return the next double Precision Number	 */
+
+	/** Reads and maps the next double value from the wrapped stream.
+	 * @return the next double Precision Number	 */
 	protected double nextDoubleInternal() { return map(inStream.nextDouble()); }
 	
 	///////////////////////////////////////////////////////////////////////////////////////
 	//	Interface IStreamIn_Bound_Int
 	///////////////////////////////////////////////////////////////////////////////////////
 
-	/** @return the Order in which Elements are returned by the Iterators
+	/** Returns the sort order of the wrapped stream.
+	 * @return the Order in which Elements are returned by the Iterators
 		  * when they are added using addItem() and removed using nextItem().	 */
 	public byte getOrder() { return inStream.getOrder(); }
 
-	/** @return the minimum Value for other Classes to determine. 
-	 * Assumes that the Mapping is monotonusly and rising. 
-	 */ 
-	public double getMinDouble() { return map(((IStreamIn_Bound_Int) inStream).getMinValue()); } 
+	/** Returns the mapped minimum value producible by the wrapped generator.
+	 * @return the minimum Value for other Classes to determine.
+	 * Assumes that the Mapping is monotonusly and rising.
+	 */
+	public double getMinDouble() { return map(((IStreamIn_Bound_Int) inStream).getMinValue()); }
 
 	/** randomizes this Generator 	 */
 	//public void randomize() { ((IStreamIn_Bound_Int) inStream).randomize(); }
 
-	/** @return the minimum Value for other Classes to determine. 
-	 * Assumes that the Mapping is monotonusly and rising. 
-	 */ 
+	/** Returns the mapped maximum value producible by the wrapped generator.
+	 * @return the maximum Value for other Classes to determine.
+	 * Assumes that the Mapping is monotonusly and rising.
+	 */
 	public double getMaxDouble() { return map(((IStreamIn_Bound_Int) inStream).getMaxValue()); }
 
 	/////////////////////////////////////////////////////////////////////////////////////

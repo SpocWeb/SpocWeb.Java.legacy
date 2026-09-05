@@ -1,7 +1,9 @@
 package streamIO.real;
 
-/** Interface for a streamIO of Numbers
-  * e.g. for a Random Number Generator
+/** Extends {@link IStreamIn_Float} with known lower and upper bounds, letting callers scale
+  * or normalize the generated numbers.
+  *
+  * <p>e.g. for a Random Number Generator
   * The Generator is implemented with primitive Types,
   * because of Performance Reasons.
   * The same Plethora of Classes as for IStreamIn and IStreamOut
@@ -10,6 +12,15 @@ package streamIO.real;
   * It is always possible to build a Wrapper around the Random Generator.
   * But unlike with Matrix Operations this is usually not wanted,
   * because most Simulations need O(N*N) Items to increase Result Significance
+  * <!-- docstate
+  * pass: 2
+  * mtime: 2026-09-05T10:13:32Z
+  * digest: 23076488ee30c35afc1f77fe3c39eb4f68b47f9bfb5124497ab1b596cadbf7ee
+  * stale: false
+  * tags: [code/stream_filter]
+  * concepts: [Bounded Float Stream Interface]
+  * facets: {layer: infrastructure, status: legacy, complexity: low}
+  * -->
   * @see <{streamIO.Float.IStreamIn_Float}>*/
 public interface IStreamIn_Bound_Float 
 extends IStreamIn_Float {

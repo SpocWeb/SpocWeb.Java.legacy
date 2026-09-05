@@ -25,6 +25,15 @@ import function.byref.ByRefDouble;
  * 1) random Error of Measure
  * 
  * @see streamIO.real.random.RandomGauss which is 10% faster
+ * <!-- docstate
+ * pass: 2
+ * mtime: 2026-09-05T11:28:39Z
+ * digest: 243e1b32ce5a0701fb1715a03b9c528c7660b0d0e68dd72cbdb500ea2f998167
+ * stale: false
+ * tags: [code/random_number_generator, code/statistical_distribution]
+ * concepts: [Gaussian Random Generator (Alternate)]
+ * facets: {layer: utility, status: broken, complexity: low}
+ * -->
  */
 public class RandomGauss2
 extends ARandomFloat {
@@ -48,28 +57,35 @@ extends ARandomFloat {
 
 	///////////////////////////////////////////////////////////////////////////
 	
-	/** @see streamIO.integer.IStreamIn_Int#reSet()	 */
+	/** Resets the angle sub-generator and clears the cached-Gaussian flag.
+	 * @see streamIO.integer.IStreamIn_Int#reSet()	 */
 	public IReSetAble reSet() { //throws IOException {
-		if (randomPhi.reSet() == null) 
+		if (randomPhi.reSet() == null)
 			return null;
 		//this.randomR.reset(); //not necessary!
-		nextRanReady = false; 
-		return this; 
+		nextRanReady = false;
+		return this;
 	}
-	
-	/** @return the next Random double Precision Number
+
+	/** Draws the next Gaussian value.
+	  * @return the next Random double Precision Number
 	  * using Box-Muller-Transformation thus saving the Calculation of sin and cos	 */
+	// TODO: LOGIC: `nextRanReady != nextRanReady` compares the field to itself and is always
+	// false, so the cached second Gaussian value in `nextRan` is never returned - mirrors the
+	// identical defect in the sibling RandomGauss.nextDoubleInternal(). Every call recomputes a
+	// fresh Box-Muller pair, defeating the caching this method's own Javadoc claims.
 	public double nextDoubleInternal() {
-		if (nextRanReady != nextRanReady) { 
+		if (nextRanReady != nextRanReady) {
 			return nextRan.Value; } 	//{gespeicherten Wert benutzen und Flag setzen}
 		//g = SqRt(-2Ln(ran)) <=> ran = exp(-g^2/2)
 		double g = -Math.log(ran.nextDouble());	//modifizierte Box-Muller-Transformation
 		double f = ByRefDouble.SIN_COS_SAFE(randomPhi.nextDouble(), nextRan);
 		nextRan.Value *= (g = Math.sqrt(g+g));	//fuer zwei Zufallszahlen,eine fuer spaeter
-		return	  g*f;	//und eine für sofort
+		return	  g*f;	//und eine fï¿½r sofort
 	}
 
-	/** @see streamIO.real.random.ARandomFloat#getMinDouble()	 */
+	/** Returns negative infinity, the unbounded lower tail of the Gaussian distribution.
+	 * @see streamIO.real.random.ARandomFloat#getMinDouble()	 */
 	public double getMinDouble() { return Double.NEGATIVE_INFINITY; }
 
 }

@@ -581,3 +581,64 @@ structure/blackBoard/triangle/SWS.java:SWS	class	structure/blackBoard/triangle/S
 structure/blackBoard/triangle/Triangle.java:Triangle	class	structure/blackBoard/triangle/Triangle.java	code/2d_geometry	Triangle Value Object	domain	legacy	low
 structure/blackBoard/triangle/WSW.java:WSW	class	structure/blackBoard/triangle/WSW.java	code/rule_based_validation	Angle-Side-Angle Rule	domain	legacy	low
 structure/blackBoard/triangle/WWW.java:WWW	class	structure/blackBoard/triangle/WWW.java	code/rule_based_validation	Angle-Angle-Angle Rule	domain	legacy	low
+streamIO/real/AAStreamIn_Float.java:AAStreamIn_Float	class	streamIO/real/AAStreamIn_Float.java	code/stream_filter	Float Stream Input Base Class	infrastructure	legacy	low
+streamIO/real	folder	streamIO/real	code/stream_filter,code/statistics	Float Stream Filters and Statistics	infrastructure	legacy	medium
+streamIO/real/AStreamIn_Float.java:AStreamIn_Float	class	streamIO/real/AStreamIn_Float.java	code/stream_filter	Float Stream Input Base Class	infrastructure	legacy	low
+streamIO/real/ArrayStreamIn_Float.java:ArrayStreamIn_Float	class	streamIO/real/ArrayStreamIn_Float.java	code/stream_filter	Array-Backed Float Stream	infrastructure	legacy	low
+streamIO/real/ConstStreamIn_Float.java:ConstStreamIn_Float	class	streamIO/real/ConstStreamIn_Float.java	code/stream_filter	Constant Float Stream	infrastructure	legacy	low
+streamIO/real/FilterFloatAverage.java:FilterFloatAverage	class	streamIO/real/FilterFloatAverage.java	code/stream_filter,code/running_statistics	Running Average Filter	infrastructure	legacy	low
+streamIO/real/FilterFloatByFunction.java:FilterFloatByFunction	class	streamIO/real/FilterFloatByFunction.java	code/stream_filter	Function-Based Float Filter	infrastructure	legacy	low
+streamIO/real/FilterFloatCache.java:FilterFloatCache	class	streamIO/real/FilterFloatCache.java	code/stream_filter	Float Value Cache Filter	infrastructure	legacy	low
+streamIO/real/FilterFloatDelay.java:FilterFloatDelay	class	streamIO/real/FilterFloatDelay.java	code/stream_filter	Delay Line Filter	infrastructure	legacy	low
+streamIO/real/FilterFloatDiff.java:FilterFloatDiff	class	streamIO/real/FilterFloatDiff.java	code/stream_filter	Differencing Filter	infrastructure	legacy	low
+streamIO/real/FilterFloatExpWindow.java:FilterFloatExpWindow	class	streamIO/real/FilterFloatExpWindow.java	code/stream_filter,code/running_statistics	Exponential Window Filter	infrastructure	legacy	low
+streamIO/real/FilterFloatOutliers.java:FilterFloatOutliers	class	streamIO/real/FilterFloatOutliers.java	code/stream_filter,code/anomaly_detection	Outlier Filter	infrastructure	legacy	medium
+streamIO/real/FilterFloatStatistic.java:FilterFloatStatistic	class	streamIO/real/FilterFloatStatistic.java	code/statistics,code/running_statistics	Running Statistics Filter	infrastructure	legacy	medium
+streamIO/real/FilterFloatSumm.java:FilterFloatSumm	class	streamIO/real/FilterFloatSumm.java	code/stream_filter,code/running_statistics	Running Sum Filter	infrastructure	legacy	low
+streamIO/real/FilterFloatWindow.java:FilterFloatWindow	class	streamIO/real/FilterFloatWindow.java	code/stream_filter	Sliding Window Filter	infrastructure	legacy	low
+streamIO/real/FilterInLin.java:FilterInLin	class	streamIO/real/FilterInLin.java	code/stream_filter	Linear Interpolation Filter	infrastructure	legacy	low
+streamIO/real/FilterInMul.java:FilterInMul	class	streamIO/real/FilterInMul.java	code/stream_filter	Multiplicative Scaling Filter	infrastructure	broken	low
+streamIO/real/FilterIn_Float2Array.java:FilterIn_Float2Array	class	streamIO/real/FilterIn_Float2Array.java	code/stream_filter,code/vector_math	Float-to-Array Adapter Filter	infrastructure	legacy	low
+streamIO/real/FilterIn_Float2Object.java:FilterIn_Float2Object	class	streamIO/real/FilterIn_Float2Object.java	code/stream_filter	Float-to-Object Adapter Filter	infrastructure	legacy	low
+streamIO/real/FilterIn_FloatByFunction.java:FilterIn_FloatByFunction	class	streamIO/real/FilterIn_FloatByFunction.java	code/stream_filter	Function-Based Float Input Filter	infrastructure	legacy	low
+streamIO/real/FilterOutFloat.java:FilterOutFloat	class	streamIO/real/FilterOutFloat.java	code/stream_filter	Float Output Filter	infrastructure	legacy	low
+streamIO/real/FilterVectorStatistic.java:FilterVectorStatistic	class	streamIO/real/FilterVectorStatistic.java	code/statistics,code/vector_math	Vector Statistics Filter	infrastructure	legacy	medium
+streamIO/real/IStreamIn_Bound_Float.java:IStreamIn_Bound_Float	class	streamIO/real/IStreamIn_Bound_Float.java	code/stream_filter	Bounded Float Stream Interface	infrastructure	legacy	low
+streamIO/real/IStreamIn_Float.java:IStreamIn_Float	class	streamIO/real/IStreamIn_Float.java	code/stream_filter	Float Stream Input Interface	infrastructure	legacy	low
+streamIO/real/IStreamOutFloat.java:IStreamOutFloat	class	streamIO/real/IStreamOutFloat.java	code/stream_filter	Float Stream Output Interface	infrastructure	legacy	low
+streamIO/real/StreamIn_Arithmetic.java:StreamIn_Arithmetic	class	streamIO/real/StreamIn_Arithmetic.java	code/stream_filter	Arithmetic Sequence Stream	infrastructure	legacy	low
+streamIO/real/StreamIn_Float.java:StreamIn_Float	class	streamIO/real/StreamIn_Float.java	code/stream_filter	Float Stream Base Class	infrastructure	legacy	low
+streamIO/real/StreamIn_Geometric.java:StreamIn_Geometric	class	streamIO/real/StreamIn_Geometric.java	code/stream_filter	Geometric Sequence Stream	infrastructure	broken	low
+streamIO/real/StreamOutPlotter.java:StreamOutPlotter	class	streamIO/real/StreamOutPlotter.java	code/signal_processing	Console Plotter Output	infrastructure	legacy	low
+streamIO/real/detector/BestChoice.java:BestChoice	class	streamIO/real/detector/BestChoice.java	code/anomaly_detection	Best-Choice Selector	domain	legacy	low
+streamIO/real/detector	folder	streamIO/real/detector	code/anomaly_detection	Statistical Process Control Detectors	domain	legacy	medium
+streamIO/real/detector/DetectorAlternation.java:DetectorAlternation	class	streamIO/real/detector/DetectorAlternation.java	code/anomaly_detection	Alternation Pattern Detector	domain	legacy	low
+streamIO/real/detector/DetectorConsistency.java:DetectorConsistency	class	streamIO/real/detector/DetectorConsistency.java	code/anomaly_detection	Consistency Detector	domain	legacy	low
+streamIO/real/detector/DetectorMonotony.java:DetectorMonotony	class	streamIO/real/detector/DetectorMonotony.java	code/anomaly_detection	Monotony Trend Detector	domain	legacy	low
+streamIO/real/detector/DetectorThreshold.java:DetectorThreshold	class	streamIO/real/detector/DetectorThreshold.java	code/anomaly_detection	Threshold Crossing Detector	domain	legacy	low
+streamIO/real/detector/DetectorTooGood.java:DetectorTooGood	class	streamIO/real/detector/DetectorTooGood.java	code/anomaly_detection	"Too Good To Be True" Detector	domain	legacy	low
+streamIO/real/random/ARandomFloat.java:ARandomFloat	class	streamIO/real/random/ARandomFloat.java	code/random_number_generator	Random Float Base Class	utility	legacy	low
+streamIO/real/random	folder	streamIO/real/random	code/random_number_generator,code/statistical_distribution	Random Number Generators	utility	legacy	medium
+streamIO/real/random/NoisePink.java:NoisePink	class	streamIO/real/random/NoisePink.java	code/random_number_generator,code/signal_processing	Pink Noise Generator	utility	legacy	low
+streamIO/real/random/RandomBeta.java:RandomBeta	class	streamIO/real/random/RandomBeta.java	code/random_number_generator,code/statistical_distribution	Beta-Distributed Random Generator	utility	legacy	low
+streamIO/real/random/RandomChiSqr.java:RandomChiSqr	class	streamIO/real/random/RandomChiSqr.java	code/random_number_generator,code/statistical_distribution	Chi-Squared Random Generator	utility	legacy	low
+streamIO/real/random/RandomFisherF.java:RandomFisherF	class	streamIO/real/random/RandomFisherF.java	code/random_number_generator,code/statistical_distribution	Fisher F-Distributed Random Generator	utility	legacy	low
+streamIO/real/random/RandomFisherZ.java:RandomFisherZ	class	streamIO/real/random/RandomFisherZ.java	code/random_number_generator,code/statistical_distribution	Fisher Z-Distributed Random Generator	utility	legacy	low
+streamIO/real/random/RandomGamma.java:RandomGamma	class	streamIO/real/random/RandomGamma.java	code/random_number_generator,code/statistical_distribution	Gamma-Distributed Random Generator	utility	legacy	low
+streamIO/real/random/RandomGauss.java:RandomGauss	class	streamIO/real/random/RandomGauss.java	code/random_number_generator,code/statistical_distribution	Gaussian Random Generator	utility	broken	low
+streamIO/real/random/RandomGauss2.java:RandomGauss2	class	streamIO/real/random/RandomGauss2.java	code/random_number_generator,code/statistical_distribution	Gaussian Random Generator (Alternate)	utility	broken	low
+streamIO/real/random/RandomGaussVector.java:RandomGaussVector	class	streamIO/real/random/RandomGaussVector.java	code/random_number_generator,code/vector_math	Gaussian Random Vector Generator	utility	legacy	medium
+streamIO/real/random/RandomKvSv.java:RandomKvSv	class	streamIO/real/random/RandomKvSv.java	code/random_number_generator,code/statistical_distribution	KvSv-Distributed Random Generator	utility	legacy	low
+streamIO/real/random/RandomLorentz.java:RandomLorentz	class	streamIO/real/random/RandomLorentz.java	code/random_number_generator,code/statistical_distribution	Lorentz-Distributed Random Generator	utility	legacy	low
+streamIO/real/random/RandomPareto.java:RandomPareto	class	streamIO/real/random/RandomPareto.java	code/random_number_generator,code/statistical_distribution	Pareto-Distributed Random Generator	utility	legacy	low
+streamIO/real/random/RandomPoisson.java:RandomPoisson	class	streamIO/real/random/RandomPoisson.java	code/random_number_generator,code/statistical_distribution	Poisson-Distributed Random Generator	utility	broken	low
+streamIO/real/random/RandomStudent.java:RandomStudent	class	streamIO/real/random/RandomStudent.java	code/random_number_generator,code/statistical_distribution	Student-t Distributed Random Generator	utility	legacy	low
+streamIO/real/random/RandomUniformVector.java:RandomUniformVector	class	streamIO/real/random/RandomUniformVector.java	code/random_number_generator,code/vector_math	Uniform Random Vector Generator	utility	legacy	low
+streamIO/real/random/TestRandom.java:TestRandom	class	streamIO/real/random/TestRandom.java	code/random_number_generator	Random Generator Test Harness	test	legacy	low
+streamIO/real/random/TestRandom.java:TestRandom.testGenerator(IStreamIn_Float, int)	method	streamIO/real/random/TestRandom.java	code/random_number_generator	Generator Self-Test	test	legacy	low
+streamIO/real/random/TestRandom.java:TestRandom.TEST_RANDOM(IStreamIn_Float, float[], double, int, double, int, String)	method	streamIO/real/random/TestRandom.java	code/random_number_generator	Distribution Test Helper	test	legacy	low
+streamIO/real/random/TestRandom.java:TestRandom.TEST_RANDOM(IStreamIn_Int, float[], int, int, String)	method	streamIO/real/random/TestRandom.java	code/random_number_generator	Distribution Test Helper	test	legacy	low
+streamIO/real/random/TestRandom.java:TestRandom.testRandomBit(IStreamIn_Int, double)	method	streamIO/real/random/TestRandom.java	code/random_number_generator	Bit-Level Randomness Test	test	legacy	low
+streamIO/real/random/TestRandom.java:TestRandom.testGauss(IStreamIn_Float, double, double, int, int)	method	streamIO/real/random/TestRandom.java	code/random_number_generator	Gaussian Test Helper	test	legacy	low
+streamIO/real/random/TestRandom.java:TestRandom.main(String[])	method	streamIO/real/random/TestRandom.java	code/random_number_generator	Demo Entry Point	test	legacy	low
+streamIO/real/random/TestRandom.java:TestRandom.testIt(String[])	method	streamIO/real/random/TestRandom.java	code/random_number_generator	Self-Test Method	test	legacy	low

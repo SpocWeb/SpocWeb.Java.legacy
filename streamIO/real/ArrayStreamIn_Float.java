@@ -12,11 +12,9 @@ import streamIO.IReSetAble;
 import streamIO.object.IStreamIn;
 
 /**
- * Title: ArrayStreamIn_Float<p>
- * Description:
- * Presents an Array in the Form of a resettable Stream. 
+ * Presents a {@code float[]} or {@code double[]} array as a resettable {@link IStreamIn_Float}.
  *
- * Design Decisions / Implementation Details:
+ * <p>Design Decisions / Implementation Details:
  *
  * Known SubClasses: <none>
  *
@@ -31,6 +29,15 @@ import streamIO.object.IStreamIn;
  * @author mheuer
  * @version	1.0
  *
+ * <!-- docstate
+ * pass: 2
+ * mtime: 2026-09-05T11:09:43Z
+ * digest: 97a28d3bd062f95096844fdb7c628a1fec1e046fbbb7aad05e389b682bfedb9e
+ * stale: false
+ * tags: [code/stream_filter]
+ * concepts: [Array-Backed Float Stream]
+ * facets: {layer: infrastructure, status: legacy, complexity: low}
+ * -->
  */
 public class ArrayStreamIn_Float 
 extends AStreamIn_Float
@@ -52,7 +59,8 @@ implements StreamIn_Float {
 	/** Local Cache for the Order of the Array	 */
 	protected byte order = IStreamIn.ORDER_NONE;
 	
-	/** @see streamIO.real.IStreamIn_Float#getOrder()	 */
+	/** Returns the sort order of the backing array, or {@link IStreamIn#ORDER_NONE} when unordered.
+	 * @see streamIO.real.IStreamIn_Float#getOrder()	 */
 	public byte getOrder() { return order; }
 
 	/** Data Repository 	 */
@@ -93,17 +101,20 @@ implements StreamIn_Float {
 	/// Methods
 	///////////////////////////////////////////////////////////////////////////
 
-    /** @see streamIO.real.AStreamIn_Float#availAble()     */
+    /** Returns the number of items remaining in the backing array from the current position.
+     * @see streamIO.real.AStreamIn_Float#availAble()     */
     public long availAble() { return getMaxMarkSize()-curr; }
 
-    /** @see streamIO.real.AStreamIn_Float#getMaxMarkSize()     */
+    /** Returns the length of the backing array.
+     * @see streamIO.real.AStreamIn_Float#getMaxMarkSize()     */
     public long getMaxMarkSize() {
-        if (arrFloat != null) 
+        if (arrFloat != null)
             return arrFloat.length;
         return arrDouble.length;
     }
 
-    /** @see streamIO.real.AStreamIn_Float#getPosition()     */
+    /** Returns the current index into the backing array.
+     * @see streamIO.real.AStreamIn_Float#getPosition()     */
     public long getPosition() { return curr; }
     
 	/**Marks the current position in this Iterator.
@@ -117,7 +128,8 @@ implements StreamIn_Float {
 		mark = curr; 
 		return this; }
 	
-	/** @see streamIO.real.StreamIn_Float#reSet()	 */
+	/** Repositions this stream to the last {@link #mark(long)}ed position.
+	 * @see streamIO.real.StreamIn_Float#reSet()	 */
 	public IReSetAble reSet() { curr = mark; return this; }
 
 	/** @see streamIO.real.IStreamIn_Float#nextFloat()	 */
@@ -140,7 +152,8 @@ implements StreamIn_Float {
 		return nextFloatInternal(); 
 	}
 	
-	/** @see streamIO.real.IStreamIn_Bound_Float#getMinDouble()	 */
+	/** Returns the minimum value present in the backing array.
+	 * @see streamIO.real.IStreamIn_Bound_Float#getMinDouble()	 */
 	public double getMinDouble() {
 		if (arrDouble != null)
 			return VectorDouble.MIN_VAL(arrDouble);

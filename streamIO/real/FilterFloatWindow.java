@@ -10,9 +10,10 @@ import streamIO.Log;
 import function.IFloatFunction;
 
 /**
- * Title: FilterFloatWindow<p>
- * Description:
- * Averages (sums up) the Stream through this Filter. 
+ * Averages the stream over a fixed-size sliding window in O(1) time per value, using the
+ * delay cache to remove values as they leave the window.
+ *
+ * <p>Averages (sums up) the Stream through this Filter.
  * @see streamIO.real.FilterFloatAverage also averages, 
  * but with different Weights in O(m) Time.
  * This is an O(1) Operation. 
@@ -29,6 +30,15 @@ import function.IFloatFunction;
  * @author mheuer
  * @version	1.0
  *
+ * <!-- docstate
+ * pass: 2
+ * mtime: 2026-09-05T11:15:54Z
+ * digest: fd4b733e8d27debda1a99e8c44d9786f5de3821d953aa433eb44ba8f6abcd4f6
+ * stale: false
+ * tags: [code/stream_filter]
+ * concepts: [Sliding Window Filter]
+ * facets: {layer: infrastructure, status: legacy, complexity: low}
+ * -->
  */
 public class FilterFloatWindow 
 extends FilterFloatDelay {
@@ -57,11 +67,11 @@ extends FilterFloatDelay {
 	//	Constructors
 	/////////////////////////////////////////////////////////////////////////////////////
 	
-	/**
-	 * @param inStream_
-	 * @param windowSize
-	 * @param mapper_
-	 * @param initValue
+	/** Creates a window filter reading from {@code inStream_}, with the average pre-set to {@code initValue}.
+	 * @param inStream_ the source stream to filter
+	 * @param windowSize the number of trailing elements averaged over
+	 * @param mapper_ optional function mapping each value before it enters the window
+	 * @param initValue the value {@link #average} and the delay cache are initialized to
 	 */
 	public FilterFloatWindow(final IStreamIn_Float inStream_, final int windowSize,
 	final IFloatFunction mapper_, final double initValue) {
@@ -70,11 +80,11 @@ extends FilterFloatDelay {
 			this.average = initValue; }
 	}
 
-	/**
-	 * @param outStream_
-	 * @param windowSize
-	 * @param mapper_
-	 * @param initValue
+	/** Creates a window filter writing to {@code outStream_}, with the average pre-set to {@code initValue}.
+	 * @param outStream_ the destination stream for filtered output
+	 * @param windowSize the number of trailing elements averaged over
+	 * @param mapper_ optional function mapping each value before it enters the window
+	 * @param initValue the value {@link #average} and the delay cache are initialized to
 	 */
 	public FilterFloatWindow(final IStreamOutFloat outStream_, final int windowSize,
 	final IFloatFunction mapper_, final double initValue) {
@@ -83,52 +93,52 @@ extends FilterFloatDelay {
 			this.average = initValue; }
 	}
 
-	/**
-	 * @param inStream_
-	 * @param windowSize
-	 * @param mapper_
+	/** Creates a window filter reading from {@code inStream_}, with the delay cache pre-filled with NaN.
+	 * @param inStream_ the source stream to filter
+	 * @param windowSize the number of trailing elements averaged over
+	 * @param mapper_ optional function mapping each value before it enters the window
 	 */
 	public FilterFloatWindow(final IStreamIn_Float inStream_, final int windowSize
 	, final IFloatFunction mapper_) {
 		this(inStream_, windowSize, mapper_, Double.NaN); }
 
-	/**
-	 * @param outStream_
-	 * @param windowSize
-	 * @param mapper_
+	/** Creates a window filter writing to {@code outStream_}, with the delay cache pre-filled with NaN.
+	 * @param outStream_ the destination stream for filtered output
+	 * @param windowSize the number of trailing elements averaged over
+	 * @param mapper_ optional function mapping each value before it enters the window
 	 */
 	public FilterFloatWindow(final IStreamOutFloat outStream_, final int windowSize
 	, final IFloatFunction mapper_) {
 		this(outStream_, windowSize, mapper_, Double.NaN); }
 
-	/**
-	 * @param inStream_
-	 * @param delay
-	 * @param initValue
+	/** Creates a window filter reading from {@code inStream_}, with no output-mapping function.
+	 * @param inStream_ the source stream to filter
+	 * @param windowSize the number of trailing elements averaged over
+	 * @param initValue the value {@link #average} and the delay cache are initialized to
 	 */
 	public FilterFloatWindow(final IStreamIn_Float inStream_, final int windowSize
 	, final double initValue) {
 		this(inStream_, windowSize, null, initValue); }
 
-	/**
-	 * @param outStream_
-	 * @param delay
-	 * @param initValue
+	/** Creates a window filter writing to {@code outStream_}, with no output-mapping function.
+	 * @param outStream_ the destination stream for filtered output
+	 * @param windowSize the number of trailing elements averaged over
+	 * @param initValue the value {@link #average} and the delay cache are initialized to
 	 */
 	public FilterFloatWindow(final IStreamOutFloat outStream_, final int windowSize
 	, final double initValue) {
 		this(outStream_, windowSize, null, initValue); }
 
-	/**
-	 * @param inStream_
-	 * @param windowSize
+	/** Creates a window filter reading from {@code inStream_}, with no mapping and no pre-fill.
+	 * @param inStream_ the source stream to filter
+	 * @param windowSize the number of trailing elements averaged over
 	 */
 	public FilterFloatWindow(final IStreamIn_Float inStream_, final int windowSize) {
 		super(inStream_, windowSize); }
 
-	/**
-	 * @param outStream_
-	 * @param windowSize
+	/** Creates a window filter writing to {@code outStream_}, with no mapping and no pre-fill.
+	 * @param outStream_ the destination stream for filtered output
+	 * @param windowSize the number of trailing elements averaged over
 	 */
 	public FilterFloatWindow(final IStreamOutFloat outStream_, final int windowSize) {
 		super(outStream_, windowSize); }

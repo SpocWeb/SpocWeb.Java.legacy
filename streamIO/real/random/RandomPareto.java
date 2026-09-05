@@ -5,7 +5,18 @@ import streamIO.integer.random.RandomQuick;
 import streamIO.real.FilterInLin;
 import streamIO.real.IStreamIn_Float;
 
-/**Returns random Numbers distributed in a Pareto fashion  */
+/**Returns random Numbers distributed in a Pareto fashion
+ *
+ * <!-- docstate
+ * pass: 2
+ * mtime: 2026-09-05T11:29:58Z
+ * digest: 377965a51894c729ff655a7d4515244911bff9e2d5f091097e3c32495e07b165
+ * stale: false
+ * tags: [code/random_number_generator, code/statistical_distribution]
+ * concepts: [Pareto-Distributed Random Generator]
+ * facets: {layer: utility, status: legacy, complexity: low}
+ * -->
+ */
 public class RandomPareto
 extends ARandomFloat //FilterIn_FloatByFunction 
 //implements IReSetAble 
@@ -43,12 +54,13 @@ extends ARandomFloat //FilterIn_FloatByFunction
 		kRcpNeg = -1 / k;
 	}
 
-	/** @see streamIO.real.random.ARandomFloat#getMinDouble()	 */
+	/** Returns 1, the lower bound of the Pareto distribution.
+	 * @see streamIO.real.random.ARandomFloat#getMinDouble()	 */
 	public double getMinDouble() { return 1; }
 	
 	/**Random double Precision Number using 1/x Transformation	 */
 	protected double nextDoubleInternal() {
-		return Math.pow(ran.nextDouble(), kRcpNeg);	//und eine für sofort
+		return Math.pow(ran.nextDouble(), kRcpNeg);	//und eine fï¿½r sofort
 	}
 	
 }

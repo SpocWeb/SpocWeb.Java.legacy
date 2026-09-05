@@ -8,6 +8,15 @@ import function.byref.combinatoric.ProbFuncs;
 
 /**Returns random Numbers distributed like the FisherZ Function
  * i.e. p(x) = FisherZ(x, Ny1, Ny2)
+ * <!-- docstate
+ * pass: 2
+ * mtime: 2026-09-05T11:27:41Z
+ * digest: 34c541249dec8de0af2b648430b47079e9bf982a003710468ce54628dd9a20ee
+ * stale: false
+ * tags: [code/random_number_generator, code/statistical_distribution]
+ * concepts: [Fisher Z-Distributed Random Generator]
+ * facets: {layer: utility, status: legacy, complexity: low}
+ * -->
  */
 public class RandomFisherZ
 extends ARandomFloat {
@@ -22,10 +31,11 @@ extends ARandomFloat {
 	
 	///////////////////////////////////////////////////////////////////////////
 	
-	/** @see streamIO.integer.IStreamIn_Int#reSet()	 */
+	/** Resets the wrapped Fisher-F generator, failing if it cannot be reset.
+	 * @see streamIO.integer.IStreamIn_Int#reSet()	 */
 	public IReSetAble reSet() { //throws IOException {
 		if (ran.reSet() == null) return null;
-		return this; 
+		return this;
 	}
 	
 	/**Random double Precision Number distributed like ChiSqr/2.
@@ -34,7 +44,8 @@ extends ARandomFloat {
 	public double nextDoubleInternal() {
 		return IMeasurAble.HALF * Math.log(ran.nextDouble());}
 	
-	/** @see streamIO.real.random.ARandomFloat#getMinDouble()	 */
+	/** Returns negative infinity, the unbounded lower tail of the Fisher-Z distribution.
+	 * @see streamIO.real.random.ARandomFloat#getMinDouble()	 */
 	public double getMinDouble() { return Double.NEGATIVE_INFINITY; }
 
 	/////////////////////////////////////////////////////////////////////////////////////

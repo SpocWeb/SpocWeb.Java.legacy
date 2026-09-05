@@ -21,6 +21,15 @@ import streamIO.IOrdered;
   * 
   * Subclasses: 
   * @see streamIO.real.StreamIn_Float
+  * <!-- docstate
+  * pass: 2
+  * mtime: 2026-09-05T11:21:21Z
+  * digest: d859136f1d1b4c748bcd95abb0a05d4f88764747eb20b61ae76f23cc23f983fa
+  * stale: false
+  * tags: [code/stream_filter]
+  * concepts: [Float Stream Input Interface]
+  * facets: {layer: infrastructure, status: legacy, complexity: low}
+  * -->
   */
 public interface IStreamIn_Float 
 extends IIStreamIn, IAvailAble, IIterAble, IMarkAble, IOrdered  {
@@ -35,23 +44,29 @@ extends IIStreamIn, IAvailAble, IIterAble, IMarkAble, IOrdered  {
 	
 	/////////////////////////////////////////////////////////////////////////////////////
 	
-	/** @return the next double Precision Number	 */
+	/** Advances the stream and returns the next value as a double.
+	 * @return the next double Precision Number	 */
 	public double nextDouble();
-	
-	/** @return the next single Precision Number	 */
+
+	/** Advances the stream and returns the next value as a float.
+	 * @return the next single Precision Number	 */
 	public float nextFloat();
-	
-	/** @return the current Value that was returned from the last nextItem() Method.	 */
-	public double currDouble();  
-	
-	/** @return the current Value that was returned from the last nextItem() Method.	 */
-	public float currFloat();  
-	
-	/** @return the next Value without moving to it.	 */
-	public float peekFloat(); //throws    NoSuchMethodException; 
-	
-	/** @return the next Value without moving to it.	 */
-	public double peekDouble(); //throws    NoSuchMethodException; 
+
+	/** Returns the last value returned by {@code nextItem()}, as a double.
+	 * @return the current Value that was returned from the last nextItem() Method.	 */
+	public double currDouble();
+
+	/** Returns the last value returned by {@code nextItem()}, as a float.
+	 * @return the current Value that was returned from the last nextItem() Method.	 */
+	public float currFloat();
+
+	/** Reads the next value without advancing the stream position.
+	 * @return the next Value without moving to it.	 */
+	public float peekFloat(); //throws    NoSuchMethodException;
+
+	/** Reads the next value without advancing the stream position.
+	 * @return the next Value without moving to it.	 */
+	public double peekDouble(); //throws    NoSuchMethodException;
 	
 	/** This is a type-safe Substitute for clone()
 	 * returns a new Iterator for the same Base Set

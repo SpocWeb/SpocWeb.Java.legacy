@@ -6,6 +6,15 @@ import function.byref.combinatoric.ProbFuncs;
 
 /**Returns random Numbers distributed in a Beta Function Shape
  * i.e. p(x) = BetaI(x, a, b)
+ * <!-- docstate
+ * pass: 2
+ * mtime: 2026-09-05T11:27:14Z
+ * digest: 9bc764a5943a6dd62e245c427b417b04574812d7970e8b1a3cc95f864b332ad5
+ * stale: false
+ * tags: [code/random_number_generator, code/statistical_distribution]
+ * concepts: [Beta-Distributed Random Generator]
+ * facets: {layer: utility, status: legacy, complexity: low}
+ * -->
  */
 public class RandomBeta
 extends ARandomFloat {
@@ -34,11 +43,12 @@ extends ARandomFloat {
 	
 	///////////////////////////////////////////////////////////////////////////
 	
-	/** @see streamIO.integer.IStreamIn_Int#reSet()	 */
+	/** Resets both underlying Gamma generators, failing if either cannot be reset.
+	 * @see streamIO.integer.IStreamIn_Int#reSet()	 */
 	public IReSetAble reSet() { //throws IOException {
 	    if (aGamma.reSet() == null) return null;
 	    if (bGamma.reSet() == null) return null; //give it a Chance to initialize!
-		return this; 
+		return this;
 	}
 	
 	/**Random double Precision Number distributed like ChiSqr/2.
@@ -48,7 +58,8 @@ extends ARandomFloat {
 		final double a = aGamma.nextDouble();
 		return a / ( a + bGamma.nextDouble()); }
 		
-	/** @see streamIO.real.random.ARandomFloat#getMinDouble()	 */
+	/** Returns 0, the lower bound of the Beta distribution.
+	 * @see streamIO.real.random.ARandomFloat#getMinDouble()	 */
 	public double getMinDouble() { return 0; }
 
 	/////////////////////////////////////////////////////////////////////////////////////

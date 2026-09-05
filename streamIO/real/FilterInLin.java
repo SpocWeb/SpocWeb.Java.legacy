@@ -15,6 +15,15 @@ import streamIO.integer.random.IStreamIn_Bound_Int;
   * thus	avoiding one float Point Multiplication
   * and optionally replacing one float Point Subtration
   * by an integer Subtraction.
+  * <!-- docstate
+  * pass: 2
+  * mtime: 2026-09-05T10:13:32Z
+  * digest: 8a5fc5b36109755a2419251a29b1a33f76286bd9d27ffc592b76cb5c2c5b60cf
+  * stale: false
+  * tags: [code/stream_filter]
+  * concepts: [Linear Interpolation Filter]
+  * facets: {layer: infrastructure, status: legacy, complexity: low}
+  * -->
   */
 public class FilterInLin
 extends FilterInMul {

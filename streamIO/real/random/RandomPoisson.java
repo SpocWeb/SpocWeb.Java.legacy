@@ -24,6 +24,15 @@ import function.derive.ring.body.GammaLn;
   * so you can use the Lorentz Distribution for Rejection,
   * For small EW, random Exponential Waiting Times are generated,
   * until the given Time EW is exceeded.
+  * <!-- docstate
+  * pass: 2
+  * mtime: 2026-09-05T11:30:07Z
+  * digest: 9195cff273e156c5867685b30dfd7ba84d093fc3ee519308221f3f4bd79381d6
+  * stale: false
+  * tags: [code/random_number_generator, code/statistical_distribution]
+  * concepts: [Poisson-Distributed Random Generator]
+  * facets: {layer: utility, status: broken, complexity: low}
+  * -->
   */
 public class RandomPoisson
 extends ARandomInt {
@@ -79,15 +88,19 @@ extends ARandomInt {
 
 	///////////////////////////////////////////////////////////////////////////
 	
-	/** @see streamIO.integer.IStreamIn_Int#reSet()	 */
+	/** Resets the underlying uniform stream and, for large means, the Lorentz sub-generator.
+	 * @see streamIO.integer.IStreamIn_Int#reSet()	 */
+	// TODO: LOGIC: ranLorentz is only constructed when !smallXM (EW >= 12.0); for a small-mean
+	// instance (EW < 12.0, the constructor's `smallXM` branch) ranLorentz stays null, so this
+	// unconditional this.ranLorentz.reSet() throws NullPointerException on every reset() call.
 	public IReSetAble reSet() { //throws IOException {
-		//try{ 
+		//try{
 			this.ran.reSet();
-			this.ranLorentz.reSet(); //TODO: 
+			this.ranLorentz.reSet(); //TODO:
 		/*} catch (final IOException x) {
-			throw new RuntimeException(x); 
+			throw new RuntimeException(x);
 		}*/
-		return this; 
+		return this;
 	}
 
 	/**New Semantic: instead of returning to the indicated Position, 

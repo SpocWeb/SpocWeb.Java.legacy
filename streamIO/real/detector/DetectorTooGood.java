@@ -9,13 +9,14 @@ import streamIO.Assert;
 import streamIO.real.IStreamOutFloat;
 
 /**
- * Title: DetectorTooGood<p>
- * Description:
- * Fifteen sample means in a row are only within 1 standard error of the target.  
+ * Detects an overly consistent process: too many consecutive values falling within a small
+ * tolerance of the target.
+ *
+ * <p>Fifteen sample means in a row are only within 1 standard error of the target.
  * Suspected cause: the process is more consistent than the specifications call for. 
  * If this overly consistent process costs time or money, it should be loosened up. 
  * If this overly consistent process does not add time or money, 
- * finding out what Difference this process does — and replicating this change in the future — 
+ * finding out what Difference this process does ï¿½ and replicating this change in the future ï¿½ 
  * may be worthwhile.
  *
  *
@@ -29,20 +30,30 @@ import streamIO.real.IStreamOutFloat;
  * @author mheuer
  * @version	1.0
  *
+ * <!-- docstate
+ * pass: 2
+ * mtime: 2026-09-05T11:26:11Z
+ * digest: 90ec02eff64a685fab285fc84e543cd153e71e14cfd12364a7f162cc278b9d2d
+ * stale: false
+ * tags: [code/anomaly_detection]
+ * concepts: ["Too Good To Be True" Detector]
+ * facets: {layer: domain, status: legacy, complexity: low}
+ * -->
  */
 public class DetectorTooGood 
 extends DetectorConsistency {
 	
-	/**
-	 * @param threshold
-	 * @param average_
+	/** Creates a too-good detector triggering after {@code threshold} consecutive values within tolerance.
+	 * @param threshold the number of consecutive close values that trigger detection
+	 * @param average_ the target value values are compared against
 	 * @param stdDev_ the Standard Deviation (or similar) to judge the Size of the Deviation
 	 */
 	public DetectorTooGood(final int threshold, final double average_, final double stdDev_) {
 		super(threshold, average_, stdDev_);
 	}
-	
-	/** @see streamIO.real.IStreamOutFloat#addDouble(double)	 */
+
+	/** Counts consecutive values within tolerance of the target and reports once the threshold is exceeded.
+	 * @see streamIO.real.IStreamOutFloat#addDouble(double)	 */
 	public IStreamOutFloat addDouble(final double value) {
 		if (Math.abs(value - compareValue) <= tolerance) {
 			if (++countInDirection > maxCountInDirection) {

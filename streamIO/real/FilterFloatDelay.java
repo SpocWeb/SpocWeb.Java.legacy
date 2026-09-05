@@ -11,11 +11,10 @@ import streamIO.Assert;
 import function.IFloatFunction;
 
 /**
- * Title: FilterFloatDelay<p>
- * Description:
- * Delays a Stream by a non-negative Number of read / write Operations. 
+ * Delays a stream by a fixed, non-negative number of read/write operations, using a
+ * ring-buffer cache.
  *
- * Design Decisions / Implementation Details:
+ * <p>Design Decisions / Implementation Details:
  *
  * Known SubClasses: <none>
  *
@@ -27,6 +26,15 @@ import function.IFloatFunction;
  * @author mheuer
  * @version	1.0
  *
+ * <!-- docstate
+ * pass: 2
+ * mtime: 2026-09-05T11:12:06Z
+ * digest: 53271d99195a7e2dc3befdff83f357e605a8fe9fb418a9c5593cae07a5a5a488
+ * stale: false
+ * tags: [code/stream_filter]
+ * concepts: [Delay Line Filter]
+ * facets: {layer: infrastructure, status: legacy, complexity: low}
+ * -->
  */
 public class FilterFloatDelay 
 extends FilterFloatByFunction {
@@ -45,9 +53,9 @@ extends FilterFloatByFunction {
 	//	Constructors
 	/////////////////////////////////////////////////////////////////////////////////////
 	
-	/**
-	 * @param inStream_
-	 * @param mapper_
+	/** Creates a delay reading from {@code inStream_}, pre-filling the cache with {@code initValue}.
+	 * @param inStream_ the source stream to delay
+	 * @param mapper_ optional function mapping each value before it enters the delay cache
 	 * @param delay controls the Delay of this Filter, must be non-negative
 	 */
 	public FilterFloatDelay(final IStreamIn_Float inStream_, final int delay, final IFloatFunction mapper_, final double initValue) {
@@ -56,10 +64,10 @@ extends FilterFloatByFunction {
 		if (!Double.isNaN(initValue)) {
 			Arrays.fill(cache, initValue); }
 	}
-	
-	/**
-	 * @param outStream_
-	 * @param mapper_
+
+	/** Creates a delay writing to {@code outStream_}, pre-filling the cache with {@code initValue}.
+	 * @param outStream_ the destination stream for delayed output
+	 * @param mapper_ optional function mapping each value before it enters the delay cache
 	 * @param delay controls the Delay of this Filter, must be non-negative
 	 */
 	public FilterFloatDelay(final IStreamOutFloat outStream_, final int delay, final IFloatFunction mapper_, final double initValue) {
@@ -68,48 +76,48 @@ extends FilterFloatByFunction {
 		if (!Double.isNaN(initValue)) {
 			Arrays.fill(cache, initValue); }
 	}
-	
-	/**
-	 * @param inStream_
-	 * @param mapper_
+
+	/** Creates a delay reading from {@code inStream_}, with no output-mapping function.
+	 * @param inStream_ the source stream to delay
+	 * @param initValue the value the delay cache is pre-filled with
 	 * @param delay controls the Delay of this Filter, must be non-negative
 	 */
 	public FilterFloatDelay(final IStreamIn_Float inStream_, final int delay, final double initValue) {
 		this(inStream_, delay, null, initValue); }
-	
-	/**
-	 * @param outStream_
-	 * @param mapper_
+
+	/** Creates a delay writing to {@code outStream_}, with no output-mapping function.
+	 * @param outStream_ the destination stream for delayed output
+	 * @param initValue the value the delay cache is pre-filled with
 	 * @param delay controls the Delay of this Filter, must be non-negative
 	 */
 	public FilterFloatDelay(final IStreamOutFloat outStream_, final int delay, final double initValue) {
 		this(outStream_, delay, null, initValue); }
-	
-	/**
-	 * @param inStream_
-	 * @param mapper_
+
+	/** Creates a delay reading from {@code inStream_}, with the delay cache pre-filled with NaN.
+	 * @param inStream_ the source stream to delay
+	 * @param mapper_ optional function mapping each value before it enters the delay cache
 	 * @param delay controls the Delay of this Filter, must be non-negative
 	 */
 	public FilterFloatDelay(final IStreamIn_Float inStream_, final int delay, final IFloatFunction mapper_) {
 		this(inStream_, delay, mapper_, Double.NaN); }
-	
-	/**
-	 * @param outStream_
-	 * @param mapper_
+
+	/** Creates a delay writing to {@code outStream_}, with the delay cache pre-filled with NaN.
+	 * @param outStream_ the destination stream for delayed output
+	 * @param mapper_ optional function mapping each value before it enters the delay cache
 	 * @param delay controls the Delay of this Filter, must be non-negative
 	 */
 	public FilterFloatDelay(final IStreamOutFloat outStream_, final int delay, final IFloatFunction mapper_) {
 		this(outStream_, delay, mapper_, Double.NaN); }
-	
-	/**
-	 * @param inStream_
+
+	/** Creates a delay reading from {@code inStream_}, with no mapping and no cache pre-fill.
+	 * @param inStream_ the source stream to delay
 	 * @param delay controls the Delay of this Filter, must be non-negative
 	 */
 	public FilterFloatDelay(final IStreamIn_Float inStream_, final int delay) {
 		this(inStream_, delay, null); }
-	
-	/**
-	 * @param outStream_
+
+	/** Creates a delay writing to {@code outStream_}, with no mapping and no cache pre-fill.
+	 * @param outStream_ the destination stream for delayed output
 	 * @param delay controls the Delay of this Filter, must be non-negative
 	 */
 	public FilterFloatDelay(final IStreamOutFloat outStream_, final int delay) {

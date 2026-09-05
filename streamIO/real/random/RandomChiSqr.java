@@ -12,6 +12,15 @@ import function.byref.combinatoric.ProbFuncs;
 /**Returns random Numbers with Chi^2 distribution of Ny Degrees of Freedom
  * i.e: p(2x) = Chi^2(x)
  * Scaling by 2 is left to the ClientApplication to increase Performance!
+ * <!-- docstate
+ * pass: 2
+ * mtime: 2026-09-05T11:27:23Z
+ * digest: 2f4de13528755c46773f57f30eb0be8f75ce7cd613c31db8d6a5e2aaf69d3f9b
+ * stale: false
+ * tags: [code/random_number_generator, code/statistical_distribution]
+ * concepts: [Chi-Squared Random Generator]
+ * facets: {layer: utility, status: legacy, complexity: low}
+ * -->
  */
 public class RandomChiSqr
 extends ARandomFloat {
@@ -47,10 +56,11 @@ extends ARandomFloat {
 
 	///////////////////////////////////////////////////////////////////////////
 	
-	/** @see streamIO.integer.IStreamIn_Int#reSet()	 */
+	/** Resets the wrapped random stream, failing if it cannot be reset.
+	 * @see streamIO.integer.IStreamIn_Int#reSet()	 */
 	public IReSetAble reSet() { //throws IOException {
-		if (     ran.reSet() == null) return null; 
-		return this; 
+		if (     ran.reSet() == null) return null;
+		return this;
 	}
 	
 	/**Random double Precision Number distributed like ChiSqr/2.
@@ -66,7 +76,8 @@ extends ARandomFloat {
 		Summe += Math.log(ran.nextFloat())*ByRefDouble.SQR(Math.cos(IMeasurAble.TWO_PI*ran.nextFloat()));
 		return -Summe; }
 	
-	/** @see streamIO.real.random.ARandomFloat#getMinDouble()	 */
+	/** Returns 0, the lower bound of the Chi-squared distribution.
+	 * @see streamIO.real.random.ARandomFloat#getMinDouble()	 */
 	public double getMinDouble() { return 0; }
 
 	/////////////////////////////////////////////////////////////////////////////////////
@@ -74,7 +85,7 @@ extends ARandomFloat {
 	/**Tests the ChiSqr Random Number Generator	 */
 	static final void testIt(IStreamIn_Bound_Int ran, int numPoints, double scale, double shift, int NPTS, int numBins) {
 		final float[] compare = new float[numBins]; //Binning doesn't work well!
-		for (int i = numBins; --i >= 0;) { //Chi² has a very steep Start at 0! 
+		for (int i = numBins; --i >= 0;) { //Chiï¿½ has a very steep Start at 0! 
 			compare[i] = (float) (ProbFuncs.pChiSqr((i+.5-shift)*scale*2, numPoints)*scale*2); }
 		TestRandom.TEST_RANDOM(new RandomChiSqr(ran, numPoints), compare, scale, numBins, shift, NPTS, "ChiSqr(" + numPoints + ")");
 	}

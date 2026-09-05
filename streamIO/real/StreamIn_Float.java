@@ -10,11 +10,10 @@ import streamIO.IOrdered;
 import streamIO.object.IStreamIn;
 
 /**
- * Title: StreamIn_Float<p>
- * Description:
- * Interface describing resettable Streams of Float Numbers 
+ * Combines {@link IStreamIn_Float} with markability, ordering and JDK-style {@code IStreamIn}
+ * semantics into one resettable float-stream contract.
  *
- * Design Decisions / Implementation Details:
+ * <p>Design Decisions / Implementation Details:
  *
  * Known SubClasses: <none>
  *
@@ -26,6 +25,15 @@ import streamIO.object.IStreamIn;
  * @author mheuer
  * @version	1.0
  *
+ * <!-- docstate
+ * pass: 2
+ * mtime: 2026-09-05T10:13:32Z
+ * digest: e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855
+ * stale: false
+ * tags: [code/stream_filter]
+ * concepts: [Float Stream Base Class]
+ * facets: {layer: infrastructure, status: legacy, complexity: low}
+ * -->
  */
 public interface StreamIn_Float 
 extends IStreamIn, IStreamIn_Float, IMarkAble, IOrdered {

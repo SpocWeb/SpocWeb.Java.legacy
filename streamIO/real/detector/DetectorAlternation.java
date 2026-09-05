@@ -9,9 +9,10 @@ import streamIO.Assert;
 import streamIO.real.IStreamOutFloat;
 
 /**
- * Title: DetectorAlternation<p>
- * Description:
- * Detects alternating Results. 
+ * Detects a run of values alternating above and below the target, a classic production
+ * control signal that two disagreeing sources are feeding one system.
+ *
+ * <p>A common Production Control Measure is to stop Production
  * A common Production Control Measure is to stop Production 
  * when 14 Elements in a Row are alternating about the Target Value. 
  * Suspected cause: 
@@ -28,19 +29,30 @@ import streamIO.real.IStreamOutFloat;
  * @author mheuer
  * @version	1.0
  *
+ * <!-- docstate
+ * pass: 2
+ * mtime: 2026-09-05T11:24:44Z
+ * digest: 1fb954b7a47a5f5e15d5ba8257b8c4fd8d26d32c01ae2d07dd40c356f04d8a95
+ * stale: false
+ * tags: [code/anomaly_detection]
+ * concepts: [Alternation Pattern Detector]
+ * facets: {layer: domain, status: legacy, complexity: low}
+ * -->
  */
 public class DetectorAlternation 
 extends DetectorConsistency {
 
-	/**
-	 * @param threshold
-	 * @param average_
+	/** Creates an alternation detector triggering after {@code threshold} consecutive direction flips.
+	 * @param threshold the number of alternations that trigger detection
+	 * @param average_ the reference value values are compared against
+	 * @param tolerance_ the tolerance around the reference value treated as neutral
 	 */
 	public DetectorAlternation(final int threshold, final double average_, final double tolerance_) {
 		super(threshold, average_, tolerance_);
 	}
-	
-	/** @see streamIO.real.IStreamOutFloat#addDouble(double)	 */
+
+	/** Flips the tracked direction before delegating, so every value counts as alternating.
+	 * @see streamIO.real.IStreamOutFloat#addDouble(double)	 */
 	public IStreamOutFloat addDouble(final double value) {
 		countInDirection = -countInDirection;
 		return super.addDouble(value);

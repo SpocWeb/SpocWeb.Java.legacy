@@ -8,6 +8,15 @@ import function.byref.combinatoric.ProbFuncs;
  * i.e. p(x) = pKvSv(x) = 
  *
  * Processing Time rises exponentially with Exp1
+ * <!-- docstate
+ * pass: 2
+ * mtime: 2026-09-05T11:29:30Z
+ * digest: da6709e2c17f486730a27491aaf9c71169873f7bc196ad34c063796fa336b7f6
+ * stale: false
+ * tags: [code/random_number_generator, code/statistical_distribution]
+ * concepts: [KvSv-Distributed Random Generator]
+ * facets: {layer: utility, status: legacy, complexity: low}
+ * -->
  */
 public class RandomKvSv
 	extends ARandomFloat {
@@ -32,11 +41,12 @@ public class RandomKvSv
 	
 	///////////////////////////////////////////////////////////////////////////
 	
-	/** @see streamIO.integer.IStreamIn_Int#reSet()	 */
+	/** Resets the wrapped random stream, failing if it cannot be reset.
+	 * @see streamIO.integer.IStreamIn_Int#reSet()	 */
 	public IReSetAble reSet() { //throws IOException {
-		if (ran.reSet() == null) 
+		if (ran.reSet() == null)
 			return null;
-		return this; 
+		return this;
 	}
 	
 	/**Generates a Random double Precision Number with Kolmogorov- Smirnov Distribution	 */
@@ -59,7 +69,8 @@ public class RandomKvSv
 	/**Generates a Random double Precision Number with Kolmogorov- Smirnov Distribution	 */
 	public long nextLong() { return nextInt(); }
 	
-	/** @see streamIO.real.random.ARandomFloat#getMinDouble()	 */
+	/** Returns 0, the lower bound of the Kolmogorov-Smirnov distribution.
+	 * @see streamIO.real.random.ARandomFloat#getMinDouble()	 */
 	public double getMinDouble() { return 0; }
 	
 	////////////////////////////////////////////////////////////////////////////////////

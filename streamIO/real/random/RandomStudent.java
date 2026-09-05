@@ -9,6 +9,15 @@ import function.byref.combinatoric.ProbFuncs;
 /** Returns random Numbers distributed like the Student Function
   * i.e. p(x) = Student(x, Ny1, Ny2)
   * @see RandomStudent
+  * <!-- docstate
+  * pass: 2
+  * mtime: 2026-09-05T11:30:26Z
+  * digest: a0e27d42198e5f8b2429e76c5f4e807c36d857e1c714f4284eede2f4a3a54b85
+  * stale: false
+  * tags: [code/random_number_generator, code/statistical_distribution]
+  * concepts: [Student-t Distributed Random Generator]
+  * facets: {layer: utility, status: legacy, complexity: low}
+  * -->
   */
 public class RandomStudent
 extends ARandomFloat { //only for the Method 'nextFloat()'
@@ -33,11 +42,12 @@ extends ARandomFloat { //only for the Method 'nextFloat()'
 	
 	///////////////////////////////////////////////////////////////////////////
 	
-	/** @see streamIO.integer.IStreamIn_Int#reSet()	 */
+	/** Resets both the Chi-squared sub-generator and the underlying Gaussian stream.
+	 * @see streamIO.integer.IStreamIn_Int#reSet()	 */
 	public IReSetAble reSet() { //throws IOException {
 		if (ChiSqr.reSet() == null) return null;
 		if (   ran.reSet() == null) return null; //give it a Chance to initialize
-		return this; 
+		return this;
 	}
 	
 	/** Random double Precision Number distributed like ChiSqr/2.
@@ -46,7 +56,8 @@ extends ARandomFloat { //only for the Method 'nextFloat()'
 	public double nextDoubleInternal() {
 		return ran.nextDouble()*Math.sqrt(ny/ChiSqr.nextDouble()); }
 	
-	/** @see streamIO.real.random.ARandomFloat#getMinDouble()	 */
+	/** Returns negative infinity, the unbounded lower tail of the Student distribution.
+	 * @see streamIO.real.random.ARandomFloat#getMinDouble()	 */
 	public double getMinDouble() { return Double.NEGATIVE_INFINITY; }
 	
 	/////////////////////////////////////////////////////////////////////////////////////

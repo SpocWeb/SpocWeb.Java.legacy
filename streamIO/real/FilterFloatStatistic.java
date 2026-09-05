@@ -13,9 +13,10 @@ import streamIO.real.random.RandomGauss;
 import function.IFloatFunction;
 
 /**
- * Title: FilterFloatStatistic<p>
- * Description:
- * Bidirectional Filter, 
+ * Bidirectional filter that accumulates running average, variance, skewness and kurtosis
+ * from a stream of values as they pass through it.
+ *
+ * <p>Bidirectional Filter,
  * collecting statistical Information (Average and Variance) on the Way, 
  * i.e. whenever a Number is read from this Object (working as IStreamIn_Float) 
  * or when a Number is written into this Object (working as IStreamOutFloat). 
@@ -49,6 +50,15 @@ import function.IFloatFunction;
  * @author mheuer
  * @version	1.0
  *
+ * <!-- docstate
+ * pass: 2
+ * mtime: 2026-09-05T11:14:58Z
+ * digest: b1b7bd989b0f858b49297a43888540b0ec12c5d7dd0e7219ad69e052ebe9e864
+ * stale: false
+ * tags: [code/statistics, code/running_statistics]
+ * concepts: [Running Statistics Filter]
+ * facets: {layer: infrastructure, status: legacy, complexity: medium}
+ * -->
  */
 public class FilterFloatStatistic 
 extends FilterFloatByFunction {
@@ -89,40 +99,44 @@ extends FilterFloatByFunction {
 	// Constructors
 	/////////////////////////////////////////////////////////////////////////////////////
 	
-	/**
-	 * @param InStream_
-	 * @param mapper_
+	/** Creates a statistics filter reading from {@code InStream_}, with an explicit offset guess.
+	 * @param InStream_ the source stream to collect statistics from
+	 * @param offset_ the initial guess of the mean, seeding the running sums
+	 * @param mapper_ optional function mapping each value before it is accumulated
 	 */
 	public FilterFloatStatistic(final IStreamIn_Float InStream_, double offset_, final IFloatFunction mapper_) {
 		super(InStream_, mapper_); this.offSet = offset_; }
 
-	/**
-	 * @param OutStream_
-	 * @param mapper_
+	/** Creates a statistics filter writing to {@code OutStream_}, with an explicit offset guess.
+	 * @param OutStream_ the destination stream for filtered output
+	 * @param offset_ the initial guess of the mean, seeding the running sums
+	 * @param mapper_ optional function mapping each value before it is accumulated
 	 */
 	public FilterFloatStatistic(final IStreamOutFloat OutStream_, final double offset_, final IFloatFunction mapper_) {
 		super(OutStream_, mapper_); this.offSet = offset_; }
 
-	/**
-	 * @param InStream_
+	/** Creates a statistics filter reading from {@code InStream_}, with no mapping function.
+	 * @param InStream_ the source stream to collect statistics from
+	 * @param offset_ the initial guess of the mean, seeding the running sums
 	 */
 	public FilterFloatStatistic(final IStreamIn_Float InStream_, final double offset_) {
 		super(InStream_); this.offSet = offset_; }
 
-	/**
-	 * @param OutStream_
+	/** Creates a statistics filter writing to {@code OutStream_}, with no mapping function.
+	 * @param OutStream_ the destination stream for filtered output
+	 * @param offset_ the initial guess of the mean, seeding the running sums
 	 */
 	public FilterFloatStatistic(final IStreamOutFloat OutStream_, final double offset_) {
 		super(OutStream_); this.offSet = offset_; }
 
-	/**
-	 * @param InStream_
+	/** Creates a statistics filter reading from {@code InStream_}, offsetting to the first item read.
+	 * @param InStream_ the source stream to collect statistics from
 	 */
 	public FilterFloatStatistic(final IStreamIn_Float InStream_) {
 		super(InStream_); reNorm = 0; }
 
-	/**
-	 * @param OutStream_
+	/** Creates a statistics filter writing to {@code OutStream_}, offsetting to the first item written.
+	 * @param OutStream_ the destination stream for filtered output
 	 */
 	public FilterFloatStatistic(final IStreamOutFloat OutStream_) {
 		super(OutStream_); reNorm = 0;  }
@@ -143,17 +157,20 @@ extends FilterFloatByFunction {
 	//This is too much Overhead. 
 	//public double getMedian() { return sum+count*offSet; }
 
-	/** @return the Sum of all Elements so far 	
+	/** Returns the sum of all elements seen so far, corrected for the running offset.
+	 * @return the Sum of all Elements so far
 	 * Sum(N, x[n]-o) = Sum(N, x[n]) - o*N
-	 */	
+	 */
 	public double getSum() { return sum+count*offSet; }
-	
-	/** @return the Average of all Elements so far 	
-	 * x - o = Avg(N, x[n]-o) = Sum(N, x[n]-o)/N 
-	 */	
+
+	/** Returns the arithmetic mean of all elements seen so far.
+	 * @return the Average of all Elements so far
+	 * x - o = Avg(N, x[n]-o) = Sum(N, x[n]-o)/N
+	 */
 	public double getAverage() { return sum/count+offSet; }
-	
-	/** @return the absolute Deviation so far
+
+	/** Returns an upper-bound estimate of the mean absolute deviation.
+	 * @return the absolute Deviation so far
 	 * This cannot be calculated very well 
 	 * without taking the whole Dataset into Account, 
 	 * because the absolute Value is not analytical: 
@@ -163,59 +180,63 @@ extends FilterFloatByFunction {
 	 */	
 	public double getAbsDev() { return (abs+Math.abs(sum))/count; }
 	
-	/** @return the Variance of all Elements so far. 
-	 * The Estimation of the Mean eats up one Degree of Freedom, 
+	/** Returns the sample variance of all elements seen so far, re-normalizing the running sums first.
+	 * @return the Variance of all Elements so far.
+	 * The Estimation of the Mean eats up one Degree of Freedom,
 	 * so the Estimate of the Variance has one Parameter less.  
 	 * Var(x)*(N-1) = 
-	 * Sum(N, (x[n]-Avg(N, x[n]))²) = Sum(N, (x[n]-x)²)   (...with x = Avg(i, x[i]) )
-	 * Sum(N,([x[n]-o]+[o-x])²) =
-	 * Sum(N,[x[n]-o]² + 2*[x[n]-o][o-x] + [o-x]²) =
-	 * Sum(N,[x[n]-o]²) + 2*Sum(N,[x[n]-o])[o-x] + N*[o-x]² =
-	 * Sum(N,[x[n]-o]²) - 2*Sum(N,[x[n]-o])[x-o] + N*[x-o]² =  (...with Sum(N, x[n]-o)/N = [x-o])
-	 * Sum(N,[x[n]-o]²) - 2*N*[x-o][x-o] + N*[x-o]² = 
-	 * Sum(N,[x[n]-o]²) - N*[x-o]² =  
-	 * Sum(N,[x[n]-o]²) - Sum(N, x[n]-o)²/N 
+	 * Sum(N, (x[n]-Avg(N, x[n]))ï¿½) = Sum(N, (x[n]-x)ï¿½)   (...with x = Avg(i, x[i]) )
+	 * Sum(N,([x[n]-o]+[o-x])ï¿½) =
+	 * Sum(N,[x[n]-o]ï¿½ + 2*[x[n]-o][o-x] + [o-x]ï¿½) =
+	 * Sum(N,[x[n]-o]ï¿½) + 2*Sum(N,[x[n]-o])[o-x] + N*[o-x]ï¿½ =
+	 * Sum(N,[x[n]-o]ï¿½) - 2*Sum(N,[x[n]-o])[x-o] + N*[x-o]ï¿½ =  (...with Sum(N, x[n]-o)/N = [x-o])
+	 * Sum(N,[x[n]-o]ï¿½) - 2*N*[x-o][x-o] + N*[x-o]ï¿½ = 
+	 * Sum(N,[x[n]-o]ï¿½) - N*[x-o]ï¿½ =  
+	 * Sum(N,[x[n]-o]ï¿½) - Sum(N, x[n]-o)ï¿½/N 
 	 */	
-	public double getVariance() { 
+	public double getVariance() {
 		reNorm(); //the other getter Methods rely on this reNorm()!
 		return var/(count-1);  //since the Members are reNormed
-		//return GET_VARIANCE(var, sum, count)/(count-1); 
+		//return GET_VARIANCE(var, sum, count)/(count-1);
 	}
 
-	/** @return the Variance of all Elements so far 
-	 * 
-	 * @param sumSqr 
-	 * @param sum
-	 * @param count
-	 * @return
+	/** Computes the sum-of-squares variance term from raw first- and second-moment sums.
+	 * @return the Variance of all Elements so far
+	 *
+	 * @param sumSqr the sum of squared, offset-corrected values
+	 * @param sum the sum of offset-corrected values
+	 * @param count the number of values summed
+	 * @return the uncorrected (not divided by count-1) variance term
 	 */
-	final static public double GET_VARIANCE(final double sumSqr, final double sum, final long count) { 
+	final static public double GET_VARIANCE(final double sumSqr, final double sum, final long count) {
 		return sumSqr - sum*sum/count; }
-	
-	/** @return the Standard Deviation of all Elements so far = SqRt(Var(x)) 
-	 */	
-	public double getStdDev() { 
+
+	/** Returns the standard deviation of all elements seen so far.
+	 * @return the Standard Deviation of all Elements so far = SqRt(Var(x))
+	 */
+	public double getStdDev() {
 		return Math.sqrt(getVariance()); }
 	
-	/** @return the Skewness of all Elements so far 
+	/** Returns the dimensionless skewness (asymmetry) of all elements seen so far.
+	 * @return the Skewness of all Elements so far
 	 * It is made dimensionless by scaling it with the Variance
 	 * to be an Indicator for the Shape. 
 	 * positive Values indicate a larger positive Tail, while
 	 * negative Values indicate a larger negative Tail 
 	 *   
 	 * Skew(x)*N = 
-	 * Sum(N, (x[n]-Avg(N, x[n]))³) = Sum(N, (x[n]-x)³)   (...with x = Avg(i, x[i]) )
-	 * Sum(N,([x[n]-o]+[o-x])³) =
-	 * Sum(N,([x[n]-o]³+3[x[n]-o]²[o-x]+3[x[n]-o][o-x]²+[o-x]³) = 
-	 * Sum(N,([x[n]-o]³)) + 3*Sum(N,([x[n]-o]²)[o-x] + 3*Sum(N,([x[n]-o])[o-x]² + N*[o-x]³ = 
-	 * Sum(N,([x[n]-o]³)) - 3*Sum(N,([x[n]-o]²)[x-o] + 3*Sum(N,([x[n]-o])[x-o]² - N*[x-o]³ = 
-	 * Sum(N,([x[n]-o]³)) - 3*Sum(N,([x[n]-o]²)[x-o] + 3*N*[x-o][x-o]² - N*[x-o]³ = 
-	 * Sum(N,([x[n]-o]³)) - 3*Sum(N,([x[n]-o]²)[x-o] + 2*N*[x-o]³ = (...with Sum(N, x[n]-o)/N = [x-o] = sum/count)
-	 * Sum(N,([x[n]-o]³)) - 3*Sum(N,([x[n]-o]²)*Sum(N, x[n]-o)/N + 2*N*Sum(N, x[n]-o)³/N³
-	 * Sum(N,([x[n]-o]³)) - 3*Sum(N,([x[n]-o]²)*Sum(N, x[n]-o)/N + 2*Sum(N, x[n]-o)³/N²
+	 * Sum(N, (x[n]-Avg(N, x[n]))ï¿½) = Sum(N, (x[n]-x)ï¿½)   (...with x = Avg(i, x[i]) )
+	 * Sum(N,([x[n]-o]+[o-x])ï¿½) =
+	 * Sum(N,([x[n]-o]ï¿½+3[x[n]-o]ï¿½[o-x]+3[x[n]-o][o-x]ï¿½+[o-x]ï¿½) = 
+	 * Sum(N,([x[n]-o]ï¿½)) + 3*Sum(N,([x[n]-o]ï¿½)[o-x] + 3*Sum(N,([x[n]-o])[o-x]ï¿½ + N*[o-x]ï¿½ = 
+	 * Sum(N,([x[n]-o]ï¿½)) - 3*Sum(N,([x[n]-o]ï¿½)[x-o] + 3*Sum(N,([x[n]-o])[x-o]ï¿½ - N*[x-o]ï¿½ = 
+	 * Sum(N,([x[n]-o]ï¿½)) - 3*Sum(N,([x[n]-o]ï¿½)[x-o] + 3*N*[x-o][x-o]ï¿½ - N*[x-o]ï¿½ = 
+	 * Sum(N,([x[n]-o]ï¿½)) - 3*Sum(N,([x[n]-o]ï¿½)[x-o] + 2*N*[x-o]ï¿½ = (...with Sum(N, x[n]-o)/N = [x-o] = sum/count)
+	 * Sum(N,([x[n]-o]ï¿½)) - 3*Sum(N,([x[n]-o]ï¿½)*Sum(N, x[n]-o)/N + 2*N*Sum(N, x[n]-o)ï¿½/Nï¿½
+	 * Sum(N,([x[n]-o]ï¿½)) - 3*Sum(N,([x[n]-o]ï¿½)*Sum(N, x[n]-o)/N + 2*Sum(N, x[n]-o)ï¿½/Nï¿½
 	 * 
-	 */	
-	public double getSkewness() { 
+	 */
+	public double getSkewness() {
 		final double variance = getVariance(); 
 		if (variance == 0) {
 			return 0; }
@@ -230,8 +251,9 @@ extends FilterFloatByFunction {
 		return skew -d1*tmp; 
 	}
 	
-	/** @return the Curtosis of all Elements so far 
-	 * It is made dimensionless, by scaling it with the Variance 
+	/** Returns the dimensionless excess kurtosis of all elements seen so far.
+	 * @return the Curtosis of all Elements so far
+	 * It is made dimensionless, by scaling it with the Variance
 	 * and Offset to the Curtosis of the Gaussian Distribution
 	 * to be an Indicator for the Shape: 
 	 * negative Values indicate a flat Distribution (e.g. uniform for -1.2) 
@@ -258,7 +280,16 @@ extends FilterFloatByFunction {
 		final double ret = curt/(count*variance*variance);  //since the Members are reNormed
 		return ret-3; }
 	
-	final static public double GET_CURTOSIS(final double curt, final double skew, final double var, final double sum, final long count) { 
+	/** Computes the raw fourth-moment kurtosis term from the summed moments and re-normalizes it
+	 * to the current offset.
+	 * @param curt the sum of quartic, offset-corrected values
+	 * @param skew the sum of cubed, offset-corrected values
+	 * @param var the sum of squared, offset-corrected values
+	 * @param sum the sum of offset-corrected values
+	 * @param count the number of values summed
+	 * @return the uncorrected (not divided by count) kurtosis term
+	 */
+	final static public double GET_CURTOSIS(final double curt, final double skew, final double var, final double sum, final long count) {
 		final double tmp = sum/count;
 		return curt - (4*skew -(6*var - 3*sum*tmp)*tmp)*tmp; }
 	

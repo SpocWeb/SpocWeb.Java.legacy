@@ -7,6 +7,15 @@ import function.byref.combinatoric.ProbFuncs;
 
 /**Returns random Numbers distributed like the FisherF Function
  * i.e. p(x) = FisherF(x, Ny1, Ny2)
+ * <!-- docstate
+ * pass: 2
+ * mtime: 2026-09-05T11:27:32Z
+ * digest: 0ada0cdcf4816872cd6c0e2a209d4ab0ce12eefe684828c0b3f5fa0cef549b97
+ * stale: false
+ * tags: [code/random_number_generator, code/statistical_distribution]
+ * concepts: [Fisher F-Distributed Random Generator]
+ * facets: {layer: utility, status: legacy, complexity: low}
+ * -->
  */
 public class RandomFisherF
 extends ARandomFloat {
@@ -39,11 +48,12 @@ extends ARandomFloat {
 
 	///////////////////////////////////////////////////////////////////////////
 	
-	/** @see streamIO.integer.IStreamIn_Int#reSet()	 */
+	/** Resets the first Chi-squared sub-generator (both share the same underlying stream).
+	 * @see streamIO.integer.IStreamIn_Int#reSet()	 */
 	public IReSetAble reSet() { //throws IOException {
 		if (chiSqr1.reSet() == null) return null;
 		//this.chiSqr2.reset(); //using the same Generator!
-		return this; 
+		return this;
 	}
 	
 	/**Random double Precision Number distributed like ChiSqr/2.
@@ -54,7 +64,8 @@ extends ARandomFloat {
 			   (dim1*chiSqr2.nextDouble());
 	}
 	
-	/** @see streamIO.real.random.ARandomFloat#getMinDouble()	 */
+	/** Returns 0, the lower bound of the Fisher-F distribution.
+	 * @see streamIO.real.random.ARandomFloat#getMinDouble()	 */
 	public double getMinDouble() { return 0; }
 	
 	/////////////////////////////////////////////////////////////////////////////////////

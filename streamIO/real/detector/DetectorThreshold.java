@@ -9,13 +9,24 @@ import streamIO.real.FilterOutFloat;
 import streamIO.real.IStreamOutFloat;
 
 /**
- * @author heuerm
+ * Detects whenever incoming values cross a fixed threshold, changing from above to below it
+ * or vice versa.
  *
- * Detects whether the incoming Values are crossing (moving above/below) the Threshold. 
- * Can also be used to detect Roots, Minimum or Maximum Values (after Differentiation) 
- * or Turning Points (after double Differentiation). 
- * Since the Zero Line cannot (physically) be touched exactly, only approximately, 
- * It makes Sense only for Initialization to store a Tri-State logical Value like int. 
+ * <p>Can also be used to detect Roots, Minimum or Maximum Values (after Differentiation)
+ * or Turning Points (after double Differentiation).
+ * Since the Zero Line cannot (physically) be touched exactly, only approximately,
+ * It makes Sense only for Initialization to store a Tri-State logical Value like int.
+ *
+ * @author heuerm
+ * <!-- docstate
+ * pass: 2
+ * mtime: 2026-09-05T11:25:52Z
+ * digest: e3c042bec832e913e2f064f11a8f7f3a45aa2da3d6b55e621d0815cf13963143
+ * stale: false
+ * tags: [code/anomaly_detection]
+ * concepts: [Threshold Crossing Detector]
+ * facets: {layer: domain, status: legacy, complexity: low}
+ * -->
  */
 public class DetectorThreshold 
 extends FilterOutFloat {
@@ -26,7 +37,8 @@ extends FilterOutFloat {
 	/** counts the consecutive Events (here only one); the Sign indicates the Direction  */ 
 	int countInDirection; //= 0; 
 
-	/** @return the Direction this Threshold was crossed	 */
+	/** Returns the sign of the last crossing direction: positive above, negative below, 0 before any value.
+	 * @return the Direction this Threshold was crossed	 */
 	public int getDirection() {
 		return countInDirection;
 	}
@@ -47,8 +59,8 @@ extends FilterOutFloat {
 		this.compareValue = _compareValue;
 	}
 	
-	/**
-	 * @param outStream_
+	/** Creates a threshold detector forwarding to the given delegate.
+	 * @param outStream_ the destination stream to forward non-detected values to
 	 */
 	public DetectorThreshold(IStreamOutFloat outStream_) { super(outStream_); }
 	
@@ -73,11 +85,13 @@ extends FilterOutFloat {
 	/// IStreamOutFloat
 	///////////////////////////////////////////////////////////////////////////
 	
-	/** @see streamIO.real.IStreamOutFloat#addFloat(float)	 */
+	/** Forwards a float value to {@link #addDouble(double)}.
+	 * @see streamIO.real.IStreamOutFloat#addFloat(float)	 */
 	public IStreamOutFloat addFloat(final float value) {
 		return addDouble(value); }
-	
-	/**@return this Object if the Event was not detected, null otherwise 
+
+	/** Compares the value against the threshold and reports once the direction of crossing changes.
+	 * @return this Object once a crossing was detected, otherwise the delegate's own result (often null)
 	 * @see streamIO.real.IStreamOutFloat#addDouble(double)	 */
 	public IStreamOutFloat addDouble(final double value) {
 		final IStreamOutFloat ret = 
@@ -95,8 +109,11 @@ extends FilterOutFloat {
 	/// static Testing & Main Methods. 
 	///////////////////////////////////////////////////////////////////////////
 	
+	/** Demonstrates chained zero/min-max/turn-point detection over a sampled sine wave.
+	 * @param args unused command-line arguments
+	 */
 	public static void main(final String[] args) throws Exception {
-		DetectorThreshold detectorTurnPoint = new DetectorThreshold(); 
+		DetectorThreshold detectorTurnPoint = new DetectorThreshold();
 		FilterFloatDiff diff2 = new FilterFloatDiff((IStreamOutFloat) detectorTurnPoint); 
 		DetectorThreshold detectorMinMax = new DetectorThreshold(diff2); 
 		FilterFloatDiff diff1 = new FilterFloatDiff((IStreamOutFloat) detectorMinMax); 

@@ -18,6 +18,15 @@ import tester.process.StreamProcessor;
  *
  * Subclasses:
  * <none>
+ * <!-- docstate
+ * pass: 2
+ * mtime: 2026-09-05T11:08:37Z
+ * digest: 3c63bea187c61f78b946bd31f30d92cecbeddee07fb8166a58fe271f21aa63e9
+ * stale: false
+ * tags: [code/stream_filter]
+ * concepts: [Float Stream Input Base Class]
+ * facets: {layer: infrastructure, status: legacy, complexity: low}
+ * -->
  */
 public abstract class AAStreamIn_Float
 extends AStreamIn
@@ -27,26 +36,33 @@ implements IStreamIn_Bound_Float {
 	//  Interface IStreamIn_Float: abstract Methods
 	////////////////////////////////////////////////////////////////////////////
 	
-    /** @see streamIO.IAvailAble#availAble()     */
-    abstract public long availAble(); 
-    
-    /** @see streamIO.IMarkAble#getMaxMarkSize()     */
-    abstract public long getMaxMarkSize(); 
-    
-    /** @see streamIO.real.IStreamIn_Bound_Float#getMinDouble()     */
-    abstract public double getMinDouble(); 
-    
-    /** @see streamIO.real.IStreamIn_Float#nextDouble()     */
-    abstract public double nextDouble(); 
-    
-    /** @see streamIO.IAvailAble#getPosition()     */
-    abstract public long getPosition(); 
-    
-    /** @see streamIO.object.IStreamIn#currItem()     */
+    /** Returns the number of items still available from this stream.
+     * @see streamIO.IAvailAble#availAble()     */
+    abstract public long availAble();
+
+    /** Returns the maximum number of items that can be marked and reset.
+     * @see streamIO.IMarkAble#getMaxMarkSize()     */
+    abstract public long getMaxMarkSize();
+
+    /** Returns the lower bound of the generated distribution.
+     * @see streamIO.real.IStreamIn_Bound_Float#getMinDouble()     */
+    abstract public double getMinDouble();
+
+    /** Returns the next double-precision random value from this generator.
+     * @see streamIO.real.IStreamIn_Float#nextDouble()     */
+    abstract public double nextDouble();
+
+    /** Returns the current position within this stream.
+     * @see streamIO.IAvailAble#getPosition()     */
+    abstract public long getPosition();
+
+    /** Returns the current item of this stream.
+     * @see streamIO.object.IStreamIn#currItem()     */
     abstract public Object currItem();
-    
-    /** @see streamIO.IFactory#nextItem()     */
-    abstract public Object nextItem(); 
+
+    /** Advances to and returns the next item of this stream.
+     * @see streamIO.IFactory#nextItem()     */
+    abstract public Object nextItem();
     
 	////////////////////////////////////////////////////////////////////////////
 	//  static Methods
@@ -128,15 +144,17 @@ implements IStreamIn_Bound_Float {
 	//  Interface IStreamIn_Float: default Implementations 
 	////////////////////////////////////////////////////////////////////////////
 	
-	/** @return the next Value without moving to it.	 */
+	/** Reads the next float value without advancing the stream position.
+	 * @return the next Value without moving to it.	 */
 	public float peekFloat() { //throws    NoSuchMethodException {
 		//throw new NoSuchMethodException("No generic Implementation!");
-		final float ret = nextFloat(); 
-		pushBack(); 
-		return ret; 
+		final float ret = nextFloat();
+		pushBack();
+		return ret;
 	}
-	
-	/** @return the next Value without moving to it.	 */
+
+	/** Reads the next double value without advancing the stream position.
+	 * @return the next Value without moving to it.	 */
 	public double peekDouble() { //throws    NoSuchMethodException {
 		//throw new NoSuchMethodException("No generic Implementation!");
 		final double ret = nextDouble(); 

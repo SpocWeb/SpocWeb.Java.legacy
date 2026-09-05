@@ -6,9 +6,9 @@ import streamIO.IReSetAble;
 import streamIO.object.IStreamIn;
 
 /**
-  * Title: StreamIn_Arithmetic<p>
-  * Description:
-  * streamIO of Numbers N <br/>
+  * Generates a strictly monotonous arithmetic progression of numbers.
+  *
+  * <p>streamIO of Numbers N <br/>
   * natural Numbers starting with 1  (by Default),
   * incrementing by a fixed Amount (1 by Default)
   * and ranging up to Long.MAX_VALUE (by Default)
@@ -23,6 +23,15 @@ import streamIO.object.IStreamIn;
   * Created on	05-12-2002, 09:05 PM<p>
   * @author 	Matthias Heuer
   * @version	1.0
+  * <!-- docstate
+  * pass: 2
+  * mtime: 2026-09-05T11:22:25Z
+  * digest: 38cf95585e5de4f6c01a3bdeb1d502324ab1f9ab2b95693d02d5b9bf483ca70f
+  * stale: false
+  * tags: [code/stream_filter]
+  * concepts: [Arithmetic Sequence Stream]
+  * facets: {layer: infrastructure, status: legacy, complexity: low}
+  * -->
   */
 public class StreamIn_Arithmetic
 extends AStreamIn_Float {
@@ -44,19 +53,21 @@ extends AStreamIn_Float {
 	//  Accessor Methods (getXXX/setXXX)
 	////////////////////////////////////////////////////////////////////////////////
 	
-	/** @return the minimum Value for other Classes to determine
+	/** Returns the sequence's start bound, which is its minimum when the increment is positive.
+	  * @return the minimum Value for other Classes to determine
 	  * The Type is chosen to be double,
 	  * because this Value is supposed to be tested only once.  */
-	public double getMinDouble() { 
+	public double getMinDouble() {
 		if (increment > 0)
 			return markValue; 
 		return stopValue; 
 	}
 
-	/** @return the maximum Value for other Classes to determine
+	/** Returns the sequence's stop bound, which is its maximum when the increment is positive.
+	  * @return the maximum Value for other Classes to determine
 	  * The Type is chosen to be double,
 	  * because this Value is supposed to be tested only once.  */
-	public double getMaxDouble() { 
+	public double getMaxDouble() {
 		if (increment > 0)
 			return stopValue; 
 		return markValue; 
@@ -100,7 +111,8 @@ extends AStreamIn_Float {
 	 */
 	public long availAble() { return (long) ((stopValue - currItem.Value) / increment); }
 	
-	/** @see streamIO.real.AStreamIn_Float#getPosition()	 */
+	/** Returns the number of increments applied since the last mark.
+	 * @see streamIO.real.AStreamIn_Float#getPosition()	 */
 	public long getPosition() { return (long) ((currItem.Value - markValue) / increment); }
 
 	/**
@@ -144,7 +156,8 @@ extends AStreamIn_Float {
 		  * Monotonous is implicitly sorted!	 */
 	//	public boolean isMonotonous() { return true; }
 	
-	/** @return the Order in which Elements are returned by the Iterators
+	/** Returns ascending or descending order, depending on the sign of the increment.
+	 * @return the Order in which Elements are returned by the Iterators
 	  * when they are added using addItem() and removed using nextItem().	 */
 	public byte getOrder() {
 		if (increment >= 0) {

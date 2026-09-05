@@ -14,6 +14,15 @@ import streamIO.real.IStreamIn_Float;
  * @see streamIO.integer.random.AStreamIn_BoundInt could also be a Base Class
  * @see streamIO.integer.random.ARandomInt 
  * @see streamIO.integer.random.ARandomLong
+ * <!-- docstate
+ * pass: 2
+ * mtime: 2026-09-05T11:26:46Z
+ * digest: 2dff81354ddb2f485559db3612aa44989cf948886042ae0e7e34ffbd23981ea9
+ * stale: false
+ * tags: [code/random_number_generator]
+ * concepts: [Random Float Base Class]
+ * facets: {layer: utility, status: legacy, complexity: low}
+ * -->
  */
 public abstract class ARandomFloat
 extends AStreamIn_Float
@@ -22,7 +31,8 @@ implements IStreamIn_Float {
 	/** @see streamIO.real.AStreamIn_Float#nextDoubleInternal()	 */
 	abstract protected double nextDoubleInternal();
 	
-	/** @see streamIO.real.IStreamIn_Bound_Float#getMinDouble()	 */
+	/** Returns the lower bound of the generated distribution.
+	 * @see streamIO.real.IStreamIn_Bound_Float#getMinDouble()	 */
 	abstract public double getMinDouble(); //depends on the Type
 	
 	///////////////////////////////////////////////////////////////////////////
@@ -44,16 +54,20 @@ implements IStreamIn_Float {
 		this.ran = _ran; 
 	}
 	
-	/** @see streamIO.IAvailAble#availAble()	 */
+	/** Returns the number of items still available from the wrapped generator.
+	 * @see streamIO.IAvailAble#availAble()	 */
 	public long availAble() { return ran.availAble(); }
-	
-	/** @see streamIO.IMarkAble#getMaxMarkSize()	 */
+
+	/** Returns the maximum mark size of the wrapped generator.
+	 * @see streamIO.IMarkAble#getMaxMarkSize()	 */
 	public long getMaxMarkSize() { return ran.getMaxMarkSize(); }
-	
-	/** @see streamIO.IAvailAble#getPosition()	 */
+
+	/** Returns the current position of the wrapped generator.
+	 * @see streamIO.IAvailAble#getPosition()	 */
 	public long getPosition() { return ran.getPosition(); }
 	
-	/** @return the Order in which Elements are returned by the Iterators
+	/** Returns the sort order of the wrapped generator.
+	 * @return the Order in which Elements are returned by the Iterators
 	  * when they are added using addItem() and removed using nextItem().	 */
 	public byte getOrder() { return ran.getOrder(); }
 	

@@ -21,6 +21,15 @@ import function.byref.combinatoric.ProbFuncs;
  * @see streamIO.Float.FilterIn_FloatByFunction#RANDOM_LORENTZ(IStreamIn_Bound_Int) 
  * which returns a more elegant Lorentz distributed streamIO 
  * by directly applying the Tangens Function. 
+ * <!-- docstate
+ * pass: 2
+ * mtime: 2026-09-05T10:13:32Z
+ * digest: c316110c394739a484b2adaa3e60bee94c15641c33b26e6fc7b1f14148109d78
+ * stale: false
+ * tags: [code/random_number_generator, code/statistical_distribution]
+ * concepts: [Lorentz-Distributed Random Generator]
+ * facets: {layer: utility, status: legacy, complexity: low}
+ * -->
  */
 public class RandomLorentz
 extends FilterIn_FloatByFunction // LinearScale 

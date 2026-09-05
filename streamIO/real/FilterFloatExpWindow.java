@@ -10,9 +10,10 @@ import streamIO.Log;
 import function.IFloatFunction;
 
 /**
- * Title: FilterFloatExpWindow<p>
- * Description:
- * An averaging Filter with exponential Window fall-off. 
+ * An averaging filter with exponential window fall-off, where older values contribute
+ * exponentially less to the running average.
+ *
+ * <p>An averaging Filter with exponential Window fall-off.
  * Previous Values are exponentially less relevant, 
  * the older they are. 
  * Should only be used for Data with an absolute Scale! 
@@ -31,6 +32,15 @@ import function.IFloatFunction;
  * @author mheuer
  * @version	1.0
  *
+ * <!-- docstate
+ * pass: 2
+ * mtime: 2026-09-05T11:12:57Z
+ * digest: 203c5365de779f203b18d6e1478ee09dcf064328fd60d9a0712573aaa7b8cc81
+ * stale: false
+ * tags: [code/stream_filter, code/running_statistics]
+ * concepts: [Exponential Window Filter]
+ * facets: {layer: infrastructure, status: legacy, complexity: low}
+ * -->
  */
 public class FilterFloatExpWindow 
 extends FilterFloatByFunction {
@@ -66,78 +76,78 @@ extends FilterFloatByFunction {
 	//	Constructors
 	/////////////////////////////////////////////////////////////////////////////////////
 	
-	/**
-	 * @param inStream_
-	 * @param windowSize
-	 * @param mapper_
-	 * @param initValue
+	/** Creates a filter reading from {@code inStream_}, with the average pre-set to {@code initValue}.
+	 * @param inStream_ the source stream to filter
+	 * @param mapper_ optional function mapping each value before it enters the average
+	 * @param shrink_ the exponential shrink factor in (0,1]
+	 * @param initValue the value {@link #average} is initialized to
 	 */
 	public FilterFloatExpWindow(final IStreamIn_Float inStream_
 	, final IFloatFunction mapper_, final double shrink_, final double initValue) {
 		super(inStream_, mapper_);
 		this.shrink = shrink_;
-		this.average = initValue; 
+		this.average = initValue;
 	}
 
-	/**
-	 * @param outStream_
-	 * @param windowSize
-	 * @param mapper_
-	 * @param initValue
+	/** Creates a filter writing to {@code outStream_}, with the average pre-set to {@code initValue}.
+	 * @param outStream_ the destination stream for filtered output
+	 * @param mapper_ optional function mapping each value before it enters the average
+	 * @param shrink_ the exponential shrink factor in (0,1]
+	 * @param initValue the value {@link #average} is initialized to
 	 */
 	public FilterFloatExpWindow(final IStreamOutFloat outStream_
 	, final IFloatFunction mapper_, final double shrink_, final double initValue) {
 		super(outStream_, mapper_);
 		this.shrink = shrink_;
-		this.average = initValue; 
+		this.average = initValue;
 	}
 
-	/**
-	 * @param inStream_
-	 * @param windowSize
-	 * @param mapper_
+	/** Creates a filter reading from {@code inStream_}, with the average starting at 0.
+	 * @param inStream_ the source stream to filter
+	 * @param shrink_ the exponential shrink factor in (0,1]
+	 * @param mapper_ optional function mapping each value before it enters the average
 	 */
 	public FilterFloatExpWindow(final IStreamIn_Float inStream_, final double shrink_
 	, final IFloatFunction mapper_) {
 		this(inStream_, mapper_, shrink_, 0); }
 
-	/**
-	 * @param outStream_
-	 * @param windowSize
-	 * @param mapper_
+	/** Creates a filter writing to {@code outStream_}, with the average starting at 0.
+	 * @param outStream_ the destination stream for filtered output
+	 * @param shrink_ the exponential shrink factor in (0,1]
+	 * @param mapper_ optional function mapping each value before it enters the average
 	 */
 	public FilterFloatExpWindow(final IStreamOutFloat outStream_, final double shrink_
 	, final IFloatFunction mapper_) {
 		this(outStream_, mapper_, shrink_, 0); }
 
-	/**
-	 * @param inStream_
-	 * @param delay
-	 * @param initValue
+	/** Creates a filter reading from {@code inStream_}, with no mapping function.
+	 * @param inStream_ the source stream to filter
+	 * @param shrink_ the exponential shrink factor in (0,1]
+	 * @param initValue the value {@link #average} is initialized to
 	 */
 	public FilterFloatExpWindow(final IStreamIn_Float inStream_, final double shrink_
 	, final double initValue) {
 		this(inStream_, null, shrink_, initValue); }
 
-	/**
-	 * @param outStream_
-	 * @param delay
-	 * @param initValue
+	/** Creates a filter writing to {@code outStream_}, with no mapping function.
+	 * @param outStream_ the destination stream for filtered output
+	 * @param shrink_ the exponential shrink factor in (0,1]
+	 * @param initValue the value {@link #average} is initialized to
 	 */
 	public FilterFloatExpWindow(final IStreamOutFloat outStream_, final double shrink_
 	, final double initValue) {
 		this(outStream_, null, shrink_, initValue); }
 
-	/**
-	 * @param inStream_
-	 * @param windowSize
+	/** Creates a filter reading from {@code inStream_}, with no mapping and the average starting at 0.
+	 * @param inStream_ the source stream to filter
+	 * @param shrink_ the exponential shrink factor in (0,1]
 	 */
 	public FilterFloatExpWindow(final IStreamIn_Float inStream_, final double shrink_) {
 		this(inStream_, null, shrink_, 0); }
 
-	/**
-	 * @param outStream_
-	 * @param windowSize
+	/** Creates a filter writing to {@code outStream_}, with no mapping and the average starting at 0.
+	 * @param outStream_ the destination stream for filtered output
+	 * @param shrink_ the exponential shrink factor in (0,1]
 	 */
 	public FilterFloatExpWindow(final IStreamOutFloat outStream_, final double shrink_) {
 		this(outStream_, null, shrink_, 0); }

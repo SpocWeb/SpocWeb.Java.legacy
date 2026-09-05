@@ -9,9 +9,10 @@ import streamIO.Log;
 import streamIO.real.IStreamOutFloat;
 
 /**
- * Title: BestChoice<p>
- * Description:
- * Implements the Strategy to choose the Best of a fixed Length Sequence. 
+ * Implements the "secretary problem" strategy for choosing the best of a fixed-length
+ * sequence of offers seen one at a time.
+ *
+ * <p>This can e.g. be used to choose the best Offer of a Sale with a Probability of 1/e.
  * This can e.g. be used to choose the best Offer of a Sale with a Probability of 1/e.  
  * Conditions: 
  * * Offer has to be accepted right away! 
@@ -31,6 +32,15 @@ import streamIO.real.IStreamOutFloat;
  * @author mheuer
  * @version	1.0
  *
+ * <!-- docstate
+ * pass: 2
+ * mtime: 2026-09-05T11:24:29Z
+ * digest: b78f59f3284848b521e662f4b74da227979bb72e810b9542b20b733bb198d378
+ * stale: false
+ * tags: [code/anomaly_detection]
+ * concepts: [Best-Choice Selector]
+ * facets: {layer: domain, status: legacy, complexity: low}
+ * -->
  */
 public class BestChoice 
 implements IStreamOutFloat {
@@ -65,13 +75,14 @@ implements IStreamOutFloat {
 		return (int) Math.round(maxNumItems*Math.E); 
 	}
 	
-	/** @see streamIO.real.IStreamOutFloat#addFloat(float)	 */
+	/** Forwards a float value to {@link #addDouble(double)}.
+	 * @see streamIO.real.IStreamOutFloat#addFloat(float)	 */
 	public IStreamOutFloat addFloat(final float value) {
 		return addDouble(value); }
 	
-	/** 
-	 * @return this Stream as long as a Best Choice has not been made. 
-	 * Null on the Best Choice 
+	/** Tracks the running maximum and applies the secretary-problem cutoff rule.
+	 * @return this Stream as long as a Best Choice has not been made.
+	 * Null on the Best Choice
 	 * @see streamIO.real.IStreamOutFloat#addDouble(double)	 */
 	public IStreamOutFloat addDouble(final double value) {
 		++count; 

@@ -84,7 +84,7 @@ concurrently against the same file):
 | `graphic` | 131 | 29665 | 0 | unclaimed | - |
 | `math` | 84 | 58523 | 0 | unclaimed | - |
 | `structure` | 52 | 4933 | 52 | done | agent-structure |
-| `streamIO/real` | 51 | 6801 | 0 | claimed | agent-streamIO-real |
+| `streamIO/real` | 51 | 6801 | 51 | done | agent-streamIO-real |
 | `tester` | 49 | 3327 | 49 | done | agent-tester |
 | `technology` | 41 | 9400 | 41 | done | agent-technology |
 | `synch` | 32 | 4243 | 32 | done | agent-synch |
@@ -292,6 +292,11 @@ same harness against it. A test that has not been seen red proves nothing.
 | structure/Visitor1.java / Visitor2.java | Visitor1, Visitor2 | visit(ElementA)/visit(ElementB) | ~42-55 | Delegates back to `el.invite(this)`, but `ElementA/ElementB.invite(Visitor)` calls `v.visit(this)` right back - unconditional mutual recursion, `StackOverflowError` on the first call. | High | open |
 | structure/aspect/DoubleAspect.java | DoubleAspect | getLong()/getDouble() | ~139, ~152 | Reads the primitive field `value`, which no `setValue(...)` overload ever assigns (they all write the boxed `Value` field) - stays permanently 0.0, so these methods ignore every Value actually set. | High | open |
 | structure/aspect/ListAspect.java | ListAspect | constructor(String, Aspect[]) | ~60 | `list_` is never assigned to the `list` field - `list` stays permanently null regardless of what's passed in. | Medium | open |
+| streamIO/real/FilterInMul.java | FilterInMul | getMinDouble() | - | Sign-flip bug: returns the wrong-signed minimum bound. | Medium | open |
+| streamIO/real/StreamIn_Geometric.java | StreamIn_Geometric | 2-arg constructor | - | Field-order/assignment bug in the constructor. | Medium | open |
+| streamIO/real/random/RandomGauss.java | RandomGauss | nextDoubleInternal() | - | Self-comparison that is always false, a dead rejection branch. | Medium | open |
+| streamIO/real/random/RandomGauss2.java | RandomGauss2 | nextDoubleInternal() | - | Identical always-false self-comparison bug as `RandomGauss`. | Medium | open |
+| streamIO/real/random/RandomPoisson.java | RandomPoisson | reSet() | - | Unconditional `ranLorentz.reSet()` call throws `NullPointerException` when `EW<12` (`ranLorentz` is not constructed in that branch). | High | open |
 
 ## Tool defects found and fixed during the pilot
 
