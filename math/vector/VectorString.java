@@ -20,13 +20,17 @@ import function.IMeasurAble;
 import function.byref.ByRefChar;
 
 /**
- * Title: VectorString
+ * Growable, index-addressable array of {@link String} elements, paired with a large static
+ * library of String/StringBuffer helpers: parsing, splitting, padding/aligning, trimming,
+ * escaping, case conversion, and array/matrix operations (column, transpose, rotate).
+ *
+ * <p>Title: VectorString
  * <p>
- * Description: Purpose: Purpose / Responsibilities of this Class 
- * Defines static Methods to treat Vectors and Arrays with Strings (and Objects). 
- * Additional static Methods to enhance String or StringBuffer Functionality. 
- * Since String is equally universal as Object (toString() is always present as Method), 
- * it is used most frequently in Parsing, Encoding, Representing etc. 
+ * Description: Purpose: Purpose / Responsibilities of this Class
+ * Defines static Methods to treat Vectors and Arrays with Strings (and Objects).
+ * Additional static Methods to enhance String or StringBuffer Functionality.
+ * Since String is equally universal as Object (toString() is always present as Method),
+ * it is used most frequently in Parsing, Encoding, Representing etc.
  * Design Decisions / Implementation
  * Details: Known SubClasses: <none> Known Uses: <none> Copyright: Copyright (c) Matthias
  * Heuer
@@ -37,6 +41,12 @@ import function.byref.ByRefChar;
  * <p>
  * @author mheuer
  * @version 1.0
+ * <!-- docstate
+ * pass: 2
+ * mtime: 2026-09-05T12:55:55Z
+ * digest: 1bff658a632c7ee9809d41d7fb845896dd96c84c39f66ce0d20ffce7dc676efd
+ * stale: false
+ * -->
  */
 public class VectorString extends AVector {
 
@@ -56,6 +66,8 @@ public class VectorString extends AVector {
 	// ////////////////////////////////////////////////////////////////////////////////////////////////////
 
 	/**
+	 * Converts a String into a boolean by checking only its first Character ('N', 'F' or
+	 * '0' means false, anything else true).
 	 * @return the String Value converted into a boolean the Default if String is null or
 	 *         empty. Only the first Character is checked
 	 */
@@ -79,6 +91,7 @@ public class VectorString extends AVector {
 	// ////////////////////////////////////////////////////////////////////////////////////////////////////
 
 	/**
+	 * Parses {@code strValue} as a long, falling back to {@code Default} when null or empty.
 	 * @return the String Value converted into an int the Default if String is null or
 	 *         empty or not numeric.
 	 */
@@ -352,6 +365,7 @@ public class VectorString extends AVector {
 	}
 
 	/**
+	 * Compares two same-case, unfiltered Strings position by position.
 	 * @param s1 first String to compare
 	 * @param s2 secnd String to compare
 	 * @return the Position of the first Difference between s1 and s2
@@ -386,6 +400,8 @@ public class VectorString extends AVector {
 	}
 
 	/**
+	 * Reads a named property, letting a matching JVM system property override the value
+	 * found in {@code props}, and logs the resolved value to standard out.
 	 * @param propName Name of the Property to read
 	 * @param props Property Object to read from
 	 * @param propDefault Default Value if the Property Name does not occur in the
@@ -434,6 +450,11 @@ public class VectorString extends AVector {
 	/** Formats a String by filling it into the Format String */
 	final static public String ALIGN_RIGHT(String str, String format) {
 		String strFileNr = format + str;
+		// TODO: LOGIC: to right-align str within format's width, the intended slice is the last
+		// format.length() characters of (format+str), i.e. substring(str.length()). Subtracting
+		// format.length() again makes the start index negative whenever str is shorter than
+		// format (the normal case this method exists for), throwing
+		// StringIndexOutOfBoundsException instead of padding.
 		return strFileNr.substring(str.length() - format.length());
 	}
 
@@ -699,6 +720,10 @@ public class VectorString extends AVector {
 		if (padEnd) {
 			SB.append(str);
 		}
+		// TODO: LOGIC: this loop appends only (length - strLen - 1) filler characters, one short
+		// of the (length - strLen) needed to reach the requested `length` - e.g. length=5,
+		// strLen=2 appends 2 fillers instead of 3, so the returned String is 1 character shorter
+		// than `length`, contradicting this method's contract.
 		for (int i = length; --i > strLen;) {
 			SB.append(filler);
 		}
@@ -709,6 +734,7 @@ public class VectorString extends AVector {
 	}
 
 	/**
+	 * Finds the last suffix in {@code suffixes} that {@code str} ends with.
 	 * @param str the String to test
 	 * @param suffixes List of possible Suffixes
 	 * @return the Index of the last matching Suffix
@@ -723,17 +749,20 @@ public class VectorString extends AVector {
 	// static Methods for testing a File-Name for a Suffix
 	// //////////////////////////////////////////////////////////////////////////
 
-	/** @return true when the File ends with the given (in lower Case) Suffix */
+	/** Case-insensitively tests whether a path or file name ends with the given suffix.
+	 * @return true when the File ends with the given (in lower Case) Suffix */
 	final static public boolean ENDS_WITH(String filePathOrName, String suffixToLower) {
 		return filePathOrName.toLowerCase().endsWith(suffixToLower);
 	}
 
-	/** @return true when the File ends with the given (in lower Case) Suffix */
+	/** Case-insensitively tests whether the file's name ends with the given suffix.
+	 * @return true when the File ends with the given (in lower Case) Suffix */
 	final static public boolean ENDS_WITH(File file, String suffixToLower) {
 		return file.getName().toLowerCase().endsWith(suffixToLower);
 	}
 
 	/**
+	 * Tests whether {@code str} starts with {@code prefix}.
 	 * @param str the String to test
 	 * @param prefixes List of possible Prefixes
 	 * @return the Index of the last matching Prefix
@@ -746,6 +775,7 @@ public class VectorString extends AVector {
 	}
 
 	/**
+	 * Finds the last prefix in {@code prefixes} that {@code str} starts with.
 	 * @param str the String to test
 	 * @param prefixes List of possible Prefixes
 	 * @return the Index of the last matching Prefix
@@ -758,6 +788,7 @@ public class VectorString extends AVector {
 	}
 
 	/**
+	 * Finds the last prefix in {@code prefixes} that {@code str} starts with.
 	 * @param str the String to test
 	 * @param prefixes List of possible Prefixes
 	 * @return the Index of the last matching Prefix
@@ -769,18 +800,21 @@ public class VectorString extends AVector {
 		return -1;
 	}
 
+	/** Inserts {@code string} into {@code str} at {@code insertPosition}. */
 	final static public StringBuffer INSERT(String str, int insertPosition, String string) {
 		return new StringBuffer(str).insert(insertPosition, string);
 	}
 
 	// return str.substring(0, insertPosition) + string + str.substring(insertPosition); }
 
+	/** Deletes {@code numDeletes} characters from {@code str} starting at {@code deletePosition}. */
 	final static public StringBuffer DELETE(String str, int deletePosition, int numDeletes) {
 		return new StringBuffer(str).delete(deletePosition, numDeletes);
 	}
 
 	// return str.substring(0, i) + str.substring(i + j); }
 
+	/** Deletes {@code numDeletes} characters at {@code deletePosition} and inserts {@code string} there. */
 	final static public StringBuffer REPLACE(String str, int deletePosition,
 			int numDeletes, String string) {
 		return DELETE(str, deletePosition, numDeletes).insert(deletePosition, string);
@@ -792,6 +826,10 @@ public class VectorString extends AVector {
 		int i = 0;
 		Object item;
 		Iterator iter = coll.iterator();
+		// TODO: LOGIC: `++i` is a pre-increment, so the first element is written to ret[1],
+		// leaving ret[0] permanently null, and the last element is written to ret[coll.size()],
+		// which is out of bounds - this throws ArrayIndexOutOfBoundsException for any non-empty
+		// collection. Should be `ret[i++]` (post-increment) to fill indices 0..size-1.
 		while (iter.hasNext()) {
 			ret[++i] = ((null == (item = iter.next())) ? null : item.toString());
 		}
@@ -914,6 +952,8 @@ public class VectorString extends AVector {
 	}
 
 	/**
+	 * Escapes every occurrence of a character from {@code separators} in {@code str} by
+	 * duplicating it with {@code separators}' first character.
 	 * @param str
 	 * @param separators
 	 * @return null if the String doesn't contain any of the Separator Characters
@@ -924,6 +964,12 @@ public class VectorString extends AVector {
 		for (int len = str.length(), i = -1; ++i < len;) {
 			final char chr = str.charAt(i);
 			if (separators.indexOf(chr) >= 0) { // the actual Position doesn't matter
+				// TODO: LOGIC: on first match this seeds `ret` via APPEND(str, 0, i - 1), which
+				// copies only `i - 1` characters (0..i-2) instead of the `i` characters (0..i-1)
+				// that actually precede this separator - the character immediately before the
+				// first separator match is silently dropped from the result. When i == 0 (the
+				// very first character is a separator), length -1 makes APPEND copy nothing,
+				// which happens to be correct only in that one case.
 				if (ret == null) ret = APPEND(str, 0, i - 1);
 				ret.append(escapeChr);
 			}
@@ -963,6 +1009,7 @@ public class VectorString extends AVector {
 	}
 
 	/**
+	 * Converts each character of {@code strs} into its own single-character String.
 	 * @return an Array of Strings with a single Character from the given Array each
 	 */
 	final static public String[] TO_STRING(char[] strs) {
@@ -970,6 +1017,8 @@ public class VectorString extends AVector {
 	}
 
 	/**
+	 * Builds one String per element of {@code strs} by inserting that character into
+	 * {@code container} at the given position.
 	 * @return an Array of Strings resulting from the String container with the Character
 	 *         inserted(!) at the given Position
 	 */
@@ -994,7 +1043,8 @@ public class VectorString extends AVector {
 	// / Extracting Character Vectors from String Vectors
 	// ////////////////////////////////////////////////////////////////////////////////////////////////////
 
-	/** @return the Column Vector at the given Position */
+	/** Extracts the character at {@code pos} from every String in {@code strs}.
+	 * @return the Column Vector at the given Position */
 	final static public char[] CHAR_AT(final String[] strs, final int pos) {
 		char[] ret = new char[strs.length];
 		for (int i = strs.length; --i >= 0;) {
@@ -1272,6 +1322,7 @@ public class VectorString extends AVector {
 	// //////////////////////////////////////////////////////////////////////////////
 
 	/**
+	 * Converts a null-terminated byte array into a new StringBuffer of one char per byte.
 	 * @return the StringBuffer filled with the Bytes of the Array. The String is
 	 *         terminated by a 0 Byte or the end of the Array. The high Byte of the
 	 *         Characters is set to 0.
@@ -1281,12 +1332,18 @@ public class VectorString extends AVector {
 	}
 
 	/**
+	 * Appends a null-terminated byte array into {@code SB} as one char per byte, reusing it
+	 * after clearing its contents.
 	 * @return the StringBuffer filled with the Bytes of the Array. The String is
 	 *         terminated by a 0 Byte or the end of the Array. The high Byte of the
 	 *         Characters is set to 0. This Method is similar to the String Constructor
 	 *         taking a Byte Array, which is a one Step Operation though and probably
 	 *         highly optimized!
 	 */
+	// TODO: LOGIC: the loop condition `tmp != 0` is checked using the *previous* iteration's
+	// value (tmp starts at -1 and is only updated inside the append() argument), so a genuine
+	// 0 byte at index 0 is appended as ' ' before the loop notices and stops on the next
+	// iteration - the "terminated by a 0 Byte" contract in the Javadoc above is off by one byte.
 	final static public StringBuffer toString(final byte[] bTmp, StringBuffer SB) {
 		if (SB == null)
 			SB = new StringBuffer(bTmp.length);
@@ -1511,7 +1568,8 @@ public class VectorString extends AVector {
 	// / Matrix Trafos: extracting a Column
 	// ////////////////////////////////////////////////////////////////////////////////////////////////////
 
-	/** @return the Column at the given Position */
+	/** Extracts column {@code col} from {@code strMatrix} as a new array.
+	 * @return the Column at the given Position */
 	final static public String[] COLUMN(String[][] strMatrix, int col) {
 		String[] ret = new String[strMatrix.length];
 		for (int i = strMatrix.length; --i >= 0;) {
@@ -1520,7 +1578,8 @@ public class VectorString extends AVector {
 		return ret;
 	}
 
-	/** @return the Column at the given Position */
+	/** Transposes rows and columns of {@code matrix} into a new array.
+	 * @return the Column at the given Position */
 	final static public String[][] TRANSPOSE(String[][] matrix) {
 		String[][] ret = new String[matrix[0].length][];
 		for (int i = ret.length; --i >= 0;) {
@@ -1533,7 +1592,8 @@ public class VectorString extends AVector {
 	// / Vector Methods
 	// /////////////////////////////////////////////////////////////////////////////////////////////////
 
-	/** @return the Permutation rotated left by 1 Element in Place */
+	/** Rotates the array's elements left by one position, in place.
+	 * @return the Permutation rotated left by 1 Element in Place */
 	final static public String[] ROL(final String[] this_) {
 		final int last = this_.length - 1;
 		String tmp = this_[0];
@@ -1542,7 +1602,8 @@ public class VectorString extends AVector {
 		return this_;
 	}
 
-	/** @return the Permutation rotated right by 1 Element in Place */
+	/** Rotates the array's elements right by one position, in place.
+	 * @return the Permutation rotated right by 1 Element in Place */
 	final static public String[] ROR(final String[] this_) {
 		final int last = this_.length - 1;
 		String tmp = this_[last];
@@ -1608,7 +1669,8 @@ public class VectorString extends AVector {
 		return ret;
 	}
 
-	/** @return the item at the given Position as an Object */
+	/** Returns the item at the given position, delegating to {@link #getStringAt(int)}.
+	 * @return the item at the given Position as an Object */
 	public Object getAt(final int i) {
 		return getStringAt(i);
 	}
@@ -1695,6 +1757,10 @@ public class VectorString extends AVector {
 	 * @exception ArrayIndexOutOfBoundsException if the index was invalid.
 	 */
 	public String removeAt(final int index) {
+		// TODO: LOGIC: `--itemCount` is evaluated unconditionally here; when index is out of
+		// range (index > the pre-decrement itemCount), this still returns null below but
+		// itemCount has already been permanently decremented, corrupting the vector's size even
+		// though no element was removed.
 		if (index > --itemCount) //
 			return null;
 		final String ret = items[index];
@@ -1707,7 +1773,8 @@ public class VectorString extends AVector {
 	// / for multidimensional rectangular Arrays
 	// //////////////////////////////////////////////////////////////////////////////
 
-	/** @return the Value at the given Position */
+	/** Returns the value at the given row/column position of this rectangular array.
+	 * @return the Value at the given Position */
 	public String getAt(int Row, int Col) {
 		return items[Row * dimFactors[0] + Col * dimFactors[1]];
 	}
@@ -1717,7 +1784,8 @@ public class VectorString extends AVector {
 		items[Row * dimFactors[0] + Col * dimFactors[1]] = Value;
 	}
 
-	/** @return the Value at the given Position */
+	/** Returns the value at the given sheet/row/column position of this 3-dimensional array.
+	 * @return the Value at the given Position */
 	public String getAt(int Sheet, int Row, int Col) {
 		return items[Sheet * dimFactors[0] + Row * dimFactors[1] + Col * dimFactors[2]];
 	}
@@ -1727,7 +1795,8 @@ public class VectorString extends AVector {
 		items[Sheet * dimFactors[0] + Row * dimFactors[1] + Col * dimFactors[2]] = Value;
 	}
 
-	/** @return the Value at the given Position */
+	/** Returns the value at the position addressed by the given multi-index.
+	 * @return the Value at the given Position */
 	public String getAt(int[] Col) {
 		return items[multiIndex(Col)];
 	}
@@ -1822,6 +1891,10 @@ public class VectorString extends AVector {
 	 *            because System.arraycopy is the fastest way.
 	 */
 	final public synchronized void copyInto(int[] anArray) {
+		// TODO: LOGIC: `items` is a String[] here (unlike VectorInt, whose items are int[]);
+		// copying it into an int[] destination via System.arraycopy throws ArrayStoreException
+		// at runtime on every call once itemCount > 0. Apparently copy-pasted from VectorInt
+		// without adjusting for VectorString's element type.
 		System.arraycopy(items, 0, anArray, 0, itemCount);
 		/*
 		 * Object elementDataLocal[] = this.Items; for (int i = ItemCount; i-- > 0;)
@@ -1836,6 +1909,8 @@ public class VectorString extends AVector {
 	 */
 	final public synchronized int[] toArray() {
 		int[] Return = new int[itemCount];
+		// TODO: LOGIC: same ArrayStoreException hazard as copyInto(int[]) above: `items` is a
+		// String[], not an int[], so this arraycopy throws at runtime once itemCount > 0.
 		System.arraycopy(items, 0, Return, 0, itemCount);
 		return Return;
 	}
@@ -1976,6 +2051,7 @@ public class VectorString extends AVector {
 	}
 
 	/**
+	 * Compares {@code str} against a byte buffer, treating each byte as an unsigned char code.
 	 * @param str the String to compare
 	 * @param buffer the bytes to compare
 	 * @param length the Length to compare
@@ -1994,6 +2070,7 @@ public class VectorString extends AVector {
 	}
 
 	/**
+	 * Compares {@code str} against a byte buffer over their shorter common length.
 	 * @param str
 	 * @param buffer
 	 * @return true when the String equals the Buffer
@@ -2029,7 +2106,8 @@ public class VectorString extends AVector {
 		return new String[][]{fields, alias};
 	}
 
-	/** @return the last Element of this Array that is not null */
+	/** Finds the index of the last non-null element below {@code length}.
+	 * @return the last Element of this Array that is not null */
 	final static public int LAST_NOT_NULL(final Object[] a, int length) {
 		while (--length >= 0) {
 			if (a[length] != null) { return length; }

@@ -55,8 +55,12 @@ extends AVector {
 
 	/** @return the Minimum of the Column at the given Position */
 	final static public char MIN(char[][] matrix, int col) {
-		char min = Character.MAX_VALUE; 
+		char min = Character.MAX_VALUE;
 		for (int i = matrix.length; --i >= 0;) {
+			// TODO: LOGIC: comparison is inverted (should be `min > matrix[i][col]`) - as written,
+			// `min` starts at Character.MAX_VALUE and this condition can never be true, so this
+			// method always returns Character.MAX_VALUE regardless of the array's actual content.
+			// Looks copy-pasted from MAX(char[][], int) above without flipping the operator.
 			if (min < matrix[i][col]) {
 				min = matrix[i][col]; }
 		} return min; }

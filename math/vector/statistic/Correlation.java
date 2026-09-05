@@ -27,14 +27,22 @@ import function.derive.ring.body.BetaI;
 import function.derive.ring.body.Gauss;
 
 /**
- * This Class collects Methods determining the Correlation between Vectors. 
- * 
- * This has nothing to do with the (Auto-)Correlation 
- * calculated as the Scalar Product of two Vectors as a Function of their relative Shift, 
- * which is typically used to match both the Shift and the Value of the maximum Correlation. 
- * 
+ * Static utility collecting cross-vector correlation statistics: Pearson's linear correlation
+ * coefficient, Spearman's rank correlation, and Kendall's tau sign correlation, together with
+ * their significance tests.
+ *
+ * <p>This has nothing to do with the (Auto-)Correlation
+ * calculated as the Scalar Product of two Vectors as a Function of their relative Shift,
+ * which is typically used to match both the Shift and the Value of the maximum Correlation.
+ *
  * @author heuerm
- * 
+ *
+ * <!-- docstate
+ * pass: 2
+ * mtime: 2026-09-05T12:51:41Z
+ * digest: 91ae175b90447f995760fd819ca039fa5eca28c832920bf4d295d1227f92fe76
+ * stale: false
+ * -->
  */
 public class Correlation {
 
@@ -48,6 +56,7 @@ public class Correlation {
 	/** only static Methods	 */
 	private Correlation() {}
 	
+	/** Runs {@link #testIt()}, the self-test suite for this class. */
 	public static void main(final String[] args) throws Exception {
 		testIt(); 
 	}
@@ -102,11 +111,11 @@ public class Correlation {
 	 * r = cov(x,y)/SqRt(var(x)*var(y))
 	 * Since r is agnostic of N it is no good Measure for the Significance, only of it's Strength. 
 	 * 
-	 * For the Hypothesis that p(x,y)=c*exp((a11²x²+2a12xy+a22²y²)²/2) 
+	 * For the Hypothesis that p(x,y)=c*exp((a11ï¿½xï¿½+2a12xy+a22ï¿½yï¿½)ï¿½/2) 
 	 * ("Binormal Distribution") this Method returns r = -a12/(a11*a22) 
 	 * with arbitrary a11, a12 and a22.
 	 * 
-	 * @see #PROB_CORRELATION(double, int) returns the Statistic t=r*SqRt((N-2)/(1-r²)) 
+	 * @see #PROB_CORRELATION(double, int) returns the Statistic t=r*SqRt((N-2)/(1-rï¿½)) 
 	 * which is distributed like Student's t with N-2 Degrees of Freedom, even for small N.
 	 *  
 	 * For N > 10 you can compare the Difference r-r' from different Measurements 
@@ -126,11 +135,13 @@ public class Correlation {
 		return CORRELATION(x, y, 0, x.length); 
 	}
 
-	/**	
+	/**
+	 * Computes Pearson's linear Correlation Coefficient between {@code x} and {@code y} over
+	 * the given range, by constructing Pairs (x[i], y[i]).
 	 * @param x one Data Vector, unchanged
 	 * @param y another Data Vector, unchanged
 	 * @param n the Number of Items in each Vector (must be the same!)
-	 * @return Pearson's linear Correlation Coefficient between the two Data Sets x[] and y[] 
+	 * @return Pearson's linear Correlation Coefficient between the two Data Sets x[] and y[]
 	 * by constructing Pairs (x[i], y[i])
 	 */
 	final static public double CORRELATION(final float[] x, final float[] y, final int start, final int stop) {
@@ -159,24 +170,28 @@ public class Correlation {
 		return CORRELATION(syy, sxy, sxx);
 	}
 
-	/**	
+	/**
+	 * Computes Pearson's linear Correlation Coefficient between columns 0 and 1 of {@code x}.
 	 * @param x the Data Vectors
-	 * @return Pearson's linear Correlation Coefficient r between the Columns 0 and 1 of the Data Sets x[j] 
+	 * @return Pearson's linear Correlation Coefficient r between the Columns 0 and 1 of the Data Sets x[j]
 	 */
 	final static public double CORRELATION(final float[][] x) {
 		return CORRELATION(x, 0, 1, 0, x.length); }
 
-	/**	
+	/**
+	 * Computes Pearson's linear Correlation Coefficient between the given columns of {@code x}.
 	 * @param x the Data Vectors
 	 * @param xCol the x Column to use
 	 * @param yCol the y Column to use
 	 * @param n the Number of Items in each Vector (must be the same!)
-	 * @return Pearson's linear Correlation Coefficient between the given Columns of the Data Sets x[j] 
+	 * @return Pearson's linear Correlation Coefficient between the given Columns of the Data Sets x[j]
 	 */
 	final static public double CORRELATION(final float[][] x, final int xCol, final int yCol) {
 		return CORRELATION(x, xCol, yCol, 0, x.length); }
 
-	/**	
+	/**
+	 * Computes Pearson's linear Correlation Coefficient between the given columns of {@code x}
+	 * over the given row range.
 	 * @param x Data Matrix, unchanged
 	 * @param n the Number of Items in each Vector (must be the same!)
 	 * @return Pearson's linear Correlation Coefficient between the given Columns of the Data Sets x[j]
@@ -209,21 +224,24 @@ public class Correlation {
 		return CORRELATION(syy, sxy, sxx);
 	}
 
-	/** 
-	 * @param r Person's linear Correlation Coefficient 
+	/**
+	 * Converts Pearson's r into Fisher's z statistic for a sample of size {@code n}.
+	 * @param r Person's linear Correlation Coefficient
 	 * @return Fisher's Z Parameter for calculating the Significance of Differences in r
-	 * assuming a binormal Distribution of x and y. 
+	 * assuming a binormal Distribution of x and y.
 	 */
 	final static public double FISHER_Z_CORRELATION(final double r, final int n) {
 		//final float TINY = 1e-20f;
 		return 0.5*Math.log((1+r)/(1-r))*Math.sqrt(n-1);
 	}
 
-	/** 
-	 * @param r Person's linear Correlation Coefficient 
+	/**
+	 * Converts Pearson's r (via Student's t) into the significance probability of the null
+	 * hypothesis that x and y are uncorrelated.
+	 * @param r Person's linear Correlation Coefficient
 	 * @param n The Sample Size used to determine r
-	 * @return Student's Probability (Significance, not Strength!!) of the Null Hypothesis that 
-	 * there is NO Correlation 
+	 * @return Student's Probability (Significance, not Strength!!) of the Null Hypothesis that
+	 * there is NO Correlation
 	 * (i.e. low Values indicate a high Significance of the Correlation).
 	 * The Parameter t is derived from r and the Number of Items.
 	 */
@@ -234,12 +252,14 @@ public class Correlation {
 		return BetaI.PROBABILITY_STUDENT_T(degreesOfFreedom, t); 
 	}
 
-	/** 
-	 * @param z Fisher's z Statistic, derived from r, Person's linear Correlation Coefficient  
+	/**
+	 * Converts Fisher's z into the significance probability of the null hypothesis that x and
+	 * y are uncorrelated; reliable only for sample sizes above 10.
+	 * @param z Fisher's z Statistic, derived from r, Person's linear Correlation Coefficient
 	 * @param n The Sample Size used to determine z
 	 * @return Fisher's Probability of the Null Hypothesis that there is no Correlation.
 	 * (i.e. low Values indicate a high Significance of the Correlation).
-	 * The Parameter z is derived from r and the Number of Items, 
+	 * The Parameter z is derived from r and the Number of Items,
 	 * but only reliable for N > 10
 	 */
 	final static public float PROB_Z_CORRELATION(final double z) {
@@ -288,7 +308,7 @@ public class Correlation {
 
 	////////////////////////////////////////////////////////////////////////////
 	
-	/**	O(n²) non-parametric Sign Correlation between two data sets with individual Events, 
+	/**	O(nï¿½) non-parametric Sign Correlation between two data sets with individual Events, 
 	 * Kendall's tau (14.6) is approximately normally distributed with Expectation Value 0 
 	 * and a Variance of (4*n+10)/(9*n*(n-1)) 
 	 * assuming the Null Hypothesis that both Data Sets are uncorrelated.
@@ -304,7 +324,7 @@ public class Correlation {
 	final static public double SIGN_CORRELATION_Z(final float[] xData, final float[] yData) {
 		return SIGN_CORRELATION_Z(xData, yData, 0, yData.length); }
 
-	/**	O(n²) non-parametric Sign Correlation between two data sets with individual Events, 
+	/**	O(nï¿½) non-parametric Sign Correlation between two data sets with individual Events, 
 	 * Kendall's tau (14.6) is approximately normally distributed with Expectation Value 0 
 	 * and a Variance of (4*n+10)/(9*n*(n-1)) 
 	 * assuming the Null Hypothesis that both Data Sets are uncorrelated.
@@ -325,7 +345,7 @@ public class Correlation {
 		int numDecisiveX=0;
 		int diff=0;
 	
-		for (int j=stop; --j >= start;) { //O(n²) Algorithm!!! might be slow!
+		for (int j=stop; --j >= start;) { //O(nï¿½) Algorithm!!! might be slow!
 			final float xData_j = xData[j];
 			final float yData_j = yData[j];
 			for (int k=stop; --k > j;) {
@@ -353,7 +373,7 @@ public class Correlation {
 		//return PROB_Z_CORRELATION(Math.abs(z[0]));
 	}
 
-	/**	O(n²) non-parametric Sign Correlation between two data sets with individual Events, 
+	/**	O(nï¿½) non-parametric Sign Correlation between two data sets with individual Events, 
 	 * Kendall's tau (14.6) is approximately normally distributed with Expectation Value 0 
 	 * and a Variance of (4*n+10)/(9*n*(n-1)) 
 	 * assuming the Null Hypothesis that both Data Sets are uncorrelated.
@@ -369,7 +389,7 @@ public class Correlation {
 	final static public double SIGN_CORRELATION_Z(final float[][] data, final int xCol, final int yCol) {
 		return SIGN_CORRELATION_Z(data, xCol, yCol, 0, data.length); }
 
-	/**	O(n²) non-parametric Sign Correlation between two data sets with individual Events, 
+	/**	O(nï¿½) non-parametric Sign Correlation between two data sets with individual Events, 
 	 * Kendall's tau (14.6) is approximately normally distributed with Expectation Value 0 
 	 * and a Variance of (4*n+10)/(9*n*(n-1)) 
 	 * assuming the Null Hypothesis that both Data Sets are uncorrelated.
@@ -389,7 +409,7 @@ public class Correlation {
 		int numDecisiveX=0;
 		int diff=0;
 	
-		for (int j=stop; --j >= start;) { //O(n²) Algorithm!!! might be slow!
+		for (int j=stop; --j >= start;) { //O(nï¿½) Algorithm!!! might be slow!
 			final float xData_j = data[j][xCol];
 			final float yData_j = data[j][yCol];
 			for (int k=stop; --k > j;) {

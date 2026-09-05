@@ -18,12 +18,16 @@ import streamIO.real.IStreamIn_Float;
 import function.byref.ByRefDouble;
 
 /**
- * Title: HunterInt<p>
+ * Stateful binary-search "hunter" over a sorted {@code int[]}, together with the static
+ * QuickSort, permutation, ranking and order-statistic (median/percentile) algorithms shared
+ * by the whole vector family for values requiring only an order relation.
+ *
+ * <p>Title: HunterInt<p>
  * Description:
- * Implements a (stateful) Hunter to search through sorted Arrays. 
- * Additionally collects all static Methods 
+ * Implements a (stateful) Hunter to search through sorted Arrays.
+ * Additionally collects all static Methods
  * related to Sorting, Searching, Permuting, Indexing and Ranking
- * (non-arithmetic, requires only an Order Relation) 
+ * (non-arithmetic, requires only an Order Relation)
  *
  * Known SubClasses: <none>
  *
@@ -35,6 +39,12 @@ import function.byref.ByRefDouble;
  * @author mheuer
  * @version	1.0
  *
+ * <!-- docstate
+ * pass: 2
+ * mtime: 2026-09-05T12:48:05Z
+ * digest: 415b655878ed300266642513deb29d6f549d3ac2ab9d33be632ea23fa9b9f58c
+ * stale: false
+ * -->
  */
 public class HunterInt {
 
@@ -49,7 +59,8 @@ public class HunterInt {
 		return PERMUTE(null, new int[a.length], index);
 	}
 
-	/** @return this Vector with the Elements permuted according to the given Permutation     */
+	/** Writes {@code a} reordered according to {@code index} into {@code ret} (or a new array).
+	 * @return this Vector with the Elements permuted according to the given Permutation     */
 	final static public int[] PERMUTE(int[] ret, final int[] a, final int[] index) {
 		if (ret == null)
 			ret =  new int[index.length];
@@ -88,11 +99,12 @@ public class HunterInt {
 	
 	/////////////////////////////////////////////////////////////////////////////////////
 
-	/** 
+	/**
+	 * Reports whether the given range of {@code items} is monotonically ordered.
 	 * @return null  when the items are unordered or constant
-	 * Boolean.TRUE  when the items are ordered ascending 
+	 * Boolean.TRUE  when the items are ordered ascending
 	 * Boolean.False when the items are ordered descending
-	 * 
+	 *
 	 * @see streamIO.Float.IStreamIn_Float#getOrder()
 	 */
 	final static public Boolean IS_ASCENDING(final int[] items, final int start, final int stop) {
@@ -106,14 +118,16 @@ public class HunterInt {
 		}
 	}
 	
-	/** 
-	 * @return the Order of the Items in this Container 
+	/**
+	 * Determines whether the whole array is ascending, descending or unordered.
+	 * @return the Order of the Items in this Container
 	 * @see streamIO.Float.IStreamIn_Float#getOrder()
 	 */
 	final static public int GET_ORDER(final int[] items) {
 		return GET_ORDER(items, 0, items.length); }
-	
-	/** 
+
+	/**
+	 * Determines the order of {@code items} between {@code start} and {@code stop}.
 	 * @return the Order of the Items in this Container ORDER_ASC_STRICT, ORDER_ASC or IStreamIn.ORDER_DESC
 	 * or the negated Index of the last offending Value
 	 * @see streamIO.Float.IStreamIn_Float#getOrder()
@@ -139,8 +153,10 @@ public class HunterInt {
 			: IStreamIn.ORDER_DESC;
 	}
 	
-	/** 
-	 * @return the Order of the Items in this Container 
+	/**
+	 * Determines the order of {@code arr} between {@code start} and {@code stop}, also
+	 * distinguishing the constant case from strict monotonicity.
+	 * @return the Order of the Items in this Container
 	 * or the negated Index-1 of the last offending Value
 	 * @see streamIO.Float.IStreamIn_Float#getOrder()
 	 */
@@ -177,6 +193,7 @@ public class HunterInt {
 	////////////////////////////////////////////////////////////////////////////////
 
 	/**
+	  * Ranks {@code arr}, allocating its own temporary and result arrays.
 	  * @param arr The Array to be ranked
 	  * @param tmp a temporary Array passed for Effectiveness (Reuse)
 	  * @param ret the Array to be returned passed for Effectiveness (Reuse)
@@ -186,6 +203,7 @@ public class HunterInt {
 		return RANK(arr, new int[arr.length], new int[arr.length]); }
 
 	/**
+	  * Ranks {@code arr} by inverting its sort-index permutation.
 	  * @param arr The Array to be ranked
 	  * @param tmp a temporary Array passed for Effectiveness (Reuse)
 	  * @param ret the Array to be returned passed for Effectiveness (Reuse)
@@ -195,6 +213,7 @@ public class HunterInt {
 		return VectorInt.INVERSE(INDEX(arr, tmp), ret); }
 
 	/**
+	  * Computes the sort-index permutation of {@code arr}, allocating its own index array.
 	  * @param arr The Array to be ranked
 	  * @param tmp a temporary Array passed for Effectiveness (Reuse)
 	  * @param ret the Array to be returned passed for Effectiveness (Reuse)
@@ -581,6 +600,13 @@ public class HunterInt {
 	final static public int GET_STATISTIC_POS(final int[] items, final int position, final int start, final int stop) {
 		if (start >= stop)
 			return start;
+		// TODO: LOGIC: PARTITION is declared as PARTITION(items, stop, start) (see line ~278), but
+		// this call passes (start, stop) - the two bounds are swapped positionally. Since
+		// start < stop is guaranteed here, PARTITION's internal "stop" ends up smaller than its
+		// internal "start", which almost always trips its `stop <= start + 1` short-circuit and
+		// returns the wrong split point (== this method's own `stop`), corrupting every statistic
+		// (median/percentile/order-statistic) computed through this overload and risking unbounded
+		// recursion for any array where position keeps re-selecting the same sub-range.
 		final int q = PARTITION(items, start, stop); //after this, all Elements are heapified.
 		final int k = q - start + 1;
 		if (position <= k) {  //in the first partial Array...
@@ -814,7 +840,11 @@ public class HunterInt {
 	 */
 	final static public int GET_STATISTIC_POS(final int[] items, final int[] index, final int start, final int stop, final int position) {
 		if (start >= stop) {
-			return start; } 
+			return start; }
+		// TODO: LOGIC: same argument-order defect as the non-indexed GET_STATISTIC_POS above:
+		// PARTITION(values, index, stop, start) is declared with stop before start (see line
+		// ~662), but this call passes (start, stop), swapping the bounds and breaking the
+		// partition step for this indexed order-statistic path.
 		final int q = PARTITION(items, index, start, stop); //after this all Elements
 		final int k = q - start + 1;
 		if (position <= k) {

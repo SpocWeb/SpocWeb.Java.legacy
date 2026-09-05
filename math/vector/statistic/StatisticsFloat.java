@@ -30,10 +30,14 @@ import function.vector.AFloatVectorField;
 import function.vector.IFloatVectorField;
 
 /**
- * Title: StatisticsFloat<p>
+ * Static utility of hypothesis tests and contingency-table statistics over {@code float}
+ * data sets: Student's t (same mean), F-test (same variance), chi-square (goodness of fit,
+ * cross-tabulation), and 1D/2D Kolmogorov-Smirnov tests.
+ *
+ * <p>Title: StatisticsFloat<p>
  * Description:
  * Purpose:
- * Collects Methods for statistical Analysis: 
+ * Collects Methods for statistical Analysis:
  * It is important to understand that Statistics never prove something; 
  * they only disprove Assumptions about a Model 
  * (on which the expected Values and Variances are based). 
@@ -67,6 +71,12 @@ import function.vector.IFloatVectorField;
  * @author mheuer
  * @version	1.0
  *
+ * <!-- docstate
+ * pass: 2
+ * mtime: 2026-09-05T12:52:49Z
+ * digest: e3ef5980c41dfcea2b3a6ae68b5b14c1f9fe7c9f64bfc3bb621613438a34fbd1
+ * stale: false
+ * -->
  */
 public class StatisticsFloat 
 implements IFloatFunction { 
@@ -77,7 +87,7 @@ implements IFloatFunction {
 	////////////////////////////////////////////////////////////////////////////
 	
 	/**	
-	 * O(n³) Algorithm for continuously summing up a scalar Distance Measure. 
+	 * O(nï¿½) Algorithm for continuously summing up a scalar Distance Measure. 
 	 * This could be done on Streams, but would require continuous resetting.  
 	 * @param x the Data Vectors
 	 * @return Array filled with the Sum of all Lorentz-weighed Points.  
@@ -86,7 +96,7 @@ implements IFloatFunction {
 		return NEIGHBORS(null, x.length, x, x[x.length>>1].length); }
 	
 	/**	
-	 * O(n³) Algorithm for continuously summing up a scalar Distance Measure. 
+	 * O(nï¿½) Algorithm for continuously summing up a scalar Distance Measure. 
 	 * This could be done on Streams, but would require continuous resetting.  
 	 * @param x the Data Vectors
 	 * @param numPoints the Number of Vectors to consider 
@@ -97,7 +107,7 @@ implements IFloatFunction {
 		return NEIGHBORS(ret, x.length, x, x[x.length>>1].length); }
 	
 	/**	
-	 * O(n³) Algorithm for continuously summing up a scalar Distance Measure. 
+	 * O(nï¿½) Algorithm for continuously summing up a scalar Distance Measure. 
 	 * This could be done on Streams, but would require continuous resetting.  
 	 * @param x the Data Vectors
 	 * @param numPoints the Number of Vectors to consider 
@@ -130,7 +140,7 @@ implements IFloatFunction {
 	}
 
 	/**	
-	 * O(n³) Algorithm for continuously summing up the Gradient to the next Neigbors using a scalar Distance Measure. 
+	 * O(nï¿½) Algorithm for continuously summing up the Gradient to the next Neigbors using a scalar Distance Measure. 
 	 * This could be done on Streams, but would require continuous resetting.  
 	 * @param x the Data Vectors
 	 * @param xCol the x Column to use
@@ -241,7 +251,7 @@ implements IFloatFunction {
 	 * on Output: the Number of Rows and Columns with nonzero Sum
 	 * @param maxDeviation if not null, returns the Position of the maximum Deviation 
 	 * @param sums if not null, returns the Row and Column Sums of this Matrix  
-	 * @param chisq if not null, returns the Chi² Sum
+	 * @param chisq if not null, returns the Chiï¿½ Sum
 	 * @param degreesOfFreedom the Degrees of Freedom calculated 
 	 * @param cramrv if not null, returns Cramer's V Parameter
 	 * @param ccc if not null, returns the Contingency Coefficient
@@ -268,16 +278,18 @@ implements IFloatFunction {
 		return GammaP.PROBABILITY_CHI_SQR(degreesOfFreedom, chiSqr);
 	}
 	
-	/**	
+	/**
+	 * Computes the chi-square sum of deviations of {@code nn} from the independent
+	 * distribution its row and column sums imply.
 	 * @param nn the Matrix to analyze
 	 * @param maxDeviation if not null, filled with the Position of the maximum Deviation
-	 * @param numRows the Number of Rows to consider 
-	 * @param numCols the Number of Columns to consider 
+	 * @param numRows the Number of Rows to consider
+	 * @param numCols the Number of Columns to consider
 	 * @param sum the total Sum of Elements = Sum(rowSums) = Sum(colSums)
-	 * @param rowSums the Sums of the Rows 
-	 * @param colSums the Sums of the Columns 
-	 * @return the Chi² Sum of Deviations from a hypothetic independent Distribution 
-	 * derived from the Row and Column Sums. 
+	 * @param rowSums the Sums of the Rows
+	 * @param colSums the Sums of the Columns
+	 * @return the Chiï¿½ Sum of Deviations from a hypothetic independent Distribution
+	 * derived from the Row and Column Sums.
 	 */
 	public static double CROSS_TAB_CHI_SQR(
 		final int[][] nn,
@@ -338,14 +350,14 @@ implements IFloatFunction {
 	/** Student's t-test for same means in the Case of paired (and possibly correlated) data (14.2)
 	 * The Effect is that the total Variance is to be modified by the CoVariance:
 	 * d = (+1,-1)*(X1, X2) 
-	 * sd²=(+1,-1)*|sd1 cov|*|+1| = sd1-2cov+sd2
+	 * sdï¿½=(+1,-1)*|sd1 cov|*|+1| = sd1-2cov+sd2
 	 *             |cov sd2| |-1|
 	 * Because the Sample Size n is typically small, the Student Distribution is used,
 	 * instead of the Gaussian Normal Distribution.
 	 * 
 	 * Similarly also the Sum of two Distributions / Samples can be described by: 
 	 * d = (1,1)*(X1, X2) 
-	 * sd²=(1,1)*|sd1 cov|*|1| = sd1+2cov+sd2
+	 * sdï¿½=(1,1)*|sd1 cov|*|1| = sd1+2cov+sd2
 	 *           |cov sd2| |1|
 	 */
 	final static public double PROB_SAME_MEAN_CORRELATED(
@@ -359,10 +371,12 @@ implements IFloatFunction {
 		return BetaI.PROBABILITY_STUDENT_T(degreesOfFreedom, t); 
 	}
 	
-	/** @return the Probability for same (unknown) Mean and same (unknown) Variance 
-	 * from the Parameters of two Distribution (Distributed like Student's t)  
-	 * 
-	 * @param n1  #Elements in the first Sample 
+	/**
+	 * Student's t-test for equal means assuming equal (pooled) variances.
+	 * @return the Probability for same (unknown) Mean and same (unknown) Variance
+	 * from the Parameters of two Distribution (Distributed like Student's t)
+	 *
+	 * @param n1  #Elements in the first Sample
 	 * @param mean1 measured Mean of the first Sample
 	 * @param var1  measured Variance of the first Sample
 	 * @param n2  #Elements of the second Sample
@@ -383,7 +397,7 @@ implements IFloatFunction {
 	 * for scalar Data. 
 	 * 
 	 * The Variance for the Difference of two Sample's Means xm-ym 
-	 * from Distributions X(x, sx) and Y(y, sy) is sx²+sy² 
+	 * from Distributions X(x, sx) and Y(y, sy) is sxï¿½+syï¿½ 
 	 * so independent Variances add up as independent Dimensions. 
 	 * 
 	 * @return the Probability for same (unknown) Mean 
@@ -410,7 +424,7 @@ implements IFloatFunction {
 	
 	/** Student's t-test for same means in the case of unequal variances (14.2)
 	 * for Vector Data (Vector Distributions)
-	 * t² = (m1-m2) * (v1/n1+v2/n2)^-1 * (m1-m2)
+	 * tï¿½ = (m1-m2) * (v1/n1+v2/n2)^-1 * (m1-m2)
 	 * 
 	 * This can also be used to Partition Data Sets along a Dimension 
 	 * to see whether this Dimension does not significantly change the Means. 
@@ -653,7 +667,7 @@ implements IFloatFunction {
 	 * @param numConstraints The Number of Constraints applied on the Model, 
 	 * e.g. by fitting the total expected to the actual Frequencies    
 	 * @return the Probability that the given Data stems from a Source described by the Model. 
-	 * It falls from 1 to 0 with increasing Chi². 
+	 * It falls from 1 to 0 with increasing Chiï¿½. 
 	 */
 	final static public double PROB_SAMPLE_FROM_MODEL(final int aBins[], final float eBins[]
 	, final int numBins, final int numConstraints) {
@@ -871,14 +885,14 @@ implements IFloatFunction {
 		return ProbFuncs.pKvSvCum(x);
 	}
 
-	/** O(n²) Algorithm  
+	/** O(nï¿½) Algorithm  
 	 * @return the maximum absolute Difference in Quadrant Counts
 	 * when partitioning one Distribution by the other
 	 */
 	final static public float MAX_2D_DIFF(float[] x1, float[] y1, float[] x2, float[] y2) {
 		return MAX_2D_DIFF(x1, y1, 0, x1.length, x2, y2, 0, x2.length); }
 
-	/** O(n²) Algorithm with n = #of Points  
+	/** O(nï¿½) Algorithm with n = #of Points  
 	 * @return the maximum absolute Difference in Quadrant Counts
 	 * when partitioning one Distribution by the other
 	 */
@@ -902,7 +916,7 @@ implements IFloatFunction {
 		return d1;
 	}
 
-	/** O(n²) Algorithm  
+	/** O(nï¿½) Algorithm  
 	 * @return the maximum absolute Difference in Quadrant Counts
 	 * when partitioning one Distribution by the other
 	 */
@@ -912,7 +926,7 @@ implements IFloatFunction {
 		return MAX_2D_DIFF(xy1, xCol1, yCol1, 0, xy1.length, xy2, xCol2, yCol2, 0, xy2.length);
 	}
 
-	/** O(n²) Algorithm  
+	/** O(nï¿½) Algorithm  
 	 * @return the maximum absolute Difference in Quadrant Counts
 	 * when partitioning one Distribution by the other
 	 */
@@ -994,13 +1008,13 @@ implements IFloatFunction {
 			for (int j=xy1.length; --j>=0; ) {
 			    final float u=RandomGauss.NEXT_FLOAT();
 			    final float v=RandomGauss.NEXT_FLOAT()*ratio;
-				xy1[j][0]=u+v; //rotate by 45°
+				xy1[j][0]=u+v; //rotate by 45ï¿½
 				xy1[j][1]=u-v;
 			}
 			for (int j=xy2.length; --j>=0; ) {	//perpendicular!
 			    final float u=RandomGauss.NEXT_FLOAT()*ratio;
 			    final float v=RandomGauss.NEXT_FLOAT();
-				xy2[j][0]=u+v; //rotate by 45°
+				xy2[j][0]=u+v; //rotate by 45ï¿½
 				xy2[j][1]=u-v;
 			}
 			final double prob = PROB_2D_SAMPLES_SAME(xy1, 0, 1, xy2, 0, 1);
@@ -1147,13 +1161,16 @@ implements IFloatFunction {
 	// Implementation of IFloatFunction for testKolmogorovSmirnov()
 	/////////////////////////////////////////////////////////////////////////////////////
 	
-    /** @see function.IFloatFunction#getOrder()     */
-    public byte getOrder() { return IStreamIn.ORDER_ASC_STRICT; }    
-    
-	/** @see function.IFloatFunction#Map(double)	 */
+    /** Reports that this function is strictly ascending, as required by the K-S test model role.
+     * @see function.IFloatFunction#getOrder()     */
+    public byte getOrder() { return IStreamIn.ORDER_ASC_STRICT; }
+
+	/** Maps {@code x} through the Gaussian cumulative distribution, rescaled to [-1, 1].
+	 * @see function.IFloatFunction#Map(double)	 */
 	public double Map(final double x) { return Gauss.pGaussCum(x)*2-1; }
 
-	/** @see function.IFloatFunction#Map(float)	 */
+	/** Maps {@code arg} through the Gaussian cumulative distribution, rescaled to [-1, 1].
+	 * @see function.IFloatFunction#Map(float)	 */
 	public float Map(float arg) { return (float) Map((double) arg); }
 
 	/** tests a Distribution against the Model	 */
@@ -1470,7 +1487,7 @@ implements IFloatFunction {
 		ran1.randomize();
 		for(int i = numPnts; --i >= 0;)
 			++bins[ran1.nextInt(numBins)];
-		//returns 0,5 when Chi²=numBins
+		//returns 0,5 when Chiï¿½=numBins
 		final double prob = PROB_SAMPLE_FROM_UNIFORM(bins)-.5;
 		return (Math.abs(prob) < .45); //only 10% Rejection! 
 	}
@@ -1504,13 +1521,16 @@ implements IFloatFunction {
 	
 }
 
-/** 
- * Title: HyperCubeShare<p>
+/**
+ * Maps a 2D point to the four quadrant shares of a [-1,+1]&sup2; cube it selects, as a test
+ * model for {@link StatisticsFloat#PROB_2D_SAMPLE_FROM_MODEL}.
+ *
+ * <p>Title: HyperCubeShare<p>
  * Description:
- * Implementation of IFloatVectorField 
- * to return the Shares of a [-1,+1]² Cube 
- * that the given Vector selects 
- * for Testing. 
+ * Implementation of IFloatVectorField
+ * to return the Shares of a [-1,+1]ï¿½ Cube
+ * that the given Vector selects
+ * for Testing.
  *
  * Design Decisions / Implementation Details:
  *
@@ -1524,8 +1544,14 @@ implements IFloatFunction {
  * @author mheuer
  * @version	1.0
  *
+ * <!-- docstate
+ * pass: 2
+ * mtime: 2026-09-05T12:52:49Z
+ * digest: 59f810c9af4480b89d0c0d1bc28ab2e57bd44753f0081dbf463698af816da14d
+ * stale: false
+ * -->
  */
-class HyperCubeShare 
+class HyperCubeShare
 extends AFloatVectorField {
 
 	/**quadrant probabilities 

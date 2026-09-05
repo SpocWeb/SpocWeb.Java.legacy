@@ -14,14 +14,18 @@ import streamIO.object.IStreamIn;
 import function.byref.ByRefDouble;
 
 /**
- * Title: HunterDouble<p>
+ * Stateful binary-search "hunter" over a sorted {@code double[]}, together with the static
+ * QuickSort, permutation, ranking and order-statistic (median/percentile) algorithms shared
+ * by the whole vector family for values requiring only an order relation.
+ *
+ * <p>Title: HunterDouble<p>
  * Description:
  * Purpose:
- * Implements a (stateful) Hunter to search through sorted Arrays. 
- * Additionally collects all static Methods 
+ * Implements a (stateful) Hunter to search through sorted Arrays.
+ * Additionally collects all static Methods
  * related to Sorting, Searching, Permuting, Indexing and Ranking
- * (non-arithmetic, requires only an Order Relation) 
- * 
+ * (non-arithmetic, requires only an Order Relation)
+ *
  * Known SubClasses: <none>
  *
  * Known Uses: <none>
@@ -32,6 +36,12 @@ import function.byref.ByRefDouble;
  * @author mheuer
  * @version	1.0
  *
+ * <!-- docstate
+ * pass: 2
+ * mtime: 2026-09-05T12:50:31Z
+ * digest: c65db4c674eeb0aad5b3a94f9799b939ffb48b69e43471fe1cf26ce7a65e433f
+ * stale: false
+ * -->
  */
 public class HunterDouble {
 
@@ -76,7 +86,8 @@ public class HunterDouble {
 	final static public double[] PERMUTE(final double[] a, final int[] index) {
 		return PERMUTE(a, index, false, null); }
 
-	/** @return this Vector with the Elements permuted according to the given Permutation     */
+	/** Writes {@code a} reordered according to {@code index} into {@code ret}.
+	 * @return this Vector with the Elements permuted according to the given Permutation     */
 	final static public double[] PERMUTE(final double[] a, final int[] index, final double[] ret) {
 		return PERMUTE(a, index, false, ret); }
 	
@@ -88,14 +99,14 @@ public class HunterDouble {
 		return PERMUTE(a, index, reverse, null);
 	}
 
-	/** 
-	 * 
+	/**
+	 * Writes {@code a} reordered according to {@code index}, optionally reversed, into {@code ret}.
 	 * @param a the Vector to permute
-	 * @param index the Permutation to apply to Vector a 
+	 * @param index the Permutation to apply to Vector a
 	 * @param reverse Flag whether to revert the Result (i.e. a[0]<->a[n], a[1] <-> a[n-1] etc.
-	 * This should NOT be confused with the Inverse! 
-	 * @param ret optional (null allowed) Workspace; returned if large enough 
-	 * @return ret (or a new Vector) with the Elements of a permuted according to the given Permutation 
+	 * This should NOT be confused with the Inverse!
+	 * @param ret optional (null allowed) Workspace; returned if large enough
+	 * @return ret (or a new Vector) with the Elements of a permuted according to the given Permutation
 	 */
 	final static public double[] PERMUTE(final double[] a, final int[] index, final boolean reverse, double[] ret) {
 		if (ret == null)
@@ -156,6 +167,7 @@ public class HunterDouble {
 	////////////////////////////////////////////////////////////////////////////////
 
 	/**
+	  * Ranks {@code arr}, allocating its own temporary and result arrays.
 	  * @param arr The Array to be ranked
 	  * @param tmp a temporary Array passed for Effectiveness (Reuse)
 	  * @param ret the Array to be returned passed for Effectiveness (Reuse)
@@ -165,6 +177,7 @@ public class HunterDouble {
 		return HunterDouble.RANK(arr, new int[arr.length], new int[arr.length]); }
 
 	/**
+	  * Ranks {@code arr} by inverting its sort-index permutation.
 	  * @param arr The Array to be ranked
 	  * @param tmp a temporary Array passed for Effectiveness (Reuse)
 	  * @param ret the Array to be returned passed for Effectiveness (Reuse)
@@ -172,8 +185,9 @@ public class HunterDouble {
 	  */
 	final static public int[] RANK(final double[] arr, final int[] tmp, final int[] ret) {
 		return VectorInt.INVERSE(INDEX(arr, tmp), ret); }
-	
+
 	/**
+	  * Computes the sort-index permutation of {@code arr}, allocating its own index array.
 	  * @param arr The Array to be ranked
 	  * @param tmp a temporary Array passed for Effectiveness (Reuse)
 	  * @param ret the Array to be returned passed for Effectiveness (Reuse)
@@ -739,6 +753,12 @@ public class HunterDouble {
 	public static int GET_STATISTIC(double[] Items, int[] index, int p, int r, int i) {
 		if (p >= r)
 			return p;
+		// TODO: LOGIC: PARTITION is declared as PARTITION(values, index, stop, start) (see the
+		// 4-arg overload above), but this call passes (p, r) - the two bounds are swapped
+		// positionally. Since p < r is guaranteed here, PARTITION's internal "stop" ends up
+		// smaller than its internal "start", which almost always trips its `stop <= start + 1`
+		// short-circuit and returns the wrong split point, corrupting the indexed order-statistic
+		// results computed through this method.
 		int q = PARTITION(Items, index, p, r); //after this all Elements
 		int k = q - p + 1;
 		if (i <= k)
@@ -747,14 +767,16 @@ public class HunterDouble {
 			return GET_STATISTIC(Items, index, q + 1, r, i - k);
 	}
 	
-	/** 
+	/**
+	 * Determines whether the whole array is ascending, descending or unordered.
 	 * @return the Order of the Items in this Container
 	 * @see streamIO.Float.IStreamIn_Float#getOrder()
 	 */
 	final static public int GET_ORDER(final double[] arr) {
 		return GET_ORDER(arr, 0, arr.length); }
-	
-	/** 
+
+	/**
+	 * Determines the order of {@code items} between {@code start} and {@code stop}.
 	 * @return the Order of the Items in this Container (ORDER_ASC_STRICT, ORDER_ASC or IStreamIn.ORDER_DESC)
 	 * or the negated Index of the last offending Value
 	 * @see streamIO.Float.IStreamIn_Float#getOrder()
@@ -780,8 +802,10 @@ public class HunterDouble {
 			: IStreamIn.ORDER_DESC;
 	}
 	
-	/** 
-	 * @return the Order of the Items in this Container 
+	/**
+	 * Determines the order of {@code arr} between {@code start} and {@code stop}, also
+	 * distinguishing the constant case from strict monotonicity.
+	 * @return the Order of the Items in this Container
 	 * or the negated Index-1 of the last offending Value
 	 * @see streamIO.Float.IStreamIn_Float#getOrder()
 	 */

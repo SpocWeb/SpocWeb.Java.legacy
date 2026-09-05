@@ -81,15 +81,15 @@ concurrently against the same file):
 | `function` | 204 | 27689 | 0 | unclaimed | - |
 | `streamIO/object` | 185 | 38857 | 0 | unclaimed | - |
 | `streamIO/integer` | 157 | 39243 | 0 | unclaimed | - |
-| `graphic` (root+example+implement+svg) | 50 | 14297 | 34 | done | agent-graphic-misc |
+| `graphic` (root+example+implement+svg) | 50 | 14297 | 50 | done | agent-graphic-misc |
 | `graphic/math2D`+`graphic/ms3d` | 18 | 3525 | 18 | done | agent-graphic-2d |
-| `graphic/math3D` | 32 | 6425 | 1 | done | agent-graphic-math3D |
-| `graphic/mvc` | 26 | 4789 | 10 | done | agent-graphic-mvc |
+| `graphic/math3D` | 32 | 6425 | 32 | done | agent-graphic-math3D |
+| `graphic/mvc` | 26 | 4789 | 26 | done | agent-graphic-mvc |
 | `math` (root+algorithm+integration+wavelet) | 18 | 3123 | 18 | done | agent-math-core |
 | `math/fit`+`math/refiner` | 27 | 3644 | 27 | done | agent-math-fit |
 | `math/minimizer` | 11 | 3043 | 11 | done | agent-math-minimizer |
 | `math/matrix` | 13 | 15603 | 0 | claimed | agent-math-matrix |
-| `math/vector` | 15 | 33025 | 0 | claimed | agent-math-vector |
+| `math/vector` | 15 | 33025 | 9 | claimed | agent-math-vector (partial: QuaternaryOp/AVector/VectorObject/HunterInt/HunterFloat/HunterDouble/VectorString/statistic/Correlation/statistic/StatisticsFloat done; VectorChar/VectorLong/VectorShort/VectorInt/VectorFloat/VectorDouble remain - follow-up agent needed) |
 | `structure` | 52 | 4933 | 52 | done | agent-structure |
 | `streamIO/real` | 51 | 6801 | 51 | done | agent-streamIO-real |
 | `tester` | 49 | 3327 | 49 | done | agent-tester |
@@ -374,6 +374,23 @@ same harness against it. A test that has not been seen red proves nothing.
 | graphic/mvc/BaseApplet.java | BaseApplet | getFaultySuffix(String) | 108 | `fileName.substring(fileName.length()-4)` throws `StringIndexOutOfBoundsException` for filenames shorter than 4 characters, uncaught by any caller. | Low | open |
 | graphic/mvc/plane2D/MatrixShort.java | MatrixShort | STREAM(...) | 650 | `for (int i = startRow; ++i < stopRow;)` pre-increments before the bound check, so `vals[startRow]` itself is never streamed - only rows `startRow+1..stopRow-1` are printed. | Low | open |
 | graphic/mvc/plane2D/MatrixShort.java | MatrixShort | normalizeAt() | 1031 | When `itemCount` is already 0 (or every item is null), `while (items[--itemCount] == null);` decrements past 0 to -1 and indexes `items[-1]`, throwing `ArrayIndexOutOfBoundsException` instead of leaving an empty matrix normalized. | Low | open |
+
+| math/vector/VectorObject.java | VectorObject | removeAt(int) | 167 | `--itemCount` runs as a side effect of evaluating the right operand of `\|\|` whenever `index >= 0`; on an out-of-range index the method still returns null but `itemCount` has already been permanently decremented, corrupting the vector's size even though no element was removed. | High | open |
+| math/vector/VectorObject.java | VectorObject | copyInto(int[]) | 449 | `items` is an `Object[]` here (unlike `VectorInt`, whose items are `int[]`); copying it into an `int[]` destination via `System.arraycopy` throws `ArrayStoreException` at runtime on every call once `itemCount > 0` - apparently copy-pasted from `VectorInt` without adjusting for `VectorObject`'s element type. | Critical | open |
+| math/vector/VectorObject.java | VectorObject | toArray() | 466 | Same `ArrayStoreException` hazard as `copyInto(int[])` above. | Critical | open |
+| math/vector/HunterInt.java | HunterInt | GET_STATISTIC_POS(int[], int, int, int) | 603 | `PARTITION` is declared `PARTITION(items, stop, start)`, but this call passes `(start, stop)` - the two bounds are swapped positionally, breaking median/percentile/order-statistic results and risking unbounded recursion. | High | open |
+| math/vector/HunterInt.java | HunterInt | GET_STATISTIC_POS(int[], int[], int, int, int) | 844 | Same `PARTITION` argument-order defect as above, on the indexed variant. | High | open |
+| math/vector/HunterFloat.java | HunterFloat | GET_STATISTIC_POS(float[], int[], int, int, int) | 879 | Same `PARTITION` argument-order defect (indexed variant only - the non-indexed overload in this file is correct). | High | open |
+| math/vector/HunterDouble.java | HunterDouble | GET_STATISTIC(double[], int[], int, int, int) | 756 | Same `PARTITION` argument-order defect, indexed variant. | High | open |
+| math/vector/VectorChar.java | VectorChar | MIN(char[][], int) | 60 | Comparison is inverted (should be `min > matrix[i][col]`); `min` starts at `Character.MAX_VALUE` and the condition can never be true, so this always returns `Character.MAX_VALUE` regardless of the array's content - looks copy-pasted from `MAX(char[][], int)` without flipping the operator. | Critical | open |
+| math/vector/VectorString.java | VectorString | ALIGN_RIGHT(String, String) | 453 | `substring(str.length()-format.length())` goes negative whenever `str` is shorter than `format` (the normal case this method exists for), throwing `StringIndexOutOfBoundsException`. | High | open |
+| math/vector/VectorString.java | VectorString | PAD(String, int, char, boolean) | 723 | Loop appends one filler character short of what's needed to reach the requested `length` - the returned String is 1 character shorter than requested. | Medium | open |
+| math/vector/VectorString.java | VectorString | Collection2StringArray(Collection) | 829 | `++i` is a pre-increment, so the first element is written to `ret[1]` (leaving `ret[0]` permanently null) and the last write goes out of bounds, throwing `ArrayIndexOutOfBoundsException` for any non-empty collection. | Critical | open |
+| math/vector/VectorString.java | VectorString | REPLACE_ALL(String, String) | 967 | Seeds `ret` via `APPEND(str, 0, i-1)` instead of `i`, dropping the character immediately before the first separator match. | Medium | open |
+| math/vector/VectorString.java | VectorString | toString(byte[], StringBuffer) | 1343 | Loop condition checks `tmp` from the previous iteration, so a genuine terminating 0 byte at index 0 is appended as a character before the loop notices and stops - off by one byte versus the documented "terminated by a 0 byte" contract. | Low | open |
+| math/vector/VectorString.java | VectorString | removeAt(int) | 1760 | Same unconditional-`--itemCount`-on-failure bug as `VectorObject.removeAt(int)` above. | High | open |
+| math/vector/VectorString.java | VectorString | copyInto(int[]) | 1894 | Same `ArrayStoreException` hazard as `VectorObject.copyInto(int[])` (`items` is `String[]`, not `int[]`). | Critical | open |
+| math/vector/VectorString.java | VectorString | toArray() | 1912 | Same `ArrayStoreException` hazard as above. | Critical | open |
 
 ## Tool defects found and fixed during the pilot
 

@@ -16,7 +16,10 @@ import streamIO.real.AStreamIn_Float;
 import function.index.IDirectAccess;
 
 /**
- * Title: AVector<p>
+ * Base class for the fixed-primitive-type vector family, providing shared capacity growth,
+ * bounds checking and item-count bookkeeping over a growable array.
+ *
+ * <p>Title: AVector<p>
  * Description:
  * Purpose:
  *
@@ -26,7 +29,7 @@ import function.index.IDirectAccess;
  * If similar Classes exist (e.g. Polymorphism),
  * characterize the specific Differences to compare these.
  *
- * Known SubClasses: 
+ * Known SubClasses:
  * @see math.AMatrix
  * @see graphs.SparseMatrix
  * @see math.VectorChar
@@ -47,8 +50,14 @@ import function.index.IDirectAccess;
  * @author mheuer
  * @version	1.0
  *
+ * <!-- docstate
+ * pass: 2
+ * mtime: 2026-09-05T12:44:29Z
+ * digest: a1a96f492d44e5e982cc3b2a125fe57cbe710b95cf0326dc90ffdd8bcff693df
+ * stale: false
+ * -->
  */
-public abstract class AVector 
+public abstract class AVector
 extends ACopyAble
 implements IDirectAccess 
 {
@@ -289,8 +298,16 @@ implements IDirectAccess
 	
 }
 
-/** Iterator for the VectorFloat Class (in reverse Order) */
-abstract class AVectorStreamIn_Float 
+/** Iterates a floating-point vector's elements in reverse order, as a bounded stream source.
+ *
+ * <!-- docstate
+ * pass: 2
+ * mtime: 2026-09-05T12:44:29Z
+ * digest: b14314a9f9a48335e179bff02a82b673eef948a798c2df8f94ff853ab3e0bccf
+ * stale: false
+ * -->
+ */
+abstract class AVectorStreamIn_Float
 extends AStreamIn_Float {
 	
     ///////////////////////////////////////////////////////////////////////////
@@ -302,39 +319,54 @@ extends AStreamIn_Float {
 	/** @see streamIO.real.IStreamIn_Float#nextDouble()	 */
 	abstract protected double nextDoubleInternal(); // { return vector.getAt(--pos); }
 	
-	/** @see streamIO.real.IStreamIn_Bound_Float#getMinDouble()	 */
+	/** Returns the smallest value reachable while iterating this vector.
+	 * @see streamIO.real.IStreamIn_Bound_Float#getMinDouble()	 */
 	abstract public double getMinDouble(); // { vector.MinVal(); }
-	
-    /** @see streamIO.real.AStreamIn_Float#getMaxMarkSize()     */
+
+    /** Returns the number of elements available to this reverse-order iterator.
+     * @see streamIO.real.AStreamIn_Float#getMaxMarkSize()     */
     abstract public long getMaxMarkSize(); // { return vector.getInt(); }
-    
+
     ///////////////////////////////////////////////////////////////////////////
     /// Implementations
     ///////////////////////////////////////////////////////////////////////////
-    
-	protected int pos; //= 0; 
 
-	/** @see Stream.IAvailAble#availAble()	 */
+	protected int pos; //= 0;
+
+	/** Returns the current stack position, i.e. the number of elements not yet consumed.
+	 * @see Stream.IAvailAble#availAble()	 */
 	public long availAble() { return pos; }
 
-	/** @see Stream.Float.IStreamIn_Float#getOrder()	 */
+	/** Reports that this iterator consumes elements in stack (LIFO) order.
+	 * @see Stream.Float.IStreamIn_Float#getOrder()	 */
 	public byte getOrder() { return IStreamIn.ORDER_STACK; }
-	
-	/** @see streamIO.integer.IStreamIn_Int#reSet()	 */
+
+	/** Resets the iterator position to the end of the vector, ready to iterate backwards.
+	 * @see streamIO.integer.IStreamIn_Int#reSet()	 */
 	public IReSetAble  reSet() { pos = (int) getMaxMarkSize(); return this; }
-	
-    /** @see streamIO.real.AStreamIn_Float#getPosition()     */
+
+    /** Returns how many elements have already been consumed by this iterator.
+     * @see streamIO.real.AStreamIn_Float#getPosition()     */
     public long getPosition() { return getMaxMarkSize()-pos; }
-    
+
+	/** Creates the iterator and resets it to the last element of the underlying vector. */
 	public AVectorStreamIn_Float() {
 		//this.vector = vector_;
-		this.reSet(); 
+		this.reSet();
 	}
 	
 }
 
-/** Iterator for the MatrixFloat Class (in reverse Order!) */
-abstract class AVectorStreamIn_Int 
+/** Iterates an integer vector's elements in reverse order, as a bounded integer stream source.
+ *
+ * <!-- docstate
+ * pass: 2
+ * mtime: 2026-09-05T12:44:29Z
+ * digest: 40963f774241d628bd3bc7ff803575f984ad0a360a863843c6d855861dd7eae2
+ * stale: false
+ * -->
+ */
+abstract class AVectorStreamIn_Int
 extends AStreamIn_BoundInt {
 	
     ///////////////////////////////////////////////////////////////////////////
@@ -346,30 +378,37 @@ extends AStreamIn_BoundInt {
 	/** @see Stream.Float.IStreamIn_Int#nextInt()	 */
 	abstract protected long nextLongInternal(); // { return vector.getAt(--pos); }
 	
-	/** @see Stream.Float.IStreamIn_Bound_Int#getMinValue()	 */
+	/** Returns the smallest value reachable while iterating this vector.
+	 * @see Stream.Float.IStreamIn_Bound_Int#getMinValue()	 */
 	abstract public long getMinValue(); // { return vector.MinVal(); }
-	
-    /** @see streamIO.real.AStreamIn_Float#getMaxMarkSize()     */
+
+    /** Returns the number of elements available to this reverse-order iterator.
+     * @see streamIO.real.AStreamIn_Float#getMaxMarkSize()     */
     abstract public long getMaxMarkSize(); // { return vector.getInt(); }
-    
+
     ///////////////////////////////////////////////////////////////////////////
     /// Implementations
     ///////////////////////////////////////////////////////////////////////////
-    
-	protected int pos; //= 0; 
 
-	/** @see Stream.IAvailAble#availAble()	 */
+	protected int pos; //= 0;
+
+	/** Returns the current stack position, i.e. the number of elements not yet consumed.
+	 * @see Stream.IAvailAble#availAble()	 */
 	public long availAble() { return pos; }
 
-	/** @see Stream.Float.IStreamIn_Float#getOrder()	 */
+	/** Reports that this iterator consumes elements in stack (LIFO) order.
+	 * @see Stream.Float.IStreamIn_Float#getOrder()	 */
 	public byte getOrder() { return IStreamIn.ORDER_STACK; }
-	
-	/** @see streamIO.integer.IStreamIn_Int#reSet()	 */
+
+	/** Resets the iterator position to the end of the vector, ready to iterate backwards.
+	 * @see streamIO.integer.IStreamIn_Int#reSet()	 */
 	public IReSetAble  reSet() { pos = (int) getMaxMarkSize(); return this; }
-	
-    /** @see streamIO.real.AStreamIn_Float#getPosition()     */
+
+    /** Returns how many elements have already been consumed by this iterator.
+     * @see streamIO.real.AStreamIn_Float#getPosition()     */
     public long getPosition() { return getMaxMarkSize()-pos; }
-    
+
+	/** Creates the iterator, bounding it at {@code _maxVal} and resetting to the last element. */
 	public AVectorStreamIn_Int(final int _maxVal) {
 		super(_maxVal); //
 		//this.vector = vector_;

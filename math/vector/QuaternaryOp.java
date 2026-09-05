@@ -6,7 +6,10 @@
 package math.vector;
 
 /**
- * Title: QuaternaryOp<p>
+ * Defines a binary-to-quaternary arithmetic operation (add, subtract, multiply, divide, or a
+ * linear combination) applied to up to four {@code double} operands.
+ *
+ * <p>Title: QuaternaryOp<p>
  * Description:
  * Interface for testing any Type of Operation
  *
@@ -21,6 +24,12 @@ package math.vector;
  * @author mheuer
  * @version	1.0
  *
+ * <!-- docstate
+ * pass: 2
+ * mtime: 2026-09-05T12:43:24Z
+ * digest: e17bd9d2447f1d6494ac58ef4dda8de77fcf827144462a1dbf3be46dc8bb2206
+ * stale: false
+ * -->
  */
 interface QuaternaryOp {
 
@@ -128,6 +137,9 @@ interface QuaternaryOp {
 		public int numArgs() { return 0; } 
 	};
 
+	/**
+	 * Returns how many of the four operands this implementation actually uses.
+	 */
 	public int numArgs();
 
 	/** any Operation with up to 4 arguments 	*/

@@ -16,12 +16,16 @@ import streamIO.real.StreamIn_Float;
 import function.byref.ByRefDouble;
 
 /**
- * Title: HunterFloat<p>
+ * Stateful binary-search "hunter" over a sorted {@code float[]}, together with the static
+ * QuickSort, permutation, ranking and order-statistic (median/percentile) algorithms shared
+ * by the whole vector family for values requiring only an order relation.
+ *
+ * <p>Title: HunterFloat<p>
  * Description:
- * Implements a (stateful) Hunter to search through sorted Arrays. 
- * Additionally collects all static Methods 
+ * Implements a (stateful) Hunter to search through sorted Arrays.
+ * Additionally collects all static Methods
  * related to Sorting, Searching, Permuting, Indexing and Ranking
- * (non-arithmetic, requires only an Order Relation) 
+ * (non-arithmetic, requires only an Order Relation)
  *
  * Known SubClasses: <none>
  *
@@ -33,6 +37,12 @@ import function.byref.ByRefDouble;
  * @author mheuer
  * @version	1.0
  *
+ * <!-- docstate
+ * pass: 2
+ * mtime: 2026-09-05T12:49:12Z
+ * digest: 7d52769deb81f0aed858aaa8e3338947d4e5e53728dd49b3c712fb7fb99a566b
+ * stale: false
+ * -->
  */
 public class HunterFloat {
 
@@ -46,7 +56,8 @@ public class HunterFloat {
 	final static public float[] PERMUTE(final float[] a, final int[] index) {
 		return PERMUTE(a, index, false, null); }
 
-	/** @return this Vector with the Elements permuted according to the given Permutation     */
+	/** Writes {@code a} reordered according to {@code index} into {@code ret}.
+	 * @return this Vector with the Elements permuted according to the given Permutation     */
 	final static public float[] PERMUTE(final float[] a, final int[] index, final float[] ret) {
 		return PERMUTE(a, index, false, ret); }
 	
@@ -57,7 +68,8 @@ public class HunterFloat {
 	final static public float[] PERMUTE(final float[] a, final int[] index, final boolean reverse) {
 		return PERMUTE(a, index, reverse, null); }
 
-	/** @return this Vector with the Elements permuted according to the given Permutation     */
+	/** Writes {@code a} reordered according to {@code index}, optionally reversed, into {@code ret}.
+	 * @return this Vector with the Elements permuted according to the given Permutation     */
 	final static public float[] PERMUTE(final float[] a, final int[] index, final boolean reverse, float[] ret) {
 		if (ret == null)
 			ret =  new float[a.length];
@@ -111,11 +123,12 @@ public class HunterFloat {
 
 	/////////////////////////////////////////////////////////////////////////////////////
 
-	/** 
+	/**
+	 * Reports whether the given range of {@code items} is monotonically ordered.
 	 * @return null  when the items are unordered or constant
-	 * Boolean.TRUE  when the items are ordered ascending 
+	 * Boolean.TRUE  when the items are ordered ascending
 	 * Boolean.False when the items are ordered descending
-	 * 
+	 *
 	 * @see streamIO.Float.IStreamIn_Float#getOrder()
 	 */
 	final static public Boolean IS_ASCENDING(final float[] items, final int start, final int stop) {
@@ -130,14 +143,16 @@ public class HunterFloat {
 		}
 	}
 	
-	/** 
+	/**
+	 * Determines whether the whole array is ascending, descending or unordered.
 	 * @return the Order of the Items in this Container
 	 * @see streamIO.Float.IStreamIn_Float#getOrder()
 	 */
-	final static public int GET_ORDER(final float[] items) { 
+	final static public int GET_ORDER(final float[] items) {
 		return GET_ORDER(items, 0, items.length); }
-	
-	/** 
+
+	/**
+	 * Determines the order of {@code items} between {@code start} and {@code stop}.
 	 * @return the Order of the Items in this Container ORDER_ASC_STRICT, ORDER_ASC or IStreamIn.ORDER_DESC
 	 * or the negated Index of the last offending Value
 	 * @see streamIO.Float.IStreamIn_Float#getOrder()
@@ -163,8 +178,10 @@ public class HunterFloat {
 			: IStreamIn.ORDER_DESC;
 	}
 	
-	/** 
-	 * @return the Order of the Items in this Container 
+	/**
+	 * Determines the order of {@code arr} between {@code start} and {@code stop}, also
+	 * distinguishing the constant case from strict monotonicity.
+	 * @return the Order of the Items in this Container
 	 * or the negated Index-2 of the last offending Value
 	 * @see streamIO.Float.IStreamIn_Float#getOrder()
 	 */
@@ -201,6 +218,7 @@ public class HunterFloat {
 	////////////////////////////////////////////////////////////////////////////////
 
 	/**
+	  * Ranks {@code arr}, allocating its own temporary and result arrays.
 	  * @param arr The Array to be ranked
 	  * @param tmp a temporary Array passed for Effectiveness (Reuse)
 	  * @param ret the Array to be returned passed for Effectiveness (Reuse)
@@ -210,6 +228,7 @@ public class HunterFloat {
 		return RANK(arr, new int[arr.length], new int[arr.length]); }
 
 	/**
+	  * Ranks {@code arr} by inverting its sort-index permutation.
 	  * @param arr The Array to be ranked
 	  * @param tmp a temporary Array passed for Effectiveness (Reuse)
 	  * @param ret the Array to be returned passed for Effectiveness (Reuse)
@@ -714,6 +733,7 @@ public class HunterFloat {
 	}
 	
 	/**
+	  * Computes the sort-index permutation of {@code arr}, allocating its own index array.
 	  * @param arr The Array to be ranked
 	  * @param tmp a temporary Array passed for Effectiveness (Reuse)
 	  * @param ret the Array to be returned passed for Effectiveness (Reuse)
@@ -855,7 +875,13 @@ public class HunterFloat {
 	 */
 	final static public int GET_STATISTIC_POS(final float[] items, final int[] index, final int start, final int stop, final int position) {
 		if (start >= stop) {
-			return start; } 
+			return start; }
+		// TODO: LOGIC: PARTITION is declared as PARTITION(values, index, stop, start) (see the
+		// 4-arg overload above), but this call passes (start, stop) - the two bounds are swapped
+		// positionally. Since start < stop is guaranteed here, PARTITION's internal "stop" ends up
+		// smaller than its internal "start", which almost always trips its `stop <= start + 1`
+		// short-circuit and returns the wrong split point, corrupting the indexed order-statistic
+		// (median/percentile) results computed through this overload.
 		final int q = PARTITION(items, index, start, stop); //after this all Elements
 		final int k = q - start + 1;
 		if (position <= k) {

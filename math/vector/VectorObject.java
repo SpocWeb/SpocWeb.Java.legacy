@@ -11,15 +11,24 @@ import java.util.ArrayList;
 import streamIO.copy.ICopyAble;
 
 /**
- * Dynamic Size Matrix of Objects: 
+ * Growable, index-addressable array of arbitrary {@link Object} elements, doubling as a
+ * flat backing store for 2D/3D rectangular multi-index access.
+ *
+ * <p>Dynamic Size Matrix of Objects:
  * variable Number of Objects
- * which is equivalent to ArrayList but resizing is more flexible. 
- * 
- * @see ArrayList which provides the same Functionality. 
+ * which is equivalent to ArrayList but resizing is more flexible.
+ *
+ * @see ArrayList which provides the same Functionality.
  * @author heuerm
  *
+ * <!-- docstate
+ * pass: 2
+ * mtime: 2026-09-05T12:45:43Z
+ * digest: fe1736b2d6f2ce6fad4d629bb9dbf9ee1bbbd3396b92e5e49a91a4c798bda0e5
+ * stale: false
+ * -->
  */
-public class VectorObject 
+public class VectorObject
 extends AVector {
 	
 	/**
@@ -28,10 +37,11 @@ extends AVector {
 	private static final long serialVersionUID = 1L;
 
 	/**
-	 * 
+	 * Creates an array of {@code size} newly constructed, empty {@link VectorObject} instances.
+	 *
 	 * @param size Size of the Array
-	 * @param capacity initial Capacity of each Vector 
-	 * @param increment Capacity Increment of each Vector 
+	 * @param capacity initial Capacity of each Vector
+	 * @param increment Capacity Increment of each Vector
 	 * @return a new, filled Array of VectorObjects
 	 */
 	final static public VectorObject[] FILLED_ARRAY(final int size, final int capacity, final int increment) {
@@ -82,7 +92,8 @@ extends AVector {
 	/// #region : Accessor Methods (getXXX/isXXX/setXXX)
 	////////////////////////////////////////////////////////////////////////////////
 
-	/** @return the item at the given Position as an Object */
+	/** Returns the item at the given position, delegating to {@link #getVectorAt(int)}.
+	 * @return the item at the given Position as an Object */
 	public Object getAt(final int i) { return getVectorAt(i); }
 	
 	/**Returns the component at the specified index.
@@ -153,9 +164,13 @@ extends AVector {
 	 * @exception  ArrayIndexOutOfBoundsException  if the index was invalid.
 	 */
 	public Object removeAt(final int index) {
+		// TODO: LOGIC: `--itemCount` runs as a side effect of evaluating the right operand of
+		// `||` whenever index >= 0; when index > the pre-decrement itemCount (out of range), the
+		// method still returns null here but itemCount has already been permanently decremented,
+		// corrupting the vector's size even though no element was actually removed.
 		if ((index < 0) ||
-			(index > --itemCount)) 
-			return null; 
+			(index > --itemCount))
+			return null;
 		final Object ret = items[index]; 
 		System.arraycopy(items, index+1, items, index, itemCount-index); 
 		return ret;
@@ -188,7 +203,8 @@ extends AVector {
 	/// for multidimensional rectangular Arrays 
 	////////////////////////////////////////////////////////////////////////////////
 
-	/** @return the Value at the given Position	 */
+	/** Returns the value at the given row/column position of this rectangular array.
+	 * @return the Value at the given Position	 */
 	public Object getAt(final int Row, final int Col) {
 		return items[Row * dimFactors[0] + Col * dimFactors[1]];
 	}
@@ -198,7 +214,8 @@ extends AVector {
 		items[Row * dimFactors[0] + Col * dimFactors[1]] = Value;
 	}
 
-	/** @return the Value at the given Position	 */
+	/** Returns the value at the given sheet/row/column position of this 3-dimensional array.
+	 * @return the Value at the given Position	 */
 	public Object getAt(final int Sheet, final int Row, final int Col) {
 		return items[Sheet * dimFactors[0] + Row * dimFactors[1] + Col * dimFactors[2]];
 	}
@@ -208,7 +225,8 @@ extends AVector {
 		items[Sheet * dimFactors[0] + Row * dimFactors[1] + Col * dimFactors[2]] = Value;
 	}
 
-	/** @return the Value at the given Position	 */
+	/** Returns the value at the position addressed by the given multi-index.
+	 * @return the Value at the given Position	 */
 	public Object getAt(final int[] Col) { return items[multiIndex(Col)]; }
 
 	/** sets the given Value 	 */
@@ -428,6 +446,10 @@ extends AVector {
 	 * @param   anArray   the array into which the components get copied.
 	 * Declared final, because System.arraycopy is the fastest way.	 */
 	final public synchronized void copyInto(int[] anArray) {
+		// TODO: LOGIC: `items` is an Object[] here (unlike VectorInt, whose items are int[]);
+		// copying it into an int[] destination via System.arraycopy throws ArrayStoreException
+		// at runtime on every call once itemCount > 0. This method was apparently copy-pasted
+		// from VectorInt without adjusting for VectorObject's element type.
 		System.arraycopy(items, 0, anArray, 0, itemCount);
 		/*Object elementDataLocal[] = this.Items;
 		for (int i = ItemCount; i-- > 0;)
@@ -441,6 +463,8 @@ extends AVector {
 	 * @param   anArray   the array into which the components get copied.	 */
 	final public synchronized int[] toArray() {
 		int[] Return = new int[itemCount];
+		// TODO: LOGIC: same ArrayStoreException hazard as copyInto(int[]) above: `items` is an
+		// Object[], not an int[], so this arraycopy throws at runtime once itemCount > 0.
 		System.arraycopy(items, 0, Return, 0, itemCount);
 		return Return;
 	}
@@ -517,6 +541,7 @@ extends AVector {
 		return ret;
 	}
 	
+	/** Deep-copies {@code _arg}'s elements and capacity settings into this instance. */
 	public void copyAt(final VectorObject _arg) {
 		capacityIncrement = _arg.capacityIncrement;
 		setCapacity(_arg.itemCount);
