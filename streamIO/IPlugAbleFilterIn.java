@@ -10,13 +10,10 @@ package streamIO;
 /**
  * Title: IConfigFilter<p>
  * Description:
- * Purpose:
- * A Filter whose Input Stream can be replaced during Runtime. 
- * This is necessary for a pluggable Architecture. 
- *
- * Design Decisions / Implementation Details:
- * If similar Classes exist (e.g. Polymorphism),
- * characterize the specific Differences to compare these.
+ * A Filter whose upstream Input Stream can be swapped out at Runtime via setStreamIn_(),
+ * instead of being fixed at Construction Time. This is necessary for a pluggable Architecture,
+ * e.g. to reconnect a Filter Chain to a different Source without rebuilding it.
+ * Counterpart to IPlugAbleFilterOut for the Output Side; combined by IPlugAbleFilter.
  *
  * Known SubClasses: <none>
  *
@@ -28,6 +25,15 @@ package streamIO;
  * @author mheuer
  * @version	1.0
  *
+ * <!-- docstate
+ * pass: 2
+ * mtime: 2026-09-05T10:41:24Z
+ * digest: 89052db693d719b701aa04d1b164f7ae6b35e7a410f39ccfdfcea75f53515f78
+ * stale: false
+ * tags: [code/iterator]
+ * concepts: [Pluggable Filter Input Interface]
+ * facets: {layer: infrastructure, status: legacy, complexity: low}
+ * -->
  */
 public interface IPlugAbleFilterIn 
 extends IIStreamIn {

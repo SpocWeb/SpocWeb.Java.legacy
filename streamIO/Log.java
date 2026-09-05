@@ -111,6 +111,15 @@ import java.util.logging.Logger;
   * Does not implement the Interface
   * @see IFormatOut
   * because it does not enforce a certain Formatting.
+  * <!-- docstate
+  * pass: 2
+  * mtime: 2026-09-05T10:54:24Z
+  * digest: d45324ee8c057fe0ebfc7029448c0b07b13fa27a19711ff699051f8cb49b57af
+  * stale: false
+  * tags: [code/logging, code/date_formatting]
+  * concepts: [Logging Framework]
+  * facets: {layer: infrastructure, status: broken, complexity: medium}
+  * -->
   */
 final public class Log 
 extends StreamOutPrimitive {
@@ -158,18 +167,25 @@ extends StreamOutPrimitive {
 	/// Compatibility to Log4J
 	/////////////////////////////////////////////////////////////////////////////////////
 	
+	/** Log Level for a fatal Error that aborts the Application, matching Log4J's FATAL. */
 	final static public int LEVEL_FATAL = 50000;
-	
+
+	/** Log Level for a caught or runtime Error that does not necessarily abort the Application, matching Log4J's ERROR. */
 	final static public int LEVEL_ERROR = 40000;
-	
+
+	/** Log Level for a Warning, matching Log4J's WARN. */
 	final static public int LEVEL_WARN = 30000;
-	
+
+	/** Log Level for informational Messages, matching Log4J's INFO. */
 	final static public int LEVEL_INFO = 20000;
-	
+
+	/** Log Level for Debugging Output, matching Log4J's DEBUG. */
 	final static public int LEVEL_DEBUG = 0;
-	
+
+	/** Log Level below {@link #LEVEL_DEBUG} for Trace Stack Output. */
 	final static public int LEVEL_TRACE = -1;
-	
+
+	/** Log Level below {@link #LEVEL_TRACE}, reserved for Test-only Output. */
 	final static public int LEVEL_TEST = -2;
 	
 	/////////////////////////////////////////////////////////////////////////////////////
@@ -239,19 +255,22 @@ extends StreamOutPrimitive {
 	/** Counter for the Object IDs 	 */
 	protected static int ID;
 	
-	/** @return a String with XML formatted Date and Time */
+	/** Date-Time Pattern (SimpleDateFormat syntax) used to format Dates in {@link #GET_XML_DATE()} and {@link #GET_XML_DATE(Date)}. */
 	public static String XML_DATE_FORMAT = "yyyy.MM.dd'T'HH:mm:ss.SSS";
 	//also get the MilliSeconds!
-	
-	/** @return a String with XML formatted Date and Time */
+
+	/** Shared {@link DateFormat} instance, initialized from {@link #XML_DATE_FORMAT}, used to render Dates for logging. */
+	// TODO: LOGIC: SimpleDateFormat is not thread-safe, but this single static instance is shared and called from GET_XML_DATE()/GET_XML_DATE(Date) across all Loggers and Threads; concurrent calls can corrupt the formatted output or throw.
 	public static DateFormat XML_DATE_FORMATTER =
 		new SimpleDateFormat(XML_DATE_FORMAT);
-	
-	/** @return a String with XML formatted Date and Time */
+
+	/** Formats the given Date using {@link #XML_DATE_FORMAT}.
+	 * @return a String with XML formatted Date and Time */
 	final static public String GET_XML_DATE(Date dat) {
 		return XML_DATE_FORMATTER.format(dat); }
-	
-	/** @return a String with XML formatted current Date and Time */
+
+	/** Formats the current Date and Time using {@link #XML_DATE_FORMAT}.
+	 * @return a String with XML formatted current Date and Time */
 	final static public String GET_XML_DATE() {
 		return XML_DATE_FORMATTER.format(new Date()); }
 	
@@ -289,7 +308,7 @@ extends StreamOutPrimitive {
 	 * Here it can be explicitly and dynamically switched on and off
 	 * e.g. to increase Performance in non-critical Sections.
 	 */
-	public boolean flushLog = false; //könnte auch durch den OutputStream bestimmt werden!
+	public boolean flushLog = false; //kï¿½nnte auch durch den OutputStream bestimmt werden!
 	
 	/** Prefix used to prepend the Entries */
 	public Object prefixLine = "";
@@ -321,7 +340,8 @@ extends StreamOutPrimitive {
 	/** Threshold for interactively notifying the User 	*/
 	//	public int ThresholdNotify;
 	
-	/** @return The Output streamIO, could be used to test for null	*/
+	/** Returns the underlying Output Stream this Logger writes to.
+	 * @return The Output streamIO, could be used to test for null	*/
 	public OutputStream getOut() { return out; }
 	
 	/** Sets a new Output streamIO, the old one is flushed.
@@ -531,6 +551,7 @@ extends StreamOutPrimitive {
 	 * @param arg the Object to log
 	 * @return always true to allow for using it with the 'assert' Statement!
 	 */
+	// TODO: LOGIC: debug() logs at LEVEL_ERROR instead of LEVEL_DEBUG (copy-paste from error()); messages logged via debug() are misclassified as errors.
 	public boolean debug(final Object arg){ this.n(arg, LEVEL_ERROR); return true; }
 	
 	/**Method to log on the Info Level
@@ -938,15 +959,16 @@ extends StreamOutPrimitive {
 	public void f() { //if (flushLog)
 		flush(); }
 	
-	/** 
-	 * @return true when this Logger would currently log at it's Default Level! 
+	/**
+	 * Tests whether this Logger would currently log at its {@link #defaultLevel}.
+	 * @return true when this Logger would currently log at it's Default Level!
 	 */
 	final public boolean logs() { return logs(defaultLevel); }
-	
-	/** 
-	 * 
-	 * @param level
-	 * @return true when this Logger would currently log at this Level! 
+
+	/**
+	 * Tests whether this Logger would currently log at the given Level.
+	 * @param level the Level to test, compared against {@link #thresholdLog}
+	 * @return true when this Logger would currently log at this Level!
 	 */
 	final public boolean logs(final int level) {
 		if (!doLog) 
@@ -1289,6 +1311,7 @@ extends StreamOutPrimitive {
 	/** Adds a new Log Entry Line for entering or exiting a Method
 	  * The Log Object is returned to allow for concatenating e.g. Parameters. 
 	  */
+	// TODO: LOGIC: ignores the 'level' parameter and always compares 0 < thresholdLog instead of 'level < thresholdLog', unlike the sibling overloads; a caller passing a level below thresholdLog to suppress logging will still have it logged (and vice versa for a level above 0).
 	public Log enter(final boolean enter, final String methodName, final int level) {
 		if (!doLog)
 			return this;

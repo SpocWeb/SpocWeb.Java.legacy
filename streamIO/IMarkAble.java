@@ -23,6 +23,15 @@ package streamIO;
  * Created on	10-26-2002, 12:47 PM<p>
  * @author heuerm
  * @version	1.0
+ * <!-- docstate
+ * pass: 2
+ * mtime: 2026-09-05T10:13:24Z
+ * digest: 907fb959042f896a4c4c7690e473790144ae6f1db7f8ac345d3a99012549b2b1
+ * stale: false
+ * tags: [code/stream_positioning]
+ * concepts: [Mark/Reset Interface]
+ * facets: {layer: infrastructure, status: legacy, complexity: low}
+ * -->
  */
 public interface IMarkAble 
 extends IReSetAble {

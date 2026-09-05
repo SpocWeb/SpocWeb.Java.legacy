@@ -6,13 +6,10 @@ import java.io.PrintStream;
 /**
   * Title: RunnablePrinter<p>
   * Description:
-  * Purpose:
-  * Prints a String to the given streamIO each time run
-  * Purpose / Responsibilities of this Class
-  *
-  * Design Decisions / Implementation Details:
-  * If similar Classes exist (e.g. Polymorphism),
-  * characterize the specific Differences to compare these.
+  * A Runnable that prints a fixed String to a given PrintStream each time it is run(),
+  * inserting a line break once the running Position exceeds the configured Line Size.
+  * Useful e.g. as a HeartBeat Callback (see Assert.DEFAULT_HEARTBEAT) to print a Progress Marker
+  * on every call without wrapping Output into unreadably long single Lines.
   *
   * Known SubClasses: <none>
   *
@@ -23,10 +20,20 @@ import java.io.PrintStream;
   * Created on	10-20-2002, 09:49 PM<p>
   * @author 	Matthias Heuer
   * @version	1.0
+  * <!-- docstate
+  * pass: 2
+  * mtime: 2026-09-05T10:54:29Z
+  * digest: 0dc8ee42d0bf8909339ddd526737baa45d908f7401f688917151e5920635c8d9
+  * stale: false
+  * tags: [code/output_stream]
+  * concepts: [Runnable Line Printer]
+  * facets: {layer: infrastructure, status: legacy, complexity: low}
+  * -->
   */
 public class RunnablePrinter
 implements Runnable {
 
+	/** Default maximum Line Length before {@link #run()} inserts a Line Break. */
 	public static int LINE_SIZE_DEFAULT = 80;
 
 	////////////////////////////////////////////////////////////////////////////////

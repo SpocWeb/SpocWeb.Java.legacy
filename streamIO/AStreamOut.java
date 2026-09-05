@@ -26,6 +26,15 @@ import tester.process.StreamProcessor;
  *
  * @author  Matthias Heuer
  * @version
+ * <!-- docstate
+ * pass: 2
+ * mtime: 2026-09-05T10:53:58Z
+ * digest: 5bd815be3ca886f34c1bf82ebf48dd92a08af8d16c3f7752b60ee1bac6927dde
+ * stale: false
+ * tags: [code/output_stream]
+ * concepts: [Output Stream Base Class]
+ * facets: {layer: infrastructure, status: legacy, complexity: low}
+ * -->
  */
 public abstract class AStreamOut
 implements IStreamOut {
@@ -367,7 +376,8 @@ implements IStreamOut {
 	  * The Type of Item is not analyzed, i.e. Containers are added as is.	   */
 	public long addItems(IIStreamIn Iter) { return STREAM(Iter, this); }
 
-	/** @see streamIO.IStreamOut#flush()	 */
+	/** Default no-op implementation; subclasses that buffer Output should override this to actually flush it.
+	 * @see streamIO.IStreamOut#flush()	 */
 	public void flush() throws IOException { }
 	
 }

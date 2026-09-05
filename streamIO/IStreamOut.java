@@ -17,6 +17,15 @@ import java.io.OutputStream;
   *
   * @author  Matthias Heuer
   * @version
+  * <!-- docstate
+  * pass: 2
+  * mtime: 2026-09-05T10:13:24Z
+  * digest: 5546862285d0b85316ed8a5a76a6f1619c45d7b0d811dc47a40a0050e81d0cfc
+  * stale: false
+  * tags: [code/output_stream]
+  * concepts: [Output Stream Interface]
+  * facets: {layer: infrastructure, status: legacy, complexity: low}
+  * -->
   */
 public interface IStreamOut
 	extends IIStreamOut {
@@ -60,6 +69,15 @@ public interface IStreamOut
  * Instance of a Null Device that takes any Input and ignores/destroys it
  * Simple Helper Class to avoid complicated Workarounds
  * Always symbolizes an empty Output streamIO.
+ * <!-- docstate
+ * pass: 2
+ * mtime: 2026-09-05T10:13:24Z
+ * digest: 2e6f8f70a3c9ecf586e2552e59d927b04635822ef5a47f413b95fdcd7b1a8cb8
+ * stale: false
+ * tags: [code/output_stream]
+ * concepts: [Null Output Stream]
+ * facets: {layer: infrastructure, status: legacy, complexity: low}
+ * -->
  */
 class DevNullOut
 extends OutputStream

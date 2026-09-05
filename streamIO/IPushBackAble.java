@@ -22,6 +22,15 @@ package streamIO;
  * Created on	10-26-2002, 12:47 PM<p>
  * @author heuerm
  * @version	1.0
+ * <!-- docstate
+ * pass: 2
+ * mtime: 2026-09-05T10:13:24Z
+ * digest: c5b8d6fcded01676fc8d5b53d40b37afa842e01fe67f02c8822f478de0c9e163
+ * stale: false
+ * tags: [code/stream_positioning]
+ * concepts: [Push-Back Interface]
+ * facets: {layer: infrastructure, status: legacy, complexity: low}
+ * -->
  */
 public interface IPushBackAble {
 

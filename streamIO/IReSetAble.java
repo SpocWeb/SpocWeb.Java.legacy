@@ -24,6 +24,15 @@ package streamIO;
  * Created on	10-26-2002, 12:47 PM<p>
  * @author heuerm
  * @version	1.0
+ * <!-- docstate
+ * pass: 2
+ * mtime: 2026-09-05T10:13:24Z
+ * digest: 794b44e625c9b6758ad90b2960f0ed566625b0af9b043f9e3e62bc3d99364db0
+ * stale: false
+ * tags: [code/stream_positioning]
+ * concepts: [Reset Interface]
+ * facets: {layer: infrastructure, status: legacy, complexity: low}
+ * -->
  */
 public interface IReSetAble 
 extends IAvailAble, IPushBackAble {

@@ -22,6 +22,15 @@ package streamIO;
  * @author mheuer
  * @version	1.0
  *
+ * <!-- docstate
+ * pass: 2
+ * mtime: 2026-09-05T10:13:24Z
+ * digest: 79d4ccd4a8369fea6e0e9c0c44755922aee80ba72e15337a49d881a465c1578e
+ * stale: false
+ * tags: [code/output_stream]
+ * concepts: [Pluggable Filter Output Interface]
+ * facets: {layer: infrastructure, status: legacy, complexity: low}
+ * -->
  */
 public interface IPlugAbleFilterOut 
 extends IIStreamOut {

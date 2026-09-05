@@ -20,6 +20,15 @@ package streamIO;
  * Created on	10-26-2002, 12:47 PM<p>
  * @author heuerm
  * @version	1.0
+ * <!-- docstate
+ * pass: 2
+ * mtime: 2026-09-05T10:54:03Z
+ * digest: fe249bbb4d3f06a5b4971106bd560e4b0d8c81b8336ea9aae3016541e4050334
+ * stale: false
+ * tags: [code/iterator]
+ * concepts: [Ordered Item Interface]
+ * facets: {layer: infrastructure, status: legacy, complexity: low}
+ * -->
  */
 public interface IOrdered {
 
@@ -30,7 +39,8 @@ public interface IOrdered {
 	  * Monotonous is implicitly sorted!	 */
 	//	public boolean isMonotonous();
 	
-	/** @return the Order in which Elements are returned by the Iterators
+	/** Returns the Order in which Elements are returned by this Iterator, one of the {@code ORDER_*} constants defined here.
+	  * @return the Order in which Elements are returned by the Iterators
 	  * when they are added using addItem() and removed using nextItem().	 */
 	public byte getOrder();
 

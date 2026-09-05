@@ -14,6 +14,15 @@ package streamIO;
   *
   * @author  Matthias Heuer
   * @version
+  * <!-- docstate
+  * pass: 2
+  * mtime: 2026-09-05T10:13:24Z
+  * digest: d36132cd70ea67ea3a73528d894335a413523b20dd93752c85f138e19157d190
+  * stale: false
+  * tags: [code/output_stream]
+  * concepts: [Item Output Stream Interface]
+  * facets: {layer: infrastructure, status: legacy, complexity: low}
+  * -->
   */
 public interface IIStreamOut
 //extends InstantiAble

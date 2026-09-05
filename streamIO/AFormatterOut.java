@@ -18,6 +18,15 @@ import java.io.PrintStream;
   * Created on 06-03-2001, 03:57 PM<p>
   * @author 	Matthias Heuer
   * @version 1.0
+  * <!-- docstate
+  * pass: 2
+  * mtime: 2026-09-05T10:13:24Z
+  * digest: dc9d088a24570ca2d2ee3adef75c3bcd9e08a25b7b3ee99d54d4be259991df5c
+  * stale: false
+  * tags: [code/output_stream]
+  * concepts: [Formatted Output Stream Base]
+  * facets: {layer: infrastructure, status: legacy, complexity: low}
+  * -->
   */
 public abstract class AFormatterOut
 extends AStreamOut

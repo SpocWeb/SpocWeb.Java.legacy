@@ -49,11 +49,20 @@ package streamIO;
   * Mostly they are only accessible sequentially (slow)
   * The Memory is distributed on the Heap which results in Cache-Failures
   *
-  * Created on 3. März 2001, 10:48
+  * Created on 3. Mï¿½rz 2001, 10:48
   *
   * @author  Matthias Heuer
   * @version
   * @stereotype enumeration
+  * <!-- docstate
+  * pass: 2
+  * mtime: 2026-09-05T10:13:24Z
+  * digest: 1836aebb8f07dcb37d1f97f30a96938c57ff803af9ee1d3faeca81cc0e7979fd
+  * stale: false
+  * tags: [code/iterator]
+  * concepts: [Item Input Stream Interface]
+  * facets: {layer: infrastructure, status: legacy, complexity: low}
+  * -->
   */
 public interface IIStreamIn
 extends IFactory {
@@ -88,7 +97,8 @@ extends IFactory {
 	//	Methods
 	////////////////////////////////////////////////////////////////////////////
 	
-	/** @return true if the streamIO is still valid, 
+	/** Reports whether this Stream is still valid, i.e. no more Items have been retrieved via {@link #nextItem()} than the Stream actually contains.
+	 * @return true if the streamIO is still valid,
 	 * i.e. not more Items were retrieved than there were in this streamIO. 
 	 * 
 	 * It should be used to test Streams with no unique End Result for their End like in

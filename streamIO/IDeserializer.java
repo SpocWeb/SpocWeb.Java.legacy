@@ -21,6 +21,15 @@ import java.io.InputStream;
   * @author 	Matthias Heuer
   * @version	1.0
   * @stereotype enumeration
+  * <!-- docstate
+  * pass: 2
+  * mtime: 2026-09-05T10:13:24Z
+  * digest: 12f8ba0cc1a64e9f2316d8d87bb74d0afdef528294179b2503eb1b59d66577a9
+  * stale: false
+  * tags: [code/factory_pattern]
+  * concepts: [Deserializer Interface]
+  * facets: {layer: infrastructure, status: legacy, complexity: low}
+  * -->
   */
 public interface IDeserializer
 extends IIStreamIn {

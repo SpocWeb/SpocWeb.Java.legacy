@@ -12,6 +12,15 @@ package streamIO;
  *
  * @author  Matthias Heuer
  * @version
+ * <!-- docstate
+ * pass: 2
+ * mtime: 2026-09-05T10:13:24Z
+ * digest: d60b0bfad3ad37560ff5ca671f49adac9b29e011df9cbb2866d49ef9cabcc4b2
+ * stale: false
+ * tags: [code/output_stream]
+ * concepts: [Filtering Output Stream]
+ * facets: {layer: infrastructure, status: legacy, complexity: low}
+ * -->
  */
 public class FilterOut
 extends AStreamOut {

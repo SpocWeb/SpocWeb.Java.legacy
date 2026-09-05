@@ -8,6 +8,15 @@ import tester.process.StreamProcessor;
 //import Stream.IStreamIn;
 
 /** Abstract Processor just performing the nextItem() Operation
+  * <!-- docstate
+  * pass: 2
+  * mtime: 2026-09-05T10:13:24Z
+  * digest: 77136d3616f76d5193782e5cb2733c7f78e2ca0e49266e25bac736a39d5e3bbe
+  * stale: false
+  * tags: [code/iterator]
+  * concepts: [Stream Input Runner]
+  * facets: {layer: infrastructure, status: legacy, complexity: low}
+  * -->
   * in either single Step or until no Items are available anymore. */
 public class StreamInRunner
 implements Runnable {

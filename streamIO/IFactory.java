@@ -30,6 +30,15 @@ package streamIO;
   * Created on	09-28-2002, 06:10 PM<p>
   * @author 	Matthias Heuer
   * @version	1.0
+  * <!-- docstate
+  * pass: 2
+  * mtime: 2026-09-05T10:54:00Z
+  * digest: 77b01132b31cd3fbb733bdaeaa2db3d4c9933993ab25b3279468164ec1f0c221
+  * stale: false
+  * tags: [code/factory_pattern]
+  * concepts: [Item Factory Interface]
+  * facets: {layer: infrastructure, status: legacy, complexity: low}
+  * -->
   */
 public interface IFactory {
 
@@ -37,7 +46,8 @@ public interface IFactory {
 	/// #region : public Methods
 	////////////////////////////////////////////////////////////////////////////////
 	
-	/** @return the next (Parent) Object of this one.
+	/** Returns the next Object produced by this Factory, blocking if necessary until one becomes available.
+	  * @return the next (Parent) Object of this one.
 	  * No Exception is thrown at the End, instead EOI is returned.
 	  * When IO Processes are bound to this streamIO, IOException is wrapped into an IOError.
 	  * This is less explicit, but much faster because Exception Handling can be extremely slow.

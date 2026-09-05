@@ -334,3 +334,33 @@ synch/property/UIProperty.java:UIProperty	class	synch/property/UIProperty.java	c
 synch/property/testProperty.java:testProperty	class	synch/property/testProperty.java	code/attached_property	Scratch Test Class	test	unfinished	low
 synch/property/testProperty.java:testProperty.main(String[])	method	synch/property/testProperty.java	code/attached_property	Scratch Test Entry Point	test	unfinished	low
 synch/writeOnceProperty.java:writeOnceProperty	class	synch/writeOnceProperty.java	code/attached_property	Write-Once Property Wrapper	domain	legacy	low
+streamIO	folder	streamIO	code/stream_positioning,code/logging,code/assertion_framework	Stream I/O Base Interfaces	infrastructure	legacy	medium
+streamIO/AFormatterOut.java:AFormatterOut	class	streamIO/AFormatterOut.java	code/output_stream	Formatted Output Stream Base	infrastructure	legacy	low
+streamIO/AMarkAble.java:AMarkAble	class	streamIO/AMarkAble.java	code/stream_positioning	Mark/Reset Base Class	infrastructure	legacy	low
+streamIO/AReSetAble.java:AReSetAble	class	streamIO/AReSetAble.java	code/stream_positioning	Reset/Jump Base Class	infrastructure	broken	low
+streamIO/Assert.java:Assert	class	streamIO/Assert.java	code/assertion_framework,code/tolerance_comparison	Assertion Framework	infrastructure	legacy	medium
+streamIO/AStreamOut.java:AStreamOut	class	streamIO/AStreamOut.java	code/output_stream	Output Stream Base Class	infrastructure	legacy	low
+streamIO/FilterOut.java:FilterOut	class	streamIO/FilterOut.java	code/output_stream	Filtering Output Stream	infrastructure	legacy	low
+streamIO/IAvailAble.java:IAvailAble	class	streamIO/IAvailAble.java	code/stream_positioning	Availability Interface	infrastructure	legacy	low
+streamIO/IDeserializer.java:IDeserializer	class	streamIO/IDeserializer.java	code/factory_pattern	Deserializer Interface	infrastructure	legacy	low
+streamIO/IFactory.java:IFactory	class	streamIO/IFactory.java	code/factory_pattern	Item Factory Interface	infrastructure	legacy	low
+streamIO/IFormatOut.java:IFormatOut	class	streamIO/IFormatOut.java	code/output_stream	Format Output Interface	infrastructure	legacy	low
+streamIO/IInstantiAble.java:IInstantiAble	class	streamIO/IInstantiAble.java	code/factory_pattern	Instantiable Interface	infrastructure	legacy	low
+streamIO/IIStreamIn.java:IIStreamIn	class	streamIO/IIStreamIn.java	code/iterator	Item Input Stream Interface	infrastructure	legacy	low
+streamIO/IIStreamOut.java:IIStreamOut	class	streamIO/IIStreamOut.java	code/output_stream	Item Output Stream Interface	infrastructure	legacy	low
+streamIO/IIterAble.java:IIterAble	class	streamIO/IIterAble.java	code/iterator	Iterable Interface	infrastructure	legacy	low
+streamIO/IMarkAble.java:IMarkAble	class	streamIO/IMarkAble.java	code/stream_positioning	Mark/Reset Interface	infrastructure	legacy	low
+streamIO/IOrdered.java:IOrdered	class	streamIO/IOrdered.java	code/iterator	Ordered Item Interface	infrastructure	legacy	low
+streamIO/IPlugAbleFilter.java:IPlugAbleFilter	class	streamIO/IPlugAbleFilter.java	code/output_stream	Pluggable Filter Interface	infrastructure	legacy	low
+streamIO/IPlugAbleFilterIn.java:IPlugAbleFilterIn	class	streamIO/IPlugAbleFilterIn.java	code/iterator	Pluggable Filter Input Interface	infrastructure	legacy	low
+streamIO/IPlugAbleFilterOut.java:IPlugAbleFilterOut	class	streamIO/IPlugAbleFilterOut.java	code/output_stream	Pluggable Filter Output Interface	infrastructure	legacy	low
+streamIO/IPushBackAble.java:IPushBackAble	class	streamIO/IPushBackAble.java	code/stream_positioning	Push-Back Interface	infrastructure	legacy	low
+streamIO/IReSetAble.java:IReSetAble	class	streamIO/IReSetAble.java	code/stream_positioning	Reset Interface	infrastructure	legacy	low
+streamIO/IStreamIn_String.java:IStreamIn_String	class	streamIO/IStreamIn_String.java	code/iterator	String Input Stream Interface	infrastructure	legacy	low
+streamIO/IStreamOut.java:IStreamOut	class	streamIO/IStreamOut.java	code/output_stream	Output Stream Interface	infrastructure	legacy	low
+streamIO/IStreamOut.java:DevNullOut	class	streamIO/IStreamOut.java	code/output_stream	Null Output Stream	infrastructure	legacy	low
+streamIO/Log.java:Log	class	streamIO/Log.java	code/logging,code/date_formatting	Logging Framework	infrastructure	broken	medium
+streamIO/RunnablePrinter.java:RunnablePrinter	class	streamIO/RunnablePrinter.java	code/output_stream	Runnable Line Printer	infrastructure	legacy	low
+streamIO/StreamInRunner.java:StreamInRunner	class	streamIO/StreamInRunner.java	code/iterator	Stream Input Runner	infrastructure	legacy	low
+streamIO/StreamOutPrimitive.java:StreamOutPrimitive	class	streamIO/StreamOutPrimitive.java	code/output_stream	Primitive Output Stream Base	infrastructure	legacy	medium
+streamIO/StringBufferOutputStream.java:StringBufferOutputStream	class	streamIO/StringBufferOutputStream.java	code/output_stream	StringBuffer-Backed Output Stream	infrastructure	broken	medium

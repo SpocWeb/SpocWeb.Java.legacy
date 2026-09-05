@@ -35,6 +35,15 @@ import streamIO.real.IStreamOutFloat;
   * Created on	2001-06-19, 11;59;04<p>
   * @author 	Matthias Heuer
   * @version	1.0
+  * <!-- docstate
+  * pass: 2
+  * mtime: 2026-09-05T10:55:21Z
+  * digest: f3b6bcb8e26a19132c4ea0f2410088a5b4a8fa87ad0ac36c65a8bc6cc09006d5
+  * stale: false
+  * tags: [code/output_stream]
+  * concepts: [StringBuffer-Backed Output Stream]
+  * facets: {layer: infrastructure, status: broken, complexity: medium}
+  * -->
   */
 public class StringBufferOutputStream
 extends OutputStream
@@ -97,7 +106,8 @@ implements IStreamOutByte, IStreamOut, IStreamOutFloat, IStreamOutInt, IStreamOu
 	// Interface Object
 	/////////////////////////////////////////////////////////////////////////////////
 
-	/** @see java.lang.Object#toString()	 */
+	/** Returns the assembled String held in the internal buffer.
+	 * @see java.lang.Object#toString()	 */
 	public String toString() { return buffer.toString(); }
 	
 	////////////////////////////////////////////////////////////////////////////////
@@ -149,17 +159,20 @@ implements IStreamOutByte, IStreamOut, IStreamOutFloat, IStreamOutInt, IStreamOu
 	// Interface IStreamOutByte
 	/////////////////////////////////////////////////////////////////////////////////
 	
-	/** @see streamIO.Byte.IStreamOutByte#addString(char[], int, int)	 */
+	/** Appends {@code len} Characters from the given array starting at {@code off} to the internal buffer.
+	 * @see streamIO.Byte.IStreamOutByte#addString(char[], int, int)	 */
 	public void write(final char[] b, final int off, final int len) {
 		buffer.append(b, off, len); }
-	
-	/** @see streamIO.Byte.IStreamOutByte#addString(char[])	 */
+
+	/** Appends the given char array to the internal buffer.
+	 * @see streamIO.Byte.IStreamOutByte#addString(char[])	 */
 	public void write(final char[] b) { buffer.append(b); }
 	
 	/** @see streamIO.Byte.IStreamOutByte#addItem(int[])	 */
 	//public void addItem(final int[] b) { buffer.append(b); }
 	
-	/** @see streamIO.Byte.IStreamOutByte#addString(String)	 */
+	/** Appends the given String to the internal buffer.
+	 * @see streamIO.Byte.IStreamOutByte#addString(String)	 */
 	public void write(final String b) { buffer.append(b); }
 	
 	/** @see streamIO.Byte.IStreamOutByte#addItem(int[], int, int)	 */
@@ -171,7 +184,8 @@ implements IStreamOutByte, IStreamOut, IStreamOutFloat, IStreamOutInt, IStreamOu
 		}
 	}
 	*/
-	/** @see streamIO.Byte.IStreamOutByte#addString(String, int, int)	 */
+	/** Appends {@code len} Characters from the given String starting at index {@code off} to the internal buffer.
+	 * @see streamIO.Byte.IStreamOutByte#addString(String, int, int)	 */
 	public void write(final String b, final int off, int len) throws IOException {
 		len += off; 
 		for (int i = off-1; ++i < len;) 
@@ -182,24 +196,30 @@ implements IStreamOutByte, IStreamOut, IStreamOutFloat, IStreamOutInt, IStreamOu
 	// Interface IStreamOutChar
 	/////////////////////////////////////////////////////////////////////////////////
 
-	/** @see streamIO.integer.IStreamOutChar#getStreamOutByte()	 */
+	/** Returns this Object itself, since {@code StringBufferOutputStream} already implements {@link IStreamOutByte}.
+	 * @see streamIO.integer.IStreamOutChar#getStreamOutByte()	 */
 	public IStreamOutByte getStreamOutByte() { return this;	} //.out; }
 
-	/** @see IStreamOutPrimitive#addChar(char)	 */
+	/** Appends the given Character to the internal buffer.
+	 * @see IStreamOutPrimitive#addChar(char)	 */
 	public IStreamOutChar addChar(final char value) {
-		buffer.append(value); 
+		buffer.append(value);
 		return this; }
 
-	/** @see streamIO.Byte.IStreamOutByte#addString(StringBuffer, int, int)	 */
+	/** Appends Characters {@code start} through {@code stop} of the given StringBuffer to the internal buffer.
+	 * @see streamIO.Byte.IStreamOutByte#addString(StringBuffer, int, int)	 */
 	public IStreamOutChar addBuffer(final StringBuffer b, final int stop, final int start) {
-		AStreamOutByte.WRITE_SAFE(this, b, stop, start); 
+		AStreamOutByte.WRITE_SAFE(this, b, stop, start);
 		return this; }
-	
-	/** @see streamIO.Byte.IStreamOutByte#addString(StringBuffer)	 */
+
+	/** Appends the first {@code stop} Characters of the given StringBuffer to the internal buffer.
+	 * @see streamIO.Byte.IStreamOutByte#addString(StringBuffer)	 */
+	// TODO: LOGIC: calls addBuffer(b, 0, stop), but the 3-arg overload's parameters are (b, stop, start) - this passes stop=0 and start=the caller's stop value, the reverse of what the sibling addString(String, int) does ("return addString(b, stop, 0)"). For any stop > 0 the loop condition in AStreamOutByte.WRITE_SAFE(this, b, 0, stop) sees start > stop and appends nothing, so this overload silently writes no Characters.
 	public IStreamOutChar addBuffer(final StringBuffer b, final int stop) {
 		return addBuffer(b, 0, stop); }
-	
-	/** @see streamIO.Byte.IStreamOutByte#addString(StringBuffer)	 */
+
+	/** Appends the entire given StringBuffer to the internal buffer.
+	 * @see streamIO.Byte.IStreamOutByte#addString(StringBuffer)	 */
 	public IStreamOutChar addBuffer(final StringBuffer b) {
 		return addBuffer(b, b.length()); }
 	
@@ -227,14 +247,17 @@ implements IStreamOutByte, IStreamOut, IStreamOutFloat, IStreamOutInt, IStreamOu
 		return this; 
 	}
 	
-	/** @see streamIO.integer.IStreamOutByte#addString(java.lang.String)	 */
-	public IStreamOutChar addString(final String b) { return addString(b, b.length()); } 
+	/** Appends the entire given String to the internal buffer.
+	 * @see streamIO.integer.IStreamOutByte#addString(java.lang.String)	 */
+	public IStreamOutChar addString(final String b) { return addString(b, b.length()); }
 
-	/** @see streamIO.integer.IStreamOutByte#addString(java.lang.String, int)	 */
+	/** Appends the first {@code stop} Characters of the given String to the internal buffer.
+	 * @see streamIO.integer.IStreamOutByte#addString(java.lang.String, int)	 */
 	public IStreamOutChar addString(final String b, final int stop) {
-		return addString(b, stop, 0); } 
+		return addString(b, stop, 0); }
 
-	/** @see streamIO.integer.IStreamOutByte#addString(java.lang.String, int, int)	 */
+	/** Appends Characters {@code start} through {@code stop} of the given String to the internal buffer.
+	 * @see streamIO.integer.IStreamOutByte#addString(java.lang.String, int, int)	 */
 	public IStreamOutChar addString(final String b, final int stop, final int start) {
 		for (int i = start-1; ++i < stop;)
 			buffer.append(b.charAt(i)); 
@@ -244,53 +267,63 @@ implements IStreamOutByte, IStreamOut, IStreamOutFloat, IStreamOutInt, IStreamOu
 	// Interface IStreamOut
 	/////////////////////////////////////////////////////////////////////////////////
 
-	/** @see streamIO.IIStreamOut#addItem(java.lang.Object)	 */
+	/** Appends the String representation of the given Object to the internal buffer.
+	 * @see streamIO.IIStreamOut#addItem(java.lang.Object)	 */
 	public IIStreamOut addItem(Object arg) { this.buffer.append(arg); return this; }
 
-	/** @see streamIO.IStreamOut#addItems(java.lang.Object)	 */
+	/** Adds the given Object (or, if it is an Array, its Elements flattened one Level deep) to this Stream.
+	 * @see streamIO.IStreamOut#addItems(java.lang.Object)	 */
 	public long addItems(final Object arg) { return AStreamOut.ADD_ITEMS(this, arg, 1); }
-	
-	/** @see streamIO.IStreamOut#addItems(java.lang.Object, int)	 */
-	public long addItems(final Object arg, final int flatDepth) { 
+
+	/** Adds the given Object, recursively flattening nested Arrays up to the given Depth.
+	 * @see streamIO.IStreamOut#addItems(java.lang.Object, int)	 */
+	public long addItems(final Object arg, final int flatDepth) {
 		return AStreamOut.ADD_ITEMS(this, arg, flatDepth); }
 
-	/** @see streamIO.IStreamOut#addItems(java.lang.Object[])	 */
+	/** Adds each Element of the given Array to this Stream without further Analysis.
+	 * @see streamIO.IStreamOut#addItems(java.lang.Object[])	 */
 	public long addItems(final Object[] arg) { return AStreamOut.ADD_ITEMS(this, arg); }
-	
-	/** @see streamIO.IStreamOut#addItems(streamIO.IIStreamIn)	 */
+
+	/** Adds every Item retrieved from the given Iterator to this Stream.
+	 * @see streamIO.IStreamOut#addItems(streamIO.IIStreamIn)	 */
 	public long addItems(final IIStreamIn arg) { return AStreamOut.STREAM(arg, this); }
 
 	/////////////////////////////////////////////////////////////////////////////////
 	// Interface IStreamOutFloat
 	/////////////////////////////////////////////////////////////////////////////////
 	
-	/** @see streamIO.real.IStreamOutFloat#addFloat(float)	 */
+	/** Appends the given float Value to the internal buffer.
+	 * @see streamIO.real.IStreamOutFloat#addFloat(float)	 */
 	public IStreamOutFloat addFloat(final float value) {
-		buffer.append(value); 
+		buffer.append(value);
 		return this; }
-	
-	/** @see streamIO.real.IStreamOutFloat#addDouble(double)	 */
+
+	/** Appends the given double Value to the internal buffer.
+	 * @see streamIO.real.IStreamOutFloat#addDouble(double)	 */
 	public IStreamOutFloat addDouble(final double value) {
-		buffer.append(value); 
+		buffer.append(value);
 		return this; }
-	
+
 	/////////////////////////////////////////////////////////////////////////////////
 	// Interface IStreamOutInt
 	/////////////////////////////////////////////////////////////////////////////////
-	
-	/** @see streamIO.integer.IStreamOutInt#addInt(int)	 */
+
+	/** Appends the given int Value to the internal buffer.
+	 * @see streamIO.integer.IStreamOutInt#addInt(int)	 */
 	public IStreamOutInt addInt(final int value) {
-		buffer.append(value); 
+		buffer.append(value);
 		return this; }
-	
-	/** @see streamIO.integer.IStreamOutInt#addLong(long)	 */
+
+	/** Appends the given long Value to the internal buffer.
+	 * @see streamIO.integer.IStreamOutInt#addLong(long)	 */
 	public IStreamOutInt addLong(final long value) {
-		buffer.append(value); 
+		buffer.append(value);
 		return this; }
-	
-	/** @see streamIO.integer.IStreamOutPrimitive#addBool(boolean)	 */
+
+	/** Appends the given boolean Value to the internal buffer.
+	 * @see streamIO.integer.IStreamOutPrimitive#addBool(boolean)	 */
 	public IStreamOutPrimitive addBool(final boolean value) {
-		buffer.append(value); 
+		buffer.append(value);
 		return this; }
 	
 }

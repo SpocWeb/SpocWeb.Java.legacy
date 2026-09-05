@@ -47,11 +47,20 @@ package streamIO;
   * Mostly they are only accessible sequentially (slow)
   * The Memory is distributed on the Heap which results in Cache-Failures
   *
-  * Created on 3. März 2001, 10:48
+  * Created on 3. Mï¿½rz 2001, 10:48
   *
   * @author  Matthias Heuer
   * @version
   * @stereotype enumeration
+  * <!-- docstate
+  * pass: 2
+  * mtime: 2026-09-05T10:54:06Z
+  * digest: 624756b809a2a8af1c7b13d1fa79dcdce411f7935842dc6ea5f9a943338e7ca0
+  * stale: false
+  * tags: [code/iterator]
+  * concepts: [String Input Stream Interface]
+  * facets: {layer: infrastructure, status: legacy, complexity: low}
+  * -->
   */
 public interface IStreamIn_String {
 	
@@ -59,7 +68,8 @@ public interface IStreamIn_String {
 	//	Methods
 	////////////////////////////////////////////////////////////////////////////
 	
-	/** @return the (minimum) Number of Items left (in the Buffer),
+	/** Returns the (minimum) Number of Strings left available to retrieve via {@link #nextString()}.
+	  * @return the (minimum) Number of Items left (in the Buffer),
 	  * i.e. the minimum Number of times to call nextItem().
 	  * The actual Number may be higher, so available() should be called again
 	  * at the End of this Number.
@@ -68,8 +78,9 @@ public interface IStreamIn_String {
 	  * (when the Container does not contain null Entries, like e.g. HashTables)
 	  */
 	public long availAble();
-	
-	/** @return the next (Parent) String of this one.
+
+	/** Returns the next String from this Stream, blocking if necessary until one becomes available.
+	  * @return the next (Parent) String of this one.
 	  * No Exception is thrown at the End, instead EOI is returned.
 	  * When IO Processes are bound to this streamIO, IOException is wrapped into an IOError.
 	  * This is less explicit, but much faster because Exception Handling can be extremely slow.

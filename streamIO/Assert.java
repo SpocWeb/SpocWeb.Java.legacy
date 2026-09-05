@@ -53,6 +53,15 @@ import function.byref.ByRefFloat;
   * Created on	05-07-2002, 12:37 AM<p>
   * @author 	Matthias Heuer
   * @version	1.0
+  * <!-- docstate
+  * pass: 2
+  * mtime: 2026-09-05T10:53:54Z
+  * digest: 144824c4f32f5ab096ddb2a88a6ce596fdafd6215110aea2eccb4496cb059788
+  * stale: false
+  * tags: [code/assertion_framework, code/tolerance_comparison]
+  * concepts: [Assertion Framework]
+  * facets: {layer: infrastructure, status: legacy, complexity: medium}
+  * -->
   */
 public class Assert {
 
@@ -87,6 +96,7 @@ public class Assert {
 	/** The String to print with each Heartbeat */
 	public static String STR_HEARTBEAT = ".";
 
+	/** Default {@link Runnable} used as {@link #HeartBeat} by the static {@link #A} instance, printing {@link #STR_HEARTBEAT} to {@code System.out} on every comparison. */
 	final static public Runnable DEFAULT_HEARTBEAT = new RunnablePrinter(System.out, STR_HEARTBEAT);
 
 	/** Static Instance to Assert and log Failures to...	 */
@@ -176,7 +186,8 @@ public class Assert {
 	/** Default Value for the relative Accuracy of double Comparisons:	 */
 	protected double relFloatDefault = ByRefFloat.FLOAT_ACCURACY;
 
-	/** @return Default Value for the relative Accuracy of double Comparisons:	 */
+	/** Returns the default relative Accuracy used when comparing double Values.
+	 * @return Default Value for the relative Accuracy of double Comparisons:	 */
 	public double getRelDoubleDefault() {
 		return relDoubleDefault; }
 
@@ -186,7 +197,8 @@ public class Assert {
 			throw new IllegalArgumentException(value + NON_NEGATIVE_MSG); }
 		relDoubleDefault = value; }
 
-	/** @return Default Value for the relative Accuracy of double Comparisons:	 */
+	/** Returns the default relative Accuracy used when comparing float Values.
+	 * @return Default Value for the relative Accuracy of double Comparisons:	 */
 	public double getRelFloatDefault() {
 		return relFloatDefault; }
 
@@ -202,7 +214,8 @@ public class Assert {
 	/** Default Value for the absolute Accuracy of double Comparisons:	 */
 	protected float absFloatDefault = ByRefFloat.FLOAT_ACCURACY;
 
-	/** @return Default Value for the absolute Accuracy of double Comparisons:	 */
+	/** Returns the default absolute Accuracy used when comparing float Values.
+	 * @return Default Value for the absolute Accuracy of double Comparisons:	 */
 	public double getAbsFloatDefault() {
 		return absFloatDefault; }
 
@@ -212,7 +225,8 @@ public class Assert {
 			throw new IllegalArgumentException(value + NON_NEGATIVE_MSG); }
 		absFloatDefault = (float) value; }
 
-	/** @return Default Value for the absolute Accuracy of double Comparisons:	 */
+	/** Returns the default absolute Accuracy used when comparing double Values.
+	 * @return Default Value for the absolute Accuracy of double Comparisons:	 */
 	public double getAbsDoubleDefault() {
 		return absDoubleDefault; }
 
@@ -236,7 +250,8 @@ public class Assert {
 	/** Default Constructor	 */
 	public Assert() { }
 
-	/** @param Heatbeat_ Callback for logging the Tests	 */
+	/** Creates an Assert instance that invokes the given Runnable as a HeartBeat callback on every comparison.
+	 * @param HeartBeat_ Callback for logging the Tests	 */
 	public Assert(Runnable HeartBeat_) {
 		this.HeartBeat = HeartBeat_; }
 

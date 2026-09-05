@@ -90,7 +90,7 @@ concurrently against the same file):
 | `synch` | 32 | 4243 | 32 | done | agent-synch |
 | `graphs` | 31 | 11258 | 0 | claimed | agent-graphs |
 | `asynch` | 28 | 3052 | 28 | done | agent-asynch |
-| `streamIO/(root)` | 28 | 8003 | 0 | claimed | agent-streamIO-root |
+| `streamIO/(root)` | 28 | 8003 | 28 | done | agent-streamIO-root |
 | `knowledge` | 27 | 3363 | 27 | done | main |
 | `stringOp` | 16 | 4579 | 16 | done | agent-stringOp |
 | `aspect` | 15 | 2493 | 15 | done | agent-aspect |
@@ -270,6 +270,9 @@ same harness against it. A test that has not been seen red proves nothing.
 | synch/APubUniLinkSub.java | APubUniLinkSub | update(Object, Object, Object) | ~117 | No null check on `subscriber` before propagating; the chain-terminal node (built with `subscriber == null` by `addSubscriber()`) throws `NullPointerException` as soon as propagation reaches it - every other propagation method in the package guards this. | High | open |
 | synch/PropDouble.java | PropDouble | setValue(double) | ~48 | Never calls `subscriber.update(...)`, so the documented "notifies its Subscriber on change" contract is a no-op; any caller relying on the notification silently gets none. | Medium | open |
 | synch/StateMachine.java | StateMachine | toString() | ~110 | Inner loop bound uses `a.length` (row count/`numInputs`) instead of `a[i].length` (column count/`numStates`); throws `ArrayIndexOutOfBoundsException` or silently omits columns for any non-square matrix. | Medium | open |
+| streamIO/AReSetAble.java | AReSetAble | JUMP(IReSetAble, long) | ~106 | Loop guard `++i < offset` is only ever true for a positive offset; a negative offset (as passed by `PUSH_BACK`, which relies on this returning `-1`) always returns `0` without calling `iter.jump()`, so `pushBack()` can never succeed through this static helper. | Medium | open |
+| streamIO/Log.java | Log | XML_DATE_FORMATTER (field) | ~247 | A single static `SimpleDateFormat` instance is shared and invoked from `GET_XML_DATE()`/`GET_XML_DATE(Date)` across all Loggers and threads; `SimpleDateFormat` is not thread-safe, so concurrent logging calls can corrupt the formatted date or throw. | Medium | open |
+| streamIO/StringBufferOutputStream.java | StringBufferOutputStream | addBuffer(StringBuffer, int) | ~208 | Calls `addBuffer(b, 0, stop)` against a 3-arg overload whose parameter order is `(b, stop, start)` - reversed vs. the correct sibling `addString(String, int)`. For any `stop > 0` this silently appends nothing. | Medium | open |
 
 ## Tool defects found and fixed during the pilot
 

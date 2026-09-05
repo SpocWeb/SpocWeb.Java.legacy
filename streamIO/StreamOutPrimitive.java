@@ -28,6 +28,15 @@ import streamIO.real.IStreamOutFloat;
   * Created on	2001-06-09, 09;54;18<p>
   * @author 	Matthias Heuer
   * @version	1.0
+  * <!-- docstate
+  * pass: 2
+  * mtime: 2026-09-05T10:54:46Z
+  * digest: bd3234638795653bcc8759d4457796be2b659204bc8fa950c84bbd57b085f7b7
+  * stale: false
+  * tags: [code/output_stream]
+  * concepts: [Primitive Output Stream Base]
+  * facets: {layer: infrastructure, status: legacy, complexity: medium}
+  * -->
   */
 public class StreamOutPrimitive
 extends PrintStream //, AStreamOut {
@@ -94,10 +103,12 @@ implements IFormatOut, IStreamOutByte, IStreamOut, IStreamOutFloat, IStreamOutIn
 	//  Interface IStreamOutChar: Implementation
 	////////////////////////////////////////////////////////////////////////////////
 	
-	/** @see streamIO.integer.IStreamOutChar#getStreamOutByte()	 */
+	/** Returns this Object itself, since {@code StreamOutPrimitive} already implements {@link IStreamOutByte}.
+	 * @see streamIO.integer.IStreamOutChar#getStreamOutByte()	 */
 	public IStreamOutByte getStreamOutByte() { return this;	} //.out; }
 
-	/** @see streamIO.integer.IStreamOutPrimitive#addChar(char)	 */
+	/** Prints the given Character to the underlying {@link PrintStream}.
+	 * @see streamIO.integer.IStreamOutPrimitive#addChar(char)	 */
 	public IStreamOutChar addChar(final char chr) {
 		super.print(chr); 
 		return this; }
@@ -148,14 +159,16 @@ implements IFormatOut, IStreamOutByte, IStreamOut, IStreamOutFloat, IStreamOutIn
 		return this; 
 	}
 	
-	/** @see streamIO.integer.IStreamOutByte#escapeString(java.lang.String, java.lang.String)	 */
+	/** Writes the given String, escaping any Character contained in {@code separators}.
+	 * @see streamIO.integer.IStreamOutByte#escapeString(java.lang.String, java.lang.String)	 */
 	public IStreamOutChar escapeString(final String b, final String separators) {
-		AStreamOutByte.ESCAPE_SAFE(this, b, separators); 
+		AStreamOutByte.ESCAPE_SAFE(this, b, separators);
 		return this; }
 
-	/** @see streamIO.integer.IStreamOutByte#escapeString(java.lang.StringBuffer, java.lang.String)	 */
+	/** Writes the given StringBuffer's content, escaping any Character contained in {@code separators}.
+	 * @see streamIO.integer.IStreamOutByte#escapeString(java.lang.StringBuffer, java.lang.String)	 */
 	public IStreamOutChar escapeString(final StringBuffer b, final String separators) {
-		AStreamOutByte.ESCAPE_SAFE(this, b, separators); 
+		AStreamOutByte.ESCAPE_SAFE(this, b, separators);
 		return this; }
 	
 	////////////////////////////////////////////////////////////////////////////////
@@ -223,48 +236,57 @@ implements IFormatOut, IStreamOutByte, IStreamOut, IStreamOutFloat, IStreamOutIn
 	/** Returns a new Instance of this Formatter Class using the given Print streamIO	 */
 	public IFormatOut newInstance(final PrintStream PS) { return new StreamOutPrimitive(PS); }
 	
-	/** @see streamIO.integer.IStreamOutInt#addInt(int)	 */
+	/** Prints the given int Value to the underlying {@link PrintStream}.
+	 * @see streamIO.integer.IStreamOutInt#addInt(int)	 */
 	public IStreamOutInt addInt(final int b) {
-		super.print(b); 
+		super.print(b);
 		return this; }
-	
-	/** @see streamIO.integer.IStreamOutInt#addLong(long)	 */
+
+	/** Prints the given long Value to the underlying {@link PrintStream}.
+	 * @see streamIO.integer.IStreamOutInt#addLong(long)	 */
 	public IStreamOutInt addLong(final long b) {
-		super.print(b); 
+		super.print(b);
 		return this; }
-	
-	/** @see streamIO.real.IStreamOutFloat#addFloat(float)	 */
+
+	/** Prints the given float Value to the underlying {@link PrintStream}.
+	 * @see streamIO.real.IStreamOutFloat#addFloat(float)	 */
 	public IStreamOutFloat addFloat(final float value) {
-		super.print(value); 
+		super.print(value);
 		return this; }
-	
-	/** @see streamIO.real.IStreamOutFloat#addDouble(double)	 */
+
+	/** Prints the given double Value to the underlying {@link PrintStream}.
+	 * @see streamIO.real.IStreamOutFloat#addDouble(double)	 */
 	public IStreamOutFloat addDouble(double value) {
-		super.print(value); 
+		super.print(value);
 		return this; }
-	
-	/** @see streamIO.integer.IStreamOutPrimitive#addBool(boolean)	 */
+
+	/** Prints the given boolean Value to the underlying {@link PrintStream}.
+	 * @see streamIO.integer.IStreamOutPrimitive#addBool(boolean)	 */
 	public IStreamOutPrimitive addBool(final boolean value) {
-		super.print(value); 
+		super.print(value);
 		return this; }
-	
-	/** @see streamIO.integer.IStreamOutByte#write(char[])	 */
+
+	/** Writes the given char array to the underlying {@link PrintStream}.
+	 * @see streamIO.integer.IStreamOutByte#write(char[])	 */
 	public void write(char[] b) { super.print(b); }
 
-	/** @see streamIO.integer.IStreamOutByte#write(char[], int, int)	 */
+	/** Writes {@code len} Characters from the given array starting at {@code off} to the underlying {@link PrintStream}.
+	 * @see streamIO.integer.IStreamOutByte#write(char[], int, int)	 */
 	public void write(char[] b, int off, int len) throws IOException {
-		for (int i = -1; ++i < len;) 
-			super.print(b[off+i]); 
+		for (int i = -1; ++i < len;)
+			super.print(b[off+i]);
 	}
-	
-	/** @see streamIO.integer.IStreamOutByte#write(java.lang.String)	 */
+
+	/** Writes the given String to the underlying {@link PrintStream}.
+	 * @see streamIO.integer.IStreamOutByte#write(java.lang.String)	 */
 	public void write(final String b) { this.print(b); }
 
-	/** @see streamIO.integer.IStreamOutByte#write(java.lang.String, int, int)	 */
+	/** Writes {@code len} Characters from the given String starting at index {@code off} to the underlying {@link PrintStream}.
+	 * @see streamIO.integer.IStreamOutByte#write(java.lang.String, int, int)	 */
 	public void write(final String b, final int off, int len) {
 		len += off;
 		for(int i = off-1; ++i < len;)
-			super.print(b.charAt(i)); 
+			super.print(b.charAt(i));
 	}
 
 }

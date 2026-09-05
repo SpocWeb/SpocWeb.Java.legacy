@@ -23,6 +23,15 @@ import java.io.PrintStream;
   * Created on 06-03-2001, 03:57 PM<p>
   * @author 	Matthias Heuer
   * @version 1.0
+  * <!-- docstate
+  * pass: 2
+  * mtime: 2026-09-05T10:13:24Z
+  * digest: 1661791ba8dd4400f8919f51be8d3009f64156443bf72a7f5fc04bd4bdebfc85
+  * stale: false
+  * tags: [code/output_stream]
+  * concepts: [Format Output Interface]
+  * facets: {layer: infrastructure, status: legacy, complexity: low}
+  * -->
   */
 public interface IFormatOut
 extends IStreamOut {

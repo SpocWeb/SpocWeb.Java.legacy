@@ -33,6 +33,15 @@ package streamIO;
   * Created on	2001-01-08, 08;42;31<p>
   * @author 	Matthias Heuer
   * @version	1.0
+  * <!-- docstate
+  * pass: 2
+  * mtime: 2026-09-05T10:13:24Z
+  * digest: a6af71b8e4214d06fc9dd263946deb3775063b9e7e2c7f304d0e43837e1ff9f1
+  * stale: false
+  * tags: [code/factory_pattern]
+  * concepts: [Instantiable Interface]
+  * facets: {layer: infrastructure, status: legacy, complexity: low}
+  * -->
   */
 public interface IInstantiAble {
 

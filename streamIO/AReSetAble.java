@@ -25,6 +25,15 @@ import streamIO.exception.FailureException;
  * Created on	10-26-2002, 12:47 PM<p>
  * @author heuerm
  * @version	1.0
+ * <!-- docstate
+ * pass: 2
+ * mtime: 2026-09-05T10:53:41Z
+ * digest: 4d48267a9db0d1dc854188b8066ee0e2e6c416b2aa3975f9a4443e3be6488aab
+ * stale: false
+ * tags: [code/stream_positioning]
+ * concepts: [Reset/Jump Base Class]
+ * facets: {layer: infrastructure, status: broken, complexity: low}
+ * -->
  */
 public abstract class AReSetAble 
 implements IReSetAble {
@@ -97,14 +106,15 @@ implements IReSetAble {
 	final static public IPushBackAble PUSH_BACK(final IReSetAble iter) {
 	    return (iter.jump(-1) == -1) ? iter : null; }
     
-	/** 
-	 * @see streamIO.IReSetAble#jump()  
-	 * Skips over and discards n Items from this Iterator.
-	 * Returns the actual number of bytes skipped.
-	 * This dumb Implementation just reads in all Elements and discards them.	 
+	/**
+	 * Skips over and discards {@code offset} Items from this Iterator by calling {@link streamIO.IReSetAble#jump() jump()} repeatedly.
+	 * This dumb Implementation just reads in all Elements and discards them, stopping early if a jump() call fails.
+	 * @see streamIO.IReSetAble#jump()
+	 * @return the actual Number of Items skipped.
 	 */
+	// TODO: LOGIC: the loop condition "++i < offset" is only ever true for a positive offset, so a negative offset (as passed by PUSH_BACK(IReSetAble) below, which relies on this returning -1) always returns 0 without calling iter.jump() at all - pushBack() can never succeed through this path.
 	final static public long JUMP(final IReSetAble iter, final long offset) {
-		//iter.reSet(); 
+		//iter.reSet();
 		long i = -1; //use shortCut Evaluation and order the Expressions
 		while((++i < offset) &&
 			  (null != iter.jump()));
@@ -112,10 +122,12 @@ implements IReSetAble {
 	
 	/////////////////////////////////////////////////////////////////////////////////////
 	
-    /** @see streamIO.IAvailAble#availAble()     */
+    /** Returns the (minimum) Number of Items left, delegating to the concrete Stream Implementation.
+     * @see streamIO.IAvailAble#availAble()     */
     public abstract long availAble();
-    
-    /** @see streamIO.IAvailAble#getPosition()     */
+
+    /** Returns the current Position in the Stream, delegating to the concrete Stream Implementation.
+     * @see streamIO.IAvailAble#getPosition()     */
     public abstract long getPosition();
     
 	/////////////////////////////////////////////////////////////////////////////////////
@@ -123,7 +135,8 @@ implements IReSetAble {
     /** Flag and Content of the Exception to throw when reSet() fails. 	 */
     public String throwFailureExceptionMessage; 
     
-    /** @see streamIO.IReSetAble#reSet()     */
+    /** Resets this Stream to the implicitly mark()ed Start, by resetting to relative Position 0.
+     * @see streamIO.IReSetAble#reSet()     */
     public IReSetAble reSet() { reSet(0); return this; }
     
     /**
@@ -142,22 +155,25 @@ implements IReSetAble {
         return ret; 
     }
     
-    /** @see streamIO.IReSetAble#reSet(long)     */
+    /** Resets this Stream to its Start and then jumps forward by the given relative Position.
+     * @see streamIO.IReSetAble#reSet(long)     */
     public long reSet(final long relPosition) {
         return reSet().jump(relPosition); }
     
 	/////////////////////////////////////////////////////////////////////////////////////
 	
-    /** @see streamIO.IReSetAble#jump(long)     */
+    /** Skips this Stream forward by the given Offset, delegating to {@link #JUMP(IReSetAble, long)}.
+     * @see streamIO.IReSetAble#jump(long)     */
     public long jump(final long offset) { return JUMP(this, offset); }
-    
-    /** @see streamIO.object.IStreamIn#jump()     */
+
+    /** Skips a single Item forward in this Stream, delegating to {@link #JUMP(IReSetAble)}.
+     * @see streamIO.object.IStreamIn#jump()     */
     public IReSetAble jump() { return JUMP(this); }
-    
-	/** 
-	 * @see streamIO.IReSetAble#pushBack()  
+
+	/**
 	 * Jumps a single Position back in this Iterator.
-	 * @return this Stream if jumping worked, null otherwise. 
+	 * @see streamIO.IReSetAble#pushBack()
+	 * @return this Stream if jumping worked, null otherwise.
 	 */
     public IPushBackAble pushBack() { return PUSH_BACK(this); }
     

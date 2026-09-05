@@ -17,6 +17,15 @@ package streamIO; //TODO: always define a Package
   * Created on	12-28-2002, 10:37 PM<p>
   * @author 	Matthias Heuer
   * @version	1.0
+  * <!-- docstate
+  * pass: 2
+  * mtime: 2026-09-05T10:13:24Z
+  * digest: f8536efdcce3c322389e0c76f3ff78fed003139bddc9eb5e3b8494baeac6bda5
+  * stale: false
+  * tags: [code/stream_positioning]
+  * concepts: [Availability Interface]
+  * facets: {layer: infrastructure, status: legacy, complexity: low}
+  * -->
   */
 public interface IAvailAble {
 	
@@ -24,7 +33,8 @@ public interface IAvailAble {
 	/// #region : public Methods
 	////////////////////////////////////////////////////////////////////////////////
 	
-	/** @return the (minimum) Number of Items left (in the Buffer),
+	/** Returns the (minimum) Number of Items left (in the Buffer) to retrieve via {@code nextItem()}.
+	  * @return the (minimum) Number of Items left (in the Buffer),
 	  * i.e. the minimum Number of times to call nextItem().
 	  * The actual Number may be higher, so available() should be called again
 	  * at the End of this Number of calls to nextItem().
