@@ -81,8 +81,15 @@ concurrently against the same file):
 | `function` | 204 | 27689 | 0 | unclaimed | - |
 | `streamIO/object` | 185 | 38857 | 0 | unclaimed | - |
 | `streamIO/integer` | 157 | 39243 | 0 | unclaimed | - |
-| `graphic` | 131 | 29665 | 0 | unclaimed | - |
-| `math` | 84 | 58523 | 0 | unclaimed | - |
+| `graphic` (root+example+implement+svg) | 50 | 14297 | 0 | claimed | agent-graphic-misc |
+| `graphic/math2D`+`graphic/ms3d` | 18 | 3525 | 0 | claimed | agent-graphic-2d |
+| `graphic/math3D` | 32 | 6425 | 0 | unclaimed | - |
+| `graphic/mvc` | 26 | 4789 | 0 | unclaimed | - |
+| `math` (root+algorithm+integration+wavelet) | 18 | 3123 | 0 | claimed | agent-math-core |
+| `math/fit`+`math/refiner` | 27 | 3644 | 0 | claimed | agent-math-fit |
+| `math/minimizer` | 11 | 3043 | 0 | claimed | agent-math-minimizer |
+| `math/matrix` | 13 | 15603 | 0 | unclaimed | - |
+| `math/vector` | 15 | 33025 | 0 | unclaimed | - |
 | `structure` | 52 | 4933 | 52 | done | agent-structure |
 | `streamIO/real` | 51 | 6801 | 51 | done | agent-streamIO-real |
 | `tester` | 49 | 3327 | 49 | done | agent-tester |
