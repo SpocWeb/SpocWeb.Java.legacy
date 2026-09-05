@@ -27,6 +27,15 @@ import java.io.OutputStream;
   * Created on	10-30-2002, 10:57 PM<p>
   * @author 	Matthias Heuer
   * @version	1.0
+  * <!-- docstate
+  * pass: 2
+  * mtime: 2007-06-09T21:46:44Z
+  * digest: 976cb538442bdcf1a2cc27f93e65f0db507d4bb5ade8ccf4cc6f02873f685e9e
+  * stale: false
+  * tags: [code/cli_tool, code/directory_traversal]
+  * concepts: [Directory Traversal, Interprocess Communication]
+  * facets: {layer: utility, status: stable, complexity: medium}
+  * -->
   */
 public class RecourseCmd {
 
@@ -39,6 +48,11 @@ public class RecourseCmd {
 	 * @param cmd the Executable inclusive Path and all Parameters, except the File
 	 * @param dir the Directory to start from and recourse into
 	 * @param pattern the File Suffix to search for
+	 * <!-- docstate
+	 * tags: [code/directory_traversal]
+	 * concepts: [Directory Traversal]
+	 * facets: {layer: utility, status: stable, complexity: low}
+	 * -->
 	 */
 	final static public void execRecursive(String cmd, File dir, String pattern, String cmd2) throws IOException, InterruptedException {
 //		System.out.println("cmd='" + cmd + "'");
@@ -80,6 +94,11 @@ public class RecourseCmd {
 	/** Synchronously executes the given Command
 	  * and controls it via connecting its Output-, Error- and Input- Streams
 	  * to the given Output-, Error- and Input- Streams.
+	  * <!-- docstate
+	  * tags: [code/asynchronous_io]
+	  * concepts: [Interprocess Communication]
+	  * facets: {layer: utility, status: stable, complexity: medium}
+	  * -->
 	  */
 	final static public Process exec(String command, OutputStream out_, OutputStream err_, InputStream in__) throws IOException, InterruptedException {
 		System.out.println("executing " + command);
@@ -101,6 +120,11 @@ public class RecourseCmd {
 	/**The main entry point for the application.
 	 *
 	 * @param args Array of parameters passed to the application
+	 * <!-- docstate
+	 * tags: [code/cli_tool]
+	 * concepts: [Directory Traversal]
+	 * facets: {layer: utility, status: stable, complexity: low}
+	 * -->
 	 * via the command line.	 */
 	public static void main(String[] args) { //throws java.io.IOException {
 		//System.out.println("Hallo" + null);

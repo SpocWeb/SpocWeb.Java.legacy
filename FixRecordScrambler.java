@@ -7,39 +7,50 @@ import java.io.OutputStream;
 import java.util.Arrays;
 
 /**
-  * Title: FilterFind<p>
+  * Title: FixRecordScrambler<p>
   *
   * Purpose:
-  * Filters a streamIO and ends it 
-  * as soon as a certain String is found 
-  * more often than the specified Number. 
-  * 
-  * Design Decisions / Implementation Details:
-  * Counter is integrated into this Class to save coupling Streams at different Levels.
-  * Since Files are not only separated AFTER a certain String, 
-  * but also possibly BEFORE or WITHIN the streamIO, thus it must read ahead. 
-  * Searching is done primitive, using an O(N*M) Algorithm.
-  * Can be improved later to use one of the more sophisticated Algorithms like Boyer-Moore. 
+  * Rewrites a fixed-size binary Record Stream, offsetting one Field within each Record
+  * by a single Record Size per Record - i.e. Field N of Record I is moved to Record I+1 -
+  * so a later Pass can align that Field across the whole File.
   *
+  * Design Decisions / Implementation Details:
+  * Works on flat, fixed-length binary Records rather than delimited Text, unlike its sibling
+  * {@link FilterFind}.
   *
   * Known SubClasses: <none>
   *
-  * otherwise related Classes: <none>
+  * otherwise related Classes:
+  * @see FilterFind for splitting delimited Text Files instead of fixed-size binary Records
   *
-  * Known Uses: 
-  * for splitting structured Text Files. 
+  * Known Uses:
+  * for splitting structured Text Files.
   *
   * Copyright:	Copyright (c) Matthias Heuer<p>
   * Company:	personal<p>
   * Created on	02-12-2003, 11:29 AM<p>
   * @author 	Matthias Heuer
   * @version	1.0
+  * <!-- docstate
+  * pass: 2
+  * mtime: 2026-09-05T09:55:23Z
+  * digest: 1aa7ab87186cc7dfbd3dc4f8a271b92628d9754019e7df633156268b8f7a05ab
+  * stale: false
+  * tags: [code/cli_tool, code/fixed_width_reader]
+  * concepts: [File I/O]
+  * facets: {layer: utility, status: broken, complexity: medium}
+  * -->
   */
 public class FixRecordScrambler {
 
 	/**
 	 * Writes the given Number of Bytes from is to os (bytewise). 
 	 *
+	 * <!-- docstate
+	 * tags: [code/fixed_width_reader]
+	 * concepts: [File I/O]
+	 * facets: {layer: utility, status: stable, complexity: low}
+	 * -->
 	 */
 	final static public void STREAM(InputStream is, OutputStream os, long length) throws IOException {
 		for(long i = length; --i >= 0;) { //also blockwise or with buffered In and Out Streams
@@ -53,6 +64,11 @@ public class FixRecordScrambler {
 	/**
 	 * Scrambles a streamIO by ofsetting a certain Portion [fieldOffset, fieldOffset+fieldLenght]
 	 * by a single recordSize per Record.
+	 * <!-- docstate
+	 * tags: [code/fixed_width_reader]
+	 * concepts: [File I/O]
+	 * facets: {layer: utility, status: stable, complexity: low}
+	 * -->
 	 */
 	final static public void OFFSET_FIELD(String filePath, int recordSize, int startOffset, int fieldOffset, String field, int numRecs) throws IOException {
 		OFFSET_FIELD(new File(filePath), recordSize, startOffset, fieldOffset, field, numRecs); }
@@ -60,6 +76,11 @@ public class FixRecordScrambler {
 	/**
 	 * Scrambles a streamIO by ofsetting a certain Portion [fieldOffset, fieldOffset+fieldLenght]
 	 * by a single recordSize per Record.
+	 * <!-- docstate
+	 * tags: [code/fixed_width_reader]
+	 * concepts: [File I/O]
+	 * facets: {layer: utility, status: stable, complexity: low}
+	 * -->
 	 */
 	final static public void OFFSET_FIELD(File file, int recordSize, int startOffset, int fieldOffset, String field, int numRecs) throws IOException {
 		File tmp  = new File(file.getAbsolutePath()+".new");
@@ -70,6 +91,11 @@ public class FixRecordScrambler {
 	/**
 	 * Scrambles a streamIO by ofsetting a certain Portion [fieldOffset, fieldOffset+fieldLenght]
 	 * by a single recordSize per Record.
+	 * <!-- docstate
+	 * tags: [code/fixed_width_reader]
+	 * concepts: [File I/O]
+	 * facets: {layer: utility, status: stable, complexity: low}
+	 * -->
 	 */
 	final static public void OFFSET_FIELD(String in_FilePath, String outFilePath, int recordSize, int startOffset, int fieldOffset, String field, int numRecs) throws IOException {
 		OFFSET_FIELD(
@@ -79,6 +105,11 @@ public class FixRecordScrambler {
 	/**
 	 * Scrambles a streamIO by ofsetting a certain Portion [fieldOffset, fieldOffset+fieldLenght]
 	 * by a single recordSize per Record.
+	 * <!-- docstate
+	 * tags: [code/fixed_width_reader]
+	 * concepts: [File I/O]
+	 * facets: {layer: utility, status: stable, complexity: low}
+	 * -->
 	 */
 	final static public void OFFSET_FIELD(File in_File, File outFile, int recordSize, int startOffset, int fieldOffset, String field, int numRecs) throws IOException {
 		FileInputStream  in_Stream = new  FileInputStream(in_File);
@@ -92,6 +123,11 @@ public class FixRecordScrambler {
 	/**
 	 * Scrambles a streamIO by ofsetting a certain Portion [fieldOffset, fieldOffset+fieldLenght]
 	 * by a single recordSize per Record.
+	 * <!-- docstate
+	 * tags: [code/fixed_width_reader]
+	 * concepts: [File I/O]
+	 * facets: {layer: utility, status: stable, complexity: low}
+	 * -->
 	 */
 	final static public void OFFSET_FIELD(InputStream is, OutputStream os, int recordSize, int startOffset, int fieldOffset, String field, int numRecs) throws IOException {
 		OFFSET_FIELD(is, os, recordSize, startOffset, fieldOffset, field.getBytes(), numRecs); }
@@ -99,6 +135,11 @@ public class FixRecordScrambler {
 	/**
 	 * Scrambles a streamIO by ofsetting a certain Portion [fieldOffset, fieldOffset+fieldLenght]
 	 * by a single recordSize per Record.
+	 * <!-- docstate
+	 * tags: [code/fixed_width_reader]
+	 * concepts: [File I/O]
+	 * facets: {layer: utility, status: broken, complexity: medium}
+	 * -->
 	 */
 	final static public void OFFSET_FIELD(InputStream is, OutputStream os, int recordSize, int startOffset, int fieldOffset, byte[] field, int numRecs) throws IOException {
 		STREAM(is, os, startOffset+fieldOffset);
@@ -126,6 +167,11 @@ public class FixRecordScrambler {
 	/**
 	 * Scrambles a streamIO by ofsetting a certain Portion [fieldOffset, fieldOffset+fieldLenght]
 	 * by a single recordSize per Record.
+	 * <!-- docstate
+	 * tags: [code/fixed_width_reader]
+	 * concepts: [File I/O]
+	 * facets: {layer: utility, status: stable, complexity: low}
+	 * -->
 	 */
 	final static public void OFFSET_FIELD(InputStream is, OutputStream os, int recordSize, int startOffset, int fieldOffset, int fieldLength, byte value, int numRecs) throws IOException {
 		byte[] field = new byte[fieldLength];
@@ -137,7 +183,14 @@ public class FixRecordScrambler {
 /// #region : static Testing and main() Methods (not in Interfaces)
 ////////////////////////////////////////////////////////////////////////////
 
-/** Tests all Methods of this Class	 */
+/** Tests all Methods of this Class
+ *
+ * <!-- docstate
+ * tags: [code/test_harness]
+ * concepts: [Testing]
+ * facets: {layer: utility, status: stable, complexity: low}
+ * -->
+ */
 public static void testIt(String[] args) { //throws java.io.IOException {
 	System.out.println("Testing " + FixRecordScrambler.class.getName());
 }
@@ -145,8 +198,17 @@ public static void testIt(String[] args) { //throws java.io.IOException {
 /**The main entry point for the application.
  *
  * @param args Array of parameters passed to the application
+ * <!-- docstate
+ * tags: [code/cli_tool]
+ * concepts: [File I/O]
+ * facets: {layer: utility, status: broken, complexity: low}
+ * -->
  * via the command line.	 */
 public static void main (String[] args) throws java.io.IOException {
+	// TODO: LOGIC: the 7 documented parameters require args.length==7 and are read up to
+	// args[6], but this check only warns (without returning) when args.length!=6 - passing
+	// exactly 6 arguments, which satisfies neither the check nor the actual requirement,
+	// throws ArrayIndexOutOfBoundsException at args[6] instead of showing the Syntax message.
 	if (args.length != 6) {
 		System.out.println("Syntax: "+FixRecordScrambler.class.getName()+" inFilePath outFilePath recordSize startOffset fieldOffset fieldValue numRecords"); }
 	OFFSET_FIELD(args[0], args[1], Integer.parseInt(args[2]), Integer.parseInt(args[3]), Integer.parseInt(args[4]), args[5], Integer.parseInt(args[6])); }

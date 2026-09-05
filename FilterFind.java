@@ -45,6 +45,15 @@ import tester.process.StreamProcessor;
   * Created on	02-12-2003, 11:29 AM<p>
   * @author 	Matthias Heuer
   * @version	1.0
+  * <!-- docstate
+  * pass: 2
+  * mtime: 2026-09-05T09:55:11Z
+  * digest: 8e6e31be2b12c9ab92963dd8fe058847ea7ab71290debe5a5d357ffd1e361c73
+  * stale: false
+  * tags: [code/text_parsing, code/cli_tool]
+  * concepts: [Text Parsing]
+  * facets: {layer: utility, status: broken, complexity: medium}
+  * -->
   */
 public class FilterFind
 extends FilterInputStream
@@ -165,10 +174,16 @@ extends FilterInputStream
 	/// #region : Parent AFilter: Implementation / Overrides
 	////////////////////////////////////////////////////////////////////////////////
 	
-	/**
+	/** Reads and caches one Byte, cutting off the Stream {@link #breakPosition} Bytes after the
+	 * {@link #maxFinds}-th Occurrence of {@link #separator} is found.
 	 * @see streamIO.Byte.IStreamIn_Byte#read()
 	 */
 	public int read() throws IOException {
+		// TODO: LOGIC: breakCountDown defaults to 0 and is never set in the Constructor, so on
+		// the very first call --breakCountDown becomes -1 and this returns EOF immediately,
+		// before ever reading from the wrapped Stream or checking for the Separator. main()'s
+		// `while (streamIn_.available() > 0)` loop then never terminates, since the underlying
+		// Stream is never actually consumed through this filter.
 		if (--breakCountDown == -1) {
 			return -1; }
 		int val = super.read();

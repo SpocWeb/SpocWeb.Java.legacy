@@ -19,6 +19,15 @@ import streamIO.integer.IStreamOutByte;
  * This means you have to read bytewise, not blockwise. 
  * @see streamIO.integer.pipe.ByteStreamerThread which does the same by creating a new Thread. 
  * @author heuerm
+ * <!-- docstate
+ * pass: 2
+ * mtime: 2008-06-29T19:05:35Z
+ * digest: c32b0a503ce739019039971c44a74130e5d16424b1e8fa01098e600a6d150c92
+ * stale: false
+ * tags: [code/cli_tool, code/file_transfer]
+ * concepts: [File Copying]
+ * facets: {layer: utility, status: stable, complexity: low}
+ * -->
  */
 public class CopyAllPossible {
 
@@ -26,6 +35,11 @@ public class CopyAllPossible {
 	 * Main Method to be called from the Command Line
 	 * @param args <InputFile/Folder> <OutputFile/Folder> [ChunkSize=1 [SuffixPattern='']]"
 	 * @throws IOException
+	 * <!-- docstate
+	 * tags: [code/cli_tool]
+	 * concepts: [File Copying]
+	 * facets: {layer: utility, status: stable, complexity: low}
+	 * -->
 	 */
 	public static void main(final String[] args) throws IOException {
 		switch (args.length) {
@@ -35,7 +49,14 @@ public class CopyAllPossible {
 		default: System.out.println("Syntax: java CopyAllPossible <InputFile/Folder> <OutputFile/Folder> [ChunkSize=1 [SuffixPattern='']]"); 
 		}
 	}
-	/** Copies the whole In Directory Chunk-wise into the Out Directory  */
+	/** Copies the whole In Directory Chunk-wise into the Out Directory
+	 *
+	 * <!-- docstate
+	 * tags: [code/directory_traversal]
+	 * concepts: [File Copying]
+	 * facets: {layer: utility, status: stable, complexity: low}
+	 * -->
+	 */
 	final static public long COPY(final String in, final String out, int ChunkSize, final String pattern) throws IOException {
 		File in_File = new File(in);
 		File outFile = new File(out);
@@ -55,7 +76,14 @@ public class CopyAllPossible {
 	}
 
 
-	/**Streams the whole InputStream Chunk-wise into the OutputStream */
+	/**Streams the whole InputStream Chunk-wise into the OutputStream
+	 *
+	 * <!-- docstate
+	 * tags: [code/file_transfer]
+	 * concepts: [File Copying]
+	 * facets: {layer: utility, status: stable, complexity: low}
+	 * -->
+	 */
 	final static public long STREAM(final String in, final String out, int ChunkSize) throws IOException {
 		final InputStream  inStr; 
 		OutputStream outStr = null; 
@@ -71,12 +99,24 @@ public class CopyAllPossible {
 		}
 	}
 
-	/**Streams the whole InputStream Chunk-wise into the OutputStream */
+	/**Streams the whole InputStream Chunk-wise into the OutputStream
+	 *
+	 * <!-- docstate
+	 * tags: [code/file_transfer]
+	 * concepts: [File Copying]
+	 * facets: {layer: utility, status: stable, complexity: low}
+	 * -->
+	 */
 	final static public long STREAM(final InputStream in, final OutputStream out, int ChunkSize) throws IOException {
 		return STREAM(in, out, new byte[ChunkSize]); }
 
 	/**Streams the whole InputStream Chunk-wise into the OutputStream 
 	 * copied from
+	 * <!-- docstate
+	 * tags: [code/file_transfer]
+	 * concepts: [File Copying]
+	 * facets: {layer: utility, status: stable, complexity: low}
+	 * -->
 	 * @see streamIO.integer.pipe.ByteStreamerThread#STREAM(InputStream, IStreamOutByte, byte[]) */
 	final static public long STREAM(final InputStream in, final OutputStream out, final byte[] chunk) throws IOException {
 		long ret = 0;

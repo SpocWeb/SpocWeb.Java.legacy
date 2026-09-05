@@ -26,15 +26,32 @@ import java.util.SortedMap;
  * @author mheuer
  * @version	1.0
  *
+ * <!-- docstate
+ * pass: 2
+ * mtime: 2026-09-05T09:54:52Z
+ * digest: 7e0933ef7b03ad18f3399b92d16585cfab4e8e00a87376f9c8f40fe4d8d7a1b5
+ * stale: false
+ * tags: [code/cli_tool, code/text_encoding]
+ * concepts: [Text Encoding]
+ * facets: {layer: utility, status: stable, complexity: low}
+ * -->
  */
 public class EchoFile {
 
 	/**	 */
 	private EchoFile() { }
 
+	/** Default Encoding used when none is given on the Command Line. */
 	final static public String CP437 = "Cp437";
 	
-	/** Tests all Methods of this Class	 */
+	/** Tests all Methods of this Class
+	 *
+	 * <!-- docstate
+	 * tags: [code/text_encoding]
+	 * concepts: [Text Encoding]
+	 * facets: {layer: utility, status: stable, complexity: low}
+	 * -->
+	 */
 	public static void echoFile(final String fileName, final String encoding) throws Exception {
 		System.out.println("Supported Encodings:");
 		final SortedMap charSets = Charset.availableCharsets(); 
@@ -54,12 +71,20 @@ public class EchoFile {
 	/**The main entry point for the application.
 	 *
 	 * @param args Array of parameters passed to the application
+	 * <!-- docstate
+	 * tags: [code/cli_tool]
+	 * concepts: [Text Encoding]
+	 * facets: {layer: utility, status: stable, complexity: low}
+	 * -->
 	 * via the command line.	 */
 	public static void main(String[] args) throws Exception {
 		switch (args.length) {
 			//case 0 : args = new String[] {"./EncodingTest.TXT", CP437}; break;
 			case 1 : args = new String[] {args[0], CP437}; break;
 			case 2 : args = new String[] {args[0], args[1]}; break;
+			// TODO: LOGIC: the default case (0 or 3+ args) prints the Syntax message but does not
+			// return, so args[0]/args[1] below then throw ArrayIndexOutOfBoundsException instead
+			// of exiting cleanly.
 			default: System.out.println("Syntax: java EchoFile <filePath> [encoding=CP437]"); break;
 		}
 		echoFile(args[0], args[1]);

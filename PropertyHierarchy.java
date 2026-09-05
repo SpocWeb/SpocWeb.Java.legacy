@@ -28,19 +28,43 @@ import java.util.Properties;
  * @author mheuer
  * @version	1.0
  *
+ * <!-- docstate
+ * pass: 2
+ * mtime: 2026-09-05T09:55:33Z
+ * digest: 41fecd3f2c11e43c1f1827c304a01535528c6b9605afc4df593c25712bc71093
+ * stale: false
+ * tags: [code/cli_tool]
+ * concepts: [Naming]
+ * facets: {layer: utility, status: stable, complexity: medium}
+ * -->
  */
 public class PropertyHierarchy {
 	
-	/** Only static Methods to create a conventional Properties Object	 */
+	/** Only static Methods to create a conventional Properties Object
+	 *
+	 * <!-- docstate
+	 * tags: [code/cli_tool]
+	 * concepts: [Naming]
+	 * facets: {layer: utility, status: stable, complexity: low}
+	 * -->
+	 */
 	private PropertyHierarchy() {}
 	
-	final static public String STR_PROPERTIES_SUFFIX = ".PROPERTIES"; 
+	/** Suffix marking a Property Value as the Path to a nested Properties File to load recursively. */
+	final static public String STR_PROPERTIES_SUFFIX = ".PROPERTIES";
+	/** Opening Marker of a Property Reference to resolve within a Value. */
 	final static public String STR_PROPERTY_REF = "${";
+	/** Closing Marker of a Property Reference to resolve within a Value. */
 	final static public String STR_PROPERTY_END = "}";
 	
 	/**The main entry point for the application.
 	 *
 	 * @param args Array of parameters passed to the application
+	 * <!-- docstate
+	 * tags: [code/test_harness]
+	 * concepts: [Testing]
+	 * facets: {layer: utility, status: stable, complexity: low}
+	 * -->
 	 * via the command line.	 */
 	public static void testIt() throws Exception {
 		System.out.println("Usage: \n java PropertyHierarchy [FilePath]*");
@@ -53,6 +77,11 @@ public class PropertyHierarchy {
 	 * e.g. when using it on a nested XML DOM consisting of named Elements, 
 	 * which again can contain named Elements. 
 	 * @param props Map of Key/Value Pairs to be converted into an Array of Values. 
+	 * <!-- docstate
+	 * tags: [code/entity_model]
+	 * concepts: [Naming]
+	 * facets: {layer: utility, status: stable, complexity: low}
+	 * -->
 	 */
 	final static public Object[] CONVERT_HIERARCHY(final Map props) {
 		final Object[] ret = new Object[props.size()];
@@ -74,6 +103,11 @@ public class PropertyHierarchy {
 	/**The main entry point for the application.
 	 *
 	 * @param args Array of parameters passed to the application
+	 * <!-- docstate
+	 * tags: [code/entity_model]
+	 * concepts: [Naming]
+	 * facets: {layer: utility, status: stable, complexity: medium}
+	 * -->
 	 * via the command line.	 */
 	final static public Properties LOAD_HIERARCHY(final String path) throws FileNotFoundException, IOException {
 		final Properties props = new Properties(); 
@@ -113,6 +147,11 @@ public class PropertyHierarchy {
 	/**The main entry point for the application.
 	 *
 	 * @param args Array of parameters passed to the application
+	 * <!-- docstate
+	 * tags: [code/cli_tool]
+	 * concepts: [Naming]
+	 * facets: {layer: utility, status: stable, complexity: low}
+	 * -->
 	 * via the command line.	 */
 	public static void main(final String[] args) throws Exception {
 		if ((args == null) || (args.length == 0)) {

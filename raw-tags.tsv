@@ -110,3 +110,47 @@ streamIO/asyncMessage/MessageOnlyOnce.java:MessageOnlyOnce	class	streamIO/asyncM
 streamIO/asyncMessage/MessageOptimized.java:MessageOptimized	class	streamIO/asyncMessage/MessageOptimized.java	code/message_queue, code/sequence_processor	Asynchronous Messaging	infrastructure	stable	medium
 streamIO/asyncMessage/MessageReceiver.java:MessageReceiver	class	streamIO/asyncMessage/MessageReceiver.java	code/message_queue	Asynchronous Messaging	infrastructure	stable	low
 streamIO/asyncMessage/MessageStreamOut.java:MessageStreamOut	class	streamIO/asyncMessage/MessageStreamOut.java	code/message_queue, code/retry_logic	Asynchronous Messaging	infrastructure	stable	low
+CopyAllPossible.java:CopyAllPossible	class	CopyAllPossible.java	code/cli_tool, code/file_transfer	File Copying	utility	stable	low
+CopyAllPossible.java:CopyAllPossible.main(String[])	method	CopyAllPossible.java	code/cli_tool	File Copying	utility	stable	low
+CopyAllPossible.java:CopyAllPossible.COPY(String, String, int, String)	method	CopyAllPossible.java	code/directory_traversal	File Copying	utility	stable	low
+CopyAllPossible.java:CopyAllPossible.STREAM(String, String, int)	method	CopyAllPossible.java	code/file_transfer	File Copying	utility	stable	low
+CopyAllPossible.java:CopyAllPossible.STREAM(InputStream, OutputStream, int)	method	CopyAllPossible.java	code/file_transfer	File Copying	utility	stable	low
+CopyAllPossible.java:CopyAllPossible.STREAM(InputStream, OutputStream, byte[])	method	CopyAllPossible.java	code/file_transfer	File Copying	utility	stable	low
+	folder		code/cli_tool	Command-Line Utilities	utility	stable	low
+DirToXml.java:DirToXml	class	DirToXml.java	code/cli_tool, code/directory_traversal, code/xml_serialization	Directory Traversal, File System	utility	stable	medium
+DirToXml.java:DirToXml.execRecursive(File, PrintWriter, String[])	method	DirToXml.java	code/directory_traversal	Directory Traversal	utility	stable	low
+DirToXml.java:DirToXml.execRecursive(File, PrintWriter, String[], String)	method	DirToXml.java	code/directory_traversal, code/xml_serialization	Directory Traversal, File System	utility	stable	medium
+DirToXml.java:DirToXml.main(String[])	method	DirToXml.java	code/cli_tool	Directory Traversal	utility	stable	low
+EchoFile.java:EchoFile	class	EchoFile.java	code/cli_tool, code/text_encoding	Text Encoding	utility	stable	low
+EchoFile.java:EchoFile.echoFile(String, String)	method	EchoFile.java	code/text_encoding	Text Encoding	utility	stable	low
+EchoFile.java:EchoFile.main(String[])	method	EchoFile.java	code/cli_tool	Text Encoding	utility	stable	low
+FileHex.java:FileHex	class	FileHex.java	code/cli_tool, code/hex_encoding	File I/O	utility	stable	low
+FileHex.java:FileHex.FileHex()	method	FileHex.java	code/cli_tool	File I/O	utility	stable	low
+FileHex.java:FileHex.testEx()	method	FileHex.java	code/test_harness	Error Handling	utility	stable	low
+FileHex.java:FileHex.main(String[])	method	FileHex.java	code/hex_encoding	File I/O	utility	stable	low
+FilterFind.java:FilterFind	class	FilterFind.java	code/text_parsing, code/cli_tool	Text Parsing	utility	broken	medium
+FixRecordScrambler.java:FixRecordScrambler	class	FixRecordScrambler.java	code/cli_tool, code/fixed_width_reader	File I/O	utility	broken	medium
+FixRecordScrambler.java:FixRecordScrambler.STREAM(InputStream, OutputStream, long)	method	FixRecordScrambler.java	code/fixed_width_reader	File I/O	utility	stable	low
+FixRecordScrambler.java:FixRecordScrambler.OFFSET_FIELD(String, int, int, int, String, int)	method	FixRecordScrambler.java	code/fixed_width_reader	File I/O	utility	stable	low
+FixRecordScrambler.java:FixRecordScrambler.OFFSET_FIELD(File, int, int, int, String, int)	method	FixRecordScrambler.java	code/fixed_width_reader	File I/O	utility	stable	low
+FixRecordScrambler.java:FixRecordScrambler.OFFSET_FIELD(String, String, int, int, int, String, int)	method	FixRecordScrambler.java	code/fixed_width_reader	File I/O	utility	stable	low
+FixRecordScrambler.java:FixRecordScrambler.OFFSET_FIELD(File, File, int, int, int, String, int)	method	FixRecordScrambler.java	code/fixed_width_reader	File I/O	utility	stable	low
+FixRecordScrambler.java:FixRecordScrambler.OFFSET_FIELD(InputStream, OutputStream, int, int, int, String, int)	method	FixRecordScrambler.java	code/fixed_width_reader	File I/O	utility	stable	low
+FixRecordScrambler.java:FixRecordScrambler.OFFSET_FIELD(InputStream, OutputStream, int, int, int, byte[], int)	method	FixRecordScrambler.java	code/fixed_width_reader	File I/O	utility	broken	medium
+FixRecordScrambler.java:FixRecordScrambler.OFFSET_FIELD(InputStream, OutputStream, int, int, int, int, byte, int)	method	FixRecordScrambler.java	code/fixed_width_reader	File I/O	utility	stable	low
+FixRecordScrambler.java:FixRecordScrambler.testIt(String[])	method	FixRecordScrambler.java	code/test_harness	Testing	utility	stable	low
+FixRecordScrambler.java:FixRecordScrambler.main(String[])	method	FixRecordScrambler.java	code/cli_tool	File I/O	utility	broken	low
+PropertyHierarchy.java:PropertyHierarchy	class	PropertyHierarchy.java	code/cli_tool	Naming	utility	stable	medium
+PropertyHierarchy.java:PropertyHierarchy.PropertyHierarchy()	method	PropertyHierarchy.java	code/cli_tool	Naming	utility	stable	low
+PropertyHierarchy.java:PropertyHierarchy.testIt()	method	PropertyHierarchy.java	code/test_harness	Testing	utility	stable	low
+PropertyHierarchy.java:PropertyHierarchy.CONVERT_HIERARCHY(Map)	method	PropertyHierarchy.java	code/entity_model	Naming	utility	stable	low
+PropertyHierarchy.java:PropertyHierarchy.LOAD_HIERARCHY(String)	method	PropertyHierarchy.java	code/entity_model	Naming	utility	stable	medium
+PropertyHierarchy.java:PropertyHierarchy.main(String[])	method	PropertyHierarchy.java	code/cli_tool	Naming	utility	stable	low
+RecourseCmd.java:RecourseCmd	class	RecourseCmd.java	code/cli_tool, code/directory_traversal	Directory Traversal, Interprocess Communication	utility	stable	medium
+RecourseCmd.java:RecourseCmd.execRecursive(String, File, String, String)	method	RecourseCmd.java	code/directory_traversal	Directory Traversal	utility	stable	low
+RecourseCmd.java:RecourseCmd.exec(String, OutputStream, OutputStream, InputStream)	method	RecourseCmd.java	code/asynchronous_io	Interprocess Communication	utility	stable	medium
+RecourseCmd.java:RecourseCmd.main(String[])	method	RecourseCmd.java	code/cli_tool	Directory Traversal	utility	stable	low
+XRename.java:XRename	class	XRename.java	code/cli_tool, code/directory_traversal	Directory Traversal	utility	stable	medium
+XRename.java:XRename.rename(boolean, String, String, String, String, String, String, String, String, String)	method	XRename.java	code/directory_traversal	Directory Traversal	utility	stable	low
+XRename.java:XRename.rename(boolean, String, String, String, String, String, String, String, String, File)	method	XRename.java	code/directory_traversal	Directory Traversal	utility	stable	medium
+XRename.java:XRename.main(String[])	method	XRename.java	code/cli_tool	Directory Traversal	utility	stable	low

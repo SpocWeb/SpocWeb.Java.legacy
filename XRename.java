@@ -7,8 +7,18 @@ import java.io.File;
  */
 
 /**
+ * Batch-renames Files whose Name matches a given Prefix/Infix/Suffix Pattern, optionally
+ * recursing into Subdirectories and remapping individual Characters.
  * @author heuerm
- *
+ * <!-- docstate
+ * pass: 2
+ * mtime: 2026-09-05T09:55:51Z
+ * digest: 85872e6e7b431c54e4076f9d3eaa797fd69c93dcafa78b856a3ab1e3459a09ba
+ * stale: false
+ * tags: [code/cli_tool, code/directory_traversal]
+ * concepts: [Directory Traversal]
+ * facets: {layer: utility, status: stable, complexity: medium}
+ * -->
  */
 public class XRename {
 
@@ -17,7 +27,7 @@ public class XRename {
 	 */
 	final static public String STR_PROP_USER_DIR = "user.dir";
 	
-	/**
+	/** Renames matching Files in the named Directory (or the current Working Directory when null).
 	 * @param recurse
 	 * @param oldChars
 	 * @param newChars
@@ -27,10 +37,15 @@ public class XRename {
 	 * @param newSuffix
 	 * @param directory
 	 * @return the Number of Files renamed
+	 * <!-- docstate
+	 * tags: [code/directory_traversal]
+	 * concepts: [Directory Traversal]
+	 * facets: {layer: utility, status: stable, complexity: low}
+	 * -->
 	 */
-	final static public int rename( final boolean recurse, 
-			final String oldChars, final String newChars, final String oldInfix, 
-			final String newInfix, final String oldPrefix, final String newPrefix, 
+	final static public int rename( final boolean recurse,
+			final String oldChars, final String newChars, final String oldInfix,
+			final String newInfix, final String oldPrefix, final String newPrefix,
 			final String oldSuffix , final String newSuffix , final String directory) {
 		final File dir = new File(directory == null ? System.getProperty(STR_PROP_USER_DIR) : directory);
 		return rename( recurse, 
@@ -39,7 +54,8 @@ public class XRename {
 				oldSuffix , newSuffix , dir);
 	}
 	
-	/**
+	/** Renames matching Files directly in the given Directory, recursing into Subdirectories
+	 * first when {@code recurse} is set.
 	 * @param recurse
 	 * @param oldChars
 	 * @param newChars
@@ -49,10 +65,15 @@ public class XRename {
 	 * @param newSuffix
 	 * @param directory
 	 * @return the Number of Files renamed
+	 * <!-- docstate
+	 * tags: [code/directory_traversal]
+	 * concepts: [Directory Traversal]
+	 * facets: {layer: utility, status: stable, complexity: medium}
+	 * -->
 	 */
-	final static public int rename( final boolean recurse, 
-			final String oldChars, final String newChars, final String oldInfix, 
-			final String newInfix, final String oldPrefix, final String newPrefix, 
+	final static public int rename( final boolean recurse,
+			final String oldChars, final String newChars, final String oldInfix,
+			final String newInfix, final String oldPrefix, final String newPrefix,
 			final String oldSuffix, final String newSuffix , final File dir) {
 		int ret = 0; 
 		final File[] files = dir.listFiles(); 
@@ -94,6 +115,11 @@ public class XRename {
 	 * renames all Files matching the given Pattern with the second Pattern
 	 * The Pattern corresponds to Path Expressions with exactly one Asterisk '*' 
 	 * @param args
+	 * <!-- docstate
+	 * tags: [code/cli_tool]
+	 * concepts: [Directory Traversal]
+	 * facets: {layer: utility, status: stable, complexity: low}
+	 * -->
 	 */
 	public static void main(final String[] args) {
         switch (args.length) {

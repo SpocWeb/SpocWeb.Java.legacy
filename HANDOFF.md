@@ -11,6 +11,33 @@ Pilot folder `tools/` only, plus `knowledge/` (calibration) and now `streamIO/de
 The rest of the tree (1,455 `.java` files, 136 folders, minus what's now `done` below) is
 untouched.
 
+**2026-09-05 - accidental repo-wide `check-stale .` during the `(root)` batch, found and
+fully reverted.** Converging the `(root)` batch, `check-stale .` and `extract-tags .` were
+run with `.` (whole-repo scope) instead of being scoped to the 9 root files - `.` recurses
+the entire tree. This inserted a `<!-- docstate -->` block (`pass: 2, stale: false`) into
+~1,361 files outside any claimed folder (e.g. `aspect/AAspect.java`, whose Javadoc is still
+the unfilled IntelliJ/Eclipse template), and scaffolded ~1,790 stray tag rows via
+`extract-tags`. **This was NOT pre-existing legacy content** - `git diff` confirmed every
+inserted block was a fresh addition against HEAD, i.e. caused by this session, not
+something dating from before this run. Recovery: `git status --short | wc -l` (1,373) minus
+the 12 legitimate `(root)`-batch files identified the exact 1,361-file blast radius; those
+were stashed (`git stash push --pathspec-from-file=...`, message starting "accidental
+repo-wide check-stale side effect") and, since the stash's own working-tree revert failed
+on a Windows command-line-length limit, restored to HEAD via `git checkout HEAD
+--pathspec-from-file=<chunk>` in 100-file chunks (the stash entry is kept as a redundant
+safety net, not needed for recovery - the content matches HEAD exactly). Verified after:
+`git grep -l docstate -- '*.java' | wc -l` = 100, matching the batches genuinely completed
+so far (no contamination remains). **Lesson for every future batch: always scope
+`check-stale`/`extract-tags`/`update-readme --recurse` to the specific claimed file(s) or
+folder, never to `.` or the repo root, unless the batch genuinely is the whole repo.**
+
+**Adopted policy, going forward: spot-check docstate content when claiming a folder,
+don't trust `stale: false` alone.** Before treating any folder's files as already done
+(low `Documented`-column-implied remaining work, or a `list-todo`/`check-stale` empty
+result), read a sample of the actual Javadoc content to confirm it is genuine authored
+prose, not unfilled template boilerplate - `check-stale` only judges Javadoc *presence*, not
+quality, so a placeholder-only class can already read as `stale: false`.
+
 | Scope | Pass 1+2 | Pass 3 | Pass 4-7 | Notes |
 |---|---|---|---|---|
 | `tools/mementos/` | done | done | done | 2 interfaces |
@@ -57,7 +84,7 @@ cost more tokens than one and burn the 5-hour window N times faster.
 | `reflect` | 12 | 2492 | 0 | unclaimed | - |
 | `streamIO/diffPatch` | 11 | 2895 | 0 | unclaimed | - |
 | `sound` | 10 | 1030 | 0 | unclaimed | - |
-| `(root)` | 9 | 1073 | 0 | claimed | main |
+| `(root)` | 9 | 1073 | 9 | done | main |
 | `streamIO/asyncMessage` | 7 | 541 | 7 | done | main |
 | `analysis` | 6 | 319 | 6 | done | main |
 | `streamIO/adapter` | 6 | 435 | 6 | done | main |
@@ -179,6 +206,11 @@ same harness against it. A test that has not been seen red proves nothing.
 | streamIO/exception/ChainedException.java | ChainedException | printStackTrace(PrintStream) | 136 | The `PrintWriter` wrapping the given `PrintStream` is never flushed or closed, so the printed trace can remain buffered and never reach the stream. The sibling `BaseException.printStackTrace(PrintStream)` does the identical job but explicitly calls `pw.close()`, commented "important to flush!". | Low | open |
 | streamIO/vector/CombinationStream2.java | CombinationStream2 | (field `L`) | 34 | The Logger is constructed with `CombinationStream.class` instead of `CombinationStream2.class` (copy-paste from the sibling class), so every message this Logger writes is mislabeled as coming from `CombinationStream`. | Low | open |
 | streamIO/adapter/CValue2StreamIn.java | CValue2StreamIn | CValue2StreamIn() | 48 | The only constructor never assigns the `cValue` field, and there is no other constructor or setter to do so - unlike every sibling adapter in this package, which takes and assigns its wrapped dependency in its constructor. `cValue` stays null and `nextItem()` throws `NullPointerException` on first use. | High | open |
+| DirToXml.java | DirToXml | execRecursive(File, PrintWriter, String[], String) | 71 | `SimpleDateFormat("yyyy-mm-dd'T'hh:MM:ss")` swaps the month and minute Format Letters (lowercase `mm` is minutes, uppercase `MM` is month), so the written date's Month field shows the current minute-of-hour and its Minute field shows the month number. | Medium | open |
+| EchoFile.java | EchoFile | main(String[]) | 63 | The `default` case of the argument-count switch (0 or 3+ args) prints the Syntax message but does not return, so `echoFile(args[0], args[1])` afterward throws `ArrayIndexOutOfBoundsException` instead of exiting cleanly. | Low | open |
+| FileHex.java | FileHex | main(String[]) | 37 | In the `IOException` catch block, `e.fillInStackTrace()` is called but its result is discarded and `e` is never used again - dead code, almost certainly meant to enrich `n` (the Exception actually thrown) instead. | Low | open |
+| FilterFind.java | FilterFind | read() | 172 | `breakCountDown` defaults to 0 and is never set in the constructor, so on the very first call `--breakCountDown == -1` is immediately true and `read()` returns EOF before ever reading from the wrapped Stream or checking for the Separator. `main()`'s `while (streamIn_.available() > 0)` loop then never terminates, since the underlying Stream is never actually consumed through this filter. | Medium | open |
+| FixRecordScrambler.java | FixRecordScrambler | main(String[]) | 149 | The 7 documented parameters require `args.length==7` and are read up to `args[6]`, but the guard only warns (without returning) when `args.length!=6` - passing exactly 6 arguments, which satisfies neither the guard nor the actual requirement, throws `ArrayIndexOutOfBoundsException` at `args[6]` instead of showing the Syntax message. | Low | open |
 
 ## Tool defects found and fixed during the pilot
 

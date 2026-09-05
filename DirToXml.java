@@ -31,6 +31,15 @@ import java.util.Date;
  * @author mheuer
  * @version	1.0
  *
+ * <!-- docstate
+ * pass: 2
+ * mtime: 2026-09-05T09:55:28Z
+ * digest: b29a09e7e8917ed8b4c440a19f5b22e4cbfe41ff93ce6c88190f31fd27df5a14
+ * stale: false
+ * tags: [code/cli_tool, code/directory_traversal, code/xml_serialization]
+ * concepts: [Directory Traversal, File System]
+ * facets: {layer: utility, status: stable, complexity: medium}
+ * -->
  */
 public class DirToXml {
 
@@ -42,6 +51,11 @@ public class DirToXml {
 	 * @param cmd the Executable inclusive Path and all Parameters, except the File
 	 * @param dir the Directory to start from and recourse into
 	 * @param patterns the List of File Suffixes to search for
+	 * <!-- docstate
+	 * tags: [code/directory_traversal]
+	 * concepts: [Directory Traversal]
+	 * facets: {layer: utility, status: stable, complexity: low}
+	 * -->
 	 */
 	final static public void execRecursive(final File dir, final PrintWriter stream, final String[] patterns) 
 		throws IOException, InterruptedException {
@@ -53,6 +67,11 @@ public class DirToXml {
 	 * @param cmd the Executable inclusive Path and all Parameters, except the File
 	 * @param dir the Directory to start from and recourse into
 	 * @param patterns the List of File Suffixes to search for
+	 * <!-- docstate
+	 * tags: [code/directory_traversal, code/xml_serialization]
+	 * concepts: [Directory Traversal, File System]
+	 * facets: {layer: utility, status: stable, complexity: medium}
+	 * -->
 	 */
 	final static public void execRecursive(final File dir, final PrintWriter stream, final String[] patterns, final String prefix)
 		throws IOException, InterruptedException {
@@ -68,6 +87,9 @@ public class DirToXml {
 		final String[] files = dir.list();
 		final String newPrefix = indent+prefix;
 		final String path = dir.getPath();
+		// TODO: LOGIC: month and minute Format Letters are swapped - lowercase 'mm' is minutes
+		// and uppercase 'MM' is month in SimpleDateFormat, so the written date's Month field
+		// actually shows the current minute-of-hour, and its Minute field shows the month number.
 		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-mm-dd'T'hh:MM:ss"); //.sssZ");
 		for (int i = files.length; --i >= 0;) {
 			final String fName = files[i];
@@ -112,6 +134,11 @@ public class DirToXml {
 	/**The main entry point for the application.
 	 *
 	 * @param args Array of parameters passed to the application
+	 * <!-- docstate
+	 * tags: [code/cli_tool]
+	 * concepts: [Directory Traversal]
+	 * facets: {layer: utility, status: stable, complexity: low}
+	 * -->
 	 * via the command line.	 */
 	public static void main(final String[] args) {
 		PrintWriter writer = new PrintWriter(System.out); 
