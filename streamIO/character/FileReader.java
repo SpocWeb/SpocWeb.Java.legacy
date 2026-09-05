@@ -15,8 +15,20 @@ import java.io.IOException;
 import java.io.UnsupportedEncodingException;
 
 /**
+ * A character-decoding file reader with static helpers for whole-file copy, whole-file
+ * read and polling for a file's appearance, on top of the instance-level
+ * {@link java.io.InputStreamReader} behavior its constructors set up.
  *
  * @author  MatthiasHeuer
+ * <!-- docstate
+ * pass: 2
+ * mtime: 2026-09-05T09:09:11Z
+ * digest: 2c440a6aa16fb2a7c2d06bbf6927dd2db8cb62dc32990d1925c855ee7178c810
+ * stale: false
+ * tags: [code/file_io, code/encoding_handling, code/file_polling]
+ * concepts: [File I/O, Text Encoding]
+ * facets: {layer: infrastructure, status: stable, complexity: low}
+ * -->
  */
 public class FileReader
 extends java.io.InputStreamReader
@@ -53,12 +65,14 @@ extends java.io.InputStreamReader
         writer.close();
 	}
 
-	/** @returns the Contents of the File in the given Encoding */
+	/** Reads the whole file into a String.
+	  * @returns the Contents of the File in the given Encoding */
     final static public String READ_FILE(String fileName, String enc) throws IOException {
 		return READ_FILE(new File(fileName), enc);
 	}
 
-	/** @returns the Contents of the File in the given Encoding */
+	/** Reads the whole file into a String.
+	  * @returns the Contents of the File in the given Encoding */
     final static public String READ_FILE(File file, String enc) throws IOException {
         StringBuffer ret = new StringBuffer("");
         FileReader reader = new  FileReader(file, enc);
@@ -68,20 +82,24 @@ extends java.io.InputStreamReader
         reader.close();
         return ret.toString(); }
 
-	/** @return true when the File existed before the Timeout */
+	/** Deletes the file if present, then polls until a new file appears at the same path.
+	  * @return true when the File existed before the Timeout */
     final static public boolean WAIT_FOR_NEW_FILE(String fileName, long timeout) {
 		return WAIT_FOR_NEW_FILE(new File(fileName), timeout); }
 
-	/** @return true when the File existed before the Timeout */
+	/** Polls once a second until the file exists or the timeout elapses.
+	  * @return true when the File existed before the Timeout */
     final static public boolean WAIT_FOR_FILE(String fileName, long timeout) {
 		return WAIT_FOR_FILE(new File(fileName), timeout); }
 
-	/** @return true when the File existed before the Timeout */
+	/** Deletes the file if present, then polls until a new file appears at the same path.
+	  * @return true when the File existed before the Timeout */
     final static public boolean WAIT_FOR_NEW_FILE(File file, long timeout) {
 		file.delete();
 		return WAIT_FOR_FILE(file, timeout); }
 
-	/** @return true when the File existed before the Timeout */
+	/** Polls once a second until the file exists or the timeout elapses.
+	  * @return true when the File existed before the Timeout */
     final static public boolean WAIT_FOR_FILE(File file, long timeout) {
 		timeout += System.currentTimeMillis();
 		while (!file.exists()) {
@@ -93,6 +111,7 @@ extends java.io.InputStreamReader
 		} return true; }
 
 	/**
+	 * Waits for the file to appear, then reads it whole.
 	 * @return the File Contents when it appears before the Timeout
 	 */
     final static public String SYNCH_READ_FILE(String fileName, long timeout, String encoding)
@@ -100,6 +119,7 @@ extends java.io.InputStreamReader
 		return SYNCH_READ_FILE(new File(fileName), timeout, encoding); }
 
 	/**
+	 * Waits for the file to appear, then reads it whole.
 	 * @return the File Contents when it appears before the Timeout
 	 */
     final static public String SYNCH_READ_FILE(File file, long timeout, String encoding)
@@ -109,6 +129,7 @@ extends java.io.InputStreamReader
 		return null; }
 
 	/**
+	 * Deletes the file if present, then waits for a new file to appear and reads it whole.
 	 * @return the File Contents when it appears before the Timeout
 	 * @deprecated, use FileReader.SYNCH_READ_NEW_FILE
 	 */
@@ -117,6 +138,7 @@ extends java.io.InputStreamReader
 		return SYNCH_READ_NEW_FILE(new File(fileName), timeout, encoding); }
 
 	/**
+	 * Deletes the file if present, then waits for a new file to appear and reads it whole.
 	 * @return the File Contents when it appears before the Timeout
 	 * @deprecated, use FileReader.SYNCH_READ_NEW_FILE
 	 */

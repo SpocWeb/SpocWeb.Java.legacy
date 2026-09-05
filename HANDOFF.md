@@ -67,7 +67,7 @@ cost more tokens than one and burn the 5-hour window N times faster.
 | `streamIO/testing` | 3 | 433 | 0 | unclaimed | - |
 | `swing` | 3 | 679 | 0 | unclaimed | - |
 | `persistences` | 2 | 306 | 0 | unclaimed | - |
-| `streamIO/character` | 2 | 244 | 0 | unclaimed | - |
+| `streamIO/character` | 2 | 244 | 2 | done | main |
 | `streamIO/factory` | 2 | 205 | 2 | done | main |
 | `streamIO/detector` | 1 | 102 | 1 | done | main |
 

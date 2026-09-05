@@ -14,8 +14,20 @@ import java.io.IOException;
 import java.io.UnsupportedEncodingException;
 
 /**
+ * A character-encoding file writer with a static helper for writing a whole String to a
+ * file in one call, on top of the instance-level {@link java.io.OutputStreamWriter}
+ * behavior its constructors set up.
  *
  * @author  MatthiasHeuer
+ * <!-- docstate
+ * pass: 2
+ * mtime: 2026-09-05T09:09:21Z
+ * digest: a61dc4343a9564fd7ca8bebfa9d7705c2505833c2b20d22bbe2eedb68566f70a
+ * stale: false
+ * tags: [code/file_io, code/encoding_handling]
+ * concepts: [File I/O, Text Encoding]
+ * facets: {layer: infrastructure, status: stable, complexity: low}
+ * -->
  */
 public class FileWriter
 extends java.io.OutputStreamWriter
