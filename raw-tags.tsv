@@ -69,3 +69,8 @@ streamIO/testing/ITestCase.java:ITestCase	class	streamIO/testing/ITestCase.java	
 streamIO/testing/ATestCase.java:ATestCase	class	streamIO/testing/ATestCase.java	code/test_harness, code/reflection_based_dispatch	Testing, Reflection	test	broken	medium
 streamIO/testing/TestCollection.java:TestCollection	class	streamIO/testing/TestCollection.java	code/test_harness, code/composite_pattern	Testing, Composite Pattern	test	stable	low
 streamIO/testing	folder	streamIO/testing	code/test_harness, code/composite_pattern, code/reflection_based_dispatch	Testing, Reflection	test	broken	medium
+streamIO/fileSystem/DirectoryFilter.java:DirectoryFilter	class	streamIO/fileSystem/DirectoryFilter.java	code/file_filtering	File System, File I/O	infrastructure	stable	low
+streamIO/fileSystem/SuffixFileNameFilter.java:SuffixFileNameFilter	class	streamIO/fileSystem/SuffixFileNameFilter.java	code/file_filtering	File System, File I/O	infrastructure	stable	low
+streamIO/fileSystem/FileIterator.java:FileIterator	class	streamIO/fileSystem/FileIterator.java	code/file_io, code/iterator_pattern	File System, File I/O	infrastructure	broken	medium
+streamIO/fileSystem/FileBackupIterator.java:FileBackupIterator	class	streamIO/fileSystem/FileBackupIterator.java	code/file_io, code/iterator_pattern, code/file_backup	File System, File I/O	infrastructure	stable	low
+streamIO/fileSystem	folder	streamIO/fileSystem	code/file_filtering, code/file_io, code/iterator_pattern, code/file_backup	File System, File I/O	infrastructure	broken	medium

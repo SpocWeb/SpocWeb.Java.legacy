@@ -8,25 +8,33 @@ import streamIO.Log;
 import streamIO.object.AStreamIn;
 
 /**
- * FileIterator
- *
  * streamIO of new Input- or Output- Streams with File Names just being counted up.
  * @see FileBackupIterator
  *
  * used by:
  * @see streamIO.Object.Byte.LimitedSizeOutputStream
  *
- * Created on 31. März 2001, 22:51
+ * Created on 31. Mï¿½rz 2001, 22:51
  *
  * @author  Matthias Heuer
  * @version
  * @stereotype enumeration
+ * <!-- docstate
+ * pass: 2
+ * mtime: 2026-09-05T09:22:52Z
+ * digest: 10322a3cdadd83896c33d86765bd742c7a61e5dfeb59d962fa2816d0e77cc5f9
+ * stale: false
+ * tags: [code/file_io, code/iterator_pattern]
+ * concepts: [File System, File I/O]
+ * facets: {layer: infrastructure, status: broken, complexity: medium}
+ * -->
  */
 public class FileIterator
 extends AStreamIn
 {
 	
-	private static final Log L = new Log(FileIterator.class); 
+	/** Logger for this Class, also used to prompt the user to continue past a missing File. */
+	private static final Log L = new Log(FileIterator.class);
 	
 	/** Counter for the Files opened and their Number  */
 	protected long counter;
@@ -62,7 +70,12 @@ extends AStreamIn
 			return Long.MAX_VALUE;
 		return 0; }
 	
-	/** @see streamIO.IIStreamIn#isValid()	 */
+	// TODO: LOGIC: inverted relative to its own `available` field and to the sibling
+	// FileBackupIterator.isValid(), which returns `available` directly: this returns
+	// true only once the Iterator has already been exhausted (available == false), and
+	// false while it can still produce a File.
+	/** Intended to return whether a further File can still be produced.
+	  * @see streamIO.IIStreamIn#isValid()	 */
 	public boolean isValid() { return !available; }
 	
 	/** Creates new FileEnumeration  */
@@ -74,16 +87,23 @@ extends AStreamIn
 		this.input = _input;
 	}
 	
-	/** @see streamIO.object.AStreamIn#getMaxMarkSize()	 */
+	/** Returns the largest Mark ever supported: this Iterator has no size limit.
+	  * @see streamIO.object.AStreamIn#getMaxMarkSize()	 */
 	public long getMaxMarkSize() { return Long.MAX_VALUE; }
-	
-	/** @see streamIO.object.AStreamIn#getPosition()	 */
+
+	/** Returns the number of Files opened so far.
+	  * @see streamIO.object.AStreamIn#getPosition()	 */
 	public long getPosition() { return counter; }
 
-	/** @see streamIO.object.AStreamIn#currItem()	 */
+	// TODO: LOGIC: currItem() always returns null, because nextItem() below never
+	// assigns its result to this field before returning it - contrast the sibling
+	// FileBackupIterator.nextItem(), which does `return filter = new FileOutputStream(...)`.
+	/** Returns the Stream opened by the last call to {@link #nextItem()}.
+	  * @see streamIO.object.AStreamIn#currItem()	 */
 	public Object currItem() { return currItem; }
-	
-	protected transient Object currItem; 
+
+	/** The Stream opened by the last call to {@link #nextItem()}. */
+	protected transient Object currItem;
 	
 	/** Returns the next Element of this Enumeration.
 	 *  This Enumeration has unlimited Output Elements,

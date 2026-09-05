@@ -7,11 +7,10 @@ import java.io.IOException;
 import streamIO.object.AStreamIn;
 
 /**
- * FileBackupIterator
  * Returns a new File and in parallel renames the former File
  * to a Backup Location.
- * Any previous Backup Files are overwritten. 
- * 
+ * Any previous Backup Files are overwritten.
+ *
  * @see FileIterator
  * 
  * Created on 1. April 2001, 00:58
@@ -19,6 +18,15 @@ import streamIO.object.AStreamIn;
  * @author  Matthias Heuer
  * @version
  * @stereotype enumeration
+ * <!-- docstate
+ * pass: 2
+ * mtime: 2026-09-05T09:22:19Z
+ * digest: a6054bee85e49f1e2b235ee07e06a486207af5939b3e7314a88f80ccfb412eb4
+ * stale: false
+ * tags: [code/file_io, code/iterator_pattern, code/file_backup]
+ * concepts: [File System, File I/O]
+ * facets: {layer: infrastructure, status: stable, complexity: low}
+ * -->
  */
 public class FileBackupIterator
 extends AStreamIn {
@@ -38,13 +46,16 @@ extends AStreamIn {
 			return Long.MAX_VALUE; 
 		return -1; }
 
-	/** @see streamIO.object.AStreamIn#getMaxMarkSize()	 */
+	/** Returns the largest Mark ever supported: this Iterator has no size limit.
+	  * @see streamIO.object.AStreamIn#getMaxMarkSize()	 */
 	public long getMaxMarkSize() { return Long.MAX_VALUE; }
-	
-	/** @see streamIO.object.AStreamIn#getPosition()	 */
+
+	/** Position is not tracked by this Iterator.
+	  * @see streamIO.object.AStreamIn#getPosition()	 */
 	public long getPosition() { return 0; }
 
-	/** @see streamIO.IIStreamIn#isValid()	 */
+	/** Returns whether a further backup-and-replace cycle can still be attempted.
+	  * @see streamIO.IIStreamIn#isValid()	 */
 	public boolean isValid() { return available; }
 	
 	/** Creates new FileBackupEnumeration */
@@ -73,7 +84,8 @@ extends AStreamIn {
 		} 
 	}
 	
-	/** @see streamIO.object.AStreamIn#currItem()	 */
+	/** Returns the FileOutputStream opened by the last call to {@link #nextItem()}.
+	  * @see streamIO.object.AStreamIn#currItem()	 */
 	public Object currItem() { return filter; }
 	
 }

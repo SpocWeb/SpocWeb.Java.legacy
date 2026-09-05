@@ -10,11 +10,8 @@ import java.io.FileFilter;
 import java.io.FilenameFilter;
 
 /**
- * Title: DirectoryFilter<p>
- * Description:
- * Purpose:
- * Filters Files, so that only Directories are returned. 
- * 
+ * Filters Files, so that only Directories are returned.
+ *
  * Can be a Singleton, as long as the Code is Thread safe
  *
  * Known SubClasses: <none>
@@ -27,6 +24,15 @@ import java.io.FilenameFilter;
  * @author mheuer
  * @version	1.0
  *
+ * <!-- docstate
+ * pass: 2
+ * mtime: 2026-09-05T09:21:54Z
+ * digest: 0734be025e87c733d435bf8bbcfc084a8b7ccff5a62071b3a1324472ab701ec1
+ * stale: false
+ * tags: [code/file_filtering]
+ * concepts: [File System, File I/O]
+ * facets: {layer: infrastructure, status: stable, complexity: low}
+ * -->
  */
 public class DirectoryFilter 
 implements FilenameFilter, FileFilter {
@@ -37,11 +43,13 @@ implements FilenameFilter, FileFilter {
 	/** private Constructor to enforce Singleton use */
 	private DirectoryFilter() {};
 
-	/** @see java.io.FilenameFilter#accept(java.io.File, java.lang.String)	 */
+	/** Accepts a Directory Entry named within the given parent Directory.
+	  * @see java.io.FilenameFilter#accept(java.io.File, java.lang.String)	 */
 	public boolean accept(final File dir, final String name) {
 		return new File(dir, name).isDirectory(); }
 
-	/** @see java.io.FileFilter#accept(java.io.File)	 */
+	/** Accepts a File denoting a Directory.
+	  * @see java.io.FileFilter#accept(java.io.File)	 */
 	public boolean accept(final File pathname) {
 		return pathname.isDirectory(); }
 

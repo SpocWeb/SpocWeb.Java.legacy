@@ -63,7 +63,7 @@ cost more tokens than one and burn the 5-hour window N times faster.
 | `streamIO/adapter` | 6 | 435 | 0 | unclaimed | - |
 | `streamIO/vector` | 6 | 947 | 0 | unclaimed | - |
 | `streamIO/exception` | 5 | 536 | 0 | unclaimed | - |
-| `streamIO/fileSystem` | 4 | 288 | 0 | unclaimed | - |
+| `streamIO/fileSystem` | 4 | 288 | 4 | done | main |
 | `streamIO/testing` | 3 | 433 | 3 | done | main |
 | `swing` | 3 | 679 | 3 | done | main |
 | `persistences` | 2 | 306 | 2 | done | main |
@@ -174,6 +174,8 @@ same harness against it. A test that has not been seen red proves nothing.
 | persistences/PersistedObject.java | PersistedObject | (field `objects`) | 41 | The static registry HashMap is never initialized (`= new HashMap()` missing), so `getObject(String)` and `setId(String)` both throw `NullPointerException` on the first real use. Currently unreached in practice only because the constructor bug above never calls `setId`. | High | open |
 | swing/HashTreeNode.java | HashTreeNode | equals(Object) | 328 | When this Node's `userObject` is null (the Empty Constructor allows it) and `arg` is a non-null Object that is not a `DefaultMutableTreeNode`, the final branch calls `userObject.equals(arg)` on a null `userObject` and throws `NullPointerException`. | Low | open |
 | streamIO/testing/ATestCase.java | ATestCase | test(Object, Method, IIStreamOut, IIStreamOut, IIStreamOut) | 214 | Both branches of the `InvocationTargetException` handler log/rethrow the wrapping `x` instead of `inner` (`x.getTargetException()`), the exception the test method actually threw. Every reflectively-run test failure is reported with the reflection wrapper's stack trace instead of the real cause. | Medium | open |
+| streamIO/fileSystem/FileIterator.java | FileIterator | isValid() | 76 | Returns `!available`, inverted relative to its own `available` field and to the sibling `FileBackupIterator.isValid()` (which returns `available` directly): reports "valid" only once exhausted. | Medium | open |
+| streamIO/fileSystem/FileIterator.java | FileIterator | currItem() | 100 | Always returns `null`: `nextItem()` never assigns the `currItem` field before returning its result, unlike the sibling `FileBackupIterator.nextItem()` which does `return filter = new FileOutputStream(...)`. | Low | open |
 
 ## Tool defects found and fixed during the pilot
 
