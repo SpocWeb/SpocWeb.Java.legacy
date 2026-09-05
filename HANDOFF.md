@@ -14,11 +14,26 @@ existed in the schema); tags applied and index built (124 rows); both repos comm
 pushed. Everything from this session is now fully committed and pushed - there is no
 in-flight work and no uncommitted state.
 
-**Next up (per the standing "up to 5 parallel agents, autonomous" instruction):** claim and
-dispatch the next wave for the remaining unclaimed folders - `streamIO/object/enumer`
-(79 files/18229 lines), `streamIO/object/parser` (27/6942), and `streamIO/integer`
-(157/39243, needs further sub-batch splitting by line count first, following the same
-pattern used for `math`/`graphic`/`streamIO/copy`/`function`/`streamIO/object` earlier).
+**2026-09-06: entire wave closed out, corpus audited as fully documented.** All 5 agents from
+the last wave finished and were verified/tagged/committed: `streamIO/object/enumer` (79 files,
+11 bugs), `streamIO/object/parser` (27 files, 12 bugs), `streamIO/integer` root+adapter+file+
+multiplex+pipe (56 files, 14 bugs), `streamIO/integer/encoding`+`filter`+`random` (62 files incl.
+`redundancy`/`stats` subfolders, 25 bugs), and `streamIO/integer/jdbc` incl. `dbTest` (39 files,
+17 bugs - `dbTest` was left out of the dispatched agent's scope and hand-documented by the
+orchestrator, being small). A read-only audit agent then reconciled the whole Claims table
+against the actual file tree: 1457 `.java` files total repo-wide; two apparent gaps
+(`encoding/redundancy`+`filter/stats`, and `graphic` root+example+implement+svg) turned out to
+be stale Claims-table file counts, not missing documentation - `list-todo` on both confirmed
+zero rows. Both counts corrected in the table above; **the Claims table now reconciles exactly
+to 1457/1457 files, and every batch is `done`. The full corpus documentation pass (all 7 passes)
+appears complete** - no unclaimed rows remain. A final independent `list-todo .` sweep across
+the whole repo root was run to confirm this (per-batch checks were always scoped to individual
+folders, never run as one repo-wide pass before): it returns exactly 8 rows, all of them
+already-known/confirmed tool false positives on methods whose simple name equals their return
+type's simple name (`AManifold.Interpolator`, `AND.testIt` - actually a distinct known
+false-positive pattern, see tool quirks - `AContainer.ChangeIterator`, `Function.findRootFast`,
+`Function.isBiUnique`, `RecordSet.main`, `Relation.getAt`, `Relation.isBiUnique`). **The entire
+7-pass documentation run across the whole corpus is genuinely complete.**
 
 **What's fully committed+pushed (both `D:/_/_Matthias/Code/Java` and `D:/_/_AI`):**
 - Milestone C of the companion CLI (`D:/_/_AI/skills/Java.ReadMeGenerator/ReadMeGenerator/`)
@@ -139,10 +154,10 @@ concurrently against the same file):
 | `streamIO/object/enumer` | 79 | 18229 | 79 | done | agent-object-enumer |
 | `streamIO/object/parser` | 27 | 6942 | 27 | done | agent-object-parser |
 | `streamIO/integer` (root+adapter+file+multiplex+pipe) | 56 | 15359 | 56 | done | agent-integer-core |
-| `streamIO/integer/encoding`+`filter`+`random` | 56 | 10273 | 56 | done | agent-integer-encoding |
+| `streamIO/integer/encoding`+`filter`+`random` (incl. `encoding/redundancy`+`filter/stats`) | 62 | 10273 | 62 | done | agent-integer-encoding |
 | `streamIO/integer/jdbc` (excl. `dbTest/`) | 31 | 11899 | 31 | done | agent-integer-jdbc |
 | `streamIO/integer/jdbc/dbTest` | 8 | ~1300 | 8 | done | orchestrator (hand-authored, small batch) |
-| `graphic` (root+example+implement+svg) | 50 | 14297 | 50 | done | agent-graphic-misc |
+| `graphic` (root+example+implement+svg) | 55 | 14297 | 55 | done | agent-graphic-misc |
 | `graphic/math2D`+`graphic/ms3d` | 18 | 3525 | 18 | done | agent-graphic-2d |
 | `graphic/math3D` | 32 | 6425 | 32 | done | agent-graphic-math3D |
 | `graphic/mvc` | 26 | 4789 | 26 | done | agent-graphic-mvc |
