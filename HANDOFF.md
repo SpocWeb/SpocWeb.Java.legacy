@@ -57,8 +57,23 @@ at each batch boundary. Batches are top-level folders, with `streamIO` split one
 deeper because it alone holds 46% of the corpus. `Lines` and `Documented` are measured,
 not estimated; `Documented` counts files carrying a `docstate` block.
 
-No parallel agents: each agent would carry its own copy of the skill context, so N agents
-cost more tokens than one and burn the 5-hour window N times faster.
+**2026-09-05: switched to up to 5 parallel agents, per explicit user instruction.**
+Coordination to avoid the concurrent-write hazards the tags pipeline and git both have
+(`cli-reference.md`: several Pass 4-7 commands are explicitly not locked and must never run
+concurrently against the same file):
+- The orchestrator alone claims/unclaims Claims-table rows, runs Pass 4-7
+  (`extract-tags`/`build-vocabulary`/`apply-tags`/`build-index` against the shared
+  `raw-tags.tsv`, `tags-schema.yaml`, `tags-index.tsv`), edits `HANDOFF.md`, and runs every
+  git command (add/commit/push). Dispatched agents do none of that.
+- Each agent does Pass 1+2 (Javadoc) and Pass 3 (folder `ReadMe.md`) for its own assigned
+  folder(s) only, then reports back: Javadoc summary of what changed, any bugs found
+  (file/method/line/description/severity, never fixed - only flagged inline and reported),
+  and suggested tag rows (axis-A candidates, reusing schema tags where possible; axis-B
+  concepts; facets) for the orchestrator to merge into `raw-tags.tsv` and run Pass 4-7 on
+  afterward, one folder at a time (sequentially, even though the agents ran in parallel).
+- Every agent must scope `check-stale`/`update-readme`/`extract-tags` to its own assigned
+  folder path explicitly - never to `.` or the repo root - per the accidental repo-wide
+  `check-stale .` run recorded above.
 
 | Batch | Files | Lines | Documented | Status | Claimed by |
 |---|--:|--:|--:|---|---|
@@ -78,12 +93,12 @@ cost more tokens than one and burn the 5-hour window N times faster.
 | `streamIO/(root)` | 28 | 8003 | 0 | unclaimed | - |
 | `knowledge` | 27 | 3363 | 27 | done | main |
 | `stringOp` | 16 | 4579 | 0 | unclaimed | - |
+| `aspect` | 15 | 2493 | 0 | claimed | agent-aspect |
+| `flow` | 14 | 1022 | 0 | claimed | agent-flow |
+| `reflect` | 12 | 2492 | 0 | claimed | agent-reflect |
+| `streamIO/diffPatch` | 11 | 2895 | 0 | claimed | agent-diffPatch |
+| `sound` | 10 | 1030 | 0 | claimed | agent-sound |
 | `tools` | 17 | 3468 | 17 | done | - |
-| `aspect` | 15 | 2493 | 0 | unclaimed | - |
-| `flow` | 14 | 1022 | 0 | unclaimed | - |
-| `reflect` | 12 | 2492 | 0 | unclaimed | - |
-| `streamIO/diffPatch` | 11 | 2895 | 0 | unclaimed | - |
-| `sound` | 10 | 1030 | 0 | unclaimed | - |
 | `(root)` | 9 | 1073 | 9 | done | main |
 | `streamIO/asyncMessage` | 7 | 541 | 7 | done | main |
 | `analysis` | 6 | 319 | 6 | done | main |
