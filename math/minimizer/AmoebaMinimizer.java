@@ -7,12 +7,10 @@ import streamIO.Log;
 import function.vector.IFloatScalarField;
 
 /**
-  * Title: AmoebaMinimizer<p>
-  * Description:
-  * Purpose:
-  * This Class is used to find the Minimum of a given continuous Scalar Field  
-  * (not necessarily differentiable) using the "downhill Simplex" Method.
-  * This Method is slow (linear Convergence), but very robust.
+  * Finds the minimum of a continuous scalar field (not necessarily differentiable) using
+  * the downhill simplex ("amoeba") method.
+  *
+  * <p>This Method is slow (linear Convergence), but very robust.
   * The Scalar Field needs to be continuous only, not differentiable!
   *
   * A Simplex is a Tensor
@@ -56,6 +54,15 @@ import function.vector.IFloatScalarField;
   * Created on	06-30-2002, 11:29 AM<p>
   * @author 	Matthias Heuer
   * @version	1.0
+  * <!-- docstate
+  * pass: 2
+  * mtime: 2026-09-05T11:46:41Z
+  * digest: 79bbf6b36498ee5d33332f5f2e56caeaf6e072b69a97dd8dcab78df823e254b1
+  * stale: false
+  * tags: [code/minimum_search, code/optimization]
+  * concepts: [Downhill Simplex (Nelder-Mead) Minimizer]
+  * facets: {layer: utility, status: legacy, complexity: medium}
+  * -->
   */
 public class AmoebaMinimizer {
 

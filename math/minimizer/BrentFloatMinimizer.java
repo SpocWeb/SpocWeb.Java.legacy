@@ -11,9 +11,8 @@ import function.IMeasurAble;
 import function.byref.ByRefDouble;
 
 /**
- * Title: BrentFloatMinimizer<p>
- * Description:
- * find minimum of a 1-dim. function by Brent's method (10.2)
+ * Finds the minimum of a one-dimensional function by Brent's method (10.2), without
+ * requiring derivative information.
  *
  * Known SubClasses: <none>
  *
@@ -28,6 +27,15 @@ import function.byref.ByRefDouble;
  * @author mheuer
  * @version	1.0
  *
+ * <!-- docstate
+ * pass: 2
+ * mtime: 2026-09-05T11:46:34Z
+ * digest: 10a4df5dab48893ab0bbcc6064ac2f8ffe1efc36484c712f910e01176e11b341
+ * stale: false
+ * tags: [code/minimum_search, code/optimization]
+ * concepts: [Brent's Method Minimizer]
+ * facets: {layer: utility, status: legacy, complexity: medium}
+ * -->
  */
 public class BrentFloatMinimizer 
 extends AFloatMinimizer {

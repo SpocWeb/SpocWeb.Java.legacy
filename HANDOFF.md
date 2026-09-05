@@ -87,7 +87,7 @@ concurrently against the same file):
 | `graphic/mvc` | 26 | 4789 | 0 | unclaimed | - |
 | `math` (root+algorithm+integration+wavelet) | 18 | 3123 | 0 | claimed | agent-math-core |
 | `math/fit`+`math/refiner` | 27 | 3644 | 0 | claimed | agent-math-fit |
-| `math/minimizer` | 11 | 3043 | 0 | claimed | agent-math-minimizer |
+| `math/minimizer` | 11 | 3043 | 11 | done | agent-math-minimizer |
 | `math/matrix` | 13 | 15603 | 0 | unclaimed | - |
 | `math/vector` | 15 | 33025 | 0 | unclaimed | - |
 | `structure` | 52 | 4933 | 52 | done | agent-structure |
@@ -304,6 +304,7 @@ same harness against it. A test that has not been seen red proves nothing.
 | streamIO/real/random/RandomGauss.java | RandomGauss | nextDoubleInternal() | - | Self-comparison that is always false, a dead rejection branch. | Medium | open |
 | streamIO/real/random/RandomGauss2.java | RandomGauss2 | nextDoubleInternal() | - | Identical always-false self-comparison bug as `RandomGauss`. | Medium | open |
 | streamIO/real/random/RandomPoisson.java | RandomPoisson | reSet() | - | Unconditional `ranLorentz.reSet()` call throws `NullPointerException` when `EW<12` (`ranLorentz` is not constructed in that branch). | High | open |
+| math/minimizer/SinOfDistDivDist.java | SinOfDistDivDist | Map(double[]) / Map(float[]) | 59, 78 | `ret` is exactly 0.0 when the input equals the center (or origin), so `-Math.sin(ret)/ret` computes `0.0/0.0 = NaN` instead of the mathematical limit -1.0 - a minimizer converging onto this function's own minimum observes NaN. | Medium | open |
 
 ## Tool defects found and fixed during the pilot
 

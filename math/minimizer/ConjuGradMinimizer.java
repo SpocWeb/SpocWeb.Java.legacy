@@ -16,9 +16,8 @@ import function.byref.ByRefDouble;
 import function.vector.IFloatScalarField;
 
 /**
- * Title: ConjuGradMinimizer<p>
- * Description:
- * Minimizes a Scalar Field along a Ray. 
+ * Minimizes a scalar field in N dimensions by Powell's conjugate-direction method,
+ * without requiring derivative information.
  *
  * Design Decisions / Implementation Details:
  *
@@ -33,6 +32,15 @@ import function.vector.IFloatScalarField;
  * @author mheuer
  * @version	1.0
  *
+ * <!-- docstate
+ * pass: 2
+ * mtime: 2026-09-05T11:48:01Z
+ * digest: bb3a40401ed41153bc3d726af993e9cb7b33a6ce8ffd05ca8677aba1a6db6227
+ * stale: false
+ * tags: [code/conjugate, code/optimization]
+ * concepts: [Conjugate Gradient Minimizer]
+ * facets: {layer: utility, status: legacy, complexity: high}
+ * -->
  */
 public class ConjuGradMinimizer
 implements IFloatFunction {
@@ -112,7 +120,7 @@ implements IFloatFunction {
 	 * starts with Minimizations along the Coordinate Axes. 
 	 * A Scalar Function can be approximated by: 
 	 * f(x[]) 
-	 * = f(x0[]) + dx[]*df/dx[] + dx[]*d²f/dx[]dy[]*dy[] + ...
+	 * = f(x0[]) + dx[]*df/dx[] + dx[]*dï¿½f/dx[]dy[]*dy[] + ...
 	 * = c + dx[]*b[] + dx[]*A[][]*dx[] + ...
 	 * This does generally not work too well, unless the Principal Axes 
 	 * of the Quadratic Form lie on the Coordinate Axes. 
@@ -139,7 +147,7 @@ implements IFloatFunction {
 	 * starts with Minimizations along the Coordinate Axes. 
 	 * A Scalar Function can be approximated by: 
 	 * f(x[]) 
-	 * = f(x0[]) + dx[]*df/dx[] + dx[]*d²f/dx[]dy[]*dy[] + ...
+	 * = f(x0[]) + dx[]*df/dx[] + dx[]*dï¿½f/dx[]dy[]*dy[] + ...
 	 * = c + dx[]*b[] + dx[]*A[][]*dx[] + ...
 	 * This does generally not work too well, unless the Principal Axes 
 	 * of the Quadratic Form lie on the Coordinate Axes. 
@@ -168,7 +176,7 @@ implements IFloatFunction {
 	 * starts with Minimizations along the Coordinate Axes. 
 	 * A Scalar Function can be approximated by: 
 	 * f(x[]) 
-	 * = f(x0[]) + dx[]*df/dx[] + dx[]*d²f/dx[]dy[]*dy[] + ...
+	 * = f(x0[]) + dx[]*df/dx[] + dx[]*dï¿½f/dx[]dy[]*dy[] + ...
 	 * = c + dx[]*b[] + dx[]*A[][]*dx[] + ...
 	 * This does generally not work too well, unless the Principal Axes 
 	 * of the Quadratic Form lie on the Coordinate Axes. 
@@ -193,7 +201,7 @@ implements IFloatFunction {
 	 * starts with Minimizations along the Coordinate Axes. 
 	 * A Scalar Function can be approximated by: 
 	 * f(x[]) 
-	 * = f(x0[]) + dx[]*df/dx[] + dx[]*d²f/dx[]dy[]*dy[] + ...
+	 * = f(x0[]) + dx[]*df/dx[] + dx[]*dï¿½f/dx[]dy[]*dy[] + ...
 	 * = c + dx[]*b[] + dx[]*A[][]*dx[] + ...
 	 * This does generally not work too well, unless the Principal Axes 
 	 * of the Quadratic Form lie on the Coordinate Axes. 
@@ -232,7 +240,7 @@ implements IFloatFunction {
 	 * starts with Minimizations along the Coordinate Axes. 
 	 * A Scalar Function can be approximated by: 
 	 * f(x[]) 
-	 * = f(x0[]) + dx[]*df/dx[] + dx[]*d²f/dx[]dy[]*dy[] + ...
+	 * = f(x0[]) + dx[]*df/dx[] + dx[]*dï¿½f/dx[]dy[]*dy[] + ...
 	 * = c + dx[]*b[] + dx[]*A[][]*dx[] + ...
 	 * This does generally not work too well, unless the Principal Axes 
 	 * of the Quadratic Form lie on the Coordinate Axes. 
@@ -326,8 +334,12 @@ implements IFloatFunction {
 	// #region: Implementation @see function.IFloatFunction
 	/////////////////////////////////////////////////////////////////////////////////////
 	
-    /** @see function.IFloatFunction#getOrder()     */
-    public byte getOrder() { return IStreamIn.ORDER_NONE; }    
+    /**
+     * Returns {@link IStreamIn#ORDER_NONE}: this function carries no derivative order.
+     *
+     * @see function.IFloatFunction#getOrder()
+     */
+    public byte getOrder() { return IStreamIn.ORDER_NONE; }
     
 	/** 
 	 * Artificial 1-dim Function to minimize along a Ray
@@ -338,7 +350,11 @@ implements IFloatFunction {
 		return scalarField.Map(ray);
 	}
 	
-	/** @see function.IFloatFunction#Map(float)	 */
+	/**
+	 * Evaluates the scalar field along the current search ray at the point {@code x}.
+	 *
+	 * @see function.IFloatFunction#Map(float)
+	 */
 	public float Map(final float x) { return (float) Map((double) x); }
 	
 	////////////////////////////////////////////////////////////////////////////////
@@ -401,21 +417,20 @@ implements IFloatFunction {
 		testLinMin();
 	}
 	
+	/** Main method to be called from the command line, running {@link #testIt()}. */
 	final static public void main(final String[] args) {
 		testIt();
 	}
-	
+
 }
 
-/** 
- * 
- * Title: DistSqrDistorted<p>
- * Description:
- * Scalar Field returning the Squared multidimensional Distance 
- * to the Origin, handed over in the Constructor. 
- * To demonstrate changing Directions, 
- * the Quadratic is squished to make it asymmetric 
- * and the Main Axes of the Quadratic are tilted. 
+/**
+ * Scalar field returning the squared multidimensional distance to an origin, handed over
+ * in the constructor, but with the quadratic squished and its main axes tilted.
+ *
+ * <p>To demonstrate changing Directions,
+ * the Quadratic is squished to make it asymmetric
+ * and the Main Axes of the Quadratic are tilted.
  *
  * Known SubClasses: <none>
  *
@@ -427,6 +442,15 @@ implements IFloatFunction {
  * @author mheuer
  * @version	1.0
  *
+ * <!-- docstate
+ * pass: 2
+ * mtime: 2026-09-05T11:48:01Z
+ * digest: f099b3d48c85b28c03b42f0eb40fcdbfb7cf5d983e2be7c9c505f7f5c3d44b18
+ * stale: false
+ * tags: [code/test_fixture]
+ * concepts: [Distorted Squared Distance Test Fixture]
+ * facets: {layer: test, status: legacy, complexity: low}
+ * -->
  */
 class DistSqrDistorted
 implements IFloatScalarField {
@@ -440,20 +464,36 @@ implements IFloatScalarField {
 	/** Origin of the Hyper-Parabola	 */
 	public double[] x0;
 	
-	/** @see function.vector.IFloatScalarField#Map(double[])	 */
-	public double Map(final double[] x) { //rotate and stretch the 
+	/**
+	 * Returns the squished, rotated squared distance from {@code x} to {@link #x0}: the
+	 * {@code z} axis is left untouched, the {@code x+y} diagonal is weighted normally and
+	 * the {@code x-y} diagonal is weighted 8 times as strongly.
+	 *
+	 * @see function.vector.IFloatScalarField#Map(double[])
+	 */
+	public double Map(final double[] x) { //rotate and stretch the
 		double ret = ByRefDouble.SQR(x[2]-x0[2]);
 		ret += ByRefDouble.SQR(x[1]+x[0]-(x0[1]+x0[0]));
-		ret += 8*ByRefDouble.SQR(x[1]-x[0]-(x0[1]-x0[0]));		
-		return ret; 
+		ret += 8*ByRefDouble.SQR(x[1]-x[0]-(x0[1]-x0[0]));
+		return ret;
 	}
 
-	/** @see function.vector.IFloatScalarField#Map(double[])	 */
-	public double Map1(final double[] x) { //rotate and stretch the 
+	/**
+	 * Returns the plain (undistorted) squared Euclidean distance from {@code x} to
+	 * {@link #x0}, for comparison against {@link #Map(double[])}.
+	 *
+	 * @see function.vector.IFloatScalarField#Map(double[])
+	 */
+	public double Map1(final double[] x) { //rotate and stretch the
 		return VectorDouble.DIST_SQR(x, x0);
 	}
 
-	/** @see function.vector.IFloatScalarField#Map(float[])	 */
+	/**
+	 * Returns the plain (undistorted) squared Euclidean distance from {@code x} to
+	 * {@link #x0}.
+	 *
+	 * @see function.vector.IFloatScalarField#Map(float[])
+	 */
 	public float Map(final float[] x) {
 		return (float) VectorFloat.DIST_SQR(x, x0);
 	}

@@ -17,13 +17,13 @@ import function.vector.IFloatScalarField;
 import function.vector.IFloatVectorField;
 
 /**
- * Title: ConjuGrad1Minimizer<p>
- * Description:
- * TODO: this Function doesn't work properly (yet) 
- * Implements a Conjugate Gradient Method which uses the 1st Derivative (Gradient). 
- * Actually also this Algorithm is easily tricked into local Minima. 
- * More FailSafe Algorithms are implemented using the Annealing Family: 
- * Annealing, Threshold and Flood Algorithm. 
+ * Minimizes a scalar field in N dimensions by the conjugate-gradient method, using the
+ * first derivative (gradient) supplied by an {@link IFloatVectorField}.
+ *
+ * <p>TODO: this Function doesn't work properly (yet)
+ * Actually also this Algorithm is easily tricked into local Minima.
+ * More FailSafe Algorithms are implemented using the Annealing Family:
+ * Annealing, Threshold and Flood Algorithm.
  *
  * Design Decisions / Implementation Details:
  *
@@ -41,6 +41,15 @@ import function.vector.IFloatVectorField;
  * @author mheuer
  * @version	1.0
  *
+ * <!-- docstate
+ * pass: 2
+ * mtime: 2026-09-05T11:47:35Z
+ * digest: bac51004c6c05037d94c22e33b2023580aa4aeb17ab4638c576eb85c9b9b2c44
+ * stale: false
+ * tags: [code/conjugate, code/derivative_calculation, code/optimization]
+ * concepts: [Conjugate Gradient Minimizer]
+ * facets: {layer: utility, status: legacy, complexity: high}
+ * -->
  */
 public class ConjuGrad1Minimizer 
 extends AFloatDeriveAble {
@@ -73,7 +82,11 @@ extends AFloatDeriveAble {
 	final Brent1FloatMinimizer minimizer = new Brent1FloatMinimizer();
 	
 	/**
-	 * 
+	 * Allocates the working vectors used to minimize the given fields along a search ray.
+	 *
+	 * @param dim the number of dimensions of the scalar and vector fields
+	 * @param scalarField_ the scalar field to minimize
+	 * @param vectorField_ the field returning the gradient of {@code scalarField_}
 	 */
 	public ConjuGrad1Minimizer(final int dim, final IFloatScalarField scalarField_, final IFloatVectorField vectorField_) {
 		this.scalarField=scalarField_;
@@ -164,30 +177,51 @@ extends AFloatDeriveAble {
 	// Implementation of IFloatDeriveAble Methods
 	/////////////////////////////////////////////////////////////////////////////////////
 	
-	/** @see function.derive.AFloatDeriveAble#Map(double)	 */
+	/**
+	 * Evaluates the scalar field at the point {@code rayStart + x * rayDir} along the
+	 * current search ray.
+	 *
+	 * @see function.derive.AFloatDeriveAble#Map(double)
+	 */
 	public double Map(final double x) {
-		VectorDouble.ADD_PROD(ray, rayStart, x, rayDir); 
+		VectorDouble.ADD_PROD(ray, rayStart, x, rayDir);
 		return scalarField.Map(ray);
 	}
 
-	/** @see function.derive.AFloatDeriveAble#getDerivative(double)	 */
+	/**
+	 * Returns the directional derivative of the scalar field along the current search
+	 * ray at the point {@code rayStart + x * rayDir}.
+	 *
+	 * @see function.derive.AFloatDeriveAble#getDerivative(double)
+	 */
 	public double getDerivative(final double x) {
 		for (int j=1;j<=ncom;j++) { //TODO reuse 'ray' here and merge Map() and getDerivative()
-			xt[j]=rayStart[j]+x*rayDir[j]; } 
+			xt[j]=rayStart[j]+x*rayDir[j]; }
 		vectorField.map(xt, df);
 		double df1=0;
 		for (int j=1;j<=ncom;j++) {
-			df1 += df[j]*rayDir[j]; } 
+			df1 += df[j]*rayDir[j]; }
 		return df1;
 	}
 
-	/** @see function.derive.AFloatDeriveAble#getFuncDerive(double, function.byref.ByRefDouble)	 */
+	/**
+	 * Evaluates both the scalar field and its directional derivative at once along the
+	 * current search ray.
+	 *
+	 * @param derivative out parameter receiving the directional derivative at {@code x}
+	 * @return the scalar field value at {@code x}
+	 * @see function.derive.AFloatDeriveAble#getFuncDerive(double, function.byref.ByRefDouble)
+	 */
 	public double getFuncDerive(final double x, final ByRefDouble derivative) {
-		derivative.Value = getDerivative(x); // TODO Auto-generated method stub
+		derivative.Value = getDerivative(x);
 		return Map(x);
 	}
 
-	/** @see function.IFunction#Map(java.lang.Object)	 */
+	/**
+	 * Unimplemented; always returns {@code null}.
+	 *
+	 * @see function.IFunction#Map(java.lang.Object)
+	 */
 	public Object Map(final Object arg) {
 		// TODO Auto-generated method stub
 		return null;
@@ -263,18 +297,16 @@ extends AFloatDeriveAble {
 		testLinMin();
 	}
 	
+	/** Main method to be called from the command line, running {@link #testIt()}. */
 	final static public void main(final String[] args) {
 		testIt();
 	}
-	
+
 }
 
-/** 
- * 
- * Title: DistSqr<p>
- * Description:
- * Scalar Field returning the Squared multidimensional Distance 
- * to the Origin, handed over in the Constructor. 
+/**
+ * Scalar field returning the squared multidimensional distance to an origin, handed over
+ * in the constructor.
  *
  *
  * Known SubClasses: <none>
@@ -287,6 +319,15 @@ extends AFloatDeriveAble {
  * @author mheuer
  * @version	1.0
  *
+ * <!-- docstate
+ * pass: 2
+ * mtime: 2026-09-05T11:47:35Z
+ * digest: 15802de96f18e3e4ef443b765c6fb794e5edad4e5b49b3630570b2f5a8c3bc94
+ * stale: false
+ * tags: [code/test_fixture]
+ * concepts: [Squared Distance Test Fixture]
+ * facets: {layer: test, status: legacy, complexity: low}
+ * -->
  */
 class DistSqr 
 extends AFloatVectorField 
@@ -305,32 +346,48 @@ implements IFloatScalarField {
 	// Implementation of IFloatVectorField
 	/////////////////////////////////////////////////////////////////////////////////////
 	
-	/** @see function.vector.AFloatVectorField#map(double[], double[])	 */
+	/**
+	 * Writes the gradient of the squared distance to {@link #x0}, {@code 2*(x-x0)}, into {@code out}.
+	 *
+	 * @see function.vector.AFloatVectorField#map(double[], double[])
+	 */
 	public double[] map(double[] x, double[] out) {
 		for (int i=1; i<=3; i++) {
-			out[i]=2*(x[i]-x0[i]); } 
+			out[i]=2*(x[i]-x0[i]); }
 		return out;
 	}
 
-	/** @see function.vector.AFloatVectorField#map(float[], float[])	 */
+	/**
+	 * Writes the gradient of the squared distance to {@link #x0}, {@code 2*(x-x0)}, into {@code out}.
+	 *
+	 * @see function.vector.AFloatVectorField#map(float[], float[])
+	 */
 	public float[] map(float[] x, float[] out) {
 		for (int i=1; i<=3; i++) {
-			out[i]=2*(x[i]-(float)x0[i]); } 
+			out[i]=2*(x[i]-(float)x0[i]); }
 		return out;
 	}
-	
+
 	/////////////////////////////////////////////////////////////////////////////////////
 	// Implementation of IFloatScalarField
 	/////////////////////////////////////////////////////////////////////////////////////
-	
-	/** @see function.vector.IFloatScalarField#Map(double[])	 */
-	public double Map(final double[] x) { //rotate and stretch the 
+
+	/**
+	 * Returns the squared Euclidean distance from {@code x} to {@link #x0}.
+	 *
+	 * @see function.vector.IFloatScalarField#Map(double[])
+	 */
+	public double Map(final double[] x) { //rotate and stretch the
 		return VectorDouble.DIST_SQR(x, x0);
 	}
 
-	/** @see function.vector.IFloatScalarField#Map(float[])	 */
+	/**
+	 * Returns the squared Euclidean distance from {@code x} to {@link #x0}.
+	 *
+	 * @see function.vector.IFloatScalarField#Map(float[])
+	 */
 	public float Map(final float[] x) {
 		return (float) VectorFloat.DIST_SQR(x, x0);
 	}
-	
+
 }

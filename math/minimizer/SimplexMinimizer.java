@@ -10,12 +10,13 @@ import streamIO.Assert;
 import streamIO.Log;
 
 /**
- * Title: SimplexMinimizer<p>
- * Description:
- * Linear Optimization: 
- * Optimizes a linear Objective Function 
- * z = a[0]*x = a[0](1,2,...,N)*(x[1],x[2],...,x[N]) 
- * within a bounded HyperSimplex consisting of a convex Area, 
+ * Solves linear programs by the simplex method (10.8): maximizes a linear objective
+ * function over a bounded region defined by linear inequality and equality constraints.
+ *
+ * <p>Linear Optimization:
+ * Optimizes a linear Objective Function
+ * z = a[0]*x = a[0](1,2,...,N)*(x[1],x[2],...,x[N])
+ * within a bounded HyperSimplex consisting of a convex Area,
  * formed by HyperPlanes described by the following Equations:
  * x[i] >=0; b[i] >=0;   (multiply Equation by -1, if b[i] < 0)
  *   
@@ -148,6 +149,15 @@ import streamIO.Log;
  * @author mheuer
  * @version	1.0
  *
+ * <!-- docstate
+ * pass: 2
+ * mtime: 2026-09-05T11:48:12Z
+ * digest: 5ecc21792202700fab2774b67d0ad00bccc11dab61cd9ea752a7fc8ba4fd83ab
+ * stale: false
+ * tags: [code/simplex_method, code/optimization]
+ * concepts: [Linear Programming Simplex Tableau Solver]
+ * facets: {layer: utility, status: legacy, complexity: high}
+ * -->
  */
 public class SimplexMinimizer {
 
@@ -164,6 +174,11 @@ public class SimplexMinimizer {
 	 * @param maxPos return Index of maximum Value
 	 * @param maxVal return maximum Value
 	 * @return Index of maximum Value
+	 * <!-- docstate
+	 * tags: [code/simplex_method]
+	 * concepts: [Simplex Tableau Pivot Column Selection]
+	 * facets: {layer: utility, status: legacy, complexity: low}
+	 * -->
 	 */
 	private static final int maxPos(final double[] aRow, final int[] index, final int indexLen, final boolean useAbsV) {
 		int maxPos=index[1];
@@ -192,6 +207,11 @@ public class SimplexMinimizer {
 	 * @param nl2
 	 * @param maxPos
 	 * @param ip return Value
+	 * <!-- docstate
+	 * tags: [code/simplex_method]
+	 * concepts: [Simplex Tableau Pivot Row Selection]
+	 * facets: {layer: utility, status: legacy, complexity: low}
+	 * -->
 	 */
 	private static final int getPivot(final double[][] a, final int numCols
 	, final int[] index2, final int index2Length, final int maxPos) {
@@ -238,6 +258,11 @@ public class SimplexMinimizer {
 	 * @param k1
 	 * @param iPivot
 	 * @param maxPos
+	 * <!-- docstate
+	 * tags: [code/simplex_method]
+	 * concepts: [Simplex Tableau Pivot Exchange]
+	 * facets: {layer: utility, status: legacy, complexity: medium}
+	 * -->
 	 */
 	private static final void exchangeVariable(final double[][] a, final int index1, final int k1, final int iPivot, final int maxPos) {
 		final double pivot = 1/a[iPivot+1][maxPos+1];
@@ -276,6 +301,11 @@ public class SimplexMinimizer {
 	 * 	 0 if there is one or more optimal Solutions
 	 *  -1 if there is no Solution due to conflicting Constraints
 	 *  +1 if the Solutions are unbound
+	 * <!-- docstate
+	 * tags: [code/simplex_method]
+	 * concepts: [Simplex Tableau Minimization Loop]
+	 * facets: {layer: utility, status: legacy, complexity: high}
+	 * -->
 	 */
 	final static public int minimizeSimplex(final double[][] a, final int numRows, final int numCols
 	, final int numLess, final int numMore, final int numEqual, 
@@ -323,6 +353,11 @@ public class SimplexMinimizer {
 	/** finds a Starting Point for the Simplex Algorithm if the Origin is not possible
 	 * @see #simplx(double[][], int, int, int, int, int, int[], int[]) uses this Method exclusively 
 	 * @return the Length of index1 or -1 if there is no Solution due to conflicting Constraints
+	 * <!-- docstate
+	 * tags: [code/simplex_method]
+	 * concepts: [Simplex Feasible Start Point Search]
+	 * facets: {layer: utility, status: legacy, complexity: high}
+	 * -->
 	 */
 	private static final int findStartPoint(
 		final double[][] a,
@@ -437,8 +472,16 @@ public class SimplexMinimizer {
 	/// Testing and Main Method
 	/////////////////////////////////////////////////////////////////////////////////////
 
+	/** Runs {@link #minimizeSimplex} against a fixed example tableau and asserts the known result.
+	 *
+	 * <!-- docstate
+	 * tags: [code/simplex_method]
+	 * concepts: [Self-Test Method]
+	 * facets: {layer: test, status: legacy, complexity: low}
+	 * -->
+	 */
 	final static public void testIt() {
-		final int N = 4; 
+		final int N = 4;
 		final int M1 = 2;        /* M1+M2+M3 = M */
 		final int M2 = 1;
 		final int M3 = 1;
@@ -506,6 +549,14 @@ public class SimplexMinimizer {
 		}
 	}
 
+	/** Main method to be called from the command line, running {@link #testIt()}.
+	 *
+	 * <!-- docstate
+	 * tags: [code/simplex_method]
+	 * concepts: [Demo Entry Point]
+	 * facets: {layer: test, status: legacy, complexity: low}
+	 * -->
+	 */
 	final static public void main(final String[] args) {
 		testIt();
 	}

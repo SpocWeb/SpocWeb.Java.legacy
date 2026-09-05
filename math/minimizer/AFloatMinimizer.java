@@ -13,12 +13,10 @@ import function.IMeasurAble;
 import function.byref.ByRefDouble;
 
 /**
- * Title: AFloatMinimizer<p>
- * Description:
- * Finds the local Minimum for the given Function by iterative best bracketing
- * in the manner of the golden Rule:	 xl------xm--xt------xr
+ * Base class that brackets and iteratively refines the local minimum of a one-dimensional
+ * function, in the manner of the golden rule: {@code xl------xm--xt------xr}.
  *
- * The Idea is to calculate a Test Point in the larger Interval
+ * <p>The Idea is to calculate a Test Point in the larger Interval
  * and to compare it's Function Value to the current Minimum Estimation.
  * If it is smaller, it is chosen as the new MidPoint,
  * else the old one is kept, but the right border is set to the Test Point
@@ -56,6 +54,15 @@ import function.byref.ByRefDouble;
  * @author mheuer
  * @version	1.0
  *
+ * <!-- docstate
+ * pass: 2
+ * mtime: 2026-09-05T11:46:26Z
+ * digest: b079ad63abb3bf5004b508d8f5eaa8c2ac8cf7339b17bbd1bc5462195524b9f3
+ * stale: false
+ * tags: [code/minimum_search, code/bracket_matching, code/optimization]
+ * concepts: [Numerical Optimization]
+ * facets: {layer: utility, status: legacy, complexity: medium}
+ * -->
  */
 public abstract class AFloatMinimizer 
 extends SecantFloatRefiner {	//ARefinerQ {	//swaps the Points unnecessarily!

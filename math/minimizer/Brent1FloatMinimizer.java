@@ -11,10 +11,8 @@ import function.byref.ByRefDouble;
 import function.derive.IFloatDeriveAble;
 
 /**
- * Title: Brent1FloatMinimizer<p>
- * Description:
- * find minimum of a 1-dim. function using derivative information (10.3)		
- * Brent's Algorithm to calculate the Minimum in one Dimension, Chapter 10.2
+ * Finds the minimum of a one-dimensional function using derivative information (10.3),
+ * by Brent's algorithm for one-dimensional minimization (Chapter 10.2).
  *
  * Known SubClasses: <none>
  *
@@ -29,6 +27,15 @@ import function.derive.IFloatDeriveAble;
  * @author mheuer
  * @version	1.0
  *
+ * <!-- docstate
+ * pass: 2
+ * mtime: 2026-09-05T11:46:32Z
+ * digest: 147efbca1860708a6519f91ec5f791290906baad57993cfd2c28ccbf4b4362e8
+ * stale: false
+ * tags: [code/minimum_search, code/derivative_calculation, code/optimization]
+ * concepts: [Brent's Method Minimizer]
+ * facets: {layer: utility, status: legacy, complexity: medium}
+ * -->
  */
 public class Brent1FloatMinimizer 
 extends AFloatMinimizer {

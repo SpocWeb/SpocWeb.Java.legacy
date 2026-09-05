@@ -12,13 +12,12 @@ import streamIO.Log;
 import function.vector.IFloatScalarField;
 
 /**
- * Title: AnnealingMinimizer<p>
- * Description:
- * Implements a multidimensional annealing Minimizer for continuous Functions
- * (not necessarily differentiable) by modifying AmoebaMinimizer 
- * to generate random Fluctuations in the Function Values, 
- * proportional to the Temperature. 
- * (see Numerical Recipes 10.9 Continuous Minimization by simulated Annealing)  
+ * Finds the minimum of a continuous, multidimensional function (not necessarily
+ * differentiable) by simulated annealing over a downhill-simplex search.
+ *
+ * <p>Implemented by modifying the {@link AmoebaMinimizer} approach to generate random
+ * fluctuations in the function values, proportional to the temperature (see Numerical
+ * Recipes 10.9, Continuous Minimization by simulated Annealing).
  *
  * Known SubClasses: <none>
  *
@@ -35,6 +34,15 @@ import function.vector.IFloatScalarField;
  * @author mheuer
  * @version	1.0
  *
+ * <!-- docstate
+ * pass: 2
+ * mtime: 2026-09-05T11:47:01Z
+ * digest: ff53fb1716493b325109155b0f4087b361ce82b31e0cfcf1f08a57f6bdc9c951
+ * stale: false
+ * tags: [code/simulated_annealing, code/annealing, code/optimization]
+ * concepts: [Simulated Annealing Minimizer]
+ * facets: {layer: utility, status: legacy, complexity: medium}
+ * -->
  */
 public class AnnealingMinimizer {
 
@@ -342,9 +350,11 @@ public class AnnealingMinimizer {
 	static final double[] minPosition = {0.0, 0.6, 0.7, 0.8, 0.9};
 	static final double[] xoff={0,0,0,0,0}; //0,2,2,2,2}; //
 
+	/** Main method to be called from the command line, running {@link #testIt()}. */
 	final static public void main(final String[] args) {
 		testIt(); }
-		
+
+	/** Runs simulated annealing against {@link SinOfDistDivDist} and asserts convergence to {@code minPosition}. */
 	final static public void testIt() {
 		L.enter().println();
 		L.n("Input t, iiter:\n"); 
@@ -380,23 +390,39 @@ public class AnnealingMinimizer {
 }
 
 
-/**This Class implements a smooth Test Function 
+/**This Class implements a smooth Test Function
  * that returns the negative Sine of the Square of the Euklidean Distance of the Input
- * to a certain Vector or the Origin divided by this Distance. 
- * This Function has a local Minimum in the Origin 
- * surrounded by Rings of lesser Minima and Maxima. 
+ * to a certain Vector or the Origin divided by this Distance.
+ * This Function has a local Minimum in the Origin
+ * surrounded by Rings of lesser Minima and Maxima.
+ * <!-- docstate
+ * pass: 2
+ * mtime: 2026-09-05T11:47:01Z
+ * digest: 2c751133445b1e958b2e1dcf89f54cb1f5de840d0b477aa4b78d57fb685fe4fe
+ * stale: false
+ * tags: [code/test_fixture]
+ * concepts: [Scalar Field Test Fixture]
+ * facets: {layer: test, status: legacy, complexity: low}
+ * -->
  */
 class TestScalarField
 implements IFloatScalarField {
 
-	static final int N = 4; 
-	static final float RAD = 0.3f; 
-	static final float AUG = 2; 
+	static final int N = 4;
+	static final float RAD = 0.3f;
+	static final float AUG = 2;
 	static final float[] width={0, 1, 3, 10, 30};
-	
+
 	/** this Vector is subtracted from the Argument if not null */
 	public double[] V0;
 
+	/**
+	 * Returns a synthetic, ring-shaped landscape value for the given point, weighting each
+	 * coordinate by {@link #width} and penalizing distance from the nearest integer grid point.
+	 *
+	 * @param p the point to evaluate, indexed {@code 1..N}
+	 * @return the landscape value at {@code p}
+	 */
 	public float Map(final float[] p) {
 		float sumd=0, sumr=0;
 		for (int j=1; j<=N; j++) {
@@ -408,6 +434,13 @@ implements IFloatScalarField {
 		return 1+sumr*(1+(sumd > RAD*RAD ? AUG : AUG*sumd/(RAD*RAD)));
 	}
 
+	/**
+	 * Returns a synthetic, ring-shaped landscape value for the given point, weighting each
+	 * coordinate by {@link #width} and penalizing distance from the nearest integer grid point.
+	 *
+	 * @param p the point to evaluate, indexed {@code 1..N}
+	 * @return the landscape value at {@code p}
+	 */
 	public double Map(final double[] p) {
 		double sumd=0, sumr=0;
 		for (int j=1;j<=N;j++) {

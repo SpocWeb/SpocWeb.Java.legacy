@@ -642,3 +642,25 @@ streamIO/real/random/TestRandom.java:TestRandom.testRandomBit(IStreamIn_Int, dou
 streamIO/real/random/TestRandom.java:TestRandom.testGauss(IStreamIn_Float, double, double, int, int)	method	streamIO/real/random/TestRandom.java	code/random_number_generator	Gaussian Test Helper	test	legacy	low
 streamIO/real/random/TestRandom.java:TestRandom.main(String[])	method	streamIO/real/random/TestRandom.java	code/random_number_generator	Demo Entry Point	test	legacy	low
 streamIO/real/random/TestRandom.java:TestRandom.testIt(String[])	method	streamIO/real/random/TestRandom.java	code/random_number_generator	Self-Test Method	test	legacy	low
+math/minimizer/AFloatMinimizer.java:AFloatMinimizer	class	math/minimizer/AFloatMinimizer.java	code/minimum_search,code/bracket_matching,code/optimization	Numerical Optimization	utility	legacy	medium
+math/minimizer	folder	math/minimizer	code/minimum_search,code/optimization	Numerical Function Minimization	utility	legacy	high
+math/minimizer/AmoebaMinimizer.java:AmoebaMinimizer	class	math/minimizer/AmoebaMinimizer.java	code/minimum_search,code/optimization	Downhill Simplex (Nelder-Mead) Minimizer	utility	legacy	medium
+math/minimizer/AnnealingMinimizer.java:AnnealingMinimizer	class	math/minimizer/AnnealingMinimizer.java	code/simulated_annealing,code/annealing,code/optimization	Simulated Annealing Minimizer	utility	legacy	medium
+math/minimizer/AnnealingMinimizer.java:TestScalarField	class	math/minimizer/AnnealingMinimizer.java	code/test_fixture	Scalar Field Test Fixture	test	legacy	low
+math/minimizer/Brent1FloatMinimizer.java:Brent1FloatMinimizer	class	math/minimizer/Brent1FloatMinimizer.java	code/minimum_search,code/derivative_calculation,code/optimization	Brent's Method Minimizer	utility	legacy	medium
+math/minimizer/BrentFloatMinimizer.java:BrentFloatMinimizer	class	math/minimizer/BrentFloatMinimizer.java	code/minimum_search,code/optimization	Brent's Method Minimizer	utility	legacy	medium
+math/minimizer/ConjuGrad1Minimizer.java:ConjuGrad1Minimizer	class	math/minimizer/ConjuGrad1Minimizer.java	code/conjugate,code/derivative_calculation,code/optimization	Conjugate Gradient Minimizer	utility	legacy	high
+math/minimizer/ConjuGrad1Minimizer.java:DistSqr	class	math/minimizer/ConjuGrad1Minimizer.java	code/test_fixture	Squared Distance Test Fixture	test	legacy	low
+math/minimizer/ConjuGradMinimizer.java:ConjuGradMinimizer	class	math/minimizer/ConjuGradMinimizer.java	code/conjugate,code/optimization	Conjugate Gradient Minimizer	utility	legacy	high
+math/minimizer/ConjuGradMinimizer.java:DistSqrDistorted	class	math/minimizer/ConjuGradMinimizer.java	code/test_fixture	Distorted Squared Distance Test Fixture	test	legacy	low
+math/minimizer/GoldenFloatMinimizer.java:GoldenFloatMinimizer	class	math/minimizer/GoldenFloatMinimizer.java	code/minimum_search,code/optimization,code/golden_section_search	Golden Section Search Minimizer	utility	legacy	medium
+math/minimizer/SimplexMinimizer.java:SimplexMinimizer	class	math/minimizer/SimplexMinimizer.java	code/simplex_method,code/optimization	Linear Programming Simplex Tableau Solver	utility	legacy	high
+math/minimizer/SimplexMinimizer.java:SimplexMinimizer.maxPos(double[], int[], int, boolean)	method	math/minimizer/SimplexMinimizer.java	code/simplex_method	Simplex Tableau Pivot Column Selection	utility	legacy	low
+math/minimizer/SimplexMinimizer.java:SimplexMinimizer.getPivot(double[][], int, int[], int, int)	method	math/minimizer/SimplexMinimizer.java	code/simplex_method	Simplex Tableau Pivot Row Selection	utility	legacy	low
+math/minimizer/SimplexMinimizer.java:SimplexMinimizer.exchangeVariable(double[][], int, int, int, int)	method	math/minimizer/SimplexMinimizer.java	code/simplex_method	Simplex Tableau Pivot Exchange	utility	legacy	medium
+math/minimizer/SimplexMinimizer.java:SimplexMinimizer.minimizeSimplex(double[][], int, int, int, int, int, int[], int[])	method	math/minimizer/SimplexMinimizer.java	code/simplex_method	Simplex Tableau Minimization Loop	utility	legacy	high
+math/minimizer/SimplexMinimizer.java:SimplexMinimizer.findStartPoint(double[][], int, int, int, int, int[], int[], int[], int[], int[], int, int)	method	math/minimizer/SimplexMinimizer.java	code/simplex_method	Simplex Feasible Start Point Search	utility	legacy	high
+math/minimizer/SimplexMinimizer.java:SimplexMinimizer.testIt()	method	math/minimizer/SimplexMinimizer.java	code/simplex_method	Self-Test Method	test	legacy	low
+math/minimizer/SimplexMinimizer.java:SimplexMinimizer.main(String[])	method	math/minimizer/SimplexMinimizer.java	code/simplex_method	Demo Entry Point	test	legacy	low
+math/minimizer/SinOfDistDivDist.java:SinOfDistDivDist	class	math/minimizer/SinOfDistDivDist.java	code/test_fixture	Sinc-Like Test Function	test	broken	low
+math/minimizer/VariableMetricMinimizer.java:VariableMetricMinimizer	class	math/minimizer/VariableMetricMinimizer.java	code/optimization	Variable Metric Minimizer (Unimplemented)	utility	unfinished	low

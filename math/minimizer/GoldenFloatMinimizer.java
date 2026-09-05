@@ -10,10 +10,9 @@ import function.IFloatFunction;
 import function.IMeasurAble;
 
 /**
- * Title: GoldenFloatMinimizer<p>
- * Description:
- * Find a Minimum of a continuous, 1-dim. Function. 
- * The Function doesn't need to be differentiable, only continuous! 
+ * Finds the minimum of a continuous, one-dimensional function by golden-section search.
+ *
+ * <p>The Function doesn't need to be differentiable, only continuous!
  *
  * Known SubClasses: <none>
  *
@@ -29,6 +28,15 @@ import function.IMeasurAble;
  * @author mheuer
  * @version	1.0
  *
+ * <!-- docstate
+ * pass: 2
+ * mtime: 2026-09-05T11:46:09Z
+ * digest: 8f55c3dda83b839ae21ce146648ffe262a7eae64dbfad5d2b3fe3df4965f7eb4
+ * stale: false
+ * tags: [code/minimum_search, code/optimization, code/golden_section_search]
+ * concepts: [Golden Section Search Minimizer]
+ * facets: {layer: utility, status: legacy, complexity: medium}
+ * -->
  */
 public class GoldenFloatMinimizer 
 extends AFloatMinimizer {
@@ -42,12 +50,20 @@ extends AFloatMinimizer {
 	
 	/** Buffer for the evaluation of the new Test Point	 */
 	private boolean testForLess;
-	
+
+	/**
+	 * Re-initializes the golden-section bracket around the given midpoint.
+	 *
+	 * @param xl_ left border of the bracket
+	 * @param x_ point inside the bracket, closer to whichever side is split next
+	 * @param xr_ right border of the bracket
+	 * @param f_ the function being minimized
+	 */
 	public void init(final double xl_, final double x_, final double xr_, final IFloatFunction f_) {
 		super.init(xl_, x_, xr_, f_); 
 		final double rInt = xr - x_;
 		final double lInt = x_ - xl;  
-		if ((rInt > lInt) != (x_ < xl)) { //xMid liegt näher bei xl  // == xr+golden(xMid-xr) //{neuer Punkt wird ermittelt}
+		if ((rInt > lInt) != (x_ < xl)) { //xMid liegt nï¿½her bei xl  // == xr+golden(xMid-xr) //{neuer Punkt wird ermittelt}
 			xMid = x_; dx = (xr - xMid)*IMeasurAble.CGOLDEN; xTst = xMid; xTst += dx;				yTst = f.Map(xTst); 
 		} else { 	// == xl+golden(xTst-xl)
 			xTst = x_; dx = (xl - xTst)*IMeasurAble.CGOLDEN; xMid = xTst; xMid += dx; yTst = yMid;	yMid = f.Map(xMid); 
