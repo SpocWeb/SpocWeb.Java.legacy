@@ -25,11 +25,17 @@ import streamIO.integer.IStreamOutStruct;
  * to allow for downward Navigation, although this is not necessary, 
  * since the HEAD Version of each Branch is tagged anyway. 
  * 
- * Purpose / Responsibilities of this Class
+ * Purpose / Responsibilities of this Class:
+ * Owns the Map of named Versions (Tags, Branch Heads and IDs) and the generic Tree-Navigation
+ * Operations (move up/down, move to a named Version, find the common Ancestor, merge).
+ * Subclasses supply the concrete Value Type by implementing {@link #move(DiffSet, DiffSet, DiffSet)},
+ * {@link #calcDiff(DiffSet, DiffSet)} and {@link #merge(DiffSet, DiffSet, DiffSet)}.
  *
  * Design Decisions / Implementation Details:
+ * {@link VersionedObjects} is currently the only Subclass, specializing this Tree to Object[] Streams;
+ * an analogous int[]-based Subclass would follow the same Pattern as {@link DiffSetInt} does for {@link DiffSetObject}.
  *
- * Known SubClasses: <none>
+ * Known SubClasses: {@link VersionedObjects}
  *
  * Known Uses: <none>
  *
@@ -38,6 +44,15 @@ import streamIO.integer.IStreamOutStruct;
  * Created on	10-26-2002, 12:47 PM<p>
  * @author heuerm
  * @version	1.0
+ * <!-- docstate
+ * pass: 2
+ * mtime: 2026-09-05T10:25:05Z
+ * digest: 4c9b7a5181a752753eaa4721513128d2ffe85cfebc6929e88102534de886d133
+ * stale: false
+ * tags: [code/version_tree, code/version_control]
+ * concepts: [Versioning, Branching]
+ * facets: {layer: domain, status: broken, complexity: high}
+ * -->
  */
 abstract public class VersionTree 
 extends AStreamAble {
@@ -68,15 +83,23 @@ extends AStreamAble {
 	/// De-/Serialization 
 	////////////////////////////////////////////////////////////////////////////
 	
-	public static final String STR_NAMED_VERSION = "namedVersion"; 	
-	public static final String STR_NAMED_VERSIONS = STR_NAMED_VERSION+"s"; 
-	
-	public static final String STR_TAG = "tag"; 	
-	public static final String STR_TAGS = STR_TAG+"s"; 
+	/** Field/Struct Name used to (de)serialize a single named (ID- or Branch-tagged) Version.	 */
+	public static final String STR_NAMED_VERSION = "namedVersion";
+	/** Struct Name wrapping all {@link #STR_NAMED_VERSION} Entries.	 */
+	public static final String STR_NAMED_VERSIONS = STR_NAMED_VERSION+"s";
 
-	public static final String STR_NAME = "name"; 	
-	public static final String STR_ID = "id"; 	
+	/** Struct Name used to (de)serialize a single (non-Branch) Tag.	 */
+	public static final String STR_TAG = "tag";
+	/** Struct Name wrapping all {@link #STR_TAG} Entries.	 */
+	public static final String STR_TAGS = STR_TAG+"s";
 
+	/** Field Name used to (de)serialize a Tag's Name.	 */
+	public static final String STR_NAME = "name";
+	/** Field Name used to (de)serialize a Tag's Version ID.	 */
+	public static final String STR_ID = "id";
+
+	/** Compares two Version-ID Arrays lexicographically by common Prefix Length, missing trailing Elements counting as 0.
+	 * @return true if arr1 denotes an earlier (or equal-length Prefix but shorter) Version than arr2.	 */
 	public static final boolean LESS(final int[] arr1, final int[] arr2) {
 		boolean ret = false; 
 		int len = arr2.length;
@@ -84,9 +107,12 @@ extends AStreamAble {
 			len = arr1.length; 
 			ret = true; 
 		}
-		for(int i = -1; ++i < len;) 
+		// TODO: LOGIC: this loop never returns false on a differing Element, only early-returns on arr1[i] < arr2[i];
+		// when an earlier Index has arr1[i] > arr2[i] (arr1 lexicographically greater) but a later Index has
+		// arr1[i] < arr2[i], this incorrectly returns true instead of false. Needs `else if (arr1[i] > arr2[i]) return false;`.
+		for(int i = -1; ++i < len;)
 			if (arr1[i] < arr2[i])
-				return true; 
+				return true;
 		return ret; }
 	
 	/** for DeSerialization only 	*/
@@ -95,7 +121,8 @@ extends AStreamAble {
 	/** for DeSerialization only 	*/
 	transient String tagID; 
 	
-	/** @see streamIO.integer.AStreamAble#readField(java.lang.String, streamIO.integer.IStreamIn_Struct)	 */
+	/** Reads named Versions and Tags by Name from the Stream, reconstructing the {@link #namedVersions} Map.
+	 * @see streamIO.integer.AStreamAble#readField(java.lang.String, streamIO.integer.IStreamIn_Struct)	 */
 	public Object readField(final String name, final IStreamIn_Struct stream) {
 		if (STR_NAMED_VERSION.equals(name)) {
 			final Object item = stream.nextItem(); 
@@ -147,10 +174,14 @@ extends AStreamAble {
 			} else if (keyStr.equals(diff.getBranch())) { //sort out the Branch Tags, they are redundant! 
 				//(but setting them to the latest Revision is not fast!!!
 			} else { // the real (non-Branch) Tags
-				tags[numTags] = new String[] {keyStr, diff.getID()}; 
+				// TODO: LOGIC: the resize check is off-by-one (`>` instead of `>=` before the write) and, more
+				// importantly, the enlarged `tmp` Array is never assigned back to `tags` - so once more than 10
+				// real Tags exist, the next iteration writes past the end of the original 10-Element Array and
+				// throws ArrayIndexOutOfBoundsException, corrupting Serialization of Trees with >10 Tags.
+				tags[numTags] = new String[] {keyStr, diff.getID()};
 				if (++numTags > tags.length) {
-					final String[][] tmp = new String[tags.length << 1][]; 
-					System.arraycopy(tags, 0, tmp, 0, tags.length); 
+					final String[][] tmp = new String[tags.length << 1][];
+					System.arraycopy(tags, 0, tmp, 0, tags.length);
 				}
 			}
 		}
@@ -351,9 +382,16 @@ extends AStreamAble {
 	///////////////////////////////////////////////////////////////////////////
 	
 	/** adds the given DiffSet to the Tree, after checking whether it is allowed  */
+	/** Adds the given DiffSet to the Tree, after checking that its Branch (if new) does not already exist.	 */
 	final protected void addVersion(final DiffSet diff) throws VersionException {
-		if ((currDiff != null) && 
-			(currDiff.getBranch() != diff.getBranch()) && 
+		// TODO: LOGIC: the second clause is an exact duplicate of the first (`currDiff.getBranch() != diff.getBranch()`
+		// twice), almost certainly a copy-paste mistake for a `.equals()` fast/slow-path check like the one in
+		// DiffSet's own constructor (compare `_branch != parent.branch` followed by `!_branch.equals(parent.branch)`).
+		// As written this relies solely on String reference identity: two equal but distinct Branch-Name String
+		// instances (e.g. one read back via deserialization) are wrongly treated as "different Branch", which can
+		// throw a spurious "This Branch already exists" VersionException for a legitimate same-Branch append.
+		if ((currDiff != null) &&
+			(currDiff.getBranch() != diff.getBranch()) &&
 			(currDiff.getBranch() != diff.getBranch())) {
 			if (namedVersions.containsKey(diff.getBranch())) {
 				//the diff has already been added to the Parent Diff
@@ -381,11 +419,10 @@ extends AStreamAble {
 	protected DiffSet getVersion(final String version) {
 		return (DiffSet) namedVersions.get(version); } 		//
 	
-	/**
-	 * 
+	/** Assigns a new Name to an existing Version, Tag or Branch, so it can be looked up by that Name later.
 	 * @param version the Version or Name to tag
-	 * @param name the (new) Tag Name. 
-	 * @return the DiffSet associated with this Name previously, e.g. to retrieve its Version. 
+	 * @param name the (new) Tag Name.
+	 * @return the DiffSet associated with this Name previously, e.g. to retrieve its Version.
 	 */
 	public DiffSet tag(final String version, final String name) {
 		return (DiffSet) namedVersions.put(name, getVersion(version)); }

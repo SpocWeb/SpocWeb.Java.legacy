@@ -96,7 +96,7 @@ concurrently against the same file):
 | `aspect` | 15 | 2493 | 0 | claimed | agent-aspect |
 | `flow` | 14 | 1022 | 0 | claimed | agent-flow |
 | `reflect` | 12 | 2492 | 12 | done | agent-reflect |
-| `streamIO/diffPatch` | 11 | 2895 | 0 | claimed | agent-diffPatch |
+| `streamIO/diffPatch` | 11 | 2895 | 11 | done | agent-diffPatch |
 | `sound` | 10 | 1030 | 0 | claimed | agent-sound |
 | `tools` | 17 | 3468 | 17 | done | - |
 | `(root)` | 9 | 1073 | 9 | done | main |
@@ -228,6 +228,9 @@ same harness against it. A test that has not been seen red proves nothing.
 | FixRecordScrambler.java | FixRecordScrambler | main(String[]) | 149 | The 7 documented parameters require `args.length==7` and are read up to `args[6]`, but the guard only warns (without returning) when `args.length!=6` - passing exactly 6 arguments, which satisfies neither the guard nor the actual requirement, throws `ArrayIndexOutOfBoundsException` at `args[6]` instead of showing the Syntax message. | Low | open |
 | reflect/Type.java | Type | Type(Class) | 126 | Checks the field `cls` (still `null` at that point) instead of the constructor argument `cls_`, so every call to `new Type(...)` throws `NullPointerException` - including the static `TYPE` initializers in `IThing`/`IIndividual`/`IIntangible`/`IMathThing`/`IType`. Should be `if (!cls_.isInterface())`. | High | open |
 | reflect/Type.java | Type | isAssignableFrom(Class) | 304 | The parameter `cls` shadows the field `this.cls`, so this calls `cls.isAssignableFrom(cls)` - the argument compared to itself - always `true`, regardless of the wrapped Type's actual `Class`. Should be `return this.cls.isAssignableFrom(cls);`. | Medium | open |
+| streamIO/diffPatch/VersionTree.java | VersionTree | LESS(int[], int[]) | ~107 | Lexicographic comparison only early-returns `true` on `arr1[i] < arr2[i]`, never early-returns `false` when `arr1[i] > arr2[i]` at an earlier, decisive index - e.g. `LESS([5,1],[3,9])` returns `true` even though `[5,1] > [3,9]`. Used in `readField()` to decide which Version a Branch tag points to after deserialization; can silently point a tag at the wrong Version. | Medium-High | open |
+| streamIO/diffPatch/VersionTree.java | VersionTree | writeTo() | ~174 | When more than 10 non-Branch Tags exist, the resize block computes a doubled `tmp` array but never assigns it back to `tags`, and the resize check is off-by-one. Serializing a Tree with more than 10 real Tags throws `ArrayIndexOutOfBoundsException` on the 11th. | High | open |
+| streamIO/diffPatch/VersionTree.java | VersionTree | addVersion(DiffSet) | ~384 | `(currDiff.getBranch() != diff.getBranch())` is duplicated verbatim as both clauses of an `&&`, almost certainly meant to be a `.equals()` check - relies on String reference identity, so after deserialization (fresh Branch-name Strings) a legitimate same-Branch append can be misidentified as a different Branch and throw a spurious `VersionException`. | Medium | open |
 
 ## Tool defects found and fixed during the pilot
 

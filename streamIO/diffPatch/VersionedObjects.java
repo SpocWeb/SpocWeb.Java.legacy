@@ -58,6 +58,15 @@ import streamIO.Log;
  * Created on	10-26-2002, 12:47 PM<p>
  * @author heuerm
  * @version	1.0
+ * <!-- docstate
+ * pass: 2
+ * mtime: 2026-09-05T10:25:10Z
+ * digest: 56479849697aad9b204d2944558e57c49bf117008e8d0e3dfdb1f42f7e61d2af
+ * stale: false
+ * tags: [code/version_tree, code/version_control]
+ * concepts: [Versioning, Merging]
+ * facets: {layer: domain, status: legacy, complexity: high}
+ * -->
  */
 public class VersionedObjects 
 extends VersionTree {
@@ -290,10 +299,12 @@ extends VersionTree {
 	/// static Testing and main Methods
 	///////////////////////////////////////////////////////////////////////////
 	
+	/** Runs the self-Test of this Class.	 */
 	public static void main(final String[] args) throws Exception {
-		testIt(); 
+		testIt();
 	}
-	
+
+	/** Self-Test exercising Branching, Merging and Conflict Detection on a small Object[] Tree.	 */
 	public static VersionedObjects testIt() throws VersionException {
 		final Object[] x  = {"A", "B", "C", "D", "E"}; 
 		final Object[] x1 = {"A", "B", "X", "D", "E"}; 

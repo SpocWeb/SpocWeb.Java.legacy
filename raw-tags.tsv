@@ -173,3 +173,15 @@ reflect/Person.java:Person.main(String[])	method	reflect/Person.java	code/test_h
 reflect/ReflectAble.java:ReflectAble	class	reflect/ReflectAble.java	code/reflection, code/reflection_based_property_access, code/reflection_object_instantiation	Reflection	domain	legacy	high
 reflect/Thing.java:Thing	class	reflect/Thing.java	code/reflection_interface, code/domain_model	Domain Model, Object Classification	domain	stable	low
 reflect/Type.java:Type	class	reflect/Type.java	code/generic_interface_reflection, code/reflection_interface	Domain Model, Object Classification	domain	broken	medium
+streamIO/diffPatch/DiffBase.java:DiffBase	class	streamIO/diffPatch/DiffBase.java	code/diff_object	Diffing	domain	legacy	low
+streamIO/diffPatch	folder	streamIO/diffPatch	code/diff_patch, code/version_tree, code/lcs_algorithm	Versioning, Diffing	domain	legacy	high
+streamIO/diffPatch/DiffInt.java:DiffInt	class	streamIO/diffPatch/DiffInt.java	code/diff_object	Diffing	domain	legacy	low
+streamIO/diffPatch/DiffObject.java:DiffObject	class	streamIO/diffPatch/DiffObject.java	code/diff_object	Diffing	domain	legacy	low
+streamIO/diffPatch/DiffSet.java:DiffSet	class	streamIO/diffPatch/DiffSet.java	code/diff_collection, code/diff_application, code/merge_algorithm	Diffing, Merging	domain	legacy	high
+streamIO/diffPatch/DiffSetInt.java:DiffSetInt	class	streamIO/diffPatch/DiffSetInt.java	code/diff_collection, code/merge_algorithm	Diffing, Merging	domain	legacy	medium
+streamIO/diffPatch/DiffSetObject.java:DiffSetObject	class	streamIO/diffPatch/DiffSetObject.java	code/diff_collection, code/merge_algorithm	Diffing, Merging	domain	legacy	medium
+streamIO/diffPatch/DifferInt.java:DifferInt	class	streamIO/diffPatch/DifferInt.java	code/diff_algorithm, code/lcs_algorithm	Diffing, Longest Common Subsequence	domain	legacy	high
+streamIO/diffPatch/DifferObject.java:DifferObject	class	streamIO/diffPatch/DifferObject.java	code/diff_algorithm, code/lcs_algorithm	Diffing, Longest Common Subsequence	domain	legacy	high
+streamIO/diffPatch/VersionException.java:VersionException	class	streamIO/diffPatch/VersionException.java	code/version_control	Versioning	domain	stable	low
+streamIO/diffPatch/VersionTree.java:VersionTree	class	streamIO/diffPatch/VersionTree.java	code/version_tree, code/version_control	Versioning, Branching	domain	broken	high
+streamIO/diffPatch/VersionedObjects.java:VersionedObjects	class	streamIO/diffPatch/VersionedObjects.java	code/version_tree, code/version_control	Versioning, Merging	domain	legacy	high

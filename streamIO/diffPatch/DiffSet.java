@@ -47,6 +47,15 @@ import streamIO.integer.StreamOutStruct;
  * Created on	10-26-2002, 12:47 PM<p>
  * @author heuerm
  * @version	1.0
+ * <!-- docstate
+ * pass: 2
+ * mtime: 2026-09-05T10:23:06Z
+ * digest: 74ee0c002aded97f6288925088661769ee09952d12af6a18d3321735da03470b
+ * stale: false
+ * tags: [code/diff_collection, code/diff_application, code/merge_algorithm]
+ * concepts: [Diffing, Merging]
+ * facets: {layer: domain, status: legacy, complexity: high}
+ * -->
  */
 abstract public class DiffSet 
 extends AStreamAble 
@@ -88,9 +97,11 @@ implements IInstantiAble, IStreamReadAble {
 	
 	/** The Name of the (latest) Branch this Version is in. 
 	 * This Name is always well-defined! and it is necessary for the update() Command!	*/
-	private String branch; //	final public 
-	
-	public String getBranch() { return branch; } 
+	private String branch; //	final public
+
+	/** Returns the Name of the (latest) Branch this Version is in.
+	 * @return the Name of the (latest) Branch this Version is in.	 */
+	public String getBranch() { return branch; }
 	
 	/** The Number of Branches from this Version.	 */
 	protected int numBranches; 
@@ -129,15 +140,20 @@ implements IInstantiAble, IStreamReadAble {
 	/// De-/Serialization 
 	////////////////////////////////////////////////////////////////////////////
 	
-	final public static String STR_ID = "ID"; 
-	
-	final public static String STR_BRANCH = "branch"; 
-	
-	public static final String STR_DESCRIPTION = "description"; 
-	
-	public static final String STR_DIFF = "diff"; 
-	
-	/** @see streamIO.integer.AStreamAble#readField(java.lang.String, streamIO.integer.IStreamIn_Struct)	 */
+	/** Field Name used to (de)serialize the {@link #ID}.	 */
+	final public static String STR_ID = "ID";
+
+	/** Field Name used to (de)serialize the {@link #getBranch() Branch Name}.	 */
+	final public static String STR_BRANCH = "branch";
+
+	/** Field Name used to (de)serialize the {@link #description}.	 */
+	public static final String STR_DESCRIPTION = "description";
+
+	/** Field Name used to (de)serialize each individual {@link DiffBase} in {@link #diffVals}.	 */
+	public static final String STR_DIFF = "diff";
+
+	/** Reads the ID, Branch, Description and individual Diff Fields by Name from the Stream, appending each Diff via {@link #addDiff(DiffBase)}.
+	 * @see streamIO.integer.AStreamAble#readField(java.lang.String, streamIO.integer.IStreamIn_Struct)	 */
 	public Object readField(final String name, final IStreamIn_Struct stream) {
 		if (STR_ID.equals(name)) 
 			return ID = stream.nextInts(); 
@@ -191,17 +207,16 @@ implements IInstantiAble, IStreamReadAble {
 		this.branch = DEFAULT_BRANCH;
 	}
 	
-	/**
-	 * 
-	 * @param _diffVals
-	 * @param _same
-	 * @param _numDeletions
-	 * @param _parent
-	 * @param _branch
+	/** Creates a new DiffSet from the given Differences, optionally attaching it below a Parent Version (as its direct Child or as a new Branch).
+	 * @param _diffVals the Differences making up this Version
+	 * @param _same optional Arrays of Indices of the unchanged Elements
+	 * @param _numDeletions the Number of Deletions among _diffVals
+	 * @param _parent the optional Parent Version, or null for the Root
+	 * @param _branch the optional Name of a new Branch to start at this Version
 	 * @throws VersionException when you add a Child in the middle of a Branch
 	 */
 	public DiffSet(
-			final DiffBase[] _diffVals, 
+			final DiffBase[] _diffVals,
 			final int[][] _same,
 			final int _numDeletions, 
 			final DiffSet _parent, 
@@ -251,9 +266,9 @@ implements IInstantiAble, IStreamReadAble {
 	/// Methods
 	///////////////////////////////////////////////////////////////////////////
 	
-	/**
+	/** Appends a single Difference to this Set, growing the backing Array as needed and updating the Deletion Count.
 	 * @param item the Difference to add
-	 * @return the number of Items in this DiffSet. 
+	 * @return the number of Items in this DiffSet.
 	 */
 	public int addDiff(final DiffBase item) {
 		if (itemCount >= diffVals.length) {
@@ -282,11 +297,10 @@ implements IInstantiAble, IStreamReadAble {
 		}
 	}
 	
-	/**
-	 * @param child Reference to the Child DiffSet of this one, 
-	 * to be able to establish a reverse Parent Relation for the Inverse. 
-	 * returns the inverse Difference Set for moving up the Version Hierarchy.
-	 * @return the inverse Difference Set for moving up the Version Hierarchy. 
+	/** Returns the inverse Difference Set for moving up the Version Hierarchy, with each contained Difference inverted.
+	 * @param child Reference to the Child DiffSet of this one,
+	 * to be able to establish a reverse Parent Relation for the Inverse.
+	 * @return the inverse Difference Set for moving up the Version Hierarchy.
 	 */
 	public DiffSet inv(final DiffSet child) throws VersionException {
 		final DiffBase[] inv = new DiffBase[diffVals.length]; 

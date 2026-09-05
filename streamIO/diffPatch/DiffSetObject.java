@@ -36,6 +36,15 @@ import streamIO.integer.IStreamIn_Struct;
  * Created on	10-26-2002, 12:47 PM<p>
  * @author heuerm
  * @version	1.0
+ * <!-- docstate
+ * pass: 2
+ * mtime: 2026-09-05T10:23:26Z
+ * digest: da5a858a8d9d9c644a449912adb53c3719f9d8522ffd5cb17cfc3830d48289f9
+ * stale: false
+ * tags: [code/diff_collection, code/merge_algorithm]
+ * concepts: [Diffing, Merging]
+ * facets: {layer: domain, status: legacy, complexity: medium}
+ * -->
  */
 public class DiffSetObject 
 extends DiffSet {
@@ -54,14 +63,15 @@ extends DiffSet {
 	 */
 	public Object[] values; 
 	
-	/** @see streamIO.integer.AStreamAble#readField(java.lang.String, streamIO.integer.IStreamIn_Struct)	 */
+	/** Delegates entirely to the Superclass; the optional cached {@link #values} are not (yet) (de)serialized.
+	 * @see streamIO.integer.AStreamAble#readField(java.lang.String, streamIO.integer.IStreamIn_Struct)	 */
 	public Object readField(final String name, final IStreamIn_Struct stream) {
-		//if (STR_VALUES.equals(name)) 
-		//	values = stream.nextInts(); 
-		return super.readField(name, stream); 
+		//if (STR_VALUES.equals(name))
+		//	values = stream.nextInts();
+		return super.readField(name, stream);
 	}
-	
-	/**
+
+	/** Creates a new Object-Diff Version without a cached Result Array; see {@link DiffSet#DiffSet(DiffBase[], int[][], int, DiffSet, String)}.
 	 * @param _diffVals
 	 * @param _same
 	 * @param _numDeletions
@@ -69,12 +79,12 @@ extends DiffSet {
 	 * @throws VersionException when you add a Child in the middle of a Branch
 	 */
 	public DiffSetObject(final DiffObject[] _diffVals, final int[][] _same,
-			final int _numDeletions, final DiffSet _parent, final String branch) 
+			final int _numDeletions, final DiffSet _parent, final String branch)
 		throws VersionException {
 		this(_diffVals, _same, _numDeletions, _parent, branch, null);
 	}
-	
-	/**
+
+	/** Creates a new Object-Diff Version, optionally caching the resulting Object[] Values of this Version.
 	 * @param _diffVals
 	 * @param _same
 	 * @param _numDeletions

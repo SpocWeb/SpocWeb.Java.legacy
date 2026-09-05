@@ -71,6 +71,15 @@ import streamIO.copy.boole.VectorBoolean;
  * Created on	10-26-2002, 12:47 PM<p>
  * @author heuerm
  * @version	1.0
+ * <!-- docstate
+ * pass: 2
+ * mtime: 2026-09-05T10:23:34Z
+ * digest: edbce27832b4a3f024dbb9424591aaf05e42034e42317ca5c95777a8256818af
+ * stale: false
+ * tags: [code/diff_algorithm, code/lcs_algorithm]
+ * concepts: [Diffing, Longest Common Subsequence]
+ * facets: {layer: domain, status: legacy, complexity: high}
+ * -->
  */
 public class DifferInt {
 	
@@ -171,8 +180,7 @@ public class DifferInt {
 	 */
 	protected VectorBoolean[] yUp;  
 	
-	/**
-	 * 
+	/** Creates a Differ that compares other int[] Streams against the given (older) List.
 	 * @param list
 	 */
 	public DifferInt(final int[] _list) {
@@ -230,7 +238,7 @@ public class DifferInt {
 		return ret; 
 	}
 	
-	/**
+	/** Feeds the next Value of the Stream being compared into the running LCS Computation.
 	 * @param yi  y[i] the next Value to compare
 	 * @return the (current) Length of the LCS
 	 */
@@ -464,8 +472,9 @@ public class DifferInt {
 		Assert.EQUALS(x, mergedBack); 
 	}
 	
+	/** Runs the self-Tests of this Class.	 */
 	public static void main(final String[] args) throws Exception {
-		testIt(); 
+		testIt();
 	}
-	
+
 }

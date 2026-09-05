@@ -26,6 +26,15 @@ import streamIO.integer.IStreamOutStruct;
  * Created on	10-26-2002, 12:47 PM<p>
  * @author heuerm
  * @version	1.0
+ * <!-- docstate
+ * pass: 2
+ * mtime: 2026-09-05T10:22:38Z
+ * digest: 720838ac986fe39be0e6bb777adf4b498e31e4d65a3cc1e0f9700d3bd42f2ab9
+ * stale: false
+ * tags: [code/diff_object]
+ * concepts: [Diffing]
+ * facets: {layer: domain, status: legacy, complexity: low}
+ * -->
  */
 public class DiffInt 
 extends DiffBase {
@@ -52,10 +61,9 @@ extends DiffBase {
 	//public DiffInt(final int _value, final int _position, final DiffInt parent) { 
 	//	this(_value, _position, parent, 0); }
 	
-	/**
-	 * @param _position 
-	 * @param _version 
-	 * @param _value 
+	/** Creates a single int-valued Change at the given Position.
+	 * @param _value the new int Value at this Position
+	 * @param _position the Position of the Change
 	 */
 	public DiffInt(final int _value, final int _position) {//, final DiffInt parent, final int _version) {
 		super(_position); //, parent, _version);

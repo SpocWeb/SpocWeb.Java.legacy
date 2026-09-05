@@ -72,6 +72,15 @@ import synch.ValidationRule;
  * Created on	10-26-2002, 12:47 PM<p>
  * @author heuerm
  * @version	1.0
+ * <!-- docstate
+ * pass: 2
+ * mtime: 2026-09-05T10:23:39Z
+ * digest: 21e3ddcdc873466ab4b4d302ca4f4ce92d34f286bbebae8357136b7776d4a02c
+ * stale: false
+ * tags: [code/diff_algorithm, code/lcs_algorithm]
+ * concepts: [Diffing, Longest Common Subsequence]
+ * facets: {layer: domain, status: legacy, complexity: high}
+ * -->
  */
 public class DifferObject {
 	
@@ -172,8 +181,7 @@ public class DifferObject {
 	 */
 	protected VectorBoolean[] yUp;  
 	
-	/**
-	 * 
+	/** Creates a Differ that compares other Object[] Streams against the given (older) List.
 	 * @param list
 	 */
 	public DifferObject(final Object[] _list) {
@@ -231,7 +239,7 @@ public class DifferObject {
 		return ret; 
 	}
 	
-	/**
+	/** Feeds the next Value of the Stream being compared into the running LCS Computation.
 	 * @param yi  y[i] the next Value to compare
 	 * @return the (current) Length of the LCS
 	 */
@@ -466,8 +474,9 @@ public class DifferObject {
 		Assert.EQUALS(x, mergedBack); 
 	}
 	
+	/** Runs the self-Tests of this Class.	 */
 	public static void main(final String[] args) throws Exception {
-		testIt(); 
+		testIt();
 	}
-	
+
 }

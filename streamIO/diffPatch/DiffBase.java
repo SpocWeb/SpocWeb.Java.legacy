@@ -32,6 +32,15 @@ import streamIO.integer.IStreamOutStruct;
  * Created on	10-26-2002, 12:47 PM<p>
  * @author heuerm
  * @version	1.0
+ * <!-- docstate
+ * pass: 2
+ * mtime: 2026-09-05T10:22:33Z
+ * digest: 4bbde5c0895d6f5441d2a436b1057ebf3443a4520dc197da422603c74bfed22c
+ * stale: false
+ * tags: [code/diff_object]
+ * concepts: [Diffing]
+ * facets: {layer: domain, status: legacy, complexity: low}
+ * -->
  */
 public abstract class DiffBase 
 extends AStreamAble 
@@ -40,8 +49,10 @@ implements Cloneable {
 	/** the Position of the Change; 
 	 * positive Values indicate Addition ad the Position, 
 	 * negative Values indicate Deletion at the binary complemented Position!	 */
-	protected int position; 
-	
+	protected int position;
+
+	/** Returns the Position of this Change.
+	 * @return the Position of this Change; negative Values are the binary complement of a Deletion Position.	 */
 	public int getPosition() { return position; }
 	
 	/** Constructor to initialize this Object from a Stream  
@@ -54,24 +65,24 @@ implements Cloneable {
 		 * die readField Methoden sind Daten-getrieben 
 		 * @see streamIO.integer.StreamIn_Struct#stream(IStreamOutStruct) ist Stream-getrieben, 
 		 * @see streamIO.integer.StreamOutInstantiator wird dabei verwendet, 
-		 * aber der Konstruktor muss vorübergehend die Kontrolle erhalten! 
-		 * In der ersten Implementierung könnte man davon ausgehen, 
+		 * aber der Konstruktor muss vorï¿½bergehend die Kontrolle erhalten! 
+		 * In der ersten Implementierung kï¿½nnte man davon ausgehen, 
 		 * dass die Reihenfolge der Daten gleich bleibt, so dass hart geparsed werden kann.
 		 * 
-		 * Man könnte auch möglichst viele Name-Value nur zu Strings parsen 
-		 * & für Konstruktoren cachen. 
-		 * Dafür könnte man eine extra Container Hierarchie aufbauen, 
-		 * was natürlich nicht so effizient ist wie das direkte parsen aus dem Stream
+		 * Man kï¿½nnte auch mï¿½glichst viele Name-Value nur zu Strings parsen 
+		 * & fï¿½r Konstruktoren cachen. 
+		 * Dafï¿½r kï¿½nnte man eine extra Container Hierarchie aufbauen, 
+		 * was natï¿½rlich nicht so effizient ist wie das direkte parsen aus dem Stream
 		 * (weder vom Memory noch von der Verarbeitung aus). 
-		 * Diese Container Hierarchie könnte das IStreamOutStruct Interface implementieren 
+		 * Diese Container Hierarchie kï¿½nnte das IStreamOutStruct Interface implementieren 
 		 * und ein erweitertes Random-Access-IStreamIn_Struct Interface, 
 		 * das es erlaubt, ein bestimmtes Feld zu lesen. 
-		 * Weiterhin könnte diese Hierarchie generell nützlich sein, 
-		 * da sie auch beliebige Strukturen geparsed zur Verfügung stellt. 
+		 * Weiterhin kï¿½nnte diese Hierarchie generell nï¿½tzlich sein, 
+		 * da sie auch beliebige Strukturen geparsed zur Verfï¿½gung stellt. 
 		 * 
-		 * Ein Problem dabei ist, dass auch innere Objekte geparsed werden müssen. 
-		 * Zirkuläre Referenzen sind mit finalen Variablen zum Glück prinzipiell 
-		 * NICHT möglich! 
+		 * Ein Problem dabei ist, dass auch innere Objekte geparsed werden mï¿½ssen. 
+		 * Zirkulï¿½re Referenzen sind mit finalen Variablen zum Glï¿½ck prinzipiell 
+		 * NICHT mï¿½glich! 
 		 */
 		stream.mark(); 
 		String name = stream.nextString(); 
@@ -116,9 +127,11 @@ implements Cloneable {
 	/// De-/Serialization 
 	////////////////////////////////////////////////////////////////////////////
 	
-	final public static String STR_POS = "pos"; 
-	
-	/** @see streamIO.integer.AStreamAble#readField(java.lang.String, streamIO.integer.IStreamIn_Struct)	 */
+	/** Field Name used to (de)serialize the {@link #position}.	 */
+	final public static String STR_POS = "pos";
+
+	/** Reads the {@link #position} field by Name from the Stream; delegates unknown Fields to the Superclass.
+	 * @see streamIO.integer.AStreamAble#readField(java.lang.String, streamIO.integer.IStreamIn_Struct)	 */
 	public Object readField(final String name, final IStreamIn_Struct stream) {
 		if (STR_POS.equals(name)) 
 			return new Integer(position = stream.nextInt());  

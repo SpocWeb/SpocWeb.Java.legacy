@@ -36,6 +36,15 @@ import streamIO.integer.IStreamIn_Struct;
  * Created on	10-26-2002, 12:47 PM<p>
  * @author heuerm
  * @version	1.0
+ * <!-- docstate
+ * pass: 2
+ * mtime: 2026-09-05T10:23:17Z
+ * digest: 9d763b7c778d311ae89262bceede83659e69dcde1dedf13632de02ab33bb90d8
+ * stale: false
+ * tags: [code/diff_collection, code/merge_algorithm]
+ * concepts: [Diffing, Merging]
+ * facets: {layer: domain, status: legacy, complexity: medium}
+ * -->
  */
 public class DiffSetInt 
 extends DiffSet {
@@ -52,7 +61,7 @@ extends DiffSet {
 	 */
 	public int[] values; 
 	
-	/**
+	/** Creates a new int-Diff Version without a cached Result Array; see {@link DiffSet#DiffSet(DiffBase[], int[][], int, DiffSet, String)}.
 	 * @param _diffVals
 	 * @param _same
 	 * @param _numDeletions
@@ -60,12 +69,12 @@ extends DiffSet {
 	 * @throws VersionException when you add a Child in the middle of a Branch
 	 */
 	public DiffSetInt(final DiffInt[] _diffVals, final int[][] _same,
-			final int _numDeletions, final DiffSet _parent, final String branch) 
+			final int _numDeletions, final DiffSet _parent, final String branch)
 		throws VersionException {
 		this(_diffVals, _same, _numDeletions, _parent, branch, null);
 	}
-	
-	/**
+
+	/** Creates a new int-Diff Version, optionally caching the resulting int[] Values of this Version.
 	 * @param _diffVals
 	 * @param _same
 	 * @param _numDeletions
@@ -138,9 +147,10 @@ extends DiffSet {
 			final DiffSet _parent, final String branch) throws VersionException {
 		return new DiffSetInt((DiffInt[]) _diffVals, _same, _numDeletions, _parent, branch); }
 	
-	/** @see streamIO.integer.AStreamAble#readField(java.lang.String, streamIO.integer.IStreamIn_Struct)	 */
+	/** Delegates entirely to the Superclass; this Subclass adds no own serialized Fields.
+	 * @see streamIO.integer.AStreamAble#readField(java.lang.String, streamIO.integer.IStreamIn_Struct)	 */
 	public Object readField(final String name, final IStreamIn_Struct stream) {
-		return super.readField(name, stream); 
+		return super.readField(name, stream);
 	}
 	
 }
