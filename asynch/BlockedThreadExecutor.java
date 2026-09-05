@@ -26,6 +26,15 @@ import streamIO.IIStreamOut;
   * Created on	09-10-2002, 12:14 AM<p>
   * @author 	Matthias Heuer
   * @version	1.0
+  * <!-- docstate
+  * pass: 2
+  * mtime: 2026-09-05T10:42:07Z
+  * digest: b1578a03aff4e2bcdbe8641ee04048c565425c65f1ac3ccc2a9c698e728b0737
+  * stale: false
+  * tags: [code/thread_pooling]
+  * concepts: [Blocking Task Executor]
+  * facets: {layer: infrastructure, status: broken, complexity: medium}
+  * -->
   */
 public class BlockedThreadExecutor
 extends AExecutor
@@ -53,6 +62,7 @@ implements Runnable {
 	/** Flag for stopping the Thread	 */
 	protected boolean stopped;
 
+	/** Sink that InterruptedExceptions encountered by the worker Thread are reported to. */
 	public IIStreamOut InterruptionHandler;
 
 ////////////////////////////////////////////////////////////////////////////
@@ -79,8 +89,13 @@ implements Runnable {
 	 * can be stopped by setting the Parameter to true.
 	 * Should not be called publicly!
 	 */
+	/** Worker loop: runs the currently assigned Runnable, then waits to be handed the next one. */
 	public synchronized void run() {
 		while (!stopped) {
+			// TODO: LOGIC: 'r' is never reset to null after being run, so on every subsequent wakeup
+			// (including a spurious one) the same stale Runnable is executed again; combined with
+			// stop() never calling notify(), a thread parked in wait() below also has no way to wake
+			// up and observe 'stopped', so it can block forever.
 			if (r != null) {
 				r.run(); }
 				t.notify(); //(try to) wake up blocked Dispatcher Thread(s)

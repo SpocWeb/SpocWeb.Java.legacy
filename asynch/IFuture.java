@@ -28,6 +28,15 @@ import knowledge.IReadyFlag;
   * Created on	08-31-2002, 06:53 PM<p>
   * @author 	Matthias Heuer
   * @version	1.0
+  * <!-- docstate
+  * pass: 2
+  * mtime: 2026-09-05T10:12:24Z
+  * digest: 240f869d49d83f68f5304aa6d9da05de3a5db8fde67af2794007a688d8001406
+  * stale: false
+  * tags: [code/deferred_execution]
+  * concepts: [Future Interface]
+  * facets: {layer: infrastructure, status: legacy, complexity: low}
+  * -->
   */
 public interface IFuture
 extends IValue, IReadyFlag {

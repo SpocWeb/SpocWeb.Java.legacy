@@ -37,6 +37,15 @@ import streamIO.IIStreamOut;
   * Created on	08-31-2002, 08:29 PM<p>
   * @author 	Matthias Heuer
   * @version	1.0
+  * <!-- docstate
+  * pass: 2
+  * mtime: 2026-09-05T10:42:11Z
+  * digest: 22f7427006e83c54a1cfd6ba4af1176fe84d6f1a077809b1ef6e7748166c7f23
+  * stale: false
+  * tags: [code/thread_pooling]
+  * concepts: [Task Scheduler]
+  * facets: {layer: infrastructure, status: broken, complexity: medium}
+  * -->
   */
 public class Scheduler
 extends AExecutor
@@ -78,6 +87,8 @@ implements Runnable, IIStreamOut, IExecutor {
 	/** Method called by the Scheduler encapsulating which Method to call */
 	public void run() {
 		Runnable r;
+		// TODO: LOGIC: busy-waits here with no wait()/sleep() when Operations is empty (the common case),
+		// spinning the CPU at 100% indefinitely instead of blocking until a new Operation is added.
 		while (true) { //loop infinitely
 			int i = Operations.size(); //don't use an Iterator...
 			while (--i >= 0) { //the Index should never be out of Bounds!
@@ -100,14 +111,17 @@ implements Runnable, IIStreamOut, IExecutor {
 /// #region : Interface IStreamOut: Implementation
 ////////////////////////////////////////////////////////////////////////////////
 
+	/** Enqueues the Runnable to be picked up and run by this Scheduler's worker Thread. */
 	public void execute(Runnable arg) {
 		Operations.add(arg);
 	}
 
+	/** Enqueues a ReadyToRun request; its isDirty() Flag determines when it becomes eligible to run. */
 	public void addRequest(ReadyToRun arg) {
 		Operations.add(arg);
 	}
 
+	/** IIStreamOut adapter over addRequest(): enqueues arg, which must be a ReadyToRun. */
 	public IIStreamOut addItem(Object arg) {
 		addRequest((ReadyToRun) arg);
 		return this; }

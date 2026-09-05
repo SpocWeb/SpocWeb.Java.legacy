@@ -13,10 +13,6 @@ import streamIO.IIStreamOut;
   * Also should be subclassed to test for different isDirty() Conditions.
   * Methods without Return Values don't require a Future!
   *
-  * Design Decisions / Implementation Details:
-  * If similar Classes exist (e.g. Polymorphism),
-  * characterize the specific Differences to compare these.
-  *
   * Known SubClasses: <none>
   *
   * Known Uses: <none>
@@ -26,6 +22,15 @@ import streamIO.IIStreamOut;
   * Created on	08-31-2002, 06:17 PM<p>
   * @author 	Matthias Heuer
   * @version	1.0
+  * <!-- docstate
+  * pass: 2
+  * mtime: 2026-09-05T10:43:16Z
+  * digest: 138dd5f1088ebf25a07eca054064bffa947abcdb0911133d5e5b03d159c03b8d
+  * stale: false
+  * tags: [code/deferred_execution]
+  * concepts: [Async Request Object]
+  * facets: {layer: infrastructure, status: legacy, complexity: low}
+  * -->
   */
 public class RequestObject
 implements ReadyToRun {
@@ -44,7 +49,9 @@ implements ReadyToRun {
 /// #region : Accessor Methods (getXXX/isXXX/setXXX)
 ////////////////////////////////////////////////////////////////////////////////
 
-	/** @return true, when this Object has been modified / is not ready, false otherwise */
+	/** Reports whether this request is not yet ready to run.
+	  * @return always false here; subclasses should override to check the Servant/Params state
+	  * to decide whether this request is actually ready to run. */
 	public boolean isDirty() {
 		//check certain Properties of the Responder (or the Param) to determine the Readiness
 		return false; }

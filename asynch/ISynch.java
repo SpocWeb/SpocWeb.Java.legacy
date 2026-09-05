@@ -22,6 +22,15 @@ package asynch;
   * Created on	09-15-2002, 10:09 AM<p>
   * @author 	Matthias Heuer
   * @version	1.0
+  * <!-- docstate
+  * pass: 2
+  * mtime: 2026-09-05T10:12:24Z
+  * digest: f67843096be1eddaddc02b2ea07d503096d4cdfbdc9e0a078ebcf6c6358bf8fb
+  * stale: false
+  * tags: [code/concurrency_primitive]
+  * concepts: [Synchronization Primitive Interface]
+  * facets: {layer: infrastructure, status: legacy, complexity: low}
+  * -->
   */
 public interface ISynch {
 

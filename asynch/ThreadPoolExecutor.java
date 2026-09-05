@@ -22,6 +22,15 @@ import streamIO.object.IPipe;
   * Created on	09-10-2002, 12:14 AM<p>
   * @author 	Matthias Heuer
   * @version	1.0
+  * <!-- docstate
+  * pass: 2
+  * mtime: 2026-09-05T10:40:45Z
+  * digest: a4e5b119a2fbf3b7e0e602f72a4398308057183fa475920115dbee6dc801ffc9
+  * stale: false
+  * tags: [code/thread_pool]
+  * concepts: [Thread Pool Executor]
+  * facets: {layer: infrastructure, status: broken, complexity: medium}
+  * -->
   */
 public class ThreadPoolExecutor
 extends ThreadExecutor {
@@ -45,6 +54,12 @@ extends ThreadExecutor {
 			public void run() {
 				try {
 					while (true) {
+						// TODO: LOGIC: this.wait() is called without ever synchronizing on 'this' (no
+						// synchronized block/method here), so it throws IllegalMonitorStateException as
+						// soon as the pipe is empty; that RuntimeException is not caught below (only
+						// InterruptedException is), so the pool worker thread silently dies on its first
+						// idle poll. Also mirrors ThreadExecutor's bug: numTasks is decremented even when
+						// r is null, corrupting the load-balancing counter.
 						Runnable r = (Runnable) pipe.nextItem(); --numTasks;
 						if (r == null) { //Tolerance for both blocking and non blocking Pipes:
 							this.wait(); //synchronize on the Pipe or on 'this'

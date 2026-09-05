@@ -1,7 +1,7 @@
 /*
  * ResidiumDispatcher.java
  *
- * Created on 19. März 2003, 20:54
+ * Created on 19. Mï¿½rz 2003, 20:54
  */
 
 package asynch;
@@ -17,6 +17,15 @@ import java.util.TooManyListenersException;
  * @see de.bahn.zkdb.dblayer.delta.EBDeltaBean uses the static Method
  * @see  
  * @author mheuer
+ * <!-- docstate
+ * pass: 2
+ * mtime: 2026-09-05T10:43:32Z
+ * digest: 02bff35d534f34bd61e31107ad5ced64c022abf424b1dac17bbdf2620573b93b
+ * stale: false
+ * tags: [code/dispatcher]
+ * concepts: [Task Dispatcher]
+ * facets: {layer: infrastructure, status: legacy, complexity: medium}
+ * -->
  */
 public class ResidiumDispatcher {
 	
@@ -123,9 +132,8 @@ public class ResidiumDispatcher {
 	/// Testing Code
 	/////////////////////////////////////////////////////////////////////////////////////////
 	
-    /**Test Code,  
-     * acquires locks and releases them after n Seconds 
-     */
+	/** Test helper: repeatedly acquires and prints locks from rd for n Seconds,
+	  * deliberately never releasing them. */
 	static final void dumpValues(final String thread, final ResidiumDispatcher rd) {
 		try {
 			for (int i = 100; --i >= 0;) {
@@ -139,6 +147,7 @@ public class ResidiumDispatcher {
 		}
 	}
 	
+	/** Test entry point: spins up two threads racing dumpValues() against the same dispatcher. */
 	final static public void testIt() {
 		final ResidiumDispatcher rd = new ResidiumDispatcher(73); 
 		Thread thread = new Thread() {

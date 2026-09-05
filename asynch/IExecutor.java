@@ -30,6 +30,15 @@ import graphs.IValueSetter;
   * Created on	09-10-2002, 12:06 AM<p>
   * @author 	Matthias Heuer
   * @version	1.0
+  * <!-- docstate
+  * pass: 2
+  * mtime: 2026-09-05T10:12:24Z
+  * digest: c84e1a736a2a1c595d70fb1773fcb406f2d4099d1a65b1783a0952d697b42389
+  * stale: false
+  * tags: [code/thread_pooling]
+  * concepts: [Executor Interface]
+  * facets: {layer: infrastructure, status: legacy, complexity: low}
+  * -->
   */
 public interface IExecutor {
 

@@ -20,6 +20,15 @@ package asynch;
   * Created on	09-10-2002, 12:14 AM<p>
   * @author 	Matthias Heuer
   * @version	1.0
+  * <!-- docstate
+  * pass: 2
+  * mtime: 2026-09-05T10:12:24Z
+  * digest: 2d7fd7a214fe1492d0722f3b33a3f0f48f00eab7ebd40b874cb80d511ef1c8d9
+  * stale: false
+  * tags: [code/thread_pooling]
+  * concepts: [Simple Thread Executor]
+  * facets: {layer: infrastructure, status: legacy, complexity: low}
+  * -->
   */
 public class SimpleThreadExecutor
 extends AExecutor {

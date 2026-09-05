@@ -24,6 +24,15 @@ import streamIO.object.enumer.container.DeQueueArr;
   * Created on	09-10-2002, 12:14 AM<p>
   * @author 	Matthias Heuer
   * @version	1.0
+  * <!-- docstate
+  * pass: 2
+  * mtime: 2026-09-05T10:43:31Z
+  * digest: 64a6bd8e0e79efb3fb945d7ba89d4342e34b761ae6461e33a554090484a286d5
+  * stale: false
+  * tags: [code/thread_pooling]
+  * concepts: [Thread Executor]
+  * facets: {layer: infrastructure, status: broken, complexity: medium}
+  * -->
   */
 public class ThreadExecutor
 extends AExecutor
@@ -75,7 +84,9 @@ implements Runnable {
 /// #region : Accessor Methods (getXXX/isXXX/setXXX)
 ////////////////////////////////////////////////////////////////////////////
 
-	/** @return the Number of Tasks in this Executor  */
+	/** Returns the current task-count bookkeeping value used for load balancing.
+	  * @return the Number of Tasks currently queued or running in this Executor
+	  * (see the TODO on run() below: this counter can drift due to a bookkeeping bug). */
 	public int getNumTasks() {
 		return numTasks; }
 
@@ -116,8 +127,13 @@ implements Runnable {
 	 * can be stopped by setting the Parameter to true.
 	 * Must not be called publicly!
 	 */
+	/** Worker loop: repeatedly takes the next Runnable from the pipe and runs it, waiting when empty. */
 	public synchronized void run() {
 		while (!stopped) {
+			// TODO: LOGIC: numTasks is decremented unconditionally even when pipe.nextItem() below
+			// returns null (nothing to do), so numTasks drifts negative whenever this worker goes idle.
+			// SimpleThreadPoolExecutor.execute() relies on getNumTasks() for load balancing, so a
+			// corrupted (negative) count defeats that balancing.
 			numTasks--;
 			Runnable item = (Runnable) pipe.nextItem();
 			if (item != null) {

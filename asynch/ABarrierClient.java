@@ -1,11 +1,9 @@
 package asynch;
 
 /**
-  * Abstract Sample Client for the Barrier
-  *
-  * Design Decisions / Implementation Details:
-  * If similar Classes exist (e.g. Polymorphism),
-  * characterize the specific Differences to compare these.
+  * Abstract sample client for {@link Barrier}: drives a loop of update() / barrier() /
+  * isConverged() so several threads can iterate a shared computation in lockstep and let a
+  * single elected thread (the one for which barrier() returns 0) decide when it has converged.
   *
   * Known SubClasses: <none>
   *
@@ -16,6 +14,15 @@ package asynch;
   * Created on	09-15-2002, 09:33 AM<p>
   * @author 	Matthias Heuer
   * @version	1.0
+  * <!-- docstate
+  * pass: 2
+  * mtime: 2026-09-05T10:41:17Z
+  * digest: ec46a371abea5e0d2b9980e1067d67c02d435c3b12a97391bc50789f7243ba82
+  * stale: false
+  * tags: [code/concurrency_primitive]
+  * concepts: [Barrier Client Callback]
+  * facets: {layer: infrastructure, status: legacy, complexity: low}
+  * -->
   */
 public abstract class ABarrierClient
 implements Runnable {

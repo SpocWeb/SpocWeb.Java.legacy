@@ -3,13 +3,8 @@ package asynch;
 /**
   * Title: SimpleTimedThreadExecutor<p>
   * Description:
-  * Purpose:
-  * asynchronously executes the given Task with the given Delay by creating a new Thread
-  * Purpose / Responsibilities of this Class
-  *
-  * Design Decisions / Implementation Details:
-  * If similar Classes exist (e.g. Polymorphism),
-  * characterize the specific Differences to compare these.
+  * A {@link SimpleThreadExecutor} variant that delays execution: it spawns a new Thread that
+  * sleeps for a configurable Timer (or a per-call delay) before running the given Runnable.
   *
   * Known SubClasses: <none>
   *
@@ -20,6 +15,15 @@ package asynch;
   * Created on	09-15-2002, 07:28 PM<p>
   * @author 	Matthias Heuer
   * @version	1.0
+  * <!-- docstate
+  * pass: 2
+  * mtime: 2026-09-05T10:43:28Z
+  * digest: 8320b81962276e6f69f9d30c4c7cda51016719ca7f2c1319f1ff1279dfa610c6
+  * stale: false
+  * tags: [code/thread_pooling]
+  * concepts: [Timed Thread Executor]
+  * facets: {layer: infrastructure, status: legacy, complexity: low}
+  * -->
   */
 public class SimpleTimedThreadExecutor
 extends SimpleThreadExecutor {
@@ -35,7 +39,8 @@ extends SimpleThreadExecutor {
 /** holds Timer after which the next execute() Action is triggered   */
 protected long Timer;
 
-/** @return Timer after which the next execute() Action is triggered  */
+/** Returns the currently configured delay applied before running a submitted task.
+  * @return Timer after which the next execute() Action is triggered  */
 public long getTimer() {
 	return Timer; }
 

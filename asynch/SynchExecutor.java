@@ -7,13 +7,10 @@ import streamIO.IIStreamIn;
 /**
   * Title: SynchExecutor<p>
   * Description:
-  * Purpose:
-  * Synchronously executes the run() Method of the given Runnable Parameter
-  * Purpose / Responsibilities of this Class
-  *
-  * Design Decisions / Implementation Details:
-  * If similar Classes exist (e.g. Polymorphism),
-  * characterize the specific Differences to compare these.
+  * An {@link IExecutor} that runs everything synchronously on the calling Thread: execute()
+  * calls run()/nextItem()/MapAt() directly and, where a callback is given, invokes it before
+  * returning the resulting Future (so callers relying on Future-then-callback ordering should
+  * note the callback fires first).
   *
   * Known SubClasses: <none>
   *
@@ -24,6 +21,15 @@ import streamIO.IIStreamIn;
   * Created on	09-10-2002, 12:14 AM<p>
   * @author 	Matthias Heuer
   * @version	1.0
+  * <!-- docstate
+  * pass: 2
+  * mtime: 2026-09-05T10:41:58Z
+  * digest: 607aff006a45f4c1fca1ca47e097f1218c2999e826ce358649054b0069b691a8
+  * stale: false
+  * tags: [code/thread_pooling]
+  * concepts: [Synchronous Executor]
+  * facets: {layer: infrastructure, status: legacy, complexity: low}
+  * -->
   */
 public class SynchExecutor
 implements IExecutor {

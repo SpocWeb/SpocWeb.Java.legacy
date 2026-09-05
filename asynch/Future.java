@@ -32,6 +32,15 @@ import synch.ACachedProperty;
   * Created on	08-31-2002, 09:52 AM<p>
   * @author 	Matthias Heuer
   * @version	1.0
+  * <!-- docstate
+  * pass: 2
+  * mtime: 2026-09-05T10:43:12Z
+  * digest: b2e97b6329f7b1e1b592d613712edda1a487d1680d249cf59076eae0cb29ee55
+  * stale: false
+  * tags: [code/deferred_execution]
+  * concepts: [Future Result Holder]
+  * facets: {layer: infrastructure, status: legacy, complexity: low}
+  * -->
   */
 public class Future
 //extends Value
@@ -122,7 +131,8 @@ implements IFuture, IValue { //IDirtyFlag {
 	/// #region : Interface IDirtyFlag: Implementation
 	////////////////////////////////////////////////////////////////////////////////
 	
-	/** @return true, when this Object has been modified, false otherwise */
+	/** Reports whether this Future's Result (or Exception) has not yet been set.
+	  * @return true, when this Object has been modified, false otherwise */
 	public boolean isDirty() { return dirty; }
 	
 	/** (re-)sets the Dirty Flag 	 */

@@ -23,6 +23,15 @@ import streamIO.IIStreamIn;
   * Created on	09-10-2002, 10:30 PM<p>
   * @author 	Matthias Heuer
   * @version	1.0
+  * <!-- docstate
+  * pass: 2
+  * mtime: 2026-09-05T10:12:24Z
+  * digest: cf02121f17607b0ec43ec76d702165fbb21cf07c27bd83e6333de870efd45ff1
+  * stale: false
+  * tags: [code/callback_pattern, code/deferred_execution]
+  * concepts: [Future Completion Handler]
+  * facets: {layer: infrastructure, status: legacy, complexity: low}
+  * -->
   */
 public class FutureHandler
 extends Future //not holding a IValueSetter Callback, because it makes it easy to use this Future!

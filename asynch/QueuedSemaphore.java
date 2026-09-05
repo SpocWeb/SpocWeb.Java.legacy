@@ -30,6 +30,15 @@ import streamIO.object.IPipe;
   * Created on	09-15-2002, 04:15 PM<p>
   * @author 	Matthias Heuer
   * @version	1.0
+  * <!-- docstate
+  * pass: 2
+  * mtime: 2026-09-05T10:43:14Z
+  * digest: cdeda40e324f9b7ec4d12131722a41378f58af84a57cc41e1b2874bd6b0f2c9c
+  * stale: false
+  * tags: [code/concurrency_primitive]
+  * concepts: [Queued Semaphore]
+  * facets: {layer: infrastructure, status: broken, complexity: medium}
+  * -->
   */
 public class QueuedSemaphore
 extends Semaphore
@@ -39,13 +48,12 @@ implements ISynch {
 /// #region : static Methods
 ////////////////////////////////////////////////////////////////////////////////
 
-	/** @return a Monitor Object implemented by the QueuedSemaphore.
-	  * This is not the best Choice though,
-	  * since Monitors are built into the Java Language
+	/** Creates a single-permit QueuedSemaphore that behaves like a Monitor/Mutex, backed by pipe.
+	  * This is not the best Choice though, since Monitors are built into the Java Language
 	  * and thus these are easier to use.
 	  * They are an Alternative, when queueing must not happen in arbitrary Order!
 	  * This Queue can employ any order: LIFO, FIFO or Priority!
-	  */
+	  * @return a new single-permit QueuedSemaphore (a Monitor/Mutex) backed by the given queue. */
 	final static public QueuedSemaphore getMonitor(IPipe pipe) {
 		return new QueuedSemaphore(1, pipe); }
 
@@ -84,6 +92,10 @@ implements ISynch {
 				return; }
 			monitor = Thread.currentThread();
 			pipe.addItem(monitor); } //release the Lock on 'this' before locking on node!
+		// TODO: LOGIC: lost-wakeup race: between releasing the 'this' monitor above and acquiring the
+		// 'monitor' (Thread) monitor below, another thread's unlock() can already run, dequeue this
+		// monitor and call monitor.notify() before this thread reaches wait(); since notify() is not
+		// sticky, that wakeup is lost and this thread can block in wait() forever.
 		synchronized (monitor) {
 //			try {
 				monitor.wait(); //node.doWait();
@@ -170,6 +182,15 @@ implements ISynch {
   * Created on	09-15-2002, 05:02 PM<p>
   * @author 	Matthias Heuer
   * @version	1.0
+  * <!-- docstate
+  * pass: 2
+  * mtime: 2026-09-05T10:43:14Z
+  * digest: 75e381cf325709b9ef5374449c1444706b54e788656e3e2d7bd4f41f4b83ecd8
+  * stale: false
+  * tags: [code/concurrency_primitive]
+  * concepts: [Semaphore Wait Queue Node]
+  * facets: {layer: infrastructure, status: legacy, complexity: low}
+  * -->
   */
 class WaitNode {
 

@@ -18,12 +18,6 @@ import streamIO.IIStreamIn;
   * The Solution is to hand over this ValueSetterRef Object as a Cookie during the Call,
   * which is returned on the Callback!
   *
-  * Purpose / Responsibilities of this Class
-  *
-  * Design Decisions / Implementation Details:
-  * If similar Classes exist (e.g. Polymorphism),
-  * characterize the specific Differences to compare these.
-  *
   * Known SubClasses: <none>
   *
   * Known Uses: <none>
@@ -33,6 +27,15 @@ import streamIO.IIStreamIn;
   * Created on	09-11-2002, 10:15 AM<p>
   * @author 	Matthias Heuer
   * @version	1.0
+  * <!-- docstate
+  * pass: 2
+  * mtime: 2026-09-05T10:42:01Z
+  * digest: 890166c399ced0d5779916ece79c7d2a5ebcf11329065c21f0827a5e38388aad
+  * stale: false
+  * tags: [code/deferred_execution]
+  * concepts: [Value Setter Reference]
+  * facets: {layer: infrastructure, status: legacy, complexity: low}
+  * -->
   */
 public class ValueSetterRef
 extends AReadyToRun {

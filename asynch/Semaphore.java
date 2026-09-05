@@ -20,6 +20,15 @@ package asynch;
   * Created on	09-15-2002, 10:18 AM<p>
   * @author 	Matthias Heuer
   * @version	1.0
+  * <!-- docstate
+  * pass: 2
+  * mtime: 2026-09-05T10:43:23Z
+  * digest: 576127292b3e4c8f6935bbd7b3ef8c93eedab7330b9d2716f5022d0b2015206b
+  * stale: false
+  * tags: [code/concurrency_primitive]
+  * concepts: [Counting Semaphore]
+  * facets: {layer: infrastructure, status: legacy, complexity: low}
+  * -->
   */
 public class Semaphore
 implements ISynch {
@@ -31,6 +40,8 @@ implements ISynch {
 	/** @return a Mutex
 	  * which is essentially a Semaphore with only a single Thread allowed
 	  */
+	/** Creates a Mutex, i.e. a Semaphore that allows only a single Thread at a time.
+	  * @return a new Mutex, i.e. a Semaphore that allows only a single Thread at a time. */
 	final static public Semaphore getMutex() {
 		return new Semaphore(1); }
 
@@ -45,7 +56,8 @@ implements ISynch {
 /// #region : Accessor Methods (getXXX/isXXX/setXXX)
 ////////////////////////////////////////////////////////////////////////////////
 
-	/** @return true iff this Semaphore is locked:
+	/** Reports whether this Semaphore currently has no permits left.
+	  * @return true iff this Semaphore is locked:
 	  * This Method doesn't really make Sense,
 	  * because independent from this Check,
 	  * the Semaphore may be locked already on the next Command!

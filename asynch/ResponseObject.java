@@ -8,12 +8,9 @@ import graphs.IValueSetter;
   * Description:
   * ResponseObject of the generic Active Object Pattern.
   * Purpose:
-  * Request Object that returns a Future as the Response
-  * Purpose / Responsibilities of this Class
-  *
-  * Design Decisions / Implementation Details:
-  * If similar Classes exist (e.g. Polymorphism),
-  * characterize the specific Differences to compare these.
+  * Request Object that, unlike its parent {@link RequestObject}, also carries the actual
+  * two-way call (a Responder plus an IValueSetter/Future) so the Scheduler can invoke it and
+  * deliver the return value back to the caller.
   *
   * Known SubClasses: <none>
   *
@@ -24,6 +21,15 @@ import graphs.IValueSetter;
   * Created on	08-31-2002, 08:12 PM<p>
   * @author 	Matthias Heuer
   * @version	1.0
+  * <!-- docstate
+  * pass: 2
+  * mtime: 2026-09-05T10:41:52Z
+  * digest: ac6dd833779a5d829ee21d00f551cd073ede194720995b8735dd6b338f04afa2
+  * stale: false
+  * tags: [code/deferred_execution]
+  * concepts: [Async Response Object]
+  * facets: {layer: infrastructure, status: legacy, complexity: low}
+  * -->
   */
 public class ResponseObject
 extends RequestObject {

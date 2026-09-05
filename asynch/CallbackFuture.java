@@ -5,13 +5,9 @@ import graphs.IValueSetter;
 /**
   * Title: CallbackFuture<p>
   * Description:
-  * Purpose:
-  * Takes a Callback as Parameter and returns itself on Completion to the Callback together with the stored Result
-  * Purpose / Responsibilities of this Class
-  *
-  * Design Decisions / Implementation Details:
-  * If similar Classes exist (e.g. Polymorphism),
-  * characterize the specific Differences to compare these.
+  * A {@link Future} that, once its value is set, also invokes an {@link IValueSetter} callback
+  * with itself as the argument, so the original caller can be notified directly instead of (or
+  * in addition to) polling/blocking on getVal().
   *
   * Known SubClasses: <none>
   *
@@ -22,6 +18,15 @@ import graphs.IValueSetter;
   * Created on	09-14-2002, 09:44 AM<p>
   * @author 	Matthias Heuer
   * @version	1.0
+  * <!-- docstate
+  * pass: 2
+  * mtime: 2026-09-05T10:41:28Z
+  * digest: d90b65a43dca4e1ff41dc08660d522d5f1bd193dd9a0ef4927541cba33b314de
+  * stale: false
+  * tags: [code/callback_pattern, code/deferred_execution]
+  * concepts: [Future with Callback]
+  * facets: {layer: infrastructure, status: legacy, complexity: low}
+  * -->
   */
 public class CallbackFuture
 extends Future {

@@ -18,12 +18,6 @@ import graphs.IValueSetter;
   * The Solution is to hand over this ProcessorRef Object as a Cookie during the Call,
   * which is returned on the Callback!
   *
-  * Purpose / Responsibilities of this Class
-  *
-  * Design Decisions / Implementation Details:
-  * If similar Classes exist (e.g. Polymorphism),
-  * characterize the specific Differences to compare these.
-  *
   * Known SubClasses: <none>
   *
   * Known Uses: <none>
@@ -33,6 +27,15 @@ import graphs.IValueSetter;
   * Created on	09-11-2002, 10:15 AM<p>
   * @author 	Matthias Heuer
   * @version	1.0
+  * <!-- docstate
+  * pass: 2
+  * mtime: 2026-09-05T10:41:46Z
+  * digest: ca5a3e84d0b7fa44703999b21435e78e841a59c32e5404edd87cf28198dbf4af
+  * stale: false
+  * tags: [code/deferred_execution]
+  * concepts: [Task Processor Reference]
+  * facets: {layer: infrastructure, status: legacy, complexity: low}
+  * -->
   */
 public class ProcessorRef
 extends AReadyToRun {

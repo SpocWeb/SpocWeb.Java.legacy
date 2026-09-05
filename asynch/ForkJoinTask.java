@@ -4,13 +4,9 @@ package asynch;
 /**
   * Title: ForkJoinTask<p>
   * Description:
-  * Purpose:
-  * Task Class, more lightweight than a Thread or even a Process
-  * Supposed to be subclassed and implemented.
-  *
-  * Design Decisions / Implementation Details:
-  * If similar Classes exist (e.g. Polymorphism),
-  * characterize the specific Differences to compare these.
+  * Unfinished sketch of a lightweight, subclassable task abstraction (fork/join style),
+  * intended to be cheaper than a full Thread. All lifecycle methods (fork/start/join/reset/cancel)
+  * are currently unimplemented stubs; see the "TODO" on yield() and the empty run().
   *
   * Known SubClasses: <none>
   *
@@ -21,6 +17,15 @@ package asynch;
   * Created on	09-15-2002, 12:51 AM<p>
   * @author 	Matthias Heuer
   * @version	1.0
+  * <!-- docstate
+  * pass: 2
+  * mtime: 2026-09-05T10:43:08Z
+  * digest: 77d25188d54a57e07772b48f802bcc1b5801aab03685b085e6784e44c027b56a
+  * stale: false
+  * tags: [code/deferred_execution]
+  * concepts: [Fork-Join Task]
+  * facets: {layer: infrastructure, status: legacy, complexity: medium}
+  * -->
   */
 public abstract class ForkJoinTask
 implements Runnable {
@@ -29,13 +34,15 @@ implements Runnable {
 	/// #region : static Methods
 	////////////////////////////////////////////////////////////////////////////
 	
-	/** Purpose: TODO  */
+	/** Not implemented: intended to yield the current task's Thread to other pending tasks. */
 	final static public void yield() {
 	}
-	
+
+	/** Not implemented: intended to run a task and block until it completes. */
 	final static public void invoke() {
 	}
-	
+
+	/** Not implemented: intended to run the given task concurrently with the caller. */
 	final static public void coInvoke(ForkJoinTask fjt) {
 	}
 	
@@ -47,7 +54,8 @@ implements Runnable {
 	/// #region : Accessor Methods (getXXX/isXXX/setXXX)
 	////////////////////////////////////////////////////////////////////////////////
 	
-	/** @return true iff the Task is finished:   */
+	/** Reports whether the Task has finished executing.
+	  * @return true iff the Task has finished executing. */
 	public abstract boolean isDone();
 
 	////////////////////////////////////////////////////////////////////////////////
@@ -58,25 +66,26 @@ implements Runnable {
 	/// #region : public Methods, then private Methods
 	////////////////////////////////////////////////////////////////////////////////
 	
-	/** */
+	/** Cancels this task, whether it is pending, running, or forked. */
 	public abstract void cancel();
 
-	/** */
+	/** Forks off this task for asynchronous, concurrent execution. */
 	public abstract void fork();
 
-	/** */
+	/** Starts running this task. */
 	public abstract void start();
 
-	/** */
+	/** Blocks the calling thread until this task has finished executing. */
 	public abstract void join();
 
-	/** */
+	/** Resets this task to its initial, not-yet-run state so it can be reused. */
 	public abstract void reset();
 
 	////////////////////////////////////////////////////////////////////////////////
 	/// #region : Interface Runnable: Implementation
 	////////////////////////////////////////////////////////////////////////////////
 	
+	/** Not implemented: currently a no-op stub. */
 //	public abstract void run() {
 	public void run() {
 	}

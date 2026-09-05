@@ -7,13 +7,10 @@ import streamIO.IIStreamIn;
 /**
   * Title: AExecutor<p>
   * Description:
-  * Purpose:
-  * Abstract Base Class implementing the execute() Method for an IStreamIn
-  * Purpose / Responsibilities of this Class
-  *
-  * Design Decisions / Implementation Details:
-  * If similar Classes exist (e.g. Polymorphism),
-  * characterize the specific Differences to compare these.
+  * Abstract base implementation of {@link IExecutor} that derives the IStreamIn/IProcessor
+  * and callback/Future overloads of execute() from a single abstract execute(Runnable),
+  * by wrapping the call in a {@link ValueSetterRef}, {@link ProcessorRef}, {@link Future}
+  * or {@link CallbackFuture} as appropriate. Subclasses only need to implement execute(Runnable).
   *
   * Known SubClasses: <none>
   *
@@ -24,6 +21,15 @@ import streamIO.IIStreamIn;
   * Created on	09-10-2002, 10:54 PM<p>
   * @author 	Matthias Heuer
   * @version	1.0
+  * <!-- docstate
+  * pass: 2
+  * mtime: 2026-09-05T10:41:11Z
+  * digest: ccc8f720c6dff0e5d2c6dcfbf72bbb75c46f183bdd6cfa1e8162326e7554c4ed
+  * stale: false
+  * tags: [code/thread_pooling]
+  * concepts: [Executor Base Class]
+  * facets: {layer: infrastructure, status: legacy, complexity: low}
+  * -->
   */
 public abstract class AExecutor
 implements IExecutor {

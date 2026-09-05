@@ -27,6 +27,15 @@ import graphs.IValueSetter;
   * Created on	08-31-2002, 05:29 PM<p>
   * @author 	Matthias Heuer
   * @version	1.0
+  * <!-- docstate
+  * pass: 2
+  * mtime: 2026-09-05T10:12:23Z
+  * digest: 4bf3d922a526e0c9c8a4e8f816d2fe9d675a818d132c33fd5c1d4ac1ff9b973a
+  * stale: false
+  * tags: [code/deferred_execution]
+  * concepts: [Active Object Pattern]
+  * facets: {layer: infrastructure, status: legacy, complexity: medium}
+  * -->
   */
 public class ActiveObject
 implements IProcessor, IValueSetter {
@@ -72,7 +81,7 @@ implements IProcessor, IValueSetter {
 ////////////////////////////////////////////////////////////////////////////////
 
 	/** Example for an asynchronous Function that returns a Future
-	  * @return arg, mapped in Place by this Object: this.MapAt(arg) this=°arg
+	  * @return arg, mapped in Place by this Object: this.MapAt(arg) this=ï¿½arg
 	  * @param  arg is being changed and returned in the Course of the Operation.
 	  * This is the Function working on 'arg' defined by the implementing Class.
 	  * The Class implementing this Method is the means of exchanging this Operation.

@@ -25,6 +25,15 @@ import streamIO.IIStreamOut;
   * Created on	09-10-2002, 12:14 AM<p>
   * @author 	Matthias Heuer
   * @version	1.0
+  * <!-- docstate
+  * pass: 2
+  * mtime: 2026-09-05T10:42:12Z
+  * digest: 51cf661061a6602874d4ace108cf7bfa15abfb4b2b17479602c8205112915737
+  * stale: false
+  * tags: [code/thread_pool]
+  * concepts: [Simple Thread Pool Executor]
+  * facets: {layer: infrastructure, status: legacy, complexity: medium}
+  * -->
   */
 public class SimpleThreadPoolExecutor
 extends AExecutor {
@@ -42,6 +51,7 @@ extends AExecutor {
 	 */
 	protected ThreadExecutor[] threads;
 
+	/** Propagates the given InterruptionHandler to every ThreadExecutor in the pool. */
 	public void setInterruptionHandler(IIStreamOut InterruptionHandler) {
 		int i = threads.length;
 		while (--i >= 0) {

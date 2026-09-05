@@ -239,3 +239,33 @@ aspect/dialog/StreamDialog.java:StreamDialog	class	aspect/dialog/StreamDialog.ja
 aspect/dialog/StreamDialog.java:StreamDialog.StreamDialog()	method	aspect/dialog/StreamDialog.java	code/dialog	Unimplemented Stub	domain	unfinished	low
 aspect/dialog/StreamDialog.java:StreamDialog.main(String[])	method	aspect/dialog/StreamDialog.java	code/dialog	Unimplemented Stub	domain	unfinished	low
 aspect/dialog/StringQuestion.java:StringQuestion	class	aspect/dialog/StringQuestion.java	code/dialog	Console Q&A Model	domain	stable	low
+asynch/ABarrierClient.java:ABarrierClient	class	asynch/ABarrierClient.java	code/concurrency_primitive	Barrier Client Callback	infrastructure	legacy	low
+asynch	folder	asynch	code/thread_pool,code/concurrency_primitive,code/deferred_execution	Concurrency Utilities	infrastructure	legacy	medium
+asynch/AExecutor.java:AExecutor	class	asynch/AExecutor.java	code/thread_pooling	Executor Base Class	infrastructure	legacy	low
+asynch/AReadyToRun.java:AReadyToRun	class	asynch/AReadyToRun.java	code/deferred_execution	Runnable Task Base Class	infrastructure	legacy	low
+asynch/ActiveObject.java:ActiveObject	class	asynch/ActiveObject.java	code/deferred_execution	Active Object Pattern	infrastructure	legacy	medium
+asynch/Barrier.java:Barrier	class	asynch/Barrier.java	code/concurrency_primitive	Thread Barrier	infrastructure	broken	medium
+asynch/BlockedThreadExecutor.java:BlockedThreadExecutor	class	asynch/BlockedThreadExecutor.java	code/thread_pooling	Blocking Task Executor	infrastructure	broken	medium
+asynch/CallbackFuture.java:CallbackFuture	class	asynch/CallbackFuture.java	code/callback_pattern,code/deferred_execution	Future with Callback	infrastructure	legacy	low
+asynch/ForkJoinTask.java:ForkJoinTask	class	asynch/ForkJoinTask.java	code/deferred_execution	Fork-Join Task	infrastructure	legacy	medium
+asynch/Future.java:Future	class	asynch/Future.java	code/deferred_execution	Future Result Holder	infrastructure	legacy	low
+asynch/FutureHandler.java:FutureHandler	class	asynch/FutureHandler.java	code/callback_pattern,code/deferred_execution	Future Completion Handler	infrastructure	legacy	low
+asynch/IExecutor.java:IExecutor	class	asynch/IExecutor.java	code/thread_pooling	Executor Interface	infrastructure	legacy	low
+asynch/IFuture.java:IFuture	class	asynch/IFuture.java	code/deferred_execution	Future Interface	infrastructure	legacy	low
+asynch/ISynch.java:ISynch	class	asynch/ISynch.java	code/concurrency_primitive	Synchronization Primitive Interface	infrastructure	legacy	low
+asynch/ProcessorRef.java:ProcessorRef	class	asynch/ProcessorRef.java	code/deferred_execution	Task Processor Reference	infrastructure	legacy	low
+asynch/QueuedSemaphore.java:QueuedSemaphore	class	asynch/QueuedSemaphore.java	code/concurrency_primitive	Queued Semaphore	infrastructure	broken	medium
+asynch/QueuedSemaphore.java:WaitNode	class	asynch/QueuedSemaphore.java	code/concurrency_primitive	Semaphore Wait Queue Node	infrastructure	legacy	low
+asynch/ReadyToRun.java:ReadyToRun	class	asynch/ReadyToRun.java	code/deferred_execution	Runnable Task Wrapper	infrastructure	legacy	low
+asynch/RequestObject.java:RequestObject	class	asynch/RequestObject.java	code/deferred_execution	Async Request Object	infrastructure	legacy	low
+asynch/ResidiumDispatcher.java:ResidiumDispatcher	class	asynch/ResidiumDispatcher.java	code/dispatcher	Task Dispatcher	infrastructure	legacy	medium
+asynch/ResponseObject.java:ResponseObject	class	asynch/ResponseObject.java	code/deferred_execution	Async Response Object	infrastructure	legacy	low
+asynch/Scheduler.java:Scheduler	class	asynch/Scheduler.java	code/thread_pooling	Task Scheduler	infrastructure	broken	medium
+asynch/Semaphore.java:Semaphore	class	asynch/Semaphore.java	code/concurrency_primitive	Counting Semaphore	infrastructure	legacy	low
+asynch/SimpleThreadExecutor.java:SimpleThreadExecutor	class	asynch/SimpleThreadExecutor.java	code/thread_pooling	Simple Thread Executor	infrastructure	legacy	low
+asynch/SimpleThreadPoolExecutor.java:SimpleThreadPoolExecutor	class	asynch/SimpleThreadPoolExecutor.java	code/thread_pool	Simple Thread Pool Executor	infrastructure	legacy	medium
+asynch/SimpleTimedThreadExecutor.java:SimpleTimedThreadExecutor	class	asynch/SimpleTimedThreadExecutor.java	code/thread_pooling	Timed Thread Executor	infrastructure	legacy	low
+asynch/SynchExecutor.java:SynchExecutor	class	asynch/SynchExecutor.java	code/thread_pooling	Synchronous Executor	infrastructure	legacy	low
+asynch/ThreadExecutor.java:ThreadExecutor	class	asynch/ThreadExecutor.java	code/thread_pooling	Thread Executor	infrastructure	broken	medium
+asynch/ThreadPoolExecutor.java:ThreadPoolExecutor	class	asynch/ThreadPoolExecutor.java	code/thread_pool	Thread Pool Executor	infrastructure	broken	medium
+asynch/ValueSetterRef.java:ValueSetterRef	class	asynch/ValueSetterRef.java	code/deferred_execution	Value Setter Reference	infrastructure	legacy	low
