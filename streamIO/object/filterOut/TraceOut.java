@@ -5,6 +5,8 @@ import streamIO.IIStreamOut;
 import streamIO.IStreamOut;
 import streamIO.Log;
 /**
+  * Filter that logs each item to a {@link Log} before forwarding it unchanged.
+  * <p>
   * Title: TraceOut<p>
   * Description:
   * Simple Filter handing on the Message unchanged.
@@ -21,6 +23,15 @@ import streamIO.Log;
   * Created on	2000-11-26, 01;13;44<p>
   * @author 	Matthias Heuer
   * @version	1.0
+  * <!-- docstate
+  * pass: 2
+  * mtime: 2026-09-05T20:49:26Z
+  * digest: fc729f628890ff662cfa2769ef7b8bcce5f2c8f30bb761f53029deedef55ed6b
+  * stale: false
+  * tags: [code/stream_filter, code/decorator_pattern]
+  * concepts: [Stream Filter (Output)]
+  * facets: {layer: utility, status: legacy, complexity: medium}
+  * -->
   */
 public class TraceOut
 extends FilterOut

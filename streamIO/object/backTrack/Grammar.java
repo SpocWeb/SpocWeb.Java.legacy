@@ -19,7 +19,10 @@ import function.FunctionByHash;
   * @author 	Matthias Heuer
   * @version	1.0
   */
-/** Generator and ITester Class for the Generation of Sentence Phenotypes
+/** Generates candidate sentence phenotypes from grammar-rule genotypes for use as a
+  * {@link BackTracker} generator.
+  * <p>
+  * Generator and ITester Class for the Generation of Sentence Phenotypes
   * from Grammar Genotypes.
   * The Function could actually be a FunctionByHash
   * that returns an Array of possible Result Objects
@@ -29,6 +32,15 @@ import function.FunctionByHash;
   * Could also be split up into two Classes.
   * This saves handing over the Solution to each Item.
   * On the other Hand the Solution must be known to the Generator for it
+  * <!-- docstate
+  * pass: 2
+  * mtime: 2026-09-05T20:45:01Z
+  * digest: b1afe77d3a240312290ba924f9a504f4a24be63a680fe16c723264357fecf6b8
+  * stale: false
+  * tags: [code/backtracking, code/algorithm]
+  * concepts: [Backtracking Search]
+  * facets: {layer: utility, status: broken, complexity: medium}
+  * -->
   * to generate good Candidates.	 */
 public class Grammar
 //extends AFunction
@@ -72,9 +84,19 @@ public class Grammar
   * as well as the 'Position' of the Space,
   * which can be derived from the Contents.
   * To save reconstructing the Solution we track the whole Path
+  * <!-- docstate
+  * pass: 2
+  * mtime: 2026-09-05T20:45:01Z
+  * digest: 7f4bf02c74c98246b83eb2a4629a5b6fd8df20065ef888015de2f00fffdbe651
+  * stale: false
+  * tags: [code/backtracking, code/algorithm]
+  * concepts: [Backtracking Search]
+  * facets: {layer: utility, status: broken, complexity: medium}
+  * -->
   * to the current Solution.	 */
 class GrammarState {
 
+	/** Short mnemonic codes naming each recognized state (index-aligned with {@link #Productions}). */
 	final static public String[] States = {
 //		"C0 an ZK", "C0 an LS", "C0 an ber. LS", "LSC0", "D0", "E1", "E2", "E3", "E4", "E5", "E6 an LS", "E6 an ZK", "E7", "E8", "E>8", "", "", "", "", "", "", "", ""
 		"C0", "D0", "E1", "E2", //"E3", "E4",
@@ -82,16 +104,17 @@ class GrammarState {
 			"E8", "E>8"
 	};
 
+	/** For each state in {@link #States}, the textual alternatives it can produce. */
 	final static public String[][] Productions = {
-		{"(keine Änderung)", "C0 reformatiert", "C0 Intersystemdublette", "E6 IntrasystemDublette", "E2 Pflichtfelder bei Neuanlage", //"E3 Pflichtfelder bei Änderung", "E4 Pflichtfelder bei Änderung",
-			"E>8 QS Fehler", "(Akzeptiert, nicht berechtigt)", "C0 Felder reformatiert", "E8 Ablehnung der Änderung"},
-		{"(Löschung durchgeführt)", "E5 unbekannte ZKDBNr","E7 Ablehung der Löschung"}, //D0
+		{"(keine ï¿½nderung)", "C0 reformatiert", "C0 Intersystemdublette", "E6 IntrasystemDublette", "E2 Pflichtfelder bei Neuanlage", //"E3 Pflichtfelder bei ï¿½nderung", "E4 Pflichtfelder bei ï¿½nderung",
+			"E>8 QS Fehler", "(Akzeptiert, nicht berechtigt)", "C0 Felder reformatiert", "E8 Ablehnung der ï¿½nderung"},
+		{"(Lï¿½schung durchgefï¿½hrt)", "E5 unbekannte ZKDBNr","E7 Ablehung der Lï¿½schung"}, //D0
 		{"Log, an Administrator"}, //E1
-		{"(ignoriert)","C0 ergänzte Daten"}, //E2
+		{"(ignoriert)","C0 ergï¿½nzte Daten"}, //E2
 //		{"E3": "","","","","","","",}, //E3
 //		{"E4": "","","","","","","",}, //E4
 		{"(nur loggen)"}, //E5
-		{"(ignorieren)","(loggen)","C0 Merge von IntrasystemDublette","D0 Löschung von IntrasystemDublette"}, //E6
+		{"(ignorieren)","(loggen)","C0 Merge von IntrasystemDublette","D0 Lï¿½schung von IntrasystemDublette"}, //E6
 //		{"E7": "","","","","","","",},
 		{"(loggen, Clearing oder Reporting"}, //E8
 		{"(loggen, Clearing oder Reporting"} //E>8
@@ -115,12 +138,18 @@ class GrammarState {
 		this.Contents	= Contents;
 	}
 
-	/** @return a HashCode for this Object
+	/** Derives a hash from the first two characters of {@link #Remark}.
+	 * @return a HashCode for this Object
 	  * restricted to 2 Characters */
+	// TODO: LOGIC: Remark is never assigned by any constructor (only Contents is set), so it is
+	// always null here; every call to hashCode() or equals() throws NullPointerException. Any
+	// hash-based use of GrammarState (e.g. FunctionByHash.setAt(new GrammarState(...), ...) in
+	// Grammar.testIt()) will fail immediately.
 	public int hashCode() {
 		return Remark.charAt(0) + Remark.charAt(1); }
 
-	/** Tests if the Argument Object is equivalent to this one.
+	/** Compares the first two characters of each object's {@link #Remark}.
+	 * Tests if the Argument Object is equivalent to this one.
 	  * Default Implementation tests for binary Equivalence in the first Character.	 */
 	public boolean equals(Object arg) {
 		GrammarState State = (GrammarState) arg;
@@ -130,8 +159,8 @@ class GrammarState {
 //		return State.Contents.equals(Contents); }	//cannot use ==, because Strings are not guaranteed to be unique!
 
 	/**
-	  *
-	  */
+	 * Returns this state's remark text.
+	 */
 	public String toString() { return Remark; }
 
 }

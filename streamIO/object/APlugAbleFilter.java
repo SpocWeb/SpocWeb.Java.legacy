@@ -25,9 +25,12 @@ import streamIO.object.parser.StreamInFromParser;
 import function.AFunction;
 
 /**
+ * Abstract base for a {@link IPlugAbleFilter} whose upstream or downstream leg can be swapped
+ * out after construction, passing the substitution through any nested pluggable filter chain.
+ * <p>
  * Title: APlugAbleFilter<p>
  * Description:
- * Implements a pluggable / configurable Filter for Object Streams. 
+ * Implements a pluggable / configurable Filter for Object Streams.
  *
  * Known SubClasses: <none>
  *
@@ -38,6 +41,15 @@ import function.AFunction;
  * Created on	10-26-2002, 12:47 PM<p>
  * @author mheuer
  * @version	1.0
+ * <!-- docstate
+ * pass: 2
+ * mtime: 2026-09-05T16:30:02Z
+ * digest: 2b696bef2127950a76d2fcb4b0f0040cd8667994ba74d4158631af356be29c8c
+ * stale: false
+ * tags: [code/stream_processing, code/iterator]
+ * concepts: [Object Stream Pipeline]
+ * facets: {layer: utility, status: legacy, complexity: medium}
+ * -->
  */
 public abstract class APlugAbleFilter 
 extends AFilter 
@@ -98,12 +110,16 @@ implements IPlugAbleFilter {
 	public APlugAbleFilter() { super((IIStreamOut) null); }
 	
 	/**
-	 * @param out_
+	 * Creates a pluggable filter that writes to the given output.
+	 *
+	 * @param out_ the initial output leg
 	 */
 	public APlugAbleFilter(final IIStreamOut out_) { super(out_); }
-	
+
 	/**
-	 * @param enum_
+	 * Creates a pluggable filter that reads from the given input.
+	 *
+	 * @param enum_ the initial input leg
 	 */
 	public APlugAbleFilter(final IIStreamIn enum_) { super(enum_); }
 	

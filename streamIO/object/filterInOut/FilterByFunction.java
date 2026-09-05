@@ -7,6 +7,9 @@ import function.FunctionByHash;
 import function.IFunction;
 
 /**
+  * Projective filter that maps every item through a configured {@link IFunction} on its way
+  * through, on either the input or output side.
+  * <p>
   * Title: FilterByFunction.java<p>
   * Description:
   * Maps the Items in the Input streamIO by the given Function and hands them over.
@@ -25,6 +28,15 @@ import function.IFunction;
   * Created on	2001-06-03, 06;44;48<p>
   * @author 	Matthias Heuer
   * @version	1.0
+  * <!-- docstate
+  * pass: 2
+  * mtime: 2026-09-05T20:48:04Z
+  * digest: 78197b9ec72369bd43f1b6463e9feae0f8feb155d6d62d18acf4a487079d8b92
+  * stale: false
+  * tags: [code/stream_filter, code/decorator_pattern]
+  * concepts: [Stream Filter (Input)]
+  * facets: {layer: utility, status: legacy, complexity: medium}
+  * -->
   */
 public class FilterByFunction
 extends AFilter {
@@ -53,15 +65,25 @@ extends AFilter {
 		super(out_);
 		this.mapper = mapper_; }
 
-	/** @return a FilterByFunction that maps the key Fields to the Value Fields */
+	/**
+	 * Creates a filter that maps items via a hash built from the given key/value column pairs.
+	 *
+	 * @return a FilterByFunction that maps the key Fields to the Value Fields */
 	public FilterByFunction (final IIStreamIn Enum, final Object[][] KeyValPairs, final int keyIndex, final int valIndex) {
 		this(Enum, new FunctionByHash(KeyValPairs, keyIndex, valIndex)); }
 
-	/** @return a FilterByFunction that maps the key Fields to the Value Fields */
+	/**
+	 * Creates a filter that maps items via a hash built from column 0 (key) and column 1
+	 * (value) of the given rows.
+	 *
+	 * @return a FilterByFunction that maps the key Fields to the Value Fields */
 	public FilterByFunction (final IIStreamIn Enum, final Object[][] KeyValPairs) {
 		this(Enum, new FunctionByHash(KeyValPairs, 0, 1)); }
 
-	/** @return a FilterByFunction that maps the key Fields to the Value Fields */
+	/**
+	 * Creates a filter that maps items via a hash built from parallel key and value arrays.
+	 *
+	 * @return a FilterByFunction that maps the key Fields to the Value Fields */
 	public FilterByFunction (final IIStreamIn Enum, final Object[] keys, final Object[] values) {
 		this(Enum, new FunctionByHash(keys, values)); }
 
@@ -70,6 +92,9 @@ extends AFilter {
 	////////////////////////////////////////////////////////////////////////////////
 	
 	/**
+	 * Maps {@code arg} through this filter's function, when one is set, before adding it to
+	 * the wrapped output.
+	 *
 	 * @see streamIO.IIStreamOut#addItem(Object)
 	 */
 	public IIStreamOut addItem(Object arg) {

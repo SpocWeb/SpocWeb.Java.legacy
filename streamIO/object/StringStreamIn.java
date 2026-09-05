@@ -9,6 +9,9 @@ import streamIO.integer.AStreamIn_Int;
 import streamIO.integer.IStreamIn_Int;
 
 /**
+  * Lightweight read-only stream over a {@code String} or {@code StringBuffer}, yielding each
+  * character in sequence.
+  * <p>
   * Title: StringStreamIn.java<p>
   * Description:
   * Simple, lightweight read only Iterator for Character Arrays (Strings)
@@ -22,15 +25,26 @@ import streamIO.integer.IStreamIn_Int;
   * Created on	2001-06-06, 10;39;48<p>
   * @author 	Matthias Heuer
   * @version	1.0
+  * <!-- docstate
+  * pass: 2
+  * mtime: 2026-09-05T20:42:30Z
+  * digest: 5b8773c9104e40a817a94cbbf2e824e51b791f68c53a77b72bdafbf7e60c01ff
+  * stale: false
+  * tags: [code/stream_processing, code/iterator]
+  * concepts: [Object Stream Pipeline]
+  * facets: {layer: utility, status: legacy, complexity: medium}
+  * -->
   */
 public class StringStreamIn
 extends AStreamIn_Int
 implements IStreamIn_Int{
 	
-	/** @see streamIO.real.IStreamIn_Bound_Float#getMinDouble()	 */
+	/** Always returns 0, since character positions have no fractional lower bound.
+	 * @see streamIO.real.IStreamIn_Bound_Float#getMinDouble()	 */
 	public double getMinDouble() { return 0; }
-	
-	/** @see streamIO.IOrdered#getOrder()	 */
+
+	/** Reports FIFO order, since characters are yielded in String sequence.
+	 * @see streamIO.IOrdered#getOrder()	 */
 	public byte getOrder() { return ORDER_QUEUE; }
 	
 	/**Returns the next (Parent) Object of this one.
@@ -91,9 +105,13 @@ implements IStreamIn_Int{
 	 */
 	public long availAble() {  return getInt() - curr - 1; }
 	
+	/**
+	 * Returns the length of the wrapped {@code String} or {@code StringBuffer}.
+	 */
 	public long getInt() { return (arr != null) ? arr.length() : arrBuf.length(); }
-	
-	/** @see streamIO.object.AStreamIn#getMaxMarkSize()	 */
+
+	/** Returns the wrapped character sequence's length as this stream's maximum mark size.
+	 * @see streamIO.object.AStreamIn#getMaxMarkSize()	 */
 	public long getMaxMarkSize() { return getInt(); }
 	
 	////////////////////////////////////////////////////////////////////////////////
@@ -102,7 +120,8 @@ implements IStreamIn_Int{
 	
 	//Marking and Resetting a Stream (for re-Processing, if supported)
 	
-	/** @see streamIO.object.AStreamIn#getPosition()	 */
+	/** Returns the current index into the wrapped character sequence.
+	 * @see streamIO.object.AStreamIn#getPosition()	 */
 	public long getPosition() { return curr; }
 	
 	/**Skips over and discards n Items from this Iterator.
@@ -128,7 +147,10 @@ implements IStreamIn_Int{
 	//	Interface Object
 	////////////////////////////////////////////////////////////////////////////////
 	
-	/** @return  a string representation of the object.
+	/**
+	 * Returns the wrapped character sequence's full text.
+	 *
+	 * @return  a string representation of the object.
 	  * In general, the toString method returns a string that "textually represents" this object.
 	  * The result should be a concise but informative representation that is easy for a person to read.
 	  * It is recommended that all subclasses override this method.

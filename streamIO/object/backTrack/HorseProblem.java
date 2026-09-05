@@ -6,8 +6,9 @@ import streamIO.object.IPipe;
 import streamIO.object.enumer.container.DeQueueArr;
 import function.AFunction;
 
-/**Generator and ITester Class for the Horse Problem.
- * The Task is to reach every Field in a Matrix exactly once 
+/** Generator for the Knight's Tour (Horse Problem) search, for use with {@link BackTracker}.
+ * <p>
+ * The Task is to reach every Field in a Matrix exactly once
  * using Chess Horse / Knight Jumps.
  *
  * A lot of Solutions can be derived using Symmetries.
@@ -16,6 +17,15 @@ import function.AFunction;
  *
  * Design Decisions:
  * No extra Class for representing the State necessary,
+ * <!-- docstate
+ * pass: 2
+ * mtime: 2026-09-05T20:45:41Z
+ * digest: 78ad7661dc59fb5b53780016a04511592b106601acb99e8a59d337f2d4450021
+ * stale: false
+ * tags: [code/backtracking, code/algorithm]
+ * concepts: [Backtracking Search]
+ * facets: {layer: utility, status: legacy, complexity: medium}
+ * -->
  * since this can be done efficiently by an Array.	 */
 public class HorseProblem
 extends AFunction {
@@ -119,8 +129,13 @@ extends AFunction {
 
 	}
 
+	/**
+	 * Runs {@link #testIt()} from the command line.
+	 *
+	 * @param args unused
+	 */
 	public static void main(String[] args) {
-		testIt(); 
+		testIt();
 	}
 
 }

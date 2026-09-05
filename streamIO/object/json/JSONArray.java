@@ -52,6 +52,15 @@ import java.util.Collection;
 
  * @author JSON.org
  * @version 2
+ * <!-- docstate
+ * pass: 2
+ * mtime: 2026-09-05T10:13:32Z
+ * digest: 79b57d39b9c01d0983796b43837d2945942cb15e0f36edf4ffb1850db201d546
+ * stale: false
+ * tags: [code/parsing, code/serialization]
+ * concepts: [JSON.org Reference Implementation]
+ * facets: {layer: utility, status: legacy, complexity: medium}
+ * -->
  */
 public class JSONArray {
 

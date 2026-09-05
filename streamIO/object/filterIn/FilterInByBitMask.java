@@ -5,8 +5,10 @@ import streamIO.object.AFilterIn;
 import streamIO.object.IStreamIn;
 
 /**
+  * Filter that selects stream items whose position matches a set bit in a long bit mask.
+  * <p>
   * Title: FilterInByBitMask<p>
-  * 
+  *
   * Description:
   * Column Filter
   * Filters a streamIO by a long Number interpreted as a Mask of Bits that determines,
@@ -22,6 +24,15 @@ import streamIO.object.IStreamIn;
   * Created on	2001-06-03, 06;44;48<p>
   * @author 	Matthias Heuer
   * @version	1.0
+  * <!-- docstate
+  * pass: 2
+  * mtime: 2026-09-05T20:46:43Z
+  * digest: 208df024899ed7c631c62f736dbb7258a361516e50287c42172f0535dacb0bc4
+  * stale: false
+  * tags: [code/stream_filter, code/decorator_pattern]
+  * concepts: [Stream Filter (Input)]
+  * facets: {layer: utility, status: broken, complexity: medium}
+  * -->
   */
 public class FilterInByBitMask
 extends AFilterIn {
@@ -60,7 +71,8 @@ extends AFilterIn {
 		} while ((mFilter & (mMask >>= 1)) != 0);
 		return currItem; }
 	
-    /** @see streamIO.IAvailAble#availAble()     */
+    /** Reports 1 while the bit mask still has a set bit to consume, 0 once exhausted.
+     * @see streamIO.IAvailAble#availAble()     */
     public long availAble() {
 		if (mMask == 0) 
 	        return 0;
@@ -70,8 +82,13 @@ extends AFilterIn {
 	/**Resets the Iterator to the given Position
 	  * counted from the last marked Position.
 	  * @return the Number of Positions actually skipped	 */
+	// TODO: LOGIC: `1 << _position` is computed in int arithmetic (the literal `1` is an int),
+	// so per JLS 15.19 only the low 5 bits of _position are used as the shift distance; for
+	// _position >= 32 this silently wraps (mod 32) instead of producing the intended bit in a
+	// 64-bit long mask, breaking reSet() for column/bit positions 32 and above. Use `1L <<
+	// _position` to shift as a long.
 	public long reSet(final long _position) { //throws    NoSuchMethodException {
-		((IStreamIn) in).reSet(); mMask = 1 << _position; 
+		((IStreamIn) in).reSet(); mMask = 1 << _position;
 		return _position; }
 	
 	////////////////////////////////////////////////////////////////////////////////

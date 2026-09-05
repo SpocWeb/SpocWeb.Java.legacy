@@ -26,6 +26,15 @@ import tester.ITester;
   *  and multiplying them before eliminating Failures.
   *  Additionally the most eliminating Joins
   *  and the Tests supported by Indices should be performed first)
+  * <!-- docstate
+  * pass: 2
+  * mtime: 2026-09-05T10:13:31Z
+  * digest: 384a601195181893c4be1ab0ea9725352fd993f1eb5001e1d863431cdd935a81
+  * stale: false
+  * tags: [code/stream_processing, code/iterator]
+  * concepts: [Object Stream Pipeline]
+  * facets: {layer: utility, status: legacy, complexity: medium}
+  * -->
   */
 public class JoinStreamByTest
 extends Product {

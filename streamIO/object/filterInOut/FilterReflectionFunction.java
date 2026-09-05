@@ -15,9 +15,11 @@ import streamIO.object.AFilter;
 import streamIO.object.IStreamIn;
 
 /**
+ * Filter that applies a named method via reflection to every item passing through, resolving
+ * the {@link Method} lazily against each item's runtime class.
+ * <p>
  * Title: FilterReflectionFunction<p>
  * Description:
- * Purpose:
  *
  * Applies a Reflection Function to the Objects in this streamIO.
  * This saves defining a Class with a Template Method 
@@ -40,6 +42,15 @@ import streamIO.object.IStreamIn;
  * @author mheuer
  * @version	1.0
  *
+ * <!-- docstate
+ * pass: 2
+ * mtime: 2026-09-05T20:48:37Z
+ * digest: b47caa8818441d828901257f6f544483af9211ae4e3afacf8c540aef2aa83b1b
+ * stale: false
+ * tags: [code/stream_filter, code/decorator_pattern]
+ * concepts: [Stream Filter (Input)]
+ * facets: {layer: utility, status: legacy, complexity: medium}
+ * -->
  */
 public class FilterReflectionFunction
 extends AFilter {
@@ -47,22 +58,26 @@ extends AFilter {
 	/** Name of the toString() Method for Reflection */
 	final static public String FUNCTION_TO_STRING = "toString";
 
-	/** @return a Filter to the given StreamOut converting Objects into Strings */
+	/** Creates a filter converting objects written to {@code out} into their {@code toString()}.
+	 * @return a Filter to the given StreamOut converting Objects into Strings */
 	final static public IStreamOut FILTER_TO_STRING(IIStreamOut out) {
 		return new FilterReflectionFunction(out, FUNCTION_TO_STRING, null); }
 
-	/** @return a Filter to the given StreamOut converting Objects into Strings */
+	/** Creates a filter converting objects read from {@code in} into their {@code toString()}.
+	 * @return a Filter to the given StreamOut converting Objects into Strings */
 	final static public IStreamIn FILTER_TO_STRING(IIStreamIn in) {
 		return new FilterReflectionFunction(in, FUNCTION_TO_STRING, null); }
 
 	/** Name of the toString() Method for Reflection */
 	final static public String FUNCTION_GET_NAME = "getName";
 
-	/** @return a Filter to the given StreamOut converting Objects into Strings */
+	/** Creates a filter converting objects written to {@code out} into their class/member name.
+	 * @return a Filter to the given StreamOut converting Objects into Strings */
 	final static public IStreamOut FILTER_GET_NAME(IIStreamOut out) {
 		return new FilterReflectionFunction(out, FUNCTION_GET_NAME, null); }
 
-	/** @return a Filter to the given StreamOut converting Objects into Strings */
+	/** Creates a filter converting objects read from {@code in} into their class/member name.
+	 * @return a Filter to the given StreamOut converting Objects into Strings */
 	final static public IStreamIn FILTER_GET_NAME(IIStreamIn in) {
 		return new FilterReflectionFunction(in, FUNCTION_GET_NAME, null); }
 
@@ -85,7 +100,10 @@ extends AFilter {
 	 */
 	protected Method function;
 
-	/** @return the Return Value of the Function applied to the Argument
+	/**
+	 * Invokes the configured reflective method on {@code obj}, resolving it lazily on first use.
+	 *
+	 * @return the Return Value of the Function applied to the Argument
 	 * or the Exception if the Function throws one!
 	 */
 	public Object applyMethod(Object obj)
@@ -138,12 +156,20 @@ extends AFilter {
 		return applyMethod(currItem); }
 
 	/**
+	 * Applies the configured reflective method to {@code arg} before adding the result to the
+	 * wrapped output.
+	 *
 	 * @see streamIO.IIStreamOut#addItem(Object)
 	 */
 	public IIStreamOut addItem(Object arg) {
 		out.addItem(applyMethod(arg));
 		return this; }
 
+	/**
+	 * Unused entry point.
+	 *
+	 * @param args unused
+	 */
 	public static void main(String[] args) {}
 
 }

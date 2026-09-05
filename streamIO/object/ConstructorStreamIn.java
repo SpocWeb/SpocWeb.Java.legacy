@@ -7,6 +7,9 @@ import streamIO.IIStreamIn;
 import streamIO.exception.BaseException;
 
 /**
+ * Filter that converts each incoming item into a new instance of a target class by invoking
+ * that class's single-argument constructor reflectively.
+ * <p>
  * ConstructorStreamIn.java
  *
  * This Class implements the StreamIn Interface
@@ -17,6 +20,15 @@ import streamIO.exception.BaseException;
  *
  * @author  Matthias Heuer
  * @version
+ * <!-- docstate
+ * pass: 2
+ * mtime: 2026-09-05T16:35:24Z
+ * digest: 8fa2b1840f2aa0c96f25cf9cd4ef8059608540977b4e2dcd5aeebd275c8f37fc
+ * stale: false
+ * tags: [code/stream_processing, code/iterator]
+ * concepts: [Object Stream Pipeline]
+ * facets: {layer: utility, status: legacy, complexity: medium}
+ * -->
  */
 public class ConstructorStreamIn
 extends AFilterIn {

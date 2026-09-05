@@ -5,6 +5,9 @@ import java.io.IOException;
 import streamIO.IMarkAble;
 
 /**
+ * Lightweight read-only {@link IStreamIn} over an {@code Object[]}, recursing into a nested
+ * array by wrapping it in a fresh {@code ArrayStreamIn} rather than flattening it.
+ * <p>
  * Title: ArrayStreamIn<p>
  * Description:
  * Simple, lightweight read only Iterator for (nested) Object Arrays.
@@ -28,6 +31,15 @@ import streamIO.IMarkAble;
  * Created on	2001-06-06, 10;39;48<p>
  * @author 	Matthias Heuer
  * @version	1.0
+ * <!-- docstate
+ * pass: 2
+ * mtime: 2026-09-05T16:34:06Z
+ * digest: b8f21ac2f8137c0a9595f194f998aec4feb8a96f4c0f0088e15ba01d5b96899e
+ * stale: false
+ * tags: [code/stream_processing, code/iterator]
+ * concepts: [Object Stream Pipeline]
+ * facets: {layer: utility, status: legacy, complexity: medium}
+ * -->
  */
 public class ArrayStreamIn
 extends AStreamIn {
@@ -52,13 +64,17 @@ extends AStreamIn {
 	/// #region : Accessor Methods (getXXX/isXXX/setXXX)
 	////////////////////////////////////////////////////////////////////////////
 	
-	/** @see streamIO.object.AStreamIn#getMaxMarkSize()	 */
+	/** Returns the wrapped array's length as this stream's maximum mark size.
+	 * @see streamIO.object.AStreamIn#getMaxMarkSize()	 */
 	public long getMaxMarkSize() { return arr.length; }
-	
-	/** @see streamIO.object.AStreamIn#getPosition()	 */
+
+	/** Returns the current index into the wrapped array.
+	 * @see streamIO.object.AStreamIn#getPosition()	 */
 	public long getPosition() { return curr; }
-	
+
 	/**
+	  * Returns the order the array was constructed with.
+	  *
 	  * @return the Order of the Elements in this streamIO.
 	  * -1 for descending
 	  *  0 for unordered

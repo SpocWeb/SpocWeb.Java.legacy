@@ -5,6 +5,15 @@ package streamIO.object.json;
  * for the parsing of XML texts.
  * @author JSON.org
  * @version 2
+ * <!-- docstate
+ * pass: 2
+ * mtime: 2026-09-05T10:13:32Z
+ * digest: df7c875fb308dd31b4b11544420cef7e122d9111e1ee09db872a0455e57d0669
+ * stale: false
+ * tags: [code/parsing, code/serialization]
+ * concepts: [JSON.org Reference Implementation]
+ * facets: {layer: utility, status: legacy, complexity: medium}
+ * -->
  */
 public class XMLTokener extends JSONTokener {
 

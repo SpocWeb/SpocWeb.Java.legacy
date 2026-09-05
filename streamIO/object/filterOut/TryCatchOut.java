@@ -5,6 +5,9 @@ import streamIO.IIStreamOut;
 import streamIO.IStreamOut;
 import streamIO.Log;
 /**
+  * Filter that forwards each item downstream, catching any exception the downstream chain
+  * throws and rerouting the original item to a configured error output instead.
+  * <p>
   * Title: TryCatchOut<p>
   * Description:
   * Converts an Exception/Escalation into an Error streamIO/Processing.
@@ -41,6 +44,15 @@ import streamIO.Log;
   * Created on	2000-11-26, 01;13;44<p>
   * @author 	Matthias Heuer
   * @version	1.0
+  * <!-- docstate
+  * pass: 2
+  * mtime: 2026-09-05T20:49:28Z
+  * digest: 219324289a8c514306fe97a35586c326c2d3b4bb771c21800b41719333ea3bc8
+  * stale: false
+  * tags: [code/stream_filter, code/decorator_pattern]
+  * concepts: [Stream Filter (Output)]
+  * facets: {layer: utility, status: legacy, complexity: medium}
+  * -->
   */
 public class TryCatchOut
 	extends FilterOut

@@ -4,7 +4,10 @@ import streamIO.IAvailAble;
 import streamIO.IIStreamIn;
 import streamIO.IReSetAble;
 
-/** This Class creates a full Cross Product streamIO of two Input Streams
+/** Streams the full cross product of two input streams as a stream of {@code Pair}s, using
+  * Cantor's diagonal enumeration so both inputs may be infinite.
+  * <p>
+  * This Class creates a full Cross Product streamIO of two Input Streams
   * into a streamIO of Pairs. The Pair Class is implemented lightweight.
   * To multiply more Streams, recursively merge the single Streams.
   *
@@ -30,6 +33,15 @@ import streamIO.IReSetAble;
   *
   * To realize this you need a resettable LIFO Store (Stack), to store a,b,c...
   * and you need to be able to reset streamIO 1,2,3... (or you have to store it too)
+  * <!-- docstate
+  * pass: 2
+  * mtime: 2026-09-05T16:34:10Z
+  * digest: 10a4219c053b7d2f6ceb656275fa04302c7e670660a0cf92184f1c8f6eb44de3
+  * stale: false
+  * tags: [code/stream_processing, code/iterator]
+  * concepts: [Object Stream Pipeline]
+  * facets: {layer: utility, status: legacy, complexity: medium}
+  * -->
   */
 public class Cantor
 extends Product {

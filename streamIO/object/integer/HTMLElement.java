@@ -1,7 +1,18 @@
 package streamIO.object.integer;
 
 
-/**Fundamental DOM Element of an HTML Tree */
+/** DOM element specialized for an HTML tree, caching its tag as an {@link HTMLScanner} token.
+ *
+ * <!-- docstate
+ * pass: 2
+ * mtime: 2026-09-05T20:49:52Z
+ * digest: b3f795bb66eecee66159b188b048e5fc399ef6a2efe10c48a9b337085a864d51
+ * stale: false
+ * tags: [code/parsing, code/xml]
+ * concepts: [XML/HTML Parsing]
+ * facets: {layer: utility, status: legacy, complexity: medium}
+ * -->
+ */
 public class HTMLElement extends XMLElement {
 
 /**Factory Method used to generate and initialize

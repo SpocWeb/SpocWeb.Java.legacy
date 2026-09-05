@@ -4,7 +4,8 @@ import streamIO.object.IPipe;
 import streamIO.object.enumer.container.DeQueueArr;
 import function.AFunction;
 
-/** Generator and ITester Class for the Permutations
+/** Generator for exhaustive string permutations, for use with {@link BackTracker}.
+  * <p>
   * This can equivalently be seen as the Generator for the Chess Towers Problem,
   * where N Towers have to be placed on an N*N Chess Board so they cannot capture each other. 
   * 
@@ -13,6 +14,15 @@ import function.AFunction;
   * since this can be done efficiently by a String.
   * The Disadvantage is that you cannot reconstruct the actual Permutations from this,
   * only the SubSets to further permute. 
+  * <!-- docstate
+  * pass: 2
+  * mtime: 2026-09-05T20:45:46Z
+  * digest: fe44ecdf44f0d491359ae4f5e134fa795ba9cb893264cb4cabc231b314ec7941
+  * stale: false
+  * tags: [code/backtracking, code/algorithm]
+  * concepts: [Backtracking Search]
+  * facets: {layer: utility, status: legacy, complexity: medium}
+  * -->
   */
 class PermutationProblem
 extends AFunction {

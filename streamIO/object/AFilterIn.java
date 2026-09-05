@@ -16,9 +16,12 @@ import tester.ITester;
 import function.IProcessor;
 
 /**
+  * Abstract base class for a {@link IStreamIn} filter that wraps a delegate stream and forwards
+  * every optional capability ({@link IMarkAble}, {@link IReSetAble}, {@link IAvailAble}) to it.
+  * <p>
   * Title: FilterByFunction.java<p>
   * Description:
-  * Abstract Base Class for StreamIn Filters. 
+  * Abstract Base Class for StreamIn Filters.
   *
   * Design Decisions / Implementation Details:
   *
@@ -31,6 +34,15 @@ import function.IProcessor;
   * Created on	2001-06-03, 06;44;48<p>
   * @author 	Matthias Heuer
   * @version	1.0
+  * <!-- docstate
+  * pass: 2
+  * mtime: 2026-09-05T16:29:28Z
+  * digest: 6dded80cbc0c761f478d3a018ae45baf2f0c0292abcd132c27bae4671008e840
+  * stale: false
+  * tags: [code/stream_processing, code/iterator]
+  * concepts: [Object Stream Pipeline]
+  * facets: {layer: utility, status: legacy, complexity: medium}
+  * -->
  */
 public abstract class AFilterIn 
 extends AStreamIn 
@@ -91,10 +103,20 @@ implements IStreamIn {
 	  * Could be removed here, because most Iterators have fast Access to the current Item	 */
 	protected Object currItem;
 	
-    /** @see streamIO.object.AStreamIn#getMaxMarkSize()     */
+    /**
+     * Delegates to the wrapped stream's own maximum mark size.
+     *
+     * @return the largest {@code readLimit} the wrapped stream accepts for {@link #mark(long)}
+     * @see streamIO.object.AStreamIn#getMaxMarkSize()
+     */
     public long getMaxMarkSize() { return AMarkAble.GET_MAX_MARK(in); }
 
-    /** @see streamIO.object.AStreamIn#getPosition()     */
+    /**
+     * Delegates to the wrapped stream's own current position.
+     *
+     * @return the wrapped stream's position
+     * @see streamIO.object.AStreamIn#getPosition()
+     */
     public long getPosition() { return ((IStreamIn) in).getPosition(); }
 	
 	////////////////////////////////////////////////////////////////////////////
@@ -157,14 +179,20 @@ implements IStreamIn {
 			return false; }
 		return (in != null) && in.isValid(); }
 	
-	/**@return the current Object of this streamIO.
+	/**
+	 * Returns the item cached by the most recent {@link #nextItem()} call.
+	 *
+	 * @return the current Object of this streamIO.
 	 * No Exception is thrown at the End, instead EOI is returned.
 	 * This is less explicit, but much faster for a regular Operation
 	 * because Exception Handling can be extremely slow.
 	 */
 	public Object currItem() { return currItem; }
-	
-	/**@return the next (Parent) Object of this one.
+
+	/**
+	 * Advances to and returns the next item, delegating to {@link #nextItemInternal()}.
+	 *
+	 * @return the next (Parent) Object of this one.
 	 * No Exception is thrown at the End, instead EOI is returned.
 	 * This is less explicit, but much faster for a regular Operation
 	 * because Exception Handling can be extremely slow.
@@ -174,7 +202,11 @@ implements IStreamIn {
 	/** this is the abstract Template Method 	*/
 	protected abstract Object nextItemInternal(); 
 	
-	/** @return the Order in which Elements are returned by the Iterators
+	/**
+	 * Delegates to the wrapped stream's order when it implements {@link IStreamIn}, otherwise
+	 * reports no known order.
+	 *
+	 * @return the Order in which Elements are returned by the Iterators
 	  * when they are added using addItem() and removed using nextItem().	 */
 	public byte getOrder() {
 		if (in instanceof IStreamIn) { //delegate

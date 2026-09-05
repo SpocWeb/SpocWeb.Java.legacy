@@ -23,6 +23,15 @@ import stringOp.parser.Scanner;
   * @see Scanner Object is being used to parse the streamIO.
   * @see XMLInputStream uses this Class
   * @deprecated
+  * <!-- docstate
+  * pass: 2
+  * mtime: 2026-09-05T20:56:21Z
+  * digest: 535c4192e0a395aaae2db4c55d6ca4e24c05beb3055564edf0819fd1551849f7
+  * stale: false
+  * tags: [code/parsing, code/xml]
+  * concepts: [XML/HTML Parsing]
+  * facets: {layer: utility, status: broken, complexity: medium}
+  * -->
   */
 public class XMLScanner {
 
@@ -44,7 +53,7 @@ final static public char REPLACE_CHAR_ASC = '\\';
 
 //Helper Constants
 
-/**Prefix für XML Strings	 */
+/**Prefix fï¿½r XML Strings	 */
 final static public String XML_STR_PREFIX = "xml version=\"1.0\" encoding=\"ISO-8859-1\" ";
 
 /**Message for Grammar Errors	 */
@@ -88,6 +97,9 @@ final static public int XML_TAG_TEXT = 6;
 /**Indicates a Processing Instruction <? ?>, the Value is returned	 */
 final static public int XML_TAG_PROCESS = 6;
 
+// TODO: LOGIC: XML_TAG_PROCESS above is defined as 6, the same value as XML_TAG_TEXT.
+// Any code that distinguishes a Processing Instruction from Text Data by comparing
+// currXMLToken against these two constants cannot actually tell them apart.
 /**Indicates a Declaration <! >, the Value is returned	 */
 final static public int XML_TAG_DECLARE = 7;
 
@@ -316,7 +328,7 @@ final static public String tstXML2 =
 "		<Established>1992</Established>" +
 "		<URL>http://www.icon-is.com/e/dev/sw/sw_main.asp</URL>" +
 "		<Manager>AFALK01</Manager>" +
-"		<Desc>Entwicklung von kundenspezifischen Softwarelösungen im technischen und wissenschaftlichen Bereich.</Desc>" +
+"		<Desc>Entwicklung von kundenspezifischen Softwarelï¿½sungen im technischen und wissenschaftlichen Bereich.</Desc>" +
 "		<Person Manager='yes' Programmer='yes' Designer=\"no\">" +
 "			<ID>AFALK01</ID>" +
 "			<LastName>Falk</LastName>" +
@@ -360,7 +372,7 @@ final static public String tstXML2 =
 "		<Established>1994</Established>" +
 "		<URL>http://www.icon-is.com/d/dev/hw/hw_main.asp</URL>" +
 "		<Manager>TKEFE01</Manager>" +
-"		<Desc>Entwicklung von kundenspezifischen mikroelektronischen Geräten.</Desc>" +
+"		<Desc>Entwicklung von kundenspezifischen mikroelektronischen Gerï¿½ten.</Desc>" +
 "		<Person Manager='yes' Programmer='yes' Designer='no'>" +
 "			<ID>TKEFE01</ID>" +
 "			<LastName>Kefer</LastName>" +
@@ -383,6 +395,7 @@ final static public String tstXML2 =
 "	</Division>" +
 "</Icon>";
 
+/**Tests this Scanner by printing all Tokens found while parsing {@link #tstXML}.	 */
 public static void testIt() throws IOException {
 	StringBufferInputStream IS = new StringBufferInputStream(tstXML);
 	XMLScanner Scannr = new XMLScanner(IS);

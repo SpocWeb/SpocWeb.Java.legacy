@@ -8,6 +8,15 @@ import java.util.Iterator;
  * and to covert a JSONObject into an XML text.
  * @author JSON.org
  * @version 2
+ * <!-- docstate
+ * pass: 2
+ * mtime: 2026-09-05T10:13:32Z
+ * digest: b15685914e437aab1d693a0240b476e8b54c9727492d60eaa38042a801878336
+ * stale: false
+ * tags: [code/parsing, code/serialization]
+ * concepts: [JSON.org Reference Implementation]
+ * facets: {layer: utility, status: legacy, complexity: medium}
+ * -->
  */
 public class XML {
 

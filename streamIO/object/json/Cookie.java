@@ -5,6 +5,15 @@ package streamIO.object.json;
  * JSON and Cookies are both notations for name/value pairs.
  * @author JSON.org
  * @version 2
+ * <!-- docstate
+ * pass: 2
+ * mtime: 2026-09-05T10:13:32Z
+ * digest: cc7cbd98db544ace51ee9f9a22be2ebfd41f7a4301fe510f2a408ecdcfa45e6f
+ * stale: false
+ * tags: [code/parsing, code/serialization]
+ * concepts: [JSON.org Reference Implementation]
+ * facets: {layer: utility, status: legacy, complexity: medium}
+ * -->
  */
 public class Cookie {
 

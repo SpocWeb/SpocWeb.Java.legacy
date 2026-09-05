@@ -6,10 +6,21 @@ import tester.ITester;
 import function.AFunction;
 import function.byref.ByRefString;
 
-/**Generator and ITester Class for the Achter Problem.
+/** Generator and success tester for the 8-puzzle (Achter Problem) sliding-tile search, for use
+ * with {@link BackTracker}.
+ * <p>
  * Could also be split up into two Classes.
  * This saves handing over the Solution to each Item.
  * On the other Hand the Solution must be known to the Generator for it
+ * <!-- docstate
+ * pass: 2
+ * mtime: 2026-09-05T20:45:17Z
+ * digest: 7e5c10137ce44c5e78b110e6dd34ed8e96fa329a0156d3650f0f3741a2520f3c
+ * stale: false
+ * tags: [code/backtracking, code/algorithm]
+ * concepts: [Backtracking Search]
+ * facets: {layer: utility, status: legacy, complexity: medium}
+ * -->
  * to generate good Candidates.	 */
 public class AchterProblem
 extends AFunction
@@ -39,10 +50,15 @@ implements ITester {
 		return				State.Contents.equals(Solution); }
 //		return AchterState.Contents == Solution; }	//cannot use ==, because Strings are not guaranteed to be unique!
 
+	/** Move symbol for sliding a tile up. */
 	public static char chrUp	= '^';
+	/** Move symbol for sliding a tile down. */
 	public static char chrDown	= 'v';
+	/** Move symbol for sliding a tile left. */
 	public static char chrLeft	= '<';
+	/** Move symbol for sliding a tile right. */
 	public static char chrRight	= '>';
+	/** Symbol representing the puzzle's blank space. */
 	public static char chrSpace = '_';
 
 	/**Returns new possible Solutions generated from the old one.
@@ -105,17 +121,33 @@ implements ITester {
 */
 	}
 	
+	/**
+	 * Runs {@link #testIt()} from the command line.
+	 *
+	 * @param args unused
+	 */
 	public static void main(String[] args) {
-		testIt(); 
+		testIt();
 	}
 
 }
 
-/**This Representation of a State for the Achter Problem is quite redundant.
+/** One board configuration of the 8-puzzle search, tracking the move sequence that reached it.
+ * <p>
+ * This Representation of a State for the Achter Problem is quite redundant.
  * 'Parent' and 'Solution' are redundant to 'Contents'
  * as well as the 'Position' of the Space,
  * which can be derived from the Contents.
  * To save reconstructing the Solution we track the whole Path
+ * <!-- docstate
+ * pass: 2
+ * mtime: 2026-09-05T20:45:17Z
+ * digest: 07085c9fec7c6f16eb74940828dd22fb696a7dac2cad2caf4ee7e2099123838d
+ * stale: false
+ * tags: [code/backtracking, code/algorithm]
+ * concepts: [Backtracking Search]
+ * facets: {layer: utility, status: legacy, complexity: medium}
+ * -->
  * to the current Solution.	 */
 class AchterState {
 	/**The current State of the AchterProblem	 */

@@ -132,7 +132,7 @@ concurrently against the same file):
 | `streamIO/copy/group` | 124 | 31328 | 0 | claimed | agent-copy-group |
 | `function` (root+index+real+string+vector+byref) | 98 | 12899 | 98 | done | agent-function-misc |
 | `function/derive` | 106 | 14586 | 106 | done | agent-function-derive |
-| `streamIO/object` (root+backTrack+filterIn+filterInOut+filterOut+integer+yaml+json) | 79 | 13501 | 0 | claimed | agent-object-misc |
+| `streamIO/object` (root+backTrack+filterIn+filterInOut+filterOut+integer+yaml+json) | 79 | 13501 | 79 | done | agent-object-misc |
 | `streamIO/object/enumer` | 79 | 18229 | 0 | unclaimed | - |
 | `streamIO/object/parser` | 27 | 6942 | 0 | unclaimed | - |
 | `streamIO/integer` (needs further sub-batch splitting, 157 files/39243 lines total) | 157 | 39243 | 0 | unclaimed | - |
@@ -227,6 +227,10 @@ at 46% of the corpus) have not been sampled.
   `streamIO/copy/TestCopy.java`'s docstate block had each line prefixed with a duplicated
   `//import Stream.*` fragment after a `check-stale` run - manually rewritten clean by the
   agent. Worth a closer look if it recurs elsewhere.
+- **`list-todo` has a persistent false positive on `streamIO/object/AND.java:AND.testIt()`**,
+  reporting "no Javadoc comment" even though the method has a valid one-line Javadoc -
+  confirmed via `list-corrupted` and direct source inspection. Treat this one specific row
+  as a known tool limitation, not an outstanding documentation gap.
 
 ## Decisions
 
@@ -536,6 +540,18 @@ same harness against it. A test that has not been seen red proves nothing.
 | function/vector/OdeLorentz.java | OdeLorentz | Funktion(double, double[], double[]) | 48 | The standard Lorenz equations are `dy/dt = x*(r-z) - y`, but this computes `x[1] - x[0]*(x[2]-r)`, which equals `x[0]*(r-x[2]) + x[1]` - the sign of the y-term is flipped; every integration step diverges from the intended chaotic Lorenz attractor. | High | open |
 | function/byref/ByRefInt.java | ByRefInt | ROR(int, int) | 64 | The dropped low bit is shifted into position `octave` (`corr = (x&1)<<octave`), one bit above the top of the octave-bit range `ROL` uses (`maxVal = 1<<octave`); e.g. `ROR(5, 3)` returns 10, outside the 3-bit range `ROL(5, 3)` operates in. Likely should be `<<(octave-1)`. | Medium | open |
 | function/byref/ByRefLong.java | ByRefLong | ROR(long, int) | 259 | Same defect as `ByRefInt.ROR` - the dropped low bit is shifted one bit above the top of the octave-bit range. | Medium | open |
+| streamIO/object/StreamParser.java | StreamParser | (array-resize helper) | 177 | `lList` is reassigned to the freshly-allocated `list` array before the `arraycopy` below, so the copy's source and destination are the same new (empty) array - the old contents are lost instead of preserved across the resize. | High | open |
+| streamIO/object/Union.java | Union | OR(IStreamIn, IStreamIn) | 73 | `Parts` is allocated with length 3 (valid indices 0-2), but a following line writes to index 3, throwing `ArrayIndexOutOfBoundsException` on every call to `OR()`. | Critical | open |
+| streamIO/object/backTrack/Grammar.java | GrammarState | hashCode() | 138 | `Remark` is never assigned by any constructor (only `Contents` is set), so it is always null here; every call to `hashCode()` or `equals()` throws `NullPointerException`. Any hash-based use of `GrammarState` (e.g. `Grammar.testIt()`) fails immediately. | High | open |
+| streamIO/object/backTrack/TravelProblem.java | TravelState | equals(Object) | 486 | `sequence` is `int[]`, which does not override `equals()`, so `sequence.equals(...)` reduces to reference identity rather than comparing array contents; two `TravelState`s with identical city orderings but distinct array instances always compare unequal, making duplicate detection (`mTestStore`/`mBackup`) in `BackTracker` ineffective for this generator. | Medium | open |
+| streamIO/object/filterIn/FilterInByBitMask.java | FilterInByBitMask | (position-reset helper) | 82 | `1 << _position` is computed in `int` arithmetic (the literal `1` is an int), so per JLS 15.19 only the low 5 bits of `_position` are used as the shift distance - large position values silently wrap instead of shifting as far as intended. | Medium | open |
+| streamIO/object/filterIn/FilterIn_PushBack.java | FilterIn_PushBack | nextItemInternal() | 39 | The fallback branch calls `nextItemInternal()` recursively on itself instead of delegating to the wrapped stream (`in.nextItem()`); every call made while nothing is pushed back recurses infinitely. | Critical | open |
+| streamIO/object/filterOut/ThreadOut.java | ThreadOut | addItem(Object) | 47 | The spawned `Runnable`'s `run()` calls `addItem(arg)`, which resolves to this same `ThreadOut.addItem()` rather than the wrapped output's `out.addItem(arg)` (or `super.addItem`) - every call spawns another thread that spawns another thread, recursing without ever forwarding to the real output. | Critical | open |
+| streamIO/object/integer/XMLInputStream.java | XMLInputStream | fromXML() | 199 | The class name is read directly from untrusted XML input and instantiated via reflection (`Class.forName`+`newInstance`) with no allow-list, letting a malicious XML document force instantiation of an arbitrary class on the classpath. | High | open |
+| streamIO/object/integer/XMLInputStream.java | XMLInputStream | fromXMLField(...) | 238 | `ensureCapacity()` only grows the backing array's capacity, not the `ArrayList`'s logical size; if `ID` is greater than the cache's current size, `Cache.add(ID, inner)` throws `IndexOutOfBoundsException` when some object IDs are missing (cut out etc.). | Medium | open |
+| streamIO/object/integer/XMLScanner.java | XMLScanner | (tag-type constants) | 97 | `XML_TAG_PROCESS` is defined as 6, the same value as `XML_TAG_TEXT`; any code distinguishing a Processing Instruction from Text Data by comparing against this constant cannot actually do so. | Medium | open |
+| streamIO/object/json/JSONTokener.java | JSONTokener | next(int) | 207 | Off-by-one: `String.substring(i, j)` is valid for `j == mySource.length()` (it can return the final characters of the source), but this check rejects that valid boundary case - e.g. a `\uXXXX` escape ending exactly at EOF. | Medium | open |
+| streamIO/object/json/JSONTokener.java | JSONTokener | nextValue() | 358 | Object/array nesting recurses (`nextValue` -> `JSONObject`/`JSONArray` constructor -> `nextValue` -> ...) with no depth limit, unlike `JSONStringer`'s own `maxdepth=20`; deeply nested untrusted JSON input can cause a stack-overflow denial of service. | Medium | open |
 
 ## Tool defects found and fixed during the pilot
 

@@ -29,6 +29,15 @@ import stringOp.parser.Scanner;
  * @author		 Matthias Heuer
  * @version 1.0
  * @deprecated since it uses XMLScanner; use streamIO.Object.Parser.XMLStreamIn instead!
+ * <!-- docstate
+ * pass: 2
+ * mtime: 2026-09-05T20:56:34Z
+ * digest: f6b565c8a6c77a43f4312cc46e9c55313c7848efc99d6f62b55a8b56ac416259
+ * stale: false
+ * tags: [code/parsing, code/xml]
+ * concepts: [XML/HTML Parsing]
+ * facets: {layer: utility, status: broken, complexity: medium}
+ * -->
  */
 public class XMLInputStream
 extends AStreamIn
@@ -176,10 +185,12 @@ implements IDeserializer {
 		catch(InstantiationException e) { throw new AbstractMethodError(e.toString()); }
 	}
 	
-	/** @see streamIO.IMarkAble#getMaxMarkSize()	 */
+	/**Not supported by this streamIO: always returns -1 (no marking capability).
+	 * @see streamIO.IMarkAble#getMaxMarkSize()	 */
 	public long getMaxMarkSize() { return -1; }
-	
-	/** @see streamIO.IAvailAble#getPosition()	 */
+
+	/**Not tracked by this streamIO: always returns 0.
+	 * @see streamIO.IAvailAble#getPosition()	 */
 	public long getPosition() { return 0; } //scan.; }
 	
 	/**Reads the textual Representation of an Object from a streamIO and returns it.
@@ -188,6 +199,10 @@ implements IDeserializer {
 	final public Object fromXML()
 		throws InstantiationException, ClassNotFoundException, NoSuchFieldException, IllegalAccessException, IOException {
 //		String Name = scan.Result.toString(); //read Name, already preread and not used
+		// TODO: SECURITY: the class name is read directly from untrusted XML input and then
+		// instantiated via reflection (Class.forName + newInstance, see fromXMLField/fromXMLAt below),
+		// with no allow-list. Parsing an attacker-supplied document can thus instantiate an arbitrary
+		// class on the classpath (resource exhaustion, unwanted side effects, or a deserialization-gadget style attack).
 		Class fClass = Class.forName(checkPair(XMLFormatter.STR_TYPE)); //
 		return fromXMLField(fClass, null, null); }
 
@@ -223,6 +238,9 @@ implements IDeserializer {
 				if (inner == null) inner = fClass.newInstance();  //create a new Object, requires an empty Constructor!
 				read = true;
 		} //set it with ID, in case some Object IDs are missing (cut out etc.)
+		// TODO: LOGIC: ensureCapacity() only grows the backing array's capacity, not the ArrayList's
+		// logical size. If ID is greater than the Cache's current size, Cache.add(ID, inner) throws
+		// IndexOutOfBoundsException instead of padding the list up to ID (e.g. with null placeholders).
 		if (Cache != null) { Cache.ensureCapacity(ID); Cache.add( ID, inner); } //the Cache has to be filled...
 		if (read) fromXMLAt(inner, fClass); } //...before the Recursion is entered, because the Elements may be used.
 		if (currField != null) currField.set(Container, inner);

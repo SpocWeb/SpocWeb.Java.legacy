@@ -12,6 +12,15 @@ import java.util.Vector;
  *
  * An XML Element is very similar to a Record Object in a ResultSet:
  * It's Attributes play the Role of the Fields.
+ * <!-- docstate
+ * pass: 2
+ * mtime: 2026-09-05T10:13:32Z
+ * digest: e73c2e421856b30e9b6ccbe5575c8f41d7857b7e37e8f876bf27b4fb00c13ec9
+ * stale: false
+ * tags: [code/parsing, code/xml]
+ * concepts: [XML/HTML Parsing]
+ * facets: {layer: utility, status: legacy, complexity: medium}
+ * -->
  */
 public class XMLElement {
 

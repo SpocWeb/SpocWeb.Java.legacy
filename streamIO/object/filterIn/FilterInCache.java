@@ -8,6 +8,9 @@ import streamIO.object.AFilterIn;
 import streamIO.object.IStreamIn;
 
 /**
+  * Fixed-capacity cache over a wrapped {@link IStreamIn}, buffering replayed items so
+  * {@code mark()}/{@code reset()} work over a bounded window.
+  * <p>
   * Title: FilterInCache<p>
   * Description:
   * Provides for Caching the Elements of an IStreamIn
@@ -34,6 +37,15 @@ import streamIO.object.IStreamIn;
   * Created on	05-12-2002, 05:17 PM<p>
   * @author 	Matthias Heuer
   * @version	1.0
+  * <!-- docstate
+  * pass: 2
+  * mtime: 2026-09-05T20:47:03Z
+  * digest: 2b7a22dbde3721bc1abf0a5edc03056e5feec6f0291b492cb0df7a17da376574
+  * stale: false
+  * tags: [code/stream_filter, code/decorator_pattern]
+  * concepts: [Stream Filter (Input)]
+  * facets: {layer: utility, status: legacy, complexity: medium}
+  * -->
   */
 final public class FilterInCache
 extends AFilterIn {
@@ -154,7 +166,9 @@ extends AFilterIn {
 			cache[top++] = currItem; } //but it makes other Methods easier!
 		return currItem; }
 
-	/** @return the (minimum) Number of Items left (in the Buffer),
+	/** Combines the number of cached, not-yet-replayed items with the wrapped stream's own
+	 * availability.
+	 * @return the (minimum) Number of Items left (in the Buffer),
 	  * i.e. the minimum Number of times to call nextItem().
 	  * The actual Number may be higher, so available() should be called again
 	  * at the End of this Number.

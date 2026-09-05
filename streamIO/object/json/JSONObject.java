@@ -56,6 +56,15 @@ import java.util.Map;
  * </ul>
  * @author JSON.org
  * @version 2
+ * <!-- docstate
+ * pass: 2
+ * mtime: 2026-09-05T10:13:32Z
+ * digest: da0ba1aab0db203edb454d4839a78ffbd9b86864883b33951754b606b97994ff
+ * stale: false
+ * tags: [code/parsing, code/serialization]
+ * concepts: [JSON.org Reference Implementation]
+ * facets: {layer: utility, status: legacy, complexity: medium}
+ * -->
  */
 public class JSONObject {
 
@@ -63,6 +72,15 @@ public class JSONObject {
      * JSONObject.NULL is equivalent to the value that JavaScript calls null,
      * whilst Java's null is equivalent to the value that JavaScript calls
      * undefined.
+     * <!-- docstate
+     * pass: 2
+     * mtime: 2026-09-05T10:13:32Z
+     * digest: 7730825d85aa0ea4225545c630cd2caaf16ddcc278774ad6c5f568e4d21d67f8
+     * stale: false
+     * tags: [code/parsing, code/serialization]
+     * concepts: [JSON.org Reference Implementation]
+     * facets: {layer: utility, status: legacy, complexity: medium}
+     * -->
      */
      private static final class Null {
 

@@ -5,6 +5,9 @@ package streamIO.object.filterOut;
 import streamIO.AStreamOut;
 import streamIO.IIStreamOut;
 /**
+  * Terminal output that throws a preconfigured exception for every item it receives, converting
+  * message processing back into an escalation.
+  * <p>
   * Title: TryCatchOut<p>
   * Description:
   * Converts any incoming Message into a RuntimeException/Escalation.
@@ -30,6 +33,15 @@ import streamIO.IIStreamOut;
   * Created on	2000-11-26, 01;13;44<p>
   * @author 	Matthias Heuer
   * @version	1.0
+  * <!-- docstate
+  * pass: 2
+  * mtime: 2026-09-05T20:49:24Z
+  * digest: 27a4bf9898aaa5a6c5a9a6c1b115876326debc3f6b52ada0838c3e16c75b7dde
+  * stale: false
+  * tags: [code/stream_filter, code/decorator_pattern]
+  * concepts: [Stream Filter (Output)]
+  * facets: {layer: utility, status: legacy, complexity: medium}
+  * -->
   */
 public class ThrowOut 
 	extends AStreamOut

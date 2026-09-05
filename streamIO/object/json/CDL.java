@@ -18,6 +18,15 @@ package streamIO.object.json;
  * in the first row.
  * @author JSON.org
  * @version 2
+ * <!-- docstate
+ * pass: 2
+ * mtime: 2026-09-05T10:13:32Z
+ * digest: fe784b4f42b56695c9428a02169f5dbeee9ca979649deaebb3bc26bf152b49f7
+ * stale: false
+ * tags: [code/parsing, code/serialization]
+ * concepts: [JSON.org Reference Implementation]
+ * facets: {layer: utility, status: legacy, complexity: medium}
+ * -->
  */
 public class CDL {
 

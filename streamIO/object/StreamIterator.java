@@ -16,6 +16,15 @@ import java.io.StreamTokenizer;
  * which again takes a Reader or an InputStream as Parameter.
  * The InputStream has been deprecated, but can still be used!!!
  * Additionally the InputStreamReader could be used to bridge from
+ * <!-- docstate
+ * pass: 2
+ * mtime: 2026-09-05T16:44:11Z
+ * digest: 44a54f0d17f1bee0a8a91accbdb7d491b13370448981592f43d45c03361d378b
+ * stale: false
+ * tags: [code/stream_processing, code/iterator]
+ * concepts: [Object Stream Pipeline]
+ * facets: {layer: utility, status: legacy, complexity: medium}
+ * -->
  * an InputStream to a Reader.	 */
 public class StreamIterator
 extends AStreamIn {
@@ -33,10 +42,12 @@ extends AStreamIn {
 	 * since the Length of Tokens is undefined, it can return only 0 or 1.	 */
   	public long availAble() { return (ST.ttype != StreamTokenizer.TT_EOF) ? 1 : 0; }
   	
-	/** @see streamIO.object.AStreamIn#getMaxMarkSize()	 */
+	/** Reports that marking is not supported by the wrapped {@link StreamTokenizer}.
+	 * @see streamIO.object.AStreamIn#getMaxMarkSize()	 */
 	public long getMaxMarkSize() { return -1; }
-	
-	/** @see streamIO.object.AStreamIn#getPosition()	 */
+
+	/** Always returns 0, since the wrapped {@link StreamTokenizer} has no position to report.
+	 * @see streamIO.object.AStreamIn#getPosition()	 */
 	public long getPosition() { return 0; }
 	
 	/**Restarts the Enumerator	 */

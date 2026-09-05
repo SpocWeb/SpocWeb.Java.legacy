@@ -37,6 +37,15 @@ import streamIO.IStreamOut;
  *
  * @author  Matthias Heuer
  * @version
+ * <!-- docstate
+ * pass: 2
+ * mtime: 2026-09-05T10:13:31Z
+ * digest: 8a8b4396472f832d180e7dbe1fefe1269a7de939299eb99389985bb33c46d270
+ * stale: false
+ * tags: [code/stream_processing, code/iterator]
+ * concepts: [Object Stream Pipeline]
+ * facets: {layer: utility, status: legacy, complexity: medium}
+ * -->
  */
 public class MultiplexerOut
 extends AStreamOut {

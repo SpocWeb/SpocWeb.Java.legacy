@@ -16,6 +16,15 @@ import streamIO.object.AStreamIn;
  * Returns a streamIO of XML Elements.
  *
  * @deprecated since it uses XMLScanner
+ * <!-- docstate
+ * pass: 2
+ * mtime: 2026-09-05T20:56:15Z
+ * digest: 1b88fb63ae07c21e81fc71e0339be3f8e1f34cbc079849cb3ae7e5624959e992
+ * stale: false
+ * tags: [code/parsing, code/xml]
+ * concepts: [XML/HTML Parsing]
+ * facets: {layer: utility, status: legacy, complexity: medium}
+ * -->
  */
 public class XMLParser
 extends AStreamIn {
@@ -59,10 +68,12 @@ extends AStreamIn {
 	 * at the End of this Number. */
 	public long availAble() { return (scan.currXMLToken == XMLScanner.XML_TAG_EOF) ? 0 :1; }
 	
-	/** @see streamIO.object.AStreamIn#getMaxMarkSize()	 */
+	/**Not supported by this streamIO: always returns -1 (no marking capability).
+	 * @see streamIO.object.AStreamIn#getMaxMarkSize()	 */
 	public long getMaxMarkSize() { return -1; }
-	
-	/** @see streamIO.object.AStreamIn#getPosition()	 */
+
+	/**Not tracked by this streamIO: always returns 0.
+	 * @see streamIO.object.AStreamIn#getPosition()	 */
 	public long getPosition() { return 0; } //scan.; }
 	
 	/**Returns the current XML Element	 */

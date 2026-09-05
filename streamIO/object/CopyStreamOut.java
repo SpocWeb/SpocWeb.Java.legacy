@@ -15,6 +15,15 @@ import tester.process.StreamProcessor;
 
 /** Creates Copies of the given Depth of the Objects returned by the appended
   * OutputStream, if possible.
+  * <!-- docstate
+  * pass: 2
+  * mtime: 2026-09-05T16:35:26Z
+  * digest: f723f5e7599893e72d9cc9f5746f1af052386867ded2808e96ddfd38a21c5293
+  * stale: false
+  * tags: [code/stream_processing, code/iterator]
+  * concepts: [Object Stream Pipeline]
+  * facets: {layer: utility, status: legacy, complexity: medium}
+  * -->
   * This Class breaks the Hierarchy and should normally be placed in streamIO.Object.Enumeration. */
 public class CopyStreamOut extends FilterOut {
 
@@ -59,7 +68,11 @@ public class CopyStreamOut extends FilterOut {
     /** Initializing Constructor	 */
     public CopyStreamOut(IStreamOut Out) { this(Out, Integer.MAX_VALUE); }
 
-	/** @return the next (Parent) Object of this one.
+	/**
+	 * Adds a copy of {@code Item}, made to this instance's configured depth, to the wrapped
+	 * output.
+	 *
+	 * @return the next (Parent) Object of this one.
 	  * No Exception is thrown at the End, instead EOI is returned.
 	  * This is less explicit, but much faster for a regular Operation
 	  * because Exception Handling can be extremely slow.

@@ -28,6 +28,15 @@ package streamIO.object.json;
  * This can sometimes be easier than using a JSONObject to build a string.
  * @author JSON.org
  * @version 2
+ * <!-- docstate
+ * pass: 2
+ * mtime: 2026-09-05T10:13:32Z
+ * digest: 89e59c717929407dd8f10354fb7a50df1aea15c88dc7efe1c9800968d4ec8073
+ * stale: false
+ * tags: [code/parsing, code/serialization]
+ * concepts: [JSON.org Reference Implementation]
+ * facets: {layer: utility, status: legacy, complexity: medium}
+ * -->
  */
 public class JSONStringer {
 	private static final int maxdepth = 20;

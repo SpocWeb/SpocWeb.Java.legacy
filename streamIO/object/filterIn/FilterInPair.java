@@ -6,9 +6,21 @@ import streamIO.IIStreamIn;
 import streamIO.copy.monoid.Association;
 import streamIO.object.AFilterIn;
 
-/** Filters a streamIO of Pairs into a streamIO of the Keys or the Values
+/** Projects a stream of pairs (however represented) down to just their keys or just their
+  * values.
+  * <p>
+  * Filters a streamIO of Pairs into a streamIO of the Keys or the Values
   * no matter whether it contains Associations, Pairs or IPairs
   * which is useful to determine the right or left Factor of a Product
+  * <!-- docstate
+  * pass: 2
+  * mtime: 2026-09-05T20:47:10Z
+  * digest: a547be18d4e8c4039d32c3405a709c9c5447f1b78f89183a34ac290e528c5a6c
+  * stale: false
+  * tags: [code/stream_filter, code/decorator_pattern]
+  * concepts: [Stream Filter (Input)]
+  * facets: {layer: utility, status: legacy, complexity: medium}
+  * -->
   * or the Definition-/key- or the Value- Set of a Relation or Function */
 public class FilterInPair
 extends AFilterIn {

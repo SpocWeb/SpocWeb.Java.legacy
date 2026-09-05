@@ -3,6 +3,15 @@ package streamIO.object.json;
 /**
  * Test class. This file is not formally a member of the streamIO.object.json library.
  * It is just a casual test tool.
+ * <!-- docstate
+ * pass: 2
+ * mtime: 2026-09-05T10:13:32Z
+ * digest: 5fea9b58c1dffacfa2a16dc5e25ce5bd5b00d99cf050fe245f2899b2fa0d107e
+ * stale: false
+ * tags: [code/parsing, code/serialization]
+ * concepts: [JSON.org Reference Implementation]
+ * facets: {layer: utility, status: legacy, complexity: medium}
+ * -->
  */
 public class JSONTest {
 

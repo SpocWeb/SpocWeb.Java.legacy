@@ -7,6 +7,10 @@ import java.util.Iterator;
 import streamIO.IMarkAble;
 
 /**
+  * Lightweight read-only {@link IStreamIn} over a {@link Collection} or {@link Iterator},
+  * recursing into a nested collection or iterator by wrapping it in a fresh instance rather
+  * than flattening it.
+  * <p>
   * Title: CollectionStreamIn<p>
   * Description:
   * Simple, lightweight read only Iterator for Collections.
@@ -27,6 +31,15 @@ import streamIO.IMarkAble;
   * Created on	2001-06-06, 10;39;48<p>
   * @author 	Matthias Heuer
   * @version	1.0
+  * <!-- docstate
+  * pass: 2
+  * mtime: 2026-09-05T16:34:07Z
+  * digest: 7c3f30f804056e481153fd8706a39703446046e0f36a1fac858cc51393f92ac1
+  * stale: false
+  * tags: [code/stream_processing, code/iterator]
+  * concepts: [Object Stream Pipeline]
+  * facets: {layer: utility, status: legacy, complexity: medium}
+  * -->
   */
 public class CollectionStreamIn
 extends AStreamIn {
@@ -51,13 +64,16 @@ extends AStreamIn {
 	/// #region : Accessor Methods (getXXX/isXXX/setXXX)
 	////////////////////////////////////////////////////////////////////////////
 	
-	/** @see streamIO.object.AStreamIn#getPosition()	 */
+	/** Returns the current index into the wrapped iterator.
+	 * @see streamIO.object.AStreamIn#getPosition()	 */
 	public long getPosition() { return curr; }
-	
-	/** @see streamIO.object.AStreamIn#getMaxMarkSize()	 */
+
+	/** Reports an unbounded mark size, since the wrapped {@link Iterator} cannot rewind.
+	 * @see streamIO.object.AStreamIn#getMaxMarkSize()	 */
 	public long getMaxMarkSize() { return Long.MAX_VALUE; } // arr.; }
-	
-	/** @return the Order of the Elements in this streamIO.	  */
+
+	/** Returns the order the collection was constructed with.
+	 * @return the Order of the Elements in this streamIO.	  */
 	public byte getOrder() { return order; }
 	
 	////////////////////////////////////////////////////////////////////////////////

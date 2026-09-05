@@ -13,7 +13,11 @@ import tester.ITester;
 import function.AFunction;
 import function.AOrderAble;
 
-/** Generator AND ITester Class for solving the Travelling Salesman Problem
+/** Generator and success tester for the Travelling Salesman Problem, solvable either via
+ * {@link BackTracker} priority search or simulated annealing.
+ * <p>
+ * The Problem is to find the shortest Roundtrip
+ * through a given Number of Cities with n-dim Coordinates,
  * using either the BackTracker Class or simulated Annealing.
  * The Problem is to find the shortest Roundtrip 
  * through a given Number of Cities with n-dim Coordinates. 
@@ -35,6 +39,15 @@ import function.AOrderAble;
  * @see math.minimizer.AnnealingMinimizer which applies Annealing to continuous Functions
  * instead of discrete Configuration Spaces. 
  * 
+ * <!-- docstate
+ * pass: 2
+ * mtime: 2026-09-05T20:45:53Z
+ * digest: b642be87e20ce7dc7d9dc8f1491445ac13e1121d3d2e4d6f7dbe084e0c60246e
+ * stale: false
+ * tags: [code/backtracking, code/algorithm]
+ * concepts: [Backtracking Search]
+ * facets: {layer: utility, status: broken, complexity: medium}
+ * -->
  */
 public class TravelProblem
 extends AFunction
@@ -106,7 +119,7 @@ implements ITester {
 		de  = VectorFloat.DIST(xx[1],xx[4]);	//Kosten um die neuen beiden
 		de += VectorFloat.DIST(xx[2],xx[3]);	//Verbindungen zu schaffen
 		de -= VectorFloat.DIST(xx[1],xx[3]);	//und die beiden alten
-		de -= VectorFloat.DIST(xx[2],xx[4]);	//Verbindungen zu lösen
+		de -= VectorFloat.DIST(xx[2],xx[4]);	//Verbindungen zu lï¿½sen
 		return de; }
 	
 	/** cost of a Path transposition, used by anneal() (10.9)
@@ -327,6 +340,8 @@ implements ITester {
 	// Testing and main Methods
 	/////////////////////////////////////////////////////////////////////////////////////
 	
+	/** Fixed 10-city coordinate set used by {@link #testIt()} and the {@code testReversion}/
+	 * {@code testTransfer} self-checks. */
 	final static public float[][] testCities = {
 	   {0.37874702f, 0.26794747f}, 
 	   {0.26471500f, 0.39708003f}, 
@@ -425,6 +440,15 @@ implements ITester {
  * as well as the 'Position' of the Space,
  * which can be derived from the Contents.
  * To save reconstructing the Solution we track the whole Path
+ * <!-- docstate
+ * pass: 2
+ * mtime: 2026-09-05T20:45:53Z
+ * digest: 4ab17536460f2984ce66768b39e042e2bd98bc7fe5b3bc5d79c7aa34e1407b42
+ * stale: false
+ * tags: [code/backtracking, code/algorithm]
+ * concepts: [Backtracking Search]
+ * facets: {layer: utility, status: broken, complexity: medium}
+ * -->
  * to the current Solution.	 */
 class TravelState
 extends AOrderAble { //OrderAble, to compare the Quality of Solutions
@@ -465,6 +489,11 @@ extends AOrderAble { //OrderAble, to compare the Quality of Solutions
 */
 	/**Tests if the Argument Object is equivalent to this one.
 	 * Default Implementation tests for binary Equivalence.	 */
+	// TODO: LOGIC: int[] does not override equals(), so `sequence.equals(...)` reduces to
+	// reference identity (Object.equals) rather than comparing the array contents; two
+	// TravelStates with identical city orderings but distinct array instances always compare
+	// unequal. Use java.util.Arrays.equals(sequence, TravelState.sequence) instead. This makes
+	// duplicate detection (mTestStore/mBackup) in BackTracker ineffective for this generator.
 	public boolean equals(Object arg) {
 		TravelState TravelState = (TravelState) arg;
 		return sequence.equals(TravelState.sequence);

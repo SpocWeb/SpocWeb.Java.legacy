@@ -32,6 +32,15 @@ import tester.IEquivalence;
   *  and the Tests supported by Indices should be performed first)
   * @see JoinStreamByCols 
   * @see streamIO.object.JoinStreamByTest
+  * <!-- docstate
+  * pass: 2
+  * mtime: 2026-09-05T10:13:31Z
+  * digest: 1aa8a2573e2f544f048165f5c0cafeca4eec93f131025b8cdb95699630172569
+  * stale: false
+  * tags: [code/stream_processing, code/iterator]
+  * concepts: [Object Stream Pipeline]
+  * facets: {layer: utility, status: legacy, complexity: medium}
+  * -->
   */
 public class JoinStreamByCols
 extends Product {

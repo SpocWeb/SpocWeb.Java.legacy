@@ -15,6 +15,15 @@ import streamIO.IIStreamIn;
   * Created on	2001-06-03, 07;08;41<p>
   * @author 	Matthias Heuer
   * @version	1.0
+  * <!-- docstate
+  * pass: 2
+  * mtime: 2026-09-05T10:13:31Z
+  * digest: 90841bd07045a94325fa848b18f70cab09e8210611cafadb84c30c70b7cd4a63
+  * stale: false
+  * tags: [code/stream_processing, code/iterator]
+  * concepts: [Object Stream Pipeline]
+  * facets: {layer: utility, status: legacy, complexity: medium}
+  * -->
   */
 public class NullFilterIn
 extends AFilterIn {

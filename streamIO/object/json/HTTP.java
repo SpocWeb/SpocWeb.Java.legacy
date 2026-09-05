@@ -6,6 +6,15 @@ import java.util.Iterator;
  * Convert an HTTP header to a JSONObject and back.
  * @author JSON.org
  * @version 2
+ * <!-- docstate
+ * pass: 2
+ * mtime: 2026-09-05T10:13:32Z
+ * digest: 0666edcb1c2eecfc2377bef9dfeb8377b7572968f306e0f6938ad935b24f7742
+ * stale: false
+ * tags: [code/parsing, code/serialization]
+ * concepts: [JSON.org Reference Implementation]
+ * facets: {layer: utility, status: legacy, complexity: medium}
+ * -->
  */
 public class HTTP {
 

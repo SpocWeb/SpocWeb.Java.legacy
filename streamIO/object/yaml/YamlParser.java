@@ -7,20 +7,10 @@
 package streamIO.object.yaml;
 
 /**
- * Title: <p>
- * Description:
- * Purpose:
+ * Placeholder for a future YAML 1.1 parser: currently an empty stub
+ * (no fields, no parsing logic) carrying only the reference-card notes below
+ * for the syntax it is meant to eventually support.
  *
- * Purpose / Responsibilities of this Class
- *
- * Design Decisions / Implementation Details:
- * If similar Classes exist (e.g. Polymorphism),
- * characterize the specific Differences to compare these.
- *
- * Known SubClasses: <none>
- *
- * Known Uses: <none>
- * 
  * %YAML 1.1   # Reference card
  * ---
  * Collection indicators:
@@ -89,17 +79,24 @@ package streamIO.object.yaml;
  * Created on	10-26-2002, 12:47 PM<p>
  * @author heuerm
  * @version	1.0
+ * <!-- docstate
+ * pass: 2
+ * mtime: 2026-09-05T20:58:29Z
+ * digest: 67671d46bff11be80d1b7156f6c9d99bb387d74ae0009cff80a95c961a222e9c
+ * stale: false
+ * tags: [code/parsing]
+ * concepts: [YAML Parsing (Planned - Unimplemented)]
+ * facets: {layer: utility, status: legacy, complexity: medium}
+ * -->
  */
 public class YamlParser {
 
-	/**
-	 * 
-	 */
+	/**Default Constructor (no state to initialize yet).	 */
 	public YamlParser() {
 		super();
-		// TODO Auto-generated constructor stub
 	}
 
+	/**Entry point stub; not yet implemented.	 */
 	public static void main(String[] args) {
 	}
 }

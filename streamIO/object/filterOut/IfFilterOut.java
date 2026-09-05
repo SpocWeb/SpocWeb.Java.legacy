@@ -6,6 +6,9 @@ import streamIO.IStreamOut;
 import tester.ITester;
 
 /**
+  * Filter that branches each item to one of two downstream outputs based on a configured
+  * {@link ITester}.
+  * <p>
   * Title: IfFilterOut<p>
   * Description:
   * Branch in the Chain of Messages dependent on the Message itself.
@@ -18,6 +21,15 @@ import tester.ITester;
   * Created on	2000-11-26, 01;13;44<p>
   * @author 	Matthias Heuer
   * @version	1.0
+  * <!-- docstate
+  * pass: 2
+  * mtime: 2026-09-05T20:49:22Z
+  * digest: daca5c742b1d89e677b45146a44a253e209c816f909108a76b66f068cc38ba78
+  * stale: false
+  * tags: [code/stream_filter, code/decorator_pattern]
+  * concepts: [Stream Filter (Output)]
+  * facets: {layer: utility, status: legacy, complexity: medium}
+  * -->
   */
 public class IfFilterOut
 	extends FilterOut

@@ -19,6 +19,9 @@ import tester.ITester;
 import function.IProcessor;
 
 /**
+  * Abstract base merging the {@link IStreamSet} streaming contract with the boolean-ring
+  * operations of {@link ABoolRing}, shared by both {@link StreamSet} and {@link AContainer}.
+  * <p>
   * Abstract Base Class of both StreamSet and AContainer
   * Implements all common Operations of these two Classes.
   * Merges the StreamIn Interface with the Boolean and IntegrityRing Interfaces
@@ -27,71 +30,99 @@ import function.IProcessor;
   * Subclasses:
   * @see StreamSet
   * @see AContainer
+  * <!-- docstate
+  * pass: 2
+  * mtime: 2026-09-05T16:33:23Z
+  * digest: 46862b34b0c1c2d7309e70789e26fabc6bcfa46f80d4e6841c32d6afb6812af3
+  * stale: false
+  * tags: [code/stream_processing, code/iterator]
+  * concepts: [Object Stream Pipeline]
+  * facets: {layer: utility, status: legacy, complexity: medium}
+  * -->
   */
 public abstract class AStreamSet
 extends ABoolRing
 implements IStreamSet { 
 	
-	/** @see streamIO.object.IStreamIn#currItem()	 */
-	abstract public Object currItem(); 
-	
-	/** @see streamIO.object.IStreamIn#getComparator()	 */
-	abstract public Comparator getComparator(); 
-	
-	/** @see streamIO.object.IStreamIn#getFilter()	 */
-	abstract public Object getFilter(); 
-	
-	/** @see streamIO.object.IStreamIn#setFilter(java.lang.Object)	 */
-	abstract public void setFilter(Object Value); 
-	
-	/** @see streamIO.IAvailAble#availAble()	 */
-	abstract public long availAble(); 
-	
-	/** @see streamIO.IAvailAble#getPosition()	 */
-	abstract public long getPosition(); 
-	
-	/** @see streamIO.IMarkAble#getMaxMarkSize()	 */
-	abstract public long getMaxMarkSize(); 
-	
-	/** @see streamIO.IOrdered#getOrder()	 */
-	abstract public byte getOrder(); 
-	
-	/** @see streamIO.IFactory#nextItem()	 */
-	abstract public Object nextItem(); 
-	
-	/** @see streamIO.IReSetAble#reSet(java.lang.String)	 */
-	abstract public IReSetAble reSet(String failureExceptionMessage); 
-	
+	/** Returns the item cached by the concrete implementation's own {@code nextItem()} call.
+	 * @see streamIO.object.IStreamIn#currItem()	 */
+	abstract public Object currItem();
+
+	/** Returns the comparator the concrete implementation uses to order its elements.
+	 * @see streamIO.object.IStreamIn#getComparator()	 */
+	abstract public Comparator getComparator();
+
+	/** Returns the filter object restricting which items are yielded.
+	 * @see streamIO.object.IStreamIn#getFilter()	 */
+	abstract public Object getFilter();
+
+	/** Sets the filter object restricting which items are yielded.
+	 * @see streamIO.object.IStreamIn#setFilter(java.lang.Object)	 */
+	abstract public void setFilter(Object Value);
+
+	/** Returns the minimum number of items currently available.
+	 * @see streamIO.IAvailAble#availAble()	 */
+	abstract public long availAble();
+
+	/** Returns the concrete implementation's own current position.
+	 * @see streamIO.IAvailAble#getPosition()	 */
+	abstract public long getPosition();
+
+	/** Returns the largest mark {@code readLimit} the concrete implementation accepts.
+	 * @see streamIO.IMarkAble#getMaxMarkSize()	 */
+	abstract public long getMaxMarkSize();
+
+	/** Returns the order in which elements are returned.
+	 * @see streamIO.IOrdered#getOrder()	 */
+	abstract public byte getOrder();
+
+	/** Advances to and returns the next item.
+	 * @see streamIO.IFactory#nextItem()	 */
+	abstract public Object nextItem();
+
+	/** Resets the iterator to the last marked position, raising the given message on failure.
+	 * @see streamIO.IReSetAble#reSet(java.lang.String)	 */
+	abstract public IReSetAble reSet(String failureExceptionMessage);
+
 	/////////////////////////////////////////////////////////////////////////////////////
-	
-	/** @see streamIO.copy.group.IISemiGroup#addAt(java.lang.Object)	 */
-	abstract public ISemiGroup addAt(Object arg); 
-	
-	/** @see streamIO.copy.groupM.IISemiGroupM#mulAt(java.lang.Object)	 */
-	abstract public ISemiGroupM mulAt(Object arg); 
-	
+
+	/** Adds {@code arg} into this semigroup element and returns the result.
+	 * @see streamIO.copy.group.IISemiGroup#addAt(java.lang.Object)	 */
+	abstract public ISemiGroup addAt(Object arg);
+
+	/** Multiplies {@code arg} into this semigroup element and returns the result.
+	 * @see streamIO.copy.groupM.IISemiGroupM#mulAt(java.lang.Object)	 */
+	abstract public ISemiGroupM mulAt(Object arg);
+
 	/////////////////////////////////////////////////////////////////////////////////////
-	
-	/** @see streamIO.copy.boole.ILattice#ANDat(java.lang.Object)	 */
-	abstract public Lattice ANDat(Object arg); 
-	
-	/** @see streamIO.copy.boole.IBoole#NOTat()	 */
-	abstract public Boole NOTat(); 
-	
-	/** @see streamIO.copy.boole.ILattice#ORat(java.lang.Object)	 */
-	abstract public Lattice ORat(Object arg); 
-	
-	/** @see streamIO.copy.boole.IBoole#FalseAt()	 */
-	abstract public Boole FalseAt(); 
-	
-	/** @see streamIO.copy.boole.Boole#TrueAt()	 */
-	abstract public Boole TrueAt(); 
+
+	/** Combines {@code arg} into this lattice element with AND and returns the result.
+	 * @see streamIO.copy.boole.ILattice#ANDat(java.lang.Object)	 */
+	abstract public Lattice ANDat(Object arg);
+
+	/** Returns the logical negation of this element.
+	 * @see streamIO.copy.boole.IBoole#NOTat()	 */
+	abstract public Boole NOTat();
+
+	/** Combines {@code arg} into this lattice element with OR and returns the result.
+	 * @see streamIO.copy.boole.ILattice#ORat(java.lang.Object)	 */
+	abstract public Lattice ORat(Object arg);
+
+	/** Returns this element's boolean "false" identity.
+	 * @see streamIO.copy.boole.IBoole#FalseAt()	 */
+	abstract public Boole FalseAt();
+
+	/** Returns this element's boolean "true" identity.
+	 * @see streamIO.copy.boole.Boole#TrueAt()	 */
+	abstract public Boole TrueAt();
 	
 	////////////////////////////////////////////////////////////////////////////
 	// Interface StreamIn Operations:
 	////////////////////////////////////////////////////////////////////////////
 	
 	/**
+	 * Reports whether the current item is valid, based on availability.
+	 *
 	 * @see streamIO.IIStreamIn#isValid()
 	 */
 	public boolean isValid() { return availAble() >= 0; }
@@ -114,7 +145,10 @@ implements IStreamSet {
 		//AReSetAble.JUMP(this, Position);
 		AStreamIn.JUMP((IIStreamIn) this, Position); }
 	
-	/** @see streamIO.object.IStreamIn#jump()     */
+	/**
+	 * Jumps this stream one position forward, discarding the item it skips.
+	 *
+	 * @see streamIO.object.IStreamIn#jump()     */
 	public IReSetAble jump() { return AReSetAble.JUMP(this); }
     
 	/** 
@@ -125,7 +159,10 @@ implements IStreamSet {
 	 */
     public IPushBackAble pushBack() { return AReSetAble.PUSH_BACK(this); }
 	
-	/** @return the Object at the given Position in this Enumeration
+	/**
+	 * Repositions this stream to {@code Position} and returns the item found there.
+	 *
+	 * @return the Object at the given Position in this Enumeration
 	  * The Result depends on whether the Iterator is deterministic
 	  * and supports these Operations */
 	public Object getAt(final int Position) throws NoSuchMethodException {
@@ -237,7 +274,11 @@ implements IStreamSet {
 	public Object findFirst (final Object Item, final IEquivalence EQ) throws NoSuchMethodException {
 		reSet (0); return AStreamIn.FIND_NEXT(this, Item, EQ); }
 
-	/** @return true when this Object is contained in this Container
+	/**
+	 * Tests whether {@code item} occurs in this set, searching forward when a restart via
+	 * {@link #findFirst(Object)} is not supported.
+	 *
+	 * @return true when this Object is contained in this Container
 	  * This is the same Operation as (findFirst() != EOI) || (available() >= 0)
 	  * @see Sub() and SubEq() for the according Container Methods,
 	  * The Name contains() is only to be used for single Elements

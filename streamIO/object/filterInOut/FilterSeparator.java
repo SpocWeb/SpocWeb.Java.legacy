@@ -9,9 +9,11 @@ import streamIO.IIStreamOut;
 import streamIO.object.AFilter;
 
 /**
+ * Filter that inserts a configured separator object between the items passing through.
+ * <p>
  * Title: FilterSeparator<p>
  * Description:
- * Purpose:
+ *
  * InOut-Filter; Inserts a Separator Object between any two Objects.
  *
  * Known SubClasses: <none>
@@ -24,6 +26,15 @@ import streamIO.object.AFilter;
  * @author mheuer
  * @version	1.0
  *
+ * <!-- docstate
+ * pass: 2
+ * mtime: 2026-09-05T20:48:43Z
+ * digest: 5a522e76626beff77ff99e5905119ab9297f1b353aa99b9e0a4a583e0e9cc38f
+ * stale: false
+ * tags: [code/stream_filter, code/decorator_pattern]
+ * concepts: [Stream Filter (Input)]
+ * facets: {layer: utility, status: legacy, complexity: medium}
+ * -->
  */
 public class FilterSeparator 
 extends AFilter {
@@ -52,6 +63,8 @@ extends AFilter {
 	}
 
 	/**
+	 * Adds {@code arg} to the wrapped output, followed by the configured separator.
+	 *
 	 * @see streamIO.IIStreamOut#addItem(Object)
 	 */
 	public IIStreamOut addItem(Object arg) {
@@ -60,13 +73,20 @@ extends AFilter {
 		return this; }
 
 	/**
+	 * Alternates between the separator and the wrapped input's own next item.
+	 *
 	 * @see streamIO.IFactory#nextItem()
 	 */
 	protected Object nextItemInternal() {
-		if (currItem != separator) 
+		if (currItem != separator)
 			return separator; //rely on the Fact that the Separator does not appear in the Stream
 		return in.nextItem(); }
-	
+
+	/**
+	 * Unused entry point.
+	 *
+	 * @param args unused
+	 */
 	public static void main(String[] args) {}
 	
 }

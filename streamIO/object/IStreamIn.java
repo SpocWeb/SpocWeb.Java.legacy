@@ -17,6 +17,9 @@ import function.IIOrderAble;
 import function.IProcessor;
 
 /**
+  * Extends {@link IIStreamIn} with the full iterator contract: ordering, marking, searching
+  * and bulk-read convenience operations.
+  * <p>
   * defines additional Iterator Operations; indirectly derived from IStreamIn:
   * An Iterator is possibly infinitely long (like a streamIO),
   * thus lastXxx Operations are not well defined!
@@ -33,6 +36,15 @@ import function.IProcessor;
   * @author  Matthias Heuer
   * @version
   * @stereotype enumeration
+  * <!-- docstate
+  * pass: 2
+  * mtime: 2026-09-05T16:41:26Z
+  * digest: f275ebcbf94e1a62aef5bcdc071d973aaceea6b522f87bc7b0b01fc2df4d3913
+  * stale: false
+  * tags: [code/stream_processing, code/iterator]
+  * concepts: [Object Stream Pipeline]
+  * facets: {layer: utility, status: legacy, complexity: medium}
+  * -->
   */
 public interface IStreamIn
 extends IIStreamIn, IAvailAble, IIterAble, IMarkAble, IOrdered {
@@ -47,7 +59,8 @@ extends IIStreamIn, IAvailAble, IIterAble, IMarkAble, IOrdered {
 	//  Member Methods
 	////////////////////////////////////////////////////////////////////////////////
 	
-	/** @return The Comparator being used to compare Elements on Searching.
+	/** Returns the comparator used to compare elements when searching.
+	 * @return The Comparator being used to compare Elements on Searching.
 	  * If 'null', the Elements are assumed to implement
 	  * @see IScalarMetric or
 	  * @see Comparable  or
@@ -58,10 +71,11 @@ extends IIStreamIn, IAvailAble, IIterAble, IMarkAble, IOrdered {
 	//  Accessor Methods (getXXX/setXXX/isXXX/makeXXX)
 	////////////////////////////////////////////////////////////////////////////
 	
-	/** @return the Filter Object
+	/** Returns the filter object restricting which items {@code nextItem()} yields.
+	 * @return the Filter Object
 	  * only Items that are equal to this Object are returned by nextItem()! */
 	public Object getFilter();
-	
+
 	/** Sets the Filter Object
 	  * only Items that are equal to this Object are returned by nextItem()!
 	  * This allows for Optimizations on hashed and sorted Containers
@@ -76,24 +90,28 @@ extends IIStreamIn, IAvailAble, IIterAble, IMarkAble, IOrdered {
 	  * This Method is unnecessary, because it corresponds to Store.add(this); */
 	//public long storeItems(StreamOut Store);
 	
-	/** @return and moves to the last (Root) Object of this one.
+	/** Advances this stream all the way to its last item and returns it.
+	 * @return and moves to the last (Root) Object of this one.
 	  * This should be used with Care, because it could result in Blocking
 	  * or infinite Loops with infinite Streams. */
 	public Object lastItem();
-	
-	/** @return the current Object without moving.
+
+	/** Returns the item cached by the most recent {@code nextItem()} call.
+	 * @return the current Object without moving.
 	  * This is just a caching Functionality and should be done
 	  * at the Client Process, for faster Access.	 */
 	public Object currItem();
-	
-	/** Returns the next Item without moving to it.	 */
+
+	/** Looks ahead one item without consuming it.
+	 * Returns the next Item without moving to it.	 */
 	public Object peekItem(); // throws NoSuchMethodException;
 	
 	/**Returns the Item after the next Item by moving to the next one.
 	  * This allows a pre-read with removing the current Item.	 */
 	//	public Object nextNextItem();
 	
-	/** @return the Object at the given Position in this Enumeration
+	/** Repositions this stream to {@code Position} and returns the item found there.
+	 * @return the Object at the given Position in this Enumeration
 	  * The Result depends on whether the Iterator is deterministic
 	  * and supports these Operations.
 	  * The Exception is typically thrown in the reSet() Op.
@@ -166,7 +184,8 @@ extends IIStreamIn, IAvailAble, IIterAble, IMarkAble, IOrdered {
 	  */
 	//public Object containsItem(Object Item); //
 	
-	/** @return true when this Object is contained in this or streamIO
+	/** Tests whether {@code Item} occurs in this stream.
+	 * @return true when this Object is contained in this or streamIO
 	  * This is the same Operation as (findFirst() != EOI) || (availAble() >= 0)
 	  * @see Sub() and SubEq() for the according Container Methods,
 	  * The Name contains() is only to be used for single Elements
@@ -222,19 +241,31 @@ extends IIStreamIn, IAvailAble, IIterAble, IMarkAble, IOrdered {
  * Simple Helper Class to avoid complicated Workarounds
  * Always symbolizes an empty Input streamIO.
  *
+ * <!-- docstate
+ * pass: 2
+ * mtime: 2026-09-05T16:41:26Z
+ * digest: d76e2500b8478ee788f3ea54de2e3cdb410f025b8642e26c4368825c76f9a511
+ * stale: false
+ * tags: [code/stream_processing, code/iterator]
+ * concepts: [Object Stream Pipeline]
+ * facets: {layer: utility, status: legacy, complexity: medium}
+ * -->
  */
 class DevNullIn
 extends InputStream
 implements IStreamIn {
-    
-    /** @see streamIO.IReSetAble#getPosition()     */
+
+    /** Always reports position 0, since this stream never advances.
+     * @see streamIO.IReSetAble#getPosition()     */
     public long getPosition() { return 0; }
-    
-	/** @return the Order in which Elements are returned by the Iterators
+
+	/** Reports no known ordering, since this stream never yields an item.
+	 * @return the Order in which Elements are returned by the Iterators
 	  * when they are added using addItem() and removed using nextItem().	 */
 	public byte getOrder() { return ORDER_NONE; }
-	
-	/** @return The Comparator being used to compare Elements.
+
+	/** Reports no explicit comparator.
+	 * @return The Comparator being used to compare Elements.
 	  * If 'null', the Elements are assumed to implement
 	  * @see IScalarMetric or
 	  * @see Comparable  or
@@ -252,7 +283,8 @@ implements IStreamIn {
 	//  Accessor Methods (getXXX/setXXX/isXXX/makeXXX)
 	////////////////////////////////////////////////////////////////////////////
 	
-	/** @return the Filter Object
+	/** Always returns {@code null}, since this stream applies no filter.
+	 * @return the Filter Object
 	  * only Items that are equal to this Object are returned by nextItem()! */
 	public Object getFilter() { return null; }
 	
@@ -262,7 +294,8 @@ implements IStreamIn {
 	  * because the Result Set can be decreased dramatically. */
 	public void setFilter(final Object Value) { }
 	
-	/** @return the (minimum) Number of Items left (in the Buffer),
+	/** Always returns -1, since this stream is permanently empty.
+	 * @return the (minimum) Number of Items left (in the Buffer),
 	  * i.e. the minimum Number of times to call nextItem().
 	  * The actual Number may be higher, so availAble() should be called again
 	  * at the End of this Number.
@@ -274,13 +307,16 @@ implements IStreamIn {
 	  * 	and is therefore written differently!
 	  */
 	public long availAble() { return -1; }
-	
+
 	/**
+	 * Always reports invalid, since this stream never holds a current item.
+	 *
 	 * @see streamIO.IIStreamIn#isValid()
 	 */
 	public boolean isValid() { return false; }
-	
-	/** @return the next (Parent) Object of this one.
+
+	/** Always returns {@code EOI}, since this stream is permanently empty.
+	 * @return the next (Parent) Object of this one.
 	  * No Exception is thrown at the End, instead EOI is returned.
 	  * When IO Processes are bound to this streamIO, IOException is wrapped into an IOError.
 	  * This is less explicit, but much faster because Exception Handling can be extremely slow.
@@ -302,18 +338,21 @@ implements IStreamIn {
 	  * This Method is unnecessary, because it corresponds to Store.add(this); */
 	//public long storeItems(StreamOut Store);
 	
-	/** @return and moves to the last (Root) Object of this one.
+	/** Always returns {@code null}, since this stream is permanently empty.
+	 * @return and moves to the last (Root) Object of this one.
 	  * This should be used with Care, because it could result in Blocking
 	  * or infinite Loops with infinite Streams. */
 	public Object lastItem() { return null; }
 
-	/** @return the current Object without moving.
+	/** Always returns {@code null}, since this stream never holds a current item.
+	 * @return the current Object without moving.
 	  * This is just a caching Functionality and should be done
 	  * at the Client Process, for faster Access.	 */
 	public Object currItem() { return null; }
-	
-	/** Returns the next Item without moving to it.	 */
-	public Object peekItem() { //throws NoSuchMethodException { 
+
+	/** Always returns {@code null}, since this stream has nothing to look ahead to.
+	 * Returns the next Item without moving to it.	 */
+	public Object peekItem() { //throws NoSuchMethodException {
 		return null; }
 	
 	/**Returns the Item after the next Item by moving to the next one.
@@ -344,10 +383,12 @@ implements IStreamIn {
 	  * counting from the last marked Position.	 */
 	public long reSet(long Position) { return 0; }
 
-    /** @see streamIO.IReSetAble#reSet(java.lang.String)   */
+    /** Always succeeds trivially, since this stream has nothing to reset.
+     * @see streamIO.IReSetAble#reSet(java.lang.String)   */
     public IReSetAble reSet(final String failureExceptionMessage) { return this; }
-    
-    /** @see streamIO.IMarkAble#getMaxMarkSize()     */
+
+    /** Reports an unbounded mark size, since this stream never advances.
+     * @see streamIO.IMarkAble#getMaxMarkSize()     */
     public long getMaxMarkSize() { return Long.MAX_VALUE; }
     
 	/** Marks the current position in this Iterator.
@@ -363,7 +404,8 @@ implements IStreamIn {
 	  * This is to limit the Blocking of System Ressources	 */
 	public IMarkAble mark(final long readLimit) { return this; }
 	
-	/** @return the Object at the given Position in this Enumeration
+	/** Always returns {@code null}, since this stream is permanently empty.
+	 * @return the Object at the given Position in this Enumeration
 	  * The Result depends on whether the Iterator is deterministic
 	  * and supports these Operations */
 	public Object getAt(final int Position) { return null; }
@@ -428,7 +470,8 @@ implements IStreamIn {
 	  */
 	//Object containsItem(Object Item); //
 
-	/** @return true when this Object is contained in this or streamIO
+	/** Always returns {@code false}, since this stream never contains anything.
+	 * @return true when this Object is contained in this or streamIO
 	  * This is the same Operation as (findFirst() != EOI) || (available() >= 0)
 	  * @see Sub() and SubEq() for the according Container Methods,
 	  * The Name contains() is only to be used for single Elements
@@ -478,7 +521,8 @@ implements IStreamIn {
 	 * Returns the Number of Operations performed.	 */
 	public int forEach (IProcessor op) { return 0; }
 
-	/** @see streamIO.object.IStreamIn#jump()     */
+	/** Always returns {@code null}, since this stream has nothing to jump over.
+	 * @see streamIO.object.IStreamIn#jump()     */
 	public IReSetAble jump() { return null; }
     
 	/** 

@@ -5,6 +5,8 @@ import java.util.Enumeration;
 import streamIO.exception.OperationNotSupported;
 
 /**
+  * Bridges a legacy {@link Enumeration} into a read-only {@link IStreamIn}.
+  * <p>
   * Title: Enumeration2StreamIn.java<p>
   * Description:
   * Bridge Class (Filter) from Enumeration to StreamIn
@@ -17,6 +19,15 @@ import streamIO.exception.OperationNotSupported;
   * Created on 06-03-2001, 12:40 AM<p>
   * @author 	Matthias Heuer
   * @version 1.0
+  * <!-- docstate
+  * pass: 2
+  * mtime: 2026-09-05T16:39:29Z
+  * digest: 2b5b9a0c10006585437b0fef267967ac4883325a861e0355b9c729343e95e11e
+  * stale: false
+  * tags: [code/stream_processing, code/iterator]
+  * concepts: [Object Stream Pipeline]
+  * facets: {layer: utility, status: legacy, complexity: medium}
+  * -->
   */
 final public class Enumeration2StreamIn
 extends AStreamIn {
@@ -35,28 +46,39 @@ extends AStreamIn {
 	//  Constructors, calling each other using this()/super() (not in Interfaces)
 	////////////////////////////////////////////////////////////////////////////
 	
+	/**
+	 * Creates a stream that bridges the given enumeration.
+	 *
+	 * @param Source the enumeration to wrap
+	 */
 	public Enumeration2StreamIn(Enumeration Source) { this.Source = Source; }
 	
 	////////////////////////////////////////////////////////////////////////////
 	//  Interface Enumeration: Implementation
 	////////////////////////////////////////////////////////////////////////////
 	
-	/** @return The next Item from the Input streamIO */
+	/** Advances the wrapped enumeration and returns its next element.
+	 * @return The next Item from the Input streamIO */
 	public Object nextItem() { return currItem = Source.nextElement(); }
-	
-	/** @return The current Item from the Input streamIO */
+
+	/** Returns the item cached by the last {@link #nextItem()} call.
+	 * @return The current Item from the Input streamIO */
 	public Object currItem() { return currItem; }
-	
-	/** @return the Number of Items (at least) available */
+
+	/** Reports whether the wrapped enumeration has more elements.
+	 * @return the Number of Items (at least) available */
 	public long availAble() { return Source.hasMoreElements() ? 0 : -1; }
-	
-	/** @see streamIO.object.AStreamIn#getMaxMarkSize()	 */
+
+	/** Reports that marking is not supported, since {@link Enumeration} cannot be rewound.
+	 * @see streamIO.object.AStreamIn#getMaxMarkSize()	 */
 	public long getMaxMarkSize() { return -1; }
-	
-	/** @see streamIO.object.AStreamIn#getPosition()	 */
-	public long getPosition() { throw new OperationNotSupported("Enum cannot be reSet()ted"); } 
-	
-	/** @return The Order of the Item from the Input streamIO */
+
+	/** Always fails, since a plain {@link Enumeration} has no position to report.
+	 * @see streamIO.object.AStreamIn#getPosition()	 */
+	public long getPosition() { throw new OperationNotSupported("Enum cannot be reSet()ted"); }
+
+	/** Reports no known ordering, since a plain {@link Enumeration} carries none.
+	 * @return The Order of the Item from the Input streamIO */
 	public byte getOrder() { return ORDER_NONE; } //Source.getOrder(); }
 	
 	////////////////////////////////////////////////////////////////////////////

@@ -8,6 +8,15 @@ import streamIO.copy.IICopyAble;
 /** Creates Copies of the given Depth of the Objects returned by the appended
   * OutputStream, if possible.
   * This Class breaks the Hierarchy and should normally be placed into Enumeration.
+  * <!-- docstate
+  * pass: 2
+  * mtime: 2026-09-05T10:13:31Z
+  * digest: c93610be16ddd4f20a7ebdf9d776c372b22354002ba848a2697d222ea1121eff
+  * stale: false
+  * tags: [code/stream_processing, code/iterator]
+  * concepts: [Object Stream Pipeline]
+  * facets: {layer: utility, status: legacy, complexity: medium}
+  * -->
   * @see CopyStreamOut for the stream() Method to stream with creating Copies... */
 public class CopyStreamIn
 extends AFilterIn {

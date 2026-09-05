@@ -19,6 +19,11 @@ import function.IProcessor;
 import graphs.ICopy;
 
 /**
+  * Abstract base for a {@link IStreamIn} implementation, hoisting every generic streaming
+  * algorithm (find, forEach, ordering, containment) into reusable static helper methods so
+  * a concrete subclass only has to supply {@link #nextItem()}, {@link #availAble()},
+  * {@link #getMaxMarkSize()}, {@link #currItem()} and {@link #getPosition()}.
+  * <p>
   * AStreamIn
   * Design Decisions:
   * Since most Methods involve a Loop, it pays off to move them to static Methods
@@ -36,6 +41,15 @@ import graphs.ICopy;
   * @author  Matthias Heuer
   * @version
   * @stereotype enumeration
+  * <!-- docstate
+  * pass: 2
+  * mtime: 2026-09-05T16:32:18Z
+  * digest: c9aca17b6134ec52cbd175fb397263843e0dd552aa7044ae4d3e9498543253f6
+  * stale: false
+  * tags: [code/stream_processing, code/iterator]
+  * concepts: [Object Stream Pipeline]
+  * facets: {layer: utility, status: legacy, complexity: medium}
+  * -->
   */
 public abstract class AStreamIn
 extends AMarkAble
@@ -72,8 +86,11 @@ implements IStreamIn, Cloneable {
 	abstract public long getMaxMarkSize(); // { return availAble(); }
 	
 	
-	/** @return the current Object.
-	  * Could be implemented by redirecting the nextItem Calls to assign to the currItem Object, 
+	/**
+	 * Returns the item cached by the concrete implementation's own {@link #nextItem()} call.
+	 *
+	 * @return the current Object.
+	  * Could be implemented by redirecting the nextItem Calls to assign to the currItem Object,
 	  * but most Iterators have fast Access to the current Item anyway...
 	  * More interesting is the Addition of a lastItem, or even better, 
 	  * a PeekItem which can be used to feed a (deterministic) LL(1) Parser. 
@@ -125,7 +142,10 @@ implements IStreamIn, Cloneable {
 	//  Accessor Methods (getXXX/setXXX/isXXX/makeXXX)
 	////////////////////////////////////////////////////////////////////////////
 	
-	/** @return the Filter Object
+	/**
+	 * Returns the filter object that restricts which items {@link #nextItem()} yields.
+	 *
+	 * @return the Filter Object
 	  * only Items that are equal to this Object are returned by nextItem()! */
 	public Object getFilter() {
 		return filter; }
@@ -137,7 +157,10 @@ implements IStreamIn, Cloneable {
 	public void setFilter(final Object _value) {
 		filter = _value; }
 	
-	/** @return the Order in which Elements are returned by the Iterators
+	/**
+	 * Reports no known ordering; a subclass overrides this when it can guarantee one.
+	 *
+	 * @return the Order in which Elements are returned by the Iterators
 	  * when they are added using addItem() and removed using nextItem().	 */
 	public byte getOrder() { return ORDER_NONE; } //Source.getOrder(); }
 	
@@ -176,7 +199,10 @@ implements IStreamIn, Cloneable {
 	  * or infinite Loops with infinite Streams. */
 	public Object lastItem() { return LAST_ITEM(this); }
 	
-	/** @return the Object at the given Position in this Enumeration
+	/**
+	 * Repositions this stream to {@code Position} and returns the item found there.
+	 *
+	 * @return the Object at the given Position in this Enumeration
 	  * The Result depends on whether the Iterator is deterministic
 	  * and supports these Operations */
 	public Object getAt(final int Position) { //throws NoSuchMethodException {
@@ -268,7 +294,11 @@ implements IStreamIn, Cloneable {
 		}
 	}
 	
-	/** @return true when this Object is contained in this Container
+	/**
+	 * Tests whether {@code Item} occurs in this stream, searching forward when a restart via
+	 * {@link #findFirst(Object)} is not supported.
+	 *
+	 * @return true when this Object is contained in this Container
 	  * This is the same Operation as (findFirst() != EOI) || (available() >= 0)
 	  * @see Sub() and SubEq() for the according Container Methods,
 	  * The Name contains() is only to be used for single Elements
@@ -292,7 +322,10 @@ implements IStreamIn, Cloneable {
 	public boolean SubEq(final IIStreamIn arg, final boolean Sequence) {
 		return SUB_EQ(this, arg, Sequence); }
 	
-	/** @return the next Item without moving to it.	 */
+	/**
+	 * Looks ahead one item by advancing then pushing back, without consuming it.
+	 *
+	 * @return the next Item without moving to it.	 */
 	public Object peekItem() { //throws    NoSuchMethodException {
 		//throw new NoSuchMethodException("No generic Implementation!");
 		final Object ret = nextItem(); 
@@ -359,7 +392,11 @@ implements IStreamIn, Cloneable {
 	  * when they are added using addItem() and removed using nextItem().	 */
 //	public byte getOrder() { return OrderUnDef; }
 
-	/** @return The Comparator being used to compare Elements.
+	/**
+	 * Reports no explicit comparator; a {@code null} result means elements are assumed to
+	 * implement one of the ordering interfaces listed below.
+	 *
+	 * @return The Comparator being used to compare Elements.
 	  * If 'null', the Elements are assumed to implement
 	  * @see IScalarMetric or
 	  * @see java.lang.Comparable  or
@@ -380,7 +417,11 @@ implements IStreamIn, Cloneable {
 	//A StreamIn is possibly infinitely long (like a Stream),
 	//thus lastXxx Operations are not well defined!
 
-	/** @return the Minimum of all Elements in this streamIO Min(i, x[i])
+	/**
+	 * Scans {@code str} to its end and returns its smallest element by {@link IIOrderAble}
+	 * comparison.
+	 *
+	 * @return the Minimum of all Elements in this streamIO Min(i, x[i])
 	  * This Implementation reuses the Elements of the streamIO */
 	final static public IIOrderAble MIN(final IIStreamIn str) {
 		if (str instanceof IStreamIn) 
@@ -391,7 +432,11 @@ implements IStreamIn, Cloneable {
 			if (  xi.isLessThan(Min)) Min = xi; }
 		return Min;	}
 
-	/** @return the Minimum of all Elements in this streamIO Min(i, x[i])
+	/**
+	 * Scans {@code str} to its end and returns its largest element by {@link IIOrderAble}
+	 * comparison.
+	 *
+	 * @return the Minimum of all Elements in this streamIO Min(i, x[i])
 	  * This Implementation reuses the Elements of the streamIO */
 	final static public IIOrderAble MAX(final IIStreamIn str) {
 		if (str instanceof IStreamIn) 
@@ -663,13 +708,30 @@ implements IStreamIn, Cloneable {
 			  ((EOI != iter.nextItem()) || iter.isValid()));
 		return i; }
 	
-	/** @return true, when this Container contains arg, false otherwise
+	/**
+	 * Tests whether {@code arg} occurs anywhere in {@code Enum}.
+	 *
+	 * @return true, when this Container contains arg, false otherwise
 	  * Returns it, when found, otherwise returns streamIO.Iterator.EOL
 	  * This corresponds to the contains() and SubEq() Method.	 */
 	final static public boolean CONTAINS(IIStreamIn Enum, Object arg) {
 		return (FIND_NEXT(Enum, arg, null) != EOI) || Enum.isValid(); }
 
 	/**
+	 * @return true, when all Objects of IStreamIn Enum exist in IStreamIn arg,
+	 * i.e. Enum <= arg
+	 * Requires this Enum to be restartAble.
+	 * More restrictive and thus 'cheaper' Searches exist:
+	 * -finding all Elements of arg in Sequence with intermittent Objects
+	 * -finding all Elements of arg in Sequence w/o intermittent Objects (not supported)
+	 * Uses the Monotony Criterion (for infinite Streams) of findFirst()
+	 * @param Sequence if true, does not reset() the streamIO
+	 * and thus requires the Items to appear in the Order of arg.
+	 */
+	/**
+	 * Tests whether every element of {@code Enum} also occurs in {@code arg}, i.e.
+	 * {@code Enum <= arg}.
+	 *
 	 * @return true, when all Objects of IStreamIn Enum exist in IStreamIn arg,
 	 * i.e. Enum <= arg
 	 * Requires this Enum to be restartAble.

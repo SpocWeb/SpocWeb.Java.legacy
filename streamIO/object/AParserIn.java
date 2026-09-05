@@ -18,6 +18,15 @@ import streamIO.IDeserializer;
   * Created on	06-03-2001, 03:46 PM<p>
   * @author 	Matthias Heuer
   * @version	1.0
+  * <!-- docstate
+  * pass: 2
+  * mtime: 2026-09-05T10:13:31Z
+  * digest: c7e1eeb02b864c8788ef76889a8416e1a39e32a4092538df75c2b9eee7a5145c
+  * stale: false
+  * tags: [code/stream_processing, code/iterator]
+  * concepts: [Object Stream Pipeline]
+  * facets: {layer: utility, status: legacy, complexity: medium}
+  * -->
   */
 public abstract class AParserIn
 extends AStreamIn {

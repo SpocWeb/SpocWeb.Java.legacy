@@ -4,11 +4,11 @@ import streamIO.FilterOut;
 import streamIO.IIStreamOut;
 
 /**
+  * Filter that silently discards {@code null} items, forwarding every other item unchanged to
+  * the wrapped output.
+  * <p>
   * Title: NullFilterOut.java<p>
   * Description:
-  * TODO: Describes the Purpose / Responsibilities of this Class, not it's Implementation.
-  * If similar Classes exist (e.g. Polymorphism),
-  * characterize the specific Differences to compare these.
   *
   * Known SubClasses:
   *
@@ -17,6 +17,15 @@ import streamIO.IIStreamOut;
   * Created on	2001-06-03, 07;16;01<p>
   * @author 	Matthias Heuer
   * @version	1.0
+  * <!-- docstate
+  * pass: 2
+  * mtime: 2026-09-05T16:43:22Z
+  * digest: 08bb1925920bbe1de957e7a8668d54e9575cc023dd73740447238a030878f4bf
+  * stale: false
+  * tags: [code/stream_processing, code/iterator]
+  * concepts: [Object Stream Pipeline]
+  * facets: {layer: utility, status: legacy, complexity: medium}
+  * -->
   */
 public class NullFilterOut
 extends FilterOut {

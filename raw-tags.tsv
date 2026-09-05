@@ -1280,3 +1280,97 @@ function/index	folder	function/index	code/indexing	Indexing Abstractions	utility
 function/real	folder	function/real	code/running_aggregates	Streaming Numeric Aggregators	utility	broken	medium
 function/string	folder	function/string	code/string_transform	String Transform Functions	utility	broken	low
 function/vector	folder	function/vector	code/vector_math,code/differential_integration	Vector Fields and ODE Integration	domain	broken	high
+streamIO/object	folder	streamIO/object	code/stream_processing,code/iterator	Object Stream Pipeline	utility	legacy	medium
+streamIO/object/AFilter.java:AFilter	class	streamIO/object/AFilter.java	code/stream_processing,code/iterator	Object Stream Pipeline	utility	legacy	medium
+streamIO/object/AFilterIn.java:AFilterIn	class	streamIO/object/AFilterIn.java	code/stream_processing,code/iterator	Object Stream Pipeline	utility	legacy	medium
+streamIO/object/AND.java:AND	class	streamIO/object/AND.java	code/stream_processing,code/iterator	Object Stream Pipeline	utility	legacy	medium
+streamIO/object/AParserIn.java:AParserIn	class	streamIO/object/AParserIn.java	code/stream_processing,code/iterator	Object Stream Pipeline	utility	legacy	medium
+streamIO/object/APlugAbleFilter.java:APlugAbleFilter	class	streamIO/object/APlugAbleFilter.java	code/stream_processing,code/iterator	Object Stream Pipeline	utility	legacy	medium
+streamIO/object/AStreamIn.java:AStreamIn	class	streamIO/object/AStreamIn.java	code/stream_processing,code/iterator	Object Stream Pipeline	utility	legacy	medium
+streamIO/object/AStreamSet.java:AStreamSet	class	streamIO/object/AStreamSet.java	code/stream_processing,code/iterator	Object Stream Pipeline	utility	legacy	medium
+streamIO/object/ArrayStreamIn.java:ArrayStreamIn	class	streamIO/object/ArrayStreamIn.java	code/stream_processing,code/iterator	Object Stream Pipeline	utility	legacy	medium
+streamIO/object/Cantor.java:Cantor	class	streamIO/object/Cantor.java	code/stream_processing,code/iterator	Object Stream Pipeline	utility	legacy	medium
+streamIO/object/CollectionStreamIn.java:CollectionStreamIn	class	streamIO/object/CollectionStreamIn.java	code/stream_processing,code/iterator	Object Stream Pipeline	utility	legacy	medium
+streamIO/object/ConstructorStreamIn.java:ConstructorStreamIn	class	streamIO/object/ConstructorStreamIn.java	code/stream_processing,code/iterator	Object Stream Pipeline	utility	legacy	medium
+streamIO/object/CopyStreamIn.java:CopyStreamIn	class	streamIO/object/CopyStreamIn.java	code/stream_processing,code/iterator	Object Stream Pipeline	utility	legacy	medium
+streamIO/object/CopyStreamOut.java:CopyStreamOut	class	streamIO/object/CopyStreamOut.java	code/stream_processing,code/iterator	Object Stream Pipeline	utility	legacy	medium
+streamIO/object/DIFF.java:DIFF	class	streamIO/object/DIFF.java	code/stream_processing,code/iterator	Object Stream Pipeline	utility	legacy	medium
+streamIO/object/DeMultiplexerIn.java:DeMultiplexerIn	class	streamIO/object/DeMultiplexerIn.java	code/stream_processing,code/iterator	Object Stream Pipeline	utility	legacy	medium
+streamIO/object/Enumeration2StreamIn.java:Enumeration2StreamIn	class	streamIO/object/Enumeration2StreamIn.java	code/stream_processing,code/iterator	Object Stream Pipeline	utility	legacy	medium
+streamIO/object/Filter.java:Filter	class	streamIO/object/Filter.java	code/stream_processing,code/iterator	Object Stream Pipeline	utility	legacy	medium
+streamIO/object/FilterIn.java:FilterIn	class	streamIO/object/FilterIn.java	code/stream_processing,code/iterator	Object Stream Pipeline	utility	legacy	medium
+streamIO/object/IPipe.java:IPipe	class	streamIO/object/IPipe.java	code/stream_processing,code/iterator	Object Stream Pipeline	utility	legacy	medium
+streamIO/object/IStreamIn.java:DevNullIn	class	streamIO/object/IStreamIn.java	code/stream_processing,code/iterator	Object Stream Pipeline	utility	legacy	medium
+streamIO/object/IStreamIn.java:IStreamIn	class	streamIO/object/IStreamIn.java	code/stream_processing,code/iterator	Object Stream Pipeline	utility	legacy	medium
+streamIO/object/IStreamIn2Iterator.java:IStreamIn2Iterator	class	streamIO/object/IStreamIn2Iterator.java	code/stream_processing,code/iterator	Object Stream Pipeline	utility	legacy	medium
+streamIO/object/IStreamSet.java:IStreamSet	class	streamIO/object/IStreamSet.java	code/stream_processing,code/iterator	Object Stream Pipeline	utility	legacy	medium
+streamIO/object/Iterator2StreamIn.java:Iterator2StreamIn	class	streamIO/object/Iterator2StreamIn.java	code/stream_processing,code/iterator	Object Stream Pipeline	utility	legacy	medium
+streamIO/object/JoinStreamByCols.java:JoinStreamByCols	class	streamIO/object/JoinStreamByCols.java	code/stream_processing,code/iterator	Object Stream Pipeline	utility	legacy	medium
+streamIO/object/JoinStreamByTest.java:JoinStreamByTest	class	streamIO/object/JoinStreamByTest.java	code/stream_processing,code/iterator	Object Stream Pipeline	utility	legacy	medium
+streamIO/object/Merger.java:Merger	class	streamIO/object/Merger.java	code/stream_processing,code/iterator	Object Stream Pipeline	utility	legacy	medium
+streamIO/object/ModificationException.java:ModificationException	class	streamIO/object/ModificationException.java	code/stream_processing,code/iterator	Object Stream Pipeline	utility	legacy	medium
+streamIO/object/MultiplexerOut.java:MultiplexerOut	class	streamIO/object/MultiplexerOut.java	code/stream_processing,code/iterator	Object Stream Pipeline	utility	legacy	medium
+streamIO/object/NullFilterIn.java:NullFilterIn	class	streamIO/object/NullFilterIn.java	code/stream_processing,code/iterator	Object Stream Pipeline	utility	legacy	medium
+streamIO/object/NullFilterOut.java:NullFilterOut	class	streamIO/object/NullFilterOut.java	code/stream_processing,code/iterator	Object Stream Pipeline	utility	legacy	medium
+streamIO/object/Product.java:Product	class	streamIO/object/Product.java	code/stream_processing,code/iterator	Object Stream Pipeline	utility	legacy	medium
+streamIO/object/StreamIn2Enumeration.java:StreamIn2Enumeration	class	streamIO/object/StreamIn2Enumeration.java	code/stream_processing,code/iterator	Object Stream Pipeline	utility	legacy	medium
+streamIO/object/StreamIterator.java:StreamIterator	class	streamIO/object/StreamIterator.java	code/stream_processing,code/iterator	Object Stream Pipeline	utility	legacy	medium
+streamIO/object/StreamParser.java:StreamParser	class	streamIO/object/StreamParser.java	code/stream_processing,code/iterator	Object Stream Pipeline	utility	broken	medium
+streamIO/object/StreamSet.java:DblAt	class	streamIO/object/StreamSet.java	code/stream_processing,code/iterator	Object Stream Pipeline	utility	legacy	medium
+streamIO/object/StreamSet.java:NullWhenDivisible	class	streamIO/object/StreamSet.java	code/stream_processing,code/iterator	Object Stream Pipeline	utility	legacy	medium
+streamIO/object/StreamSet.java:StreamSet	class	streamIO/object/StreamSet.java	code/stream_processing,code/iterator	Object Stream Pipeline	utility	legacy	medium
+streamIO/object/StringStreamIn.java:StringStreamIn	class	streamIO/object/StringStreamIn.java	code/stream_processing,code/iterator	Object Stream Pipeline	utility	legacy	medium
+streamIO/object/Union.java:Union	class	streamIO/object/Union.java	code/stream_processing,code/iterator	Object Stream Pipeline	utility	broken	medium
+streamIO/object/backTrack	folder	streamIO/object/backTrack	code/backtracking,code/algorithm	Backtracking Search	utility	legacy	medium
+streamIO/object/backTrack/AchterProblem.java:AchterProblem	class	streamIO/object/backTrack/AchterProblem.java	code/backtracking,code/algorithm	Backtracking Search	utility	legacy	medium
+streamIO/object/backTrack/AchterProblem.java:AchterState	class	streamIO/object/backTrack/AchterProblem.java	code/backtracking,code/algorithm	Backtracking Search	utility	legacy	medium
+streamIO/object/backTrack/BackTracker.java:BackTracker	class	streamIO/object/backTrack/BackTracker.java	code/backtracking,code/algorithm	Backtracking Search	utility	legacy	medium
+streamIO/object/backTrack/Grammar.java:Grammar	class	streamIO/object/backTrack/Grammar.java	code/backtracking,code/algorithm	Backtracking Search	utility	broken	medium
+streamIO/object/backTrack/Grammar.java:GrammarState	class	streamIO/object/backTrack/Grammar.java	code/backtracking,code/algorithm	Backtracking Search	utility	broken	medium
+streamIO/object/backTrack/HorseProblem.java:HorseProblem	class	streamIO/object/backTrack/HorseProblem.java	code/backtracking,code/algorithm	Backtracking Search	utility	legacy	medium
+streamIO/object/backTrack/PermutationProblem.java:PermutationProblem	class	streamIO/object/backTrack/PermutationProblem.java	code/backtracking,code/algorithm	Backtracking Search	utility	legacy	medium
+streamIO/object/backTrack/QueenProblem.java:QueenProblem	class	streamIO/object/backTrack/QueenProblem.java	code/backtracking,code/algorithm	Backtracking Search	utility	legacy	medium
+streamIO/object/backTrack/TravelProblem.java:TravelProblem	class	streamIO/object/backTrack/TravelProblem.java	code/backtracking,code/algorithm	Backtracking Search	utility	broken	medium
+streamIO/object/backTrack/TravelProblem.java:TravelState	class	streamIO/object/backTrack/TravelProblem.java	code/backtracking,code/algorithm	Backtracking Search	utility	broken	medium
+streamIO/object/filterIn	folder	streamIO/object/filterIn	code/stream_filter,code/decorator_pattern	Stream Filter (Input)	utility	legacy	medium
+streamIO/object/filterIn/FilterInByBitMask.java:FilterInByBitMask	class	streamIO/object/filterIn/FilterInByBitMask.java	code/stream_filter,code/decorator_pattern	Stream Filter (Input)	utility	broken	medium
+streamIO/object/filterIn/FilterInByBoolean.java:FilterInByBoolean	class	streamIO/object/filterIn/FilterInByBoolean.java	code/stream_filter,code/decorator_pattern	Stream Filter (Input)	utility	legacy	medium
+streamIO/object/filterIn/FilterInCache.java:FilterInCache	class	streamIO/object/filterIn/FilterInCache.java	code/stream_filter,code/decorator_pattern	Stream Filter (Input)	utility	legacy	medium
+streamIO/object/filterIn/FilterInPair.java:FilterInPair	class	streamIO/object/filterIn/FilterInPair.java	code/stream_filter,code/decorator_pattern	Stream Filter (Input)	utility	legacy	medium
+streamIO/object/filterIn/FilterIn_PushBack.java:FilterIn_PushBack	class	streamIO/object/filterIn/FilterIn_PushBack.java	code/stream_filter,code/decorator_pattern	Stream Filter (Input)	utility	broken	medium
+streamIO/object/filterInOut	folder	streamIO/object/filterInOut	code/stream_filter,code/decorator_pattern	Stream Filter (Input)	utility	legacy	medium
+streamIO/object/filterInOut/FilterByFunction.java:FilterByFunction	class	streamIO/object/filterInOut/FilterByFunction.java	code/stream_filter,code/decorator_pattern	Stream Filter (Input)	utility	legacy	medium
+streamIO/object/filterInOut/FilterByTester.java:FilterByTester	class	streamIO/object/filterInOut/FilterByTester.java	code/stream_filter,code/decorator_pattern	Stream Filter (Input)	utility	legacy	medium
+streamIO/object/filterInOut/FilterReflectionFunction.java:FilterReflectionFunction	class	streamIO/object/filterInOut/FilterReflectionFunction.java	code/stream_filter,code/decorator_pattern	Stream Filter (Input)	utility	legacy	medium
+streamIO/object/filterInOut/FilterSeparator.java:FilterSeparator	class	streamIO/object/filterInOut/FilterSeparator.java	code/stream_filter,code/decorator_pattern	Stream Filter (Input)	utility	legacy	medium
+streamIO/object/filterOut	folder	streamIO/object/filterOut	code/stream_filter,code/decorator_pattern	Stream Filter (Output)	utility	legacy	medium
+streamIO/object/filterOut/IfFilterOut.java:IfFilterOut	class	streamIO/object/filterOut/IfFilterOut.java	code/stream_filter,code/decorator_pattern	Stream Filter (Output)	utility	legacy	medium
+streamIO/object/filterOut/ThreadOut.java:ThreadOut	class	streamIO/object/filterOut/ThreadOut.java	code/stream_filter,code/decorator_pattern	Stream Filter (Output)	utility	broken	medium
+streamIO/object/filterOut/ThrowOut.java:ThrowOut	class	streamIO/object/filterOut/ThrowOut.java	code/stream_filter,code/decorator_pattern	Stream Filter (Output)	utility	legacy	medium
+streamIO/object/filterOut/TraceOut.java:TraceOut	class	streamIO/object/filterOut/TraceOut.java	code/stream_filter,code/decorator_pattern	Stream Filter (Output)	utility	legacy	medium
+streamIO/object/filterOut/TryCatchOut.java:TryCatchOut	class	streamIO/object/filterOut/TryCatchOut.java	code/stream_filter,code/decorator_pattern	Stream Filter (Output)	utility	legacy	medium
+streamIO/object/integer	folder	streamIO/object/integer	code/parsing,code/xml	XML/HTML Parsing	utility	legacy	medium
+streamIO/object/integer/DomElement.java:DomElement	class	streamIO/object/integer/DomElement.java	code/parsing,code/xml	XML/HTML Parsing	utility	legacy	medium
+streamIO/object/integer/HTMLElement.java:HTMLElement	class	streamIO/object/integer/HTMLElement.java	code/parsing,code/xml	XML/HTML Parsing	utility	legacy	medium
+streamIO/object/integer/HTMLScanner.java:HTMLScanner	class	streamIO/object/integer/HTMLScanner.java	code/parsing,code/xml	XML/HTML Parsing	utility	legacy	medium
+streamIO/object/integer/XMLElement.java:XMLElement	class	streamIO/object/integer/XMLElement.java	code/parsing,code/xml	XML/HTML Parsing	utility	legacy	medium
+streamIO/object/integer/XMLInputStream.java:XMLInputStream	class	streamIO/object/integer/XMLInputStream.java	code/parsing,code/xml	XML/HTML Parsing	utility	broken	medium
+streamIO/object/integer/XMLParser.java:XMLParser	class	streamIO/object/integer/XMLParser.java	code/parsing,code/xml	XML/HTML Parsing	utility	legacy	medium
+streamIO/object/integer/XMLScanner.java:XMLScanner	class	streamIO/object/integer/XMLScanner.java	code/parsing,code/xml	XML/HTML Parsing	utility	broken	medium
+streamIO/object/json	folder	streamIO/object/json	code/parsing,code/serialization	JSON.org Reference Implementation	utility	legacy	medium
+streamIO/object/json/CDL.java:CDL	class	streamIO/object/json/CDL.java	code/parsing,code/serialization	JSON.org Reference Implementation	utility	legacy	medium
+streamIO/object/json/Cookie.java:Cookie	class	streamIO/object/json/Cookie.java	code/parsing,code/serialization	JSON.org Reference Implementation	utility	legacy	medium
+streamIO/object/json/CookieList.java:CookieList	class	streamIO/object/json/CookieList.java	code/parsing,code/serialization	JSON.org Reference Implementation	utility	legacy	medium
+streamIO/object/json/HTTP.java:HTTP	class	streamIO/object/json/HTTP.java	code/parsing,code/serialization	JSON.org Reference Implementation	utility	legacy	medium
+streamIO/object/json/HTTPTokener.java:HTTPTokener	class	streamIO/object/json/HTTPTokener.java	code/parsing,code/serialization	JSON.org Reference Implementation	utility	legacy	medium
+streamIO/object/json/JSONArray.java:JSONArray	class	streamIO/object/json/JSONArray.java	code/parsing,code/serialization	JSON.org Reference Implementation	utility	legacy	medium
+streamIO/object/json/JSONException.java:JSONException	class	streamIO/object/json/JSONException.java	code/parsing,code/serialization	JSON.org Reference Implementation	utility	legacy	medium
+streamIO/object/json/JSONObject.java:JSONObject	class	streamIO/object/json/JSONObject.java	code/parsing,code/serialization	JSON.org Reference Implementation	utility	legacy	medium
+streamIO/object/json/JSONObject.java:JSONObject.Null	class	streamIO/object/json/JSONObject.java	code/parsing,code/serialization	JSON.org Reference Implementation	utility	legacy	medium
+streamIO/object/json/JSONStringer.java:JSONStringer	class	streamIO/object/json/JSONStringer.java	code/parsing,code/serialization	JSON.org Reference Implementation	utility	legacy	medium
+streamIO/object/json/JSONTest.java:JSONTest	class	streamIO/object/json/JSONTest.java	code/parsing,code/serialization	JSON.org Reference Implementation	utility	legacy	medium
+streamIO/object/json/JSONTokener.java:JSONTokener	class	streamIO/object/json/JSONTokener.java	code/parsing,code/serialization	JSON.org Reference Implementation	utility	broken	medium
+streamIO/object/json/XML.java:XML	class	streamIO/object/json/XML.java	code/parsing,code/serialization	JSON.org Reference Implementation	utility	legacy	medium
+streamIO/object/json/XMLTokener.java:XMLTokener	class	streamIO/object/json/XMLTokener.java	code/parsing,code/serialization	JSON.org Reference Implementation	utility	legacy	medium
+streamIO/object/yaml	folder	streamIO/object/yaml	code/parsing	YAML Parsing (Planned - Unimplemented)	utility	legacy	medium
+streamIO/object/yaml/YamlParser.java:YamlParser	class	streamIO/object/yaml/YamlParser.java	code/parsing	YAML Parsing (Planned - Unimplemented)	utility	legacy	medium

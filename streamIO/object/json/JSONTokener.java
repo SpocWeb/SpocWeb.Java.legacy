@@ -91,6 +91,15 @@ package streamIO.object.json;
  * 
  * @author JSON.org
  * @version 2
+ * <!-- docstate
+ * pass: 2
+ * mtime: 2026-09-05T20:59:12Z
+ * digest: a033ed30305746c6af73afadb8c24e9e025525ca2be5da4e94bb9b091f91064a
+ * stale: false
+ * tags: [code/parsing, code/serialization]
+ * concepts: [JSON.org Reference Implementation]
+ * facets: {layer: utility, status: broken, complexity: medium}
+ * -->
  */
 public class JSONTokener {
 
@@ -198,7 +207,11 @@ public class JSONTokener {
      public String next(int n) throws JSONException {
          int i = this.myIndex;
          int j = i + n;
-         if (j >= this.mySource.length()) 
+         // TODO: LOGIC: off-by-one - String.substring(i, j) is valid for j == mySource.length()
+         // (it can return the final characters of the source), but this check rejects that
+         // boundary case too, throwing "Substring bounds error" one character too early
+         // (e.g. a \\uXXXX escape whose 4 hex digits reach exactly the end of the source).
+         if (j >= this.mySource.length())
             throw syntaxError("Substring bounds error");
          this.myIndex += n;
          return this.mySource.substring(i, j);
@@ -345,6 +358,10 @@ public class JSONTokener {
         char c = nextClean();
         String s;
 
+        // TODO: SECURITY: object/array nesting below recurses (nextValue -> JSONObject/JSONArray
+        // constructor -> nextValue -> ...) with no depth limit, unlike JSONStringer's own
+        // maxdepth=20 guard for output. Parsing a deeply/pathologically nested untrusted JSON
+        // document (e.g. thousands of "[[[[...") can exhaust the call stack (StackOverflowError, DoS).
         switch (c) {
             case '"':
             case '\'':

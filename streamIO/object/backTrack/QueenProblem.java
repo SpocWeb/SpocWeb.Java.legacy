@@ -4,12 +4,22 @@ import streamIO.AStreamOut;
 import streamIO.object.IPipe;
 import streamIO.object.enumer.container.DeQueueArr;
 import function.AFunction;
-/**Generator and ITester Class for the Queen Problem.
+/** Generator for the N-Queens placement search, for use with {@link BackTracker}.
+ * <p>
  * The Task is to distribute n Queens on an n*n Matrix in a way that these
  * cannot attack each other.
  *
  * Design Decisions:
  * No extra Class for representing the State necessary,
+ * <!-- docstate
+ * pass: 2
+ * mtime: 2026-09-05T20:45:44Z
+ * digest: f1d3e570f543ff84df9076343fdbae22da2b982a7ca39526e49a974c91ea2e83
+ * stale: false
+ * tags: [code/backtracking, code/algorithm]
+ * concepts: [Backtracking Search]
+ * facets: {layer: utility, status: legacy, complexity: medium}
+ * -->
  * since this can be done efficiently by an Array.	 */
 public class QueenProblem
 extends AFunction {
@@ -74,8 +84,13 @@ extends AFunction {
 
 	}
 
+	/**
+	 * Runs {@link #testIt()} from the command line.
+	 *
+	 * @param args unused
+	 */
 	public static void main(String[] args) {
-		testIt(); 
+		testIt();
 	}
 
 }

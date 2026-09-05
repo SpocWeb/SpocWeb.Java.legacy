@@ -7,6 +7,10 @@ import tester.ITester;
 import function.IFunction;
 
 /**
+  * Streams successive solutions of a backtracking/genetic search, where the {@link IPipe}
+  * store's discipline (FIFO, LIFO, priority queue) determines whether the search is
+  * breadth-first, depth-first, or a priority (branch-and-bound) search.
+  * <p>
   * Title: BackTracker<p>
   * Description:
   * Implements a BackTracking / Genetic Algorithm where ...
@@ -30,8 +34,8 @@ import function.IFunction;
   * 
   * Die Herausforderung in der genetischen Programmierung liegen in der Codifizierung 
   * und Interpretation einer Konstellation als String / Bitmuster 
-  * und ist somit sehr Ähnlich zum Problem der Serialisierung. 
-  * Die Rekombination muß u.a. im Rahmen der Syntax der Serialisierung erfolgen! 
+  * und ist somit sehr ï¿½hnlich zum Problem der Serialisierung. 
+  * Die Rekombination muï¿½ u.a. im Rahmen der Syntax der Serialisierung erfolgen! 
   * 
   * TODO: Memory can be saved by externalizing the Queue! 
   * 
@@ -116,6 +120,15 @@ import function.IFunction;
   * @author 	Matthias Heuer
   * @version	1.0
   *
+  * <!-- docstate
+  * pass: 2
+  * mtime: 2026-09-05T20:44:23Z
+  * digest: 095bc892654bdad84f357a9dae9b3de3e481dbd10a7a51250313d09c30e963b6
+  * stale: false
+  * tags: [code/backtracking, code/algorithm]
+  * concepts: [Backtracking Search]
+  * facets: {layer: utility, status: legacy, complexity: medium}
+  * -->
   */
 public class BackTracker
 extends AStreamIn { // IStreamIn {
@@ -140,10 +153,12 @@ extends AStreamIn { // IStreamIn {
 	/** Cache for the current Item	*/
 	protected Object currItem;
 	
-	/** @see streamIO.object.AStreamIn#getMaxMarkSize()	 */
+	/** Delegates to the store's own maximum mark size.
+	 * @see streamIO.object.AStreamIn#getMaxMarkSize()	 */
 	public long getMaxMarkSize() { return mStore.getMaxMarkSize(); }
-	
-	/** @see streamIO.object.AStreamIn#getPosition()	 */
+
+	/** Delegates to the store's own current position.
+	 * @see streamIO.object.AStreamIn#getPosition()	 */
 	public long getPosition() { return mStore.getPosition(); }
 	
 	/**Initializing Constructor.
@@ -163,12 +178,14 @@ extends AStreamIn { // IStreamIn {
 		this.mGenerator = Generator;
 		this.mTestStore = testStore; }
 	
-	/** @return the next Result calculated using the BackTracking Algorithm defined by the Store.
+	/** Returns the result cached by the most recent {@link #nextItem()} call.
+	 * @return the next Result calculated using the BackTracking Algorithm defined by the Store.
 	  * For multiple Results call this Method until it returns IStreamIn.EOI
 	  */
 	public Object currItem() { return currItem; }
 
-	/** @return the (minimum) Number of Items left (in the Buffer),
+	/** Delegates to the store's own availability.
+	 * @return the (minimum) Number of Items left (in the Buffer),
 	  * i.e. the minimum Number of times to call nextItem().
 	  * The actual Number may be higher, so available() should be called again
 	  * at the End of this Number.
@@ -177,8 +194,10 @@ extends AStreamIn { // IStreamIn {
 	  * (when the Container does not contain null Entries, like e.g. HashTables)
 	  */
 	public long availAble() { return mStore.availAble(); }
-	
-	/** @return the next Result calculated using the BackTracking Algorithm defined by the Store.
+
+	/** Expands the store's next candidate through the generator until a solution accepted by
+	 * the tester is found, or the store is exhausted.
+	 * @return the next Result calculated using the BackTracking Algorithm defined by the Store.
 	  * For multiple Results call this Method until it returns IStreamIn.EOI
 	  */
 	public Object nextItem() { ////get the latest Element from the Store

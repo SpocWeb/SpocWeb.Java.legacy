@@ -36,6 +36,15 @@ import streamIO.exception.BaseException;
  * allow for easy In and Output to Strings and Byte/Char Arrays. String also has Methods to change between Byte Arrays:
  * getBytes is the Complement to the Constructor taking a Byte Array
  *
+ * <!-- docstate
+ * pass: 2
+ * mtime: 2026-09-05T16:44:22Z
+ * digest: a7e20998e1ffbe85bc094aa6f5d3dab741e4564490c0e5be6a5513b9cb97e0af
+ * stale: false
+ * tags: [code/stream_processing, code/iterator]
+ * concepts: [Object Stream Pipeline]
+ * facets: {layer: utility, status: broken, complexity: medium}
+ * -->
  */
 public class StreamParser
 extends AStreamIn {
@@ -77,7 +86,8 @@ extends AStreamIn {
 	/** The actual Order, defaulted to 'no Order' */
 	protected byte Order = ORDER_NONE;
 	
-	/** @return the Order in which Elements are returned by the Iterators
+	/** Returns the order configured for this parser, defaulting to no known order.
+	 * @return the Order in which Elements are returned by the Iterators
 	  * when they are added using addItem() and removed using nextItem().	 */
 	public byte getOrder() { return Order; }
 	
@@ -100,10 +110,13 @@ extends AStreamIn {
 		} catch (final IOException t) { return 0; }
 	}
 	
-	/** @see streamIO.IMarkAble#getMaxMarkSize()	 */
+	/** Reports an effectively unbounded mark size when the wrapped stream supports marking,
+	 * -1 otherwise.
+	 * @see streamIO.IMarkAble#getMaxMarkSize()	 */
 	public long getMaxMarkSize() { return inStream.markSupported() ? Integer.MAX_VALUE : -1; }
-	
-	/** @see streamIO.IAvailAble#getPosition()	 */
+
+	/** Always returns 0, since the wrapped {@link InputStream} has no position to report.
+	 * @see streamIO.IAvailAble#getPosition()	 */
 	public long getPosition() { return 0; } //iter.; }
 	
 	/** Restarts the Enumerator */
@@ -164,6 +177,13 @@ extends AStreamIn {
 		while (i < length) { //&& (available.Value > 0)) { // && (i < Length))
 			if (++i >= length) { //Resize the big Array
 				length += length; //double the Size
+				// TODO: LOGIC: lList is reassigned to the freshly-allocated `list` array
+				// *before* the arraycopy below, so the copy's source and destination are the
+				// same empty array (self-copy of nulls) and every element already parsed into
+				// the old `list`/`lList` backing array is silently lost whenever a nested list
+				// grows past its initial 32-element capacity. The old array reference must be
+				// captured before reassigning `list`, e.g. `final Object[] old = list; list =
+				// new Object[length]; System.arraycopy(old, 0, list, 0, i); lList = list;`.
 				lList = (list = new Object[length]);
 				System.arraycopy(lList, 0, list, 0, i);
 				if (lengthInfo) {

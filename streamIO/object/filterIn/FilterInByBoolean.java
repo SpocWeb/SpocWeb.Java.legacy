@@ -5,6 +5,8 @@ import streamIO.object.AFilterIn;
 import streamIO.object.IStreamIn;
 
 /**
+  * Filter that selects stream items whose position is marked {@code true} in a boolean array.
+  * <p>
   * Title: FilterInByBitMask<p>
   * Description:
   * Column Filter
@@ -21,6 +23,15 @@ import streamIO.object.IStreamIn;
   * Created on	2001-06-03, 06;44;48<p>
   * @author 	Matthias Heuer
   * @version	1.0
+  * <!-- docstate
+  * pass: 2
+  * mtime: 2026-09-05T20:46:45Z
+  * digest: c9ce2ac927bff19a345edbdee040bb3ea46af211833ce047d368cb3613a976b0
+  * stale: false
+  * tags: [code/stream_filter, code/decorator_pattern]
+  * concepts: [Stream Filter (Input)]
+  * facets: {layer: utility, status: legacy, complexity: medium}
+  * -->
   */
 public class FilterInByBoolean
 extends AFilterIn {

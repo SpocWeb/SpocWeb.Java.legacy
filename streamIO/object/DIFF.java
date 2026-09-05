@@ -5,6 +5,9 @@ import streamIO.IIStreamIn;
 import streamIO.IReSetAble;
 
 /**
+  * Streams only the items of the wrapped (possibly infinite) input that do not occur in a
+  * second, finite input stream, implementing set difference over object streams.
+  * <p>
   * Title: DIFF.java<p>
   * Description:
   * Implements the DIFF Operation on Object Streams.
@@ -21,6 +24,15 @@ import streamIO.IReSetAble;
   * Created on	2001-06-06, 07;03;52<p>
   * @author 	Matthias Heuer
   * @version	1.0
+  * <!-- docstate
+  * pass: 2
+  * mtime: 2026-09-05T16:39:15Z
+  * digest: a24a9a35a6a2c22745360d8653c0ef58b29ab57f5b6f5e6aee94507a8c14e377
+  * stale: false
+  * tags: [code/stream_processing, code/iterator]
+  * concepts: [Object Stream Pipeline]
+  * facets: {layer: utility, status: legacy, complexity: medium}
+  * -->
   */
 final public class DIFF
 extends AFilterIn {

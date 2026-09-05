@@ -40,7 +40,7 @@ import function.IIOrderAble;
   *
   * Zur Ermittlung des Maximums:
   * zwei Elemente direkt vergleichen
-  * und das  größere mit dem momentanen Maximum
+  * und das  grï¿½ï¿½ere mit dem momentanen Maximum
   * und das kleinere mit dem momentanen Minimum
   * TODO: irgendwo ist ein optimaler Algorithmus in Pascal (vielleicht auch Java?)!
   *
@@ -55,6 +55,15 @@ import function.IIOrderAble;
   *
   * @author  Matthias Heuer
   * @version
+  * <!-- docstate
+  * pass: 2
+  * mtime: 2026-09-05T10:13:31Z
+  * digest: c807fd8c8ebd7e0ec06e6629d8e0bc27c533125f7afaca1bac52c736a517735a
+  * stale: false
+  * tags: [code/stream_processing, code/iterator]
+  * concepts: [Object Stream Pipeline]
+  * facets: {layer: utility, status: legacy, complexity: medium}
+  * -->
   */
 public class Merger
 extends AFilterIn {

@@ -27,6 +27,15 @@ import streamIO.object.enumer.Enumerator;
   * Design Decisions:
   * Not making this Exception a RuntimeException makes the Declaration mandatory.
   * @see ReadOnlyException should be used to encapsulate this Exception
+  * <!-- docstate
+  * pass: 2
+  * mtime: 2026-09-05T10:13:31Z
+  * digest: 7ccf5bbc3964e6471857b40746d58b7f68e7c1dbcbab825d7fb54cca3ab7c8bc
+  * stale: false
+  * tags: [code/stream_processing, code/iterator]
+  * concepts: [Object Stream Pipeline]
+  * facets: {layer: utility, status: legacy, complexity: medium}
+  * -->
   */
 public class ModificationException
 extends Exception {

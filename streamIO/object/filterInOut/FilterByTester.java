@@ -13,10 +13,12 @@ import tester.TesterEquivalence;
 import tester.stateful.TestSequence;
 
 /**
+  * Filter that keeps only items rejected by a configured {@link ITester}, skipping every item
+  * the tester accepts.
+  * <p>
   * Title: FilterByTester.java<p>
-
   * Description:
-  * Filters Objects by handing them over to a ITester Function. 
+  * Filters Objects by handing them over to a ITester Function.
   * If the ITester returns false, the Item is returned, 
   * otherwise Items are retrieved until one does not fulfill the Test. 
   *
@@ -36,19 +38,30 @@ import tester.stateful.TestSequence;
   * Created on	2001-06-03, 06;44;48<p>
   * @author 	Matthias Heuer
   * @version	1.0
+  * <!-- docstate
+  * pass: 2
+  * mtime: 2026-09-05T20:48:15Z
+  * digest: 4e7325958eef6a8f64f14316b450b9ce1dc412a13f927822b1fcbebc62686471
+  * stale: false
+  * tags: [code/stream_filter, code/decorator_pattern]
+  * concepts: [Stream Filter (Input)]
+  * facets: {layer: utility, status: legacy, complexity: medium}
+  * -->
   */
 final public class FilterByTester
 extends APlugAbleFilter {
     
 	///////////////////////////////////////////////////////////////////////////
 	
-	/** 
-	 * 
-	 * @param inFile
-	 * @param outFile
+	/**
+	 * Filters consecutive duplicate items out of {@code in_File}, writing the result to
+	 * {@code outFile}.
+	 *
 	 * @param sep The String of Separators starting with the Escape Character
+	 * @return the number of items written
+	 * @throws FileNotFoundException when {@code in_File} does not exist
 	 */
-	public static long FILTER_DUPLICATES(final String in_File, final String sep, final String outFile) 
+	public static long FILTER_DUPLICATES(final String in_File, final String sep, final String outFile)
 	throws FileNotFoundException, IOException {
 		return FILTER(in_File, sep, 
 		        (IPlugAbleFilterIn) new FilterByTester(new TestSequence()), outFile); 
@@ -158,9 +171,10 @@ extends APlugAbleFilter {
 		System.out.println("Testing " + FilterByTester.class.getName());
 	}
 	
-	/** 
-	 * 
-	 * @param args a List of File Names to read and trim. 
+	/**
+	 * Runs duplicate filtering from the command line, or {@link #testIt()} when no file is given.
+	 *
+	 * @param args a List of File Names to read and trim.
 	 */
 	public static void main(final String[] args) throws Exception {
 		System.out.println("Syntax: inputFile [[outputFile] SeparatorChars]"); 

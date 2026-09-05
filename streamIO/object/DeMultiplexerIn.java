@@ -5,6 +5,9 @@ import streamIO.IMarkAble;
 import streamIO.IReSetAble;
 
 /**
+ * Interleaves a fixed array of input streams in round-robin order, s[0][0], s[1][0], ...,
+ * s[n][0], s[0][1], ... until every source is exhausted.
+ * <p>
  * DeMultiplexerIn.java
  * The DeMultiplexerIn is derived from the abstract Base Class AStreamIn
  * and de-multiplexes this Input streamIO from a List of Input Streams 
@@ -42,6 +45,15 @@ import streamIO.IReSetAble;
  *
  * @author  Matthias Heuer
  * @version
+ * <!-- docstate
+ * pass: 2
+ * mtime: 2026-09-05T16:39:21Z
+ * digest: f181290f999117af47287d21b71d100a20272e9c6e347bf2bcb592323013271f
+ * stale: false
+ * tags: [code/stream_processing, code/iterator]
+ * concepts: [Object Stream Pipeline]
+ * facets: {layer: utility, status: legacy, complexity: medium}
+ * -->
  */
 public class DeMultiplexerIn
 extends AStreamIn {
@@ -84,7 +96,9 @@ extends AStreamIn {
 		if (outOfData) return -1;
 		return ((IStreamIn)sources[currInStream]).availAble(); }
 
-	/** @see streamIO.object.AStreamIn#getMaxMarkSize()	 */
+	/** Returns the smallest maximum mark size across every source, or -1 when any source does
+	 * not support marking.
+	 * @see streamIO.object.AStreamIn#getMaxMarkSize()	 */
 	public long getMaxMarkSize() {
 		long min = Long.MAX_VALUE; 
 		for(int i = sources.length; --i >= 0;) {
@@ -97,8 +111,10 @@ extends AStreamIn {
 		return min;
 	}
 	
-	/** @see streamIO.object.AStreamIn#getPosition()	 */
-	public long getPosition() { //only valid until one of the Sources runs out of Data! 
+	/** Returns a combined position encoding the current source index and its own position;
+	 * only meaningful until one source runs out of data.
+	 * @see streamIO.object.AStreamIn#getPosition()	 */
+	public long getPosition() { //only valid until one of the Sources runs out of Data!
 		return ((IMarkAble)sources[currInStream]).getPosition()*sources.length+currInStream;
 	}
 	

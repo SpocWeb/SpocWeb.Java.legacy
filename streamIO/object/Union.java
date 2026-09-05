@@ -4,9 +4,12 @@ import streamIO.IAvailAble;
 import streamIO.IIStreamIn;
 import streamIO.IReSetAble;
 
-/** This Class creates a Stream with the Elements of the Union 
- * of all Input Streams (with a finite Number of Elements) 
- * given by an (possibly infinite) Enumerator. 
+/** Streams the concatenated union of a (possibly infinite) sequence of finite input streams,
+ * appending each one's elements in turn.
+ * <p>
+ * This Class creates a Stream with the Elements of the Union
+ * of all Input Streams (with a finite Number of Elements)
+ * given by an (possibly infinite) Enumerator.
  * I.e. the Sequence is: 
  * s[1][1],s[1][2],...s[1][n],
  * s[2][1],s[2][2],...
@@ -34,6 +37,15 @@ import streamIO.IReSetAble;
  * from a fixed Number of (possibly infinite) Input Streams like in
  * @see DeMultiplexerIn, this appends a finite Number of possibly infinite Input Streams.
  * @see Merger, which merges two sorted Streams into a new sorted streamIO.
+ * <!-- docstate
+ * pass: 2
+ * mtime: 2026-09-05T20:42:48Z
+ * digest: 88eda9c4803c7899c9f66d69204d55238b87677afdbeca42add3c022c676bd10
+ * stale: false
+ * tags: [code/stream_processing, code/iterator]
+ * concepts: [Object Stream Pipeline]
+ * facets: {layer: utility, status: broken, complexity: medium}
+ * -->
  */
 public class Union
 extends AFilterIn {
@@ -61,10 +73,16 @@ extends AFilterIn {
 		final IStreamIn[] Parts = new IStreamIn[3];
 		Parts[0] = new DIFF(A,B);
 		Parts[1] = new DIFF(B,A);
+		// TODO: LOGIC: Parts is allocated with length 3 (valid indices 0-2), but this line
+		// writes to index 3, throwing ArrayIndexOutOfBoundsException on every call to OR().
+		// The intended assignment is almost certainly Parts[2] = new AND(A, B);
 		Parts[3] = new AND (A,B);
 		return new Union(Parts); }
 
-	/** @return true, when both Streams contain the same Elements in the same Sequence.  */
+	/**
+	 * Compares two streams element by element in sequence order.
+	 *
+	 * @return true, when both Streams contain the same Elements in the same Sequence.  */
 	final static public boolean EQUALS(final IStreamIn A, final IStreamIn B) {
 		Object ItemA, ItemB;
 		while ((EOI != (ItemA = A.nextItem())) || A.isValid()) {
@@ -99,6 +117,11 @@ extends AFilterIn {
 	  * For ordered Streams better use equals().
 	  * @return true, when Stream A and Stream A contain the same Elements.
 	  */
+	/**
+	 * Compares two streams as unordered sets, checking each is a subset of the other.
+	 *
+	 * @return true when {@code A} and {@code B} contain the same elements, ignoring order
+	 */
 	final static public boolean EQUAL_IGNORING_SEQUENCE(final IStreamIn A, final IStreamIn B) {
 		return SUB_EQ(A, B) && SUB_EQ(B, A); }
 	

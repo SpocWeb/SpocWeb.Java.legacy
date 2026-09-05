@@ -6,6 +6,15 @@ import java.util.Iterator;
  * Convert a web browser cookie list string to a JSONObject and back.
  * @author JSON.org
  * @version 2
+ * <!-- docstate
+ * pass: 2
+ * mtime: 2026-09-05T10:13:32Z
+ * digest: bc3d4618648e0217a395d9fa77b51b074567453691f2127218733367f0546014
+ * stale: false
+ * tags: [code/parsing, code/serialization]
+ * concepts: [JSON.org Reference Implementation]
+ * facets: {layer: utility, status: legacy, complexity: medium}
+ * -->
  */
 public class CookieList {
 

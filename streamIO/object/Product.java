@@ -21,6 +21,15 @@ import streamIO.IReSetAble;
  * @see streamIO.object.MultiplexerOut for a Division of Streams.
  * This partitions/maps the Elements into a Set of SubStreams 
  * with possible Remainders. 
+ * <!-- docstate
+ * pass: 2
+ * mtime: 2026-09-05T10:13:31Z
+ * digest: 046c2ba99d800599ae254c98e93e70f93495d31a1af1f330b88ac1ef31b869b1
+ * stale: false
+ * tags: [code/stream_processing, code/iterator]
+ * concepts: [Object Stream Pipeline]
+ * facets: {layer: utility, status: legacy, complexity: medium}
+ * -->
  */
 public class Product
 extends AFilterIn {

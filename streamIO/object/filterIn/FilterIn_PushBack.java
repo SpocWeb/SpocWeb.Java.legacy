@@ -11,37 +11,38 @@ import streamIO.IPushBackAble;
 import streamIO.object.AFilterIn;
 
 /**
- * Title: <p>
- * Description:
- * Purpose:
+ * Filter supporting a single-slot push-back: the last item read can be pushed back once and
+ * will be replayed by the next {@code nextItem()} call before the wrapped stream is advanced.
  *
- * Purpose / Responsibilities of this Class
- *
- * Design Decisions / Implementation Details:
- * If similar Classes exist (e.g. Polymorphism),
- * characterize the specific Differences to compare these.
- *
- * Known SubClasses: <none>
- *
- * Known Uses: <none>
- *
- * Copyright:	Copyright (c) Matthias Heuer<p>
- * Company:	personal<p>
- * Created on	10-26-2002, 12:47 PM<p>
  * @author heuerm
- * @version	1.0
+ * <!-- docstate
+ * pass: 2
+ * mtime: 2026-09-05T20:47:17Z
+ * digest: e841a0db365e857fe1dbc90608a07af77bc56ac3572b84539f56eb65925b1b4a
+ * stale: false
+ * tags: [code/stream_filter, code/decorator_pattern]
+ * concepts: [Stream Filter (Input)]
+ * facets: {layer: utility, status: broken, complexity: medium}
+ * -->
  */
-public class FilterIn_PushBack 
+public class FilterIn_PushBack
 extends AFilterIn {
 
 	/**
-	 * @param enum_
+	 * Creates a push-back filter over the given input.
+	 *
+	 * @param enum_ the stream to delegate to
 	 */
 	public FilterIn_PushBack(final IIStreamIn enum_) {
 		super(enum_);
 	}
-	
-	/** @see streamIO.object.AFilterIn#nextItemInternal()	 */
+
+	/** Replays the pushed-back item if one is pending, otherwise advances the wrapped stream.
+	 * @see streamIO.object.AFilterIn#nextItemInternal()	 */
+	// TODO: LOGIC: the fallback branch calls `nextItemInternal()` recursively on itself instead
+	// of delegating to the wrapped stream (`in.nextItem()`), so every call made while nothing is
+	// pushed back recurses without ever terminating, guaranteeing a StackOverflowError. This is
+	// the only overridden template method, so the class is unusable as written.
 	protected Object nextItemInternal() {
 		if (filter == currItem) { //indicator that this Stream has been pushed back!
 			filter = null; return currItem; }

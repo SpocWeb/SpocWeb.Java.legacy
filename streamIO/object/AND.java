@@ -3,6 +3,9 @@ package streamIO.object;
 import streamIO.IIStreamIn;
 
 /**
+  * Streams only the items of the wrapped input that also occur in a second input stream,
+  * implementing set intersection over object streams.
+  * <p>
   * Title: AND.java<p>
   * Description:
   * Implements the AND Operation / Intersection on Object Streams.
@@ -34,6 +37,15 @@ import streamIO.IIStreamIn;
   * Created on	2001-06-06, 07;03;52<p>
   * @author 	Matthias Heuer
   * @version	1.0
+  * <!-- docstate
+  * pass: 2
+  * mtime: 2026-09-05T16:29:57Z
+  * digest: 3bacffe138cb55d58ead36faa83f4d5062b82594e32f0fcd2df60af5d232f2c6
+  * stale: false
+  * tags: [code/stream_processing, code/iterator]
+  * concepts: [Object Stream Pipeline]
+  * facets: {layer: utility, status: legacy, complexity: medium}
+  * -->
   */
 public class AND
 extends AFilterIn {
@@ -88,7 +100,9 @@ extends AFilterIn {
 	//  static Testing and main() Methods
 	////////////////////////////////////////////////////////////////////////////////
 	
-	/** Tests all Methods of this Class	 */
+	/**
+	 * Runs a smoke test that prints this class's name to standard output.
+	 */
 	public static void testIt() throws java.io.IOException {
 		System.out.println("Testing " + AND.class.getName());
 	}

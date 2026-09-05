@@ -22,6 +22,15 @@ import streamIO.IStreamOut;
   * @see Operation.Process.StreamProcessor which is an active Component taking Input and Output streamIO
   * 	in Contrast this is a passive Component implementing both Interfaces.
   * 	By feeding the Output back to the Input, the BackTracker Component solves Problems.
+  * <!-- docstate
+  * pass: 2
+  * mtime: 2026-09-05T10:13:31Z
+  * digest: e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855
+  * stale: false
+  * tags: [code/stream_processing, code/iterator]
+  * concepts: [Object Stream Pipeline]
+  * facets: {layer: utility, status: legacy, complexity: medium}
+  * -->
   */
 public interface IPipe //Store
 extends IStreamOut, IStreamIn { //ModStreamIn {

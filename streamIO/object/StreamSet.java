@@ -24,6 +24,9 @@ import function.byref.ByRefLong;
 import graphs.KeyValuePair;
 
 /**
+  * Represents a (possibly infinite) set as a boolean-algebra filter over an object stream,
+  * mirroring set operations (AND, OR, DIFF, NOT) onto stream composition.
+  * <p>
   * Title: StreamSet.java<p>
   * Description:
   * This is a Filter implementing the Interface 'Boole' for Streams of Objects.
@@ -77,6 +80,15 @@ import graphs.KeyValuePair;
   * Created on	2001-06-07, 01;06;24<p>
   * @author 	Matthias Heuer
   * @version	1.0
+  * <!-- docstate
+  * pass: 2
+  * mtime: 2026-09-05T20:31:29Z
+  * digest: 4cf4a5e4b7f97d7a95d068f3d691ba91704ed5226fe1dc1a12edc324ae242ee2
+  * stale: false
+  * tags: [code/stream_processing, code/iterator]
+  * concepts: [Object Stream Pipeline]
+  * facets: {layer: utility, status: legacy, complexity: medium}
+  * -->
   */
 public class StreamSet
 extends AStreamSet { //FilterIn { //
@@ -134,28 +146,31 @@ extends AStreamSet { //FilterIn { //
 	//  Accessor Methods (getXXX/setXXX/isXXX/makeXXX)
 	////////////////////////////////////////////////////////////////////////////
 	
-	/** @return the Filter Object
+	/** Delegates to the wrapped stream's own filter object.
+	 * @return the Filter Object
 	  * only Items that are equal to this Object are returned by nextItem()! */
 	public Object getFilter() {
 		return enm.getFilter(); }
-	
+
 	/** Sets the Filter Object
 	  * only Items that are equal to this Object are returned by nextItem()!
 	  * This allows for Optimizations on hashed and sorted Containers
 	  * because the Result Set can be decreased dramatically. */
 	public void setFilter(final Object Value) {
 		enm.setFilter(Value); }
-	
-	/** @return the Order in which Elements are returned by the Iterators
+
+	/** Delegates to the wrapped stream's own order.
+	 * @return the Order in which Elements are returned by the Iterators
 	  * when they are added using addItem() and removed using nextItem().	 */
 	public byte getOrder() {
 	/*		if (Enum instanceof StreamIn) { //delegate
 				return ((StreamIn) Enum).getOrder(); }
 				return OrderUnDef; } //otherwise you don't know!
-	*/			
+	*/
 		return enm.getOrder(); }
-	
-	/** @return The Comparator being used to compare Elements.
+
+	/** Reports no explicit comparator.
+	 * @return The Comparator being used to compare Elements.
 	  * If 'null', the Elements are assumed to implement
 	  * @see IScalarMetric or
 	  * @see Comparable  or
@@ -194,14 +209,17 @@ extends AStreamSet { //FilterIn { //
 
 	//Marking and Resetting a Stream (for re-Processing, if supported)
 
-	/** @see streamIO.object.AStreamSet#getPosition()	 */
+	/** Delegates to the wrapped stream's own current position.
+	 * @see streamIO.object.AStreamSet#getPosition()	 */
 	public long getPosition() { return enm.getPosition(); }
 
-	/** @see streamIO.object.AStreamSet#getMaxMarkSize()	 */
+	/** Delegates to the wrapped stream's own maximum mark size.
+	 * @see streamIO.object.AStreamSet#getMaxMarkSize()	 */
 	public long getMaxMarkSize() { return enm.getMaxMarkSize(); }
 
-	/** @see streamIO.object.AStreamSet#reSet(java.lang.String)	 */
-	public IReSetAble reSet(final String failureExceptionMessage) { 
+	/** Delegates to the wrapped stream, resetting to the last marked position.
+	 * @see streamIO.object.AStreamSet#reSet(java.lang.String)	 */
+	public IReSetAble reSet(final String failureExceptionMessage) {
 		return enm.reSet(failureExceptionMessage); }
 	
 	/**Resets the Iterator to the last marked Position,
@@ -259,6 +277,8 @@ extends AStreamSet { //FilterIn { //
 	public long availAble() { return enm.availAble(); }
 
 	/**
+	 * Reports whether the wrapped stream is valid, based on its availability.
+	 *
 	 * @see streamIO.IIStreamIn#isValid()
 	 */
 	public boolean isValid() { return enm.availAble() >= 0; }
@@ -558,6 +578,15 @@ extends AStreamSet { //FilterIn { //
 }
 
 /** Stateless Function Class (Singleton) to double the Input Value of a ByRefLong.
+	 * <!-- docstate
+	 * pass: 2
+	 * mtime: 2026-09-05T20:31:29Z
+	 * digest: 92bcbdf71ffcb75e84d1b9cdf42b26a6bad75d7160f67e9119dd912957ec241c
+	 * stale: false
+	 * tags: [code/stream_processing, code/iterator]
+	 * concepts: [Object Stream Pipeline]
+	 * facets: {layer: utility, status: legacy, complexity: medium}
+	 * -->
   * Just for testing Purposes. */
 class DblAt
 extends AFunction {
@@ -565,7 +594,7 @@ extends AFunction {
 	/** Optimization: reusing the same ByRefLong Object */
 	protected ByRefLong myVal = new ByRefLong();
 
-	/**Returns arg mapped by this Object: this.map(arg) == this°arg
+	/**Returns arg mapped by this Object: this.map(arg) == thisï¿½arg
 	 * This is the Function working on 'arg' defined by the implementing Class.
 	 * The Class implementing this Method is the means of exchanging this Operation.	 */
 	public Object Map (final Object arg) {
@@ -577,11 +606,23 @@ extends AFunction {
 }
 
 /** Stateless Function Class (Singleton) to double the Input Value of a ByRefLong.
+		myVal.Value = 2* <!-- docstate
+		myVal.Value = 2* pass: 2
+		myVal.Value = 2* mtime: 2026-09-05T20:31:29Z
+		myVal.Value = 2* digest: d05c5aa9999eafe61ddb2cc611e90ebefb8419683e77a7073ac9fbb56c50dba2
+		myVal.Value = 2* stale: false
+		myVal.Value = 2
+ * digest: d05c5aa9999eafe61ddb2cc611e90ebefb8419683e77a7073ac9fbb56c50dba2
+ * stale: false
+ * tags: [code/stream_processing, code/iterator]
+ * concepts: [Object Stream Pipeline]
+ * facets: {layer: utility, status: legacy, complexity: medium}
+ * -->
   * Just for testing Purposes. */
 class NullWhenDivisible
 extends AFunction {
 
-	/**Returns arg mapped by this Object: this.map(arg) == this°arg
+	/**Returns arg mapped by this Object: this.map(arg) == thisï¿½arg
 	 * This is the Function working on 'arg' defined by the implementing Class.
 	 * The Class implementing this Method is the means of exchanging this Operation.	 */
 	public Object Map (final Object arg) {
