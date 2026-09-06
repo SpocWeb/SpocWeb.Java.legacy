@@ -2,853 +2,478 @@
 
 ## Status
 
-**2026-09-05 (latest): `streamIO/copy/group` (124 files) closed out.** The 5-agent wave's
-last remaining batch is done: `list-todo streamIO/copy/group` returns zero real gaps (one
-confirmed tool false-positive on `AManifold.Interpolator(IManifold)` - a method whose simple
-name equals its return type's simple name, now recorded as a new tool-quirk bullet); 4 bugs
-verified via grep (`Fraction.Floor()`/`FractionLong.Floor()` swapped-operand reciprocal bugs,
-`QuantityDouble`'s two constructors both never assigning `mUnit`) and added to the Bugs Found
-table; 0 new axis-A tags needed (all candidate concepts - complex numbers, SI units, tensors/
-manifolds, rational/interval arithmetic, metric spaces, ring theory, group algebra - already
-existed in the schema); tags applied and index built (124 rows); both repos committed and
-pushed. Everything from this session is now fully committed and pushed - there is no
-in-flight work and no uncommitted state.
+**Complete (2026-09-06).** All 7 passes of the Java.ReadMeGenerator pipeline have been run
+across the entire corpus: 1457/1457 `.java` files carry a `docstate` block, every folder has
+a `ReadMe.md`, and the shared tag/index files (`raw-tags.tsv`, `D:/_/_AI/tags-schema.yaml`,
+`D:/_/_AI/tags-index.tsv`) are up to date. Verified via a full repo-wide
+`list-todo .` sweep, which returns exactly 8 rows - all confirmed tool false positives (see
+Tool quirks below), not real gaps. Everything is committed and pushed to both
+`D:/_/_Matthias/Code/Java` and `D:/_/_AI`.
 
-**2026-09-06: entire wave closed out, corpus audited as fully documented.** All 5 agents from
-the last wave finished and were verified/tagged/committed: `streamIO/object/enumer` (79 files,
-11 bugs), `streamIO/object/parser` (27 files, 12 bugs), `streamIO/integer` root+adapter+file+
-multiplex+pipe (56 files, 14 bugs), `streamIO/integer/encoding`+`filter`+`random` (62 files incl.
-`redundancy`/`stats` subfolders, 25 bugs), and `streamIO/integer/jdbc` incl. `dbTest` (39 files,
-17 bugs - `dbTest` was left out of the dispatched agent's scope and hand-documented by the
-orchestrator, being small). A read-only audit agent then reconciled the whole Claims table
-against the actual file tree: 1457 `.java` files total repo-wide; two apparent gaps
-(`encoding/redundancy`+`filter/stats`, and `graphic` root+example+implement+svg) turned out to
-be stale Claims-table file counts, not missing documentation - `list-todo` on both confirmed
-zero rows. Both counts corrected in the table above; **the Claims table now reconciles exactly
-to 1457/1457 files, and every batch is `done`. The full corpus documentation pass (all 7 passes)
-appears complete** - no unclaimed rows remain. A final independent `list-todo .` sweep across
-the whole repo root was run to confirm this (per-batch checks were always scoped to individual
-folders, never run as one repo-wide pass before): it returns exactly 8 rows, all of them
-already-known/confirmed tool false positives on methods whose simple name equals their return
-type's simple name (`AManifold.Interpolator`, `AND.testIt` - actually a distinct known
-false-positive pattern, see tool quirks - `AContainer.ChangeIterator`, `Function.findRootFast`,
-`Function.isBiUnique`, `RecordSet.main`, `Relation.getAt`, `Relation.isBiUnique`). **The entire
-7-pass documentation run across the whole corpus is genuinely complete.**
-
-**Optional follow-up, not yet applied:** `build-vocabulary` has been warning since partway
-through this session that the shared vocabulary (6421 axis-A tags) exceeds the recommended
-300-tag ceiling. A dry run of `compact-vocabulary /d/_/_AI/tags-schema.yaml
-/d/_/_AI/tags-index.tsv .` proposes stripping 1104 tag references and rewriting 1152
-`raw-tags.tsv` rows - a large structural change to shared state, well beyond "finish the
-documentation pass", so it was deliberately left unapplied pending explicit approval. Run with
-`--apply` only if/when asked to consolidate the vocabulary; review the dry-run diff first.
-
-**What's fully committed+pushed (both `D:/_/_Matthias/Code/Java` and `D:/_/_AI`):**
-- Milestone C of the companion CLI (`D:/_/_AI/skills/Java.ReadMeGenerator/ReadMeGenerator/`)
-  is **entirely built** - part 1 (repair/dedup: `list-corrupted`, `fix-doc-split`,
-  `fix-javadoc-escape`, `find-duplicates`, `annotate-pairs`) and part 2 (migration/scaffold:
-  `resolve-tag-conflicts`, `migrate-frontmatter`, `add-tree`/`remove-tree`,
-  `match-axis-b`/`apply-axis-b-matches`, `migrate-collaborators`,
-  `scaffold`/`scaffold-remarks`/`scaffold-collaborators`) both landed, 129 tests green, jar
-  rebuilt at `.../ReadMeGenerator/target/readmegenerator.jar`. `SKILL.md`'s milestone table
-  and `cli-reference.md` are up to date. **The `scaffold` command is now available** for
-  future batches but has not yet been adopted in the workflow below - still using
-  hand-authored Javadoc via Write/Edit per the existing per-batch agent prompts. Worth
-  reconsidering for efficiency in a future session, not required.
-- Claims-table batches closed out this session (Pass 1-3 + tags + HANDOFF + commit/push,
-  all `done` below): `graphic` (root+example+implement+svg, 34 bugs), `graphic/math3D`
-  (1 bug, +1 new axis-A tag `code/platonic_solids`), `graphic/mvc` (10 bugs, +4 new axis-A
-  tags `code/matrix_operations`/`code/vector_operations`/`code/texture_mapping`/`code/z_ordering`),
-  `math/matrix` (11 bugs, 0 new tags), `math/vector` (63 bugs, +1 new axis-A tag
-  `code/statistical_correlation`).
-
-**Next up - pick up from here:**
-`streamIO/copy` (206 files, 42863 lines), `function` (204 files, 27689 lines),
-`streamIO/object` (185 files, 38857 lines), `streamIO/integer` (157 files, 39243 lines) -
-these are large enough to likely need sub-batch splitting by line count (see how `math` and
-`graphic` were split into sub-rows earlier this session) before dispatching, to stay under
-the ~400k-token-per-agent budget in the `parallelism-rules` skill.
-
-**Standing instructions still in force:** "finish all passes of /Java.ReadMeGenerator on
-the whole corpus autonomously, only stop when problems occur" + "continue as before with up
-to 5 parallel agents" (reaffirmed via "build Milestone C, then continue"). The pause just
-now was an explicit user interruption, not a stopping problem - resume the autonomous run
-per those standing instructions once picked back up, following the exact orchestration
-pattern used throughout this session (see "up to 5 parallel agents" coordination rules
-below): orchestrator alone runs git/tags/HANDOFF edits; dispatched agents do Pass 1+2+3 only
-for their assigned folder, never spawn sub-agents of their own, and must independently
-verify `list-todo` returns zero rows before reporting done (not just `check-stale`).
-
-**2026-09-05: full-corpus autonomous run started** (main session, no sub-agents per
-parallelism rules). Working the Claims table below smallest-unclaimed-first, one batch
-(Pass 1+2 -> Pass 3 -> Pass 4-7) at a time, committing and pushing at each folder
-boundary. This section and the Claims table are the resume point if the run stops.
-
-Pilot folder `tools/` only, plus `knowledge/` (calibration) and now `streamIO/detector/`.
-The rest of the tree (1,455 `.java` files, 136 folders, minus what's now `done` below) is
-untouched.
-
-**2026-09-05 - accidental repo-wide `check-stale .` during the `(root)` batch, found and
-fully reverted.** Converging the `(root)` batch, `check-stale .` and `extract-tags .` were
-run with `.` (whole-repo scope) instead of being scoped to the 9 root files - `.` recurses
-the entire tree. This inserted a `<!-- docstate -->` block (`pass: 2, stale: false`) into
-~1,361 files outside any claimed folder (e.g. `aspect/AAspect.java`, whose Javadoc is still
-the unfilled IntelliJ/Eclipse template), and scaffolded ~1,790 stray tag rows via
-`extract-tags`. **This was NOT pre-existing legacy content** - `git diff` confirmed every
-inserted block was a fresh addition against HEAD, i.e. caused by this session, not
-something dating from before this run. Recovery: `git status --short | wc -l` (1,373) minus
-the 12 legitimate `(root)`-batch files identified the exact 1,361-file blast radius; those
-were stashed (`git stash push --pathspec-from-file=...`, message starting "accidental
-repo-wide check-stale side effect") and, since the stash's own working-tree revert failed
-on a Windows command-line-length limit, restored to HEAD via `git checkout HEAD
---pathspec-from-file=<chunk>` in 100-file chunks (the stash entry is kept as a redundant
-safety net, not needed for recovery - the content matches HEAD exactly). Verified after:
-`git grep -l docstate -- '*.java' | wc -l` = 100, matching the batches genuinely completed
-so far (no contamination remains). **Lesson for every future batch: always scope
-`check-stale`/`extract-tags`/`update-readme --recurse` to the specific claimed file(s) or
-folder, never to `.` or the repo root, unless the batch genuinely is the whole repo.**
-
-**Adopted policy, going forward: spot-check docstate content when claiming a folder,
-don't trust `stale: false` alone.** Before treating any folder's files as already done
-(low `Documented`-column-implied remaining work, or a `list-todo`/`check-stale` empty
-result), read a sample of the actual Javadoc content to confirm it is genuine authored
-prose, not unfilled template boilerplate - `check-stale` only judges Javadoc *presence*, not
-quality, so a placeholder-only class can already read as `stale: false`.
-
-| Scope | Pass 1+2 | Pass 3 | Pass 4-7 | Notes |
-|---|---|---|---|---|
-| `tools/mementos/` | done | done | done | 2 interfaces |
-| `tools/threads/` | done | done | done | 1 class, 2 defects flagged; no diagram (single type) |
-| `tools/` (root of folder) | done | done | done | 16 types across 13 files |
-| everything else | not started | not started | not started | see Claims below |
+**Optional follow-up, not applied:** the shared axis-A vocabulary (6421 tags) exceeds its
+recommended 300-tag ceiling. A dry run of
+`compact-vocabulary /d/_/_AI/tags-schema.yaml /d/_/_AI/tags-index.tsv .` proposes stripping
+1104 tag references and rewriting 1152 `raw-tags.tsv` rows - left unapplied since it's a large
+structural change to shared state, separate from finishing the documentation pass. Review the
+dry-run diff before running with `--apply`.
 
 Tooling: `D:/_/_AI/skills/Java.ReadMeGenerator/ReadMeGenerator/target/readmegenerator.jar`,
-built with the colocated Maven Wrapper. Milestones A and B are built; there is no
-`scaffold` and no `list-dependencies` yet (Milestone C); `consolidate-vocabulary` and
-`redistribute-merges` were pulled forward and are built.
+built with the colocated Maven Wrapper. All milestones (A/B/B+/C) are built.
 
 ## Claims
 
-One batch at a time. Claim a row before starting, push the claim immediately, and commit
-at each batch boundary. Batches are top-level folders, with `streamIO` split one level
-deeper because it alone holds 46% of the corpus. `Lines` and `Documented` are measured,
-not estimated; `Documented` counts files carrying a `docstate` block.
+Every batch below is `done`. `Lines` and `Documented` are measured, not estimated;
+`Documented` counts files carrying a `docstate` block.
 
-**2026-09-05: switched to up to 5 parallel agents, per explicit user instruction.**
-Coordination to avoid the concurrent-write hazards the tags pipeline and git both have
-(`cli-reference.md`: several Pass 4-7 commands are explicitly not locked and must never run
-concurrently against the same file):
-- The orchestrator alone claims/unclaims Claims-table rows, runs Pass 4-7
-  (`extract-tags`/`build-vocabulary`/`apply-tags`/`build-index` against the shared
-  `raw-tags.tsv`, `tags-schema.yaml`, `tags-index.tsv`), edits `HANDOFF.md`, and runs every
-  git command (add/commit/push). Dispatched agents do none of that.
-- Each agent does Pass 1+2 (Javadoc) and Pass 3 (folder `ReadMe.md`) for its own assigned
-  folder(s) only, then reports back: Javadoc summary of what changed, any bugs found
-  (file/method/line/description/severity, never fixed - only flagged inline and reported),
-  and suggested tag rows (axis-A candidates, reusing schema tags where possible; axis-B
-  concepts; facets) for the orchestrator to merge into `raw-tags.tsv` and run Pass 4-7 on
-  afterward, one folder at a time (sequentially, even though the agents ran in parallel).
-- Every agent must scope `check-stale`/`update-readme`/`extract-tags` to its own assigned
-  folder path explicitly - never to `.` or the repo root - per the accidental repo-wide
-  `check-stale .` run recorded above.
+| Batch | Files | Lines | Documented | Status |
+|---|--:|--:|--:|---|
+| `streamIO/copy` (root+boole+groupM+monoid+order+primitiveOp+shift) | 82 | 11329 | 82 | done |
+| `streamIO/copy/group` | 124 | 31328 | 124 | done |
+| `function` (root+index+real+string+vector+byref) | 98 | 12899 | 98 | done |
+| `function/derive` | 106 | 14586 | 106 | done |
+| `streamIO/object` (root+backTrack+filterIn+filterInOut+filterOut+integer+yaml+json) | 79 | 13501 | 79 | done |
+| `streamIO/object/enumer` | 79 | 18229 | 79 | done |
+| `streamIO/object/parser` | 27 | 6942 | 27 | done |
+| `streamIO/integer` (root+adapter+file+multiplex+pipe) | 56 | 15359 | 56 | done |
+| `streamIO/integer/encoding`+`filter`+`random` (incl. `encoding/redundancy`+`filter/stats`) | 62 | 10273 | 62 | done |
+| `streamIO/integer/jdbc` (excl. `dbTest/`) | 31 | 11899 | 31 | done |
+| `streamIO/integer/jdbc/dbTest` | 8 | ~1300 | 8 | done |
+| `graphic` (root+example+implement+svg) | 55 | 14297 | 55 | done |
+| `graphic/math2D`+`graphic/ms3d` | 18 | 3525 | 18 | done |
+| `graphic/math3D` | 32 | 6425 | 32 | done |
+| `graphic/mvc` | 26 | 4789 | 26 | done |
+| `math` (root+algorithm+integration+wavelet) | 18 | 3123 | 18 | done |
+| `math/fit`+`math/refiner` | 27 | 3644 | 27 | done |
+| `math/minimizer` | 11 | 3043 | 11 | done |
+| `math/matrix` | 13 | 15603 | 13 | done |
+| `math/vector` | 15 | 33025 | 15 | done |
+| `structure` | 52 | 4933 | 52 | done |
+| `streamIO/real` | 51 | 6801 | 51 | done |
+| `tester` | 49 | 3327 | 49 | done |
+| `technology` | 41 | 9400 | 41 | done |
+| `synch` | 32 | 4243 | 32 | done |
+| `graphs` | 31 | 11258 | 31 | done |
+| `asynch` | 28 | 3052 | 28 | done |
+| `streamIO/(root)` | 28 | 8003 | 28 | done |
+| `knowledge` | 27 | 3363 | 27 | done |
+| `stringOp` | 16 | 4579 | 16 | done |
+| `aspect` | 15 | 2493 | 15 | done |
+| `flow` | 14 | 1022 | 14 | done |
+| `reflect` | 12 | 2492 | 12 | done |
+| `streamIO/diffPatch` | 11 | 2895 | 11 | done |
+| `sound` | 10 | 1030 | 10 | done |
+| `tools` | 17 | 3468 | 17 | done |
+| `(root)` | 9 | 1073 | 9 | done |
+| `streamIO/asyncMessage` | 7 | 541 | 7 | done |
+| `analysis` | 6 | 319 | 6 | done |
+| `streamIO/adapter` | 6 | 435 | 6 | done |
+| `streamIO/vector` | 6 | 947 | 6 | done |
+| `streamIO/exception` | 5 | 536 | 5 | done |
+| `streamIO/fileSystem` | 4 | 288 | 4 | done |
+| `streamIO/testing` | 3 | 433 | 3 | done |
+| `swing` | 3 | 679 | 3 | done |
+| `persistences` | 2 | 306 | 2 | done |
+| `streamIO/character` | 2 | 244 | 2 | done |
+| `streamIO/factory` | 2 | 205 | 2 | done |
+| `streamIO/detector` | 1 | 102 | 1 | done |
 
-| Batch | Files | Lines | Documented | Status | Claimed by |
-|---|--:|--:|--:|---|---|
-| `streamIO/copy` (root+boole+groupM+monoid+order+primitiveOp+shift) | 82 | 11329 | 82 | done | agent-copy-misc |
-| `streamIO/copy/group` | 124 | 31328 | 124 | done | agent-copy-group |
-| `function` (root+index+real+string+vector+byref) | 98 | 12899 | 98 | done | agent-function-misc |
-| `function/derive` | 106 | 14586 | 106 | done | agent-function-derive |
-| `streamIO/object` (root+backTrack+filterIn+filterInOut+filterOut+integer+yaml+json) | 79 | 13501 | 79 | done | agent-object-misc |
-| `streamIO/object/enumer` | 79 | 18229 | 79 | done | agent-object-enumer |
-| `streamIO/object/parser` | 27 | 6942 | 27 | done | agent-object-parser |
-| `streamIO/integer` (root+adapter+file+multiplex+pipe) | 56 | 15359 | 56 | done | agent-integer-core |
-| `streamIO/integer/encoding`+`filter`+`random` (incl. `encoding/redundancy`+`filter/stats`) | 62 | 10273 | 62 | done | agent-integer-encoding |
-| `streamIO/integer/jdbc` (excl. `dbTest/`) | 31 | 11899 | 31 | done | agent-integer-jdbc |
-| `streamIO/integer/jdbc/dbTest` | 8 | ~1300 | 8 | done | orchestrator (hand-authored, small batch) |
-| `graphic` (root+example+implement+svg) | 55 | 14297 | 55 | done | agent-graphic-misc |
-| `graphic/math2D`+`graphic/ms3d` | 18 | 3525 | 18 | done | agent-graphic-2d |
-| `graphic/math3D` | 32 | 6425 | 32 | done | agent-graphic-math3D |
-| `graphic/mvc` | 26 | 4789 | 26 | done | agent-graphic-mvc |
-| `math` (root+algorithm+integration+wavelet) | 18 | 3123 | 18 | done | agent-math-core |
-| `math/fit`+`math/refiner` | 27 | 3644 | 27 | done | agent-math-fit |
-| `math/minimizer` | 11 | 3043 | 11 | done | agent-math-minimizer |
-| `math/matrix` | 13 | 15603 | 13 | done | agent-math-matrix |
-| `math/vector` | 15 | 33025 | 15 | done | agent-math-vector (+2 follow-up agents for VectorChar/Long/Short/Int/Float, then VectorDouble) |
-| `structure` | 52 | 4933 | 52 | done | agent-structure |
-| `streamIO/real` | 51 | 6801 | 51 | done | agent-streamIO-real |
-| `tester` | 49 | 3327 | 49 | done | agent-tester |
-| `technology` | 41 | 9400 | 41 | done | agent-technology |
-| `synch` | 32 | 4243 | 32 | done | agent-synch |
-| `graphs` | 31 | 11258 | 31 | done | agent-graphs |
-| `asynch` | 28 | 3052 | 28 | done | agent-asynch |
-| `streamIO/(root)` | 28 | 8003 | 28 | done | agent-streamIO-root |
-| `knowledge` | 27 | 3363 | 27 | done | main |
-| `stringOp` | 16 | 4579 | 16 | done | agent-stringOp |
-| `aspect` | 15 | 2493 | 15 | done | agent-aspect |
-| `flow` | 14 | 1022 | 14 | done | agent-flow |
-| `reflect` | 12 | 2492 | 12 | done | agent-reflect |
-| `streamIO/diffPatch` | 11 | 2895 | 11 | done | agent-diffPatch |
-| `sound` | 10 | 1030 | 10 | done | agent-sound |
-| `tools` | 17 | 3468 | 17 | done | - |
-| `(root)` | 9 | 1073 | 9 | done | main |
-| `streamIO/asyncMessage` | 7 | 541 | 7 | done | main |
-| `analysis` | 6 | 319 | 6 | done | main |
-| `streamIO/adapter` | 6 | 435 | 6 | done | main |
-| `streamIO/vector` | 6 | 947 | 6 | done | main |
-| `streamIO/exception` | 5 | 536 | 5 | done | main |
-| `streamIO/fileSystem` | 4 | 288 | 4 | done | main |
-| `streamIO/testing` | 3 | 433 | 3 | done | main |
-| `swing` | 3 | 679 | 3 | done | main |
-| `persistences` | 2 | 306 | 2 | done | main |
-| `streamIO/character` | 2 | 244 | 2 | done | main |
-| `streamIO/factory` | 2 | 205 | 2 | done | main |
-| `streamIO/detector` | 1 | 102 | 1 | done | main |
+## Tool quirks (still live - apply if resuming this pipeline)
 
-## Calibration - measured cost of one batch
+- **`check-stale`/`list-todo`/`apply-tags` all read only their first path argument** when
+  given multiple space-separated paths, silently skipping the rest. Always invoke per-file or
+  scope to a single folder.
+- **`check-stale` convergence (`fresh`) is not a completeness gate.** It only tracks whether
+  the docstate digest matches current content, and will report `fresh` for a doc block with no
+  extractable summary sentence. Only `list-todo <path>` returning zero data rows proves a batch
+  is done; run it as an independent final check.
+- **`list-todo` has a persistent false positive when a method's simple name equals its return
+  type's simple name** (e.g. `AManifold.Interpolator(IManifold)` returning `Interpolator`;
+  `AContainer.ChangeIterator()`; also `Function.findRootFast`, `Function.isBiUnique`,
+  `RecordSet.main`, `Relation.getAt`, `Relation.isBiUnique`) - reports "no Javadoc comment"
+  despite a valid one. Confirm via direct source read before treating as a real gap.
+- **`list-todo` has a separate, unrelated false positive on `streamIO/object/AND.java:AND.testIt()`.**
+- **`extract-tags`/`build-index` on a folder recurse into every sibling subfolder**, and a
+  `grep -v "/subfolder/"` filter (with a trailing slash) does **not** catch that subfolder's own
+  bare folder-level scaffold row (no trailing slash). When splitting a batch across sibling
+  folders owned by different agents, filter out the bare folder path too, or a sibling's
+  folder-level tags/concept can get silently overwritten with the wrong batch's data.
+- **`check-stale` can corrupt a docstate block via duplicated comment fragments** (seen on
+  `streamIO/copy/TestCopy.java`) - inspect and manually clean up if it recurs.
+- Not every file in this tree is UTF-8 (`knowledge/IdKey.java` is Latin-1) - read/write with
+  the file's existing encoding. The tree is CRLF throughout - match on LF, write back CRLF, and
+  never rewrite a whole file with a naive text-mode Python script (silently converts to LF).
 
-`knowledge/` was documented end to end (Pass 1+2 on all 26 types, Pass 3 ReadMe, tag rows)
-as a calibration batch on 2026-09-05.
+## Conventions used throughout
 
-| Measure | Value |
-|---|--:|
-| Files | 26 |
-| Lines of source | 2,595 |
-| Tokens, batch only | ~90,000 |
-| Tokens, including the one-time reading of the four pass reference files | ~120,000 |
-| Tokens per line of source | ~35 |
-| Defects flagged | 12, of which 9 real (4 withdrawn, 1 found later under test) |
-
-Extrapolated to the remaining 311,757 lines: **~11M tokens**, plus roughly 30k per session
-for re-reading the pass references. That is the low end of the earlier 10-17M estimate.
-Treat it as a floor rather than a forecast: `knowledge/` is dense, small, heavily
-pre-commented legacy code, and the large batches (`math` at 697 lines per file, `streamIO`
-at 46% of the corpus) have not been sampled.
-
-## Tool quirks found while running the batch
-
-- **`check-stale` reads only its first path argument.** Passing seven files silently
-  processed one and reported the other six as clean. Loop per file. Confirmed again
-  2026-09-05: `check-stale streamIO/A.java streamIO/B.java` reports only whichever file is
-  listed first, in either order - never assume a multi-path invocation covered every path.
-- **`check-stale` convergence is not a completeness gate - `list-todo` is.**
-  `check-stale` only tracks whether the docstate digest matches current content; it will
-  happily report `fresh` for a file that still has a doc block with no extractable summary
-  sentence (e.g. `@return`-only Javadoc, or Javadoc that starts mid-tag). Four batches this
-  session (`graphs`, `stringOp`, `synch`, `streamIO/(root)`) were each reported "fully
-  converged" by their agent on the strength of `check-stale` alone, but `list-todo` run
-  independently afterward still showed real gaps in all four (over 100 rows in `graphs`
-  alone). Treat a batch as done only once `list-todo <path>` returns zero data rows, run
-  as its own separate check after `check-stale` looks clean - never take `check-stale`
-  convergence as sufficient proof by itself.
-- **Never write `*/` inside a `// TODO:` marker.** A marker quoting the token landed inside
-  an unterminated block comment and closed it, turning the rest of the line into code;
-  `list-stale` then reported a lexical error and would have skipped the file forever. The
-  per-file parse gate caught it immediately, which is what that gate is for.
-- **Not every file in this tree is UTF-8.** `knowledge/IdKey.java` is Latin-1; a UTF-8 read
-  of it fails outright. Read and write with the encoding the file already has.
-- **Match on LF, write back CRLF.** The tree is CRLF, so a patch script that matches
-  multi-line strings has to normalise first or every match silently fails.
-- **`apply-tags` shares the same first-path-only quirk as `check-stale`/`list-todo`.**
-  Confirmed 2026-09-05 on `streamIO/copy`: passing 5 root file paths in one `apply-tags`
-  call wrote tags for only 1 of them (0 targets for the file that happened to already be
-  tagged, "unchanged" for it, real writes for the rest) - always invoke per-file.
-- **`check-stale` can corrupt a docstate block via duplicated comment fragments.**
-  `streamIO/copy/TestCopy.java`'s docstate block had each line prefixed with a duplicated
-  `//import Stream.*` fragment after a `check-stale` run - manually rewritten clean by the
-  agent. Worth a closer look if it recurs elsewhere.
-- **`list-todo` has a persistent false positive on `streamIO/object/AND.java:AND.testIt()`**,
-  reporting "no Javadoc comment" even though the method has a valid one-line Javadoc -
-  confirmed via `list-corrupted` and direct source inspection. Treat this one specific row
-  as a known tool limitation, not an outstanding documentation gap.
-- **`list-todo` has another false positive when a method's simple name equals its return
-  type's simple name.** `streamIO/copy/group/ring/metric/body/vector/AManifold.java:381`
-  (`Interpolator(IManifold)`, returning an `Interpolator`) reports "no Javadoc comment"
-  despite a valid one - confirmed via direct source read (lines 375-390). Suspected root
-  cause is the docstate/Javadoc matcher confusing the method with its own return type. The
-  same pattern recurred on `AContainer.ChangeIterator()` and 5 others in
-  `streamIO/object/enumer` - treat any "no Javadoc comment" row on a method whose name
-  equals its return type as a known false positive after a source-read check, not a gap.
-- **`extract-tags`/`build-index` on a folder recurse into every sibling subfolder, and a
-  `grep -v "/subfolder/"` filter (with a trailing slash) does NOT catch that subfolder's own
-  folder-level scaffold row**, because that row's path has no trailing slash
-  (`streamIO/integer/encoding` vs `streamIO/integer/encoding/BigEndianReader.java`). When
-  splitting a multi-agent batch across sibling folders (e.g. `streamIO/integer` root vs its
-  `encoding`/`filter`/`random`/`jdbc` subfolders, each owned by a different agent), filtering
-  scaffold rows to isolate one agent's scope must exclude the bare folder path too, not just
-  `/subfolder/`-prefixed rows - otherwise the sibling's folder-level tags/concept get silently
-  overwritten with the wrong batch's data. Caught and fixed via `git diff` review on the
-  `streamIO/integer` core batch (2026-09-06): `encoding`/`filter`/`random`/`jdbc` folder rows
-  had been given the root batch's generic tags before the mistake was caught, reverted by
-  deleting the 4 duplicate raw-tags.tsv rows and re-running `apply-tags` on the 3 affected
-  folders (the 4th, `jdbc`, had no `ReadMe.md` yet so nothing to revert there).
-
-## Decisions
-
-- **Baseline commit before any documentation write**, so every Javadoc and ReadMe edit is
-  reviewable as a diff. The `.class` files alongside sources stay untracked via the
-  pre-existing `.gitignore`.
-- **Line endings are preserved, not normalised.** This tree is CRLF. A Python strip script
-  run during tool development converted 16 files to LF and turned a 114-line addition into
-  a 2,509-line diff; the content was restored byte-exact from the pre-tool commit. Use
-  targeted edits, never a whole-file rewrite.
-- **Banner comments, `@author`, `@version` and `Created on` lines are kept** in every
-  rewritten class comment. Only the `Title: X` line is dropped, since it repeats the type
-  name and carries nothing else. `Description:` becomes the summary sentence.
-- **Secondary non-public top-level types are documented in place** (`LockTester` in
-  `LockedSimple.java`; `ThreadLockTester` and `Monitor` in `ThreadLock.java`). Moving them
-  would be a refactor, not documentation.
-- **No `## Quick Start` at the repository root** — there is no build file to describe. The
-  root `ReadMe.md` says so in prose instead.
-- **`check-stale` is run to convergence**, not twice: an edited summary reports `stale` on
-  run 1, `fresh` on run 2, nothing on run 3.
-- **Edit files with the editor tool, never with a Python rewrite.** Python's `read_text`
-  applies universal newlines and `write_text` then emits LF, silently converting a CRLF
-  file. It caught `tools/LockAble.java` (a 38-line change became a 101-line rewrite) after
-  it had already caught 16 files earlier. If a script is unavoidable, read and write
-  **bytes**, never text.
+- Banner comments, `@author`, `@version` and `Created on` lines are kept in every rewritten
+  class comment; only the redundant `Title: X` line is dropped, and `Description:` becomes the
+  summary sentence.
+- Secondary non-public top-level types are documented in place, not moved to their own file.
+- Bugs are flagged inline (`// TODO: LOGIC:` / `// TODO: SECURITY:`, always outside the Javadoc
+  block) and recorded below - never fixed in the same pass.
+- Multi-agent batches: the orchestrator alone runs git/tags/HANDOFF; each dispatched agent
+  handles Pass 1+2+3 for its own assigned folder only, never spawns its own sub-agents, and
+  must independently verify `list-todo` returns zero rows before reporting done.
 
 ## Bugs Found
 
-Flagged during documentation, never fixed in the same pass - fixing is a separate,
-explicitly authorized task. The `Status` column records what happened afterwards. See the
-matching `// TODO: LOGIC:` / `// TODO: SECURITY:` marker at each line for anything still
-open.
-
-Every row below was fixed under test on 2026-09-05, pinned by two suites that need no
-build file, no test framework and no database:
+Flagged during documentation, never fixed in the same pass - fixing is a separate, explicitly
+authorized task. See the matching `// TODO: LOGIC:` / `// TODO: SECURITY:` marker at each line
+for anything still open. The `knowledge/` and `tools/threads/` rows were fixed and verified
+under test during an early pilot batch; everything else is still open.
 
 ```
 javac -d out knowledge/*.java     && java -cp "out;." knowledge.KnowledgeTest
 javac -d out tools/threads/*.java && java -cp "out;." tools.threads.TimeOuterTest
 ```
 
-`TimeOuterTest` is the partial case worth knowing about. The interrupt-count defect is
-directly observable and is tested for what it does. Unsafe publication is a data race and
-cannot be reproduced on demand, so those checks pin the structural properties whose absence
-made the race possible - that no constructor starts the monitoring thread, and that the
-state it reads is final - rather than pretending to observe the race itself.
-
-Every one of those checks was confirmed to fail against the pre-fix sources before the fix
-landed, by compiling `git show HEAD:knowledge/*.java` into a separate tree and running the
-same harness against it. A test that has not been seen red proves nothing.
-
 | File Path | Class | Method | Line | Description | Severity | Status |
 |---|---|---|---|---|---|---|
-| tools/threads/TimeOuter.java | TimeOuter | run() | - | Class contract said the monitored Thread is interrupted "after the given TimeOut" (one shot), but the loop re-interrupted it every `sleepTime` while it stayed alive; `testIt()` had to clear `doInterrupt` by hand to get the documented behaviour. Confirmed red at 6 interruptions where 1 was contracted. `run()` is now one-shot and the demo no longer juggles the flag. | Medium | **fixed** |
-| tools/threads/TimeOuter.java | TimeOuter | TimeOuter(Thread, long) | - | `this` was published to a new Thread from inside the constructor via `new Thread(this).start()`, and the fields that Thread reads were non-final and unsynchronized. Construction and starting are now separate: the constructor is private and starts nothing, `monitor(Thread, long)` starts the thread after construction completes, and all three fields are final. | Medium | **fixed** |
-| knowledge/DBObjectFactory.java | DBObjectFactory | insertObject(PersistAble) | - | The column list is built keys-then-fields ascending, but the value list appended fields first and then keys, each descending, so every value landed in the wrong column. Confirmed against the emitted SQL: `INSERT INTO MetricAttribute(StatusID,SubjectID,TypeID,Value) VALUES (4.5,11,22,33)`. | High | **fixed** |
-| knowledge/DBObjectFactory.java | DBObjectFactory | Condition(IPrimaryKey, String), insertObject, updateObject | - | Values were concatenated into the SQL text unquoted and unescaped, so a string containing an apostrophe produced invalid SQL and a hostile one could close the literal and append clauses. Now routed through `DBObjectFactory.literal(Object)`: numbers bare, everything else single-quoted with embedded quotes doubled. | High | **fixed** |
-| knowledge/DBObjectFactory.java | DBObjectFactory | updateObject(PersistAble) | - | Appended `STR_WHERE_` and then a `Condition()` that already opens with `WHERE`, emitting `SET Value=4.5  WHERE  WHERE (TypeID=11)`. Not flagged during documentation; found by inspecting the captured SQL. | High | **fixed** |
-| knowledge/Objekt.java | Objekt | getType() | - | Keyed by `StatusID` instead of `TypeID` and routed through `FactoryStatus` rather than `FactoryType`, so it resolved and cached the Status row as this object's Type whenever the two IDs differ. | High | **fixed** |
+| tools/threads/TimeOuter.java | TimeOuter | run() | - | Class contract said the monitored Thread is interrupted "after the given TimeOut" (one shot), but the loop re-interrupted it every `sleepTime` while it stayed alive. | Medium | **fixed** |
+| tools/threads/TimeOuter.java | TimeOuter | TimeOuter(Thread, long) | - | `this` was published to a new Thread from inside the constructor, and the fields that Thread reads were non-final and unsynchronized - unsafe publication data race. | Medium | **fixed** |
+| knowledge/DBObjectFactory.java | DBObjectFactory | insertObject(PersistAble) | - | The column list is built keys-then-fields ascending, but the value list appended fields first then keys, each descending, so every value landed in the wrong column. | High | **fixed** |
+| knowledge/DBObjectFactory.java | DBObjectFactory | Condition(IPrimaryKey, String), insertObject, updateObject | - | Values were concatenated into SQL text unquoted and unescaped - SQL injection. | High | **fixed** |
+| knowledge/DBObjectFactory.java | DBObjectFactory | updateObject(PersistAble) | - | Appended `STR_WHERE_` and then a `Condition()` that already opens with `WHERE`, emitting a doubled `WHERE WHERE`. | High | **fixed** |
+| knowledge/Objekt.java | Objekt | getType() | - | Keyed by `StatusID` instead of `TypeID` and routed through `FactoryStatus` rather than `FactoryType`. | High | **fixed** |
 | knowledge/BasicAttribute.java | BasicAttribute | getType() | - | Same defect as `Objekt.getType`. | High | **fixed** |
-| knowledge/CachedValue.java | CachedValue | assertIsDirty(boolean) | - | The null test was inverted: `calculator.run()` sat inside the `calculator == null` branch, so the method threw NullPointerException when no calculator was set and never invoked one that was. | High | **fixed** |
-| knowledge/Status.java | Status | finalize() | - | Empty in both branches while `DbCachedFactory`'s weak cache was documented on the assumption that it wrote back. The finalizer is removed rather than implemented: a finalizer runs on the collector's thread, arbitrarily late, and possibly never. Both class comments now say plainly that a collected object is not persisted. | Medium | **fixed** |
-| knowledge/DbCachedFactory.java | DbCachedFactory | DbCachedFactory(Connection, PersistAble) | - | The `SELECT Max(ID)` failure was swallowed whole, leaving `MaxID` at 0 and making a failed query indistinguishable from a table whose largest ID really is 0. The constructor already declared `SQLException`; it now propagates. | Medium | **fixed** |
-| knowledge/IdKey.java | IdKey | newInstance(IPrimaryKey) | - | The block comment disabling the dead overload was never closed, so it ran on through the following Javadoc and swallowed it. Closed; `list-todo knowledge` is now empty. | Low | **fixed** |
-| knowledge/DBObjectFactory.java | DBObjectFactory | DBObjectFactory(Connection, PersistAble) | - | `strDBFieldNames` is `ARRAY_TO_STRING(FieldNames, ",")` with the last character stripped, which throws `StringIndexOutOfBoundsException` on a prototype whose `Fields()` is empty (verified: the join returns "" and `substring(0, -1)` throws). No current class has empty Fields, so it is latent. Noted while fixing the insert order; deliberately not fixed, as it is outside the flagged set. | Low | open |
-| knowledge/DBObjectFactory.java | DBObjectFactory | DBObjectFactory(Connection, PersistAble) | - | The column-name strings are built from `FieldNames()`/`KeyNames()`, the Java field names, rather than `DBFieldNames()`/`DBKeyNames()`. Every class in this package defines the two as the same array, so it is currently harmless, but it defeats the point of having separate DB names. Noted while fixing; not fixed, as it is outside the flagged set. | Low | open |
-| knowledge/MetricAttribute.java, StringAttribute.java, TimeAttribute.java, EnumAttribute.java | - | - | - | Originally flagged High: the static `Fields` array seeded from an empty array rather than `BasicAttribute.Keys`, said to drop the inherited key columns. **Withdrawn - not a defect.** `Fields` means "non-key data columns" here and the keys arrive separately from `primaryKey().Keys()`; at runtime `MetricAttribute` reports `Fields=[Value]` and `Keys=[StatusID, SubjectID, TypeID]`, which covers the table exactly. Only the inherited javadoc phrase "including Parent Fields" was wrong. | - | **withdrawn** |
-| persistences/PersistedObject.java | PersistedObject | PersistedObject(String) | 165 | Checks the field `ID` (always null at that point, before it is ever assigned) instead of the parameter `ID_`, so the guard is always false and `setId(ID_)` is never called from this constructor. Every instance built via `new PersistedObject(ID_)` or `PersistedObject(ResultSet)` (which delegates to it) keeps a `null` ID. | High | open |
-| persistences/PersistedObject.java | PersistedObject | (field `objects`) | 41 | The static registry HashMap is never initialized (`= new HashMap()` missing), so `getObject(String)` and `setId(String)` both throw `NullPointerException` on the first real use. Currently unreached in practice only because the constructor bug above never calls `setId`. | High | open |
-| swing/HashTreeNode.java | HashTreeNode | equals(Object) | 328 | When this Node's `userObject` is null (the Empty Constructor allows it) and `arg` is a non-null Object that is not a `DefaultMutableTreeNode`, the final branch calls `userObject.equals(arg)` on a null `userObject` and throws `NullPointerException`. | Low | open |
-| streamIO/testing/ATestCase.java | ATestCase | test(Object, Method, IIStreamOut, IIStreamOut, IIStreamOut) | 214 | Both branches of the `InvocationTargetException` handler log/rethrow the wrapping `x` instead of `inner` (`x.getTargetException()`), the exception the test method actually threw. Every reflectively-run test failure is reported with the reflection wrapper's stack trace instead of the real cause. | Medium | open |
-| streamIO/fileSystem/FileIterator.java | FileIterator | isValid() | 76 | Returns `!available`, inverted relative to its own `available` field and to the sibling `FileBackupIterator.isValid()` (which returns `available` directly): reports "valid" only once exhausted. | Medium | open |
-| streamIO/fileSystem/FileIterator.java | FileIterator | currItem() | 100 | Always returns `null`: `nextItem()` never assigns the `currItem` field before returning its result, unlike the sibling `FileBackupIterator.nextItem()` which does `return filter = new FileOutputStream(...)`. | Low | open |
-| streamIO/exception/ChainedException.java | ChainedException | printStackTrace(PrintStream) | 136 | The `PrintWriter` wrapping the given `PrintStream` is never flushed or closed, so the printed trace can remain buffered and never reach the stream. The sibling `BaseException.printStackTrace(PrintStream)` does the identical job but explicitly calls `pw.close()`, commented "important to flush!". | Low | open |
-| streamIO/vector/CombinationStream2.java | CombinationStream2 | (field `L`) | 34 | The Logger is constructed with `CombinationStream.class` instead of `CombinationStream2.class` (copy-paste from the sibling class), so every message this Logger writes is mislabeled as coming from `CombinationStream`. | Low | open |
-| streamIO/adapter/CValue2StreamIn.java | CValue2StreamIn | CValue2StreamIn() | 48 | The only constructor never assigns the `cValue` field, and there is no other constructor or setter to do so - unlike every sibling adapter in this package, which takes and assigns its wrapped dependency in its constructor. `cValue` stays null and `nextItem()` throws `NullPointerException` on first use. | High | open |
-| DirToXml.java | DirToXml | execRecursive(File, PrintWriter, String[], String) | 71 | `SimpleDateFormat("yyyy-mm-dd'T'hh:MM:ss")` swaps the month and minute Format Letters (lowercase `mm` is minutes, uppercase `MM` is month), so the written date's Month field shows the current minute-of-hour and its Minute field shows the month number. | Medium | open |
-| EchoFile.java | EchoFile | main(String[]) | 63 | The `default` case of the argument-count switch (0 or 3+ args) prints the Syntax message but does not return, so `echoFile(args[0], args[1])` afterward throws `ArrayIndexOutOfBoundsException` instead of exiting cleanly. | Low | open |
-| FileHex.java | FileHex | main(String[]) | 37 | In the `IOException` catch block, `e.fillInStackTrace()` is called but its result is discarded and `e` is never used again - dead code, almost certainly meant to enrich `n` (the Exception actually thrown) instead. | Low | open |
-| FilterFind.java | FilterFind | read() | 172 | `breakCountDown` defaults to 0 and is never set in the constructor, so on the very first call `--breakCountDown == -1` is immediately true and `read()` returns EOF before ever reading from the wrapped Stream or checking for the Separator. `main()`'s `while (streamIn_.available() > 0)` loop then never terminates, since the underlying Stream is never actually consumed through this filter. | Medium | open |
-| FixRecordScrambler.java | FixRecordScrambler | main(String[]) | 149 | The 7 documented parameters require `args.length==7` and are read up to `args[6]`, but the guard only warns (without returning) when `args.length!=6` - passing exactly 6 arguments, which satisfies neither the guard nor the actual requirement, throws `ArrayIndexOutOfBoundsException` at `args[6]` instead of showing the Syntax message. | Low | open |
-| reflect/Type.java | Type | Type(Class) | 126 | Checks the field `cls` (still `null` at that point) instead of the constructor argument `cls_`, so every call to `new Type(...)` throws `NullPointerException` - including the static `TYPE` initializers in `IThing`/`IIndividual`/`IIntangible`/`IMathThing`/`IType`. Should be `if (!cls_.isInterface())`. | High | open |
-| reflect/Type.java | Type | isAssignableFrom(Class) | 304 | The parameter `cls` shadows the field `this.cls`, so this calls `cls.isAssignableFrom(cls)` - the argument compared to itself - always `true`, regardless of the wrapped Type's actual `Class`. Should be `return this.cls.isAssignableFrom(cls);`. | Medium | open |
-| streamIO/diffPatch/VersionTree.java | VersionTree | LESS(int[], int[]) | ~107 | Lexicographic comparison only early-returns `true` on `arr1[i] < arr2[i]`, never early-returns `false` when `arr1[i] > arr2[i]` at an earlier, decisive index - e.g. `LESS([5,1],[3,9])` returns `true` even though `[5,1] > [3,9]`. Used in `readField()` to decide which Version a Branch tag points to after deserialization; can silently point a tag at the wrong Version. | Medium-High | open |
-| streamIO/diffPatch/VersionTree.java | VersionTree | writeTo() | ~174 | When more than 10 non-Branch Tags exist, the resize block computes a doubled `tmp` array but never assigns it back to `tags`, and the resize check is off-by-one. Serializing a Tree with more than 10 real Tags throws `ArrayIndexOutOfBoundsException` on the 11th. | High | open |
-| streamIO/diffPatch/VersionTree.java | VersionTree | addVersion(DiffSet) | ~384 | `(currDiff.getBranch() != diff.getBranch())` is duplicated verbatim as both clauses of an `&&`, almost certainly meant to be a `.equals()` check - relies on String reference identity, so after deserialization (fresh Branch-name Strings) a legitimate same-Branch append can be misidentified as a different Branch and throw a spurious `VersionException`. | Medium | open |
-| flow/push/MultiCaster.java | MultiCaster | putA(Object) | ~60-65 | Creates one new unpooled `Thread` per pushed item to deliver to `next2`, with no pooling or throttling. Under sustained high-throughput input this exhausts OS thread resources and can throw `OutOfMemoryError: unable to create native thread`. | Low-Medium | open |
-| sound/WaveDataChunk.java | WaveDataChunk | WaveDataChunk(...) (16-bit case) | ~66 | `streamIn.readInt()` (4 bytes) fills `stream16`, but a 16-bit Sample is only 2 bytes - over-reads the data Chunk by 2x for the common 16-bit PCM case, misaligning/exhausting the Stream. Should use `readShort()`. | High | open |
-| sound/MidiChunk.java | MidiChunk | MidiChunk(...) | ~44 | `events = new byte[chunkSize]` is allocated but never filled (no `readFully`), and the Stream position is never advanced past this Chunk's bytes - `events` stays all-zero and the next Chunk read (e.g. the next Track in `MidiFile`) misreads the unread bytes as a new Chunk Header, breaking multi-track MIDI parsing entirely. | High | open |
-| sound/WaveFile.java | WaveFile | main(String[]) | ~92 | `streamOut.close()` is called unconditionally, but `streamOut` is `null` whenever `args` is non-empty. Any real command-line invocation with a file argument throws NPE. | Medium | open |
-| sound/WaveStreamOut.java | WaveStreamOut | addInt(int) (24-bit case) | ~54 | `writer.writeInt(b)` writes 4 bytes for a 24-bit Sample instead of 3, corrupting Sample Values and producing a data Chunk longer than the Size header written in the constructor. Mirrors a pre-existing `//TODO: write 3 Bytes` comment left by the original author. | Medium | open |
-| sound/WaveStreamIn.java | WaveStreamIn | WaveStreamIn(...) | ~45 | `IOException` from the initial `skipBytes(channel*...)` is silently swallowed; if the skip fails partway, every subsequent Sample is read from the wrong Offset with no error signal. | Medium | open |
-| sound/WaveStreamIn.java | WaveStreamIn | nextLongInternal() (24-bit case) | - | Reads via `readInt()` (4 bytes) for a 24-bit Sample; the symmetric read-side counterpart to the WaveStreamOut 24-bit bug above. Already flagged by the original author's own `//TODO: read only 3 Bytes!` comment - real and still present, reported here per protocol, left as the author's existing comment. | Medium | open |
-| sound/DirectPlayer.java | DirectPlayer | keyPressed(...) | ~294 | `GET_KEY` can return `65535` (the CapsLock key value), out of bounds for the 256-entry `NOTES_BY_KEY` array; the resulting `ArrayIndexOutOfBoundsException` is silently swallowed, so CapsLock plays no note (harmless, but silent). | Low | open |
-| aspect/AHierarchyAspect.java | AHierarchyAspect | update(Object, Object, Object) | ~233 | Type check tests `IAspect.class.isAssignableFrom(field.getType())` but the result is cast to `IHierarchyAspect`; every other reflection loop in the class checks `IHierarchyAspect.class`. A public field typed as a plain (non-hierarchy) `IAspect` would pass the check and throw `ClassCastException` at the cast. No such field exists among the 15 in-scope classes today, but the interface permits it. | Low-Medium | open |
-| aspect/ListAspect.java | ListAspect | removeVal(int) | ~243 | Bounds guard uses `Index > list.size()` instead of `>=`, so `Index == list.size()` (one past the last element) slips through to `list.remove(Index)`, which throws an unchecked `IndexOutOfBoundsException` instead of the graceful `null` this method returns for every other invalid index. | Low | open |
-| aspect/ListAspect.java | ListAspect | testList() | ~324 | `asp2.set(PersonAspect.HOME + SEP + AddressAspect.CITY, ...)` uses `PersonAspect.HOME` ("home") as a field-name prefix, but `PersonAspect` has no field named "home" - its address field is `PersonAspect.ADDRESS`. `getLocalField()` fails to resolve and returns `null`, so `set()` throws `NullPointerException`; running `ListAspect.testIt()`/`main()` crashes immediately at this line. | Medium | open |
-| aspect/dialog/BoolQuestion.java | BoolQuestion | setValue(Object) | ~95 | `str.charAt(0)` throws `StringIndexOutOfBoundsException` on empty trimmed input, and `val.toString()` throws `NullPointerException` if `val` is null. A user running the console `Dialog` who presses Enter with no input at a Yes/No prompt crashes the dialog instead of re-prompting or defaulting. | Medium | open |
-| asynch/Barrier.java | Barrier | (field/constructor) | - | Barrier's count field is left uninitialized before use in the wait/release path. | Medium | open |
-| asynch/BlockedThreadExecutor.java | BlockedThreadExecutor | execute/run path | - | Reuses a stale `Runnable` reference and is missing a `notify()` on the completion path, so a waiting caller can block indefinitely. | High | open |
+| knowledge/CachedValue.java | CachedValue | assertIsDirty(boolean) | - | Null test inverted: threw NPE when no calculator was set, never invoked one that was. | High | **fixed** |
+| knowledge/Status.java | Status | finalize() | - | Empty in both branches while depended-on cache was documented as writing back; finalizer removed, contract corrected instead. | Medium | **fixed** |
+| knowledge/DbCachedFactory.java | DbCachedFactory | DbCachedFactory(Connection, PersistAble) | - | `SELECT Max(ID)` failure was swallowed whole; now the already-declared `SQLException` propagates. | Medium | **fixed** |
+| knowledge/IdKey.java | IdKey | newInstance(IPrimaryKey) | - | An unclosed block comment swallowed the following Javadoc. | Low | **fixed** |
+| knowledge/DBObjectFactory.java | DBObjectFactory | DBObjectFactory(Connection, PersistAble) | - | `substring(0, -1)` throws `StringIndexOutOfBoundsException` on a prototype with empty `Fields()`; latent, no current class hits it. | Low | open |
+| knowledge/DBObjectFactory.java | DBObjectFactory | DBObjectFactory(Connection, PersistAble) | - | Column-name strings are built from the Java field names rather than `DBFieldNames()`/`DBKeyNames()`; currently harmless since every class defines the two identically. | Low | open |
+| persistences/PersistedObject.java | PersistedObject | PersistedObject(String) | 165 | Checks the field `ID` (always null) instead of the parameter `ID_`, so `setId(ID_)` is never called from this constructor. | High | open |
+| persistences/PersistedObject.java | PersistedObject | (field `objects`) | 41 | The static registry HashMap is never initialized - NPE on first real use. | High | open |
+| swing/HashTreeNode.java | HashTreeNode | equals(Object) | 328 | Calls `userObject.equals(arg)` on a possibly-null `userObject` - NPE. | Low | open |
+| streamIO/testing/ATestCase.java | ATestCase | test(...) | 214 | Both `InvocationTargetException` handler branches log/rethrow the wrapper instead of `inner` (`x.getTargetException()`). | Medium | open |
+| streamIO/fileSystem/FileIterator.java | FileIterator | isValid() | 76 | Returns `!available`, inverted vs. its own field and the sibling `FileBackupIterator.isValid()`. | Medium | open |
+| streamIO/fileSystem/FileIterator.java | FileIterator | currItem() | 100 | Always returns `null` - `nextItem()` never assigns `currItem`. | Low | open |
+| streamIO/exception/ChainedException.java | ChainedException | printStackTrace(PrintStream) | 136 | The wrapping `PrintWriter` is never flushed/closed, unlike the sibling `BaseException` version. | Low | open |
+| streamIO/vector/CombinationStream2.java | CombinationStream2 | (field `L`) | 34 | Logger constructed with `CombinationStream.class` instead of `CombinationStream2.class`. | Low | open |
+| streamIO/adapter/CValue2StreamIn.java | CValue2StreamIn | CValue2StreamIn() | 48 | The only constructor never assigns `cValue` - NPE on first use. | High | open |
+| DirToXml.java | DirToXml | execRecursive(...) | 71 | `SimpleDateFormat("yyyy-mm-dd'T'hh:MM:ss")` swaps month and minute format letters. | Medium | open |
+| EchoFile.java | EchoFile | main(String[]) | 63 | Missing `return` after the usage message on invalid arg count - AIOOBE follows. | Low | open |
+| FileHex.java | FileHex | main(String[]) | 37 | `e.fillInStackTrace()`'s result is discarded and `e` never used - dead code. | Low | open |
+| FilterFind.java | FilterFind | read() | 172 | `breakCountDown` defaults to 0, never set in the constructor - fires immediately on first call. | Medium | open |
+| FixRecordScrambler.java | FixRecordScrambler | main(String[]) | 149 | Guard checks `args.length!=6` but the method needs 7 args - passing exactly 6 satisfies neither check nor requirement. | Low | open |
+| reflect/Type.java | Type | Type(Class) | 126 | Checks the field `cls` (still null) instead of the constructor argument `cls_` - NPE on every `new Type(...)`. | High | open |
+| reflect/Type.java | Type | isAssignableFrom(Class) | 304 | Parameter `cls` shadows the field `this.cls`, so this compares the argument to itself - always `true`. | Medium | open |
+| streamIO/diffPatch/VersionTree.java | VersionTree | LESS(int[], int[]) | ~107 | Lexicographic comparison never early-returns `false` on a decisive `arr1[i] > arr2[i]`. | Medium-High | open |
+| streamIO/diffPatch/VersionTree.java | VersionTree | writeTo() | ~174 | Resize block computes a doubled array but never assigns it back; off-by-one resize check too. | High | open |
+| streamIO/diffPatch/VersionTree.java | VersionTree | addVersion(DiffSet) | ~384 | Duplicated identical clause instead of an equals-check; relies on String reference identity, breaking after deserialization. | Medium | open |
+| flow/push/MultiCaster.java | MultiCaster | putA(Object) | ~60-65 | Spawns one new unpooled Thread per pushed item - resource exhaustion under load. | Low-Medium | open |
+| sound/WaveDataChunk.java | WaveDataChunk | WaveDataChunk(...) (16-bit case) | ~66 | `readInt()` (4 bytes) fills a 16-bit (2-byte) Sample - over-reads by 2x. | High | open |
+| sound/MidiChunk.java | MidiChunk | MidiChunk(...) | ~44 | `events` array is allocated but never filled/advanced past, breaking multi-track MIDI parsing. | High | open |
+| sound/WaveFile.java | WaveFile | main(String[]) | ~92 | `streamOut.close()` called unconditionally while `streamOut` is null for any real invocation - NPE. | Medium | open |
+| sound/WaveStreamOut.java | WaveStreamOut | addInt(int) (24-bit case) | ~54 | Writes 4 bytes for a 24-bit Sample instead of 3 (author's own pre-existing TODO). | Medium | open |
+| sound/WaveStreamIn.java | WaveStreamIn | WaveStreamIn(...) | ~45 | `IOException` from the initial `skipBytes` is silently swallowed. | Medium | open |
+| sound/WaveStreamIn.java | WaveStreamIn | nextLongInternal() (24-bit case) | - | Reads via `readInt()` (4 bytes) for a 24-bit Sample - symmetric read-side of the WaveStreamOut bug (author's own pre-existing TODO). | Medium | open |
+| sound/DirectPlayer.java | DirectPlayer | keyPressed(...) | ~294 | `GET_KEY` can return 65535, out of bounds for the 256-entry array; AIOOBE silently swallowed. | Low | open |
+| aspect/AHierarchyAspect.java | AHierarchyAspect | update(Object, Object, Object) | ~233 | Type check tests `IAspect` but casts to `IHierarchyAspect` - latent `ClassCastException`. | Low-Medium | open |
+| aspect/ListAspect.java | ListAspect | removeVal(int) | ~243 | Bounds guard uses `>` instead of `>=` - unchecked `IndexOutOfBoundsException` one past the end. | Low | open |
+| aspect/ListAspect.java | ListAspect | testList() | ~324 | References a field-name prefix that does not exist on the target Aspect - NPE in its own self-test. | Medium | open |
+| aspect/dialog/BoolQuestion.java | BoolQuestion | setValue(Object) | ~95 | Empty trimmed input or null `val` both crash instead of re-prompting/defaulting. | Medium | open |
+| asynch/Barrier.java | Barrier | (field/constructor) | - | Count field left uninitialized before use in the wait/release path. | Medium | open |
+| asynch/BlockedThreadExecutor.java | BlockedThreadExecutor | execute/run path | - | Stale `Runnable` reference and a missing `notify()` on completion - a waiting caller can block indefinitely. | High | open |
 | asynch/Scheduler.java | Scheduler | scheduling loop | - | Busy-waits instead of blocking/parking, burning CPU while idle. | Low-Medium | open |
-| asynch/ThreadExecutor.java | ThreadExecutor | numTasks bookkeeping | - | `numTasks` drifts from the actual queue/assignment state, matching the pre-existing note in `SimpleThreadPoolExecutor`'s own Javadoc that this feedback mechanism "is not reliable". | Medium | open |
-| asynch/ThreadPoolExecutor.java | ThreadPoolExecutor | (synchronization) | - | A code path calls `wait()`/`notify()` outside a `synchronized` block on the relevant monitor, which throws `IllegalMonitorStateException` at runtime. | High | open |
-| asynch/QueuedSemaphore.java | QueuedSemaphore | acquire/release | - | Lost-wakeup race: a release can occur between a waiter's failed acquire check and its `wait()` call, with no re-check afterward, leaving the waiter blocked with no further signal. | High | open |
-| stringOp/Grammar.java | Grammar | evolve(...) | ~51 | Off-by-one: bound check uses `>` instead of `>=` against `Productions.length` (128), so the last index is accessible when it shouldn't be / one past overflows silently depending on direction. | Medium | open |
-| stringOp/SentenceComparer.java | SentenceComparer | getMostSimilarSentence(String, boolean, int) | ~124 | The index of the best-matching Sentence is never recorded (only the match count `maxMatch` is tracked), so the method always returns -1 regardless of the actual best match found. | High | open |
-| stringOp/SentenceComparer.java | SentenceComparer | getWordSet(String, boolean) | ~151 | Unimplemented: the Sentence is never parsed into Words and the Dictionary is never consulted; always returns an empty `BitSet`. | High | open |
-| stringOp/search/SearcherBM.java | SearcherBM | constructor and search loop | ~48, ~68 | `Object.hashCode()` can be negative; Java's `%` keeps the sign, so a negative hash used as an array index throws `ArrayIndexOutOfBoundsException` instead of wrapping into a valid bucket. | Medium | open |
-| synch/UniCastConstrained.java | UniCastConstrained | addValidator(IValidator) | ~67 | Checks `instanceof MultiCaster`, an unrelated class - `validator` is only ever null, a plain `IValidator`, or a `MultiValidator`. The dead branch aside, the `else` path re-wraps the existing validator into a new `MultiValidator` without ever adding the new argument, so every call after the first silently drops the new validator. | High | open |
-| synch/ValidationRuleList.java | ValidationRuleList | validateInThread(Object) | ~146 | `params` is a 2-element array (`{Value, null}`) but the method unconditionally reads `params[3]` after the worker thread returns, throwing `ArrayIndexOutOfBoundsException` on every timed validation. | High | open |
-| synch/APubUniLinkSub.java | APubUniLinkSub | update(Object, Object, Object) | ~117 | No null check on `subscriber` before propagating; the chain-terminal node (built with `subscriber == null` by `addSubscriber()`) throws `NullPointerException` as soon as propagation reaches it - every other propagation method in the package guards this. | High | open |
-| synch/PropDouble.java | PropDouble | setValue(double) | ~48 | Never calls `subscriber.update(...)`, so the documented "notifies its Subscriber on change" contract is a no-op; any caller relying on the notification silently gets none. | Medium | open |
-| synch/StateMachine.java | StateMachine | toString() | ~110 | Inner loop bound uses `a.length` (row count/`numInputs`) instead of `a[i].length` (column count/`numStates`); throws `ArrayIndexOutOfBoundsException` or silently omits columns for any non-square matrix. | Medium | open |
-| streamIO/AReSetAble.java | AReSetAble | JUMP(IReSetAble, long) | ~106 | Loop guard `++i < offset` is only ever true for a positive offset; a negative offset (as passed by `PUSH_BACK`, which relies on this returning `-1`) always returns `0` without calling `iter.jump()`, so `pushBack()` can never succeed through this static helper. | Medium | open |
-| streamIO/Log.java | Log | XML_DATE_FORMATTER (field) | ~247 | A single static `SimpleDateFormat` instance is shared and invoked from `GET_XML_DATE()`/`GET_XML_DATE(Date)` across all Loggers and threads; `SimpleDateFormat` is not thread-safe, so concurrent logging calls can corrupt the formatted date or throw. | Medium | open |
-| streamIO/StringBufferOutputStream.java | StringBufferOutputStream | addBuffer(StringBuffer, int) | ~208 | Calls `addBuffer(b, 0, stop)` against a 3-arg overload whose parameter order is `(b, stop, start)` - reversed vs. the correct sibling `addString(String, int)`. For any `stop > 0` this silently appends nothing. | Medium | open |
-| graphs/AGraph.java | AGraph | (edge-filtering method) | ~116 | Filters by `curr.val` (the target Node index) instead of `curr.weight`, so weight-based edge filtering silently filters on the wrong field. | Medium | open |
-| graphs/SparseMatrix.java | SparseMatrix | getDegree/getInDegree helper | ~241 | Calls itself instead of `getOutDegree(j)`, causing infinite recursion and a `StackOverflowError` on every call. | High | open |
-| technology/RandomGUID.java | RandomGUID | getRandomGUID(boolean) | 160 | If `MessageDigest.getInstance("MD5")` throws `NoSuchAlgorithmException`, the catch block only logs it and leaves `md5 == null`; execution falls through to `md5.update(...)`, throwing an unhandled `NullPointerException` instead of failing with the original cause. | Low | open |
-| technology/xml/XmlToDirHandler.java | XmlToDirHandler | main(String[]) | 209 | `System.out.println(args)` prints the `String[]` array's reference/hashcode (e.g. `[Ljava.lang.String;@...`) instead of its contents; likely meant `Arrays.toString(args)` or a loop over the elements. | Low | open |
-| technology/xml/XmlUnmarshaller.java | XmlUnmarshaller | setBuffer(String) | 298 | Duplicate `argType == long.class` check (already handled two branches above), almost certainly meant `argType == double.class`. A double-typed field is never converted here and falls through to the no-op else branch, leaving the raw String instead of a `Double`. | Medium | open |
-| technology/xml/test/KundeInSystem.java | KundeInSystem | ZKDBBaseType() (accessor) | 83 | The getter for field `typ` is named literally `ZKDBBaseType()` instead of `getTyp()` (compare the sibling `setTyp(ZKDBBaseType)` and every other class in the package's `getTyp()`) - almost certainly a copy/rename mistake. Reflection-based access by naming convention, as used elsewhere in this codebase (Accessor/SaxDispatcher), will not find a `getTyp` method on this class. | Medium | open |
-| tester/logic/ConditionTable.java | ConditionTable | constructor | ~39 | Validation loop reads the instance field `Conditions` (still null) instead of the constructor parameter `Conditions_`, before the field is assigned - every construction throws `NullPointerException`. | Critical | open |
-| tester/MetricMeasurAble.java | MetricMeasurAble | dist(Object, Object) | ~49 | Both operands call `a.getDouble()`; `b`'s value is never read, so `dist()` always returns 0 for distinct objects. | High | open |
-| tester/FilterTestWaiter.java | FilterTestWaiter | test(Object) | ~56 | `wait(waitTime)` is called without holding this instance's monitor (no `synchronized` block) - always throws `IllegalMonitorStateException` at runtime. | High | open |
-| tester/fuzzy/FuzzyDictionary.java | FuzzyDictionary | getMostSimilarItem(Object, double) | ~75 | `minIndex` is a hardcoded constant, never computed by comparison; reads `distances.getDoubleAt(-1)` - the method never actually searches and always returns -1. | High | open |
-| tester/fuzzy/FuzzySentenceComparator.java | FuzzySentenceComparator | read(InputStream, StringBuffer, char) | ~208 | Loop condition compares against a hardcoded literal char instead of the `sep` parameter - a caller passing a different separator never sees the loop terminate on it. | Medium | open |
-| tester/process/StreamProcessor.java | StreamProcessor | getPosition() | ~93 | Delegates to `availAble()` instead of an actual position method - returns items-remaining, not read position. | Medium | open |
-| tester/process/IOEProcess.java | IOEProcess | testIt() | ~77 | `Runtime.exec("java Process.IOEProcess")` uses the wrong fully-qualified class name (actual: `tester.process.IOEProcess`) - the child process fails immediately. | Low | open |
-| structure/Context.java | Context | send() | ~77 | Calls itself instead of delegating to `currState`, unconditional infinite recursion - `StackOverflowError` on every call. | High | open |
-| structure/Delegate.java | Delegate | raiseEvent() | ~153 | Both catch blocks (`IllegalAccessException`, `InvocationTargetException`) are empty, silently discarding the exception and stopping notification of every Delegate after the one that failed. | Medium | open |
-| structure/HistoryList.java | HistoryList | addItem(Object) | ~90 | Grows the backing array only when `currPtr > stack.length`, one element too late - when `currPtr == stack.length` the write throws `ArrayIndexOutOfBoundsException` instead of growing. | Medium | open |
-| structure/Visitor1.java / Visitor2.java | Visitor1, Visitor2 | visit(ElementA)/visit(ElementB) | ~42-55 | Delegates back to `el.invite(this)`, but `ElementA/ElementB.invite(Visitor)` calls `v.visit(this)` right back - unconditional mutual recursion, `StackOverflowError` on the first call. | High | open |
-| structure/aspect/DoubleAspect.java | DoubleAspect | getLong()/getDouble() | ~139, ~152 | Reads the primitive field `value`, which no `setValue(...)` overload ever assigns (they all write the boxed `Value` field) - stays permanently 0.0, so these methods ignore every Value actually set. | High | open |
-| structure/aspect/ListAspect.java | ListAspect | constructor(String, Aspect[]) | ~60 | `list_` is never assigned to the `list` field - `list` stays permanently null regardless of what's passed in. | Medium | open |
-| streamIO/real/FilterInMul.java | FilterInMul | getMinDouble() | - | Sign-flip bug: returns the wrong-signed minimum bound. | Medium | open |
-| streamIO/real/StreamIn_Geometric.java | StreamIn_Geometric | 2-arg constructor | - | Field-order/assignment bug in the constructor. | Medium | open |
-| streamIO/real/random/RandomGauss.java | RandomGauss | nextDoubleInternal() | - | Self-comparison that is always false, a dead rejection branch. | Medium | open |
-| streamIO/real/random/RandomGauss2.java | RandomGauss2 | nextDoubleInternal() | - | Identical always-false self-comparison bug as `RandomGauss`. | Medium | open |
-| streamIO/real/random/RandomPoisson.java | RandomPoisson | reSet() | - | Unconditional `ranLorentz.reSet()` call throws `NullPointerException` when `EW<12` (`ranLorentz` is not constructed in that branch). | High | open |
-| math/minimizer/SinOfDistDivDist.java | SinOfDistDivDist | Map(double[]) / Map(float[]) | 59, 78 | `ret` is exactly 0.0 when the input equals the center (or origin), so `-Math.sin(ret)/ret` computes `0.0/0.0 = NaN` instead of the mathematical limit -1.0 - a minimizer converging onto this function's own minimum observes NaN. | Medium | open |
-| graphic/math2D/Map2DModel.java | Map2DModel | addPoint(int, float, float, String) | 215 | `coordTrafo` may be null (it is only ever set via `setTrafo()`/`getTrafo()`), but this overload calls `coordTrafo.mapPt(x, y)` with no guard, unlike the double-parameter `addPoint(double, double, String)` overload which checks `coordTrafo != null` first. Throws `NullPointerException` when a point is added before a transform exists. | Medium | open |
-| graphic/math2D/Map2DModel.java | Map2DModel | addPoint(float, float, String) | 228 | Same missing-null-guard defect as the row above, on the 3-arg float overload. | Medium | open |
-| graphic/math2D/Map2DModel.java | Map2DModel | addPoint(float[], String) | 260 | Same missing-null-guard defect as the two rows above, on the `float[]` overload. | Medium | open |
-| graphic/ms3d/Ms3d.java | Ms3d | calcRotation(Ms3dJoint, float) | 673 | Compares the rotation-frame loop index `uiFrame` against `pJoint.numTransFrames` (the translation-keyframe count) instead of `numRotFrames`/`rotKeyFrames.length`. When a joint's rotation and translation keyframe counts differ (the common case), this either runs the SLERP-interpolation branch when it shouldn't or indexes `rotKeyFrames[uiFrame]` out of bounds, throwing `ArrayIndexOutOfBoundsException`. | Medium-High | open |
-| graphic/ms3d/Ms3d.java | Ms3d | streamJoints(OutputStream) | 162 | Delegates to `streamVertices(new PrintStream(ps))` instead of `streamJoints(new PrintStream(ps))` - a copy-paste error from the neighboring overload. Calling this writes vertex data instead of joint data to the stream. | Medium | open |
-| graphic/ms3d/Ms3dVertex.java | Ms3dVertex | toStream(OutputStream) | 105 | Calls `toStream(new PrintStream(streamOut))`, i.e. itself, since `PrintStream` is-an `OutputStream` and there is no `toStream(PrintStream)` overload to resolve to instead. Every call recurses until `StackOverflowError`; almost certainly meant to call `stream(new PrintStream(streamOut))`, the method that actually writes the vertex data. | High | open |
-| math/fit/weight/WeightExp.java | WeightExp | (field `SINGLETON`) | 32 | `SINGLETON` is a non-static instance field initialized by `new WeightExp()`, but the only constructor is this same private one, so instantiating the class recurses into this same field initializer forever - `StackOverflowError`. Needs `static`. | High | open |
-| math/fit/weight/WeightGauss.java | WeightGauss | (field `SINGLETON`) | 33 | Same non-static-`SINGLETON`-recursion defect as `WeightExp`. | High | open |
-| math/fit/weight/WeightLorentz.java | WeightLorentz | (field `SINGLETON`) | 30 | Same non-static-`SINGLETON`-recursion defect as `WeightExp`. | High | open |
-| math/fit/weight/WeightExp.java | WeightExp | probCum(double) | 41 | Returns the same unintegrated exponential density as `prob()` instead of a cumulative probability; already marked by the original author's own `//TODO:`. | Low | open |
-| math/fit/weight/WeightLorentz.java | WeightLorentz | probCum(double) | 43 | Returns `WeightExp`'s exponential-tail formula instead of a Lorentzian-consistent cumulative, inconsistent with this class's own `prob()`/`weight()`/`weightCum()`; already marked by the original author's own `//TODO:`. | Low | open |
-| math/fit/FitFields.java | FitFields | map(double[], double[]) | 22 | Always returns `null` instead of the populated `yOut` array, breaking the `IFloatVectorField#map(double[], double[])` contract for any caller that uses the return value rather than only the out-parameter. | Medium | open |
-| math/fit/FitFields.java | FitFields | map(float[], float[]) | 31 | Same always-`null`-return defect as the row above, on the `float[]` overload. | Medium | open |
-| math/fit/FitGauss.java | FitGauss | map(double[], double[], double[]) | 75 | Unimplemented stub that always returns 0 without evaluating anything or filling `dyda`, unlike the single-`x` overload in the same class; any caller relying on the vector-`x` overload silently gets a wrong (zero) result instead of an error. | Medium | open |
-| math/fit/FitGauss.java | FitGauss | map(float[], float[], float[]) | 89 | Same unimplemented-stub defect as the row above, on the `float[]` overload. | Medium | open |
-| math/fit/FittingFloat.java | FittingFloat | svdfit(...) | 45 | Ported from Numerical Recipes SVDFIT, which requires `svdcmp` to decompose `u` into `U*W*V^T` and `svbksb` to back-substitute the solution into `a`. Both calls are commented out, so `w`/`v` must already hold a valid decomposition supplied by the caller and `a` is never solved for at all - the chi-squared computed evaluates whatever `a` the caller passed in. `testSvdFit()` itself passes an unfilled `a`, so its own self-test is exercising this. | High | open |
-| math/refiner/AFloatRefinerQ.java | AFloatRefinerQ | BRACKET(IFloatFunction, float, float, int) | 103 | `ret` is allocated with the actual bracket count `numIntevals` (the value returned by the inner `BRACKET` call), but `arraycopy` is then told to copy `numIntervals` elements - the original, larger requested count - into it. Whenever fewer brackets are found than requested (the normal case), this overruns `ret` and throws `ArrayIndexOutOfBoundsException`. | High | open |
-| math/refiner/NewtonFloatRefiner.java | NewtonFloatRefiner | refine() | 71 | Reads the inherited field `f` instead of this class's own `f0`, but `init(x, f0, f1)` reaches this state via the `(x, double)` super-`init` overload, which explicitly sets `f=null`; `f0` is stored but never read anywhere. Any refiner built via the `(double, IFloatFunction, IFloatFunction)` constructor/init throws `NullPointerException` on its very first `refine()` call. | High | open |
-| math/Vector3D.java | Vector3D | angles()/Sphaeric2Rect()/Rect2Sphaeric()/Quadrik(...) | 336,361,380,428 | Multiple methods index `a[3]` (or a 2-element `Vector2D`'s `a[2]`) on arrays allocated `new double[3]`/`new double[2]` - guaranteed `ArrayIndexOutOfBoundsException` on every call. | Critical | open |
-| math/Vector3D.java | Vector3D | mul(double) | 148 | Compound assignments `a[0]*=v` etc. mutate `this.a[]` inside the `new Vector3D(...)` constructor arguments, contradicting the non-mutating method name/contract (unlike `mulAt`). | Medium | open |
-| math/Vector2D.java | Vector2D | Equality(...) (2 overloads) | 95, 300 | `x << 2 + y` parses as `x << (2+y)` in Java (operator precedence), not the intended `(x<<2)+y` - corrupts the combined overlap code for most inputs. | Medium | open |
-| math/Vector2D.java | Vector2D | DET2x2(Vector2D) | 307 | Reads `a[2]`/`du.a[2]` on 2-element `Vector2D` arrays - guaranteed `ArrayIndexOutOfBoundsException`; affects `Line2D.Area`/`intersects`, which call it. | Critical | open |
-| math/NumberFormatter.java | NumberFormatter | isNumber(String) | 26 | Always returns `true` regardless of input - the check is unimplemented. | Low | open |
-| math/integration/StratifiedMCIntegrator.java | StratifiedMCIntegrator | integrate(...) | 95 | Own Javadoc documents `variance` as nullable ("if not null..."), but the method unconditionally dereferences `variance[0]` twice - passing `null` throws `NullPointerException`, contradicting the documented contract. | Medium | open |
-| graphic/AGraph2D.java | AGraph2D | sizePolygonAt(int[][], int, int) | 106 | Condition checks `X != 1` twice instead of `X != 1 \|\| Y != 1` (contrast the correct `(X != 0) \|\| (Y != 0)` in `movePolygonAt` just below); when `X == 1` but `Y != 1` the whole condition is false and the resize loop is skipped, so the Y scale factor is silently never applied. | Medium | open |
-| graphic/AGraph2D.java | AGraph2D | setThickPixel() | 270 | The fourth `fillRect` argument (`y1`) is `x+LineWidth` instead of `y+LineWidth`; the filled box's bottom edge is computed from `x` instead of `y`, mispositioning/mis-sizing the box whenever `x != y`. | Medium | open |
-| graphic/AGraph2DOut.java | AGraph2DOut | setColor(Color) | 52 | `col` is null until the first color is set (no field initializer); when `col == null` and `color != null`, `col.equals(color)` throws `NullPointerException`, so the very first `setColor(Color)` call with a non-null color on a fresh instance fails instead of just assigning `col`. | Medium | open |
-| graphic/Figures.java | Figures | VectorGrid(int[], int[], int[][], int[][]) | 351 | Both loops pre-increment from 0 (`while (++i < ...)`), so the first iteration uses index 1, never 0 - row 0 and column 0 of the grid are silently never drawn. | Low | open |
-| graphic/Figures.java | Figures | (ellipse-radial-lines loop) | 439 | The y-coordinates use `R.getX()` instead of `R.getY()` for the start point (the end point correctly uses `R.getY()`), skewing the ellipse's radial lines whenever the radii differ in x and y. | Medium | open |
-| graphic/Graph2D.java | Graph2D | drawImage(Image, int, int, int, int, int, int, int, int, ImageObserver) | 228 | Stub always returns `true` without drawing anything - every caller silently gets "success" while no pixels are actually painted. | Medium | open |
-| graphic/GraphicsAdapter.java | GraphicsAdapter | create() | 74 | Always returns `null` instead of a copy of the underlying graphics context, contradicting `Graphics#create()`'s documented contract; any caller that follows the normal contract and invokes a method on the result throws `NullPointerException`. | Medium | open |
-| graphic/GraphicsAdapter.java | GraphicsAdapter | setPixel(Color) | 548 | The `color` parameter is never used; this always paints with the field `col` (the previously-set current color) instead of the color the caller explicitly passed in. | Medium | open |
-| graphic/GraphicsAdapter.java | GraphicsAdapter | fillPolygon(int[], int[], Color, Color) | 809 | The parameter names imply `BorderColor` strokes the outline and `InnerColor` fills the interior, but the calls do the opposite - the two colors are swapped relative to their names. | Medium | open |
-| graphic/GraphicsAdapter.java | GraphicsAdapter | drawEllipse(Point2D, int) | 863 | `IGraphAddtl#drawEllipse(Point2D, int)` documents "Center in M, Radius r", but `drawOval(x, y, width, height)` takes a top-left corner and full width/height; M and r are passed directly, so the ellipse is neither centered on M nor sized by 2*r as the contract requires. | Medium | open |
-| graphic/GraphicsAdapter.java | GraphicsAdapter | drawEllipse(Point2D, Point2D) | 877 | Same contract mismatch as `drawEllipse(Point2D, int)` - M and R are passed straight into `drawOval(x, y, width, height)` without centering on M or using R as radii. | Medium | open |
-| graphic/GraphicsAdapter.java | GraphicsAdapter | fillEllipse(Point2D, int) | 964 | Same contract mismatch as `drawEllipse(Point2D, int)` - M and r are passed straight through `fillOval(x, y, width, height)` without centering or doubling. | Medium | open |
-| graphic/GraphicsAdapter.java | GraphicsAdapter | fillEllipse(Point2D, Point2D) | 977 | Same contract mismatch as `drawEllipse(Point2D, Point2D)` - M and R are passed straight into `fillOval(x, y, width, height)` without centering on M or doubling R into a width/height. | Medium | open |
-| graphic/GraphicsAdapter.java | GraphicsAdapter | fillRoundRect(Point2D, Point2D, int, int) | 1043 | `fillRoundRect(int,int,int,int,int,int)` expects `(x, y, width, height, arcWidth, arcHeight)`, but `P2.x`/`P2.y` are passed directly as width/height instead of `P2.x-P1.x`/`P2.y-P1.y` as the sibling `drawRoundRect(Point2D, Point2D, Point2D)` correctly computes; the rectangle is sized and positioned wrong. | Medium | open |
-| graphic/Hidden.java | Hidden | setPixel(int, int, Color) | 139 | Off-by-one: `UG`/`OG` are sized `XMax` (valid indices 0..XMax-1), but the guard only rejects `x > XMax`, letting `x == XMax` through to `OG[x]`/`UG[x]` and throwing `ArrayIndexOutOfBoundsException`. | High | open |
-| graphic/JavaGraphic.java | JavaGraphic | fillEllipse(Point2D, Point2D) | 503 | Calls `g.drawOval` (outline only) instead of `g.fillOval`, unlike every sibling `fillEllipse` overload in this class; silently draws an unfilled ellipse. | Medium | open |
-| graphic/JavaGraphic.java | JavaGraphic | fillRoundRect(Line2D, Point2D) | 539 | Dispatches to `MethodDrawRRect` (outline) instead of `MethodFillRRect`, so this "fill" method actually draws an unfilled rounded rectangle. | Medium | open |
-| graphic/JavaGraphic.java | JavaGraphic | fillRoundRect(Line2D, Point2D, Point2D) | 554 | Same `MethodDrawRRect`-instead-of-`MethodFillRRect` bug as the overload above. | Medium | open |
-| graphic/PaletteRGB.java | PaletteRGB | HUE2COLOR(int) | 182 | Negative wrap-around uses `6-hue` instead of `6+hue` (contrast the correct `hue += 6` wrap in `RGB2HSB`); for `hue=-1` this computes 7 instead of 5, so `hue %= 6` yields 1, not 5, returning the wrong color for any negative argument. | Medium | open |
-| graphic/PaletteShading.java | PaletteShading | getColor(int) | 80 | Division by `maxShade` with no guard against `maxShade == 0`; a caller passing `maxShade_ == 0` at construction throws `ArithmeticException` on every `getColor()` call. | Medium | open |
-| graphic/Point2D.java | Point2D | MinAt(Point2D) | 139 | Compares `y > P.x` and assigns `y = P.x` instead of using `P.y`; corrupts every bounding-box computation that relies on this method whenever `P.x != P.y`. | Medium | open |
-| graphic/Point2D.java | Point2D | MaxAt(Point2D) | 152 | Same `P.x`/`P.y` mixup as `MinAt()` above (compares/assigns against `P.x` instead of `P.y`). | Medium | open |
-| graphic/Polygon2D.java | Polygon2D | getExtent() | 92 | `this.Points` is overwritten with a fresh all-null array before the loop reads `Points[Length]`, so every iteration sees null and `mergeAt()` never runs beyond the first point; the polygon's real point data is destroyed for every subsequent `getPoints()` call. | High | open |
-| graphic/ScalarPlotNew.java | ScalarPlotNew | (color-segment stepping) | 379 | Calls the single-arg `drawHLine(x0)`, which draws from the graphics context's current x position, but unlike the 6-arg `ScalarRow` overload this method never tracks or sets a "segment start" x - color segments are drawn from stale/wrong positions. | Medium | open |
-| graphic/VectorPoint2D.java | VectorPoint2D | (resize helper) | 470 | Builds the correctly-resized array `ret` but returns the original, unresized `a` instead; callers relying on the return value to get an array of the requested `dim` silently get the old size back. | Medium | open |
-| graphic/VectorPoint2D.java | VectorPoint2D | stream(PrintStream, int, int) | 651 | `for (int i = startRow; ++i < stopRow;)` pre-increments before the first use of `i`, so `vals[startRow]` itself is never streamed; the loop effectively covers `[startRow+1, stopRow)`. | Medium | open |
-| graphic/ZBuffer.java | ZBuffer | setPixel(int, int, float) | 134 | The clip guard checks `x >= XMax` twice and never checks `y >= YMax`; a caller passing `y >= YMax` reaches `MinZ[x][y]` below and throws `ArrayIndexOutOfBoundsException` instead of being clipped like every other out-of-range coordinate. | High | open |
-| graphic/example/AntHillInside.java | AntHillInside | moveAnt(...) | 169 | `x`/`y` are never clamped or wrapped to `[0, WIDTH)`/`[0, HEIGHT)`; since the ant runs forever it will eventually walk off the buffer and throw `ArrayIndexOutOfBoundsException`. | Medium | open |
-| graphic/example/Erosion.java | Erosion | MakeTerrainFault(...) | 169 | `fTempBuffer` holds the computed heights, but the commented-out normalize/copy step was never replaced with real code, so `m_ucpData` stays all-zero after this method returns. | High | open |
-| graphic/implement/GrayColor.java | GrayColor | initPass(int, int, int, int) | 84 | `<<` binds looser than `+` in Java, so `grayMatrix[Z4][Z5] << 2 + increment` evaluates as `grayMatrix[Z4][Z5] << (2 + increment)` instead of the presumably intended `(grayMatrix[Z4][Z5] << 2) + increment` (a base-4 accumulation matching the 0..3 range of `increment`). | Medium | open |
-| graphic/implement/GreyColor.java | GreyColor | setPixel() | 116 | Column index `1 + (P.getY() & 7)` ranges 1..8, but each `GreyFillPalette` row has only 8 columns (valid indices 0..7); when `(P.getY() & 7) == 7` this throws `ArrayIndexOutOfBoundsException`. Likely meant to index by `(P.getY() & 7)` directly. | High | open |
-| graphic/svg/SvgApplet.java | SvgApplet | getTrafo(Rectangle) | 240 | The `bounds` parameter is ignored and the transform is never recomputed from it; every caller passes null, so this is effectively a no-arg getter for `#trafo`. | Low | open |
-| graphic/svg/SvgApplet.java | SvgApplet | setTrafo(Coordinates2D) | 247 | Adds a new `Coord2DMouseController` via `addMouseListener`/`addMouseMotionListener` on every call without removing the listeners installed by a previous call; repeated invocations accumulate duplicate listeners. | Medium | open |
-| graphic/svg/SvgApplet.java | SvgApplet | image(Attributes) | 488 | The `xlink:href` attribute of an `<image>` element is untrusted content from the parsed SVG document; it is concatenated into a URL and fetched with no validation (scheme allow-list, path-traversal check), letting a malicious SVG file make this Applet fetch an arbitrary URL (SSRF-like) or read an arbitrary local file. | Medium | open |
-| graphic/math3D/OdePlotter.java | OdePlotter | drawLoop() | 101 | `Rect` is a legal constructor argument that may be `null`; the do/while loop condition `(Rect != null) && Rect.contains(...)` is then false from the start, so the trajectory draws exactly one step instead of running unbounded until the drawing area is left, as the surrounding comments describe. | Medium | open |
-| graphic/mvc/BufferedPainter.java | BufferedPainter | BufferedPainter(ICanvas) | 83 | `new BufferedImage(dim.height, dim.width, ...)` swaps width and height, transposing the offscreen buffer for any non-square canvas and corrupting `getSize()`/every subsequent `drawImage()`. | High | open |
-| graphic/mvc/plane2D/VectorPolygon.java | VectorPolygon | drawInOrder(IGraphText) | 353 | The branch meant to (re)build `zIndex` when null/stale is entirely commented out; `zIndex`'s only assignment anywhere is `setChanged()` setting it back to null, so this always throws `NullPointerException` at `items[zIndex[i]]`. | High | open |
-| graphic/mvc/plane2D/MatrixShort.java | MatrixShort | SET_DIM_AT(short[][], int) | 480 | Returns the original array `a` instead of the resized `ret` allocated and filled just above; every caller expecting a length-`dim` array back silently gets the unchanged original-length array. | Medium | open |
-| graphic/mvc/plane2D/MatrixShort.java | MatrixShort | MatrixShort(Object) | 819 | Resolves to `MatrixShort(int initialCapacity, int dim)`; `DEFAULT_CAPACITY_INCR` is passed as the row dimension `dim`, not as a capacity increment, silently giving every row the wrong width. | Medium | open |
-| graphic/mvc/plane2D/MatrixShort.java | MatrixShort | newInstance() | 1017 | Same constructor-overload mismatch as above: `capacityIncrement` passed as `dim` for the new instance's row width. | Medium | open |
-| graphic/mvc/plane2D/VectorPolygon.java | VectorPolygon | copyAt(MatrixShort[]) | 293 | Unlike the Object-typed `copyAt()` overload, never calls `setCapacity()` first; when `arg_.length` exceeds the current backing-array length, `arraycopy` throws `ArrayIndexOutOfBoundsException` instead of growing the array. | Medium | open |
-| graphic/mvc/BaseApplet.java | BaseApplet | imageUpdate(...) | 360 | Only `ImageObserver.ALLBITS` is checked; `ERROR`/`ABORT` are never handled, so a failed/aborted asynchronous image load never notifies the observer chain and this method keeps returning true (keep sending updates) forever for that image. | Medium | open |
-| graphic/mvc/BaseApplet.java | BaseApplet | getFaultySuffix(String) | 108 | `fileName.substring(fileName.length()-4)` throws `StringIndexOutOfBoundsException` for filenames shorter than 4 characters, uncaught by any caller. | Low | open |
-| graphic/mvc/plane2D/MatrixShort.java | MatrixShort | STREAM(...) | 650 | `for (int i = startRow; ++i < stopRow;)` pre-increments before the bound check, so `vals[startRow]` itself is never streamed - only rows `startRow+1..stopRow-1` are printed. | Low | open |
-| graphic/mvc/plane2D/MatrixShort.java | MatrixShort | normalizeAt() | 1031 | When `itemCount` is already 0 (or every item is null), `while (items[--itemCount] == null);` decrements past 0 to -1 and indexes `items[-1]`, throwing `ArrayIndexOutOfBoundsException` instead of leaving an empty matrix normalized. | Low | open |
-
-| math/vector/VectorObject.java | VectorObject | removeAt(int) | 167 | `--itemCount` runs as a side effect of evaluating the right operand of `\|\|` whenever `index >= 0`; on an out-of-range index the method still returns null but `itemCount` has already been permanently decremented, corrupting the vector's size even though no element was removed. | High | open |
-| math/vector/VectorObject.java | VectorObject | copyInto(int[]) | 449 | `items` is an `Object[]` here (unlike `VectorInt`, whose items are `int[]`); copying it into an `int[]` destination via `System.arraycopy` throws `ArrayStoreException` at runtime on every call once `itemCount > 0` - apparently copy-pasted from `VectorInt` without adjusting for `VectorObject`'s element type. | Critical | open |
-| math/vector/VectorObject.java | VectorObject | toArray() | 466 | Same `ArrayStoreException` hazard as `copyInto(int[])` above. | Critical | open |
-| math/vector/HunterInt.java | HunterInt | GET_STATISTIC_POS(int[], int, int, int) | 603 | `PARTITION` is declared `PARTITION(items, stop, start)`, but this call passes `(start, stop)` - the two bounds are swapped positionally, breaking median/percentile/order-statistic results and risking unbounded recursion. | High | open |
-| math/vector/HunterInt.java | HunterInt | GET_STATISTIC_POS(int[], int[], int, int, int) | 844 | Same `PARTITION` argument-order defect as above, on the indexed variant. | High | open |
-| math/vector/HunterFloat.java | HunterFloat | GET_STATISTIC_POS(float[], int[], int, int, int) | 879 | Same `PARTITION` argument-order defect (indexed variant only - the non-indexed overload in this file is correct). | High | open |
-| math/vector/HunterDouble.java | HunterDouble | GET_STATISTIC(double[], int[], int, int, int) | 756 | Same `PARTITION` argument-order defect, indexed variant. | High | open |
-| math/vector/VectorChar.java | VectorChar | MIN(char[][], int) | 60 | Comparison is inverted (should be `min > matrix[i][col]`); `min` starts at `Character.MAX_VALUE` and the condition can never be true, so this always returns `Character.MAX_VALUE` regardless of the array's content - looks copy-pasted from `MAX(char[][], int)` without flipping the operator. | Critical | open |
-| math/vector/VectorString.java | VectorString | ALIGN_RIGHT(String, String) | 453 | `substring(str.length()-format.length())` goes negative whenever `str` is shorter than `format` (the normal case this method exists for), throwing `StringIndexOutOfBoundsException`. | High | open |
-| math/vector/VectorString.java | VectorString | PAD(String, int, char, boolean) | 723 | Loop appends one filler character short of what's needed to reach the requested `length` - the returned String is 1 character shorter than requested. | Medium | open |
-| math/vector/VectorString.java | VectorString | Collection2StringArray(Collection) | 829 | `++i` is a pre-increment, so the first element is written to `ret[1]` (leaving `ret[0]` permanently null) and the last write goes out of bounds, throwing `ArrayIndexOutOfBoundsException` for any non-empty collection. | Critical | open |
-| math/vector/VectorString.java | VectorString | REPLACE_ALL(String, String) | 967 | Seeds `ret` via `APPEND(str, 0, i-1)` instead of `i`, dropping the character immediately before the first separator match. | Medium | open |
-| math/vector/VectorString.java | VectorString | toString(byte[], StringBuffer) | 1343 | Loop condition checks `tmp` from the previous iteration, so a genuine terminating 0 byte at index 0 is appended as a character before the loop notices and stops - off by one byte versus the documented "terminated by a 0 byte" contract. | Low | open |
-| math/vector/VectorString.java | VectorString | removeAt(int) | 1760 | Same unconditional-`--itemCount`-on-failure bug as `VectorObject.removeAt(int)` above. | High | open |
-| math/vector/VectorString.java | VectorString | copyInto(int[]) | 1894 | Same `ArrayStoreException` hazard as `VectorObject.copyInto(int[])` (`items` is `String[]`, not `int[]`). | Critical | open |
-| math/vector/VectorString.java | VectorString | toArray() | 1912 | Same `ArrayStoreException` hazard as above. | Critical | open |
-| math/matrix/MatrixFloatStreamIn.java | MatrixFloatStreamIn | constructor | 45 | `currPos` is initialized to `matrix.getInt()` (== `items.length`), one past the last valid index; calling `currVector()` before any `nextVector()` reads `matrix.items[itemCount]`, throwing `ArrayIndexOutOfBoundsException`. | Medium | open |
-| math/matrix/MatrixDouble.java | MatrixDoubleStreamIn | constructor | 4224 | Same off-by-one as `MatrixFloatStreamIn`'s constructor (parallel class). | Medium | open |
-| math/matrix/MatrixObject.java | MatrixObject | copyInto(int[]) | 255 | `items` is `Object[][]` but `anArray` is `int[]`; `System.arraycopy` compiles (both are `Object`) but throws `ArrayStoreException` at runtime for any non-empty matrix because the component types are incompatible. | High | open |
-| math/matrix/MatrixObject.java | MatrixObject | toArray() | 270 | Same `Object[][]`-into-`int[]` arraycopy defect as `copyInto(int[])` above. | High | open |
-| math/matrix/MatrixInt.java | MatrixInt | COPY_AT(int[][], int[], int, int) | 891 | Arraycopy direction is reversed - copies `ret[stop]` into `arr` (the single row argument) on every iteration, overwriting `arr` instead of filling `ret` as the Javadoc and parameter naming describe; the method never actually fills `ret`. | High | open |
-| math/matrix/MatrixFloat.java | MatrixFloat | COPY_AT(float[][], float[], int, int) | 1182 | Same reversed-direction defect as `MatrixInt.COPY_AT` (parallel class). | High | open |
-| math/matrix/MatrixDouble.java | MatrixDouble | COPY_AT(double[][], double[][], int, int) | 1112 | Same reversed-direction defect, uniquely also present in the matrix-to-matrix overload here (copies `ret[stop]` into `arr[stop]`, overwriting `arr`). | High | open |
-| math/matrix/MatrixDouble.java | MatrixDouble | COPY_AT(double[][], double[], int, int) | 1125 | Same reversed-direction defect as `MatrixInt`/`MatrixFloat`'s single-vector `COPY_AT` overload. | High | open |
-| math/matrix/MatrixTriDiagonal.java | MatrixTriDiagonal | solveCyclicAt(...) | 165 | `nonCyclic` is cached and only its corner diagonal entries (0 and n-1) are refreshed on repeat calls; since `subDiag`/`diag`/`superDiag` are shared, mutable arrays not defensively copied by the constructor, stale interior values from an earlier call are silently reused if `diag`'s interior (1..n-2) changes between two calls on the same instance. | Medium | open |
-| math/matrix/Quaternion.java | Quaternion | getAxis() | 181 | `q` is a `float[4]` (valid indices 0-3), so `q[4]` is always out of bounds, throwing `ArrayIndexOutOfBoundsException` on every call - should read `q[3]`, the scalar/real component, matching `getAngle()`'s use of `q[3]`. | Critical | open |
-| math/matrix/Quaternion.java | Quaternion | set(float[]) | 557 | Ignores the `fpQuat` parameter entirely and calls `copyAt(q)`, copying the backing array onto itself (a no-op) instead of `copyAt(fpQuat)`; this method never actually changes the quaternion's value. | High | open |
-| math/vector/VectorDouble.java | VectorDouble | MUL_CROSS_AT(double[], double[]) | 671, 676 | `result` is `new double[3]` (valid indices 0-2); both short-array branches write `result[3]`, throwing `ArrayIndexOutOfBoundsException` instead of returning a 2D cross-product result (likely intended `result[2]`). | High | open |
-| math/vector/VectorDouble.java | VectorDouble | (resize helper, ~1021) | 1021 | Returns the original array `a` instead of the newly-resized `ret`; the resized array is discarded and callers relying on the return value get the un-resized input back. | Medium | open |
-| math/vector/VectorDouble.java | VectorDouble | ONE_AT(double[], int, int) | 1061 | Fills the range with 0 instead of 1 (copy-pasted from `ZERO_AT`); callers expecting a one-vector get a zero-vector instead. | Medium | open |
-| math/vector/VectorDouble.java | VectorDouble | (array-fill loop, ~1339) | 1339 | Loop condition `++i <= ret.length` lets `i` reach `ret.length`, so the final iteration writes `ret[ret.length]`, throwing `ArrayIndexOutOfBoundsException` whenever `ret.length > 1`. | High | open |
-| math/vector/VectorDouble.java | VectorDouble | (copy helper, ~2610) | 2610 | Reads `tmp = ret[stop]` instead of `arg[stop]`; whenever `ret` is a distinct fresh array from `arg`, the source values in `arg` are ignored and only `ret`'s garbage/zero prior content is used. | Medium | open |
-| math/vector/VectorDouble.java | VectorDouble | MUL_AT(double[], int, double[], int) | 3319 | When `retLength > arrLength`, `ret`'s elements from `arrLength..retLength-1` are neither multiplied nor zeroed (the `FILL_AT` call that would zero them is commented out), silently keeping their pre-call values instead of becoming 0, as the disabled line's own comment says they should. | Medium | open |
-| math/vector/VectorDouble.java | VectorDouble | MUL_AT(double[], int, float[], int) | 3339 | Same left-over-elements defect as the `double[]` overload above, when `retLength > arrLength`. | Medium | open |
-| math/vector/VectorDouble.java | VectorDouble | removeAt(int) | 5003 | `--itemCount` runs unconditionally as part of evaluating the guard; when `index` is out of range this still returns 0 but `itemCount` has already been permanently decremented, corrupting the vector's size even though no element was removed. Same defect as `VectorObject.removeAt(int)`/`VectorString.removeAt(int)`. | High | open |
-| math/vector/VectorDouble.java | VectorDouble | equals(Object) | 5970 | Violates the `equals()` contract for a null argument: `arg instanceof VectorDouble` is false for null, so this falls through to `arg.equals(this)` and throws `NullPointerException` instead of returning false. | Medium | open |
-| math/vector/VectorDouble.java | VectorDouble | toStream(Writer) | 6074 | Loop `for (i=0; ++i<=itemCount;)` writes `items[1]..items[itemCount]` in addition to `items[0]` written just above - one element past the logically valid range; also `stream.write(itemCount)` writes `itemCount` as a raw character code, not its decimal digits. | Medium | open |
-| math/vector/VectorDouble.java | VectorDouble | fullDiffAt() | 6166 | Infinite loop once `itemCount` reaches 0: `diffAt()` guards `if (itemCount <= 0) return this;` and no longer decrements, but this loop's own condition `itemCount >= 0` stays true forever once `itemCount==0`, so this call never returns. | High | open |
-| math/vector/VectorChar.java | VectorChar | oneAt(char[], int, int) | 541 | Fills with `(char) 0`, not 1 - contradicts both this method's name (`oneAt`) and its own one-arg wrapper `oneAt(char[])`'s documented contract ("set to 1"). | Medium | open |
-| math/vector/VectorChar.java | VectorChar | AbsDiffNorm(char[], char[], char[]) | 804 | `diff[i]` is never assigned on the `dif <= 0` branch, even though the contract says `diff` is "an Output Parameter being filled with the Difference Vector" - only positive-difference elements get written; callers reading `diff[i]` elsewhere see stale content. | Medium | open |
-| math/vector/VectorChar.java | VectorChar | removeAt(int) | 2214 | `--itemCount` runs unconditionally before the range check; an out-of-range `index` still returns 0 as if nothing happened, but `itemCount` has already been permanently decremented, corrupting the vector's size. | High | open |
-| math/vector/VectorChar.java | VectorChar | mulAt(VectorChar) | 2372 | Calls `subAt(...)` instead of `mulAt(...)` - copy-pasted from `subAt(VectorChar)` without updating the delegated call, so this silently subtracts the given vector's values instead of multiplying by them. | High | open |
-| math/vector/VectorChar.java | VectorChar | divAt(VectorChar) | 2379 | Same copy-paste defect as `mulAt(VectorChar)` above, calling `subAt(...)` instead of `divAt(...)`. | High | open |
-| math/vector/VectorChar.java | VectorChar | mulAt(int) | 2412 | The `value` parameter is never used - calls the `(char[], int, int)` overload with `items` itself as the array argument, so it squares every element instead of multiplying by the given scalar. | High | open |
-| math/vector/VectorChar.java | VectorChar | divAt(int) | 2419 | The `value` parameter is never used - divides every element by itself (yielding 1, or an arithmetic error on a zero element) instead of dividing by the given scalar. | High | open |
+| asynch/ThreadExecutor.java | ThreadExecutor | numTasks bookkeeping | - | Drifts from actual queue/assignment state (matches the class's own Javadoc admission). | Medium | open |
+| asynch/ThreadPoolExecutor.java | ThreadPoolExecutor | (synchronization) | - | `wait()`/`notify()` called outside a `synchronized` block - `IllegalMonitorStateException`. | High | open |
+| asynch/QueuedSemaphore.java | QueuedSemaphore | acquire/release | - | Lost-wakeup race between a waiter's failed acquire check and its `wait()` call. | High | open |
+| stringOp/Grammar.java | Grammar | evolve(...) | ~51 | Off-by-one bound check against `Productions.length`. | Medium | open |
+| stringOp/SentenceComparer.java | SentenceComparer | getMostSimilarSentence(...) | ~124 | Best-match index is never recorded - always returns -1. | High | open |
+| stringOp/SentenceComparer.java | SentenceComparer | getWordSet(String, boolean) | ~151 | Unimplemented - always returns an empty `BitSet`. | High | open |
+| stringOp/search/SearcherBM.java | SearcherBM | constructor and search loop | ~48, ~68 | Negative `hashCode()` used as an array index without masking - AIOOBE. | Medium | open |
+| synch/UniCastConstrained.java | UniCastConstrained | addValidator(IValidator) | ~67 | Dead `instanceof` branch aside, every call after the first silently drops the new validator. | High | open |
+| synch/ValidationRuleList.java | ValidationRuleList | validateInThread(Object) | ~146 | Reads `params[3]` from a 2-element array - AIOOBE on every timed validation. | High | open |
+| synch/APubUniLinkSub.java | APubUniLinkSub | update(Object, Object, Object) | ~117 | No null check on `subscriber` before propagating to the chain-terminal node - NPE. | High | open |
+| synch/PropDouble.java | PropDouble | setValue(double) | ~48 | Never calls `subscriber.update(...)` - the notification contract is a no-op. | Medium | open |
+| synch/StateMachine.java | StateMachine | toString() | ~110 | Inner loop bound uses the row count instead of the column count. | Medium | open |
+| streamIO/AReSetAble.java | AReSetAble | JUMP(IReSetAble, long) | ~106 | Loop guard only works for positive offsets; a negative offset (as `PUSH_BACK` relies on) always returns 0. | Medium | open |
+| streamIO/Log.java | Log | XML_DATE_FORMATTER (field) | ~247 | Shared static `SimpleDateFormat` is not thread-safe - concurrent logging can corrupt formatting. | Medium | open |
+| streamIO/StringBufferOutputStream.java | StringBufferOutputStream | addBuffer(StringBuffer, int) | ~208 | Calls a 3-arg overload with reversed parameter order - silently appends nothing for `stop > 0`. | Medium | open |
+| graphs/AGraph.java | AGraph | (edge-filtering method) | ~116 | Filters by the target Node index instead of edge weight. | Medium | open |
+| graphs/SparseMatrix.java | SparseMatrix | getDegree/getInDegree helper | ~241 | Calls itself instead of `getOutDegree(j)` - infinite recursion. | High | open |
+| technology/RandomGUID.java | RandomGUID | getRandomGUID(boolean) | 160 | `NoSuchAlgorithmException` is only logged, then execution falls through to a null-dereferencing use of `md5`. | Low | open |
+| technology/xml/XmlToDirHandler.java | XmlToDirHandler | main(String[]) | 209 | Prints the array reference instead of its contents. | Low | open |
+| technology/xml/XmlUnmarshaller.java | XmlUnmarshaller | setBuffer(String) | 298 | Duplicate `long.class` check, almost certainly meant `double.class` - double fields never convert. | Medium | open |
+| technology/xml/test/KundeInSystem.java | KundeInSystem | ZKDBBaseType() (accessor) | 83 | Getter named literally `ZKDBBaseType()` instead of `getTyp()` - breaks reflection-based access by naming convention. | Medium | open |
+| tester/logic/ConditionTable.java | ConditionTable | constructor | ~39 | Validation loop reads the instance field (still null) instead of the constructor parameter - NPE on every construction. | Critical | open |
+| tester/MetricMeasurAble.java | MetricMeasurAble | dist(Object, Object) | ~49 | Both operands read from `a` - `b`'s value is never read, always returns 0. | High | open |
+| tester/FilterTestWaiter.java | FilterTestWaiter | test(Object) | ~56 | `wait(waitTime)` called without holding the monitor - `IllegalMonitorStateException`. | High | open |
+| tester/fuzzy/FuzzyDictionary.java | FuzzyDictionary | getMostSimilarItem(Object, double) | ~75 | Never actually searches - `minIndex` is hardcoded, always returns -1. | High | open |
+| tester/fuzzy/FuzzySentenceComparator.java | FuzzySentenceComparator | read(...) | ~208 | Loop condition compares against a hardcoded char instead of the `sep` parameter. | Medium | open |
+| tester/process/StreamProcessor.java | StreamProcessor | getPosition() | ~93 | Delegates to `availAble()` instead of an actual position method. | Medium | open |
+| tester/process/IOEProcess.java | IOEProcess | testIt() | ~77 | Wrong fully-qualified class name passed to `Runtime.exec` - child process fails immediately. | Low | open |
+| structure/Context.java | Context | send() | ~77 | Calls itself instead of delegating to `currState` - infinite recursion. | High | open |
+| structure/Delegate.java | Delegate | raiseEvent() | ~153 | Both catch blocks are empty, silently stopping notification of every Delegate after the failure. | Medium | open |
+| structure/HistoryList.java | HistoryList | addItem(Object) | ~90 | Grows the backing array one element too late - AIOOBE. | Medium | open |
+| structure/Visitor1.java / Visitor2.java | Visitor1, Visitor2 | visit(ElementA)/visit(ElementB) | ~42-55 | Unconditional mutual recursion with `invite()` - `StackOverflowError`. | High | open |
+| structure/aspect/DoubleAspect.java | DoubleAspect | getLong()/getDouble() | ~139, ~152 | Reads a field no setter overload ever assigns - stays permanently 0.0. | High | open |
+| structure/aspect/ListAspect.java | ListAspect | constructor(String, Aspect[]) | ~60 | Constructor parameter never assigned to the `list` field. | Medium | open |
+| streamIO/real/FilterInMul.java | FilterInMul | getMinDouble() | - | Sign-flip bug, wrong-signed minimum bound. | Medium | open |
+| streamIO/real/StreamIn_Geometric.java | StreamIn_Geometric | 2-arg constructor | - | Field-order/assignment bug. | Medium | open |
+| streamIO/real/random/RandomGauss.java | RandomGauss | nextDoubleInternal() | - | Always-false self-comparison, dead rejection branch. | Medium | open |
+| streamIO/real/random/RandomGauss2.java | RandomGauss2 | nextDoubleInternal() | - | Same always-false self-comparison bug as `RandomGauss`. | Medium | open |
+| streamIO/real/random/RandomPoisson.java | RandomPoisson | reSet() | - | Unconditional call on a field not constructed on this branch - NPE. | High | open |
+| math/minimizer/SinOfDistDivDist.java | SinOfDistDivDist | Map(double[]) / Map(float[]) | 59, 78 | `0.0/0.0 = NaN` at the function's own minimum instead of the correct limit -1.0. | Medium | open |
+| graphic/math2D/Map2DModel.java | Map2DModel | addPoint(int, float, float, String) | 215 | Missing null guard on `coordTrafo` (present in the sibling double overload) - NPE. | Medium | open |
+| graphic/math2D/Map2DModel.java | Map2DModel | addPoint(float, float, String) | 228 | Same missing-null-guard defect. | Medium | open |
+| graphic/math2D/Map2DModel.java | Map2DModel | addPoint(float[], String) | 260 | Same missing-null-guard defect. | Medium | open |
+| graphic/ms3d/Ms3d.java | Ms3d | calcRotation(Ms3dJoint, float) | 673 | Compares against the wrong keyframe-count field - AIOOBE when counts differ. | Medium-High | open |
+| graphic/ms3d/Ms3d.java | Ms3d | streamJoints(OutputStream) | 162 | Delegates to `streamVertices(...)` instead of `streamJoints(...)` - copy-paste error. | Medium | open |
+| graphic/ms3d/Ms3dVertex.java | Ms3dVertex | toStream(OutputStream) | 105 | Calls itself via overload resolution - `StackOverflowError`. | High | open |
+| math/fit/weight/WeightExp.java | WeightExp | (field `SINGLETON`) | 32 | Non-static instance field recursing into its own initializer - `StackOverflowError`. Needs `static`. | High | open |
+| math/fit/weight/WeightGauss.java | WeightGauss | (field `SINGLETON`) | 33 | Same non-static-`SINGLETON`-recursion defect. | High | open |
+| math/fit/weight/WeightLorentz.java | WeightLorentz | (field `SINGLETON`) | 30 | Same non-static-`SINGLETON`-recursion defect. | High | open |
+| math/fit/weight/WeightExp.java | WeightExp | probCum(double) | 41 | Returns the unintegrated density instead of a cumulative probability (author's own TODO). | Low | open |
+| math/fit/weight/WeightLorentz.java | WeightLorentz | probCum(double) | 43 | Returns the wrong (WeightExp) formula, inconsistent with its own siblings (author's own TODO). | Low | open |
+| math/fit/FitFields.java | FitFields | map(double[], double[]) | 22 | Always returns `null` instead of the populated array. | Medium | open |
+| math/fit/FitFields.java | FitFields | map(float[], float[]) | 31 | Same always-`null`-return defect. | Medium | open |
+| math/fit/FitGauss.java | FitGauss | map(double[], double[], double[]) | 75 | Unimplemented stub, silently returns 0 instead of an error. | Medium | open |
+| math/fit/FitGauss.java | FitGauss | map(float[], float[], float[]) | 89 | Same unimplemented-stub defect. | Medium | open |
+| math/fit/FittingFloat.java | FittingFloat | svdfit(...) | 45 | Required decomposition/back-substitution calls are commented out - never actually solves. | High | open |
+| math/refiner/AFloatRefinerQ.java | AFloatRefinerQ | BRACKET(IFloatFunction, float, float, int) | 103 | Allocates the result array to the actual bracket count but copies the larger requested count into it - AIOOBE. | High | open |
+| math/refiner/NewtonFloatRefiner.java | NewtonFloatRefiner | refine() | 71 | Reads a field one constructor path never sets - NPE on first call. | High | open |
+| math/Vector3D.java | Vector3D | angles()/Sphaeric2Rect()/Rect2Sphaeric()/Quadrik(...) | 336,361,380,428 | Indexes one past the end of 2/3-element arrays - AIOOBE every call. | Critical | open |
+| math/Vector3D.java | Vector3D | mul(double) | 148 | Mutates `this.a[]` inside constructor arguments, contradicting the non-mutating method contract. | Medium | open |
+| math/Vector2D.java | Vector2D | Equality(...) (2 overloads) | 95, 300 | Operator-precedence bug: `x << 2 + y` parses as `x << (2+y)`. | Medium | open |
+| math/Vector2D.java | Vector2D | DET2x2(Vector2D) | 307 | Indexes one past the end of a 2-element array - AIOOBE. | Critical | open |
+| math/NumberFormatter.java | NumberFormatter | isNumber(String) | 26 | Always returns `true` - unimplemented. | Low | open |
+| math/integration/StratifiedMCIntegrator.java | StratifiedMCIntegrator | integrate(...) | 95 | Contract documents a nullable parameter, but the method dereferences it unconditionally - NPE. | Medium | open |
+| graphic/AGraph2D.java | AGraph2D | sizePolygonAt(int[][], int, int) | 106 | Duplicated condition clause instead of an OR, silently skipping a scale axis. | Medium | open |
+| graphic/AGraph2D.java | AGraph2D | setThickPixel() | 270 | Wrong coordinate variable used for one `fillRect` argument. | Medium | open |
+| graphic/AGraph2DOut.java | AGraph2DOut | setColor(Color) | 52 | Uninitialized field dereferenced on the very first call - NPE. | Medium | open |
+| graphic/Figures.java | Figures | VectorGrid(int[], int[], int[][], int[][]) | 351 | Pre-increment loops skip row/column 0 entirely. | Low | open |
+| graphic/Figures.java | Figures | (ellipse-radial-lines loop) | 439 | Uses the wrong coordinate accessor for the start point, skewing radial lines. | Medium | open |
+| graphic/Graph2D.java | Graph2D | drawImage(...) | 228 | Stub always returns `true` without drawing anything. | Medium | open |
+| graphic/GraphicsAdapter.java | GraphicsAdapter | create() | 74 | Always returns `null`, contradicting the documented contract - NPE downstream. | Medium | open |
+| graphic/GraphicsAdapter.java | GraphicsAdapter | setPixel(Color) | 548 | The `color` parameter is never used - always paints with the stale current color. | Medium | open |
+| graphic/GraphicsAdapter.java | GraphicsAdapter | fillPolygon(int[], int[], Color, Color) | 809 | Border/inner colors swapped relative to their parameter names. | Medium | open |
+| graphic/GraphicsAdapter.java | GraphicsAdapter | drawEllipse(Point2D, int) | 863 | Center/radius contract mismatch vs. the underlying `drawOval` call. | Medium | open |
+| graphic/GraphicsAdapter.java | GraphicsAdapter | drawEllipse(Point2D, Point2D) | 877 | Same center/radius contract mismatch. | Medium | open |
+| graphic/GraphicsAdapter.java | GraphicsAdapter | fillEllipse(Point2D, int) | 964 | Same center/radius contract mismatch. | Medium | open |
+| graphic/GraphicsAdapter.java | GraphicsAdapter | fillEllipse(Point2D, Point2D) | 977 | Same center/radius contract mismatch. | Medium | open |
+| graphic/GraphicsAdapter.java | GraphicsAdapter | fillRoundRect(Point2D, Point2D, int, int) | 1043 | Absolute coordinates passed as width/height instead of the computed difference. | Medium | open |
+| graphic/Hidden.java | Hidden | setPixel(int, int, Color) | 139 | Off-by-one bounds guard - AIOOBE. | High | open |
+| graphic/JavaGraphic.java | JavaGraphic | fillEllipse(Point2D, Point2D) | 503 | Calls the outline-only `drawOval` instead of `fillOval`. | Medium | open |
+| graphic/JavaGraphic.java | JavaGraphic | fillRoundRect(Line2D, Point2D) | 539 | Dispatches to the outline method instead of the fill method. | Medium | open |
+| graphic/JavaGraphic.java | JavaGraphic | fillRoundRect(Line2D, Point2D, Point2D) | 554 | Same outline-instead-of-fill dispatch bug. | Medium | open |
+| graphic/PaletteRGB.java | PaletteRGB | HUE2COLOR(int) | 182 | Wrong sign in negative wrap-around arithmetic - wrong color for negative input. | Medium | open |
+| graphic/PaletteShading.java | PaletteShading | getColor(int) | 80 | No guard against a zero divisor - `ArithmeticException`. | Medium | open |
+| graphic/Point2D.java | Point2D | MinAt(Point2D) | 139 | Compares/assigns against the wrong axis (`x` instead of `y`). | Medium | open |
+| graphic/Point2D.java | Point2D | MaxAt(Point2D) | 152 | Same axis mixup as `MinAt()`. | Medium | open |
+| graphic/Polygon2D.java | Polygon2D | getExtent() | 92 | Overwrites the real point array with nulls before reading it - destroys the polygon's data. | High | open |
+| graphic/ScalarPlotNew.java | ScalarPlotNew | (color-segment stepping) | 379 | Never tracks a segment-start position, unlike the sibling multi-arg overload. | Medium | open |
+| graphic/VectorPoint2D.java | VectorPoint2D | (resize helper) | 470 | Returns the original unresized array instead of the newly resized one. | Medium | open |
+| graphic/VectorPoint2D.java | VectorPoint2D | stream(PrintStream, int, int) | 651 | Pre-increment loop skips the first row. | Medium | open |
+| graphic/ZBuffer.java | ZBuffer | setPixel(int, int, float) | 134 | Y-bound is never checked (X-bound checked twice instead) - AIOOBE. | High | open |
+| graphic/example/AntHillInside.java | AntHillInside | moveAnt(...) | 169 | Coordinates never clamped/wrapped to bounds - eventual AIOOBE. | Medium | open |
+| graphic/example/Erosion.java | Erosion | MakeTerrainFault(...) | 169 | Normalize/copy step was commented out and never replaced - output buffer stays all-zero. | High | open |
+| graphic/implement/GrayColor.java | GrayColor | initPass(int, int, int, int) | 84 | Operator-precedence bug: `<<` binds looser than `+`. | Medium | open |
+| graphic/implement/GreyColor.java | GreyColor | setPixel() | 116 | Column index can reach 8 in a length-8 array - AIOOBE. | High | open |
+| graphic/svg/SvgApplet.java | SvgApplet | getTrafo(Rectangle) | 240 | Parameter ignored - effectively a no-arg getter. | Low | open |
+| graphic/svg/SvgApplet.java | SvgApplet | setTrafo(Coordinates2D) | 247 | Adds new listeners on every call without removing prior ones - listener leak. | Medium | open |
+| graphic/svg/SvgApplet.java | SvgApplet | image(Attributes) | 488 | `xlink:href` from untrusted SVG is fetched with no scheme/path validation - SSRF-like. | Medium | open |
+| graphic/math3D/OdePlotter.java | OdePlotter | drawLoop() | 101 | Loop condition is false from the start when `Rect` is null - draws exactly one step instead of running unbounded. | Medium | open |
+| graphic/mvc/BufferedPainter.java | BufferedPainter | BufferedPainter(ICanvas) | 83 | Width/height swapped allocating the offscreen buffer. | High | open |
+| graphic/mvc/plane2D/VectorPolygon.java | VectorPolygon | drawInOrder(IGraphText) | 353 | The branch that rebuilds `zIndex` is commented out - always NPEs. | High | open |
+| graphic/mvc/plane2D/MatrixShort.java | MatrixShort | SET_DIM_AT(short[][], int) | 480 | Returns the original array instead of the resized one. | Medium | open |
+| graphic/mvc/plane2D/MatrixShort.java | MatrixShort | MatrixShort(Object) | 819 | Wrong constructor overload resolved - capacity increment passed as row dimension. | Medium | open |
+| graphic/mvc/plane2D/MatrixShort.java | MatrixShort | newInstance() | 1017 | Same constructor-overload mismatch. | Medium | open |
+| graphic/mvc/plane2D/VectorPolygon.java | VectorPolygon | copyAt(MatrixShort[]) | 293 | Never grows capacity first, unlike the sibling Object-typed overload - AIOOBE. | Medium | open |
+| graphic/mvc/BaseApplet.java | BaseApplet | imageUpdate(...) | 360 | `ERROR`/`ABORT` never handled - a failed image load never stops the update loop. | Medium | open |
+| graphic/mvc/BaseApplet.java | BaseApplet | getFaultySuffix(String) | 108 | Throws on filenames shorter than 4 characters. | Low | open |
+| graphic/mvc/plane2D/MatrixShort.java | MatrixShort | STREAM(...) | 650 | Pre-increment loop skips the first row. | Low | open |
+| graphic/mvc/plane2D/MatrixShort.java | MatrixShort | normalizeAt() | 1031 | Decrements past 0 to -1 when already empty - AIOOBE. | Low | open |
+| math/vector/VectorObject.java | VectorObject | removeAt(int) | 167 | `itemCount` decremented as a side effect even when the index is out of range. | High | open |
+| math/vector/VectorObject.java | VectorObject | copyInto(int[]) | 449 | Copies an `Object[]` into an `int[]` destination - `ArrayStoreException`. | Critical | open |
+| math/vector/VectorObject.java | VectorObject | toArray() | 466 | Same `ArrayStoreException` hazard as `copyInto(int[])`. | Critical | open |
+| math/vector/HunterInt.java | HunterInt | GET_STATISTIC_POS(int[], int, int, int) | 603 | `PARTITION`'s bound arguments are passed swapped. | High | open |
+| math/vector/HunterInt.java | HunterInt | GET_STATISTIC_POS(int[], int[], int, int, int) | 844 | Same swapped-bounds defect, indexed variant. | High | open |
+| math/vector/HunterFloat.java | HunterFloat | GET_STATISTIC_POS(float[], int[], int, int, int) | 879 | Same swapped-bounds defect, indexed variant. | High | open |
+| math/vector/HunterDouble.java | HunterDouble | GET_STATISTIC(double[], int[], int, int, int) | 756 | Same swapped-bounds defect, indexed variant. | High | open |
+| math/vector/VectorChar.java | VectorChar | MIN(char[][], int) | 60 | Comparison inverted - always returns `Character.MAX_VALUE`. | Critical | open |
+| math/vector/VectorString.java | VectorString | ALIGN_RIGHT(String, String) | 453 | Negative substring index when `str` is shorter than `format` - the normal case. | High | open |
+| math/vector/VectorString.java | VectorString | PAD(String, int, char, boolean) | 723 | Returned String is 1 character shorter than requested. | Medium | open |
+| math/vector/VectorString.java | VectorString | Collection2StringArray(Collection) | 829 | Pre-increment write skips index 0 and overruns the end - AIOOBE. | Critical | open |
+| math/vector/VectorString.java | VectorString | REPLACE_ALL(String, String) | 967 | Off-by-one drops the character before the first separator match. | Medium | open |
+| math/vector/VectorString.java | VectorString | toString(byte[], StringBuffer) | 1343 | Off-by-one byte vs. the documented "terminated by 0" contract. | Low | open |
+| math/vector/VectorString.java | VectorString | removeAt(int) | 1760 | Same unconditional-decrement bug as `VectorObject.removeAt(int)`. | High | open |
+| math/vector/VectorString.java | VectorString | copyInto(int[]) | 1894 | Same `ArrayStoreException` hazard as `VectorObject.copyInto(int[])`. | Critical | open |
+| math/vector/VectorString.java | VectorString | toArray() | 1912 | Same `ArrayStoreException` hazard. | Critical | open |
+| math/matrix/MatrixFloatStreamIn.java | MatrixFloatStreamIn | constructor | 45 | `currPos` initialized one past the last valid index - AIOOBE before any `nextVector()`. | Medium | open |
+| math/matrix/MatrixDouble.java | MatrixDoubleStreamIn | constructor | 4224 | Same off-by-one as `MatrixFloatStreamIn`'s constructor. | Medium | open |
+| math/matrix/MatrixObject.java | MatrixObject | copyInto(int[]) | 255 | `Object[][]` copied into an `int[]` destination - `ArrayStoreException`. | High | open |
+| math/matrix/MatrixObject.java | MatrixObject | toArray() | 270 | Same `Object[][]`-into-`int[]` defect. | High | open |
+| math/matrix/MatrixInt.java | MatrixInt | COPY_AT(int[][], int[], int, int) | 891 | Arraycopy direction reversed - overwrites the input instead of filling the output. | High | open |
+| math/matrix/MatrixFloat.java | MatrixFloat | COPY_AT(float[][], float[], int, int) | 1182 | Same reversed-direction defect. | High | open |
+| math/matrix/MatrixDouble.java | MatrixDouble | COPY_AT(double[][], double[][], int, int) | 1112 | Same reversed-direction defect, matrix-to-matrix overload. | High | open |
+| math/matrix/MatrixDouble.java | MatrixDouble | COPY_AT(double[][], double[], int, int) | 1125 | Same reversed-direction defect, vector overload. | High | open |
+| math/matrix/MatrixTriDiagonal.java | MatrixTriDiagonal | solveCyclicAt(...) | 165 | Mutable shared arrays not defensively copied - stale interior values silently reused across calls. | Medium | open |
+| math/matrix/Quaternion.java | Quaternion | getAxis() | 181 | Indexes `q[4]` on a `float[4]` - AIOOBE every call. | Critical | open |
+| math/matrix/Quaternion.java | Quaternion | set(float[]) | 557 | Ignores its own parameter, copies the array onto itself - a no-op. | High | open |
+| math/vector/VectorDouble.java | VectorDouble | MUL_CROSS_AT(double[], double[]) | 671, 676 | Writes one past the end of a 3-element array - AIOOBE. | High | open |
+| math/vector/VectorDouble.java | VectorDouble | (resize helper, ~1021) | 1021 | Returns the original array instead of the resized one. | Medium | open |
+| math/vector/VectorDouble.java | VectorDouble | ONE_AT(double[], int, int) | 1061 | Fills with 0 instead of 1 (copy-pasted from `ZERO_AT`). | Medium | open |
+| math/vector/VectorDouble.java | VectorDouble | (array-fill loop, ~1339) | 1339 | Off-by-one loop bound writes one past the array end - AIOOBE. | High | open |
+| math/vector/VectorDouble.java | VectorDouble | (copy helper, ~2610) | 2610 | Reads from the destination array instead of the source. | Medium | open |
+| math/vector/VectorDouble.java | VectorDouble | MUL_AT(double[], int, double[], int) | 3319 | Leftover elements neither multiplied nor zeroed when the result is longer than the input. | Medium | open |
+| math/vector/VectorDouble.java | VectorDouble | MUL_AT(double[], int, float[], int) | 3339 | Same leftover-elements defect, `float[]` overload. | Medium | open |
+| math/vector/VectorDouble.java | VectorDouble | removeAt(int) | 5003 | Same unconditional-decrement-on-failure bug as `VectorObject.removeAt(int)`. | High | open |
+| math/vector/VectorDouble.java | VectorDouble | equals(Object) | 5970 | Violates the null-argument contract - NPE instead of returning false. | Medium | open |
+| math/vector/VectorDouble.java | VectorDouble | toStream(Writer) | 6074 | Off-by-one write range, plus `itemCount` written as a raw character code instead of digits. | Medium | open |
+| math/vector/VectorDouble.java | VectorDouble | fullDiffAt() | 6166 | Infinite loop once `itemCount` reaches 0. | High | open |
+| math/vector/VectorChar.java | VectorChar | oneAt(char[], int, int) | 541 | Fills with 0, not 1. | Medium | open |
+| math/vector/VectorChar.java | VectorChar | AbsDiffNorm(char[], char[], char[]) | 804 | Output element left unassigned on the non-positive branch. | Medium | open |
+| math/vector/VectorChar.java | VectorChar | removeAt(int) | 2214 | Same unconditional-decrement-before-range-check bug as `VectorObject.removeAt`. | High | open |
+| math/vector/VectorChar.java | VectorChar | mulAt(VectorChar) | 2372 | Calls `subAt(...)` instead of `mulAt(...)` - copy-paste. | High | open |
+| math/vector/VectorChar.java | VectorChar | divAt(VectorChar) | 2379 | Same copy-paste defect, calling `subAt(...)` instead of `divAt(...)`. | High | open |
+| math/vector/VectorChar.java | VectorChar | mulAt(int) | 2412 | Ignored scalar parameter - squares every element instead. | High | open |
+| math/vector/VectorChar.java | VectorChar | divAt(int) | 2419 | Ignored scalar parameter - self-divides every element instead. | High | open |
 | math/vector/VectorLong.java | VectorLong | oneAt(long[], int, int) | 532 | Same fills-with-0-instead-of-1 defect as `VectorChar.oneAt`. | Medium | open |
-| math/vector/VectorLong.java | VectorLong | AbsDiffNorm(long[], long[], long[]) | 796 | Same unassigned-`diff[i]`-on-non-positive-branch defect as `VectorChar.AbsDiffNorm`. | Medium | open |
-| math/vector/VectorLong.java | VectorLong | removeAt(int) | 2207 | Same unconditional-`--itemCount`-before-range-check defect as `VectorChar.removeAt(int)`. | High | open |
-| math/vector/VectorLong.java | VectorLong | mulAt(VectorLong) | 2365 | Same `subAt(...)`-instead-of-`mulAt(...)` copy-paste defect as `VectorChar.mulAt(VectorChar)`. | High | open |
-| math/vector/VectorLong.java | VectorLong | divAt(VectorLong) | 2372 | Same `subAt(...)`-instead-of-`divAt(...)` copy-paste defect as `VectorChar.divAt(VectorChar)`. | High | open |
-| math/vector/VectorLong.java | VectorLong | mulAt(int) | 2405 | Same ignored-scalar-parameter defect (squares elements instead) as `VectorChar.mulAt(int)`. | High | open |
-| math/vector/VectorLong.java | VectorLong | divAt(int) | 2413 | Same ignored-scalar-parameter defect (self-divides elements instead) as `VectorChar.divAt(int)`. | High | open |
-| math/vector/VectorShort.java | VectorShort | oneAt(short[], int, int) | 770 | Same fills-with-0-instead-of-1 defect as `VectorChar.oneAt`. | Medium | open |
-| math/vector/VectorShort.java | VectorShort | removeAt(int) | 3027 | Same unconditional-`--itemCount`-before-range-check defect as `VectorChar.removeAt(int)`. | High | open |
-| math/vector/VectorShort.java | VectorShort | mulAt(VectorShort) | 3334 | Same `subAt(...)`-instead-of-`mulAt(...)` copy-paste defect as `VectorChar.mulAt(VectorChar)`. | High | open |
-| math/vector/VectorShort.java | VectorShort | divAt(VectorShort) | 3342 | Same `subAt(...)`-instead-of-`divAt(...)` copy-paste defect as `VectorChar.divAt(VectorChar)`. | High | open |
-| math/vector/VectorShort.java | VectorShort | mulAt(int) | 3378 | Same ignored-scalar-parameter defect (squares elements instead) as `VectorChar.mulAt(int)`. | High | open |
-| math/vector/VectorShort.java | VectorShort | divAt(int) | 3387 | Same ignored-scalar-parameter defect (self-divides elements instead) as `VectorChar.divAt(int)`. | High | open |
-| math/vector/VectorInt.java | VectorInt | ONE_AT(int[], int, int) | 1010 | Fills with 0 instead of 1 (copy-pasted from `ZERO_AT`); same defect as `VectorChar/VectorLong/VectorShort.oneAt`. | Medium | open |
-| math/vector/VectorInt.java | VectorInt | MUL_CROSS_AT(int[], int[]) | 2042, 2047 | `result` is `new int[3]` (valid indices 0-2); both short-array branches write `result[3]`, throwing `ArrayIndexOutOfBoundsException` (likely intended `result[2]`) - same defect as `VectorDouble.MUL_CROSS_AT`. | High | open |
-| math/vector/VectorInt.java | VectorInt | removeAt(int) | 3572 | Same unconditional-`--itemCount`-before-range-check defect as `VectorChar.removeAt(int)`. | High | open |
-| math/vector/VectorInt.java | VectorInt | mulAt(VectorInt) | 3726 | Same `subAt(...)`-instead-of-multiplicative-op copy-paste defect as `VectorChar.mulAt(VectorChar)`. | High | open |
-| math/vector/VectorInt.java | VectorInt | divAt(VectorInt) | 3731 | Same `subAt(...)`-instead-of-divisive-op copy-paste defect as `VectorChar.divAt(VectorChar)`. | High | open |
-| math/vector/VectorInt.java | VectorInt | mulAt(int) | 3762 | Same ignored-scalar-parameter defect (squares elements instead) as `VectorChar.mulAt(int)`. | High | open |
-| math/vector/VectorInt.java | VectorInt | divAt(int) | 3767 | Same ignored-scalar-parameter defect (self-divides elements instead) as `VectorChar.divAt(int)`. | High | open |
-| math/vector/VectorFloat.java | VectorFloat | ABS(float[], int, int, float[]) | 2107 | Reads `tmp = ret[stop]` instead of `arg[stop]`; the source array `arg` is ignored whenever `ret != arg` (e.g. a fresh/different `ret` array yields an all-zero result). | Medium | open |
-| math/vector/VectorFloat.java | VectorFloat | removeAt(int) | 4297 | Same unconditional-decrement-before-range-check defect as `VectorChar/VectorLong/VectorShort/VectorInt.removeAt`. | High | open |
-| math/vector/VectorFloat.java | VectorFloat | mulAt(VectorFloat) | 4574 | Same `subAt`-instead-of-multiplicative-op defect as the sibling classes' `mulAt(VectorX)`. | High | open |
-| math/vector/VectorFloat.java | VectorFloat | divAt(VectorFloat) | 4580 | Same `subAt`-instead-of-divisive-op defect as the sibling classes' `divAt(VectorX)`. | High | open |
-| math/vector/VectorFloat.java | VectorFloat | mulAt(double) | 4630 | Ignores the `value` parameter and instead multiplies items by itself element-wise; same defect as the sibling classes' `mulAt(scalar)`. | High | open |
-| math/vector/VectorFloat.java | VectorFloat | divAt(double) | 4636 | Ignores the `value` parameter and instead divides items by itself element-wise (yielding all 1s); same defect as the sibling classes' `divAt(scalar)`. | High | open |
-| function/derive/Enum.java | Enum | succ() | 264 | Indexes `list[(int)Value+1]` and bounds-checks `Value>=list.length` instead of using the list position `Value-Offset`. For any Enum with non-zero Offset (`Month`, Offset=1) this skips an element (`January.succ()` returns March); for Offset=0 with the last element's Value==list.length-1 (`Week`, Sunday.Value=6, list.length=7) it throws `ArrayIndexOutOfBoundsException` instead of returning null. | High | open |
-| function/derive/Enum.java | Enum | pred() | 271 | Indexes `list[(int)Value-1]` and checks `Value==0` instead of using the list position `Value-Offset`. For any Enum with non-zero Offset (`Month`, Offset=1) the first element's `pred()` returns itself instead of null (`January.pred()` returns January). | Medium | open |
-| function/derive/Ternary.java | Ternary | fromString(String) | 224 | Ignores the `ST` parameter entirely and always returns `this`; the class's own TODO admits parsing "-1"/"0"/"1" and "true"/"false"/"null" is unimplemented, so any caller round-tripping a serialized Ternary silently gets back the wrong constant. | Medium | open |
-| function/derive/neuron/Network.java | Network | randomizeWeights() | 144 | Loop uses `while (--i > 0)` instead of `>= 0`, so `Layers[0]`'s Weights are never randomized while every other Layer's are; reachable on any multi-Layer Network after construction. | Medium | open |
-| function/derive/ring/LinAt.java | LinAt | LinAt(Object, Object, IInvertAble) | 39 | Validates the fields `a`/`b` (still null before assignment) instead of the constructor parameters `a_`/`b_`, so these `instanceof IFunction` checks can never trigger regardless of what callers pass in. | Low | open |
-| function/derive/ring/LinAt.java | LinAt | Map(Object) | 65 | When `b==null` (pure scaling) calls `MulAt.MUL_AT(arg, b)` with the null `b` instead of `MulAt.MUL_AT(arg, a)`, breaking the intended `a*x` scaling for every `LinAt` constructed with a null `b`. | High | open |
-| function/derive/ring/body/Logarithm.java | Logarithm | getDerivative(double) | 58 | Returns `-Math.log(x)` instead of the correct derivative `1/x`; reachable on every call. | High | open |
-| function/derive/ring/body/Logarithm.java | Logarithm | getFuncDerive(double, ByRefDouble) | 65 | Returns `-Math.log(x)` as the function value instead of `Math.log(x)` (disagrees with `Map(x)`); the derivative ByRef output is correct, but the returned value is negated for every caller. | High | open |
-| function/derive/ring/body/vector/fSum.java | fSum | Map(Object) | 18 | `Sum` is initialized as a copy of `V.a[0]`, but the loop then runs `i` from `Dim-1` down to `0` inclusive and adds `V.getAt(0)` again, double-counting coordinate 0 in the result for every tensor of dimension >= 1. | High | open |
-| streamIO/copy/primitiveOp/AOpDouble.java | AOpDouble | copyAt/equals/less/grtr/MaxAt/MinAt/addAt/subAt/mulAt/divAt(long), LinAt(long,long) | 43,46,49,52,55,58,61,64,67,70,79 | Each of these 11 `long`-overload methods calls itself with an identical signature/arguments instead of delegating to the corresponding `double`-based op - infinite recursion, `StackOverflowError` on any call. | Critical | open |
-| streamIO/copy/primitiveOp/AOpMeasurAble.java | AOpMeasurAble | LinAt(long, long) | 60 | No-op - both parameters are ignored and the object is returned unchanged. | Medium | open |
-| streamIO/copy/shift/AShiftAble.java | AShiftAble | aslAt/asrAt/lsrAt(int, Object) | 143, 161, 178 | The `carry` parameter is accepted but never read or written - silently discarded (the original author left an inline TODO on `aslAt`). | Medium | open |
-| streamIO/copy/order/Interval.java | Interval | ANDAt(Interval) | 201 | Missing `return this;` after the no-containment branch - falls through into the partial-containment logic, corrupting the just-mutated state. | High | open |
-| streamIO/copy/monoid/integer/ASetInteger.java | ASetInteger | clear(int) | 38 | Uses XOR instead of AND-NOT to clear a bit - clearing an already-0 bit sets it to 1 instead. | High | open |
-| streamIO/copy/monoid/integer/Permutation.java | Permutation | Multi_Fact(Permutation) | 1600 | Parameter `p` is never read - always uses its own array, ignoring the documented "Carry Element used for the Base". | Medium | open |
-| streamIO/copy/monoid/AssociationEquivalence.java | AssociationEquivalence | equals(Object, Object) | 42 | Copy-paste: checks `A instanceof ICPair` instead of `B instanceof ICPair`, so the intended branch never fires when B is the `ICPair`. | Medium | open |
-| streamIO/copy/boole/TesterBond.java | TesterBond | ORat(Object) | 112 | Copy-paste from `ANDat`: detects `a OR !a` and sets `mTest = False`, should be `True`. | High | open |
-| streamIO/copy/boole/TesterBond.java | TesterBond | ORat(Object) | 114-122 | Copy-paste from `ANDat`: all four constant-argument branches are backwards for OR semantics. | Critical | open |
-| streamIO/copy/boole/fuzzy/FuzzyEQV.java | FuzzyEQV | getMembership(Object) | 47 | Missing `1 -` prefix - returns the raw difference instead of its complement, inverting equivalence semantics. | High | open |
-| streamIO/copy/ACopyAble.java | ACopyAble | toStream(IFormatOut) | 386 | Default `ST.addItem(this)` + `toString()` calling `toStream(...)` risks infinite recursion (already noted by the original author's own comment "leads to infinite Recursion!"). | Medium | open |
-| function/CatProcessor.java | CatProcessor | constructor(IProcessor, IProcessor) | ~ | Null-check reads the instance fields `inner`/`outer` (always null at this point in the constructor) instead of the `Inner` parameter; the apparent fallback-to-`Outer`-when-`Inner`-is-null intent never happens, so a caller passing `Inner == null` gets `inner == null` and a later `NullPointerException` from `MapAt()`/`equals()`. | Medium | open |
-| function/Projections.java | Projections | Mercator(double[]) | 243 | Indexes `V[2]`, but every other projection in this class treats `V` as a 2-element (x,y) position; calling this with the same 2-element vectors used everywhere else throws `ArrayIndexOutOfBoundsException`. Likely meant `V[1]`, mirroring `Cyl_MercatorAt` below. | High | open |
-| function/real/Product.java | Product | getHMV() | 50 | Method name and Javadoc call this the Harmonic Mean, but `Math.pow(_Value, 1.0/_Count)` computes the Geometric Mean; callers relying on the name/doc for the harmonic mean get the wrong statistic. | Medium | open |
-| function/string/AStringFunction.java | AStringFunction | TO_CAMEL | 89 | If `_` is the last character of the input, `arg.charAt(++i)` reads one past the end of the string, throwing `StringIndexOutOfBoundsException` (reachable whenever a hungarian-notation input ends with an underscore, e.g. `TO_CAMEL.Map("FOO_")`). | Medium | open |
-| function/vector/OdeLorentz.java | OdeLorentz | Funktion(double, double[], double[]) | 48 | The standard Lorenz equations are `dy/dt = x*(r-z) - y`, but this computes `x[1] - x[0]*(x[2]-r)`, which equals `x[0]*(r-x[2]) + x[1]` - the sign of the y-term is flipped; every integration step diverges from the intended chaotic Lorenz attractor. | High | open |
-| function/byref/ByRefInt.java | ByRefInt | ROR(int, int) | 64 | The dropped low bit is shifted into position `octave` (`corr = (x&1)<<octave`), one bit above the top of the octave-bit range `ROL` uses (`maxVal = 1<<octave`); e.g. `ROR(5, 3)` returns 10, outside the 3-bit range `ROL(5, 3)` operates in. Likely should be `<<(octave-1)`. | Medium | open |
-| function/byref/ByRefLong.java | ByRefLong | ROR(long, int) | 259 | Same defect as `ByRefInt.ROR` - the dropped low bit is shifted one bit above the top of the octave-bit range. | Medium | open |
-| streamIO/object/StreamParser.java | StreamParser | (array-resize helper) | 177 | `lList` is reassigned to the freshly-allocated `list` array before the `arraycopy` below, so the copy's source and destination are the same new (empty) array - the old contents are lost instead of preserved across the resize. | High | open |
-| streamIO/object/Union.java | Union | OR(IStreamIn, IStreamIn) | 73 | `Parts` is allocated with length 3 (valid indices 0-2), but a following line writes to index 3, throwing `ArrayIndexOutOfBoundsException` on every call to `OR()`. | Critical | open |
-| streamIO/object/backTrack/Grammar.java | GrammarState | hashCode() | 138 | `Remark` is never assigned by any constructor (only `Contents` is set), so it is always null here; every call to `hashCode()` or `equals()` throws `NullPointerException`. Any hash-based use of `GrammarState` (e.g. `Grammar.testIt()`) fails immediately. | High | open |
-| streamIO/object/backTrack/TravelProblem.java | TravelState | equals(Object) | 486 | `sequence` is `int[]`, which does not override `equals()`, so `sequence.equals(...)` reduces to reference identity rather than comparing array contents; two `TravelState`s with identical city orderings but distinct array instances always compare unequal, making duplicate detection (`mTestStore`/`mBackup`) in `BackTracker` ineffective for this generator. | Medium | open |
-| streamIO/object/filterIn/FilterInByBitMask.java | FilterInByBitMask | (position-reset helper) | 82 | `1 << _position` is computed in `int` arithmetic (the literal `1` is an int), so per JLS 15.19 only the low 5 bits of `_position` are used as the shift distance - large position values silently wrap instead of shifting as far as intended. | Medium | open |
-| streamIO/object/filterIn/FilterIn_PushBack.java | FilterIn_PushBack | nextItemInternal() | 39 | The fallback branch calls `nextItemInternal()` recursively on itself instead of delegating to the wrapped stream (`in.nextItem()`); every call made while nothing is pushed back recurses infinitely. | Critical | open |
-| streamIO/object/filterOut/ThreadOut.java | ThreadOut | addItem(Object) | 47 | The spawned `Runnable`'s `run()` calls `addItem(arg)`, which resolves to this same `ThreadOut.addItem()` rather than the wrapped output's `out.addItem(arg)` (or `super.addItem`) - every call spawns another thread that spawns another thread, recursing without ever forwarding to the real output. | Critical | open |
-| streamIO/object/integer/XMLInputStream.java | XMLInputStream | fromXML() | 199 | The class name is read directly from untrusted XML input and instantiated via reflection (`Class.forName`+`newInstance`) with no allow-list, letting a malicious XML document force instantiation of an arbitrary class on the classpath. | High | open |
-| streamIO/object/integer/XMLInputStream.java | XMLInputStream | fromXMLField(...) | 238 | `ensureCapacity()` only grows the backing array's capacity, not the `ArrayList`'s logical size; if `ID` is greater than the cache's current size, `Cache.add(ID, inner)` throws `IndexOutOfBoundsException` when some object IDs are missing (cut out etc.). | Medium | open |
-| streamIO/object/integer/XMLScanner.java | XMLScanner | (tag-type constants) | 97 | `XML_TAG_PROCESS` is defined as 6, the same value as `XML_TAG_TEXT`; any code distinguishing a Processing Instruction from Text Data by comparing against this constant cannot actually do so. | Medium | open |
-| streamIO/object/json/JSONTokener.java | JSONTokener | next(int) | 207 | Off-by-one: `String.substring(i, j)` is valid for `j == mySource.length()` (it can return the final characters of the source), but this check rejects that valid boundary case - e.g. a `\uXXXX` escape ending exactly at EOF. | Medium | open |
-| streamIO/object/json/JSONTokener.java | JSONTokener | nextValue() | 358 | Object/array nesting recurses (`nextValue` -> `JSONObject`/`JSONArray` constructor -> `nextValue` -> ...) with no depth limit, unlike `JSONStringer`'s own `maxdepth=20`; deeply nested untrusted JSON input can cause a stack-overflow denial of service. | Medium | open |
-| streamIO/copy/group/ring/metric/body/Fraction.java | Fraction | Floor() | 207 | Computes `Denominator.div(Numerator)` (the reciprocal) instead of `Numerator.div(Denominator)`; `Floor()` returns the floor of the wrong ratio entirely. | High | open |
-| streamIO/copy/group/ring/metric/body/FractionLong.java | FractionLong | Floor() | 216 | Same swapped-operand defect as `Fraction.Floor()`, copy-pasted into the `long`-based implementation. | High | open |
-| streamIO/copy/group/ring/metric/body/units/QuantityDouble.java | QuantityDouble | QuantityDouble(double, Unit) | 104 | The `unit` constructor parameter is never assigned to the `mUnit` field, so `getUnit()`/`getBaseUnit()`/any unit-dependent operation throws `NullPointerException` on every instance built through this constructor. | Critical | open |
-| streamIO/copy/group/ring/metric/body/units/QuantityDouble.java | QuantityDouble | QuantityDouble(double, Unit, double) | 110 | Same missing `mUnit` assignment as the two-argument constructor above. | Critical | open |
-| streamIO/object/parser/Array2Stream.java | Array2Stream | testIt() | ~143 | Calls `arr.set(index, ...)` on a freshly constructed empty `ArrayList` (capacity != size); throws `IndexOutOfBoundsException` instead of populating via `add()`. | Low | open |
-| streamIO/object/parser/FileStream2Stream.java | FileStream2Stream | getMaxMarkSize() | ~234 | Dereferences `stream` unguarded; `stream` is null before the first File opens and after EOF, throwing NPE instead of the declared `BaseException`. | Medium | open |
-| streamIO/object/parser/FileStream2Stream.java | FileStream2Stream | getPosition() | ~250 | Same unguarded `stream` dereference as `getMaxMarkSize()` above. | Medium | open |
-| streamIO/object/parser/InputStream2StreamIn.java | InputStream2StreamIn | readParameters(Map, boolean, String, String) | 528 | Unconditionally casts `is` to `FileStreamByte` to read a File Position; any non-file-backed Stream with a non-null `posKey` throws `ClassCastException`. | Medium | open |
-| streamIO/object/parser/ParserFromStreamIn.java | ParserFromStreamIn | nextItem() | 65 | On EOI only decrements `currLevel`; `in` is never restored to the parent Stream (no Stack kept), so after the first nested Stream exhausts, subsequent calls keep querying the dead inner Stream. | High | open |
-| streamIO/object/parser/SaxReader.java | SaxReader | getFeature/setFeature/getProperty/setProperty | 107 | Features and Properties share one `HashMap` keyed only by name; a name collision between the two SAX namespaces silently corrupts the other. | Low | open |
-| streamIO/object/parser/SaxReader.java | SaxReader | parse(String) | 158 | `systemId` is never used, and the root Element Name is hard-coded to `"Table"` rather than derived from the actual parsed Document. | Medium | open |
-| streamIO/object/parser/StreamOutXML.java | StreamOutXML | addItems(Object[], int, int) | 966 | Dangling-`else`: only `startTag(name);` is bound to the `else` (no braces); `closeTag(); WRITE(...); endTag(name);` execute unconditionally every iteration, corrupting output for `IStreamWriteAble` values and emptying the body for every other Element. | High | open |
-| streamIO/object/parser/XMLStreamIn.java | XMLStreamIn | field currXMLToken | 113 | Constructed as its own independent `ByRefInt` instead of aliasing `scan.currXMLToken`; every loop guard reading `currXMLToken.Value` reads a value never updated after construction (stuck at 0). | High | open |
-| streamIO/object/parser/jdbc/CallStatementSep.java, PrepStatementSep.java | CallStatementSep, PrepStatementSep | getResultSet(File, String) | 34, 56 | Unimplemented stub - always returns `null` instead of the real ResultSet or an explicit "not implemented" exception. | Medium | open |
-| streamIO/object/parser/jdbc/ConnectionSep.java | ConnectionSep | prepareStatement(String, int) / (String, int[]) / (String, String[]) | 214, 226, 236 | All three ignore their extra parameter (autoGeneratedKeys / column indexes / column names) entirely and behave like the plain 2-arg overload. | Low | open |
-| streamIO/object/parser/jdbc/DriverSep.java | DriverSep | connect(String, Properties) | 97 | Calls `acceptsURL(PREFIX_SEP)` instead of `acceptsURL(url)`, trivially always true, so any URL falls through to `url.substring(PREFIX_SEP.length())`, throwing `StringIndexOutOfBoundsException` for a short/mismatched URL instead of the intended `SQLException`. | High | open |
-| streamIO/object/enumer/FilterEnumerator.java | FilterEnumerator | replaceCurr(Object) | ~ | Calls itself instead of `parent.replaceCurr(Item)`; unconditional `StackOverflowError` on any call. | High | open |
-| streamIO/object/enumer/container/tree/SubTreeMap.java | SubTreeMap | both non-default constructors | 55, 68 | `this.map` is read (via `compare()`) before it is assigned a few lines later - blank-final read risk. | High | open |
-| streamIO/object/enumer/DblListItem.java | DblListItem | replaceCurr(Object) | 111 | Ignores the `Item` parameter and just returns `prevItem.currItem`; no state change occurs. | High | open |
-| streamIO/object/enumer/ListItem.java | ListItem | getRootSimple(ILinked) | 65 | Loop condition is inverted, walking the tree incorrectly. | High | open |
-| streamIO/object/enumer/container/SortedArray.java | SortedArray | setAt(), addAt(int, Object) | 549, 567 | Both call `orderator.less(...)` unconditionally, unlike `indexOf()` which falls back to a metric/Comparable/natural order - `NullPointerException` when built with a null Comparator (a configuration `indexOf()` itself supports). | High | open |
-| streamIO/object/enumer/container/HashSet.java | HashSet | inner HashSetIterator | 626 | Every Enumerator method is an unfinished "Auto-generated method stub" - iteration over `HashSet` is completely non-functional. | High | open |
-| streamIO/object/enumer/AIndexEnumerator.java | AIndexEnumerator | reset(long) | 96 | Named `reset` (lowercase) instead of `reSet`, so it never actually overrides `IReSetAble#reSet(long)`. | Medium | open |
-| streamIO/object/enumer/container/RecordSet.java | RecordSet | reset(long Position) | 170 | Same `reSet`/`reset` naming-mismatch bug as `AIndexEnumerator`. | Medium | open |
-| streamIO/object/enumer/container/DeQueueArr.java | DeQueueArr | isFull() | 227 | `return (SP == QP-1)` does not account for wraparound of the ring buffer at `QP==0`. | Medium | open |
-| streamIO/object/enumer/Iterator2Enumerator.java | Iterator2Enumerator | reSet(long) | 110 | When `this.position > _position`, calls `reSet(_position)` with the identical argument again instead of resetting then advancing - infinite recursion, `StackOverflowError` on any backward reset. | High | open |
-| streamIO/object/enumer/ReverseEnumerator.java | ReverseEnumerator | (near removeCurr) | 69 | Unterminated Javadoc block swallows the next declaration as comment text (fixed as a doc-corruption repair, not a logic bug - noted for completeness). | Low | open |
-| streamIO/integer/encoding/BigEndianReader.java | BigEndianReader | MAX_UNSIGNED_INT / readLong() | 153, 170 | `readInt()<<NUM_BITS_INT` shifts an int operand by 32 (`NUM_BITS_INT`); Java reduces the shift distance mod 32, so the upper 32 bits of the resulting long are corrupted instead of holding the high word. | High | open |
-| streamIO/integer/encoding/EscapeInputFilter.java | EscapeInputFilter | constructor | 63 | Unlike the sibling `EscapeOutputFilter` constructor, omits a length guard on the escape-sequence array. | Medium | open |
-| streamIO/integer/encoding/FilterASCII2Base64.java | FilterASCII2Base64 | read() | 451 | Integer division truncates `len*4/3` for a final partial group, dropping output bytes. | Medium | open |
-| streamIO/integer/encoding/FilterBase64ToASCII.java | FilterBase64ToASCII | write() | 453 | Ignores `len` (the 1-3 valid decoded bytes `DECODE()` reports) and always writes the full 3-byte buffer, emitting garbage padding bytes. | Medium | open |
-| streamIO/integer/encoding/FilterBinHex2Byte.java | FilterBinHex2Byte | read(), write() | 163, 196 | Wrong nibble conversion inlined incorrectly from `char2Nibble()`; subtracts `'9'`/`('A'+10)` incorrectly in both directions. | High | open |
-| streamIO/integer/encoding/FilterByte2BinHex.java | FilterByte2BinHex | hexCode(char) | 79 | Subtracts `'9'` instead of `'0'` for a digit character, so `hexCode('5')` and similar produce the wrong nibble value. | High | open |
-| streamIO/integer/encoding/FilterCRC16.java | FilterCRC16 | read() | 212 | `ret > 0` excludes a genuine `0x00` (NUL) data byte from the CRC computation. | Medium | open |
-| streamIO/integer/encoding/FilterCRC32.java | FilterCRC32 | read() | 210 | Same NUL-byte exclusion bug as `FilterCRC16.read()`. | Medium | open |
-| streamIO/integer/encoding/FilterCrypt.java | FilterCrypt | (class) | 32 | Home-grown XOR stream cipher with no cryptographic review, presented as providing meaningful confidentiality. | High (security) | open |
-| streamIO/integer/encoding/FilterString2Char.java | FilterString2Char | read(), write() | 224, 243 | `SB` is never cleared after `lookup()` consumes it in `read()`; `collecting`/`SB` are never reset in `write()`. | Medium | open |
-| streamIO/integer/encoding/FilterUrlDecode.java | FilterUrlDecode | write() | 119 | Checks `Value` against `UrlSpaceReplace` (`'+'`) instead of `'%'` to decide whether to enter the escape-decode state. | Medium | open |
-| streamIO/integer/encoding/redundancy/ConvolutionBitEncode.java | ConvolutionBitEncode | (polynomial table indexing) | 225 | `g[K][0][j]`/`g[K][1][j]` index the polynomial table directly by `K` instead of `(K-3)/2`; currently unreachable given the only `K` value exercised, but wrong for any other constraint length. | Low | open |
-| streamIO/integer/encoding/redundancy/Depeater.java | Depeater | flush() | 161 | Only shortens `length` to the current position; never actually writes out the buffered tail bytes. | Medium | open |
-| streamIO/integer/filter/FilterIn_Byte.java | FilterIn_Byte | (mapper input) | 310 | `mapper.Map(b[i])` passes a signed byte (-128..127) widened inconsistently with the unsigned mapping used elsewhere. | Medium | open |
-| streamIO/integer/filter/FilterReplaceSection.java | FilterReplaceSection | main(String[]) | 429 | When `args.length < 5`, the Syntax message is printed but `main()` falls through instead of returning, reaching code that throws `ArrayIndexOutOfBoundsException`. | Medium | open |
-| streamIO/integer/filter/FilterSplitAtFind.java | FilterSplitAtFind | main(String[]) | 259 | Same missing-return-after-usage-message pattern as `FilterReplaceSection.main()`. | Medium | open |
-| streamIO/integer/filter/FilterSplitAtFind.java | FilterSplitAtFind | (breakCountDown) | 201 | `breakCountDown` defaults to 0 and is only ever set once a separator is found, so it fires immediately (effectively `-1`) before the first real countdown is armed. | High | open |
-| streamIO/integer/filter/LimitedSizeInputStream.java | LimitedSizeInputStream | skip(long) | 128 | Calls `skip(...)` on itself (the same overload, same class) instead of delegating to the wrapped `in.skip()`; unconditional infinite self-recursion. | High | open |
-| streamIO/integer/filter/LimitedSizeInputStream.java | LimitedSizeInputStream | read() | 140 | Off-by-one: `++Counter < MaxSize` stops reading one byte short of `MaxSize`. | Medium | open |
-| streamIO/integer/random/AStreamIn_BoundInt.java | AStreamIn_BoundInt | nextLong(long) | 57 | `(int) _maxLong` silently truncates any bound larger than `Integer.MAX_VALUE`, wrapping instead of respecting the requested long bound. | High | open |
-| streamIO/integer/random/BitNoise.java | BitNoise | Map(long) vs Map(int) | 58 | The `long` overload unconditionally decrements `nextBit` by `bitsPerValue` before the loop the `int` overload guards conditionally, giving inconsistent bit-consumption cadence between the two overloads. | Medium | open |
-| streamIO/integer/random/RandomBit2.java | RandomBit2 | getPosition() | 56 | Returns `currItem.Value` (the last single bit produced) instead of `this.value` (the full shift-register state), breaking mark/reSet replay - unlike the sibling `RandomBit`. | High | open |
-| streamIO/integer/random/RandomMix.java | RandomMix | reset(long) | 120 | Unconditionally throws `RuntimeException` instead of setting the internal seed/state, unlike its sibling generators' `reset()`. | Medium | open |
-| streamIO/integer/AStreamOutStruct.java | AStreamOutStruct | open_Struct(String, Object) | 247 | `alreadyWritten.put(newId, obj)` has key/value reversed vs. the `get(obj)` lookup above it; object back-references are never found again, so circular object graphs recurse indefinitely. | High | open |
-| streamIO/integer/StreamIn_Struct.java | StreamIn_Struct | nextString(), nextStrings(int, int), nextItems(int, int) | 265, 776, 833 | Each compares against the `EOI` sentinel, but the delegate returns `null` at EOF, so end-of-input is never detected. | High | open |
-| streamIO/integer/StreamOutInstantiator.java | StreamOutInstantiator | addShorts/addLongs/addFloats/addDoubles/addItems/addStrings(Array, int, int) | 503, 559, 586, 613, 640, 667 | Each sizes/copies off the `ints` field instead of its own array field, corrupting all six accumulator arrays. | Critical | open |
-| streamIO/integer/StreamOutInstantiator.java | StreamOutInstantiator | peekDouble() | 458 | Calls `streamIn.currDouble()` instead of `streamIn.peekDouble()`. | Medium | open |
-| streamIO/integer/StreamIn_Primitive.java | StreamIn_Primitive | nextEnum(String[]) | 154 | `1 << names.length` is an int shift before widening to long; breaks for 32-63 name enums despite the Javadoc's "up to 64" claim. | Medium | open |
-| streamIO/integer/adapter/ArrayStreamIn_Int.java | ArrayStreamIn_Int | nextLongInternal() | 124 | When wrapping a `long[]`, delegates to `nextInt()` -> `nextLong()` -> back into itself: infinite recursion / `StackOverflowError`. | Critical | open |
-| streamIO/integer/adapter/ReaderToStreamIn_Byte.java | ReaderToStreamIn_Byte | read(int[], int, int) | 128 | Narrows Reader output to `(byte)` before storing into an `int[]`, corrupting any code point outside -128..127. | Medium | open |
+| math/vector/VectorLong.java | VectorLong | AbsDiffNorm(long[], long[], long[]) | 796 | Same unassigned-output defect as `VectorChar.AbsDiffNorm`. | Medium | open |
+| math/vector/VectorLong.java | VectorLong | removeAt(int) | 2207 | Same unconditional-decrement defect as `VectorChar.removeAt(int)`. | High | open |
+| math/vector/VectorLong.java | VectorLong | mulAt(VectorLong) | 2365 | Same `subAt`-instead-of-`mulAt` copy-paste defect. | High | open |
+| math/vector/VectorLong.java | VectorLong | divAt(VectorLong) | 2372 | Same `subAt`-instead-of-`divAt` copy-paste defect. | High | open |
+| math/vector/VectorLong.java | VectorLong | mulAt(int) | 2405 | Same ignored-scalar-parameter defect (squares instead). | High | open |
+| math/vector/VectorLong.java | VectorLong | divAt(int) | 2413 | Same ignored-scalar-parameter defect (self-divides instead). | High | open |
+| math/vector/VectorShort.java | VectorShort | oneAt(short[], int, int) | 770 | Same fills-with-0-instead-of-1 defect. | Medium | open |
+| math/vector/VectorShort.java | VectorShort | removeAt(int) | 3027 | Same unconditional-decrement defect. | High | open |
+| math/vector/VectorShort.java | VectorShort | mulAt(VectorShort) | 3334 | Same `subAt`-instead-of-`mulAt` copy-paste defect. | High | open |
+| math/vector/VectorShort.java | VectorShort | divAt(VectorShort) | 3342 | Same `subAt`-instead-of-`divAt` copy-paste defect. | High | open |
+| math/vector/VectorShort.java | VectorShort | mulAt(int) | 3378 | Same ignored-scalar-parameter defect. | High | open |
+| math/vector/VectorShort.java | VectorShort | divAt(int) | 3387 | Same ignored-scalar-parameter defect. | High | open |
+| math/vector/VectorInt.java | VectorInt | ONE_AT(int[], int, int) | 1010 | Same fills-with-0-instead-of-1 defect. | Medium | open |
+| math/vector/VectorInt.java | VectorInt | MUL_CROSS_AT(int[], int[]) | 2042, 2047 | Same one-past-the-end write defect as `VectorDouble.MUL_CROSS_AT`. | High | open |
+| math/vector/VectorInt.java | VectorInt | removeAt(int) | 3572 | Same unconditional-decrement defect. | High | open |
+| math/vector/VectorInt.java | VectorInt | mulAt(VectorInt) | 3726 | Same `subAt`-instead-of-multiplicative-op copy-paste defect. | High | open |
+| math/vector/VectorInt.java | VectorInt | divAt(VectorInt) | 3731 | Same `subAt`-instead-of-divisive-op copy-paste defect. | High | open |
+| math/vector/VectorInt.java | VectorInt | mulAt(int) | 3762 | Same ignored-scalar-parameter defect. | High | open |
+| math/vector/VectorInt.java | VectorInt | divAt(int) | 3767 | Same ignored-scalar-parameter defect. | High | open |
+| math/vector/VectorFloat.java | VectorFloat | ABS(float[], int, int, float[]) | 2107 | Reads from the destination array instead of the source. | Medium | open |
+| math/vector/VectorFloat.java | VectorFloat | removeAt(int) | 4297 | Same unconditional-decrement defect. | High | open |
+| math/vector/VectorFloat.java | VectorFloat | mulAt(VectorFloat) | 4574 | Same `subAt`-instead-of-multiplicative-op defect. | High | open |
+| math/vector/VectorFloat.java | VectorFloat | divAt(VectorFloat) | 4580 | Same `subAt`-instead-of-divisive-op defect. | High | open |
+| math/vector/VectorFloat.java | VectorFloat | mulAt(double) | 4630 | Ignores its parameter, multiplies items by themselves instead. | High | open |
+| math/vector/VectorFloat.java | VectorFloat | divAt(double) | 4636 | Ignores its parameter, divides items by themselves instead (yielding all 1s). | High | open |
+| function/derive/Enum.java | Enum | succ() | 264 | Indexes by raw `Value` instead of list position `Value-Offset` - skips an element or AIOOBE depending on Offset. | High | open |
+| function/derive/Enum.java | Enum | pred() | 271 | Same Offset-blind indexing defect. | Medium | open |
+| function/derive/Ternary.java | Ternary | fromString(String) | 224 | Ignores its parameter and always returns `this` - parsing unimplemented (author's own TODO). | Medium | open |
+| function/derive/neuron/Network.java | Network | randomizeWeights() | 144 | Loop bound skips `Layers[0]` entirely. | Medium | open |
+| function/derive/ring/LinAt.java | LinAt | LinAt(Object, Object, IInvertAble) | 39 | Validates fields (still null) instead of the constructor parameters - checks never trigger. | Low | open |
+| function/derive/ring/LinAt.java | LinAt | Map(Object) | 65 | Uses the wrong field for pure scaling, breaking `a*x` whenever `b` is null. | High | open |
+| function/derive/ring/body/Logarithm.java | Logarithm | getDerivative(double) | 58 | Returns `-Math.log(x)` instead of the correct derivative `1/x`. | High | open |
+| function/derive/ring/body/Logarithm.java | Logarithm | getFuncDerive(double, ByRefDouble) | 65 | Returns `-Math.log(x)` instead of `Math.log(x)`, disagreeing with `Map(x)`. | High | open |
+| function/derive/ring/body/vector/fSum.java | fSum | Map(Object) | 18 | Double-counts coordinate 0 for every tensor of dimension >= 1. | High | open |
+| streamIO/copy/primitiveOp/AOpDouble.java | AOpDouble | 11 `long`-overload methods | 43-79 | Each calls itself instead of delegating to the `double`-based op - `StackOverflowError` on any call. | Critical | open |
+| streamIO/copy/primitiveOp/AOpMeasurAble.java | AOpMeasurAble | LinAt(long, long) | 60 | No-op - both parameters ignored. | Medium | open |
+| streamIO/copy/shift/AShiftAble.java | AShiftAble | aslAt/asrAt/lsrAt(int, Object) | 143, 161, 178 | `carry` parameter accepted but never read or written (author's own inline TODO). | Medium | open |
+| streamIO/copy/order/Interval.java | Interval | ANDAt(Interval) | 201 | Missing `return this;` falls through into partial-containment logic. | High | open |
+| streamIO/copy/monoid/integer/ASetInteger.java | ASetInteger | clear(int) | 38 | Uses XOR instead of AND-NOT to clear a bit - can set an already-0 bit to 1. | High | open |
+| streamIO/copy/monoid/integer/Permutation.java | Permutation | Multi_Fact(Permutation) | 1600 | Parameter never read - always uses its own array instead. | Medium | open |
+| streamIO/copy/monoid/AssociationEquivalence.java | AssociationEquivalence | equals(Object, Object) | 42 | Checks the wrong operand's type - the intended branch never fires. | Medium | open |
+| streamIO/copy/boole/TesterBond.java | TesterBond | ORat(Object) | 112 | Copy-paste from `ANDat` - sets the wrong boolean result. | High | open |
+| streamIO/copy/boole/TesterBond.java | TesterBond | ORat(Object) | 114-122 | All four constant-argument branches backwards for OR semantics. | Critical | open |
+| streamIO/copy/boole/fuzzy/FuzzyEQV.java | FuzzyEQV | getMembership(Object) | 47 | Missing complement - returns the raw difference instead of `1 -` it. | High | open |
+| streamIO/copy/ACopyAble.java | ACopyAble | toStream(IFormatOut) | 386 | Risks infinite recursion (author's own comment already notes it). | Medium | open |
+| function/CatProcessor.java | CatProcessor | constructor(IProcessor, IProcessor) | ~ | Null-check reads the wrong (always-null) field instead of the constructor parameter. | Medium | open |
+| function/Projections.java | Projections | Mercator(double[]) | 243 | Indexes `V[2]` on a 2-element position vector - AIOOBE. | High | open |
+| function/real/Product.java | Product | getHMV() | 50 | Computes the Geometric Mean while named/documented as the Harmonic Mean. | Medium | open |
+| function/string/AStringFunction.java | AStringFunction | TO_CAMEL | 89 | Reads one past the end of the string when it ends with `_`. | Medium | open |
+| function/vector/OdeLorentz.java | OdeLorentz | Funktion(double, double[], double[]) | 48 | Sign of the y-term flipped - diverges from the intended Lorenz attractor. | High | open |
+| function/byref/ByRefInt.java | ByRefInt | ROR(int, int) | 64 | Dropped bit shifted one position too high, outside the range `ROL` uses. | Medium | open |
+| function/byref/ByRefLong.java | ByRefLong | ROR(long, int) | 259 | Same defect as `ByRefInt.ROR`. | Medium | open |
+| streamIO/object/StreamParser.java | StreamParser | (array-resize helper) | 177 | Source and destination of the resize `arraycopy` are the same new empty array - old contents lost. | High | open |
+| streamIO/object/Union.java | Union | OR(IStreamIn, IStreamIn) | 73 | Writes to index 3 of a length-3 array - AIOOBE on every call. | Critical | open |
+| streamIO/object/backTrack/Grammar.java | GrammarState | hashCode() | 138 | Reads a field never assigned by any constructor - NPE. | High | open |
+| streamIO/object/backTrack/TravelProblem.java | TravelState | equals(Object) | 486 | Compares an `int[]` field via reference identity instead of contents. | Medium | open |
+| streamIO/object/filterIn/FilterInByBitMask.java | FilterInByBitMask | (position-reset helper) | 82 | `1 << _position` computed in `int` arithmetic - large positions silently wrap. | Medium | open |
+| streamIO/object/filterIn/FilterIn_PushBack.java | FilterIn_PushBack | nextItemInternal() | 39 | Recurses into itself instead of delegating to the wrapped stream - infinite recursion. | Critical | open |
+| streamIO/object/filterOut/ThreadOut.java | ThreadOut | addItem(Object) | 47 | Spawned Runnable calls back into this same method - recurses spawning threads forever. | Critical | open |
+| streamIO/object/integer/XMLInputStream.java | XMLInputStream | fromXML() | 199 | Instantiates an arbitrary class named in untrusted XML with no allow-list. | High (security) | open |
+| streamIO/object/integer/XMLInputStream.java | XMLInputStream | fromXMLField(...) | 238 | `ensureCapacity()` grows capacity but not logical size - `IndexOutOfBoundsException`. | Medium | open |
+| streamIO/object/integer/XMLScanner.java | XMLScanner | (tag-type constants) | 97 | Two distinct tag-type constants share the same value. | Medium | open |
+| streamIO/object/json/JSONTokener.java | JSONTokener | next(int) | 207 | Off-by-one rejects a valid EOF boundary case. | Medium | open |
+| streamIO/object/json/JSONTokener.java | JSONTokener | nextValue() | 358 | Unbounded recursion on nested JSON - stack-overflow DoS on untrusted input. | Medium (security) | open |
+| streamIO/copy/group/ring/metric/body/Fraction.java | Fraction | Floor() | 207 | Computes the reciprocal ratio instead of the intended one. | High | open |
+| streamIO/copy/group/ring/metric/body/FractionLong.java | FractionLong | Floor() | 216 | Same swapped-operand defect, copy-pasted. | High | open |
+| streamIO/copy/group/ring/metric/body/units/QuantityDouble.java | QuantityDouble | QuantityDouble(double, Unit) | 104 | `unit` parameter never assigned to `mUnit` - NPE on every unit-dependent call. | Critical | open |
+| streamIO/copy/group/ring/metric/body/units/QuantityDouble.java | QuantityDouble | QuantityDouble(double, Unit, double) | 110 | Same missing `mUnit` assignment. | Critical | open |
+| streamIO/object/parser/Array2Stream.java | Array2Stream | testIt() | ~143 | Calls `arr.set(...)` on a freshly constructed empty ArrayList instead of `add()`. | Low | open |
+| streamIO/object/parser/FileStream2Stream.java | FileStream2Stream | getMaxMarkSize() | ~234 | Dereferences `stream` unguarded when it can be null. | Medium | open |
+| streamIO/object/parser/FileStream2Stream.java | FileStream2Stream | getPosition() | ~250 | Same unguarded `stream` dereference. | Medium | open |
+| streamIO/object/parser/InputStream2StreamIn.java | InputStream2StreamIn | readParameters(Map, boolean, String, String) | 528 | Unconditional cast to a specific implementation type - `ClassCastException`. | Medium | open |
+| streamIO/object/parser/ParserFromStreamIn.java | ParserFromStreamIn | nextItem() | 65 | Never restores the parent Stream after descending a nesting level. | High | open |
+| streamIO/object/parser/SaxReader.java | SaxReader | getFeature/setFeature/getProperty/setProperty | 107 | Features and Properties share one HashMap keyed only by name - namespace collision. | Low | open |
+| streamIO/object/parser/SaxReader.java | SaxReader | parse(String) | 158 | `systemId` unused; root Element name hard-coded instead of derived. | Medium | open |
+| streamIO/object/parser/StreamOutXML.java | StreamOutXML | addItems(Object[], int, int) | 966 | Dangling-else corrupts output for most Element types. | High | open |
+| streamIO/object/parser/XMLStreamIn.java | XMLStreamIn | field currXMLToken | 113 | Own independent field instead of aliasing the scanner's - stuck at 0. | High | open |
+| streamIO/object/parser/jdbc/CallStatementSep.java, PrepStatementSep.java | CallStatementSep, PrepStatementSep | getResultSet(File, String) | 34, 56 | Unimplemented stub - always returns null. | Medium | open |
+| streamIO/object/parser/jdbc/ConnectionSep.java | ConnectionSep | prepareStatement(...) (3 overloads) | 214, 226, 236 | Extra parameter accepted but never consulted. | Low | open |
+| streamIO/object/parser/jdbc/DriverSep.java | DriverSep | connect(String, Properties) | 97 | `acceptsURL` checked against the wrong string - always-true guard. | High | open |
+| streamIO/object/enumer/FilterEnumerator.java | FilterEnumerator | replaceCurr(Object) | ~ | Calls itself instead of delegating - `StackOverflowError`. | High | open |
+| streamIO/object/enumer/container/tree/SubTreeMap.java | SubTreeMap | both non-default constructors | 55, 68 | Field read before assignment. | High | open |
+| streamIO/object/enumer/DblListItem.java | DblListItem | replaceCurr(Object) | 111 | Ignores its parameter - no state change occurs. | High | open |
+| streamIO/object/enumer/ListItem.java | ListItem | getRootSimple(ILinked) | 65 | Loop condition inverted. | High | open |
+| streamIO/object/enumer/container/SortedArray.java | SortedArray | setAt(), addAt(int, Object) | 549, 567 | Calls the Comparator unconditionally even when built without one - NPE. | High | open |
+| streamIO/object/enumer/container/HashSet.java | HashSet | inner HashSetIterator | 626 | Every method is an unfinished stub - iteration entirely non-functional. | High | open |
+| streamIO/object/enumer/AIndexEnumerator.java | AIndexEnumerator | reset(long) | 96 | Named `reset` instead of `reSet` - never actually overrides the interface method. | Medium | open |
+| streamIO/object/enumer/container/RecordSet.java | RecordSet | reset(long Position) | 170 | Same `reSet`/`reset` naming-mismatch bug. | Medium | open |
+| streamIO/object/enumer/container/DeQueueArr.java | DeQueueArr | isFull() | 227 | Doesn't account for ring-buffer wraparound. | Medium | open |
+| streamIO/object/enumer/Iterator2Enumerator.java | Iterator2Enumerator | reSet(long) | 110 | Recurses with an identical argument instead of resetting then advancing. | High | open |
+| streamIO/object/enumer/ReverseEnumerator.java | ReverseEnumerator | (near removeCurr) | 69 | Unterminated Javadoc block swallowed the next declaration (doc-corruption, fixed). | Low | open |
+| streamIO/integer/encoding/BigEndianReader.java | BigEndianReader | MAX_UNSIGNED_INT / readLong() | 153, 170 | Shifts an int operand by 32 - Java reduces the shift mod 32, corrupting the high word. | High | open |
+| streamIO/integer/encoding/EscapeInputFilter.java | EscapeInputFilter | constructor | 63 | Missing length guard present in the sibling output filter. | Medium | open |
+| streamIO/integer/encoding/FilterASCII2Base64.java | FilterASCII2Base64 | read() | 451 | Integer division truncates the final partial group. | Medium | open |
+| streamIO/integer/encoding/FilterBase64ToASCII.java | FilterBase64ToASCII | write() | 453 | Ignores the valid-byte count, always writes the full buffer. | Medium | open |
+| streamIO/integer/encoding/FilterBinHex2Byte.java | FilterBinHex2Byte | read(), write() | 163, 196 | Wrong nibble conversion in both directions. | High | open |
+| streamIO/integer/encoding/FilterByte2BinHex.java | FilterByte2BinHex | hexCode(char) | 79 | Wrong offset subtracted for a digit character. | High | open |
+| streamIO/integer/encoding/FilterCRC16.java | FilterCRC16 | read() | 212 | Excludes a genuine NUL data byte from the CRC. | Medium | open |
+| streamIO/integer/encoding/FilterCRC32.java | FilterCRC32 | read() | 210 | Same NUL-byte exclusion bug. | Medium | open |
+| streamIO/integer/encoding/FilterCrypt.java | FilterCrypt | (class) | 32 | Home-grown, unreviewed XOR stream cipher presented as real encryption. | High (security) | open |
+| streamIO/integer/encoding/FilterString2Char.java | FilterString2Char | read(), write() | 224, 243 | State never cleared/reset between uses. | Medium | open |
+| streamIO/integer/encoding/FilterUrlDecode.java | FilterUrlDecode | write() | 119 | Checks the wrong character to enter escape-decode state. | Medium | open |
+| streamIO/integer/encoding/redundancy/ConvolutionBitEncode.java | ConvolutionBitEncode | (polynomial table indexing) | 225 | Indexes the table directly by K instead of the derived index (currently unreachable). | Low | open |
+| streamIO/integer/encoding/redundancy/Depeater.java | Depeater | flush() | 161 | Never writes out the buffered tail bytes. | Medium | open |
+| streamIO/integer/filter/FilterIn_Byte.java | FilterIn_Byte | (mapper input) | 310 | Signed/unsigned widening inconsistency. | Medium | open |
+| streamIO/integer/filter/FilterReplaceSection.java | FilterReplaceSection | main(String[]) | 429 | Missing return after the usage message - AIOOBE follows. | Medium | open |
+| streamIO/integer/filter/FilterSplitAtFind.java | FilterSplitAtFind | main(String[]) | 259 | Same missing-return-after-usage-message pattern. | Medium | open |
+| streamIO/integer/filter/FilterSplitAtFind.java | FilterSplitAtFind | (breakCountDown) | 201 | Defaults to 0 and fires immediately before being armed. | High | open |
+| streamIO/integer/filter/LimitedSizeInputStream.java | LimitedSizeInputStream | skip(long) | 128 | Calls itself instead of delegating - infinite self-recursion. | High | open |
+| streamIO/integer/filter/LimitedSizeInputStream.java | LimitedSizeInputStream | read() | 140 | Off-by-one, stops one byte short. | Medium | open |
+| streamIO/integer/random/AStreamIn_BoundInt.java | AStreamIn_BoundInt | nextLong(long) | 57 | Silently truncates any bound larger than `Integer.MAX_VALUE`. | High | open |
+| streamIO/integer/random/BitNoise.java | BitNoise | Map(long) vs Map(int) | 58 | Inconsistent bit-consumption cadence between the two overloads. | Medium | open |
+| streamIO/integer/random/RandomBit2.java | RandomBit2 | getPosition() | 56 | Returns the last bit instead of the full shift-register state - breaks mark/reSet replay. | High | open |
+| streamIO/integer/random/RandomMix.java | RandomMix | reset(long) | 120 | Unconditionally throws instead of setting the seed/state. | Medium | open |
+| streamIO/integer/AStreamOutStruct.java | AStreamOutStruct | open_Struct(String, Object) | 247 | Key/value reversed vs. the lookup above it - back-references never found, infinite recursion on circular graphs. | High | open |
+| streamIO/integer/StreamIn_Struct.java | StreamIn_Struct | nextString(), nextStrings(int, int), nextItems(int, int) | 265, 776, 833 | Compares against the wrong EOF sentinel - end-of-input never detected. | High | open |
+| streamIO/integer/StreamOutInstantiator.java | StreamOutInstantiator | addShorts/addLongs/addFloats/addDoubles/addItems/addStrings(Array, int, int) | 503, 559, 586, 613, 640, 667 | Each sizes/copies off the wrong field - corrupts all six accumulator arrays. | Critical | open |
+| streamIO/integer/StreamOutInstantiator.java | StreamOutInstantiator | peekDouble() | 458 | Calls the wrong sibling method (`curr` instead of `peek`). | Medium | open |
+| streamIO/integer/StreamIn_Primitive.java | StreamIn_Primitive | nextEnum(String[]) | 154 | Int shift before widening to long - breaks for 32-63 name enums. | Medium | open |
+| streamIO/integer/adapter/ArrayStreamIn_Int.java | ArrayStreamIn_Int | nextLongInternal() | 124 | Delegation chain loops back into itself - `StackOverflowError`. | Critical | open |
+| streamIO/integer/adapter/ReaderToStreamIn_Byte.java | ReaderToStreamIn_Byte | read(int[], int, int) | 128 | Narrows to `byte` before storing into an `int[]` - corrupts non-ASCII code points. | Medium | open |
 | streamIO/integer/adapter/WriterToStreamOutByte.java | WriterToStreamOutByte | write(char[], int, int) | 70 | Ignores `off`/`len`, always writes the whole array. | Medium | open |
-| streamIO/integer/AStreamIn_Char.java, streamIO/integer/StreamOutStructCollection.java | AStreamIn_Char, StreamOutStructCollection | (whole class) | 36, 35 | Both classes are unimplemented IDE stubs (every method returns a hardcoded default) despite non-stub Javadoc describing real behavior; `StreamOutStructCollection`'s constructor also discards its `_stream` parameter (`super(null)`, line 48). | High | open |
-| streamIO/integer/multiplex/DeMultiplexerIn_Raid5.java | DeMultiplexerIn_Raid5 | read() | 160 | Error message logs `currItem ^ nextItem` (stale) instead of `thisItem ^ nextItem` (the value actually checked). | Low | open |
-| streamIO/integer/pipe/APipeByte.java | APipeByte | main() | 177 | Calls `testIt(args)` but only a no-arg `testIt()` exists; does not compile as written. | High | open |
-| streamIO/integer/pipe/MemoryPipe.java | MemoryPipe | (constructor) | 83 | `markQP = SP` (copy-paste; should be `= QP`); currently benign since both start at 0. | Low | open |
-| streamIO/integer/file/FilterCrLfFromQuoted.java | FilterCrLfFromQuoted | main() | 34 | `FI`/`FO` are never closed in a `finally`, and `FI` is never closed at all. | Low | open |
-| streamIO/integer/file/FileStreamIn_Byte.java | FileStreamIn_Byte | read(byte[], int, int)-family default | 500 | `(char) (val = read())` narrows the int result of `read()` to `char` before storing into an `int[]` buffer; a normal byte round-trips fine, but the EOF sentinel `-1` becomes `0xFFFF` (65535) once written, silently corrupting the last buffer slot on EOF instead of leaving it untouched. | Medium | open |
-| streamIO/integer/jdbc/AConnection.java | AConnection | getWarnings() | 363 | `warnings.remove(warnings.size())` always throws `IndexOutOfBoundsException` (valid indices end at `size()-1`). | High | open |
-| streamIO/integer/jdbc/AConnection.java | AConnection | close() | 261 | Never closes open ResultSets/Statements opened through this Connection (pre-existing author TODO already acknowledges the gap). | Medium | open |
-| streamIO/integer/jdbc/ADBMetaData.java | ADBMetaData | getTables(...) | 236 | Accepts `tableNamePattern`/`tableTypes` but never applies either as a filter. | Medium | open |
-| streamIO/integer/jdbc/AResultSet.java | AResultSet | fillFlags() | 1251 | `for (int i = flags.length; --i > 0;)` skips index 0 - an off-by-one that leaves the first flag unset. | Medium | open |
-| streamIO/integer/jdbc/AStatement.java | AStatement | getResultSet(String) | 404 | `tableName` is taken directly from the parsed SQL FROM-clause and passed unsanitized into `new File(urlDir, tableName)` - path traversal via a crafted table name. | High (security) | open |
-| streamIO/integer/jdbc/AStatement.java | AStatement | close() | 1000 | Calls `currRS.close()` unconditionally; `NullPointerException` if `currRS` is null. | Medium | open |
-| streamIO/integer/jdbc/AStatement.java | AStatement | getResultSetConcurrency()/getResultSetType()/getResultSetHoldability() | 1058, 1071, 1086 | Each ignores its own instance field and always returns the class-wide default constant instead. | Medium | open |
-| streamIO/integer/jdbc/AStatement.java | AStatement | (analyzeConditions helper) | 846 | `if (table != null)` is unreachable, nested inside an enclosing `if (table == null)` - dead code. | Low | open |
-| streamIO/integer/jdbc/RSMetaData.java | RSMetaData | (every column-indexed method) | 7 | Every `columns[column]` access assumes 0-based indexing, but `java.sql.ResultSetMetaData`'s contract is 1-based - confirmed via `AResultSet.findColumn` returning a raw 0-based index; a systemic architectural mismatch, not a single-line bug. | High | open |
-| streamIO/integer/jdbc/DriverFix.java | DriverFix | connect(String, Properties) | 106 | Calls `acceptsURL(PREFIX_FIX)` (checks the constant against itself) instead of `acceptsURL(url)` - always-true guard that can throw `StringIndexOutOfBoundsException` for a mismatched URL. | High | open |
-| streamIO/integer/jdbc/CallStatementFix.java | CallStatementFix | (whole class) | 43 | Its `getResultSet(File, String)` factory is itself an unimplemented stub, and the class overrides none of its inherited stub `CallableStatement` methods - entirely non-functional. | High | open |
+| streamIO/integer/AStreamIn_Char.java, streamIO/integer/StreamOutStructCollection.java | AStreamIn_Char, StreamOutStructCollection | (whole class) | 36, 35 | Unimplemented IDE stubs presented as real implementations; the latter also discards its constructor parameter. | High | open |
+| streamIO/integer/multiplex/DeMultiplexerIn_Raid5.java | DeMultiplexerIn_Raid5 | read() | 160 | Error message logs a stale value instead of the one actually checked. | Low | open |
+| streamIO/integer/pipe/APipeByte.java | APipeByte | main() | 177 | Calls a method overload that doesn't exist - does not compile as written. | High | open |
+| streamIO/integer/pipe/MemoryPipe.java | MemoryPipe | (constructor) | 83 | Copy-paste field mixup, currently benign. | Low | open |
+| streamIO/integer/file/FilterCrLfFromQuoted.java | FilterCrLfFromQuoted | main() | 34 | Streams never closed in a `finally`. | Low | open |
+| streamIO/integer/file/FileStreamIn_Byte.java | FileStreamIn_Byte | read(byte[], int, int)-family default | 500 | Narrows to `char` before storing into an `int[]` - corrupts the EOF sentinel on write. | Medium | open |
+| streamIO/integer/jdbc/AConnection.java | AConnection | getWarnings() | 363 | Off-by-one array access - always throws. | High | open |
+| streamIO/integer/jdbc/AConnection.java | AConnection | close() | 261 | Never closes open ResultSets/Statements (author's own pre-existing TODO). | Medium | open |
+| streamIO/integer/jdbc/ADBMetaData.java | ADBMetaData | getTables(...) | 236 | Accepted filter parameters never applied. | Medium | open |
+| streamIO/integer/jdbc/AResultSet.java | AResultSet | fillFlags() | 1251 | Off-by-one loop leaves the first flag unset. | Medium | open |
+| streamIO/integer/jdbc/AStatement.java | AStatement | getResultSet(String) | 404 | Unsanitized table name built into a File path - path traversal. | High (security) | open |
+| streamIO/integer/jdbc/AStatement.java | AStatement | close() | 1000 | Unconditional call on a possibly-null field - NPE. | Medium | open |
+| streamIO/integer/jdbc/AStatement.java | AStatement | getResultSetConcurrency()/getResultSetType()/getResultSetHoldability() | 1058, 1071, 1086 | Each ignores its own instance field, returns the class default instead. | Medium | open |
+| streamIO/integer/jdbc/AStatement.java | AStatement | (analyzeConditions helper) | 846 | Unreachable dead branch. | Low | open |
+| streamIO/integer/jdbc/RSMetaData.java | RSMetaData | (every column-indexed method) | 7 | Assumes 0-based indexing against the 1-based `java.sql.ResultSetMetaData` contract - systemic mismatch. | High | open |
+| streamIO/integer/jdbc/DriverFix.java | DriverFix | connect(String, Properties) | 106 | `acceptsURL` checked against the wrong constant - always-true guard. | High | open |
+| streamIO/integer/jdbc/CallStatementFix.java | CallStatementFix | (whole class) | 43 | Entirely non-functional - its own factory is an unimplemented stub. | High | open |
 | streamIO/integer/jdbc/PrepStatementFix.java | PrepStatementFix | (whole class) | 46 | Same non-functional pattern as `CallStatementFix`. | High | open |
-| streamIO/integer/jdbc/EqualCondition.java | EqualCondition | equals(ResultSet, ResultSet) | 66 | `getString()` can return null for a SQL NULL value; neither branch checks for it before `toUpperCase()`/`trim()`/`equals()`, throwing `NullPointerException`. | Medium | open |
-| streamIO/integer/jdbc/ResultSetCrossJoin.java | ResultSetCrossJoin | relative(int) | 165 | Computes `getNumRowsFind()` (which has cursor-position side effects) then unconditionally returns `false`, ignoring `rows` entirely - effectively a no-op stub. | Medium | open |
-| streamIO/integer/jdbc/ResultSetArray.java | ResultSetArray | isAfterLast() (and relative()'s clamp) | 251 | `relative(int)` clamps `position` to exactly `table.getInt()` (the row count) instead of allowing it past that, so `isAfterLast()`'s `position > table.getInt()` check never trips - the cursor can never be observed as past the last row. | Medium | open |
-| streamIO/integer/jdbc/dbTest/DbTestLess.java | DbTestLess | newInstance(DbColumn, DbColumn) | ~31 | Returns a plain `new DbTestEquals(...)` instead of `new DbTestLess(...)`, silently downgrading the Test's semantics for any caller that clones it via `newInstance()`. | Medium | open |
-| streamIO/integer/jdbc/dbTest/DbTestOuter.java | DbTestOuter | newInstance(DbColumn, DbColumn) | ~32 | Same defect as `DbTestLess.newInstance()` - returns a plain `DbTestEquals` instead of `DbTestOuter`. | Medium | open |
-| streamIO/integer/jdbc/dbTest/DbTestLess.java | DbTestLess | test() | ~45 | Neither `str0` nor `str1` is checked for null before `compareTo()`; `getString()` can return null for a SQL NULL value, throwing `NullPointerException` (same class of bug as `EqualCondition.equals()`). | Medium | open |
-
-## Tool defects found and fixed during the pilot
-
-Recorded here because they were found on this codebase's own code; the durable versions
-live in the skill's `cli-reference.md` and in `ProgramTests.java`, one named test each.
-
-| Symptom on this tree | Root cause |
-|---|---|
-| `tools/Parsing.java`'s documented `ClassSep` reported undocumented | a trailing `//` comment on a field's line displaces its Javadoc in JavaParser's attribution |
-| `tools/ThreadLock.java`'s three types recorded mtimes 18 years apart | the file mtime was read per type, after each type's own write |
-| `tools/ReadMe.md` grew a second title and placeholder on every run | `--scaffold-opening` treated its own placeholder as absent |
-| Classes rows cut short at `Created on 7.` and `(e.g.` | first-sentence extraction split at abbreviation and date periods |
-| `tools/mementos/Originator.java`'s block became `<!-- docstate* pass: 2` | the block pattern consumed the newline after its marker on rewrite |
-| `tools/threads/TimeOuter.java`'s documented constructor reported undocumented | a `// TODO: LOGIC:` marker between Javadoc and declaration detached the Javadoc |
-
-## Tags pipeline (Pass 4-7)
-
-`raw-tags.tsv` at the repository root is the store of record and is committed: 22 confirmed
-rows covering all 19 types plus the three folders, with both tag axes and all three facets
-filled. `raw-tags-enriched.tsv` and `tagchunks/` are intermediates and are gitignored.
-
-Every command runs **from this directory**: a `unit-id` is a working-directory-relative
-path, so invoking one from a sub-folder produces keys nothing can join on.
-
-- **Shared, not repo-local:** `$CLAUDE_CONFIG_DIR/tags-schema.yaml` and
-  `$CLAUDE_CONFIG_DIR/tags-index.tsv` (`D:/_/_AI`) span every project on this machine, C#
-  included. Pull that repo before Pass 5 and Pass 7 and push after.
-- This run added **28 axis-A tags** (3,759 -> 3,787) and **19 index rows**. Both files
-  flipped from CRLF to LF, which is the convention the C# skill's own documentation says to
-  converge on; the diff is that flip plus this run's rows, with no unit-id lost (verified by
-  comparing the sorted unit-id sets).
-- The index shrank from 29,995 to 25,220 rows because the Java `build-index` merges by
-  unit-id where the C# one appends. The 4,775 removed rows were exact duplicate unit-ids
-  from repeated C# runs; all 25,201 distinct unit-ids survive.
-- **The Java tool can now consolidate the shared vocabulary itself (2026-09-05).**
-  `consolidate-vocabulary` and `redistribute-merges` are built, pulled forward out of Milestone
-  C because `tags-schema.yaml` is machine-wide and the Java side could otherwise only follow a
-  C# consolidation by hand. Normalisation tables, merge semantics and the `confidence` column's
-  spelling are copied from the C# consolidator on purpose: both tools write the same file, so a
-  difference would make the vocabulary depend on which ran last. Verified against the live
-  schema - both propose exactly `generics -> generic`, usage 10, `PluralSingular`.
-
-  That pair is in the reject ledger, which is why `--reject-file` was added in the same change
-  and should be passed on **every** run: the ledger is machine-wide because whether two tags
-  mean the same thing does not depend on which repo, or which tool, asked. With it the Java
-  tool proposes nothing, which is the correct answer for the current vocabulary.
-
-  75 Java tests pass. Console messages now use plain hyphens; the em dashes were rendering as
-  mojibake in the Windows console.
-
-- **The vocabulary is consolidated on the singular form (2026-09-05).** The 115 reviewed
-  near-duplicate merges are applied, with the singular canonical in every case rather than
-  whichever spelling the index happened to use more - `--prefer=singular`, added for this,
-  since the usage-driven direction had sent 90 pairs one way and 26 the other and resolved the
-  same word in opposite directions across two namespaces. 19 of the 115 reverse merges an
-  earlier session had already applied the other way, including `code/extension_method` ->
-  `code/extension_methods` across 1,363 references.
-
-  Final state, verified: `merged:` has 115 entries, no cycles, no chains, no plural canonical,
-  no canonical missing from the free list; 6,407 free tags; and **no merged-away spelling
-  remains in any of the 31 tag stores**. Total written: 9,845 tag references across the corpus
-  and 4,086 store rows, in two passes.
-
-  Four defects surfaced doing it, all now fixed and tested: `ApplyMerges` recorded both
-  directions when a merge was reversed (a two-step cycle) and left the winning spelling out of
-  the free list; redistribution reordered `[Tags]` arguments alphabetically on declarations
-  where nothing merged (55,151 of the first pass's 66,373 references were that churn); the
-  raw-tags rewriter normalised separators on untouched rows; and `SaveSchema` wrote CRLF into a
-  file every other writer keeps LF.
-
-  **That design gap is now closed.** `redistribute-merges <schema.yaml> <path> [--apply]`
-  applies the schema's recorded `merged:` map directly, with no proposal step, and never writes
-  the schema. It is idempotent, which makes it the cheapest check that a consolidation landed.
-  Its very first run found a straggler two full passes had missed - and `--apply` then wrote
-  nothing, which exposed a second bug: `MemberCommentWriter` located the `<example>` block with
-  a regex that blew through its 5-second timeout on `Tensor.cs` (6,391 lines, 245 example
-  blocks), and a timeout is treated as "no match" and skipped in silence. The block is located
-  by a line scan now and the regex is gone. `redistribute-merges` over Code/NET reports 0
-  references and 0 timeouts; 297 C# tests pass.
-
-- **The `_org.structs` store's corrupted rows are repaired.** Nine rows had lost their tab
-  separators (written as PowerShell's literal `` `t `` escape, or as a single space) and had
-  backslashes in their tag paths, so their unit-ids parsed as nothing and they were inert.
-  Seven are reconstructed by splitting on the level keyword. That made five units live which
-  also appear further down the file with *different* tags, so each pair was collapsed by union
-  rather than picking a winner. The store is now uniformly 8 columns, duplicate-free and LF,
-  and all 2,401 of that tree's index rows carry tags.
-
-  Seven rows are deliberately left as they are, because deleting them is a content decision:
-  three name files that no longer exist (`StepRKQ.cs`, `TestRandom.cs`, `BitNoise.cs`), two are
-  folder rows for `statistics/` and `modeling/` which are not on disk and carry no tags, one has
-  level `derivative` and unit `mathematical-function` (a concept written into a code-unit row),
-  and one `TestBodyFuncs.cs` row has its own path prefix pasted on twice.
-- **`compact-vocabulary` was not run, and must not be run yet - now for a structural
-  reason, not a fixable one.** The index rebuild that was supposed to unblock it has been
-  done: `build-index` was re-run over 27 of the 31 tag stores (2026-09-04), growing
-  `tags-index.tsv` from 25,220 to 32,477 rows and index-visible tags from 3,559 to 3,942.
-  The invisible remainder barely moved, 2,725 -> 2,257, because **1,815 of those tags
-  (80%) exist only on member-level rows** (method/field/property) and `tags-index.tsv`
-  carries one row per *class* by construction. No `build-index` run can ever count them.
-  So usage counting cannot see roughly a third of the vocabulary, and the third it cannot
-  see is the specific, low-usage, high-information end. At the 300-tag default the cut
-  lands above "used 13 times", leaving 5,406 documented units with no tag at all.
-  Measured figures and the argument are in the C# skill's `tags-pipeline.md`.
-  The lossless alternative is consolidating the 990 stem-collapsible tags through the
-  schema's `merged:` map, which is `consolidate-vocabulary`, and both tools now rewrite
-  `raw-tags.tsv` on `--apply` so such a decision actually sticks.
-- **The absolute-path stores are migrated, and the join had a second bug.** Five stores (not
-  three) held absolute paths - 5,201 rows - and 5,273 of 5,280 rows were rewritten to the
-  relative form on 2026-09-04, backups in the session scratchpad. Two of the five were the
-  807-row class-level stores that the earlier sweep had *included*, so those runs attached no
-  tags at all while reporting success. Re-measuring then went backwards, which exposed the
-  bigger defect: one store records `_root/Db/...` where the filesystem says `_root/db/...`,
-  and the unit-id lookup used `StringComparer.Ordinal`, so 1,131 rows of curated tags joined
-  to nothing on casing alone. The lookup is `OrdinalIgnoreCase` now, both copies of it are one
-  method (the duplication is why the earlier duplicate-unit-id fix reached `apply-tags` and
-  not `build-index`), and `RawTagsLookupTests` pins all three behaviours. 285 C# tests pass.
-
-  Coverage per root afterwards: `_root/db` 461/461 index rows tagged (was 15/461),
-  `_org.structs` 2,401/2,401, `_SpocWeb.Root` 12,231/14,527, 26,507 of 32,810 index rows
-  overall. The corpus-wide *distinct*-tag count is not a coverage measure and drifted down
-  (3,942 -> 3,855) as rows were re-derived from their stores.
-
-  Residual: an integrity check keyed on (file basename, class name) finds 353 of 15,668
-  class-level store rows whose tag is still absent from the matching index row - about 2.3%,
-  some of which is collision noise from that lossy key. Not chased further.
-- Nine axis-B candidates were reported for review: Callable Abstraction, Concurrency, Error
-  Handling, File Transfer, Interprocess Communication, Memento Pattern, Resource
-  Coordination, Text Parsing, Transaction Semantics. Axis B stays a raw string in
-  `concepts:` until `match-axis-b` exists (Milestone C).
-
-## Verification of the pilot
-
-Run from the repository root against `tools/`, after the last documentation edit:
-
-- `list-todo --recurse` - no rows, so every type and member carries a summary.
-- `check-stale --recurse` - 2 rows, 2 rows, 0 rows, 0 rows over four runs: the expected
-  two-run stale-to-fresh convergence, silent thereafter.
-- `list-stale --recurse` - no rows.
-- `update-readme tools --recurse --subsystems --scaffold-opening` - reports `unchanged`,
-  and the hand-written opening narrative, `## Architecture` and `## Entry Points` sections
-  all survive the re-run untouched.
-- `apply-tags --raw-tags=raw-tags.tsv` - 22 targets written, then 0 written / 22 unchanged
-  on the second run. `check-stale` stays silent afterwards: the digest covers only member
-  summaries, so applying tags never flips a class to stale.
-- `update-readme --recurse --subsystems --scaffold-opening` still reports `unchanged` with
-  the new `tags:`/`concepts:`/`facets:`/`description:` front matter in place.
-- `search "read write lock arbitrary objects"` ranks `tools/LockImproved.java` third, behind
-  two C# `ILock` rows - the cross-project corpus works.
-- Every `.java` file under `tools/` is still CRLF.
-
-## Next Action
-
-The pilot folder is finished through Pass 7, and Milestones A and B of the generator are
-built and proven on it. Two independent choices remain, for the user to make:
-
-1. **Milestone C of the generator** - repair/dedup/extras: `list-corrupted`,
-   `fix-doc-split`, `find-duplicates`, `scaffold`/`scaffold-remarks`,
-   `consolidate-vocabulary`, `match-axis-b`/`apply-axis-b-matches`,
-   `resolve-tag-conflicts`, `migrate-collaborators`.
-2. **Document the remaining 1,439 `.java` files** - a multi-session effort in its own
-   right. Claim a folder in the table above before starting one, deepest first, and commit
-   at each folder boundary. `streamIO/` (674 files) is the largest and would itself need
-   several sessions.
-
-Whether to prune the shared vocabulary at all is a third, separate decision - see the Tags
-pipeline section above. It is blocked on rebuilding `tags-index.tsv` over the C# roots
-(C# tool) and, for the lossless path, on `consolidate-vocabulary` from Milestone C.
+| streamIO/integer/jdbc/EqualCondition.java | EqualCondition | equals(ResultSet, ResultSet) | 66 | No null check before string comparison - NPE on a SQL NULL value. | Medium | open |
+| streamIO/integer/jdbc/ResultSetCrossJoin.java | ResultSetCrossJoin | relative(int) | 165 | Unconditionally returns false - effectively a no-op stub. | Medium | open |
+| streamIO/integer/jdbc/ResultSetArray.java | ResultSetArray | isAfterLast() (and relative()'s clamp) | 251 | Cursor position clamped so it can never be observed past the last row. | Medium | open |
+| streamIO/integer/jdbc/dbTest/DbTestLess.java | DbTestLess | newInstance(DbColumn, DbColumn) | ~31 | Returns a plain `DbTestEquals` instead of `DbTestLess` - silently downgrades semantics. | Medium | open |
+| streamIO/integer/jdbc/dbTest/DbTestOuter.java | DbTestOuter | newInstance(DbColumn, DbColumn) | ~32 | Same defect as `DbTestLess.newInstance()`. | Medium | open |
+| streamIO/integer/jdbc/dbTest/DbTestLess.java | DbTestLess | test() | ~45 | No null check before `compareTo()` - NPE on a SQL NULL value. | Medium | open |
