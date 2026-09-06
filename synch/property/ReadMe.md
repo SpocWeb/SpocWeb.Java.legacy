@@ -3,7 +3,7 @@ digest:
   local-classes:
     AAttribProperty:
       mtime: '2026-09-05T10:13:32Z'
-      digest: 46a9f2894a68f00f66baccab74ebc1cc60fa87f048b00ad504695bfd00c1fe18
+      digest: 95190d558099fe02d5ed3267b4df65d96de9fa09c1fa33128dd889e4d44aa54b
     PropString:
       mtime: '2026-09-05T10:42:44Z'
       digest: e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855

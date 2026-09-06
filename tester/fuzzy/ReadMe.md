@@ -3,7 +3,7 @@ digest:
   local-classes:
     FuzzyDictionary:
       mtime: '2026-09-05T11:11:44Z'
-      digest: 389020fe00936d0522eccfc8dc9287faf55ce747f984c58b0234af2a6845c7b2
+      digest: 97861fb6fb0dd1caccade0ad3603c86eed1ab278be8311828e69abca9e57789d
     FuzzySentenceComparator:
       mtime: '2026-09-05T11:12:00Z'
       digest: 59b92329d7d7ef7362b0c662fdb4ae7c0212a545c7fc61e28aa731693777499b

@@ -6,7 +6,7 @@ digest:
       digest: 51cf0ab196e32ef1e7a9a78b2443b26b1a50c2304d4ac31af8b59cf8444635d6
     Aspect:
       mtime: '2026-09-05T10:13:32Z'
-      digest: 9aa6e3155716809395daf08f65f23ac215bea002cb17b265c3f6ff9329c84228
+      digest: 8f4679221faf8627b06a28be9329ba4de2e3e84068623bf972909d5fa034db6b
     ContainerAspect:
       mtime: '2026-09-05T10:13:32Z'
       digest: f6e02744f2eaf091e2740752c3061a073e8d6c4abd07d5ec9824049450320610
@@ -15,7 +15,7 @@ digest:
       digest: 7748fa43ead03f212becdeed8d0ad0135fbf93b9b06f0813a627abec8aa5cb6b
     StringAspect:
       mtime: '2026-09-05T10:42:37Z'
-      digest: 34f499139011511eca48f0f0f5935bfb21f067239f0f8f5313ede345c7b6d7ff
+      digest: a7c3eb09fd43cfeac800b6c9d2875c7ccfb9bd804aac2ab2c62be3a24abf5ae5
   folders: {}
 tags:
 - code/observer_pattern
