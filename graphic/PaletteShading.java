@@ -72,14 +72,12 @@ final public class PaletteShading implements ISimplePalette {
 
 	/**
 	 * Scales the base color's RGB components by {@code c / maxShade}, keeping
-	 * the original alpha.
+	 * the original alpha. A {@code maxShade} of 0 leaves the base color unscaled.
 	 *
 	 * @see graphic.ISimplePalette#getColor(int)
 	 */
 	public synchronized Color getColor(final int c) {
-		// TODO: LOGIC: division by maxShade with no guard against maxShade == 0;
-		// setColor()/the constructor accept any int, and a caller passing
-		// maxShade_ == 0 here throws ArithmeticException on every getColor() call.
+		if (maxShade == 0) { return new Color(r, g, b, a); }
 		return new Color((r*c)/maxShade, (g*c)/maxShade, (b*c)/maxShade, a);
 	}
 

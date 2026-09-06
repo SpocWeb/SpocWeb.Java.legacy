@@ -500,10 +500,7 @@ extends Graph2D { //implements IGraphics {
 
 	/**Draws an Ellipse with Center in M and Radiuses R  */
 	public void fillEllipse(Point2D M, Point2D R) {
-		// TODO: LOGIC: calls g.drawOval (outline only) instead of g.fillOval,
-		// unlike every sibling fillEllipse overload in this class; this
-		// overload silently draws an unfilled ellipse.
-		g.drawOval(M.getX() - R.getX(), M.getY() - R.getY(), R.getX() << 1, R.getY() << 1);
+		g.fillOval(M.getX() - R.getX(), M.getY() - R.getY(), R.getX() << 1, R.getY() << 1);
 	}
 
 	/**Draws an Ellipse with Center in M, Radiuses R
@@ -536,10 +533,7 @@ extends Graph2D { //implements IGraphics {
 		P.setY(Start.getY());
 		rx = r;
 		ry = r;
-		// TODO: LOGIC: dispatches to MethodDrawRRect (outline) instead of
-		// MethodFillRRect, so this "fill" method actually draws an unfilled
-		// rounded rectangle - see orderedMethod() in Graph2D.
-		orderedMethod(Width.getX(), Width.getY(), MethodDrawRRect);
+		orderedMethod(Width.getX(), Width.getY(), MethodFillRRect);
 	}
 
 	/**Draws a Rectangle with rounded borders of Radius r.	 */
@@ -551,10 +545,7 @@ extends Graph2D { //implements IGraphics {
 		P.setY(Start.getY());
 		rx = R.getX();
 		ry = R.getY();
-		// TODO: LOGIC: dispatches to MethodDrawRRect (outline) instead of
-		// MethodFillRRect, same bug as the overload above - draws an
-		// unfilled rounded rectangle instead of filling it.
-		orderedMethod(Width.getX(), Width.getY(), MethodDrawRRect);
+		orderedMethod(Width.getX(), Width.getY(), MethodFillRRect);
 	}
 
 	/**Returns the bounding rectangle of the current clipping area.

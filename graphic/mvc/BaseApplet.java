@@ -105,8 +105,8 @@ implements IActiveCanvas {
 	/** Checks whether the file name ends in one of the allowed image suffixes.
 	 * @return null if the Suffix is ok for a Picture File, the Suffix otherwise! */
 	final static public String getFaultySuffix(final String fileName) {
-		// TODO: LOGIC: fileName.length()-4 throws StringIndexOutOfBoundsException when
-		// fileName is shorter than 4 characters (e.g. "" or "a.gi"), uncaught by any caller.
+		if (fileName.length() < 4) { //too short to carry any of the allowed Suffixes
+			return fileName; }
 		final String suffix =  fileName.substring(fileName.length()-4);
 		for (int i = ALLOWED_SUFFIXES.length; --i >= 0; ) {
 			if (suffix.equalsIgnoreCase(ALLOWED_SUFFIXES[i])) {
@@ -357,9 +357,9 @@ implements IActiveCanvas {
 	 */
 	public boolean imageUpdate(final Image img, final int infoflags, final int x, final int y, final int width, final int height) {
 		boolean ret = true;
-		// TODO: LOGIC: only ALLBITS is checked; ImageObserver.ERROR/ABORT are never handled,
-		// so a failed/aborted asynchronous image load never notifies the observer chain and
-		// this method keeps returning true (keep sending updates) forever for that image.
+		if (0 != ((ImageObserver.ERROR | ImageObserver.ABORT) & infoflags)) {
+			return false; //the Image failed to load: stop requesting further Updates
+		}
 		if (0 != (ImageObserver.ALLBITS & infoflags)) { //don't always call the super() Implementation
 			ret = super.imageUpdate(img, infoflags, x, y, width, height); //only when a whole Image arrived.
 			L.l(ret, 1).n();

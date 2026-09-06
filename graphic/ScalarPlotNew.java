@@ -369,6 +369,7 @@ public class ScalarPlotNew {
 		else		{du = (u0-u1); uStep = -1;}
 		zd = dx-dz; ud = dx-du;
 		g.setPixel(x0, y, z0); //Set the Start to the Start Point so that at least the last Draw Action
+		int x = x0;	//remember the Start of the current Color Segment
 		while (x0 < x1) { //no longer guaranteed to come along x0 AND z0 at the same time!
 			//no clipping anymore!
 			if (ud <  0) {u0+=uStep; ud += dx;}
@@ -376,19 +377,12 @@ public class ScalarPlotNew {
 			if (zd >= 0) {x0++	   ; zd -= dz; ud -= du;
 				if (color) { 	//only zd (Color) decides about stepping forward!
 					setPaletteColor(z0);
-					// TODO: LOGIC: calls the single-arg drawHLine(x0), which
-					// draws from the graphics context's *current* x position -
-					// but unlike the 6-arg ScalarRow overload above, this method
-					// never tracks or sets a "segment start" x via g.P.x (it
-					// only ever calls the stateless g.setPixel(x, y, z) form).
-					// The resulting line is drawn from whatever x position g
-					// happens to hold, not from this segment's actual start.
-					g.drawHLine(x0);
-					color = false;
+					g.drawHLine(x, x0, y);
+					x = x0; color = false;
 				}
 			}
 		}
-		g.drawHLine(x1);
+		g.drawHLine(x, x1, y);
 	}
 
 	/**Fills a whole Triangle ((x0, y0), (x1, y1), (x2,y2))

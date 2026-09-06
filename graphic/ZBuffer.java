@@ -131,13 +131,9 @@ extends AGraph2DOut {
 	 * Changing Color only with setColor!
 	 */
 	public void setPixel (int x, int y, float z) {
-		// TODO: LOGIC: the clip guard checks "x >= XMax" twice and never
-		// checks "y >= YMax"; a caller passing y >= YMax reaches MinZ[x][y]
-		// (and X[y] once cached) below and throws ArrayIndexOutOfBoundsException
-		// instead of being clipped like every other out-of-range coordinate.
 		if ((x >= XMax) ||
 			(x <  0   ) ||
-			(x >= XMax) ||
+			(y >= YMax) ||
 			(y <  0   )) { return; }
 		if (x == TmpX) {
 			if (y == TmpY) {

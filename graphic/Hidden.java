@@ -136,11 +136,7 @@ extends AGraph2DOut {
 	 * @see graphic.IGraph2DOut#setPixel(java.awt.Color)
 	 */
 	public void setPixel(final int x, final int y, final Color color_) {
-		// TODO: LOGIC: off-by-one - UG/OG are sized XMax (valid indices
-		// 0..XMax-1), but this guard only rejects x > XMax, letting x == XMax
-		// through to "OG[x]"/"UG[x]" below and throwing
-		// ArrayIndexOutOfBoundsException; should be "x >= XMax".
-		if (x > XMax) { return; }
+		if (x >= XMax) { return; }
 		if (x == TmpX) {
 			if ((y <= TmpOG) &&
 				(y >= TmpUG)) { return; }

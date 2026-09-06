@@ -166,9 +166,11 @@ extends Frame { //Applet {
 				case DIR_RIGHT: ++x; break;
 				default: throw new RuntimeException("Invalid Direction:" + dir); //break;
 			}
-			// TODO: LOGIC: x/y are never clamped or wrapped to [0, WIDTH)/[0, HEIGHT).
-			// Since the ant runs forever it will eventually walk off the buffer and
-			// this call will throw ArrayIndexOutOfBoundsException.
+			//wrap around the buffer edges, the Ant runs forever
+			if (x <  0     ) { x = WIDTH  - 1; } else
+			if (x >= WIDTH ) { x = 0; }
+			if (y <  0     ) { y = HEIGHT - 1; } else
+			if (y >= HEIGHT) { y = 0; }
 			int col = memImg.getPixel(x, y) & MemoryImage.RGB_VALUES;
 			if (col == 0) { //pixel is black...
 				memImg.setPixel(x, y, Color.white); //color it white

@@ -103,13 +103,8 @@ implements IGraphShape {
 	/**Resizes the Polygon in Place by the given X and Y factors.	 */
 	final static public int [][] sizePolygonAt(int [][] Polygon, int X, int Y) {
 		int i = -1;
-		// TODO: LOGIC: this checks "X != 1" twice instead of "X != 1 || Y != 1"
-		// (contrast with movePolygonAt's correct "(X != 0) || (Y != 0)" just
-		// below); when X == 1 but Y != 1, the whole condition is false and the
-		// resize loop is skipped, so the Y scale factor is silently never
-		// applied.
 		if ((X != 1) ||
-			(X != 1))
+			(Y != 1))
 			while (++i < Polygon.length) {
 				int [] tmp = Polygon[i];
 				tmp[0]*=X;
@@ -267,12 +262,8 @@ implements IGraphShape {
 		if (LineWidth > 0)	//This routine is for thick lines:
 		if (vStep) drawHLine(	x-LineWidth, x+LineWidth, y	); else	//draw a horizontal Line of width
 		if (hStep) drawVLine(x, y-LineWidth, y+LineWidth	); else	//draw a vertical   Line of width
-					// TODO: LOGIC: the fourth argument (y1) is "x+LineWidth"
-					// instead of "y+LineWidth"; the filled box's bottom edge
-					// is computed from x instead of y, so the box is
-					// mispositioned/mis-sized whenever x != y.
 					fillRect(	x-LineWidth, y-LineWidth,
-								x+LineWidth, x+LineWidth);	//draw a filled Box of the width
+								x+LineWidth, y+LineWidth);	//draw a filled Box of the width
 		P.x = x;
 		P.y = y;
 	}

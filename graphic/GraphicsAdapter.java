@@ -67,15 +67,11 @@ implements IGraphImage {
 	/////////////////////////////////////////////////////////////////////////////////////
 
 	/**
-	 * Always returns {@code null} instead of a copy of the underlying graphics context.
+	 * Returns a copy of the underlying graphics context, as the contract requires.
 	 * @see java.awt.Graphics#create()
 	 */
 	public Graphics create() {
-		// TODO: LOGIC: Graphics#create() is documented to return a new Graphics
-		// object that is a copy of this one; returning null instead means any
-		// caller that follows the normal Graphics contract and invokes a method
-		// on the result throws NullPointerException.
-		return null;
+		return g.create();
 	}
 
 	/**
@@ -541,14 +537,11 @@ implements IGraphImage {
 	}
 
 	/**
-	 * Sets the pixel at the current position; the given color is ignored.
+	 * Sets the pixel at the current position in the given color.
 	 * @see graphic.IGraph2DOut#setPixel(java.awt.Color)
 	 */
 	public void setPixel(Color color) {
-		// TODO: LOGIC: the "color" parameter is never used; this always paints
-		// with the field "col" (the previously-set current color) instead of
-		// the color the caller explicitly passed in.
-		setClippedPixel(col);
+		setClippedPixel(color);
 	}
 
 	/**
@@ -801,20 +794,15 @@ implements IGraphImage {
 	}
 
 	/**
-	 * Fills the polygon's interior with {@code BorderColor} and draws its outline
-	 * with {@code InnerColor}.
+	 * Fills the polygon's interior with {@code InnerColor} and draws its outline
+	 * with {@code BorderColor}.
 	 * @see graphic.IGraphAddtl#fillPolygon(int[], int[], java.awt.Color, java.awt.Color)
 	 */
 	public void fillPolygon(int[] xP, int[] yP, Color BorderColor, Color InnerColor) {
-		// TODO: LOGIC: the parameter names imply "BorderColor" strokes the
-		// outline and "InnerColor" fills the interior, but the calls below do
-		// the opposite - the interior is filled with BorderColor and the
-		// outline is drawn with InnerColor, i.e. the two colors are swapped
-		// relative to their names.
 		final int len = Math.min(xP.length, yP.length);
-		setColor(BorderColor);
-		g.fillPolygon(xP, yP, len);
 		setColor(InnerColor);
+		g.fillPolygon(xP, yP, len);
+		setColor(BorderColor);
 		g.drawPolygon(xP, yP, len);
 	}
 
@@ -846,40 +834,28 @@ implements IGraphImage {
 	}
 
 	/**
-	 * Draws an ellipse using the current position {@link #P} as the bounding box's
-	 * corner, with both sides set to the given radius.
+	 * Draws an ellipse centered on the current position {@link #P}, with both radii
+	 * set to the given radius.
 	 * @see graphic.IGraphAddtl#drawEllipse(int)
 	 */
 	public void drawEllipse(int r) {
-		g.drawOval(P.x, P.y, r, r);
+		drawEllipse(P, r);
 	}
 
 	/**
-	 * Draws an ellipse using M as the bounding box's corner, with both sides set to
-	 * the given radius.
+	 * Draws an ellipse centered on M with both radii set to the given radius.
 	 * @see graphic.IGraphAddtl#drawEllipse(graphic.Point2D, int)
 	 */
 	public void drawEllipse(Point2D M, int r) {
-		// TODO: LOGIC: IGraphAddtl#drawEllipse(Point2D, int) documents "Center
-		// in M, Radius r", but drawOval(x, y, width, height) takes the
-		// top-left corner and a full width/height, not a center and a radius;
-		// this passes M and r directly, so the ellipse is neither centered on
-		// M nor sized by 2*r as the contract requires.
-		g.drawOval(M.x, M.y, r, r);
+		g.drawOval(M.x - r, M.y - r, 2 * r, 2 * r);
 	}
 
 	/**
-	 * Draws an ellipse using M as the bounding box's corner, with the given point's
-	 * coordinates used directly as width and height.
+	 * Draws an ellipse centered on M with the radii given by R.
 	 * @see graphic.IGraphAddtl#drawEllipse(graphic.Point2D, graphic.Point2D)
 	 */
 	public void drawEllipse(Point2D M, Point2D R) {
-		// TODO: LOGIC: same contract mismatch as drawEllipse(Point2D, int) -
-		// IGraphAddtl documents "Center in M and Radiuses R", but this passes
-		// M and R straight into drawOval(x, y, width, height), so the ellipse
-		// is not centered on M and R is used as a full width/height rather
-		// than as radii.
-		g.drawOval(M.x, M.y, R.x, R.y);
+		g.drawOval(M.x - R.x, M.y - R.y, 2 * R.x, 2 * R.y);
 	}
 
 	/**
@@ -956,29 +932,19 @@ implements IGraphImage {
 	}
 
 	/**
-	 * Fills an ellipse using M as the bounding box's corner, with both sides set to
-	 * the given radius.
+	 * Fills an ellipse centered on M with both radii set to the given radius.
 	 * @see graphic.IGraphAddtl#fillEllipse(graphic.Point2D, int)
 	 */
 	public void fillEllipse(Point2D M, int r) {
-		// TODO: LOGIC: same contract mismatch as drawEllipse(Point2D, int) -
-		// IGraphAddtl documents "Center in M, Radius r", but fillOval(x, y,
-		// width, height) takes a top-left corner and full width/height; M and
-		// r are passed straight through without centering or doubling.
-		g.fillOval(M.x, M.y, r, r);
+		g.fillOval(M.x - r, M.y - r, 2 * r, 2 * r);
 	}
 
 	/**
-	 * Fills an ellipse using M as the bounding box's corner, with the given point's
-	 * coordinates used directly as width and height.
+	 * Fills an ellipse centered on M with the radii given by R.
 	 * @see graphic.IGraphAddtl#fillEllipse(graphic.Point2D, graphic.Point2D)
 	 */
 	public void fillEllipse(Point2D M, Point2D R) {
-		// TODO: LOGIC: same contract mismatch as drawEllipse(Point2D, Point2D)
-		// - IGraphAddtl documents "Center in M and Radiuses R", but M and R
-		// are passed straight into fillOval(x, y, width, height) without
-		// centering on M or doubling R into a width/height.
-		g.fillOval(M.x, M.y, R.x, R.y);
+		g.fillOval(M.x - R.x, M.y - R.y, 2 * R.x, 2 * R.y);
 	}
 
 	/**
@@ -1035,18 +1001,11 @@ implements IGraphImage {
 	}
 
 	/**
-	 * Fills a rounded rectangle whose bounding box's width/height are taken directly
-	 * from P2's coordinates, with corner radii rx/ry.
+	 * Fills the rounded rectangle spanned by P1 and P2, with corner radii rx/ry.
 	 * @see graphic.IGraphAddtl#fillRoundRect(graphic.Point2D, graphic.Point2D, graphic.Point2D)
 	 */
 	public void fillRoundRect(Point2D P1, Point2D P2, int rx, int ry) {
-		// TODO: LOGIC: fillRoundRect(int,int,int,int,int,int) expects
-		// (x, y, width, height, arcWidth, arcHeight), but P2.x/P2.y are passed
-		// directly as width/height instead of "P2.x-P1.x"/"P2.y-P1.y" as the
-		// sibling drawRoundRect(Point2D, Point2D, Point2D) correctly computes
-		// a few overloads above; the rectangle is sized and positioned wrong
-		// whenever P1 is not the origin.
-		g.fillRoundRect(P1.x, P1.y, P2.x, P2.y, rx, ry);
+		g.fillRoundRect(P1.x, P1.y, P2.x - P1.x, P2.y - P1.y, rx, ry);
 	}
 
 	/**

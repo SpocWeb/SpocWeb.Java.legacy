@@ -98,10 +98,6 @@ public class OdePlotter
 	public void drawLoop() {
 		Point2D currPoint;
 		int i = -1; //Run until...
-		// TODO: LOGIC: when Rect is null (a legal constructor argument - see OdePlotter(IGraphShape, ICoordMapper,
-		// AStepper, Rectangle), the loop condition "(Rect != null) && Rect.contains(...)" is false from the start,
-		// so the do/while body executes exactly once instead of running unbounded (as the comments below imply,
-		// "until ... the drawing Area is left"). Any caller passing a null Rect gets a single-step trajectory.
 		do {
 			//or a goal or a minimum Step Size is reached
 			//or the Starting point is reached again with an accuracy that depends on the largest Distance reached.
@@ -112,7 +108,7 @@ public class OdePlotter
 			g2D.drawLine(currPoint);
 		} while ((++i < this.MaxSteps) && //the maximum number of Steps
 			   (! stop) && //or the drawing Area is left
-			   ((Rect != null) && Rect.contains(currPoint.x, currPoint.y)));
+			   ((Rect == null) || Rect.contains(currPoint.x, currPoint.y)));
 	}
 
 }

@@ -290,9 +290,7 @@ extends AVector {
 	 * The Optimization here is that the Capacity can be ensured before
 	 * and that additional Fields can be set.	 */
 	public VectorPolygon copyAt(final MatrixShort[] arg_) {
-		// TODO: LOGIC: unlike the Object-typed copyAt() overload below, this never calls
-		// setCapacity() first; when arg_.length exceeds the current items.length, arraycopy
-		// throws ArrayIndexOutOfBoundsException instead of growing the backing array.
+		setCapacity(arg_.length);
 		itemCount = arg_.length;
 		System.arraycopy(arg_, 0, items, 0, itemCount);
 		return this;
@@ -350,14 +348,17 @@ extends AVector {
 
 	/** draws the Polygons in their zOrder 	*/
 	public void drawInOrder(final IGraphText g) {
-		// TODO: LOGIC: the branch that is supposed to (re-)build zIndex when it is null or
-		// stale is entirely commented out, so zIndex stays null (its only assignment anywhere
-		// is setChanged() setting it back to null); this method throws
-		// NullPointerException at items[zIndex[i]] on every call.
 		if ((zIndex == null) || (zIndex.length != itemCount)) {
-			//zIndex = new
-			//recreate the Index.
-		; }
+			//recreate the Index: a Permutation of the Item Indices in their zOrder,
+			//without sorting 'items' itself (which would destroy outside References).
+			final Integer[] order = new Integer[itemCount];
+			for (int i = itemCount; --i >= 0; ) {
+				order[i] = Integer.valueOf(i); }
+			Arrays.sort(order, (a, b) -> items[a.intValue()].compareTo(items[b.intValue()]));
+			zIndex = new int[itemCount];
+			for (int i = itemCount; --i >= 0; ) {
+				zIndex[i] = order[i].intValue(); }
+		}
 		for (int i = itemCount; --i >= 0; ) {
 			items[zIndex[i]].draw(g);
 		}

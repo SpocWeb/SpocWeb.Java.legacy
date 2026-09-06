@@ -467,11 +467,7 @@ extends AVector {
 		Point2D[] ret = new Point2D[dim];
 		System.arraycopy(a, 0, ret, 0, a.length);
 		//Arrays.fill(ret, a.length, dim, null);
-		// TODO: LOGIC: builds the correctly-resized array "ret" but returns
-		// the original, unresized "a" instead; callers relying on the return
-		// value to get an array of the requested "dim" silently get the old
-		// size back.
-		return a;
+		return ret;
 	}
 
 	/** Multiplies every element of {@code ret} in place by {@code Factor}, per
@@ -648,10 +644,7 @@ extends AVector {
 		//		if (startRow >= stopRow) {
 		//			return; }
 		//		stream(vals[startRow], stream);
-		// TODO: LOGIC: "for (int i = startRow; ++i < stopRow;)" pre-increments
-		// before the first use of i, so vals[startRow] itself is never
-		// streamed; the loop effectively covers [startRow+1, stopRow).
-		for (int i = startRow; ++i < stopRow;) {
+		for (int i = startRow - 1; ++i < stopRow;) {
 			stream.println(vals[i]);
 		}
 	}

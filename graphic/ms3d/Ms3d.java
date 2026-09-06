@@ -160,9 +160,7 @@ public class Ms3d {
 
 	/** writes the Data of this Object to a Stream */
 	public void streamJoints(final OutputStream ps) {
-		// TODO: LOGIC: delegates to streamVertices(PrintStream) instead of streamJoints(PrintStream)
-		// (copy-paste from a neighboring overload), so calling this writes vertex data instead of joints.
-		streamVertices(new PrintStream(ps));
+		streamJoints(new PrintStream(ps));
 	}
 
 	int pointOffset = 0; 
@@ -670,10 +668,7 @@ public class Ms3d {
 		MatrixFloat matTmp;
 		if(uiFrame == 0) { //If its at the extremes
 			matTmp = new MatrixFloat(pJoint.rotKeyFrames[0].transRot);
-		// TODO: LOGIC: compares the rotation-frame index against numTransFrames (the translation-keyframe
-		// count) instead of numRotFrames/rotKeyFrames.length; when the two counts differ this either
-		// SLERPs between frames it shouldn't or indexes rotKeyFrames[uiFrame] out of bounds below.
-		} else if(uiFrame == pJoint.numTransFrames) {
+		} else if(uiFrame == pJoint.numRotFrames) {
 			matTmp = new MatrixFloat(pJoint.rotKeyFrames[uiFrame-1].transRot);
 		} else { //If its in the middle of two frames, use a quaternion SLERP operation to calculate a new position
 			Ms3dKeyFrame pkCur = pJoint.rotKeyFrames[uiFrame];

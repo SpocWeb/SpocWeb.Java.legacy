@@ -113,11 +113,7 @@ public class GreyColor
 	 * This is particularly interesting on monochromatic, but high resolution Displays.	 */
 	public void setPixel()
 	{
-		// TODO: LOGIC: column index `1 + (P.getY() & 7)` ranges 1..8, but each
-		// GreyFillPalette row has only 8 columns (valid indices 0..7); when
-		// (P.getY() & 7) == 7 this throws ArrayIndexOutOfBoundsException. Likely
-		// meant to index by `(P.getY() & 7)` directly, without the `1 +`.
-		if ((GreyFillPalette [Grey] [1+ (P.getY() & 7)] & (1 << (P.getX() & 7))) == 0) return;
+		if ((GreyFillPalette [Grey] [P.getY() & 7] & (1 << (P.getX() & 7))) == 0) return;
 		super.setPixel ();
 	}
 

@@ -136,12 +136,8 @@ final public class Point2D {
 	public Point2D MinAt(final Point2D P) {
 		if (x > P.x)
 			x = P.x;
-		// TODO: LOGIC: compares "y > P.x" and assigns "y = P.x" instead of
-		// using P.y; the y coordinate is min'd against P's x coordinate, not
-		// P's y coordinate, corrupting every bounding-box computation that
-		// relies on this method whenever P.x != P.y.
-		if (y > P.x)
-			y = P.x;
+		if (y > P.y)
+			y = P.y;
 		return this;
 	}
 
@@ -149,12 +145,8 @@ final public class Point2D {
 	public Point2D MaxAt(final Point2D P) {
 		if (x < P.x)
 			x = P.x;
-		// TODO: LOGIC: compares "y < P.x" and assigns "y = P.x" instead of
-		// using P.y; same P.x/P.y mixup as MinAt() above, corrupting every
-		// bounding-box computation that relies on this method whenever
-		// P.x != P.y.
-		if (y < P.x)
-			y = P.x;
+		if (y < P.y)
+			y = P.y;
 		return this;
 	}
 

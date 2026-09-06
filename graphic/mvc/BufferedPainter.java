@@ -80,10 +80,7 @@ implements IPainter, IActiveCanvas {
 		if (canvas instanceof IActiveCanvas) {
 			((IActiveCanvas)canvas).addPainter(this);
 		}
-		// TODO: LOGIC: width and height are swapped here (dim.height passed as the
-		// BufferedImage width, dim.width as the height), which transposes the buffer for
-		// any non-square canvas, corrupting getSize() and every subsequent drawImage().
-		this.image = new BufferedImage(dim.height, dim.width, BufferedImage.TYPE_INT_RGB);
+		this.image = new BufferedImage(dim.width, dim.height, BufferedImage.TYPE_INT_RGB);
 	}
 
 	/////////////////////////////////////////////////////////////////////////////////////

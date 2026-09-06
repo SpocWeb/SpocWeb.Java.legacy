@@ -81,11 +81,7 @@ extends Graph2D {
 	private void initPass(int i, final int x0, final int y0, final int increment) {
 		for (int Z4 = -1; ++Z4 <= i;) {
 			for (int Z5 = -1; ++Z5 <= i;) {
-				// TODO: LOGIC: `<<` binds looser than `+` in Java, so this evaluates as
-				// `grayMatrix[Z4][Z5] << (2 + increment)` instead of the presumably intended
-				// `(grayMatrix[Z4][Z5] << 2) + increment` (a base-4 accumulation matching the
-				// 0..3 range of increment). Verify against the dithering algorithm this ports.
-				grayMatrix[Z4+x0][Z5+y0] = grayMatrix[Z4][Z5] << 2 + increment;
+				grayMatrix[Z4+x0][Z5+y0] = (grayMatrix[Z4][Z5] << 2) + increment;
 			}
 		}
 	}

@@ -235,23 +235,32 @@ implements IRepainter { //
 
 	/**
 	 * Returns the current coordinate transform.
-	 * @param bounds currently unused; the transform is returned regardless of this argument
+	 * @param bounds optional (null allowed) target Rectangle; when given, and a view box is
+	 *        already known, the transform is recomputed to map the view box onto these bounds.
 	 */
-	// TODO: LOGIC: the bounds parameter is ignored and the transform is never recomputed from it;
-	// every caller passes null, so this is effectively a no-arg getter for #trafo.
 	protected Coordinates2D getTrafo(final Rectangle bounds) {
+		if ((bounds != null) && (coords != null)) { //re-target the Transform onto the given Bounds
+			setTrafo(new Coordinates2D(
+				coords[0], coords[0]+coords[2],
+				coords[1], coords[1]+coords[3], bounds));
+		}
 		return trafo;
 	}
 
-	/** Sets the coordinate transform and installs a mouse controller for it on this Applet. */
-	// TODO: LOGIC: adds a new Coord2DMouseController via addMouseListener/addMouseMotionListener
-	// on every call without removing the listeners installed by a previous call, so repeated
-	// invocations (this method is protected and callable by subclasses) accumulate duplicate listeners.
+	/** the mouse Controller installed for the current #trafo, or null before the first #setTrafo() */
+	private Coord2DMouseController mouseCtrl;
+
+	/** Sets the coordinate transform and installs a mouse controller for it on this Applet,
+	 * removing the controller installed by a previous call. */
 	protected void setTrafo(final Coordinates2D trafo_) {
 		this.trafo = trafo_;
-		Coord2DMouseController ctrl = new Coord2DMouseController(trafo, this);
-		addMouseListener(ctrl);
-		addMouseMotionListener(ctrl);
+		if (mouseCtrl != null) { //don't accumulate duplicate Listeners
+			removeMouseListener(mouseCtrl);
+			removeMouseMotionListener(mouseCtrl);
+		}
+		mouseCtrl = new Coord2DMouseController(trafo, this);
+		addMouseListener(mouseCtrl);
+		addMouseMotionListener(mouseCtrl);
 	}
 	
 	/** Reference to the Coordinates used */
@@ -485,10 +494,6 @@ implements IRepainter { //
 	 * paints an Image Object
 	 * @param atts Attrributes for Height, Width etc. 
 	 */
-	// TODO: SECURITY: the xlink:href attribute of an <image> element is untrusted content coming
-	// from the parsed SVG document; it is concatenated into a URL and fetched below with no
-	// validation (scheme allow-list, path-traversal check), letting a malicious SVG file make this
-	// Applet fetch an arbitrary URL (SSRF-like) or read an arbitrary local file.
 	public void image(final Attributes atts) throws MalformedURLException {
 		final double[] rect = getRectangle(atts); //% are relative to the left, top Border
 		final Point2D P1 = getTrafo(null).mapPt(rect[0]-coords[0], rect[1]);
@@ -496,7 +501,16 @@ implements IRepainter { //
 		final Locator locator = saxDispatcher.getDocumentLocator();
 		final String systemID = locator.getSystemId();
 		int lastSlash = systemID.lastIndexOf('/');
-		String URL = systemID.substring(0, lastSlash+1)+atts.getValue(STR_ATTR_HREF);
+		final String href = atts.getValue(STR_ATTR_HREF);
+		//the href comes from untrusted Document Content: only allow References relative to
+		//the Document itself, no own Scheme (SSRF), no absolute Path and no Traversal.
+		if ((href == null)
+			|| (href.indexOf(':') >= 0)
+			|| href.startsWith("/") || href.startsWith("\\")
+			|| (href.indexOf("..") >= 0)) {
+			throw new MalformedURLException("unsupported image reference: " + href);
+		}
+		String URL = systemID.substring(0, lastSlash+1)+href;
 		URL url = new URL(URL);
 		//getImage(url); is an Applet method. If you have an application, you can use: 
 		drawImage(graph, P1.getX(), P1.getY()+P2.getY(), P2.getX(), -P2.getY(), url);

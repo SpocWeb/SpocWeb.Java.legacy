@@ -166,16 +166,20 @@ public class Erosion {
 				FilterHeightField(fTempBuffer, fFilter);
 		}
 
-		// TODO: LOGIC: fTempBuffer holds the computed heights, but the commented-out
-		// normalize/copy step below was never replaced with real code, so m_ucpData
-		// stays all-zero after this method returns.
-		/*
-		NormalizeTerrain(fTempBuffer);
-		for (z = 0; z < m_iSize; z++) {
-			for (x = 0; x < m_iSize; x++)
-				SetHeightAtPoint((char) fTempBuffer[(z * m_iSize) + x], x, z);
+		//normalize the temporary buffer to [0, 255] and copy it into the height field
+		float fMin = fTempBuffer[0];
+		float fMax = fTempBuffer[0];
+		for (i = 1; i < m_iSize * m_iSize; i++) {
+			if (fTempBuffer[i] < fMin) { fMin = fTempBuffer[i]; }
+			if (fTempBuffer[i] > fMax) { fMax = fTempBuffer[i]; }
 		}
-		*/
+		final float fSpan = fMax - fMin;
+		for (i = 0; i < m_iSize * m_iSize; i++) {
+			m_ucpData[i] = (fSpan == 0)
+				? (char) 0
+				: (char) (((fTempBuffer[i] - fMin) / fSpan) * 255);
+		}
+
 		//delete temporary buffer
 		//if (fTempBuffer != null) {
 		//	delete[] fTempBuffer; }

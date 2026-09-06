@@ -348,15 +348,11 @@ final public class Figures {
 	public void VectorGrid(int[] xP, int[] yP, int[][]xV, int[][]yV) {
 		//first fill up all the Colummns
 		int[] xc, yc;
-		// TODO: LOGIC: both loops pre-increment from 0 ("while (++i < ...)"),
-		// so the first iteration uses index 1, never 0 - unlike the "i = -1;
-		// while (++i < n)" pattern used elsewhere in this codebase to include
-		// index 0. Row 0 and column 0 of the grid are silently never drawn.
-		int i = 0;
+		int i = -1;
 		Point2D P = new Point2D();
 		Point2D V = new Point2D();
 		while (++i < xP.length) {
-			int j = 0;
+			int j = -1;
 			P.setX(xP[i]);
 			xc = xV[i];
 			yc = yV[i];
@@ -436,14 +432,7 @@ final public class Figures {
 		}	//Now R contains the maximum Radius
 		i = w.length;
 		while (--i >= 0) {
-			// TODO: LOGIC: the y-coordinates use "R.getX()" instead of
-			// "R.getY()" for the start point (mismatched with the end point,
-			// which correctly uses R.getY()), skewing the ellipse's radial
-			// lines whenever the radii differ in x and y. Also, w[i] (the
-			// angle) is never used - the commented-out PolyTrigon.EllipseRadius
-			// call above suggests the per-angle direction was never wired up,
-			// so this draws the same line w.length times.
-			g.drawLine (Origin.getX() - R.getX(), Origin.getY() - R.getX(), Origin.getX() + R.getX(), Origin.getY() + R.getY());
+			g.drawLine (Origin.getX() - R.getX(), Origin.getY() - R.getY(), Origin.getX() + R.getX(), Origin.getY() + R.getY());
 		}
 	}
 

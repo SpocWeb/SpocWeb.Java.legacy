@@ -102,10 +102,7 @@ public class Ms3dVertex {
 
 	/** Writes this vertex's coordinates and bone index to the given stream. */
 	public void toStream(final OutputStream streamOut) {
-		// TODO: LOGIC: calls toStream(OutputStream) itself (PrintStream is-an OutputStream, and there is
-		// no toStream(PrintStream) overload), recursing on every call until StackOverflowError; almost
-		// certainly meant to call stream(new PrintStream(streamOut)), the method that actually writes.
-		toStream(new PrintStream(streamOut));
+		stream(new PrintStream(streamOut));
 	}
 	
 	/** Separator Character for streaming */

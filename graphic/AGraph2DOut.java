@@ -49,13 +49,8 @@ implements IGraph2DOut {
 	 * @see graphic.IGraph2DOut#setColor(java.awt.Color)
 	 */
 	public void setColor(final Color color) {
-		// TODO: LOGIC: col is null until the first color is set (no field
-		// initializer); when col == null and color != null, "col != color"
-		// is true and "col.equals(color)" throws NullPointerException, so the
-		// very first setColor(Color) call with a non-null color on a fresh
-		// instance fails instead of just assigning col.
 		if ((col != color) && //Optimization
-			!col.equals(color)) {
+			((col == null) || !col.equals(color))) {
 			col = color;
 		}
 	}

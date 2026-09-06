@@ -220,18 +220,12 @@ extends AGraphImage { //implements IGraph2DIn {
 	}
 
 	/**
-	 * Not yet implemented; always reports success without drawing.
+	 * Delegates to the underlying {@link Graphics} to draw the scaled image region.
 	 *
 	 * @see graphic.IGraphics#drawImage(java.awt.Image, int, int, int, int, int, int, int, int, java.awt.image.ImageObserver)
 	 */
 	public boolean drawImage(final Image img, final int dx1, final int dy1, final int dx2, final int dy2, final int sx1, final int sy1, final int sx2, final int sy2, final ImageObserver observer) {
-		// TODO: LOGIC: stub always returns true without drawing anything (the
-		// underlying java.awt.Graphics.drawImage call was never wired up);
-		// every caller of this overload silently gets "success" while no
-		// pixels are actually painted.
-		// TODO Auto-generated method stub
-		//throw new RuntimeException("Not implemented!");
-		return true;
+		return g.drawImage(img, dx1, dy1, dx2, dy2, sx1, sy1, sx2, sy2, observer);
 	}
 
 }

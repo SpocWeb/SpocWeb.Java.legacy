@@ -212,10 +212,8 @@ extends Graph2DModel {
 		final float y,
 		final String label_) {
 		points.setAt(position, new float[] { x, y });
-		// TODO: LOGIC: coordTrafo may be null here (it is only set via setTrafo()/getTrafo()); unlike the
-		// double-parameter overload further below, this path has no null guard and throws
-		// NullPointerException when a point is added before a trafo exists.
-		super.addPoint(position, coordTrafo.mapPt(x, y), label_);
+		final Point2D point = (coordTrafo != null) ? coordTrafo.mapPt(x, y) : new Point2D();
+		super.addPoint(position, point, label_);
 	}
 	
 	/** 
@@ -225,10 +223,8 @@ extends Graph2DModel {
 	 */
 	public void addPoint(final float x, final float y, final String _label) {
 		points.addItem(new float[] { x, y });
-		// TODO: LOGIC: coordTrafo may be null here (it is only set via setTrafo()/getTrafo()); unlike the
-		// double-parameter overload below, this path has no null guard and throws NullPointerException
-		// when a point is added before a trafo exists.
-		super.addPoint(coordTrafo.mapPt(x, y), _label);
+		final Point2D point = (coordTrafo != null) ? coordTrafo.mapPt(x, y) : new Point2D();
+		super.addPoint(point, _label);
 	}
 	
 	/** 
@@ -257,10 +253,8 @@ extends Graph2DModel {
 	 */
 	public void addPoint(final float[] point, final String _label) {
 		points.addItem(point);
-		// TODO: LOGIC: coordTrafo may be null here (it is only set via setTrafo()/getTrafo()); unlike the
-		// double-parameter overloads above, this path has no null guard and throws NullPointerException
-		// when a point is added before a trafo exists.
-		super.addPoint(coordTrafo.mapPt(point), _label);
+		final Point2D mapped = (coordTrafo != null) ? coordTrafo.mapPt(point) : new Point2D();
+		super.addPoint(mapped, _label);
 	}
 	
 	/** 

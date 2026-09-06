@@ -477,10 +477,7 @@ implements Comparable, IIOrderAble, IPainter {
 		short[][] ret = new short[dim][];
 		System.arraycopy(a, 0, ret, 0, a.length);
 		//Arrays.fill(ret, a.length, dim, null);
-		// TODO: LOGIC: returns the original array 'a' instead of the resized 'ret' that was
-		// just allocated and filled above; every caller expecting a length-'dim' array back
-		// (dim != a.length) silently gets the unchanged original-length array instead.
-		return a;
+		return ret;
 	}
 
 	/** Multiplies every row of the array in place by the given factor.
@@ -647,9 +644,7 @@ implements Comparable, IIOrderAble, IPainter {
 		//		if (startRow >= stopRow) {
 		//			return; }
 		//		stream(vals[startRow], stream);
-		// TODO: LOGIC: the loop pre-increments i before the bound check, so vals[startRow]
-		// itself is never printed - only rows startRow+1..stopRow-1 are streamed out.
-		for (int i = startRow; ++i < stopRow;) {
+		for (int i = startRow - 1; ++i < stopRow;) {
 			stream.println(vals[i]);
 		}
 	}
@@ -816,11 +811,24 @@ implements Comparable, IIOrderAble, IPainter {
 	/** Constructs an MatrixShort by copying from the given Object any Type.
 	  * Defaults the Capacity Increment to 'defaultCapacityIncr'.	 */
 	public MatrixShort(final Object arg) {
-		// TODO: LOGIC: resolves to MatrixShort(int initialCapacity, int dim) - so
-		// DEFAULT_CAPACITY_INCR is passed as the row dimension 'dim', not as a capacity
-		// increment, silently giving every row the wrong width.
-		this(DEFAULT_CAPACITY_INIT, DEFAULT_CAPACITY_INCR);
+		this(DEFAULT_CAPACITY_INIT, DEFAULT_CAPACITY_INCR, DIM_OF(arg));
 		copyAt(arg);
+	}
+
+	/** @return the Row Dimension of the given Argument, or 0 when it cannot be determined */
+	private static int DIM_OF(final Object arg) {
+		short[][] rows = null;
+		if (arg instanceof MatrixShort) {
+			rows = ((MatrixShort) arg).items;
+		} else if (arg instanceof short[][]) {
+			rows = (short[][]) arg;
+		}
+		if (rows != null) {
+			for (int i = -1; ++i < rows.length; ) {
+				if (rows[i] != null) { return rows[i].length; }
+			}
+		}
+		return 0;
 	}
 
 	/** Very fast Constructor reusing the given Array
@@ -1014,10 +1022,7 @@ implements Comparable, IIOrderAble, IPainter {
 	 * which may be slower.
 	 * When overriding, use newInstance on all Components.	 */
 	public ICopyAble newInstance() {
-		// TODO: LOGIC: resolves to MatrixShort(int initialCapacity, int dim) - so the
-		// existing capacityIncrement value is passed as the row dimension 'dim' of the new
-		// instance rather than as a capacity increment, silently giving it the wrong row width.
-		return new MatrixShort(items.length, capacityIncrement);
+		return new MatrixShort(items.length, capacityIncrement, DIM_OF(this));
 	}
 
 	////////////////////////////////////////////////////////////////////////////////
@@ -1028,11 +1033,9 @@ implements Comparable, IIOrderAble, IPainter {
 	 * so that getAt(getInt()) != 0 
 	 */
 	public MatrixShort normalizeAt() {
-		// TODO: LOGIC: when itemCount is already 0 (or every item is null), this decrements
-		// itemCount past 0 to -1 and indexes items[-1], throwing
-		// ArrayIndexOutOfBoundsException instead of leaving an empty matrix normalized.
-		while (items[--itemCount] == null);
-		++itemCount;
+		while ((itemCount > 0) && (items[itemCount-1] == null)) {
+			--itemCount;
+		}
 		return this;
 	}
 

@@ -89,12 +89,6 @@ public class Polygon2D {
 			Point2D Point;
 			Extent = new Line2D(Points[0], Points[0]);
 			int Length = Points.length;
-			// TODO: LOGIC: this.Points is overwritten with a fresh all-null array
-			// BEFORE the loop below reads "Points[Length]", so every iteration sees
-			// null and mergeAt() never runs beyond the first point set above; the
-			// resulting Extent only ever covers Points[0], and the polygon's real
-			// point data is destroyed for every subsequent getPoints() call.
-			this.Points = new Point2D[Length];
 			while (--Length >= 0) { //Create Copies of these Points, because this prevents from fiddling arount with them
 				if ((Point = Points[Length]) != null) {
 					Extent.mergeAt(Point); } }

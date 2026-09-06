@@ -179,13 +179,9 @@ implements IPalette, ISimplePalette {
 	 * @return the brilliant Color for this Hue
 	 */
 	final static public Color HUE2COLOR(int hue) {
-		// TODO: LOGIC: negative wrap-around uses "6-hue" instead of "6+hue"
-		// (contrast the correct "hue += 6" wrap in RGB2HSB below); for hue=-1
-		// this computes 7 instead of 5, so "hue %= 6" then yields 1, not 5,
-		// returning the wrong color for any negative argument.
-		if (hue < 0) {
-			hue = 6-hue; }
 		hue %= 6;
+		if (hue < 0) {
+			hue += 6; }
 		return HUE_COLORS[hue]; }
 	
     /**Converts the components of a color, as specified by the HSB
