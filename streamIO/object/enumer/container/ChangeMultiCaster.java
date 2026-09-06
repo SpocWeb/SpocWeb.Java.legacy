@@ -25,6 +25,8 @@ import streamIO.IIStreamIn;
   * tags: [code/container, code/hash_table, code/container_iteration]
   * concepts: [Concrete Storage Containers - Arrays - Hash Tables and Relations]
   * facets: {layer: utility, status: legacy, complexity: high}
+  * digest: 369098280b81f5bd977f476d7ae3dc8760e85816f6bf5d884dea3ba146aa9a13
+  * stale: false
   * -->
   */
 public class ChangeMultiCaster

@@ -18,6 +18,8 @@ import java.util.NoSuchElementException;
  * tags: [code/red_black_tree, code/iterator_pattern]
  * concepts: [Red-Black Tree Backed Sorted Map Implementation]
  * facets: {layer: utility, status: legacy, complexity: high}
+ * digest: 72f97cbf280b793065fc7ac0ea2d998ad7aa4f92acf6a3b1559cab2eddf89e2b
+ * stale: false
  * -->
  */
 public class TreeEntryIterator 
@@ -29,17 +31,23 @@ implements Iterator {
 	/** Modification Count at Creation	 */
 	protected int expectedModCount;
 	
+	/** The entry last returned by {@link #next()}, or null if none has been returned yet or it was already removed. */
 	protected TreeMapEntry lastReturned = null;
-	
+
+	/** The entry {@link #next()} will return next, or null when iteration is exhausted. */
 	protected TreeMapEntry next;
-	
+
 	///////////////////////////////////////////////////////////////////////////
-	
+
+	/** Creates an iterator over the whole map, starting at its first entry.
+	 * @param _map the map to iterate over */
 	TreeEntryIterator(final TreeMap _map) {
 		this(_map, _map.firstEntry());
 	}
 
-	// Used by SubMapEntryIterator
+	/** Creates an iterator starting at a given entry; used by {@link SubTreeMapEntryIterator} to iterate a bounded range.
+	 * @param _map the map to iterate over
+	 * @param _first the entry to start from */
 	TreeEntryIterator(final TreeMap _map, final TreeMapEntry _first) {
 		this.map = _map;
 		this.next = _first;

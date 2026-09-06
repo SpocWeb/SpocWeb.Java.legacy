@@ -21,11 +21,14 @@ import synch.ValidationRule;
  * tags: [code/red_black_tree, code/iterator_pattern]
  * concepts: [Red-Black Tree Backed Sorted Map Implementation]
  * facets: {layer: utility, status: legacy, complexity: high}
+ * digest: 26de5f9b913d3cfbb7023c2b0fa85e0878f154e3ac437e120004c2628744e080
+ * stale: false
  * -->
  */
 class TreeEntrySetView
 extends AbstractSet {
 
+	/** The sub-map whose entries this set exposes. */
 	private final SubTreeMap map;
 
 	/**
@@ -37,6 +40,7 @@ extends AbstractSet {
 		this.map = map;
 	}
 
+	/** Cached entry count (size, -1 if not yet computed) and the backing map's modCount it was computed at (sizeModCount), used to invalidate the cache on structural change. */
 	private transient int size = -1, sizeModCount;
 
 	/**

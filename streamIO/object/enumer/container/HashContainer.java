@@ -71,6 +71,8 @@ import graphs.SparseGraph;
  * tags: [code/container, code/hash_table, code/container_iteration]
  * concepts: [Concrete Storage Containers - Arrays - Hash Tables and Relations]
  * facets: {layer: utility, status: legacy, complexity: high}
+ * digest: ea04617f1b51638e8cd59ae1d928f589f492523b549d6f1be6fd2affd1f41896
+ * stale: false
  * -->
  */
 final class HashOperationMode extends Enum {
@@ -270,6 +272,8 @@ final class HashOperationMode extends Enum {
  * tags: [code/container, code/hash_table, code/container_iteration]
  * concepts: [Concrete Storage Containers - Arrays - Hash Tables and Relations]
  * facets: {layer: utility, status: legacy, complexity: high}
+ * digest: f3c95d4902a909cf7a171d5812bdfcfea9f43fd28d5d4462a5c5f869f986a244
+ * stale: false
  * -->
  */
 final public class HashContainer extends AContainer {
@@ -281,6 +285,7 @@ final public class HashContainer extends AContainer {
 	/**
 	 * 
 	 */
+	/** Serialization version UID. */
 	private static final long serialVersionUID = 1L;
 
 	/** Logger for this Class */
@@ -1104,6 +1109,7 @@ final public class HashContainer extends AContainer {
 	// static Testing and main() Methods (not in Interfaces)
 	// //////////////////////////////////////////////////////////////////////////
 
+	/** Sample directed weighted graph edge list, from Sedgewick's Algorithms figure 29.1, used by {@link #testDataSet()}. */
 	static final String[][] Sedgewick_29_1 = {{ //
 			"A", "B", "1"}, { // 13 Points
 			"A", "C", "1"}, { // 13 Edges
@@ -1118,6 +1124,7 @@ final public class HashContainer extends AContainer {
 					"H", "I", "2"}, {"J", "M", "2"}, { //
 			"J", "L", "3"}, {"J", "K", "1"}, {"L", "M", "1"}};
 
+	/** Sample directed weighted graph edge list, from Sedgewick's Algorithms figure 31.1a, used by {@link #testSimplify()}. */
 	static final String[][] Sedgewick_31_1a = {
 			{ // for un- and directed Graph
 			"A", "B", "1"}, {"A", "F", "2"}, {"D", "F", "1"}, {"E", "D", "2"},
@@ -1125,11 +1132,13 @@ final public class HashContainer extends AContainer {
 			{"H", "I", "2"}, {"J", "K", "1"}, {"J", "L", "3"}, {"J", "M", "2"},
 			{"L", "G", "5"}, {"M", "L", "1"}};
 
+	/** Sample directed weighted graph edge list, from Sedgewick's Algorithms figure 32.1, used by {@link #testSimplify()}. */
 	static final String[][] Sedgewick_32_1 = {
 			{ // additional Edges for the directed Graph
 			"A", "G", "4"}, {"C", "A", "1"}, {"G", "C", "1"}, {"I", "H", "2"},
 			{"L", "M", "1"}};
 
+	/** Sample edge list with only directed (asymmetric) links, used by {@link #testSimplify()} to exercise the non-symmetric case. */
 	static final String[][] pureDirectedLinks = {{ //
 			"K", "N", "2"}, { // to demonstrate that they are retained on
 			// simplification!

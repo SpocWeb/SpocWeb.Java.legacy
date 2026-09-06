@@ -49,6 +49,8 @@ import streamIO.object.ModificationException;
   * tags: [code/container, code/hash_table, code/container_iteration]
   * concepts: [Concrete Storage Containers - Arrays - Hash Tables and Relations]
   * facets: {layer: utility, status: legacy, complexity: high}
+  * digest: 046e31e2d7e90a3c636958403c460bb118ca6bd1a1df398a5452b0519ccd2f88
+  * stale: false
   * -->
   */
 public class DebitContainer
@@ -61,6 +63,7 @@ extends AContainer {
 	/**
 	 * 
 	 */
+	/** Serialization version UID. */
 	private static final long serialVersionUID = 1L;
 
 	/** Reference to the Debit Container collecting all Liabilities 	*/

@@ -18,10 +18,13 @@ import java.util.Iterator;
  * tags: [code/red_black_tree, code/iterator_pattern]
  * concepts: [Red-Black Tree Backed Sorted Map Implementation]
  * facets: {layer: utility, status: legacy, complexity: high}
+ * digest: b2f89fb13b37a522bfb92feffa4b771eb171f5a7dc4b00bc42f340117da116f5
+ * stale: false
  * -->
  */
 final class TreeKeySet
 extends AbstractSet {
+	/** The backing map whose keys this set exposes. */
 	private final TreeMap map;
 
 	/**

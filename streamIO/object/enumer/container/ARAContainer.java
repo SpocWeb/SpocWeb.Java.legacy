@@ -16,6 +16,8 @@ import streamIO.object.enumer.ReverseEnumerator;
   * tags: [code/container, code/hash_table, code/container_iteration]
   * concepts: [Concrete Storage Containers - Arrays - Hash Tables and Relations]
   * facets: {layer: utility, status: legacy, complexity: high}
+  * digest: a81df4bb0e8b81584163459a9187946540682555507ecc5264ac01c1e288c9f7
+  * stale: false
   * -->
   * The Iterator Methods are delegated to mEnum, THE (single) Iterator for this Container. */
 public abstract class ARAContainer

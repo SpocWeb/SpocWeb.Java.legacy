@@ -7,6 +7,8 @@ package streamIO.object.enumer.container;
   * tags: [code/container, code/hash_table, code/container_iteration]
   * concepts: [Concrete Storage Containers - Arrays - Hash Tables and Relations]
   * facets: {layer: utility, status: legacy, complexity: high}
+  * digest: 9482127b2292c0e714a49d2deb449e27cbd3acf12adae4c9de1edd44452b6c25
+  * stale: false
   * -->
   */
 public interface ChangeObserver {

@@ -117,6 +117,8 @@ import tester.OrderatorComparable;
  * tags: [code/red_black_tree, code/iterator_pattern]
  * concepts: [Red-Black Tree Backed Sorted Map Implementation]
  * facets: {layer: utility, status: legacy, complexity: high}
+ * digest: 2107bc6602323144c2a2562c451301184029ed0fb382f0180dc049ecbdeae311
+ * stale: false
  * -->
  */
 public class TreeMap 
@@ -127,6 +129,7 @@ implements SortedMap, Cloneable, java.io.Serializable
 	/**
 	 * 
 	 */
+	/** Serialization version UID. */
 	private static final long serialVersionUID = 1L;
 
 	/**
@@ -199,7 +202,9 @@ implements SortedMap, Cloneable, java.io.Serializable
 	 */
 	transient int modCount = 0;
 	
+	/** Records an entry insertion: bumps {@link #modCount} to invalidate outstanding iterators/cached sizes, and increments {@link #size}. */
 	protected void incrementSize()   { ++modCount; ++size; }
+	/** Records an entry removal: bumps {@link #modCount} to invalidate outstanding iterators/cached sizes, and decrements {@link #size}. */
 	protected void decrementSize()   { ++modCount; --size; }
 	
 	///////////////////////////////////////////////////////////////////////////

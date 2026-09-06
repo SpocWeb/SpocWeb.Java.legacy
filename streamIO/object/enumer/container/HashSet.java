@@ -147,6 +147,8 @@ import tester.IEquivalence;
   * tags: [code/container, code/hash_table, code/container_iteration]
   * concepts: [Concrete Storage Containers - Arrays - Hash Tables and Relations]
   * facets: {layer: utility, status: legacy, complexity: high}
+  * digest: 790b2a4466e4029bf19095f0e665a20b4d215106da69780122ed7d18ca5c4774
+  * stale: false
   * -->
   */
 public class HashSet
@@ -159,6 +161,7 @@ extends AContainer {
 	/**
 	 * 
 	 */
+	/** Serialization version UID. */
 	private static final long serialVersionUID = 1L;
 
 	/** This Mask brings the HashCode to positive Values	*/
@@ -636,6 +639,8 @@ extends AContainer {
  * tags: [code/container, code/hash_table, code/container_iteration]
  * concepts: [Concrete Storage Containers - Arrays - Hash Tables and Relations]
  * facets: {layer: utility, status: legacy, complexity: high}
+ * digest: 963d75fe1c2cccc4eac3dcf27cc66361770080963c4f1265f08cdc7551d6963a
+ * stale: false
  * -->
  */
 class HashSetIterator

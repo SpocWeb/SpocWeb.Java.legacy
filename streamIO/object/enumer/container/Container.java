@@ -78,6 +78,8 @@ import graphs.KeyValuePair;
   * tags: [code/container, code/hash_table, code/container_iteration]
   * concepts: [Concrete Storage Containers - Arrays - Hash Tables and Relations]
   * facets: {layer: utility, status: legacy, complexity: high}
+  * digest: 645c5df00949ae6d86fad6338e1c5637ef1b1484967c29775d1d886734fa411f
+  * stale: false
   * -->
   */
 public interface Container

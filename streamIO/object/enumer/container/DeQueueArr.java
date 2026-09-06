@@ -42,6 +42,8 @@ import streamIO.object.IPipe;
   * tags: [code/container, code/hash_table, code/container_iteration]
   * concepts: [Concrete Storage Containers - Arrays - Hash Tables and Relations]
   * facets: {layer: utility, status: legacy, complexity: high}
+  * digest: cb69c9610927006d2ac5e9baae815e636e02f141726d11a0040d9d4a8741e861
+  * stale: false
   * -->
   */
 public class DeQueueArr
@@ -54,6 +56,7 @@ extends AContainer {
 	/**
 	 * 
 	 */
+	/** Serialization version UID. */
 	private static final long serialVersionUID = 1L;
 
 	/**Default Value, if the Parameter 'Capacity' is not provided	 */

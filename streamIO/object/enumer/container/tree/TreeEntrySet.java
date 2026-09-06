@@ -19,15 +19,19 @@ import synch.ValidationRule;
  * tags: [code/red_black_tree, code/iterator_pattern]
  * concepts: [Red-Black Tree Backed Sorted Map Implementation]
  * facets: {layer: utility, status: legacy, complexity: high}
+ * digest: e6b9cc4f5ef071ee0d9a834f39b94043d6b4ca8d6c463cf63077fe16681672eb
+ * stale: false
  * -->
  */
 final class TreeEntrySet 
 extends AbstractSet {
 	
+	/** The backing map whose entries this set exposes. */
 	private final TreeMap map;
 
 	/**
-	 * @param map
+	 * Creates an entry-set view backed by the given map.
+	 * @param map the map whose entries this set exposes
 	 */
 	TreeEntrySet(TreeMap map) {
 		this.map = map;

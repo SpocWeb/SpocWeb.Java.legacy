@@ -10,6 +10,8 @@ import streamIO.object.enumer.IndexEnumerator;
   * tags: [code/container, code/hash_table, code/container_iteration]
   * concepts: [Concrete Storage Containers - Arrays - Hash Tables and Relations]
   * facets: {layer: utility, status: legacy, complexity: high}
+  * digest: 389cee405ae1ccddf3d35d06ecc7b488e5ce24c29c909bd43e07e0bdc18fb7cd
+  * stale: false
   * -->
   */
 public interface RAContainer

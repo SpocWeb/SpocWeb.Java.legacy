@@ -32,6 +32,8 @@ import streamIO.object.IStreamIn;
   * tags: [code/container, code/hash_table, code/container_iteration]
   * concepts: [Concrete Storage Containers - Arrays - Hash Tables and Relations]
   * facets: {layer: utility, status: legacy, complexity: high}
+  * digest: c5f04830abcb4ff2c14f7b876eeb940eed5e358383fdd8d8073a4b17d0f26a7f
+  * stale: false
   * -->
   */
 public class FilterInCacheDyn
@@ -130,7 +132,8 @@ extends AFilterIn {
 //  Interface IStreamIn: Implementation
 ////////////////////////////////////////////////////////////////////////////////
 
-	/** @return the next (Parent) Object of this one.
+	/** Advances one step, serving from the lookahead cache while positions still in it, otherwise pulling from and caching the underlying stream.
+	  * @return the next (Parent) Object of this one.
 	  * No Exception is thrown at the End, instead EOI is returned.
 	  * When IO Processes are bound to this streamIO, IOException is wrapped into an IOError.
 	  * This is less explicit, but much faster because Exception Handling can be extremely slow.

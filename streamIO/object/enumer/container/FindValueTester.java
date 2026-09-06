@@ -22,6 +22,8 @@ import tester.ITester;
   * tags: [code/container, code/hash_table, code/container_iteration]
   * concepts: [Concrete Storage Containers - Arrays - Hash Tables and Relations]
   * facets: {layer: utility, status: legacy, complexity: high}
+  * digest: ddaab633887103b495f16bf62ed8207ebb942952c90d03ecb420c49a11f9eb83
+  * stale: false
   * -->
   */
 class FindValueTester

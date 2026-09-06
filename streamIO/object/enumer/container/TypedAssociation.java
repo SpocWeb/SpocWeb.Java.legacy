@@ -19,6 +19,8 @@ import java.sql.SQLException;
  * tags: [code/container, code/hash_table, code/container_iteration]
  * concepts: [Concrete Storage Containers - Arrays - Hash Tables and Relations]
  * facets: {layer: utility, status: legacy, complexity: high}
+ * digest: 3e8d00e9cb04e522be2f2ef730e93b2287575433417a82840becd521c6ff4814
+ * stale: false
  * -->
  */
 public class TypedAssociation 

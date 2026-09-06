@@ -69,6 +69,8 @@ import streamIO.object.enumer.IndexEnumerator;
   * tags: [code/container, code/hash_table, code/container_iteration]
   * concepts: [Concrete Storage Containers - Arrays - Hash Tables and Relations]
   * facets: {layer: utility, status: legacy, complexity: high}
+  * digest: bf19f4cfb1d99942518e3c443bf7f6f47d7eb2a34ad8cb13c008223a3e12a2e2
+  * stale: false
   * -->
   */
 public class Array
@@ -82,6 +84,7 @@ implements RAContainer {
 	/**
 	 * 
 	 */
+	/** Serialization version UID. */
 	private static final long serialVersionUID = 1L;
 
 	/**The default initial Capacity on instantiating an Array	 */
@@ -661,6 +664,8 @@ implements RAContainer {
  * tags: [code/container, code/hash_table, code/container_iteration]
  * concepts: [Concrete Storage Containers - Arrays - Hash Tables and Relations]
  * facets: {layer: utility, status: legacy, complexity: high}
+ * digest: 64ec56488ed1a87a85b0085ecfddc5f6fdc19a98d09ac63b067c23697e29130e
+ * stale: false
  * -->
  * This one has nothing to do with the ArrayIterator of Package streamIO. */
 final class ArrayIterator

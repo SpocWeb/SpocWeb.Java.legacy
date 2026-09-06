@@ -15,10 +15,13 @@ import java.util.NoSuchElementException;
  * tags: [code/red_black_tree, code/iterator_pattern]
  * concepts: [Red-Black Tree Backed Sorted Map Implementation]
  * facets: {layer: utility, status: legacy, complexity: high}
+ * digest: 86960c5e7d2734565b1e7e02b77230a9b998c1baadc59cfaff3b4fc885ccf469
+ * stale: false
  * -->
  */
 class SubTreeMapEntryIterator
 extends TreeEntryIterator {
+	/** Key of the first entry excluded from iteration (the range's upper bound), or null when the range is unbounded above. */
 	private final Object firstExcludedKey;
 
 	/**

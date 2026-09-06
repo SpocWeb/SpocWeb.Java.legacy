@@ -61,6 +61,8 @@ import function.byref.ByRefDouble;
  * tags: [code/container, code/hash_table, code/container_iteration]
  * concepts: [Concrete Storage Containers - Arrays - Hash Tables and Relations]
  * facets: {layer: utility, status: legacy, complexity: high}
+ * digest: bc0d469894603811795c114c2a5d7912ff646d6f8e90f726ebab3398f452ae5c
+ * stale: false
  * -->
  */
 public class SortedArray
@@ -69,6 +71,7 @@ extends Array {
 	/**
 	 * 
 	 */
+	/** Serialization version UID. */
 	private static final long serialVersionUID = 1L;
 
 	/** The Default Sort order of the Array	 */
@@ -559,6 +562,11 @@ extends Array {
 		if (Item instanceof IIOrderAble) return ((IIOrderAble) Item).isLessThan(other);
 		throw new AbstractMethodError(NotAllowedError); }
 
+	/** Replaces the Item at the given index in Place, rejecting a replacement that would break the ascending/descending sort order relative to its neighbors.
+	 * @param index the position to replace
+	 * @param Item the new value; must sort between its current neighbors
+	 * @return the Item previously at that index
+	 * @throws AbstractMethodError when the replacement would violate the Array's sort order */
 	public Object setAt(final int index, final Object Item) {
 		++minor;
 		if ((ascending == less(Item, items[index-1])) ||

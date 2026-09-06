@@ -20,6 +20,8 @@ import streamIO.object.enumer.container.Relation;
   * tags: [code/adapter, code/scheduling]
   * concepts: [Small Adapter and Scheduling Helper Classes]
   * facets: {layer: utility, status: legacy, complexity: high}
+  * digest: 28de3d97f2e27fba4c147bde4e6688aa8cce0ea2402082491d68d631c53cb9dc
+  * stale: false
   * -->
   */
 public class Container2ResultSet 

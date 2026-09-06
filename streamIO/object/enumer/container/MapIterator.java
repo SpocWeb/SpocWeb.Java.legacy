@@ -27,6 +27,8 @@ import streamIO.object.IStreamIn;
   * tags: [code/container, code/hash_table, code/container_iteration]
   * concepts: [Concrete Storage Containers - Arrays - Hash Tables and Relations]
   * facets: {layer: utility, status: legacy, complexity: high}
+  * digest: bf9f9b9a989712c87fdcc28eb92c1e7b46831d561074ac4b00da424e72a11d61
+  * stale: false
   * -->
   */
 public class MapIterator
@@ -81,7 +83,8 @@ extends AStreamIn {
 		((IStreamIn) iter).reSet(); nextItem = getNextItem();
 		return jump(_position);  }
 	
-	/** @return  the next Item, used as a Look ahead to keep availAble() valid!	 */
+	/** Advances the underlying key/relation iterators to the next mapped pair.
+	 * @return  the next Item, used as a Look ahead to keep availAble() valid!	 */
 	protected Object getNextItem() { //#now used indirectly for defining available()
 		while (true) { //see if there are more Items in the Relation Iterator...
 			if ((currAssoc = (Association) relIter.nextItem()) != IIStreamIn.EOI) { return currItem = new Association(MapAssoc.key, currAssoc.val); }

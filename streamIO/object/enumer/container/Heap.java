@@ -76,6 +76,8 @@ import function.index.IIndexAble;
   * tags: [code/container, code/hash_table, code/container_iteration]
   * concepts: [Concrete Storage Containers - Arrays - Hash Tables and Relations]
   * facets: {layer: utility, status: legacy, complexity: high}
+  * digest: 67bc158f6a18606a55e7179111e49742f71e701f557833a7c4d11f24d9b48713
+  * stale: false
   * -->
   * is returned in Order and the second Half in Reverse. 	 */
 public class Heap
@@ -90,6 +92,7 @@ extends AContainer
 	/**
 	 * 
 	 */
+	/** Serialization version UID. */
 	private static final long serialVersionUID = 1L;
 
 	/** Default Size of the Heap when no Size is given	 */

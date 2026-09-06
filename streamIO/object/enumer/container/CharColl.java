@@ -15,6 +15,8 @@ import function.byref.ByRefChar;
   * tags: [code/container, code/hash_table, code/container_iteration]
   * concepts: [Concrete Storage Containers - Arrays - Hash Tables and Relations]
   * facets: {layer: utility, status: legacy, complexity: high}
+  * digest: 010bfcd963f276bc0fcf4ee3ba23fceeedf0a3cf58508763a2fc601267f9d32b
+  * stale: false
   * -->
   */
 public class CharColl
@@ -23,6 +25,7 @@ extends ARAContainer {
 	/**
 	 * 
 	 */
+	/** Serialization version UID. */
 	private static final long serialVersionUID = 1L;
 	/**Internal Store for the Characters	 */
 	protected java.lang.StringBuffer string;
@@ -141,6 +144,8 @@ extends ARAContainer {
   * tags: [code/container, code/hash_table, code/container_iteration]
   * concepts: [Concrete Storage Containers - Arrays - Hash Tables and Relations]
   * facets: {layer: utility, status: legacy, complexity: high}
+  * digest: f217b7fb29ff63f5491d2ea994292e4317f3187e0c0517541e0fc806a3bf1aec
+  * stale: false
   * -->
   */
 class CharIterator

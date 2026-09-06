@@ -21,6 +21,8 @@ import tester.IEquivalence;
   * tags: [code/container, code/hash_table, code/container_iteration]
   * concepts: [Concrete Storage Containers - Arrays - Hash Tables and Relations]
   * facets: {layer: utility, status: legacy, complexity: high}
+  * digest: 67cae31d2672a316ccea96eba416bddfb627480055160a16725d3598ac3b689b
+  * stale: false
   * -->
   */
 public class JoinStreamByKeysIndex

@@ -36,6 +36,8 @@ import java.util.SortedMap;
  * tags: [code/red_black_tree, code/iterator_pattern]
  * concepts: [Red-Black Tree Backed Sorted Map Implementation]
  * facets: {layer: utility, status: legacy, complexity: high}
+ * digest: ff1ec4b00791a6fd86d96935d3d60ec941f7d171066fca8d90bc87509b285329
+ * stale: false
  * -->
  */
 class SubTreeMap 
@@ -45,6 +47,7 @@ implements SortedMap, java.io.Serializable {
 	/**
 	 * 
 	 */
+	/** Serialization version UID. */
 	private static final long serialVersionUID = 1L;
 
 	/** Reference to the Super Map 	 */
@@ -55,8 +58,14 @@ implements SortedMap, java.io.Serializable {
 	 * toKey is significant only if toStart is false.
 	 */
 	boolean fromStart = false, toEnd = false;
+	/** Inclusive lower bound (fromKey, meaningful only when fromStart is false) and exclusive upper bound (toKey, meaningful only when toEnd is false) of this sub-map's key range. */
 	Object  fromKey,		   toKey;
-	
+
+	/** Creates a sub-map view over the half-open key range [fromKey, toKey).
+	 * @param map the backing TreeMap
+	 * @param fromKey inclusive lower bound
+	 * @param toKey exclusive upper bound
+	 * @throws IllegalArgumentException when fromKey sorts after toKey */
 	SubTreeMap(TreeMap map, Object fromKey, Object toKey) {
 		if (map.compare(fromKey, toKey) > 0)
 			throw new IllegalArgumentException("fromKey > toKey");
@@ -65,6 +74,10 @@ implements SortedMap, java.io.Serializable {
 		this.toKey = toKey;
 	}
 
+	/** Creates a head-map or tail-map sub-view bounded on one side only.
+	 * @param map the backing TreeMap
+	 * @param key the bound
+	 * @param headMap true for a head-map (keys below key), false for a tail-map (keys at or above key) */
 	SubTreeMap(TreeMap map, Object key, boolean headMap) {
 		map.compare(key, key); // Type-check key
 		this.map = map;
@@ -78,6 +91,12 @@ implements SortedMap, java.io.Serializable {
 		}
 	}
 
+	/** Creates a sub-map view with each bound independently open or closed.
+	 * @param map the backing TreeMap
+	 * @param fromStart true when there is no lower bound (fromKey is ignored)
+	 * @param fromKey inclusive lower bound, used only when fromStart is false
+	 * @param toEnd true when there is no upper bound (toKey is ignored)
+	 * @param toKey exclusive upper bound, used only when toEnd is false */
 	SubTreeMap(TreeMap map, boolean fromStart, Object fromKey, boolean toEnd, Object toKey){
 		this.fromStart = fromStart;
 		this.map = map;
@@ -86,6 +105,7 @@ implements SortedMap, java.io.Serializable {
 		this.toKey = toKey;
 	}
 	
+	/** Cached entry-set view backing {@link #entrySet()}, restricted to this sub-map's key range. */
 	private transient Set entrySet = new TreeEntrySetView(this);
 
 	/** Returns a view over this sub-map's entries.
@@ -208,7 +228,9 @@ implements SortedMap, java.io.Serializable {
 			   (toEnd	  || map.compare(key,   toKey) <  0);
 	}
 	
-	// This form allows the high endpoint (as well as all legit keys)
+	/** Same as {@link #inRange(Object)}, but inclusive at the high endpoint too, for bounds passed to subMap()/headMap()/tailMap().
+	 * @param key the key to test
+	 * @return true when the key falls within this sub-map's [fromKey, toKey] range */
 	private boolean inRange2(final Object key) {
 		return (fromStart || map.compare(key, fromKey) >= 0) &&
 			   (toEnd	  || map.compare(key,   toKey) <= 0);

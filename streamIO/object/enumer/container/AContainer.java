@@ -53,6 +53,8 @@ import graphs.KeyValuePair;
   * tags: [code/container, code/hash_table, code/container_iteration]
   * concepts: [Concrete Storage Containers - Arrays - Hash Tables and Relations]
   * facets: {layer: utility, status: legacy, complexity: high}
+  * digest: 11048cfa83922b99c3689be02a477a05370947f50f56364aaff851920716bbe9
+  * stale: false
   * -->
   */
 public abstract class AContainer
@@ -186,6 +188,7 @@ implements Container {
 	// Interface ChangeEventSource Operations:
 	////////////////////////////////////////////////////////////////////////////
 	
+	/** The single Listener (or ChangeMultiCaster fanning out to several) registered via addChangeListener(). */
 	protected ChangeObserver mListener;
 	
 	/** adds or removes the given Listener to this ChangeEventSource	*/

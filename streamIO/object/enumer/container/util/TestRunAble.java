@@ -8,6 +8,8 @@ import streamIO.Log;
  * tags: [code/adapter, code/scheduling]
  * concepts: [Small Adapter and Scheduling Helper Classes]
  * facets: {layer: utility, status: legacy, complexity: high}
+ * digest: 3b38cdbe49f9fc0b7ccf1f4730bb148f2d12a65c11cf0120d8a307364776f3d9
+ * stale: false
  * -->
  */
 class TestRunAble implements Runnable {

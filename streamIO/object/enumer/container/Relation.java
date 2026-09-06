@@ -106,6 +106,8 @@ import graphs.SparseGraph;
   * tags: [code/container, code/hash_table, code/container_iteration]
   * concepts: [Concrete Storage Containers - Arrays - Hash Tables and Relations]
   * facets: {layer: utility, status: legacy, complexity: high}
+  * digest: 31855266da538fde28004c69c9041ec054d6dfeb289ec6943b839a3d47b2cf61
+  * stale: false
   * -->
   */
 public class Relation
@@ -119,6 +121,7 @@ implements IIterAble, IInvertAble { //to be able to stream into this Relation
 	/**
 	 * 
 	 */
+	/** Serialization version UID. */
 	private static final long serialVersionUID = 1L;
 
 	/** Builds a SparseGraph Adjacency List from this Relation's Edges, filling in the

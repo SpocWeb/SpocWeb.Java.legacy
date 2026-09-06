@@ -25,6 +25,8 @@ import tester.IEquivalence;
   * tags: [code/container, code/hash_table, code/container_iteration]
   * concepts: [Concrete Storage Containers - Arrays - Hash Tables and Relations]
   * facets: {layer: utility, status: legacy, complexity: high}
+  * digest: 7ce699d8b96b8b573baa1c24a4aaa800ae1b03b9bbbeb5a5dceeca12ba37ed20
+  * stale: false
   * -->
   */
 public class ContainerSet
