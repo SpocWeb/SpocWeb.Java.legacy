@@ -129,10 +129,12 @@ This folder is a hand-rolled concurrency framework predating `java.util.concurre
 `ForkJoinTask` is an unfinished sketch (its fork/join/start/reset methods are empty stubs) and is not
 used by anything else here.
 
-As documented in the individual Javadoc comments (and flagged inline as `TODO: LOGIC`), several classes
-have real concurrency bugs typical of hand-rolled synchronization code from this era - see "Bugs found"
-in the accompanying change report; `Barrier`, `BlockedThreadExecutor`, `Scheduler`, `ThreadExecutor`,
-`ThreadPoolExecutor` and `QueuedSemaphore` are all affected.
+`Barrier`, `BlockedThreadExecutor`, `Scheduler`, `ThreadExecutor`, `ThreadPoolExecutor` and
+`QueuedSemaphore` all carried real concurrency bugs typical of hand-rolled synchronization code
+from this era - notifying the wrong monitor, `if` rather than `while` around `wait()`, an
+uninitialized countdown, a busy-spin, and an enqueue-before-lock race. All were fixed in the 2026-09-06 bug-fix run;
+the fixes are reasoned from the code and verified by compilation only, so they still want review
+under load.
 
 ## Architecture
 

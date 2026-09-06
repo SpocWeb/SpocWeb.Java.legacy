@@ -82,7 +82,7 @@ facets:
   layer: utility
   status: legacy
   complexity: medium
-description: 'This folder collects stream filters that re-encode bytes or characters from one wire representation into another: little-endian primitive I/O (`BigEndianReader`/`BigEndianWriter`), binary-to-text schemes (Base64/UUEncode via `FilterASCII2Base64`/`FilterBase64ToASCII`, BinHex, URL encoding, HTML entities, UTF-8), lookup-table recoding (`FilterLookup`, `FilterChar2String`, `FilterString2Char`), checksums (`FilterCRC16`, `FilterCRC32`), a symmetric XOR/UUEncode cipher (`FilterCrypt`), escape-character insertion/removal, and a synchronizing byte pipe (`SynchPipeByte`). The `redundancy` subfolder adds forward-error-correction codecs (convolutional encoding, repetition-based redundancy) built on top of this layer. Most classes come in paired Input/Output or encode/decode halves that are meant to be composed with each other or with a plain `InputStream`/`OutputStream`. Several legacy encoders contain integer-truncation or off-by-one bugs (see inline `TODO: LOGIC`/`TODO: SECURITY` markers on `FilterASCII2Base64`, `FilterBase64ToASCII`, `FilterBinHex2Byte`, `FilterByte2BinHex`, `FilterCRC16`, `FilterCRC32`, `FilterUrlDecode`, `FilterString2Char`, `FilterCrypt`, `BigEndianReader`) that predate this documentation pass and have not been fixed.'
+description: 'This folder collects stream filters that re-encode bytes or characters from one wire representation into another: little-endian primitive I/O (`BigEndianReader`/`BigEndianWriter`), binary-to-text schemes (Base64/UUEncode via `FilterASCII2Base64`/`FilterBase64ToASCII`, BinHex, URL encoding, HTML entities, UTF-8), lookup-table recoding (`FilterLookup`, `FilterChar2String`, `FilterString2Char`), checksums (`FilterCRC16`, `FilterCRC32`), a symmetric XOR/UUEncode cipher (`FilterCrypt`), escape-character insertion/removal, and a synchronizing byte pipe (`SynchPipeByte`). The `redundancy` subfolder adds forward-error-correction codecs (convolutional encoding, repetition-based redundancy) built on top of this layer. Most classes come in paired Input/Output or encode/decode halves that are meant to be composed with each other or with a plain `InputStream`/`OutputStream`. Several legacy encoders carried integer-truncation, off-by-one or nibble-conversion bugs (`FilterASCII2Base64`, `FilterBase64ToASCII`, `FilterBinHex2Byte`, `FilterByte2BinHex`, `FilterCRC16`, `FilterCRC32`, `FilterUrlDecode`, `FilterString2Char`, `BigEndianReader`); all were fixed in the 2026-09-06 bug-fix run. `FilterCrypt` is a home-grown XOR cipher and is now `@Deprecated`: it is not cryptographically secure and must not be used for confidentiality.'
 ---
 
 # encoding
@@ -96,11 +96,12 @@ URL encoding, HTML entities, UTF-8), lookup-table recoding (`FilterLookup`, `Fil
 (`SynchPipeByte`). The `redundancy` subfolder adds forward-error-correction codecs (convolutional
 encoding, repetition-based redundancy) built on top of this layer. Most classes come in
 paired Input/Output or encode/decode halves that are meant to be composed with each other or
-with a plain `InputStream`/`OutputStream`. Several legacy encoders contain integer-truncation
-or off-by-one bugs (see inline `TODO: LOGIC`/`TODO: SECURITY` markers on `FilterASCII2Base64`,
-`FilterBase64ToASCII`, `FilterBinHex2Byte`, `FilterByte2BinHex`, `FilterCRC16`, `FilterCRC32`,
-`FilterUrlDecode`, `FilterString2Char`, `FilterCrypt`, `BigEndianReader`) that predate this
-documentation pass and have not been fixed.
+with a plain `InputStream`/`OutputStream`. Several legacy encoders carried integer-truncation,
+off-by-one or nibble-conversion bugs (`FilterASCII2Base64`, `FilterBase64ToASCII`,
+`FilterBinHex2Byte`, `FilterByte2BinHex`, `FilterCRC16`, `FilterCRC32`, `FilterUrlDecode`,
+`FilterString2Char`, `BigEndianReader`); all were fixed in the 2026-09-06 bug-fix run. `FilterCrypt` is a
+home-grown XOR cipher and is now `@Deprecated`: it is not cryptographically secure and must not
+be used for confidentiality.
 
 ## Classes
 

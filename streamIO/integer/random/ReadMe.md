@@ -71,7 +71,7 @@ facets:
   layer: utility
   status: legacy
   complexity: medium
-description: 'A family of pseudo-random integer generators sharing the `IStreamIn_Bound_Int` contract (bounded `nextInt`/`nextLong`/`nextFloat`/`nextDouble`, with `getPosition()`/`reSet()` for mark-and-restore replay). `AStreamIn_BoundInt`/`ARandomInt`/`ARandomLong` supply the common scaffolding; concrete generators implement classic algorithms - linear/affine congruential (`RandomLinear`, `RandomAffine`, `RandomFast`, `RandomQuick`), Knuth''s subtractive method (`RandomBySubt`), Java''s built-in generator wrapped for this interface (`RandomJava`), a sum of two independent linear generators for a very long period (`RandomMix`), a further shuffling wrapper (`RandomShuffle`), linear-feedback shift-register bit generators (`RandomBit`, `RandomBit2`), quasi-random low-discrepancy sequences (`RandomPseudoBinary`, `RandomPseudoGAdic`, Halton-style), and derived non-uniform distributions (`RandomDiscrete` for arbitrary discrete distributions, `RandomBinomial` for the binomial distribution). `BitNoise` is a companion `IIntFunction` that flips a configurable density of bits using one of these generators, for injecting noise into a signal under test. Several generators have known state-handling bugs flagged inline with `TODO: LOGIC` - notably `RandomBit2.getPosition()` returning the wrong field (breaking mark/restore, unlike sibling `RandomBit`), `AStreamIn_BoundInt.nextLong(long)` truncating large bounds to `int`, `BitNoise`''s `Map(long)` decrementing its countdown twice as fast as `Map(int)`, and `RandomMix.reset(long)` unconditionally throwing instead of setting the seed.'
+description: 'A family of pseudo-random integer generators sharing the `IStreamIn_Bound_Int` contract (bounded `nextInt`/`nextLong`/`nextFloat`/`nextDouble`, with `getPosition()`/`reSet()` for mark-and-restore replay). `AStreamIn_BoundInt`/`ARandomInt`/`ARandomLong` supply the common scaffolding; concrete generators implement classic algorithms - linear/affine congruential (`RandomLinear`, `RandomAffine`, `RandomFast`, `RandomQuick`), Knuth''s subtractive method (`RandomBySubt`), Java''s built-in generator wrapped for this interface (`RandomJava`), a sum of two independent linear generators for a very long period (`RandomMix`), a further shuffling wrapper (`RandomShuffle`), linear-feedback shift-register bit generators (`RandomBit`, `RandomBit2`), quasi-random low-discrepancy sequences (`RandomPseudoBinary`, `RandomPseudoGAdic`, Halton-style), and derived non-uniform distributions (`RandomDiscrete` for arbitrary discrete distributions, `RandomBinomial` for the binomial distribution). `BitNoise` is a companion `IIntFunction` that flips a configurable density of bits using one of these generators, for injecting noise into a signal under test. Several generators had state-handling bugs - `RandomBit2.getPosition()` returning the wrong field (breaking mark/restore, unlike sibling `RandomBit`), `AStreamIn_BoundInt.nextLong(long)` truncating large bounds to `int`, `BitNoise`''s `Map(long)` decrementing its countdown twice as fast as `Map(int)`, and `RandomMix.reset(long)` unconditionally throwing instead of setting the seed - all fixed in the 2026-09-06 bug-fix run.'
 ---
 
 # random
@@ -89,11 +89,11 @@ wrapper (`RandomShuffle`), linear-feedback shift-register bit generators (`Rando
 (`RandomDiscrete` for arbitrary discrete distributions, `RandomBinomial` for the binomial
 distribution). `BitNoise` is a companion `IIntFunction` that flips a configurable density of
 bits using one of these generators, for injecting noise into a signal under test. Several
-generators have known state-handling bugs flagged inline with `TODO: LOGIC` - notably
-`RandomBit2.getPosition()` returning the wrong field (breaking mark/restore, unlike sibling
-`RandomBit`), `AStreamIn_BoundInt.nextLong(long)` truncating large bounds to `int`, `BitNoise`'s
-`Map(long)` decrementing its countdown twice as fast as `Map(int)`, and `RandomMix.reset(long)`
-unconditionally throwing instead of setting the seed.
+generators had state-handling bugs - `RandomBit2.getPosition()` returning the wrong field
+(breaking mark/restore, unlike sibling `RandomBit`), `AStreamIn_BoundInt.nextLong(long)`
+truncating large bounds to `int`, `BitNoise`'s `Map(long)` decrementing its countdown twice as
+fast as `Map(int)`, and `RandomMix.reset(long)` unconditionally throwing instead of setting the
+seed - all fixed in the 2026-09-06 bug-fix run.
 
 ## Classes
 

@@ -35,7 +35,7 @@ facets:
   layer: domain
   status: broken
   complexity: medium
-description: 'A small hierarchy of row-filter Tests (`IDbTest`/`DbTestEquals` and its Less-Than/Outer-Join/ Full-Outer-Join/Negate/SwapOperands variants) that compare two `DbColumn` Fields, used by `FilterRsRows` and the join-oriented `ResultSet` implementations in the parent `jdbc/` package to evaluate `WHERE`/`ON` conditions. Two Tests (`DbTestLess`, `DbTestOuter`) have a `newInstance()` bug that silently downgrades them to a plain `DbTestEquals` (see inline `TODO: LOGIC` markers).'
+description: 'A small hierarchy of row-filter Tests (`IDbTest`/`DbTestEquals` and its Less-Than/Outer-Join/ Full-Outer-Join/Negate/SwapOperands variants) that compare two `DbColumn` Fields, used by `FilterRsRows` and the join-oriented `ResultSet` implementations in the parent `jdbc/` package to evaluate `WHERE`/`ON` conditions. Two Tests (`DbTestLess`, `DbTestOuter`) had a `newInstance()` bug that silently downgraded them to a plain `DbTestEquals`; it was fixed in the 2026-09-06 bug-fix run.'
 ---
 
 # dbTest
@@ -43,9 +43,9 @@ description: 'A small hierarchy of row-filter Tests (`IDbTest`/`DbTestEquals` an
 A small hierarchy of row-filter Tests (`IDbTest`/`DbTestEquals` and its Less-Than/Outer-Join/
 Full-Outer-Join/Negate/SwapOperands variants) that compare two `DbColumn` Fields, used by
 `FilterRsRows` and the join-oriented `ResultSet` implementations in the parent `jdbc/` package
-to evaluate `WHERE`/`ON` conditions. Two Tests (`DbTestLess`, `DbTestOuter`) have a
-`newInstance()` bug that silently downgrades them to a plain `DbTestEquals` (see inline
-`TODO: LOGIC` markers).
+to evaluate `WHERE`/`ON` conditions. Two Tests (`DbTestLess`, `DbTestOuter`) had a
+`newInstance()` bug that silently downgraded them to a plain `DbTestEquals`; it was fixed in
+the 2026-09-06 bug-fix run.
 
 ## Classes
 
