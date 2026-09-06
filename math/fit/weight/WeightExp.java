@@ -28,12 +28,8 @@ import function.byref.ByRefDouble;
 final public class WeightExp
 implements IWeightFunction {
 
-	// TODO: LOGIC: SINGLETON is a non-static instance field initialized by "new WeightExp()",
-	// but the only constructor is this same private one, so instantiating the class recurses
-	// into this same field initializer forever, causing a StackOverflowError. This field must
-	// be "static" for the singleton pattern implied by the private constructor to work.
 	/** single Instance of this Class	 */
-	public WeightExp SINGLETON = new WeightExp();
+	public static final WeightExp SINGLETON = new WeightExp();
 
 	/** private Constructor to enforce the Singleton	 */
 	private WeightExp() { }
@@ -44,14 +40,13 @@ implements IWeightFunction {
 	 */
 	public double prob(double d) { return Math.exp(-Math.abs(d)); }
 
-	// TODO: LOGIC: probCum returns the same formula as prob() (an unintegrated density)
-	// instead of a cumulative probability, so callers relying on probCum for an integrated
-	// value get the density instead; the existing "//TODO:" marks this as already known-unfinished.
 	/**
-	 * Returns the exponential probability density again instead of an integrated value.
+	 * Returns the cumulative Laplace probability belonging to the density {@link #prob(double)},
+	 * i.e. {@code 0.5*exp(d)} for negative and {@code 1-0.5*exp(-d)} for non-negative deviations.
 	 * @see IWeightFunction#probCum(double)
 	 */
-	public double probCum(double d) { return Math.exp(-Math.abs(d)); } //TODO:
+	public double probCum(double d) {
+		return (d < 0) ? 0.5*Math.exp(d) : 1-0.5*Math.exp(-d); }
 
 	/**
 	 * Returns the sign of the deviation as the weight, giving every point equal magnitude.

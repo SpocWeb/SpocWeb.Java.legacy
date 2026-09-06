@@ -238,10 +238,7 @@ implements IIterAble, IGraph {
 	 * where a Path is searched that visits each NODE only once.
 	 * It is not related to the Traveling Salesman Problem (TSP)	
 	 */
-	// TODO: LOGIC: infinite recursion - this calls itself instead of getOutDegree(j),
-	// so any call to this overload throws StackOverflowError. Compare to the sibling
-	// no-arg getDegree() below, which correctly delegates to getOutDegree().
-	public int getDegree(final int j) { return getDegree(j); }
+	public int getDegree(final int j) { return getOutDegree(j); }
 	
 	/**Returns the (Out-)Degree of the Node j,
 	 * i.e. the Number of Edges coming out of this Node.

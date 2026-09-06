@@ -26,12 +26,8 @@ package math.fit.weight;
 public class WeightLorentz
 implements IWeightFunction {
 
-	// TODO: LOGIC: SINGLETON is a non-static instance field initialized by "new WeightLorentz()",
-	// but the only constructor is this same private one, so instantiating the class recurses
-	// into this same field initializer forever, causing a StackOverflowError. This field must
-	// be "static" for the singleton pattern implied by the private constructor to work.
 	/** single Instance of this Class	 */
-	public WeightLorentz SINGLETON = new WeightLorentz();
+	public static final WeightLorentz SINGLETON = new WeightLorentz();
 
 	/** private Constructor to enforce the Singleton	 */
 	private WeightLorentz() { }
@@ -42,15 +38,13 @@ implements IWeightFunction {
 	 */
 	public double prob(double d) { return 1/(1+d*d*0.5); }
 
-	// TODO: LOGIC: probCum returns the same exponential-tail formula as WeightExp's probCum
-	// instead of a Lorentzian-consistent cumulative (e.g. based on atan for prob(d)=1/(1+d^2/2)),
-	// so it is inconsistent with this class's own prob()/weight()/weightCum() formulas.
 	/**
-	 * Returns the exponential-tail cumulative formula, not the Lorentzian one — see the
-	 * TODO: LOGIC note above.
+	 * Returns the cumulative Lorentzian probability belonging to the density
+	 * {@link #prob(double)}, i.e. {@code 0.5 + atan(d/sqrt(2))/PI}.
 	 * @see IWeightFunction#probCum(double)
 	 */
-	public double probCum(double d) { return Math.exp(-Math.abs(d)); } //TODO:
+	public double probCum(double d) {
+		return 0.5 + Math.atan(d/Math.sqrt(2))/Math.PI; }
 
 	/**
 	 * Returns the Lorentzian weight {@code d/(1+d^2/2)} at the given deviation.

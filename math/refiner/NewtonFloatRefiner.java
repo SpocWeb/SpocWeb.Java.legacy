@@ -77,11 +77,6 @@ extends AFloatRefiner {
 	/** A Function that calculates both Function and Derivative faster than individually	 */
 	protected ByRefDouble dydx = new ByRefDouble();
 
-	// TODO: LOGIC: this branch reads the inherited field "f" instead of this class's own
-	// "f0", but init(x, f0, f1) reaches this state via the (x, double) super.init overload,
-	// which explicitly sets f=null; f0 is stored but never read anywhere. Any refiner built
-	// via the (double, IFloatFunction, IFloatFunction) constructor/init therefore throws a
-	// NullPointerException on its very first refine() call. Should read f0.Map(xl), not f.Map(xl).
 	/**Performs a single approximating Step
 	 * @return xl, the new Estimate for the Root
 	 */
@@ -90,7 +85,7 @@ extends AFloatRefiner {
 			yl = f01.getFuncDerive(xl, dydx);
 			dx = multiplicity*yl / dydx.Value;	//{x-Abstand und y-Abstand werden kontrolliert}
 		} else {
-			yl = f .Map(xl) ;
+			yl = f0.Map(xl) ;
 			dx = multiplicity*yl / f1.Map(xl);	//{x-Abstand und y-Abstand werden kontrolliert}
 		}
 		return xl -= dx; }

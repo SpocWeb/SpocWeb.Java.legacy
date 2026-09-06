@@ -103,16 +103,11 @@ extends SecantFloatRefiner	//SecantRefiner extends ARefiner by xr and yr.
 	 * @param intervals filled with the bracketing Intervals 
 	 * @return the Number of bracketing Intervals found 
 	 */
-	// TODO: LOGIC: ret is allocated with the actual bracket count "numIntevals" (the value
-	// returned by the inner BRACKET call), but arraycopy is then told to copy "numIntervals"
-	// elements — the original, larger requested count — into it. Whenever fewer brackets are
-	// found than requested (the normal case), this overruns ret and throws
-	// ArrayIndexOutOfBoundsException; it should copy numIntevals elements, not numIntervals.
 	final static public float[][] BRACKET(final IFloatFunction f, final float xLeft, final float xRight, final int numIntervals) {
 		final float[][] intervals = new float[numIntervals][2];
 		final int numIntevals = BRACKET(f, xLeft, xRight, intervals);
 		final float[][] ret = new float[numIntevals][];
-		System.arraycopy(intervals, 0, ret, 0, numIntervals);
+		System.arraycopy(intervals, 0, ret, 0, numIntevals);
 		return ret;
 	}
 	

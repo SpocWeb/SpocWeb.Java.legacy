@@ -92,10 +92,6 @@ public class StratifiedMCIntegrator {
 	public float integrate(final IFloatScalarField func, final float region[][], final int nDim, final long numPoints,
 	final float dith, final float[] variance) {
 		final float[] pt=new float[1+nDim];
-		// TODO: LOGIC: the class-level Javadoc for this method documents `variance` as
-		// "if not null, the Variance ... is returned in [0]", but both this line and the
-		// recombination write below always dereference variance[0] unconditionally - passing
-		// null throws NullPointerException instead of silently skipping the output.
 		if (numPoints < MNBS) { //Too few Points for Bisection...
 			float summ2, summ=summ2=0;
 			for (long i=numPoints; --i>=0; ) { //...do straight Monte Carlo
@@ -104,7 +100,8 @@ public class StratifiedMCIntegrator {
 				summ += fVal;
 				summ2 += fVal * fVal;
 			}
-			variance[0]=Math.max(TINY,(summ2-summ*summ/numPoints)/(numPoints*numPoints));
+			if (variance != null) { //the Variance is an optional Output
+				variance[0]=Math.max(TINY,(summ2-summ*summ/numPoints)/(numPoints*numPoints)); }
 			return summ/numPoints;
 		}
 		//perform preliminary (uniform) sampling 
@@ -134,9 +131,10 @@ public class StratifiedMCIntegrator {
 		final float avel = integrate(func,regn_temp,nDim,nptl,dith,varl); //
 		regn_temp[0][jb]=rmid[jb];
 		regn_temp[1][jb]=region[1][jb];
-		final float ave = integrate(func,regn_temp,nDim,nptr,dith,variance); //
+		final float[] varr = (variance != null) ? variance : new float[1]; //the Variance is an optional Output
+		final float ave = integrate(func,regn_temp,nDim,nptr,dith,varr); //
 		//...and recombine the Result, see 7.8.11
-		variance[0]=fracl*fracl*varl[0]+(1-fracl)*(1-fracl)*variance[0];
+		varr[0]=fracl*fracl*varl[0]+(1-fracl)*(1-fracl)*varr[0];
 		return fracl*avel+(1-fracl)*ave;
 	}
 

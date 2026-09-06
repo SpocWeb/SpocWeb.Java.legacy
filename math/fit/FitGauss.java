@@ -81,32 +81,22 @@ implements IFloatFitFunction {
 		return y;
 	}
 
-	// TODO: LOGIC: unimplemented stub that always returns 0 without evaluating anything or
-	// filling dyda, unlike the single-x overload above; any caller relying on the
-	// IFloatFitFunction#map(double[], double[], double[]) contract for a vector x silently
-	// gets a wrong (zero) result instead of an error.
 	/**
-	 * Not implemented: always returns {@code 0} without evaluating the Gauss functions or
-	 * filling {@code dyda}.
+	 * Not implemented for a vector argument; use {@link #map(double, double[], double[])}.
+	 * @throws UnsupportedOperationException always
 	 * @see IFloatFitFunction#map(double[], double[], double[])
 	 */
 	public double map(double[] x, double[] a, double[] dyda) {
-		// TODO Auto-generated method stub
-		return 0;
+		throw new UnsupportedOperationException("FitGauss.map(double[], double[], double[]) is not implemented");
 	}
 
-	// TODO: LOGIC: unimplemented stub that always returns 0 without evaluating anything or
-	// filling dyda, unlike the single-x overload above; any caller relying on the
-	// IFloatFitFunction#map(float[], float[], float[]) contract for a vector x silently gets
-	// a wrong (zero) result instead of an error.
 	/**
-	 * Not implemented: always returns {@code 0} without evaluating the Gauss functions or
-	 * filling {@code dyda}.
+	 * Not implemented for a vector argument; use {@link #map(double, float[], float[])}.
+	 * @throws UnsupportedOperationException always
 	 * @see IFloatFitFunction#map(float[], float[], float[])
 	 */
 	public float map(float[] x, float[] a, float[] dyda) {
-		// TODO Auto-generated method stub
-		return 0;
+		throw new UnsupportedOperationException("FitGauss.map(float[], float[], float[]) is not implemented");
 	}
 
 }

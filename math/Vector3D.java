@@ -145,13 +145,9 @@ final public class Vector3D {
 		a[2]*=v; 
 		return this; }
 
-	// TODO: LOGIC: the compound assignments a[0]*=v, a[1]*=v, a[2]*=v inside the constructor
-	// call arguments mutate this Vector's own coordinates as a side effect, even though the
-	// method name and return of a new Vector3D imply a non-mutating multiplication (unlike
-	// mulAt(), which is the mutating counterpart above).
 	/** Multiplication with a Scalar, returned as a new Vector. */
 	public Vector3D mul(final double v) {
-		return new Vector3D(a[0]*=v, a[1]*=v, a[2]*=v); }
+		return new Vector3D(a[0]*v, a[1]*v, a[2]*v); }
 
 	/** Adds the given Vector to this Vector in place. */
 	public Vector3D addAt(final Vector3D v) {
@@ -333,9 +329,7 @@ final public class Vector3D {
 	public Vector3D angles (Vector3D[] Turn) {
 		a[1]=Math.atan2 (Math.sqrt (1.0-ByRefDouble.SQR(Turn [2].a[0])),Turn [2].a[0]); // = ArcSin (Turn [2,0]);
 		a[0]=Math.atan2 (Turn [0].a[0],-Turn [1].a[0]);
-		// TODO: LOGIC: a[] is allocated as new double[3] (valid indices 0-2), but this writes
-		// a[3] - guaranteed ArrayIndexOutOfBoundsException on every call to this method.
-		a[3]=Math.atan2 (Turn [2].a[2],-Turn [2].a[1]);
+		a[2]=Math.atan2 (Turn [2].a[2],-Turn [2].a[1]);
 		return this; }
 
 	/**Calculates the Cross Product of two Vectors in 3 Dimensions.
@@ -358,9 +352,7 @@ final public class Vector3D {
 	 */
 	public Vector3D Sphaeric2Rect() {
 		Vector2D V2 = new Vector2D(a)			.Polar2Rect();
-		// TODO: LOGIC: a[] has only 3 elements (indices 0-2); a[3] here is out of bounds and
-		// throws ArrayIndexOutOfBoundsException on every call.
-		Vector2D V3 = new Vector2D(V2.a[0],a[3]).Polar2Rect();
+		Vector2D V3 = new Vector2D(V2.a[0],a[2]).Polar2Rect();
 		return new Vector3D(V3.a[0],V2.a[1],V3.a[1]);
 		//as fast as the calculations below.
 //		Vector3D tmp = new Vector3D();
@@ -377,9 +369,7 @@ final public class Vector3D {
 	 */
 	public Vector3D Rect2Sphaeric() {
 		Vector2D V2 = new Vector2D(a)			.Rect2Polar();
-		// TODO: LOGIC: a[] has only 3 elements (indices 0-2); a[3] here is out of bounds and
-		// throws ArrayIndexOutOfBoundsException on every call.
-		Vector2D V3 = new Vector2D(V2.a[0],a[3]).Rect2Polar();
+		Vector2D V3 = new Vector2D(V2.a[0],a[2]).Rect2Polar();
 //		double z;
 //		if (V2.a[0] > (z = Math.abs(a[3])))	V3.a[0]= V2.a[0]*Math.sqrt(1.0+Sqr(z/V2.a[0]));
 //		else								V3.a[0]= z		*Math.sqrt(1.0+Sqr(V2.a[0]/z)); //besser als r=SqRt (f+Sqr (z));
@@ -425,9 +415,6 @@ final public class Vector3D {
 	 * Bem:(*) nur wenn		   QK[1]*Det[2] > 0,	(sonst nur IMAGIN�RE Loesung)
 	 *     (+) parallel ,wenn |QK[2] LK[2]| < 0		(sonst nur IMAGIN�RE Loesung)
 	 *         identisch,wenn |LK[2] LK[3]| = 0	 */
-	// TODO: LOGIC: index bugs throughout this method - guaranteed ArrayIndexOutOfBoundsException
-	// on every call: LK.a[3] below (LK is a Vector3D, size 3, valid indices 0-2); and _Det.a[2]
-	// / _M.a[2] used later (both are Vector2D parameters, size 2, valid indices 0-1).
 	public boolean Quadrik   (
 		Vector3D QK,
 		Vector3D LK,
@@ -442,24 +429,24 @@ final public class Vector3D {
 		Vector2D V3 = new Vector2D(LK.a[0], LK.a[1]);
 //		ByRef.ByRefDouble Det = new ByRef.ByRefDouble(); //jetzt in _HA(3)
 		if (Vector2D.EW_2x2(V1.a, V2.a, _HA.a))	//{f und g enthaelt die Eigenwerte !}
-			tmp = ((QK.a[1] > 0) ^ (_Det.a[2] > 0)); //{Paraboloid/Ellipsoid liegt unterhalb der x-y-Ebene bis auf evtl. 1 Punkt !}
+			tmp = ((QK.a[1] > 0) ^ (_Det.a[1] > 0)); //{Paraboloid/Ellipsoid liegt unterhalb der x-y-Ebene bis auf evtl. 1 Punkt !}
 		else {   //{negative Determinante => komplexe E.W.}
-			_HA.a[1] = Math.abs(_HA.a[1]);
-			_HA.a[2] =			_HA.a[1] ; }
-		_Det.a[1] = _HA.a[2]; //Det.Value;
+			_HA.a[0] = Math.abs(_HA.a[0]);
+			_HA.a[1] =			_HA.a[0] ; }
+		_Det.a[0] = _HA.a[2]; //Det.Value;
 		double fa = V2.DET2x2(V3);
 		double sx = V3.DET2x2(V1);
-		_Det.a[2] = _Det.a[1]*LK.a[3]+ //{Entwicklungs-Satz nutzt nicht die Symmetrie aus,ist aber ca. genauso schnell}
-					fa		 *LK.a[1]+
-					sx		 *LK.a[2]; //{Pot2Mul (QK [2]*LK [1]*LK [2],1)-Sqr (LK [1])*QK [3]-Sqr (LK [2])*QK [1];}
-		double Hilf = _Det.a[2]/_Det.a[1];
+		_Det.a[1] = _Det.a[0]*LK.a[2]+ //{Entwicklungs-Satz nutzt nicht die Symmetrie aus,ist aber ca. genauso schnell}
+					fa		 *LK.a[0]+
+					sx		 *LK.a[1]; //{Pot2Mul (QK [2]*LK [1]*LK [2],1)-Sqr (LK [1])*QK [3]-Sqr (LK [2])*QK [1];}
+		double Hilf = _Det.a[1]/_Det.a[0];
+		_HA.a[0] = Math.sqrt(Math.abs(Hilf/_HA.a[0]));
 		_HA.a[1] = Math.sqrt(Math.abs(Hilf/_HA.a[1]));
-		_HA.a[2] = Math.sqrt(Math.abs(Hilf/_HA.a[2]));
-		_M .a[1] = fa/_Det.a[2];
-		_M .a[2] = sx/_Det.a[2];
+		_M .a[0] = fa/_Det.a[1];
+		_M .a[1] = sx/_Det.a[1];
 		double Skalar = QK.a[0] + QK.a[2];	//already calculated in EW_2x2
-		PhiPar.a[0] = Math.atan2 (2*QK.a[2],QK.a[1]-QK.a[3])/2;
-		PhiPar.a[1] = Math.sqrt(Math.abs(_Det.a[2]/(Skalar*Skalar*Skalar))); //{Skalar schon in EW_2x2 gesetzt}
+		PhiPar.a[0] = Math.atan2 (2*QK.a[1],QK.a[0]-QK.a[2])/2;
+		PhiPar.a[1] = Math.sqrt(Math.abs(_Det.a[1]/(Skalar*Skalar*Skalar))); //{Skalar schon in EW_2x2 gesetzt}
 		return tmp; }
 
 }

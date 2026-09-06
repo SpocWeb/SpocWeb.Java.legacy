@@ -252,10 +252,7 @@ extends AVector {
 	 *
 	 * @param   anArray   the array into which the components get copied.
 	 * Declared final, because System.arraycopy is the fastest way.	 */
-	// TODO: LOGIC: items is Object[][] but anArray is int[]; System.arraycopy compiles (both
-	// are Object) but throws ArrayStoreException at runtime for any non-empty matrix because
-	// the component types are incompatible.
-	final public synchronized void copyInto(int[] anArray) {
+	final public synchronized void copyInto(Object[][] anArray) {
 		System.arraycopy(items, 0, anArray, 0, itemCount);
 		/*Object elementDataLocal[] = this.Items;
 		for (int i = ItemCount; i-- > 0;)
@@ -267,10 +264,8 @@ extends AVector {
 	 * The array must be big enough to hold all the objects in this  VectorInt.
 	 *
 	 * @param   anArray   the array into which the components get copied.	 */
-	// TODO: LOGIC: same Object[][]-into-int[] arraycopy defect as copyInto(int[]) above;
-	// throws ArrayStoreException at runtime for any non-empty matrix.
-	final public synchronized int[] toArray() {
-		int[] Return = new int[itemCount];
+	final public synchronized Object[][] toArray() {
+		Object[][] Return = new Object[itemCount][];
 		System.arraycopy(items, 0, Return, 0, itemCount);
 		return Return;
 	}

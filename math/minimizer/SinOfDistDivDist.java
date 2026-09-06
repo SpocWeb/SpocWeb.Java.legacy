@@ -65,9 +65,7 @@ implements IFloatScalarField {
 		} else {
 			ret = VectorDouble.DIST_SQR(V, center);
 		}
-		// TODO: LOGIC: ret is exactly 0.0 when V equals center (or the origin), so
-		// -Math.sin(ret)/ret computes 0.0/0.0 = NaN instead of the mathematical limit
-		// -1.0; a minimizer that converges exactly onto the minimum observes NaN here.
+		if (ret == 0.0) { return -1.0; } //limit of -sin(x)/x for x -> 0
 		return -Math.sin(ret)/ret; }
 
 	/**
@@ -84,9 +82,7 @@ implements IFloatScalarField {
 		} else {
 			ret = VectorFloat.DIST_SQR(V, center);
 		}
-		// TODO: LOGIC: ret is exactly 0.0 when V equals center (or the origin), so
-		// -Math.sin(ret)/ret computes 0.0/0.0 = NaN instead of the mathematical limit
-		// -1.0; a minimizer that converges exactly onto the minimum observes NaN here.
+		if (ret == 0.0) { return -1.0f; } //limit of -sin(x)/x for x -> 0
 		return (float) (-Math.sin(ret)/ret); }
 
 }

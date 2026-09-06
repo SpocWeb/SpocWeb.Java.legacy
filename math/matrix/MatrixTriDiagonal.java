@@ -162,17 +162,13 @@ public class MatrixTriDiagonal {
 		final double alpha = superDiag[n-1];
 		final double beta  = subDiag[n-1];
 			
-		// TODO: LOGIC: nonCyclic is cached and only its corner diagonal entries (0 and n-1) are
-		// refreshed below on repeat calls; if diag's interior values (1..n-2) change between two
-		// solveCyclicAt calls on the same instance (subDiag/diag/superDiag are shared, mutable
-		// arrays, not defensively copied by the constructor), the stale interior values from the
-		// first call are silently reused instead of the current diag content.
 		if (nonCyclic == null) { //set up an auxiliary, non-cyclic tridiagonal System
 			final double[] newDiag=VectorDouble.COPY(diag); //new double[n];
 			u=new double[n];
 			nonCyclic = new MatrixTriDiagonal(subDiag, newDiag, superDiag);
 			//nonCyclic.setCyclic(false);
-		} else {
+		} else { //refresh the cached Copy, diag may have changed since the last Call
+			System.arraycopy(diag, 0, nonCyclic.diag, 0, n);
 			VectorDouble.FILL_AT(u, 0, 1, n-1);
 		}
 	

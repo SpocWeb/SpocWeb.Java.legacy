@@ -5,6 +5,7 @@
  */
 package math.fit;
 
+import math.matrix.MatrixSVD;
 import streamIO.Log;
 import streamIO.real.random.RandomGauss;
 import function.byref.ByRefFloat;
@@ -37,25 +38,27 @@ implements IFloatVectorFunction {
 
 	/** Logger for Testing, modify Threshold for switching Logging */
 	static Log L = new Log(FittingFloat.class);
+
+	/** exposes the (protected) Decomposition Results of {@link MatrixSVD} to {@link #svdfit} */
+	private static final class SvdAccess extends MatrixSVD {
+		SvdAccess(final double[][] a) { super(a); }
+		/** @return the Diagonal Matrix with the Weights of the Mapping */
+		double[] weights() { return w; }
+		/** @return the orthonormal Base for the Range, in transposed Form */
+		double[][] rangeBase() { return v; }
+	}
 	
-	// TODO: LOGIC: the Numerical Recipes SVDFIT algorithm this is ported from requires calling
-	// svdcmp(u,ndata,ma,w,v) to decompose u into U*W*V^T, and svbksb(u,w,v,ndata,ma,b,a) to
-	// back-substitute the actual solution into a. Both calls are commented out below, so w/v
-	// must already hold a valid decomposition supplied by the caller, and a is never solved
-	// for at all: the chi-squared computed below evaluates whatever a the caller passed in,
-	// not the least-squares fit. Any caller expecting this method to compute a (as
-	// testSvdFit() does, passing an unfilled a) silently gets a meaningless result.
 	/**
-	 * Computes chi-squared for a linear least-squares fit of {@code funcs} to
-	 * {@code (x, y)} by singular value decomposition (Numerical Recipes 15.4), assuming
-	 * {@code u}, {@code v} and {@code w} already hold a valid SVD of the design matrix and
-	 * that {@code a} already holds the solved coefficients.
+	 * Solves a linear least-squares fit of {@code funcs} to {@code (x, y)} by singular value
+	 * decomposition (Numerical Recipes 15.4) and returns the resulting chi-squared.
+	 * {@code u}, {@code v} and {@code w} are filled with the decomposition of the design
+	 * matrix and {@code a} with the solved coefficients; all four are pure out-parameters.
 	 * @return the resulting chi-squared
 	 */
 	final static public double svdfit(final float[] x, final float[] y, final float[] sig, final int ndata, final float[] a, final int ma
 	, final float[][] u, final float[][] v, final float[] w, final IFloatVectorFunction funcs) {
 		int j,i;
-		float wmax,tmp,thresh,sum;
+		float tmp,sum;
 
 		final float[] b=new float[1+ndata];
 		final float[] afunc=new float[1+ma];
@@ -66,17 +69,31 @@ implements IFloatVectorFunction {
 				u[i][j]=afunc[j]*tmp; }
 			b[i]=y[i]*tmp;
 		}
-		//MatrixSVD matrix = new MatrixSVD(u);
-		//svdcmp(u,ndata,ma,w,v);
-		wmax=0;
-		for (j=1;j<=ma;j++)
-			if (w[j] > wmax) wmax=w[j];
+		final double[][] design=new double[ndata][ma]; //0-based copy for MatrixSVD
+		final double[] rhs=new double[ndata];
+		for (i=1;i<=ndata;i++) {
+			for (j=1;j<=ma;j++) {
+				design[i-1][j-1]=u[i][j]; }
+			rhs[i-1]=b[i];
+		}
+		final SvdAccess svd=new SvdAccess(design); //decomposes design in place into U
 		final float TOL = 1e-5f;
-		thresh=TOL*wmax;
-		for (j=1;j<=ma;j++)
-			if (w[j] < thresh) {
-				w[j]=0; }
-		//svbksb(u,w,v,ndata,ma,b,a);
+		svd.fixWeights(TOL); //discards singular Values below TOL*max
+		final double[] w0=svd.weights();
+		final double[][] v0=svd.rangeBase();
+		for (i=1;i<=ndata;i++) {
+			for (j=1;j<=ma;j++) {
+				u[i][j]=(float) design[i-1][j-1]; }
+		}
+		for (j=1;j<=ma;j++) {
+			w[j]=(float) w0[j-1];
+			for (i=1;i<=ma;i++) {
+				v[i][j]=(float) v0[i-1][j-1]; }
+		}
+		final double[] a0=new double[ma];
+		svd.solve(rhs, a0); //Back-Substitution of the Solution into a
+		for (j=1;j<=ma;j++) {
+			a[j]=(float) a0[j-1]; }
 		double chisq=0;
 		for (i=1;i<=ndata;i++) {
 			funcs.map(x[i],afunc);

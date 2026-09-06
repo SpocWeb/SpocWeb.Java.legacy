@@ -42,16 +42,16 @@ extends AStreamIn {
 	final MatrixFloat matrix;
 
 	/** Creates a reverse-order row iterator positioned just past the last row of {@code matrix_}. */
-	// TODO: LOGIC: currPos is initialized to matrix.getInt() (== items.length), one past the
-	// last valid index; calling currVector() before any nextVector() call reads
-	// matrix.items[itemCount], throwing ArrayIndexOutOfBoundsException.
 	public MatrixFloatStreamIn(final MatrixFloat matrix_) {
 		this.matrix = matrix_;
 		currPos = matrix.getInt();
 	}
 
 	/** Returns the row vector at the current iteration position. */
-	public float[] currVector() { return matrix.items[currPos]; }
+	public float[] currVector() {
+		if (currPos >= matrix.getInt())
+			throw new IllegalStateException("no row read yet: call nextVector() first");
+		return matrix.items[currPos]; }
 
 	/** Decrements the iteration position and returns the row vector now at it. */
 	public float[] nextVector() { return matrix.items[--currPos]; }

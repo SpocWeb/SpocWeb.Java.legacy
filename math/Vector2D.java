@@ -92,12 +92,8 @@ final public class Vector2D {
 	 * + 8 for   a[0] < B.a[0] <   a[1] < B.a[1]
 	 * + 9 for   a[0] < B.a[0] =   a[1] < B.a[1]
 	 * +10 for   a[0] <   a[1] < B.a[0] < B.a[1]	 */
-	// TODO: LOGIC: operator precedence bug - Java evaluates `<<` after `+`, so this computes
-	// containsX(...) << (2 + containsX(...)) instead of the intended
-	// (containsX(...) << 2) + containsX(...), corrupting the combined overlap code for every
-	// input pair except where the second containsX result happens to be 0.
 	final static public int Equality (double l1, double r1, double l2, double r2) {
-		return containsX (l1, r1, r2) << 2 + containsX (l1, r1, l2);}
+		return (containsX (l1, r1, r2) << 2) + containsX (l1, r1, l2);}
 
 ///////////////////////////////////////////////////////////////////////////////////
 //  Matrices and Determinants
@@ -297,19 +293,11 @@ final public class Vector2D {
 	 * + 8 for   a[0] < B.a[0] <   a[1] < B.a[1]
 	 * + 9 for   a[0] < B.a[0] =   a[1] < B.a[1]
 	 * +10 for   a[0] <   a[1] < B.a[0] < B.a[1]	 */
-	// TODO: LOGIC: operator precedence bug - Java evaluates `<<` after `+`, so this computes
-	// containsX(B.a[1]) << (2 + containsX(B.a[0])) instead of the intended
-	// (containsX(B.a[1]) << 2) + containsX(B.a[0]), corrupting the combined overlap code for
-	// every pair except where containsX(B.a[0]) happens to be 0.
 	public int Equality (Vector2D B) {
-		return containsX (B.a[1]) << 2 + containsX (B.a[0]);}
+		return (containsX (B.a[1]) << 2) + containsX (B.a[0]);}
 
-	// TODO: LOGIC: a[] and du.a[] are Vector2D coordinate arrays of size 2 (valid indices 0-1);
-	// a[2] and du.a[2] are out of bounds and throw ArrayIndexOutOfBoundsException on every
-	// call. The intended 2x2 determinant is presumably a[0]*du.a[1]-du.a[0]*a[1], mirroring the
-	// static DET2x2(double,double,double,double) above, which this never calls.
 	/**Calculates the Determinant of the Matrix given by the two Vectors	 */
 	public double DET2x2(Vector2D du) {
-		return a[1]*du.a[2]-du.a[1]*a[2]; }
+		return DET2x2(a[0], a[1], du.a[0], du.a[1]); }
 
 }

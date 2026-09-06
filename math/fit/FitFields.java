@@ -39,9 +39,6 @@ implements IFloatVectorField {
 		this.fitFunctions = fitFunctions_;
 	}
 
-	// TODO: LOGIC: always returns null instead of the populated yOut array, breaking the
-	// IFloatVectorField#map(double[], double[]) contract for any caller that uses the return
-	// value rather than only the yOut out-parameter.
 	/**
 	 * Fills {@code yOut} by evaluating each scalar field at {@code x}, one field per output
 	 * component.
@@ -51,12 +48,9 @@ implements IFloatVectorField {
 		final int min = Math.min(fitFunctions.length, yOut.length);
 		for (int i = min; --i >= 0;) {
 			yOut[i] = fitFunctions[i].Map(x); }
-		return null;
+		return yOut;
 	}
 
-	// TODO: LOGIC: always returns null instead of the populated yOut array, breaking the
-	// IFloatVectorField#map(float[], float[]) contract for any caller that uses the return
-	// value rather than only the yOut out-parameter.
 	/**
 	 * Fills {@code yOut} by evaluating each scalar field at {@code x}, one field per output
 	 * component.
@@ -66,7 +60,7 @@ implements IFloatVectorField {
 		final int min = Math.min(fitFunctions.length, yOut.length);
 		for (int i = min; --i >= 0;) {
 			yOut[i] = fitFunctions[i].Map(x); }
-		return null;
+		return yOut;
 	}
 
 }

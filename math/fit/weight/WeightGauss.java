@@ -29,12 +29,8 @@ import function.derive.ring.body.Gauss;
 final public class WeightGauss
 implements IWeightFunction {
 
-	// TODO: LOGIC: SINGLETON is a non-static instance field initialized by "new WeightGauss()",
-	// but the only constructor is this same private one, so instantiating the class recurses
-	// into this same field initializer forever, causing a StackOverflowError. This field must
-	// be "static" for the singleton pattern implied by the private constructor to work.
 	/** single Instance of this Class	 */
-	public WeightGauss SINGLETON = new WeightGauss();
+	public static final WeightGauss SINGLETON = new WeightGauss();
 
 	/** private Constructor to enforce the Singleton	 */
 	private WeightGauss() { }

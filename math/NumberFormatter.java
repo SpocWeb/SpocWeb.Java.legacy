@@ -23,11 +23,17 @@ import java.io.Writer;
 public class NumberFormatter
 implements IFormatter {
 
-	// TODO: LOGIC: always returns true regardless of val, so it never actually checks
-	// whether the String contains a Number - the check is unimplemented.
 	/** Function to check whether the String contains a Number */
 	final static public boolean isNumber(String val) {
-		return true; }
+		if (val == null) { return false; }
+		final String trimmed = val.trim();
+		if (trimmed.isEmpty()) { return false; }
+		try {
+			Double.parseDouble(trimmed);
+			return true;
+		} catch (final NumberFormatException e) {
+			return false;
+		} }
 
 	/** Number of Digits before the Comma */
 	final static public byte DIGITS_BEFORE_DEFAULT = 3;

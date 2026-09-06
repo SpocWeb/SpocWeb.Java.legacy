@@ -1179,13 +1179,10 @@ extends AMatrix {
 
 	/** Copies the given row's values into every row of {@code ret} within the given range.
 	 * @return the Matrix ret with deep Copie of the given Vector arr in every Row */
-	// TODO: LOGIC: arraycopy direction is reversed - copies ret[stop] into arr (the single row
-	// argument), overwriting arr on every iteration, instead of copying arr into every row of
-	// ret as the Javadoc and parameter naming describe. The method never actually fills ret.
 	public static float[][] COPY_AT(final float[][] ret, final float[] arr, final int start, int stop) {
 		while (--stop >= start) {
 			//VectorDouble.copyAt(ret[stop], arr);
-			System.arraycopy(ret[stop], 0, arr, 0, arr.length);
+			System.arraycopy(arr, 0, ret[stop], 0, arr.length);
 		} //Optimization!
 		return ret;
 	}
@@ -3224,7 +3221,7 @@ extends AMatrix {
 	 *
 	 * @param   anArray   the array into which the components get copied.
 	 * Declared final, because System.arraycopy is the fastest way.	 */
-	final public synchronized void copyInto(final int[] anArray) {
+	final public synchronized void copyInto(final float[][] anArray) {
 		System.arraycopy(items, 0, anArray, 0, itemCount);
 		/*		int i = ItemCount;
 				Object elementDataLocal[] = this.Items;
@@ -3237,8 +3234,8 @@ extends AMatrix {
 	 * The array must be big enough to hold all the objects in this  MatrixFloat.
 	 *
 	 * @param   anArray   the array into which the components get copied.	 */
-	final public synchronized int[] toArray() {
-		int[] Return = new int[itemCount];
+	final public synchronized float[][] toArray() {
+		float[][] Return = new float[itemCount][];
 		System.arraycopy(items, 0, Return, 0, itemCount);
 		return Return;
 	}

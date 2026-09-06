@@ -113,10 +113,7 @@ implements IGraph {
 		final boolean useAbsolute = (_min > 0);
 		for (Edge curr; (curr = iter_.nextEdge()) != IIStreamIn.EOI;) {
 			//if (curr.key == curr.value) { continue; }
-			// TODO: LOGIC: filters by curr.val (the target Node index), not curr.weight;
-			// the Javadoc and parameter names (_min/_max as Weight bounds) say this should
-			// range-check the Edge Weight, so Edges are filtered by the wrong Field.
-			final float val = (useAbsolute ? Math.abs(curr.val) : curr.val);
+			final float val = (useAbsolute ? Math.abs(curr.weight) : curr.weight);
 			if ((val < _min) || (val > _max)) {
 				L.n("addEdges(): Filtered out: Weight out of Range:").l(val);
 				continue;

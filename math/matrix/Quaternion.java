@@ -178,10 +178,7 @@ extends ACopyAble {
 	 * @return the axis of rotation as a Vector3D
 	 */
 	public Vector3D getAxis() {
-		// TODO: LOGIC: q is a float[4] (valid indices 0-3), so q[4] is always out of bounds;
-		// this throws ArrayIndexOutOfBoundsException on every call. Should read q[3], the
-		// scalar/real component, matching getAngle()'s use of q[3].
-		double sa = 1 / Math.sqrt(1 - ByRefFloat.SQR(q[4]));
+		double sa = 1 / Math.sqrt(1 - ByRefFloat.SQR(q[3]));
 		float[] ret = new float[3]; 
 		System.arraycopy(q, 0, ret, 0, 3); 
 		VectorFloat.MUL_AT(ret, sa);
@@ -554,11 +551,8 @@ extends ACopyAble {
 	 * 
 	 * @param fpQuat
 	 */
-	// TODO: LOGIC: ignores the fpQuat parameter entirely and calls copyAt(q), copying the
-	// backing array onto itself (a no-op); should be copyAt(fpQuat). This method never
-	// actually changes this quaternion's value.
 	public void set(float[] fpQuat) {
-		copyAt(q);
+		copyAt(fpQuat);
 	}
 
 	/** Takes four separate floats 
