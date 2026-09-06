@@ -47,16 +47,11 @@ public class ThreadOut
 		super(store); }
 
 	/** Hands the Argument to a new Thread for asynchronous forwarding down the Chain. */
-	// TODO: LOGIC: the Runnable's run() calls `addItem(arg)`, which resolves to this same
-	// ThreadOut.addItem() rather than the wrapped output's `out.addItem(arg)` (or `super.addItem`).
-	// Every invocation therefore spawns a new thread that immediately spawns another, forever,
-	// exhausting threads/memory instead of ever forwarding the item to `out`. Should be
-	// `out.addItem(arg)`.
 	public synchronized IIStreamOut addItem(final Object arg) {
 		//this is an excellent Use for local Classes!
 		new Thread(new Runnable(){ //create a new Thread for adding / handling the Item
 			public void run() {
-				addItem(arg); }
+				out.addItem(arg); }
 		} ).start(); //starts the new Thread
 		return this; }
 

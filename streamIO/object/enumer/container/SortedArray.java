@@ -551,15 +551,18 @@ extends Array {
 	 * and allows to reuse positional Information
 	 * Of course it is invalid for a sorted Array to set Items at random Positions.
 	 */
-	// TODO: LOGIC: unlike indexOf(), which falls back to a metric, Comparable, or
-	// IIOrderAble when no orderator is set, this method calls orderator.less(...)
-	// unconditionally - so any SortedArray built with a null Comparator (a supported,
-	// common construction path; see indexOf()'s own null-orderator handling) throws a
-	// NullPointerException on every setAt() call instead of validating the sort order.
+	/** Compares two Items the same way {@link #indexOf(Object, int, int)} does:
+	  * via the {@link #orderator} when one is set, else via Comparable, else via IIOrderAble.	 */
+	protected boolean less(final Object Item, final Object other) {
+		if (orderator != null)			 return orderator.less(Item, other);
+		if (Item instanceof Comparable)  return ((Comparable ) Item).compareTo (other) < 0;
+		if (Item instanceof IIOrderAble) return ((IIOrderAble) Item).isLessThan(other);
+		throw new AbstractMethodError(NotAllowedError); }
+
 	public Object setAt(final int index, final Object Item) {
 		++minor;
-		if ((ascending == orderator.less(Item, items[index-1])) ||
-		    (ascending != orderator.less(Item, items[index+1]))) {
+		if ((ascending == less(Item, items[index-1])) ||
+		    (ascending != less(Item, items[index+1]))) {
 			throw new AbstractMethodError (NotAllowedError); }
 		final Object ret = items[index]; items[index] = Item;
 		return ret; }
@@ -569,12 +572,9 @@ extends Array {
 	 * This Method is made invalid, because it makes no sense
 	 * for a sorted Array to get Items inserted at a random Position
 	 */
-	// TODO: LOGIC: same as setAt() above - orderator.less(...) is called unconditionally,
-	// throwing a NullPointerException whenever this SortedArray was built with a null
-	// Comparator instead of falling back to Comparable/IIOrderAble like indexOf() does.
 	public IndexEnumerator addAt(int index, Object Item) {
-		if ((ascending == orderator.less(Item, items[index-1])) ||
-		    (ascending != orderator.less(Item, items[index+1]))) {
+		if ((ascending == less(Item, items[index-1])) ||
+		    (ascending != less(Item, items[index+1]))) {
 			throw new AbstractMethodError (NotAllowedError); }
 		super.addAt(index, Item); return this; }
 

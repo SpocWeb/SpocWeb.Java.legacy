@@ -150,10 +150,7 @@ implements Enumerator {
 	  * @param  The Item to replace the current Item (returned by the latest nextItem())
 	  * @return the Object replaced by the Item
 	  */
-	// TODO: LOGIC: infinite recursion - this calls replaceCurr(Item) on itself instead of
-	// delegating to parent.replaceCurr(Item), so any caller invoking this method causes an
-	// unconditional StackOverflowError.
 	public Object replaceCurr(Object Item) { //throws ModificationException {
-         return replaceCurr(Item); }
+         return parent.replaceCurr(Item); }
 	
 }

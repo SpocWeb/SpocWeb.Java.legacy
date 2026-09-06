@@ -82,13 +82,8 @@ extends AFilterIn {
 	/**Resets the Iterator to the given Position
 	  * counted from the last marked Position.
 	  * @return the Number of Positions actually skipped	 */
-	// TODO: LOGIC: `1 << _position` is computed in int arithmetic (the literal `1` is an int),
-	// so per JLS 15.19 only the low 5 bits of _position are used as the shift distance; for
-	// _position >= 32 this silently wraps (mod 32) instead of producing the intended bit in a
-	// 64-bit long mask, breaking reSet() for column/bit positions 32 and above. Use `1L <<
-	// _position` to shift as a long.
 	public long reSet(final long _position) { //throws    NoSuchMethodException {
-		((IStreamIn) in).reSet(); mMask = 1 << _position;
+		((IStreamIn) in).reSet(); mMask = 1L << _position;
 		return _position; }
 	
 	////////////////////////////////////////////////////////////////////////////////

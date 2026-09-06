@@ -177,15 +177,10 @@ extends AStreamIn {
 		while (i < length) { //&& (available.Value > 0)) { // && (i < Length))
 			if (++i >= length) { //Resize the big Array
 				length += length; //double the Size
-				// TODO: LOGIC: lList is reassigned to the freshly-allocated `list` array
-				// *before* the arraycopy below, so the copy's source and destination are the
-				// same empty array (self-copy of nulls) and every element already parsed into
-				// the old `list`/`lList` backing array is silently lost whenever a nested list
-				// grows past its initial 32-element capacity. The old array reference must be
-				// captured before reassigning `list`, e.g. `final Object[] old = list; list =
-				// new Object[length]; System.arraycopy(old, 0, list, 0, i); lList = list;`.
-				lList = (list = new Object[length]);
-				System.arraycopy(lList, 0, list, 0, i);
+				final Object[] old = lList;
+				list = new Object[length];
+				System.arraycopy(old, 0, list, 0, i);
+				lList = list;
 				if (lengthInfo) {
 					throw new AbstractMethodError("List too long !"); } 
 			}

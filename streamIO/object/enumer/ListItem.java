@@ -67,16 +67,11 @@ implements ILinkAble, IPair //, CopyAble //for Trees and upward Lists to fill up
 	  * Uses Method calls, so it is not very fast!
 	  * For fast Performance use direct Member access like in
 	  * @see Discrete.Forest.IEquivalence	 */
-	// TODO: LOGIC: the loop condition is inverted. It should stop when getPrnt() returns
-	// null (x is the root) and otherwise keep climbing; as written it loops only while
-	// getPrnt() returns null, so a root node (p == null on the first call) sets x = null
-	// and then throws a NullPointerException on the next x.getPrnt() call, while a non-root
-	// node exits immediately and returns just its direct parent instead of the true root.
 	final static public ILinked getRootSimple(ILinked x) {
 		ILinked p;
-		while((p  = x.getPrnt()) == null)
+		while((p  = x.getPrnt()) != null)
 			x = p;
-		return p; }
+		return x; }
 	
 	/** Returns the (current) Root of this Element.
 	  * Reduces the Height of the Tree by one on every Level.

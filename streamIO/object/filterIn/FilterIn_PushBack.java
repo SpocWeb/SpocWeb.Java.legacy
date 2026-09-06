@@ -39,14 +39,10 @@ extends AFilterIn {
 
 	/** Replays the pushed-back item if one is pending, otherwise advances the wrapped stream.
 	 * @see streamIO.object.AFilterIn#nextItemInternal()	 */
-	// TODO: LOGIC: the fallback branch calls `nextItemInternal()` recursively on itself instead
-	// of delegating to the wrapped stream (`in.nextItem()`), so every call made while nothing is
-	// pushed back recurses without ever terminating, guaranteeing a StackOverflowError. This is
-	// the only overridden template method, so the class is unusable as written.
 	protected Object nextItemInternal() {
 		if (filter == currItem) { //indicator that this Stream has been pushed back!
 			filter = null; return currItem; }
-		return currItem = nextItemInternal(); }
+		return currItem = in.nextItem(); }
 	
 	/**
 	 * returns this Stream if another pushBack() is allowed. 

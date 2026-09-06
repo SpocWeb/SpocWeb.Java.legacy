@@ -71,11 +71,6 @@ extends Enumerator
 	 */
 	public ReverseEnumerator addPrev(Object Item) throws ModificationException;
 
-	// TODO: LOGIC: this Javadoc block (starting with "Removes the current Object...")
-	// is missing its closing "*/", so the "removeCurr()" declaration below is swallowed
-	// as comment text instead of being an active method declaration. ReverseEnumerator
-	// therefore does not explicitly redeclare removeCurr() here; only the inherited
-	// declaration from Enumerator applies, silently losing this comment's own contract.
 	/**Removes the current Object from the Container with this Enumerator knowing it.
 	 * One Problem is other Enumerators that concurrently work through this Container.
 	 * Therefore the Version of the Container is updated.
@@ -87,6 +82,7 @@ extends Enumerator
 	 * @return the current Object (returned by the latest nextItem())
 	 * @throws ReadOnlyException when the Container is read only
 	 * @throws ModificationException when the Container is sorted
+	 */
 	public Object removeCurr() throws ModificationException;
 
 	/**Replaces the current Object in the Container with the given Item.

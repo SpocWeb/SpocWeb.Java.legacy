@@ -98,13 +98,9 @@ implements IndexEnumerator {
 	  * Returning the cached currItem is faster! 	*/
 	public Object currItem() { return getAt(curr); }
 	
-	// TODO: LOGIC: this method is named "reset" (lowercase 's') instead of "reSet", so it
-	// does not actually override IReSetAble#reSet(long) - the contract every other class in
-	// this hierarchy (e.g. MapIterator, FilterInCacheDyn) implements under that exact name.
-	// Callers going through the reSet(long) contract silently miss this implementation.
 	/**Resets the Enumerator to the last marked Position,
 	 * done automatically on Instantiation	 */
-	public long reset(final long Position) { //throws NoSuchMethodException {
+	public long reSet(final long Position) { //throws NoSuchMethodException {
 		curr = mark + (int) Position; return Position; }
 	
 	/**Resets the Enumerator to the last marked Position,

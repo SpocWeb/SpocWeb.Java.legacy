@@ -136,15 +136,12 @@ class GrammarState {
 	/** Minimal Constructor, constructing from a Start String	 */
 	public GrammarState(String Contents)	{
 		this.Contents	= Contents;
+		this.Remark		= Contents; //Remark doubles as the hash/equals key; see hashCode()
 	}
 
 	/** Derives a hash from the first two characters of {@link #Remark}.
 	 * @return a HashCode for this Object
 	  * restricted to 2 Characters */
-	// TODO: LOGIC: Remark is never assigned by any constructor (only Contents is set), so it is
-	// always null here; every call to hashCode() or equals() throws NullPointerException. Any
-	// hash-based use of GrammarState (e.g. FunctionByHash.setAt(new GrammarState(...), ...) in
-	// Grammar.testIt()) will fail immediately.
 	public int hashCode() {
 		return Remark.charAt(0) + Remark.charAt(1); }
 

@@ -113,12 +113,8 @@ implements ReverseEnumerator {
 	 * In this Case the Exception is thrown.
 	 * That is why this Method should throw an Exception if removing is not allowed.
 	 */
-	// TODO: LOGIC: this method never uses the Item parameter and never writes any state -
-	// it only reads prevItem.currItem (not even this item's own currItem) and returns it,
-	// so calling replaceCurr() silently performs no replacement at all, unlike replacePrev()
-	// just above which does assign prevItem.currItem = Item.
 	public Object replaceCurr(Object Item) { //throws ModificationException {
-		Object ret = prevItem.currItem;
+		Object ret = currItem; currItem = Item;
 		return ret; }
 
 	/**Adds the Object after the current Object from the Container with the given Item.

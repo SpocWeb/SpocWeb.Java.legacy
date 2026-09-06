@@ -489,14 +489,9 @@ extends AOrderAble { //OrderAble, to compare the Quality of Solutions
 */
 	/**Tests if the Argument Object is equivalent to this one.
 	 * Default Implementation tests for binary Equivalence.	 */
-	// TODO: LOGIC: int[] does not override equals(), so `sequence.equals(...)` reduces to
-	// reference identity (Object.equals) rather than comparing the array contents; two
-	// TravelStates with identical city orderings but distinct array instances always compare
-	// unequal. Use java.util.Arrays.equals(sequence, TravelState.sequence) instead. This makes
-	// duplicate detection (mTestStore/mBackup) in BackTracker ineffective for this generator.
 	public boolean equals(Object arg) {
 		TravelState TravelState = (TravelState) arg;
-		return sequence.equals(TravelState.sequence);
+		return java.util.Arrays.equals(sequence, TravelState.sequence);
 	}
 
 }

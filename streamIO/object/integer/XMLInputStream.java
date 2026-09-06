@@ -113,6 +113,51 @@ implements IDeserializer {
 	//  static Variables
 	///////////////////////////////////////////////////////////////////////////////
 
+	/**Error Message String Constant	  */
+	final static public String STR_ERR_CLASS_NOT_ALLOWED = "Class not permitted by the XML Deserialization allow-list: ";
+
+	/**Exact Class Names that {@link #fromXML()} and friends are allowed to load and
+	 * instantiate from untrusted XML, in addition to {@link #ALLOWED_PACKAGE_PREFIXES}.
+	 * Everything not listed here (or covered by a listed Package Prefix) is denied.
+	 * Callers that need more Types have to add them explicitly.	 */
+	final static public java.util.Set ALLOWED_CLASS_NAMES =
+		java.util.Collections.synchronizedSet(new java.util.HashSet(java.util.Arrays.asList(new String[]{
+			"java.lang.String" , "java.lang.Boolean", "java.lang.Character",
+			"java.lang.Byte"   , "java.lang.Short"  , "java.lang.Integer"  ,
+			"java.lang.Long"   , "java.lang.Float"  , "java.lang.Double"   ,
+			"java.lang.Number" })));
+
+	/**Package Name Prefixes whose Classes may be loaded and instantiated from untrusted XML.
+	 * Defaults to this Corpus' own Model Packages only; add further Prefixes deliberately.	 */
+	final static public java.util.Set ALLOWED_PACKAGE_PREFIXES =
+		java.util.Collections.synchronizedSet(new java.util.HashSet(java.util.Arrays.asList(new String[]{
+			"streamIO." , "graphs." })));
+
+	/**Tests the given Class Name against {@link #ALLOWED_CLASS_NAMES}
+	 * and {@link #ALLOWED_PACKAGE_PREFIXES}.	 */
+	final static private boolean isAllowedClassName(final String name) {
+		if (ALLOWED_CLASS_NAMES.contains(name)) return true;
+		synchronized (ALLOWED_PACKAGE_PREFIXES) {
+			for (java.util.Iterator it = ALLOWED_PACKAGE_PREFIXES.iterator(); it.hasNext(); ) {
+				if (name.startsWith((String) it.next())) return true; } }
+		return false; }
+
+	/**Resolves a Class Name read from (untrusted) XML, but only if the allow-list permits it.
+	 * Array Types are unwrapped to their Component Type; primitive Component Types are always allowed.
+	 * @throws ClassNotFoundException if the Name is not permitted or cannot be resolved.	 */
+	final static public Class checkedForName(final String name) throws ClassNotFoundException {
+		if (name == null) throw new ClassNotFoundException(STR_ERR_CLASS_NOT_ALLOWED + name);
+		int dim = 0;
+		while (dim < name.length() && name.charAt(dim) == '[') dim++; //unwrap Array Types
+		String elem = name.substring(dim);
+		if (dim > 0) {
+			if (elem.length() == 1) return Class.forName(name); //primitive Component Type
+			if (elem.length() > 2 && elem.charAt(0) == 'L' && elem.endsWith(";"))
+				elem = elem.substring(1, elem.length() - 1); }
+		if (!isAllowedClassName(elem))
+			throw new ClassNotFoundException(STR_ERR_CLASS_NOT_ALLOWED + name);
+		return Class.forName(name); }
+
 	///////////////////////////////////////////////////////////////////////////////
 	//  Variables
 	///////////////////////////////////////////////////////////////////////////////
@@ -199,11 +244,7 @@ implements IDeserializer {
 	final public Object fromXML()
 		throws InstantiationException, ClassNotFoundException, NoSuchFieldException, IllegalAccessException, IOException {
 //		String Name = scan.Result.toString(); //read Name, already preread and not used
-		// TODO: SECURITY: the class name is read directly from untrusted XML input and then
-		// instantiated via reflection (Class.forName + newInstance, see fromXMLField/fromXMLAt below),
-		// with no allow-list. Parsing an attacker-supplied document can thus instantiate an arbitrary
-		// class on the classpath (resource exhaustion, unwanted side effects, or a deserialization-gadget style attack).
-		Class fClass = Class.forName(checkPair(XMLFormatter.STR_TYPE)); //
+		Class fClass = checkedForName(checkPair(XMLFormatter.STR_TYPE)); //only allow-listed Types, see #checkedForName
 		return fromXMLField(fClass, null, null); }
 
 	/**Reads the textual Representation of an Object currField from a streamIO and returns it.
@@ -238,10 +279,10 @@ implements IDeserializer {
 				if (inner == null) inner = fClass.newInstance();  //create a new Object, requires an empty Constructor!
 				read = true;
 		} //set it with ID, in case some Object IDs are missing (cut out etc.)
-		// TODO: LOGIC: ensureCapacity() only grows the backing array's capacity, not the ArrayList's
-		// logical size. If ID is greater than the Cache's current size, Cache.add(ID, inner) throws
-		// IndexOutOfBoundsException instead of padding the list up to ID (e.g. with null placeholders).
-		if (Cache != null) { Cache.ensureCapacity(ID); Cache.add( ID, inner); } //the Cache has to be filled...
+		if (Cache != null && ID >= 0) { //the Cache has to be filled...
+			Cache.ensureCapacity(ID + 1);
+			while (Cache.size() <= ID) Cache.add(null); //pad with null Placeholders up to ID
+			Cache.set(ID, inner); }
 		if (read) fromXMLAt(inner, fClass); } //...before the Recursion is entered, because the Elements may be used.
 		if (currField != null) currField.set(Container, inner);
 		return inner; }
@@ -277,7 +318,7 @@ implements IDeserializer {
 	throws ClassNotFoundException, IOException, IllegalAccessException, InstantiationException, NoSuchFieldException {
 		Class myClass = arg.getClass();
 //		String Name = scan.Result.toString(); //read Name (ignored) and Class(checked)
-		Class argType = Class.forName(checkPair(XMLFormatter.STR_TYPE));
+		Class argType = checkedForName(checkPair(XMLFormatter.STR_TYPE));
 		if (! myClass.isAssignableFrom(argType)) throw new AbstractMethodError(STR_ERR_NO_SUPER_TYPE + Scanner.STR_ERR_EXPECTED + myClass.toString() + Scanner.STR_ERR_OCCURRED + argType.toString()); //check for subclass
 		while (argType != myClass) { //search for the right Level, skip all Super Class Fields
 			while (scan.nextXmlToken() != XMLScanner.XML_TAG_START);
@@ -313,7 +354,7 @@ implements IDeserializer {
 					String Name = scan.Result.toString(); //read Name and Class
 //					//because it also covers primitive Types
 					if (XMLFormatter.STR_SUPERCLASS.equals(Name)) { //load Super Class Fields
-						Class argType = Class.forName(checkPair(XMLFormatter.STR_TYPE)); //is always a non-primitive Type!
+						Class argType = checkedForName(checkPair(XMLFormatter.STR_TYPE)); //is always a non-primitive Type!
 						if (myClass == null) { //check whether we are at the correct Level...
 							myClass = arg.getClass(); //check the Compatibility only once...
 							if (! myClass.isAssignableFrom(argType)) throw new AbstractMethodError(STR_ERR_NO_SUPER_TYPE + Scanner.STR_ERR_EXPECTED + myClass.toString() + Scanner.STR_ERR_OCCURRED + argType.toString()); //check for subclass
@@ -330,7 +371,7 @@ implements IDeserializer {
 						if (fClass.isPrimitive()) { //load a primitive Type
 							while (scan.currXMLToken != XMLScanner.XML_TAG_TEXT) scan.nextXmlToken();// throw new AbstractMethodError();
 							setPrimitiveField(arg, currField, (String) scan.Result);
-						} else { fromXMLField(Class.forName(checkPair(XMLFormatter.STR_TYPE)), currField, arg); }
+						} else { fromXMLField(checkedForName(checkPair(XMLFormatter.STR_TYPE)), currField, arg); }
 					} while (scan.currXMLToken  != XMLScanner.XML_TAG_STOP) scan.nextXmlToken(); //skip the rest of the Data
 //					if	(scan.nextXmlToken()!= XMLScanner.XML_TAG_END) throw new AbstractMethodError(); //read and compare the closing Tag!
 					if (!Name.equals(scan.Result)) {

@@ -58,12 +58,17 @@ public class PrepStatementSep
 		super(conn, sql);
 	}
 
-	// TODO: LOGIC: unimplemented stub - always returns null instead of the requested Table's
-	// ResultSet or throwing an explicit "not implemented" Exception.
-	/** @see streamIO.integer.jdbc.AStatement#getResultSet(java.io.File, java.lang.String)	 */
+	/** Opens the given Table File as a separated-Format ResultSet, like StatementSep does.
+	  * @see streamIO.integer.jdbc.AStatement#getResultSet(java.io.File, java.lang.String)	 */
 	protected ResultSet getResultSet(File table, String tableName) throws SQLException, IOException {
-		// TODO Auto-generated method stub
-		return null;
+		final ResultSetSep ret = new ResultSetSep(table, conn.separators, this, tableName);
+		if (conn.rowFieldNames == 0) {
+			final String[] fieldNames = ret.getAllFields();
+			if (conn.rowFieldDefaults == 1)
+				ret.next();
+			ret.init(fieldNames.length, fieldNames);
+		}
+		return ret;
 	}
 
 }

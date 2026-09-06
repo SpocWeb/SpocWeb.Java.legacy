@@ -236,12 +236,11 @@ extends AStreamIn_Byte {
 	  * @see streamIO.Byte.IStreamIn_Byte#mark(int)	 */
 	public void mark(final int readLimit) {}
 
-	// TODO: LOGIC: dereferences `stream` unguarded; `stream` is null before the first File is
-	// opened and again once read() reaches EOF (see read(), lines ~159-166), so calling this
-	// Method at either point throws NullPointerException instead of the declared BaseException.
 	/** Reports the current File's Channel Size, delegated from the underlying FileInputStream.
+	  * Returns -1 while no File is open (before the first one and after EOF).
 	  * @see streamIO.Byte.IStreamIn_Byte#getMaxMarkSize()	 */
 	public long getMaxMarkSize() {
+		if (stream == null) return -1; //no File open
 		try { return stream.getChannel().size();
 		} catch (final IOException x) {
 			throw new BaseException(x);
@@ -252,11 +251,11 @@ extends AStreamIn_Byte {
 	  * @see streamIO.Byte.IStreamIn_Byte#reSet(long)	 */
 	public long reSet(long Position) { return -1; }
 
-	// TODO: LOGIC: same unguarded `stream` dereference as getMaxMarkSize() above - null before
-	// the first File is opened or after EOF, throwing NullPointerException instead of BaseException.
 	/** Reports the current File's Channel Position, delegated from the underlying FileInputStream.
+	  * Returns -1 while no File is open (before the first one and after EOF).
 	  * @see streamIO.object.AStreamIn#getPosition()	 */
 	public long getPosition() {
+		if (stream == null) return -1; //no File open
 		try { return stream.getChannel().position();
 		} catch(final IOException x) {
 			throw new BaseException(x);

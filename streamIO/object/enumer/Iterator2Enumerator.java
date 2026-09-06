@@ -112,13 +112,10 @@ extends AEnumerator
 	/** Resets the Iterator to the given Position
 	  * counted from the last marked Position.
 	  * @return the Number of Positions actually skipped	 */
-	// TODO: LOGIC: infinite recursion - when this.position > _position, this calls
-	// reSet(_position) with the exact same argument again instead of e.g. reSet() followed
-	// by a forward jump, so the condition never changes and every call with a backward
-	// Position throws StackOverflowError.
 	public long reSet(long _position) { //throws    NoSuchMethodException {
-		if (this.position > _position)
-		    return reSet(_position);
+		if (this.position > _position) //a plain Iterator cannot be rewound, see getMaxMarkSize()
+		    throw new UnsupportedOperationException(
+		    		"cannot reSet backwards from " + position + " to " + _position);
 		return position + jump(_position - position);  }
 	
 	////////////////////////////////////////////////////////////////////////////

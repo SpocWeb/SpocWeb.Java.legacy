@@ -57,23 +57,16 @@ implements SortedMap, java.io.Serializable {
 	boolean fromStart = false, toEnd = false;
 	Object  fromKey,		   toKey;
 	
-	// TODO: LOGIC: this.map is read (via compare()) before it is assigned a few lines
-	// below, so this validation reads the not-yet-initialized final field. javac requires
-	// definite assignment for a blank final read, so this either fails to compile as
-	// written or (if map is not actually blank-final at build time) throws a
-	// NullPointerException on every call with a non-empty range.
 	SubTreeMap(TreeMap map, Object fromKey, Object toKey) {
-		if (this.map.compare(fromKey, toKey) > 0)
+		if (map.compare(fromKey, toKey) > 0)
 			throw new IllegalArgumentException("fromKey > toKey");
 		this.map = map;
 		this.fromKey = fromKey;
 		this.toKey = toKey;
 	}
 
-	// TODO: LOGIC: same as the constructor above - this.map is read (via compare()) before
-	// being assigned two lines below.
 	SubTreeMap(TreeMap map, Object key, boolean headMap) {
-		this.map.compare(key, key); // Type-check key
+		map.compare(key, key); // Type-check key
 		this.map = map;
 
 		if (headMap) {

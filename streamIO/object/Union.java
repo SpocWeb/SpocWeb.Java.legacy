@@ -73,10 +73,7 @@ extends AFilterIn {
 		final IStreamIn[] Parts = new IStreamIn[3];
 		Parts[0] = new DIFF(A,B);
 		Parts[1] = new DIFF(B,A);
-		// TODO: LOGIC: Parts is allocated with length 3 (valid indices 0-2), but this line
-		// writes to index 3, throwing ArrayIndexOutOfBoundsException on every call to OR().
-		// The intended assignment is almost certainly Parts[2] = new AND(A, B);
-		Parts[3] = new AND (A,B);
+		Parts[2] = new AND (A,B);
 		return new Union(Parts); }
 
 	/**

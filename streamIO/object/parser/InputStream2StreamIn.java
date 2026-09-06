@@ -530,12 +530,8 @@ implements IParserIn {
 			Log.N("Table-Parameters:");
 			while( (KeyValue[1] != null) &&
 				 ( !KeyValue[1].equals(lastKey))) { 	//Read the Parameters and skip the Comments
-				// TODO: LOGIC: unconditionally casts the underlying `is` (declared IStreamIn_Byte)
-				// to FileStreamByte to read a File Position; readParameters(...) accepts any
-				// IStreamIn_Byte, so passing a non-file-backed Stream while posKey is non-null
-				// throws ClassCastException instead of gracefully skipping Position tracking.
-				if (ret < 0) { //if no PosKey found yet...
-					ret = -(int) ((FileStreamByte) is).getFilePointer(); }
+				if ((ret < 0) && (is instanceof FileStreamByte)) { //if no PosKey found yet...
+					ret = -(int) ((FileStreamByte) is).getFilePointer(); } //skip Position tracking for non-File Streams
 				final int numFields = readParameter(KeyValue);
 				Log.N(KeyValue[0]).l(KeyValue[1]);
 				if ((numFields > 2) || (KeyValue[1] == null)) 

@@ -70,8 +70,11 @@ implements XMLReader {
 	/** @see org.xml.sax.XMLReader#getErrorHandler()	 */
 	protected ErrorHandler errorHandler;
 
-	/** Container for the given Properties and Features */
+	/** Container for the given Properties */
 	protected HashMap properties = new HashMap();
+
+	/** Container for the given Features, kept in its own Namespace, separate from the Properties */
+	protected HashMap features = new HashMap();
 
 	////////////////////////////////////////////////////////////////////////////////
 	/// #region : Accessor Methods (getXXX/isXXX/setXXX)
@@ -109,14 +112,10 @@ implements XMLReader {
 	  * @see org.xml.sax.XMLReader#setErrorHandler(ErrorHandler)	 */
 	public void setErrorHandler(ErrorHandler handler) { errorHandler = handler; }
 
-	// TODO: LOGIC: Features and Properties are stored in the same `properties` HashMap keyed
-	// only by name String; a Feature URI that collides with a Property URI (or vice versa)
-	// would silently overwrite/misread the other's value. SAX conventionally keeps these two
-	// namespaces separate.
 	/** Looks up a boolean Feature by Name, defaulting to false when unset.
 	  * @see org.xml.sax.XMLReader#getFeature(String)	 */
 	public boolean getFeature(String name) { //throws SAXNotRecognizedException, SAXNotSupportedException {
-		Boolean value = (Boolean) properties.get(name);
+		Boolean value = (Boolean) features.get(name);
 		if (value == null) {
 			return false; }
 		return value.booleanValue();
@@ -125,7 +124,7 @@ implements XMLReader {
 	/** Sets a boolean Feature by Name.
 	  * @see org.xml.sax.XMLReader#setFeature(String, boolean)	 */
 	public void setFeature(String name, boolean value) { //throws SAXNotRecognizedException, SAXNotSupportedException {
-		properties.put(name, new Boolean(value)); }
+		features.put(name, new Boolean(value)); }
 
 	/** Looks up an arbitrary Property by Name.
 	  * @see org.xml.sax.XMLReader#getProperty(String)	 */
@@ -160,17 +159,27 @@ implements XMLReader {
 	 */
 	public void parse(InputSource input) throws IOException, SAXException {}
 
-	// TODO: LOGIC: `systemId` is never used - the actual Source was already bound via the
-	// xmlScanner passed to the Constructor - and the root Element Name is hard-coded to
-	// "Table" rather than derived from the parsed Document's actual root, so this only
-	// behaves correctly for the one Document Shape it was written for.
-	/** Emits a hard-coded "Table" root Element, then drives {@link #next()} until the underlying
-	  * Scanner is exhausted.
+	/** Default Name of the root Element, used when the systemId yields no usable Name. */
+	final static public String STR_DEFAULT_ROOT = "Table";
+
+	/** Derives the root Element Name from a systemId by taking its last Path Segment
+	  * without any File Extension; falls back to {@link #STR_DEFAULT_ROOT}.	 */
+	final static public String rootNameFrom(final String systemId) {
+		if (systemId == null) return STR_DEFAULT_ROOT;
+		String name = systemId.substring(Math.max(systemId.lastIndexOf('/'), systemId.lastIndexOf('\\')) + 1);
+		final int dot = name.lastIndexOf('.');
+		if (dot > 0) name = name.substring(0, dot);
+		return name.length() == 0 ? STR_DEFAULT_ROOT : name; }
+
+	/** Emits a root Element named after the given systemId (see {@link #rootNameFrom(String)}),
+	  * drives {@link #next()} until the underlying Scanner is exhausted and closes the root again.
 	  * @see org.xml.sax.XMLReader#parse(String)	 */
 	public void parse(String systemId) throws IOException, SAXException {
+		final String root = rootNameFrom(systemId);
 		contentHandler.startDocument();
-		contentHandler.startElement("", "Table", "Table", null);
-		contentHandler.  endElement("", "Table", "Table"); while(next());
+		contentHandler.startElement("", root, root, null);
+		while(next());
+		contentHandler.  endElement("", root, root);
 		contentHandler.  endDocument();
 	}
 

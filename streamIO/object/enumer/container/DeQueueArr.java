@@ -229,11 +229,8 @@ extends AContainer {
 	/** Returns true, if the Store is empty.	 */
 	public boolean isZero() { return (SP == QP); }
 	
-	// TODO: LOGIC: this comparison does not account for wrap-around of the ring buffer -
-	// when QP == 0, "QP-1" is -1, which SP (always >= 0) can never equal, so isFull()
-	// always reports false in that case even when the buffer genuinely has no free slot.
 	/** Returns true, if the Store is full.	 */
-	public boolean isFull() { return (SP == QP-1); }
+	public boolean isFull() { return (((SP+1 >= IFO.length) ? 0 : SP+1) == QP); }
 	
 	//////////////////////////////
 	//	interface intDeQueue	//

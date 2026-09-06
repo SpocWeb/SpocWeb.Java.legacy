@@ -628,13 +628,6 @@ extends AContainer {
 
 }
 
-// TODO: LOGIC: every Enumerator method below (availAble, nextItem, currItem, removeCurr,
-// replaceCurr, reSet(), getMaxMarkSize, getPosition) is an unfinished "Auto-generated
-// method stub" that returns null/0/this without touching the HashSet's Table at all, so
-// iterating over a HashSet with this class never yields any Item. HashSet is itself
-// @deprecated in favor of HashContainer, which likely explains why this was never finished,
-// but any remaining caller of HashSet.Iterator()/Enumerator() silently gets an empty
-// enumeration instead of an error.
 /** Iterator for a HashSet
  * actually this is a chained Iterator over individual Row Iterators.
  * @author heuerm
@@ -653,6 +646,15 @@ extends AEnumerator {
 
 	/** Index to the current Row	 */
 	int index; 
+
+	/** Index to the current Item within the current Row; -1 before the first one	 */
+	int col = -1;
+
+	/** Reference to the Item returned by the latest nextItem()	 */
+	Object currItem = IStreamIn.EOI;
+
+	/** Number of Items already returned by nextItem()	 */
+	long position;
 	
 	/** Initializing Constructor	 */
 	public HashSetIterator(final HashSet _set, final Object _node) {
@@ -675,64 +677,75 @@ extends AEnumerator {
 		if (Position == 0) return 0; 
 		return jump(Position);  }
 	
-	/** Unimplemented stub; always reports no Items available.
+	/** Reports 1 while another Item follows in this or a later Row, 0 once exhausted.
 	 * @see streamIO.object.AStreamIn#availAble()	 */
 	public long availAble() {
-		// TODO Auto-generated method stub
+		for (int i = index, c = col; i < set.mTable.length; ++i, c = -1) {
+			if (++c < set.mTable[i].getInt()) 
+				return 1; }
 		return 0;
 	}
 
-	/** Unimplemented stub; always returns null instead of the next Item.
+	/** Advances to the next Item of the backing Table, walking the Rows in Order.
 	 * @see streamIO.object.AStreamIn#nextItem()	 */
 	public Object nextItem() {
-		// TODO Auto-generated method stub
-		return null;
+		while (index < set.mTable.length) {
+			final VectorObject row = set.mTable[index];
+			if (++col < row.getInt()) {
+				++position;
+				return currItem = row.getAt(col); }
+			col = -1; ++index;
+		}
+		return currItem = IStreamIn.EOI;
 	}
 
-	/** Unimplemented stub; always returns null instead of the current Item.
+	/** Returns the Item returned by the latest nextItem().
 	 * @see streamIO.object.AStreamIn#currItem()	 */
 	public Object currItem() {
-		// TODO Auto-generated method stub
-		return null;
+		return currItem;
 	}
 
-	/** Unimplemented stub; never actually removes anything.
+	/** Removes the Item returned by the latest nextItem() from its Row.
 	 * @see streamIO.object.enumer.Enumerator#removeCurr()	 */
 	public Object removeCurr() { //throws ModificationException {
-		// TODO Auto-generated method stub
-		return null;
+		if ((col < 0) || (index >= set.mTable.length)) 
+			return IStreamIn.EOI;
+		final Object ret = set.mTable[index].removeAt(col--); //the Row shrinks, so step back
+		--set.itemCount; ++set.major; ++major;
+		currItem = IStreamIn.EOI;
+		return ret;
 	}
 
-	/** Unimplemented stub; never actually replaces anything.
+	/** Replaces the Item returned by the latest nextItem() within its Row.
 	 * @see streamIO.object.enumer.ChangeIterator#replaceCurr(java.lang.Object)	 */
 	public Object replaceCurr(Object Item) {
-		// TODO Auto-generated method stub
-		return null;
+		if ((col < 0) || (index >= set.mTable.length)) 
+			return IStreamIn.EOI;
+		currItem = Item;
+		return set.mTable[index].setAt(col, Item);
 	}
 	
-	/** Resets the Iterator to the given Position
-	  * counted from the last marked Position.
-	  * @return the Number of Positions actually skipped	 */
+	/** Resets the Iterator to the Start of the backing Table.
+	  * @return this Iterator	 */
 	public IReSetAble reSet(){
-		// TODO Auto-generated method stub
+		index = 0; col = -1; position = 0;
+		currItem = IStreamIn.EOI;
 		return this;
 	}
 	
 	
-	/** Unimplemented stub; always reports no mark support.
+	/** Reports the Number of Items this Iterator can be reSet over.
 	 * @see streamIO.object.AStreamIn#getMaxMarkSize()
 	 */
 	public long getMaxMarkSize() {
-		// TODO Auto-generated method stub
-		return 0;
+		return set.itemCount;
 	}
 
-	/** Unimplemented stub; always reports Position 0.
+	/** Reports the Number of Items already returned by nextItem().
 	 * @see streamIO.object.AStreamIn#getPosition()
 	 */
 	public long getPosition() {
-		// TODO Auto-generated method stub
-		return 0;
+		return position;
 	}
 
 }

@@ -116,6 +116,41 @@ public class JSONTokener {
 
 
     /**
+     * The default maximum nesting depth accepted by {@link #nextValue()}.
+     */
+    public static final int DEFAULT_MAX_DEPTH = 512;
+
+
+    /**
+     * The maximum nesting depth accepted by {@link #nextValue()}.
+     */
+    private int myMaxDepth = DEFAULT_MAX_DEPTH;
+
+
+    /**
+     * The nesting depth currently being parsed by {@link #nextValue()}.
+     */
+    private int myDepth;
+
+
+    /**
+     * Get the maximum nesting depth accepted by {@link #nextValue()}.
+     * @return the maximum nesting depth.
+     */
+    public int getMaxDepth() { return this.myMaxDepth; }
+
+
+    /**
+     * Set the maximum nesting depth accepted by {@link #nextValue()}.
+     * Guards against stack exhaustion on deeply nested (untrusted) input.
+     * @param maxDepth the maximum nesting depth; values below 1 are raised to 1.
+     */
+    public void setMaxDepth(final int maxDepth) {
+        this.myMaxDepth = maxDepth < 1 ? 1 : maxDepth;
+    }
+
+
+    /**
      * Construct a JSONTokener from a string.
      *
      * @param s     A source string.
@@ -207,11 +242,7 @@ public class JSONTokener {
      public String next(int n) throws JSONException {
          int i = this.myIndex;
          int j = i + n;
-         // TODO: LOGIC: off-by-one - String.substring(i, j) is valid for j == mySource.length()
-         // (it can return the final characters of the source), but this check rejects that
-         // boundary case too, throwing "Substring bounds error" one character too early
-         // (e.g. a \\uXXXX escape whose 4 hex digits reach exactly the end of the source).
-         if (j >= this.mySource.length())
+         if (j > this.mySource.length())
             throw syntaxError("Substring bounds error");
          this.myIndex += n;
          return this.mySource.substring(i, j);
@@ -358,20 +389,25 @@ public class JSONTokener {
         char c = nextClean();
         String s;
 
-        // TODO: SECURITY: object/array nesting below recurses (nextValue -> JSONObject/JSONArray
-        // constructor -> nextValue -> ...) with no depth limit, unlike JSONStringer's own
-        // maxdepth=20 guard for output. Parsing a deeply/pathologically nested untrusted JSON
-        // document (e.g. thousands of "[[[[...") can exhaust the call stack (StackOverflowError, DoS).
         switch (c) {
             case '"':
             case '\'':
                 return nextString(c);
             case '{':
-                pushBack();
-                return new JSONObject(this);
             case '[':
-                pushBack();
-                return new JSONArray(this);
+                //bound the recursion nextValue -> JSONObject/JSONArray -> nextValue -> ...
+                if (++this.myDepth > this.myMaxDepth) {
+                    this.myDepth--;
+                    throw syntaxError("Maximum nesting depth of " +
+                            this.myMaxDepth + " exceeded");
+                }
+                try {
+                    pushBack();
+                    return c == '{' ? (Object) new JSONObject(this)
+                                    : (Object) new JSONArray(this);
+                } finally {
+                    this.myDepth--;
+                }
         }
 
         /*

@@ -172,10 +172,7 @@ public class RecordSet
 	 * counted from the last marked Position.
 	 * @return the Number of Positions actually skipped
 	 */
-	// TODO: LOGIC: named "reset" (lowercase 's') instead of "reSet", so this does not
-	// actually override IReSetAble#reSet(long) - same naming defect as
-	// AIndexEnumerator.reset(long), which this class inherits from.
-	public long reset(final long Position) { //throws	NoSuchMethodException {
+	public long reSet(final long Position) { //throws	NoSuchMethodException {
 		if (Position == 0) return 0;
 		try {
 			rs.absolute(mark + (int)Position);

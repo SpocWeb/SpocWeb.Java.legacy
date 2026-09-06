@@ -38,6 +38,10 @@ extends AStreamIn {
 	  */
 	protected ByRefInt currLevel = new ByRefInt(0);
 	
+	/** Stack of the enclosing Streams that were replaced by {@link #in}
+	  * when descending into a nested Stream; used to resume the Parent on EOI. */
+	protected final java.util.ArrayList parents = new java.util.ArrayList();
+
 	/** Reference to the current Item, returned last from nextItem */
 	protected Object currItem;
 	
@@ -67,13 +71,12 @@ extends AStreamIn {
 	public Object nextItem() {
 		for (;;) {
 			Object nextItem = in.nextItem();
-				  // TODO: LOGIC: on EOI this only decrements currLevel; `in` is never restored to
-				  // the parent Stream that was replaced when descending a Level (see the
-				  // `in = (IStreamIn) nextItem` branch below), so after the first nested Stream
-				  // is exhausted, subsequent calls keep querying the same now-exhausted inner
-				  // Stream instead of resuming the parent - no Stack of enclosing Streams is kept.
 				  if((nextItem == EOI) && !in.isValid()) { --currLevel.Value; //EOF: up one Level
+				if (parents.isEmpty()) { //the outermost Stream is exhausted
+					currItem = EOI; return currLevel; }
+				in = (IStreamIn) parents.remove(parents.size() - 1); //resume the enclosing Stream
 			}else if (nextItem instanceof IStreamIn) {
+				parents.add(in); //remember the enclosing Stream
 				in = (IStreamIn) nextItem;                  ++currLevel.Value; //StreamIn: down one Level
 			}else{
 				currItem = in.currItem(); // for calling currItem()

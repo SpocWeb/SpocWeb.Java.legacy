@@ -99,17 +99,12 @@ public class DriverSep implements Driver{
 		return url.startsWith(PREFIX_SEP);
 	}
 
-	// TODO: LOGIC: calls acceptsURL(PREFIX_SEP) instead of acceptsURL(url), so this always
-	// checks the Constant against itself (trivially true) rather than validating the actual
-	// `url` Argument. Any URL - matching Prefix or not - falls through to
-	// url.substring(PREFIX_SEP.length()), which throws StringIndexOutOfBoundsException for a
-	// URL shorter than PREFIX_SEP instead of the intended SQLException("Unsupported jdbc-URL").
 	/** Strips this Driver's Prefix from the URL and opens a {@link ConnectionSep} on the remainder.
 	 * @see java.sql.Driver#connect(java.lang.String, java.util.Properties)
 	 */
 	public Connection connect(final String url, final Properties info)
 		throws SQLException {
-		if (!acceptsURL(PREFIX_SEP)) {
+		if (!acceptsURL(url)) {
 			throw new SQLException("Unsupported jdbc-URL:" + url);
 		}
 		return new ConnectionSep(url.substring(PREFIX_SEP.length()), info);

@@ -145,20 +145,17 @@ implements IIStreamOut {
 	public static void testIt(String[] args) throws java.io.IOException {
 		System.out.println("Testing " + Array2Stream.class.getName());
 		Array2Stream arr1, arr3, arrOut, arr = new Array2Stream();
-		// TODO: LOGIC: arr.set(index, ...) is called on a freshly constructed, still-empty
-		// ArrayList (DefaultSize only reserves capacity, it does not add elements), so this
-		// throws IndexOutOfBoundsException immediately instead of populating the array via add().
-		arr .arr.set(0, "0");
-		arr .arr.set(1, arr1 = new Array2Stream());
-		arr .arr.set(2, "2");
-		arr .arr.set(3, arr3 = new Array2Stream());
-		arr .arr.set(4, "4");
-		arr1.arr.set(0, "1,0");
-		arr1.arr.set(1, "1,1");
-		arr1.arr.set(2, "1,2");
-		arr3.arr.set(0, "3,0");
-		arr3.arr.set(1, "3,1");
-		arr3.arr.set(2, "3,2");
+		arr .arr.add("0");
+		arr .arr.add(arr1 = new Array2Stream());
+		arr .arr.add("2");
+		arr .arr.add(arr3 = new Array2Stream());
+		arr .arr.add("4");
+		arr1.arr.add("1,0");
+		arr1.arr.add("1,1");
+		arr1.arr.add("1,2");
+		arr3.arr.add("3,0");
+		arr3.arr.add("3,1");
+		arr3.arr.add("3,2");
 //		printContents(arr);
 		arrOut = new Array2Stream();
 		System.out.println("Number of Item streamed: " + AStreamOut.STREAM(arr, arrOut, Integer.MAX_VALUE));

@@ -968,12 +968,6 @@ implements ContentHandler, IStreamOutPrimitive, IStreamOutStruct //, ErrorHandle
 		}
 		return this; }
 	
-	// TODO: LOGIC: the `else` on the line below binds only to the immediately following
-	// `startTag(name);` statement (no braces) - `closeTag(); AStreamOutByte.WRITE(...);
-	// endTag(name);` execute unconditionally on every iteration, including when `value`
-	// IS an IStreamWriteAble that already wrote its own Element via writeTo(...) above.
-	// Every non-IStreamWriteAble Element also ends up empty-bodied, since closeTag() is
-	// called before any Content is written and endTag(name) closes it again immediately.
 	/** Writes each Object as its own Element: an {@link IStreamWriteAble} writes itself via
 	  * writeTo(...), anything else is written as Text within an Element named by its List Index.
 	  * @see streamIO.integer.IStreamOutStructArrays#addItems(java.lang.Object[], int, int) */
@@ -985,10 +979,10 @@ implements ContentHandler, IStreamOutPrimitive, IStreamOutStruct //, ErrorHandle
 				final String name = "_"+(++arrIndex);
 				if (value instanceof IStreamWriteAble)
 					((IStreamWriteAble) value).writeTo(this, name);
-				else
+				else {
 					startTag(name); closeTag();
 					AStreamOutByte.WRITE(encoder, String.valueOf(value));
-					endTag(name);
+					endTag(name); }
 			}
 		} catch(final IOException x) {
 			throw new IOError(x);

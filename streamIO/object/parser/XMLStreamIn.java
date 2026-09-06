@@ -115,14 +115,9 @@ implements IDeserializer {
 	/** Reference to the Input streamIO	 */
 	protected XMLScannerStreamIn scan;
 	
-	// TODO: LOGIC: constructed as its own independent ByRefInt rather than aliasing
-	// `scan.currXMLToken` (see checkPair()'s cast of `scan.currXMLToken`, which IS the live
-	// Token). Every loop guard in this class that reads `currXMLToken.Value` unqualified
-	// (fromXMLField, ArrayFromXMLAt, fromXMLAtOld, loadItem, fromXMLAt, availAble) therefore
-	// reads a Value that is never updated after construction (always 0), instead of the
-	// Scanner's actual current Token.
-	/** Cache for the last XML Token	 */
-	protected ByRefInt currXMLToken = new ByRefInt();
+	/** Alias of the Scanner's live Token {@link XMLScannerStreamIn#currXMLToken},
+	  * assigned by the Constructors so it always reflects the last XML Token read.	 */
+	protected ByRefInt currXMLToken;
 	
 	/**List of all Objects that have been ore are being synchronized
 	 * By creating this Object all Serialization is tracked and cycles avoided.
@@ -142,11 +137,12 @@ implements IDeserializer {
 	
 	/**Initializing Constructor	 */
 	public XMLStreamIn(InputStream IS) throws IOException {
-		this.scan = new XMLScannerStreamIn(IS); }
-	
+		this(new XMLScannerStreamIn(IS)); }
+
 	/**Initializing Constructor	 */
 	public XMLStreamIn(XMLScannerStreamIn scan) {
-		this.scan = scan; }
+		this.scan = scan;
+		this.currXMLToken = scan.currXMLToken; } //alias the Scanner's live Token
 	
 	/** Returns a new Instance of this Parser Class using the given InPut streamIO	 */
 	public IDeserializer newInstance(InputStream In) throws IOException { return new XMLStreamIn(In); }

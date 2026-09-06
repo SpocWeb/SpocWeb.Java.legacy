@@ -95,17 +95,14 @@ final static public int XML_TAG_TEXT = 6;
 //Extended Language Element Tokens
 
 /**Indicates a Processing Instruction <? ?>, the Value is returned	 */
-final static public int XML_TAG_PROCESS = 6;
+final static public int XML_TAG_PROCESS = 7;
 
-// TODO: LOGIC: XML_TAG_PROCESS above is defined as 6, the same value as XML_TAG_TEXT.
-// Any code that distinguishes a Processing Instruction from Text Data by comparing
-// currXMLToken against these two constants cannot actually tell them apart.
 /**Indicates a Declaration <! >, the Value is returned	 */
-final static public int XML_TAG_DECLARE = 7;
+final static public int XML_TAG_DECLARE = 8;
 
 /**Indicates a Comment <!-- -->, the Value is returned
  * The Comment can be seen as a normal Declare Statement	 */
-//final static public int XML_TAG_COMMENT = 8;
+//final static public int XML_TAG_COMMENT = 9;
 
 ////////////////////////////////////////////////////////////////////////////
 //  Variables
