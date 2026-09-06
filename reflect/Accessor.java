@@ -30,7 +30,7 @@ import streamIO.Log;
  * <!-- docstate
  * pass: 2
  * mtime: 2026-09-05T10:22:13Z
- * digest: e75575b684f7c2d0b3b4fedebd4518a89641971d3c9fad5febd490cf56885fc5
+ * digest: 73eb252e94dbeaebb7e1b631ec7a07293db82833096649c643f01262669503f8
  * stale: false
  * tags: [code/reflection_helper, code/reflection_based_property_access]
  * concepts: [Reflection]
@@ -55,9 +55,11 @@ public class Accessor {
 	// Arguments for performing the Call, not for concurrent Access!
 	/////////////////////////////////////////////////////////////////////////////////////
 		
-	protected final Object[] args = new Object[1]; 
-	
-	protected final Class[] argTypes = new Class[1]; 
+	/** Single-Element Scratch Array for the Argument Value passed to the currently invoked Method; not safe for concurrent Access. */
+	protected final Object[] args = new Object[1];
+
+	/** Single-Element Scratch Array for the declared Parameter Type of {@link #args}; not safe for concurrent Access. */
+	protected final Class[] argTypes = new Class[1];
 	
 	/////////////////////////////////////////////////////////////////////////////////////
 	//cached Arguments for repetitive Calls
@@ -92,6 +94,7 @@ public class Accessor {
 		}
 	}
 
+	/** Resolves {@code name} against {@code cls} (or {@code ths.getClass()} when null) and sets it on {@code ths}, letting a failure propagate. */
 	private static void _SET_FIELD( final Object ths, Class cls, final String name, final Object value)
 	throws NoSuchFieldException, SecurityException, IllegalArgumentException, IllegalAccessException {
 		if (cls == null) {
@@ -100,10 +103,14 @@ public class Accessor {
 		fld.set(ths, value);
 	}
 	
+	/** Reads the public Field {@code name} on {@code ths}, resolved against its own Class.
+	  * @return the Field's Value, or null on failure */
 	protected static final Object GET_FIELD(final Object ths, final String name) {
-		return GET_FIELD(ths, null, name); 
+		return GET_FIELD(ths, null, name);
 	}
-	
+
+	/** Reads the public Field {@code name} on {@code ths}, resolved against {@code cls} (or {@code ths.getClass()} when null).
+	  * @return the Field's Value, or null on failure */
 	protected static final Object GET_FIELD(final Object ths, final Class cls, final String name) {
 		try {
 			return _GET_FIELD(ths, cls, name, false, null);
@@ -113,6 +120,7 @@ public class Accessor {
 		return null; 
 	}
 
+	/** Reads the public Field {@code name} on {@code cls}, letting a failure propagate; returns the Field's declared Type instead of its Value when {@code returnType} is true. */
 	private static Object _GET_FIELD(final Object ths, final Class cls, final String name, final boolean returnType, final Class[] retType)
 		throws NoSuchFieldException, SecurityException, IllegalArgumentException, IllegalAccessException {
 		final Field fld = cls.getField(name);
@@ -121,10 +129,12 @@ public class Accessor {
 		return fld.get(ths);
 	}
 	
+	/** Invokes the setter Method {@code name} with {@code value} on {@code ths}, resolved against its own Class, silently doing nothing on failure. */
 	protected void setMethod(final Object ths, final String name, final Object value) {
-		setMethod(ths, null, name, value, null); 
+		setMethod(ths, null, name, value, null);
 	}
-	
+
+	/** Invokes the setter Method {@code name} with {@code value} on {@code ths}, resolved against {@code cls} (or {@code ths.getClass()} when null); {@code argCls} overrides the inferred Parameter Type. Silently does nothing on failure. */
 	protected void setMethod(final Object ths, final Class cls, final String name, final Object value, final Class argCls) {
 		try {
 			_setMethod(ths, cls, name, value, argCls);
@@ -146,6 +156,7 @@ public class Accessor {
 	}
 	*/
 	
+	/** Resolves the setter Method {@code name} against {@code cls} (or {@code ths.getClass()} when null) and invokes it with {@code value}, using {@link #args}/{@link #argTypes} as Call Scratch Space and letting a failure propagate. */
 	private void _setMethod(
 	final Object ths, Class cls, final String name, final Object value, final Class argCls)
 	throws
@@ -207,6 +218,7 @@ public class Accessor {
 		return null; 
 	}
 
+	/** Resolves and invokes the no-argument Method {@code name} on {@code cls}, letting a failure propagate; returns the Method's declared Return Type instead of its Result when {@code returnType} is true, recording it into {@code retType[0]} either way. */
 	private static final Object _GET_METHOD(final Object ths, Class cls, final String name, final boolean returnType, final Class[] retType)
 	throws
 	NoSuchMethodException,

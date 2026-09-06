@@ -14,7 +14,7 @@ import streamIO.integer.encoding.BigEndianReader;
  * <!-- docstate
  * pass: 2
  * mtime: 2026-09-05T10:24:56Z
- * digest: 9781f0f391b90bb33ddbdca4b00f2f97a506256ec00ba7858134fe6b3f35ea1e
+ * digest: 6858d125b359ccf5692b340b2de029ddf2fcd8eae5d014f19acd4410dae93e9d
  * stale: false
  * tags: [code/audio, code/media_playback]
  * concepts: [PCM Sample Stream]
@@ -78,6 +78,8 @@ extends AStreamIn_Int {
 	 * @return the current Position in the Stream, in Samples */
 	public long getPosition() { return Position; }
 
+	/** Reads and decodes the next Sample for {@link #Channel} according to {@link Format}'s {@code BitsPerSample}, advancing {@link #Position} and skipping the other Channels' Bytes in the Frame.
+	 * @return the decoded Sample Value, or {@link #EOF} on an I/O Error */
 	protected long nextLongInternal() {
 		try {
 			++Position; 

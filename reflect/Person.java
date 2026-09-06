@@ -33,7 +33,7 @@ import streamIO.Assert;
   * <!-- docstate
   * pass: 2
   * mtime: 2026-09-05T10:23:07Z
-  * digest: 08f14257b5e5ed9e841745819e4aa0ab9060672686da6f0fb5a14d69068946b4
+  * digest: 695fe82375939a56c70f06f41f95b9006d9f6b0a8052e78216ac6b4eede202bc
   * stale: false
   * tags: [code/domain_model]
   * concepts: [Domain Model]
@@ -111,12 +111,19 @@ extends ReflectAble {
 ////////////////////////////////////////////////////////////////////////////////
 
 	/// Test Data
+	/** Test Value for {@link #firstName} on the Spouse. */
 	protected static final String STR_NICOLE    = "Nicole";
+	/** Test Value for {@link #lastName} before Marriage. */
 	protected static final String STR_WARMBOLD  = "Warmbold";
+	/** Test Value for {@link #firstName}. */
 	protected static final String STR_MATTHIAS  = "Matthias";
+	/** Test Value for {@link #lastName}. */
 	protected static final String STR_HEUER     = "Heuer";
+	/** Test Value for {@link Address#City}, initial. */
 	protected static final String STR_FRANKFURT = "Frankfurt";
+	/** Test Value for {@link Address#City}, unused so far. */
 	protected static final String STR_HANNOVER  = "Hannover";
+	/** Test Value for {@link Address#StreetNr}. */
 	protected static final String STR_MERCATOR  = "Mercatorstr. 5";
 
 	/** Tests all Methods of this Class

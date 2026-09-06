@@ -3,7 +3,7 @@ digest:
   local-classes:
     Accessor:
       mtime: '2026-09-05T10:22:13Z'
-      digest: e75575b684f7c2d0b3b4fedebd4518a89641971d3c9fad5febd490cf56885fc5
+      digest: 73eb252e94dbeaebb7e1b631ec7a07293db82833096649c643f01262669503f8
     Address:
       mtime: '2026-09-05T10:22:23Z'
       digest: 691dddd61ce042528ae219fade243e9f0fac67586f6d485551ecb0d99b7b214a
@@ -27,10 +27,10 @@ digest:
       digest: c2f4cbb5ba21efef35cc8c109b5b9d74a43ed6b6952599ec7672bb9899a092c9
     Person:
       mtime: '2026-09-05T10:23:07Z'
-      digest: 08f14257b5e5ed9e841745819e4aa0ab9060672686da6f0fb5a14d69068946b4
+      digest: 695fe82375939a56c70f06f41f95b9006d9f6b0a8052e78216ac6b4eede202bc
     ReflectAble:
       mtime: '2026-09-05T10:23:32Z'
-      digest: d321c6bd5dd918d718134ae02eb7aa430164240d1684b8419ef0659560743340
+      digest: 9e5335000559b884b4b49f381cc226cbf706166e042199a9bfdda28a0ca2852c
     Thing:
       mtime: '2026-09-05T10:23:41Z'
       digest: 0f64399909c8e1b83f25bb752f289fe676dbbf3709cf6fca35552cdebd1cbf8a

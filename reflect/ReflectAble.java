@@ -84,7 +84,7 @@ import tester.ITester;
   * <!-- docstate
   * pass: 2
   * mtime: 2026-09-05T10:23:32Z
-  * digest: d321c6bd5dd918d718134ae02eb7aa430164240d1684b8419ef0659560743340
+  * digest: 9e5335000559b884b4b49f381cc226cbf706166e042199a9bfdda28a0ca2852c
   * stale: false
   * tags: [code/reflection, code/reflection_based_property_access, code/reflection_object_instantiation]
   * concepts: [Reflection]
@@ -470,7 +470,8 @@ implements  IReflectAble, IPublisher, IDirtyFlag {
 		return false; 
 	}
 	
-	/** @see #set(Object, String, Object, Class) uses this Method exclusively 	 */
+	/** Sets a Field or nested {@link IReflectAble} Property named by {@code str}, resolving against {@code ths}'s own Class.
+	  * @see #set(Object, String, Object, Class) uses this Method exclusively 	 */
 	static final boolean SET_FIELD(
 	final Object ths,
 	final String propName,
@@ -482,7 +483,8 @@ implements  IReflectAble, IPublisher, IDirtyFlag {
 		return SET_FIELD(ths, propName, value, ths.getClass(), pos, len, str); 
 	}
 	
-	/** @see #set(Object, String, Object, Class) uses this Method exclusively 	 */
+	/** Sets the public Field {@code str} on {@code ths} directly when {@code pos == len}, otherwise recurses into the nested {@link IReflectAble} Property it holds.
+	  * @see #set(Object, String, Object, Class) uses this Method exclusively 	 */
 	private static final boolean SET_FIELD(
 	final Object ths,
 	final String propName,
@@ -524,6 +526,7 @@ implements  IReflectAble, IPublisher, IDirtyFlag {
 		return COPY(ths, null); }
 
 	/**
+	 * Creates a new Instance of {@code cls} (or {@code ths.getClass()} when null) and deep-copies all public Fields from {@code ths} into it.
 	 * @return a deep Copy!
 	 * Substitute for the Clone() Method which cannot be performed recursively,
 	 * because the Members are declared final public to enforce Value Types!

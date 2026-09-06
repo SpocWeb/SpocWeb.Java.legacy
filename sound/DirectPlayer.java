@@ -36,7 +36,7 @@ import streamIO.Log;
  * <!-- docstate
  * pass: 2
  * mtime: 2026-09-05T10:24:48Z
- * digest: 521bdc297824916368adb774857f6223c6f4a1f1c162c657695c3808e34e2d67
+ * digest: 4cd3f38e3c7e904a0a5362104717f4d44636344313693e0001921f51e3190839
  * stale: false
  * tags: [code/midi_playback, code/keyboard_input]
  * concepts: [Interactive MIDI Player]
@@ -250,6 +250,7 @@ implements KeyListener{
 	/// @see java.awt.event.KeyListener Events
 	/////////////////////////////////////////////////////////////////////////////////////
 	
+	/** Tracks whether Caps-Lock is currently toggled on, inferred from {@link #GET_KEY} since AWT reports no Caps-Lock State directly. */
 	static boolean CAPS_LOCK = false;
 	
 	/** Workaround for the Fact that some Characters are not affected by Caps-Lock	 */

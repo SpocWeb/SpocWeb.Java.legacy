@@ -12,7 +12,7 @@ import streamIO.integer.encoding.BigEndianWriter;
  * <!-- docstate
  * pass: 2
  * mtime: 2026-09-05T10:24:03Z
- * digest: 315f34ac9470463fc2999cfc32694d82d5460783d20c02952411095c568127cf
+ * digest: 6180a829999cc6f229e4cc4d054921a25d6c2fc6c0fbe28be20a42fd6d4b39b4
  * stale: false
  * tags: [code/audio, code/media_playback]
  * concepts: [WAV Writer]
@@ -29,6 +29,7 @@ implements IStreamOutInt {
 	/** 8, 16 or 24 	 */
 	public final int BitsPerSample;
 
+	/** The underlying Writer used to emit the WAV File's Bytes. */
 	private final BigEndianWriter writer;
 
 	/** Opens the File and writes the RIFF/WAVE Header, "fmt " Chunk and "data" Chunk Header.

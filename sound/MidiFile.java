@@ -29,7 +29,7 @@ import streamIO.integer.encoding.BigEndianReader;
  * <!-- docstate
  * pass: 2
  * mtime: 2026-09-05T10:22:51Z
- * digest: c3ce69791da3ef0e5264fffe7a35b369ccdbdef2fb5871d2f81e2c946ba3c0ac
+ * digest: 92b3c1dc1308b0f93db281ce3f081114b0cf1bc2032214831652e632286c06ff
  * stale: false
  * tags: [code/midi_playback, code/file_parsing]
  * concepts: [Standard MIDI File]
@@ -54,7 +54,8 @@ public class MidiFile extends FileChunk {
 	/** The Number of Ticks per Quarter Note 	 */
 	final public short ticksPerQuarter; 
 
-	private MidiChunk[] tracks; 
+	/** The Track Chunks read from the File, one per declared Track. */
+	private MidiChunk[] tracks;
 	
 	/** Reads the "MThd" Header (Track Type, Track Count, Ticks per Quarter Note) followed by that many "MTrk" Track Chunks.
 	 * @param streamIn_ the DataInput Implementation to use
