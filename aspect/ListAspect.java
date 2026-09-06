@@ -243,11 +243,7 @@ extends AHierarchyAspect { //Aspect {
 	  * @return the Item just removed
 	  */
 	public IAspect removeVal(int Index) {
-		// TODO: LOGIC: bounds check uses '>' instead of '>=', so Index == list.size() (one past the
-		// last valid element) slips through this guard and reaches list.remove(Index) below, which
-		// throws an unchecked IndexOutOfBoundsException instead of returning null like every other
-		// out-of-range Index does here.
-		if ((Index < 0) || (Index > list.size())) { //better to let the Exception to be thrown now...
+		if ((Index < 0) || (Index >= list.size())) { //better to let the Exception to be thrown now...
 			return null; } //...than later when this Context does no longer exist
 		return (IAspect) list.remove(Index); }
 	
@@ -324,10 +320,7 @@ extends AHierarchyAspect { //Aspect {
 		asp2.set(PersonAspect.LAST_NAME, PersonAspect.STR_WARMBOLD);
 		asp1.set(PersonAspect.LAST_NAME, PersonAspect.STR_HEUER   );
 		asp1.Address.City.setVal(PersonAspect.STR_FRANKFURT);
-		// TODO: LOGIC: PersonAspect.HOME ("home") does not match any public field of PersonAspect
-		// (the address field is named "Address", exposed via PersonAspect.ADDRESS); getLocalField()
-		// will fail to resolve it and return null, so the following set() throws NullPointerException.
-		asp2.set(PersonAspect.HOME + SEP + AddressAspect.CITY, PersonAspect.STR_HANNOVER);
+		asp2.set(PersonAspect.ADDRESS + SEP + AddressAspect.CITY, PersonAspect.STR_HANNOVER);
 		sa.addVal(asp1);
 		sa.addVal(asp2); //would I allow Duplicates? yes, otherwise inserting would be too expensive!
 		//actually I could use a HashMap, when the Index Column is given

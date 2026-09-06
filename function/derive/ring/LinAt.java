@@ -42,12 +42,9 @@ extends AStatic
 	public LinAt(Object a_, Object b_) { this(a_, b_, null); }
 
 	/**Initializing Constructor	 */
-	// TODO: LOGIC: validates the fields 'a'/'b' (still null before assignment below) instead of
-	// the constructor parameters 'a_'/'b_', so these checks can never trigger regardless of what
-	// callers pass in; an IFunction handed in as a_ or b_ silently slips through uncaught.
 	public LinAt(Object a_, Object b_, IInvertAble Inverse) {
-		if (a instanceof IFunction) throw new AbstractMethodError();
-		if (b instanceof IFunction) throw new AbstractMethodError();
+		if (a_ instanceof IFunction) throw new AbstractMethodError();
+		if (b_ instanceof IFunction) throw new AbstractMethodError();
 		a = a_; //.copy();
 		b = b_; //.copy();
 	 	//Since a and b are fixed, they can simply be divided again:
@@ -70,12 +67,9 @@ extends AStatic
 	/**This Function encapsulates the shifting / adding Function: a*x+b
 	 * It multiplies the Argument and adds a Constant to it.
 	 * It can be used to shift and stretch the Argument Range of a concatenated Function.	 */
-	// TODO: LOGIC: when b==null (pure scaling, no shift) this calls 'MulAt.MUL_AT(arg, b)' with the
-	// null 'b' instead of 'MulAt.MUL_AT(arg, a)', so the intended a*x scaling is replaced by a
-	// multiplication against null. Reachable on every LinAt constructed with a null 'b' argument.
 	public Object Map (Object arg) {
 		if (a == null) return AddAt.ADD_AT(arg, b);	//this is already done in LinAt() for all concrete Classes: BodyDouble, RingLong, Fraction, gAdic, Polynom, Tensor and Complex
-		if (b == null) return MulAt.MUL_AT(arg, b);	//this is already done in LinAt() for all concrete Classes: BodyDouble, RingLong, Fraction, gAdic, Polynom, Tensor and Complex
+		if (b == null) return MulAt.MUL_AT(arg, a);	//this is already done in LinAt() for all concrete Classes: BodyDouble, RingLong, Fraction, gAdic, Polynom, Tensor and Complex
 		return ((IRing) arg).LinAt(a, b); }
 
 	//	Interface IFloatFunction

@@ -64,12 +64,8 @@ implements ICountAble {
 
 	/** Rotates the low {@code octave} bits of x right by 1.
 	 * @return the Value rotated right by 1  */
-	// TODO: LOGIC: the dropped low bit is shifted into position 'octave' (corr = (x&1)<<octave),
-	// one bit above the top of the octave-bit range that ROL above uses (maxVal = 1<<octave).
-	// E.g. ROR(5, 3) returns 10 (1010b), outside the 3-bit range ROL(5, 3) operates in (which
-	// correctly returns 3). The shift should likely be '<<(octave-1)' to wrap into the top bit.
 	final static public int ROR(final int x, final int octave) {
-		final int corr = (x &  1) << octave;
+		final int corr = (x &  1) << (octave-1);
 		return    corr + (x >> 1);
 	}
 

@@ -299,11 +299,7 @@ public class XmlUnmarshaller extends SaxHandler {
 		} else if (argType == int  .class){ newValue = Integer.decode(strValue);
 		} else if (argType == long .class){ newValue = Long.decode(strValue);
 		} else if (argType == float.class){ newValue = Float.valueOf(strValue);
-		// TODO: LOGIC: duplicate check of "argType == long.class" (already handled two branches
-		// above); almost certainly meant "argType == double.class". As written, a double-typed
-		// field is never converted here and falls through to the no-op else branch, leaving
-		// newValue as the raw String instead of a Double.
-		} else if (argType == long .class){ newValue = Double.valueOf(strValue);
+		} else if (argType == double.class){ newValue = Double.valueOf(strValue);
 		} else if (argType == Date .class){ newValue = new Date(Date.parse(newValue.toString()));
 		} else {
 		}

@@ -239,14 +239,19 @@ implements Boole {
 	public ICopyAble fromStream(IDeserializer ST) { return this; }
 	/** Returns this constant unchanged; genuine deserialization is not implemented. */
 	public ICopyAble fromStream(InputStream ST) throws IOException { return this; } //fromStreamAt(DefaultParser.newInstance(ST)); }
-	/** Returns this constant unchanged; genuine parsing is not implemented. */
-	// TODO: LOGIC: fromString() ignores its 'ST' argument and always returns 'this' instead of
-	// parsing "-1"/"0"/"1" or "true"/"false"/"null" into the matching Ternary constant, as the
-	// TODO comment below already notes; any caller relying on round-tripping a serialized Ternary
-	// silently gets back the wrong constant.
-	public ICopyAble fromString(String ST) { return this; }
-	///TODO: implement reading -1,0 or 1
-	///as well as 'true', 'false' and 'null'
+	/** Parses -1, 0 or 1 as well as 'false', 'null' and 'true' (ignoring Case and surrounding
+	  * Whitespace) into the matching Ternary Constant.
+	  * @param ST the String to parse
+	  * @return the Ternary Constant denoted by ST
+	  * @throws IllegalArgumentException when ST is null or denotes no Ternary Value */
+	public ICopyAble fromString(String ST) {
+		if (ST != null) {
+			final String str = ST.trim();
+			if (str.equalsIgnoreCase(STR_FALSE) || str.equals(Byte.toString(FALSE))) { return False; }
+			if (str.equalsIgnoreCase(STR_NULL ) || str.equals(Byte.toString(NULL ))) { return Null ; }
+			if (str.equalsIgnoreCase(STR_TRUE ) || str.equals(Byte.toString(TRUE ))) { return True ; }
+		}
+		throw new IllegalArgumentException("'" + ST + "' is no Ternary Value"); }
 
 ////////////////////////////////////////////////////////////////////////////////
 /// #region : Interface Lattice: Implementation

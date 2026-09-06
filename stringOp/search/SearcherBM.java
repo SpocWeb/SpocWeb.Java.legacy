@@ -45,14 +45,19 @@ public class SearcherBM {
 		int j = Max_Char;
 		while (--j >= 0) skip[j] = M; M--; //pre-initialize the Array of Skips
 //		while (--i >= 0) skip[Pattern[i].hashCode() % Max_Char] = M-i;
-		// TODO: LOGIC: Object.hashCode() can be negative (e.g. Integer, Long, many Strings); Java's '%' keeps
-		// the sign of the dividend, so skip[Pattern[i].hashCode() % Max_Char] can index with a negative value
-		// and throw ArrayIndexOutOfBoundsException. Same issue in indexOf() below. Only safe today because the
-		// callers in this codebase pass ByRefChar (non-negative char-derived hashCode).
-		while (++i <= M) skip[Pattern[i].hashCode() % Max_Char] = M-i;
+		while (++i <= M) skip[slot(Pattern[i])] = M-i;
 	}	//the Sequence (0..M) or (M..0) determines, whether the Algorithm works,
 		//because it now replaces larger skips by smaller ones,
 		//which prevents too large skips
+
+	/**Maps an Element to its Slot in the skip Array.
+	 * Object.hashCode() can be negative (e.g. Integer, Long, many Strings) and Java's '%'
+	 * keeps the Sign of the Dividend, so the Remainder has to be folded back into [0, Max_Char).
+	 * @param element the Element to map, must not be null
+	 * @return the non-negative Index into {@link #skip} 	 */
+	protected int slot(Object element) {
+		int hash = element.hashCode() % Max_Char;
+		return (hash < 0) ? hash + Max_Char : hash; }
 
 	/**Boyer- Moore Algorithm to search, maintains a List of possible Jumps.
 	 * most effective with a nonrecursive Pattern in a large Alphabet.
@@ -65,10 +70,7 @@ public class SearcherBM {
 		do {
 			if (List[i].equals(Pattern[j])) {--i; --j;}	//as long as Pattern and List are equal
 			else {	//Choose the larger Skip.
-				// TODO: LOGIC: same negative-hashCode risk as the constructor above - a negative
-				// List[i].hashCode() % Max_Char indexes skip[] with a negative value and throws
-				// ArrayIndexOutOfBoundsException.
-				if (M-j+1 > (s = skip[List[i].hashCode() % Max_Char]))
+				if (M-j+1 > (s = skip[slot(List[i])]))
 					 i += M-j+1;
 				else i += s;
 				j = M-1; }

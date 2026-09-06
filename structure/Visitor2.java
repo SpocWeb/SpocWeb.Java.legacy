@@ -44,10 +44,10 @@ implements   Visitor {
 	  * Either implement the Behavior here (adding new Visitors)
 	  * or delegate it back to the appropriate Element Class's invite() Method.
 	  */
-	// TODO: LOGIC: same unconditional mutual recursion with ElementA.invite(Visitor) as
-	// Visitor1.visit(ElementA) - StackOverflowError on the first call.
 	public void visit(ElementA elA) {
-		elA.invite(this); //delegate it back...
+		//implement the Behavior here; delegating back to elA.invite(this) would recurse forever,
+		//because ElementA.invite(Visitor) calls v.visit(this) right back.
+		System.out.println("Visitor2 visits ElementA " + elA);
 	}
 
 	/** Method called only by ElementB Instances
@@ -55,10 +55,9 @@ implements   Visitor {
 	  * Either implement the Behavior here (adding new Visitors)
 	  * or delegate it back to the appropriate Element Class's invite() Method.
 	  */
-	// TODO: LOGIC: same unconditional mutual recursion with ElementB.invite(Visitor) as
-	// Visitor1.visit(ElementB) - StackOverflowError on the first call.
 	public void visit(ElementB elB) {
-		elB.invite(this); //delegate it back...
+		//implement the Behavior here; delegating back to elB.invite(this) would recurse forever.
+		System.out.println("Visitor2 visits ElementB " + elB);
 	}
 
 }

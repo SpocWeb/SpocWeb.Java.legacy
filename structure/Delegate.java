@@ -149,17 +149,20 @@ public class Delegate {
 		Object[] params = new Object[2];
 		params[0] = Source;
 		params[1] = Arguments;
-		try {
-			do {
+		Throwable failure = null; //remember the first Failure, but keep notifying the Rest
+		do {
+			try {
 				method.invoke(curr.target, params);
-			} while (null != (curr = curr.next));
-		// TODO: LOGIC: both catch blocks are empty, silently discarding the exception. A
-		// reflective invocation failure (e.g. the target Method itself throwing) both hides
-		// the real cause from every caller and, because the exception breaks out of the
-		// do/while before `curr` is reassigned, silently stops notifying every Delegate after
-		// the one that failed.
-		} catch (IllegalAccessException x) {
-		} catch (InvocationTargetException x) {
+			} catch (IllegalAccessException x) {
+				if (failure == null) failure = x;
+			} catch (InvocationTargetException x) {
+				if (failure == null) failure = x.getTargetException();
+			}
+		} while (null != (curr = curr.next));
+		if (failure != null) { //report the Failure instead of discarding it silently
+			if (failure instanceof RuntimeException) throw (RuntimeException) failure;
+			if (failure instanceof Error) throw (Error) failure;
+			throw new RuntimeException(failure);
 		}
 	}
 

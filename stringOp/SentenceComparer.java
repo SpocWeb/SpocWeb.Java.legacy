@@ -9,6 +9,7 @@ package stringOp;
 import java.util.ArrayList;
 import java.util.BitSet;
 import java.util.HashMap;
+import java.util.StringTokenizer;
 
 import math.vector.VectorInt;
 import math.vector.VectorString;
@@ -107,7 +108,7 @@ public class SentenceComparer {
 	public int getNumDistinctSentences() { return sentenceSets.size(); }
 	
 	/**
-	 * Compares the Word Set of sentence against every previously seen Sentence's Word Set by intersecting BitSets, optionally records the Sentence, but always returns -1 instead of the best match's index due to an unfixed bug.
+	 * Compares the Word Set of sentence against every previously seen Sentence's Word Set by intersecting BitSets, optionally records the Sentence, and returns the Index of the best Match (-1 if there is none).
 	 * @see #similarities stores the similarities for the last Operation for deeper Analysis.
 	 * @param sentence the Sentence to search for.
 	 * @param addToDictionary Flag whether to add the Words of this Sentence to the Dictionary
@@ -121,9 +122,7 @@ public class SentenceComparer {
 		final BitSet set  = getWordSet(sentence, addToDictionary);
 		work.clear(); //set.clone();
 		int maxMatch = 0;
-		// TODO: LOGIC: the index of the best-matching Sentence is never recorded (only maxMatch, the count, is
-		// tracked); the method always falls through to 'return -1' below regardless of maxMatch, so despite its
-		// Javadoc/name it can never report which Sentence was most similar - only similarities[] is usable.
+		int maxIndex = -1;
 		for (int i = sentenceSets.size(); --i >= 0; ) {
 			work.or(set); //set the bits, not necessary to clear, since at most set's bit are set!
 			work.and((BitSet) sentenceSets.get(i));
@@ -131,30 +130,39 @@ public class SentenceComparer {
 			similarities.setAt(i, numMatch);
 			if (maxMatch < numMatch) {
 				maxMatch = numMatch;
+				maxIndex = i;
 			}
 		}
 		if (maxMatch < minSimilarity) {
 			sentenceSets.add(set);
 			sentences.addItem(sentence);
 		}
-		return -1;
+		return maxIndex;
 	}
 	
 	/**
-	 * Intended to parse the Sentence into Words and set a Bit for each Word found or added in the Dictionary, but is unimplemented and always returns an empty BitSet.
+	 * Parses the Sentence into Words and sets a Bit for each Word found or added in the Dictionary.
 	 * @param sentence the Sentence to analyze for Occurrence of Words.
 	 * @param addToDictionary Flag whether to add newly found Words to the Dictionary.
 	 * @return the BitSet (instead of e.g. a HashSet, because that can be analyzed faster!
 	 */
 	public BitSet getWordSet(final String sentence, final boolean addToDictionary) {
 		final BitSet ret = new BitSet(dictionary.size() << 1);
-		// TODO: LOGIC: unimplemented - the Sentence is never parsed into Words, the Dictionary is never
-		// searched or updated, and no Bit is ever set. This always returns an empty BitSet, which makes
-		// getMostSimilarSentence()'s comparison meaningless (every Sentence has an all-zero Word Set).
+		if (sentence == null) {
+			return ret; }
 		///parse the Sentence into Words
-		///search the Words in the Dictionary which is an O(M) Operation
-		///(searching for EXACT Matches would  only be an O(1) Operation!!!)
-		///either add to the Dictionary or just set the Bit
+		final StringTokenizer words = new StringTokenizer(sentence, separators);
+		while (words.hasMoreTokens()) {
+			final String word = words.nextToken();
+			///search the Words in the Dictionary, which is an O(1) Operation on a HashMap
+			Integer ndx = (Integer) dictionary.get(word);
+			if (ndx == null) {
+				if (!addToDictionary) {
+					continue; } ///unknown Word and not allowed to add it => no Bit to set
+				///either add to the Dictionary or just set the Bit
+				ndx = new Integer(dictionary.size());
+				dictionary.put(word, ndx); }
+			ret.set(ndx.intValue()); }
 		return ret;
 	}
 	

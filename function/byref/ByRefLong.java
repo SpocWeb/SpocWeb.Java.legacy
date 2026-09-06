@@ -259,11 +259,8 @@ implements ICountAble {
 
 	/** Rotates the low {@code octave} bits of x right by 1.
 	 * @return the Value rotated right by 1  */
-	// TODO: LOGIC: the dropped low bit is shifted into position 'octave' (corr = (x&1)<<octave),
-	// one bit above the top of the octave-bit range that ROL above uses (maxVal = 1L<<octave) -
-	// see the identical defect flagged in ByRefInt.ROR. Likely should be '<<(octave-1)'.
 	final static public long ROR(final long x, final int octave) {
-		final long corr = (x &  1) << octave;
+		final long corr = (x &  1) << (octave-1);
 		return    corr + (x >> 1);
 	}
 

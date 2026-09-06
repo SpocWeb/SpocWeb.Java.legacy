@@ -52,12 +52,7 @@ public class CatProcessor {
 	
 	/**Constructor for a concatenated Function, the Inverse is optional	 */
 	public CatProcessor(IProcessor Outer, IProcessor Inner) {
-		// TODO: LOGIC: this null-check reads the instance fields 'inner'/'outer', which are always
-		// null at this point in the constructor (they are only assigned below), not the 'Inner'
-		// parameter. The apparent intent - fall back to using Outer as inner when Inner is null -
-		// never happens; a caller passing Inner == null ends up with inner == null and a
-		// NullPointerException later from MapAt()/equals().
-		if  (inner == null) { inner = outer; outer = null; }
+		if  (Inner == null) { Inner = Outer; Outer = null; }
 		this.inner = Inner;
 		this.outer = Outer;
 	}

@@ -20,14 +20,11 @@ public class fSum
 	extends AFunction {
 
 	/**Returns the Sum of all Coordinates of the given Tensor.	 */
-	// TODO: LOGIC: 'Sum' is initialized as a copy of V.a[0], but the loop below then runs i from
-	// Dim-1 down to 0 inclusive and adds V.getAt(0) again, so Coordinate 0 is counted twice in the
-	// Result for every Tensor of dimension >= 1.
 	public Object Map(final Object arg) {
 		final Tensor V = (Tensor) arg;
 		int i = V.getDim();
 		final IGroup Sum = (IGroup) V.a[0].copy();
-		for (; --i >= 0;)
+		for (; --i >= 1;) //Coordinate 0 is already in 'Sum'
 			Sum.addAt(V.getAt(i)); // .a[i]); }
 		return Sum;
 	}

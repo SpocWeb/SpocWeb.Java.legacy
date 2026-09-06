@@ -208,10 +208,7 @@ public class FuzzySentenceComparator
 	 */
 	public static int read(final InputStream fis, final StringBuffer buf, final char sep) throws Exception {
 		buf.setLength(0);
-		// TODO: LOGIC: the loop condition compares against the hardcoded literal '?' instead of
-		// the sep parameter, so a caller passing a different separator character never sees the
-		// loop terminate on it - it only stops on this hardcoded character or end of stream.
-		for(int curr; '�' !=(curr = fis.read());) {
+		for(int curr; sep !=(curr = fis.read());) {
 			if (curr == -1)
 				return curr;
 			buf.append((char) curr);

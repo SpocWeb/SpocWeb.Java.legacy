@@ -48,10 +48,7 @@ extends Object {
 		int j, i = -1;
 		int l = arg.length();
 		while (++i < l) {
-			// TODO: LOGIC: off-by-one - should be '>=', not '>'. Productions.length is 128 (Byte.MAX_VALUE+1),
-			// so a Character with code exactly 128 passes this guard and then indexes Productions[128],
-			// throwing ArrayIndexOutOfBoundsException.
-			if ((j = arg.charAt (i)) > Productions.length) {
+			if ((j = arg.charAt (i)) >= Productions.length) {
 				result.append((char) j); continue; }
 			if ((tmp = Productions[j]) == null) {
 				result.append((char) j); continue; }

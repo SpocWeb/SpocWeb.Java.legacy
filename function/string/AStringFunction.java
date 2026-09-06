@@ -88,11 +88,7 @@ implements IStringFunction {
 				final char chr = arg.charAt(i);
 				if (chr != '_') {
 					ret.append(Character.toLowerCase(chr));
-				} else {
-					// TODO: LOGIC: if '_' is the last character of arg, arg.charAt(++i) reads one
-					// past the end of the string and throws StringIndexOutOfBoundsException.
-					// Reachable whenever the input (hungarian-notation) string ends with an
-					// underscore, e.g. TO_CAMEL.Map("FOO_").
+				} else if (i+1 < len) { //a trailing Underscore has no Character to capitalize
 					ret.append(Character.toUpperCase(arg.charAt(++i)));
 				}
 			}

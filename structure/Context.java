@@ -77,11 +77,8 @@ public class Context {
 		currState.close(this); }
 
 	/** Sends the collected Data */
-	// TODO: LOGIC: send() calls itself instead of delegating to currState (as every sibling
-	// method here does), causing unconditional infinite recursion and a StackOverflowError
-	// on every call.
 	public void send() {
-		send(); }
+		currState.send(this); }
 
 	/** Acknowledge Request */
 	public void acknowledge() {

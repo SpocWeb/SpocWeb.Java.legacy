@@ -2,6 +2,12 @@ package flow.push;
 
 import graphs.ICopy;
 
+import java.util.concurrent.ArrayBlockingQueue;
+import java.util.concurrent.Executor;
+import java.util.concurrent.ThreadFactory;
+import java.util.concurrent.ThreadPoolExecutor;
+import java.util.concurrent.TimeUnit;
+
 /**
   * Title: MultiCaster<p>
   * Description:
@@ -46,6 +52,29 @@ implements IPushStage {
 	  */
 	public boolean doClone;
 
+	/** Bounded Pool of daemon Worker Threads shared by all MultiCasters.
+	  * A fixed Pool with a bounded Queue and a caller-runs Policy applies Backpressure
+	  * instead of creating one unpooled Thread per pushed Item, which used to exhaust
+	  * the OS Thread Resources under sustained high-throughput Input.
+	  */
+	private static final Executor POOL = newPool();
+
+	/** Creates the shared, bounded, daemon-threaded Worker Pool. */
+	private static Executor newPool() {
+		int size = Math.max(2, Runtime.getRuntime().availableProcessors());
+		ThreadPoolExecutor pool = new ThreadPoolExecutor(size, size
+			, 60L, TimeUnit.SECONDS
+			, new ArrayBlockingQueue<Runnable>(1024)
+			, new ThreadFactory() {
+				public Thread newThread(Runnable r) {
+					Thread t = new Thread(r, "MultiCaster");
+					t.setDaemon(true);
+					return t; }
+			}
+			, new ThreadPoolExecutor.CallerRunsPolicy());
+		pool.allowCoreThreadTimeOut(true);
+		return pool; }
+
 	////////////////////////////////////////////////////////////////////////////////
 	/// #region : Constructors, calling each other using this()/super()
 	////////////////////////////////////////////////////////////////////////////////
@@ -66,12 +95,9 @@ implements IPushStage {
 	  */
 	public IPushStage putA(final Object A) {
 		final Object B = (doClone ? ((ICopy)A).Copy() : A); //clone();
-		// TODO: LOGIC: unbounded Thread creation, one new Thread per pushed Item with no pooling or
-		// throttling; under sustained high-throughput input this can exhaust OS thread resources
-		// and throw an OutOfMemoryError ("unable to create native thread").
-		new Thread(new Runnable() {
+		POOL.execute(new Runnable() {
 			public void run() { next2.putA(B); } //if you want to clone, put a Cloner in between!
-		}).start();
+		});
 		next1.putA(A);
 		return this; }
 	

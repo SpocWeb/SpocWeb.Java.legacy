@@ -43,19 +43,14 @@ extends AOdeFloat {
      * Lorentz' ODE for describing the Behavior of Convection Rolls
      * in a reduced Coordinate System:
      * x' = (y-x)*s
-     * y' = y-x*(z-r)
+     * y' = -y-x*(z-r) == x*(r-z)-y
      * z' = x*y-(z*b)
      *
      * The Dimensions have the following Meaning:
      */
-	// TODO: LOGIC: the standard Lorenz equations are dy/dt = x*(r-z) - y, i.e.
-	// x[0]*(r-x[2]) - x[1]. This line computes x[1] - x[0]*(x[2]-r), which equals
-	// x[0]*(r-x[2]) + x[1] - the sign of the y-term is flipped (+x[1] instead of -x[1]).
-	// Every call to this method (every integration step) produces a trajectory that diverges
-	// from the intended chaotic Lorenz attractor.
 	public void Funktion (double t, double[] x, double[] y) {	//
 		y[0] =(x[1]-x[0])*s;
-		y[1] = x[1]-x[0] *(x[2]-r);
+		y[1] =-x[1]-x[0] *(x[2]-r);
 		y[2] =(x[0]*x[1])-(x[2]*b);
 	}
 

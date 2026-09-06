@@ -233,11 +233,7 @@ implements IHierarchyAspect {
 		try {
 			while (--i >= 0) {	//for each Field of Aspect Type, perform the get, clone and set Operations!
 				Field field = fields[i];
-				// TODO: LOGIC: type check uses IAspect.class but the result is cast to IHierarchyAspect;
-				// a public field typed as a plain (non-hierarchy) IAspect would pass the check and then
-				// throw ClassCastException here. Other methods in this class (validate(), the no-arg
-				// update()) consistently check IHierarchyAspect.class instead - this one does not.
-				if (IAspect.class.isAssignableFrom(field.getType())) { //Aspect Type => recourse
+				if (IHierarchyAspect.class.isAssignableFrom(field.getType())) { //Aspect Type => recourse
 					((IHierarchyAspect) field.get(this)).update(Source, Value, oldVal);
 				}
 			}

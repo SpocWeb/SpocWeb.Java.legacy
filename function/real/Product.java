@@ -36,25 +36,33 @@ public class Product
 	  * @param Scale     Start Value returned by this Filter */
 	public Product(final double value_) { super(value_); }
 
+	/** Running Sum of the Reciprocals of all Values passed through, needed for {@link #getHMV()} */
+	protected double _Reciprocals;
+
 	/** Multiplies the running product by {@code value_} and passes it through unchanged.
 	 * @return the next single Precision Number	 */
 	public float Map(final float value_) { //
-		++_Count; _Value *= value_; return value_; }
+		++_Count; _Value *= value_; _Reciprocals += 1.0 / value_; return value_; }
 
 	/** Multiplies the running product by {@code value_} and passes it through unchanged.
 	 * @return the next double Precision Number	 */
 	public double Map(final double value_) { //
-		++_Count; _Value *= value_; return value_; }
+		++_Count; _Value *= value_; _Reciprocals += 1.0 / value_; return value_; }
 
-	/** Returns the geometric mean of every value passed through this node so far.
+	/** Returns the harmonic mean of every value passed through this node so far.
 	 * @return the HMV, Harmonic Mean Value
 	  * of the Elements passed through this Node
 	  * @throws NAN when no Element has passed this Node yet.  */
-	// TODO: LOGIC: method name and Javadoc call this the Harmonic Mean, but
-	// Math.pow(_Value, 1.0/_Count) with _Value the running product is the Geometric Mean
-	// (Nth root of the product). The Harmonic Mean would be _Count / (running sum of 1/value_).
-	// Callers relying on the name/doc for the harmonic mean get the wrong statistic.
 	public double getHMV() {
+		return _Count / _Reciprocals;
+	}
+
+	/** Returns the geometric mean (the Nth Root of the running Product) of every value
+	 * passed through this node so far.
+	 * @return the GMV, Geometric Mean Value
+	  * of the Elements passed through this Node
+	  * @throws NAN when no Element has passed this Node yet.  */
+	public double getGMV() {
 		return Math.pow(_Value, 1.0 / _Count);
 	}
 

@@ -147,12 +147,9 @@ implements Slab {
 
 	/**Randomizes all the Weights of this Slab
 	 * by initializing it with Weights uniformly distributed between [-1, +1]	 */
-	// TODO: LOGIC: loop condition is '--i > 0' instead of '--i >= 0', so Layers[0]'s Weights are
-	// never randomized (every other Layer in this Network keeps its default/previously-set Weights).
-	// Reachable on every Network constructed from more than one Layer.
 	public void randomizeWeights() {
 		int i = Layers.length;
-		while (--i > 0)
+		while (--i >= 0)
 			Layers[i].randomizeWeights();
 	}
 

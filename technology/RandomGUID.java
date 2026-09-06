@@ -166,13 +166,11 @@ public class RandomGUID extends Object {
         MessageDigest md5 = null;
         StringBuffer sbValueBeforeMD5 = new StringBuffer();
 
-        // TODO: LOGIC: if MD5 is unavailable, this catch block only logs the exception and
-        // leaves md5 == null; execution falls through to md5.update(...) below, which then
-        // throws an unhandled NullPointerException instead of failing with the original cause.
         try {
             md5 = MessageDigest.getInstance("MD5");
         } catch (NoSuchAlgorithmException e) {
             System.out.println("Error: " + e);
+            throw new IllegalStateException("MD5 MessageDigest not available", e);
         }
 
         try {

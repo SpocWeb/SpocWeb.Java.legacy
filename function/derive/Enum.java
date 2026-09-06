@@ -267,27 +267,19 @@ implements IIterAble {
 	
 	/**Returns the next Enum in list order, or {@code null} when this is already the last one.
 	 * @return the Successor of the current Enum */
-	// TODO: LOGIC: indexes with 'Value' directly instead of the list position 'Value-Offset', and
-	// the bounds check compares 'Value' to 'list.length' instead of 'Value-Offset' to 'list.length-1'.
-	// For any Enum with a non-zero Offset (e.g. Month, Offset=1) this both skips an extra element
-	// (January.succ() returns March, not February) and, for an Offset of 0 combined with a last
-	// Value equal to list.length-1 that is not also >= list.length (e.g. Week, Offset=0: Sunday.Value=6,
-	// list.length=7), throws ArrayIndexOutOfBoundsException instead of returning null.
 	public Enum succ() {
-		if (Value >= list.length) {
+		final int pos = (int) (Value - Offset);
+		if (pos >= list.length-1) {
 			return null; }
-			return list[((int)Value)+1]; }
+			return list[pos+1]; }
 
 	/**Returns the previous Enum in list order, or {@code null} when this is already the first one.
 	 * @return the Predecessor of the current Enum */
-	// TODO: LOGIC: indexes with 'Value' directly instead of the list position 'Value-Offset', and
-	// the bounds check compares 'Value' to 0 instead of 'Value-Offset' to 0. For any Enum with a
-	// non-zero Offset (e.g. Month, Offset=1) the first element's pred() returns itself instead of
-	// null (January.Value=1 fails the ==0 check, then list[0] is January again).
 	public Enum pred() {
-		if (Value == 0) {
+		final int pos = (int) (Value - Offset);
+		if (pos <= 0) {
 			return null; }
-			return list[((int)Value)-1]; }
+			return list[pos-1]; }
 
 	/**Returns the first Enum in the underlying list, by list position rather than Value order.
 	 * @return the Minimum Value in the List of Enums */

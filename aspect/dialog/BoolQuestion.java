@@ -90,14 +90,16 @@ extends AQuestion {
 	/**
 	 * Parses the first character of the given Value's String representation: 'Y'/'y'/'J'/'j' (also
 	 * accepting the German "Ja") set the Answer true, anything else sets it false.
+	 * A null Value or an empty (blank) Input leaves the current Answer unchanged, i.e. it keeps
+	 * the Default.
 	 * @see aspect.AAspect#setValue(Object)
 	 */
 	protected void setValue(Object val) throws InvalidException {
-		String str = val.toString().trim();
+		String str = (val == null ? "" : val.toString().trim());
+		if (str.length() == 0) { //no Input given (null or just Enter pressed) => keep the current Default
+			setAnswer(answer);
+			return; }
 		boolean value = false; //= Boolean.valueOf(str).booleanValue();
-		// TODO: LOGIC: str.charAt(0) throws StringIndexOutOfBoundsException when the trimmed input is
-		// empty (e.g. the user just presses Enter at the console prompt in AQuestion.ask()/Dialog.ask()),
-		// and val.toString() above throws NullPointerException if val is null. Neither is guarded.
 		switch(str.charAt(0)) {
 			case 'Y':
 			case 'y':

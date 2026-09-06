@@ -38,6 +38,9 @@ public interface State {
 	/** closes a Connection (passive or active) */
 	public void close(Context ctx);
 
+	/** Sends the collected Data */
+	public void send(Context ctx);
+
 	/** Acknowledge Request */
 	public void acknowledge(Context ctx);
 

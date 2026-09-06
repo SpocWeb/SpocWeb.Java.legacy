@@ -243,14 +243,10 @@ implements IFloatVectorField
 	final static public double ProjZentrum = 0.3;
 
 	/** stereographische Projektion von der Kugel auf den Zylinder */
-	// TODO: LOGIC: indexes V[2], but every other projection in this class treats V as a
-	// 2-element (x,y) position (V[0]/V[1]) - calling this with the same 2-element vectors used
-	// everywhere else (e.g. as produced by map(double[], double[])) throws
-	// ArrayIndexOutOfBoundsException. Likely meant V[1], mirroring Cyl_MercatorAt below.
 	public double[] Mercator(double[] V) {
 		double[] c_s = new double[2];
-		ByRefDouble.COS_SIN (V [2], c_s);
-		V[2] = c_s[1]/(ProjZentrum + c_s[0]);
+		ByRefDouble.COS_SIN (V [1], c_s);
+		V[1] = c_s[1]/(ProjZentrum + c_s[0]);
 		return V; }
 
 	/**

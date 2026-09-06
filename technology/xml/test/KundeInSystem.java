@@ -83,17 +83,12 @@ extends ZKDBBaseType
         return this.systemStatus;
     } //-- SystemStatus getSystemStatus() 
 
-    // TODO: LOGIC: this accessor is named "ZKDBBaseType" instead of "getTyp" (compare the
-    // sibling setTyp(ZKDBBaseType) below and every other class in this package's getTyp()) -
-    // almost certainly a copy/rename mistake. Reflection-based access by naming convention
-    // (as used elsewhere in this codebase, e.g. Accessor/SaxDispatcher) will not find a
-    // "getTyp" method on this class.
     /**
      * Returns the value of field 'typ'.
      *
      * @return the value of field 'typ'.
     **/
-    public ZKDBBaseType ZKDBBaseType()
+    public ZKDBBaseType getTyp()
     {
         return this.typ;
     } //-- Typ getTyp()

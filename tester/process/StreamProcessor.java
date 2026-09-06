@@ -93,11 +93,7 @@ implements IAvailAble, Runnable {
 	/** Returns the input stream's current read position.
 	 * @see streamIO.IAvailAble#getPosition()	 */
 	public long getPosition() {
-		// TODO: LOGIC: this delegates to availAble() instead of the input's actual position
-		// method, so it returns the number of items left rather than the current read position -
-		// the two are unrelated for most streams (e.g. a stream that shrinks its buffer as it
-		// reads).
-		return ((IAvailAble)In).availAble();
+		return ((IAvailAble)In).getPosition();
 	}
 
 	/** Returns whether the input stream still has valid data to read.

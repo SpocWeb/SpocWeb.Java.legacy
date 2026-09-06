@@ -39,14 +39,10 @@ public class ConditionTable {
 
 	/**Initializing Constructor	 */
 	public ConditionTable(byte[][] Conditions_) {
-		// TODO: LOGIC: the validation loop below reads the instance field `Conditions`, which is
-		// still null at this point - it is only assigned from the parameter `Conditions_` after
-		// this block runs - so every call to this constructor throws a NullPointerException
-		// instead of validating Conditions_. The reads here should target Conditions_.
-		int i = Conditions.length;
-		int CndLength = Conditions[0].length;
+		int i = Conditions_.length;
+		int CndLength = Conditions_[0].length;
 		while (--i > 0)
-			if (CndLength != Conditions[i].length) throw new AbstractMethodError(strError + strConditions + strInconsistent);
+			if (CndLength != Conditions_[i].length) throw new AbstractMethodError(strError + strConditions + strInconsistent);
 		Conditions = Conditions_;
 	}
 

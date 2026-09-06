@@ -65,7 +65,8 @@ public class FuzzyDictionary {
 	}
 	
 	/**
-	 * Adds token to {@link #words} when the last recorded distance exceeds maxDist.
+	 * Searches {@link #words} for the entry closest to token and adds token to {@link #words}
+	 * when that closest Distance exceeds maxDist.
 	 * @param token the Object to find
 	 * @param maxDist the maximum Distance to consider an Object to be distinct
 	 * and to be added to this Dictionary.
@@ -74,12 +75,10 @@ public class FuzzyDictionary {
 	 * @return the Index of the Object most similar to 'token'.
 	 */
 	public int getMostSimilarItem(final Object token, final double maxDist) {
-		final int minIndex = -1;
-		// TODO: LOGIC: minIndex is never assigned the index of an actual candidate - it stays
-		// the constant -1 - so distances.getDoubleAt(minIndex) always reads index -1 instead of
-		// a distance found by comparing token against the existing words, and the method always
-		// returns -1 without ever locating the most similar item.
-		final double minDist = distances.getDoubleAt(minIndex);
+		final int minIndex = getMostSimilarItem(token);
+		final double minDist = (minIndex < 0) //nothing to compare against yet
+			? Double.POSITIVE_INFINITY
+			: distances.getDoubleAt(minIndex);
 		if (minDist > maxDist)
 			words.addItem(token);
 		return minIndex;
@@ -92,8 +91,8 @@ public class FuzzyDictionary {
 	 * @return the Index of the Object most similar to 'token'.
 	 */
 	public int getMostSimilarItem(final Object token) {
-		double minDist = 0; 
-		int minIndex = -1; 
+		double minDist = Double.POSITIVE_INFINITY;
+		int minIndex = -1;
 		for (int i = words.getInt(); --i >= 0; ) {
 			final Object word = words.getAt(i); 
 			final double  distance = metric.dist(token, word); //symmetric

@@ -208,9 +208,7 @@ public class XmlToDirHandler {
 	 */
 	public static void main(String[] args
 	) throws Exception { //
-		// TODO: LOGIC: prints the String[] array's reference/hashcode (e.g. "[Ljava.lang.String;@...")
-		// instead of its contents; likely meant Arrays.toString(args) or a loop over the elements.
-		System.out.println(args);
+		System.out.println(java.util.Arrays.toString(args));
 		createFiles(args);
 	}
 

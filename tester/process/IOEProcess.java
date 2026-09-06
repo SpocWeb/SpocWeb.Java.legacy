@@ -87,10 +87,7 @@ public class IOEProcess extends Object {
 		RT.traceInstructions(true);
 		RT.traceMethodCalls (true);
 //		Runtime.getRuntime().runFinalizersOnExit (true);
-		// TODO: LOGIC: "Process.IOEProcess" is not this class's fully-qualified name (it is
-		// tester.process.IOEProcess), so this exec() launches a nonexistent class and the child
-		// process fails immediately with a ClassNotFoundException / NoClassDefFoundError.
-		Process Child = RT.exec("java Process.IOEProcess");
+		Process Child = RT.exec("java tester.process.IOEProcess");
 //		System.out.println ("Exit Value = " + Child.exitValue ()); //throws IllegalThreadStateException "process has not exited"
 		PrintStream OUT = new PrintStream(Child.getOutputStream ());
 		InputStream IN  = Child. getInputStream ();

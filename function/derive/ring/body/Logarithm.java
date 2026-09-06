@@ -65,19 +65,13 @@ extends AFloatDeriveAble { //IPartialDerive {
 	public double Map(double x) { return Math.log(x); }	//
 
 	/**Returns the Logarithm Function's Derivative: 1/x.	 */
-	// TODO: LOGIC: returns '-Math.log(x)' instead of '1/x' (the correct Derivative of ln(x), and
-	// the value getFuncDerive() below already computes correctly into 'Derivative.Value'). Any
-	// caller of getDerivative(double) on Logarithm gets ln(x) negated instead of the Derivative.
-	public double getDerivative(double x) { return -Math.log(x); }	//
+	public double getDerivative(double x) { return ICountAble.ONE / x; }	//
 
 	/** Calculates Function and Derivative at the same time,
 	 * returns the Function Value directly and the Derivative ByRef	  */
-	// TODO: LOGIC: returns '-Math.log(x)' instead of 'Math.log(x)' as the Function Value, so the
-	// result disagrees with Map(x) (also here in ring/body): every caller of getFuncDerive that
-	// uses the returned Function Value gets the negated Logarithm.
 	public double getFuncDerive (double x, ByRefDouble Derivative) {
 		Derivative.Value = ICountAble.ONE / x;
-		return -Math.log(x); }
+		return Math.log(x); }
 
 	/**Tests the Ln() Function	 */
 	private static void testLn() throws IOException {

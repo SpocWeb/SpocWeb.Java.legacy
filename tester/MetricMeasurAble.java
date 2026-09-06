@@ -49,10 +49,7 @@ implements IScalarMetric {
 	public double dist(final Object a, final Object b) {
 		if (a == b)
 			return 0;
-		// TODO: LOGIC: both operands call a.getDouble() - b's value is never read, so dist()
-		// always returns 0 for distinct objects instead of their actual difference. Should be
-		// ((IMeasurAble) a).getDouble() - ((IMeasurAble) b).getDouble().
-		return ((IMeasurAble) a).getDouble() - ((IMeasurAble) a).getDouble();
+		return ((IMeasurAble) a).getDouble() - ((IMeasurAble) b).getDouble();
 	}
 
 	/** Returns whether A and B have the same measured value, via {@link #dist(Object, Object)}.

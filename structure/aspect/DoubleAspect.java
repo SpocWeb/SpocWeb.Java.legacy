@@ -97,6 +97,7 @@ public void setValue(Double Value_) throws    DataFormatException{
 		throw new DataFormatException(x.toString());
 	}
 	this.Value = Value_;
+	this.value = value_; //keep the primitive Field in Sync, getLong()/getDouble() read it
 }
 
 /** Returns this Aspect's Value as a boxed Double, or {@code null} when not validly set.
@@ -139,10 +140,6 @@ public void setString(String value) throws DataFormatException {
 /** Returns this Aspect's Value truncated to a long, rejecting a non-integral Value.
   * @return The Aspect Value as a long Representation
   * @throws DataFormatException when the Status is invalid or the Value is not integral  */
-// TODO: LOGIC: reads the primitive field `value`, which no setValue(...) overload ever
-// assigns (they all set the boxed `Value` field instead) - `value` stays permanently at its
-// default 0.0, so getLong() (and getDouble() below, and getDate() through it) ignores every
-// Value actually set on this Aspect.
 public long getLong() throws DataFormatException {
 	if (Status != 0)          { throw new DataFormatException("Aspect '" + Name + "' has Status:" + Status); }
 	long ret  = (long) value;
@@ -152,8 +149,6 @@ public long getLong() throws DataFormatException {
 /** Returns this Aspect's Value as a primitive double.
   * @return The Aspect Value as a double Representation
   * @throws DataFormatException when the Status is invalid  */
-// TODO: LOGIC: same stale-field defect as getLong() above - reads `value`, which is never
-// assigned by setValue(...), instead of the boxed `Value` field that setValue actually writes.
 public double getDouble() throws DataFormatException {
 	if (Status != 0)          { throw new DataFormatException("Aspect '" + Name + "' has Status:" + Status); }
 	return value; }

@@ -55,13 +55,12 @@ implements ITester {
 		while(true) {
 			if (Delegate.test (arg)) return true; //break; //when the Condition succeeds
 			if (waitTime <= 0) return false; //throw new TimeOutException(); //when timed out
-			try {
-				// TODO: LOGIC: wait(waitTime) is called without holding this instance's monitor
-				// (test() is not synchronized and there is no surrounding synchronized(this) block),
-				// so every call throws IllegalMonitorStateException at runtime instead of waiting.
-				wait(waitTime); //notify the next Thread on Interruption, because the Condition also holds for that one
-			} catch (InterruptedException e) {
-				notify(); return false; } //throw e; }
+			synchronized (this) { //wait()/notify() require this Instance's Monitor to be held
+				try {
+					wait(waitTime); //notify the next Thread on Interruption, because the Condition also holds for that one
+				} catch (InterruptedException e) {
+					notify(); return false; } //throw e; }
+			}
 			waitTime = TimeOut - (System.currentTimeMillis()-start); //reduce the wait Time
 		} //return true;
 //		notifyAll(); //notify waiting Objects that this Task has been performed!

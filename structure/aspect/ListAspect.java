@@ -67,10 +67,7 @@ extends Aspect {
 	 * facets: {layer: domain, status: broken, complexity: low}
 	 * -->
 	 */
-	// TODO: LOGIC: `list_` is never assigned to the `list` field, so `list` stays permanently
-	// null regardless of what is passed in here - every Subclass method reading it would see
-	// an empty List instead of the one the caller supplied.
-	protected ListAspect(String name, Aspect[] list_) { super(name); }
+	protected ListAspect(String name, Aspect[] list_) { super(name); this.list = list_; }
 
 ////////////////////////////////////////////////////////////////////////////////
 /// #region : public Methods, then private Methods

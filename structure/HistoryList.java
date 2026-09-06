@@ -90,11 +90,7 @@ public static int DefaultSize;
 	//add an Object at the current position
 	public void addItem(Object item) {
 		stackPtr = ++currPtr; //limit the Stack to this last Position!
-		// TODO: LOGIC: grows only when currPtr > stack.length, one Element too late: when
-		// currPtr == stack.length (the Array's first out-of-bounds Index) this guard is
-		// false, and the write below throws ArrayIndexOutOfBoundsException instead of
-		// growing. Should be >=.
-		if (currPtr > stack.length) {
+		if (currPtr >= stack.length) {
 			Object[] tmp = new Object[stack.length + stack.length];
 			System.arraycopy(stack, 0, tmp, 0, stack.length);
 			stack = tmp;
