@@ -770,15 +770,11 @@ extends AVector
 		return oneAt(ret, 0, ret.length);
 	}
 
-	// TODO: LOGIC: fills with (short) 0, not 1 - contradicts both this method's name
-	// ("oneAt") and its own one-arg wrapper oneAt(short[])'s documented contract ("set to
-	// 1"). Every element in [start, stop) is zeroed instead of set to 1. Same defect as
-	// VectorChar.oneAt(char[], int, int) / VectorLong.oneAt(long[], int, int).
 	/**
 	 * Sets the elements in the given range of the array to 1.
-	 * @return the given Array with the Elements from Start (inclusive) to Stop (exclusive) set to 0. 	 */
+	 * @return the given Array with the Elements from Start (inclusive) to Stop (exclusive) set to 1. 	 */
 	final static public short[] oneAt(final short[] ret, final int start, final int stop) {
-		java.util.Arrays.fill(ret, start, stop, (short) 0);
+		java.util.Arrays.fill(ret, start, stop, (short) 1);
 		return ret;
 	}
 
@@ -3027,13 +3023,9 @@ extends AVector
 	 * @exception  ArrayIndexOutOfBoundsException  if the index was invalid.
 	 */
 	public short removeAt(final int index) {
-		// TODO: LOGIC: `--itemCount` runs unconditionally before the range check; when
-		// `index` is out of range (> the pre-decrement itemCount, or negative) this method
-		// returns early with 0 as if nothing happened, but itemCount has already been
-		// permanently decremented, corrupting the vector's size even though no element was
-		// actually removed. Same defect as VectorObject.removeAt(int) / VectorChar.removeAt(int).
-		if (index > --itemCount)  //
+		if (index < 0 || index > itemCount - 1)  //
 			return 0;
+		--itemCount;
 		final short ret = items[index]; 
 		System.arraycopy(items, index+1, items, index, itemCount-index); 
 		return ret;
@@ -3334,19 +3326,13 @@ extends AVector
 	}
 
 	/** multiplies this Vector by the given Portion of the values */
-	// TODO: LOGIC: calls subAt(...) instead of mulAt(...) - copy-pasted from subAt(VectorShort)
-	// above without updating the delegated call, so this silently subtracts the given
-	// vector's values instead of multiplying by them. Same defect as VectorChar.mulAt(VectorChar).
 	public VectorShort mulAt(final VectorShort vector) {
-		return subAt(vector.items, 0, vector.itemCount);
+		return mulAt(vector.items, 0, vector.itemCount);
 	}
 
 	/** divides this Vector by the given Portion of the vector*/
-	// TODO: LOGIC: calls subAt(...) instead of divAt(...) - copy-pasted from subAt(VectorShort)
-	// above without updating the delegated call, so this silently subtracts the given
-	// vector's values instead of dividing by them. Same defect as VectorChar.divAt(VectorChar).
 	public VectorShort divAt(final VectorShort vector) {
-		return subAt(vector.items, 0, vector.itemCount);
+		return divAt(vector.items, 0, vector.itemCount);
 	}
 
 	/** subtracts the given Portion of the values from this Vector */
@@ -3378,21 +3364,16 @@ extends AVector
 	}
 
 	/** multiplies this Vector by the given Portion of the values */
-	// TODO: LOGIC: the `value` parameter is never used - this calls the (short[], int, int)
-	// overload with `items` itself as the array argument, so it squares every element
-	// (items[i] *= items[i]) instead of multiplying by the given scalar `value`. Same
-	// defect as VectorChar.mulAt(int).
 	public VectorShort mulAt(final int value) {
-		return mulAt(items, 0, itemCount);
+		VectorShort.mulAt(items, value, 0, itemCount);
+		return this;
 	}
 
 	/** divides this Vector by the given Portion of the vector*/
-	// TODO: LOGIC: the `value` parameter is never used - this calls the (short[], int, int)
-	// overload with `items` itself as the divisor array, so it divides every element by
-	// itself (yielding 1, or an arithmetic error on a zero element) instead of dividing by
-	// the given scalar `value`. Same defect as VectorChar.divAt(int).
 	public VectorShort divAt(final int value) {
-		return divAt(items, 0, itemCount);
+		for (int i = itemCount; i-- > 0;)
+			items[i] /= value;
+		return this;
 	}
 
 	/** adds the given Portion of the values to this Vector */

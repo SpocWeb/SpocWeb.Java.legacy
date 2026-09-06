@@ -879,13 +879,7 @@ public class HunterFloat {
 	final static public int GET_STATISTIC_POS(final float[] items, final int[] index, final int start, final int stop, final int position) {
 		if (start >= stop) {
 			return start; }
-		// TODO: LOGIC: PARTITION is declared as PARTITION(values, index, stop, start) (see the
-		// 4-arg overload above), but this call passes (start, stop) - the two bounds are swapped
-		// positionally. Since start < stop is guaranteed here, PARTITION's internal "stop" ends up
-		// smaller than its internal "start", which almost always trips its `stop <= start + 1`
-		// short-circuit and returns the wrong split point, corrupting the indexed order-statistic
-		// (median/percentile) results computed through this overload.
-		final int q = PARTITION(items, index, start, stop); //after this all Elements
+		final int q = PARTITION(items, index, stop, start); //after this all Elements
 		final int k = q - start + 1;
 		if (position <= k) {
 			return GET_STATISTIC_POS(items, index, start, q, position); } //

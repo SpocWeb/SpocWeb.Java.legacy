@@ -167,13 +167,10 @@ extends AVector {
 	 * @exception  ArrayIndexOutOfBoundsException  if the index was invalid.
 	 */
 	public Object removeAt(final int index) {
-		// TODO: LOGIC: `--itemCount` runs as a side effect of evaluating the right operand of
-		// `||` whenever index >= 0; when index > the pre-decrement itemCount (out of range), the
-		// method still returns null here but itemCount has already been permanently decremented,
-		// corrupting the vector's size even though no element was actually removed.
 		if ((index < 0) ||
-			(index > --itemCount))
+			(index > itemCount - 1))
 			return null;
+		--itemCount;
 		final Object ret = items[index]; 
 		System.arraycopy(items, index+1, items, index, itemCount-index); 
 		return ret;
@@ -449,15 +446,9 @@ extends AVector {
 	 * @param   anArray   the array into which the components get copied.
 	 * Declared final, because System.arraycopy is the fastest way.	 */
 	final public synchronized void copyInto(int[] anArray) {
-		// TODO: LOGIC: `items` is an Object[] here (unlike VectorInt, whose items are int[]);
-		// copying it into an int[] destination via System.arraycopy throws ArrayStoreException
-		// at runtime on every call once itemCount > 0. This method was apparently copy-pasted
-		// from VectorInt without adjusting for VectorObject's element type.
-		System.arraycopy(items, 0, anArray, 0, itemCount);
-		/*Object elementDataLocal[] = this.Items;
-		for (int i = ItemCount; i-- > 0;)
-			anArray[i] = elementDataLocal[i];
-		*/
+		final Object elementDataLocal[] = this.items;
+		for (int i = itemCount; i-- > 0;)
+			anArray[i] = ((Number) elementDataLocal[i]).intValue();
 	}
 
 	/**Copies the components of this VectorInt into the specified array.
@@ -466,9 +457,7 @@ extends AVector {
 	 * @param   anArray   the array into which the components get copied.	 */
 	final public synchronized int[] toArray() {
 		int[] Return = new int[itemCount];
-		// TODO: LOGIC: same ArrayStoreException hazard as copyInto(int[]) above: `items` is an
-		// Object[], not an int[], so this arraycopy throws at runtime once itemCount > 0.
-		System.arraycopy(items, 0, Return, 0, itemCount);
+		copyInto(Return);
 		return Return;
 	}
 

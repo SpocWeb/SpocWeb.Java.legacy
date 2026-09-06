@@ -671,13 +671,11 @@ extends AVector {
 		if (arg.length > 3)
 			throw new AbstractMethodError();
 		if (ths.length < 2) {
-			// TODO: LOGIC: result[3] is out of Bounds for "new double[3]" (valid Indices 0-2); throws ArrayIndexOutOfBoundsException instead of returning a 2D Cross Product Result.
-			result[3] = ths[0] * arg[1];
+			result[2] = ths[0] * arg[1];
 			return result;
 		}
 		if (arg.length < 2) {
-			// TODO: LOGIC: result[3] is out of Bounds for "new double[3]" (valid Indices 0-2); throws ArrayIndexOutOfBoundsException instead of returning a 2D Cross Product Result.
-			result[3] = -arg[0] * ths[1];
+			result[2] = -arg[0] * ths[1];
 			return result;
 		}
 		if ((ths.length < 3) && (arg.length < 3)) {
@@ -1021,8 +1019,7 @@ extends AVector {
 		double[] ret = new double[dim];
 		System.arraycopy(a, 0, ret, 0, a.length);
 		Arrays.fill(ret, a.length, dim, 0.0);
-		// TODO: LOGIC: returns the original Array 'a' instead of the newly-resized 'ret', so the resized Array is discarded and callers relying on the returned Value get the un-resized input back.
-		return a;
+		return ret;
 	}
 
 	/** Zeroes out an entire Array in Place.
@@ -1059,10 +1056,9 @@ extends AVector {
 		return ONE_AT(ret, 0, ret.length); }
 
 	/** Sets an Element Range of an Array in Place to 1.
-	 * @return the given Array with the Elements from Start (inclusive) to Stop (exclusive) set to 0. 	 */
+	 * @return the given Array with the Elements from Start (inclusive) to Stop (exclusive) set to 1. 	 */
 	final static public double[] ONE_AT(double[] ret, int start, int stop) {
-		// TODO: LOGIC: fills the Range with 0 instead of 1 (copy-paste from ZERO_AT); callers expecting a one-Vector get a zero-Vector instead.
-		java.util.Arrays.fill(ret, start, stop, 0);
+		java.util.Arrays.fill(ret, start, stop, 1);
 		return ret;
 	}
 
@@ -1339,8 +1335,7 @@ extends AVector {
 			return ret;
 		}
 		ret[0] = f.Map(x0);
-		// TODO: LOGIC: loop condition "++i <= ret.length" lets i reach ret.length, so the final iteration writes ret[ret.length] and throws ArrayIndexOutOfBoundsException whenever ret.length > 1.
-		for (int i = 0; ++i <= ret.length;) {
+		for (int i = 0; ++i < ret.length;) {
 			ret[i] = f.Map(x0 += dx); }
 		return ret;
 	}
@@ -2610,8 +2605,7 @@ extends AVector {
 			ret = new double[stop];
 		while (--stop >= start) {
 			final double tmp; //Calculate the Norm
-			// TODO: LOGIC: reads "tmp = ret[stop]" instead of "arg[stop]", so whenever ret is a distinct fresh Array from arg, the Source Values in arg are ignored and only ret's (garbage/zero) prior Content is used.
-			if (0 <= (tmp = ret[stop]))
+			if (0 <= (tmp = arg[stop]))
 				ret[stop] =  tmp;
 			else
 				ret[stop] = -tmp;
@@ -3319,12 +3313,10 @@ extends AVector {
 	  * @return the Product of the given Arrays
 	  * @param ret Array with the Values to be processed. Also returned by this Method.
 	  */
-	// TODO: LOGIC: when retLength > arrLength, ret's Elements from arrLength..retLength-1 are neither multiplied nor zeroed (the FILL_AT call that would zero them is commented out), so they silently keep their pre-call Values instead of becoming 0 as the disabled line's own comment says they should.
-	final static public double[] MUL_AT(final double[] ret, int retLength, final double[] arr, final int arrLength) {
-		if (retLength > arrLength) {
-			retLength = arrLength; }
-		MUL_AT(ret, arr, 0, retLength);
-		//FILL_AT(ret, 0, retLength, arrLength); //The upper Elements must be set to 0 or the Size limited!
+	final static public double[] MUL_AT(final double[] ret, final int retLength, final double[] arr, final int arrLength) {
+		final int common = Math.min(retLength, arrLength);
+		MUL_AT(ret, arr, 0, common);
+		FILL_AT(ret, 0, common, retLength); //The upper Elements must be set to 0 or the Size limited!
 		return ret;
 	}
 
@@ -3339,9 +3331,11 @@ extends AVector {
 	  * @return the Product of the given Arrays
 	  * @param ret Array with the Values to be processed. Also returned by this Method.
 	  */
-	// TODO: LOGIC: same left-over-Elements-neither-multiplied-nor-zeroed defect as the double[] overload above, when retLength > arrLength.
 	final static public double[] MUL_AT(final double[] ret, final int retLength, final float[] arr, final int arrLength) {
-		return MUL_AT(ret, arr, 0, Math.min(arrLength, retLength)); } //The upper Elements must be set to 0 or the Size limited!
+		final int common = Math.min(arrLength, retLength);
+		MUL_AT(ret, arr, 0, common);
+		FILL_AT(ret, 0, common, retLength); //The upper Elements must be set to 0 or the Size limited!
+		return ret; }
 	
 	/** Multiplies an Element Range of ret by arr in Place.
 	  * @return the Product of the given Arrays
@@ -5003,10 +4997,10 @@ extends AVector {
 	 * @return	 the value removed.
 	 * @exception  ArrayIndexOutOfBoundsException  if the index was invalid.
 	 */
-	// TODO: LOGIC: --itemCount runs unconditionally as part of evaluating the guard, so whenever index is out of range (index > itemCount-1) this still returns 0 but itemCount has already been permanently decremented, corrupting the Vector's size even though no Element was removed. Same defect as VectorObject.removeAt(int) and VectorString.removeAt(int).
 	public double removeAt(final int index) {
-		if (index > --itemCount)  //
+		if (index < 0 || index > itemCount - 1)  //
 			return 0;
+		--itemCount;
 		final double ret = items[index]; 
 		System.arraycopy(items, index+1, items, index, itemCount-index); 
 		return ret;
@@ -5970,11 +5964,13 @@ extends AVector {
 			Sum = (Sum + (int) Double.doubleToLongBits(items[i])) >> 1; }
 		return Sum; }
 
-	// TODO: LOGIC: violates the equals() contract for a null argument: "arg instanceof VectorDouble" is false for null, so this falls through to "arg.equals(this)" and throws NullPointerException instead of returning false.
 	/** Delegates to {@link #equals(VectorDouble)} when arg is one, otherwise to arg's own equals().
-	 * @return true when arg is equal to this Vector, as decided by whichever side's equals() runs.
+	 * @return true when arg is equal to this Vector, as decided by whichever side's equals() runs;
+	 *  false for a null arg.
 	 */
 	public boolean equals(final Object arg) {
+		if (arg == null) {
+			return false; }
 		if (arg instanceof VectorDouble) {
 			return equals((VectorDouble) arg); }
 		return arg.equals(this);
@@ -6074,16 +6070,15 @@ extends AVector {
 	 * @return  a string representation of the object.
 	 *  @see Object#toString()
 	 */
-	// TODO: LOGIC: the loop runs "for (i=0; ++i <= itemCount;)", so it writes items[1]..items[itemCount] in addition to the items[0] written just above - one Element more than the itemCount Items actually held (items[itemCount] is past the last valid logical Item). Also "stream.write(itemCount)" writes itemCount as a raw character code, not its decimal digits (should be String.valueOf(itemCount)).
 	public Writer toStream(final Writer stream) throws IOException
 	{	//either return it as a long or in VectorDbl Representation
 		//TODO: Write toStream
 	//	if (Modul > 0) return RingLongValue().toString();	//Number Representation
 	//	else {	//Polynomic Representation
-		stream.write(itemCount);
+		stream.write(String.valueOf(itemCount));
 		stream.write("(");
 		stream.write(String.valueOf(items[0]));
-		for (int i = 0; ++i <= itemCount; ) {	//most important Coefficients first
+		for (int i = 0; ++i < itemCount; ) {	//most important Coefficients first
 			stream.write(",");
 			stream.write(String.valueOf(items[i])); }
 		stream.write(")");
@@ -6166,10 +6161,9 @@ extends AVector {
 	 * @return the full Difference Vector of this Manifold in Place
 	  * The full Difference Vector consists of all Derivatives.
 	  * It can be used to calculate inter- and extrapolations with Horner(). 	 */
-	// TODO: LOGIC: infinite loop once itemCount reaches 0 - diffAt() guards "if (itemCount <= 0) return this;" and no longer decrements itemCount, but this loop's own condition is "itemCount >= 0", which stays true forever once itemCount==0, so this call never returns.
 	public VectorDouble fullDiffAt() {
 	//	ByRefInt fact = new ByRefInt(1);
-		while (itemCount >= 0) {
+		while (itemCount > 0) {
 			diffAt(); //items[itemCount+1].divAt(fact); fact.Value*=(++i);}
 		}
 	//	items[0].divAt(fact);

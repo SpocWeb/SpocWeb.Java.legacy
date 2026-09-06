@@ -77,12 +77,7 @@ extends AVector {
 	final static public long MIN(long[][] matrix, int col) {
 		long min = Long.MAX_VALUE;
 		for (int i = matrix.length; --i >= 0;) {
-			// TODO: LOGIC: comparison is inverted (should be `min > matrix[i][col]`) - as
-			// written, `min` starts at Long.MAX_VALUE and this condition can never be true,
-			// so this method always returns Long.MAX_VALUE regardless of the array's actual
-			// content. Same defect as VectorChar.MIN(char[][], int); looks copy-pasted from
-			// MAX(long[][], int) above without flipping the operator.
-			if (min < matrix[i][col]) {
+			if (min > matrix[i][col]) {
 				min = matrix[i][col]; }
 		} return min; }
 	
@@ -532,16 +527,11 @@ extends AVector {
 	final static public long[] oneAt(long[] ret) {
 		return oneAt(ret, 0, ret.length); }
 
-	// TODO: LOGIC: fills with (long) 0, not 1 - contradicts both this method's name
-	// ("oneAt") and its own one-arg wrapper oneAt(long[])'s documented contract ("set to
-	// 1"). Every element in [Start, Stop) is zeroed instead of set to 1. Looks
-	// copy-pasted from zeroAt(long[], int, int) without changing the fill value. Same
-	// defect as VectorChar.oneAt(char[], int, int).
 	/**
 	 * Sets the elements in the given range of the array to 1.
-	 * @return the given Array with the Elements from Start (inclusive) to Stop (exclusive) set to 0. 	 */
+	 * @return the given Array with the Elements from Start (inclusive) to Stop (exclusive) set to 1. 	 */
 	final static public long[] oneAt(long[] ret, int Start, int Stop) {
-		java.util.Arrays.fill(ret, Start, Stop, (long) 0);
+		java.util.Arrays.fill(ret, Start, Stop, (long) 1);
 		return ret; }
 
 	/**
@@ -796,12 +786,7 @@ extends AVector {
 			if (0 < (dif = arr1[i]-arr2[i])) { //avoid calling expensive Math.abs
 				diff[i] = (long) dif;
 				norm += dif; continue; }
-				// TODO: LOGIC: `diff[i]` is never assigned on this branch (dif <= 0), even
-				// though the contract says `diff` is "an Output Parameter being filled with
-				// the Difference Vector" - only the positive-difference elements get written;
-				// callers reading diff[i] for an index where arr1[i] <= arr2[i] see a stale
-				// or zero-initialized value, never the actual (negative) difference. Same
-				// defect as VectorChar.AbsDiffNorm.
+				diff[i] = -dif;
 				norm -= dif;
 		} return norm; }
 
@@ -2207,13 +2192,9 @@ extends AVector {
 	 * @exception  ArrayIndexOutOfBoundsException  if the index was invalid.
 	 */
 	public long removeAt(final int index) {
-		// TODO: LOGIC: `--itemCount` runs unconditionally before the range check; when
-		// `index` is out of range (> the pre-decrement itemCount, or negative) this method
-		// returns early with 0 as if nothing happened, but itemCount has already been
-		// permanently decremented, corrupting the vector's size even though no element was
-		// actually removed. Same defect as VectorObject.removeAt(int) / VectorChar.removeAt(int).
-		if (index > --itemCount)  //
+		if (index < 0 || index > itemCount - 1)  //
 			return 0;
+		--itemCount;
 		final long ret = items[index]; 
 		System.arraycopy(items, index+1, items, index, itemCount-index); 
 		return ret;
@@ -2365,18 +2346,12 @@ extends AVector {
 		return subAt(vector.items, 0, vector.itemCount); }
 
 	/** multiplies this Vector by the given Portion of the values */
-	// TODO: LOGIC: calls subAt(...) instead of mulAt(...) - copy-pasted from subAt(VectorLong)
-	// above without updating the delegated call, so this silently subtracts the given
-	// vector's values instead of multiplying by them. Same defect as VectorChar.mulAt(VectorChar).
 	public VectorLong mulAt(final VectorLong vector) {
-		return subAt(vector.items, 0, vector.itemCount); }
+		return mulAt(vector.items, 0, vector.itemCount); }
 
 	/** divides this Vector by the given Portion of the vector*/
-	// TODO: LOGIC: calls subAt(...) instead of divAt(...) - copy-pasted from subAt(VectorLong)
-	// above without updating the delegated call, so this silently subtracts the given
-	// vector's values instead of dividing by them. Same defect as VectorChar.divAt(VectorChar).
 	public VectorLong divAt(final VectorLong vector) {
-		return subAt(vector.items, 0, vector.itemCount); }
+		return divAt(vector.items, 0, vector.itemCount); }
 
 	/** subtracts the given Portion of the values from this Vector */
 	public VectorLong subAt(final long[] values, int start, int stop) {
@@ -2405,20 +2380,15 @@ extends AVector {
 		return this; }
 
 	/** multiplies this Vector by the given Portion of the values */
-	// TODO: LOGIC: the `value` parameter is never used - this calls the (long[], int, int)
-	// overload with `items` itself as the array argument, so it squares every element
-	// (items[i] *= items[i]) instead of multiplying by the given scalar `value`. Same
-	// defect as VectorChar.mulAt(int).
 	public VectorLong mulAt(final int value) {
-		return mulAt(items, 0, itemCount); }
+		VectorLong.mulAt(items, value, 0, itemCount);
+		return this; }
 
 	/** divides this Vector by the given Portion of the vector*/
-	// TODO: LOGIC: the `value` parameter is never used - this calls the (long[], int, int)
-	// overload with `items` itself as the divisor array, so it divides every element by
-	// itself (yielding 1, or an arithmetic error on a zero element) instead of dividing by
-	// the given scalar `value`. Same defect as VectorChar.divAt(int).
 	public VectorLong divAt(final int value) {
-		return divAt(items, 0, itemCount); }
+		for (int i = itemCount; i-- > 0;)
+			items[i] /= value;
+		return this; }
 
 	/** adds the given Portion of the values to this Vector */
 	public VectorLong addAt(final long[] values, int start, int stop) {

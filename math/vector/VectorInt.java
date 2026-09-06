@@ -1010,11 +1010,10 @@ extends AVector {
 		return ONE_AT(ret, 0, ret.length);
 	}
 
-	// TODO: LOGIC: fills with 0 instead of 1 (copy-pasted from ZERO_AT); same defect as VectorChar/VectorLong/VectorShort oneAt.
 	/** Sets the given Range of the Array to 1.
-	 * @return the given Array with the Elements from Start (inclusive) to Stop (exclusive) set to 0. 	 */
+	 * @return the given Array with the Elements from Start (inclusive) to Stop (exclusive) set to 1. 	 */
 	final static public int[] ONE_AT(final int[] ret, final int start, final int stop) {
-		java.util.Arrays.fill(ret, start, stop, 0);
+		java.util.Arrays.fill(ret, start, stop, 1);
 		return ret;
 	}
 
@@ -2042,13 +2041,11 @@ extends AVector {
 		if (arg.length > 3)
 			throw new AbstractMethodError();
 		if (ths.length < 2) {
-			// TODO: LOGIC: result is a new int[3] (valid indices 0-2); result[3] throws ArrayIndexOutOfBoundsException. Likely intended result[2].
-			result[3] = ths[0] * arg[1];
+			result[2] = ths[0] * arg[1];
 			return result;
 		}
 		if (arg.length < 2) {
-			// TODO: LOGIC: result is a new int[3] (valid indices 0-2); result[3] throws ArrayIndexOutOfBoundsException. Likely intended result[2].
-			result[3] = -arg[0] * ths[1];
+			result[2] = -arg[0] * ths[1];
 			return result;
 		}
 		if ((ths.length < 3) && (arg.length < 3)) {
@@ -3572,10 +3569,10 @@ extends AVector {
 	 * @return	 the value removed.
 	 * @exception  ArrayIndexOutOfBoundsException  if the index was invalid.
 	 */
-	// TODO: LOGIC: decrements itemCount unconditionally before the range check, corrupting the Vector's size on an out-of-range access; same defect as VectorChar/VectorLong/VectorShort removeAt.
 	public int removeAt(final int index) {
-		if (index > --itemCount)  //
+		if (index < 0 || index > itemCount - 1)  //
 			return 0;
+		--itemCount;
 		final int ret = items[index];
 		System.arraycopy(items, index+1, items, index, itemCount-index);
 		return ret;
@@ -3726,15 +3723,13 @@ extends AVector {
 	public VectorInt subAt(final VectorInt vector) {
 		return subAt(vector.items, 0, vector.itemCount); }
 
-	// TODO: LOGIC: calls subAt instead of a multiplicative operation; same defect as VectorChar/VectorLong/VectorShort mulAt(VectorX).
 	/** multiplies this Vector by the given Portion of the values */
 	public VectorInt mulAt(final VectorInt vector) {
-		return subAt(vector.items, 0, vector.itemCount); }
+		return mulAt(vector.items, 0, vector.itemCount); }
 
-	// TODO: LOGIC: calls subAt instead of a divisive operation; same defect as VectorChar/VectorLong/VectorShort divAt(VectorX).
 	/** divides this Vector by the given Portion of the vector*/
 	public VectorInt divAt(final VectorInt vector) {
-		return subAt(vector.items, 0, vector.itemCount); }
+		return divAt(vector.items, 0, vector.itemCount); }
 
 	/** subtracts the given Portion of the values from this Vector */
 	public VectorInt subAt(final int[] values, int start, int stop) {
@@ -3762,15 +3757,15 @@ extends AVector {
 		VectorInt.ADD_AT(items, -value, 0, itemCount);
 		return this; }
 
-	// TODO: LOGIC: ignores the value parameter and instead multiplies items by itself element-wise; same defect as VectorChar/VectorLong/VectorShort mulAt(int).
 	/** multiplies this Vector by the given Portion of the values */
 	public VectorInt mulAt(final int value) {
-		return mulAt(items, 0, itemCount); }
+		VectorInt.MUL_AT(items, value, 0, itemCount);
+		return this; }
 
-	// TODO: LOGIC: ignores the value parameter and instead divides items by itself element-wise (yielding all 1s); same defect as VectorChar/VectorLong/VectorShort divAt(int).
 	/** divides this Vector by the given Portion of the vector*/
 	public VectorInt divAt(final int value) {
-		return divAt(items, 0, itemCount); }
+		VectorInt.DIV_AT(items, value, 0, itemCount);
+		return this; }
 
 	/** adds the given Portion of the values to this Vector */
 	public VectorInt addAt(final int[] values, int start, int stop) {

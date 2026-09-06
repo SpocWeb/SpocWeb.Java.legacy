@@ -2107,8 +2107,7 @@ extends AVector {
 			ret = new float[stop];
 		while (--stop >= start) {
 			final float tmp; //Calculate the Norm
-			// TODO: LOGIC: reads from ret[stop] instead of arg[stop], so the source Array arg is ignored whenever ret != arg (e.g. when called with a fresh/different ret Array the result is all zeros).
-			if (0 <= (tmp = ret[stop]))
+			if (0 <= (tmp = arg[stop]))
 				ret[stop] =  tmp;
 			else
 				ret[stop] = -tmp;
@@ -4297,10 +4296,10 @@ extends AVector {
 	 * @return	 the value removed.
 	 * @exception  ArrayIndexOutOfBoundsException  if the index was invalid.
 	 */
-	// TODO: LOGIC: decrements itemCount unconditionally before the range check, corrupting the Vector's size on an out-of-range access; same defect as VectorChar/VectorLong/VectorShort/VectorInt removeAt.
 	public float removeAt(final int index) {
-		if (index > --itemCount)  //
+		if (index < 0 || index > itemCount - 1)  //
 			return 0;
+		--itemCount;
 		final float ret = items[index];
 		System.arraycopy(items, index+1, items, index, itemCount-index);
 		return ret;
@@ -4574,16 +4573,14 @@ extends AVector {
 		return subAt(vector.items, 0, vector.itemCount);
 	}
 
-	// TODO: LOGIC: calls subAt instead of a multiplicative operation; same defect as VectorChar/VectorLong/VectorShort/VectorInt mulAt(VectorX).
 	/** multiplies this Vector by the given Portion of the values */
 	public VectorFloat mulAt(final VectorFloat vector) {
-		return subAt(vector.items, 0, vector.itemCount);
+		return mulAt(vector.items, 0, vector.itemCount);
 	}
 
-	// TODO: LOGIC: calls subAt instead of a divisive operation; same defect as VectorChar/VectorLong/VectorShort/VectorInt divAt(VectorX).
 	/** divides this Vector by the given Portion of the vector*/
 	public VectorFloat divAt(final VectorFloat vector) {
-		return subAt(vector.items, 0, vector.itemCount);
+		return divAt(vector.items, 0, vector.itemCount);
 	}
 
 	/** subtracts the given Portion of the values from this Vector */
@@ -4630,16 +4627,17 @@ extends AVector {
 		return this;
 	}
 
-	// TODO: LOGIC: ignores the value parameter and instead multiplies items by itself element-wise; same defect as VectorChar/VectorLong/VectorShort/VectorInt mulAt(scalar).
 	/** multiplies this Vector by the given Portion of the values */
 	public VectorFloat mulAt(final double value) {
-		return mulAt(items, 0, itemCount);
+		VectorFloat.MUL_AT(items, value, 0, itemCount);
+		return this;
 	}
 
-	// TODO: LOGIC: ignores the value parameter and instead divides items by itself element-wise (yielding all 1s); same defect as VectorChar/VectorLong/VectorShort/VectorInt divAt(scalar).
 	/** divides this Vector by the given Portion of the vector*/
 	public VectorFloat divAt(final double value) {
-		return divAt(items, 0, itemCount);
+		for (int i = itemCount; i-- > 0;)
+			items[i] /= value;
+		return this;
 	}
 
 	/** adds the given Portion of the values to this Vector */

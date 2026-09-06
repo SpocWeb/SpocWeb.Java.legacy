@@ -756,13 +756,7 @@ public class HunterDouble {
 	public static int GET_STATISTIC(double[] Items, int[] index, int p, int r, int i) {
 		if (p >= r)
 			return p;
-		// TODO: LOGIC: PARTITION is declared as PARTITION(values, index, stop, start) (see the
-		// 4-arg overload above), but this call passes (p, r) - the two bounds are swapped
-		// positionally. Since p < r is guaranteed here, PARTITION's internal "stop" ends up
-		// smaller than its internal "start", which almost always trips its `stop <= start + 1`
-		// short-circuit and returns the wrong split point, corrupting the indexed order-statistic
-		// results computed through this method.
-		int q = PARTITION(Items, index, p, r); //after this all Elements
+		int q = PARTITION(Items, index, r, p); //after this all Elements
 		int k = q - p + 1;
 		if (i <= k)
 			return GET_STATISTIC(Items, index, p, q, i); //

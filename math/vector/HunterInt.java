@@ -441,7 +441,7 @@ public class HunterInt {
 	private static final void SORT_RECURSIVE(final int[] items, final int start, final int stop) {
 		if (start >= stop) {
 			return; } // Items; //not effective to return since recursive!
-		final int middle = PARTITION(items, start, stop);
+		final int middle = PARTITION(items, stop, start);
 		SORT_RECURSIVE(items, start   , middle-1);
 		SORT_RECURSIVE(items, middle+1, stop    );
 	}
@@ -603,14 +603,7 @@ public class HunterInt {
 	final static public int GET_STATISTIC_POS(final int[] items, final int position, final int start, final int stop) {
 		if (start >= stop)
 			return start;
-		// TODO: LOGIC: PARTITION is declared as PARTITION(items, stop, start) (see line ~278), but
-		// this call passes (start, stop) - the two bounds are swapped positionally. Since
-		// start < stop is guaranteed here, PARTITION's internal "stop" ends up smaller than its
-		// internal "start", which almost always trips its `stop <= start + 1` short-circuit and
-		// returns the wrong split point (== this method's own `stop`), corrupting every statistic
-		// (median/percentile/order-statistic) computed through this overload and risking unbounded
-		// recursion for any array where position keeps re-selecting the same sub-range.
-		final int q = PARTITION(items, start, stop); //after this, all Elements are heapified.
+		final int q = PARTITION(items, stop, start); //after this, all Elements are heapified.
 		final int k = q - start + 1;
 		if (position <= k) {  //in the first partial Array...
 			return GET_STATISTIC_POS(items, position, start, q); } //
@@ -844,11 +837,7 @@ public class HunterInt {
 	final static public int GET_STATISTIC_POS(final int[] items, final int[] index, final int start, final int stop, final int position) {
 		if (start >= stop) {
 			return start; }
-		// TODO: LOGIC: same argument-order defect as the non-indexed GET_STATISTIC_POS above:
-		// PARTITION(values, index, stop, start) is declared with stop before start (see line
-		// ~662), but this call passes (start, stop), swapping the bounds and breaking the
-		// partition step for this indexed order-statistic path.
-		final int q = PARTITION(items, index, start, stop); //after this all Elements
+		final int q = PARTITION(items, index, stop, start); //after this all Elements
 		final int k = q - start + 1;
 		if (position <= k) {
 			return GET_STATISTIC_POS(items, index, start, q, position); } //

@@ -453,12 +453,7 @@ public class VectorString extends AVector {
 	/** Formats a String by filling it into the Format String */
 	final static public String ALIGN_RIGHT(String str, String format) {
 		String strFileNr = format + str;
-		// TODO: LOGIC: to right-align str within format's width, the intended slice is the last
-		// format.length() characters of (format+str), i.e. substring(str.length()). Subtracting
-		// format.length() again makes the start index negative whenever str is shorter than
-		// format (the normal case this method exists for), throwing
-		// StringIndexOutOfBoundsException instead of padding.
-		return strFileNr.substring(str.length() - format.length());
+		return strFileNr.substring(str.length());
 	}
 
 	/**
@@ -723,11 +718,7 @@ public class VectorString extends AVector {
 		if (padEnd) {
 			SB.append(str);
 		}
-		// TODO: LOGIC: this loop appends only (length - strLen - 1) filler characters, one short
-		// of the (length - strLen) needed to reach the requested `length` - e.g. length=5,
-		// strLen=2 appends 2 fillers instead of 3, so the returned String is 1 character shorter
-		// than `length`, contradicting this method's contract.
-		for (int i = length; --i > strLen;) {
+		for (int i = length; --i >= strLen;) {
 			SB.append(filler);
 		}
 		if (!padEnd) {
@@ -829,12 +820,8 @@ public class VectorString extends AVector {
 		int i = 0;
 		Object item;
 		Iterator iter = coll.iterator();
-		// TODO: LOGIC: `++i` is a pre-increment, so the first element is written to ret[1],
-		// leaving ret[0] permanently null, and the last element is written to ret[coll.size()],
-		// which is out of bounds - this throws ArrayIndexOutOfBoundsException for any non-empty
-		// collection. Should be `ret[i++]` (post-increment) to fill indices 0..size-1.
 		while (iter.hasNext()) {
-			ret[++i] = ((null == (item = iter.next())) ? null : item.toString());
+			ret[i++] = ((null == (item = iter.next())) ? null : item.toString());
 		}
 		return ret;
 	}
@@ -967,13 +954,7 @@ public class VectorString extends AVector {
 		for (int len = str.length(), i = -1; ++i < len;) {
 			final char chr = str.charAt(i);
 			if (separators.indexOf(chr) >= 0) { // the actual Position doesn't matter
-				// TODO: LOGIC: on first match this seeds `ret` via APPEND(str, 0, i - 1), which
-				// copies only `i - 1` characters (0..i-2) instead of the `i` characters (0..i-1)
-				// that actually precede this separator - the character immediately before the
-				// first separator match is silently dropped from the result. When i == 0 (the
-				// very first character is a separator), length -1 makes APPEND copy nothing,
-				// which happens to be correct only in that one case.
-				if (ret == null) ret = APPEND(str, 0, i - 1);
+				if (ret == null) ret = APPEND(str, 0, i);
 				ret.append(escapeChr);
 			}
 			if (ret != null) ret.append(chr);
@@ -1343,18 +1324,15 @@ public class VectorString extends AVector {
 	 *         taking a Byte Array, which is a one Step Operation though and probably
 	 *         highly optimized!
 	 */
-	// TODO: LOGIC: the loop condition `tmp != 0` is checked using the *previous* iteration's
-	// value (tmp starts at -1 and is only updated inside the append() argument), so a genuine
-	// 0 byte at index 0 is appended as ' ' before the loop notices and stops on the next
-	// iteration - the "terminated by a 0 Byte" contract in the Javadoc above is off by one byte.
 	final static public StringBuffer toString(final byte[] bTmp, StringBuffer SB) {
 		if (SB == null)
 			SB = new StringBuffer(bTmp.length);
 		else SB.setLength(0);
 		int i, tmp = i = -1; //
-		while ((++i < bTmp.length) && (tmp != 0)) { // is copying Bytes individually
-													// faster than calling append?
-			SB.append((char) (tmp = ((bTmp[i] + 256) & 0xFF)));
+		while (++i < bTmp.length) { // is copying Bytes individually
+									// faster than calling append?
+			if (0 == (tmp = ((bTmp[i] + 256) & 0xFF))) break;
+			SB.append((char) tmp);
 		} // not if inlining is done!
 		return SB;
 	}
@@ -1760,12 +1738,9 @@ public class VectorString extends AVector {
 	 * @exception ArrayIndexOutOfBoundsException if the index was invalid.
 	 */
 	public String removeAt(final int index) {
-		// TODO: LOGIC: `--itemCount` is evaluated unconditionally here; when index is out of
-		// range (index > the pre-decrement itemCount), this still returns null below but
-		// itemCount has already been permanently decremented, corrupting the vector's size even
-		// though no element was removed.
-		if (index > --itemCount) //
+		if (index < 0 || index > itemCount - 1) //
 			return null;
+		--itemCount;
 		final String ret = items[index];
 		System.arraycopy(items, index + 1, items, index, itemCount - index);
 		return ret;
@@ -1894,15 +1869,9 @@ public class VectorString extends AVector {
 	 *            because System.arraycopy is the fastest way.
 	 */
 	final public synchronized void copyInto(int[] anArray) {
-		// TODO: LOGIC: `items` is a String[] here (unlike VectorInt, whose items are int[]);
-		// copying it into an int[] destination via System.arraycopy throws ArrayStoreException
-		// at runtime on every call once itemCount > 0. Apparently copy-pasted from VectorInt
-		// without adjusting for VectorString's element type.
-		System.arraycopy(items, 0, anArray, 0, itemCount);
-		/*
-		 * Object elementDataLocal[] = this.Items; for (int i = ItemCount; i-- > 0;)
-		 * anArray[i] = elementDataLocal[i];
-		 */
+		final String elementDataLocal[] = this.items;
+		for (int i = itemCount; i-- > 0;)
+			anArray[i] = Integer.parseInt(elementDataLocal[i].trim());
 	}
 
 	/**
@@ -1912,9 +1881,7 @@ public class VectorString extends AVector {
 	 */
 	final public synchronized int[] toArray() {
 		int[] Return = new int[itemCount];
-		// TODO: LOGIC: same ArrayStoreException hazard as copyInto(int[]) above: `items` is a
-		// String[], not an int[], so this arraycopy throws at runtime once itemCount > 0.
-		System.arraycopy(items, 0, Return, 0, itemCount);
+		copyInto(Return);
 		return Return;
 	}
 
