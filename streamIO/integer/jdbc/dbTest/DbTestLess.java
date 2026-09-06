@@ -30,12 +30,9 @@ extends DbTestEquals {
 		super(field1, field2);
 	}
 
-	// TODO: LOGIC: returns a plain DbTestEquals instead of a new DbTestLess, so a caller
-	// invoking newInstance() on this Test loses the Less-Than semantics and silently gets
-	// an Equals Test instead.
 	/** Creates a new Instance of this Class	 */
 	public IDbTest newInstance(final DbColumn field1, final DbColumn field2) {
-		return new DbTestEquals(field1, field2);
+		return new DbTestLess(field1, field2);
 	}
 
 	/** Returns the Less-Than Operator Symbol.	 */
@@ -43,15 +40,15 @@ extends DbTestEquals {
 
 	/** Evaluates whether the left Field's String Value sorts before the right Field's.
 	 * @see streamIO.integer.jdbc.dbTest.IDbTest#test()
+	 * A SQL NULL on either Side yields false, following SQL's three-valued Logic.
 	 * @return true when the Column Values match
 	 * @throws SQLException
 	 */
 	public boolean test() throws SQLException {
-		// TODO: LOGIC: neither str0 nor str1 is checked for null before compareTo() below;
-		// getString() can return null for a SQL NULL value, throwing NullPointerException
-		// (same class of bug as EqualCondition.equals()).
 		final String str0 = field0.getString();
 		final String str1 = field1.getString();
+		if ((str0 == null) || (str1 == null))
+			return false; //a SQL NULL compares to nothing
 		return str0.compareTo(str1) < 0;
 	}
 	

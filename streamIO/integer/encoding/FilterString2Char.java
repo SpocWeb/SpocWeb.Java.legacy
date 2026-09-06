@@ -224,11 +224,9 @@ extends FilterByte {
 			return chr; }
 		while (stop != (chr = streamIn.read())) {
 			SB.append((char) chr); }
-		// TODO: LOGIC: SB is never cleared (e.g. `SB.setLength(0)`) after lookup() consumes
-		// it, so the next encoded section's characters are appended onto this section's
-		// leftover content instead of starting fresh, corrupting every lookup after the
-		// first encoded section in a stream.
-		return lookup(); }
+		final char ret = lookup();
+		SB.setLength(0);
+		return ret; }
 
 	/**
 	  * Writes the specified byte to this output stream.
@@ -243,12 +241,9 @@ extends FilterByte {
 			if (chr != stop) {
 				SB.append((char) chr);
 				return; }
-			// TODO: LOGIC: `collecting` is never reset to false here, and SB is never
-			// cleared, after lookup() consumes the collected section - every subsequent
-			// character is treated as still inside a collected section (appended to the
-			// stale SB instead of written through), so only the very first encoded section
-			// in a stream is ever decoded correctly.
 			chr = lookup();
+			SB.setLength(0);
+			collecting = false;
 		} else { //!collecting
 			if (chr == start) {
 				collecting = true;

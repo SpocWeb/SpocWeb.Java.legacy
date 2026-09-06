@@ -36,20 +36,20 @@ public class FilterCrLfFromQuoted {
 			args = DEFAULT_ARGS;
 		final  FileInputStream FI = new  FileInputStream(args[0]);
 		final FileOutputStream FO = new FileOutputStream(args[1]);
-		// TODO: LOGIC: neither FI nor FO is closed in a finally block, and FI is never closed at
-		// all (only FO.close() below) - an IOException partway through the loop leaks both File
-		// handles.
-		boolean inside = false;
-		for(int val; (val = FI.read ()) != -1;) {
-			if (val == '"') {
-				inside = !inside; FO.write (val); }
-			else if((val == '\r') ||
-					(val == '\n')) {
-				if (! inside)
-					FO.write (val); }
-			else FO.write (val);
+		try {
+			boolean inside = false;
+			for(int val; (val = FI.read ()) != -1;) {
+				if (val == '"') {
+					inside = !inside; FO.write (val); }
+				else if((val == '\r') ||
+						(val == '\n')) {
+					if (! inside)
+						FO.write (val); }
+				else FO.write (val);
+			}
+		} finally {
+			try { FO.close (); } finally { FI.close (); }
 		}
-		FO.close ();
 	}
 	
 }

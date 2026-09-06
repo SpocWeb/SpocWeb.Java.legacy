@@ -12,8 +12,21 @@ import streamIO.integer.filter.FilterByte;
   * This class encrypts/decrypts an Input or Output streamIO.
   * Since it uses XOR password encryption, the same Algorithm can be used
   * for Encryption and Decryption.
-  * The password is also encrypted as the string or file is processed.
-  * This gives an additional level of security, because the XOR Factor changes.
+  * The password is also mutated as the string or file is processed,
+  * so the XOR Factor changes from byte to byte.
+  *
+  * <p><b>SECURITY CONTRACT: this class is NOT cryptographically secure.</b>
+  * It is a home-grown XOR stream cipher that has never been cryptographically
+  * reviewed. A short or guessable password combined with the deterministic
+  * key-schedule mutation in {@code encryptByte()} makes it trivially breakable by a
+  * known-plaintext or chosen-plaintext attack: a single known byte of output at a
+  * given password index leaks that keystream byte. The changing XOR factor is
+  * obfuscation, not added security.
+  * <b>Do not use this class for confidentiality.</b> It is retained only for
+  * compatibility with data already scrambled by it; for real encryption use a
+  * reviewed primitive (e.g. AES-GCM via {@code javax.crypto}).</p>
+  *
+  * @deprecated Not cryptographically secure - do not use for confidentiality.
   *
   * Known SubClasses: <none>
   *
@@ -32,12 +45,7 @@ import streamIO.integer.filter.FilterByte;
   * facets: {layer: utility, status: legacy, complexity: medium}
   * -->
   */
-// TODO: SECURITY: this is a home-grown XOR stream cipher with no cryptographic review - a
-// short, guessable password combined with the deterministic key-schedule mutation in
-// encryptByte() below makes this trivially breakable by a known-plaintext or
-// chosen-plaintext attack (a single known byte of output at a given password index leaks
-// that keystream byte). Do not use this class where genuine confidentiality is required;
-// the class-level Javadoc's claim of "an additional level of security" is misleading.
+@Deprecated
 public class FilterCrypt
 extends FilterByte {
 

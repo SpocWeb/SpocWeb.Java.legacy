@@ -20,6 +20,7 @@ import java.sql.SQLClientInfoException;
 import java.sql.SQLException;
 import java.sql.SQLWarning;
 import java.sql.SQLXML;
+import java.sql.Statement;
 import java.sql.Savepoint;
 import java.sql.Struct;
 import java.util.ArrayList;
@@ -255,15 +256,33 @@ implements Connection {
 	/** Flag to indicate Closed ResultSets */
 	private boolean closed = false;
 
+	/** Statements opened through this Connection, still to be closed. */
+	private final List openStatements = new ArrayList();
+
 	/**
-	 * Marks this connection as closed; open result sets and statements are not closed.
+	 * Registers a Statement opened through this Connection,
+	 * so {@link #close()} closes it (and with it its ResultSets).
+	 *
+	 * @param statement the Statement to close together with this Connection
+	 */
+	protected void addStatement(final Statement statement) {
+		if (statement != null)
+			openStatements.add(statement);
+	}
+
+	/**
+	 * Closes every Statement (and hence every ResultSet) registered via
+	 * {@link #addStatement(Statement)} and marks this connection as closed.
 	 *
 	 * @see java.sql.Connection#close()
 	 */
-	public void close() { //do nothing...
-		// TODO: LOGIC: close() never closes Statements/ResultSets opened through this
-		// Connection - callers relying on close() to release file handles or cursors
-		// will leak them; only the closed flag is set.
+	public void close() {
+		for (int i = openStatements.size(); --i >= 0;) {
+			try { ((Statement) openStatements.get(i)).close();
+			} catch (final Exception x) { //keep closing the remaining Statements
+			}
+		}
+		openStatements.clear();
 		closed = true;
 	}
 
@@ -363,18 +382,16 @@ implements Connection {
 		warnings.add(warning);
 	}
 
-	// TODO: LOGIC: warnings.remove(warnings.size()) always throws
-	// IndexOutOfBoundsException - List.remove(int) requires an index strictly less
-	// than size(), so this is out of range even for a non-empty list (valid indices
-	// are 0..size()-1) and doubly so for an empty list. Every call to getWarnings()
-	// therefore throws instead of returning the warning chain or null.
 	/**
-	 * Returns the connection's accumulated {@link SQLWarning} chain.
+	 * Returns the connection's accumulated {@link SQLWarning} chain,
+	 * or {@code null} when no Warning was recorded.
 	 *
 	 * @see java.sql.Connection#getWarnings()
 	 */
 	public SQLWarning getWarnings() { //throws SQLException {
-		return (SQLWarning) warnings.remove(warnings.size());
+		if (warnings.isEmpty())
+			return null;
+		return (SQLWarning) warnings.remove(warnings.size()-1);
 	}
 
 	/**

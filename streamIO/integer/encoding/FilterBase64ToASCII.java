@@ -453,14 +453,7 @@ extends FilterByte {
 		index = 0;
 		int len = DECODE(encode, buffer, uuencode);
 //		writeAll();
-		// TODO: LOGIC: `len` (the number of valid decoded bytes DECODE() reports, 1-3
-		// depending on how much '=' padding the final group carried) is computed but never
-		// used to slice the write - the full 3-byte `buffer` is always written, appending
-		// up to 2 garbage bytes decoded from '=' padding characters onto the final output
-		// group. Should be `streamOut.write(buffer, 0, len)`. The trailing `++len;` is dead
-		// code left over from this.
-		streamOut.write(buffer);
-		++len;
+		streamOut.write(buffer, 0, len);
 	}
 
 	/**

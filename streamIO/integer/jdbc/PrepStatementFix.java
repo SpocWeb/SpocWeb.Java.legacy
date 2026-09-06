@@ -13,9 +13,9 @@ import java.sql.SQLException;
 
 /**
  * Concrete fixed-length-table {@link APrepStatement}; does not override any of its inherited
- * stub {@code PreparedStatement} parameter setters or {@code execute*} methods, and its own
- * {@link #getResultSet(File, String)} factory is itself an unimplemented stub - see the
- * {@code TODO: LOGIC} marker there.
+ * stub {@code PreparedStatement} parameter setters or {@code execute*} methods. Its own
+ * {@link #getResultSet(File, String)} factory builds a {@link ResultSetFix} over the given
+ * table, like the sibling {@code StatementFix}.
  *
  * <h2>Collaborators</h2>
  *
@@ -46,17 +46,13 @@ public class PrepStatementFix
 	extends APrepStatement
 	implements PreparedStatement {
 
-	// TODO: LOGIC: getResultSet(File, String) is itself an unimplemented stub returning
-	// null, and PrepStatementFix overrides none of APrepStatement's stub set*/execute*
-	// methods either - every PreparedStatement operation on this concrete class silently
-	// returns null/false/0 or performs no action instead of doing real work.
 	/**
-	 * Stub override; not implemented and always returns null.
+	 * Opens the given Table File as a {@link ResultSetFix},
+	 * like the sibling {@link StatementFix#getResultSet(java.io.File, java.lang.String)}.
 	 * @see streamIO.integer.jdbc.APrepStatement#getResultSet(java.io.File, java.lang.String)
 	 */
 	protected ResultSet getResultSet(File table, String tableName) throws SQLException, IOException {
-		// TODO Auto-generated method stub
-		return null;
+		return new ResultSetFix(table, this, tableName);
 	}
 
 	/**

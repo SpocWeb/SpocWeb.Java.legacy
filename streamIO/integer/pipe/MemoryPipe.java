@@ -85,9 +85,7 @@ extends AStreamByte {
 	/** QueuePointer, first Element (Head) of IFO	 */	protected int QP = 0;
 	
 	/** marked StackPointer,  last Element (Tail) of IFO	 */	protected int markSP = SP;
-	// TODO: LOGIC: initialized from SP instead of QP (copy-paste from the line above) - the
-	// marked Queue Pointer should mirror QP, not SP; as written it starts wrong whenever SP != QP.
-	/** marked QueuePointer, first Element (Head) of IFO	 */	protected int markQP = SP;
+	/** marked QueuePointer, first Element (Head) of IFO	 */	protected int markQP = QP;
 	
 	/** Increment when the Space runs out.
 	  * positive Numbers give linear Growth

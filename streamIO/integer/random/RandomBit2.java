@@ -56,15 +56,10 @@ extends ARandomInt {
 	/** Initializing Constructor	*/
 	public RandomBit2() { super(1); reSet(); }
 	
-	// TODO: LOGIC: returns `currItem.Value` (the last single bit, 0 or 1, produced by
-	// nextLongInternal()) instead of `this.value` (the actual 18+-bit shift-register
-	// state). Unlike the sibling RandomBit.getPosition(), which correctly returns its full
-	// state field, this loses all but the last bit, so caching this via mark() and
-	// restoring it via reSet() cannot reproduce the generator's sequence.
 	/**Changed Semantics! Always returns the full internal random Value
 	 * to be cached on mark() and restored on reSet()
 	 * @see streamIO.IAvailAble#getPosition()	 */
-	public long getPosition() { return currItem.Value; }
+	public long getPosition() { return value; }
 
 	/** Resets this generator back to the default seed.
 	 * @see streamIO.integer.IStreamIn_Int#reSet()	 */

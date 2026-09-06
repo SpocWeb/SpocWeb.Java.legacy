@@ -79,13 +79,9 @@ extends FilterByte {
 	 * Looking up the Values in an Array is faster than programming it
 	 * This is identical to @see Character.digit()
 	 */
-	// TODO: LOGIC: subtracts '9' instead of '0' for a digit character - `hexCode('5')`
-	// returns -4 instead of 5. Every digit but '9' itself decodes wrong; only the letter
-	// branch ('A'-'F') is correct. Compare the correct sibling conversion in
-	// FilterBinHex2Byte.char2Nibble(char), which subtracts '0'.
 	final static public byte hexCode(final char c) {
 		if (c <= '9') {
-			return (byte) (c - '9'); }
+			return (byte) (c - '0'); }
 			return (byte) (c - 'A' + 10); }
 	
 	/**

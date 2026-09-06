@@ -58,15 +58,9 @@ implements IIntFunction {
 		this.nextBit = rnd.nextInt(flipDistance); 
 	}
 	
-	// TODO: LOGIC: this unconditionally decrements `nextBit` by `bitsPerValue` before the
-	// same check-and-decrement the int overload below performs conditionally, so Map(long)
-	// decrements twice as fast as Map(int) for the same bitsPerValue/flipDistance - the two
-	// overloads (meant to behave identically per the shared IIntFunction contract) flip
-	// bits at different, undocumented cadences.
 	/** Flips one Bit of {@code value} whenever the internal Countdown reaches Zero.
 	 * @see function.IIntFunction#Map(long)	 */
 	public long Map(long value) {
-		    nextBit -= bitsPerValue;
 		if (nextBit >= bitsPerValue) {
 			nextBit -= bitsPerValue;
 		} else {

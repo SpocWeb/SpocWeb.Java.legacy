@@ -497,16 +497,10 @@ implements IStreamIn_Byte {
 	  * @throws IOException - if an I/O error occurs.
 	  * @see read()
 	  */
-	// TODO: LOGIC: "(char) (val = read())" narrows the int result of read() to a char before
-	// storing it into this int[] - for a normal byte 0..255 this round-trips fine, but the EOF
-	// sentinel (-1) becomes 0xFFFF (65535) once written into b[off+i], not -1. The loop-exit
-	// check below correctly tests the unnarrowed "val", but the caller's buffer still ends up
-	// with a bogus 65535 in the slot where EOF was hit, instead of that slot being left alone or
-	// carrying a real -1.
 	public int read(int[] b, int off, int len) throws IOException {
 		int val, i = -1;
 		while (++i < len) {
-			b[off + i] = (char) (val = read());
+			b[off + i] = val = read();
 			if (val == EOF) {
 				return i - 1;
 			}

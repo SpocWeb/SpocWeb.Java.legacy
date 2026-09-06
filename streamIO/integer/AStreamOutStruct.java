@@ -249,12 +249,7 @@ implements IStreamOutStruct {
 				writeNameValuePair(STR_CLASS, obj.getClass().getName());
 			if (obj != null) {
 				final String newId = Integer.toString(++currID);
-				// TODO: LOGIC: key/value are reversed here - alreadyWritten is read as
-				// alreadyWritten.get(obj) above (obj -> id), but this inserts (newId -> obj)
-				// instead of (obj -> newId). As written, a previously-seen obj will never be
-				// found again by get(obj), so back-references (STR_REF_ID) are never emitted
-				// and circular object graphs will recurse indefinitely / stack-overflow.
-				alreadyWritten.put(newId, obj);
+				alreadyWritten.put(obj, newId);
 				writeNameValuePair(STR_OBJ_ID, newId);
 			}
 			if (writable != null) {

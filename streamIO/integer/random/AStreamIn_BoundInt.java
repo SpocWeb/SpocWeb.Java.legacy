@@ -57,13 +57,9 @@ implements IStreamIn_Bound_Int, IStreamIn_Float {
 //		return	(int) (((long)nextInt()* _maxInt)/maxValue);}
 		return  (nextInt()% _maxInt); } //may not equally distribute the Space up to MaxInt!
 	
-	// TODO: LOGIC: `(int) _maxLong` silently truncates any bound larger than
-	// Integer.MAX_VALUE (and wraps to a negative int for values just above it), so a
-	// caller passing a genuine long-sized bound gets a result modulo the wrong, truncated
-	// value instead of the requested one.
 	/**Random Long Number from 0 to MaxLong-1	 */
 	public long nextLong(final long _maxLong) {
-		return nextInt((int) _maxLong); } //may not exhaust the Space up to MaxLong!
+		return (nextLong()% _maxLong); } //may not exhaust the Space up to MaxLong!
 	
 	//no Optimization, only with a cached MaxValue!
 	

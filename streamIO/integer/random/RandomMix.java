@@ -120,14 +120,11 @@ extends ARandomLong {
 			 diff += maxValue;	//...with the Modulus of either of the Generators.
 		return diff; }
 
-	// TODO: LOGIC: unconditionally throws instead of setting the internal State, unlike the
-	// other reSet()/reset() overloads in this class and its siblings, which all set the seed
-	// successfully; any caller relying on the common reset(long) contract will fail at runtime.
-	/** Not implemented: always throws, since a Bug prevents restoring the internal Seed.
+	/** Seeds both underlying Generators with the given Value,
+	 * like {@link #reSet(long)}.
 	 * @see streamIO.integer.random.ARandomLong#setSeed(long)	 */
 	public void reset(final long value_) {
-		throw new RuntimeException("not implemented yet!");
-		//this.ran1.setValue(value_);
+		reSet(value_);
 	}
 
 }

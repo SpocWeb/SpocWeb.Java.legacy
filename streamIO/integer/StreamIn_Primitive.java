@@ -156,12 +156,8 @@ implements IStreamIn_Primitive {
 	 * or the negative Number of Characters read without finding a Match.  
 	 */
 	public int nextEnum(final String[] names) {
-		// TODO: LOGIC: "1 << names.length" performs an int shift (Java shift amounts on int are
-		// taken mod 32) before widening to long, so for names.length in [32,63] this does not
-		// produce the intended 64-bit mask the Javadoc promises ("up to 64 Values") - it silently
-		// wraps. Use 1L << names.length to get a correct long shift.
 		//using a long saves creating and deleting a boolean[names.length] on the Heap
-		long all  = 1 << names.length;
+		long all  = 1L << names.length;
 		long bits = all-1; //Assume that there are less than 64 Values in an enm.
 		int i = -1; 
 		do {

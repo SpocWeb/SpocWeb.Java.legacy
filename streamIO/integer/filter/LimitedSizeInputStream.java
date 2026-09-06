@@ -128,26 +128,19 @@ extends FilterInputStream {
 	public int available() throws IOException {
 		return (int) Math.min(in.available(), MaxSize-Counter); }
 
-    // TODO: LOGIC: calls `skip(...)` on itself (same overload, same class) instead of
-    // delegating to the wrapped stream's `in.skip(...)`. Since Counter keeps increasing
-    // toward MaxSize with every recursive call, this either recurses until
-    // StackOverflowError or (once Counter reaches MaxSize) recurses with an
-    // ever-non-advancing argument - either way the underlying stream position is never
-    // actually advanced. Should call `in.skip(...)`.
     /**
 	 * Skips over and discards n bytes of data from this input stream.
 	 */
 	public long skip(long n) throws IOException {
-		return skip(Counter += Math.min(n, MaxSize-Counter)); }
+		final long amount = Math.min(n, MaxSize-Counter);
+		Counter += amount;
+		return in.skip(amount); }
 
-    // TODO: LOGIC: off-by-one - `++Counter < MaxSize` stops reading once Counter reaches
-    // MaxSize-1, so only MaxSize-1 bytes are ever read before EOF is returned instead of
-    // the documented MaxSize bytes. Should be `++Counter <= MaxSize`.
     /**
 	 * Reads the next byte of data from the input stream.
 	 */
 	public int read() throws IOException {
-		if (++Counter < MaxSize) {
+		if (++Counter <= MaxSize) {
 			return in.read(); }
 		return LimitedSizeOutputStream.EOF; }
 

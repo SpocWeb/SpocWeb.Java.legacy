@@ -460,14 +460,8 @@ implements IStreamOutStruct, IStreamIn_Struct {
 	/** Delegates to the wrapped Reader's peekDouble(), or returns the cached dbl.
 	 * @see streamIO.real.IStreamIn_Float#peekDouble() */
 	public double peekDouble() {
-		// TODO: LOGIC: calls streamIn.currDouble() instead of streamIn.peekDouble() - copy-paste
-		// from currDouble() above. peekDouble() is supposed to look ahead without advancing the
-		// Reader; delegating to currDouble() instead means the "peek" semantics silently differ
-		// from a real peek whenever the wrapped Reader distinguishes the two (e.g. it may not
-		// advance/read a new value at all, or advance when it shouldn't, depending on the
-		// Reader's own currDouble()/peekDouble() contract).
 		if (streamIn != null)
-			return dbl = streamIn.currDouble();
+			return dbl = streamIn.peekDouble();
 		return dbl; }
 	
 	///////////////////////////////////////////////////////////////////////////
@@ -505,14 +499,9 @@ implements IStreamOutStruct, IStreamIn_Struct {
 	/** Appends the given range of the short Array to the accumulated shorts Array.
 	 * @see streamIO.integer.IStreamOutStructArrays#addShorts(short[], int, int) */
 	public IStreamOutStruct addShorts(final short[] values, final int stop, final int start) {
-		// TODO: LOGIC: this reads/sizes off "ints" instead of "shorts" - a copy-paste bug from
-		// addInts() below. It should extend the "shorts" field, not read the (probably
-		// unrelated, possibly empty) ints array; this corrupts the size and contents of the
-		// accumulated shorts every time addShorts() is called. Same copy-paste pattern recurs in
-		// addLongs()/addFloats()/addDoubles()/addItems()/addStrings() further below.
-		final short[] tmp = new short[ints.length+stop-start];
-		System.arraycopy(  ints,     0, tmp, 0, ints.length);
-		System.arraycopy(values, start, tmp   , ints.length, stop-start);
+		final short[] tmp = new short[shorts.length+stop-start];
+		System.arraycopy(shorts,     0, tmp, 0, shorts.length);
+		System.arraycopy(values, start, tmp   , shorts.length, stop-start);
 		shorts = tmp;
 		return this; //trigger(); //zu fr�h! vielleicht kommt noch was nach?
 	}
@@ -561,11 +550,9 @@ implements IStreamOutStruct, IStreamIn_Struct {
 	/** Appends the given range of the long Array to the accumulated longs Array.
 	 * @see streamIO.integer.IStreamOutStructArrays#addLongs(long[], int, int) */
 	public IStreamOutStruct addLongs(final long[] values, final int stop, final int start) {
-		// TODO: LOGIC: same copy-paste bug as addShorts() above - sizes/copies off "ints" instead
-		// of "longs", corrupting the accumulated longs Array.
-		final long[] tmp = new long[ints.length+stop-start];
-		System.arraycopy(  ints,     0, tmp, 0, ints.length);
-		System.arraycopy(values, start, tmp   , ints.length, stop-start);
+		final long[] tmp = new long[longs.length+stop-start];
+		System.arraycopy( longs,     0, tmp, 0, longs.length);
+		System.arraycopy(values, start, tmp   , longs.length, stop-start);
 		longs = tmp;
 		return this; //trigger(); //zu fr�h! vielleicht kommt noch was nach?  
 	}
@@ -588,11 +575,9 @@ implements IStreamOutStruct, IStreamIn_Struct {
 	/** Appends the given range of the float Array to the accumulated floats Array.
 	 * @see streamIO.integer.IStreamOutStructArrays#addFloats(float[], int, int) */
 	public IStreamOutStruct addFloats(final float[] values, final int stop, final int start) {
-		// TODO: LOGIC: same copy-paste bug as addShorts() above - sizes/copies off "ints" instead
-		// of "floats", corrupting the accumulated floats Array.
-		final float[] tmp = new float[ints.length+stop-start];
-		System.arraycopy(  ints,     0, tmp, 0, ints.length);
-		System.arraycopy(values, start, tmp   , ints.length, stop-start);
+		final float[] tmp = new float[floats.length+stop-start];
+		System.arraycopy(floats,     0, tmp, 0, floats.length);
+		System.arraycopy(values, start, tmp   , floats.length, stop-start);
 		floats = tmp;
 		return this; //trigger(); //zu fr�h! vielleicht kommt noch was nach?  
 	}
@@ -615,11 +600,9 @@ implements IStreamOutStruct, IStreamIn_Struct {
 	/** Appends the given range of the double Array to the accumulated doubles Array.
 	 * @see streamIO.integer.IStreamOutStructArrays#addDoubles(double[], int, int) */
 	public IStreamOutStruct addDoubles(final double[] values, final int stop, final int start) {
-		// TODO: LOGIC: same copy-paste bug as addShorts() above - sizes/copies off "ints" instead
-		// of "doubles", corrupting the accumulated doubles Array.
-		final double[] tmp = new double[ints.length+stop-start];
-		System.arraycopy(  ints,     0, tmp, 0, ints.length);
-		System.arraycopy(values, start, tmp   , ints.length, stop-start);
+		final double[] tmp = new double[doubles.length+stop-start];
+		System.arraycopy(doubles,    0, tmp, 0, doubles.length);
+		System.arraycopy(values, start, tmp   , doubles.length, stop-start);
 		doubles = tmp;
 		return this; //trigger(); //zu fr�h! vielleicht kommt noch was nach?  
 	}
@@ -642,11 +625,9 @@ implements IStreamOutStruct, IStreamIn_Struct {
 	/** Appends the given range of the Object Array to the accumulated items Array.
 	 * @see streamIO.integer.IStreamOutStructArrays#addItems(java.lang.Object[], int, int) */
 	public IStreamOutStruct addItems(final Object[] values, final int stop, final int start) {
-		// TODO: LOGIC: same copy-paste bug as addShorts() above - sizes/copies off "ints" instead
-		// of "items", corrupting the accumulated items Array.
-		final Object[] tmp = new Object[ints.length+stop-start];
-		System.arraycopy(  ints,     0, tmp, 0, ints.length);
-		System.arraycopy(values, start, tmp   , ints.length, stop-start);
+		final Object[] tmp = new Object[items.length+stop-start];
+		System.arraycopy( items,     0, tmp, 0, items.length);
+		System.arraycopy(values, start, tmp   , items.length, stop-start);
 		items = tmp;
 		return this; //trigger(); //zu fr�h! vielleicht kommt noch was nach?  
 	}
@@ -669,11 +650,9 @@ implements IStreamOutStruct, IStreamIn_Struct {
 	/** Appends the given range of the String Array to the accumulated strings Array.
 	 * @see streamIO.integer.IStreamOutStructArrays#addStrings(java.lang.String[], int, int) */
 	public IStreamOutStruct addStrings(final String[] values, final int stop, final int start) {
-		// TODO: LOGIC: same copy-paste bug as addShorts() above - sizes/copies off "ints" instead
-		// of "strings", corrupting the accumulated strings Array.
-		final String[] tmp = new String[ints.length+stop-start];
-		System.arraycopy(  ints,     0, tmp, 0, ints.length);
-		System.arraycopy(values, start, tmp   , ints.length, stop-start);
+		final String[] tmp = new String[strings.length+stop-start];
+		System.arraycopy(strings,    0, tmp, 0, strings.length);
+		System.arraycopy(values, start, tmp   , strings.length, stop-start);
 		strings = tmp;
 		return this; //trigger(); //zu fr�h! vielleicht kommt noch was nach?  
 	}

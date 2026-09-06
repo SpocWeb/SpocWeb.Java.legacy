@@ -215,15 +215,14 @@ extends AResultSetContainer {
 	
 	/**
 	 * Advances {@code position} by {@code rows} and loads {@code currRow} from the
-	 * backing {@link #table}, clamping the position at the row count when it would run
-	 * past the end.
+	 * backing {@link #table}. The Position is not clamped, so it stays observable past
+	 * the last Row by {@link #isAfterLast()}.
 	 * @see java.sql.ResultSet#relative(int)
 	 */
 	public boolean relative(final int rows) throws SQLException {
-		final boolean ret = (position+=rows) >= table.getInt(); 
-		if (ret)
-			position = table.getInt(); 
-		currRow = table.getVectorAt(position);
+		final boolean ret = (position+=rows) >= table.getInt();
+		if (! ret)
+			currRow = table.getVectorAt(position);
 		return !ret;
 	}
 
@@ -251,16 +250,12 @@ extends AResultSetContainer {
 		currRow[columnIndex] = x;
 	}
 
-	// TODO: LOGIC: relative(int) clamps `position` to exactly table.getInt() when it would
-	// run past the end, so `position` never exceeds the row count - it only ever reaches it.
-	// This comparison uses `>` where `>=` is needed, so isAfterLast() always returns false
-	// even when relative()/readNext() has driven the cursor past the last row.
 	/**
 	 * Reports whether the cursor is positioned after the last row.
 	 * @see streamIO.integer.jdbc.AResultSet#isAfterLast()
 	 */
 	public boolean isAfterLast() throws SQLException {
-		return position > table.getInt(); }
+		return position >= table.getInt(); }
 	
 	///////////////////////////////////////////////////////////////////////////
 	/// Main & testing Methods

@@ -212,12 +212,7 @@ extends FilterByte {
 	public int read() throws IOException {
 		int ret; // = super.read();
 		ret = streamIn.read();
-		// TODO: LOGIC: `ret > 0` excludes a genuine 0x00 (NUL) data byte from the CRC
-		// update, since a real byte value can legitimately be 0 while only EOF is -1.
-		// Every NUL byte in the stream is silently skipped from the checksum, giving a
-		// wrong CRC for any data containing NUL bytes. Should be `ret >= 0` (or `ret !=
-		// EOF`), matching write() above, which updates unconditionally.
-		if (ret > 0) {
+		if (ret >= 0) {
 			CRC = updateCRC16(CRC, (byte) ret); }
 		return ret; } //
 

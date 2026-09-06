@@ -165,16 +165,25 @@ extends FilterResultSet {
 		return numRowsFind; 
 	}
 	
-	// TODO: LOGIC: computes numRowsFind (which has the side effect of caching/restoring
-	// rsFind's cursor position) and then unconditionally returns false without using `rows`
-	// or moving either ResultSet - relative(int) is effectively a no-op stub here.
 	/**
-	 * Always returns {@code false}; relative positioning is not implemented for this join.
+	 * Moves the joined Cursor by {@code rows} Rows of the Cross Product,
+	 * which is enumerated Row by Row of the 'Iter' ResultSet,
+	 * each combined with every Row of the 'Find' ResultSet.
+	 * @param rows the Number of joined Rows to move forwards (or backwards, if negative)
+	 * @return true when the Cursor ended up on a valid joined Row
 	 * @see java.sql.ResultSet#relative(int)
 	 */
 	public boolean relative(final int rows) throws SQLException {
 		final int numRowsFind = getNumRowsFind();
-		return false;
+		if (numRowsFind <= 0)
+			return false; //nothing to join with
+		final long pos = ((long) rsIter.getRow()-1)*numRowsFind + rsFind.getRow() + rows;
+		if (pos < 1)
+			return false; //before the first joined Row
+		matchFound = false;
+		if (! rsIter.absolute((int) (((pos-1) / numRowsFind) + 1)))
+			return false; //past the last joined Row
+		return rsFind.absolute((int) (((pos-1) % numRowsFind) + 1));
 	}
 	
 	/** Flag to allow for reading outer Join Elements of the 'Find' ResultSet. 

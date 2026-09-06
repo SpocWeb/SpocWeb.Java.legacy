@@ -153,12 +153,8 @@ implements DataInput
 	/** Number of Bits in a Short / Word */
 	final static public byte NUM_BITS_INT = NUM_BITS_SHORT << 1;
 
-	// TODO: LOGIC: NUM_BITS_INT is 32, and the left operand `1` is an int, so Java's shift
-	// operator masks the distance to `32 & 0x1F == 0` - this evaluates to `1`, not 2^32.
-	// Every caller relying on MAX_UNSIGNED_INT as the unsigned-32-bit wraparound constant
-	// (readUnsignedInt() below) gets the wrong correction. Use `1L<<NUM_BITS_INT` instead.
 	/** the maximum Value of an unsigned Short */
-	final static public long MAX_UNSIGNED_INT = 1<<NUM_BITS_INT; //-((long)Integer.MIN_VALUE)-Integer.MIN_VALUE; //
+	final static public long MAX_UNSIGNED_INT = 1L<<NUM_BITS_INT;//-((long)Integer.MIN_VALUE)-Integer.MIN_VALUE; //
 
 	/** Reads four bytes and returns them as an unsigned 32-bit value, widened into a long.
 	 * @see java.io.DataInput#readInt()	 */
@@ -170,15 +166,10 @@ implements DataInput
 		//return readUnsignedShort()+(readShort()<<16);
 	}
 
-	// TODO: LOGIC: `readInt()<<NUM_BITS_INT` shifts an int operand by 32, which Java reduces
-	// modulo 32 to a shift of 0 - the high 32 bits are added completely unshifted instead of
-	// being placed above the low 32 bits from readUnsignedInt(). readLong() returns a
-	// corrupted value for every input where the upper int is non-zero. Cast to long before
-	// shifting, e.g. `((long) readInt())<<NUM_BITS_INT`.
 	/** Reads eight bytes, low int first, and returns them as a signed 64-bit value.
 	 * @see java.io.DataInput#readLong()	 */
 	public long readLong() throws IOException {
-		return readUnsignedInt()+(readInt()<<NUM_BITS_INT); }
+		return readUnsignedInt()+(((long) readInt())<<NUM_BITS_INT); }
 
 	/** Reads four bytes and reinterprets them as an IEEE 754 float.
 	 * @see java.io.DataInput#readFloat()		*/

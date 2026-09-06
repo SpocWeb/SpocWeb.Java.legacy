@@ -310,19 +310,13 @@ extends AStreamIn_Byte
 	  */
 	public long getMaxMarkSize() { return streamIn.getMaxMarkSize(); }
 
-	// TODO: LOGIC: `mapper.Map(b[i])` passes a signed byte (-128..127) here, widened with
-	// sign extension, whereas the single-byte read() above passes `streamIn.read()`'s
-	// unsigned 0-255 int directly. A mapper that behaves differently for negative vs. 0-255
-	// input (e.g. a lookup table indexed by the raw value) sees a different argument for
-	// the same underlying byte depending on which read method was called. Should likely be
-	// `mapper.Map(b[i] & 0xFF)` to match read()'s unsigned convention.
 	/** Reads bytes into the given range, applying the mapper (if any) to each byte read.
 	 * @see streamIO.Byte.IStreamIn_Byte#read(byte[], int, int)	 */
 	public int read(final byte[] b, final int off, final int len) throws IOException {
 		int length = streamIn.read(b, off, len);
 		if (mapper != null) {
 			for(int i = length; --i >= 0;) {
-				b[i] = (byte) mapper.Map(b[i]);
+				b[i] = (byte) mapper.Map(b[i] & 0xFF);
 			}
 		}
 		return length; }

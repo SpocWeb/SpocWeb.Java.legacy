@@ -225,12 +225,6 @@ public class ConvolutionBitEncode {
 
 	}
 
-	// TODO: LOGIC: `g[K][0][j]`/`g[K][1][j]` below index the polynomial table directly by
-	// the constraint length K, but per the comment on `g` above ("polynomials g[K] for K =
-	// 2*i+3"), the table is meant to be indexed by i = (K-3)/2 (its 4 entries correspond to
-	// K = 3, 5, 7, 9). Calling with the real constraint length (e.g. K=7) reads g[7], out of
-	// bounds for a 4-entry array. Currently unreachable: nothing in this file calls
-	// cnv_encd() with a real K (testsdvd(), the only caller, is itself never invoked).
 	/**
 	 * Rate-1/2 convolutional-encodes {@code in_array} into {@code out_array} using the
 	 * polynomial pair selected for the given constraint length.
@@ -285,8 +279,8 @@ public class ConvolutionBitEncode {
 			q = 0;
 			for (int j = 0; j < K; j++) {
 				int k = (j + sr_head) % K;
-				p ^= shift_reg[k] & g[K][0][j];
-				q ^= shift_reg[k] & g[K][1][j];
+				p ^= shift_reg[k] & g[(K - 3) / 2][0][j];
+				q ^= shift_reg[k] & g[(K - 3) / 2][1][j];
 			}
 
 			/* write the upper and lower xor gate outputs as channel symbols */

@@ -80,10 +80,12 @@ extends FilterByte
 	/** Position to separate the Streams */
 	private int bufferPosition; 
 
-	/** Counter for placing the break in the streamIO 
-	 * 'long' to prevent underrun 
+	/** Counter for placing the break in the streamIO
+	 * 'long' to prevent underrun.
+	 * Starts at Long.MIN_VALUE so the Countdown is disarmed
+	 * until a Separator Match arms it with breakPosition.
 	 */
-	private long breakCountDown; 
+	private long breakCountDown = Long.MIN_VALUE;
 
 	/** current Position in the Separator */
 	private int posInSeparator; 
@@ -201,11 +203,6 @@ extends FilterByte
 	 * and triggers the Creation of a new one! 
 	 * @see streamIO.Byte.IStreamOutByte#addString(int)
 	 */
-	// TODO: LOGIC: `breakCountDown` defaults to 0 and is only ever set once a separator
-	// match already fires `matchesFullString()`; on the very first call, `--breakCountDown
-	// == -1` is immediately true, so this writes EOF (or, in read() below, returns -1)
-	// before the separator has ever been searched for. Mirrors the same defect flagged in
-	// the sibling streamIO.integer.filter.FilterFind class.
 	public void write(int val) throws IOException {
 		if (--breakCountDown == -1) {
 			super.write(EOF); } //
@@ -259,13 +256,10 @@ extends FilterByte
 	 * @param args Array of parameters passed to the application
 	 * via the command line.	 
 	 */
-	// TODO: LOGIC: when args.length < 2, the Syntax message is printed but main() falls
-	// through instead of returning, so args[0]/args[1] below throw
-	// ArrayIndexOutOfBoundsException instead of exiting cleanly (same missing-return
-	// pattern as EchoFile.main() and FilterReplaceSection.main() elsewhere in this codebase).
 	public static void main (String[] args) throws java.io.IOException {
 		if (args.length < 2) {
-			 System.out.println("FileInPath FileOutPath Separator breakPosition numSeparators "); }
+			 System.out.println("FileInPath FileOutPath Separator breakPosition numSeparators ");
+			 return; }
 		final String in_FileName =  args[0];
 		final String separator   =  args[1];
 		final String outFileName = (args.length > 2) ? args[2] : in_FileName; 

@@ -179,10 +179,6 @@ implements IStreamByte {
 	 * @param args Array of parameters passed to the application
 	 * via the command line.	 */
 	public static void main (final String[] args) throws Exception {
-		// TODO: LOGIC: calls testIt(args), but the only testIt() defined in this class takes no
-		// arguments - this does not compile as written (no applicable testIt(String[]) overload
-		// exists here). Should be testIt() (ignoring args) or a testIt(String[]) overload needs
-		// to be added.
-		testIt(args); }
+		testIt(); }
 
 }

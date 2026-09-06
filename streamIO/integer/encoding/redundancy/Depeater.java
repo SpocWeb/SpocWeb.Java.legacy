@@ -161,14 +161,12 @@ extends FilterOutByte {
 		}
 		return ret >> 1; }
 	
-	// TODO: LOGIC: flush() only shortens `length` to the current position; it never writes
-	// out the buffered final bytes and never calls super.flush(). A caller that calls
-	// flush() (or close(), if close() delegates to flush() rather than issuing more
-	// write() calls) at the end of a stream whose length isn't already a multiple of the
-	// full buffer relies entirely on a subsequent write() call to emit the last block -
-	// with none coming, the buffered tail is silently dropped.
-	/** indicates the End of Transmission	 */
-	public void flush() { length = pos+1; }
+	/** indicates the End of Transmission: shortens the Block Length to the Bytes received
+	 * so far, so the remaining two Sweeps of the partial Block complete it,
+	 * and propagates the flush to the down Stream.	 */
+	public void flush() throws IOException {
+		length = pos+1;
+		super.flush(); }
 
 	///////////////////////////////////////////////////////////////////////////
 	///

@@ -106,15 +106,9 @@ implements Driver{
 	 * Strips the Driver specific Part from the URL
 	 * @see java.sql.Driver#connect(java.lang.String, java.util.Properties)
 	 */
-	// TODO: LOGIC: acceptsURL(PREFIX_FIX) checks the constant PREFIX_FIX against itself,
-	// not the actual `url` parameter - this is always true, so the URL-prefix guard never
-	// rejects anything. Any url shorter than PREFIX_FIX then throws
-	// StringIndexOutOfBoundsException from url.substring(...) instead of the intended
-	// SQLException, and any longer url not actually starting with PREFIX_FIX silently
-	// mis-parses the directory path. Should be "acceptsURL(url)".
 	public Connection connect(final String url, final Properties info)
 		throws SQLException {
-		if (!acceptsURL(PREFIX_FIX)) {
+		if (!acceptsURL(url)) {
 			throw new SQLException("Unsupported jdbc-URL:" + url);
 		}
 		return new ConnectionFix(url.substring(PREFIX_FIX.length()), info);

@@ -72,10 +72,7 @@ implements IStreamOutChar {
 	/** Writes the char range [off, off+len) to the wrapped Writer.
 	 * @see streamIO.Byte.IStreamOutByte#addString(char[], int, int)	 */
 	public void write(char[] b, int off, int len) throws IOException {
-		// TODO: LOGIC: off/len are ignored - this always writes the whole array
-		// (writer.write(b, 0, b.length)) instead of writer.write(b, off, len), so a caller
-		// asking for a sub-range gets the entire array written instead.
-		writer.write(b, 0, b.length); }
+		writer.write(b, off, len); }
 
 	/** Writes the whole int array by delegating to {@link #addItem(int[], int, int)}.
 	 * @see streamIO.Byte.IStreamOutByte#addString(int[])	 */

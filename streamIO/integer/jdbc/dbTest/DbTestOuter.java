@@ -32,12 +32,9 @@ extends DbTestEquals {
 		super(field1, field2);
 	}
 
-	// TODO: LOGIC: returns a plain DbTestEquals instead of a new DbTestOuter, so a caller
-	// invoking newInstance() on this Test loses the Outer-Join semantics and silently gets
-	// an Equals Test instead (same defect as DbTestLess.newInstance()).
 	/** Creates a new Instance of this Class	 */
 	public IDbTest newInstance(final DbColumn field1, final DbColumn field2) {
-		return new DbTestEquals(field1, field2);
+		return new DbTestOuter(field1, field2);
 	}
 
 	/** Returns the Left Outer Join Operator Symbol.	 */

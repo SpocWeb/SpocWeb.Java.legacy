@@ -66,18 +66,18 @@ implements IJoinCondition {
 		this.col2 = _col2; 
 	}
 
-	// TODO: LOGIC: getString() can return null for a SQL NULL value, and neither branch
-	// checks for it before calling toUpperCase()/trim()/equals() - a NULL in either
-	// compared column throws NullPointerException instead of yielding a defined
-	// equal/not-equal result.
 	/**
 	 * Compares the configured columns of two result set rows for equality.
+	 * A SQL NULL never equals anything, not even another NULL,
+	 * following SQL's three-valued Logic for a Join Condition.
 	 * @return true when two Colums of the ResultSet are equal.
 	 * @see streamIO.integer.jdbc.IJoinCondition#equals(java.sql.ResultSet, java.sql.ResultSet)
 	 */
 	public boolean equals(final ResultSet rs1, final ResultSet rs2) throws SQLException {
 		String str1 = rs1.getString(col1); //use the Strings...
 		String str2 = rs2.getString(col2);
+		if ((str1 == null) || (str2 == null))
+			return false; //a SQL NULL never joins
 		if (ignoreCase) {
 			str1 = str1.toUpperCase(); 
 			str2 = str2.toUpperCase(); 

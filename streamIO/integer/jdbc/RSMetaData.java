@@ -4,18 +4,22 @@ import java.sql.ResultSetMetaData;
 import java.sql.SQLException;
 //import java.sql.SQLException;
 
-// TODO: LOGIC: every column-indexed method here (isCurrency, isCaseSensitive, getColumnName,
-// getColumnLabel, ...) does "columns[column]" directly against the caller-supplied column
-// number, but java.sql.ResultSetMetaData's contract is 1-based ("the first column is 1",
-// documented on every method below) while `columns` is a plain 0-based array. Confirmed by
-// AResultSet#findColumn(String), which returns the raw 0-based loop index `i` rather than
-// `i+1`. A caller following the standard JDBC contract (column 1 = first column) reads the
-// second column instead of the first throughout, and column == columnCount throws
-// ArrayIndexOutOfBoundsException instead of a documented SQLException for an out-of-range index.
 /**
  * Implements {@link ResultSetMetaData}, sharing the field names and optionally the field
  * sizes with the {@link ResultSet} it describes; similar in role to
  * {@code org.xml.sax.Attributes}.
+ *
+ * <p><b>CONTRACT DEVIATION: Column Numbers are 0-based here, not 1-based.</b>
+ * {@link ResultSetMetaData} documents "the first column is 1" on every Method,
+ * but this Implementation - like the whole ResultSet Family of this Package,
+ * whose {@code AResultSet.findColumn(String)} returns the raw 0-based Index -
+ * addresses the first Column as 0 and the last as {@link #getColumnCount()}-1.
+ * Pass the Value returned by {@code findColumn(String)} unchanged;
+ * do not add 1 to it. An out-of-range Column Number raises an
+ * {@link IndexOutOfBoundsException} naming the valid Range,
+ * instead of a bare ArrayIndexOutOfBoundsException.
+ * Converting this Class alone to 1-based would silently break every
+ * Caller in this Package, so the Deviation is documented rather than changed.</p>
  *
  * @see DbColumn the column descriptors backing this metadata
  * <!-- docstate
@@ -44,7 +48,21 @@ implements ResultSetMetaData {
 	/** Initializing Constructor */
 	public RSMetaData(final DbColumn[] _columns) {
 		this.columns = _columns;
-		columnCount = _columns.length; 
+		columnCount = _columns.length;
+	}
+
+	/**
+	 * Validates a Column Number against this Class' 0-based Contract
+	 * (see the Class Comment: the first Column is 0, not 1).
+	 * @param column the 0-based Column Number
+	 * @return the same Number, usable as an Index into {@link #columns}
+	 * @throws IndexOutOfBoundsException when the Column Number is out of Range
+	 */
+	protected int checkColumn(final int column) {
+		if ((column < 0) || (column >= columnCount))
+			throw new IndexOutOfBoundsException("Column Number "+column
+				+" out of Range; this ResultSetMetaData is 0-based, valid are 0.."+(columnCount-1));
+		return column;
 	}
 	
 	////////////////////////////////////////////////////////////////////////////
@@ -77,7 +95,7 @@ implements ResultSetMetaData {
 	  * @see java.sql.ResultSetMetaData#isCurrency(int)
 	  */
 	public boolean isCurrency(final int column) { // throws SQLException {
-		return columns[column].isCurrency(); }
+		return columns[checkColumn(column)].isCurrency(); }
 	
 	/**
 	  * Indicates whether a column's case matters.
@@ -87,7 +105,7 @@ implements ResultSetMetaData {
 	  * @see java.sql.ResultSetMetaData#isCaseSensitive(int)
 	  */
 	public boolean isCaseSensitive(final int column) { // throws SQLException {
-		return columns[column].isCaseSensitive(); }
+		return columns[checkColumn(column)].isCaseSensitive(); }
 	
 	/**
 	  * Indicates whether the designated column can be used in a where clause.
@@ -97,7 +115,7 @@ implements ResultSetMetaData {
 	  * @see java.sql.ResultSetMetaData#isSearchable(int)
 	  */
 	public boolean isSearchable(final int column) { // throws SQLException {
-		return columns[column].isSearchable(); }
+		return columns[checkColumn(column)].isSearchable(); }
 	
 	/**
 	  * Indicates whether values in the designated column are signed numbers.
@@ -107,7 +125,7 @@ implements ResultSetMetaData {
 	  * @see java.sql.ResultSetMetaData#isSigned(int)
 	  */
 	public boolean isSigned(final int column) { // throws SQLException {
-		return columns[column].isSigned(); }
+		return columns[checkColumn(column)].isSigned(); }
 	
 	/**
 	  * Indicates whether the designated column is automatically numbered, thus read-only.
@@ -117,7 +135,7 @@ implements ResultSetMetaData {
 	  * @see java.sql.ResultSetMetaData#isAutoIncrement(int)
 	  */
 	public boolean isAutoIncrement(final int column) { // throws SQLException {
-		return columns[column].isAutoIncrement(); }
+		return columns[checkColumn(column)].isAutoIncrement(); }
 	
 	/**
 	  * Indicates the nullability of values in the designated column.
@@ -128,7 +146,7 @@ implements ResultSetMetaData {
 	  * @see java.sql.ResultSetMetaData#isNullable(int)
 	  */
 	public int isNullable(final int column) { // throws SQLException {
-		return columns[column].isNullable ? ResultSetMetaData.columnNullable : ResultSetMetaData.columnNoNulls; 
+		return columns[checkColumn(column)].isNullable ? ResultSetMetaData.columnNullable : ResultSetMetaData.columnNoNulls; 
 		//return ResultSetMetaData.columnNullableUnknown;
 	}
 	
@@ -150,7 +168,7 @@ implements ResultSetMetaData {
 	  * @see java.sql.ResultSetMetaData#isWritable(int)
 	  */
 	public boolean isWritable(final int column) { // throws SQLException {
-		return columns[column].isWritable; }
+		return columns[checkColumn(column)].isWritable; }
 	
 	/**
 	  * Indicates whether a write on the designated column will definitely succeed.
@@ -160,7 +178,7 @@ implements ResultSetMetaData {
 	  * @see java.sql.ResultSetMetaData#isDefinitelyWritable(int)
 	  */
 	public boolean isDefinitelyWritable(final int column) { // throws SQLException {
-		return columns[column].isWritable; } //true; }
+		return columns[checkColumn(column)].isWritable; } //true; }
 	
 	/**
 	  * Gets the designated column's suggested title for use in printouts and displays.
@@ -170,7 +188,7 @@ implements ResultSetMetaData {
 	  * @see java.sql.ResultSetMetaData#getColumnLabel(int)
 	  */
 	public String getColumnLabel(final int column) { // throws SQLException {
-		return columns[column].alias; }
+		return columns[checkColumn(column)].alias; }
 	
 	/**
 	  * Get the designated column's name (in UpperCase).
@@ -180,7 +198,7 @@ implements ResultSetMetaData {
 	  * @see java.sql.ResultSetMetaData#getColumnName(int)
 	  */
 	public String getColumnName(final int column) { // throws SQLException {
-		return columns[column].name; }
+		return columns[checkColumn(column)].name; }
 	
 	/**
 	  * Gets the designated column's table name.
@@ -190,7 +208,7 @@ implements ResultSetMetaData {
 	  * @see java.sql.ResultSetMetaData#getTableName(int)
 	  */
 	public String getTableName(final int column) throws SQLException {
-		return columns[column].getTableName(); }
+		return columns[checkColumn(column)].getTableName(); }
 	
 	/**
 	  * Get the designated column's table's schema.
@@ -200,7 +218,7 @@ implements ResultSetMetaData {
 	  * @see java.sql.ResultSetMetaData#getSchemaName(int)
 	  */
 	public String getSchemaName(final int column) { // throws SQLException {
-		return columns[column].getSchemaName(); }
+		return columns[checkColumn(column)].getSchemaName(); }
 
 	/**
 	  * Gets the designated column's table's catalog name.
@@ -210,7 +228,7 @@ implements ResultSetMetaData {
 	  * @see java.sql.ResultSetMetaData#getCatalogName(int)
 	  */
 	public String getCatalogName(final int column) throws SQLException {
-		return columns[column].getCatalogName(); }
+		return columns[checkColumn(column)].getCatalogName(); }
 
 	/**
 	  * Indicates the designated column's normal maximum width in characters.
@@ -220,7 +238,7 @@ implements ResultSetMetaData {
 	  * @see java.sql.ResultSetMetaData#getColumnDisplaySize(int)
 	  */
 	public int getColumnDisplaySize(final int column) { // throws SQLException {
-		return columns[column].size; }
+		return columns[checkColumn(column)].size; }
 
 	/**
 	  * Get the designated column's number of decimal digits.
@@ -230,7 +248,7 @@ implements ResultSetMetaData {
 	  * @see java.sql.ResultSetMetaData#getPrecision(int)
 	  */
 	public int getPrecision(final int column) { // throws SQLException {
-		return columns[column].size; }
+		return columns[checkColumn(column)].size; }
 
 	/**
 	  * Gets the designated column's number of digits to right of the decimal point.
@@ -240,7 +258,7 @@ implements ResultSetMetaData {
 	  * @see java.sql.ResultSetMetaData#getScale(int)
 	  */
 	public int getScale(final int column) { // throws SQLException {
-		return columns[column].size; }
+		return columns[checkColumn(column)].size; }
 
 	/**
 	  * Retrieves the designated column's SQL type.
@@ -251,7 +269,7 @@ implements ResultSetMetaData {
 	  * @see java.sql.ResultSetMetaData#getColumnType(int)
 	  */
 	public int getColumnType(final int column) { // throws SQLException {
-		return columns[column].type; } //java.sql.Types.VARCHAR; }//ResultSetMetaData.columnNullableUnknown;	}
+		return columns[checkColumn(column)].type; } //java.sql.Types.VARCHAR; }//ResultSetMetaData.columnNullableUnknown;	}
 
 	/**
 	  * Retrieves the designated column's database-specific type name.
@@ -277,7 +295,7 @@ implements ResultSetMetaData {
 	  * @see java.sql.ResultSetMetaData#getColumnClassName(int)
 	  */
 	public String getColumnClassName(final int column) { // throws SQLException {
-		return columns[column].colClass.toString(); }		
+		return columns[checkColumn(column)].colClass.toString(); }		
 		//return "java.lang.String"; }
 
 	/**

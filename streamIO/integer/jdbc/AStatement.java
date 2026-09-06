@@ -400,15 +400,35 @@ implements Statement {
 	}
 	
 	/**
+	 * Rejects a Table Name that could escape the Connection's Directory.
+	 * Only a single, relative Path Element without any Path Separator,
+	 * Drive Letter or Parent-Directory Reference is accepted,
+	 * so a Name parsed out of a FROM-Clause cannot traverse the File System.
+	 * @param tableName the Table Name taken from the SQL Statement
+	 * @throws SQLException when the Name is empty, absolute, or contains a
+	 * Path Separator or a ".." Element
+	 */
+	final static public void CHECK_TABLE_NAME(final String tableName) throws SQLException {
+		if ((tableName == null) || (tableName.trim().length() == 0))
+			throw new SQLException("Illegal Table Name: must not be empty!");
+		if ((tableName.indexOf('/') >= 0) || (tableName.indexOf('\\') >= 0)
+		 || (tableName.indexOf(':') >= 0) || (tableName.indexOf('\0') >= 0))
+			throw new SQLException("Illegal Table Name '"+tableName+"': must not contain a Path Separator!");
+		if (tableName.equals(".") || tableName.equals("..")
+		 || new File(tableName).isAbsolute())
+			throw new SQLException("Illegal Table Name '"+tableName+"': must be a simple relative Name!");
+	}
+
+	/**
 	 * Resolves {@code tableName} (with or without the connection's file suffix) to a table
 	 * file under the connection's directory and delegates to {@link #getResultSet(File, String)}.
+	 * The Name is validated by {@link #CHECK_TABLE_NAME(String)} first, so it cannot
+	 * escape the Connection's Directory.
+	 * @throws SQLException when {@code tableName} is not a simple relative Name
 	 * @throws IOException when neither {@code tableName} nor {@code tableName + suffix} exists
 	 */
-	// TODO: SECURITY: tableName is taken directly from the parsed SQL FROM-clause and passed
-	// unsanitized into `new File(urlDir, tableName)` - a table name containing "../" segments
-	// can escape connection.urlDir and open an arbitrary file on the filesystem (path
-	// traversal). No validation rejects '..' or absolute paths before the File is constructed.
 	protected ResultSet getResultSet(final String tableName) throws SQLException, IOException {
+		CHECK_TABLE_NAME(tableName);
 		File table = new File(((AConnection)conn).urlDir, tableName);
 		if (!table.exists()) 
 			 table = new File(((AConnection)conn).urlDir, tableName+((AConnection)conn).suffix);
@@ -479,6 +499,8 @@ implements Statement {
 		this.resultSetConcurrency = resultSetConcurrency;
 		this.resultSetType = resultSetType;
 		this.conn = conn;
+		if (conn != null)
+			conn.addStatement(this); //so AConnection.close() closes this Statement too
 	}
 	
 	//////////////////////////////////////////////////////////////////////////////////
@@ -846,18 +868,12 @@ implements Statement {
 				final DbColumn ret = (DbColumn) _FieldsByAlias.get(fieldAlias[0]);
 				if (ret != null)
 					return ret;
-				// TODO: LOGIC: "if (table != null)" is unreachable here - this whole block
-				// only runs when the enclosing "if (table == null)" just matched, so table
-				// is always null at this point. The column-number fallback below (parsing
-				// fieldAlias[0] as a numeric column index) never executes; it was likely
-				// meant to be unconditional or guarded on something else.
-				if (table != null)
-					try { //try to interpret the Field Name as a Column Number
-						final double value = Double.parseDouble(fieldAlias[0]);
-						if (value == (int) value)
-							col    = (int) value;  //Table.ColumnNumber given
-					} catch (final NumberFormatException ignore) {
-					}
+				try { //try to interpret the Field Name as a Column Number
+					final double value = Double.parseDouble(fieldAlias[0]);
+					if (value == (int) value)
+						col    = (int) value;  //Table.ColumnNumber given
+				} catch (final NumberFormatException ignore) {
+				}
 			}
 			column = col; 
 		}
@@ -1000,16 +1016,15 @@ implements Statement {
 		return currRS;
 	}
 
-	// TODO: LOGIC: close() calls currRS.close() unconditionally; if this statement is
-	// closed before any query has been executed, currRS is still null and this throws
-	// NullPointerException instead of the no-op a caller following the try-with-resources/
-	// close-defensively pattern would expect.
 	/**
-	 * Closes the result set produced by the last executed query.
+	 * Closes the result set produced by the last executed query, if there is one.
 	 * @see java.sql.Statement#close()
 	 */
 	public void close() throws SQLException {
-		currRS.close();
+		if (currRS != null) {
+			currRS.close();
+			currRS = null;
+		}
 	}
 	
 	//////////////////////////////////////////////////////////////////////////////////
@@ -1058,43 +1073,34 @@ implements Statement {
 
 	final int resultSetConcurrency;
 
-	// TODO: LOGIC: always returns resultSetConcurrencyDefault instead of the instance
-	// field resultSetConcurrency set by the constructor - a statement created with a
-	// non-default concurrency mode still reports the class-wide default here.
 	/**
-	 * Always returns {@link #resultSetConcurrencyDefault}.
+	 * Returns the concurrency mode this Statement was created with.
 	 * @see java.sql.Statement#getResultSetConcurrency()
 	 */
 	public int getResultSetConcurrency() throws SQLException {
-		return resultSetConcurrencyDefault;
+		return resultSetConcurrency;
 	}
 
 	final int resultSetType;
 
-	// TODO: LOGIC: always returns resultSetTypeDefault instead of the instance field
-	// resultSetType set by the constructor - a statement created with a non-default
-	// result-set type still reports the class-wide default here.
 	/**
-	 * Always returns {@link #resultSetTypeDefault}.
+	 * Returns the result set type this Statement was created with.
 	 * @see java.sql.Statement#getResultSetType()
 	 */
 	public int getResultSetType() throws SQLException {
-		return resultSetTypeDefault;
+		return resultSetType;
 	}
 
 	///////////////////////////////////////////////////////////////////////////
 
 	final int resultSetHoldability;
 
-	// TODO: LOGIC: always returns resultSetHoldabilityDefault instead of the instance
-	// field resultSetHoldability set by the constructor - a statement created with a
-	// non-default holdability still reports the class-wide default here.
 	/**
-	 * Always returns {@link #resultSetHoldabilityDefault}.
+	 * Returns the holdability this Statement was created with.
 	 * @see java.sql.Statement#getResultSetHoldability()
 	 */
 	public int getResultSetHoldability() throws SQLException {
-		return resultSetHoldabilityDefault;
+		return resultSetHoldability;
 	}
 	
 	///////////////////////////////////////////////////////////////////////////

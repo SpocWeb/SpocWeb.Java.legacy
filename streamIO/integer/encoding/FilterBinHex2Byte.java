@@ -163,17 +163,12 @@ extends FilterByte {
 /*		if (bigEndian) {
 			return char2Byte((char) n0, (char) n1); }
 			return char2Byte((char) n1, (char) n0); }
-*/		// TODO: LOGIC: wrong nibble conversion, inlined incorrectly from char2Nibble()/
-		// char2Byte() above: a digit should subtract '0' (giving 0-9), not '9' (giving
-		// negative values for every digit but '9' itself); a letter should subtract
-		// ('A'-10), not ('A'+10) (giving negative values for 'A'-'F' too). Every decoded
-		// byte from this read() is wrong except for an input pair of two '9' characters.
-		if (n0 <= '9') {
-			n0 -= '9'; } else {
-			n0 -= 'A' + 10; }
+*/		if (n0 <= '9') {
+			n0 -= '0'; } else {
+			n0 -= 'A' - 10; }
 		if (n1 <= '9') {
-			n1 -= '9'; } else {
-			n1 -= 'A' + 10; }
+			n1 -= '0'; } else {
+			n1 -= 'A' - 10; }
 		if (bigEndian) {
 			return (n1 << 4) + n0; }
 			return (n0 << 4) + n1; }
@@ -196,14 +191,12 @@ extends FilterByte {
 /*		if (bigEndian) {
 			return char2Byte((char) n0, (char) n1); }
 			return char2Byte((char) n1, (char) n0); }
-*/		// TODO: LOGIC: same wrong nibble conversion as read() above - subtracts '9'/('A'+10)
-		// instead of '0'/('A'-10), so every decoded byte is wrong except for two '9' digits.
-		if (n0 <= '9') {
-			n0 -= '9'; } else {
-			n0 -= 'A' + 10; }
+*/		if (n0 <= '9') {
+			n0 -= '0'; } else {
+			n0 -= 'A' - 10; }
 		if (n1 <= '9') {
-			n1 -= '9'; } else {
-			n1 -= 'A' + 10; }
+			n1 -= '0'; } else {
+			n1 -= 'A' - 10; }
 		int wr;
 		if (bigEndian) {
 			wr = (n1 << 4) + n0; } else {

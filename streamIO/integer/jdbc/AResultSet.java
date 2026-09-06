@@ -1251,12 +1251,8 @@ implements ResultSet
 	 * writable Columns 
 	 * non-null Columns or other MetaData
 	 */
-	// TODO: LOGIC: loop condition is "--i > 0", so index 0 is never visited -
-	// flags[0] keeps its default (false) regardless of the actual first column's flag.
-	// Every other reverse loop in this codebase uses "--i >= 0"; this one is inconsistent
-	// and silently under-fills the first element of the caller-supplied array.
 	public void fillFlags(final boolean[] flags) { //final byte opFlag) {
-		for (int i = flags.length; --i > 0;)
+		for (int i = flags.length; --i >= 0;)
 			flags[i] = (CHR_BOOLEAN_TRUE == getFirstChar(i));
 	} //
 

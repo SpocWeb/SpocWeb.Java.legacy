@@ -227,8 +227,11 @@ implements DatabaseMetaData {
 	 *
 	 * @param catalog sub-directory (relative to {@link AConnection#urlDir}) to list table files from
 	 * @param schemaPattern reported verbatim as the schema of every row; not used for filtering
-	 * @param tableNamePattern currently ignored - every matching file is returned
-	 * @param tableTypes currently ignored - every matching file is returned
+	 * @param tableNamePattern SQL LIKE Pattern ('%' and '_') the Table Name must match;
+	 * {@code null} or "%" returns every Table
+	 * @param tableTypes the Table Types to return; {@code null} returns every Type.
+	 * Every Table of this Connection is of Type {@link #TABLE_TYPE_TABLE},
+	 * so any other List yields an empty Result.
 	 * @see java.sql.DatabaseMetaData#getTables(java.lang.String, java.lang.String, java.lang.String, java.lang.String[])
 	 */
 	public ResultSet getTables(
@@ -236,19 +239,62 @@ implements DatabaseMetaData {
 		final String schemaPattern,
 		final String tableNamePattern,
 		final String[] tableTypes) { //throws SQLException {
-		// TODO: LOGIC: tableNamePattern and tableTypes are accepted but never applied as
-		// filters - every table file in the catalog directory is always returned regardless
-		// of the pattern/types the caller asked for, which silently over-returns results for
-		// any caller relying on JDBC's getTables() filtering contract.
 		final File file = new File(connection.urlDir, catalog);
 		final Object[][] tableCols = new Object[TABLE_FIELDS.length][];
-		tableCols[2] = VectorString.SUBSTRING(file.list(new SuffixFileNameFilter(connection.suffix)), connection.suffix.length(), true);
+		String[] tableNames = VectorString.SUBSTRING(file.list(new SuffixFileNameFilter(connection.suffix)), connection.suffix.length(), true);
+		if (! CONTAINS_TABLE_TYPE(tableTypes))
+			 tableNames = new String[0]; //no Type of this Connection was asked for
+		tableCols[2] = FILTER_BY_PATTERN(tableNames, tableNamePattern);
 		final String[] defaults = VectorString.COPY(TABLE_FIELD_DEFAULTS); 
 		defaults[0] = catalog; //"TABLE_CAT"; //String => table catalog (may be null)
 		defaults[1] = schemaPattern;
 		//"TABLE_SCHEM"; //String => table schema (may be null)
 		//String => specifies how values in SELF_REFERENCING_COL_NAME are created. @see REF_GENERATION_TYPES
-		return new ResultSetArray(tableCols, TABLE_FIELDS); //, defaults); 
+		return new ResultSetArray(tableCols, TABLE_FIELDS); //, defaults);
+	}
+
+	/**
+	 * Tells whether the given List of Table Types includes the only Type this Connection
+	 * knows, {@link #TABLE_TYPE_TABLE}.
+	 * @param tableTypes the requested Table Types; {@code null} means every Type
+	 * @return true when Tables should be returned
+	 */
+	protected static boolean CONTAINS_TABLE_TYPE(final String[] tableTypes) {
+		if (tableTypes == null)
+			return true; //no Restriction
+		for (int i = tableTypes.length; --i >= 0;) {
+			if (TABLE_TYPE_TABLE.equalsIgnoreCase(tableTypes[i]))
+				return true;
+		}
+		return false;
+	}
+
+	/**
+	 * Keeps only the Names matching the given SQL LIKE Pattern ('%' and '_').
+	 * @param names the Names to filter
+	 * @param pattern the LIKE Pattern; {@code null} keeps every Name
+	 * @return a new Array with the matching Names, in the original Order
+	 */
+	protected static String[] FILTER_BY_PATTERN(final String[] names, final String pattern) {
+		if ((names == null) || (pattern == null))
+			return names;
+		final StringBuffer regex = new StringBuffer(pattern.length()+8);
+		for (int i = -1; ++i < pattern.length();) {
+			final char chr = pattern.charAt(i);
+			if      (chr == '%') regex.append(".*");
+			else if (chr == '_') regex.append('.');
+			else                 regex.append(java.util.regex.Pattern.quote(String.valueOf(chr)));
+		}
+		final java.util.regex.Pattern compiled = java.util.regex.Pattern.compile(regex.toString());
+		final String[] tmp = new String[names.length];
+		int num = 0;
+		for (int i = -1; ++i < names.length;) {
+			if ((names[i] != null) && compiled.matcher(names[i]).matches())
+				tmp[num++] = names[i];
+		}
+		final String[] ret = new String[num];
+		System.arraycopy(tmp, 0, ret, 0, num);
+		return ret;
 	}
 
 	/**

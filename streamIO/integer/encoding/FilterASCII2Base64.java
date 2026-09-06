@@ -451,13 +451,8 @@ extends FilterByte {
 		int len = streamIn.read(buffer); //
 		if (len <= 0)
 			return -1; //
-		// TODO: LOGIC: integer division truncates `len*4/3` for a final partial group -
-		// 1 remaining input byte should keep 2 valid encoded characters (1*4/3==1, off by
-		// one) and 2 remaining bytes should keep 3 (2*4/3==2, off by one); only a full
-		// 3-byte group (len==3) computes correctly. The last encoded character of a
-		// trailing 1- or 2-byte group is overwritten with '=' padding instead of kept,
-		// corrupting the final group of every stream not an exact multiple of 3 bytes -
-		// matches the "97. Element is missing" failure noted in testIt() below.
+		for (int i = len; i < buffer.length; i++)
+			buffer[i] = 0; //a partial final Group must not encode stale Bytes of the Group before
 		len = len*4/3; //encoded Length is higher
 		ENCODE(buffer, encode, uuencode);
 		if (uuencode) { //can fill up with Garbage
@@ -517,6 +512,8 @@ extends FilterByte {
 	public void flush() throws IOException {
 		if (streamOut != null) {
 			if (index > 0) { //clear the Buffer
+				for (int i = index; i < buffer.length; i++)
+					buffer[i] = 0; //a partial final Group must not encode stale Bytes
 				ENCODE(buffer, encode, uuencode); //
 				if (uuencode) { //can fill up with Garbage
 				} else { //base64: use Padding Character "=" (0x3d)

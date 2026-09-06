@@ -10,7 +10,9 @@ import java.io.IOException;
 
 /**
  * Title: <p>
- * Description:
+ * Description: unimplemented Skeleton for a Character Input Stream.
+ * Every Method except close() throws UnsupportedOperationException;
+ * subclass this Class and override them before use.
  * Purpose:
  *
  * Purpose / Responsibilities of this Class
@@ -38,73 +40,63 @@ public class AStreamIn_Char
 extends AStreamIn_Byte
 implements IStreamIn_Char {
 
-	// TODO: LOGIC: this whole class is an IDE-generated stub - every overridden method below
-	// is unimplemented and returns a hardcoded default (0/null) instead of delegating to a
-	// real character stream or throwing UnsupportedOperationException. Any code that actually
-	// uses an AStreamIn_Char instance will silently get wrong data instead of failing loudly.
+	/** Message used by every unimplemented Method of this Skeleton. */
+	private static final String STR_NOT_IMPLEMENTED =
+		"AStreamIn_Char is an unimplemented Skeleton; subclass it and override this Method.";
 
-	/** Always returns 0; not implemented.
+	/** Not implemented: always throws UnsupportedOperationException.
 	 * @see streamIO.integer.IStreamIn_Byte#available()
 	 */
 	public int available() throws IOException {
-		// TODO Auto-generated method stub
-		return 0;
+		throw new UnsupportedOperationException(STR_NOT_IMPLEMENTED);
 	}
 
-	/** Always returns 0; not implemented.
+	/** Not implemented: always throws UnsupportedOperationException.
 	 * @see streamIO.IOrdered#getOrder()
 	 */
 	public byte getOrder() {
-		// TODO Auto-generated method stub
-		return 0;
+		throw new UnsupportedOperationException(STR_NOT_IMPLEMENTED);
 	}
 
-	/** Always returns 0; not implemented.
+	/** Not implemented: always throws UnsupportedOperationException.
 	 * @see streamIO.IAvailAble#getPosition()
 	 */
 	public long getPosition() {
-		// TODO Auto-generated method stub
-		return 0;
+		throw new UnsupportedOperationException(STR_NOT_IMPLEMENTED);
 	}
 
-	/** Always returns 0; not implemented.
+	/** Not implemented: always throws UnsupportedOperationException.
 	 * @see streamIO.IMarkAble#getMaxMarkSize()
 	 */
 	public long getMaxMarkSize() {
-		// TODO Auto-generated method stub
-		return 0;
+		throw new UnsupportedOperationException(STR_NOT_IMPLEMENTED);
 	}
 
-	/** Always returns {@code null}; not implemented.
+	/** Not implemented: always throws UnsupportedOperationException.
 	 * @see streamIO.integer.IStreamIn_Char#getStreamIn_Byte()
 	 */
 	public IStreamIn_Byte getStreamIn_Byte() {
-		// TODO Auto-generated method stub
-		return null;
+		throw new UnsupportedOperationException(STR_NOT_IMPLEMENTED);
 	}
 
-	/** Always returns 0; not implemented.
+	/** Not implemented: always throws UnsupportedOperationException.
 	 * @see streamIO.integer.IStreamIn_Char#nextChar()
 	 */
 	public char nextChar() {
-		// TODO Auto-generated method stub
-		return 0;
+		throw new UnsupportedOperationException(STR_NOT_IMPLEMENTED);
 	}
 
-	/** Always returns 0; not implemented.
+	/** Not implemented: always throws UnsupportedOperationException.
 	 * @see streamIO.integer.IStreamIn_Byte#read()
 	 */
 	public int read() throws IOException {
-		// TODO Auto-generated method stub
-		return 0;
+		throw new UnsupportedOperationException(STR_NOT_IMPLEMENTED);
 	}
 
-	/** No-op; not implemented.
+	/** No-op: this Skeleton holds no Resources.
 	 * @see streamIO.integer.IStreamIn_Byte#close()
 	 */
 	public void close() throws IOException {
-		// TODO Auto-generated method stub
-
 	}
 
 	/** Empty smoke-test entry point; performs no action. */

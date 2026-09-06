@@ -267,11 +267,7 @@ implements IStreamIn_Struct, IStreamIn_StructX {
 	/** Reads and returns the next String, or {@code null} at end of stream.
 	 * @see streamIO.integer.IStreamIn_Struct#nextString()	 */
 	public String nextString() {
-		// TODO: LOGIC: nextBuffer() returns null (not the EOI sentinel) at end of stream per its
-		// own Javadoc above, so this "EOI == nextBuffer()" comparison can never be true and EOF
-		// is never detected here - nextString() will call buffer.toString() on stale/empty
-		// content instead of returning null past the end of the stream.
-		if (EOI == nextBuffer())
+		if (null == nextBuffer())
 			return null; //EOI;
 		return buffer.toString();
 	}
@@ -778,14 +774,10 @@ implements IStreamIn_Struct, IStreamIn_StructX {
 	 * @param start the first index to fill (inclusive)
 	 * @return the number of Strings actually filled
 	 */
-	// TODO: LOGIC: same EOI/null mismatch as nextString() above - nextString() returns null
-	// (not the EOI sentinel) at end of stream, so "EOI == curr" below never detects end of
-	// stream; the loop instead keeps appending a null into stringBuf until the stop count is
-	// reached, rather than stopping at the true end of input.
 	private int nextStrings(final int stop, int start) {
 		for(; start < stop; ) {
 			final String curr = nextString();
-			if (EOI == curr)
+			if (null == curr)
 				return start; //break;
 			if (start >= stringBuf.length) {
 				final String[] tmp = new String[stringBuf.length+stringBuf.length+1]; 
@@ -835,13 +827,10 @@ implements IStreamIn_Struct, IStreamIn_StructX {
 	 * @param start the first index to fill (inclusive)
 	 * @return the number of Items actually filled
 	 */
-	// TODO: LOGIC: same EOI/null mismatch as nextString()/nextStrings() above - nextItem()
-	// delegates to nextBuffer(), which returns null (not EOI) at end of stream, so "EOI == curr"
-	// below never detects end of stream.
 	private int nextItems(final int stop, int start) {
 		for(; start < stop; ) {
 			final Object curr = nextItem();
-			if (EOI == curr)
+			if (null == curr)
 				return start; //break;
 			if (start >= objectBuf.length) {
 				final Object[] tmp = new Object[objectBuf.length+objectBuf.length+1]; 

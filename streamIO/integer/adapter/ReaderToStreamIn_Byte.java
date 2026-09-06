@@ -130,12 +130,7 @@ implements IStreamIn_Byte {
 			int val;
 			if ((val = reader.read()) < 0) {
 				return i-off; }
-			// TODO: LOGIC: narrowing the Character to (byte) before storing into this int[]
-			// truncates and sign-extends any code point outside -128..127 (e.g. Latin-1
-			// supplement, or any char > 0x7F), corrupting the value that ends up in b[i] -
-			// unlike the read(byte[], ...) overload above, where truncating to byte is the
-			// intended behavior, this int[] overload should store "val" directly, unnarrowed.
-			b[i] = (byte) val;
+			b[i] = val;
 		}
 		return len; }
 

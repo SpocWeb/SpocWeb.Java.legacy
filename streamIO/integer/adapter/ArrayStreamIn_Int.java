@@ -126,13 +126,9 @@ implements IStreamIn_Int {
 				return EOF; }
 			return arrInt[pos];
 		}
-		// TODO: LOGIC: this delegates to nextInt(), but nextInt() (in the AStreamIn_Int parent)
-		// is implemented as "(int) nextLong()", and nextLong() calls back into this very method
-		// (nextLongInternal()). When this class wraps a long[] (arrInt == null), every call
-		// recurses into itself indefinitely, causing a StackOverflowError instead of reading
-		// arrLong[pos]. This branch should read from arrLong directly (mirroring the arrInt
-		// branch above), not call nextInt().
-		return nextInt();
+		if (++pos >= max) {
+			return EOF; }
+		return arrLong[pos];
 	}
 	
 	/** Returns the minimum Value present in the wrapped Array.

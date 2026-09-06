@@ -162,12 +162,7 @@ extends DeMultiplexerIn_Raid0 {
 			return this.currItem = thisItem; 
 		} //first Exception is ignored!
 		if ((thisItem ^ nextItem) != parity)
-			// TODO: LOGIC: the "actual" value logged here is "currItem ^ nextItem", but currItem
-			// still holds the Item from the *previous* read() call at this point (it is only
-			// assigned below, after this check) - the diagnostic should report the just-computed
-			// "thisItem ^ nextItem" (the value actually compared against parity above), not a
-			// stale currItem XORed with nextItem.
-			throw new IOException("Transmission Error: Expected:"+parity+" actual:"+(currItem ^ nextItem));
+			throw new IOException("Transmission Error: Expected:"+parity+" actual:"+(thisItem ^ nextItem));
 		return this.currItem = thisItem; 
 	}
 

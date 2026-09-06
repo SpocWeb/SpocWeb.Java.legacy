@@ -119,22 +119,15 @@ extends FilterByte {
 	  * 	In particular, an IOException may be thrown if the output stream has been closed.
 	  */
 	public void write(final int Value) throws IOException {
-		// TODO: LOGIC: this checks Value against UrlSpaceReplace ('+') to decide whether to
-		// enter the two-byte hex-escape state, but the escape marker is '%'
-		// (FilterUrlEncode.UrlEscapeChar), not '+' - unlike read() above, which correctly
-		// switches on UrlEscapeChar. As written, write() never decodes a real "%XY" escape
-		// sequence (its '%' passes straight through unchanged) and instead misinterprets a
-		// literal '+' as the start of a hex pair, consuming and misdecoding the next two
-		// characters. It also never translates '+' back into a space. Should check
-		// `Value == FilterUrlEncode.UrlEscapeChar` here, with '+' handled as its own case
-		// that writes UrlSpaceOriginal directly.
 		switch (c1) {
 			case -2: //not in Escape Sequence
-				if (Value == FilterUrlEncode.UrlSpaceReplace) {
+				if (Value == FilterUrlEncode.UrlEscapeChar) {
 					c1 = -1; return; } //Escape Character
+				if (Value == FilterUrlEncode.UrlSpaceReplace) {
+					streamOut.write(FilterUrlEncode.UrlSpaceOriginal); return; }
 				streamOut.write(Value); return; //normal Character
 			case -1: //High Byte of a Hex Pair
-				c1 = (byte) Value;
+				c1 = (byte) Value; return;
 			default: //Low  Byte of a Hex Pair
 				streamOut.write(FilterBinHex2Byte.char2Byte((char) c1, (char) Value));
 				c1 = -2;

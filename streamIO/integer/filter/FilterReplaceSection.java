@@ -429,16 +429,13 @@ implements IPlugAbleFilterByte {
 	 * @param args Array of parameters passed to the application
 	 * via the command line.	 
 	 */
-	// TODO: LOGIC: when args.length < 5, the Syntax message is printed but main() falls
-	// through instead of returning, so args[0..4] below throw
-	// ArrayIndexOutOfBoundsException instead of exiting cleanly (same pattern as
-	// EchoFile.main() and FixRecordScrambler.main() elsewhere in this codebase).
 	public static void main(String[] args) throws java.io.IOException {
 		if (args.length < 5) {
 			System.out.println(
 				"FileInPath Starter Stopper Replacement FileOutPath ");
 			System.out.println(
 				"DirInPath Starter Stopper Replacement DirOutPath ListOfSuffixes");
+			return;
 		}
 		final String in_FileName = args[0];
 		final String starter = args[1];

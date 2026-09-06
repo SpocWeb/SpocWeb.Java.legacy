@@ -63,12 +63,7 @@ extends FilterIn_Byte {
 		this.EnCode = EnCode;
 		this.forbidden = forbidden + Escape;
 		this.replace = replace;
-		// TODO: LOGIC: unlike the sibling EscapeOutputFilter constructor, this omits the
-		// `replace.length() < forbidden.length()` guard (see the comment below) - when a
-		// caller passes a `replace` string as long as or longer than `forbidden`,
-		// `forbidden.substring(replace.length())` throws StringIndexOutOfBoundsException
-		// instead of leaving `replace` unpadded.
-		if (doReplace = (replace != null)) { // && (replace.length() < forbidden.length()))
+		if ((doReplace = (replace != null)) && (replace.length() < forbidden.length())) {
 			//fill up the Replace String with the rest of the forbidden String.
 			replace += forbidden.substring(replace.length());
 		}	//that replaces only the beginning Characters and makes it more consistent.

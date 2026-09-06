@@ -210,10 +210,7 @@ extends FilterByte {
 	public int read() throws IOException {
 		int ret; // = super.read();
 		ret = streamIn.read();
-		// TODO: LOGIC: same NUL-byte exclusion bug as FilterCRC16.read() - `ret > 0` skips
-		// updating the CRC for a genuine 0x00 data byte, giving a wrong CRC for any data
-		// containing NUL bytes. Should be `ret >= 0` (or `ret != EOF`).
-		if (ret > 0) {
+		if (ret >= 0) {
 			CRC = updateCRC32(CRC, (byte) ret); }
 		return ret; } //
 
