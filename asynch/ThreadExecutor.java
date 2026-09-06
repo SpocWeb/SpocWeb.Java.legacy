@@ -85,8 +85,7 @@ implements Runnable {
 ////////////////////////////////////////////////////////////////////////////
 
 	/** Returns the current task-count bookkeeping value used for load balancing.
-	  * @return the Number of Tasks currently queued or running in this Executor
-	  * (see the TODO on run() below: this counter can drift due to a bookkeeping bug). */
+	  * @return the Number of Tasks currently queued or running in this Executor */
 	public int getNumTasks() {
 		return numTasks; }
 
@@ -130,13 +129,9 @@ implements Runnable {
 	/** Worker loop: repeatedly takes the next Runnable from the pipe and runs it, waiting when empty. */
 	public synchronized void run() {
 		while (!stopped) {
-			// TODO: LOGIC: numTasks is decremented unconditionally even when pipe.nextItem() below
-			// returns null (nothing to do), so numTasks drifts negative whenever this worker goes idle.
-			// SimpleThreadPoolExecutor.execute() relies on getNumTasks() for load balancing, so a
-			// corrupted (negative) count defeats that balancing.
-			numTasks--;
 			Runnable item = (Runnable) pipe.nextItem();
 			if (item != null) {
+				numTasks--; //only count down for an Item actually taken off the Pipe
 				item.run();
 				//TODO: implement a Timeout Mechanism by setting up a Watcher Thread
 				//using an Approach similar to MultiCaster and MultiValidator!

@@ -64,29 +64,21 @@ implements IConstrained {
 	 * This Class transparently creates a MultiCaster if necessary.	 */
 	public void addValidator(IValidator arg)
 		throws TooManySubscribersException	{
-		// TODO: LOGIC: this checks 'instanceof MultiCaster', but 'validator' is only ever
-		// null, a plain IValidator, or a MultiValidator -- never a MultiCaster (a distinct
-		// class implementing ISubscriber/IPublisher, not IValidator). So this branch is
-		// dead code and the "already composite" fast path never runs.
-		// Worse, the else branch below only re-wraps the *existing* validator into a new
-		// MultiValidator and never adds 'arg' to it, so from the second call onward every
-		// newly added Validator is silently dropped -- only the very first one registered
-		// ever actually gets consulted. Compare the correct pattern in
-		// UniCaster.ADD_SUBSCRIBER(), which calls ret.addSubscriber(arg) after wrapping.
-		if  (validator instanceof MultiCaster) {
+		if  (validator instanceof MultiValidator) {
 			((MultiValidator) validator).addValidator(arg); return; }
 		if  (validator == null) { //throw new TooManySubscribersException();
 			 validator =  arg;
 		} else {
 			 MultiValidator tmp = new MultiValidator();
-			 tmp.addValidator(validator);
+			 tmp.addValidator(validator); //keep the previously registered Validator
+			 tmp.addValidator(arg);       //and add the new one
 			 validator = tmp; }
 	}
 
 	/**Removes the Validator from this Publisher
 	 * @return false if this Validator was not subscribed at all.	 */
 	public IValidator removeValidator(IValidator arg)	{
-		if (validator instanceof MultiCaster) { //never remove the Multicaster!
+		if (validator instanceof MultiValidator) { //never remove the MultiValidator!
 			return ((MultiValidator) validator).removeValidator(arg); }
 		if (validator == arg) {
 			validator =  null;
@@ -97,7 +89,7 @@ implements IConstrained {
 	  * MultiValidator when this instance has been upgraded to hold more than one.
 	  * @return true if the given Validator is currently registered.	 */
 	public boolean isValidator(IValidator arg) {
-		if (validator instanceof MultiCaster) {
+		if (validator instanceof MultiValidator) {
 			return ((MultiValidator) validator).isValidator(arg); }
 		return (validator == arg); }
 
@@ -105,7 +97,7 @@ implements IConstrained {
 	  * MultiValidator when this instance has been upgraded to hold more than one.
 	  * @return the current Number of registered Validators	 */
 	public int countValidators() {
-		if (validator instanceof MultiCaster) {
+		if (validator instanceof MultiValidator) {
 			return ((MultiValidator) validator).countValidators(); }
 		return (validator == null) ? 0 : 1; }
 

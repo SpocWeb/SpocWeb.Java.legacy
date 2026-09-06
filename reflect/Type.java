@@ -126,8 +126,7 @@ public class Type implements IType
 	/** Wraps {@code cls_}, which must be an Interface Class Object.
 	  * @throws ClassCastException if {@code cls_} does not represent an Interface */
 	public Type(Class cls_) {
-		// TODO: LOGIC: checks the field `cls` (always null at this point, since it is assigned on the next line) instead of the constructor argument `cls_`. This throws a NullPointerException on every call, including the static `TYPE` initializers in IThing/IIndividual/IIntangible/IMathThing/IType, so the intended "Only Interfaces are allowed!" validation never runs. Should be `if (!cls_.isInterface())`.
-		if (!cls.isInterface()) {
+		if (!cls_.isInterface()) {
 			throw new ClassCastException("Only Interfaces are allowed!");
 		}
 		this.cls = cls_;
@@ -304,8 +303,7 @@ public class Type implements IType
 	 * @throw NullPointerException - if the specified Class parameter is null.
 	 */
 	public boolean isAssignableFrom(Class cls) {
-		// TODO: LOGIC: the parameter `cls` shadows the field `this.cls`, so this calls cls.isAssignableFrom(cls) - comparing the argument to itself - which is always true. It never consults the wrapped Type's Class, so the Method always returns true regardless of the actual assignability relationship. Should be `return this.cls.isAssignableFrom(cls);`.
-		return cls.isAssignableFrom(cls);
+		return this.cls.isAssignableFrom(cls);
 	}
 
 	/**

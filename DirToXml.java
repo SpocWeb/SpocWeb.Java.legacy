@@ -87,10 +87,7 @@ public class DirToXml {
 		final String[] files = dir.list();
 		final String newPrefix = indent+prefix;
 		final String path = dir.getPath();
-		// TODO: LOGIC: month and minute Format Letters are swapped - lowercase 'mm' is minutes
-		// and uppercase 'MM' is month in SimpleDateFormat, so the written date's Month field
-		// actually shows the current minute-of-hour, and its Minute field shows the month number.
-		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-mm-dd'T'hh:MM:ss"); //.sssZ");
+		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss"); //.sssZ");
 		for (int i = files.length; --i >= 0;) {
 			final String fName = files[i];
 			//System.out.println("testing " + fileName);

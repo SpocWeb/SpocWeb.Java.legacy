@@ -64,6 +64,9 @@ implements Runnable, IIStreamOut, IExecutor {
 	  */
 	protected List Operations = new Vector();
 
+	/** Milliseconds to park between Re-Checks while Operations are queued but none is ready to run. */
+	protected static final long POLL_MILLIS = 50;
+
 ////////////////////////////////////////////////////////////////////////////////
 /// #region : Accessor Methods (getXXX/isXXX/setXXX)
 ////////////////////////////////////////////////////////////////////////////////
@@ -87,9 +90,8 @@ implements Runnable, IIStreamOut, IExecutor {
 	/** Method called by the Scheduler encapsulating which Method to call */
 	public void run() {
 		Runnable r;
-		// TODO: LOGIC: busy-waits here with no wait()/sleep() when Operations is empty (the common case),
-		// spinning the CPU at 100% indefinitely instead of blocking until a new Operation is added.
 		while (true) { //loop infinitely
+			boolean ranAny = false;
 			int i = Operations.size(); //don't use an Iterator...
 			while (--i >= 0) { //the Index should never be out of Bounds!
 				r = (Runnable) Operations.get(i); //because only this Thread removes Items!
@@ -103,6 +105,18 @@ implements Runnable, IIStreamOut, IExecutor {
 						RuntimeExceptionHandler.addItem(x); }
 				}
 				Operations.remove(i);
+				ranAny = true;
+			}
+			if (!ranAny) { //nothing was runnable: block instead of spinning the CPU
+				synchronized (Operations) {
+					try {
+						if (Operations.isEmpty()) {
+							Operations.wait(); } //until execute()/addRequest() enqueues something
+						else {
+							Operations.wait(POLL_MILLIS); } //Items are present, but all still dirty
+					} catch (InterruptedException x) {
+						return; }
+				}
 			}
 		}
 	}
@@ -113,12 +127,16 @@ implements Runnable, IIStreamOut, IExecutor {
 
 	/** Enqueues the Runnable to be picked up and run by this Scheduler's worker Thread. */
 	public void execute(Runnable arg) {
-		Operations.add(arg);
+		synchronized (Operations) {
+			Operations.add(arg);
+			Operations.notifyAll(); } //wake the worker Thread up
 	}
 
 	/** Enqueues a ReadyToRun request; its isDirty() Flag determines when it becomes eligible to run. */
 	public void addRequest(ReadyToRun arg) {
-		Operations.add(arg);
+		synchronized (Operations) {
+			Operations.add(arg);
+			Operations.notifyAll(); } //wake the worker Thread up
 	}
 
 	/** IIStreamOut adapter over addRequest(): enqueues arg, which must be a ReadyToRun. */

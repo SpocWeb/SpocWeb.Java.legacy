@@ -65,10 +65,7 @@ public class FileHex {
         catch (FileNotFoundException e) { System.out.println("File not Found:" + e.toString()); }
         catch (IOException e) { System.out.println("IO Error:" + e);
 			ByteArrayOutputStream OS = new ByteArrayOutputStream(); e.printStackTrace(new PrintStream(OS));
-			IOException n = new IOException( "\n" + OS.toString ()); e.fillInStackTrace();
-			// TODO: LOGIC: e.fillInStackTrace() mutates and returns `e`, but the result is
-			// discarded and `e` is never used again - this call has no effect. `n`, the
-			// Exception actually thrown, keeps its own (uninformative) stack trace.
+			IOException n = new IOException( "\n" + OS.toString (), e); //chains the original Cause
 			throw n; } //shows how to propagate Exceptions with full Trace Information.
     }
 }

@@ -329,9 +329,6 @@ public class HashTreeNode
 	/** Compares by UserObject, delegating to a wrapped node's UserObject too.
 	  * @return true, if the Argument arg equals the UserObject.
 	  */
-	// TODO: LOGIC: when this Node's userObject is null (the Empty Constructor allows it)
-	// and arg is a non-null Object that is not a DefaultMutableTreeNode, the final branch
-	// calls userObject.equals(arg) on a null userObject and throws NullPointerException.
 	public boolean equals(Object arg) {
 		if (arg == this) return true; //Optimization
 		if (arg == userObject) return true; //Optimization
@@ -341,6 +338,7 @@ public class HashTreeNode
 			if (arg == null) return false; //
 			return arg.equals(userObject); //
 		} else {
+			if (userObject == null) return false; //arg is not null here, so they differ
 			return userObject.equals(arg) || arg.equals(userObject); }
 	}
 

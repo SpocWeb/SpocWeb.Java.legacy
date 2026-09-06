@@ -82,10 +82,7 @@ public class EchoFile {
 			//case 0 : args = new String[] {"./EncodingTest.TXT", CP437}; break;
 			case 1 : args = new String[] {args[0], CP437}; break;
 			case 2 : args = new String[] {args[0], args[1]}; break;
-			// TODO: LOGIC: the default case (0 or 3+ args) prints the Syntax message but does not
-			// return, so args[0]/args[1] below then throw ArrayIndexOutOfBoundsException instead
-			// of exiting cleanly.
-			default: System.out.println("Syntax: java EchoFile <filePath> [encoding=CP437]"); break;
+			default: System.out.println("Syntax: java EchoFile <filePath> [encoding=CP437]"); return;
 		}
 		echoFile(args[0], args[1]);
 	}

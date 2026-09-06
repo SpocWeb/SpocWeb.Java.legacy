@@ -51,7 +51,7 @@ extends FileChunk {
 	public MidiChunk(final BigEndianReader streamIn_) throws IOException {
 		super(streamIn_, TRACK_HEADER);
 		events = new byte[chunkSize];
-		// TODO: LOGIC: events is allocated but never filled from streamIn_ (no readFully(events) call), and the Stream position is never advanced past this Chunk's chunkSize bytes, so events stays all zero and subsequent Chunk reads (e.g. the next Track in MidiFile) will misread the unread Event bytes as a new Chunk Header.
+		streamIn.readFully(events); //advance past this Chunk, so the next Header is read from the right Offset
 	}
 
 }

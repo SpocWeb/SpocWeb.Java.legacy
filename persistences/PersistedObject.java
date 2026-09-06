@@ -46,9 +46,7 @@ extends knowledge.DirtyFlag {
 	/** Reference to the HashMap containing all active Persisted Objects
 	  * Newly created Objects are automatically added to this Collection.
 	  */
-	// TODO: LOGIC: never initialized (stays null); getObject(String) and setId(String) both
-	// dereference it and throw NullPointerException whenever either is actually invoked.
-	private static HashMap objects;
+	private static HashMap objects = new HashMap();
 
 ////////////////////////////////////////////////////////////////////////////////
 //  static Methods 
@@ -161,12 +159,8 @@ extends knowledge.DirtyFlag {
 	  * The ID is used for hashing and also as the Result of the toString Method.
 	  * The Object has no Identity except for the given ID.
 	  */
-	// TODO: LOGIC: checks the field `ID` (always null here, before it has ever been
-	// assigned) instead of the parameter `ID_`, so this condition is always false and
-	// setId(ID_) is never called from this constructor - every instance built this way,
-	// including via PersistedObject(ResultSet), keeps a null ID.
 	public PersistedObject(String ID_) {
-		if (ID != null) {
+		if (ID_ != null) {
 			setId(ID_); }
 	}
 

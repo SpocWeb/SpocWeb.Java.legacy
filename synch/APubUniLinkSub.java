@@ -114,13 +114,8 @@ public ILinked getPrnt() { return subscriber; }
  */
 public void update(Object Source, Object Value, Object oldVal) {
 	myUpdate(Source, Value, oldVal);
-	// TODO: LOGIC: no null check on 'subscriber' before propagating. The chain is built
-	// by addSubscriber() so that the *last* (first-added) node ends up with subscriber ==
-	// null; when update() propagation reaches that terminal node, this throws a
-	// NullPointerException instead of just stopping. Every other Subscriber/Publisher in
-	// this package (e.g. Aspect.updateParent(), UniCaster) guards this call with
-	// 'if (subscriber != null)'.
-	subscriber.update(Source, Value, oldVal); }
+	if (subscriber != null) { //the chain-terminal Node has none: stop propagating there
+		subscriber.update(Source, Value, oldVal); } }
 
 ////////////////////////////////////////////////////////////////////////////
 /// #region : Interface LinkedSubscriber: abstract Methods

@@ -143,14 +143,8 @@ implements IValidationRule {
 			if (RuntimeExceptionHandler != null) {
 				RuntimeExceptionHandler.addItem(x); }
 		} //if this Thread is interrupted, also the Worker Thread should stop!
-		// TODO: LOGIC: 'params' only has 2 elements ({Value, null}), but this reads
-		// params[3] -- guaranteed ArrayIndexOutOfBoundsException every time this method
-		// runs (i.e. whenever Timeout > 0), regardless of whether the Worker Thread threw.
-		// The Exception is actually stored at params[1] (see Params[1] = x above); compare
-		// MultiValidator.notifyValidatorsInThread(), which correctly uses a 4-element array
-		// and checks params[3].
-		if (params[3] != null) { //rethrow the Exception caught on calling the Validator
-			throw (InvalidException) params[3]; }
+		if (params[1] != null) { //rethrow the Exception caught on calling the Validator
+			throw (InvalidException) params[1]; }
 	}
 
 ////////////////////////////////////////////////////////////////////////////////

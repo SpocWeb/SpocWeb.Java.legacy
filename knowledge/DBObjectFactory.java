@@ -366,9 +366,9 @@ extends Object {
 		DBKeyNames = Key.DBKeyNames();
 		KeyNames = Key.KeyNames();
 		Keys = Key.Keys();
-		String str 		= AStreamOut.ARRAY_TO_STRING(FieldNames, ",");
-		strDBKeyNames   = AStreamOut.ARRAY_TO_STRING(  KeyNames, ",");
-		strDBFieldNames = str.substring(0, str.length()-1);
+		String str 		= AStreamOut.ARRAY_TO_STRING(DBFieldNames, ",");
+		strDBKeyNames   = AStreamOut.ARRAY_TO_STRING(DBKeyNames  , ",");
+		strDBFieldNames = str.isEmpty() ? str : str.substring(0, str.length()-1);
 		strUpdate = STR_UPDATE_ + Factory.TableName() + STR_SET_;
 		strInsert = STR_INSERT_INTO_ + Factory.TableName() + '(' + strDBKeyNames + strDBFieldNames + STR_VALUES_;
 		strDelete = STR_DELETE_FROM_ + Factory.TableName(); // + STR_WHERE_;

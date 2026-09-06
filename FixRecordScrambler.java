@@ -205,12 +205,9 @@ public static void testIt(String[] args) { //throws java.io.IOException {
  * -->
  * via the command line.	 */
 public static void main (String[] args) throws java.io.IOException {
-	// TODO: LOGIC: the 7 documented parameters require args.length==7 and are read up to
-	// args[6], but this check only warns (without returning) when args.length!=6 - passing
-	// exactly 6 arguments, which satisfies neither the check nor the actual requirement,
-	// throws ArrayIndexOutOfBoundsException at args[6] instead of showing the Syntax message.
-	if (args.length != 6) {
-		System.out.println("Syntax: "+FixRecordScrambler.class.getName()+" inFilePath outFilePath recordSize startOffset fieldOffset fieldValue numRecords"); }
+	if (args.length != 7) {
+		System.out.println("Syntax: "+FixRecordScrambler.class.getName()+" inFilePath outFilePath recordSize startOffset fieldOffset fieldValue numRecords");
+		return; }
 	OFFSET_FIELD(args[0], args[1], Integer.parseInt(args[2]), Integer.parseInt(args[3]), Integer.parseInt(args[4]), args[5], Integer.parseInt(args[6])); }
 
 }

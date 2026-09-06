@@ -54,18 +54,18 @@ extends ThreadExecutor {
 			public void run() {
 				try {
 					while (true) {
-						// TODO: LOGIC: this.wait() is called without ever synchronizing on 'this' (no
-						// synchronized block/method here), so it throws IllegalMonitorStateException as
-						// soon as the pipe is empty; that RuntimeException is not caught below (only
-						// InterruptedException is), so the pool worker thread silently dies on its first
-						// idle poll. Also mirrors ThreadExecutor's bug: numTasks is decremented even when
-						// r is null, corrupting the load-balancing counter.
-						Runnable r = (Runnable) pipe.nextItem(); --numTasks;
-						if (r == null) { //Tolerance for both blocking and non blocking Pipes:
-							this.wait(); //synchronize on the Pipe or on 'this'
-						} else {
-							r.run();
+						Runnable r;
+						//the Monitor is the Executor Instance, the same one execute() notifies on
+						synchronized (ThreadPoolExecutor.this) {
+							r = (Runnable) pipe.nextItem();
+							if (r == null) { //Tolerance for both blocking and non blocking Pipes:
+								ThreadPoolExecutor.this.wait();
+							} else {
+								--numTasks; //only count down for an Item actually taken off the Pipe
+							}
 						}
+						if (r != null) {
+							r.run(); } //run outside the Monitor, so the Pool stays concurrent
 					}
 				} catch (InterruptedException x) {}
 			}

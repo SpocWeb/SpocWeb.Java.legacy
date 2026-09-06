@@ -294,10 +294,11 @@ implements KeyListener{
 			keys.append(key);
 			Log.N(keys);
 			try{
-				// TODO: LOGIC: key can be 65535 (the CapsLock Key, per GET_KEY's own handling above), which is out of bounds for the 256-entry NOTES_BY_KEY array; the resulting ArrayIndexOutOfBoundsException is silently swallowed by the catch below, so pressing CapsLock plays no Note but still (harmlessly) appends 65535 to keys.
-				int note = NOTES_BY_KEY[key]+24;
-				System.out.println("Note = "+note);
-				channels[0].noteOn(note, KEY_VELOCITY);
+				if (key < NOTES_BY_KEY.length) { //e.g. CapsLock reports 65535, which maps to no Note
+					int note = NOTES_BY_KEY[key]+24;
+					System.out.println("Note = "+note);
+					channels[0].noteOn(note, KEY_VELOCITY);
+				}
 			} catch(Exception x) {}
 		}
 	}
@@ -311,7 +312,8 @@ implements KeyListener{
 			keys.deleteCharAt(pos);
 			Log.N(keys);
 			try{
-				channels[0].noteOff(NOTES_BY_KEY[key], KEY_VELOCITY);
+				if (key < NOTES_BY_KEY.length) { //e.g. CapsLock reports 65535, which maps to no Note
+					channels[0].noteOff(NOTES_BY_KEY[key], KEY_VELOCITY); }
 			} catch(Exception x) {}
 		}
 	}

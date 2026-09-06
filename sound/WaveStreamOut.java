@@ -77,9 +77,9 @@ implements IStreamOutInt {
 			writer.writeByte(b);
 		else if (BitsPerSample == 16)
 			writer.writeShort(b);
-		else if (BitsPerSample == 24)
-			// TODO: LOGIC: writeInt(b) writes 4 Bytes, but a 24-Bit Sample should only be 3 Bytes; this both corrupts the encoded Sample Values and writes a "data" Chunk longer than the Size header written in the constructor (which was sized from numSamples*bitsPerSample/8).
-			writer.writeInt(b); //TODO: write 3 Bytes
+		else if (BitsPerSample == 24) { //3 Bytes, low Word first, matching the Writer's little endian Order
+			writer.writeShort(b & 0xFFFF);
+			writer.writeByte((b >> 16) & 0xFF); }
 		} catch (IOException x) {
 			throw new RuntimeException(x);
 		}

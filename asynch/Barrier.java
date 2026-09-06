@@ -55,7 +55,7 @@ public class Barrier {
 ////////////////////////////////////////////////////////////////////////////////
 
 	/** Initializing Constructor	 */
-	public Barrier(int numParties_) { this.numParties = numParties_; }
+	public Barrier(int numParties_) { this.numParties = numParties_; this.count = numParties_; }
 
 ////////////////////////////////////////////////////////////////////////////////
 /// #region : public Methods, then private Methods
@@ -73,9 +73,6 @@ public class Barrier {
 	  * this can be used to trigger a regular Action on (barrier() == 0)
 	  */
 	public synchronized int barrier() throws InterruptedException {
-		// TODO: LOGIC: 'count' is never initialized to 'numParties' (constructor only sets numParties;
-		// count defaults to 0), so the very first call decrements 0 to -1, which is not > 0 and thus
-		// takes the "last party" branch immediately instead of waiting for the other parties to arrive.
 		int index = --count;
 		if (index > 0) { //still have to wait for some...
 //			int r = numResets; //wait until the next Reset

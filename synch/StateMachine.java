@@ -107,10 +107,7 @@ public class StateMachine {
 		int i = -1;
 		while (++i < a.length) {
 			int j = -1;
-			// TODO: LOGIC: inner bound uses a.length (numInputs, the row count) instead of
-			// a[i].length (numStates, the column count). Throws ArrayIndexOutOfBoundsException
-			// whenever numStates < numInputs, and silently omits columns when numStates > numInputs.
-			while (++j < a.length)
+			while (++j < a[i].length)
 				S.append(a[i][j]).append(','); //",\t");
 			S.append('\n');
 		}

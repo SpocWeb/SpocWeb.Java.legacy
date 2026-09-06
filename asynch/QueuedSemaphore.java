@@ -85,18 +85,15 @@ implements ISynch {
 	public void lock() throws InterruptedException {
 		if (Thread.interrupted()) { //busy Method => check the Interrupted Flag
 			throw new InterruptedException(); }
-		Object monitor = null;
-		synchronized(this) {
-			if (numPermits > 0) {
-				--numPermits;
-				return; }
-			monitor = Thread.currentThread();
-			pipe.addItem(monitor); } //release the Lock on 'this' before locking on node!
-		// TODO: LOGIC: lost-wakeup race: between releasing the 'this' monitor above and acquiring the
-		// 'monitor' (Thread) monitor below, another thread's unlock() can already run, dequeue this
-		// monitor and call monitor.notify() before this thread reaches wait(); since notify() is not
-		// sticky, that wakeup is lost and this thread can block in wait() forever.
+		Object monitor = Thread.currentThread();
+		//the monitor Lock is taken BEFORE this Thread is enqueued and is held until wait() releases
+		//it, so an unlock() that dequeues us cannot reach notify() before we are actually waiting.
 		synchronized (monitor) {
+			synchronized(this) {
+				if (numPermits > 0) {
+					--numPermits;
+					return; }
+				pipe.addItem(monitor); }
 //			try {
 				monitor.wait(); //node.doWait();
 //			} catch (InterruptedException x) {

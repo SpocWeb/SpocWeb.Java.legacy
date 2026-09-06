@@ -66,8 +66,7 @@ extends FileChunk {
 				stream16 = new int [chunkSize/numBytesPerValue];
 				stream_8 = null;
 				for (int i = -1; ++i < stream16.length; ) {
-					// TODO: LOGIC: readInt() consumes 4 Bytes per Sample, but a 16-Bit Sample is only 2 Bytes; this over-reads the Stream by 2x for the (most common) 16-Bit case, misaligning or exhausting the underlying Stream. Should use streamIn.readShort() here.
-					stream16[i] = streamIn.readInt(); }
+					stream16[i] = streamIn.readShort(); }
 				break;
 			case 3: //24 Bit
 				stream16 = null;

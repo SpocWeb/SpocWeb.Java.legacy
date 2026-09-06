@@ -35,12 +35,7 @@ extends BasicAttribute {
 	final static public String STR_TableName = "StringAttribute"; //
 	
 	/** Array of Field Names, selects only the non static, final or transient Fields	 */
-	// TODO: LOGIC: seeded with an empty array instead of BasicAttribute.Keys, so Fields()
-	// returns only this class's own Value column despite its 'including Parent Fields'
-	// contract; the inherited TypeID/SubjectID/StatusID key columns are missing from every
-	// generic insert, update and select DBObjectFactory builds from it. MetaType, which
-	// concatenates Status.Fields, shows the intended form.
-	final static public Field[] Fields = DBObjectFactory.conCat(new Field[0], StringAttribute.class.getDeclaredFields()); //getFields ()};
+	final static public Field[] Fields = DBObjectFactory.conCat(BasicAttribute.Keys, StringAttribute.class.getDeclaredFields()); //getFields ()};
 	
 	/** String Constants for the Field Names */
 	final static public String[] FieldNames = DBObjectFactory.getFieldNames(Fields);

@@ -82,8 +82,9 @@ implements Runnable {
 	  * Without stopping the Thread stays blocked
 	  * and keeps this Executor alive too!
 	  */
-	public void stop() {
-		stopped = true; }
+	public synchronized void stop() {
+		stopped = true;
+		notifyAll(); } //wake the Worker up, so it can observe 'stopped'
 
 	/* Infinite Loop for the Worker Thread
 	 * can be stopped by setting the Parameter to true.
@@ -92,13 +93,10 @@ implements Runnable {
 	/** Worker loop: runs the currently assigned Runnable, then waits to be handed the next one. */
 	public synchronized void run() {
 		while (!stopped) {
-			// TODO: LOGIC: 'r' is never reset to null after being run, so on every subsequent wakeup
-			// (including a spurious one) the same stale Runnable is executed again; combined with
-			// stop() never calling notify(), a thread parked in wait() below also has no way to wake
-			// up and observe 'stopped', so it can block forever.
 			if (r != null) {
-				r.run(); }
-				t.notify(); //(try to) wake up blocked Dispatcher Thread(s)
+				r.run();
+				r = null; } //release the Runnable, so a spurious Wakeup does not re-run it
+			notifyAll(); //wake up blocked Dispatcher Thread(s); the Monitor held here is 'this', not 't'
 			try { wait(); //wait for the Dispatcher to hand back Control
 			} catch (InterruptedException x) {
 				InterruptionHandler.addItem(x);
@@ -117,12 +115,12 @@ implements Runnable {
 	 * The Thread is not being reused or pooled.
 	 */
 	public synchronized void execute(Runnable r) {
-		if (this.r != null) {
+		while (this.r != null) {
 			try { wait(); //don't allow parallel Calls, serialize them
 			} catch (InterruptedException x) {
 				InterruptionHandler.addItem(x);
 			}
-		} this.r = r; t.notify(); }
+		} this.r = r; notifyAll(); } //the Monitor held here is 'this', not 't'
 
 ////////////////////////////////////////////////////////////////////////////////
 /// #region : static Testing and main() Methods

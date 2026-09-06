@@ -98,8 +98,8 @@ extends RiffFile {
 				if (streamOut != null)
 					streamOut.addInt(value);
 			}
-			// TODO: LOGIC: streamOut.close() is called unconditionally, but streamOut is null whenever args is non-empty (outPath stays null), causing a NullPointerException for any real command-line invocation with arguments.
-			streamOut.close();
+			if (streamOut != null)
+				streamOut.close();
 		}
 		//return 0; 
 	}

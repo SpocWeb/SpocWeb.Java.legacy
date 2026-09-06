@@ -41,15 +41,12 @@ implements
 	/**Returns the Value 	 */
 	public double getValue() { return Value; }
 
-	/**Sets the Value.
-	 * Despite the {@link #subscriber} field, no Notification is actually sent here
-	 * -- see the TODO below.	 */
+	/**Sets the Value and notifies the {@link #subscriber}, if one is registered.	 */
 	public void setValue(double arg) {
-		// TODO: LOGIC: setValue() never calls subscriber.update(...), so the public
-		// 'subscriber' field is dead: any code relying on PropDouble to notify its
-		// Observer on a Value change (as ByRefDouble/UniCaster-style callers expect)
-		// silently gets no notification at all.
-		Value = arg; }
+		double oldVal = Value;
+		Value = arg;
+		if (subscriber != null) {
+			subscriber.update(this, Double.valueOf(arg), Double.valueOf(oldVal)); } }
 
 	//////////////////////
 	//  Interface ICountAble

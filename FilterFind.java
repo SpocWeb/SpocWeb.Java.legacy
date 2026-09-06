@@ -128,8 +128,9 @@ extends FilterInputStream
 	 */
 	public FilterFind(final InputStream streamIn_, final String separator_, final int breakPosition_, final int maxFinds_
 	) throws IOException { 
-		super(streamIn_); 
-		this.maxFinds = maxFinds_; 
+		super(streamIn_);
+		this.breakCountDown = Long.MAX_VALUE; //inactive until the Separator is actually found
+		this.maxFinds = maxFinds_;
 		this.separator = separator_; 
 		this.breakPosition = breakPosition_; 
 		this.buffer = new int[separator.length()];
@@ -179,11 +180,6 @@ extends FilterInputStream
 	 * @see streamIO.Byte.IStreamIn_Byte#read()
 	 */
 	public int read() throws IOException {
-		// TODO: LOGIC: breakCountDown defaults to 0 and is never set in the Constructor, so on
-		// the very first call --breakCountDown becomes -1 and this returns EOF immediately,
-		// before ever reading from the wrapped Stream or checking for the Separator. main()'s
-		// `while (streamIn_.available() > 0)` loop then never terminates, since the underlying
-		// Stream is never actually consumed through this filter.
 		if (--breakCountDown == -1) {
 			return -1; }
 		int val = super.read();

@@ -51,10 +51,9 @@ extends AStreamIn_Int {
 		this.Data = data; 
 		this.Channel = channel % format.NumChannels;
 		try {
-			// TODO: LOGIC: IOException from skipBytes is silently swallowed here; if the skip to this Channel's initial Offset fails (e.g. Stream shorter than expected), the Stream position is left wherever the partial skip stopped, and every subsequent Sample is silently read from the wrong Offset with no indication of the failure.
 			StreamIn.skipBytes(channel*(Format.BitsPerSample/8));
-		} catch (IOException x) {
-
+		} catch (IOException x) { //the Stream would be left at an unknown Offset: fail loudly
+			throw new RuntimeException(x);
 		}
 	}
 
@@ -95,10 +94,10 @@ extends AStreamIn_Int {
 				StreamIn.skipBytes(Format.FrameSize-2);
 				return StreamIn.readShort();
 			} 
-			if (Format.BitsPerSample == 24) { //TODO: read only 3 Bytes!
+			if (Format.BitsPerSample == 24) { //3 Bytes, low Word first, matching the Reader's little endian Order
 				StreamIn.skipBytes(Format.FrameSize-3);
-				return StreamIn.readInt();
-			} 
+				return StreamIn.readUnsignedShort() + (StreamIn.readByte() << 16);
+			}
 		} catch (IOException x) {
 		}
 		return EOF; 
