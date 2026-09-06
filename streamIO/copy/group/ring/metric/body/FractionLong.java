@@ -216,11 +216,7 @@ extends AMetricBody {
 	 * Returns an Integer, not a Fraction,
 	 * this also saves time in further Calculations!	 */
 	public IMetricIRing Floor() {
-		// TODO: LOGIC: operands are swapped - this computes Denominator/Numerator (the reciprocal)
-		// instead of Numerator/Denominator, unlike the equivalent FloorAt()/IntAt() above which
-		// correctly divide Numerator by Denominator. Floor() therefore returns a wrong result for
-		// any Fraction where Numerator != Denominator (same bug is copy-paste-duplicated in Fraction.java).
-		return new FractionLong(Denominator / Numerator); }	//ignore the Remainder
+		return new FractionLong(Numerator / Denominator); }	//ignore the Remainder
 
 	/**less: '<' Returns True, when 'Self' < arg	 */
 	public boolean isLessThan (Object arg) {	//Works only for positive Denominators!!!

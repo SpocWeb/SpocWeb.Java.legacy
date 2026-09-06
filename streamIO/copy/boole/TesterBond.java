@@ -116,21 +116,19 @@ implements ITester {
 		//Idempotenz: a OR a == a
 		if ((arg == mTest) || arg.equals(mTest)) return this;
 		//Inverse: a OR !a == True
-		// TODO: LOGIC: copy-paste bug from ANDat - sets mTest = False here, but the comment (and Boolean algebra: a OR NOT a == True) requires mTest = True. Every OR with the exact complement of the current value produces the wrong (False) result instead of True.
 		if (arg instanceof TesterNOT) { //
 			ITester arg_ = ((TesterNOT) arg).getTester();
 			if ((arg_ == mTest) || (arg_.equals(mTest))) {
-				mTest = False; return this; } }
+				mTest = True; return this; } }
 		//Constant Argument...
-		// TODO: LOGIC: copy-paste bug from ANDat - all four branches below test "is arg false" (the condition needed for AND's "a AND false == false" rule) but then assign mTest = True, and never touch mTest when arg is true. Per the "a OR true == true" comment this is backwards: it should set mTest = True when arg is TRUE, and leave mTest unchanged when arg is false. As written, OR-ing with a constant produces the wrong result in every case.
 		if (arg instanceof TesterConst) { //a OR true == true ...
-			if (!((TesterConst)arg).test(null)) mTest = True;
+			if (((TesterConst)arg).test(null)) mTest = True;
 		} else if (arg instanceof java.lang.Boolean) {
-			if (!((java.lang.Boolean) arg).booleanValue()) mTest = True;
+			if (((java.lang.Boolean) arg).booleanValue()) mTest = True;
 		} else if (arg instanceof Boolean) {
-			if (!((Boolean)arg).Value) mTest = True;
+			if (((Boolean)arg).Value) mTest = True;
 		} else if (arg instanceof ByRefBoolean) {
-			if (!((ByRefBoolean)arg).Value) mTest = True;
+			if (((ByRefBoolean)arg).Value) mTest = True;
 		} else { //regular case
 			mTest = new TesterOR (mTest, (ITester) arg);
 		} return this; }

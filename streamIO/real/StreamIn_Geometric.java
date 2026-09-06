@@ -67,12 +67,9 @@ extends AStreamIn_Float {
 		currItem.Value = markValue = (startValue_/ factor); } //this (startValue, Long.MAX_VALUE); }
 	
 	/** Initializing Constructor	 */
-	// TODO: LOGIC: markValue is computed as startValue_ / factor using the still-default
-	// factor (2), before this.factor is assigned from Factor_ on the next line - so a caller
-	// passing a non-default Factor_ gets a markValue divided by 2 instead of by Factor_.
 	public StreamIn_Geometric(final double startValue_, final double Factor_) {
-		currItem.Value = markValue = (startValue_ / factor);
-		this.factor = Factor_; }
+		this.factor = Factor_;
+		currItem.Value = markValue = (startValue_ / factor); }
 	
 	////////////////////////////////////////////////////////////////////////////////
 	//  Interface IStreamIn: Implementation

@@ -207,8 +207,7 @@ extends AOrder {
 		boolean contL =		contains(arg.Left );
 		boolean contR =		contains(arg.Right);
 		if ( (contL && contR)) return this; //full containment
-		// TODO: LOGIC: missing "return this;" here - after collapsing Left onto Right for the no-containment case, execution falls through into the partial-containment branch below, which re-reads the just-mutated Left and can overwrite it again with a wrong border instead of leaving the collapsed (empty-intersection) interval in place.
-		if (!(contL || contR)) Left.copyAt(Right); //no containment
+		if (!(contL || contR)) { Left.copyAt(Right); return this; } //no containment
 		//partial containment: take the two contained points
 		if (arg.contains(Left )) { //take this left Point and use the contained other Point;
 			if (contL)	Left .copyAt(arg.Left );

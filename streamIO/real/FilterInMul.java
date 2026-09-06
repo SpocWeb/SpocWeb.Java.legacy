@@ -112,10 +112,10 @@ implements IStreamIn_Float {
 
 	/** Returns the scaled minimum value producible by the wrapped generator.
 	 * @see streamIO.real.AStreamIn_Float#getMinDouble()	 */
-	// TODO: LOGIC: when scale is negative (e.g. via FilterInLin with min>max), multiplying getMinValue()
-	// by a negative scale actually yields the resulting distribution's maximum, not its minimum -
-	// getOrder() above already accounts for this sign flip but this method does not.
-	public double getMinDouble() { return scale*inStream.getMinValue(); }
+	public double getMinDouble() {
+		return scale < 0
+			? scale*inStream.getMaxValue()  //a negative Scale swaps Minimum and Maximum
+			: scale*inStream.getMinValue(); }
 
 	/** Returns the current position of the wrapped stream.
 	 * @see streamIO.real.AStreamIn_Float#getPosition()	 */

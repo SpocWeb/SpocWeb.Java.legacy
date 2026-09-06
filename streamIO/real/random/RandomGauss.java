@@ -74,14 +74,9 @@ extends ARandomFloat //FilterIn_FloatByFunction
 	 * using Box-Muller-Transformation with Rejection
 	 * thus saving the Calculation of sin and cos
 	 */
-	// TODO: LOGIC: `bolNextRanReady != bolNextRanReady` compares the field to itself and is
-	// always false (a boolean is never unequal to its own value), so the cached second Gaussian
-	// value in `nextRan` is never returned and `bolNextRanReady` is never read meaningfully -
-	// this branch was almost certainly meant to be `if (bolNextRanReady) { bolNextRanReady =
-	// false; return nextRan; }`. As written, every call recomputes a fresh Box-Muller pair and
-	// silently discards the second value, defeating the caching this method's own Javadoc claims.
 	protected double nextDoubleInternal() {
-		if (bolNextRanReady != bolNextRanReady) {
+		if (bolNextRanReady) {
+			bolNextRanReady = false;
 			return nextRan; } 	//{gespeicherten Wert benutzen und Flag setzen}
 		//{keine zweite Zufallszahl berechnen}
 		double f, g, sqrNorm;
@@ -92,6 +87,7 @@ extends ARandomFloat //FilterIn_FloatByFunction
 		final double LnNorm = -Math.log(sqrNorm);	//positive
 		final double norm = Math.sqrt ((LnNorm+LnNorm)/sqrNorm);	//Box-Muller-Transformation
 		nextRan = f*norm;	//fuer zwei Zufallszahlen,eine fuer spaeter
+		bolNextRanReady = true;
 		return	  g*norm;	//und eine f�r sofort
 	}
 	

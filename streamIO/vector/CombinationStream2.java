@@ -32,11 +32,8 @@ import streamIO.Log;
  */
 public class CombinationStream2 {
 
-	// TODO: LOGIC: labels this Class's log entries as CombinationStream (copy-paste from
-	// that sibling class), not CombinationStream2 - misattributes every message this
-	// Logger writes.
 	/** Logger Instance for this Class	 */
-	private static final Log L = new Log(CombinationStream.class, 0);
+	private static final Log L = new Log(CombinationStream2.class, 0);
 
 	/** The Vector returned by {@link #currInt()}/{@link #nextInt()}, counting how often each Item was drawn. */
 	final int[] v;

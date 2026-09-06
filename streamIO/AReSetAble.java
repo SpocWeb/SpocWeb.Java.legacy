@@ -112,9 +112,14 @@ implements IReSetAble {
 	 * @see streamIO.IReSetAble#jump()
 	 * @return the actual Number of Items skipped.
 	 */
-	// TODO: LOGIC: the loop condition "++i < offset" is only ever true for a positive offset, so a negative offset (as passed by PUSH_BACK(IReSetAble) below, which relies on this returning -1) always returns 0 without calling iter.jump() at all - pushBack() can never succeed through this path.
 	final static public long JUMP(final IReSetAble iter, final long offset) {
 		//iter.reSet();
+		if (offset < 0) { //jump backwards by pushing Items back, one at a Time
+			long i = 0; //use shortCut Evaluation and order the Expressions
+			while((i > offset) &&
+				  (null != iter.pushBack()))
+				--i;
+			return i; }
 		long i = -1; //use shortCut Evaluation and order the Expressions
 		while((++i < offset) &&
 			  (null != iter.jump()));

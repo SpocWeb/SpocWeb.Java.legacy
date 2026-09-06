@@ -393,9 +393,19 @@ ICopyAble, Serializable, Cloneable {//to be able to Stream out and clone the Obj
 	 * Default Implementation that can be overwritten by more effective ones.
 	 * TODO: declare this Methods as abstract!
 	 */
-	// TODO: LOGIC: default delegates back to ST.addItem(this), and this class's own toString() calls toStream(...) - a formatter whose addItem(Object) falls back to Object.toString() (or otherwise re-enters this object's own serialization) recurses infinitely; the author already flagged this inline ("leads to infinite Recursion!"). Any concrete subclass that does not override toStream is at risk whenever paired with such a formatter.
+	/** Object currently being written by {@link #toStream(IFormatOut)} on this Thread,
+	  * used to break the Recursion when a Formatter falls back to toString() again.	 */
+	private static final ThreadLocal IN_TO_STREAM = new ThreadLocal();
+
 	public void toStream(final IFormatOut ST)
-	throws IOException { ST.addItem(this); } //leads to infinite Recursion!
+	throws IOException {
+		final Object prev = IN_TO_STREAM.get();
+		if (prev == this) { //re-entered for the same Object: write a plain Description instead of recursing
+			ST.addItem(getClass().getName() + '@' + Integer.toHexString(System.identityHashCode(this)));
+			return; }
+		IN_TO_STREAM.set(this);
+		try { ST.addItem(this); }
+		finally { IN_TO_STREAM.set(prev); } }
 
 	/**Writes the Contents of this Object into the streamIO.
 	 * Default Implementation that can be overwritten by more effective ones.

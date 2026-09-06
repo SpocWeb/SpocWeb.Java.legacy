@@ -43,9 +43,8 @@ implements SetInteger {
 	public ASetInteger (SetInteger self_) { super(self_); }
 
 	/**Clears the Entry n	*/
-	// TODO: LOGIC: uses XOR (toggle) instead of AND-NOT to clear the bit - if bit n is already 0, this XOR flips it to 1, setting the bit instead of clearing it. Only correct when the caller already knows bit n is set.
 	public void  clear(int n) {
-		((Boole)self).XORat(((ShiftAble)((IGroupM)self).one()).aslAt(n));}
+		((Boole)self).ANDat(((Boole)((ShiftAble)((IGroupM)self).one()).aslAt(n)).NOT());}
 
 	/**Sets the Entry n		*/	public void    set(int n) {
 		self. ORat(((ShiftAble)((IGroupM)self).one()).aslAt(n));}

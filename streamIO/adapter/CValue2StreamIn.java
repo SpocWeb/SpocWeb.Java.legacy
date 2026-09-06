@@ -45,13 +45,12 @@ extends AStreamIn {
 	/// #region : Constructors, calling each other using this()/super()
 	////////////////////////////////////////////////////////////////////////////////
 	
-	// TODO: LOGIC: never assigns the `cValue` field, and there is no other constructor
-	// or setter to do so - every sibling adapter in this package (Value2Pipe,
-	// ValueSetter2StreamOut, StreamOut2ValueSetter) instead takes and assigns its wrapped
-	// dependency in its constructor. As written, `cValue` stays null and nextItem() below
-	// throws NullPointerException on first use.
-	/** Empty Constructor	 */
+	/** Empty Constructor; Subclasses using it must assign {@link #cValue} themselves. */
 	protected CValue2StreamIn() { }
+
+	/** Constructor wrapping the given getter.
+	  * @param _cValue the getter to read Items from, must not be null */
+	protected CValue2StreamIn(final ICValue _cValue) { this.cValue = _cValue; }
 	
 	////////////////////////////////////////////////////////////////////////////////
 	/// #region : public Methods, then private Methods

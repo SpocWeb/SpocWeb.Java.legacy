@@ -48,8 +48,7 @@ implements IEquivalence {
 			Association B_ = (Association) B;
 			BKey   = B_.key;
 //			BValue = B_.Value;
-		// TODO: LOGIC: copy-paste bug - this checks "A instanceof ICPair" (already established false above, since A was already matched as Association/Pair) instead of "B instanceof ICPair". When B is an ICPair but not an Association, this branch is never taken and the method falls through to "return B.equals(A)" instead of comparing BKey, producing an incorrect equivalence result.
-		} else if (A instanceof ICPair) {
+		} else if (B instanceof ICPair) {
 			ICPair B_ = (ICPair) B;
 			BKey   = B_.getKey  ();
 //			BValue = B_.getValue();

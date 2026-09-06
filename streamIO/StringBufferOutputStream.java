@@ -214,9 +214,8 @@ implements IStreamOutByte, IStreamOut, IStreamOutFloat, IStreamOutInt, IStreamOu
 
 	/** Appends the first {@code stop} Characters of the given StringBuffer to the internal buffer.
 	 * @see streamIO.Byte.IStreamOutByte#addString(StringBuffer)	 */
-	// TODO: LOGIC: calls addBuffer(b, 0, stop), but the 3-arg overload's parameters are (b, stop, start) - this passes stop=0 and start=the caller's stop value, the reverse of what the sibling addString(String, int) does ("return addString(b, stop, 0)"). For any stop > 0 the loop condition in AStreamOutByte.WRITE_SAFE(this, b, 0, stop) sees start > stop and appends nothing, so this overload silently writes no Characters.
 	public IStreamOutChar addBuffer(final StringBuffer b, final int stop) {
-		return addBuffer(b, 0, stop); }
+		return addBuffer(b, stop, 0); }
 
 	/** Appends the entire given StringBuffer to the internal buffer.
 	 * @see streamIO.Byte.IStreamOutByte#addString(StringBuffer)	 */

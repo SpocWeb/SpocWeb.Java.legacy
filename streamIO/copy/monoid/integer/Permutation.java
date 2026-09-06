@@ -1603,14 +1603,13 @@ implements SetInteger, SwapAble, IInvertAble {
 		return sum;
 	}
 
-	/**Computes the product of the faculties of this multi-index's own coefficients.
+	/**Computes the product of the faculties of the given multi-index's coefficients.
 	 * @return the Product of all Faculties of the Indices = Prod( n [i]!)
 	  * The Carry Element is used for the Base. 	 */
-	// TODO: LOGIC: parameter 'p' is never read - the method always computes the product from this instance's own array 'a', ignoring the "Carry Element used for the Base" documented in the @return comment, so a caller passing a different Carry/base permutation gets a result computed from the wrong operand.
 	public long Multi_Fact(final Permutation p) {
 		long ret = 1;
-		for (int i = mDim+1; --i >= 0; ) {
-			ret *= ByRefLong.fact((byte)a[i]); }
+		for (int i = p.mDim+1; --i >= 0; ) {
+			ret *= ByRefLong.fact((byte)p.a[i]); }
 		return ret;
 	}
 

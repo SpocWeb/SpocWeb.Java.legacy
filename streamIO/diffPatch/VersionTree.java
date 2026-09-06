@@ -107,12 +107,11 @@ extends AStreamAble {
 			len = arr1.length; 
 			ret = true; 
 		}
-		// TODO: LOGIC: this loop never returns false on a differing Element, only early-returns on arr1[i] < arr2[i];
-		// when an earlier Index has arr1[i] > arr2[i] (arr1 lexicographically greater) but a later Index has
-		// arr1[i] < arr2[i], this incorrectly returns true instead of false. Needs `else if (arr1[i] > arr2[i]) return false;`.
 		for(int i = -1; ++i < len;)
 			if (arr1[i] < arr2[i])
 				return true;
+			else if (arr1[i] > arr2[i])
+				return false;
 		return ret; }
 	
 	/** for DeSerialization only 	*/
@@ -174,15 +173,12 @@ extends AStreamAble {
 			} else if (keyStr.equals(diff.getBranch())) { //sort out the Branch Tags, they are redundant! 
 				//(but setting them to the latest Revision is not fast!!!
 			} else { // the real (non-Branch) Tags
-				// TODO: LOGIC: the resize check is off-by-one (`>` instead of `>=` before the write) and, more
-				// importantly, the enlarged `tmp` Array is never assigned back to `tags` - so once more than 10
-				// real Tags exist, the next iteration writes past the end of the original 10-Element Array and
-				// throws ArrayIndexOutOfBoundsException, corrupting Serialization of Trees with >10 Tags.
-				tags[numTags] = new String[] {keyStr, diff.getID()};
-				if (++numTags > tags.length) {
+				if (numTags >= tags.length) {
 					final String[][] tmp = new String[tags.length << 1][];
 					System.arraycopy(tags, 0, tmp, 0, tags.length);
+					tags = tmp;
 				}
+				tags[numTags++] = new String[] {keyStr, diff.getID()};
 			}
 		}
 		stream.closeStruct();
@@ -384,15 +380,9 @@ extends AStreamAble {
 	/** adds the given DiffSet to the Tree, after checking whether it is allowed  */
 	/** Adds the given DiffSet to the Tree, after checking that its Branch (if new) does not already exist.	 */
 	final protected void addVersion(final DiffSet diff) throws VersionException {
-		// TODO: LOGIC: the second clause is an exact duplicate of the first (`currDiff.getBranch() != diff.getBranch()`
-		// twice), almost certainly a copy-paste mistake for a `.equals()` fast/slow-path check like the one in
-		// DiffSet's own constructor (compare `_branch != parent.branch` followed by `!_branch.equals(parent.branch)`).
-		// As written this relies solely on String reference identity: two equal but distinct Branch-Name String
-		// instances (e.g. one read back via deserialization) are wrongly treated as "different Branch", which can
-		// throw a spurious "This Branch already exists" VersionException for a legitimate same-Branch append.
 		if ((currDiff != null) &&
 			(currDiff.getBranch() != diff.getBranch()) &&
-			(currDiff.getBranch() != diff.getBranch())) {
+			((currDiff.getBranch() == null) || (! currDiff.getBranch().equals(diff.getBranch())))) {
 			if (namedVersions.containsKey(diff.getBranch())) {
 				//the diff has already been added to the Parent Diff
 				--currDiff.numBranches; 

@@ -104,16 +104,10 @@ public double getValue() { return value; }
 
 /**Constructor that takes an Object of the same Class as Input(Copy Constructor).
  * Uses the Copy Constructors of the Constituents.	 */
-// TODO: LOGIC: the 'unit' parameter is never assigned to mUnit, so every QuantityDouble built
-// via this constructor has mUnit == null; any subsequent call to getUnit(), getBaseUnit(),
-// getBaseValue() or getBaseQuantity() throws NullPointerException.
-public QuantityDouble(ABodyDouble arg, Unit unit) { super(arg); }
+public QuantityDouble(ABodyDouble arg, Unit unit) { super(arg); this.mUnit = unit; }
 
 /**Constructor that takes 'double' as Input.	 */
-// TODO: LOGIC: the 'unit' parameter is never assigned to mUnit, so every QuantityDouble built
-// via this constructor has mUnit == null; any subsequent call to getUnit(), getBaseUnit(),
-// getBaseValue() or getBaseQuantity() throws NullPointerException.
-public QuantityDouble(double arg, Unit unit) { super(arg); }
+public QuantityDouble(double arg, Unit unit) { super(arg); this.mUnit = unit; }
 
 /**Empty Constructor (for newInstance Method).
  * Does not create Dummy Objects for it's Constituents.

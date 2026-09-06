@@ -217,13 +217,9 @@ implements ITestCase {
 		} catch (   IllegalAccessException x) { throw new BaseException(x); //should never happen!
 		} catch (InvocationTargetException x) {
 			Throwable inner = x.getTargetException();
-			// TODO: LOGIC: both branches log/rethrow the wrapping InvocationTargetException
-			// `x` instead of `inner`, the exception the test Method actually threw. The
-			// reported stack trace and any FailureHandler/ErrorHandler item is therefore
-			// always the reflection wrapper, not the real cause.
 			if (inner instanceof FailureException) {
-				return handleException(x, FailureHandler); } //normal Failure
-				return handleException(x,   ErrorHandler); //Runtime Error
+				return handleException(inner, FailureHandler); } //normal Failure
+				return handleException(inner,   ErrorHandler); //Runtime Error
 		} return true; }
 
 	/** Handles the Throwable using the given Handler */

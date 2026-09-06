@@ -65,8 +65,8 @@ implements IMeasurAble {
 	public IOpLong cbcAt() { double tmp = getDouble(); return mulAt(tmp*tmp); }
 
 	/**  Linear Mapping in Place: x*=a + y	*/
-	// TODO: LOGIC: no-op - both parameters a and y are ignored and the object is returned unchanged, silently failing to perform the linear mapping the contract promises.
 	public IOpLong LinAt		(long a, long y) {
-		return this; }
+		mulAt(a);
+		return addAt(y); }
 
 }

@@ -259,20 +259,23 @@ extends StreamOutPrimitive {
 	public static String XML_DATE_FORMAT = "yyyy.MM.dd'T'HH:mm:ss.SSS";
 	//also get the MilliSeconds!
 
-	/** Shared {@link DateFormat} instance, initialized from {@link #XML_DATE_FORMAT}, used to render Dates for logging. */
-	// TODO: LOGIC: SimpleDateFormat is not thread-safe, but this single static instance is shared and called from GET_XML_DATE()/GET_XML_DATE(Date) across all Loggers and Threads; concurrent calls can corrupt the formatted output or throw.
+	/** Shared {@link DateFormat} instance, initialized from {@link #XML_DATE_FORMAT}, used to render Dates for logging.
+	 * {@link DateFormat} is not thread-safe, so every Access from this Class synchronizes on this Instance;
+	 * external Callers using it directly must do the same. */
 	public static DateFormat XML_DATE_FORMATTER =
 		new SimpleDateFormat(XML_DATE_FORMAT);
 
 	/** Formats the given Date using {@link #XML_DATE_FORMAT}.
 	 * @return a String with XML formatted Date and Time */
 	final static public String GET_XML_DATE(Date dat) {
-		return XML_DATE_FORMATTER.format(dat); }
+		synchronized (XML_DATE_FORMATTER) {
+			return XML_DATE_FORMATTER.format(dat); } }
 
 	/** Formats the current Date and Time using {@link #XML_DATE_FORMAT}.
 	 * @return a String with XML formatted current Date and Time */
 	final static public String GET_XML_DATE() {
-		return XML_DATE_FORMATTER.format(new Date()); }
+		synchronized (XML_DATE_FORMATTER) {
+			return XML_DATE_FORMATTER.format(new Date()); } }
 	
 	/* @return a String with formatted Date and Time */
 	/*	final static public String FORMAT_DATE(Date dat) {
@@ -551,8 +554,7 @@ extends StreamOutPrimitive {
 	 * @param arg the Object to log
 	 * @return always true to allow for using it with the 'assert' Statement!
 	 */
-	// TODO: LOGIC: debug() logs at LEVEL_ERROR instead of LEVEL_DEBUG (copy-paste from error()); messages logged via debug() are misclassified as errors.
-	public boolean debug(final Object arg){ this.n(arg, LEVEL_ERROR); return true; }
+	public boolean debug(final Object arg){ this.n(arg, LEVEL_DEBUG); return true; }
 	
 	/**Method to log on the Info Level
 	 * 
@@ -1311,11 +1313,10 @@ extends StreamOutPrimitive {
 	/** Adds a new Log Entry Line for entering or exiting a Method
 	  * The Log Object is returned to allow for concatenating e.g. Parameters. 
 	  */
-	// TODO: LOGIC: ignores the 'level' parameter and always compares 0 < thresholdLog instead of 'level < thresholdLog', unlike the sibling overloads; a caller passing a level below thresholdLog to suppress logging will still have it logged (and vice versa for a level above 0).
 	public Log enter(final boolean enter, final String methodName, final int level) {
 		if (!doLog)
 			return this;
-		if (0 < thresholdLog) //early Return
+		if (level < thresholdLog) //early Return
 			return this;
 		return method(enter ? "Entering" : "Exiting", methodName, enter ? "Parameters" : "returns"); 
 	}

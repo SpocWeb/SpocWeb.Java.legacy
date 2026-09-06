@@ -148,13 +148,11 @@ implements ShiftAble {
 		return self; }
 
 	/**Arithmetic Shift left by several Positions in Place: x<<=arg	 */
-	// TODO: LOGIC: the Carry parameter is accepted but never read or written - it is silently ignored, so a caller chaining shifts across objects via an externalized carry (per IShiftAble's documented design) loses the carry value here.
-	public ShiftAble aslAt(int arg, Object Carry)	{ //TODO: define how Carry is meant to work!
+	public ShiftAble aslAt(int arg, Object Carry)	{
  		if (arg < 0) return asrAt(-arg, Carry);
-		ShiftAble buf = self.getCarry(); self.setCarry(null);	//Clear the Carry to prevent rotation, because asl works recursive!
+		self.setCarry((ShiftAble) Carry);	//the given Carry is the In-Parameter, the resulting Carry stays available via getCarry()
 		while (--arg >= 0) {
 			self.aslAt(); }
-		self.setCarry(buf); 
 		return self; }
 
 	/**Arithmetic Shift right by several Positions: x>>=arg	 */
@@ -166,12 +164,10 @@ implements ShiftAble {
 		return self; }
 
 	/**Arithmetic Shift right by several Positions: x>>=arg	 */
-	// TODO: LOGIC: the Carry parameter is accepted but never read or written - it is silently ignored, so an externalized carry chained across objects (per IShiftAble's documented design) is lost here.
 	public ShiftAble asrAt(int arg, Object Carry)	{
-		if (arg < 0) return aslAt(-arg);
-		ShiftAble buf = self.getCarry(); self.setCarry(null);	//Clear the Carry to prevent rotation, because asl works recursive!
+		if (arg < 0) return aslAt(-arg, Carry);
+		self.setCarry((ShiftAble) Carry);	//the given Carry is the In-Parameter, the resulting Carry stays available via getCarry()
 		int i=0; while (++i <= arg) self.asrAt();
-		self.setCarry(buf);	//restore the Carry
 		return self; }
 
 	/**Logic Shift right by several Positions: x>>=arg	 */
@@ -183,12 +179,10 @@ implements ShiftAble {
 		return self; }
 
 	/**Logic Shift right by several Positions: x>>=arg	 */
-	// TODO: LOGIC: the Carry parameter is accepted but never read or written - it is silently ignored, so an externalized carry chained across objects (per IShiftAble's documented design) is lost here.
 	public ShiftAble lsrAt(int arg, Object Carry)	{
-		if (arg < 0) return aslAt(-arg);	//lsl is equivalent to asl!
-		ShiftAble buf = self.getCarry(); self.setCarry(null);	//Clear the Carry to prevent rotation, because asl works recursive!
+		if (arg < 0) return aslAt(-arg, Carry);	//lsl is equivalent to asl!
+		self.setCarry((ShiftAble) Carry);	//the given Carry is the In-Parameter, the resulting Carry stays available via getCarry()
 		int i=0; while (++i <= arg) self.lsrAt();
-		self.setCarry(buf);	//restore the Carry
 		return self; }
 
 

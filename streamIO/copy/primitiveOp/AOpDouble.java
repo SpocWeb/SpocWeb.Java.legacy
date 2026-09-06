@@ -48,52 +48,41 @@ implements IOpDouble {
 		return ((IOpDouble) copy(Integer.MAX_VALUE)).divAt(arg); }
 
 	/**Copy in Place: =	*/
-	// TODO: LOGIC: infinite recursion - calls itself with the same signature/args instead of delegating to a double-based operation; any caller of copyAt(long) triggers a StackOverflowError.
-	public IOpLong copyAt(long arg) { return copyAt(arg); }
+	public IOpLong copyAt(long arg) { return copyAt((double) arg); }
 
 	/**Check for equality: ==	*/
-	// TODO: LOGIC: infinite recursion - calls itself with the same signature/args; any caller of equals(long) triggers a StackOverflowError.
-	public boolean equals(long arg) { return equals(arg); }
+	public boolean equals(long arg) { return equals((double) arg); }
 
 	/**Comparison with a long Number: < arg	 */
-	// TODO: LOGIC: infinite recursion - calls itself with the same signature/args; any caller of less(long) triggers a StackOverflowError.
-	public boolean less(long arg) { return less(arg); }
+	public boolean less(long arg) { return less((double) arg); }
 
 	/**Comparison with a long Number: > arg	 */
-	// TODO: LOGIC: infinite recursion - calls itself with the same signature/args; any caller of grtr(long) triggers a StackOverflowError.
-	public boolean grtr(long arg) { return grtr(arg); }
+	public boolean grtr(long arg) { return grtr((double) arg); }
 
 	/**Maximum in Place: 	*/
-	// TODO: LOGIC: infinite recursion - calls itself with the same signature/args; any caller of MaxAt(long) triggers a StackOverflowError.
-	public IOpLong MaxAt (long arg) { return MaxAt(arg); }
+	public IOpLong MaxAt (long arg) { return MaxAt((double) arg); }
 
 	/**Minimum in Place: 	*/
-	// TODO: LOGIC: infinite recursion - calls itself with the same signature/args; any caller of MinAt(long) triggers a StackOverflowError.
-	public IOpLong MinAt (long arg) { return MinAt(arg); }
+	public IOpLong MinAt (long arg) { return MinAt((double) arg); }
 
 	/**Addition of a long Number in Place: += arg	 */
-	// TODO: LOGIC: infinite recursion - calls itself with the same signature/args; any caller of addAt(long) triggers a StackOverflowError.
-	public IOpLong addAt(long arg) { return addAt(arg); }
+	public IOpLong addAt(long arg) { return addAt((double) arg); }
 
 	/**Subtraction of a long Number in Place: -= arg	 */
-	// TODO: LOGIC: infinite recursion - calls itself with the same signature/args; any caller of subAt(long) triggers a StackOverflowError.
-	public IOpLong subAt(long arg) { return subAt(arg); }
+	public IOpLong subAt(long arg) { return subAt((double) arg); }
 
 	/**Multiplication of a long Number in Place: *= arg	 */
-	// TODO: LOGIC: infinite recursion - calls itself with the same signature/args; any caller of mulAt(long) triggers a StackOverflowError.
-	public IOpLong mulAt(long arg) { return mulAt(arg); }
+	public IOpLong mulAt(long arg) { return mulAt((double) arg); }
 
 	/**Division of a long Number in Place: /= arg	 */
-	// TODO: LOGIC: infinite recursion - calls itself with the same signature/args; any caller of divAt(long) triggers a StackOverflowError.
-	public IOpLong divAt(long arg) { return divAt(arg); }
+	public IOpLong divAt(long arg) { return divAt((double) arg); }
 
 	/**  Linear Mapping: x * a + y			*/
 	public IOpDouble Lin		(double a, double y) {
 		return ((IOpDouble) copy(Integer.MAX_VALUE)).LinAt(a, y); }
 
 	/**  Linear Mapping in Place: x*=a + y	<=> x*=a; x+=y; */
-	// TODO: LOGIC: infinite recursion - calls itself with the same signature/args instead of delegating to the long-based ops (mulAt/addAt); any caller triggers a StackOverflowError.
 	public IOpLong LinAt		(long a, long y) {
-		return LinAt(a, y); }
+		return LinAt((double) a, (double) y); }
 
 }

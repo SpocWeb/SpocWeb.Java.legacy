@@ -53,9 +53,8 @@ extends AFuzzyBinaryOp {
 	 * this can be transformed into the given Expression
 	 * @see streamIO.copy.boole.fuzzy.IFuzzifier#getMembership(java.lang.Object)
 	 */
-	// TODO: LOGIC: missing "1 - " - per the class's own documented formula (and the general fuzzy EQV = NOT XOR relationship), equivalence should be highest (near 1) when the two memberships are close and lowest when they differ; this returns the raw absolute difference instead, which is backwards (it is the XOR/difference measure, not its complement).
 	public float getMembership(final Object arg) {
-		return Math.abs(f1.getMembership(arg)-f2.getMembership(arg));
+		return 1 - Math.abs(f1.getMembership(arg)-f2.getMembership(arg));
 	}
 
 }

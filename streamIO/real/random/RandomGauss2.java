@@ -70,17 +70,15 @@ extends ARandomFloat {
 	/** Draws the next Gaussian value.
 	  * @return the next Random double Precision Number
 	  * using Box-Muller-Transformation thus saving the Calculation of sin and cos	 */
-	// TODO: LOGIC: `nextRanReady != nextRanReady` compares the field to itself and is always
-	// false, so the cached second Gaussian value in `nextRan` is never returned - mirrors the
-	// identical defect in the sibling RandomGauss.nextDoubleInternal(). Every call recomputes a
-	// fresh Box-Muller pair, defeating the caching this method's own Javadoc claims.
 	public double nextDoubleInternal() {
-		if (nextRanReady != nextRanReady) {
+		if (nextRanReady) {
+			nextRanReady = false;
 			return nextRan.Value; } 	//{gespeicherten Wert benutzen und Flag setzen}
 		//g = SqRt(-2Ln(ran)) <=> ran = exp(-g^2/2)
 		double g = -Math.log(ran.nextDouble());	//modifizierte Box-Muller-Transformation
 		double f = ByRefDouble.SIN_COS_SAFE(randomPhi.nextDouble(), nextRan);
 		nextRan.Value *= (g = Math.sqrt(g+g));	//fuer zwei Zufallszahlen,eine fuer spaeter
+		nextRanReady = true;
 		return	  g*f;	//und eine f�r sofort
 	}
 

@@ -90,13 +90,11 @@ extends ARandomInt {
 	
 	/** Resets the underlying uniform stream and, for large means, the Lorentz sub-generator.
 	 * @see streamIO.integer.IStreamIn_Int#reSet()	 */
-	// TODO: LOGIC: ranLorentz is only constructed when !smallXM (EW >= 12.0); for a small-mean
-	// instance (EW < 12.0, the constructor's `smallXM` branch) ranLorentz stays null, so this
-	// unconditional this.ranLorentz.reSet() throws NullPointerException on every reset() call.
 	public IReSetAble reSet() { //throws IOException {
 		//try{
 			this.ran.reSet();
-			this.ranLorentz.reSet(); //TODO:
+			if (this.ranLorentz != null) //only constructed for large Means (EW >= 12.0)
+				this.ranLorentz.reSet();
 		/*} catch (final IOException x) {
 			throw new RuntimeException(x);
 		}*/

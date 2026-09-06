@@ -70,13 +70,9 @@ extends AStreamIn
 			return Long.MAX_VALUE;
 		return 0; }
 	
-	// TODO: LOGIC: inverted relative to its own `available` field and to the sibling
-	// FileBackupIterator.isValid(), which returns `available` directly: this returns
-	// true only once the Iterator has already been exhausted (available == false), and
-	// false while it can still produce a File.
-	/** Intended to return whether a further File can still be produced.
+	/** Returns whether a further File can still be produced.
 	  * @see streamIO.IIStreamIn#isValid()	 */
-	public boolean isValid() { return !available; }
+	public boolean isValid() { return available; }
 	
 	/** Creates new FileEnumeration  */
 	public FileIterator(final String _leftName, final String _rightName, 
@@ -95,9 +91,6 @@ extends AStreamIn
 	  * @see streamIO.object.AStreamIn#getPosition()	 */
 	public long getPosition() { return counter; }
 
-	// TODO: LOGIC: currItem() always returns null, because nextItem() below never
-	// assigns its result to this field before returning it - contrast the sibling
-	// FileBackupIterator.nextItem(), which does `return filter = new FileOutputStream(...)`.
 	/** Returns the Stream opened by the last call to {@link #nextItem()}.
 	  * @see streamIO.object.AStreamIn#currItem()	 */
 	public Object currItem() { return currItem; }
@@ -117,8 +110,8 @@ extends AStreamIn
 		for (;;) {
 			try {
 				name.append (leftName).append (++counter).append (rightName);
-				if (input) return new  FileInputStream(name.toString());
-				else       return new FileOutputStream(name.toString(), append);
+				if (input) return currItem = new  FileInputStream(name.toString());
+				else       return currItem = new FileOutputStream(name.toString(), append);
 			} catch (final FileNotFoundException e) {
 				if (input) {
 					available = false;	//

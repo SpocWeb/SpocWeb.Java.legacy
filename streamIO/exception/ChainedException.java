@@ -129,15 +129,13 @@ public class ChainedException extends Exception { //
 		printStackTrace(System.err);
 	}
 
-	// TODO: LOGIC: the PrintWriter wrapping inPrintStream is never flushed or closed, so
-	// the printed text can remain buffered and never actually reach the stream. Contrast
-	// the sibling BaseException.printStackTrace(PrintStream), whose otherwise identical
-	// method explicitly closes its PrintWriter with the comment "important to flush!".
 	/** Prints the Stack Trace of this and the Parent Exception
 	 * @param inPrintStream stream for printing stacktrace
 	 */
 	public void printStackTrace(PrintStream inPrintStream) {
-		this.printStackTrace(new java.io.PrintWriter(inPrintStream));
+		final java.io.PrintWriter pw = new java.io.PrintWriter(inPrintStream);
+		this.printStackTrace(pw);
+		pw.close(); //important to flush! finalize() might come later or never!!!
 	}
 
 	/** Prints the Stack Trace of this and the Parent Exception  
