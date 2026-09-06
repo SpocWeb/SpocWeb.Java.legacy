@@ -115,6 +115,28 @@ Every batch below is `done`. `Lines` and `Documented` are measured, not estimate
   handles Pass 1+2+3 for its own assigned folder only, never spawns its own sub-agents, and
   must independently verify `list-todo` returns zero rows before reporting done.
 
+## Bug-fix run (2026-09-06, in progress)
+
+A separate, explicitly authorized bug-fix pass is under way over the 337 rows still marked
+`open` below. Batches, each handled by one agent; the orchestrator alone runs git.
+
+| Batch | Scope | Bugs | Status |
+|---|---|--:|---|
+| B1 | `math/vector` | 60 | in progress |
+| B2 | `streamIO/integer` | 55 | in progress |
+| B3 | `streamIO/object` | 35 | in progress |
+| B4 | `streamIO` rest (copy, real, diffPatch, fileSystem, vector, testing, exception, adapter, loose files) | 32 | in progress |
+| B5 | `math` rest (matrix, fit, refiner, minimizer, integration, loose files) + `graphs` | 32 | in progress |
+| B6 | `graphic` | 51 | queued |
+| B7 | `function`, `tester`, `stringOp`, `technology`, `structure`, `aspect`, `flow` | 42 | queued |
+| B8 | `asynch`, `synch`, `sound`, `persistences`, `reflect`, `swing`, `knowledge`, repo-root files | 30 | queued |
+
+Decisions taken for this run: minimal fixes preserving the public API; no new dependencies;
+design-level security items (`FilterCrypt` weak cipher, `XMLInputStream` arbitrary
+instantiation, `JSONTokener` unbounded recursion) remediated within the existing API shape
+(contract note + `@Deprecated`, allow-list, depth limit) rather than redesigned; verification
+is a per-file `javac` of the touched packages, not behavioural tests.
+
 ## Bugs Found
 
 Flagged during documentation, never fixed in the same pass - fixing is a separate, explicitly
