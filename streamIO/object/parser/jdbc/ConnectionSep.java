@@ -40,6 +40,10 @@ import streamIO.integer.jdbc.ResultSetFix;
  * @version	1.0
  * @see streamIO.integer.jdbc.ConnectionFix
  * <!-- docstate
+ * pass: 2
+ * mtime: 2026-09-07T00:00:00Z
+ * digest: fc3ba87cfc05d07bcffc9149613c0dc95984a83fa839a2686f9272567685913a
+ * stale: true
  * tags: [code/jdbc_adapter, code/sax_event_generation]
  * concepts: [Minimal JDBC Driver over Separated-Format Flat Files]
  * facets: {layer: domain, status: legacy, complexity: high}
@@ -48,7 +52,8 @@ import streamIO.integer.jdbc.ResultSetFix;
 public class ConnectionSep 
 extends AConnection {
 	
-	private static final Log L = new Log(ConnectionSep.class); 
+	/** Logger for this Class.	 */
+	private static final Log L = new Log(ConnectionSep.class);
 	
 	/** Default Separators for Comma and CR/LF separated Files	 */
 	private static final String SEPARATORS_CSV = "\\,\r\n";

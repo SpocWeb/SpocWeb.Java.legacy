@@ -12,6 +12,10 @@ import streamIO.object.ModificationException;
  *
  * For a new FilterEnumerator based on this you have to overwrite
  * <!-- docstate
+ * pass: 2
+ * mtime: 2026-09-07T00:00:00Z
+ * digest: 471ffdeb710a9970ab00b02b3986da6e0b908bdb032d382b49ae255dc812b0f4
+ * stale: true
  * tags: [code/enumerator, code/iterator_adapter]
  * concepts: [Custom Streaming Enumerator and Iterator Bridge Layer for Object Collections]
  * facets: {layer: utility, status: legacy, complexity: high}

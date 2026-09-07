@@ -70,6 +70,10 @@ import function.string.StringFunction;
   * @see com.megginson.sax.StreamOutXML which provides a similar Functionality, 
   * but triggered by the SAX Events. 
   * <!-- docstate
+  * pass: 2
+  * mtime: 2026-09-07T00:00:00Z
+  * digest: 738239873ab00453f03a93c64b5e6a67cd086119367b6693ba06d60a9593f48f
+  * stale: true
   * tags: [code/xml_parsing, code/xml_streaming]
   * concepts: [XML Read/Write Stream Bridging]
   * facets: {layer: utility, status: legacy, complexity: high}
@@ -855,7 +859,8 @@ implements ContentHandler, IStreamOutPrimitive, IStreamOutStruct //, ErrorHandle
 	/// Quotes 
 	///////////////////////////////////////////////////////////////////////////
 	
-	final static String STR_TEXT = "text"; 
+	/** Element Name used for the free-form quoted "text" Element.	 */
+	final static String STR_TEXT = "text";
 	
 	/** Opens a "text" Element to hold quoted free-form Text.
 	  * @see streamIO.integer.IStreamOutStruct#open_Quote()	 */

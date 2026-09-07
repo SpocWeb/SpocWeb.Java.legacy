@@ -26,6 +26,10 @@ import graphs.KeyValuePair;
  * @author		 Matthias Heuer
  * @version 1.0
  * <!-- docstate
+ * pass: 2
+ * mtime: 2026-09-07T00:00:00Z
+ * digest: 347407270fdcece312855f922c7bb487fc4fcef29441e8cc2c063681d5e2033b
+ * stale: true
  * tags: [code/xml_parsing, code/xml_streaming]
  * concepts: [XML Read/Write Stream Bridging]
  * facets: {layer: utility, status: legacy, complexity: high}

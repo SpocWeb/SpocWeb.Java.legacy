@@ -8,6 +8,10 @@ package streamIO.object.parser;
   * It should be applied as near as possible to the InputStream2StreamIn Object.
   * 
   * <!-- docstate
+  * pass: 2
+  * mtime: 2026-09-07T00:00:00Z
+  * digest: 90ac65334327a202c2c1a090daf3dd9eb8e474cca9382cf54034426de509ccc0
+  * stale: true
   * tags: [code/stream_parsing, code/parser]
   * concepts: [Separator-Driven Token Parsing and Stream Adapters]
   * facets: {layer: utility, status: legacy, complexity: high}

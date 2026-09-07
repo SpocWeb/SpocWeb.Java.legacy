@@ -28,6 +28,10 @@ import function.byref.ByRefInt;
   * @see streamIO.IIStreamIn Interface
   *
   * <!-- docstate
+  * pass: 2
+  * mtime: 2026-09-07T00:00:00Z
+  * digest: d463471ece38c3de7a7c7e23568c0bdd21cc4d96177dc8d89b17c8c6b825d259
+  * stale: true
   * tags: [code/stream_parsing, code/parser]
   * concepts: [Separator-Driven Token Parsing and Stream Adapters]
   * facets: {layer: utility, status: legacy, complexity: high}
@@ -135,7 +139,7 @@ implements IParserIn {
 	//  Methods
 	////////////////////////////////////////////////////////////////////////////
 	
-	/**
+	/** Reads and unmasks the next Token, honouring the configured Mask Start/Stop Characters.
 	  * @return the Position of the next found Separator in the Separator String.
 	  * This Routine is sped up by indexing the Separator String (for long Separators)
 	  * and could be even faster by not calling the nextItem() Routine.	 */

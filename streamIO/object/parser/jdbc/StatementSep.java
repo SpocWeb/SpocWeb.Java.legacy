@@ -33,6 +33,10 @@ import streamIO.integer.jdbc.AStatement;
  * @version	1.0
  *
  * <!-- docstate
+ * pass: 2
+ * mtime: 2026-09-07T00:00:00Z
+ * digest: 2da3f50c9ef5d8ab37575d41ef70deff93b55570580f140e35d4d339118bbf71
+ * stale: true
  * tags: [code/jdbc_adapter, code/sax_event_generation]
  * concepts: [Minimal JDBC Driver over Separated-Format Flat Files]
  * facets: {layer: domain, status: legacy, complexity: high}
@@ -58,7 +62,8 @@ extends AStatement {
 		super(_conn, resultSetType, resultSetConcurrency, resultSetHoldability); 
 	}
 
-	/** @see streamIO.integer.jdbc.AStatement#getResultSet(java.io.File)	 */
+	/** Opens the separated-format File as a {@link ResultSetSep}, initializing its Field Names.
+	  * @see streamIO.integer.jdbc.AStatement#getResultSet(java.io.File)	 */
 	protected ResultSet getResultSet(final File table, final String tableName) throws IOException, SQLException {
 		final ResultSetSep ret = new ResultSetSep(table, conn.separators, this, tableName); //
 		if (conn.rowFieldNames == 0) {

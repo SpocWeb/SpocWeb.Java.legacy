@@ -14,6 +14,10 @@ package streamIO.object.parser;
   * @author 	Matthias Heuer
   * @version	1.0
   * <!-- docstate
+  * pass: 2
+  * mtime: 2026-09-07T00:00:00Z
+  * digest: eb2364871fbd7e0ea730805690d02161205bd8aba99a1fd21351c6bdc5d142ca
+  * stale: true
   * tags: [code/stream_parsing, code/parser]
   * concepts: [Separator-Driven Token Parsing and Stream Adapters]
   * facets: {layer: utility, status: legacy, complexity: high}

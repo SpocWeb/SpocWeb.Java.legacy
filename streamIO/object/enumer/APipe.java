@@ -17,6 +17,10 @@ import streamIO.object.IPipe;
  * TODO: Introduce a Timeout for the Blocking.
  * @stereotype enumeration
  * <!-- docstate
+ * pass: 2
+ * mtime: 2026-09-07T00:00:00Z
+ * digest: c0ac5cae6239394e4735f9ac72cd197185a9f73087c91cc1a5a21943c3d62885
+ * stale: true
  * tags: [code/enumerator, code/iterator_adapter]
  * concepts: [Custom Streaming Enumerator and Iterator Bridge Layer for Object Collections]
  * facets: {layer: utility, status: legacy, complexity: high}

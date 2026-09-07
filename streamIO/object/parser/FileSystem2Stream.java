@@ -34,6 +34,10 @@ import function.FunctionByHash;
   * @author 	Matthias Heuer
   * @version	1.0
   * <!-- docstate
+  * pass: 2
+  * mtime: 2026-09-07T00:00:00Z
+  * digest: 94ff1bccea65bba0ab49d659bd127f3273e225426ecaaa9d6fe722b2b7fe0973
+  * stale: true
   * tags: [code/stream_parsing, code/parser]
   * concepts: [Separator-Driven Token Parsing and Stream Adapters]
   * facets: {layer: utility, status: legacy, complexity: high}
@@ -222,6 +226,7 @@ extends AStreamIn {
 	/// #region : static Testing and main() Methods
 	////////////////////////////////////////////////////////////////////////////////
 	
+	/** Lookup table mapping the directory-start/end marker Strings to their replacement Strings.	 */
 	protected static final Object[][] MAP_DIRS = {
 		{STR_DIR_START, STR_DIR_START}, 
 		{STR_DIR_END  , null}

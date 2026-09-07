@@ -63,6 +63,10 @@ import com.sun.org.apache.xml.internal.utils.DOMBuilder;
   * @author 	Matthias Heuer
   * @version	1.0
   * <!-- docstate
+  * pass: 2
+  * mtime: 2026-09-07T00:00:00Z
+  * digest: d4533bec82ed000290e7e98414d126d708ffac9ba34c0afb9128017b2f95390f
+  * stale: true
   * tags: [code/jdbc_adapter, code/sax_event_generation]
   * concepts: [Minimal JDBC Driver over Separated-Format Flat Files]
   * facets: {layer: domain, status: legacy, complexity: high}
@@ -286,7 +290,8 @@ extends AStreamIn {
 	/// #region : static Testing and main() Methods
 	////////////////////////////////////////////////////////////////////////////////
 	
-	private static final String TEST_RS_SEP_PATH = "../XML/DocMapHierarchy/DocMapHierarchySample.sep"; 
+	/** Path of the sample separated-format File used by {@link #testIt()}.	 */
+	private static final String TEST_RS_SEP_PATH = "../XML/DocMapHierarchy/DocMapHierarchySample.sep";
 	
 	/** Tests all Methods of this Class	 */
 	public static void testIt() throws SAXException, IOException {

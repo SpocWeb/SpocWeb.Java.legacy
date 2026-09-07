@@ -14,6 +14,10 @@ import streamIO.IIterAble;
  * @author  Matthias Heuer
  * @version
  * <!-- docstate
+ * pass: 2
+ * mtime: 2026-09-07T00:00:00Z
+ * digest: 2840181ec49311159604faa5108aa869fa4cdf31fa04b8516c0598981ffca784
+ * stale: true
  * tags: [code/enumerator, code/iterator_adapter]
  * concepts: [Custom Streaming Enumerator and Iterator Bridge Layer for Object Collections]
  * facets: {layer: utility, status: legacy, complexity: high}

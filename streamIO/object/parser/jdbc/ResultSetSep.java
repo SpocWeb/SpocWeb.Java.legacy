@@ -98,6 +98,10 @@ import tools.IOError;
   * @author 	Matthias Heuer
   * @version	1.0
   * <!-- docstate
+  * pass: 2
+  * mtime: 2026-09-07T00:00:00Z
+  * digest: 81109d0c58921c408bb59c62d37be1c715051894acf5f4c57f3df4dc30be3341
+  * stale: true
   * tags: [code/jdbc_adapter, code/sax_event_generation]
   * concepts: [Minimal JDBC Driver over Separated-Format Flat Files]
   * facets: {layer: domain, status: legacy, complexity: high}

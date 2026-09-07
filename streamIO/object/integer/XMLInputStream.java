@@ -33,7 +33,7 @@ import stringOp.parser.Scanner;
  * pass: 2
  * mtime: 2026-09-05T20:56:34Z
  * digest: f6b565c8a6c77a43f4312cc46e9c55313c7848efc99d6f62b55a8b56ac416259
- * stale: false
+ * stale: true
  * tags: [code/parsing, code/xml]
  * concepts: [XML/HTML Parsing]
  * facets: {layer: utility, status: broken, complexity: medium}

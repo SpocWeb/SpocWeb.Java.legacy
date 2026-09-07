@@ -16,6 +16,10 @@ import streamIO.object.ModificationException;
  * @version 1.0
  * @stereotype enumeration
  * <!-- docstate
+ * pass: 2
+ * mtime: 2026-09-07T00:00:00Z
+ * digest: f05dc1b78b4a9a6fdfbfeb555eeaf4457d970bc64d486d7cbd5135d049935033
+ * stale: true
  * tags: [code/enumerator, code/iterator_adapter]
  * concepts: [Custom Streaming Enumerator and Iterator Bridge Layer for Object Collections]
  * facets: {layer: utility, status: legacy, complexity: high}

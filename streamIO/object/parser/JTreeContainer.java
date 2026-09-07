@@ -27,6 +27,10 @@ import swing.HashTreeNode;
   * 	the Integrity of the Tree, because only the Parent Node is given
   * 	by it's UserObject.
   * <!-- docstate
+  * pass: 2
+  * mtime: 2026-09-07T00:00:00Z
+  * digest: 390cec5f638af78e7483a35dfc84bd6b2f37a3f75a212b6282e4585ecb7717fa
+  * stale: true
   * tags: [code/stream_parsing, code/parser]
   * concepts: [Separator-Driven Token Parsing and Stream Adapters]
   * facets: {layer: utility, status: legacy, complexity: high}

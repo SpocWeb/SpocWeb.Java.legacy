@@ -15,6 +15,10 @@ import streamIO.object.AStreamIn;
   * @see streamIO.Object.ArrayStreamIn
   * @see streamIO.Object.Enumerator.Container.Array for the full Implementation
   * <!-- docstate
+  * pass: 2
+  * mtime: 2026-09-07T00:00:00Z
+  * digest: 2c5c012c139ecf4bff0a969838730bdedfad04ad97740c5258333857eab099b0
+  * stale: true
   * tags: [code/stream_parsing, code/parser]
   * concepts: [Separator-Driven Token Parsing and Stream Adapters]
   * facets: {layer: utility, status: legacy, complexity: high}

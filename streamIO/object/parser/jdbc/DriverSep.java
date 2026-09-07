@@ -35,6 +35,10 @@ import streamIO.integer.jdbc.DriverFix;
  * @version	1.0
  *
  * <!-- docstate
+ * pass: 2
+ * mtime: 2026-09-07T00:00:00Z
+ * digest: 0d206903f3fe3361046012524f5706b38701c8c7faa2c7bf320fa79a6fb9d20f
+ * stale: true
  * tags: [code/jdbc_adapter, code/sax_event_generation]
  * concepts: [Minimal JDBC Driver over Separated-Format Flat Files]
  * facets: {layer: domain, status: legacy, complexity: high}

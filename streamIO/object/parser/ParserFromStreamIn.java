@@ -20,6 +20,10 @@ import function.byref.ByRefInt;
   * @see which implements a different Approach for Bracketed streamIO Structures,
   * that translates more easily into the Parser Format.
   * <!-- docstate
+  * pass: 2
+  * mtime: 2026-09-07T00:00:00Z
+  * digest: 2af95823c7f440d6696b2e2f7912e888e6f20669d15b982b056f9a7946f856e1
+  * stale: true
   * tags: [code/stream_parsing, code/parser]
   * concepts: [Separator-Driven Token Parsing and Stream Adapters]
   * facets: {layer: utility, status: legacy, complexity: high}

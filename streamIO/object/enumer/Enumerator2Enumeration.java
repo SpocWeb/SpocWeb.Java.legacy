@@ -16,6 +16,10 @@ package streamIO.object.enumer;
   * @author 	Matthias Heuer
   * @version 1.0
   * <!-- docstate
+  * pass: 2
+  * mtime: 2026-09-07T00:00:00Z
+  * digest: 77bfe1a7c6c5afd3aa0ebf7b20873d0bd4187c8b5dfd778917ab34d49c168162
+  * stale: true
   * tags: [code/enumerator, code/iterator_adapter]
   * concepts: [Custom Streaming Enumerator and Iterator Bridge Layer for Object Collections]
   * facets: {layer: utility, status: legacy, complexity: high}

@@ -11,6 +11,10 @@ import streamIO.object.ModificationException;
  * It should never be visble to the User directly,
  * because it is always hidden by the List Object.
  * <!-- docstate
+ * pass: 2
+ * mtime: 2026-09-07T00:00:00Z
+ * digest: 3e714bc9dcb641620fbd654f99b9c9d43748d09c92420cd8a36fecd0907e4102
+ * stale: true
  * tags: [code/enumerator, code/iterator_adapter]
  * concepts: [Custom Streaming Enumerator and Iterator Bridge Layer for Object Collections]
  * facets: {layer: utility, status: legacy, complexity: high}

@@ -11,6 +11,10 @@ import streamIO.object.IStreamIn;
   *
   * This is used e.g. in @see MaskedStreamIn
   * <!-- docstate
+  * pass: 2
+  * mtime: 2026-09-07T00:00:00Z
+  * digest: 404354b990a8ecf141b6d3a554a2a527c80b077550909bb88d1cd36062aceec7
+  * stale: true
   * tags: [code/stream_parsing, code/parser]
   * concepts: [Separator-Driven Token Parsing and Stream Adapters]
   * facets: {layer: utility, status: legacy, complexity: high}

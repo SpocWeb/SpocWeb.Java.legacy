@@ -20,6 +20,10 @@ import streamIO.object.AStreamIn;
   * @version	1.0
   * @stereotype enumeration
   * <!-- docstate
+  * pass: 2
+  * mtime: 2026-09-07T00:00:00Z
+  * digest: 4653d5ebfa0f0107337c570fa0492151039c9c0f538425c7ed69c8c9bc964e7f
+  * stale: true
   * tags: [code/enumerator, code/iterator_adapter]
   * concepts: [Custom Streaming Enumerator and Iterator Bridge Layer for Object Collections]
   * facets: {layer: utility, status: legacy, complexity: high}

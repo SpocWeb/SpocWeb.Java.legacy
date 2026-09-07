@@ -29,6 +29,10 @@ import streamIO.IIStreamOut;
   * @author 	Matthias Heuer
   * @version	1.0
   * <!-- docstate
+  * pass: 2
+  * mtime: 2026-09-07T00:00:00Z
+  * digest: e64367e38a29c6005bef34d7259415867acd8fcaf6da457d03eca7ad00c39957
+  * stale: true
   * tags: [code/enumerator, code/iterator_adapter]
   * concepts: [Custom Streaming Enumerator and Iterator Bridge Layer for Object Collections]
   * facets: {layer: utility, status: legacy, complexity: high}

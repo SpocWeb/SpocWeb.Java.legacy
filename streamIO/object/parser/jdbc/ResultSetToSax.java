@@ -69,6 +69,10 @@ import function.byref.ByRefInt;
   * @author 	Matthias Heuer
   * @version	1.0
   * <!-- docstate
+  * pass: 2
+  * mtime: 2026-09-07T00:00:00Z
+  * digest: a04916b12fa6211c0756a5e6a140c465c0285492a090aa0b9e490ec0f278c082
+  * stale: true
   * tags: [code/jdbc_adapter, code/sax_event_generation]
   * concepts: [Minimal JDBC Driver over Separated-Format Flat Files]
   * facets: {layer: domain, status: legacy, complexity: high}
@@ -312,7 +316,8 @@ extends AStreamIn {
 	/// #region : static Testing and main() Methods
 	////////////////////////////////////////////////////////////////////////////////
 	
-	private static final String TEST_RS_SEP_PATH = "../../Databases/MusicCollection/Artists.sep"; 
+	/** Path of the sample separated-format File used by {@link #testIt()}.	 */
+	private static final String TEST_RS_SEP_PATH = "../../Databases/MusicCollection/Artists.sep";
 	
 	/** Tests all Methods of this Class	 */
 	public static void testIt() throws SAXException, IOException {

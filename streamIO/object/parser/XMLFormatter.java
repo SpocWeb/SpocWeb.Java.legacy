@@ -33,6 +33,10 @@ import streamIO.integer.adapter.OutputStreamToStreamOutByte;
  * @author		 Matthias Heuer
  * @version 1.0
  * <!-- docstate
+ * pass: 2
+ * mtime: 2026-09-07T00:00:00Z
+ * digest: fa6ca2d4207fc78229aee63e45d9432b7754441ea1e78df91762842a33c69591
+ * stale: true
  * tags: [code/xml_parsing, code/xml_streaming]
  * concepts: [XML Read/Write Stream Bridging]
  * facets: {layer: utility, status: legacy, complexity: high}

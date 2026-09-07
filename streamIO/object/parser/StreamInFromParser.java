@@ -24,6 +24,10 @@ import function.byref.ByRefInt;
   * where only finite deep Structures are possible.
   *
   * <!-- docstate
+  * pass: 2
+  * mtime: 2026-09-07T00:00:00Z
+  * digest: dd46196a06bde6cb7e33cea8e999563cb64d3eb195cb2b69e27c291a89b8b6d4
+  * stale: true
   * tags: [code/stream_parsing, code/parser]
   * concepts: [Separator-Driven Token Parsing and Stream Adapters]
   * facets: {layer: utility, status: legacy, complexity: high}

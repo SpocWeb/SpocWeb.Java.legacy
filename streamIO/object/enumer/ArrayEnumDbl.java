@@ -23,6 +23,10 @@ import function.byref.ByRefDouble;
  * @version 1.0
  * @stereotype enumeration
  * <!-- docstate
+ * pass: 2
+ * mtime: 2026-09-07T00:00:00Z
+ * digest: e9ebd6fc57cdf78c4b27f8a69a89034cbfafde767e2f58a32361358d19ecdf98
+ * stale: true
  * tags: [code/enumerator, code/iterator_adapter]
  * concepts: [Custom Streaming Enumerator and Iterator Bridge Layer for Object Collections]
  * facets: {layer: utility, status: legacy, complexity: high}

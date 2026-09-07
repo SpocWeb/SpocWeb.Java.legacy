@@ -23,6 +23,10 @@ import streamIO.integer.jdbc.APrepStatement;
  * @version	1.0
  *
  * <!-- docstate
+ * pass: 2
+ * mtime: 2026-09-07T00:00:00Z
+ * digest: c276dea0d6e5678bfdf5b224a7133c9fa093270fb296851b955354bc15b6e0c2
+ * stale: true
  * tags: [code/jdbc_adapter, code/sax_event_generation]
  * concepts: [Minimal JDBC Driver over Separated-Format Flat Files]
  * facets: {layer: domain, status: legacy, complexity: high}

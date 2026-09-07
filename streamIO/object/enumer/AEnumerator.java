@@ -18,6 +18,10 @@ import streamIO.object.ModificationException;
  * because this abstract Parent Class cannot be an inner Class.
  * @stereotype enumeration
  * <!-- docstate
+ * pass: 2
+ * mtime: 2026-09-07T00:00:00Z
+ * digest: 5820e0caf51ef8320c59236184e24fd2b78aec145c6b5e637481cdc3b763f5a4
+ * stale: true
  * tags: [code/enumerator, code/iterator_adapter]
  * concepts: [Custom Streaming Enumerator and Iterator Bridge Layer for Object Collections]
  * facets: {layer: utility, status: legacy, complexity: high}

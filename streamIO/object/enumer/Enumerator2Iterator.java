@@ -20,6 +20,10 @@ import streamIO.object.ModificationException;
   * @author 	Matthias Heuer
   * @version 1.0
   * <!-- docstate
+  * pass: 2
+  * mtime: 2026-09-07T00:00:00Z
+  * digest: faee8b7c55bcdae7be527899b3b16b0be9ff41bc6aa7b309bacd324ab34dfdcb
+  * stale: true
   * tags: [code/enumerator, code/iterator_adapter]
   * concepts: [Custom Streaming Enumerator and Iterator Bridge Layer for Object Collections]
   * facets: {layer: utility, status: legacy, complexity: high}

@@ -28,6 +28,10 @@ import streamIO.integer.jdbc.ACallStatement;
  * @version	1.0
  *
  * <!-- docstate
+ * pass: 2
+ * mtime: 2026-09-07T00:00:00Z
+ * digest: 510a281e409d2d3de81cf2787e010b3c67a9b1c757855e4e526586d96925bfb3
+ * stale: true
  * tags: [code/jdbc_adapter, code/sax_event_generation]
  * concepts: [Minimal JDBC Driver over Separated-Format Flat Files]
  * facets: {layer: domain, status: legacy, complexity: high}

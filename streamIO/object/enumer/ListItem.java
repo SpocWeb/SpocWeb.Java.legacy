@@ -47,6 +47,10 @@ import tester.Discrete;
   * @see streamIO.Copy.IMonoid.Association
   *
   * <!-- docstate
+  * pass: 2
+  * mtime: 2026-09-07T00:00:00Z
+  * digest: 4f500bb6ee61c0dbeb58f72325129df6b7bb8c08a30ba56cc379a5c282cbf356
+  * stale: true
   * tags: [code/enumerator, code/iterator_adapter]
   * concepts: [Custom Streaming Enumerator and Iterator Bridge Layer for Object Collections]
   * facets: {layer: utility, status: legacy, complexity: high}

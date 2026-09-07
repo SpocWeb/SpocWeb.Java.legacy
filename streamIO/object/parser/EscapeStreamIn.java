@@ -62,6 +62,10 @@ import function.byref.ByRefInt;
   * @see IStreamIn which it implements.
   *
   * <!-- docstate
+  * pass: 2
+  * mtime: 2026-09-07T00:00:00Z
+  * digest: 114124c465a018dc5d159ceaaf2ddace8c5c83435e46e9df2f41044431fb0123
+  * stale: true
   * tags: [code/stream_parsing, code/parser]
   * concepts: [Separator-Driven Token Parsing and Stream Adapters]
   * facets: {layer: utility, status: legacy, complexity: high}

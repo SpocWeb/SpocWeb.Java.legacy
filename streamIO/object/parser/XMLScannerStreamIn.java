@@ -27,6 +27,10 @@ import graphs.KeyValuePair;
   * Although defaulting the Separator Characters to <\>, you can override them.
   *
   * <!-- docstate
+  * pass: 2
+  * mtime: 2026-09-07T00:00:00Z
+  * digest: 1465913b07dfb8512ae4c3ca6edcdadbab94850a5c722a5998ec361d89d2d300
+  * stale: true
   * tags: [code/xml_parsing, code/xml_streaming]
   * concepts: [XML Read/Write Stream Bridging]
   * facets: {layer: utility, status: legacy, complexity: high}

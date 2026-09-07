@@ -7,6 +7,10 @@ import streamIO.object.ModificationException;
 /**Implements the possible abstract reverse Enumerator Operations
  * @stereotype enumeration
  * <!-- docstate
+ * pass: 2
+ * mtime: 2026-09-07T00:00:00Z
+ * digest: 88e76b561cb44439091995998281fbe832d1027d3d0bf8a3cd64fb908fa6fec7
+ * stale: true
  * tags: [code/enumerator, code/iterator_adapter]
  * concepts: [Custom Streaming Enumerator and Iterator Bridge Layer for Object Collections]
  * facets: {layer: utility, status: legacy, complexity: high}

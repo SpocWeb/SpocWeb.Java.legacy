@@ -64,6 +64,10 @@ import function.byref.ByRefInt;
   *
   * Design Decisions:
   * <!-- docstate
+  * pass: 2
+  * mtime: 2026-09-07T00:00:00Z
+  * digest: 60cc7e136d0493039d0f80ef43fec96292f575a0a1f2f943a515d597e22e7282
+  * stale: true
   * tags: [code/stream_parsing, code/parser]
   * concepts: [Separator-Driven Token Parsing and Stream Adapters]
   * facets: {layer: utility, status: legacy, complexity: high}

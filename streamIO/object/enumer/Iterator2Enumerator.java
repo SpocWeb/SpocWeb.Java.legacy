@@ -19,6 +19,10 @@ import streamIO.IReSetAble;
   * @author 	Matthias Heuer
   * @version 1.0
   * <!-- docstate
+  * pass: 2
+  * mtime: 2026-09-07T00:00:00Z
+  * digest: 86983fd4680f505ad4b4591e5b0043f9b6e290d2c3122610eedc8a0ae19fb08b
+  * stale: true
   * tags: [code/enumerator, code/iterator_adapter]
   * concepts: [Custom Streaming Enumerator and Iterator Bridge Layer for Object Collections]
   * facets: {layer: utility, status: legacy, complexity: high}

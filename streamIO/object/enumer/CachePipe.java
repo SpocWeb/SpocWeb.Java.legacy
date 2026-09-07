@@ -15,6 +15,10 @@ import streamIO.IIStreamOut;
  * @todo: enhance the Class according to @see PipeByte
  * @stereotype enumeration
  * <!-- docstate
+ * pass: 2
+ * mtime: 2026-09-07T00:00:00Z
+ * digest: 0980306c18df45046314fc9c41c24058b3c8a59fc61610a40b81a96889622062
+ * stale: true
  * tags: [code/enumerator, code/iterator_adapter]
  * concepts: [Custom Streaming Enumerator and Iterator Bridge Layer for Object Collections]
  * facets: {layer: utility, status: legacy, complexity: high}

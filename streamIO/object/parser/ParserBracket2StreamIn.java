@@ -53,6 +53,10 @@ import function.byref.ByRefInt;
   * but the Level is directly encoded in the Separator Character
   *
   * <!-- docstate
+  * pass: 2
+  * mtime: 2026-09-07T00:00:00Z
+  * digest: 1c414ecc64afcf1b8804f5e920f76567d05ebb02af69218a8404d3650c5afb3b
+  * stale: true
   * tags: [code/stream_parsing, code/parser]
   * concepts: [Separator-Driven Token Parsing and Stream Adapters]
   * facets: {layer: utility, status: legacy, complexity: high}

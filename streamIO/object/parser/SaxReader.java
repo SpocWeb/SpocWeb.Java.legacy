@@ -40,6 +40,10 @@ import function.byref.ByRefInt;
   * @author 	Matthias Heuer
   * @version	1.0
   * <!-- docstate
+  * pass: 2
+  * mtime: 2026-09-07T00:00:00Z
+  * digest: 0971b9719f5623777e202d786eb50a5f76a02c2f60d8b59c0fe164f7fef87562
+  * stale: true
   * tags: [code/sax_parsing, code/parser]
   * concepts: [SAX-Style Event Parsing]
   * facets: {layer: utility, status: legacy, complexity: high}
@@ -58,16 +62,20 @@ implements XMLReader {
 	/** Reference to the XML Scanner Object	 */
 	protected IStreamIn xmlScanner; 
 
-	/** @see org.xml.sax.XMLReader#getContentHandler()	 */
+	/** The registered SAX Content Handler receiving Element and Text Events.
+	  * @see org.xml.sax.XMLReader#getContentHandler()	 */
 	protected ContentHandler contentHandler;
 
-	/** @see org.xml.sax.XMLReader#getDTDHandler()	 */
+	/** The registered SAX DTD Handler receiving Notation and unparsed-Entity Events.
+	  * @see org.xml.sax.XMLReader#getDTDHandler()	 */
 	protected DTDHandler dtdHandler;
 
-	/** @see org.xml.sax.XMLReader#getEntityResolver()	 */
+	/** The registered SAX Entity Resolver used to resolve external Entity References.
+	  * @see org.xml.sax.XMLReader#getEntityResolver()	 */
 	protected EntityResolver entityResolver;
 
-	/** @see org.xml.sax.XMLReader#getErrorHandler()	 */
+	/** The registered SAX Error Handler receiving Warning, Error and fatal Error Events.
+	  * @see org.xml.sax.XMLReader#getErrorHandler()	 */
 	protected ErrorHandler errorHandler;
 
 	/** Container for the given Properties */

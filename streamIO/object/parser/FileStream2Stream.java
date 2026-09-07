@@ -47,6 +47,10 @@ import streamIO.object.IStreamIn;
   * @author 	Matthias Heuer
   * @version	1.0
   * <!-- docstate
+  * pass: 2
+  * mtime: 2026-09-07T00:00:00Z
+  * digest: d4039fdca3b8b893323f4cff537d86c9f3f2ddea954692d34b8b195cfa9b161c
+  * stale: true
   * tags: [code/stream_parsing, code/parser]
   * concepts: [Separator-Driven Token Parsing and Stream Adapters]
   * facets: {layer: utility, status: legacy, complexity: high}

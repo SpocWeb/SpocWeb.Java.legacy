@@ -95,7 +95,7 @@ package streamIO.object.json;
  * pass: 2
  * mtime: 2026-09-05T20:59:12Z
  * digest: a033ed30305746c6af73afadb8c24e9e025525ca2be5da4e94bb9b091f91064a
- * stale: false
+ * stale: true
  * tags: [code/parsing, code/serialization]
  * concepts: [JSON.org Reference Implementation]
  * facets: {layer: utility, status: broken, complexity: medium}
