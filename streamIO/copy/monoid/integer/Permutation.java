@@ -58,7 +58,7 @@ import function.byref.ByRefLong;
   * <!-- docstate
   * pass: 2
   * mtime: 2026-09-05T16:34:07Z
-  * digest: 60d5e807916ae1e87b561028a803cc692be4c2b4ce7797e3b46d25b405d88eef
+  * digest: fc090af28bf16db5ec16bd9530a7aaa90d1966dbfbef7f1eb08c65895ee5cdb2
   * stale: false
   * tags: [code/permutation, code/multiplicative_semigroup, code/bit_manipulation]
   * concepts: [Permutation, Multi-Index]

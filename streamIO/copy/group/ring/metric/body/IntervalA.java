@@ -65,6 +65,8 @@ import function.derive.CCountAble;
   * tags: [code/rational_numbers, code/interval_arithmetic]
   * concepts: [Rational Numbers and Interval Arithmetic]
   * facets: {layer: domain, status: legacy, complexity: high}
+  * digest: b4984a852002951ffa34a68ed5a0e73f87b1916053868582c960abafbf44abb8
+  * stale: false
   * -->
   */
 	public		 class IntervalA

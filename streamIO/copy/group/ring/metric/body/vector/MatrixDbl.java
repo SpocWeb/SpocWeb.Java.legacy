@@ -1,13 +1,10 @@
 package streamIO.copy.group.ring.metric.body.vector;
 
-/**
-  * Title: MatrixDbl<p>
-  * Description:
-  * This Class relies on the Elements of this Tensor being of Type VectorDbl
-  * It therefore defines some Optimizations for Transposing
-  * and for calculating the Scalar Product between MatrixDbl Objects
-  * as well as for the Product of VectorDbl and MatrixDbl. 
+/**A {@link Matrix} specialized for elements of type {@link VectorDbl}, defining optimizations
+  * for transposing and for the scalar product between {@code MatrixDbl} objects as well as
+  * for the product of {@link VectorDbl} and {@code MatrixDbl}.
   *
+  * <p>Title: MatrixDbl<p>
   * Known SubClasses:
   *
   * Copyright:	Copyright (c) Matthias Heuer<p>
@@ -19,6 +16,8 @@ package streamIO.copy.group.ring.metric.body.vector;
   * tags: [code/tensor, code/manifold_generation, code/interpolation]
   * concepts: [Vector/Matrix/Tensor and Manifold Interpolation]
   * facets: {layer: domain, status: legacy, complexity: high}
+  * digest: d7641f881ec8e458acd6df30c7ecba93c6645be8a9aa627bad3802902683fc8c
+  * stale: false
   * -->
   */
 public class MatrixDbl

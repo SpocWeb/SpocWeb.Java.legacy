@@ -10,6 +10,8 @@ import streamIO.copy.group.ring.metric.IMetricIRing;
  * tags: [code/rational_numbers, code/interval_arithmetic]
  * concepts: [Rational Numbers and Interval Arithmetic]
  * facets: {layer: domain, status: legacy, complexity: high}
+ * digest: 2b1ca1e041cb8f837d2f39473a745ea32dd5cd88294d91316d0f996591541f24
+ * stale: false
  * -->
  */
 public interface MetricBody

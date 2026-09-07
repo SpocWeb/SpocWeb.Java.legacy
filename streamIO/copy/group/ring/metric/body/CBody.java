@@ -21,6 +21,8 @@ import function.IMeasurAble;
   * tags: [code/rational_numbers, code/interval_arithmetic]
   * concepts: [Rational Numbers and Interval Arithmetic]
   * facets: {layer: domain, status: legacy, complexity: high}
+  * digest: 11f9b52198cf0fe9ca98c5ed733d07a8a1e7c6572e5699ab94b32286a35b3744
+  * stale: false
   * -->
   * and can then be derived from ConstRing.	 */
 public class CBody

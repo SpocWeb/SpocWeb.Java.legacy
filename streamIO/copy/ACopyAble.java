@@ -47,7 +47,7 @@ import streamIO.exception.BaseException;
  * <!-- docstate
  * pass: 2
  * mtime: 2026-09-05T20:48:42Z
- * digest: 57cfad59da206e214d89b2e91914168a7e0730ff2884efc952c5e138a5a7587f
+ * digest: 7df29dcdd46ff2a9177be837292338e857c169f9275498a6f2222162a6ea2fed
  * stale: false
  * tags: [code/abstract_base, code/serialization, code/reflection]
  * concepts: [Copy Semantics, Serialization]
@@ -389,14 +389,14 @@ ICopyAble, Serializable, Cloneable {//to be able to Stream out and clone the Obj
 
 	//generic (De-)Serialization, needn't be overwritten!:
 
-	/**Writes the Contents of this Object into the streamIO.
-	 * Default Implementation that can be overwritten by more effective ones.
-	 * TODO: declare this Methods as abstract!
-	 */
 	/** Object currently being written by {@link #toStream(IFormatOut)} on this Thread,
 	  * used to break the Recursion when a Formatter falls back to toString() again.	 */
 	private static final ThreadLocal IN_TO_STREAM = new ThreadLocal();
 
+	/**Writes the Contents of this Object into the streamIO.
+	 * Default Implementation that can be overwritten by more effective ones.
+	 * TODO: declare this Methods as abstract!
+	 */
 	public void toStream(final IFormatOut ST)
 	throws IOException {
 		final Object prev = IN_TO_STREAM.get();
@@ -515,8 +515,10 @@ ICopyAble, Serializable, Cloneable {//to be able to Stream out and clone the Obj
 	/// Testing Framework
 	/////////////////////////////////////////////////////////////////////////////////////
 	
+	/** Parameter types of the single-argument test constructor used by {@link #testIt(Class, String)}.	 */
 	private static final Class[] testParamTypes = { ICopyAble.class }; //Object.class};
-	
+
+	/** Reusable single-element argument array passed to the test constructor found via {@link #testParamTypes}.	 */
 	private static final Object[] testParams = new Object[1];
 	
 	/** tests with an Instance of the given Class Name */
