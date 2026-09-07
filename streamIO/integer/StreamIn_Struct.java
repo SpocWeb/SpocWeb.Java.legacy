@@ -21,20 +21,9 @@ import streamIO.object.parser.InputStream2StreamIn;
 import tools.IOError;
 
 /**
- * Title: <p>
- * Description:
- * Purpose:
- * Implements a generic, configurable Scanner & Parser for Data Structures 
- * like XML, JSON, YAML, CSV or Tab-separated Files. 
- * Restores whole Object Hierarchies from the Stream. 
- * 
- * Design Decisions / Implementation Details:
- * Exposes all Methods of the Parent Class and thus allows 
- * to flexibly mix the Techniques for reading and Parsing within the same Stream. 
- * 
- * Known SubClasses: <none>
- *
- * Known Uses: <none>
+ * Implements a generic, separator-configurable scanner and parser for structured formats
+ * such as XML, JSON, YAML, CSV, or tab-separated files, restoring whole object hierarchies
+ * from the underlying character stream.
  *
  * Copyright:	Copyright (c) Matthias Heuer<p>
  * Company:	personal<p>

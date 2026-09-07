@@ -3,18 +3,12 @@ package streamIO.integer;
 import streamIO.real.IStreamIn_Float;
 import stringOp.parser.IIStreamIn_Int;
 
-/** Interface for a streamIO of integer Numbers
-  * e.g. for a Random Number Generator
-  * The Generator is implemented with primitive Types,
-  * because of Performance Reasons.
-  * The same Plethora of Classes as for IStreamIn and IStreamOut
-  * can be implemented for this Interface, and even more,
-  * because this Type is passive and more Operations can be predefined.
-  * The Output Range may not be normed,
-  * @see IRandomInt for the Method MaxValue()
-  * 
-  * known Subclasses: 
-  * @see IStreamIn_Byte which extends this Interface for Parsing 
+/** Interface for an integer-valued input stream (e.g. a random-number generator) built
+  * on primitive types for performance, adding bulk array-fill, peek, and cloning-style
+  * iteration to {@link IIStreamIn_Int} and {@link IStreamIn_Float}.
+  *
+  * @see IRandomInt for the {@code MaxValue()} Method
+  * @see IStreamIn_Byte extends this interface for Parsing
   * <!-- docstate
   * tags: [code/stream_io, code/stream_input, code/stream_output, code/struct]
   * concepts: [Primitive and Structured Stream I/O Core Abstractions]

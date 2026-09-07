@@ -3,26 +3,15 @@ package streamIO.integer; //TODO: always define a Package
 import java.io.IOException;
 
 /**
-  * Title: IStreamByteRandom<p>
-  * Description:
-  * Defines the Interface for ...TODO: Describes the Purpose / Responsibilities
-  * of this Interface, not it's Implementation.
-  * If similar Classes exist (e.g. Polymorphism),
-  * characterize the specific Differences to compare these.
-  * All interface Operations are implicitly public and abstract.
-  * All interface Attributes are implicitly public, final and static.
-  *
-  * Known SubInterfaces: <none>
-  *
-  * Known Implementors: <none>
-  *
-  * Known Uses: <none>
+  * Extends {@link IStreamByte} with random-access file operations (file pointer,
+  * length, seek) mirrored from {@link java.io.RandomAccessFile}.
   *
   * Copyright:	Copyright (c) Matthias Heuer<p>
   * Company:	personal<p>
   * Created on	12-22-2002, 03:52 PM<p>
   * @author 	Matthias Heuer
   * @version	1.0
+  * @see IStreamByte base bidirectional byte-stream contract extended here
   * <!-- docstate
   * tags: [code/stream_io, code/stream_input, code/stream_output, code/struct]
   * concepts: [Primitive and Structured Stream I/O Core Abstractions]

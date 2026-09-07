@@ -7,25 +7,11 @@ import streamIO.Log;
 import streamIO.object.IStreamIn;
 
 /**
-  * Title: StreamIn_Arithmetic<p>
-  * Description:
-  * streamIO of Numbers N
-  * natural Numbers starting with 1 (Default),
-  * incrementing by 1 (Default)
-  * and ranging up to Long.MAX_VALUE (Default)
-  * strictly monotonous.
-  *
-  * This Class could also be defined in Package streamIO.Float
-  * due to the Interface IStreamIn_Int defined there!
-  *
-  * Known SubClasses: <none>
+  * Generates a strictly monotonic arithmetic sequence of {@code long} values (configurable
+  * start, stop, and increment) as an input stream, formerly known as NumberStream and also
+  * used as a substitute for a character stream via a CharacterFilter applied on top of it.
   *
   * @see streamIO.Float.StreamIn_Arithmetic implementing StreamIn_Float
-  *
-  * Design Decisions:
-  * Formerly known as NumberStream
-  * also used as a Substitute for CharacterStream,
-  * which is now simulated by a CharacterFilter applied on a StreamIn_Arithmetic.
   *
   * Copyright:	Copyright (c) Matthias Heuer<p>
   * Company:	personal<p>

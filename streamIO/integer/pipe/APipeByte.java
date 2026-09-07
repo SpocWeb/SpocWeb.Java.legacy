@@ -8,10 +8,9 @@ import streamIO.integer.IStreamByte;
 import streamIO.integer.IStreamOutByte;
 
 /**
-  * Title: APipeByte<p>
-  * Description:
-  * Purpose:
-  * abstract Base Class for a Pipe processing Bytes and Integers
+  * Abstract Base Class for a byte-oriented Pipe: implements the convenience write/flush
+  * overloads for byte arrays, char arrays, Strings and StringBuffers atop the abstract
+  * single-byte read/write/mark/reSet primitives that concrete Subclasses must supply.
   *
   * Design Decisions / Implementation Details:
   * If similar Classes exist (e.g. Polymorphism),

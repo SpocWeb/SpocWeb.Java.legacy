@@ -9,22 +9,10 @@ package streamIO.integer;
 import streamIO.IIStreamOut;
 
 /**
- * Title:
- * <p>
- * Description: 
- * Purpose: 
- * Defines the Interface for a Stream 
- * that allows to write structured Information.
- * 
- * Design Decisions / Implementation Details: Instead of extending the
- * IStreamOutPrimitive Interface, it would be better to completely wrap and hide
- * it or give Access to it only through a different Interface so as not to
- * clutter both!
- * 
- * Known SubClasses: <none>
- * 
- * Known Uses: <none>
- * 
+ * Defines the contract for writing structured (nested, named) data — objects, lists, and
+ * name-value pairs — on top of {@link IStreamOutPrimitive}, {@link IStreamOutStructArrays},
+ * and {@link IIStreamOut}.
+ *
  * Copyright: Copyright (c) Matthias Heuer
  * <p>
  * Company: personal

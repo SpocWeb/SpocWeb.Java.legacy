@@ -9,10 +9,8 @@ import streamIO.integer.IStreamOutByte;
 import streamIO.integer.filter.FilterByte;
 
 /**
-  * Title: FilterByte2UTF8<p>
-  * Description:
-  * Encodes the Characters (int) coming through this Output or Input streamIO
-  * by converting their Values from/into UTF-8 Encoding.
+  * Converts Characters (as ints) between raw bytes and their UTF-8 byte
+  * sequence when reading from or writing to the wrapped streamIO.
   *
   * Unicode takes 16 Bits instead of 8 Bits (ASCII).
   * UTF-8 can compensate this Overhead completely, i.e. be 50% shorter,
@@ -42,8 +40,6 @@ import streamIO.integer.filter.FilterByte;
   *
   * Of course you cannot use UTF-8 for a Database,
   * because the variable Length disallows fast skipping of Records.
-  *
-  * Known SubClasses:
   *
   * similar Classes:
   * @see java.io.OutputStreamWriter that converts a Unicode Character streamIO into different Encodings

@@ -13,9 +13,11 @@ import streamIO.integer.jdbc.FilterResultSet;
 import streamIO.integer.jdbc.ResultSetCrossJoin;
 
 /**
- * filters all rows out where the Condition is false 
- * @see streamIO.integer.jdbc.dbTest.IDbTest defines the Condition in this Class. 
- * @see streamIO.integer.jdbc.FilterRsByIRowCondition defines the Condition using IRowCondition. 
+ * Filters rows of the wrapped {@link ResultSet}, keeping only rows for which at least one
+ * of its {@link IDbTest} conditions (OR-combined) evaluates to true.
+ *
+ * @see streamIO.integer.jdbc.dbTest.IDbTest defines the Condition in this Class.
+ * @see streamIO.integer.jdbc.FilterRsByIRowCondition defines the Condition using IRowCondition.
  * @author heuerm
  *
  * <!-- docstate

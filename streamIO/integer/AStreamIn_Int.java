@@ -9,27 +9,20 @@ package streamIO.integer;
 import function.byref.ByRefLong;
 
 /**
- * Title:
- * <p>
- * Description: Purpose: Abstract Base Class for Streams of Integers or Longs
- * (not Bytes; use AAStreamIn__Int for this)
- * 
- * Design Decisions / Implementation Details: If similar Classes exist (e.g.
- * Polymorphism), characterize the specific Differences to compare these.
- * 
- * Known SubClasses: <none>
- * 
- * Known Uses: <none>
- * 
+ * Abstract base class for integer/long-valued streams that are not byte-oriented
+ * (see {@link AAStreamIn_Int} for the byte-based variant), translating a single
+ * abstract {@code nextLongInternal()} primitive into the full peek/current-value API.
+ *
  * Copyright: Copyright (c) Matthias Heuer
  * <p>
  * Company: personal
  * <p>
  * Created on 10-26-2002, 12:47 PM
  * <p>
- * 
+ *
  * @author heuerm
  * @version 1.0
+ * @see AAStreamIn_Int byte-oriented counterpart of this class
  * <!-- docstate
  * tags: [code/stream_io, code/stream_input, code/stream_output, code/struct]
  * concepts: [Primitive and Structured Stream I/O Core Abstractions]

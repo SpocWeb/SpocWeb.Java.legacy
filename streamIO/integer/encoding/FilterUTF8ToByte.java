@@ -9,12 +9,9 @@ import streamIO.integer.IStreamOutByte;
 import streamIO.integer.filter.FilterByte;
 
 /**
-  * Title: FilterUTF8ToByte<p>
-  * Description:
-  * 
-  * Encodes the Characters coming through this Output streamIO
-  * by converting their Values into UTF-8 Encoding.
-  * 
+  * Converts Unicode Characters read from or written to the wrapped streamIO
+  * into their UTF-8 byte encoding, the inverse direction of {@link FilterByte2UTF8}.
+  *
   * Unicode takes 16 Bits instead of 8 Bits like ASCII.
   * UTF-8 can compensate this Overhead completely, i.e. be 50% shorter,
   * when the Character range is 0-127, because these are identical to the Unicode Encoding.
@@ -51,7 +48,7 @@ import streamIO.integer.filter.FilterByte;
   * Of course you cannot use UTF-8 for a Database,
   * because the variable Length disallows fast skipping of Records.
   *
-  * Known SubClasses:
+  * @see FilterByte2UTF8 the inverse filter, decoding UTF-8 bytes back into Characters
   *
   * Copyright:	Copyright (c) Matthias Heuer<p>
   * Company:	personal<p>

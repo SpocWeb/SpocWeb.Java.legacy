@@ -8,30 +8,26 @@ package streamIO.integer;
 
 
 /**
- * Title: <p>
- * Description:
- * Purpose:
- * Abstract Implementation of a Class that 
- * allows to be both written to and read from a Stream. 
- * Non-final Fields can be read from the Stream at any time, 
- * but final Fields require a Constructor with IStreamIn_Struct Parameter, 
- * so they can be filled on Construction, 
- * This cannot be enforced via an Interface, but by allowing only such a Constructor, 
- * although it will not perform any work here. 
- * 
- * Design Decisions / Implementation Details:
- * If similar Classes exist (e.g. Polymorphism),
- * characterize the specific Differences to compare these.
+ * Abstract base class for structured types that support both serialization and
+ * deserialization, requiring subclasses to expose a constructor taking an
+ * {@link IStreamIn_Struct} so that {@code final} fields can be populated during
+ * construction, since this cannot be enforced through an interface alone.
  *
- * Known SubClasses: <none>
- *
- * Known Uses: <none>
+ * ## Collaborators
+ * | Type | Relationship |
+ * |---|---|
+ * | {@link AStreamWriteAble} | Superclass supplying the write/serialization half of this
+ * class's read-and-write contract. |
+ * | {@link IStreamReadAble} | Interface this class implements, defining the deserialization
+ * contract fulfilled here. |
  *
  * Copyright:	Copyright (c) Matthias Heuer<p>
  * Company:	personal<p>
  * Created on	10-26-2002, 12:47 PM<p>
  * @author heuerm
  * @version	1.0
+ * @see AStreamWriteAble write/serialization superclass
+ * @see IStreamReadAble deserialization contract implemented by this class
  * <!-- docstate
  * tags: [code/stream_io, code/stream_input, code/stream_output, code/struct]
  * concepts: [Primitive and Structured Stream I/O Core Abstractions]

@@ -23,14 +23,9 @@ import tools.IOError;
 import function.byref.ByRefInt;
 
 /**
-  * Title: FileStreamByte<p>
-  * Description:
-  * This Interface substitutes the Class RandomAccessFile in all Implementations
-  * The Reason is that the RandomAccessFile Class implements all Methods of
-  * both OutputStream and InputStream but sun chose to define these Methods
-  * in classes rather than Interfaces, so it cannot be subclassed directly.
-  *
-  * Known Implementors:
+  * Wraps {@link java.io.RandomAccessFile} to expose it through the streamIO
+  * random-access byte interfaces, since RandomAccessFile itself implements
+  * InputStream/OutputStream-equivalent behavior only as a class, not an interface.
   *
   * Copyright:	Copyright (c) Matthias Heuer<p>
   * Company:	personal<p>

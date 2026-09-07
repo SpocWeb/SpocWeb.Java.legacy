@@ -11,12 +11,11 @@ import streamIO.integer.pipe.ByteStreamerThread;
 import tools.IOError;
 
 /**
-  * Title: AStreamOutByte<p>
-  * Description:
-  * This Adapter Class delegates all Methods of the Interface IStreamOutByte
-  * to an inner Instance of Class IStreamOutByte or OutputStream.
+  * Abstract adapter that implements the {@link IStreamOutByte} contract on top of a
+  * single abstract {@code write(int)} primitive, providing static helper methods for
+  * writing and escaping strings, buffers, and arrays shared by concrete byte-output
+  * implementations.
   *
-  * Known Subclasses:
   * @see FilterOutByte
   *
   * Copyright:	Copyright (c) Matthias Heuer<p>

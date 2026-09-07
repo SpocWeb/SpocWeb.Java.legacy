@@ -8,25 +8,22 @@ package streamIO.integer;
 import streamIO.real.AAStreamIn_Float;
 
 /**
- * Title: AStreamIn_Int<p>
- * Description:
- * Purpose:
+ * Abstract base class that adapts the real-valued stream hierarchy to integer semantics,
+ * adding peek and bulk array-fill operations shared by all {@code int}/{@code long}
+ * stream implementations.
  *
- * Purpose / Responsibilities of this Class
- *
- * Design Decisions / Implementation Details:
- * If similar Classes exist (e.g. Polymorphism),
- * characterize the specific Differences to compare these.
- *
- * Known SubClasses: <none>
- *
- * Known Uses: <none>
+ * ## Collaborators
+ * | Type | Relationship |
+ * |---|---|
+ * | {@link streamIO.real.AAStreamIn_Float} | Superclass supplying the generic real-valued
+ * stream machinery (positioning, mark/reset) that this class narrows to integer semantics. |
  *
  * Copyright:	Copyright (c) Matthias Heuer<p>
  * Company:	personal<p>
  * Created on	10-26-2002, 12:47 PM<p>
  * @author mheuer
  * @version	1.0
+ * @see streamIO.real.AAStreamIn_Float real-valued stream superclass narrowed here to integers
  *
  * <!-- docstate
  * tags: [code/stream_io, code/stream_input, code/stream_output, code/struct]

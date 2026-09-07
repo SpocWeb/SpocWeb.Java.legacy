@@ -7,19 +7,9 @@
 package streamIO.integer;
 
 /**
- * Title: <p>
- * Description:
- * Purpose:
- *
- * Purpose / Responsibilities of this Class
- *
- * Design Decisions / Implementation Details:
- * If similar Classes exist (e.g. Polymorphism),
- * characterize the specific Differences to compare these.
- *
- * Known SubClasses: <none>
- *
- * Known Uses: <none>
+ * Defines array-writing overloads — full array, or an inclusive/exclusive index range — for
+ * shorts, ints, longs, floats, doubles, Strings, and Objects, returning an
+ * {@link IStreamOutStruct} (or an item count for Objects) to allow chaining.
  *
  * Copyright:	Copyright (c) Matthias Heuer<p>
  * Company:	personal<p>

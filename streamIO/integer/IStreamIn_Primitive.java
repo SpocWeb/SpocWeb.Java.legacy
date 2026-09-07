@@ -9,16 +9,8 @@ package streamIO.integer;
 import streamIO.real.IStreamIn_Float;
 
 /**
- * Title: <p>
- * Description:
- * Purpose:
- * Defines the Interface for an Input Stream that can parse primitive Data Types. 
- *
- * Design Decisions / Implementation Details:
- *
- * Known SubClasses: <none>
- *
- * Known Uses: <none>
+ * Unifies the integer, real, and character stream-input contracts into a single
+ * interface for input streams capable of parsing any primitive data type.
  *
  * Copyright:	Copyright (c) Matthias Heuer<p>
  * Company:	personal<p>

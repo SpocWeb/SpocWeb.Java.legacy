@@ -4,17 +4,11 @@ import streamIO.integer.file.FileStreamByte;
 import streamIO.object.parser.jdbc.ResultSetSep;
 
 /**
-  * Title: IStreamByte<p>
-  * Description:
-  * Defines the Interface for a synchronized mixed Input and Output streamIO
+  * Marker interface combining the {@link IStreamIn_Byte} and {@link IStreamOutByte}
+  * contracts for streams that support synchronized, bidirectional byte I/O.
   *
-  * Known SubInterfaces: <none>
-  *
-  * Known Implementors:
-  * @see FileStreamByte
-  *
-  * Known Uses:
-  * @see ResultSetSep
+  * @see FileStreamByte known implementor
+  * @see ResultSetSep known use
   *
   * Copyright:	Copyright (c) Matthias Heuer<p>
   * Company:	personal<p>

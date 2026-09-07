@@ -5,21 +5,25 @@ import java.io.IOException;
 import tools.IOError;
 
 /**
-  * Title: AStreamByte<p>
-  * Description:
-  * Abstract Class implementing most Methods
-  * by delegating to the basic Methods of StreamInByte and IStreamOutByte
+  * Abstract adapter that implements the combined {@link IStreamByte} input/output contract
+  * by delegating most of its methods to the byte-reading primitives already provided by
+  * {@link AStreamIn_Byte} and to the static write helpers of {@link AStreamOutByte}.
   *
-  * Known SubClasses:
-  *
-  * Design Decisions:
-  * Extending AStreamInByte because that implements more Methods.
+  * ## Collaborators
+  * | Type | Relationship |
+  * |---|---|
+  * | {@link AStreamIn_Byte} | Superclass chosen over a plain input adapter because it already
+  * implements more of the read side, reducing the Methods left abstract here. |
+  * | {@link AStreamOutByte} | Supplies the static {@code WRITE}/{@code WRITE_SAFE} helpers this
+  * class delegates its write Methods to. |
   *
   * Copyright:	Copyright (c) Matthias Heuer<p>
   * Company:	personal<p>
   * Created on	05-30-2002, 03:58 PM<p>
   * @author 	Matthias Heuer
   * @version	1.0
+  * @see AStreamIn_Byte read-side superclass
+  * @see AStreamOutByte static write/escape helpers used here
   * <!-- docstate
   * tags: [code/stream_io, code/stream_input, code/stream_output, code/struct]
   * concepts: [Primitive and Structured Stream I/O Core Abstractions]

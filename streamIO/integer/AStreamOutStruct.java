@@ -13,22 +13,22 @@ import streamIO.IIStreamOut;
 import tools.IOError;
 
 /**
- * Title: <p>
- * Description:
- * Purpose:
- * Abstract Base Class of all structured Stream Writers 
- * 
- * Design Decisions / Implementation Details:
+ * Abstract base class for structured stream writers that adds indentation, array,
+ * and object-reference (back-reference) support on top of the primitive-value
+ * writing provided by {@link StreamOutPrimitive}.
  *
- * Known SubClasses: <none>
- *
- * Known Uses: <none>
+ * ## Collaborators
+ * | Type | Relationship |
+ * |---|---|
+ * | {@link StreamOutPrimitive} | Superclass handling primitive-value output; this class
+ * adds structure nesting, indentation, and reference tracking on top of it. |
  *
  * Copyright:	Copyright (c) Matthias Heuer<p>
  * Company:	personal<p>
  * Created on	10-26-2002, 12:47 PM<p>
  * @author heuerm
  * @version	1.0
+ * @see StreamOutPrimitive primitive-value writing superclass
  * <!-- docstate
  * tags: [code/stream_io, code/stream_input, code/stream_output, code/struct]
  * concepts: [Primitive and Structured Stream I/O Core Abstractions]

@@ -11,23 +11,21 @@ import java.io.InputStream;
 import streamIO.integer.IStreamIn_Byte;
 
 /**
- * Title: StreamIn_ByteToInputStream<p>
- * Description:
- * Purpose:
+ * Adapts a wrapped {@link streamIO.integer.IStreamIn_Byte} to the standard
+ * {@link java.io.InputStream} contract, the reverse direction of
+ * {@link InputStreamToStreamIn_Byte}, delegating every read/mark/reset/skip call to it.
  *
- * Purpose / Responsibilities of this Class
+ * ## Collaborators
+ * | Type | Relationship |
+ * |---|---|
+ * | {@link streamIO.integer.IStreamIn_Byte} | Wrapped delegate whose byte-input contract this class exposes as a plain {@link java.io.InputStream}. |
  *
- * Design Decisions / Implementation Details:
- * If similar Classes exist (e.g. Polymorphism),
- * characterize the specific Differences to compare these.
+ * @see streamIO.integer.IStreamIn_Byte the wrapped delegate this InputStream exposes
+ * @see InputStreamToStreamIn_Byte the inverse adapter, wrapping an InputStream as an IStreamIn_Byte
  *
- * Known SubClasses: <none>
- *
- * Known Uses: <none>
- *
- * See also: 
- * @see streamIO.Byte.StreamIn_ByteToInputStream which has nearly identical Code 
- * @see streamIO.Byte.InputStreamToStreamIn_Byte which has nearly identical Code 
+ * See also:
+ * @see streamIO.Byte.StreamIn_ByteToInputStream which has nearly identical Code
+ * @see streamIO.Byte.InputStreamToStreamIn_Byte which has nearly identical Code
  *
  * Copyright:	Copyright (c) Matthias Heuer<p>
  * Company:	personal<p>

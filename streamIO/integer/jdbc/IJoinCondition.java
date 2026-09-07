@@ -11,7 +11,9 @@ import java.sql.SQLException;
 import tester.IEquivalence;
 
 /**
- * Interface to test the Foreign Key Relation between two ResultSet Rows
+ * Contract for testing whether a foreign-key relation holds between the current rows of
+ * two {@link ResultSet}s, extending {@link IEquivalence} with the two-argument row form.
+ *
  * @author heuerm
  *
  * <!-- docstate

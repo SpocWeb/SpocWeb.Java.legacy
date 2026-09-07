@@ -14,36 +14,10 @@ import streamIO.integer.encoding.FilterLookup;
 import tools.IOError;
 
 /**
- * Title: <p>
- * Description:
- * Purpose:
- * Implements a generic, configurable Writer for Data Structures 
- * like XML, JSON, CSV or Tab-separated Files. 
- * Also allows to Format and indent Data like in YAML, 
- * when chrOpen and chrClose are 0. 
- * 
- * Design Decisions / Implementation Details:
- * Exposes all Methods of the Parent Class and thus allows 
- * to flexibly mix the Techniques for reading and Parsing within the same Stream. 
- * 
- * For this it needs 
- * 1 Escape Symbol \
- * 1 or 2 Quoting Characters ' and " 
- * 1 or 2 Line Break Symbols (CR or CR/LF)
- * 2 Brackets for local and arbitrary deep Nesting: {} 
- * 1 List Separator: ,
- * 
- * alle add-Operationen sollten mit einem Separator versehen werden, 
- * damit man auch bei variablen und unbekannten L�ngen, 
- * die bei lesbaren Formaten unweigerlich auftreten, noch parsen kann. 
- * 
- * Bei bin�ren Formaten ist das weniger notwendig,
- * denn die Gr��e der Elemente (int, byte, double etc.) sind bekannt
- * und mit der Struktur ist auch das Rekonstruieren trivial!
- * 
- * Known SubClasses: <none>
- *
- * Known Uses: <none>
+ * Implements a generic, configurable writer for structured text formats such as XML, JSON,
+ * CSV, tab-separated, or (with the opening/closing bracket characters disabled) YAML-style
+ * indented output, using escape, quote, bracket, and separator characters supplied via
+ * {@link #setSeps(String)}.
  *
  * Copyright:	Copyright (c) Matthias Heuer<p>
  * Company:	personal<p>

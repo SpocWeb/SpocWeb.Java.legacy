@@ -9,23 +9,10 @@ package streamIO.integer;
 import java.io.IOException;
 
 /**
- * Title: <p>
- * Description:
- * Purpose:
- * Defines the Interface for binary Encoders (variable- or fixed-Length) 
- * of 2-Byte Characters to 1-Byte Streams. 
- * 
- * Examples are UTF-8, UTF-16, ASCII, LATIN-1, Base64, UUEncoding etc. 
- * Encoding costs Performance and can be avoided when the Characters written
- * are known in advance (e.g. Numbers or Separator Characters) 
- * Other, more readable Encodings can be employed like \xXX or Unicode Escaping!  
- * 
- * Design Decisions / Implementation Details:
- * 
- * Known SubClasses: <none>
- * 
- * Known Uses: <none>
- * 
+ * Defines the encoder contract for writing 2-byte characters to an underlying
+ * {@link IStreamOutByte}, covering variable- or fixed-length schemes such as UTF-8,
+ * UTF-16, ASCII, Latin-1, Base64, or Unicode escaping.
+ *
  * Copyright:	Copyright (c) Matthias Heuer<p>
  * Company:	personal<p>
  * Created on	10-26-2002, 12:47 PM<p>

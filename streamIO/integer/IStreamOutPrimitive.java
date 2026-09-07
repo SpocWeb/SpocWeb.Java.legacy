@@ -9,19 +9,20 @@ package streamIO.integer;
 import streamIO.real.IStreamOutFloat;
 
 /**
- * Title: <p>
- * Description:
- * Purpose:
- * Defines the Interface for an Output Stream 
- * that can write primitive Data Types and Strings 
- * (Objects only via their toString() Method). 
+ * Unifies {@link IStreamOutInt}, {@link IStreamOutFloat}, and {@link IStreamOutChar} into a
+ * single output-stream contract for writing all primitive data types and Strings, with
+ * Objects supported only via their {@code toString()} representation.
  *
- * Design Decisions / Implementation Details:
- * 	IStreamOutChar is not separated, but merged into this Interface
+ * ## Collaborators
+ * | Type | Relationship |
+ * |---|---|
+ * | {@link IStreamOutInt} | supplies the integer/long write methods |
+ * | {@link IStreamOutFloat} | supplies the float/double write methods |
+ * | {@link IStreamOutChar} | merged in rather than kept separate, by design, to avoid clutter |
  *
- * Known SubClasses: <none>
- *
- * Known Uses: <none>
+ * @see IStreamOutInt
+ * @see IStreamOutFloat
+ * @see IStreamOutChar
  *
  * Copyright:	Copyright (c) Matthias Heuer<p>
  * Company:	personal<p>

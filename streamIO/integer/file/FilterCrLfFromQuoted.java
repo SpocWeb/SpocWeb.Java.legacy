@@ -6,9 +6,9 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 
 /**
-  * TrimFilter.java
-  * Throws all CR/LF Characters out of Quoted Sections in the File
-  * 
+  * Command-line utility that strips CR/LF Characters found inside
+  * double-quoted sections of a File, copying the result to a second File.
+  *
   * Created on 3. April 2001, 00:43
   * 
   * @author  Matthias Heuer

@@ -17,17 +17,9 @@ import tools.IOError;
 import function.byref.ByRefInt;
 
 /**
- * Title: <p>
- * Description:
- * Purpose:
- * Class for StreamIn_Char Implementations. 
- * Provides static Methods to read Numbers in arbitrary Notation. 
- * 
- * Design Decisions / Implementation Details:
- *
- * Known SubClasses: <none>
- *
- * Known Uses: <none>
+ * Reads primitive values (booleans, numbers, and characters) from a wrapped
+ * {@link IStreamIn_Byte}, delegating byte-level operations to it and providing static
+ * helpers to parse numbers in arbitrary notations and locales.
  *
  * Copyright:	Copyright (c) Matthias Heuer<p>
  * Company:	personal<p>

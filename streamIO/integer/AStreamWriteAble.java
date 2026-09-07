@@ -12,18 +12,9 @@ import streamIO.StringBufferOutputStream;
 import streamIO.object.parser.StreamOutXML;
 
 /**
- * Title: <p>
- * Description:
- * Purpose:
- * Abstract Base Class for WriteAble Classes
- *
- * Design Decisions / Implementation Details:
- * If similar Classes exist (e.g. Polymorphism),
- * characterize the specific Differences to compare these.
- *
- * Known SubClasses: <none>
- *
- * Known Uses: <none>
+ * Abstract base class for self-serializing objects, providing reflection-based
+ * default field writing and an XML- or separator-based {@code toString()} for
+ * subclasses of {@link IStreamWriteAble}.
  *
  * Copyright:	Copyright (c) Matthias Heuer<p>
  * Company:	personal<p>

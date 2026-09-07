@@ -9,17 +9,9 @@ package streamIO.integer;
 import java.io.IOException;
 
 /**
- * Title: <p>
- * Description:
- * Purpose:
- * Generates a random Vector with a correlated Probability Distribution
- * described by the given Correlation Matrix. 
- *
- * Design Decisions / Implementation Details:
- *
- * Known SubClasses: <none>
- *
- * Known Uses: <none>
+ * Defines the contract for reading delimited streams of primitive values, extending
+ * {@link IStreamIn_Primitive} with separator/escape token constants and accessors for
+ * arrays of ints, shorts, longs, floats, doubles, strings, and objects.
  *
  * Copyright:	Copyright (c) Matthias Heuer<p>
  * Company:	personal<p>

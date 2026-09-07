@@ -11,26 +11,21 @@ import streamIO.integer.IStreamIn_Byte;
 import streamIO.integer.file.FileStreamByte;
 
 /**
- * Extends ResultSetFix with Methods for higher Performance 
- * 
- * @see streamIO.integer.jdbc.ResultSetFix is the Parent Class
- * The Difference is that in the Parent Implementation always the full Row is read or written into a Buffer,
- * so no optimization takes place that possibly skips single Columns (not implemented) or whole deleted Rows
- * (after reading their first Indicator).
- * That means that always the full Buffer is filled with Strings,
- * which should make the Parent Implementation considerably I/O faster 
- * than this one, but only if most of the Record is written / read 
- * (Sum of Fields Sizes vs. Record Size)
- * AND/OR the ResultSet is not very fragmented (deleted Records). 
- * The Implementation could be switched using a "Strategy" Pattern.
+ * {@link ResultSetFix} variant tuned for higher I/O throughput by always filling and
+ * writing whole per-column byte buffers instead of individual fields.
  *
- * TODO: Support Files without I,U,D Indicator as read only DataSet!
- * Have to copy fields[0][0] into the operationFlag and back!
- * 
- * which always writes the full Row and does not skip deleted Rows.
- * 
+ * <p>This gives up {@code ResultSetFix}'s optimizations that skip single columns (not
+ * implemented there either) or whole deleted rows once their leading indicator byte has
+ * been read; it is faster only when most of the record is actually read or written (field
+ * sizes close to the record size) and/or the result set is not heavily fragmented by
+ * deleted records. Choosing between the two strategies could be modeled as a Strategy
+ * pattern.
+ *
+ * <p>TODO: support files without an I/U/D leading indicator as a read-only data set; would
+ * require copying {@code fields[0][0]} into {@code operationFlag} and back.
+ *
  * @see streamIO.object.parser.jdbc.ResultSetSep
- * @see streamIO.integer.jdbc.ResultSetFix
+ * @see streamIO.integer.jdbc.ResultSetFix the parent class this optimizes
  * <!-- docstate
  * tags: [code/jdbc_adapter, code/database_access, code/database_driver]
  * concepts: [Filesystem-Backed JDBC Driver Framework with Fixed-Length and Separator-Delimited Table Storage]

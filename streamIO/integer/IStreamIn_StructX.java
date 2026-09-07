@@ -7,17 +7,11 @@
 package streamIO.integer;
 
 /**
- * Title: <p>
- * Description:
- * Purpose:
- * adds some Methods to save double copying of Arrays. 
- * 
- * Design Decisions / Implementation Details:
- * @see streamIO.integer.StreamOutInstantiator These Methods don't make much sense here 
+ * Extends {@link IStreamIn_Struct} with array-filling overloads of nextInts, nextShorts,
+ * nextLongs, nextFloats, nextDoubles, nextStrings, and nextItems that fill a caller-supplied
+ * array instead of allocating a new one.
  *
- * Known SubClasses: <none>
- *
- * Known Uses: <none>
+ * @see streamIO.integer.StreamOutInstantiator These Methods don't make much sense here
  *
  * Copyright:	Copyright (c) Matthias Heuer<p>
  * Company:	personal<p>

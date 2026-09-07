@@ -23,27 +23,20 @@ import streamIO.real.IStreamOutFloat;
 import synch.ValidationRule;
 
 /**
- * Title: <p>
- * Description:
- * Purpose:
- * Implements IStreamOutStruct as a means to clone Objects 
- * and copy them without Marshaling within the same Address-Space. 
- * To avoid endless Loops for circular Object References, 
- * a HashSet with the ID References of already serialized Objects is needed. 
- * This HashSet is best maintained in the IStreamOutStruct and IStreamIn_Struct Instances.
- * 
- * Design Decisions / Implementation Details:
- * For Concurrency this would need to be Thread-local, 
- * but alternatively using a distinct Stream Instance per Thread would be sufficient.
- * (Using several Threads to write into the same Stream requires Synchronization anyway!)  
- * 
- * Alternatively the (de-)serialized need a (ThreadLocal for Concurrency) ID 
- * that needs to be reset in a second Pass (reset on Call Return is not sufficient!). 
- * 
- * Known SubClasses: <none>
- * 
- * Known Uses: <none>
- * 
+ * Implements both {@link IStreamOutStruct} and {@link IStreamIn_Struct} to clone Objects
+ * in-memory without marshaling: writes are cached as fields to be read back, either by
+ * replaying the cached values or by delegating to a wrapped {@link IStreamIn_Struct} reader,
+ * while a map of already-written object IDs breaks circular references.
+ *
+ * ## Collaborators
+ * | Type | Relationship |
+ * |---|---|
+ * | {@link IStreamOutStruct} | the write-side contract satisfied while caching values in memory |
+ * | {@link IStreamIn_Struct} | the read-side contract satisfied by replaying cached values or delegating to a wrapped reader |
+ *
+ * @see IStreamOutStruct
+ * @see IStreamIn_Struct
+ *
  * Copyright:	Copyright (c) Matthias Heuer<p>
  * Company:	personal<p>
  * Created on	10-26-2002, 12:47 PM<p>

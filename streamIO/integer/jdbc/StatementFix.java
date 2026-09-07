@@ -11,19 +11,17 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 
 /**
- * Title: StatementFix<p>
- * Description:
- * Purpose:
- * Provides a Statement Implementation for the jdbc 1.0 Framework
- * defaults all Interface Implementations to the Classes of this Package.  
+ * Concrete fixed-length-table {@link AStatement}; its {@link #getResultSet(File, String)}
+ * factory builds a {@link ResultSetFix} over the given table, like the sibling
+ * {@code CallStatementFix} and {@code PrepStatementFix}.
  *
- * Design Decisions / Implementation Details:
- * If similar Classes exist (e.g. Polymorphism),
- * characterize the specific Differences to compare these.
+ * <h2>Collaborators</h2>
  *
- * Known SubClasses: <none>
- *
- * Known Uses: <none>
+ * | Type | Relationship |
+ * |---|---|
+ * | {@link AStatement} | Superclass supplying the SQL parser/evaluator this statement runs on. |
+ * | {@link ConnectionFix} | Connection type accepted by every constructor. |
+ * | {@link ResultSetFix} | Result set implementation built by {@link #getResultSet(File, String)}. |
  *
  * Copyright:	Copyright (c) Matthias Heuer<p>
  * Company:	personal<p>
@@ -31,6 +29,9 @@ import java.sql.SQLException;
  * @author mheuer
  * @version	1.0
  * @see streamIO.object.parser.jdbc.StatementSep
+ * @see AStatement the superclass
+ * @see ConnectionFix
+ * @see ResultSetFix the ResultSet implementation used by this Statement
  * <!-- docstate
  * tags: [code/jdbc_adapter, code/database_access, code/database_driver]
  * concepts: [Filesystem-Backed JDBC Driver Framework with Fixed-Length and Separator-Delimited Table Storage]

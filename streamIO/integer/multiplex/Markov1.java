@@ -11,12 +11,11 @@ import streamIO.Assert;
 import streamIO.Log;
 
 /**
- * Title: <p>
- * Description:
- * Purpose:
- * Validating the Transition Model of a Markov Series Order 1. 
- * 
- * The Values of Markov Time Series with Order N are random 
+ * Represents a first-order Markov chain: validates that the initial and transition
+ * Probability Matrices are properly normalized and exposes the stationary Probability
+ * Vector reachable from a given transition Matrix.
+ *
+ * The Values of Markov Time Series with Order N are random
  * with a Probability that depends only on the last N Values.
  *  
  * Order 0: these are true random Values with fixed Probability Distributions. 

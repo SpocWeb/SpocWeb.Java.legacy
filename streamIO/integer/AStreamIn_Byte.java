@@ -10,13 +10,10 @@ import tools.IOError;
 import function.byref.ByRefInt;
 
 /**
-  * Title: AStreamOutByte<p>
-  * Description:
-  * This Adapter Class delegates all Methods of the Interface IStreamIn_Byte
-  * to an inner Instance of Class IStreamIn_Byte or InputStream.
-  * It is capable of (un-)escaping the Input
-  * 
-  * Known Subclasses:
+  * Abstract base class that implements most of the {@link IStreamIn_Byte} contract in
+  * terms of the single abstract {@code read()}/{@code available()} primitives, adding
+  * array, buffer, and stream-copy helpers reused by all byte-stream implementations.
+  *
   * @see FilterIn_Byte
   *
   * Copyright:	Copyright (c) Matthias Heuer<p>

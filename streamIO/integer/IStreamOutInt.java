@@ -7,19 +7,7 @@
 package streamIO.integer;
 
 /**
- * Title: <p>
- * Description:
- * Purpose:
- *
- * Purpose / Responsibilities of this Class
- *
- * Design Decisions / Implementation Details:
- * If similar Classes exist (e.g. Polymorphism),
- * characterize the specific Differences to compare these.
- *
- * Known SubClasses: <none>
- *
- * Known Uses: <none>
+ * Defines the minimal contract for writing signed integer and long values to an output stream.
  *
  * Copyright:	Copyright (c) Matthias Heuer<p>
  * Company:	personal<p>

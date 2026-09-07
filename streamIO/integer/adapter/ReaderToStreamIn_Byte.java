@@ -16,21 +16,16 @@ import streamIO.integer.IStreamIn_Int;
 import tools.IOError;
 
 /**
- * Title: ReaderToStreamIn_Byte<p>
- * Description:
- * Adapter that wraps any Writer Interface into an IStreamIn_Byte Interface
+ * Adapts a wrapped {@link java.io.Reader} to the {@code IStreamIn_Byte} contract,
+ * narrowing each Character read to a byte by truncation rather than
+ * applying a proper encoding conversion.
  *
- * Design Decisions / Implementation Details:
- * Bytes are created simply by truncating the Words. 
- * Encodings are rather solved by Encoding Filters in streamIO.Byte.Encoding. 
- * 
- * Just like with InputStream and OutputStream, most Methods have the same Signature
- * als the Reader and Writer Methods, so a StreamIn_Byte 
- * can be quickly derived instead of being wrapped (slower but more flexible) 
+ * ## Collaborators
+ * | Type | Relationship |
+ * |---|---|
+ * | {@link streamIO.integer.IStreamIn_Byte} | Interface fulfilled by delegating to the wrapped {@link java.io.Reader}, truncating Characters to bytes. |
  *
- * Known SubClasses: <none>
- *
- * Known Uses: <none>
+ * @see streamIO.integer.IStreamIn_Byte the byte-input contract this class adapts a Reader to fulfill
  *
  * Copyright:	Copyright (c) Matthias Heuer<p>
  * Company:	personal<p>

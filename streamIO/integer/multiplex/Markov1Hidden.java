@@ -13,13 +13,16 @@ import streamIO.integer.AStreamWriteAble;
 import streamIO.integer.IStreamOutStruct;
 
 /**
- * Title: <p>
- * Description:
- * Purpose:
- * Defines the Hidden Markov Model (HMM) of Order 1. 
- * Hidden, because the Sequence of Outcomes cannot be determined directly. 
- * 
- * Implements the Viterbi Algorithm 
+ * Extends {@link Markov1} with a hidden state layer and implements the Viterbi Algorithm
+ * to find the most probable Sequence of hidden States, and its Probability, for a given
+ * Sequence of Observations.
+ *
+ * ## Collaborators
+ * | Type | Relationship |
+ * |---|---|
+ * | {@link Viterbi} | Per-state running Path/Probability record; {@link #calcPathProbs(int[])} advances an Array of these at each Time Step. |
+ *
+ * Implements the Viterbi Algorithm
  * to determine the most probable hidden Sequence
  * and the Probability of this Sequence in the Hidden Markov Model (HMM, "Sequence"), 
  * based on the Sequence of a given Observation Variable, 
@@ -67,6 +70,8 @@ import streamIO.integer.IStreamOutStruct;
  *
  * Known Uses: <none>
  *
+ * @see Viterbi per-state Path/Probability record used by {@link #calcPathProbs(int[])}
+ *
  * Copyright:	Copyright (c) Matthias Heuer<p>
  * Company:	personal<p>
  * Created on	10-26-2002, 12:47 PM<p>
@@ -78,7 +83,7 @@ import streamIO.integer.IStreamOutStruct;
  * facets: {layer: domain, status: legacy, complexity: high}
  * -->
  */
-final public class Markov1Hidden 
+final public class Markov1Hidden
 extends Markov1 {
 	
 	/** Shared, immutable empty int Array used as the initial (empty) hidden-state Path. */
@@ -274,19 +279,24 @@ extends Markov1 {
 
 }
 
-/** 
- * 
- * Title: <p>
- * Description:
- * Purpose:
- * Helper Value Class to hold intermediaries & 
- * return the Result from the Viterbi Calculation 
+/**
+ *
+ * Holds the running Viterbi State for one hidden State: the most likely partial Path,
+ * its Probability, and the total Probability mass reaching this State, mutated in place
+ * by {@link Markov1Hidden#calcPathProbs(int[])} at each Time Step.
+ *
+ * ## Collaborators
+ * | Type | Relationship |
+ * |---|---|
+ * | {@link Markov1Hidden} | Owns and repeatedly overwrites Arrays of `Viterbi` instances while running the Algorithm. |
  *
  * Design Decisions / Implementation Details:
  *
  * Known SubClasses: <none>
  *
  * Known Uses: <none>
+ *
+ * @see Markov1Hidden which drives this Class's state transitions
  *
  * Copyright:	Copyright (c) Matthias Heuer<p>
  * Company:	personal<p>

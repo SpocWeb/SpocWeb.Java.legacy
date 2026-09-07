@@ -7,22 +7,10 @@
 package streamIO.integer;
 
 /**
- * Title: <p>
- * Description: unimplemented Skeleton - every Method below throws
- * UnsupportedOperationException; subclass this Class and override them before use.
- * It is intended to make the Contents of a parsed IStreamIn_Struct available
- * in a Random-Access Manner. 
- * This is important for Constructors, 
- * that cannot be externally driven 
- * but still need to accomodate for varying Sequences of Elements.  
- *
- * Design Decisions / Implementation Details:
- * If similar Classes exist (e.g. Polymorphism),
- * characterize the specific Differences to compare these.
- *
- * Known SubClasses: <none>
- *
- * Known Uses: <none>
+ * Unimplemented skeleton for an {@link IStreamOutStruct} meant to expose a parsed structure's
+ * contents in random-access order — every method throws {@code UnsupportedOperationException}
+ * until a subclass overrides it, which constructors that cannot be externally driven but must
+ * accept elements in varying sequences would need.
  *
  * Copyright:	Copyright (c) Matthias Heuer<p>
  * Company:	personal<p>

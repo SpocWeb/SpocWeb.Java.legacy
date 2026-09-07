@@ -13,27 +13,23 @@ import streamIO.integer.IStreamIn_Byte;
 import tools.IOError;
 
 /**
- * Title: enclosing_type<p>
- * Description:
- * A faster Alternative is to derive from the given InputStream directly, 
- * since both Interfaces have the same Signatures. 
- * Adapter Design is slightly slower, but cleaner and safer 
- * than the former if() Swirch in the Filter Classes
+ * Adapts a wrapped {@link java.io.InputStream} to the {@code IStreamIn_Byte} contract,
+ * delegating every read/mark/reset/skip call to it rather than duplicating
+ * InputStream's logic through subclassing.
+ *
+ * ## Collaborators
+ * | Type | Relationship |
+ * |---|---|
+ * | {@link streamIO.integer.IStreamIn_Byte} | Interface fulfilled by delegating to the wrapped {@link java.io.InputStream}. |
+ *
+ * @see streamIO.integer.IStreamIn_Byte the byte-input contract this class adapts an InputStream to fulfill
  * @see streamIO.Byte.FilterIn_Byte
  * @see streamIO.Byte.FilterOutByte
  * @see streamIO.Byte.FilterByte
- * 
- * Design Decisions / Implementation Details:
- * If similar Classes exist (e.g. Polymorphism),
- * characterize the specific Differences to compare these.
  *
- * Known SubClasses: <none>
- *
- * Known Uses: <none>
- * 
- * See also: 
- * @see streamIO.Byte.StreamIn_ByteToInputStream which has nearly identical Code 
- * @see streamIO.Byte.InputStreamToStreamIn_Byte which has nearly identical Code 
+ * See also:
+ * @see streamIO.Byte.StreamIn_ByteToInputStream which has nearly identical Code
+ * @see streamIO.Byte.InputStreamToStreamIn_Byte which has nearly identical Code
  *
  * Copyright:	Copyright (c) Matthias Heuer<p>
  * Company:	personal<p>

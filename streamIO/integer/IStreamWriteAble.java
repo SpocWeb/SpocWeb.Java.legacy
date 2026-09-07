@@ -7,14 +7,8 @@
 package streamIO.integer;
 
 /**
- * Title: <p>
- * Defines the Interface for an Object that can be written to a structured Stream. 
- *
- * Design Decisions / Implementation Details:
- *
- * Known SubClasses: <none>
- *
- * Known Uses: <none>
+ * Defines the contract for an Object that can serialize itself, with or without an
+ * enclosing name, onto a structured {@link IStreamOutStruct}.
  *
  * Copyright:	Copyright (c) Matthias Heuer<p>
  * Company:	personal<p>

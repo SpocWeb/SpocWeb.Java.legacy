@@ -10,8 +10,9 @@ import java.sql.SQLException;
 import java.sql.Statement;
 
 /**
- * filters all rows out where the Condition is false 
- * 
+ * Filters rows of the wrapped {@link ResultSet}, skipping any row for which the
+ * {@link IRowCondition} test returns false.
+ *
  * @author heuerm
  *
  * <!-- docstate

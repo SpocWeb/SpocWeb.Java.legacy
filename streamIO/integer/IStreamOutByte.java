@@ -3,16 +3,10 @@ package streamIO.integer;
 import java.io.IOException;
 
 /**
-  * Title: IStreamOutByte<p>
-  * Description:
-  * This Interface substitutes the Class OutputStream and PrintStream 
-  * in all Implementations!
-  * The Reason is that the RandomAccessFile Class implements all Methods of
-  * both OutputStream and InputStream resp. Writer and Reader, 
-  * but Sun chose to define these Methods in Classes rather than Interfaces.
-  *
-  * Additionally four Methods have been added to:
-  * write Character Arrays, Integers and Strings.
+  * Provides an interface-based substitute for {@code OutputStream} and {@code PrintStream}
+  * so a single implementer (e.g. {@code RandomAccessFile}) can satisfy both without Sun's
+  * class-only design, adding byte-array write overloads for the primitive and character
+  * stream layers built on top of it.
   *
   * Known Implementors:
   * @see streamIO.Byte.AStreamOutByte

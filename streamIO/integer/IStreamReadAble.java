@@ -7,24 +7,9 @@
 package streamIO.integer;
 
 /**
- * Title: <p>
- * Description:
- * Purpose:
- * Defines the Interface for an Object that can be read/restored from a structured Stream. 
- * Additionally all Components of the Object must implement this Interface 
- * AND have empty Constructors. 
- *
- * Design Decisions / Implementation Details:
- * It also requires a Factory that creates Objects of the required Type. 
- * Constructors with Parameters could be possible, 
- * but that would be too complicated. 
- * Additionally Fields cannot be made final, since they are initialized later! 
- * To have several Threads concurrently reading from the same Object 
- * the Object needs to be able to create Iterators/IStreamInStruct Instances.  
- * 
- * Known SubClasses: <none>
- *
- * Known Uses: <none>
+ * Defines the contract for an Object that can be restored field-by-field from a structured
+ * {@link IStreamIn_Struct}, requiring an empty constructor and non-final fields since state
+ * is populated after construction rather than at instantiation.
  *
  * Copyright:	Copyright (c) Matthias Heuer<p>
  * Company:	personal<p>

@@ -14,21 +14,16 @@ import streamIO.integer.IStreamOutChar;
 import tools.IOError;
 
 /**
- * Title: WriterToStreamOutByte<p>
- * Description:
- * Adapter that wraps any Writer Interface into an IStreamOutByte Interface
+ * Adapts a wrapped {@link java.io.Writer} to the {@code IStreamOutChar}/{@code IStreamOutByte}
+ * contracts, narrowing each byte write to a Character write by delegation
+ * rather than applying a proper encoding conversion.
  *
- * Design Decisions / Implementation Details:
- * Bytes are created simply by truncating the Words. 
- * Encodings are rather solved by Encoding Filters in streamIO.Byte.Encoding. 
- * 
- * Just like with InputStream and OutputStream, most Methods have the same Signature
- * as the Reader and Writer Methods, so a StreamIn_Byte 
- * can be quickly derived instead of being wrapped (slower but more flexible) 
- * 
- * Known SubClasses: <none>
+ * ## Collaborators
+ * | Type | Relationship |
+ * |---|---|
+ * | {@link streamIO.integer.IStreamOutChar} | Interface fulfilled by delegating to the wrapped {@link java.io.Writer}. |
  *
- * Known Uses: <none>
+ * @see streamIO.integer.IStreamOutChar the char-output contract this class adapts a Writer to fulfill
  *
  * Copyright:	Copyright (c) Matthias Heuer<p>
  * Company:	personal<p>

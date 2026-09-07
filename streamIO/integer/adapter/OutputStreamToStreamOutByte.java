@@ -10,19 +10,15 @@ import java.io.OutputStream;
 import streamIO.integer.AStreamOutByte;
 
 /**
- * Title: enclosing_type<p>
- * Description:
- * Purpose:
+ * Adapts a wrapped {@link java.io.OutputStream} to the {@code IStreamOutByte} contract
+ * by delegating every write/flush/close call to it.
  *
- * Purpose / Responsibilities of this Class
+ * ## Collaborators
+ * | Type | Relationship |
+ * |---|---|
+ * | {@link streamIO.integer.AStreamOutByte} | Base class supplying the {@code IStreamOutByte} scaffolding this adapter fills in over a wrapped {@link java.io.OutputStream}. |
  *
- * Design Decisions / Implementation Details:
- * If similar Classes exist (e.g. Polymorphism),
- * characterize the specific Differences to compare these.
- *
- * Known SubClasses: <none>
- *
- * Known Uses: <none>
+ * @see streamIO.integer.AStreamOutByte the base class this adapter extends
  *
  * Copyright:	Copyright (c) Matthias Heuer<p>
  * Company:	personal<p>

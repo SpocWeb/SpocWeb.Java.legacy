@@ -9,7 +9,9 @@ import java.sql.SQLException;
 import streamIO.integer.jdbc.DbColumn;
 
 /**
- * Encapsulates the Test for a (crisp) Relation between two Fields
+ * Contract for a crisp (non-fuzzy) predicate comparing two {@link DbColumn} operands, used
+ * by {@link streamIO.integer.jdbc.AStatement} to evaluate parsed SQL conditions.
+ *
  * @author heuerm
  *
  * <!-- docstate

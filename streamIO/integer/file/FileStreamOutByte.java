@@ -11,17 +11,9 @@ import streamIO.integer.IStreamIn_Byte;
 import streamIO.integer.IStreamOutByte;
 
 /**
-  * Title: FileStreamOutByte<p>
-  * Description:
-  * This Class substitutes the Class FileOutputStream in all Implementations
-  * The Reason is that the RandomAccessFile Class implements all Methods of
-  * both OutputStream and InputStream but sun chose to define these Methods
-  * in classes rather than Interfaces, so it cannot be subclassed directly.
-  *
-  * Design Decisions: 
-  * Defines a new Protocol Interpretation: -1 closes the File / streamIO 
-  * and triggers the Creation of a new one! 
-  * 
+  * Wraps {@link java.io.FileOutputStream} to expose it through the streamIO
+  * byte-output interfaces, since FileOutputStream itself implements that
+  * behavior only as a class, not an interface.
   *
   * Copyright:	Copyright (c) Matthias Heuer<p>
   * Company:	personal<p>

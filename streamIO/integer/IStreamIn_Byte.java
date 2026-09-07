@@ -7,20 +7,14 @@ import streamIO.IOrdered;
 
 
 /**
-  * Title: IStreamIn_Byte<p>
-  * Description:
-  * This Interface substitutes the Class InputStream in all Implementations
-  * The Reason is that the RandomAccessFile Class implements all Methods of
-  * both OutputStream and InputStream but sun chose to define these Methods
-  * in classes rather than Interfaces.
+  * Interface substituting for {@code java.io.InputStream} across this stream hierarchy
+  * (needed because {@code RandomAccessFile} implements both input and output Methods as
+  * a class rather than via interfaces), adding character-array and StringBuffer reads
+  * to the base {@link IStreamIn_Int} contract.
   *
-  * Additionally four Methods have been added to:
-  * read Character Arrays and StringBuffers.
-  *
-  * Known Implementors:
-  * @see streamIO.Byte.AStreamIn_Byte
-  * @see streamIO.Byte.FileStreamIn_Byte
-  * @see streamIO.Byte.FileStreamByte
+  * @see streamIO.Byte.AStreamIn_Byte known implementor
+  * @see streamIO.Byte.FileStreamIn_Byte known implementor
+  * @see streamIO.Byte.FileStreamByte known implementor
   *
   * Copyright:	Copyright (c) Matthias Heuer<p>
   * Company:	personal<p>

@@ -14,18 +14,10 @@ import function.byref.ByRefDouble;
 import function.byref.ByRefLong;
 
 /**
- * Title: <p>
- * Description:
- * Collects all Locale-specific Settings for primitive Types. 
+ * Bundles the locale-specific formatting settings (base, precision, padding, sign, grouping,
+ * and escape characters) and the static routines used to render and parse long and double
+ * values to and from an {@link IStreamOutByte}.
  *
- * Design Decisions / Implementation Details:
- * If similar Classes exist (e.g. Polymorphism),
- * characterize the specific Differences to compare these.
- * 
- * Known SubClasses: <none>
- * 
- * Known Uses: <none>
- * 
  * Copyright:	Copyright (c) Matthias Heuer<p>
  * Company:	personal<p>
  * Created on	10-26-2002, 12:47 PM<p>

@@ -10,12 +10,9 @@ import streamIO.fileSystem.FileIterator;
 import streamIO.integer.pipe.ByteStreamerThread;
 
 /**
- * LimitedSizeOutputStream
- * Maps a simple (unlimited) Output streamIO
- * to an Enumeration Output Streams with limited Size.
- * 
- * I.e. this Class just creates limited Size Chunk Streams
- * from a very large streamIO
+ * Splits a single, unbounded Output streamIO into a sequence of Output Streams,
+ * each capped at a maximum byte size, rotating to the next stream from
+ * an {@link IIStreamIn} of stream factories once the cap is reached.
  *
  * Typically used Classes:
  * @see FileIterator / FileBackupIterator for generating File Names
@@ -148,6 +145,9 @@ extends FilterOutputStream {
 	 *  If the ChunkSize is an Integer Multiple of MaxSize, the Files are filled up completely.
 	 */
 	public void write(byte[] val, int Offset, int Length) throws IOException {
+		// TODO: LOGIC: reStart() resets Counter to 0 but this chunk's Length is never re-added afterwards
+		// (unlike the single-byte write(int) overload, which does "++Counter" after reStart()), so Counter
+		// under-counts by Length on every rotation and the resulting Streams can grow past MaxSize.
 		if ((Counter += Length) > MaxSize) {
 			reStart(); }
 		out.write(val, Offset, Length); }

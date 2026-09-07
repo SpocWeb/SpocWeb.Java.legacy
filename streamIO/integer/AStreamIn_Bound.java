@@ -7,29 +7,21 @@ package streamIO.integer;
 import streamIO.integer.random.IStreamIn_Bound_Int;
 
 /**
- * Title: AStreamIn_Bound
- * <p>
- * Description: Purpose:
- * 
- * Purpose / Responsibilities of this Class
- * 
- * Design Decisions / Implementation Details: If similar Classes exist (e.g.
- * Polymorphism), characterize the specific Differences to compare these.
- * 
- * Known SubClasses: <none>
- * 
- * Known Uses: <none>
- * 
+ * Abstract base class for integer streams whose values are bounded by a minimum and
+ * maximum, adding bounded array-fill helpers on top of the unbounded value handling
+ * provided by {@link AStreamIn_Int}.
+ *
  * Copyright: Copyright (c) Matthias Heuer
  * <p>
  * Company: personal
  * <p>
  * Created on 10-26-2002, 12:47 PM
  * <p>
- * 
+ *
  * @author mheuer
  * @version 1.0
- *  
+ * @see AStreamIn_Int unbounded integer-stream superclass
+ *
  * <!-- docstate
  * tags: [code/stream_io, code/stream_input, code/stream_output, code/struct]
  * concepts: [Primitive and Structured Stream I/O Core Abstractions]
