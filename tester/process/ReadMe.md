@@ -67,7 +67,7 @@ concepts:
 facets:
   layer: utility
   status: legacy
-  complexity: medium
+  complexity: 3
 description: 'Models finite-state automata and their surrounding I/O plumbing. `Automaton` is the generic, object-based state machine (state-change function Lambda plus optional output function Beta); `DiscreteAutomaton` and `MatrixAutomaton` specialize this to integer-indexed states for performance, either via hash-based transitions (`IDiscreteTransition`/ `IDynamicTransition` implementors) or a dense transition matrix; `StateMachine` and `TransitionByFunction`/`DynTransByFunction` provide an object-keyed alternative built on `function.IFunction`. `PatternSearcher` demonstrates a concrete use: a Knuth-Morris-Pratt string search expressed as a discrete transition function driving a `DiscreteAutomaton`. `StreamProcessor` wraps an `Automaton` around an input/output stream pair so a single `run()` call drains the whole input through the automaton. `IOEProcess` and `testProcess` are unrelated demo entry points for OS-level inter-process communication via `Runtime.exec()`, kept here as a "process" in the operating-system sense rather than the automaton sense above.'
 ---
 

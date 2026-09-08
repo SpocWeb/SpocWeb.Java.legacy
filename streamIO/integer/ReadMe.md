@@ -126,7 +126,7 @@ concepts:
 facets:
   layer: utility
   status: legacy
-  complexity: high
+  complexity: 4
 description: 'This folder is the core of the legacy `streamIO` I/O library: abstract base classes and interfaces for reading and writing streams of primitive integers, characters, bytes, and structured (name/value, XML/JSON/CSV-like) data. `IStreamIn_Byte`/`IStreamOutByte` play the role of `InputStream`/`OutputStream` but as interfaces rather than classes (so `RandomAccessFile`-like classes can implement both), and the `AStream*` abstract classes wire up default delegation between byte, char, int, long, float and double views of the same underlying stream. `StreamIn_Struct`/ `AStreamOutStruct`/`StreamOutInstantiator` build a small generic serialization format on top of this (used to parse/write XML/JSON/CSV-style structured text and to clone Java objects in-memory without external marshaling), while `LocalePrimitive` centralizes the locale-specific formatting of numbers. The subfolders `adapter/`, `file/`, `multiplex/` and `pipe/` provide concrete implementations wrapping `java.io` Readers/Writers/Streams, random-access files, RAID-style multiplexed/redundant streams, and in-memory pipes, respectively.'
 ---
 

@@ -27,7 +27,7 @@ concepts:
 facets:
   layer: domain
   status: legacy
-  complexity: medium
+  complexity: 3
 description: 'Statistical-process-control style detectors that watch a stream of `double`/`float` values and signal (by returning `null` from `addDouble`/`addFloat` instead of `this`) when a classic production-control pattern is met: a threshold crossing, a run of consistently one-sided values, alternation, monotonous drift, or an overly consistent ("too good") process. `DetectorThreshold` is the base case; `DetectorConsistency` extends it to track a run length, and `DetectorAlternation`, `DetectorMonotony` and `DetectorTooGood` each specialize that run-tracking for one specific pattern. `BestChoice` is unrelated to the threshold hierarchy - it implements the classic "secretary problem" optimal-stopping strategy over a fixed-length stream of offers.'
 ---
 

@@ -21,7 +21,7 @@ concepts:
 facets:
   layer: utility
   status: broken
-  complexity: medium
+  complexity: 3
 description: 'Defines how much influence a single measured or random value contributes to a robust fit or distribution estimate, based on its normalized deviation from the mean. Each implementation models a different distribution shape (exponential, gaussian, or Lorentzian/Cauchy), and the whole point of the abstraction is to bound the influence of outliers: weight should first increase with the deviation, then decrease past a certain magnitude, so a single wild data point cannot dominate an otherwise-good fit.'
 ---
 

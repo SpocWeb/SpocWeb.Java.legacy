@@ -77,7 +77,7 @@ concepts:
 facets:
   layer: utility
   status: broken
-  complexity: high
+  complexity: 4
 description: A family of growable, primitive-typed dynamic arrays (`VectorChar`/`Short`/`Int`/`Long`/`Float`/`Double`/`String`/`Object`), each pairing an instance-level container (capacity growth, bounds checking, item-count bookkeeping, largely inherited from `AVector`) with a large static library of array-level operations - arithmetic, min/max, linear combinations, sorting/order-statistics (`HunterInt`/`Float`/`Double`), and type-specific helpers (String parsing/padding/escaping, Object matrix-style multi-index access). `QuaternaryOp` factors out the shared add/subtract/multiply/divide/linear-combination operator used across the arithmetic methods. See `statistic/` for the correlation and hypothesis-testing layer built on top of these vectors.
 ---
 

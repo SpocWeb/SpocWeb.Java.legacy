@@ -45,7 +45,7 @@ concepts:
 facets:
   layer: domain
   status: legacy
-  complexity: high
+  complexity: 4
 description: 'This folder implements a Git/CVS-like versioning system for in-memory `int[]` and `Object[]` streams (e.g. the Lines of a File). `DifferInt`/`DifferObject` compute a Longest-Common-Subsequence-based Diff between two Arrays and package it as a `DiffSetInt`/`DiffSetObject` - a Set of positional `DiffInt`/`DiffObject` Changes (both extend the shared `DiffBase`). `DiffSet`s form a Tree: each Version, except the Root, has exactly one Parent and can be regenerated from any other Version by walking up to their common Ancestor and back down, applying the (optionally inverted) Diffs along the way. `DiffSet`s can also be applied to one another to detect and collect merge Conflicts. `VersionTree` is the abstract, Value-Type-agnostic Tree Manager: it keeps the Map of named Versions (Tags, Branch Heads, IDs), navigates the Tree, and finds common Ancestors; `VersionedObjects` is its one concrete Subclass, specializing the Tree to `Object[]` Streams and adding the `update`/`addVersion`/`merge` Workflow used by clients. `VersionException` signals illegal Branch operations, such as adding a second direct Child to a Version that already has one without naming a new Branch.'
 ---
 

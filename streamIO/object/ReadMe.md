@@ -130,7 +130,7 @@ concepts:
 facets:
   layer: utility
   status: legacy
-  complexity: medium
+  complexity: 3
 description: 'This folder is the core of an object-stream framework: `IStreamIn`/`IIStreamIn` and `IStreamSet` (defined in the parent `streamIO` package) describe a pull-based stream of arbitrary `Object`s, and the types here supply adapters, filters and set-algebraic combinators over that abstraction. `AStreamIn` hoists the generic streaming algorithms (searching, ordering, containment) so a concrete source only has to implement `nextItem()`/`currItem()`/`availAble()`; `AFilter`/`AFilterIn`/`APlugAbleFilter` do the same for filters that wrap another stream. Bridges connect this abstraction to standard Java iteration (`Iterator2StreamIn`, `Enumeration2StreamIn` and their inverses), to plain arrays/Collections (`ArrayStreamIn`, `CollectionStreamIn`), and to strings (`StringStreamIn`). `AStreamSet`/`StreamSet` layer boolean-ring semantics (AND/OR/NOT/DIFF) on top of a stream, implemented by dedicated combinator classes (`AND`, `Union`, `DIFF`, `Cantor`, `Product`, `Merger`) that stream the result of a set operation rather than materializing it. `StreamParser`/`StreamIterator` are an older, separate string/structure tokenizer, unrelated to the stream-set algebra.'
 ---
 

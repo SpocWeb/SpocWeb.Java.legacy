@@ -52,7 +52,7 @@ concepts:
 facets:
   layer: utility
   status: legacy
-  complexity: high
+  complexity: 4
 description: 'Numerical function-minimization algorithms translated from Numerical Recipes: bracketing and one-dimensional line search (`AFloatMinimizer` and its `GoldenFloatMinimizer`, `Brent1FloatMinimizer`, `BrentFloatMinimizer` subclasses), N-dimensional gradient-free methods (`AmoebaMinimizer` downhill simplex, `AnnealingMinimizer` simulated annealing over the same simplex), N-dimensional gradient-based methods (`ConjuGrad1Minimizer` conjugate gradient with derivatives, `ConjuGradMinimizer` Powell''s method without derivatives), and linear programming (`SimplexMinimizer`). The remaining types (`DistSqr`, `DistSqrDistorted`, `SinOfDistDivDist`, `TestScalarField`, `VariableMetricMinimizer`) are test scalar fields, or in `VariableMetricMinimizer`''s case an unimplemented placeholder.'
 ---
 

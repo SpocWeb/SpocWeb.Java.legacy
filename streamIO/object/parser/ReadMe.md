@@ -70,7 +70,7 @@ concepts:
 facets:
   layer: utility
   status: legacy
-  complexity: high
+  complexity: 4
 description: This folder builds a small parsing framework directly on top of `streamIO.object.IStreamIn`/`IIStreamOut`, rather than on `java.io.Reader`/`Writer`. Byte- and Character-level Adapters (`InputStream2StreamIn`, `EscapeStreamIn`, `FileStream2Stream`, `FileSystem2Stream`) turn raw Input (an `InputStream`, a File, or a whole Directory Tree) into a Stream of Tokens, delimited by a configurable Separator String. `MaskedStreamIn` and the `*Bracket2StreamIn`/`StreamIn*Parser` Filter Classes then bridge between two competing nesting Conventions this Codebase uses for hierarchical Data - an older one where `nextItem()` returns a Separator Level and `currItem()` the Token, and a more consistent one where a nested `IStreamIn` Result signals descending a Level and `null` signals ascending one. On the XML side, `XMLScannerStreamIn`/`XMLStreamIn` parse XML into Object Graphs via Reflection, `XMLFormatter`/`StreamOutXML` do the reverse (also implementing `org.xml.sax.ContentHandler` so SAX-driven Code can write through them), and `SaxReader` adapts an `IStreamIn` into a minimal `org.xml.sax.XMLReader`. The `jdbc/` Subsystem reuses this same Separator-driven Parsing to implement a small JDBC 1.0/2.0 Driver over Files with Comma-, Tab- or custom-separated Content, so simple SQL Queries can run directly against Flat Files without a real Database. Most of this Code dates from an Era before Java's own `java.io` Readers/Writers and `javax.xml` APIs matured, and several Classes say so explicitly in their own Documentation (e.g. `EscapeStreamIn`'s "only retained to keep things running").
 ---
 

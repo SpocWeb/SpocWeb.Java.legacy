@@ -25,7 +25,7 @@ concepts:
 facets:
   layer: utility
   status: legacy
-  complexity: high
+  complexity: 4
 description: This folder provides in-memory, producer/consumer-style Byte streams for passing Data between Threads without touching a File or Socket. `PipeByte`/`MemoryPipe` are Array-backed Stack-or-Queue buffers (a fast, unsynchronized DeQueue of int Values), `MonitorByte` is the synchronized, single-slot variant used for tightly-coupled handoff between exactly two Threads (with configurable read/write timeouts), and `ByteStreamerThread` is a small helper Thread that continuously copies one Stream into another until EOF - used together with `MonitorByte`/`PipeByte` to build the producer and consumer sides of a pipe. `APipeByte` is the shared abstract base class these implementations extend.
 ---
 

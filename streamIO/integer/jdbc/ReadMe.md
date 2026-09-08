@@ -107,7 +107,7 @@ concepts:
 facets:
   layer: domain
   status: legacy
-  complexity: high
+  complexity: 4
 description: 'A self-contained JDBC driver (`java.sql.Driver`/`Connection`/`Statement`/`ResultSet`/ `DatabaseMetaData`) whose "database" is nothing but the filesystem: a catalog is a directory, a table is a file whose name carries a shared suffix, and rows/columns are plain text. Two concrete storage flavors exist side by side - fixed-length records (`*Fix` classes, via `ConnectionFix`/`DriverFix`) and the separator-delimited variant implemented in the sibling `streamIO.object.parser.jdbc` package - both built on the same `A*` abstract bases (`AConnection`, `AStatement`, `AResultSet`, `ADBMetaData`) so a new storage format only has to supply the row-level read/write primitives.'
 ---
 

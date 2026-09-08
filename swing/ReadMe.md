@@ -22,7 +22,7 @@ concepts:
 facets:
   layer: infrastructure
   status: broken
-  complexity: high
+  complexity: 4
 description: 'Displays an arbitrary Graph, including one with diamonds (Nodes reachable through more than one Parent), as one or two `JTree` views. `HashTreeNode` is the model-level building block: a `DefaultMutableTreeNode` hashed and compared by its UserObject and registered under a named Tree so Nodes can be found again by ID. `JHyperTree` composes two such Trees into a mirrored, common-root view, and `KeyTreeNavigator` lets the user drive both by keyboard - re-rooting on the selected Node''s Main Representative, or jumping focus to it.'
 ---
 

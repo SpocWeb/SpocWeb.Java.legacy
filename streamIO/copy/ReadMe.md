@@ -45,7 +45,7 @@ concepts:
 facets:
   layer: utility
   status: legacy
-  complexity: medium
+  complexity: 3
 description: 'Root of a value-semantics / copy-based object model: `ICopyAble` is the shared contract for objects that support deep copy, shallow copy, in-place copy (`copyAt`), swap and stream-based (de)serialization instead of relying on immutability or `Object.clone()`. `ACopyAble` supplies the default, reflection-capable implementation; `CCopyAble` is the constant/immutable wrapper counterpart, delegating reads to an inner instance and throwing on every mutating `...At()` call. `IICopyAble` factors out the smaller subset of the contract (`newInstance`, `randomizeAt`, stream writing) that a class can implement without also being a full `ICopyAble`. `TestCopy` is the package''s manual test-harness entry point.'
 ---
 

@@ -18,7 +18,7 @@ concepts:
 facets:
   layer: infrastructure
   status: stable
-  complexity: low
+  complexity: 2
 description: 'Two `IFactory` implementations that create a new Object from an existing one, differing only in how faithfully the new instance reproduces the original: `FactoryByClass` copies only the type, via reflection, while `FactoryByPrototype` copies the data too, via an explicit `ICopy` contract that stands in for Java''s protected `clone()`.'
 ---
 

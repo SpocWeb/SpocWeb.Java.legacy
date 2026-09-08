@@ -70,7 +70,7 @@ concepts:
 facets:
   layer: utility
   status: legacy
-  complexity: high
+  complexity: 4
 description: 'Foundational contracts and base Classes for a symbolic-differentiation Function library: any Function implementing `IDeriveAble`/`IFloatDeriveAble` can report its own Derivative and Integral (cached and cross-linked via `setDerivative()`/`setIntegral()`), letting the `ring` subfolder''s combinators (`Sum`, `Prod`, `Cat`, ...) build up and differentiate compound Expressions purely by composition. `ADeriveAble`/`AFloatDeriveAble`/`AStatic`/`AFuncRel` supply the default Singleton-oriented implementation most concrete Functions extend; `AConst`/`Const`/`CCountAble`/ `CMeasurAble` are the constant-Function hierarchy (with `Comparison`/`ByRefComparison` as CCountAble-derived helpers); `Cat`/`Identity` provide Function concatenation and the identity element; `Enum` and its `Month`/`Week`/`Ternary` Subclasses implement a Flyweight-based enumeration pattern reused for calendar values and three-valued Logic. The `neuron` subfolder builds a Neural Network layer on `IFloatDeriveAble`, and `ring` builds the symbolic Function Algebra proper, with `ring/body` supplying the concrete transcendental Functions.'
 ---
 

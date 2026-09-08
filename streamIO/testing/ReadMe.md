@@ -21,7 +21,7 @@ concepts:
 facets:
   layer: test
   status: broken
-  complexity: medium
+  complexity: 3
 description: A small, dependency-free test harness predating JUnit's presence in this codebase. `ITestCase` defines the composite contract (`setUp`/`tearDown`/`runTest`); `ATestCase` implements it by reflectively discovering and invoking every public no-argument `test...()` method on a Class or Object, so a subclass need only write plain `testXxx()` methods; and `TestCollection` composes multiple `ITestCase`s into one, running them depth-first before its own reflective tests.
 ---
 

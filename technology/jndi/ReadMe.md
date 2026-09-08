@@ -15,7 +15,7 @@ concepts:
 facets:
   layer: infrastructure
   status: legacy
-  complexity: low
+  complexity: 2
 description: 'Small demonstrations of the Java Naming and Directory Interface (JNDI): acquiring an `InitialContext` against a file-system JNDI provider, and browsing/manipulating it interactively with Unix-like commands (`cd`, `ls`, `mv`, `mkdir`, `rmdir`, `cat`).'
 ---
 

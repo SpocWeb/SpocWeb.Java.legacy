@@ -67,7 +67,7 @@ concepts:
 facets:
   layer: domain
   status: legacy
-  complexity: medium
+  complexity: 3
 description: 'Castor-generated data model for the ZKDB ("Zentrale Kundendatenbank") message exchange format: one root `Nachricht` carrying a list of `Transaktion` elements, each pairing a `Steuerung` control section with a `Daten` payload of customer master data (`Kunde`, `Adresse`, `Bankverbindung`, `Kreditkarte`, etc.), plus `ConsistencyCorrector` for reconciling two redundant customer identifiers (EKP number and Rise ID) kept in sync across systems. Every value-typed field is wrapped in `ZKDBBaseType`, which additionally carries a `StatusValue` (changed/deleted/unchanged/error) so the BusinessLayer can tell which fields actually changed between two versions of the same message.'
 ---
 

@@ -24,7 +24,7 @@ concepts:
 facets:
   layer: utility
   status: legacy
-  complexity: medium
+  complexity: 3
 description: 'Integer-backed set and permutation types built on top of the `boole`/`groupM`/`shift` abstractions. `SetInteger`/`ASetInteger` provide a bit-set (same functionality as `java.util.BitSet`) by delegating single-bit set/clear/get to AND/OR/XOR operations on a shifted one-bit mask, reusing `Boole`''s bitwise algebra and `ShiftAble`''s left-shift rather than any dedicated bit-manipulation code. `Permutation` is the folder''s centerpiece: a single class doing triple duty as a permutation, a multi-index into a tensor of arbitrary degree, and an integer-set representation, built as an `AMonoid` (permutations compose but do not commute, so they form a monoid, not a group). `PermutationIterator` (declared in the same file) walks a `Permutation`''s indices by delegating position tracking to the wrapped instance.'
 ---
 

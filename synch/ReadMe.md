@@ -86,7 +86,7 @@ concepts:
 facets:
   layer: infrastructure
   status: legacy
-  complexity: medium
+  complexity: 3
 description: 'A hand-rolled publish/subscribe and validation framework, predating `java.util.Observer`-style libraries in this codebase. Two roles are deliberately kept separate: a `Publisher`/`Subscriber` pair for reacting to a Value change after the fact (`IPublisher`, `ISubscriber`, `UniCaster`, `MultiCaster`, `SubCaster`, `APubUniLinkSub`), and a `Validator`/`ValidationRule` pair for vetoing a change beforehand by throwing `InvalidException` (`IValidator`, `IValidationRule`, `ValidationRule`, `ValidationRuleList`, `PathValidationRule`, `MultiValidator`). `AConstrained`, `IConstrained` and `UniCastConstrained` combine both roles: a single validator slot that is transparently upgraded to a `MultiValidator` composite the moment a second validator is registered, mirroring how `UniCaster` upgrades its single subscriber to a `MultiCaster`. `ACachedProperty` and `writeOnceProperty` are two small, mutually-exclusive-by-design observable property wrappers (lazy-recalculated vs. set-once), and `PropDouble` is a boxed-double holder with an (unused, see its Javadoc) subscriber field. `StateMachine` is an unrelated, self-contained matrix-based finite state machine. Two subsystem folders build on the same base classes: `aspect/` (an older attribute framework built on `AConstrained`) and `property/` (further property-wrapper variants).'
 ---
 

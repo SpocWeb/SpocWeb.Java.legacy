@@ -30,7 +30,7 @@ concepts:
 facets:
   layer: infrastructure
   status: legacy
-  complexity: medium
+  complexity: 3
 description: A small framework for passing an `InputStream` plus a `Map` of attributes along a processing line that bridges asynchronous and synchronous protocols (HTTP, JMS, DB, etc.). Either side of `AAttributedStream` can be implemented and the other is derived automatically; components participating in the chain implement the `IManagedComponent` lifecycle contract, and `OpenByteArrayOutputStream` avoids buffer copies when adapting between stream styles.
 ---
 

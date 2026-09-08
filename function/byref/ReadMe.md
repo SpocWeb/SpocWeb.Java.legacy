@@ -70,7 +70,7 @@ concepts:
 facets:
   layer: utility
   status: legacy
-  complexity: high
+  complexity: 4
 description: Boxed by-reference wrappers for every primitive type (`ByRefBoolean`/`Byte`/`Char`/`Double`/`Float`/`Int`/`Long`/`Short`/`Object`/`String`), each doubling as an `IFunction` that returns its own boxed value, plus `IAdjustAble`/`ICategorizeAble` mutation contracts, `Cached*` dirty-flag caching decorators, a `ShortComparator`, and bit-rotation helpers (`ROL`/`ROR`) on the integer wrappers. See `combinatoric/` for factorial/prime/probability functions built on these wrappers.
 ---
 

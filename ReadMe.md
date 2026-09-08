@@ -51,7 +51,7 @@ concepts:
 facets:
   layer: utility
   status: stable
-  complexity: low
+  complexity: 2
 description: 'Personal Java codebase, accumulated from the JDK 1.2-6 era onward and still organised as a single flat source tree rather than a build-tool project. There is no `pom.xml`, `build.gradle` or `Makefile`: the tree carries Eclipse `.project`/ `.classpath` metadata only, and compiled `.class` files sit alongside their sources (ignored via `.gitignore`).'
 ---
 

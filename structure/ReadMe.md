@@ -135,7 +135,7 @@ concepts:
 facets:
   layer: utility
   status: legacy
-  complexity: medium
+  complexity: 3
 description: 'Textbook demonstrations of the classic Gang-of-Four structural, behavioral and creational Design Patterns, each Pattern given a small, self-contained Family of Types rather than one shared Framework. Several Families deliberately re-implement the same Idea more than once to compare Variants side by side: `Abstraction`/`Delegator` inherit the complexOp Algorithm while `Bridge`/`FullBridge` hold the Implementor directly, and the `D`-prefixed Types (`DAbstraction`, `DBridge`, `DFullBridge`) repeat that comparison using Delegation instead of Inheritance for the primitive Operation. `Element`/`Visitor` demonstrate double dispatch; `Command`/`MacroCommand` compose an undoable Command History over a `HistoryList`; `Context`/`State` model a TCP/IP-like Connection; `BiPointer`/`BiRef` explore bidirectional References with automatic Consistency. Two Subsystems apply these ideas to concrete Domains: `aspect/` binds Properties for generic UI Forms, and `blackBoard/` solves Triangle Geometry via a rule-based Blackboard.'
 ---
 

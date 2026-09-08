@@ -18,7 +18,7 @@ concepts:
 facets:
   layer: persistence
   status: broken
-  complexity: low
+  complexity: 2
 description: 'A minimal two-level base-class hierarchy for persisted domain objects, identified by a non-semantic String ID rather than a direct reference: `PersistedObject` supplies ID-based identity, hashing and equality plus a process-wide registry keyed by that ID, and `Objekt` extends it with a Name and Description loaded from a `ResultSet`.'
 ---
 

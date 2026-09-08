@@ -28,7 +28,7 @@ concepts:
 facets:
   layer: domain
   status: legacy
-  complexity: medium
+  complexity: 3
 description: Models a bound-Property-plus-Validation abstraction ("Aspect") for driving generic UI Forms and Data-Entry Controls without a Class per Field. `Aspect` is the shared Base holding Name, Enabled/Required/Visible Flags and validation Status; `NumberAspect` and `StringAspect` add a numeric or Length Range respectively, with `DoubleAspect` the concrete numeric Implementation; `GuiAspect` adds Position/Size for a bound Control; `ListAspect` represents a selectable List of other Aspects.
 ---
 

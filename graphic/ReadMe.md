@@ -151,7 +151,7 @@ concepts:
 facets:
   layer: infrastructure
   status: legacy
-  complexity: high
+  complexity: 4
 description: 'A self-contained 2D graphics abstraction layer predating (and independent of) `java.awt.Graphics2D`: a stack of interfaces and abstract base classes builds line/polygon/text/shape drawing out of a single low-level pixel or color primitive that each concrete backend supplies. `Graph2D` and `JavaGraphic` delegate that primitive to AWT; `GraphicsAdapter` inverts the direction, wrapping an AWT `Graphics` behind the `graphic` interfaces; `MemoryImage` backs it with an in-memory bitmap so images can be read back as well as drawn; `Hidden` and `ZBuffer` layer hidden-surface removal on top. Supporting value types (`Point2D`, `Line2D`, `Polygon2D`, `VectorPoint2D`, `PolyTrigon`), palettes (`IPalette`, `PaletteRGB`, `PaletteShading`, `TexturePalette`), and higher-level shapes (`Figures`, `Body2D`, `Wire2D`, `Bar3D`, `HyperGraphPainter`, `ScalarPlot`/`ScalarPlotNew`) build on this core to render geometry, wireframes, and interpolated color plots.'
 ---
 

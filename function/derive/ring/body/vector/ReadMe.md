@@ -52,7 +52,7 @@ concepts:
 facets:
   layer: utility
   status: broken
-  complexity: high
+  complexity: 4
 description: Extends the scalar derivative/integral machinery of `function.derive.ring` into multiple Dimensions. `IPartialDerive` and `Dimension` let a Function be differentiated, integrated or inverted with respect to one coordinate of a Vector (Tensor) argument at a time; `CatPartial`, `DiffPartial`, `ProdPartial`, `QuotPartial` and `SumPartial` extend the scalar Cat/Diff/Prod/Quot/Sum combinators with that per-dimension awareness. `fSum`, `fProduct`, `fSinProd` and `fChargeField` are concrete example Functions built on a `Tensor`, and `OdeHeight`/`OdeLorentz` supply ODE right-hand sides (a Force Field derived from a Potential, and the chaotic Lorentz System) for numerical integration elsewhere in the codebase. `testBodyVFuncs` is the package's self-test entry point.
 ---
 

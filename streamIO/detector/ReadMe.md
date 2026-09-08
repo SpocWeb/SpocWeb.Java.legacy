@@ -14,7 +14,7 @@ concepts:
 facets:
   layer: infrastructure
   status: stable
-  complexity: low
+  complexity: 2
 description: 'Holds the one `IIStreamOut` implementation whose whole purpose is signaling capacity rather than transforming or persisting data: it detects when a fixed-size buffer of Objects has filled up, first by a soft `null` return and then, on any further use, by letting `ArrayIndexOutOfBoundsException` propagate as a hard failure signal.'
 ---
 

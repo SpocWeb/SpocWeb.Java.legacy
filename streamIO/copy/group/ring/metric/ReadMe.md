@@ -135,7 +135,7 @@ concepts:
 facets:
   layer: domain
   status: legacy
-  complexity: high
+  complexity: 4
 description: 'This folder adds Metric-Space structure - a Norm/Distance, a strict Order and Well-Order Constants (Infinity, NaN, min/max Value) - on top of the plain Algebraic Ring from the parent `ring` folder. `IMetric`/`AMetric`, `INorm`/`ANorm` and `IWellOrder`/`AWellOrder` define the three orthogonal Interfaces (Distance, Norm, Order-with-Constants), `IScalarMetric`/`AScalarMetric` integrates 1-dimensional Order with a Metric, and `IMetricIRing`/`AMetricIRing` fuses all of this with the Ring''s algebraic Operations into the single `IMetricIRing` used pervasively by the `body` Number types. The `C*` classes (`CMetric`, `CMetricIRing`, `CNorm`, `CScalarMetric`, `CWellOrder`) provide shared Constant Implementations. `BigInt` is a dynamic-Size arbitrary-Precision integer built directly on this layer, and `MaxPlus` is a (max,+) tropical-Algebra number type. The remaining classes implement iterative numerical Algorithms over `IMetricIRing` Values: root/zero Refiners (`ARefinerQ` and its `NewtonRefinerQ`/`FalsiRefinerQ`/ `PegasusRefiner`/`BiSectRefinerQ` subclasses), a `GoldenMinimizer`, an `ExtraPolValue` Extrapolator, and ODE Steppers with adaptive Step-width control (`AStepperQ` and its `StepRKQ`/`StepRKF`/`StepRKFQ`/ `StepMPQ`/`StepTrapezQ`/`MultiStep`/`MultiStepY`/`MultiStepYQ`/`NewtonStep2Q` subclasses). `TestMetric` is the manual test-suite entry point. The `body/` Subfolder builds the concrete scalar and Tensor Number types on top of this Metric-Ring Algebra.'
 ---
 

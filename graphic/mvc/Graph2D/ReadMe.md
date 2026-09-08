@@ -18,7 +18,7 @@ concepts:
 facets:
   layer: domain
   status: legacy
-  complexity: medium
+  complexity: 3
 description: Extends the `Point2D` MVC triad with graph edges.
 ---
 

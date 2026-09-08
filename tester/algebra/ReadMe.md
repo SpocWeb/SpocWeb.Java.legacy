@@ -25,7 +25,7 @@ concepts:
 facets:
   layer: utility
   status: legacy
-  complexity: low
+  complexity: 2
 description: 'Provides a small Boolean algebra over `tester.ITester` predicates: `TesterAND`, `TesterOR` and `TesterXOR` combine two testers with the corresponding logical operator, `TesterNOT` inverts one, and `TesterConst` supplies a fixed true/false result to act as a neutral or absorbing element in a composition. None of these classes hold state beyond the testers they wrap, so a tree of them can be built once and reused across calls.'
 ---
 

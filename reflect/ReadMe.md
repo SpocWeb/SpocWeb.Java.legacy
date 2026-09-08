@@ -47,7 +47,7 @@ concepts:
 facets:
   layer: domain
   status: legacy
-  complexity: medium
+  complexity: 3
 description: This package is a small, self-contained reflection/introspection framework predating Java Bean-style libraries such as Apache Commons BeanUtils. `IThing` roots a tiny classification hierarchy (`IThing` -> `IIntangible`/`IIndividual`, `IIntangible` -> `IMathThing` -> `IType`) mirroring an upper-ontology distinction between concrete individuals and abstract/mathematical concepts; `Type` is the concrete `IType` implementation, wrapping a `java.lang.Class` restricted to Interfaces. Separately, `IReflectAble`/`ReflectAble` define a uniform, name-based get/set/call API over an object's public Fields and getter/setter Methods, including `_`-separated nested Property paths (e.g. `home_StreetNr`) and recursive deep-copy support; `Person` and `Address` are sample `ReflectAble` entities demonstrating this. `Accessor` is an independent, standalone reflection helper offering a similar name-based get/set/call API but usable on any Object, not only `IReflectAble` implementors.
 ---
 

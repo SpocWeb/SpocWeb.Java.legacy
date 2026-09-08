@@ -110,7 +110,7 @@ concepts:
 facets:
   layer: domain
   status: legacy
-  complexity: high
+  complexity: 4
 description: 'This folder is a small graph-theory library: representations of weighted, directed or undirected graphs, algorithms over them (shortest paths, spanning trees, connected / strongly connected components, articulation points, maximum flow, topological sort, Hamilton cycles, stable pairing), and the supporting value types they are built from. Two independent graph representations exist side by side, both implementing `IGraph`: `MatrixGraph`, a dense adjacency-matrix backed by a `float[][]` (best for small or dense graphs, O(V^2) space and typically O(V^2) operations), and `SparseMatrix` / `SparseGraph`, a sparse adjacency-list backed by per-node linked lists of `SparseEdge` (better for large, sparse graphs, O(V+E) space). `SparseGraph` extends `SparseMatrix` with the graph algorithms (components, DAG/topological sort, bridges, flow); `AGraph` is a shared abstract base holding bulk edge-loading helpers and ternary-logic constants used by both representations.'
 ---
 

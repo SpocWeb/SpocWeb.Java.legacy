@@ -47,7 +47,7 @@ concepts:
 facets:
   layer: infrastructure
   status: legacy
-  complexity: medium
+  complexity: 3
 description: 'A collection of SAX/DOM/XSLT tools built around a reflection-based dispatch pattern: `SaxDispatcher`/`SaxHandler` route each SAX Element event to a same-named method of an arbitrary target object, which `XslTrafo` uses to interpret a custom XTL pipeline-description language, `DamlHandler` uses to flatten DAML assertions into relational tables, and `XmlToDirHandler` uses to materialize an XML file/directory description onto the file system. `XmlUnmarshaller` takes a related but distinct approach, matching Element/Attribute names directly to member variables to unmarshal XML into the `test/` package''s Castor-generated object graph. `ResultSetToAttributes` and `SaxClientXmlWriter` bridge to JDBC and back to textual XML respectively, and `XmlHandler` offers a chainable SAX-filter base for building smaller, composable handlers.'
 ---
 

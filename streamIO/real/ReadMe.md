@@ -100,7 +100,7 @@ concepts:
 facets:
   layer: infrastructure
   status: legacy
-  complexity: medium
+  complexity: 3
 description: 'A framework for streams of `float`/`double` numbers: sources, filters and sinks that all implement `IStreamIn_Float` and/or `IStreamOutFloat`. `AAStreamIn_Float` is the abstract root, implementing `IStreamIn_Bound_Float`; `AStreamIn_Float` adds the current-value caching every concrete source and filter builds on. Sources include array- and constant-backed streams (`ArrayStreamIn_Float`, `ConstStreamIn_Float`) and progressions (`StreamIn_Arithmetic`, `StreamIn_Geometric`). Filters form two families: value-processing filters built on `FilterIn_FloatByFunction`/`FilterFloatByFunction` (averaging, windowing, delay, diff, running sums, exponential windows, outlier rejection, running statistics), and output-side filters built on `FilterOutFloat` (used as the base for the `detector/` subsystem). `FilterVectorStatistic` extends this to vector-valued streams. `StreamOutPlotter` renders incoming values as ASCII plots. The `detector/` subsystem builds statistical-process-control detectors on top of `FilterOutFloat`, and the `random/` subsystem builds distribution-specific random-number generators on top of `AStreamIn_Float`.'
 ---
 

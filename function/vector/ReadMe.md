@@ -76,7 +76,7 @@ concepts:
 facets:
   layer: domain
   status: broken
-  complexity: high
+  complexity: 4
 description: Vector-valued and vector-field function contracts (`IFloatVectorFunction`/`IFloatVectorField`/`IFloatScalarField`/`IBinaryOpFloat`) with concrete implementations for ODE integration (`AOdeFloat`, `OdeLorentz` - the Lorenz attractor, `OdeHeight`, `StepConstant`) and per-element vector aggregation (`OpCount`/`OpFirst`/`OpLast`/`OpMax`/`OpMin`/`OpProd`/`OpSum`, `fLength`, `fSum`, `fProduct`, `fSinProd`, `fChargeField`).
 ---
 

@@ -51,7 +51,7 @@ concepts:
 facets:
   layer: domain
   status: stable
-  complexity: medium
+  complexity: 3
 description: 'A push-based dataflow pipeline framework: producers actively call `putA`/`putB` on the next stage rather than being pulled from, so control flows forward with the data. `IPushStage` is the single-input contract every stage implements; `IPushSource` marks a stage that can originate new items on demand. `SingleOutputPushStage` and `DualOutputPushStage` are the base classes that hold the "next" reference(s) stages are chained through, and `IDualInputPushStage` adds a second (`putB`) input for stages that combine two channels.'
 ---
 

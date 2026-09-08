@@ -40,7 +40,7 @@ concepts:
 facets:
   layer: domain
   status: broken
-  complexity: high
+  complexity: 4
 description: A small feed-forward and self-organizing Neural Network toolkit. `ISlab`/`Slab`/`ASlab` define the shared contract and Weight-matrix bookkeeping for anything that can be trained by Back Propagation; `Layer` and `Network` compose `Layer`s into a Multilayer Perceptron trained by supervised Back Propagation (with `Sigmoid` as the default Switching Function, reusing the Derivative machinery from `function.derive`); `Kohonen` and its `KohonenGraph`/`KohonenTester` support classes implement an unsupervised, topology-preserving Self-Organizing Map (a Kohonen Map / Topology Representing Network) instead, including a Swing/AWT visualization of its convergence. `testNeuronNet` is the package's self-test entry point.
 ---
 

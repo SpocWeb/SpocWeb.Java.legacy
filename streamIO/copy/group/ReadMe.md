@@ -55,7 +55,7 @@ concepts:
 facets:
   layer: domain
   status: legacy
-  complexity: high
+  complexity: 4
 description: 'This folder defines the additive Algebraic Group layer of the streamIO copy-Semantics hierarchy: `ISemiGroup`/`ASemiGroup` model a plain additive SemiGroup (G,+), and `IGroup`/`AGroup` extend it with Subtraction and a neutral 0 Element (G,+,-,0) - symmetric to the multiplicative `groupM` folder (a sibling folder outside this scope), which it is combined with by Delegation rather than Interface Inheritance. `IDblGroup`/`AGroupDbl` and `ILngGroup`/`AGroupLng` add direct `double`/`long` Overloads for performance, `IIGroup`/`IISemiGroup` factor out the single abstract `+=`/`-=` Operation each concrete Group must define, and `CGroup`/`CSemiGroup` hold shared Constant Implementations. `DateTime` is a self-contained Date/Time/Julian-Day/Calendar utility Class (not part of the Group Algebra itself). `TestGroup` is the manual test-suite entry point. The `ring/` Subfolder builds the multiplicative Ring Algebra and its Number types on top of this additive Group.'
 ---
 

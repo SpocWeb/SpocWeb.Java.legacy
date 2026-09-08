@@ -28,7 +28,7 @@ concepts:
 facets:
   layer: infrastructure
   status: broken
-  complexity: low
+  complexity: 2
 description: 'Bridges between the single-value getter/setter interfaces (`IValue`, `ICValue`, `IValueSetter`) and the streaming interfaces (`IIStreamIn`, `IIStreamOut`, `IPipe`), so either style of API can drive the other without a caller-side rewrite. The six types form three matched pairs, one direction each: `Value2Pipe`/`Pipe2Value` for the bidirectional `IValue`/`IPipe` pairing, `CValue2StreamIn`/`StreamIn2CValue` for the read-only getter side, and `StreamOut2ValueSetter`/`ValueSetter2StreamOut` for the write-only setter side.'
 ---
 

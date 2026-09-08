@@ -60,7 +60,7 @@ concepts:
 facets:
   layer: utility
   status: legacy
-  complexity: medium
+  complexity: 3
 description: 'Implements Boolean algebra as an extension of the more general `ILattice`/`Lattice` contract: a lattice defines only AND/OR (a set closed under two commutative, associative, idempotent operations), and `IBoole`/`Boole` add NOT plus the False/True constants that make it a full Boolean algebra. `ALattice`/`ABoole` supply the default, delegation-based implementation (the "delegation to self" pattern used throughout this codebase) - `ANDat`/`ORat`/`NOTat` (or just `less`, for `MinMaxLattice`) are the only primitives a concrete subclass must redefine; everything else (`XOR`, `DIFF`, `IMP`, `EQV`, `SubEq`/`Sub`/`Super`) is derived. `CLattice`/`ACLattice` mirror this for constant (read-only) values, delegating reads and throwing on every in-place operation. Concrete realizations range from a single bit (`Boolean`), three-valued logic (`Ternary`), a resizable bit vector (`VectorBoolean`), a `[0,1]`-valued probability lattice (`Probability`), an order-relation-based lattice with no complement (`MinMaxLattice`), to an algebra over `ITester` predicate functions (`TesterBond`) that simplifies expressions using idempotency and complement laws. The `fuzzy/` subfolder builds continuous-valued (fuzzy) predicates and logic connectives on top of this package''s `Boole` contract.'
 ---
 

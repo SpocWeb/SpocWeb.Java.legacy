@@ -20,7 +20,7 @@ concepts:
 facets:
   layer: utility
   status: stable
-  complexity: high
+  complexity: 4
 description: 'Three low-discrepancy vector generators for sampling a multi-dimensional space, trading off stoppability against even coverage: `RandomVectorPseudo` (Cantor''s diagonal algorithm) can be stopped at any time but distributes points less evenly; `RandomVectorPseudoSequential` distributes points evenly but only once a full step-size cycle completes; and `RandomVectorQuasi` (a Sobol sequence) achieves both, at the cost of a fixed maximum dimension and bit depth set up by a large static table.'
 ---
 

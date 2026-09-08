@@ -23,7 +23,7 @@ concepts:
 facets:
   layer: utility
   status: legacy
-  complexity: medium
+  complexity: 3
 description: 'Four classic substring-search algorithms, each documented with the trade-off that makes it the right choice in a given situation: `StrSearcher` (Knuth-Morris-Pratt) builds a small finite-state machine from the pattern''s own prefix function and is best for long patterns in a small alphabet, consuming the input strictly sequentially so it works over streams; `SearcherBM` (Boyer-Moore) scans from the end of the pattern using a precomputed skip table and is fastest for non-recursive patterns in a large alphabet, at the cost of not being stream-friendly; `SearcherRK` (Rabin-Karp) compares rolling polynomial hash codes instead of characters, most effective with very large alphabets; and `RegExp` is a small non-deterministic automaton that matches a parsed regular expression (concatenation, `|` alternation, `*` closure) against a stream, more general than a fixed-string search. All four are independent, alternative implementations of the same `indexOf`-style problem rather than layers on top of one another.'
 ---
 

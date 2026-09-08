@@ -20,7 +20,7 @@ concepts:
 facets:
   layer: utility
   status: legacy
-  complexity: medium
+  complexity: 3
 description: 'Small, self-contained recursive-descent parsing tools, each demonstrating a different piece of classic LL(1) parsing: `IIStreamIn_Int` is the minimal integer-stream interface parsers read from; `MathParser` parses arithmetic-style expressions (`+ - * / \ % > < & | ! ^`) directly off a Java `InputStream`; and `Scanner` is a more general-purpose, separator-driven tokenizer/assembler used to parse nested `(a,b,c)`-style structures (its own Javadoc marks it `@deprecated` in favor of newer `streamIO.object.parser` classes). None of the three depend on each other at the type level - `MathParser` and `Scanner` both reference `Scanner.IS_LETTER`, the one point of overlap.'
 ---
 

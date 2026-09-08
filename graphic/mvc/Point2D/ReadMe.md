@@ -21,7 +21,7 @@ concepts:
 facets:
   layer: domain
   status: legacy
-  complexity: medium
+  complexity: 3
 description: The concrete MVC implementation for editing a flat set of labeled 2D points.
 ---
 

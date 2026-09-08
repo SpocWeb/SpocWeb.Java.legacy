@@ -19,7 +19,7 @@ concepts:
 facets:
   layer: utility
   status: legacy
-  complexity: medium
+  complexity: 3
 description: Implements approximate ("fuzzy") text matching on top of the `tester.IMetric` abstraction. `FuzzySetComparator` compares arrays of word-like objects for similarity by summing the minimum or maximum pairwise distance under a given metric; `FuzzySentenceComparator` builds on it by first splitting raw strings into normalized words (case-folding, separator splitting, substitution tables) and delegating the actual comparison to a `FuzzySetComparator`; `FuzzyDictionary` maintains a growing set of previously seen items and finds the one closest to a new item under a metric, for incremental normalization tasks.
 ---
 

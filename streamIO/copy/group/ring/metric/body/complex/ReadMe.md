@@ -34,7 +34,7 @@ concepts:
 facets:
   layer: domain
   status: legacy
-  complexity: high
+  complexity: 4
 description: 'Complex-number arithmetic for the `body` layer, in both rectangular ({@link Complex}/ {@link ComplexDbl}) and polar ({@link Polar}/{@link PolarDbl}) representations. Each pair follows the same generic-versus-primitive split used elsewhere in this tree: the plain class stores its parts as arbitrary {@link streamIO.copy.group.ring.metric.IMetricIRing} constituents so it can host any numeric body, while the `Dbl` variant fixes both parts to primitive `double` for speed. {@link CComplex} is the constant-sharing proxy over {@link Complex} used to compare complex constants by pointer instead of by value. {@link Fourier} and {@link FourierFuncs} supply FFT and elliptic/Fresnel integral routines that operate on arrays of these complex types; {@link TestComplex} is the manual self-test entry point that exercises the whole package.'
 ---
 

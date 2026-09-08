@@ -32,7 +32,7 @@ concepts:
 facets:
   layer: domain
   status: legacy
-  complexity: medium
+  complexity: 3
 description: 'Implements a Blackboard-pattern solver for `Triangle` geometry: `Triangle` holds up to six Side/Angle Values and repeatedly consults five `IKnowledge` Sources (`SSS`, `SSW`, `SWS`, `WSW`, `WWW`), each a Rule of classical Trigonometry (Law of Sines, Law of Cosines, Angle Sum) that fires only when its own preconditions on known Sides/Angles are met. `ATriangleKnowledge` is the shared Base Class caching the Triangle Reference each Rule works against.'
 ---
 

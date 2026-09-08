@@ -47,7 +47,7 @@ concepts:
 facets:
   layer: utility
   status: legacy
-  complexity: high
+  complexity: 4
 description: Provides general-purpose numerical building blocks - low-dimensional Vector and Line Geometry, paraxial Optics Matrices, polynomial/spline Interpolation and Number Formatting - plus five specialized Subsystems for Combinatorial Algorithms, Curve Fitting, Numerical Integration, Function Minimization and the discrete Wavelet Transform. Most of the Subsystems are independent translations of Numerical Recipes Algorithms and depend only on the root-level Vector types (`Vector2D`, `Vector3D`) where a Geometry primitive is needed.
 ---
 

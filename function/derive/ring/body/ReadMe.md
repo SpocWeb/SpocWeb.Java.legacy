@@ -100,7 +100,7 @@ concepts:
 facets:
   layer: utility
   status: legacy
-  complexity: high
+  complexity: 4
 description: Concrete elementary and special Functions over a scalar `MetricBody` (a real or real-valued Numeric Type), each implementing the `IFloatDeriveAble` contract from `function.derive` so it can be differentiated, integrated and (where meaningful) inverted like any other combinator in `function.derive.ring`. Covers the trigonometric and hyperbolic families and their inverses (`Sinus`/`ArcSin`, `SinH`/`ArSinH`, ...), the exponential/logarithmic pair, `Power`, and a set of special Functions used by statistics and numerical analysis (`GammaLn`/`GammaP`, `BetaI`, `Gauss`/`LogNormal`, the Exponential/Sine/Cosine Integrals `EI`/`SI`/`CI`, `DawsonInt`, `ElliptInt`, `Brillouin`/`Langevin`). The `vector` subfolder extends the same combinators to per-dimension (partial) derivatives over Tensor-valued arguments. `TestBodyFuncs` is the package's self-test entry point.
 ---
 

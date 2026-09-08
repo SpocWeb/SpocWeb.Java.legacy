@@ -30,7 +30,7 @@ concepts:
 facets:
   layer: test
   status: legacy
-  complexity: medium
+  complexity: 3
 description: 'Standalone AWT demo applets showing classic procedural-generation and emergent-behavior algorithms: 1D and 2D cellular automata (`CellularAutomaton1D`, `AntHillInside`), fractal and midpoint-displacement terrain/scalar fields (`Fractal`, `Apple`, `Plasma`, `Erosion`), and a particle-flock simulation (`TravellingFlock`). Each class is self-contained, owns its own `main()`/`testIt()` entry point, and paints into an AWT `Frame` or a `graphic` raster abstraction rather than depending on the rest of this module. The folder exists to illustrate algorithms in isolation, not to provide reusable infrastructure for other parts of the `graphic` tree.'
 ---
 

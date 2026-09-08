@@ -18,7 +18,7 @@ concepts:
 facets:
   layer: utility
   status: legacy
-  complexity: low
+  complexity: 2
 description: Collects `tester.ITester` implementations whose result depends on prior calls rather than only on the current argument. `Flipper` alternates true/false regardless of the argument passed. `TestSequence` tracks a run of equal or identical items and reports whether the current item continues or breaks that run. `TesterPosition` counts calls down from a fixed position and reports true exactly once, when that position is reached.
 ---
 

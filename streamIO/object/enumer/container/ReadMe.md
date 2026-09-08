@@ -149,7 +149,7 @@ concepts:
 facets:
   layer: utility
   status: legacy
-  complexity: high
+  complexity: 4
 description: 'Concrete storage structures for the `streamIO.object.enumer` layer: dynamic arrays (`Array`, `ARAContainer`, `SortedArray`, `Heap`, `DeQueueArr`), hash-based storage (`HashContainer`, `HashSet` and their Entry/Iterator classes), and relational/functional wrappers over Associations (`Relation`, `Function`, `Join`, the `JoinStreamBy*` family) used to model Functions and Relations as Containers of key-value pairs. `IndexAssociation` is the shared lightweight Entry base reused by both the hash table (`HashEntry`) and the sorted tree (`tree/TreeMapEntry`). `RecordSet` and `util/Container2ResultSet` bridge this Container hierarchy to JDBC `ResultSet`s so query results can be loaded into, or exposed as, these same Container types. `tree/` holds the sorted Red-Black `TreeMap` implementation and its Set/Collection views; `util/` holds small adapter and scheduling helpers (`Collection2Container`, `TimedQueue`) used across the other two.'
 ---
 

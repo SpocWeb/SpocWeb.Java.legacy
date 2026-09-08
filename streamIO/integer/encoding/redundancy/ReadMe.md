@@ -19,7 +19,7 @@ concepts:
 facets:
   layer: utility
   status: legacy
-  complexity: medium
+  complexity: 3
 description: 'Forward-error-correction codecs that trade bandwidth for resilience against transmission errors. `Repeater`/`Depeater` are a simple pair that duplicates each group of bytes an odd number of times and recovers the original via majority vote, tolerant of bit errors but not of byte insertion/deletion. `ConvolutionBitEncode` is a self-contained rate-1/2 convolutional encoder with its own bit-error-rate simulation harness over a simulated AWGN channel at several constraint lengths and Es/No ratios; it has no corresponding decoder in this folder. `ConvolutionBitEncode`''s polynomial-table indexing was wrong, and `Depeater.flush()` never flushed downstream; both were fixed in the 2026-09-06 bug-fix run. Note that `Depeater`''s shortened final length is the protocol''s tail signal, not a defect.'
 ---
 

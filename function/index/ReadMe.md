@@ -36,7 +36,7 @@ concepts:
 facets:
   layer: utility
   status: legacy
-  complexity: medium
+  complexity: 3
 description: 'Indexing abstractions for random-access collections: `IDirectAccess`/`IDirectRead` mark a collection as directly addressable by integer index, `IIndex`/`IIndexer`/`AIndexer` build and query a sortable index over such a collection (with a comparator via `IndexComparator`), and `IndexEntry` pairs an index position with its underlying value.'
 ---
 

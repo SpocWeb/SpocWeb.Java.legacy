@@ -50,7 +50,7 @@ concepts:
 facets:
   layer: domain
   status: legacy
-  complexity: high
+  complexity: 4
 description: This folder implements the Tensor/Vector/Matrix algebra that sits on top of `body`'s scalar `IIntRing` elements. `ITensor`/`ATensor` add index-based, `IndexEnumerator`-style traversal to the metric-integrity-ring algebra, giving a multi-dimensional container that can both be computed on and iterated over. `IManifold`/`AManifold` extend this with finite-difference calculus (difference, summation, derivative, integral, Horner-scheme evaluation) so an `AManifold` subclass doubles as a sampled function usable for interpolation and extrapolation. `Tensor` is the generic, arbitrary-Degree implementation (Elements can themselves be Tensors), while `VectorDbl` is a primitive-`double`-backed, 1-Dimensional specialisation kept separate for debuggability and speed - at the cost of an unresolved design tension (flagged inline) between treating it as an ordered Sample sequence versus a Polynom. `Matrix`/`AMatrix`/`IMatrix`/`MatrixDbl` specialise Tensor to 2nd Degree for linear mappings and bilinear forms (including LU decomposition), `Line` specialises Tensor to a 2-row (Start/Stop) Matrix for Box/Line geometry, `Manifold` adds Raster-sampling and weighted-power-product helpers, and `PolynomDbl` redefines `VectorDbl`'s difference/integral Operations as Polynom (not Sample) algebra.
 ---
 

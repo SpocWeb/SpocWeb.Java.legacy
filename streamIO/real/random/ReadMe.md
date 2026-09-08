@@ -61,7 +61,7 @@ concepts:
 facets:
   layer: utility
   status: legacy
-  complexity: medium
+  complexity: 3
 description: 'A suite of random-number generators for statistical distributions used in simulation and Monte Carlo work, plus a small test harness. `ARandomFloat` is the common abstract base: it wraps an underlying uniform `IStreamIn_Float` source and delegates stream bookkeeping (`availAble`/`getMaxMarkSize`/`getPosition`/`getOrder`) to it, leaving each subclass to implement only `nextDoubleInternal()` and `getMinDouble()` for its specific distribution - Gaussian (`RandomGauss`, `RandomGauss2`), Gamma, Beta, Chi-squared, Fisher F/Z, Student, Poisson, Pareto, Kolmogorov-Smirnov (`RandomKvSv`), Lorentz, and pink noise. `RandomGaussVector` and `RandomUniformVector` build on `IStreamIn_Float` sources to generate vector-valued streams instead of scalars. `TestRandom` exercises the package''s generators from the command line.'
 ---
 

@@ -29,7 +29,7 @@ concepts:
 facets:
   layer: infrastructure
   status: legacy
-  complexity: medium
+  complexity: 3
 description: 'A grab-bag of small, mostly standalone demonstrations of individual Java platform technologies and third-party integration points, each self-contained rather than part of a shared application: GUID generation and thread-synchronization semantics at the root, JNDI directory browsing (`jndi/`), the Java Sound API (`sound/`), a reflection-attribute stream processing framework (`stream/`), and a substantial SAX/DOM/XSLT toolkit built around reflection-based event dispatch, together with the Castor-generated ZKDB message data model it unmarshals into (`xml/`). `jdbc/` and `rmi/` currently hold only non-Java package descriptors, with no Java sources of their own.'
 ---
 

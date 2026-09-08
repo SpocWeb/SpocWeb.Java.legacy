@@ -85,7 +85,7 @@ concepts:
 facets:
   layer: utility
   status: legacy
-  complexity: high
+  complexity: 4
 description: 'Enumerator/Iterator layer for the `streamIO.object` package: the `Enumerator` interface plus its abstract base (`AEnumerator`) and reverse-iteration counterpart (`AReverseEnumerator`), concrete implementations over arrays (`ArrayEnum`, `ArrayEnumDbl`, `ArrayEnumPrim`), linked structures (`ListItem`, `DblListItem`), and asynchronous pipes (`APipe`, `CachePipe`, `PipeSplitter`). Also provides bridges to and from `java.util.Iterator` (`Iterator2Enumerator`, `Enumerator2Iterator`, `Enumerator2Enumeration`) so this codebase''s custom streaming abstractions can interoperate with standard Java collections. `container/` (documented separately) supplies the concrete storage structures - HashContainer, TreeMap, Array, Relation, etc. - that these Enumerators iterate over.'
 ---
 

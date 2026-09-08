@@ -113,7 +113,7 @@ concepts:
 facets:
   layer: domain
   status: legacy
-  complexity: high
+  complexity: 4
 description: 'This folder is a legacy (pre-2004) 3D wireframe/solid graphics engine: it maps 3- and n-dimensional geometry (points, lines, polygons, bodies) onto a 2D `Point2D` viewport through projective or planar coordinate mappings, then renders the result via AWT-level graphics interfaces (`IGraphShape`/`IGraphText`) and Swing/AWT mouse and keyboard controllers. It underlies the older `graphic.math2D` package''s 2D-only counterpart and is itself superseded in places by `TestMathGraph3` over the earlier `testMathGraph2`/`testMathGraph3D` applet classes, which remain for reference and comparison.'
 ---
 

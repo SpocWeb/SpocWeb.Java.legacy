@@ -43,7 +43,7 @@ concepts:
 facets:
   layer: utility
   status: legacy
-  complexity: high
+  complexity: 4
 description: Red-Black tree implementation of `SortedMap` (`TreeMap`, entries as `TreeMapEntry`) plus the Set and Collection views `java.util.Map` expects (`TreeKeySet`, `TreeValueCollection`, `TreeEntrySet` and their Iterators). `SubTreeMap` and `TreeEntrySetView`/`SubTreeMapEntryIterator` implement the key-range views returned by `headMap()`/`tailMap()`/`subMap()`, backed by the same underlying `TreeMap` so mutations on either side are reflected in the other. `TreeMapEntry` also extends `container.IndexAssociation`, the lightweight Entry base shared with the hash-table implementation in the parent `container/` package.
 ---
 

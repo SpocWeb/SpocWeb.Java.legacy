@@ -32,7 +32,7 @@ concepts:
 facets:
   layer: domain
   status: legacy
-  complexity: high
+  complexity: 4
 description: This folder combines several independent Byte streams into one logical stream (and back), in two unrelated senses. `MultiplexerOutRaid0`/`DeMultiplexerIn_Raid0` interleave/de-interleave a Set of Output/Input streams Round-Robin (RAID 0 striping, for throughput), and `MultiplexerOutRaid5`/ `DeMultiplexerIn_Raid5` extend that with an XOR Parity Stream (RAID 5) so a single failed source/sink stream can be reconstructed. Separately, `Markov1`/`Markov1Hidden`/`Viterbi` implement Markov Chain and Hidden-Markov-Model math (stationary distribution, and the Viterbi algorithm for finding the most probable hidden state sequence) - included here as the statistical basis for modeling and validating noisy/redundant transmission across multiplexed streams, rather than as stream implementations themselves.
 ---
 

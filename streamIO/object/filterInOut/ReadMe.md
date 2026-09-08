@@ -22,7 +22,7 @@ concepts:
 facets:
   layer: utility
   status: legacy
-  complexity: medium
+  complexity: 3
 description: 'Bidirectional filters (usable on either the input or output side of a stream) that transform or gate items in flight: `FilterByFunction` maps every item through a configured `function.IFunction`, `FilterReflectionFunction` does the same but by invoking a named method via reflection on each item''s runtime class, `FilterByTester` keeps only the items an `ITester` rejects, and `FilterSeparator` inserts a configured separator object between items.'
 ---
 

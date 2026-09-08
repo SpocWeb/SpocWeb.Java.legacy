@@ -22,7 +22,7 @@ concepts:
 facets:
   layer: utility
   status: legacy
-  complexity: medium
+  complexity: 3
 description: 'Implements a classic Decision Table: a tabular alternative to deeply nested if/then/else chains, built up through a small inheritance chain. `ConditionTable` matches a boolean value vector against rows of conditions; `DecisionTable` adds a matching Actions matrix on top of it; `DecisionTool` adds a set of `Runnable` Operators that fire when a row''s conditions are met; and `DecisionMaker` ties this to `tester.ITestAble` predicates so the whole evaluation, from testing conditions to running the matching operators, can be driven from one call.'
 ---
 

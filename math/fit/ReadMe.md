@@ -42,7 +42,7 @@ concepts:
 facets:
   layer: utility
   status: legacy
-  complexity: high
+  complexity: 4
 description: Fits parameterized functions and scalar fields to measured data sets, covering both nonlinear fitting (`FitFloat`'s Levenberg-Marquardt minimization of chi-squared over an `IFloatFitFunction`) and linear fitting (`LinearFitDouble`'s and `FittingFloat`'s singular value decomposition, and `FittingFloat.lfit`'s normal-equations solve, over an `IFloatVectorFunction`/`IFloatVectorField`), plus a robust alternative (`LinearRobustFit`) that minimizes absolute deviation instead of chi-squared to resist outliers. `FitGauss`, `FitLegendre` and `FitPolynom` supply ready-made fitting bases (sums of Gaussians, Legendre polynomials, plain powers), and the `weight` subsystem supplies the per-point weighting used when outliers must be discounted.
 ---
 

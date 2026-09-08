@@ -45,7 +45,7 @@ concepts:
 facets:
   layer: domain
   status: stable
-  complexity: medium
+  complexity: 3
 description: '`aspect` is a small object-property framework: an "Aspect" is a self-describing, named property of a business object that can be read and written both directly and by (possibly nested, underscore-separated) property name, e.g. `person.set("Address_City", "Frankfurt")`. `IAspect`/`AAspect` supply the name/key handling, reflection-based dirty-flag propagation and by-name dispatch; `IHierarchyAspect`/`AHierarchyAspect` add a Parent link so a leaf Aspect can validate upward (multi-field checks against sibling values) and update downward without triggering feedback loops. Concrete leaf types (`StringAspect`, `DoubleAspect`) hold an actual primitive Value with Min/Max (and, for `DoubleAspect`, Modulus) validation; `SimpleAspect` is the base for composite Aspects that hold no Value of their own and simply group other Aspects as public fields (`AddressAspect`, `PersonAspect`); `ListAspect` holds a Table (list) of Aspect records instead of a single sub-Aspect. The nested `dialog/` package builds a small console question-and-answer engine on top of `AAspect`.'
 ---
 

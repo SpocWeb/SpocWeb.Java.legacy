@@ -33,7 +33,7 @@ concepts:
 facets:
   layer: utility
   status: legacy
-  complexity: medium
+  complexity: 3
 description: 'Defines the in-place arithmetic contract (`add`/`subt`/`mul`/`div`, min/max, linear mapping) shared by every mutable numeric type in `streamIO.copy`, split into a `long`-based layer (`IOpLong`/`IIOpLong`) and a `double`-based layer (`IOpDouble`/`IIOpDouble`) that extends it. `AOpLong`, `AOpDouble` and `AOpMeasurAble` provide the default, copy-based implementation of the non-primitive operations (`Lin`, `dbl`, `sqr`, ...) in terms of the small set of abstract `*At` primitives a concrete subclass must still supply. The module''s own comments mark it **deprecated**: its double-argument operations were superseded by the `Real` interface, and its long-argument operations by `IIntRing`, so new code should prefer those instead.'
 ---
 

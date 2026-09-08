@@ -15,7 +15,7 @@ concepts:
 facets:
   layer: domain
   status: legacy
-  complexity: low
+  complexity: 2
 description: 'Defines the generic Blackboard-pattern Contract (`IKnowledge`: `check()`/`update()`) that any number of independent, rule-based Knowledge Sources can implement to cooperatively fill in an incomplete shared Data Structure. The `triangle` Subsystem is the concrete Application, solving Triangle Geometry.'
 ---
 

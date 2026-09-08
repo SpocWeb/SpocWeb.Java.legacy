@@ -15,7 +15,7 @@ concepts:
 facets:
   layer: domain
   status: stable
-  complexity: low
+  complexity: 2
 description: 'This folder models continuous scalar flow between nodes as a simple 1st-order ODE system: `ScalarFlowConnection` links a source and a target `IFloat` value with an `IDoubleMetric` function that computes the flow rate between them from their current values only (not their rate of change), and moves that amount from source to target on each `run()`. A static registry collects every connection so `ScalarFlowConnection.update()` can advance the whole network in one sweep, each call performing one discrete-transport step rather than a continuous integration. The `push` subfolder is an unrelated, general-purpose push-based dataflow/pipeline framework (routing, fan-in/fan-out, join stages) that happens to share this package root.'
 ---
 

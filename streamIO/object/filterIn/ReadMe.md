@@ -25,7 +25,7 @@ concepts:
 facets:
   layer: utility
   status: legacy
-  complexity: medium
+  complexity: 3
 description: 'Small, focused read-side filters that wrap another `IStreamIn` and change which/what items come out: `FilterInByBitMask`/`FilterInByBoolean` select items by position against a mask or boolean array, `FilterInPair` projects a stream of key/value pairs down to just one side, `FilterInCache` adds a bounded replay buffer so `mark()`/`reset()` work over a sliding window, and `FilterIn_PushBack` lets a single item be pushed back for the next read. Each is a thin, single-purpose decorator meant to be composed with other stream filters from `streamIO.object`.'
 ---
 

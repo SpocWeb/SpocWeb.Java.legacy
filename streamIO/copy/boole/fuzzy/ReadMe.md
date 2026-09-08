@@ -42,7 +42,7 @@ concepts:
 facets:
   layer: utility
   status: legacy
-  complexity: medium
+  complexity: 3
 description: 'Implements fuzzy logic: predicates and combinators whose truth value is a continuous degree of membership in `[0, 1]` rather than a crisp boolean. `IFuzzifier` is the single `getMembership(Object)` contract; `AFuzzyUnaryOp`/`AFuzzyBinaryOp` are abstract bases for combinators over one or two fuzzifiers, and `FuzzyNOT`/`FuzzyAND`/`FuzzyOR`/`FuzzyEQV`/ `FuzzyIMPL` implement the standard min/max-based fuzzy connectives (De Morgan''s laws hold for min/max/complement, unlike full Boolean distributivity). `FuzzyBoole` is a scalar fuzzy value that also implements `streamIO.copy.boole.Boole`, plugging fuzzy logic into the `boole` package''s own algebra. `FuzzyNumber` represents a fuzzy scalar or interval as a triangular membership function with precomputed weight and center of mass (for fast defuzzification); `FuzzyManifold` groups an ordered set of `FuzzyNumber` categories for one dimension (e.g. "jam"/"stop"/"float" traffic-speed categories) and supports fuzzification, categorization and rule-based defuzzification across multi-dimensional rule tables.'
 ---
 

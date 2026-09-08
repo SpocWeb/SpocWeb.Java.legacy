@@ -16,7 +16,7 @@ concepts:
 facets:
   layer: infrastructure
   status: stable
-  complexity: low
+  complexity: 2
 description: 'A two-interface expression of the Memento pattern, kept deliberately minimal: an object that can snapshot and restore its own state, and an opaque token standing for one such snapshot.'
 ---
 

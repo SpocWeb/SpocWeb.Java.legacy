@@ -30,7 +30,7 @@ concepts:
 facets:
   layer: infrastructure
   status: stable
-  complexity: medium
+  complexity: 3
 description: 'An asynchronous, retrying alternative to the synchronous `streamIO` pipeline: a `MessageStreamOut` sender assigns each item a strictly ascending ID and retries against an `IMessageReceiver` until the Receiver reports the item accepted. Receivers offer increasingly strict Service Levels built by inheritance - `MessageReceiver` (reliable transport only), `MessageOnlyOnce` (deduplicates via a Bit Vector, allows out-of-order delivery), `MessageInSequence` (enforces strict order, rejects anything else) and `MessageOptimized` (enforces strict order like its parent but caches and replays out-of-order arrivals instead of rejecting them). `FaultyReceiver` is a Test harness that randomly throws to exercise the Retry/Sequence/Duplicate guarantees of the other four.'
 ---
 

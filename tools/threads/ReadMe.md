@@ -16,7 +16,7 @@ concepts:
 facets:
   layer: infrastructure
   status: experimental
-  complexity: low
+  complexity: 2
 description: 'A single watchdog: given a thread that is already running, interrupt it once its time is up.'
 ---
 

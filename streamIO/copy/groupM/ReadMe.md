@@ -51,7 +51,7 @@ concepts:
 facets:
   layer: utility
   status: legacy
-  complexity: medium
+  complexity: 3
 description: 'Models the multiplicative algebraic hierarchy (semigroup -> group) that mirrors the additive hierarchy in the sibling `group` package: `ISemiGroupM`/`IGroupM` define `*`, `/`, `Pow` and related operations, kept deliberately synchronous with the `group` package''s additive `+`/`-` interfaces so both hierarchies can be generated from the same design. `ASemiGroupM`/`AGroupM` supply the default, delegation-based implementation - only `mulAt`/`divAt` must be redefined by a concrete class, and `Pow`/`Pow2Pow`/`sqr`/`cbc`/`qad` all derive from them via the "delegation to self" pattern (a `self` field standing in for `this`, so the abstraction can be mixed in without single inheritance getting in the way). `AGroupMLng`/`AGroupMDbl`/`IDblGroupM`/ `ILngGroupM` add direct `long`/`double`-argument overloads; `AGroupMDbl`''s own comment marks it as never actually used. `CSemiGroupM`/`CGroupM` are constant/immutable wrappers that delegate every read-only operation to an inner instance and throw on every mutating `...At()` method.'
 ---
 

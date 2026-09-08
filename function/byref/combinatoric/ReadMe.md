@@ -34,7 +34,7 @@ concepts:
 facets:
   layer: utility
   status: legacy
-  complexity: medium
+  complexity: 3
 description: 'Combinatorics and special functions built on the `byref` wrappers: `Factorial`/`DblFactorial` (with recursive caching), `Bernoulli` numbers, `Prime` (sieve-based prime cache), `CombiFuncs` (binomial coefficients etc.), `ProbFuncs` (probability distributions), and `BesselFuncs` (Bessel functions).'
 ---
 

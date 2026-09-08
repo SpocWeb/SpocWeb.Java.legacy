@@ -25,7 +25,7 @@ concepts:
 facets:
   layer: domain
   status: stable
-  complexity: low
+  complexity: 2
 description: '`dialog` is a small console question-and-answer engine built on top of the `aspect` package: each `AQuestion` is itself an `AAspect`, so an answer can be read/stored via the same `getVal()`/`setVal()` machinery as any other Aspect. `StringQuestion` and `BoolQuestion` are the two concrete question types (free-form text vs. Yes/No), each knowing the name of the next question to proceed to - `BoolQuestion` branches to a different next question depending on the answer, `StringQuestion` always proceeds to a fixed one. `Dialog` holds a named collection of `AQuestion`s (a tree, possibly with converging branches) and drives the question loop, substituting `[Name]`-style placeholders in later questions with earlier answers. `StreamDialog` is an unimplemented stub (empty constructor and no-op `main`) apparently intended as a future stream-based alternative driver.'
 ---
 

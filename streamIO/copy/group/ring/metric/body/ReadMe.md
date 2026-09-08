@@ -64,7 +64,7 @@ concepts:
 facets:
   layer: domain
   status: legacy
-  complexity: high
+  complexity: 4
 description: 'This folder implements `IBody`/`Body` - a Metric Body (a Field with a Norm/Order: +,-,*,/,0,1, plus distance and comparison) - and its concrete number types. `AMetricBody` provides the shared analytical Machinery (Pi/e/log constants, trigonometric series) on top of the abstract Algebra layer, and `ABodyDouble`/`BodyDouble` specialise this to primitive `double`. `Fraction`/`FractionLong` layer an exact rational representation on top of any (respectively primitive-`long`) `IMetricIRing` Numerator/ Denominator pair. `IntervalA`/`IntervalDbl`/`IntervalDblA`/`IntervalP` model an ordered Interval (affine or projective) over a scalar Metric Space, and `CBody` produces constant, write-protected Representatives of any of these Body types. `TestBody` is the manual test-suite entry point for the package. The `complex/`, `units/` and `vector/` Subfolders build further number- and Tensor-domains on top of these scalar Body types.'
 ---
 

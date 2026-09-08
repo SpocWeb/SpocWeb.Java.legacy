@@ -64,7 +64,7 @@ concepts:
 facets:
   layer: infrastructure
   status: legacy
-  complexity: high
+  complexity: 4
 description: A Model-View-Controller framework for 2D graphics built on AWT/Applet, predating Swing usage in this codebase.
 ---
 

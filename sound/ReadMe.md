@@ -42,7 +42,7 @@ concepts:
 facets:
   layer: domain
   status: legacy
-  complexity: medium
+  complexity: 3
 description: 'This folder parses and (partially) writes Microsoft RIFF-based audio containers - WAV and Standard MIDI Files - plus one interactive MIDI player. `FileChunk` reads any generic RIFF-style Chunk (a 4-Character Type Tag followed by a 4-Byte Size); `RiffFile` builds on it to read the outer "RIFF" Container Header. `WaveFile` and `MidiFile` each build on `RiffFile`/`FileChunk` to read a concrete Container: `WaveFile` reads the "fmt " Chunk (`WaveFormatChunk`) and "data" Chunk of a WAV File, while `MidiFile` reads the "MThd" Header and a Sequence of "MTrk" Track Chunks (`MidiChunk`). `WaveDataChunk` is an alternative, self-contained reader for a WAV "data" Chunk that decodes Samples directly rather than exposing the raw Bytes. For playback, `WaveStreamIn` and `WaveStreamOut` adapt a `WaveFile`''s Data Chunk to/from a sequential per-Channel sample stream (`streamIO.integer` interfaces), and `DirectPlayer` is an unrelated, self-contained Swing/MIDI toy that maps computer-keyboard Keys to MIDI Notes for live Synthesizer playback via `javax.sound.midi`.'
 ---
 

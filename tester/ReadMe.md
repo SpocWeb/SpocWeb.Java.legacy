@@ -83,7 +83,7 @@ concepts:
 facets:
   layer: utility
   status: legacy
-  complexity: medium
+  complexity: 3
 description: 'Core library of small, composable abstractions for testing, comparing and processing objects: unary predicates (`ITester`), equivalence relations (`IEquivalence`), order relations (`IComparator`/`IOrderator`) and metrics (`IMetric`/`IDoubleMetric`), plus a handful of stock implementations (`Discrete`, `MetricByHash`, `MetricMeasurAble`, `OrderatorComparable`, `OrderatorOrderable`) that adapt these interfaces to hash codes, `Comparable` or a custom `IMeasurAble`/`IIOrderAble` contract. `AComparator` supplies shared default behaviour that concrete comparators build on. The sub-folders apply these abstractions to specific domains: `algebra/` combines `ITester` predicates with Boolean operators, `stateful/` adds testers whose result depends on prior calls, `fuzzy/` builds approximate string/set matching on top of `IMetric`, `logic/` implements a Decision Table evaluator, and `process/` models finite-state automata and stream processing.'
 ---
 

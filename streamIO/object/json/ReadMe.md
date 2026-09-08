@@ -49,7 +49,7 @@ concepts:
 facets:
   layer: utility
   status: legacy
-  complexity: medium
+  complexity: 3
 description: 'The classic JSON.org reference implementation (`org.json`, repackaged into this project''s namespace): `JSONObject`/`JSONArray` are the in-memory value types, `JSONTokener` parses a source string into them (and is also the base tokenizer reused by `XMLTokener` and `HTTPTokener` for related mini-formats), `JSONStringer` builds JSON text incrementally with a depth-guarded cascade API, and `JSONException` is the shared parse/format error type. `XML`, `HTTP`, `Cookie`, `CookieList` and `CDL` are format-conversion adapters that reuse `JSONObject`/`JSONArray` as an intermediate representation for XML, HTTP headers, browser cookies and comma-delimited text respectively. `JSONTest` is a standalone manual test/demo program, not part of the library''s public surface.'
 ---
 

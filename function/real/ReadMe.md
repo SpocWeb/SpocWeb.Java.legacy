@@ -45,7 +45,7 @@ concepts:
 facets:
   layer: utility
   status: broken
-  complexity: medium
+  complexity: 3
 description: 'Stateful streaming aggregators over a sequence of double values passed one at a time through `Map`/`process`: `Adder`/`Multiplier`/`Product`/`Sum`/`SumSquares` accumulate a running total, `Maximum`/`Minimum` track extrema, `RunningMean` and `Product.getHMV()` compute running statistics, and `LinearScale`/`BiLinearSum`/`FourierCoefficient` combine several inputs into a scaled or weighted result.'
 ---
 

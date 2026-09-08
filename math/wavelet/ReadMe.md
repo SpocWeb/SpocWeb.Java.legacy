@@ -21,7 +21,7 @@ concepts:
 facets:
   layer: utility
   status: legacy
-  complexity: medium
+  complexity: 3
 description: 'Implements the discrete Wavelet Transform (Numerical Recipes Chapter 13.10) as a Strategy Pattern: `Wavelet` drives the one- and multidimensional Transform, delegating each Filter Sweep to a pluggable `IWaveletStep`. `Daubechies4` is a hand-optimized 4-Coefficient Filter, while `WaveletStep` is a generic Daubechies-family Implementation offering the 6/12/20-Coefficient variants as precomputed Flyweight Instances.'
 ---
 

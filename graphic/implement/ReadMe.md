@@ -24,7 +24,7 @@ concepts:
 facets:
   layer: utility
   status: legacy
-  complexity: medium
+  complexity: 3
 description: This folder collects concrete `graphic.Graph2D` subclasses that each override pixel output with a different color strategy - ordered dithering (`GrayColor`), a fixed grey-level raster (`GreyColor`), random palette selection (`RandomColor`), and image-derived texture fill (`TextureGraphics`) - plus `testGraph2D`, a standalone Frame-based demo/test harness that exercises most drawing primitives across the `graphic` package.
 ---
 

@@ -45,7 +45,7 @@ concepts:
 facets:
   layer: utility
   status: legacy
-  complexity: medium
+  complexity: 3
 description: Defines the strict order relation (`<`, `>`, Max/Min) that comparable types in `streamIO.copy` build on, plus an `Interval` abstraction built on top of it. `IOrder` (and its apparent duplicate `Order`) extend `function.IOrderAble` with copy-based Max/Min; `AOrder` supplies the default implementation - `isLessThan` stays the one abstract primitive, and `notLessThan`/`notMoreThan`/`compareTo`/`Position` are all derived from it via the "delegation to self" pattern used across this codebase. `IDblOrder`/`ILngOrder` (and their apparent duplicate `LngOrder`) add direct `double`/`long` comparison for primitive-backed types. `Interval` represents a set of values by its two borders and implements the interval algebra (contains, overlaps, intersect/union) in terms of the border type's own `IOrder`; `IntervalOrd` is a performance specialisation that keeps the borders pre-sorted so containment tests need only check one side. `COrder` is a delegating, effectively-constant wrapper around an `IOrder`. Several type pairs here (`IOrder`/`Order`, `ILngOrder`/`LngOrder`) carry identical members - almost certainly leftovers from a naming-convention change rather than intentional variants; treat them as the same contract when reading this package.
 ---
 

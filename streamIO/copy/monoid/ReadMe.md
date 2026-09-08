@@ -54,7 +54,7 @@ concepts:
 facets:
   layer: utility
   status: legacy
-  complexity: medium
+  complexity: 3
 description: 'Models the concatenative algebraic hierarchy (semigroup -> monoid) that mirrors the multiplicative and additive hierarchies in `groupM`/`group`: `ISemiMonoid` defines a single operation `map`/`mapAt` ("this after arg", i.e. function composition), kept deliberately asymmetric from the group hierarchies because concatenation is associative but not commutative (string/array concatenation is the running example). `IMonoid` adds the inverse-based operations (`solve`, `reSolve`, `rev`, `Identity`) that require a two-sided inverse to exist. `ASemiMonoid`/`AMonoid` supply the default, delegation-based implementation - only `mapAt` (and, for `AMonoid`, `pamAt`) must be redefined by a concrete class - using the same "delegation to self" pattern as the sibling packages. `AMapper` adds inverse-caching on top of `AMonoid` for mapping-style monoids. `ArrayMonoid`/`StringMonoid` are the two concrete concatenative monoids (`Object[]` and `String` respectively); `Association`/`Pair` model a key-value mapping as a (rarely-instantiated) monoid, with `AssociationEquivalence` providing a key-only equivalence relation for containers built on `Association`. The `integer/` subfolder builds an integer-backed set and a permutation monoid on top of this and the `boole`/`groupM`/`shift` packages.'
 ---
 

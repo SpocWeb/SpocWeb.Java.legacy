@@ -25,7 +25,7 @@ concepts:
 facets:
   layer: infrastructure
   status: broken
-  complexity: medium
+  complexity: 3
 description: 'Filesystem-facing helpers with no shared abstraction between them beyond the `java.io` interfaces they implement: `DirectoryFilter` and `SuffixFileNameFilter` are `FilenameFilter`/ `FileFilter` predicates for `File.list()`/`listFiles()`, while `FileIterator` and `FileBackupIterator` are `AStreamIn`-based generators that hand out a fresh numbered File (or a File whose predecessor was just moved to a backup location) on each call.'
 ---
 

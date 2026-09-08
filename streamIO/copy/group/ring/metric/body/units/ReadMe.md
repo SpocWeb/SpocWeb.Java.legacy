@@ -28,7 +28,7 @@ concepts:
 facets:
   layer: domain
   status: legacy
-  complexity: high
+  complexity: 4
 description: Physical units and dimensioned quantities, modeling base SI units as primes and derived units as products/ratios of primes so unit-safe conversion falls out of ordinary arithmetic. {@link Unit} is the root type and doubles as a catalog of hundreds of named unit constants (SI, CGS, imperial, and physical/astronomical constants); a Unit's own class ({@link UnitLinear}, {@link UnitAffine}, {@link UnitShift}) fixes how it converts to its Base Unit - by ratio, by ratio-plus-offset, or by offset alone. {@link Quantity} pairs a numeric value with a Unit; {@link QuantityDouble} is its primitive-`double`-backed implementation.
 ---
 

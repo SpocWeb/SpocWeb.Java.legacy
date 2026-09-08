@@ -12,7 +12,7 @@ concepts:
 facets:
   layer: utility
   status: legacy
-  complexity: medium
+  complexity: 3
 description: 'Reserved for a future YAML 1.1 parser. `YamlParser` is currently an empty stub: it carries only a detailed YAML 1.1 syntax reference card in its class comment (collection/scalar/alias indicators, tag properties, escape codes) and has no fields, no parsing logic, and an empty `main()`. There is nothing here yet to security-review, since no untrusted input is actually parsed by this class.'
 ---
 

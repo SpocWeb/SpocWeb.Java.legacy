@@ -24,7 +24,7 @@ concepts:
 facets:
   layer: utility
   status: legacy
-  complexity: medium
+  complexity: 3
 description: Models bit/digit-level shifting and rotation for numbers represented in a g-adic (radix-g positional) system, where one shift is equivalent to multiplying or dividing by the radix. `IShiftAble` is the minimal contract (single-position arithmetic/logical shift and rotate, plus an externalized carry so state does not have to live on the object itself); `ShiftAble` extends it with the multi-position and reversal operations built from those primitives. `AShiftAble` supplies the default multi-position and reversal logic in terms of the abstract single-position primitives, using the "delegation to self" pattern (a `self` field standing in for `this`) so a concrete numeric class can mix this behaviour in without single inheritance getting in the way. `SwapAble` is a separate, narrower contract for index-based item swapping used by random-access iterators; it is not part of the shift/rotate hierarchy.
 ---
 

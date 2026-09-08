@@ -97,7 +97,7 @@ concepts:
 facets:
   layer: utility
   status: legacy
-  complexity: high
+  complexity: 4
 description: 'Core function/relation contracts (`IFunction`, `IProcessor`, `IInvertAble`, `IOrderAble`/`IIOrderAble`, `ICountAble`/`IMeasurAble`) and their default base-class implementations, plus a handful of small standalone utilities (`CatProcessor` function composition, `FactoryByType`/`FactoryRegistry` reflective object creation, `FunctionByHash` map-backed function representation, `Projections` sphere-to-plane coordinate mappings). The subfolders build on these contracts for specific domains: `index/` (indexing), `real/` (stateful numeric aggregators), `string/` (string transforms), `vector/` (vector fields and ODE integration), `byref/` (boxed by-reference primitives and combinatorics), and `derive/` (symbolic differentiation - see its own ReadMe.md).'
 ---
 

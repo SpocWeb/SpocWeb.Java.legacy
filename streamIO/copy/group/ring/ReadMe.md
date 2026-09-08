@@ -97,7 +97,7 @@ concepts:
 facets:
   layer: domain
   status: legacy
-  complexity: high
+  complexity: 4
 description: 'This folder builds the Algebraic Ring layer on top of the parent `groupM` folder''s Multiplicative SemiGroup. `IRing`/`ARing` define the plain commutative Ring (M,+,-,0,*), `IBoolRing`/`ABoolRing` generalise the same Framework for Boolean/Set-typed Containers, and `IIntRing`/`AIntRing` add the full multiplicative and additive Integrity-Ring Capabilities (Division, no Zero Divisors) used pervasively by the `metric` Subfolder''s Number types. `IComplex` factors out Complex-Conjugation Support for `IIntRing`, `IInteger`/`AInteger`/`integer` define the basic inc()/dec()/pred()/succ() Operations for Integer Types, and `CIntRing`/`CRing` hold shared Constants. The remaining classes implement numerical Algorithms over this algebra: root/FixPoint Refiners (`IRefiner`/`ARefiner` and their `NewtonRefiner`/ `NewtonRefiner2`/`SecantRefiner`/`FixPtRefiner` implementations), an `Extrapolator` for rational/polynomial Extrapolation to zero Step-width, an `Interpolator` for polynomial Interpolation, and ODE/Function Steppers (`IStepper`/`IFloatStepper`/`AStepper`/`IODE` and their `StepRK`/`StepMP`/`StepTrapez` implementations). `TestRing` is the manual test-suite entry point. The `metric/` Subfolder builds the concrete scalar and Tensor Number types on top of this Ring Algebra.'
 ---
 

@@ -18,7 +18,7 @@ concepts:
 facets:
   layer: infrastructure
   status: stable
-  complexity: low
+  complexity: 2
 description: 'Encoding-aware file access built on the JDK''s character streams: `FileReader` extends `InputStreamReader` and adds static helpers for whole-file copy, whole-file read and polling for a file''s arrival (with a timeout), while `FileWriter` extends `OutputStreamWriter` and adds a static helper for writing a whole String to a file in one call. Both shadow their `java.io` namesakes by design, giving callers convenience overloads without abandoning the standard char-stream base classes.'
 ---
 

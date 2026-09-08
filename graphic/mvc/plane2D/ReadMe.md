@@ -22,7 +22,7 @@ concepts:
 facets:
   layer: domain
   status: broken
-  complexity: high
+  complexity: 4
 description: Renders textured 3D bodies (loaded from MilkShape3D-style model files) as flat, painted 2D polygons.
 ---
 

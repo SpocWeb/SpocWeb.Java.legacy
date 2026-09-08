@@ -12,7 +12,7 @@ concepts:
 facets:
   layer: infrastructure
   status: legacy
-  complexity: low
+  complexity: 2
 description: 'A single demonstration of the Java Sound API: reading a WAV file''s format and stream, and writing back a synthesized sine-wave WAV file of raw PCM samples.'
 ---
 

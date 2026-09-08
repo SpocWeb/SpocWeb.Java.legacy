@@ -21,7 +21,7 @@ concepts:
 facets:
   layer: utility
   status: unfinished
-  complexity: low
+  complexity: 2
 description: A small set of GUI-oriented property-wrapper variants, distinct from the `synch.aspect` subsystem. `AAttribProperty` extends `structure.aspect.Aspect` (a different, external Aspect base class, not `synch.aspect.Aspect`) and adds the generic 1-field attributes a GUI control needs — enabled, visible, locked, mandatory, min/max length, tooltip, help context — meant to be serialized as XML element attributes. `UIProperty` extends it with screen-position/size fields (Top, Left, Height, Width) for a bound GUI control. `PropString` is an unimplemented empty stub, and `testProperty` is a standalone `main()`-only scratch class unrelated to the other three, not itself a property type.
 ---
 

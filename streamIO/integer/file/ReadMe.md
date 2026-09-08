@@ -22,7 +22,7 @@ concepts:
 facets:
   layer: utility
   status: legacy
-  complexity: high
+  complexity: 4
 description: This folder implements the `streamIO` interfaces directly on top of Java's File I/O classes. `FileStreamByte` extends `RandomAccessFile` to also implement `IStreamIn_Int`/`IStreamOutByte` (reading and writing the same File), while `FileStreamIn_Byte`/`FileStreamOutByte` extend `FileInputStream`/`FileOutputStream` respectively for read-only/write-only access - all three exist because `RandomAccessFile`/`FileInputStream`/`FileOutputStream` are Java classes rather than interfaces, so they cannot otherwise be made to implement the `streamIO` interfaces alongside their own base class. `FilterCrLfFromQuoted` is a small standalone command-line filter that strips CR/LF Characters found inside quoted sections of a text File.
 ---
 

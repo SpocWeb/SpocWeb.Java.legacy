@@ -53,7 +53,7 @@ concepts:
 facets:
   layer: utility
   status: legacy
-  complexity: medium
+  complexity: 3
 description: 'A grab-bag of classic string- and sequence-processing algorithms from early-2000s coursework-style exploration: an approximate string-distance metric tuned for German keyboard typos (`EditMetric`), a Huffman coder (`Huffman`) built on a small index-based priority queue (`HeapByIndex`), a Patricia (radix) trie for unique string keys (`PatriciaNode` and its three Iterator helpers), an L-system string-rewriting engine (`Grammar`), a naive sentence-similarity comparer (`SentenceComparer`), and a fixed-capacity int deque (`DeQueueInt`) used as a building block elsewhere. The two subfolders extend this theme: `parser/` holds simple recursive-descent expression and structure parsers, and `search/` holds classic substring-search algorithms (Boyer-Moore, Rabin-Karp, Knuth-Morris-Pratt) plus a small regular-expression automaton. Most classes are standalone algorithm demonstrations with their own `testIt()`/`main()` methods rather than parts of one cohesive API - `testString` is a simple ad hoc driver exercising several of the `search` classes together.'
 ---
 

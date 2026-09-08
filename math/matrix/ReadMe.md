@@ -52,7 +52,7 @@ concepts:
 facets:
   layer: utility
   status: legacy
-  complexity: high
+  complexity: 4
 description: 'Numerical linear-algebra library providing dense and specialized matrix representations (general `double`/`float`/`int` matrices, band, tridiagonal, symmetric, and QR-decomposable forms) together with the classic dense-matrix algorithms built on Numerical-Recipes-style ports: LU/QR/Cholesky/SVD decomposition, eigenvalue and eigenvector extraction, Householder tridiagonalization, and Hamilton quaternions for rotation. The three parallel `Matrix{Double, Float,Int}` classes each combine a dynamic row-vector container with a large static API operating directly on raw two-dimensional arrays, so callers can choose the array-based static methods for hot loops or the instance API for bookkeeping convenience.'
 ---
 

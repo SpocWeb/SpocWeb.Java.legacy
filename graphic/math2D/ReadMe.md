@@ -35,7 +35,7 @@ concepts:
 facets:
   layer: domain
   status: legacy
-  complexity: medium
+  complexity: 3
 description: Provides affine coordinate mapping between a 2D data range and a Graphics2D target area, plus the model/painter/controller triad that displays and interactively edits a set of mapped points and edges. `LinCoordMap` and `Coordinates2D` do the per-axis and combined-axis affine transforms; `Map2DModel`, `Map2DPainter` and `Map2DMouseController` build an MVC layer for graphs of 2D points on top of that transform, while `Raster` and `Coord2DMouseController` supply supporting raster-generation and view-panning utilities. `testMathGraph2` is a standalone applet/demo exercising the package against real map/star data files.
 ---
 

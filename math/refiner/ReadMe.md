@@ -48,7 +48,7 @@ concepts:
 facets:
   layer: utility
   status: legacy
-  complexity: high
+  complexity: 4
 description: 'Iteratively refines an estimate toward a root, fixpoint or extremum of a scalar function, one step at a time. `IFloatRefiner`/`AFloatRefiner` define the single-point-state family (secant, Newton, fixpoint), while `AFloatRefinerQ` and its subclasses (`FalsiFloatRefinerQ`, `BrentFloatRefinerQ`, `RidderFloatRefinerQ`, `NewtonFloatRefinerQ`, `PegasusFloatRefiner`) add quality control: they track both endpoints of a bracketing interval and keep the root bracketed between them, trading various amounts of complexity for guaranteed convergence. `IFloatImprover`/`AFloatImprover` is the lower-level, value-only sibling abstraction that some of these refiners are built on.'
 ---
 

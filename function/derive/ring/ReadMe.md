@@ -127,7 +127,7 @@ concepts:
 facets:
   layer: utility
   status: legacy
-  complexity: high
+  complexity: 4
 description: 'Building blocks for a small Computer-Algebra-style Function Algebra over an algebraic Ring (`IIntRing`/`IGroup`/`IGroupM`): binary combinators (`Sum`, `Diff`, `Prod`, `Quot`, `Cat` via `CatDerive`) that combine two `IDeriveAble` Functions and know how to differentiate, integrate and (where possible) invert the combination symbolically; simple affine/scaling combinators (`AddAt`, `MulAt`, `LinAt`, `Neg`, `Inv`); a family of elementary named Functions (`Square`, `SqRt`, `Succ`, `Pred`, `Resid`, `AbsV`, `Sign`, `Step1`, `SawToothAt`, the `...At` fractional helpers); the `Algebra`/`AAlgebra`/`ACAlgebra` wrapper hierarchy that lets an arbitrary Object participate in this Function Algebra; a small expression parser (`FuncParser`); and a handful of `Function2ODE`-derived adapters (`OdeConst`, `OdeLinear`, `OdeSquare`, `OdeExp`, `OdeHeight2D`) that expose a symbolic Function as an ODE right-hand side for numerical integration. The `body` subfolder supplies the concrete transcendental and special Functions (trigonometric, hyperbolic, Gamma/Beta, ...) built on top of this Algebra.'
 ---
 

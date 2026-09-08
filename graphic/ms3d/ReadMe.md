@@ -41,7 +41,7 @@ concepts:
 facets:
   layer: domain
   status: legacy
-  complexity: high
+  complexity: 4
 description: 'Loads, holds and displays Milkshape 3D (`.ms3d`) character models: meshes, materials, triangles, vertices and a skeleton of joints with keyframe animation. `Ms3d` is the loader and in-memory model; `Ms3dJoint`, `Ms3dKeyFrame`, `Ms3dMesh`, `Ms3dTriangle`, `Ms3dTexture`, `Ms3dTextureMap` and `Ms3dVertex` are its constituent data records, each reading its own section of the binary file format via `BigEndianReader`. `Ms3dPainter` renders a loaded model by mapping it into 2D and drawing its mesh and bones; `FileBMP` is an unrelated, currently-unimplemented stub for reading Windows BMP images (Java''s image I/O supports only JPEG/GIF/PNG).'
 ---
 
