@@ -26,7 +26,7 @@ import knowledge.IDescriptor;
   * stale: false
   * tags: [code/entity_model, code/domain_model]
   * concepts: [Domain Model, Persistence]
-  * facets: {layer: persistence, status: stable, complexity: 2}
+  * facets: {layer: data, status: stable, complexity: 2}
   * -->
   */
 public class Objekt

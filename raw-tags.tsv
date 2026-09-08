@@ -27,27 +27,27 @@ knowledge/IRelation.java:IRelation	class	knowledge/IRelation.java	code/entity_mo
 knowledge/IDescriptor.java:IDescriptor	class	knowledge/IDescriptor.java	code/interface_contract, code/accessor, code/metadata	Domain Model, Naming	domain	stable	2
 knowledge/IReadyFlag.java:IReadyFlag	class	knowledge/IReadyFlag.java	code/state_flag, code/interface_contract	State Tracking	domain	stable	2
 knowledge/IDirtyFlag.java:IDirtyFlag	class	knowledge/IDirtyFlag.java	code/state_flag, code/interface_contract	State Tracking	domain	stable	2
-knowledge/IPrimaryKey.java:IPrimaryKey	class	knowledge/IPrimaryKey.java	code/composite_key, code/primary_key_lookup, code/sql_generation, code/reflection	Persistence, Record Identity	persistence	stable	3
-knowledge/PersistAble.java:PersistAble	class	knowledge/PersistAble.java	code/orm, code/persistence, code/reflection, code/interface_contract	Persistence, Object-Relational Mapping	persistence	stable	3
-knowledge/IPersistAble.java:IPersistAble	class	knowledge/IPersistAble.java	code/persistence, code/data_access, code/interface_contract	Persistence, Data Access	persistence	stable	3
+knowledge/IPrimaryKey.java:IPrimaryKey	class	knowledge/IPrimaryKey.java	code/composite_key, code/primary_key_lookup, code/sql_generation, code/reflection	Persistence, Record Identity	data	stable	3
+knowledge/PersistAble.java:PersistAble	class	knowledge/PersistAble.java	code/orm, code/persistence, code/reflection, code/interface_contract	Persistence, Object-Relational Mapping	data	stable	3
+knowledge/IPersistAble.java:IPersistAble	class	knowledge/IPersistAble.java	code/persistence, code/data_access, code/interface_contract	Persistence, Data Access	data	stable	3
 knowledge/DirtyFlag.java:DirtyFlag	class	knowledge/DirtyFlag.java	code/state_flag	State Tracking	domain	stable	2
 knowledge/CachedValue.java:CachedValue	class	knowledge/CachedValue.java	code/caching, code/lazy_loading, code/state_flag	Lazy Evaluation, State Tracking	domain	experimental	2
 knowledge/ObjectType.java:ObjectType	class	knowledge/ObjectType.java	code/type_system, code/entity_model, code/domain_model	Domain Model, Object Classification	domain	stable	2
 knowledge/MetaType.java:MetaType	class	knowledge/MetaType.java	code/type_system, code/entity_model, code/orm, code/reflection	Domain Model, Object Classification	domain	stable	2
 knowledge/AttributeObject.java:AttributeObject	class	knowledge/AttributeObject.java	code/entity_model, code/domain_model, code/lazy_loading	Domain Model, Attribute Modelling	domain	stable	3
 knowledge/Relation.java:Relation	class	knowledge/Relation.java	code/entity_model, code/domain_model, code/lazy_loading	Domain Model, Relationship Modelling	domain	stable	3
-knowledge/BasicAttribute.java:BasicAttribute	class	knowledge/BasicAttribute.java	code/entity_model, code/composite_key, code/orm, code/lazy_loading	Domain Model, Persistence	persistence	stable	3
+knowledge/BasicAttribute.java:BasicAttribute	class	knowledge/BasicAttribute.java	code/entity_model, code/composite_key, code/orm, code/lazy_loading	Domain Model, Persistence	data	stable	3
 knowledge/MetricAttribute.java:MetricAttribute	class	knowledge/MetricAttribute.java	code/entity_model, code/orm, code/value_object	Domain Model, Attribute Modelling	domain	stable	2
 knowledge/StringAttribute.java:StringAttribute	class	knowledge/StringAttribute.java	code/entity_model, code/orm, code/value_object	Domain Model, Attribute Modelling	domain	stable	2
 knowledge/TimeAttribute.java:TimeAttribute	class	knowledge/TimeAttribute.java	code/entity_model, code/orm, code/value_object	Domain Model, Attribute Modelling	domain	stable	2
 knowledge/EnumAttribute.java:EnumAttribute	class	knowledge/EnumAttribute.java	code/entity_model, code/orm, code/enum_mapping, code/value_object	Domain Model, Attribute Modelling	domain	stable	2
-knowledge/IdKey.java:IdKey	class	knowledge/IdKey.java	code/primary_key_lookup, code/state_flag, code/orm	Record Identity, Persistence	persistence	stable	2
-knowledge/Status.java:Status	class	knowledge/Status.java	code/entity_model, code/orm, code/state_flag	Domain Model, Persistence	persistence	stable	3
+knowledge/IdKey.java:IdKey	class	knowledge/IdKey.java	code/primary_key_lookup, code/state_flag, code/orm	Record Identity, Persistence	data	stable	2
+knowledge/Status.java:Status	class	knowledge/Status.java	code/entity_model, code/orm, code/state_flag	Domain Model, Persistence	data	stable	3
 knowledge/Objekt.java:Objekt	class	knowledge/Objekt.java	code/entity_model, code/domain_model, code/orm, code/lazy_loading	Domain Model, Persistence	domain	stable	3
 knowledge/Type.java:Type	class	knowledge/Type.java	code/type_system, code/entity_model, code/domain_model	Domain Model, Object Classification	domain	stable	3
-knowledge/DBObjectFactory.java:DBObjectFactory	class	knowledge/DBObjectFactory.java	code/orm, code/data_access, code/sql_generation, code/reflection	Persistence, Object-Relational Mapping	persistence	stable	4
-knowledge/DbCachedFactory.java:DbCachedFactory	class	knowledge/DbCachedFactory.java	code/caching, code/cache_lookup, code/orm, code/data_access	Persistence, Identity Caching	persistence	stable	3
-knowledge	folder	knowledge	code/orm, code/domain_model, code/entity_model, code/reflection	Knowledge Representation, Object-Relational Mapping	persistence	legacy	4
+knowledge/DBObjectFactory.java:DBObjectFactory	class	knowledge/DBObjectFactory.java	code/orm, code/data_access, code/sql_generation, code/reflection	Persistence, Object-Relational Mapping	data	stable	4
+knowledge/DbCachedFactory.java:DbCachedFactory	class	knowledge/DbCachedFactory.java	code/caching, code/cache_lookup, code/orm, code/data_access	Persistence, Identity Caching	data	stable	3
+knowledge	folder	knowledge	code/orm, code/domain_model, code/entity_model, code/reflection	Knowledge Representation, Object-Relational Mapping	data	legacy	4
 knowledge/KnowledgeTest.java:KnowledgeTest	class	knowledge/KnowledgeTest.java	code/unit_test, code/test_double, code/sql_generation	Testing, Regression Pinning	test	stable	3
 tools/threads/TimeOuterTest.java:TimeOuterTest	class	tools/threads/TimeOuterTest.java	code/unit_test, code/thread_interruption, code/timeout_handling	Testing, Concurrency	test	stable	3
 streamIO/detector/LimitedSizeStreamOut.java:LimitedSizeStreamOut	class	streamIO/detector/LimitedSizeStreamOut.java	code/fixed_size_buffer, code/overflow_detection	Capacity Management, Stream Output	infrastructure	stable	2
@@ -58,9 +58,9 @@ streamIO/factory	folder	streamIO/factory	code/factory_pattern, code/reflection, 
 streamIO/character/FileReader.java:FileReader	class	streamIO/character/FileReader.java	code/file_io, code/encoding_handling, code/file_polling	File I/O, Text Encoding	infrastructure	stable	2
 streamIO/character/FileWriter.java:FileWriter	class	streamIO/character/FileWriter.java	code/file_io, code/encoding_handling	File I/O, Text Encoding	infrastructure	stable	2
 streamIO/character	folder	streamIO/character	code/file_io, code/encoding_handling, code/file_polling	File I/O, Text Encoding	infrastructure	stable	2
-persistences/Objekt.java:Objekt	class	persistences/Objekt.java	code/entity_model, code/domain_model	Domain Model, Persistence	persistence	stable	2
-persistences/PersistedObject.java:PersistedObject	class	persistences/PersistedObject.java	code/entity_model, code/registry_pattern	Record Identity, Persistence	persistence	broken	2
-persistences	folder	persistences	code/entity_model, code/registry_pattern, code/domain_model	Domain Model, Persistence	persistence	broken	2
+persistences/Objekt.java:Objekt	class	persistences/Objekt.java	code/entity_model, code/domain_model	Domain Model, Persistence	data	stable	2
+persistences/PersistedObject.java:PersistedObject	class	persistences/PersistedObject.java	code/entity_model, code/registry_pattern	Record Identity, Persistence	data	broken	2
+persistences	folder	persistences	code/entity_model, code/registry_pattern, code/domain_model	Domain Model, Persistence	data	broken	2
 swing/HashTreeNode.java:HashTreeNode	class	swing/HashTreeNode.java	code/tree_node, code/hash_equality, code/graph_traversal	Tree Visualization, Graph Model	infrastructure	broken	4
 swing/JHyperTree.java:JHyperTree	class	swing/JHyperTree.java	code/tree_data_structure, code/ui_components	Tree Visualization, UI Component	infrastructure	stable	3
 swing/KeyTreeNavigator.java:KeyTreeNavigator	class	swing/KeyTreeNavigator.java	code/keyboard_navigation, code/tree_navigation	Tree Visualization, UI Component	infrastructure	stable	3
