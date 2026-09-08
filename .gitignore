@@ -119,7 +119,12 @@ jacoco/
 *.swp
 *.swo
 *~
-/_NaturalLang
+# The vendored LanguageTool checkout stays out of the repo, but the foreign sidecar
+# card that documents it does not - it is this repo's own documentation. Ignoring the
+# directory outright also hid the sidecar, so ignore the contents and re-admit the
+# card. Sub-directories still match the first rule, so the vendored tree stays out.
+/_NaturalLang/*
+!/_NaturalLang/*.md
 
 # Tags-pipeline intermediates: raw-tags.tsv is the durable artifact, these are not
 raw-tags-enriched.tsv
