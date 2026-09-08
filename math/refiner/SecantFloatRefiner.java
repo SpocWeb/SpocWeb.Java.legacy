@@ -37,7 +37,7 @@ import function.byref.ByRefDouble;
  * stale: false
  * tags: [code/root_finding]
  * concepts: [Secant Method Root Refiner]
- * facets: {layer: utility, status: legacy, complexity: low}
+ * facets: {layer: utility, status: legacy, complexity: 2}
  * -->
  */
 public class SecantFloatRefiner 

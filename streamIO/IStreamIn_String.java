@@ -59,7 +59,7 @@ package streamIO;
   * stale: false
   * tags: [code/iterator]
   * concepts: [String Input Stream Interface]
-  * facets: {layer: infrastructure, status: legacy, complexity: low}
+  * facets: {layer: infrastructure, status: legacy, complexity: 2}
   * -->
   */
 public interface IStreamIn_String {

@@ -16,7 +16,7 @@ import streamIO.Log;
  * stale: false
  * tags: [code/combinatorics, code/special_function]
  * concepts: [Combinatorics]
- * facets: {layer: utility, status: legacy, complexity: low}
+ * facets: {layer: utility, status: legacy, complexity: 2}
  * -->
  * n!! = dblFact(n) = n * dblFact(n-2); Fact(0) = Fact(1) = 1;	 */
 public class DblFactorial {

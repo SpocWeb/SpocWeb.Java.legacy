@@ -30,7 +30,7 @@ import streamIO.IIStreamIn;
   * stale: false
   * tags: [code/callback_pattern, code/deferred_execution]
   * concepts: [Future Completion Handler]
-  * facets: {layer: infrastructure, status: legacy, complexity: low}
+  * facets: {layer: infrastructure, status: legacy, complexity: 2}
   * -->
   */
 public class FutureHandler

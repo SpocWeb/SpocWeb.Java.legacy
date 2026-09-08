@@ -68,7 +68,7 @@ import function.index.AIndexer;
  * stale: false
  * tags: [code/patricia_trie]
  * concepts: [Patricia Trie Node]
- * facets: {layer: utility, status: legacy, complexity: medium}
+ * facets: {layer: utility, status: legacy, complexity: 3}
  * -->
  */
 final public class PatriciaNode 
@@ -581,7 +581,7 @@ implements IStreamWriteAble {
  * stale: false
  * tags: [code/patricia_trie]
  * concepts: [Patricia Trie Object Iterator]
- * facets: {layer: utility, status: legacy, complexity: low}
+ * facets: {layer: utility, status: legacy, complexity: 2}
  * -->
  */
 class ObjectIterator 
@@ -764,7 +764,7 @@ extends AStreamIn
  * stale: false
  * tags: [code/patricia_trie]
  * concepts: [Patricia Trie Index Iterator]
- * facets: {layer: utility, status: legacy, complexity: low}
+ * facets: {layer: utility, status: legacy, complexity: 2}
  * -->
  */
 class IndexIterator 
@@ -945,7 +945,7 @@ implements IStreamIn_Int
  * stale: false
  * tags: [code/patricia_trie]
  * concepts: [Patricia Trie Iterator Base]
- * facets: {layer: utility, status: legacy, complexity: low}
+ * facets: {layer: utility, status: legacy, complexity: 2}
  * -->
  */
 class PatriciaIterator {

@@ -26,7 +26,7 @@ import streamIO.object.IStreamIn;
   * <!-- docstate
   * tags: [code/container, code/hash_table, code/container_iteration]
   * concepts: [Concrete Storage Containers - Arrays - Hash Tables and Relations]
-  * facets: {layer: utility, status: legacy, complexity: high}
+  * facets: {layer: utility, status: legacy, complexity: 4}
   * digest: 695eebcc3f128b59195d4cb32f52b9e17c719c06cfc93f5dee1cbdfc0de99740
   * stale: false
   * -->

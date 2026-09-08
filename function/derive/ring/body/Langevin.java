@@ -31,7 +31,7 @@ import function.byref.combinatoric.Bernoulli;
  * stale: false
  * tags: [code/mathematical_function]
  * concepts: [Thermodynamics, Magnetism]
- * facets: {layer: utility, status: legacy, complexity: medium}
+ * facets: {layer: utility, status: legacy, complexity: 3}
  * -->
  */
 public class Langevin

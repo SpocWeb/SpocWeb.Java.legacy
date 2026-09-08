@@ -29,7 +29,7 @@ import streamIO.exception.ReadOnlyException;
   * stale: false
   * tags: [code/lattice_structure, code/immutable_wrapper, code/delegation]
   * concepts: [Lattice, Constant/Immutable Wrapper]
-  * facets: {layer: utility, status: legacy, complexity: medium}
+  * facets: {layer: utility, status: legacy, complexity: 3}
   * -->
   */
 public class CLattice

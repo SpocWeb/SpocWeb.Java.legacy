@@ -25,7 +25,7 @@ import streamIO.object.AStreamIn;
  * stale: false
  * tags: [code/file_io, code/iterator_pattern, code/file_backup]
  * concepts: [File System, File I/O]
- * facets: {layer: infrastructure, status: stable, complexity: low}
+ * facets: {layer: infrastructure, status: stable, complexity: 2}
  * -->
  */
 public class FileBackupIterator

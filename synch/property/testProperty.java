@@ -22,7 +22,7 @@ import java.io.ObjectOutputStream;
  * stale: false
  * tags: [code/attached_property]
  * concepts: [Scratch Test Class]
- * facets: {layer: test, status: unfinished, complexity: low}
+ * facets: {layer: test, status: unfinished, complexity: 2}
  * -->
  */
 public class testProperty {
@@ -37,7 +37,7 @@ public class testProperty {
 	 * <!-- docstate
 	 * tags: [code/attached_property]
 	 * concepts: [Scratch Test Entry Point]
-	 * facets: {layer: test, status: unfinished, complexity: low}
+	 * facets: {layer: test, status: unfinished, complexity: 2}
 	 * -->
 	 */
 	public static void main (String[] args) throws IOException {

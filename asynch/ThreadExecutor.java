@@ -31,7 +31,7 @@ import streamIO.object.enumer.container.DeQueueArr;
   * stale: false
   * tags: [code/thread_pooling]
   * concepts: [Thread Executor]
-  * facets: {layer: infrastructure, status: broken, complexity: medium}
+  * facets: {layer: infrastructure, status: broken, complexity: 3}
   * -->
   */
 public class ThreadExecutor

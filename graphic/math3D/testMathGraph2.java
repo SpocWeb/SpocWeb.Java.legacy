@@ -62,7 +62,7 @@ import math.vector.VectorShort;
  * stale: false
  * tags: [code/testing]
  * concepts: [3D Graph Demo/Test Harness]
- * facets: {layer: test, status: legacy, complexity: low}
+ * facets: {layer: test, status: legacy, complexity: 2}
  * -->
  */
 public class testMathGraph2

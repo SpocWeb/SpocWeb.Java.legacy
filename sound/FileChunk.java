@@ -32,7 +32,7 @@ import streamIO.integer.encoding.BigEndianReader;
  * stale: false
  * tags: [code/binary_reader, code/file_parsing]
  * concepts: [RIFF Chunk]
- * facets: {layer: domain, status: legacy, complexity: low}
+ * facets: {layer: domain, status: legacy, complexity: 2}
  * -->
  */
 public class FileChunk {

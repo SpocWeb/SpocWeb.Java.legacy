@@ -21,7 +21,7 @@ package tester.process;
   * stale: false
   * tags: [code/state_machine]
   * concepts: [Matrix-Based Automaton]
-  * facets: {layer: utility, status: legacy, complexity: medium}
+  * facets: {layer: utility, status: legacy, complexity: 3}
   * -->
   * Like with Graphs, Automatons can be represented by Matrices or Lists.	 */
 public class MatrixAutomaton {

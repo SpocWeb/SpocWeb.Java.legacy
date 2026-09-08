@@ -36,7 +36,7 @@ import stringOp.parser.IIStreamIn_Int;
  * stale: false
  * tags: [code/audio, code/file_parsing]
  * concepts: [WAV Container]
- * facets: {layer: domain, status: legacy, complexity: medium}
+ * facets: {layer: domain, status: legacy, complexity: 3}
  * -->
  */
 public class WaveFile 

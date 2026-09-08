@@ -41,7 +41,7 @@ package tools;
   * stale: false
   * tags: [code/locking, code/server_facade, code/stub_implementation]
   * concepts: [Concurrency]
-  * facets: {layer: infrastructure, status: unfinished, complexity: medium}
+  * facets: {layer: infrastructure, status: unfinished, complexity: 3}
   * -->
   */
 public class LockedServer

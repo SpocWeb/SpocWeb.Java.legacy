@@ -29,7 +29,7 @@ package asynch;
   * stale: false
   * tags: [code/concurrency_primitive]
   * concepts: [Synchronization Primitive Interface]
-  * facets: {layer: infrastructure, status: legacy, complexity: low}
+  * facets: {layer: infrastructure, status: legacy, complexity: 2}
   * -->
   */
 public interface ISynch {

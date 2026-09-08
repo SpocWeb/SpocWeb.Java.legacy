@@ -29,7 +29,7 @@ package streamIO.copy.boole;
  * stale: false
  * tags: [code/boolean_algebra]
  * concepts: [Boolean Algebra]
- * facets: {layer: utility, status: legacy, complexity: medium}
+ * facets: {layer: utility, status: legacy, complexity: 3}
  * -->
  */
 public interface Boole

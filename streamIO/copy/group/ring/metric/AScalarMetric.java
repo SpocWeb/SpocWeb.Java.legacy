@@ -20,7 +20,7 @@ import streamIO.copy.order.IOrder;
  * stale: false
  * tags: [code/metric_space, code/root_finding, code/numerical_integration, code/big_integer_arithmetic]
  * concepts: [Metric Spaces - Root Finding and Numerical Integration]
- * facets: {layer: domain, status: legacy, complexity: high}
+ * facets: {layer: domain, status: legacy, complexity: 4}
  * -->
  * doesn't define it's own self, because the Methods are too few and too frequent.	 */
 public class AScalarMetric

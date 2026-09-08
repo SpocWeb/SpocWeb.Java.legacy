@@ -23,7 +23,7 @@ import function.byref.ByRefBoolean;
   * stale: false
   * tags: [code/boolean_algebra, code/algorithm_optimization]
   * concepts: [Boolean Algebra, Predicate Algebra]
-  * facets: {layer: utility, status: broken, complexity: medium}
+  * facets: {layer: utility, status: broken, complexity: 3}
   * -->
   */
 public class TesterBond

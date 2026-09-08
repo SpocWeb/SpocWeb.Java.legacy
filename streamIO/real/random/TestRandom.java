@@ -36,7 +36,7 @@ import function.derive.ring.body.Gauss;
  * stale: false
  * tags: [code/random_number_generator]
  * concepts: [Random Generator Test Harness]
- * facets: {layer: test, status: legacy, complexity: low}
+ * facets: {layer: test, status: legacy, complexity: 2}
  * -->
  */
 public class TestRandom {
@@ -53,7 +53,7 @@ public class TestRandom {
 	 * <!-- docstate
 	 * tags: [code/random_number_generator]
 	 * concepts: [Generator Self-Test]
-	 * facets: {layer: test, status: legacy, complexity: low}
+	 * facets: {layer: test, status: legacy, complexity: 2}
 	 * -->
 	 */
 	private static final void testGenerator(final IStreamIn_Float ran, final int maxPower) {
@@ -92,7 +92,7 @@ public class TestRandom {
 	 * <!-- docstate
 	 * tags: [code/random_number_generator]
 	 * concepts: [Distribution Test Helper]
-	 * facets: {layer: test, status: legacy, complexity: low}
+	 * facets: {layer: test, status: legacy, complexity: 2}
 	 * -->
 	 * by sampling it between -1 and +1	 */
 	final static public void TEST_RANDOM(final IStreamIn_Float ran,
@@ -126,7 +126,7 @@ public class TestRandom {
 			Assert.EQUALS(compare, actual, 0, 2* <!-- docstate
 			Assert.EQUALS(compare, actual, 0, 2* tags: [code/random_number_generator]
 			Assert.EQUALS(compare, actual, 0, 2* concepts: [Distribution Test Helper]
-			Assert.EQUALS(compare, actual, 0, 2* facets: {layer: test, status: legacy, complexity: low}
+			Assert.EQUALS(compare, actual, 0, 2* facets: {layer: test, status: legacy, complexity: 2}
 			Assert.EQUALS(compare, actual, 0, 2* -->
 	 * by sampling it between -1 and +1	 */
 	final static public void TEST_RANDOM(final IStreamIn_Int ran, final float[] compare,
@@ -153,7 +153,7 @@ public class TestRandom {
 	 * <!-- docstate
 	 * tags: [code/random_number_generator]
 	 * concepts: [Bit-Level Randomness Test]
-	 * facets: {layer: test, status: legacy, complexity: low}
+	 * facets: {layer: test, status: legacy, complexity: 2}
 	 * -->
 	 */ 
 	private static final void testRandomBit(final IStreamIn_Int ran, final double error) {
@@ -192,7 +192,7 @@ public class TestRandom {
 	 * <!-- docstate
 	 * tags: [code/random_number_generator]
 	 * concepts: [Gaussian Test Helper]
-	 * facets: {layer: test, status: legacy, complexity: low}
+	 * facets: {layer: test, status: legacy, complexity: 2}
 	 * -->
 	 */
 	private static final void testGauss(final IStreamIn_Float ran
@@ -208,7 +208,7 @@ public class TestRandom {
 	 * <!-- docstate
 	 * tags: [code/random_number_generator]
 	 * concepts: [Demo Entry Point]
-	 * facets: {layer: test, status: legacy, complexity: low}
+	 * facets: {layer: test, status: legacy, complexity: 2}
 	 * -->
 	 */
 	public static void main(final String[] args) throws Exception {
@@ -219,7 +219,7 @@ public class TestRandom {
 	 * <!-- docstate
 	 * tags: [code/random_number_generator]
 	 * concepts: [Self-Test Method]
-	 * facets: {layer: test, status: legacy, complexity: low}
+	 * facets: {layer: test, status: legacy, complexity: 2}
 	 * -->
 	 */
 	public static void testIt(final String[] args) throws Exception {

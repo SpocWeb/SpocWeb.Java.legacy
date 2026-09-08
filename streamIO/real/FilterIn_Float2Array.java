@@ -19,7 +19,7 @@ import streamIO.object.AStreamIn;
  * stale: false
  * tags: [code/stream_filter, code/vector_math]
  * concepts: [Float-to-Array Adapter Filter]
- * facets: {layer: infrastructure, status: legacy, complexity: low}
+ * facets: {layer: infrastructure, status: legacy, complexity: 2}
  * -->
  */
 public class FilterIn_Float2Array

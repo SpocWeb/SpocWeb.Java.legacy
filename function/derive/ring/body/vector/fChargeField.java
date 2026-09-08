@@ -27,7 +27,7 @@ import function.AFunction;
  * stale: false
  * tags: [code/mathematical_function, code/vector_math]
  * concepts: [Electromagnetism, Vector Fields]
- * facets: {layer: utility, status: legacy, complexity: medium}
+ * facets: {layer: utility, status: legacy, complexity: 3}
  * -->
  * because the MultiPoles have an extent!	*/
 public class fChargeField

@@ -23,7 +23,7 @@ import streamIO.integer.jdbc.ResultSetCrossJoin;
  * <!-- docstate
  * tags: [code/predicate_filter, code/predicate_filtering]
  * concepts: [Filters ResultSet Rows Where a Predicate is False]
- * facets: {layer: domain, status: legacy, complexity: low}
+ * facets: {layer: domain, status: legacy, complexity: 2}
  * -->
  */
 public class FilterRsRows 

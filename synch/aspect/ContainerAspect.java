@@ -14,7 +14,7 @@ import synch.InvalidException;
  * stale: false
  * tags: [code/attached_property]
  * concepts: [Composite Value Object Container]
- * facets: {layer: domain, status: legacy, complexity: medium}
+ * facets: {layer: domain, status: legacy, complexity: 3}
  * -->
  */
 public class ContainerAspect

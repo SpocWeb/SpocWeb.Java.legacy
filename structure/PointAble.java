@@ -33,7 +33,7 @@ package structure; //
   * stale: false
   * tags: [code/reference_counting]
   * concepts: [Pointer-Like Reference Holder]
-  * facets: {layer: utility, status: legacy, complexity: low}
+  * facets: {layer: utility, status: legacy, complexity: 2}
   * -->
   */
 public interface PointAble {

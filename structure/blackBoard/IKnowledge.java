@@ -13,7 +13,7 @@ package structure.blackBoard;
  * stale: false
  * tags: [code/blackboard_pattern]
  * concepts: [Knowledge Source Interface]
- * facets: {layer: domain, status: legacy, complexity: low}
+ * facets: {layer: domain, status: legacy, complexity: 2}
  * -->
  */
 public interface IKnowledge {

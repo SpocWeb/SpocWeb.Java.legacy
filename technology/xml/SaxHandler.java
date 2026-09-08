@@ -42,7 +42,7 @@ import org.xml.sax.helpers.DefaultHandler;
  * stale: false
  * tags: [code/sax_parsing]
  * concepts: [SAX Content Handler Base]
- * facets: {layer: infrastructure, status: legacy, complexity: low}
+ * facets: {layer: infrastructure, status: legacy, complexity: 2}
  * -->
  */
 public class SaxHandler 

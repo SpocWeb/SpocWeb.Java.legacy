@@ -28,7 +28,7 @@ package graphic.mvc;
  * stale: false
  * tags: [code/model_state_management, code/observer_pattern]
  * concepts: [Model Interface]
- * facets: {layer: infrastructure, status: legacy, complexity: low}
+ * facets: {layer: infrastructure, status: legacy, complexity: 2}
  * -->
  */
 public interface IModel extends IRepainter {

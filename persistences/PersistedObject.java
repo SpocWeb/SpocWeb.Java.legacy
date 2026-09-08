@@ -33,7 +33,7 @@ import streamIO.copy.monoid.Association;
   * stale: false
   * tags: [code/entity_model, code/registry_pattern]
   * concepts: [Record Identity, Persistence]
-  * facets: {layer: persistence, status: broken, complexity: low}
+  * facets: {layer: persistence, status: broken, complexity: 2}
   * -->
   */
 public class PersistedObject

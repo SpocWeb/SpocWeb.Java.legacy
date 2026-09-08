@@ -14,7 +14,7 @@ import math.vector.VectorFloat;
  * stale: false
  * tags: [code/3d_rendering, code/projection]
  * concepts: [Projected 3D Plot]
- * facets: {layer: domain, status: legacy, complexity: medium}
+ * facets: {layer: domain, status: legacy, complexity: 3}
  * -->
  */
 public class ProjectPlot {

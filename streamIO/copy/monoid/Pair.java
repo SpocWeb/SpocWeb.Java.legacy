@@ -31,7 +31,7 @@ package streamIO.copy.monoid;
   * stale: false
   * tags: [code/key_value_pair]
   * concepts: [Key-Value Pair]
-  * facets: {layer: utility, status: legacy, complexity: medium}
+  * facets: {layer: utility, status: legacy, complexity: 3}
   * -->
   */
 final public class Pair

@@ -25,7 +25,7 @@ import graphs.IValueSetter;
   * stale: false
   * tags: [code/callback_pattern, code/deferred_execution]
   * concepts: [Future with Callback]
-  * facets: {layer: infrastructure, status: legacy, complexity: low}
+  * facets: {layer: infrastructure, status: legacy, complexity: 2}
   * -->
   */
 public class CallbackFuture

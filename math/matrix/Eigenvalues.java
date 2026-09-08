@@ -36,7 +36,7 @@ import function.byref.ByRefDouble;
  * stale: false
  * tags: [code/eigenvalue_decomposition, code/numerical_linear_algebra]
  * concepts: [General (Non-Symmetric) Eigenvalue Computation]
- * facets: {layer: utility, status: legacy, complexity: high}
+ * facets: {layer: utility, status: legacy, complexity: 4}
  * -->
  */
 public class Eigenvalues {
@@ -58,7 +58,7 @@ public class Eigenvalues {
 	 * <!-- docstate
 	 * tags: [code/eigenvalue_decomposition]
 	 * concepts: [Matrix Balancing (Numerical Stability)]
-	 * facets: {layer: utility, status: legacy, complexity: medium}
+	 * facets: {layer: utility, status: legacy, complexity: 3}
 	 * -->
 	 */
 	final static public void BALANCE(final double[][] a) {
@@ -117,7 +117,7 @@ public class Eigenvalues {
 	 * <!-- docstate
 	 * tags: [code/eigenvalue_decomposition]
 	 * concepts: [Reduction to Hessenberg Form]
-	 * facets: {layer: utility, status: legacy, complexity: medium}
+	 * facets: {layer: utility, status: legacy, complexity: 3}
 	 * -->
 	 */
 	final static public void HESSENBERG(final double[][] a) {
@@ -173,7 +173,7 @@ public class Eigenvalues {
 	 * <!-- docstate
 	 * tags: [code/eigenvalue_decomposition]
 	 * concepts: [QR Algorithm Eigenvalue Extraction]
-	 * facets: {layer: utility, status: legacy, complexity: high}
+	 * facets: {layer: utility, status: legacy, complexity: 4}
 	 * -->
 	 */
 	final static public void EIGENVALUES(final double[][] a, final double[] wr, final double[] wi) {
@@ -189,7 +189,7 @@ public class Eigenvalues {
 	 * <!-- docstate
 	 * tags: [code/eigenvalue_decomposition]
 	 * concepts: [QR Algorithm Eigenvalue Extraction (Bounded Iterations)]
-	 * facets: {layer: utility, status: legacy, complexity: high}
+	 * facets: {layer: utility, status: legacy, complexity: 4}
 	 * -->
 	 */
 	final static public void EIGENVALUES(final double[][] a, final int n, final double[] wr, final double[] wi) {
@@ -247,7 +247,7 @@ public class Eigenvalues {
 	 * <!-- docstate
 	 * tags: [code/eigenvalue_decomposition]
 	 * concepts: [Wilkinson Shift Step]
-	 * facets: {layer: utility, status: legacy, complexity: medium}
+	 * facets: {layer: utility, status: legacy, complexity: 3}
 	 * -->
 	 */
 	private static double EV_SHIFT(final double[][] a, final int nn, final double x) {
@@ -262,7 +262,7 @@ public class Eigenvalues {
 	 * <!-- docstate
 	 * tags: [code/eigenvalue_decomposition]
 	 * concepts: [Complex Eigenvalue Pair Assembly]
-	 * facets: {layer: utility, status: legacy, complexity: low}
+	 * facets: {layer: utility, status: legacy, complexity: 2}
 	 * -->
 	 */
 	private static void SET_COMPLEX_EV_PAIR(final double[] wr, final double[] wi, final double t, final int nn,
@@ -293,7 +293,7 @@ public class Eigenvalues {
 	 * <!-- docstate
 	 * tags: [code/eigenvalue_decomposition]
 	 * concepts: [Eigenvalue Refinement Step]
-	 * facets: {layer: utility, status: legacy, complexity: medium}
+	 * facets: {layer: utility, status: legacy, complexity: 3}
 	 * -->
 	 */
 	private static void IMPROVE_EV(final double[][] a, final int nn, final int l, double x, double y, double w) {
@@ -401,7 +401,7 @@ public class Eigenvalues {
 	 * <!-- docstate
 	 * tags: [code/eigenvalue_decomposition, code/testing]
 	 * concepts: [Matrix Norm Diagnostic Output]
-	 * facets: {layer: test, status: legacy, complexity: low}
+	 * facets: {layer: test, status: legacy, complexity: 2}
 	 * -->
 	 */
 	private static final void writeNorms(final double[][] a) {
@@ -438,7 +438,7 @@ public class Eigenvalues {
 	 * <!-- docstate
 	 * tags: [code/testing, code/eigenvalue_decomposition]
 	 * concepts: [Eigenvalue Self-Test]
-	 * facets: {layer: test, status: legacy, complexity: low}
+	 * facets: {layer: test, status: legacy, complexity: 2}
 	 * -->
 	 */
 	private static final void testEIGENVALUES() {
@@ -486,7 +486,7 @@ public class Eigenvalues {
 	 * <!-- docstate
 	 * tags: [code/testing, code/eigenvalue_decomposition]
 	 * concepts: [Hessenberg Self-Test]
-	 * facets: {layer: test, status: legacy, complexity: low}
+	 * facets: {layer: test, status: legacy, complexity: 2}
 	 * -->
 	 */
 	private static final void testHessenberg() {
@@ -525,7 +525,7 @@ public class Eigenvalues {
 	 * <!-- docstate
 	 * tags: [code/testing]
 	 * concepts: [Demo Entry Point]
-	 * facets: {layer: test, status: legacy, complexity: low}
+	 * facets: {layer: test, status: legacy, complexity: 2}
 	 * -->
 	 */
 	final static public void main(String[] args) {

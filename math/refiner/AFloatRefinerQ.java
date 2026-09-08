@@ -36,7 +36,7 @@ import function.IFloatFunction;
  * stale: false
  * tags: [code/root_finding, code/bracket_matching]
  * concepts: [Bracketed Root Refiner Base Class]
- * facets: {layer: utility, status: broken, complexity: medium}
+ * facets: {layer: utility, status: broken, complexity: 3}
  * -->
  */
 public class AFloatRefinerQ 

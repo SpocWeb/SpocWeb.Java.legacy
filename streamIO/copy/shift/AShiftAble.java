@@ -17,7 +17,7 @@ import streamIO.copy.ICopyAble;
  * stale: false
  * tags: [code/abstract_base, code/delegation, code/in_place_operation]
  * concepts: [Shift and Rotate, Delegation Pattern]
- * facets: {layer: utility, status: broken, complexity: medium}
+ * facets: {layer: utility, status: broken, complexity: 3}
  * -->
  * The highest bit has to retain it's value with arithmetic Shifting. */
 public class AShiftAble

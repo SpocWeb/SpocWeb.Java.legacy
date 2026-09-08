@@ -15,7 +15,7 @@ import streamIO.object.enumer.ReverseEnumerator;
   * <!-- docstate
   * tags: [code/container, code/hash_table, code/container_iteration]
   * concepts: [Concrete Storage Containers - Arrays - Hash Tables and Relations]
-  * facets: {layer: utility, status: legacy, complexity: high}
+  * facets: {layer: utility, status: legacy, complexity: 4}
   * digest: a81df4bb0e8b81584163459a9187946540682555507ecc5264ac01c1e288c9f7
   * stale: false
   * -->

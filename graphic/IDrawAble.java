@@ -24,7 +24,7 @@ import java.awt.Graphics;
   * stale: false
   * tags: [code/graphics]
   * concepts: [Rendering Abstraction Interface]
-  * facets: {layer: infrastructure, status: legacy, complexity: low}
+  * facets: {layer: infrastructure, status: legacy, complexity: 2}
   * -->
   */
 public interface IDrawAble {

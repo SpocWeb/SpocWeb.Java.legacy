@@ -38,7 +38,7 @@ import function.vector.IFloatVectorFunction;
  * stale: false
  * tags: [code/linear_regression, code/singular_value_decomposition]
  * concepts: [Linear Fit (SVD)]
- * facets: {layer: utility, status: legacy, complexity: medium}
+ * facets: {layer: utility, status: legacy, complexity: 3}
  * -->
  */
 public class LinearFitDouble {

@@ -10,7 +10,7 @@ import tester.ITester;
   * stale: false
   * tags: [code/boolean_algebra, code/predicate_logic]
   * concepts: [Boolean OR Tester]
-  * facets: {layer: utility, status: legacy, complexity: low}
+  * facets: {layer: utility, status: legacy, complexity: 2}
   * -->
   */
 public class TesterOR

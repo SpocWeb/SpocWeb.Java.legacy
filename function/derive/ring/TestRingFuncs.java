@@ -17,7 +17,7 @@ import function.derive.IDeriveAble;
  * stale: false
  * tags: [code/testing, code/algebraic_function]
  * concepts: [Ring Function Test Harness]
- * facets: {layer: test, status: legacy, complexity: low}
+ * facets: {layer: test, status: legacy, complexity: 2}
  * -->
  * created in the main() method. */
 public class TestRingFuncs {
@@ -27,7 +27,7 @@ public class TestRingFuncs {
 	 * <!-- docstate
 	 * tags: [code/testing]
 	 * concepts: [Instantiation Self-Test]
-	 * facets: {layer: test, status: legacy, complexity: low}
+	 * facets: {layer: test, status: legacy, complexity: 2}
 	 * -->
 	 */
 	public static void testInstantiation() {
@@ -39,7 +39,7 @@ public class TestRingFuncs {
 	 * <!-- docstate
 	 * tags: [code/testing]
 	 * concepts: [Demo Entry Point]
-	 * facets: {layer: test, status: legacy, complexity: low}
+	 * facets: {layer: test, status: legacy, complexity: 2}
 	 * -->
 	 * via the command line.	 */
 	public static void main(String[] args) throws java.io.IOException {

@@ -23,7 +23,7 @@ import function.IOrderAble;
  * stale: false
  * tags: [code/abstract_base, code/delegation, code/numeric_comparison]
  * concepts: [Order Relation, Delegation Pattern]
- * facets: {layer: utility, status: legacy, complexity: medium}
+ * facets: {layer: utility, status: legacy, complexity: 3}
  * -->
  * less	 */
 public class AOrder

@@ -57,7 +57,7 @@ import java.io.IOException;
   * stale: false
   * tags: [code/file_transfer, code/flag_file_handshake, code/timeout_handling]
   * concepts: [File Transfer, Interprocess Communication]
-  * facets: {layer: io, status: broken, complexity: medium}
+  * facets: {layer: io, status: broken, complexity: 3}
   * -->
   */
 public class TransactFTP {

@@ -44,7 +44,7 @@ import function.real.Sum;
  * stale: false
  * tags: [code/stream_filter]
  * concepts: [Function-Based Float Input Filter]
- * facets: {layer: infrastructure, status: legacy, complexity: low}
+ * facets: {layer: infrastructure, status: legacy, complexity: 2}
  * -->
  */
 public class FilterIn_FloatByFunction 

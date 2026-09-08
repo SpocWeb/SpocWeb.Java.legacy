@@ -39,7 +39,7 @@ import java.util.Map;
  * stale: false
  * tags: [code/stream_adapter]
  * concepts: [Attributed Stream Base Class]
- * facets: {layer: infrastructure, status: legacy, complexity: low}
+ * facets: {layer: infrastructure, status: legacy, complexity: 2}
  * -->
  */
 public abstract class AAttributedStream 

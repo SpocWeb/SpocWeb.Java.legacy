@@ -19,7 +19,7 @@ package synch;
   * stale: false
   * tags: [code/observer_pattern, code/validation]
   * concepts: [Constrained Publisher]
-  * facets: {layer: domain, status: broken, complexity: medium}
+  * facets: {layer: domain, status: broken, complexity: 3}
   * -->
   */
 public class UniCastConstrained

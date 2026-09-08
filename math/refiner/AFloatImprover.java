@@ -23,7 +23,7 @@ package math.refiner;
  * stale: false
  * tags: [code/fixed_point_iteration]
  * concepts: [Iterative Improver Base Class]
- * facets: {layer: utility, status: legacy, complexity: low}
+ * facets: {layer: utility, status: legacy, complexity: 2}
  * -->
  */
 public class AFloatImprover

@@ -88,7 +88,7 @@ import function.IFunction;
  * stale: false
  * tags: [code/concatenation, code/algebraic_structure]
  * concepts: [Monoid, Concatenation]
- * facets: {layer: utility, status: legacy, complexity: medium}
+ * facets: {layer: utility, status: legacy, complexity: 3}
  * -->
  */
 public interface ISemiMonoid

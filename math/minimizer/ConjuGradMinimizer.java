@@ -39,7 +39,7 @@ import function.vector.IFloatScalarField;
  * stale: false
  * tags: [code/conjugate, code/optimization]
  * concepts: [Conjugate Gradient Minimizer]
- * facets: {layer: utility, status: legacy, complexity: high}
+ * facets: {layer: utility, status: legacy, complexity: 4}
  * -->
  */
 public class ConjuGradMinimizer
@@ -449,7 +449,7 @@ implements IFloatFunction {
  * stale: false
  * tags: [code/test_fixture]
  * concepts: [Distorted Squared Distance Test Fixture]
- * facets: {layer: test, status: legacy, complexity: low}
+ * facets: {layer: test, status: legacy, complexity: 2}
  * -->
  */
 class DistSqrDistorted

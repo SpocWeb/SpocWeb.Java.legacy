@@ -55,7 +55,7 @@ import function.vector.IFloatVectorField;
  * stale: false
  * tags: [code/growable_array, code/array_math]
  * concepts: [Growable float[] Vector]
- * facets: {layer: domain, status: broken, complexity: high}
+ * facets: {layer: domain, status: broken, complexity: 4}
  * -->
  */
 public class VectorFloat 
@@ -5134,7 +5134,7 @@ extends AVector {
  * stale: false
  * tags: [code/functional_interfaces]
  * concepts: [Reverse-Order Float Stream Source]
- * facets: {layer: utility, status: legacy, complexity: low}
+ * facets: {layer: utility, status: legacy, complexity: 2}
  * -->
  */
 final class VectorFloatStreamIn

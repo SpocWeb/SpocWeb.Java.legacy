@@ -42,7 +42,7 @@ import math.vector.VectorDouble;
  * stale: false
  * tags: [code/differential_integration, code/vector_math]
  * concepts: [ODE Integration]
- * facets: {layer: utility, status: legacy, complexity: low}
+ * facets: {layer: utility, status: legacy, complexity: 2}
  * -->
  */
 public class OdeHeight

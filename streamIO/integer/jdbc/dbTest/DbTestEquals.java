@@ -18,7 +18,7 @@ import synch.ValidationRule;
  * <!-- docstate
  * tags: [code/predicate, code/predicate_evaluation]
  * concepts: [Row-Level Equality Test between Two DbColumn Fields]
- * facets: {layer: domain, status: legacy, complexity: low}
+ * facets: {layer: domain, status: legacy, complexity: 2}
  * -->
  */
 public class DbTestEquals 

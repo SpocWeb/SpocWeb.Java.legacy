@@ -36,7 +36,7 @@ import function.byref.ByRefInt;
  * stale: false
  * tags: [code/numerical_integration, code/mathematical_function]
  * concepts: [Statistical Distributions, Incomplete Beta Function]
- * facets: {layer: utility, status: legacy, complexity: medium}
+ * facets: {layer: utility, status: legacy, complexity: 3}
  * -->
  */
 public class BetaI

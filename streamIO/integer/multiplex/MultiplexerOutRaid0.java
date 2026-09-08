@@ -47,7 +47,7 @@ import streamIO.integer.IStreamOutByte;
  * <!-- docstate
  * tags: [code/multiplexer, code/multiplexing, code/raid_encoding]
  * concepts: [RAID-Style Stream Multiplexing plus Markov/Viterbi Math]
- * facets: {layer: domain, status: legacy, complexity: high}
+ * facets: {layer: domain, status: legacy, complexity: 4}
  * -->
  */
 public class MultiplexerOutRaid0 

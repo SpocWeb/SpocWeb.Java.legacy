@@ -29,7 +29,7 @@ import streamIO.object.IPipe;
   * stale: false
   * tags: [code/thread_pool]
   * concepts: [Thread Pool Executor]
-  * facets: {layer: infrastructure, status: broken, complexity: medium}
+  * facets: {layer: infrastructure, status: broken, complexity: 3}
   * -->
   */
 public class ThreadPoolExecutor

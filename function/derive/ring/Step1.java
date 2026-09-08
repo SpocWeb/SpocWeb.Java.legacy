@@ -24,7 +24,7 @@ import Stream.Copy.Group.Ring.Metric.*;
  * stale: false
  * tags: [code/mathematical_function]
  * concepts: [Function Algebra, Distribution Theory]
- * facets: {layer: utility, status: legacy, complexity: medium}
+ * facets: {layer: utility, status: legacy, complexity: 3}
  * -->
  * is proportional to 1/H	 */
 public class Step1

@@ -34,7 +34,7 @@ import streamIO.copy.ICopyAble;
  * stale: false
  * tags: [code/multiplicative_semigroup, code/algebraic_structure]
  * concepts: [Algebraic SemiGroup, Multiplicative Structure]
- * facets: {layer: utility, status: legacy, complexity: medium}
+ * facets: {layer: utility, status: legacy, complexity: 3}
  * -->
  */
 public interface ISemiGroupM

@@ -25,7 +25,7 @@ import streamIO.object.IStreamIn;
   * stale: false
   * tags: [code/random_number_generation, code/quasi_random_sequence]
   * concepts: [Pseudo-Random and Quasi-Random Integer Generator Family with Mark/Restore Replay]
-  * facets: {layer: utility, status: legacy, complexity: medium}
+  * facets: {layer: utility, status: legacy, complexity: 3}
   * -->
   */
 public abstract class ARandomLong

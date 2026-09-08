@@ -28,7 +28,7 @@ import function.byref.ByRefChar;
  * stale: false
  * tags: [code/metric_interface]
  * concepts: [Hash-Based Metric]
- * facets: {layer: utility, status: legacy, complexity: low}
+ * facets: {layer: utility, status: legacy, complexity: 2}
  * -->
  */
 final public class MetricByHash 

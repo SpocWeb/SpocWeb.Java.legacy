@@ -32,7 +32,7 @@ import streamIO.exception.FailureException;
  * stale: false
  * tags: [code/stream_positioning]
  * concepts: [Reset/Jump Base Class]
- * facets: {layer: infrastructure, status: broken, complexity: low}
+ * facets: {layer: infrastructure, status: broken, complexity: 2}
  * -->
  */
 public abstract class AReSetAble 

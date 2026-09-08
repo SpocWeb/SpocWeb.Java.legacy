@@ -23,7 +23,7 @@ import structure.aspect.Aspect;
  * stale: false
  * tags: [code/attached_property]
  * concepts: [GUI Property Metadata]
- * facets: {layer: domain, status: legacy, complexity: low}
+ * facets: {layer: domain, status: legacy, complexity: 2}
  * -->
  */
 public abstract class AAttribProperty

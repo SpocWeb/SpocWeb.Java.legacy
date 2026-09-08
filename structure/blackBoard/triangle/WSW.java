@@ -25,7 +25,7 @@ package structure.blackBoard.triangle;
  * stale: false
  * tags: [code/rule_based_validation]
  * concepts: [Angle-Side-Angle Rule]
- * facets: {layer: domain, status: legacy, complexity: low}
+ * facets: {layer: domain, status: legacy, complexity: 2}
  * -->
  */
 class WSW extends ATriangleKnowledge {

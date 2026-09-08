@@ -18,7 +18,7 @@ package graphs;
  * stale: false
  * tags: [code/graph_edge]
  * concepts: [Flow-Network Edge]
- * facets: {layer: domain, status: legacy, complexity: low}
+ * facets: {layer: domain, status: legacy, complexity: 2}
  * -->
  */
 public class FlowEdge 

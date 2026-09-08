@@ -28,7 +28,7 @@ import streamIO.IFactory;
   * stale: false
   * tags: [code/factory_pattern, code/cloneable_pattern]
   * concepts: [Object Instantiation, Prototype Pattern]
-  * facets: {layer: infrastructure, status: stable, complexity: low}
+  * facets: {layer: infrastructure, status: stable, complexity: 2}
   * -->
   */
 public class FactoryByPrototype

@@ -22,7 +22,7 @@ import streamIO.object.AFilterIn;
  * stale: false
  * tags: [code/stream_filter, code/decorator_pattern]
  * concepts: [Stream Filter (Input)]
- * facets: {layer: utility, status: broken, complexity: medium}
+ * facets: {layer: utility, status: broken, complexity: 3}
  * -->
  */
 public class FilterIn_PushBack

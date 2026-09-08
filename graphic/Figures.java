@@ -20,7 +20,7 @@ import java.awt.Rectangle;
  * stale: false
  * tags: [code/graphics, code/geometry]
  * concepts: [Special-Purpose Shape Drawing]
- * facets: {layer: utility, status: broken, complexity: medium}
+ * facets: {layer: utility, status: broken, complexity: 3}
  * -->
  */
 final public class Figures {

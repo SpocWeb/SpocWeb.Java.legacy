@@ -11,7 +11,7 @@ import function.IOrderAble;
  * stale: false
  * tags: [code/arithmetic_operation, code/in_place_operation, code/numeric_interface]
  * concepts: [Primitive Numeric Operations, Mutable Value Semantics]
- * facets: {layer: utility, status: legacy, complexity: medium}
+ * facets: {layer: utility, status: legacy, complexity: 3}
  * -->
  * that can be indirectly defined by IOpLong */
 public interface IOpLong

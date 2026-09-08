@@ -31,7 +31,7 @@ package streamIO.copy.order;
   * stale: false
   * tags: [code/interval_arithmetic, code/algorithm_optimization]
   * concepts: [Interval Arithmetic]
-  * facets: {layer: utility, status: legacy, complexity: medium}
+  * facets: {layer: utility, status: legacy, complexity: 3}
   * -->
   */
 public class IntervalOrd

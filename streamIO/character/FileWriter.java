@@ -26,7 +26,7 @@ import java.io.UnsupportedEncodingException;
  * stale: false
  * tags: [code/file_io, code/encoding_handling]
  * concepts: [File I/O, Text Encoding]
- * facets: {layer: infrastructure, status: stable, complexity: low}
+ * facets: {layer: infrastructure, status: stable, complexity: 2}
  * -->
  */
 public class FileWriter

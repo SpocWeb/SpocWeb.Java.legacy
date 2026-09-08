@@ -34,7 +34,7 @@ import function.derive.IFloatDeriveAble;
  * stale: false
  * tags: [code/minimum_search, code/derivative_calculation, code/optimization]
  * concepts: [Brent's Method Minimizer]
- * facets: {layer: utility, status: legacy, complexity: medium}
+ * facets: {layer: utility, status: legacy, complexity: 3}
  * -->
  */
 public class Brent1FloatMinimizer 

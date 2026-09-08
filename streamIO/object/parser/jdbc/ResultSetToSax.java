@@ -75,7 +75,7 @@ import function.byref.ByRefInt;
   * stale: true
   * tags: [code/jdbc_adapter, code/sax_event_generation]
   * concepts: [Minimal JDBC Driver over Separated-Format Flat Files]
-  * facets: {layer: domain, status: legacy, complexity: high}
+  * facets: {layer: domain, status: legacy, complexity: 4}
   * -->
   */
 public class ResultSetToSax

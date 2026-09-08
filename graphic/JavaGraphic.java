@@ -27,7 +27,7 @@ import java.awt.image.ImageObserver;
   * stale: false
   * tags: [code/graphics]
   * concepts: [AWT-Delegated Rendering]
-  * facets: {layer: infrastructure, status: broken, complexity: medium}
+  * facets: {layer: infrastructure, status: broken, complexity: 3}
   * -->
   */
 final public class JavaGraphic 

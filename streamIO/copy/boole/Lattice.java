@@ -16,7 +16,7 @@ import streamIO.copy.ICopyAble;
  * stale: false
  * tags: [code/lattice_structure]
  * concepts: [Lattice]
- * facets: {layer: utility, status: legacy, complexity: medium}
+ * facets: {layer: utility, status: legacy, complexity: 3}
  * -->
  */
 public interface Lattice

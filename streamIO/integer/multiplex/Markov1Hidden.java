@@ -80,7 +80,7 @@ import streamIO.integer.IStreamOutStruct;
  * <!-- docstate
  * tags: [code/multiplexer, code/multiplexing, code/raid_encoding]
  * concepts: [RAID-Style Stream Multiplexing plus Markov/Viterbi Math]
- * facets: {layer: domain, status: legacy, complexity: high}
+ * facets: {layer: domain, status: legacy, complexity: 4}
  * -->
  */
 final public class Markov1Hidden
@@ -306,7 +306,7 @@ extends Markov1 {
  * <!-- docstate
  * tags: [code/multiplexer, code/multiplexing, code/raid_encoding]
  * concepts: [RAID-Style Stream Multiplexing plus Markov/Viterbi Math]
- * facets: {layer: domain, status: legacy, complexity: high}
+ * facets: {layer: domain, status: legacy, complexity: 4}
  * -->
  */
 final class Viterbi 

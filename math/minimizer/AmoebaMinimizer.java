@@ -61,7 +61,7 @@ import function.vector.IFloatScalarField;
   * stale: false
   * tags: [code/minimum_search, code/optimization]
   * concepts: [Downhill Simplex (Nelder-Mead) Minimizer]
-  * facets: {layer: utility, status: legacy, complexity: medium}
+  * facets: {layer: utility, status: legacy, complexity: 3}
   * -->
   */
 public class AmoebaMinimizer {

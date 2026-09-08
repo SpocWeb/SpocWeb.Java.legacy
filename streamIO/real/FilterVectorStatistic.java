@@ -84,7 +84,7 @@ import streamIO.real.random.RandomUniformVector;
  * stale: false
  * tags: [code/statistics, code/vector_math]
  * concepts: [Vector Statistics Filter]
- * facets: {layer: infrastructure, status: legacy, complexity: medium}
+ * facets: {layer: infrastructure, status: legacy, complexity: 3}
  * -->
  */
 public class FilterVectorStatistic 

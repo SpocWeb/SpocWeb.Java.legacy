@@ -22,7 +22,7 @@ import java.awt.Color;
   * stale: false
   * tags: [code/chart_rendering, code/line_rasterization]
   * concepts: [Scalar Color Interpolation Plot]
-  * facets: {layer: domain, status: legacy, complexity: medium}
+  * facets: {layer: domain, status: legacy, complexity: 3}
   * -->
   */
 public class ScalarPlot {

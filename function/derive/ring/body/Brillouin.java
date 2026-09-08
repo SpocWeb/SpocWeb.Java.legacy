@@ -19,7 +19,7 @@ import function.byref.ByRefFloat;
  * stale: false
  * tags: [code/mathematical_function]
  * concepts: [Thermodynamics, Magnetism]
- * facets: {layer: utility, status: legacy, complexity: medium}
+ * facets: {layer: utility, status: legacy, complexity: 3}
  * -->
  * L(x) = CotH(x) - 1/x and plays a Role in Thermodynamics of Solids	 */
 public class Brillouin

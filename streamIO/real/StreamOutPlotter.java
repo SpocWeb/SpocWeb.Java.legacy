@@ -37,7 +37,7 @@ import function.derive.ring.body.Sinus;
  * stale: false
  * tags: [code/signal_processing]
  * concepts: [Console Plotter Output]
- * facets: {layer: infrastructure, status: legacy, complexity: low}
+ * facets: {layer: infrastructure, status: legacy, complexity: 2}
  * -->
  */
 public class StreamOutPlotter 

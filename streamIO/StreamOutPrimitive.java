@@ -35,7 +35,7 @@ import streamIO.real.IStreamOutFloat;
   * stale: false
   * tags: [code/output_stream]
   * concepts: [Primitive Output Stream Base]
-  * facets: {layer: infrastructure, status: legacy, complexity: medium}
+  * facets: {layer: infrastructure, status: legacy, complexity: 3}
   * -->
   */
 public class StreamOutPrimitive

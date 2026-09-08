@@ -43,7 +43,7 @@ import java.util.Map;
  * stale: false
  * tags: [code/stream_adapter]
  * concepts: [Attributed Stream Input Interface]
- * facets: {layer: infrastructure, status: legacy, complexity: low}
+ * facets: {layer: infrastructure, status: legacy, complexity: 2}
  * -->
  */
 public interface IAttributedStreamIn 

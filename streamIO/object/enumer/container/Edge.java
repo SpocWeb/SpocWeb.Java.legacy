@@ -21,7 +21,7 @@ import graphs.KeyValuePair;
  * <!-- docstate
  * tags: [code/container, code/hash_table, code/container_iteration]
  * concepts: [Concrete Storage Containers - Arrays - Hash Tables and Relations]
- * facets: {layer: utility, status: legacy, complexity: high}
+ * facets: {layer: utility, status: legacy, complexity: 4}
  * digest: fc9af7d1588dd8501b5e12d5ff90fecc7d5c4f5cb196d6434e2d4233d93e5416
  * stale: false
  * -->

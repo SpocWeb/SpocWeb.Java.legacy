@@ -37,7 +37,7 @@ package streamIO;
   * stale: false
   * tags: [code/factory_pattern]
   * concepts: [Item Factory Interface]
-  * facets: {layer: infrastructure, status: legacy, complexity: low}
+  * facets: {layer: infrastructure, status: legacy, complexity: 2}
   * -->
   */
 public interface IFactory {

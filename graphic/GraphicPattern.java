@@ -12,7 +12,7 @@ package graphic;
  * stale: false
  * tags: [code/graphics]
  * concepts: [Pen and Brush Pattern Factory]
- * facets: {layer: utility, status: legacy, complexity: medium}
+ * facets: {layer: utility, status: legacy, complexity: 3}
  * -->
  */
 public class GraphicPattern

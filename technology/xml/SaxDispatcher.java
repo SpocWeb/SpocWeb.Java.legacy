@@ -49,7 +49,7 @@ import org.xml.sax.SAXException;
  * stale: false
  * tags: [code/sax_parsing, code/reflection_dispatch]
  * concepts: [Reflection-Based SAX Dispatcher]
- * facets: {layer: infrastructure, status: legacy, complexity: medium}
+ * facets: {layer: infrastructure, status: legacy, complexity: 3}
  * -->
  */
 public class SaxDispatcher 

@@ -10,7 +10,7 @@ package streamIO.copy.monoid;
  * stale: false
  * tags: [code/concatenation]
  * concepts: [Monoid, Concatenation]
- * facets: {layer: utility, status: legacy, complexity: medium}
+ * facets: {layer: utility, status: legacy, complexity: 3}
  * -->
  * x�x^-1 = Id concatenated with results in the Identity.  */
 public interface IIMonoid {

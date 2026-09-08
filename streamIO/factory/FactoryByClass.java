@@ -30,7 +30,7 @@ import streamIO.exception.BaseException;
   * stale: false
   * tags: [code/factory_pattern, code/reflection]
   * concepts: [Object Instantiation, Prototype Pattern]
-  * facets: {layer: infrastructure, status: stable, complexity: low}
+  * facets: {layer: infrastructure, status: stable, complexity: 2}
   * -->
   */
 public class FactoryByClass

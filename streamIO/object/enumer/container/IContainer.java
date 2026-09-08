@@ -18,7 +18,7 @@ package streamIO.object.enumer.container;
   * <!-- docstate
   * tags: [code/container, code/hash_table, code/container_iteration]
   * concepts: [Concrete Storage Containers - Arrays - Hash Tables and Relations]
-  * facets: {layer: utility, status: legacy, complexity: high}
+  * facets: {layer: utility, status: legacy, complexity: 4}
   * digest: c0a1f94c3b6946c03039901c915133442725ec37b34cd9818a7d66094a6b2b5e
   * stale: false
   * -->

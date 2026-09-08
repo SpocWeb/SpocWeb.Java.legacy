@@ -28,7 +28,7 @@ import streamIO.exception.ChainedException;
  * stale: false
  * tags: [code/stream_adapter]
  * concepts: [Custom Exception Type]
- * facets: {layer: infrastructure, status: legacy, complexity: low}
+ * facets: {layer: infrastructure, status: legacy, complexity: 2}
  * -->
  */
 public class ProcessingException extends ChainedException {

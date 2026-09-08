@@ -32,7 +32,7 @@ import tester.ITester;
   * stale: false
   * tags: [code/tree_data_structure, code/ui_components]
   * concepts: [Tree Visualization, UI Component]
-  * facets: {layer: infrastructure, status: stable, complexity: medium}
+  * facets: {layer: infrastructure, status: stable, complexity: 3}
   * -->
   */
 public class JHyperTree

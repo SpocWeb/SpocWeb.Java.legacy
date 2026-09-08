@@ -26,7 +26,7 @@ package graphic.mvc;
  * stale: false
  * tags: [code/keyboard_focus_tracking, code/gui]
  * concepts: [Focus-Aware Painter Interface]
- * facets: {layer: infrastructure, status: legacy, complexity: low}
+ * facets: {layer: infrastructure, status: legacy, complexity: 2}
  * -->
  */
 public interface IFocusPainter 

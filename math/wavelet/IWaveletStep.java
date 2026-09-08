@@ -24,7 +24,7 @@ package math.wavelet;
  * stale: false
  * tags: [code/wavelet_transform]
  * concepts: [Wavelet Step Interface]
- * facets: {layer: utility, status: legacy, complexity: low}
+ * facets: {layer: utility, status: legacy, complexity: 2}
  * -->
  */
 public interface IWaveletStep {

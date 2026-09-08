@@ -11,7 +11,7 @@ import streamIO.copy.CCopyAble;
  * stale: false
  * tags: [code/immutable_wrapper, code/delegation]
  * concepts: [Algebraic SemiGroup, Constant/Immutable Wrapper]
- * facets: {layer: utility, status: legacy, complexity: medium}
+ * facets: {layer: utility, status: legacy, complexity: 3}
  * -->
  * but still supports all other Methods of the SemiGroupM Class.	 */
 public class CSemiGroupM

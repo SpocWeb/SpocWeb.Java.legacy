@@ -39,7 +39,7 @@ import streamIO.real.IStreamOutFloat;
  * stale: false
  * tags: [code/anomaly_detection]
  * concepts: [Monotony Trend Detector]
- * facets: {layer: domain, status: legacy, complexity: low}
+ * facets: {layer: domain, status: legacy, complexity: 2}
  * -->
  */
 public class DetectorMonotony 

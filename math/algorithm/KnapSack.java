@@ -23,7 +23,7 @@ package math.algorithm;
   * stale: false
   * tags: [code/knapsack_problem, code/dynamic_programming]
   * concepts: [Knapsack Problem Solver]
-  * facets: {layer: utility, status: legacy, complexity: medium}
+  * facets: {layer: utility, status: legacy, complexity: 3}
   * -->
   */
 public class KnapSack {

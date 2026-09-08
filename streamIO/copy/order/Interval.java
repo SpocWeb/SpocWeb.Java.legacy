@@ -32,7 +32,7 @@ import streamIO.copy.ICopyAble;
   * stale: false
   * tags: [code/interval_arithmetic, code/set_operations]
   * concepts: [Interval Arithmetic, Order Relation]
-  * facets: {layer: utility, status: broken, complexity: medium}
+  * facets: {layer: utility, status: broken, complexity: 3}
   * -->
   */
 public class Interval

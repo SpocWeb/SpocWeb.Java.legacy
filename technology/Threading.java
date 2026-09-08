@@ -16,7 +16,7 @@ package technology;
  * stale: false
  * tags: [code/thread_synchronization]
  * concepts: [Recursive Thread Demo]
- * facets: {layer: test, status: legacy, complexity: low}
+ * facets: {layer: test, status: legacy, complexity: 2}
  * -->
  */
 public class Threading {
@@ -27,7 +27,7 @@ public class Threading {
 	 * <!-- docstate
 	 * tags: [code/thread_synchronization]
 	 * concepts: [Recursive Depth Demo]
-	 * facets: {layer: test, status: legacy, complexity: low}
+	 * facets: {layer: test, status: legacy, complexity: 2}
 	 * -->
 	 */
 	final static public synchronized void recourse(int i) {
@@ -44,7 +44,7 @@ public class Threading {
 	 * <!-- docstate
 	 * tags: [code/thread_synchronization]
 	 * concepts: [Demo Entry Point]
-	 * facets: {layer: test, status: legacy, complexity: low}
+	 * facets: {layer: test, status: legacy, complexity: 2}
 	 * -->
 	 */
 	public static void main(String[] args) {

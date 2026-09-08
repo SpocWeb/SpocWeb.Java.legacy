@@ -26,7 +26,7 @@ import streamIO.integer.IStreamOutByte;
  * stale: false
  * tags: [code/cli_tool, code/file_transfer]
  * concepts: [File Copying]
- * facets: {layer: utility, status: stable, complexity: low}
+ * facets: {layer: utility, status: stable, complexity: 2}
  * -->
  */
 public class CopyAllPossible {
@@ -38,7 +38,7 @@ public class CopyAllPossible {
 	 * <!-- docstate
 	 * tags: [code/cli_tool]
 	 * concepts: [File Copying]
-	 * facets: {layer: utility, status: stable, complexity: low}
+	 * facets: {layer: utility, status: stable, complexity: 2}
 	 * -->
 	 */
 	public static void main(final String[] args) throws IOException {
@@ -54,7 +54,7 @@ public class CopyAllPossible {
 	 * <!-- docstate
 	 * tags: [code/directory_traversal]
 	 * concepts: [File Copying]
-	 * facets: {layer: utility, status: stable, complexity: low}
+	 * facets: {layer: utility, status: stable, complexity: 2}
 	 * -->
 	 */
 	final static public long COPY(final String in, final String out, int ChunkSize, final String pattern) throws IOException {
@@ -81,7 +81,7 @@ public class CopyAllPossible {
 	 * <!-- docstate
 	 * tags: [code/file_transfer]
 	 * concepts: [File Copying]
-	 * facets: {layer: utility, status: stable, complexity: low}
+	 * facets: {layer: utility, status: stable, complexity: 2}
 	 * -->
 	 */
 	final static public long STREAM(final String in, final String out, int ChunkSize) throws IOException {
@@ -104,7 +104,7 @@ public class CopyAllPossible {
 	 * <!-- docstate
 	 * tags: [code/file_transfer]
 	 * concepts: [File Copying]
-	 * facets: {layer: utility, status: stable, complexity: low}
+	 * facets: {layer: utility, status: stable, complexity: 2}
 	 * -->
 	 */
 	final static public long STREAM(final InputStream in, final OutputStream out, int ChunkSize) throws IOException {
@@ -115,7 +115,7 @@ public class CopyAllPossible {
 	 * <!-- docstate
 	 * tags: [code/file_transfer]
 	 * concepts: [File Copying]
-	 * facets: {layer: utility, status: stable, complexity: low}
+	 * facets: {layer: utility, status: stable, complexity: 2}
 	 * -->
 	 * @see streamIO.integer.pipe.ByteStreamerThread#STREAM(InputStream, IStreamOutByte, byte[]) */
 	final static public long STREAM(final InputStream in, final OutputStream out, final byte[] chunk) throws IOException {

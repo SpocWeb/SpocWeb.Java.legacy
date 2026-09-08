@@ -41,7 +41,7 @@ import streamIO.copy.ICopyAble;
  * stale: false
  * tags: [code/vector_operations, code/z_ordering]
  * concepts: [Dynamic Array of 3D-Projected Polygons]
- * facets: {layer: domain, status: broken, complexity: high}
+ * facets: {layer: domain, status: broken, complexity: 4}
  * -->
  */
 public class VectorPolygon 

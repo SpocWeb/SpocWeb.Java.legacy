@@ -24,7 +24,7 @@ import streamIO.exception.ReadOnlyException;
  * stale: false
  * tags: [code/immutable_wrapper, code/delegation]
  * concepts: [Copy Semantics, Constant/Immutable Wrapper]
- * facets: {layer: utility, status: legacy, complexity: medium}
+ * facets: {layer: utility, status: legacy, complexity: 3}
  * -->
  * but it is more performant to delegate everything right away!	 */
 public class CCopyAble

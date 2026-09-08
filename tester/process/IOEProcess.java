@@ -40,7 +40,7 @@ import java.io.StreamTokenizer;
  * stale: false
  * tags: [code/stream_processing]
  * concepts: [I/O/Error Process Wrapper]
- * facets: {layer: utility, status: broken, complexity: medium}
+ * facets: {layer: utility, status: broken, complexity: 3}
  * -->
  */
 public class IOEProcess extends Object {
@@ -56,7 +56,7 @@ public class IOEProcess extends Object {
      * <!-- docstate
      * tags: [code/stream_processing]
      * concepts: [Demo Entry Point]
-     * facets: {layer: test, status: legacy, complexity: low}
+     * facets: {layer: test, status: legacy, complexity: 2}
      * -->
      */
     public static void main (String[] args) throws IOException, InterruptedException {
@@ -77,7 +77,7 @@ public class IOEProcess extends Object {
      * <!-- docstate
      * tags: [code/stream_processing]
      * concepts: [Self-Test Method]
-     * facets: {layer: test, status: broken, complexity: low}
+     * facets: {layer: test, status: broken, complexity: 2}
      * -->
 	 * printing back whatever the child tokenizes and echoes, until 'stop' is entered. */
 	public static void testIt() throws IOException, InterruptedException {

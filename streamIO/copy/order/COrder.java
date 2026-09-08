@@ -18,7 +18,7 @@ package streamIO.copy.order;
  * stale: false
  * tags: [code/abstract_base, code/delegation, code/immutable_wrapper]
  * concepts: [Order Relation, Constant/Immutable Wrapper]
- * facets: {layer: utility, status: legacy, complexity: medium}
+ * facets: {layer: utility, status: legacy, complexity: 3}
  * -->
  * already delegates to copyAt() which throws an Error.  	 */
 public class COrder

@@ -43,7 +43,7 @@ import synch.InvalidException;
   * stale: false
   * tags: [code/domain_model]
   * concepts: [List/Table Aspect]
-  * facets: {layer: domain, status: stable, complexity: medium}
+  * facets: {layer: domain, status: stable, complexity: 3}
   * -->
   */
 public class ListAspect

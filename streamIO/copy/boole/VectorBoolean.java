@@ -31,7 +31,7 @@ import streamIO.copy.ICopyAble;
   * stale: false
   * tags: [code/boolean_algebra, code/bit_vector, code/bit_manipulation]
   * concepts: [Boolean Algebra, Bit Vector]
-  * facets: {layer: utility, status: legacy, complexity: medium}
+  * facets: {layer: utility, status: legacy, complexity: 3}
   * -->
   */
 public class VectorBoolean

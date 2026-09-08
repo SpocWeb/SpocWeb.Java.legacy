@@ -36,7 +36,7 @@ import streamIO.Log;
  * stale: false
  * tags: [code/fuzzy_logic]
  * concepts: [Fuzzy Logic]
- * facets: {layer: utility, status: legacy, complexity: medium}
+ * facets: {layer: utility, status: legacy, complexity: 3}
  * -->
  */
 public class FuzzyManifold {

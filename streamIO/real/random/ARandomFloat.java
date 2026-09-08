@@ -21,7 +21,7 @@ import streamIO.real.IStreamIn_Float;
  * stale: false
  * tags: [code/random_number_generator]
  * concepts: [Random Float Base Class]
- * facets: {layer: utility, status: legacy, complexity: low}
+ * facets: {layer: utility, status: legacy, complexity: 2}
  * -->
  */
 public abstract class ARandomFloat

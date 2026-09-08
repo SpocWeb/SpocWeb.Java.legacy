@@ -34,7 +34,7 @@ import synch.ValidationRule;
  * stale: false
  * tags: [code/diff_object]
  * concepts: [Diffing]
- * facets: {layer: domain, status: legacy, complexity: low}
+ * facets: {layer: domain, status: legacy, complexity: 2}
  * -->
  */
 final public class DiffObject 

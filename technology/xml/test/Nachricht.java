@@ -26,7 +26,7 @@ import java.util.ArrayList;
  * stale: false
  * tags: [code/data_transfer_object]
  * concepts: [Castor Data Transfer Object]
- * facets: {layer: domain, status: legacy, complexity: low}
+ * facets: {layer: domain, status: legacy, complexity: 2}
  * -->
 **/
 public class Nachricht 

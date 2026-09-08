@@ -35,7 +35,7 @@ import java.sql.SQLException;
   * stale: false
   * tags: [code/validation_rule]
   * concepts: [Path-Based Validation Rule]
-  * facets: {layer: domain, status: legacy, complexity: medium}
+  * facets: {layer: domain, status: legacy, complexity: 3}
   * -->
   */
 public class PathValidationRule

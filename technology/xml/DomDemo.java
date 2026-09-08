@@ -44,7 +44,7 @@ import org.w3c.dom.NodeList;
  * stale: false
  * tags: [code/xml_parsing]
  * concepts: [DOM Parsing Demo]
- * facets: {layer: test, status: legacy, complexity: low}
+ * facets: {layer: test, status: legacy, complexity: 2}
  * -->
  */
 public class DomDemo {
@@ -60,7 +60,7 @@ public class DomDemo {
 	 * <!-- docstate
 	 * tags: [code/xml_parsing]
 	 * concepts: [Demo Entry Point]
-	 * facets: {layer: test, status: legacy, complexity: low}
+	 * facets: {layer: test, status: legacy, complexity: 2}
 	 * -->
 	 */
 	public static void main(String[] args) throws Exception {
@@ -86,7 +86,7 @@ public class DomDemo {
 	 * <!-- docstate
 	 * tags: [code/xml_parsing]
 	 * concepts: [DOM Attribute Lookup]
-	 * facets: {layer: test, status: legacy, complexity: low}
+	 * facets: {layer: test, status: legacy, complexity: 2}
 	 * -->
 	 */	
 	final static public String GET_ATTRIB_VALUE
@@ -113,7 +113,7 @@ public class DomDemo {
 	 * <!-- docstate
 	 * tags: [code/xml_parsing]
 	 * concepts: [DOM Traversal Demo]
-	 * facets: {layer: test, status: legacy, complexity: low}
+	 * facets: {layer: test, status: legacy, complexity: 2}
 	 * -->
 	 */	
 	final public static void testIt2(Document doc) throws Exception {
@@ -166,7 +166,7 @@ public class DomDemo {
 	 * <!-- docstate
 	 * tags: [code/xml_parsing]
 	 * concepts: [DOM Traversal Demo]
-	 * facets: {layer: test, status: legacy, complexity: low}
+	 * facets: {layer: test, status: legacy, complexity: 2}
 	 * -->
 	 */	
 	public static void testIt(Node dom) throws Exception {

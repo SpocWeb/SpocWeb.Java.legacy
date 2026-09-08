@@ -12,7 +12,7 @@ import java.awt.Color;
  * stale: false
  * tags: [code/3d_rendering, code/polygon_calculation]
  * concepts: [3D Polygon Plotter]
- * facets: {layer: domain, status: legacy, complexity: medium}
+ * facets: {layer: domain, status: legacy, complexity: 3}
  * -->
  * Caches the mapped Points for a faster Redraw.  */
 public class PolygonPlot {

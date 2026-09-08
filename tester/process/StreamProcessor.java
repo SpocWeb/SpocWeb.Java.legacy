@@ -29,7 +29,7 @@ import streamIO.object.enumer.container.AContainer;
  * stale: false
  * tags: [code/stream_processing]
  * concepts: [Stream Processor]
- * facets: {layer: utility, status: broken, complexity: low}
+ * facets: {layer: utility, status: broken, complexity: 2}
  * -->
  */
 public class StreamProcessor

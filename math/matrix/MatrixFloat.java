@@ -43,7 +43,7 @@ import graphs.MatrixGraph;
   * stale: false
   * tags: [code/matrix_operations, code/matrix_algebra]
   * concepts: [Single-Precision Dense Matrix]
-  * facets: {layer: utility, status: broken, complexity: high}
+  * facets: {layer: utility, status: broken, complexity: 4}
   * -->
   */
 public class MatrixFloat 

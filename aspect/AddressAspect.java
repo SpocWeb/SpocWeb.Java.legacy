@@ -20,7 +20,7 @@ package aspect;
   * stale: false
   * tags: [code/composite_pattern, code/domain_model]
   * concepts: [Composite Aspect, Attribute Modelling]
-  * facets: {layer: domain, status: stable, complexity: low}
+  * facets: {layer: domain, status: stable, complexity: 2}
   * -->
   */
 public class AddressAspect
@@ -62,7 +62,7 @@ extends SimpleAspect //AHierarchyAspect //Aspect
 	 * <!-- docstate
 	 * tags: [code/domain_model]
 	 * concepts: [Attribute Modelling]
-	 * facets: {layer: domain, status: stable, complexity: low}
+	 * facets: {layer: domain, status: stable, complexity: 2}
 	 * -->
 	 */
 	public AddressAspect(String name, IHierarchyAspect Parent) { super(name, Parent); }
@@ -72,7 +72,7 @@ extends SimpleAspect //AHierarchyAspect //Aspect
 	 * <!-- docstate
 	 * tags: [code/domain_model]
 	 * concepts: [Attribute Modelling]
-	 * facets: {layer: domain, status: stable, complexity: low}
+	 * facets: {layer: domain, status: stable, complexity: 2}
 	 * -->
 	 */
 	public AddressAspect(String Name) { super (Name, null); }
@@ -90,7 +90,7 @@ extends SimpleAspect //AHierarchyAspect //Aspect
 	 * <!-- docstate
 	 * tags: [code/test_harness]
 	 * concepts: [Testing]
-	 * facets: {layer: test, status: stable, complexity: low}
+	 * facets: {layer: test, status: stable, complexity: 2}
 	 * -->
 	 */
 	public static void testIt(String[] args) { //throws java.io.IOException {
@@ -103,7 +103,7 @@ extends SimpleAspect //AHierarchyAspect //Aspect
 	 * <!-- docstate
 	 * tags: [code/test_harness]
 	 * concepts: [Testing]
-	 * facets: {layer: test, status: stable, complexity: low}
+	 * facets: {layer: test, status: stable, complexity: 2}
 	 * -->
 	 * via the command line.	 */
 	public static void main (String[] args) { //throws java.io.IOException {

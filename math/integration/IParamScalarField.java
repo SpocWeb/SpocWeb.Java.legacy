@@ -29,7 +29,7 @@ import function.vector.IFloatVectorFunction;
  * stale: false
  * tags: [code/numerical_integration]
  * concepts: [Parameterized Scalar Field Interface]
- * facets: {layer: utility, status: legacy, complexity: low}
+ * facets: {layer: utility, status: legacy, complexity: 2}
  * -->
  */
 public interface IParamScalarField {

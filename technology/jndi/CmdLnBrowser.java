@@ -30,7 +30,7 @@ import javax.naming.NamingException;
   * stale: false
   * tags: [code/directory_services]
   * concepts: [Command-Line JNDI Browser]
-  * facets: {layer: utility, status: legacy, complexity: low}
+  * facets: {layer: utility, status: legacy, complexity: 2}
   * -->
   */
 public class CmdLnBrowser {

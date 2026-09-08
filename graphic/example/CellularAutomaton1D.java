@@ -59,7 +59,7 @@ import java.awt.Graphics;
   * stale: false
   * tags: [code/algorithm, code/simulation]
   * concepts: [1D Cellular Automaton]
-  * facets: {layer: test, status: legacy, complexity: medium}
+  * facets: {layer: test, status: legacy, complexity: 3}
   * -->
   */
 public class CellularAutomaton1D 

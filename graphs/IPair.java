@@ -40,7 +40,7 @@ package graphs;
   * stale: false
   * tags: [code/pair_data_structure]
   * concepts: [Pair Interface]
-  * facets: {layer: domain, status: legacy, complexity: low}
+  * facets: {layer: domain, status: legacy, complexity: 2}
   * -->
   */
 public interface IPair

@@ -46,7 +46,7 @@ import java.util.Hashtable;
   * stale: false
   * tags: [code/locking, code/non_blocking, code/lock_tokens]
   * concepts: [Concurrency]
-  * facets: {layer: infrastructure, status: broken, complexity: medium}
+  * facets: {layer: infrastructure, status: broken, complexity: 3}
   * -->
   */
 public class LockImproved

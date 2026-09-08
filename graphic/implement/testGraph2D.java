@@ -60,7 +60,7 @@ import java.awt.Rectangle;
  * stale: false
  * tags: [code/graphics, code/testing]
  * concepts: [Graph2D Demo Harness]
- * facets: {layer: test, status: legacy, complexity: low}
+ * facets: {layer: test, status: legacy, complexity: 2}
  * -->
  */
 public class testGraph2D extends Frame { //Applet {

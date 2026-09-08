@@ -41,7 +41,7 @@ import tester.ITester;
   * stale: false
   * tags: [code/key_value_pair]
   * concepts: [Key-Value Pair]
-  * facets: {layer: domain, status: legacy, complexity: low}
+  * facets: {layer: domain, status: legacy, complexity: 2}
   * -->
   */
 public class KeyValuePair

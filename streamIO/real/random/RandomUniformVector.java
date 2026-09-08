@@ -32,7 +32,7 @@ import streamIO.real.IStreamIn_Float;
  * stale: false
  * tags: [code/random_number_generator, code/vector_math]
  * concepts: [Uniform Random Vector Generator]
- * facets: {layer: utility, status: legacy, complexity: low}
+ * facets: {layer: utility, status: legacy, complexity: 2}
  * -->
  */
 public class RandomUniformVector 

@@ -37,7 +37,7 @@ import function.derive.ring.ThirdAt;
  * stale: false
  * tags: [code/entry_point_code/console_output_code/test]
  * concepts: [Test Harness]
- * facets: {layer: utility, status: legacy, complexity: medium}
+ * facets: {layer: utility, status: legacy, complexity: 3}
  * -->
  * created in the main() method. */
 public class TestBodyFuncs {
@@ -56,7 +56,7 @@ public class TestBodyFuncs {
 	 * <!-- docstate
 	 * tags: [code/testing]
 	 * concepts: [Delta Function Test Helper]
-	 * facets: {layer: test, status: legacy, complexity: low}
+	 * facets: {layer: test, status: legacy, complexity: 2}
 	 * -->
 	 * The Width is proportional to 1/H, the Height to H.	 */
 	final static public CatDerive Delta2(Object H) {
@@ -157,7 +157,7 @@ public class TestBodyFuncs {
 	 * <!-- docstate
 	 * tags: [code/testing]
 	 * concepts: [Delta Function Test Helper]
-	 * facets: {layer: test, status: legacy, complexity: low}
+	 * facets: {layer: test, status: legacy, complexity: 2}
 	 * -->
 	 */
 	public static IDeriveAble Delta4(Object H) {
@@ -180,7 +180,7 @@ public class TestBodyFuncs {
 	 * <!-- docstate
 	 * tags: [code/testing, code/numerical_integration]
 	 * concepts: [Exponential Integral Test Helper]
-	 * facets: {layer: test, status: legacy, complexity: low}
+	 * facets: {layer: test, status: legacy, complexity: 2}
 	 * -->
 	 */
 	public static IDeriveAble ExpInt(MetricBody n) {
@@ -219,7 +219,7 @@ public class TestBodyFuncs {
 	 * <!-- docstate
 	 * tags: [code/testing]
 	 * concepts: [Gaussian Integral Self-Test]
-	 * facets: {layer: test, status: legacy, complexity: low}
+	 * facets: {layer: test, status: legacy, complexity: 2}
 	 * -->
 	 */
 	public static void testGaussIntegral() throws IOException {
@@ -265,7 +265,7 @@ public class TestBodyFuncs {
 	 * <!-- docstate
 	 * tags: [code/testing]
 	 * concepts: [Exponential Integral Self-Test]
-	 * facets: {layer: test, status: legacy, complexity: low}
+	 * facets: {layer: test, status: legacy, complexity: 2}
 	 * -->
 	 */
 	public static void testExpInt() throws IOException {
@@ -294,7 +294,7 @@ public class TestBodyFuncs {
 	 * <!-- docstate
 	 * tags: [code/testing]
 	 * concepts: [Demo Entry Point]
-	 * facets: {layer: test, status: legacy, complexity: low}
+	 * facets: {layer: test, status: legacy, complexity: 2}
 	 * -->
 	 * via the command line.	 */
 	public static void main (String[] args) throws Exception {

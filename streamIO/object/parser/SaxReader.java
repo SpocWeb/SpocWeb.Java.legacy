@@ -46,7 +46,7 @@ import function.byref.ByRefInt;
   * stale: true
   * tags: [code/sax_parsing, code/parser]
   * concepts: [SAX-Style Event Parsing]
-  * facets: {layer: utility, status: legacy, complexity: high}
+  * facets: {layer: utility, status: legacy, complexity: 4}
   * -->
   */
 public class SaxReader

@@ -18,7 +18,7 @@ import BaseCopy.*;
  * stale: false
  * tags: [code/geometry, code/graphics]
  * concepts: [2D Figure Drawing Helpers]
- * facets: {layer: utility, status: legacy, complexity: low}
+ * facets: {layer: utility, status: legacy, complexity: 2}
  * -->
  */
 public class Figures2D {

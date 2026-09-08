@@ -26,7 +26,7 @@ package math.fit.weight;
  * stale: false
  * tags: [code/weighting]
  * concepts: [Weight Function Interface]
- * facets: {layer: utility, status: legacy, complexity: low}
+ * facets: {layer: utility, status: legacy, complexity: 2}
  * -->
  */
 public interface IWeightFunction {

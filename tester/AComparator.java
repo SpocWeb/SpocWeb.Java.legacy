@@ -22,7 +22,7 @@ import function.byref.ByRefChar;
  * stale: false
  * tags: [code/comparator]
  * concepts: [Comparator Base Class]
- * facets: {layer: utility, status: legacy, complexity: low}
+ * facets: {layer: utility, status: legacy, complexity: 2}
  * -->
  */
 public abstract class AComparator

@@ -50,7 +50,7 @@ import function.IOrderAble;
   * stale: false
   * tags: [code/heap_based_algorithm, code/priority_queue]
   * concepts: [Index-Based Heap]
-  * facets: {layer: utility, status: legacy, complexity: medium}
+  * facets: {layer: utility, status: legacy, complexity: 3}
   * -->
   */
 public class HeapByIndex {

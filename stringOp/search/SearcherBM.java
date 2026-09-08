@@ -18,7 +18,7 @@ package stringOp.search;
  * stale: false
  * tags: [code/string_search, code/search_algorithm]
  * concepts: [Boyer-Moore Search]
- * facets: {layer: utility, status: broken, complexity: medium}
+ * facets: {layer: utility, status: broken, complexity: 3}
  * -->
  */
 public class SearcherBM {

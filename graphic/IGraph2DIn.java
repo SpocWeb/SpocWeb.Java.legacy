@@ -12,7 +12,7 @@ import java.awt.Color;
  * stale: false
  * tags: [code/graphics, code/image_processing]
  * concepts: [Graphics Input Interface]
- * facets: {layer: infrastructure, status: legacy, complexity: low}
+ * facets: {layer: infrastructure, status: legacy, complexity: 2}
  * -->
  */
 public interface IGraph2DIn {

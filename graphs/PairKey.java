@@ -41,7 +41,7 @@ import tester.ITester;
   * stale: false
   * tags: [code/pair_data_structure, code/key_value_pair]
   * concepts: [Pair Used As Key]
-  * facets: {layer: domain, status: legacy, complexity: low}
+  * facets: {layer: domain, status: legacy, complexity: 2}
   * -->
   */
 public class PairKey

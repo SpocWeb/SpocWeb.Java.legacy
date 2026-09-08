@@ -112,7 +112,7 @@ import graphs.SparseGraph;
   * <!-- docstate
   * tags: [code/container, code/hash_table, code/container_iteration]
   * concepts: [Concrete Storage Containers - Arrays - Hash Tables and Relations]
-  * facets: {layer: utility, status: legacy, complexity: high}
+  * facets: {layer: utility, status: legacy, complexity: 4}
   * digest: 2825424d6dad07db1162cbc062859f10e3f6bc2b86940468c3e7a16789c9f2ce
   * stale: false
   * -->

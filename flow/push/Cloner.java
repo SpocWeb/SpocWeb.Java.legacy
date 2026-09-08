@@ -34,7 +34,7 @@ import graphs.ICopy;
   * stale: false
   * tags: [code/adapter_pattern]
   * concepts: [Dataflow, Pipeline]
-  * facets: {layer: domain, status: legacy, complexity: low}
+  * facets: {layer: domain, status: legacy, complexity: 2}
   * -->
   */
 public class Cloner

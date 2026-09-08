@@ -10,7 +10,7 @@ package graphic.math3D;
  * stale: false
  * tags: [code/3d_geometry]
  * concepts: [Spatial Object Interface]
- * facets: {layer: infrastructure, status: legacy, complexity: low}
+ * facets: {layer: infrastructure, status: legacy, complexity: 2}
  * -->
  */
 public interface ISpatial {

@@ -29,7 +29,7 @@ import tools.Parsing;
  * stale: false
  * tags: [code/3d_geometry, code/polygon_calculation]
  * concepts: [3D Polygon]
- * facets: {layer: domain, status: legacy, complexity: medium}
+ * facets: {layer: domain, status: legacy, complexity: 3}
  * -->
  */
 public class Polygon3D {
@@ -594,7 +594,7 @@ public class Polygon3D {
  * stale: false
  * tags: [code/3d_geometry]
  * concepts: [Rotated-Form Cross-Section]
- * facets: {layer: domain, status: legacy, complexity: low}
+ * facets: {layer: domain, status: legacy, complexity: 2}
  * -->
  */
 class RotateFormXSection extends AFunction {
@@ -640,7 +640,7 @@ class RotateFormXSection extends AFunction {
  * stale: false
  * tags: [code/3d_geometry]
  * concepts: [Cross-Section Form Enumeration]
- * facets: {layer: domain, status: legacy, complexity: low}
+ * facets: {layer: domain, status: legacy, complexity: 2}
  * -->
  */
 class EnumFormXSection extends AFunction {

@@ -32,7 +32,7 @@ package streamIO;
  * stale: false
  * tags: [code/iterator]
  * concepts: [Pluggable Filter Input Interface]
- * facets: {layer: infrastructure, status: legacy, complexity: low}
+ * facets: {layer: infrastructure, status: legacy, complexity: 2}
  * -->
  */
 public interface IPlugAbleFilterIn 

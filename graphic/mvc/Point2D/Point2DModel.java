@@ -40,7 +40,7 @@ import streamIO.Log;
  * stale: false
  * tags: [code/model_state_management]
  * concepts: [Point2D Editing Model]
- * facets: {layer: domain, status: legacy, complexity: low}
+ * facets: {layer: domain, status: legacy, complexity: 2}
  * -->
  */
 public class Point2DModel 

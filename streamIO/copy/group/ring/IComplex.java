@@ -8,7 +8,7 @@ package streamIO.copy.group.ring;
  * stale: false
  * tags: [code/ring_theory, code/ode_solver]
  * concepts: [Ring Algebra and ODE Solvers]
- * facets: {layer: domain, status: legacy, complexity: high}
+ * facets: {layer: domain, status: legacy, complexity: 4}
  * -->
  * because it is used in Tensor Arithmetic */
 public interface IComplex {

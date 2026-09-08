@@ -14,7 +14,7 @@ import math.vector.VectorFloat;
  * stale: false
  * tags: [code/3d_geometry, code/graphics]
  * concepts: [3D Figure Drawing Helpers]
- * facets: {layer: utility, status: legacy, complexity: low}
+ * facets: {layer: utility, status: legacy, complexity: 2}
  * -->
  * Routines to extrude and rotate.	 */
 public class Figures3D {

@@ -9,7 +9,7 @@ package streamIO.copy.monoid;
  * stale: false
  * tags: [code/manual_test_harness]
  * concepts: [Monoid]
- * facets: {layer: utility, status: legacy, complexity: medium}
+ * facets: {layer: utility, status: legacy, complexity: 3}
  * -->
  */
 public class testMonoid {

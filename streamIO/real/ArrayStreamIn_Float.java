@@ -36,7 +36,7 @@ import streamIO.object.IStreamIn;
  * stale: false
  * tags: [code/stream_filter]
  * concepts: [Array-Backed Float Stream]
- * facets: {layer: infrastructure, status: legacy, complexity: low}
+ * facets: {layer: infrastructure, status: legacy, complexity: 2}
  * -->
  */
 public class ArrayStreamIn_Float 

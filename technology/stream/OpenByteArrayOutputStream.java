@@ -32,7 +32,7 @@ import java.io.OutputStream;
  * stale: false
  * tags: [code/stream_adapter]
  * concepts: [Exposed-Buffer Byte Array Stream]
- * facets: {layer: infrastructure, status: legacy, complexity: low}
+ * facets: {layer: infrastructure, status: legacy, complexity: 2}
  * -->
  */
 public class OpenByteArrayOutputStream extends ByteArrayOutputStream {

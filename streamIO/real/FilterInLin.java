@@ -22,7 +22,7 @@ import streamIO.integer.random.IStreamIn_Bound_Int;
   * stale: false
   * tags: [code/stream_filter]
   * concepts: [Linear Interpolation Filter]
-  * facets: {layer: infrastructure, status: legacy, complexity: low}
+  * facets: {layer: infrastructure, status: legacy, complexity: 2}
   * -->
   */
 public class FilterInLin

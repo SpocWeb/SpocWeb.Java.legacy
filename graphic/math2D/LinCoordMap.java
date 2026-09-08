@@ -20,7 +20,7 @@ package graphic.math2D;
  * stale: false
  * tags: [code/coordinate_transform]
  * concepts: [Linear Coordinate Mapping]
- * facets: {layer: domain, status: legacy, complexity: low}
+ * facets: {layer: domain, status: legacy, complexity: 2}
  * -->
  */
 public class LinCoordMap {

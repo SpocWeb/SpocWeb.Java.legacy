@@ -65,7 +65,7 @@ import streamIO.Log;
  * stale: false
  * tags: [code/version_tree, code/version_control]
  * concepts: [Versioning, Merging]
- * facets: {layer: domain, status: legacy, complexity: high}
+ * facets: {layer: domain, status: legacy, complexity: 4}
  * -->
  */
 public class VersionedObjects 

@@ -22,7 +22,7 @@ import function.IFunction;
  * stale: false
  * tags: [code/function_wrapper, code/function_composition]
  * concepts: [Function Algebra]
- * facets: {layer: utility, status: legacy, complexity: medium}
+ * facets: {layer: utility, status: legacy, complexity: 3}
  * -->
  */
 public class AFuncRel

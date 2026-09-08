@@ -11,7 +11,7 @@ package streamIO.copy.group.ring.metric.body;
  * <!-- docstate
  * tags: [code/rational_numbers, code/interval_arithmetic]
  * concepts: [Rational Numbers and Interval Arithmetic]
- * facets: {layer: domain, status: legacy, complexity: high}
+ * facets: {layer: domain, status: legacy, complexity: 4}
  * digest: e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855
  * stale: false
  * -->

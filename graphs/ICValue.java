@@ -34,7 +34,7 @@ import streamIO.copy.monoid.Association;
   * stale: false
   * tags: [code/graph_element]
   * concepts: [Comparable Value Interface]
-  * facets: {layer: domain, status: legacy, complexity: low}
+  * facets: {layer: domain, status: legacy, complexity: 2}
   * -->
   */
 public interface ICValue {

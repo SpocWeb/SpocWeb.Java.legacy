@@ -37,7 +37,7 @@ package structure; //
   * stale: false
   * tags: [code/bridge]
   * concepts: [Full Bridge]
-  * facets: {layer: utility, status: legacy, complexity: low}
+  * facets: {layer: utility, status: legacy, complexity: 2}
   * -->
   */
 public class FullBridge

@@ -51,7 +51,7 @@ import function.vector.OpSum;
   * stale: false
   * tags: [code/matrix_operations, code/matrix_algebra]
   * concepts: [Double-Precision Dense Matrix]
-  * facets: {layer: utility, status: broken, complexity: high}
+  * facets: {layer: utility, status: broken, complexity: 4}
   * -->
   */
 public class MatrixDouble 
@@ -4203,7 +4203,7 @@ extends AMatrix {
  * stale: false
  * tags: [code/matrix_operations]
  * concepts: [Double Matrix Row Stream Iterator]
- * facets: {layer: utility, status: broken, complexity: low}
+ * facets: {layer: utility, status: broken, complexity: 2}
  * -->
  */
 final class MatrixDoubleStreamIn

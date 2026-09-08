@@ -39,7 +39,7 @@ import synch.InvalidException;
  * stale: false
  * tags: [code/attached_property, code/observer_pattern]
  * concepts: [Composite Value Object]
- * facets: {layer: domain, status: legacy, complexity: medium}
+ * facets: {layer: domain, status: legacy, complexity: 3}
  * -->
  */
 public abstract class Aspect

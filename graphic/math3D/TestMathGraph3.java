@@ -39,7 +39,7 @@ import streamIO.copy.group.ring.StepRK;
  * stale: false
  * tags: [code/testing, code/3d_rendering]
  * concepts: [3D Graph Demo/Test Harness]
- * facets: {layer: test, status: legacy, complexity: low}
+ * facets: {layer: test, status: legacy, complexity: 2}
  * -->
  */
 public class TestMathGraph3 

@@ -39,7 +39,7 @@ import streamIO.Log;
  * stale: false
  * tags: [code/dialog, code/dialog_invocation]
  * concepts: [Dialog Tree Runner]
- * facets: {layer: domain, status: stable, complexity: medium}
+ * facets: {layer: domain, status: stable, complexity: 3}
  * -->
  */
 public class Dialog {

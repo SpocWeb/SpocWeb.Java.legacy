@@ -22,7 +22,7 @@ package structure; //
   * stale: false
   * tags: [code/2d_geometry]
   * concepts: [2D Figure Base Class]
-  * facets: {layer: domain, status: legacy, complexity: low}
+  * facets: {layer: domain, status: legacy, complexity: 2}
   * -->
   */
 public class Figure2D {

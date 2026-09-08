@@ -30,7 +30,7 @@ import java.io.PrintStream;
   * stale: false
   * tags: [code/output_stream]
   * concepts: [Format Output Interface]
-  * facets: {layer: infrastructure, status: legacy, complexity: low}
+  * facets: {layer: infrastructure, status: legacy, complexity: 2}
   * -->
   */
 public interface IFormatOut

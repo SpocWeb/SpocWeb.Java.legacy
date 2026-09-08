@@ -57,7 +57,7 @@ import function.IFloatFunction;
  * stale: false
  * tags: [code/statistics, code/running_statistics]
  * concepts: [Running Statistics Filter]
- * facets: {layer: infrastructure, status: legacy, complexity: medium}
+ * facets: {layer: infrastructure, status: legacy, complexity: 3}
  * -->
  */
 public class FilterFloatStatistic 

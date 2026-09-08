@@ -48,7 +48,7 @@ import function.byref.ByRefChar;
  * stale: false
  * tags: [code/growable_array, code/string_parsing, code/string_formatting]
  * concepts: [Growable String[] Vector with String Utility Library]
- * facets: {layer: utility, status: broken, complexity: high}
+ * facets: {layer: utility, status: broken, complexity: 4}
  * -->
  */
 public class VectorString extends AVector {

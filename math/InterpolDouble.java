@@ -36,7 +36,7 @@ import function.byref.ByRefDouble;
  * stale: false
  * tags: [code/interpolation]
  * concepts: [Double Interpolation]
- * facets: {layer: utility, status: legacy, complexity: low}
+ * facets: {layer: utility, status: legacy, complexity: 2}
  * -->
  */
 public class InterpolDouble {

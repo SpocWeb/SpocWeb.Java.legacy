@@ -37,7 +37,7 @@ import function.IIntFunction;
  * stale: false
  * tags: [code/audio]
  * concepts: [WAV File Reader]
- * facets: {layer: utility, status: legacy, complexity: medium}
+ * facets: {layer: utility, status: legacy, complexity: 3}
  * -->
  */
 public class WaveReader 

@@ -54,7 +54,7 @@ import streamIO.integer.StreamOutStruct;
  * stale: false
  * tags: [code/diff_collection, code/diff_application, code/merge_algorithm]
  * concepts: [Diffing, Merging]
- * facets: {layer: domain, status: legacy, complexity: high}
+ * facets: {layer: domain, status: legacy, complexity: 4}
  * -->
  */
 abstract public class DiffSet 

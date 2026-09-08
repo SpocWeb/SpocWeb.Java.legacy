@@ -70,7 +70,7 @@ import java.awt.Color;
  * stale: false
  * tags: [code/3d_geometry, code/polygon_calculation]
  * concepts: [3D-to-2D Body Projection]
- * facets: {layer: domain, status: legacy, complexity: medium}
+ * facets: {layer: domain, status: legacy, complexity: 3}
  * -->
  */
 public class Body2D

@@ -11,7 +11,7 @@ import tester.ITester;
  * stale: false
  * tags: [code/stateful_algorithm]
  * concepts: [Position-Aware Tester]
- * facets: {layer: utility, status: legacy, complexity: low}
+ * facets: {layer: utility, status: legacy, complexity: 2}
  * -->
  * It is used e.g. in Container	*/
 final public class TesterPosition

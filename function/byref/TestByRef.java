@@ -15,7 +15,7 @@ import java.io.IOException;
  * stale: false
  * tags: [code/testing]
  * concepts: [Test Harness]
- * facets: {layer: utility, status: legacy, complexity: low}
+ * facets: {layer: utility, status: legacy, complexity: 2}
  * -->
  */
 public class TestByRef {

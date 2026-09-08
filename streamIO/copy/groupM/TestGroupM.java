@@ -10,7 +10,7 @@ import streamIO.copy.TestCopy;
  * stale: false
  * tags: [code/manual_test_harness]
  * concepts: [Algebraic Group]
- * facets: {layer: utility, status: legacy, complexity: medium}
+ * facets: {layer: utility, status: legacy, complexity: 3}
  * -->
  * {@link TestCopy#main(String[])}. */
 public class TestGroupM {

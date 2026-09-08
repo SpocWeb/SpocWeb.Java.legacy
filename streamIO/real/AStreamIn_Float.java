@@ -32,7 +32,7 @@ import function.byref.ByRefDouble;
  * stale: false
  * tags: [code/stream_filter]
  * concepts: [Float Stream Input Base Class]
- * facets: {layer: infrastructure, status: legacy, complexity: low}
+ * facets: {layer: infrastructure, status: legacy, complexity: 2}
  * -->
  */
 public abstract class AStreamIn_Float 

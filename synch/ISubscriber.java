@@ -31,7 +31,7 @@ package synch;
  * stale: false
  * tags: [code/subscription]
  * concepts: [Subscriber Interface]
- * facets: {layer: infrastructure, status: legacy, complexity: low}
+ * facets: {layer: infrastructure, status: legacy, complexity: 2}
  * -->
  */
 public interface ISubscriber {

@@ -8,7 +8,7 @@ package streamIO.copy.groupM;
  * stale: false
  * tags: [code/abstract_base, code/multiplicative_group]
  * concepts: [Algebraic Group, Multiplicative Structure]
- * facets: {layer: utility, status: legacy, complexity: medium}
+ * facets: {layer: utility, status: legacy, complexity: 3}
  * -->
  * division on top of {@link AGroupM}'s generic {@link Object}-argument operations. */
 public abstract class AGroupMLng

@@ -33,7 +33,7 @@ import graphic.Point2D;
   * stale: false
   * tags: [code/algorithm, code/math]
   * concepts: [Fractal Applet (Escape-Time Set)]
-  * facets: {layer: test, status: legacy, complexity: medium}
+  * facets: {layer: test, status: legacy, complexity: 3}
   * -->
   */
 public class Apple

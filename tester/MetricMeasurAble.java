@@ -26,7 +26,7 @@ import function.IMeasurAble;
  * stale: false
  * tags: [code/metric_interface]
  * concepts: [Metric Base Class]
- * facets: {layer: utility, status: broken, complexity: low}
+ * facets: {layer: utility, status: broken, complexity: 2}
  * -->
  */
 final public class MetricMeasurAble

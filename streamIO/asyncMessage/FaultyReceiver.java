@@ -25,7 +25,7 @@ import streamIO.IIStreamOut;
  * stale: false
  * tags: [code/test_harness]
  * concepts: [Reliability Testing]
- * facets: {layer: infrastructure, status: stable, complexity: low}
+ * facets: {layer: infrastructure, status: stable, complexity: 2}
  * -->
  */
 public class FaultyReceiver

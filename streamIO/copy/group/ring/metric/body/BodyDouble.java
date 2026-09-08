@@ -16,7 +16,7 @@ import java.io.StreamTokenizer;
  * <!-- docstate
  * tags: [code/rational_numbers, code/interval_arithmetic]
  * concepts: [Rational Numbers and Interval Arithmetic]
- * facets: {layer: domain, status: legacy, complexity: high}
+ * facets: {layer: domain, status: legacy, complexity: 4}
  * digest: 63cc9036652912acaf7225d406b1ed24ffd747b170bc80f76c47d0fa6abe749e
  * stale: false
  * -->

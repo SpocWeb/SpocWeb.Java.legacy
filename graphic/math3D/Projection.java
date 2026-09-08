@@ -31,7 +31,7 @@ import math.vector.VectorFloat;
  * stale: false
  * tags: [code/projection, code/3d_geometry]
  * concepts: [3D-to-2D Projection]
- * facets: {layer: domain, status: legacy, complexity: medium}
+ * facets: {layer: domain, status: legacy, complexity: 3}
  * -->
  */
 public class Projection

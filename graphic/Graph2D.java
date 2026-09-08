@@ -23,7 +23,7 @@ import java.awt.image.ImageObserver;
  * stale: false
  * tags: [code/graphics]
  * concepts: [AWT Graphics Adapter]
- * facets: {layer: infrastructure, status: broken, complexity: medium}
+ * facets: {layer: infrastructure, status: broken, complexity: 3}
  * -->
  */
 public class Graph2D 

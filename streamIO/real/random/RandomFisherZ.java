@@ -15,7 +15,7 @@ import function.byref.combinatoric.ProbFuncs;
  * stale: false
  * tags: [code/random_number_generator, code/statistical_distribution]
  * concepts: [Fisher Z-Distributed Random Generator]
- * facets: {layer: utility, status: legacy, complexity: low}
+ * facets: {layer: utility, status: legacy, complexity: 2}
  * -->
  */
 public class RandomFisherZ

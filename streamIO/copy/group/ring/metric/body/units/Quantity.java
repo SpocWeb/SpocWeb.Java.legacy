@@ -22,7 +22,7 @@ import function.IMeasurAble;
   * stale: false
   * tags: [code/si_units, code/unit_conversion]
   * concepts: [Physical Units and Conversion]
-  * facets: {layer: domain, status: legacy, complexity: high}
+  * facets: {layer: domain, status: legacy, complexity: 4}
   * -->
   */
 public interface Quantity

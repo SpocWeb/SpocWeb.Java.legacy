@@ -27,7 +27,7 @@ import java.awt.image.ImageObserver;
  * stale: false
  * tags: [code/graphics, code/image_processing]
  * concepts: [Image Rendering Base Class]
- * facets: {layer: infrastructure, status: legacy, complexity: low}
+ * facets: {layer: infrastructure, status: legacy, complexity: 2}
  * -->
  */
 public abstract class AGraphImage 

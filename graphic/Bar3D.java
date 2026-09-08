@@ -21,7 +21,7 @@ import java.awt.Rectangle;
   * stale: false
   * tags: [code/chart_rendering, code/3d_rendering]
   * concepts: [3D Bar Chart]
-  * facets: {layer: domain, status: legacy, complexity: medium}
+  * facets: {layer: domain, status: legacy, complexity: 3}
   * -->
   */
 public class Bar3D {

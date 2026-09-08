@@ -25,7 +25,7 @@ import streamIO.Log;
  * stale: false
  * tags: [code/random_number_generation]
  * concepts: [Random Sampling, Monte Carlo]
- * facets: {layer: utility, status: stable, complexity: high}
+ * facets: {layer: utility, status: stable, complexity: 4}
  * -->
  */
 public class RandomVectorPseudoSequential {

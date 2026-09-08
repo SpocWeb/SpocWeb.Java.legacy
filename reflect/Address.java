@@ -19,7 +19,7 @@ package reflect;
   * stale: false
   * tags: [code/domain_model]
   * concepts: [Domain Model]
-  * facets: {layer: domain, status: stable, complexity: low}
+  * facets: {layer: domain, status: stable, complexity: 2}
   * -->
   */
 public class Address
@@ -65,7 +65,7 @@ extends ReflectAble {
 	 * <!-- docstate
 	 * tags: [code/domain_model]
 	 * concepts: [Domain Model]
-	 * facets: {layer: domain, status: stable, complexity: low}
+	 * facets: {layer: domain, status: stable, complexity: 2}
 	 * -->
 	 */
 	public Address() { }
@@ -83,7 +83,7 @@ extends ReflectAble {
 	 * <!-- docstate
 	 * tags: [code/test_harness]
 	 * concepts: [Testing]
-	 * facets: {layer: test, status: stable, complexity: low}
+	 * facets: {layer: test, status: stable, complexity: 2}
 	 * -->
 	 */
 	public static void testIt(String[] args) { //throws java.io.IOException {
@@ -96,7 +96,7 @@ extends ReflectAble {
 	 * <!-- docstate
 	 * tags: [code/test_harness]
 	 * concepts: [Testing]
-	 * facets: {layer: test, status: stable, complexity: low}
+	 * facets: {layer: test, status: stable, complexity: 2}
 	 * -->
 	 * via the command line.	 */
 	public static void main (String[] args) { //throws java.io.IOException {

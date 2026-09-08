@@ -68,7 +68,7 @@ import java.util.Vector;
  * stale: false
  * tags: [code/lexer_parser, code/parser_utility]
  * concepts: [Character Scanner]
- * facets: {layer: utility, status: legacy, complexity: low}
+ * facets: {layer: utility, status: legacy, complexity: 2}
  * -->
  */
 public class Scanner 

@@ -48,7 +48,7 @@ import function.vector.IFloatVectorField;
  * stale: false
  * tags: [code/conjugate, code/derivative_calculation, code/optimization]
  * concepts: [Conjugate Gradient Minimizer]
- * facets: {layer: utility, status: legacy, complexity: high}
+ * facets: {layer: utility, status: legacy, complexity: 4}
  * -->
  */
 public class ConjuGrad1Minimizer 
@@ -326,7 +326,7 @@ extends AFloatDeriveAble {
  * stale: false
  * tags: [code/test_fixture]
  * concepts: [Squared Distance Test Fixture]
- * facets: {layer: test, status: legacy, complexity: low}
+ * facets: {layer: test, status: legacy, complexity: 2}
  * -->
  */
 class DistSqr 

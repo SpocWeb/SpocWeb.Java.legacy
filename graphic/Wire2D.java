@@ -24,7 +24,7 @@ import streamIO.IIStreamIn;
   * stale: false
   * tags: [code/2d_geometry, code/graph_rendering]
   * concepts: [Wireframe Model]
-  * facets: {layer: domain, status: legacy, complexity: medium}
+  * facets: {layer: domain, status: legacy, complexity: 3}
   * -->
   */
 public class Wire2D

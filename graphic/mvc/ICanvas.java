@@ -30,7 +30,7 @@ import java.awt.Dimension;
  * stale: false
  * tags: [code/gui]
  * concepts: [Canvas Interface]
- * facets: {layer: infrastructure, status: legacy, complexity: low}
+ * facets: {layer: infrastructure, status: legacy, complexity: 2}
  * -->
  */
 public interface ICanvas 

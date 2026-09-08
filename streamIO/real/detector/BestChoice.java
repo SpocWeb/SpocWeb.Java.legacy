@@ -39,7 +39,7 @@ import streamIO.real.IStreamOutFloat;
  * stale: false
  * tags: [code/anomaly_detection]
  * concepts: [Best-Choice Selector]
- * facets: {layer: domain, status: legacy, complexity: low}
+ * facets: {layer: domain, status: legacy, complexity: 2}
  * -->
  */
 public class BestChoice 

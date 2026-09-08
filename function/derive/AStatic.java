@@ -21,7 +21,7 @@ import function.IFunction;
   * stale: false
   * tags: [code/function_composition, code/mathematical_function]
   * concepts: [Function Algebra, Simplification]
-  * facets: {layer: utility, status: legacy, complexity: medium}
+  * facets: {layer: utility, status: legacy, complexity: 3}
   * -->
   */
 public abstract class AStatic

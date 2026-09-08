@@ -18,7 +18,7 @@ import function.derive.Identity;
  * stale: false
  * tags: [code/function_composition, code/derivable_function_contract]
  * concepts: [Function Algebra]
- * facets: {layer: utility, status: legacy, complexity: medium}
+ * facets: {layer: utility, status: legacy, complexity: 3}
  * -->
  * If H is nothing, it is assumed to 1 and no Stretching takes place.	 */
 public class MulAt

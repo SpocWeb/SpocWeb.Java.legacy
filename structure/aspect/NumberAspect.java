@@ -33,7 +33,7 @@ import java.util.zip.DataFormatException;
   * stale: false
   * tags: [code/property_binding]
   * concepts: [Numeric Aspect]
-  * facets: {layer: domain, status: legacy, complexity: low}
+  * facets: {layer: domain, status: legacy, complexity: 2}
   * -->
   */
 public abstract class NumberAspect

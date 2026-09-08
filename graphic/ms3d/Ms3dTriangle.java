@@ -37,7 +37,7 @@ import streamIO.integer.encoding.BigEndianReader;
  * stale: false
  * tags: [code/mesh_data]
  * concepts: [MS3D Mesh Triangle]
- * facets: {layer: domain, status: legacy, complexity: low}
+ * facets: {layer: domain, status: legacy, complexity: 2}
  * -->
  */
 public class Ms3dTriangle {

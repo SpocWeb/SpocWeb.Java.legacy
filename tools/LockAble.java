@@ -43,7 +43,7 @@ package tools; //always define a Package
   * stale: false
   * tags: [code/locking, code/interface_contract]
   * concepts: [Concurrency]
-  * facets: {layer: infrastructure, status: stable, complexity: low}
+  * facets: {layer: infrastructure, status: stable, complexity: 2}
   * -->
   */
 public interface LockAble {

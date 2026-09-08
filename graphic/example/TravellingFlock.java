@@ -41,7 +41,7 @@ import math.vector.VectorFloat;
  * stale: false
  * tags: [code/algorithm, code/simulation]
  * concepts: [Flocking Particle Simulation]
- * facets: {layer: test, status: legacy, complexity: medium}
+ * facets: {layer: test, status: legacy, complexity: 3}
  * -->
  */
 public class TravellingFlock {

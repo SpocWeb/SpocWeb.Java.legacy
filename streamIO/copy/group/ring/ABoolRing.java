@@ -32,7 +32,7 @@ import streamIO.object.enumer.container.AContainer;
   * stale: false
   * tags: [code/ring_theory, code/ode_solver]
   * concepts: [Ring Algebra and ODE Solvers]
-  * facets: {layer: domain, status: legacy, complexity: high}
+  * facets: {layer: domain, status: legacy, complexity: 4}
   * -->
   */
 public abstract class ABoolRing 

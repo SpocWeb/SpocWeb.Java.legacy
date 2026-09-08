@@ -45,7 +45,7 @@ import synch.InvalidException;
   * stale: false
   * tags: [code/domain_model, code/hierarchy]
   * concepts: [Aspect Framework]
-  * facets: {layer: domain, status: stable, complexity: medium}
+  * facets: {layer: domain, status: stable, complexity: 3}
   * -->
   */
 public interface IAspect

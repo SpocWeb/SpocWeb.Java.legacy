@@ -70,7 +70,7 @@ import tester.IMetric;
  * stale: false
  * tags: [code/edit_distance]
  * concepts: [Levenshtein Edit Distance]
- * facets: {layer: utility, status: legacy, complexity: low}
+ * facets: {layer: utility, status: legacy, complexity: 2}
  * -->
  */
 final public class EditMetric 

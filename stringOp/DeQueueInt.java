@@ -16,7 +16,7 @@ package stringOp;
  * stale: false
  * tags: [code/deque]
  * concepts: [Integer Deque]
- * facets: {layer: utility, status: legacy, complexity: low}
+ * facets: {layer: utility, status: legacy, complexity: 2}
  * -->
  */
 public class DeQueueInt

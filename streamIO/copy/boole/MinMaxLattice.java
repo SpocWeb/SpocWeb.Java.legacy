@@ -34,7 +34,7 @@ import streamIO.copy.order.IOrder;
   * stale: false
   * tags: [code/lattice_structure, code/lattice_operations]
   * concepts: [Lattice, Order Relation]
-  * facets: {layer: utility, status: legacy, complexity: medium}
+  * facets: {layer: utility, status: legacy, complexity: 3}
   * -->
   */
 public class MinMaxLattice

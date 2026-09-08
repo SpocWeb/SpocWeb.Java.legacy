@@ -28,7 +28,7 @@ import math.vector.VectorDouble;
  * stale: false
  * tags: [code/wavelet_transform]
  * concepts: [Daubechies-4 Wavelet Step]
- * facets: {layer: utility, status: legacy, complexity: medium}
+ * facets: {layer: utility, status: legacy, complexity: 3}
  * -->
  */
 final public class Daubechies4 implements IWaveletStep {

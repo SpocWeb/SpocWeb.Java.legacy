@@ -58,7 +58,7 @@ import function.derive.CCountAble;
   * stale: false
   * tags: [code/rational_numbers, code/interval_arithmetic]
   * concepts: [Rational Numbers and Interval Arithmetic]
-  * facets: {layer: domain, status: legacy, complexity: high}
+  * facets: {layer: domain, status: legacy, complexity: 4}
   * -->
   */
 public class IntervalDbl

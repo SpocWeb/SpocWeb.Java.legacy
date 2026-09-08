@@ -36,7 +36,7 @@ import math.vector.VectorObject;
  * stale: false
  * tags: [code/model_state_management, code/interactive_editing]
  * concepts: [2D Graph Editing Model]
- * facets: {layer: domain, status: legacy, complexity: medium}
+ * facets: {layer: domain, status: legacy, complexity: 3}
  * -->
  */
 public class Graph2DModel 

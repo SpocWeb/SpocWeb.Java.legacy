@@ -14,7 +14,7 @@ import streamIO.Log;
  * stale: false
  * tags: [code/platonic_solids, code/3d_geometry]
  * concepts: [Platonic Solid Coordinate Generator]
- * facets: {layer: domain, status: legacy, complexity: medium}
+ * facets: {layer: domain, status: legacy, complexity: 3}
  * -->
  */
 public class Platonic {
@@ -302,7 +302,7 @@ public class Platonic {
 	 * <!-- docstate
 	 * tags: [code/platonic_solids, code/testing]
 	 * concepts: [Tetrahedron Matrix Self-Test]
-	 * facets: {layer: test, status: legacy, complexity: low}
+	 * facets: {layer: test, status: legacy, complexity: 2}
 	 * -->
 	 */
 	final static public void testMatrixTetrahedron() {
@@ -332,7 +332,7 @@ public class Platonic {
 	 * <!-- docstate
 	 * tags: [code/platonic_solids, code/testing]
 	 * concepts: [Demo Entry Point]
-	 * facets: {layer: test, status: legacy, complexity: low}
+	 * facets: {layer: test, status: legacy, complexity: 2}
 	 * -->
 	 * @param args Array of parameters passed to the application via the command line. */
 	final static public void main(final String[] args) {

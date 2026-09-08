@@ -21,7 +21,7 @@ package tester.logic;
   * stale: false
   * tags: [code/decision_tree]
   * concepts: [Decision Tool]
-  * facets: {layer: utility, status: legacy, complexity: low}
+  * facets: {layer: utility, status: legacy, complexity: 2}
   * -->
   */
 public class DecisionTool

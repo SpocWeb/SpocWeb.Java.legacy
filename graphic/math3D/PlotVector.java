@@ -19,7 +19,7 @@ import math.vector.VectorFloat;
  * stale: false
  * tags: [code/3d_rendering, code/geometry]
  * concepts: [Vector Field Plot Element]
- * facets: {layer: domain, status: legacy, complexity: low}
+ * facets: {layer: domain, status: legacy, complexity: 2}
  * -->
  */
 public class PlotVector

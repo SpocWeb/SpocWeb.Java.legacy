@@ -163,7 +163,7 @@ import streamIO.exception.OperationNotSupported;
  * stale: false
  * tags: [code/sparse_matrix, code/sparse_graph]
  * concepts: [Sparse Matrix Graph]
- * facets: {layer: domain, status: broken, complexity: high}
+ * facets: {layer: domain, status: broken, complexity: 4}
  * -->
  */
 public class SparseMatrix 
@@ -2092,7 +2092,7 @@ implements IIterAble, IGraph {
  * stale: false
  * tags: [code/sparse_graph, code/graph_iteration]
  * concepts: [Sparse Edge Stream]
- * facets: {layer: domain, status: legacy, complexity: medium}
+ * facets: {layer: domain, status: legacy, complexity: 3}
  * -->
  */
 final class SparseEdgeStream 

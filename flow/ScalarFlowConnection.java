@@ -49,7 +49,7 @@ import tester.IDoubleMetric;
   * stale: false
   * tags: [code/scalar_operation]
   * concepts: [Dataflow]
-  * facets: {layer: domain, status: stable, complexity: low}
+  * facets: {layer: domain, status: stable, complexity: 2}
   * -->
   */
 public class ScalarFlowConnection

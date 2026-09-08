@@ -22,7 +22,7 @@ package aspect;
   * stale: false
   * tags: [code/composite_pattern, code/domain_model]
   * concepts: [Composite Aspect, Attribute Modelling]
-  * facets: {layer: domain, status: stable, complexity: low}
+  * facets: {layer: domain, status: stable, complexity: 2}
   * -->
   */
 public class SimpleAspect

@@ -35,7 +35,7 @@ import streamIO.Log;
  * stale: false
  * tags: [code/event_handling, code/interactive_editing]
  * concepts: [2D Graph Mouse Controller]
- * facets: {layer: domain, status: legacy, complexity: low}
+ * facets: {layer: domain, status: legacy, complexity: 2}
  * -->
  */
 public class Graph2DMouseController 

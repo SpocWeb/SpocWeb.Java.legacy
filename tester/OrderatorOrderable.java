@@ -25,7 +25,7 @@ import function.IIOrderAble;
  * stale: false
  * tags: [code/comparator]
  * concepts: [Orderable-Based Orderator]
- * facets: {layer: utility, status: legacy, complexity: low}
+ * facets: {layer: utility, status: legacy, complexity: 2}
  * -->
  */
 final public class OrderatorOrderable

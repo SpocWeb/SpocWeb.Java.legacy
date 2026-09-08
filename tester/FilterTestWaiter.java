@@ -19,7 +19,7 @@ package tester;
  * stale: false
  * tags: [code/predicate_filter]
  * concepts: [Blocking Test Waiter]
- * facets: {layer: utility, status: broken, complexity: low}
+ * facets: {layer: utility, status: broken, complexity: 2}
  * -->
  */
 public class FilterTestWaiter

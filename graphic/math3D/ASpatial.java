@@ -14,7 +14,7 @@ package graphic.math3D;
  * stale: false
  * tags: [code/geometry, code/3d_geometry]
  * concepts: [3D Spatial Object Base Class]
- * facets: {layer: domain, status: legacy, complexity: low}
+ * facets: {layer: domain, status: legacy, complexity: 2}
  * -->
  */
 public abstract class	ASpatial

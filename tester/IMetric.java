@@ -45,7 +45,7 @@ package tester;
  * stale: false
  * tags: [code/metric_interface]
  * concepts: [Metric Interface]
- * facets: {layer: utility, status: legacy, complexity: low}
+ * facets: {layer: utility, status: legacy, complexity: 2}
  * -->
  */
 public interface IMetric {

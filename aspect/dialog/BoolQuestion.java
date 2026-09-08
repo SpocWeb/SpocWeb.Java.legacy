@@ -21,7 +21,7 @@ import synch.InvalidException;
   * stale: false
   * tags: [code/dialog]
   * concepts: [Console Q&A Model]
-  * facets: {layer: domain, status: broken, complexity: low}
+  * facets: {layer: domain, status: broken, complexity: 2}
   * -->
   */
 public class BoolQuestion

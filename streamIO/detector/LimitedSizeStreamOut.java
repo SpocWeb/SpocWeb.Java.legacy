@@ -28,7 +28,7 @@ import streamIO.IIStreamOut;
   * stale: false
   * tags: [code/fixed_size_buffer, code/overflow_detection]
   * concepts: [Capacity Management, Stream Output]
-  * facets: {layer: infrastructure, status: stable, complexity: low}
+  * facets: {layer: infrastructure, status: stable, complexity: 2}
   * -->
   */
 public class LimitedSizeStreamOut

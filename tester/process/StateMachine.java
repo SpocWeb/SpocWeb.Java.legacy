@@ -30,7 +30,7 @@ import graphs.Pair;
   * stale: false
   * tags: [code/state_machine]
   * concepts: [Finite State Machine]
-  * facets: {layer: utility, status: legacy, complexity: low}
+  * facets: {layer: utility, status: legacy, complexity: 2}
   * -->
   */
 public class StateMachine

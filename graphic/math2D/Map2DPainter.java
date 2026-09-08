@@ -57,7 +57,7 @@ import math.vector.VectorObject;
  * stale: false
  * tags: [code/view_model]
  * concepts: [2D Graph Painter]
- * facets: {layer: domain, status: legacy, complexity: medium}
+ * facets: {layer: domain, status: legacy, complexity: 3}
  * -->
  */
 public class Map2DPainter

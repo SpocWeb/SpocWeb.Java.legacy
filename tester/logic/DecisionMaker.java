@@ -21,7 +21,7 @@ import tester.ITestAble;
   * stale: false
   * tags: [code/decision_tree, code/rule_engine]
   * concepts: [Decision Maker]
-  * facets: {layer: utility, status: legacy, complexity: medium}
+  * facets: {layer: utility, status: legacy, complexity: 3}
   * -->
   */
 public class DecisionMaker

@@ -27,7 +27,7 @@ import streamIO.Log;
  * stale: false
  * tags: [code/fixed_point_iteration]
  * concepts: [Fixed-Point Iterative Improver]
- * facets: {layer: utility, status: legacy, complexity: low}
+ * facets: {layer: utility, status: legacy, complexity: 2}
  * -->
  */
 public class FixPtFloatImprover 

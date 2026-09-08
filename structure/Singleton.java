@@ -16,7 +16,7 @@ package structure;
  * stale: false
  * tags: [code/singleton_pattern]
  * concepts: [Singleton Pattern]
- * facets: {layer: utility, status: legacy, complexity: low}
+ * facets: {layer: utility, status: legacy, complexity: 2}
  * -->
  */
 public class Singleton {
@@ -28,7 +28,7 @@ public class Singleton {
  * <!-- docstate
  * tags: [code/singleton_pattern]
  * concepts: [Singleton Accessor]
- * facets: {layer: utility, status: legacy, complexity: low}
+ * facets: {layer: utility, status: legacy, complexity: 2}
  * -->
 	 * This Method has to be overwritten to instantiate the correct Subclass  */
 	public static Singleton SINGLETON() {
@@ -40,7 +40,7 @@ public class Singleton {
 	 * <!-- docstate
 	 * tags: [code/singleton_pattern]
 	 * concepts: [Private Constructor]
-	 * facets: {layer: utility, status: legacy, complexity: low}
+	 * facets: {layer: utility, status: legacy, complexity: 2}
 	 * -->
 	 */
     protected Singleton () { }

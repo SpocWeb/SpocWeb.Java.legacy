@@ -18,7 +18,7 @@ import java.io.PrintStream;
  * stale: false
  * tags: [code/cli_tool, code/hex_encoding]
  * concepts: [File I/O]
- * facets: {layer: utility, status: stable, complexity: low}
+ * facets: {layer: utility, status: stable, complexity: 2}
  * -->
  */
 public class FileHex {
@@ -28,7 +28,7 @@ public class FileHex {
      * <!-- docstate
      * tags: [code/cli_tool]
      * concepts: [File I/O]
-     * facets: {layer: utility, status: stable, complexity: low}
+     * facets: {layer: utility, status: stable, complexity: 2}
      * -->
      */
     public FileHex() {
@@ -39,7 +39,7 @@ public class FileHex {
 	 * <!-- docstate
 	 * tags: [code/test_harness]
 	 * concepts: [Error Handling]
-	 * facets: {layer: utility, status: stable, complexity: low}
+	 * facets: {layer: utility, status: stable, complexity: 2}
 	 * -->
 	 */
 	public static void testEx() throws FileNotFoundException, IOException {
@@ -49,7 +49,7 @@ public class FileHex {
  * <!-- docstate
  * tags: [code/hex_encoding]
  * concepts: [File I/O]
- * facets: {layer: utility, status: stable, complexity: low}
+ * facets: {layer: utility, status: stable, complexity: 2}
  * -->
      * with a Line Break after every CR (13) Byte. */
     public static void main(String[] args) throws FileNotFoundException, IOException {

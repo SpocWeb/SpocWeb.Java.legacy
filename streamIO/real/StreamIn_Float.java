@@ -32,7 +32,7 @@ import streamIO.object.IStreamIn;
  * stale: false
  * tags: [code/stream_filter]
  * concepts: [Float Stream Base Class]
- * facets: {layer: infrastructure, status: legacy, complexity: low}
+ * facets: {layer: infrastructure, status: legacy, complexity: 2}
  * -->
  */
 public interface StreamIn_Float 

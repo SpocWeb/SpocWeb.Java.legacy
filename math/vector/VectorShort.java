@@ -49,7 +49,7 @@ import function.byref.ByRefShort;
   * stale: false
   * tags: [code/growable_array, code/array_math]
   * concepts: [Growable short[] Vector]
-  * facets: {layer: domain, status: broken, complexity: high}
+  * facets: {layer: domain, status: broken, complexity: 4}
   * -->
   */
 final public class VectorShort 
@@ -3592,7 +3592,7 @@ extends AVector
  * stale: false
  * tags: [code/functional_interfaces]
  * concepts: [Reverse-Order Short Stream Source]
- * facets: {layer: utility, status: legacy, complexity: low}
+ * facets: {layer: utility, status: legacy, complexity: 2}
  * -->
  */
 final class VectorShortStreamIn 

@@ -24,7 +24,7 @@ import function.byref.ByRefDouble;
  * stale: false
  * tags: [code/metric_space, code/root_finding, code/numerical_integration, code/big_integer_arithmetic]
  * concepts: [Metric Spaces - Root Finding and Numerical Integration]
- * facets: {layer: domain, status: legacy, complexity: high}
+ * facets: {layer: domain, status: legacy, complexity: 4}
  * -->
  */
 public abstract class AMetricIRing extends AIntRing implements IMetricIRing {

@@ -29,7 +29,7 @@ package streamIO;
  * stale: false
  * tags: [code/output_stream]
  * concepts: [Pluggable Filter Output Interface]
- * facets: {layer: infrastructure, status: legacy, complexity: low}
+ * facets: {layer: infrastructure, status: legacy, complexity: 2}
  * -->
  */
 public interface IPlugAbleFilterOut 

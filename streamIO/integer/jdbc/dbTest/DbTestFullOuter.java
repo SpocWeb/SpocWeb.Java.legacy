@@ -18,7 +18,7 @@ import synch.ValidationRule;
  * <!-- docstate
  * tags: [code/predicate, code/predicate_evaluation]
  * concepts: [Full Outer Join Row Predicate]
- * facets: {layer: domain, status: legacy, complexity: low}
+ * facets: {layer: domain, status: legacy, complexity: 2}
  * -->
  */
 public class DbTestFullOuter

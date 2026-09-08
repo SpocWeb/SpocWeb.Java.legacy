@@ -16,7 +16,7 @@ import streamIO.integer.jdbc.DbColumn;
  * <!-- docstate
  * tags: [code/predicate, code/predicate_delegate]
  * concepts: [Negating Row Predicate Wrapper]
- * facets: {layer: domain, status: legacy, complexity: low}
+ * facets: {layer: domain, status: legacy, complexity: 2}
  * -->
  */
 public class DbTestNegate

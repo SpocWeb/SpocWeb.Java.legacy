@@ -28,7 +28,7 @@ package graphic.mvc;
  * stale: false
  * tags: [code/gui]
  * concepts: [Active Canvas Interface]
- * facets: {layer: infrastructure, status: legacy, complexity: low}
+ * facets: {layer: infrastructure, status: legacy, complexity: 2}
  * -->
  */
 public interface IActiveCanvas extends IController, ICanvas {

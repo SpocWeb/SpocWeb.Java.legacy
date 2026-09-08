@@ -52,7 +52,7 @@ import math.vector.VectorObject;
  * stale: false
  * tags: [code/view_model]
  * concepts: [2D Graph Model]
- * facets: {layer: domain, status: broken, complexity: medium}
+ * facets: {layer: domain, status: broken, complexity: 3}
  * -->
  */
 public class Map2DModel

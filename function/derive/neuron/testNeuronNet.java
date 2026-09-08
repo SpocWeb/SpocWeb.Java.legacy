@@ -44,7 +44,7 @@ package function.derive.neuron;
   * stale: false
   * tags: [code/entry_point_code/console_output_code/test]
   * concepts: [Neural Networks, Test Harness]
-  * facets: {layer: utility, status: legacy, complexity: medium}
+  * facets: {layer: utility, status: legacy, complexity: 3}
   * -->
   */
 public class testNeuronNet {
@@ -55,7 +55,7 @@ public class testNeuronNet {
 	 * <!-- docstate
 	 * tags: [code/testing]
 	 * concepts: [Demo Entry Point]
-	 * facets: {layer: test, status: legacy, complexity: low}
+	 * facets: {layer: test, status: legacy, complexity: 2}
 	 * -->
 	 * via the command line.	 */
 	public static void main (final String[] args) throws Exception {

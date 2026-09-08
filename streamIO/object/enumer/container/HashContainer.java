@@ -70,7 +70,7 @@ import graphs.SparseGraph;
  * <!-- docstate
  * tags: [code/container, code/hash_table, code/container_iteration]
  * concepts: [Concrete Storage Containers - Arrays - Hash Tables and Relations]
- * facets: {layer: utility, status: legacy, complexity: high}
+ * facets: {layer: utility, status: legacy, complexity: 4}
  * digest: ea04617f1b51638e8cd59ae1d928f589f492523b549d6f1be6fd2affd1f41896
  * stale: false
  * -->
@@ -271,7 +271,7 @@ final class HashOperationMode extends Enum {
  * <!-- docstate
  * tags: [code/container, code/hash_table, code/container_iteration]
  * concepts: [Concrete Storage Containers - Arrays - Hash Tables and Relations]
- * facets: {layer: utility, status: legacy, complexity: high}
+ * facets: {layer: utility, status: legacy, complexity: 4}
  * digest: f3c95d4902a909cf7a171d5812bdfcfea9f43fd28d5d4462a5c5f869f986a244
  * stale: false
  * -->

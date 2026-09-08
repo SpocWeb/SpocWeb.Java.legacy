@@ -18,7 +18,7 @@ import function.derive.ring.Square;
  * stale: false
  * tags: [code/hyperbolic_function, code/derivable_function_contract]
  * concepts: [Hyperbolic Functions]
- * facets: {layer: utility, status: legacy, complexity: medium}
+ * facets: {layer: utility, status: legacy, complexity: 3}
  * -->
  */
 public class TanH

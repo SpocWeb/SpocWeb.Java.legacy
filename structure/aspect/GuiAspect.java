@@ -27,7 +27,7 @@ package structure.aspect;
   * stale: false
   * tags: [code/property_binding]
   * concepts: [GUI-Bound Aspect]
-  * facets: {layer: domain, status: legacy, complexity: low}
+  * facets: {layer: domain, status: legacy, complexity: 2}
   * -->
   */
 public abstract class GuiAspect

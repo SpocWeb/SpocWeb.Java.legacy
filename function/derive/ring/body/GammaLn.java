@@ -34,7 +34,7 @@ import function.byref.combinatoric.CombiFuncs;
  * stale: false
  * tags: [code/gamma_function, code/mathematical_function]
  * concepts: [Special Functions, Gamma Function]
- * facets: {layer: utility, status: legacy, complexity: medium}
+ * facets: {layer: utility, status: legacy, complexity: 3}
  * -->
  * Gamma	=	 GammaFactor (x-1.0)  * e^-GammaFactorLn(x) */
 public class GammaLn

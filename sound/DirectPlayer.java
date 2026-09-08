@@ -40,7 +40,7 @@ import streamIO.Log;
  * stale: false
  * tags: [code/midi_playback, code/keyboard_input]
  * concepts: [Interactive MIDI Player]
- * facets: {layer: utility, status: experimental, complexity: medium}
+ * facets: {layer: utility, status: experimental, complexity: 3}
  * -->
  */
 public class DirectPlayer

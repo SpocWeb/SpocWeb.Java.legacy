@@ -23,7 +23,7 @@ import tester.ITester;
  * stale: false
  * tags: [code/adjacency_matrix, code/graph_iteration]
  * concepts: [Adjacency Matrix Edge Stream]
- * facets: {layer: domain, status: legacy, complexity: medium}
+ * facets: {layer: domain, status: legacy, complexity: 3}
  * -->
  */
 class AdjMatrixEdgeStream 
@@ -149,7 +149,7 @@ extends AEdgeStreamIn {
  * stale: false
  * tags: [code/adjacency_matrix, code/dense_graph]
  * concepts: [Adjacency-Matrix Graph]
- * facets: {layer: domain, status: legacy, complexity: high}
+ * facets: {layer: domain, status: legacy, complexity: 4}
  * -->
  */
 public class MatrixGraph 

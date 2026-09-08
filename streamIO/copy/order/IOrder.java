@@ -20,7 +20,7 @@ import function.IOrderAble;
  * stale: false
  * tags: [code/numeric_comparison, code/in_place_operation]
  * concepts: [Order Relation, Comparable Types]
- * facets: {layer: utility, status: legacy, complexity: medium}
+ * facets: {layer: utility, status: legacy, complexity: 3}
  * -->
  */
 public interface IOrder

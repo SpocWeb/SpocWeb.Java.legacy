@@ -102,7 +102,7 @@ import com.sun.org.apache.xml.internal.utils.TreeWalker;
  * stale: false
  * tags: [code/xslt_transformation]
  * concepts: [XSLT Transformer]
- * facets: {layer: utility, status: legacy, complexity: low}
+ * facets: {layer: utility, status: legacy, complexity: 2}
  * -->
  */
 public class XslTrafo {

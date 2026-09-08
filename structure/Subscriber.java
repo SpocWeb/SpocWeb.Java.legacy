@@ -27,7 +27,7 @@ package structure; //
   * stale: false
   * tags: [code/observer_pattern]
   * concepts: [Observer Pattern Subscriber]
-  * facets: {layer: utility, status: legacy, complexity: low}
+  * facets: {layer: utility, status: legacy, complexity: 2}
   * -->
   */
 public interface Subscriber

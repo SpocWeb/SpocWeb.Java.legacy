@@ -15,7 +15,7 @@ package streamIO.copy.group.ring.metric.body.vector;
   * <!-- docstate
   * tags: [code/tensor, code/manifold_generation, code/interpolation]
   * concepts: [Vector/Matrix/Tensor and Manifold Interpolation]
-  * facets: {layer: domain, status: legacy, complexity: high}
+  * facets: {layer: domain, status: legacy, complexity: 4}
   * digest: d7641f881ec8e458acd6df30c7ecba93c6645be8a9aa627bad3802902683fc8c
   * stale: false
   * -->

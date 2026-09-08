@@ -46,7 +46,7 @@ package structure; //
   * stale: false
   * tags: [code/2d_geometry]
   * concepts: [2D Circle]
-  * facets: {layer: domain, status: legacy, complexity: low}
+  * facets: {layer: domain, status: legacy, complexity: 2}
   * -->
   */
 public class Circle

@@ -65,7 +65,7 @@ import function.ICountAble;
   * stale: false
   * tags: [code/boolean_algebra, code/lattice_structure]
   * concepts: [Boolean Algebra, Three-Valued Logic]
-  * facets: {layer: utility, status: legacy, complexity: medium}
+  * facets: {layer: utility, status: legacy, complexity: 3}
   * -->
   */
 final public class Ternary

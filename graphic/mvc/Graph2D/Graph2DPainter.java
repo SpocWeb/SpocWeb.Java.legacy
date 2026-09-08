@@ -56,7 +56,7 @@ import streamIO.Log;
  * stale: false
  * tags: [code/gui, code/graphics]
  * concepts: [2D Graph Painter]
- * facets: {layer: domain, status: legacy, complexity: medium}
+ * facets: {layer: domain, status: legacy, complexity: 3}
  * -->
  */
 public class Graph2DPainter 

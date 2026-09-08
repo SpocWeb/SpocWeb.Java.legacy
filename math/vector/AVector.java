@@ -57,7 +57,7 @@ import function.index.IDirectAccess;
  * stale: false
  * tags: [code/growable_array, code/array_bounds_check]
  * concepts: [Vector Family Base Class]
- * facets: {layer: utility, status: legacy, complexity: medium}
+ * facets: {layer: utility, status: legacy, complexity: 3}
  * -->
  */
 public abstract class AVector
@@ -310,7 +310,7 @@ implements IDirectAccess
  * stale: false
  * tags: [code/functional_interfaces]
  * concepts: [Reverse-Order Float Stream Source]
- * facets: {layer: utility, status: legacy, complexity: low}
+ * facets: {layer: utility, status: legacy, complexity: 2}
  * -->
  */
 abstract class AVectorStreamIn_Float
@@ -372,7 +372,7 @@ extends AStreamIn_Float {
  * stale: false
  * tags: [code/functional_interfaces]
  * concepts: [Reverse-Order Int Stream Source]
- * facets: {layer: utility, status: legacy, complexity: low}
+ * facets: {layer: utility, status: legacy, complexity: 2}
  * -->
  */
 abstract class AVectorStreamIn_Int

@@ -22,7 +22,7 @@ import function.byref.ByRefDouble;
  * stale: false
  * tags: [code/weighting]
  * concepts: [Exponential Weight Function]
- * facets: {layer: utility, status: broken, complexity: low}
+ * facets: {layer: utility, status: broken, complexity: 2}
  * -->
  */
 final public class WeightExp

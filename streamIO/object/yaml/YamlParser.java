@@ -86,7 +86,7 @@ package streamIO.object.yaml;
  * stale: false
  * tags: [code/parsing]
  * concepts: [YAML Parsing (Planned - Unimplemented)]
- * facets: {layer: utility, status: legacy, complexity: medium}
+ * facets: {layer: utility, status: legacy, complexity: 3}
  * -->
  */
 public class YamlParser {

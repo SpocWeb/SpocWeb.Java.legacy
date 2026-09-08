@@ -11,7 +11,7 @@ import streamIO.copy.CCopyAble;
  * stale: false
  * tags: [code/metric_space, code/root_finding, code/numerical_integration, code/big_integer_arithmetic]
  * concepts: [Metric Spaces - Root Finding and Numerical Integration]
- * facets: {layer: domain, status: legacy, complexity: high}
+ * facets: {layer: domain, status: legacy, complexity: 4}
  * -->
  * but still supports all other Methods of the WellOrder Class.	 */
 public class CWellOrder

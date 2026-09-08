@@ -23,7 +23,7 @@ import javax.naming.NamingException;
   * stale: false
   * tags: [code/directory_services]
   * concepts: [JNDI Context Demo]
-  * facets: {layer: test, status: legacy, complexity: low}
+  * facets: {layer: test, status: legacy, complexity: 2}
   * -->
   */
 public class InitCtx {
@@ -37,7 +37,7 @@ public class InitCtx {
  * <!-- docstate
  * tags: [code/directory_services]
  * concepts: [Self-Test Method]
- * facets: {layer: test, status: legacy, complexity: low}
+ * facets: {layer: test, status: legacy, complexity: 2}
  * -->
  */
 public static void testIt(String[] args) throws java.io.IOException {
@@ -60,7 +60,7 @@ public static void testIt(String[] args) throws java.io.IOException {
  * <!-- docstate
  * tags: [code/directory_services]
  * concepts: [Demo Entry Point]
- * facets: {layer: test, status: legacy, complexity: low}
+ * facets: {layer: test, status: legacy, complexity: 2}
  * -->
  * via the command line.	 */
 public static void main (String[] args) throws java.io.IOException {

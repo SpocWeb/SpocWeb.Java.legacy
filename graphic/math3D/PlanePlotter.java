@@ -17,7 +17,7 @@ import java.awt.Color;
  * stale: false
  * tags: [code/3d_rendering, code/chart_rendering]
  * concepts: [Plane Plotter]
- * facets: {layer: domain, status: legacy, complexity: medium}
+ * facets: {layer: domain, status: legacy, complexity: 3}
  * -->
  */
 public class PlanePlotter

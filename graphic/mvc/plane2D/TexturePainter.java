@@ -42,7 +42,7 @@ import streamIO.Log;
  * stale: false
  * tags: [code/texture_mapping, code/gui]
  * concepts: [MilkShape3D Model Texture Painter]
- * facets: {layer: domain, status: legacy, complexity: medium}
+ * facets: {layer: domain, status: legacy, complexity: 3}
  * -->
  */
 public class TexturePainter 

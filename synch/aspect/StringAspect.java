@@ -21,7 +21,7 @@ import synch.InvalidException;
   * stale: false
   * tags: [code/attached_property]
   * concepts: [String Value Aspect]
-  * facets: {layer: domain, status: legacy, complexity: low}
+  * facets: {layer: domain, status: legacy, complexity: 2}
   * -->
   */
 public class StringAspect

@@ -52,7 +52,7 @@ import tester.process.StreamProcessor;
   * stale: false
   * tags: [code/text_parsing, code/cli_tool]
   * concepts: [Text Parsing]
-  * facets: {layer: utility, status: broken, complexity: medium}
+  * facets: {layer: utility, status: broken, complexity: 3}
   * -->
   */
 public class FilterFind

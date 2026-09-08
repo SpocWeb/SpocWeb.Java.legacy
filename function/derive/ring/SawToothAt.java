@@ -16,7 +16,7 @@ import function.AFunction;
  * stale: false
  * tags: [code/mathematical_function]
  * concepts: [Function Algebra, Periodic Functions]
- * facets: {layer: utility, status: legacy, complexity: medium}
+ * facets: {layer: utility, status: legacy, complexity: 3}
  * -->
  * must use AFunction to delegate.	 */
 public class SawToothAt

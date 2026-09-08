@@ -13,7 +13,7 @@ import function.AFunction;
   * stale: false
   * tags: [code/neural_network, code/backpropagation]
   * concepts: [Neural Networks]
-  * facets: {layer: utility, status: legacy, complexity: medium}
+  * facets: {layer: utility, status: legacy, complexity: 3}
   * -->
   */
 public abstract class ASlab

@@ -66,7 +66,7 @@ import function.derive.IDeriveAble;
   * stale: false
   * tags: [code/algebraic_function, code/function_wrapper]
   * concepts: [Ring Theory, Function Algebra]
-  * facets: {layer: utility, status: legacy, complexity: medium}
+  * facets: {layer: utility, status: legacy, complexity: 3}
   * -->
   * with a 'simple' Type to the Method based Syntax of OO Programming.	 */
 final public class Algebra

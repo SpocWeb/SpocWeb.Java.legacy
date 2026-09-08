@@ -20,7 +20,7 @@ import java.io.File;
  * stale: false
  * tags: [code/function_contract, code/function_composition]
  * concepts: [Function/Relation Contract]
- * facets: {layer: utility, status: legacy, complexity: low}
+ * facets: {layer: utility, status: legacy, complexity: 2}
  * -->
  * and to use it for analytical Operations like Derivation.  */
 public abstract class AFunction

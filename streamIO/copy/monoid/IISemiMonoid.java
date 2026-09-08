@@ -11,7 +11,7 @@ package streamIO.copy.monoid;
  * stale: false
  * tags: [code/concatenation]
  * concepts: [Monoid, Concatenation]
- * facets: {layer: utility, status: legacy, complexity: medium}
+ * facets: {layer: utility, status: legacy, complexity: 3}
  * -->
  * Could also be called 'concatenable' or 'mappable / mapping' */
 public interface IISemiMonoid {

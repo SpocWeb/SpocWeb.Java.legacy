@@ -29,7 +29,7 @@ import java.awt.Shape;
  * stale: false
  * tags: [code/graphics, code/geometry]
  * concepts: [Shape Rendering Interface]
- * facets: {layer: infrastructure, status: legacy, complexity: low}
+ * facets: {layer: infrastructure, status: legacy, complexity: 2}
  * -->
  */
 public interface IGraphShape 

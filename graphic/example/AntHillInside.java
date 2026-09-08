@@ -45,7 +45,7 @@ import java.awt.Graphics;
   * stale: false
   * tags: [code/algorithm, code/simulation]
   * concepts: [Ant Colony Cellular Automaton]
-  * facets: {layer: test, status: broken, complexity: medium}
+  * facets: {layer: test, status: broken, complexity: 3}
   * -->
   */
 public class AntHillInside 

@@ -22,7 +22,7 @@ package structure; //TODO: always define a Package
   * stale: false
   * tags: [code/transaction]
   * concepts: [Transaction Implementation]
-  * facets: {layer: utility, status: legacy, complexity: low}
+  * facets: {layer: utility, status: legacy, complexity: 2}
   * -->
   */
 public interface Transaction

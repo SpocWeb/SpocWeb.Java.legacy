@@ -34,7 +34,7 @@ import synch.UniCastConstrained;
   * stale: false
   * tags: [code/property_binding]
   * concepts: [Aspect Property Binding Base]
-  * facets: {layer: domain, status: legacy, complexity: medium}
+  * facets: {layer: domain, status: legacy, complexity: 3}
   * -->
   */
 public abstract class Aspect

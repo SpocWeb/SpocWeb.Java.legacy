@@ -60,7 +60,7 @@ import function.byref.ByRefDouble;
  * <!-- docstate
  * tags: [code/container, code/hash_table, code/container_iteration]
  * concepts: [Concrete Storage Containers - Arrays - Hash Tables and Relations]
- * facets: {layer: utility, status: legacy, complexity: high}
+ * facets: {layer: utility, status: legacy, complexity: 4}
  * digest: bc0d469894603811795c114c2a5d7912ff646d6f8e90f726ebab3398f452ae5c
  * stale: false
  * -->

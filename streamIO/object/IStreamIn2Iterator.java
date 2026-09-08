@@ -27,7 +27,7 @@ import streamIO.IIStreamIn;
   * stale: false
   * tags: [code/stream_processing, code/iterator]
   * concepts: [Object Stream Pipeline]
-  * facets: {layer: utility, status: legacy, complexity: medium}
+  * facets: {layer: utility, status: legacy, complexity: 3}
   * -->
   */
 final public class IStreamIn2Iterator //Enumerator2Iterator

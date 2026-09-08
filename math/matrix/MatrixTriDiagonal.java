@@ -44,7 +44,7 @@ import streamIO.Log;
  * stale: false
  * tags: [code/tridiagonal_matrix_solving, code/band_diagonal_matrix]
  * concepts: [Tridiagonal Matrix Solver]
- * facets: {layer: utility, status: broken, complexity: medium}
+ * facets: {layer: utility, status: broken, complexity: 3}
  * -->
  */
 public class MatrixTriDiagonal {

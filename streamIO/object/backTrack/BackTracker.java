@@ -127,7 +127,7 @@ import function.IFunction;
   * stale: false
   * tags: [code/backtracking, code/algorithm]
   * concepts: [Backtracking Search]
-  * facets: {layer: utility, status: legacy, complexity: medium}
+  * facets: {layer: utility, status: legacy, complexity: 3}
   * -->
   */
 public class BackTracker

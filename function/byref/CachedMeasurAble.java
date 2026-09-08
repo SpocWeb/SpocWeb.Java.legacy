@@ -38,7 +38,7 @@ import function.IMeasurAble;
  * stale: false
  * tags: [code/caching, code/function_wrapper]
  * concepts: [Caching Decorator]
- * facets: {layer: utility, status: legacy, complexity: low}
+ * facets: {layer: utility, status: legacy, complexity: 2}
  * -->
  */
 public class CachedMeasurAble

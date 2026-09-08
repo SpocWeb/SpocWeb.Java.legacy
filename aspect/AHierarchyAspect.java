@@ -24,7 +24,7 @@ import synch.InvalidException;
   * stale: false
   * tags: [code/domain_model, code/hierarchy]
   * concepts: [Aspect Framework, Reflection-Based Dirty Tracking]
-  * facets: {layer: domain, status: stable, complexity: high}
+  * facets: {layer: domain, status: stable, complexity: 4}
   * -->
   */
 public abstract class AHierarchyAspect

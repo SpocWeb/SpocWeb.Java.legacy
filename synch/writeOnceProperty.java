@@ -15,7 +15,7 @@ package synch;
  * stale: false
  * tags: [code/attached_property]
  * concepts: [Write-Once Property Wrapper]
- * facets: {layer: domain, status: legacy, complexity: low}
+ * facets: {layer: domain, status: legacy, complexity: 2}
  * -->
  */
 public class writeOnceProperty {

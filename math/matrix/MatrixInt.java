@@ -45,7 +45,7 @@ import function.byref.ByRefFloat;
  * stale: false
  * tags: [code/matrix_operations, code/matrix_algebra]
  * concepts: [Integer Dense Matrix]
- * facets: {layer: utility, status: broken, complexity: high}
+ * facets: {layer: utility, status: broken, complexity: 4}
  * -->
  */
 public class MatrixInt 

@@ -34,7 +34,7 @@ import function.byref.ByRefDouble;
  * stale: false
  * tags: [code/minimum_search, code/optimization]
  * concepts: [Brent's Method Minimizer]
- * facets: {layer: utility, status: legacy, complexity: medium}
+ * facets: {layer: utility, status: legacy, complexity: 3}
  * -->
  */
 public class BrentFloatMinimizer 

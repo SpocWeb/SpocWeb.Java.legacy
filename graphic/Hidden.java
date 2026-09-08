@@ -21,7 +21,7 @@ import java.util.Arrays;
  * stale: false
  * tags: [code/3d_rendering, code/geometry]
  * concepts: [Hidden Line Removal]
- * facets: {layer: domain, status: broken, complexity: medium}
+ * facets: {layer: domain, status: broken, complexity: 3}
  * -->
  */
 final public class Hidden

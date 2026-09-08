@@ -24,7 +24,7 @@ import java.io.OutputStream;
   * stale: false
   * tags: [code/output_stream]
   * concepts: [Output Stream Interface]
-  * facets: {layer: infrastructure, status: legacy, complexity: low}
+  * facets: {layer: infrastructure, status: legacy, complexity: 2}
   * -->
   */
 public interface IStreamOut
@@ -76,7 +76,7 @@ public interface IStreamOut
  * stale: false
  * tags: [code/output_stream]
  * concepts: [Null Output Stream]
- * facets: {layer: infrastructure, status: legacy, complexity: low}
+ * facets: {layer: infrastructure, status: legacy, complexity: 2}
  * -->
  */
 class DevNullOut

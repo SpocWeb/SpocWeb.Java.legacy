@@ -70,7 +70,7 @@ import math.vector.VectorString;
  * stale: false
  * tags: [code/string_algorithms]
  * concepts: [Sentence Similarity Comparer]
- * facets: {layer: utility, status: broken, complexity: medium}
+ * facets: {layer: utility, status: broken, complexity: 3}
  * -->
  */
 public class SentenceComparer {

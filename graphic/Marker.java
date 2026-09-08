@@ -27,7 +27,7 @@ package graphic;
  * stale: false
  * tags: [code/chart_rendering, code/graphics]
  * concepts: [Point Marker Drawing]
- * facets: {layer: utility, status: legacy, complexity: low}
+ * facets: {layer: utility, status: legacy, complexity: 2}
  * -->
  */
 public class Marker {

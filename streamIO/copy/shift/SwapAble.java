@@ -11,7 +11,7 @@ import streamIO.copy.ICopyAble;
  * stale: false
  * tags: [code/in_place_operation]
  * concepts: [Random-Access Iteration]
- * facets: {layer: utility, status: legacy, complexity: medium}
+ * facets: {layer: utility, status: legacy, complexity: 3}
  * -->
  */
 public interface SwapAble

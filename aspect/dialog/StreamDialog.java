@@ -30,7 +30,7 @@ package aspect.dialog;
  * stale: false
  * tags: [code/dialog]
  * concepts: [Unimplemented Stub]
- * facets: {layer: domain, status: unfinished, complexity: low}
+ * facets: {layer: domain, status: unfinished, complexity: 2}
  * -->
  */
 public class StreamDialog {
@@ -40,7 +40,7 @@ public class StreamDialog {
 	 * <!-- docstate
 	 * tags: [code/dialog]
 	 * concepts: [Unimplemented Stub]
-	 * facets: {layer: domain, status: unfinished, complexity: low}
+	 * facets: {layer: domain, status: unfinished, complexity: 2}
 	 * -->
 	 */
 	public StreamDialog() {
@@ -51,7 +51,7 @@ public class StreamDialog {
 	 * <!-- docstate
 	 * tags: [code/dialog]
 	 * concepts: [Unimplemented Stub]
-	 * facets: {layer: domain, status: unfinished, complexity: low}
+	 * facets: {layer: domain, status: unfinished, complexity: 2}
 	 * -->
 	  * @param args unused */
 	public static void main(String[] args) {}

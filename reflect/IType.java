@@ -25,7 +25,7 @@ package reflect;
  * stale: false
  * tags: [code/reflection_interface, code/type_system]
  * concepts: [Domain Model, Object Classification]
- * facets: {layer: domain, status: stable, complexity: low}
+ * facets: {layer: domain, status: stable, complexity: 2}
  * -->
  */
 public interface IType extends IMathThing {

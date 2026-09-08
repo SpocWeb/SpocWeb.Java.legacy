@@ -45,7 +45,7 @@ import streamIO.integer.encoding.BigEndianReader;
  * stale: false
  * tags: [code/image_loading]
  * concepts: [MS3D Texture Loader]
- * facets: {layer: domain, status: legacy, complexity: low}
+ * facets: {layer: domain, status: legacy, complexity: 2}
  * -->
  */
 public class Ms3dTexture {

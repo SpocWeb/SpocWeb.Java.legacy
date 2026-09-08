@@ -24,7 +24,7 @@ package structure.blackBoard.triangle;
  * stale: false
  * tags: [code/rule_based_validation]
  * concepts: [Side-Side-Side Rule]
- * facets: {layer: domain, status: legacy, complexity: low}
+ * facets: {layer: domain, status: legacy, complexity: 2}
  * -->
  */
 class SSS extends ATriangleKnowledge {

@@ -22,7 +22,7 @@ import java.util.Hashtable;
   * stale: false
   * tags: [code/state_machine]
   * concepts: [Hash-Based Discrete Function]
-  * facets: {layer: utility, status: legacy, complexity: low}
+  * facets: {layer: utility, status: legacy, complexity: 2}
   * -->
   */
 public class DiscreteFnByHash

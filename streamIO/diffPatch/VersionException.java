@@ -33,7 +33,7 @@ package streamIO.diffPatch;
  * stale: false
  * tags: [code/version_control]
  * concepts: [Versioning]
- * facets: {layer: domain, status: stable, complexity: low}
+ * facets: {layer: domain, status: stable, complexity: 2}
  * -->
  */
 public class VersionException

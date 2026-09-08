@@ -70,7 +70,7 @@ import streamIO.object.ArrayStreamIn;
   * stale: false
   * tags: [code/enum_modeling, code/flyweight_pattern]
   * concepts: [Flyweight Pattern]
-  * facets: {layer: utility, status: legacy, complexity: medium}
+  * facets: {layer: utility, status: legacy, complexity: 3}
   * -->
   */
 public abstract class Enum

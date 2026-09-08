@@ -34,7 +34,7 @@ import function.byref.ByRefDouble;
  * stale: false
  * tags: [code/svd_decomposition, code/singular_value_decomposition]
  * concepts: [Singular Value Decomposition]
- * facets: {layer: utility, status: legacy, complexity: high}
+ * facets: {layer: utility, status: legacy, complexity: 4}
  * -->
  */
 public class MatrixSVD {

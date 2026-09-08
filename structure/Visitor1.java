@@ -27,7 +27,7 @@ package structure; //
   * stale: false
   * tags: [code/visitor_pattern]
   * concepts: [Concrete Visitor 1]
-  * facets: {layer: utility, status: broken, complexity: low}
+  * facets: {layer: utility, status: broken, complexity: 2}
   * -->
   */
 public class Visitor1

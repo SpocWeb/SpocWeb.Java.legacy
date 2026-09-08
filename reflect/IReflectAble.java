@@ -34,7 +34,7 @@ import tester.ITester;
   * stale: false
   * tags: [code/reflection, code/interface_contract]
   * concepts: [Reflection]
-  * facets: {layer: domain, status: stable, complexity: low}
+  * facets: {layer: domain, status: stable, complexity: 2}
   * -->
   */
 public interface IReflectAble {

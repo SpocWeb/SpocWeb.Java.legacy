@@ -41,7 +41,7 @@ package structure; //
   * stale: false
   * tags: [code/state_pattern]
   * concepts: [State Pattern Context]
-  * facets: {layer: utility, status: broken, complexity: low}
+  * facets: {layer: utility, status: broken, complexity: 2}
   * -->
   */
 public class Context {

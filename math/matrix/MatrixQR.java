@@ -32,7 +32,7 @@ import function.byref.ByRefDouble;
  * stale: false
  * tags: [code/qr_decomposition, code/numerical_linear_algebra]
  * concepts: [QR Decomposition]
- * facets: {layer: utility, status: legacy, complexity: high}
+ * facets: {layer: utility, status: legacy, complexity: 4}
  * -->
  */
 public class MatrixQR extends MatrixDouble {

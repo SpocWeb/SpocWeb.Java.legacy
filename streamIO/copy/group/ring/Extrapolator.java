@@ -15,7 +15,7 @@ import streamIO.copy.group.IGroup;
   * stale: false
   * tags: [code/ring_theory, code/ode_solver]
   * concepts: [Ring Algebra and ODE Solvers]
-  * facets: {layer: domain, status: legacy, complexity: high}
+  * facets: {layer: domain, status: legacy, complexity: 4}
   * -->
   * This Interpolator can be reset after work to calculate another Interpolation */
 public class Extrapolator {

@@ -31,7 +31,7 @@ import streamIO.object.AStreamIn;
  * stale: false
  * tags: [code/matrix_operations]
  * concepts: [Float Matrix Row Stream Iterator]
- * facets: {layer: utility, status: broken, complexity: low}
+ * facets: {layer: utility, status: broken, complexity: 2}
  * -->
  */
 public class MatrixFloatStreamIn

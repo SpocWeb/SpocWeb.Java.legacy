@@ -44,7 +44,7 @@ import function.derive.ring.body.Gauss;
  * stale: false
  * tags: [code/statistical_correlation, code/hypothesis_testing]
  * concepts: [Cross-Vector Correlation Statistics]
- * facets: {layer: domain, status: legacy, complexity: high}
+ * facets: {layer: domain, status: legacy, complexity: 4}
  * -->
  */
 public class Correlation {
@@ -61,7 +61,7 @@ public class Correlation {
 	 * <!-- docstate
 	 * tags: [code/statistical_correlation]
 	 * concepts: [Private Constructor (Static Utility)]
-	 * facets: {layer: domain, status: legacy, complexity: low}
+	 * facets: {layer: domain, status: legacy, complexity: 2}
 	 * -->
 	 */
 	private Correlation() {}
@@ -71,7 +71,7 @@ public class Correlation {
 	 * <!-- docstate
 	 * tags: [code/testing]
 	 * concepts: [Demo Entry Point]
-	 * facets: {layer: test, status: legacy, complexity: low}
+	 * facets: {layer: test, status: legacy, complexity: 2}
 	 * -->
 	 */
 	public static void main(final String[] args) throws Exception {
@@ -83,7 +83,7 @@ public class Correlation {
 	 * <!-- docstate
 	 * tags: [code/testing, code/statistical_correlation]
 	 * concepts: [Correlation Self-Test Dispatcher]
-	 * facets: {layer: test, status: legacy, complexity: low}
+	 * facets: {layer: test, status: legacy, complexity: 2}
 	 * -->
 	 */
 	final static public void testIt() throws Exception {
@@ -112,7 +112,7 @@ public class Correlation {
 	 * <!-- docstate
 	 * tags: [code/statistical_correlation]
 	 * concepts: [Pearson Correlation from Sums]
-	 * facets: {layer: domain, status: legacy, complexity: low}
+	 * facets: {layer: domain, status: legacy, complexity: 2}
 	 * -->
 	 */
 	final static public double CORRELATION(final float yVariance, final float coVariance, final float xVariance) {
@@ -134,7 +134,7 @@ public class Correlation {
 	 * <!-- docstate
 	 * tags: [code/statistical_correlation]
 	 * concepts: [Regression Slope from Correlation]
-	 * facets: {layer: domain, status: legacy, complexity: low}
+	 * facets: {layer: domain, status: legacy, complexity: 2}
 	 * -->
 	 */
 	final static public double CORRELATION_SLOPE(final float coVariance, final float xVariance) {
@@ -165,7 +165,7 @@ public class Correlation {
 	 * <!-- docstate
 	 * tags: [code/statistical_correlation]
 	 * concepts: [Pearson Correlation of Two Vectors]
-	 * facets: {layer: domain, status: legacy, complexity: medium}
+	 * facets: {layer: domain, status: legacy, complexity: 3}
 	 * -->
 	 */
 	final static public double CORRELATION(final float[] x, final float[] y) {
@@ -185,7 +185,7 @@ public class Correlation {
 	 * <!-- docstate
 	 * tags: [code/statistical_correlation]
 	 * concepts: [Pearson Correlation over a Range]
-	 * facets: {layer: domain, status: legacy, complexity: medium}
+	 * facets: {layer: domain, status: legacy, complexity: 3}
 	 * -->
 	 */
 	final static public double CORRELATION(final float[] x, final float[] y, final int start, final int stop) {
@@ -221,7 +221,7 @@ public class Correlation {
 	 * <!-- docstate
 	 * tags: [code/statistical_correlation]
 	 * concepts: [Pearson Correlation Matrix]
-	 * facets: {layer: domain, status: legacy, complexity: medium}
+	 * facets: {layer: domain, status: legacy, complexity: 3}
 	 * -->
 	 */
 	final static public double CORRELATION(final float[][] x) {
@@ -237,7 +237,7 @@ public class Correlation {
 	 * <!-- docstate
 	 * tags: [code/statistical_correlation]
 	 * concepts: [Pearson Correlation Matrix (Row Range)]
-	 * facets: {layer: domain, status: legacy, complexity: medium}
+	 * facets: {layer: domain, status: legacy, complexity: 3}
 	 * -->
 	 */
 	final static public double CORRELATION(final float[][] x, final int xCol, final int yCol) {
@@ -252,7 +252,7 @@ public class Correlation {
 	 * <!-- docstate
 	 * tags: [code/statistical_correlation]
 	 * concepts: [Pearson Correlation Matrix (Row/Column Range)]
-	 * facets: {layer: domain, status: legacy, complexity: medium}
+	 * facets: {layer: domain, status: legacy, complexity: 3}
 	 * -->
 	 */
 	final static public double CORRELATION(final float[][] x, final int xCol, final int yCol, final int start, final int stop) {
@@ -291,7 +291,7 @@ public class Correlation {
 	 * <!-- docstate
 	 * tags: [code/statistical_correlation, code/hypothesis_testing]
 	 * concepts: [Fisher Z-Transform of Correlation]
-	 * facets: {layer: domain, status: legacy, complexity: low}
+	 * facets: {layer: domain, status: legacy, complexity: 2}
 	 * -->
 	 */
 	final static public double FISHER_Z_CORRELATION(final double r, final int n) {
@@ -311,7 +311,7 @@ public class Correlation {
 	 * <!-- docstate
 	 * tags: [code/hypothesis_testing]
 	 * concepts: [Correlation Significance Probability]
-	 * facets: {layer: domain, status: legacy, complexity: medium}
+	 * facets: {layer: domain, status: legacy, complexity: 3}
 	 * -->
 	 */
 	final static public double PROB_CORRELATION(final double r, final int n) {
@@ -333,7 +333,7 @@ public class Correlation {
 	 * <!-- docstate
 	 * tags: [code/hypothesis_testing]
 	 * concepts: [Fisher-Z Significance Probability]
-	 * facets: {layer: domain, status: legacy, complexity: low}
+	 * facets: {layer: domain, status: legacy, complexity: 2}
 	 * -->
 	 */
 	final static public float PROB_Z_CORRELATION(final double z) {
@@ -353,7 +353,7 @@ public class Correlation {
 	 * <!-- docstate
 	 * tags: [code/statistical_correlation, code/ranking]
 	 * concepts: [Spearman Rank Correlation]
-	 * facets: {layer: domain, status: legacy, complexity: high}
+	 * facets: {layer: domain, status: legacy, complexity: 4}
 	 * -->
 	 */
 	final static public double RANK_CORRELATION(final float[] data1, final float[] data2, final int n
@@ -402,7 +402,7 @@ public class Correlation {
 	 * <!-- docstate
 	 * tags: [code/statistical_correlation]
 	 * concepts: [Kendall Tau Sign Correlation]
-	 * facets: {layer: domain, status: legacy, complexity: medium}
+	 * facets: {layer: domain, status: legacy, complexity: 3}
 	 * -->
 	 */
 	final static public double SIGN_CORRELATION_Z(final float[] xData, final float[] yData) {
@@ -426,7 +426,7 @@ public class Correlation {
 	 * <!-- docstate
 	 * tags: [code/statistical_correlation]
 	 * concepts: [Kendall Tau Sign Correlation (Range)]
-	 * facets: {layer: domain, status: legacy, complexity: medium}
+	 * facets: {layer: domain, status: legacy, complexity: 3}
 	 * -->
 	 */
 	final static public double SIGN_CORRELATION_Z(final float[] xData, final float[] yData, final int start, final int stop) {
@@ -477,7 +477,7 @@ public class Correlation {
 	 * <!-- docstate
 	 * tags: [code/statistical_correlation]
 	 * concepts: [Kendall Tau Sign Correlation Matrix]
-	 * facets: {layer: domain, status: legacy, complexity: medium}
+	 * facets: {layer: domain, status: legacy, complexity: 3}
 	 * -->
 	 */
 	final static public double SIGN_CORRELATION_Z(final float[][] data, final int xCol, final int yCol) {
@@ -500,7 +500,7 @@ public class Correlation {
 	 * <!-- docstate
 	 * tags: [code/statistical_correlation]
 	 * concepts: [Kendall Tau Sign Correlation Matrix (Range)]
-	 * facets: {layer: domain, status: legacy, complexity: medium}
+	 * facets: {layer: domain, status: legacy, complexity: 3}
 	 * -->
 	 */
 	final static public double SIGN_CORRELATION_Z(final float[][] data, final int xCol, final int yCol, final int start, final int stop) {
@@ -545,7 +545,7 @@ public class Correlation {
 	 * <!-- docstate
 	 * tags: [code/statistical_correlation]
 	 * concepts: [Kendall Tau Sign Correlation (int Matrix)]
-	 * facets: {layer: domain, status: legacy, complexity: medium}
+	 * facets: {layer: domain, status: legacy, complexity: 3}
 	 * -->
 	 */
 	final static public double SIGN_CORRELATION_Z(final int[][] counts) {
@@ -562,7 +562,7 @@ public class Correlation {
 	 * <!-- docstate
 	 * tags: [code/statistical_correlation]
 	 * concepts: [Kendall Tau Sign Correlation (int Matrix, Range)]
-	 * facets: {layer: domain, status: legacy, complexity: medium}
+	 * facets: {layer: domain, status: legacy, complexity: 3}
 	 * -->
 	 */
 	final static public double SIGN_CORRELATION_Z(final int[][] counts, final int rowStop, final int colStop) {
@@ -608,7 +608,7 @@ public class Correlation {
 	 * <!-- docstate
 	 * tags: [code/testing, code/statistical_correlation]
 	 * concepts: [Pearson Correlation Self-Test]
-	 * facets: {layer: test, status: legacy, complexity: low}
+	 * facets: {layer: test, status: legacy, complexity: 2}
 	 * -->
 	 */
 	private static final void testCorrelation() {
@@ -644,7 +644,7 @@ public class Correlation {
 	 * <!-- docstate
 	 * tags: [code/testing, code/statistical_correlation]
 	 * concepts: [Rank Correlation Self-Test]
-	 * facets: {layer: test, status: legacy, complexity: low}
+	 * facets: {layer: test, status: legacy, complexity: 2}
 	 * -->
 	 */
 	private static final void testRankCorrelation() {
@@ -760,7 +760,7 @@ public class Correlation {
 	 * <!-- docstate
 	 * tags: [code/testing, code/statistical_correlation]
 	 * concepts: [Sign Correlation Self-Test]
-	 * facets: {layer: test, status: legacy, complexity: low}
+	 * facets: {layer: test, status: legacy, complexity: 2}
 	 * -->
 	 */
 	private static final void testSignCorrelation() {
@@ -814,7 +814,7 @@ public class Correlation {
 	 * <!-- docstate
 	 * tags: [code/testing, code/statistical_correlation]
 	 * concepts: [Sign Correlation Self-Test (Variant)]
-	 * facets: {layer: test, status: legacy, complexity: low}
+	 * facets: {layer: test, status: legacy, complexity: 2}
 	 * -->
 	 */
 	private static final void testSignCorrelation2() {

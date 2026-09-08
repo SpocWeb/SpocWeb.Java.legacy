@@ -17,7 +17,7 @@ import streamIO.copy.groupM.IGroupM;
  * stale: false
  * tags: [code/differential_integration]
  * concepts: [Ordinary Differential Equations, Chaos Theory]
- * facets: {layer: utility, status: legacy, complexity: medium}
+ * facets: {layer: utility, status: legacy, complexity: 3}
  * -->
  */
 public class OdeLorentz

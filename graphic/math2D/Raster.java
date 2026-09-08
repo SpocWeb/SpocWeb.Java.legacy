@@ -32,7 +32,7 @@ import math.vector.VectorFloat;
  * stale: false
  * tags: [code/raster_generation]
  * concepts: [Point Raster Generation]
- * facets: {layer: utility, status: legacy, complexity: high}
+ * facets: {layer: utility, status: legacy, complexity: 4}
  * -->
  */
 public class Raster {

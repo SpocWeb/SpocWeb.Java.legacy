@@ -24,7 +24,7 @@ import java.awt.Color;
  * stale: false
  * tags: [code/graphics, code/line_rasterization]
  * concepts: [Additional Fast Primitives Interface]
- * facets: {layer: infrastructure, status: legacy, complexity: low}
+ * facets: {layer: infrastructure, status: legacy, complexity: 2}
  * -->
  */
 public interface IGraphAddtl {

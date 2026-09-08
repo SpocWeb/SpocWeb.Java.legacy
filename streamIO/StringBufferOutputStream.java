@@ -42,7 +42,7 @@ import streamIO.real.IStreamOutFloat;
   * stale: false
   * tags: [code/output_stream]
   * concepts: [StringBuffer-Backed Output Stream]
-  * facets: {layer: infrastructure, status: broken, complexity: medium}
+  * facets: {layer: infrastructure, status: broken, complexity: 3}
   * -->
   */
 public class StringBufferOutputStream

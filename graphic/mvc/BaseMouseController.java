@@ -40,7 +40,7 @@ import java.awt.event.MouseWheelListener;
  * stale: false
  * tags: [code/event_handling, code/ui_control]
  * concepts: [Mouse Controller Base Class]
- * facets: {layer: infrastructure, status: legacy, complexity: low}
+ * facets: {layer: infrastructure, status: legacy, complexity: 2}
  * -->
  */
 public class BaseMouseController 

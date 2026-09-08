@@ -48,7 +48,7 @@ import function.byref.ByRefLong;
  * stale: false
  * tags: [code/constant_function, code/numeric_comparison]
  * concepts: [Function Algebra, Flyweight Pattern]
- * facets: {layer: utility, status: legacy, complexity: medium}
+ * facets: {layer: utility, status: legacy, complexity: 3}
  * -->
  */
 public class CCountAble
@@ -363,7 +363,7 @@ implements ICountAble {
 	 * stale: false
 	 * tags: [code/enum_modeling, code/numeric_comparison]
 	 * concepts: [Comparison Result Enum]
-	 * facets: {layer: utility, status: legacy, complexity: low}
+	 * facets: {layer: utility, status: legacy, complexity: 2}
 	 * -->
   * The Values match the Return Value of the compare() and Position Methods +1.     */
 class Comparison
@@ -385,7 +385,7 @@ extends CCountAble {
 	 * stale: false
 	 * tags: [code/numeric_comparison]
 	 * concepts: [Comparison Result Holder]
-	 * facets: {layer: utility, status: legacy, complexity: low}
+	 * facets: {layer: utility, status: legacy, complexity: 2}
 	 * -->
   * The Values match the Return Value of the compare() and Position Methods +1.     */
 class ByRefComparison

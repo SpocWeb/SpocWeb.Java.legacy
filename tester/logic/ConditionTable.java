@@ -21,7 +21,7 @@ package tester.logic;
   * stale: false
   * tags: [code/decision_tree, code/rule_engine]
   * concepts: [Condition Table]
-  * facets: {layer: utility, status: broken, complexity: medium}
+  * facets: {layer: utility, status: broken, complexity: 3}
   * -->
   */
 public class ConditionTable {

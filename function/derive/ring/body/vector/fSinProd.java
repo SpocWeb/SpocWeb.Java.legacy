@@ -14,7 +14,7 @@ import function.IMeasurAble;
  * stale: false
  * tags: [code/mathematical_function, code/vector_math]
  * concepts: [Vector Calculus, Trigonometric Functions]
- * facets: {layer: utility, status: legacy, complexity: medium}
+ * facets: {layer: utility, status: legacy, complexity: 3}
  * -->
  * i.e. the full Period fits into the unit Circle. (Example Function)  */
 public class fSinProd

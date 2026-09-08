@@ -44,7 +44,7 @@ import tester.IEquivalence;
   * <!-- docstate
   * tags: [code/container, code/hash_table, code/container_iteration]
   * concepts: [Concrete Storage Containers - Arrays - Hash Tables and Relations]
-  * facets: {layer: utility, status: legacy, complexity: high}
+  * facets: {layer: utility, status: legacy, complexity: 4}
   * digest: f4f4c9668f647bc4ba6be699fe9b417c099c447448367ffb2f3ab5c47ada68c3
   * stale: false
   * -->

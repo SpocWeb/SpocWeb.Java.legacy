@@ -44,7 +44,7 @@ import java.text.AttributedCharacterIterator;
  * stale: false
  * tags: [code/graphics, code/adapter]
  * concepts: [AWT Graphics Delegate Adapter]
- * facets: {layer: infrastructure, status: broken, complexity: high}
+ * facets: {layer: infrastructure, status: broken, complexity: 4}
  * -->
  */
 final public class GraphicsAdapter

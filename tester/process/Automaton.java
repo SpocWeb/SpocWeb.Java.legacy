@@ -29,7 +29,7 @@ import function.AFunction;
   * stale: false
   * tags: [code/state_machine]
   * concepts: [Automaton Base Class]
-  * facets: {layer: utility, status: legacy, complexity: low}
+  * facets: {layer: utility, status: legacy, complexity: 2}
   * -->
   */
 public class Automaton

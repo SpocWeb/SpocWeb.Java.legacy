@@ -36,7 +36,7 @@ import java.awt.image.PixelGrabber;
  * stale: false
  * tags: [code/graphics]
  * concepts: [Texture-Sampling Color Strategy]
- * facets: {layer: utility, status: legacy, complexity: medium}
+ * facets: {layer: utility, status: legacy, complexity: 3}
  * -->
  */
 public class TextureGraphics

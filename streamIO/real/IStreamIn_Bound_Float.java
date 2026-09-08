@@ -19,7 +19,7 @@ package streamIO.real;
   * stale: false
   * tags: [code/stream_filter]
   * concepts: [Bounded Float Stream Interface]
-  * facets: {layer: infrastructure, status: legacy, complexity: low}
+  * facets: {layer: infrastructure, status: legacy, complexity: 2}
   * -->
   * @see <{streamIO.Float.IStreamIn_Float}>*/
 public interface IStreamIn_Bound_Float 

@@ -29,7 +29,7 @@ import streamIO.copy.groupM.IGroupM;
  * stale: false
  * tags: [code/dynamic_programming]
  * concepts: [Matrix Chain Bracketing]
- * facets: {layer: utility, status: legacy, complexity: medium}
+ * facets: {layer: utility, status: legacy, complexity: 3}
  * -->
  */
 public class Bracketing {

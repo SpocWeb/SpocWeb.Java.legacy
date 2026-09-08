@@ -43,7 +43,7 @@ import streamIO.Assert;
  * stale: false
  * tags: [code/band_diagonal_matrix, code/matrix_algebra]
  * concepts: [Band-Diagonal Matrix]
- * facets: {layer: utility, status: legacy, complexity: medium}
+ * facets: {layer: utility, status: legacy, complexity: 3}
  * -->
  */
 final public class MatrixBand 

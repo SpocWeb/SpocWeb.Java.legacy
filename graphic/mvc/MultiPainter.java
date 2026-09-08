@@ -38,7 +38,7 @@ import java.util.List;
  * stale: false
  * tags: [code/container_pattern, code/gui]
  * concepts: [Painter Composition (Delegating List)]
- * facets: {layer: infrastructure, status: legacy, complexity: low}
+ * facets: {layer: infrastructure, status: legacy, complexity: 2}
  * -->
  */
 public class MultiPainter 

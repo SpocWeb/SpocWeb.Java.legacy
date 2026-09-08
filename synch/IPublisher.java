@@ -27,7 +27,7 @@ package synch;
  * stale: false
  * tags: [code/publish_subscribe]
  * concepts: [Publisher Interface]
- * facets: {layer: infrastructure, status: legacy, complexity: low}
+ * facets: {layer: infrastructure, status: legacy, complexity: 2}
  * -->
  */
 public interface IPublisher {

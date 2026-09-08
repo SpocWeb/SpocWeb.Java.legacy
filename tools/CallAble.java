@@ -33,7 +33,7 @@ package tools;
  * stale: false
  * tags: [code/callback_interface, code/generic_operation]
  * concepts: [Callable Abstraction]
- * facets: {layer: infrastructure, status: stable, complexity: low}
+ * facets: {layer: infrastructure, status: stable, complexity: 2}
  * -->
  */
 public interface CallAble {

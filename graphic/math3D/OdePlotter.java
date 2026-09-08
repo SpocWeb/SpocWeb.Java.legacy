@@ -23,7 +23,7 @@ import streamIO.copy.group.ring.AStepper;
  * stale: false
  * tags: [code/numerical_integration, code/3d_rendering]
  * concepts: [ODE Trajectory Plotter]
- * facets: {layer: domain, status: broken, complexity: medium}
+ * facets: {layer: domain, status: broken, complexity: 3}
  * -->
  */
 public class OdePlotter

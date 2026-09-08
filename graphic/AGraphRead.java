@@ -24,7 +24,7 @@ import java.awt.Color;
  * stale: false
  * tags: [code/graphics, code/image_processing]
  * concepts: [Flood Fill Base Class]
- * facets: {layer: infrastructure, status: legacy, complexity: medium}
+ * facets: {layer: infrastructure, status: legacy, complexity: 3}
  * -->
  */
 public abstract class AGraphRead

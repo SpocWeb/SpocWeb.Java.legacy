@@ -86,7 +86,7 @@ import tester.process.Operator;
   * stale: false
   * tags: [code/dictionary_entry, code/concatenation]
   * concepts: [Key-Value Pair, Dictionary]
-  * facets: {layer: utility, status: legacy, complexity: medium}
+  * facets: {layer: utility, status: legacy, complexity: 3}
   * -->
   */
 public class Association 

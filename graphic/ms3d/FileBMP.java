@@ -32,7 +32,7 @@ package graphic.ms3d;
  * stale: false
  * tags: [code/image_loading]
  * concepts: [BMP File Loader (Unimplemented Stub)]
- * facets: {layer: utility, status: unfinished, complexity: low}
+ * facets: {layer: utility, status: unfinished, complexity: 2}
  * -->
  */
 public class FileBMP {

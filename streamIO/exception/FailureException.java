@@ -18,7 +18,7 @@ package streamIO.exception;
   * stale: false
   * tags: [code/custom_exception]
   * concepts: [Error Handling, Testing]
-  * facets: {layer: infrastructure, status: stable, complexity: low}
+  * facets: {layer: infrastructure, status: stable, complexity: 2}
   * -->
   */
 final public class FailureException

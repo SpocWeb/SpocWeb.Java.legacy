@@ -44,7 +44,7 @@ import function.byref.ByRefChar;
  * stale: false
  * tags: [code/string_search]
  * concepts: [String Searcher Interface]
- * facets: {layer: utility, status: legacy, complexity: low}
+ * facets: {layer: utility, status: legacy, complexity: 2}
  * -->
  */
 public class StrSearcher {

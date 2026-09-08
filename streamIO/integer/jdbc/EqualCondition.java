@@ -21,7 +21,7 @@ import java.sql.SQLException;
  * stale: false
  * tags: [code/jdbc_adapter, code/database_access, code/database_driver]
  * concepts: [Filesystem-Backed JDBC Driver Framework with Fixed-Length and Separator-Delimited Table Storage]
- * facets: {layer: domain, status: legacy, complexity: high}
+ * facets: {layer: domain, status: legacy, complexity: 4}
  * -->
  */
 public class EqualCondition 

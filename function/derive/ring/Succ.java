@@ -15,7 +15,7 @@ import function.derive.CCountAble;
  * stale: false
  * tags: [code/mathematical_function, code/derivable_function_contract]
  * concepts: [Function Algebra]
- * facets: {layer: utility, status: legacy, complexity: medium}
+ * facets: {layer: utility, status: legacy, complexity: 3}
  * -->
  * It should work exactly like AddAt, but that is not realized everywhere yet!!  */
 public class Succ

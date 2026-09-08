@@ -19,7 +19,7 @@ import function.byref.ByRefDouble;
  * stale: false
  * tags: [code/vector_math, code/3d_geometry]
  * concepts: [3D Vector]
- * facets: {layer: domain, status: broken, complexity: medium}
+ * facets: {layer: domain, status: broken, complexity: 3}
  * -->
  */
 final public class Vector3D {

@@ -32,7 +32,7 @@ import streamIO.IIStreamOut;
   * stale: false
   * tags: [code/thread_pool]
   * concepts: [Simple Thread Pool Executor]
-  * facets: {layer: infrastructure, status: legacy, complexity: medium}
+  * facets: {layer: infrastructure, status: legacy, complexity: 3}
   * -->
   */
 public class SimpleThreadPoolExecutor

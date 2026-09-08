@@ -30,7 +30,7 @@ import streamIO.object.IStreamIn;
   * stale: false
   * tags: [code/stream_filter]
   * concepts: [Multiplicative Scaling Filter]
-  * facets: {layer: infrastructure, status: broken, complexity: low}
+  * facets: {layer: infrastructure, status: broken, complexity: 2}
   * -->
   */
 public class FilterInMul

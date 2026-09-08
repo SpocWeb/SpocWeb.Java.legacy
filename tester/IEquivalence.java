@@ -31,7 +31,7 @@ package tester; //
   * stale: false
   * tags: [code/custom_equivalence]
   * concepts: [Equivalence Interface]
-  * facets: {layer: utility, status: legacy, complexity: low}
+  * facets: {layer: utility, status: legacy, complexity: 2}
   * -->
   */
 public interface IEquivalence {

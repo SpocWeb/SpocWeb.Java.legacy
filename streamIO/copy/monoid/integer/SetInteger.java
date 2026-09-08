@@ -11,7 +11,7 @@ import streamIO.copy.boole.Boole;
  * stale: false
  * tags: [code/bit_manipulation]
  * concepts: [Bit Set]
- * facets: {layer: utility, status: legacy, complexity: medium}
+ * facets: {layer: utility, status: legacy, complexity: 3}
  * -->
  * It has the same Methods as Container.Set, only for integer Arguments! */
 public interface SetInteger

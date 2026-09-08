@@ -24,7 +24,7 @@ import graphic.example.Plasma;
   * stale: false
   * tags: [code/geometry, code/point_normal_calculation]
   * concepts: [Point Function Interface]
-  * facets: {layer: infrastructure, status: legacy, complexity: low}
+  * facets: {layer: infrastructure, status: legacy, complexity: 2}
   * -->
   */
 public interface IPoint2DFunction {

@@ -63,7 +63,7 @@ import java.awt.Color;
  * stale: false
  * tags: [code/color_palette]
  * concepts: [RGB/HSV Color Model Conversion]
- * facets: {layer: utility, status: broken, complexity: medium}
+ * facets: {layer: utility, status: broken, complexity: 3}
  * -->
  */
 final public class PaletteRGB 

@@ -31,7 +31,7 @@ import graphic.mvc.IPainter;
  * stale: false
  * tags: [code/mouse_input]
  * concepts: [Mouse-Driven Translation Controller]
- * facets: {layer: domain, status: legacy, complexity: low}
+ * facets: {layer: domain, status: legacy, complexity: 2}
  * -->
  */
 public class TranslationMouseController 

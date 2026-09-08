@@ -61,7 +61,7 @@ import function.byref.ByRefDouble;
  * stale: false
  * tags: [code/minimum_search, code/bracket_matching, code/optimization]
  * concepts: [Numerical Optimization]
- * facets: {layer: utility, status: legacy, complexity: medium}
+ * facets: {layer: utility, status: legacy, complexity: 3}
  * -->
  */
 public abstract class AFloatMinimizer 

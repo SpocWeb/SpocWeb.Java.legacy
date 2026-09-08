@@ -43,7 +43,7 @@ import function.byref.ByRefDouble;
  * stale: false
  * tags: [code/quicksort, code/order_statistic, code/binary_search]
  * concepts: [Sorted-double[] Hunter (QuickSort/Order Statistics)]
- * facets: {layer: utility, status: broken, complexity: high}
+ * facets: {layer: utility, status: broken, complexity: 4}
  * -->
  */
 public class HunterDouble {

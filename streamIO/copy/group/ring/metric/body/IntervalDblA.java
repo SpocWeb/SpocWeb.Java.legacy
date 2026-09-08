@@ -54,7 +54,7 @@ import function.derive.CCountAble;
   * <!-- docstate
   * tags: [code/rational_numbers, code/interval_arithmetic]
   * concepts: [Rational Numbers and Interval Arithmetic]
-  * facets: {layer: domain, status: legacy, complexity: high}
+  * facets: {layer: domain, status: legacy, complexity: 4}
   * digest: a0d308765d41ccd38f0a7fccd2bb9cd9eeb54271f751c72e4a18ad930fb0ac5d
   * stale: false
   * -->

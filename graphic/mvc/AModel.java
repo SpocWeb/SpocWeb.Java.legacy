@@ -31,7 +31,7 @@ package graphic.mvc;
  * stale: false
  * tags: [code/model_state_management, code/observer_pattern]
  * concepts: [MVC Model Base Class]
- * facets: {layer: infrastructure, status: legacy, complexity: low}
+ * facets: {layer: infrastructure, status: legacy, complexity: 2}
  * -->
  */
 public class AModel 

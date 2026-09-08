@@ -35,7 +35,7 @@ import org.xml.sax.SAXException;
  * stale: false
  * tags: [code/xml_parsing]
  * concepts: [XML to Directory-Tree Handler]
- * facets: {layer: utility, status: broken, complexity: medium}
+ * facets: {layer: utility, status: broken, complexity: 3}
  * -->
  */
 public class XmlToDirHandler {

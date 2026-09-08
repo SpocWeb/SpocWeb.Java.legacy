@@ -16,7 +16,7 @@ import streamIO.integer.encoding.BigEndianWriter;
  * stale: false
  * tags: [code/audio, code/media_playback]
  * concepts: [WAV Writer]
- * facets: {layer: domain, status: broken, complexity: low}
+ * facets: {layer: domain, status: broken, complexity: 2}
  * -->
  */
 public class WaveStreamOut

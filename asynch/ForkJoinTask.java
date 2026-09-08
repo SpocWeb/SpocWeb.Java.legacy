@@ -24,7 +24,7 @@ package asynch;
   * stale: false
   * tags: [code/deferred_execution]
   * concepts: [Fork-Join Task]
-  * facets: {layer: infrastructure, status: legacy, complexity: medium}
+  * facets: {layer: infrastructure, status: legacy, complexity: 3}
   * -->
   */
 public abstract class ForkJoinTask

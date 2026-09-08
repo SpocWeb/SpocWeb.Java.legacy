@@ -22,7 +22,7 @@ import tester.ITester;
   * stale: false
   * tags: [code/keyboard_navigation, code/tree_navigation]
   * concepts: [Tree Visualization, UI Component]
-  * facets: {layer: infrastructure, status: stable, complexity: medium}
+  * facets: {layer: infrastructure, status: stable, complexity: 3}
   * -->
   */
 public class KeyTreeNavigator

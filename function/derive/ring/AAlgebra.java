@@ -28,7 +28,7 @@ import function.IInvertAble;
   * stale: false
   * tags: [code/abstract_math, code/algebraic_function]
   * concepts: [Ring Theory, Function Algebra]
-  * facets: {layer: utility, status: legacy, complexity: medium}
+  * facets: {layer: utility, status: legacy, complexity: 3}
   * -->
   * I re-implement the Operations. 	 */
 public abstract class AAlgebra

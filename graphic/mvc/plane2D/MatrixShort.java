@@ -52,7 +52,7 @@ import graphic.mvc.IPainter;
  * stale: false
  * tags: [code/matrix_operations, code/polygon_matrix]
  * concepts: [Growable short[][] Polygon Matrix]
- * facets: {layer: utility, status: broken, complexity: high}
+ * facets: {layer: utility, status: broken, complexity: 4}
  * -->
  */
 public class MatrixShort 

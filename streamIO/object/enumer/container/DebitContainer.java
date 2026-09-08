@@ -48,7 +48,7 @@ import streamIO.object.ModificationException;
   * <!-- docstate
   * tags: [code/container, code/hash_table, code/container_iteration]
   * concepts: [Concrete Storage Containers - Arrays - Hash Tables and Relations]
-  * facets: {layer: utility, status: legacy, complexity: high}
+  * facets: {layer: utility, status: legacy, complexity: 4}
   * digest: 046e31e2d7e90a3c636958403c460bb118ca6bd1a1df398a5452b0519ccd2f88
   * stale: false
   * -->

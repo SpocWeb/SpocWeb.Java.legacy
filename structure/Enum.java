@@ -58,7 +58,7 @@ import function.AOrderAble;
   * stale: false
   * tags: [code/enum_like_type]
   * concepts: [Type-Safe Enum Emulation]
-  * facets: {layer: utility, status: legacy, complexity: low}
+  * facets: {layer: utility, status: legacy, complexity: 2}
   * -->
   */
 public class Enum
@@ -199,7 +199,7 @@ public static void main (String[] args) throws java.io.IOException {
   * stale: false
   * tags: [code/enum_like_type]
   * concepts: [Variable Enum Emulation]
-  * facets: {layer: utility, status: legacy, complexity: low}
+  * facets: {layer: utility, status: legacy, complexity: 2}
   * -->
   */
 class VarEnum
@@ -231,7 +231,7 @@ public VarEnum(short MinValue, short newValue, short MaxValue) {
   * stale: false
   * tags: [code/ternary_logic]
   * concepts: [Ternary Logic Value]
-  * facets: {layer: utility, status: legacy, complexity: low}
+  * facets: {layer: utility, status: legacy, complexity: 2}
   * -->
   * ternary Logic Values. */
 class Ternary

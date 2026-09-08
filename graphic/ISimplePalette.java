@@ -25,7 +25,7 @@ import java.awt.Color;
  * stale: false
  * tags: [code/color_palette]
  * concepts: [Simple Color Palette Interface]
- * facets: {layer: infrastructure, status: legacy, complexity: low}
+ * facets: {layer: infrastructure, status: legacy, complexity: 2}
  * -->
  */
 public interface ISimplePalette {

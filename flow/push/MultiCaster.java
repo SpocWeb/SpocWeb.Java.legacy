@@ -33,7 +33,7 @@ import java.util.concurrent.TimeUnit;
   * stale: false
   * tags: [code/multicast]
   * concepts: [Dataflow, Pipeline]
-  * facets: {layer: domain, status: broken, complexity: medium}
+  * facets: {layer: domain, status: broken, complexity: 3}
   * -->
   */
 public class MultiCaster

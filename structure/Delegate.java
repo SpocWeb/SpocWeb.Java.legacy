@@ -41,7 +41,7 @@ import java.lang.reflect.Method;
   * stale: false
   * tags: [code/delegate_pattern]
   * concepts: [Delegate Chain]
-  * facets: {layer: utility, status: broken, complexity: low}
+  * facets: {layer: utility, status: broken, complexity: 2}
   * -->
   */
 public class Delegate {

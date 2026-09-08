@@ -15,7 +15,7 @@ import streamIO.copy.IICopyAble;
   * stale: false
   * tags: [code/stream_processing, code/iterator]
   * concepts: [Object Stream Pipeline]
-  * facets: {layer: utility, status: legacy, complexity: medium}
+  * facets: {layer: utility, status: legacy, complexity: 3}
   * -->
   * @see CopyStreamOut for the stream() Method to stream with creating Copies... */
 public class CopyStreamIn

@@ -33,7 +33,7 @@ import tester.ITester;
  * stale: false
  * tags: [code/stateful_algorithm]
  * concepts: [Test Sequence Runner]
- * facets: {layer: utility, status: legacy, complexity: low}
+ * facets: {layer: utility, status: legacy, complexity: 2}
  * -->
  */
 public class TestSequence 

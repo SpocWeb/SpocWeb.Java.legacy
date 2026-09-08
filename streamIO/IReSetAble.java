@@ -31,7 +31,7 @@ package streamIO;
  * stale: false
  * tags: [code/stream_positioning]
  * concepts: [Reset Interface]
- * facets: {layer: infrastructure, status: legacy, complexity: low}
+ * facets: {layer: infrastructure, status: legacy, complexity: 2}
  * -->
  */
 public interface IReSetAble 

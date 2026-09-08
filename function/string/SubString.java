@@ -18,7 +18,7 @@ package function.string;
  * stale: false
  * tags: [code/string_transform, code/function_contract]
  * concepts: [String Transform Function]
- * facets: {layer: utility, status: legacy, complexity: low}
+ * facets: {layer: utility, status: legacy, complexity: 2}
  * -->
  */
 public class SubString 

@@ -44,7 +44,7 @@ import streamIO.IIStreamOut;
   * stale: false
   * tags: [code/thread_pooling]
   * concepts: [Task Scheduler]
-  * facets: {layer: infrastructure, status: broken, complexity: medium}
+  * facets: {layer: infrastructure, status: broken, complexity: 3}
   * -->
   */
 public class Scheduler

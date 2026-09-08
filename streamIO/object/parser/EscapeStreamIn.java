@@ -68,7 +68,7 @@ import function.byref.ByRefInt;
   * stale: true
   * tags: [code/stream_parsing, code/parser]
   * concepts: [Separator-Driven Token Parsing and Stream Adapters]
-  * facets: {layer: utility, status: legacy, complexity: high}
+  * facets: {layer: utility, status: legacy, complexity: 4}
   * -->
   */
 final public class EscapeStreamIn

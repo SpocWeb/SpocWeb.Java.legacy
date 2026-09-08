@@ -36,7 +36,7 @@ import tools.WorkerThread;
   * stale: false
   * tags: [code/validation, code/validation_rule]
   * concepts: [Multi-Validator Chain]
-  * facets: {layer: domain, status: legacy, complexity: medium}
+  * facets: {layer: domain, status: legacy, complexity: 3}
   * -->
   */
 public class MultiValidator

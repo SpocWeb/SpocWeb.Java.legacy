@@ -19,7 +19,7 @@ import function.derive.ring.Sum;
  * stale: false
  * tags: [code/hyperbolic_function, code/derivable_function_contract]
  * concepts: [Inverse Trigonometric Functions]
- * facets: {layer: utility, status: legacy, complexity: medium}
+ * facets: {layer: utility, status: legacy, complexity: 3}
  * -->
  */
 final public class ArcSin

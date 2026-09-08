@@ -31,7 +31,7 @@ import graphs.SparseMatrix;
   * stale: false
   * tags: [code/3d_geometry, code/graph_rendering]
   * concepts: [3D Wireframe Model]
-  * facets: {layer: domain, status: legacy, complexity: medium}
+  * facets: {layer: domain, status: legacy, complexity: 3}
   * -->
   */
 public class Wire3D extends Polygon3D {

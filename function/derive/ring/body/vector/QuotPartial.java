@@ -8,7 +8,7 @@ package function.derive.ring.body.vector;
  * stale: false
  * tags: [code/differential_integration]
  * concepts: [Partial Derivatives, Quotient Rule]
- * facets: {layer: utility, status: legacy, complexity: medium}
+ * facets: {layer: utility, status: legacy, complexity: 3}
  * -->
  * It reduces Complexity by eliminating constant Factors on derivation.	 */
 public class QuotPartial

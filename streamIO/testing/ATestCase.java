@@ -33,7 +33,7 @@ import streamIO.exception.FailureException;
   * stale: false
   * tags: [code/test_harness, code/reflection_based_dispatch]
   * concepts: [Testing, Reflection]
-  * facets: {layer: test, status: broken, complexity: medium}
+  * facets: {layer: test, status: broken, complexity: 3}
   * -->
   */
 public abstract class ATestCase

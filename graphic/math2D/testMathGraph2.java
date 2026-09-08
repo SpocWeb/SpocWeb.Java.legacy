@@ -24,7 +24,7 @@ import streamIO.object.parser.jdbc.ResultSetSep;
  * stale: false
  * tags: [code/view_model]
  * concepts: [2D Graph Demo/Test Harness]
- * facets: {layer: test, status: legacy, complexity: low}
+ * facets: {layer: test, status: legacy, complexity: 2}
  * -->
  */
 public class testMathGraph2 

@@ -22,7 +22,7 @@ import function.derive.ring.body.Sinus;
  * stale: false
  * tags: [code/entry_point_code/console_output_code/test]
  * concepts: [Test Harness]
- * facets: {layer: utility, status: legacy, complexity: medium}
+ * facets: {layer: utility, status: legacy, complexity: 3}
  * -->
  * created in the main() method. */
 public class testBodyVFuncs {
@@ -33,7 +33,7 @@ public class testBodyVFuncs {
 	 * <!-- docstate
 	 * tags: [code/testing]
 	 * concepts: [Demo Entry Point]
-	 * facets: {layer: test, status: legacy, complexity: low}
+	 * facets: {layer: test, status: legacy, complexity: 2}
 	 * -->
 	 * via the command line.	 */
 	public static void main(String[] args) {	//Testing Zero, One and Two

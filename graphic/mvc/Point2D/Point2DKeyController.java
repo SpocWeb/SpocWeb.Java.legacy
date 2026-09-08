@@ -44,7 +44,7 @@ import streamIO.Log;
  * stale: false
  * tags: [code/event_handling, code/interactive_editing]
  * concepts: [Point2D Keyboard Controller]
- * facets: {layer: domain, status: legacy, complexity: low}
+ * facets: {layer: domain, status: legacy, complexity: 2}
  * -->
  */
 public class Point2DKeyController 

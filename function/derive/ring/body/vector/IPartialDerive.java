@@ -21,7 +21,7 @@ import function.derive.IDeriveAble;
  * stale: false
  * tags: [code/differential_integration, code/derivable_function_contract]
  * concepts: [Partial Derivatives]
- * facets: {layer: utility, status: legacy, complexity: medium}
+ * facets: {layer: utility, status: legacy, complexity: 3}
  * -->
  * The first Solution is so far implemented, except in Function(arg).  */
 public interface IPartialDerive

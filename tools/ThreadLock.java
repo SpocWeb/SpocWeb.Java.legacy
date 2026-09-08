@@ -91,7 +91,7 @@ import java.util.Iterator;
  * stale: false
  * tags: [code/locking, code/blocking_wait, code/monitor_per_object]
  * concepts: [Concurrency]
- * facets: {layer: infrastructure, status: experimental, complexity: high}
+ * facets: {layer: infrastructure, status: experimental, complexity: 4}
  * -->
  */
 public class ThreadLock {
@@ -471,7 +471,7 @@ public class ThreadLock {
  * stale: false
  * tags: [code/manual_test_harness, code/locking]
  * concepts: [Concurrency]
- * facets: {layer: utility, status: experimental, complexity: low}
+ * facets: {layer: utility, status: experimental, complexity: 2}
  * -->
  */
 class ThreadLockTester
@@ -538,7 +538,7 @@ class ThreadLockTester
  * stale: false
  * tags: [code/mutable_holder, code/wait_counting]
  * concepts: [Concurrency]
- * facets: {layer: infrastructure, status: stable, complexity: low}
+ * facets: {layer: infrastructure, status: stable, complexity: 2}
  * -->
  */
 final class Monitor {

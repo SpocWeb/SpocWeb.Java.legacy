@@ -9,7 +9,7 @@ package streamIO.copy.groupM;
  * stale: false
  * tags: [code/multiplicative_group, code/numeric_comparison]
  * concepts: [Algebraic Group, Multiplicative Structure]
- * facets: {layer: utility, status: legacy, complexity: medium}
+ * facets: {layer: utility, status: legacy, complexity: 3}
  * -->
  */
 public interface IDblGroupM

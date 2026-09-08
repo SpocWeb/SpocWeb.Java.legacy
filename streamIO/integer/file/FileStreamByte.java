@@ -53,7 +53,7 @@ import function.byref.ByRefInt;
   * <!-- docstate
   * tags: [code/file_io, code/stream_io]
   * concepts: [File-Backed StreamIO Implementations]
-  * facets: {layer: utility, status: legacy, complexity: high}
+  * facets: {layer: utility, status: legacy, complexity: 4}
   * -->
   */
 public class FileStreamByte 

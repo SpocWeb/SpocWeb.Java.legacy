@@ -41,7 +41,7 @@ import Vector.*;
   * stale: false
   * tags: [code/differential_integration, code/mathematical_function]
   * concepts: [Partial Derivatives, Vector Calculus]
-  * facets: {layer: utility, status: legacy, complexity: medium}
+  * facets: {layer: utility, status: legacy, complexity: 3}
   * -->
   * The first Solution is so far implemented, except in Function(arg).  */
 public class Dimension

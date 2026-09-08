@@ -36,7 +36,7 @@ import function.IFloatFunction;
  * stale: false
  * tags: [code/root_finding]
  * concepts: [Ridders' Method Root Refiner]
- * facets: {layer: utility, status: legacy, complexity: medium}
+ * facets: {layer: utility, status: legacy, complexity: 3}
  * -->
  */
 public class RidderFloatRefinerQ 

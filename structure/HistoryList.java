@@ -24,7 +24,7 @@ package structure; //
   * stale: false
   * tags: [code/undo_redo]
   * concepts: [Undo/Redo History List]
-  * facets: {layer: utility, status: broken, complexity: medium}
+  * facets: {layer: utility, status: broken, complexity: 3}
   * -->
   */
 public class HistoryList

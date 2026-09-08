@@ -41,7 +41,7 @@ import streamIO.object.IPipe;
   * <!-- docstate
   * tags: [code/container, code/hash_table, code/container_iteration]
   * concepts: [Concrete Storage Containers - Arrays - Hash Tables and Relations]
-  * facets: {layer: utility, status: legacy, complexity: high}
+  * facets: {layer: utility, status: legacy, complexity: 4}
   * digest: cb69c9610927006d2ac5e9baae815e636e02f141726d11a0040d9d4a8741e861
   * stale: false
   * -->

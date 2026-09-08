@@ -65,7 +65,7 @@ import function.IFunction;
  * stale: false
  * tags: [code/xml_deserialization, code/reflection_dispatch]
  * concepts: [Reflection-Based XML Unmarshaller]
- * facets: {layer: infrastructure, status: broken, complexity: high}
+ * facets: {layer: infrastructure, status: broken, complexity: 4}
  * -->
  */
 public class XmlUnmarshaller extends SaxHandler {
@@ -415,7 +415,7 @@ public class XmlUnmarshaller extends SaxHandler {
  * stale: false
  * tags: [code/reflection_dispatch]
  * concepts: [Reflective Class Factory]
- * facets: {layer: infrastructure, status: legacy, complexity: low}
+ * facets: {layer: infrastructure, status: legacy, complexity: 2}
  * -->
  */
 class PackageFactory

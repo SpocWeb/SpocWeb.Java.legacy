@@ -19,7 +19,7 @@ package streamIO;
  * stale: false
  * tags: [code/output_stream]
  * concepts: [Filtering Output Stream]
- * facets: {layer: infrastructure, status: legacy, complexity: low}
+ * facets: {layer: infrastructure, status: legacy, complexity: 2}
  * -->
  */
 public class FilterOut

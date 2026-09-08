@@ -22,7 +22,7 @@ import function.IProcessor;
   * <!-- docstate
   * tags: [code/container, code/hash_table, code/container_iteration]
   * concepts: [Concrete Storage Containers - Arrays - Hash Tables and Relations]
-  * facets: {layer: utility, status: legacy, complexity: high}
+  * facets: {layer: utility, status: legacy, complexity: 4}
   * digest: 043d49f3432f00b95eed735325d73e98711737e33022445606c27fa315d29f04
   * stale: false
   * -->

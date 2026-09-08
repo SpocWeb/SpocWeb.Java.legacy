@@ -12,7 +12,7 @@ import function.vector.AOdeFloat;
  * stale: false
  * tags: [code/differential_integration, code/exponential_function]
  * concepts: [Ordinary Differential Equations]
- * facets: {layer: utility, status: legacy, complexity: medium}
+ * facets: {layer: utility, status: legacy, complexity: 3}
  * -->
  * The Derivative is a Copy of the current y Value and not dependent on x ! */
 final public class OdeExp

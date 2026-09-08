@@ -21,7 +21,7 @@ import function.byref.ByRefFloat;
  * stale: false
  * tags: [code/derivable_function_contract, code/numerical_differentiation]
  * concepts: [Calculus]
- * facets: {layer: utility, status: legacy, complexity: medium}
+ * facets: {layer: utility, status: legacy, complexity: 3}
  * -->
  */
 public interface IFloatDeriveAble

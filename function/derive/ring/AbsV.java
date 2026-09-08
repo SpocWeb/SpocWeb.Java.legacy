@@ -15,7 +15,7 @@ import function.derive.CCountAble;
  * stale: false
  * tags: [code/mathematical_function, code/derivable_function_contract]
  * concepts: [Function Algebra]
- * facets: {layer: utility, status: legacy, complexity: medium}
+ * facets: {layer: utility, status: legacy, complexity: 3}
  * -->
  * For Vectors this Function returns the Metric. */
 public class AbsV

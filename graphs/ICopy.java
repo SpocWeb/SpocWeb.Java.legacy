@@ -21,7 +21,7 @@ package graphs;
   * stale: false
   * tags: [code/graph_edge]
   * concepts: [Copyable Interface]
-  * facets: {layer: utility, status: legacy, complexity: low}
+  * facets: {layer: utility, status: legacy, complexity: 2}
   * -->
   */
 public interface ICopy

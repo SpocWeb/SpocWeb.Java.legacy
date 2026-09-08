@@ -12,7 +12,7 @@ import streamIO.copy.ICopyAble;
  * stale: false
  * tags: [code/lattice_structure, code/abstract_base, code/delegation]
  * concepts: [Lattice, Delegation Pattern]
- * facets: {layer: utility, status: legacy, complexity: medium}
+ * facets: {layer: utility, status: legacy, complexity: 3}
  * -->
  */
 public class ALattice

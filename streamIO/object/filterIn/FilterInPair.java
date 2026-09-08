@@ -19,7 +19,7 @@ import streamIO.object.AFilterIn;
   * stale: false
   * tags: [code/stream_filter, code/decorator_pattern]
   * concepts: [Stream Filter (Input)]
-  * facets: {layer: utility, status: legacy, complexity: medium}
+  * facets: {layer: utility, status: legacy, complexity: 3}
   * -->
   * or the Definition-/key- or the Value- Set of a Relation or Function */
 public class FilterInPair

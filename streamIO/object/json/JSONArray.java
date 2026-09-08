@@ -59,7 +59,7 @@ import java.util.Collection;
  * stale: false
  * tags: [code/parsing, code/serialization]
  * concepts: [JSON.org Reference Implementation]
- * facets: {layer: utility, status: legacy, complexity: medium}
+ * facets: {layer: utility, status: legacy, complexity: 3}
  * -->
  */
 public class JSONArray {

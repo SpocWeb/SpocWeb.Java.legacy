@@ -20,7 +20,7 @@ import function.derive.CCountAble;
  * stale: false
  * tags: [code/mathematical_function, code/derivable_function_contract]
  * concepts: [Function Algebra]
- * facets: {layer: utility, status: legacy, complexity: medium}
+ * facets: {layer: utility, status: legacy, complexity: 3}
  * -->
  * since any Value of Infinity is not comparable. 	 */
 public class Sign

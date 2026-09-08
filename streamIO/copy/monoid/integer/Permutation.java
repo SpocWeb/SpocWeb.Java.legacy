@@ -62,7 +62,7 @@ import function.byref.ByRefLong;
   * stale: false
   * tags: [code/permutation, code/multiplicative_semigroup, code/bit_manipulation]
   * concepts: [Permutation, Multi-Index]
-  * facets: {layer: utility, status: broken, complexity: medium}
+  * facets: {layer: utility, status: broken, complexity: 3}
   * -->
   * The Methods are analogous to the ones in gAdic. */
 final public class Permutation
@@ -1875,7 +1875,7 @@ implements SetInteger, SwapAble, IInvertAble {
  * stale: false
  * tags: [code/iterator]
  * concepts: [Permutation]
- * facets: {layer: utility, status: broken, complexity: medium}
+ * facets: {layer: utility, status: broken, complexity: 3}
  * -->
  */
 class PermutationIterator 

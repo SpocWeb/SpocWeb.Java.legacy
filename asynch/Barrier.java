@@ -28,7 +28,7 @@ package asynch;
   * stale: false
   * tags: [code/concurrency_primitive]
   * concepts: [Thread Barrier]
-  * facets: {layer: infrastructure, status: broken, complexity: medium}
+  * facets: {layer: infrastructure, status: broken, complexity: 3}
   * -->
   */
 public class Barrier {

@@ -58,7 +58,7 @@ package tools.mementos; //
   * stale: false
   * tags: [code/marker_interface, code/state_snapshot]
   * concepts: [Memento Pattern]
-  * facets: {layer: infrastructure, status: stable, complexity: low}
+  * facets: {layer: infrastructure, status: stable, complexity: 2}
   * -->
   */
 public interface Memento { }

@@ -35,7 +35,7 @@ import java.util.Properties;
  * stale: false
  * tags: [code/cli_tool]
  * concepts: [Naming]
- * facets: {layer: utility, status: stable, complexity: medium}
+ * facets: {layer: utility, status: stable, complexity: 3}
  * -->
  */
 public class PropertyHierarchy {
@@ -45,7 +45,7 @@ public class PropertyHierarchy {
 	 * <!-- docstate
 	 * tags: [code/cli_tool]
 	 * concepts: [Naming]
-	 * facets: {layer: utility, status: stable, complexity: low}
+	 * facets: {layer: utility, status: stable, complexity: 2}
 	 * -->
 	 */
 	private PropertyHierarchy() {}
@@ -63,7 +63,7 @@ public class PropertyHierarchy {
 	 * <!-- docstate
 	 * tags: [code/test_harness]
 	 * concepts: [Testing]
-	 * facets: {layer: utility, status: stable, complexity: low}
+	 * facets: {layer: utility, status: stable, complexity: 2}
 	 * -->
 	 * via the command line.	 */
 	public static void testIt() throws Exception {
@@ -80,7 +80,7 @@ public class PropertyHierarchy {
 	 * <!-- docstate
 	 * tags: [code/entity_model]
 	 * concepts: [Naming]
-	 * facets: {layer: utility, status: stable, complexity: low}
+	 * facets: {layer: utility, status: stable, complexity: 2}
 	 * -->
 	 */
 	final static public Object[] CONVERT_HIERARCHY(final Map props) {
@@ -106,7 +106,7 @@ public class PropertyHierarchy {
 	 * <!-- docstate
 	 * tags: [code/entity_model]
 	 * concepts: [Naming]
-	 * facets: {layer: utility, status: stable, complexity: medium}
+	 * facets: {layer: utility, status: stable, complexity: 3}
 	 * -->
 	 * via the command line.	 */
 	final static public Properties LOAD_HIERARCHY(final String path) throws FileNotFoundException, IOException {
@@ -150,7 +150,7 @@ public class PropertyHierarchy {
 	 * <!-- docstate
 	 * tags: [code/cli_tool]
 	 * concepts: [Naming]
-	 * facets: {layer: utility, status: stable, complexity: low}
+	 * facets: {layer: utility, status: stable, complexity: 2}
 	 * -->
 	 * via the command line.	 */
 	public static void main(final String[] args) throws Exception {

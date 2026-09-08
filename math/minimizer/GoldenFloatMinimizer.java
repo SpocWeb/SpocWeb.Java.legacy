@@ -35,7 +35,7 @@ import function.IMeasurAble;
  * stale: false
  * tags: [code/minimum_search, code/optimization, code/golden_section_search]
  * concepts: [Golden Section Search Minimizer]
- * facets: {layer: utility, status: legacy, complexity: medium}
+ * facets: {layer: utility, status: legacy, complexity: 3}
  * -->
  */
 public class GoldenFloatMinimizer 

@@ -30,7 +30,7 @@ import streamIO.IIStreamOut;
   * stale: false
   * tags: [code/test_harness, code/composite_pattern]
   * concepts: [Testing, Composite Pattern]
-  * facets: {layer: test, status: stable, complexity: low}
+  * facets: {layer: test, status: stable, complexity: 2}
   * -->
   */
 public class TestCollection

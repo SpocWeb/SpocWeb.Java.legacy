@@ -39,7 +39,7 @@ import streamIO.Log;
  * stale: false
  * tags: [code/view_model]
  * concepts: [2D Coordinate Mouse Controller]
- * facets: {layer: domain, status: legacy, complexity: low}
+ * facets: {layer: domain, status: legacy, complexity: 2}
  * -->
  */
 public class Coord2DMouseController

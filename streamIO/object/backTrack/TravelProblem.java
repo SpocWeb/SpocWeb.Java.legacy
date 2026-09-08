@@ -46,7 +46,7 @@ import function.AOrderAble;
  * stale: false
  * tags: [code/backtracking, code/algorithm]
  * concepts: [Backtracking Search]
- * facets: {layer: utility, status: broken, complexity: medium}
+ * facets: {layer: utility, status: broken, complexity: 3}
  * -->
  */
 public class TravelProblem
@@ -447,7 +447,7 @@ implements ITester {
  * stale: false
  * tags: [code/backtracking, code/algorithm]
  * concepts: [Backtracking Search]
- * facets: {layer: utility, status: broken, complexity: medium}
+ * facets: {layer: utility, status: broken, complexity: 3}
  * -->
  * to the current Solution.	 */
 class TravelState

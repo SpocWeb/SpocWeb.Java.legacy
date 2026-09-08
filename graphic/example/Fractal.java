@@ -23,7 +23,7 @@ import java.awt.Graphics;
  * stale: false
  * tags: [code/algorithm, code/graphics]
  * concepts: [Turtle-Graphics Fractal]
- * facets: {layer: test, status: legacy, complexity: medium}
+ * facets: {layer: test, status: legacy, complexity: 3}
  * -->
  */
 final public class Fractal

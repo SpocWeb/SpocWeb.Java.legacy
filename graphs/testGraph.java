@@ -18,7 +18,7 @@ import stringOp.Huffman;
  * stale: false
  * tags: [code/graph_data_structure]
  * concepts: [Scratch Test Class]
- * facets: {layer: test, status: legacy, complexity: low}
+ * facets: {layer: test, status: legacy, complexity: 2}
  * -->
  * Methods just to bundle them into one runnable Program.	 */
 public class testGraph {
@@ -28,7 +28,7 @@ public class testGraph {
 	 * <!-- docstate
 	 * tags: [code/graph_data_structure]
 	 * concepts: [Scratch Test Method]
-	 * facets: {layer: test, status: legacy, complexity: low}
+	 * facets: {layer: test, status: legacy, complexity: 2}
 	 * -->
 	 */
 	public static void testNumberFormat() {
@@ -66,7 +66,7 @@ public class testGraph {
 	 * <!-- docstate
 	 * tags: [code/graph_data_structure]
 	 * concepts: [Scratch Test Entry Point]
-	 * facets: {layer: test, status: legacy, complexity: low}
+	 * facets: {layer: test, status: legacy, complexity: 2}
 	 * -->
 	 * via the command line.	 */
 	public static void main (final String[] args) throws Exception	{

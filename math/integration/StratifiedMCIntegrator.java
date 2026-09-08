@@ -34,7 +34,7 @@ import function.vector.IFloatScalarField;
  * stale: false
  * tags: [code/numerical_integration]
  * concepts: [Stratified Monte Carlo Integrator]
- * facets: {layer: utility, status: broken, complexity: medium}
+ * facets: {layer: utility, status: broken, complexity: 3}
  * -->
  */
 public class StratifiedMCIntegrator {

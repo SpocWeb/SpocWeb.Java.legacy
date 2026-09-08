@@ -16,7 +16,7 @@ package graphic;
  * stale: false
  * tags: [code/2d_geometry, code/geometry_computation]
  * concepts: [2D Line/Bounding Box]
- * facets: {layer: domain, status: broken, complexity: low}
+ * facets: {layer: domain, status: broken, complexity: 2}
  * -->
  */
 public class Line2D {

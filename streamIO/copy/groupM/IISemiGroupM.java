@@ -11,7 +11,7 @@ package streamIO.copy.groupM;
  * stale: false
  * tags: [code/multiplicative_semigroup]
  * concepts: [Algebraic SemiGroup]
- * facets: {layer: utility, status: legacy, complexity: medium}
+ * facets: {layer: utility, status: legacy, complexity: 3}
  * -->
  * Could also be called 'multiplicable' */
 public interface IISemiGroupM {

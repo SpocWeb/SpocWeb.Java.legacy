@@ -24,7 +24,7 @@ import function.vector.IFloatVectorFunction;
  * stale: false
  * tags: [code/function_composition]
  * concepts: [Fit Function Composition]
- * facets: {layer: utility, status: legacy, complexity: low}
+ * facets: {layer: utility, status: legacy, complexity: 2}
  * -->
  */
 public class FitFunctions 

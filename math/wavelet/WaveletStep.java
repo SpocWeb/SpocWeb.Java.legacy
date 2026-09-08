@@ -29,7 +29,7 @@ import math.vector.VectorDouble;
  * stale: false
  * tags: [code/wavelet_transform]
  * concepts: [Wavelet Step Base Class]
- * facets: {layer: utility, status: legacy, complexity: low}
+ * facets: {layer: utility, status: legacy, complexity: 2}
  * -->
  */
 final public class WaveletStep implements IWaveletStep {

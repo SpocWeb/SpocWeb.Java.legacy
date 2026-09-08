@@ -33,7 +33,7 @@ import function.derive.ring.body.GammaP;
  * stale: false
  * tags: [code/curve_fitting]
  * concepts: [Nonlinear Curve Fit (Levenberg-Marquardt style)]
- * facets: {layer: utility, status: legacy, complexity: high}
+ * facets: {layer: utility, status: legacy, complexity: 4}
  * -->
  */
 public class FitFloat {

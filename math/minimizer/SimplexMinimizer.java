@@ -156,7 +156,7 @@ import streamIO.Log;
  * stale: false
  * tags: [code/simplex_method, code/optimization]
  * concepts: [Linear Programming Simplex Tableau Solver]
- * facets: {layer: utility, status: legacy, complexity: high}
+ * facets: {layer: utility, status: legacy, complexity: 4}
  * -->
  */
 public class SimplexMinimizer {
@@ -177,7 +177,7 @@ public class SimplexMinimizer {
 	 * <!-- docstate
 	 * tags: [code/simplex_method]
 	 * concepts: [Simplex Tableau Pivot Column Selection]
-	 * facets: {layer: utility, status: legacy, complexity: low}
+	 * facets: {layer: utility, status: legacy, complexity: 2}
 	 * -->
 	 */
 	private static final int maxPos(final double[] aRow, final int[] index, final int indexLen, final boolean useAbsV) {
@@ -210,7 +210,7 @@ public class SimplexMinimizer {
 	 * <!-- docstate
 	 * tags: [code/simplex_method]
 	 * concepts: [Simplex Tableau Pivot Row Selection]
-	 * facets: {layer: utility, status: legacy, complexity: low}
+	 * facets: {layer: utility, status: legacy, complexity: 2}
 	 * -->
 	 */
 	private static final int getPivot(final double[][] a, final int numCols
@@ -261,7 +261,7 @@ public class SimplexMinimizer {
 	 * <!-- docstate
 	 * tags: [code/simplex_method]
 	 * concepts: [Simplex Tableau Pivot Exchange]
-	 * facets: {layer: utility, status: legacy, complexity: medium}
+	 * facets: {layer: utility, status: legacy, complexity: 3}
 	 * -->
 	 */
 	private static final void exchangeVariable(final double[][] a, final int index1, final int k1, final int iPivot, final int maxPos) {
@@ -304,7 +304,7 @@ public class SimplexMinimizer {
 	 * <!-- docstate
 	 * tags: [code/simplex_method]
 	 * concepts: [Simplex Tableau Minimization Loop]
-	 * facets: {layer: utility, status: legacy, complexity: high}
+	 * facets: {layer: utility, status: legacy, complexity: 4}
 	 * -->
 	 */
 	final static public int minimizeSimplex(final double[][] a, final int numRows, final int numCols
@@ -356,7 +356,7 @@ public class SimplexMinimizer {
 	 * <!-- docstate
 	 * tags: [code/simplex_method]
 	 * concepts: [Simplex Feasible Start Point Search]
-	 * facets: {layer: utility, status: legacy, complexity: high}
+	 * facets: {layer: utility, status: legacy, complexity: 4}
 	 * -->
 	 */
 	private static final int findStartPoint(
@@ -477,7 +477,7 @@ public class SimplexMinimizer {
 	 * <!-- docstate
 	 * tags: [code/simplex_method]
 	 * concepts: [Self-Test Method]
-	 * facets: {layer: test, status: legacy, complexity: low}
+	 * facets: {layer: test, status: legacy, complexity: 2}
 	 * -->
 	 */
 	final static public void testIt() {
@@ -554,7 +554,7 @@ public class SimplexMinimizer {
 	 * <!-- docstate
 	 * tags: [code/simplex_method]
 	 * concepts: [Demo Entry Point]
-	 * facets: {layer: test, status: legacy, complexity: low}
+	 * facets: {layer: test, status: legacy, complexity: 2}
 	 * -->
 	 */
 	final static public void main(final String[] args) {

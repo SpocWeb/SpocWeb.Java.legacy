@@ -36,7 +36,7 @@ package structure; //
   * stale: false
   * tags: [code/visitor_pattern]
   * concepts: [Visitor Pattern Element]
-  * facets: {layer: utility, status: legacy, complexity: low}
+  * facets: {layer: utility, status: legacy, complexity: 2}
   * -->
   */
 public interface Element {

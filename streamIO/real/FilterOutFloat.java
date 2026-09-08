@@ -21,7 +21,7 @@ package streamIO.real;
  * stale: false
  * tags: [code/stream_filter]
  * concepts: [Float Output Filter]
- * facets: {layer: infrastructure, status: legacy, complexity: low}
+ * facets: {layer: infrastructure, status: legacy, complexity: 2}
  * -->
  */
 public class FilterOutFloat

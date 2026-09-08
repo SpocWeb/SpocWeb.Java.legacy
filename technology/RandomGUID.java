@@ -105,7 +105,7 @@ import java.util.Random;
  * stale: false
  * tags: [code/guid_generation]
  * concepts: [GUID Generator]
- * facets: {layer: utility, status: broken, complexity: low}
+ * facets: {layer: utility, status: broken, complexity: 2}
  * -->
  */
 

@@ -55,7 +55,7 @@ import streamIO.copy.group.ring.StepRK;
  * stale: false
  * tags: [code/testing, code/numerical_integration]
  * concepts: [ODE Plotter Demo/Test Harness]
- * facets: {layer: test, status: legacy, complexity: low}
+ * facets: {layer: test, status: legacy, complexity: 2}
  * -->
  */
 public class TestOdePlotter 

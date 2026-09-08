@@ -14,7 +14,7 @@ import function.derive.ADeriveAble;
  * stale: false
  * tags: [code/invertible_function_contract, code/mathematical_function]
  * concepts: [Function Algebra]
- * facets: {layer: utility, status: legacy, complexity: medium}
+ * facets: {layer: utility, status: legacy, complexity: 3}
  * -->
  */
 final public class Inv

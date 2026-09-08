@@ -38,7 +38,7 @@ import tester.IEquivalence;
   * stale: false
   * tags: [code/graph_edge]
   * concepts: [Linked Interface]
-  * facets: {layer: domain, status: legacy, complexity: low}
+  * facets: {layer: domain, status: legacy, complexity: 2}
   * -->
   */
 public interface ILinked

@@ -38,7 +38,7 @@ import math.vector.VectorDouble;
  * stale: false
  * tags: [code/vector_math, code/function_composition]
  * concepts: [Vector Field Function]
- * facets: {layer: utility, status: legacy, complexity: low}
+ * facets: {layer: utility, status: legacy, complexity: 2}
  * -->
  */
 public class OpFirst extends AOdeFloat {

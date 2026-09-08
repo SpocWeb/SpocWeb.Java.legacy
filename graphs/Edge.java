@@ -45,7 +45,7 @@ package graphs;
  * stale: false
  * tags: [code/graph_edge]
  * concepts: [Graph Edge]
- * facets: {layer: domain, status: legacy, complexity: low}
+ * facets: {layer: domain, status: legacy, complexity: 2}
  * -->
  */
 final public class Edge

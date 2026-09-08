@@ -53,7 +53,7 @@ import streamIO.Log;
  * stale: false
  * tags: [code/gui, code/event_handling]
  * concepts: [Applet Framework Base Class]
- * facets: {layer: infrastructure, status: broken, complexity: medium}
+ * facets: {layer: infrastructure, status: broken, complexity: 3}
  * -->
  */
 public class BaseApplet 

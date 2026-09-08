@@ -52,7 +52,7 @@ import java.util.Map;
   * stale: false
   * tags: [code/custom_exception, code/exception_wrapping]
   * concepts: [Error Handling]
-  * facets: {layer: infrastructure, status: stable, complexity: low}
+  * facets: {layer: infrastructure, status: stable, complexity: 2}
   * -->
   */
 public class BaseException

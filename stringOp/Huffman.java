@@ -105,7 +105,7 @@ import function.byref.ByRefInt;
   * stale: false
   * tags: [code/compression]
   * concepts: [Huffman Coding]
-  * facets: {layer: utility, status: legacy, complexity: medium}
+  * facets: {layer: utility, status: legacy, complexity: 3}
   * -->
   */
 public class Huffman {

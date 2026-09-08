@@ -34,7 +34,7 @@ package math.minimizer;
  * stale: false
  * tags: [code/optimization]
  * concepts: [Variable Metric Minimizer (Unimplemented)]
- * facets: {layer: utility, status: unfinished, complexity: low}
+ * facets: {layer: utility, status: unfinished, complexity: 2}
  * -->
  */
 public class VariableMetricMinimizer {

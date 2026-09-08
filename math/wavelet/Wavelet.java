@@ -29,7 +29,7 @@ import streamIO.Assert;
  * stale: false
  * tags: [code/wavelet_transform]
  * concepts: [Wavelet Transform Driver]
- * facets: {layer: utility, status: legacy, complexity: medium}
+ * facets: {layer: utility, status: legacy, complexity: 3}
  * -->
  */
 public class Wavelet {
@@ -43,7 +43,7 @@ public class Wavelet {
 	 * <!-- docstate
 	 * tags: [code/wavelet_transform]
 	 * concepts: [Single-Level Wavelet Transform]
-	 * facets: {layer: utility, status: legacy, complexity: low}
+	 * facets: {layer: utility, status: legacy, complexity: 2}
 	 * -->
 	 */
 	final static public void transformWavelet
@@ -67,7 +67,7 @@ public class Wavelet {
 	 * <!-- docstate
 	 * tags: [code/wavelet_transform]
 	 * concepts: [Multi-Level Wavelet Transform]
-	 * facets: {layer: utility, status: legacy, complexity: low}
+	 * facets: {layer: utility, status: legacy, complexity: 2}
 	 * -->
 	 */
 	final static public void transformWavelet
@@ -120,7 +120,7 @@ public class Wavelet {
 	 * <!-- docstate
 	 * tags: [code/wavelet_transform]
 	 * concepts: [Self-Test Method]
-	 * facets: {layer: test, status: legacy, complexity: low}
+	 * facets: {layer: test, status: legacy, complexity: 2}
 	 * -->
 	 */
 	final static public void testIt() {
@@ -210,7 +210,7 @@ public class Wavelet {
 	 * <!-- docstate
 	 * tags: [code/wavelet_transform]
 	 * concepts: [Demo Entry Point]
-	 * facets: {layer: test, status: legacy, complexity: low}
+	 * facets: {layer: test, status: legacy, complexity: 2}
 	 * -->
 	 */
 	final static public void main(String[] args) {

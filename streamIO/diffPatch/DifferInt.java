@@ -78,7 +78,7 @@ import streamIO.copy.boole.VectorBoolean;
  * stale: false
  * tags: [code/diff_algorithm, code/lcs_algorithm]
  * concepts: [Diffing, Longest Common Subsequence]
- * facets: {layer: domain, status: legacy, complexity: high}
+ * facets: {layer: domain, status: legacy, complexity: 4}
  * -->
  */
 public class DifferInt {

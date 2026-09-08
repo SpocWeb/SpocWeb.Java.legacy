@@ -39,7 +39,7 @@ import tester.IMetric;
  * stale: false
  * tags: [code/fuzzy_search, code/similarity_matching]
  * concepts: [Fuzzy Dictionary Lookup]
- * facets: {layer: utility, status: broken, complexity: medium}
+ * facets: {layer: utility, status: broken, complexity: 3}
  * -->
  */
 public class FuzzyDictionary {

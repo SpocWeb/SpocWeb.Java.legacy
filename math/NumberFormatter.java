@@ -17,7 +17,7 @@ import java.io.Writer;
  * stale: false
  * tags: [code/formatting]
  * concepts: [Number Formatter]
- * facets: {layer: utility, status: broken, complexity: low}
+ * facets: {layer: utility, status: broken, complexity: 2}
  * -->
  */
 public class NumberFormatter

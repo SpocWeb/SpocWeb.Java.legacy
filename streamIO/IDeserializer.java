@@ -28,7 +28,7 @@ import java.io.InputStream;
   * stale: false
   * tags: [code/factory_pattern]
   * concepts: [Deserializer Interface]
-  * facets: {layer: infrastructure, status: legacy, complexity: low}
+  * facets: {layer: infrastructure, status: legacy, complexity: 2}
   * -->
   */
 public interface IDeserializer

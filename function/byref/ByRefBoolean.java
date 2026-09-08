@@ -25,7 +25,7 @@ package function.byref;
   * stale: false
   * tags: [code/function_wrapper, code/mathematical_constants]
   * concepts: [By-Reference Primitive Wrapper]
-  * facets: {layer: utility, status: legacy, complexity: low}
+  * facets: {layer: utility, status: legacy, complexity: 2}
   * -->
   */
 final public class ByRefBoolean

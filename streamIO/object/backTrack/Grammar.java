@@ -39,7 +39,7 @@ import function.FunctionByHash;
   * stale: false
   * tags: [code/backtracking, code/algorithm]
   * concepts: [Backtracking Search]
-  * facets: {layer: utility, status: broken, complexity: medium}
+  * facets: {layer: utility, status: broken, complexity: 3}
   * -->
   * to generate good Candidates.	 */
 public class Grammar
@@ -91,7 +91,7 @@ public class Grammar
   * stale: false
   * tags: [code/backtracking, code/algorithm]
   * concepts: [Backtracking Search]
-  * facets: {layer: utility, status: broken, complexity: medium}
+  * facets: {layer: utility, status: broken, complexity: 3}
   * -->
   * to the current Solution.	 */
 class GrammarState {

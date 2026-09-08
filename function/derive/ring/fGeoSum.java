@@ -13,7 +13,7 @@ import function.ICountAble;
   * stale: false
   * tags: [code/mathematical_function]
   * concepts: [Numerical Series]
-  * facets: {layer: utility, status: legacy, complexity: medium}
+  * facets: {layer: utility, status: legacy, complexity: 3}
   * -->
   * resp. to Radix/(1-Radix) (starting from 1) for Radix < 1	 */
 public class fGeoSum

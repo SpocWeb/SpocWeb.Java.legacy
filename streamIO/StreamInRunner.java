@@ -15,7 +15,7 @@ import tester.process.StreamProcessor;
   * stale: false
   * tags: [code/iterator]
   * concepts: [Stream Input Runner]
-  * facets: {layer: infrastructure, status: legacy, complexity: low}
+  * facets: {layer: infrastructure, status: legacy, complexity: 2}
   * -->
   * in either single Step or until no Items are available anymore. */
 public class StreamInRunner

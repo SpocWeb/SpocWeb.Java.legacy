@@ -23,7 +23,7 @@ import streamIO.Log;
  * stale: false
  * tags: [code/message_queue, code/sequence_processor]
  * concepts: [Asynchronous Messaging]
- * facets: {layer: infrastructure, status: stable, complexity: medium}
+ * facets: {layer: infrastructure, status: stable, complexity: 3}
  * -->
  */
 public class MessageOptimized

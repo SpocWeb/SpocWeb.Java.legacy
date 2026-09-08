@@ -13,7 +13,7 @@ import streamIO.copy.ICopyAble;
  * stale: false
  * tags: [code/in_place_operation, code/bit_manipulation]
  * concepts: [Shift and Rotate]
- * facets: {layer: utility, status: legacy, complexity: medium}
+ * facets: {layer: utility, status: legacy, complexity: 3}
  * -->
  */
 public interface ShiftAble

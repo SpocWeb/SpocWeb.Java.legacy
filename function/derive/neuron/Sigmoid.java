@@ -18,7 +18,7 @@ import function.derive.IFloatDeriveAble;
   * stale: false
   * tags: [code/derivable_function_contract, code/neural_network]
   * concepts: [Activation Functions]
-  * facets: {layer: utility, status: legacy, complexity: medium}
+  * facets: {layer: utility, status: legacy, complexity: 3}
   * -->
   * both the Function and the Derivative are requested interleaved. */
 public class Sigmoid

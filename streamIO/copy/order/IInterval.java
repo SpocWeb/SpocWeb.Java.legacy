@@ -10,7 +10,7 @@ package streamIO.copy.order;
   * stale: false
   * tags: [code/abstract_base]
   * concepts: [Interval Arithmetic]
-  * facets: {layer: utility, status: broken, complexity: medium}
+  * facets: {layer: utility, status: broken, complexity: 3}
   * -->
   * as well as for arithmetic Classes like IntervalA and IntervalP.	 */
 public class IInterval

@@ -27,7 +27,7 @@ import streamIO.object.AStreamIn;
  * stale: false
  * tags: [code/graph_edge, code/graph_iteration]
  * concepts: [Edge Stream Base Class]
- * facets: {layer: domain, status: legacy, complexity: medium}
+ * facets: {layer: domain, status: legacy, complexity: 3}
  * -->
  */
 public abstract class AEdgeStreamIn 

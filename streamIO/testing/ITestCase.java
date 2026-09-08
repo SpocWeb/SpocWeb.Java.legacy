@@ -32,7 +32,7 @@ import streamIO.IIStreamOut;
   * stale: false
   * tags: [code/test_harness]
   * concepts: [Testing]
-  * facets: {layer: test, status: stable, complexity: low}
+  * facets: {layer: test, status: stable, complexity: 2}
   * -->
   */
 public interface ITestCase {

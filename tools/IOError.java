@@ -35,7 +35,7 @@ import streamIO.exception.BaseException;
   * stale: false
   * tags: [code/exception_wrapping, code/unchecked_exception]
   * concepts: [Error Handling]
-  * facets: {layer: infrastructure, status: stable, complexity: low}
+  * facets: {layer: infrastructure, status: stable, complexity: 2}
   * -->
   */
 public class IOError

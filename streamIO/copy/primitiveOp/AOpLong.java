@@ -13,7 +13,7 @@ import function.AOrderAble;
  * stale: false
  * tags: [code/abstract_base, code/delegation, code/arithmetic_operation]
  * concepts: [Primitive Numeric Operations, Deprecated API]
- * facets: {layer: utility, status: legacy, complexity: medium}
+ * facets: {layer: utility, status: legacy, complexity: 3}
  * -->
  * Also Operations with long Arguments are added to the IIntRing Interface */
 public abstract class AOpLong

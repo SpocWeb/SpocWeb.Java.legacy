@@ -37,7 +37,7 @@ import streamIO.IIStreamOut;
  * stale: false
  * tags: [code/message_queue, code/deduplication]
  * concepts: [Asynchronous Messaging]
- * facets: {layer: infrastructure, status: stable, complexity: medium}
+ * facets: {layer: infrastructure, status: stable, complexity: 3}
  * -->
  */
 public class MessageOnlyOnce 

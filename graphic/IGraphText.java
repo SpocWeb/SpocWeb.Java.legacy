@@ -26,7 +26,7 @@ import java.text.AttributedCharacterIterator;
  * stale: false
  * tags: [code/graphics]
  * concepts: [Text Rendering Interface]
- * facets: {layer: infrastructure, status: legacy, complexity: low}
+ * facets: {layer: infrastructure, status: legacy, complexity: 2}
  * -->
  */
 public interface IGraphText extends IGraphShape {

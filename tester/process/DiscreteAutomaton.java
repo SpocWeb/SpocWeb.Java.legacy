@@ -30,7 +30,7 @@ import function.byref.ByRefInt;
   * stale: false
   * tags: [code/state_machine]
   * concepts: [Discrete Automaton]
-  * facets: {layer: utility, status: legacy, complexity: medium}
+  * facets: {layer: utility, status: legacy, complexity: 3}
   * -->
   */
 public class DiscreteAutomaton
@@ -119,7 +119,7 @@ extends Object {
   * stale: false
   * tags: [code/state_machine]
   * concepts: [Discrete Add Transition]
-  * facets: {layer: utility, status: legacy, complexity: low}
+  * facets: {layer: utility, status: legacy, complexity: 2}
   * -->
   */
 class AddInt
@@ -144,7 +144,7 @@ implements IDiscreteTransition {
   * stale: false
   * tags: [code/state_machine]
   * concepts: [Discrete Multiply Transition]
-  * facets: {layer: utility, status: legacy, complexity: low}
+  * facets: {layer: utility, status: legacy, complexity: 2}
   * -->
   */
 class MulInt
@@ -169,7 +169,7 @@ implements IDiscreteTransition {
   * stale: false
   * tags: [code/state_machine]
   * concepts: [Discrete Subtract Transition]
-  * facets: {layer: utility, status: legacy, complexity: low}
+  * facets: {layer: utility, status: legacy, complexity: 2}
   * -->
   */
 class SubtInt
@@ -194,7 +194,7 @@ implements IDiscreteTransition {
   * stale: false
   * tags: [code/state_machine]
   * concepts: [Discrete Divide Transition]
-  * facets: {layer: utility, status: legacy, complexity: low}
+  * facets: {layer: utility, status: legacy, complexity: 2}
   * -->
   */
 class DivInt

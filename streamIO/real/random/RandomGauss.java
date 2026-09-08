@@ -29,7 +29,7 @@ import streamIO.real.IStreamIn_Float;
  * stale: false
  * tags: [code/random_number_generator, code/statistical_distribution]
  * concepts: [Gaussian Random Generator]
- * facets: {layer: utility, status: broken, complexity: low}
+ * facets: {layer: utility, status: broken, complexity: 2}
  * -->
  */
 public class RandomGauss

@@ -63,7 +63,7 @@ import java.util.Map;
  * stale: false
  * tags: [code/parsing, code/serialization]
  * concepts: [JSON.org Reference Implementation]
- * facets: {layer: utility, status: legacy, complexity: medium}
+ * facets: {layer: utility, status: legacy, complexity: 3}
  * -->
  */
 public class JSONObject {
@@ -79,7 +79,7 @@ public class JSONObject {
      * stale: false
      * tags: [code/parsing, code/serialization]
      * concepts: [JSON.org Reference Implementation]
-     * facets: {layer: utility, status: legacy, complexity: medium}
+     * facets: {layer: utility, status: legacy, complexity: 3}
      * -->
      */
      private static final class Null {

@@ -41,7 +41,7 @@ package graphs;
  * stale: false
  * tags: [code/graph_edge, code/sparse_graph]
  * concepts: [Sparse Graph Edge]
- * facets: {layer: domain, status: legacy, complexity: low}
+ * facets: {layer: domain, status: legacy, complexity: 2}
  * -->
  */
 public class SparseEdge {

@@ -30,7 +30,7 @@ import function.derive.ring.Prod;
  * stale: false
  * tags: [code/logarithm_function, code/derivable_function_contract]
  * concepts: [Logarithmic Functions]
- * facets: {layer: utility, status: legacy, complexity: medium}
+ * facets: {layer: utility, status: legacy, complexity: 3}
  * -->
  */
 public class Logarithm

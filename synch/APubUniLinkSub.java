@@ -36,7 +36,7 @@ import graphs.ILinked;
   * stale: false
   * tags: [code/publish_subscribe, code/observer_pattern]
   * concepts: [Publish-Subscribe Chain Link]
-  * facets: {layer: infrastructure, status: broken, complexity: medium}
+  * facets: {layer: infrastructure, status: broken, complexity: 3}
   * -->
   */
 public abstract class APubUniLinkSub

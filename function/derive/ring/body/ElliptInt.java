@@ -48,7 +48,7 @@ import function.derive.ring.Succ;
  * stale: false
  * tags: [code/numerical_integration]
  * concepts: [Special Functions, Elliptic Integrals]
- * facets: {layer: utility, status: legacy, complexity: medium}
+ * facets: {layer: utility, status: legacy, complexity: 3}
  * -->
  * See Numerical Recipes 2nd Ed. p  ()	 */
 public class ElliptInt

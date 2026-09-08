@@ -32,7 +32,7 @@ import function.byref.ByRefLong;
  * stale: false
  * tags: [code/state_machine]
  * concepts: [Finite State Machine]
- * facets: {layer: utility, status: broken, complexity: low}
+ * facets: {layer: utility, status: broken, complexity: 2}
  * -->
  */
 public class StateMachine {

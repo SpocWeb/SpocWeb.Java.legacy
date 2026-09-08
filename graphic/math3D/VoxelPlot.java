@@ -23,7 +23,7 @@ import Body.*;
  * stale: false
  * tags: [code/3d_rendering]
  * concepts: [Voxel Plot]
- * facets: {layer: domain, status: legacy, complexity: medium}
+ * facets: {layer: domain, status: legacy, complexity: 3}
  * -->
  */
 public class VoxelPlot

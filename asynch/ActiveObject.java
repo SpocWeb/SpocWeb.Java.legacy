@@ -34,7 +34,7 @@ import graphs.IValueSetter;
   * stale: false
   * tags: [code/deferred_execution]
   * concepts: [Active Object Pattern]
-  * facets: {layer: infrastructure, status: legacy, complexity: medium}
+  * facets: {layer: infrastructure, status: legacy, complexity: 3}
   * -->
   */
 public class ActiveObject

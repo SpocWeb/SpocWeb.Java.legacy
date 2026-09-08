@@ -88,7 +88,7 @@ import tester.ITester;
   * stale: false
   * tags: [code/reflection, code/reflection_based_property_access, code/reflection_object_instantiation]
   * concepts: [Reflection]
-  * facets: {layer: domain, status: legacy, complexity: high}
+  * facets: {layer: domain, status: legacy, complexity: 4}
   * -->
   */
 public class ReflectAble

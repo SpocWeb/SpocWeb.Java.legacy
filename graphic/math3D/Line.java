@@ -62,7 +62,7 @@ import math.vector.VectorFloat;
  * stale: false
  * tags: [code/3d_geometry, code/computational_geometry]
  * concepts: [3D Line Segment]
- * facets: {layer: domain, status: legacy, complexity: low}
+ * facets: {layer: domain, status: legacy, complexity: 2}
  * -->
  */
 public class Line {		//This allows for all Matrix Operations.

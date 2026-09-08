@@ -9,7 +9,7 @@ package streamIO.copy.groupM;
  * stale: false
  * tags: [code/immutable_wrapper, code/delegation]
  * concepts: [Algebraic Group, Constant/Immutable Wrapper]
- * facets: {layer: utility, status: legacy, complexity: medium}
+ * facets: {layer: utility, status: legacy, complexity: 3}
  * -->
  * but still supports all other Methods of the GroupM Class.	 */
 public class CGroupM

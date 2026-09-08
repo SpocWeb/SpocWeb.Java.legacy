@@ -38,7 +38,7 @@ package streamIO.copy.boole;
  * stale: false
  * tags: [code/lattice_structure]
  * concepts: [Lattice]
- * facets: {layer: utility, status: legacy, complexity: medium}
+ * facets: {layer: utility, status: legacy, complexity: 3}
  * -->
  * This Definition is done in Lattice.MinMaxLattice 	 */
 public interface ILattice

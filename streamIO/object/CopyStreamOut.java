@@ -22,7 +22,7 @@ import tester.process.StreamProcessor;
   * stale: false
   * tags: [code/stream_processing, code/iterator]
   * concepts: [Object Stream Pipeline]
-  * facets: {layer: utility, status: legacy, complexity: medium}
+  * facets: {layer: utility, status: legacy, complexity: 3}
   * -->
   * This Class breaks the Hierarchy and should normally be placed in streamIO.Object.Enumeration. */
 public class CopyStreamOut extends FilterOut {

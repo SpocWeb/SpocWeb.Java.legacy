@@ -13,7 +13,7 @@ import function.IMeasurAble;
   * stale: false
   * tags: [code/abstract_base, code/arithmetic_operation, code/deprecated_api]
   * concepts: [Primitive Numeric Operations, Measurable Values]
-  * facets: {layer: utility, status: broken, complexity: medium}
+  * facets: {layer: utility, status: broken, complexity: 3}
   * -->
   */
 public abstract class AOpMeasurAble

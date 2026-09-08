@@ -18,7 +18,7 @@ import streamIO.integer.encoding.BigEndianReader;
  * stale: false
  * tags: [code/audio, code/media_playback]
  * concepts: [PCM Sample Stream]
- * facets: {layer: domain, status: broken, complexity: medium}
+ * facets: {layer: domain, status: broken, complexity: 3}
  * -->
  */
 public class WaveStreamIn

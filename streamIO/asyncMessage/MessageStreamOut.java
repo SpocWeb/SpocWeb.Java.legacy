@@ -30,7 +30,7 @@ import streamIO.Log;
  * stale: false
  * tags: [code/message_queue, code/retry_logic]
  * concepts: [Asynchronous Messaging]
- * facets: {layer: infrastructure, status: stable, complexity: low}
+ * facets: {layer: infrastructure, status: stable, complexity: 2}
  * -->
  */
 public class MessageStreamOut 

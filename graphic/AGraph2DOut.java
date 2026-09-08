@@ -25,7 +25,7 @@ import java.awt.Color;
  * stale: false
  * tags: [code/graphics]
  * concepts: [Pen State Management Base Class]
- * facets: {layer: infrastructure, status: broken, complexity: low}
+ * facets: {layer: infrastructure, status: broken, complexity: 2}
  * -->
  */
 public abstract class AGraph2DOut 

@@ -17,7 +17,7 @@ import java.util.Iterator;
  * <!-- docstate
  * tags: [code/red_black_tree, code/iterator_pattern]
  * concepts: [Red-Black Tree Backed Sorted Map Implementation]
- * facets: {layer: utility, status: legacy, complexity: high}
+ * facets: {layer: utility, status: legacy, complexity: 4}
  * digest: b2f89fb13b37a522bfb92feffa4b771eb171f5a7dc4b00bc42f340117da116f5
  * stale: false
  * -->

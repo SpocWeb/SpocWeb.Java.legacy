@@ -36,7 +36,7 @@ import stringOp.parser.Scanner;
  * stale: true
  * tags: [code/parsing, code/xml]
  * concepts: [XML/HTML Parsing]
- * facets: {layer: utility, status: broken, complexity: medium}
+ * facets: {layer: utility, status: broken, complexity: 3}
  * -->
  */
 public class XMLInputStream

@@ -41,7 +41,7 @@ import function.vector.IFloatScalarField;
  * stale: false
  * tags: [code/simulated_annealing, code/annealing, code/optimization]
  * concepts: [Simulated Annealing Minimizer]
- * facets: {layer: utility, status: legacy, complexity: medium}
+ * facets: {layer: utility, status: legacy, complexity: 3}
  * -->
  */
 public class AnnealingMinimizer {
@@ -402,7 +402,7 @@ public class AnnealingMinimizer {
  * stale: false
  * tags: [code/test_fixture]
  * concepts: [Scalar Field Test Fixture]
- * facets: {layer: test, status: legacy, complexity: low}
+ * facets: {layer: test, status: legacy, complexity: 2}
  * -->
  */
 class TestScalarField

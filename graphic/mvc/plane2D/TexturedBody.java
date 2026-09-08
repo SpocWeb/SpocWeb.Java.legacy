@@ -61,7 +61,7 @@ import streamIO.object.parser.jdbc.ResultSetSep;
  * stale: false
  * tags: [code/texture_mapping]
  * concepts: [Textured 3D Body]
- * facets: {layer: domain, status: legacy, complexity: medium}
+ * facets: {layer: domain, status: legacy, complexity: 3}
  * -->
  */
 public class TexturedBody 

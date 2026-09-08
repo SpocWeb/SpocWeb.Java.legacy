@@ -55,7 +55,7 @@ import streamIO.exception.BaseException;
  * stale: false
  * tags: [code/error_handling, code/decorator, code/retry_logic]
  * concepts: [Error Handling]
- * facets: {layer: infrastructure, status: broken, complexity: medium}
+ * facets: {layer: infrastructure, status: broken, complexity: 3}
  * -->
  */
 public class ErrorHandler

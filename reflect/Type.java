@@ -44,7 +44,7 @@ import java.security.ProtectionDomain;
   * stale: false
   * tags: [code/generic_interface_reflection, code/reflection_interface]
   * concepts: [Domain Model, Object Classification]
-  * facets: {layer: domain, status: broken, complexity: medium}
+  * facets: {layer: domain, status: broken, complexity: 3}
   * -->
   */
 public class Type implements IType

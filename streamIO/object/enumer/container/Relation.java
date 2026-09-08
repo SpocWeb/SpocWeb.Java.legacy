@@ -105,7 +105,7 @@ import graphs.SparseGraph;
   * <!-- docstate
   * tags: [code/container, code/hash_table, code/container_iteration]
   * concepts: [Concrete Storage Containers - Arrays - Hash Tables and Relations]
-  * facets: {layer: utility, status: legacy, complexity: high}
+  * facets: {layer: utility, status: legacy, complexity: 4}
   * digest: 31855266da538fde28004c69c9041ec054d6dfeb289ec6943b839a3d47b2cf61
   * stale: false
   * -->

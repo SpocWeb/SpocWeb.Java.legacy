@@ -26,7 +26,7 @@ import tester.IEquivalence;
   * <!-- docstate
   * tags: [code/container, code/hash_table, code/container_iteration]
   * concepts: [Concrete Storage Containers - Arrays - Hash Tables and Relations]
-  * facets: {layer: utility, status: legacy, complexity: high}
+  * facets: {layer: utility, status: legacy, complexity: 4}
   * digest: a896973705232bd8d52bb73b73ec8e5dbe3fb04214ca63bbf5f109c854366b1c
   * stale: false
   * -->

@@ -25,7 +25,7 @@ import function.IInvertAble;
  * stale: false
  * tags: [code/data_transfer_object]
  * concepts: [Data Consistency Corrector]
- * facets: {layer: domain, status: legacy, complexity: low}
+ * facets: {layer: domain, status: legacy, complexity: 2}
  * -->
  */
 public class ConsistencyCorrector 

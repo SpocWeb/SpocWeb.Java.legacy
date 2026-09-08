@@ -38,7 +38,7 @@ import function.IMeasurAble;
  * stale: false
  * tags: [code/differential_integration, code/vector_math]
  * concepts: [ODE Integration]
- * facets: {layer: utility, status: legacy, complexity: low}
+ * facets: {layer: utility, status: legacy, complexity: 2}
  * -->
  */
 public class StepConstant
@@ -152,7 +152,7 @@ public class StepConstant
  * stale: false
  * tags: [code/differential_integration, code/vector_math]
  * concepts: [ODE Integration]
- * facets: {layer: utility, status: legacy, complexity: low}
+ * facets: {layer: utility, status: legacy, complexity: 2}
  * -->
  * It is only used in conjunction with the 'StepConstant' Stepper.	 */
 class HeightOde

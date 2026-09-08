@@ -20,7 +20,7 @@ import function.vector.IBinaryOpFloat;
  * stale: false
  * tags: [code/differential_integration]
  * concepts: [Ordinary Differential Equations]
- * facets: {layer: utility, status: legacy, complexity: medium}
+ * facets: {layer: utility, status: legacy, complexity: 3}
  * -->
  */
 public class OdeHeight2D

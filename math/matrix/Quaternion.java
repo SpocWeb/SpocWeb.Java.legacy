@@ -68,7 +68,7 @@ import function.byref.ByRefFloat;
  * stale: false
  * tags: [code/quaternion_algebra, code/quaternion_math]
  * concepts: [Quaternion Rotation Algebra]
- * facets: {layer: utility, status: broken, complexity: medium}
+ * facets: {layer: utility, status: broken, complexity: 3}
  * -->
  */
 public class Quaternion 

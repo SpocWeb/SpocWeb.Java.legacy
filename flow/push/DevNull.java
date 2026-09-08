@@ -22,7 +22,7 @@ package flow.push;
   * stale: false
   * tags: [code/null_object]
   * concepts: [Dataflow, Pipeline]
-  * facets: {layer: domain, status: stable, complexity: low}
+  * facets: {layer: domain, status: stable, complexity: 2}
   * -->
   */
 final public class DevNull

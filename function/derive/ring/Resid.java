@@ -17,7 +17,7 @@ import function.derive.Identity;
  * stale: false
  * tags: [code/mathematical_function]
  * concepts: [Function Algebra]
- * facets: {layer: utility, status: legacy, complexity: medium}
+ * facets: {layer: utility, status: legacy, complexity: 3}
  * -->
  * but that is not realized everywhere yet!!  */
 public class Resid

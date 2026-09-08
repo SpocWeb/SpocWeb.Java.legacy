@@ -13,7 +13,7 @@ import function.IIOrderAble;
  * <!-- docstate
  * tags: [code/container, code/hash_table, code/container_iteration]
  * concepts: [Concrete Storage Containers - Arrays - Hash Tables and Relations]
- * facets: {layer: utility, status: legacy, complexity: high}
+ * facets: {layer: utility, status: legacy, complexity: 4}
  * digest: 8e4f63a413b648dd971daa27181fd2b5955dfa7c427f618d9b90d9fab8deed76
  * stale: false
  * -->

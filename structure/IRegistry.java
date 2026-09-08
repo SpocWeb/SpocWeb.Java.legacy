@@ -39,7 +39,7 @@ import function.FunctionByHash;
   * stale: false
   * tags: [code/registry_pattern]
   * concepts: [Registry Interface]
-  * facets: {layer: utility, status: legacy, complexity: low}
+  * facets: {layer: utility, status: legacy, complexity: 2}
   * -->
   */
 public interface IRegistry

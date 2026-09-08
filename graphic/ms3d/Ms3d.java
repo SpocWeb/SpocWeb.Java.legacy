@@ -80,7 +80,7 @@ import streamIO.integer.encoding.BigEndianReader;
  * stale: false
  * tags: [code/binary_parsing, code/skeletal_animation]
  * concepts: [MS3D Model File Parser]
- * facets: {layer: domain, status: broken, complexity: high}
+ * facets: {layer: domain, status: broken, complexity: 4}
  * -->
  */
 public class Ms3d {

@@ -69,7 +69,7 @@ import java.lang.reflect.InvocationTargetException;
  * stale: false
  * tags: [code/custom_exception, code/exception_wrapping]
  * concepts: [Error Handling]
- * facets: {layer: infrastructure, status: broken, complexity: low}
+ * facets: {layer: infrastructure, status: broken, complexity: 2}
  * -->
  */
 public class ChainedException extends Exception { //

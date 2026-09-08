@@ -25,7 +25,7 @@ package flow.push;
   * stale: false
   * tags: [code/producer_consumer]
   * concepts: [Dataflow, Pipeline]
-  * facets: {layer: domain, status: stable, complexity: low}
+  * facets: {layer: domain, status: stable, complexity: 2}
   * -->
   */
 public class DualOutputPushStage

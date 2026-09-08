@@ -11,7 +11,7 @@ package streamIO.object.enumer.container.tree;
  * <!-- docstate
  * tags: [code/red_black_tree, code/iterator_pattern]
  * concepts: [Red-Black Tree Backed Sorted Map Implementation]
- * facets: {layer: utility, status: legacy, complexity: high}
+ * facets: {layer: utility, status: legacy, complexity: 4}
  * digest: f3703e9a56090fe040ee08946c8f7a440f87f77a2a1099946426bf900c2aba0e
  * stale: false
  * -->

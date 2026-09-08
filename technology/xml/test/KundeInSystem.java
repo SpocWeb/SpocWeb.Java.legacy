@@ -22,7 +22,7 @@ package technology.xml.test;
  * stale: false
  * tags: [code/data_transfer_object]
  * concepts: [Castor Data Transfer Object]
- * facets: {layer: domain, status: broken, complexity: low}
+ * facets: {layer: domain, status: broken, complexity: 2}
  * -->
 **/
 public class KundeInSystem 

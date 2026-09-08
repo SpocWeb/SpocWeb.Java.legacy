@@ -19,7 +19,7 @@ import java.awt.Rectangle;
  * stale: false
  * tags: [code/coordinate_transform]
  * concepts: [2D Coordinate Transform Variant]
- * facets: {layer: domain, status: legacy, complexity: low}
+ * facets: {layer: domain, status: legacy, complexity: 2}
  * -->
  */
 public class Coordinates2D_

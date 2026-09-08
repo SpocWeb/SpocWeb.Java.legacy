@@ -25,7 +25,7 @@ import function.vector.IFloatVectorField;
  * stale: false
  * tags: [code/function_composition]
  * concepts: [Vector Field Fit Composition]
- * facets: {layer: utility, status: broken, complexity: low}
+ * facets: {layer: utility, status: broken, complexity: 2}
  * -->
  */
 public class FitFields

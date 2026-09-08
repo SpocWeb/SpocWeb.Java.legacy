@@ -24,7 +24,7 @@ import java.awt.Graphics;
  * stale: false
  * tags: [code/graphics, code/algorithm]
  * concepts: [Dithering Color Strategy]
- * facets: {layer: utility, status: broken, complexity: medium}
+ * facets: {layer: utility, status: broken, complexity: 3}
  * -->
  */
 public class GrayColor

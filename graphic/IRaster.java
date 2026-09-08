@@ -21,7 +21,7 @@ import graphic.example.Plasma;
   * stale: false
   * tags: [code/geometry, code/2d_geometry]
   * concepts: [Raster Generation Interface]
-  * facets: {layer: infrastructure, status: legacy, complexity: low}
+  * facets: {layer: infrastructure, status: legacy, complexity: 2}
   * -->
   */
 public interface IRaster

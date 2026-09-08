@@ -28,7 +28,7 @@ import streamIO.IIStreamIn;
   * stale: false
   * tags: [code/thread_pooling]
   * concepts: [Executor Base Class]
-  * facets: {layer: infrastructure, status: legacy, complexity: low}
+  * facets: {layer: infrastructure, status: legacy, complexity: 2}
   * -->
   */
 public abstract class AExecutor

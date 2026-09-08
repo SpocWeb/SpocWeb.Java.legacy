@@ -30,7 +30,7 @@ import function.derive.ring.Quot;
  * stale: false
  * tags: [code/numerical_integration, code/trigonometric_function]
  * concepts: [Special Functions, Cosine Integral]
- * facets: {layer: utility, status: legacy, complexity: medium}
+ * facets: {layer: utility, status: legacy, complexity: 3}
  * -->
  * See Numerical Recipes 2nd Ed. p257 (6.9.8)	 */
 public class CI

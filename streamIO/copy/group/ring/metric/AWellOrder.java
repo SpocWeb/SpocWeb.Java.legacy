@@ -17,7 +17,7 @@ import streamIO.copy.groupM.IGroupM;
  * stale: false
  * tags: [code/metric_space, code/root_finding, code/numerical_integration, code/big_integer_arithmetic]
  * concepts: [Metric Spaces - Root Finding and Numerical Integration]
- * facets: {layer: domain, status: legacy, complexity: high}
+ * facets: {layer: domain, status: legacy, complexity: 4}
  * -->
  * In Addition there are maximum and minimum Values for this Class.	 */
 public class AWellOrder

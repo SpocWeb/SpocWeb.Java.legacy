@@ -31,7 +31,7 @@ import java.io.FilenameFilter;
  * stale: false
  * tags: [code/file_filtering]
  * concepts: [File System, File I/O]
- * facets: {layer: infrastructure, status: stable, complexity: low}
+ * facets: {layer: infrastructure, status: stable, complexity: 2}
  * -->
  */
 public class DirectoryFilter 

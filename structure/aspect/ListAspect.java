@@ -30,7 +30,7 @@ package structure.aspect;
   * stale: false
   * tags: [code/property_binding]
   * concepts: [List-Valued Aspect]
-  * facets: {layer: domain, status: broken, complexity: low}
+  * facets: {layer: domain, status: broken, complexity: 2}
   * -->
   */
 public abstract class ListAspect
@@ -64,7 +64,7 @@ extends Aspect {
 	 * <!-- docstate
 	 * tags: [code/property_binding]
 	 * concepts: [List Aspect Constructor]
-	 * facets: {layer: domain, status: broken, complexity: low}
+	 * facets: {layer: domain, status: broken, complexity: 2}
 	 * -->
 	 */
 	protected ListAspect(String name, Aspect[] list_) { super(name); this.list = list_; }
@@ -90,7 +90,7 @@ extends Aspect {
 	 * <!-- docstate
 	 * tags: [code/property_binding]
 	 * concepts: [Self-Test Method]
-	 * facets: {layer: test, status: legacy, complexity: low}
+	 * facets: {layer: test, status: legacy, complexity: 2}
 	 * -->
 	 */
 	public static void testIt(String[] args) { //throws java.io.IOException {
@@ -103,7 +103,7 @@ extends Aspect {
 	 * <!-- docstate
 	 * tags: [code/property_binding]
 	 * concepts: [Demo Entry Point]
-	 * facets: {layer: test, status: legacy, complexity: low}
+	 * facets: {layer: test, status: legacy, complexity: 2}
 	 * -->
 	 * via the command line.	 */
 	public static void main (String[] args) { //throws java.io.IOException {

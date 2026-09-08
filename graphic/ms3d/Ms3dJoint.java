@@ -38,7 +38,7 @@ import streamIO.integer.encoding.BigEndianReader;
  * stale: false
  * tags: [code/skeletal_animation]
  * concepts: [MS3D Skeletal Joint]
- * facets: {layer: domain, status: legacy, complexity: medium}
+ * facets: {layer: domain, status: legacy, complexity: 3}
  * -->
  */
 public class Ms3dJoint {

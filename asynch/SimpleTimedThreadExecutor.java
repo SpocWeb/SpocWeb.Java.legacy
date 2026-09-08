@@ -22,7 +22,7 @@ package asynch;
   * stale: false
   * tags: [code/thread_pooling]
   * concepts: [Timed Thread Executor]
-  * facets: {layer: infrastructure, status: legacy, complexity: low}
+  * facets: {layer: infrastructure, status: legacy, complexity: 2}
   * -->
   */
 public class SimpleTimedThreadExecutor

@@ -18,7 +18,7 @@ import function.byref.ByRefChar;
  * stale: false
  * tags: [code/string_algorithms]
  * concepts: [String Test Harness]
- * facets: {layer: test, status: legacy, complexity: low}
+ * facets: {layer: test, status: legacy, complexity: 2}
  * -->
  * created in the main() method.	 */
 public class testString {
@@ -29,7 +29,7 @@ public class testString {
 	 * <!-- docstate
 	 * tags: [code/string_algorithms]
 	 * concepts: [String Test Entry Point]
-	 * facets: {layer: test, status: legacy, complexity: low}
+	 * facets: {layer: test, status: legacy, complexity: 2}
 	 * -->
 	 * via the command line.	 */
 	public static void main (final String[] args) throws Exception {

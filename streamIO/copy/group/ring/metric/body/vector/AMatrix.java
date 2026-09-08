@@ -11,7 +11,7 @@ import streamIO.copy.group.ring.metric.AMetricIRing;
   * <!-- docstate
   * tags: [code/tensor, code/manifold_generation, code/interpolation]
   * concepts: [Vector/Matrix/Tensor and Manifold Interpolation]
-  * facets: {layer: domain, status: legacy, complexity: high}
+  * facets: {layer: domain, status: legacy, complexity: 4}
   * digest: e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855
   * stale: false
   * -->

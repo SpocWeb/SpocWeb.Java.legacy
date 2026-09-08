@@ -29,7 +29,7 @@ import streamIO.IDeserializer;
  * stale: false
  * tags: [code/abstract_interface, code/serialization]
  * concepts: [Copy Semantics, Serialization]
- * facets: {layer: utility, status: legacy, complexity: medium}
+ * facets: {layer: utility, status: legacy, complexity: 3}
  * -->
  */
 public interface ICopyAble	//The last two Interfaces define no Methods!

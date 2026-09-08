@@ -24,7 +24,7 @@ import java.io.IOException;
   * stale: false
   * tags: [code/grammar_model, code/recursive_grammar]
   * concepts: [Grammar Evolution]
-  * facets: {layer: utility, status: broken, complexity: medium}
+  * facets: {layer: utility, status: broken, complexity: 3}
   * -->
   */
 public class Grammar 

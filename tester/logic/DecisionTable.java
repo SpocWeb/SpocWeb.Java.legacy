@@ -21,7 +21,7 @@ package tester.logic;
   * stale: false
   * tags: [code/decision_tree, code/rule_engine]
   * concepts: [Decision Table]
-  * facets: {layer: utility, status: legacy, complexity: medium}
+  * facets: {layer: utility, status: legacy, complexity: 3}
   * -->
   */
 public class DecisionTable

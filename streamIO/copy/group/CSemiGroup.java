@@ -12,7 +12,7 @@ import streamIO.exception.ReadOnlyException;
  * stale: false
  * tags: [code/group_algebra, code/date_time]
  * concepts: [Group/SemiGroup Algebra]
- * facets: {layer: domain, status: legacy, complexity: high}
+ * facets: {layer: domain, status: legacy, complexity: 4}
  * -->
  * but still supports all other Methods of the SemiGroup Class.	 */
 public class CSemiGroup

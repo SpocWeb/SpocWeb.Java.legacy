@@ -17,7 +17,7 @@ import java.io.File;
  * stale: false
  * tags: [code/cli_tool, code/directory_traversal]
  * concepts: [Directory Traversal]
- * facets: {layer: utility, status: stable, complexity: medium}
+ * facets: {layer: utility, status: stable, complexity: 3}
  * -->
  */
 public class XRename {
@@ -40,7 +40,7 @@ public class XRename {
 	 * <!-- docstate
 	 * tags: [code/directory_traversal]
 	 * concepts: [Directory Traversal]
-	 * facets: {layer: utility, status: stable, complexity: low}
+	 * facets: {layer: utility, status: stable, complexity: 2}
 	 * -->
 	 */
 	final static public int rename( final boolean recurse,
@@ -68,7 +68,7 @@ public class XRename {
 	 * <!-- docstate
 	 * tags: [code/directory_traversal]
 	 * concepts: [Directory Traversal]
-	 * facets: {layer: utility, status: stable, complexity: medium}
+	 * facets: {layer: utility, status: stable, complexity: 3}
 	 * -->
 	 */
 	final static public int rename( final boolean recurse,
@@ -118,7 +118,7 @@ public class XRename {
 	 * <!-- docstate
 	 * tags: [code/cli_tool]
 	 * concepts: [Directory Traversal]
-	 * facets: {layer: utility, status: stable, complexity: low}
+	 * facets: {layer: utility, status: stable, complexity: 2}
 	 * -->
 	 */
 	public static void main(final String[] args) {

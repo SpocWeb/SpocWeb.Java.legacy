@@ -23,7 +23,7 @@ import streamIO.IIStreamOut;
   * stale: false
   * tags: [code/adapter_pattern, code/stream_abstraction]
   * concepts: [Adapter Pattern]
-  * facets: {layer: infrastructure, status: stable, complexity: low}
+  * facets: {layer: infrastructure, status: stable, complexity: 2}
   * -->
   */
 public class ValueSetter2StreamOut

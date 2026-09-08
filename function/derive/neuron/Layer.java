@@ -24,7 +24,7 @@ import function.derive.IFloatDeriveAble;
   * stale: false
   * tags: [code/neural_network, code/backpropagation]
   * concepts: [Neural Networks, Supervised Learning]
-  * facets: {layer: utility, status: legacy, complexity: medium}
+  * facets: {layer: utility, status: legacy, complexity: 3}
   * -->
   */
 public class Layer

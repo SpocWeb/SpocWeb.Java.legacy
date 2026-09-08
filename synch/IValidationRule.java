@@ -30,7 +30,7 @@ package synch;
   * stale: false
   * tags: [code/validation_rule]
   * concepts: [Validation Rule Interface]
-  * facets: {layer: domain, status: legacy, complexity: low}
+  * facets: {layer: domain, status: legacy, complexity: 2}
   * -->
   */
 public interface IValidationRule {

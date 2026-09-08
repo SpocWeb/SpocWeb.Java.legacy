@@ -32,7 +32,7 @@ import synch.InvalidException;
   * stale: false
   * tags: [code/property_binding]
   * concepts: [Double-Valued Aspect]
-  * facets: {layer: domain, status: broken, complexity: low}
+  * facets: {layer: domain, status: broken, complexity: 2}
   * -->
   */
 public class DoubleAspect

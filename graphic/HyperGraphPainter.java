@@ -37,7 +37,7 @@ import streamIO.Log;
  * stale: false
  * tags: [code/graph_rendering]
  * concepts: [Hyperbolic Graph Layout Painter]
- * facets: {layer: domain, status: legacy, complexity: medium}
+ * facets: {layer: domain, status: legacy, complexity: 3}
  * -->
  */
 public class HyperGraphPainter extends Graph2DPainter {

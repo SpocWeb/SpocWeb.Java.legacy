@@ -51,7 +51,7 @@ import streamIO.integer.IStreamOutStruct;
  * stale: false
  * tags: [code/version_tree, code/version_control]
  * concepts: [Versioning, Branching]
- * facets: {layer: domain, status: broken, complexity: high}
+ * facets: {layer: domain, status: broken, complexity: 4}
  * -->
  */
 abstract public class VersionTree 

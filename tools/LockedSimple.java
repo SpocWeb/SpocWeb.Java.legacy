@@ -49,7 +49,7 @@ package tools;
   * stale: false
   * tags: [code/locking, code/reference_counting, code/non_blocking]
   * concepts: [Concurrency]
-  * facets: {layer: infrastructure, status: broken, complexity: medium}
+  * facets: {layer: infrastructure, status: broken, complexity: 3}
   * -->
   */
 public class LockedSimple
@@ -214,7 +214,7 @@ public class LockedSimple
  * stale: false
  * tags: [code/manual_test_harness, code/locking]
  * concepts: [Concurrency]
- * facets: {layer: utility, status: experimental, complexity: low}
+ * facets: {layer: utility, status: experimental, complexity: 2}
  * -->
  */
 class LockTester

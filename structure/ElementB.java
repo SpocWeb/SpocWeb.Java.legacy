@@ -20,7 +20,7 @@ package structure; //
   * stale: false
   * tags: [code/visitor_pattern]
   * concepts: [Concrete Visitable Element B]
-  * facets: {layer: utility, status: legacy, complexity: low}
+  * facets: {layer: utility, status: legacy, complexity: 2}
   * -->
   */
 public class ElementB

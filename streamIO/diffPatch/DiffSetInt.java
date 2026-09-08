@@ -43,7 +43,7 @@ import streamIO.integer.IStreamIn_Struct;
  * stale: false
  * tags: [code/diff_collection, code/merge_algorithm]
  * concepts: [Diffing, Merging]
- * facets: {layer: domain, status: legacy, complexity: medium}
+ * facets: {layer: domain, status: legacy, complexity: 3}
  * -->
  */
 public class DiffSetInt 

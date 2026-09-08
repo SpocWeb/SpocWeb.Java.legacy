@@ -17,7 +17,7 @@ import function.byref.ByRefDouble;
  * stale: false
  * tags: [code/constant_function, code/mathematical_constants]
  * concepts: [Function Algebra, Numeric Constants]
- * facets: {layer: utility, status: legacy, complexity: medium}
+ * facets: {layer: utility, status: legacy, complexity: 3}
  * -->
  */
 public class CMeasurAble

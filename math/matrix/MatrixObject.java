@@ -23,7 +23,7 @@ import streamIO.copy.ICopyAble;
  * stale: false
  * tags: [code/matrix_base_class, code/matrix_operations]
  * concepts: [Generic Object Matrix]
- * facets: {layer: utility, status: broken, complexity: medium}
+ * facets: {layer: utility, status: broken, complexity: 3}
  * -->
  */
 public class MatrixObject 

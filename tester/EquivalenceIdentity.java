@@ -35,7 +35,7 @@ package tester;
  * stale: false
  * tags: [code/custom_equivalence]
  * concepts: [Identity-Based Equivalence]
- * facets: {layer: utility, status: legacy, complexity: low}
+ * facets: {layer: utility, status: legacy, complexity: 2}
  * -->
  */
 public class EquivalenceIdentity 

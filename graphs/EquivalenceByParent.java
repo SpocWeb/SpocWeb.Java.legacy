@@ -46,7 +46,7 @@ import tester.IEquivalence;
   * stale: false
   * tags: [code/custom_equivalence, code/disjoint_set]
   * concepts: [Parent-Based Equivalence]
-  * facets: {layer: utility, status: legacy, complexity: low}
+  * facets: {layer: utility, status: legacy, complexity: 2}
   * -->
   */
 public class EquivalenceByParent

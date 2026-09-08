@@ -39,7 +39,7 @@ import function.byref.ByRefFloat;
  * stale: false
  * tags: [code/linear_regression]
  * concepts: [Robust Linear Fit]
- * facets: {layer: utility, status: legacy, complexity: medium}
+ * facets: {layer: utility, status: legacy, complexity: 3}
  * -->
  */
 public class LinearRobustFit 

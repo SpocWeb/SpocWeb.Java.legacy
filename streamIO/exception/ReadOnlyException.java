@@ -35,7 +35,7 @@ import streamIO.object.enumer.Enumerator;
   * stale: false
   * tags: [code/custom_exception]
   * concepts: [Error Handling]
-  * facets: {layer: infrastructure, status: stable, complexity: low}
+  * facets: {layer: infrastructure, status: stable, complexity: 2}
   * -->
   */
 public class ReadOnlyException

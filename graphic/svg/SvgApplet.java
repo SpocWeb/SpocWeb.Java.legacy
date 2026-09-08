@@ -57,7 +57,7 @@ import technology.xml.SaxDispatcher;
  * stale: false
  * tags: [code/rendering, code/parsing]
  * concepts: [SVG Applet Renderer]
- * facets: {layer: utility, status: broken, complexity: high}
+ * facets: {layer: utility, status: broken, complexity: 4}
  * -->
  */
 public class SvgApplet 

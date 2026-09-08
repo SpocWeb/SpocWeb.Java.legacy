@@ -34,7 +34,7 @@ import function.byref.ByRefLong;
   * stale: false
   * tags: [code/growable_array, code/array_math]
   * concepts: [Growable long[] Vector]
-  * facets: {layer: domain, status: broken, complexity: high}
+  * facets: {layer: domain, status: broken, complexity: 4}
   * -->
   */
 public class VectorLong
@@ -2563,7 +2563,7 @@ extends AVector {
  * stale: false
  * tags: [code/functional_interfaces]
  * concepts: [Reverse-Order Long Stream Source]
- * facets: {layer: utility, status: legacy, complexity: low}
+ * facets: {layer: utility, status: legacy, complexity: 2}
  * -->
  */
 final class VectorLongStreamIn 

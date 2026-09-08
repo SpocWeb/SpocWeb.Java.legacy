@@ -25,7 +25,7 @@ package graphic;
  * stale: false
  * tags: [code/geometry]
  * concepts: [Turtle Graphics Base Class]
- * facets: {layer: infrastructure, status: legacy, complexity: low}
+ * facets: {layer: infrastructure, status: legacy, complexity: 2}
  * -->
  */
 public abstract class AGraphTurtle 

@@ -86,7 +86,7 @@ import tools.Parsing;
  * stale: false
  * tags: [code/3d_geometry, code/computational_geometry]
  * concepts: [3D Solid Body]
- * facets: {layer: domain, status: legacy, complexity: medium}
+ * facets: {layer: domain, status: legacy, complexity: 3}
  * -->
  */
 public class Body3D

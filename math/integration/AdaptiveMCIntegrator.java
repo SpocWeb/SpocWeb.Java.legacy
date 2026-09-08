@@ -32,7 +32,7 @@ import function.byref.ByRefFloat;
  * stale: false
  * tags: [code/numerical_integration]
  * concepts: [Adaptive Monte Carlo Integrator]
- * facets: {layer: utility, status: legacy, complexity: medium}
+ * facets: {layer: utility, status: legacy, complexity: 3}
  * -->
  */
 public class AdaptiveMCIntegrator {

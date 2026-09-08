@@ -24,7 +24,7 @@ import java.io.StringBufferInputStream;
  * stale: false
  * tags: [code/parser, code/expression_parser]
  * concepts: [Math Expression Parser]
- * facets: {layer: utility, status: legacy, complexity: medium}
+ * facets: {layer: utility, status: legacy, complexity: 3}
  * -->
  */
 public class MathParser {

@@ -31,7 +31,7 @@ package math.vector;
  * stale: false
  * tags: [code/strategy_pattern, code/functional_interfaces]
  * concepts: [Quaternary Arithmetic Operation]
- * facets: {layer: utility, status: legacy, complexity: low}
+ * facets: {layer: utility, status: legacy, complexity: 2}
  * -->
  */
 interface QuaternaryOp {

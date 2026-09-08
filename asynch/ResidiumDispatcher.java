@@ -24,7 +24,7 @@ import java.util.TooManyListenersException;
  * stale: false
  * tags: [code/dispatcher]
  * concepts: [Task Dispatcher]
- * facets: {layer: infrastructure, status: legacy, complexity: medium}
+ * facets: {layer: infrastructure, status: legacy, complexity: 3}
  * -->
  */
 public class ResidiumDispatcher {

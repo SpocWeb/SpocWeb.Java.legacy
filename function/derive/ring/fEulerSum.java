@@ -13,7 +13,7 @@ import function.AFunction;
   * stale: false
   * tags: [code/mathematical_function]
   * concepts: [Numerical Series]
-  * facets: {layer: utility, status: legacy, complexity: medium}
+  * facets: {layer: utility, status: legacy, complexity: 3}
   * -->
   * e = Sum (n, 1/n!) 	 */
 public class fEulerSum

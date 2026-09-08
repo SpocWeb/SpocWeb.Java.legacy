@@ -31,7 +31,7 @@ import streamIO.copy.groupM.ISemiGroupM;
  * stale: false
  * tags: [code/complex_numbers, code/fourier_transform]
  * concepts: [Complex Number Arithmetic and Fourier Transform]
- * facets: {layer: domain, status: legacy, complexity: high}
+ * facets: {layer: domain, status: legacy, complexity: 4}
  * -->
  */
 final public class Polar

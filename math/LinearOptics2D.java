@@ -32,7 +32,7 @@ package math;
  * stale: false
  * tags: [code/matrix_math]
  * concepts: [2D Linear Optics Transform]
- * facets: {layer: domain, status: legacy, complexity: medium}
+ * facets: {layer: domain, status: legacy, complexity: 3}
  * -->
  */
 public class LinearOptics2D {

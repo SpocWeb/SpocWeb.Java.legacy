@@ -35,7 +35,7 @@ import streamIO.integer.random.ARandomInt;
   * stale: false
   * tags: [code/random_number_generation, code/quasi_random_sequence]
   * concepts: [Random Sampling, Monte Carlo]
-  * facets: {layer: utility, status: stable, complexity: high}
+  * facets: {layer: utility, status: stable, complexity: 4}
   * -->
   */
 public class RandomVectorQuasi

@@ -12,7 +12,7 @@ package streamIO;
   * stale: false
   * tags: [code/iterator]
   * concepts: [Iterable Interface]
-  * facets: {layer: infrastructure, status: legacy, complexity: low}
+  * facets: {layer: infrastructure, status: legacy, complexity: 2}
   * -->
   * introduces Problems with Concurrency.  */
 public interface IIterAble {

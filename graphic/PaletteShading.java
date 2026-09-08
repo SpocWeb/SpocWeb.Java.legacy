@@ -25,7 +25,7 @@ import java.awt.Color;
  * stale: false
  * tags: [code/color_palette]
  * concepts: [Shading Palette]
- * facets: {layer: utility, status: broken, complexity: low}
+ * facets: {layer: utility, status: broken, complexity: 2}
  * -->
  */
 final public class PaletteShading implements ISimplePalette {

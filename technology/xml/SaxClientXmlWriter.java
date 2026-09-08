@@ -54,7 +54,7 @@ import org.xml.sax.helpers.DefaultHandler;
  * stale: false
  * tags: [code/sax_parsing]
  * concepts: [SAX-Based XML Writer]
- * facets: {layer: infrastructure, status: legacy, complexity: medium}
+ * facets: {layer: infrastructure, status: legacy, complexity: 3}
  * -->
  */
 public class SaxClientXmlWriter 

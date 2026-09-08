@@ -33,7 +33,7 @@ import streamIO.object.IStreamIn;
  * stale: false
  * tags: [code/stream_filter]
  * concepts: [Constant Float Stream]
- * facets: {layer: infrastructure, status: legacy, complexity: low}
+ * facets: {layer: infrastructure, status: legacy, complexity: 2}
  * -->
  */
 public class ConstStreamIn_Float 

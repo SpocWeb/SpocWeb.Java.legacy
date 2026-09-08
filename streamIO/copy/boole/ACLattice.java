@@ -30,7 +30,7 @@ import streamIO.exception.ReadOnlyException;
   * stale: false
   * tags: [code/lattice_structure, code/abstract_base]
   * concepts: [Lattice]
-  * facets: {layer: utility, status: legacy, complexity: medium}
+  * facets: {layer: utility, status: legacy, complexity: 3}
   * -->
   */
 public abstract class ACLattice

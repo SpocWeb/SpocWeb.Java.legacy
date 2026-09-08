@@ -30,7 +30,7 @@ import synch.InvalidException;
   * stale: false
   * tags: [code/property_binding, code/data_validation]
   * concepts: [String-Valued Aspect]
-  * facets: {layer: domain, status: legacy, complexity: low}
+  * facets: {layer: domain, status: legacy, complexity: 2}
   * -->
   */
 public class StringAspect

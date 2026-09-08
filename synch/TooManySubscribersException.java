@@ -11,7 +11,7 @@ package synch;
   * stale: false
   * tags: [code/validation]
   * concepts: [Custom Exception Type]
-  * facets: {layer: domain, status: legacy, complexity: low}
+  * facets: {layer: domain, status: legacy, complexity: 2}
   * -->
   */
 public class TooManySubscribersException

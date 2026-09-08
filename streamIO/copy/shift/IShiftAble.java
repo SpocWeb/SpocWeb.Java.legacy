@@ -22,7 +22,7 @@ package streamIO.copy.shift;
  * stale: false
  * tags: [code/in_place_operation, code/bit_manipulation]
  * concepts: [g-adic Number Representation, Shift and Rotate]
- * facets: {layer: utility, status: legacy, complexity: medium}
+ * facets: {layer: utility, status: legacy, complexity: 3}
  * -->
  * and transferring the Carry.	 */
 public interface IShiftAble {

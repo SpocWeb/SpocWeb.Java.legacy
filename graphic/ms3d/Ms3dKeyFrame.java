@@ -37,7 +37,7 @@ import streamIO.integer.encoding.BigEndianReader;
  * stale: false
  * tags: [code/skeletal_animation]
  * concepts: [MS3D Animation Keyframe]
- * facets: {layer: domain, status: legacy, complexity: low}
+ * facets: {layer: domain, status: legacy, complexity: 2}
  * -->
  */
 public class Ms3dKeyFrame {

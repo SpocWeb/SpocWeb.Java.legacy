@@ -21,7 +21,7 @@ import RingFuncs.
  * stale: false
  * tags: [code/differential_integration]
  * concepts: [Partial Derivatives, Sum Rule]
- * facets: {layer: utility, status: legacy, complexity: medium}
+ * facets: {layer: utility, status: legacy, complexity: 3}
  * -->
  * Keeps a Cache of partial Derivatives analogous to Sum.  */
 final public class SumPartial

@@ -22,7 +22,7 @@ import function.vector.IFloatVectorFunction;
  * stale: false
  * tags: [code/curve_fitting]
  * concepts: [Polynomial Basis Fit]
- * facets: {layer: utility, status: legacy, complexity: medium}
+ * facets: {layer: utility, status: legacy, complexity: 3}
  * -->
  */
 public class FitPolynom 

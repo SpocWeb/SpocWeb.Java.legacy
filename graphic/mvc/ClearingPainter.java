@@ -36,7 +36,7 @@ import java.awt.Rectangle;
  * stale: false
  * tags: [code/gui]
  * concepts: [Background-Clearing Painter]
- * facets: {layer: infrastructure, status: legacy, complexity: low}
+ * facets: {layer: infrastructure, status: legacy, complexity: 2}
  * -->
  */
 final public class ClearingPainter implements IPainter {

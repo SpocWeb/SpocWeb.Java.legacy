@@ -21,7 +21,7 @@ import function.derive.ring.Prod;
  * stale: false
  * tags: [code/mathematical_function, code/derivable_function_contract]
  * concepts: [Power Functions]
- * facets: {layer: utility, status: legacy, complexity: medium}
+ * facets: {layer: utility, status: legacy, complexity: 3}
  * -->
  * not only integer H	 */
 public class Power

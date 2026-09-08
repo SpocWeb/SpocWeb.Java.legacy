@@ -64,7 +64,7 @@ import streamIO.integer.filter.FilterOutByte;
  * stale: false
  * tags: [code/frequency_counting, code/statistics]
  * concepts: [Byte and Digraph/Trigraph Frequency Counters]
- * facets: {layer: utility, status: legacy, complexity: medium}
+ * facets: {layer: utility, status: legacy, complexity: 3}
  * -->
  */
 public class FilterByteBag 

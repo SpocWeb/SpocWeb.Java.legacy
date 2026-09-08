@@ -21,7 +21,7 @@ package graphic;
  * stale: false
  * tags: [code/2d_geometry, code/polygon_calculation]
  * concepts: [2D Polygon]
- * facets: {layer: domain, status: broken, complexity: medium}
+ * facets: {layer: domain, status: broken, complexity: 3}
  * -->
  */
 public class Polygon2D {

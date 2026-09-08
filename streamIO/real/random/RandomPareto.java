@@ -14,7 +14,7 @@ import streamIO.real.IStreamIn_Float;
  * stale: false
  * tags: [code/random_number_generator, code/statistical_distribution]
  * concepts: [Pareto-Distributed Random Generator]
- * facets: {layer: utility, status: legacy, complexity: low}
+ * facets: {layer: utility, status: legacy, complexity: 2}
  * -->
  */
 public class RandomPareto

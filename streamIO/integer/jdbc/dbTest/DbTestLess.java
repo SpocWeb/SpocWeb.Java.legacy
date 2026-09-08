@@ -16,7 +16,7 @@ import streamIO.integer.jdbc.DbColumn;
  * <!-- docstate
  * tags: [code/predicate, code/predicate_evaluation]
  * concepts: [Less-Than Row Predicate]
- * facets: {layer: domain, status: broken, complexity: low}
+ * facets: {layer: domain, status: broken, complexity: 2}
  * -->
  */
 public class DbTestLess

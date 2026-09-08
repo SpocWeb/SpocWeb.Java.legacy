@@ -36,7 +36,7 @@ import function.derive.AFloatDeriveAble;
  * stale: false
  * tags: [code/derivable_function_contract, code/mathematical_function]
  * concepts: [Statistical Distributions, Gaussian Distribution]
- * facets: {layer: utility, status: legacy, complexity: medium}
+ * facets: {layer: utility, status: legacy, complexity: 3}
  * -->
  */
 public class Gauss 

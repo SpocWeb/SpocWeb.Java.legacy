@@ -11,7 +11,7 @@ import java.io.InputStream;
  * stale: false
  * tags: [code/parsing, code/xml]
  * concepts: [XML/HTML Parsing]
- * facets: {layer: utility, status: legacy, complexity: medium}
+ * facets: {layer: utility, status: legacy, complexity: 3}
  * -->
  * so it is stricter than usual Browsers.  */
 public class HTMLScanner {

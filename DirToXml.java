@@ -38,7 +38,7 @@ import java.util.Date;
  * stale: false
  * tags: [code/cli_tool, code/directory_traversal, code/xml_serialization]
  * concepts: [Directory Traversal, File System]
- * facets: {layer: utility, status: stable, complexity: medium}
+ * facets: {layer: utility, status: stable, complexity: 3}
  * -->
  */
 public class DirToXml {
@@ -54,7 +54,7 @@ public class DirToXml {
 	 * <!-- docstate
 	 * tags: [code/directory_traversal]
 	 * concepts: [Directory Traversal]
-	 * facets: {layer: utility, status: stable, complexity: low}
+	 * facets: {layer: utility, status: stable, complexity: 2}
 	 * -->
 	 */
 	final static public void execRecursive(final File dir, final PrintWriter stream, final String[] patterns) 
@@ -70,7 +70,7 @@ public class DirToXml {
 	 * <!-- docstate
 	 * tags: [code/directory_traversal, code/xml_serialization]
 	 * concepts: [Directory Traversal, File System]
-	 * facets: {layer: utility, status: stable, complexity: medium}
+	 * facets: {layer: utility, status: stable, complexity: 3}
 	 * -->
 	 */
 	final static public void execRecursive(final File dir, final PrintWriter stream, final String[] patterns, final String prefix)
@@ -134,7 +134,7 @@ public class DirToXml {
 	 * <!-- docstate
 	 * tags: [code/cli_tool]
 	 * concepts: [Directory Traversal]
-	 * facets: {layer: utility, status: stable, complexity: low}
+	 * facets: {layer: utility, status: stable, complexity: 2}
 	 * -->
 	 * via the command line.	 */
 	public static void main(final String[] args) {

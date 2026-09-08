@@ -14,7 +14,7 @@ package streamIO.object.parser;
   * stale: true
   * tags: [code/stream_parsing, code/parser]
   * concepts: [Separator-Driven Token Parsing and Stream Adapters]
-  * facets: {layer: utility, status: legacy, complexity: high}
+  * facets: {layer: utility, status: legacy, complexity: 4}
   * -->
   */
 public class AlliterationStreamIn {

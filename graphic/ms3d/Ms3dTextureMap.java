@@ -32,7 +32,7 @@ import java.io.PrintStream;
  * stale: false
  * tags: [code/mesh_data]
  * concepts: [MS3D Texture Coordinate Map]
- * facets: {layer: domain, status: legacy, complexity: low}
+ * facets: {layer: domain, status: legacy, complexity: 2}
  * -->
  */
 public class Ms3dTextureMap {

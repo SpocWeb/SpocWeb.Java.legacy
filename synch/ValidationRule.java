@@ -67,7 +67,7 @@ import function.byref.ByRefDouble;
   * stale: false
   * tags: [code/validation_rule]
   * concepts: [Validation Rule Chain]
-  * facets: {layer: domain, status: legacy, complexity: high}
+  * facets: {layer: domain, status: legacy, complexity: 4}
   * -->
   */
 public class ValidationRule 

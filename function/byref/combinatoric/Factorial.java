@@ -15,7 +15,7 @@ import streamIO.Log;
  * stale: false
  * tags: [code/combinatorics, code/special_function]
  * concepts: [Combinatorics]
- * facets: {layer: utility, status: legacy, complexity: low}
+ * facets: {layer: utility, status: legacy, complexity: 2}
  * -->
  * long		: 20, because n! ~ n^n  */
 public class Factorial {

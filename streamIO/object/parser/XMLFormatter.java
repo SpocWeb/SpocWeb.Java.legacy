@@ -39,7 +39,7 @@ import streamIO.integer.adapter.OutputStreamToStreamOutByte;
  * stale: true
  * tags: [code/xml_parsing, code/xml_streaming]
  * concepts: [XML Read/Write Stream Bridging]
- * facets: {layer: utility, status: legacy, complexity: high}
+ * facets: {layer: utility, status: legacy, complexity: 4}
  * -->
  */
 public class XMLFormatter

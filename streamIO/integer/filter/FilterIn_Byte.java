@@ -41,7 +41,7 @@ import function.IIntFunction;
   * stale: false
   * tags: [code/stream_filter]
   * concepts: [Pluggable Byte-Stream Filter Infrastructure and java.io Adapters]
-  * facets: {layer: utility, status: legacy, complexity: medium}
+  * facets: {layer: utility, status: legacy, complexity: 3}
   * -->
   */
 public class FilterIn_Byte

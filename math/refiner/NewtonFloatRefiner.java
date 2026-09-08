@@ -35,7 +35,7 @@ import function.derive.IFloatDeriveAble;
  * stale: false
  * tags: [code/newton_method]
  * concepts: [Newton's Method Root Refiner]
- * facets: {layer: utility, status: broken, complexity: low}
+ * facets: {layer: utility, status: broken, complexity: 2}
  * -->
  */
 public class NewtonFloatRefiner 

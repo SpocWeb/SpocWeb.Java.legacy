@@ -22,7 +22,7 @@ package asynch;
   * stale: false
   * tags: [code/deferred_execution]
   * concepts: [Runnable Task Base Class]
-  * facets: {layer: infrastructure, status: legacy, complexity: low}
+  * facets: {layer: infrastructure, status: legacy, complexity: 2}
   * -->
   */
 public abstract class AReadyToRun

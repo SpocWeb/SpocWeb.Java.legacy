@@ -37,7 +37,7 @@ import streamIO.IInstantiAble;
  * stale: false
  * tags: [code/abstract_interface]
  * concepts: [Copy Semantics]
- * facets: {layer: utility, status: legacy, complexity: medium}
+ * facets: {layer: utility, status: legacy, complexity: 3}
  * -->
  */
 public interface IICopyAble

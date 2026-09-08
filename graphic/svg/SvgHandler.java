@@ -26,7 +26,7 @@ package graphic.svg;
  * stale: false
  * tags: [code/parsing]
  * concepts: [Empty SAX Handler Placeholder]
- * facets: {layer: utility, status: unfinished, complexity: low}
+ * facets: {layer: utility, status: unfinished, complexity: 2}
  * -->
  */
 public class SvgHandler {

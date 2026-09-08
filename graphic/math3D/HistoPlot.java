@@ -14,7 +14,7 @@ import java.awt.Color;
  * stale: false
  * tags: [code/chart_rendering]
  * concepts: [Histogram Plotter]
- * facets: {layer: domain, status: legacy, complexity: medium}
+ * facets: {layer: domain, status: legacy, complexity: 3}
  * -->
  */
 public class HistoPlot

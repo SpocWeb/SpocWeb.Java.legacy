@@ -52,7 +52,7 @@ import streamIO.object.parser.jdbc.ResultSetToSax;
  * stale: false
  * tags: [code/data_transfer_object]
  * concepts: [JDBC ResultSet to XML Attributes]
- * facets: {layer: utility, status: legacy, complexity: low}
+ * facets: {layer: utility, status: legacy, complexity: 2}
  * -->
  */
 public class ResultSetToAttributes

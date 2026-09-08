@@ -10,7 +10,7 @@ import graphic.Point2D;
  * stale: false
  * tags: [code/coordinate_transform]
  * concepts: [Coordinate Mapper Interface]
- * facets: {layer: infrastructure, status: legacy, complexity: low}
+ * facets: {layer: infrastructure, status: legacy, complexity: 2}
  * -->
  * Also calculating the Distance has to happen here!  */
 public interface ICoordMapper {

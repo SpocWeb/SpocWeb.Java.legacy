@@ -34,7 +34,7 @@ import math.vector.AVector;
  * stale: false
  * tags: [code/matrix_base_class, code/matrix_algebra]
  * concepts: [Matrix Base Class]
- * facets: {layer: utility, status: legacy, complexity: medium}
+ * facets: {layer: utility, status: legacy, complexity: 3}
  * -->
  */
 public abstract class AMatrix

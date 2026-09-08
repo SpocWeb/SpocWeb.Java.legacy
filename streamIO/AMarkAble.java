@@ -29,7 +29,7 @@ package streamIO;
  * stale: false
  * tags: [code/stream_positioning]
  * concepts: [Mark/Reset Base Class]
- * facets: {layer: infrastructure, status: legacy, complexity: low}
+ * facets: {layer: infrastructure, status: legacy, complexity: 2}
  * -->
  */
 public abstract class AMarkAble 

@@ -46,7 +46,7 @@ import graphs.IPair;
  * stale: false
  * tags: [code/function_composition, code/invertible_function_contract]
  * concepts: [Function Algebra]
- * facets: {layer: utility, status: legacy, complexity: medium}
+ * facets: {layer: utility, status: legacy, complexity: 3}
  * -->
  * of Identity and null.	 */
 public class Cat

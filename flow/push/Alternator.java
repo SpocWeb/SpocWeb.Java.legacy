@@ -30,7 +30,7 @@ import tester.ITester;
   * stale: false
   * tags: [code/adapter_pattern]
   * concepts: [Dataflow, Pipeline]
-  * facets: {layer: domain, status: stable, complexity: low}
+  * facets: {layer: domain, status: stable, complexity: 2}
   * -->
   */
 public class Alternator

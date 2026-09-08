@@ -43,7 +43,7 @@ import streamIO.copy.ICopyAble;
  * stale: false
  * tags: [code/collection, code/geometry]
  * concepts: [Point2D Array Utilities]
- * facets: {layer: utility, status: broken, complexity: medium}
+ * facets: {layer: utility, status: broken, complexity: 3}
  * -->
  */
 final public class VectorPoint2D 

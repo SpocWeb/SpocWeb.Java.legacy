@@ -16,7 +16,7 @@ import java.util.Hashtable;
   * stale: false
   * tags: [code/enum_modeling]
   * concepts: [Calendar]
-  * facets: {layer: utility, status: legacy, complexity: medium}
+  * facets: {layer: utility, status: legacy, complexity: 3}
   * -->
   */
 final public class Month

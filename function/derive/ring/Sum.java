@@ -23,7 +23,7 @@ import function.derive.IDeriveAble;
  * stale: false
  * tags: [code/function_composition, code/derivative_calculation]
  * concepts: [Function Algebra, Sum Rule]
- * facets: {layer: utility, status: legacy, complexity: medium}
+ * facets: {layer: utility, status: legacy, complexity: 3}
  * -->
  * It reduces Complexity by eliminating Summands of 0 and null.	 */
 public class Sum

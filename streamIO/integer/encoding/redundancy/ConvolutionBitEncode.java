@@ -29,7 +29,7 @@ import streamIO.Log;
  * stale: false
  * tags: [code/error_correction, code/convolutional_encoding]
  * concepts: [Forward Error Correction Codecs - Repetition and Convolutional Encoding]
- * facets: {layer: utility, status: legacy, complexity: medium}
+ * facets: {layer: utility, status: legacy, complexity: 3}
  * -->
  */
 public class ConvolutionBitEncode {

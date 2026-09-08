@@ -24,7 +24,7 @@ import java.awt.image.BufferedImage;
  * stale: false
  * tags: [code/color_palette]
  * concepts: [Texture-Mapped Palette]
- * facets: {layer: utility, status: legacy, complexity: low}
+ * facets: {layer: utility, status: legacy, complexity: 2}
  * -->
  */
 public class TexturePalette implements IPalette {

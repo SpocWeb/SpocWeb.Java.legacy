@@ -11,7 +11,7 @@ import streamIO.copy.ICopyAble;
  * stale: false
  * tags: [code/boolean_algebra]
  * concepts: [Boolean Algebra]
- * facets: {layer: utility, status: legacy, complexity: medium}
+ * facets: {layer: utility, status: legacy, complexity: 3}
  * -->
  * The Name conflicts with java.lang.Boolean.	 */
 final public class Boolean

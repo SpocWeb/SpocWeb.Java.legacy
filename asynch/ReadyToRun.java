@@ -26,7 +26,7 @@ import knowledge.IReadyFlag;
   * stale: false
   * tags: [code/deferred_execution]
   * concepts: [Runnable Task Wrapper]
-  * facets: {layer: infrastructure, status: legacy, complexity: low}
+  * facets: {layer: infrastructure, status: legacy, complexity: 2}
   * -->
   */
 public interface ReadyToRun

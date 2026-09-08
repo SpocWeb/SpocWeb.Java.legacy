@@ -69,7 +69,7 @@ import synch.ValidationRule;
   * stale: false
   * tags: [code/pair_data_structure]
   * concepts: [Pair]
-  * facets: {layer: domain, status: legacy, complexity: low}
+  * facets: {layer: domain, status: legacy, complexity: 2}
   * -->
   */
 public class Pair //final speeds up Methods that directly use Pair

@@ -33,7 +33,7 @@ import streamIO.IIStreamOut;
   * stale: false
   * tags: [code/thread_pooling]
   * concepts: [Blocking Task Executor]
-  * facets: {layer: infrastructure, status: broken, complexity: medium}
+  * facets: {layer: infrastructure, status: broken, complexity: 3}
   * -->
   */
 public class BlockedThreadExecutor

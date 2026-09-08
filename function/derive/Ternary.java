@@ -65,7 +65,7 @@ import graphs.ICopy;
   * stale: false
   * tags: [code/enum_modeling, code/boolean_algebra]
   * concepts: [Three-Valued Logic, Lattice Theory]
-  * facets: {layer: utility, status: legacy, complexity: medium}
+  * facets: {layer: utility, status: legacy, complexity: 3}
   * -->
   */
 final public class Ternary

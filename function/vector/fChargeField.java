@@ -26,7 +26,7 @@ import math.vector.VectorFloat;
  * stale: false
  * tags: [code/vector_math, code/function_composition]
  * concepts: [Vector Field Function]
- * facets: {layer: utility, status: legacy, complexity: low}
+ * facets: {layer: utility, status: legacy, complexity: 2}
  * -->
  * because the MultiPoles have an extent!	*/
 public class fChargeField

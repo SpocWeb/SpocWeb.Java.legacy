@@ -27,7 +27,7 @@ import java.util.LinkedList;
  * stale: false
  * tags: [code/string_search, code/search_algorithm]
  * concepts: [Rabin-Karp Search]
- * facets: {layer: utility, status: legacy, complexity: medium}
+ * facets: {layer: utility, status: legacy, complexity: 3}
  * -->
  * 	 */
 public class SearcherRK {

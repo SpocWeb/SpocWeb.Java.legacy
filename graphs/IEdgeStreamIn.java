@@ -20,7 +20,7 @@ import streamIO.object.IStreamIn;
  * stale: false
  * tags: [code/graph_edge, code/graph_iteration]
  * concepts: [Edge Stream Interface]
- * facets: {layer: domain, status: legacy, complexity: low}
+ * facets: {layer: domain, status: legacy, complexity: 2}
  * -->
  */
 public interface IEdgeStreamIn 

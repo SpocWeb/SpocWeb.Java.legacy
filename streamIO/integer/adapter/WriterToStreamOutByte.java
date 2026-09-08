@@ -34,7 +34,7 @@ import tools.IOError;
  * <!-- docstate
  * tags: [code/stream_adapter, code/stream_bridging, code/stream_wrapper]
  * concepts: [Bridges streamIO Interfaces to java.io and Arrays]
- * facets: {layer: utility, status: legacy, complexity: high}
+ * facets: {layer: utility, status: legacy, complexity: 4}
  * -->
  */
 public class WriterToStreamOutByte 

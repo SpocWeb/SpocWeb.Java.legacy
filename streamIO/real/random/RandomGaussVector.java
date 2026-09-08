@@ -32,7 +32,7 @@ import streamIO.real.IStreamIn_Float;
  * stale: false
  * tags: [code/random_number_generator, code/vector_math]
  * concepts: [Gaussian Random Vector Generator]
- * facets: {layer: utility, status: legacy, complexity: medium}
+ * facets: {layer: utility, status: legacy, complexity: 3}
  * -->
  */
 public class RandomGaussVector 

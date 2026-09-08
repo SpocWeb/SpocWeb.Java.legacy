@@ -38,7 +38,7 @@ import java.util.Arrays;
   * stale: false
   * tags: [code/cli_tool, code/fixed_width_reader]
   * concepts: [File I/O]
-  * facets: {layer: utility, status: broken, complexity: medium}
+  * facets: {layer: utility, status: broken, complexity: 3}
   * -->
   */
 public class FixRecordScrambler {
@@ -49,7 +49,7 @@ public class FixRecordScrambler {
 	 * <!-- docstate
 	 * tags: [code/fixed_width_reader]
 	 * concepts: [File I/O]
-	 * facets: {layer: utility, status: stable, complexity: low}
+	 * facets: {layer: utility, status: stable, complexity: 2}
 	 * -->
 	 */
 	final static public void STREAM(InputStream is, OutputStream os, long length) throws IOException {
@@ -67,7 +67,7 @@ public class FixRecordScrambler {
 	 * <!-- docstate
 	 * tags: [code/fixed_width_reader]
 	 * concepts: [File I/O]
-	 * facets: {layer: utility, status: stable, complexity: low}
+	 * facets: {layer: utility, status: stable, complexity: 2}
 	 * -->
 	 */
 	final static public void OFFSET_FIELD(String filePath, int recordSize, int startOffset, int fieldOffset, String field, int numRecs) throws IOException {
@@ -79,7 +79,7 @@ public class FixRecordScrambler {
 	 * <!-- docstate
 	 * tags: [code/fixed_width_reader]
 	 * concepts: [File I/O]
-	 * facets: {layer: utility, status: stable, complexity: low}
+	 * facets: {layer: utility, status: stable, complexity: 2}
 	 * -->
 	 */
 	final static public void OFFSET_FIELD(File file, int recordSize, int startOffset, int fieldOffset, String field, int numRecs) throws IOException {
@@ -94,7 +94,7 @@ public class FixRecordScrambler {
 	 * <!-- docstate
 	 * tags: [code/fixed_width_reader]
 	 * concepts: [File I/O]
-	 * facets: {layer: utility, status: stable, complexity: low}
+	 * facets: {layer: utility, status: stable, complexity: 2}
 	 * -->
 	 */
 	final static public void OFFSET_FIELD(String in_FilePath, String outFilePath, int recordSize, int startOffset, int fieldOffset, String field, int numRecs) throws IOException {
@@ -108,7 +108,7 @@ public class FixRecordScrambler {
 	 * <!-- docstate
 	 * tags: [code/fixed_width_reader]
 	 * concepts: [File I/O]
-	 * facets: {layer: utility, status: stable, complexity: low}
+	 * facets: {layer: utility, status: stable, complexity: 2}
 	 * -->
 	 */
 	final static public void OFFSET_FIELD(File in_File, File outFile, int recordSize, int startOffset, int fieldOffset, String field, int numRecs) throws IOException {
@@ -126,7 +126,7 @@ public class FixRecordScrambler {
 	 * <!-- docstate
 	 * tags: [code/fixed_width_reader]
 	 * concepts: [File I/O]
-	 * facets: {layer: utility, status: stable, complexity: low}
+	 * facets: {layer: utility, status: stable, complexity: 2}
 	 * -->
 	 */
 	final static public void OFFSET_FIELD(InputStream is, OutputStream os, int recordSize, int startOffset, int fieldOffset, String field, int numRecs) throws IOException {
@@ -138,7 +138,7 @@ public class FixRecordScrambler {
 	 * <!-- docstate
 	 * tags: [code/fixed_width_reader]
 	 * concepts: [File I/O]
-	 * facets: {layer: utility, status: broken, complexity: medium}
+	 * facets: {layer: utility, status: broken, complexity: 3}
 	 * -->
 	 */
 	final static public void OFFSET_FIELD(InputStream is, OutputStream os, int recordSize, int startOffset, int fieldOffset, byte[] field, int numRecs) throws IOException {
@@ -170,7 +170,7 @@ public class FixRecordScrambler {
 	 * <!-- docstate
 	 * tags: [code/fixed_width_reader]
 	 * concepts: [File I/O]
-	 * facets: {layer: utility, status: stable, complexity: low}
+	 * facets: {layer: utility, status: stable, complexity: 2}
 	 * -->
 	 */
 	final static public void OFFSET_FIELD(InputStream is, OutputStream os, int recordSize, int startOffset, int fieldOffset, int fieldLength, byte value, int numRecs) throws IOException {
@@ -188,7 +188,7 @@ public class FixRecordScrambler {
  * <!-- docstate
  * tags: [code/test_harness]
  * concepts: [Testing]
- * facets: {layer: utility, status: stable, complexity: low}
+ * facets: {layer: utility, status: stable, complexity: 2}
  * -->
  */
 public static void testIt(String[] args) { //throws java.io.IOException {
@@ -201,7 +201,7 @@ public static void testIt(String[] args) { //throws java.io.IOException {
  * <!-- docstate
  * tags: [code/cli_tool]
  * concepts: [File I/O]
- * facets: {layer: utility, status: broken, complexity: low}
+ * facets: {layer: utility, status: broken, complexity: 2}
  * -->
  * via the command line.	 */
 public static void main (String[] args) throws java.io.IOException {

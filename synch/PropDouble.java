@@ -15,7 +15,7 @@ import function.byref.ByRefDouble;
  * stale: false
  * tags: [code/attached_property]
  * concepts: [Observable Double Property]
- * facets: {layer: domain, status: broken, complexity: low}
+ * facets: {layer: domain, status: broken, complexity: 2}
  * -->
  * is made private here. Subclassing is only possible in C++.   */
 public class PropDouble

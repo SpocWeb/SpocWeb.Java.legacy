@@ -36,7 +36,7 @@ import structure.blackBoard.IKnowledge;
   * stale: false
   * tags: [code/2d_geometry]
   * concepts: [Triangle Value Object]
-  * facets: {layer: domain, status: legacy, complexity: low}
+  * facets: {layer: domain, status: legacy, complexity: 2}
   * -->
   */
 final public class Triangle implements ICopy {

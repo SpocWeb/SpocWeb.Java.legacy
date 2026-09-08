@@ -23,7 +23,7 @@ package graphs;
   * stale: false
   * tags: [code/graph_element]
   * concepts: [Value Interface]
-  * facets: {layer: domain, status: legacy, complexity: low}
+  * facets: {layer: domain, status: legacy, complexity: 2}
   * -->
   */
 public interface IValue

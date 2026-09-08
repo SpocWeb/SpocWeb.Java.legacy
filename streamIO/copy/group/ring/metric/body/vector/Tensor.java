@@ -45,7 +45,7 @@ import function.IOrderAble;
   * stale: false
   * tags: [code/tensor, code/manifold_generation, code/interpolation]
   * concepts: [Vector/Matrix/Tensor and Manifold Interpolation]
-  * facets: {layer: domain, status: legacy, complexity: high}
+  * facets: {layer: domain, status: legacy, complexity: 4}
   * -->
   */
 public class Tensor

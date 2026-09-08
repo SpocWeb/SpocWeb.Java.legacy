@@ -49,7 +49,7 @@ import streamIO.Log;
   * stale: false
   * tags: [code/disjoint_set, code/union_find]
   * concepts: [Disjoint Set / Union-Find]
-  * facets: {layer: utility, status: legacy, complexity: medium}
+  * facets: {layer: utility, status: legacy, complexity: 3}
   * -->
   */
 final public class DisJointSet {

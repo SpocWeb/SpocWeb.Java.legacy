@@ -22,7 +22,7 @@ import stringOp.search.StrSearcher;
   * stale: false
   * tags: [code/stream_processing]
   * concepts: [Pattern Searcher]
-  * facets: {layer: utility, status: legacy, complexity: low}
+  * facets: {layer: utility, status: legacy, complexity: 2}
   * -->
   */
 class PatternSearcher

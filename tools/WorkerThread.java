@@ -52,7 +52,7 @@ package tools;
   * stale: false
   * tags: [code/thread_lifecycle, code/timeout_handling, code/shared_parameter_array]
   * concepts: [Concurrency]
-  * facets: {layer: infrastructure, status: legacy, complexity: medium}
+  * facets: {layer: infrastructure, status: legacy, complexity: 3}
   * -->
   */
 public abstract class WorkerThread

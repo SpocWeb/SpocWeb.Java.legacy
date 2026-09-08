@@ -38,7 +38,7 @@ import tools.WorkerThread;
   * stale: false
   * tags: [code/validation_rule]
   * concepts: [Validation Rule Chain]
-  * facets: {layer: domain, status: broken, complexity: medium}
+  * facets: {layer: domain, status: broken, complexity: 3}
   * -->
   */
 public class ValidationRuleList

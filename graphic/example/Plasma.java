@@ -31,7 +31,7 @@ import graphic.Point2D;
  * stale: false
  * tags: [code/algorithm, code/math]
  * concepts: [Plasma/Height-Map Fractal]
- * facets: {layer: test, status: legacy, complexity: medium}
+ * facets: {layer: test, status: legacy, complexity: 3}
  * -->
  */
 public class Plasma

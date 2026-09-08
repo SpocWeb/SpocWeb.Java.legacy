@@ -116,7 +116,7 @@ package structure; //
   * stale: false
   * tags: [code/command_pattern]
   * concepts: [Command Pattern Base]
-  * facets: {layer: utility, status: legacy, complexity: low}
+  * facets: {layer: utility, status: legacy, complexity: 2}
   * -->
   */
 public class Command

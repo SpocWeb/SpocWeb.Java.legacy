@@ -59,7 +59,7 @@ import org.xml.sax.helpers.XMLFilterImpl;
  * stale: false
  * tags: [code/xml_parsing]
  * concepts: [XML Handler Base]
- * facets: {layer: infrastructure, status: legacy, complexity: low}
+ * facets: {layer: infrastructure, status: legacy, complexity: 2}
  * -->
  */
 public class XmlHandler extends XMLFilterImpl 

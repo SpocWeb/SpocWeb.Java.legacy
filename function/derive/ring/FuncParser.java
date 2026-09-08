@@ -22,7 +22,7 @@ import function.derive.CMeasurAble;
  * stale: false
  * tags: [code/expression_builder_code/factory_pattern_code/reflection]
  * concepts: [Function Parsing]
- * facets: {layer: utility, status: legacy, complexity: medium}
+ * facets: {layer: utility, status: legacy, complexity: 3}
  * -->
  */
 public class FuncParser

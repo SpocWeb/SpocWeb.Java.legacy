@@ -32,7 +32,7 @@ import function.vector.IFloatScalarField;
  * stale: false
  * tags: [code/test_fixture]
  * concepts: [Sinc-Like Test Function]
- * facets: {layer: test, status: broken, complexity: low}
+ * facets: {layer: test, status: broken, complexity: 2}
  * -->
  */
 class SinOfDistDivDist

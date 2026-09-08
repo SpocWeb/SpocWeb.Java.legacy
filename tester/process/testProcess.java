@@ -16,7 +16,7 @@ import java.io.IOException;
  * stale: false
  * tags: [code/state_machine]
  * concepts: [Scratch Test Class]
- * facets: {layer: test, status: legacy, complexity: low}
+ * facets: {layer: test, status: legacy, complexity: 2}
  * -->
  */
 public class testProcess extends Object {
@@ -26,7 +26,7 @@ public class testProcess extends Object {
     * <!-- docstate
     * tags: [code/state_machine]
     * concepts: [Scratch Test Entry Point]
-    * facets: {layer: test, status: legacy, complexity: low}
+    * facets: {layer: test, status: legacy, complexity: 2}
     * -->
     */
     public static void main (String[] args) throws IOException, InterruptedException {

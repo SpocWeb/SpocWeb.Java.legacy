@@ -15,7 +15,7 @@ import java.util.Hashtable;
  * stale: false
  * tags: [code/graph_dictionaries]
  * concepts: [String Interning Index]
- * facets: {layer: utility, status: legacy, complexity: low}
+ * facets: {layer: utility, status: legacy, complexity: 2}
  * -->
  */
 public class StringIndex {

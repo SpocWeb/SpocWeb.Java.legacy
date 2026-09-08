@@ -17,7 +17,7 @@ import streamIO.integer.jdbc.DbColumn;
  * <!-- docstate
  * tags: [code/predicate, code/predicate_interface]
  * concepts: [Row Predicate Contract between Two DbColumn Fields]
- * facets: {layer: domain, status: legacy, complexity: low}
+ * facets: {layer: domain, status: legacy, complexity: 2}
  * -->
  */
 public interface IDbTest {

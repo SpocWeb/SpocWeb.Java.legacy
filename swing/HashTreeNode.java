@@ -68,7 +68,7 @@ import streamIO.object.parser.jdbc.ResultSetSep;
   * stale: false
   * tags: [code/tree_node, code/hash_equality, code/graph_traversal]
   * concepts: [Tree Visualization, Graph Model]
-  * facets: {layer: infrastructure, status: broken, complexity: high}
+  * facets: {layer: infrastructure, status: broken, complexity: 4}
   * -->
   */
 public class HashTreeNode

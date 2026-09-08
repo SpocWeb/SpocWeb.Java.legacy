@@ -43,7 +43,7 @@ import streamIO.Log;
  * stale: false
  * tags: [code/sax_parsing, code/xml_parsing]
  * concepts: [DAML SAX Handler]
- * facets: {layer: infrastructure, status: legacy, complexity: medium}
+ * facets: {layer: infrastructure, status: legacy, complexity: 3}
  * -->
  */
 public class DamlHandler {

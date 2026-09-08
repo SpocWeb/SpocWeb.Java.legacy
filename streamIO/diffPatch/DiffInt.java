@@ -33,7 +33,7 @@ import streamIO.integer.IStreamOutStruct;
  * stale: false
  * tags: [code/diff_object]
  * concepts: [Diffing]
- * facets: {layer: domain, status: legacy, complexity: low}
+ * facets: {layer: domain, status: legacy, complexity: 2}
  * -->
  */
 public class DiffInt 

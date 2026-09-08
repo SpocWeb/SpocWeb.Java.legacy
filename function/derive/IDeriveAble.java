@@ -11,7 +11,7 @@ import function.IInvertAble;
  * stale: false
  * tags: [code/derivable_function_contract, code/invertible_function_contract]
  * concepts: [Calculus, Function Composition]
- * facets: {layer: utility, status: legacy, complexity: medium}
+ * facets: {layer: utility, status: legacy, complexity: 3}
  * -->
  * A derivable Function can be locally inverted. */
 public interface IDeriveAble

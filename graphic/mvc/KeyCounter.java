@@ -30,7 +30,7 @@ import java.awt.event.KeyListener;
  * stale: false
  * tags: [code/event_handling]
  * concepts: [Key-Press Counter]
- * facets: {layer: utility, status: legacy, complexity: low}
+ * facets: {layer: utility, status: legacy, complexity: 2}
  * -->
  */
 public class KeyCounter 

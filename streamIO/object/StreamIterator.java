@@ -23,7 +23,7 @@ import java.io.StreamTokenizer;
  * stale: false
  * tags: [code/stream_processing, code/iterator]
  * concepts: [Object Stream Pipeline]
- * facets: {layer: utility, status: legacy, complexity: medium}
+ * facets: {layer: utility, status: legacy, complexity: 3}
  * -->
  * an InputStream to a Reader.	 */
 public class StreamIterator

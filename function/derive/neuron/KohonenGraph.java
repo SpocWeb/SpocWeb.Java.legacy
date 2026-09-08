@@ -41,7 +41,7 @@ import tester.ITester;
   * stale: false
   * tags: [code/neural_network, code/data_visualization]
   * concepts: [Self-Organizing Maps, Visualization]
-  * facets: {layer: utility, status: legacy, complexity: medium}
+  * facets: {layer: utility, status: legacy, complexity: 3}
   * -->
   */
 public class KohonenGraph 

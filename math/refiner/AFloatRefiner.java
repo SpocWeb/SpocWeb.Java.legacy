@@ -33,7 +33,7 @@ import function.derive.ring.body.Cosinus;
  * stale: false
  * tags: [code/root_finding]
  * concepts: [Root Refiner Base Class]
- * facets: {layer: utility, status: legacy, complexity: low}
+ * facets: {layer: utility, status: legacy, complexity: 2}
  * -->
  */
 public abstract class AFloatRefiner 

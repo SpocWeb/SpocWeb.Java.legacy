@@ -16,7 +16,7 @@ package tester.process;
  * stale: false
  * tags: [code/state_machine]
  * concepts: [Discrete Transition Interface]
- * facets: {layer: utility, status: legacy, complexity: low}
+ * facets: {layer: utility, status: legacy, complexity: 2}
  * -->
  */
 public interface IDiscreteTransition {

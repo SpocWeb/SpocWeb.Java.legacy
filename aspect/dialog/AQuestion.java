@@ -38,7 +38,7 @@ import aspect.AAspect;
   * stale: false
   * tags: [code/dialog]
   * concepts: [Console Q&A Model]
-  * facets: {layer: domain, status: stable, complexity: low}
+  * facets: {layer: domain, status: stable, complexity: 2}
   * -->
   */
 public abstract class AQuestion

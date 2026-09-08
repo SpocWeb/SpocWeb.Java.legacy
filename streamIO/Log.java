@@ -118,7 +118,7 @@ import java.util.logging.Logger;
   * stale: false
   * tags: [code/logging, code/date_formatting]
   * concepts: [Logging Framework]
-  * facets: {layer: infrastructure, status: broken, complexity: medium}
+  * facets: {layer: infrastructure, status: broken, complexity: 3}
   * -->
   */
 final public class Log 

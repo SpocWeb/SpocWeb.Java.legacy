@@ -34,7 +34,7 @@ import graphs.IValueSetter;
   * stale: false
   * tags: [code/deferred_execution]
   * concepts: [Task Processor Reference]
-  * facets: {layer: infrastructure, status: legacy, complexity: low}
+  * facets: {layer: infrastructure, status: legacy, complexity: 2}
   * -->
   */
 public class ProcessorRef

@@ -36,7 +36,7 @@ package tools.mementos; //
   * stale: false
   * tags: [code/state_snapshot, code/interface_contract]
   * concepts: [Memento Pattern]
-  * facets: {layer: infrastructure, status: stable, complexity: low}
+  * facets: {layer: infrastructure, status: stable, complexity: 2}
   * -->
   */
 public interface Originator {

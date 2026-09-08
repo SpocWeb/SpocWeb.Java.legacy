@@ -26,7 +26,7 @@ import streamIO.object.enumer.container.Container;
   * <!-- docstate
   * tags: [code/adapter, code/scheduling]
   * concepts: [Small Adapter and Scheduling Helper Classes]
-  * facets: {layer: utility, status: legacy, complexity: high}
+  * facets: {layer: utility, status: legacy, complexity: 4}
   * digest: 9a17327381edb63edb09dec182bf90297bc334db4408a4bef8025ffaf38b2099
   * stale: false
   * -->

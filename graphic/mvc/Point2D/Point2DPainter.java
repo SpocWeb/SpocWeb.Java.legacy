@@ -68,7 +68,7 @@ import streamIO.Log;
  * stale: false
  * tags: [code/gui, code/graphics]
  * concepts: [Point2D Painter]
- * facets: {layer: domain, status: legacy, complexity: low}
+ * facets: {layer: domain, status: legacy, complexity: 2}
  * -->
  */
 public class Point2DPainter 

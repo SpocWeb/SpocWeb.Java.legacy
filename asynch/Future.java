@@ -39,7 +39,7 @@ import synch.ACachedProperty;
   * stale: false
   * tags: [code/deferred_execution]
   * concepts: [Future Result Holder]
-  * facets: {layer: infrastructure, status: legacy, complexity: low}
+  * facets: {layer: infrastructure, status: legacy, complexity: 2}
   * -->
   */
 public class Future

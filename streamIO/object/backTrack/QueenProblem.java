@@ -18,7 +18,7 @@ import function.AFunction;
  * stale: false
  * tags: [code/backtracking, code/algorithm]
  * concepts: [Backtracking Search]
- * facets: {layer: utility, status: legacy, complexity: medium}
+ * facets: {layer: utility, status: legacy, complexity: 3}
  * -->
  * since this can be done efficiently by an Array.	 */
 public class QueenProblem

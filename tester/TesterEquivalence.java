@@ -10,7 +10,7 @@ package tester;
   * stale: false
   * tags: [code/custom_equivalence]
   * concepts: [Equivalence Tester]
-  * facets: {layer: utility, status: legacy, complexity: low}
+  * facets: {layer: utility, status: legacy, complexity: 2}
   * -->
   * It is used e.g. in Container	*/
 final public class TesterEquivalence

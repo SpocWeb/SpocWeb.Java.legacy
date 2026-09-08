@@ -47,7 +47,7 @@ import graphic.mvc.Point2D.Point2DModel;
  * stale: false
  * tags: [code/view_model]
  * concepts: [2D Graph Mouse Controller]
- * facets: {layer: domain, status: legacy, complexity: low}
+ * facets: {layer: domain, status: legacy, complexity: 2}
  * -->
  */
 public class Map2DMouseController extends Graph2DMouseController {

@@ -14,7 +14,7 @@ import function.AFunction;
  * stale: false
  * tags: [code/mathematical_function, code/vector_math]
  * concepts: [Vector Calculus]
- * facets: {layer: utility, status: legacy, complexity: medium}
+ * facets: {layer: utility, status: legacy, complexity: 3}
  * -->
  */
 public class fProduct

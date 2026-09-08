@@ -15,7 +15,7 @@ import java.awt.Graphics;
  * stale: false
  * tags: [code/graphics, code/algorithm]
  * concepts: [Random/Anti-Moire Color Strategy]
- * facets: {layer: utility, status: legacy, complexity: low}
+ * facets: {layer: utility, status: legacy, complexity: 2}
  * -->
  */
 public class RandomColor

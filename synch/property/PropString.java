@@ -10,7 +10,7 @@ package synch.property;
   * stale: false
   * tags: [code/attached_property]
   * concepts: [Unimplemented Stub]
-  * facets: {layer: domain, status: unfinished, complexity: low}
+  * facets: {layer: domain, status: unfinished, complexity: 2}
   * -->
   */
 public class PropString

@@ -34,7 +34,7 @@ import streamIO.Log;
  * stale: false
  * tags: [code/reflection_helper, code/reflection_based_property_access]
  * concepts: [Reflection]
- * facets: {layer: utility, status: stable, complexity: medium}
+ * facets: {layer: utility, status: stable, complexity: 3}
  * -->
  */
 public class Accessor {

@@ -40,7 +40,7 @@ import streamIO.IIStreamOut;
   * stale: false
   * tags: [code/stream_filter, code/decorator_pattern]
   * concepts: [Stream Filter (Output)]
-  * facets: {layer: utility, status: legacy, complexity: medium}
+  * facets: {layer: utility, status: legacy, complexity: 3}
   * -->
   */
 public class ThrowOut 

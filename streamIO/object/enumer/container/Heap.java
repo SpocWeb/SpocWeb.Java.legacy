@@ -75,7 +75,7 @@ import function.index.IIndexAble;
   * <!-- docstate
   * tags: [code/container, code/hash_table, code/container_iteration]
   * concepts: [Concrete Storage Containers - Arrays - Hash Tables and Relations]
-  * facets: {layer: utility, status: legacy, complexity: high}
+  * facets: {layer: utility, status: legacy, complexity: 4}
   * digest: 67bc158f6a18606a55e7179111e49742f71e701f557833a7c4d11f24d9b48713
   * stale: false
   * -->

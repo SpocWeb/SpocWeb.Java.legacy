@@ -13,7 +13,7 @@ package synch;
  * stale: false
  * tags: [code/publish_subscribe, code/observer_pattern]
  * concepts: [Single-Subscriber Publisher]
- * facets: {layer: infrastructure, status: legacy, complexity: low}
+ * facets: {layer: infrastructure, status: legacy, complexity: 2}
  * -->
  */
 public class UniCaster

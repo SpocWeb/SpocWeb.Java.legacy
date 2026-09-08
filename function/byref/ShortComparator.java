@@ -30,7 +30,7 @@ import java.util.Comparator;
  * stale: false
  * tags: [code/numeric_comparison]
  * concepts: [Comparator]
- * facets: {layer: utility, status: legacy, complexity: low}
+ * facets: {layer: utility, status: legacy, complexity: 2}
  * -->
  */
 public class ShortComparator implements Comparator {

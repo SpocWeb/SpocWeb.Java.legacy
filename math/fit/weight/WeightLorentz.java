@@ -20,7 +20,7 @@ package math.fit.weight;
  * stale: false
  * tags: [code/weighting]
  * concepts: [Lorentzian Weight Function]
- * facets: {layer: utility, status: broken, complexity: low}
+ * facets: {layer: utility, status: broken, complexity: 2}
  * -->
  */
 public class WeightLorentz

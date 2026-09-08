@@ -11,7 +11,7 @@ import java.awt.Color;
  * stale: false
  * tags: [code/geometry_computation, code/2d_geometry]
  * concepts: [Fast Trigonometry and Shape Generation]
- * facets: {layer: utility, status: legacy, complexity: high}
+ * facets: {layer: utility, status: legacy, complexity: 4}
  * -->
  */
 public class PolyTrigon {

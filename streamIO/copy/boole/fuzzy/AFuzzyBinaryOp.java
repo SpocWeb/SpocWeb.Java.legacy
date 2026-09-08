@@ -31,7 +31,7 @@ package streamIO.copy.boole.fuzzy;
  * stale: false
  * tags: [code/fuzzy_logic, code/abstract_base]
  * concepts: [Fuzzy Logic]
- * facets: {layer: utility, status: legacy, complexity: medium}
+ * facets: {layer: utility, status: legacy, complexity: 3}
  * -->
  */
 public abstract class AFuzzyBinaryOp 

@@ -26,7 +26,7 @@ import function.IInvertAble;
  * stale: false
  * tags: [code/constant_function, code/derivable_function_contract]
  * concepts: [Function Algebra]
- * facets: {layer: utility, status: legacy, complexity: medium}
+ * facets: {layer: utility, status: legacy, complexity: 3}
  * -->
  */
 public class AConst

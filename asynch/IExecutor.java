@@ -37,7 +37,7 @@ import graphs.IValueSetter;
   * stale: false
   * tags: [code/thread_pooling]
   * concepts: [Executor Interface]
-  * facets: {layer: infrastructure, status: legacy, complexity: low}
+  * facets: {layer: infrastructure, status: legacy, complexity: 2}
   * -->
   */
 public interface IExecutor {

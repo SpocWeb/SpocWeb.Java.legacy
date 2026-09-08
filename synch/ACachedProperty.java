@@ -33,7 +33,7 @@ import knowledge.DirtyFlag;
  * stale: false
  * tags: [code/cache, code/attached_property]
  * concepts: [Observable Property Wrapper]
- * facets: {layer: domain, status: legacy, complexity: low}
+ * facets: {layer: domain, status: legacy, complexity: 2}
  * -->
  * by just using 'null' as an Indicator for an invalid Value. */
 public class ACachedProperty

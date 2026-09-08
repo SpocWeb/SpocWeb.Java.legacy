@@ -33,7 +33,7 @@ package graphic.example;
  * stale: false
  * tags: [code/algorithm, code/math]
  * concepts: [Terrain Erosion Generator]
- * facets: {layer: test, status: broken, complexity: medium}
+ * facets: {layer: test, status: broken, complexity: 3}
  * -->
  */
 public class Erosion {

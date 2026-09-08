@@ -26,7 +26,7 @@ import java.util.Iterator;
  * stale: false
  * tags: [code/data_transfer_object]
  * concepts: [Castor Data Transfer Object Root]
- * facets: {layer: domain, status: legacy, complexity: medium}
+ * facets: {layer: domain, status: legacy, complexity: 3}
  * -->
 **/
 public class Daten 

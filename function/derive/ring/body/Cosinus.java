@@ -58,7 +58,7 @@ import function.derive.ring.Succ;
  * stale: false
  * tags: [code/trigonometric_function, code/derivable_function_contract]
  * concepts: [Trigonometric Functions]
- * facets: {layer: utility, status: legacy, complexity: medium}
+ * facets: {layer: utility, status: legacy, complexity: 3}
  * -->
  */
 final public class Cosinus

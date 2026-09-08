@@ -23,7 +23,7 @@ package synch.aspect;
   * stale: false
   * tags: [code/attached_property, code/observer_pattern]
   * concepts: [Composite Value Object]
-  * facets: {layer: domain, status: legacy, complexity: medium}
+  * facets: {layer: domain, status: legacy, complexity: 3}
   * -->
   */
 public class PersonAspect
@@ -73,7 +73,7 @@ extends ContainerAspect //Aspect
 	 * <!-- docstate
 	 * tags: [code/attached_property]
 	 * concepts: [Composite Value Object]
-	 * facets: {layer: domain, status: legacy, complexity: low}
+	 * facets: {layer: domain, status: legacy, complexity: 2}
 	 * -->
 	 */
 	public PersonAspect(String Name, Aspect Parent) { super(Name, Parent); }
@@ -99,7 +99,7 @@ extends ContainerAspect //Aspect
 	 * <!-- docstate
 	 * tags: [code/attached_property]
 	 * concepts: [Scratch Test Method]
-	 * facets: {layer: test, status: legacy, complexity: low}
+	 * facets: {layer: test, status: legacy, complexity: 2}
 	 * -->
 	 */
 	public static void testIt(String[] args) { //throws java.io.IOException {
@@ -135,7 +135,7 @@ extends ContainerAspect //Aspect
 	 * <!-- docstate
 	 * tags: [code/attached_property]
 	 * concepts: [Scratch Test Entry Point]
-	 * facets: {layer: test, status: legacy, complexity: low}
+	 * facets: {layer: test, status: legacy, complexity: 2}
 	 * -->
 	 * via the command line.	 */
 	public static void main (String[] args) { //throws java.io.IOException {

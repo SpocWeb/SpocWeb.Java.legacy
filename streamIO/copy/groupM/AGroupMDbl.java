@@ -8,7 +8,7 @@ package streamIO.copy.groupM;
   * stale: false
   * tags: [code/abstract_base, code/deprecated_api]
   * concepts: [Algebraic Group, Multiplicative Structure]
-  * facets: {layer: utility, status: legacy, complexity: medium}
+  * facets: {layer: utility, status: legacy, complexity: 3}
   * -->
   */
 public abstract class AGroupMDbl

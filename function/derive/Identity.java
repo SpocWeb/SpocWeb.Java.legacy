@@ -19,7 +19,7 @@ import function.vector.IFloatVectorField;
  * stale: false
  * tags: [code/identity_function, code/derivable_function_contract]
  * concepts: [Function Algebra]
- * facets: {layer: utility, status: legacy, complexity: medium}
+ * facets: {layer: utility, status: legacy, complexity: 3}
  * -->
  * So you should not do any great calculations with it. */
 final public class Identity

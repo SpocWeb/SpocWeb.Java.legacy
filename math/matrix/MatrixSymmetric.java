@@ -39,7 +39,7 @@ import function.byref.ByRefDouble;
  * stale: false
  * tags: [code/eigenvalue_decomposition, code/tridiagonal_matrix_solving]
  * concepts: [Symmetric Matrix Eigen-Decomposition (Cholesky/Householder)]
- * facets: {layer: utility, status: legacy, complexity: high}
+ * facets: {layer: utility, status: legacy, complexity: 4}
  * -->
  */
 public class MatrixSymmetric {
@@ -60,7 +60,7 @@ public class MatrixSymmetric {
 	 * <!-- docstate
 	 * tags: [code/lu_decomposition]
 	 * concepts: [Cholesky Decomposition]
-	 * facets: {layer: utility, status: legacy, complexity: medium}
+	 * facets: {layer: utility, status: legacy, complexity: 3}
 	 * -->
 	 */
 	final static public boolean DECOMPOSE(final double[][] a, final double[] diag) {
@@ -89,7 +89,7 @@ public class MatrixSymmetric {
 	 * <!-- docstate
 	 * tags: [code/matrix_algebra]
 	 * concepts: [Symmetric Matrix Inversion via Cholesky]
-	 * facets: {layer: utility, status: legacy, complexity: medium}
+	 * facets: {layer: utility, status: legacy, complexity: 3}
 	 * -->
 	 */
 	final static public boolean INVERSE(final double[][] a, final double[] diag) {
@@ -115,7 +115,7 @@ public class MatrixSymmetric {
 	 * <!-- docstate
 	 * tags: [code/matrix_algebra]
 	 * concepts: [Cholesky-Based Linear Solve]
-	 * facets: {layer: utility, status: legacy, complexity: medium}
+	 * facets: {layer: utility, status: legacy, complexity: 3}
 	 * -->
 	 */
 	final static public void SOLVE(final double[][] a, final double[] diag,
@@ -132,7 +132,7 @@ public class MatrixSymmetric {
 	 * <!-- docstate
 	 * tags: [code/matrix_algebra]
 	 * concepts: [Cholesky-Based Linear Solve (In-Place)]
-	 * facets: {layer: utility, status: legacy, complexity: medium}
+	 * facets: {layer: utility, status: legacy, complexity: 3}
 	 * -->
 	 */
 	final static public void SOLVE_AT(final double[][] a, final double[] diag,
@@ -170,7 +170,7 @@ public class MatrixSymmetric {
 	 * <!-- docstate
 	 * tags: [code/eigenvalue_decomposition]
 	 * concepts: [Tridiagonal QL Eigenvalue Extraction]
-	 * facets: {layer: utility, status: legacy, complexity: high}
+	 * facets: {layer: utility, status: legacy, complexity: 4}
 	 * -->
 	 */
 	final static public void EIGENVALUES(final double[] diag, final double[] subDiag,
@@ -253,7 +253,7 @@ public class MatrixSymmetric {
 	 * <!-- docstate
 	 * tags: [code/tridiagonal_matrix_solving]
 	 * concepts: [Householder Tridiagonalization]
-	 * facets: {layer: utility, status: legacy, complexity: high}
+	 * facets: {layer: utility, status: legacy, complexity: 4}
 	 * -->
 	 */
 	final static public void TRI_DIAGONALIZE(final double[][] a, final double[] diag,
@@ -347,7 +347,7 @@ public class MatrixSymmetric {
 	 * <!-- docstate
 	 * tags: [code/matrix_algebra]
 	 * concepts: [Gram-Schmidt Orthogonalization]
-	 * facets: {layer: utility, status: legacy, complexity: medium}
+	 * facets: {layer: utility, status: legacy, complexity: 3}
 	 * -->
 	 */
 	final static public void orthogonalize(final double[][] a, final int length,
@@ -396,7 +396,7 @@ public class MatrixSymmetric {
 	 * <!-- docstate
 	 * tags: [code/testing, code/eigenvalue_decomposition]
 	 * concepts: [Eigenvector Self-Test]
-	 * facets: {layer: test, status: legacy, complexity: low}
+	 * facets: {layer: test, status: legacy, complexity: 2}
 	 * -->
 	 */
 	private static final void testEigenVectors() throws IOException {
@@ -427,7 +427,7 @@ public class MatrixSymmetric {
 	 * <!-- docstate
 	 * tags: [code/testing]
 	 * concepts: [Coordinate Comparison Test Helper]
-	 * facets: {layer: test, status: legacy, complexity: low}
+	 * facets: {layer: test, status: legacy, complexity: 2}
 	 * -->
 	 */
 	final static public void compareCoords(final double c1, final double c2,
@@ -450,7 +450,7 @@ public class MatrixSymmetric {
 	 * <!-- docstate
 	 * tags: [code/matrix_algebra]
 	 * concepts: [Diagonal Offset Utility]
-	 * facets: {layer: utility, status: legacy, complexity: low}
+	 * facets: {layer: utility, status: legacy, complexity: 2}
 	 * -->
 	 */
 	final static public double[][] OFFSET_MATRIX(final double[][] source,
@@ -475,7 +475,7 @@ public class MatrixSymmetric {
 	 * <!-- docstate
 	 * tags: [code/testing, code/eigenvalue_decomposition]
 	 * concepts: [Offset Eigenvector Self-Test]
-	 * facets: {layer: test, status: legacy, complexity: low}
+	 * facets: {layer: test, status: legacy, complexity: 2}
 	 * -->
 	 */
 	private static final void testEigenVectorsOffset() throws IOException {
@@ -520,7 +520,7 @@ public class MatrixSymmetric {
 	 * <!-- docstate
 	 * tags: [code/testing, code/tridiagonal_matrix_solving]
 	 * concepts: [Tridiagonalization Self-Test]
-	 * facets: {layer: test, status: legacy, complexity: low}
+	 * facets: {layer: test, status: legacy, complexity: 2}
 	 * -->
 	 */
 	private static final void testTriDiagonalize() throws IOException {
@@ -567,7 +567,7 @@ public class MatrixSymmetric {
 	 * <!-- docstate
 	 * tags: [code/testing, code/lu_decomposition]
 	 * concepts: [Cholesky Solve Self-Test]
-	 * facets: {layer: test, status: legacy, complexity: low}
+	 * facets: {layer: test, status: legacy, complexity: 2}
 	 * -->
 	 */
 	private static final void testSolveCholesky() {
@@ -633,7 +633,7 @@ public class MatrixSymmetric {
 	 * <!-- docstate
 	 * tags: [code/testing]
 	 * concepts: [Demo Entry Point]
-	 * facets: {layer: test, status: legacy, complexity: low}
+	 * facets: {layer: test, status: legacy, complexity: 2}
 	 * -->
 	 */
 	final static public void main(final String[] args) throws IOException {

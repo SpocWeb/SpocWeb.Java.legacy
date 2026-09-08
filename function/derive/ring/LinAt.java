@@ -20,7 +20,7 @@ import function.derive.AStatic;
  * stale: false
  * tags: [code/mathematical_function, code/derivable_function_contract]
  * concepts: [Function Algebra]
- * facets: {layer: utility, status: legacy, complexity: medium}
+ * facets: {layer: utility, status: legacy, complexity: 3}
  * -->
  * If a is 'null', it is assumed to 1 and no Stretching takes place.	 */
 public class LinAt

@@ -40,7 +40,7 @@ package streamIO;
   * stale: false
   * tags: [code/factory_pattern]
   * concepts: [Instantiable Interface]
-  * facets: {layer: infrastructure, status: legacy, complexity: low}
+  * facets: {layer: infrastructure, status: legacy, complexity: 2}
   * -->
   */
 public interface IInstantiAble {

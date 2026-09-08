@@ -44,7 +44,7 @@ import streamIO.copy.ICopyAble;
  * stale: false
  * tags: [code/transaction, code/copy_on_write, code/decorator]
  * concepts: [Transaction Semantics]
- * facets: {layer: infrastructure, status: experimental, complexity: medium}
+ * facets: {layer: infrastructure, status: experimental, complexity: 3}
  * -->
  */
 public class FilterCallTransAction

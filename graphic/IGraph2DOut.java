@@ -16,7 +16,7 @@ import java.awt.Color;
  * stale: false
  * tags: [code/graphics]
  * concepts: [Graphics Output Interface]
- * facets: {layer: infrastructure, status: legacy, complexity: low}
+ * facets: {layer: infrastructure, status: legacy, complexity: 2}
  * -->
  */
 public interface IGraph2DOut {

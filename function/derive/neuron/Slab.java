@@ -9,7 +9,7 @@ package function.derive.neuron;
  * stale: false
  * tags: [code/neural_network, code/backpropagation]
  * concepts: [Neural Networks, Supervised Learning]
- * facets: {layer: utility, status: legacy, complexity: medium}
+ * facets: {layer: utility, status: legacy, complexity: 3}
  * -->
  * given the Differences between the desired and the real Output.	 */
 public interface Slab

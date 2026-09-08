@@ -29,7 +29,7 @@ import streamIO.real.IStreamIn_Float;
  * stale: false
  * tags: [code/graph_abstraction]
  * concepts: [Graph Base Class]
- * facets: {layer: domain, status: broken, complexity: medium}
+ * facets: {layer: domain, status: broken, complexity: 3}
  * -->
  */
 public abstract class AGraph

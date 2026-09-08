@@ -27,7 +27,7 @@ import java.io.PrintStream;
   * stale: false
   * tags: [code/output_stream]
   * concepts: [Runnable Line Printer]
-  * facets: {layer: infrastructure, status: legacy, complexity: low}
+  * facets: {layer: infrastructure, status: legacy, complexity: 2}
   * -->
   */
 public class RunnablePrinter

@@ -23,7 +23,7 @@ package synch;
  * stale: false
  * tags: [code/subscription, code/observer_pattern]
  * concepts: [Subscriber-Side Caster]
- * facets: {layer: infrastructure, status: legacy, complexity: low}
+ * facets: {layer: infrastructure, status: legacy, complexity: 2}
  * -->
  */
 public abstract class SubCaster

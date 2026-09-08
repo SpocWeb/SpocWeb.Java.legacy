@@ -25,7 +25,7 @@ import streamIO.object.AStreamIn;
   * stale: false
   * tags: [code/adapter_pattern, code/stream_abstraction]
   * concepts: [Adapter Pattern]
-  * facets: {layer: infrastructure, status: broken, complexity: low}
+  * facets: {layer: infrastructure, status: broken, complexity: 2}
   * -->
   */
 public class CValue2StreamIn

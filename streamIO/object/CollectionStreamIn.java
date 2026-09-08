@@ -38,7 +38,7 @@ import streamIO.IMarkAble;
   * stale: false
   * tags: [code/stream_processing, code/iterator]
   * concepts: [Object Stream Pipeline]
-  * facets: {layer: utility, status: legacy, complexity: medium}
+  * facets: {layer: utility, status: legacy, complexity: 3}
   * -->
   */
 public class CollectionStreamIn

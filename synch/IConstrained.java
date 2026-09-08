@@ -35,7 +35,7 @@ package synch; //
   * stale: false
   * tags: [code/observer_pattern, code/validation]
   * concepts: [Constrained Publisher Interface]
-  * facets: {layer: domain, status: legacy, complexity: low}
+  * facets: {layer: domain, status: legacy, complexity: 2}
   * -->
   */
 public interface IConstrained {

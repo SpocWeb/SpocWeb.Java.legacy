@@ -34,7 +34,7 @@ import streamIO.IIStreamIn;
   * stale: false
   * tags: [code/deferred_execution]
   * concepts: [Value Setter Reference]
-  * facets: {layer: infrastructure, status: legacy, complexity: low}
+  * facets: {layer: infrastructure, status: legacy, complexity: 2}
   * -->
   */
 public class ValueSetterRef

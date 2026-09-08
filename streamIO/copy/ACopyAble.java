@@ -51,7 +51,7 @@ import streamIO.exception.BaseException;
  * stale: false
  * tags: [code/abstract_base, code/serialization, code/reflection]
  * concepts: [Copy Semantics, Serialization]
- * facets: {layer: utility, status: broken, complexity: medium}
+ * facets: {layer: utility, status: broken, complexity: 3}
  * -->
  */
 public abstract class ACopyAble

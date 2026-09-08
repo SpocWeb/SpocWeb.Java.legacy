@@ -18,7 +18,7 @@ import streamIO.copy.group.ring.IRefiner;
  * stale: false
  * tags: [code/metric_space, code/root_finding, code/numerical_integration, code/big_integer_arithmetic]
  * concepts: [Metric Spaces - Root Finding and Numerical Integration]
- * facets: {layer: domain, status: legacy, complexity: high}
+ * facets: {layer: domain, status: legacy, complexity: 4}
  * -->
  * because that would create too much overhead and can be realized in a simple loop.	*/
 public class MultiStep

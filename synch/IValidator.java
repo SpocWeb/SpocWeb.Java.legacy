@@ -42,7 +42,7 @@ package synch;
   * stale: false
   * tags: [code/validation]
   * concepts: [Validator Interface]
-  * facets: {layer: domain, status: legacy, complexity: low}
+  * facets: {layer: domain, status: legacy, complexity: 2}
   * -->
   */
 public interface IValidator {

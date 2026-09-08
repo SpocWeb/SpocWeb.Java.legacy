@@ -47,7 +47,7 @@ import function.derive.ring.Quot;
  * stale: false
  * tags: [code/gamma_function, code/derivable_function_contract]
  * concepts: [Special Functions, Incomplete Gamma Function]
- * facets: {layer: utility, status: legacy, complexity: medium}
+ * facets: {layer: utility, status: legacy, complexity: 3}
  * -->
  */
 public class GammaP

@@ -52,7 +52,7 @@ import streamIO.object.json.JSONTest;
   * stale: false
   * tags: [code/pair_data_structure]
   * concepts: [Pair with Value]
-  * facets: {layer: domain, status: legacy, complexity: low}
+  * facets: {layer: domain, status: legacy, complexity: 2}
   * -->
   */
 final public class PairVal //'final' speeds up Methods that directly use PairVal

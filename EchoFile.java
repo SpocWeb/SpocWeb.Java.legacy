@@ -33,7 +33,7 @@ import java.util.SortedMap;
  * stale: false
  * tags: [code/cli_tool, code/text_encoding]
  * concepts: [Text Encoding]
- * facets: {layer: utility, status: stable, complexity: low}
+ * facets: {layer: utility, status: stable, complexity: 2}
  * -->
  */
 public class EchoFile {
@@ -49,7 +49,7 @@ public class EchoFile {
 	 * <!-- docstate
 	 * tags: [code/text_encoding]
 	 * concepts: [Text Encoding]
-	 * facets: {layer: utility, status: stable, complexity: low}
+	 * facets: {layer: utility, status: stable, complexity: 2}
 	 * -->
 	 */
 	public static void echoFile(final String fileName, final String encoding) throws Exception {
@@ -74,7 +74,7 @@ public class EchoFile {
 	 * <!-- docstate
 	 * tags: [code/cli_tool]
 	 * concepts: [Text Encoding]
-	 * facets: {layer: utility, status: stable, complexity: low}
+	 * facets: {layer: utility, status: stable, complexity: 2}
 	 * -->
 	 * via the command line.	 */
 	public static void main(String[] args) throws Exception {

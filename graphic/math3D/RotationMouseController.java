@@ -32,7 +32,7 @@ import math.matrix.MatrixFloat;
  * stale: false
  * tags: [code/mouse_input]
  * concepts: [Mouse-Driven Rotation Controller]
- * facets: {layer: domain, status: legacy, complexity: low}
+ * facets: {layer: domain, status: legacy, complexity: 2}
  * -->
  */
 public class RotationMouseController 

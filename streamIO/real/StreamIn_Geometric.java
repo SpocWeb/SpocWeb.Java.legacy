@@ -26,7 +26,7 @@ import streamIO.object.IPipe;
   * stale: false
   * tags: [code/stream_filter]
   * concepts: [Geometric Sequence Stream]
-  * facets: {layer: infrastructure, status: broken, complexity: low}
+  * facets: {layer: infrastructure, status: broken, complexity: 2}
   * -->
   */
 public class StreamIn_Geometric

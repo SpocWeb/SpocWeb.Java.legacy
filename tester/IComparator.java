@@ -32,7 +32,7 @@ import java.util.Comparator;
   * stale: false
   * tags: [code/comparator]
   * concepts: [Comparator Interface]
-  * facets: {layer: utility, status: legacy, complexity: low}
+  * facets: {layer: utility, status: legacy, complexity: 2}
   * -->
   */
 public interface IComparator

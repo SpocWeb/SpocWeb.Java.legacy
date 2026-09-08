@@ -26,7 +26,7 @@ import function.vector.IFloatScalarField;
  * stale: false
  * tags: [code/numerical_integration]
  * concepts: [Constant Scalar Field]
- * facets: {layer: test, status: legacy, complexity: low}
+ * facets: {layer: test, status: legacy, complexity: 2}
  * -->
  */
 public class ConstScalarField 

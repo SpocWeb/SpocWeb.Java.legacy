@@ -28,7 +28,7 @@ import function.byref.ByRefDouble;
   * stale: false
   * tags: [code/stream_filter]
   * concepts: [Float-to-Object Adapter Filter]
-  * facets: {layer: infrastructure, status: legacy, complexity: low}
+  * facets: {layer: infrastructure, status: legacy, complexity: 2}
   * -->
   */
 public class FilterIn_Float2Object

@@ -26,7 +26,7 @@ import function.derive.IDeriveAble;
  * stale: false
  * tags: [code/abstract_math, code/algebraic_function]
  * concepts: [Ring Theory, Function Algebra]
- * facets: {layer: utility, status: legacy, complexity: medium}
+ * facets: {layer: utility, status: legacy, complexity: 3}
  * -->
  */
 public abstract class ACAlgebra

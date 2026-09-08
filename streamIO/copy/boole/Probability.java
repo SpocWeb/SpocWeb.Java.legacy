@@ -24,7 +24,7 @@ import function.byref.ByRefFloat;
   * stale: false
   * tags: [code/boolean_algebra, code/numeric_comparison]
   * concepts: [Boolean Algebra, Probability]
-  * facets: {layer: utility, status: legacy, complexity: medium}
+  * facets: {layer: utility, status: legacy, complexity: 3}
   * -->
   */
 public class Probability

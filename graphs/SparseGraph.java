@@ -72,7 +72,7 @@ import tester.TesterEquals;
  * stale: false
  * tags: [code/sparse_graph, code/graph_algorithm]
  * concepts: [Sparse Graph]
- * facets: {layer: domain, status: legacy, complexity: high}
+ * facets: {layer: domain, status: legacy, complexity: 4}
  * -->
  */
 final public class SparseGraph 

@@ -33,7 +33,7 @@ import java.awt.event.KeyListener;
  * stale: false
  * tags: [code/keyboard_input]
  * concepts: [Keyboard-Driven Point Controller]
- * facets: {layer: domain, status: legacy, complexity: low}
+ * facets: {layer: domain, status: legacy, complexity: 2}
  * -->
  */
 public class FloatPointKeyController 

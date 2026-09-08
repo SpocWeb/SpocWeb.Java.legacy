@@ -31,7 +31,7 @@ import math.vector.VectorFloat;
  * stale: false
  * tags: [code/coordinate_transform, code/3d_geometry]
  * concepts: [3D Coordinate Transform]
- * facets: {layer: domain, status: legacy, complexity: medium}
+ * facets: {layer: domain, status: legacy, complexity: 3}
  * -->
  */
 public class Coordinates3D

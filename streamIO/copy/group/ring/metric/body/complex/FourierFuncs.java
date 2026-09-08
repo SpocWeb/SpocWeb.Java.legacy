@@ -20,7 +20,7 @@ import function.byref.TestByRef;
  * stale: false
  * tags: [code/complex_numbers, code/fourier_transform]
  * concepts: [Complex Number Arithmetic and Fourier Transform]
- * facets: {layer: domain, status: legacy, complexity: high}
+ * facets: {layer: domain, status: legacy, complexity: 4}
  * -->
  * e.g. e^x/x and e^x/SqRt(x)*/
 public class FourierFuncs {

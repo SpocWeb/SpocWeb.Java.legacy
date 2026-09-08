@@ -18,7 +18,7 @@ import java.util.Comparator;
  * stale: false
  * tags: [code/indexing]
  * concepts: [Indexed Collection Access]
- * facets: {layer: utility, status: legacy, complexity: low}
+ * facets: {layer: utility, status: legacy, complexity: 2}
  * -->
  */
 final public class IndexComparator 

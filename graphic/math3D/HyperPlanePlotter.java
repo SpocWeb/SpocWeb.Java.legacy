@@ -24,7 +24,7 @@ import streamIO.copy.group.ring.StepRK;
  * stale: false
  * tags: [code/3d_rendering, code/chart_rendering]
  * concepts: [Hyperplane Plotter]
- * facets: {layer: domain, status: legacy, complexity: medium}
+ * facets: {layer: domain, status: legacy, complexity: 3}
  * -->
  *		 and the hardcoded ODE Height  */
 public class HyperPlanePlotter

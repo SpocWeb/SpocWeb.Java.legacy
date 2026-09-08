@@ -35,7 +35,7 @@ import java.util.Arrays;
  * stale: false
  * tags: [code/3d_rendering]
  * concepts: [Z-Buffer]
- * facets: {layer: domain, status: broken, complexity: medium}
+ * facets: {layer: domain, status: broken, complexity: 3}
  * -->
  */
 final public class ZBuffer

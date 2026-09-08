@@ -8,7 +8,7 @@ package streamIO.copy.order;
  * stale: false
  * tags: [code/manual_test_harness]
  * concepts: [Order Relation]
- * facets: {layer: utility, status: legacy, complexity: medium}
+ * facets: {layer: utility, status: legacy, complexity: 3}
  * -->
  * {@link AOrder#testIt()}. */
 public class testOrder {

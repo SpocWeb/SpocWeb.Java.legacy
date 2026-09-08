@@ -32,7 +32,7 @@ package math.fit;
  * stale: false
  * tags: [code/function_interface]
  * concepts: [Fit Function Interface]
- * facets: {layer: utility, status: legacy, complexity: low}
+ * facets: {layer: utility, status: legacy, complexity: 2}
  * -->
  */
 public interface IFloatFitFunction {

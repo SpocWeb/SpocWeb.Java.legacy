@@ -38,7 +38,7 @@ import streamIO.IPushBackAble;
  * stale: false
  * tags: [code/parser_interface]
  * concepts: [Integer Stream Input Interface]
- * facets: {layer: utility, status: legacy, complexity: low}
+ * facets: {layer: utility, status: legacy, complexity: 2}
  * -->
  */
 public interface IIStreamIn_Int 

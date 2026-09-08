@@ -27,7 +27,7 @@ package asynch;
   * stale: false
   * tags: [code/thread_pooling]
   * concepts: [Simple Thread Executor]
-  * facets: {layer: infrastructure, status: legacy, complexity: low}
+  * facets: {layer: infrastructure, status: legacy, complexity: 2}
   * -->
   */
 public class SimpleThreadExecutor

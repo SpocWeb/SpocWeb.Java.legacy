@@ -33,7 +33,7 @@ import streamIO.integer.encoding.BigEndianReader;
  * stale: false
  * tags: [code/audio, code/binary_data_reading]
  * concepts: [WAV Data Chunk]
- * facets: {layer: domain, status: broken, complexity: medium}
+ * facets: {layer: domain, status: broken, complexity: 3}
  * -->
  */
 public class WaveDataChunk 

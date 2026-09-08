@@ -11,7 +11,7 @@ import function.IIOrderAble;
  * <!-- docstate
  * tags: [code/adapter, code/scheduling]
  * concepts: [Small Adapter and Scheduling Helper Classes]
- * facets: {layer: utility, status: legacy, complexity: high}
+ * facets: {layer: utility, status: legacy, complexity: 4}
  * digest: 47a7188673e5fc4f86b649e28ef70734dd6252848c50e257a20185ace76cdbc4
  * stale: false
  * -->
@@ -71,7 +71,7 @@ class TimedEvent implements IIOrderAble {
   * <!-- docstate
   * tags: [code/adapter, code/scheduling]
   * concepts: [Small Adapter and Scheduling Helper Classes]
-  * facets: {layer: utility, status: legacy, complexity: high}
+  * facets: {layer: utility, status: legacy, complexity: 4}
   * digest: ba188692aa57117f4b43e5b755b7407552a604af84fd0896f97d703a0ebb81f5
   * stale: false
   * -->

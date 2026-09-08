@@ -52,7 +52,7 @@ import graphs.KeyValuePair;
   * <!-- docstate
   * tags: [code/container, code/hash_table, code/container_iteration]
   * concepts: [Concrete Storage Containers - Arrays - Hash Tables and Relations]
-  * facets: {layer: utility, status: legacy, complexity: high}
+  * facets: {layer: utility, status: legacy, complexity: 4}
   * digest: 11048cfa83922b99c3689be02a477a05370947f50f56364aaff851920716bbe9
   * stale: false
   * -->

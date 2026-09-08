@@ -33,7 +33,7 @@ package streamIO.copy.group.ring.metric;
  * stale: false
  * tags: [code/metric_space, code/root_finding, code/numerical_integration, code/big_integer_arithmetic]
  * concepts: [Metric Spaces - Root Finding and Numerical Integration]
- * facets: {layer: domain, status: legacy, complexity: high}
+ * facets: {layer: domain, status: legacy, complexity: 4}
  * -->
  * The Implementations here are not very efficient and should be overwritten. */
 public class ANorm

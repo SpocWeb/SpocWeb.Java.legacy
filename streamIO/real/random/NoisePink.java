@@ -21,7 +21,7 @@ import function.IMeasurAble;
  * stale: false
  * tags: [code/random_number_generator, code/signal_processing]
  * concepts: [Pink Noise Generator]
- * facets: {layer: utility, status: legacy, complexity: low}
+ * facets: {layer: utility, status: legacy, complexity: 2}
  * -->
  */
 public class NoisePink

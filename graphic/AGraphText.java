@@ -28,7 +28,7 @@ import streamIO.Log;
   * stale: false
   * tags: [code/bitmap_font_rendering, code/graphics]
   * concepts: [Vector Font Rendering Base Class]
-  * facets: {layer: infrastructure, status: legacy, complexity: medium}
+  * facets: {layer: infrastructure, status: legacy, complexity: 3}
   * -->
   */
 public abstract class AGraphText 
@@ -805,7 +805,7 @@ implements IGraphText {
  * stale: false
  * tags: [code/bitmap_font_rendering]
  * concepts: [Font Metrics Holder]
- * facets: {layer: infrastructure, status: legacy, complexity: low}
+ * facets: {layer: infrastructure, status: legacy, complexity: 2}
  * -->
  */
 class GraphTextMetrics

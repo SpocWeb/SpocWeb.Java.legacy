@@ -19,7 +19,7 @@ package graphic;
  * stale: false
  * tags: [code/2d_geometry, code/point_normal_calculation]
  * concepts: [Integer 2D Point]
- * facets: {layer: domain, status: broken, complexity: low}
+ * facets: {layer: domain, status: broken, complexity: 2}
  * -->
  */
 final public class Point2D {

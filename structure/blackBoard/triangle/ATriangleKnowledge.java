@@ -40,7 +40,7 @@ import structure.blackBoard.IKnowledge;
  * stale: false
  * tags: [code/blackboard_pattern, code/rule_based_validation]
  * concepts: [Triangle Knowledge Source Base]
- * facets: {layer: domain, status: legacy, complexity: low}
+ * facets: {layer: domain, status: legacy, complexity: 2}
  * -->
  */
 abstract class ATriangleKnowledge implements IKnowledge {

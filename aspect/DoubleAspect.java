@@ -26,7 +26,7 @@ import function.byref.ByRefDouble;
   * stale: false
   * tags: [code/domain_model]
   * concepts: [Typed Property Validation]
-  * facets: {layer: domain, status: stable, complexity: medium}
+  * facets: {layer: domain, status: stable, complexity: 3}
   * -->
   */
 public class DoubleAspect

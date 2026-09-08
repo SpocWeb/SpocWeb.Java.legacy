@@ -37,7 +37,7 @@ import streamIO.object.IPipe;
   * stale: false
   * tags: [code/concurrency_primitive]
   * concepts: [Queued Semaphore]
-  * facets: {layer: infrastructure, status: broken, complexity: medium}
+  * facets: {layer: infrastructure, status: broken, complexity: 3}
   * -->
   */
 public class QueuedSemaphore
@@ -186,7 +186,7 @@ implements ISynch {
   * stale: false
   * tags: [code/concurrency_primitive]
   * concepts: [Semaphore Wait Queue Node]
-  * facets: {layer: infrastructure, status: legacy, complexity: low}
+  * facets: {layer: infrastructure, status: legacy, complexity: 2}
   * -->
   */
 class WaitNode {

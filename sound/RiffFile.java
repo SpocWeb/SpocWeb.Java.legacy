@@ -36,7 +36,7 @@ import streamIO.integer.encoding.BigEndianReader;
  * stale: false
  * tags: [code/binary_file_format]
  * concepts: [RIFF Container]
- * facets: {layer: domain, status: stable, complexity: low}
+ * facets: {layer: domain, status: stable, complexity: 2}
  * -->
  */
 public class RiffFile 

@@ -29,7 +29,7 @@ import streamIO.IIStreamOut;
   * stale: false
   * tags: [code/deferred_execution]
   * concepts: [Async Request Object]
-  * facets: {layer: infrastructure, status: legacy, complexity: low}
+  * facets: {layer: infrastructure, status: legacy, complexity: 2}
   * -->
   */
 public class RequestObject

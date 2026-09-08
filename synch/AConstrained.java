@@ -23,7 +23,7 @@ package synch;
   * stale: false
   * tags: [code/observer_pattern, code/validation]
   * concepts: [Constrained Publisher Base]
-  * facets: {layer: domain, status: legacy, complexity: medium}
+  * facets: {layer: domain, status: legacy, complexity: 3}
   * -->
   */
 public abstract class AConstrained

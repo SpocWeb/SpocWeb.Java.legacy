@@ -48,7 +48,7 @@ import graphic.Polygon2D;
   * stale: false
   * tags: [code/testing, code/3d_rendering]
   * concepts: [3D Graph Demo/Test Harness]
-  * facets: {layer: test, status: legacy, complexity: low}
+  * facets: {layer: test, status: legacy, complexity: 2}
   * -->
   */
 public class testMathGraph3D {
@@ -61,7 +61,7 @@ public class testMathGraph3D {
 	 * <!-- docstate
 	 * tags: [code/testing]
 	 * concepts: [Demo Entry Point]
-	 * facets: {layer: test, status: legacy, complexity: low}
+	 * facets: {layer: test, status: legacy, complexity: 2}
 	 * -->
 	 * @param args Array of parameters passed to the application via the command line.	 */
 	public static void main(String[] args) {

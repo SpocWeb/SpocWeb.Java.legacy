@@ -28,7 +28,7 @@ import function.byref.ByRefLong;
  * stale: false
  * tags: [code/combinatorics, code/special_function]
  * concepts: [Combinatorics]
- * facets: {layer: utility, status: legacy, complexity: low}
+ * facets: {layer: utility, status: legacy, complexity: 2}
  * -->
  */
 final public class CombiFuncs {

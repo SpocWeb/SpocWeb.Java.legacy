@@ -13,7 +13,7 @@ import function.derive.ring.Prod;
  * stale: false
  * tags: [code/differential_integration]
  * concepts: [Partial Derivatives, Product Rule]
- * facets: {layer: utility, status: legacy, complexity: medium}
+ * facets: {layer: utility, status: legacy, complexity: 3}
  * -->
  * It reduces Complexity by eliminating constant Factors on derivation.	 */
 final public class ProdPartial

@@ -30,7 +30,7 @@ package streamIO.copy.boole;
  * stale: false
  * tags: [code/boolean_algebra, code/abstract_base, code/delegation]
  * concepts: [Boolean Algebra, Delegation Pattern]
- * facets: {layer: utility, status: legacy, complexity: medium}
+ * facets: {layer: utility, status: legacy, complexity: 3}
  * -->
  * ArrStruct cannot use it directly, because Bits are not defined there!	 */
 public class ABoole	//abstract	cannot be abstract, because it has to be delegated to!

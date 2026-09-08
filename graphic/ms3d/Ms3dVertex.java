@@ -49,7 +49,7 @@ import streamIO.integer.encoding.BigEndianReader;
  * stale: false
  * tags: [code/mesh_data]
  * concepts: [MS3D Mesh Vertex]
- * facets: {layer: domain, status: broken, complexity: low}
+ * facets: {layer: domain, status: broken, complexity: 2}
  * -->
  */
 public class Ms3dVertex { 

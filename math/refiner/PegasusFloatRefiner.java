@@ -33,7 +33,7 @@ import function.IFloatFunction;
  * stale: false
  * tags: [code/root_finding]
  * concepts: [Pegasus Method Root Refiner]
- * facets: {layer: utility, status: legacy, complexity: medium}
+ * facets: {layer: utility, status: legacy, complexity: 3}
  * -->
  */
 public class PegasusFloatRefiner 

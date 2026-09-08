@@ -20,7 +20,7 @@ import function.derive.AFloatDeriveAble;
  * stale: false
  * tags: [code/exponential_function, code/derivable_function_contract]
  * concepts: [Exponential Functions]
- * facets: {layer: utility, status: legacy, complexity: medium}
+ * facets: {layer: utility, status: legacy, complexity: 3}
  * -->
  */
 public class Exponential

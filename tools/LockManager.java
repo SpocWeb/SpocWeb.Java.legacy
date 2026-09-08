@@ -53,7 +53,7 @@ import java.io.IOException;
   * stale: false
   * tags: [code/locking, code/global_lock]
   * concepts: [Concurrency]
-  * facets: {layer: infrastructure, status: broken, complexity: high}
+  * facets: {layer: infrastructure, status: broken, complexity: 4}
   * -->
   */
 public class LockManager

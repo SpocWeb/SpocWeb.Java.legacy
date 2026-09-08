@@ -37,7 +37,7 @@ import streamIO.Assert;
   * stale: false
   * tags: [code/domain_model]
   * concepts: [Domain Model]
-  * facets: {layer: domain, status: legacy, complexity: low}
+  * facets: {layer: domain, status: legacy, complexity: 2}
   * -->
   */
 public class Person
@@ -97,7 +97,7 @@ extends ReflectAble {
 	 * <!-- docstate
 	 * tags: [code/domain_model]
 	 * concepts: [Domain Model]
-	 * facets: {layer: domain, status: stable, complexity: low}
+	 * facets: {layer: domain, status: stable, complexity: 2}
 	 * -->
 	 */
 	public Person() { }
@@ -131,7 +131,7 @@ extends ReflectAble {
 	 * <!-- docstate
 	 * tags: [code/test_harness]
 	 * concepts: [Testing]
-	 * facets: {layer: test, status: legacy, complexity: low}
+	 * facets: {layer: test, status: legacy, complexity: 2}
 	 * -->
 	 */
 	public static void testIt(String[] args) { //throws java.io.IOException {
@@ -161,7 +161,7 @@ extends ReflectAble {
 	 * <!-- docstate
 	 * tags: [code/test_harness]
 	 * concepts: [Testing]
-	 * facets: {layer: test, status: stable, complexity: low}
+	 * facets: {layer: test, status: stable, complexity: 2}
 	 * -->
 	 * via the command line.	 */
 	public static void main (String[] args) { //throws java.io.IOException {

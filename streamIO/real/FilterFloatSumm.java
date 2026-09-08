@@ -20,7 +20,7 @@ import function.IFloatFunction;
  * stale: false
  * tags: [code/stream_filter, code/running_statistics]
  * concepts: [Running Sum Filter]
- * facets: {layer: infrastructure, status: legacy, complexity: low}
+ * facets: {layer: infrastructure, status: legacy, complexity: 2}
  * -->
  */
 public class FilterFloatSumm 

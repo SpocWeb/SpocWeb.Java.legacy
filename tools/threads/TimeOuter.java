@@ -40,7 +40,7 @@ package tools.threads;
  * stale: false
  * tags: [code/watchdog_thread, code/timeout_handling, code/thread_interruption]
  * concepts: [Concurrency]
- * facets: {layer: infrastructure, status: experimental, complexity: low}
+ * facets: {layer: infrastructure, status: experimental, complexity: 2}
  * -->
  */
 public class TimeOuter 

@@ -17,7 +17,7 @@ import java.util.NoSuchElementException;
  * <!-- docstate
  * tags: [code/red_black_tree, code/iterator_pattern]
  * concepts: [Red-Black Tree Backed Sorted Map Implementation]
- * facets: {layer: utility, status: legacy, complexity: high}
+ * facets: {layer: utility, status: legacy, complexity: 4}
  * digest: 72f97cbf280b793065fc7ac0ea2d998ad7aa4f92acf6a3b1559cab2eddf89e2b
  * stale: false
  * -->

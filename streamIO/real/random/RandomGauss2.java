@@ -32,7 +32,7 @@ import function.byref.ByRefDouble;
  * stale: false
  * tags: [code/random_number_generator, code/statistical_distribution]
  * concepts: [Gaussian Random Generator (Alternate)]
- * facets: {layer: utility, status: broken, complexity: low}
+ * facets: {layer: utility, status: broken, complexity: 2}
  * -->
  */
 public class RandomGauss2

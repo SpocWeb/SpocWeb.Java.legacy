@@ -42,7 +42,7 @@ import function.derive.IFloatDeriveAble;
  * stale: false
  * tags: [code/newton_method, code/bracket_matching]
  * concepts: [Bracketed Newton's Method Root Refiner]
- * facets: {layer: utility, status: legacy, complexity: medium}
+ * facets: {layer: utility, status: legacy, complexity: 3}
  * -->
  */
 public class NewtonFloatRefinerQ 

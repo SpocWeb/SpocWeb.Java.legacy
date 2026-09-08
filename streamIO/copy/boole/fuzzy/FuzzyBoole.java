@@ -180,7 +180,7 @@ Das ist aber nur bei einfachen Mengen (Formen) m�glich.
   * stale: false
   * tags: [code/fuzzy_logic, code/boolean_algebra, code/lattice_structure]
   * concepts: [Fuzzy Logic, Boolean Algebra]
-  * facets: {layer: utility, status: legacy, complexity: medium}
+  * facets: {layer: utility, status: legacy, complexity: 3}
   * -->
   */
 public class FuzzyBoole

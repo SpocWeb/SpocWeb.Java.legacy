@@ -26,7 +26,7 @@ package stringOp;
  * stale: false
  * tags: [code/string_algorithms]
  * concepts: [String Value Interface]
- * facets: {layer: utility, status: legacy, complexity: low}
+ * facets: {layer: utility, status: legacy, complexity: 2}
  * -->
  */
 public interface IStringValue {

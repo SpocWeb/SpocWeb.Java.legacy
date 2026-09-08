@@ -23,7 +23,7 @@ import Graph2D.
  * stale: false
  * tags: [code/3d_rendering, code/chart_rendering]
  * concepts: [3D Column Chart Element]
- * facets: {layer: domain, status: legacy, complexity: low}
+ * facets: {layer: domain, status: legacy, complexity: 2}
  * -->
  * and Points within this Column.	 */
 public class Column3D {

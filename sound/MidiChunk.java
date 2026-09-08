@@ -32,7 +32,7 @@ import streamIO.integer.encoding.BigEndianReader;
  * stale: false
  * tags: [code/midi_playback]
  * concepts: [MIDI Track]
- * facets: {layer: domain, status: broken, complexity: low}
+ * facets: {layer: domain, status: broken, complexity: 2}
  * -->
  */
 public class MidiChunk

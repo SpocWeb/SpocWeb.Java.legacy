@@ -16,7 +16,7 @@ import tester.IEquivalence;
   * stale: false
   * tags: [code/custom_equivalence]
   * concepts: [Key-Value Pair]
-  * facets: {layer: utility, status: broken, complexity: medium}
+  * facets: {layer: utility, status: broken, complexity: 3}
   * -->
   */
 public class AssociationEquivalence

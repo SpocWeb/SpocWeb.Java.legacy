@@ -21,7 +21,7 @@ package math.fit;
  * stale: false
  * tags: [code/curve_fitting]
  * concepts: [Gaussian Basis Function Fit]
- * facets: {layer: utility, status: broken, complexity: medium}
+ * facets: {layer: utility, status: broken, complexity: 3}
  * -->
  */
 public class FitGauss

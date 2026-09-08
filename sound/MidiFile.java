@@ -33,7 +33,7 @@ import streamIO.integer.encoding.BigEndianReader;
  * stale: false
  * tags: [code/midi_playback, code/file_parsing]
  * concepts: [Standard MIDI File]
- * facets: {layer: domain, status: broken, complexity: medium}
+ * facets: {layer: domain, status: broken, complexity: 3}
  * -->
  */
 public class MidiFile extends FileChunk {

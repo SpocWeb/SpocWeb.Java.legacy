@@ -24,7 +24,7 @@ package tester.process;
   * stale: false
   * tags: [code/state_machine]
   * concepts: [Dynamic Transition Interface]
-  * facets: {layer: utility, status: legacy, complexity: low}
+  * facets: {layer: utility, status: legacy, complexity: 2}
   * -->
   */
 public interface IDynTransition

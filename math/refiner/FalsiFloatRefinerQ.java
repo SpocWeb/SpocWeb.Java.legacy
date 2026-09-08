@@ -36,7 +36,7 @@ import function.IFloatFunction;
  * stale: false
  * tags: [code/root_finding]
  * concepts: [Regula Falsi Root Refiner]
- * facets: {layer: utility, status: legacy, complexity: low}
+ * facets: {layer: utility, status: legacy, complexity: 2}
  * -->
  */
 public class FalsiFloatRefinerQ 

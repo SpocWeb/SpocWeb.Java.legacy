@@ -13,7 +13,7 @@ package streamIO.object.enumer.container;
  * <!-- docstate
  * tags: [code/container, code/hash_table, code/container_iteration]
  * concepts: [Concrete Storage Containers - Arrays - Hash Tables and Relations]
- * facets: {layer: utility, status: legacy, complexity: high}
+ * facets: {layer: utility, status: legacy, complexity: 4}
  * digest: 243239c73de968650d4c0f84bf275912aa3299bf4ab2c1752046db0bdf464846
  * stale: false
  * -->

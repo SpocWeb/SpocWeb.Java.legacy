@@ -24,7 +24,7 @@ import function.byref.ByRefInt;
  * stale: false
  * tags: [code/random_number_generation]
  * concepts: [Random Sampling, Monte Carlo]
- * facets: {layer: utility, status: stable, complexity: medium}
+ * facets: {layer: utility, status: stable, complexity: 3}
  * -->
  */
 public class RandomVectorPseudo {

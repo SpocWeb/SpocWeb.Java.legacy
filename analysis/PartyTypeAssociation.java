@@ -23,7 +23,7 @@ package analysis;
   * stale: false
   * tags: [code/domain_model, code/type_system]
   * concepts: [Domain Model, Relationship Modelling]
-  * facets: {layer: domain, status: stable, complexity: low}
+  * facets: {layer: domain, status: stable, complexity: 2}
   * -->
   */
 public interface PartyTypeAssociation {

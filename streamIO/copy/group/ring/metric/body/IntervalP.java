@@ -34,7 +34,7 @@ import streamIO.copy.group.ring.metric.IMetricIRing;
   * <!-- docstate
   * tags: [code/rational_numbers, code/interval_arithmetic]
   * concepts: [Rational Numbers and Interval Arithmetic]
-  * facets: {layer: domain, status: legacy, complexity: high}
+  * facets: {layer: domain, status: legacy, complexity: 4}
   * digest: c8035784fd19a76490420c0a16848a752f4da95a9efd44cdb901a8ad0904ef17
   * stale: false
   * -->

@@ -19,7 +19,7 @@ import function.byref.ByRefString;
  * stale: false
  * tags: [code/backtracking, code/algorithm]
  * concepts: [Backtracking Search]
- * facets: {layer: utility, status: legacy, complexity: medium}
+ * facets: {layer: utility, status: legacy, complexity: 3}
  * -->
  * to generate good Candidates.	 */
 public class AchterProblem
@@ -146,7 +146,7 @@ implements ITester {
  * stale: false
  * tags: [code/backtracking, code/algorithm]
  * concepts: [Backtracking Search]
- * facets: {layer: utility, status: legacy, complexity: medium}
+ * facets: {layer: utility, status: legacy, complexity: 3}
  * -->
  * to the current Solution.	 */
 class AchterState {

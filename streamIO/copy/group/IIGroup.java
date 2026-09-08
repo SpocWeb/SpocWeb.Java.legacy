@@ -17,7 +17,7 @@ package streamIO.copy.group;
  * stale: false
  * tags: [code/group_algebra, code/date_time]
  * concepts: [Group/SemiGroup Algebra]
- * facets: {layer: domain, status: legacy, complexity: high}
+ * facets: {layer: domain, status: legacy, complexity: 4}
  * -->
  * Could also be called 'subtractable' */
 public interface IIGroup {

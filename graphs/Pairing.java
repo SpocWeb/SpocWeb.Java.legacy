@@ -45,7 +45,7 @@ import streamIO.copy.monoid.integer.Permutation;
  * stale: false
  * tags: [code/graph_matching]
  * concepts: [Graph Pairing/Matching Quality]
- * facets: {layer: domain, status: legacy, complexity: medium}
+ * facets: {layer: domain, status: legacy, complexity: 3}
  * -->
  */
 public class Pairing {

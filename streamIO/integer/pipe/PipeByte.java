@@ -45,7 +45,7 @@ import streamIO.object.IStreamIn;
  * <!-- docstate
  * tags: [code/pipe_abstraction, code/pipe_implementation]
  * concepts: [In-Memory Producer-Consumer Byte Pipes]
- * facets: {layer: utility, status: legacy, complexity: high}
+ * facets: {layer: utility, status: legacy, complexity: 4}
  * -->
  */
 public class PipeByte

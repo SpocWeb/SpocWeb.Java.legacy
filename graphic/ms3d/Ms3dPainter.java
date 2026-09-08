@@ -62,7 +62,7 @@ import streamIO.Log;
  * stale: false
  * tags: [code/3d_rendering]
  * concepts: [MS3D Model Renderer]
- * facets: {layer: domain, status: legacy, complexity: medium}
+ * facets: {layer: domain, status: legacy, complexity: 3}
  * -->
  */
 public class Ms3dPainter

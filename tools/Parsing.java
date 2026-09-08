@@ -39,7 +39,7 @@ import java.io.Writer;
  * stale: false
  * tags: [code/tokenizer, code/text_parsing, code/legacy_helper]
  * concepts: [Text Parsing]
- * facets: {layer: utility, status: legacy, complexity: medium}
+ * facets: {layer: utility, status: legacy, complexity: 3}
  * -->
  */
 public class Parsing {

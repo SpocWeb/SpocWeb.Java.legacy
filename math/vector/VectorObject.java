@@ -28,7 +28,7 @@ import streamIO.copy.ICopyAble;
  * stale: false
  * tags: [code/growable_array, code/generic_vector]
  * concepts: [Growable Object[] Vector]
- * facets: {layer: utility, status: broken, complexity: medium}
+ * facets: {layer: utility, status: broken, complexity: 3}
  * -->
  */
 public class VectorObject

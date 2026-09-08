@@ -34,7 +34,7 @@ import java.io.OutputStream;
   * stale: false
   * tags: [code/cli_tool, code/directory_traversal]
   * concepts: [Directory Traversal, Interprocess Communication]
-  * facets: {layer: utility, status: stable, complexity: medium}
+  * facets: {layer: utility, status: stable, complexity: 3}
   * -->
   */
 public class RecourseCmd {
@@ -51,7 +51,7 @@ public class RecourseCmd {
 	 * <!-- docstate
 	 * tags: [code/directory_traversal]
 	 * concepts: [Directory Traversal]
-	 * facets: {layer: utility, status: stable, complexity: low}
+	 * facets: {layer: utility, status: stable, complexity: 2}
 	 * -->
 	 */
 	final static public void execRecursive(String cmd, File dir, String pattern, String cmd2) throws IOException, InterruptedException {
@@ -97,7 +97,7 @@ public class RecourseCmd {
 	  * <!-- docstate
 	  * tags: [code/asynchronous_io]
 	  * concepts: [Interprocess Communication]
-	  * facets: {layer: utility, status: stable, complexity: medium}
+	  * facets: {layer: utility, status: stable, complexity: 3}
 	  * -->
 	  */
 	final static public Process exec(String command, OutputStream out_, OutputStream err_, InputStream in__) throws IOException, InterruptedException {
@@ -123,7 +123,7 @@ public class RecourseCmd {
 	 * <!-- docstate
 	 * tags: [code/cli_tool]
 	 * concepts: [Directory Traversal]
-	 * facets: {layer: utility, status: stable, complexity: low}
+	 * facets: {layer: utility, status: stable, complexity: 2}
 	 * -->
 	 * via the command line.	 */
 	public static void main(String[] args) { //throws java.io.IOException {

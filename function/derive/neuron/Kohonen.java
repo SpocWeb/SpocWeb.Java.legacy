@@ -152,7 +152,7 @@ import tester.ITester;
  * stale: false
  * tags: [code/neural_network, code/numerical_algorithm]
  * concepts: [Self-Organizing Maps, Unsupervised Learning, Topology Preservation]
- * facets: {layer: utility, status: legacy, complexity: medium}
+ * facets: {layer: utility, status: legacy, complexity: 3}
  * -->
  */
 public class Kohonen
@@ -1026,7 +1026,7 @@ extends ASlab {
  * stale: false
  * tags: [code/neural_network, code/testing]
  * concepts: [Self-Organizing Map Test Harness]
- * facets: {layer: test, status: legacy, complexity: low}
+ * facets: {layer: test, status: legacy, complexity: 2}
  * -->
  */
 class KohonenTester

@@ -14,7 +14,7 @@ import streamIO.Log;
  * stale: false
  * tags: [code/manual_test_harness]
  * concepts: [Copy Semantics]
- * facets: {layer: utility, status: legacy, complexity: medium}
+ * facets: {layer: utility, status: legacy, complexity: 3}
  * -->
  */
 public class TestCopy {

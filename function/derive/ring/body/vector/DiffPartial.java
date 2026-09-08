@@ -16,7 +16,7 @@ import function.derive.ring.Diff;
   * stale: false
   * tags: [code/differential_integration]
   * concepts: [Partial Derivatives]
-  * facets: {layer: utility, status: legacy, complexity: medium}
+  * facets: {layer: utility, status: legacy, complexity: 3}
   * -->
   */
 final public class DiffPartial

@@ -30,7 +30,7 @@ import function.vector.IFloatVectorFunction;
  * stale: false
  * tags: [code/curve_fitting, code/singular_value_decomposition]
  * concepts: [Linear Least-Squares Fit (SVD)]
- * facets: {layer: utility, status: broken, complexity: high}
+ * facets: {layer: utility, status: broken, complexity: 4}
  * -->
  */
 public class FittingFloat

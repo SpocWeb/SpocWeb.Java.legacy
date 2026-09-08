@@ -26,7 +26,7 @@ import streamIO.integer.filter.FilterIn_Byte;
   * stale: false
   * tags: [code/stream_filter, code/base64_encoding, code/crc, code/xor_cipher]
   * concepts: [Byte/Character Re-Encoding Filters - Base64 BinHex URL/Entity Escaping CRC XOR]
-  * facets: {layer: utility, status: legacy, complexity: medium}
+  * facets: {layer: utility, status: legacy, complexity: 3}
   * -->
   */
 public class EscapeInputFilter

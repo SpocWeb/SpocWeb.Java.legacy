@@ -47,7 +47,7 @@ import function.IFloatFunction;
  * stale: false
  * tags: [code/stream_filter, code/anomaly_detection]
  * concepts: [Outlier Filter]
- * facets: {layer: infrastructure, status: legacy, complexity: medium}
+ * facets: {layer: infrastructure, status: legacy, complexity: 3}
  * -->
  */
 public class FilterFloatOutliers extends FilterFloatStatistic {

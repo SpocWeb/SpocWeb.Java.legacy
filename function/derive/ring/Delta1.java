@@ -17,7 +17,7 @@ import function.derive.IDeriveAble;
  * stale: false
  * tags: [code/mathematical_function]
  * concepts: [Function Algebra, Distribution Theory]
- * facets: {layer: utility, status: legacy, complexity: medium}
+ * facets: {layer: utility, status: legacy, complexity: 3}
  * -->
  * from 0 to 1/Height.  */
 public class Delta1

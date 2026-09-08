@@ -28,7 +28,7 @@ import function.byref.combinatoric.CombiFuncs;
  * stale: false
  * tags: [code/combinatorics]
  * concepts: [Combinatorics]
- * facets: {layer: utility, status: stable, complexity: high}
+ * facets: {layer: utility, status: stable, complexity: 4}
  * -->
  */
 public class CombinationsRepeating {

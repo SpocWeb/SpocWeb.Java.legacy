@@ -23,7 +23,7 @@ import function.derive.ring.body.Gauss;
  * stale: false
  * tags: [code/weighting]
  * concepts: [Gaussian Weight Function]
- * facets: {layer: utility, status: broken, complexity: low}
+ * facets: {layer: utility, status: broken, complexity: 2}
  * -->
  */
 final public class WeightGauss

@@ -28,7 +28,7 @@ import streamIO.copy.monoid.integer.Permutation;
  * stale: false
  * tags: [code/combinatorics]
  * concepts: [Combinatorics]
- * facets: {layer: utility, status: stable, complexity: medium}
+ * facets: {layer: utility, status: stable, complexity: 3}
  * -->
  */
 public class CombinationStream {

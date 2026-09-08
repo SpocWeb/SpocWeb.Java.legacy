@@ -23,7 +23,7 @@ import streamIO.object.AStreamIn;
  * stale: false
  * tags: [code/parsing, code/xml]
  * concepts: [XML/HTML Parsing]
- * facets: {layer: utility, status: legacy, complexity: medium}
+ * facets: {layer: utility, status: legacy, complexity: 3}
  * -->
  */
 public class XMLParser

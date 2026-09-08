@@ -25,7 +25,7 @@ package flow.push;
   * stale: false
   * tags: [code/producer_consumer]
   * concepts: [Dataflow, Pipeline]
-  * facets: {layer: domain, status: stable, complexity: medium}
+  * facets: {layer: domain, status: stable, complexity: 3}
   * -->
   */
 public abstract class Joiner

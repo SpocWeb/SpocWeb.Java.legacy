@@ -9,7 +9,7 @@ package math;
  * stale: false
  * tags: [code/formatting]
  * concepts: [Number Formatter Interface]
- * facets: {layer: utility, status: legacy, complexity: low}
+ * facets: {layer: utility, status: legacy, complexity: 2}
  * -->
  */
 public interface IFormatter {

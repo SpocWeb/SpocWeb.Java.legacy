@@ -32,7 +32,7 @@ import function.IInvertAble;
   * stale: false
   * tags: [code/abstract_base, code/delegation, code/concatenation]
   * concepts: [Monoid, Delegation Pattern]
-  * facets: {layer: utility, status: legacy, complexity: medium}
+  * facets: {layer: utility, status: legacy, complexity: 3}
   * -->
   */
 public class AMonoid

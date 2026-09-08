@@ -10,7 +10,7 @@ package streamIO.copy.primitiveOp;
  * stale: false
  * tags: [code/abstract_base, code/delegation, code/deprecated_api]
  * concepts: [Primitive Numeric Operations, Deprecated API]
- * facets: {layer: utility, status: broken, complexity: medium}
+ * facets: {layer: utility, status: broken, complexity: 3}
  * -->
  * because Operations with double Arguments are added to the Real Interface. */
 public abstract class AOpDouble

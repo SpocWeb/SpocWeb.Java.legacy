@@ -8,7 +8,7 @@ import tester.IEquivalence;
   * <!-- docstate
   * tags: [code/container, code/hash_table, code/container_iteration]
   * concepts: [Concrete Storage Containers - Arrays - Hash Tables and Relations]
-  * facets: {layer: utility, status: legacy, complexity: high}
+  * facets: {layer: utility, status: legacy, complexity: 4}
   * digest: 3b182d9afb510f9977e6a506c34b7ddf4cdc245c8921bf2b837282b4930cbf31
   * stale: false
   * -->

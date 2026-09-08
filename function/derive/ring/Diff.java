@@ -25,7 +25,7 @@ import function.derive.IDeriveAble;
  * stale: false
  * tags: [code/function_composition, code/derivative_calculation]
  * concepts: [Function Algebra]
- * facets: {layer: utility, status: legacy, complexity: medium}
+ * facets: {layer: utility, status: legacy, complexity: 3}
  * -->
  * but then you could not reuse the Optimizations in ADeriveAble.  */
 public class Diff

@@ -14,7 +14,7 @@ import function.ICountAble;
   * stale: false
   * tags: [code/mathematical_function, code/exponential_function]
   * concepts: [Numerical Series]
-  * facets: {layer: utility, status: legacy, complexity: medium}
+  * facets: {layer: utility, status: legacy, complexity: 3}
   * -->
   * Used for testing the Limes() Function   */
 public class fEulerFktn

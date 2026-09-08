@@ -46,7 +46,7 @@ package structure; //
   * stale: false
   * tags: [code/bridge]
   * concepts: [Bridge Implementor]
-  * facets: {layer: utility, status: legacy, complexity: low}
+  * facets: {layer: utility, status: legacy, complexity: 2}
   * -->
   */
 public class Bridge

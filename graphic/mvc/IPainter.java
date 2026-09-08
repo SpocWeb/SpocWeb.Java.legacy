@@ -28,7 +28,7 @@ import graphic.IGraphText;
  * stale: false
  * tags: [code/gui]
  * concepts: [Painter/View Interface]
- * facets: {layer: infrastructure, status: legacy, complexity: low}
+ * facets: {layer: infrastructure, status: legacy, complexity: 2}
  * -->
  */
 public interface IPainter {

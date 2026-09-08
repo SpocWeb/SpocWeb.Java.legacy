@@ -52,7 +52,7 @@ import java.awt.image.MemoryImageSource;
  * stale: false
  * tags: [code/image_processing, code/graphics]
  * concepts: [In-Memory Bitmap]
- * facets: {layer: infrastructure, status: legacy, complexity: medium}
+ * facets: {layer: infrastructure, status: legacy, complexity: 3}
  * -->
  */
 public class MemoryImage

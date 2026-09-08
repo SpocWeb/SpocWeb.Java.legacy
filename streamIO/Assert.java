@@ -60,7 +60,7 @@ import function.byref.ByRefFloat;
   * stale: false
   * tags: [code/assertion_framework, code/tolerance_comparison]
   * concepts: [Assertion Framework]
-  * facets: {layer: infrastructure, status: legacy, complexity: medium}
+  * facets: {layer: infrastructure, status: legacy, complexity: 3}
   * -->
   */
 public class Assert {

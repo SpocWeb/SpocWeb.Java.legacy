@@ -25,7 +25,7 @@ import java.io.PrintStream;
   * stale: false
   * tags: [code/output_stream]
   * concepts: [Formatted Output Stream Base]
-  * facets: {layer: infrastructure, status: legacy, complexity: low}
+  * facets: {layer: infrastructure, status: legacy, complexity: 2}
   * -->
   */
 public abstract class AFormatterOut

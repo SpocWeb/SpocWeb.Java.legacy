@@ -18,7 +18,7 @@ import function.byref.ByRefDouble;
  * stale: false
  * tags: [code/vector_math, code/2d_geometry]
  * concepts: [2D Vector]
- * facets: {layer: domain, status: broken, complexity: low}
+ * facets: {layer: domain, status: broken, complexity: 2}
  * -->
  */
 final public class Vector2D {

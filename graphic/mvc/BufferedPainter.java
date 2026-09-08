@@ -58,7 +58,7 @@ import java.awt.image.BufferedImage;
  * stale: false
  * tags: [code/buffering, code/gui]
  * concepts: [Offscreen-Buffered Painter]
- * facets: {layer: infrastructure, status: broken, complexity: medium}
+ * facets: {layer: infrastructure, status: broken, complexity: 3}
  * -->
  */
 public class BufferedPainter 

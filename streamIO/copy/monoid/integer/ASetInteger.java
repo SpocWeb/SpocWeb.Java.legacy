@@ -27,7 +27,7 @@ import streamIO.copy.shift.ShiftAble;
  * stale: false
  * tags: [code/bit_manipulation, code/delegation]
  * concepts: [Bit Set, Delegation Pattern]
- * facets: {layer: utility, status: broken, complexity: medium}
+ * facets: {layer: utility, status: broken, complexity: 3}
  * -->
  * ArrStruct cannot use it directly, because Bits are not defined there!	 */
 public class ASetInteger
