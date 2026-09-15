@@ -982,7 +982,7 @@ function/derive/neuron/Kohonen.java:Kohonen	class	function/derive/neuron/Kohonen
 function/derive/neuron/KohonenGraph.java:KohonenGraph	class	function/derive/neuron/KohonenGraph.java	code/neural_network,code/data_visualization	Self-Organizing Maps,Visualization	utility	legacy	3
 function/derive/CCountAble.java:CCountAble	class	function/derive/CCountAble.java	code/constant_function,code/numeric_comparison	Function Algebra,Flyweight Pattern	utility	legacy	3
 function/derive/CMeasurAble.java:CMeasurAble	class	function/derive/CMeasurAble.java	code/constant_function,code/mathematical_constants	Function Algebra,Numeric Constants	utility	legacy	3
-function/derive/neuron/testNeuronNet.java:testNeuronNet	class	function/derive/neuron/testNeuronNet.java	code/entry_point_code/console_output_code/test	Neural Networks,Test Harness	utility	legacy	3
+function/derive/neuron/testNeuronNet.java:testNeuronNet	class	function/derive/neuron/testNeuronNet.java	code/entry_point,code/console_output,code/test	Neural Networks,Test Harness	utility	legacy	3
 function/derive/ring/AAlgebra.java:AAlgebra	class	function/derive/ring/AAlgebra.java	code/abstract_math,code/algebraic_function	Ring Theory,Function Algebra	utility	legacy	3
 function/derive/ring/ACAlgebra.java:ACAlgebra	class	function/derive/ring/ACAlgebra.java	code/abstract_math,code/algebraic_function	Ring Theory,Function Algebra	utility	legacy	3
 function/derive/ring/Algebra.java:Algebra	class	function/derive/ring/Algebra.java	code/algebraic_function,code/function_wrapper	Ring Theory,Function Algebra	utility	legacy	3
@@ -992,7 +992,7 @@ function/derive/ring/CatDerive.java:CatDerive	class	function/derive/ring/CatDeri
 function/derive/ring/Delta1.java:Delta1	class	function/derive/ring/Delta1.java	code/mathematical_function	Function Algebra,Distribution Theory	utility	legacy	3
 function/derive/ring/Diff.java:Diff	class	function/derive/ring/Diff.java	code/function_composition,code/derivative_calculation	Function Algebra	utility	legacy	3
 function/derive/ring/DoubleAt.java:DoubleAt	class	function/derive/ring/DoubleAt.java	code/mathematical_function	Function Algebra	utility	legacy	3
-function/derive/ring/FuncParser.java:FuncParser	class	function/derive/ring/FuncParser.java	code/expression_builder_code/factory_pattern_code/reflection	Function Parsing	utility	legacy	3
+function/derive/ring/FuncParser.java:FuncParser	class	function/derive/ring/FuncParser.java	code/expression_builder,code/factory_pattern,code/reflection	Function Parsing	utility	legacy	3
 function/derive/ring/Function2ODE.java:Function2ODE	class	function/derive/ring/Function2ODE.java	code/differential_integration	Ordinary Differential Equations	utility	legacy	3
 function/derive/ring/HalfAt.java:HalfAt	class	function/derive/ring/HalfAt.java	code/mathematical_function	Function Algebra	utility	legacy	3
 function/derive/ring/Inv.java:Inv	class	function/derive/ring/Inv.java	code/invertible_function_contract,code/mathematical_function	Function Algebra	utility	legacy	3
@@ -1048,7 +1048,7 @@ function/derive/ring/body/SinH.java:SinH	class	function/derive/ring/body/SinH.ja
 function/derive/ring/body/Sinus.java:Sinus	class	function/derive/ring/body/Sinus.java	code/trigonometric_function,code/derivable_function_contract	Trigonometric Functions	utility	legacy	3
 function/derive/ring/body/TanH.java:TanH	class	function/derive/ring/body/TanH.java	code/hyperbolic_function,code/derivable_function_contract	Hyperbolic Functions	utility	legacy	3
 function/derive/ring/body/Tangens.java:Tangens	class	function/derive/ring/body/Tangens.java	code/trigonometric_function,code/derivable_function_contract	Trigonometric Functions	utility	legacy	3
-function/derive/ring/body/TestBodyFuncs.java:TestBodyFuncs	class	function/derive/ring/body/TestBodyFuncs.java	code/entry_point_code/console_output_code/test	Test Harness	utility	legacy	3
+function/derive/ring/body/TestBodyFuncs.java:TestBodyFuncs	class	function/derive/ring/body/TestBodyFuncs.java	code/entry_point,code/console_output,code/test	Test Harness	utility	legacy	3
 function/derive/ring/body/vector/CatPartial.java:CatPartial	class	function/derive/ring/body/vector/CatPartial.java	code/function_composition,code/differential_integration	Partial Derivatives	utility	legacy	3
 function/derive/ring/body/vector/DiffPartial.java:DiffPartial	class	function/derive/ring/body/vector/DiffPartial.java	code/differential_integration	Partial Derivatives	utility	legacy	3
 function/derive/ring/body/vector/Dimension.java:Dimension	class	function/derive/ring/body/vector/Dimension.java	code/differential_integration,code/mathematical_function	Partial Derivatives,Vector Calculus	utility	legacy	3
@@ -1062,7 +1062,7 @@ function/derive/ring/body/vector/fChargeField.java:fChargeField	class	function/d
 function/derive/ring/body/vector/fProduct.java:fProduct	class	function/derive/ring/body/vector/fProduct.java	code/mathematical_function,code/vector_math	Vector Calculus	utility	legacy	3
 function/derive/ring/body/vector/fSinProd.java:fSinProd	class	function/derive/ring/body/vector/fSinProd.java	code/mathematical_function,code/vector_math	Vector Calculus,Trigonometric Functions	utility	legacy	3
 function/derive/ring/body/vector/fSum.java:fSum	class	function/derive/ring/body/vector/fSum.java	code/mathematical_function,code/vector_math	Vector Calculus	utility	legacy	3
-function/derive/ring/body/vector/testBodyVFuncs.java:testBodyVFuncs	class	function/derive/ring/body/vector/testBodyVFuncs.java	code/entry_point_code/console_output_code/test	Test Harness	utility	legacy	3
+function/derive/ring/body/vector/testBodyVFuncs.java:testBodyVFuncs	class	function/derive/ring/body/vector/testBodyVFuncs.java	code/entry_point,code/console_output,code/test	Test Harness	utility	legacy	3
 function/derive	folder	function/derive	code/derivable_function_contract,code/mathematical_function	Calculus and Function Algebra	utility	legacy	4
 function/derive/neuron	folder	function/derive/neuron	code/neural_network,code/backpropagation	Neural Networks	domain	broken	4
 function/derive/ring	folder	function/derive/ring	code/algebraic_function,code/derivable_function_contract	Ring-Structured Function Algebra	utility	legacy	4
