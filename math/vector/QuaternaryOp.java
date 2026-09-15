@@ -29,7 +29,7 @@ package math.vector;
  * mtime: 2026-09-05T12:43:24Z
  * digest: e17bd9d2447f1d6494ac58ef4dda8de77fcf827144462a1dbf3be46dc8bb2206
  * stale: false
- * tags: [code/strategy_pattern, code/functional_interfaces]
+ * tags: [code/functional_interface, code/strategy_pattern]
  * concepts: [Quaternary Arithmetic Operation]
  * facets: {layer: utility, status: legacy, complexity: 2}
  * -->

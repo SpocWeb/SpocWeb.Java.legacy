@@ -6572,7 +6572,7 @@ extends AVector {
  * mtime: 2026-09-05T16:01:01Z
  * digest: 9f182c959d6360d3467f896b7ce1b50c012bf6ac37cff2142326df32ff244790
  * stale: false
- * tags: [code/functional_interfaces]
+ * tags: [code/functional_interface]
  * concepts: [Reverse-Order Double Stream Source]
  * facets: {layer: utility, status: legacy, complexity: 2}
  * -->

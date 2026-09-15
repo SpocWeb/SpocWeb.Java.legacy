@@ -29,7 +29,7 @@ import streamIO.object.AStreamIn;
  * mtime: 2026-09-05T12:42:58Z
  * digest: 1cb29bef72324d3bdc13e6bac5f0c8fe40369d33c6f54ec3aa56f91b7351e726
  * stale: false
- * tags: [code/matrix_operations]
+ * tags: [code/matrix_operation]
  * concepts: [Float Matrix Row Stream Iterator]
  * facets: {layer: utility, status: broken, complexity: 2}
  * -->

@@ -308,7 +308,7 @@ implements IDirectAccess
  * mtime: 2026-09-05T12:44:29Z
  * digest: b14314a9f9a48335e179bff02a82b673eef948a798c2df8f94ff853ab3e0bccf
  * stale: false
- * tags: [code/functional_interfaces]
+ * tags: [code/functional_interface]
  * concepts: [Reverse-Order Float Stream Source]
  * facets: {layer: utility, status: legacy, complexity: 2}
  * -->
@@ -370,7 +370,7 @@ extends AStreamIn_Float {
  * mtime: 2026-09-05T12:44:29Z
  * digest: 40963f774241d628bd3bc7ff803575f984ad0a360a863843c6d855861dd7eae2
  * stale: false
- * tags: [code/functional_interfaces]
+ * tags: [code/functional_interface]
  * concepts: [Reverse-Order Int Stream Source]
  * facets: {layer: utility, status: legacy, complexity: 2}
  * -->

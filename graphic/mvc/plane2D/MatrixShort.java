@@ -50,7 +50,7 @@ import graphic.mvc.IPainter;
  * mtime: 2026-09-05T12:49:27Z
  * digest: 8896c4bbc3d18a82bc0b7adb2b093106e526612bc600a65cd1fb0e545678a362
  * stale: false
- * tags: [code/matrix_operations, code/polygon_matrix]
+ * tags: [code/matrix_operation, code/polygon_matrix]
  * concepts: [Growable short[][] Polygon Matrix]
  * facets: {layer: utility, status: broken, complexity: 4}
  * -->

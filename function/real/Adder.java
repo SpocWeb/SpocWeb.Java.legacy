@@ -33,7 +33,7 @@ import streamIO.object.IStreamIn;
   * mtime: 2026-09-05T16:43:31Z
   * digest: 98647c0e8206c5866d4100f72110ee720cd5292ef859722b3da842e3b0849096
   * stale: false
-  * tags: [code/running_aggregates, code/mathematical_function]
+  * tags: [code/mathematical_function, code/running_aggregate]
   * concepts: [Streaming Numeric Aggregator]
   * facets: {layer: utility, status: legacy, complexity: 2}
   * -->

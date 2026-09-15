@@ -5132,7 +5132,7 @@ extends AVector {
  * mtime: 2026-09-05T13:49:26Z
  * digest: 3bd91f1d650732c36a74487880786585df21ddb2b9cec3d08f658b25d6276e07
  * stale: false
- * tags: [code/functional_interfaces]
+ * tags: [code/functional_interface]
  * concepts: [Reverse-Order Float Stream Source]
  * facets: {layer: utility, status: legacy, complexity: 2}
  * -->

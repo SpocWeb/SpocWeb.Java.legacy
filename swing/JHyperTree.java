@@ -30,7 +30,7 @@ import tester.ITester;
   * mtime: 2026-09-05T09:16:10Z
   * digest: ecd5d90c6abefd2f8d4bf6b212201fc48fa5514e999c5f06539dad7304a2c07b
   * stale: false
-  * tags: [code/tree_data_structure, code/ui_components]
+  * tags: [code/tree_data_structure, code/ui_component]
   * concepts: [Tree Visualization, UI Component]
   * facets: {layer: infrastructure, status: stable, complexity: 3}
   * -->

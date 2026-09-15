@@ -4023,7 +4023,7 @@ extends AVector {
  * mtime: 2026-09-05T13:35:49Z
  * digest: 9063223836affbf329bb9922a02b5e79c0bceed288c5038df1b0f5e35b2168b8
  * stale: false
- * tags: [code/functional_interfaces]
+ * tags: [code/functional_interface]
  * concepts: [Reverse-Order Int Stream Source]
  * facets: {layer: utility, status: legacy, complexity: 2}
  * -->

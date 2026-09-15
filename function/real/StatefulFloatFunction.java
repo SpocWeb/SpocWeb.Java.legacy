@@ -36,7 +36,7 @@ import function.derive.CMeasurAble;
  * mtime: 2026-09-05T16:44:56Z
  * digest: 9e3ae7dd07b0a37ae58f7b8d7c960b001a59d2f64b7c409631529971916db7d4
  * stale: false
- * tags: [code/running_aggregates, code/mathematical_function]
+ * tags: [code/mathematical_function, code/running_aggregate]
  * concepts: [Streaming Numeric Aggregator]
  * facets: {layer: utility, status: legacy, complexity: 2}
  * -->

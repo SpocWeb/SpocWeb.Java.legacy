@@ -32,7 +32,7 @@ import streamIO.real.random.RandomLorentz;
  * mtime: 2026-09-05T16:43:36Z
  * digest: 93e66d9670d4db071264cc9d5eebdb86c9f4082011c4a605b178c823ee4c4a70
  * stale: false
- * tags: [code/running_aggregates, code/mathematical_function]
+ * tags: [code/mathematical_function, code/running_aggregate]
  * concepts: [Streaming Numeric Aggregator]
  * facets: {layer: utility, status: legacy, complexity: 2}
  * -->

@@ -21,7 +21,7 @@ import streamIO.copy.ICopyAble;
  * mtime: 2026-09-05T12:43:46Z
  * digest: 856c3c019d0f07b9ad736bc977e3b5165caa1417384041d57703a862330a9c1b
  * stale: false
- * tags: [code/matrix_base_class, code/matrix_operations]
+ * tags: [code/matrix_base_class, code/matrix_operation]
  * concepts: [Generic Object Matrix]
  * facets: {layer: utility, status: broken, complexity: 3}
  * -->

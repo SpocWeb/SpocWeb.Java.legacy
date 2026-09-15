@@ -2561,7 +2561,7 @@ extends AVector {
  * mtime: 2026-09-05T13:19:50Z
  * digest: 6ce97631064df1ad0c3887dabb0e50d219c28125fcc58810e01c0c90fc444d99
  * stale: false
- * tags: [code/functional_interfaces]
+ * tags: [code/functional_interface]
  * concepts: [Reverse-Order Long Stream Source]
  * facets: {layer: utility, status: legacy, complexity: 2}
  * -->

@@ -62,7 +62,7 @@ persistences/Objekt.java:Objekt	class	persistences/Objekt.java	code/entity_model
 persistences/PersistedObject.java:PersistedObject	class	persistences/PersistedObject.java	code/entity_model, code/registry_pattern	Record Identity, Persistence	data	broken	2
 persistences	folder	persistences	code/entity_model, code/registry_pattern, code/domain_model	Domain Model, Persistence	data	broken	2
 swing/HashTreeNode.java:HashTreeNode	class	swing/HashTreeNode.java	code/tree_node, code/hash_equality, code/graph_traversal	Tree Visualization, Graph Model	infrastructure	broken	4
-swing/JHyperTree.java:JHyperTree	class	swing/JHyperTree.java	code/tree_data_structure, code/ui_components	Tree Visualization, UI Component	infrastructure	stable	3
+swing/JHyperTree.java:JHyperTree	class	swing/JHyperTree.java	code/tree_data_structure, code/ui_component	Tree Visualization, UI Component	infrastructure	stable	3
 swing/KeyTreeNavigator.java:KeyTreeNavigator	class	swing/KeyTreeNavigator.java	code/keyboard_navigation, code/tree_navigation	Tree Visualization, UI Component	infrastructure	stable	3
 swing	folder	swing	code/tree_node, code/tree_data_structure, code/keyboard_navigation, code/hash_equality	Tree Visualization, Graph Model	infrastructure	broken	4
 streamIO/testing/ITestCase.java:ITestCase	class	streamIO/testing/ITestCase.java	code/test_harness	Testing	test	stable	2
@@ -863,11 +863,11 @@ graphic/mvc/Point2D	folder	graphic/mvc/Point2D	code/interactive_editing	Point2D 
 graphic/mvc/Point2D/Point2DModel.java:Point2DModel	class	graphic/mvc/Point2D/Point2DModel.java	code/model_state_management	Point2D Editing Model	domain	legacy	2
 graphic/mvc/Point2D/Point2DMouseController.java:Point2DMouseController	class	graphic/mvc/Point2D/Point2DMouseController.java	code/event_handling,code/interactive_editing	Point2D Mouse Controller	domain	legacy	2
 graphic/mvc/Point2D/Point2DPainter.java:Point2DPainter	class	graphic/mvc/Point2D/Point2DPainter.java	code/gui,code/graphics	Point2D Painter	domain	legacy	2
-graphic/mvc/plane2D/MatrixShort.java:MatrixShort	class	graphic/mvc/plane2D/MatrixShort.java	code/matrix_operations,code/polygon_matrix	Growable short[][] Polygon Matrix	utility	broken	4
+graphic/mvc/plane2D/MatrixShort.java:MatrixShort	class	graphic/mvc/plane2D/MatrixShort.java	code/matrix_operation, code/polygon_matrix	Growable short[][] Polygon Matrix	utility	broken	4
 graphic/mvc/plane2D	folder	graphic/mvc/plane2D	code/polygon_operations,code/texture_mapping	3D Model Texture Mapping and Rendering	domain	broken	4
 graphic/mvc/plane2D/TexturePainter.java:TexturePainter	class	graphic/mvc/plane2D/TexturePainter.java	code/texture_mapping,code/gui	MilkShape3D Model Texture Painter	domain	legacy	3
 graphic/mvc/plane2D/TexturedBody.java:TexturedBody	class	graphic/mvc/plane2D/TexturedBody.java	code/texture_mapping	Textured 3D Body	domain	legacy	3
-graphic/mvc/plane2D/VectorPolygon.java:VectorPolygon	class	graphic/mvc/plane2D/VectorPolygon.java	code/vector_operations,code/z_ordering	Dynamic Array of 3D-Projected Polygons	domain	broken	4
+graphic/mvc/plane2D/VectorPolygon.java:VectorPolygon	class	graphic/mvc/plane2D/VectorPolygon.java	code/vector_operation, code/z_ordering	Dynamic Array of 3D-Projected Polygons	domain	broken	4
 math/matrix/AMatrix.java:AMatrix	class	math/matrix/AMatrix.java	code/matrix_base_class,code/matrix_algebra	Matrix Base Class	utility	legacy	3
 math/matrix	folder	math/matrix	code/matrix_algebra,code/numerical_linear_algebra	Numerical Linear Algebra (Matrix Types and Decompositions)	utility	legacy	4
 math/matrix/Eigenvalues.java:Eigenvalues	class	math/matrix/Eigenvalues.java	code/eigenvalue_decomposition,code/numerical_linear_algebra	General (Non-Symmetric) Eigenvalue Computation	utility	legacy	4
@@ -883,12 +883,12 @@ math/matrix/Eigenvalues.java:Eigenvalues.testEIGENVALUES()	method	math/matrix/Ei
 math/matrix/Eigenvalues.java:Eigenvalues.testHessenberg()	method	math/matrix/Eigenvalues.java	code/testing,code/eigenvalue_decomposition	Hessenberg Self-Test	test	legacy	2
 math/matrix/Eigenvalues.java:Eigenvalues.main(String[])	method	math/matrix/Eigenvalues.java	code/testing	Demo Entry Point	test	legacy	2
 math/matrix/MatrixBand.java:MatrixBand	class	math/matrix/MatrixBand.java	code/band_diagonal_matrix,code/matrix_algebra	Band-Diagonal Matrix	utility	legacy	3
-math/matrix/MatrixDouble.java:MatrixDouble	class	math/matrix/MatrixDouble.java	code/matrix_operations,code/matrix_algebra	Double-Precision Dense Matrix	utility	broken	4
-math/matrix/MatrixDouble.java:MatrixDoubleStreamIn	class	math/matrix/MatrixDouble.java	code/matrix_operations	Double Matrix Row Stream Iterator	utility	broken	2
-math/matrix/MatrixFloat.java:MatrixFloat	class	math/matrix/MatrixFloat.java	code/matrix_operations,code/matrix_algebra	Single-Precision Dense Matrix	utility	broken	4
-math/matrix/MatrixFloatStreamIn.java:MatrixFloatStreamIn	class	math/matrix/MatrixFloatStreamIn.java	code/matrix_operations	Float Matrix Row Stream Iterator	utility	broken	2
-math/matrix/MatrixInt.java:MatrixInt	class	math/matrix/MatrixInt.java	code/matrix_operations,code/matrix_algebra	Integer Dense Matrix	utility	broken	4
-math/matrix/MatrixObject.java:MatrixObject	class	math/matrix/MatrixObject.java	code/matrix_base_class,code/matrix_operations	Generic Object Matrix	utility	broken	3
+math/matrix/MatrixDouble.java:MatrixDouble	class	math/matrix/MatrixDouble.java	code/matrix_operation, code/matrix_algebra	Double-Precision Dense Matrix	utility	broken	4
+math/matrix/MatrixDouble.java:MatrixDoubleStreamIn	class	math/matrix/MatrixDouble.java	code/matrix_operation	Double Matrix Row Stream Iterator	utility	broken	2
+math/matrix/MatrixFloat.java:MatrixFloat	class	math/matrix/MatrixFloat.java	code/matrix_operation, code/matrix_algebra	Single-Precision Dense Matrix	utility	broken	4
+math/matrix/MatrixFloatStreamIn.java:MatrixFloatStreamIn	class	math/matrix/MatrixFloatStreamIn.java	code/matrix_operation	Float Matrix Row Stream Iterator	utility	broken	2
+math/matrix/MatrixInt.java:MatrixInt	class	math/matrix/MatrixInt.java	code/matrix_operation, code/matrix_algebra	Integer Dense Matrix	utility	broken	4
+math/matrix/MatrixObject.java:MatrixObject	class	math/matrix/MatrixObject.java	code/matrix_base_class, code/matrix_operation	Generic Object Matrix	utility	broken	3
 math/matrix/MatrixQR.java:MatrixQR	class	math/matrix/MatrixQR.java	code/qr_decomposition,code/numerical_linear_algebra	QR Decomposition	utility	legacy	4
 math/matrix/MatrixSVD.java:MatrixSVD	class	math/matrix/MatrixSVD.java	code/svd_decomposition,code/singular_value_decomposition	Singular Value Decomposition	utility	legacy	4
 math/matrix/MatrixSymmetric.java:MatrixSymmetric	class	math/matrix/MatrixSymmetric.java	code/eigenvalue_decomposition,code/tridiagonal_matrix_solving	Symmetric Matrix Eigen-Decomposition (Cholesky/Householder)	utility	legacy	4
@@ -909,26 +909,26 @@ math/matrix/MatrixSymmetric.java:MatrixSymmetric.main(String[])	method	math/matr
 math/matrix/MatrixTriDiagonal.java:MatrixTriDiagonal	class	math/matrix/MatrixTriDiagonal.java	code/tridiagonal_matrix_solving,code/band_diagonal_matrix	Tridiagonal Matrix Solver	utility	broken	3
 math/matrix/Quaternion.java:Quaternion	class	math/matrix/Quaternion.java	code/quaternion_algebra,code/quaternion_math	Quaternion Rotation Algebra	utility	broken	3
 math/vector/AVector.java:AVector	class	math/vector/AVector.java	code/growable_array,code/array_bounds_check	Vector Family Base Class	utility	legacy	3
-math/vector/AVector.java:AVectorStreamIn_Float	class	math/vector/AVector.java	code/functional_interfaces	Reverse-Order Float Stream Source	utility	legacy	2
-math/vector/AVector.java:AVectorStreamIn_Int	class	math/vector/AVector.java	code/functional_interfaces	Reverse-Order Int Stream Source	utility	legacy	2
+math/vector/AVector.java:AVectorStreamIn_Float	class	math/vector/AVector.java	code/functional_interface	Reverse-Order Float Stream Source	utility	legacy	2
+math/vector/AVector.java:AVectorStreamIn_Int	class	math/vector/AVector.java	code/functional_interface	Reverse-Order Int Stream Source	utility	legacy	2
 math/vector	folder	math/vector	code/growable_array,code/quicksort,code/order_statistic	Primitive-Typed Growable Vector Family	utility	broken	4
 math/vector/HunterDouble.java:HunterDouble	class	math/vector/HunterDouble.java	code/quicksort,code/order_statistic,code/binary_search	Sorted-double[] Hunter (QuickSort/Order Statistics)	utility	broken	4
 math/vector/HunterFloat.java:HunterFloat	class	math/vector/HunterFloat.java	code/quicksort,code/order_statistic,code/binary_search	Sorted-float[] Hunter (QuickSort/Order Statistics)	utility	broken	4
 math/vector/HunterInt.java:HunterInt	class	math/vector/HunterInt.java	code/quicksort,code/order_statistic,code/binary_search	Sorted-int[] Hunter (QuickSort/Order Statistics)	utility	broken	4
-math/vector/QuaternaryOp.java:QuaternaryOp	class	math/vector/QuaternaryOp.java	code/strategy_pattern,code/functional_interfaces	Quaternary Arithmetic Operation	utility	legacy	2
+math/vector/QuaternaryOp.java:QuaternaryOp	class	math/vector/QuaternaryOp.java	code/strategy_pattern, code/functional_interface	Quaternary Arithmetic Operation	utility	legacy	2
 math/vector/VectorChar.java:VectorChar	class	math/vector/VectorChar.java	code/growable_array,code/array_math	Growable char[] Vector	domain	broken	4
-math/vector/VectorChar.java:VectorCharStreamIn	class	math/vector/VectorChar.java	code/functional_interfaces	Reverse-Order Char Stream Source	utility	legacy	2
+math/vector/VectorChar.java:VectorCharStreamIn	class	math/vector/VectorChar.java	code/functional_interface	Reverse-Order Char Stream Source	utility	legacy	2
 math/vector/VectorDouble.java:VectorDouble	class	math/vector/VectorDouble.java	code/growable_array,code/array_math	Growable double[] Vector	domain	broken	4
-math/vector/VectorDouble.java:VectorDoubleStreamIn	class	math/vector/VectorDouble.java	code/functional_interfaces	Reverse-Order Double Stream Source	utility	legacy	2
+math/vector/VectorDouble.java:VectorDoubleStreamIn	class	math/vector/VectorDouble.java	code/functional_interface	Reverse-Order Double Stream Source	utility	legacy	2
 math/vector/VectorFloat.java:VectorFloat	class	math/vector/VectorFloat.java	code/growable_array,code/array_math	Growable float[] Vector	domain	broken	4
-math/vector/VectorFloat.java:VectorFloatStreamIn	class	math/vector/VectorFloat.java	code/functional_interfaces	Reverse-Order Float Stream Source	utility	legacy	2
+math/vector/VectorFloat.java:VectorFloatStreamIn	class	math/vector/VectorFloat.java	code/functional_interface	Reverse-Order Float Stream Source	utility	legacy	2
 math/vector/VectorInt.java:VectorInt	class	math/vector/VectorInt.java	code/growable_array,code/array_math	Growable int[] Vector	domain	broken	4
-math/vector/VectorInt.java:VectorIntStreamIn	class	math/vector/VectorInt.java	code/functional_interfaces	Reverse-Order Int Stream Source	utility	legacy	2
+math/vector/VectorInt.java:VectorIntStreamIn	class	math/vector/VectorInt.java	code/functional_interface	Reverse-Order Int Stream Source	utility	legacy	2
 math/vector/VectorLong.java:VectorLong	class	math/vector/VectorLong.java	code/growable_array,code/array_math	Growable long[] Vector	domain	broken	4
-math/vector/VectorLong.java:VectorLongStreamIn	class	math/vector/VectorLong.java	code/functional_interfaces	Reverse-Order Long Stream Source	utility	legacy	2
+math/vector/VectorLong.java:VectorLongStreamIn	class	math/vector/VectorLong.java	code/functional_interface	Reverse-Order Long Stream Source	utility	legacy	2
 math/vector/VectorObject.java:VectorObject	class	math/vector/VectorObject.java	code/growable_array,code/generic_vector	Growable Object[] Vector	utility	broken	3
 math/vector/VectorShort.java:VectorShort	class	math/vector/VectorShort.java	code/growable_array,code/array_math	Growable short[] Vector	domain	broken	4
-math/vector/VectorShort.java:VectorShortStreamIn	class	math/vector/VectorShort.java	code/functional_interfaces	Reverse-Order Short Stream Source	utility	legacy	2
+math/vector/VectorShort.java:VectorShortStreamIn	class	math/vector/VectorShort.java	code/functional_interface	Reverse-Order Short Stream Source	utility	legacy	2
 math/vector/VectorString.java:VectorString	class	math/vector/VectorString.java	code/growable_array,code/string_parsing,code/string_formatting	Growable String[] Vector with String Utility Library	utility	broken	4
 math/vector/statistic/Correlation.java:Correlation	class	math/vector/statistic/Correlation.java	code/statistical_correlation,code/hypothesis_testing	Cross-Vector Correlation Statistics	domain	legacy	4
 math/vector/statistic/Correlation.java:Correlation.Correlation()	method	math/vector/statistic/Correlation.java	code/statistical_correlation	Private Constructor (Static Utility)	domain	legacy	2
@@ -1234,18 +1234,18 @@ function/index/IIndexer.java:IIndexer	class	function/index/IIndexer.java	code/in
 function/index/IndexComparator.java:IndexComparator	class	function/index/IndexComparator.java	code/indexing	Indexed Collection Access	utility	legacy	2
 function/index/IndexEntry.java:IndexEntry	class	function/index/IndexEntry.java	code/indexing	Indexed Collection Access	utility	legacy	2
 function/index/Indexer.java:Indexer	class	function/index/Indexer.java	code/indexing	Indexed Collection Access	utility	legacy	2
-function/real/Adder.java:Adder	class	function/real/Adder.java	code/running_aggregates,code/mathematical_function	Streaming Numeric Aggregator	utility	legacy	2
-function/real/BiLinearSum.java:BiLinearSum	class	function/real/BiLinearSum.java	code/running_aggregates,code/mathematical_function	Streaming Numeric Aggregator	utility	legacy	2
-function/real/FourierCoefficient.java:FourierCoefficient	class	function/real/FourierCoefficient.java	code/running_aggregates,code/mathematical_function	Streaming Numeric Aggregator	utility	legacy	2
-function/real/LinearScale.java:LinearScale	class	function/real/LinearScale.java	code/running_aggregates,code/mathematical_function	Streaming Numeric Aggregator	utility	legacy	2
-function/real/Maximum.java:Maximum	class	function/real/Maximum.java	code/running_aggregates,code/mathematical_function	Streaming Numeric Aggregator	utility	legacy	2
-function/real/Minimum.java:Minimum	class	function/real/Minimum.java	code/running_aggregates,code/mathematical_function	Streaming Numeric Aggregator	utility	legacy	2
-function/real/Multiplier.java:Multiplier	class	function/real/Multiplier.java	code/running_aggregates,code/mathematical_function	Streaming Numeric Aggregator	utility	legacy	2
-function/real/Product.java:Product	class	function/real/Product.java	code/running_aggregates,code/mathematical_function	Streaming Numeric Aggregator	utility	legacy	2
-function/real/RunningMean.java:RunningMean	class	function/real/RunningMean.java	code/running_aggregates,code/mathematical_function	Streaming Numeric Aggregator	utility	legacy	2
-function/real/StatefulFloatFunction.java:StatefulFloatFunction	class	function/real/StatefulFloatFunction.java	code/running_aggregates,code/mathematical_function	Streaming Numeric Aggregator	utility	legacy	2
-function/real/Sum.java:Sum	class	function/real/Sum.java	code/running_aggregates,code/mathematical_function	Streaming Numeric Aggregator	utility	legacy	2
-function/real/SumSquares.java:SumSquares	class	function/real/SumSquares.java	code/running_aggregates,code/mathematical_function	Streaming Numeric Aggregator	utility	legacy	2
+function/real/Adder.java:Adder	class	function/real/Adder.java	code/running_aggregate, code/mathematical_function	Streaming Numeric Aggregator	utility	legacy	2
+function/real/BiLinearSum.java:BiLinearSum	class	function/real/BiLinearSum.java	code/running_aggregate, code/mathematical_function	Streaming Numeric Aggregator	utility	legacy	2
+function/real/FourierCoefficient.java:FourierCoefficient	class	function/real/FourierCoefficient.java	code/running_aggregate, code/mathematical_function	Streaming Numeric Aggregator	utility	legacy	2
+function/real/LinearScale.java:LinearScale	class	function/real/LinearScale.java	code/running_aggregate, code/mathematical_function	Streaming Numeric Aggregator	utility	legacy	2
+function/real/Maximum.java:Maximum	class	function/real/Maximum.java	code/running_aggregate, code/mathematical_function	Streaming Numeric Aggregator	utility	legacy	2
+function/real/Minimum.java:Minimum	class	function/real/Minimum.java	code/running_aggregate, code/mathematical_function	Streaming Numeric Aggregator	utility	legacy	2
+function/real/Multiplier.java:Multiplier	class	function/real/Multiplier.java	code/running_aggregate, code/mathematical_function	Streaming Numeric Aggregator	utility	legacy	2
+function/real/Product.java:Product	class	function/real/Product.java	code/running_aggregate, code/mathematical_function	Streaming Numeric Aggregator	utility	legacy	2
+function/real/RunningMean.java:RunningMean	class	function/real/RunningMean.java	code/running_aggregate, code/mathematical_function	Streaming Numeric Aggregator	utility	legacy	2
+function/real/StatefulFloatFunction.java:StatefulFloatFunction	class	function/real/StatefulFloatFunction.java	code/running_aggregate, code/mathematical_function	Streaming Numeric Aggregator	utility	legacy	2
+function/real/Sum.java:Sum	class	function/real/Sum.java	code/running_aggregate, code/mathematical_function	Streaming Numeric Aggregator	utility	legacy	2
+function/real/SumSquares.java:SumSquares	class	function/real/SumSquares.java	code/running_aggregate, code/mathematical_function	Streaming Numeric Aggregator	utility	legacy	2
 function/string/AStringFunction.java:AStringFunction	class	function/string/AStringFunction.java	code/string_transform,code/function_contract	String Transform Function	utility	legacy	2
 function/string/Char2String.java:Char2String	class	function/string/Char2String.java	code/string_transform,code/function_contract	String Transform Function	utility	legacy	2
 function/string/IStringFunction.java:IStringFunction	class	function/string/IStringFunction.java	code/string_transform,code/function_contract	String Transform Function	utility	legacy	2
@@ -1277,7 +1277,7 @@ function	folder	function	code/function_contract,code/function_composition	Functi
 function/byref	folder	function/byref	code/function_wrapper,code/caching	By-Reference Primitive Wrappers	utility	legacy	4
 function/byref/combinatoric	folder	function/byref/combinatoric	code/combinatorics,code/special_function	Combinatorics and Special Functions	utility	legacy	3
 function/index	folder	function/index	code/indexing	Indexing Abstractions	utility	legacy	3
-function/real	folder	function/real	code/running_aggregates	Streaming Numeric Aggregators	utility	broken	3
+function/real	folder	function/real	code/running_aggregate	Streaming Numeric Aggregators	utility	broken	3
 function/string	folder	function/string	code/string_transform	String Transform Functions	utility	broken	2
 function/vector	folder	function/vector	code/vector_math,code/differential_integration	Vector Fields and ODE Integration	domain	broken	4
 streamIO/object	folder	streamIO/object	code/stream_processing,code/iterator	Object Stream Pipeline	utility	legacy	3

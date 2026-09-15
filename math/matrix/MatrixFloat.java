@@ -41,7 +41,7 @@ import graphs.MatrixGraph;
   * mtime: 2026-09-05T12:57:44Z
   * digest: 6ca344e67cace59c3fc80e862586629bab7ce835d8dfe0fa9a7bd9cbda9b6365
   * stale: false
-  * tags: [code/matrix_operations, code/matrix_algebra]
+  * tags: [code/matrix_algebra, code/matrix_operation]
   * concepts: [Single-Precision Dense Matrix]
   * facets: {layer: utility, status: broken, complexity: 4}
   * -->
