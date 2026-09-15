@@ -116,7 +116,7 @@ CopyAllPossible.java:CopyAllPossible.COPY(String, String, int, String)	method	Co
 CopyAllPossible.java:CopyAllPossible.STREAM(String, String, int)	method	CopyAllPossible.java	code/file_transfer	File Copying	utility	stable	2
 CopyAllPossible.java:CopyAllPossible.STREAM(InputStream, OutputStream, int)	method	CopyAllPossible.java	code/file_transfer	File Copying	utility	stable	2
 CopyAllPossible.java:CopyAllPossible.STREAM(InputStream, OutputStream, byte[])	method	CopyAllPossible.java	code/file_transfer	File Copying	utility	stable	2
-	folder		code/cli_tool	Command-Line Utilities	utility	stable	2
+.	folder	.	code/cli_tool	Command-Line Utilities	utility	stable	2
 DirToXml.java:DirToXml	class	DirToXml.java	code/cli_tool, code/directory_traversal, code/xml_serialization	Directory Traversal, File System	utility	stable	3
 DirToXml.java:DirToXml.execRecursive(File, PrintWriter, String[])	method	DirToXml.java	code/directory_traversal	Directory Traversal	utility	stable	2
 DirToXml.java:DirToXml.execRecursive(File, PrintWriter, String[], String)	method	DirToXml.java	code/directory_traversal, code/xml_serialization	Directory Traversal, File System	utility	stable	3
