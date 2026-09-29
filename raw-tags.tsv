@@ -7,7 +7,7 @@ tools/IOError.java:IOError	class	tools/IOError.java	code/exception_wrapping, cod
 tools/LockAble.java:LockAble	class	tools/LockAble.java	code/locking, code/interface_contract	Concurrency	infrastructure	stable	2
 tools/LockImproved.java:LockImproved	class	tools/LockImproved.java	code/locking, code/non_blocking, code/lock_tokens	Concurrency	infrastructure	broken	3
 tools/LockManager.java:LockManager	class	tools/LockManager.java	code/locking, code/global_lock	Concurrency	infrastructure	broken	4
-tools/LockedServer.java:LockedServer	class	tools/LockedServer.java	code/locking, code/server_facade, code/stub_implementation	Concurrency	infrastructure	unfinished	3
+tools/LockedServer.java:LockedServer	class	tools/LockedServer.java	code/locking, code/server_facade, code/stub	Concurrency	infrastructure	unfinished	3
 tools/LockedSimple.java:LockedSimple	class	tools/LockedSimple.java	code/locking, code/reference_counting, code/non_blocking	Concurrency	infrastructure	broken	3
 tools/LockedSimple.java:LockTester	class	tools/LockedSimple.java	code/manual_test_harness, code/locking	Concurrency	utility	experimental	2
 tools/Parsing.java:Parsing	class	tools/Parsing.java	code/tokenizer, code/text_parsing, code/legacy_helper	Text Parsing	utility	legacy	3
@@ -241,16 +241,16 @@ aspect/dialog/StreamDialog.java:StreamDialog.main(String[])	method	aspect/dialog
 aspect/dialog/StringQuestion.java:StringQuestion	class	aspect/dialog/StringQuestion.java	code/dialog	Console Q&A Model	domain	stable	2
 asynch/ABarrierClient.java:ABarrierClient	class	asynch/ABarrierClient.java	code/concurrency_primitive	Barrier Client Callback	infrastructure	legacy	2
 asynch	folder	asynch	code/thread_pool,code/concurrency_primitive,code/deferred_execution	Concurrency Utilities	infrastructure	legacy	3
-asynch/AExecutor.java:AExecutor	class	asynch/AExecutor.java	code/thread_pooling	Executor Base Class	infrastructure	legacy	2
+asynch/AExecutor.java:AExecutor	class	asynch/AExecutor.java	code/thread_pool	Executor Base Class	infrastructure	legacy	2
 asynch/AReadyToRun.java:AReadyToRun	class	asynch/AReadyToRun.java	code/deferred_execution	Runnable Task Base Class	infrastructure	legacy	2
 asynch/ActiveObject.java:ActiveObject	class	asynch/ActiveObject.java	code/deferred_execution	Active Object Pattern	infrastructure	legacy	3
 asynch/Barrier.java:Barrier	class	asynch/Barrier.java	code/concurrency_primitive	Thread Barrier	infrastructure	broken	3
-asynch/BlockedThreadExecutor.java:BlockedThreadExecutor	class	asynch/BlockedThreadExecutor.java	code/thread_pooling	Blocking Task Executor	infrastructure	broken	3
+asynch/BlockedThreadExecutor.java:BlockedThreadExecutor	class	asynch/BlockedThreadExecutor.java	code/thread_pool	Blocking Task Executor	infrastructure	broken	3
 asynch/CallbackFuture.java:CallbackFuture	class	asynch/CallbackFuture.java	code/callback_pattern,code/deferred_execution	Future with Callback	infrastructure	legacy	2
 asynch/ForkJoinTask.java:ForkJoinTask	class	asynch/ForkJoinTask.java	code/deferred_execution	Fork-Join Task	infrastructure	legacy	3
 asynch/Future.java:Future	class	asynch/Future.java	code/deferred_execution	Future Result Holder	infrastructure	legacy	2
 asynch/FutureHandler.java:FutureHandler	class	asynch/FutureHandler.java	code/callback_pattern,code/deferred_execution	Future Completion Handler	infrastructure	legacy	2
-asynch/IExecutor.java:IExecutor	class	asynch/IExecutor.java	code/thread_pooling	Executor Interface	infrastructure	legacy	2
+asynch/IExecutor.java:IExecutor	class	asynch/IExecutor.java	code/thread_pool	Executor Interface	infrastructure	legacy	2
 asynch/IFuture.java:IFuture	class	asynch/IFuture.java	code/deferred_execution	Future Interface	infrastructure	legacy	2
 asynch/ISynch.java:ISynch	class	asynch/ISynch.java	code/concurrency_primitive	Synchronization Primitive Interface	infrastructure	legacy	2
 asynch/ProcessorRef.java:ProcessorRef	class	asynch/ProcessorRef.java	code/deferred_execution	Task Processor Reference	infrastructure	legacy	2
@@ -260,13 +260,13 @@ asynch/ReadyToRun.java:ReadyToRun	class	asynch/ReadyToRun.java	code/deferred_exe
 asynch/RequestObject.java:RequestObject	class	asynch/RequestObject.java	code/deferred_execution	Async Request Object	infrastructure	legacy	2
 asynch/ResidiumDispatcher.java:ResidiumDispatcher	class	asynch/ResidiumDispatcher.java	code/dispatcher	Task Dispatcher	infrastructure	legacy	3
 asynch/ResponseObject.java:ResponseObject	class	asynch/ResponseObject.java	code/deferred_execution	Async Response Object	infrastructure	legacy	2
-asynch/Scheduler.java:Scheduler	class	asynch/Scheduler.java	code/thread_pooling	Task Scheduler	infrastructure	broken	3
+asynch/Scheduler.java:Scheduler	class	asynch/Scheduler.java	code/thread_pool	Task Scheduler	infrastructure	broken	3
 asynch/Semaphore.java:Semaphore	class	asynch/Semaphore.java	code/concurrency_primitive	Counting Semaphore	infrastructure	legacy	2
-asynch/SimpleThreadExecutor.java:SimpleThreadExecutor	class	asynch/SimpleThreadExecutor.java	code/thread_pooling	Simple Thread Executor	infrastructure	legacy	2
+asynch/SimpleThreadExecutor.java:SimpleThreadExecutor	class	asynch/SimpleThreadExecutor.java	code/thread_pool	Simple Thread Executor	infrastructure	legacy	2
 asynch/SimpleThreadPoolExecutor.java:SimpleThreadPoolExecutor	class	asynch/SimpleThreadPoolExecutor.java	code/thread_pool	Simple Thread Pool Executor	infrastructure	legacy	3
-asynch/SimpleTimedThreadExecutor.java:SimpleTimedThreadExecutor	class	asynch/SimpleTimedThreadExecutor.java	code/thread_pooling	Timed Thread Executor	infrastructure	legacy	2
-asynch/SynchExecutor.java:SynchExecutor	class	asynch/SynchExecutor.java	code/thread_pooling	Synchronous Executor	infrastructure	legacy	2
-asynch/ThreadExecutor.java:ThreadExecutor	class	asynch/ThreadExecutor.java	code/thread_pooling	Thread Executor	infrastructure	broken	3
+asynch/SimpleTimedThreadExecutor.java:SimpleTimedThreadExecutor	class	asynch/SimpleTimedThreadExecutor.java	code/thread_pool	Timed Thread Executor	infrastructure	legacy	2
+asynch/SynchExecutor.java:SynchExecutor	class	asynch/SynchExecutor.java	code/thread_pool	Synchronous Executor	infrastructure	legacy	2
+asynch/ThreadExecutor.java:ThreadExecutor	class	asynch/ThreadExecutor.java	code/thread_pool	Thread Executor	infrastructure	broken	3
 asynch/ThreadPoolExecutor.java:ThreadPoolExecutor	class	asynch/ThreadPoolExecutor.java	code/thread_pool	Thread Pool Executor	infrastructure	broken	3
 asynch/ValueSetterRef.java:ValueSetterRef	class	asynch/ValueSetterRef.java	code/deferred_execution	Value Setter Reference	infrastructure	legacy	2
 stringOp/DeQueueInt.java:DeQueueInt	class	stringOp/DeQueueInt.java	code/deque	Integer Deque	utility	legacy	2
@@ -519,7 +519,7 @@ technology/xml/test/Steuerung.java:Steuerung	class	technology/xml/test/Steuerung
 technology/xml/test/Transaktion.java:Transaktion	class	technology/xml/test/Transaktion.java	code/data_transfer_object	Castor Data Transfer Object	domain	legacy	2
 technology/xml/test/ZKDBBaseType.java:ZKDBBaseType	class	technology/xml/test/ZKDBBaseType.java	code/data_transfer_object	Castor Data Transfer Object Base	domain	legacy	2
 structure/Abstraction.java:Abstraction	class	structure/Abstraction.java	code/bridge	Bridge Pattern Abstraction	utility	legacy	2
-structure	folder	structure	code/design_patterns	Gang-of-Four Design Pattern Demos	utility	legacy	3
+structure	folder	structure	code/design_pattern	Gang-of-Four Design Pattern Demos	utility	legacy	3
 structure/BiPointer.java:BiPointer	class	structure/BiPointer.java	code/reference_counting	Bidirectional Pointer	utility	legacy	2
 structure/BiRef.java:BiRef	class	structure/BiRef.java	code/reference_counting	Bidirectional Reference	utility	legacy	2
 structure/Bridge.java:Bridge	class	structure/Bridge.java	code/bridge	Bridge Implementor	utility	legacy	2
@@ -536,8 +536,8 @@ structure/Element.java:Element	class	structure/Element.java	code/visitor_pattern
 structure/ElementA.java:ElementA	class	structure/ElementA.java	code/visitor_pattern	Concrete Visitable Element A	utility	legacy	2
 structure/ElementB.java:ElementB	class	structure/ElementB.java	code/visitor_pattern	Concrete Visitable Element B	utility	legacy	2
 structure/Ellipse.java:Ellipse	class	structure/Ellipse.java	code/2d_geometry	2D Ellipse	domain	legacy	2
-structure/Enum.java:Enum	class	structure/Enum.java	code/enum_like_type	Type-Safe Enum Emulation	utility	legacy	2
-structure/Enum.java:VarEnum	class	structure/Enum.java	code/enum_like_type	Variable Enum Emulation	utility	legacy	2
+structure/Enum.java:Enum	class	structure/Enum.java	code/enum_like	Type-Safe Enum Emulation	utility	legacy	2
+structure/Enum.java:VarEnum	class	structure/Enum.java	code/enum_like	Variable Enum Emulation	utility	legacy	2
 structure/Enum.java:Ternary	class	structure/Enum.java	code/ternary_logic	Ternary Logic Value	utility	legacy	2
 structure/Figure2D.java:Figure2D	class	structure/Figure2D.java	code/2d_geometry	2D Figure Base Class	domain	legacy	2
 structure/FullBridge.java:FullBridge	class	structure/FullBridge.java	code/bridge	Full Bridge	utility	legacy	2
@@ -555,7 +555,7 @@ structure/Singleton.java:Singleton.SINGLETON()	method	structure/Singleton.java	c
 structure/Singleton.java:Singleton.Singleton()	method	structure/Singleton.java	code/singleton_pattern	Private Constructor	utility	legacy	2
 structure/State.java:State	class	structure/State.java	code/state_pattern	State Pattern State	utility	legacy	2
 structure/Subscriber.java:Subscriber	class	structure/Subscriber.java	code/observer_pattern	Observer Pattern Subscriber	utility	legacy	2
-structure/TemplateMethod.java:TemplateMethod	class	structure/TemplateMethod.java	code/design_patterns	Template Method Pattern	utility	legacy	2
+structure/TemplateMethod.java:TemplateMethod	class	structure/TemplateMethod.java	code/design_pattern	Template Method Pattern	utility	legacy	2
 structure/Transaction.java:Transaction	class	structure/Transaction.java	code/transaction	Transaction Implementation	utility	legacy	2
 structure/UndoAble.java:UndoAble	class	structure/UndoAble.java	code/undo_redo	Undoable Interface	utility	legacy	2
 structure/Visitor.java:Visitor	class	structure/Visitor.java	code/visitor_pattern	Visitor Interface	utility	legacy	2
@@ -796,7 +796,7 @@ graphic/implement/GrayColor.java:GrayColor	class	graphic/implement/GrayColor.jav
 graphic/implement/GreyColor.java:GreyColor	class	graphic/implement/GreyColor.java	code/graphics,code/algorithm	Greyscale Dithering Strategy	utility	broken	3
 graphic/implement/RandomColor.java:RandomColor	class	graphic/implement/RandomColor.java	code/graphics,code/algorithm	Random/Anti-Moire Color Strategy	utility	legacy	2
 graphic/implement/TextureGraphics.java:TextureGraphics	class	graphic/implement/TextureGraphics.java	code/graphics	Texture-Sampling Color Strategy	utility	legacy	3
-graphic/implement/testGraph2D.java:testGraph2D	class	graphic/implement/testGraph2D.java	code/graphics,code/testing	Graph2D Demo Harness	test	legacy	2
+graphic/implement/testGraph2D.java:testGraph2D	class	graphic/implement/testGraph2D.java	code/graphics, code/test	Graph2D Demo Harness	test	legacy	2
 graphic/svg	folder	graphic/svg	code/rendering,code/parsing	SVG Rendering and Parsing	utility	legacy	3
 graphic/svg/SvgApplet.java:SvgApplet	class	graphic/svg/SvgApplet.java	code/rendering,code/parsing	SVG Applet Renderer	utility	broken	4
 graphic/svg/SvgHandler.java:SvgHandler	class	graphic/svg/SvgHandler.java	code/parsing	Empty SAX Handler Placeholder	utility	unfinished	2
@@ -818,8 +818,8 @@ graphic/math3D/Line.java:Line	class	graphic/math3D/Line.java	code/3d_geometry,co
 graphic/math3D/OdePlotter.java:OdePlotter	class	graphic/math3D/OdePlotter.java	code/numerical_integration,code/3d_rendering	ODE Trajectory Plotter	domain	broken	3
 graphic/math3D/PlanePlotter.java:PlanePlotter	class	graphic/math3D/PlanePlotter.java	code/3d_rendering,code/chart_rendering	Plane Plotter	domain	legacy	3
 graphic/math3D/Platonic.java:Platonic	class	graphic/math3D/Platonic.java	code/platonic_solids,code/3d_geometry	Platonic Solid Coordinate Generator	domain	legacy	3
-graphic/math3D/Platonic.java:Platonic.testMatrixTetrahedron()	method	graphic/math3D/Platonic.java	code/platonic_solids,code/testing	Tetrahedron Matrix Self-Test	test	legacy	2
-graphic/math3D/Platonic.java:Platonic.main(String[])	method	graphic/math3D/Platonic.java	code/platonic_solids,code/testing	Demo Entry Point	test	legacy	2
+graphic/math3D/Platonic.java:Platonic.testMatrixTetrahedron()	method	graphic/math3D/Platonic.java	code/platonic_solids, code/test	Tetrahedron Matrix Self-Test	test	legacy	2
+graphic/math3D/Platonic.java:Platonic.main(String[])	method	graphic/math3D/Platonic.java	code/platonic_solids, code/test	Demo Entry Point	test	legacy	2
 graphic/math3D/PlotVector.java:PlotVector	class	graphic/math3D/PlotVector.java	code/3d_rendering,code/geometry	Vector Field Plot Element	domain	legacy	2
 graphic/math3D/Polygon3D.java:Polygon3D	class	graphic/math3D/Polygon3D.java	code/3d_geometry,code/polygon_calculation	3D Polygon	domain	legacy	3
 graphic/math3D/Polygon3D.java:RotateFormXSection	class	graphic/math3D/Polygon3D.java	code/3d_geometry	Rotated-Form Cross-Section	domain	legacy	2
@@ -830,14 +830,14 @@ graphic/math3D/Projection.java:Projection	class	graphic/math3D/Projection.java	c
 graphic/math3D/RotationMouseController.java:RotationMouseController	class	graphic/math3D/RotationMouseController.java	code/mouse_input	Mouse-Driven Rotation Controller	domain	legacy	2
 graphic/math3D/ScalarPlanePlotter.java:ScalarPlanePlotter	class	graphic/math3D/ScalarPlanePlotter.java	code/3d_rendering,code/chart_rendering	Scalar-Colored Plane Plotter	domain	legacy	3
 graphic/math3D/ScalarPointPlot.java:ScalarPointPlot	class	graphic/math3D/ScalarPointPlot.java	code/3d_rendering,code/chart_rendering	Scalar-Colored Point Plot	domain	legacy	2
-graphic/math3D/TestMathGraph3.java:TestMathGraph3	class	graphic/math3D/TestMathGraph3.java	code/testing,code/3d_rendering	3D Graph Demo/Test Harness	test	legacy	2
-graphic/math3D/TestOdePlotter.java:TestOdePlotter	class	graphic/math3D/TestOdePlotter.java	code/testing,code/numerical_integration	ODE Plotter Demo/Test Harness	test	legacy	2
+graphic/math3D/TestMathGraph3.java:TestMathGraph3	class	graphic/math3D/TestMathGraph3.java	code/test, code/3d_rendering	3D Graph Demo/Test Harness	test	legacy	2
+graphic/math3D/TestOdePlotter.java:TestOdePlotter	class	graphic/math3D/TestOdePlotter.java	code/test, code/numerical_integration	ODE Plotter Demo/Test Harness	test	legacy	2
 graphic/math3D/TranslationMouseController.java:TranslationMouseController	class	graphic/math3D/TranslationMouseController.java	code/mouse_input	Mouse-Driven Translation Controller	domain	legacy	2
 graphic/math3D/VoxelPlot.java:VoxelPlot	class	graphic/math3D/VoxelPlot.java	code/3d_rendering	Voxel Plot	domain	legacy	3
 graphic/math3D/Wire3D.java:Wire3D	class	graphic/math3D/Wire3D.java	code/3d_geometry,code/graph_rendering	3D Wireframe Model	domain	legacy	3
-graphic/math3D/testMathGraph2.java:testMathGraph2	class	graphic/math3D/testMathGraph2.java	code/testing	3D Graph Demo/Test Harness	test	legacy	2
-graphic/math3D/testMathGraph3D.java:testMathGraph3D	class	graphic/math3D/testMathGraph3D.java	code/testing,code/3d_rendering	3D Graph Demo/Test Harness	test	legacy	2
-graphic/math3D/testMathGraph3D.java:testMathGraph3D.main(String[])	method	graphic/math3D/testMathGraph3D.java	code/testing	Demo Entry Point	test	legacy	2
+graphic/math3D/testMathGraph2.java:testMathGraph2	class	graphic/math3D/testMathGraph2.java	code/test	3D Graph Demo/Test Harness	test	legacy	2
+graphic/math3D/testMathGraph3D.java:testMathGraph3D	class	graphic/math3D/testMathGraph3D.java	code/test, code/3d_rendering	3D Graph Demo/Test Harness	test	legacy	2
+graphic/math3D/testMathGraph3D.java:testMathGraph3D.main(String[])	method	graphic/math3D/testMathGraph3D.java	code/test	Demo Entry Point	test	legacy	2
 graphic/mvc/AModel.java:AModel	class	graphic/mvc/AModel.java	code/model_state_management,code/observer_pattern	MVC Model Base Class	infrastructure	legacy	2
 graphic/mvc	folder	graphic/mvc	code/observer_pattern,code/gui	Model-View-Controller Framework	infrastructure	legacy	4
 graphic/mvc/BaseApplet.java:BaseApplet	class	graphic/mvc/BaseApplet.java	code/gui,code/event_handling	Applet Framework Base Class	infrastructure	broken	3
@@ -864,9 +864,9 @@ graphic/mvc/Point2D/Point2DModel.java:Point2DModel	class	graphic/mvc/Point2D/Poi
 graphic/mvc/Point2D/Point2DMouseController.java:Point2DMouseController	class	graphic/mvc/Point2D/Point2DMouseController.java	code/event_handling,code/interactive_editing	Point2D Mouse Controller	domain	legacy	2
 graphic/mvc/Point2D/Point2DPainter.java:Point2DPainter	class	graphic/mvc/Point2D/Point2DPainter.java	code/gui,code/graphics	Point2D Painter	domain	legacy	2
 graphic/mvc/plane2D/MatrixShort.java:MatrixShort	class	graphic/mvc/plane2D/MatrixShort.java	code/matrix_operation, code/polygon_matrix	Growable short[][] Polygon Matrix	utility	broken	4
-graphic/mvc/plane2D	folder	graphic/mvc/plane2D	code/polygon_operations,code/texture_mapping	3D Model Texture Mapping and Rendering	domain	broken	4
-graphic/mvc/plane2D/TexturePainter.java:TexturePainter	class	graphic/mvc/plane2D/TexturePainter.java	code/texture_mapping,code/gui	MilkShape3D Model Texture Painter	domain	legacy	3
-graphic/mvc/plane2D/TexturedBody.java:TexturedBody	class	graphic/mvc/plane2D/TexturedBody.java	code/texture_mapping	Textured 3D Body	domain	legacy	3
+graphic/mvc/plane2D	folder	graphic/mvc/plane2D	code/polygon_operations, code/texture_map	3D Model Texture Mapping and Rendering	domain	broken	4
+graphic/mvc/plane2D/TexturePainter.java:TexturePainter	class	graphic/mvc/plane2D/TexturePainter.java	code/texture_map, code/gui	MilkShape3D Model Texture Painter	domain	legacy	3
+graphic/mvc/plane2D/TexturedBody.java:TexturedBody	class	graphic/mvc/plane2D/TexturedBody.java	code/texture_map	Textured 3D Body	domain	legacy	3
 graphic/mvc/plane2D/VectorPolygon.java:VectorPolygon	class	graphic/mvc/plane2D/VectorPolygon.java	code/vector_operation, code/z_ordering	Dynamic Array of 3D-Projected Polygons	domain	broken	4
 math/matrix/AMatrix.java:AMatrix	class	math/matrix/AMatrix.java	code/matrix_base_class,code/matrix_algebra	Matrix Base Class	utility	legacy	3
 math/matrix	folder	math/matrix	code/matrix_algebra,code/numerical_linear_algebra	Numerical Linear Algebra (Matrix Types and Decompositions)	utility	legacy	4
@@ -878,10 +878,10 @@ math/matrix/Eigenvalues.java:Eigenvalues.EIGENVALUES(double[][], int, double[], 
 math/matrix/Eigenvalues.java:Eigenvalues.EV_SHIFT(double[][], int, double)	method	math/matrix/Eigenvalues.java	code/eigenvalue_decomposition	Wilkinson Shift Step	utility	legacy	3
 math/matrix/Eigenvalues.java:Eigenvalues.SET_COMPLEX_EV_PAIR(double[], double[], double, int, double, double, double)	method	math/matrix/Eigenvalues.java	code/eigenvalue_decomposition	Complex Eigenvalue Pair Assembly	utility	legacy	2
 math/matrix/Eigenvalues.java:Eigenvalues.IMPROVE_EV(double[][], int, int, double, double, double)	method	math/matrix/Eigenvalues.java	code/eigenvalue_decomposition	Eigenvalue Refinement Step	utility	legacy	3
-math/matrix/Eigenvalues.java:Eigenvalues.writeNorms(double[][])	method	math/matrix/Eigenvalues.java	code/eigenvalue_decomposition,code/testing	Matrix Norm Diagnostic Output	test	legacy	2
-math/matrix/Eigenvalues.java:Eigenvalues.testEIGENVALUES()	method	math/matrix/Eigenvalues.java	code/testing,code/eigenvalue_decomposition	Eigenvalue Self-Test	test	legacy	2
-math/matrix/Eigenvalues.java:Eigenvalues.testHessenberg()	method	math/matrix/Eigenvalues.java	code/testing,code/eigenvalue_decomposition	Hessenberg Self-Test	test	legacy	2
-math/matrix/Eigenvalues.java:Eigenvalues.main(String[])	method	math/matrix/Eigenvalues.java	code/testing	Demo Entry Point	test	legacy	2
+math/matrix/Eigenvalues.java:Eigenvalues.writeNorms(double[][])	method	math/matrix/Eigenvalues.java	code/eigenvalue_decomposition, code/test	Matrix Norm Diagnostic Output	test	legacy	2
+math/matrix/Eigenvalues.java:Eigenvalues.testEIGENVALUES()	method	math/matrix/Eigenvalues.java	code/test, code/eigenvalue_decomposition	Eigenvalue Self-Test	test	legacy	2
+math/matrix/Eigenvalues.java:Eigenvalues.testHessenberg()	method	math/matrix/Eigenvalues.java	code/test, code/eigenvalue_decomposition	Hessenberg Self-Test	test	legacy	2
+math/matrix/Eigenvalues.java:Eigenvalues.main(String[])	method	math/matrix/Eigenvalues.java	code/test	Demo Entry Point	test	legacy	2
 math/matrix/MatrixBand.java:MatrixBand	class	math/matrix/MatrixBand.java	code/band_diagonal_matrix,code/matrix_algebra	Band-Diagonal Matrix	utility	legacy	3
 math/matrix/MatrixDouble.java:MatrixDouble	class	math/matrix/MatrixDouble.java	code/matrix_operation, code/matrix_algebra	Double-Precision Dense Matrix	utility	broken	4
 math/matrix/MatrixDouble.java:MatrixDoubleStreamIn	class	math/matrix/MatrixDouble.java	code/matrix_operation	Double Matrix Row Stream Iterator	utility	broken	2
@@ -899,13 +899,13 @@ math/matrix/MatrixSymmetric.java:MatrixSymmetric.SOLVE_AT(double[][], double[], 
 math/matrix/MatrixSymmetric.java:MatrixSymmetric.EIGENVALUES(double[], double[], double[][])	method	math/matrix/MatrixSymmetric.java	code/eigenvalue_decomposition	Tridiagonal QL Eigenvalue Extraction	utility	legacy	4
 math/matrix/MatrixSymmetric.java:MatrixSymmetric.TRI_DIAGONALIZE(double[][], double[], double[], boolean)	method	math/matrix/MatrixSymmetric.java	code/tridiagonal_matrix_solving	Householder Tridiagonalization	utility	legacy	4
 math/matrix/MatrixSymmetric.java:MatrixSymmetric.orthogonalize(double[][], int, double[])	method	math/matrix/MatrixSymmetric.java	code/matrix_algebra	Gram-Schmidt Orthogonalization	utility	legacy	3
-math/matrix/MatrixSymmetric.java:MatrixSymmetric.testEigenVectors()	method	math/matrix/MatrixSymmetric.java	code/testing,code/eigenvalue_decomposition	Eigenvector Self-Test	test	legacy	2
-math/matrix/MatrixSymmetric.java:MatrixSymmetric.compareCoords(double, double, double, double)	method	math/matrix/MatrixSymmetric.java	code/testing	Coordinate Comparison Test Helper	test	legacy	2
+math/matrix/MatrixSymmetric.java:MatrixSymmetric.testEigenVectors()	method	math/matrix/MatrixSymmetric.java	code/test, code/eigenvalue_decomposition	Eigenvector Self-Test	test	legacy	2
+math/matrix/MatrixSymmetric.java:MatrixSymmetric.compareCoords(double, double, double, double)	method	math/matrix/MatrixSymmetric.java	code/test	Coordinate Comparison Test Helper	test	legacy	2
 math/matrix/MatrixSymmetric.java:MatrixSymmetric.OFFSET_MATRIX(double[][], int, int)	method	math/matrix/MatrixSymmetric.java	code/matrix_algebra	Diagonal Offset Utility	utility	legacy	2
-math/matrix/MatrixSymmetric.java:MatrixSymmetric.testEigenVectorsOffset()	method	math/matrix/MatrixSymmetric.java	code/testing,code/eigenvalue_decomposition	Offset Eigenvector Self-Test	test	legacy	2
-math/matrix/MatrixSymmetric.java:MatrixSymmetric.testTriDiagonalize()	method	math/matrix/MatrixSymmetric.java	code/testing,code/tridiagonal_matrix_solving	Tridiagonalization Self-Test	test	legacy	2
-math/matrix/MatrixSymmetric.java:MatrixSymmetric.testSolveCholesky()	method	math/matrix/MatrixSymmetric.java	code/testing,code/lu_decomposition	Cholesky Solve Self-Test	test	legacy	2
-math/matrix/MatrixSymmetric.java:MatrixSymmetric.main(String[])	method	math/matrix/MatrixSymmetric.java	code/testing	Demo Entry Point	test	legacy	2
+math/matrix/MatrixSymmetric.java:MatrixSymmetric.testEigenVectorsOffset()	method	math/matrix/MatrixSymmetric.java	code/test, code/eigenvalue_decomposition	Offset Eigenvector Self-Test	test	legacy	2
+math/matrix/MatrixSymmetric.java:MatrixSymmetric.testTriDiagonalize()	method	math/matrix/MatrixSymmetric.java	code/test, code/tridiagonal_matrix_solving	Tridiagonalization Self-Test	test	legacy	2
+math/matrix/MatrixSymmetric.java:MatrixSymmetric.testSolveCholesky()	method	math/matrix/MatrixSymmetric.java	code/test, code/lu_decomposition	Cholesky Solve Self-Test	test	legacy	2
+math/matrix/MatrixSymmetric.java:MatrixSymmetric.main(String[])	method	math/matrix/MatrixSymmetric.java	code/test	Demo Entry Point	test	legacy	2
 math/matrix/MatrixTriDiagonal.java:MatrixTriDiagonal	class	math/matrix/MatrixTriDiagonal.java	code/tridiagonal_matrix_solving,code/band_diagonal_matrix	Tridiagonal Matrix Solver	utility	broken	3
 math/matrix/Quaternion.java:Quaternion	class	math/matrix/Quaternion.java	code/quaternion_algebra,code/quaternion_math	Quaternion Rotation Algebra	utility	broken	3
 math/vector/AVector.java:AVector	class	math/vector/AVector.java	code/growable_array,code/array_bounds_check	Vector Family Base Class	utility	legacy	3
@@ -932,8 +932,8 @@ math/vector/VectorShort.java:VectorShortStreamIn	class	math/vector/VectorShort.j
 math/vector/VectorString.java:VectorString	class	math/vector/VectorString.java	code/growable_array,code/string_parsing,code/string_formatting	Growable String[] Vector with String Utility Library	utility	broken	4
 math/vector/statistic/Correlation.java:Correlation	class	math/vector/statistic/Correlation.java	code/statistical_correlation,code/hypothesis_testing	Cross-Vector Correlation Statistics	domain	legacy	4
 math/vector/statistic/Correlation.java:Correlation.Correlation()	method	math/vector/statistic/Correlation.java	code/statistical_correlation	Private Constructor (Static Utility)	domain	legacy	2
-math/vector/statistic/Correlation.java:Correlation.main(String[])	method	math/vector/statistic/Correlation.java	code/testing	Demo Entry Point	test	legacy	2
-math/vector/statistic/Correlation.java:Correlation.testIt()	method	math/vector/statistic/Correlation.java	code/testing,code/statistical_correlation	Correlation Self-Test Dispatcher	test	legacy	2
+math/vector/statistic/Correlation.java:Correlation.main(String[])	method	math/vector/statistic/Correlation.java	code/test	Demo Entry Point	test	legacy	2
+math/vector/statistic/Correlation.java:Correlation.testIt()	method	math/vector/statistic/Correlation.java	code/test, code/statistical_correlation	Correlation Self-Test Dispatcher	test	legacy	2
 math/vector/statistic/Correlation.java:Correlation.CORRELATION(float, float, float)	method	math/vector/statistic/Correlation.java	code/statistical_correlation	Pearson Correlation from Sums	domain	legacy	2
 math/vector/statistic/Correlation.java:Correlation.CORRELATION_SLOPE(float, float)	method	math/vector/statistic/Correlation.java	code/statistical_correlation	Regression Slope from Correlation	domain	legacy	2
 math/vector/statistic/Correlation.java:Correlation.CORRELATION(float[], float[])	method	math/vector/statistic/Correlation.java	code/statistical_correlation	Pearson Correlation of Two Vectors	domain	legacy	3
@@ -951,10 +951,10 @@ math/vector/statistic/Correlation.java:Correlation.SIGN_CORRELATION_Z(float[][],
 math/vector/statistic/Correlation.java:Correlation.SIGN_CORRELATION_Z(float[][], int, int, int, int)	method	math/vector/statistic/Correlation.java	code/statistical_correlation	Kendall Tau Sign Correlation Matrix (Range)	domain	legacy	3
 math/vector/statistic/Correlation.java:Correlation.SIGN_CORRELATION_Z(int[][])	method	math/vector/statistic/Correlation.java	code/statistical_correlation	Kendall Tau Sign Correlation (int Matrix)	domain	legacy	3
 math/vector/statistic/Correlation.java:Correlation.SIGN_CORRELATION_Z(int[][], int, int)	method	math/vector/statistic/Correlation.java	code/statistical_correlation	Kendall Tau Sign Correlation (int Matrix, Range)	domain	legacy	3
-math/vector/statistic/Correlation.java:Correlation.testCorrelation()	method	math/vector/statistic/Correlation.java	code/testing,code/statistical_correlation	Pearson Correlation Self-Test	test	legacy	2
-math/vector/statistic/Correlation.java:Correlation.testRankCorrelation()	method	math/vector/statistic/Correlation.java	code/testing,code/statistical_correlation	Rank Correlation Self-Test	test	legacy	2
-math/vector/statistic/Correlation.java:Correlation.testSignCorrelation()	method	math/vector/statistic/Correlation.java	code/testing,code/statistical_correlation	Sign Correlation Self-Test	test	legacy	2
-math/vector/statistic/Correlation.java:Correlation.testSignCorrelation2()	method	math/vector/statistic/Correlation.java	code/testing,code/statistical_correlation	Sign Correlation Self-Test (Variant)	test	legacy	2
+math/vector/statistic/Correlation.java:Correlation.testCorrelation()	method	math/vector/statistic/Correlation.java	code/test, code/statistical_correlation	Pearson Correlation Self-Test	test	legacy	2
+math/vector/statistic/Correlation.java:Correlation.testRankCorrelation()	method	math/vector/statistic/Correlation.java	code/test, code/statistical_correlation	Rank Correlation Self-Test	test	legacy	2
+math/vector/statistic/Correlation.java:Correlation.testSignCorrelation()	method	math/vector/statistic/Correlation.java	code/test, code/statistical_correlation	Sign Correlation Self-Test	test	legacy	2
+math/vector/statistic/Correlation.java:Correlation.testSignCorrelation2()	method	math/vector/statistic/Correlation.java	code/test, code/statistical_correlation	Sign Correlation Self-Test (Variant)	test	legacy	2
 math/vector/statistic	folder	math/vector/statistic	code/statistical_correlation,code/hypothesis_testing	Statistical Correlation and Hypothesis Testing	domain	legacy	4
 math/vector/statistic/StatisticsFloat.java:StatisticsFloat	class	math/vector/statistic/StatisticsFloat.java	code/hypothesis_testing,code/chi_squared	Statistical Hypothesis Tests over float Data	domain	legacy	4
 math/vector/statistic/StatisticsFloat.java:HyperCubeShare	class	math/vector/statistic/StatisticsFloat.java	code/hypothesis_testing	2D Sampling Test Model	test	legacy	2
@@ -1070,18 +1070,18 @@ function/derive/ring/body	folder	function/derive/ring/body	code/mathematical_fun
 function/derive/ring/body/vector	folder	function/derive/ring/body/vector	code/differential_integration,code/vector_math	Vector Calculus and Partial Derivatives	utility	broken	4
 function/derive/CCountAble.java:ByRefComparison	class	function/derive/CCountAble.java	code/numeric_comparison	Comparison Result Holder	utility	legacy	2
 function/derive/CCountAble.java:Comparison	class	function/derive/CCountAble.java	code/enum_modeling,code/numeric_comparison	Comparison Result Enum	utility	legacy	2
-function/derive/neuron/Kohonen.java:KohonenTester	class	function/derive/neuron/Kohonen.java	code/neural_network,code/testing	Self-Organizing Map Test Harness	test	legacy	2
-function/derive/neuron/testNeuronNet.java:testNeuronNet.main(String[])	method	function/derive/neuron/testNeuronNet.java	code/testing	Demo Entry Point	test	legacy	2
-function/derive/ring/TestRingFuncs.java:TestRingFuncs	class	function/derive/ring/TestRingFuncs.java	code/testing,code/algebraic_function	Ring Function Test Harness	test	legacy	2
-function/derive/ring/TestRingFuncs.java:TestRingFuncs.main(String[])	method	function/derive/ring/TestRingFuncs.java	code/testing	Demo Entry Point	test	legacy	2
-function/derive/ring/TestRingFuncs.java:TestRingFuncs.testInstantiation()	method	function/derive/ring/TestRingFuncs.java	code/testing	Instantiation Self-Test	test	legacy	2
-function/derive/ring/body/TestBodyFuncs.java:TestBodyFuncs.Delta2(Object)	method	function/derive/ring/body/TestBodyFuncs.java	code/testing	Delta Function Test Helper	test	legacy	2
-function/derive/ring/body/TestBodyFuncs.java:TestBodyFuncs.Delta4(Object)	method	function/derive/ring/body/TestBodyFuncs.java	code/testing	Delta Function Test Helper	test	legacy	2
-function/derive/ring/body/TestBodyFuncs.java:TestBodyFuncs.ExpInt(MetricBody)	method	function/derive/ring/body/TestBodyFuncs.java	code/testing,code/numerical_integration	Exponential Integral Test Helper	test	legacy	2
-function/derive/ring/body/TestBodyFuncs.java:TestBodyFuncs.main(String[])	method	function/derive/ring/body/TestBodyFuncs.java	code/testing	Demo Entry Point	test	legacy	2
-function/derive/ring/body/TestBodyFuncs.java:TestBodyFuncs.testExpInt()	method	function/derive/ring/body/TestBodyFuncs.java	code/testing	Exponential Integral Self-Test	test	legacy	2
-function/derive/ring/body/TestBodyFuncs.java:TestBodyFuncs.testGaussIntegral()	method	function/derive/ring/body/TestBodyFuncs.java	code/testing	Gaussian Integral Self-Test	test	legacy	2
-function/derive/ring/body/vector/testBodyVFuncs.java:testBodyVFuncs.main(String[])	method	function/derive/ring/body/vector/testBodyVFuncs.java	code/testing	Demo Entry Point	test	legacy	2
+function/derive/neuron/Kohonen.java:KohonenTester	class	function/derive/neuron/Kohonen.java	code/neural_network, code/test	Self-Organizing Map Test Harness	test	legacy	2
+function/derive/neuron/testNeuronNet.java:testNeuronNet.main(String[])	method	function/derive/neuron/testNeuronNet.java	code/test	Demo Entry Point	test	legacy	2
+function/derive/ring/TestRingFuncs.java:TestRingFuncs	class	function/derive/ring/TestRingFuncs.java	code/test, code/algebraic_function	Ring Function Test Harness	test	legacy	2
+function/derive/ring/TestRingFuncs.java:TestRingFuncs.main(String[])	method	function/derive/ring/TestRingFuncs.java	code/test	Demo Entry Point	test	legacy	2
+function/derive/ring/TestRingFuncs.java:TestRingFuncs.testInstantiation()	method	function/derive/ring/TestRingFuncs.java	code/test	Instantiation Self-Test	test	legacy	2
+function/derive/ring/body/TestBodyFuncs.java:TestBodyFuncs.Delta2(Object)	method	function/derive/ring/body/TestBodyFuncs.java	code/test	Delta Function Test Helper	test	legacy	2
+function/derive/ring/body/TestBodyFuncs.java:TestBodyFuncs.Delta4(Object)	method	function/derive/ring/body/TestBodyFuncs.java	code/test	Delta Function Test Helper	test	legacy	2
+function/derive/ring/body/TestBodyFuncs.java:TestBodyFuncs.ExpInt(MetricBody)	method	function/derive/ring/body/TestBodyFuncs.java	code/test, code/numerical_integration	Exponential Integral Test Helper	test	legacy	2
+function/derive/ring/body/TestBodyFuncs.java:TestBodyFuncs.main(String[])	method	function/derive/ring/body/TestBodyFuncs.java	code/test	Demo Entry Point	test	legacy	2
+function/derive/ring/body/TestBodyFuncs.java:TestBodyFuncs.testExpInt()	method	function/derive/ring/body/TestBodyFuncs.java	code/test	Exponential Integral Self-Test	test	legacy	2
+function/derive/ring/body/TestBodyFuncs.java:TestBodyFuncs.testGaussIntegral()	method	function/derive/ring/body/TestBodyFuncs.java	code/test	Gaussian Integral Self-Test	test	legacy	2
+function/derive/ring/body/vector/testBodyVFuncs.java:testBodyVFuncs.main(String[])	method	function/derive/ring/body/vector/testBodyVFuncs.java	code/test	Demo Entry Point	test	legacy	2
 streamIO/copy/primitiveOp/IOpLong.java:IOpLong	class	streamIO/copy/primitiveOp/IOpLong.java	code/arithmetic_operation,code/in_place_operation,code/numeric_interface	Primitive Numeric Operations,Mutable Value Semantics	utility	legacy	3
 streamIO/copy/primitiveOp/IIOpLong.java:IIOpLong	class	streamIO/copy/primitiveOp/IIOpLong.java	code/arithmetic_operation,code/in_place_operation,code/numeric_comparison	Primitive Numeric Operations	utility	legacy	3
 streamIO/copy/primitiveOp/AOpLong.java:AOpLong	class	streamIO/copy/primitiveOp/AOpLong.java	code/abstract_base,code/delegation,code/arithmetic_operation	Primitive Numeric Operations,Deprecated API	utility	legacy	3
@@ -1216,7 +1216,7 @@ function/byref/ICategorizeAble.java:ICategorizeAble	class	function/byref/ICatego
 function/byref/IFloat.java:IFloat	class	function/byref/IFloat.java	code/function_wrapper,code/mathematical_constants	By-Reference Primitive Wrapper	utility	legacy	2
 function/byref/IInteger.java:IInteger	class	function/byref/IInteger.java	code/function_wrapper,code/mathematical_constants	By-Reference Primitive Wrapper	utility	legacy	2
 function/byref/ShortComparator.java:ShortComparator	class	function/byref/ShortComparator.java	code/numeric_comparison	Comparator	utility	legacy	2
-function/byref/TestByRef.java:TestByRef	class	function/byref/TestByRef.java	code/testing	Test Harness	utility	legacy	2
+function/byref/TestByRef.java:TestByRef	class	function/byref/TestByRef.java	code/test	Test Harness	utility	legacy	2
 function/byref/combinatoric/Bernoulli.java:Bernoulli	class	function/byref/combinatoric/Bernoulli.java	code/combinatorics,code/special_function	Combinatorics	utility	legacy	2
 function/byref/combinatoric/BesselFuncs.java:BesselFuncs	class	function/byref/combinatoric/BesselFuncs.java	code/combinatorics,code/special_function	Combinatorics	utility	legacy	2
 function/byref/combinatoric/CombiFuncs.java:CombiFuncs	class	function/byref/combinatoric/CombiFuncs.java	code/combinatorics,code/special_function	Combinatorics	utility	legacy	2
@@ -1816,5 +1816,5 @@ streamIO/integer/jdbc/dbTest/DbTestLess.java:DbTestLess	class	streamIO/integer/j
 streamIO/integer/jdbc/dbTest/DbTestNegate.java:DbTestNegate	class	streamIO/integer/jdbc/dbTest/DbTestNegate.java	code/predicate,code/predicate_delegate	Negating Row Predicate Wrapper	domain	legacy	2
 streamIO/integer/jdbc/dbTest/DbTestOuter.java:DbTestOuter	class	streamIO/integer/jdbc/dbTest/DbTestOuter.java	code/predicate,code/predicate_evaluation	Left Outer Join Row Predicate	domain	broken	2
 streamIO/integer/jdbc/dbTest/DbTestSwapOperands.java:DbTestSwapOperands	class	streamIO/integer/jdbc/dbTest/DbTestSwapOperands.java	code/predicate,code/predicate_delegate	Operand-Swapping Row Predicate Wrapper	domain	legacy	2
-streamIO/integer/jdbc/dbTest/FilterRsRows.java:FilterRsRows	class	streamIO/integer/jdbc/dbTest/FilterRsRows.java	code/predicate_filter,code/predicate_filtering	Filters ResultSet Rows Where a Predicate is False	domain	legacy	2
+streamIO/integer/jdbc/dbTest/FilterRsRows.java:FilterRsRows	class	streamIO/integer/jdbc/dbTest/FilterRsRows.java	code/predicate_filter	Filters ResultSet Rows Where a Predicate is False	domain	legacy	2
 streamIO/integer/jdbc/dbTest/IDbTest.java:IDbTest	class	streamIO/integer/jdbc/dbTest/IDbTest.java	code/predicate,code/predicate_interface	Row Predicate Contract between Two DbColumn Fields	domain	legacy	2
