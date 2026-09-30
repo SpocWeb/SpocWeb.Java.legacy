@@ -18,6 +18,35 @@ facets:
   status: stable
   complexity: 2
 description: 'A two-interface expression of the Memento pattern, kept deliberately minimal: an object that can snapshot and restore its own state, and an opaque token standing for one such snapshot.'
+dv_has_:
+  sub_:
+    folders: 0
+    files: 5
+    units: 2
+    facet_:
+      layer_:
+        infrastructure: 2
+      status_:
+        stable: 2
+      complexity_:
+        "2": 2
+    tag_:
+      code_:
+        state_snapshot: 2
+        marker_interface: 1
+        interface_contract: 1
+    concept_:
+      memento_pattern: 2
+has_sub_folders: 0
+has_sub_files: 5
+has_sub_units: 2
+has_sub_facet_layer_infrastructure: 2
+has_sub_facet_status_stable: 2
+has_sub_facet_complexity_2: 2
+has_sub_tag_code_state_snapshot: 2
+has_sub_tag_code_marker_interface: 1
+has_sub_tag_code_interface_contract: 1
+has_sub_concept_memento_pattern: 2
 ---
 
 # mementos

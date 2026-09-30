@@ -14,6 +14,31 @@ facets:
   status: legacy
   complexity: 2
 description: 'A single demonstration of the Java Sound API: reading a WAV file''s format and stream, and writing back a synthesized sine-wave WAV file of raw PCM samples.'
+dv_has_:
+  sub_:
+    folders: 0
+    files: 3
+    units: 1
+    facet_:
+      layer_:
+        utility: 1
+      status_:
+        legacy: 1
+      complexity_:
+        "3": 1
+    tag_:
+      code_:
+        audio: 1
+    concept_:
+      wav_file_reader: 1
+has_sub_folders: 0
+has_sub_files: 3
+has_sub_units: 1
+has_sub_facet_layer_utility: 1
+has_sub_facet_status_legacy: 1
+has_sub_facet_complexity_3: 1
+has_sub_tag_code_audio: 1
+has_sub_concept_wav_file_reader: 1
 ---
 
 # sound

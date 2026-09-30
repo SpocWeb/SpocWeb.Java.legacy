@@ -47,6 +47,33 @@ facets:
   status: broken
   complexity: 3
 description: 'Stateful streaming aggregators over a sequence of double values passed one at a time through `Map`/`process`: `Adder`/`Multiplier`/`Product`/`Sum`/`SumSquares` accumulate a running total, `Maximum`/`Minimum` track extrema, `RunningMean` and `Product.getHMV()` compute running statistics, and `LinearScale`/`BiLinearSum`/`FourierCoefficient` combine several inputs into a scaled or weighted result.'
+dv_has_:
+  sub_:
+    folders: 0
+    files: 25
+    units: 12
+    facet_:
+      layer_:
+        utility: 12
+      status_:
+        legacy: 12
+      complexity_:
+        "2": 12
+    tag_:
+      code_:
+        running_aggregate: 12
+        mathematical_function: 12
+    concept_:
+      streaming_numeric_aggregator: 12
+has_sub_folders: 0
+has_sub_files: 25
+has_sub_units: 12
+has_sub_facet_layer_utility: 12
+has_sub_facet_status_legacy: 12
+has_sub_facet_complexity_2: 12
+has_sub_tag_code_running_aggregate: 12
+has_sub_tag_code_mathematical_function: 12
+has_sub_concept_streaming_numeric_aggregator: 12
 ---
 
 # real

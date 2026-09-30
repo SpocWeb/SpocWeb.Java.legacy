@@ -53,6 +53,92 @@ facets:
   status: stable
   complexity: 2
 description: 'Personal Java codebase, accumulated from the JDK 1.2-6 era onward and still organised as a single flat source tree rather than a build-tool project. There is no `pom.xml`, `build.gradle` or `Makefile`: the tree carries Eclipse `.project`/ `.classpath` metadata only, and compiled `.class` files sit alongside their sources (ignored via `.gitignore`).'
+dv_has_:
+  sub_:
+    folders: 129
+    files: 3318
+    units: 1638
+    facet_:
+      layer_:
+        utility: 909
+        domain: 464
+        infrastructure: 213
+        test: 37
+        data: 12
+      status_:
+        legacy: 1324
+        broken: 166
+        stable: 128
+        experimental: 9
+        unfinished: 8
+      complexity_:
+        "2": 619
+        "3": 596
+        "4": 420
+    tag_:
+      code_:
+        abstract_base: 25
+        enumerator: 25
+        iterator_adapter: 25
+        random_number_generation: 25
+        base64_encoding: 23
+        crc: 23
+        quasi_random_sequence: 23
+        xor_cipher: 23
+        algorithm: 22
+        differential_integration: 22
+    concept_:
+      custom_streaming_enumerator_and_iterator_bridge_layer_for_object_collections: 25
+      byte_:
+        character_re_encoding_filters_base64_binhex_url_:
+          entity_escaping_crc_xor: 23
+      function_:
+        relation_contract: 23
+      pseudo_random_and_quasi_random_integer_generator_family_with_mark_:
+        restore_replay: 21
+      ring_algebra_and_ode_solvers: 29
+      filesystem_backed_jdbc_driver_framework_with_fixed_length_and_separator_delimited_table_storage: 32
+      domain_model: 35
+      function_algebra: 35
+      vector_field_function: 17
+      primitive_and_structured_stream_i_:
+        o_core_abstractions: 36
+has_sub_folders: 129
+has_sub_files: 3318
+has_sub_units: 1638
+has_sub_facet_layer_utility: 909
+has_sub_facet_layer_domain: 464
+has_sub_facet_layer_infrastructure: 213
+has_sub_facet_layer_test: 37
+has_sub_facet_layer_data: 12
+has_sub_facet_status_legacy: 1324
+has_sub_facet_status_broken: 166
+has_sub_facet_status_stable: 128
+has_sub_facet_status_experimental: 9
+has_sub_facet_status_unfinished: 8
+has_sub_facet_complexity_2: 619
+has_sub_facet_complexity_3: 596
+has_sub_facet_complexity_4: 420
+has_sub_tag_code_abstract_base: 25
+has_sub_tag_code_enumerator: 25
+has_sub_tag_code_iterator_adapter: 25
+has_sub_tag_code_random_number_generation: 25
+has_sub_tag_code_base64_encoding: 23
+has_sub_tag_code_crc: 23
+has_sub_tag_code_quasi_random_sequence: 23
+has_sub_tag_code_xor_cipher: 23
+has_sub_tag_code_algorithm: 22
+has_sub_tag_code_differential_integration: 22
+has_sub_concept_custom_streaming_enumerator_and_iterator_bridge_layer_for_object_collections: 25
+has_sub_concept_byte_character_re_encoding_filters_base64_binhex_url_entity_escaping_crc_xor: 23
+has_sub_concept_function_relation_contract: 23
+has_sub_concept_pseudo_random_and_quasi_random_integer_generator_family_with_mark_restore_replay: 21
+has_sub_concept_ring_algebra_and_ode_solvers: 29
+has_sub_concept_filesystem_backed_jdbc_driver_framework_with_fixed_length_and_separator_delimited_table_storage: 32
+has_sub_concept_domain_model: 35
+has_sub_concept_function_algebra: 35
+has_sub_concept_vector_field_function: 17
+has_sub_concept_primitive_and_structured_stream_i_o_core_abstractions: 36
 ---
 
 # Java

@@ -23,6 +23,39 @@ facets:
   status: broken
   complexity: 3
 description: 'Defines how much influence a single measured or random value contributes to a robust fit or distribution estimate, based on its normalized deviation from the mean. Each implementation models a different distribution shape (exponential, gaussian, or Lorentzian/Cauchy), and the whole point of the abstraction is to bound the influence of outliers: weight should first increase with the deviation, then decrease past a certain magnitude, so a single wild data point cannot dominate an otherwise-good fit.'
+dv_has_:
+  sub_:
+    folders: 0
+    files: 8
+    units: 4
+    facet_:
+      layer_:
+        utility: 4
+      status_:
+        broken: 3
+        legacy: 1
+      complexity_:
+        "2": 4
+    tag_:
+      code_:
+        weighting: 4
+    concept_:
+      exponential_weight_function: 1
+      gaussian_weight_function: 1
+      lorentzian_weight_function: 1
+      weight_function_interface: 1
+has_sub_folders: 0
+has_sub_files: 8
+has_sub_units: 4
+has_sub_facet_layer_utility: 4
+has_sub_facet_status_broken: 3
+has_sub_facet_status_legacy: 1
+has_sub_facet_complexity_2: 4
+has_sub_tag_code_weighting: 4
+has_sub_concept_exponential_weight_function: 1
+has_sub_concept_gaussian_weight_function: 1
+has_sub_concept_lorentzian_weight_function: 1
+has_sub_concept_weight_function_interface: 1
 ---
 
 # weight

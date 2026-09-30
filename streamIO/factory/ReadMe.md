@@ -20,6 +20,37 @@ facets:
   status: stable
   complexity: 2
 description: 'Two `IFactory` implementations that create a new Object from an existing one, differing only in how faithfully the new instance reproduces the original: `FactoryByClass` copies only the type, via reflection, while `FactoryByPrototype` copies the data too, via an explicit `ICopy` contract that stands in for Java''s protected `clone()`.'
+dv_has_:
+  sub_:
+    folders: 0
+    files: 4
+    units: 2
+    facet_:
+      layer_:
+        infrastructure: 2
+      status_:
+        stable: 2
+      complexity_:
+        "2": 2
+    tag_:
+      code_:
+        factory_pattern: 2
+        cloneable_pattern: 1
+        reflection: 1
+    concept_:
+      object_instantiation: 2
+      prototype_pattern: 2
+has_sub_folders: 0
+has_sub_files: 4
+has_sub_units: 2
+has_sub_facet_layer_infrastructure: 2
+has_sub_facet_status_stable: 2
+has_sub_facet_complexity_2: 2
+has_sub_tag_code_factory_pattern: 2
+has_sub_tag_code_cloneable_pattern: 1
+has_sub_tag_code_reflection: 1
+has_sub_concept_object_instantiation: 2
+has_sub_concept_prototype_pattern: 2
 ---
 
 # factory

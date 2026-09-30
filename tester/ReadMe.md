@@ -85,6 +85,73 @@ facets:
   status: legacy
   complexity: 3
 description: 'Core library of small, composable abstractions for testing, comparing and processing objects: unary predicates (`ITester`), equivalence relations (`IEquivalence`), order relations (`IComparator`/`IOrderator`) and metrics (`IMetric`/`IDoubleMetric`), plus a handful of stock implementations (`Discrete`, `MetricByHash`, `MetricMeasurAble`, `OrderatorComparable`, `OrderatorOrderable`) that adapt these interfaces to hash codes, `Comparable` or a custom `IMeasurAble`/`IIOrderAble` contract. `AComparator` supplies shared default behaviour that concrete comparators build on. The sub-folders apply these abstractions to specific domains: `algebra/` combines `ITester` predicates with Boolean operators, `stateful/` adds testers whose result depends on prior calls, `fuzzy/` builds approximate string/set matching on top of `IMetric`, `logic/` implements a Decision Table evaluator, and `process/` models finite-state automata and stream processing.'
+dv_has_:
+  sub_:
+    folders: 5
+    files: 113
+    units: 58
+    facet_:
+      layer_:
+        utility: 57
+        test: 1
+      status_:
+        legacy: 51
+        broken: 7
+      complexity_:
+        "2": 47
+        "3": 11
+    tag_:
+      code_:
+        state_machine: 17
+        predicate_logic: 9
+        decision_tree: 5
+        comparator: 5
+        metric_interface: 5
+        rule_engine: 4
+        stateful_algorithm: 4
+        boolean_algebra: 6
+        custom_equivalence: 3
+        fuzzy_search: 2
+    concept_:
+      dynamic_transition_interface: 2
+      approximate_matching: 1
+      automata_and_stream_processing: 1
+      automaton_base_class: 1
+      blocking_test_waiter: 1
+      boolean_and_tester: 1
+      boolean_flip_flop: 1
+      boolean_not_tester: 1
+      boolean_or_tester: 1
+      boolean_predicate_composition: 1
+has_sub_folders: 5
+has_sub_files: 113
+has_sub_units: 58
+has_sub_facet_layer_utility: 57
+has_sub_facet_layer_test: 1
+has_sub_facet_status_legacy: 51
+has_sub_facet_status_broken: 7
+has_sub_facet_complexity_2: 47
+has_sub_facet_complexity_3: 11
+has_sub_tag_code_state_machine: 17
+has_sub_tag_code_predicate_logic: 9
+has_sub_tag_code_decision_tree: 5
+has_sub_tag_code_comparator: 5
+has_sub_tag_code_metric_interface: 5
+has_sub_tag_code_rule_engine: 4
+has_sub_tag_code_stateful_algorithm: 4
+has_sub_tag_code_boolean_algebra: 6
+has_sub_tag_code_custom_equivalence: 3
+has_sub_tag_code_fuzzy_search: 2
+has_sub_concept_dynamic_transition_interface: 2
+has_sub_concept_approximate_matching: 1
+has_sub_concept_automata_and_stream_processing: 1
+has_sub_concept_automaton_base_class: 1
+has_sub_concept_blocking_test_waiter: 1
+has_sub_concept_boolean_and_tester: 1
+has_sub_concept_boolean_flip_flop: 1
+has_sub_concept_boolean_not_tester: 1
+has_sub_concept_boolean_or_tester: 1
+has_sub_concept_boolean_predicate_composition: 1
 ---
 
 # tester

@@ -31,6 +31,35 @@ facets:
   status: stable
   complexity: 2
 description: 'A pure-interface implementation of Martin Fowler''s Party/Responsibility analysis pattern: `Party` (a Person or Organization, possibly composite) has a dynamically assignable `PartyType`, and `Responsibility` generalizes hierarchical relationships between Parties (parent/child, org membership, etc.) beyond a single fixed hierarchy. Each operational concept has a Knowledge-Level counterpart that constrains it: `PartyAssociation` pairs two `Party`s while `PartyTypeAssociation` pairs the corresponding `PartyType`s, and `ResponsibilityType` maintains the allowed `PartyTypeAssociation`s for a `Responsibility`. No implementation of these interfaces exists in this folder.'
+dv_has_:
+  sub_:
+    folders: 0
+    files: 14
+    units: 6
+    facet_:
+      layer_:
+        domain: 6
+      status_:
+        stable: 6
+      complexity_:
+        "2": 6
+    tag_:
+      code_:
+        type_system: 6
+        domain_model: 6
+    concept_:
+      relationship_modelling: 6
+      domain_model: 6
+has_sub_folders: 0
+has_sub_files: 14
+has_sub_units: 6
+has_sub_facet_layer_domain: 6
+has_sub_facet_status_stable: 6
+has_sub_facet_complexity_2: 6
+has_sub_tag_code_type_system: 6
+has_sub_tag_code_domain_model: 6
+has_sub_concept_relationship_modelling: 6
+has_sub_concept_domain_model: 6
 ---
 
 # analysis

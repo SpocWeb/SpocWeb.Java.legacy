@@ -27,6 +27,37 @@ facets:
   status: broken
   complexity: 2
 description: 'Unchecked-exception base classes for this codebase, predating `Throwable.getCause()` (Java 1.4): `BaseException` and the largely redundant `ChainedException` both wrap an inner Throwable by hand and print it after their own trace, with local variables also collectable on `BaseException` for post-mortem debugging. `OperationNotSupported`, `ReadOnlyException` and `FailureException` are domain-specific subclasses of `BaseException` for, respectively, optional interface methods, mutation attempts on a read-only object, and the Assert class''s failed-assertion signal.'
+dv_has_:
+  sub_:
+    folders: 0
+    files: 10
+    units: 5
+    facet_:
+      layer_:
+        infrastructure: 5
+      status_:
+        stable: 4
+        broken: 1
+      complexity_:
+        "2": 5
+    tag_:
+      code_:
+        custom_exception: 5
+        exception_wrapping: 2
+    concept_:
+      error_handling: 5
+      testing: 1
+has_sub_folders: 0
+has_sub_files: 10
+has_sub_units: 5
+has_sub_facet_layer_infrastructure: 5
+has_sub_facet_status_stable: 4
+has_sub_facet_status_broken: 1
+has_sub_facet_complexity_2: 5
+has_sub_tag_code_custom_exception: 5
+has_sub_tag_code_exception_wrapping: 2
+has_sub_concept_error_handling: 5
+has_sub_concept_testing: 1
 ---
 
 # exception

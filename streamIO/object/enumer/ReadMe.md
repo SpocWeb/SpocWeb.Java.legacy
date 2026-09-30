@@ -87,6 +87,53 @@ facets:
   status: legacy
   complexity: 4
 description: 'Enumerator/Iterator layer for the `streamIO.object` package: the `Enumerator` interface plus its abstract base (`AEnumerator`) and reverse-iteration counterpart (`AReverseEnumerator`), concrete implementations over arrays (`ArrayEnum`, `ArrayEnumDbl`, `ArrayEnumPrim`), linked structures (`ListItem`, `DblListItem`), and asynchronous pipes (`APipe`, `CachePipe`, `PipeSplitter`). Also provides bridges to and from `java.util.Iterator` (`Iterator2Enumerator`, `Enumerator2Iterator`, `Enumerator2Enumeration`) so this codebase''s custom streaming abstractions can interoperate with standard Java collections. `container/` (documented separately) supplies the concrete storage structures - HashContainer, TreeMap, Array, Relation, etc. - that these Enumerators iterate over.'
+dv_has_:
+  sub_:
+    folders: 3
+    files: 172
+    units: 87
+    facet_:
+      layer_:
+        utility: 87
+      status_:
+        legacy: 87
+      complexity_:
+        "4": 87
+    tag_:
+      code_:
+        enumerator: 24
+        iterator_adapter: 24
+        container: 45
+        container_iteration: 45
+        hash_table: 45
+        red_black_tree: 12
+        iterator_pattern: 12
+        scheduling: 6
+        adapter: 6
+    concept_:
+      custom_streaming_enumerator_and_iterator_bridge_layer_for_object_collections: 24
+      concrete_storage_containers_arrays_hash_tables_and_relations: 45
+      red_black_tree_backed_sorted_map_implementation: 12
+      small_adapter_and_scheduling_helper_classes: 6
+has_sub_folders: 3
+has_sub_files: 172
+has_sub_units: 87
+has_sub_facet_layer_utility: 87
+has_sub_facet_status_legacy: 87
+has_sub_facet_complexity_4: 87
+has_sub_tag_code_enumerator: 24
+has_sub_tag_code_iterator_adapter: 24
+has_sub_tag_code_container: 45
+has_sub_tag_code_container_iteration: 45
+has_sub_tag_code_hash_table: 45
+has_sub_tag_code_red_black_tree: 12
+has_sub_tag_code_iterator_pattern: 12
+has_sub_tag_code_scheduling: 6
+has_sub_tag_code_adapter: 6
+has_sub_concept_custom_streaming_enumerator_and_iterator_bridge_layer_for_object_collections: 24
+has_sub_concept_concrete_storage_containers_arrays_hash_tables_and_relations: 45
+has_sub_concept_red_black_tree_backed_sorted_map_implementation: 12
+has_sub_concept_small_adapter_and_scheduling_helper_classes: 6
 ---
 
 # enumer

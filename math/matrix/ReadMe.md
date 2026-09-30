@@ -54,6 +54,73 @@ facets:
   status: legacy
   complexity: 4
 description: 'Numerical linear-algebra library providing dense and specialized matrix representations (general `double`/`float`/`int` matrices, band, tridiagonal, symmetric, and QR-decomposable forms) together with the classic dense-matrix algorithms built on Numerical-Recipes-style ports: LU/QR/Cholesky/SVD decomposition, eigenvalue and eigenvector extraction, Householder tridiagonalization, and Hamilton quaternions for rotation. The three parallel `Matrix{Double, Float,Int}` classes each combine a dynamic row-vector container with a large static API operating directly on raw two-dimensional arrays, so callers can choose the array-based static methods for hot loops or the instance API for bookkeeping convenience.'
+dv_has_:
+  sub_:
+    folders: 0
+    files: 27
+    units: 14
+    facet_:
+      layer_:
+        utility: 14
+      status_:
+        broken: 8
+        legacy: 6
+      complexity_:
+        "2": 2
+        "3": 5
+        "4": 7
+    tag_:
+      code_:
+        matrix_operation: 6
+        matrix_algebra: 5
+        band_diagonal_matrix: 2
+        eigenvalue_decomposition: 2
+        matrix_base_class: 2
+        tridiagonal_matrix_solving: 2
+        numerical_linear_algebra: 2
+        qr_decomposition: 1
+        quaternion_algebra: 1
+        quaternion_math: 1
+    concept_:
+      band_diagonal_matrix: 1
+      double_matrix_row_stream_iterator: 1
+      double_precision_dense_matrix: 1
+      float_matrix_row_stream_iterator: 1
+      general_non_symmetric_eigenvalue_computation: 1
+      generic_object_matrix: 1
+      integer_dense_matrix: 1
+      matrix_base_class: 1
+      qr_decomposition: 1
+      quaternion_rotation_algebra: 1
+has_sub_folders: 0
+has_sub_files: 27
+has_sub_units: 14
+has_sub_facet_layer_utility: 14
+has_sub_facet_status_broken: 8
+has_sub_facet_status_legacy: 6
+has_sub_facet_complexity_2: 2
+has_sub_facet_complexity_3: 5
+has_sub_facet_complexity_4: 7
+has_sub_tag_code_matrix_operation: 6
+has_sub_tag_code_matrix_algebra: 5
+has_sub_tag_code_band_diagonal_matrix: 2
+has_sub_tag_code_eigenvalue_decomposition: 2
+has_sub_tag_code_matrix_base_class: 2
+has_sub_tag_code_tridiagonal_matrix_solving: 2
+has_sub_tag_code_numerical_linear_algebra: 2
+has_sub_tag_code_qr_decomposition: 1
+has_sub_tag_code_quaternion_algebra: 1
+has_sub_tag_code_quaternion_math: 1
+has_sub_concept_band_diagonal_matrix: 1
+has_sub_concept_double_matrix_row_stream_iterator: 1
+has_sub_concept_double_precision_dense_matrix: 1
+has_sub_concept_float_matrix_row_stream_iterator: 1
+has_sub_concept_general_non_symmetric_eigenvalue_computation: 1
+has_sub_concept_generic_object_matrix: 1
+has_sub_concept_integer_dense_matrix: 1
+has_sub_concept_matrix_base_class: 1
+has_sub_concept_qr_decomposition: 1
+has_sub_concept_quaternion_rotation_algebra: 1
 ---
 
 # matrix

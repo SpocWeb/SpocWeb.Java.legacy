@@ -26,6 +26,50 @@ facets:
   status: legacy
   complexity: 3
 description: This folder collects concrete `graphic.Graph2D` subclasses that each override pixel output with a different color strategy - ordered dithering (`GrayColor`), a fixed grey-level raster (`GreyColor`), random palette selection (`RandomColor`), and image-derived texture fill (`TextureGraphics`) - plus `testGraph2D`, a standalone Frame-based demo/test harness that exercises most drawing primitives across the `graphic` package.
+dv_has_:
+  sub_:
+    folders: 0
+    files: 11
+    units: 5
+    facet_:
+      layer_:
+        utility: 4
+        test: 1
+      status_:
+        legacy: 3
+        broken: 2
+      complexity_:
+        "2": 2
+        "3": 3
+    tag_:
+      code_:
+        graphics: 5
+        algorithm: 3
+        test: 1
+    concept_:
+      dithering_color_strategy: 1
+      graph2d_demo_harness: 1
+      greyscale_dithering_strategy: 1
+      random_:
+        anti_moire_color_strategy: 1
+      texture_sampling_color_strategy: 1
+has_sub_folders: 0
+has_sub_files: 11
+has_sub_units: 5
+has_sub_facet_layer_utility: 4
+has_sub_facet_layer_test: 1
+has_sub_facet_status_legacy: 3
+has_sub_facet_status_broken: 2
+has_sub_facet_complexity_2: 2
+has_sub_facet_complexity_3: 3
+has_sub_tag_code_graphics: 5
+has_sub_tag_code_algorithm: 3
+has_sub_tag_code_test: 1
+has_sub_concept_dithering_color_strategy: 1
+has_sub_concept_graph2d_demo_harness: 1
+has_sub_concept_greyscale_dithering_strategy: 1
+has_sub_concept_random_anti_moire_color_strategy: 1
+has_sub_concept_texture_sampling_color_strategy: 1
 ---
 
 # implement

@@ -72,6 +72,55 @@ facets:
   status: legacy
   complexity: 4
 description: Boxed by-reference wrappers for every primitive type (`ByRefBoolean`/`Byte`/`Char`/`Double`/`Float`/`Int`/`Long`/`Short`/`Object`/`String`), each doubling as an `IFunction` that returns its own boxed value, plus `IAdjustAble`/`ICategorizeAble` mutation contracts, `Cached*` dirty-flag caching decorators, a `ShortComparator`, and bit-rotation helpers (`ROL`/`ROR`) on the integer wrappers. See `combinatoric/` for factorial/prime/probability functions built on these wrappers.
+dv_has_:
+  sub_:
+    folders: 1
+    files: 67
+    units: 29
+    facet_:
+      layer_:
+        utility: 29
+      status_:
+        legacy: 29
+      complexity_:
+        "2": 28
+        "3": 1
+    tag_:
+      code_:
+        mathematical_constants: 14
+        function_wrapper: 18
+        special_function: 9
+        combinatorics: 9
+        caching: 4
+        test: 1
+        numeric_comparison: 1
+    concept_:
+      by_reference_primitive_wrapper: 14
+      combinatorics: 8
+      caching_decorator: 4
+      combinatorics_and_special_functions: 1
+      comparator: 1
+      test_harness: 1
+has_sub_folders: 1
+has_sub_files: 67
+has_sub_units: 29
+has_sub_facet_layer_utility: 29
+has_sub_facet_status_legacy: 29
+has_sub_facet_complexity_2: 28
+has_sub_facet_complexity_3: 1
+has_sub_tag_code_mathematical_constants: 14
+has_sub_tag_code_function_wrapper: 18
+has_sub_tag_code_special_function: 9
+has_sub_tag_code_combinatorics: 9
+has_sub_tag_code_caching: 4
+has_sub_tag_code_test: 1
+has_sub_tag_code_numeric_comparison: 1
+has_sub_concept_by_reference_primitive_wrapper: 14
+has_sub_concept_combinatorics: 8
+has_sub_concept_caching_decorator: 4
+has_sub_concept_combinatorics_and_special_functions: 1
+has_sub_concept_comparator: 1
+has_sub_concept_test_harness: 1
 ---
 
 # byref

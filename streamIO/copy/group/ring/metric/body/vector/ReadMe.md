@@ -52,6 +52,37 @@ facets:
   status: legacy
   complexity: 4
 description: This folder implements the Tensor/Vector/Matrix algebra that sits on top of `body`'s scalar `IIntRing` elements. `ITensor`/`ATensor` add index-based, `IndexEnumerator`-style traversal to the metric-integrity-ring algebra, giving a multi-dimensional container that can both be computed on and iterated over. `IManifold`/`AManifold` extend this with finite-difference calculus (difference, summation, derivative, integral, Horner-scheme evaluation) so an `AManifold` subclass doubles as a sampled function usable for interpolation and extrapolation. `Tensor` is the generic, arbitrary-Degree implementation (Elements can themselves be Tensors), while `VectorDbl` is a primitive-`double`-backed, 1-Dimensional specialisation kept separate for debuggability and speed - at the cost of an unresolved design tension (flagged inline) between treating it as an ordered Sample sequence versus a Polynom. `Matrix`/`AMatrix`/`IMatrix`/`MatrixDbl` specialise Tensor to 2nd Degree for linear mappings and bilinear forms (including LU decomposition), `Line` specialises Tensor to a 2-row (Start/Stop) Matrix for Box/Line geometry, `Manifold` adds Raster-sampling and weighted-power-product helpers, and `PolynomDbl` redefines `VectorDbl`'s difference/integral Operations as Polynom (not Sample) algebra.
+dv_has_:
+  sub_:
+    folders: 0
+    files: 29
+    units: 13
+    facet_:
+      layer_:
+        domain: 13
+      status_:
+        legacy: 13
+      complexity_:
+        "4": 13
+    tag_:
+      code_:
+        manifold_generation: 13
+        tensor: 13
+        interpolation: 13
+    concept_:
+      vector_:
+        matrix_:
+          tensor_and_manifold_interpolation: 13
+has_sub_folders: 0
+has_sub_files: 29
+has_sub_units: 13
+has_sub_facet_layer_domain: 13
+has_sub_facet_status_legacy: 13
+has_sub_facet_complexity_4: 13
+has_sub_tag_code_manifold_generation: 13
+has_sub_tag_code_tensor: 13
+has_sub_tag_code_interpolation: 13
+has_sub_concept_vector_matrix_tensor_and_manifold_interpolation: 13
 ---
 
 # vector

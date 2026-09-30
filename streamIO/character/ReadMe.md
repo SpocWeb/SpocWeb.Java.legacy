@@ -20,6 +20,38 @@ facets:
   status: stable
   complexity: 2
 description: 'Encoding-aware file access built on the JDK''s character streams: `FileReader` extends `InputStreamReader` and adds static helpers for whole-file copy, whole-file read and polling for a file''s arrival (with a timeout), while `FileWriter` extends `OutputStreamWriter` and adds a static helper for writing a whole String to a file in one call. Both shadow their `java.io` namesakes by design, giving callers convenience overloads without abandoning the standard char-stream base classes.'
+dv_has_:
+  sub_:
+    folders: 0
+    files: 5
+    units: 2
+    facet_:
+      layer_:
+        infrastructure: 2
+      status_:
+        stable: 2
+      complexity_:
+        "2": 2
+    tag_:
+      code_:
+        encoding_handling: 2
+        file_io: 2
+        file_polling: 1
+    concept_:
+      text_encoding: 2
+      file_i_:
+        o: 2
+has_sub_folders: 0
+has_sub_files: 5
+has_sub_units: 2
+has_sub_facet_layer_infrastructure: 2
+has_sub_facet_status_stable: 2
+has_sub_facet_complexity_2: 2
+has_sub_tag_code_encoding_handling: 2
+has_sub_tag_code_file_io: 2
+has_sub_tag_code_file_polling: 1
+has_sub_concept_text_encoding: 2
+has_sub_concept_file_i_o: 2
 ---
 
 # character

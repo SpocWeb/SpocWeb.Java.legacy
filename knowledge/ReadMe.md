@@ -83,6 +83,77 @@ digest:
       mtime: '2026-09-05T08:15:05Z'
       digest: 3e9ea35caf35e54a98c55037e662b1c11b0bd9d813060ce3e1c8b0e44d8b7cef
   folders: {}
+dv_has_:
+  sub_:
+    folders: 0
+    files: 62
+    units: 27
+    facet_:
+      layer_:
+        domain: 18
+        data: 8
+        test: 1
+      status_:
+        stable: 26
+        experimental: 1
+      complexity_:
+        "2": 15
+        "3": 11
+        "4": 1
+    tag_:
+      code_:
+        orm: 12
+        entity_model: 15
+        state_flag: 6
+        interface_contract: 8
+        lazy_loading: 5
+        value_object: 4
+        data_access: 3
+        sql_generation: 3
+        reflection: 4
+        type_system: 4
+    concept_:
+      persistence: 9
+      domain_model: 16
+      state_tracking: 4
+      attribute_modelling: 6
+      object_classification: 4
+      object_relational_mapping: 2
+      record_identity: 2
+      relationship_modelling: 2
+      data_access: 1
+      identity_caching: 1
+has_sub_folders: 0
+has_sub_files: 62
+has_sub_units: 27
+has_sub_facet_layer_domain: 18
+has_sub_facet_layer_data: 8
+has_sub_facet_layer_test: 1
+has_sub_facet_status_stable: 26
+has_sub_facet_status_experimental: 1
+has_sub_facet_complexity_2: 15
+has_sub_facet_complexity_3: 11
+has_sub_facet_complexity_4: 1
+has_sub_tag_code_orm: 12
+has_sub_tag_code_entity_model: 15
+has_sub_tag_code_state_flag: 6
+has_sub_tag_code_interface_contract: 8
+has_sub_tag_code_lazy_loading: 5
+has_sub_tag_code_value_object: 4
+has_sub_tag_code_data_access: 3
+has_sub_tag_code_sql_generation: 3
+has_sub_tag_code_reflection: 4
+has_sub_tag_code_type_system: 4
+has_sub_concept_persistence: 9
+has_sub_concept_domain_model: 16
+has_sub_concept_state_tracking: 4
+has_sub_concept_attribute_modelling: 6
+has_sub_concept_object_classification: 4
+has_sub_concept_object_relational_mapping: 2
+has_sub_concept_record_identity: 2
+has_sub_concept_relationship_modelling: 2
+has_sub_concept_data_access: 1
+has_sub_concept_identity_caching: 1
 ---
 
 # knowledge

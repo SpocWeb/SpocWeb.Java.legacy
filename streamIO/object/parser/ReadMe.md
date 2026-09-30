@@ -72,6 +72,52 @@ facets:
   status: legacy
   complexity: 4
 description: This folder builds a small parsing framework directly on top of `streamIO.object.IStreamIn`/`IIStreamOut`, rather than on `java.io.Reader`/`Writer`. Byte- and Character-level Adapters (`InputStream2StreamIn`, `EscapeStreamIn`, `FileStream2Stream`, `FileSystem2Stream`) turn raw Input (an `InputStream`, a File, or a whole Directory Tree) into a Stream of Tokens, delimited by a configurable Separator String. `MaskedStreamIn` and the `*Bracket2StreamIn`/`StreamIn*Parser` Filter Classes then bridge between two competing nesting Conventions this Codebase uses for hierarchical Data - an older one where `nextItem()` returns a Separator Level and `currItem()` the Token, and a more consistent one where a nested `IStreamIn` Result signals descending a Level and `null` signals ascending one. On the XML side, `XMLScannerStreamIn`/`XMLStreamIn` parse XML into Object Graphs via Reflection, `XMLFormatter`/`StreamOutXML` do the reverse (also implementing `org.xml.sax.ContentHandler` so SAX-driven Code can write through them), and `SaxReader` adapts an `IStreamIn` into a minimal `org.xml.sax.XMLReader`. The `jdbc/` Subsystem reuses this same Separator-driven Parsing to implement a small JDBC 1.0/2.0 Driver over Files with Comma-, Tab- or custom-separated Content, so simple SQL Queries can run directly against Flat Files without a real Database. Most of this Code dates from an Era before Java's own `java.io` Readers/Writers and `javax.xml` APIs matured, and several Classes say so explicitly in their own Documentation (e.g. `EscapeStreamIn`'s "only retained to keep things running").
+dv_has_:
+  sub_:
+    folders: 1
+    files: 57
+    units: 28
+    facet_:
+      layer_:
+        utility: 19
+        domain: 9
+      status_:
+        legacy: 28
+      complexity_:
+        "4": 28
+    tag_:
+      code_:
+        stream_parsing: 14
+        parser: 15
+        sax_event_generation: 9
+        xml_streaming: 4
+        xml_parsing: 4
+        jdbc_adapter: 9
+        sax_parsing: 1
+    concept_:
+      separator_driven_token_parsing_and_stream_adapters: 14
+      minimal_jdbc_driver_over_separated_format_flat_files: 9
+      xml_read_:
+        write_stream_bridging: 4
+      sax_style_event_parsing: 1
+has_sub_folders: 1
+has_sub_files: 57
+has_sub_units: 28
+has_sub_facet_layer_utility: 19
+has_sub_facet_layer_domain: 9
+has_sub_facet_status_legacy: 28
+has_sub_facet_complexity_4: 28
+has_sub_tag_code_stream_parsing: 14
+has_sub_tag_code_parser: 15
+has_sub_tag_code_sax_event_generation: 9
+has_sub_tag_code_xml_streaming: 4
+has_sub_tag_code_xml_parsing: 4
+has_sub_tag_code_jdbc_adapter: 9
+has_sub_tag_code_sax_parsing: 1
+has_sub_concept_separator_driven_token_parsing_and_stream_adapters: 14
+has_sub_concept_minimal_jdbc_driver_over_separated_format_flat_files: 9
+has_sub_concept_xml_read_write_stream_bridging: 4
+has_sub_concept_sax_style_event_parsing: 1
 ---
 
 # parser

@@ -24,6 +24,43 @@ facets:
   status: legacy
   complexity: 3
 description: 'Implements a classic Decision Table: a tabular alternative to deeply nested if/then/else chains, built up through a small inheritance chain. `ConditionTable` matches a boolean value vector against rows of conditions; `DecisionTable` adds a matching Actions matrix on top of it; `DecisionTool` adds a set of `Runnable` Operators that fire when a row''s conditions are met; and `DecisionMaker` ties this to `tester.ITestAble` predicates so the whole evaluation, from testing conditions to running the matching operators, can be driven from one call.'
+dv_has_:
+  sub_:
+    folders: 0
+    files: 9
+    units: 4
+    facet_:
+      layer_:
+        utility: 4
+      status_:
+        legacy: 3
+        broken: 1
+      complexity_:
+        "2": 1
+        "3": 3
+    tag_:
+      code_:
+        decision_tree: 4
+        rule_engine: 3
+    concept_:
+      condition_table: 1
+      decision_maker: 1
+      decision_table: 1
+      decision_tool: 1
+has_sub_folders: 0
+has_sub_files: 9
+has_sub_units: 4
+has_sub_facet_layer_utility: 4
+has_sub_facet_status_legacy: 3
+has_sub_facet_status_broken: 1
+has_sub_facet_complexity_2: 1
+has_sub_facet_complexity_3: 3
+has_sub_tag_code_decision_tree: 4
+has_sub_tag_code_rule_engine: 3
+has_sub_concept_condition_table: 1
+has_sub_concept_decision_maker: 1
+has_sub_concept_decision_table: 1
+has_sub_concept_decision_tool: 1
 ---
 
 # logic

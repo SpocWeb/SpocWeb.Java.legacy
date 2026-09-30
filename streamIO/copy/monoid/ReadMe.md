@@ -56,6 +56,70 @@ facets:
   status: legacy
   complexity: 3
 description: 'Models the concatenative algebraic hierarchy (semigroup -> monoid) that mirrors the multiplicative and additive hierarchies in `groupM`/`group`: `ISemiMonoid` defines a single operation `map`/`mapAt` ("this after arg", i.e. function composition), kept deliberately asymmetric from the group hierarchies because concatenation is associative but not commutative (string/array concatenation is the running example). `IMonoid` adds the inverse-based operations (`solve`, `reSolve`, `rev`, `Identity`) that require a two-sided inverse to exist. `ASemiMonoid`/`AMonoid` supply the default, delegation-based implementation - only `mapAt` (and, for `AMonoid`, `pamAt`) must be redefined by a concrete class - using the same "delegation to self" pattern as the sibling packages. `AMapper` adds inverse-caching on top of `AMonoid` for mapping-style monoids. `ArrayMonoid`/`StringMonoid` are the two concrete concatenative monoids (`Object[]` and `String` respectively); `Association`/`Pair` model a key-value mapping as a (rarely-instantiated) monoid, with `AssociationEquivalence` providing a key-only equivalence relation for containers built on `Association`. The `integer/` subfolder builds an integer-backed set and a permutation monoid on top of this and the `boole`/`groupM`/`shift` packages.'
+dv_has_:
+  sub_:
+    folders: 1
+    files: 39
+    units: 18
+    facet_:
+      layer_:
+        utility: 17
+      status_:
+        legacy: 14
+        broken: 3
+      complexity_:
+        "3": 17
+    tag_:
+      code_:
+        concatenation: 10
+        bit_manipulation: 4
+        permutation: 2
+        multiplicative_semigroup: 2
+        algebraic_structure: 2
+        delegation: 3
+        abstract_base: 3
+        array_manipulation: 1
+        string_concatenation: 1
+        dictionary_entry: 1
+    concept_:
+      monoid: 10
+      concatenation: 4
+      bit_set: 3
+      key_value_pair: 3
+      permutation: 2
+      string_:
+        array_concatenation: 2
+      delegation_pattern: 3
+      dictionary: 1
+      function_mapping: 1
+      multi_index: 1
+has_sub_folders: 1
+has_sub_files: 39
+has_sub_units: 18
+has_sub_facet_layer_utility: 17
+has_sub_facet_status_legacy: 14
+has_sub_facet_status_broken: 3
+has_sub_facet_complexity_3: 17
+has_sub_tag_code_concatenation: 10
+has_sub_tag_code_bit_manipulation: 4
+has_sub_tag_code_permutation: 2
+has_sub_tag_code_multiplicative_semigroup: 2
+has_sub_tag_code_algebraic_structure: 2
+has_sub_tag_code_delegation: 3
+has_sub_tag_code_abstract_base: 3
+has_sub_tag_code_array_manipulation: 1
+has_sub_tag_code_string_concatenation: 1
+has_sub_tag_code_dictionary_entry: 1
+has_sub_concept_monoid: 10
+has_sub_concept_concatenation: 4
+has_sub_concept_bit_set: 3
+has_sub_concept_key_value_pair: 3
+has_sub_concept_permutation: 2
+has_sub_concept_string_array_concatenation: 2
+has_sub_concept_delegation_pattern: 3
+has_sub_concept_dictionary: 1
+has_sub_concept_function_mapping: 1
+has_sub_concept_multi_index: 1
 ---
 
 # monoid

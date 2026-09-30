@@ -99,6 +99,61 @@ facets:
   status: legacy
   complexity: 4
 description: 'This folder builds the Algebraic Ring layer on top of the parent `groupM` folder''s Multiplicative SemiGroup. `IRing`/`ARing` define the plain commutative Ring (M,+,-,0,*), `IBoolRing`/`ABoolRing` generalise the same Framework for Boolean/Set-typed Containers, and `IIntRing`/`AIntRing` add the full multiplicative and additive Integrity-Ring Capabilities (Division, no Zero Divisors) used pervasively by the `metric` Subfolder''s Number types. `IComplex` factors out Complex-Conjugation Support for `IIntRing`, `IInteger`/`AInteger`/`integer` define the basic inc()/dec()/pred()/succ() Operations for Integer Types, and `CIntRing`/`CRing` hold shared Constants. The remaining classes implement numerical Algorithms over this algebra: root/FixPoint Refiners (`IRefiner`/`ARefiner` and their `NewtonRefiner`/ `NewtonRefiner2`/`SecantRefiner`/`FixPtRefiner` implementations), an `Extrapolator` for rational/polynomial Extrapolation to zero Step-width, an `Interpolator` for polynomial Interpolation, and ODE/Function Steppers (`IStepper`/`IFloatStepper`/`AStepper`/`IODE` and their `StepRK`/`StepMP`/`StepTrapez` implementations). `TestRing` is the manual test-suite entry point. The `metric/` Subfolder builds the concrete scalar and Tensor Number types on top of this Ring Algebra.'
+dv_has_:
+  sub_:
+    folders: 5
+    files: 247
+    units: 115
+    facet_:
+      layer_:
+        domain: 115
+      status_:
+        legacy: 115
+      complexity_:
+        "4": 115
+    tag_:
+      code_:
+        ode_solver: 28
+        ring_theory: 28
+        rational_numbers: 16
+        big_integer_arithmetic: 41
+        metric_space: 41
+        manifold_generation: 14
+        tensor: 14
+        interpolation: 14
+        complex_numbers: 9
+        fourier_transform: 9
+    concept_:
+      ring_algebra_and_ode_solvers: 28
+      rational_numbers_and_interval_arithmetic: 16
+      metric_spaces_root_finding_and_numerical_integration: 41
+      vector_:
+        matrix_:
+          tensor_and_manifold_interpolation: 14
+      complex_number_arithmetic_and_fourier_transform: 9
+      physical_units_and_conversion: 7
+has_sub_folders: 5
+has_sub_files: 247
+has_sub_units: 115
+has_sub_facet_layer_domain: 115
+has_sub_facet_status_legacy: 115
+has_sub_facet_complexity_4: 115
+has_sub_tag_code_ode_solver: 28
+has_sub_tag_code_ring_theory: 28
+has_sub_tag_code_rational_numbers: 16
+has_sub_tag_code_big_integer_arithmetic: 41
+has_sub_tag_code_metric_space: 41
+has_sub_tag_code_manifold_generation: 14
+has_sub_tag_code_tensor: 14
+has_sub_tag_code_interpolation: 14
+has_sub_tag_code_complex_numbers: 9
+has_sub_tag_code_fourier_transform: 9
+has_sub_concept_ring_algebra_and_ode_solvers: 28
+has_sub_concept_rational_numbers_and_interval_arithmetic: 16
+has_sub_concept_metric_spaces_root_finding_and_numerical_integration: 41
+has_sub_concept_vector_matrix_tensor_and_manifold_interpolation: 14
+has_sub_concept_complex_number_arithmetic_and_fourier_transform: 9
+has_sub_concept_physical_units_and_conversion: 7
 ---
 
 # ring

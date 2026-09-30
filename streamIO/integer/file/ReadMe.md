@@ -24,6 +24,33 @@ facets:
   status: legacy
   complexity: 4
 description: This folder implements the `streamIO` interfaces directly on top of Java's File I/O classes. `FileStreamByte` extends `RandomAccessFile` to also implement `IStreamIn_Int`/`IStreamOutByte` (reading and writing the same File), while `FileStreamIn_Byte`/`FileStreamOutByte` extend `FileInputStream`/`FileOutputStream` respectively for read-only/write-only access - all three exist because `RandomAccessFile`/`FileInputStream`/`FileOutputStream` are Java classes rather than interfaces, so they cannot otherwise be made to implement the `streamIO` interfaces alongside their own base class. `FilterCrLfFromQuoted` is a small standalone command-line filter that strips CR/LF Characters found inside quoted sections of a text File.
+dv_has_:
+  sub_:
+    folders: 0
+    files: 8
+    units: 4
+    facet_:
+      layer_:
+        utility: 4
+      status_:
+        legacy: 4
+      complexity_:
+        "4": 4
+    tag_:
+      code_:
+        file_io: 4
+        stream_io: 4
+    concept_:
+      file_backed_streamio_implementations: 4
+has_sub_folders: 0
+has_sub_files: 8
+has_sub_units: 4
+has_sub_facet_layer_utility: 4
+has_sub_facet_status_legacy: 4
+has_sub_facet_complexity_4: 4
+has_sub_tag_code_file_io: 4
+has_sub_tag_code_stream_io: 4
+has_sub_concept_file_backed_streamio_implementations: 4
 ---
 
 # file

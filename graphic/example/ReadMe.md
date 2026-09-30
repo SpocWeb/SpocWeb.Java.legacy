@@ -32,6 +32,52 @@ facets:
   status: legacy
   complexity: 3
 description: 'Standalone AWT demo applets showing classic procedural-generation and emergent-behavior algorithms: 1D and 2D cellular automata (`CellularAutomaton1D`, `AntHillInside`), fractal and midpoint-displacement terrain/scalar fields (`Fractal`, `Apple`, `Plasma`, `Erosion`), and a particle-flock simulation (`TravellingFlock`). Each class is self-contained, owns its own `main()`/`testIt()` entry point, and paints into an AWT `Frame` or a `graphic` raster abstraction rather than depending on the rest of this module. The folder exists to illustrate algorithms in isolation, not to provide reusable infrastructure for other parts of the `graphic` tree.'
+dv_has_:
+  sub_:
+    folders: 0
+    files: 15
+    units: 7
+    facet_:
+      layer_:
+        test: 7
+      status_:
+        legacy: 5
+        broken: 2
+      complexity_:
+        "3": 7
+    tag_:
+      code_:
+        math: 3
+        simulation: 3
+        algorithm: 7
+        graphics: 1
+    concept_:
+      "1d_cellular_automaton": 1
+      ant_colony_cellular_automaton: 1
+      flocking_particle_simulation: 1
+      fractal_applet_escape_time_set: 1
+      plasma_:
+        height_map_fractal: 1
+      terrain_erosion_generator: 1
+      turtle_graphics_fractal: 1
+has_sub_folders: 0
+has_sub_files: 15
+has_sub_units: 7
+has_sub_facet_layer_test: 7
+has_sub_facet_status_legacy: 5
+has_sub_facet_status_broken: 2
+has_sub_facet_complexity_3: 7
+has_sub_tag_code_math: 3
+has_sub_tag_code_simulation: 3
+has_sub_tag_code_algorithm: 7
+has_sub_tag_code_graphics: 1
+has_sub_concept_1d_cellular_automaton: 1
+has_sub_concept_ant_colony_cellular_automaton: 1
+has_sub_concept_flocking_particle_simulation: 1
+has_sub_concept_fractal_applet_escape_time_set: 1
+has_sub_concept_plasma_height_map_fractal: 1
+has_sub_concept_terrain_erosion_generator: 1
+has_sub_concept_turtle_graphics_fractal: 1
 ---
 
 # example

@@ -21,6 +21,43 @@ facets:
   status: legacy
   complexity: 4
 description: 'Statistical correlation and hypothesis-testing utilities built on top of the `vector` family''s float arrays: `Correlation` computes cross-vector association (Pearson/Spearman/Kendall), and `StatisticsFloat` runs classical hypothesis tests (t, F, chi-square, Kolmogorov-Smirnov) over float data sets, with `HyperCubeShare` as a 2D sampling test model for the latter.'
+dv_has_:
+  sub_:
+    folders: 0
+    files: 5
+    units: 3
+    facet_:
+      layer_:
+        domain: 2
+        test: 1
+      status_:
+        legacy: 3
+      complexity_:
+        "2": 1
+        "4": 2
+    tag_:
+      code_:
+        hypothesis_testing: 3
+        chi_squared: 1
+        statistical_correlation: 1
+    concept_:
+      "2d_sampling_test_model": 1
+      cross_vector_correlation_statistics: 1
+      statistical_hypothesis_tests_over_float_data: 1
+has_sub_folders: 0
+has_sub_files: 5
+has_sub_units: 3
+has_sub_facet_layer_domain: 2
+has_sub_facet_layer_test: 1
+has_sub_facet_status_legacy: 3
+has_sub_facet_complexity_2: 1
+has_sub_facet_complexity_4: 2
+has_sub_tag_code_hypothesis_testing: 3
+has_sub_tag_code_chi_squared: 1
+has_sub_tag_code_statistical_correlation: 1
+has_sub_concept_2d_sampling_test_model: 1
+has_sub_concept_cross_vector_correlation_statistics: 1
+has_sub_concept_statistical_hypothesis_tests_over_float_data: 1
 ---
 
 # statistic

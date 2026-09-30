@@ -17,6 +17,35 @@ facets:
   status: legacy
   complexity: 2
 description: 'Small demonstrations of the Java Naming and Directory Interface (JNDI): acquiring an `InitialContext` against a file-system JNDI provider, and browsing/manipulating it interactively with Unix-like commands (`cd`, `ls`, `mv`, `mkdir`, `rmdir`, `cat`).'
+dv_has_:
+  sub_:
+    folders: 0
+    files: 5
+    units: 2
+    facet_:
+      layer_:
+        test: 1
+        utility: 1
+      status_:
+        legacy: 2
+      complexity_:
+        "2": 2
+    tag_:
+      code_:
+        directory_services: 2
+    concept_:
+      command_line_jndi_browser: 1
+      jndi_context_demo: 1
+has_sub_folders: 0
+has_sub_files: 5
+has_sub_units: 2
+has_sub_facet_layer_test: 1
+has_sub_facet_layer_utility: 1
+has_sub_facet_status_legacy: 2
+has_sub_facet_complexity_2: 2
+has_sub_tag_code_directory_services: 2
+has_sub_concept_command_line_jndi_browser: 1
+has_sub_concept_jndi_context_demo: 1
 ---
 
 # jndi

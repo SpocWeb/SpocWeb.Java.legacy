@@ -37,6 +37,60 @@ facets:
   status: legacy
   complexity: 3
 description: Provides affine coordinate mapping between a 2D data range and a Graphics2D target area, plus the model/painter/controller triad that displays and interactively edits a set of mapped points and edges. `LinCoordMap` and `Coordinates2D` do the per-axis and combined-axis affine transforms; `Map2DModel`, `Map2DPainter` and `Map2DMouseController` build an MVC layer for graphs of 2D points on top of that transform, while `Raster` and `Coord2DMouseController` supply supporting raster-generation and view-panning utilities. `testMathGraph2` is a standalone applet/demo exercising the package against real map/star data files.
+dv_has_:
+  sub_:
+    folders: 0
+    files: 21
+    units: 8
+    facet_:
+      layer_:
+        domain: 6
+        test: 1
+        utility: 1
+      status_:
+        legacy: 7
+        broken: 1
+      complexity_:
+        "2": 5
+        "3": 2
+        "4": 1
+    tag_:
+      code_:
+        view_model: 5
+        coordinate_transform: 2
+        raster_generation: 1
+    concept_:
+      "2d_coordinate_mouse_controller": 1
+      "2d_coordinate_transform": 1
+      "2d_graph_demo_":
+        test_harness: 1
+      "2d_graph_model": 1
+      linear_coordinate_mapping: 1
+      point_raster_generation: 1
+      "2d_graph_mouse_controller": 1
+      "2d_graph_painter": 1
+has_sub_folders: 0
+has_sub_files: 21
+has_sub_units: 8
+has_sub_facet_layer_domain: 6
+has_sub_facet_layer_test: 1
+has_sub_facet_layer_utility: 1
+has_sub_facet_status_legacy: 7
+has_sub_facet_status_broken: 1
+has_sub_facet_complexity_2: 5
+has_sub_facet_complexity_3: 2
+has_sub_facet_complexity_4: 1
+has_sub_tag_code_view_model: 5
+has_sub_tag_code_coordinate_transform: 2
+has_sub_tag_code_raster_generation: 1
+has_sub_concept_2d_coordinate_mouse_controller: 1
+has_sub_concept_2d_coordinate_transform: 1
+has_sub_concept_2d_graph_demo_test_harness: 1
+has_sub_concept_2d_graph_model: 1
+has_sub_concept_linear_coordinate_mapping: 1
+has_sub_concept_point_raster_generation: 1
+has_sub_concept_2d_graph_mouse_controller: 1
+has_sub_concept_2d_graph_painter: 1
 ---
 
 # math2D

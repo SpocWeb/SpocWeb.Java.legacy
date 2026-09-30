@@ -99,6 +99,78 @@ facets:
   status: legacy
   complexity: 4
 description: 'Core function/relation contracts (`IFunction`, `IProcessor`, `IInvertAble`, `IOrderAble`/`IIOrderAble`, `ICountAble`/`IMeasurAble`) and their default base-class implementations, plus a handful of small standalone utilities (`CatProcessor` function composition, `FactoryByType`/`FactoryRegistry` reflective object creation, `FunctionByHash` map-backed function representation, `Projections` sphere-to-plane coordinate mappings). The subfolders build on these contracts for specific domains: `index/` (indexing), `real/` (stateful numeric aggregators), `string/` (string transforms), `vector/` (vector fields and ODE integration), `byref/` (boxed by-reference primitives and combinatorics), and `derive/` (symbolic differentiation - see its own ReadMe.md).'
+dv_has_:
+  sub_:
+    folders: 11
+    files: 471
+    units: 219
+    facet_:
+      layer_:
+        utility: 215
+        domain: 2
+        test: 2
+      status_:
+        legacy: 214
+        broken: 5
+      complexity_:
+        "2": 104
+        "3": 108
+        "4": 7
+    tag_:
+      code_:
+        differential_integration: 22
+        function_wrapper: 21
+        function_contract: 29
+        derivable_function_contract: 39
+        mathematical_constants: 15
+        running_aggregate: 13
+        mathematical_function: 48
+        indexing: 10
+        neural_network: 10
+        function_composition: 51
+    concept_:
+      function_:
+        relation_contract: 23
+      function_algebra: 35
+      vector_field_function: 17
+      by_reference_primitive_wrapper: 14
+      streaming_numeric_aggregator: 12
+      indexed_collection_access: 9
+      ordinary_differential_equations: 8
+      neural_networks: 7
+      partial_derivatives: 7
+      special_functions: 7
+has_sub_folders: 11
+has_sub_files: 471
+has_sub_units: 219
+has_sub_facet_layer_utility: 215
+has_sub_facet_layer_domain: 2
+has_sub_facet_layer_test: 2
+has_sub_facet_status_legacy: 214
+has_sub_facet_status_broken: 5
+has_sub_facet_complexity_2: 104
+has_sub_facet_complexity_3: 108
+has_sub_facet_complexity_4: 7
+has_sub_tag_code_differential_integration: 22
+has_sub_tag_code_function_wrapper: 21
+has_sub_tag_code_function_contract: 29
+has_sub_tag_code_derivable_function_contract: 39
+has_sub_tag_code_mathematical_constants: 15
+has_sub_tag_code_running_aggregate: 13
+has_sub_tag_code_mathematical_function: 48
+has_sub_tag_code_indexing: 10
+has_sub_tag_code_neural_network: 10
+has_sub_tag_code_function_composition: 51
+has_sub_concept_function_relation_contract: 23
+has_sub_concept_function_algebra: 35
+has_sub_concept_vector_field_function: 17
+has_sub_concept_by_reference_primitive_wrapper: 14
+has_sub_concept_streaming_numeric_aggregator: 12
+has_sub_concept_indexed_collection_access: 9
+has_sub_concept_ordinary_differential_equations: 8
+has_sub_concept_neural_networks: 7
+has_sub_concept_partial_derivatives: 7
+has_sub_concept_special_functions: 7
 ---
 
 # function

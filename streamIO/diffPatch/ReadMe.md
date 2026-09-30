@@ -47,6 +47,61 @@ facets:
   status: legacy
   complexity: 4
 description: 'This folder implements a Git/CVS-like versioning system for in-memory `int[]` and `Object[]` streams (e.g. the Lines of a File). `DifferInt`/`DifferObject` compute a Longest-Common-Subsequence-based Diff between two Arrays and package it as a `DiffSetInt`/`DiffSetObject` - a Set of positional `DiffInt`/`DiffObject` Changes (both extend the shared `DiffBase`). `DiffSet`s form a Tree: each Version, except the Root, has exactly one Parent and can be regenerated from any other Version by walking up to their common Ancestor and back down, applying the (optionally inverted) Diffs along the way. `DiffSet`s can also be applied to one another to detect and collect merge Conflicts. `VersionTree` is the abstract, Value-Type-agnostic Tree Manager: it keeps the Map of named Versions (Tags, Branch Heads, IDs), navigates the Tree, and finds common Ancestors; `VersionedObjects` is its one concrete Subclass, specializing the Tree to `Object[]` Streams and adding the `update`/`addVersion`/`merge` Workflow used by clients. `VersionException` signals illegal Branch operations, such as adding a second direct Child to a Version that already has one without naming a new Branch.'
+dv_has_:
+  sub_:
+    folders: 0
+    files: 22
+    units: 11
+    facet_:
+      layer_:
+        domain: 11
+      status_:
+        legacy: 9
+        broken: 1
+        stable: 1
+      complexity_:
+        "2": 4
+        "3": 2
+        "4": 5
+    tag_:
+      code_:
+        diff_collection: 3
+        diff_object: 3
+        merge_algorithm: 3
+        version_control: 3
+        diff_algorithm: 2
+        lcs_algorithm: 2
+        version_tree: 2
+        diff_application: 1
+    concept_:
+      diffing: 8
+      merging: 4
+      versioning: 3
+      longest_common_subsequence: 2
+      branching: 1
+has_sub_folders: 0
+has_sub_files: 22
+has_sub_units: 11
+has_sub_facet_layer_domain: 11
+has_sub_facet_status_legacy: 9
+has_sub_facet_status_broken: 1
+has_sub_facet_status_stable: 1
+has_sub_facet_complexity_2: 4
+has_sub_facet_complexity_3: 2
+has_sub_facet_complexity_4: 5
+has_sub_tag_code_diff_collection: 3
+has_sub_tag_code_diff_object: 3
+has_sub_tag_code_merge_algorithm: 3
+has_sub_tag_code_version_control: 3
+has_sub_tag_code_diff_algorithm: 2
+has_sub_tag_code_lcs_algorithm: 2
+has_sub_tag_code_version_tree: 2
+has_sub_tag_code_diff_application: 1
+has_sub_concept_diffing: 8
+has_sub_concept_merging: 4
+has_sub_concept_versioning: 3
+has_sub_concept_longest_common_subsequence: 2
+has_sub_concept_branching: 1
 ---
 
 # diffPatch

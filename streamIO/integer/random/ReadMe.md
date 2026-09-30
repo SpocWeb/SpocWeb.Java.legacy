@@ -72,6 +72,34 @@ facets:
   status: legacy
   complexity: 3
 description: 'A family of pseudo-random integer generators sharing the `IStreamIn_Bound_Int` contract (bounded `nextInt`/`nextLong`/`nextFloat`/`nextDouble`, with `getPosition()`/`reSet()` for mark-and-restore replay). `AStreamIn_BoundInt`/`ARandomInt`/`ARandomLong` supply the common scaffolding; concrete generators implement classic algorithms - linear/affine congruential (`RandomLinear`, `RandomAffine`, `RandomFast`, `RandomQuick`), Knuth''s subtractive method (`RandomBySubt`), Java''s built-in generator wrapped for this interface (`RandomJava`), a sum of two independent linear generators for a very long period (`RandomMix`), a further shuffling wrapper (`RandomShuffle`), linear-feedback shift-register bit generators (`RandomBit`, `RandomBit2`), quasi-random low-discrepancy sequences (`RandomPseudoBinary`, `RandomPseudoGAdic`, Halton-style), and derived non-uniform distributions (`RandomDiscrete` for arbitrary discrete distributions, `RandomBinomial` for the binomial distribution). `BitNoise` is a companion `IIntFunction` that flips a configurable density of bits using one of these generators, for injecting noise into a signal under test. Several generators had state-handling bugs - `RandomBit2.getPosition()` returning the wrong field (breaking mark/restore, unlike sibling `RandomBit`), `AStreamIn_BoundInt.nextLong(long)` truncating large bounds to `int`, `BitNoise`''s `Map(long)` decrementing its countdown twice as fast as `Map(int)`, and `RandomMix.reset(long)` unconditionally throwing instead of setting the seed - all fixed in the 2026-09-06 bug-fix run.'
+dv_has_:
+  sub_:
+    folders: 0
+    files: 40
+    units: 20
+    facet_:
+      layer_:
+        utility: 20
+      status_:
+        legacy: 20
+      complexity_:
+        "3": 20
+    tag_:
+      code_:
+        quasi_random_sequence: 20
+        random_number_generation: 20
+    concept_:
+      pseudo_random_and_quasi_random_integer_generator_family_with_mark_:
+        restore_replay: 20
+has_sub_folders: 0
+has_sub_files: 40
+has_sub_units: 20
+has_sub_facet_layer_utility: 20
+has_sub_facet_status_legacy: 20
+has_sub_facet_complexity_3: 20
+has_sub_tag_code_quasi_random_sequence: 20
+has_sub_tag_code_random_number_generation: 20
+has_sub_concept_pseudo_random_and_quasi_random_integer_generator_family_with_mark_restore_replay: 20
 ---
 
 # random

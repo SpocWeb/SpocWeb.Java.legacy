@@ -32,6 +32,41 @@ facets:
   status: legacy
   complexity: 3
 description: A small framework for passing an `InputStream` plus a `Map` of attributes along a processing line that bridges asynchronous and synchronous protocols (HTTP, JMS, DB, etc.). Either side of `AAttributedStream` can be implemented and the other is derived automatically; components participating in the chain implement the `IManagedComponent` lifecycle contract, and `OpenByteArrayOutputStream` avoids buffer copies when adapting between stream styles.
+dv_has_:
+  sub_:
+    folders: 0
+    files: 14
+    units: 7
+    facet_:
+      layer_:
+        infrastructure: 7
+      status_:
+        legacy: 7
+      complexity_:
+        "2": 7
+    tag_:
+      code_:
+        stream_adapter: 7
+    concept_:
+      custom_exception_type: 2
+      attributed_stream_base_class: 1
+      attributed_stream_input_interface: 1
+      attributed_stream_output_interface: 1
+      exposed_buffer_byte_array_stream: 1
+      managed_component_interface: 1
+has_sub_folders: 0
+has_sub_files: 14
+has_sub_units: 7
+has_sub_facet_layer_infrastructure: 7
+has_sub_facet_status_legacy: 7
+has_sub_facet_complexity_2: 7
+has_sub_tag_code_stream_adapter: 7
+has_sub_concept_custom_exception_type: 2
+has_sub_concept_attributed_stream_base_class: 1
+has_sub_concept_attributed_stream_input_interface: 1
+has_sub_concept_attributed_stream_output_interface: 1
+has_sub_concept_exposed_buffer_byte_array_stream: 1
+has_sub_concept_managed_component_interface: 1
 ---
 
 # stream

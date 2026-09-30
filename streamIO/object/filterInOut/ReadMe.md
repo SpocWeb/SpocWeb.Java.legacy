@@ -24,6 +24,33 @@ facets:
   status: legacy
   complexity: 3
 description: 'Bidirectional filters (usable on either the input or output side of a stream) that transform or gate items in flight: `FilterByFunction` maps every item through a configured `function.IFunction`, `FilterReflectionFunction` does the same but by invoking a named method via reflection on each item''s runtime class, `FilterByTester` keeps only the items an `ITester` rejects, and `FilterSeparator` inserts a configured separator object between items.'
+dv_has_:
+  sub_:
+    folders: 0
+    files: 8
+    units: 4
+    facet_:
+      layer_:
+        utility: 4
+      status_:
+        legacy: 4
+      complexity_:
+        "3": 4
+    tag_:
+      code_:
+        decorator_pattern: 4
+        stream_filter: 4
+    concept_:
+      stream_filter_input: 4
+has_sub_folders: 0
+has_sub_files: 8
+has_sub_units: 4
+has_sub_facet_layer_utility: 4
+has_sub_facet_status_legacy: 4
+has_sub_facet_complexity_3: 4
+has_sub_tag_code_decorator_pattern: 4
+has_sub_tag_code_stream_filter: 4
+has_sub_concept_stream_filter_input: 4
 ---
 
 # filterInOut

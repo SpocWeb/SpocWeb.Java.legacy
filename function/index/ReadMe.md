@@ -38,6 +38,31 @@ facets:
   status: legacy
   complexity: 3
 description: 'Indexing abstractions for random-access collections: `IDirectAccess`/`IDirectRead` mark a collection as directly addressable by integer index, `IIndex`/`IIndexer`/`AIndexer` build and query a sortable index over such a collection (with a comparator via `IndexComparator`), and `IndexEntry` pairs an index position with its underlying value.'
+dv_has_:
+  sub_:
+    folders: 0
+    files: 18
+    units: 9
+    facet_:
+      layer_:
+        utility: 9
+      status_:
+        legacy: 9
+      complexity_:
+        "2": 9
+    tag_:
+      code_:
+        indexing: 9
+    concept_:
+      indexed_collection_access: 9
+has_sub_folders: 0
+has_sub_files: 18
+has_sub_units: 9
+has_sub_facet_layer_utility: 9
+has_sub_facet_status_legacy: 9
+has_sub_facet_complexity_2: 9
+has_sub_tag_code_indexing: 9
+has_sub_concept_indexed_collection_access: 9
 ---
 
 # index

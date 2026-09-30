@@ -36,6 +36,55 @@ facets:
   status: broken
   complexity: 3
 description: 'A small hierarchy of row-filter Tests (`IDbTest`/`DbTestEquals` and its Less-Than/Outer-Join/ Full-Outer-Join/Negate/SwapOperands variants) that compare two `DbColumn` Fields, used by `FilterRsRows` and the join-oriented `ResultSet` implementations in the parent `jdbc/` package to evaluate `WHERE`/`ON` conditions. Two Tests (`DbTestLess`, `DbTestOuter`) had a `newInstance()` bug that silently downgraded them to a plain `DbTestEquals`; it was fixed in the 2026-09-06 bug-fix run.'
+dv_has_:
+  sub_:
+    folders: 0
+    files: 16
+    units: 8
+    facet_:
+      layer_:
+        domain: 8
+      status_:
+        legacy: 6
+        broken: 2
+      complexity_:
+        "2": 8
+    tag_:
+      code_:
+        predicate: 7
+        predicate_evaluation: 4
+        predicate_delegate: 2
+        predicate_interface: 1
+        predicate_filter: 1
+    concept_:
+      filters_resultset_rows_where_a_predicate_is_false: 1
+      full_outer_join_row_predicate: 1
+      left_outer_join_row_predicate: 1
+      less_than_row_predicate: 1
+      negating_row_predicate_wrapper: 1
+      operand_swapping_row_predicate_wrapper: 1
+      row_level_equality_test_between_two_dbcolumn_fields: 1
+      row_predicate_contract_between_two_dbcolumn_fields: 1
+has_sub_folders: 0
+has_sub_files: 16
+has_sub_units: 8
+has_sub_facet_layer_domain: 8
+has_sub_facet_status_legacy: 6
+has_sub_facet_status_broken: 2
+has_sub_facet_complexity_2: 8
+has_sub_tag_code_predicate: 7
+has_sub_tag_code_predicate_evaluation: 4
+has_sub_tag_code_predicate_delegate: 2
+has_sub_tag_code_predicate_interface: 1
+has_sub_tag_code_predicate_filter: 1
+has_sub_concept_filters_resultset_rows_where_a_predicate_is_false: 1
+has_sub_concept_full_outer_join_row_predicate: 1
+has_sub_concept_left_outer_join_row_predicate: 1
+has_sub_concept_less_than_row_predicate: 1
+has_sub_concept_negating_row_predicate_wrapper: 1
+has_sub_concept_operand_swapping_row_predicate_wrapper: 1
+has_sub_concept_row_level_equality_test_between_two_dbcolumn_fields: 1
+has_sub_concept_row_predicate_contract_between_two_dbcolumn_fields: 1
 ---
 
 # dbTest

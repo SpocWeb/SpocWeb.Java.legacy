@@ -62,6 +62,70 @@ facets:
   status: legacy
   complexity: 3
 description: 'Implements Boolean algebra as an extension of the more general `ILattice`/`Lattice` contract: a lattice defines only AND/OR (a set closed under two commutative, associative, idempotent operations), and `IBoole`/`Boole` add NOT plus the False/True constants that make it a full Boolean algebra. `ALattice`/`ABoole` supply the default, delegation-based implementation (the "delegation to self" pattern used throughout this codebase) - `ANDat`/`ORat`/`NOTat` (or just `less`, for `MinMaxLattice`) are the only primitives a concrete subclass must redefine; everything else (`XOR`, `DIFF`, `IMP`, `EQV`, `SubEq`/`Sub`/`Super`) is derived. `CLattice`/`ACLattice` mirror this for constant (read-only) values, delegating reads and throwing on every in-place operation. Concrete realizations range from a single bit (`Boolean`), three-valued logic (`Ternary`), a resizable bit vector (`VectorBoolean`), a `[0,1]`-valued probability lattice (`Probability`), an order-relation-based lattice with no complement (`MinMaxLattice`), to an algebra over `ITester` predicate functions (`TesterBond`) that simplifies expressions using idempotency and complement laws. The `fuzzy/` subfolder builds continuous-valued (fuzzy) predicates and logic connectives on top of this package''s `Boole` contract.'
+dv_has_:
+  sub_:
+    folders: 1
+    files: 59
+    units: 27
+    facet_:
+      layer_:
+        utility: 27
+      status_:
+        legacy: 25
+        broken: 2
+      complexity_:
+        "3": 27
+    tag_:
+      code_:
+        fuzzy_logic: 12
+        lattice_structure: 8
+        boolean_algebra: 10
+        abstract_base: 6
+        delegation: 3
+        bit_vector: 1
+        lattice_operations: 1
+        algorithm_optimization: 1
+        immutable_wrapper: 1
+        bit_manipulation: 1
+    concept_:
+      fuzzy_logic: 12
+      boolean_algebra: 10
+      lattice: 6
+      delegation_pattern: 2
+      bit_vector: 1
+      predicate_algebra: 1
+      probability: 1
+      three_valued_logic: 1
+      constant_:
+        immutable_wrapper: 1
+      order_relation: 1
+has_sub_folders: 1
+has_sub_files: 59
+has_sub_units: 27
+has_sub_facet_layer_utility: 27
+has_sub_facet_status_legacy: 25
+has_sub_facet_status_broken: 2
+has_sub_facet_complexity_3: 27
+has_sub_tag_code_fuzzy_logic: 12
+has_sub_tag_code_lattice_structure: 8
+has_sub_tag_code_boolean_algebra: 10
+has_sub_tag_code_abstract_base: 6
+has_sub_tag_code_delegation: 3
+has_sub_tag_code_bit_vector: 1
+has_sub_tag_code_lattice_operations: 1
+has_sub_tag_code_algorithm_optimization: 1
+has_sub_tag_code_immutable_wrapper: 1
+has_sub_tag_code_bit_manipulation: 1
+has_sub_concept_fuzzy_logic: 12
+has_sub_concept_boolean_algebra: 10
+has_sub_concept_lattice: 6
+has_sub_concept_delegation_pattern: 2
+has_sub_concept_bit_vector: 1
+has_sub_concept_predicate_algebra: 1
+has_sub_concept_probability: 1
+has_sub_concept_three_valued_logic: 1
+has_sub_concept_constant_immutable_wrapper: 1
+has_sub_concept_order_relation: 1
 ---
 
 # boole

@@ -17,6 +17,35 @@ facets:
   status: legacy
   complexity: 3
 description: 'Holds two self-contained dynamic-programming Algorithms that are otherwise unrelated to the rest of `math`: `Bracketing` chooses the cheapest parenthesization for a chain of Matrix Multiplications, and `KnapSack` solves the 0/1 Knapsack Problem for Integer Sizes and Values. Both are used standalone wherever their respective combinatorial Optimization is needed.'
+dv_has_:
+  sub_:
+    folders: 0
+    files: 6
+    units: 2
+    facet_:
+      layer_:
+        utility: 2
+      status_:
+        legacy: 2
+      complexity_:
+        "3": 2
+    tag_:
+      code_:
+        dynamic_programming: 2
+        knapsack_problem: 1
+    concept_:
+      knapsack_problem_solver: 1
+      matrix_chain_bracketing: 1
+has_sub_folders: 0
+has_sub_files: 6
+has_sub_units: 2
+has_sub_facet_layer_utility: 2
+has_sub_facet_status_legacy: 2
+has_sub_facet_complexity_3: 2
+has_sub_tag_code_dynamic_programming: 2
+has_sub_tag_code_knapsack_problem: 1
+has_sub_concept_knapsack_problem_solver: 1
+has_sub_concept_matrix_chain_bracketing: 1
 ---
 
 # algorithm

@@ -35,6 +35,51 @@ facets:
   status: legacy
   complexity: 3
 description: 'Defines the in-place arithmetic contract (`add`/`subt`/`mul`/`div`, min/max, linear mapping) shared by every mutable numeric type in `streamIO.copy`, split into a `long`-based layer (`IOpLong`/`IIOpLong`) and a `double`-based layer (`IOpDouble`/`IIOpDouble`) that extends it. `AOpLong`, `AOpDouble` and `AOpMeasurAble` provide the default, copy-based implementation of the non-primitive operations (`Lin`, `dbl`, `sqr`, ...) in terms of the small set of abstract `*At` primitives a concrete subclass must still supply. The module''s own comments mark it **deprecated**: its double-argument operations were superseded by the `Real` interface, and its long-argument operations by `IIntRing`, so new code should prefer those instead.'
+dv_has_:
+  sub_:
+    folders: 0
+    files: 15
+    units: 7
+    facet_:
+      layer_:
+        utility: 7
+      status_:
+        legacy: 5
+        broken: 2
+      complexity_:
+        "3": 7
+    tag_:
+      code_:
+        arithmetic_operation: 6
+        in_place_operation: 4
+        numeric_interface: 2
+        deprecated_api: 2
+        abstract_base: 3
+        numeric_comparison: 2
+        delegation: 2
+    concept_:
+      primitive_numeric_operations: 7
+      deprecated_api: 2
+      measurable_values: 1
+      mutable_value_semantics: 1
+has_sub_folders: 0
+has_sub_files: 15
+has_sub_units: 7
+has_sub_facet_layer_utility: 7
+has_sub_facet_status_legacy: 5
+has_sub_facet_status_broken: 2
+has_sub_facet_complexity_3: 7
+has_sub_tag_code_arithmetic_operation: 6
+has_sub_tag_code_in_place_operation: 4
+has_sub_tag_code_numeric_interface: 2
+has_sub_tag_code_deprecated_api: 2
+has_sub_tag_code_abstract_base: 3
+has_sub_tag_code_numeric_comparison: 2
+has_sub_tag_code_delegation: 2
+has_sub_concept_primitive_numeric_operations: 7
+has_sub_concept_deprecated_api: 2
+has_sub_concept_measurable_values: 1
+has_sub_concept_mutable_value_semantics: 1
 ---
 
 # primitiveOp

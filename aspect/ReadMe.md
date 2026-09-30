@@ -47,6 +47,66 @@ facets:
   status: stable
   complexity: 3
 description: '`aspect` is a small object-property framework: an "Aspect" is a self-describing, named property of a business object that can be read and written both directly and by (possibly nested, underscore-separated) property name, e.g. `person.set("Address_City", "Frankfurt")`. `IAspect`/`AAspect` supply the name/key handling, reflection-based dirty-flag propagation and by-name dispatch; `IHierarchyAspect`/`AHierarchyAspect` add a Parent link so a leaf Aspect can validate upward (multi-field checks against sibling values) and update downward without triggering feedback loops. Concrete leaf types (`StringAspect`, `DoubleAspect`) hold an actual primitive Value with Min/Max (and, for `DoubleAspect`, Modulus) validation; `SimpleAspect` is the base for composite Aspects that hold no Value of their own and simply group other Aspects as public fields (`AddressAspect`, `PersonAspect`); `ListAspect` holds a Table (list) of Aspect records instead of a single sub-Aspect. The nested `dialog/` package builds a small console question-and-answer engine on top of `AAspect`.'
+dv_has_:
+  sub_:
+    folders: 1
+    files: 33
+    units: 16
+    facet_:
+      layer_:
+        domain: 16
+      status_:
+        stable: 14
+        broken: 1
+        unfinished: 1
+      complexity_:
+        "2": 8
+        "3": 6
+        "4": 2
+    tag_:
+      code_:
+        dialog: 6
+        hierarchy: 4
+        domain_model: 10
+        composite_pattern: 3
+        dialog_invocation: 2
+    concept_:
+      aspect_framework: 4
+      composite_aspect: 3
+      console_qa_model: 3
+      reflection_based_dirty_tracking: 2
+      typed_property_validation: 2
+      attribute_modelling: 3
+      console_dialog_engine: 1
+      dialog_tree_runner: 1
+      list_:
+        table_aspect: 1
+      unimplemented_stub: 1
+has_sub_folders: 1
+has_sub_files: 33
+has_sub_units: 16
+has_sub_facet_layer_domain: 16
+has_sub_facet_status_stable: 14
+has_sub_facet_status_broken: 1
+has_sub_facet_status_unfinished: 1
+has_sub_facet_complexity_2: 8
+has_sub_facet_complexity_3: 6
+has_sub_facet_complexity_4: 2
+has_sub_tag_code_dialog: 6
+has_sub_tag_code_hierarchy: 4
+has_sub_tag_code_domain_model: 10
+has_sub_tag_code_composite_pattern: 3
+has_sub_tag_code_dialog_invocation: 2
+has_sub_concept_aspect_framework: 4
+has_sub_concept_composite_aspect: 3
+has_sub_concept_console_qa_model: 3
+has_sub_concept_reflection_based_dirty_tracking: 2
+has_sub_concept_typed_property_validation: 2
+has_sub_concept_attribute_modelling: 3
+has_sub_concept_console_dialog_engine: 1
+has_sub_concept_dialog_tree_runner: 1
+has_sub_concept_list_table_aspect: 1
+has_sub_concept_unimplemented_stub: 1
 ---
 
 # aspect

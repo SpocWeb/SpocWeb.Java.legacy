@@ -63,6 +63,61 @@ facets:
   status: legacy
   complexity: 3
 description: 'A suite of random-number generators for statistical distributions used in simulation and Monte Carlo work, plus a small test harness. `ARandomFloat` is the common abstract base: it wraps an underlying uniform `IStreamIn_Float` source and delegates stream bookkeeping (`availAble`/`getMaxMarkSize`/`getPosition`/`getOrder`) to it, leaving each subclass to implement only `nextDoubleInternal()` and `getMinDouble()` for its specific distribution - Gaussian (`RandomGauss`, `RandomGauss2`), Gamma, Beta, Chi-squared, Fisher F/Z, Student, Poisson, Pareto, Kolmogorov-Smirnov (`RandomKvSv`), Lorentz, and pink noise. `RandomGaussVector` and `RandomUniformVector` build on `IStreamIn_Float` sources to generate vector-valued streams instead of scalars. `TestRandom` exercises the package''s generators from the command line.'
+dv_has_:
+  sub_:
+    folders: 0
+    files: 39
+    units: 17
+    facet_:
+      layer_:
+        utility: 16
+        test: 1
+      status_:
+        legacy: 14
+        broken: 3
+      complexity_:
+        "2": 16
+        "3": 1
+    tag_:
+      code_:
+        random_number_generator: 17
+        statistical_distribution: 12
+        signal_processing: 1
+        vector_math: 2
+    concept_:
+      beta_distributed_random_generator: 1
+      chi_squared_random_generator: 1
+      fisher_f_distributed_random_generator: 1
+      fisher_z_distributed_random_generator: 1
+      gamma_distributed_random_generator: 1
+      gaussian_random_generator: 1
+      gaussian_random_generator_alternate: 1
+      gaussian_random_vector_generator: 1
+      kvsv_distributed_random_generator: 1
+      lorentz_distributed_random_generator: 1
+has_sub_folders: 0
+has_sub_files: 39
+has_sub_units: 17
+has_sub_facet_layer_utility: 16
+has_sub_facet_layer_test: 1
+has_sub_facet_status_legacy: 14
+has_sub_facet_status_broken: 3
+has_sub_facet_complexity_2: 16
+has_sub_facet_complexity_3: 1
+has_sub_tag_code_random_number_generator: 17
+has_sub_tag_code_statistical_distribution: 12
+has_sub_tag_code_signal_processing: 1
+has_sub_tag_code_vector_math: 2
+has_sub_concept_beta_distributed_random_generator: 1
+has_sub_concept_chi_squared_random_generator: 1
+has_sub_concept_fisher_f_distributed_random_generator: 1
+has_sub_concept_fisher_z_distributed_random_generator: 1
+has_sub_concept_gamma_distributed_random_generator: 1
+has_sub_concept_gaussian_random_generator: 1
+has_sub_concept_gaussian_random_generator_alternate: 1
+has_sub_concept_gaussian_random_vector_generator: 1
+has_sub_concept_kvsv_distributed_random_generator: 1
+has_sub_concept_lorentz_distributed_random_generator: 1
 ---
 
 # random

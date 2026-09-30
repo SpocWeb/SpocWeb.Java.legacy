@@ -18,6 +18,39 @@ facets:
   status: legacy
   complexity: 3
 description: 'This folder renders SVG documents through the `graphic` MVC framework rather than parsing them into an in-memory DOM. `SvgApplet` is a SAX callback target: each SVG element name it exposes as a public no-arg-return method (`svg`, `rect`, `ellipse`, `line`, `text`, `g`, ...) is invoked directly by `technology.xml.SaxDispatcher` as the document streams in, and each handler maps the element''s attributes onto an `IGraphImage` drawing call through the coordinate transform in `graphic.math2D`. It can run either as an Applet or as a standalone Frame started from `main`. `SvgHandler` is an empty placeholder, not yet wired to any of this.'
+dv_has_:
+  sub_:
+    folders: 0
+    files: 5
+    units: 2
+    facet_:
+      layer_:
+        utility: 2
+      status_:
+        broken: 1
+        unfinished: 1
+      complexity_:
+        "2": 1
+        "4": 1
+    tag_:
+      code_:
+        parsing: 2
+        rendering: 1
+    concept_:
+      empty_sax_handler_placeholder: 1
+      svg_applet_renderer: 1
+has_sub_folders: 0
+has_sub_files: 5
+has_sub_units: 2
+has_sub_facet_layer_utility: 2
+has_sub_facet_status_broken: 1
+has_sub_facet_status_unfinished: 1
+has_sub_facet_complexity_2: 1
+has_sub_facet_complexity_4: 1
+has_sub_tag_code_parsing: 2
+has_sub_tag_code_rendering: 1
+has_sub_concept_empty_sax_handler_placeholder: 1
+has_sub_concept_svg_applet_renderer: 1
 ---
 
 # svg

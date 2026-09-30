@@ -36,6 +36,33 @@ facets:
   status: legacy
   complexity: 3
 description: 'Combinatorics and special functions built on the `byref` wrappers: `Factorial`/`DblFactorial` (with recursive caching), `Bernoulli` numbers, `Prime` (sieve-based prime cache), `CombiFuncs` (binomial coefficients etc.), `ProbFuncs` (probability distributions), and `BesselFuncs` (Bessel functions).'
+dv_has_:
+  sub_:
+    folders: 0
+    files: 19
+    units: 8
+    facet_:
+      layer_:
+        utility: 8
+      status_:
+        legacy: 8
+      complexity_:
+        "2": 8
+    tag_:
+      code_:
+        special_function: 8
+        combinatorics: 8
+    concept_:
+      combinatorics: 8
+has_sub_folders: 0
+has_sub_files: 19
+has_sub_units: 8
+has_sub_facet_layer_utility: 8
+has_sub_facet_status_legacy: 8
+has_sub_facet_complexity_2: 8
+has_sub_tag_code_special_function: 8
+has_sub_tag_code_combinatorics: 8
+has_sub_concept_combinatorics: 8
 ---
 
 # combinatoric

@@ -27,6 +27,35 @@ facets:
   status: legacy
   complexity: 3
 description: 'Write-side filters that control how an item is routed or how errors are handled on its way downstream: `IfFilterOut` branches each item to one of two outputs based on an `ITester`, `TryCatchOut` catches any downstream exception and reroutes the original item to an error output instead of letting it escalate, `ThrowOut` does the opposite (converts a message back into a thrown exception), `TraceOut` logs each item before forwarding it unchanged, and `ThreadOut` offloads each item''s forwarding onto a new thread for concurrent downstream processing (see the `ThreadOut.addItem()` bug flagged below - it currently recurses rather than looping, so under sustained load it risks unbounded thread creation/stack growth).'
+dv_has_:
+  sub_:
+    folders: 0
+    files: 12
+    units: 5
+    facet_:
+      layer_:
+        utility: 5
+      status_:
+        legacy: 4
+        broken: 1
+      complexity_:
+        "3": 5
+    tag_:
+      code_:
+        decorator_pattern: 5
+        stream_filter: 5
+    concept_:
+      stream_filter_output: 5
+has_sub_folders: 0
+has_sub_files: 12
+has_sub_units: 5
+has_sub_facet_layer_utility: 5
+has_sub_facet_status_legacy: 4
+has_sub_facet_status_broken: 1
+has_sub_facet_complexity_3: 5
+has_sub_tag_code_decorator_pattern: 5
+has_sub_tag_code_stream_filter: 5
+has_sub_concept_stream_filter_output: 5
 ---
 
 # filterOut

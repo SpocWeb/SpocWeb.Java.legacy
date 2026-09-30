@@ -100,6 +100,61 @@ facets:
   status: legacy
   complexity: 3
 description: 'This folder is a hand-rolled concurrency framework predating `java.util.concurrent`, written around 2002-2003. It has four loosely related sub-areas:'
+dv_has_:
+  sub_:
+    folders: 0
+    files: 63
+    units: 29
+    facet_:
+      layer_:
+        infrastructure: 29
+      status_:
+        legacy: 23
+        broken: 6
+      complexity_:
+        "2": 19
+        "3": 10
+    tag_:
+      code_:
+        deferred_execution: 12
+        thread_pool: 10
+        concurrency_primitive: 6
+        callback_pattern: 2
+        dispatcher: 1
+    concept_:
+      active_object_pattern: 1
+      async_request_object: 1
+      async_response_object: 1
+      barrier_client_callback: 1
+      blocking_task_executor: 1
+      counting_semaphore: 1
+      executor_base_class: 1
+      executor_interface: 1
+      fork_join_task: 1
+      future_completion_handler: 1
+has_sub_folders: 0
+has_sub_files: 63
+has_sub_units: 29
+has_sub_facet_layer_infrastructure: 29
+has_sub_facet_status_legacy: 23
+has_sub_facet_status_broken: 6
+has_sub_facet_complexity_2: 19
+has_sub_facet_complexity_3: 10
+has_sub_tag_code_deferred_execution: 12
+has_sub_tag_code_thread_pool: 10
+has_sub_tag_code_concurrency_primitive: 6
+has_sub_tag_code_callback_pattern: 2
+has_sub_tag_code_dispatcher: 1
+has_sub_concept_active_object_pattern: 1
+has_sub_concept_async_request_object: 1
+has_sub_concept_async_response_object: 1
+has_sub_concept_barrier_client_callback: 1
+has_sub_concept_blocking_task_executor: 1
+has_sub_concept_counting_semaphore: 1
+has_sub_concept_executor_base_class: 1
+has_sub_concept_executor_interface: 1
+has_sub_concept_fork_join_task: 1
+has_sub_concept_future_completion_handler: 1
 ---
 
 # asynch

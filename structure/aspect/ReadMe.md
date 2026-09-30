@@ -30,6 +30,47 @@ facets:
   status: legacy
   complexity: 3
 description: Models a bound-Property-plus-Validation abstraction ("Aspect") for driving generic UI Forms and Data-Entry Controls without a Class per Field. `Aspect` is the shared Base holding Name, Enabled/Required/Visible Flags and validation Status; `NumberAspect` and `StringAspect` add a numeric or Length Range respectively, with `DoubleAspect` the concrete numeric Implementation; `GuiAspect` adds Position/Size for a bound Control; `ListAspect` represents a selectable List of other Aspects.
+dv_has_:
+  sub_:
+    folders: 0
+    files: 13
+    units: 6
+    facet_:
+      layer_:
+        domain: 6
+      status_:
+        legacy: 4
+        broken: 2
+      complexity_:
+        "2": 5
+        "3": 1
+    tag_:
+      code_:
+        property_binding: 6
+        data_validation: 1
+    concept_:
+      aspect_property_binding_base: 1
+      double_valued_aspect: 1
+      gui_bound_aspect: 1
+      list_valued_aspect: 1
+      numeric_aspect: 1
+      string_valued_aspect: 1
+has_sub_folders: 0
+has_sub_files: 13
+has_sub_units: 6
+has_sub_facet_layer_domain: 6
+has_sub_facet_status_legacy: 4
+has_sub_facet_status_broken: 2
+has_sub_facet_complexity_2: 5
+has_sub_facet_complexity_3: 1
+has_sub_tag_code_property_binding: 6
+has_sub_tag_code_data_validation: 1
+has_sub_concept_aspect_property_binding_base: 1
+has_sub_concept_double_valued_aspect: 1
+has_sub_concept_gui_bound_aspect: 1
+has_sub_concept_list_valued_aspect: 1
+has_sub_concept_numeric_aspect: 1
+has_sub_concept_string_valued_aspect: 1
 ---
 
 # aspect

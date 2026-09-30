@@ -44,6 +44,65 @@ facets:
   status: legacy
   complexity: 4
 description: Fits parameterized functions and scalar fields to measured data sets, covering both nonlinear fitting (`FitFloat`'s Levenberg-Marquardt minimization of chi-squared over an `IFloatFitFunction`) and linear fitting (`LinearFitDouble`'s and `FittingFloat`'s singular value decomposition, and `FittingFloat.lfit`'s normal-equations solve, over an `IFloatVectorFunction`/`IFloatVectorField`), plus a robust alternative (`LinearRobustFit`) that minimizes absolute deviation instead of chi-squared to resist outliers. `FitGauss`, `FitLegendre` and `FitPolynom` supply ready-made fitting bases (sums of Gaussians, Legendre polynomials, plain powers), and the `weight` subsystem supplies the per-point weighting used when outliers must be discounted.
+dv_has_:
+  sub_:
+    folders: 1
+    files: 29
+    units: 15
+    facet_:
+      layer_:
+        utility: 15
+      status_:
+        legacy: 8
+        broken: 7
+      complexity_:
+        "2": 7
+        "3": 6
+        "4": 2
+    tag_:
+      code_:
+        weighting: 5
+        curve_fitting: 5
+        linear_regression: 2
+        singular_value_decomposition: 2
+        function_interface: 1
+        function_composition: 2
+    concept_:
+      exponential_weight_function: 1
+      fit_function_composition: 1
+      fit_function_interface: 1
+      gaussian_basis_function_fit: 1
+      gaussian_weight_function: 1
+      legendre_polynomial_basis_fit: 1
+      linear_fit_svd: 1
+      linear_least_squares_fit_svd: 1
+      lorentzian_weight_function: 1
+      nonlinear_curve_fit_levenberg_marquardt_style: 1
+has_sub_folders: 1
+has_sub_files: 29
+has_sub_units: 15
+has_sub_facet_layer_utility: 15
+has_sub_facet_status_legacy: 8
+has_sub_facet_status_broken: 7
+has_sub_facet_complexity_2: 7
+has_sub_facet_complexity_3: 6
+has_sub_facet_complexity_4: 2
+has_sub_tag_code_weighting: 5
+has_sub_tag_code_curve_fitting: 5
+has_sub_tag_code_linear_regression: 2
+has_sub_tag_code_singular_value_decomposition: 2
+has_sub_tag_code_function_interface: 1
+has_sub_tag_code_function_composition: 2
+has_sub_concept_exponential_weight_function: 1
+has_sub_concept_fit_function_composition: 1
+has_sub_concept_fit_function_interface: 1
+has_sub_concept_gaussian_basis_function_fit: 1
+has_sub_concept_gaussian_weight_function: 1
+has_sub_concept_legendre_polynomial_basis_fit: 1
+has_sub_concept_linear_fit_svd: 1
+has_sub_concept_linear_least_squares_fit_svd: 1
+has_sub_concept_lorentzian_weight_function: 1
+has_sub_concept_nonlinear_curve_fit_levenberg_marquardt_style: 1
 ---
 
 # fit

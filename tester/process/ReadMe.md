@@ -69,6 +69,57 @@ facets:
   status: legacy
   complexity: 3
 description: 'Models finite-state automata and their surrounding I/O plumbing. `Automaton` is the generic, object-based state machine (state-change function Lambda plus optional output function Beta); `DiscreteAutomaton` and `MatrixAutomaton` specialize this to integer-indexed states for performance, either via hash-based transitions (`IDiscreteTransition`/ `IDynamicTransition` implementors) or a dense transition matrix; `StateMachine` and `TransitionByFunction`/`DynTransByFunction` provide an object-keyed alternative built on `function.IFunction`. `PatternSearcher` demonstrates a concrete use: a Knuth-Morris-Pratt string search expressed as a discrete transition function driving a `DiscreteAutomaton`. `StreamProcessor` wraps an `Automaton` around an input/output stream pair so a single `run()` call drains the whole input through the automaton. `IOEProcess` and `testProcess` are unrelated demo entry points for OS-level inter-process communication via `Runtime.exec()`, kept here as a "process" in the operating-system sense rather than the automaton sense above.'
+dv_has_:
+  sub_:
+    folders: 0
+    files: 36
+    units: 19
+    facet_:
+      layer_:
+        utility: 18
+        test: 1
+      status_:
+        legacy: 17
+        broken: 2
+      complexity_:
+        "2": 16
+        "3": 3
+    tag_:
+      code_:
+        state_machine: 16
+        stream_processing: 3
+    concept_:
+      dynamic_transition_interface: 2
+      automaton_base_class: 1
+      discrete_add_transition: 1
+      discrete_automaton: 1
+      discrete_divide_transition: 1
+      discrete_multiply_transition: 1
+      discrete_subtract_transition: 1
+      discrete_transition_interface: 1
+      function_based_dynamic_transition: 1
+      function_based_transition: 1
+has_sub_folders: 0
+has_sub_files: 36
+has_sub_units: 19
+has_sub_facet_layer_utility: 18
+has_sub_facet_layer_test: 1
+has_sub_facet_status_legacy: 17
+has_sub_facet_status_broken: 2
+has_sub_facet_complexity_2: 16
+has_sub_facet_complexity_3: 3
+has_sub_tag_code_state_machine: 16
+has_sub_tag_code_stream_processing: 3
+has_sub_concept_dynamic_transition_interface: 2
+has_sub_concept_automaton_base_class: 1
+has_sub_concept_discrete_add_transition: 1
+has_sub_concept_discrete_automaton: 1
+has_sub_concept_discrete_divide_transition: 1
+has_sub_concept_discrete_multiply_transition: 1
+has_sub_concept_discrete_subtract_transition: 1
+has_sub_concept_discrete_transition_interface: 1
+has_sub_concept_function_based_dynamic_transition: 1
+has_sub_concept_function_based_transition: 1
 ---
 
 # process

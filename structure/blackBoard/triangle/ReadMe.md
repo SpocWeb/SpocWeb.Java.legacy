@@ -34,6 +34,47 @@ facets:
   status: legacy
   complexity: 3
 description: 'Implements a Blackboard-pattern solver for `Triangle` geometry: `Triangle` holds up to six Side/Angle Values and repeatedly consults five `IKnowledge` Sources (`SSS`, `SSW`, `SWS`, `WSW`, `WWW`), each a Rule of classical Trigonometry (Law of Sines, Law of Cosines, Angle Sum) that fires only when its own preconditions on known Sides/Angles are met. `ATriangleKnowledge` is the shared Base Class caching the Triangle Reference each Rule works against.'
+dv_has_:
+  sub_:
+    folders: 0
+    files: 14
+    units: 7
+    facet_:
+      layer_:
+        domain: 7
+      status_:
+        legacy: 7
+      complexity_:
+        "2": 7
+    tag_:
+      code_:
+        rule_based_validation: 6
+        blackboard_pattern: 1
+        "2d_geometry": 1
+    concept_:
+      angle_angle_angle_rule: 1
+      angle_side_angle_rule: 1
+      side_angle_side_rule: 1
+      side_side_angle_rule: 1
+      side_side_side_rule: 1
+      triangle_knowledge_source_base: 1
+      triangle_value_object: 1
+has_sub_folders: 0
+has_sub_files: 14
+has_sub_units: 7
+has_sub_facet_layer_domain: 7
+has_sub_facet_status_legacy: 7
+has_sub_facet_complexity_2: 7
+has_sub_tag_code_rule_based_validation: 6
+has_sub_tag_code_blackboard_pattern: 1
+has_sub_tag_code_2d_geometry: 1
+has_sub_concept_angle_angle_angle_rule: 1
+has_sub_concept_angle_side_angle_rule: 1
+has_sub_concept_side_angle_side_rule: 1
+has_sub_concept_side_side_angle_rule: 1
+has_sub_concept_side_side_side_rule: 1
+has_sub_concept_triangle_knowledge_source_base: 1
+has_sub_concept_triangle_value_object: 1
 ---
 
 # triangle

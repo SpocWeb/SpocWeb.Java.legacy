@@ -42,6 +42,69 @@ facets:
   status: broken
   complexity: 4
 description: A small feed-forward and self-organizing Neural Network toolkit. `ISlab`/`Slab`/`ASlab` define the shared contract and Weight-matrix bookkeeping for anything that can be trained by Back Propagation; `Layer` and `Network` compose `Layer`s into a Multilayer Perceptron trained by supervised Back Propagation (with `Sigmoid` as the default Switching Function, reusing the Derivative machinery from `function.derive`); `Kohonen` and its `KohonenGraph`/`KohonenTester` support classes implement an unsupervised, topology-preserving Self-Organizing Map (a Kohonen Map / Topology Representing Network) instead, including a Swing/AWT visualization of its convergence. `testNeuronNet` is the package's self-test entry point.
+dv_has_:
+  sub_:
+    folders: 0
+    files: 23
+    units: 10
+    facet_:
+      layer_:
+        utility: 9
+        test: 1
+      status_:
+        legacy: 10
+      complexity_:
+        "2": 1
+        "3": 9
+    tag_:
+      code_:
+        neural_network: 9
+        backpropagation: 4
+        test: 2
+        data_visualization: 1
+        numerical_algorithm: 1
+        console_output: 1
+        entry_point: 1
+        function_contract: 1
+        derivable_function_contract: 1
+    concept_:
+      neural_networks: 6
+      self_organizing_maps: 2
+      supervised_learning: 2
+      activation_functions: 1
+      multilayer_perceptron: 1
+      self_organizing_map_test_harness: 1
+      topology_preservation: 1
+      unsupervised_learning: 1
+      visualization: 1
+      test_harness: 1
+has_sub_folders: 0
+has_sub_files: 23
+has_sub_units: 10
+has_sub_facet_layer_utility: 9
+has_sub_facet_layer_test: 1
+has_sub_facet_status_legacy: 10
+has_sub_facet_complexity_2: 1
+has_sub_facet_complexity_3: 9
+has_sub_tag_code_neural_network: 9
+has_sub_tag_code_backpropagation: 4
+has_sub_tag_code_test: 2
+has_sub_tag_code_data_visualization: 1
+has_sub_tag_code_numerical_algorithm: 1
+has_sub_tag_code_console_output: 1
+has_sub_tag_code_entry_point: 1
+has_sub_tag_code_function_contract: 1
+has_sub_tag_code_derivable_function_contract: 1
+has_sub_concept_neural_networks: 6
+has_sub_concept_self_organizing_maps: 2
+has_sub_concept_supervised_learning: 2
+has_sub_concept_activation_functions: 1
+has_sub_concept_multilayer_perceptron: 1
+has_sub_concept_self_organizing_map_test_harness: 1
+has_sub_concept_topology_preservation: 1
+has_sub_concept_unsupervised_learning: 1
+has_sub_concept_visualization: 1
+has_sub_concept_test_harness: 1
 ---
 
 # neuron

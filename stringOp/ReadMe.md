@@ -55,6 +55,73 @@ facets:
   status: legacy
   complexity: 3
 description: 'A grab-bag of classic string- and sequence-processing algorithms from early-2000s coursework-style exploration: an approximate string-distance metric tuned for German keyboard typos (`EditMetric`), a Huffman coder (`Huffman`) built on a small index-based priority queue (`HeapByIndex`), a Patricia (radix) trie for unique string keys (`PatriciaNode` and its three Iterator helpers), an L-system string-rewriting engine (`Grammar`), a naive sentence-similarity comparer (`SentenceComparer`), and a fixed-capacity int deque (`DeQueueInt`) used as a building block elsewhere. The two subfolders extend this theme: `parser/` holds simple recursive-descent expression and structure parsers, and `search/` holds classic substring-search algorithms (Boyer-Moore, Rabin-Karp, Knuth-Morris-Pratt) plus a small regular-expression automaton. Most classes are standalone algorithm demonstrations with their own `testIt()`/`main()` methods rather than parts of one cohesive API - `testString` is a simple ad hoc driver exercising several of the `search` classes together.'
+dv_has_:
+  sub_:
+    folders: 2
+    files: 39
+    units: 21
+    facet_:
+      layer_:
+        utility: 20
+        test: 1
+      status_:
+        legacy: 18
+        broken: 3
+      complexity_:
+        "2": 10
+        "3": 11
+    tag_:
+      code_:
+        string_search: 4
+        patricia_trie: 4
+        search_algorithm: 3
+        string_algorithms: 3
+        expression_parser: 2
+        parser_utility: 2
+        regex: 2
+        parser: 2
+        compression: 1
+        deque: 1
+    concept_:
+      math_expression_parser: 2
+      boyer_moore_search: 1
+      character_scanner: 1
+      grammar_evolution: 1
+      huffman_coding: 1
+      index_based_heap: 1
+      integer_deque: 1
+      integer_stream_input_interface: 1
+      levenshtein_edit_distance: 1
+      patricia_trie_index_iterator: 1
+has_sub_folders: 2
+has_sub_files: 39
+has_sub_units: 21
+has_sub_facet_layer_utility: 20
+has_sub_facet_layer_test: 1
+has_sub_facet_status_legacy: 18
+has_sub_facet_status_broken: 3
+has_sub_facet_complexity_2: 10
+has_sub_facet_complexity_3: 11
+has_sub_tag_code_string_search: 4
+has_sub_tag_code_patricia_trie: 4
+has_sub_tag_code_search_algorithm: 3
+has_sub_tag_code_string_algorithms: 3
+has_sub_tag_code_expression_parser: 2
+has_sub_tag_code_parser_utility: 2
+has_sub_tag_code_regex: 2
+has_sub_tag_code_parser: 2
+has_sub_tag_code_compression: 1
+has_sub_tag_code_deque: 1
+has_sub_concept_math_expression_parser: 2
+has_sub_concept_boyer_moore_search: 1
+has_sub_concept_character_scanner: 1
+has_sub_concept_grammar_evolution: 1
+has_sub_concept_huffman_coding: 1
+has_sub_concept_index_based_heap: 1
+has_sub_concept_integer_deque: 1
+has_sub_concept_integer_stream_input_interface: 1
+has_sub_concept_levenshtein_edit_distance: 1
+has_sub_concept_patricia_trie_index_iterator: 1
 ---
 
 # stringOp

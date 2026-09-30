@@ -49,6 +49,61 @@ facets:
   status: legacy
   complexity: 3
 description: This package is a small, self-contained reflection/introspection framework predating Java Bean-style libraries such as Apache Commons BeanUtils. `IThing` roots a tiny classification hierarchy (`IThing` -> `IIntangible`/`IIndividual`, `IIntangible` -> `IMathThing` -> `IType`) mirroring an upper-ontology distinction between concrete individuals and abstract/mathematical concepts; `Type` is the concrete `IType` implementation, wrapping a `java.lang.Class` restricted to Interfaces. Separately, `IReflectAble`/`ReflectAble` define a uniform, name-based get/set/call API over an object's public Fields and getter/setter Methods, including `_`-separated nested Property paths (e.g. `home_StreetNr`) and recursive deep-copy support; `Person` and `Address` are sample `ReflectAble` entities demonstrating this. `Accessor` is an independent, standalone reflection helper offering a similar name-based get/set/call API but usable on any Object, not only `IReflectAble` implementors.
+dv_has_:
+  sub_:
+    folders: 0
+    files: 25
+    units: 12
+    facet_:
+      layer_:
+        domain: 11
+        utility: 1
+      status_:
+        stable: 9
+        legacy: 2
+        broken: 1
+      complexity_:
+        "2": 9
+        "3": 2
+        "4": 1
+    tag_:
+      code_:
+        reflection_interface: 7
+        reflection_based_property_access: 2
+        domain_model: 7
+        reflection: 2
+        generic_interface_reflection: 1
+        reflection_helper: 1
+        reflection_object_instantiation: 1
+        interface_contract: 1
+        type_system: 1
+    concept_:
+      object_classification: 7
+      domain_model: 9
+      reflection: 3
+has_sub_folders: 0
+has_sub_files: 25
+has_sub_units: 12
+has_sub_facet_layer_domain: 11
+has_sub_facet_layer_utility: 1
+has_sub_facet_status_stable: 9
+has_sub_facet_status_legacy: 2
+has_sub_facet_status_broken: 1
+has_sub_facet_complexity_2: 9
+has_sub_facet_complexity_3: 2
+has_sub_facet_complexity_4: 1
+has_sub_tag_code_reflection_interface: 7
+has_sub_tag_code_reflection_based_property_access: 2
+has_sub_tag_code_domain_model: 7
+has_sub_tag_code_reflection: 2
+has_sub_tag_code_generic_interface_reflection: 1
+has_sub_tag_code_reflection_helper: 1
+has_sub_tag_code_reflection_object_instantiation: 1
+has_sub_tag_code_interface_contract: 1
+has_sub_tag_code_type_system: 1
+has_sub_concept_object_classification: 7
+has_sub_concept_domain_model: 9
+has_sub_concept_reflection: 3
 ---
 
 # reflect

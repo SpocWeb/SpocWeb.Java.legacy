@@ -68,6 +68,81 @@ facets:
   status: experimental
   complexity: 4
 description: Reusable concurrency and call-wrapping primitives, written as a study of how to coordinate access to shared resources in plain Java without a framework.
+dv_has_:
+  sub_:
+    folders: 2
+    files: 43
+    units: 23
+    facet_:
+      layer_:
+        infrastructure: 18
+        utility: 3
+        test: 1
+      status_:
+        stable: 8
+        experimental: 6
+        broken: 5
+        legacy: 2
+        unfinished: 1
+      complexity_:
+        "2": 11
+        "3": 9
+        "4": 2
+    tag_:
+      code_:
+        locking: 8
+        timeout_handling: 4
+        state_snapshot: 3
+        decorator: 2
+        marker_interface: 2
+        non_blocking: 2
+        watchdog_thread: 2
+        manual_test_harness: 2
+        interface_contract: 2
+        blocking_wait: 1
+    concept_:
+      concurrency: 13
+      memento_pattern: 3
+      error_handling: 2
+      callable_abstraction: 1
+      file_transfer: 1
+      transaction_semantics: 1
+      interprocess_communication: 1
+      text_parsing: 1
+      testing: 1
+has_sub_folders: 2
+has_sub_files: 43
+has_sub_units: 23
+has_sub_facet_layer_infrastructure: 18
+has_sub_facet_layer_utility: 3
+has_sub_facet_layer_test: 1
+has_sub_facet_status_stable: 8
+has_sub_facet_status_experimental: 6
+has_sub_facet_status_broken: 5
+has_sub_facet_status_legacy: 2
+has_sub_facet_status_unfinished: 1
+has_sub_facet_complexity_2: 11
+has_sub_facet_complexity_3: 9
+has_sub_facet_complexity_4: 2
+has_sub_tag_code_locking: 8
+has_sub_tag_code_timeout_handling: 4
+has_sub_tag_code_state_snapshot: 3
+has_sub_tag_code_decorator: 2
+has_sub_tag_code_marker_interface: 2
+has_sub_tag_code_non_blocking: 2
+has_sub_tag_code_watchdog_thread: 2
+has_sub_tag_code_manual_test_harness: 2
+has_sub_tag_code_interface_contract: 2
+has_sub_tag_code_blocking_wait: 1
+has_sub_concept_concurrency: 13
+has_sub_concept_memento_pattern: 3
+has_sub_concept_error_handling: 2
+has_sub_concept_callable_abstraction: 1
+has_sub_concept_file_transfer: 1
+has_sub_concept_transaction_semantics: 1
+has_sub_concept_interprocess_communication: 1
+has_sub_concept_text_parsing: 1
+has_sub_concept_testing: 1
 ---
 
 # tools

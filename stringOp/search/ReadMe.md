@@ -25,6 +25,45 @@ facets:
   status: legacy
   complexity: 3
 description: 'Four classic substring-search algorithms, each documented with the trade-off that makes it the right choice in a given situation: `StrSearcher` (Knuth-Morris-Pratt) builds a small finite-state machine from the pattern''s own prefix function and is best for long patterns in a small alphabet, consuming the input strictly sequentially so it works over streams; `SearcherBM` (Boyer-Moore) scans from the end of the pattern using a precomputed skip table and is fastest for non-recursive patterns in a large alphabet, at the cost of not being stream-friendly; `SearcherRK` (Rabin-Karp) compares rolling polynomial hash codes instead of characters, most effective with very large alphabets; and `RegExp` is a small non-deterministic automaton that matches a parsed regular expression (concatenation, `|` alternation, `*` closure) against a stream, more general than a fixed-string search. All four are independent, alternative implementations of the same `indexOf`-style problem rather than layers on top of one another.'
+dv_has_:
+  sub_:
+    folders: 0
+    files: 8
+    units: 4
+    facet_:
+      layer_:
+        utility: 4
+      status_:
+        legacy: 3
+        broken: 1
+      complexity_:
+        "2": 1
+        "3": 3
+    tag_:
+      code_:
+        string_search: 3
+        search_algorithm: 2
+        regex: 1
+    concept_:
+      boyer_moore_search: 1
+      rabin_karp_search: 1
+      regular_expression_matcher: 1
+      string_searcher_interface: 1
+has_sub_folders: 0
+has_sub_files: 8
+has_sub_units: 4
+has_sub_facet_layer_utility: 4
+has_sub_facet_status_legacy: 3
+has_sub_facet_status_broken: 1
+has_sub_facet_complexity_2: 1
+has_sub_facet_complexity_3: 3
+has_sub_tag_code_string_search: 3
+has_sub_tag_code_search_algorithm: 2
+has_sub_tag_code_regex: 1
+has_sub_concept_boyer_moore_search: 1
+has_sub_concept_rabin_karp_search: 1
+has_sub_concept_regular_expression_matcher: 1
+has_sub_concept_string_searcher_interface: 1
 ---
 
 # search

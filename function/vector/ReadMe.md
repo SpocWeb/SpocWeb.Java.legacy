@@ -78,6 +78,37 @@ facets:
   status: broken
   complexity: 4
 description: Vector-valued and vector-field function contracts (`IFloatVectorFunction`/`IFloatVectorField`/`IFloatScalarField`/`IBinaryOpFloat`) with concrete implementations for ODE integration (`AOdeFloat`, `OdeLorentz` - the Lorenz attractor, `OdeHeight`, `StepConstant`) and per-element vector aggregation (`OpCount`/`OpFirst`/`OpLast`/`OpMax`/`OpMin`/`OpProd`/`OpSum`, `fLength`, `fSum`, `fProduct`, `fSinProd`, `fChargeField`).
+dv_has_:
+  sub_:
+    folders: 0
+    files: 48
+    units: 22
+    facet_:
+      layer_:
+        utility: 22
+      status_:
+        legacy: 22
+      complexity_:
+        "2": 22
+    tag_:
+      code_:
+        vector_math: 22
+        function_composition: 17
+        differential_integration: 5
+    concept_:
+      vector_field_function: 17
+      ode_integration: 5
+has_sub_folders: 0
+has_sub_files: 48
+has_sub_units: 22
+has_sub_facet_layer_utility: 22
+has_sub_facet_status_legacy: 22
+has_sub_facet_complexity_2: 22
+has_sub_tag_code_vector_math: 22
+has_sub_tag_code_function_composition: 17
+has_sub_tag_code_differential_integration: 5
+has_sub_concept_vector_field_function: 17
+has_sub_concept_ode_integration: 5
 ---
 
 # vector

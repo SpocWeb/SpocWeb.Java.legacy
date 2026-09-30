@@ -42,6 +42,35 @@ facets:
   status: legacy
   complexity: 3
 description: '`BackTracker` is a generic backtracking/genetic-search engine: it streams successive solutions out of a search whose exploration order (breadth-first, depth-first, or priority/branch-and-bound) is determined purely by the `IPipe` implementation used to store pending candidates (FIFO, LIFO, or a priority queue). The other classes in this folder are problem-specific generator/tester pairs plugged into `BackTracker` for five classic search problems: the 8-puzzle (`AchterProblem`/`AchterState`), the Knight''s Tour (`HorseProblem`), N-Queens (`QueenProblem`), exhaustive string permutations (`PermutationProblem`), the Travelling Salesman Problem (`TravelProblem`/`TravelState`), plus a grammar-based sentence generator (`Grammar`/`GrammarState`). Each generator supplies candidate next-states from a given state; `BackTracker` does not know or care what the states represent.'
+dv_has_:
+  sub_:
+    folders: 0
+    files: 18
+    units: 10
+    facet_:
+      layer_:
+        utility: 10
+      status_:
+        legacy: 6
+        broken: 4
+      complexity_:
+        "3": 10
+    tag_:
+      code_:
+        backtracking: 10
+        algorithm: 10
+    concept_:
+      backtracking_search: 10
+has_sub_folders: 0
+has_sub_files: 18
+has_sub_units: 10
+has_sub_facet_layer_utility: 10
+has_sub_facet_status_legacy: 6
+has_sub_facet_status_broken: 4
+has_sub_facet_complexity_3: 10
+has_sub_tag_code_backtracking: 10
+has_sub_tag_code_algorithm: 10
+has_sub_concept_backtracking_search: 10
 ---
 
 # backTrack

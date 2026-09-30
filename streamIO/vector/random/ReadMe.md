@@ -22,6 +22,37 @@ facets:
   status: stable
   complexity: 4
 description: 'Three low-discrepancy vector generators for sampling a multi-dimensional space, trading off stoppability against even coverage: `RandomVectorPseudo` (Cantor''s diagonal algorithm) can be stopped at any time but distributes points less evenly; `RandomVectorPseudoSequential` distributes points evenly but only once a full step-size cycle completes; and `RandomVectorQuasi` (a Sobol sequence) achieves both, at the cost of a fixed maximum dimension and bit depth set up by a large static table.'
+dv_has_:
+  sub_:
+    folders: 0
+    files: 6
+    units: 3
+    facet_:
+      layer_:
+        utility: 3
+      status_:
+        stable: 3
+      complexity_:
+        "3": 1
+        "4": 2
+    tag_:
+      code_:
+        random_number_generation: 3
+        quasi_random_sequence: 1
+    concept_:
+      monte_carlo: 3
+      random_sampling: 3
+has_sub_folders: 0
+has_sub_files: 6
+has_sub_units: 3
+has_sub_facet_layer_utility: 3
+has_sub_facet_status_stable: 3
+has_sub_facet_complexity_3: 1
+has_sub_facet_complexity_4: 2
+has_sub_tag_code_random_number_generation: 3
+has_sub_tag_code_quasi_random_sequence: 1
+has_sub_concept_monte_carlo: 3
+has_sub_concept_random_sampling: 3
 ---
 
 # random

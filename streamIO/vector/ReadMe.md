@@ -23,6 +23,43 @@ facets:
   status: broken
   complexity: 3
 description: Combinatorics streams that hand out one integer Vector per call, each Vector recording how many times each of Dim Items was drawn. `CombinationStream` and `CombinationStream2` are alternative implementations (Permutation-based and bit-mask-based, respectively) of combinations without repetition; `CombinationsRepeating` draws with repetition, both recursively one Vector at a time and, via its static `CombRep`, all at once. The `random/` subsystem builds low-discrepancy random vectors on similar Stream contracts.
+dv_has_:
+  sub_:
+    folders: 1
+    files: 12
+    units: 7
+    facet_:
+      layer_:
+        utility: 7
+      status_:
+        stable: 6
+        broken: 1
+      complexity_:
+        "3": 3
+        "4": 4
+    tag_:
+      code_:
+        combinatorics: 3
+        random_number_generation: 4
+        quasi_random_sequence: 2
+    concept_:
+      monte_carlo: 4
+      random_sampling: 4
+      combinatorics: 3
+has_sub_folders: 1
+has_sub_files: 12
+has_sub_units: 7
+has_sub_facet_layer_utility: 7
+has_sub_facet_status_stable: 6
+has_sub_facet_status_broken: 1
+has_sub_facet_complexity_3: 3
+has_sub_facet_complexity_4: 4
+has_sub_tag_code_combinatorics: 3
+has_sub_tag_code_random_number_generation: 4
+has_sub_tag_code_quasi_random_sequence: 2
+has_sub_concept_monte_carlo: 4
+has_sub_concept_random_sampling: 4
+has_sub_concept_combinatorics: 3
 ---
 
 # vector

@@ -47,6 +47,76 @@ facets:
   status: legacy
   complexity: 3
 description: 'Root of a value-semantics / copy-based object model: `ICopyAble` is the shared contract for objects that support deep copy, shallow copy, in-place copy (`copyAt`), swap and stream-based (de)serialization instead of relying on immutability or `Object.clone()`. `ACopyAble` supplies the default, reflection-capable implementation; `CCopyAble` is the constant/immutable wrapper counterpart, delegating reads to an inner instance and throwing on every mutating `...At()` call. `IICopyAble` factors out the smaller subset of the contract (`newInstance`, `randomizeAt`, stream writing) that a class can implement without also being a full `ICopyAble`. `TestCopy` is the package''s manual test-harness entry point.'
+dv_has_:
+  sub_:
+    folders: 15
+    files: 488
+    units: 222
+    facet_:
+      layer_:
+        domain: 131
+        utility: 90
+      status_:
+        legacy: 210
+        broken: 11
+      complexity_:
+        "3": 90
+        "4": 131
+    tag_:
+      code_:
+        ode_solver: 29
+        ring_theory: 29
+        interval_arithmetic: 20
+        abstract_base: 24
+        rational_numbers: 16
+        date_time: 15
+        group_algebra: 15
+        big_integer_arithmetic: 41
+        metric_space: 41
+        manifold_generation: 14
+    concept_:
+      ring_algebra_and_ode_solvers: 29
+      rational_numbers_and_interval_arithmetic: 16
+      group_:
+        semigroup_algebra: 15
+      metric_spaces_root_finding_and_numerical_integration: 41
+      vector_:
+        matrix_:
+          tensor_and_manifold_interpolation: 14
+      fuzzy_logic: 12
+      boolean_algebra: 11
+      monoid: 11
+      order_relation: 11
+      algebraic_group: 10
+has_sub_folders: 15
+has_sub_files: 488
+has_sub_units: 222
+has_sub_facet_layer_domain: 131
+has_sub_facet_layer_utility: 90
+has_sub_facet_status_legacy: 210
+has_sub_facet_status_broken: 11
+has_sub_facet_complexity_3: 90
+has_sub_facet_complexity_4: 131
+has_sub_tag_code_ode_solver: 29
+has_sub_tag_code_ring_theory: 29
+has_sub_tag_code_interval_arithmetic: 20
+has_sub_tag_code_abstract_base: 24
+has_sub_tag_code_rational_numbers: 16
+has_sub_tag_code_date_time: 15
+has_sub_tag_code_group_algebra: 15
+has_sub_tag_code_big_integer_arithmetic: 41
+has_sub_tag_code_metric_space: 41
+has_sub_tag_code_manifold_generation: 14
+has_sub_concept_ring_algebra_and_ode_solvers: 29
+has_sub_concept_rational_numbers_and_interval_arithmetic: 16
+has_sub_concept_group_semigroup_algebra: 15
+has_sub_concept_metric_spaces_root_finding_and_numerical_integration: 41
+has_sub_concept_vector_matrix_tensor_and_manifold_interpolation: 14
+has_sub_concept_fuzzy_logic: 12
+has_sub_concept_boolean_algebra: 11
+has_sub_concept_monoid: 11
+has_sub_concept_order_relation: 11
+has_sub_concept_algebraic_group: 10
 ---
 
 # copy

@@ -43,6 +43,67 @@ facets:
   status: legacy
   complexity: 4
 description: 'Loads, holds and displays Milkshape 3D (`.ms3d`) character models: meshes, materials, triangles, vertices and a skeleton of joints with keyframe animation. `Ms3d` is the loader and in-memory model; `Ms3dJoint`, `Ms3dKeyFrame`, `Ms3dMesh`, `Ms3dTriangle`, `Ms3dTexture`, `Ms3dTextureMap` and `Ms3dVertex` are its constituent data records, each reading its own section of the binary file format via `BigEndianReader`. `Ms3dPainter` renders a loaded model by mapping it into 2D and drawing its mesh and bones; `FileBMP` is an unrelated, currently-unimplemented stub for reading Windows BMP images (Java''s image I/O supports only JPEG/GIF/PNG).'
+dv_has_:
+  sub_:
+    folders: 0
+    files: 20
+    units: 10
+    facet_:
+      layer_:
+        domain: 9
+        utility: 1
+      status_:
+        legacy: 7
+        broken: 2
+        unfinished: 1
+      complexity_:
+        "2": 6
+        "3": 3
+        "4": 1
+    tag_:
+      code_:
+        mesh_data: 4
+        skeletal_animation: 3
+        image_loading: 2
+        binary_parsing: 1
+        "3d_rendering": 1
+    concept_:
+      bmp_file_loader_unimplemented_stub: 1
+      ms3d_animation_keyframe: 1
+      ms3d_mesh: 1
+      ms3d_mesh_triangle: 1
+      ms3d_mesh_vertex: 1
+      ms3d_model_file_parser: 1
+      ms3d_model_renderer: 1
+      ms3d_skeletal_joint: 1
+      ms3d_texture_coordinate_map: 1
+      ms3d_texture_loader: 1
+has_sub_folders: 0
+has_sub_files: 20
+has_sub_units: 10
+has_sub_facet_layer_domain: 9
+has_sub_facet_layer_utility: 1
+has_sub_facet_status_legacy: 7
+has_sub_facet_status_broken: 2
+has_sub_facet_status_unfinished: 1
+has_sub_facet_complexity_2: 6
+has_sub_facet_complexity_3: 3
+has_sub_facet_complexity_4: 1
+has_sub_tag_code_mesh_data: 4
+has_sub_tag_code_skeletal_animation: 3
+has_sub_tag_code_image_loading: 2
+has_sub_tag_code_binary_parsing: 1
+has_sub_tag_code_3d_rendering: 1
+has_sub_concept_bmp_file_loader_unimplemented_stub: 1
+has_sub_concept_ms3d_animation_keyframe: 1
+has_sub_concept_ms3d_mesh: 1
+has_sub_concept_ms3d_mesh_triangle: 1
+has_sub_concept_ms3d_mesh_vertex: 1
+has_sub_concept_ms3d_model_file_parser: 1
+has_sub_concept_ms3d_model_renderer: 1
+has_sub_concept_ms3d_skeletal_joint: 1
+has_sub_concept_ms3d_texture_coordinate_map: 1
+has_sub_concept_ms3d_texture_loader: 1
 ---
 
 # ms3d

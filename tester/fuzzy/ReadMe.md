@@ -21,6 +21,43 @@ facets:
   status: legacy
   complexity: 3
 description: Implements approximate ("fuzzy") text matching on top of the `tester.IMetric` abstraction. `FuzzySetComparator` compares arrays of word-like objects for similarity by summing the minimum or maximum pairwise distance under a given metric; `FuzzySentenceComparator` builds on it by first splitting raw strings into normalized words (case-folding, separator splitting, substitution tables) and delegating the actual comparison to a `FuzzySetComparator`; `FuzzyDictionary` maintains a growing set of previously seen items and finds the one closest to a new item under a metric, for incremental normalization tasks.
+dv_has_:
+  sub_:
+    folders: 0
+    files: 6
+    units: 3
+    facet_:
+      layer_:
+        utility: 3
+      status_:
+        broken: 2
+        legacy: 1
+      complexity_:
+        "2": 1
+        "3": 2
+    tag_:
+      code_:
+        similarity_matching: 2
+        fuzzy_search: 1
+        string_similarity: 1
+    concept_:
+      fuzzy_dictionary_lookup: 1
+      fuzzy_sentence_comparator: 1
+      fuzzy_set_comparator: 1
+has_sub_folders: 0
+has_sub_files: 6
+has_sub_units: 3
+has_sub_facet_layer_utility: 3
+has_sub_facet_status_broken: 2
+has_sub_facet_status_legacy: 1
+has_sub_facet_complexity_2: 1
+has_sub_facet_complexity_3: 2
+has_sub_tag_code_similarity_matching: 2
+has_sub_tag_code_fuzzy_search: 1
+has_sub_tag_code_string_similarity: 1
+has_sub_concept_fuzzy_dictionary_lookup: 1
+has_sub_concept_fuzzy_sentence_comparator: 1
+has_sub_concept_fuzzy_set_comparator: 1
 ---
 
 # fuzzy

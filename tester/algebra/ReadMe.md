@@ -27,6 +27,41 @@ facets:
   status: legacy
   complexity: 2
 description: 'Provides a small Boolean algebra over `tester.ITester` predicates: `TesterAND`, `TesterOR` and `TesterXOR` combine two testers with the corresponding logical operator, `TesterNOT` inverts one, and `TesterConst` supplies a fixed true/false result to act as a neutral or absorbing element in a composition. None of these classes hold state beyond the testers they wrap, so a tree of them can be built once and reused across calls.'
+dv_has_:
+  sub_:
+    folders: 0
+    files: 10
+    units: 5
+    facet_:
+      layer_:
+        utility: 5
+      status_:
+        legacy: 5
+      complexity_:
+        "2": 5
+    tag_:
+      code_:
+        predicate_logic: 4
+        boolean_algebra: 5
+    concept_:
+      boolean_and_tester: 1
+      boolean_not_tester: 1
+      boolean_or_tester: 1
+      boolean_xor_tester: 1
+      constant_tester: 1
+has_sub_folders: 0
+has_sub_files: 10
+has_sub_units: 5
+has_sub_facet_layer_utility: 5
+has_sub_facet_status_legacy: 5
+has_sub_facet_complexity_2: 5
+has_sub_tag_code_predicate_logic: 4
+has_sub_tag_code_boolean_algebra: 5
+has_sub_concept_boolean_and_tester: 1
+has_sub_concept_boolean_not_tester: 1
+has_sub_concept_boolean_or_tester: 1
+has_sub_concept_boolean_xor_tester: 1
+has_sub_concept_constant_tester: 1
 ---
 
 # algebra

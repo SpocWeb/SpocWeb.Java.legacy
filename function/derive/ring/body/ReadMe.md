@@ -102,6 +102,71 @@ facets:
   status: legacy
   complexity: 4
 description: Concrete elementary and special Functions over a scalar `MetricBody` (a real or real-valued Numeric Type), each implementing the `IFloatDeriveAble` contract from `function.derive` so it can be differentiated, integrated and (where meaningful) inverted like any other combinator in `function.derive.ring`. Covers the trigonometric and hyperbolic families and their inverses (`Sinus`/`ArcSin`, `SinH`/`ArSinH`, ...), the exponential/logarithmic pair, `Power`, and a set of special Functions used by statistics and numerical analysis (`GammaLn`/`GammaP`, `BetaI`, `Gauss`/`LogNormal`, the Exponential/Sine/Cosine Integrals `EI`/`SI`/`CI`, `DawsonInt`, `ElliptInt`, `Brillouin`/`Langevin`). The `vector` subfolder extends the same combinators to per-dimension (partial) derivatives over Tensor-valued arguments. `TestBodyFuncs` is the package's self-test entry point.
+dv_has_:
+  sub_:
+    folders: 1
+    files: 97
+    units: 44
+    facet_:
+      layer_:
+        utility: 44
+      status_:
+        legacy: 43
+        broken: 1
+      complexity_:
+        "3": 43
+        "4": 1
+    tag_:
+      code_:
+        hyperbolic_function: 9
+        trigonometric_function: 6
+        derivable_function_contract: 20
+        differential_integration: 10
+        mathematical_function: 13
+        gamma_function: 2
+        console_output: 2
+        entry_point: 2
+        exponential_function: 2
+        vector_math: 5
+    concept_:
+      partial_derivatives: 7
+      special_functions: 7
+      trigonometric_functions: 5
+      vector_calculus: 4
+      hyperbolic_functions: 3
+      inverse_hyperbolic_functions: 3
+      inverse_trigonometric_functions: 3
+      statistical_distributions: 3
+      magnetism: 2
+      thermodynamics: 2
+has_sub_folders: 1
+has_sub_files: 97
+has_sub_units: 44
+has_sub_facet_layer_utility: 44
+has_sub_facet_status_legacy: 43
+has_sub_facet_status_broken: 1
+has_sub_facet_complexity_3: 43
+has_sub_facet_complexity_4: 1
+has_sub_tag_code_hyperbolic_function: 9
+has_sub_tag_code_trigonometric_function: 6
+has_sub_tag_code_derivable_function_contract: 20
+has_sub_tag_code_differential_integration: 10
+has_sub_tag_code_mathematical_function: 13
+has_sub_tag_code_gamma_function: 2
+has_sub_tag_code_console_output: 2
+has_sub_tag_code_entry_point: 2
+has_sub_tag_code_exponential_function: 2
+has_sub_tag_code_vector_math: 5
+has_sub_concept_partial_derivatives: 7
+has_sub_concept_special_functions: 7
+has_sub_concept_trigonometric_functions: 5
+has_sub_concept_vector_calculus: 4
+has_sub_concept_hyperbolic_functions: 3
+has_sub_concept_inverse_hyperbolic_functions: 3
+has_sub_concept_inverse_trigonometric_functions: 3
+has_sub_concept_statistical_distributions: 3
+has_sub_concept_magnetism: 2
+has_sub_concept_thermodynamics: 2
 ---
 
 # body

@@ -109,6 +109,69 @@ facets:
   status: legacy
   complexity: 4
 description: 'A self-contained JDBC driver (`java.sql.Driver`/`Connection`/`Statement`/`ResultSet`/ `DatabaseMetaData`) whose "database" is nothing but the filesystem: a catalog is a directory, a table is a file whose name carries a shared suffix, and rows/columns are plain text. Two concrete storage flavors exist side by side - fixed-length records (`*Fix` classes, via `ConnectionFix`/`DriverFix`) and the separator-delimited variant implemented in the sibling `streamIO.object.parser.jdbc` package - both built on the same `A*` abstract bases (`AConnection`, `AStatement`, `AResultSet`, `ADBMetaData`) so a new storage format only has to supply the row-level read/write primitives.'
+dv_has_:
+  sub_:
+    folders: 1
+    files: 78
+    units: 40
+    facet_:
+      layer_:
+        domain: 40
+      status_:
+        legacy: 37
+        broken: 3
+      complexity_:
+        "2": 8
+        "3": 1
+        "4": 31
+    tag_:
+      code_:
+        database_access: 31
+        database_driver: 31
+        predicate: 8
+        jdbc_adapter: 31
+        predicate_evaluation: 5
+        predicate_delegate: 2
+        predicate_interface: 1
+        predicate_filter: 1
+    concept_:
+      filesystem_backed_jdbc_driver_framework_with_fixed_length_and_separator_delimited_table_storage: 31
+      filters_resultset_rows_where_a_predicate_is_false: 1
+      full_outer_join_row_predicate: 1
+      left_outer_join_row_predicate: 1
+      less_than_row_predicate: 1
+      negating_row_predicate_wrapper: 1
+      operand_swapping_row_predicate_wrapper: 1
+      row_filter_predicate_hierarchy_for_jdbc_resultset_joins_and_conditions: 1
+      row_level_equality_test_between_two_dbcolumn_fields: 1
+      row_predicate_contract_between_two_dbcolumn_fields: 1
+has_sub_folders: 1
+has_sub_files: 78
+has_sub_units: 40
+has_sub_facet_layer_domain: 40
+has_sub_facet_status_legacy: 37
+has_sub_facet_status_broken: 3
+has_sub_facet_complexity_2: 8
+has_sub_facet_complexity_3: 1
+has_sub_facet_complexity_4: 31
+has_sub_tag_code_database_access: 31
+has_sub_tag_code_database_driver: 31
+has_sub_tag_code_predicate: 8
+has_sub_tag_code_jdbc_adapter: 31
+has_sub_tag_code_predicate_evaluation: 5
+has_sub_tag_code_predicate_delegate: 2
+has_sub_tag_code_predicate_interface: 1
+has_sub_tag_code_predicate_filter: 1
+has_sub_concept_filesystem_backed_jdbc_driver_framework_with_fixed_length_and_separator_delimited_table_storage: 31
+has_sub_concept_filters_resultset_rows_where_a_predicate_is_false: 1
+has_sub_concept_full_outer_join_row_predicate: 1
+has_sub_concept_left_outer_join_row_predicate: 1
+has_sub_concept_less_than_row_predicate: 1
+has_sub_concept_negating_row_predicate_wrapper: 1
+has_sub_concept_operand_swapping_row_predicate_wrapper: 1
+has_sub_concept_row_filter_predicate_hierarchy_for_jdbc_resultset_joins_and_conditions: 1
+has_sub_concept_row_level_equality_test_between_two_dbcolumn_fields: 1
+has_sub_concept_row_predicate_contract_between_two_dbcolumn_fields: 1
 ---
 
 # jdbc

@@ -115,6 +115,78 @@ facets:
   status: legacy
   complexity: 4
 description: 'This folder is a legacy (pre-2004) 3D wireframe/solid graphics engine: it maps 3- and n-dimensional geometry (points, lines, polygons, bodies) onto a 2D `Point2D` viewport through projective or planar coordinate mappings, then renders the result via AWT-level graphics interfaces (`IGraphShape`/`IGraphText`) and Swing/AWT mouse and keyboard controllers. It underlies the older `graphic.math2D` package''s 2D-only counterpart and is itself superseded in places by `TestMathGraph3` over the earlier `testMathGraph2`/`testMathGraph3D` applet classes, which remain for reference and comparison.'
+dv_has_:
+  sub_:
+    folders: 0
+    files: 71
+    units: 34
+    facet_:
+      layer_:
+        domain: 26
+        test: 4
+        infrastructure: 2
+        utility: 2
+      status_:
+        legacy: 33
+        broken: 1
+      complexity_:
+        "2": 19
+        "3": 15
+    tag_:
+      code_:
+        "3d_geometry": 12
+        "3d_rendering": 13
+        chart_rendering: 6
+        test: 4
+        coordinate_transform: 3
+        mouse_input: 2
+        projection: 2
+        geometry: 3
+        computational_geometry: 2
+        polygon_calculation: 2
+    concept_:
+      "3d_graph_demo_":
+        test_harness: 3
+      "2d_coordinate_transform_variant": 1
+      "2d_figure_drawing_helpers": 1
+      "3d_body_renderer": 1
+      "3d_column_chart_element": 1
+      "3d_coordinate_transform": 1
+      "3d_figure_drawing_helpers": 1
+      "3d_line_segment": 1
+      "3d_polygon": 1
+      "3d_polygon_plotter": 1
+has_sub_folders: 0
+has_sub_files: 71
+has_sub_units: 34
+has_sub_facet_layer_domain: 26
+has_sub_facet_layer_test: 4
+has_sub_facet_layer_infrastructure: 2
+has_sub_facet_layer_utility: 2
+has_sub_facet_status_legacy: 33
+has_sub_facet_status_broken: 1
+has_sub_facet_complexity_2: 19
+has_sub_facet_complexity_3: 15
+has_sub_tag_code_3d_geometry: 12
+has_sub_tag_code_3d_rendering: 13
+has_sub_tag_code_chart_rendering: 6
+has_sub_tag_code_test: 4
+has_sub_tag_code_coordinate_transform: 3
+has_sub_tag_code_mouse_input: 2
+has_sub_tag_code_projection: 2
+has_sub_tag_code_geometry: 3
+has_sub_tag_code_computational_geometry: 2
+has_sub_tag_code_polygon_calculation: 2
+has_sub_concept_3d_graph_demo_test_harness: 3
+has_sub_concept_2d_coordinate_transform_variant: 1
+has_sub_concept_2d_figure_drawing_helpers: 1
+has_sub_concept_3d_body_renderer: 1
+has_sub_concept_3d_column_chart_element: 1
+has_sub_concept_3d_coordinate_transform: 1
+has_sub_concept_3d_figure_drawing_helpers: 1
+has_sub_concept_3d_line_segment: 1
+has_sub_concept_3d_polygon: 1
+has_sub_concept_3d_polygon_plotter: 1
 ---
 
 # math3D

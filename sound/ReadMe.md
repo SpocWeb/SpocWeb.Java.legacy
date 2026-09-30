@@ -44,6 +44,73 @@ facets:
   status: legacy
   complexity: 3
 description: 'This folder parses and (partially) writes Microsoft RIFF-based audio containers - WAV and Standard MIDI Files - plus one interactive MIDI player. `FileChunk` reads any generic RIFF-style Chunk (a 4-Character Type Tag followed by a 4-Byte Size); `RiffFile` builds on it to read the outer "RIFF" Container Header. `WaveFile` and `MidiFile` each build on `RiffFile`/`FileChunk` to read a concrete Container: `WaveFile` reads the "fmt " Chunk (`WaveFormatChunk`) and "data" Chunk of a WAV File, while `MidiFile` reads the "MThd" Header and a Sequence of "MTrk" Track Chunks (`MidiChunk`). `WaveDataChunk` is an alternative, self-contained reader for a WAV "data" Chunk that decodes Samples directly rather than exposing the raw Bytes. For playback, `WaveStreamIn` and `WaveStreamOut` adapt a `WaveFile`''s Data Chunk to/from a sequential per-Channel sample stream (`streamIO.integer` interfaces), and `DirectPlayer` is an unrelated, self-contained Swing/MIDI toy that maps computer-keyboard Keys to MIDI Notes for live Synthesizer playback via `javax.sound.midi`.'
+dv_has_:
+  sub_:
+    folders: 0
+    files: 22
+    units: 10
+    facet_:
+      layer_:
+        domain: 9
+        utility: 1
+      status_:
+        broken: 5
+        legacy: 2
+        stable: 2
+        experimental: 1
+      complexity_:
+        "2": 5
+        "3": 5
+    tag_:
+      code_:
+        audio: 5
+        midi_playback: 3
+        file_parsing: 3
+        media_playback: 2
+        binary_file_format: 2
+        binary_data_reading: 1
+        binary_reader: 1
+        keyboard_input: 1
+    concept_:
+      interactive_midi_player: 1
+      midi_track: 1
+      pcm_sample_stream: 1
+      riff_chunk: 1
+      riff_container: 1
+      standard_midi_file: 1
+      wav_container: 1
+      wav_data_chunk: 1
+      wav_format_chunk: 1
+      wav_writer: 1
+has_sub_folders: 0
+has_sub_files: 22
+has_sub_units: 10
+has_sub_facet_layer_domain: 9
+has_sub_facet_layer_utility: 1
+has_sub_facet_status_broken: 5
+has_sub_facet_status_legacy: 2
+has_sub_facet_status_stable: 2
+has_sub_facet_status_experimental: 1
+has_sub_facet_complexity_2: 5
+has_sub_facet_complexity_3: 5
+has_sub_tag_code_audio: 5
+has_sub_tag_code_midi_playback: 3
+has_sub_tag_code_file_parsing: 3
+has_sub_tag_code_media_playback: 2
+has_sub_tag_code_binary_file_format: 2
+has_sub_tag_code_binary_data_reading: 1
+has_sub_tag_code_binary_reader: 1
+has_sub_tag_code_keyboard_input: 1
+has_sub_concept_interactive_midi_player: 1
+has_sub_concept_midi_track: 1
+has_sub_concept_pcm_sample_stream: 1
+has_sub_concept_riff_chunk: 1
+has_sub_concept_riff_container: 1
+has_sub_concept_standard_midi_file: 1
+has_sub_concept_wav_container: 1
+has_sub_concept_wav_data_chunk: 1
+has_sub_concept_wav_format_chunk: 1
+has_sub_concept_wav_writer: 1
 ---
 
 # sound

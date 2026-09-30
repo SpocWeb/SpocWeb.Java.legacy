@@ -66,6 +66,77 @@ facets:
   status: legacy
   complexity: 4
 description: A Model-View-Controller framework for 2D graphics built on AWT/Applet, predating Swing usage in this codebase.
+dv_has_:
+  sub_:
+    folders: 3
+    files: 53
+    units: 29
+    facet_:
+      layer_:
+        infrastructure: 14
+        domain: 13
+        utility: 2
+      status_:
+        legacy: 24
+        broken: 5
+      complexity_:
+        "2": 18
+        "3": 8
+        "4": 3
+    tag_:
+      code_:
+        gui: 13
+        event_handling: 7
+        interactive_editing: 6
+        model_state_management: 4
+        texture_map: 3
+        ui_control: 2
+        observer_pattern: 2
+        buffering: 1
+        container_pattern: 1
+        event_dispatch: 1
+    concept_:
+      "2d_graph_editing_model": 1
+      "2d_graph_editing_mvc": 1
+      "3d_model_texture_mapping_and_rendering": 1
+      active_canvas_interface: 1
+      applet_framework_base_class: 1
+      background_clearing_painter: 1
+      canvas_interface: 1
+      controller_interface: 1
+      dynamic_array_of_3d_projected_polygons: 1
+      focus_aware_painter_interface: 1
+has_sub_folders: 3
+has_sub_files: 53
+has_sub_units: 29
+has_sub_facet_layer_infrastructure: 14
+has_sub_facet_layer_domain: 13
+has_sub_facet_layer_utility: 2
+has_sub_facet_status_legacy: 24
+has_sub_facet_status_broken: 5
+has_sub_facet_complexity_2: 18
+has_sub_facet_complexity_3: 8
+has_sub_facet_complexity_4: 3
+has_sub_tag_code_gui: 13
+has_sub_tag_code_event_handling: 7
+has_sub_tag_code_interactive_editing: 6
+has_sub_tag_code_model_state_management: 4
+has_sub_tag_code_texture_map: 3
+has_sub_tag_code_ui_control: 2
+has_sub_tag_code_observer_pattern: 2
+has_sub_tag_code_buffering: 1
+has_sub_tag_code_container_pattern: 1
+has_sub_tag_code_event_dispatch: 1
+has_sub_concept_2d_graph_editing_model: 1
+has_sub_concept_2d_graph_editing_mvc: 1
+has_sub_concept_3d_model_texture_mapping_and_rendering: 1
+has_sub_concept_active_canvas_interface: 1
+has_sub_concept_applet_framework_base_class: 1
+has_sub_concept_background_clearing_painter: 1
+has_sub_concept_canvas_interface: 1
+has_sub_concept_controller_interface: 1
+has_sub_concept_dynamic_array_of_3d_projected_polygons: 1
+has_sub_concept_focus_aware_painter_interface: 1
 ---
 
 # mvc

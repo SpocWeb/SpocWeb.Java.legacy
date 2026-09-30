@@ -18,6 +18,43 @@ facets:
   status: experimental
   complexity: 2
 description: 'A single watchdog: given a thread that is already running, interrupt it once its time is up.'
+dv_has_:
+  sub_:
+    folders: 0
+    files: 6
+    units: 3
+    facet_:
+      layer_:
+        infrastructure: 1
+        test: 1
+      status_:
+        experimental: 1
+        stable: 1
+      complexity_:
+        "2": 1
+        "3": 1
+    tag_:
+      code_:
+        thread_interruption: 1
+        watchdog_thread: 1
+        timeout_handling: 1
+    concept_:
+      concurrency: 2
+      testing: 1
+has_sub_folders: 0
+has_sub_files: 6
+has_sub_units: 3
+has_sub_facet_layer_infrastructure: 1
+has_sub_facet_layer_test: 1
+has_sub_facet_status_experimental: 1
+has_sub_facet_status_stable: 1
+has_sub_facet_complexity_2: 1
+has_sub_facet_complexity_3: 1
+has_sub_tag_code_thread_interruption: 1
+has_sub_tag_code_watchdog_thread: 1
+has_sub_tag_code_timeout_handling: 1
+has_sub_concept_concurrency: 2
+has_sub_concept_testing: 1
 ---
 
 # threads

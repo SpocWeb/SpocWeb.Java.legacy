@@ -49,6 +49,79 @@ facets:
   status: legacy
   complexity: 4
 description: Provides general-purpose numerical building blocks - low-dimensional Vector and Line Geometry, paraxial Optics Matrices, polynomial/spline Interpolation and Number Formatting - plus five specialized Subsystems for Combinatorial Algorithms, Curve Fitting, Numerical Integration, Function Minimization and the discrete Wavelet Transform. Most of the Subsystems are independent translations of Numerical Recipes Algorithms and depend only on the root-level Vector types (`Vector2D`, `Vector3D`) where a Geometry primitive is needed.
+dv_has_:
+  sub_:
+    folders: 10
+    files: 197
+    units: 107
+    facet_:
+      layer_:
+        utility: 87
+        domain: 13
+        test: 7
+      status_:
+        legacy: 72
+        broken: 34
+        unfinished: 1
+      complexity_:
+        "2": 42
+        "3": 35
+        "4": 30
+    tag_:
+      code_:
+        optimization: 11
+        growable_array: 10
+        functional_interface: 9
+        array_math: 6
+        curve_fitting: 6
+        matrix_algebra: 6
+        minimum_search: 6
+        matrix_operation: 6
+        wavelet_transform: 5
+        weighting: 5
+    concept_:
+      brents_method_minimizer: 2
+      conjugate_gradient_minimizer: 2
+      reverse_order_float_stream_source: 2
+      reverse_order_int_stream_source: 2
+      "2d_line_segment": 1
+      "2d_linear_optics_transform": 1
+      "2d_sampling_test_model": 1
+      "2d_vector": 1
+      "3d_vector": 1
+      adaptive_monte_carlo_integrator: 1
+has_sub_folders: 10
+has_sub_files: 197
+has_sub_units: 107
+has_sub_facet_layer_utility: 87
+has_sub_facet_layer_domain: 13
+has_sub_facet_layer_test: 7
+has_sub_facet_status_legacy: 72
+has_sub_facet_status_broken: 34
+has_sub_facet_status_unfinished: 1
+has_sub_facet_complexity_2: 42
+has_sub_facet_complexity_3: 35
+has_sub_facet_complexity_4: 30
+has_sub_tag_code_optimization: 11
+has_sub_tag_code_growable_array: 10
+has_sub_tag_code_functional_interface: 9
+has_sub_tag_code_array_math: 6
+has_sub_tag_code_curve_fitting: 6
+has_sub_tag_code_matrix_algebra: 6
+has_sub_tag_code_minimum_search: 6
+has_sub_tag_code_matrix_operation: 6
+has_sub_tag_code_wavelet_transform: 5
+has_sub_tag_code_weighting: 5
+has_sub_concept_brents_method_minimizer: 2
+has_sub_concept_conjugate_gradient_minimizer: 2
+has_sub_concept_reverse_order_float_stream_source: 2
+has_sub_concept_reverse_order_int_stream_source: 2
+has_sub_concept_2d_line_segment: 1
+has_sub_concept_2d_linear_optics_transform: 1
+has_sub_concept_2d_sampling_test_model: 1
+has_sub_concept_2d_vector: 1
+has_sub_concept_3d_vector: 1
+has_sub_concept_adaptive_monte_carlo_integrator: 1
 ---
 
 # math

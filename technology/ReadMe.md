@@ -31,6 +31,79 @@ facets:
   status: legacy
   complexity: 3
 description: 'A grab-bag of small, mostly standalone demonstrations of individual Java platform technologies and third-party integration points, each self-contained rather than part of a shared application: GUID generation and thread-synchronization semantics at the root, JNDI directory browsing (`jndi/`), the Java Sound API (`sound/`), a reflection-attribute stream processing framework (`stream/`), and a substantial SAX/DOM/XSLT toolkit built around reflection-based event dispatch, together with the Castor-generated ZKDB message data model it unmarshals into (`xml/`). `jdbc/` and `rmi/` currently hold only non-Java package descriptors, with no Java sources of their own.'
+dv_has_:
+  sub_:
+    folders: 5
+    files: 92
+    units: 47
+    facet_:
+      layer_:
+        domain: 20
+        infrastructure: 18
+        utility: 6
+        test: 3
+      status_:
+        legacy: 43
+        broken: 4
+      complexity_:
+        "2": 37
+        "3": 9
+        "4": 1
+    tag_:
+      code_:
+        data_transfer_object: 21
+        sax_parsing: 5
+        stream_adapter: 8
+        xml_parsing: 5
+        reflection_dispatch: 3
+        directory_services: 3
+        xml_deserialization: 2
+        xslt_transformation: 2
+        audio: 2
+        thread_synchronization: 1
+    concept_:
+      castor_data_transfer_object: 16
+      custom_exception_type: 2
+      attributed_stream_base_class: 1
+      attributed_stream_input_interface: 1
+      attributed_stream_output_interface: 1
+      attributed_stream_processing: 1
+      castor_data_transfer_object_base: 1
+      castor_data_transfer_object_root: 1
+      castor_generated_data_model: 1
+      command_line_jndi_browser: 1
+has_sub_folders: 5
+has_sub_files: 92
+has_sub_units: 47
+has_sub_facet_layer_domain: 20
+has_sub_facet_layer_infrastructure: 18
+has_sub_facet_layer_utility: 6
+has_sub_facet_layer_test: 3
+has_sub_facet_status_legacy: 43
+has_sub_facet_status_broken: 4
+has_sub_facet_complexity_2: 37
+has_sub_facet_complexity_3: 9
+has_sub_facet_complexity_4: 1
+has_sub_tag_code_data_transfer_object: 21
+has_sub_tag_code_sax_parsing: 5
+has_sub_tag_code_stream_adapter: 8
+has_sub_tag_code_xml_parsing: 5
+has_sub_tag_code_reflection_dispatch: 3
+has_sub_tag_code_directory_services: 3
+has_sub_tag_code_xml_deserialization: 2
+has_sub_tag_code_xslt_transformation: 2
+has_sub_tag_code_audio: 2
+has_sub_tag_code_thread_synchronization: 1
+has_sub_concept_castor_data_transfer_object: 16
+has_sub_concept_custom_exception_type: 2
+has_sub_concept_attributed_stream_base_class: 1
+has_sub_concept_attributed_stream_input_interface: 1
+has_sub_concept_attributed_stream_output_interface: 1
+has_sub_concept_attributed_stream_processing: 1
+has_sub_concept_castor_data_transfer_object_base: 1
+has_sub_concept_castor_data_transfer_object_root: 1
+has_sub_concept_castor_generated_data_model: 1
+has_sub_concept_command_line_jndi_browser: 1
 ---
 
 # technology

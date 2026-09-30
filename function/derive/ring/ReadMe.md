@@ -129,6 +129,75 @@ facets:
   status: legacy
   complexity: 4
 description: 'Building blocks for a small Computer-Algebra-style Function Algebra over an algebraic Ring (`IIntRing`/`IGroup`/`IGroupM`): binary combinators (`Sum`, `Diff`, `Prod`, `Quot`, `Cat` via `CatDerive`) that combine two `IDeriveAble` Functions and know how to differentiate, integrate and (where possible) invert the combination symbolically; simple affine/scaling combinators (`AddAt`, `MulAt`, `LinAt`, `Neg`, `Inv`); a family of elementary named Functions (`Square`, `SqRt`, `Succ`, `Pred`, `Resid`, `AbsV`, `Sign`, `Step1`, `SawToothAt`, the `...At` fractional helpers); the `Algebra`/`AAlgebra`/`ACAlgebra` wrapper hierarchy that lets an arbitrary Object participate in this Function Algebra; a small expression parser (`FuncParser`); and a handful of `Function2ODE`-derived adapters (`OdeConst`, `OdeLinear`, `OdeSquare`, `OdeExp`, `OdeHeight2D`) that expose a symbolic Function as an ODE right-hand side for numerical integration. The `body` subfolder supplies the concrete transcendental and special Functions (trigonometric, hyperbolic, Gamma/Beta, ...) built on top of this Algebra.'
+dv_has_:
+  sub_:
+    folders: 2
+    files: 182
+    units: 83
+    facet_:
+      layer_:
+        utility: 82
+        test: 1
+      status_:
+        legacy: 82
+        broken: 1
+      complexity_:
+        "2": 1
+        "3": 80
+        "4": 2
+    tag_:
+      code_:
+        hyperbolic_function: 9
+        derivable_function_contract: 30
+        differential_integration: 16
+        mathematical_function: 34
+        trigonometric_function: 6
+        exponential_function: 4
+        derivative_calculation: 5
+        algebraic_function: 4
+        abstract_math: 2
+        gamma_function: 2
+    concept_:
+      function_algebra: 27
+      ordinary_differential_equations: 8
+      partial_derivatives: 7
+      special_functions: 7
+      trigonometric_functions: 5
+      vector_calculus: 4
+      hyperbolic_functions: 3
+      inverse_hyperbolic_functions: 3
+      inverse_trigonometric_functions: 3
+      numerical_series: 3
+has_sub_folders: 2
+has_sub_files: 182
+has_sub_units: 83
+has_sub_facet_layer_utility: 82
+has_sub_facet_layer_test: 1
+has_sub_facet_status_legacy: 82
+has_sub_facet_status_broken: 1
+has_sub_facet_complexity_2: 1
+has_sub_facet_complexity_3: 80
+has_sub_facet_complexity_4: 2
+has_sub_tag_code_hyperbolic_function: 9
+has_sub_tag_code_derivable_function_contract: 30
+has_sub_tag_code_differential_integration: 16
+has_sub_tag_code_mathematical_function: 34
+has_sub_tag_code_trigonometric_function: 6
+has_sub_tag_code_exponential_function: 4
+has_sub_tag_code_derivative_calculation: 5
+has_sub_tag_code_algebraic_function: 4
+has_sub_tag_code_abstract_math: 2
+has_sub_tag_code_gamma_function: 2
+has_sub_concept_function_algebra: 27
+has_sub_concept_ordinary_differential_equations: 8
+has_sub_concept_partial_derivatives: 7
+has_sub_concept_special_functions: 7
+has_sub_concept_trigonometric_functions: 5
+has_sub_concept_vector_calculus: 4
+has_sub_concept_hyperbolic_functions: 3
+has_sub_concept_inverse_hyperbolic_functions: 3
+has_sub_concept_inverse_trigonometric_functions: 3
+has_sub_concept_numerical_series: 3
 ---
 
 # ring

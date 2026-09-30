@@ -23,6 +23,45 @@ facets:
   status: legacy
   complexity: 3
 description: The concrete MVC implementation for editing a flat set of labeled 2D points.
+dv_has_:
+  sub_:
+    folders: 0
+    files: 8
+    units: 4
+    facet_:
+      layer_:
+        domain: 4
+      status_:
+        legacy: 4
+      complexity_:
+        "2": 4
+    tag_:
+      code_:
+        interactive_editing: 2
+        event_handling: 2
+        model_state_management: 1
+        gui: 1
+        graphics: 1
+    concept_:
+      point2d_editing_model: 1
+      point2d_keyboard_controller: 1
+      point2d_mouse_controller: 1
+      point2d_painter: 1
+has_sub_folders: 0
+has_sub_files: 8
+has_sub_units: 4
+has_sub_facet_layer_domain: 4
+has_sub_facet_status_legacy: 4
+has_sub_facet_complexity_2: 4
+has_sub_tag_code_interactive_editing: 2
+has_sub_tag_code_event_handling: 2
+has_sub_tag_code_model_state_management: 1
+has_sub_tag_code_gui: 1
+has_sub_tag_code_graphics: 1
+has_sub_concept_point2d_editing_model: 1
+has_sub_concept_point2d_keyboard_controller: 1
+has_sub_concept_point2d_mouse_controller: 1
+has_sub_concept_point2d_painter: 1
 ---
 
 # Point2D

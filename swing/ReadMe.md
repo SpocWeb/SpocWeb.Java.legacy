@@ -24,6 +24,51 @@ facets:
   status: broken
   complexity: 4
 description: 'Displays an arbitrary Graph, including one with diamonds (Nodes reachable through more than one Parent), as one or two `JTree` views. `HashTreeNode` is the model-level building block: a `DefaultMutableTreeNode` hashed and compared by its UserObject and registered under a named Tree so Nodes can be found again by ID. `JHyperTree` composes two such Trees into a mirrored, common-root view, and `KeyTreeNavigator` lets the user drive both by keyboard - re-rooting on the selected Node''s Main Representative, or jumping focus to it.'
+dv_has_:
+  sub_:
+    folders: 0
+    files: 11
+    units: 3
+    facet_:
+      layer_:
+        infrastructure: 3
+      status_:
+        stable: 2
+        broken: 1
+      complexity_:
+        "3": 2
+        "4": 1
+    tag_:
+      code_:
+        graph_traversal: 1
+        tree_navigation: 1
+        ui_component: 1
+        hash_equality: 1
+        keyboard_navigation: 1
+        tree_data_structure: 1
+        tree_node: 1
+    concept_:
+      tree_visualization: 3
+      ui_component: 2
+      graph_model: 1
+has_sub_folders: 0
+has_sub_files: 11
+has_sub_units: 3
+has_sub_facet_layer_infrastructure: 3
+has_sub_facet_status_stable: 2
+has_sub_facet_status_broken: 1
+has_sub_facet_complexity_3: 2
+has_sub_facet_complexity_4: 1
+has_sub_tag_code_graph_traversal: 1
+has_sub_tag_code_tree_navigation: 1
+has_sub_tag_code_ui_component: 1
+has_sub_tag_code_hash_equality: 1
+has_sub_tag_code_keyboard_navigation: 1
+has_sub_tag_code_tree_data_structure: 1
+has_sub_tag_code_tree_node: 1
+has_sub_concept_tree_visualization: 3
+has_sub_concept_ui_component: 2
+has_sub_concept_graph_model: 1
 ---
 
 # swing

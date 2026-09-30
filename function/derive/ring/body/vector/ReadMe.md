@@ -54,6 +54,63 @@ facets:
   status: broken
   complexity: 4
 description: Extends the scalar derivative/integral machinery of `function.derive.ring` into multiple Dimensions. `IPartialDerive` and `Dimension` let a Function be differentiated, integrated or inverted with respect to one coordinate of a Vector (Tensor) argument at a time; `CatPartial`, `DiffPartial`, `ProdPartial`, `QuotPartial` and `SumPartial` extend the scalar Cat/Diff/Prod/Quot/Sum combinators with that per-dimension awareness. `fSum`, `fProduct`, `fSinProd` and `fChargeField` are concrete example Functions built on a `Tensor`, and `OdeHeight`/`OdeLorentz` supply ODE right-hand sides (a Force Field derived from a Potential, and the chaotic Lorentz System) for numerical integration elsewhere in the codebase. `testBodyVFuncs` is the package's self-test entry point.
+dv_has_:
+  sub_:
+    folders: 0
+    files: 33
+    units: 14
+    facet_:
+      layer_:
+        utility: 14
+      status_:
+        legacy: 14
+      complexity_:
+        "3": 14
+    tag_:
+      code_:
+        differential_integration: 9
+        mathematical_function: 5
+        vector_math: 4
+        console_output: 1
+        entry_point: 1
+        test: 1
+        derivable_function_contract: 1
+        function_composition: 1
+    concept_:
+      partial_derivatives: 7
+      vector_calculus: 4
+      ordinary_differential_equations: 2
+      chaos_theory: 1
+      electromagnetism: 1
+      vector_fields: 1
+      product_rule: 1
+      quotient_rule: 1
+      sum_rule: 1
+      test_harness: 1
+has_sub_folders: 0
+has_sub_files: 33
+has_sub_units: 14
+has_sub_facet_layer_utility: 14
+has_sub_facet_status_legacy: 14
+has_sub_facet_complexity_3: 14
+has_sub_tag_code_differential_integration: 9
+has_sub_tag_code_mathematical_function: 5
+has_sub_tag_code_vector_math: 4
+has_sub_tag_code_console_output: 1
+has_sub_tag_code_entry_point: 1
+has_sub_tag_code_test: 1
+has_sub_tag_code_derivable_function_contract: 1
+has_sub_tag_code_function_composition: 1
+has_sub_concept_partial_derivatives: 7
+has_sub_concept_vector_calculus: 4
+has_sub_concept_ordinary_differential_equations: 2
+has_sub_concept_chaos_theory: 1
+has_sub_concept_electromagnetism: 1
+has_sub_concept_vector_fields: 1
+has_sub_concept_product_rule: 1
+has_sub_concept_quotient_rule: 1
+has_sub_concept_sum_rule: 1
+has_sub_concept_test_harness: 1
 ---
 
 # vector

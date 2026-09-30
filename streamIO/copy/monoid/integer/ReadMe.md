@@ -26,6 +26,47 @@ facets:
   status: legacy
   complexity: 3
 description: 'Integer-backed set and permutation types built on top of the `boole`/`groupM`/`shift` abstractions. `SetInteger`/`ASetInteger` provide a bit-set (same functionality as `java.util.BitSet`) by delegating single-bit set/clear/get to AND/OR/XOR operations on a shifted one-bit mask, reusing `Boole`''s bitwise algebra and `ShiftAble`''s left-shift rather than any dedicated bit-manipulation code. `Permutation` is the folder''s centerpiece: a single class doing triple duty as a permutation, a multi-index into a tensor of arbitrary degree, and an integer-set representation, built as an `AMonoid` (permutations compose but do not commute, so they form a monoid, not a group). `PermutationIterator` (declared in the same file) walks a `Permutation`''s indices by delegating position tracking to the wrapped instance.'
+dv_has_:
+  sub_:
+    folders: 0
+    files: 8
+    units: 4
+    facet_:
+      layer_:
+        utility: 3
+      status_:
+        broken: 2
+        legacy: 1
+      complexity_:
+        "3": 3
+    tag_:
+      code_:
+        bit_manipulation: 3
+        permutation: 1
+        multiplicative_semigroup: 1
+        delegation: 1
+        iterator: 1
+    concept_:
+      bit_set: 2
+      multi_index: 1
+      permutation: 1
+      delegation_pattern: 1
+has_sub_folders: 0
+has_sub_files: 8
+has_sub_units: 4
+has_sub_facet_layer_utility: 3
+has_sub_facet_status_broken: 2
+has_sub_facet_status_legacy: 1
+has_sub_facet_complexity_3: 3
+has_sub_tag_code_bit_manipulation: 3
+has_sub_tag_code_permutation: 1
+has_sub_tag_code_multiplicative_semigroup: 1
+has_sub_tag_code_delegation: 1
+has_sub_tag_code_iterator: 1
+has_sub_concept_bit_set: 2
+has_sub_concept_multi_index: 1
+has_sub_concept_permutation: 1
+has_sub_concept_delegation_pattern: 1
 ---
 
 # integer

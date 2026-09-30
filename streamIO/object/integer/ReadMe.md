@@ -33,6 +33,36 @@ facets:
   status: legacy
   complexity: 3
 description: 'A small, self-contained DOM/parsing stack for XML and HTML, independent of `streamIO.object.parser`''s XML support (both are explicitly marked `@deprecated` in favor of that newer parser). `XMLScanner` is the low-level event-based tokenizer (start/stop/attribute/text tokens, SAX-like), `XMLParser` builds a tree of `XMLElement`s on top of it (or can search for a specific path without building the whole tree), and `HTMLScanner`/`HTMLElement` specialize the same tokenizer/tree for HTML''s fixed tag vocabulary. `XMLInputStream` is a separate, unrelated concern: it (de)serializes arbitrary Java objects to/from an XML representation, reusing `XMLScanner` only as its tokenizer - see the security note below about the untrusted-class-name risk this implies. `DomElement` is an unrelated, unused lightweight element record not wired into the rest of this parsing stack.'
+dv_has_:
+  sub_:
+    folders: 0
+    files: 15
+    units: 7
+    facet_:
+      layer_:
+        utility: 7
+      status_:
+        legacy: 5
+        broken: 2
+      complexity_:
+        "3": 7
+    tag_:
+      code_:
+        xml: 7
+        parsing: 7
+    concept_:
+      xml_:
+        html_parsing: 7
+has_sub_folders: 0
+has_sub_files: 15
+has_sub_units: 7
+has_sub_facet_layer_utility: 7
+has_sub_facet_status_legacy: 5
+has_sub_facet_status_broken: 2
+has_sub_facet_complexity_3: 7
+has_sub_tag_code_xml: 7
+has_sub_tag_code_parsing: 7
+has_sub_concept_xml_html_parsing: 7
 ---
 
 # integer

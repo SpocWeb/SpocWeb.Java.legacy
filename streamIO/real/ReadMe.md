@@ -102,6 +102,73 @@ facets:
   status: legacy
   complexity: 3
 description: 'A framework for streams of `float`/`double` numbers: sources, filters and sinks that all implement `IStreamIn_Float` and/or `IStreamOutFloat`. `AAStreamIn_Float` is the abstract root, implementing `IStreamIn_Bound_Float`; `AStreamIn_Float` adds the current-value caching every concrete source and filter builds on. Sources include array- and constant-backed streams (`ArrayStreamIn_Float`, `ConstStreamIn_Float`) and progressions (`StreamIn_Arithmetic`, `StreamIn_Geometric`). Filters form two families: value-processing filters built on `FilterIn_FloatByFunction`/`FilterFloatByFunction` (averaging, windowing, delay, diff, running sums, exponential windows, outlier rejection, running statistics), and output-side filters built on `FilterOutFloat` (used as the base for the `detector/` subsystem). `FilterVectorStatistic` extends this to vector-valued streams. `StreamOutPlotter` renders incoming values as ASCII plots. The `detector/` subsystem builds statistical-process-control detectors on top of `FilterOutFloat`, and the `random/` subsystem builds distribution-specific random-number generators on top of `AStreamIn_Float`.'
+dv_has_:
+  sub_:
+    folders: 2
+    files: 109
+    units: 53
+    facet_:
+      layer_:
+        infrastructure: 28
+        utility: 17
+        domain: 7
+        test: 1
+      status_:
+        legacy: 48
+        broken: 5
+      complexity_:
+        "2": 47
+        "3": 6
+    tag_:
+      code_:
+        random_number_generator: 18
+        statistical_distribution: 13
+        anomaly_detection: 8
+        running_statistics: 4
+        stream_filter: 25
+        signal_processing: 2
+        statistics: 2
+        vector_math: 4
+    concept_:
+      float_stream_input_base_class: 2
+      alternation_pattern_detector: 1
+      arithmetic_sequence_stream: 1
+      array_backed_float_stream: 1
+      best_choice_selector: 1
+      beta_distributed_random_generator: 1
+      bounded_float_stream_interface: 1
+      chi_squared_random_generator: 1
+      consistency_detector: 1
+      console_plotter_output: 1
+has_sub_folders: 2
+has_sub_files: 109
+has_sub_units: 53
+has_sub_facet_layer_infrastructure: 28
+has_sub_facet_layer_utility: 17
+has_sub_facet_layer_domain: 7
+has_sub_facet_layer_test: 1
+has_sub_facet_status_legacy: 48
+has_sub_facet_status_broken: 5
+has_sub_facet_complexity_2: 47
+has_sub_facet_complexity_3: 6
+has_sub_tag_code_random_number_generator: 18
+has_sub_tag_code_statistical_distribution: 13
+has_sub_tag_code_anomaly_detection: 8
+has_sub_tag_code_running_statistics: 4
+has_sub_tag_code_stream_filter: 25
+has_sub_tag_code_signal_processing: 2
+has_sub_tag_code_statistics: 2
+has_sub_tag_code_vector_math: 4
+has_sub_concept_float_stream_input_base_class: 2
+has_sub_concept_alternation_pattern_detector: 1
+has_sub_concept_arithmetic_sequence_stream: 1
+has_sub_concept_array_backed_float_stream: 1
+has_sub_concept_best_choice_selector: 1
+has_sub_concept_beta_distributed_random_generator: 1
+has_sub_concept_bounded_float_stream_interface: 1
+has_sub_concept_chi_squared_random_generator: 1
+has_sub_concept_consistency_detector: 1
+has_sub_concept_console_plotter_output: 1
 ---
 
 # real

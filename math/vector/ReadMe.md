@@ -79,6 +79,77 @@ facets:
   status: broken
   complexity: 4
 description: A family of growable, primitive-typed dynamic arrays (`VectorChar`/`Short`/`Int`/`Long`/`Float`/`Double`/`String`/`Object`), each pairing an instance-level container (capacity growth, bounds checking, item-count bookkeeping, largely inherited from `AVector`) with a large static library of array-level operations - arithmetic, min/max, linear combinations, sorting/order-statistics (`HunterInt`/`Float`/`Double`), and type-specific helpers (String parsing/padding/escaping, Object matrix-style multi-index access). `QuaternaryOp` factors out the shared add/subtract/multiply/divide/linear-combination operator used across the arithmetic methods. See `statistic/` for the correlation and hypothesis-testing layer built on top of these vectors.
+dv_has_:
+  sub_:
+    folders: 1
+    files: 49
+    units: 25
+    facet_:
+      layer_:
+        utility: 15
+        domain: 9
+        test: 1
+      status_:
+        legacy: 14
+        broken: 11
+      complexity_:
+        "2": 10
+        "3": 2
+        "4": 13
+    tag_:
+      code_:
+        functional_interface: 9
+        growable_array: 9
+        array_math: 6
+        hypothesis_testing: 4
+        binary_search: 3
+        order_statistic: 3
+        quicksort: 3
+        statistical_correlation: 2
+        array_bounds_check: 1
+        chi_squared: 1
+    concept_:
+      reverse_order_float_stream_source: 2
+      reverse_order_int_stream_source: 2
+      "2d_sampling_test_model": 1
+      cross_vector_correlation_statistics: 1
+      growable_char_vector: 1
+      growable_double_vector: 1
+      growable_float_vector: 1
+      growable_int_vector: 1
+      growable_long_vector: 1
+      growable_object_vector: 1
+has_sub_folders: 1
+has_sub_files: 49
+has_sub_units: 25
+has_sub_facet_layer_utility: 15
+has_sub_facet_layer_domain: 9
+has_sub_facet_layer_test: 1
+has_sub_facet_status_legacy: 14
+has_sub_facet_status_broken: 11
+has_sub_facet_complexity_2: 10
+has_sub_facet_complexity_3: 2
+has_sub_facet_complexity_4: 13
+has_sub_tag_code_functional_interface: 9
+has_sub_tag_code_growable_array: 9
+has_sub_tag_code_array_math: 6
+has_sub_tag_code_hypothesis_testing: 4
+has_sub_tag_code_binary_search: 3
+has_sub_tag_code_order_statistic: 3
+has_sub_tag_code_quicksort: 3
+has_sub_tag_code_statistical_correlation: 2
+has_sub_tag_code_array_bounds_check: 1
+has_sub_tag_code_chi_squared: 1
+has_sub_concept_reverse_order_float_stream_source: 2
+has_sub_concept_reverse_order_int_stream_source: 2
+has_sub_concept_2d_sampling_test_model: 1
+has_sub_concept_cross_vector_correlation_statistics: 1
+has_sub_concept_growable_char_vector: 1
+has_sub_concept_growable_double_vector: 1
+has_sub_concept_growable_float_vector: 1
+has_sub_concept_growable_int_vector: 1
+has_sub_concept_growable_long_vector: 1
+has_sub_concept_growable_object_vector: 1
 ---
 
 # vector

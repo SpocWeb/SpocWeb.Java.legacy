@@ -30,6 +30,35 @@ facets:
   status: broken
   complexity: 2
 description: 'Bridges between the single-value getter/setter interfaces (`IValue`, `ICValue`, `IValueSetter`) and the streaming interfaces (`IIStreamIn`, `IIStreamOut`, `IPipe`), so either style of API can drive the other without a caller-side rewrite. The six types form three matched pairs, one direction each: `Value2Pipe`/`Pipe2Value` for the bidirectional `IValue`/`IPipe` pairing, `CValue2StreamIn`/`StreamIn2CValue` for the read-only getter side, and `StreamOut2ValueSetter`/`ValueSetter2StreamOut` for the write-only setter side.'
+dv_has_:
+  sub_:
+    folders: 0
+    files: 13
+    units: 6
+    facet_:
+      layer_:
+        infrastructure: 6
+      status_:
+        stable: 5
+        broken: 1
+      complexity_:
+        "2": 6
+    tag_:
+      code_:
+        stream_abstraction: 6
+        adapter_pattern: 6
+    concept_:
+      adapter_pattern: 6
+has_sub_folders: 0
+has_sub_files: 13
+has_sub_units: 6
+has_sub_facet_layer_infrastructure: 6
+has_sub_facet_status_stable: 5
+has_sub_facet_status_broken: 1
+has_sub_facet_complexity_2: 6
+has_sub_tag_code_stream_abstraction: 6
+has_sub_tag_code_adapter_pattern: 6
+has_sub_concept_adapter_pattern: 6
 ---
 
 # adapter

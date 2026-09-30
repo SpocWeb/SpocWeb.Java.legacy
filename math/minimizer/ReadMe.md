@@ -54,6 +54,77 @@ facets:
   status: legacy
   complexity: 4
 description: 'Numerical function-minimization algorithms translated from Numerical Recipes: bracketing and one-dimensional line search (`AFloatMinimizer` and its `GoldenFloatMinimizer`, `Brent1FloatMinimizer`, `BrentFloatMinimizer` subclasses), N-dimensional gradient-free methods (`AmoebaMinimizer` downhill simplex, `AnnealingMinimizer` simulated annealing over the same simplex), N-dimensional gradient-based methods (`ConjuGrad1Minimizer` conjugate gradient with derivatives, `ConjuGradMinimizer` Powell''s method without derivatives), and linear programming (`SimplexMinimizer`). The remaining types (`DistSqr`, `DistSqrDistorted`, `SinOfDistDivDist`, `TestScalarField`, `VariableMetricMinimizer`) are test scalar fields, or in `VariableMetricMinimizer`''s case an unimplemented placeholder.'
+dv_has_:
+  sub_:
+    folders: 0
+    files: 25
+    units: 14
+    facet_:
+      layer_:
+        utility: 10
+        test: 4
+      status_:
+        legacy: 12
+        broken: 1
+        unfinished: 1
+      complexity_:
+        "2": 5
+        "3": 6
+        "4": 3
+    tag_:
+      code_:
+        optimization: 10
+        minimum_search: 5
+        test_fixture: 4
+        conjugate: 2
+        derivative_calculation: 2
+        annealing: 1
+        golden_section_search: 1
+        simplex_method: 1
+        simulated_annealing: 1
+        bracket_matching: 1
+    concept_:
+      brents_method_minimizer: 2
+      conjugate_gradient_minimizer: 2
+      distorted_squared_distance_test_fixture: 1
+      downhill_simplex_nelder_mead_minimizer: 1
+      golden_section_search_minimizer: 1
+      linear_programming_simplex_tableau_solver: 1
+      numerical_optimization: 1
+      scalar_field_test_fixture: 1
+      simulated_annealing_minimizer: 1
+      sinc_like_test_function: 1
+has_sub_folders: 0
+has_sub_files: 25
+has_sub_units: 14
+has_sub_facet_layer_utility: 10
+has_sub_facet_layer_test: 4
+has_sub_facet_status_legacy: 12
+has_sub_facet_status_broken: 1
+has_sub_facet_status_unfinished: 1
+has_sub_facet_complexity_2: 5
+has_sub_facet_complexity_3: 6
+has_sub_facet_complexity_4: 3
+has_sub_tag_code_optimization: 10
+has_sub_tag_code_minimum_search: 5
+has_sub_tag_code_test_fixture: 4
+has_sub_tag_code_conjugate: 2
+has_sub_tag_code_derivative_calculation: 2
+has_sub_tag_code_annealing: 1
+has_sub_tag_code_golden_section_search: 1
+has_sub_tag_code_simplex_method: 1
+has_sub_tag_code_simulated_annealing: 1
+has_sub_tag_code_bracket_matching: 1
+has_sub_concept_brents_method_minimizer: 2
+has_sub_concept_conjugate_gradient_minimizer: 2
+has_sub_concept_distorted_squared_distance_test_fixture: 1
+has_sub_concept_downhill_simplex_nelder_mead_minimizer: 1
+has_sub_concept_golden_section_search_minimizer: 1
+has_sub_concept_linear_programming_simplex_tableau_solver: 1
+has_sub_concept_numerical_optimization: 1
+has_sub_concept_scalar_field_test_fixture: 1
+has_sub_concept_simulated_annealing_minimizer: 1
+has_sub_concept_sinc_like_test_function: 1
 ---
 
 # minimizer

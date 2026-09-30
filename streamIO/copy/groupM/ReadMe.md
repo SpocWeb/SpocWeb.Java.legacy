@@ -53,6 +53,56 @@ facets:
   status: legacy
   complexity: 3
 description: 'Models the multiplicative algebraic hierarchy (semigroup -> group) that mirrors the additive hierarchy in the sibling `group` package: `ISemiGroupM`/`IGroupM` define `*`, `/`, `Pow` and related operations, kept deliberately synchronous with the `group` package''s additive `+`/`-` interfaces so both hierarchies can be generated from the same design. `ASemiGroupM`/`AGroupM` supply the default, delegation-based implementation - only `mulAt`/`divAt` must be redefined by a concrete class, and `Pow`/`Pow2Pow`/`sqr`/`cbc`/`qad` all derive from them via the "delegation to self" pattern (a `self` field standing in for `this`, so the abstraction can be mixed in without single inheritance getting in the way). `AGroupMLng`/`AGroupMDbl`/`IDblGroupM`/ `ILngGroupM` add direct `long`/`double`-argument overloads; `AGroupMDbl`''s own comment marks it as never actually used. `CSemiGroupM`/`CGroupM` are constant/immutable wrappers that delegate every read-only operation to an inner instance and throw on every mutating `...At()` method.'
+dv_has_:
+  sub_:
+    folders: 0
+    files: 32
+    units: 13
+    facet_:
+      layer_:
+        utility: 13
+      status_:
+        legacy: 13
+      complexity_:
+        "3": 13
+    tag_:
+      code_:
+        multiplicative_group: 6
+        multiplicative_semigroup: 3
+        delegation: 4
+        abstract_base: 4
+        immutable_wrapper: 2
+        algebraic_structure: 2
+        deprecated_api: 1
+        manual_test_harness: 1
+        numeric_comparison: 1
+    concept_:
+      algebraic_group: 9
+      multiplicative_structure: 7
+      algebraic_semigroup: 4
+      constant_:
+        immutable_wrapper: 2
+      delegation_pattern: 2
+has_sub_folders: 0
+has_sub_files: 32
+has_sub_units: 13
+has_sub_facet_layer_utility: 13
+has_sub_facet_status_legacy: 13
+has_sub_facet_complexity_3: 13
+has_sub_tag_code_multiplicative_group: 6
+has_sub_tag_code_multiplicative_semigroup: 3
+has_sub_tag_code_delegation: 4
+has_sub_tag_code_abstract_base: 4
+has_sub_tag_code_immutable_wrapper: 2
+has_sub_tag_code_algebraic_structure: 2
+has_sub_tag_code_deprecated_api: 1
+has_sub_tag_code_manual_test_harness: 1
+has_sub_tag_code_numeric_comparison: 1
+has_sub_concept_algebraic_group: 9
+has_sub_concept_multiplicative_structure: 7
+has_sub_concept_algebraic_semigroup: 4
+has_sub_concept_constant_immutable_wrapper: 2
+has_sub_concept_delegation_pattern: 2
 ---
 
 # groupM

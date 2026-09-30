@@ -151,6 +151,47 @@ facets:
   status: legacy
   complexity: 4
 description: 'Concrete storage structures for the `streamIO.object.enumer` layer: dynamic arrays (`Array`, `ARAContainer`, `SortedArray`, `Heap`, `DeQueueArr`), hash-based storage (`HashContainer`, `HashSet` and their Entry/Iterator classes), and relational/functional wrappers over Associations (`Relation`, `Function`, `Join`, the `JoinStreamBy*` family) used to model Functions and Relations as Containers of key-value pairs. `IndexAssociation` is the shared lightweight Entry base reused by both the hash table (`HashEntry`) and the sorted tree (`tree/TreeMapEntry`). `RecordSet` and `util/Container2ResultSet` bridge this Container hierarchy to JDBC `ResultSet`s so query results can be loaded into, or exposed as, these same Container types. `tree/` holds the sorted Red-Black `TreeMap` implementation and its Set/Collection views; `util/` holds small adapter and scheduling helpers (`Collection2Container`, `TimedQueue`) used across the other two.'
+dv_has_:
+  sub_:
+    folders: 2
+    files: 122
+    units: 62
+    facet_:
+      layer_:
+        utility: 62
+      status_:
+        legacy: 62
+      complexity_:
+        "4": 62
+    tag_:
+      code_:
+        container: 44
+        container_iteration: 44
+        hash_table: 44
+        red_black_tree: 12
+        iterator_pattern: 12
+        scheduling: 6
+        adapter: 6
+    concept_:
+      concrete_storage_containers_arrays_hash_tables_and_relations: 44
+      red_black_tree_backed_sorted_map_implementation: 12
+      small_adapter_and_scheduling_helper_classes: 6
+has_sub_folders: 2
+has_sub_files: 122
+has_sub_units: 62
+has_sub_facet_layer_utility: 62
+has_sub_facet_status_legacy: 62
+has_sub_facet_complexity_4: 62
+has_sub_tag_code_container: 44
+has_sub_tag_code_container_iteration: 44
+has_sub_tag_code_hash_table: 44
+has_sub_tag_code_red_black_tree: 12
+has_sub_tag_code_iterator_pattern: 12
+has_sub_tag_code_scheduling: 6
+has_sub_tag_code_adapter: 6
+has_sub_concept_concrete_storage_containers_arrays_hash_tables_and_relations: 44
+has_sub_concept_red_black_tree_backed_sorted_map_implementation: 12
+has_sub_concept_small_adapter_and_scheduling_helper_classes: 6
 ---
 
 # container

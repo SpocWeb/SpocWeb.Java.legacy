@@ -130,6 +130,86 @@ facets:
   status: legacy
   complexity: 3
 description: 'This folder holds the foundational, push-based streaming abstractions that the rest of the `streamIO` subtree (its `object`, `integer`, `real`, `copy`, `adapter` and other subfolders) is built on. At the core sit `IIStreamIn`/`IIStreamOut` (and their richer siblings `IStreamIn`/`IStreamOut`): a minimal "pull one Item" / "push one Item" pair, deliberately weaker than `java.util.Iterator`, so that a single `nextItem()`/`addItem()` call can double as a linked-list node, a filter stage, or a demultiplexer without committing to a container shape. `AStreamOut` is the common abstract base that implements the recursive, reflection-based array/collection flattening (`addItems`, `STREAM`) shared by concrete output streams such as `FilterOut`, `StreamOutPrimitive` and `StringBufferOutputStream`. Positioning and re-reading a stream are factored out into a separate hierarchy: `IAvailAble` (position/available count) is extended by `IReSetAble` (reset/jump) and further by `IMarkAble` (mark/reset like `InputStream.markSupported()`), with `AReSetAble`/`AMarkAble` providing default, static-method-backed implementations. `IPlugAbleFilter(In/Out)` lets a filter''s upstream or downstream be swapped at Runtime for a pluggable pipeline architecture. `IFormatOut`/`IDeserializer` are the paired Object&lt;-&gt;Stream (de)serialization interfaces used by format-specific writers/parsers elsewhere in the tree. `Assert` and `Log` are cross-cutting utilities used throughout the whole codebase, not just `streamIO`: `Assert` is a runtime-assertion/testing framework that optionally logs failures instead of throwing, and `Log` (final, extending `StreamOutPrimitive`) is a deliberately terse (`l()`/`n()`/`L()`/`N()`) structured logger with per-call Log Levels, optional Stack Traces and Timestamps.'
+dv_has_:
+  sub_:
+    folders: 56
+    files: 1484
+    units: 745
+    facet_:
+      layer_:
+        utility: 439
+        domain: 208
+        infrastructure: 92
+        test: 5
+      status_:
+        legacy: 662
+        broken: 45
+        stable: 37
+      complexity_:
+        "2": 115
+        "3": 277
+        "4": 352
+    tag_:
+      code_:
+        abstract_base: 25
+        enumerator: 25
+        iterator_adapter: 25
+        random_number_generation: 25
+        base64_encoding: 23
+        crc: 23
+        quasi_random_sequence: 23
+        xor_cipher: 23
+        ode_solver: 29
+        ring_theory: 29
+    concept_:
+      custom_streaming_enumerator_and_iterator_bridge_layer_for_object_collections: 25
+      byte_:
+        character_re_encoding_filters_base64_binhex_url_:
+          entity_escaping_crc_xor: 23
+      pseudo_random_and_quasi_random_integer_generator_family_with_mark_:
+        restore_replay: 21
+      ring_algebra_and_ode_solvers: 29
+      filesystem_backed_jdbc_driver_framework_with_fixed_length_and_separator_delimited_table_storage: 32
+      primitive_and_structured_stream_i_:
+        o_core_abstractions: 36
+      rational_numbers_and_interval_arithmetic: 16
+      group_:
+        semigroup_algebra: 15
+      jsonorg_reference_implementation: 15
+      pluggable_byte_stream_filter_infrastructure_and_javaio_adapters: 15
+has_sub_folders: 56
+has_sub_files: 1484
+has_sub_units: 745
+has_sub_facet_layer_utility: 439
+has_sub_facet_layer_domain: 208
+has_sub_facet_layer_infrastructure: 92
+has_sub_facet_layer_test: 5
+has_sub_facet_status_legacy: 662
+has_sub_facet_status_broken: 45
+has_sub_facet_status_stable: 37
+has_sub_facet_complexity_2: 115
+has_sub_facet_complexity_3: 277
+has_sub_facet_complexity_4: 352
+has_sub_tag_code_abstract_base: 25
+has_sub_tag_code_enumerator: 25
+has_sub_tag_code_iterator_adapter: 25
+has_sub_tag_code_random_number_generation: 25
+has_sub_tag_code_base64_encoding: 23
+has_sub_tag_code_crc: 23
+has_sub_tag_code_quasi_random_sequence: 23
+has_sub_tag_code_xor_cipher: 23
+has_sub_tag_code_ode_solver: 29
+has_sub_tag_code_ring_theory: 29
+has_sub_concept_custom_streaming_enumerator_and_iterator_bridge_layer_for_object_collections: 25
+has_sub_concept_byte_character_re_encoding_filters_base64_binhex_url_entity_escaping_crc_xor: 23
+has_sub_concept_pseudo_random_and_quasi_random_integer_generator_family_with_mark_restore_replay: 21
+has_sub_concept_ring_algebra_and_ode_solvers: 29
+has_sub_concept_filesystem_backed_jdbc_driver_framework_with_fixed_length_and_separator_delimited_table_storage: 32
+has_sub_concept_primitive_and_structured_stream_i_o_core_abstractions: 36
+has_sub_concept_rational_numbers_and_interval_arithmetic: 16
+has_sub_concept_group_semigroup_algebra: 15
+has_sub_concept_jsonorg_reference_implementation: 15
+has_sub_concept_pluggable_byte_stream_filter_infrastructure_and_javaio_adapters: 15
 ---
 
 # streamIO

@@ -32,6 +32,43 @@ facets:
   status: stable
   complexity: 3
 description: 'An asynchronous, retrying alternative to the synchronous `streamIO` pipeline: a `MessageStreamOut` sender assigns each item a strictly ascending ID and retries against an `IMessageReceiver` until the Receiver reports the item accepted. Receivers offer increasingly strict Service Levels built by inheritance - `MessageReceiver` (reliable transport only), `MessageOnlyOnce` (deduplicates via a Bit Vector, allows out-of-order delivery), `MessageInSequence` (enforces strict order, rejects anything else) and `MessageOptimized` (enforces strict order like its parent but caches and replays out-of-order arrivals instead of rejecting them). `FaultyReceiver` is a Test harness that randomly throws to exercise the Retry/Sequence/Duplicate guarantees of the other four.'
+dv_has_:
+  sub_:
+    folders: 0
+    files: 14
+    units: 7
+    facet_:
+      layer_:
+        infrastructure: 7
+      status_:
+        stable: 7
+      complexity_:
+        "2": 5
+        "3": 2
+    tag_:
+      code_:
+        message_queue: 6
+        sequence_processor: 2
+        deduplication: 1
+        retry_logic: 1
+        test_harness: 1
+    concept_:
+      asynchronous_messaging: 6
+      reliability_testing: 1
+has_sub_folders: 0
+has_sub_files: 14
+has_sub_units: 7
+has_sub_facet_layer_infrastructure: 7
+has_sub_facet_status_stable: 7
+has_sub_facet_complexity_2: 5
+has_sub_facet_complexity_3: 2
+has_sub_tag_code_message_queue: 6
+has_sub_tag_code_sequence_processor: 2
+has_sub_tag_code_deduplication: 1
+has_sub_tag_code_retry_logic: 1
+has_sub_tag_code_test_harness: 1
+has_sub_concept_asynchronous_messaging: 6
+has_sub_concept_reliability_testing: 1
 ---
 
 # asyncMessage

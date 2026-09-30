@@ -128,6 +128,81 @@ facets:
   status: legacy
   complexity: 4
 description: 'This folder is the core of the legacy `streamIO` I/O library: abstract base classes and interfaces for reading and writing streams of primitive integers, characters, bytes, and structured (name/value, XML/JSON/CSV-like) data. `IStreamIn_Byte`/`IStreamOutByte` play the role of `InputStream`/`OutputStream` but as interfaces rather than classes (so `RandomAccessFile`-like classes can implement both), and the `AStream*` abstract classes wire up default delegation between byte, char, int, long, float and double views of the same underlying stream. `StreamIn_Struct`/ `AStreamOutStruct`/`StreamOutInstantiator` build a small generic serialization format on top of this (used to parse/write XML/JSON/CSV-style structured text and to clone Java objects in-memory without external marshaling), while `LocalePrimitive` centralizes the locale-specific formatting of numbers. The subfolders `adapter/`, `file/`, `multiplex/` and `pipe/` provide concrete implementations wrapping `java.io` Readers/Writers/Streams, random-access files, RAID-style multiplexed/redundant streams, and in-memory pipes, respectively.'
+dv_has_:
+  sub_:
+    folders: 11
+    files: 319
+    units: 169
+    facet_:
+      layer_:
+        utility: 120
+        domain: 49
+      status_:
+        legacy: 166
+        broken: 3
+      complexity_:
+        "2": 8
+        "3": 68
+        "4": 93
+    tag_:
+      code_:
+        base64_encoding: 23
+        crc: 23
+        xor_cipher: 23
+        database_access: 32
+        database_driver: 32
+        stream_input: 35
+        stream_output: 35
+        struct: 35
+        stream_io: 40
+        quasi_random_sequence: 21
+    concept_:
+      byte_:
+        character_re_encoding_filters_base64_binhex_url_:
+          entity_escaping_crc_xor: 23
+      pseudo_random_and_quasi_random_integer_generator_family_with_mark_:
+        restore_replay: 21
+      filesystem_backed_jdbc_driver_framework_with_fixed_length_and_separator_delimited_table_storage: 32
+      pluggable_byte_stream_filter_infrastructure_and_javaio_adapters: 15
+      primitive_and_structured_stream_i_:
+        o_core_abstractions: 35
+      raid_style_stream_multiplexing_plus_markov_:
+        viterbi_math: 8
+      bridges_streamio_interfaces_to_javaio_and_arrays: 7
+      in_memory_producer_consumer_byte_pipes: 6
+      file_backed_streamio_implementations: 5
+      byte_and_digraph_:
+        trigraph_frequency_counters: 4
+has_sub_folders: 11
+has_sub_files: 319
+has_sub_units: 169
+has_sub_facet_layer_utility: 120
+has_sub_facet_layer_domain: 49
+has_sub_facet_status_legacy: 166
+has_sub_facet_status_broken: 3
+has_sub_facet_complexity_2: 8
+has_sub_facet_complexity_3: 68
+has_sub_facet_complexity_4: 93
+has_sub_tag_code_base64_encoding: 23
+has_sub_tag_code_crc: 23
+has_sub_tag_code_xor_cipher: 23
+has_sub_tag_code_database_access: 32
+has_sub_tag_code_database_driver: 32
+has_sub_tag_code_stream_input: 35
+has_sub_tag_code_stream_output: 35
+has_sub_tag_code_struct: 35
+has_sub_tag_code_stream_io: 40
+has_sub_tag_code_quasi_random_sequence: 21
+has_sub_concept_byte_character_re_encoding_filters_base64_binhex_url_entity_escaping_crc_xor: 23
+has_sub_concept_pseudo_random_and_quasi_random_integer_generator_family_with_mark_restore_replay: 21
+has_sub_concept_filesystem_backed_jdbc_driver_framework_with_fixed_length_and_separator_delimited_table_storage: 32
+has_sub_concept_pluggable_byte_stream_filter_infrastructure_and_javaio_adapters: 15
+has_sub_concept_primitive_and_structured_stream_i_o_core_abstractions: 35
+has_sub_concept_raid_style_stream_multiplexing_plus_markov_viterbi_math: 8
+has_sub_concept_bridges_streamio_interfaces_to_javaio_and_arrays: 7
+has_sub_concept_in_memory_producer_consumer_byte_pipes: 6
+has_sub_concept_file_backed_streamio_implementations: 5
+has_sub_concept_byte_and_digraph_trigraph_frequency_counters: 4
 ---
 
 # integer

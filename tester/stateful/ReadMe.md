@@ -20,6 +20,35 @@ facets:
   status: legacy
   complexity: 2
 description: Collects `tester.ITester` implementations whose result depends on prior calls rather than only on the current argument. `Flipper` alternates true/false regardless of the argument passed. `TestSequence` tracks a run of equal or identical items and reports whether the current item continues or breaks that run. `TesterPosition` counts calls down from a fixed position and reports true exactly once, when that position is reached.
+dv_has_:
+  sub_:
+    folders: 0
+    files: 6
+    units: 3
+    facet_:
+      layer_:
+        utility: 3
+      status_:
+        legacy: 3
+      complexity_:
+        "2": 3
+    tag_:
+      code_:
+        stateful_algorithm: 3
+    concept_:
+      boolean_flip_flop: 1
+      position_aware_tester: 1
+      test_sequence_runner: 1
+has_sub_folders: 0
+has_sub_files: 6
+has_sub_units: 3
+has_sub_facet_layer_utility: 3
+has_sub_facet_status_legacy: 3
+has_sub_facet_complexity_2: 3
+has_sub_tag_code_stateful_algorithm: 3
+has_sub_concept_boolean_flip_flop: 1
+has_sub_concept_position_aware_tester: 1
+has_sub_concept_test_sequence_runner: 1
 ---
 
 # stateful

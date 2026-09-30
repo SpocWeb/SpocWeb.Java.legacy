@@ -47,6 +47,58 @@ facets:
   status: legacy
   complexity: 3
 description: Defines the strict order relation (`<`, `>`, Max/Min) that comparable types in `streamIO.copy` build on, plus an `Interval` abstraction built on top of it. `IOrder` (and its apparent duplicate `Order`) extend `function.IOrderAble` with copy-based Max/Min; `AOrder` supplies the default implementation - `isLessThan` stays the one abstract primitive, and `notLessThan`/`notMoreThan`/`compareTo`/`Position` are all derived from it via the "delegation to self" pattern used across this codebase. `IDblOrder`/`ILngOrder` (and their apparent duplicate `LngOrder`) add direct `double`/`long` comparison for primitive-backed types. `Interval` represents a set of values by its two borders and implements the interval algebra (contains, overlaps, intersect/union) in terms of the border type's own `IOrder`; `IntervalOrd` is a performance specialisation that keeps the borders pre-sorted so containment tests need only check one side. `COrder` is a delegating, effectively-constant wrapper around an `IOrder`. Several type pairs here (`IOrder`/`Order`, `ILngOrder`/`LngOrder`) carry identical members - almost certainly leftovers from a naming-convention change rather than intentional variants; treat them as the same contract when reading this package.
+dv_has_:
+  sub_:
+    folders: 0
+    files: 29
+    units: 11
+    facet_:
+      layer_:
+        utility: 11
+      status_:
+        legacy: 9
+        broken: 2
+      complexity_:
+        "3": 11
+    tag_:
+      code_:
+        numeric_comparison: 6
+        abstract_base: 3
+        in_place_operation: 2
+        delegation: 2
+        interval_arithmetic: 2
+        set_operations: 1
+        algorithm_optimization: 1
+        immutable_wrapper: 1
+        manual_test_harness: 1
+    concept_:
+      order_relation: 9
+      interval_arithmetic: 3
+      comparable_types: 1
+      constant_:
+        immutable_wrapper: 1
+      delegation_pattern: 1
+has_sub_folders: 0
+has_sub_files: 29
+has_sub_units: 11
+has_sub_facet_layer_utility: 11
+has_sub_facet_status_legacy: 9
+has_sub_facet_status_broken: 2
+has_sub_facet_complexity_3: 11
+has_sub_tag_code_numeric_comparison: 6
+has_sub_tag_code_abstract_base: 3
+has_sub_tag_code_in_place_operation: 2
+has_sub_tag_code_delegation: 2
+has_sub_tag_code_interval_arithmetic: 2
+has_sub_tag_code_set_operations: 1
+has_sub_tag_code_algorithm_optimization: 1
+has_sub_tag_code_immutable_wrapper: 1
+has_sub_tag_code_manual_test_harness: 1
+has_sub_concept_order_relation: 9
+has_sub_concept_interval_arithmetic: 3
+has_sub_concept_comparable_types: 1
+has_sub_concept_constant_immutable_wrapper: 1
+has_sub_concept_delegation_pattern: 1
 ---
 
 # order

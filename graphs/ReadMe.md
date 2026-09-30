@@ -112,6 +112,78 @@ facets:
   status: legacy
   complexity: 4
 description: 'This folder is a small graph-theory library: representations of weighted, directed or undirected graphs, algorithms over them (shortest paths, spanning trees, connected / strongly connected components, articulation points, maximum flow, topological sort, Hamilton cycles, stable pairing), and the supporting value types they are built from. Two independent graph representations exist side by side, both implementing `IGraph`: `MatrixGraph`, a dense adjacency-matrix backed by a `float[][]` (best for small or dense graphs, O(V^2) space and typically O(V^2) operations), and `SparseMatrix` / `SparseGraph`, a sparse adjacency-list backed by per-node linked lists of `SparseEdge` (better for large, sparse graphs, O(V+E) space). `SparseGraph` extends `SparseMatrix` with the graph algorithms (components, DAG/topological sort, bridges, flow); `AGraph` is a shared abstract base holding bulk edge-loading helpers and ternary-logic constants used by both representations.'
+dv_has_:
+  sub_:
+    folders: 0
+    files: 68
+    units: 33
+    facet_:
+      layer_:
+        domain: 27
+        utility: 5
+        test: 1
+      status_:
+        legacy: 31
+        broken: 2
+      complexity_:
+        "2": 24
+        "3": 6
+        "4": 3
+    tag_:
+      code_:
+        graph_edge: 9
+        pair_data_structure: 6
+        graph_element: 5
+        graph_iteration: 4
+        sparse_graph: 4
+        disjoint_set: 2
+        adjacency_matrix: 2
+        key_value_pair: 2
+        dense_graph: 1
+        graph_abstraction: 1
+    concept_:
+      adjacency_matrix_edge_stream: 1
+      adjacency_matrix_graph: 1
+      comparable_pair_interface: 1
+      comparable_value_holder: 1
+      comparable_value_interface: 1
+      copyable_base_class: 1
+      copyable_interface: 1
+      disjoint_set__:
+        "_union_find": 1
+      edge_stream_base_class: 1
+      edge_stream_interface: 1
+has_sub_folders: 0
+has_sub_files: 68
+has_sub_units: 33
+has_sub_facet_layer_domain: 27
+has_sub_facet_layer_utility: 5
+has_sub_facet_layer_test: 1
+has_sub_facet_status_legacy: 31
+has_sub_facet_status_broken: 2
+has_sub_facet_complexity_2: 24
+has_sub_facet_complexity_3: 6
+has_sub_facet_complexity_4: 3
+has_sub_tag_code_graph_edge: 9
+has_sub_tag_code_pair_data_structure: 6
+has_sub_tag_code_graph_element: 5
+has_sub_tag_code_graph_iteration: 4
+has_sub_tag_code_sparse_graph: 4
+has_sub_tag_code_disjoint_set: 2
+has_sub_tag_code_adjacency_matrix: 2
+has_sub_tag_code_key_value_pair: 2
+has_sub_tag_code_dense_graph: 1
+has_sub_tag_code_graph_abstraction: 1
+has_sub_concept_adjacency_matrix_edge_stream: 1
+has_sub_concept_adjacency_matrix_graph: 1
+has_sub_concept_comparable_pair_interface: 1
+has_sub_concept_comparable_value_holder: 1
+has_sub_concept_comparable_value_interface: 1
+has_sub_concept_copyable_base_class: 1
+has_sub_concept_copyable_interface: 1
+has_sub_concept_disjoint_set_union_find: 1
+has_sub_concept_edge_stream_base_class: 1
+has_sub_concept_edge_stream_interface: 1
 ---
 
 # graphs

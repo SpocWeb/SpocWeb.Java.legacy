@@ -69,6 +69,41 @@ facets:
   status: legacy
   complexity: 3
 description: 'Castor-generated data model for the ZKDB ("Zentrale Kundendatenbank") message exchange format: one root `Nachricht` carrying a list of `Transaktion` elements, each pairing a `Steuerung` control section with a `Daten` payload of customer master data (`Kunde`, `Adresse`, `Bankverbindung`, `Kreditkarte`, etc.), plus `ConsistencyCorrector` for reconciling two redundant customer identifiers (EKP number and Rise ID) kept in sync across systems. Every value-typed field is wrapped in `ZKDBBaseType`, which additionally carries a `StatusValue` (changed/deleted/unchanged/error) so the BusinessLayer can tell which fields actually changed between two versions of the same message.'
+dv_has_:
+  sub_:
+    folders: 0
+    files: 40
+    units: 19
+    facet_:
+      layer_:
+        domain: 19
+      status_:
+        legacy: 18
+        broken: 1
+      complexity_:
+        "2": 18
+        "3": 1
+    tag_:
+      code_:
+        data_transfer_object: 19
+    concept_:
+      castor_data_transfer_object: 16
+      castor_data_transfer_object_base: 1
+      castor_data_transfer_object_root: 1
+      data_consistency_corrector: 1
+has_sub_folders: 0
+has_sub_files: 40
+has_sub_units: 19
+has_sub_facet_layer_domain: 19
+has_sub_facet_status_legacy: 18
+has_sub_facet_status_broken: 1
+has_sub_facet_complexity_2: 18
+has_sub_facet_complexity_3: 1
+has_sub_tag_code_data_transfer_object: 19
+has_sub_concept_castor_data_transfer_object: 16
+has_sub_concept_castor_data_transfer_object_base: 1
+has_sub_concept_castor_data_transfer_object_root: 1
+has_sub_concept_data_consistency_corrector: 1
 ---
 
 # test

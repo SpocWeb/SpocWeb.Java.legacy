@@ -137,6 +137,59 @@ facets:
   status: legacy
   complexity: 4
 description: 'This folder adds Metric-Space structure - a Norm/Distance, a strict Order and Well-Order Constants (Infinity, NaN, min/max Value) - on top of the plain Algebraic Ring from the parent `ring` folder. `IMetric`/`AMetric`, `INorm`/`ANorm` and `IWellOrder`/`AWellOrder` define the three orthogonal Interfaces (Distance, Norm, Order-with-Constants), `IScalarMetric`/`AScalarMetric` integrates 1-dimensional Order with a Metric, and `IMetricIRing`/`AMetricIRing` fuses all of this with the Ring''s algebraic Operations into the single `IMetricIRing` used pervasively by the `body` Number types. The `C*` classes (`CMetric`, `CMetricIRing`, `CNorm`, `CScalarMetric`, `CWellOrder`) provide shared Constant Implementations. `BigInt` is a dynamic-Size arbitrary-Precision integer built directly on this layer, and `MaxPlus` is a (max,+) tropical-Algebra number type. The remaining classes implement iterative numerical Algorithms over `IMetricIRing` Values: root/zero Refiners (`ARefinerQ` and its `NewtonRefinerQ`/`FalsiRefinerQ`/ `PegasusRefiner`/`BiSectRefinerQ` subclasses), a `GoldenMinimizer`, an `ExtraPolValue` Extrapolator, and ODE Steppers with adaptive Step-width control (`AStepperQ` and its `StepRKQ`/`StepRKF`/`StepRKFQ`/ `StepMPQ`/`StepTrapezQ`/`MultiStep`/`MultiStepY`/`MultiStepYQ`/`NewtonStep2Q` subclasses). `TestMetric` is the manual test-suite entry point. The `body/` Subfolder builds the concrete scalar and Tensor Number types on top of this Metric-Ring Algebra.'
+dv_has_:
+  sub_:
+    folders: 4
+    files: 185
+    units: 86
+    facet_:
+      layer_:
+        domain: 86
+      status_:
+        legacy: 86
+      complexity_:
+        "4": 86
+    tag_:
+      code_:
+        rational_numbers: 16
+        manifold_generation: 14
+        tensor: 14
+        big_integer_arithmetic: 40
+        metric_space: 40
+        interpolation: 14
+        complex_numbers: 9
+        fourier_transform: 9
+        interval_arithmetic: 16
+        root_finding: 40
+    concept_:
+      rational_numbers_and_interval_arithmetic: 16
+      vector_:
+        matrix_:
+          tensor_and_manifold_interpolation: 14
+      metric_spaces_root_finding_and_numerical_integration: 40
+      complex_number_arithmetic_and_fourier_transform: 9
+      physical_units_and_conversion: 7
+has_sub_folders: 4
+has_sub_files: 185
+has_sub_units: 86
+has_sub_facet_layer_domain: 86
+has_sub_facet_status_legacy: 86
+has_sub_facet_complexity_4: 86
+has_sub_tag_code_rational_numbers: 16
+has_sub_tag_code_manifold_generation: 14
+has_sub_tag_code_tensor: 14
+has_sub_tag_code_big_integer_arithmetic: 40
+has_sub_tag_code_metric_space: 40
+has_sub_tag_code_interpolation: 14
+has_sub_tag_code_complex_numbers: 9
+has_sub_tag_code_fourier_transform: 9
+has_sub_tag_code_interval_arithmetic: 16
+has_sub_tag_code_root_finding: 40
+has_sub_concept_rational_numbers_and_interval_arithmetic: 16
+has_sub_concept_vector_matrix_tensor_and_manifold_interpolation: 14
+has_sub_concept_metric_spaces_root_finding_and_numerical_integration: 40
+has_sub_concept_complex_number_arithmetic_and_fourier_transform: 9
+has_sub_concept_physical_units_and_conversion: 7
 ---
 
 # metric

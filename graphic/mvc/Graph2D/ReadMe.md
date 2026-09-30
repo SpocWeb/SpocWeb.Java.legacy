@@ -20,6 +20,45 @@ facets:
   status: legacy
   complexity: 3
 description: Extends the `Point2D` MVC triad with graph edges.
+dv_has_:
+  sub_:
+    folders: 0
+    files: 6
+    units: 3
+    facet_:
+      layer_:
+        domain: 3
+      status_:
+        legacy: 3
+      complexity_:
+        "2": 1
+        "3": 2
+    tag_:
+      code_:
+        interactive_editing: 2
+        model_state_management: 1
+        event_handling: 1
+        gui: 1
+        graphics: 1
+    concept_:
+      "2d_graph_editing_model": 1
+      "2d_graph_mouse_controller": 1
+      "2d_graph_painter": 1
+has_sub_folders: 0
+has_sub_files: 6
+has_sub_units: 3
+has_sub_facet_layer_domain: 3
+has_sub_facet_status_legacy: 3
+has_sub_facet_complexity_2: 1
+has_sub_facet_complexity_3: 2
+has_sub_tag_code_interactive_editing: 2
+has_sub_tag_code_model_state_management: 1
+has_sub_tag_code_event_handling: 1
+has_sub_tag_code_gui: 1
+has_sub_tag_code_graphics: 1
+has_sub_concept_2d_graph_editing_model: 1
+has_sub_concept_2d_graph_mouse_controller: 1
+has_sub_concept_2d_graph_painter: 1
 ---
 
 # Graph2D

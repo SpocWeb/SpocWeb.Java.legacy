@@ -88,6 +88,79 @@ facets:
   status: legacy
   complexity: 3
 description: 'A hand-rolled publish/subscribe and validation framework, predating `java.util.Observer`-style libraries in this codebase. Two roles are deliberately kept separate: a `Publisher`/`Subscriber` pair for reacting to a Value change after the fact (`IPublisher`, `ISubscriber`, `UniCaster`, `MultiCaster`, `SubCaster`, `APubUniLinkSub`), and a `Validator`/`ValidationRule` pair for vetoing a change beforehand by throwing `InvalidException` (`IValidator`, `IValidationRule`, `ValidationRule`, `ValidationRuleList`, `PathValidationRule`, `MultiValidator`). `AConstrained`, `IConstrained` and `UniCastConstrained` combine both roles: a single validator slot that is transparently upgraded to a `MultiValidator` composite the moment a second validator is registered, mirroring how `UniCaster` upgrades its single subscriber to a `MultiCaster`. `ACachedProperty` and `writeOnceProperty` are two small, mutually-exclusive-by-design observable property wrappers (lazy-recalculated vs. set-once), and `PropDouble` is a boxed-double holder with an (unused, see its Javadoc) subscriber field. `StateMachine` is an unrelated, self-contained matrix-based finite state machine. Two subsystem folders build on the same base classes: `aspect/` (an older attribute framework built on `AConstrained`) and `property/` (further property-wrapper variants).'
+dv_has_:
+  sub_:
+    folders: 2
+    files: 76
+    units: 34
+    facet_:
+      layer_:
+        domain: 25
+        infrastructure: 6
+        utility: 2
+        test: 1
+      status_:
+        legacy: 26
+        broken: 5
+        unfinished: 3
+      complexity_:
+        "2": 22
+        "3": 11
+        "4": 1
+    tag_:
+      code_:
+        attached_property: 14
+        validation: 8
+        observer_pattern: 11
+        validation_rule: 5
+        publish_subscribe: 4
+        subscription: 2
+        cache: 1
+        validation_interface: 1
+        state_machine: 1
+    concept_:
+      composite_value_object: 3
+      gui_property_metadata: 3
+      custom_exception_type: 3
+      validation_rule_chain: 2
+      composite_value_object_container: 1
+      composite_value_object_tree: 1
+      constrained_publisher: 1
+      constrained_publisher_base: 1
+      constrained_publisher_interface: 1
+      multi_subscriber_publisher: 1
+has_sub_folders: 2
+has_sub_files: 76
+has_sub_units: 34
+has_sub_facet_layer_domain: 25
+has_sub_facet_layer_infrastructure: 6
+has_sub_facet_layer_utility: 2
+has_sub_facet_layer_test: 1
+has_sub_facet_status_legacy: 26
+has_sub_facet_status_broken: 5
+has_sub_facet_status_unfinished: 3
+has_sub_facet_complexity_2: 22
+has_sub_facet_complexity_3: 11
+has_sub_facet_complexity_4: 1
+has_sub_tag_code_attached_property: 14
+has_sub_tag_code_validation: 8
+has_sub_tag_code_observer_pattern: 11
+has_sub_tag_code_validation_rule: 5
+has_sub_tag_code_publish_subscribe: 4
+has_sub_tag_code_subscription: 2
+has_sub_tag_code_cache: 1
+has_sub_tag_code_validation_interface: 1
+has_sub_tag_code_state_machine: 1
+has_sub_concept_composite_value_object: 3
+has_sub_concept_gui_property_metadata: 3
+has_sub_concept_custom_exception_type: 3
+has_sub_concept_validation_rule_chain: 2
+has_sub_concept_composite_value_object_container: 1
+has_sub_concept_composite_value_object_tree: 1
+has_sub_concept_constrained_publisher: 1
+has_sub_concept_constrained_publisher_base: 1
+has_sub_concept_constrained_publisher_interface: 1
+has_sub_concept_multi_subscriber_publisher: 1
 ---
 
 # synch

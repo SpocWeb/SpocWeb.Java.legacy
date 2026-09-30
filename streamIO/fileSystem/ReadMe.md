@@ -27,6 +27,44 @@ facets:
   status: broken
   complexity: 3
 description: 'Filesystem-facing helpers with no shared abstraction between them beyond the `java.io` interfaces they implement: `DirectoryFilter` and `SuffixFileNameFilter` are `FilenameFilter`/ `FileFilter` predicates for `File.list()`/`listFiles()`, while `FileIterator` and `FileBackupIterator` are `AStreamIn`-based generators that hand out a fresh numbered File (or a File whose predecessor was just moved to a backup location) on each call.'
+dv_has_:
+  sub_:
+    folders: 0
+    files: 8
+    units: 4
+    facet_:
+      layer_:
+        infrastructure: 4
+      status_:
+        stable: 3
+        broken: 1
+      complexity_:
+        "2": 3
+        "3": 1
+    tag_:
+      code_:
+        file_filtering: 2
+        file_io: 2
+        iterator_pattern: 2
+        file_backup: 1
+    concept_:
+      file_system: 4
+      file_i_:
+        o: 4
+has_sub_folders: 0
+has_sub_files: 8
+has_sub_units: 4
+has_sub_facet_layer_infrastructure: 4
+has_sub_facet_status_stable: 3
+has_sub_facet_status_broken: 1
+has_sub_facet_complexity_2: 3
+has_sub_facet_complexity_3: 1
+has_sub_tag_code_file_filtering: 2
+has_sub_tag_code_file_io: 2
+has_sub_tag_code_iterator_pattern: 2
+has_sub_tag_code_file_backup: 1
+has_sub_concept_file_system: 4
+has_sub_concept_file_i_o: 4
 ---
 
 # fileSystem

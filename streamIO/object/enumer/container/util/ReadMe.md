@@ -27,6 +27,33 @@ facets:
   status: legacy
   complexity: 4
 description: 'Small adapter and scheduling helpers supporting the `container/` package: `Collection2Container` adapts any `java.util.Collection` to this codebase''s `Container` interface, `Container2ResultSet` does the reverse for JDBC (exposing an `Enumerator` as a `ResultSet`), `TestRunAble` is a minimal `Runnable` used for ad hoc concurrency tests, and `TimedEvent`/`TimedQueue` implement a queue of Runnables scheduled to fire at given timestamps.'
+dv_has_:
+  sub_:
+    folders: 0
+    files: 12
+    units: 5
+    facet_:
+      layer_:
+        utility: 5
+      status_:
+        legacy: 5
+      complexity_:
+        "4": 5
+    tag_:
+      code_:
+        scheduling: 5
+        adapter: 5
+    concept_:
+      small_adapter_and_scheduling_helper_classes: 5
+has_sub_folders: 0
+has_sub_files: 12
+has_sub_units: 5
+has_sub_facet_layer_utility: 5
+has_sub_facet_status_legacy: 5
+has_sub_facet_complexity_4: 5
+has_sub_tag_code_scheduling: 5
+has_sub_tag_code_adapter: 5
+has_sub_concept_small_adapter_and_scheduling_helper_classes: 5
 ---
 
 # util

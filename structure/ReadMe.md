@@ -137,6 +137,73 @@ facets:
   status: legacy
   complexity: 3
 description: 'Textbook demonstrations of the classic Gang-of-Four structural, behavioral and creational Design Patterns, each Pattern given a small, self-contained Family of Types rather than one shared Framework. Several Families deliberately re-implement the same Idea more than once to compare Variants side by side: `Abstraction`/`Delegator` inherit the complexOp Algorithm while `Bridge`/`FullBridge` hold the Implementor directly, and the `D`-prefixed Types (`DAbstraction`, `DBridge`, `DFullBridge`) repeat that comparison using Delegation instead of Inheritance for the primitive Operation. `Element`/`Visitor` demonstrate double dispatch; `Command`/`MacroCommand` compose an undoable Command History over a `HistoryList`; `Context`/`State` model a TCP/IP-like Connection; `BiPointer`/`BiRef` explore bidirectional References with automatic Consistency. Two Subsystems apply these ideas to concrete Domains: `aspect/` binds Properties for generic UI Forms, and `blackBoard/` solves Triangle Geometry via a rule-based Blackboard.'
+dv_has_:
+  sub_:
+    folders: 3
+    files: 111
+    units: 57
+    facet_:
+      layer_:
+        utility: 37
+        domain: 20
+      status_:
+        legacy: 50
+        broken: 7
+      complexity_:
+        "2": 53
+        "3": 4
+    tag_:
+      code_:
+        bridge: 9
+        property_binding: 7
+        rule_based_validation: 7
+        visitor_pattern: 6
+        blackboard_pattern: 4
+        reference_counting: 4
+        "2d_geometry": 5
+        command_pattern: 2
+        data_validation: 2
+        delegate_pattern: 2
+    concept_:
+      "2d_circle": 1
+      "2d_ellipse": 1
+      "2d_figure_base_class": 1
+      angle_angle_angle_rule: 1
+      angle_side_angle_rule: 1
+      aspect_property_binding_base: 1
+      bidirectional_pointer: 1
+      bidirectional_reference: 1
+      blackboard_architecture: 1
+      bridge_implementor: 1
+has_sub_folders: 3
+has_sub_files: 111
+has_sub_units: 57
+has_sub_facet_layer_utility: 37
+has_sub_facet_layer_domain: 20
+has_sub_facet_status_legacy: 50
+has_sub_facet_status_broken: 7
+has_sub_facet_complexity_2: 53
+has_sub_facet_complexity_3: 4
+has_sub_tag_code_bridge: 9
+has_sub_tag_code_property_binding: 7
+has_sub_tag_code_rule_based_validation: 7
+has_sub_tag_code_visitor_pattern: 6
+has_sub_tag_code_blackboard_pattern: 4
+has_sub_tag_code_reference_counting: 4
+has_sub_tag_code_2d_geometry: 5
+has_sub_tag_code_command_pattern: 2
+has_sub_tag_code_data_validation: 2
+has_sub_tag_code_delegate_pattern: 2
+has_sub_concept_2d_circle: 1
+has_sub_concept_2d_ellipse: 1
+has_sub_concept_2d_figure_base_class: 1
+has_sub_concept_angle_angle_angle_rule: 1
+has_sub_concept_angle_side_angle_rule: 1
+has_sub_concept_aspect_property_binding_base: 1
+has_sub_concept_bidirectional_pointer: 1
+has_sub_concept_bidirectional_reference: 1
+has_sub_concept_blackboard_architecture: 1
+has_sub_concept_bridge_implementor: 1
 ---
 
 # structure

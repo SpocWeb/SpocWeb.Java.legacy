@@ -27,6 +27,43 @@ facets:
   status: stable
   complexity: 2
 description: '`dialog` is a small console question-and-answer engine built on top of the `aspect` package: each `AQuestion` is itself an `AAspect`, so an answer can be read/stored via the same `getVal()`/`setVal()` machinery as any other Aspect. `StringQuestion` and `BoolQuestion` are the two concrete question types (free-form text vs. Yes/No), each knowing the name of the next question to proceed to - `BoolQuestion` branches to a different next question depending on the answer, `StringQuestion` always proceeds to a fixed one. `Dialog` holds a named collection of `AQuestion`s (a tree, possibly with converging branches) and drives the question loop, substituting `[Name]`-style placeholders in later questions with earlier answers. `StreamDialog` is an unimplemented stub (empty constructor and no-op `main`) apparently intended as a future stream-based alternative driver.'
+dv_has_:
+  sub_:
+    folders: 0
+    files: 11
+    units: 5
+    facet_:
+      layer_:
+        domain: 5
+      status_:
+        stable: 3
+        broken: 1
+        unfinished: 1
+      complexity_:
+        "2": 4
+        "3": 1
+    tag_:
+      code_:
+        dialog: 5
+        dialog_invocation: 1
+    concept_:
+      console_qa_model: 3
+      dialog_tree_runner: 1
+      unimplemented_stub: 1
+has_sub_folders: 0
+has_sub_files: 11
+has_sub_units: 5
+has_sub_facet_layer_domain: 5
+has_sub_facet_status_stable: 3
+has_sub_facet_status_broken: 1
+has_sub_facet_status_unfinished: 1
+has_sub_facet_complexity_2: 4
+has_sub_facet_complexity_3: 1
+has_sub_tag_code_dialog: 5
+has_sub_tag_code_dialog_invocation: 1
+has_sub_concept_console_qa_model: 3
+has_sub_concept_dialog_tree_runner: 1
+has_sub_concept_unimplemented_stub: 1
 ---
 
 # dialog

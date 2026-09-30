@@ -72,6 +72,77 @@ facets:
   status: legacy
   complexity: 4
 description: 'Foundational contracts and base Classes for a symbolic-differentiation Function library: any Function implementing `IDeriveAble`/`IFloatDeriveAble` can report its own Derivative and Integral (cached and cross-linked via `setDerivative()`/`setIntegral()`), letting the `ring` subfolder''s combinators (`Sum`, `Prod`, `Cat`, ...) build up and differentiate compound Expressions purely by composition. `ADeriveAble`/`AFloatDeriveAble`/`AStatic`/`AFuncRel` supply the default Singleton-oriented implementation most concrete Functions extend; `AConst`/`Const`/`CCountAble`/ `CMeasurAble` are the constant-Function hierarchy (with `Comparison`/`ByRefComparison` as CCountAble-derived helpers); `Cat`/`Identity` provide Function concatenation and the identity element; `Enum` and its `Month`/`Week`/`Ternary` Subclasses implement a Flyweight-based enumeration pattern reused for calendar values and three-valued Logic. The `neuron` subfolder builds a Neural Network layer on `IFloatDeriveAble`, and `ring` builds the symbolic Function Algebra proper, with `ring/body` supplying the concrete transcendental Functions.'
+dv_has_:
+  sub_:
+    folders: 4
+    files: 240
+    units: 113
+    facet_:
+      layer_:
+        utility: 110
+        test: 2
+        domain: 1
+      status_:
+        legacy: 111
+        broken: 2
+      complexity_:
+        "2": 4
+        "3": 105
+        "4": 4
+    tag_:
+      code_:
+        derivable_function_contract: 38
+        neural_network: 10
+        hyperbolic_function: 9
+        differential_integration: 16
+        mathematical_function: 35
+        trigonometric_function: 6
+        algebraic_function: 5
+        backpropagation: 5
+        enum_modeling: 5
+        derivative_calculation: 6
+    concept_:
+      function_algebra: 35
+      ordinary_differential_equations: 8
+      neural_networks: 7
+      partial_derivatives: 7
+      special_functions: 7
+      trigonometric_functions: 5
+      calculus: 4
+      vector_calculus: 4
+      hyperbolic_functions: 3
+      inverse_hyperbolic_functions: 3
+has_sub_folders: 4
+has_sub_files: 240
+has_sub_units: 113
+has_sub_facet_layer_utility: 110
+has_sub_facet_layer_test: 2
+has_sub_facet_layer_domain: 1
+has_sub_facet_status_legacy: 111
+has_sub_facet_status_broken: 2
+has_sub_facet_complexity_2: 4
+has_sub_facet_complexity_3: 105
+has_sub_facet_complexity_4: 4
+has_sub_tag_code_derivable_function_contract: 38
+has_sub_tag_code_neural_network: 10
+has_sub_tag_code_hyperbolic_function: 9
+has_sub_tag_code_differential_integration: 16
+has_sub_tag_code_mathematical_function: 35
+has_sub_tag_code_trigonometric_function: 6
+has_sub_tag_code_algebraic_function: 5
+has_sub_tag_code_backpropagation: 5
+has_sub_tag_code_enum_modeling: 5
+has_sub_tag_code_derivative_calculation: 6
+has_sub_concept_function_algebra: 35
+has_sub_concept_ordinary_differential_equations: 8
+has_sub_concept_neural_networks: 7
+has_sub_concept_partial_derivatives: 7
+has_sub_concept_special_functions: 7
+has_sub_concept_trigonometric_functions: 5
+has_sub_concept_calculus: 4
+has_sub_concept_vector_calculus: 4
+has_sub_concept_hyperbolic_functions: 3
+has_sub_concept_inverse_hyperbolic_functions: 3
 ---
 
 # derive

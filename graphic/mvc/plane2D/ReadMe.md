@@ -24,6 +24,53 @@ facets:
   status: broken
   complexity: 4
 description: Renders textured 3D bodies (loaded from MilkShape3D-style model files) as flat, painted 2D polygons.
+dv_has_:
+  sub_:
+    folders: 0
+    files: 8
+    units: 4
+    facet_:
+      layer_:
+        domain: 3
+        utility: 1
+      status_:
+        broken: 2
+        legacy: 2
+      complexity_:
+        "3": 2
+        "4": 2
+    tag_:
+      code_:
+        texture_map: 2
+        polygon_matrix: 1
+        vector_operation: 1
+        z_ordering: 1
+        matrix_operation: 1
+        gui: 1
+    concept_:
+      dynamic_array_of_3d_projected_polygons: 1
+      growable_short_polygon_matrix: 1
+      milkshape3d_model_texture_painter: 1
+      textured_3d_body: 1
+has_sub_folders: 0
+has_sub_files: 8
+has_sub_units: 4
+has_sub_facet_layer_domain: 3
+has_sub_facet_layer_utility: 1
+has_sub_facet_status_broken: 2
+has_sub_facet_status_legacy: 2
+has_sub_facet_complexity_3: 2
+has_sub_facet_complexity_4: 2
+has_sub_tag_code_texture_map: 2
+has_sub_tag_code_polygon_matrix: 1
+has_sub_tag_code_vector_operation: 1
+has_sub_tag_code_z_ordering: 1
+has_sub_tag_code_matrix_operation: 1
+has_sub_tag_code_gui: 1
+has_sub_concept_dynamic_array_of_3d_projected_polygons: 1
+has_sub_concept_growable_short_polygon_matrix: 1
+has_sub_concept_milkshape3d_model_texture_painter: 1
+has_sub_concept_textured_3d_body: 1
 ---
 
 # plane2D

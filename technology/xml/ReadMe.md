@@ -49,6 +49,71 @@ facets:
   status: legacy
   complexity: 3
 description: 'A collection of SAX/DOM/XSLT tools built around a reflection-based dispatch pattern: `SaxDispatcher`/`SaxHandler` route each SAX Element event to a same-named method of an arbitrary target object, which `XslTrafo` uses to interpret a custom XTL pipeline-description language, `DamlHandler` uses to flatten DAML assertions into relational tables, and `XmlToDirHandler` uses to materialize an XML file/directory description onto the file system. `XmlUnmarshaller` takes a related but distinct approach, matching Element/Attribute names directly to member variables to unmarshal XML into the `test/` package''s Castor-generated object graph. `ResultSetToAttributes` and `SaxClientXmlWriter` bridge to JDBC and back to textual XML respectively, and `XmlHandler` offers a chainable SAX-filter base for building smaller, composable handlers.'
+dv_has_:
+  sub_:
+    folders: 1
+    files: 64
+    units: 31
+    facet_:
+      layer_:
+        domain: 20
+        infrastructure: 7
+        utility: 3
+        test: 1
+      status_:
+        legacy: 28
+        broken: 3
+      complexity_:
+        "2": 24
+        "3": 6
+        "4": 1
+    tag_:
+      code_:
+        data_transfer_object: 21
+        sax_parsing: 4
+        reflection_dispatch: 3
+        xml_parsing: 4
+        xml_deserialization: 2
+        xslt_transformation: 1
+    concept_:
+      castor_data_transfer_object: 16
+      castor_data_transfer_object_base: 1
+      castor_data_transfer_object_root: 1
+      castor_generated_data_model: 1
+      daml_sax_handler: 1
+      data_consistency_corrector: 1
+      dom_parsing_demo: 1
+      jdbc_resultset_to_xml_attributes: 1
+      reflection_based_sax_dispatcher: 1
+      reflection_based_xml_unmarshaller: 1
+has_sub_folders: 1
+has_sub_files: 64
+has_sub_units: 31
+has_sub_facet_layer_domain: 20
+has_sub_facet_layer_infrastructure: 7
+has_sub_facet_layer_utility: 3
+has_sub_facet_layer_test: 1
+has_sub_facet_status_legacy: 28
+has_sub_facet_status_broken: 3
+has_sub_facet_complexity_2: 24
+has_sub_facet_complexity_3: 6
+has_sub_facet_complexity_4: 1
+has_sub_tag_code_data_transfer_object: 21
+has_sub_tag_code_sax_parsing: 4
+has_sub_tag_code_reflection_dispatch: 3
+has_sub_tag_code_xml_parsing: 4
+has_sub_tag_code_xml_deserialization: 2
+has_sub_tag_code_xslt_transformation: 1
+has_sub_concept_castor_data_transfer_object: 16
+has_sub_concept_castor_data_transfer_object_base: 1
+has_sub_concept_castor_data_transfer_object_root: 1
+has_sub_concept_castor_generated_data_model: 1
+has_sub_concept_daml_sax_handler: 1
+has_sub_concept_data_consistency_corrector: 1
+has_sub_concept_dom_parsing_demo: 1
+has_sub_concept_jdbc_resultset_to_xml_attributes: 1
+has_sub_concept_reflection_based_sax_dispatcher: 1
+has_sub_concept_reflection_based_xml_unmarshaller: 1
 ---
 
 # xml

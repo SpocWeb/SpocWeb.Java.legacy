@@ -27,6 +27,39 @@ facets:
   status: legacy
   complexity: 3
 description: 'An older, self-contained attribute/property framework built directly on `synch.AConstrained`. An `Aspect` is a named, cloneable Value Object arranged in a tree: leaf Aspects (`StringAspect`) hold a single value with its own validation (min/max length), while `ContainerAspect` subclasses (`PersonAspect`, `AddressAspect`) hold no value of their own but expose public final child-Aspect fields discovered via reflection. Setting a leaf''s Value calls `validateParent()`/`updateParent()` to propagate validation and change notification up through every ancestor Container, and `clone()` performs a full recursive deep copy across the whole child-field tree. This is a separate, older implementation from `synch.property` and the top-level `aspect/` folder documented elsewhere in this codebase — none of the three share code.'
+dv_has_:
+  sub_:
+    folders: 0
+    files: 12
+    units: 5
+    facet_:
+      layer_:
+        domain: 5
+      status_:
+        legacy: 5
+      complexity_:
+        "2": 1
+        "3": 4
+    tag_:
+      code_:
+        attached_property: 5
+        observer_pattern: 3
+    concept_:
+      composite_value_object: 3
+      composite_value_object_container: 1
+      string_value_aspect: 1
+has_sub_folders: 0
+has_sub_files: 12
+has_sub_units: 5
+has_sub_facet_layer_domain: 5
+has_sub_facet_status_legacy: 5
+has_sub_facet_complexity_2: 1
+has_sub_facet_complexity_3: 4
+has_sub_tag_code_attached_property: 5
+has_sub_tag_code_observer_pattern: 3
+has_sub_concept_composite_value_object: 3
+has_sub_concept_composite_value_object_container: 1
+has_sub_concept_string_value_aspect: 1
 ---
 
 # aspect

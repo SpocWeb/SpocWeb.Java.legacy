@@ -26,6 +26,33 @@ facets:
   status: broken
   complexity: 2
 description: 'String-valued function transforms implementing `IStringFunction`/`StringFunction`: `AStringFunction` provides case-conversion helpers (including hungarian-notation-to-camelCase), `Char2String` wraps a single character, and `SubString` extracts a substring.'
+dv_has_:
+  sub_:
+    folders: 0
+    files: 16
+    units: 5
+    facet_:
+      layer_:
+        utility: 5
+      status_:
+        legacy: 5
+      complexity_:
+        "2": 5
+    tag_:
+      code_:
+        string_transform: 5
+        function_contract: 5
+    concept_:
+      string_transform_function: 5
+has_sub_folders: 0
+has_sub_files: 16
+has_sub_units: 5
+has_sub_facet_layer_utility: 5
+has_sub_facet_status_legacy: 5
+has_sub_facet_complexity_2: 5
+has_sub_tag_code_string_transform: 5
+has_sub_tag_code_function_contract: 5
+has_sub_concept_string_transform_function: 5
 ---
 
 # string

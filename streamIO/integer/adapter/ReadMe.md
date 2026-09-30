@@ -31,6 +31,35 @@ facets:
   status: legacy
   complexity: 4
 description: 'This folder adapts the `streamIO` family of interfaces to and from standard Java I/O and in-memory Arrays: `InputStreamToStreamIn_Byte`/`OutputStreamToStreamOutByte` and `ReaderToStreamIn_Byte`/ `WriterToStreamOutByte` wrap a `java.io.InputStream`/`OutputStream` or `Reader`/`Writer` so it can be used wherever an `IStreamIn_Byte`/`IStreamOutByte` is expected, `StreamIn_ByteToInputStream` goes the other way (wrapping an `IStreamIn_Byte` as a plain `InputStream`), and `ArrayStreamIn_Int` exposes a plain `int[]`/`long[]` Array through the `IStreamIn_Int` Interface. These adapters trade some performance for flexibility, since a purpose-built subclass of the abstract `AStream*` base classes is usually faster than wrapping an existing stream.'
+dv_has_:
+  sub_:
+    folders: 0
+    files: 12
+    units: 6
+    facet_:
+      layer_:
+        utility: 6
+      status_:
+        legacy: 6
+      complexity_:
+        "4": 6
+    tag_:
+      code_:
+        stream_bridging: 6
+        stream_wrapper: 6
+        stream_adapter: 6
+    concept_:
+      bridges_streamio_interfaces_to_javaio_and_arrays: 6
+has_sub_folders: 0
+has_sub_files: 12
+has_sub_units: 6
+has_sub_facet_layer_utility: 6
+has_sub_facet_status_legacy: 6
+has_sub_facet_complexity_4: 6
+has_sub_tag_code_stream_bridging: 6
+has_sub_tag_code_stream_wrapper: 6
+has_sub_tag_code_stream_adapter: 6
+has_sub_concept_bridges_streamio_interfaces_to_javaio_and_arrays: 6
 ---
 
 # adapter

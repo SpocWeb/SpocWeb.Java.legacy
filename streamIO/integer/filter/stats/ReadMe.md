@@ -21,6 +21,34 @@ facets:
   status: legacy
   complexity: 3
 description: 'Pass-through stream filters that gather frequency statistics on bytes flowing through them without altering the data: `FilterByteBag` counts single-byte occurrences, `FilterDiGraphCounter` counts consecutive byte pairs, and `FilterTriGraphCounter` counts consecutive byte triples. All three are typically used to characterize the statistical structure (e.g. n-gram entropy) of a byte stream such as compressed or encrypted output, or natural-language text.'
+dv_has_:
+  sub_:
+    folders: 0
+    files: 6
+    units: 3
+    facet_:
+      layer_:
+        utility: 3
+      status_:
+        legacy: 3
+      complexity_:
+        "3": 3
+    tag_:
+      code_:
+        frequency_counting: 3
+        statistics: 3
+    concept_:
+      byte_and_digraph_:
+        trigraph_frequency_counters: 3
+has_sub_folders: 0
+has_sub_files: 6
+has_sub_units: 3
+has_sub_facet_layer_utility: 3
+has_sub_facet_status_legacy: 3
+has_sub_facet_complexity_3: 3
+has_sub_tag_code_frequency_counting: 3
+has_sub_tag_code_statistics: 3
+has_sub_concept_byte_and_digraph_trigraph_frequency_counters: 3
 ---
 
 # stats

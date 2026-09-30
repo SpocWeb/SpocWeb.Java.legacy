@@ -22,6 +22,45 @@ facets:
   status: legacy
   complexity: 3
 description: 'Small, self-contained recursive-descent parsing tools, each demonstrating a different piece of classic LL(1) parsing: `IIStreamIn_Int` is the minimal integer-stream interface parsers read from; `MathParser` parses arithmetic-style expressions (`+ - * / \ % > < & | ! ^`) directly off a Java `InputStream`; and `Scanner` is a more general-purpose, separator-driven tokenizer/assembler used to parse nested `(a,b,c)`-style structures (its own Javadoc marks it `@deprecated` in favor of newer `streamIO.object.parser` classes). None of the three depend on each other at the type level - `MathParser` and `Scanner` both reference `Scanner.IS_LETTER`, the one point of overlap.'
+dv_has_:
+  sub_:
+    folders: 0
+    files: 6
+    units: 3
+    facet_:
+      layer_:
+        utility: 3
+      status_:
+        legacy: 3
+      complexity_:
+        "2": 2
+        "3": 1
+    tag_:
+      code_:
+        lexer_parser: 1
+        parser_interface: 1
+        expression_parser: 1
+        parser_utility: 1
+        parser: 1
+    concept_:
+      character_scanner: 1
+      integer_stream_input_interface: 1
+      math_expression_parser: 1
+has_sub_folders: 0
+has_sub_files: 6
+has_sub_units: 3
+has_sub_facet_layer_utility: 3
+has_sub_facet_status_legacy: 3
+has_sub_facet_complexity_2: 2
+has_sub_facet_complexity_3: 1
+has_sub_tag_code_lexer_parser: 1
+has_sub_tag_code_parser_interface: 1
+has_sub_tag_code_expression_parser: 1
+has_sub_tag_code_parser_utility: 1
+has_sub_tag_code_parser: 1
+has_sub_concept_character_scanner: 1
+has_sub_concept_integer_stream_input_interface: 1
+has_sub_concept_math_expression_parser: 1
 ---
 
 # parser

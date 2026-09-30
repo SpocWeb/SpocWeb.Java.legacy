@@ -132,6 +132,74 @@ facets:
   status: legacy
   complexity: 3
 description: 'This folder is the core of an object-stream framework: `IStreamIn`/`IIStreamIn` and `IStreamSet` (defined in the parent `streamIO` package) describe a pull-based stream of arbitrary `Object`s, and the types here supply adapters, filters and set-algebraic combinators over that abstraction. `AStreamIn` hoists the generic streaming algorithms (searching, ordering, containment) so a concrete source only has to implement `nextItem()`/`currItem()`/`availAble()`; `AFilter`/`AFilterIn`/`APlugAbleFilter` do the same for filters that wrap another stream. Bridges connect this abstraction to standard Java iteration (`Iterator2StreamIn`, `Enumeration2StreamIn` and their inverses), to plain arrays/Collections (`ArrayStreamIn`, `CollectionStreamIn`), and to strings (`StringStreamIn`). `AStreamSet`/`StreamSet` layer boolean-ring semantics (AND/OR/NOT/DIFF) on top of a stream, implemented by dedicated combinator classes (`AND`, `Union`, `DIFF`, `Cantor`, `Product`, `Merger`) that stream the result of a set operation rather than materializing it. `StreamParser`/`StreamIterator` are an older, separate string/structure tokenizer, unrelated to the stream-set algebra.'
+dv_has_:
+  sub_:
+    folders: 13
+    files: 407
+    units: 210
+    facet_:
+      layer_:
+        utility: 201
+        domain: 9
+      status_:
+        legacy: 198
+        broken: 12
+      complexity_:
+        "3": 93
+        "4": 117
+    tag_:
+      code_:
+        enumerator: 25
+        iterator_adapter: 25
+        stream_parsing: 15
+        decorator_pattern: 17
+        container: 45
+        container_iteration: 45
+        hash_table: 45
+        parsing: 25
+        red_black_tree: 12
+        parser: 16
+    concept_:
+      custom_streaming_enumerator_and_iterator_bridge_layer_for_object_collections: 25
+      jsonorg_reference_implementation: 15
+      separator_driven_token_parsing_and_stream_adapters: 15
+      object_stream_pipeline: 40
+      concrete_storage_containers_arrays_hash_tables_and_relations: 45
+      red_black_tree_backed_sorted_map_implementation: 12
+      backtracking_search: 11
+      stream_filter_input: 11
+      minimal_jdbc_driver_over_separated_format_flat_files: 9
+      xml_:
+        html_parsing: 8
+has_sub_folders: 13
+has_sub_files: 407
+has_sub_units: 210
+has_sub_facet_layer_utility: 201
+has_sub_facet_layer_domain: 9
+has_sub_facet_status_legacy: 198
+has_sub_facet_status_broken: 12
+has_sub_facet_complexity_3: 93
+has_sub_facet_complexity_4: 117
+has_sub_tag_code_enumerator: 25
+has_sub_tag_code_iterator_adapter: 25
+has_sub_tag_code_stream_parsing: 15
+has_sub_tag_code_decorator_pattern: 17
+has_sub_tag_code_container: 45
+has_sub_tag_code_container_iteration: 45
+has_sub_tag_code_hash_table: 45
+has_sub_tag_code_parsing: 25
+has_sub_tag_code_red_black_tree: 12
+has_sub_tag_code_parser: 16
+has_sub_concept_custom_streaming_enumerator_and_iterator_bridge_layer_for_object_collections: 25
+has_sub_concept_jsonorg_reference_implementation: 15
+has_sub_concept_separator_driven_token_parsing_and_stream_adapters: 15
+has_sub_concept_object_stream_pipeline: 40
+has_sub_concept_concrete_storage_containers_arrays_hash_tables_and_relations: 45
+has_sub_concept_red_black_tree_backed_sorted_map_implementation: 12
+has_sub_concept_backtracking_search: 11
+has_sub_concept_stream_filter_input: 11
+has_sub_concept_minimal_jdbc_driver_over_separated_format_flat_files: 9
+has_sub_concept_xml_html_parsing: 8
 ---
 
 # object
