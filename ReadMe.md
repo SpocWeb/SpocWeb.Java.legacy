@@ -57,7 +57,7 @@ dv_has_:
   sub_:
     folders: 129
     files: 3318
-    units: 1638
+    units: 1639
     facet_:
       layer_:
         utility: 909
@@ -65,13 +65,15 @@ dv_has_:
         infrastructure: 213
         test: 37
         data: 12
+        reference: 1
       status_:
         legacy: 1324
         broken: 166
-        stable: 128
+        stable: 129
         experimental: 9
         unfinished: 8
       complexity_:
+        "1": 1
         "2": 619
         "3": 596
         "4": 420
@@ -105,17 +107,19 @@ dv_has_:
         o_core_abstractions: 36
 has_sub_folders: 129
 has_sub_files: 3318
-has_sub_units: 1638
+has_sub_units: 1639
 has_sub_facet_layer_utility: 909
 has_sub_facet_layer_domain: 464
 has_sub_facet_layer_infrastructure: 213
 has_sub_facet_layer_test: 37
 has_sub_facet_layer_data: 12
+has_sub_facet_layer_reference: 1
 has_sub_facet_status_legacy: 1324
 has_sub_facet_status_broken: 166
-has_sub_facet_status_stable: 128
+has_sub_facet_status_stable: 129
 has_sub_facet_status_experimental: 9
 has_sub_facet_status_unfinished: 8
+has_sub_facet_complexity_1: 1
 has_sub_facet_complexity_2: 619
 has_sub_facet_complexity_3: 596
 has_sub_facet_complexity_4: 420
