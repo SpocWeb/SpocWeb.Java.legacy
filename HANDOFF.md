@@ -4,11 +4,11 @@
 
 **Complete (2026-09-06).** All 7 passes of the Java.ReadMeGenerator pipeline have been run
 across the entire corpus: 1457/1457 `.java` files carry a `docstate` block, every folder has
-a `ReadMe.md`, and the shared tag/index files (`raw-tags.tsv`, `D:/_/_AI/tags-schema.yaml`,
-`D:/_/_AI/tags-index.tsv`) are up to date. Verified via a full repo-wide
+a `ReadMe.md`, and the shared tag/index files (`raw-tags.tsv`, `../../../_AI/tags-schema.yaml`,
+`../../../_AI/tags-index.tsv`) are up to date. Verified via a full repo-wide
 `list-todo .` sweep, which returns exactly 8 rows - all confirmed tool false positives (see
 Tool quirks below), not real gaps. Everything is committed and pushed to both
-`D:/_/_Matthias/Code/Java` and `D:/_/_AI`.
+`./` and `../../../_AI`.
 
 **Optional follow-up, not applied:** the shared axis-A vocabulary (6421 tags) exceeds its
 recommended 300-tag ceiling. A dry run of
@@ -17,7 +17,7 @@ recommended 300-tag ceiling. A dry run of
 structural change to shared state, separate from finishing the documentation pass. Review the
 dry-run diff before running with `--apply`.
 
-Tooling: `D:/_/_AI/skills/Java.ReadMeGenerator/ReadMeGenerator/target/readmegenerator.jar`,
+Tooling: `../../../_AI/skills/Java.ReadMeGenerator/ReadMeGenerator/target/readmegenerator.jar`,
 built with the colocated Maven Wrapper. All milestones (A/B/B+/C) are built.
 
 ## Claims
