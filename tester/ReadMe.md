@@ -114,7 +114,7 @@ dv_has_:
         fuzzy_search: 2
     concept_:
       dynamic_transition_interface: 2
-      approximate_matching: 1
+      "Technology\\IT\\IT-Algorithm\\Approximate_String_Matching.md": 1
       automata_and_stream_processing: 1
       automaton_base_class: 1
       blocking_test_waiter: 1
@@ -143,7 +143,7 @@ has_sub_tag_code_boolean_algebra: 6
 has_sub_tag_code_custom_equivalence: 3
 has_sub_tag_code_fuzzy_search: 2
 has_sub_concept_dynamic_transition_interface: 2
-has_sub_concept_approximate_matching: 1
+has_sub_concept_technology_it_it_algorithm_approximate_string_matching_md: 1
 has_sub_concept_automata_and_stream_processing: 1
 has_sub_concept_automaton_base_class: 1
 has_sub_concept_blocking_test_waiter: 1

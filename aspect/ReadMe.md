@@ -75,8 +75,8 @@ dv_has_:
       composite_aspect: 3
       console_qa_model: 3
       reflection_based_dirty_tracking: 2
-      typed_property_validation: 2
       attribute_modelling: 3
+      "Technology\\IT\\Data\\Data_Validation.md": 2
       console_dialog_engine: 1
       dialog_tree_runner: 1
       list_:
@@ -101,8 +101,8 @@ has_sub_concept_aspect_framework: 4
 has_sub_concept_composite_aspect: 3
 has_sub_concept_console_qa_model: 3
 has_sub_concept_reflection_based_dirty_tracking: 2
-has_sub_concept_typed_property_validation: 2
 has_sub_concept_attribute_modelling: 3
+has_sub_concept_technology_it_data_data_validation_md: 2
 has_sub_concept_console_dialog_engine: 1
 has_sub_concept_dialog_tree_runner: 1
 has_sub_concept_list_table_aspect: 1

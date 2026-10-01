@@ -65,13 +65,13 @@ dv_has_:
       castor_data_transfer_object: 16
       "Technology\\IT\\Data.md": 2
       "Technology\\IT\\Software\\SW~Programming\\Prog~Language\\Prog~Paradigm\\Prog~Structured\\Exception-Handling.md": 2
+      "Technology\\IT\\Data\\Data_Language\\XML.md": 1
       attributed_stream_base_class: 1
       attributed_stream_input_interface: 1
       attributed_stream_output_interface: 1
       attributed_stream_processing: 1
       base: 1
       castor_generated_data_model: 1
-      command_line_jndi_browser: 1
 has_sub_folders: 5
 has_sub_files: 92
 has_sub_units: 47
@@ -97,13 +97,13 @@ has_sub_tag_code_thread_synchronization: 1
 has_sub_concept_castor_data_transfer_object: 16
 has_sub_concept_technology_it_data_md: 2
 has_sub_concept_technology_it_software_sw_programming_prog_language_prog_paradigm_prog_structured_exception_handling_md: 2
+has_sub_concept_technology_it_data_data_language_xml_md: 1
 has_sub_concept_attributed_stream_base_class: 1
 has_sub_concept_attributed_stream_input_interface: 1
 has_sub_concept_attributed_stream_output_interface: 1
 has_sub_concept_attributed_stream_processing: 1
 has_sub_concept_base: 1
 has_sub_concept_castor_generated_data_model: 1
-has_sub_concept_command_line_jndi_browser: 1
 ---
 
 # technology

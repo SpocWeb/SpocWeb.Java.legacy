@@ -189,7 +189,7 @@ dv_has_:
         test_harness: 3
       "2d_graph_mouse_controller": 2
       "2d_graph_painter": 2
-      "3d_polygon": 2
+      "Mathematics\\Geometry\\Polygon.md": 2
       "1d_cellular_automaton": 1
       "2d_coordinate_mouse_controller": 1
       "2d_coordinate_transform": 1
@@ -223,7 +223,7 @@ has_sub_tag_code_view_model: 6
 has_sub_concept_3d_graph_demo_test_harness: 3
 has_sub_concept_2d_graph_mouse_controller: 2
 has_sub_concept_2d_graph_painter: 2
-has_sub_concept_3d_polygon: 2
+has_sub_concept_mathematics_geometry_polygon_md: 2
 has_sub_concept_1d_cellular_automaton: 1
 has_sub_concept_2d_coordinate_mouse_controller: 1
 has_sub_concept_2d_coordinate_transform: 1

@@ -138,7 +138,7 @@ dv_has_:
       "Mathematics\\Calculus\\Differential_Equation.md": 8
       "Mathematics\\Calculus\\Derivative\\Partial_Derivative.md": 7
       neural_networks: 7
-      "Mathematics\\Statistics\\Combinatorics.md": 8
+      "Mathematics\\Hyperbolic_function.md": 6
 has_sub_folders: 11
 has_sub_files: 471
 has_sub_units: 219
@@ -169,7 +169,7 @@ has_sub_concept_indexed_collection_access: 9
 has_sub_concept_mathematics_calculus_differential_equation_md: 8
 has_sub_concept_mathematics_calculus_derivative_partial_derivative_md: 7
 has_sub_concept_neural_networks: 7
-has_sub_concept_mathematics_statistics_combinatorics_md: 8
+has_sub_concept_mathematics_hyperbolic_function_md: 6
 ---
 
 # function

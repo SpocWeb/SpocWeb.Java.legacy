@@ -49,11 +49,11 @@ dv_has_:
         matrix_operation: 1
         gui: 1
     concept_:
-      "Mathematics\\Geometry\\Vector.md": 1
       growable_short_polygon_matrix: 1
       milkshape3d_model_texture_painter: 1
       textured_3d_body: 1
-      "3d_polygon": 1
+      "Mathematics\\Geometry\\Polygon.md": 1
+      "Mathematics\\Geometry\\Vector.md": 1
 has_sub_folders: 0
 has_sub_files: 8
 has_sub_units: 4
@@ -69,11 +69,11 @@ has_sub_tag_code_vector_operation: 1
 has_sub_tag_code_z_ordering: 1
 has_sub_tag_code_matrix_operation: 1
 has_sub_tag_code_gui: 1
-has_sub_concept_mathematics_geometry_vector_md: 1
 has_sub_concept_growable_short_polygon_matrix: 1
 has_sub_concept_milkshape3d_model_texture_painter: 1
 has_sub_concept_textured_3d_body: 1
-has_sub_concept_3d_polygon: 1
+has_sub_concept_mathematics_geometry_polygon_md: 1
+has_sub_concept_mathematics_geometry_vector_md: 1
 ---
 
 # plane2D
