@@ -142,6 +142,7 @@ dv_has_:
         dense_graph: 1
         graph_abstraction: 1
     concept_:
+      "Mathematics\\Graph_Theory\\Graph.md": 2
       adjacency_matrix_edge_stream: 1
       adjacency_matrix_graph: 1
       comparable_pair_interface: 1
@@ -152,7 +153,6 @@ dv_has_:
       disjoint_set__:
         "_union_find": 1
       edge_stream_base_class: 1
-      edge_stream_interface: 1
 has_sub_folders: 0
 has_sub_files: 68
 has_sub_units: 33
@@ -174,6 +174,7 @@ has_sub_tag_code_adjacency_matrix: 2
 has_sub_tag_code_key_value_pair: 2
 has_sub_tag_code_dense_graph: 1
 has_sub_tag_code_graph_abstraction: 1
+has_sub_concept_mathematics_graph_theory_graph_md: 2
 has_sub_concept_adjacency_matrix_edge_stream: 1
 has_sub_concept_adjacency_matrix_graph: 1
 has_sub_concept_comparable_pair_interface: 1
@@ -183,7 +184,6 @@ has_sub_concept_copyable_base_class: 1
 has_sub_concept_copyable_interface: 1
 has_sub_concept_disjoint_set_union_find: 1
 has_sub_concept_edge_stream_base_class: 1
-has_sub_concept_edge_stream_interface: 1
 ---
 
 # graphs

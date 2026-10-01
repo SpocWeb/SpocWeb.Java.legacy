@@ -121,8 +121,8 @@ dv_has_:
     concept_:
       composite_value_object: 3
       gui_property_metadata: 3
-      custom_exception_type: 3
       validation_rule_chain: 2
+      "Technology\\IT\\Software\\SW~Programming\\Prog~Language\\Prog~Paradigm\\Prog~Structured\\Exception-Handling.md": 3
       composite_value_object_container: 1
       composite_value_object_tree: 1
       constrained_publisher: 1
@@ -153,8 +153,8 @@ has_sub_tag_code_validation_interface: 1
 has_sub_tag_code_state_machine: 1
 has_sub_concept_composite_value_object: 3
 has_sub_concept_gui_property_metadata: 3
-has_sub_concept_custom_exception_type: 3
 has_sub_concept_validation_rule_chain: 2
+has_sub_concept_technology_it_software_sw_programming_prog_language_prog_paradigm_prog_structured_exception_handling_md: 3
 has_sub_concept_composite_value_object_container: 1
 has_sub_concept_composite_value_object_tree: 1
 has_sub_concept_constrained_publisher: 1

@@ -86,11 +86,11 @@ dv_has_:
     concept_:
       brents_method_minimizer: 2
       conjugate_gradient_minimizer: 2
+      "Mathematics\\Optimization(Math)\\Linear_Programming.md": 1
       distance: 1
       distorted: 1
       downhill_simplex_nelder_mead_minimizer: 1
       golden_section_search_minimizer: 1
-      linear_programming: 1
       numerical_optimization: 1
       scalar_field_test_fixture: 1
       simplex: 1
@@ -117,11 +117,11 @@ has_sub_tag_code_simulated_annealing: 1
 has_sub_tag_code_bracket_matching: 1
 has_sub_concept_brents_method_minimizer: 2
 has_sub_concept_conjugate_gradient_minimizer: 2
+has_sub_concept_mathematics_optimization_math_linear_programming_md: 1
 has_sub_concept_distance: 1
 has_sub_concept_distorted: 1
 has_sub_concept_downhill_simplex_nelder_mead_minimizer: 1
 has_sub_concept_golden_section_search_minimizer: 1
-has_sub_concept_linear_programming: 1
 has_sub_concept_numerical_optimization: 1
 has_sub_concept_scalar_field_test_fixture: 1
 has_sub_concept_simplex: 1

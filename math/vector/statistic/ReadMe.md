@@ -44,8 +44,8 @@ dv_has_:
     concept_:
       "2d_sampling_test_model": 1
       cross_vector_correlation_statistics: 1
-      float: 1
       hypothesis_testing: 1
+      "schema-org\\Class\\is_a_\\Data_Type\\Number\\Float.md": 1
 has_sub_folders: 0
 has_sub_files: 5
 has_sub_units: 3
@@ -59,8 +59,8 @@ has_sub_tag_code_chi_squared: 1
 has_sub_tag_code_statistical_correlation: 1
 has_sub_concept_2d_sampling_test_model: 1
 has_sub_concept_cross_vector_correlation_statistics: 1
-has_sub_concept_float: 1
 has_sub_concept_hypothesis_testing: 1
+has_sub_concept_schema_org_class_is_a_data_type_number_float_md: 1
 ---
 
 # statistic

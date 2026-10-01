@@ -48,7 +48,7 @@ dv_has_:
       code_:
         stream_adapter: 7
     concept_:
-      custom_exception_type: 2
+      "Technology\\IT\\Software\\SW~Programming\\Prog~Language\\Prog~Paradigm\\Prog~Structured\\Exception-Handling.md": 2
       attributed_stream_base_class: 1
       attributed_stream_input_interface: 1
       attributed_stream_output_interface: 1
@@ -61,7 +61,7 @@ has_sub_facet_layer_infrastructure: 7
 has_sub_facet_status_legacy: 7
 has_sub_facet_complexity_2: 7
 has_sub_tag_code_stream_adapter: 7
-has_sub_concept_custom_exception_type: 2
+has_sub_concept_technology_it_software_sw_programming_prog_language_prog_paradigm_prog_structured_exception_handling_md: 2
 has_sub_concept_attributed_stream_base_class: 1
 has_sub_concept_attributed_stream_input_interface: 1
 has_sub_concept_attributed_stream_output_interface: 1

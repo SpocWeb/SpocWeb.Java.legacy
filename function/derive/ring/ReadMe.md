@@ -159,15 +159,15 @@ dv_has_:
         gamma_function: 2
     concept_:
       "Mathematics\\Function(Math).md": 35
-      ordinary_differential_equations: 8
-      partial_derivatives: 7
+      "Mathematics\\Calculus\\Differential_Equation.md": 8
+      "Mathematics\\Calculus\\Derivative\\Partial_Derivative.md": 7
       "Mathematics\\Geometry\\Geometry-2D\\Triangle\\Trigonometry\\Trigonometric_Function.md": 5
-      vector_calculus: 5
       "Mathematics\\Algebra\\Ring_Theory.md": 3
       "Mathematics\\Hyperbolic_function.md": 3
       inverse_hyperbolic_functions: 3
       inverse_trigonometric_functions: 3
       numerical_series: 3
+      statistical_distributions: 3
 has_sub_folders: 2
 has_sub_files: 182
 has_sub_units: 83
@@ -189,15 +189,15 @@ has_sub_tag_code_algebraic_function: 4
 has_sub_tag_code_abstract_math: 2
 has_sub_tag_code_gamma_function: 2
 has_sub_concept_mathematics_function_math_md: 35
-has_sub_concept_ordinary_differential_equations: 8
-has_sub_concept_partial_derivatives: 7
+has_sub_concept_mathematics_calculus_differential_equation_md: 8
+has_sub_concept_mathematics_calculus_derivative_partial_derivative_md: 7
 has_sub_concept_mathematics_geometry_geometry_2d_triangle_trigonometry_trigonometric_function_md: 5
-has_sub_concept_vector_calculus: 5
 has_sub_concept_mathematics_algebra_ring_theory_md: 3
 has_sub_concept_mathematics_hyperbolic_function_md: 3
 has_sub_concept_inverse_hyperbolic_functions: 3
 has_sub_concept_inverse_trigonometric_functions: 3
 has_sub_concept_numerical_series: 3
+has_sub_concept_statistical_distributions: 3
 ---
 
 # ring

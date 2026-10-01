@@ -78,11 +78,11 @@ dv_has_:
         derivable_function_contract: 1
         function_composition: 1
     concept_:
-      partial_derivatives: 7
-      vector_calculus: 4
-      ordinary_differential_equations: 2
+      "Mathematics\\Calculus\\Derivative\\Partial_Derivative.md": 7
+      "Mathematics\\Calculus\\Multivariable_Calculus\\Vector_Calculus.md": 4
+      "Mathematics\\Calculus\\Differential_Equation.md": 2
+      "Mathematics\\Dynamical_System\\Chaos_Theory.md": 1
       "Science\\Physics\\Fundamental_Interaction\\Electromagnetism.md": 1
-      chaos_theory: 1
       product_rule: 1
       quotient_rule: 1
       sum_rule: 1
@@ -102,11 +102,11 @@ has_sub_tag_code_entry_point: 1
 has_sub_tag_code_test: 1
 has_sub_tag_code_derivable_function_contract: 1
 has_sub_tag_code_function_composition: 1
-has_sub_concept_partial_derivatives: 7
-has_sub_concept_vector_calculus: 4
-has_sub_concept_ordinary_differential_equations: 2
+has_sub_concept_mathematics_calculus_derivative_partial_derivative_md: 7
+has_sub_concept_mathematics_calculus_multivariable_calculus_vector_calculus_md: 4
+has_sub_concept_mathematics_calculus_differential_equation_md: 2
+has_sub_concept_mathematics_dynamical_system_chaos_theory_md: 1
 has_sub_concept_science_physics_fundamental_interaction_electromagnetism_md: 1
-has_sub_concept_chaos_theory: 1
 has_sub_concept_product_rule: 1
 has_sub_concept_quotient_rule: 1
 has_sub_concept_sum_rule: 1

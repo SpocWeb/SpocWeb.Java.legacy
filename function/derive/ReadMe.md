@@ -103,15 +103,15 @@ dv_has_:
         derivative_calculation: 6
     concept_:
       "Mathematics\\Function(Math).md": 43
-      ordinary_differential_equations: 8
+      "Mathematics\\Calculus\\Differential_Equation.md": 8
+      "Mathematics\\Calculus\\Derivative\\Partial_Derivative.md": 7
       neural_networks: 7
-      partial_derivatives: 7
       "Mathematics\\Geometry\\Geometry-2D\\Triangle\\Trigonometry\\Trigonometric_Function.md": 5
-      vector_calculus: 5
       "Mathematics\\Calculus.md": 4
       "Mathematics\\Algebra\\Ring_Theory.md": 3
       "Mathematics\\Hyperbolic_function.md": 3
       inverse_hyperbolic_functions: 3
+      inverse_trigonometric_functions: 3
 has_sub_folders: 4
 has_sub_files: 240
 has_sub_units: 113
@@ -134,15 +134,15 @@ has_sub_tag_code_backpropagation: 5
 has_sub_tag_code_enum_modeling: 5
 has_sub_tag_code_derivative_calculation: 6
 has_sub_concept_mathematics_function_math_md: 43
-has_sub_concept_ordinary_differential_equations: 8
+has_sub_concept_mathematics_calculus_differential_equation_md: 8
+has_sub_concept_mathematics_calculus_derivative_partial_derivative_md: 7
 has_sub_concept_neural_networks: 7
-has_sub_concept_partial_derivatives: 7
 has_sub_concept_mathematics_geometry_geometry_2d_triangle_trigonometry_trigonometric_function_md: 5
-has_sub_concept_vector_calculus: 5
 has_sub_concept_mathematics_calculus_md: 4
 has_sub_concept_mathematics_algebra_ring_theory_md: 3
 has_sub_concept_mathematics_hyperbolic_function_md: 3
 has_sub_concept_inverse_hyperbolic_functions: 3
+has_sub_concept_inverse_trigonometric_functions: 3
 related:
 - path: ../_Matthias/Code/Java/function/derive/ring/body
   shared-tags:

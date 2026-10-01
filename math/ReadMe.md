@@ -83,11 +83,11 @@ dv_has_:
       "Mathematics\\Algebra\\Linear_Algebra\\Matrix.md": 2
       brents_method_minimizer: 2
       conjugate_gradient_minimizer: 2
-      float: 2
       hypothesis_testing: 2
       matrix_stream: 2
       reverse_order_float_stream_source: 2
       reverse_order_int_stream_source: 2
+      "schema-org\\Class\\is_a_\\Data_Type\\Number\\Float.md": 2
       "2d_line_segment": 1
       "2d_linear_optics_transform": 1
 has_sub_folders: 10
@@ -115,11 +115,11 @@ has_sub_tag_code_weighting: 5
 has_sub_concept_mathematics_algebra_linear_algebra_matrix_md: 2
 has_sub_concept_brents_method_minimizer: 2
 has_sub_concept_conjugate_gradient_minimizer: 2
-has_sub_concept_float: 2
 has_sub_concept_hypothesis_testing: 2
 has_sub_concept_matrix_stream: 2
 has_sub_concept_reverse_order_float_stream_source: 2
 has_sub_concept_reverse_order_int_stream_source: 2
+has_sub_concept_schema_org_class_is_a_data_type_number_float_md: 2
 has_sub_concept_2d_line_segment: 1
 has_sub_concept_2d_linear_optics_transform: 1
 ---

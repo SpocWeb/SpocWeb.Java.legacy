@@ -130,16 +130,16 @@ dv_has_:
         exponential_function: 2
         vector_math: 5
     concept_:
-      partial_derivatives: 7
+      "Mathematics\\Calculus\\Derivative\\Partial_Derivative.md": 7
       "Mathematics\\Geometry\\Geometry-2D\\Triangle\\Trigonometry\\Trigonometric_Function.md": 5
-      vector_calculus: 5
       "Mathematics\\Hyperbolic_function.md": 3
       inverse_hyperbolic_functions: 3
       inverse_trigonometric_functions: 3
       statistical_distributions: 3
+      "Mathematics\\Function(Math)\\Function~unary\\Operator~unary\\Gamma_Function.md": 2
+      "Science\\Physics\\Thermodynamics.md": 2
       magnetism: 2
-      thermodynamics: 2
-      "Mathematics\\Function(Math).md": 7
+      "Mathematics\\Calculus\\Multivariable_Calculus\\Vector_Calculus.md": 5
 has_sub_folders: 1
 has_sub_files: 97
 has_sub_units: 44
@@ -158,16 +158,16 @@ has_sub_tag_code_console_output: 2
 has_sub_tag_code_entry_point: 2
 has_sub_tag_code_exponential_function: 2
 has_sub_tag_code_vector_math: 5
-has_sub_concept_partial_derivatives: 7
+has_sub_concept_mathematics_calculus_derivative_partial_derivative_md: 7
 has_sub_concept_mathematics_geometry_geometry_2d_triangle_trigonometry_trigonometric_function_md: 5
-has_sub_concept_vector_calculus: 5
 has_sub_concept_mathematics_hyperbolic_function_md: 3
 has_sub_concept_inverse_hyperbolic_functions: 3
 has_sub_concept_inverse_trigonometric_functions: 3
 has_sub_concept_statistical_distributions: 3
+has_sub_concept_mathematics_function_math_function_unary_operator_unary_gamma_function_md: 2
+has_sub_concept_science_physics_thermodynamics_md: 2
 has_sub_concept_magnetism: 2
-has_sub_concept_thermodynamics: 2
-has_sub_concept_mathematics_function_math_md: 7
+has_sub_concept_mathematics_calculus_multivariable_calculus_vector_calculus_md: 5
 related:
 - path: ../_Matthias/Code/Java/function/derive
   shared-tags:
