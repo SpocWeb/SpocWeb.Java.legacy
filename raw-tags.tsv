@@ -24,7 +24,7 @@ tools/threads	folder	tools/threads	code/watchdog_thread, code/timeout_handling	T
 knowledge/IObject.java:IObject	class	knowledge/IObject.java	code/entity_model, code/interface_contract, code/type_system	Technology\IT\Software\SW~Programming\Domain-Driven_Design.md, Object Classification	domain	stable	2
 knowledge/IAttribute.java:IAttribute	class	knowledge/IAttribute.java	code/entity_model, code/interface_contract, code/domain_model	Technology\IT\Software\SW~Programming\Domain-Driven_Design.md, Attribute Modelling	domain	stable	2
 knowledge/IRelation.java:IRelation	class	knowledge/IRelation.java	code/entity_model, code/domain_model, code/interface_contract	Technology\IT\Software\SW~Programming\Domain-Driven_Design.md, Relationship Modelling	domain	stable	2
-knowledge/IDescriptor.java:IDescriptor	class	knowledge/IDescriptor.java	code/interface_contract, code/accessor, code/metadata	Technology\IT\Software\SW~Programming\Domain-Driven_Design.md, Naming	domain	stable	2
+knowledge/IDescriptor.java:IDescriptor	class	knowledge/IDescriptor.java	code/interface_contract, code/accessor, code/metadata	Technology\IT\Software\SW~Programming\Domain-Driven_Design.md, Technology\IT\Software\SW~Programming\Prog~Language\Prog~Naming.md	domain	stable	2
 knowledge/IReadyFlag.java:IReadyFlag	class	knowledge/IReadyFlag.java	code/state_flag, code/interface_contract	State Tracking	domain	stable	2
 knowledge/IDirtyFlag.java:IDirtyFlag	class	knowledge/IDirtyFlag.java	code/state_flag, code/interface_contract	State Tracking	domain	stable	2
 knowledge/IPrimaryKey.java:IPrimaryKey	class	knowledge/IPrimaryKey.java	code/composite_key, code/primary_key_lookup, code/sql_generation, code/reflection	Technology\IT\Data\Data_Storage.md, Record Identity	data	stable	3
@@ -140,12 +140,12 @@ FixRecordScrambler.java:FixRecordScrambler.OFFSET_FIELD(InputStream, OutputStrea
 FixRecordScrambler.java:FixRecordScrambler.OFFSET_FIELD(InputStream, OutputStream, int, int, int, int, byte, int)	method	FixRecordScrambler.java	code/fixed_width_reader	File I/O	utility	stable	2
 FixRecordScrambler.java:FixRecordScrambler.testIt(String[])	method	FixRecordScrambler.java	code/test_harness	Technology\IT\Software\SW~Programming\Prog~Language\Prog~Paradigm\Prog~Functional\Prog~Rust\Rust~Testing.md	utility	stable	2
 FixRecordScrambler.java:FixRecordScrambler.main(String[])	method	FixRecordScrambler.java	code/cli_tool	File I/O	utility	broken	2
-PropertyHierarchy.java:PropertyHierarchy	class	PropertyHierarchy.java	code/cli_tool	Naming	utility	stable	3
-PropertyHierarchy.java:PropertyHierarchy.PropertyHierarchy()	method	PropertyHierarchy.java	code/cli_tool	Naming	utility	stable	2
+PropertyHierarchy.java:PropertyHierarchy	class	PropertyHierarchy.java	code/cli_tool	Technology\IT\Software\SW~Programming\Prog~Language\Prog~Naming.md	utility	stable	3
+PropertyHierarchy.java:PropertyHierarchy.PropertyHierarchy()	method	PropertyHierarchy.java	code/cli_tool	Technology\IT\Software\SW~Programming\Prog~Language\Prog~Naming.md	utility	stable	2
 PropertyHierarchy.java:PropertyHierarchy.testIt()	method	PropertyHierarchy.java	code/test_harness	Technology\IT\Software\SW~Programming\Prog~Language\Prog~Paradigm\Prog~Functional\Prog~Rust\Rust~Testing.md	utility	stable	2
-PropertyHierarchy.java:PropertyHierarchy.CONVERT_HIERARCHY(Map)	method	PropertyHierarchy.java	code/entity_model	Naming	utility	stable	2
-PropertyHierarchy.java:PropertyHierarchy.LOAD_HIERARCHY(String)	method	PropertyHierarchy.java	code/entity_model	Naming	utility	stable	3
-PropertyHierarchy.java:PropertyHierarchy.main(String[])	method	PropertyHierarchy.java	code/cli_tool	Naming	utility	stable	2
+PropertyHierarchy.java:PropertyHierarchy.CONVERT_HIERARCHY(Map)	method	PropertyHierarchy.java	code/entity_model	Technology\IT\Software\SW~Programming\Prog~Language\Prog~Naming.md	utility	stable	2
+PropertyHierarchy.java:PropertyHierarchy.LOAD_HIERARCHY(String)	method	PropertyHierarchy.java	code/entity_model	Technology\IT\Software\SW~Programming\Prog~Language\Prog~Naming.md	utility	stable	3
+PropertyHierarchy.java:PropertyHierarchy.main(String[])	method	PropertyHierarchy.java	code/cli_tool	Technology\IT\Software\SW~Programming\Prog~Language\Prog~Naming.md	utility	stable	2
 RecourseCmd.java:RecourseCmd	class	RecourseCmd.java	code/cli_tool, code/directory_traversal	Directory Traversal, Interprocess Communication	utility	stable	3
 RecourseCmd.java:RecourseCmd.execRecursive(String, File, String, String)	method	RecourseCmd.java	code/directory_traversal	Directory Traversal	utility	stable	2
 RecourseCmd.java:RecourseCmd.exec(String, OutputStream, OutputStream, InputStream)	method	RecourseCmd.java	code/asynchronous_io	Interprocess Communication	utility	stable	3
@@ -302,15 +302,15 @@ synch/ISubscriber.java:ISubscriber	class	synch/ISubscriber.java	code/subscriptio
 synch/IValidation.java:IValidation	class	synch/IValidation.java	code/validation_interface	Validation Interface	domain	legacy	2
 synch/IValidationRule.java:IValidationRule	class	synch/IValidationRule.java	code/validation_rule	Validation Rule Interface	domain	legacy	2
 synch/IValidator.java:IValidator	class	synch/IValidator.java	code/validation	Validator Interface	domain	legacy	2
-synch/InvalidError.java:InvalidError	class	synch/InvalidError.java	code/validation	Custom Exception Type	domain	legacy	2
-synch/InvalidException.java:InvalidException	class	synch/InvalidException.java	code/validation	Custom Exception Type	domain	legacy	2
+synch/InvalidError.java:InvalidError	class	synch/InvalidError.java	code/validation	Technology\IT\Software\SW~Programming\Prog~Language\Prog~Paradigm\Prog~Structured\Exception-Handling.md	domain	legacy	2
+synch/InvalidException.java:InvalidException	class	synch/InvalidException.java	code/validation	Technology\IT\Software\SW~Programming\Prog~Language\Prog~Paradigm\Prog~Structured\Exception-Handling.md	domain	legacy	2
 synch/MultiCaster.java:MultiCaster	class	synch/MultiCaster.java	code/publish_subscribe,code/observer_pattern	Multi-Subscriber Publisher	infrastructure	legacy	2
 synch/MultiValidator.java:MultiValidator	class	synch/MultiValidator.java	code/validation,code/validation_rule	Multi-Validator Chain	domain	legacy	3
 synch/PathValidationRule.java:PathValidationRule	class	synch/PathValidationRule.java	code/validation_rule	Path-Based Validation Rule	domain	legacy	3
 synch/PropDouble.java:PropDouble	class	synch/PropDouble.java	code/attached_property	Observable Double Property	domain	broken	2
 synch/StateMachine.java:StateMachine	class	synch/StateMachine.java	code/state_machine	Finite State Machine	utility	broken	2
 synch/SubCaster.java:SubCaster	class	synch/SubCaster.java	code/subscription,code/observer_pattern	Subscriber-Side Caster	infrastructure	legacy	2
-synch/TooManySubscribersException.java:TooManySubscribersException	class	synch/TooManySubscribersException.java	code/validation	Custom Exception Type	domain	legacy	2
+synch/TooManySubscribersException.java:TooManySubscribersException	class	synch/TooManySubscribersException.java	code/validation	Technology\IT\Software\SW~Programming\Prog~Language\Prog~Paradigm\Prog~Structured\Exception-Handling.md	domain	legacy	2
 synch/UniCastConstrained.java:UniCastConstrained	class	synch/UniCastConstrained.java	code/observer_pattern,code/validation	Constrained Publisher	domain	broken	3
 synch/UniCaster.java:UniCaster	class	synch/UniCaster.java	code/publish_subscribe,code/observer_pattern	Single-Subscriber Publisher	infrastructure	legacy	2
 synch/ValidationRule.java:ValidationRule	class	synch/ValidationRule.java	code/validation_rule	Validation Rule Chain	domain	legacy	4
@@ -370,7 +370,7 @@ graphs/AEdgeStreamIn.java:AEdgeStreamIn	class	graphs/AEdgeStreamIn.java	code/gra
 graphs/AGraph.java:AGraph	class	graphs/AGraph.java	code/graph_abstraction	Graph Base Class	domain	broken	3
 graphs/CValue.java:CValue	class	graphs/CValue.java	code/graph_element	Comparable Value Holder	domain	legacy	2
 graphs/DisJointSet.java:DisJointSet	class	graphs/DisJointSet.java	code/disjoint_set,code/union_find	Disjoint Set / Union-Find	utility	legacy	3
-graphs/Edge.java:Edge	class	graphs/Edge.java	code/graph_edge	Graph Edge	domain	legacy	2
+graphs/Edge.java:Edge	class	graphs/Edge.java	code/graph_edge	Mathematics\Graph_Theory\Graph.md	domain	legacy	2
 graphs/EquivalenceByParent.java:EquivalenceByParent	class	graphs/EquivalenceByParent.java	code/custom_equivalence,code/disjoint_set	Parent-Based Equivalence	utility	legacy	2
 graphs/FlowEdge.java:FlowEdge	class	graphs/FlowEdge.java	code/graph_edge	Flow-Network Edge	domain	legacy	2
 graphs/ICPair.java:ICPair	class	graphs/ICPair.java	code/pair_data_structure	Comparable Pair Interface	domain	legacy	2
@@ -392,7 +392,7 @@ graphs/PairSym.java:PairSym	class	graphs/PairSym.java	code/pair_data_structure	S
 graphs/PairVal.java:PairVal	class	graphs/PairVal.java	code/pair_data_structure	Pair with Value	domain	legacy	2
 graphs/Pairing.java:Pairing	class	graphs/Pairing.java	code/graph_matching	Graph Pairing/Matching Quality	domain	legacy	3
 graphs/SparseEdge.java:SparseEdge	class	graphs/SparseEdge.java	code/graph_edge,code/sparse_graph	Sparse Graph Edge	domain	legacy	2
-graphs/SparseGraph.java:SparseGraph	class	graphs/SparseGraph.java	code/sparse_graph,code/graph_algorithm	Sparse Graph	domain	legacy	4
+graphs/SparseGraph.java:SparseGraph	class	graphs/SparseGraph.java	code/sparse_graph,code/graph_algorithm	Mathematics\Graph_Theory\Graph.md	domain	legacy	4
 graphs/SparseMatrix.java:SparseMatrix	class	graphs/SparseMatrix.java	code/sparse_matrix,code/sparse_graph	Sparse Matrix Graph	domain	broken	4
 graphs/SparseMatrix.java:SparseEdgeStream	class	graphs/SparseMatrix.java	code/sparse_graph,code/graph_iteration	Sparse Edge Stream	domain	legacy	3
 graphs/StringIndex.java:StringIndex	class	graphs/StringIndex.java	code/graph_dictionaries	String Interning Index	utility	legacy	2
@@ -479,9 +479,9 @@ technology/stream	folder	technology/stream	code/stream_adapter	Attributed Stream
 technology/stream/IAttributedStreamIn.java:IAttributedStreamIn	class	technology/stream/IAttributedStreamIn.java	code/stream_adapter	Attributed Stream Input Interface	infrastructure	legacy	2
 technology/stream/IAttributedStreamOut.java:IAttributedStreamOut	class	technology/stream/IAttributedStreamOut.java	code/stream_adapter	Attributed Stream Output Interface	infrastructure	legacy	2
 technology/stream/IManagedComponent.java:IManagedComponent	class	technology/stream/IManagedComponent.java	code/stream_adapter	Managed Component Interface	infrastructure	legacy	2
-technology/stream/InitializationException.java:InitializationException	class	technology/stream/InitializationException.java	code/stream_adapter	Custom Exception Type	infrastructure	legacy	2
+technology/stream/InitializationException.java:InitializationException	class	technology/stream/InitializationException.java	code/stream_adapter	Technology\IT\Software\SW~Programming\Prog~Language\Prog~Paradigm\Prog~Structured\Exception-Handling.md	infrastructure	legacy	2
 technology/stream/OpenByteArrayOutputStream.java:OpenByteArrayOutputStream	class	technology/stream/OpenByteArrayOutputStream.java	code/stream_adapter	Exposed-Buffer Byte Array Stream	infrastructure	legacy	2
-technology/stream/ProcessingException.java:ProcessingException	class	technology/stream/ProcessingException.java	code/stream_adapter	Custom Exception Type	infrastructure	legacy	2
+technology/stream/ProcessingException.java:ProcessingException	class	technology/stream/ProcessingException.java	code/stream_adapter	Technology\IT\Software\SW~Programming\Prog~Language\Prog~Paradigm\Prog~Structured\Exception-Handling.md	infrastructure	legacy	2
 technology/xml/DamlHandler.java:DamlHandler	class	technology/xml/DamlHandler.java	code/sax_parsing,code/xml_parsing	DAML SAX Handler	infrastructure	legacy	3
 technology/xml	folder	technology/xml	code/sax_parsing,code/xml_parsing,code/xslt_transformation	XML Processing	infrastructure	legacy	3
 technology/xml/DomDemo.java:DomDemo	class	technology/xml/DomDemo.java	code/xml_parsing	DOM Parsing Demo	test	legacy	2
@@ -654,9 +654,9 @@ math/minimizer/ConjuGrad1Minimizer.java:DistSqr	class	math/minimizer/ConjuGrad1M
 math/minimizer/ConjuGradMinimizer.java:ConjuGradMinimizer	class	math/minimizer/ConjuGradMinimizer.java	code/conjugate,code/optimization	Conjugate Gradient Minimizer	utility	legacy	4
 math/minimizer/ConjuGradMinimizer.java:DistSqrDistorted	class	math/minimizer/ConjuGradMinimizer.java	code/test_fixture	Distance,Distorted	test	legacy	2
 math/minimizer/GoldenFloatMinimizer.java:GoldenFloatMinimizer	class	math/minimizer/GoldenFloatMinimizer.java	code/minimum_search,code/optimization,code/golden_section_search	Golden Section Search Minimizer	utility	legacy	3
-math/minimizer/SimplexMinimizer.java:SimplexMinimizer	class	math/minimizer/SimplexMinimizer.java	code/simplex_method,code/optimization	Linear Programming,Simplex	utility	legacy	4
+math/minimizer/SimplexMinimizer.java:SimplexMinimizer	class	math/minimizer/SimplexMinimizer.java	code/simplex_method,code/optimization	Mathematics\Optimization(Math)\Linear_Programming.md,Simplex	utility	legacy	4
 math/minimizer/SimplexMinimizer.java:SimplexMinimizer.maxPos(double[], int[], int, boolean)	method	math/minimizer/SimplexMinimizer.java	code/simplex_method	Simplex Pivot,Column	utility	legacy	2
-math/minimizer/SimplexMinimizer.java:SimplexMinimizer.getPivot(double[][], int, int[], int, int)	method	math/minimizer/SimplexMinimizer.java	code/simplex_method	Linear Programming,Simplex	utility	legacy	2
+math/minimizer/SimplexMinimizer.java:SimplexMinimizer.getPivot(double[][], int, int[], int, int)	method	math/minimizer/SimplexMinimizer.java	code/simplex_method	Mathematics\Optimization(Math)\Linear_Programming.md,Simplex	utility	legacy	2
 math/minimizer/SimplexMinimizer.java:SimplexMinimizer.exchangeVariable(double[][], int, int, int, int)	method	math/minimizer/SimplexMinimizer.java	code/simplex_method	Simplex Tableau Pivot Exchange	utility	legacy	3
 math/minimizer/SimplexMinimizer.java:SimplexMinimizer.minimizeSimplex(double[][], int, int, int, int, int, int[], int[])	method	math/minimizer/SimplexMinimizer.java	code/simplex_method	Simplex Tableau Minimization Loop	utility	legacy	4
 math/minimizer/SimplexMinimizer.java:SimplexMinimizer.findStartPoint(double[][], int, int, int, int, int[], int[], int[], int[], int[], int, int)	method	math/minimizer/SimplexMinimizer.java	code/simplex_method	Simplex Start Point	utility	legacy	4
@@ -886,7 +886,7 @@ math/matrix/MatrixBand.java:MatrixBand	class	math/matrix/MatrixBand.java	code/ba
 math/matrix/MatrixDouble.java:MatrixDouble	class	math/matrix/MatrixDouble.java	code/matrix_operation, code/matrix_algebra	Double-Precision Dense Matrix	utility	broken	4
 math/matrix/MatrixDouble.java:MatrixDoubleStreamIn	class	math/matrix/MatrixDouble.java	code/matrix_operation	Matrix Stream,Double	utility	broken	2
 math/matrix/MatrixFloat.java:MatrixFloat	class	math/matrix/MatrixFloat.java	code/matrix_operation, code/matrix_algebra	Single-Precision Dense Matrix	utility	broken	4
-math/matrix/MatrixFloatStreamIn.java:MatrixFloatStreamIn	class	math/matrix/MatrixFloatStreamIn.java	code/matrix_operation	Matrix Stream,Float	utility	broken	2
+math/matrix/MatrixFloatStreamIn.java:MatrixFloatStreamIn	class	math/matrix/MatrixFloatStreamIn.java	code/matrix_operation	Matrix Stream,schema-org\Class\is_a_\Data_Type\Number\Float.md	utility	broken	2
 math/matrix/MatrixInt.java:MatrixInt	class	math/matrix/MatrixInt.java	code/matrix_operation, code/matrix_algebra	Integer Dense Matrix	utility	broken	4
 math/matrix/MatrixObject.java:MatrixObject	class	math/matrix/MatrixObject.java	code/matrix_base_class, code/matrix_operation	Generic Object Matrix	utility	broken	3
 math/matrix/MatrixQR.java:MatrixQR	class	math/matrix/MatrixQR.java	code/qr_decomposition,code/numerical_linear_algebra	QR Decomposition	utility	legacy	4
@@ -956,7 +956,7 @@ math/vector/statistic/Correlation.java:Correlation.testRankCorrelation()	method	
 math/vector/statistic/Correlation.java:Correlation.testSignCorrelation()	method	math/vector/statistic/Correlation.java	code/test, code/statistical_correlation	Sign Correlation Self-Test	test	legacy	2
 math/vector/statistic/Correlation.java:Correlation.testSignCorrelation2()	method	math/vector/statistic/Correlation.java	code/test, code/statistical_correlation	Sign Correlation Self-Test (Variant)	test	legacy	2
 math/vector/statistic	folder	math/vector/statistic	code/statistical_correlation,code/hypothesis_testing	Mathematics\Statistics\Correlation.md,Hypothesis Testing	domain	legacy	4
-math/vector/statistic/StatisticsFloat.java:StatisticsFloat	class	math/vector/statistic/StatisticsFloat.java	code/hypothesis_testing,code/chi_squared	Hypothesis Testing,Float	domain	legacy	4
+math/vector/statistic/StatisticsFloat.java:StatisticsFloat	class	math/vector/statistic/StatisticsFloat.java	code/hypothesis_testing,code/chi_squared	Hypothesis Testing,schema-org\Class\is_a_\Data_Type\Number\Float.md	domain	legacy	4
 math/vector/statistic/StatisticsFloat.java:HyperCubeShare	class	math/vector/statistic/StatisticsFloat.java	code/hypothesis_testing	2D Sampling Test Model	test	legacy	2
 function/derive/IDeriveAble.java:IDeriveAble	class	function/derive/IDeriveAble.java	code/derivable_function_contract,code/invertible_function_contract	Mathematics\Calculus.md,Mathematics\Function(Math)\Function_Composition.md	utility	legacy	3
 function/derive/ADeriveAble.java:ADeriveAble	class	function/derive/ADeriveAble.java	code/derivable_function_contract,code/derivative_calculation	Mathematics\Calculus.md,Singleton Pattern	utility	legacy	3
@@ -993,17 +993,17 @@ function/derive/ring/Delta1.java:Delta1	class	function/derive/ring/Delta1.java	c
 function/derive/ring/Diff.java:Diff	class	function/derive/ring/Diff.java	code/function_composition,code/derivative_calculation	Mathematics\Function(Math).md	utility	legacy	3
 function/derive/ring/DoubleAt.java:DoubleAt	class	function/derive/ring/DoubleAt.java	code/mathematical_function	Mathematics\Function(Math).md	utility	legacy	3
 function/derive/ring/FuncParser.java:FuncParser	class	function/derive/ring/FuncParser.java	code/expression_builder,code/factory_pattern,code/reflection	Function Parsing	utility	legacy	3
-function/derive/ring/Function2ODE.java:Function2ODE	class	function/derive/ring/Function2ODE.java	code/differential_integration	Ordinary Differential Equations	utility	legacy	3
+function/derive/ring/Function2ODE.java:Function2ODE	class	function/derive/ring/Function2ODE.java	code/differential_integration	Mathematics\Calculus\Differential_Equation.md	utility	legacy	3
 function/derive/ring/HalfAt.java:HalfAt	class	function/derive/ring/HalfAt.java	code/mathematical_function	Mathematics\Function(Math).md	utility	legacy	3
 function/derive/ring/Inv.java:Inv	class	function/derive/ring/Inv.java	code/invertible_function_contract,code/mathematical_function	Mathematics\Function(Math).md	utility	legacy	3
 function/derive/ring/LinAt.java:LinAt	class	function/derive/ring/LinAt.java	code/mathematical_function,code/derivable_function_contract	Mathematics\Function(Math).md	utility	legacy	3
 function/derive/ring/MulAt.java:MulAt	class	function/derive/ring/MulAt.java	code/function_composition,code/derivable_function_contract	Mathematics\Function(Math).md	utility	legacy	3
 function/derive/ring/Neg.java:Neg	class	function/derive/ring/Neg.java	code/mathematical_function,code/invertible_function_contract	Mathematics\Function(Math).md	utility	legacy	3
-function/derive/ring/OdeConst.java:OdeConst	class	function/derive/ring/OdeConst.java	code/differential_integration	Ordinary Differential Equations	utility	legacy	3
-function/derive/ring/OdeExp.java:OdeExp	class	function/derive/ring/OdeExp.java	code/differential_integration,code/exponential_function	Ordinary Differential Equations	utility	legacy	3
-function/derive/ring/OdeHeight2D.java:OdeHeight2D	class	function/derive/ring/OdeHeight2D.java	code/differential_integration	Ordinary Differential Equations	utility	legacy	3
-function/derive/ring/OdeLinear.java:OdeLinear	class	function/derive/ring/OdeLinear.java	code/differential_integration	Ordinary Differential Equations	utility	legacy	3
-function/derive/ring/OdeSquare.java:OdeSquare	class	function/derive/ring/OdeSquare.java	code/differential_integration	Ordinary Differential Equations	utility	legacy	3
+function/derive/ring/OdeConst.java:OdeConst	class	function/derive/ring/OdeConst.java	code/differential_integration	Mathematics\Calculus\Differential_Equation.md	utility	legacy	3
+function/derive/ring/OdeExp.java:OdeExp	class	function/derive/ring/OdeExp.java	code/differential_integration,code/exponential_function	Mathematics\Calculus\Differential_Equation.md	utility	legacy	3
+function/derive/ring/OdeHeight2D.java:OdeHeight2D	class	function/derive/ring/OdeHeight2D.java	code/differential_integration	Mathematics\Calculus\Differential_Equation.md	utility	legacy	3
+function/derive/ring/OdeLinear.java:OdeLinear	class	function/derive/ring/OdeLinear.java	code/differential_integration	Mathematics\Calculus\Differential_Equation.md	utility	legacy	3
+function/derive/ring/OdeSquare.java:OdeSquare	class	function/derive/ring/OdeSquare.java	code/differential_integration	Mathematics\Calculus\Differential_Equation.md	utility	legacy	3
 function/derive/ring/Pred.java:Pred	class	function/derive/ring/Pred.java	code/mathematical_function,code/derivable_function_contract	Mathematics\Function(Math).md	utility	legacy	3
 function/derive/ring/Prod.java:Prod	class	function/derive/ring/Prod.java	code/function_composition,code/derivative_calculation	Mathematics\Function(Math).md,Product Rule	utility	legacy	3
 function/derive/ring/Quot.java:Quot	class	function/derive/ring/Quot.java	code/function_composition,code/derivative_calculation	Mathematics\Function(Math).md,Quotient Rule	utility	legacy	3
@@ -1027,7 +1027,7 @@ function/derive/ring/body/ArcCos.java:ArcCos	class	function/derive/ring/body/Arc
 function/derive/ring/body/ArcSin.java:ArcSin	class	function/derive/ring/body/ArcSin.java	code/hyperbolic_function,code/derivable_function_contract	Inverse Trigonometric Functions	utility	legacy	3
 function/derive/ring/body/ArcTan.java:ArcTan	class	function/derive/ring/body/ArcTan.java	code/hyperbolic_function,code/derivable_function_contract	Inverse Trigonometric Functions	utility	legacy	3
 function/derive/ring/body/BetaI.java:BetaI	class	function/derive/ring/body/BetaI.java	code/numerical_integration,code/mathematical_function	Statistical Distributions,Incomplete Beta Function	utility	legacy	3
-function/derive/ring/body/Brillouin.java:Brillouin	class	function/derive/ring/body/Brillouin.java	code/mathematical_function	Thermodynamics,Magnetism	utility	legacy	3
+function/derive/ring/body/Brillouin.java:Brillouin	class	function/derive/ring/body/Brillouin.java	code/mathematical_function	Science\Physics\Thermodynamics.md,Magnetism	utility	legacy	3
 function/derive/ring/body/CI.java:CI	class	function/derive/ring/body/CI.java	code/numerical_integration,code/trigonometric_function	Mathematics\Function(Math).md,Cosine Integral	utility	legacy	3
 function/derive/ring/body/CoTangens.java:CoTangens	class	function/derive/ring/body/CoTangens.java	code/trigonometric_function,code/derivable_function_contract	Mathematics\Geometry\Geometry-2D\Triangle\Trigonometry\Trigonometric_Function.md	utility	legacy	3
 function/derive/ring/body/CosH.java:CosH	class	function/derive/ring/body/CosH.java	code/hyperbolic_function,code/derivable_function_contract	Mathematics\Hyperbolic_function.md	utility	legacy	3
@@ -1036,10 +1036,10 @@ function/derive/ring/body/DawsonInt.java:DawsonInt	class	function/derive/ring/bo
 function/derive/ring/body/EI.java:EI	class	function/derive/ring/body/EI.java	code/numerical_integration,code/exponential_function	Mathematics\Function(Math).md,Exponential Integral	utility	legacy	3
 function/derive/ring/body/ElliptInt.java:ElliptInt	class	function/derive/ring/body/ElliptInt.java	code/numerical_integration	Mathematics\Function(Math).md,Elliptic Integrals	utility	legacy	3
 function/derive/ring/body/Exponential.java:Exponential	class	function/derive/ring/body/Exponential.java	code/exponential_function,code/derivable_function_contract	Mathematics\Function(Math)\Function~unary\Operator~unary\Exponential_Function.md	utility	legacy	3
-function/derive/ring/body/GammaLn.java:GammaLn	class	function/derive/ring/body/GammaLn.java	code/gamma_function,code/mathematical_function	Mathematics\Function(Math).md,Gamma Function	utility	legacy	3
+function/derive/ring/body/GammaLn.java:GammaLn	class	function/derive/ring/body/GammaLn.java	code/gamma_function,code/mathematical_function	Mathematics\Function(Math).md,Mathematics\Function(Math)\Function~unary\Operator~unary\Gamma_Function.md	utility	legacy	3
 function/derive/ring/body/GammaP.java:GammaP	class	function/derive/ring/body/GammaP.java	code/gamma_function,code/derivable_function_contract	Mathematics\Function(Math).md,Mathematics\Function(Math)\Function~unary\Operator~unary\Gamma_Function.md	utility	legacy	3
 function/derive/ring/body/Gauss.java:Gauss	class	function/derive/ring/body/Gauss.java	code/derivable_function_contract,code/mathematical_function	Statistical Distributions,Gaussian Distribution	utility	legacy	3
-function/derive/ring/body/Langevin.java:Langevin	class	function/derive/ring/body/Langevin.java	code/mathematical_function	Thermodynamics,Magnetism	utility	legacy	3
+function/derive/ring/body/Langevin.java:Langevin	class	function/derive/ring/body/Langevin.java	code/mathematical_function	Science\Physics\Thermodynamics.md,Magnetism	utility	legacy	3
 function/derive/ring/body/LogNormal.java:LogNormal	class	function/derive/ring/body/LogNormal.java	code/derivable_function_contract,code/mathematical_function	Statistical Distributions,Log-Normal Distribution	utility	legacy	3
 function/derive/ring/body/Logarithm.java:Logarithm	class	function/derive/ring/body/Logarithm.java	code/logarithm_function,code/derivable_function_contract	Mathematics\Function(Math)\Function~binary\Operator~binary\Logarithm.md	utility	legacy	3
 function/derive/ring/body/Power.java:Power	class	function/derive/ring/body/Power.java	code/mathematical_function,code/derivable_function_contract	Power Functions	utility	legacy	3
@@ -1049,25 +1049,25 @@ function/derive/ring/body/Sinus.java:Sinus	class	function/derive/ring/body/Sinus
 function/derive/ring/body/TanH.java:TanH	class	function/derive/ring/body/TanH.java	code/hyperbolic_function,code/derivable_function_contract	Mathematics\Hyperbolic_function.md	utility	legacy	3
 function/derive/ring/body/Tangens.java:Tangens	class	function/derive/ring/body/Tangens.java	code/trigonometric_function,code/derivable_function_contract	Mathematics\Geometry\Geometry-2D\Triangle\Trigonometry\Trigonometric_Function.md	utility	legacy	3
 function/derive/ring/body/TestBodyFuncs.java:TestBodyFuncs	class	function/derive/ring/body/TestBodyFuncs.java	code/entry_point,code/console_output,code/test	Test Harness	utility	legacy	3
-function/derive/ring/body/vector/CatPartial.java:CatPartial	class	function/derive/ring/body/vector/CatPartial.java	code/function_composition,code/differential_integration	Partial Derivatives	utility	legacy	3
-function/derive/ring/body/vector/DiffPartial.java:DiffPartial	class	function/derive/ring/body/vector/DiffPartial.java	code/differential_integration	Partial Derivatives	utility	legacy	3
-function/derive/ring/body/vector/Dimension.java:Dimension	class	function/derive/ring/body/vector/Dimension.java	code/differential_integration,code/mathematical_function	Partial Derivatives,Vector Calculus	utility	legacy	3
-function/derive/ring/body/vector/IPartialDerive.java:IPartialDerive	class	function/derive/ring/body/vector/IPartialDerive.java	code/differential_integration,code/derivable_function_contract	Partial Derivatives	utility	legacy	3
-function/derive/ring/body/vector/OdeHeight.java:OdeHeight	class	function/derive/ring/body/vector/OdeHeight.java	code/differential_integration	Ordinary Differential Equations	utility	legacy	3
-function/derive/ring/body/vector/OdeLorentz.java:OdeLorentz	class	function/derive/ring/body/vector/OdeLorentz.java	code/differential_integration	Ordinary Differential Equations,Chaos Theory	utility	legacy	3
-function/derive/ring/body/vector/ProdPartial.java:ProdPartial	class	function/derive/ring/body/vector/ProdPartial.java	code/differential_integration	Partial Derivatives,Product Rule	utility	legacy	3
-function/derive/ring/body/vector/QuotPartial.java:QuotPartial	class	function/derive/ring/body/vector/QuotPartial.java	code/differential_integration	Partial Derivatives,Quotient Rule	utility	legacy	3
-function/derive/ring/body/vector/SumPartial.java:SumPartial	class	function/derive/ring/body/vector/SumPartial.java	code/differential_integration	Partial Derivatives,Sum Rule	utility	legacy	3
+function/derive/ring/body/vector/CatPartial.java:CatPartial	class	function/derive/ring/body/vector/CatPartial.java	code/function_composition,code/differential_integration	Mathematics\Calculus\Derivative\Partial_Derivative.md	utility	legacy	3
+function/derive/ring/body/vector/DiffPartial.java:DiffPartial	class	function/derive/ring/body/vector/DiffPartial.java	code/differential_integration	Mathematics\Calculus\Derivative\Partial_Derivative.md	utility	legacy	3
+function/derive/ring/body/vector/Dimension.java:Dimension	class	function/derive/ring/body/vector/Dimension.java	code/differential_integration,code/mathematical_function	Mathematics\Calculus\Derivative\Partial_Derivative.md,Mathematics\Calculus\Multivariable_Calculus\Vector_Calculus.md	utility	legacy	3
+function/derive/ring/body/vector/IPartialDerive.java:IPartialDerive	class	function/derive/ring/body/vector/IPartialDerive.java	code/differential_integration,code/derivable_function_contract	Mathematics\Calculus\Derivative\Partial_Derivative.md	utility	legacy	3
+function/derive/ring/body/vector/OdeHeight.java:OdeHeight	class	function/derive/ring/body/vector/OdeHeight.java	code/differential_integration	Mathematics\Calculus\Differential_Equation.md	utility	legacy	3
+function/derive/ring/body/vector/OdeLorentz.java:OdeLorentz	class	function/derive/ring/body/vector/OdeLorentz.java	code/differential_integration	Mathematics\Calculus\Differential_Equation.md,Mathematics\Dynamical_System\Chaos_Theory.md	utility	legacy	3
+function/derive/ring/body/vector/ProdPartial.java:ProdPartial	class	function/derive/ring/body/vector/ProdPartial.java	code/differential_integration	Mathematics\Calculus\Derivative\Partial_Derivative.md,Product Rule	utility	legacy	3
+function/derive/ring/body/vector/QuotPartial.java:QuotPartial	class	function/derive/ring/body/vector/QuotPartial.java	code/differential_integration	Mathematics\Calculus\Derivative\Partial_Derivative.md,Quotient Rule	utility	legacy	3
+function/derive/ring/body/vector/SumPartial.java:SumPartial	class	function/derive/ring/body/vector/SumPartial.java	code/differential_integration	Mathematics\Calculus\Derivative\Partial_Derivative.md,Sum Rule	utility	legacy	3
 function/derive/ring/body/vector/fChargeField.java:fChargeField	class	function/derive/ring/body/vector/fChargeField.java	code/mathematical_function,code/vector_math	Science\Physics\Fundamental_Interaction\Electromagnetism.md,Vector Fields	utility	legacy	3
-function/derive/ring/body/vector/fProduct.java:fProduct	class	function/derive/ring/body/vector/fProduct.java	code/mathematical_function,code/vector_math	Vector Calculus	utility	legacy	3
-function/derive/ring/body/vector/fSinProd.java:fSinProd	class	function/derive/ring/body/vector/fSinProd.java	code/mathematical_function,code/vector_math	Vector Calculus,Mathematics\Geometry\Geometry-2D\Triangle\Trigonometry\Trigonometric_Function.md	utility	legacy	3
-function/derive/ring/body/vector/fSum.java:fSum	class	function/derive/ring/body/vector/fSum.java	code/mathematical_function,code/vector_math	Vector Calculus	utility	legacy	3
+function/derive/ring/body/vector/fProduct.java:fProduct	class	function/derive/ring/body/vector/fProduct.java	code/mathematical_function,code/vector_math	Mathematics\Calculus\Multivariable_Calculus\Vector_Calculus.md	utility	legacy	3
+function/derive/ring/body/vector/fSinProd.java:fSinProd	class	function/derive/ring/body/vector/fSinProd.java	code/mathematical_function,code/vector_math	Mathematics\Calculus\Multivariable_Calculus\Vector_Calculus.md,Mathematics\Geometry\Geometry-2D\Triangle\Trigonometry\Trigonometric_Function.md	utility	legacy	3
+function/derive/ring/body/vector/fSum.java:fSum	class	function/derive/ring/body/vector/fSum.java	code/mathematical_function,code/vector_math	Mathematics\Calculus\Multivariable_Calculus\Vector_Calculus.md	utility	legacy	3
 function/derive/ring/body/vector/testBodyVFuncs.java:testBodyVFuncs	class	function/derive/ring/body/vector/testBodyVFuncs.java	code/entry_point,code/console_output,code/test	Test Harness	utility	legacy	3
 function/derive	folder	function/derive	code/derivable_function_contract,code/mathematical_function	Calculus and Function Algebra	utility	legacy	4
 function/derive/neuron	folder	function/derive/neuron	code/neural_network,code/backpropagation	Neural Networks	domain	broken	4
 function/derive/ring	folder	function/derive/ring	code/algebraic_function,code/derivable_function_contract	Ring-Structured Function Algebra	utility	legacy	4
 function/derive/ring/body	folder	function/derive/ring/body	code/mathematical_function,code/derivable_function_contract	Mathematics\Function(Math).md,Transcendental	utility	legacy	4
-function/derive/ring/body/vector	folder	function/derive/ring/body/vector	code/differential_integration,code/vector_math	Vector Calculus,Derivatives	utility	broken	4
+function/derive/ring/body/vector	folder	function/derive/ring/body/vector	code/differential_integration,code/vector_math	Mathematics\Calculus\Multivariable_Calculus\Vector_Calculus.md,Derivatives	utility	broken	4
 function/derive/CCountAble.java:ByRefComparison	class	function/derive/CCountAble.java	code/numeric_comparison	Comparison Result Holder	utility	legacy	2
 function/derive/CCountAble.java:Comparison	class	function/derive/CCountAble.java	code/enum_modeling,code/numeric_comparison	Comparison Result Enum	utility	legacy	2
 function/derive/neuron/Kohonen.java:KohonenTester	class	function/derive/neuron/Kohonen.java	code/neural_network, code/test	Self-Organizing Map Test Harness	test	legacy	2
