@@ -53,7 +53,7 @@ dv_has_:
         special_function: 8
         combinatorics: 8
     concept_:
-      combinatorics: 8
+      "Mathematics\\Statistics\\Combinatorics.md": 8
 has_sub_folders: 0
 has_sub_files: 19
 has_sub_units: 8
@@ -62,7 +62,7 @@ has_sub_facet_status_legacy: 8
 has_sub_facet_complexity_2: 8
 has_sub_tag_code_special_function: 8
 has_sub_tag_code_combinatorics: 8
-has_sub_concept_combinatorics: 8
+has_sub_concept_mathematics_statistics_combinatorics_md: 8
 related:
 - path: ../_Matthias/Code/NET/_std/IGraphs/Functions
   shared-tags:

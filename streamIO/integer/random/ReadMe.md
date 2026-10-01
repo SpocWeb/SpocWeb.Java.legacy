@@ -89,8 +89,7 @@ dv_has_:
         quasi_random_sequence: 20
         random_number_generation: 20
     concept_:
-      pseudo_random_and_quasi_random_integer_generator_family_with_mark_:
-        restore_replay: 20
+      "Technology\\IT\\IT-Algorithm\\Pseudorandom_Number_Generator.md": 20
 has_sub_folders: 0
 has_sub_files: 40
 has_sub_units: 20
@@ -99,7 +98,7 @@ has_sub_facet_status_legacy: 20
 has_sub_facet_complexity_3: 20
 has_sub_tag_code_quasi_random_sequence: 20
 has_sub_tag_code_random_number_generation: 20
-has_sub_concept_pseudo_random_and_quasi_random_integer_generator_family_with_mark_restore_replay: 20
+has_sub_concept_technology_it_it_algorithm_pseudorandom_number_generator_md: 20
 related:
 - path: ../_Matthias/Code/Java/streamIO/vector/random
   shared-tags:

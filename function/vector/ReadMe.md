@@ -97,7 +97,7 @@ dv_has_:
         function_composition: 17
         differential_integration: 5
     concept_:
-      vector_field_function: 17
+      "Mathematics\\Calculus\\Multivariable_Calculus\\Vector_Calculus.md": 17
       ode_integration: 5
 has_sub_folders: 0
 has_sub_files: 48
@@ -108,7 +108,7 @@ has_sub_facet_complexity_2: 22
 has_sub_tag_code_vector_math: 22
 has_sub_tag_code_function_composition: 17
 has_sub_tag_code_differential_integration: 5
-has_sub_concept_vector_field_function: 17
+has_sub_concept_mathematics_calculus_multivariable_calculus_vector_calculus_md: 17
 has_sub_concept_ode_integration: 5
 related:
 - path: ../_Matthias/Code/Java/function/derive/ring/body/vector

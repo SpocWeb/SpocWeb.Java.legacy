@@ -77,7 +77,7 @@ dv_has_:
         xslt_transformation: 1
     concept_:
       castor_data_transfer_object: 16
-      data_transfer: 2
+      "Technology\\IT\\Data.md": 2
       base: 1
       castor_generated_data_model: 1
       daml_sax_handler: 1
@@ -105,7 +105,7 @@ has_sub_tag_code_xml_parsing: 4
 has_sub_tag_code_xml_deserialization: 2
 has_sub_tag_code_xslt_transformation: 1
 has_sub_concept_castor_data_transfer_object: 16
-has_sub_concept_data_transfer: 2
+has_sub_concept_technology_it_data_md: 2
 has_sub_concept_base: 1
 has_sub_concept_castor_generated_data_model: 1
 has_sub_concept_daml_sax_handler: 1

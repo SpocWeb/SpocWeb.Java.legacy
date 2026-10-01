@@ -157,21 +157,17 @@ dv_has_:
         stream_io: 40
         quasi_random_sequence: 21
     concept_:
-      byte_:
-        character_re_encoding_filters_base64_binhex_url_:
-          entity_escaping_crc_xor: 23
-      pseudo_random_and_quasi_random_integer_generator_family_with_mark_:
-        restore_replay: 21
+      "Technology\\IT\\Data\\Code\\Encoding.md": 23
+      "Technology\\IT\\IT-Algorithm\\Pseudorandom_Number_Generator.md": 21
       table_storage: 32
       byte_stream: 15
       filter: 15
-      primitive_and_structured_stream_i_:
-        o_core_abstractions: 35
       jdbc_driver: 32
       raid_style_stream_multiplexing_plus_markov_:
         viterbi_math: 8
       in_memory_producer_consumer_byte_pipes: 6
       file_backed_streamio_implementations: 5
+      "Technology\\IT\\Data\\Data_Transmission\\Forward_Error_Correction.md": 4
 has_sub_folders: 11
 has_sub_files: 319
 has_sub_units: 169
@@ -192,16 +188,16 @@ has_sub_tag_code_stream_output: 35
 has_sub_tag_code_struct: 35
 has_sub_tag_code_stream_io: 40
 has_sub_tag_code_quasi_random_sequence: 21
-has_sub_concept_byte_character_re_encoding_filters_base64_binhex_url_entity_escaping_crc_xor: 23
-has_sub_concept_pseudo_random_and_quasi_random_integer_generator_family_with_mark_restore_replay: 21
+has_sub_concept_technology_it_data_code_encoding_md: 23
+has_sub_concept_technology_it_it_algorithm_pseudorandom_number_generator_md: 21
 has_sub_concept_table_storage: 32
 has_sub_concept_byte_stream: 15
 has_sub_concept_filter: 15
-has_sub_concept_primitive_and_structured_stream_i_o_core_abstractions: 35
 has_sub_concept_jdbc_driver: 32
 has_sub_concept_raid_style_stream_multiplexing_plus_markov_viterbi_math: 8
 has_sub_concept_in_memory_producer_consumer_byte_pipes: 6
 has_sub_concept_file_backed_streamio_implementations: 5
+has_sub_concept_technology_it_data_data_transmission_forward_error_correction_md: 4
 ---
 
 # integer

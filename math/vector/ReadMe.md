@@ -113,7 +113,7 @@ dv_has_:
       reverse_order_float_stream_source: 2
       reverse_order_int_stream_source: 2
       "2d_sampling_test_model": 1
-      correlation: 1
+      "Mathematics\\Statistics\\Correlation.md": 1
       cross_vector_correlation_statistics: 1
       growable_char_vector: 1
       growable_double_vector: 1
@@ -144,7 +144,7 @@ has_sub_concept_hypothesis_testing: 2
 has_sub_concept_reverse_order_float_stream_source: 2
 has_sub_concept_reverse_order_int_stream_source: 2
 has_sub_concept_2d_sampling_test_model: 1
-has_sub_concept_correlation: 1
+has_sub_concept_mathematics_statistics_correlation_md: 1
 has_sub_concept_cross_vector_correlation_statistics: 1
 has_sub_concept_growable_char_vector: 1
 has_sub_concept_growable_double_vector: 1

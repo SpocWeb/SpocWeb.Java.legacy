@@ -81,8 +81,8 @@ dv_has_:
       partial_derivatives: 7
       vector_calculus: 4
       ordinary_differential_equations: 2
+      "Science\\Physics\\Fundamental_Interaction\\Electromagnetism.md": 1
       chaos_theory: 1
-      electromagnetism: 1
       product_rule: 1
       quotient_rule: 1
       sum_rule: 1
@@ -105,8 +105,8 @@ has_sub_tag_code_function_composition: 1
 has_sub_concept_partial_derivatives: 7
 has_sub_concept_vector_calculus: 4
 has_sub_concept_ordinary_differential_equations: 2
+has_sub_concept_science_physics_fundamental_interaction_electromagnetism_md: 1
 has_sub_concept_chaos_theory: 1
-has_sub_concept_electromagnetism: 1
 has_sub_concept_product_rule: 1
 has_sub_concept_quotient_rule: 1
 has_sub_concept_sum_rule: 1

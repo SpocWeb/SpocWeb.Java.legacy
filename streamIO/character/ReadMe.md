@@ -38,9 +38,8 @@ dv_has_:
         file_io: 2
         file_polling: 1
     concept_:
-      text_encoding: 2
-      file_i_:
-        o: 2
+      File I_:
+        "O,Technology\\IT\\Data\\Code\\Encoding\\Character_Encoding.md": 2
 has_sub_folders: 0
 has_sub_files: 5
 has_sub_units: 2
@@ -50,8 +49,7 @@ has_sub_facet_complexity_2: 2
 has_sub_tag_code_encoding_handling: 2
 has_sub_tag_code_file_io: 2
 has_sub_tag_code_file_polling: 1
-has_sub_concept_text_encoding: 2
-has_sub_concept_file_i_o: 2
+has_sub_concept_file_i_o_technology_it_data_code_encoding_character_encoding_md: 2
 ---
 
 # character

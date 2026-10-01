@@ -113,16 +113,16 @@ dv_has_:
         reflection: 4
         type_system: 4
     concept_:
-      persistence: 9
-      domain_model: 16
+      "Technology\\IT\\Data\\Data_Storage.md": 9
+      "Technology\\IT\\Software\\SW~Programming\\Domain-Driven_Design.md": 16
       state_tracking: 4
       attribute_modelling: 6
       object_classification: 4
-      object_relational_mapping: 2
+      "Technology\\IT\\Data\\Data_Storage\\Database\\Object-Relational_Mapping.md": 2
       record_identity: 2
       relationship_modelling: 2
-      data_access: 1
       identity_caching: 1
+      lazy_evaluation: 1
 has_sub_folders: 0
 has_sub_files: 62
 has_sub_units: 27
@@ -144,16 +144,16 @@ has_sub_tag_code_data_access: 3
 has_sub_tag_code_sql_generation: 3
 has_sub_tag_code_reflection: 4
 has_sub_tag_code_type_system: 4
-has_sub_concept_persistence: 9
-has_sub_concept_domain_model: 16
+has_sub_concept_technology_it_data_data_storage_md: 9
+has_sub_concept_technology_it_software_sw_programming_domain_driven_design_md: 16
 has_sub_concept_state_tracking: 4
 has_sub_concept_attribute_modelling: 6
 has_sub_concept_object_classification: 4
-has_sub_concept_object_relational_mapping: 2
+has_sub_concept_technology_it_data_data_storage_database_object_relational_mapping_md: 2
 has_sub_concept_record_identity: 2
 has_sub_concept_relationship_modelling: 2
-has_sub_concept_data_access: 1
 has_sub_concept_identity_caching: 1
+has_sub_concept_lazy_evaluation: 1
 related:
 - path: ../_Matthias/Code/Java/reflect
   shared-tags:

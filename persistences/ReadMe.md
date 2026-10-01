@@ -39,9 +39,9 @@ dv_has_:
         registry_pattern: 1
         domain_model: 1
     concept_:
-      persistence: 2
+      "Technology\\IT\\Data\\Data_Storage.md": 2
       record_identity: 1
-      domain_model: 1
+      "Technology\\IT\\Software\\SW~Programming\\Domain-Driven_Design.md": 1
 has_sub_folders: 0
 has_sub_files: 5
 has_sub_units: 2
@@ -52,9 +52,9 @@ has_sub_facet_complexity_2: 2
 has_sub_tag_code_entity_model: 2
 has_sub_tag_code_registry_pattern: 1
 has_sub_tag_code_domain_model: 1
-has_sub_concept_persistence: 2
+has_sub_concept_technology_it_data_data_storage_md: 2
 has_sub_concept_record_identity: 1
-has_sub_concept_domain_model: 1
+has_sub_concept_technology_it_software_sw_programming_domain_driven_design_md: 1
 related:
 - path: ../_Matthias/Code/Java/knowledge
   shared-tags:

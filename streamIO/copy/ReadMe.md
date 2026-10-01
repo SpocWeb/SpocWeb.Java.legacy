@@ -77,8 +77,8 @@ dv_has_:
     concept_:
       ode_solvers: 29
       ring_algebra: 29
-      interval_arithmetic: 20
-      rational_numbers: 16
+      "Mathematics\\Interval.md": 20
+      "Mathematics\\Number\\Rational_Number.md": 16
       group_:
         semigroup_algebra: 15
       metric_spaces: 41
@@ -86,8 +86,8 @@ dv_has_:
       vector_:
         matrix_:
           tensor_and_manifold_interpolation: 14
-      fuzzy_logic: 12
-      boolean_algebra: 11
+      "Philosophy\\Logic.md": 12
+      "Mathematics\\Algebra\\Boolean_Algebra.md": 11
 has_sub_folders: 15
 has_sub_files: 488
 has_sub_units: 222
@@ -109,14 +109,14 @@ has_sub_tag_code_metric_space: 41
 has_sub_tag_code_manifold_generation: 14
 has_sub_concept_ode_solvers: 29
 has_sub_concept_ring_algebra: 29
-has_sub_concept_interval_arithmetic: 20
-has_sub_concept_rational_numbers: 16
+has_sub_concept_mathematics_interval_md: 20
+has_sub_concept_mathematics_number_rational_number_md: 16
 has_sub_concept_group_semigroup_algebra: 15
 has_sub_concept_metric_spaces: 41
 has_sub_concept_root_finding: 41
 has_sub_concept_vector_matrix_tensor_and_manifold_interpolation: 14
-has_sub_concept_fuzzy_logic: 12
-has_sub_concept_boolean_algebra: 11
+has_sub_concept_philosophy_logic_md: 12
+has_sub_concept_mathematics_algebra_boolean_algebra_md: 11
 ---
 
 # copy

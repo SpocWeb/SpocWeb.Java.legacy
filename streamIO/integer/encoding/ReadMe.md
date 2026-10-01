@@ -104,11 +104,9 @@ dv_has_:
         error_correction: 4
         stream_filter: 22
     concept_:
-      byte_:
-        character_re_encoding_filters_base64_binhex_url_:
-          entity_escaping_crc_xor: 22
+      "Technology\\IT\\Data\\Code\\Encoding.md": 22
+      "Technology\\IT\\Data\\Data_Transmission\\Forward_Error_Correction.md": 4
       convolutional_encoding: 4
-      error_correction: 4
 has_sub_folders: 1
 has_sub_files: 51
 has_sub_units: 26
@@ -121,9 +119,9 @@ has_sub_tag_code_xor_cipher: 22
 has_sub_tag_code_convolutional_encoding: 4
 has_sub_tag_code_error_correction: 4
 has_sub_tag_code_stream_filter: 22
-has_sub_concept_byte_character_re_encoding_filters_base64_binhex_url_entity_escaping_crc_xor: 22
+has_sub_concept_technology_it_data_code_encoding_md: 22
+has_sub_concept_technology_it_data_data_transmission_forward_error_correction_md: 4
 has_sub_concept_convolutional_encoding: 4
-has_sub_concept_error_correction: 4
 ---
 
 # encoding

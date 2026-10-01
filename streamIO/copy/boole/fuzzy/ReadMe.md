@@ -65,8 +65,8 @@ dv_has_:
         boolean_algebra: 1
         interval_arithmetic: 1
     concept_:
-      fuzzy_logic: 11
-      boolean_algebra: 1
+      "Philosophy\\Logic.md": 11
+      "Mathematics\\Algebra\\Boolean_Algebra.md": 1
 has_sub_folders: 0
 has_sub_files: 22
 has_sub_units: 11
@@ -79,8 +79,8 @@ has_sub_tag_code_abstract_base: 2
 has_sub_tag_code_lattice_structure: 1
 has_sub_tag_code_boolean_algebra: 1
 has_sub_tag_code_interval_arithmetic: 1
-has_sub_concept_fuzzy_logic: 11
-has_sub_concept_boolean_algebra: 1
+has_sub_concept_philosophy_logic_md: 11
+has_sub_concept_mathematics_algebra_boolean_algebra_md: 1
 related:
 - path: ../_Matthias/Code/NET/_root/_projects/xCell.extensions/_Links
   shared-tags:

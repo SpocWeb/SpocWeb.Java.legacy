@@ -112,7 +112,7 @@ dv_has_:
         scheduling: 6
         adapter: 6
     concept_:
-      iterator: 24
+      "Technology\\IT\\Software\\SW~Programming\\Prog~Language\\Iterator.md": 24
       streaming_enumerator: 24
       hash_tables: 45
       storage_containers: 45
@@ -135,7 +135,7 @@ has_sub_tag_code_red_black_tree: 12
 has_sub_tag_code_iterator_pattern: 12
 has_sub_tag_code_scheduling: 6
 has_sub_tag_code_adapter: 6
-has_sub_concept_iterator: 24
+has_sub_concept_technology_it_software_sw_programming_prog_language_iterator_md: 24
 has_sub_concept_streaming_enumerator: 24
 has_sub_concept_hash_tables: 45
 has_sub_concept_storage_containers: 45

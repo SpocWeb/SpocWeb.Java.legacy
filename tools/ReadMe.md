@@ -101,15 +101,15 @@ dv_has_:
         interface_contract: 2
         blocking_wait: 1
     concept_:
-      concurrency: 13
+      "Technology\\IT\\Computer_Science\\Concurrency(Computer_Science).md": 13
       memento_pattern: 3
-      error_handling: 2
+      "Technology\\IT\\Software\\SW~Programming\\Prog~Language\\Prog~Paradigm\\Prog~Structured\\Exception-Handling.md": 2
       callable_abstraction: 1
       file_transfer: 1
       transaction_semantics: 1
       interprocess_communication: 1
-      text_parsing: 1
-      testing: 1
+      "schema-org\\Class\\is_a_\\Data_Type\\Text.md": 1
+      "Technology\\IT\\Software\\SW~Programming\\Prog~Language\\Prog~Paradigm\\Prog~Functional\\Prog~Rust\\Rust~Testing.md": 1
 has_sub_folders: 2
 has_sub_files: 43
 has_sub_units: 23
@@ -134,15 +134,15 @@ has_sub_tag_code_watchdog_thread: 2
 has_sub_tag_code_manual_test_harness: 2
 has_sub_tag_code_interface_contract: 2
 has_sub_tag_code_blocking_wait: 1
-has_sub_concept_concurrency: 13
+has_sub_concept_technology_it_computer_science_concurrency_computer_science_md: 13
 has_sub_concept_memento_pattern: 3
-has_sub_concept_error_handling: 2
+has_sub_concept_technology_it_software_sw_programming_prog_language_prog_paradigm_prog_structured_exception_handling_md: 2
 has_sub_concept_callable_abstraction: 1
 has_sub_concept_file_transfer: 1
 has_sub_concept_transaction_semantics: 1
 has_sub_concept_interprocess_communication: 1
-has_sub_concept_text_parsing: 1
-has_sub_concept_testing: 1
+has_sub_concept_schema_org_class_is_a_data_type_text_md: 1
+has_sub_concept_technology_it_software_sw_programming_prog_language_prog_paradigm_prog_functional_prog_rust_rust_testing_md: 1
 ---
 
 # tools

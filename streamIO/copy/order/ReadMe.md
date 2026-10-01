@@ -73,7 +73,7 @@ dv_has_:
         manual_test_harness: 1
     concept_:
       order_relation: 9
-      interval_arithmetic: 3
+      "Mathematics\\Interval.md": 3
       comparable_types: 1
       constant_:
         immutable_wrapper: 1
@@ -95,7 +95,7 @@ has_sub_tag_code_algorithm_optimization: 1
 has_sub_tag_code_immutable_wrapper: 1
 has_sub_tag_code_manual_test_harness: 1
 has_sub_concept_order_relation: 9
-has_sub_concept_interval_arithmetic: 3
+has_sub_concept_mathematics_interval_md: 3
 has_sub_concept_comparable_types: 1
 has_sub_concept_constant_immutable_wrapper: 1
 has_sub_concept_delegation_pattern: 1

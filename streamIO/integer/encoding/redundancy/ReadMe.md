@@ -39,8 +39,8 @@ dv_has_:
         convolutional_encoding: 3
         error_correction: 3
     concept_:
+      "Technology\\IT\\Data\\Data_Transmission\\Forward_Error_Correction.md": 3
       convolutional_encoding: 3
-      error_correction: 3
 has_sub_folders: 0
 has_sub_files: 6
 has_sub_units: 3
@@ -49,8 +49,8 @@ has_sub_facet_status_legacy: 3
 has_sub_facet_complexity_3: 3
 has_sub_tag_code_convolutional_encoding: 3
 has_sub_tag_code_error_correction: 3
+has_sub_concept_technology_it_data_data_transmission_forward_error_correction_md: 3
 has_sub_concept_convolutional_encoding: 3
-has_sub_concept_error_correction: 3
 ---
 
 # redundancy

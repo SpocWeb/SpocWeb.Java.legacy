@@ -160,16 +160,16 @@ dv_has_:
         red_black_tree: 12
         parser: 16
     concept_:
-      iterator: 25
+      "Technology\\IT\\Software\\SW~Programming\\Prog~Language\\Iterator.md": 25
       streaming_enumerator: 25
+      "Technology\\IT\\Software\\SW~Programming\\Prog~Language\\Parsing.md": 15
       jsonorg_reference_implementation: 15
       stream_adapters: 15
-      token_parsing: 15
-      object_stream_pipeline: 40
       hash_tables: 45
       storage_containers: 45
       red_black_tree: 12
       sorted_map: 12
+      backtracking_search: 11
 has_sub_folders: 13
 has_sub_files: 407
 has_sub_units: 210
@@ -189,16 +189,16 @@ has_sub_tag_code_hash_table: 45
 has_sub_tag_code_parsing: 25
 has_sub_tag_code_red_black_tree: 12
 has_sub_tag_code_parser: 16
-has_sub_concept_iterator: 25
+has_sub_concept_technology_it_software_sw_programming_prog_language_iterator_md: 25
 has_sub_concept_streaming_enumerator: 25
+has_sub_concept_technology_it_software_sw_programming_prog_language_parsing_md: 15
 has_sub_concept_jsonorg_reference_implementation: 15
 has_sub_concept_stream_adapters: 15
-has_sub_concept_token_parsing: 15
-has_sub_concept_object_stream_pipeline: 40
 has_sub_concept_hash_tables: 45
 has_sub_concept_storage_containers: 45
 has_sub_concept_red_black_tree: 12
 has_sub_concept_sorted_map: 12
+has_sub_concept_backtracking_search: 11
 related:
 - path: ../_Matthias/Code/NET/_std/IGraphs/streams
   shared-tags:

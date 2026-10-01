@@ -88,13 +88,13 @@ dv_has_:
         immutable_wrapper: 1
         bit_manipulation: 1
     concept_:
-      fuzzy_logic: 12
-      boolean_algebra: 10
+      "Philosophy\\Logic.md": 12
+      "Mathematics\\Algebra\\Boolean_Algebra.md": 10
       lattice: 6
       delegation_pattern: 2
+      "Mathematics\\Statistics\\Probability.md": 1
       bit_vector: 1
       predicate_algebra: 1
-      probability: 1
       three_valued_logic: 1
       constant_:
         immutable_wrapper: 1
@@ -116,13 +116,13 @@ has_sub_tag_code_lattice_operations: 1
 has_sub_tag_code_algorithm_optimization: 1
 has_sub_tag_code_immutable_wrapper: 1
 has_sub_tag_code_bit_manipulation: 1
-has_sub_concept_fuzzy_logic: 12
-has_sub_concept_boolean_algebra: 10
+has_sub_concept_philosophy_logic_md: 12
+has_sub_concept_mathematics_algebra_boolean_algebra_md: 10
 has_sub_concept_lattice: 6
 has_sub_concept_delegation_pattern: 2
+has_sub_concept_mathematics_statistics_probability_md: 1
 has_sub_concept_bit_vector: 1
 has_sub_concept_predicate_algebra: 1
-has_sub_concept_probability: 1
 has_sub_concept_three_valued_logic: 1
 has_sub_concept_constant_immutable_wrapper: 1
 has_sub_concept_order_relation: 1

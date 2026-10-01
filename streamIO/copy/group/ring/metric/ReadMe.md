@@ -163,15 +163,15 @@ dv_has_:
         interval_arithmetic: 16
         root_finding: 40
     concept_:
-      rational_numbers: 16
+      "Mathematics\\Number\\Rational_Number.md": 16
       vector_:
         matrix_:
           tensor_and_manifold_interpolation: 14
       metric_spaces: 40
       root_finding: 40
-      complex_number: 9
-      fourier_transform: 9
-      interval_arithmetic: 16
+      "Mathematics\\Complex_Analysis\\Complex_Number.md": 9
+      "Mathematics\\Interval.md": 16
+      "Mathematics\\Algebra\\Linear_Algebra\\Fourier_Analysis\\Fourier_Transform.md": 9
       physical_units_and_conversion: 7
 has_sub_folders: 4
 has_sub_files: 185
@@ -189,13 +189,13 @@ has_sub_tag_code_complex_numbers: 9
 has_sub_tag_code_fourier_transform: 9
 has_sub_tag_code_interval_arithmetic: 16
 has_sub_tag_code_root_finding: 40
-has_sub_concept_rational_numbers: 16
+has_sub_concept_mathematics_number_rational_number_md: 16
 has_sub_concept_vector_matrix_tensor_and_manifold_interpolation: 14
 has_sub_concept_metric_spaces: 40
 has_sub_concept_root_finding: 40
-has_sub_concept_complex_number: 9
-has_sub_concept_fourier_transform: 9
-has_sub_concept_interval_arithmetic: 16
+has_sub_concept_mathematics_complex_analysis_complex_number_md: 9
+has_sub_concept_mathematics_interval_md: 16
+has_sub_concept_mathematics_algebra_linear_algebra_fourier_analysis_fourier_transform_md: 9
 has_sub_concept_physical_units_and_conversion: 7
 ---
 

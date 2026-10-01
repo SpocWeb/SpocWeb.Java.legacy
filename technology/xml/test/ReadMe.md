@@ -88,7 +88,7 @@ dv_has_:
         data_transfer_object: 19
     concept_:
       castor_data_transfer_object: 16
-      data_transfer: 2
+      "Technology\\IT\\Data.md": 2
       base: 1
       data_consistency_corrector: 1
       root: 1
@@ -102,7 +102,7 @@ has_sub_facet_complexity_2: 18
 has_sub_facet_complexity_3: 1
 has_sub_tag_code_data_transfer_object: 19
 has_sub_concept_castor_data_transfer_object: 16
-has_sub_concept_data_transfer: 2
+has_sub_concept_technology_it_data_md: 2
 has_sub_concept_base: 1
 has_sub_concept_data_consistency_corrector: 1
 has_sub_concept_root: 1

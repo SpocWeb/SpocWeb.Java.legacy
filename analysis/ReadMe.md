@@ -49,7 +49,7 @@ dv_has_:
         domain_model: 6
     concept_:
       relationship_modelling: 6
-      domain_model: 6
+      "Technology\\IT\\Software\\SW~Programming\\Domain-Driven_Design.md": 6
 has_sub_folders: 0
 has_sub_files: 14
 has_sub_units: 6
@@ -59,7 +59,7 @@ has_sub_facet_complexity_2: 6
 has_sub_tag_code_type_system: 6
 has_sub_tag_code_domain_model: 6
 has_sub_concept_relationship_modelling: 6
-has_sub_concept_domain_model: 6
+has_sub_concept_technology_it_software_sw_programming_domain_driven_design_md: 6
 related:
 - path: ../_Matthias/Code/NET/_std/SpecBuilderPattern/Models
   shared-tags:

@@ -96,8 +96,8 @@ dv_has_:
         jdbc_adapter: 9
         sax_parsing: 1
     concept_:
+      "Technology\\IT\\Software\\SW~Programming\\Prog~Language\\Parsing.md": 14
       stream_adapters: 14
-      token_parsing: 14
       flat_files: 9
       xml_read_:
         write_stream_bridging: 4
@@ -117,8 +117,8 @@ has_sub_tag_code_xml_streaming: 4
 has_sub_tag_code_xml_parsing: 4
 has_sub_tag_code_jdbc_adapter: 9
 has_sub_tag_code_sax_parsing: 1
+has_sub_concept_technology_it_software_sw_programming_prog_language_parsing_md: 14
 has_sub_concept_stream_adapters: 14
-has_sub_concept_token_parsing: 14
 has_sub_concept_flat_files: 9
 has_sub_concept_xml_read_write_stream_bridging: 4
 has_sub_concept_jdbc_driver: 9

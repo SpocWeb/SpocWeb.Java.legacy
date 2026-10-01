@@ -84,7 +84,7 @@ dv_has_:
     concept_:
       ode_solvers: 29
       ring_algebra: 29
-      rational_numbers: 16
+      "Mathematics\\Number\\Rational_Number.md": 16
       metric_spaces: 41
       root_finding: 41
       vector_:
@@ -92,9 +92,9 @@ dv_has_:
           tensor_and_manifold_interpolation: 14
       group_:
         semigroup_algebra: 14
-      complex_number: 9
-      fourier_transform: 9
-      interval_arithmetic: 16
+      "Mathematics\\Complex_Analysis\\Complex_Number.md": 9
+      "Mathematics\\Interval.md": 16
+      "Mathematics\\Algebra\\Linear_Algebra\\Fourier_Analysis\\Fourier_Transform.md": 9
 has_sub_folders: 6
 has_sub_files: 283
 has_sub_units: 130
@@ -113,14 +113,14 @@ has_sub_tag_code_group_algebra: 14
 has_sub_tag_code_interpolation: 14
 has_sub_concept_ode_solvers: 29
 has_sub_concept_ring_algebra: 29
-has_sub_concept_rational_numbers: 16
+has_sub_concept_mathematics_number_rational_number_md: 16
 has_sub_concept_metric_spaces: 41
 has_sub_concept_root_finding: 41
 has_sub_concept_vector_matrix_tensor_and_manifold_interpolation: 14
 has_sub_concept_group_semigroup_algebra: 14
-has_sub_concept_complex_number: 9
-has_sub_concept_fourier_transform: 9
-has_sub_concept_interval_arithmetic: 16
+has_sub_concept_mathematics_complex_analysis_complex_number_md: 9
+has_sub_concept_mathematics_interval_md: 16
+has_sub_concept_mathematics_algebra_linear_algebra_fourier_analysis_fourier_transform_md: 9
 ---
 
 # group

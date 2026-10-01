@@ -80,6 +80,7 @@ dv_has_:
         wavelet_transform: 5
         weighting: 5
     concept_:
+      "Mathematics\\Algebra\\Linear_Algebra\\Matrix.md": 2
       brents_method_minimizer: 2
       conjugate_gradient_minimizer: 2
       float: 2
@@ -89,7 +90,6 @@ dv_has_:
       reverse_order_int_stream_source: 2
       "2d_line_segment": 1
       "2d_linear_optics_transform": 1
-      "2d_sampling_test_model": 1
 has_sub_folders: 10
 has_sub_files: 197
 has_sub_units: 107
@@ -112,6 +112,7 @@ has_sub_tag_code_minimum_search: 6
 has_sub_tag_code_matrix_operation: 6
 has_sub_tag_code_wavelet_transform: 5
 has_sub_tag_code_weighting: 5
+has_sub_concept_mathematics_algebra_linear_algebra_matrix_md: 2
 has_sub_concept_brents_method_minimizer: 2
 has_sub_concept_conjugate_gradient_minimizer: 2
 has_sub_concept_float: 2
@@ -121,7 +122,6 @@ has_sub_concept_reverse_order_float_stream_source: 2
 has_sub_concept_reverse_order_int_stream_source: 2
 has_sub_concept_2d_line_segment: 1
 has_sub_concept_2d_linear_optics_transform: 1
-has_sub_concept_2d_sampling_test_model: 1
 ---
 
 # math

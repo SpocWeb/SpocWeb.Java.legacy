@@ -96,7 +96,7 @@ dv_has_:
         numeric_comparison: 1
     concept_:
       by_reference_primitive_wrapper: 14
-      combinatorics: 8
+      "Mathematics\\Statistics\\Combinatorics.md": 8
       caching_decorator: 4
       combinatorics_and_special_functions: 1
       comparator: 1
@@ -116,7 +116,7 @@ has_sub_tag_code_caching: 4
 has_sub_tag_code_test: 1
 has_sub_tag_code_numeric_comparison: 1
 has_sub_concept_by_reference_primitive_wrapper: 14
-has_sub_concept_combinatorics: 8
+has_sub_concept_mathematics_statistics_combinatorics_md: 8
 has_sub_concept_caching_decorator: 4
 has_sub_concept_combinatorics_and_special_functions: 1
 has_sub_concept_comparator: 1

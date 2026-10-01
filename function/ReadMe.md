@@ -129,17 +129,16 @@ dv_has_:
         neural_network: 10
         function_composition: 51
     concept_:
-      function_:
-        relation_contract: 23
-      function_algebra: 35
-      vector_field_function: 17
+      "Technology\\IT\\Software\\SW~Programming\\Prog~Language\\Prog~Principle\\Design_by_Contract.md": 23
+      "Mathematics\\Calculus\\Multivariable_Calculus\\Vector_Calculus.md": 17
+      "Mathematics\\Function(Math).md": 43
       by_reference_primitive_wrapper: 14
       streaming_numeric_aggregator: 12
       indexed_collection_access: 9
       ordinary_differential_equations: 8
-      special_functions: 8
       neural_networks: 7
       partial_derivatives: 7
+      "Mathematics\\Statistics\\Combinatorics.md": 8
 has_sub_folders: 11
 has_sub_files: 471
 has_sub_units: 219
@@ -161,16 +160,16 @@ has_sub_tag_code_mathematical_function: 48
 has_sub_tag_code_indexing: 10
 has_sub_tag_code_neural_network: 10
 has_sub_tag_code_function_composition: 51
-has_sub_concept_function_relation_contract: 23
-has_sub_concept_function_algebra: 35
-has_sub_concept_vector_field_function: 17
+has_sub_concept_technology_it_software_sw_programming_prog_language_prog_principle_design_by_contract_md: 23
+has_sub_concept_mathematics_calculus_multivariable_calculus_vector_calculus_md: 17
+has_sub_concept_mathematics_function_math_md: 43
 has_sub_concept_by_reference_primitive_wrapper: 14
 has_sub_concept_streaming_numeric_aggregator: 12
 has_sub_concept_indexed_collection_access: 9
 has_sub_concept_ordinary_differential_equations: 8
-has_sub_concept_special_functions: 8
 has_sub_concept_neural_networks: 7
 has_sub_concept_partial_derivatives: 7
+has_sub_concept_mathematics_statistics_combinatorics_md: 8
 ---
 
 # function

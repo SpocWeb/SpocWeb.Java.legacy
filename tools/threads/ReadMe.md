@@ -39,8 +39,8 @@ dv_has_:
         watchdog_thread: 1
         timeout_handling: 1
     concept_:
-      concurrency: 2
-      testing: 1
+      "Technology\\IT\\Computer_Science\\Concurrency(Computer_Science).md": 2
+      "Technology\\IT\\Software\\SW~Programming\\Prog~Language\\Prog~Paradigm\\Prog~Functional\\Prog~Rust\\Rust~Testing.md": 1
 has_sub_folders: 0
 has_sub_files: 6
 has_sub_units: 3
@@ -53,8 +53,8 @@ has_sub_facet_complexity_3: 1
 has_sub_tag_code_thread_interruption: 1
 has_sub_tag_code_watchdog_thread: 1
 has_sub_tag_code_timeout_handling: 1
-has_sub_concept_concurrency: 2
-has_sub_concept_testing: 1
+has_sub_concept_technology_it_computer_science_concurrency_computer_science_md: 2
+has_sub_concept_technology_it_software_sw_programming_prog_language_prog_paradigm_prog_functional_prog_rust_rust_testing_md: 1
 ---
 
 # threads

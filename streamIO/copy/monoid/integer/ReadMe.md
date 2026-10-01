@@ -49,7 +49,7 @@ dv_has_:
     concept_:
       bit_set: 2
       multi_index: 1
-      permutation: 1
+      "Mathematics\\Statistics\\Combinatorics\\Permutation.md": 1
       delegation_pattern: 1
 has_sub_folders: 0
 has_sub_files: 8
@@ -65,7 +65,7 @@ has_sub_tag_code_delegation: 1
 has_sub_tag_code_iterator: 1
 has_sub_concept_bit_set: 2
 has_sub_concept_multi_index: 1
-has_sub_concept_permutation: 1
+has_sub_concept_mathematics_statistics_combinatorics_permutation_md: 1
 has_sub_concept_delegation_pattern: 1
 ---
 

@@ -99,13 +99,13 @@ dv_has_:
       "2d_graph_editing_model": 1
       "2d_graph_editing_mvc": 1
       "3d_model": 1
+      "Mathematics\\Geometry\\Vector.md": 1
       active_canvas_interface: 1
       applet_framework_base_class: 1
       background_clearing_painter: 1
       canvas_interface: 1
       controller_interface: 1
       focus_aware_painter_interface: 1
-      growable_short_polygon_matrix: 1
 has_sub_folders: 3
 has_sub_files: 53
 has_sub_units: 29
@@ -130,13 +130,13 @@ has_sub_tag_code_event_dispatch: 1
 has_sub_concept_2d_graph_editing_model: 1
 has_sub_concept_2d_graph_editing_mvc: 1
 has_sub_concept_3d_model: 1
+has_sub_concept_mathematics_geometry_vector_md: 1
 has_sub_concept_active_canvas_interface: 1
 has_sub_concept_applet_framework_base_class: 1
 has_sub_concept_background_clearing_painter: 1
 has_sub_concept_canvas_interface: 1
 has_sub_concept_controller_interface: 1
 has_sub_concept_focus_aware_painter_interface: 1
-has_sub_concept_growable_short_polygon_matrix: 1
 related:
 - path: ../_Matthias/Code/NET/_std/IGraphs/Interfaces/observe
   shared-tags:

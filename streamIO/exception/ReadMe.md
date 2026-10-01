@@ -45,8 +45,8 @@ dv_has_:
         custom_exception: 5
         exception_wrapping: 2
     concept_:
-      error_handling: 5
-      testing: 1
+      "Technology\\IT\\Software\\SW~Programming\\Prog~Language\\Prog~Paradigm\\Prog~Structured\\Exception-Handling.md": 5
+      "Technology\\IT\\Software\\SW~Programming\\Prog~Language\\Prog~Paradigm\\Prog~Functional\\Prog~Rust\\Rust~Testing.md": 1
 has_sub_folders: 0
 has_sub_files: 10
 has_sub_units: 5
@@ -56,8 +56,8 @@ has_sub_facet_status_broken: 1
 has_sub_facet_complexity_2: 5
 has_sub_tag_code_custom_exception: 5
 has_sub_tag_code_exception_wrapping: 2
-has_sub_concept_error_handling: 5
-has_sub_concept_testing: 1
+has_sub_concept_technology_it_software_sw_programming_prog_language_prog_paradigm_prog_structured_exception_handling_md: 5
+has_sub_concept_technology_it_software_sw_programming_prog_language_prog_paradigm_prog_functional_prog_rust_rust_testing_md: 1
 related:
 - path: ../_Matthias/Code/NET/Java/streamIO/exception
   shared-tags:

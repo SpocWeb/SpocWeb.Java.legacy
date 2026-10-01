@@ -138,7 +138,7 @@ dv_has_:
     concept_:
       table_storage: 31
       jdbc_driver: 31
-      predicate: 4
+      "schema-org\\Predicate.md": 4
       equality_test: 1
       filter_resultset: 1
       left_outer_join: 1
@@ -165,7 +165,7 @@ has_sub_tag_code_predicate_interface: 1
 has_sub_tag_code_predicate_filter: 1
 has_sub_concept_table_storage: 31
 has_sub_concept_jdbc_driver: 31
-has_sub_concept_predicate: 4
+has_sub_concept_schema_org_predicate_md: 4
 has_sub_concept_equality_test: 1
 has_sub_concept_filter_resultset: 1
 has_sub_concept_left_outer_join: 1

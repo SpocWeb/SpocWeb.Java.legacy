@@ -40,8 +40,8 @@ dv_has_:
         random_number_generation: 3
         quasi_random_sequence: 1
     concept_:
+      "Mathematics\\Statistics\\Experiment\\Sampling.md": 3
       monte_carlo: 3
-      random_sampling: 3
 has_sub_folders: 0
 has_sub_files: 6
 has_sub_units: 3
@@ -51,8 +51,8 @@ has_sub_facet_complexity_3: 1
 has_sub_facet_complexity_4: 2
 has_sub_tag_code_random_number_generation: 3
 has_sub_tag_code_quasi_random_sequence: 1
+has_sub_concept_mathematics_statistics_experiment_sampling_md: 3
 has_sub_concept_monte_carlo: 3
-has_sub_concept_random_sampling: 3
 related:
 - path: ../_Matthias/Code/Java/streamIO/integer/random
   shared-tags:

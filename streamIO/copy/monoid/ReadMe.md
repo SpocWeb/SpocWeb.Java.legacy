@@ -82,15 +82,15 @@ dv_has_:
         string_concatenation: 1
         dictionary_entry: 1
     concept_:
-      monoid: 10
+      "Mathematics\\Algebra\\Group_Theory\\Monoid.md": 10
       concatenation: 4
       bit_set: 3
       key_value_pair: 3
-      permutation: 2
+      "Mathematics\\Statistics\\Combinatorics\\Permutation.md": 2
       string_:
         array_concatenation: 2
       delegation_pattern: 3
-      dictionary: 1
+      "Society\\Communication\\Media\\Creative_Work\\Digital_Document\\Reference_Work\\Dictionary.md": 1
       function_mapping: 1
       multi_index: 1
 has_sub_folders: 1
@@ -110,14 +110,14 @@ has_sub_tag_code_abstract_base: 3
 has_sub_tag_code_array_manipulation: 1
 has_sub_tag_code_string_concatenation: 1
 has_sub_tag_code_dictionary_entry: 1
-has_sub_concept_monoid: 10
+has_sub_concept_mathematics_algebra_group_theory_monoid_md: 10
 has_sub_concept_concatenation: 4
 has_sub_concept_bit_set: 3
 has_sub_concept_key_value_pair: 3
-has_sub_concept_permutation: 2
+has_sub_concept_mathematics_statistics_combinatorics_permutation_md: 2
 has_sub_concept_string_array_concatenation: 2
 has_sub_concept_delegation_pattern: 3
-has_sub_concept_dictionary: 1
+has_sub_concept_society_communication_media_creative_work_digital_document_reference_work_dictionary_md: 1
 has_sub_concept_function_mapping: 1
 has_sub_concept_multi_index: 1
 ---

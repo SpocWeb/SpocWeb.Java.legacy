@@ -63,7 +63,7 @@ dv_has_:
         thread_synchronization: 1
     concept_:
       castor_data_transfer_object: 16
-      data_transfer: 2
+      "Technology\\IT\\Data.md": 2
       custom_exception_type: 2
       attributed_stream_base_class: 1
       attributed_stream_input_interface: 1
@@ -95,7 +95,7 @@ has_sub_tag_code_xslt_transformation: 2
 has_sub_tag_code_audio: 2
 has_sub_tag_code_thread_synchronization: 1
 has_sub_concept_castor_data_transfer_object: 16
-has_sub_concept_data_transfer: 2
+has_sub_concept_technology_it_data_md: 2
 has_sub_concept_custom_exception_type: 2
 has_sub_concept_attributed_stream_base_class: 1
 has_sub_concept_attributed_stream_input_interface: 1

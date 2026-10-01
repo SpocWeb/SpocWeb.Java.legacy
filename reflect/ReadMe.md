@@ -79,8 +79,8 @@ dv_has_:
         type_system: 1
     concept_:
       object_classification: 7
-      domain_model: 9
-      reflection: 3
+      "Technology\\IT\\Software\\SW~Programming\\Domain-Driven_Design.md": 9
+      "Science\\Physics\\Wave\\Reflection.md": 3
 has_sub_folders: 0
 has_sub_files: 25
 has_sub_units: 12
@@ -102,8 +102,8 @@ has_sub_tag_code_reflection_object_instantiation: 1
 has_sub_tag_code_interface_contract: 1
 has_sub_tag_code_type_system: 1
 has_sub_concept_object_classification: 7
-has_sub_concept_domain_model: 9
-has_sub_concept_reflection: 3
+has_sub_concept_technology_it_software_sw_programming_domain_driven_design_md: 9
+has_sub_concept_science_physics_wave_reflection_md: 3
 related:
 - path: ../_Matthias/Code/Java/knowledge
   shared-tags:

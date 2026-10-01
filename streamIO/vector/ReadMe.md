@@ -43,9 +43,9 @@ dv_has_:
         random_number_generation: 4
         quasi_random_sequence: 2
     concept_:
+      "Mathematics\\Statistics\\Experiment\\Sampling.md": 4
       monte_carlo: 4
-      random_sampling: 4
-      combinatorics: 3
+      "Mathematics\\Statistics\\Combinatorics.md": 3
 has_sub_folders: 1
 has_sub_files: 12
 has_sub_units: 7
@@ -57,9 +57,9 @@ has_sub_facet_complexity_4: 4
 has_sub_tag_code_combinatorics: 3
 has_sub_tag_code_random_number_generation: 4
 has_sub_tag_code_quasi_random_sequence: 2
+has_sub_concept_mathematics_statistics_experiment_sampling_md: 4
 has_sub_concept_monte_carlo: 4
-has_sub_concept_random_sampling: 4
-has_sub_concept_combinatorics: 3
+has_sub_concept_mathematics_statistics_combinatorics_md: 3
 related:
 - path: ../_Matthias/Code/NET/_std/IGraphs/Functions
   shared-tags:

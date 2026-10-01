@@ -90,20 +90,16 @@ dv_has_:
         algorithm: 22
         differential_integration: 22
     concept_:
-      iterator: 25
+      "Technology\\IT\\Software\\SW~Programming\\Prog~Language\\Iterator.md": 25
       streaming_enumerator: 25
-      byte_:
-        character_re_encoding_filters_base64_binhex_url_:
-          entity_escaping_crc_xor: 23
-      function_:
-        relation_contract: 23
-      pseudo_random_and_quasi_random_integer_generator_family_with_mark_:
-        restore_replay: 21
+      "Technology\\IT\\Data\\Code\\Encoding.md": 23
+      "Technology\\IT\\Software\\SW~Programming\\Prog~Language\\Prog~Principle\\Design_by_Contract.md": 23
+      "Technology\\IT\\IT-Algorithm\\Pseudorandom_Number_Generator.md": 21
       ode_solvers: 29
       ring_algebra: 29
-      interval_arithmetic: 20
+      "Mathematics\\Interval.md": 20
       table_storage: 32
-      domain_model: 35
+      "Technology\\IT\\Software\\SW~Programming\\Domain-Driven_Design.md": 35
 has_sub_folders: 129
 has_sub_files: 3318
 has_sub_units: 1639
@@ -132,16 +128,16 @@ has_sub_tag_code_quasi_random_sequence: 23
 has_sub_tag_code_xor_cipher: 23
 has_sub_tag_code_algorithm: 22
 has_sub_tag_code_differential_integration: 22
-has_sub_concept_iterator: 25
+has_sub_concept_technology_it_software_sw_programming_prog_language_iterator_md: 25
 has_sub_concept_streaming_enumerator: 25
-has_sub_concept_byte_character_re_encoding_filters_base64_binhex_url_entity_escaping_crc_xor: 23
-has_sub_concept_function_relation_contract: 23
-has_sub_concept_pseudo_random_and_quasi_random_integer_generator_family_with_mark_restore_replay: 21
+has_sub_concept_technology_it_data_code_encoding_md: 23
+has_sub_concept_technology_it_software_sw_programming_prog_language_prog_principle_design_by_contract_md: 23
+has_sub_concept_technology_it_it_algorithm_pseudorandom_number_generator_md: 21
 has_sub_concept_ode_solvers: 29
 has_sub_concept_ring_algebra: 29
-has_sub_concept_interval_arithmetic: 20
+has_sub_concept_mathematics_interval_md: 20
 has_sub_concept_table_storage: 32
-has_sub_concept_domain_model: 35
+has_sub_concept_technology_it_software_sw_programming_domain_driven_design_md: 35
 related:
   - path: ../_Matthias/Code/VB/ChangeDate
     shared-tags: [code/cli_tool]

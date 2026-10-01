@@ -43,9 +43,9 @@ dv_has_:
         reflection_based_dispatch: 1
         composite_pattern: 1
     concept_:
-      testing: 3
-      composite_pattern: 1
-      reflection: 1
+      "Technology\\IT\\Software\\SW~Programming\\Prog~Language\\Prog~Paradigm\\Prog~Functional\\Prog~Rust\\Rust~Testing.md": 3
+      "schema-org\\Composite.md": 1
+      "Science\\Physics\\Wave\\Reflection.md": 1
 has_sub_folders: 0
 has_sub_files: 8
 has_sub_units: 3
@@ -57,9 +57,9 @@ has_sub_facet_complexity_3: 1
 has_sub_tag_code_test_harness: 3
 has_sub_tag_code_reflection_based_dispatch: 1
 has_sub_tag_code_composite_pattern: 1
-has_sub_concept_testing: 3
-has_sub_concept_composite_pattern: 1
-has_sub_concept_reflection: 1
+has_sub_concept_technology_it_software_sw_programming_prog_language_prog_paradigm_prog_functional_prog_rust_rust_testing_md: 3
+has_sub_concept_schema_org_composite_md: 1
+has_sub_concept_science_physics_wave_reflection_md: 1
 related:
 - path: ../_Matthias/Code/NET/Java/streamIO/testing
   shared-tags:

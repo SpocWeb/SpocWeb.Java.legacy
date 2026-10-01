@@ -54,8 +54,8 @@ dv_has_:
         complex_numbers: 8
         fourier_transform: 8
     concept_:
-      complex_number: 8
-      fourier_transform: 8
+      "Mathematics\\Complex_Analysis\\Complex_Number.md": 8
+      "Mathematics\\Algebra\\Linear_Algebra\\Fourier_Analysis\\Fourier_Transform.md": 8
 has_sub_folders: 0
 has_sub_files: 21
 has_sub_units: 8
@@ -64,8 +64,8 @@ has_sub_facet_status_legacy: 8
 has_sub_facet_complexity_4: 8
 has_sub_tag_code_complex_numbers: 8
 has_sub_tag_code_fourier_transform: 8
-has_sub_concept_complex_number: 8
-has_sub_concept_fourier_transform: 8
+has_sub_concept_mathematics_complex_analysis_complex_number_md: 8
+has_sub_concept_mathematics_algebra_linear_algebra_fourier_analysis_fourier_transform_md: 8
 related:
 - path: ../_Matthias/Code/NET/Java/streamIO/copy/group/ring/metric/body/complex
   shared-tags:

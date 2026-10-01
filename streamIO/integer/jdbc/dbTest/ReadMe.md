@@ -58,7 +58,7 @@ dv_has_:
         predicate_interface: 1
         predicate_filter: 1
     concept_:
-      predicate: 3
+      "schema-org\\Predicate.md": 3
       equality_test: 1
       filter_resultset: 1
       left_outer_join: 1
@@ -80,7 +80,7 @@ has_sub_tag_code_predicate_evaluation: 4
 has_sub_tag_code_predicate_delegate: 2
 has_sub_tag_code_predicate_interface: 1
 has_sub_tag_code_predicate_filter: 1
-has_sub_concept_predicate: 3
+has_sub_concept_schema_org_predicate_md: 3
 has_sub_concept_equality_test: 1
 has_sub_concept_filter_resultset: 1
 has_sub_concept_left_outer_join: 1
