@@ -137,6 +137,21 @@ has_sub_concept_canvas_interface: 1
 has_sub_concept_controller_interface: 1
 has_sub_concept_dynamic_array_of_3d_projected_polygons: 1
 has_sub_concept_focus_aware_painter_interface: 1
+related:
+  - path: ../_Matthias/Code/NET/_std/IGraphs/Interfaces/observe
+    shared-tags: [code/observer_pattern]
+  - path: ../_Matthias/Code/NET/_std/IMathsImpl/Interfaces/observe
+    shared-tags: [code/observer_pattern]
+  - path: ../_Matthias/Code/NET/KnowledgeWeb/Freebase/MqlGui
+    shared-tags: [code/gui]
+  - path: ../_Matthias/Code/NET/KnowledgeWeb/Gui
+    shared-tags: [code/gui]
+  - path: ../_Matthias/Code/NET/KnowledgeWeb/Gui/Office
+    shared-tags: [code/gui]
+  - path: ../_Matthias/Code/NET/KnowledgeWeb/SpocWeb.Gui.DataCore
+    shared-tags: [code/gui]
+  - path: ../_Matthias/Code/NET/KnowledgeWeb/_projects/spocweb.gui
+    shared-tags: [code/gui]
 ---
 
 # mvc

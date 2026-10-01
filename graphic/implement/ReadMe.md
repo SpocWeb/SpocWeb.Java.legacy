@@ -70,6 +70,9 @@ has_sub_concept_graph2d_demo_harness: 1
 has_sub_concept_greyscale_dithering_strategy: 1
 has_sub_concept_random_anti_moire_color_strategy: 1
 has_sub_concept_texture_sampling_color_strategy: 1
+related:
+  - path: ../_Matthias/Code/Java/graphic
+    shared-tags: [code/graphics]
 ---
 
 # implement

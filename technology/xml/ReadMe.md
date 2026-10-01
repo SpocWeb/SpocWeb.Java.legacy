@@ -114,6 +114,11 @@ has_sub_concept_dom_parsing_demo: 1
 has_sub_concept_jdbc_resultset_to_xml_attributes: 1
 has_sub_concept_reflection_based_sax_dispatcher: 1
 has_sub_concept_reflection_based_xml_unmarshaller: 1
+related:
+  - path: ../_Matthias/Code/XML
+    shared-tags: [code/xml_parsing, code/xslt_transformation]
+  - path: ../_Matthias/Code/NET/Java/xml
+    shared-tags: [code/sax_parsing, code/xslt_transformation]
 ---
 
 # xml

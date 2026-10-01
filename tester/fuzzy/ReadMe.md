@@ -58,6 +58,9 @@ has_sub_tag_code_string_similarity: 1
 has_sub_concept_fuzzy_dictionary_lookup: 1
 has_sub_concept_fuzzy_sentence_comparator: 1
 has_sub_concept_fuzzy_set_comparator: 1
+related:
+  - path: ../_Matthias/Code/NET/Java/tester/fuzzy
+    shared-tags: [code/fuzzy_search, code/string_similarity]
 ---
 
 # fuzzy

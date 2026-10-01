@@ -192,6 +192,9 @@ has_sub_tag_code_adapter: 6
 has_sub_concept_concrete_storage_containers_arrays_hash_tables_and_relations: 44
 has_sub_concept_red_black_tree_backed_sorted_map_implementation: 12
 has_sub_concept_small_adapter_and_scheduling_helper_classes: 6
+related:
+  - path: ../_Matthias/Code/NET/Java/streamIO/object/enum/container
+    shared-tags: [code/container, code/hash_table]
 ---
 
 # container

@@ -125,6 +125,9 @@ has_sub_concept_numerical_optimization: 1
 has_sub_concept_scalar_field_test_fixture: 1
 has_sub_concept_simulated_annealing_minimizer: 1
 has_sub_concept_sinc_like_test_function: 1
+related:
+  - path: ../_Matthias/Code/NET/Java/math/minimizer
+    shared-tags: [code/minimum_search, code/optimization]
 ---
 
 # minimizer

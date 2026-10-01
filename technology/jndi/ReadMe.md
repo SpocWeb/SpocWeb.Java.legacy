@@ -46,6 +46,9 @@ has_sub_facet_complexity_2: 2
 has_sub_tag_code_directory_services: 2
 has_sub_concept_command_line_jndi_browser: 1
 has_sub_concept_jndi_context_demo: 1
+related:
+  - path: ../_Matthias/Code/LDAP
+    shared-tags: [code/directory_services]
 ---
 
 # jndi

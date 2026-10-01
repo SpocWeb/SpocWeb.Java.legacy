@@ -154,6 +154,11 @@ has_sub_concept_record_identity: 2
 has_sub_concept_relationship_modelling: 2
 has_sub_concept_data_access: 1
 has_sub_concept_identity_caching: 1
+related:
+  - path: ../_Matthias/Code/Java/reflect
+    shared-tags: [code/domain_model, code/reflection]
+  - path: ../_Matthias/Code/Java/persistences
+    shared-tags: [code/domain_model, code/entity_model]
 ---
 
 # knowledge

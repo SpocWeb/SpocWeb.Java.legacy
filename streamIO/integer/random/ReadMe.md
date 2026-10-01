@@ -100,6 +100,9 @@ has_sub_facet_complexity_3: 20
 has_sub_tag_code_quasi_random_sequence: 20
 has_sub_tag_code_random_number_generation: 20
 has_sub_concept_pseudo_random_and_quasi_random_integer_generator_family_with_mark_restore_replay: 20
+related:
+  - path: ../_Matthias/Code/Java/streamIO/vector/random
+    shared-tags: [code/quasi_random_sequence, code/random_number_generation]
 ---
 
 # random

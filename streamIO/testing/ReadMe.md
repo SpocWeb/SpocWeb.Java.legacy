@@ -60,6 +60,9 @@ has_sub_tag_code_composite_pattern: 1
 has_sub_concept_testing: 3
 has_sub_concept_composite_pattern: 1
 has_sub_concept_reflection: 1
+related:
+  - path: ../_Matthias/Code/NET/Java/streamIO/testing
+    shared-tags: [code/composite_pattern, code/test_harness]
 ---
 
 # testing

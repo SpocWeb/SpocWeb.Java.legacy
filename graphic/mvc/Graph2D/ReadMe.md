@@ -59,6 +59,11 @@ has_sub_tag_code_graphics: 1
 has_sub_concept_2d_graph_editing_model: 1
 has_sub_concept_2d_graph_mouse_controller: 1
 has_sub_concept_2d_graph_painter: 1
+related:
+  - path: ../_Matthias/Code/Java/graphic/mvc/Point2D
+    shared-tags: [code/interactive_editing]
+  - path: ../_Matthias/Code/NET/_root/Testing/RegExp/Wizard/UISupport/RichTextBoxCustom
+    shared-tags: [code/interactive_editing]
 ---
 
 # Graph2D

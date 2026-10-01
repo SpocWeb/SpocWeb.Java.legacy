@@ -120,6 +120,15 @@ has_sub_concept_discrete_subtract_transition: 1
 has_sub_concept_discrete_transition_interface: 1
 has_sub_concept_function_based_dynamic_transition: 1
 has_sub_concept_function_based_transition: 1
+related:
+  - path: ../_Matthias/Code/NET/_core/wfs
+    shared-tags: [code/state_machine]
+  - path: ../_Matthias/Code/NET/Java/tester/process
+    shared-tags: [code/state_machine, code/stream_processing]
+  - path: ../_Matthias/Code/NET/_std/IGraphs/streams
+    shared-tags: [code/stream_processing]
+  - path: ../_Matthias/Code/NET/_std/IMathsImpl/streams
+    shared-tags: [code/stream_processing]
 ---
 
 # process

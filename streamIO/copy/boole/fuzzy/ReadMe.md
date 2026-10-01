@@ -81,6 +81,11 @@ has_sub_tag_code_boolean_algebra: 1
 has_sub_tag_code_interval_arithmetic: 1
 has_sub_concept_fuzzy_logic: 11
 has_sub_concept_boolean_algebra: 1
+related:
+  - path: ../_Matthias/Code/NET/_root/_projects/xCell.extensions/_Links
+    shared-tags: [code/fuzzy_logic]
+  - path: ../_Matthias/Code/NET/org.structs/bool/fuzzy
+    shared-tags: [code/fuzzy_logic]
 ---
 
 # fuzzy

@@ -169,6 +169,21 @@ has_sub_concept_bounded_float_stream_interface: 1
 has_sub_concept_chi_squared_random_generator: 1
 has_sub_concept_consistency_detector: 1
 has_sub_concept_console_plotter_output: 1
+related:
+  - path: ../_Matthias/Code/NET/_std/IGraphs/Interfaces/Streams/bytes
+    shared-tags: [code/stream_filter]
+  - path: ../_Matthias/Code/NET/_std/IGraphs/Interfaces/Streams/chars
+    shared-tags: [code/stream_filter]
+  - path: ../_Matthias/Code/NET/_std/IGraphs/Interfaces/Streams/filters/real
+    shared-tags: [code/stream_filter]
+  - path: ../_Matthias/Code/NET/_std/IMathsImpl/Interfaces/streams/bytes
+    shared-tags: [code/stream_filter]
+  - path: ../_Matthias/Code/NET/_std/IMathsImpl/Interfaces/streams/chars
+    shared-tags: [code/stream_filter]
+  - path: ../_Matthias/Code/NET/_std/IMathsImpl/Interfaces/streams/filters/real
+    shared-tags: [code/stream_filter]
+  - path: ../_Matthias/Code/Java/streamIO/integer/filter
+    shared-tags: [code/stream_filter]
 ---
 
 # real

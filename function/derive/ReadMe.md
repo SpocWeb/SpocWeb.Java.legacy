@@ -143,6 +143,9 @@ has_sub_concept_calculus: 4
 has_sub_concept_vector_calculus: 4
 has_sub_concept_hyperbolic_functions: 3
 has_sub_concept_inverse_hyperbolic_functions: 3
+related:
+  - path: ../_Matthias/Code/Java/function/derive/ring/body
+    shared-tags: [code/derivable_function_contract, code/mathematical_function]
 ---
 
 # derive

@@ -45,6 +45,9 @@ has_sub_tag_code_fixed_size_buffer: 1
 has_sub_tag_code_overflow_detection: 1
 has_sub_concept_capacity_management: 1
 has_sub_concept_stream_output: 1
+related:
+  - path: ../_Matthias/Code/NET/Java/streamIO/detector
+    shared-tags: [code/fixed_size_buffer, code/overflow_detection]
 ---
 
 # detector

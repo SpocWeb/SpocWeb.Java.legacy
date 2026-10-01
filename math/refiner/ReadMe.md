@@ -103,6 +103,11 @@ has_sub_concept_newtons_method_root_refiner: 1
 has_sub_concept_pegasus_method_root_refiner: 1
 has_sub_concept_regula_falsi_root_refiner: 1
 has_sub_concept_ridders_method_root_refiner: 1
+related:
+  - path: ../_Matthias/Code/NET/_org.structs/fixPoints
+    shared-tags: [code/root_finding]
+  - path: ../_Matthias/Code/NET/_trunk/Components/FinancialComponents/FunctionInterfaces
+    shared-tags: [code/root_finding]
 ---
 
 # refiner

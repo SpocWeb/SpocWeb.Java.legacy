@@ -51,6 +51,27 @@ has_sub_facet_complexity_3: 4
 has_sub_tag_code_decorator_pattern: 4
 has_sub_tag_code_stream_filter: 4
 has_sub_concept_stream_filter_input: 4
+related:
+  - path: ../_Matthias/Code/Java/streamIO/object/filterIn
+    shared-tags: [code/decorator_pattern, code/stream_filter]
+  - path: ../_Matthias/Code/Java/streamIO/object/filterOut
+    shared-tags: [code/decorator_pattern, code/stream_filter]
+  - path: ../_Matthias/Code/NET/_std/IGraphs/Interfaces/Streams/bytes
+    shared-tags: [code/stream_filter]
+  - path: ../_Matthias/Code/NET/_std/IGraphs/Interfaces/Streams/chars
+    shared-tags: [code/stream_filter]
+  - path: ../_Matthias/Code/NET/_std/IGraphs/Interfaces/Streams/filters/real
+    shared-tags: [code/stream_filter]
+  - path: ../_Matthias/Code/NET/_std/IMathsImpl/Interfaces/streams/bytes
+    shared-tags: [code/stream_filter]
+  - path: ../_Matthias/Code/NET/_std/IMathsImpl/Interfaces/streams/chars
+    shared-tags: [code/stream_filter]
+  - path: ../_Matthias/Code/NET/_std/IMathsImpl/Interfaces/streams/filters/real
+    shared-tags: [code/stream_filter]
+  - path: ../_Matthias/Code/Java/streamIO/integer/filter
+    shared-tags: [code/stream_filter]
+  - path: ../_Matthias/Code/NET/_SpocWeb.Root/_std/SpocWeb.IMaths.db/arch/ddd/repositories/abstracts
+    shared-tags: [code/decorator_pattern]
 ---
 
 # filterInOut

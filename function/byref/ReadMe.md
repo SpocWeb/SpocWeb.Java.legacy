@@ -121,6 +121,11 @@ has_sub_concept_caching_decorator: 4
 has_sub_concept_combinatorics_and_special_functions: 1
 has_sub_concept_comparator: 1
 has_sub_concept_test_harness: 1
+related:
+  - path: ../_Matthias/Code/NET/_std/IGraphs/Collections
+    shared-tags: [code/caching]
+  - path: ../_Matthias/Code/NET/_std/IMathsImpl/Collections
+    shared-tags: [code/caching]
 ---
 
 # byref

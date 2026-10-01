@@ -56,6 +56,9 @@ has_sub_concept_daubechies_4_wavelet_step: 1
 has_sub_concept_wavelet_step_base_class: 1
 has_sub_concept_wavelet_step_interface: 1
 has_sub_concept_wavelet_transform_driver: 1
+related:
+  - path: ../_Matthias/Code/NET/_std/IGraphs/tensors/wavelet
+    shared-tags: [code/wavelet_transform]
 ---
 
 # wavelet

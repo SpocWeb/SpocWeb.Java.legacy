@@ -187,6 +187,9 @@ has_sub_concept_3d_figure_drawing_helpers: 1
 has_sub_concept_3d_line_segment: 1
 has_sub_concept_3d_polygon: 1
 has_sub_concept_3d_polygon_plotter: 1
+related:
+  - path: ../_Matthias/Code/NET/Java/graphic/math3D
+    shared-tags: [code/3d_geometry, code/3d_rendering]
 ---
 
 # math3D

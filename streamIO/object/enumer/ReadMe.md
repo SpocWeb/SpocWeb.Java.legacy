@@ -134,6 +134,9 @@ has_sub_concept_custom_streaming_enumerator_and_iterator_bridge_layer_for_object
 has_sub_concept_concrete_storage_containers_arrays_hash_tables_and_relations: 45
 has_sub_concept_red_black_tree_backed_sorted_map_implementation: 12
 has_sub_concept_small_adapter_and_scheduling_helper_classes: 6
+related:
+  - path: ../_Matthias/Code/NET/Java/streamIO/object/enum
+    shared-tags: [code/enumerator, code/iterator_adapter]
 ---
 
 # enumer

@@ -46,6 +46,9 @@ has_sub_tag_code_dynamic_programming: 2
 has_sub_tag_code_knapsack_problem: 1
 has_sub_concept_knapsack_problem_solver: 1
 has_sub_concept_matrix_chain_bracketing: 1
+related:
+  - path: ../_Matthias/Code/NET/Java/math/algorithm
+    shared-tags: [code/dynamic_programming]
 ---
 
 # algorithm

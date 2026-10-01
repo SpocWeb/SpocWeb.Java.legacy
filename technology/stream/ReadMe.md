@@ -67,6 +67,13 @@ has_sub_concept_attributed_stream_input_interface: 1
 has_sub_concept_attributed_stream_output_interface: 1
 has_sub_concept_exposed_buffer_byte_array_stream: 1
 has_sub_concept_managed_component_interface: 1
+related:
+  - path: ../_Matthias/Code/NET/_std/IGraphs/Interfaces/Enumerators
+    shared-tags: [code/stream_adapter]
+  - path: ../_Matthias/Code/NET/_std/IMathsImpl/Interfaces/Enumerators
+    shared-tags: [code/stream_adapter]
+  - path: ../_Matthias/Code/NET/_root/_projects/xCell.extensions/iXml
+    shared-tags: [code/stream_adapter]
 ---
 
 # stream

@@ -62,6 +62,11 @@ has_sub_concept_point2d_editing_model: 1
 has_sub_concept_point2d_keyboard_controller: 1
 has_sub_concept_point2d_mouse_controller: 1
 has_sub_concept_point2d_painter: 1
+related:
+  - path: ../_Matthias/Code/Java/graphic/mvc/Graph2D
+    shared-tags: [code/interactive_editing]
+  - path: ../_Matthias/Code/NET/_root/Testing/RegExp/Wizard/UISupport/RichTextBoxCustom
+    shared-tags: [code/interactive_editing]
 ---
 
 # Point2D

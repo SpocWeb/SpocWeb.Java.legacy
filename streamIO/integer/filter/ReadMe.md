@@ -88,6 +88,27 @@ has_sub_tag_code_statistics: 4
 has_sub_tag_code_stream_filter: 14
 has_sub_concept_pluggable_byte_stream_filter_infrastructure_and_javaio_adapters: 14
 has_sub_concept_byte_and_digraph_trigraph_frequency_counters: 4
+related:
+  - path: ../_Matthias/Code/NET/_std/IGraphs/Interfaces/Streams/bytes
+    shared-tags: [code/stream_filter]
+  - path: ../_Matthias/Code/NET/_std/IGraphs/Interfaces/Streams/chars
+    shared-tags: [code/stream_filter]
+  - path: ../_Matthias/Code/NET/_std/IGraphs/Interfaces/Streams/filters/real
+    shared-tags: [code/stream_filter]
+  - path: ../_Matthias/Code/NET/_std/IMathsImpl/Interfaces/streams/bytes
+    shared-tags: [code/stream_filter]
+  - path: ../_Matthias/Code/NET/_std/IMathsImpl/Interfaces/streams/chars
+    shared-tags: [code/stream_filter]
+  - path: ../_Matthias/Code/NET/_std/IMathsImpl/Interfaces/streams/filters/real
+    shared-tags: [code/stream_filter]
+  - path: ../_Matthias/Code/NET/_org.structs/functions/bytes
+    shared-tags: [code/stream_filter]
+  - path: ../_Matthias/Code/NET/_org.structs/parser/encoding
+    shared-tags: [code/stream_filter]
+  - path: ../_Matthias/Code/CPP/_Math/Stream
+    shared-tags: [code/stream_filter]
+  - path: ../_Matthias/Code/JavaTest/OldStuff/InFilter
+    shared-tags: [code/stream_filter]
 ---
 
 # filter

@@ -80,6 +80,17 @@ has_sub_facet_complexity_3: 14
 has_sub_tag_code_serialization: 14
 has_sub_tag_code_parsing: 14
 has_sub_concept_jsonorg_reference_implementation: 14
+related:
+  - path: ../_Matthias/Code/NET/_root/_projects/root.web/Data/xmls/htmls/xtx
+    shared-tags: [code/parsing, code/serialization]
+  - path: ../_Matthias/Code/NET/org.structs/parser
+    shared-tags: [code/parsing, code/serialization]
+  - path: ../_Matthias/Code/Java/streamIO/object/yaml
+    shared-tags: [code/parsing]
+  - path: ../_Matthias/Code/NET/_root/_projects/spocWeb.styledEditing/xml
+    shared-tags: [code/parsing]
+  - path: ../_Matthias/Code/NET/_root/_projects/yaml.nodes/Serialization/Attributes
+    shared-tags: [code/serialization]
 ---
 
 # json

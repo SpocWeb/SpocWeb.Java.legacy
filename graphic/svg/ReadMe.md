@@ -51,6 +51,17 @@ has_sub_tag_code_parsing: 2
 has_sub_tag_code_rendering: 1
 has_sub_concept_empty_sax_handler_placeholder: 1
 has_sub_concept_svg_applet_renderer: 1
+related:
+  - path: ../_Matthias/Code/NET/_root/_projects/spocWeb.styledEditing/bracketing
+    shared-tags: [code/parsing, code/rendering]
+  - path: ../_Matthias/Code/NET/_root/_projects/spocWeb.styledEditing/folding
+    shared-tags: [code/parsing, code/rendering]
+  - path: ../_Matthias/Code/NET/_root/_projects/spocWeb.styledEditing/rendering/backGroundTasks
+    shared-tags: [code/rendering]
+  - path: ../_Matthias/Code/Java/streamIO/object/yaml
+    shared-tags: [code/parsing]
+  - path: ../_Matthias/Code/NET/_root/_projects/spocWeb.styledEditing/xml
+    shared-tags: [code/parsing]
 ---
 
 # svg

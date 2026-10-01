@@ -64,6 +64,9 @@ has_sub_concept_side_side_angle_rule: 1
 has_sub_concept_side_side_side_rule: 1
 has_sub_concept_triangle_knowledge_source_base: 1
 has_sub_concept_triangle_value_object: 1
+related:
+  - path: ../_Matthias/Code/NET/_org.structs/TriangleBlackboard
+    shared-tags: [code/blackboard_pattern]
 ---
 
 # blackBoard

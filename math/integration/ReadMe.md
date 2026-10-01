@@ -65,6 +65,13 @@ has_sub_concept_constant_scalar_field: 1
 has_sub_concept_parameterized_scalar_field_interface: 1
 has_sub_concept_stratified_monte_carlo_integrator: 1
 has_sub_concept_test_scalar_field: 1
+related:
+  - path: ../_Matthias/Code/Pascal/TABELLEN
+    shared-tags: [code/numerical_integration]
+  - path: ../_Matthias/Code/NET/_org.structs/ODEs
+    shared-tags: [code/numerical_integration]
+  - path: ../_Matthias/Code/NET/Java/math/integration
+    shared-tags: [code/numerical_integration]
 ---
 
 # integration

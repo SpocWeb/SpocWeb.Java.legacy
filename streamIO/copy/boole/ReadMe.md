@@ -126,6 +126,9 @@ has_sub_concept_probability: 1
 has_sub_concept_three_valued_logic: 1
 has_sub_concept_constant_immutable_wrapper: 1
 has_sub_concept_order_relation: 1
+related:
+  - path: ../_Matthias/Code/NET/Java/streamIO/copy/boole
+    shared-tags: [code/boolean_algebra, code/lattice_structure]
 ---
 
 # boole

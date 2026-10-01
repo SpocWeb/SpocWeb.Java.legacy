@@ -56,6 +56,11 @@ has_sub_tag_code_attached_property: 4
 has_sub_concept_gui_property_metadata: 2
 has_sub_concept_unimplemented_stub: 1
 has_sub_concept_scratch_test_class: 1
+related:
+  - path: ../_Matthias/Code/Java/synch/aspect
+    shared-tags: [code/attached_property]
+  - path: ../_Matthias/Code/NET/WPF/WpfRichText.Ex/WpfRichText.Ex/AttachedProperties
+    shared-tags: [code/attached_property]
 ---
 
 # property

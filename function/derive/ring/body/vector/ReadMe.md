@@ -111,6 +111,11 @@ has_sub_concept_product_rule: 1
 has_sub_concept_quotient_rule: 1
 has_sub_concept_sum_rule: 1
 has_sub_concept_test_harness: 1
+related:
+  - path: ../_Matthias/Code/Java/function/vector
+    shared-tags: [code/differential_integration, code/vector_math]
+  - path: ../_Matthias/Code/NET/Java/function/vector
+    shared-tags: [code/differential_integration, code/vector_math]
 ---
 
 # vector

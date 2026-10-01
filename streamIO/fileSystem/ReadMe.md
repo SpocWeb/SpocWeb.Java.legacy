@@ -65,6 +65,9 @@ has_sub_tag_code_iterator_pattern: 2
 has_sub_tag_code_file_backup: 1
 has_sub_concept_file_system: 4
 has_sub_concept_file_i_o: 4
+related:
+  - path: ../_Matthias/Code/NET/Java/streamIO/fileSystem
+    shared-tags: [code/file_backup, code/file_filtering]
 ---
 
 # fileSystem

@@ -60,6 +60,11 @@ has_sub_tag_code_type_system: 6
 has_sub_tag_code_domain_model: 6
 has_sub_concept_relationship_modelling: 6
 has_sub_concept_domain_model: 6
+related:
+  - path: ../_Matthias/Code/NET/_std/SpecBuilderPattern/Models
+    shared-tags: [code/domain_model]
+  - path: ../_Matthias/Code/NET/_core/UnitTestProject1/Models
+    shared-tags: [code/domain_model]
 ---
 
 # analysis

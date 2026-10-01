@@ -39,6 +39,9 @@ has_sub_facet_status_legacy: 1
 has_sub_facet_complexity_3: 1
 has_sub_tag_code_audio: 1
 has_sub_concept_wav_file_reader: 1
+related:
+  - path: ../_Matthias/Code/NET/_root/_projects/spoctext/Speech
+    shared-tags: [code/audio]
 ---
 
 # sound

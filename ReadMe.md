@@ -143,6 +143,13 @@ has_sub_concept_domain_model: 35
 has_sub_concept_function_algebra: 35
 has_sub_concept_vector_field_function: 17
 has_sub_concept_primitive_and_structured_stream_i_o_core_abstractions: 36
+related:
+  - path: ../_Matthias/Code/VB/ChangeDate
+    shared-tags: [code/cli_tool]
+  - path: ../_Matthias/Code/VB/RecourseCmd
+    shared-tags: [code/cli_tool]
+  - path: ../_Matthias/Code/NET/_SpocWeb.Root/_std/SpocWeb.PptxToJson
+    shared-tags: [code/cli_tool]
 ---
 
 # Java

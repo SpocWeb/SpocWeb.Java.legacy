@@ -71,6 +71,9 @@ has_sub_facet_complexity_3: 10
 has_sub_tag_code_backtracking: 10
 has_sub_tag_code_algorithm: 10
 has_sub_concept_backtracking_search: 10
+related:
+  - path: ../_Matthias/Code/Java/graphic/example
+    shared-tags: [code/algorithm]
 ---
 
 # backTrack

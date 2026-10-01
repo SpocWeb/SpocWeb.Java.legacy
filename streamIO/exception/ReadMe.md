@@ -58,6 +58,9 @@ has_sub_tag_code_custom_exception: 5
 has_sub_tag_code_exception_wrapping: 2
 has_sub_concept_error_handling: 5
 has_sub_concept_testing: 1
+related:
+  - path: ../_Matthias/Code/NET/Java/streamIO/exception
+    shared-tags: [code/custom_exception, code/exception_wrapping]
 ---
 
 # exception

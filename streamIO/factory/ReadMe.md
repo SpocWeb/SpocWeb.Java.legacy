@@ -51,6 +51,11 @@ has_sub_tag_code_cloneable_pattern: 1
 has_sub_tag_code_reflection: 1
 has_sub_concept_object_instantiation: 2
 has_sub_concept_prototype_pattern: 2
+related:
+  - path: ../_Matthias/Code/NET/Java/streamIO/factory
+    shared-tags: [code/cloneable_pattern, code/factory_pattern]
+  - path: ../_Matthias/Code/NET/_root/db/Query/SpocDb/SpocDb/Internal/DbManagement
+    shared-tags: [code/factory_pattern, code/reflection]
 ---
 
 # factory

@@ -210,6 +210,9 @@ has_sub_concept_rational_numbers_and_interval_arithmetic: 16
 has_sub_concept_group_semigroup_algebra: 15
 has_sub_concept_jsonorg_reference_implementation: 15
 has_sub_concept_pluggable_byte_stream_filter_infrastructure_and_javaio_adapters: 15
+related:
+  - path: ../_Matthias/Code/NET/Java/streamIO
+    shared-tags: [code/assertion_framework, code/logging]
 ---
 
 # streamIO

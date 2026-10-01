@@ -200,6 +200,11 @@ has_sub_concept_backtracking_search: 11
 has_sub_concept_stream_filter_input: 11
 has_sub_concept_minimal_jdbc_driver_over_separated_format_flat_files: 9
 has_sub_concept_xml_html_parsing: 8
+related:
+  - path: ../_Matthias/Code/NET/_std/IGraphs/streams
+    shared-tags: [code/stream_processing]
+  - path: ../_Matthias/Code/NET/_std/IMathsImpl/streams
+    shared-tags: [code/stream_processing]
 ---
 
 # object

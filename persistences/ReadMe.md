@@ -55,6 +55,9 @@ has_sub_tag_code_domain_model: 1
 has_sub_concept_persistence: 2
 has_sub_concept_record_identity: 1
 has_sub_concept_domain_model: 1
+related:
+  - path: ../_Matthias/Code/Java/knowledge
+    shared-tags: [code/domain_model, code/entity_model]
 ---
 
 # persistences

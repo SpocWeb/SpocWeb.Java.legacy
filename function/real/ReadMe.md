@@ -74,6 +74,13 @@ has_sub_facet_complexity_2: 12
 has_sub_tag_code_running_aggregate: 12
 has_sub_tag_code_mathematical_function: 12
 has_sub_concept_streaming_numeric_aggregator: 12
+related:
+  - path: ../_Matthias/Code/JavaTest/OldStuff/InFilter
+    shared-tags: [code/running_aggregate]
+  - path: ../_Matthias/Code/JavaTest/OldStuff/OutFilter
+    shared-tags: [code/running_aggregate]
+  - path: ../_Matthias/Code/NET/org.structs/iFunction/real/stateful
+    shared-tags: [code/running_aggregate]
 ---
 
 # real

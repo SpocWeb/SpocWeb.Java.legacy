@@ -102,6 +102,9 @@ has_sub_concept_merging: 4
 has_sub_concept_versioning: 3
 has_sub_concept_longest_common_subsequence: 2
 has_sub_concept_branching: 1
+related:
+  - path: ../_Matthias/Code/NET/org.structs/diffPatch
+    shared-tags: [code/diff_patch, code/lcs_algorithm, code/version_tree]
 ---
 
 # diffPatch

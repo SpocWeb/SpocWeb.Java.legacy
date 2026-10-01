@@ -39,6 +39,27 @@ has_sub_facet_status_legacy: 1
 has_sub_facet_complexity_3: 1
 has_sub_tag_code_parsing: 1
 has_sub_concept_yaml_parsing_planned_unimplemented: 1
+related:
+  - path: ../_Matthias/Code/NET/_root/_projects/spocWeb.styledEditing/xml
+    shared-tags: [code/parsing]
+  - path: ../_Matthias/Code/NET/_root/_projects/xCell.engine/Expressions
+    shared-tags: [code/parsing]
+  - path: ../_Matthias/Code/NET/_root/Data/ArchieML
+    shared-tags: [code/parsing]
+  - path: ../_Matthias/Code/NET/_root/_projects/spocWeb.styledEditing/bracketing
+    shared-tags: [code/parsing]
+  - path: ../_Matthias/Code/NET/_root/_projects/root.base/Expressions/iBool/normalform
+    shared-tags: [code/parsing]
+  - path: ../_Matthias/Code/NET/_root/_projects/root.base/Expressions/iBool/rpn
+    shared-tags: [code/parsing]
+  - path: ../_Matthias/Code/NET/_root/_projects/db/Files
+    shared-tags: [code/parsing]
+  - path: ../_Matthias/Code/NET/_root/_projects/spocWeb.styledEditing/folding
+    shared-tags: [code/parsing]
+  - path: ../_Matthias/Code/Java/graphic/svg
+    shared-tags: [code/parsing]
+  - path: ../_Matthias/Code/NET/_root/_projects/spocWeb.styledEditing/indentation/CSharp
+    shared-tags: [code/parsing]
 ---
 
 # yaml

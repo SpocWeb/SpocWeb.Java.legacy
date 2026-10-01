@@ -121,6 +121,11 @@ has_sub_concept_integer_dense_matrix: 1
 has_sub_concept_matrix_base_class: 1
 has_sub_concept_qr_decomposition: 1
 has_sub_concept_quaternion_rotation_algebra: 1
+related:
+  - path: ../_Matthias/Code/NET/org.structs/math/matrix
+    shared-tags: [code/matrix_algebra, code/numerical_linear_algebra]
+  - path: ../_Matthias/Code/NET/Java/math/matrix
+    shared-tags: [code/matrix_algebra, code/numerical_linear_algebra]
 ---
 
 # matrix

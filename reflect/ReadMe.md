@@ -104,6 +104,13 @@ has_sub_tag_code_type_system: 1
 has_sub_concept_object_classification: 7
 has_sub_concept_domain_model: 9
 has_sub_concept_reflection: 3
+related:
+  - path: ../_Matthias/Code/Java/knowledge
+    shared-tags: [code/domain_model, code/reflection]
+  - path: ../_Matthias/Code/NET/_std/SpecBuilderPattern/Models
+    shared-tags: [code/domain_model]
+  - path: ../_Matthias/Code/NET/_core/UnitTestProject1/Models
+    shared-tags: [code/domain_model]
 ---
 
 # reflect

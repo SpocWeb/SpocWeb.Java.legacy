@@ -60,6 +60,13 @@ has_sub_tag_code_observer_pattern: 3
 has_sub_concept_composite_value_object: 3
 has_sub_concept_composite_value_object_container: 1
 has_sub_concept_string_value_aspect: 1
+related:
+  - path: ../_Matthias/Code/NET/_std/IGraphs/Interfaces/observe
+    shared-tags: [code/observer_pattern]
+  - path: ../_Matthias/Code/NET/_std/IMathsImpl/Interfaces/observe
+    shared-tags: [code/observer_pattern]
+  - path: ../_Matthias/Code/Java/synch/property
+    shared-tags: [code/attached_property]
 ---
 
 # aspect

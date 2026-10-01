@@ -63,6 +63,9 @@ has_sub_facet_complexity_4: 8
 has_sub_tag_code_complex_numbers: 8
 has_sub_tag_code_fourier_transform: 8
 has_sub_concept_complex_number_arithmetic_and_fourier_transform: 8
+related:
+  - path: ../_Matthias/Code/NET/Java/streamIO/copy/group/ring/metric/body/complex
+    shared-tags: [code/complex_numbers, code/fourier_transform]
 ---
 
 # complex

@@ -78,6 +78,21 @@ has_sub_concept_fractal_applet_escape_time_set: 1
 has_sub_concept_plasma_height_map_fractal: 1
 has_sub_concept_terrain_erosion_generator: 1
 has_sub_concept_turtle_graphics_fractal: 1
+related:
+  - path: ../_Matthias/Code/NET/_root/Data/RubiksCube/Model
+    shared-tags: [code/algorithm]
+  - path: ../_Matthias/Code/NET/_root/_projects/root.base/Graphs
+    shared-tags: [code/algorithm]
+  - path: ../_Matthias/Code/NET/org.structs/root/iFunctions/integers
+    shared-tags: [code/algorithm]
+  - path: ../_Matthias/Code/NET/org.structs/root/interpol
+    shared-tags: [code/algorithm]
+  - path: ../_Matthias/Code/NET/org.structs/structs
+    shared-tags: [code/algorithm]
+  - path: ../_Matthias/Code/Java/streamIO/object/backTrack
+    shared-tags: [code/algorithm]
+  - path: ../_Matthias/Code/NET/_root/Graphs/Graphs/Graphs.Tests/Algorithms
+    shared-tags: [code/algorithm]
 ---
 
 # example

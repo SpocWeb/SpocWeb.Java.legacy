@@ -104,6 +104,9 @@ has_sub_concept_castor_data_transfer_object: 16
 has_sub_concept_castor_data_transfer_object_base: 1
 has_sub_concept_castor_data_transfer_object_root: 1
 has_sub_concept_data_consistency_corrector: 1
+related:
+  - path: ../_Matthias/Code/NET/_root/Offices/DocFragger/DocFraggerWordAddIn/Entities
+    shared-tags: [code/data_transfer_object]
 ---
 
 # test

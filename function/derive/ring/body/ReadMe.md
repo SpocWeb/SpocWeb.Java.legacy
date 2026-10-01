@@ -167,6 +167,9 @@ has_sub_concept_inverse_trigonometric_functions: 3
 has_sub_concept_statistical_distributions: 3
 has_sub_concept_magnetism: 2
 has_sub_concept_thermodynamics: 2
+related:
+  - path: ../_Matthias/Code/Java/function/derive
+    shared-tags: [code/derivable_function_contract, code/mathematical_function]
 ---
 
 # body

@@ -24,6 +24,27 @@ has_sub_units: 1
 has_sub_tag_code_java_library: 1
 has_sub_tag_code_text_processing_library: 1
 has_sub_tag_code_vendored_code: 1
+related:
+  - path: ../_Matthias/Code/Python/_NLP
+    shared-tags: [code/nlp, code/vendored_code]
+  - path: ../_Matthias/Code/LISP/Readable
+    shared-tags: [code/vendored_code]
+  - path: ../_Matthias/Code/LISP
+    shared-tags: [code/vendored_code]
+  - path: ../_Matthias/Code/R
+    shared-tags: [code/vendored_code]
+  - path: ../_Matthias/Code/WebSites/matthias-heuer.de
+    shared-tags: [code/vendored_code]
+  - path: ../_Matthias/Code/WebSites/matthias-heuer.de - Copy
+    shared-tags: [code/vendored_code]
+  - path: ../_Matthias/Code/Java2
+    shared-tags: [code/vendored_code]
+  - path: ../_Matthias/Code/Java2/_Android
+    shared-tags: [code/vendored_code]
+  - path: ../_Matthias/Code/Java2/_Data
+    shared-tags: [code/vendored_code]
+  - path: ../_Matthias/Code/Java2/DBs/GraphDb
+    shared-tags: [code/vendored_code]
 ---
 
 # _NaturalLang

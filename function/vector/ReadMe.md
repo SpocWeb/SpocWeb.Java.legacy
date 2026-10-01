@@ -109,6 +109,11 @@ has_sub_tag_code_function_composition: 17
 has_sub_tag_code_differential_integration: 5
 has_sub_concept_vector_field_function: 17
 has_sub_concept_ode_integration: 5
+related:
+  - path: ../_Matthias/Code/Java/function/derive/ring/body/vector
+    shared-tags: [code/differential_integration, code/vector_math]
+  - path: ../_Matthias/Code/NET/Java/function/vector
+    shared-tags: [code/differential_integration, code/vector_math]
 ---
 
 # vector

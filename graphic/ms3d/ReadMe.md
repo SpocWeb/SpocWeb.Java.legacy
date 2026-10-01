@@ -104,6 +104,9 @@ has_sub_concept_ms3d_model_renderer: 1
 has_sub_concept_ms3d_skeletal_joint: 1
 has_sub_concept_ms3d_texture_coordinate_map: 1
 has_sub_concept_ms3d_texture_loader: 1
+related:
+  - path: ../_Matthias/Code/NET/Java/graphic/ms3d
+    shared-tags: [code/binary_parsing, code/mesh_data, code/skeletal_animation]
 ---
 
 # ms3d

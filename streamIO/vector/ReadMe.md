@@ -60,6 +60,19 @@ has_sub_tag_code_quasi_random_sequence: 2
 has_sub_concept_monte_carlo: 4
 has_sub_concept_random_sampling: 4
 has_sub_concept_combinatorics: 3
+related:
+  - path: ../_Matthias/Code/NET/_std/IGraphs/Functions
+    shared-tags: [code/combinatorics]
+  - path: ../_Matthias/Code/NET/_std/IMathsImpl/Functions
+    shared-tags: [code/combinatorics]
+  - path: ../_Matthias/Code/NET/_org.structs/functions/integers
+    shared-tags: [code/combinatorics]
+  - path: ../_Matthias/Code/Java/function/byref/combinatoric
+    shared-tags: [code/combinatorics]
+  - path: ../_Matthias/Code/NET/_std/IGraphs/Interfaces/Functions
+    shared-tags: [code/combinatorics]
+  - path: ../_Matthias/Code/NET/_std/IMathsImpl/Interfaces/functions
+    shared-tags: [code/combinatorics]
 ---
 
 # vector

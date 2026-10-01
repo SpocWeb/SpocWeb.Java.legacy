@@ -230,6 +230,11 @@ has_sub_concept_2d_coordinate_transform_variant: 1
 has_sub_concept_2d_figure_drawing_helpers: 1
 has_sub_concept_2d_graph_demo_test_harness: 1
 has_sub_concept_2d_graph_editing_model: 1
+related:
+  - path: ../_Matthias/Code/Java/graphic/implement
+    shared-tags: [code/graphics]
+  - path: ../_Matthias/Code/NET/_root/_projects/spocWeb.styledEditing/rendering/backGroundTasks
+    shared-tags: [code/rendering]
 ---
 
 # graphic

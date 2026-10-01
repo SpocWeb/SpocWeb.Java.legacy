@@ -59,6 +59,19 @@ has_sub_facet_complexity_2: 6
 has_sub_tag_code_stream_abstraction: 6
 has_sub_tag_code_adapter_pattern: 6
 has_sub_concept_adapter_pattern: 6
+related:
+  - path: ../_Matthias/Code/NET/_root/_projects/db/db/stream/EnumeratorDataReader.cs
+    shared-tags: [code/adapter_pattern]
+  - path: ../_Matthias/Code/NET/_SpocWeb.Root/_std/SpocWeb.Streams/streams
+    shared-tags: [code/adapter_pattern]
+  - path: ../_Matthias/Code/NET/_std/IGraphs/Interfaces/Streams
+    shared-tags: [code/stream_abstraction]
+  - path: ../_Matthias/Code/NET/_std/IMathsImpl/Interfaces/streams
+    shared-tags: [code/stream_abstraction]
+  - path: ../_Matthias/Code/NET/_SpocWeb.Root/_std/SpocWeb.IMaths/streams
+    shared-tags: [code/stream_abstraction]
+  - path: ../_Matthias/Code/NET/_SpocWeb.Root/_std/SpocWeb.IMaths/streams/ReaderWriter
+    shared-tags: [code/stream_abstraction]
 ---
 
 # adapter

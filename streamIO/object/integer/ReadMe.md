@@ -63,6 +63,11 @@ has_sub_facet_complexity_3: 7
 has_sub_tag_code_xml: 7
 has_sub_tag_code_parsing: 7
 has_sub_concept_xml_html_parsing: 7
+related:
+  - path: ../_Matthias/Code/Java/streamIO/object/yaml
+    shared-tags: [code/parsing]
+  - path: ../_Matthias/Code/NET/_root/_projects/spocWeb.styledEditing/xml
+    shared-tags: [code/parsing]
 ---
 
 # integer

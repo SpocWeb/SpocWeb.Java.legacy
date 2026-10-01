@@ -54,6 +54,11 @@ has_sub_facet_complexity_4: 5
 has_sub_tag_code_scheduling: 5
 has_sub_tag_code_adapter: 5
 has_sub_concept_small_adapter_and_scheduling_helper_classes: 5
+related:
+  - path: ../_Matthias/Code/NET/_org.structs/maths/quantities/functions
+    shared-tags: [code/adapter]
+  - path: ../_Matthias/Code/NET/_std/IGraphs/DatesTimes
+    shared-tags: [code/scheduling]
 ---
 
 # util
