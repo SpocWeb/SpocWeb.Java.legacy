@@ -51,7 +51,7 @@ import graphs.KeyValuePair;
   * @see streamIO.Object.Enumerator.Container.Container for a description of it's specifics.
   * <!-- docstate
   * tags: [code/container, code/hash_table, code/container_iteration]
-  * concepts: [Concrete Storage Containers - Arrays - Hash Tables and Relations]
+  * concepts: [Storage Containers, Hash Tables]
   * facets: {layer: utility, status: legacy, complexity: 4}
   * digest: 11048cfa83922b99c3689be02a477a05370947f50f56364aaff851920716bbe9
   * stale: false

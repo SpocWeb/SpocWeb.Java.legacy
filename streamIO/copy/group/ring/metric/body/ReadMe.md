@@ -60,11 +60,12 @@ tags:
 - code/rational_numbers
 - code/interval_arithmetic
 concepts:
-- Rational Numbers and Interval Arithmetic
+- Rational Numbers
+- Interval Arithmetic
 facets:
   layer: domain
   status: legacy
-  complexity: 4
+  complexity: '4'
 description: 'This folder implements `IBody`/`Body` - a Metric Body (a Field with a Norm/Order: +,-,*,/,0,1, plus distance and comparison) - and its concrete number types. `AMetricBody` provides the shared analytical Machinery (Pi/e/log constants, trigonometric series) on top of the abstract Algebra layer, and `ABodyDouble`/`BodyDouble` specialise this to primitive `double`. `Fraction`/`FractionLong` layer an exact rational representation on top of any (respectively primitive-`long`) `IMetricIRing` Numerator/ Denominator pair. `IntervalA`/`IntervalDbl`/`IntervalDblA`/`IntervalP` model an ordered Interval (affine or projective) over a scalar Metric Space, and `CBody` produces constant, write-protected Representatives of any of these Body types. `TestBody` is the manual test-suite entry point for the package. The `complex/`, `units/` and `vector/` Subfolders build further number- and Tensor-domains on top of these scalar Body types.'
 dv_has_:
   sub_:
@@ -93,8 +94,10 @@ dv_has_:
       vector_:
         matrix_:
           tensor_and_manifold_interpolation: 14
-      rational_numbers_and_interval_arithmetic: 15
-      complex_number_arithmetic_and_fourier_transform: 9
+      rational_numbers: 15
+      complex_number: 9
+      fourier_transform: 9
+      interval_arithmetic: 15
       physical_units_and_conversion: 7
 has_sub_folders: 3
 has_sub_files: 99
@@ -112,8 +115,10 @@ has_sub_tag_code_interval_arithmetic: 15
 has_sub_tag_code_si_units: 7
 has_sub_tag_code_unit_conversion: 7
 has_sub_concept_vector_matrix_tensor_and_manifold_interpolation: 14
-has_sub_concept_rational_numbers_and_interval_arithmetic: 15
-has_sub_concept_complex_number_arithmetic_and_fourier_transform: 9
+has_sub_concept_rational_numbers: 15
+has_sub_concept_complex_number: 9
+has_sub_concept_fourier_transform: 9
+has_sub_concept_interval_arithmetic: 15
 has_sub_concept_physical_units_and_conversion: 7
 ---
 

@@ -42,7 +42,7 @@ concepts:
 facets:
   layer: utility
   status: legacy
-  complexity: 3
+  complexity: '3'
 description: 'Implements fuzzy logic: predicates and combinators whose truth value is a continuous degree of membership in `[0, 1]` rather than a crisp boolean. `IFuzzifier` is the single `getMembership(Object)` contract; `AFuzzyUnaryOp`/`AFuzzyBinaryOp` are abstract bases for combinators over one or two fuzzifiers, and `FuzzyNOT`/`FuzzyAND`/`FuzzyOR`/`FuzzyEQV`/ `FuzzyIMPL` implement the standard min/max-based fuzzy connectives (De Morgan''s laws hold for min/max/complement, unlike full Boolean distributivity). `FuzzyBoole` is a scalar fuzzy value that also implements `streamIO.copy.boole.Boole`, plugging fuzzy logic into the `boole` package''s own algebra. `FuzzyNumber` represents a fuzzy scalar or interval as a triangular membership function with precomputed weight and center of mass (for fast defuzzification); `FuzzyManifold` groups an ordered set of `FuzzyNumber` categories for one dimension (e.g. "jam"/"stop"/"float" traffic-speed categories) and supports fuzzification, categorization and rule-based defuzzification across multi-dimensional rule tables.'
 dv_has_:
   sub_:
@@ -82,10 +82,12 @@ has_sub_tag_code_interval_arithmetic: 1
 has_sub_concept_fuzzy_logic: 11
 has_sub_concept_boolean_algebra: 1
 related:
-  - path: ../_Matthias/Code/NET/_root/_projects/xCell.extensions/_Links
-    shared-tags: [code/fuzzy_logic]
-  - path: ../_Matthias/Code/NET/org.structs/bool/fuzzy
-    shared-tags: [code/fuzzy_logic]
+- path: ../_Matthias/Code/NET/_root/_projects/xCell.extensions/_Links
+  shared-tags:
+  - code/fuzzy_logic
+- path: ../_Matthias/Code/NET/org.structs/bool/fuzzy
+  shared-tags:
+  - code/fuzzy_logic
 ---
 
 # fuzzy

@@ -19,12 +19,12 @@ tags:
 - code/in_place_operation
 - code/abstract_base
 concepts:
-- g-adic Number Representation
-- Shift and Rotate
+- Shift
+- Rotate
 facets:
   layer: utility
   status: legacy
-  complexity: 3
+  complexity: '3'
 description: Models bit/digit-level shifting and rotation for numbers represented in a g-adic (radix-g positional) system, where one shift is equivalent to multiplying or dividing by the radix. `IShiftAble` is the minimal contract (single-position arithmetic/logical shift and rotate, plus an externalized carry so state does not have to live on the object itself); `ShiftAble` extends it with the multi-position and reversal operations built from those primitives. `AShiftAble` supplies the default multi-position and reversal logic in terms of the abstract single-position primitives, using the "delegation to self" pattern (a `self` field standing in for `this`) so a concrete numeric class can mix this behaviour in without single inheritance getting in the way. `SwapAble` is a separate, narrower contract for index-based item swapping used by random-access iterators; it is not part of the shift/rotate hierarchy.
 dv_has_:
   sub_:
@@ -46,9 +46,10 @@ dv_has_:
         delegation: 1
         abstract_base: 1
     concept_:
-      shift_and_rotate: 3
+      shift_and_rotate: 2
       random_access_iteration: 1
-      g_adic_number_representation: 1
+      rotate: 1
+      shift: 1
       delegation_pattern: 1
 has_sub_folders: 0
 has_sub_files: 14
@@ -61,9 +62,10 @@ has_sub_tag_code_in_place_operation: 4
 has_sub_tag_code_bit_manipulation: 2
 has_sub_tag_code_delegation: 1
 has_sub_tag_code_abstract_base: 1
-has_sub_concept_shift_and_rotate: 3
+has_sub_concept_shift_and_rotate: 2
 has_sub_concept_random_access_iteration: 1
-has_sub_concept_g_adic_number_representation: 1
+has_sub_concept_rotate: 1
+has_sub_concept_shift: 1
 has_sub_concept_delegation_pattern: 1
 ---
 

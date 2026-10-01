@@ -155,7 +155,7 @@ import streamIO.Log;
  * digest: 5ecc21792202700fab2774b67d0ad00bccc11dab61cd9ea752a7fc8ba4fd83ab
  * stale: false
  * tags: [code/simplex_method, code/optimization]
- * concepts: [Linear Programming Simplex Tableau Solver]
+ * concepts: [Linear Programming, Simplex]
  * facets: {layer: utility, status: legacy, complexity: 4}
  * -->
  */
@@ -176,7 +176,7 @@ public class SimplexMinimizer {
 	 * @return Index of maximum Value
 	 * <!-- docstate
 	 * tags: [code/simplex_method]
-	 * concepts: [Simplex Tableau Pivot Column Selection]
+	 * concepts: [Simplex Pivot, Column]
 	 * facets: {layer: utility, status: legacy, complexity: 2}
 	 * -->
 	 */
@@ -209,7 +209,7 @@ public class SimplexMinimizer {
 	 * @param ip return Value
 	 * <!-- docstate
 	 * tags: [code/simplex_method]
-	 * concepts: [Simplex Tableau Pivot Row Selection]
+	 * concepts: [Linear Programming, Simplex]
 	 * facets: {layer: utility, status: legacy, complexity: 2}
 	 * -->
 	 */
@@ -355,7 +355,7 @@ public class SimplexMinimizer {
 	 * @return the Length of index1 or -1 if there is no Solution due to conflicting Constraints
 	 * <!-- docstate
 	 * tags: [code/simplex_method]
-	 * concepts: [Simplex Feasible Start Point Search]
+	 * concepts: [Simplex Start Point]
 	 * facets: {layer: utility, status: legacy, complexity: 4}
 	 * -->
 	 */

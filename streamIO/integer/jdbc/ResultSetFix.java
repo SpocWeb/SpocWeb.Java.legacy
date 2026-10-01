@@ -118,7 +118,7 @@ import streamIO.object.parser.InputStream2StreamIn;
   * digest: 24419cd1f4a0102c4e26e3ee13bf3ad52622606b2b69215699bfbf146e3ff136
   * stale: false
   * tags: [code/jdbc_adapter, code/database_access, code/database_driver]
-  * concepts: [Filesystem-Backed JDBC Driver Framework with Fixed-Length and Separator-Delimited Table Storage]
+  * concepts: [JDBC Driver, Table Storage]
   * facets: {layer: domain, status: legacy, complexity: 4}
   * -->
   */

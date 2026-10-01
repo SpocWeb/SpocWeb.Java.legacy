@@ -42,7 +42,7 @@ import math.vector.VectorInt;
  * digest: bb105667adbb0fbb969ea5270384eb0686f7e91b34b778cbc49bf6527c08e6ad
  * stale: false
  * tags: [code/jdbc_adapter, code/database_access, code/database_driver]
- * concepts: [Filesystem-Backed JDBC Driver Framework with Fixed-Length and Separator-Delimited Table Storage]
+ * concepts: [JDBC Driver, Table Storage]
  * facets: {layer: domain, status: legacy, complexity: 4}
  * -->
  */

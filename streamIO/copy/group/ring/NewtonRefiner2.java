@@ -14,7 +14,7 @@ import function.IFunction;
  * digest: d7647936271a26ef0f16eae6940a02dc38861d3c3d6659e624ba1ead93ace390
  * stale: false
  * tags: [code/ring_theory, code/ode_solver]
- * concepts: [Ring Algebra and ODE Solvers]
+ * concepts: [Ring Algebra, ODE Solvers]
  * facets: {layer: domain, status: legacy, complexity: 4}
  * -->
  */

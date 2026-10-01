@@ -36,7 +36,7 @@ import function.IFunction;
  * digest: f6a21b0bff4a065d1dfb3a7591801a116aed7ae9faed494d3d94a13c8a12f8ec
  * stale: false
  * tags: [code/ring_theory, code/ode_solver]
- * concepts: [Ring Algebra and ODE Solvers]
+ * concepts: [Ring Algebra, ODE Solvers]
  * facets: {layer: domain, status: legacy, complexity: 4}
  * -->
  */

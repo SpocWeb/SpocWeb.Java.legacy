@@ -55,7 +55,7 @@ concepts:
 facets:
   layer: domain
   status: legacy
-  complexity: 4
+  complexity: '4'
 description: 'This folder defines the additive Algebraic Group layer of the streamIO copy-Semantics hierarchy: `ISemiGroup`/`ASemiGroup` model a plain additive SemiGroup (G,+), and `IGroup`/`AGroup` extend it with Subtraction and a neutral 0 Element (G,+,-,0) - symmetric to the multiplicative `groupM` folder (a sibling folder outside this scope), which it is combined with by Delegation rather than Interface Inheritance. `IDblGroup`/`AGroupDbl` and `ILngGroup`/`AGroupLng` add direct `double`/`long` Overloads for performance, `IIGroup`/`IISemiGroup` factor out the single abstract `+=`/`-=` Operation each concrete Group must define, and `CGroup`/`CSemiGroup` hold shared Constant Implementations. `DateTime` is a self-contained Date/Time/Julian-Day/Calendar utility Class (not part of the Group Algebra itself). `TestGroup` is the manual test-suite entry point. The `ring/` Subfolder builds the multiplicative Ring Algebra and its Number types on top of this additive Group.'
 dv_has_:
   sub_:
@@ -82,16 +82,19 @@ dv_has_:
         group_algebra: 14
         interpolation: 14
     concept_:
-      ring_algebra_and_ode_solvers: 29
-      rational_numbers_and_interval_arithmetic: 16
-      metric_spaces_root_finding_and_numerical_integration: 41
+      ode_solvers: 29
+      ring_algebra: 29
+      rational_numbers: 16
+      metric_spaces: 41
+      root_finding: 41
       vector_:
         matrix_:
           tensor_and_manifold_interpolation: 14
       group_:
         semigroup_algebra: 14
-      complex_number_arithmetic_and_fourier_transform: 9
-      physical_units_and_conversion: 7
+      complex_number: 9
+      fourier_transform: 9
+      interval_arithmetic: 16
 has_sub_folders: 6
 has_sub_files: 283
 has_sub_units: 130
@@ -108,13 +111,16 @@ has_sub_tag_code_tensor: 14
 has_sub_tag_code_date_time: 14
 has_sub_tag_code_group_algebra: 14
 has_sub_tag_code_interpolation: 14
-has_sub_concept_ring_algebra_and_ode_solvers: 29
-has_sub_concept_rational_numbers_and_interval_arithmetic: 16
-has_sub_concept_metric_spaces_root_finding_and_numerical_integration: 41
+has_sub_concept_ode_solvers: 29
+has_sub_concept_ring_algebra: 29
+has_sub_concept_rational_numbers: 16
+has_sub_concept_metric_spaces: 41
+has_sub_concept_root_finding: 41
 has_sub_concept_vector_matrix_tensor_and_manifold_interpolation: 14
 has_sub_concept_group_semigroup_algebra: 14
-has_sub_concept_complex_number_arithmetic_and_fourier_transform: 9
-has_sub_concept_physical_units_and_conversion: 7
+has_sub_concept_complex_number: 9
+has_sub_concept_fourier_transform: 9
+has_sub_concept_interval_arithmetic: 16
 ---
 
 # group

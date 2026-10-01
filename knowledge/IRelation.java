@@ -22,6 +22,9 @@ import java.sql.SQLException;
  * mtime: 2026-09-05T08:07:36Z
  * digest: 1966f21371d872d66df711088938453447ec7416b3ee3d116fee3cd704663924
  * stale: false
+ * tags: [code/entity_model, code/domain_model, code/interface_contract]
+ * concepts: [Domain Model, Relationship Modelling]
+ * facets: {layer: domain, status: stable, complexity: 2}
  * -->
  */
 public interface IRelation

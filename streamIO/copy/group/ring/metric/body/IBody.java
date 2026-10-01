@@ -10,7 +10,7 @@ package streamIO.copy.group.ring.metric.body;
  * Eventually I'm gonna stop adding Functions directly to Body
  * <!-- docstate
  * tags: [code/rational_numbers, code/interval_arithmetic]
- * concepts: [Rational Numbers and Interval Arithmetic]
+ * concepts: [Rational Numbers, Interval Arithmetic]
  * facets: {layer: domain, status: legacy, complexity: 4}
  * digest: e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855
  * stale: false

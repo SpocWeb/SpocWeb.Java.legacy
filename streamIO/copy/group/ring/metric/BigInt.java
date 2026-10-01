@@ -51,7 +51,7 @@ import function.ICountAble;
  * digest: 5e27082f717c3e985a604ecb7f876d7f461017fae1ea2411b483503d343e25a8
  * stale: false
  * tags: [code/metric_space, code/root_finding, code/numerical_integration, code/big_integer_arithmetic]
- * concepts: [Metric Spaces - Root Finding and Numerical Integration]
+ * concepts: [Metric Spaces, Root Finding]
  * facets: {layer: domain, status: legacy, complexity: 4}
  * -->
  */

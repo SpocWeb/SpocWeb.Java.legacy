@@ -12,7 +12,7 @@ import streamIO.object.ModificationException;
  * digest: 925f946d490dd1db57cb3aff3f6f1f657e58c88e118dfe4b3e96ba4e6f384329
  * stale: true
  * tags: [code/enumerator, code/iterator_adapter]
- * concepts: [Custom Streaming Enumerator and Iterator Bridge Layer for Object Collections]
+ * concepts: [Streaming Enumerator, Iterator]
  * facets: {layer: utility, status: legacy, complexity: 4}
  * -->
  * Only currItem not implemented yet! */

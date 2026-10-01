@@ -41,7 +41,7 @@ import streamIO.integer.random.RandomQuick;
  * digest: 86123cdd23dbadcd9ef9917231a7d1deb2e27591675cb6246ac493988a3393b6
  * stale: false
  * tags: [code/error_correction, code/convolutional_encoding]
- * concepts: [Forward Error Correction Codecs - Repetition and Convolutional Encoding]
+ * concepts: [Error Correction, Convolutional Encoding]
  * facets: {layer: utility, status: legacy, complexity: 3}
  * -->
  */

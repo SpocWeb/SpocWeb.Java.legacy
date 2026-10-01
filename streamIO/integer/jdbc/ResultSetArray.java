@@ -45,7 +45,7 @@ import streamIO.object.parser.jdbc.ResultSetSep;
  * digest: 08f0cd9c3ecf630b180815e1300cddb943b0115287ec57abeb7039e6ee86ffaf
  * stale: false
  * tags: [code/jdbc_adapter, code/database_access, code/database_driver]
- * concepts: [Filesystem-Backed JDBC Driver Framework with Fixed-Length and Separator-Delimited Table Storage]
+ * concepts: [JDBC Driver, Table Storage]
  * facets: {layer: domain, status: legacy, complexity: 4}
  * -->
  */

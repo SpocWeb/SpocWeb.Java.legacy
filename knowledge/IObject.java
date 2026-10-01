@@ -19,6 +19,9 @@ import java.sql.SQLException;
  * mtime: 2026-09-05T08:07:26Z
  * digest: 4855d745126326a3a5dfef45e7fef31c9f50798a59a098db19119792967a942d
  * stale: false
+ * tags: [code/entity_model, code/interface_contract, code/type_system]
+ * concepts: [Domain Model, Object Classification]
+ * facets: {layer: domain, status: stable, complexity: 2}
  * -->
  */
 public interface IObject {

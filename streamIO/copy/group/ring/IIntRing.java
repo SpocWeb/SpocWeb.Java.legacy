@@ -10,7 +10,7 @@ import streamIO.copy.groupM.IGroupM;
  * digest: 52ea65e70b8a0275ab844f2aa86ec0e9a2f0cf06490cc277dd4e9ce4c3d4b0fd
  * stale: false
  * tags: [code/ring_theory, code/ode_solver]
- * concepts: [Ring Algebra and ODE Solvers]
+ * concepts: [Ring Algebra, ODE Solvers]
  * facets: {layer: domain, status: legacy, complexity: 4}
  * -->
  * It also defines the Complement for the Processing of gAdic Numbers.  */

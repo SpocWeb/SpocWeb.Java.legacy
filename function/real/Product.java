@@ -18,7 +18,7 @@ package function.real;
   * mtime: 2026-09-05T16:44:42Z
   * digest: 350e2b4852860aaf8ca83c78dc698282926d636ed6e2b44c8a0f7d5fcbd8dc69
   * stale: false
-  * tags: [code/mathematical_function, code/running_aggregate]
+  * tags: [code/running_aggregate, code/mathematical_function]
   * concepts: [Streaming Numeric Aggregator]
   * facets: {layer: utility, status: legacy, complexity: 2}
   * -->

@@ -27,6 +27,9 @@ import java.sql.SQLException;
  * mtime: 2026-09-05T08:12:43Z
  * digest: 33b966511689c9b9caed04d6f16b44d712582f3fef5f9ca6fcf4b2b07ad75b8a
  * stale: false
+ * tags: [code/entity_model, code/composite_key, code/orm, code/lazy_loading]
+ * concepts: [Domain Model, Persistence]
+ * facets: {layer: data, status: stable, complexity: 3}
  * -->
  */
 public class BasicAttribute

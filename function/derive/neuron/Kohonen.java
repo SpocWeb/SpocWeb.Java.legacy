@@ -1024,7 +1024,7 @@ extends ASlab {
  * mtime: 2026-09-05T16:32:23Z
  * digest: 65a4caef85d3b4e1b0b917c9a637629949b21586d03fec9fe6eb150c1c6290b8
  * stale: false
- * tags: [code/neural_network, code/testing]
+ * tags: [code/neural_network, code/test]
  * concepts: [Self-Organizing Map Test Harness]
  * facets: {layer: test, status: legacy, complexity: 2}
  * -->

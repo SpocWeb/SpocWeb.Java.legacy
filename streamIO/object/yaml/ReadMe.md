@@ -8,11 +8,11 @@ digest:
 tags:
 - code/parsing
 concepts:
-- YAML Parsing (Planned - Unimplemented)
+- YAML Parsing
 facets:
   layer: utility
   status: legacy
-  complexity: 3
+  complexity: '3'
 description: 'Reserved for a future YAML 1.1 parser. `YamlParser` is currently an empty stub: it carries only a detailed YAML 1.1 syntax reference card in its class comment (collection/scalar/alias indicators, tag properties, escape codes) and has no fields, no parsing logic, and an empty `main()`. There is nothing here yet to security-review, since no untrusted input is actually parsed by this class.'
 dv_has_:
   sub_:
@@ -30,7 +30,7 @@ dv_has_:
       code_:
         parsing: 1
     concept_:
-      yaml_parsing_planned_unimplemented: 1
+      yaml_parsing: 1
 has_sub_folders: 0
 has_sub_files: 3
 has_sub_units: 1
@@ -38,28 +38,38 @@ has_sub_facet_layer_utility: 1
 has_sub_facet_status_legacy: 1
 has_sub_facet_complexity_3: 1
 has_sub_tag_code_parsing: 1
-has_sub_concept_yaml_parsing_planned_unimplemented: 1
+has_sub_concept_yaml_parsing: 1
 related:
-  - path: ../_Matthias/Code/NET/_root/_projects/spocWeb.styledEditing/xml
-    shared-tags: [code/parsing]
-  - path: ../_Matthias/Code/NET/_root/_projects/xCell.engine/Expressions
-    shared-tags: [code/parsing]
-  - path: ../_Matthias/Code/NET/_root/Data/ArchieML
-    shared-tags: [code/parsing]
-  - path: ../_Matthias/Code/NET/_root/_projects/spocWeb.styledEditing/bracketing
-    shared-tags: [code/parsing]
-  - path: ../_Matthias/Code/NET/_root/_projects/root.base/Expressions/iBool/normalform
-    shared-tags: [code/parsing]
-  - path: ../_Matthias/Code/NET/_root/_projects/root.base/Expressions/iBool/rpn
-    shared-tags: [code/parsing]
-  - path: ../_Matthias/Code/NET/_root/_projects/db/Files
-    shared-tags: [code/parsing]
-  - path: ../_Matthias/Code/NET/_root/_projects/spocWeb.styledEditing/folding
-    shared-tags: [code/parsing]
-  - path: ../_Matthias/Code/Java/graphic/svg
-    shared-tags: [code/parsing]
-  - path: ../_Matthias/Code/NET/_root/_projects/spocWeb.styledEditing/indentation/CSharp
-    shared-tags: [code/parsing]
+- path: ../_Matthias/Code/NET/_root/_projects/spocWeb.styledEditing/xml
+  shared-tags:
+  - code/parsing
+- path: ../_Matthias/Code/NET/_root/_projects/xCell.engine/Expressions
+  shared-tags:
+  - code/parsing
+- path: ../_Matthias/Code/NET/_root/Data/ArchieML
+  shared-tags:
+  - code/parsing
+- path: ../_Matthias/Code/NET/_root/_projects/spocWeb.styledEditing/bracketing
+  shared-tags:
+  - code/parsing
+- path: ../_Matthias/Code/NET/_root/_projects/root.base/Expressions/iBool/normalform
+  shared-tags:
+  - code/parsing
+- path: ../_Matthias/Code/NET/_root/_projects/root.base/Expressions/iBool/rpn
+  shared-tags:
+  - code/parsing
+- path: ../_Matthias/Code/NET/_root/_projects/db/Files
+  shared-tags:
+  - code/parsing
+- path: ../_Matthias/Code/NET/_root/_projects/spocWeb.styledEditing/folding
+  shared-tags:
+  - code/parsing
+- path: ../_Matthias/Code/Java/graphic/svg
+  shared-tags:
+  - code/parsing
+- path: ../_Matthias/Code/NET/_root/_projects/spocWeb.styledEditing/indentation/CSharp
+  shared-tags:
+  - code/parsing
 ---
 
 # yaml

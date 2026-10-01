@@ -45,7 +45,7 @@ import function.byref.ByRefInt;
   * digest: f99d47a92a3249555661897c84d65707651001d2afca9810c8d31c1f655a8a7f
   * stale: true
   * tags: [code/stream_parsing, code/parser]
-  * concepts: [Separator-Driven Token Parsing and Stream Adapters]
+  * concepts: [Token Parsing, Stream Adapters]
   * facets: {layer: utility, status: legacy, complexity: 4}
   * -->
   */

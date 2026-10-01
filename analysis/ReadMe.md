@@ -29,7 +29,7 @@ concepts:
 facets:
   layer: domain
   status: stable
-  complexity: 2
+  complexity: '2'
 description: 'A pure-interface implementation of Martin Fowler''s Party/Responsibility analysis pattern: `Party` (a Person or Organization, possibly composite) has a dynamically assignable `PartyType`, and `Responsibility` generalizes hierarchical relationships between Parties (parent/child, org membership, etc.) beyond a single fixed hierarchy. Each operational concept has a Knowledge-Level counterpart that constrains it: `PartyAssociation` pairs two `Party`s while `PartyTypeAssociation` pairs the corresponding `PartyType`s, and `ResponsibilityType` maintains the allowed `PartyTypeAssociation`s for a `Responsibility`. No implementation of these interfaces exists in this folder.'
 dv_has_:
   sub_:
@@ -61,10 +61,12 @@ has_sub_tag_code_domain_model: 6
 has_sub_concept_relationship_modelling: 6
 has_sub_concept_domain_model: 6
 related:
-  - path: ../_Matthias/Code/NET/_std/SpecBuilderPattern/Models
-    shared-tags: [code/domain_model]
-  - path: ../_Matthias/Code/NET/_core/UnitTestProject1/Models
-    shared-tags: [code/domain_model]
+- path: ../_Matthias/Code/NET/_std/SpecBuilderPattern/Models
+  shared-tags:
+  - code/domain_model
+- path: ../_Matthias/Code/NET/_core/UnitTestProject1/Models
+  shared-tags:
+  - code/domain_model
 ---
 
 # analysis

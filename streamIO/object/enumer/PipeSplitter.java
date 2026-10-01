@@ -34,7 +34,7 @@ import streamIO.IIStreamOut;
   * digest: e64367e38a29c6005bef34d7259415867acd8fcaf6da457d03eca7ad00c39957
   * stale: true
   * tags: [code/enumerator, code/iterator_adapter]
-  * concepts: [Custom Streaming Enumerator and Iterator Bridge Layer for Object Collections]
+  * concepts: [Streaming Enumerator, Iterator]
   * facets: {layer: utility, status: legacy, complexity: 4}
   * -->
   */

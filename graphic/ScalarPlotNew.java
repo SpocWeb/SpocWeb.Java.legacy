@@ -27,7 +27,7 @@ import java.awt.Color;
   * digest: 980690755fc2b7d9ddd2fd57556fa3e44bb78d0ee57f78cdc304a2aaf198d67a
   * stale: false
   * tags: [code/chart_rendering, code/line_rasterization]
-  * concepts: [Scalar Color Interpolation Plot (Revised)]
+  * concepts: [Scalar Color, Plot]
   * facets: {layer: domain, status: broken, complexity: 3}
   * -->
   */

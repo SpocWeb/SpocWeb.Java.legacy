@@ -20,7 +20,7 @@ import tester.ITester;
   * because the Relation is now implemented using a nested Set / Set Combination.
   * <!-- docstate
   * tags: [code/container, code/hash_table, code/container_iteration]
-  * concepts: [Concrete Storage Containers - Arrays - Hash Tables and Relations]
+  * concepts: [Storage Containers, Hash Tables]
   * facets: {layer: utility, status: legacy, complexity: 4}
   * digest: ddaab633887103b495f16bf62ed8207ebb942952c90d03ecb420c49a11f9eb83
   * stale: false

@@ -18,7 +18,7 @@ import function.IFunction;
  * digest: 8b3f75dce59d8af896170ed520dfbbe5528eab0ab0d13e5cbd19314bae2c12bc
  * stale: false
  * tags: [code/metric_space, code/root_finding, code/numerical_integration, code/big_integer_arithmetic]
- * concepts: [Metric Spaces - Root Finding and Numerical Integration]
+ * concepts: [Metric Spaces, Root Finding]
  * facets: {layer: domain, status: legacy, complexity: 4}
  * -->
  * the Step Size should be reduced around the critical Area.	*/

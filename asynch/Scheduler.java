@@ -42,7 +42,7 @@ import streamIO.IIStreamOut;
   * mtime: 2026-09-05T10:42:11Z
   * digest: 22f7427006e83c54a1cfd6ba4af1176fe84d6f1a077809b1ef6e7748166c7f23
   * stale: false
-  * tags: [code/thread_pooling]
+  * tags: [code/thread_pool]
   * concepts: [Task Scheduler]
   * facets: {layer: infrastructure, status: broken, complexity: 3}
   * -->

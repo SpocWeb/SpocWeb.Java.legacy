@@ -20,7 +20,7 @@ import function.derive.ring.ACAlgebra;
  * digest: 056dd460a0a6c6fc4e22b93fa0d9035ffdb2e7684b4f1df9b471031c486bf19d
  * stale: false
  * tags: [code/rational_numbers, code/interval_arithmetic]
- * concepts: [Rational Numbers and Interval Arithmetic]
+ * concepts: [Rational Numbers, Interval Arithmetic]
  * facets: {layer: domain, status: legacy, complexity: 4}
  * -->
  * FloorAt */

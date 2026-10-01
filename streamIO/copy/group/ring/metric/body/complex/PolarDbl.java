@@ -33,7 +33,7 @@ import function.byref.ByRefDouble;
  * digest: 9df3d1f3ca058b0d7be60a64457b56f2f3ada29b204cca268be636ce36bd043c
  * stale: false
  * tags: [code/complex_numbers, code/fourier_transform]
- * concepts: [Complex Number Arithmetic and Fourier Transform]
+ * concepts: [Complex Number, Fourier Transform]
  * facets: {layer: domain, status: legacy, complexity: 4}
  * -->
  */

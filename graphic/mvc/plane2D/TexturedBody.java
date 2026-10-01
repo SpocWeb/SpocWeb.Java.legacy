@@ -59,7 +59,7 @@ import streamIO.object.parser.jdbc.ResultSetSep;
  * mtime: 2026-09-05T12:50:15Z
  * digest: c7ce1b74ddfea5ab3713853850a2e1f1eebe7faa43113d9164ee4f6b2d05a559
  * stale: false
- * tags: [code/texture_mapping]
+ * tags: [code/texture_map]
  * concepts: [Textured 3D Body]
  * facets: {layer: domain, status: legacy, complexity: 3}
  * -->

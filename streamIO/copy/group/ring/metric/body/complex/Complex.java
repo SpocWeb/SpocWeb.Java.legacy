@@ -54,7 +54,7 @@ import function.derive.CCountAble;
  * digest: 7945e02f47adca6965d6283be382f4cfb1ed981f5f2ab5d3d01e272a9a33170e
  * stale: false
  * tags: [code/complex_numbers, code/fourier_transform]
- * concepts: [Complex Number Arithmetic and Fourier Transform]
+ * concepts: [Complex Number, Fourier Transform]
  * facets: {layer: domain, status: legacy, complexity: 4}
  * -->
  * This makes it possible to create real Complex Constants!	 */

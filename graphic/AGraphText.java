@@ -27,7 +27,7 @@ import streamIO.Log;
   * digest: 7e139bdd2d8d74ab996480f461611541bca81d03b3f7d4e0b9ec814de10ef04a
   * stale: false
   * tags: [code/bitmap_font_rendering, code/graphics]
-  * concepts: [Vector Font Rendering Base Class]
+  * concepts: [Vector Font, Rendering]
   * facets: {layer: infrastructure, status: legacy, complexity: 3}
   * -->
   */

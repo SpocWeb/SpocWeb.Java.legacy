@@ -77,7 +77,7 @@ concepts:
 facets:
   layer: utility
   status: broken
-  complexity: 4
+  complexity: '4'
 description: A family of growable, primitive-typed dynamic arrays (`VectorChar`/`Short`/`Int`/`Long`/`Float`/`Double`/`String`/`Object`), each pairing an instance-level container (capacity growth, bounds checking, item-count bookkeeping, largely inherited from `AVector`) with a large static library of array-level operations - arithmetic, min/max, linear combinations, sorting/order-statistics (`HunterInt`/`Float`/`Double`), and type-specific helpers (String parsing/padding/escaping, Object matrix-style multi-index access). `QuaternaryOp` factors out the shared add/subtract/multiply/divide/linear-combination operator used across the arithmetic methods. See `statistic/` for the correlation and hypothesis-testing layer built on top of these vectors.
 dv_has_:
   sub_:
@@ -109,16 +109,16 @@ dv_has_:
         array_bounds_check: 1
         chi_squared: 1
     concept_:
+      hypothesis_testing: 2
       reverse_order_float_stream_source: 2
       reverse_order_int_stream_source: 2
       "2d_sampling_test_model": 1
+      correlation: 1
       cross_vector_correlation_statistics: 1
       growable_char_vector: 1
       growable_double_vector: 1
       growable_float_vector: 1
       growable_int_vector: 1
-      growable_long_vector: 1
-      growable_object_vector: 1
 has_sub_folders: 1
 has_sub_files: 49
 has_sub_units: 25
@@ -140,16 +140,16 @@ has_sub_tag_code_quicksort: 3
 has_sub_tag_code_statistical_correlation: 2
 has_sub_tag_code_array_bounds_check: 1
 has_sub_tag_code_chi_squared: 1
+has_sub_concept_hypothesis_testing: 2
 has_sub_concept_reverse_order_float_stream_source: 2
 has_sub_concept_reverse_order_int_stream_source: 2
 has_sub_concept_2d_sampling_test_model: 1
+has_sub_concept_correlation: 1
 has_sub_concept_cross_vector_correlation_statistics: 1
 has_sub_concept_growable_char_vector: 1
 has_sub_concept_growable_double_vector: 1
 has_sub_concept_growable_float_vector: 1
 has_sub_concept_growable_int_vector: 1
-has_sub_concept_growable_long_vector: 1
-has_sub_concept_growable_object_vector: 1
 ---
 
 # vector

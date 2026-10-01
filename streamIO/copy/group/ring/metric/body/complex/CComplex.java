@@ -14,7 +14,7 @@ import streamIO.copy.group.ring.metric.body.CBody;
  * digest: 22b8fa0164602b93d7c57cf77573fcc0048660640a026184a9405621654083e5
  * stale: false
  * tags: [code/complex_numbers, code/fourier_transform]
- * concepts: [Complex Number Arithmetic and Fourier Transform]
+ * concepts: [Complex Number, Fourier Transform]
  * facets: {layer: domain, status: legacy, complexity: 4}
  * -->
  */

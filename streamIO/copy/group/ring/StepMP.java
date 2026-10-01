@@ -16,7 +16,7 @@ import function.vector.IBinaryOpFloat;
  * digest: 648bef55b270b3a2ea64f9217f40f52bfea59f76d5b8efa2a037caa4bae00c75
  * stale: false
  * tags: [code/ring_theory, code/ode_solver]
- * concepts: [Ring Algebra and ODE Solvers]
+ * concepts: [Ring Algebra, ODE Solvers]
  * facets: {layer: domain, status: legacy, complexity: 4}
  * -->
  */

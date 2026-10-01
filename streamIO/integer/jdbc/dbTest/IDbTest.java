@@ -16,7 +16,7 @@ import streamIO.integer.jdbc.DbColumn;
  *
  * <!-- docstate
  * tags: [code/predicate, code/predicate_interface]
- * concepts: [Row Predicate Contract between Two DbColumn Fields]
+ * concepts: [Row Predicate]
  * facets: {layer: domain, status: legacy, complexity: 2}
  * -->
  */

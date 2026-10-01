@@ -155,10 +155,27 @@ has_sub_concept_relationship_modelling: 2
 has_sub_concept_data_access: 1
 has_sub_concept_identity_caching: 1
 related:
-  - path: ../_Matthias/Code/Java/reflect
-    shared-tags: [code/domain_model, code/reflection]
-  - path: ../_Matthias/Code/Java/persistences
-    shared-tags: [code/domain_model, code/entity_model]
+- path: ../_Matthias/Code/Java/reflect
+  shared-tags:
+  - code/domain_model
+  - code/reflection
+- path: ../_Matthias/Code/Java/persistences
+  shared-tags:
+  - code/domain_model
+  - code/entity_model
+tags:
+- code/orm
+- code/domain_model
+- code/entity_model
+- code/reflection
+concepts:
+- Knowledge Representation
+- Object-Relational Mapping
+facets:
+  layer: data
+  status: legacy
+  complexity: '4'
+description: A small object-relational layer for a self-describing knowledge model, in which the schema is data rather than Java classes.
 ---
 
 # knowledge

@@ -188,7 +188,7 @@ public class Eigenvalues {
 	 * @param wi filled with imaginary Parts of the EigenValues 
 	 * <!-- docstate
 	 * tags: [code/eigenvalue_decomposition]
-	 * concepts: [QR Algorithm Eigenvalue Extraction (Bounded Iterations)]
+	 * concepts: [General (Non-Symmetric) Eigenvalue Computation]
 	 * facets: {layer: utility, status: legacy, complexity: 4}
 	 * -->
 	 */
@@ -399,7 +399,7 @@ public class Eigenvalues {
 	/** Writes the Row and Column norms of the given Matrix 
 	 * @param a Matrix to calculate and write the Norms for...
 	 * <!-- docstate
-	 * tags: [code/eigenvalue_decomposition, code/testing]
+	 * tags: [code/eigenvalue_decomposition, code/test]
 	 * concepts: [Matrix Norm Diagnostic Output]
 	 * facets: {layer: test, status: legacy, complexity: 2}
 	 * -->
@@ -436,7 +436,7 @@ public class Eigenvalues {
 	/** Tests the Eigenvalues Calculation
 	 *
 	 * <!-- docstate
-	 * tags: [code/testing, code/eigenvalue_decomposition]
+	 * tags: [code/test, code/eigenvalue_decomposition]
 	 * concepts: [Eigenvalue Self-Test]
 	 * facets: {layer: test, status: legacy, complexity: 2}
 	 * -->
@@ -484,7 +484,7 @@ public class Eigenvalues {
 	/** Tests the Hessenberg Reduction
 	 *
 	 * <!-- docstate
-	 * tags: [code/testing, code/eigenvalue_decomposition]
+	 * tags: [code/test, code/eigenvalue_decomposition]
 	 * concepts: [Hessenberg Self-Test]
 	 * facets: {layer: test, status: legacy, complexity: 2}
 	 * -->
@@ -523,7 +523,7 @@ public class Eigenvalues {
 	/** Runs the balancing, Hessenberg-reduction and eigenvalue self-tests against fixed expected results.
 	 *
 	 * <!-- docstate
-	 * tags: [code/testing]
+	 * tags: [code/test]
 	 * concepts: [Demo Entry Point]
 	 * facets: {layer: test, status: legacy, complexity: 2}
 	 * -->

@@ -130,7 +130,7 @@ concepts:
 facets:
   layer: utility
   status: legacy
-  complexity: 3
+  complexity: '3'
 description: 'This folder is the core of an object-stream framework: `IStreamIn`/`IIStreamIn` and `IStreamSet` (defined in the parent `streamIO` package) describe a pull-based stream of arbitrary `Object`s, and the types here supply adapters, filters and set-algebraic combinators over that abstraction. `AStreamIn` hoists the generic streaming algorithms (searching, ordering, containment) so a concrete source only has to implement `nextItem()`/`currItem()`/`availAble()`; `AFilter`/`AFilterIn`/`APlugAbleFilter` do the same for filters that wrap another stream. Bridges connect this abstraction to standard Java iteration (`Iterator2StreamIn`, `Enumeration2StreamIn` and their inverses), to plain arrays/Collections (`ArrayStreamIn`, `CollectionStreamIn`), and to strings (`StringStreamIn`). `AStreamSet`/`StreamSet` layer boolean-ring semantics (AND/OR/NOT/DIFF) on top of a stream, implemented by dedicated combinator classes (`AND`, `Union`, `DIFF`, `Cantor`, `Product`, `Merger`) that stream the result of a set operation rather than materializing it. `StreamParser`/`StreamIterator` are an older, separate string/structure tokenizer, unrelated to the stream-set algebra.'
 dv_has_:
   sub_:
@@ -160,17 +160,16 @@ dv_has_:
         red_black_tree: 12
         parser: 16
     concept_:
-      custom_streaming_enumerator_and_iterator_bridge_layer_for_object_collections: 25
+      iterator: 25
+      streaming_enumerator: 25
       jsonorg_reference_implementation: 15
-      separator_driven_token_parsing_and_stream_adapters: 15
+      stream_adapters: 15
+      token_parsing: 15
       object_stream_pipeline: 40
-      concrete_storage_containers_arrays_hash_tables_and_relations: 45
-      red_black_tree_backed_sorted_map_implementation: 12
-      backtracking_search: 11
-      stream_filter_input: 11
-      minimal_jdbc_driver_over_separated_format_flat_files: 9
-      xml_:
-        html_parsing: 8
+      hash_tables: 45
+      storage_containers: 45
+      red_black_tree: 12
+      sorted_map: 12
 has_sub_folders: 13
 has_sub_files: 407
 has_sub_units: 210
@@ -190,21 +189,23 @@ has_sub_tag_code_hash_table: 45
 has_sub_tag_code_parsing: 25
 has_sub_tag_code_red_black_tree: 12
 has_sub_tag_code_parser: 16
-has_sub_concept_custom_streaming_enumerator_and_iterator_bridge_layer_for_object_collections: 25
+has_sub_concept_iterator: 25
+has_sub_concept_streaming_enumerator: 25
 has_sub_concept_jsonorg_reference_implementation: 15
-has_sub_concept_separator_driven_token_parsing_and_stream_adapters: 15
+has_sub_concept_stream_adapters: 15
+has_sub_concept_token_parsing: 15
 has_sub_concept_object_stream_pipeline: 40
-has_sub_concept_concrete_storage_containers_arrays_hash_tables_and_relations: 45
-has_sub_concept_red_black_tree_backed_sorted_map_implementation: 12
-has_sub_concept_backtracking_search: 11
-has_sub_concept_stream_filter_input: 11
-has_sub_concept_minimal_jdbc_driver_over_separated_format_flat_files: 9
-has_sub_concept_xml_html_parsing: 8
+has_sub_concept_hash_tables: 45
+has_sub_concept_storage_containers: 45
+has_sub_concept_red_black_tree: 12
+has_sub_concept_sorted_map: 12
 related:
-  - path: ../_Matthias/Code/NET/_std/IGraphs/streams
-    shared-tags: [code/stream_processing]
-  - path: ../_Matthias/Code/NET/_std/IMathsImpl/streams
-    shared-tags: [code/stream_processing]
+- path: ../_Matthias/Code/NET/_std/IGraphs/streams
+  shared-tags:
+  - code/stream_processing
+- path: ../_Matthias/Code/NET/_std/IMathsImpl/streams
+  shared-tags:
+  - code/stream_processing
 ---
 
 # object

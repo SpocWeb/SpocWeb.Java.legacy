@@ -44,7 +44,7 @@ import function.byref.ByRefDouble;
   * digest: c286669e7d0bf73cb996dc2363e712e105d8140eeb8d4981befa44fdc99acda9
   * stale: false
   * tags: [code/metric_space, code/root_finding, code/numerical_integration, code/big_integer_arithmetic]
-  * concepts: [Metric Spaces - Root Finding and Numerical Integration]
+  * concepts: [Metric Spaces, Root Finding]
   * facets: {layer: domain, status: legacy, complexity: 4}
   * -->
   * This Implementation is made 'final' to exploit the resulting benefits. */

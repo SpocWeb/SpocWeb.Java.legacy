@@ -39,11 +39,12 @@ tags:
 - code/red_black_tree
 - code/iterator_pattern
 concepts:
-- Red-Black Tree Backed Sorted Map Implementation
+- Red Black Tree
+- Sorted Map
 facets:
   layer: utility
   status: legacy
-  complexity: 4
+  complexity: '4'
 description: Red-Black tree implementation of `SortedMap` (`TreeMap`, entries as `TreeMapEntry`) plus the Set and Collection views `java.util.Map` expects (`TreeKeySet`, `TreeValueCollection`, `TreeEntrySet` and their Iterators). `SubTreeMap` and `TreeEntrySetView`/`SubTreeMapEntryIterator` implement the key-range views returned by `headMap()`/`tailMap()`/`subMap()`, backed by the same underlying `TreeMap` so mutations on either side are reflected in the other. `TreeMapEntry` also extends `container.IndexAssociation`, the lightweight Entry base shared with the hash-table implementation in the parent `container/` package.
 dv_has_:
   sub_:
@@ -62,7 +63,8 @@ dv_has_:
         red_black_tree: 11
         iterator_pattern: 11
     concept_:
-      red_black_tree_backed_sorted_map_implementation: 11
+      red_black_tree: 11
+      sorted_map: 11
 has_sub_folders: 0
 has_sub_files: 22
 has_sub_units: 11
@@ -71,7 +73,8 @@ has_sub_facet_status_legacy: 11
 has_sub_facet_complexity_4: 11
 has_sub_tag_code_red_black_tree: 11
 has_sub_tag_code_iterator_pattern: 11
-has_sub_concept_red_black_tree_backed_sorted_map_implementation: 11
+has_sub_concept_red_black_tree: 11
+has_sub_concept_sorted_map: 11
 ---
 
 # tree

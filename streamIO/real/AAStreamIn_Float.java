@@ -24,7 +24,7 @@ import tester.process.StreamProcessor;
  * digest: 3c63bea187c61f78b946bd31f30d92cecbeddee07fb8166a58fe271f21aa63e9
  * stale: false
  * tags: [code/stream_filter]
- * concepts: [Float Stream Input Base Class]
+ * concepts: [Float Stream, Input]
  * facets: {layer: infrastructure, status: legacy, complexity: 2}
  * -->
  */

@@ -40,7 +40,7 @@ import streamIO.Log;
  * mtime: 2026-09-05T12:50:11Z
  * digest: c6d20fbcb9a1ef389595c643dec60089d7557428b79b1e9e54af076891cf590b
  * stale: false
- * tags: [code/texture_mapping, code/gui]
+ * tags: [code/texture_map, code/gui]
  * concepts: [MilkShape3D Model Texture Painter]
  * facets: {layer: domain, status: legacy, complexity: 3}
  * -->

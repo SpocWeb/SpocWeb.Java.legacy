@@ -32,7 +32,7 @@ import swing.HashTreeNode;
   * digest: 390cec5f638af78e7483a35dfc84bd6b2f37a3f75a212b6282e4585ecb7717fa
   * stale: true
   * tags: [code/stream_parsing, code/parser]
-  * concepts: [Separator-Driven Token Parsing and Stream Adapters]
+  * concepts: [Token Parsing, Stream Adapters]
   * facets: {layer: utility, status: legacy, complexity: 4}
   * -->
   */

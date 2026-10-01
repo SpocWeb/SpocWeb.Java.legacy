@@ -30,7 +30,7 @@ concepts:
 facets:
   layer: infrastructure
   status: legacy
-  complexity: 3
+  complexity: '3'
 description: A small framework for passing an `InputStream` plus a `Map` of attributes along a processing line that bridges asynchronous and synchronous protocols (HTTP, JMS, DB, etc.). Either side of `AAttributedStream` can be implemented and the other is derived automatically; components participating in the chain implement the `IManagedComponent` lifecycle contract, and `OpenByteArrayOutputStream` avoids buffer copies when adapting between stream styles.
 dv_has_:
   sub_:
@@ -68,12 +68,15 @@ has_sub_concept_attributed_stream_output_interface: 1
 has_sub_concept_exposed_buffer_byte_array_stream: 1
 has_sub_concept_managed_component_interface: 1
 related:
-  - path: ../_Matthias/Code/NET/_std/IGraphs/Interfaces/Enumerators
-    shared-tags: [code/stream_adapter]
-  - path: ../_Matthias/Code/NET/_std/IMathsImpl/Interfaces/Enumerators
-    shared-tags: [code/stream_adapter]
-  - path: ../_Matthias/Code/NET/_root/_projects/xCell.extensions/iXml
-    shared-tags: [code/stream_adapter]
+- path: ../_Matthias/Code/NET/_std/IGraphs/Interfaces/Enumerators
+  shared-tags:
+  - code/stream_adapter
+- path: ../_Matthias/Code/NET/_std/IMathsImpl/Interfaces/Enumerators
+  shared-tags:
+  - code/stream_adapter
+- path: ../_Matthias/Code/NET/_root/_projects/xCell.extensions/iXml
+  shared-tags:
+  - code/stream_adapter
 ---
 
 # stream

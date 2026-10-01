@@ -21,7 +21,7 @@ concepts:
 facets:
   layer: test
   status: broken
-  complexity: 3
+  complexity: '3'
 description: A small, dependency-free test harness predating JUnit's presence in this codebase. `ITestCase` defines the composite contract (`setUp`/`tearDown`/`runTest`); `ATestCase` implements it by reflectively discovering and invoking every public no-argument `test...()` method on a Class or Object, so a subclass need only write plain `testXxx()` methods; and `TestCollection` composes multiple `ITestCase`s into one, running them depth-first before its own reflective tests.
 dv_has_:
   sub_:
@@ -61,8 +61,10 @@ has_sub_concept_testing: 3
 has_sub_concept_composite_pattern: 1
 has_sub_concept_reflection: 1
 related:
-  - path: ../_Matthias/Code/NET/Java/streamIO/testing
-    shared-tags: [code/composite_pattern, code/test_harness]
+- path: ../_Matthias/Code/NET/Java/streamIO/testing
+  shared-tags:
+  - code/composite_pattern
+  - code/test_harness
 ---
 
 # testing

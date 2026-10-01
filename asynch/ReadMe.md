@@ -98,7 +98,7 @@ concepts:
 facets:
   layer: infrastructure
   status: legacy
-  complexity: 3
+  complexity: '3'
 description: 'This folder is a hand-rolled concurrency framework predating `java.util.concurrent`, written around 2002-2003. It has four loosely related sub-areas:'
 dv_has_:
   sub_:

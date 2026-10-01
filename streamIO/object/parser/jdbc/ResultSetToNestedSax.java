@@ -68,7 +68,7 @@ import com.sun.org.apache.xml.internal.utils.DOMBuilder;
   * digest: d4533bec82ed000290e7e98414d126d708ffac9ba34c0afb9128017b2f95390f
   * stale: true
   * tags: [code/jdbc_adapter, code/sax_event_generation]
-  * concepts: [Minimal JDBC Driver over Separated-Format Flat Files]
+  * concepts: [JDBC Driver, Flat Files]
   * facets: {layer: domain, status: legacy, complexity: 4}
   * -->
   */

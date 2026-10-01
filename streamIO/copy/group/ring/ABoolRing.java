@@ -31,7 +31,7 @@ import streamIO.object.enumer.container.AContainer;
   * digest: d146d9f54504c07e2d37d7c4753ada5a96d23a1b1d10cbcb95dfee3016e527b1
   * stale: false
   * tags: [code/ring_theory, code/ode_solver]
-  * concepts: [Ring Algebra and ODE Solvers]
+  * concepts: [Ring Algebra, ODE Solvers]
   * facets: {layer: domain, status: legacy, complexity: 4}
   * -->
   */

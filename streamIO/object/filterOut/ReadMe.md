@@ -25,7 +25,7 @@ concepts:
 facets:
   layer: utility
   status: legacy
-  complexity: 3
+  complexity: '3'
 description: 'Write-side filters that control how an item is routed or how errors are handled on its way downstream: `IfFilterOut` branches each item to one of two outputs based on an `ITester`, `TryCatchOut` catches any downstream exception and reroutes the original item to an error output instead of letting it escalate, `ThrowOut` does the opposite (converts a message back into a thrown exception), `TraceOut` logs each item before forwarding it unchanged, and `ThreadOut` offloads each item''s forwarding onto a new thread for concurrent downstream processing (see the `ThreadOut.addItem()` bug flagged below - it currently recurses rather than looping, so under sustained load it risks unbounded thread creation/stack growth).'
 dv_has_:
   sub_:
@@ -57,26 +57,38 @@ has_sub_tag_code_decorator_pattern: 5
 has_sub_tag_code_stream_filter: 5
 has_sub_concept_stream_filter_output: 5
 related:
-  - path: ../_Matthias/Code/Java/streamIO/object/filterIn
-    shared-tags: [code/decorator_pattern, code/stream_filter]
-  - path: ../_Matthias/Code/Java/streamIO/object/filterInOut
-    shared-tags: [code/decorator_pattern, code/stream_filter]
-  - path: ../_Matthias/Code/NET/_std/IGraphs/Interfaces/Streams/bytes
-    shared-tags: [code/stream_filter]
-  - path: ../_Matthias/Code/NET/_std/IGraphs/Interfaces/Streams/chars
-    shared-tags: [code/stream_filter]
-  - path: ../_Matthias/Code/NET/_std/IGraphs/Interfaces/Streams/filters/real
-    shared-tags: [code/stream_filter]
-  - path: ../_Matthias/Code/NET/_std/IMathsImpl/Interfaces/streams/bytes
-    shared-tags: [code/stream_filter]
-  - path: ../_Matthias/Code/NET/_std/IMathsImpl/Interfaces/streams/chars
-    shared-tags: [code/stream_filter]
-  - path: ../_Matthias/Code/NET/_std/IMathsImpl/Interfaces/streams/filters/real
-    shared-tags: [code/stream_filter]
-  - path: ../_Matthias/Code/Java/streamIO/integer/filter
-    shared-tags: [code/stream_filter]
-  - path: ../_Matthias/Code/NET/_SpocWeb.Root/_std/SpocWeb.IMaths.db/arch/ddd/repositories/abstracts
-    shared-tags: [code/decorator_pattern]
+- path: ../_Matthias/Code/Java/streamIO/object/filterIn
+  shared-tags:
+  - code/decorator_pattern
+  - code/stream_filter
+- path: ../_Matthias/Code/Java/streamIO/object/filterInOut
+  shared-tags:
+  - code/decorator_pattern
+  - code/stream_filter
+- path: ../_Matthias/Code/NET/_std/IGraphs/Interfaces/Streams/bytes
+  shared-tags:
+  - code/stream_filter
+- path: ../_Matthias/Code/NET/_std/IGraphs/Interfaces/Streams/chars
+  shared-tags:
+  - code/stream_filter
+- path: ../_Matthias/Code/NET/_std/IGraphs/Interfaces/Streams/filters/real
+  shared-tags:
+  - code/stream_filter
+- path: ../_Matthias/Code/NET/_std/IMathsImpl/Interfaces/streams/bytes
+  shared-tags:
+  - code/stream_filter
+- path: ../_Matthias/Code/NET/_std/IMathsImpl/Interfaces/streams/chars
+  shared-tags:
+  - code/stream_filter
+- path: ../_Matthias/Code/NET/_std/IMathsImpl/Interfaces/streams/filters/real
+  shared-tags:
+  - code/stream_filter
+- path: ../_Matthias/Code/Java/streamIO/integer/filter
+  shared-tags:
+  - code/stream_filter
+- path: ../_Matthias/Code/NET/_SpocWeb.Root/_std/SpocWeb.IMaths.db/arch/ddd/repositories/abstracts
+  shared-tags:
+  - code/decorator_pattern
 ---
 
 # filterOut

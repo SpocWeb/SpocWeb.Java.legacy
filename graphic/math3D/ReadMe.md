@@ -109,11 +109,12 @@ tags:
 - code/3d_rendering
 - code/coordinate_transform
 concepts:
-- 3D Graph Visualization and Plotting
+- 3D Visualization
+- Plotting
 facets:
   layer: domain
   status: legacy
-  complexity: 4
+  complexity: '4'
 description: 'This folder is a legacy (pre-2004) 3D wireframe/solid graphics engine: it maps 3- and n-dimensional geometry (points, lines, polygons, bodies) onto a 2D `Point2D` viewport through projective or planar coordinate mappings, then renders the result via AWT-level graphics interfaces (`IGraphShape`/`IGraphText`) and Swing/AWT mouse and keyboard controllers. It underlies the older `graphic.math2D` package''s 2D-only counterpart and is itself superseded in places by `TestMathGraph3` over the earlier `testMathGraph2`/`testMathGraph3D` applet classes, which remain for reference and comparison.'
 dv_has_:
   sub_:
@@ -154,8 +155,8 @@ dv_has_:
       "3d_coordinate_transform": 1
       "3d_figure_drawing_helpers": 1
       "3d_line_segment": 1
-      "3d_polygon": 1
       "3d_polygon_plotter": 1
+      "3d_solid_body": 1
 has_sub_folders: 0
 has_sub_files: 71
 has_sub_units: 34
@@ -185,11 +186,13 @@ has_sub_concept_3d_column_chart_element: 1
 has_sub_concept_3d_coordinate_transform: 1
 has_sub_concept_3d_figure_drawing_helpers: 1
 has_sub_concept_3d_line_segment: 1
-has_sub_concept_3d_polygon: 1
 has_sub_concept_3d_polygon_plotter: 1
+has_sub_concept_3d_solid_body: 1
 related:
-  - path: ../_Matthias/Code/NET/Java/graphic/math3D
-    shared-tags: [code/3d_geometry, code/3d_rendering]
+- path: ../_Matthias/Code/NET/Java/graphic/math3D
+  shared-tags:
+  - code/3d_geometry
+  - code/3d_rendering
 ---
 
 # math3D

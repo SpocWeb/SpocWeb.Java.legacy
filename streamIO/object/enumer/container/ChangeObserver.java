@@ -5,7 +5,7 @@ package streamIO.object.enumer.container;
   * instead of passive ones via Minor and Major. 
   * <!-- docstate
   * tags: [code/container, code/hash_table, code/container_iteration]
-  * concepts: [Concrete Storage Containers - Arrays - Hash Tables and Relations]
+  * concepts: [Storage Containers, Hash Tables]
   * facets: {layer: utility, status: legacy, complexity: 4}
   * digest: 9482127b2292c0e714a49d2deb449e27cbd3acf12adae4c9de1edd44452b6c25
   * stale: false

@@ -24,6 +24,9 @@ import java.sql.SQLException;
  * mtime: 2026-09-05T08:13:26Z
  * digest: 3ad6a09b894102a440ecb61db23b95c40f26b3ba7d4c0a3904553dbeebab54d8
  * stale: false
+ * tags: [code/entity_model, code/domain_model, code/lazy_loading]
+ * concepts: [Domain Model, Attribute Modelling]
+ * facets: {layer: domain, status: stable, complexity: 3}
  * -->
  */
 public class AttributeObject

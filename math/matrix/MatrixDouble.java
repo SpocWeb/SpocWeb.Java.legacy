@@ -49,7 +49,7 @@ import function.vector.OpSum;
   * mtime: 2026-09-05T13:04:13Z
   * digest: c9776a145dc8badb6d547380cf4c0578b0fc79bc7c1b4bb3163d2519a2a87bb9
   * stale: false
-  * tags: [code/matrix_algebra, code/matrix_operation]
+  * tags: [code/matrix_operation, code/matrix_algebra]
   * concepts: [Double-Precision Dense Matrix]
   * facets: {layer: utility, status: broken, complexity: 4}
   * -->
@@ -4202,7 +4202,7 @@ extends AMatrix {
  * digest: 3c8e7c897244549b353e1f5c6aa7c1b8a4413c0be34cb3769c4491afc0b8578c
  * stale: false
  * tags: [code/matrix_operation]
- * concepts: [Double Matrix Row Stream Iterator]
+ * concepts: [Matrix Stream, Double]
  * facets: {layer: utility, status: broken, complexity: 2}
  * -->
  */

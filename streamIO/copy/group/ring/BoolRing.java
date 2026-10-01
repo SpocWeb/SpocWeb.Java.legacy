@@ -24,7 +24,7 @@ import streamIO.copy.boole.Boole;
   * digest: e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855
   * stale: false
   * tags: [code/ring_theory, code/ode_solver]
-  * concepts: [Ring Algebra and ODE Solvers]
+  * concepts: [Ring Algebra, ODE Solvers]
   * facets: {layer: domain, status: legacy, complexity: 4}
   * -->
   */

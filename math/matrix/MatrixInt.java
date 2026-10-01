@@ -43,7 +43,7 @@ import function.byref.ByRefFloat;
  * mtime: 2026-09-05T12:52:28Z
  * digest: 0324262935d2c65dd43a11e6d3ebf81c55ed5d86badc34f72f61dc11773a311c
  * stale: false
- * tags: [code/matrix_algebra, code/matrix_operation]
+ * tags: [code/matrix_operation, code/matrix_algebra]
  * concepts: [Integer Dense Matrix]
  * facets: {layer: utility, status: broken, complexity: 4}
  * -->

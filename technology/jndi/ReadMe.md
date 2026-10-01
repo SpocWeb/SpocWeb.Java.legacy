@@ -15,7 +15,7 @@ concepts:
 facets:
   layer: infrastructure
   status: legacy
-  complexity: 2
+  complexity: '2'
 description: 'Small demonstrations of the Java Naming and Directory Interface (JNDI): acquiring an `InitialContext` against a file-system JNDI provider, and browsing/manipulating it interactively with Unix-like commands (`cd`, `ls`, `mv`, `mkdir`, `rmdir`, `cat`).'
 dv_has_:
   sub_:
@@ -47,8 +47,9 @@ has_sub_tag_code_directory_services: 2
 has_sub_concept_command_line_jndi_browser: 1
 has_sub_concept_jndi_context_demo: 1
 related:
-  - path: ../_Matthias/Code/LDAP
-    shared-tags: [code/directory_services]
+- path: ../_Matthias/Code/LDAP
+  shared-tags:
+  - code/directory_services
 ---
 
 # jndi

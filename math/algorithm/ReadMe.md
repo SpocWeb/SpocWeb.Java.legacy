@@ -15,7 +15,7 @@ concepts:
 facets:
   layer: utility
   status: legacy
-  complexity: 3
+  complexity: '3'
 description: 'Holds two self-contained dynamic-programming Algorithms that are otherwise unrelated to the rest of `math`: `Bracketing` chooses the cheapest parenthesization for a chain of Matrix Multiplications, and `KnapSack` solves the 0/1 Knapsack Problem for Integer Sizes and Values. Both are used standalone wherever their respective combinatorial Optimization is needed.'
 dv_has_:
   sub_:
@@ -47,8 +47,9 @@ has_sub_tag_code_knapsack_problem: 1
 has_sub_concept_knapsack_problem_solver: 1
 has_sub_concept_matrix_chain_bracketing: 1
 related:
-  - path: ../_Matthias/Code/NET/Java/math/algorithm
-    shared-tags: [code/dynamic_programming]
+- path: ../_Matthias/Code/NET/Java/math/algorithm
+  shared-tags:
+  - code/dynamic_programming
 ---
 
 # algorithm

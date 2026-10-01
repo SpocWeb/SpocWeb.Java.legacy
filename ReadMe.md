@@ -90,7 +90,8 @@ dv_has_:
         algorithm: 22
         differential_integration: 22
     concept_:
-      custom_streaming_enumerator_and_iterator_bridge_layer_for_object_collections: 25
+      iterator: 25
+      streaming_enumerator: 25
       byte_:
         character_re_encoding_filters_base64_binhex_url_:
           entity_escaping_crc_xor: 23
@@ -98,13 +99,11 @@ dv_has_:
         relation_contract: 23
       pseudo_random_and_quasi_random_integer_generator_family_with_mark_:
         restore_replay: 21
-      ring_algebra_and_ode_solvers: 29
-      filesystem_backed_jdbc_driver_framework_with_fixed_length_and_separator_delimited_table_storage: 32
+      ode_solvers: 29
+      ring_algebra: 29
+      interval_arithmetic: 20
+      table_storage: 32
       domain_model: 35
-      function_algebra: 35
-      vector_field_function: 17
-      primitive_and_structured_stream_i_:
-        o_core_abstractions: 36
 has_sub_folders: 129
 has_sub_files: 3318
 has_sub_units: 1639
@@ -133,16 +132,16 @@ has_sub_tag_code_quasi_random_sequence: 23
 has_sub_tag_code_xor_cipher: 23
 has_sub_tag_code_algorithm: 22
 has_sub_tag_code_differential_integration: 22
-has_sub_concept_custom_streaming_enumerator_and_iterator_bridge_layer_for_object_collections: 25
+has_sub_concept_iterator: 25
+has_sub_concept_streaming_enumerator: 25
 has_sub_concept_byte_character_re_encoding_filters_base64_binhex_url_entity_escaping_crc_xor: 23
 has_sub_concept_function_relation_contract: 23
 has_sub_concept_pseudo_random_and_quasi_random_integer_generator_family_with_mark_restore_replay: 21
-has_sub_concept_ring_algebra_and_ode_solvers: 29
-has_sub_concept_filesystem_backed_jdbc_driver_framework_with_fixed_length_and_separator_delimited_table_storage: 32
+has_sub_concept_ode_solvers: 29
+has_sub_concept_ring_algebra: 29
+has_sub_concept_interval_arithmetic: 20
+has_sub_concept_table_storage: 32
 has_sub_concept_domain_model: 35
-has_sub_concept_function_algebra: 35
-has_sub_concept_vector_field_function: 17
-has_sub_concept_primitive_and_structured_stream_i_o_core_abstractions: 36
 related:
   - path: ../_Matthias/Code/VB/ChangeDate
     shared-tags: [code/cli_tool]

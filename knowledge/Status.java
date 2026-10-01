@@ -30,6 +30,9 @@ import java.util.ArrayList;
   * mtime: 2026-09-05T08:15:05Z
   * digest: bf90ced1313c9870118de6a98b06b50c66cfa314ddc0377a1dd863ba2d8975ae
   * stale: false
+  * tags: [code/entity_model, code/orm, code/state_flag]
+  * concepts: [Domain Model, Persistence]
+  * facets: {layer: data, status: stable, complexity: 3}
   * -->
   */
 public class Status

@@ -23,6 +23,9 @@ package knowledge;
  * mtime: 2026-09-05T08:10:38Z
  * digest: fa0303d5d18de8f10951f55cbce718858c1d7d4a51f64d65b2b22fa66fb58147
  * stale: false
+ * tags: [code/type_system, code/entity_model, code/domain_model]
+ * concepts: [Domain Model, Object Classification]
+ * facets: {layer: domain, status: stable, complexity: 2}
  * -->
  */
 public class ObjectType

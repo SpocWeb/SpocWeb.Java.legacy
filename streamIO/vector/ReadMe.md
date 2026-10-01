@@ -21,7 +21,7 @@ concepts:
 facets:
   layer: utility
   status: broken
-  complexity: 3
+  complexity: '3'
 description: Combinatorics streams that hand out one integer Vector per call, each Vector recording how many times each of Dim Items was drawn. `CombinationStream` and `CombinationStream2` are alternative implementations (Permutation-based and bit-mask-based, respectively) of combinations without repetition; `CombinationsRepeating` draws with repetition, both recursively one Vector at a time and, via its static `CombRep`, all at once. The `random/` subsystem builds low-discrepancy random vectors on similar Stream contracts.
 dv_has_:
   sub_:
@@ -61,18 +61,24 @@ has_sub_concept_monte_carlo: 4
 has_sub_concept_random_sampling: 4
 has_sub_concept_combinatorics: 3
 related:
-  - path: ../_Matthias/Code/NET/_std/IGraphs/Functions
-    shared-tags: [code/combinatorics]
-  - path: ../_Matthias/Code/NET/_std/IMathsImpl/Functions
-    shared-tags: [code/combinatorics]
-  - path: ../_Matthias/Code/NET/_org.structs/functions/integers
-    shared-tags: [code/combinatorics]
-  - path: ../_Matthias/Code/Java/function/byref/combinatoric
-    shared-tags: [code/combinatorics]
-  - path: ../_Matthias/Code/NET/_std/IGraphs/Interfaces/Functions
-    shared-tags: [code/combinatorics]
-  - path: ../_Matthias/Code/NET/_std/IMathsImpl/Interfaces/functions
-    shared-tags: [code/combinatorics]
+- path: ../_Matthias/Code/NET/_std/IGraphs/Functions
+  shared-tags:
+  - code/combinatorics
+- path: ../_Matthias/Code/NET/_std/IMathsImpl/Functions
+  shared-tags:
+  - code/combinatorics
+- path: ../_Matthias/Code/NET/_org.structs/functions/integers
+  shared-tags:
+  - code/combinatorics
+- path: ../_Matthias/Code/Java/function/byref/combinatoric
+  shared-tags:
+  - code/combinatorics
+- path: ../_Matthias/Code/NET/_std/IGraphs/Interfaces/Functions
+  shared-tags:
+  - code/combinatorics
+- path: ../_Matthias/Code/NET/_std/IMathsImpl/Interfaces/functions
+  shared-tags:
+  - code/combinatorics
 ---
 
 # vector

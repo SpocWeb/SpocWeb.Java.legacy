@@ -37,6 +37,9 @@ import function.byref.CachedMeasurAble;
  * mtime: 2026-09-05T08:10:13Z
  * digest: 327a7738f6b4f8450bcdd6bc19927b6d3e7fd0cfe659814458fd248eaae31460
  * stale: false
+ * tags: [code/caching, code/lazy_loading, code/state_flag]
+ * concepts: [Lazy Evaluation, State Tracking]
+ * facets: {layer: domain, status: experimental, complexity: 2}
  * -->
  */
 public class CachedValue extends DirtyFlag {

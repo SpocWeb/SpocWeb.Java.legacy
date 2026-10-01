@@ -56,7 +56,7 @@ import function.AOrderAble;
   * mtime: 2026-09-05T11:15:26Z
   * digest: 33f3bbc0d268b4189cd1374577f022ca402a154b5d08c757191d4f131d35343b
   * stale: false
-  * tags: [code/enum_like_type]
+  * tags: [code/enum_like]
   * concepts: [Type-Safe Enum Emulation]
   * facets: {layer: utility, status: legacy, complexity: 2}
   * -->
@@ -197,7 +197,7 @@ public static void main (String[] args) throws java.io.IOException {
   * mtime: 2026-09-05T11:15:26Z
   * digest: 5382b65cad5ba4788242aafdb29305cb76516a799117e5f7ada2c05f609e1b93
   * stale: false
-  * tags: [code/enum_like_type]
+  * tags: [code/enum_like]
   * concepts: [Variable Enum Emulation]
   * facets: {layer: utility, status: legacy, complexity: 2}
   * -->

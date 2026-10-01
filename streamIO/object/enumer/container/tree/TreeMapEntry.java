@@ -28,7 +28,7 @@ import tester.IEquivalence;
  * @see streamIO.object.enumer.container.HashEntry which also extends IndexAssociation
  * <!-- docstate
  * tags: [code/red_black_tree, code/iterator_pattern]
- * concepts: [Red-Black Tree Backed Sorted Map Implementation]
+ * concepts: [Red Black Tree, Sorted Map]
  * facets: {layer: utility, status: legacy, complexity: 4}
  * digest: 974c5453e2ccf1df6fc3640a7d47bff57cb7dcf27adfefedef19185a7652759c
  * stale: false

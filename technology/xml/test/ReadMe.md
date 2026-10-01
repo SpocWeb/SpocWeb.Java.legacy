@@ -67,7 +67,7 @@ concepts:
 facets:
   layer: domain
   status: legacy
-  complexity: 3
+  complexity: '3'
 description: 'Castor-generated data model for the ZKDB ("Zentrale Kundendatenbank") message exchange format: one root `Nachricht` carrying a list of `Transaktion` elements, each pairing a `Steuerung` control section with a `Daten` payload of customer master data (`Kunde`, `Adresse`, `Bankverbindung`, `Kreditkarte`, etc.), plus `ConsistencyCorrector` for reconciling two redundant customer identifiers (EKP number and Rise ID) kept in sync across systems. Every value-typed field is wrapped in `ZKDBBaseType`, which additionally carries a `StatusValue` (changed/deleted/unchanged/error) so the BusinessLayer can tell which fields actually changed between two versions of the same message.'
 dv_has_:
   sub_:
@@ -88,9 +88,10 @@ dv_has_:
         data_transfer_object: 19
     concept_:
       castor_data_transfer_object: 16
-      castor_data_transfer_object_base: 1
-      castor_data_transfer_object_root: 1
+      data_transfer: 2
+      base: 1
       data_consistency_corrector: 1
+      root: 1
 has_sub_folders: 0
 has_sub_files: 40
 has_sub_units: 19
@@ -101,12 +102,14 @@ has_sub_facet_complexity_2: 18
 has_sub_facet_complexity_3: 1
 has_sub_tag_code_data_transfer_object: 19
 has_sub_concept_castor_data_transfer_object: 16
-has_sub_concept_castor_data_transfer_object_base: 1
-has_sub_concept_castor_data_transfer_object_root: 1
+has_sub_concept_data_transfer: 2
+has_sub_concept_base: 1
 has_sub_concept_data_consistency_corrector: 1
+has_sub_concept_root: 1
 related:
-  - path: ../_Matthias/Code/NET/_root/Offices/DocFragger/DocFraggerWordAddIn/Entities
-    shared-tags: [code/data_transfer_object]
+- path: ../_Matthias/Code/NET/_root/Offices/DocFragger/DocFraggerWordAddIn/Entities
+  shared-tags:
+  - code/data_transfer_object
 ---
 
 # test

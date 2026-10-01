@@ -5,7 +5,7 @@ import tester.ITester;
 /**This Class implements a Join Filter on a Container, i.e.
  * <!-- docstate
  * tags: [code/container, code/hash_table, code/container_iteration]
- * concepts: [Concrete Storage Containers - Arrays - Hash Tables and Relations]
+ * concepts: [Storage Containers, Hash Tables]
  * facets: {layer: utility, status: legacy, complexity: 4}
  * digest: cf3e76b36193b10ed733e39ee6b564f02286cdbdf7d4da03db33d378e3e1f866
  * stale: false

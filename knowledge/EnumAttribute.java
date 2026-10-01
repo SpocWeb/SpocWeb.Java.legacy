@@ -27,6 +27,9 @@ import java.lang.reflect.Field;
  * mtime: 2026-09-05T08:13:09Z
  * digest: 7ac9f2da8972260a9befa646c7fcb1831c1220bb8d43db75e5c45dc7039c8cbd
  * stale: false
+ * tags: [code/entity_model, code/orm, code/enum_mapping, code/value_object]
+ * concepts: [Domain Model, Attribute Modelling]
+ * facets: {layer: domain, status: stable, complexity: 2}
  * -->
  */
 public class EnumAttribute

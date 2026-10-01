@@ -29,6 +29,9 @@ package knowledge;
   * mtime: 2026-09-05T08:08:01Z
   * digest: f4ed74a8c450ddafff2c4eec19c6a985af0886e33aa9ae05b415ca86a8dd1b2e
   * stale: false
+  * tags: [code/state_flag, code/interface_contract]
+  * concepts: [State Tracking]
+  * facets: {layer: domain, status: stable, complexity: 2}
   * -->
   */
 public interface IReadyFlag {

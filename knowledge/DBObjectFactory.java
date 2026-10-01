@@ -76,6 +76,9 @@ import streamIO.AStreamOut;
   * mtime: 2006-03-11T02:04:43Z
   * digest: c6778f9add1714047042fa2d49d57af51b65ef265f604e6604795322be6a2be4
   * stale: false
+  * tags: [code/orm, code/data_access, code/sql_generation, code/reflection]
+  * concepts: [Persistence, Object-Relational Mapping]
+  * facets: {layer: data, status: stable, complexity: 4}
   * -->
   */
 public class DBObjectFactory

@@ -74,7 +74,7 @@ import function.index.IIndexAble;
   * it works like a Mixture between Heap and Stack, i.e. the first Half
   * <!-- docstate
   * tags: [code/container, code/hash_table, code/container_iteration]
-  * concepts: [Concrete Storage Containers - Arrays - Hash Tables and Relations]
+  * concepts: [Storage Containers, Hash Tables]
   * facets: {layer: utility, status: legacy, complexity: 4}
   * digest: 67bc158f6a18606a55e7179111e49742f71e701f557833a7c4d11f24d9b48713
   * stale: false

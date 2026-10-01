@@ -85,7 +85,7 @@ package streamIO.object.yaml;
  * digest: 67671d46bff11be80d1b7156f6c9d99bb387d74ae0009cff80a95c961a222e9c
  * stale: false
  * tags: [code/parsing]
- * concepts: [YAML Parsing (Planned - Unimplemented)]
+ * concepts: [YAML Parsing]
  * facets: {layer: utility, status: legacy, complexity: 3}
  * -->
  */

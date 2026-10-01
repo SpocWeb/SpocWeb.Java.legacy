@@ -38,7 +38,7 @@ import streamIO.integer.jdbc.AStatement;
  * digest: 2da3f50c9ef5d8ab37575d41ef70deff93b55570580f140e35d4d339118bbf71
  * stale: true
  * tags: [code/jdbc_adapter, code/sax_event_generation]
- * concepts: [Minimal JDBC Driver over Separated-Format Flat Files]
+ * concepts: [JDBC Driver, Flat Files]
  * facets: {layer: domain, status: legacy, complexity: 4}
  * -->
  */

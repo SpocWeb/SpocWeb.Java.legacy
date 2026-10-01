@@ -54,7 +54,7 @@ import streamIO.fileSystem.SuffixFileNameFilter;
  * digest: 63743f971680081bbbfb7da0d6116d75156e39bbdc7060b36b703477b298a5ee
  * stale: false
  * tags: [code/jdbc_adapter, code/database_access, code/database_driver]
- * concepts: [Filesystem-Backed JDBC Driver Framework with Fixed-Length and Separator-Delimited Table Storage]
+ * concepts: [JDBC Driver, Table Storage]
  * facets: {layer: domain, status: legacy, complexity: 4}
  * -->
  */

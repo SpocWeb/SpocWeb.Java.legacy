@@ -12,7 +12,7 @@ import streamIO.exception.ReadOnlyException;
  * digest: b85799f343ff74d6eb45c04cee2f58d9fed2a55c10893c662039e6d4950463d7
  * stale: false
  * tags: [code/ring_theory, code/ode_solver]
- * concepts: [Ring Algebra and ODE Solvers]
+ * concepts: [Ring Algebra, ODE Solvers]
  * facets: {layer: domain, status: legacy, complexity: 4}
  * -->
  * but still supports all other Methods of the Ring Class.	 */

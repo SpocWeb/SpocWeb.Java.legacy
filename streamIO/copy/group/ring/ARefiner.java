@@ -33,7 +33,7 @@ import function.derive.ring.body.Cosinus;
  * digest: 026045d1c455d858e489c47efb37d316f86e83038f4c02fe0789a22bd2247ca8
  * stale: false
  * tags: [code/ring_theory, code/ode_solver]
- * concepts: [Ring Algebra and ODE Solvers]
+ * concepts: [Ring Algebra, ODE Solvers]
  * facets: {layer: domain, status: legacy, complexity: 4}
  * -->
  */

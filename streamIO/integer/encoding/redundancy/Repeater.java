@@ -39,7 +39,7 @@ import streamIO.integer.filter.FilterOutByte;
  * digest: f49209d5d63e91347d58ba8738b3604921d40b36e2fa1b9bc32cd7a48538d130
  * stale: false
  * tags: [code/error_correction, code/convolutional_encoding]
- * concepts: [Forward Error Correction Codecs - Repetition and Convolutional Encoding]
+ * concepts: [Error Correction, Convolutional Encoding]
  * facets: {layer: utility, status: legacy, complexity: 3}
  * -->
  */

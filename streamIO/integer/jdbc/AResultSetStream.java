@@ -38,7 +38,7 @@ import streamIO.integer.IStreamIn_Byte;
  * digest: 1541f36404bc07c16072d9b3106cee5d2f89170d320ee705004866d1e2f17389
  * stale: false
  * tags: [code/jdbc_adapter, code/database_access, code/database_driver]
- * concepts: [Filesystem-Backed JDBC Driver Framework with Fixed-Length and Separator-Delimited Table Storage]
+ * concepts: [JDBC Driver, Table Storage]
  * facets: {layer: domain, status: legacy, complexity: 4}
  * -->
  */

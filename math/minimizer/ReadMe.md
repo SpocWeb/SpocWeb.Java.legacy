@@ -52,7 +52,7 @@ concepts:
 facets:
   layer: utility
   status: legacy
-  complexity: 4
+  complexity: '4'
 description: 'Numerical function-minimization algorithms translated from Numerical Recipes: bracketing and one-dimensional line search (`AFloatMinimizer` and its `GoldenFloatMinimizer`, `Brent1FloatMinimizer`, `BrentFloatMinimizer` subclasses), N-dimensional gradient-free methods (`AmoebaMinimizer` downhill simplex, `AnnealingMinimizer` simulated annealing over the same simplex), N-dimensional gradient-based methods (`ConjuGrad1Minimizer` conjugate gradient with derivatives, `ConjuGradMinimizer` Powell''s method without derivatives), and linear programming (`SimplexMinimizer`). The remaining types (`DistSqr`, `DistSqrDistorted`, `SinOfDistDivDist`, `TestScalarField`, `VariableMetricMinimizer`) are test scalar fields, or in `VariableMetricMinimizer`''s case an unimplemented placeholder.'
 dv_has_:
   sub_:
@@ -86,14 +86,14 @@ dv_has_:
     concept_:
       brents_method_minimizer: 2
       conjugate_gradient_minimizer: 2
-      distorted_squared_distance_test_fixture: 1
+      distance: 1
+      distorted: 1
       downhill_simplex_nelder_mead_minimizer: 1
       golden_section_search_minimizer: 1
-      linear_programming_simplex_tableau_solver: 1
+      linear_programming: 1
       numerical_optimization: 1
       scalar_field_test_fixture: 1
-      simulated_annealing_minimizer: 1
-      sinc_like_test_function: 1
+      simplex: 1
 has_sub_folders: 0
 has_sub_files: 25
 has_sub_units: 14
@@ -117,17 +117,19 @@ has_sub_tag_code_simulated_annealing: 1
 has_sub_tag_code_bracket_matching: 1
 has_sub_concept_brents_method_minimizer: 2
 has_sub_concept_conjugate_gradient_minimizer: 2
-has_sub_concept_distorted_squared_distance_test_fixture: 1
+has_sub_concept_distance: 1
+has_sub_concept_distorted: 1
 has_sub_concept_downhill_simplex_nelder_mead_minimizer: 1
 has_sub_concept_golden_section_search_minimizer: 1
-has_sub_concept_linear_programming_simplex_tableau_solver: 1
+has_sub_concept_linear_programming: 1
 has_sub_concept_numerical_optimization: 1
 has_sub_concept_scalar_field_test_fixture: 1
-has_sub_concept_simulated_annealing_minimizer: 1
-has_sub_concept_sinc_like_test_function: 1
+has_sub_concept_simplex: 1
 related:
-  - path: ../_Matthias/Code/NET/Java/math/minimizer
-    shared-tags: [code/minimum_search, code/optimization]
+- path: ../_Matthias/Code/NET/Java/math/minimizer
+  shared-tags:
+  - code/minimum_search
+  - code/optimization
 ---
 
 # minimizer

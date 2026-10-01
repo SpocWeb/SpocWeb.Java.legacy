@@ -25,7 +25,7 @@ import streamIO.object.AStreamIn;
   * digest: 4653d5ebfa0f0107337c570fa0492151039c9c0f538425c7ed69c8c9bc964e7f
   * stale: true
   * tags: [code/enumerator, code/iterator_adapter]
-  * concepts: [Custom Streaming Enumerator and Iterator Bridge Layer for Object Collections]
+  * concepts: [Streaming Enumerator, Iterator]
   * facets: {layer: utility, status: legacy, complexity: 4}
   * -->
   */

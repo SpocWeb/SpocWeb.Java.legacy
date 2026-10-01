@@ -28,7 +28,7 @@ import streamIO.integer.AStreamOutByte;
  *
  * <!-- docstate
  * tags: [code/stream_adapter, code/stream_bridging, code/stream_wrapper]
- * concepts: [Bridges streamIO Interfaces to java.io and Arrays]
+ * concepts: [Stream Out Byte]
  * facets: {layer: utility, status: legacy, complexity: 4}
  * -->
  */

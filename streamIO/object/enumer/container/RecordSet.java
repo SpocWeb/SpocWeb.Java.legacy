@@ -33,7 +33,7 @@ import streamIO.object.enumer.IndexEnumerator;
  * But also flattening would reuse the first Relation.
  * <!-- docstate
  * tags: [code/container, code/hash_table, code/container_iteration]
- * concepts: [Concrete Storage Containers - Arrays - Hash Tables and Relations]
+ * concepts: [Storage Containers, Hash Tables]
  * facets: {layer: utility, status: legacy, complexity: 4}
  * digest: 95b3753afd3cc7a7891b3daa6428a54706bf4e3765b34bd4eedb4eb97523392a
  * stale: false

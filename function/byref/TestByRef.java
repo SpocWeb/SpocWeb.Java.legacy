@@ -13,7 +13,7 @@ import java.io.IOException;
  * mtime: 2026-09-05T10:12:24Z
  * digest: 48f785f60d207cf42e0a3eff03a3a046bede62d840f060029ece23101efdcbd8
  * stale: false
- * tags: [code/testing]
+ * tags: [code/test]
  * concepts: [Test Harness]
  * facets: {layer: utility, status: legacy, complexity: 2}
  * -->

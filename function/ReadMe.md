@@ -97,7 +97,7 @@ concepts:
 facets:
   layer: utility
   status: legacy
-  complexity: 4
+  complexity: '4'
 description: 'Core function/relation contracts (`IFunction`, `IProcessor`, `IInvertAble`, `IOrderAble`/`IIOrderAble`, `ICountAble`/`IMeasurAble`) and their default base-class implementations, plus a handful of small standalone utilities (`CatProcessor` function composition, `FactoryByType`/`FactoryRegistry` reflective object creation, `FunctionByHash` map-backed function representation, `Projections` sphere-to-plane coordinate mappings). The subfolders build on these contracts for specific domains: `index/` (indexing), `real/` (stateful numeric aggregators), `string/` (string transforms), `vector/` (vector fields and ODE integration), `byref/` (boxed by-reference primitives and combinatorics), and `derive/` (symbolic differentiation - see its own ReadMe.md).'
 dv_has_:
   sub_:
@@ -137,9 +137,9 @@ dv_has_:
       streaming_numeric_aggregator: 12
       indexed_collection_access: 9
       ordinary_differential_equations: 8
+      special_functions: 8
       neural_networks: 7
       partial_derivatives: 7
-      special_functions: 7
 has_sub_folders: 11
 has_sub_files: 471
 has_sub_units: 219
@@ -168,9 +168,9 @@ has_sub_concept_by_reference_primitive_wrapper: 14
 has_sub_concept_streaming_numeric_aggregator: 12
 has_sub_concept_indexed_collection_access: 9
 has_sub_concept_ordinary_differential_equations: 8
+has_sub_concept_special_functions: 8
 has_sub_concept_neural_networks: 7
 has_sub_concept_partial_derivatives: 7
-has_sub_concept_special_functions: 7
 ---
 
 # function

@@ -34,6 +34,9 @@ import java.lang.reflect.Field;
   * mtime: 2026-09-05T08:16:08Z
   * digest: 981e0f391116a6a7d6c34a62af7df728a2d549cbdca9f7c3da51315944c5901d
   * stale: false
+  * tags: [code/primary_key_lookup, code/state_flag, code/orm]
+  * concepts: [Record Identity, Persistence]
+  * facets: {layer: data, status: stable, complexity: 2}
   * -->
   */
 public class IdKey

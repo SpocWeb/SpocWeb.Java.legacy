@@ -44,7 +44,7 @@ import streamIO.integer.pipe.ByteStreamerThread;
   * digest: e6fc6afcfdc79b1f6831cafc155a6a3caadc34009d8b9586ac69c454138fd48d
   * stale: false
   * tags: [code/stream_filter]
-  * concepts: [Pluggable Byte-Stream Filter Infrastructure and java.io Adapters]
+  * concepts: [Byte Stream, Filter]
   * facets: {layer: utility, status: legacy, complexity: 3}
   * -->
   */

@@ -22,6 +22,9 @@ import java.lang.reflect.Field;
  * mtime: 2026-09-05T08:13:09Z
  * digest: d34aaab096aea167707de4730b370adfc353208e29c07c119af2597ea131fe74
  * stale: false
+ * tags: [code/entity_model, code/orm, code/value_object]
+ * concepts: [Domain Model, Attribute Modelling]
+ * facets: {layer: domain, status: stable, complexity: 2}
  * -->
  */
 public class MetricAttribute

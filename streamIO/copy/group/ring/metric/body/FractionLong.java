@@ -28,7 +28,7 @@ import function.byref.ByRefLong;
  * digest: c33c8f837e61db896f7155ebf54307f36b467b1bf6c168e487466dd61371c9ee
  * stale: false
  * tags: [code/rational_numbers, code/interval_arithmetic]
- * concepts: [Rational Numbers and Interval Arithmetic]
+ * concepts: [Rational Numbers, Interval Arithmetic]
  * facets: {layer: domain, status: legacy, complexity: 4}
  * -->
  */

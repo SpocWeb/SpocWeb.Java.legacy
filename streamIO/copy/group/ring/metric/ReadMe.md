@@ -131,11 +131,12 @@ tags:
 - code/numerical_integration
 - code/big_integer_arithmetic
 concepts:
-- Metric Spaces - Root Finding and Numerical Integration
+- Metric Spaces
+- Root Finding
 facets:
   layer: domain
   status: legacy
-  complexity: 4
+  complexity: '4'
 description: 'This folder adds Metric-Space structure - a Norm/Distance, a strict Order and Well-Order Constants (Infinity, NaN, min/max Value) - on top of the plain Algebraic Ring from the parent `ring` folder. `IMetric`/`AMetric`, `INorm`/`ANorm` and `IWellOrder`/`AWellOrder` define the three orthogonal Interfaces (Distance, Norm, Order-with-Constants), `IScalarMetric`/`AScalarMetric` integrates 1-dimensional Order with a Metric, and `IMetricIRing`/`AMetricIRing` fuses all of this with the Ring''s algebraic Operations into the single `IMetricIRing` used pervasively by the `body` Number types. The `C*` classes (`CMetric`, `CMetricIRing`, `CNorm`, `CScalarMetric`, `CWellOrder`) provide shared Constant Implementations. `BigInt` is a dynamic-Size arbitrary-Precision integer built directly on this layer, and `MaxPlus` is a (max,+) tropical-Algebra number type. The remaining classes implement iterative numerical Algorithms over `IMetricIRing` Values: root/zero Refiners (`ARefinerQ` and its `NewtonRefinerQ`/`FalsiRefinerQ`/ `PegasusRefiner`/`BiSectRefinerQ` subclasses), a `GoldenMinimizer`, an `ExtraPolValue` Extrapolator, and ODE Steppers with adaptive Step-width control (`AStepperQ` and its `StepRKQ`/`StepRKF`/`StepRKFQ`/ `StepMPQ`/`StepTrapezQ`/`MultiStep`/`MultiStepY`/`MultiStepYQ`/`NewtonStep2Q` subclasses). `TestMetric` is the manual test-suite entry point. The `body/` Subfolder builds the concrete scalar and Tensor Number types on top of this Metric-Ring Algebra.'
 dv_has_:
   sub_:
@@ -162,12 +163,15 @@ dv_has_:
         interval_arithmetic: 16
         root_finding: 40
     concept_:
-      rational_numbers_and_interval_arithmetic: 16
+      rational_numbers: 16
       vector_:
         matrix_:
           tensor_and_manifold_interpolation: 14
-      metric_spaces_root_finding_and_numerical_integration: 40
-      complex_number_arithmetic_and_fourier_transform: 9
+      metric_spaces: 40
+      root_finding: 40
+      complex_number: 9
+      fourier_transform: 9
+      interval_arithmetic: 16
       physical_units_and_conversion: 7
 has_sub_folders: 4
 has_sub_files: 185
@@ -185,10 +189,13 @@ has_sub_tag_code_complex_numbers: 9
 has_sub_tag_code_fourier_transform: 9
 has_sub_tag_code_interval_arithmetic: 16
 has_sub_tag_code_root_finding: 40
-has_sub_concept_rational_numbers_and_interval_arithmetic: 16
+has_sub_concept_rational_numbers: 16
 has_sub_concept_vector_matrix_tensor_and_manifold_interpolation: 14
-has_sub_concept_metric_spaces_root_finding_and_numerical_integration: 40
-has_sub_concept_complex_number_arithmetic_and_fourier_transform: 9
+has_sub_concept_metric_spaces: 40
+has_sub_concept_root_finding: 40
+has_sub_concept_complex_number: 9
+has_sub_concept_fourier_transform: 9
+has_sub_concept_interval_arithmetic: 16
 has_sub_concept_physical_units_and_conversion: 7
 ---
 

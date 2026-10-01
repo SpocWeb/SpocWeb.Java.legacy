@@ -22,7 +22,7 @@ concepts:
 facets:
   layer: utility
   status: legacy
-  complexity: 4
+  complexity: '4'
 description: This folder implements the `streamIO` interfaces directly on top of Java's File I/O classes. `FileStreamByte` extends `RandomAccessFile` to also implement `IStreamIn_Int`/`IStreamOutByte` (reading and writing the same File), while `FileStreamIn_Byte`/`FileStreamOutByte` extend `FileInputStream`/`FileOutputStream` respectively for read-only/write-only access - all three exist because `RandomAccessFile`/`FileInputStream`/`FileOutputStream` are Java classes rather than interfaces, so they cannot otherwise be made to implement the `streamIO` interfaces alongside their own base class. `FilterCrLfFromQuoted` is a small standalone command-line filter that strips CR/LF Characters found inside quoted sections of a text File.
 dv_has_:
   sub_:
@@ -52,24 +52,33 @@ has_sub_tag_code_file_io: 4
 has_sub_tag_code_stream_io: 4
 has_sub_concept_file_backed_streamio_implementations: 4
 related:
-  - path: ../_Matthias/Code/NET/_SpocWeb.Root/_std/SpocWeb.Pairs/Data/ini
-    shared-tags: [code/file_io]
-  - path: ../_Matthias/Code/NET/_root/Files
-    shared-tags: [code/file_io]
-  - path: ../_Matthias/Code/NET/_root/Files/Collections
-    shared-tags: [code/file_io]
-  - path: ../_Matthias/Code/NET/_root/Files/Systems
-    shared-tags: [code/file_io]
-  - path: ../_Matthias/Code/NET/_root/Files/Zip
-    shared-tags: [code/file_io]
-  - path: ../_Matthias/Code/NET/_root/Files/paths
-    shared-tags: [code/file_io]
-  - path: ../_Matthias/Code/NET/_std/IGraphs/streams/ReaderWriter
-    shared-tags: [code/stream_io]
-  - path: ../_Matthias/Code/NET/_std/IMathsImpl/io
-    shared-tags: [code/stream_io]
-  - path: ../_Matthias/Code/NET/_std/IMathsImpl/streams/ReaderWriter
-    shared-tags: [code/stream_io]
+- path: ../_Matthias/Code/NET/_SpocWeb.Root/_std/SpocWeb.Pairs/Data/ini
+  shared-tags:
+  - code/file_io
+- path: ../_Matthias/Code/NET/_root/Files
+  shared-tags:
+  - code/file_io
+- path: ../_Matthias/Code/NET/_root/Files/Collections
+  shared-tags:
+  - code/file_io
+- path: ../_Matthias/Code/NET/_root/Files/Systems
+  shared-tags:
+  - code/file_io
+- path: ../_Matthias/Code/NET/_root/Files/Zip
+  shared-tags:
+  - code/file_io
+- path: ../_Matthias/Code/NET/_root/Files/paths
+  shared-tags:
+  - code/file_io
+- path: ../_Matthias/Code/NET/_std/IGraphs/streams/ReaderWriter
+  shared-tags:
+  - code/stream_io
+- path: ../_Matthias/Code/NET/_std/IMathsImpl/io
+  shared-tags:
+  - code/stream_io
+- path: ../_Matthias/Code/NET/_std/IMathsImpl/streams/ReaderWriter
+  shared-tags:
+  - code/stream_io
 ---
 
 # file

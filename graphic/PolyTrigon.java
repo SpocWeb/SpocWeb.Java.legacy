@@ -10,7 +10,7 @@ import java.awt.Color;
  * digest: d7ecc38a44429b79afa03dbb7d454ccdd602995c8e41e708424c4bde3d15919c
  * stale: false
  * tags: [code/geometry_computation, code/2d_geometry]
- * concepts: [Fast Trigonometry and Shape Generation]
+ * concepts: [Trigonometry, Shape]
  * facets: {layer: utility, status: legacy, complexity: 4}
  * -->
  */

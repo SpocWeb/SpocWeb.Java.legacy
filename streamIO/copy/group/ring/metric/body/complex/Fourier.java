@@ -20,7 +20,7 @@ import streamIO.real.StreamOutPlotter;
  * digest: ee62910fa63b2d41422d015c10f661a72e662dea54d5ab1fc1f19dd1b6d6a434
  * stale: false
  * tags: [code/complex_numbers, code/fourier_transform]
- * concepts: [Complex Number Arithmetic and Fourier Transform]
+ * concepts: [Complex Number, Fourier Transform]
  * facets: {layer: domain, status: legacy, complexity: 4}
  * -->
  */

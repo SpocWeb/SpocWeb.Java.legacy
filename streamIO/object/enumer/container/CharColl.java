@@ -13,7 +13,7 @@ import function.byref.ByRefChar;
   * @see StringBuffer
   * <!-- docstate
   * tags: [code/container, code/hash_table, code/container_iteration]
-  * concepts: [Concrete Storage Containers - Arrays - Hash Tables and Relations]
+  * concepts: [Storage Containers, Hash Tables]
   * facets: {layer: utility, status: legacy, complexity: 4}
   * digest: 010bfcd963f276bc0fcf4ee3ba23fceeedf0a3cf58508763a2fc601267f9d32b
   * stale: false
@@ -142,7 +142,7 @@ extends ARAContainer {
   * @see CharColl Container
   * <!-- docstate
   * tags: [code/container, code/hash_table, code/container_iteration]
-  * concepts: [Concrete Storage Containers - Arrays - Hash Tables and Relations]
+  * concepts: [Storage Containers, Hash Tables]
   * facets: {layer: utility, status: legacy, complexity: 4}
   * digest: f217b7fb29ff63f5491d2ea994292e4317f3187e0c0517541e0fc806a3bf1aec
   * stale: false

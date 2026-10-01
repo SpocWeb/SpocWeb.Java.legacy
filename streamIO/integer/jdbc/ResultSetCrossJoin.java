@@ -25,7 +25,7 @@ import java.sql.Statement;
  * digest: d84771902e42cae4aaf8aeef5b561a3daabd3c716cda76728b7bd4b2f7f694e7
  * stale: false
  * tags: [code/jdbc_adapter, code/database_access, code/database_driver]
- * concepts: [Filesystem-Backed JDBC Driver Framework with Fixed-Length and Separator-Delimited Table Storage]
+ * concepts: [JDBC Driver, Table Storage]
  * facets: {layer: domain, status: legacy, complexity: 4}
  * -->
  */

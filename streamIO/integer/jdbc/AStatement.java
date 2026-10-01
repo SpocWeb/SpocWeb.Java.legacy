@@ -68,7 +68,7 @@ import streamIO.integer.jdbc.dbTest.IDbTest;
  * digest: 14542c063ba1db8ed7f8006df857612d89aef18ee5719a7da8743b910b6dd473
  * stale: false
  * tags: [code/jdbc_adapter, code/database_access, code/database_driver]
- * concepts: [Filesystem-Backed JDBC Driver Framework with Fixed-Length and Separator-Delimited Table Storage]
+ * concepts: [JDBC Driver, Table Storage]
  * facets: {layer: domain, status: legacy, complexity: 4}
  * -->
  */

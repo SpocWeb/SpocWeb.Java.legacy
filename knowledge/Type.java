@@ -28,6 +28,9 @@ import java.lang.reflect.Field;
  * mtime: 2026-09-05T08:15:05Z
  * digest: 3e9ea35caf35e54a98c55037e662b1c11b0bd9d813060ce3e1c8b0e44d8b7cef
  * stale: false
+ * tags: [code/type_system, code/entity_model, code/domain_model]
+ * concepts: [Domain Model, Object Classification]
+ * facets: {layer: domain, status: stable, complexity: 3}
  * -->
  */
 public class Type

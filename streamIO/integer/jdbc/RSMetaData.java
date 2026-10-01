@@ -28,7 +28,7 @@ import java.sql.SQLException;
  * digest: 03901f6006700e8aedd29b46b9bbe98300821ff329183bf816349e95f4f0c687
  * stale: false
  * tags: [code/jdbc_adapter, code/database_access, code/database_driver]
- * concepts: [Filesystem-Backed JDBC Driver Framework with Fixed-Length and Separator-Delimited Table Storage]
+ * concepts: [JDBC Driver, Table Storage]
  * facets: {layer: domain, status: legacy, complexity: 4}
  * -->
  */

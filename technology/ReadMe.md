@@ -29,7 +29,7 @@ concepts:
 facets:
   layer: infrastructure
   status: legacy
-  complexity: 3
+  complexity: '3'
 description: 'A grab-bag of small, mostly standalone demonstrations of individual Java platform technologies and third-party integration points, each self-contained rather than part of a shared application: GUID generation and thread-synchronization semantics at the root, JNDI directory browsing (`jndi/`), the Java Sound API (`sound/`), a reflection-attribute stream processing framework (`stream/`), and a substantial SAX/DOM/XSLT toolkit built around reflection-based event dispatch, together with the Castor-generated ZKDB message data model it unmarshals into (`xml/`). `jdbc/` and `rmi/` currently hold only non-Java package descriptors, with no Java sources of their own.'
 dv_has_:
   sub_:
@@ -63,13 +63,13 @@ dv_has_:
         thread_synchronization: 1
     concept_:
       castor_data_transfer_object: 16
+      data_transfer: 2
       custom_exception_type: 2
       attributed_stream_base_class: 1
       attributed_stream_input_interface: 1
       attributed_stream_output_interface: 1
       attributed_stream_processing: 1
-      castor_data_transfer_object_base: 1
-      castor_data_transfer_object_root: 1
+      base: 1
       castor_generated_data_model: 1
       command_line_jndi_browser: 1
 has_sub_folders: 5
@@ -95,13 +95,13 @@ has_sub_tag_code_xslt_transformation: 2
 has_sub_tag_code_audio: 2
 has_sub_tag_code_thread_synchronization: 1
 has_sub_concept_castor_data_transfer_object: 16
+has_sub_concept_data_transfer: 2
 has_sub_concept_custom_exception_type: 2
 has_sub_concept_attributed_stream_base_class: 1
 has_sub_concept_attributed_stream_input_interface: 1
 has_sub_concept_attributed_stream_output_interface: 1
 has_sub_concept_attributed_stream_processing: 1
-has_sub_concept_castor_data_transfer_object_base: 1
-has_sub_concept_castor_data_transfer_object_root: 1
+has_sub_concept_base: 1
 has_sub_concept_castor_generated_data_model: 1
 has_sub_concept_command_line_jndi_browser: 1
 ---

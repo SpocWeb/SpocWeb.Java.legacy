@@ -37,7 +37,7 @@ import streamIO.integer.IStreamOutByte;
   * digest: 270ee960a4911e868692f8afa81d2b37884d1da0767b7afc5ffbd659aa43b50f
   * stale: false
   * tags: [code/stream_filter]
-  * concepts: [Pluggable Byte-Stream Filter Infrastructure and java.io Adapters]
+  * concepts: [Byte Stream, Filter]
   * facets: {layer: utility, status: legacy, complexity: 3}
   * -->
   */

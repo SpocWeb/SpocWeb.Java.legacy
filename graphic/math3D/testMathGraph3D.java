@@ -46,7 +46,7 @@ import graphic.Polygon2D;
   * mtime: 2026-09-05T12:43:56Z
   * digest: 9e1011bc96149b47b55fc3c33048149d63790d3ec049d4cfb92a82662664b585
   * stale: false
-  * tags: [code/testing, code/3d_rendering]
+  * tags: [code/test, code/3d_rendering]
   * concepts: [3D Graph Demo/Test Harness]
   * facets: {layer: test, status: legacy, complexity: 2}
   * -->
@@ -59,7 +59,7 @@ public class testMathGraph3D {
 	 * body plot demos selected by {@link #state}.
 	 *
 	 * <!-- docstate
-	 * tags: [code/testing]
+	 * tags: [code/test]
 	 * concepts: [Demo Entry Point]
 	 * facets: {layer: test, status: legacy, complexity: 2}
 	 * -->

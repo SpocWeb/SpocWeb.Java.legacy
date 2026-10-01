@@ -20,7 +20,7 @@ import function.derive.CMeasurAble;
  * mtime: 2026-09-05T10:13:18Z
  * digest: 889e2af19a16052c9268a84674c9af6f8f35ae0b650764f7cd7ce30e8bee7488
  * stale: false
- * tags: [code/expression_builder_code/factory_pattern_code/reflection]
+ * tags: [code/expression_builder, code/factory_pattern, code/reflection]
  * concepts: [Function Parsing]
  * facets: {layer: utility, status: legacy, complexity: 3}
  * -->

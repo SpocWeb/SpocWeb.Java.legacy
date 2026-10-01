@@ -103,11 +103,12 @@ tags:
 - code/database_access
 - code/database_driver
 concepts:
-- Filesystem-Backed JDBC Driver Framework with Fixed-Length and Separator-Delimited Table Storage
+- JDBC Driver
+- Table Storage
 facets:
   layer: domain
   status: legacy
-  complexity: 4
+  complexity: '4'
 description: 'A self-contained JDBC driver (`java.sql.Driver`/`Connection`/`Statement`/`ResultSet`/ `DatabaseMetaData`) whose "database" is nothing but the filesystem: a catalog is a directory, a table is a file whose name carries a shared suffix, and rows/columns are plain text. Two concrete storage flavors exist side by side - fixed-length records (`*Fix` classes, via `ConnectionFix`/`DriverFix`) and the separator-delimited variant implemented in the sibling `streamIO.object.parser.jdbc` package - both built on the same `A*` abstract bases (`AConnection`, `AStatement`, `AResultSet`, `ADBMetaData`) so a new storage format only has to supply the row-level read/write primitives.'
 dv_has_:
   sub_:
@@ -135,16 +136,16 @@ dv_has_:
         predicate_interface: 1
         predicate_filter: 1
     concept_:
-      filesystem_backed_jdbc_driver_framework_with_fixed_length_and_separator_delimited_table_storage: 31
-      filters_resultset_rows_where_a_predicate_is_false: 1
-      full_outer_join_row_predicate: 1
-      left_outer_join_row_predicate: 1
+      table_storage: 31
+      jdbc_driver: 31
+      predicate: 4
+      equality_test: 1
+      filter_resultset: 1
+      left_outer_join: 1
       less_than_row_predicate: 1
       negating_row_predicate_wrapper: 1
       operand_swapping_row_predicate_wrapper: 1
-      row_filter_predicate_hierarchy_for_jdbc_resultset_joins_and_conditions: 1
-      row_level_equality_test_between_two_dbcolumn_fields: 1
-      row_predicate_contract_between_two_dbcolumn_fields: 1
+      outer_join: 1
 has_sub_folders: 1
 has_sub_files: 78
 has_sub_units: 40
@@ -162,16 +163,16 @@ has_sub_tag_code_predicate_evaluation: 5
 has_sub_tag_code_predicate_delegate: 2
 has_sub_tag_code_predicate_interface: 1
 has_sub_tag_code_predicate_filter: 1
-has_sub_concept_filesystem_backed_jdbc_driver_framework_with_fixed_length_and_separator_delimited_table_storage: 31
-has_sub_concept_filters_resultset_rows_where_a_predicate_is_false: 1
-has_sub_concept_full_outer_join_row_predicate: 1
-has_sub_concept_left_outer_join_row_predicate: 1
+has_sub_concept_table_storage: 31
+has_sub_concept_jdbc_driver: 31
+has_sub_concept_predicate: 4
+has_sub_concept_equality_test: 1
+has_sub_concept_filter_resultset: 1
+has_sub_concept_left_outer_join: 1
 has_sub_concept_less_than_row_predicate: 1
 has_sub_concept_negating_row_predicate_wrapper: 1
 has_sub_concept_operand_swapping_row_predicate_wrapper: 1
-has_sub_concept_row_filter_predicate_hierarchy_for_jdbc_resultset_joins_and_conditions: 1
-has_sub_concept_row_level_equality_test_between_two_dbcolumn_fields: 1
-has_sub_concept_row_predicate_contract_between_two_dbcolumn_fields: 1
+has_sub_concept_outer_join: 1
 ---
 
 # jdbc

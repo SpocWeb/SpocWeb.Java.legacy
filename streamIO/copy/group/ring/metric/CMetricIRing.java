@@ -15,7 +15,7 @@ import streamIO.exception.ReadOnlyException;
  * digest: df95e825884a8500f39e97ae5d4edf026f63638732786f1117747e45517b9067
  * stale: false
  * tags: [code/metric_space, code/root_finding, code/numerical_integration, code/big_integer_arithmetic]
- * concepts: [Metric Spaces - Root Finding and Numerical Integration]
+ * concepts: [Metric Spaces, Root Finding]
  * facets: {layer: domain, status: legacy, complexity: 4}
  * -->
  * It prevents Class Proliferation by not separating out the copyAt() Interface	 */

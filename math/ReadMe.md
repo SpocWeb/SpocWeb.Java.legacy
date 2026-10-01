@@ -47,7 +47,7 @@ concepts:
 facets:
   layer: utility
   status: legacy
-  complexity: 4
+  complexity: '4'
 description: Provides general-purpose numerical building blocks - low-dimensional Vector and Line Geometry, paraxial Optics Matrices, polynomial/spline Interpolation and Number Formatting - plus five specialized Subsystems for Combinatorial Algorithms, Curve Fitting, Numerical Integration, Function Minimization and the discrete Wavelet Transform. Most of the Subsystems are independent translations of Numerical Recipes Algorithms and depend only on the root-level Vector types (`Vector2D`, `Vector3D`) where a Geometry primitive is needed.
 dv_has_:
   sub_:
@@ -82,14 +82,14 @@ dv_has_:
     concept_:
       brents_method_minimizer: 2
       conjugate_gradient_minimizer: 2
+      float: 2
+      hypothesis_testing: 2
+      matrix_stream: 2
       reverse_order_float_stream_source: 2
       reverse_order_int_stream_source: 2
       "2d_line_segment": 1
       "2d_linear_optics_transform": 1
       "2d_sampling_test_model": 1
-      "2d_vector": 1
-      "3d_vector": 1
-      adaptive_monte_carlo_integrator: 1
 has_sub_folders: 10
 has_sub_files: 197
 has_sub_units: 107
@@ -114,14 +114,14 @@ has_sub_tag_code_wavelet_transform: 5
 has_sub_tag_code_weighting: 5
 has_sub_concept_brents_method_minimizer: 2
 has_sub_concept_conjugate_gradient_minimizer: 2
+has_sub_concept_float: 2
+has_sub_concept_hypothesis_testing: 2
+has_sub_concept_matrix_stream: 2
 has_sub_concept_reverse_order_float_stream_source: 2
 has_sub_concept_reverse_order_int_stream_source: 2
 has_sub_concept_2d_line_segment: 1
 has_sub_concept_2d_linear_optics_transform: 1
 has_sub_concept_2d_sampling_test_model: 1
-has_sub_concept_2d_vector: 1
-has_sub_concept_3d_vector: 1
-has_sub_concept_adaptive_monte_carlo_integrator: 1
 ---
 
 # math

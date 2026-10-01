@@ -19,7 +19,7 @@ import function.byref.TestByRef;
  * digest: c3b07a4d58320f8f0a2c27883e02c71ac77e831e0879c4344533e79bdcb8a3dd
  * stale: false
  * tags: [code/complex_numbers, code/fourier_transform]
- * concepts: [Complex Number Arithmetic and Fourier Transform]
+ * concepts: [Complex Number, Fourier Transform]
  * facets: {layer: domain, status: legacy, complexity: 4}
  * -->
  * e.g. e^x/x and e^x/SqRt(x)*/

@@ -18,7 +18,7 @@ import streamIO.object.enumer.container.Relation;
   * that are synchronized with Data Files in plain ASCII.
   * <!-- docstate
   * tags: [code/adapter, code/scheduling]
-  * concepts: [Small Adapter and Scheduling Helper Classes]
+  * concepts: [Adapter, Scheduling]
   * facets: {layer: utility, status: legacy, complexity: 4}
   * digest: 28de3d97f2e27fba4c147bde4e6688aa8cce0ea2402082491d68d631c53cb9dc
   * stale: false

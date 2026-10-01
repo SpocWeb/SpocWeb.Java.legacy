@@ -43,7 +43,7 @@ import java.util.Map;
  * digest: d4224f729f65fa2a6e4fb06755b365b71e39f15e60a914ee0146a422476f0621
  * stale: false
  * tags: [code/jdbc_adapter, code/database_access, code/database_driver]
- * concepts: [Filesystem-Backed JDBC Driver Framework with Fixed-Length and Separator-Delimited Table Storage]
+ * concepts: [JDBC Driver, Table Storage]
  * facets: {layer: domain, status: legacy, complexity: 4}
  * -->
  */

@@ -93,11 +93,12 @@ tags:
 - code/ring_theory
 - code/ode_solver
 concepts:
-- Ring Algebra and ODE Solvers
+- Ring Algebra
+- ODE Solvers
 facets:
   layer: domain
   status: legacy
-  complexity: 4
+  complexity: '4'
 description: 'This folder builds the Algebraic Ring layer on top of the parent `groupM` folder''s Multiplicative SemiGroup. `IRing`/`ARing` define the plain commutative Ring (M,+,-,0,*), `IBoolRing`/`ABoolRing` generalise the same Framework for Boolean/Set-typed Containers, and `IIntRing`/`AIntRing` add the full multiplicative and additive Integrity-Ring Capabilities (Division, no Zero Divisors) used pervasively by the `metric` Subfolder''s Number types. `IComplex` factors out Complex-Conjugation Support for `IIntRing`, `IInteger`/`AInteger`/`integer` define the basic inc()/dec()/pred()/succ() Operations for Integer Types, and `CIntRing`/`CRing` hold shared Constants. The remaining classes implement numerical Algorithms over this algebra: root/FixPoint Refiners (`IRefiner`/`ARefiner` and their `NewtonRefiner`/ `NewtonRefiner2`/`SecantRefiner`/`FixPtRefiner` implementations), an `Extrapolator` for rational/polynomial Extrapolation to zero Step-width, an `Interpolator` for polynomial Interpolation, and ODE/Function Steppers (`IStepper`/`IFloatStepper`/`AStepper`/`IODE` and their `StepRK`/`StepMP`/`StepTrapez` implementations). `TestRing` is the manual test-suite entry point. The `metric/` Subfolder builds the concrete scalar and Tensor Number types on top of this Ring Algebra.'
 dv_has_:
   sub_:
@@ -124,13 +125,17 @@ dv_has_:
         complex_numbers: 9
         fourier_transform: 9
     concept_:
-      ring_algebra_and_ode_solvers: 28
-      rational_numbers_and_interval_arithmetic: 16
-      metric_spaces_root_finding_and_numerical_integration: 41
+      ode_solvers: 28
+      ring_algebra: 28
+      rational_numbers: 16
+      metric_spaces: 41
+      root_finding: 41
       vector_:
         matrix_:
           tensor_and_manifold_interpolation: 14
-      complex_number_arithmetic_and_fourier_transform: 9
+      complex_number: 9
+      fourier_transform: 9
+      interval_arithmetic: 16
       physical_units_and_conversion: 7
 has_sub_folders: 5
 has_sub_files: 247
@@ -148,11 +153,15 @@ has_sub_tag_code_tensor: 14
 has_sub_tag_code_interpolation: 14
 has_sub_tag_code_complex_numbers: 9
 has_sub_tag_code_fourier_transform: 9
-has_sub_concept_ring_algebra_and_ode_solvers: 28
-has_sub_concept_rational_numbers_and_interval_arithmetic: 16
-has_sub_concept_metric_spaces_root_finding_and_numerical_integration: 41
+has_sub_concept_ode_solvers: 28
+has_sub_concept_ring_algebra: 28
+has_sub_concept_rational_numbers: 16
+has_sub_concept_metric_spaces: 41
+has_sub_concept_root_finding: 41
 has_sub_concept_vector_matrix_tensor_and_manifold_interpolation: 14
-has_sub_concept_complex_number_arithmetic_and_fourier_transform: 9
+has_sub_concept_complex_number: 9
+has_sub_concept_fourier_transform: 9
+has_sub_concept_interval_arithmetic: 16
 has_sub_concept_physical_units_and_conversion: 7
 ---
 

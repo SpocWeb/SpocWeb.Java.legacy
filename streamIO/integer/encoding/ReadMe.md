@@ -81,7 +81,7 @@ concepts:
 facets:
   layer: utility
   status: legacy
-  complexity: 3
+  complexity: '3'
 description: 'This folder collects stream filters that re-encode bytes or characters from one wire representation into another: little-endian primitive I/O (`BigEndianReader`/`BigEndianWriter`), binary-to-text schemes (Base64/UUEncode via `FilterASCII2Base64`/`FilterBase64ToASCII`, BinHex, URL encoding, HTML entities, UTF-8), lookup-table recoding (`FilterLookup`, `FilterChar2String`, `FilterString2Char`), checksums (`FilterCRC16`, `FilterCRC32`), a symmetric XOR/UUEncode cipher (`FilterCrypt`), escape-character insertion/removal, and a synchronizing byte pipe (`SynchPipeByte`). The `redundancy` subfolder adds forward-error-correction codecs (convolutional encoding, repetition-based redundancy) built on top of this layer. Most classes come in paired Input/Output or encode/decode halves that are meant to be composed with each other or with a plain `InputStream`/`OutputStream`. Several legacy encoders carried integer-truncation, off-by-one or nibble-conversion bugs (`FilterASCII2Base64`, `FilterBase64ToASCII`, `FilterBinHex2Byte`, `FilterByte2BinHex`, `FilterCRC16`, `FilterCRC32`, `FilterUrlDecode`, `FilterString2Char`, `BigEndianReader`); all were fixed in the 2026-09-06 bug-fix run. `FilterCrypt` is a home-grown XOR cipher and is now `@Deprecated`: it is not cryptographically secure and must not be used for confidentiality.'
 dv_has_:
   sub_:
@@ -107,7 +107,8 @@ dv_has_:
       byte_:
         character_re_encoding_filters_base64_binhex_url_:
           entity_escaping_crc_xor: 22
-      forward_error_correction_codecs_repetition_and_convolutional_encoding: 4
+      convolutional_encoding: 4
+      error_correction: 4
 has_sub_folders: 1
 has_sub_files: 51
 has_sub_units: 26
@@ -121,7 +122,8 @@ has_sub_tag_code_convolutional_encoding: 4
 has_sub_tag_code_error_correction: 4
 has_sub_tag_code_stream_filter: 22
 has_sub_concept_byte_character_re_encoding_filters_base64_binhex_url_entity_escaping_crc_xor: 22
-has_sub_concept_forward_error_correction_codecs_repetition_and_convolutional_encoding: 4
+has_sub_concept_convolutional_encoding: 4
+has_sub_concept_error_correction: 4
 ---
 
 # encoding

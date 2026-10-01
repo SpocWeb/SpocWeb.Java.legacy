@@ -22,7 +22,7 @@ import function.vector.IBinaryOpFloat;
  * digest: 3266cd78c00c46d781fc0ccea0299bcb9b9ee80eac1d17e59a2630b31fe97b64
  * stale: false
  * tags: [code/metric_space, code/root_finding, code/numerical_integration, code/big_integer_arithmetic]
- * concepts: [Metric Spaces - Root Finding and Numerical Integration]
+ * concepts: [Metric Spaces, Root Finding]
  * facets: {layer: domain, status: legacy, complexity: 4}
  * -->
  */

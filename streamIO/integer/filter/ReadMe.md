@@ -50,11 +50,12 @@ digest:
 tags:
 - code/stream_filter
 concepts:
-- Pluggable Byte-Stream Filter Infrastructure and java.io Adapters
+- Byte Stream
+- Filter
 facets:
   layer: utility
   status: legacy
-  complexity: 3
+  complexity: '3'
 description: 'Byte-stream plumbing infrastructure: pluggable filter base classes (`APlugAbleFilterByte` and the `IPlugAbleFilter*` interfaces) whose upstream/downstream `InputStream`/`OutputStream` can be swapped at runtime; delegation adapters (`FilterByte`, `FilterIn_Byte`, `FilterOutByte`, `FilterIn_Int2Object`) that bridge the `java.io` classes to this codebase''s own `IStreamIn_Byte`/`IStreamOutByte` interfaces; a growable async buffer/queue (`FilterBuffer`); a push-back wrapper (`FilterIn_BytePushBack`); size-limiting wrappers (`LimitedSizeInputStream`/`LimitedSizeOutputStream`); and two special-purpose text filters, `FilterReplaceSection` (cuts out a delimited section of a stream) and `FilterSplitAtFind` (truncates a stream once a marker string recurs too often). The `stats` subfolder adds stream-consuming byte/digraph/trigraph frequency counters. Several files carried bugs - a missing-`return`-after-usage-message crash in `FilterReplaceSection`/`FilterSplitAtFind`''s `main()`, an uninitialized countdown in `FilterSplitAtFind`, and a self-recursive `skip()`/off-by-one `read()` in `LimitedSizeInputStream` - all fixed in the 2026-09-06 bug-fix run.'
 dv_has_:
   sub_:
@@ -74,7 +75,8 @@ dv_has_:
         statistics: 4
         stream_filter: 14
     concept_:
-      pluggable_byte_stream_filter_infrastructure_and_javaio_adapters: 14
+      byte_stream: 14
+      filter: 14
       byte_and_digraph_:
         trigraph_frequency_counters: 4
 has_sub_folders: 1
@@ -86,29 +88,40 @@ has_sub_facet_complexity_3: 18
 has_sub_tag_code_frequency_counting: 4
 has_sub_tag_code_statistics: 4
 has_sub_tag_code_stream_filter: 14
-has_sub_concept_pluggable_byte_stream_filter_infrastructure_and_javaio_adapters: 14
+has_sub_concept_byte_stream: 14
+has_sub_concept_filter: 14
 has_sub_concept_byte_and_digraph_trigraph_frequency_counters: 4
 related:
-  - path: ../_Matthias/Code/NET/_std/IGraphs/Interfaces/Streams/bytes
-    shared-tags: [code/stream_filter]
-  - path: ../_Matthias/Code/NET/_std/IGraphs/Interfaces/Streams/chars
-    shared-tags: [code/stream_filter]
-  - path: ../_Matthias/Code/NET/_std/IGraphs/Interfaces/Streams/filters/real
-    shared-tags: [code/stream_filter]
-  - path: ../_Matthias/Code/NET/_std/IMathsImpl/Interfaces/streams/bytes
-    shared-tags: [code/stream_filter]
-  - path: ../_Matthias/Code/NET/_std/IMathsImpl/Interfaces/streams/chars
-    shared-tags: [code/stream_filter]
-  - path: ../_Matthias/Code/NET/_std/IMathsImpl/Interfaces/streams/filters/real
-    shared-tags: [code/stream_filter]
-  - path: ../_Matthias/Code/NET/_org.structs/functions/bytes
-    shared-tags: [code/stream_filter]
-  - path: ../_Matthias/Code/NET/_org.structs/parser/encoding
-    shared-tags: [code/stream_filter]
-  - path: ../_Matthias/Code/CPP/_Math/Stream
-    shared-tags: [code/stream_filter]
-  - path: ../_Matthias/Code/JavaTest/OldStuff/InFilter
-    shared-tags: [code/stream_filter]
+- path: ../_Matthias/Code/NET/_std/IGraphs/Interfaces/Streams/bytes
+  shared-tags:
+  - code/stream_filter
+- path: ../_Matthias/Code/NET/_std/IGraphs/Interfaces/Streams/chars
+  shared-tags:
+  - code/stream_filter
+- path: ../_Matthias/Code/NET/_std/IGraphs/Interfaces/Streams/filters/real
+  shared-tags:
+  - code/stream_filter
+- path: ../_Matthias/Code/NET/_std/IMathsImpl/Interfaces/streams/bytes
+  shared-tags:
+  - code/stream_filter
+- path: ../_Matthias/Code/NET/_std/IMathsImpl/Interfaces/streams/chars
+  shared-tags:
+  - code/stream_filter
+- path: ../_Matthias/Code/NET/_std/IMathsImpl/Interfaces/streams/filters/real
+  shared-tags:
+  - code/stream_filter
+- path: ../_Matthias/Code/NET/_org.structs/functions/bytes
+  shared-tags:
+  - code/stream_filter
+- path: ../_Matthias/Code/NET/_org.structs/parser/encoding
+  shared-tags:
+  - code/stream_filter
+- path: ../_Matthias/Code/CPP/_Math/Stream
+  shared-tags:
+  - code/stream_filter
+- path: ../_Matthias/Code/JavaTest/OldStuff/InFilter
+  shared-tags:
+  - code/stream_filter
 ---
 
 # filter

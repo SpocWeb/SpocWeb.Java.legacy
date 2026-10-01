@@ -37,7 +37,7 @@ import streamIO.copy.group.ring.StepRK;
  * mtime: 2026-09-05T12:43:48Z
  * digest: 5a16ab48715ae164d55f5d1f9447b20cc7e6ab5cab262fa2209d90de186c8f1e
  * stale: false
- * tags: [code/testing, code/3d_rendering]
+ * tags: [code/test, code/3d_rendering]
  * concepts: [3D Graph Demo/Test Harness]
  * facets: {layer: test, status: legacy, complexity: 2}
  * -->

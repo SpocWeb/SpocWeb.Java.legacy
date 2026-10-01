@@ -25,7 +25,7 @@ package structure; //
   * mtime: 2026-09-05T11:17:53Z
   * digest: 3b49c9d11c1f721bdf63aebbc8635ae682e34e7d9b6943434dfdd08889e2683a
   * stale: false
-  * tags: [code/design_patterns]
+  * tags: [code/design_pattern]
   * concepts: [Template Method Pattern]
   * facets: {layer: utility, status: legacy, complexity: 2}
   * -->

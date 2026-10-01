@@ -11,7 +11,7 @@ import streamIO.copy.order.COrder;
  * digest: 8bfa821c5454e0ed5324a533ef7c0658ec96e972d86d26016acaec9f08033b2e
  * stale: false
  * tags: [code/metric_space, code/root_finding, code/numerical_integration, code/big_integer_arithmetic]
- * concepts: [Metric Spaces - Root Finding and Numerical Integration]
+ * concepts: [Metric Spaces, Root Finding]
  * facets: {layer: domain, status: legacy, complexity: 4}
  * -->
  * but still supports all other Methods of the WellOrder Class.	 */

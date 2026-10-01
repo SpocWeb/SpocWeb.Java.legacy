@@ -34,7 +34,7 @@ import function.index.IIndexer;
  * digest: 2a7b60c76e6a32ce2b941bc61e99ff84bf1f9bc911c87c07436fe8a16be87524
  * stale: false
  * tags: [code/jdbc_adapter, code/database_access, code/database_driver]
- * concepts: [Filesystem-Backed JDBC Driver Framework with Fixed-Length and Separator-Delimited Table Storage]
+ * concepts: [JDBC Driver, Table Storage]
  * facets: {layer: domain, status: legacy, complexity: 4}
  * -->
  */

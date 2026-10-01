@@ -18,7 +18,7 @@ import function.vector.IBinaryOpFloat;
  * digest: b150e51d866d804019d583762b0b2efccb3544b21144076819556a7b74fa991c
  * stale: false
  * tags: [code/metric_space, code/root_finding, code/numerical_integration, code/big_integer_arithmetic]
- * concepts: [Metric Spaces - Root Finding and Numerical Integration]
+ * concepts: [Metric Spaces, Root Finding]
  * facets: {layer: domain, status: legacy, complexity: 4}
  * -->
  */

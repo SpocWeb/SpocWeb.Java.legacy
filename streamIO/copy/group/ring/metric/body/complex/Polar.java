@@ -30,7 +30,7 @@ import streamIO.copy.groupM.ISemiGroupM;
  * digest: 95cea1633b23687abae9e8a4a3db9baea542005a75845002b5f0141fb37396a9
  * stale: false
  * tags: [code/complex_numbers, code/fourier_transform]
- * concepts: [Complex Number Arithmetic and Fourier Transform]
+ * concepts: [Complex Number, Fourier Transform]
  * facets: {layer: domain, status: legacy, complexity: 4}
  * -->
  */

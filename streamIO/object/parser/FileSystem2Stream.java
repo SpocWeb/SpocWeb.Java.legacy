@@ -39,7 +39,7 @@ import function.FunctionByHash;
   * digest: 94ff1bccea65bba0ab49d659bd127f3273e225426ecaaa9d6fe722b2b7fe0973
   * stale: true
   * tags: [code/stream_parsing, code/parser]
-  * concepts: [Separator-Driven Token Parsing and Stream Adapters]
+  * concepts: [Token Parsing, Stream Adapters]
   * facets: {layer: utility, status: legacy, complexity: 4}
   * -->
   */

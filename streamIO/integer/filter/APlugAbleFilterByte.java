@@ -32,7 +32,7 @@ import streamIO.integer.adapter.OutputStreamToStreamOutByte;
  * digest: 526556ce15e6cad11561cb8cc8c6a2e8044708edff2b89908aaf6eb37cc41692
  * stale: false
  * tags: [code/stream_filter]
- * concepts: [Pluggable Byte-Stream Filter Infrastructure and java.io Adapters]
+ * concepts: [Byte Stream, Filter]
  * facets: {layer: utility, status: legacy, complexity: 3}
  * -->
  */

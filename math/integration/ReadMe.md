@@ -24,7 +24,7 @@ concepts:
 facets:
   layer: utility
   status: legacy
-  complexity: 3
+  complexity: '3'
 description: Implements Monte Carlo Integration over rectangular Regions of R^n, translated from Numerical Recipes Chapter 7.8. Two independent Integrators are provided - the adaptive Grid (VEGAS) Method and a recursive stratified-sampling Method - both driven by a Scalar Field the caller supplies. `ConstScalarField` and `TestScalarField` are ready-made Fields used mainly for testing the Integrators against a known analytic Result.
 dv_has_:
   sub_:
@@ -66,12 +66,15 @@ has_sub_concept_parameterized_scalar_field_interface: 1
 has_sub_concept_stratified_monte_carlo_integrator: 1
 has_sub_concept_test_scalar_field: 1
 related:
-  - path: ../_Matthias/Code/Pascal/TABELLEN
-    shared-tags: [code/numerical_integration]
-  - path: ../_Matthias/Code/NET/_org.structs/ODEs
-    shared-tags: [code/numerical_integration]
-  - path: ../_Matthias/Code/NET/Java/math/integration
-    shared-tags: [code/numerical_integration]
+- path: ../_Matthias/Code/Pascal/TABELLEN
+  shared-tags:
+  - code/numerical_integration
+- path: ../_Matthias/Code/NET/_org.structs/ODEs
+  shared-tags:
+  - code/numerical_integration
+- path: ../_Matthias/Code/NET/Java/math/integration
+  shared-tags:
+  - code/numerical_integration
 ---
 
 # integration

@@ -47,7 +47,7 @@ import function.byref.ByRefChar;
  * digest: 1bff658a632c7ee9809d41d7fb845896dd96c84c39f66ce0d20ffce7dc676efd
  * stale: false
  * tags: [code/growable_array, code/string_parsing, code/string_formatting]
- * concepts: [Growable String[] Vector with String Utility Library]
+ * concepts: [String Vector, Utility]
  * facets: {layer: utility, status: broken, complexity: 4}
  * -->
  */

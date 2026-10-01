@@ -48,11 +48,12 @@ tags:
 - code/matrix_algebra
 - code/numerical_linear_algebra
 concepts:
-- Numerical Linear Algebra (Matrix Types and Decompositions)
+- Linear Algebra
+- Matrix Decomposition
 facets:
   layer: utility
   status: legacy
-  complexity: 4
+  complexity: '4'
 description: 'Numerical linear-algebra library providing dense and specialized matrix representations (general `double`/`float`/`int` matrices, band, tridiagonal, symmetric, and QR-decomposable forms) together with the classic dense-matrix algorithms built on Numerical-Recipes-style ports: LU/QR/Cholesky/SVD decomposition, eigenvalue and eigenvector extraction, Householder tridiagonalization, and Hamilton quaternions for rotation. The three parallel `Matrix{Double, Float,Int}` classes each combine a dynamic row-vector container with a large static API operating directly on raw two-dimensional arrays, so callers can choose the array-based static methods for hot loops or the instance API for bookkeeping convenience.'
 dv_has_:
   sub_:
@@ -82,10 +83,10 @@ dv_has_:
         quaternion_algebra: 1
         quaternion_math: 1
     concept_:
+      matrix_stream: 2
       band_diagonal_matrix: 1
-      double_matrix_row_stream_iterator: 1
+      double: 1
       double_precision_dense_matrix: 1
-      float_matrix_row_stream_iterator: 1
       general_non_symmetric_eigenvalue_computation: 1
       generic_object_matrix: 1
       integer_dense_matrix: 1
@@ -111,10 +112,10 @@ has_sub_tag_code_numerical_linear_algebra: 2
 has_sub_tag_code_qr_decomposition: 1
 has_sub_tag_code_quaternion_algebra: 1
 has_sub_tag_code_quaternion_math: 1
+has_sub_concept_matrix_stream: 2
 has_sub_concept_band_diagonal_matrix: 1
-has_sub_concept_double_matrix_row_stream_iterator: 1
+has_sub_concept_double: 1
 has_sub_concept_double_precision_dense_matrix: 1
-has_sub_concept_float_matrix_row_stream_iterator: 1
 has_sub_concept_general_non_symmetric_eigenvalue_computation: 1
 has_sub_concept_generic_object_matrix: 1
 has_sub_concept_integer_dense_matrix: 1
@@ -122,10 +123,14 @@ has_sub_concept_matrix_base_class: 1
 has_sub_concept_qr_decomposition: 1
 has_sub_concept_quaternion_rotation_algebra: 1
 related:
-  - path: ../_Matthias/Code/NET/org.structs/math/matrix
-    shared-tags: [code/matrix_algebra, code/numerical_linear_algebra]
-  - path: ../_Matthias/Code/NET/Java/math/matrix
-    shared-tags: [code/matrix_algebra, code/numerical_linear_algebra]
+- path: ../_Matthias/Code/NET/org.structs/math/matrix
+  shared-tags:
+  - code/matrix_algebra
+  - code/numerical_linear_algebra
+- path: ../_Matthias/Code/NET/Java/math/matrix
+  shared-tags:
+  - code/matrix_algebra
+  - code/numerical_linear_algebra
 ---
 
 # matrix

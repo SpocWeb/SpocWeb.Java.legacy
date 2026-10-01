@@ -29,7 +29,7 @@ import streamIO.integer.pipe.ByteStreamerThread;
  * @version
  * <!-- docstate
  * tags: [code/stream_filter]
- * concepts: [Pluggable Byte-Stream Filter Infrastructure and java.io Adapters]
+ * concepts: [Byte Stream, Filter]
  * facets: {layer: utility, status: legacy, complexity: 3}
  * -->
  */

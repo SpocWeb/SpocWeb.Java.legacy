@@ -39,7 +39,7 @@ package tools;
   * mtime: 2026-09-04T16:35:47Z
   * digest: 00453e436f482459403cbf1eb732b1800389ad0f44b6f5b37b48fe5d6ece4f20
   * stale: false
-  * tags: [code/locking, code/server_facade, code/stub_implementation]
+  * tags: [code/locking, code/server_facade, code/stub]
   * concepts: [Concurrency]
   * facets: {layer: infrastructure, status: unfinished, complexity: 3}
   * -->

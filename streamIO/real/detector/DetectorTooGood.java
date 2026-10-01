@@ -36,7 +36,7 @@ import streamIO.real.IStreamOutFloat;
  * digest: 90ec02eff64a685fab285fc84e543cd153e71e14cfd12364a7f162cc278b9d2d
  * stale: false
  * tags: [code/anomaly_detection]
- * concepts: ["Too Good To Be True" Detector]
+ * concepts: [Too Good, Detector]
  * facets: {layer: domain, status: legacy, complexity: 2}
  * -->
  */

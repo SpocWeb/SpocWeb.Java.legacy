@@ -39,13 +39,13 @@ digest:
       digest: b465a82fa608c014ea00ef3eee899cb71d51dd004ef411a5884df92b1d334c74
   folders: {}
 tags:
-- code/running_aggregates
+- code/running_aggregate
 concepts:
 - Streaming Numeric Aggregators
 facets:
   layer: utility
   status: broken
-  complexity: 3
+  complexity: '3'
 description: 'Stateful streaming aggregators over a sequence of double values passed one at a time through `Map`/`process`: `Adder`/`Multiplier`/`Product`/`Sum`/`SumSquares` accumulate a running total, `Maximum`/`Minimum` track extrema, `RunningMean` and `Product.getHMV()` compute running statistics, and `LinearScale`/`BiLinearSum`/`FourierCoefficient` combine several inputs into a scaled or weighted result.'
 dv_has_:
   sub_:
@@ -75,12 +75,15 @@ has_sub_tag_code_running_aggregate: 12
 has_sub_tag_code_mathematical_function: 12
 has_sub_concept_streaming_numeric_aggregator: 12
 related:
-  - path: ../_Matthias/Code/JavaTest/OldStuff/InFilter
-    shared-tags: [code/running_aggregate]
-  - path: ../_Matthias/Code/JavaTest/OldStuff/OutFilter
-    shared-tags: [code/running_aggregate]
-  - path: ../_Matthias/Code/NET/org.structs/iFunction/real/stateful
-    shared-tags: [code/running_aggregate]
+- path: ../_Matthias/Code/JavaTest/OldStuff/InFilter
+  shared-tags:
+  - code/running_aggregate
+- path: ../_Matthias/Code/JavaTest/OldStuff/OutFilter
+  shared-tags:
+  - code/running_aggregate
+- path: ../_Matthias/Code/NET/org.structs/iFunction/real/stateful
+  shared-tags:
+  - code/running_aggregate
 ---
 
 # real

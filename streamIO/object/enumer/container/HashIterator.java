@@ -21,7 +21,7 @@ import function.IProcessor;
   * that there is always at most one equivalent Instance in the Container.
   * <!-- docstate
   * tags: [code/container, code/hash_table, code/container_iteration]
-  * concepts: [Concrete Storage Containers - Arrays - Hash Tables and Relations]
+  * concepts: [Storage Containers, Hash Tables]
   * facets: {layer: utility, status: legacy, complexity: 4}
   * digest: 043d49f3432f00b95eed735325d73e98711737e33022445606c27fa315d29f04
   * stale: false

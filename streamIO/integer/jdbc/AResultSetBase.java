@@ -61,7 +61,7 @@ import streamIO.object.IStreamIn;
  * digest: 708285f3459d7c62fd1aecc56b29a4bf87dc85ba4d5cd91c1051ff9434d7398c
  * stale: false
  * tags: [code/jdbc_adapter, code/database_access, code/database_driver]
- * concepts: [Filesystem-Backed JDBC Driver Framework with Fixed-Length and Separator-Delimited Table Storage]
+ * concepts: [JDBC Driver, Table Storage]
  * facets: {layer: domain, status: legacy, complexity: 4}
  * -->
  */

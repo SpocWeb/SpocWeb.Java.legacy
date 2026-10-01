@@ -22,7 +22,7 @@ import tester.TesterEquivalence;
   *
   * <!-- docstate
   * tags: [code/container, code/hash_table, code/container_iteration]
-  * concepts: [Concrete Storage Containers - Arrays - Hash Tables and Relations]
+  * concepts: [Storage Containers, Hash Tables]
   * facets: {layer: utility, status: legacy, complexity: 4}
   * digest: 32c65dd8fcb8704cdc051eb85a78b269ff749c3f95e4c945bc6da4bf46926d02
   * stale: false

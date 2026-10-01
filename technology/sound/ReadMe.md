@@ -12,7 +12,7 @@ concepts:
 facets:
   layer: infrastructure
   status: legacy
-  complexity: 2
+  complexity: '2'
 description: 'A single demonstration of the Java Sound API: reading a WAV file''s format and stream, and writing back a synthesized sine-wave WAV file of raw PCM samples.'
 dv_has_:
   sub_:
@@ -40,8 +40,9 @@ has_sub_facet_complexity_3: 1
 has_sub_tag_code_audio: 1
 has_sub_concept_wav_file_reader: 1
 related:
-  - path: ../_Matthias/Code/NET/_root/_projects/spoctext/Speech
-    shared-tags: [code/audio]
+- path: ../_Matthias/Code/NET/_root/_projects/spoctext/Speech
+  shared-tags:
+  - code/audio
 ---
 
 # sound

@@ -9,7 +9,7 @@ import streamIO.copy.group.ring.metric.body.TestBody;
  * digest: a32f6471d3d5bb15d4d766c6c05b666248b80f41d1ac54a3286cc6661af5543a
  * stale: false
  * tags: [code/complex_numbers, code/fourier_transform]
- * concepts: [Complex Number Arithmetic and Fourier Transform]
+ * concepts: [Complex Number, Fourier Transform]
  * facets: {layer: domain, status: legacy, complexity: 4}
  * -->
  * then hands off to {@link TestBody} to continue testing the parent packages.	 */

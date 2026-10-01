@@ -70,7 +70,7 @@ concepts:
 facets:
   layer: utility
   status: legacy
-  complexity: 4
+  complexity: '4'
 description: 'Foundational contracts and base Classes for a symbolic-differentiation Function library: any Function implementing `IDeriveAble`/`IFloatDeriveAble` can report its own Derivative and Integral (cached and cross-linked via `setDerivative()`/`setIntegral()`), letting the `ring` subfolder''s combinators (`Sum`, `Prod`, `Cat`, ...) build up and differentiate compound Expressions purely by composition. `ADeriveAble`/`AFloatDeriveAble`/`AStatic`/`AFuncRel` supply the default Singleton-oriented implementation most concrete Functions extend; `AConst`/`Const`/`CCountAble`/ `CMeasurAble` are the constant-Function hierarchy (with `Comparison`/`ByRefComparison` as CCountAble-derived helpers); `Cat`/`Identity` provide Function concatenation and the identity element; `Enum` and its `Month`/`Week`/`Ternary` Subclasses implement a Flyweight-based enumeration pattern reused for calendar values and three-valued Logic. The `neuron` subfolder builds a Neural Network layer on `IFloatDeriveAble`, and `ring` builds the symbolic Function Algebra proper, with `ring/body` supplying the concrete transcendental Functions.'
 dv_has_:
   sub_:
@@ -104,12 +104,12 @@ dv_has_:
     concept_:
       function_algebra: 35
       ordinary_differential_equations: 8
+      special_functions: 8
       neural_networks: 7
       partial_derivatives: 7
-      special_functions: 7
       trigonometric_functions: 5
+      vector_calculus: 5
       calculus: 4
-      vector_calculus: 4
       hyperbolic_functions: 3
       inverse_hyperbolic_functions: 3
 has_sub_folders: 4
@@ -135,17 +135,19 @@ has_sub_tag_code_enum_modeling: 5
 has_sub_tag_code_derivative_calculation: 6
 has_sub_concept_function_algebra: 35
 has_sub_concept_ordinary_differential_equations: 8
+has_sub_concept_special_functions: 8
 has_sub_concept_neural_networks: 7
 has_sub_concept_partial_derivatives: 7
-has_sub_concept_special_functions: 7
 has_sub_concept_trigonometric_functions: 5
+has_sub_concept_vector_calculus: 5
 has_sub_concept_calculus: 4
-has_sub_concept_vector_calculus: 4
 has_sub_concept_hyperbolic_functions: 3
 has_sub_concept_inverse_hyperbolic_functions: 3
 related:
-  - path: ../_Matthias/Code/Java/function/derive/ring/body
-    shared-tags: [code/derivable_function_contract, code/mathematical_function]
+- path: ../_Matthias/Code/Java/function/derive/ring/body
+  shared-tags:
+  - code/derivable_function_contract
+  - code/mathematical_function
 ---
 
 # derive

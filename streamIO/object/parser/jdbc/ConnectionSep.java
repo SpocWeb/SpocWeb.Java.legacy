@@ -45,7 +45,7 @@ import streamIO.integer.jdbc.ResultSetFix;
  * digest: fc3ba87cfc05d07bcffc9149613c0dc95984a83fa839a2686f9272567685913a
  * stale: true
  * tags: [code/jdbc_adapter, code/sax_event_generation]
- * concepts: [Minimal JDBC Driver over Separated-Format Flat Files]
+ * concepts: [JDBC Driver, Flat Files]
  * facets: {layer: domain, status: legacy, complexity: 4}
  * -->
  */

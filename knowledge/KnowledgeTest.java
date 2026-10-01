@@ -33,6 +33,9 @@ import java.util.List;
  * mtime: 2026-09-05T08:36:43Z
  * digest: 2b15bb93f00ea71f530c4482710ed8f06577d68787da0488586a95fb9c2ca373
  * stale: false
+ * tags: [code/unit_test, code/test_double, code/sql_generation]
+ * concepts: [Testing, Regression Pinning]
+ * facets: {layer: test, status: stable, complexity: 3}
  * -->
  */
 public class KnowledgeTest {

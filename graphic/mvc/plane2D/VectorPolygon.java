@@ -40,7 +40,7 @@ import streamIO.copy.ICopyAble;
  * digest: 84d3d0ab21780b5a618275e329d2dbdaf0760f7fcdccf21940113db967cda067
  * stale: false
  * tags: [code/vector_operation, code/z_ordering]
- * concepts: [Dynamic Array of 3D-Projected Polygons]
+ * concepts: [3D Polygon, Vector]
  * facets: {layer: domain, status: broken, complexity: 4}
  * -->
  */

@@ -25,7 +25,7 @@ import streamIO.object.IStreamIn;
   * so they should be copied, when they come from JoinStreamByFields etc.
   * <!-- docstate
   * tags: [code/container, code/hash_table, code/container_iteration]
-  * concepts: [Concrete Storage Containers - Arrays - Hash Tables and Relations]
+  * concepts: [Storage Containers, Hash Tables]
   * facets: {layer: utility, status: legacy, complexity: 4}
   * digest: 695eebcc3f128b59195d4cb32f52b9e17c719c06cfc93f5dee1cbdfc0de99740
   * stale: false

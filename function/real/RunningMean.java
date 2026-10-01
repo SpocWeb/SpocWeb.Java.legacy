@@ -26,7 +26,7 @@ import java.util.Arrays;
   * mtime: 2026-09-05T16:44:49Z
   * digest: f2083985eabb479c85dba28dab3b576f2a74eaccd146c195a39c4add6a1e7e25
   * stale: false
-  * tags: [code/mathematical_function, code/running_aggregate]
+  * tags: [code/running_aggregate, code/mathematical_function]
   * concepts: [Streaming Numeric Aggregator]
   * facets: {layer: utility, status: legacy, complexity: 2}
   * -->

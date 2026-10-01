@@ -35,7 +35,7 @@ import function.IFloatFunction;
  * digest: 7869751ceaf41c8d2aea1e9cd4335cf51049fa9479dd87d6e8154c210bf47dd5
  * stale: false
  * tags: [code/root_finding, code/bracket_matching]
- * concepts: [Bracketed Root Refiner Base Class]
+ * concepts: [Root Refiner, Bracketed]
  * facets: {layer: utility, status: broken, complexity: 3}
  * -->
  */

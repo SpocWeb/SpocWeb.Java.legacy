@@ -29,7 +29,7 @@ import streamIO.object.enumer.container.DeQueueArr;
   * mtime: 2026-09-05T10:43:31Z
   * digest: 64a6bd8e0e79efb3fb945d7ba89d4342e34b761ae6461e33a554090484a286d5
   * stale: false
-  * tags: [code/thread_pooling]
+  * tags: [code/thread_pool]
   * concepts: [Thread Executor]
   * facets: {layer: infrastructure, status: broken, complexity: 3}
   * -->

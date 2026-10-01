@@ -70,7 +70,7 @@ concepts:
 facets:
   layer: utility
   status: legacy
-  complexity: 4
+  complexity: '4'
 description: Boxed by-reference wrappers for every primitive type (`ByRefBoolean`/`Byte`/`Char`/`Double`/`Float`/`Int`/`Long`/`Short`/`Object`/`String`), each doubling as an `IFunction` that returns its own boxed value, plus `IAdjustAble`/`ICategorizeAble` mutation contracts, `Cached*` dirty-flag caching decorators, a `ShortComparator`, and bit-rotation helpers (`ROL`/`ROR`) on the integer wrappers. See `combinatoric/` for factorial/prime/probability functions built on these wrappers.
 dv_has_:
   sub_:
@@ -122,10 +122,12 @@ has_sub_concept_combinatorics_and_special_functions: 1
 has_sub_concept_comparator: 1
 has_sub_concept_test_harness: 1
 related:
-  - path: ../_Matthias/Code/NET/_std/IGraphs/Collections
-    shared-tags: [code/caching]
-  - path: ../_Matthias/Code/NET/_std/IMathsImpl/Collections
-    shared-tags: [code/caching]
+- path: ../_Matthias/Code/NET/_std/IGraphs/Collections
+  shared-tags:
+  - code/caching
+- path: ../_Matthias/Code/NET/_std/IMathsImpl/Collections
+  shared-tags:
+  - code/caching
 ---
 
 # byref

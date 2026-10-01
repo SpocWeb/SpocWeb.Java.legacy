@@ -24,7 +24,7 @@ import java.awt.Color;
  * digest: f6c56e08f3a359eaf0b233e03750f58d292251ad8d1c571b0c6ee838934a7f6b
  * stale: false
  * tags: [code/graphics]
- * concepts: [Pen State Management Base Class]
+ * concepts: [Pen State, Management]
  * facets: {layer: infrastructure, status: broken, complexity: 2}
  * -->
  */

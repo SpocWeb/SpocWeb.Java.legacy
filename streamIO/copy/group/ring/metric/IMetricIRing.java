@@ -19,7 +19,7 @@ import streamIO.copy.group.ring.IIntRing;
  * digest: 7906308a2b5d9a05be0be2312fd657a730c83d80d8600af1f335f6bcd3351061
  * stale: false
  * tags: [code/metric_space, code/root_finding, code/numerical_integration, code/big_integer_arithmetic]
- * concepts: [Metric Spaces - Root Finding and Numerical Integration]
+ * concepts: [Metric Spaces, Root Finding]
  * facets: {layer: domain, status: legacy, complexity: 4}
  * -->
  */

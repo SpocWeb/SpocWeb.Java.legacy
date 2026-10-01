@@ -34,6 +34,9 @@ import java.util.WeakHashMap;
   * mtime: 2026-09-05T08:15:05Z
   * digest: f67c870a8da4593e7b6730db628bb74fb020aa5596bca60c4fe8a15f25bfbaad
   * stale: false
+  * tags: [code/caching, code/cache_lookup, code/orm, code/data_access]
+  * concepts: [Persistence, Identity Caching]
+  * facets: {layer: data, status: stable, complexity: 3}
   * -->
   */
 public class DbCachedFactory 

@@ -20,7 +20,7 @@ import function.derive.ring.body.Sinus;
  * mtime: 2026-09-05T10:13:18Z
  * digest: a32f6471d3d5bb15d4d766c6c05b666248b80f41d1ac54a3286cc6661af5543a
  * stale: false
- * tags: [code/entry_point_code/console_output_code/test]
+ * tags: [code/entry_point, code/console_output, code/test]
  * concepts: [Test Harness]
  * facets: {layer: utility, status: legacy, complexity: 3}
  * -->
@@ -31,7 +31,7 @@ public class testBodyVFuncs {
 	 *
 	 * @param args Array of parameters passed to the application
 	 * <!-- docstate
-	 * tags: [code/testing]
+	 * tags: [code/test]
 	 * concepts: [Demo Entry Point]
 	 * facets: {layer: test, status: legacy, complexity: 2}
 	 * -->

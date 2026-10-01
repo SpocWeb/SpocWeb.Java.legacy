@@ -25,7 +25,7 @@ concepts:
 facets:
   layer: domain
   status: legacy
-  complexity: 3
+  complexity: '3'
 description: 'An older, self-contained attribute/property framework built directly on `synch.AConstrained`. An `Aspect` is a named, cloneable Value Object arranged in a tree: leaf Aspects (`StringAspect`) hold a single value with its own validation (min/max length), while `ContainerAspect` subclasses (`PersonAspect`, `AddressAspect`) hold no value of their own but expose public final child-Aspect fields discovered via reflection. Setting a leaf''s Value calls `validateParent()`/`updateParent()` to propagate validation and change notification up through every ancestor Container, and `clone()` performs a full recursive deep copy across the whole child-field tree. This is a separate, older implementation from `synch.property` and the top-level `aspect/` folder documented elsewhere in this codebase — none of the three share code.'
 dv_has_:
   sub_:
@@ -61,12 +61,15 @@ has_sub_concept_composite_value_object: 3
 has_sub_concept_composite_value_object_container: 1
 has_sub_concept_string_value_aspect: 1
 related:
-  - path: ../_Matthias/Code/NET/_std/IGraphs/Interfaces/observe
-    shared-tags: [code/observer_pattern]
-  - path: ../_Matthias/Code/NET/_std/IMathsImpl/Interfaces/observe
-    shared-tags: [code/observer_pattern]
-  - path: ../_Matthias/Code/Java/synch/property
-    shared-tags: [code/attached_property]
+- path: ../_Matthias/Code/NET/_std/IGraphs/Interfaces/observe
+  shared-tags:
+  - code/observer_pattern
+- path: ../_Matthias/Code/NET/_std/IMathsImpl/Interfaces/observe
+  shared-tags:
+  - code/observer_pattern
+- path: ../_Matthias/Code/Java/synch/property
+  shared-tags:
+  - code/attached_property
 ---
 
 # aspect

@@ -19,7 +19,7 @@ import synch.ValidationRule;
  * in the other.
  * <!-- docstate
  * tags: [code/red_black_tree, code/iterator_pattern]
- * concepts: [Red-Black Tree Backed Sorted Map Implementation]
+ * concepts: [Red Black Tree, Sorted Map]
  * facets: {layer: utility, status: legacy, complexity: 4}
  * digest: 26de5f9b913d3cfbb7023c2b0fa85e0878f154e3ac437e120004c2628744e080
  * stale: false

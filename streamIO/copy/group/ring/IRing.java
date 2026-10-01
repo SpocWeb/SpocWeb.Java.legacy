@@ -28,7 +28,7 @@ import streamIO.copy.groupM.ISemiGroupM;
  * digest: 8d763cad613ae9093dab1fe754d7db840037e5aa86f258f2a09954e30cb80462
  * stale: false
  * tags: [code/ring_theory, code/ode_solver]
- * concepts: [Ring Algebra and ODE Solvers]
+ * concepts: [Ring Algebra, ODE Solvers]
  * facets: {layer: domain, status: legacy, complexity: 4}
  * -->
  */

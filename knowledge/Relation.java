@@ -24,6 +24,9 @@ import java.sql.SQLException;
  * mtime: 2026-09-05T08:13:26Z
  * digest: 6432581a9ca8b74efce8dfdabc89261c11c19b4cf274dee7693f4bce7723c4cc
  * stale: false
+ * tags: [code/entity_model, code/domain_model, code/lazy_loading]
+ * concepts: [Domain Model, Relationship Modelling]
+ * facets: {layer: domain, status: stable, complexity: 3}
  * -->
  */
 public class Relation

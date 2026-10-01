@@ -21,7 +21,7 @@ package streamIO.copy.shift;
  * digest: 24216fad89cec4f8d90be8165e08e9208a8a209aca3ee11384c0bc92a877478b
  * stale: false
  * tags: [code/in_place_operation, code/bit_manipulation]
- * concepts: [g-adic Number Representation, Shift and Rotate]
+ * concepts: [Shift, Rotate]
  * facets: {layer: utility, status: legacy, complexity: 3}
  * -->
  * and transferring the Carry.	 */

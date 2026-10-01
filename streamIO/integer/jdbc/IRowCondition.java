@@ -26,7 +26,7 @@ import tester.ITester;
  * digest: 777f9d040fe051e70071e5545ea58b5f5fae0dd1699192b1844f7014f9b5bc15
  * stale: false
  * tags: [code/jdbc_adapter, code/database_access, code/database_driver]
- * concepts: [Filesystem-Backed JDBC Driver Framework with Fixed-Length and Separator-Delimited Table Storage]
+ * concepts: [JDBC Driver, Table Storage]
  * facets: {layer: domain, status: legacy, complexity: 4}
  * -->
  */

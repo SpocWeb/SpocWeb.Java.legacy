@@ -14,7 +14,7 @@ import streamIO.copy.group.IGroup;
   * digest: c1176c5e06f4f2416b6034738fd3ba11f5c4c6233940c981f0c6b0a2ac222c9e
   * stale: false
   * tags: [code/ring_theory, code/ode_solver]
-  * concepts: [Ring Algebra and ODE Solvers]
+  * concepts: [Ring Algebra, ODE Solvers]
   * facets: {layer: domain, status: legacy, complexity: 4}
   * -->
   * This Interpolator can be reset after work to calculate another Interpolation */

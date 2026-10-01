@@ -17,7 +17,7 @@ import java.sql.SQLException;
  * 
  * <!-- docstate
  * tags: [code/container, code/hash_table, code/container_iteration]
- * concepts: [Concrete Storage Containers - Arrays - Hash Tables and Relations]
+ * concepts: [Storage Containers, Hash Tables]
  * facets: {layer: utility, status: legacy, complexity: 4}
  * digest: 3e8d00e9cb04e522be2f2ef730e93b2287575433417a82840becd521c6ff4814
  * stale: false

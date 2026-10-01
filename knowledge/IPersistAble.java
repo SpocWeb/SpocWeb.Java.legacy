@@ -39,6 +39,9 @@ import java.util.Vector;
  * mtime: 2026-09-05T08:10:52Z
  * digest: 9e9b4bb3b0c2bb592006bbca3e036b6c4fbeecab5a7cb185450dc9775c37865c
  * stale: false
+ * tags: [code/persistence, code/data_access, code/interface_contract]
+ * concepts: [Persistence, Data Access]
+ * facets: {layer: data, status: stable, complexity: 3}
  * -->
  */
 public interface IPersistAble { 

@@ -25,7 +25,7 @@ package asynch;
   * mtime: 2026-09-05T10:12:24Z
   * digest: 2d7fd7a214fe1492d0722f3b33a3f0f48f00eab7ebd40b874cb80d511ef1c8d9
   * stale: false
-  * tags: [code/thread_pooling]
+  * tags: [code/thread_pool]
   * concepts: [Simple Thread Executor]
   * facets: {layer: infrastructure, status: legacy, complexity: 2}
   * -->

@@ -31,6 +31,9 @@ import java.lang.reflect.Modifier;
  * mtime: 2026-09-05T08:50:35Z
  * digest: 10449a95044a6b959b8becc2850a1ae38ff3f0d4c06f0937bfe2f3414b534136
  * stale: false
+ * tags: [code/unit_test, code/thread_interruption, code/timeout_handling]
+ * concepts: [Testing, Concurrency]
+ * facets: {layer: test, status: stable, complexity: 3}
  * -->
  */
 public class TimeOuterTest {

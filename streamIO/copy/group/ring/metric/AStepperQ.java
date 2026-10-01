@@ -12,7 +12,7 @@ import function.IOrderAble;
  * digest: 530c0eaf4b5312d67a901c12a215684829c3c1f39068f9566ea57c02675c59b9
  * stale: false
  * tags: [code/metric_space, code/root_finding, code/numerical_integration, code/big_integer_arithmetic]
- * concepts: [Metric Spaces - Root Finding and Numerical Integration]
+ * concepts: [Metric Spaces, Root Finding]
  * facets: {layer: domain, status: legacy, complexity: 4}
  * -->
  * because it cannot be implemented in the base Class 	 */

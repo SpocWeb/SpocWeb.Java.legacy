@@ -15,11 +15,12 @@ tags:
 - code/statistical_correlation
 - code/hypothesis_testing
 concepts:
-- Statistical Correlation and Hypothesis Testing
+- Correlation
+- Hypothesis Testing
 facets:
   layer: domain
   status: legacy
-  complexity: 4
+  complexity: '4'
 description: 'Statistical correlation and hypothesis-testing utilities built on top of the `vector` family''s float arrays: `Correlation` computes cross-vector association (Pearson/Spearman/Kendall), and `StatisticsFloat` runs classical hypothesis tests (t, F, chi-square, Kolmogorov-Smirnov) over float data sets, with `HyperCubeShare` as a 2D sampling test model for the latter.'
 dv_has_:
   sub_:
@@ -43,7 +44,8 @@ dv_has_:
     concept_:
       "2d_sampling_test_model": 1
       cross_vector_correlation_statistics: 1
-      statistical_hypothesis_tests_over_float_data: 1
+      float: 1
+      hypothesis_testing: 1
 has_sub_folders: 0
 has_sub_files: 5
 has_sub_units: 3
@@ -57,7 +59,8 @@ has_sub_tag_code_chi_squared: 1
 has_sub_tag_code_statistical_correlation: 1
 has_sub_concept_2d_sampling_test_model: 1
 has_sub_concept_cross_vector_correlation_statistics: 1
-has_sub_concept_statistical_hypothesis_tests_over_float_data: 1
+has_sub_concept_float: 1
+has_sub_concept_hypothesis_testing: 1
 ---
 
 # statistic

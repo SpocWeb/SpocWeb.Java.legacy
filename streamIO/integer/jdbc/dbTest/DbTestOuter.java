@@ -17,7 +17,7 @@ import synch.ValidationRule;
  * @author heuerm
  * <!-- docstate
  * tags: [code/predicate, code/predicate_evaluation]
- * concepts: [Left Outer Join Row Predicate]
+ * concepts: [Left Outer Join, Predicate]
  * facets: {layer: domain, status: broken, complexity: 2}
  * -->
  */

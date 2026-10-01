@@ -15,7 +15,7 @@ import streamIO.copy.ICopyAble;
  * digest: da8d8e81055079b0ef1b0221e342509c9ff78702c714c7b3ae7884736414e2a7
  * stale: false
  * tags: [code/ring_theory, code/ode_solver]
- * concepts: [Ring Algebra and ODE Solvers]
+ * concepts: [Ring Algebra, ODE Solvers]
  * facets: {layer: domain, status: legacy, complexity: 4}
  * -->
  */

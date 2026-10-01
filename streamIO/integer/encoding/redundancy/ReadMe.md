@@ -15,12 +15,13 @@ tags:
 - code/error_correction
 - code/convolutional_encoding
 concepts:
-- Forward Error Correction Codecs - Repetition and Convolutional Encoding
+- Error Correction
+- Convolutional Encoding
 facets:
   layer: utility
   status: legacy
-  complexity: 3
-description: 'Forward-error-correction codecs that trade bandwidth for resilience against transmission errors. `Repeater`/`Depeater` are a simple pair that duplicates each group of bytes an odd number of times and recovers the original via majority vote, tolerant of bit errors but not of byte insertion/deletion. `ConvolutionBitEncode` is a self-contained rate-1/2 convolutional encoder with its own bit-error-rate simulation harness over a simulated AWGN channel at several constraint lengths and Es/No ratios; it has no corresponding decoder in this folder. `ConvolutionBitEncode`''s polynomial-table indexing was wrong, and `Depeater.flush()` never flushed downstream; both were fixed in the 2026-09-06 bug-fix run. Note that `Depeater`''s shortened final length is the protocol''s tail signal, not a defect.'
+  complexity: '3'
+description: Forward-error-correction codecs that trade bandwidth for resilience against transmission errors. `Repeater`/`Depeater` are a simple pair that duplicates each group of bytes an odd number of times and recovers the original via majority vote, tolerant of bit errors but not of byte insertion/deletion. `ConvolutionBitEncode` is a self-contained rate-1/2 convolutional encoder with its own bit-error-rate simulation harness over a simulated AWGN channel at several constraint lengths and Es/No ratios; it has no corresponding decoder in this folder. `ConvolutionBitEncode`'s polynomial-table indexing was wrong, and `Depeater.flush()` never flushed downstream; both were fixed in the 2026-09-06 bug-fix run. Note that `Depeater`'s shortened final length is the protocol's tail signal, not a defect.
 dv_has_:
   sub_:
     folders: 0
@@ -38,7 +39,8 @@ dv_has_:
         convolutional_encoding: 3
         error_correction: 3
     concept_:
-      forward_error_correction_codecs_repetition_and_convolutional_encoding: 3
+      convolutional_encoding: 3
+      error_correction: 3
 has_sub_folders: 0
 has_sub_files: 6
 has_sub_units: 3
@@ -47,7 +49,8 @@ has_sub_facet_status_legacy: 3
 has_sub_facet_complexity_3: 3
 has_sub_tag_code_convolutional_encoding: 3
 has_sub_tag_code_error_correction: 3
-has_sub_concept_forward_error_correction_codecs_repetition_and_convolutional_encoding: 3
+has_sub_concept_convolutional_encoding: 3
+has_sub_concept_error_correction: 3
 ---
 
 # redundancy

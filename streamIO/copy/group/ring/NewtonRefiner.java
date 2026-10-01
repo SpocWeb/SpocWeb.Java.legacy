@@ -32,7 +32,7 @@ import function.derive.IDeriveAble;
  * digest: d7f38299f3c9ae946add9e04598568598cc384e468c17bdaa21c2fa9bbd27a77
  * stale: false
  * tags: [code/ring_theory, code/ode_solver]
- * concepts: [Ring Algebra and ODE Solvers]
+ * concepts: [Ring Algebra, ODE Solvers]
  * facets: {layer: domain, status: legacy, complexity: 4}
  * -->
  */

@@ -18,7 +18,7 @@ import tester.IEquivalence;
   * transitive (x,y) && (y,z) => (x,z)
   * <!-- docstate
   * tags: [code/container, code/hash_table, code/container_iteration]
-  * concepts: [Concrete Storage Containers - Arrays - Hash Tables and Relations]
+  * concepts: [Storage Containers, Hash Tables]
   * facets: {layer: utility, status: legacy, complexity: 4}
   * digest: 8d4c6f9264e8fb1507e2a02f6b1b7f49f8e339f5d802e0edbd209e3fdca4df68
   * stale: false

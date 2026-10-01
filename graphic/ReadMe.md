@@ -151,7 +151,7 @@ concepts:
 facets:
   layer: infrastructure
   status: legacy
-  complexity: 4
+  complexity: '4'
 description: 'A self-contained 2D graphics abstraction layer predating (and independent of) `java.awt.Graphics2D`: a stack of interfaces and abstract base classes builds line/polygon/text/shape drawing out of a single low-level pixel or color primitive that each concrete backend supplies. `Graph2D` and `JavaGraphic` delegate that primitive to AWT; `GraphicsAdapter` inverts the direction, wrapping an AWT `Graphics` behind the `graphic` interfaces; `MemoryImage` backs it with an in-memory bitmap so images can be read back as well as drawn; `Hidden` and `ZBuffer` layer hidden-surface removal on top. Supporting value types (`Point2D`, `Line2D`, `Polygon2D`, `VectorPoint2D`, `PolyTrigon`), palettes (`IPalette`, `PaletteRGB`, `PaletteShading`, `TexturePalette`), and higher-level shapes (`Figures`, `Body2D`, `Wire2D`, `Bar3D`, `HyperGraphPainter`, `ScalarPlot`/`ScalarPlotNew`) build on this core to render geometry, wireframes, and interpolated color plots.'
 dv_has_:
   sub_:
@@ -189,6 +189,7 @@ dv_has_:
         test_harness: 3
       "2d_graph_mouse_controller": 2
       "2d_graph_painter": 2
+      "3d_polygon": 2
       "1d_cellular_automaton": 1
       "2d_coordinate_mouse_controller": 1
       "2d_coordinate_transform": 1
@@ -196,7 +197,6 @@ dv_has_:
       "2d_figure_drawing_helpers": 1
       "2d_graph_demo_":
         test_harness: 1
-      "2d_graph_editing_model": 1
 has_sub_folders: 10
 has_sub_files: 287
 has_sub_units: 144
@@ -223,18 +223,20 @@ has_sub_tag_code_view_model: 6
 has_sub_concept_3d_graph_demo_test_harness: 3
 has_sub_concept_2d_graph_mouse_controller: 2
 has_sub_concept_2d_graph_painter: 2
+has_sub_concept_3d_polygon: 2
 has_sub_concept_1d_cellular_automaton: 1
 has_sub_concept_2d_coordinate_mouse_controller: 1
 has_sub_concept_2d_coordinate_transform: 1
 has_sub_concept_2d_coordinate_transform_variant: 1
 has_sub_concept_2d_figure_drawing_helpers: 1
 has_sub_concept_2d_graph_demo_test_harness: 1
-has_sub_concept_2d_graph_editing_model: 1
 related:
-  - path: ../_Matthias/Code/Java/graphic/implement
-    shared-tags: [code/graphics]
-  - path: ../_Matthias/Code/NET/_root/_projects/spocWeb.styledEditing/rendering/backGroundTasks
-    shared-tags: [code/rendering]
+- path: ../_Matthias/Code/Java/graphic/implement
+  shared-tags:
+  - code/graphics
+- path: ../_Matthias/Code/NET/_root/_projects/spocWeb.styledEditing/rendering/backGroundTasks
+  shared-tags:
+  - code/rendering
 ---
 
 # graphic

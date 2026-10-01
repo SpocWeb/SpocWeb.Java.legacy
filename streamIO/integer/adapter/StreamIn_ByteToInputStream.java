@@ -35,7 +35,7 @@ import streamIO.integer.IStreamIn_Byte;
  *
  * <!-- docstate
  * tags: [code/stream_adapter, code/stream_bridging, code/stream_wrapper]
- * concepts: [Bridges streamIO Interfaces to java.io and Arrays]
+ * concepts: [To Input Stream]
  * facets: {layer: utility, status: legacy, complexity: 4}
  * -->
  */

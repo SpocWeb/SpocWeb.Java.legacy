@@ -127,7 +127,7 @@ concepts:
 facets:
   layer: utility
   status: legacy
-  complexity: 4
+  complexity: '4'
 description: 'Building blocks for a small Computer-Algebra-style Function Algebra over an algebraic Ring (`IIntRing`/`IGroup`/`IGroupM`): binary combinators (`Sum`, `Diff`, `Prod`, `Quot`, `Cat` via `CatDerive`) that combine two `IDeriveAble` Functions and know how to differentiate, integrate and (where possible) invert the combination symbolically; simple affine/scaling combinators (`AddAt`, `MulAt`, `LinAt`, `Neg`, `Inv`); a family of elementary named Functions (`Square`, `SqRt`, `Succ`, `Pred`, `Resid`, `AbsV`, `Sign`, `Step1`, `SawToothAt`, the `...At` fractional helpers); the `Algebra`/`AAlgebra`/`ACAlgebra` wrapper hierarchy that lets an arbitrary Object participate in this Function Algebra; a small expression parser (`FuncParser`); and a handful of `Function2ODE`-derived adapters (`OdeConst`, `OdeLinear`, `OdeSquare`, `OdeExp`, `OdeHeight2D`) that expose a symbolic Function as an ODE right-hand side for numerical integration. The `body` subfolder supplies the concrete transcendental and special Functions (trigonometric, hyperbolic, Gamma/Beta, ...) built on top of this Algebra.'
 dv_has_:
   sub_:
@@ -160,10 +160,10 @@ dv_has_:
     concept_:
       function_algebra: 27
       ordinary_differential_equations: 8
+      special_functions: 8
       partial_derivatives: 7
-      special_functions: 7
       trigonometric_functions: 5
-      vector_calculus: 4
+      vector_calculus: 5
       hyperbolic_functions: 3
       inverse_hyperbolic_functions: 3
       inverse_trigonometric_functions: 3
@@ -190,10 +190,10 @@ has_sub_tag_code_abstract_math: 2
 has_sub_tag_code_gamma_function: 2
 has_sub_concept_function_algebra: 27
 has_sub_concept_ordinary_differential_equations: 8
+has_sub_concept_special_functions: 8
 has_sub_concept_partial_derivatives: 7
-has_sub_concept_special_functions: 7
 has_sub_concept_trigonometric_functions: 5
-has_sub_concept_vector_calculus: 4
+has_sub_concept_vector_calculus: 5
 has_sub_concept_hyperbolic_functions: 3
 has_sub_concept_inverse_hyperbolic_functions: 3
 has_sub_concept_inverse_trigonometric_functions: 3

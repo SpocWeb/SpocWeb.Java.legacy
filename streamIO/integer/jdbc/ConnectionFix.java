@@ -45,7 +45,7 @@ import java.util.Properties;
  * digest: aeab9cb357ba5027bbae4c39f5fd00877fbe790fdf6b1440c2521d118f0e283d
  * stale: false
  * tags: [code/jdbc_adapter, code/database_access, code/database_driver]
- * concepts: [Filesystem-Backed JDBC Driver Framework with Fixed-Length and Separator-Delimited Table Storage]
+ * concepts: [JDBC Driver, Table Storage]
  * facets: {layer: domain, status: legacy, complexity: 4}
  * -->
  */

@@ -16,7 +16,7 @@ import streamIO.copy.groupM.IGroupM;
  * digest: 25cbcb318dfe7b8eb0b484a17f5fea6b65ef8ac52e614b4894759d5f4349ff5e
  * stale: false
  * tags: [code/metric_space, code/root_finding, code/numerical_integration, code/big_integer_arithmetic]
- * concepts: [Metric Spaces - Root Finding and Numerical Integration]
+ * concepts: [Metric Spaces, Root Finding]
  * facets: {layer: domain, status: legacy, complexity: 4}
  * -->
  * In Addition there are maximum and minimum Values for this Class.	 */

@@ -64,7 +64,7 @@ concepts:
 facets:
   layer: infrastructure
   status: legacy
-  complexity: 4
+  complexity: '4'
 description: A Model-View-Controller framework for 2D graphics built on AWT/Applet, predating Swing usage in this codebase.
 dv_has_:
   sub_:
@@ -98,14 +98,14 @@ dv_has_:
     concept_:
       "2d_graph_editing_model": 1
       "2d_graph_editing_mvc": 1
-      "3d_model_texture_mapping_and_rendering": 1
+      "3d_model": 1
       active_canvas_interface: 1
       applet_framework_base_class: 1
       background_clearing_painter: 1
       canvas_interface: 1
       controller_interface: 1
-      dynamic_array_of_3d_projected_polygons: 1
       focus_aware_painter_interface: 1
+      growable_short_polygon_matrix: 1
 has_sub_folders: 3
 has_sub_files: 53
 has_sub_units: 29
@@ -129,29 +129,36 @@ has_sub_tag_code_container_pattern: 1
 has_sub_tag_code_event_dispatch: 1
 has_sub_concept_2d_graph_editing_model: 1
 has_sub_concept_2d_graph_editing_mvc: 1
-has_sub_concept_3d_model_texture_mapping_and_rendering: 1
+has_sub_concept_3d_model: 1
 has_sub_concept_active_canvas_interface: 1
 has_sub_concept_applet_framework_base_class: 1
 has_sub_concept_background_clearing_painter: 1
 has_sub_concept_canvas_interface: 1
 has_sub_concept_controller_interface: 1
-has_sub_concept_dynamic_array_of_3d_projected_polygons: 1
 has_sub_concept_focus_aware_painter_interface: 1
+has_sub_concept_growable_short_polygon_matrix: 1
 related:
-  - path: ../_Matthias/Code/NET/_std/IGraphs/Interfaces/observe
-    shared-tags: [code/observer_pattern]
-  - path: ../_Matthias/Code/NET/_std/IMathsImpl/Interfaces/observe
-    shared-tags: [code/observer_pattern]
-  - path: ../_Matthias/Code/NET/KnowledgeWeb/Freebase/MqlGui
-    shared-tags: [code/gui]
-  - path: ../_Matthias/Code/NET/KnowledgeWeb/Gui
-    shared-tags: [code/gui]
-  - path: ../_Matthias/Code/NET/KnowledgeWeb/Gui/Office
-    shared-tags: [code/gui]
-  - path: ../_Matthias/Code/NET/KnowledgeWeb/SpocWeb.Gui.DataCore
-    shared-tags: [code/gui]
-  - path: ../_Matthias/Code/NET/KnowledgeWeb/_projects/spocweb.gui
-    shared-tags: [code/gui]
+- path: ../_Matthias/Code/NET/_std/IGraphs/Interfaces/observe
+  shared-tags:
+  - code/observer_pattern
+- path: ../_Matthias/Code/NET/_std/IMathsImpl/Interfaces/observe
+  shared-tags:
+  - code/observer_pattern
+- path: ../_Matthias/Code/NET/KnowledgeWeb/Freebase/MqlGui
+  shared-tags:
+  - code/gui
+- path: ../_Matthias/Code/NET/KnowledgeWeb/Gui
+  shared-tags:
+  - code/gui
+- path: ../_Matthias/Code/NET/KnowledgeWeb/Gui/Office
+  shared-tags:
+  - code/gui
+- path: ../_Matthias/Code/NET/KnowledgeWeb/SpocWeb.Gui.DataCore
+  shared-tags:
+  - code/gui
+- path: ../_Matthias/Code/NET/KnowledgeWeb/_projects/spocweb.gui
+  shared-tags:
+  - code/gui
 ---
 
 # mvc

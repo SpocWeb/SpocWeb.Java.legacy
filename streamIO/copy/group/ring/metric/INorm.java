@@ -23,7 +23,7 @@ package streamIO.copy.group.ring.metric;
  * digest: d08e0df0a8bfe3f7d36da3019ded99a71af30962ae9261e0ff92893e7a8c3d06
  * stale: false
  * tags: [code/metric_space, code/root_finding, code/numerical_integration, code/big_integer_arithmetic]
- * concepts: [Metric Spaces - Root Finding and Numerical Integration]
+ * concepts: [Metric Spaces, Root Finding]
  * facets: {layer: domain, status: legacy, complexity: 4}
  * -->
  */

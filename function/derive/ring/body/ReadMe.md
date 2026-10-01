@@ -96,11 +96,12 @@ tags:
 - code/mathematical_function
 - code/derivable_function_contract
 concepts:
-- Special Functions and Transcendental Bodies
+- Special Functions
+- Transcendental
 facets:
   layer: utility
   status: legacy
-  complexity: 4
+  complexity: '4'
 description: Concrete elementary and special Functions over a scalar `MetricBody` (a real or real-valued Numeric Type), each implementing the `IFloatDeriveAble` contract from `function.derive` so it can be differentiated, integrated and (where meaningful) inverted like any other combinator in `function.derive.ring`. Covers the trigonometric and hyperbolic families and their inverses (`Sinus`/`ArcSin`, `SinH`/`ArSinH`, ...), the exponential/logarithmic pair, `Power`, and a set of special Functions used by statistics and numerical analysis (`GammaLn`/`GammaP`, `BetaI`, `Gauss`/`LogNormal`, the Exponential/Sine/Cosine Integrals `EI`/`SI`/`CI`, `DawsonInt`, `ElliptInt`, `Brillouin`/`Langevin`). The `vector` subfolder extends the same combinators to per-dimension (partial) derivatives over Tensor-valued arguments. `TestBodyFuncs` is the package's self-test entry point.
 dv_has_:
   sub_:
@@ -132,7 +133,7 @@ dv_has_:
       partial_derivatives: 7
       special_functions: 7
       trigonometric_functions: 5
-      vector_calculus: 4
+      vector_calculus: 5
       hyperbolic_functions: 3
       inverse_hyperbolic_functions: 3
       inverse_trigonometric_functions: 3
@@ -160,7 +161,7 @@ has_sub_tag_code_vector_math: 5
 has_sub_concept_partial_derivatives: 7
 has_sub_concept_special_functions: 7
 has_sub_concept_trigonometric_functions: 5
-has_sub_concept_vector_calculus: 4
+has_sub_concept_vector_calculus: 5
 has_sub_concept_hyperbolic_functions: 3
 has_sub_concept_inverse_hyperbolic_functions: 3
 has_sub_concept_inverse_trigonometric_functions: 3
@@ -168,8 +169,10 @@ has_sub_concept_statistical_distributions: 3
 has_sub_concept_magnetism: 2
 has_sub_concept_thermodynamics: 2
 related:
-  - path: ../_Matthias/Code/Java/function/derive
-    shared-tags: [code/derivable_function_contract, code/mathematical_function]
+- path: ../_Matthias/Code/Java/function/derive
+  shared-tags:
+  - code/derivable_function_contract
+  - code/mathematical_function
 ---
 
 # body

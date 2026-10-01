@@ -37,7 +37,7 @@ import function.byref.ByRefLong;
   * digest: a49e473fe406481549999bc8f5f52b6574ca38163306f449d0314504a75f5193
   * stale: false
   * tags: [code/stream_filter]
-  * concepts: [Pluggable Byte-Stream Filter Infrastructure and java.io Adapters]
+  * concepts: [Byte Stream, Filter]
   * facets: {layer: utility, status: legacy, complexity: 3}
   * -->
   */

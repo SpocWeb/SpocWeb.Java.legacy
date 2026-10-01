@@ -28,7 +28,7 @@ concepts:
 facets:
   layer: infrastructure
   status: broken
-  complexity: 2
+  complexity: '2'
 description: 'Bridges between the single-value getter/setter interfaces (`IValue`, `ICValue`, `IValueSetter`) and the streaming interfaces (`IIStreamIn`, `IIStreamOut`, `IPipe`), so either style of API can drive the other without a caller-side rewrite. The six types form three matched pairs, one direction each: `Value2Pipe`/`Pipe2Value` for the bidirectional `IValue`/`IPipe` pairing, `CValue2StreamIn`/`StreamIn2CValue` for the read-only getter side, and `StreamOut2ValueSetter`/`ValueSetter2StreamOut` for the write-only setter side.'
 dv_has_:
   sub_:
@@ -60,18 +60,24 @@ has_sub_tag_code_stream_abstraction: 6
 has_sub_tag_code_adapter_pattern: 6
 has_sub_concept_adapter_pattern: 6
 related:
-  - path: ../_Matthias/Code/NET/_root/_projects/db/db/stream/EnumeratorDataReader.cs
-    shared-tags: [code/adapter_pattern]
-  - path: ../_Matthias/Code/NET/_SpocWeb.Root/_std/SpocWeb.Streams/streams
-    shared-tags: [code/adapter_pattern]
-  - path: ../_Matthias/Code/NET/_std/IGraphs/Interfaces/Streams
-    shared-tags: [code/stream_abstraction]
-  - path: ../_Matthias/Code/NET/_std/IMathsImpl/Interfaces/streams
-    shared-tags: [code/stream_abstraction]
-  - path: ../_Matthias/Code/NET/_SpocWeb.Root/_std/SpocWeb.IMaths/streams
-    shared-tags: [code/stream_abstraction]
-  - path: ../_Matthias/Code/NET/_SpocWeb.Root/_std/SpocWeb.IMaths/streams/ReaderWriter
-    shared-tags: [code/stream_abstraction]
+- path: ../_Matthias/Code/NET/_root/_projects/db/db/stream/EnumeratorDataReader.cs
+  shared-tags:
+  - code/adapter_pattern
+- path: ../_Matthias/Code/NET/_SpocWeb.Root/_std/SpocWeb.Streams/streams
+  shared-tags:
+  - code/adapter_pattern
+- path: ../_Matthias/Code/NET/_std/IGraphs/Interfaces/Streams
+  shared-tags:
+  - code/stream_abstraction
+- path: ../_Matthias/Code/NET/_std/IMathsImpl/Interfaces/streams
+  shared-tags:
+  - code/stream_abstraction
+- path: ../_Matthias/Code/NET/_SpocWeb.Root/_std/SpocWeb.IMaths/streams
+  shared-tags:
+  - code/stream_abstraction
+- path: ../_Matthias/Code/NET/_SpocWeb.Root/_std/SpocWeb.IMaths/streams/ReaderWriter
+  shared-tags:
+  - code/stream_abstraction
 ---
 
 # adapter

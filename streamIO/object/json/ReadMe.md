@@ -49,7 +49,7 @@ concepts:
 facets:
   layer: utility
   status: legacy
-  complexity: 3
+  complexity: '3'
 description: 'The classic JSON.org reference implementation (`org.json`, repackaged into this project''s namespace): `JSONObject`/`JSONArray` are the in-memory value types, `JSONTokener` parses a source string into them (and is also the base tokenizer reused by `XMLTokener` and `HTTPTokener` for related mini-formats), `JSONStringer` builds JSON text incrementally with a depth-guarded cascade API, and `JSONException` is the shared parse/format error type. `XML`, `HTTP`, `Cookie`, `CookieList` and `CDL` are format-conversion adapters that reuse `JSONObject`/`JSONArray` as an intermediate representation for XML, HTTP headers, browser cookies and comma-delimited text respectively. `JSONTest` is a standalone manual test/demo program, not part of the library''s public surface.'
 dv_has_:
   sub_:
@@ -81,16 +81,23 @@ has_sub_tag_code_serialization: 14
 has_sub_tag_code_parsing: 14
 has_sub_concept_jsonorg_reference_implementation: 14
 related:
-  - path: ../_Matthias/Code/NET/_root/_projects/root.web/Data/xmls/htmls/xtx
-    shared-tags: [code/parsing, code/serialization]
-  - path: ../_Matthias/Code/NET/org.structs/parser
-    shared-tags: [code/parsing, code/serialization]
-  - path: ../_Matthias/Code/Java/streamIO/object/yaml
-    shared-tags: [code/parsing]
-  - path: ../_Matthias/Code/NET/_root/_projects/spocWeb.styledEditing/xml
-    shared-tags: [code/parsing]
-  - path: ../_Matthias/Code/NET/_root/_projects/yaml.nodes/Serialization/Attributes
-    shared-tags: [code/serialization]
+- path: ../_Matthias/Code/NET/_root/_projects/root.web/Data/xmls/htmls/xtx
+  shared-tags:
+  - code/parsing
+  - code/serialization
+- path: ../_Matthias/Code/NET/org.structs/parser
+  shared-tags:
+  - code/parsing
+  - code/serialization
+- path: ../_Matthias/Code/Java/streamIO/object/yaml
+  shared-tags:
+  - code/parsing
+- path: ../_Matthias/Code/NET/_root/_projects/spocWeb.styledEditing/xml
+  shared-tags:
+  - code/parsing
+- path: ../_Matthias/Code/NET/_root/_projects/yaml.nodes/Serialization/Attributes
+  shared-tags:
+  - code/serialization
 ---
 
 # json

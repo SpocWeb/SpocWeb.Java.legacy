@@ -42,6 +42,9 @@ import java.util.ArrayList;
  * mtime: 2026-09-05T08:17:51Z
  * digest: 1dbe6ed790a568df2a522e7a0b71c6e616d0efe002b1b33bf42594c25d5e7ae4
  * stale: false
+ * tags: [code/entity_model, code/domain_model, code/orm, code/lazy_loading]
+ * concepts: [Domain Model, Persistence]
+ * facets: {layer: domain, status: stable, complexity: 3}
  * -->
  */
 public class Objekt

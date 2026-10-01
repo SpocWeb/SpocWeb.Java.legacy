@@ -35,6 +35,9 @@ import java.lang.reflect.Field;
  * mtime: 2026-09-05T08:08:35Z
  * digest: fdda815f85185d9922e37b2cc1d6b205a355d68f33a5f153ff736e8a22d68573
  * stale: false
+ * tags: [code/composite_key, code/primary_key_lookup, code/sql_generation, code/reflection]
+ * concepts: [Persistence, Record Identity]
+ * facets: {layer: data, status: stable, complexity: 3}
  * -->
  */
 public interface IPrimaryKey {

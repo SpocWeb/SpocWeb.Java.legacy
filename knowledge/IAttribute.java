@@ -18,6 +18,9 @@ import java.sql.SQLException;
  * mtime: 2026-09-05T08:07:14Z
  * digest: 4f4123369d7d12f341250849fbd47e9e18a25d43795079d28a169d1b03eb0f89
  * stale: false
+ * tags: [code/entity_model, code/interface_contract, code/domain_model]
+ * concepts: [Domain Model, Attribute Modelling]
+ * facets: {layer: domain, status: stable, complexity: 2}
  * -->
  */
 public interface IAttribute

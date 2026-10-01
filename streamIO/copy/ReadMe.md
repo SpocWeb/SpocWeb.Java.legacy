@@ -45,7 +45,7 @@ concepts:
 facets:
   layer: utility
   status: legacy
-  complexity: 3
+  complexity: '3'
 description: 'Root of a value-semantics / copy-based object model: `ICopyAble` is the shared contract for objects that support deep copy, shallow copy, in-place copy (`copyAt`), swap and stream-based (de)serialization instead of relying on immutability or `Object.clone()`. `ACopyAble` supplies the default, reflection-capable implementation; `CCopyAble` is the constant/immutable wrapper counterpart, delegating reads to an inner instance and throwing on every mutating `...At()` call. `IICopyAble` factors out the smaller subset of the contract (`newInstance`, `randomizeAt`, stream writing) that a class can implement without also being a full `ICopyAble`. `TestCopy` is the package''s manual test-harness entry point.'
 dv_has_:
   sub_:
@@ -75,19 +75,19 @@ dv_has_:
         metric_space: 41
         manifold_generation: 14
     concept_:
-      ring_algebra_and_ode_solvers: 29
-      rational_numbers_and_interval_arithmetic: 16
+      ode_solvers: 29
+      ring_algebra: 29
+      interval_arithmetic: 20
+      rational_numbers: 16
       group_:
         semigroup_algebra: 15
-      metric_spaces_root_finding_and_numerical_integration: 41
+      metric_spaces: 41
+      root_finding: 41
       vector_:
         matrix_:
           tensor_and_manifold_interpolation: 14
       fuzzy_logic: 12
       boolean_algebra: 11
-      monoid: 11
-      order_relation: 11
-      algebraic_group: 10
 has_sub_folders: 15
 has_sub_files: 488
 has_sub_units: 222
@@ -107,16 +107,16 @@ has_sub_tag_code_group_algebra: 15
 has_sub_tag_code_big_integer_arithmetic: 41
 has_sub_tag_code_metric_space: 41
 has_sub_tag_code_manifold_generation: 14
-has_sub_concept_ring_algebra_and_ode_solvers: 29
-has_sub_concept_rational_numbers_and_interval_arithmetic: 16
+has_sub_concept_ode_solvers: 29
+has_sub_concept_ring_algebra: 29
+has_sub_concept_interval_arithmetic: 20
+has_sub_concept_rational_numbers: 16
 has_sub_concept_group_semigroup_algebra: 15
-has_sub_concept_metric_spaces_root_finding_and_numerical_integration: 41
+has_sub_concept_metric_spaces: 41
+has_sub_concept_root_finding: 41
 has_sub_concept_vector_matrix_tensor_and_manifold_interpolation: 14
 has_sub_concept_fuzzy_logic: 12
 has_sub_concept_boolean_algebra: 11
-has_sub_concept_monoid: 11
-has_sub_concept_order_relation: 11
-has_sub_concept_algebraic_group: 10
 ---
 
 # copy

@@ -25,7 +25,7 @@ concepts:
 facets:
   layer: utility
   status: legacy
-  complexity: 3
+  complexity: '3'
 description: 'Small, focused read-side filters that wrap another `IStreamIn` and change which/what items come out: `FilterInByBitMask`/`FilterInByBoolean` select items by position against a mask or boolean array, `FilterInPair` projects a stream of key/value pairs down to just one side, `FilterInCache` adds a bounded replay buffer so `mark()`/`reset()` work over a sliding window, and `FilterIn_PushBack` lets a single item be pushed back for the next read. Each is a thin, single-purpose decorator meant to be composed with other stream filters from `streamIO.object`.'
 dv_has_:
   sub_:
@@ -57,26 +57,38 @@ has_sub_tag_code_decorator_pattern: 5
 has_sub_tag_code_stream_filter: 5
 has_sub_concept_stream_filter_input: 5
 related:
-  - path: ../_Matthias/Code/Java/streamIO/object/filterInOut
-    shared-tags: [code/decorator_pattern, code/stream_filter]
-  - path: ../_Matthias/Code/Java/streamIO/object/filterOut
-    shared-tags: [code/decorator_pattern, code/stream_filter]
-  - path: ../_Matthias/Code/NET/_std/IGraphs/Interfaces/Streams/bytes
-    shared-tags: [code/stream_filter]
-  - path: ../_Matthias/Code/NET/_std/IGraphs/Interfaces/Streams/chars
-    shared-tags: [code/stream_filter]
-  - path: ../_Matthias/Code/NET/_std/IGraphs/Interfaces/Streams/filters/real
-    shared-tags: [code/stream_filter]
-  - path: ../_Matthias/Code/NET/_std/IMathsImpl/Interfaces/streams/bytes
-    shared-tags: [code/stream_filter]
-  - path: ../_Matthias/Code/NET/_std/IMathsImpl/Interfaces/streams/chars
-    shared-tags: [code/stream_filter]
-  - path: ../_Matthias/Code/NET/_std/IMathsImpl/Interfaces/streams/filters/real
-    shared-tags: [code/stream_filter]
-  - path: ../_Matthias/Code/Java/streamIO/integer/filter
-    shared-tags: [code/stream_filter]
-  - path: ../_Matthias/Code/NET/_SpocWeb.Root/_std/SpocWeb.IMaths.db/arch/ddd/repositories/abstracts
-    shared-tags: [code/decorator_pattern]
+- path: ../_Matthias/Code/Java/streamIO/object/filterInOut
+  shared-tags:
+  - code/decorator_pattern
+  - code/stream_filter
+- path: ../_Matthias/Code/Java/streamIO/object/filterOut
+  shared-tags:
+  - code/decorator_pattern
+  - code/stream_filter
+- path: ../_Matthias/Code/NET/_std/IGraphs/Interfaces/Streams/bytes
+  shared-tags:
+  - code/stream_filter
+- path: ../_Matthias/Code/NET/_std/IGraphs/Interfaces/Streams/chars
+  shared-tags:
+  - code/stream_filter
+- path: ../_Matthias/Code/NET/_std/IGraphs/Interfaces/Streams/filters/real
+  shared-tags:
+  - code/stream_filter
+- path: ../_Matthias/Code/NET/_std/IMathsImpl/Interfaces/streams/bytes
+  shared-tags:
+  - code/stream_filter
+- path: ../_Matthias/Code/NET/_std/IMathsImpl/Interfaces/streams/chars
+  shared-tags:
+  - code/stream_filter
+- path: ../_Matthias/Code/NET/_std/IMathsImpl/Interfaces/streams/filters/real
+  shared-tags:
+  - code/stream_filter
+- path: ../_Matthias/Code/Java/streamIO/integer/filter
+  shared-tags:
+  - code/stream_filter
+- path: ../_Matthias/Code/NET/_SpocWeb.Root/_std/SpocWeb.IMaths.db/arch/ddd/repositories/abstracts
+  shared-tags:
+  - code/decorator_pattern
 ---
 
 # filterIn

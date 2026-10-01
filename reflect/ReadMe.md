@@ -47,7 +47,7 @@ concepts:
 facets:
   layer: domain
   status: legacy
-  complexity: 3
+  complexity: '3'
 description: This package is a small, self-contained reflection/introspection framework predating Java Bean-style libraries such as Apache Commons BeanUtils. `IThing` roots a tiny classification hierarchy (`IThing` -> `IIntangible`/`IIndividual`, `IIntangible` -> `IMathThing` -> `IType`) mirroring an upper-ontology distinction between concrete individuals and abstract/mathematical concepts; `Type` is the concrete `IType` implementation, wrapping a `java.lang.Class` restricted to Interfaces. Separately, `IReflectAble`/`ReflectAble` define a uniform, name-based get/set/call API over an object's public Fields and getter/setter Methods, including `_`-separated nested Property paths (e.g. `home_StreetNr`) and recursive deep-copy support; `Person` and `Address` are sample `ReflectAble` entities demonstrating this. `Accessor` is an independent, standalone reflection helper offering a similar name-based get/set/call API but usable on any Object, not only `IReflectAble` implementors.
 dv_has_:
   sub_:
@@ -105,12 +105,16 @@ has_sub_concept_object_classification: 7
 has_sub_concept_domain_model: 9
 has_sub_concept_reflection: 3
 related:
-  - path: ../_Matthias/Code/Java/knowledge
-    shared-tags: [code/domain_model, code/reflection]
-  - path: ../_Matthias/Code/NET/_std/SpecBuilderPattern/Models
-    shared-tags: [code/domain_model]
-  - path: ../_Matthias/Code/NET/_core/UnitTestProject1/Models
-    shared-tags: [code/domain_model]
+- path: ../_Matthias/Code/Java/knowledge
+  shared-tags:
+  - code/domain_model
+  - code/reflection
+- path: ../_Matthias/Code/NET/_std/SpecBuilderPattern/Models
+  shared-tags:
+  - code/domain_model
+- path: ../_Matthias/Code/NET/_core/UnitTestProject1/Models
+  shared-tags:
+  - code/domain_model
 ---
 
 # reflect

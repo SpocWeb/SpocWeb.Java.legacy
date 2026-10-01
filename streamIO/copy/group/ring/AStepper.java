@@ -29,7 +29,7 @@ import function.vector.IFloatVectorField;
  * digest: 9bec6385be1319f2ad6d5aea5e050a2b44a14e4b50f0828f6f7ac2db249b54bd
  * stale: false
  * tags: [code/ring_theory, code/ode_solver]
- * concepts: [Ring Algebra and ODE Solvers]
+ * concepts: [Ring Algebra, ODE Solvers]
  * facets: {layer: domain, status: legacy, complexity: 4}
  * -->
  */

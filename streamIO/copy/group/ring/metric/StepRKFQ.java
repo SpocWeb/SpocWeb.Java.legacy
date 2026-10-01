@@ -13,7 +13,7 @@ import function.IMeasurAble;
  * digest: c1acf3d4bf7f057b642305b97fc815bb80181e689504b5e4e2a10fb57180feaa
  * stale: false
  * tags: [code/metric_space, code/root_finding, code/numerical_integration, code/big_integer_arithmetic]
- * concepts: [Metric Spaces - Root Finding and Numerical Integration]
+ * concepts: [Metric Spaces, Root Finding]
  * facets: {layer: domain, status: legacy, complexity: 4}
  * -->
  */

@@ -16,7 +16,7 @@ import function.derive.IDeriveAble;
  * digest: 0e344b3aee639cf48be4daab1d33294b7986d7e9a866b68090db4f0de4d44797
  * stale: false
  * tags: [code/metric_space, code/root_finding, code/numerical_integration, code/big_integer_arithmetic]
- * concepts: [Metric Spaces - Root Finding and Numerical Integration]
+ * concepts: [Metric Spaces, Root Finding]
  * facets: {layer: domain, status: legacy, complexity: 4}
  * -->
  */

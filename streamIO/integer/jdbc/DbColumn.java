@@ -28,7 +28,7 @@ import math.vector.VectorString;
  * digest: 7a3993443fa78107bc033ea95bda7cc1d98db27688204e5826cd14f64c51b389
  * stale: false
  * tags: [code/jdbc_adapter, code/database_access, code/database_driver]
- * concepts: [Filesystem-Backed JDBC Driver Framework with Fixed-Length and Separator-Delimited Table Storage]
+ * concepts: [JDBC Driver, Table Storage]
  * facets: {layer: domain, status: legacy, complexity: 4}
  * -->
  */

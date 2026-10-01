@@ -300,7 +300,7 @@ public class Platonic {
 	 * demonstrates how each Point the hexagonal System 
 	 * has d*(d+1) nearest Neighbors 
 	 * <!-- docstate
-	 * tags: [code/platonic_solids, code/testing]
+	 * tags: [code/platonic_solids, code/test]
 	 * concepts: [Tetrahedron Matrix Self-Test]
 	 * facets: {layer: test, status: legacy, complexity: 2}
 	 * -->
@@ -330,7 +330,7 @@ public class Platonic {
 	
 	/**The main entry point for the application; runs {@link #testMatrixTetrahedron()}.
 	 * <!-- docstate
-	 * tags: [code/platonic_solids, code/testing]
+	 * tags: [code/platonic_solids, code/test]
 	 * concepts: [Demo Entry Point]
 	 * facets: {layer: test, status: legacy, complexity: 2}
 	 * -->

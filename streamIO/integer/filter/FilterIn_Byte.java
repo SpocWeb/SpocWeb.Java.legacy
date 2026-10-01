@@ -40,7 +40,7 @@ import function.IIntFunction;
   * digest: 3707c3143dd44249ef5d719ec6aefee0e04ef1b20f923fc520de549f724204a3
   * stale: false
   * tags: [code/stream_filter]
-  * concepts: [Pluggable Byte-Stream Filter Infrastructure and java.io Adapters]
+  * concepts: [Byte Stream, Filter]
   * facets: {layer: utility, status: legacy, complexity: 3}
   * -->
   */

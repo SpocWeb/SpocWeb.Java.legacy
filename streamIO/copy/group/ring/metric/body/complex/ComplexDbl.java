@@ -57,7 +57,7 @@ import function.derive.ring.body.TanH;
  * digest: 55b2ece8dd7d36b0abe6fef22ad5add3d66b8de1b801a3a5fd0fcff924db63a4
  * stale: false
  * tags: [code/complex_numbers, code/fourier_transform]
- * concepts: [Complex Number Arithmetic and Fourier Transform]
+ * concepts: [Complex Number, Fourier Transform]
  * facets: {layer: domain, status: legacy, complexity: 4}
  * -->
  * This makes it possible to create real Complex Constants!	 */

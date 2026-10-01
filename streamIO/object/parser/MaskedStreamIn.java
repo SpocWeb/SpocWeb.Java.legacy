@@ -33,7 +33,7 @@ import function.byref.ByRefInt;
   * digest: d463471ece38c3de7a7c7e23568c0bdd21cc4d96177dc8d89b17c8c6b825d259
   * stale: true
   * tags: [code/stream_parsing, code/parser]
-  * concepts: [Separator-Driven Token Parsing and Stream Adapters]
+  * concepts: [Token Parsing, Stream Adapters]
   * facets: {layer: utility, status: legacy, complexity: 4}
   * -->
   */

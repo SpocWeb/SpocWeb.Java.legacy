@@ -41,7 +41,7 @@ concepts:
 facets:
   layer: domain
   status: legacy
-  complexity: 4
+  complexity: '4'
 description: 'Loads, holds and displays Milkshape 3D (`.ms3d`) character models: meshes, materials, triangles, vertices and a skeleton of joints with keyframe animation. `Ms3d` is the loader and in-memory model; `Ms3dJoint`, `Ms3dKeyFrame`, `Ms3dMesh`, `Ms3dTriangle`, `Ms3dTexture`, `Ms3dTextureMap` and `Ms3dVertex` are its constituent data records, each reading its own section of the binary file format via `BigEndianReader`. `Ms3dPainter` renders a loaded model by mapping it into 2D and drawing its mesh and bones; `FileBMP` is an unrelated, currently-unimplemented stub for reading Windows BMP images (Java''s image I/O supports only JPEG/GIF/PNG).'
 dv_has_:
   sub_:
@@ -68,7 +68,8 @@ dv_has_:
         binary_parsing: 1
         "3d_rendering": 1
     concept_:
-      bmp_file_loader_unimplemented_stub: 1
+      bmp_file: 1
+      loader: 1
       ms3d_animation_keyframe: 1
       ms3d_mesh: 1
       ms3d_mesh_triangle: 1
@@ -77,7 +78,6 @@ dv_has_:
       ms3d_model_renderer: 1
       ms3d_skeletal_joint: 1
       ms3d_texture_coordinate_map: 1
-      ms3d_texture_loader: 1
 has_sub_folders: 0
 has_sub_files: 20
 has_sub_units: 10
@@ -94,7 +94,8 @@ has_sub_tag_code_skeletal_animation: 3
 has_sub_tag_code_image_loading: 2
 has_sub_tag_code_binary_parsing: 1
 has_sub_tag_code_3d_rendering: 1
-has_sub_concept_bmp_file_loader_unimplemented_stub: 1
+has_sub_concept_bmp_file: 1
+has_sub_concept_loader: 1
 has_sub_concept_ms3d_animation_keyframe: 1
 has_sub_concept_ms3d_mesh: 1
 has_sub_concept_ms3d_mesh_triangle: 1
@@ -103,10 +104,12 @@ has_sub_concept_ms3d_model_file_parser: 1
 has_sub_concept_ms3d_model_renderer: 1
 has_sub_concept_ms3d_skeletal_joint: 1
 has_sub_concept_ms3d_texture_coordinate_map: 1
-has_sub_concept_ms3d_texture_loader: 1
 related:
-  - path: ../_Matthias/Code/NET/Java/graphic/ms3d
-    shared-tags: [code/binary_parsing, code/mesh_data, code/skeletal_animation]
+- path: ../_Matthias/Code/NET/Java/graphic/ms3d
+  shared-tags:
+  - code/binary_parsing
+  - code/mesh_data
+  - code/skeletal_animation
 ---
 
 # ms3d

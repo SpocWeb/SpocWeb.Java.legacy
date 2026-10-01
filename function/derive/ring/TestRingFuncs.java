@@ -15,7 +15,7 @@ import function.derive.IDeriveAble;
  * mtime: 2026-09-05T16:35:25Z
  * digest: a8c9432c0dbf9ca14ca436b417f4577aede25189ef1d9385ecf3ce403a337936
  * stale: false
- * tags: [code/testing, code/algebraic_function]
+ * tags: [code/test, code/algebraic_function]
  * concepts: [Ring Function Test Harness]
  * facets: {layer: test, status: legacy, complexity: 2}
  * -->
@@ -25,7 +25,7 @@ public class TestRingFuncs {
 	/**Empty Placeholder Test verifying that the Package's Classes can be instantiated without Error.
 	 *
 	 * <!-- docstate
-	 * tags: [code/testing]
+	 * tags: [code/test]
 	 * concepts: [Instantiation Self-Test]
 	 * facets: {layer: test, status: legacy, complexity: 2}
 	 * -->
@@ -37,7 +37,7 @@ public class TestRingFuncs {
 	 *
 	 * @param args Array of parameters passed to the application
 	 * <!-- docstate
-	 * tags: [code/testing]
+	 * tags: [code/test]
 	 * concepts: [Demo Entry Point]
 	 * facets: {layer: test, status: legacy, complexity: 2}
 	 * -->

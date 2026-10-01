@@ -13,7 +13,7 @@ package streamIO.object.parser;
   * digest: 90ac65334327a202c2c1a090daf3dd9eb8e474cca9382cf54034426de509ccc0
   * stale: true
   * tags: [code/stream_parsing, code/parser]
-  * concepts: [Separator-Driven Token Parsing and Stream Adapters]
+  * concepts: [Token Parsing, Stream Adapters]
   * facets: {layer: utility, status: legacy, complexity: 4}
   * -->
   */

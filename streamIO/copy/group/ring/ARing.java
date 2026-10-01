@@ -37,7 +37,7 @@ import streamIO.copy.groupM.ISemiGroupM;
  * digest: de97b5d79902ba6cbfcf1a7374a505eeabbb721a4e6b9264ab147a9d0947aff1
  * stale: false
  * tags: [code/ring_theory, code/ode_solver]
- * concepts: [Ring Algebra and ODE Solvers]
+ * concepts: [Ring Algebra, ODE Solvers]
  * facets: {layer: domain, status: legacy, complexity: 4}
  * -->
  *  mulAt(*=)	 */

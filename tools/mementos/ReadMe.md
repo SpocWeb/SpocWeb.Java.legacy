@@ -16,7 +16,7 @@ concepts:
 facets:
   layer: infrastructure
   status: stable
-  complexity: 2
+  complexity: '2'
 description: 'A two-interface expression of the Memento pattern, kept deliberately minimal: an object that can snapshot and restore its own state, and an opaque token standing for one such snapshot.'
 dv_has_:
   sub_:
@@ -48,10 +48,12 @@ has_sub_tag_code_marker_interface: 1
 has_sub_tag_code_interface_contract: 1
 has_sub_concept_memento_pattern: 2
 related:
-  - path: ../_Matthias/Code/NET/org.structs/iMathExpression
-    shared-tags: [code/marker_interface]
-  - path: ../_Matthias/Code/NET/_SpocWeb.Root/_std/SpocWeb.Basics/Interfaces/categories
-    shared-tags: [code/marker_interface]
+- path: ../_Matthias/Code/NET/org.structs/iMathExpression
+  shared-tags:
+  - code/marker_interface
+- path: ../_Matthias/Code/NET/_SpocWeb.Root/_std/SpocWeb.Basics/Interfaces/categories
+  shared-tags:
+  - code/marker_interface
 ---
 
 # mementos

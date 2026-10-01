@@ -33,7 +33,7 @@ import function.IMeasurAble;
  * digest: 001137420d6c266fee2fe7fc26030c92fe2f5d2c435490a46913b83dadac1073
  * stale: false
  * tags: [code/ring_theory, code/ode_solver]
- * concepts: [Ring Algebra and ODE Solvers]
+ * concepts: [Ring Algebra, ODE Solvers]
  * facets: {layer: domain, status: legacy, complexity: 4}
  * -->
  */

@@ -18,7 +18,7 @@ concepts:
 facets:
   layer: infrastructure
   status: stable
-  complexity: 2
+  complexity: '2'
 description: 'Two `IFactory` implementations that create a new Object from an existing one, differing only in how faithfully the new instance reproduces the original: `FactoryByClass` copies only the type, via reflection, while `FactoryByPrototype` copies the data too, via an explicit `ICopy` contract that stands in for Java''s protected `clone()`.'
 dv_has_:
   sub_:
@@ -52,10 +52,14 @@ has_sub_tag_code_reflection: 1
 has_sub_concept_object_instantiation: 2
 has_sub_concept_prototype_pattern: 2
 related:
-  - path: ../_Matthias/Code/NET/Java/streamIO/factory
-    shared-tags: [code/cloneable_pattern, code/factory_pattern]
-  - path: ../_Matthias/Code/NET/_root/db/Query/SpocDb/SpocDb/Internal/DbManagement
-    shared-tags: [code/factory_pattern, code/reflection]
+- path: ../_Matthias/Code/NET/Java/streamIO/factory
+  shared-tags:
+  - code/cloneable_pattern
+  - code/factory_pattern
+- path: ../_Matthias/Code/NET/_root/db/Query/SpocDb/SpocDb/Internal/DbManagement
+  shared-tags:
+  - code/factory_pattern
+  - code/reflection
 ---
 
 # factory

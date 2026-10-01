@@ -19,7 +19,7 @@ concepts:
 facets:
   layer: utility
   status: legacy
-  complexity: 3
+  complexity: '3'
 description: Implements approximate ("fuzzy") text matching on top of the `tester.IMetric` abstraction. `FuzzySetComparator` compares arrays of word-like objects for similarity by summing the minimum or maximum pairwise distance under a given metric; `FuzzySentenceComparator` builds on it by first splitting raw strings into normalized words (case-folding, separator splitting, substitution tables) and delegating the actual comparison to a `FuzzySetComparator`; `FuzzyDictionary` maintains a growing set of previously seen items and finds the one closest to a new item under a metric, for incremental normalization tasks.
 dv_has_:
   sub_:
@@ -59,8 +59,10 @@ has_sub_concept_fuzzy_dictionary_lookup: 1
 has_sub_concept_fuzzy_sentence_comparator: 1
 has_sub_concept_fuzzy_set_comparator: 1
 related:
-  - path: ../_Matthias/Code/NET/Java/tester/fuzzy
-    shared-tags: [code/fuzzy_search, code/string_similarity]
+- path: ../_Matthias/Code/NET/Java/tester/fuzzy
+  shared-tags:
+  - code/fuzzy_search
+  - code/string_similarity
 ---
 
 # fuzzy

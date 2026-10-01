@@ -41,7 +41,7 @@ import function.derive.IFloatDeriveAble;
  * digest: 3124a12da19427b1910764a275060b71daccdef778caf94855ce343842c9917b
  * stale: false
  * tags: [code/newton_method, code/bracket_matching]
- * concepts: [Bracketed Newton's Method Root Refiner]
+ * concepts: [Newton Root, Refiner]
  * facets: {layer: utility, status: legacy, complexity: 3}
  * -->
  */

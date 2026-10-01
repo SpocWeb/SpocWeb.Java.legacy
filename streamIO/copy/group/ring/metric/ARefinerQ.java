@@ -25,7 +25,7 @@ import function.IFunction;
  * digest: 2d174e129804694e5c7dc6170728ae1edb2889816abd549c679846554cfdddb2
  * stale: false
  * tags: [code/metric_space, code/root_finding, code/numerical_integration, code/big_integer_arithmetic]
- * concepts: [Metric Spaces - Root Finding and Numerical Integration]
+ * concepts: [Metric Spaces, Root Finding]
  * facets: {layer: domain, status: legacy, complexity: 4}
  * -->
  */

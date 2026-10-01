@@ -15,7 +15,7 @@ import streamIO.copy.order.IOrder;
  * digest: 38b88e60f9f7062dab8cc740f5fff0f4892c8bdb0fd11937a3d01a08367acb7a
  * stale: false
  * tags: [code/metric_space, code/root_finding, code/numerical_integration, code/big_integer_arithmetic]
- * concepts: [Metric Spaces - Root Finding and Numerical Integration]
+ * concepts: [Metric Spaces, Root Finding]
  * facets: {layer: domain, status: legacy, complexity: 4}
  * -->
  * So there is no pure virtual base class 'int'. */

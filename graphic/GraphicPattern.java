@@ -11,7 +11,7 @@ package graphic;
  * digest: 970a9e919fe501c8dfd2e218d83c1378dc1aadcaa06ecb6ac3fd4e1157c72435
  * stale: false
  * tags: [code/graphics]
- * concepts: [Pen and Brush Pattern Factory]
+ * concepts: [Graphic Pattern]
  * facets: {layer: utility, status: legacy, complexity: 3}
  * -->
  */

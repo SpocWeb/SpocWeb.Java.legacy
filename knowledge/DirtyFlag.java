@@ -37,6 +37,9 @@ package knowledge;
  * mtime: 2026-09-05T08:10:26Z
  * digest: 946778b2895cc75af25c1b608b1736f2397fe6825b5c144fc1d3c2292303e331
  * stale: false
+ * tags: [code/state_flag]
+ * concepts: [State Tracking]
+ * facets: {layer: domain, status: stable, complexity: 2}
  * -->
  */
 public class DirtyFlag

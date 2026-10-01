@@ -127,7 +127,11 @@ public class TestRandom {
 			Assert.EQUALS(compare, actual, 0, 2* tags: [code/random_number_generator]
 			Assert.EQUALS(compare, actual, 0, 2* concepts: [Distribution Test Helper]
 			Assert.EQUALS(compare, actual, 0, 2* facets: {layer: test, status: legacy, complexity: 2}
-			Assert.EQUALS(compare, actual, 0, 2* -->
+			Assert.EQUALS(compare, actual, 0, 2
+ * tags: [code/random_number_generator]
+ * concepts: [Distribution Test Helper]
+ * facets: {layer: test, status: legacy, complexity: 2}
+ * -->
 	 * by sampling it between -1 and +1	 */
 	final static public void TEST_RANDOM(final IStreamIn_Int ran, final float[] compare,
 	final int numBins, final int numPoints, final String distrName) {

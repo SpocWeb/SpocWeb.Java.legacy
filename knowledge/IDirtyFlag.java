@@ -30,6 +30,9 @@ package knowledge;
   * mtime: 2026-09-05T08:08:12Z
   * digest: 07a767715e8234a811703fa44c6fe1783af77296bfe14dbca74aa7a9a78d7e05
   * stale: false
+  * tags: [code/state_flag, code/interface_contract]
+  * concepts: [State Tracking]
+  * facets: {layer: domain, status: stable, complexity: 2}
   * -->
   */
 public interface IDirtyFlag

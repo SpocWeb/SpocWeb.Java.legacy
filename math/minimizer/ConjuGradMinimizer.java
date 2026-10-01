@@ -448,7 +448,7 @@ implements IFloatFunction {
  * digest: f099b3d48c85b28c03b42f0eb40fcdbfb7cf5d983e2be7c9c505f7f5c3d44b18
  * stale: false
  * tags: [code/test_fixture]
- * concepts: [Distorted Squared Distance Test Fixture]
+ * concepts: [Distance, Distorted]
  * facets: {layer: test, status: legacy, complexity: 2}
  * -->
  */

@@ -10,7 +10,7 @@ import streamIO.copy.CCopyAble;
  * digest: 6d722afe87e65f20e30fc1801e4187117200cea0f1bf38a8168e79c3008bda64
  * stale: false
  * tags: [code/metric_space, code/root_finding, code/numerical_integration, code/big_integer_arithmetic]
- * concepts: [Metric Spaces - Root Finding and Numerical Integration]
+ * concepts: [Metric Spaces, Root Finding]
  * facets: {layer: domain, status: legacy, complexity: 4}
  * -->
  * but still supports all other Methods of the WellOrder Class.	 */

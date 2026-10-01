@@ -11,7 +11,7 @@ import streamIO.exception.ReadOnlyException;
  * digest: 5e2dfd69e00b8e3aa1ca8040d67cbcd6a6e217d63f5e1902c10e6ed3a730d4cb
  * stale: false
  * tags: [code/ring_theory, code/ode_solver]
- * concepts: [Ring Algebra and ODE Solvers]
+ * concepts: [Ring Algebra, ODE Solvers]
  * facets: {layer: domain, status: legacy, complexity: 4}
  * -->
  * but still supports all other Methods of the IIntRing Class.	 */

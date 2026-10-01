@@ -46,7 +46,7 @@ import streamIO.object.ModificationException;
   * digest: 15f548f430e3b36a81bc9b38210d425b72a751f217fa6b2758fe7dbd8e7fc95e
   * stale: true
   * tags: [code/enumerator, code/iterator_adapter]
-  * concepts: [Custom Streaming Enumerator and Iterator Bridge Layer for Object Collections]
+  * concepts: [Streaming Enumerator, Iterator]
   * facets: {layer: utility, status: legacy, complexity: 4}
   * -->
   */

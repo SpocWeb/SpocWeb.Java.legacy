@@ -22,7 +22,7 @@ import streamIO.object.IPipe;
  * digest: c0ac5cae6239394e4735f9ac72cd197185a9f73087c91cc1a5a21943c3d62885
  * stale: true
  * tags: [code/enumerator, code/iterator_adapter]
- * concepts: [Custom Streaming Enumerator and Iterator Bridge Layer for Object Collections]
+ * concepts: [Streaming Enumerator, Iterator]
  * facets: {layer: utility, status: legacy, complexity: 4}
  * -->
  */

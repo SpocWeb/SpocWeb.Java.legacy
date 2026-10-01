@@ -34,7 +34,7 @@ import java.util.SortedMap;
  * @version	1.0
  * <!-- docstate
  * tags: [code/red_black_tree, code/iterator_pattern]
- * concepts: [Red-Black Tree Backed Sorted Map Implementation]
+ * concepts: [Red Black Tree, Sorted Map]
  * facets: {layer: utility, status: legacy, complexity: 4}
  * digest: ff1ec4b00791a6fd86d96935d3d60ec941f7d171066fca8d90bc87509b285329
  * stale: false

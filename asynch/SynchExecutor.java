@@ -26,7 +26,7 @@ import streamIO.IIStreamIn;
   * mtime: 2026-09-05T10:41:58Z
   * digest: 607aff006a45f4c1fca1ca47e097f1218c2999e826ce358649054b0069b691a8
   * stale: false
-  * tags: [code/thread_pooling]
+  * tags: [code/thread_pool]
   * concepts: [Synchronous Executor]
   * facets: {layer: infrastructure, status: legacy, complexity: 2}
   * -->

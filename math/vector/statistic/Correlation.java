@@ -69,7 +69,7 @@ public class Correlation {
 	/** Runs {@link #testIt()}, the self-test suite for this class.
 	 *
 	 * <!-- docstate
-	 * tags: [code/testing]
+	 * tags: [code/test]
 	 * concepts: [Demo Entry Point]
 	 * facets: {layer: test, status: legacy, complexity: 2}
 	 * -->
@@ -81,7 +81,7 @@ public class Correlation {
 	/** tests all Methods of this Class
 	 *
 	 * <!-- docstate
-	 * tags: [code/testing, code/statistical_correlation]
+	 * tags: [code/test, code/statistical_correlation]
 	 * concepts: [Correlation Self-Test Dispatcher]
 	 * facets: {layer: test, status: legacy, complexity: 2}
 	 * -->
@@ -164,7 +164,7 @@ public class Correlation {
 	 * +1 total Correlation: y = a * x with positive a
 	 * <!-- docstate
 	 * tags: [code/statistical_correlation]
-	 * concepts: [Pearson Correlation of Two Vectors]
+	 * concepts: [Cross-Vector Correlation Statistics]
 	 * facets: {layer: domain, status: legacy, complexity: 3}
 	 * -->
 	 */
@@ -184,7 +184,7 @@ public class Correlation {
 	 * by constructing Pairs (x[i], y[i])
 	 * <!-- docstate
 	 * tags: [code/statistical_correlation]
-	 * concepts: [Pearson Correlation over a Range]
+	 * concepts: [Cross-Vector Correlation Statistics]
 	 * facets: {layer: domain, status: legacy, complexity: 3}
 	 * -->
 	 */
@@ -236,7 +236,7 @@ public class Correlation {
 	 * @return Pearson's linear Correlation Coefficient between the given Columns of the Data Sets x[j]
 	 * <!-- docstate
 	 * tags: [code/statistical_correlation]
-	 * concepts: [Pearson Correlation Matrix (Row Range)]
+	 * concepts: [Cross-Vector Correlation Statistics]
 	 * facets: {layer: domain, status: legacy, complexity: 3}
 	 * -->
 	 */
@@ -425,7 +425,7 @@ public class Correlation {
 	 * @return Fisher's z, i.e. the Number of Standard Deviations from the expected Value 0   
 	 * <!-- docstate
 	 * tags: [code/statistical_correlation]
-	 * concepts: [Kendall Tau Sign Correlation (Range)]
+	 * concepts: [Cross-Vector Correlation Statistics]
 	 * facets: {layer: domain, status: legacy, complexity: 3}
 	 * -->
 	 */
@@ -476,7 +476,7 @@ public class Correlation {
 	 * @return Fisher's z, i.e. the Number of Standard Deviations from the expected Value 0   
 	 * <!-- docstate
 	 * tags: [code/statistical_correlation]
-	 * concepts: [Kendall Tau Sign Correlation Matrix]
+	 * concepts: [Cross-Vector Correlation Statistics]
 	 * facets: {layer: domain, status: legacy, complexity: 3}
 	 * -->
 	 */
@@ -499,7 +499,7 @@ public class Correlation {
 	 * @return Fisher's z, i.e. the Number of Standard Deviations from the expected Value 0   
 	 * <!-- docstate
 	 * tags: [code/statistical_correlation]
-	 * concepts: [Kendall Tau Sign Correlation Matrix (Range)]
+	 * concepts: [Cross-Vector Correlation Statistics]
 	 * facets: {layer: domain, status: legacy, complexity: 3}
 	 * -->
 	 */
@@ -544,7 +544,7 @@ public class Correlation {
 	 * @return the robust Sign Correlation
 	 * <!-- docstate
 	 * tags: [code/statistical_correlation]
-	 * concepts: [Kendall Tau Sign Correlation (int Matrix)]
+	 * concepts: [Cross-Vector Correlation Statistics]
 	 * facets: {layer: domain, status: legacy, complexity: 3}
 	 * -->
 	 */
@@ -561,7 +561,7 @@ public class Correlation {
 	 * @return the robust Sign Correlation
 	 * <!-- docstate
 	 * tags: [code/statistical_correlation]
-	 * concepts: [Kendall Tau Sign Correlation (int Matrix, Range)]
+	 * concepts: [Cross-Vector Correlation Statistics]
 	 * facets: {layer: domain, status: legacy, complexity: 3}
 	 * -->
 	 */
@@ -606,7 +606,7 @@ public class Correlation {
 	/** tests the Correlation between two Variables using Pearson's r Statistic
 	 *
 	 * <!-- docstate
-	 * tags: [code/testing, code/statistical_correlation]
+	 * tags: [code/test, code/statistical_correlation]
 	 * concepts: [Pearson Correlation Self-Test]
 	 * facets: {layer: test, status: legacy, complexity: 2}
 	 * -->
@@ -642,7 +642,7 @@ public class Correlation {
 	/** tests the Rank Correlation between two Variables
 	 *
 	 * <!-- docstate
-	 * tags: [code/testing, code/statistical_correlation]
+	 * tags: [code/test, code/statistical_correlation]
 	 * concepts: [Rank Correlation Self-Test]
 	 * facets: {layer: test, status: legacy, complexity: 2}
 	 * -->
@@ -758,7 +758,7 @@ public class Correlation {
 	/** tests the Correlation using Signs only
 	 *
 	 * <!-- docstate
-	 * tags: [code/testing, code/statistical_correlation]
+	 * tags: [code/test, code/statistical_correlation]
 	 * concepts: [Sign Correlation Self-Test]
 	 * facets: {layer: test, status: legacy, complexity: 2}
 	 * -->
@@ -812,7 +812,7 @@ public class Correlation {
 	/** tests the second Implementation using Matrices
 	 *
 	 * <!-- docstate
-	 * tags: [code/testing, code/statistical_correlation]
+	 * tags: [code/test, code/statistical_correlation]
 	 * concepts: [Sign Correlation Self-Test (Variant)]
 	 * facets: {layer: test, status: legacy, complexity: 2}
 	 * -->

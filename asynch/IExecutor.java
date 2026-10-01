@@ -35,7 +35,7 @@ import graphs.IValueSetter;
   * mtime: 2026-09-05T10:12:24Z
   * digest: c84e1a736a2a1c595d70fb1773fcb406f2d4099d1a65b1783a0952d697b42389
   * stale: false
-  * tags: [code/thread_pooling]
+  * tags: [code/thread_pool]
   * concepts: [Executor Interface]
   * facets: {layer: infrastructure, status: legacy, complexity: 2}
   * -->

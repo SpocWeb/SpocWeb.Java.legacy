@@ -145,7 +145,7 @@ import tester.IEquivalence;
   * The Problem is when to stop jumping ahead on Searching!  
   * <!-- docstate
   * tags: [code/container, code/hash_table, code/container_iteration]
-  * concepts: [Concrete Storage Containers - Arrays - Hash Tables and Relations]
+  * concepts: [Storage Containers, Hash Tables]
   * facets: {layer: utility, status: legacy, complexity: 4}
   * digest: 790b2a4466e4029bf19095f0e665a20b4d215106da69780122ed7d18ca5c4774
   * stale: false
@@ -637,7 +637,7 @@ extends AContainer {
  *
  * <!-- docstate
  * tags: [code/container, code/hash_table, code/container_iteration]
- * concepts: [Concrete Storage Containers - Arrays - Hash Tables and Relations]
+ * concepts: [Storage Containers, Hash Tables]
  * facets: {layer: utility, status: legacy, complexity: 4}
  * digest: 963d75fe1c2cccc4eac3dcf27cc66361770080963c4f1265f08cdc7551d6963a
  * stale: false

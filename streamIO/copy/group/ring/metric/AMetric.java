@@ -22,7 +22,7 @@ import streamIO.copy.ICopyAble;
  * digest: aef8a84eea25c51c6963b5ea8bc6ce5626205173a309223ac40b31c14aff2517
  * stale: false
  * tags: [code/metric_space, code/root_finding, code/numerical_integration, code/big_integer_arithmetic]
- * concepts: [Metric Spaces - Root Finding and Numerical Integration]
+ * concepts: [Metric Spaces, Root Finding]
  * facets: {layer: domain, status: legacy, complexity: 4}
  * -->
  * A Norm can only be defined, when the Metric is homogeneous. |x| = d(x,0) */

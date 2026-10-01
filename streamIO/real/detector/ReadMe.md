@@ -27,7 +27,7 @@ concepts:
 facets:
   layer: domain
   status: legacy
-  complexity: 3
+  complexity: '3'
 description: 'Statistical-process-control style detectors that watch a stream of `double`/`float` values and signal (by returning `null` from `addDouble`/`addFloat` instead of `this`) when a classic production-control pattern is met: a threshold crossing, a run of consistently one-sided values, alternation, monotonous drift, or an overly consistent ("too good") process. `DetectorThreshold` is the base case; `DetectorConsistency` extends it to track a run length, and `DetectorAlternation`, `DetectorMonotony` and `DetectorTooGood` each specialize that run-tracking for one specific pattern. `BestChoice` is unrelated to the threshold hierarchy - it implements the classic "secretary problem" optimal-stopping strategy over a fixed-length stream of offers.'
 dv_has_:
   sub_:
@@ -48,9 +48,10 @@ dv_has_:
       alternation_pattern_detector: 1
       best_choice_selector: 1
       consistency_detector: 1
+      detector: 1
       monotony_trend_detector: 1
       threshold_crossing_detector: 1
-      too_good_to_be_true_detector: 1
+      too_good: 1
 has_sub_folders: 0
 has_sub_files: 12
 has_sub_units: 6
@@ -61,9 +62,10 @@ has_sub_tag_code_anomaly_detection: 6
 has_sub_concept_alternation_pattern_detector: 1
 has_sub_concept_best_choice_selector: 1
 has_sub_concept_consistency_detector: 1
+has_sub_concept_detector: 1
 has_sub_concept_monotony_trend_detector: 1
 has_sub_concept_threshold_crossing_detector: 1
-has_sub_concept_too_good_to_be_true_detector: 1
+has_sub_concept_too_good: 1
 ---
 
 # detector

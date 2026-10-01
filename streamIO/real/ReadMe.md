@@ -96,11 +96,12 @@ tags:
 - code/stream_filter
 - code/statistics
 concepts:
-- Float Stream Filters and Statistics
+- Float Stream
+- Filters
 facets:
   layer: infrastructure
   status: legacy
-  complexity: 3
+  complexity: '3'
 description: 'A framework for streams of `float`/`double` numbers: sources, filters and sinks that all implement `IStreamIn_Float` and/or `IStreamOutFloat`. `AAStreamIn_Float` is the abstract root, implementing `IStreamIn_Bound_Float`; `AStreamIn_Float` adds the current-value caching every concrete source and filter builds on. Sources include array- and constant-backed streams (`ArrayStreamIn_Float`, `ConstStreamIn_Float`) and progressions (`StreamIn_Arithmetic`, `StreamIn_Geometric`). Filters form two families: value-processing filters built on `FilterIn_FloatByFunction`/`FilterFloatByFunction` (averaging, windowing, delay, diff, running sums, exponential windows, outlier rejection, running statistics), and output-side filters built on `FilterOutFloat` (used as the base for the `detector/` subsystem). `FilterVectorStatistic` extends this to vector-valued streams. `StreamOutPlotter` renders incoming values as ASCII plots. The `detector/` subsystem builds statistical-process-control detectors on top of `FilterOutFloat`, and the `random/` subsystem builds distribution-specific random-number generators on top of `AStreamIn_Float`.'
 dv_has_:
   sub_:
@@ -130,7 +131,8 @@ dv_has_:
         statistics: 2
         vector_math: 4
     concept_:
-      float_stream_input_base_class: 2
+      input: 2
+      float_stream: 2
       alternation_pattern_detector: 1
       arithmetic_sequence_stream: 1
       array_backed_float_stream: 1
@@ -139,7 +141,6 @@ dv_has_:
       bounded_float_stream_interface: 1
       chi_squared_random_generator: 1
       consistency_detector: 1
-      console_plotter_output: 1
 has_sub_folders: 2
 has_sub_files: 109
 has_sub_units: 53
@@ -159,7 +160,8 @@ has_sub_tag_code_stream_filter: 25
 has_sub_tag_code_signal_processing: 2
 has_sub_tag_code_statistics: 2
 has_sub_tag_code_vector_math: 4
-has_sub_concept_float_stream_input_base_class: 2
+has_sub_concept_input: 2
+has_sub_concept_float_stream: 2
 has_sub_concept_alternation_pattern_detector: 1
 has_sub_concept_arithmetic_sequence_stream: 1
 has_sub_concept_array_backed_float_stream: 1
@@ -168,22 +170,28 @@ has_sub_concept_beta_distributed_random_generator: 1
 has_sub_concept_bounded_float_stream_interface: 1
 has_sub_concept_chi_squared_random_generator: 1
 has_sub_concept_consistency_detector: 1
-has_sub_concept_console_plotter_output: 1
 related:
-  - path: ../_Matthias/Code/NET/_std/IGraphs/Interfaces/Streams/bytes
-    shared-tags: [code/stream_filter]
-  - path: ../_Matthias/Code/NET/_std/IGraphs/Interfaces/Streams/chars
-    shared-tags: [code/stream_filter]
-  - path: ../_Matthias/Code/NET/_std/IGraphs/Interfaces/Streams/filters/real
-    shared-tags: [code/stream_filter]
-  - path: ../_Matthias/Code/NET/_std/IMathsImpl/Interfaces/streams/bytes
-    shared-tags: [code/stream_filter]
-  - path: ../_Matthias/Code/NET/_std/IMathsImpl/Interfaces/streams/chars
-    shared-tags: [code/stream_filter]
-  - path: ../_Matthias/Code/NET/_std/IMathsImpl/Interfaces/streams/filters/real
-    shared-tags: [code/stream_filter]
-  - path: ../_Matthias/Code/Java/streamIO/integer/filter
-    shared-tags: [code/stream_filter]
+- path: ../_Matthias/Code/NET/_std/IGraphs/Interfaces/Streams/bytes
+  shared-tags:
+  - code/stream_filter
+- path: ../_Matthias/Code/NET/_std/IGraphs/Interfaces/Streams/chars
+  shared-tags:
+  - code/stream_filter
+- path: ../_Matthias/Code/NET/_std/IGraphs/Interfaces/Streams/filters/real
+  shared-tags:
+  - code/stream_filter
+- path: ../_Matthias/Code/NET/_std/IMathsImpl/Interfaces/streams/bytes
+  shared-tags:
+  - code/stream_filter
+- path: ../_Matthias/Code/NET/_std/IMathsImpl/Interfaces/streams/chars
+  shared-tags:
+  - code/stream_filter
+- path: ../_Matthias/Code/NET/_std/IMathsImpl/Interfaces/streams/filters/real
+  shared-tags:
+  - code/stream_filter
+- path: ../_Matthias/Code/Java/streamIO/integer/filter
+  shared-tags:
+  - code/stream_filter
 ---
 
 # real

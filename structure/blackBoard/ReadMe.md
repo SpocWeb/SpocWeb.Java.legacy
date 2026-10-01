@@ -15,7 +15,7 @@ concepts:
 facets:
   layer: domain
   status: legacy
-  complexity: 2
+  complexity: '2'
 description: 'Defines the generic Blackboard-pattern Contract (`IKnowledge`: `check()`/`update()`) that any number of independent, rule-based Knowledge Sources can implement to cooperatively fill in an incomplete shared Data Structure. The `triangle` Subsystem is the concrete Application, solving Triangle Geometry.'
 dv_has_:
   sub_:
@@ -65,8 +65,9 @@ has_sub_concept_side_side_side_rule: 1
 has_sub_concept_triangle_knowledge_source_base: 1
 has_sub_concept_triangle_value_object: 1
 related:
-  - path: ../_Matthias/Code/NET/_org.structs/TriangleBlackboard
-    shared-tags: [code/blackboard_pattern]
+- path: ../_Matthias/Code/NET/_org.structs/TriangleBlackboard
+  shared-tags:
+  - code/blackboard_pattern
 ---
 
 # blackBoard

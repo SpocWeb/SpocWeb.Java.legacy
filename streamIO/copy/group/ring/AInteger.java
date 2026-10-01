@@ -16,7 +16,7 @@ import streamIO.copy.ICopyAble;
  * digest: 9336269dbf793c45a5b36192fdfa5127412a3c4a09480de4f72cf67d60feeb40
  * stale: false
  * tags: [code/ring_theory, code/ode_solver]
- * concepts: [Ring Algebra and ODE Solvers]
+ * concepts: [Ring Algebra, ODE Solvers]
  * facets: {layer: domain, status: legacy, complexity: 4}
  * -->
  * as Complements to inc() and dec() in IInteger. */

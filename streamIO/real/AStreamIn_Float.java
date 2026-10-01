@@ -31,7 +31,7 @@ import function.byref.ByRefDouble;
  * digest: 36dc9a025620ce10f845341da4f4ce536b136ff10e2883a899272c53b2b5e496
  * stale: false
  * tags: [code/stream_filter]
- * concepts: [Float Stream Input Base Class]
+ * concepts: [Float Stream, Input]
  * facets: {layer: infrastructure, status: legacy, complexity: 2}
  * -->
  */

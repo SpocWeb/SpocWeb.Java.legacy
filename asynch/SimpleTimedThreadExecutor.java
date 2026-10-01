@@ -20,7 +20,7 @@ package asynch;
   * mtime: 2026-09-05T10:43:28Z
   * digest: 8320b81962276e6f69f9d30c4c7cda51016719ca7f2c1319f1ff1279dfa610c6
   * stale: false
-  * tags: [code/thread_pooling]
+  * tags: [code/thread_pool]
   * concepts: [Timed Thread Executor]
   * facets: {layer: infrastructure, status: legacy, complexity: 2}
   * -->

@@ -58,7 +58,7 @@ import java.awt.Rectangle;
  * mtime: 2026-09-05T11:52:39Z
  * digest: 64a6dfbeaa0fbfb5b1dffda2f08c50499db0225ffd62b1dd604ccc475bb8f968
  * stale: false
- * tags: [code/graphics, code/testing]
+ * tags: [code/graphics, code/test]
  * concepts: [Graph2D Demo Harness]
  * facets: {layer: test, status: legacy, complexity: 2}
  * -->

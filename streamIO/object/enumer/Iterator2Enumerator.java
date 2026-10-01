@@ -24,7 +24,7 @@ import streamIO.IReSetAble;
   * digest: 86983fd4680f505ad4b4591e5b0043f9b6e290d2c3122610eedc8a0ae19fb08b
   * stale: true
   * tags: [code/enumerator, code/iterator_adapter]
-  * concepts: [Custom Streaming Enumerator and Iterator Bridge Layer for Object Collections]
+  * concepts: [Streaming Enumerator, Iterator]
   * facets: {layer: utility, status: legacy, complexity: 4}
   * -->
   */

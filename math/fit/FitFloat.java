@@ -32,7 +32,7 @@ import function.derive.ring.body.GammaP;
  * digest: 5b385606dca9bf6412d19c27e2ab14d05e0eab0443c4bfa26808e525ab322d37
  * stale: false
  * tags: [code/curve_fitting]
- * concepts: [Nonlinear Curve Fit (Levenberg-Marquardt style)]
+ * concepts: [Levenberg Marquardt, Nonlinear Curve]
  * facets: {layer: utility, status: legacy, complexity: 4}
  * -->
  */

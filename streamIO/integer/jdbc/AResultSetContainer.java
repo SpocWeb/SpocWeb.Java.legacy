@@ -30,7 +30,7 @@ import java.sql.Statement;
  * digest: 83b6ed726cf82c4130920f1a133bc925e0e8c52a74604c264e6210502923a117
  * stale: false
  * tags: [code/jdbc_adapter, code/database_access, code/database_driver]
- * concepts: [Filesystem-Backed JDBC Driver Framework with Fixed-Length and Separator-Delimited Table Storage]
+ * concepts: [JDBC Driver, Table Storage]
  * facets: {layer: domain, status: legacy, complexity: 4}
  * -->
  */

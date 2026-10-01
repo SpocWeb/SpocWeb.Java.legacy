@@ -7,7 +7,7 @@ package streamIO.copy.group.ring;
  * digest: 158a962777812899eae1e2c55be84b810fcaf6368d1c3b708e428cca707de72e
  * stale: false
  * tags: [code/ring_theory, code/ode_solver]
- * concepts: [Ring Algebra and ODE Solvers]
+ * concepts: [Ring Algebra, ODE Solvers]
  * facets: {layer: domain, status: legacy, complexity: 4}
  * -->
  * because it is used in Tensor Arithmetic */

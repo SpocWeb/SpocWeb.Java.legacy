@@ -28,7 +28,7 @@ import streamIO.integer.jdbc.APrepStatement;
  * digest: c276dea0d6e5678bfdf5b224a7133c9fa093270fb296851b955354bc15b6e0c2
  * stale: true
  * tags: [code/jdbc_adapter, code/sax_event_generation]
- * concepts: [Minimal JDBC Driver over Separated-Format Flat Files]
+ * concepts: [JDBC Driver, Flat Files]
  * facets: {layer: domain, status: legacy, complexity: 4}
  * -->
  */

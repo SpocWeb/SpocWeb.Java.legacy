@@ -22,6 +22,9 @@ import java.lang.reflect.Field;
  * mtime: 2026-09-05T08:11:11Z
  * digest: 8dce032d90db5813b6457eda5da2ecf05643b4cc41faff06e5054e866a228722
  * stale: false
+ * tags: [code/type_system, code/entity_model, code/orm, code/reflection]
+ * concepts: [Domain Model, Object Classification]
+ * facets: {layer: domain, status: stable, complexity: 2}
  * -->
  */
 public class MetaType

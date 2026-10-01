@@ -14,7 +14,7 @@ package streamIO.copy.group.ring;
  * digest: 2a4385bce6dfb1700a29c1b87c92f879e35cad64b337342c9e961d27ff76d10a
  * stale: false
  * tags: [code/ring_theory, code/ode_solver]
- * concepts: [Ring Algebra and ODE Solvers]
+ * concepts: [Ring Algebra, ODE Solvers]
  * facets: {layer: domain, status: legacy, complexity: 4}
  * -->
  */

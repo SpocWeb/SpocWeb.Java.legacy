@@ -11,7 +11,7 @@ import streamIO.copy.groupM.TestGroupM;
   * digest: a32f6471d3d5bb15d4d766c6c05b666248b80f41d1ac54a3286cc6661af5543a
   * stale: false
   * tags: [code/ring_theory, code/ode_solver]
-  * concepts: [Ring Algebra and ODE Solvers]
+  * concepts: [Ring Algebra, ODE Solvers]
   * facets: {layer: domain, status: legacy, complexity: 4}
   * -->
   */

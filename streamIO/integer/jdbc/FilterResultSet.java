@@ -49,7 +49,7 @@ import streamIO.exception.BaseException;
  * digest: 1986594cce9f6a6932437847a92ca74b412a19a263bb6722a60a95f27acfbf0b
  * stale: false
  * tags: [code/jdbc_adapter, code/database_access, code/database_driver]
- * concepts: [Filesystem-Backed JDBC Driver Framework with Fixed-Length and Separator-Delimited Table Storage]
+ * concepts: [JDBC Driver, Table Storage]
  * facets: {layer: domain, status: legacy, complexity: 4}
  * -->
  */

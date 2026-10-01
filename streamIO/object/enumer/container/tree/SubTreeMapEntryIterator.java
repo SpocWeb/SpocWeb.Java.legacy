@@ -13,7 +13,7 @@ import java.util.NoSuchElementException;
  * as used by {@link SubTreeMap} to expose a key-range view.
  * <!-- docstate
  * tags: [code/red_black_tree, code/iterator_pattern]
- * concepts: [Red-Black Tree Backed Sorted Map Implementation]
+ * concepts: [Red Black Tree, Sorted Map]
  * facets: {layer: utility, status: legacy, complexity: 4}
  * digest: 86960c5e7d2734565b1e7e02b77230a9b998c1baadc59cfaff3b4fc885ccf469
  * stale: false

@@ -24,7 +24,7 @@ concepts:
 facets:
   layer: utility
   status: legacy
-  complexity: 3
+  complexity: '3'
 description: This folder collects concrete `graphic.Graph2D` subclasses that each override pixel output with a different color strategy - ordered dithering (`GrayColor`), a fixed grey-level raster (`GreyColor`), random palette selection (`RandomColor`), and image-derived texture fill (`TextureGraphics`) - plus `testGraph2D`, a standalone Frame-based demo/test harness that exercises most drawing primitives across the `graphic` package.
 dv_has_:
   sub_:
@@ -71,8 +71,9 @@ has_sub_concept_greyscale_dithering_strategy: 1
 has_sub_concept_random_anti_moire_color_strategy: 1
 has_sub_concept_texture_sampling_color_strategy: 1
 related:
-  - path: ../_Matthias/Code/Java/graphic
-    shared-tags: [code/graphics]
+- path: ../_Matthias/Code/Java/graphic
+  shared-tags:
+  - code/graphics
 ---
 
 # implement

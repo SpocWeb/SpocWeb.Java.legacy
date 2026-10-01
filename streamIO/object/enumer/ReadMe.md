@@ -81,11 +81,12 @@ tags:
 - code/enumerator
 - code/iterator_adapter
 concepts:
-- Custom Streaming Enumerator and Iterator Bridge Layer for Object Collections
+- Streaming Enumerator
+- Iterator
 facets:
   layer: utility
   status: legacy
-  complexity: 4
+  complexity: '4'
 description: 'Enumerator/Iterator layer for the `streamIO.object` package: the `Enumerator` interface plus its abstract base (`AEnumerator`) and reverse-iteration counterpart (`AReverseEnumerator`), concrete implementations over arrays (`ArrayEnum`, `ArrayEnumDbl`, `ArrayEnumPrim`), linked structures (`ListItem`, `DblListItem`), and asynchronous pipes (`APipe`, `CachePipe`, `PipeSplitter`). Also provides bridges to and from `java.util.Iterator` (`Iterator2Enumerator`, `Enumerator2Iterator`, `Enumerator2Enumeration`) so this codebase''s custom streaming abstractions can interoperate with standard Java collections. `container/` (documented separately) supplies the concrete storage structures - HashContainer, TreeMap, Array, Relation, etc. - that these Enumerators iterate over.'
 dv_has_:
   sub_:
@@ -111,10 +112,14 @@ dv_has_:
         scheduling: 6
         adapter: 6
     concept_:
-      custom_streaming_enumerator_and_iterator_bridge_layer_for_object_collections: 24
-      concrete_storage_containers_arrays_hash_tables_and_relations: 45
-      red_black_tree_backed_sorted_map_implementation: 12
-      small_adapter_and_scheduling_helper_classes: 6
+      iterator: 24
+      streaming_enumerator: 24
+      hash_tables: 45
+      storage_containers: 45
+      red_black_tree: 12
+      sorted_map: 12
+      adapter: 6
+      scheduling: 6
 has_sub_folders: 3
 has_sub_files: 172
 has_sub_units: 87
@@ -130,13 +135,19 @@ has_sub_tag_code_red_black_tree: 12
 has_sub_tag_code_iterator_pattern: 12
 has_sub_tag_code_scheduling: 6
 has_sub_tag_code_adapter: 6
-has_sub_concept_custom_streaming_enumerator_and_iterator_bridge_layer_for_object_collections: 24
-has_sub_concept_concrete_storage_containers_arrays_hash_tables_and_relations: 45
-has_sub_concept_red_black_tree_backed_sorted_map_implementation: 12
-has_sub_concept_small_adapter_and_scheduling_helper_classes: 6
+has_sub_concept_iterator: 24
+has_sub_concept_streaming_enumerator: 24
+has_sub_concept_hash_tables: 45
+has_sub_concept_storage_containers: 45
+has_sub_concept_red_black_tree: 12
+has_sub_concept_sorted_map: 12
+has_sub_concept_adapter: 6
+has_sub_concept_scheduling: 6
 related:
-  - path: ../_Matthias/Code/NET/Java/streamIO/object/enum
-    shared-tags: [code/enumerator, code/iterator_adapter]
+- path: ../_Matthias/Code/NET/Java/streamIO/object/enum
+  shared-tags:
+  - code/enumerator
+  - code/iterator_adapter
 ---
 
 # enumer

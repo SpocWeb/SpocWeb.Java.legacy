@@ -66,7 +66,7 @@ concepts:
 facets:
   layer: infrastructure
   status: experimental
-  complexity: 4
+  complexity: '4'
 description: Reusable concurrency and call-wrapping primitives, written as a study of how to coordinate access to shared resources in plain Java without a framework.
 dv_has_:
   sub_:

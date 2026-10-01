@@ -16,7 +16,7 @@ import function.IFunction;
  * digest: 7efb6e6bddb46c376a3220bdea35c259f20d40a665e751166ec8ed9b60c54d8f
  * stale: false
  * tags: [code/metric_space, code/root_finding, code/numerical_integration, code/big_integer_arithmetic]
- * concepts: [Metric Spaces - Root Finding and Numerical Integration]
+ * concepts: [Metric Spaces, Root Finding]
  * facets: {layer: domain, status: legacy, complexity: 4}
  * -->
  * by themselves, because Convergence cannot be defined without a Metric.  */

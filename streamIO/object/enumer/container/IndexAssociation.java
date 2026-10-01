@@ -18,7 +18,7 @@ import function.index.IIndexAble;
  * @author heuerm
  * <!-- docstate
  * tags: [code/container, code/hash_table, code/container_iteration]
- * concepts: [Concrete Storage Containers - Arrays - Hash Tables and Relations]
+ * concepts: [Storage Containers, Hash Tables]
  * facets: {layer: utility, status: legacy, complexity: 4}
  * digest: fe93e1a03f99d4cca4179a3b04e774bc6a9e33daac100e6b7a2146efdd667104
  * stale: false

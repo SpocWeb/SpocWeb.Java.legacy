@@ -19,7 +19,7 @@ import function.vector.IFloatVectorFunction;
  * digest: 80048007eaea110228f4d600d82308040b23ec22bb9d2d57160ba5528a870a22
  * stale: false
  * tags: [code/ring_theory, code/ode_solver]
- * concepts: [Ring Algebra and ODE Solvers]
+ * concepts: [Ring Algebra, ODE Solvers]
  * facets: {layer: domain, status: legacy, complexity: 4}
  * -->
  */

@@ -22,6 +22,9 @@ import java.lang.reflect.Field;
  * mtime: 2026-09-05T08:13:09Z
  * digest: 80c2dcf5a634d69ce6ac0a8cf0cd2ca0bcf029e75d9906684bf04828e2f9f638
  * stale: false
+ * tags: [code/entity_model, code/orm, code/value_object]
+ * concepts: [Domain Model, Attribute Modelling]
+ * facets: {layer: domain, status: stable, complexity: 2}
  * -->
  */
 public class StringAttribute

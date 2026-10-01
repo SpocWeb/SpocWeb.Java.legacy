@@ -14,7 +14,7 @@ concepts:
 facets:
   layer: infrastructure
   status: stable
-  complexity: 2
+  complexity: '2'
 description: 'Holds the one `IIStreamOut` implementation whose whole purpose is signaling capacity rather than transforming or persisting data: it detects when a fixed-size buffer of Objects has filled up, first by a soft `null` return and then, on any further use, by letting `ArrayIndexOutOfBoundsException` propagate as a hard failure signal.'
 dv_has_:
   sub_:
@@ -46,8 +46,10 @@ has_sub_tag_code_overflow_detection: 1
 has_sub_concept_capacity_management: 1
 has_sub_concept_stream_output: 1
 related:
-  - path: ../_Matthias/Code/NET/Java/streamIO/detector
-    shared-tags: [code/fixed_size_buffer, code/overflow_detection]
+- path: ../_Matthias/Code/NET/Java/streamIO/detector
+  shared-tags:
+  - code/fixed_size_buffer
+  - code/overflow_detection
 ---
 
 # detector

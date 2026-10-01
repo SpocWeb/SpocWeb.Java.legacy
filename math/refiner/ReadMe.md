@@ -48,7 +48,7 @@ concepts:
 facets:
   layer: utility
   status: legacy
-  complexity: 4
+  complexity: '4'
 description: 'Iteratively refines an estimate toward a root, fixpoint or extremum of a scalar function, one step at a time. `IFloatRefiner`/`AFloatRefiner` define the single-point-state family (secant, Newton, fixpoint), while `AFloatRefinerQ` and its subclasses (`FalsiFloatRefinerQ`, `BrentFloatRefinerQ`, `RidderFloatRefinerQ`, `NewtonFloatRefinerQ`, `PegasusFloatRefiner`) add quality control: they track both endpoints of a bracketing interval and keep the root bracketed between them, trading various amounts of complexity for guaranteed convergence. `IFloatImprover`/`AFloatImprover` is the lower-level, value-only sibling abstraction that some of these refiners are built on.'
 dv_has_:
   sub_:
@@ -71,16 +71,16 @@ dv_has_:
         root_finding: 8
         bracket_matching: 2
     concept_:
-      bracketed_newtons_method_root_refiner: 1
-      bracketed_root_refiner_base_class: 1
+      bracketed: 1
       brents_method_root_refiner: 1
       fixed_point_iterative_improver: 1
       iterative_improver_base_class: 1
       iterative_improver_interface: 1
+      newton_root: 1
       newtons_method_root_refiner: 1
       pegasus_method_root_refiner: 1
+      refiner: 1
       regula_falsi_root_refiner: 1
-      ridders_method_root_refiner: 1
 has_sub_folders: 0
 has_sub_files: 26
 has_sub_units: 13
@@ -93,21 +93,23 @@ has_sub_tag_code_fixed_point_iteration: 3
 has_sub_tag_code_newton_method: 2
 has_sub_tag_code_root_finding: 8
 has_sub_tag_code_bracket_matching: 2
-has_sub_concept_bracketed_newtons_method_root_refiner: 1
-has_sub_concept_bracketed_root_refiner_base_class: 1
+has_sub_concept_bracketed: 1
 has_sub_concept_brents_method_root_refiner: 1
 has_sub_concept_fixed_point_iterative_improver: 1
 has_sub_concept_iterative_improver_base_class: 1
 has_sub_concept_iterative_improver_interface: 1
+has_sub_concept_newton_root: 1
 has_sub_concept_newtons_method_root_refiner: 1
 has_sub_concept_pegasus_method_root_refiner: 1
+has_sub_concept_refiner: 1
 has_sub_concept_regula_falsi_root_refiner: 1
-has_sub_concept_ridders_method_root_refiner: 1
 related:
-  - path: ../_Matthias/Code/NET/_org.structs/fixPoints
-    shared-tags: [code/root_finding]
-  - path: ../_Matthias/Code/NET/_trunk/Components/FinancialComponents/FunctionInterfaces
-    shared-tags: [code/root_finding]
+- path: ../_Matthias/Code/NET/_org.structs/fixPoints
+  shared-tags:
+  - code/root_finding
+- path: ../_Matthias/Code/NET/_trunk/Components/FinancialComponents/FunctionInterfaces
+  shared-tags:
+  - code/root_finding
 ---
 
 # refiner

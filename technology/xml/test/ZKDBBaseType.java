@@ -22,7 +22,7 @@ package technology.xml.test;
  * digest: 054c92bf4e88b9e2ff34e994923ac483b6da1adcf657ccc83ffc5beba8de9d4d
  * stale: false
  * tags: [code/data_transfer_object]
- * concepts: [Castor Data Transfer Object Base]
+ * concepts: [Data Transfer, Base]
  * facets: {layer: domain, status: legacy, complexity: 2}
  * -->
 **/

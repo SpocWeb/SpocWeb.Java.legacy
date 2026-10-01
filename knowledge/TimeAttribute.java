@@ -23,6 +23,9 @@ import java.util.Date;
  * mtime: 2026-09-05T08:13:09Z
  * digest: 15e5a1d110d57d6036802c17986ec89ab670763329b5468f7cf8de6661754d34
  * stale: false
+ * tags: [code/entity_model, code/orm, code/value_object]
+ * concepts: [Domain Model, Attribute Modelling]
+ * facets: {layer: domain, status: stable, complexity: 2}
  * -->
  */
 public class TimeAttribute

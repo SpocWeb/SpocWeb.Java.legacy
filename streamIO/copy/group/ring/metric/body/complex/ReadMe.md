@@ -30,11 +30,12 @@ tags:
 - code/complex_numbers
 - code/fourier_transform
 concepts:
-- Complex Number Arithmetic and Fourier Transform
+- Complex Number
+- Fourier Transform
 facets:
   layer: domain
   status: legacy
-  complexity: 4
+  complexity: '4'
 description: 'Complex-number arithmetic for the `body` layer, in both rectangular ({@link Complex}/ {@link ComplexDbl}) and polar ({@link Polar}/{@link PolarDbl}) representations. Each pair follows the same generic-versus-primitive split used elsewhere in this tree: the plain class stores its parts as arbitrary {@link streamIO.copy.group.ring.metric.IMetricIRing} constituents so it can host any numeric body, while the `Dbl` variant fixes both parts to primitive `double` for speed. {@link CComplex} is the constant-sharing proxy over {@link Complex} used to compare complex constants by pointer instead of by value. {@link Fourier} and {@link FourierFuncs} supply FFT and elliptic/Fresnel integral routines that operate on arrays of these complex types; {@link TestComplex} is the manual self-test entry point that exercises the whole package.'
 dv_has_:
   sub_:
@@ -53,7 +54,8 @@ dv_has_:
         complex_numbers: 8
         fourier_transform: 8
     concept_:
-      complex_number_arithmetic_and_fourier_transform: 8
+      complex_number: 8
+      fourier_transform: 8
 has_sub_folders: 0
 has_sub_files: 21
 has_sub_units: 8
@@ -62,10 +64,13 @@ has_sub_facet_status_legacy: 8
 has_sub_facet_complexity_4: 8
 has_sub_tag_code_complex_numbers: 8
 has_sub_tag_code_fourier_transform: 8
-has_sub_concept_complex_number_arithmetic_and_fourier_transform: 8
+has_sub_concept_complex_number: 8
+has_sub_concept_fourier_transform: 8
 related:
-  - path: ../_Matthias/Code/NET/Java/streamIO/copy/group/ring/metric/body/complex
-    shared-tags: [code/complex_numbers, code/fourier_transform]
+- path: ../_Matthias/Code/NET/Java/streamIO/copy/group/ring/metric/body/complex
+  shared-tags:
+  - code/complex_numbers
+  - code/fourier_transform
 ---
 
 # complex

@@ -17,7 +17,7 @@ import streamIO.copy.group.ring.IRefiner;
  * digest: 4d23523ade9c2f2a4524e178a7bf0779414a581d962ee6123359f02079e57ec9
  * stale: false
  * tags: [code/metric_space, code/root_finding, code/numerical_integration, code/big_integer_arithmetic]
- * concepts: [Metric Spaces - Root Finding and Numerical Integration]
+ * concepts: [Metric Spaces, Root Finding]
  * facets: {layer: domain, status: legacy, complexity: 4}
  * -->
  * because that would create too much overhead and can be realized in a simple loop.	*/

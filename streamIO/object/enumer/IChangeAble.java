@@ -19,7 +19,7 @@ import streamIO.IIterAble;
  * digest: 2840181ec49311159604faa5108aa869fa4cdf31fa04b8516c0598981ffca784
  * stale: true
  * tags: [code/enumerator, code/iterator_adapter]
- * concepts: [Custom Streaming Enumerator and Iterator Bridge Layer for Object Collections]
+ * concepts: [Streaming Enumerator, Iterator]
  * facets: {layer: utility, status: legacy, complexity: 4}
  * -->
  */

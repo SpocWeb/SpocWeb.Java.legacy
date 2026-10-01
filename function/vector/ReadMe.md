@@ -72,11 +72,12 @@ tags:
 - code/vector_math
 - code/differential_integration
 concepts:
-- Vector Fields and ODE Integration
+- Vector Fields
+- Integration
 facets:
   layer: domain
   status: broken
-  complexity: 4
+  complexity: '4'
 description: Vector-valued and vector-field function contracts (`IFloatVectorFunction`/`IFloatVectorField`/`IFloatScalarField`/`IBinaryOpFloat`) with concrete implementations for ODE integration (`AOdeFloat`, `OdeLorentz` - the Lorenz attractor, `OdeHeight`, `StepConstant`) and per-element vector aggregation (`OpCount`/`OpFirst`/`OpLast`/`OpMax`/`OpMin`/`OpProd`/`OpSum`, `fLength`, `fSum`, `fProduct`, `fSinProd`, `fChargeField`).
 dv_has_:
   sub_:
@@ -110,10 +111,14 @@ has_sub_tag_code_differential_integration: 5
 has_sub_concept_vector_field_function: 17
 has_sub_concept_ode_integration: 5
 related:
-  - path: ../_Matthias/Code/Java/function/derive/ring/body/vector
-    shared-tags: [code/differential_integration, code/vector_math]
-  - path: ../_Matthias/Code/NET/Java/function/vector
-    shared-tags: [code/differential_integration, code/vector_math]
+- path: ../_Matthias/Code/Java/function/derive/ring/body/vector
+  shared-tags:
+  - code/differential_integration
+  - code/vector_math
+- path: ../_Matthias/Code/NET/Java/function/vector
+  shared-tags:
+  - code/differential_integration
+  - code/vector_math
 ---
 
 # vector

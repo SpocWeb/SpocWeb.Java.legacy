@@ -14,7 +14,7 @@ import streamIO.object.enumer.ReverseEnumerator;
   * The Items can be accessed by an integer Index ranging from 0 to getInt()-1.
   * <!-- docstate
   * tags: [code/container, code/hash_table, code/container_iteration]
-  * concepts: [Concrete Storage Containers - Arrays - Hash Tables and Relations]
+  * concepts: [Storage Containers, Hash Tables]
   * facets: {layer: utility, status: legacy, complexity: 4}
   * digest: a81df4bb0e8b81584163459a9187946540682555507ecc5264ac01c1e288c9f7
   * stale: false

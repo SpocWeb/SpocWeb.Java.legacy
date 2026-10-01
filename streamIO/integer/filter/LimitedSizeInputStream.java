@@ -26,7 +26,7 @@ import streamIO.object.StreamIn2Enumeration;
  * digest: 540f94e3bd7e95508214e33e0e519f8e8ef53052a93575969a76bc891450bff7
  * stale: false
  * tags: [code/stream_filter]
- * concepts: [Pluggable Byte-Stream Filter Infrastructure and java.io Adapters]
+ * concepts: [Byte Stream, Filter]
  * facets: {layer: utility, status: legacy, complexity: 3}
  * -->
  */

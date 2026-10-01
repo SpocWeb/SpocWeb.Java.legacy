@@ -28,7 +28,7 @@ import streamIO.Log;
  * digest: d5f03a6f69ffaa06b9f40867aa52e118c764369372e4a9cd6dd90c80f3dd6989
  * stale: false
  * tags: [code/error_correction, code/convolutional_encoding]
- * concepts: [Forward Error Correction Codecs - Repetition and Convolutional Encoding]
+ * concepts: [Error Correction, Convolutional Encoding]
  * facets: {layer: utility, status: legacy, complexity: 3}
  * -->
  */

@@ -13,7 +13,7 @@ import streamIO.copy.group.ring.IRefiner;
  * digest: ba33d0d560832da769e42311b5c5dc0c4f0033e4e88a4c74f6e1e2c7b1565d61
  * stale: false
  * tags: [code/metric_space, code/root_finding, code/numerical_integration, code/big_integer_arithmetic]
- * concepts: [Metric Spaces - Root Finding and Numerical Integration]
+ * concepts: [Metric Spaces, Root Finding]
  * facets: {layer: domain, status: legacy, complexity: 4}
  * -->
  * Performs as many Steps as necessary.	*/

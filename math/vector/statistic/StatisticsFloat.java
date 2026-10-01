@@ -77,7 +77,7 @@ import function.vector.IFloatVectorField;
  * digest: e3ef5980c41dfcea2b3a6ae68b5b14c1f9fe7c9f64bfc3bb621613438a34fbd1
  * stale: false
  * tags: [code/hypothesis_testing, code/chi_squared]
- * concepts: [Statistical Hypothesis Tests over float Data]
+ * concepts: [Hypothesis Testing, Float]
  * facets: {layer: domain, status: legacy, complexity: 4}
  * -->
  */

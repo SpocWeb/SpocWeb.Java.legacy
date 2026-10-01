@@ -31,7 +31,7 @@ package graphic.ms3d;
  * digest: 57e87b68c2e71224504d49fd75b12b3c933cc07f390f5d99a07fdc02758d49cb
  * stale: false
  * tags: [code/image_loading]
- * concepts: [BMP File Loader (Unimplemented Stub)]
+ * concepts: [BMP File, Loader]
  * facets: {layer: utility, status: unfinished, complexity: 2}
  * -->
  */

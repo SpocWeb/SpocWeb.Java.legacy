@@ -82,7 +82,7 @@ import function.byref.ByRefLong;
   * digest: 8b3c200aa071ee9b7570a389504776fd449da30bb53de3fb650a66aa25773382
   * stale: false
   * tags: [code/jdbc_adapter, code/database_access, code/database_driver]
-  * concepts: [Filesystem-Backed JDBC Driver Framework with Fixed-Length and Separator-Delimited Table Storage]
+  * concepts: [JDBC Driver, Table Storage]
   * facets: {layer: domain, status: legacy, complexity: 4}
   * -->
   */

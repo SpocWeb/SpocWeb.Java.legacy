@@ -47,7 +47,7 @@ import java.util.Calendar;
  * digest: c07919d60945db111ee63fcee4e3f3fa2c49f85b709409de0c984d7c65818d85
  * stale: false
  * tags: [code/jdbc_adapter, code/database_access, code/database_driver]
- * concepts: [Filesystem-Backed JDBC Driver Framework with Fixed-Length and Separator-Delimited Table Storage]
+ * concepts: [JDBC Driver, Table Storage]
  * facets: {layer: domain, status: legacy, complexity: 4}
  * -->
  */

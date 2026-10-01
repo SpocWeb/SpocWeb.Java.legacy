@@ -11,6 +11,9 @@ package knowledge;
   * mtime: 2026-09-05T08:08:18Z
   * digest: fa851efe1fb3361d5f2a89597fc80163781a5806062d7de484091002c9aae71e
   * stale: false
+  * tags: [code/interface_contract, code/accessor, code/metadata]
+  * concepts: [Domain Model, Naming]
+  * facets: {layer: domain, status: stable, complexity: 2}
   * -->
   */
 public interface IDescriptor {

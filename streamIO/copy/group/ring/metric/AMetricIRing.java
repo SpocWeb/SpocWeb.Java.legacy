@@ -23,7 +23,7 @@ import function.byref.ByRefDouble;
  * digest: 90749431550c937068ac1623fa60db9adbfa5e665d4adfa4564fd504f3ab6e2b
  * stale: false
  * tags: [code/metric_space, code/root_finding, code/numerical_integration, code/big_integer_arithmetic]
- * concepts: [Metric Spaces - Root Finding and Numerical Integration]
+ * concepts: [Metric Spaces, Root Finding]
  * facets: {layer: domain, status: legacy, complexity: 4}
  * -->
  */

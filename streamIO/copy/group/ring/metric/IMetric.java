@@ -24,7 +24,7 @@ import streamIO.copy.ICopyAble;
  * digest: 4a14b852017719f3e36e4e3a23db958e0ce4ff33847fa4ba64a8b9ee6e2a5088
  * stale: false
  * tags: [code/metric_space, code/root_finding, code/numerical_integration, code/big_integer_arithmetic]
- * concepts: [Metric Spaces - Root Finding and Numerical Integration]
+ * concepts: [Metric Spaces, Root Finding]
  * facets: {layer: domain, status: legacy, complexity: 4}
  * -->
  */

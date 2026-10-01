@@ -35,7 +35,7 @@ import function.derive.ring.ThirdAt;
  * mtime: 2026-09-05T20:42:57Z
  * digest: c64151498bf126230843f8ba510e61e7f366cef6790bf5f70d5114bc27b2acf6
  * stale: false
- * tags: [code/entry_point_code/console_output_code/test]
+ * tags: [code/entry_point, code/console_output, code/test]
  * concepts: [Test Harness]
  * facets: {layer: utility, status: legacy, complexity: 3}
  * -->
@@ -54,7 +54,7 @@ public class TestBodyFuncs {
 	 * as a (Gaussian) Bell Curve.
 	 * If H is null (not given), it is assumed to 1.
 	 * <!-- docstate
-	 * tags: [code/testing]
+	 * tags: [code/test]
 	 * concepts: [Delta Function Test Helper]
 	 * facets: {layer: test, status: legacy, complexity: 2}
 	 * -->
@@ -155,7 +155,7 @@ public class TestBodyFuncs {
 	/**Returns the Derivative of a Sigmoid Function
 	 * as a (slightly asymmetric) Simulation of the Delta Function
 	 * <!-- docstate
-	 * tags: [code/testing]
+	 * tags: [code/test]
 	 * concepts: [Delta Function Test Helper]
 	 * facets: {layer: test, status: legacy, complexity: 2}
 	 * -->
@@ -178,7 +178,7 @@ public class TestBodyFuncs {
 	 *
 	 * (1-GammaP(a, x))*Gamma(a)/x^a with a = 1-n < 0	for n < 1
 	 * <!-- docstate
-	 * tags: [code/testing, code/numerical_integration]
+	 * tags: [code/test, code/numerical_integration]
 	 * concepts: [Exponential Integral Test Helper]
 	 * facets: {layer: test, status: legacy, complexity: 2}
 	 * -->
@@ -217,7 +217,7 @@ public class TestBodyFuncs {
 	/**Tests the Error Gamma Function
 	 *
 	 * <!-- docstate
-	 * tags: [code/testing]
+	 * tags: [code/test]
 	 * concepts: [Gaussian Integral Self-Test]
 	 * facets: {layer: test, status: legacy, complexity: 2}
 	 * -->
@@ -263,7 +263,7 @@ public class TestBodyFuncs {
 	/**Tests the Error Gamma Function
 	 *
 	 * <!-- docstate
-	 * tags: [code/testing]
+	 * tags: [code/test]
 	 * concepts: [Exponential Integral Self-Test]
 	 * facets: {layer: test, status: legacy, complexity: 2}
 	 * -->
@@ -292,7 +292,7 @@ public class TestBodyFuncs {
 	 *
 	 * @param args Array of parameters passed to the application
 	 * <!-- docstate
-	 * tags: [code/testing]
+	 * tags: [code/test]
 	 * concepts: [Demo Entry Point]
 	 * facets: {layer: test, status: legacy, complexity: 2}
 	 * -->

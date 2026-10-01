@@ -32,6 +32,9 @@ import java.lang.reflect.Field;
   * mtime: 2026-09-05T08:11:04Z
   * digest: 1d1e78689fda5fe65676aee605f05e04244529374a40435dae01f5cb9a9855f1
   * stale: false
+  * tags: [code/orm, code/persistence, code/reflection, code/interface_contract]
+  * concepts: [Persistence, Object-Relational Mapping]
+  * facets: {layer: data, status: stable, complexity: 3}
   * -->
   */
 public interface PersistAble { 

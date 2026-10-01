@@ -34,7 +34,7 @@ concepts:
 facets:
   layer: utility
   status: legacy
-  complexity: 3
+  complexity: '3'
 description: 'Combinatorics and special functions built on the `byref` wrappers: `Factorial`/`DblFactorial` (with recursive caching), `Bernoulli` numbers, `Prime` (sieve-based prime cache), `CombiFuncs` (binomial coefficients etc.), `ProbFuncs` (probability distributions), and `BesselFuncs` (Bessel functions).'
 dv_has_:
   sub_:
@@ -64,12 +64,15 @@ has_sub_tag_code_special_function: 8
 has_sub_tag_code_combinatorics: 8
 has_sub_concept_combinatorics: 8
 related:
-  - path: ../_Matthias/Code/NET/_std/IGraphs/Functions
-    shared-tags: [code/combinatorics]
-  - path: ../_Matthias/Code/NET/_std/IMathsImpl/Functions
-    shared-tags: [code/combinatorics]
-  - path: ../_Matthias/Code/Java/streamIO/vector
-    shared-tags: [code/combinatorics]
+- path: ../_Matthias/Code/NET/_std/IGraphs/Functions
+  shared-tags:
+  - code/combinatorics
+- path: ../_Matthias/Code/NET/_std/IMathsImpl/Functions
+  shared-tags:
+  - code/combinatorics
+- path: ../_Matthias/Code/Java/streamIO/vector
+  shared-tags:
+  - code/combinatorics
 ---
 
 # combinatoric

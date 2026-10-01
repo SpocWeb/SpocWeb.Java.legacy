@@ -88,7 +88,7 @@ public class MatrixSymmetric {
 	 * @return the Inverse of the decomposed Matrix: L^-1
 	 * <!-- docstate
 	 * tags: [code/matrix_algebra]
-	 * concepts: [Symmetric Matrix Inversion via Cholesky]
+	 * concepts: [Symmetric Matrix Eigen-Decomposition (Cholesky/Householder)]
 	 * facets: {layer: utility, status: legacy, complexity: 3}
 	 * -->
 	 */
@@ -394,7 +394,7 @@ public class MatrixSymmetric {
 	 * Ability to handle Index Offsets (here by 1) resulting in Rows and Columns
 	 * consisting of 0s resulting in an EigenValue of 0.
 	 * <!-- docstate
-	 * tags: [code/testing, code/eigenvalue_decomposition]
+	 * tags: [code/test, code/eigenvalue_decomposition]
 	 * concepts: [Eigenvector Self-Test]
 	 * facets: {layer: test, status: legacy, complexity: 2}
 	 * -->
@@ -425,7 +425,7 @@ public class MatrixSymmetric {
 	 * @param c2
 	 * @param ratio expected Ratio
 	 * <!-- docstate
-	 * tags: [code/testing]
+	 * tags: [code/test]
 	 * concepts: [Coordinate Comparison Test Helper]
 	 * facets: {layer: test, status: legacy, complexity: 2}
 	 * -->
@@ -473,7 +473,7 @@ public class MatrixSymmetric {
 	 * consisting of 0s resulting in an EigenValue of 0.
 	 * @throws IOException
 	 * <!-- docstate
-	 * tags: [code/testing, code/eigenvalue_decomposition]
+	 * tags: [code/test, code/eigenvalue_decomposition]
 	 * concepts: [Offset Eigenvector Self-Test]
 	 * facets: {layer: test, status: legacy, complexity: 2}
 	 * -->
@@ -518,7 +518,7 @@ public class MatrixSymmetric {
 	 * tests Transformation of a symmetric into a tri-diagonal Matrix for faster
 	 * Calculation of EigenValues
 	 * <!-- docstate
-	 * tags: [code/testing, code/tridiagonal_matrix_solving]
+	 * tags: [code/test, code/tridiagonal_matrix_solving]
 	 * concepts: [Tridiagonalization Self-Test]
 	 * facets: {layer: test, status: legacy, complexity: 2}
 	 * -->
@@ -565,7 +565,7 @@ public class MatrixSymmetric {
 	/** tests both Cholesky Decomposition and Backsubstition
 	 *
 	 * <!-- docstate
-	 * tags: [code/testing, code/lu_decomposition]
+	 * tags: [code/test, code/lu_decomposition]
 	 * concepts: [Cholesky Solve Self-Test]
 	 * facets: {layer: test, status: legacy, complexity: 2}
 	 * -->
@@ -631,7 +631,7 @@ public class MatrixSymmetric {
 	 * tests all Methods of this Class
 	 * @param args
 	 * <!-- docstate
-	 * tags: [code/testing]
+	 * tags: [code/test]
 	 * concepts: [Demo Entry Point]
 	 * facets: {layer: test, status: legacy, complexity: 2}
 	 * -->

@@ -19,7 +19,7 @@ import streamIO.copy.order.IOrder;
  * digest: 5d6c47b6b3c4552a3918f85557ce12853c0f79e267758b54002ad6aec8f21194
  * stale: false
  * tags: [code/metric_space, code/root_finding, code/numerical_integration, code/big_integer_arithmetic]
- * concepts: [Metric Spaces - Root Finding and Numerical Integration]
+ * concepts: [Metric Spaces, Root Finding]
  * facets: {layer: domain, status: legacy, complexity: 4}
  * -->
  * doesn't define it's own self, because the Methods are too few and too frequent.	 */

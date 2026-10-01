@@ -29,7 +29,7 @@ import function.IMeasurAble;
  * digest: 3b427498675f7efef18391a3bee458b1f45d3680af1489bfb629d48e901b68a4
  * stale: false
  * tags: [code/rational_numbers, code/interval_arithmetic]
- * concepts: [Rational Numbers and Interval Arithmetic]
+ * concepts: [Rational Numbers, Interval Arithmetic]
  * facets: {layer: domain, status: legacy, complexity: 4}
  * -->
  */

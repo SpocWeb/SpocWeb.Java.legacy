@@ -115,7 +115,7 @@ import tester.OrderatorComparable;
  * @since 1.2
  * <!-- docstate
  * tags: [code/red_black_tree, code/iterator_pattern]
- * concepts: [Red-Black Tree Backed Sorted Map Implementation]
+ * concepts: [Red Black Tree, Sorted Map]
  * facets: {layer: utility, status: legacy, complexity: 4}
  * digest: 2107bc6602323144c2a2562c451301184029ed0fb382f0180dc049ecbdeae311
  * stale: false
